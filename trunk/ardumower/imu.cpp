@@ -37,9 +37,9 @@ IMU::IMU(){
   accRoll = 0;
   
   accMin.x=accMin.y=accMin.z = 0;
-  accMax.x=accMin.y=accMin.z = 0;  
+  accMax.x=accMax.y=accMax.z = 0;  
   accOfs.x=accOfs.y=accOfs.z = 0;
-  accScale.x=accScale.y=accScale.z = 1;
+  accScale.x=accScale.y=accScale.z = 2;
   com.x=com.y=com.z=0;  
   comCal.x=comCal.y=comCal.z=0;  
   comCalB[0]=comCalB[1]=comCalB[2]=0;
@@ -61,12 +61,16 @@ IMU::IMU(){
     comDeviation[i] = i*10;
   }
   useComDeviation = false;   
+  
+  // test only
+  accOfs.x=2.95; accOfs.y=-17.75; accOfs.z=-22.05;
+  accScale.x=517.90;  accScale.y=526.50;  accScale.z=514.50;
 }
 
 // rescale to -PI..+PI
-double IMU::scalePI(double v)
+float IMU::scalePI(float v)
 {
-  double d = v;
+  float d = v;
   while (d < 0) d+=2*PI;
   while (d >= 2*PI) d-=2*PI;
   if (d >= PI) return (-2*PI+d); 
@@ -75,9 +79,9 @@ double IMU::scalePI(double v)
 }
 
 // rescale to -180..+180
-double IMU::scale180(double v)
+float IMU::scale180(float v)
 {
-  double d = v;
+  float d = v;
   while (d < 0) d+=2*180;
   while (d >= 2*180) d-=2*180;
   if (d >= 180) return (-2*180+d); 
@@ -87,7 +91,7 @@ double IMU::scale180(double v)
 
 
 // computes minimum distance between x radiant (current-value) and w radiant (set-value)
-double IMU::distancePI(double x, double w)
+float IMU::distancePI(float x, float w)
 {
   // cases:   
   // w=330 degree, x=350 degree => -20 degree
@@ -95,15 +99,15 @@ double IMU::distancePI(double x, double w)
   // w=10  degree, x=350 degree =>  20 degree
   // w=0   degree, x=190 degree => 170 degree
   // w=190 degree, x=0   degree => -170 degree 
-  double d = scalePI(w - x);
+  float d = scalePI(w - x);
   if (d < -PI) d = d + 2*PI;
   else if (d > PI) d = d - 2*PI;  
   return d;
 }
 
-double IMU::distance180(double x, double w)
+float IMU::distance180(float x, float w)
 {
-  double d = scale180(w - x);
+  float d = scale180(w - x);
   if (d < -180) d = d + 2*180;
   else if (d > 180) d = d - 2*180;  
   return d;
@@ -111,9 +115,9 @@ double IMU::distance180(double x, double w)
 
 
 // weight fusion (w=0..1) of two radiant values (a,b)
-double IMU::fusionPI(double w, double a, double b)
+float IMU::fusionPI(float w, float a, float b)
 { 
-  double c;
+  float c;
   if ((b >= PI/2) && (a <= -PI/2)){
     c = w * a + (1.0-w) * (b-2*PI);
   } else if ((b <= -PI/2) && (a >= PI/2)){
@@ -125,20 +129,20 @@ double IMU::fusionPI(double w, double a, double b)
 void IMU::loadSaveCalib(boolean readflag){
   int addr = 0;
   short magic = MAGIC;
-  eereadwrite(readflag, addr, magic); // magic
+  /*eereadwrite(readflag, addr, magic); // magic
   eereadwrite(readflag, addr, accOfs);
   eereadwrite(readflag, addr, accScale);    
   eereadwrite(readflag, addr, comCalB);  
   eereadwrite(readflag, addr, comCalA_1);    
   for (int i=0; i < 36; i++){
     eereadwrite(readflag, addr, comDeviation[i]);    
-  }
+  }*/
 }
 
 void IMU::loadCalib(){
   short magic = 0;
   int addr = 0;
-  eeread(addr, magic);
+  //eeread(addr, magic);
   if (magic != MAGIC) return;
   loadSaveCalib(true);
 }
@@ -149,7 +153,7 @@ void IMU::saveCalib(){
 
 void IMU::deleteCalib(){
   int addr = 0;
-  eewrite(addr, (short)0); // magic  
+  //eewrite(addr, (short)0); // magic  
   accOfs.x=accOfs.y=accOfs.z=0;
   accScale.x=accScale.y=accScale.z=1;  
   comCalA_1[0][0] = 1; comCalA_1[0][1] = 0; comCalA_1[0][2] = 0;
@@ -167,7 +171,7 @@ void IMU::setComCalParam(int type, int i, int j, float value){
   }
 }
 
-void IMU::printPt(point_double_t p){
+void IMU::printPt(point_float_t p){
   Serial.print(p.x);
   Serial.print(",");    
   Serial.print(p.y);  
@@ -209,10 +213,10 @@ void IMU::printCalib(){
 void IMU::calibGyro(){
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
-  point_double_t ofs;
+  point_float_t ofs;
   while(true){    
-    double zmin =  99999;
-    double zmax = -99999;  
+    float zmin =  99999;
+    float zmax = -99999;  
     gyroNoise = 0;
     ofs.x = ofs.y = ofs.z = 0;      
     for (int i=0; i < 50; i++){
@@ -220,9 +224,9 @@ void IMU::calibGyro(){
       readL3G4200D(true);      
       zmin = min(zmin, gyro.z);
       zmax = max(zmax, gyro.z);
-      ofs.x += ((double)gyro.x)/ 50.0;
-      ofs.y += ((double)gyro.y)/ 50.0;
-      ofs.z += ((double)gyro.z)/ 50.0;          
+      ofs.x += ((float)gyro.x)/ 50.0;
+      ofs.y += ((float)gyro.y)/ 50.0;
+      ofs.z += ((float)gyro.z)/ 50.0;          
       gyroNoise += sq(gyro.z-gyroOfs.z) /50.0;   // noise is computed with last offset calculation
     }
     Serial.print(F("gyro calib min="));
@@ -251,8 +255,8 @@ void  IMU::initADXL345B(){
 }
 
 void IMU::readADXL345B(){  
-  uint8_t buf[6];
-  if (I2CreadFrom(ADXL345B, 0x32, 6, buf) != 6){
+  int8_t buf[6];
+  if (I2CreadFrom(ADXL345B, 0x32, 6, (uint8_t*)buf) != 6){
     errorCounter++;
     return;
   }
@@ -260,9 +264,9 @@ void IMU::readADXL345B(){
   // With 10 bits measuring over a +/-4g range we can find how to convert by using the equation:
   // Gs = Measurement Value * (G-range/(2^10)) or Gs = Measurement Value * (8/1024)
   // ( *0.0078 )
-  double x=((double)(((int16_t)buf[1]<<8) | buf[0])) ;
-  double y=((double)(((int16_t)buf[3]<<8) | buf[2])) ;
-  double z=((double)(((int16_t)buf[5]<<8) | buf[4])) ;  
+  float x=((float)(((int16_t)buf[1]<<8) | buf[0])) ;
+  float y=((float)(((int16_t)buf[3]<<8) | buf[2])) ;
+  float z=((float)(((int16_t)buf[5]<<8) | buf[4])) ;  
   if (useAccCalibration){
     x -= accOfs.x;
     y -= accOfs.y;
@@ -278,10 +282,10 @@ void IMU::readADXL345B(){
     acc.y = y;
     acc.z = z;
   }
-  /*double accXreal = x + sin(gyroYpr.pitch);
+  /*float accXreal = x + sin(gyroYpr.pitch);
   accXmax = max(accXmax, accXreal );    
   accXmin = min(accXmin, accXreal );        */
-  //double amag = sqrt(Xa*Xa + Ya*Ya + Za*Za);
+  //float amag = sqrt(Xa*Xa + Ya*Ya + Za*Za);
   //Xa /= amag;
   //Ya /= amag;
   //Za /= amag;  
@@ -293,7 +297,7 @@ boolean IMU::initL3G4200D(){
   uint8_t buf[6];    
   int retry = 0;
   while (true){
-    I2CreadFrom(L3G4200D, 0x0F, 1, buf);
+    I2CreadFrom(L3G4200D, 0x0F, 1, (uint8_t*)buf);
     if (buf[0] != 0xD3) {        
       Serial.println(F("gyro read error"));
       retry++;
@@ -308,7 +312,7 @@ boolean IMU::initL3G4200D(){
   I2CwriteTo(L3G4200D, 0x20, 0b00001100);    
   // 2000 dps
   I2CwriteTo(L3G4200D, 0x23, 0b00100000);      
-  I2CreadFrom(L3G4200D, 0x23, 1, buf);
+  I2CreadFrom(L3G4200D, 0x23, 1, (uint8_t*)buf);
   if (buf[0] != 0b00100000){
       Serial.println(F("gyro write error")); 
       while(true);
@@ -320,8 +324,8 @@ boolean IMU::initL3G4200D(){
 }
 
 void IMU::readL3G4200D(boolean useTa){  
-  uint8_t buf[6];    
-  if (I2CreadFrom(L3G4200D, 0x27, 1, buf) != 1){
+  int8_t buf[6];    
+  if (I2CreadFrom(L3G4200D, 0x27, 1, (uint8_t*)buf) != 1){
     errorCounter++;
     return;
   }
@@ -330,23 +334,23 @@ void IMU::readL3G4200D(boolean useTa){
     return;  
   }
   now = micros();
-  double Ta = 1;
+  float Ta = 1;
   if (useTa) {
     Ta = ((now - lastGyroTime) / 1000000.0);    
-    //double Ta = ((double)(millis() - lastGyroTime)) / 1000.0; 			    
+    //float Ta = ((float)(millis() - lastGyroTime)) / 1000.0; 			    
     lastGyroTime = now;
     if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
     //lastGyroTime = millis();    
   }  
-  if (I2CreadFrom(L3G4200D, 0x28, 6, buf) != 6){
+  if (I2CreadFrom(L3G4200D, 0x28, 6, (uint8_t*)buf) != 6){
     //Serial.println("gyro read error");
     errorCounter++;
     return;
   }
-  gyro.x=((double)((((int16_t)buf[1])<<8) | buf[0]));
-  Serial.println(gyro.x);
-  gyro.y=((double)(((int16_t)buf[3]<<8) | buf[2]));
-  gyro.z=((double)(((int16_t)buf[5]<<8) | buf[4]));    
+  gyro.x = ((float)(((int16_t)buf[1]<<8) | buf[0])) ;  
+  //Serial.println(gyro.x);
+  gyro.y=((float)(((int16_t)buf[3]<<8) | buf[2])) ;  
+  gyro.z=((float)(((int16_t)buf[5]<<8) | buf[4])) ;  
   if (useGyroCalibration){
     gyro.x -= gyroOfs.x;
     gyro.y -= gyroOfs.y;
@@ -358,9 +362,9 @@ void IMU::readL3G4200D(boolean useTa){
     gyro.x *= 0.07 * Ta;
     gyro.y *= 0.07 * Ta;
     gyro.z *= 0.07 * Ta;                
-    gyro.x *= PI/180;
-    gyro.y *= PI/180;
-    gyro.z *= PI/180;
+    gyro.x *= PI/180.0;
+    gyro.y *= PI/180.0;
+    gyro.z *= PI/180.0;
     gyroYpr.yaw -= gyro.z;
     gyroYpr.pitch +=  gyro.y;
     gyroYpr.roll +=  gyro.x;    
@@ -379,18 +383,18 @@ void  IMU::initHMC5883L(){
 }
 
 void IMU::readHMC5883L(){    
-  uint8_t buf[6];  
-  if (I2CreadFrom(HMC5883L, 0x03, 6, buf) != 6){
+  int8_t buf[6];  
+  if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
     errorCounter++;
     return;
   }
   // scale +1.3Gauss..-1.3Gauss  (*0.00092)
-  com.x = ((double)(((int16_t)buf[0]<<8) | buf[1])) ;
-  com.y = ((double)(((int16_t)buf[4]<<8) | buf[5])) ;
-  com.z = ((double)(((int16_t)buf[2]<<8) | buf[3])) ;          
+  com.x = ((float)(((int16_t)buf[0]<<8) | buf[1])) ;
+  com.y = ((float)(((int16_t)buf[4]<<8) | buf[5])) ;
+  com.z = ((float)(((int16_t)buf[2]<<8) | buf[3])) ;          
 }
 
-double IMU::sermin(double oldvalue, double newvalue){
+float IMU::sermin(float oldvalue, float newvalue){
   if (newvalue < oldvalue) {
     Serial.print(".");
     digitalWrite(pinLED, true);
@@ -398,7 +402,7 @@ double IMU::sermin(double oldvalue, double newvalue){
   return min(oldvalue, newvalue);
 }
 
-double IMU::sermax(double oldvalue, double newvalue){
+float IMU::sermax(float oldvalue, float newvalue){
   if (newvalue > oldvalue) {
     Serial.print(".");
     digitalWrite(pinLED, true);
@@ -466,13 +470,13 @@ void IMU::calibComDeviation(){
   saveCalib();  
 }
 
-double IMU::compensateComYawDeviation(double degree){
+float IMU::compensateComYawDeviation(float degree){
   if (isnan(comDeviation[0])) return degree;
   int yaw = ((int)((degree+180)/10));    
-  double dx = (degree - (yaw*10-180));
-  double y1 = comDeviation[yaw];
-  double y2 = comDeviation[(yaw+1)%36];
-  double dy = distance180(y1, y2);  
+  float dx = (degree - (yaw*10-180));
+  float y1 = comDeviation[yaw];
+  float y2 = comDeviation[(yaw+1)%36];
+  float dy = distance180(y1, y2);  
   return scale180( y1 + dy/10.0 * dx );  
 }
 
@@ -480,9 +484,9 @@ void IMU::calibCom(){
   Serial.println(F("com calib..."));
   Serial.println(F("1. rotate sensor 360 degree around all three axis"));
   Serial.println(F("2. press key"));
-  double oldX = 0;
-  double oldY = 0;
-  double oldZ = 0;
+  float oldX = 0;
+  float oldY = 0;
+  float oldZ = 0;
   while(true){        
     delay(200);
     readHMC5883L();      
@@ -511,12 +515,12 @@ void IMU::calibAcc(){
   Serial.println(F("acc calib..."));
   useAccCalibration = false;
   accOfs.x = accOfs.y = accOfs.z = 0;  
-  double xmin =  99999;
-  double xmax = -99999;      
-  double ymin =  99999;
-  double ymax = -99999;        
-  double zmin =  99999;
-  double zmax = -99999;        
+  float xmin =  99999;
+  float xmax = -99999;      
+  float ymin =  99999;
+  float ymax = -99999;        
+  float zmin =  99999;
+  float zmax = -99999;        
   for (int counter=0; counter < 6; counter++){
     Serial.print(counter+1);
     Serial.print(F(". lay down sensor 'axis "));        
@@ -527,7 +531,7 @@ void IMU::calibAcc(){
     while (Serial.available()) Serial.read();
     while (!Serial.available()) delay(10);
     while (Serial.available()) Serial.read();
-    point_double_t pt = {0,0,0};
+    point_float_t pt = {0,0,0};
     digitalWrite(pinLED, true);
     for (int i=0; i < 10; i++){        
       readADXL345B();            
@@ -543,9 +547,9 @@ void IMU::calibAcc(){
     zmax = max(zmax, pt.z);            
     digitalWrite(pinLED, false);
   } 
-  double xrange = xmax - xmin;
-  double yrange = ymax - ymin;
-  double zrange = zmax - zmin;
+  float xrange = xmax - xmin;
+  float yrange = ymax - ymin;
+  float zrange = zmax - zmin;
   accOfs.x = xrange/2 + xmin;
   accOfs.y = yrange/2 + ymin;
   accOfs.z = zrange/2 + zmin;
@@ -563,23 +567,21 @@ void IMU::calibAcc(){
 
 
 void IMU::printCom(){  
-  Serial.print(F("raw="));
+  Serial.print(F("\tcom,"));
   Serial.print(com.x);  
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(com.y);  
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(com.z);   
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(comYaw/PI*180.0);   
-  Serial.print("\t");  
-  Serial.print("\t");  
-  Serial.print(F("cal="));
+  Serial.print(",");  
+  Serial.print(F("comcal,"));
   Serial.print(comCal.x);  
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(comCal.y);  
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(comCal.z);
-  Serial.print("\t");
   /*Serial.print(comYawCal/PI*180.0);     
   Serial.print("\t");  
   Serial.print("\t");      
@@ -594,18 +596,26 @@ void IMU::printCom(){
 }
 
 void IMU::printAcc(){
+  Serial.print("\tacc,");
   Serial.print(acc.x);
   Serial.print(",");
   Serial.print(acc.y);
   Serial.print(",");
   Serial.print(acc.z);  
   Serial.print(",");
-  printPt(accMin);  
-  Serial.print(",");
-  printPt(accMax);    
+  //printPt(accMin);  
+  //Serial.print(",");
+  //printPt(accMax);    
 }
 
 void IMU::printGyro(){  
+  Serial.print("\tgyro,");
+  Serial.print(gyro.x);
+  Serial.print(",");
+  Serial.print(gyro.y);
+  Serial.print(",");
+  Serial.print(gyro.z);
+  Serial.print(",\t");
   Serial.print(gyroYpr.yaw);  
   Serial.print(",");
   Serial.print(gyroYpr.pitch);  
@@ -614,11 +624,30 @@ void IMU::printGyro(){
 }
 
 void IMU::printIMU(float * ypr){
-  Serial.print(ypr[0]);
-  Serial.print(",");
-  Serial.print(ypr[1]);
-  Serial.print(",");
-  Serial.print(ypr[2]);          
+  Serial2.print(ypr[0]);
+  Serial2.print(",");
+  Serial2.print(ypr[1]);
+  Serial2.print(",");
+  Serial2.print(ypr[2]);          
+  Serial2.print(",");
+  Serial2.print(gyro.x);
+  Serial2.print(",");
+  Serial2.print(gyro.y);
+  Serial2.print(",");
+  Serial2.print(gyro.z);
+  Serial2.print(",");
+  Serial2.print(acc.x);
+  Serial2.print(",");
+  Serial2.print(acc.y);
+  Serial2.print(",");
+  Serial2.print(acc.z);
+  Serial2.print(",");
+  Serial2.print(comCal.x);
+  Serial2.print(",");
+  Serial2.print(comCal.y);
+  Serial2.print(",");
+  Serial2.print(comCal.z);  
+  Serial2.println();
   /*Serial.print(",");
   Serial.print(comYawTilt/PI*180.0);  */
 }
@@ -646,7 +675,7 @@ float IMU::invSqrt(float number) {
 void IMU::getQ(float * q) {
   read();  
   now = micros();
-  double Ta = ((now - lastAHRSTime) / 1000000.0);
+  float Ta = (now - lastAHRSTime) / 1000000.0;
   lastAHRSTime = now;
   ahrs.update( 
              gyro.x, gyro.y, gyro.z,             
@@ -762,9 +791,9 @@ void IMU::calcComCal(){
       comCal.z = com.z;
     } else {
       // (rawA - B)
-      double x = com.x - comCalB[0];
-      double y = com.y - comCalB[1];
-      double z = com.z - comCalB[2];    
+      float x = com.x - comCalB[0];
+      float y = com.y - comCalB[1];
+      float z = com.z - comCalB[2];    
       // calA = A_1 * (rawA - B)
       comCal.x = (comCalA_1[0][0] * x + comCalA_1[1][0] * y + comCalA_1[2][0] * z) ;
       comCal.y = (comCalA_1[0][1] * x + comCalA_1[1][1] * y + comCalA_1[2][1] * z) ;
@@ -774,19 +803,19 @@ void IMU::calcComCal(){
     //comYawCal = scalePI( atan2(comCal.y, comCal.x)  );          
 }
 
-void IMU::getComRaw(point_double_t &v){
+void IMU::getComRaw(point_float_t &v){
   v.x = com.x;
   v.y = com.y;
   v.z = com.z;
 }
 
-void IMU::getComCal(point_double_t &v){
+void IMU::getComCal(point_float_t &v){
   v.x = comCal.x;
   v.y = comCal.y;
   v.z = comCal.z;
 }
 
-void IMU::getMinMaxAcc(point_double_t &vmin, point_double_t &vmax){
+void IMU::getMinMaxAcc(point_float_t &vmin, point_float_t &vmax){
   vmin = accMin;
   vmax = accMax;
   accMin.x = accMin.y = accMin.z = 0;
