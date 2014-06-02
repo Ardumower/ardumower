@@ -1,0 +1,199 @@
+
+Anheben:
+bei y-Beschl. stoppen! (Peak pos. ohne Peak neg.)
+
+Stoppen:
+Jein. Zwei Kategorien:
+1.Begrenzung also Schleife normale bremse und Beschleunigung (langsam)
+2. Hindernis/Gefahr also Bumper/Sonar (Kinder Fuß) schnell stoppen
+
+---
+Jetzt müssen wir mal schauen was als nächstes hineinkommen soll...
+Ich denke da an:
+
+-Beschl.Sensor plotten
+-US-Sensor: Langsam-Fahrt deaktivieren nach Timeout
+-Versionnummern anzeigen in pfodApp/Konsole
+-Fahrtrichtung: Vor/Zurück
+-pfodApp: Schaltbare Ausgänge
+-Beschleunig.Sensor - Mäher wieder anschalten falls nicht mehr aktiv
+-Beschleunig.Sensor - negative Beschleunigung in Z-Achse erkennen (einfaches Anheben) und Mähwerk abschalten
+-Test ohne Sensoren - analogRead Zufall falls Pin offen?!
+-CIRCLE Mode
+-Zurück zu "Schleife-suchen" falls Robot Schleife vollständig verloren hat
+-"Nachhause-Fahren" automatisch einleiten bei Unterspannung (dazu muss der Spannungssensor laufen)
+-Mähvorgang nach Aufladung automatisch fortsetzen (dazu muss der Spannungssensor u. ggf. Ladestromsensor laufen)
+-Ladestation Timeout => Mäher etwas zurücksetzen
+-Kompaß für Geradeausfahren bei Steigung
+-Drehzahl links/rechts erhöhen bei Neigung
+-Handy-App
+-Mähen in Bahnen (Odometrie/GPS)
+-Akku:Wenn der Arduino das ja alles überwacht, könnte man den Zustand dann nicht durch eine LED anzeigen lassen?
+ Also so in der Art "Akku wird geladen - LED blinkt, Akku voll - LED ist an".
+ Somit könnte die original Akku LED vom L50 Gehäuse genutzt werden und man sieht den aktuellen Zustand auch ohne  App.
+ Weitere Idee dazu:
+ Ich möchte diese LED (oder einen anderen Ausgang) mittels eines HomeMatic-Modules überwachen und mir den Status  an die Zentrale "funken" lassen, da ich eh verschiedene Statusmeldungen auf ein Tablet bzw. das Handy bekomme.
+
+Einstellungen:
+-Erlaubter Abstand zum Überfahren der Schleife (Zeit)
+
+-----Daten Plotten--------------
+-Batterie-Ladekurve
+-Motordrehzahl
+-GPS-Koordinaten
+
+
+---PWM Bug------
+I noticed, that frequency of MotorLeftPWM is about 960 Hz and two times bigger than MotorRightPWM (about 490 Hz).
+The code looks good.
+Then I changed following line in aml50.h
+#define pinMotorLeftPWM 3
+to
+#define pinMotorLeftPWM 5
+and now frequency is equal. 
+
+
+gute Doku: http://www.mikrocontroller.net/articles/Motoransteuerung_mit_PWM
+[14:43:04] Christian Grau: Ganz wichtig: Wahl der PWM-Frequenz
+[14:43:15] Christian Grau: t=L/R
+[14:43:48] Christian Grau: L kann man mit Induktivitätsmesser ermitteln (gutes Multimeter kann das - habe davon mehrere hier)
+[14:44:09] Alexander Grau: ok, kann ich auch machen hier
+[14:46:10] Alexander Grau: 1,8 mH direkt am motorstecker
+[14:48:24] Christian Grau: t=1,8*10^-3 / 7 Ohm= 25ms
+[14:48:39] Christian Grau: sorry 0,25ms
+[14:49:05] Alexander Grau: 4000 hz
+[14:49:09] Christian Grau: jo
+[14:49:21] Christian Grau: ist die ideale PWM Freq
+[14:50:02] Christian Grau: würde sicherheitshalber aber mal mit 11 Ohm durchrechnen (inkl. Schutzwiderstände)
+[14:50:11] Alexander Grau: jo
+[14:50:17] Christian Grau: und mir dann die Spitzen anschauen am Treiber 
+[14:50:48] Christian Grau: wenn da keine Spitzen mehr vorhanden sind die Widerstände entfernen und mit 4kHz testen
+oder aber direkt mit 4kHz oder Schutzwiderstände und dann die Betriebsspg. auf 12V legen
+ohne Schutzwiderstände
+[14:53:17] Alexander Grau: ja, herantasten
+-----Timer---------------
+
+-Choose/change timer menu
+No timer   
+Timer 1     *
+Timer 2
+Timer 3
+Timer 4
+Timer 5
+
+
+-Change 'Timer 1' menu
+Sunday
+Monday
+Thuesday
+Wednesday
+Thursday
+Friday
+Saturday
+
+
+-Change 'Timer 1, Monday' menu
+Time slot 1 is ON
+Start  09:00
+End    10:00
+
+Time slot 2 is OFF
+Start  11:00
+End    13:00
+
+Time slot 3 is OFF
+Start  11:00
+End    13:00
+
+----------------------------
+
+User Defined State Machine (FSM)
+
+                1:Forward   2:Reverse   3:Rotate left
+Entry action    SPEED=100   SPEED=-100  LSPEED=50
+Exit  action
+Timeout mode    Start/100                
+Timeout target  2:Reverse   3:Rotate    1:Forward
+ELSE
+Bumper Press    3:Reverse 
+Bumper Release
+----------------------------
+Event:
+bumperLeft == 1
+
+Action:
+leftSpeed == 50
+------------------------------
+
+WatchDog Timer
+http://tushev.org/articles/arduino/item/46-arduino-and-watchdog-timer
+
+First of all, you need to include corresponding header file:
+#include <avr/wdt.h>
+
+In the next step we should enable WDT as well as configure it:
+wdt_enable(WDTO_2S);
+
+In most cases you'll have to put that line to init(){} section, however, Watchdog timer may be enabled at any moment.
+
+WDTO_2S is a constant that means threshold interval of 2 seconds. (It is defined inside header file). If Watchdog receive no "pat" signal for this period, it will "bite" back - reboot the MCU.
+
+Threshold value 	Constant name 	Supported on
+15 ms 	WDTO_15MS 	ATMega 8, 168, 328, 1280, 2560
+30 ms 	WDTO_30MS 	ATMega 8, 168, 328, 1280, 2560
+60 ms 	WDTO_60MS 	ATMega 8, 168, 328, 1280, 2560
+120 ms 	WDTO_120MS 	ATMega 8, 168, 328, 1280, 2560
+250 ms 	WDTO_250MS 	ATMega 8, 168, 328, 1280, 2560
+500 ms 	WDTO_500MS 	ATMega 8, 168, 328, 1280, 2560
+1 s 	WDTO_1S 	ATMega 8, 168, 328, 1280, 2560
+2 s 	WDTO_2S 	ATMega 8, 168, 328, 1280, 2560
+4 s 	WDTO_4S 	ATMega 168, 328, 1280, 2560
+8 s 	WDTO_8S 	ATMega 168, 328, 1280, 2560
+
+Finally, you should put the following line that tells watchdog that everything's ok.
+wdt_reset();
+
+Sure, it should be called from app's cycle more often than threshold period you have set for watchdog ends (at least, during normal operation mode). The beginning of loop() cycle could be a good idea, however, this depends on your program.
+
+Also it's necessary to include it to every time-consuming operation. For instance, if you have data transmission cycle in your main loop, and this cycle lasts for a couple of seconds, you should put wdt_reset(); there as well, or your board may reset during transmission.
+
+When choosing a treshold, take all time- and timing-related values into account: delays, function tresholds, bus timeouts and speed. Threshold value should always be greater than the largest value - at least 1.5 times greater in most cases. However, this depend on your application.
+
+Another thing to take in mind is that it will reset the MCU, but not another hardware in your project, so you have to do it manually during Arduino initialization - if you have such hardware, sure.
+
+
+IMPORTANT THING:
+
+Quoting ATMega Datasheet:
+
+    Note: If the Watchdog is accidentally enabled, for example by a runaway pointer or brown-out
+    condition, the device will be reset and the Watchdog Timer will stay enabled. If the code is not
+    set up to handle the Watchdog, this might lead to an eternal loop of time-out resets. To avoid this
+    situation, the application software should always clear the Watchdog System Reset Flag
+    (WDRF) and the WDE control bit in the initialisation routine, even if the Watchdog is not in use.
+
+In older bootloaders (for 168, 2K size), the code checks whether it is running after WDT reset or not, and skips waiting for new program in this case. (See this file, line 286).
+
+However, I could not find something similar in Optiboot bootloader (If I'm wrong, correct me please!), used by Arduino UNO and other new boards. It seems that they sacrificed this check for size. So, it is possible that watchdog timer will be enabled after reset, so -  if you set it's value too low, your board may never come out of bootloader stage. So, to be always on the safe side, set watchdog to longer periods (2S and more).
+
+I hope this article will help you to make your projects more safe and reliable ;)
+
+--------------------------------------
+
+Kalman-Filter
+
+Winkelsensor => Winkdelgeschw.  delPhi      => 
+Kurs(GPS)    => Ausrichtung phiGPS          => Kalman =>  Ausrichtung phi    =>                
+Odometrie    => Wegstrecke Sl, Sr                                            => Kalman => Position x,y,Ausrichtung phi   
+
+
+GPSSpeed3D(Doppler) Genauigkeit: 0.1m/s 
+     
+--------------------------------------
+
+
+
+
+
+
+
