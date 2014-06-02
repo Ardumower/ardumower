@@ -1,0 +1,103 @@
+Ok, here's a summary of the changes for the Due wiring:
+
+1. Due
+The Due runs at 3.3V - all signal lines connected to the Due have to run at 3.3V too. If it's not possible to run a specific sensor module at 3.3V, keep 5V for that module and use a voltage divider for the signal line of that module:
+
+[code]
+5V sensor signal out --10k---+---20k---GND
+                             | 
+                 Arduino Due signal in
+[/code]
+
+2. Mega Sensor shield
+If using the Mega sensor shield (recommended), make sure to remove jumper "PWR_SEL" on the Mega shield, so all "V" pins are open (and no longer connected to 5V). Then connect any 3.3V pin (e.g. "Bluetooth" pin no.1) to one "V" pin, so all "V" pins get 3.3V instead of 5V.
+
+3. Motor drivers
+Motor drivers, MOSFET mower driver and current sensors will be replaced by 2 x dual MC33926. The MC driver has built-in current sensor and it's 3.3V compatible. Same signal lines for the Due as on the Mega.   
+
+4. Perimeter Nano
+The perimeter Arduino Nano is obsolete now. Also, we are using only one coil now. The LM386 is not designed for 3.3V (although you might get it to work). Use a voltage divider for the output signal (see point 1). 
+
+[code]
+LM386 in  --- 100 mH coil ----- 4.7nF --+
+LM386 GND ------------------------------+ 
+LM386 out --- 10k --- Arduino Due pin A5 -- 20k -- GND
+LM386 VCC --- 5V
+[/code] 
+     
+5. Perimeter sender
+The perimeter sender is using a dual MC33926 motor driver and new sender code (new signal).
+
+[code]
+motor driver M1OUT1 o---------- perimeter loop (20-450 meter)--+
+                                                               |
+motor driver M1OUT2 o------------------------------------------+
+motor driver Vin    o-- 12V
+motor driver M1IN1  o-- Arduino Nano IN1
+motor driver M1IN2  o-- Arduino Nano IN2
+motor driver VDD    o-- Arduino +5V
+motor driver EN     o-- VDD (via Jumper)
+motor driver M1D1   o-- GND (via Jumper)
+motor driver M1D2   o-- VDD (via Jumper) 
+[/code]
+
+6. IMU
+The IMU Arduino Nano is obsolete now. Run it at 3.3V instead 5V. 
+
+[code]
+IMU VCC3.3 --- 3.3V
+IMU SCL    --- Arduino Due SCL         
+IMU SDA    --- Arduino Due SDA
+[/code]
+
+7. Bluetooth module
+Bluetooth module will run at 3.3V, no voltage divider for RX line anymore.
+
+8. Charge sensing
+Current sensor ACS712-05 is not designed for 3.3V, so use a voltage divider if your signal voltage is too high (>3.3V) for your charging current.  
+
+9. Ultrasonic
+HC-SR04 is not designed for 3.3V, so use a voltage divider for Echo line.
+
+
+------------------------------
+MEGA
+------------------------------
+DC Stepup 5V
+DC Stepup 3.3V
+
+Arduino Mega 5V -- 5V
+
+------------------------------
+DUE
+------------------------------
+DC Stepup 5V
+DC Stepup 3.3V
+
+Arduino Due 5V -- 5V
+
+LM386 VCC -- 5V
+LM386 Out -- 10k -- Arduino In -- 20k -- GND
+                  
+
+HC-SR04 VCC -- 5V
+HC-SR04 Echo -- 10k -- Arduino In -- 20k -- GND
+
+------------------------------
+
+Ardumower Chassis components
+
+2 x MC driver
+2 x LM386
+2 x Tracopower (5V and 3.3V)
+buzzer
+RTC
+bluetooth
+GPS
+GY-80
+RTC
+connectors for : odometry, button, HC-SR04
+
+
+
+
