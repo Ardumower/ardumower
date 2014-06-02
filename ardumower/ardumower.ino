@@ -172,8 +172,8 @@ byte   imuRollDir = LEFT;
 short imuComX = 0;  // raw compass values (uncalibrated)
 short imuComY = 0;
 short imuComZ = 0;
-point_double_t accMin = {0,0,0};
-point_double_t accMax = {0,0,0};
+point_float_t accMin = {0,0,0};
+point_float_t accMax = {0,0,0};
 IMU imu;
 GPS gps;
 // ------- perimeter state --------------------------
