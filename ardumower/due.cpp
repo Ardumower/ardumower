@@ -117,6 +117,8 @@ boolean DueFlash::write(uint32_t address, byte *data, uint32_t dataLength) {
 
 
 /*
+ alternative: http://paste.ubuntu.com/5703102/
+
  http://forum.arduino.cc/index.php/topic,136500.0.html
  Tone generator
  v1  use timer, and toggle any digital pin in ISR
