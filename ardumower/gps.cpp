@@ -1,4 +1,4 @@
-#include "GPS.h"
+#include "gps.h"
 
 #define _GPRMC_TERM   "GPRMC"
 #define _GPGGA_TERM   "GPGGA"
