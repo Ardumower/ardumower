@@ -89,8 +89,8 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
 
 // ------ choose ONLY ONE robot configuration --------------------------------------------------
 
-//#include "config.h"  // Ardumower Chassis Kit 1.0   (Alexander's Due test platform)
-#include "config_aml50.h"   // Ambrogio L50    (Alexander's Mega test platform)
+#include "config.h"  // Ardumower Chassis Kit 1.0   (Alexander's Due test platform)
+//#include "config_aml50.h"   // Ambrogio L50    (Alexander's Mega test platform)
 
 #ifdef USE_PFOD
   #include "pfod.h"

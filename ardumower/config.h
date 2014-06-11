@@ -1,4 +1,3 @@
-
 // Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics)
 // Copyright (c) 2014 by Alexander Grau
   
@@ -100,7 +99,7 @@ char imuCorrectDir     = 0;       // correct direction by compass?
 pid_params_t imuDirPid  = {5.0, 1.0, 1.0};    // direction PID controller
 pid_params_t imuRollPid  = {0.8, 21, 0};    // roll PID controller
 // ------ model R/C ------------------------------------
-char remoteUse         = 0;       // use model remote control (R/C)?
+char remoteUse         = 1;       // use model remote control (R/C)?
 // ------ battery -------------------------------------
 char batMonitor = 0;              // monitor battery and charge voltage?
 double batGoHomeIfBelow = 22;     // drive home voltage (Volt)
