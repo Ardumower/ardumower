@@ -46,11 +46,11 @@ void ADCManager::init(){
   delay(500); // wait for ADCRef to settle (stable ADCRef required for later calibration)
 }
 
-void ADCManager::setCapture(byte pin, byte samplecount){
+void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs){
   int ch = pin-A0;
   captureSize[ch] = samplecount;
   capture[ch] = new int8_t[samplecount]; 
-  calibrateOfs(pin);
+  if (autoCalibrateOfs) calibrateOfs(pin);
 }
 
 void ADCManager::calibrateOfs(byte pin){

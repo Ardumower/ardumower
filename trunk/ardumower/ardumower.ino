@@ -89,7 +89,7 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
 
 // ------ choose ONLY ONE robot configuration --------------------------------------------------
 
-#include "config.h"  // Ardumower Chassis Kit 1.0   (Alexander's Due test platform)
+#include "config.h"  // Ardumower Chassis Kit 1.0
 //#include "config_aml50.h"   // Ambrogio L50    (Alexander's Mega test platform)
 
 #ifdef USE_PFOD
@@ -1141,7 +1141,7 @@ void setNextState(byte stateNew, byte dir){
 // check (low) battery
 void checkBattery(){
   if (batMonitor){
-    if (batVoltage < batGoHomeIfBelow) {
+    if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF)) {
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
     } else if (batVoltage < batSwitchOffIfBelow) {
@@ -1280,11 +1280,11 @@ void checkPerimeterBoundary(){
     if (stateCurr == STATE_FORWARD){
       //if ((millis() < stateStartTime + 2500)) return;    
       if (!perimeterLeftState) {
-        if ((rand() % 2) == 0){      
+      //  if ((rand() % 2) == 0){      
           reverseOrBidir(LEFT);
-        } else {
-          reverseOrBidir(RIGHT);
-        }
+      //  }// else {
+        //  reverseOrBidir(RIGHT);
+      //  }
       }
     } 
   }
@@ -1441,6 +1441,7 @@ void loop()  {
     case STATE_OFF:
       // robot is turned off      
       checkTimer();
+      checkBattery();
       if (batMonitor){
         if (chgVoltage > 5.0){
           beep(2, true);      
