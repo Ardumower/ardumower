@@ -77,8 +77,8 @@ PerimeterClass::PerimeterClass(){
 void PerimeterClass::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;
-  ADCMan.setCapture(idx0Pin, FFTBINS);
-  ADCMan.setCapture(idx1Pin, FFTBINS);  
+  ADCMan.setCapture(idx0Pin, FFTBINS, 1);
+  ADCMan.setCapture(idx1Pin, FFTBINS, 1);  
 }
 
 int PerimeterClass::getMagnitude(byte idx){  
