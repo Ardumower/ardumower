@@ -347,6 +347,7 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, batGoHomeIfBelow);
   eereadwrite(readflag, addr, batSwitchOffIfBelow);  
   eereadwrite(readflag, addr, batFactor);
+  eereadwrite(readflag, addr, batSenseZero);
   eereadwrite(readflag, addr, chgSenseZero);
   eereadwrite(readflag, addr, chgFactor);
   eereadwrite(readflag, addr, stationRevTime);
