@@ -406,19 +406,21 @@ void sendBatteryMenu(boolean update){
   Serial2.print("V ");
   Serial2.print(chgCurrent);
   Serial2.print("A");
-  sendSlider("j05", F("Charge sense zero"), chgSenseZero, "", 1, 600, 400);       
-  sendSlider("j06", F("Battery factor"), batFactor, "", 0.01, 10);     
-  sendSlider("j07", F("Charge factor"), chgFactor, "", 0.01, 10);     
+  sendSlider("j05", F("Battery sense zero"), batSenseZero, "", 1, 0, 200);       
+  sendSlider("j06", F("Charge sense zero"), chgSenseZero, "", 1, 600, 400);       
+  sendSlider("j07", F("Battery factor"), batFactor, "", 0.01, 10);     
+  sendSlider("j08", F("Charge factor"), chgFactor, "", 0.01, 10);     
   Serial2.println("}");                
 }
 
 void processBatteryMenu(String pfodCmd){      
   if (pfodCmd == "j01") batMonitor = !batMonitor;
     else if (pfodCmd.startsWith("j02")) processSlider(pfodCmd, batGoHomeIfBelow, 0.1);
-    else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, batSwitchOffIfBelow, 0.1);    
-    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, chgSenseZero, 1);
-    else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, batFactor, 0.01);    
-    else if (pfodCmd.startsWith("j07")) processSlider(pfodCmd, chgFactor, 0.01);    
+    else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, batSwitchOffIfBelow, 0.1); 
+    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, batSenseZero, 1);
+    else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, chgSenseZero, 1);
+    else if (pfodCmd.startsWith("j07")) processSlider(pfodCmd, batFactor, 0.01);    
+    else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, chgFactor, 0.01);    
   sendBatteryMenu(true);
 }
 
