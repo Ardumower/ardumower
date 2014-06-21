@@ -181,7 +181,7 @@ void sendMotorMenu(boolean update){
   Serial2.print(motorLeftSense);
   Serial2.print(", ");  
   Serial2.print(motorRightSense);    
-  sendSlider("a02", F("Current max"), motorCurrentMax, "", 1, 255);       
+  sendSlider("a02", F("Current max"), motorCurrentMax, "", 1, 2000);       
   sendSlider("a03", F("Sense zero l"), motorSenseLeftZero, "", 1, 600, 0);       
   sendSlider("a04", F("Sense zero r"), motorSenseRightZero, "", 1, 600, 0);           
   Serial2.println(F("|a05~Speed l, r"));    
@@ -232,7 +232,7 @@ void sendMowMenu(boolean update){
   Serial2.print(motorMowSenseCounter);    
   Serial2.print(F("|o01~Current "));  
   Serial2.print(motorMowSense);  
-  sendSlider("o02", F("Current max"), motorMowCurrentMax, "", 1, 255);         
+  sendSlider("o02", F("Current max"), motorMowCurrentMax, "", 1, 2000);         
   sendSlider("o03", F("Sense zero"), motorMowSenseZero, "", 1, 600, 0);        
   Serial2.print(F("|o04~Speed "));
   Serial2.print(motorMowPWM);      
