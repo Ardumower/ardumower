@@ -197,6 +197,7 @@ unsigned int sonarDistCounter = 0;
 unsigned long sonarObstacleTimeout = 0;
 // --------- charging -------------------------------
 double batVoltage = 0;  // battery voltage (Volt)
+double batRefFactor = 0;
 double batCapacity = 0; // battery capacity (mAh)
 double chgVoltage = 0;  // charge voltage (Volt)
 double chgCurrent = 0;  // charge current  (Ampere)
@@ -921,9 +922,10 @@ void readSensors(){
   if (millis() >= nextTimeMotorSense){    
     nextTimeMotorSense = millis() +  50;
     double accel = 0.05;
-    motorRightSense = motorRightSense * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_RIGHT))) * accel;
-    motorLeftSense  = motorLeftSense  * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_LEFT))) * accel;
-    motorMowSense   = motorMowSense   * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_MOW))) * accel;            
+    motorRightSense = motorRightSense * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_RIGHT))) * accel * batRefFactor;
+    motorLeftSense  = motorLeftSense  * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_LEFT))) * accel * batRefFactor;
+    motorMowSense   = motorMowSense   * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_MOW))) * accel * batRefFactor;  
+  
     if ((millis() - lastMotorMowRpmTime) >= 500){                  
       motorMowRpm = readSensor(SEN_MOTOR_MOW_RPM);    
       if ((motorMowRpm == 0) && (motorMowRpmCounter != 0)){
@@ -1026,8 +1028,10 @@ void readSensors(){
     double accel = 0.01;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
-    if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;        
-    //batVoltage = batvolt;
+    if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current; 
+    
+    if (batVoltage > 5)  batRefFactor = batVoltage/batRef; else batRefFactor = 1;  
+    //batVoltage = batVolt
     //chgVoltage = chgvolt;
     //chgCurrent = current;        
   }    

@@ -72,9 +72,9 @@ double motorAccel       = 0.005;  // motor wheel acceleration (warning: do not s
 int motorSpeedMax       = 255;   // motor wheel max PWM  (8-bit PWM=255, 10-bit PWM=1023)
 int motorCurrentMax     = 930;    // motor wheel max current (mA)
 int motorSenseRightZero = 0;     // motor right sense zero point (mA=(ADC-zero)/scale)
-double motorSenseRightScale = 9.300595; // motor right sense scale (mA=(ADC-zero)/scale)
+double motorSenseRightScale = 15.015; // motor right sense scale (mA=(ADC-zero)/scale)
 int motorSenseLeftZero  = 0;     // motor left sense zero point (mA=(ADC-zero)/scale)
-double motorSenseLeftScale = 9.300595; // motor left sense scale  (mA=(ADC-zero)/scale)
+double motorSenseLeftScale = 15.58; // motor left sense scale  (mA=(ADC-zero)/scale)
 int motorRollTimeMax    = 4000;  // max. roll time (ms)
 int motorReverseTime    = 1500;  // max. reverse time (ms)
 long motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
@@ -113,7 +113,8 @@ char batMonitor = 1;              // monitor battery and charge voltage?
 double batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
 double batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
 double batFactor       = 6.58;     // battery conversion factor
-int batSenseZero       =0;        // battery voltage sense zero point
+int batSenseZero       =77;        // battery volt sense zero point
+double batRef          =29.4;      // battery reference Voltage (fully charged)
 int  chgSenseZero      = 0;       // charge current sense zero point
 double chgFactor       = 2.7;     // charge current conversion factor
 // ------  charging station ---------------------------
@@ -288,16 +289,20 @@ int readSensor(char type){
         imuComX=comxyz[0]; imuComY=comxyz[1]; imuComZ=comxyz[2]; } break;    */
     case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
     // reverse direction    
-    //case SEN_MOTOR_RIGHT: return( (int)(((double)analogRead(pinMotorRightSense)-motorSenseRightZero) * motorSenseRightScale) ); break;
-    //case SEN_MOTOR_LEFT: return( (int)(((double)analogRead(pinMotorLeftSense)-motorSenseLeftZero) * motorSenseLeftScale) ); break;  
+    case SEN_MOTOR_RIGHT: return( (int)(((double)ADCMan.read(pinMotorRightSense)-motorSenseRightZero) * motorSenseRightScale) ); break;
+    case SEN_MOTOR_LEFT:  return( (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero) * motorSenseLeftScale) ); break;  
+  //  case SEN_MOTOR_RIGHT: return( (int)(((double)ADCMan.read(pinMotorRightSense)-motorSenseRightZero)) ); break;
+  //  case SEN_MOTOR_LEFT:  return( (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)) ); break;  
     // normal direction output in A for Mc39
 //    case SEN_MOTOR_RIGHT: return((analogRead(pinMotorRightSense)-motorSenseRightZero)*5/525); break;
  //   case SEN_MOTOR_RIGHT: return((int)(((double)analogRead(pinMotorRightSense)-motorSenseRightZero) * 0.0093)); break;
 //    case SEN_MOTOR_LEFT: return((analogRead(pinMotorLeftSense)-motorSenseLeftZero)*5/525); break;
 //    case SEN_MOTOR_LEFT: return((int)(((double)analogRead(pinMotorLeftSense)-motorSenseLeftZero) * 0.0093)); break;
     // normal direction
-    case SEN_MOTOR_LEFT: return(ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero); break;
-    case SEN_MOTOR_RIGHT: return(ADCMan.read(pinMotorRightSense)-motorSenseRightZero); break;        
+ //   case SEN_MOTOR_LEFT: return((ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)); break;
+  //  case SEN_MOTOR_RIGHT: return((ADCMan.read(pinMotorRightSense)-motorSenseRightZero) / motorMowSenseScale); break; 
+ //   case SEN_MOTOR_RIGHT: return((ADCMan.read(pinMotorRightSense)-motorSenseRightZero) / motorMowSenseScale); break; 
+  //  case SEN_MOTOR_LEFT: return (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)); break;    
     //case SEN_MOTOR_RIGHT: return(analogRead(pinMotorRightSense)-motorSenseRightZero); break;
     //case SEN_MOTOR_LEFT: return(analogRead(pinMotorLeftSense)-motorSenseLeftZero); break;
     case SEN_RTC: readDS1307(datetime); break;

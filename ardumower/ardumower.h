@@ -142,6 +142,7 @@ extern double batGoHomeIfBelow;
 extern double batSwitchOffIfBelow;
 extern double batFactor;
 extern int batSenseZero;
+extern double batRef;
 extern int  chgSenseZero;
 extern double chgFactor;
 extern int stationRevTime;
