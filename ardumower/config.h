@@ -254,10 +254,11 @@ void config(){
   
   // ADC
   ADCMan.init();
-  ADCMan.setCapture(pinMotorMowSense, 1);
-  ADCMan.setCapture(pinMotorLeftSense, 1);
-  ADCMan.setCapture(pinMotorRightSense, 1);
-  Perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);        
+  ADCMan.setCapture(pinMotorMowSense, 1, 1);
+  ADCMan.setCapture(pinMotorLeftSense, 1, 1);
+  ADCMan.setCapture(pinMotorRightSense, 1, 1);
+  ADCMan.setCapture(pinBatteryVoltage, 1, 0);
+  Perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
 }
 
 
