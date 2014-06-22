@@ -1,9 +1,11 @@
 /*
 Arduino perimeter receiver for Arduino sound sensors/LM386
 
--old version: FFT bandpass - evaluates signal strength of certain frequency (7812 Hz) on two ADC pins (for two coils)
--new version: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
- (for details see  http://grauonline.de/alexwww/ardumower/filter/filter.html and bottom of this page
+-old version: digital filter: FFT bandpass - evaluates signal strength of certain frequency (7812 Hz) on two ADC pins (for two coils)
+-new version: digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
+ (for details see
+    http://en.wikipedia.org/wiki/Matched_filter
+    http://grauonline.de/alexwww/ardumower/filter/filter.html and bottom of this page
     http://www.ardumower.de/index.php/de/anleitungen/2013-11-23-19-50-19/induktion    )
 */
 

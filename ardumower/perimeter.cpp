@@ -262,7 +262,9 @@ void PerimeterClass::printResults(){
 }      
 
 
-/*
+/* 
+// digital filter (cross correlation) for periodic filter coeffs
+// http://en.wikipedia.org/wiki/Cross-correlation
 // H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
 // ip[] holds input data (length > nPts + M )
 // op[] is output buffer
@@ -286,7 +288,8 @@ void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, i
 }*/
 
 
-
+// digital filter (cross correlation)
+// http://en.wikipedia.org/wiki/Cross-correlation
 // H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
 // ip[] holds input data (length > nPts + M )
 // op[] is output buffer
