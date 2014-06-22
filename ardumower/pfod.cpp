@@ -173,15 +173,15 @@ void sendErrorMenu(boolean update){
 
 void sendMotorMenu(boolean update){  
   if (update) Serial2.print("{:"); else Serial2.print(F("{.Motor`1000"));     
-  Serial2.println(F("|a00~Overcurrent Counter l, r "));
+  Serial2.println(F("|a00~Overload Counter l, r "));
   Serial2.print(motorLeftSenseCounter);  
   Serial2.print(", ");
   Serial2.print(motorRightSenseCounter);  
-  Serial2.println(F("|a01~Current l, r "));    
+  Serial2.println(F("|a01~Power in Watt l, r "));    
   Serial2.print(motorLeftSense);
   Serial2.print(", ");  
   Serial2.print(motorRightSense);    
-  sendSlider("a02", F("Current max"), motorCurrentMax, "", 1, 2000);       
+  sendSlider("a02", F("Power max"), motorPowerMax, "", 0.1, 40);       
   sendSlider("a03", F("Sense zero l"), motorSenseLeftZero, "", 1, 600, 0);       
   sendSlider("a04", F("Sense zero r"), motorSenseRightZero, "", 1, 600, 0);           
   Serial2.println(F("|a05~Speed l, r"));    
@@ -205,7 +205,7 @@ void sendMotorMenu(boolean update){
 }
 
 void processMotorMenu(String pfodCmd){      
-  if (pfodCmd.startsWith("a02")) processSlider(pfodCmd, motorCurrentMax, 1);
+  if (pfodCmd.startsWith("a02")) processSlider(pfodCmd, motorPowerMax, 0.1);
     else if (pfodCmd.startsWith("a03")) processSlider(pfodCmd, motorSenseLeftZero, 1);
     else if (pfodCmd.startsWith("a04")) processSlider(pfodCmd, motorSenseRightZero, 1);  
     else if (pfodCmd.startsWith("a06")) processSlider(pfodCmd, motorSpeedMax, 1);
@@ -228,11 +228,11 @@ void processMotorMenu(String pfodCmd){
   
 void sendMowMenu(boolean update){
   if (update) Serial2.print("{:"); else Serial2.print(F("{.Mow`1000"));               
-  Serial2.print(F("|o00~Overcurrent Counter "));
+  Serial2.print(F("|o00~Overload Counter "));
   Serial2.print(motorMowSenseCounter);    
-  Serial2.print(F("|o01~Current "));  
+  Serial2.print(F("|o01~Power "));  
   Serial2.print(motorMowSense);  
-  sendSlider("o02", F("Current max"), motorMowCurrentMax, "", 1, 2000);         
+  sendSlider("o02", F("Power max"), motorMowPowerMax, "", 0.1, 100);         
   sendSlider("o03", F("Sense zero"), motorMowSenseZero, "", 1, 600, 0);        
   Serial2.print(F("|o04~Speed "));
   Serial2.print(motorMowPWM);      
@@ -252,7 +252,7 @@ void sendMowMenu(boolean update){
 }
 
 void processMowMenu(String pfodCmd){      
-  if (pfodCmd.startsWith("o02")) processSlider(pfodCmd, motorMowCurrentMax, 1);
+  if (pfodCmd.startsWith("o02")) processSlider(pfodCmd, motorMowPowerMax, 0.1);
     else if (pfodCmd.startsWith("o03")) processSlider(pfodCmd, motorMowSenseZero, 1);
     else if (pfodCmd.startsWith("o05")) processSlider(pfodCmd, motorMowSpeedMax, 1);
     else if (pfodCmd == "o06") motorMowModulate = !motorMowModulate;    
@@ -399,8 +399,8 @@ void sendBatteryMenu(boolean update){
   Serial2.print(" V");
   Serial2.print(F("|j01~Monitor "));  
   sendYesNo(batMonitor);
-  sendSlider("j02", F("Go home if below"), batGoHomeIfBelow, "", 0.1, 30);  
-  sendSlider("j03", F("Switch off if below"), batSwitchOffIfBelow, "", 0.1, 30);  
+  sendSlider("j02", F("Go home if below"), batGoHomeIfBelow, "", 0.1, (batFull*0.72), batFull);  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
+  sendSlider("j03", F("Switch off if below"), batSwitchOffIfBelow, "", 0.1, (batFull*0.72), batFull);  
   Serial2.print(F("|j04~Charge "));
   Serial2.print(chgVoltage);
   Serial2.print("V ");

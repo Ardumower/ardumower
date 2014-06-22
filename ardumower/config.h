@@ -70,7 +70,7 @@ char configName[] = "kit10";
 // ------- wheel motors -----------------------------
 double motorAccel       = 0.005;  // motor wheel acceleration (warning: do not set too high)
 int motorSpeedMax       = 255;   // motor wheel max PWM  (8-bit PWM=255, 10-bit PWM=1023)
-int motorCurrentMax     = 930;    // motor wheel max current (mA)
+double motorPowerMax     = 12.5;    // motor wheel max power (Watt)
 int motorSenseRightZero = 0;     // motor right sense zero point (mA=(ADC-zero)/scale)
 double motorSenseRightScale = 15.015; // motor right sense scale (mA=(ADC-zero)/scale)
 int motorSenseLeftZero  = 0;     // motor left sense zero point (mA=(ADC-zero)/scale)
@@ -83,7 +83,7 @@ double motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
 // ------ mower motor -------------------------------
 double motorMowAccel       = 0.005;  // motor mower acceleration (warning: do not set too high)
 int motorMowSpeedMax   = 255;    // motor mower max PWM
-int motorMowCurrentMax = 558;     // motor mower max current (mA)
+double motorMowPowerMax = 40.0;     // motor mower max power (Watt)
 char motorMowModulate  = 0;      // motor mower cutter modulation?
 int motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
 int motorMowSenseZero  = 0;    // motor mower sense zero point (mA=(ADC-zero)/scale)
@@ -114,7 +114,7 @@ double batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
 double batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
 double batFactor       = 6.58;     // battery conversion factor
 int batSenseZero       =77;        // battery volt sense zero point
-double batRef          =29.4;      // battery reference Voltage (fully charged)
+double batFull          =29.4;      // battery reference Voltage (fully charged)
 int  chgSenseZero      = 0;       // charge current sense zero point
 double chgFactor       = 2.7;     // charge current conversion factor
 // ------  charging station ---------------------------
@@ -305,7 +305,7 @@ int readSensor(char type){
   //  case SEN_MOTOR_LEFT: return (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)); break;    
     //case SEN_MOTOR_RIGHT: return(analogRead(pinMotorRightSense)-motorSenseRightZero); break;
     //case SEN_MOTOR_LEFT: return(analogRead(pinMotorLeftSense)-motorSenseLeftZero); break;
-    case SEN_RTC: readDS1307(datetime); break;
+//    case SEN_RTC: readDS1307(datetime); break;
     case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
     case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
   }
