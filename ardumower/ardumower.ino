@@ -876,6 +876,7 @@ void checkButton(){
   if ( ((!buttonPressed) && (buttonCounter > 0)) || ((buttonPressed) && (millis() >= nextTimeButton)) ) {                
     nextTimeButton = millis() + 1000;
     if (buttonPressed){
+      Serial.println(F("buttonPressed"));
       // ON/OFF button pressed                                                
       beep(1);
       buttonCounter++;
@@ -1162,9 +1163,11 @@ void setNextState(byte stateNew, byte dir){
 void checkBattery(){
   if (batMonitor){
     if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF)) {
+      Serial.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
-    } else if (batVoltage < batSwitchOffIfBelow) {
+    } else if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF))  {
+      Serial.println(F("triggered batSwitchOffIfBelow"));
       beep(2, true);      
       setNextState(STATE_OFF, 0);
     }
