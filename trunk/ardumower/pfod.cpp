@@ -180,10 +180,16 @@ void sendMotorMenu(boolean update){
   Serial2.println(F("|a01~Power in Watt l, r "));    
   Serial2.print(motorLeftSense);
   Serial2.print(", ");  
-  Serial2.print(motorRightSense);    
+  Serial2.print(motorRightSense);
+  Serial2.println(F("|a05~motor current in mA l, r "));    
+  Serial2.print(motorLeftSenseCurrent);
+  Serial2.print(", ");  
+  Serial2.print(motorRightSenseCurrent);      
   sendSlider("a02", F("Power max"), motorPowerMax, "", 0.1, 40);       
   sendSlider("a03", F("Sense zero l"), motorSenseLeftZero, "", 1, 600, 0);       
-  sendSlider("a04", F("Sense zero r"), motorSenseRightZero, "", 1, 600, 0);           
+  sendSlider("a04", F("Sense zero r"), motorSenseRightZero, "", 1, 600, 0); 
+  sendSlider("a14", F("motorSenseLeftScale"), motorSenseLeftScale, "", 0.01, 0, 30);       
+  sendSlider("a15", F("motorSenseRightScale"), motorSenseRightScale, "", 0.01, 0, 30);     
   Serial2.println(F("|a05~Speed l, r"));    
   Serial2.print(motorLeftPWM);
   Serial2.print(", ");  
@@ -207,7 +213,9 @@ void sendMotorMenu(boolean update){
 void processMotorMenu(String pfodCmd){      
   if (pfodCmd.startsWith("a02")) processSlider(pfodCmd, motorPowerMax, 0.1);
     else if (pfodCmd.startsWith("a03")) processSlider(pfodCmd, motorSenseLeftZero, 1);
-    else if (pfodCmd.startsWith("a04")) processSlider(pfodCmd, motorSenseRightZero, 1);  
+    else if (pfodCmd.startsWith("a04")) processSlider(pfodCmd, motorSenseRightZero, 1);
+    else if (pfodCmd.startsWith("a14")) processSlider(pfodCmd, motorSenseLeftScale, 0.01);
+    else if (pfodCmd.startsWith("a15")) processSlider(pfodCmd, motorSenseRightScale, 0.01);  
     else if (pfodCmd.startsWith("a06")) processSlider(pfodCmd, motorSpeedMax, 1);
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, motorRollTimeMax, 1);    
     else if (pfodCmd.startsWith("a08")) processSlider(pfodCmd, motorReverseTime, 1);
@@ -230,10 +238,13 @@ void sendMowMenu(boolean update){
   if (update) Serial2.print("{:"); else Serial2.print(F("{.Mow`1000"));               
   Serial2.print(F("|o00~Overload Counter "));
   Serial2.print(motorMowSenseCounter);    
-  Serial2.print(F("|o01~Power "));  
+  Serial2.print(F("|o01~Power in Watt"));  
   Serial2.print(motorMowSense);  
+  Serial2.print(F("|o11~current in mA"));  
+  Serial2.print(motorMowSenseCurrent);  
   sendSlider("o02", F("Power max"), motorMowPowerMax, "", 0.1, 100);         
-  sendSlider("o03", F("Sense zero"), motorMowSenseZero, "", 1, 600, 0);        
+  sendSlider("o03", F("Sense zero"), motorMowSenseZero, "", 1, 600, 0);
+  sendSlider("o12", F("motorMowSenseScale"), motorMowSenseScale, "", 0.01, 0, 30);          
   Serial2.print(F("|o04~Speed "));
   Serial2.print(motorMowPWM);      
   sendSlider("o05", F("Speed max"), motorMowSpeedMax, "", 1, 255);       
@@ -254,6 +265,7 @@ void sendMowMenu(boolean update){
 void processMowMenu(String pfodCmd){      
   if (pfodCmd.startsWith("o02")) processSlider(pfodCmd, motorMowPowerMax, 0.1);
     else if (pfodCmd.startsWith("o03")) processSlider(pfodCmd, motorMowSenseZero, 1);
+    else if (pfodCmd.startsWith("o12")) processSlider(pfodCmd, motorMowSenseScale, 0.01);
     else if (pfodCmd.startsWith("o05")) processSlider(pfodCmd, motorMowSpeedMax, 1);
     else if (pfodCmd == "o06") motorMowModulate = !motorMowModulate;    
     else if (pfodCmd.startsWith("o08")) processSlider(pfodCmd, motorMowRPM, 1);    

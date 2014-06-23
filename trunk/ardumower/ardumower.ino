@@ -144,7 +144,9 @@ int motorLeftSpeed = 0; // set speed
 int motorRightSpeed = 0;
 double motorLeftPWM = 0; // current speed
 double motorRightPWM = 0;  
-double motorLeftSense = 0;      // motor current (range 0..MAX_MOTOR_CURRENT)
+double motorLeftSenseCurrent = 0;     
+double motorRightSenseCurrent = 0;
+double motorLeftSense = 0;      // motor power (range 0..MAX_MOTOR_POWER)
 double motorRightSense = 0;
 int motorLeftSenseCounter = 0;  // motor current counter
 int motorRightSenseCounter = 0;
@@ -152,7 +154,8 @@ int motorRightSenseCounter = 0;
 // mower motor sppeed; range 0..motorMowSpeedMax
 int motorMowSpeed = motorSpeedMax;
 double motorMowPWM = 0;         // current speed
-double motorMowSense = 0;       // motor current (range 0..MAX_MOW_CURRENT)
+double motorMowSenseCurrent = 0;
+double motorMowSense = 0;       // motor power (range 0..MAX_MOW_POWER)
 int motorMowSenseCounter = 0;
 int motorMowSenseErrorCounter = 0;
 int motorMowRpm = 0;            // motor rpm (range 0..MOW_RPM)
@@ -321,6 +324,8 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorPowerMax);
   eereadwrite(readflag, addr, motorSenseRightZero);
   eereadwrite(readflag, addr, motorSenseLeftZero);
+  eereadwrite(readflag, addr, motorSenseRightScale);
+  eereadwrite(readflag, addr, motorSenseLeftScale);
   eereadwrite(readflag, addr, motorRollTimeMax);
   eereadwrite(readflag, addr, motorReverseTime);
   eereadwrite(readflag, addr, motorForwTimeMax);
@@ -328,6 +333,7 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorMowPowerMax);
   eereadwrite(readflag, addr, motorMowRPM);
   eereadwrite(readflag, addr, motorMowSenseZero);
+  eereadwrite(readflag, addr, motorMowSenseScale);
   eereadwrite(readflag, addr, motorMowPid);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio1);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio2);  
@@ -922,19 +928,19 @@ void readSensors(){
   if (millis() >= nextTimeMotorSense){    
     nextTimeMotorSense = millis() +  50;
     double accel = 0.05;
-    motorRightSense = motorRightSense * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_RIGHT))) * accel;   
-    motorLeftSense  = motorLeftSense  * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_LEFT))) * accel;    
-    motorMowSense   = motorMowSense   * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_MOW))) * accel;
+    motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_RIGHT))) * accel;   
+    motorLeftSenseCurrent  = motorLeftSenseCurrent  * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_LEFT))) * accel;    
+    motorMowSenseCurrent   = motorMowSenseCurrent   * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_MOW))) * accel;
    
     if (batVoltage > 8){
-    motorRightSense = motorRightSense * batVoltage /100; 
-    motorLeftSense  = motorLeftSense  * batVoltage /100;
-    motorMowSense   = motorMowSense   * batVoltage /100;
+    motorRightSense = motorRightSenseCurrent * batVoltage /1000; 
+    motorLeftSense  = motorLeftSenseCurrent  * batVoltage /1000;
+    motorMowSense   = motorMowSenseCurrent   * batVoltage /1000;
     }
     else{
-    motorRightSense = motorRightSense * batFull /100; 
-    motorLeftSense  = motorLeftSense  * batFull /100;
-    motorMowSense   = motorMowSense   * batFull /100;
+    motorRightSense = motorRightSenseCurrent * batFull /1000; 
+    motorLeftSense  = motorLeftSenseCurrent  * batFull /1000;
+    motorMowSense   = motorMowSenseCurrent   * batFull /1000;
     }
   
     if ((millis() - lastMotorMowRpmTime) >= 500){                  
