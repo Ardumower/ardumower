@@ -119,6 +119,8 @@ extern int motorSpeedMax;
 extern double motorPowerMax;
 extern int motorSenseRightZero;
 extern int motorSenseLeftZero;
+extern double motorSenseRightScale;
+extern double motorSenseLeftScale;
 extern int motorRollTimeMax;
 extern int motorReverseTime;
 extern long motorForwTimeMax;
@@ -127,6 +129,7 @@ extern double motorMowPowerMax;
 extern char motorMowModulate;
 extern int motorMowRPM;
 extern int motorMowSenseZero;
+extern double motorMowSenseScale;
 extern char bumperUse;
 extern char sonarUse;
 extern int  sonarTriggerBelow;
@@ -221,10 +224,13 @@ extern int perimeterRight;
 extern boolean lawnSensor;
 extern double lawnSensorFront;
 extern double lawnSensorBack;
-extern double motorLeftSense ;      // motor current (range 0..MAX_MOTOR_CURRENT)
+extern double motorLeftSenseCurrent ;  
+extern double motorRightSenseCurrent;
+extern double motorLeftSense ;      // motor power (range 0..MAX_MOTOR_POWER)
 extern double motorRightSense ;
 extern int motorMowRpm ;            // motor rpm (range 0..MOW_RPM)
-extern double motorMowSense ;       // motor current (range 0..MAX_MOW_CURRENT)
+extern double motorMowSenseCurrent;
+extern double motorMowSense ;       // motor power (range 0..MAX_MOW_POWER)
 extern byte errorCounterIMUComm;
 extern byte errorCounterIMUTilt;
 extern byte errorCounterRTCComm;
