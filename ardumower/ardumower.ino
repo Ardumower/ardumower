@@ -199,6 +199,7 @@ unsigned int sonarDistLeft = 0;
 unsigned int sonarDistCounter = 0;
 unsigned long sonarObstacleTimeout = 0;
 // --------- charging -------------------------------
+int batADC = 0;
 double batVoltage = 0;  // battery voltage (Volt)
 double batRefFactor = 0;
 double batCapacity = 0; // battery capacity (mAh)
@@ -308,7 +309,7 @@ void setMotorMowRPMState(boolean motorMowRpmState){
 
 // --- user settings ---------------------------------------------------------------------
 
-#define MAGIC 17
+#define MAGIC 18
 
 void deleteUserSettings(){
   int addr = 0;
@@ -934,9 +935,9 @@ void readSensors(){
     motorMowSenseCurrent   = motorMowSenseCurrent   * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_MOW))) * accel;
    
     if (batVoltage > 8){
-    motorRightSense = motorRightSenseCurrent * batVoltage /1000; 
-    motorLeftSense  = motorLeftSenseCurrent  * batVoltage /1000;
-    motorMowSense   = motorMowSenseCurrent   * batVoltage /1000;
+      motorRightSense = motorRightSenseCurrent * batVoltage /1000; 
+      motorLeftSense  = motorLeftSenseCurrent  * batVoltage /1000;
+      motorMowSense   = motorMowSenseCurrent   * batVoltage /1000;
     }
     else{
     motorRightSense = motorRightSenseCurrent * batFull /1000; 
@@ -1039,7 +1040,8 @@ void readSensors(){
       batCapacity += (chgCurrent / 36.0);
     }
     // convert to double  
-    double batvolt = ((double)((int)(readSensor(SEN_BAT_VOLTAGE) / 10))) / 10.0;
+    batADC = readSensor(SEN_BAT_VOLTAGE);
+    double batvolt = (((double)batADC) - batSenseZero) * batFactor;
     double chgvolt = ((double)((int)(readSensor(SEN_CHG_VOLTAGE) / 10))) / 10.0;  
     double current = ((double)((int)(readSensor(SEN_CHG_CURRENT) / 10))) / 10.0;  
     // low-pass filter

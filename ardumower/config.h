@@ -112,7 +112,7 @@ char remoteUse         = 1;       // use model remote control (R/C)?
 char batMonitor = 1;              // monitor battery and charge voltage?
 double batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
 double batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
-double batFactor       = 6.58;     // battery conversion factor
+double batFactor       = 0.0558;     // battery conversion factor
 int batSenseZero       =77;        // battery volt sense zero point
 double batFull          =29.4;      // battery reference Voltage (fully charged)
 int  chgSenseZero      = 0;       // charge current sense zero point
@@ -274,7 +274,7 @@ int readSensor(char type){
     case SEN_PERIM_LEFT: return Perimeter.getMagnitude(0); break;
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;  
     //case SEN_BAT_VOLTAGE: return (int)(((double)analogRead(pinBatteryVoltage)) * batFactor); break;
-    case SEN_BAT_VOLTAGE: return (int)(((double)ADCMan.read(pinBatteryVoltage)-batSenseZero) * batFactor); break;
+    case SEN_BAT_VOLTAGE: return ADCMan.read(pinBatteryVoltage); break;
     //case SEN_CHG_VOLTAGE: return((int)(((double)analogRead(pinChargeVoltage)) * batFactor)); break;
     //case SEN_CHG_CURRENT: return((int)(((double)analogRead(pinChargeCurrent)-chgSenseZero) * chgFactor)); break;
     case SEN_BUTTON: return(digitalRead(pinButton)); break;    

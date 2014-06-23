@@ -411,6 +411,7 @@ void sendBatteryMenu(boolean update){
   Serial2.print(" V");
   Serial2.print(F("|j01~Monitor "));  
   sendYesNo(batMonitor);
+  sendSlider("j05", F("Calibrate battery V "), batVoltage, "", 0.1, 0, 30);         
   sendSlider("j02", F("Go home if below"), batGoHomeIfBelow, "", 0.1, (batFull*0.72), batFull);  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
   sendSlider("j03", F("Switch off if below"), batSwitchOffIfBelow, "", 0.1, (batFull*0.72), batFull);  
   Serial2.print(F("|j04~Charge "));
@@ -418,9 +419,7 @@ void sendBatteryMenu(boolean update){
   Serial2.print("V ");
   Serial2.print(chgCurrent);
   Serial2.print("A");
-  sendSlider("j05", F("Battery sense zero"), batSenseZero, "", 1, 0, 200);       
   sendSlider("j06", F("Charge sense zero"), chgSenseZero, "", 1, 600, 400);       
-  sendSlider("j07", F("Battery factor"), batFactor, "", 0.01, 10);     
   sendSlider("j08", F("Charge factor"), chgFactor, "", 0.01, 10);     
   Serial2.println("}");                
 }
@@ -429,9 +428,18 @@ void processBatteryMenu(String pfodCmd){
   if (pfodCmd == "j01") batMonitor = !batMonitor;
     else if (pfodCmd.startsWith("j02")) processSlider(pfodCmd, batGoHomeIfBelow, 0.1);
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, batSwitchOffIfBelow, 0.1); 
-    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, batSenseZero, 1);
+    else if (pfodCmd.startsWith("j05")) {
+      if (batVoltage < 5){        
+        processSlider(pfodCmd, batVoltage, 0.1);
+        batSenseZero = batADC;        
+      } else {        
+        processSlider(pfodCmd, batVoltage, 0.1);
+        batFactor = batVoltage / max(0, (((double)batADC)-batSenseZero));        
+      }      
+    }
+    //else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, batSenseZero, 1);
     else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, chgSenseZero, 1);
-    else if (pfodCmd.startsWith("j07")) processSlider(pfodCmd, batFactor, 0.01);    
+    //else if (pfodCmd.startsWith("j07")) processSlider(pfodCmd, batFactor, 0.01);    
     else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, chgFactor, 0.01);    
   sendBatteryMenu(true);
 }

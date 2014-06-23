@@ -145,6 +145,7 @@ extern double batGoHomeIfBelow;
 extern double batSwitchOffIfBelow;
 extern double batFactor;
 extern int batSenseZero;
+extern int batADC;
 extern double batFull;
 extern int  chgSenseZero;
 extern double chgFactor;
