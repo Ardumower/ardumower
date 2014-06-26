@@ -185,11 +185,9 @@ void sendMotorMenu(boolean update){
   Serial2.print(motorLeftSenseCurrent);
   Serial2.print(", ");  
   Serial2.print(motorRightSenseCurrent);      
-  sendSlider("a02", F("Power max"), motorPowerMax, "", 0.1, 40);       
-  sendSlider("a03", F("Sense zero l"), motorSenseLeftZero, "", 1, 600, 0);       
-  sendSlider("a04", F("Sense zero r"), motorSenseRightZero, "", 1, 600, 0); 
-  sendSlider("a14", F("motorSenseLeftScale"), motorSenseLeftScale, "", 0.01, 0, 30);       
-  sendSlider("a15", F("motorSenseRightScale"), motorSenseRightScale, "", 0.01, 0, 30);     
+  sendSlider("a02", F("Power max"), motorPowerMax, "", 0.1, 40);  
+  sendSlider("a03", F("calibrate left motor "), motorLeftSenseCurrent, "", 1, 1000, 0);       
+  sendSlider("a04", F("calibrate right motor"), motorRightSenseCurrent, "", 1, 1000, 0);      
   Serial2.println(F("|a05~Speed l, r"));    
   Serial2.print(motorLeftPWM);
   Serial2.print(", ");  
@@ -207,15 +205,25 @@ void sendMotorMenu(boolean update){
     case 1: Serial2.print(F("Left motor forw")); break;
     case 2: Serial2.print(F("Right motor forw")); break;
   }
+  Serial2.println(F("|a14~for config file:"));    
+  Serial2.println(F("motorSenseScale l, r"));
+  Serial2.print(motorSenseLeftScale);
+  Serial2.print(", ");  
+  Serial2.print(motorSenseRightScale);   
   Serial2.println("}");            
 }
 
 void processMotorMenu(String pfodCmd){      
   if (pfodCmd.startsWith("a02")) processSlider(pfodCmd, motorPowerMax, 0.1);
-    else if (pfodCmd.startsWith("a03")) processSlider(pfodCmd, motorSenseLeftZero, 1);
-    else if (pfodCmd.startsWith("a04")) processSlider(pfodCmd, motorSenseRightZero, 1);
-    else if (pfodCmd.startsWith("a14")) processSlider(pfodCmd, motorSenseLeftScale, 0.01);
-    else if (pfodCmd.startsWith("a15")) processSlider(pfodCmd, motorSenseRightScale, 0.01);  
+
+    else if (pfodCmd.startsWith("a03")){
+      processSlider(pfodCmd, motorLeftSenseCurrent, 1);
+      motorSenseLeftScale = motorLeftSenseCurrent / max(0,(double)motorLeftSenseADC);                  
+}
+    else if (pfodCmd.startsWith("a04")){
+      processSlider(pfodCmd, motorRightSenseCurrent, 1);
+      motorSenseRightScale = motorRightSenseCurrent / max(0,(double)motorRightSenseADC); 
+}      
     else if (pfodCmd.startsWith("a06")) processSlider(pfodCmd, motorSpeedMax, 1);
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, motorRollTimeMax, 1);    
     else if (pfodCmd.startsWith("a08")) processSlider(pfodCmd, motorReverseTime, 1);
@@ -238,13 +246,12 @@ void sendMowMenu(boolean update){
   if (update) Serial2.print("{:"); else Serial2.print(F("{.Mow`1000"));               
   Serial2.print(F("|o00~Overload Counter "));
   Serial2.print(motorMowSenseCounter);    
-  Serial2.print(F("|o01~Power in Watt"));  
+  Serial2.print(F("|o01~Power in Watt "));  
   Serial2.print(motorMowSense);  
-  Serial2.print(F("|o11~current in mA"));  
+  Serial2.print(F("|o11~current in mA "));  
   Serial2.print(motorMowSenseCurrent);  
   sendSlider("o02", F("Power max"), motorMowPowerMax, "", 0.1, 100);         
-  sendSlider("o03", F("Sense zero"), motorMowSenseZero, "", 1, 600, 0);
-  sendSlider("o12", F("motorMowSenseScale"), motorMowSenseScale, "", 0.01, 0, 30);          
+  sendSlider("o03", F("calibrate mow motor "), motorMowSenseCurrent, "", 1, 3000, 0);          
   Serial2.print(F("|o04~Speed "));
   Serial2.print(motorMowPWM);      
   sendSlider("o05", F("Speed max"), motorMowSpeedMax, "", 1, 255);       
@@ -258,14 +265,19 @@ void sendMowMenu(boolean update){
   switch (testmode){
     case 0: Serial2.print(F("OFF")); break;
     case 1: Serial2.print(F("Motor ON")); break;
-  }  
+  }
+  Serial2.println(F("|o04~for config file:"));    
+  Serial2.println(F("motorMowSenseScale:"));
+  Serial2.print(motorMowSenseScale);  
   Serial2.println("}");              
 }
 
 void processMowMenu(String pfodCmd){      
   if (pfodCmd.startsWith("o02")) processSlider(pfodCmd, motorMowPowerMax, 0.1);
-    else if (pfodCmd.startsWith("o03")) processSlider(pfodCmd, motorMowSenseZero, 1);
-    else if (pfodCmd.startsWith("o12")) processSlider(pfodCmd, motorMowSenseScale, 0.01);
+    else if (pfodCmd.startsWith("o03")){
+            processSlider(pfodCmd, motorMowSenseCurrent, 1);
+            motorMowSenseScale = motorMowSenseCurrent / max(0,(double)motorMowSenseADC);
+         } 
     else if (pfodCmd.startsWith("o05")) processSlider(pfodCmd, motorMowSpeedMax, 1);
     else if (pfodCmd == "o06") motorMowModulate = !motorMowModulate;    
     else if (pfodCmd.startsWith("o08")) processSlider(pfodCmd, motorMowRPM, 1);    
@@ -411,7 +423,7 @@ void sendBatteryMenu(boolean update){
   Serial2.print(" V");
   Serial2.print(F("|j01~Monitor "));  
   sendYesNo(batMonitor);
-  sendSlider("j05", F("Calibrate battery V "), batVoltage, "", 0.1, 0, 30);         
+  sendSlider("j05", F("Calibrate battery V "), batVoltage, "", 0.01, 0, 30);   
   sendSlider("j02", F("Go home if below"), batGoHomeIfBelow, "", 0.1, (batFull*0.72), batFull);  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
   sendSlider("j03", F("Switch off if below"), batSwitchOffIfBelow, "", 0.1, (batFull*0.72), batFull);  
   Serial2.print(F("|j04~Charge "));
@@ -421,7 +433,12 @@ void sendBatteryMenu(boolean update){
   Serial2.print("A");
   sendSlider("j06", F("Charge sense zero"), chgSenseZero, "", 1, 600, 400);       
   sendSlider("j08", F("Charge factor"), chgFactor, "", 0.01, 10);     
-  Serial2.println("}");                
+  Serial2.println(F("|j09~for config file: "));
+  Serial2.print("batSenseZero ");
+  Serial2.println(batSenseZero);
+  Serial2.print("batFactor ");  
+  Serial2.print(batFactor);  
+  Serial2.println("}");
 }
 
 void processBatteryMenu(String pfodCmd){      
@@ -429,11 +446,11 @@ void processBatteryMenu(String pfodCmd){
     else if (pfodCmd.startsWith("j02")) processSlider(pfodCmd, batGoHomeIfBelow, 0.1);
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, batSwitchOffIfBelow, 0.1); 
     else if (pfodCmd.startsWith("j05")) {
-      if (batVoltage < 5){        
-        processSlider(pfodCmd, batVoltage, 0.1);
+      if (batVoltage < 8){        
+     //   processSlider(pfodCmd, batVoltage, 0.1);
         batSenseZero = batADC;        
       } else {        
-        processSlider(pfodCmd, batVoltage, 0.1);
+        processSlider(pfodCmd, batVoltage, 0.01);
         batFactor = batVoltage / max(0, (((double)batADC)-batSenseZero));        
       }      
     }

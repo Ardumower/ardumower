@@ -68,32 +68,29 @@ char configName[] = "kit10";
 #define USE_PFOD 1                // use support for pfod app ?
 
 // ------- wheel motors -----------------------------
-double motorAccel       = 0.005;  // motor wheel acceleration (warning: do not set too high)
+double motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
 int motorSpeedMax       = 255;   // motor wheel max PWM  (8-bit PWM=255, 10-bit PWM=1023)
-double motorPowerMax     = 12.5;    // motor wheel max power (Watt)
-int motorSenseRightZero = 0;     // motor right sense zero point (mA=(ADC-zero)/scale)
-double motorSenseRightScale = 15.015; // motor right sense scale (mA=(ADC-zero)/scale)
-int motorSenseLeftZero  = 0;     // motor left sense zero point (mA=(ADC-zero)/scale)
-double motorSenseLeftScale = 15.58; // motor left sense scale  (mA=(ADC-zero)/scale)
+double motorPowerMax     = 18.8;    // motor wheel max power (Watt)
+double motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
+double motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
 int motorRollTimeMax    = 4000;  // max. roll time (ms)
-int motorReverseTime    = 1500;  // max. reverse time (ms)
+int motorReverseTime    = 2500;  // max. reverse time (ms)
 long motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
 double motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
 double motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
 // ------ mower motor -------------------------------
-double motorMowAccel       = 0.005;  // motor mower acceleration (warning: do not set too high)
+double motorMowAccel       = 0.001;  // motor mower acceleration (warning: do not set too high)
 int motorMowSpeedMax   = 255;    // motor mower max PWM
 double motorMowPowerMax = 40.0;     // motor mower max power (Watt)
 char motorMowModulate  = 0;      // motor mower cutter modulation?
 int motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
-int motorMowSenseZero  = 0;    // motor mower sense zero point (mA=(ADC-zero)/scale)
-double motorMowSenseScale = 9.300595; // motor mower sense scale (mA=(ADC-zero)/scale)
+double motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
 pid_params_t motorMowPid  = {0.005, 0.01, 0.01};    // motor mower RPM PID controller
 // ------ bumper -----------------------------------
 char bumperUse         = 0;      // has bumpers? 
 // ------ sonar ------------------------------------
 char sonarUse          = 1;      // use ultra sonic sensor?
-int  sonarTriggerBelow = 1600;    // ultrasonic sensor trigger distance
+int  sonarTriggerBelow = 600;    // ultrasonic sensor trigger distance
 // ------ perimeter ---------------------------------
 char perimeterUse       = 1;      // use perimeter?
 int  perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
@@ -112,7 +109,7 @@ char remoteUse         = 1;       // use model remote control (R/C)?
 char batMonitor = 1;              // monitor battery and charge voltage?
 double batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
 double batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
-double batFactor       = 0.0558;     // battery conversion factor
+double batFactor       = 0.0658;     // battery conversion factor
 int batSenseZero       =77;        // battery volt sense zero point
 double batFull          =29.4;      // battery reference Voltage (fully charged)
 int  chgSenseZero      = 0;       // charge current sense zero point
@@ -269,45 +266,44 @@ int readSensor(char type){
   short comxyz[3]; // raw com
   
   switch (type) {
-//    case SEN_MOTOR_MOW: return( (int)(((double)analogRead(pinMotorMowSense)-motorMowSenseZero) * motorMowSenseScale) ); break;
-    case SEN_MOTOR_MOW: return(ADCMan.read(pinMotorMowSense)-motorMowSenseZero); break;    
+// motors------------------------------------------------------------------------------------------------
+    case SEN_MOTOR_MOW: return ADCMan.read(pinMotorMowSense); break;
+    case SEN_MOTOR_RIGHT: return ADCMan.read(pinMotorRightSense); break;
+    case SEN_MOTOR_LEFT:  return ADCMan.read(pinMotorLeftSense); break;
+    //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
+
+// perimeter----------------------------------------------------------------------------------------------
     case SEN_PERIM_LEFT: return Perimeter.getMagnitude(0); break;
-    //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;  
-    //case SEN_BAT_VOLTAGE: return (int)(((double)analogRead(pinBatteryVoltage)) * batFactor); break;
+    //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;
+    
+// battery------------------------------------------------------------------------------------------------
     case SEN_BAT_VOLTAGE: return ADCMan.read(pinBatteryVoltage); break;
     //case SEN_CHG_VOLTAGE: return((int)(((double)analogRead(pinChargeVoltage)) * batFactor)); break;
     //case SEN_CHG_CURRENT: return((int)(((double)analogRead(pinChargeCurrent)-chgSenseZero) * chgFactor)); break;
-    case SEN_BUTTON: return(digitalRead(pinButton)); break;    
-//    case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
+    
+// buttons------------------------------------------------------------------------------------------------
+    case SEN_BUTTON: return(digitalRead(pinButton)); break; 
+    
+//bumper----------------------------------------------------------------------------------------------------
+    case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
+    case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
+    
+// sonar---------------------------------------------------------------------------------------------------
+    //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
     case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-//    case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
-//    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
-    case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
-    case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
+    //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
+    //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
+    //case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
+    //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
+    
+// imu-------------------------------------------------------------------------------------------------------
     /*case SEN_IMU: if (readIMU(ypr, accMin, accMax, comxyz)) 
       { imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; 
         imuComX=comxyz[0]; imuComY=comxyz[1]; imuComZ=comxyz[2]; } break;    */
-    case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
-    // reverse direction    
-    case SEN_MOTOR_RIGHT: return( (int)(((double)ADCMan.read(pinMotorRightSense)-motorSenseRightZero) * motorSenseRightScale) ); break;
-    case SEN_MOTOR_LEFT:  return( (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero) * motorSenseLeftScale) ); break;  
-  //  case SEN_MOTOR_RIGHT: return( (int)(((double)ADCMan.read(pinMotorRightSense)-motorSenseRightZero)) ); break;
-  //  case SEN_MOTOR_LEFT:  return( (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)) ); break;  
-    // normal direction output in A for Mc39
-//    case SEN_MOTOR_RIGHT: return((analogRead(pinMotorRightSense)-motorSenseRightZero)*5/525); break;
- //   case SEN_MOTOR_RIGHT: return((int)(((double)analogRead(pinMotorRightSense)-motorSenseRightZero) * 0.0093)); break;
-//    case SEN_MOTOR_LEFT: return((analogRead(pinMotorLeftSense)-motorSenseLeftZero)*5/525); break;
-//    case SEN_MOTOR_LEFT: return((int)(((double)analogRead(pinMotorLeftSense)-motorSenseLeftZero) * 0.0093)); break;
-    // normal direction
- //   case SEN_MOTOR_LEFT: return((ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)); break;
-  //  case SEN_MOTOR_RIGHT: return((ADCMan.read(pinMotorRightSense)-motorSenseRightZero) / motorMowSenseScale); break; 
- //   case SEN_MOTOR_RIGHT: return((ADCMan.read(pinMotorRightSense)-motorSenseRightZero) / motorMowSenseScale); break; 
-  //  case SEN_MOTOR_LEFT: return (int)(((double)ADCMan.read(pinMotorLeftSense)-motorSenseLeftZero)); break;    
-    //case SEN_MOTOR_RIGHT: return(analogRead(pinMotorRightSense)-motorSenseRightZero); break;
-    //case SEN_MOTOR_LEFT: return(analogRead(pinMotorLeftSense)-motorSenseLeftZero); break;
-//    case SEN_RTC: readDS1307(datetime); break;
-    case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
-    case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
+    
+// rtc--------------------------------------------------------------------------------------------------------
+    //case SEN_RTC: readDS1307(datetime); break;
+    
   }
   return 0;
 }

@@ -143,7 +143,9 @@ boolean motorMowEnable = false;
 int motorLeftSpeed = 0; // set speed
 int motorRightSpeed = 0;
 double motorLeftPWM = 0; // current speed
-double motorRightPWM = 0;  
+double motorRightPWM = 0;
+int motorRightSenseADC = 0;
+int motorLeftSenseADC = 0;
 double motorLeftSenseCurrent = 0;     
 double motorRightSenseCurrent = 0;
 double motorLeftSense = 0;      // motor power (range 0..MAX_MOTOR_POWER)
@@ -154,6 +156,7 @@ int motorRightSenseCounter = 0;
 // mower motor sppeed; range 0..motorMowSpeedMax
 int motorMowSpeed = motorSpeedMax;
 double motorMowPWM = 0;         // current speed
+int motorMowSenseADC = 0; 
 double motorMowSenseCurrent = 0;
 double motorMowSense = 0;       // motor power (range 0..MAX_MOW_POWER)
 int motorMowSenseCounter = 0;
@@ -297,7 +300,6 @@ void setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState, boole
     if (remoteSwitchState) remoteSwitchLastTime = timeMicros; else remoteSwitch = rcValue(timeMicros - remoteSwitchLastTime);
   }  
 }
-
 // ---- motor RPM (interrupt) --------------------------------------------------------------
 // mower motor RPM driver
 void setMotorMowRPMState(boolean motorMowRpmState){
@@ -309,7 +311,7 @@ void setMotorMowRPMState(boolean motorMowRpmState){
 
 // --- user settings ---------------------------------------------------------------------
 
-#define MAGIC 18
+#define MAGIC 19
 
 void deleteUserSettings(){
   int addr = 0;
@@ -323,8 +325,6 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorAccel);    
   eereadwrite(readflag, addr, motorSpeedMax);
   eereadwrite(readflag, addr, motorPowerMax);
-  eereadwrite(readflag, addr, motorSenseRightZero);
-  eereadwrite(readflag, addr, motorSenseLeftZero);
   eereadwrite(readflag, addr, motorSenseRightScale);
   eereadwrite(readflag, addr, motorSenseLeftScale);
   eereadwrite(readflag, addr, motorRollTimeMax);
@@ -333,7 +333,6 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorMowSpeedMax);
   eereadwrite(readflag, addr, motorMowPowerMax);
   eereadwrite(readflag, addr, motorMowRPM);
-  eereadwrite(readflag, addr, motorMowSenseZero);
   eereadwrite(readflag, addr, motorMowSenseScale);
   eereadwrite(readflag, addr, motorMowPid);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio1);
@@ -930,17 +929,26 @@ void readSensors(){
   if (millis() >= nextTimeMotorSense){    
     nextTimeMotorSense = millis() +  50;
     double accel = 0.05;
-    motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_RIGHT))) * accel;   
-    motorLeftSenseCurrent  = motorLeftSenseCurrent  * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_LEFT))) * accel;    
-    motorMowSenseCurrent   = motorMowSenseCurrent   * (1.0-accel) + ((double)abs(readSensor(SEN_MOTOR_MOW))) * accel;
+    motorRightSenseADC = readSensor(SEN_MOTOR_RIGHT);
+    motorLeftSenseADC = readSensor(SEN_MOTOR_LEFT);
+    motorMowSenseADC = readSensor(SEN_MOTOR_MOW);
+    
+    if (motorRightPWM < 200) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.25) * accel;
+        else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
+    
+    if (motorLeftPWM < 200) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.25) * accel;
+        else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
+        
+    if (motorMowPWM < 200) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.25) * accel;
+        else motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel;
    
     if (batVoltage > 8){
-      motorRightSense = motorRightSenseCurrent * batVoltage /1000; 
+      motorRightSense = motorRightSenseCurrent * batVoltage /1000;   // conversion to power in Watt
       motorLeftSense  = motorLeftSenseCurrent  * batVoltage /1000;
       motorMowSense   = motorMowSenseCurrent   * batVoltage /1000;
     }
     else{
-    motorRightSense = motorRightSenseCurrent * batFull /1000; 
+    motorRightSense = motorRightSenseCurrent * batFull /1000;   // conversion to power in Watt in absence of battery voltage measurement
     motorLeftSense  = motorLeftSenseCurrent  * batFull /1000;
     motorMowSense   = motorMowSenseCurrent   * batFull /1000;
     }
@@ -1142,7 +1150,7 @@ void setNextState(byte stateNew, byte dir){
   }
   if (stateNew == STATE_PERI_FIND){
     // find perimeter  => drive half speed      
-    motorLeftSpeed = motorRightSpeed = motorSpeedMax / 2;    
+    motorLeftSpeed = motorRightSpeed = motorSpeedMax / 1.5;    
     motorMowEnable = false;    
   }
   if (stateNew == STATE_PERI_TRACK){        
@@ -1345,20 +1353,20 @@ void checkSonar(){
                ||  ((NO_ECHO != sonarDistRight) && (sonarDistRight < sonarTriggerBelow*2)) 
                ||  ((NO_ECHO != sonarDistLeft) && (sonarDistLeft < sonarTriggerBelow*2))  ) {    
               //Serial.println("sonar slow down");
-              motorLeftSpeed /= 2;
-              motorRightSpeed /= 2;
+              motorLeftSpeed /= 1.5;
+              motorRightSpeed /= 1.5;
               sonarObstacleTimeout = millis() + 7000;
           }
         } else if ((sonarObstacleTimeout != 0) && (millis() > sonarObstacleTimeout)) {
           //Serial.println("no sonar");
           sonarObstacleTimeout = 0;
-          motorLeftSpeed *= 2;
-          motorRightSpeed *= 2;
+          motorLeftSpeed *= 1.5;
+          motorRightSpeed *= 1.5;
         }
     }  
   
   if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)){
-    sonarDistCounter++;     
+    sonarDistCounter++;    
     if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
       else reverseOrBidir(RIGHT);    
   }
@@ -1564,7 +1572,7 @@ void loop()  {
       break;
     case STATE_PERI_FIND:
       // find perimeter
-      //checkCurrent();            
+      checkCurrent();            
       checkBumpersPerimeter();
       checkSonar();                   
       checkPerimeterFind();
