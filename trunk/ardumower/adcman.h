@@ -1,17 +1,38 @@
 /*
-Arduino ADC manager (ADC0-ADC9)
-- interrupt-based (free-running) ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
-- ordinary ADC sampling (one-time sampling) (10 bit unsigned)
-- WARNING: never use any 'analogRead()' in your code when using this class!
+  Ardumower (www.ardumower.de)
+  Copyright (c) 2013-2014 by Alexander Grau
+  Copyright (c) 2013-2014 by Sven Gennat
+ 
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
 #ifndef ADCMAN_H
 #define ADCMAN_H
 
+
 #include <Arduino.h>
 
 #define ADC_MAX_CAPTURE_SIZE 128
+
+
+/*
+Arduino ADC manager (ADC0-ADC9)
+- interrupt-based (free-running) ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
+- ordinary ADC sampling (one-time sampling) (10 bit unsigned)
+- WARNING: never use any 'analogRead()' in your code when using this class!
+*/
 
 class ADCManager
 {
