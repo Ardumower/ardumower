@@ -1,9 +1,3 @@
-// Arduino robot mower
-// Copyright (c) 2014 by Alexander Grau
-//
-// Bluetooth programmer
- 
-
 #include "bt.h"
 #include "ardumower.h"
 

@@ -1,9 +1,3 @@
-// Arduino robot mower
-// Copyright (c) 2013 by Alexander Grau
-// pitch/roll and heading estimation (IMU sensor fusion)
-// requires: GY-80 module (L3G4200D, ADXL345B, HMC5883L)
-
-
 #include "imu.h"
 #include <Arduino.h>
 #include <Wire.h>

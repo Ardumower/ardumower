@@ -54,23 +54,23 @@ and now frequency is equal.
 
 
 gute Doku: http://www.mikrocontroller.net/articles/Motoransteuerung_mit_PWM
-[14:43:04] Christian Grau: Ganz wichtig: Wahl der PWM-Frequenz
-[14:43:15] Christian Grau: t=L/R
-[14:43:48] Christian Grau: L kann man mit Induktivitätsmesser ermitteln (gutes Multimeter kann das - habe davon mehrere hier)
-[14:44:09] Alexander Grau: ok, kann ich auch machen hier
-[14:46:10] Alexander Grau: 1,8 mH direkt am motorstecker
-[14:48:24] Christian Grau: t=1,8*10^-3 / 7 Ohm= 25ms
-[14:48:39] Christian Grau: sorry 0,25ms
-[14:49:05] Alexander Grau: 4000 hz
-[14:49:09] Christian Grau: jo
-[14:49:21] Christian Grau: ist die ideale PWM Freq
-[14:50:02] Christian Grau: würde sicherheitshalber aber mal mit 11 Ohm durchrechnen (inkl. Schutzwiderstände)
-[14:50:11] Alexander Grau: jo
-[14:50:17] Christian Grau: und mir dann die Spitzen anschauen am Treiber 
-[14:50:48] Christian Grau: wenn da keine Spitzen mehr vorhanden sind die Widerstände entfernen und mit 4kHz testen
+Ganz wichtig: Wahl der PWM-Frequenz
+t=L/R
+L kann man mit Induktivitätsmesser ermitteln (gutes Multimeter kann das - habe davon mehrere hier)
+ok, kann ich auch machen hier
+1,8 mH direkt am motorstecker
+t=1,8*10^-3 / 7 Ohm= 25ms
+sorry 0,25ms
+4000 hz
+jo
+ist die ideale PWM Freq
+würde sicherheitshalber aber mal mit 11 Ohm durchrechnen (inkl. Schutzwiderstände)
+jo
+und mir dann die Spitzen anschauen am Treiber 
+wenn da keine Spitzen mehr vorhanden sind die Widerstände entfernen und mit 4kHz testen
 oder aber direkt mit 4kHz oder Schutzwiderstände und dann die Betriebsspg. auf 12V legen
 ohne Schutzwiderstände
-[14:53:17] Alexander Grau: ja, herantasten
+ja, herantasten
 -----Timer---------------
 
 -Choose/change timer menu

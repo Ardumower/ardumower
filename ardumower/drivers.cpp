@@ -1,9 +1,3 @@
-// Arduino robot mower
-// Copyright (c) 2013 by Alexander Grau
-// Copyright (c) 2013 by Sven Gennat
-//
-// drivers (motor driver, sensor drivers, etc.)
-
 #include "drivers.h"
 #include "ardumower.h"
 #include <Wire.h>  
