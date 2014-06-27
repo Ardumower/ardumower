@@ -1,4 +1,23 @@
 /*
+  Ardumower (www.ardumower.de)
+  Copyright (c) 2013-2014 by Alexander Grau
+  Copyright (c) 2013-2014 by Sven Gennat
+ 
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/*
  *  Interrupt and PWM utilities for 16 bit Timer1 on ATmega168/328
  *  Original code by Jesse Tane for http://labs.ideo.com August 2008
  *  Modified March 2009 by Jérôme Despatis and Jesse Tane for ATmega328 support
