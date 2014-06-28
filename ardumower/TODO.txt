@@ -19,10 +19,14 @@
 --TODO list--
 
 For v1.0, we have some TODO topics like...
-- Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
-- imu.cpp: fix ported but currently broken code, fix calibration code etc.
-- perimeter.cpp: test and improve sender-off detection (optimize smoothMag for this...)
 
+
+- imu.cpp: test and bugfix Nano-ported (but currently broken) code, fix/adjust calibration code etc.
+- perimeter.cpp: test and improve new sender-off detection (idea: optimize smoothMag for this...)
+- Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
+- test/bugfix timer functionality
+- solve 'motor current drift' problem (Sven)  
+- ArduRemote app (Alex)
 
 
 ------------------
@@ -206,6 +210,8 @@ However, I could not find something similar in Optiboot bootloader (If I'm wrong
 I hope this article will help you to make your projects more safe and reliable ;)
 
 --------------------------------------
+
+Positionserkennung
 
 Kalman-Filter
 
