@@ -18,7 +18,14 @@
 
 --TODO list--
 
+For v1.0, we have some TODO topics like...
+- Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
+- imu.cpp: fix ported but currently broken code, fix calibration code etc.
+- perimeter.cpp: test and improve sender-off detection (optimize smoothMag for this...)
 
+
+
+------------------
 Anheben:
 bei y-Beschl. stoppen! (Peak pos. ohne Peak neg.)
 
