@@ -23,12 +23,12 @@ For v1.0, we have some TODO topics like...
 
 - imu.cpp: test and bugfix Nano-ported (but currently broken) code, fix/adjust calibration code etc.
 - perimeter.cpp: test and improve new sender-off detection (idea: optimize smoothMag for this...)
-- Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
 - test/bugfix timer functionality
 - solve 'motor current drift' problem (Sven) 
 - use odometry ticks data for motor power control (PWM)     
 - ArduRemote app (Alex)
-
+- Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
+- Arduino Due: find out how to configure the interrupts (odometry, r/c, hall sensor) for the pins
 
 ------------------
 Anheben:
