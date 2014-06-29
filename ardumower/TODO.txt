@@ -25,7 +25,8 @@ For v1.0, we have some TODO topics like...
 - perimeter.cpp: test and improve new sender-off detection (idea: optimize smoothMag for this...)
 - Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
 - test/bugfix timer functionality
-- solve 'motor current drift' problem (Sven)  
+- solve 'motor current drift' problem (Sven) 
+- use odometry ticks data for motor power control (PWM)     
 - ArduRemote app (Alex)
 
 
