@@ -17,8 +17,6 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
-
 /*
 perimeter receiver for Arduino sound sensors/LM386
 
@@ -28,6 +26,12 @@ perimeter receiver for Arduino sound sensors/LM386
     http://en.wikipedia.org/wiki/Matched_filter
     http://grauonline.de/alexwww/ardumower/filter/filter.html and bottom of this page
     http://www.ardumower.de/index.php/de/anleitungen/2013-11-23-19-50-19/induktion    )
+
+How to use it (example):    
+  1. initialize ADC:        ADCMan.init(); 
+  2. set perimeter pins:    Perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);  
+  3. read perimeter:        int value = Perimeter.getMagnitude(0);  
+    
 */
 
 #ifndef PERIMETER_H

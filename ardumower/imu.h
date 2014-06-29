@@ -19,7 +19,12 @@
 */
 
 /* pitch/roll and heading estimation (IMU sensor fusion)  
-   requires: GY-80 module (L3G4200D, ADXL345B, HMC5883L) */
+   requires: GY-80 module (L3G4200D, ADXL345B, HMC5883L) 
+   
+How to use it (example):     
+  1. initialize IMU:                 IMU imu;  imu.init(); 
+  2. read IMU (yaw/pitch/roll:       float ypr[3];  imu.getEulerRad(ypr);
+*/
 
 
 #ifndef IMU_H

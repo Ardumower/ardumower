@@ -15,8 +15,20 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+/*
+Arduino ADC manager (ADC0-ADC9)
+- interrupt-based (free-running) ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
+- ordinary ADC sampling (one-time sampling) (10 bit unsigned)
+- WARNING: never use any 'analogRead()' in your code when using this class!
+
+How to use it (example):
+1. Initialize ADC:  ADCMan.init();
+2. Set ADC pin:     ADCMan.setCapture(pinMotorMowSense, 1, 1);
+3. Read ADC:        int value = ADCMan.read(pinMotorMowSense);
 
 */
+
 
 #ifndef ADCMAN_H
 #define ADCMAN_H
@@ -26,13 +38,6 @@
 
 #define ADC_MAX_CAPTURE_SIZE 128
 
-
-/*
-Arduino ADC manager (ADC0-ADC9)
-- interrupt-based (free-running) ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
-- ordinary ADC sampling (one-time sampling) (10 bit unsigned)
-- WARNING: never use any 'analogRead()' in your code when using this class!
-*/
 
 class ADCManager
 {
