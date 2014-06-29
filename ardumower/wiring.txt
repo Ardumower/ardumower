@@ -120,5 +120,26 @@ RTC
 connectors for : odometry, button, HC-SR04
 
 
+---------------------------------------------------------------
 
+Arduino Mega 2560 interrupts
+
+6	PE4	OC3B	INT4		Digital pin 02	PWM		
+7	PE5	OC3C	INT5		Digital pin 03	PWM		
+19	PB0	SS	PCINT0		Digital pin 53		SS	(SPI Slave Select input or Pin Change Interrupt 0)
+20	PB1	SCK	PCINT1		Digital pin 52		SCK	(SPI Bus Serial Clock or Pin Change Interrupt 1)
+21	PB2	MOSI	PCINT2		Digital pin 51		MOSI	(SPI Bus Master Output/Slave Input or Pin Change Interrupt 2)
+22	PB3	MISO	PCINT3		Digital pin 50		MISO	(SPI Bus Master Input/Slave Output or Pin Change Interrupt 3)
+23	PB4	OC2A	PCINT4		Digital pin 10	PWM		
+24	PB5	OC1A	PCINT5		Digital pin 11	PWM		
+25	PB6	OC1B	PCINT6		Digital pin 12	PWM		
+26	PB7	OC0A	PCINT7	OC1C	Digital pin 13	PWM		
+82	PK7	ADC15	PCINT23		Analog pin 15			
+83	PK6	ADC14	PCINT22		Analog pin 14			
+84	PK5	ADC13	PCINT21		Analog pin 13			
+85	PK4	ADC12	PCINT20		Analog pin 12			
+86	PK3	ADC11	PCINT19		Analog pin 11			
+87	PK2	ADC10	PCINT18		Analog pin 10			
+88	PK1	ADC9	PCINT17		Analog pin 09			
+89	PK0	ADC8	PCINT16		Analog pin 08			
 
