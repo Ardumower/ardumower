@@ -22,6 +22,7 @@
 #ifndef __AVR__
 
 // Arduino Due compatibility wrappers , Atmel SAM3X8E ARM Cortex-M3 (Due),  (SAM3X/A series)
+// datasheet:  http://www.atmel.com/images/doc11057.pdf
 
 #ifndef DUE_H
 #define DUE_H

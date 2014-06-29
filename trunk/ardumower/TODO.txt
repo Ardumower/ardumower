@@ -16,19 +16,24 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
---TODO list--
+1.0 TODO list
 
 For v1.0, we have some TODO topics like...
 
+1. imu.cpp: test and bugfix Nano-ported (but currently broken) code, fix/adjust calibration code etc.
+2. perimeter.cpp: test and improve new sender-off detection (idea: optimize smoothMag for this...)
+3. test/bugfix timer functionality
+4. solve 'motor current drift' problem (Sven) 
+5. use odometry ticks data for motor power control (PWM)     
+6. ArduRemote app (Alex)
+7. Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
+8. Arduino Due: find out how to configure the interrupts (odometry, r/c, hall sensor) for the pins
 
-- imu.cpp: test and bugfix Nano-ported (but currently broken) code, fix/adjust calibration code etc.
-- perimeter.cpp: test and improve new sender-off detection (idea: optimize smoothMag for this...)
-- test/bugfix timer functionality
-- solve 'motor current drift' problem (Sven) 
-- use odometry ticks data for motor power control (PWM)     
-- ArduRemote app (Alex)
-- Arduino Due: improve due.cpp: tone(), so that Arduino library 'servo.h' can be used too (currently tone() conflicts with it)
-- Arduino Due: find out how to configure the interrupts (odometry, r/c, hall sensor) for the pins
+
+1.0 Roadmap
+http://www.ardumower.de/index.php/de/forum/general-discussion/336-ardumower-1-0-roadmap#3634
+
+
 
 ------------------
 Anheben:
