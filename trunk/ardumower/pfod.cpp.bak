@@ -439,9 +439,9 @@ void sendBatteryMenu(boolean update){
   Serial2.print(" V");
   Serial2.print(F("|j01~Monitor "));  
   sendYesNo(batMonitor);
-  sendSlider("j05", F("Calibrate battery V "), batVoltage, "", 0.01, 30, 0);   
-  sendSlider("j02", F("Go home if below"), batGoHomeIfBelow, "", 0.1, batFull, (batFull*0.72));  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
-  sendSlider("j03", F("Switch off if below"), batSwitchOffIfBelow, "", 0.1, batFull, (batFull*0.72));  
+  sendSlider("j05", F("Calibrate battery V "), batVoltage, "", 0.01, 0, 30);   
+  sendSlider("j02", F("Go home if below"), batGoHomeIfBelow, "", 0.1, (batFull*0.72), batFull);  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
+  sendSlider("j03", F("Switch off if below"), batSwitchOffIfBelow, "", 0.1, (batFull*0.72), batFull);  
   Serial2.print(F("|j04~Charge "));
   Serial2.print(chgVoltage);
   Serial2.print("V ");
@@ -463,13 +463,16 @@ void processBatteryMenu(String pfodCmd){
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, batSwitchOffIfBelow, 0.1); 
     else if (pfodCmd.startsWith("j05")) {
       if (batVoltage < 8){        
+     //   processSlider(pfodCmd, batVoltage, 0.1);
         batSenseZero = batADC;        
       } else {        
         processSlider(pfodCmd, batVoltage, 0.01);
         batFactor = batVoltage / max(0, (((double)batADC)-batSenseZero));        
       }      
     }
-    else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, chgSenseZero, 1);   
+    //else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, batSenseZero, 1);
+    else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, chgSenseZero, 1);
+    //else if (pfodCmd.startsWith("j07")) processSlider(pfodCmd, batFactor, 0.01);    
     else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, chgFactor, 0.01);    
   sendBatteryMenu(true);
 }
@@ -496,12 +499,7 @@ void sendOdometryMenu(boolean update){
   Serial2.print(F("|l01~Value l, r "));
   Serial2.print(odometryLeft);
   Serial2.print(", "); 
-  Serial2.println(odometryRight); 
-  Serial2.println(F("|l03~RPM Motor l, r "));
-  Serial2.print(motorLeftRpm);
-  Serial2.print(", "); 
-  Serial2.println(motorRightRpm);
-  sendSlider("l04", F("Ticks per one full revolution"), odometryTicksPerRevolution, "", 1, 2000);       
+  Serial2.print(odometryRight);  
   sendSlider("l01", F("Ticks per cm"), odometryTicksPerCm, "", 0.1, 30);       
   sendSlider("l02", F("Wheel base cm"), odometryWheelBaseCm, "", 0.1, 50);         
   Serial2.println("}");                
@@ -511,9 +509,7 @@ void sendOdometryMenu(boolean update){
 void processOdometryMenu(String pfodCmd){      
   if (pfodCmd == "l00") odometryUse = !odometryUse;
     else if (pfodCmd.startsWith("l01")) processSlider(pfodCmd, odometryTicksPerCm, 0.1);
-    else if (pfodCmd.startsWith("l02")) processSlider(pfodCmd, odometryWheelBaseCm, 0.1); 
-    else if (pfodCmd.startsWith("l04")) processSlider(pfodCmd, odometryTicksPerRevolution, 1);    
-   
+    else if (pfodCmd.startsWith("l02")) processSlider(pfodCmd, odometryWheelBaseCm, 0.1);    
   sendOdometryMenu(true);
 }
 

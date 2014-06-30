@@ -68,10 +68,10 @@ char configName[] = "kit10";
 //#define pinMuxS0 28              // mux S0 (only TC-G158 board)
 //#define pinMuxS1 26              // mux S1 (only TC-G158 board)
 //#define pinMuxZ A7                 // mux Z (only TC-G158 board)
-#define pinOdometryLeft 49         // left odometry sensor
-#define pinOdometryLeft2 45        // left odometry sensor (optional two-wire)
-#define pinOdometryRight 44        // right odometry sensor
-#define pinOdometryRight2 38       // right odometry sensor (optional two-wire)
+#define pinOdometryLeft A12         // left odometry sensor
+#define pinOdometryLeft2 A13        // left odometry sensor (optional two-wire)
+#define pinOdometryRight A15        // right odometry sensor
+#define pinOdometryRight2 A14       // right odometry sensor (optional two-wire)
 #define pinLawnFrontRecv 40        // lawn sensor front receive
 #define pinLawnFrontSend 41        // lawn sensor front sender 
 #define pinLawnBackRecv 42         // lawn sensor back receive
@@ -138,9 +138,10 @@ int stationRevTime     = 4000;    // charge station reverse time (ms)
 int stationRollTime    = 3000;    // charge station roll time (ms)
 int stationForwTime    = 2000;    // charge station forward time (ms)
 // ------ odometry ------------------------------------
-char odometryUse       = 0;       // use odometry?
-double odometryTicksPerCm = 1.519;  // encoder ticks per cm
-double odometryWheelBaseCm = 30;    // wheel-to-wheel distance (cm)
+char odometryUse       = 1;       // use odometry?
+int odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
+double odometryTicksPerCm = 13.49;  // encoder ticks per cm
+double odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
 // ----- GPS -------------------------------------------
 char gpsUse            = 0;       // use GPS?
 // ----- other -----------------------------------------

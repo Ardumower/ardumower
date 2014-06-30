@@ -125,12 +125,6 @@ boolean odometryRightLastState2 = LOW;
 double odometryTheta = 0; // theta angle (radiant)
 double odometryX = 0;   // X map position (cm)
 double odometryY = 0;   // Y map position (cm)
-int motorLeftRpmCounter = 0; // left wheel rpm counter
-double motorLeftRpm = 0; // left wheel rpm
-unsigned long lastMotorLeftRpmTime = 0; 
-int motorRightRpmCounter = 0; // right wheel rpm counter
-double motorRightRpm = 0; // right wheel rpm
-unsigned long lastMotorRightRpmTime = 0; 
 // -------- RC remote control state -----------------
 int remoteSteer = 0;  // range -100..100
 int remoteSpeed = 0;  // range -100..100
@@ -321,7 +315,7 @@ void setMotorMowRPMState(boolean motorMowRpmState){
 
 // --- user settings ---------------------------------------------------------------------
 
-#define MAGIC 20
+#define MAGIC 19
 
 void deleteUserSettings(){
   int addr = 0;
@@ -371,7 +365,6 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, stationRollTime);
   eereadwrite(readflag, addr, stationForwTime);
   eereadwrite(readflag, addr, odometryUse);
-  eereadwrite(readflag, addr, odometryTicksPerRevolution);
   eereadwrite(readflag, addr, odometryTicksPerCm);
   eereadwrite(readflag, addr, odometryWheelBaseCm);
   eereadwrite(readflag, addr, buttonUse);
@@ -1423,17 +1416,7 @@ void calcOdometry(){
   double right_cm = ((double)ticksRight) / ((double)odometryTicksPerCm);  
   double avg_cm  = (left_cm + right_cm) / 2.0;
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
-  odometryTheta += wheel_theta; 
-  
-  motorLeftRpmCounter = ticksLeft;
-  motorLeftRpm = double abs((((double)motorLeftRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorLeftRpmTime))) * 60000.0);
-  motorLeftRpmCounter = 0;              
-  lastMotorLeftRpmTime = millis();
-  motorRightRpmCounter = ticksRight;
-  motorRightRpm = double abs((((double)motorRightRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorRightRpmTime))) * 60000.0);
-  motorRightRpmCounter = 0;              
-  lastMotorRightRpmTime = millis();
-  
+  odometryTheta += wheel_theta;
   //odometryTheta -= (double)((int)(odometryTheta/(2*PI)))*2*PI;
   //if (odometryTheta < -PI) odometryTheta += 2*PI; 
   //  else if (odometryTheta > PI) odometryTheta -= 2*PI;
