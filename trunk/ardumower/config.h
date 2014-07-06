@@ -88,11 +88,11 @@ char configName[] = "kit10";
 
 // ------- wheel motors -----------------------------
 double motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
-int motorSpeedMax       = 255;   // motor wheel max PWM  (8-bit PWM=255, 10-bit PWM=1023)
-double motorPowerMax     = 18.8;    // motor wheel max power (Watt)
+int motorSpeedMax       = 33;   // motor wheel max RPM  (8-bit PWM=255, 10-bit PWM=1023)
+double motorPowerMax     = 23.8;    // motor wheel max power (Watt)
 double motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
 double motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
-int motorRollTimeMax    = 4000;  // max. roll time (ms)
+int motorRollTimeMax    = 3000;  // max. roll time (ms)
 int motorReverseTime    = 2500;  // max. reverse time (ms)
 long motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
 double motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
@@ -109,9 +109,9 @@ pid_params_t motorMowPid  = {0.005, 0.01, 0.01};    // motor mower RPM PID contr
 char bumperUse         = 0;      // has bumpers? 
 // ------ sonar ------------------------------------
 char sonarUse          = 1;      // use ultra sonic sensor?
-int  sonarTriggerBelow = 600;    // ultrasonic sensor trigger distance
+int  sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
 // ------ perimeter ---------------------------------
-char perimeterUse       = 1;      // use perimeter?
+char perimeterUse       = 0;      // use perimeter?
 int  perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
 int  perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
 pid_params_t perimeterPid  = {4.0, 8.0, 8.0};    // perimeter PID controller
@@ -310,9 +310,9 @@ int readSensor(char type){
     
 // sonar---------------------------------------------------------------------------------------------------
     //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-    case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-    //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
-    //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
+    //case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
+    case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
+    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
     //case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     
