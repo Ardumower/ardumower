@@ -423,11 +423,11 @@ void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
     motorRightPWM = pwmRight;
   } else {
     double accel = motorAccel * loopsTa;       
-    motorLeftPWM = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft);    
+    motorLeftPWM = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft); 
     motorRightPWM = (1.0 - accel) * motorRightPWM + accel * ((double)pwmRight);  
   }
-  setActuator(ACT_MOTOR_LEFT, min(motorSpeedMax, max(-motorSpeedMax, motorLeftPWM)));
-  setActuator(ACT_MOTOR_RIGHT, min(motorSpeedMax, max(-motorSpeedMax, motorRightPWM)));
+    setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
+    setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
 }
 
 // sets mower motor actuator
@@ -528,14 +528,23 @@ void motorControlImuDir(){
 
 void motorControl(){
   //double TA = ((double)(millis() - lastMotorControlTime)) / 1000.0;  
-  // normal drive  
-  int leftSpeed = motorLeftSpeed;    
-  int rightSpeed = motorRightSpeed;
-  if (millis() < stateStartTime + 1000) {				
-    leftSpeed = rightSpeed = 0; // slow down at state start      
-    if (mowPatternCurr != MOW_LANES) imuDriveHeading = imuYaw; // set drive heading    
+  // normal drive
+  if ((millis() - lastMotorControlTime) < 100) return;
+  int motorLeftSetpoint = motorLeftSpeed;
+  int motorRightSetpoint = motorRightSpeed;
+  double P = 1.0;
+  if (millis() < stateStartTime + 500) {
+    motorLeftSetpoint = motorRightSetpoint = 0;
+    P = 3.0;
   }
-  setMotorSpeed( leftSpeed, rightSpeed, true );    
+  double motorLeftSpeedE =  motorLeftSetpoint - motorLeftRpm;          
+  double motorRightSpeedE = motorRightSetpoint - motorRightRpm;  
+  int leftSpeed = max(-255, min(255, motorLeftPWM + motorLeftSpeedE*P));
+  int rightSpeed = max(-255, min(255,motorRightPWM + motorRightSpeedE*P));
+  
+  setMotorSpeed( leftSpeed, rightSpeed, false );  
+  lastMotorControlTime = millis();
+  
 }
 
 
@@ -944,13 +953,13 @@ void readSensors(){
     motorLeftSenseADC = readSensor(SEN_MOTOR_LEFT);
     motorMowSenseADC = readSensor(SEN_MOTOR_MOW);
     
-    if (motorRightPWM < 200) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.25) * accel;
+    if (motorRightPWM < 180) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.25) * accel;
         else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
     
-    if (motorLeftPWM < 200) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.25) * accel;
+    if (motorLeftPWM < 180) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.25) * accel;
         else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
         
-    if (motorMowPWM < 200) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.25) * accel;
+    if (motorMowPWM < 180) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.25) * accel;
         else motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel;
    
     if (batVoltage > 8){
@@ -1014,7 +1023,8 @@ void readSensors(){
     lawnSensorBackOld  = lawnSensorBack;
   }
   if ((sonarUse) && (millis() >= nextTimeSonar)){
-    nextTimeSonar = millis() + 500;   
+//    nextTimeSonar = millis() + 500;   
+    nextTimeSonar = millis() + 100;   
     sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
     sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
     sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
@@ -1124,7 +1134,7 @@ void setNextState(byte stateNew, byte dir){
     motorLeftSpeed = motorRightSpeed = motorSpeedMax;              
   } 
   else if (stateNew == STATE_REVERSE)  {
-    motorLeftSpeed = motorRightSpeed = -motorSpeedMax;                    
+    motorLeftSpeed = motorRightSpeed = -motorSpeedMax/1.25;                    
     stateEndTime = millis() + motorReverseTime;                     
   }   
   else if (stateNew == STATE_ROLL) {                  
@@ -1138,11 +1148,11 @@ void setNextState(byte stateNew, byte dir){
       }      
       stateEndTime = millis() + rand() % motorRollTimeMax/2 + motorRollTimeMax/2;               
       if (dir == RIGHT){
-	motorLeftSpeed = motorSpeedMax;
-	motorRightSpeed = -motorLeftSpeed;						
+	motorLeftSpeed = motorSpeedMax/1.25;
+	motorRightSpeed = -motorLeftSpeed/1.25;						
       } else {
-	motorRightSpeed = motorSpeedMax;
-	motorLeftSpeed = -motorRightSpeed;	
+	motorRightSpeed = motorSpeedMax/1.25;
+	motorLeftSpeed = -motorRightSpeed/1.25;	
       }      
   }  
   if (stateNew == STATE_REMOTE){
@@ -1274,12 +1284,14 @@ void checkCurrent(){
     if (millis() > stateStartTime + 3000) {				  
       //beep(1);
       motorLeftSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
       reverseOrBidir(RIGHT);
     }
   } else if (motorRightSense >= motorPowerMax){       
      if (millis() > stateStartTime + 3000) {
        //beep(1);				         
        motorRightSenseCounter++;
+       setMotorSpeed( 0, 0, false );  
        reverseOrBidir(LEFT);
      }
   }  
@@ -1426,11 +1438,11 @@ void calcOdometry(){
   odometryTheta += wheel_theta; 
   
   motorLeftRpmCounter = ticksLeft;
-  motorLeftRpm = double abs((((double)motorLeftRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorLeftRpmTime))) * 60000.0);
+  motorLeftRpm = double ((((double)motorLeftRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorLeftRpmTime))) * 60000.0);
   motorLeftRpmCounter = 0;              
   lastMotorLeftRpmTime = millis();
   motorRightRpmCounter = ticksRight;
-  motorRightRpm = double abs((((double)motorRightRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorRightRpmTime))) * 60000.0);
+  motorRightRpm = double ((((double)motorRightRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorRightRpmTime))) * 60000.0);
   motorRightRpmCounter = 0;              
   lastMotorRightRpmTime = millis();
   
