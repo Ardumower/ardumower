@@ -197,18 +197,26 @@ void config(){
   pinMode(pinChargeCurrent, INPUT);          
   pinMode(pinChargeVoltage, INPUT);            
   
-  // motors
+  // left wheel motor
+  pinMode(pinMotorEnable, OUTPUT);  
+  digitalWrite(pinMotorEnable, HIGH);
   pinMode(pinMotorLeftPWM, OUTPUT);
-  pinMode(pinMotorLeftDir, OUTPUT); 
+  pinMode(pinMotorLeftDir, OUTPUT);   
+  pinMode(pinMotorLeftSense, INPUT);     
+  pinMode(pinMotorLeftFault, INPUT);    
+  
+  // right wheel motor
   pinMode(pinMotorRightPWM, OUTPUT);
   pinMode(pinMotorRightDir, OUTPUT); 
+  pinMode(pinMotorRightSense, INPUT);       
+  pinMode(pinMotorRightFault, INPUT);  
+  
+  // mower motor
   pinMode(pinMotorMowDir, OUTPUT); 
   pinMode(pinMotorMowPWM, OUTPUT);     
-  pinMode(pinMotorLeftSense, INPUT);     
-  pinMode(pinMotorRightSense, INPUT);     
   pinMode(pinMotorMowSense, INPUT);     
   pinMode(pinMotorMowRpm, INPUT);     
-  
+    
   // lawn sensor
   pinMode(pinLawnBackRecv, INPUT);
   pinMode(pinLawnBackSend, OUTPUT);
@@ -280,6 +288,12 @@ void config(){
   Perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
 }
 
+void checkMotorFault(){
+  if ( (digitalRead(pinMotorLeftFault)==LOW) || (digitalRead(pinMotorRightFault)==LOW) ){
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+  }
+}
 
 int readSensor(char type){
   float ypr[3]; // yaw pitch roll
@@ -288,8 +302,8 @@ int readSensor(char type){
   switch (type) {
 // motors------------------------------------------------------------------------------------------------
     case SEN_MOTOR_MOW: return ADCMan.read(pinMotorMowSense); break;
-    case SEN_MOTOR_RIGHT: return ADCMan.read(pinMotorRightSense); break;
-    case SEN_MOTOR_LEFT:  return ADCMan.read(pinMotorLeftSense); break;
+    case SEN_MOTOR_RIGHT: checkMotorFault(); return ADCMan.read(pinMotorRightSense); break;
+    case SEN_MOTOR_LEFT:  checkMotorFault(); return ADCMan.read(pinMotorLeftSense); break;
     //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
 
 // perimeter----------------------------------------------------------------------------------------------
