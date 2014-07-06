@@ -321,7 +321,7 @@ void setMotorMowRPMState(boolean motorMowRpmState){
 
 // --- user settings ---------------------------------------------------------------------
 
-#define MAGIC 20
+#define MAGIC 21
 
 void deleteUserSettings(){
   int addr = 0;
