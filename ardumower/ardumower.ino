@@ -321,7 +321,7 @@ void setMotorMowRPMState(boolean motorMowRpmState){
 
 // --- user settings ---------------------------------------------------------------------
 
-#define MAGIC 21
+#define MAGIC 22
 
 void deleteUserSettings(){
   int addr = 0;
@@ -334,6 +334,7 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, magic); // magic
   eereadwrite(readflag, addr, motorAccel);    
   eereadwrite(readflag, addr, motorSpeedMax);
+  eereadwrite(readflag, addr, motorSpeedMaxPwm); 
   eereadwrite(readflag, addr, motorPowerMax);
   eereadwrite(readflag, addr, motorSenseRightScale);
   eereadwrite(readflag, addr, motorSenseLeftScale);
@@ -539,8 +540,8 @@ void motorControl(){
   }
   double motorLeftSpeedE =  motorLeftSetpoint - motorLeftRpm;          
   double motorRightSpeedE = motorRightSetpoint - motorRightRpm;  
-  int leftSpeed = max(-255, min(255, motorLeftPWM + motorLeftSpeedE*P));
-  int rightSpeed = max(-255, min(255,motorRightPWM + motorRightSpeedE*P));
+  int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftSpeedE*P));
+  int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm,motorRightPWM + motorRightSpeedE*P));
   
   setMotorSpeed( leftSpeed, rightSpeed, false );  
   lastMotorControlTime = millis();

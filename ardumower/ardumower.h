@@ -132,6 +132,7 @@ extern double motorMowAccel;
 extern double motorBiDirSpeedRatio1;
 extern double motorBiDirSpeedRatio2;
 extern int motorSpeedMax;
+extern int motorSpeedMaxPwm;
 extern double motorPowerMax;
 extern int motorRightSenseADC;
 extern int motorLeftSenseADC;

@@ -88,7 +88,8 @@ char configName[] = "kit10";
 
 // ------- wheel motors -----------------------------
 double motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
-int motorSpeedMax       = 33;   // motor wheel max RPM  (8-bit PWM=255, 10-bit PWM=1023)
+int motorSpeedMax       = 33;   // motor wheel max RPM
+int motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
 double motorPowerMax     = 23.8;    // motor wheel max power (Watt)
 double motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
 double motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
