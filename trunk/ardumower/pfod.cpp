@@ -208,7 +208,8 @@ void sendMotorMenu(boolean update){
   Serial2.print(motorLeftPWM);
   Serial2.print(", ");  
   Serial2.print(motorRightPWM);   
-  sendSlider("a06", F("Speed max"), motorSpeedMax, "", 1, 100);    
+  sendSlider("a06", F("Speed max in rpm"), motorSpeedMax, "", 1, 100);    
+  sendSlider("a15", F("Speed max in pwm"), motorSpeedMaxPwm, "", 1, 255);    
   sendSlider("a11", F("Accel"), motorAccel, "", 0.001, 0.05);    
   sendSlider("a07", F("Roll time max"), motorRollTimeMax, "", 1, 8000);     
   sendSlider("a08", F("Reverse time"), motorReverseTime, "", 1, 8000);     
@@ -241,6 +242,7 @@ void processMotorMenu(String pfodCmd){
       motorSenseRightScale = motorRightSenseCurrent / max(0,(double)motorRightSenseADC); 
 }      
     else if (pfodCmd.startsWith("a06")) processSlider(pfodCmd, motorSpeedMax, 1);
+    else if (pfodCmd.startsWith("a15")) processSlider(pfodCmd, motorSpeedMaxPwm, 1);
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, motorRollTimeMax, 1);    
     else if (pfodCmd.startsWith("a08")) processSlider(pfodCmd, motorReverseTime, 1);
     else if (pfodCmd.startsWith("a09")) processSlider(pfodCmd, motorForwTimeMax, 10);
