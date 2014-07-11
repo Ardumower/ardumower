@@ -624,7 +624,7 @@ void setup()  {
   config();  
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
   #ifdef __AVR__
-    TCCR3B = (TCCR3B & 0xF8) | 1;    // set PWM frequency 31 Khz (pin2,3,5) 
+    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
   #endif
   setMotorSpeed(0, 0, false);
   loadUserSettings();
@@ -963,13 +963,13 @@ void readSensors(){
     motorLeftSenseADC = readSensor(SEN_MOTOR_LEFT);
     motorMowSenseADC = readSensor(SEN_MOTOR_MOW);
     
-    if (motorRightPWM < 180) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.25) * accel;
+    if (motorRightPWM < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.25) * accel;
         else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
     
-    if (motorLeftPWM < 180) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.25) * accel;
+    if (motorLeftPWM < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.25) * accel;
         else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
         
-    if (motorMowPWM < 180) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.25) * accel;
+    if (motorMowPWM < 160) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.25) * accel;
         else motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel;
    
     if (batVoltage > 8){
@@ -1033,8 +1033,8 @@ void readSensors(){
     lawnSensorBackOld  = lawnSensorBack;
   }
   if ((sonarUse) && (millis() >= nextTimeSonar)){
-    nextTimeSonar = millis() + 500;   
-//    nextTimeSonar = millis() + 100;   
+//    nextTimeSonar = millis() + 500;   
+    nextTimeSonar = millis() + 250;   
     sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
     sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
     sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
@@ -1289,22 +1289,48 @@ void checkCurrent(){
       else reverseOrBidir(RIGHT);        
   }  
     
-  if (motorLeftSense >=motorPowerMax){      
-    if (millis() > stateStartTime + 3000) {				  
+  if (motorLeftSense >=motorPowerMax){  
+    if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
       //beep(1);
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       reverseOrBidir(RIGHT);
     }
-  } else if (motorRightSense >= motorPowerMax){       
-     if (millis() > stateStartTime + 3000) {
-       //beep(1);				         
-       motorRightSenseCounter++;
-       setMotorSpeed( 0, 0, false );  
-       reverseOrBidir(LEFT);
+    else {
+      if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
+      motorLeftSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+   //   reverseOrBidir(RIGHT);
+      setNextState(STATE_ROLL,RIGHT);				          
+      }
+      else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
+      motorLeftSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+      setNextState(STATE_FORWARD, 0);
+      }
+      }
+  }
+  else if (motorRightSense >= motorPowerMax){       
+     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
+      //beep(1);
+      motorRightSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+      reverseOrBidir(RIGHT);
+    }
+    else {
+      if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
+      motorRightSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+      setNextState(STATE_ROLL,LEFT);				          
+      }
+      else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
+      motorRightSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+      setNextState(STATE_FORWARD, 0);
+      }
+      }
      }
   }  
-}
 
 // check bumpers
 void checkBumpers(){
@@ -1562,6 +1588,12 @@ void loop()  {
       }
       break;
     case STATE_ROLL:
+      checkCurrent();            
+      checkBumpers();
+      checkSonar();             
+      checkBattery();
+      checkPerimeterBoundary();      
+      if (lawnSensorUse) checkLawn();
       // making a roll (left/right)            
       if (mowPatternCurr == MOW_LANES){
         if (abs(distancePI(imuYaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
@@ -1579,12 +1611,7 @@ void loop()  {
       // driving circles
       break;      
     case STATE_REVERSE:
-      // driving reverse      
-      if (mowPatternCurr == MOW_BIDIR){
-        double ratio = motorBiDirSpeedRatio1;
-        if (stateTime > 4000) ratio = motorBiDirSpeedRatio2;
-        if (rollDir == RIGHT) motorRightSpeed = ((double)motorLeftSpeed) * ratio;
-          else motorLeftSpeed = ((double)motorRightSpeed) * ratio;                              
+      // driving reverse
         checkErrorCounter();    
         checkTimer();
         checkCurrent();            
@@ -1592,7 +1619,13 @@ void loop()  {
         checkSonar();             
         checkBattery();
         checkPerimeterBoundary();      
-        if (lawnSensorUse) checkLawn();      
+        if (lawnSensorUse) checkLawn();    
+        
+      if (mowPatternCurr == MOW_BIDIR){
+        double ratio = motorBiDirSpeedRatio1;
+        if (stateTime > 4000) ratio = motorBiDirSpeedRatio2;
+        if (rollDir == RIGHT) motorRightSpeed = ((double)motorLeftSpeed) * ratio;
+          else motorLeftSpeed = ((double)motorRightSpeed) * ratio;                                
         if (stateTime > motorForwTimeMax){ 
           // timeout 
           if (rollDir == RIGHT) setNextState(STATE_FORWARD, LEFT); // toggle roll dir
