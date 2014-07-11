@@ -185,9 +185,6 @@ double imuRoll = 0;   // tilt angle (radiant)
 double imuDriveHeading = 0;       // drive heading (IMU)
 double imuRollHeading = 0;      // roll heading  (IMU)
 byte   imuRollDir = LEFT;
-short imuComX = 0;  // raw compass values (uncalibrated)
-short imuComY = 0;
-short imuComZ = 0;
 point_float_t accMin = {0,0,0};
 point_float_t accMax = {0,0,0};
 IMU imu;
@@ -381,6 +378,8 @@ void loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, userSwitch3);    
   eereadwrite(readflag, addr, timerUse);
   eereadwrite(readflag, addr, timer);  
+  Serial.print("loadSaveUserSettings addrstop=");
+  Serial.println(addr);
 }
 
 void loadUserSettings(){
@@ -734,11 +733,12 @@ void printInfo(Stream &s){
 
 void printMenu(){  
   Serial.println();
-  Serial.println("1=test motors");
-  Serial.println("2=test odometry");
-  Serial.println("3=setup BT module config (quick baudscan/recommended)");
-  Serial.println("4=setup BT module config (extensive baudscan)");
-  Serial.println("0=exit");  
+  Serial.println(F("1=test motors"));
+  Serial.println(F("2=test odometry"));
+  Serial.println(F("3=setup BT module config (quick baudscan/recommended)"));
+  Serial.println(F("4=setup BT module config (extensive baudscan)"));
+  Serial.println(F("5=calibrate IMU acc"));
+  Serial.println(F("0=exit"));  
   Serial.println();
 }
 
@@ -819,6 +819,10 @@ void menu(){
           break;
         case '4':          
           bt.setParams("Ardumower", 1234, PFOD_BAUDRATE, false);
+          printMenu();
+          break;
+        case '5':
+          imu.calibAcc();
           printMenu();
           break;
       }      
@@ -1024,8 +1028,8 @@ void readSensors(){
     lawnSensorBackOld  = lawnSensorBack;
   }
   if ((sonarUse) && (millis() >= nextTimeSonar)){
-//    nextTimeSonar = millis() + 500;   
-    nextTimeSonar = millis() + 100;   
+    nextTimeSonar = millis() + 500;   
+//    nextTimeSonar = millis() + 100;   
     sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
     sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
     sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
@@ -1051,8 +1055,7 @@ void readSensors(){
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
     // read compass
-    nextTimeIMU = millis() + 20;   // 200
-    //readSensor(SEN_IMU);                
+    nextTimeIMU = millis() + 10;   // 100 hz (maximum)
     float ypr[3];
     imu.getEulerRad(ypr);
     if (imu.getErrorCounter()>0) {
@@ -1060,7 +1063,6 @@ void readSensors(){
       Serial.println("IMU comm error");    
     }
     imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; 
-    //imuComX=comxyz[0]; imuComY=comxyz[1]; imuComZ=comxyz[2];
   }  
   if (millis() >= nextTimeBattery){
     // read battery

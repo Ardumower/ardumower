@@ -866,7 +866,10 @@ void processArduMagResult(String pfodCmd){
     Serial.print(", value=");
     Serial.println(value);*/
     imu.setComCalParam(type, i, j, value);
-    if ((type == 1) && (i==2) && (j==2)) beep(2, false);
+    if ((type == 1) && (i==2) && (j==2)) {
+      imu.saveCalib();
+      beep(2, false);      
+    }
   }    
 }
 
@@ -876,11 +879,13 @@ void pfodLoop(){
     if (millis() >= nextPlotTime){
       nextPlotTime = millis() + 200;      
       // output raw compass values (ArduMag state)
-      Serial2.print(imuComX);
+      point_float_t v;
+      imu.getComRaw(v);
+      Serial2.print(v.x);
       Serial2.print("\t");
-      Serial2.print(imuComY);
+      Serial2.print(v.y);
       Serial2.print("\t");
-      Serial2.println(imuComZ);    
+      Serial2.println(v.z);    
     }
   } else if (pfodState == PFOD_MONITOR){
     printInfo(Serial2);
@@ -916,17 +921,23 @@ void pfodLoop(){
       Serial2.print(",");
       Serial2.print(imuRoll/PI*180);
       Serial2.print(",");
-      Serial2.print(accMin.x);
+      Serial2.print(imu.gyro.x);
       Serial2.print(",");
-      Serial2.print(accMax.x);
+      Serial2.print(imu.gyro.y);
       Serial2.print(",");
-      Serial2.print(accMin.y);
+      Serial2.print(imu.gyro.z);
       Serial2.print(",");
-      Serial2.print(accMax.y);
+      Serial2.print(imu.acc.x);
       Serial2.print(",");
-      Serial2.print(accMin.z);
+      Serial2.print(imu.acc.y);
       Serial2.print(",");
-      Serial2.println(accMax.z);
+      Serial2.print(imu.acc.z);
+      Serial2.print(",");
+      Serial2.print(imu.com.x);
+      Serial2.print(",");
+      Serial2.print(imu.com.y);
+      Serial2.print(",");
+      Serial2.println(imu.com.z);
     }
   } else if (pfodState == PFOD_PLOT_SENSOR_COUNTERS){
     if (millis() >= nextPlotTime){
@@ -1082,7 +1093,7 @@ void readSerialPfod(){
         }
         else if (pfodCmd == "y3") {        
           // plot IMU
-          Serial2.println(F("{=IMU`300|time s`0|yaw`1|pitch`2|roll`3|accX-`4|accX+`5|accY-`6|accY+`7|accZ-`8|accZ+`9}"));         
+          Serial2.println(F("{=IMU`60|time s`0|yaw`1|pitch`1|roll`1|gyroX`2|gyroY`2|gyroZ-`2|accX`3|accY`3|accZ`3|comX`4|comY`4|comZ`4}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_IMU;
         }

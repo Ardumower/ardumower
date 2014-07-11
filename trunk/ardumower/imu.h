@@ -76,6 +76,7 @@ public:
   // get yaw,pitch,roll (degree)
   void getYawPitchRoll(float * ypr);
   void getMinMaxAcc(point_float_t &vmin, point_float_t &vmax);      
+  void getComRaw(point_float_t &v);  
   void setComCalParam(int type, int i, int j, float value);
   void calibAcc();
   void calibComDeviation();
@@ -85,12 +86,12 @@ public:
   void printCom();
   void printAcc();
   void printGyro();  
-private:
+public:
   int callCounter;
   int errorCounter;
   boolean hardwareInitialized;  
   // --------- gyro state -----------------------------
-  point_float_t gyro;   // gyro sensor data (degree)
+  point_float_t gyro;   // gyro sensor data (degree)    
   point_float_t gyroOfs; // gyro calibration data
   float gyroNoise ;      // gyro noise
   int gyroCounter ; 
@@ -129,7 +130,6 @@ private:
   void loadCalib();  
   void calibCom();  
   void calcComCal();
-  void getComRaw(point_float_t &v);
   void getComCal(point_float_t &v);   
   float compensateComYawDeviation(float degree);
   void gravityCompensateAcc(float * acc, float * q);

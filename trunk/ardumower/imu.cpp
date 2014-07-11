@@ -30,6 +30,7 @@
 
 #define pinLED 13
 
+#define ADDR 256
 #define MAGIC 3
 
 IMU::IMU(){
@@ -73,11 +74,7 @@ IMU::IMU(){
   for (int i=0; i < 36; i++){
     comDeviation[i] = i*10;
   }
-  useComDeviation = false;   
-  
-  // test only
-  accOfs.x=2.95; accOfs.y=-17.75; accOfs.z=-22.05;
-  accScale.x=517.90;  accScale.y=526.50;  accScale.z=514.50;
+  useComDeviation = true;     
 }
 
 // rescale to -PI..+PI
@@ -140,23 +137,27 @@ float IMU::fusionPI(float w, float a, float b)
 }
 
 void IMU::loadSaveCalib(boolean readflag){
-  int addr = 0;
+  int addr = ADDR;
   short magic = MAGIC;
-  /*eereadwrite(readflag, addr, magic); // magic
+  eereadwrite(readflag, addr, magic); // magic
   eereadwrite(readflag, addr, accOfs);
   eereadwrite(readflag, addr, accScale);    
   eereadwrite(readflag, addr, comCalB);  
   eereadwrite(readflag, addr, comCalA_1);    
   for (int i=0; i < 36; i++){
     eereadwrite(readflag, addr, comDeviation[i]);    
-  }*/
+  }
 }
 
 void IMU::loadCalib(){
   short magic = 0;
-  int addr = 0;
-  //eeread(addr, magic);
-  if (magic != MAGIC) return;
+  int addr = ADDR;
+  eeread(addr, magic);
+  if (magic != MAGIC) {
+    Serial.println(F("IMU error: no calib data"));
+    return;  
+  }
+  Serial.println(F("IMU: found calib data"));
   loadSaveCalib(true);
 }
 
@@ -224,6 +225,7 @@ void IMU::printCalib(){
 
 // calculate gyro offsets
 void IMU::calibGyro(){
+  Serial.println(F("calibGyro"));  
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
   point_float_t ofs;
@@ -307,6 +309,7 @@ void IMU::readADXL345B(){
 
 // L3G4200D gyro sensor driver
 boolean IMU::initL3G4200D(){
+  Serial.println(F("initL3G4200D"));
   uint8_t buf[6];    
   int retry = 0;
   while (true){
@@ -355,7 +358,7 @@ void IMU::readL3G4200D(boolean useTa){
     if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
     //lastGyroTime = millis();    
   }  
-  if (I2CreadFrom(L3G4200D, 0x28, 6, (uint8_t*)buf) != 6){
+  if (I2CreadFrom(L3G4200D, 0x28 | (1 << 7), 6, (uint8_t*)buf) != 6){
     //Serial.println("gyro read error");
     errorCounter++;
     return;
@@ -655,11 +658,11 @@ void IMU::printIMU(float * ypr){
   Serial2.print(",");
   Serial2.print(acc.z);
   Serial2.print(",");
-  Serial2.print(comCal.x);
+  Serial2.print(com.x);
   Serial2.print(",");
-  Serial2.print(comCal.y);
+  Serial2.print(com.y);
   Serial2.print(",");
-  Serial2.print(comCal.z);  
+  Serial2.print(com.z);  
   Serial2.println();
   /*Serial.print(",");
   Serial.print(comYawTilt/PI*180.0);  */
@@ -792,7 +795,7 @@ void IMU::getYawPitchRoll(float * ypr) {
   ypr[2] = atan(gy / sqrt(gx*gx + gz*gz));
   
   arr3_rad_to_deg(ypr);
-  ypr[0] = compensateComYawDeviation(ypr[0]);     
+  if (useComDeviation) ypr[0] = compensateComYawDeviation(ypr[0]);     
 }
 
 
