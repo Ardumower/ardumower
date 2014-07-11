@@ -348,7 +348,9 @@ boolean IMU::initL3G4200D(){
       Serial.println(F("gyro write error")); 
       while(true);
   }  
-  //I2CwriteTo(L3G4200D, 0x24, 0b00010000);      
+  // fifo mode
+  I2CwriteTo(L3G4200D, 0x24, 0b01000000);        
+  I2CwriteTo(L3G4200D, 0x2e, 0b01000000);          
   delay(250);
   calibGyro();    
   return true;
@@ -373,13 +375,15 @@ void IMU::readL3G4200D(boolean useTa){
    // 4..0: FIFO stored data level
    //Serial.print("FIFO_SRC_REG: "); Serial.println(fifoSrcReg, HEX);
   uint8_t countOfData = (fifoSrcReg & 0x1F) + 1;   
-  if (bitRead(fifoSrcReg, 6)==1) Serial.println(F("IMU error: FIFO overrun"));
+  //  if (bitRead(fifoSrcReg, 6)==1) Serial.println(F("IMU error: FIFO overrun"));
 
   memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
   I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
 
   gyro.x = gyro.y = gyro.z = 0;
-
+  //Serial.print("fifo:");
+  //Serial.println(countOfData);
+  if (!useGyroCalibration) countOfData = 1;
   for (uint8_t i=0; i<countOfData; i++){
       gyro.x += ((gyroFifo[i].xh << 8) | gyroFifo[i].xl);
       gyro.y += ((gyroFifo[i].yh << 8) | gyroFifo[i].yl);
@@ -391,12 +395,12 @@ void IMU::readL3G4200D(boolean useTa){
       }
   }
   if (useGyroCalibration){
-    gyro.x *= 0.07 * PI/180.0;
-    gyro.y *= 0.07 * PI/180.0;
-    gyro.z *= 0.07 * PI/180.0;  
-    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z * Ta );
-    gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y * Ta );
-    gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x * Ta );     
+    gyro.x *= 0.07 * PI/180.0 * Ta;
+    gyro.y *= 0.07 * PI/180.0 * Ta; 
+    gyro.z *= 0.07 * PI/180.0 * Ta;  
+    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z );
+    gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y );
+    gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x );     
   }
   gyroCounter++;
 }
