@@ -100,6 +100,7 @@ public:
   unsigned long lastGyroTime;
   // --------- acceleration state ---------------------
   point_float_t acc;  // acceleration sensor data
+  point_float_t accGrav;  // acceleration sensor data (gravity corrected)
   point_float_t accMin;
   point_float_t accMax;
   int accelCounter ;

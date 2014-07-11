@@ -1093,7 +1093,7 @@ void readSerialPfod(){
         }
         else if (pfodCmd == "y3") {        
           // plot IMU
-          Serial2.println(F("{=IMU`60|time s`0|yaw`1|pitch`1|roll`1|gyroX`2|gyroY`2|gyroZ-`2|accX`3|accY`3|accZ`3|comX`4|comY`4|comZ`4}"));         
+          Serial2.println(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~30~-30|gyroY`2|gyroZ`2|accX`3~2~-2|accY`3|accZ`3|comX`4~600~-600|comY`4|comZ`4}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_IMU;
         }
