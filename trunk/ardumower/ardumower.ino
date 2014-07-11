@@ -1060,9 +1060,10 @@ void readSensors(){
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
     // read compass
-    nextTimeIMU = millis() + 100;   // 100 hz (maximum)
+    nextTimeIMU = millis() + 100;   // 10 hz  (maximum: 100 hz)
     float ypr[3];
-    imu.getEulerRad(ypr);
+    //imu.getEulerRad(ypr);
+    imu.getYawPitchRoll(ypr);
     if (imu.getErrorCounter()>0) {
       addErrorCounter(ERR_IMU_COMM);
       Serial.println("IMU comm error");    

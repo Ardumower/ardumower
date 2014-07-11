@@ -33,6 +33,18 @@
 #define ADDR 256
 #define MAGIC 3
 
+
+struct {
+  uint8_t xl;
+  uint8_t xh;
+  uint8_t yl;
+  uint8_t yh;
+  uint8_t zl;
+  uint8_t zh;
+} gyroFifo[32];
+
+
+
 IMU::IMU(){
   hardwareInitialized = false;
   callCounter = 0;  
@@ -343,52 +355,49 @@ boolean IMU::initL3G4200D(){
 }
 
 void IMU::readL3G4200D(boolean useTa){  
-  int8_t buf[6];    
-  if (I2CreadFrom(L3G4200D, 0x27, 1, (uint8_t*)buf) != 1){
-    errorCounter++;
-    return;
-  }
-  if ((buf[0] & 8) == 0) {
-    //Serial.println("gyro busy");
-    return;  
-  }
   now = micros();
   float Ta = 1;
-  if (useTa) {
+  //if (useTa) {
     Ta = ((now - lastGyroTime) / 1000000.0);    
     //float Ta = ((float)(millis() - lastGyroTime)) / 1000.0; 			    
     lastGyroTime = now;
     if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
     //lastGyroTime = millis();    
-  }  
-  if (I2CreadFrom(L3G4200D, 0x28 | (1 << 7), 6, (uint8_t*)buf) != 6){
-    //Serial.println("gyro read error");
-    errorCounter++;
-    return;
+  //}  
+  uint8_t fifoSrcReg = 0;  
+  I2CreadFrom(L3G4200D, 0x2F, sizeof(fifoSrcReg), &fifoSrcReg);         // read the FIFO_SRC_REG
+   // FIFO_SRC_REG
+   // 7: Watermark status. (0: FIFO filling is lower than WTM level; 1: FIFO filling is equal or higher than WTM level)
+   // 6: Overrun bit status. (0: FIFO is not completely filled; 1:FIFO is completely filled)
+   // 5: FIFO empty bit. (0: FIFO not empty; 1: FIFO empty)
+   // 4..0: FIFO stored data level
+   //Serial.print("FIFO_SRC_REG: "); Serial.println(fifoSrcReg, HEX);
+  uint8_t countOfData = (fifoSrcReg & 0x1F) + 1;   
+  if (bitRead(fifoSrcReg, 6)==1) Serial.println(F("IMU error: FIFO overrun"));
+
+  memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
+  I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
+
+  gyro.x = gyro.y = gyro.z = 0;
+
+  for (uint8_t i=0; i<countOfData; i++){
+      gyro.x += ((gyroFifo[i].xh << 8) | gyroFifo[i].xl);
+      gyro.y += ((gyroFifo[i].yh << 8) | gyroFifo[i].yl);
+      gyro.z += ((gyroFifo[i].zh << 8) | gyroFifo[i].zl);
+      if (useGyroCalibration){
+        gyro.x -= gyroOfs.x;
+        gyro.y -= gyroOfs.y;
+        gyro.z -= gyroOfs.z;               
+      }
   }
-  gyro.x = ((float)(((int16_t)buf[1]<<8) | buf[0])) ;  
-  //Serial.println(gyro.x);
-  gyro.y=((float)(((int16_t)buf[3]<<8) | buf[2])) ;  
-  gyro.z=((float)(((int16_t)buf[5]<<8) | buf[4])) ;  
   if (useGyroCalibration){
-    gyro.x -= gyroOfs.x;
-    gyro.y -= gyroOfs.y;
-    gyro.z -= gyroOfs.z;       
-    // value should be higher than noise!
-    //boolean valid = (abs(gyroZ) > gyroNoise);
-    // FS=250 dps (mdps=8.75)  
-    // FS=2000 dps (mdps=70)      
-    gyro.x *= 0.07 * Ta;
-    gyro.y *= 0.07 * Ta;
-    gyro.z *= 0.07 * Ta;                
-    gyro.x *= PI/180.0;
-    gyro.y *= PI/180.0;
-    gyro.z *= PI/180.0;
-    gyroYpr.yaw -= gyro.z;
-    gyroYpr.pitch +=  gyro.y;
-    gyroYpr.roll +=  gyro.x;    
-    //Serial.println(gyroZ);    
-  }  
+    gyro.x *= 0.07 * PI/180.0;
+    gyro.y *= 0.07 * PI/180.0;
+    gyro.z *= 0.07 * PI/180.0;  
+    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z * Ta );
+    gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y * Ta );
+    gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x * Ta );     
+  }
   gyroCounter++;
 }
 
@@ -803,7 +812,7 @@ void IMU::getYawPitchRoll(float * ypr) {
   ypr[1] = atan(gx / sqrt(gy*gy + gz*gz));
   ypr[2] = atan(gy / sqrt(gx*gx + gz*gz));
   
-  arr3_rad_to_deg(ypr);
+  //arr3_rad_to_deg(ypr);
   if (useComDeviation) ypr[0] = compensateComYawDeviation(ypr[0]);     
 }
 
