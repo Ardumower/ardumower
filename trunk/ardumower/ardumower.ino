@@ -1060,7 +1060,7 @@ void readSensors(){
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
     // read compass
-    nextTimeIMU = millis() + 100;   // 10 hz  (maximum: 100 hz)
+    nextTimeIMU = millis() + 50;   // 20 hz  (maximum: 100 hz)
     float ypr[3];
     //imu.getEulerRad(ypr);
     imu.getYawPitchRoll(ypr);

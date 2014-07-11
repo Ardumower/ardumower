@@ -921,11 +921,11 @@ void pfodLoop(){
       Serial2.print(",");
       Serial2.print(imuRoll/PI*180);
       Serial2.print(",");
-      Serial2.print(imu.gyro.x);
+      Serial2.print(imu.gyro.x/PI*180);
       Serial2.print(",");
-      Serial2.print(imu.gyro.y);
+      Serial2.print(imu.gyro.y/PI*180);
       Serial2.print(",");
-      Serial2.print(imu.gyro.z);
+      Serial2.print(imu.gyro.z/PI*180);
       Serial2.print(",");
       Serial2.print(imu.gyroYpr.yaw/PI*180);
       Serial2.print(",");
@@ -1105,7 +1105,7 @@ void readSerialPfod(){
         }
         else if (pfodCmd == "y3") {        
           // plot IMU
-          Serial2.print(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~10~-10|gyroY`2|gyroZ`2|gyroY`3~180~-180|gyroP`3|gyroR`3|accX`4~2~-2|accY`4|accZ`4"));
+          Serial2.print(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~90~-90|gyroY`2|gyroZ`2|gyroY`3~180~-180|gyroP`3|gyroR`3|accX`4~2~-2|accY`4|accZ`4"));
           Serial2.println(F("|acgX`5~2~-2|acgY`5|acgZ`5|comX`6~600~-600|comY`6|comZ`6}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_IMU;
