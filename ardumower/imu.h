@@ -62,8 +62,6 @@ struct ypr_t {
 typedef struct ypr_t ypr_t;
 
 
-
-
 class IMU
 {
 public:
