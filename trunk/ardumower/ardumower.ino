@@ -738,6 +738,7 @@ void printMenu(){
   Serial.println(F("3=setup BT module config (quick baudscan/recommended)"));
   Serial.println(F("4=setup BT module config (extensive baudscan)"));
   Serial.println(F("5=calibrate IMU acc"));
+  Serial.println(F("6=delete IMU calib"));
   Serial.println(F("0=exit"));  
   Serial.println();
 }
@@ -823,6 +824,10 @@ void menu(){
           break;
         case '5':
           imu.calibAcc();
+          printMenu();
+          break;
+        case '6':
+          imu.deleteCalib();
           printMenu();
           break;
       }      
@@ -1055,7 +1060,7 @@ void readSensors(){
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
     // read compass
-    nextTimeIMU = millis() + 10;   // 100 hz (maximum)
+    nextTimeIMU = millis() + 100;   // 100 hz (maximum)
     float ypr[3];
     imu.getEulerRad(ypr);
     if (imu.getErrorCounter()>0) {

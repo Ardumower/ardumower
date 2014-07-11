@@ -166,15 +166,16 @@ void IMU::saveCalib(){
 }
 
 void IMU::deleteCalib(){
-  int addr = 0;
-  //eewrite(addr, (short)0); // magic  
+  int addr = ADDR;
+  eewrite(addr, (short)0); // magic  
   accOfs.x=accOfs.y=accOfs.z=0;
-  accScale.x=accScale.y=accScale.z=1;  
+  accScale.x=accScale.y=accScale.z=2;  
   comCalA_1[0][0] = 1; comCalA_1[0][1] = 0; comCalA_1[0][2] = 0;
   comCalA_1[1][0] = 0; comCalA_1[1][1] = 1; comCalA_1[1][2] = 0;
   comCalA_1[2][0] = 0; comCalA_1[2][1] = 0; comCalA_1[2][2] = 1;
   comCalB[0] = comCalB[1] = comCalB[2] = 0;
   for (int i=0; i < 36; i++) comDeviation[i] = i*10-180;
+  Serial.println("IMU calibration deleted");  
 }
 
 void IMU::setComCalParam(int type, int i, int j, float value){  
@@ -270,7 +271,7 @@ void  IMU::initADXL345B(){
 }
 
 void IMU::readADXL345B(){  
-  int8_t buf[6];
+  uint8_t buf[6];
   if (I2CreadFrom(ADXL345B, 0x32, 6, (uint8_t*)buf) != 6){
     errorCounter++;
     return;
@@ -282,14 +283,16 @@ void IMU::readADXL345B(){
   float x=((float)(((int16_t)buf[1]<<8) | buf[0])) ;
   float y=((float)(((int16_t)buf[3]<<8) | buf[2])) ;
   float z=((float)(((int16_t)buf[5]<<8) | buf[4])) ;  
+  //Serial.println(z);
   if (useAccCalibration){
     x -= accOfs.x;
     y -= accOfs.y;
     z -= accOfs.z;
-    x /= accScale.x*0.5;
+    x /= accScale.x*0.5;    
     y /= accScale.y*0.5;    
     z /= accScale.z*0.5;
     acc.x = x;
+    //Serial.println(z);
     acc.y = y;
     acc.z = z;
   } else {
@@ -549,11 +552,17 @@ void IMU::calibAcc(){
     while (Serial.available()) Serial.read();
     point_float_t pt = {0,0,0};
     digitalWrite(pinLED, true);
-    for (int i=0; i < 10; i++){        
+    for (int i=0; i < 100; i++){        
       readADXL345B();            
-      pt.x += acc.x / 10.0;
-      pt.y += acc.y / 10.0;
-      pt.z += acc.z / 10.0;            
+      pt.x += acc.x / 100.0;
+      pt.y += acc.y / 100.0;
+      pt.z += acc.z / 100.0;                  
+      Serial.print(acc.x);
+      Serial.print(",");
+      Serial.print(acc.y);
+      Serial.print(",");
+      Serial.println(acc.z);
+      delay(1);
     }
     xmin = min(xmin, pt.x);
     xmax = max(xmax, pt.x);         
@@ -710,15 +719,15 @@ void IMU::getQ(float * q) {
   accFloat[1] = acc.y;
   accFloat[2] = acc.z;
   gravityCompensateAcc(accFloat, q);      
-  acc.x = accFloat[0];
-  acc.y = accFloat[1];
-  acc.z = accFloat[2];  
-  accMin.x = max(accMin.x, acc.x );    
-  accMax.x = max(accMax.x, acc.x );    
-  accMin.y = max(accMin.y, acc.y );    
-  accMax.y = max(accMax.y, acc.y );    
-  accMin.z = max(accMin.z, acc.z );    
-  accMax.z = max(accMax.z, acc.z );    
+  accGrav.x = accFloat[0];
+  accGrav.y = accFloat[1];
+  accGrav.z = accFloat[2];  
+  accMin.x = max(accMin.x, accGrav.x );    
+  accMax.x = max(accMax.x, accGrav.x );    
+  accMin.y = max(accMin.y, accGrav.y );    
+  accMax.y = max(accMax.y, accGrav.y );    
+  accMin.z = max(accMin.z, accGrav.z );    
+  accMax.z = max(accMax.z, accGrav.z );    
 }
 
 
