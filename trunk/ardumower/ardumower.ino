@@ -529,6 +529,7 @@ void motorControlImuDir(){
 void motorControl(){
   //double TA = ((double)(millis() - lastMotorControlTime)) / 1000.0;  
   // normal drive
+  if (odometryUse){
   if ((millis() - lastMotorControlTime) < 100) return;
   int motorLeftSetpoint = motorLeftSpeed;
   int motorRightSetpoint = motorRightSpeed;
@@ -544,6 +545,16 @@ void motorControl(){
   
   setMotorSpeed( leftSpeed, rightSpeed, false );  
   lastMotorControlTime = millis();
+  }
+  else{
+  int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
+  int rightSpeed =min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorRightSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
+  if (millis() < stateStartTime + 1000) {				
+    leftSpeed = rightSpeed = 0; // slow down at state start      
+    if (mowPatternCurr != MOW_LANES) imuDriveHeading = imuYaw; // set drive heading    
+  }
+  setMotorSpeed( leftSpeed, rightSpeed, true );    
+  }
   
 }
 
