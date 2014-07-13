@@ -20,7 +20,10 @@
 /*
   Perimeter sender - using 'pseudonoise4_pw' signal  (for details see   http://grauonline.de/alexwww/ardumower/filter/filter.html  )  
   for schematics, see bottom of this page:  http://www.ardumower.de/index.php/de/anleitungen/2013-11-23-19-50-19/induktion                                                                                 
-                                                                                
+
+
+changes
+  v1.0.0.0      27.06.2014  initial version
  */
 
 #include "TimerOne.h"

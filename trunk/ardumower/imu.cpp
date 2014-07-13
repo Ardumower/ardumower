@@ -395,12 +395,12 @@ void IMU::readL3G4200D(boolean useTa){
       }
   }
   if (useGyroCalibration){
-    gyro.x *= 0.07 * PI/180.0 * Ta;
-    gyro.y *= 0.07 * PI/180.0 * Ta; 
-    gyro.z *= 0.07 * PI/180.0 * Ta;  
-    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z );
-    gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y );
-    gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x );     
+    gyro.x *= 0.07 * PI/180.0;
+    gyro.y *= 0.07 * PI/180.0; 
+    gyro.z *= 0.07 * PI/180.0;  
+    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z  * Ta );
+    gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y  * Ta );
+    gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x  * Ta );     
   }
   gyroCounter++;
 }
