@@ -341,16 +341,16 @@ boolean IMU::initL3G4200D(){
   }
   // Normal power mode, all axes enabled, 100 Hz
   I2CwriteTo(L3G4200D, 0x20, 0b00001100);    
-  // 2000 dps
+  // 2000 dps (degree per second)
   I2CwriteTo(L3G4200D, 0x23, 0b00100000);      
   I2CreadFrom(L3G4200D, 0x23, 1, (uint8_t*)buf);
   if (buf[0] != 0b00100000){
       Serial.println(F("gyro write error")); 
       while(true);
   }  
-  // fifo mode
-  I2CwriteTo(L3G4200D, 0x24, 0b01000000);        
-  I2CwriteTo(L3G4200D, 0x2e, 0b01000000);          
+  // fifo mode 
+ // I2CwriteTo(L3G4200D, 0x24, 0b01000000);        
+ // I2CwriteTo(L3G4200D, 0x2e, 0b01000000);          
   delay(250);
   calibGyro();    
   return true;
@@ -379,6 +379,7 @@ void IMU::readL3G4200D(boolean useTa){
 
   memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
   I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
+  //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
 
   gyro.x = gyro.y = gyro.z = 0;
   //Serial.print("fifo:");
@@ -395,10 +396,10 @@ void IMU::readL3G4200D(boolean useTa){
       }
   }
   if (useGyroCalibration){
-    gyro.x *= 0.07 * PI/180.0;
+    gyro.x *= 0.07 * PI/180.0;  // convert to radiant per second
     gyro.y *= 0.07 * PI/180.0; 
     gyro.z *= 0.07 * PI/180.0;  
-    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z  * Ta );
+    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z  * Ta ); // integrate over time
     gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y  * Ta );
     gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x  * Ta );     
   }
