@@ -1225,11 +1225,8 @@ void checkBattery(){
   }
 }
 
-// check timer
-void checkTimer(){
-  if (millis() < nextTimeTimer) return;
-  nextTimeTimer = millis() + 60000;
-  if (gpsUse){
+void receiveGPSTime(){
+if (gpsUse){
     int year;
     byte month, day, hour, minute, second, hundredths;
     unsigned long age; 
@@ -1245,6 +1242,13 @@ void checkTimer(){
       setActuator(ACT_RTC, 0);            
     }      
   }
+}
+
+// check timer
+void checkTimer(){
+  if (millis() < nextTimeTimer) return;
+  nextTimeTimer = millis() + 60000;
+  receiveGPSTime();
   boolean stopTimerTriggered = true;
   if (timerUse){    
     for (int i=0; i < MAX_TIMERS; i++){
@@ -1256,7 +1260,7 @@ void checkTimer(){
           if ((currmin >= startmin) && (currmin < stopmin)){
             // start timer triggered
             stopTimerTriggered = false;
-            if (stateCurr == STATE_OFF){
+            if ((stateCurr == STATE_CHARGE) || (stateCurr == STATE_OFF)){
               Serial.println("timer start triggered");
               motorMowEnable = true;
               setNextState(STATE_FORWARD, 0);
