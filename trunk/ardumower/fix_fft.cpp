@@ -68,7 +68,10 @@
 // signed 8-bit values written into Arduino's 32k EEPROM memory
 // Technically we could get along with a quarter of this data table but I think we shouldn't.
 
-const prog_int8_t Sinewave[N_WAVE] PROGMEM = {
+// next line doesn't seem to work on linux
+// const prog_int8_t Sinewave[N_WAVE] PROGMEM = {
+  
+const int8_t PROGMEM Sinewave[N_WAVE] PROGMEM = {  
 0, 3, 6, 9, 12, 15, 18, 21,
 24, 28, 31, 34, 37, 40, 43, 46,
 48, 51, 54, 57, 60, 63, 65, 68,
