@@ -1679,7 +1679,8 @@ void loop()  {
       }
       break;
     case STATE_CHARGE:
-      // waiting until charging completed      
+      // waiting until charging completed    
+      checkTimer();       // Check Timer when on charge  
       break;      
     case STATE_CHARGE_REV:
       // charging: drive reverse 
