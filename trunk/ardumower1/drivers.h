@@ -62,32 +62,6 @@ struct datetime_t {
 
 typedef struct datetime_t datetime_t;
 
-// ---------- PID controller ---------------------------------
-struct pidc_t {
-	double Ta;	
-	int16_t w;
-	int16_t x;
-	int16_t esum;
-	int16_t eold;
-	int16_t y;
-	int16_t y_min;	
-	int16_t y_max;	
-	int16_t max_pwm;  // 1023
-	double Kp;//8.0  // Verstaerkungsfaktor Regelabweichung 		
-	double Ki;//0.0 	// Faktor fuer Integral Regelabweichung	
-	double Kd;//0.01 // Faktor fuer Ableitung Regelabweichung		
-};
-
-typedef struct pidc_t pidc_t;
-
-struct pid_params_t {
-	double Kp;    // Verstaerkungsfaktor Regelabweichung 		
-	double Ki;    // Faktor fuer Integral Regelabweichung	
-	double Kd;    // Faktor fuer Ableitung Regelabweichung		  
-};
-
-typedef struct pid_params_t pid_params_t;
-
 
 // returns sign of variable (-1, 0, +1)
 template <typename T> int sign(T val) {
@@ -154,10 +128,6 @@ double scalePI(double v);
 
 // computes minimum distance between x radiant (current-value) and w radiant (set-value)
 double distancePI(double x, double w);
-
-
-// PID controller
-void PIDControl(pidc_t *pid);
 
 // ultrasonic sensor
 unsigned int readHCSR04(int triggerPin, int echoPin);
