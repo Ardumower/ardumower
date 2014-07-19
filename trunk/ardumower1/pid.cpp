@@ -33,6 +33,11 @@ PID::PID(float Kp, float Ki, float Kd){
 
 float PID::compute()
 {		
+  unsigned long now = micros();
+  Ta = ((now - lastControlTime) / 1000000.0);
+  lastControlTime = now;
+  if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
+
   // Regelabweichung ermitteln
   int16_t e = (w - x);	
   // fuer Integral aufsummieren

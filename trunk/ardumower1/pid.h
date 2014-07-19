@@ -46,6 +46,7 @@ class PID
     float Kp;   // proportional control
     float Ki;   // integral control
     float Kd;   // differential control
+    unsigned long lastControlTime;
 };
 
 
