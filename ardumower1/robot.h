@@ -32,6 +32,7 @@
 #endif
 //#include <Servo.h>  // for RC brushless contoller
 #include "drivers.h"
+#include "pid.h"
 #include "behavior.h"
 //#include "QueueList.h"
 //#include <limits.h>
@@ -188,7 +189,7 @@ class Robot
     char motorMowModulate  ;      // motor mower cutter modulation?
     int motorMowRPM        ;   // motor mower RPM (only for cutter modulation)
     float motorMowSenseScale ; // motor mower sense scale (mA=(ADC-zero)/scale)
-    pid_params_t motorMowPid ;    // motor mower RPM PID controller    
+    PID motorMowPid ;    // motor mower RPM PID controller    
     int motorMowSpeed;
     float motorMowPWM ;         // current speed
     int motorMowSenseADC ; 
@@ -207,8 +208,8 @@ class Robot
     // ------- IMU state --------------------------------
     char imuUse            ;       // use IMU? 
     char imuCorrectDir     ;       // correct direction by compass?
-    pid_params_t imuDirPid  ;    // direction PID controller
-    pid_params_t imuRollPid ;    // roll PID controller    
+    PID imuDirPid  ;    // direction PID controller
+    PID imuRollPid ;    // roll PID controller    
     float imuYaw ;    // compass course (radiant)
     float imuPitch ;  // tilt angle (radiant)
     float imuRoll ;   // tilt angle (radiant)
@@ -221,7 +222,7 @@ class Robot
     char perimeterUse       ;      // use perimeter?
     int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
     int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
-    pid_params_t perimeterPid ;    // perimeter PID controller
+    PID perimeterPid ;    // perimeter PID controller
     int perimeterLeft ;
     int perimeterRight ;
     boolean perimeterLeftState ;
@@ -270,10 +271,10 @@ class Robot
     int stationRollTime    ;    // charge station roll time (ms)
     int stationForwTime    ;    // charge station forward time (ms)    
     // ------------ PID controllers ----------------------------
-    pidc_t imuDirPID;
-    pidc_t imuRollPID;
-    pidc_t perimeterPID;
-    pidc_t motorMowPID;
+    PID imuDirPID;
+    PID imuRollPID;
+    PID perimeterPID;
+    PID motorMowPID;
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];

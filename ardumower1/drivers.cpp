@@ -159,24 +159,6 @@ int I2CreadFrom(int device, byte address, int num, byte buff[], int retryCount) 
   return i;
 }
 
-// PID controller - universal digital PID controller (compass, perimeter, motor etc.)
-void PIDControl(pidc_t *pid){		
-  // Regelabweichung ermitteln
-  int16_t e = (pid->w - pid->x);	
-  // fuer Integral aufsummieren
-  pid->esum += e;
-  // anti wind-up	
-  if (pid->esum < -pid->max_pwm)  pid->esum = -pid->max_pwm;
-  if (pid->esum > pid->max_pwm)  pid->esum = pid->max_pwm;			
-  pid->y = (int16_t)(     ((double)pid->Kp * (double)e)
-			+ ((double)pid->Ki * pid->Ta * (double)pid->esum)
-			+ ((double)pid->Kd/pid->Ta * (double)(e - pid->eold))    );
-  pid->eold = e;			
-  // auf Wertebereich fuer Stellgroesse begrenzen	
-  if (pid->y > pid->y_max) pid->y = pid->y_max;
-  if (pid->y < pid->y_min) pid->y = pid->y_min;	
-}
-
 // L298N motor driver
 // IN2/C(10)/PinPWM   IN1/D(12)/PinDir
 // H                  L     Forward

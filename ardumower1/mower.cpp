@@ -113,7 +113,9 @@ Mower::Mower(){
   motorMowModulate  = 0;      // motor mower cutter modulation?
   motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
-  pid_params_t motorMowPid  = {0.005, 0.01, 0.01};    // motor mower RPM PID controller
+  motorMowPid.Kp = 0.005;    // motor mower RPM PID controller
+  motorMowPid.Ki = 0.01;
+  motorMowPid.Kd = 0.01;
   //  ------ bumper -----------------------------------
   bumperUse         = 0;      // has bumpers? 
   // ------ sonar ------------------------------------
@@ -123,14 +125,20 @@ Mower::Mower(){
   perimeterUse       = 0;      // use perimeter?
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
-  pid_params_t perimeterPid  = {4.0, 8.0, 8.0};    // perimeter PID controller
+  perimeterPid.Kp    = 4.0;  // perimeter PID controller
+  perimeterPid.Ki    = 8.0;
+  perimeterPid.Kd    = 8.0;
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
   imuUse            = 0;       // use IMU? 
   imuCorrectDir     = 0;       // correct direction by compass?
-  pid_params_t imuDirPid  = {5.0, 1.0, 1.0};    // direction PID controller
-  pid_params_t imuRollPid  = {0.8, 21, 0};    // roll PID controller
+  imuDirPid.Kp      = 5.0;     // direction PID controller
+  imuDirPid.Ki      = 1.0;
+  imuDirPid.Kd      = 1.0;    
+  imuRollPid.Kp     = 0.8;   // roll PID controller
+  imuRollPid.Ki     = 21;
+  imuRollPid.Kd     = 0;  
   // ------ model R/C ------------------------------------
   remoteUse         = 1;       // use model remote control (R/C)?
   // ------ battery -------------------------------------
