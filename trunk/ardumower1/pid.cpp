@@ -47,6 +47,8 @@ float PID::compute()
   // auf Wertebereich fuer Stellgroesse begrenzen	
   if (y > y_max) y = y_max;
   if (y < y_min) y = y_min;	
+  
+  return y;
 }
 
 

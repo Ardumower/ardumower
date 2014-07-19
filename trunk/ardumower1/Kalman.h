@@ -1,8 +1,6 @@
 /*
  * Kalman.h
  *
- *  Created on: Aug 31, 2013
- *      Author: muzhig
  */
 
 #ifndef KALMAN_H_
