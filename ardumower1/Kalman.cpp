@@ -1,8 +1,6 @@
 /*
  * Kalman.cpp
  *
- *  Created on: Aug 31, 2013
- *      Author: muzhig
  */
 
 #include "Kalman.h"
