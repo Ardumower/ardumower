@@ -145,6 +145,7 @@ void Robot::initSuppresses(boolean matrix[BEHAVIOR_COUNT][BEHAVIOR_COUNT]){
        suppresses[i][j] = matrix[i][j];
     }
   }
+  behaviorCurrIdx = 0;
 }
 
 

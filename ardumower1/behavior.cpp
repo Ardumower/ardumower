@@ -46,7 +46,6 @@ String ManualBehavior::toString(){
   return F("ManualBehavior");
 }
 
-// ----------------------------------
 
 // ------------------------------------
 ObstacleBehavior::ObstacleBehavior(Robot *aRobot)
