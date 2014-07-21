@@ -20,6 +20,15 @@
 
 // Android remote control (pfod App)
 
+// example usage:
+//   RemoteControl remote;
+//   remote.initSerial(19200);
+//   while (true){
+//     remote.readSerial();
+//     remote.run();
+//  }
+
+
 #ifndef PFOD_H
 #define PFOD_H
 
