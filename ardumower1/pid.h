@@ -18,8 +18,8 @@
 
 */
 
-#ifndef BT_H
-#define BT_H
+#ifndef PID_H
+#define PID_H
 
 #include <Arduino.h>
 
