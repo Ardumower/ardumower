@@ -34,6 +34,7 @@
 #include "drivers.h"
 #include "pid.h"
 #include "behavior.h"
+#include "imu.h"
 //#include "QueueList.h"
 //#include <limits.h>
 
@@ -42,6 +43,8 @@
   Generic robot class - subclass to implement concrete hardware!
 
 */
+
+#define VER 0x0932
 
 // sensors
 enum {
@@ -92,18 +95,39 @@ enum {
   ERR_ENUM_COUNT,  
 };  
 
-#define BEHAVIOR_COUNT 5
+// finate state machine states
+enum { 
+  STATE_OFF,          // off
+  STATE_REMOTE,       // model remote control (R/C)
+  STATE_FORWARD,      // drive forward
+  STATE_ROLL,         // drive roll right/left  
+  STATE_REVERSE,      // drive reverse
 
-// ---------- timers --------------------------------------
-struct ttimer_t {
-  boolean active;
-  timehm_t startTime;
-  timehm_t stopTime;
-  byte daysOfWeek;
+  STATE_CIRCLE,       // drive circle  
+  STATE_ERROR,        // error
+  STATE_PERI_FIND,    // perimeter find 
+  STATE_PERI_TRACK,   // perimeter track
+  STATE_PERI_ROLL,    // perimeter roll
+  STATE_PERI_REV,     // perimeter reverse
+  STATE_CHARGE,       // charge
+  STATE_CHARGE_REV,   // charge reverse
+  STATE_CHARGE_ROLL,  // charge roll
+  STATE_CHARGE_FORW,  // charge forward
+  STATE_MANUAL,       // manual navigation  
+  STATE_ROLL_WAIT,    // drive roll right/left
 };
 
-typedef struct ttimer_t ttimer_t;
+// roll types
+enum { LEFT, RIGHT };
 
+// mow patterns
+enum { MOW_RANDOM, MOW_LANES, MOW_BIDIR };
+
+// console mode
+enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER };
+
+
+#define BEHAVIOR_COUNT 5
 #define MAX_TIMERS 5
 
 
@@ -111,13 +135,16 @@ class Robot
 {
   public:
     String name;
+    // --------- state machine --------------------------
+    byte stateCurr;
+    char* stateName();
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
     char timerUse          ;       // use timer?        
-    // -------- mow pattern -----------------------------
-    char *mowPatternName[];
+    // -------- mow pattern -----------------------------    
     byte mowPatternCurr;
+    char *mowPatternName();
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
     int odometryTicksPerRevolution ;   // encoder ticks per one full resolution
@@ -324,11 +351,21 @@ class Robot
     virtual void setMotorMowRPMState(boolean motorMowRpmState);
     virtual void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel);
     virtual void motorControl();
-protected:
+    virtual void setNextState(byte stateNew, byte dir);
+    virtual void imuCalibComDeviation();
+    virtual void imuSetComCalParam(int type, int i, int j, float value);    
+    virtual void imuSaveCalib();
+    virtual void imuGetComRaw(point_float_t &v);
     // read hardware sensor
     virtual int readSensor(char type){}    
     // set hardware actuator
-    virtual void setActuator(char type, int value){}
+    virtual void setActuator(char type, int value){}    
+    virtual void deleteUserSettings();
+    virtual void setUserSwitches();
+    virtual void saveUserSettings();
+    virtual void beep(int numberOfBeeps, boolean shortbeep = false);
+    virtual void printInfo(Stream &s);
+protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
     // initialize suppresses matrix

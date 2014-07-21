@@ -62,6 +62,19 @@ struct datetime_t {
 
 typedef struct datetime_t datetime_t;
 
+// ---------- timers --------------------------------------
+struct ttimer_t {
+  boolean active;
+  timehm_t startTime;
+  timehm_t stopTime;
+  byte daysOfWeek;
+};
+
+typedef struct ttimer_t ttimer_t;
+
+
+// ---- other ----------------------------------
+
 
 // returns sign of variable (-1, 0, +1)
 template <typename T> int sign(T val) {

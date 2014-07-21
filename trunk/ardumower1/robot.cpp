@@ -20,11 +20,54 @@
 #include "robot.h"
 
 
+char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
+  "CREV", "CROL", "CFOR", "MANU", "ROLW" };
+  
+char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
+
+
 
 Robot::Robot(){
   name = "Generic";
 }
+  
+char* Robot::stateName(){
+  return stateNames[stateCurr];
+}
 
+char *Robot::mowPatternName(){
+  return mowPatternNames[mowPatternCurr];
+}
+
+
+// set user-defined switches
+void Robot::setUserSwitches(){
+  setActuator(ACT_USER_SW1, userSwitch1);   
+  setActuator(ACT_USER_SW2, userSwitch2);     
+  setActuator(ACT_USER_SW3, userSwitch3);     
+}
+
+void Robot::saveUserSettings(){
+}
+
+void Robot::deleteUserSettings(){
+}
+
+
+void Robot::imuSetComCalParam(int type, int i, int j, float value){
+}
+
+void Robot::imuSaveCalib(){
+}
+
+void Robot::imuGetComRaw(point_float_t &v){
+}
+
+void Robot::beep(int numberOfBeeps, boolean shortbeep){
+}
+
+void Robot::printInfo(Stream &s){
+}
 
 // ---- motor RPM (interrupt) --------------------------------------------------------------
 // mower motor RPM driver
@@ -135,8 +178,13 @@ void Robot::motorControl(){
     //if (mowPatternCurr != MOW_LANES) imuDriveHeading = imuYaw; // set drive heading    
   }
   setMotorSpeed( leftSpeed, rightSpeed, true );    
-  }
-  
+  }  
+}
+
+void Robot::setNextState(byte stateNew, byte dir){
+}
+
+void Robot::imuCalibComDeviation(){
 }
 
 void Robot::initSuppresses(boolean matrix[BEHAVIOR_COUNT][BEHAVIOR_COUNT]){
