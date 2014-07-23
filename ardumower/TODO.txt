@@ -232,17 +232,21 @@ GPSSpeed3D(Doppler) Genauigkeit: 0.1m/s
 
 Subsumption Pattern
 
-Priorität
-1. RemoteControl
+Priorität (hoch bis niedrig)
+1. Error
+   Active: IMU, problem (Trigger)
+2. RemoteControl
    Active: Menü (Trigger)
-2. Charging
+3. Charging
    Active: Ladesensor/Menü 
-3. Avoidance
+4. Avoidance
    Active: Sonar/Bumper/Motorstrom (Trigger)
-4. Tracking
+5. Tracking
    Active: Menü/Batteriesensor  (Trigger)              
-5. Mow 
+6. Mow 
    
+
+Hilfsklassen:
  
 Plan-Klasse:
         plan = new Plan();
@@ -255,7 +259,7 @@ Plan-Klasse:
         plan.forward(3, 2);
         plan.turn(-deg90, 2);
 
-
+--------------------------------------
 
 
 
