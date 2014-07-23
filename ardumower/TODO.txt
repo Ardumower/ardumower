@@ -233,18 +233,21 @@ GPSSpeed3D(Doppler) Genauigkeit: 0.1m/s
 Subsumption Pattern
 
 Priorität (hoch bis niedrig)
-1. Error
+1. OFF
+   Active: Zielverhalten ist OFF (gesetzt durch Menü)
+2. Error
    Active: IMU, problem (Trigger)
-2. RemoteControl
-   Active: Menü (Trigger)
-3. Charging
-   Active: Ladesensor/Menü 
-4. Avoidance
-   Active: Sonar/Bumper/Motorstrom (Trigger)
-5. Tracking
-   Active: Menü/Batteriesensor  (Trigger)              
-6. Mow 
-   
+3. RemoteControl
+   Active: Zielverhalten ist RemoteControl(gesetzt durch Menü)
+4. Charging
+   Active: Ladesensor gefunden 
+5. Avoidance
+   Active: Sonar/Bumper/Motorstrom Trigger (Reflexverhalten)
+6. Tracking
+   Active: Zielverhalten ist Tracking (gesetzt durch Menü/Batteriesensor)              
+7. Mow 
+   Active: Zielverhalten ist Mow (gesetzt durch Menü)
+
 
 Hilfsklassen:
  
