@@ -232,7 +232,33 @@ GPSSpeed3D(Doppler) Genauigkeit: 0.1m/s
 
 Subsumption Pattern
 
-Priorität (hoch bis niedrig)
+-Priorität (hoch bis niedrig)
+
+
+"GoHome" Behaviors
+1. OFF
+2. Error
+3. Charging
+4. Avoidance
+5. TrackPerimeter
+6. FindPerimeter
+
+
+"StartMow" Behaviors
+1. OFF
+2. Error
+3. Avoidance
+4. FindStartPosition 
+5. Mow
+
+
+"RemoteControl" Behaviors
+1. OFF
+2. Error
+3. RemoteControl
+
+
+----------------------------------
 1. OFF
    Active: Zielverhalten ist OFF (gesetzt durch Menü)
 2. Error
@@ -240,12 +266,16 @@ Priorität (hoch bis niedrig)
 3. RemoteControl
    Active: Zielverhalten ist RemoteControl(gesetzt durch Menü)
 4. Charging
-   Active: Ladesensor gefunden 
+   Active: Ladestation gefunden 
 5. Avoidance
    Active: Sonar/Bumper/Motorstrom Trigger (Reflexverhalten)
-6. Tracking
-   Active: Zielverhalten ist Tracking (gesetzt durch Menü/Batteriesensor)              
-7. Mow 
+6. FindPerimeter
+   Active: Batteriesensor (Trigger)
+7. Tracking
+   Active: Schleife gefunden                   
+8. FindChargingStation 
+   Active: gesetzt durch Menü/Batteriesensor
+9. Mow 
    Active: Zielverhalten ist Mow (gesetzt durch Menü)
 
 
@@ -264,8 +294,9 @@ Plan-Klasse:
 
 --------------------------------------
 
+FreeRTOS
+-Multitasking (z.B. Kalman 50 Hz, IMU 50 Hz, Sensorabfrage 5 Hz etc.)
+-Mega2560 und Due
 
-
-
-
+--------------------------------------
 
