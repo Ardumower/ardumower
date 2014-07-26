@@ -35,6 +35,10 @@
 #include "pid.h"
 #include "behavior.h"
 #include "imu.h"
+#include "adcman.h"
+#include "perimeter.h"
+#include "gps.h"
+
 //#include "QueueList.h"
 //#include <limits.h>
 
@@ -134,6 +138,8 @@ enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER };
 class Robot
 {
   public:
+    IMU imu;
+    GPS gps;      
     String name;
     // --------- state machine --------------------------
     byte stateCurr;

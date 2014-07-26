@@ -25,11 +25,6 @@
 #include "robot.h"
 
 #include "drivers.h"
-#include "perimeter.h"
-#include "imu.h"
-#include "gps.h"
-#include "adcman.h"
-#include "perimeter.h"
 
 
 /*
@@ -39,8 +34,6 @@
 class Mower : public Robot
 {
   public:
-    IMU imu;
-    GPS gps;    
     // -------------------  
     Mower();  
     virtual void setup(void);
