@@ -23,14 +23,8 @@
 #ifndef DRIVERS_H
 #define DRIVERS_H
 
-#ifdef __AVR__
-  // Arduino Mega
-  #include <EEPROM.h>
-#else 
-  // Arduino Due
-  #include "due.h"
-#endif
 #include <Arduino.h>
+#include <EEPROM.h>
 
 // ultrasonic sensor max echo time
 #define MAX_ECHO_TIME 50000        
@@ -68,31 +62,18 @@ struct datetime_t {
 
 typedef struct datetime_t datetime_t;
 
-// ---------- PID controller ---------------------------------
-struct pidc_t {
-	double Ta;	
-	int16_t w;
-	int16_t x;
-	int16_t esum;
-	int16_t eold;
-	int16_t y;
-	int16_t y_min;	
-	int16_t y_max;	
-	int16_t max_pwm;  // 1023
-	double Kp;//8.0  // Verstaerkungsfaktor Regelabweichung 		
-	double Ki;//0.0 	// Faktor fuer Integral Regelabweichung	
-	double Kd;//0.01 // Faktor fuer Ableitung Regelabweichung		
+// ---------- timers --------------------------------------
+struct ttimer_t {
+  boolean active;
+  timehm_t startTime;
+  timehm_t stopTime;
+  byte daysOfWeek;
 };
 
-typedef struct pidc_t pidc_t;
+typedef struct ttimer_t ttimer_t;
 
-struct pid_params_t {
-	double Kp;    // Verstaerkungsfaktor Regelabweichung 		
-	double Ki;    // Faktor fuer Integral Regelabweichung	
-	double Kd;    // Faktor fuer Ableitung Regelabweichung		  
-};
 
-typedef struct pid_params_t pid_params_t;
+// ---- other ----------------------------------
 
 
 // returns sign of variable (-1, 0, +1)
@@ -161,10 +142,6 @@ double scalePI(double v);
 // computes minimum distance between x radiant (current-value) and w radiant (set-value)
 double distancePI(double x, double w);
 
-
-// PID controller
-void PIDControl(pidc_t *pid);
-
 // ultrasonic sensor
 unsigned int readHCSR04(int triggerPin, int echoPin);
 unsigned int readURM37(int triggerPin, int echoPin);
@@ -174,7 +151,6 @@ void setPwmFrequency(int pin, int divisor);
 void setL298N(int pinDir, int pinPWM, int speed);
 void setL9958(int pinDir, int pinPWM, int speed);
 void setRomeoMotor(int pinDir, int pinPWM, int speed);
-void setMC33926(int pinDir, int pinPWM, int speed);
 
 // lawn sensor
 int measureLawnCapacity(int pinSend, int pinReceive);
