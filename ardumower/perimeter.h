@@ -18,10 +18,11 @@
 
 */
 /*
-perimeter receiver for Arduino sound sensors/LM386
+perimeter receiver for Arduino sound sensors/LM386 - there are two different perimeter versions:
 
--old version: digital filter: FFT bandpass - evaluates signal strength of certain frequency (7812 Hz) on two ADC pins (for two coils)
--new version: digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
+v1 (old): digital filter: FFT bandpass - evaluates signal strength of certain frequency (7812 Hz) on two ADC pins (for two coils)
+
+v2: digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
  (for details see
     http://en.wikipedia.org/wiki/Matched_filter
     http://grauonline.de/alexwww/ardumower/filter/filter.html and bottom of this page
@@ -39,9 +40,17 @@ How to use it (example):
 
 #include <Arduino.h>
 
+// perimeter version to use
+enum {
+  PERIMETER_TYPE_V1,
+  PERIMETER_TYPE_V2,  
+};
+
+
+// --------- perimeter V1 configuration -----------------------
 // choosen bandpass center frequency (f0) (Hz)
 #define F_BANDPASS 7812
-// ADC sampling rate (Hz) (has to match ADC setup further below)
+// ADC sampling rate (Hz) (has to match ADC setup!)
 #define F_SAMPLERATE 19231.0
 // number of FFT bins (2^8 - see FFT call)
 //#define FFTBINS 128
@@ -49,14 +58,15 @@ How to use it (example):
 // bandwidth per FFT bin (75.12109375 Hz)
 const double BIN_BANDWIDTH = ( F_SAMPLERATE / FFTBINS )  ;
 const int BANDPASS_BIN = ( F_BANDPASS / BIN_BANDWIDTH + 0.5) ;
-
+// -------------------------------------------------------------
 
 
 class Perimeter
 {
   public:
-    Perimeter();    
-    void setPins(byte idx0Pin, byte idx1Pin);
+    Perimeter();
+    void setType(byte type);    
+    void setPins(byte idx0Pin, byte idx1Pin);    
     int getMagnitude(byte idx);    
     int getSmoothMagnitude();
     boolean isInside();
@@ -69,6 +79,7 @@ class Perimeter
     int getFilterBin();
     double getFilterBandwidth();    
   private:
+    byte type; // which perimeter version to use
     byte idxPin[2]; // channel for idx
     double peak[2];
     double mag [2]; // perimeter magnitude per channel

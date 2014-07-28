@@ -75,6 +75,7 @@ void Perimeter::gensignal(){
                    
 
 Perimeter::Perimeter(){    
+  type = PERIMETER_TYPE_V2;
   nextTime = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
@@ -92,6 +93,10 @@ Perimeter::Perimeter(){
   lastSignalTime = millis();
 }
 
+void Perimeter::setType(byte type){
+  this->type = type;
+}
+
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;
@@ -101,8 +106,14 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
 
 int Perimeter::getMagnitude(byte idx){  
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
-    matchedFilter(idx);
-    //filterFrequencyMagnitude(idx);    
+    switch (type){
+      case PERIMETER_TYPE_V1:
+        matchedFilter(idx);
+        break;
+      case PERIMETER_TYPE_V2:
+        filterFrequencyMagnitude(idx);
+        break;       
+    } 
   }
   return mag[idx];
 }
@@ -131,6 +142,7 @@ void Perimeter::printADCMinMax(int8_t *samples){
   Serial.println((int)vmax);  
 }
 
+// perimeter V2 uses a digital matched filter
 void Perimeter::matchedFilter(byte idx){
   //double Ta = millis() - lastMeasureTime;
   //lastMeasureTime = millis();   
@@ -209,6 +221,7 @@ boolean Perimeter::signalTimedOut(){
   return (millis() > lastSignalTime + 5000);
 }
 
+// perimeter V1 uses a FFT band pass filter
 void Perimeter::filterFrequencyMagnitude(byte idx){
   mag[idx] = 0;          
   int8_t im[FFTBINS];
