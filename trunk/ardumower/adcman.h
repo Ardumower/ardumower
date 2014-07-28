@@ -18,8 +18,12 @@
 */
 /*
 Arduino ADC manager (ADC0-ADC9)
-- interrupt-based (free-running) ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
-- ordinary ADC sampling (one-time sampling) (10 bit unsigned)
+- can capture multiple pins one after the other (example ADC0: 1000 samples, ADC1: 100 samples, ADC2: 1 sample etc.)
+- can capture more than one sample into buffers
+- runs in background: interrupt-based (free-running) 
+- two types of ADC capture:
+  1) free-running ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
+  2) ordinary ADC sampling (one-time sampling) (10 bit unsigned)
 - WARNING: never use any 'analogRead()' in your code when using this class!
 
 How to use it (example):
