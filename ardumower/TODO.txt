@@ -231,6 +231,7 @@ GPSSpeed3D(Doppler) Genauigkeit: 0.1m/s
 --------------------------------------
 
 Subsumption Pattern
+http://geology.heroy.smu.edu/~dpa-www/robo/subsumption/
 
 -Priorität (hoch bis niedrig)
 
