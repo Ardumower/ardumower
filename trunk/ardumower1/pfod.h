@@ -60,51 +60,31 @@ class RemoteControl
     int8_t perimeterCapture[32]; 
     int perimeterCaptureIdx;        
     float stringToFloat(String &s);
+    void processArduMagResult(String pfodCmd);
+
+    // generic
     void sendYesNo(int value);
     void sendOnOff(int value);
-    void sendTimer(ttimer_t timer);
-    void sendSlider(String cmd, String title, float value, String unit, float scale, float maxvalue, float minvalue = 0);
+
+    // PID slider
     void sendPIDSlider(String cmd, String title, PID &pid, float scale, float maxvalue);
-    void processSlider(String result, float &value, float scale);
     void processPIDSlider(String result, String cmd, PID &pid, float scale, float maxvalue);
+    
+    // generic slider
+    void sendSlider(String cmd, String title, float value, String unit, float scale, float maxvalue, float minvalue = 0);    
+    void processSlider(String result, float &value, float scale);
     void processSlider(String result, long &value, float scale);
     void processSlider(String result, int &value, float scale);
     void processSlider(String result, byte &value, float scale);
     void processSlider(String result, short &value, float scale);
+
+
+    // send timer menu details
+    void sendTimer(ttimer_t timer);
+
+    // main menu
     void sendMainMenu(boolean update);
-    void sendPlotMenu(boolean update);
-    void sendSettingsMenu(boolean update);
     void sendErrorMenu(boolean update);
-    void sendMotorMenu(boolean update);
-    void processMotorMenu(String pfodCmd);
-    void sendMowMenu(boolean update);
-    void processMowMenu(String pfodCmd);
-    void sendBumperMenu(boolean update);
-    void processBumperMenu(String pfodCmd);
-    void sendSonarMenu(boolean update);
-    void processSonarMenu(String pfodCmd);
-    void sendPerimeterMenu(boolean update);
-    void processPerimeterMenu(String pfodCmd);
-    void sendLawnSensorMenu(boolean update);
-    void processLawnSensorMenu(String pfodCmd);
-    void sendImuMenu(boolean update);
-    void processImuMenu(String pfodCmd);      
-    void sendRemoteMenu(boolean update);
-    void processRemoteMenu(String pfodCmd);      
-    void sendBatteryMenu(boolean update);
-    void processBatteryMenu(String pfodCmd);
-    void sendStationMenu(boolean update);
-    void processStationMenu(String pfodCmd);
-    void sendOdometryMenu(boolean update);
-    void processOdometryMenu(String pfodCmd);      
-    void sendDateTimeMenu(boolean update);
-    void processDateTimeMenu(String pfodCmd);
-    void sendTimerDetailMenu(int timerIdx, boolean update);
-    void processTimerDetailMenu(String pfodCmd);
-    void sendTimerMenu(boolean update);
-    void processTimerMenu(String pfodCmd);
-    void sendFactorySettingsMenu(boolean update);
-    void processFactorySettingsMenu(String pfodCmd);
     void sendInfoMenu(boolean update);
     void sendCommandMenu(boolean update);
     void processCommandMenu(String pfodCmd);
@@ -112,8 +92,47 @@ class RemoteControl
     void sendCompassMenu(boolean update);
     void processCompassMenu(String pfodCmd);
     void processManualMenu(String pfodCmd);
-    void processSettingsMenu(String pfodCmd);  
-    void processArduMagResult(String pfodCmd);
+    void processSettingsMenu(String pfodCmd);      
+    
+    // plotting
+    void sendPlotMenu(boolean update);
+    
+    // settings
+    void sendSettingsMenu(boolean update);
+    void sendMotorMenu(boolean update);    
+    void sendMowMenu(boolean update);
+    void sendBumperMenu(boolean update);
+    void sendSonarMenu(boolean update);    
+    void sendPerimeterMenu(boolean update);
+    void sendLawnSensorMenu(boolean update);    
+    void sendImuMenu(boolean update);
+    void sendRemoteMenu(boolean update);
+    void sendBatteryMenu(boolean update);    
+    void sendStationMenu(boolean update);
+    void sendOdometryMenu(boolean update);
+    void sendDateTimeMenu(boolean update);
+    void sendFactorySettingsMenu(boolean update);    
+    
+    void processMotorMenu(String pfodCmd);    
+    void processMowMenu(String pfodCmd);
+    void processBumperMenu(String pfodCmd);
+    void processSonarMenu(String pfodCmd);    
+    void processPerimeterMenu(String pfodCmd); 
+    void processLawnSensorMenu(String pfodCmd);   
+    void processImuMenu(String pfodCmd);         
+    void processRemoteMenu(String pfodCmd);      
+    void processBatteryMenu(String pfodCmd);
+    void processStationMenu(String pfodCmd);
+    void processOdometryMenu(String pfodCmd);      
+    void processDateTimeMenu(String pfodCmd);
+    void processFactorySettingsMenu(String pfodCmd);    
+
+    // timer
+    void sendTimerDetailMenu(int timerIdx, boolean update);
+    void processTimerDetailMenu(String pfodCmd);    
+    void sendTimerMenu(boolean update);
+    void processTimerMenu(String pfodCmd);
+              
 };
 
 
