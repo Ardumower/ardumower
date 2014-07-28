@@ -18,7 +18,6 @@
 */
 
 #include "bt.h"
-#include "ardumower.h"
 
 
 enum {

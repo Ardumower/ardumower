@@ -20,10 +20,11 @@
 
 /* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics)
    (Arduino Mega) */
-   
 
-// ------ configuration --------------------------------------------------
-char configName[] = "kit10";
+#include "mower.h"
+#include <Arduino.h>
+
+
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
 #define pinMotorLeftPWM 5          // M1_IN1 left motor PWM pin
@@ -81,79 +82,94 @@ char configName[] = "kit10";
 #define pinUserSwitch3 48          // user-defined switch 3
 // compass/gyro/accel (I2C):   SCL ,  SDA 
 
+
 // ------- baudrates---------------------------------
 #define BAUDRATE 19200            // serial output baud rate
 #define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define USE_PFOD 1                // use support for pfod app ?
 
-// ------- wheel motors -----------------------------
-double motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
-int motorSpeedMax       = 33;   // motor wheel max RPM
-int motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-double motorPowerMax     = 23.8;    // motor wheel max power (Watt)
-double motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
-double motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
-int motorRollTimeMax    = 3000;  // max. roll time (ms)
-int motorReverseTime    = 2500;  // max. reverse time (ms)
-long motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
-double motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
-double motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
-// ------ mower motor -------------------------------
-double motorMowAccel       = 0.001;  // motor mower acceleration (warning: do not set too high)
-int motorMowSpeedMax   = 255;    // motor mower max PWM
-double motorMowPowerMax = 40.0;     // motor mower max power (Watt)
-char motorMowModulate  = 0;      // motor mower cutter modulation?
-int motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
-double motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
-pid_params_t motorMowPid  = {0.005, 0.01, 0.01};    // motor mower RPM PID controller
-// ------ bumper -----------------------------------
-char bumperUse         = 0;      // has bumpers? 
-// ------ sonar ------------------------------------
-char sonarUse          = 1;      // use ultra sonic sensor?
-int  sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
-// ------ perimeter ---------------------------------
-char perimeterUse       = 0;      // use perimeter?
-int  perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
-int  perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
-pid_params_t perimeterPid  = {4.0, 8.0, 8.0};    // perimeter PID controller
-// ------ lawn sensor --------------------------------
-char lawnSensorUse     = 0;       // use capacitive Sensor
-// ------  IMU (compass/accel/gyro) ----------------------
-char imuUse            = 0;       // use IMU? 
-char imuCorrectDir     = 0;       // correct direction by compass?
-pid_params_t imuDirPid  = {5.0, 1.0, 1.0};    // direction PID controller
-pid_params_t imuRollPid  = {0.8, 21, 0};    // roll PID controller
-// ------ model R/C ------------------------------------
-char remoteUse         = 1;       // use model remote control (R/C)?
-// ------ battery -------------------------------------
-char batMonitor = 1;              // monitor battery and charge voltage?
-double batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
-double batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
-double batFactor       = 0.0658;     // battery conversion factor
-int batSenseZero       =77;        // battery volt sense zero point
-double batFull          =29.4;      // battery reference Voltage (fully charged)
-int  chgSenseZero      = 0;       // charge current sense zero point
-double chgFactor       = 2.7;     // charge current conversion factor
-// ------  charging station ---------------------------
-int stationRevTime     = 4000;    // charge station reverse time (ms)
-int stationRollTime    = 3000;    // charge station roll time (ms)
-int stationForwTime    = 2000;    // charge station forward time (ms)
-// ------ odometry ------------------------------------
-char odometryUse       = 1;       // use odometry?
-int odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
-double odometryTicksPerCm = 13.49;  // encoder ticks per cm
-double odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
-// ----- GPS -------------------------------------------
-char gpsUse            = 0;       // use GPS?
-// ----- other -----------------------------------------
-char buttonUse         = 1;       // has digital ON/OFF button?
-// ----- user-defined switch ---------------------------
-char userSwitch1       = 0;       // user-defined switch 1 (default value)
-char userSwitch2       = 0;       // user-defined switch 2 (default value)
-char userSwitch3       = 0;       // user-defined switch 3 (default value)
-// ----- timer -----------------------------------------
-char timerUse          = 0;       // use timer?
-// ------ configuration end -------------------------------------------
+
+Mower robot;
+
+
+Mower::Mower(){
+  name = "Ardumower";
+  // ------- wheel motors -----------------------------
+  motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
+  motorSpeedMax       = 33;   // motor wheel max RPM
+  motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
+  motorPowerMax     = 23.8;    // motor wheel max power (Watt)
+  motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
+  motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
+  motorRollTimeMax    = 3000;  // max. roll time (ms)
+  motorReverseTime    = 2500;  // max. reverse time (ms)
+  motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
+  motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
+  motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
+  // ------ mower motor -------------------------------
+  motorMowAccel       = 0.001;  // motor mower acceleration (warning: do not set too high)
+  motorMowSpeedMax   = 255;    // motor mower max PWM
+  motorMowPowerMax = 40.0;     // motor mower max power (Watt)
+  motorMowModulate  = 0;      // motor mower cutter modulation?
+  motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
+  motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
+  motorMowPid.Kp = 0.005;    // motor mower RPM PID controller
+  motorMowPid.Ki = 0.01;
+  motorMowPid.Kd = 0.01;
+  //  ------ bumper -----------------------------------
+  bumperUse         = 0;      // has bumpers? 
+  // ------ sonar ------------------------------------
+  sonarUse          = 1;      // use ultra sonic sensor?
+  sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
+  // ------ perimeter ---------------------------------
+  perimeterUse       = 0;      // use perimeter?
+  perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
+  perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
+  perimeterPid.Kp    = 4.0;  // perimeter PID controller
+  perimeterPid.Ki    = 8.0;
+  perimeterPid.Kd    = 8.0;
+  // ------ lawn sensor --------------------------------
+  lawnSensorUse     = 0;       // use capacitive Sensor
+  // ------  IMU (compass/accel/gyro) ----------------------
+  imuUse            = 0;       // use IMU? 
+  imuCorrectDir     = 0;       // correct direction by compass?
+  imuDirPid.Kp      = 5.0;     // direction PID controller
+  imuDirPid.Ki      = 1.0;
+  imuDirPid.Kd      = 1.0;    
+  imuRollPid.Kp     = 0.8;   // roll PID controller
+  imuRollPid.Ki     = 21;
+  imuRollPid.Kd     = 0;  
+  // ------ model R/C ------------------------------------
+  remoteUse         = 1;       // use model remote control (R/C)?
+  // ------ battery -------------------------------------
+  batMonitor = 1;              // monitor battery and charge voltage?
+  batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
+  batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
+  batFactor       = 0.0658;     // battery conversion factor
+  batSenseZero       =77;        // battery volt sense zero point
+  batFull          =29.4;      // battery reference Voltage (fully charged)
+  chgSenseZero      = 0;       // charge current sense zero point
+  chgFactor       = 2.7;     // charge current conversion factor
+  // ------  charging station ---------------------------
+  stationRevTime     = 4000;    // charge station reverse time (ms)
+  stationRollTime    = 3000;    // charge station roll time (ms)
+  stationForwTime    = 2000;    // charge station forward time (ms)
+  // ------ odometry ------------------------------------
+  odometryUse       = 1;       // use odometry?
+  odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
+  odometryTicksPerCm = 13.49;  // encoder ticks per cm
+  odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
+  // ----- GPS -------------------------------------------
+  gpsUse            = 0;       // use GPS?
+  // ----- other -----------------------------------------
+  buttonUse         = 1;       // has digital ON/OFF button?
+  // ----- user-defined switch ---------------------------
+  userSwitch1       = 0;       // user-defined switch 1 (default value)
+  userSwitch2       = 0;       // user-defined switch 2 (default value)
+  userSwitch3       = 0;       // user-defined switch 3 (default value)
+  // ----- timer -----------------------------------------
+  timerUse          = 0;       // use timer?
+  // ------ configuration end -------------------------------------------   
+}
 
 
 // remote control (RC) ppm signal change interrupt
@@ -164,7 +180,7 @@ ISR(PCINT0_vect)
   boolean remoteSteerState = digitalRead(pinRemoteSteer);
   boolean remoteMowState = digitalRead(pinRemoteMow);    
   boolean remoteSwitchState = digitalRead(pinRemoteSwitch);    
-  setRemotePPMState(timeMicros, remoteSpeedState, remoteSteerState, remoteMowState, remoteSwitchState);    
+  robot.setRemotePPMState(timeMicros, remoteSpeedState, remoteSteerState, remoteMowState, remoteSwitchState);    
 }
 
 // odometry signal change interrupt
@@ -175,7 +191,7 @@ ISR(PCINT2_vect)
   boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
   boolean odometryRightState = digitalRead(pinOdometryRight);  
   boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-  setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);
+  robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);
 }
 
 
@@ -183,10 +199,20 @@ ISR(PCINT2_vect)
 void rpm_interrupt()
 {
   boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
-  setMotorMowRPMState(motorMowRpmState);
+  robot.setMotorMowRPMState(motorMowRpmState);
 }
 
-void config(){
+
+void Mower::setup(){
+  Wire.begin();          
+  Serial.begin(BAUDRATE);           
+  rc.initSerial(PFOD_BAUDRATE);   
+    
+  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
+  #ifdef __AVR__
+    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
+  #endif
+  
   // i2c -- turn off internal pull-ups (and use external pull-ups)
   //digitalWrite(SDA, 0);  
   //digitalWrite(SCL, 0);
@@ -282,11 +308,17 @@ void config(){
   
   // ADC
   ADCMan.init();
-  ADCMan.setCapture(pinMotorMowSense, 1, 1);
-  ADCMan.setCapture(pinMotorLeftSense, 1, 1);
-  ADCMan.setCapture(pinMotorRightSense, 1, 1);
-  ADCMan.setCapture(pinBatteryVoltage, 1, 0);
-  Perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
+  ADCMan.setCapture(pinMotorMowSense, 1, true);
+  ADCMan.setCapture(pinMotorLeftSense, 1, true);
+  ADCMan.setCapture(pinMotorRightSense, 1, true);
+  ADCMan.setCapture(pinBatteryVoltage, 1, false);
+  perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
+  
+  imu.init();
+  gps.init();
+
+  initBehaviors();  
+  Robot::setup();
 }
 
 void checkMotorFault(){
@@ -296,10 +328,8 @@ void checkMotorFault(){
   }
 }
 
-int readSensor(char type){
-  float ypr[3]; // yaw pitch roll
-  short comxyz[3]; // raw com
-  
+ 
+int Mower::readSensor(char type){
   switch (type) {
 // motors------------------------------------------------------------------------------------------------
     case SEN_MOTOR_MOW: return ADCMan.read(pinMotorMowSense); break;
@@ -308,7 +338,7 @@ int readSensor(char type){
     //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
 
 // perimeter----------------------------------------------------------------------------------------------
-    case SEN_PERIM_LEFT: return Perimeter.getMagnitude(0); break;
+    case SEN_PERIM_LEFT: return perimeter.getMagnitude(0); break;
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;
     
 // battery------------------------------------------------------------------------------------------------
@@ -332,19 +362,14 @@ int readSensor(char type){
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     
 // imu-------------------------------------------------------------------------------------------------------
-    /*case SEN_IMU: if (readIMU(ypr, accMin, accMax, comxyz)) 
-      { imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; 
-        imuComX=comxyz[0]; imuComY=comxyz[1]; imuComZ=comxyz[2]; } break;    */
-    
+    case SEN_IMU: float ypr[3]; imu.getEulerRad(ypr); imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; break;    
 // rtc--------------------------------------------------------------------------------------------------------
-    //case SEN_RTC: readDS1307(datetime); break;
-    
+    case SEN_RTC: readDS1307(datetime); break;
   }
-  return 0;
+  return 0;   
 }
 
-
-void setActuator(char type, int value){
+void Mower::setActuator(char type, int value){
   switch (type){
     case ACT_MOTOR_MOW: setL298N(pinMotorMowDir, pinMotorMowPWM, value); break;
     // normal direction
@@ -362,4 +387,32 @@ void setActuator(char type, int value){
   }
 }
 
+void Mower::initBehaviors(void){
+   
+  /*memset(behaviors, 0, sizeof behaviors);
+  behaviors[0] = new ManualBehavior(this);
+  behaviors[1] = new ObstacleBehavior(this);
+  behaviors[2] = new MowBehavior(this);
+  behaviors[3] = new TrackBehavior(this);
+  
+  // manual behavior 
+  // false, ...           not suppressed by manual behavior
+  // false, ...           not suppressed by obstacle behavior
+  // false, ...           not suppressed by mow behavior 
+  // false, ...           not suppressed by track behavior
+  
+  boolean suppresses[BEHAVIOR_COUNT][BEHAVIOR_COUNT] = {
+    { false, true,  true,  true  }, 
+    { false, false, true,  true  }, 
+    { false, false, false, true  }, 
+    { false, false, false, false }  
+  };
+  
+  initSuppresses(suppresses);    */
+}
+
+void Mower::configureBluetooth(boolean quick){
+  BluetoothConfig bt;
+  bt.setParams("Ardumower", 1234, PFOD_BAUDRATE, quick);  
+}
 

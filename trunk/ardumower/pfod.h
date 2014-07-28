@@ -20,20 +20,123 @@
 
 // Android remote control (pfod App)
 
+// example usage:
+//   RemoteControl remote;
+//   remote.initSerial(19200);
+//   while (true){
+//     remote.readSerial();
+//     remote.run();
+//  }
+
+
 #ifndef PFOD_H
 #define PFOD_H
 
 #include <Arduino.h>
+#include "drivers.h"
+#include "pid.h"
 
 // pfodApp state
 enum { PFOD_OFF, PFOD_MENU, PFOD_MONITOR, PFOD_ARDU_MAG,
        PFOD_PLOT_BAT, PFOD_PLOT_ODO, PFOD_PLOT_IMU, PFOD_PLOT_SENSOR_COUNTERS, PFOD_PLOT_SENSORS, PFOD_PLOT_PERIMETER, PFOD_PLOT_GPS };
 
+class Robot;
 
-void initSerialPfod(int baudrate);
-void readSerialPfod();
-void pfodLoop();
+class RemoteControl
+{
+  public:
+    RemoteControl();
+    void setRobot(Robot *aRobot);
+    void initSerial(int baudrate);
+    void readSerial();
+    void run();    
+  private:
+    Robot *robot;    
+    boolean pfodCmdComplete;
+    String pfodCmd;
+    byte pfodState;
+    int testmode;
+    unsigned long nextPlotTime;
+    int8_t perimeterCapture[32]; 
+    int perimeterCaptureIdx;        
+    float stringToFloat(String &s);
+    void processArduMagResult(String pfodCmd);
+
+    // generic
+    void sendYesNo(int value);
+    void sendOnOff(int value);
+
+    // PID slider
+    void sendPIDSlider(String cmd, String title, PID &pid, float scale, float maxvalue);
+    void processPIDSlider(String result, String cmd, PID &pid, float scale, float maxvalue);
+    
+    // generic slider
+    void sendSlider(String cmd, String title, float value, String unit, float scale, float maxvalue, float minvalue = 0);    
+    void processSlider(String result, float &value, float scale);
+    void processSlider(String result, long &value, float scale);
+    void processSlider(String result, int &value, float scale);
+    void processSlider(String result, byte &value, float scale);
+    void processSlider(String result, short &value, float scale);
+
+
+    // send timer menu details
+    void sendTimer(ttimer_t timer);
+
+    // main menu
+    void sendMainMenu(boolean update);
+    void sendErrorMenu(boolean update);
+    void sendInfoMenu(boolean update);
+    void sendCommandMenu(boolean update);
+    void processCommandMenu(String pfodCmd);
+    void sendManualMenu(boolean update);
+    void sendCompassMenu(boolean update);
+    void processCompassMenu(String pfodCmd);
+    void processManualMenu(String pfodCmd);
+    void processSettingsMenu(String pfodCmd);      
+    
+    // plotting
+    void sendPlotMenu(boolean update);
+    
+    // settings
+    void sendSettingsMenu(boolean update);
+    void sendMotorMenu(boolean update);    
+    void sendMowMenu(boolean update);
+    void sendBumperMenu(boolean update);
+    void sendSonarMenu(boolean update);    
+    void sendPerimeterMenu(boolean update);
+    void sendLawnSensorMenu(boolean update);    
+    void sendImuMenu(boolean update);
+    void sendRemoteMenu(boolean update);
+    void sendBatteryMenu(boolean update);    
+    void sendStationMenu(boolean update);
+    void sendOdometryMenu(boolean update);
+    void sendDateTimeMenu(boolean update);
+    void sendFactorySettingsMenu(boolean update);    
+    
+    void processMotorMenu(String pfodCmd);    
+    void processMowMenu(String pfodCmd);
+    void processBumperMenu(String pfodCmd);
+    void processSonarMenu(String pfodCmd);    
+    void processPerimeterMenu(String pfodCmd); 
+    void processLawnSensorMenu(String pfodCmd);   
+    void processImuMenu(String pfodCmd);         
+    void processRemoteMenu(String pfodCmd);      
+    void processBatteryMenu(String pfodCmd);
+    void processStationMenu(String pfodCmd);
+    void processOdometryMenu(String pfodCmd);      
+    void processDateTimeMenu(String pfodCmd);
+    void processFactorySettingsMenu(String pfodCmd);    
+
+    // timer
+    void sendTimerDetailMenu(int timerIdx, boolean update);
+    void processTimerDetailMenu(String pfodCmd);    
+    void sendTimerMenu(boolean update);
+    void processTimerMenu(String pfodCmd);
+              
+};
+
 
 
 #endif
+
 

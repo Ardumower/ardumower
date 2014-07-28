@@ -18,7 +18,7 @@
 */
 
 #include "drivers.h"
-#include "ardumower.h"
+//#include "ardumower.h"
 #include <Wire.h>  
 
 char *dayOfWeek[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
@@ -159,24 +159,6 @@ int I2CreadFrom(int device, byte address, int num, byte buff[], int retryCount) 
   return i;
 }
 
-// PID controller - universal digital PID controller (compass, perimeter, motor etc.)
-void PIDControl(pidc_t *pid){		
-  // Regelabweichung ermitteln
-  int16_t e = (pid->w - pid->x);	
-  // fuer Integral aufsummieren
-  pid->esum += e;
-  // anti wind-up	
-  if (pid->esum < -pid->max_pwm)  pid->esum = -pid->max_pwm;
-  if (pid->esum > pid->max_pwm)  pid->esum = pid->max_pwm;			
-  pid->y = (int16_t)(     ((double)pid->Kp * (double)e)
-			+ ((double)pid->Ki * pid->Ta * (double)pid->esum)
-			+ ((double)pid->Kd/pid->Ta * (double)(e - pid->eold))    );
-  pid->eold = e;			
-  // auf Wertebereich fuer Stellgroesse begrenzen	
-  if (pid->y > pid->y_max) pid->y = pid->y_max;
-  if (pid->y < pid->y_min) pid->y = pid->y_min;	
-}
-
 // L298N motor driver
 // IN2/C(10)/PinPWM   IN1/D(12)/PinDir
 // H                  L     Forward
@@ -219,21 +201,6 @@ void setL9958(int pinDir, int pinPWM, int speed){
   }
 }
 
-// MC33926 motor driver
-// Check http://forum.pololu.com/viewtopic.php?f=15&t=5272#p25031 for explanations.
-//(8-bit PWM=255, 10-bit PWM=1023)
-// IN1 PinPWM         IN2 PinDir
-// PWM                L     Forward
-// nPWM               H     Reverse    
-void setMC33926(int pinDir, int pinPWM, int speed){
-  if (speed < 0){
-    digitalWrite(pinDir, HIGH) ;  
-    analogWrite(pinPWM, 255-((byte)abs(speed)));
-  } else {
-    digitalWrite(pinDir, LOW) ;  
-    analogWrite(pinPWM, ((byte)speed));
-  }
-}
 
 // ---- sensor drivers --------------------------------------------------------------
 
@@ -268,13 +235,13 @@ boolean readDS1307(datetime_t &dt){
   byte buf[8];  
   if (I2CreadFrom(DS1307_ADDRESS, 0x00, 8, buf, 3) != 8) {
     Serial.println("DS1307 comm error");    
-    addErrorCounter(ERR_RTC_COMM);
+    //addErrorCounter(ERR_RTC_COMM);
     return false;
   }      
   if (   ((buf[0] >> 7) != 0) || ((buf[1] >> 7) != 0) || ((buf[2] >> 7) != 0) || ((buf[3] >> 3) != 0) 
       || ((buf[4] >> 6) != 0) || ((buf[5] >> 5) != 0) || ((buf[7] & B01101100) != 0) ) {    
     Serial.println("DS1307 data1 error");    
-    addErrorCounter(ERR_RTC_DATA);
+    //addErrorCounter(ERR_RTC_DATA);
     return false;
   }
   datetime_t r;
@@ -288,7 +255,7 @@ boolean readDS1307(datetime_t &dt){
        || (r.date.month > 12)  || (r.date.day > 31)  || (r.date.day < 1)         
        || (r.date.month < 1)   || (r.date.year > 99) ){
     Serial.println("DS1307 data2 error");    
-    addErrorCounter(ERR_RTC_DATA);
+    //addErrorCounter(ERR_RTC_DATA);
     return false;
   }  
   r.date.year      += 2000;
@@ -300,7 +267,7 @@ boolean setDS1307(datetime_t &dt){
   byte buf[7];
   if (I2CreadFrom(DS1307_ADDRESS, 0x00, 7, buf, 3) != 7){
     Serial.println("DS1307 comm error");    
-    addErrorCounter(ERR_RTC_COMM);
+    //addErrorCounter(ERR_RTC_COMM);
     return false;
   }
   buf[0] = buf[0] & B01111111; // enable clock
