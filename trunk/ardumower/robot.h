@@ -354,57 +354,71 @@ class Robot
     unsigned long nextTimeErrorBeep ;  
     // ---------------------------------------
     Robot();
+    // robot setup
     virtual void setup();
+    // robot main loop
     virtual void loop();        
+    
+    // call this from R/C control interrupt
     virtual void setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState, boolean remoteSteerState, 
       boolean remoteMowState, boolean remoteSwitchState);    
+    // call this from odometry interrupt
     virtual void setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, 
       boolean odometryLeftState2, boolean odometryRightState2);
+    // call this from hall sensor interrupt
     virtual void setMotorMowRPMState(boolean motorMowRpmState);
+
+    // state machine
+    virtual void setNextState(byte stateNew, byte dir);    
+    
+    // motor
     virtual void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel);    
     virtual void setMotorMowSpeed(int pwm, boolean useAccel);
-    virtual void setNextState(byte stateNew, byte dir);
+    
+    // IMU
     virtual void imuCalibComDeviation();
     virtual void imuSetComCalParam(int type, int i, int j, float value);    
     virtual void imuSaveCalib();
     virtual void imuGetComRaw(point_float_t &v);
-    // read hardware sensor
+    
+    // read hardware sensor (HAL)
     virtual int readSensor(char type){}    
-    // set hardware actuator
+    
+    // set hardware actuator (HAL)
     virtual void setActuator(char type, int value){}    
-    virtual void deleteUserSettings();
-    virtual void setUserSwitches();
+    
+    // settings
+    virtual void deleteUserSettings();        
     virtual void saveUserSettings();
+    
+    // other
     virtual void beep(int numberOfBeeps, boolean shortbeep);    
     virtual void printInfo(Stream &s);        
+    virtual void setUserSwitches();        
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
+
     // initialize suppresses matrix
     virtual void initSuppresses(boolean matrix[BEHAVIOR_COUNT][BEHAVIOR_COUNT]);
+
     // perform robot behavior
     virtual void performBehavior(void);
     virtual void loadSaveUserSettings(boolean readflag);
     virtual void loadUserSettings();
     virtual void addErrorCounter(byte errType);
     virtual void checkErrorCounter();
-    virtual void motorControl();    
-    virtual void motorControlImuRoll();
-    virtual void motorControlPerimeter();
-    virtual void motorControlImuDir();
-    virtual void motorMowControl();
-    virtual void setDefaultTime();
-    virtual void printRemote();
-    virtual void printOdometry();
-    virtual void printMenu();
-    virtual void delayInfo(int ms);
-    virtual void testOdometry();
-    virtual void testMotors();
-    virtual void setDefaults();
+    
+    // read sensors
+    virtual void readSensors();            
+    
+    // read serial
+    virtual void readSerial();    
+    
+    // check sensor
+    virtual void checkButton();
     virtual void checkBattery();
-    virtual void receiveGPSTime();
     virtual void checkTimer();
-    virtual void reverseOrBidir(byte aRollDir);
     virtual void checkCurrent();
     virtual void checkBumpers();
     virtual void checkBumpersPerimeter();
@@ -413,12 +427,32 @@ protected:
     virtual void checkLawn();
     virtual void checkSonar();
     virtual void checkTilt();
+    
+    // motor controllers
+    virtual void motorControl();    
+    virtual void motorControlImuRoll();
+    virtual void motorControlPerimeter();
+    virtual void motorControlImuDir();
+    virtual void motorMowControl();
+    
+    // date & time
+    virtual void setDefaultTime();
+    
+    // set reverse
+    virtual void reverseOrBidir(byte aRollDir);    
+    
+    // other
+    virtual void printRemote();
+    virtual void printOdometry();
+    virtual void printMenu();    
+    virtual void delayInfo(int ms);    
+    virtual void testOdometry();
+    virtual void testMotors();
+    virtual void setDefaults();    
+    virtual void receiveGPSTime();
     virtual void calcOdometry();
-    virtual void checkButton();
-    virtual void readSensors();
     virtual void menu();
     virtual void configureBluetooth(boolean quick){};
-    virtual void readSerial();
 };    
 
 
