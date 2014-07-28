@@ -34,7 +34,6 @@
 class Mower : public Robot
 {
   public:
-    // -------------------  
     Mower();  
     virtual void setup(void);
     virtual int readSensor(char type);

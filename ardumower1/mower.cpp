@@ -86,7 +86,6 @@
 // ------- baudrates---------------------------------
 #define BAUDRATE 19200            // serial output baud rate
 #define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define USE_PFOD 1                // use support for pfod app ?
 
 
 Mower robot;
@@ -131,7 +130,7 @@ Mower::Mower(){
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse            = 1;       // use IMU? 
+  imuUse            = 0;       // use IMU? 
   imuCorrectDir     = 0;       // correct direction by compass?
   imuDirPid.Kp      = 5.0;     // direction PID controller
   imuDirPid.Ki      = 1.0;
@@ -206,11 +205,8 @@ void rpm_interrupt()
 
 void Mower::setup(){
   Wire.begin();          
-  Serial.begin(BAUDRATE);       
-    
-  #ifdef USE_PFOD
-    rc.initSerial(PFOD_BAUDRATE);  
-  #endif  
+  Serial.begin(BAUDRATE);           
+  rc.initSerial(PFOD_BAUDRATE);   
     
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
   #ifdef __AVR__
@@ -312,10 +308,10 @@ void Mower::setup(){
   
   // ADC
   ADCMan.init();
-  ADCMan.setCapture(pinMotorMowSense, 1, 1);
-  ADCMan.setCapture(pinMotorLeftSense, 1, 1);
-  ADCMan.setCapture(pinMotorRightSense, 1, 1);
-  ADCMan.setCapture(pinBatteryVoltage, 1, 0);
+  ADCMan.setCapture(pinMotorMowSense, 1, true);
+  ADCMan.setCapture(pinMotorLeftSense, 1, true);
+  ADCMan.setCapture(pinMotorRightSense, 1, true);
+  ADCMan.setCapture(pinBatteryVoltage, 1, false);
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
   
   imu.init();
@@ -368,8 +364,9 @@ int Mower::readSensor(char type){
 // imu-------------------------------------------------------------------------------------------------------
     case SEN_IMU: float ypr[3]; imu.getEulerRad(ypr); imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; break;    
 // rtc--------------------------------------------------------------------------------------------------------
-    //case SEN_RTC: readDS1307(datetime); break;
-   }
+    case SEN_RTC: readDS1307(datetime); break;
+  }
+  return 0;   
 }
 
 void Mower::setActuator(char type, int value){
@@ -378,12 +375,15 @@ void Mower::setActuator(char type, int value){
     // normal direction
     case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;
     case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break;    
+    // reverse direction
+    //case ACT_MOTOR_LEFT: setL298N(pinMotorRightDir, pinMotorRightPWM, -value); break;
+    //case ACT_MOTOR_RIGHT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, -value); break;    
     case ACT_BUZZER: if (value == 0) noTone(pinBuzzer); else tone(pinBuzzer, value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
-    //case ACT_RTC: setDS1307(datetime); break;
+    case ACT_RTC: setDS1307(datetime); break;
   }
 }
 

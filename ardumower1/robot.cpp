@@ -1434,10 +1434,8 @@ void Robot::loop()  {
   unsigned long stateTime = millis() - stateStartTime;
   int steer;
   
-  readSerial(); 
-  #ifdef USE_PFOD
-    readSerialPfod();    
-  #endif
+  readSerial();   
+  rc.readSerial();    
   readSensors();    
 
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
@@ -1458,7 +1456,6 @@ void Robot::loop()  {
     printInfo(Serial);            
     checkTilt(); 
     //checkErrorCounter();    
-    //pfodLoop();    
     if (stateCurr == STATE_REMOTE) printRemote();    
     loopsPerSec = loopsPerSecCounter;
     if (loopsPerSec > 0) loopsTa = 1000.0 / ((double)loopsPerSec);    
