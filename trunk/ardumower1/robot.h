@@ -33,11 +33,12 @@
 //#include <Servo.h>  // for RC brushless contoller
 #include "drivers.h"
 #include "pid.h"
-#include "behavior.h"
+//#include "behavior.h"
 #include "imu.h"
 #include "adcman.h"
 #include "perimeter.h"
 #include "gps.h"
+#include "pfod.h"
 
 //#include "QueueList.h"
 //#include <limits.h>
@@ -137,13 +138,19 @@ enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER };
 
 class Robot
 {
-  public:
+  public:    
+    Perimeter perimeter;
     IMU imu;
     GPS gps;      
+    RemoteControl rc;
     String name;
     // --------- state machine --------------------------
     byte stateCurr;
+    byte stateLast;
+    byte stateNext;    
     char* stateName();
+    unsigned long stateStartTime;
+    unsigned long stateEndTime;
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
@@ -312,17 +319,16 @@ class Robot
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];
     // --------- behavior -------------------------------
-    Behavior *behaviorCurr; // current behavior
+    /*Behavior *behaviorCurr; // current behavior
     int behaviorCurrIdx;    // current behavior index
     Behavior *behaviors[BEHAVIOR_COUNT];  // all behaviors    
-    boolean suppresses[BEHAVIOR_COUNT][BEHAVIOR_COUNT]; // suppress matrix
+    boolean suppresses[BEHAVIOR_COUNT][BEHAVIOR_COUNT]; // suppress matrix*/
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
     float loopsTa ;   // main loop-time factor (milliseconds)
     int loopsPerSecCounter ;
     byte buttonCounter ;
     byte ledState ;
-    char* consoleModeName;
     byte consoleMode ;
     unsigned long nextTimeButtonCheck ;
     unsigned long nextTimeInfo ;
@@ -355,8 +361,8 @@ class Robot
     virtual void setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, 
       boolean odometryLeftState2, boolean odometryRightState2);
     virtual void setMotorMowRPMState(boolean motorMowRpmState);
-    virtual void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel);
-    virtual void motorControl();
+    virtual void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel);    
+    virtual void setMotorMowSpeed(int pwm, boolean useAccel);
     virtual void setNextState(byte stateNew, byte dir);
     virtual void imuCalibComDeviation();
     virtual void imuSetComCalParam(int type, int i, int j, float value);    
@@ -369,8 +375,8 @@ class Robot
     virtual void deleteUserSettings();
     virtual void setUserSwitches();
     virtual void saveUserSettings();
-    virtual void beep(int numberOfBeeps, boolean shortbeep = false);
-    virtual void printInfo(Stream &s);
+    virtual void beep(int numberOfBeeps, boolean shortbeep);    
+    virtual void printInfo(Stream &s);        
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
@@ -378,6 +384,41 @@ protected:
     virtual void initSuppresses(boolean matrix[BEHAVIOR_COUNT][BEHAVIOR_COUNT]);
     // perform robot behavior
     virtual void performBehavior(void);
+    virtual void loadSaveUserSettings(boolean readflag);
+    virtual void loadUserSettings();
+    virtual void addErrorCounter(byte errType);
+    virtual void checkErrorCounter();
+    virtual void motorControl();    
+    virtual void motorControlImuRoll();
+    virtual void motorControlPerimeter();
+    virtual void motorControlImuDir();
+    virtual void motorMowControl();
+    virtual void setDefaultTime();
+    virtual void printRemote();
+    virtual void printOdometry();
+    virtual void printMenu();
+    virtual void delayInfo(int ms);
+    virtual void testOdometry();
+    virtual void testMotors();
+    virtual void setDefaults();
+    virtual void checkBattery();
+    virtual void receiveGPSTime();
+    virtual void checkTimer();
+    virtual void reverseOrBidir(byte aRollDir);
+    virtual void checkCurrent();
+    virtual void checkBumpers();
+    virtual void checkBumpersPerimeter();
+    virtual void checkPerimeterBoundary();
+    virtual void checkPerimeterFind();
+    virtual void checkLawn();
+    virtual void checkSonar();
+    virtual void checkTilt();
+    virtual void calcOdometry();
+    virtual void checkButton();
+    virtual void readSensors();
+    virtual void menu();
+    virtual void configureBluetooth(boolean quick){};
+    virtual void readSerial();
 };    
 
 

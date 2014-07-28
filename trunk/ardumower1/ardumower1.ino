@@ -36,7 +36,6 @@ Operation modes (press button for x beeps):
 For additional circuits for button, buzzer etc. (DIY version), see www.ardumower.de  
   
  */
-
 #include <Arduino.h>
 #include <Wire.h>
 #ifdef __AVR__
@@ -51,8 +50,7 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
 // ------ choose ONLY ONE robot configuration --------------------------------------------------
 
 #include "mower.h"  // Ardumower Chassis Kit 1.0
-
-//#include "sim.h"  // Ardumower Chassis Kit 1.0 simulator
+//#include "sim.h"  // Ardumower Chassis Kit 1.0 (simbad simulator) - maybe future :)
 
 
 void setup()  {     

@@ -52,10 +52,10 @@ const int BANDPASS_BIN = ( F_BANDPASS / BIN_BANDWIDTH + 0.5) ;
 
 
 
-class PerimeterClass
+class Perimeter
 {
   public:
-    PerimeterClass();    
+    Perimeter();    
     void setPins(byte idx0Pin, byte idx1Pin);
     int getMagnitude(byte idx);    
     int getSmoothMagnitude();
@@ -92,7 +92,6 @@ class PerimeterClass
     void gensignal();
 };
 
-extern PerimeterClass Perimeter;
 
 #endif
 
