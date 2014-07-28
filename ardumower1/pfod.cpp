@@ -25,14 +25,17 @@
 #include "imu.h"
 #include "perimeter.h"
 
-RemoteControl::RemoteControl(Robot *aRobot){
-  robot = aRobot;
+RemoteControl::RemoteControl(){
   pfodCmdComplete = false;
   pfodCmd = "";
   pfodState = PFOD_OFF;
   testmode = 0;
   nextPlotTime = 0;  
   perimeterCaptureIdx = 0;  
+}
+
+void RemoteControl::setRobot(Robot *aRobot){
+  this->robot = aRobot;
 }
 
 void RemoteControl::initSerial(int baudrate){
@@ -924,8 +927,8 @@ void RemoteControl::run(){
       Serial2.print(robot->imuPitch/PI*180);
       Serial2.print(",");
       Serial2.println(robot->imuRoll/PI*180);
-      //Serial2.print(",");
-      /*Serial2.print(robot->imu.gyro.x/PI*180);
+      Serial2.print(",");
+      Serial2.print(robot->imu.gyro.x/PI*180);
       Serial2.print(",");
       Serial2.print(robot->imu.gyro.y/PI*180);
       Serial2.print(",");
@@ -953,7 +956,7 @@ void RemoteControl::run(){
       Serial2.print(",");
       Serial2.print(robot->imu.com.y);
       Serial2.print(",");
-      Serial2.println(robot->imu.com.z);*/
+      Serial2.println(robot->imu.com.z);
     }
   } else if (pfodState == PFOD_PLOT_SENSOR_COUNTERS){
     if (millis() >= nextPlotTime){
@@ -997,7 +1000,7 @@ void RemoteControl::run(){
       Serial2.print(",");
       Serial2.print(robot->sonarDistRight);
       Serial2.print(",");
-      Serial2.println(Perimeter.isInside());
+      Serial2.println(robot->perimeter.isInside());
     }
   } else if (pfodState == PFOD_PLOT_PERIMETER){    
     if (millis() >= nextPlotTime){
@@ -1014,13 +1017,13 @@ void RemoteControl::run(){
         Serial2.print(",");                    
         Serial2.print(robot->perimeterLeft);
         Serial2.print(",");
-        Serial2.print(Perimeter.getSmoothMagnitude());
+        Serial2.print(robot->perimeter.getSmoothMagnitude());
         Serial2.print(",");
-        Serial2.print(Perimeter.isInside());
+        Serial2.print(robot->perimeter.isInside());
         Serial2.print(",");
         Serial2.print(robot->perimeterLeftCounter);
         Serial2.print(",");        
-        Serial2.println(!Perimeter.signalTimedOut());        
+        Serial2.println(!robot->perimeter.signalTimedOut());        
         perimeterCaptureIdx++;
       }
       /*int filterBin = Perimeter.getFilterBin();
@@ -1041,22 +1044,22 @@ void RemoteControl::run(){
       nextPlotTime = millis() + 200;
       float lat, lon;
       unsigned long age;
-      /*gps.f_get_position(&lat, &lon, &age);
+      robot->gps.f_get_position(&lat, &lon, &age);
       Serial2.print((float(millis())/1000.0f));
       Serial2.print(",");
-      Serial2.print(gps.hdop());
+      Serial2.print(robot->gps.hdop());
       Serial2.print(",");
-      Serial2.print(gps.satellites());
+      Serial2.print(robot->gps.satellites());
       Serial2.print(",");
-      Serial2.print(gps.f_speed_kmph());
+      Serial2.print(robot->gps.f_speed_kmph());
       Serial2.print(",");
-      Serial2.print(gps.f_course());
+      Serial2.print(robot->gps.f_course());
       Serial2.print(",");
-      Serial2.print(gps.f_altitude());
+      Serial2.print(robot->gps.f_altitude());
       Serial2.print(",");
       Serial2.print(lat);
       Serial2.print(",");
-      Serial2.println(lon);*/
+      Serial2.println(lon);
     }
   }
 }

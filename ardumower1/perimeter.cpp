@@ -24,7 +24,6 @@
 #include "fix_fft.h"
 #include "adcman.h"
 
-PerimeterClass Perimeter;
 
 //#define pinLED 13                  
 
@@ -40,7 +39,7 @@ int8_t matchSignal[100];
                    0,0,0,0,  0,0,0,0,
                    0,0,0,0 };                   */
                    
-void PerimeterClass::gensignal(){
+void Perimeter::gensignal(){
   //Serial.println("gensignal");
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
@@ -75,7 +74,7 @@ void PerimeterClass::gensignal(){
 }
                    
 
-PerimeterClass::PerimeterClass(){    
+Perimeter::Perimeter(){    
   nextTime = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
@@ -93,14 +92,14 @@ PerimeterClass::PerimeterClass(){
   lastSignalTime = millis();
 }
 
-void PerimeterClass::setPins(byte idx0Pin, byte idx1Pin){
+void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;
   ADCMan.setCapture(idx0Pin, FFTBINS, 1);
   ADCMan.setCapture(idx1Pin, FFTBINS, 1);  
 }
 
-int PerimeterClass::getMagnitude(byte idx){  
+int Perimeter::getMagnitude(byte idx){  
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
     matchedFilter(idx);
     //filterFrequencyMagnitude(idx);    
@@ -108,18 +107,18 @@ int PerimeterClass::getMagnitude(byte idx){
   return mag[idx];
 }
 
-int PerimeterClass::getSmoothMagnitude(){  
+int Perimeter::getSmoothMagnitude(){  
   return smoothMag;
 }
 
-int PerimeterClass::getSpectrum(int fftBin){
+int Perimeter::getSpectrum(int fftBin){
   if (fftBin >= FFTBINS) return 0;
   int v = allmag[fftBin];
   allmag[fftBin] = 0;
   return v;
 }
 
-void PerimeterClass::printADCMinMax(int8_t *samples){
+void Perimeter::printADCMinMax(int8_t *samples){
   int8_t vmax = SCHAR_MIN;
   int8_t vmin = SCHAR_MAX;
   for (byte i=0; i < FFTBINS; i++){
@@ -132,7 +131,7 @@ void PerimeterClass::printADCMinMax(int8_t *samples){
   Serial.println((int)vmax);  
 }
 
-void PerimeterClass::matchedFilter(byte idx){
+void Perimeter::matchedFilter(byte idx){
   //double Ta = millis() - lastMeasureTime;
   //lastMeasureTime = millis();   
   int16_t out[FFTBINS];
@@ -190,27 +189,27 @@ void PerimeterClass::matchedFilter(byte idx){
   ADCMan.restart(idxPin[idx]);    
 }
 
-double PerimeterClass::getSignalMin(){
+double Perimeter::getSignalMin(){
   return signalMin;
 }
 
-double PerimeterClass::getSignalMax(){
+double Perimeter::getSignalMax(){
   return signalMax;
 }
 
-double PerimeterClass::getSignalAvg(){
+double Perimeter::getSignalAvg(){
   return signalAvg;
 }
 
-boolean PerimeterClass::isInside(){
+boolean Perimeter::isInside(){
   return (signalCounter < 0);  
 }
 
-boolean PerimeterClass::signalTimedOut(){
+boolean Perimeter::signalTimedOut(){
   return (millis() > lastSignalTime + 5000);
 }
 
-void PerimeterClass::filterFrequencyMagnitude(byte idx){
+void Perimeter::filterFrequencyMagnitude(byte idx){
   mag[idx] = 0;          
   int8_t im[FFTBINS];
   memset(im, 0, sizeof im);      
@@ -250,20 +249,20 @@ void PerimeterClass::filterFrequencyMagnitude(byte idx){
   }     
 }
 
-int PerimeterClass::getFilterBinCount(){
+int Perimeter::getFilterBinCount(){
   return FFTBINS/2;
 }
 
-int PerimeterClass::getFilterBin(){
+int Perimeter::getFilterBin(){
   return BANDPASS_BIN;
 }
   
-double PerimeterClass::getFilterBandwidth(){
+double Perimeter::getFilterBandwidth(){
   return BIN_BANDWIDTH;
 }
 
 
-void PerimeterClass::printResults(){
+void Perimeter::printResults(){
   Serial.print(" fpeak=");
   Serial.print((int)(peakBin * BIN_BANDWIDTH));
   Serial.print(" fmin=");
@@ -313,7 +312,7 @@ void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, i
 // ip[] holds input data (length > nPts + M )
 // op[] is output buffer
 // nPts is the length of the required output data 
-void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts){  
+void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts){  
   int16_t sum = 0;
   for (int16_t j=0; j<nPts; j++)
   {

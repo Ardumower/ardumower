@@ -45,7 +45,8 @@ class Robot;
 class RemoteControl
 {
   public:
-    RemoteControl(Robot *aRobot);
+    RemoteControl();
+    void setRobot(Robot *aRobot);
     void initSerial(int baudrate);
     void readSerial();
     void run();    

@@ -25,10 +25,10 @@
 #include "robot.h"
 
 #include "drivers.h"
-
+#include "bt.h"
 
 /*
-  Ardumower robot
+  Ardumower robot chassis
 */
 
 class Mower : public Robot
@@ -40,6 +40,7 @@ class Mower : public Robot
     virtual int readSensor(char type);
     virtual void setActuator(char type, int value);
     virtual void initBehaviors(void);
+    virtual void configureBluetooth(boolean quick);
 };
 
 

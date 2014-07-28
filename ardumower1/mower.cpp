@@ -206,6 +206,17 @@ void rpm_interrupt()
 
 void Mower::setup(){
   Wire.begin();          
+  Serial.begin(BAUDRATE);       
+    
+  #ifdef USE_PFOD
+    rc.initSerial(PFOD_BAUDRATE);  
+  #endif  
+    
+  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
+  #ifdef __AVR__
+    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
+  #endif
+  
   // i2c -- turn off internal pull-ups (and use external pull-ups)
   //digitalWrite(SDA, 0);  
   //digitalWrite(SCL, 0);
@@ -305,12 +316,13 @@ void Mower::setup(){
   ADCMan.setCapture(pinMotorLeftSense, 1, 1);
   ADCMan.setCapture(pinMotorRightSense, 1, 1);
   ADCMan.setCapture(pinBatteryVoltage, 1, 0);
-  Perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
+  perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
   
   imu.init();
   gps.init();
 
   initBehaviors();  
+  Robot::setup();
 }
 
 void checkMotorFault(){
@@ -330,7 +342,7 @@ int Mower::readSensor(char type){
     //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
 
 // perimeter----------------------------------------------------------------------------------------------
-    case SEN_PERIM_LEFT: return Perimeter.getMagnitude(0); break;
+    case SEN_PERIM_LEFT: return perimeter.getMagnitude(0); break;
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;
     
 // battery------------------------------------------------------------------------------------------------
@@ -377,7 +389,7 @@ void Mower::setActuator(char type, int value){
 
 void Mower::initBehaviors(void){
    
-  memset(behaviors, 0, sizeof behaviors);
+  /*memset(behaviors, 0, sizeof behaviors);
   behaviors[0] = new ManualBehavior(this);
   behaviors[1] = new ObstacleBehavior(this);
   behaviors[2] = new MowBehavior(this);
@@ -396,7 +408,11 @@ void Mower::initBehaviors(void){
     { false, false, false, false }  
   };
   
-  initSuppresses(suppresses);    
+  initSuppresses(suppresses);    */
 }
-  
+
+void Mower::configureBluetooth(boolean quick){
+  BluetoothConfig bt;
+  bt.setParams("Ardumower", 1234, PFOD_BAUDRATE, quick);  
+}
 
