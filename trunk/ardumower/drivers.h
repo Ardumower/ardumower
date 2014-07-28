@@ -24,7 +24,14 @@
 #define DRIVERS_H
 
 #include <Arduino.h>
-#include <EEPROM.h>
+#ifdef __AVR__
+  // Arduino Mega
+  #include <EEPROM.h>
+#else 
+  // Arduino Due
+  #include "due.h"
+#endif
+
 
 // ultrasonic sensor max echo time
 #define MAX_ECHO_TIME 50000        
