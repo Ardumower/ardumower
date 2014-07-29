@@ -910,9 +910,9 @@ void Robot::readSensors(){
       motorMowSense   = motorMowSenseCurrent   * batVoltage /1000;
     }
     else{
-    motorRightSense = motorRightSenseCurrent * batFull /1000;   // conversion to power in Watt in absence of battery voltage measurement
-    motorLeftSense  = motorLeftSenseCurrent  * batFull /1000;
-    motorMowSense   = motorMowSenseCurrent   * batFull /1000;
+      motorRightSense = motorRightSenseCurrent * batFull /1000;   // conversion to power in Watt in absence of battery voltage measurement
+      motorLeftSense  = motorLeftSenseCurrent  * batFull /1000;
+      motorMowSense   = motorMowSenseCurrent   * batFull /1000;
     }
   
     if ((millis() - lastMotorMowRpmTime) >= 500){                  
@@ -971,18 +971,16 @@ void Robot::readSensors(){
     sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
     sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
   }
-  if (millis() >= nextTimeBumper){    
+  if ((bumperUse) && (millis() >= nextTimeBumper)){    
     nextTimeBumper = millis() + 100;               
-    if (bumperUse){
-      if (readSensor(SEN_BUMPER_LEFT) == 0) {
-        bumperLeftCounter++;
-        bumperLeft=true;
-      }
-      if (readSensor(SEN_BUMPER_RIGHT) == 0) {
-        bumperRightCounter++;
-        bumperRight=true;
-      } 
+    if (readSensor(SEN_BUMPER_LEFT) == 0) {
+      bumperLeftCounter++;
+      bumperLeft=true;
     }
+    if (readSensor(SEN_BUMPER_RIGHT) == 0) {
+      bumperRightCounter++;
+      bumperRight=true;
+    } 
   }    
   if ((timerUse) && (millis() >= nextTimeRTC)) {
     // read RTC
@@ -1024,6 +1022,7 @@ void Robot::readSensors(){
     //chgCurrent = current;        
   }    
 }
+
 
 void Robot::setDefaults(){
   motorLeftSpeed = motorRightSpeed = 0;    

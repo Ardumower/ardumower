@@ -125,7 +125,7 @@ Mower::Mower(){
   //  ------ bumper -----------------------------------
   bumperUse         = 0;      // has bumpers? 
   // ------ sonar ------------------------------------
-  sonarUse          = 1;      // use ultra sonic sensor?
+  sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
   perimeterUse       = 0;      // use perimeter?
