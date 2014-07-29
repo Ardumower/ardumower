@@ -1,5 +1,5 @@
 
-/* I2C test
+/* I2C test  (gyro L3G4200D)
  */
 
 #include <Arduino.h>
