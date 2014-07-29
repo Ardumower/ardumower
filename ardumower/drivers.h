@@ -32,15 +32,11 @@
 #else 
   // Arduino Due
   #include "due.h"
+   // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
   #define Console SerialUSB
   #define Bluetooth Serial2  
 #endif
 
-
-// Due has two serial ports:
-// -Native: SerialUSB
-// -Programming: Serial
-// we want to use 'SerialUSB' as 'Serial' access
 
 // ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
 #define MAX_ECHO_TIME 3000         
