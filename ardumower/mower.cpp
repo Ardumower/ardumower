@@ -209,6 +209,7 @@ void rpm_interrupt(){
 void Mower::setup(){
   Wire.begin();          
   Serial.begin(BAUDRATE);           
+  Serial.println("SETUP");
   rc.initSerial(PFOD_BAUDRATE);   
     
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/

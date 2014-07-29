@@ -149,10 +149,10 @@ boolean DueFlash::write(uint32_t address, byte *data, uint32_t dataLength) {
 
 
 // timers TC0 TC1 TC2   channels 0-2 ids 0-2  3-5  6-8     AB 0 1
-// use TC1 channel 0 
-#define TONE_TIMER TC0
+// use TC2 channel 0 
+#define TONE_TIMER TC2
 #define TONE_CHNL 0
-#define TONE_IRQ TC3_IRQn
+#define TONE_IRQ TC6_IRQn
 
 // TIMER_CLOCK4   84MHz/128 with 16 bit counter give 10 Hz to 656KHz
 //  piano 27Hz to 4KHz
@@ -204,9 +204,12 @@ void noTone(uint32_t ulPin)
 	digitalWrite(ulPin,LOW);  // no signal on pin
 }
 
-// timer ISR  TC1 ch 0
-void TC3_Handler ( void ) {
-	TC_GetStatus(TC1, 0);
+
+// http://forum.arduino.cc/index.php?topic=130423.15;wap2
+
+// timer ISR  TC2 ch 0
+void TC6_Handler ( void ) {
+	TC_GetStatus(TC2, 0);
 	if (toggle_count != 0){
 		// toggle pin  TODO  better
 		digitalWrite(tone_pin,pin_state= !pin_state);

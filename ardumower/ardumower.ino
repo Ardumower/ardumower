@@ -44,7 +44,7 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
   #include <EEPROM.h>
 #else 
   // Arduino Due
-  #include "due.h"
+//  #include "due.h"
 #endif
 
 
@@ -61,7 +61,6 @@ void setup()  {
 void loop()  {     
   robot.loop();    
 }
-
 
 
 
