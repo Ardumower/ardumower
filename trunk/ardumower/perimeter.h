@@ -65,11 +65,16 @@ class Perimeter
 {
   public:
     Perimeter();
+    // choose perimeter type (v1 or v2)
     void setType(byte type);    
+    // set ADC pins
     void setPins(byte idx0Pin, byte idx1Pin);    
+    // get perimeter magnitude
     int getMagnitude(byte idx);    
     int getSmoothMagnitude();
+    // inside perimeter (true) or outside (false)?  
     boolean isInside();
+    // perimeter signal timed out? (e.g. due to broken wire)
     boolean signalTimedOut();
     double getSignalMin();
     double getSignalMax();    
