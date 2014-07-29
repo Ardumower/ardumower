@@ -69,10 +69,17 @@
 //#define pinMuxS0 28              // mux S0 (only TC-G158 board)
 //#define pinMuxS1 26              // mux S1 (only TC-G158 board)
 //#define pinMuxZ A7                 // mux Z (only TC-G158 board)
-#define pinOdometryLeft A12         // left odometry sensor
-#define pinOdometryLeft2 A13        // left odometry sensor (optional two-wire)
-#define pinOdometryRight A15        // right odometry sensor
-#define pinOdometryRight2 A14       // right odometry sensor (optional two-wire)
+#ifdef __AVR__
+  #define pinOdometryLeft A12      // left odometry sensor
+  #define pinOdometryLeft2 A13     // left odometry sensor (optional two-wire)
+  #define pinOdometryRight A15     // right odometry sensor
+  #define pinOdometryRight2 A14    // right odometry sensor (optional two-wire)
+#else
+  #define pinOdometryLeft DAC0     // left odometry sensor
+  #define pinOdometryLeft2 DAC1    // left odometry sensor (optional two-wire)
+  #define pinOdometryRight CANTX   // right odometry sensor  
+  #define pinOdometryRight2 CANRX  // right odometry sensor (optional two-wire)  
+#endif
 #define pinLawnFrontRecv 40        // lawn sensor front receive
 #define pinLawnFrontSend 41        // lawn sensor front sender 
 #define pinLawnBackRecv 42         // lawn sensor back receive
@@ -173,8 +180,7 @@ Mower::Mower(){
 
 
 // remote control (RC) ppm signal change interrupt
-ISR(PCINT0_vect)
-{   
+ISR(PCINT0_vect){   
   unsigned long timeMicros = micros();
   boolean remoteSpeedState = digitalRead(pinRemoteSpeed);
   boolean remoteSteerState = digitalRead(pinRemoteSteer);
@@ -184,8 +190,7 @@ ISR(PCINT0_vect)
 }
 
 // odometry signal change interrupt
-ISR(PCINT2_vect)
-{   
+ISR(PCINT2_vect){   
   unsigned long timeMicros = micros();
   boolean odometryLeftState = digitalRead(pinOdometryLeft);
   boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
@@ -194,10 +199,8 @@ ISR(PCINT2_vect)
   robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);
 }
 
-
 // mower motor speed sensor interrupt
-void rpm_interrupt()
-{
+void rpm_interrupt(){
   boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
   robot.setMotorMowRPMState(motorMowRpmState);
 }
@@ -271,40 +274,57 @@ void Mower::setup(){
   pinMode(pinSonarLeftEcho, INPUT); 
   pinMode(pinSonarRightTrigger, OUTPUT); 
   pinMode(pinSonarRightEcho, INPUT); 
-      
-  // mower motor speed sensor interrupt
-  attachInterrupt(5, rpm_interrupt, CHANGE);
-  
+        
   // R/C
   pinMode(pinRemoteMow, INPUT);
   pinMode(pinRemoteSteer, INPUT);
   pinMode(pinRemoteSpeed, INPUT); 
   pinMode(pinRemoteSwitch, INPUT);       
-  #ifdef __AVR__
-    PCICR |= (1<<PCIE0);
-    PCMSK0 |= (1<<PCINT4);
-    PCMSK0 |= (1<<PCINT5);
-    PCMSK0 |= (1<<PCINT6);
-    PCMSK0 |= (1<<PCINT1);
-  #endif   
-  
+
   // odometry
   pinMode(pinOdometryLeft, INPUT_PULLUP);  
   pinMode(pinOdometryLeft2, INPUT_PULLUP);    
   pinMode(pinOdometryRight, INPUT_PULLUP);
   pinMode(pinOdometryRight2, INPUT_PULLUP);  
-  #ifdef __AVR__  
-    PCICR |= (1<<PCIE2);
-    PCMSK2 |= (1<<PCINT20);
-    PCMSK2 |= (1<<PCINT21);  
-    PCMSK2 |= (1<<PCINT22);
-    PCMSK2 |= (1<<PCINT23);      
-  #endif
   
   // user switches
   pinMode(pinUserSwitch1, OUTPUT);
   pinMode(pinUserSwitch2, OUTPUT);
   pinMode(pinUserSwitch3, OUTPUT);   
+
+  // enable interrupts
+  #ifdef __AVR__
+    // R/C
+    PCICR |= (1<<PCIE0);
+    PCMSK0 |= (1<<PCINT4);
+    PCMSK0 |= (1<<PCINT5);
+    PCMSK0 |= (1<<PCINT6);
+    PCMSK0 |= (1<<PCINT1);  
+    
+    // odometry
+    PCICR |= (1<<PCIE2);
+    PCMSK2 |= (1<<PCINT20);
+    PCMSK2 |= (1<<PCINT21);  
+    PCMSK2 |= (1<<PCINT22);
+    PCMSK2 |= (1<<PCINT23);          
+    
+    // mower motor speed sensor interrupt
+    attachInterrupt(5, rpm_interrupt, CHANGE);  
+  #else
+    // Due interrupts
+    attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
+    attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
+    attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
+    attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
+    
+    attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
+    attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
+    attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
+    attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
+    
+    attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
+  #endif   
+  
   
   // ADC
   ADCMan.init();
