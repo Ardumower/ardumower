@@ -120,14 +120,14 @@ String date2str(date_t date){
 }   
             
 // ---- I2C helpers --------------------------------------------------------------
-void I2CwriteTo(int device, byte address, byte val) {
+void I2CwriteTo(uint8_t device, uint8_t address, uint8_t val) {
    Wire.beginTransmission(device); //start transmission to device 
    Wire.write(address);        // send register address
    Wire.write(val);        // send value to write
    Wire.endTransmission(); //end transmission
 }
 
-void I2CwriteTo(int device, byte address, int num, byte buff[]) {
+void I2CwriteTo(uint8_t device, uint8_t address, int num, uint8_t buff[]) {
    Wire.beginTransmission(device); //start transmission to device 
    Wire.write(address);        // send register address
    for (int i=0; i < num; i++){
@@ -136,7 +136,7 @@ void I2CwriteTo(int device, byte address, int num, byte buff[]) {
    Wire.endTransmission(); //end transmission
 }
 
-int I2CreadFrom(int device, byte address, int num, byte buff[], int retryCount) {
+int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], int retryCount) {
   int i = 0;
   for (int j=0; j < retryCount+1; j++){
     i=0;

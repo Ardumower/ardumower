@@ -292,9 +292,9 @@ void IMU::readADXL345B(){
   // With 10 bits measuring over a +/-4g range we can find how to convert by using the equation:
   // Gs = Measurement Value * (G-range/(2^10)) or Gs = Measurement Value * (8/1024)
   // ( *0.0078 )
-  float x=((float)(((int16_t)buf[1]<<8) | buf[0])) ;
-  float y=((float)(((int16_t)buf[3]<<8) | buf[2])) ;
-  float z=((float)(((int16_t)buf[5]<<8) | buf[4])) ;  
+  float x=(int16_t) (((uint16_t)buf[1]) << 8 | buf[0]); 
+  float y=(int16_t) (((uint16_t)buf[3]) << 8 | buf[2]); 
+  float z=(int16_t) (((uint16_t)buf[5]) << 8 | buf[4]); 
   //Console.println(z);
   if (useAccCalibration){
     x -= accOfs.x;
@@ -378,17 +378,17 @@ void IMU::readL3G4200D(boolean useTa){
   //  if (bitRead(fifoSrcReg, 6)==1) Console.println(F("IMU error: FIFO overrun"));
 
   memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
-  I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
-  //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
+  I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
+  //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
 
   gyro.x = gyro.y = gyro.z = 0;
   //Console.print("fifo:");
   //Console.println(countOfData);
   if (!useGyroCalibration) countOfData = 1;
   for (uint8_t i=0; i<countOfData; i++){
-      gyro.x += ((gyroFifo[i].xh << 8) | gyroFifo[i].xl);
-      gyro.y += ((gyroFifo[i].yh << 8) | gyroFifo[i].yl);
-      gyro.z += ((gyroFifo[i].zh << 8) | gyroFifo[i].zl);
+      gyro.x += (int16_t) (((uint16_t)gyroFifo[i].xh) << 8 | gyroFifo[i].xl);
+      gyro.y += (int16_t) (((uint16_t)gyroFifo[i].yh) << 8 | gyroFifo[i].yl);
+      gyro.z += (int16_t) (((uint16_t)gyroFifo[i].zh) << 8 | gyroFifo[i].zl);
       if (useGyroCalibration){
         gyro.x -= gyroOfs.x;
         gyro.y -= gyroOfs.y;
@@ -421,10 +421,10 @@ void IMU::readHMC5883L(){
     errorCounter++;
     return;
   }
-  // scale +1.3Gauss..-1.3Gauss  (*0.00092)
-  com.x = ((float)(((int16_t)buf[0]<<8) | buf[1])) ;
-  com.y = ((float)(((int16_t)buf[4]<<8) | buf[5])) ;
-  com.z = ((float)(((int16_t)buf[2]<<8) | buf[3])) ;          
+  // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
+  com.x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
+  com.y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
+  com.z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);
 }
 
 float IMU::sermin(float oldvalue, float newvalue){
