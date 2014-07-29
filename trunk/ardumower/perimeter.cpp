@@ -88,8 +88,6 @@ Perimeter::Perimeter(){
   memset(allmag, 0, sizeof allmag);          
   //signalsize = sizeof matchSignal;
   gensignal();  
-  Serial.print("matchSignal size=");
-  Serial.println(signalsize);
   lastSignalTime = millis();
 }
 
@@ -102,6 +100,9 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[1] = idx1Pin;
   ADCMan.setCapture(idx0Pin, FFTBINS, 1);
   ADCMan.setCapture(idx1Pin, FFTBINS, 1);  
+  
+  Serial.print("matchSignal size=");
+  Serial.println(signalsize);  
 }
 
 int Perimeter::getMagnitude(byte idx){  
