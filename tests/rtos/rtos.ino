@@ -1,5 +1,5 @@
 
-/* RTOS test
+/* RTOS test  (requires FreeRTOS, imu.cpp)
  */
 
 #include <Arduino.h>
