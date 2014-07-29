@@ -926,7 +926,7 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->imuPitch/PI*180);
       Bluetooth.print(",");
-      Bluetooth.println(robot->imuRoll/PI*180);
+      Bluetooth.print(robot->imuRoll/PI*180);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.gyro.x/PI*180);
       Bluetooth.print(",");
