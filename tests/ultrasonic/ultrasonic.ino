@@ -28,6 +28,9 @@ unsigned int readHCSR04(int triggerPin, int echoPin){
 
 
 void setup()  {
+  pinMode(pinTrigger , OUTPUT);
+  pinMode(pinEcho , INPUT);  
+
   Serial.begin(19200);
   while (!Serial) ; // required if using Due native port  
   Serial.println("START");  
