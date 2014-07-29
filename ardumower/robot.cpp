@@ -1436,7 +1436,7 @@ void Robot::loop()  {
   
   readSerial();   
   rc.readSerial();    
-  readSensors();    
+  readSensors();  
 
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
     nextTimeOdometryInfo = millis() + 300;
@@ -1641,7 +1641,7 @@ void Robot::loop()  {
   bumperRight = false;
   bumperLeft = false;     
   
-  delay(5);                              
+  delay(5);                           
   loopsPerSecCounter++;
   
 }
