@@ -115,7 +115,7 @@ Mower::Mower(){
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.001;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
-  motorMowPowerMax = 40.0;     // motor mower max power (Watt)
+  motorMowPowerMax = 50.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
   motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)

@@ -624,9 +624,11 @@ void Robot::printInfo(Stream &s){
   Streamprint(s, "v%1d ", consoleMode);			    
   Streamprint(s, "%4s ", stateNames[stateCurr]);			    
   if (consoleMode == CONSOLE_PERIMETER){
-    Streamprint(s, "sig min %4d max %4d avg %4d  mag %5d  in %2d  cnt %4d  on %2d\r\n", 
+    Streamprint(s, "sig min %4d max %4d avg %4d  mag %5d",
       (int)perimeter.getSignalMin(), (int)perimeter.getSignalMax(), (int)perimeter.getSignalAvg(),
-      perimeterLeft, (int)perimeterLeftState, perimeterLeftCounter, (int)!perimeter.signalTimedOut());
+      perimeterLeft);
+    Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",  
+      (int)perimeterLeftState, perimeterLeftCounter, (int)(!perimeter.signalTimedOut()) );      
   } else {  
     if (odometryUse) Streamprint(s, "odo %4d %4d ", (int)odometryLeft, (int)odometryRight);   
     Streamprint(s, "spd %4d %4d %4d ", (int)motorLeftSpeed, (int)motorRightSpeed, (int)motorMowRpm);
@@ -651,16 +653,16 @@ void Robot::printInfo(Stream &s){
       //Streamprint(s, "per %3d ", perimeterLeft);          
       if (perimeterUse) Streamprint(s, "per %3d ", perimeterLeftCounter);                  
       if (lawnSensorUse) Streamprint(s, "lawn %3d ", lawnSensorCounter);
-      if (gpsUse) Streamprint(s, "gps %2d ", (int)gps.satellites());
-    }  
+      if (gpsUse) Streamprint(s, "gps %2d ", (int)gps.satellites());            
+    }
     Streamprint(s, "bat %2d.%01d ", (int)batVoltage, (int)((batVoltage *10) - ((int)batVoltage*10)) );       
     Streamprint(s, "chg %2d.%01d %2d.%01d ", 
-      (int)chgVoltage, (int)((chgVoltage *10) - ((int)chgVoltage*10)),
-      (int)chgCurrent, (int)((abs(chgCurrent) *10) - ((int)abs(chgCurrent)*10))    
-    );    
+        (int)chgVoltage, (int)((chgVoltage *10) - ((int)chgVoltage*10)),
+        (int)chgCurrent, (int)((abs(chgCurrent) *10) - ((int)abs(chgCurrent)*10))    
+      );    
     Streamprint(s, "imu%3d ", imu.getCallCounter());  
     Streamprint(s, "adc%3d ", ADCMan.getCapturedChannels());  
-    Streamprint(s, "%s\r\n", name.c_str());
+    Streamprint(s, "%s\r\n", name.c_str());                  
   }
 }
 
