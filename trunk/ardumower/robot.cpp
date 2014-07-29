@@ -189,8 +189,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, userSwitch3);    
   eereadwrite(readflag, addr, timerUse);
   eereadwrite(readflag, addr, timer);  
-  Serial.print("loadSaveUserSettings addrstop=");
-  Serial.println(addr);
+  Console.print("loadSaveUserSettings addrstop=");
+  Console.println(addr);
 }
 
 void Robot::loadUserSettings(){
@@ -386,7 +386,7 @@ void Robot::motorControlImuRoll(){
   imuRollPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
   if (imuRollPID.Ta > 0.5) imuRollPID.Ta = 0; // should only happen for the very first call
   imuRollPID.x = distancePI(imuYaw, imuRollHeading) / PI * 180.0;            
-  //Serial.println(imuRollPID.x);    
+  //Console.println(imuRollPID.x);    
   imuRollPID.Kp = imuRollPid.Kp;
   imuRollPID.Ki = imuRollPid.Ki;
   imuRollPID.Kd = imuRollPid.Kd;
@@ -448,7 +448,7 @@ void Robot::motorControlImuDir(){
   imuDirPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			              
   if (imuDirPID.Ta > 0.5) imuDirPID.Ta = 0; // should only happen for the very first call
   imuDirPID.x = distancePI(imuYaw, imuDriveHeading) / PI * 180.0;            
-  //Serial.println(imuDirPID.x);    
+  //Console.println(imuDirPID.x);    
   imuDirPID.Kp = imuDirPid.Kp;
   imuDirPID.Ki = imuDirPid.Ki;
   imuDirPID.Kd = imuDirPid.Kd;  
@@ -576,48 +576,48 @@ void Robot::setup()  {
   delay(100);
   setActuator(ACT_BUZZER, 0);
   delay(900);  
-  Serial.println(F("START"));  
-  Serial.print(F("Ardumower v"));
-  Serial.println(verToString(VER));
-  Serial.println(F("press..."));
-  Serial.println(F("  d for menu"));    
-  Serial.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
-  Serial.println(consoleModeNames[consoleMode]);
+  Console.println(F("START"));  
+  Console.print(F("Ardumower v"));
+  Console.println(verToString(VER));
+  Console.println(F("press..."));
+  Console.println(F("  d for menu"));    
+  Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
+  Console.println(consoleModeNames[consoleMode]);
 } 
 
 
 void Robot::printRemote(){
-  Serial.print("RC ");    
-  Serial.print(remoteSwitch);  
-  Serial.print(",");      
-  Serial.print(remoteSteer);
-  Serial.print(",");    
-  Serial.print(remoteSpeed);    
-  Serial.print(",");        
-  Serial.println(remoteMow);            
+  Console.print("RC ");    
+  Console.print(remoteSwitch);  
+  Console.print(",");      
+  Console.print(remoteSteer);
+  Console.print(",");    
+  Console.print(remoteSpeed);    
+  Console.print(",");        
+  Console.println(remoteMow);            
 }
 
 void Robot::printOdometry(){
-  Serial2.print("ODO,");
-  Serial2.print(odometryX);
-  Serial2.print(",");
-  Serial2.println(odometryY);  
-  Serial.print("ODO,");
-  Serial.print(odometryX);
-  Serial.print(",");
-  Serial.println(odometryY);  
+  Console.print("ODO,");
+  Console.print(odometryX);
+  Console.print(",");
+  Console.println(odometryY);  
+  Console.print("ODO,");
+  Console.print(odometryX);
+  Console.print(",");
+  Console.println(odometryY);  
 }
 
 void Robot::printInfo(Stream &s){
-  /*Serial.print(millis()/1000);
-  Serial.print(",");
-  Serial.print(motorMowRPM);
-  Serial.print(",");
-  Serial.print(motorMowRpm);
-  Serial.print(",");
-  Serial.println(motorMowPWM);
+  /*Console.print(millis()/1000);
+  Console.print(",");
+  Console.print(motorMowRPM);
+  Console.print(",");
+  Console.print(motorMowRpm);
+  Console.print(",");
+  Console.println(motorMowPWM);
   return;*/
-  //Serial.println(time2str(datetime.time));
+  //Console.println(time2str(datetime.time));
   Streamprint(s, "t%6u ", (millis()-stateStartTime)/1000);  
   Streamprint(s, "l%3u ", loopsPerSec);  
   //Streamprint(s, "r%4u ", freeRam());  
@@ -667,15 +667,15 @@ void Robot::printInfo(Stream &s){
 }
 
 void Robot::printMenu(){  
-  Serial.println();
-  Serial.println(F("1=test motors"));
-  Serial.println(F("2=test odometry"));
-  Serial.println(F("3=setup BT module config (quick baudscan/recommended)"));
-  Serial.println(F("4=setup BT module config (extensive baudscan)"));
-  Serial.println(F("5=calibrate IMU acc"));
-  Serial.println(F("6=delete IMU calib"));
-  Serial.println(F("0=exit"));  
-  Serial.println();
+  Console.println();
+  Console.println(F("1=test motors"));
+  Console.println(F("2=test odometry"));
+  Console.println(F("3=setup BT module config (quick baudscan/recommended)"));
+  Console.println(F("4=setup BT module config (extensive baudscan)"));
+  Console.println(F("5=calibrate IMU acc"));
+  Console.println(F("6=delete IMU calib"));
+  Console.println(F("0=exit"));  
+  Console.println();
 }
 
 void Robot::delayInfo(int ms){
@@ -683,7 +683,7 @@ void Robot::delayInfo(int ms){
   while (millis() < endtime){
     readSensors();
     motorControl();
-    printInfo(Serial);
+    printInfo(Console);
     delay(1000);
   }
 }
@@ -695,16 +695,16 @@ void Robot::testOdometry(){
   setMotorSpeed(motorSpeedMax/5, motorSpeedMax/5, false);
   while (true){ 
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
-      Serial.print("left=");
-      Serial.print(odometryLeft);
-      Serial.print("  right=");
-      Serial.println(odometryRight);              
+      Console.print("left=");
+      Console.print(odometryLeft);
+      Console.print("  right=");
+      Console.println(odometryRight);              
       lastLeft = odometryLeft;
       lastRight = odometryRight;
     }
     delay(100);
-    if (Serial.available() > 0){
-      ch = (char)Serial.read();      
+    if (Console.available() > 0){
+      ch = (char)Console.read();      
       if (ch == '0') break;
     }
   };
@@ -712,19 +712,19 @@ void Robot::testOdometry(){
 }
 
 void Robot::testMotors(){
-  Serial.println("testing left motor (forward) half speed...");    
+  Console.println("testing left motor (forward) half speed...");    
   setMotorSpeed(motorSpeedMax/2, 0, false);
   delayInfo(5000);
   setMotorSpeed(0, 0, false);
-  Serial.println("testing left motor (reverse) full speed...");
+  Console.println("testing left motor (reverse) full speed...");
   delay(1000);          
   setMotorSpeed(-motorSpeedMax, 0, false);
   delayInfo(5000);          
-  Serial.println("testing right motor (forward) half speed...");
+  Console.println("testing right motor (forward) half speed...");
   setMotorSpeed(0, motorSpeedMax/2, false);
   delayInfo(5000);
   setMotorSpeed(0, 0, false);
-  Serial.println("testing right motor (reverse) full speed...");
+  Console.println("testing right motor (reverse) full speed...");
   delay(1000);          
   setMotorSpeed(0, -motorSpeedMax, false);
   delayInfo(5000);
@@ -735,8 +735,8 @@ void Robot::menu(){
   char ch;  
   printMenu();  
   while(true){    
-    if (Serial.available() > 0) {
-      ch = (char)Serial.read();            
+    if (Console.available() > 0) {
+      ch = (char)Console.read();            
       switch (ch){
         case '0': 
           return;           
@@ -772,15 +772,15 @@ void Robot::menu(){
 
 void Robot::readSerial() {
   // serial input
-  if (Serial.available() > 0) {
-     char ch = (char)Serial.read();
+  if (Console.available() > 0) {
+     char ch = (char)Console.read();
      switch (ch){
        case 'd': 
          menu(); // menu
          break;
        case 'v': 
          consoleMode = (consoleMode +1) % 3;
-         Serial.println(consoleModeNames[consoleMode]);
+         Console.println(consoleModeNames[consoleMode]);
          break; 
        case 'h':
          setNextState(STATE_PERI_FIND, 0); // press 'h' to drive home
@@ -840,7 +840,7 @@ void Robot::checkButton(){
   if ( ((!buttonPressed) && (buttonCounter > 0)) || ((buttonPressed) && (millis() >= nextTimeButton)) ) {                
     nextTimeButton = millis() + 1000;
     if (buttonPressed){
-      Serial.println(F("buttonPressed"));
+      Console.println(F("buttonPressed"));
       // ON/OFF button pressed                                                
       beep(1);
       buttonCounter++;
@@ -939,7 +939,7 @@ void Robot::readSensors(){
       else setActuator(ACT_LED, LOW);      
     if (perimeter.signalTimedOut()){
       if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
-        Serial.println("Error: Perimeter timeout");
+        Console.println("Error: Perimeter timeout");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
       }
@@ -956,10 +956,10 @@ void Robot::readSensors(){
     double deltaFront = lawnSensorFront/lawnSensorFrontOld * 100.0;    
     double deltaBack = lawnSensorBack/lawnSensorBackOld * 100.0;        
     if ((deltaFront <= 95) || (deltaBack <= 95)){
-      Serial.print("LAWN ");
-      Serial.print(deltaFront);
-      Serial.print(",");
-      Serial.println(deltaBack);
+      Console.print("LAWN ");
+      Console.print(deltaFront);
+      Console.print(",");
+      Console.println(deltaBack);
       lawnSensorCounter++;
       lawnSensor=true;
     }
@@ -998,7 +998,7 @@ void Robot::readSensors(){
     //imu.getYawPitchRoll(ypr);
     if (imu.getErrorCounter()>0) {
       addErrorCounter(ERR_IMU_COMM);
-      Serial.println("IMU comm error");    
+      Console.println("IMU comm error");    
     }
     imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; 
   }  
@@ -1129,18 +1129,18 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateStartTime = millis();
   stateLast = stateCurr;
   stateCurr = stateNext;    
-  printInfo(Serial);          
+  printInfo(Console);          
 }
 
 // check (low) battery
 void Robot::checkBattery(){
   if (batMonitor){
     if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF)) {
-      Serial.println(F("triggered batGoHomeIfBelow"));
+      Console.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
     } else if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF))  {
-      Serial.println(F("triggered batSwitchOffIfBelow"));
+      Console.println(F("triggered batSwitchOffIfBelow"));
       beep(2, true);      
       setNextState(STATE_OFF, 0);
     }
@@ -1183,7 +1183,7 @@ void Robot::checkTimer(){
             // start timer triggered
             stopTimerTriggered = false;
             if ((stateCurr == STATE_CHARGE) || (stateCurr == STATE_OFF)){
-              Serial.println("timer start triggered");
+              Console.println("timer start triggered");
               motorMowEnable = true;
               setNextState(STATE_FORWARD, 0);
             } 
@@ -1193,7 +1193,7 @@ void Robot::checkTimer(){
     }
     if (stopTimerTriggered){
       if (stateCurr == STATE_FORWARD){
-        Serial.println("timer stop triggered");
+        Console.println("timer stop triggered");
         setNextState(STATE_PERI_FIND, 0);
       } 
     }
@@ -1217,7 +1217,7 @@ void Robot::checkCurrent(){
     motorMowSenseCounter++;
     motorMowSenseErrorCounter++;
     if (motorMowSenseErrorCounter > 3){
-      Serial.println("Error: Motor mow current");
+      Console.println("Error: Motor mow current");
       addErrorCounter(ERR_MOW_SENSE);
       setNextState(STATE_ERROR, 0);
       return;
@@ -1347,13 +1347,13 @@ void Robot::checkSonar(){
           if (     ((NO_ECHO != sonarDistCenter) && (sonarDistCenter < sonarTriggerBelow*2)) 
                ||  ((NO_ECHO != sonarDistRight) && (sonarDistRight < sonarTriggerBelow*2)) 
                ||  ((NO_ECHO != sonarDistLeft) && (sonarDistLeft < sonarTriggerBelow*2))  ) {    
-              //Serial.println("sonar slow down");
+              //Console.println("sonar slow down");
               motorLeftSpeed /= 1.5;
               motorRightSpeed /= 1.5;
               sonarObstacleTimeout = millis() + 7000;
           }
         } else if ((sonarObstacleTimeout != 0) && (millis() > sonarObstacleTimeout)) {
-          //Serial.println("no sonar");
+          //Console.println("no sonar");
           sonarObstacleTimeout = 0;
           motorLeftSpeed *= 1.5;
           motorRightSpeed *= 1.5;
@@ -1382,7 +1382,7 @@ void Robot::checkTilt(){
   int rollAngle  = (imuRoll/PI*180.0);
   if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
-      Serial.println("Error: IMU tilt");
+      Console.println("Error: IMU tilt");
       addErrorCounter(ERR_IMU_TILT);
       setNextState(STATE_ERROR,0);
     }
@@ -1454,7 +1454,7 @@ void Robot::loop()  {
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
-    printInfo(Serial);            
+    printInfo(Console);            
     checkTilt(); 
     //checkErrorCounter();    
     if (stateCurr == STATE_REMOTE) printRemote();    

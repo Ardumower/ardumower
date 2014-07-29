@@ -165,10 +165,10 @@ void fft_windowing(int8_t f[], int16_t m)
     int16_t n, rad;
     for (n = 0; n < M; n++) {
 #ifdef TEST_FFT_WINDOWING
-	Serial.print(n, DEC);
-	Serial.print(":");
-	Serial.print(f[n], DEC);
-	Serial.print(" weighted by ");
+	Console.print(n, DEC);
+	Console.print(":");
+	Console.print(f[n], DEC);
+	Console.print(" weighted by ");
 #endif
         rad = (N_WAVE * n) / M;		// calculate index for pseudo-cos function from lookup table
                                         // N_WAVE is 2pi, so to speak, so calculate N_WAVE* n / M
@@ -177,9 +177,9 @@ void fft_windowing(int8_t f[], int16_t m)
         f[n] = int8_t((int16_t(f[n])*(127 - int16_t(COS8(rad)) ) ) / 256);
 // is                      0.5 - 0.5 cos(2 * pi* n / M)
 #ifdef TEST_FFT_WINDOWING
-	Serial.print(COS8(rad), DEC);
-	Serial.print(" -> "); 
-	Serial.println(f[n], DEC);
+	Console.print(COS8(rad), DEC);
+	Console.print(" -> "); 
+	Console.println(f[n], DEC);
 #endif
     }
 }

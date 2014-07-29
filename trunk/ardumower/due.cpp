@@ -23,6 +23,7 @@
 
 #include <Arduino.h>
 #include "due.h"
+#include "drivers.h"
 
 #include "flash_efc.h"
 #include <chip.h>
@@ -37,7 +38,7 @@
 #define FLASH_DEBUG 1
 
 #ifdef FLASH_DEBUG
-#define _FLASH_DEBUG(x) Serial.print(x);
+#define _FLASH_DEBUG(x) Console.print(x);
 #else
 #define _FLASH_DEBUG(x)
 #endif
