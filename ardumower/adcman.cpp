@@ -23,6 +23,7 @@
 #include <Arduino.h>
 #include <limits.h>
 #include "adcman.h"
+#include "drivers.h"
 
 #define CHANNELS 10
 #define NO_CHANNEL 255
@@ -87,10 +88,10 @@ void ADCManager::calibrateOfs(byte pin){
       double center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
       ofs[ch] = center;
     }
-  Serial.print("ADC");
-  Serial.print(ch);
-  Serial.print("ofs=");    
-  Serial.println(ofs[ch]);
+  Console.print("ADC");
+  Console.print(ch);
+  Console.print("ofs=");    
+  Console.println(ofs[ch]);
 }
 
 
@@ -112,8 +113,8 @@ void startADC(boolean fast){
 }
   
 void ADCManager::startCapture(boolean fast){
-  //Serial.print("starting capture ch");
-  //Serial.println(channel);
+  //Console.print("starting capture ch");
+  //Console.println(channel);
   position = 0;
   busy=true;
   startADC(fast);  
@@ -166,8 +167,8 @@ void ADC_Handler(void){
 #endif
 
 void ADCManager::stopCapture(){  
-  //Serial.print("stopping capture ch");
-  //Serial.println(channel);  
+  //Console.print("stopping capture ch");
+  //Console.println(channel);  
   position = 0;
 #ifdef __AVR__  
   ADCSRA &= ~_BV(ADEN);
@@ -181,8 +182,8 @@ void ADCManager::stopCapture(){
 void ADCManager::run(){
   //return;
   if (busy) {
-    //Serial.print("busy pos=");
-    //Serial.println(position);
+    //Console.print("busy pos=");
+    //Console.println(position);
     return;
   }
   if (position != 0){

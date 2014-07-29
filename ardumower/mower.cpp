@@ -21,9 +21,9 @@
 /* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics)
    (Arduino Mega) */
 
-#include "mower.h"
 #include <Arduino.h>
-
+#include "mower.h"
+#include "due.h"
 
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
@@ -207,9 +207,10 @@ void rpm_interrupt(){
 
 
 void Mower::setup(){
-  Wire.begin();          
-  Serial.begin(BAUDRATE);           
-  Serial.println("SETUP");
+  Wire.begin();            
+  Console.begin(BAUDRATE);   
+  while (!Console) ; // required if using Due native port
+  Console.println("SETUP");
   rc.initSerial(PFOD_BAUDRATE);   
     
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
@@ -325,8 +326,7 @@ void Mower::setup(){
     
     attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
   #endif   
-  
-  
+    
   // ADC
   ADCMan.init();
   ADCMan.setCapture(pinMotorMowSense, 1, true);
@@ -339,7 +339,7 @@ void Mower::setup(){
   gps.init();
 
   initBehaviors();  
-  Robot::setup();
+  Robot::setup();  
 }
 
 void checkMotorFault(){

@@ -166,10 +166,10 @@ void IMU::loadCalib(){
   int addr = ADDR;
   eeread(addr, magic);
   if (magic != MAGIC) {
-    Serial.println(F("IMU error: no calib data"));
+    Console.println(F("IMU error: no calib data"));
     return;  
   }
-  Serial.println(F("IMU: found calib data"));
+  Console.println(F("IMU: found calib data"));
   loadSaveCalib(true);
 }
 
@@ -187,7 +187,7 @@ void IMU::deleteCalib(){
   comCalA_1[2][0] = 0; comCalA_1[2][1] = 0; comCalA_1[2][2] = 1;
   comCalB[0] = comCalB[1] = comCalB[2] = 0;
   for (int i=0; i < 36; i++) comDeviation[i] = i*10-180;
-  Serial.println("IMU calibration deleted");  
+  Console.println("IMU calibration deleted");  
 }
 
 void IMU::setComCalParam(int type, int i, int j, float value){  
@@ -199,46 +199,46 @@ void IMU::setComCalParam(int type, int i, int j, float value){
 }
 
 void IMU::printPt(point_float_t p){
-  Serial.print(p.x);
-  Serial.print(",");    
-  Serial.print(p.y);  
-  Serial.print(",");
-  Serial.println(p.z);  
+  Console.print(p.x);
+  Console.print(",");    
+  Console.print(p.y);  
+  Console.print(",");
+  Console.println(p.z);  
 }
 
 void IMU::printCalib(){
-  Serial.println(F("--------"));
-  Serial.print(F("accOfs="));
+  Console.println(F("--------"));
+  Console.print(F("accOfs="));
   printPt(accOfs);
-  Serial.print(F("accScale="));
+  Console.print(F("accScale="));
   printPt(accScale);
-  Serial.print(F("comCalB="));
+  Console.print(F("comCalB="));
   for (int i=0; i < 3; i++){
-    Serial.print(comCalB[i], 6);
-    Serial.print("  ");
+    Console.print(comCalB[i], 6);
+    Console.print("  ");
   }  
-  Serial.print(F("comCalA_1="));
+  Console.print(F("comCalA_1="));
   for (int i=0; i < 3; i++){
     for (int j=0; j < 3; j++){
-      Serial.print(comCalA_1[i][j], 6);
-      Serial.print("  ");
+      Console.print(comCalA_1[i][j], 6);
+      Console.print("  ");
     }    
   }    
-  Serial.println();    
-  Serial.println(F("comDev"));  
+  Console.println();    
+  Console.println(F("comDev"));  
   for (int i=0; i < 36; i++){  
-    Serial.print(i*10-180);  
-    Serial.print("=");      
-    Serial.println(comDeviation[i]);
+    Console.print(i*10-180);  
+    Console.print("=");      
+    Console.println(comDeviation[i]);
   }
-  Serial.println(F("--------"));
+  Console.println(F("--------"));
 }
 
 
 
 // calculate gyro offsets
 void IMU::calibGyro(){
-  Serial.println(F("calibGyro"));  
+  Console.println(F("calibGyro"));  
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
   point_float_t ofs;
@@ -257,21 +257,21 @@ void IMU::calibGyro(){
       ofs.z += ((float)gyro.z)/ 50.0;          
       gyroNoise += sq(gyro.z-gyroOfs.z) /50.0;   // noise is computed with last offset calculation
     }
-    Serial.print(F("gyro calib min="));
-    Serial.print(zmin);
-    Serial.print(F("\tmax="));    
-    Serial.print(zmax);
-    Serial.print(F("\tofs="));        
-    Serial.print(ofs.z);    
-    Serial.print(F("\tnoise="));                
-    Serial.println(gyroNoise);  
+    Console.print(F("gyro calib min="));
+    Console.print(zmin);
+    Console.print(F("\tmax="));    
+    Console.print(zmax);
+    Console.print(F("\tofs="));        
+    Console.print(ofs.z);    
+    Console.print(F("\tnoise="));                
+    Console.println(gyroNoise);  
     if (gyroNoise < 20) break; // optimum found    
     gyroOfs = ofs; // new offset found
   }  
   useGyroCalibration = true;
-  Serial.print(F("counter="));
-  Serial.println(gyroCounter);  
-  Serial.print(F("ofs="));
+  Console.print(F("counter="));
+  Console.println(gyroCounter);  
+  Console.print(F("ofs="));
   printPt(gyroOfs);  
 }      
 
@@ -295,7 +295,7 @@ void IMU::readADXL345B(){
   float x=((float)(((int16_t)buf[1]<<8) | buf[0])) ;
   float y=((float)(((int16_t)buf[3]<<8) | buf[2])) ;
   float z=((float)(((int16_t)buf[5]<<8) | buf[4])) ;  
-  //Serial.println(z);
+  //Console.println(z);
   if (useAccCalibration){
     x -= accOfs.x;
     y -= accOfs.y;
@@ -304,7 +304,7 @@ void IMU::readADXL345B(){
     y /= accScale.y*0.5;    
     z /= accScale.z*0.5;
     acc.x = x;
-    //Serial.println(z);
+    //Console.println(z);
     acc.y = y;
     acc.z = z;
   } else {
@@ -324,13 +324,13 @@ void IMU::readADXL345B(){
 
 // L3G4200D gyro sensor driver
 boolean IMU::initL3G4200D(){
-  Serial.println(F("initL3G4200D"));
+  Console.println(F("initL3G4200D"));
   uint8_t buf[6];    
   int retry = 0;
   while (true){
     I2CreadFrom(L3G4200D, 0x0F, 1, (uint8_t*)buf);
     if (buf[0] != 0xD3) {        
-      Serial.println(F("gyro read error"));
+      Console.println(F("gyro read error"));
       retry++;
       if (retry > 2){
         errorCounter++;
@@ -345,7 +345,7 @@ boolean IMU::initL3G4200D(){
   I2CwriteTo(L3G4200D, 0x23, 0b00100000);      
   I2CreadFrom(L3G4200D, 0x23, 1, (uint8_t*)buf);
   if (buf[0] != 0b00100000){
-      Serial.println(F("gyro write error")); 
+      Console.println(F("gyro write error")); 
       while(true);
   }  
   // fifo mode 
@@ -373,17 +373,17 @@ void IMU::readL3G4200D(boolean useTa){
    // 6: Overrun bit status. (0: FIFO is not completely filled; 1:FIFO is completely filled)
    // 5: FIFO empty bit. (0: FIFO not empty; 1: FIFO empty)
    // 4..0: FIFO stored data level
-   //Serial.print("FIFO_SRC_REG: "); Serial.println(fifoSrcReg, HEX);
+   //Console.print("FIFO_SRC_REG: "); Console.println(fifoSrcReg, HEX);
   uint8_t countOfData = (fifoSrcReg & 0x1F) + 1;   
-  //  if (bitRead(fifoSrcReg, 6)==1) Serial.println(F("IMU error: FIFO overrun"));
+  //  if (bitRead(fifoSrcReg, 6)==1) Console.println(F("IMU error: FIFO overrun"));
 
   memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
   I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
   //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatical address increment
 
   gyro.x = gyro.y = gyro.z = 0;
-  //Serial.print("fifo:");
-  //Serial.println(countOfData);
+  //Console.print("fifo:");
+  //Console.println(countOfData);
   if (!useGyroCalibration) countOfData = 1;
   for (uint8_t i=0; i<countOfData; i++){
       gyro.x += ((gyroFifo[i].xh << 8) | gyroFifo[i].xl);
@@ -429,7 +429,7 @@ void IMU::readHMC5883L(){
 
 float IMU::sermin(float oldvalue, float newvalue){
   if (newvalue < oldvalue) {
-    Serial.print(".");
+    Console.print(".");
     digitalWrite(pinLED, true);
   }
   return min(oldvalue, newvalue);
@@ -437,14 +437,14 @@ float IMU::sermin(float oldvalue, float newvalue){
 
 float IMU::sermax(float oldvalue, float newvalue){
   if (newvalue > oldvalue) {
-    Serial.print(".");
+    Console.print(".");
     digitalWrite(pinLED, true);
   }
   return max(oldvalue, newvalue);
 }
 
 void IMU::calibComDeviation(){    
-  Serial.println(F("com calib dev - steady rotate compass"));  
+  Console.println(F("com calib dev - steady rotate compass"));  
   useComDeviation = false;     
   float ypr[3];  
   float time;
@@ -456,7 +456,7 @@ void IMU::calibComDeviation(){
   while (retry){     
     startYaw = -200;     
     for (int i=0; i < 36; i++) comDeviation[i]=-1;    
-    Serial.println(F("next round"));
+    Console.println(F("next round"));
     unsigned long startTime = millis();
     now = startTime;
     getEuler(ypr);        
@@ -474,14 +474,14 @@ void IMU::calibComDeviation(){
         time = ((float)(now - startTime)) / 1000.0;                        
         if (comDeviation[yaw] < 0) {
           digitalWrite(pinLED, HIGH);                    
-          Serial.print(yaw);
-          Serial.print(",");
-          Serial.println(time);                      
+          Console.print(yaw);
+          Console.print(",");
+          Console.println(time);                      
           comDeviation[yaw] = time;
         }
         if (time > 9){
           if (yaw == startYaw) {
-            Serial.println(F("360 degree"));
+            Console.println(F("360 degree"));
             duration = time;
             break;
           }         
@@ -514,9 +514,9 @@ float IMU::compensateComYawDeviation(float degree){
 }
 
 void IMU::calibCom(){
-  Serial.println(F("com calib..."));
-  Serial.println(F("1. rotate sensor 360 degree around all three axis"));
-  Serial.println(F("2. press key"));
+  Console.println(F("com calib..."));
+  Console.println(F("1. rotate sensor 360 degree around all three axis"));
+  Console.println(F("2. press key"));
   float oldX = 0;
   float oldY = 0;
   float oldZ = 0;
@@ -524,18 +524,18 @@ void IMU::calibCom(){
     delay(200);
     readHMC5883L();      
     if (  (abs(oldX-com.x) > 1) || (abs(oldY-com.y) > 1) || (abs(oldZ-com.z) > 1)  ){
-      Serial.print(com.x);
-      Serial.print("\t");
-      Serial.print(com.y);
-      Serial.print("\t");
-      Serial.print(com.z);
-      Serial.println();      
+      Console.print(com.x);
+      Console.print("\t");
+      Console.print(com.y);
+      Console.print("\t");
+      Console.print(com.z);
+      Console.println();      
       oldX = com.x;
       oldY = com.y;
       oldZ = com.z;
     }
-    if (Serial.available()) {
-      while (Serial.available()) Serial.read();
+    if (Console.available()) {
+      while (Console.available()) Console.read();
       break;      
     }
   } 
@@ -545,7 +545,7 @@ void IMU::calibCom(){
 
 // calculate acceleration sensor offsets
 void IMU::calibAcc(){
-  Serial.println(F("acc calib..."));
+  Console.println(F("acc calib..."));
   useAccCalibration = false;
   accOfs.x = accOfs.y = accOfs.z = 0;  
   float xmin =  99999;
@@ -555,15 +555,15 @@ void IMU::calibAcc(){
   float zmin =  99999;
   float zmax = -99999;        
   for (int counter=0; counter < 6; counter++){
-    Serial.print(counter+1);
-    Serial.print(F(". lay down sensor 'axis "));        
-    Serial.print(counter/2+1);
-    Serial.print(F("' "));
-    if (counter % 2 == 0) Serial.print(F("up")); else Serial.print(F("down"));
-    Serial.println(F(", then don't move, and press key"));      
-    while (Serial.available()) Serial.read();
-    while (!Serial.available()) delay(10);
-    while (Serial.available()) Serial.read();
+    Console.print(counter+1);
+    Console.print(F(". lay down sensor 'axis "));        
+    Console.print(counter/2+1);
+    Console.print(F("' "));
+    if (counter % 2 == 0) Console.print(F("up")); else Console.print(F("down"));
+    Console.println(F(", then don't move, and press key"));      
+    while (Console.available()) Console.read();
+    while (!Console.available()) delay(10);
+    while (Console.available()) Console.read();
     point_float_t pt = {0,0,0};
     digitalWrite(pinLED, true);
     for (int i=0; i < 100; i++){        
@@ -571,11 +571,11 @@ void IMU::calibAcc(){
       pt.x += acc.x / 100.0;
       pt.y += acc.y / 100.0;
       pt.z += acc.z / 100.0;                  
-      Serial.print(acc.x);
-      Serial.print(",");
-      Serial.print(acc.y);
-      Serial.print(",");
-      Serial.println(acc.z);
+      Console.print(acc.x);
+      Console.print(",");
+      Console.print(acc.y);
+      Console.print(",");
+      Console.println(acc.z);
       delay(1);
     }
     xmin = min(xmin, pt.x);
@@ -597,98 +597,98 @@ void IMU::calibAcc(){
   accScale.z = zrange;
   useAccCalibration = true;  
   printCalib();
-  /*Serial.println("press key");       
-  while (Serial.available()) Serial.read();
-  while (!Serial.available()) delay(10);*/
+  /*Console.println("press key");       
+  while (Console.available()) Console.read();
+  while (!Console.available()) delay(10);*/
   saveCalib();
 }      
 
 
 
 void IMU::printCom(){  
-  Serial.print(F("\tcom,"));
-  Serial.print(com.x);  
-  Serial.print(",");
-  Serial.print(com.y);  
-  Serial.print(",");
-  Serial.print(com.z);   
-  Serial.print(",");
-  Serial.print(comYaw/PI*180.0);   
-  Serial.print(",");  
-  Serial.print(F("comcal,"));
-  Serial.print(comCal.x);  
-  Serial.print(",");
-  Serial.print(comCal.y);  
-  Serial.print(",");
-  Serial.print(comCal.z);
-  /*Serial.print(comYawCal/PI*180.0);     
-  Serial.print("\t");  
-  Serial.print("\t");      
-  Serial.print("tilt=");
-  Serial.print(comTilt.x);  
-  Serial.print("\t");
-  Serial.print(comTilt.y);  
-  Serial.print("\t");
-  Serial.print(comTilt.z);
-  Serial.print("\t");
-  Serial.print(comYawTilt/PI*180.0);       */
+  Console.print(F("\tcom,"));
+  Console.print(com.x);  
+  Console.print(",");
+  Console.print(com.y);  
+  Console.print(",");
+  Console.print(com.z);   
+  Console.print(",");
+  Console.print(comYaw/PI*180.0);   
+  Console.print(",");  
+  Console.print(F("comcal,"));
+  Console.print(comCal.x);  
+  Console.print(",");
+  Console.print(comCal.y);  
+  Console.print(",");
+  Console.print(comCal.z);
+  /*Console.print(comYawCal/PI*180.0);     
+  Console.print("\t");  
+  Console.print("\t");      
+  Console.print("tilt=");
+  Console.print(comTilt.x);  
+  Console.print("\t");
+  Console.print(comTilt.y);  
+  Console.print("\t");
+  Console.print(comTilt.z);
+  Console.print("\t");
+  Console.print(comYawTilt/PI*180.0);       */
 }
 
 void IMU::printAcc(){
-  Serial.print("\tacc,");
-  Serial.print(acc.x);
-  Serial.print(",");
-  Serial.print(acc.y);
-  Serial.print(",");
-  Serial.print(acc.z);  
-  Serial.print(",");
+  Console.print("\tacc,");
+  Console.print(acc.x);
+  Console.print(",");
+  Console.print(acc.y);
+  Console.print(",");
+  Console.print(acc.z);  
+  Console.print(",");
   //printPt(accMin);  
-  //Serial.print(",");
+  //Console.print(",");
   //printPt(accMax);    
 }
 
 void IMU::printGyro(){  
-  Serial.print("\tgyro,");
-  Serial.print(gyro.x);
-  Serial.print(",");
-  Serial.print(gyro.y);
-  Serial.print(",");
-  Serial.print(gyro.z);
-  Serial.print(",\t");
-  Serial.print(gyroYpr.yaw);  
-  Serial.print(",");
-  Serial.print(gyroYpr.pitch);  
-  Serial.print(",");
-  Serial.print(gyroYpr.roll);    
+  Console.print("\tgyro,");
+  Console.print(gyro.x);
+  Console.print(",");
+  Console.print(gyro.y);
+  Console.print(",");
+  Console.print(gyro.z);
+  Console.print(",\t");
+  Console.print(gyroYpr.yaw);  
+  Console.print(",");
+  Console.print(gyroYpr.pitch);  
+  Console.print(",");
+  Console.print(gyroYpr.roll);    
 }
 
 void IMU::printIMU(float * ypr){
-  Serial2.print(ypr[0]);
-  Serial2.print(",");
-  Serial2.print(ypr[1]);
-  Serial2.print(",");
-  Serial2.print(ypr[2]);          
-  Serial2.print(",");
-  Serial2.print(gyro.x);
-  Serial2.print(",");
-  Serial2.print(gyro.y);
-  Serial2.print(",");
-  Serial2.print(gyro.z);
-  Serial2.print(",");
-  Serial2.print(acc.x);
-  Serial2.print(",");
-  Serial2.print(acc.y);
-  Serial2.print(",");
-  Serial2.print(acc.z);
-  Serial2.print(",");
-  Serial2.print(com.x);
-  Serial2.print(",");
-  Serial2.print(com.y);
-  Serial2.print(",");
-  Serial2.print(com.z);  
-  Serial2.println();
-  /*Serial.print(",");
-  Serial.print(comYawTilt/PI*180.0);  */
+  Bluetooth.print(ypr[0]);
+  Bluetooth.print(",");
+  Bluetooth.print(ypr[1]);
+  Bluetooth.print(",");
+  Bluetooth.print(ypr[2]);          
+  Bluetooth.print(",");
+  Bluetooth.print(gyro.x);
+  Bluetooth.print(",");
+  Bluetooth.print(gyro.y);
+  Bluetooth.print(",");
+  Bluetooth.print(gyro.z);
+  Bluetooth.print(",");
+  Bluetooth.print(acc.x);
+  Bluetooth.print(",");
+  Bluetooth.print(acc.y);
+  Bluetooth.print(",");
+  Bluetooth.print(acc.z);
+  Bluetooth.print(",");
+  Bluetooth.print(com.x);
+  Bluetooth.print(",");
+  Bluetooth.print(com.y);
+  Bluetooth.print(",");
+  Bluetooth.print(com.z);  
+  Bluetooth.println();
+  /*Console.print(",");
+  Console.print(comYawTilt/PI*180.0);  */
 }
 
 

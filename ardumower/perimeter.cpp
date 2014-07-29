@@ -23,7 +23,7 @@
 #include <limits.h>
 #include "fix_fft.h"
 #include "adcman.h"
-
+#include "drivers.h"
 
 //#define pinLED 13                  
 
@@ -40,7 +40,7 @@ int8_t matchSignal[100];
                    0,0,0,0 };                   */
                    
 void Perimeter::gensignal(){
-  //Serial.println("gensignal");
+  //Console.println("gensignal");
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
   int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
@@ -62,11 +62,11 @@ void Perimeter::gensignal(){
       step ++;          
     }
     matchSignal[signalidx] = state;    
-    ///Serial.println(state);    
+    ///Console.println(state);    
     signalidx++;
     signalsize++;
     if (signalsize >= sizeof matchSignal){
-      Serial.println("increase signal size!");
+      Console.println("increase signal size!");
       while (true);
     }    
   }   
@@ -101,8 +101,8 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   ADCMan.setCapture(idx0Pin, FFTBINS, 1);
   ADCMan.setCapture(idx1Pin, FFTBINS, 1);  
   
-  Serial.print("matchSignal size=");
-  Serial.println(signalsize);  
+  Console.print("matchSignal size=");
+  Console.println(signalsize);  
 }
 
 int Perimeter::getMagnitude(byte idx){  
@@ -137,10 +137,10 @@ void Perimeter::printADCMinMax(int8_t *samples){
     vmax = max(vmax, samples[i]);
     vmin = min(vmin, samples[i]);
   }
-  Serial.print("perimter min,max=");
-  Serial.print((int)vmin);
-  Serial.print(",");
-  Serial.println((int)vmax);  
+  Console.print("perimter min,max=");
+  Console.print((int)vmin);
+  Console.print(",");
+  Console.println((int)vmax);  
 }
 
 // perimeter V2 uses a digital matched filter
@@ -184,7 +184,7 @@ void Perimeter::matchedFilter(byte idx){
   if (abs(filterMax) > abs(filterMin)) mag[idx] = filterMax;  
     else mag[idx] = filterMin;  
   smoothMag = 0.99 * smoothMag + 0.01 * mag[idx];
-  //Serial.println(var);
+  //Console.println(var);
 
   // perimeter inside/outside detection
   if (abs(filterMax) > abs(filterMin)){
@@ -250,7 +250,7 @@ void Perimeter::filterFrequencyMagnitude(byte idx){
       //if (v > 20) digitalWrite(pinLED, HIGH);          
     }            
   }     
-  //if (idx ==0) Serial.println(mag[idx]);
+  //if (idx ==0) Console.println(mag[idx]);
   ADCMan.restart(idxPin[idx]);
   if (millis() >= nextTime){      
     nextTime = millis() + 1000;
@@ -277,20 +277,20 @@ double Perimeter::getFilterBandwidth(){
 
 
 void Perimeter::printResults(){
-  Serial.print(" fpeak=");
-  Serial.print((int)(peakBin * BIN_BANDWIDTH));
-  Serial.print(" fmin=");
-  Serial.print((int)(BANDPASS_BIN * BIN_BANDWIDTH));
-  Serial.print(" fmax=");
-  Serial.print( ((int)((BANDPASS_BIN+1) * BIN_BANDWIDTH)) -1);
-  Serial.print(" sum=");
+  Console.print(" fpeak=");
+  Console.print((int)(peakBin * BIN_BANDWIDTH));
+  Console.print(" fmin=");
+  Console.print((int)(BANDPASS_BIN * BIN_BANDWIDTH));
+  Console.print(" fmax=");
+  Console.print( ((int)((BANDPASS_BIN+1) * BIN_BANDWIDTH)) -1);
+  Console.print(" sum=");
   int sum = peak[0] + peak[1];
-  Serial.print(sum);
-  Serial.print("  peak0=");
-  Serial.print(peak[0]);
-  Serial.print("  peak1=");
-  Serial.print(peak[1]);            
-  Serial.println();    
+  Console.print(sum);
+  Console.print("  peak0=");
+  Console.print(peak[0]);
+  Console.print("  peak1=");
+  Console.print(peak[1]);            
+  Console.println();    
 }      
 
 

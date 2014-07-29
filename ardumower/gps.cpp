@@ -179,13 +179,13 @@ unsigned long GPS::parse_degrees()  // term=5000.0095 (50° 00' 0.0095*60'')
 // Returns true if new sentence has just passed checksum test and is validated
 bool GPS::term_complete()
 {
-  //Serial.println("compl");
+  //Console.println("compl");
   if (_is_checksum_term)
   {
     byte checksum = 16 * from_hex(_term[0]) + from_hex(_term[1]);
-    //Serial.print(checksum);
-    //Serial.print(",");
-    //Serial.println(_parity);
+    //Console.print(checksum);
+    //Console.print(",");
+    //Console.println(_parity);
     if (checksum == _parity)
     {
       //if (1==1) 
