@@ -206,6 +206,9 @@ void rpm_interrupt(){
 }
 
 
+// WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
+// (required so we can use Arduino Due native port)
+
 void Mower::setup(){
   Wire.begin();            
   Console.begin(BAUDRATE);   
