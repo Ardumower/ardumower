@@ -38,6 +38,7 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
  */
 #include <Arduino.h>
 #include <Wire.h>
+#include <Servo.h>
 #ifdef __AVR__
   // Arduino Mega
   #include <EEPROM.h>
