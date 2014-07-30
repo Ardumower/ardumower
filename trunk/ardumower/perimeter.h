@@ -24,6 +24,7 @@ v1 (old): digital filter: FFT bandpass - evaluates signal strength of certain fr
 
 v2: digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
  (for details see
+    http://grauonline.de/wordpress/?page_id=364
     http://en.wikipedia.org/wiki/Matched_filter
     http://grauonline.de/alexwww/ardumower/filter/filter.html and bottom of this page
     http://www.ardumower.de/index.php/de/anleitungen/2013-11-23-19-50-19/induktion    )
