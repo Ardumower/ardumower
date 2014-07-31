@@ -67,16 +67,16 @@ class RemoteControl
     void sendOnOff(int value);
 
     // PID slider
-    void sendPIDSlider(String cmd, String title, PID &pid, float scale, float maxvalue);
-    void processPIDSlider(String result, String cmd, PID &pid, float scale, float maxvalue);
+    void sendPIDSlider(String cmd, String title, PID &pid, double scale, float maxvalue);
+    void processPIDSlider(String result, String cmd, PID &pid, double scale, float maxvalue);
     
     // generic slider
-    void sendSlider(String cmd, String title, float value, String unit, float scale, float maxvalue, float minvalue = 0);    
-    void processSlider(String result, float &value, float scale);
-    void processSlider(String result, long &value, float scale);
-    void processSlider(String result, int &value, float scale);
-    void processSlider(String result, byte &value, float scale);
-    void processSlider(String result, short &value, float scale);
+    void sendSlider(String cmd, String title, float value, String unit, double scale, float maxvalue, float minvalue = 0);    
+    void processSlider(String result, float &value, double scale);
+    void processSlider(String result, long &value, double scale);
+    void processSlider(String result, int &value, double scale);
+    void processSlider(String result, byte &value, double scale);
+    void processSlider(String result, short &value, double scale);
 
 
     // send timer menu details

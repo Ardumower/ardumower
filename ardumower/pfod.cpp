@@ -85,7 +85,7 @@ void RemoteControl::sendTimer(ttimer_t timer){
   }
 }
 
-void RemoteControl::sendSlider(String cmd, String title, float value, String unit, float scale, float maxvalue, float minvalue){
+void RemoteControl::sendSlider(String cmd, String title, float value, String unit, double scale, float maxvalue, float minvalue){
   Bluetooth.print("|"); 
   Bluetooth.print(cmd);  
   Bluetooth.print("~");    
@@ -105,20 +105,20 @@ void RemoteControl::sendSlider(String cmd, String title, float value, String uni
     else if (scale == 0.0001) Bluetooth.print("0.0001");
 }
 
-void RemoteControl::sendPIDSlider(String cmd, String title, PID &pid, float scale, float maxvalue){
+void RemoteControl::sendPIDSlider(String cmd, String title, PID &pid, double scale, float maxvalue){
   sendSlider(cmd + "p", title + "_P", pid.Kp, "", scale, maxvalue);
   sendSlider(cmd + "i", title + "_I", pid.Ki, "", scale, maxvalue);
   sendSlider(cmd + "d", title + "_D", pid.Kd, "", scale, maxvalue);  
 }
 
-void RemoteControl::processSlider(String result, float &value, float scale){
+void RemoteControl::processSlider(String result, float &value, double scale){
   int idx = result.indexOf('`');
   String s = result.substring(idx + 1);      
   float v = stringToFloat(s);
   value = v * scale;  
 }
 
-void RemoteControl::processPIDSlider(String result, String cmd, PID &pid, float scale, float maxvalue){
+void RemoteControl::processPIDSlider(String result, String cmd, PID &pid, double scale, float maxvalue){
   int idx = result.indexOf('`');
   String s = result.substring(idx + 1);      
   //Console.println(tmp);
@@ -129,25 +129,25 @@ void RemoteControl::processPIDSlider(String result, String cmd, PID &pid, float 
 }
 
 
-void RemoteControl::processSlider(String result, long &value, float scale){
+void RemoteControl::processSlider(String result, long &value, double scale){
   float v;
   processSlider(result, v, scale);
   value = v;
 }
 
-void RemoteControl::processSlider(String result, int &value, float scale){
+void RemoteControl::processSlider(String result, int &value, double scale){
   float v;
   processSlider(result, v, scale);
   value = v;
 }
 
-void RemoteControl::processSlider(String result, byte &value, float scale){
+void RemoteControl::processSlider(String result, byte &value, double scale){
   float v;
   processSlider(result, v, scale);
   value = v;
 }
 
-void RemoteControl::processSlider(String result, short &value, float scale){
+void RemoteControl::processSlider(String result, short &value, double scale){
   float v;
   processSlider(result, v, scale);
   value = v;
