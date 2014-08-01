@@ -87,8 +87,9 @@
 #define pinUserSwitch1 46          // user-defined switch 1
 #define pinUserSwitch2 47          // user-defined switch 2
 #define pinUserSwitch3 48          // user-defined switch 3
-// compass/gyro/accel (I2C):   SCL ,  SDA 
-
+// IMU (compass/gyro/accel): I2C  (SCL, SDA) 
+// Bluetooth: Serial2 (TX2, RX2)
+// GPS: Serial3 (TX3, RX3) 
 
 // ------- baudrates---------------------------------
 #define BAUDRATE 19200            // serial output baud rate

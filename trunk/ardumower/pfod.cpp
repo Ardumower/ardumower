@@ -208,6 +208,8 @@ void RemoteControl::sendMotorMenu(boolean update){
   Bluetooth.print(robot->motorLeftSenseCurrent);
   Bluetooth.print(", ");  
   Bluetooth.print(robot->motorRightSenseCurrent);      
+  //Console.print("motorpowermax=");
+  //Console.println(robot->motorPowerMax);
   sendSlider("a02", F("Power max"), robot->motorPowerMax, "", 0.1, 40);  
   sendSlider("a03", F("calibrate left motor "), robot->motorLeftSenseCurrent, "", 1, 1000, 0);       
   sendSlider("a04", F("calibrate right motor"), robot->motorRightSenseCurrent, "", 1, 1000, 0);      
@@ -238,7 +240,10 @@ void RemoteControl::sendMotorMenu(boolean update){
 }
 
 void RemoteControl::processMotorMenu(String pfodCmd){      
-  if (pfodCmd.startsWith("a02")) processSlider(pfodCmd, robot->motorPowerMax, 0.1);
+  if (pfodCmd.startsWith("a02")) { processSlider(pfodCmd, robot->motorPowerMax, 0.1);
+    //Console.print("motorpowermax=");
+    //Console.println(robot->motorPowerMax);
+  }
 
     else if (pfodCmd.startsWith("a03")){
       processSlider(pfodCmd, robot->motorLeftSenseCurrent, 1);
@@ -449,6 +454,8 @@ void RemoteControl::sendBatteryMenu(boolean update){
   Bluetooth.print(F("|j01~Monitor "));  
   sendYesNo(robot->batMonitor);
   sendSlider("j05", F("Calibrate battery V "), robot->batVoltage, "", 0.01, 30, 0);   
+  //Console.print("gohomeifbelow=");
+  //Console.println(robot->batGoHomeIfBelow);  
   sendSlider("j02", F("Go home if below"), robot->batGoHomeIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
   sendSlider("j03", F("Switch off if below"), robot->batSwitchOffIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  
   Bluetooth.print(F("|j04~Charge "));
@@ -468,7 +475,11 @@ void RemoteControl::sendBatteryMenu(boolean update){
 
 void RemoteControl::processBatteryMenu(String pfodCmd){      
   if (pfodCmd == "j01") robot->batMonitor = !robot->batMonitor;
-    else if (pfodCmd.startsWith("j02")) processSlider(pfodCmd, robot->batGoHomeIfBelow, 0.1);
+    else if (pfodCmd.startsWith("j02")) {
+      processSlider(pfodCmd, robot->batGoHomeIfBelow, 0.1);
+      //Console.print("gohomeifbelow=");
+      //Console.println(robot->batGoHomeIfBelow);
+    }
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, robot->batSwitchOffIfBelow, 0.1); 
     else if (pfodCmd.startsWith("j05")) {
       if (robot->batVoltage < 8){        
