@@ -1213,20 +1213,24 @@ void Robot::reverseOrBidir(byte aRollDir){
 // check motor current
 void Robot::checkCurrent(){
   if (motorMowSense >= motorMowPowerMax){
+    // mower motor overpowered    
     setActuator(ACT_MOTOR_MOW, 0);
     motorMowSenseCounter++;
-    motorMowSenseErrorCounter++;
-    if (motorMowSenseErrorCounter > 3){
-      Console.println("Error: Motor mow current");
-      addErrorCounter(ERR_MOW_SENSE);
-      setNextState(STATE_ERROR, 0);
-      return;
+    if (millis() > stateStartTime + 3000){
+      motorMowSenseErrorCounter++;
+      if (motorMowSenseErrorCounter > 15){
+        Console.println("Error: Motor mow current");
+        addErrorCounter(ERR_MOW_SENSE);
+        setNextState(STATE_ERROR, 0);
+        return;
+      }
     }
     if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
       else reverseOrBidir(RIGHT);        
   }  
     
   if (motorLeftSense >=motorPowerMax){  
+    // left wheel motor overpowered    
     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
       //beep(1);
       motorLeftSenseCounter++;
@@ -1248,6 +1252,7 @@ void Robot::checkCurrent(){
       }
   }
   else if (motorRightSense >= motorPowerMax){       
+     // right wheel motor overpowered
      if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
       //beep(1);
       motorRightSenseCounter++;
