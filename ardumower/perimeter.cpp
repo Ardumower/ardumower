@@ -109,11 +109,11 @@ int Perimeter::getMagnitude(byte idx){
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
     switch (type){
       case PERIMETER_TYPE_V1:
-        matchedFilter(idx);
-        break;
-      case PERIMETER_TYPE_V2:
         filterFrequencyMagnitude(idx);
         break;       
+      case PERIMETER_TYPE_V2:
+        matchedFilter(idx);
+        break;
     } 
   }
   return mag[idx];
