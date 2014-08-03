@@ -404,7 +404,7 @@ void Robot::motorControlImuRoll(){
 // PID controller: track perimeter 
 void Robot::motorControlPerimeter(){      
   double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
-  if (Ta > 0.5) Ta = 0; // should only happen for the very first call
+  if (Ta > 0.1) Ta = 0.1; // should only happen for the very first call
   lastMotorControlTime = millis();
   int  lms = motorLeftPWM;
   int  rms = motorRightPWM;
