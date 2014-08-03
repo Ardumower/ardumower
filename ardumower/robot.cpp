@@ -402,25 +402,28 @@ void Robot::motorControlImuRoll(){
 
 
 // PID controller: track perimeter 
-void Robot::motorControlPerimeter(){  
-  //perimeterPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
-  //if (perimeterPID.Ta > 0.5) perimeterPID.Ta = 0; // should only happen for the very first call
+void Robot::motorControlPerimeter(){      
+  double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
+  if (Ta > 0.5) Ta = 0; // should only happen for the very first call
+  lastMotorControlTime = millis();
   int  lms = motorLeftPWM;
   int  rms = motorRightPWM;
+  if (rms < 1) rms = 1;
+  if (lms < 1) lms = 1;    
   if (perimeterLeft < 0) {
-    rms += 80.0;
-    lms -= 10.0;
+    rms += 2550/rms * Ta;
+    lms -= 2550/lms * Ta;
   }
   else
   {
-    rms -= 10.0;
-    lms += 80.0;
+    rms -= 2550/rms  * Ta;
+    lms += 2550/lms  * Ta;
   }
 
   if (rms > 255) rms = 255;
   if (lms > 255) lms = 255;
-  if (rms < -100) rms = -100;
-  if (lms < -100) lms = -100;  
+  if (rms < 1) rms = 1;
+  if (lms < 1) lms = 1;  
   setMotorSpeed( lms,  rms, false);      
 
   /*perimeterPID.Kp = perimeterPid.Kp;
