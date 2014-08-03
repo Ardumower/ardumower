@@ -337,7 +337,16 @@ void Mower::setup(){
   ADCMan.setCapture(pinMotorLeftSense, 1, true);
   ADCMan.setCapture(pinMotorRightSense, 1, true);
   ADCMan.setCapture(pinBatteryVoltage, 1, false);
+  ADCMan.setCapture(pinChargeVoltage, 1, false);  
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
+  
+  /*while (true){
+    int v = ADCMan.read(pinChargeVoltage);
+    //int v = analogRead(pinChargeVoltage);
+    Console.println(v);
+    ADCMan.run();
+    delay(500);
+  }*/
   
   imu.init();
   gps.init();
@@ -368,6 +377,7 @@ int Mower::readSensor(char type){
     
 // battery------------------------------------------------------------------------------------------------
     case SEN_BAT_VOLTAGE: return ADCMan.read(pinBatteryVoltage); break;
+    case SEN_CHG_VOLTAGE: return ADCMan.read(pinChargeVoltage); break;
     //case SEN_CHG_VOLTAGE: return((int)(((double)analogRead(pinChargeVoltage)) * batFactor)); break;
     //case SEN_CHG_CURRENT: return((int)(((double)analogRead(pinChargeCurrent)-chgSenseZero) * chgFactor)); break;
     

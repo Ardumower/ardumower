@@ -301,7 +301,6 @@ class Robot
     float batFull         ;      // battery reference Voltage (fully charged)
     float chgSenseZero    ;       // charge current sense zero point
     float chgFactor       ;     // charge current conversion factor
-    int batADC ;
     float batVoltage ;  // battery voltage (Volt)
     float batRefFactor ;
     float batCapacity ; // battery capacity (mAh)
