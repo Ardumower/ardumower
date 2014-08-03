@@ -25,7 +25,7 @@
 #include "adcman.h"
 #include "drivers.h"
 
-#define CHANNELS 10
+#define CHANNELS 16
 #define NO_CHANNEL 255
 
 volatile uint8_t calibrateChannel = NO_CHANNEL;
@@ -96,10 +96,13 @@ void ADCManager::calibrateOfs(byte pin){
 
 
 void startADC(boolean fast){
+//  Console.print("startADC ch");
+//  Console.println(channel);
 #ifdef __AVR__
   /*  REFS0 : VCC use as a ref, IR_AUDIO : channel selection, ADEN : ADC Enable, ADSC : ADC Start, ADATE : ADC Auto Trigger Enable, ADIE : ADC Interrupt Enable,  ADPS : ADC Prescaler  */
-  // free running ADC mode, f = ( 16MHz / prescaler ) / 13 cycles per conversion 
-  ADMUX = _BV(REFS0) | channel; // | _BV(ADLAR); 
+  // free running ADC mode, f = ( 16MHz / prescaler ) / 13 cycles per conversion   
+  ADMUX = _BV(REFS0) | (channel & 0x07); // | _BV(ADLAR); 
+  ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((channel >> 3) & 0x01) << MUX5);  
   if (fast)
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz 
   else // slow but accurate
