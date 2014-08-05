@@ -210,7 +210,7 @@ void RemoteControl::sendMotorMenu(boolean update){
   Bluetooth.print(robot->motorRightSenseCurrent);      
   //Console.print("motorpowermax=");
   //Console.println(robot->motorPowerMax);
-  sendSlider("a02", F("Power max"), robot->motorPowerMax, "", 0.1, 40);  
+  sendSlider("a02", F("Power max"), robot->motorPowerMax, "", 0.1, 100);  
   sendSlider("a03", F("calibrate left motor "), robot->motorLeftSenseCurrent, "", 1, 1000, 0);       
   sendSlider("a04", F("calibrate right motor"), robot->motorRightSenseCurrent, "", 1, 1000, 0);      
   Bluetooth.println(F("|a05~Speed l, r"));    
