@@ -850,7 +850,7 @@ void Robot::checkButton(){
     } 
     else { 
       // ON/OFF button released          
-      if ((stateCurr != STATE_OFF) || (stateCurr == STATE_ERROR)) {
+      if  ( ((stateCurr != STATE_OFF) || (stateCurr == STATE_ERROR)) && (stateCurr != STATE_CHARGE) ) {
         setNextState(STATE_OFF, 0);
       } else if (buttonCounter == 2){
         motorMowEnable = true;
@@ -1332,7 +1332,7 @@ void Robot::checkPerimeterBoundary(){
 // check perimeter while finding it
 void Robot::checkPerimeterFind(){
   if (stateCurr == STATE_PERI_FIND){
-    if (perimeterLeft > 0) setNextState(STATE_PERI_TRACK, 0);    
+    if (!perimeter.isInside()) setNextState(STATE_PERI_TRACK, 0);    
   }
 }
 

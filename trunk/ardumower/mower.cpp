@@ -159,7 +159,7 @@ Mower::Mower(){
   chgFactor       = 2.7;     // charge current conversion factor
   // ------  charging station ---------------------------
   stationRevTime     = 4000;    // charge station reverse time (ms)
-  stationRollTime    = 3000;    // charge station roll time (ms)
+  stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
