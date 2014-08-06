@@ -219,7 +219,8 @@ void Mower::setup(){
     
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
   #ifdef __AVR__
-    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
+  // might be better to use default PWM freq (as perimeter v2 otherwise uses the same freq band) 
+  //  TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
   #endif
   
   // i2c -- turn off internal pull-ups (and use external pull-ups)
