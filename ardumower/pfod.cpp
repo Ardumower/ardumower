@@ -290,7 +290,7 @@ void RemoteControl::sendMowMenu(boolean update){
   Bluetooth.print(F("|o07~RPM "));
   Bluetooth.print(robot->motorMowRpm);    
   sendSlider("o08", F("RPM set"), robot->motorMowRPM, "", 1, 8000);     
-  sendPIDSlider("o09", "RPM", robot->motorMowPid, 0.0001, 0.2);      
+  sendPIDSlider("o09", "RPM", robot->motorMowPID, 0.0001, 0.2);      
   Bluetooth.println(F("|o10~Testing is"));    
   switch (testmode){
     case 0: Bluetooth.print(F("OFF")); break;
@@ -311,7 +311,7 @@ void RemoteControl::processMowMenu(String pfodCmd){
     else if (pfodCmd.startsWith("o05")) processSlider(pfodCmd, robot->motorMowSpeedMax, 1);
     else if (pfodCmd == "o06") robot->motorMowModulate = !robot->motorMowModulate;    
     else if (pfodCmd.startsWith("o08")) processSlider(pfodCmd, robot->motorMowRPM, 1);    
-    else if (pfodCmd.startsWith("o09")) processPIDSlider(pfodCmd, "o09", robot->motorMowPid, 0.0001, 0.2);
+    else if (pfodCmd.startsWith("o09")) processPIDSlider(pfodCmd, "o09", robot->motorMowPID, 0.0001, 0.2);
     else if (pfodCmd == "o10") { 
       testmode = (testmode + 1) % 2;
       switch (testmode){
@@ -374,7 +374,7 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   Bluetooth.print(robot->perimeterRight);    
   sendSlider("e05", F("Track roll time"), robot->perimeterTrackRollTime, "", 1, 8000);       
   sendSlider("e06", F("Track rev time"), robot->perimeterTrackRevTime, "", 1, 8000);         
-  sendPIDSlider("e07", F("Track"), robot->perimeterPid, 0.1, 100);  
+  sendPIDSlider("e07", F("Track"), robot->perimeterPID, 0.1, 100);  
   Bluetooth.println("}");                
 }
 
@@ -382,7 +382,7 @@ void RemoteControl::processPerimeterMenu(String pfodCmd){
   if (pfodCmd == "e00") robot->perimeterUse = !robot->perimeterUse;
     else if (pfodCmd.startsWith("e05")) processSlider(pfodCmd, robot->perimeterTrackRollTime, 1);
     else if (pfodCmd.startsWith("e06")) processSlider(pfodCmd, robot->perimeterTrackRevTime, 1);
-    else if (pfodCmd.startsWith("e07")) processPIDSlider(pfodCmd, "e07", robot->perimeterPid, 0.1, 100);    
+    else if (pfodCmd.startsWith("e07")) processPIDSlider(pfodCmd, "e07", robot->perimeterPID, 0.1, 100);    
   sendPerimeterMenu(true);
 }
 
@@ -419,8 +419,8 @@ void RemoteControl::sendImuMenu(boolean update){
   Bluetooth.print(F(" deg"));  
   Bluetooth.print(F("|g04~Correct dir "));
   sendYesNo(robot->imuCorrectDir);  
-  sendPIDSlider("g05", F("Dir"), robot->imuDirPid, 0.1, 20);
-  sendPIDSlider("g06", F("Roll"), robot->imuRollPid, 0.1, 30);    
+  sendPIDSlider("g05", F("Dir"), robot->imuDirPID, 0.1, 20);
+  sendPIDSlider("g06", F("Roll"), robot->imuRollPID, 0.1, 30);    
   Bluetooth.print(F("|g07~Start Com Cal Dev"));
   Bluetooth.println("}");                
 }
@@ -428,8 +428,8 @@ void RemoteControl::sendImuMenu(boolean update){
 void RemoteControl::processImuMenu(String pfodCmd){      
   if (pfodCmd == "g00" ) robot->imuUse = !robot->imuUse;
     else if (pfodCmd == "g04" ) robot->imuCorrectDir = !robot->imuCorrectDir;
-    else if (pfodCmd.startsWith("g05")) processPIDSlider(pfodCmd, "g05", robot->imuDirPid, 0.1, 20);    
-    else if (pfodCmd.startsWith("g06")) processPIDSlider(pfodCmd, "g06", robot->imuRollPid, 0.1, 30);    
+    else if (pfodCmd.startsWith("g05")) processPIDSlider(pfodCmd, "g05", robot->imuDirPID, 0.1, 20);    
+    else if (pfodCmd.startsWith("g06")) processPIDSlider(pfodCmd, "g06", robot->imuRollPID, 0.1, 30);    
     else if (pfodCmd == "g07") robot->imuCalibComDeviation();
   sendImuMenu(true);
 }

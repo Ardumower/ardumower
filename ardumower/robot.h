@@ -229,7 +229,7 @@ class Robot
     char motorMowModulate  ;      // motor mower cutter modulation?
     int motorMowRPM        ;   // motor mower RPM (only for cutter modulation)
     float motorMowSenseScale ; // motor mower sense scale (mA=(ADC-zero)/scale)
-    PID motorMowPid ;    // motor mower RPM PID controller    
+    PID motorMowPID ;    // motor mower RPM PID controller    
     int motorMowSpeed;
     float motorMowPWM ;         // current speed
     int motorMowSenseADC ; 
@@ -248,8 +248,8 @@ class Robot
     // ------- IMU state --------------------------------
     char imuUse            ;       // use IMU? 
     char imuCorrectDir     ;       // correct direction by compass?
-    PID imuDirPid  ;    // direction PID controller
-    PID imuRollPid ;    // roll PID controller    
+    PID imuDirPID  ;    // direction PID controller
+    PID imuRollPID ;    // roll PID controller    
     float imuYaw ;    // compass course (radiant)
     float imuPitch ;  // tilt angle (radiant)
     float imuRoll ;   // tilt angle (radiant)
@@ -262,7 +262,7 @@ class Robot
     char perimeterUse       ;      // use perimeter?
     int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
     int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
-    PID perimeterPid ;    // perimeter PID controller
+    PID perimeterPID ;    // perimeter PID controller
     int perimeterLeft ;
     int perimeterRight ;
     boolean perimeterLeftState ;
@@ -310,11 +310,6 @@ class Robot
     int stationRevTime     ;    // charge station reverse time (ms)
     int stationRollTime    ;    // charge station roll time (ms)
     int stationForwTime    ;    // charge station forward time (ms)    
-    // ------------ PID controllers ----------------------------
-    PID imuDirPID;
-    PID imuRollPID;
-    PID perimeterPID;
-    PID motorMowPID;
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];

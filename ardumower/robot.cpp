@@ -19,7 +19,7 @@
 
 #include "robot.h"
 
-#define MAGIC 23
+#define MAGIC 24
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -153,7 +153,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorMowPowerMax);
   eereadwrite(readflag, addr, motorMowRPM);
   eereadwrite(readflag, addr, motorMowSenseScale);
-  eereadwrite(readflag, addr, motorMowPid);
+  eereadwrite(readflag, addr, motorMowPID.Kp);
+  eereadwrite(readflag, addr, motorMowPID.Ki);
+  eereadwrite(readflag, addr, motorMowPID.Kd);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio1);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio2);  
   eereadwrite(readflag, addr, bumperUse);
@@ -162,12 +164,18 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, perimeterUse);
   eereadwrite(readflag, addr, perimeterTrackRollTime );
   eereadwrite(readflag, addr, perimeterTrackRevTime);
-  eereadwrite(readflag, addr, perimeterPid);
+  eereadwrite(readflag, addr, perimeterPID.Kp);
+  eereadwrite(readflag, addr, perimeterPID.Ki);
+  eereadwrite(readflag, addr, perimeterPID.Kd);  
   eereadwrite(readflag, addr, lawnSensorUse);
   eereadwrite(readflag, addr, imuUse);
   eereadwrite(readflag, addr, imuCorrectDir);
-  eereadwrite(readflag, addr, imuDirPid);
-  eereadwrite(readflag, addr, imuRollPid);    
+  eereadwrite(readflag, addr, imuDirPID.Kp);
+  eereadwrite(readflag, addr, imuDirPID.Ki);
+  eereadwrite(readflag, addr, imuDirPID.Kd);  
+  eereadwrite(readflag, addr, imuRollPID.Kp);    
+  eereadwrite(readflag, addr, imuRollPID.Ki);    
+  eereadwrite(readflag, addr, imuRollPID.Kd);      
   eereadwrite(readflag, addr, remoteUse);
   eereadwrite(readflag, addr, batMonitor);
   eereadwrite(readflag, addr, batGoHomeIfBelow);
@@ -387,9 +395,6 @@ void Robot::motorControlImuRoll(){
   if (imuRollPID.Ta > 0.5) imuRollPID.Ta = 0; // should only happen for the very first call
   imuRollPID.x = distancePI(imuYaw, imuRollHeading) / PI * 180.0;            
   //Console.println(imuRollPID.x);    
-  imuRollPID.Kp = imuRollPid.Kp;
-  imuRollPID.Ki = imuRollPid.Ki;
-  imuRollPID.Kd = imuRollPid.Kd;
   imuRollPID.w = 0;
   imuRollPID.y_min = -motorSpeedMax;
   imuRollPID.y_max = motorSpeedMax;		
@@ -405,43 +410,26 @@ void Robot::motorControlImuRoll(){
 void Robot::motorControlPerimeter(){      
   double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
   if (Ta > 0.05) Ta = 0.05; // should only happen for the very first call
-  lastMotorControlTime = millis();
-  int  lms = motorLeftPWM;
-  int  rms = motorRightPWM;
-  if (rms < 1) rms = 1;
-  if (lms < 1) lms = 1;    
-  if (perimeterLeft < 0) {
-    rms += 2550/rms * Ta;
-    lms -= 2550/lms * Ta;
-  }
-  else
-  {
-    rms -= 2550/rms  * Ta;
-    lms += 2550/lms  * Ta;
-  }
-
-  if (rms > 255) rms = 255;
-  if (lms > 255) lms = 255;
-  if (rms < 1) rms = 1;
-  if (lms < 1) lms = 1;  
-  setMotorSpeed( lms,  rms, false);      
-
-  /*perimeterPID.Kp = perimeterPid.Kp;
-  perimeterPID.Ki = perimeterPid.Ki;
-  perimeterPID.Kd = perimeterPid.Kd;
-  //perimeterPID.x = perimeterLeft-perimeterRight;    
+  lastMotorControlTime = millis();  
   if (perimeterLeft < 0) perimeterPID.x = -1;
-    else perimeterPID.x = 1; 
+    else if (perimeterLeft > 0) perimeterPID.x = 1; 
+    else perimeterPID.x = 0;
   perimeterPID.w = 0;
-  perimeterPID.y_min = -motorSpeedMax;
-  perimeterPID.y_max = motorSpeedMax;		
-  perimeterPID.max_pwm = motorSpeedMax;
-  PIDControl(&perimeterPID);						    
+  /*perimeterPID.Kp= 50;
+  perimeterPID.Ki= 10;
+  perimeterPID.Kd= 10;*/
+  perimeterPID.y_min = -motorSpeedMaxPwm;
+  perimeterPID.y_max = motorSpeedMaxPwm;		
+  perimeterPID.max_output = motorSpeedMaxPwm;
+  perimeterPID.compute();
   lastMotorControlTime = millis();
-  setMotorSpeed( motorLeftPWM  +perimeterPID.y, 
-                 motorRightPWM -perimeterPID.y, false);      */
-//  setMotorSpeed( motorSpeedMax/2 + perimeterPID.y, 
-//                 motorSpeedMax/2 - perimeterPID.y, false);    
+  //setMotorSpeed( motorLeftPWM  +perimeterPID.y, 
+  //               motorRightPWM -perimeterPID.y, false);      
+  setMotorSpeed( max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/2 - perimeterPID.y)), 
+                 max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/2 + perimeterPID.y)), false);      
+  /*Console.print(perimeterPID.x);
+  Console.print("\t");          
+  Console.println(perimeterPID.y);  */
 }
 
 // PID controller: correct direction during normal driving (requires IMU)
@@ -452,9 +440,6 @@ void Robot::motorControlImuDir(){
   if (imuDirPID.Ta > 0.5) imuDirPID.Ta = 0; // should only happen for the very first call
   imuDirPID.x = distancePI(imuYaw, imuDriveHeading) / PI * 180.0;            
   //Console.println(imuDirPID.x);    
-  imuDirPID.Kp = imuDirPid.Kp;
-  imuDirPID.Ki = imuDirPid.Ki;
-  imuDirPID.Kd = imuDirPid.Kd;  
   imuDirPID.w = 0;
   imuDirPID.y_min = -motorSpeedMax;
   imuDirPID.y_max = motorSpeedMax;		
@@ -514,9 +499,6 @@ void Robot::motorMowControl(){
       if ((millis() - lastMotorMowControlTime) < 500) return;
       motorMowPID.Ta = ((double)(millis() - lastMotorMowControlTime)) / 1000.0; 			      
       if (motorMowPID.Ta > 0.5) motorMowPID.Ta = 0; // should only happen for the very first call
-      motorMowPID.Kp = motorMowPid.Kp;
-      motorMowPID.Ki = motorMowPid.Ki;    
-      motorMowPID.Kd = motorMowPid.Kd;    
       motorMowPID.x = motorMowRpm;      
       motorMowPID.w = motorMowRPM; // 3300 => 2300
       motorMowPID.y_min = -motorMowSpeedMax;
