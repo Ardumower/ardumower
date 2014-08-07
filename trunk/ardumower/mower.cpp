@@ -120,32 +120,32 @@ Mower::Mower(){
   motorMowModulate  = 0;      // motor mower cutter modulation?
   motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
-  motorMowPid.Kp = 0.005;    // motor mower RPM PID controller
-  motorMowPid.Ki = 0.01;
-  motorMowPid.Kd = 0.01;
+  motorMowPID.Kp = 0.005;    // motor mower RPM PID controller
+  motorMowPID.Ki = 0.01;
+  motorMowPID.Kd = 0.01;
   //  ------ bumper -----------------------------------
   bumperUse         = 0;      // has bumpers? 
   // ------ sonar ------------------------------------
   sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 0;      // use perimeter?
+  perimeterUse       = 1;      // use perimeter?
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
-  perimeterPid.Kp    = 4.0;  // perimeter PID controller
-  perimeterPid.Ki    = 8.0;
-  perimeterPid.Kd    = 8.0;
+  perimeterPID.Kp    = 50.0;  // perimeter PID controller
+  perimeterPID.Ki    = 10.0;
+  perimeterPID.Kd    = 10.0;
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
   imuUse            = 0;       // use IMU? 
   imuCorrectDir     = 0;       // correct direction by compass?
-  imuDirPid.Kp      = 5.0;     // direction PID controller
-  imuDirPid.Ki      = 1.0;
-  imuDirPid.Kd      = 1.0;    
-  imuRollPid.Kp     = 0.8;   // roll PID controller
-  imuRollPid.Ki     = 21;
-  imuRollPid.Kd     = 0;  
+  imuDirPID.Kp      = 5.0;     // direction PID controller
+  imuDirPID.Ki      = 1.0;
+  imuDirPID.Kd      = 1.0;    
+  imuRollPID.Kp     = 0.8;   // roll PID controller
+  imuRollPID.Ki     = 21;
+  imuRollPID.Kd     = 0;  
   // ------ model R/C ------------------------------------
   remoteUse         = 1;       // use model remote control (R/C)?
   // ------ battery -------------------------------------
