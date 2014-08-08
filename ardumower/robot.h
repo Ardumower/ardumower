@@ -74,6 +74,7 @@ enum {
   SEN_IMU,             
   SEN_MOTOR_MOW_RPM,
   SEN_RTC,
+  SEN_RAIN,
 };
 
 // actuators
@@ -275,6 +276,8 @@ class Robot
     float lawnSensorFrontOld ;
     float lawnSensorBack ;   // back lawn sensor capacity (time)
     float lawnSensorBackOld ;
+    // --------- rain -----------------------------------
+    boolean rain;
     // --------- sonar ----------------------------------
     // ultra sonic sensor distance-to-obstacle (cm)
     char sonarUse          ;      // use ultra sonic sensor?
@@ -422,6 +425,7 @@ protected:
     virtual void checkLawn();
     virtual void checkSonar();
     virtual void checkTilt();
+    virtual void checkRain();
     
     // motor controllers
     virtual void motorControl();    
