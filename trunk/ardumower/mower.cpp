@@ -252,7 +252,10 @@ void Mower::setup(){
   pinMode(pinMotorMowDir, OUTPUT); 
   pinMode(pinMotorMowPWM, OUTPUT);     
   pinMode(pinMotorMowSense, INPUT);     
-  pinMode(pinMotorMowRpm, INPUT);     
+  pinMode(pinMotorMowRpm, INPUT);    
+  pinMode(pinMotorMowEnable, OUTPUT);
+  digitalWrite(pinMotorMowEnable, HIGH);  
+  pinMode(pinMotorMowFault, INPUT);      
     
   // lawn sensor
   pinMode(pinLawnBackRecv, INPUT);
@@ -360,6 +363,10 @@ void checkMotorFault(){
   if ( (digitalRead(pinMotorLeftFault)==LOW) || (digitalRead(pinMotorRightFault)==LOW) ){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
+  }
+  if (digitalRead(pinMotorMowFault)==LOW){  
+    digitalWrite(pinMotorMowEnable, LOW);
+    digitalWrite(pinMotorMowEnable, HIGH);
   }
 }
 
