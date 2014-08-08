@@ -120,6 +120,7 @@ Robot::Robot(){
   nextTimeTimer = 0;
   nextTimeRTC = 0;
   nextTimePfodLoop = 0;
+  nextTimeRain = 0;
   lastMotorControlTime = millis();
   lastMotorMowControlTime = millis();
   lastMotorMowRpmTime = millis();
@@ -862,11 +863,17 @@ void Robot::checkButton(){
         // drive home
         setNextState(STATE_PERI_FIND, 0);        
       } else if (buttonCounter == 1){
-        // start normal with mowing        
-        motorMowEnable = true;
-        //motorMowModulate = true;                     
-        mowPatternCurr = MOW_RANDOM;   
-        setNextState(STATE_FORWARD, 0);                
+        if ((perimeterUse) && (!perimeter.isInside())){
+          Console.println("start inside perimeter!");
+          addErrorCounter(ERR_PERIMETER_TIMEOUT);
+          setNextState(STATE_ERROR, 0);                          
+        } else {
+          // start normal with mowing        
+          motorMowEnable = true;
+          //motorMowModulate = true;                     
+          mowPatternCurr = MOW_RANDOM;   
+          setNextState(STATE_FORWARD, 0);                
+        }
       } 
       
       buttonCounter = 0;                 
@@ -975,9 +982,8 @@ void Robot::readSensors(){
   }    
   if ((timerUse) && (millis() >= nextTimeRTC)) {
     // read RTC
-    nextTimeRTC = millis() + 1000;
-    readSensor(SEN_RTC);            
-    rain = (readSensor(SEN_RAIN) != 0);
+    nextTimeRTC = millis() + 1000;    
+    readSensor(SEN_RTC);                
   }
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
@@ -1015,7 +1021,12 @@ void Robot::readSensors(){
     //batVoltage = batVolt
     //chgVoltage = chgvolt;
     //chgCurrent = current;        
-  }    
+  }      
+  if ((rainUse) && (millis() >= nextTimeRain)) {
+    // read rain sensor
+    nextTimeRain = millis() + 1000;
+    rain = (readSensor(SEN_RAIN) != 0);  
+  }
 }
 
 
