@@ -26,7 +26,7 @@
 #include "due.h"
 
 // ------ pins---------------------------------------
-#define pinMotorEnable  38         // EN motors enable
+#define pinMotorEnable  37         // EN motors enable
 #define pinMotorLeftPWM 5          // M1_IN1 left motor PWM pin
 #define pinMotorLeftDir 31         // M1_IN2 left motor Dir pin
 #define pinMotorLeftSense A1       // M1_FB  left motor current sense
@@ -45,7 +45,7 @@
 #define pinMotorMowRpm 18
     
 #define pinBumperLeft 39           // bumper pins
-#define pinBumperRight 37
+#define pinBumperRight 38
 #define pinSonarCenterTrigger 24   // ultrasonic sensor pins
 #define pinSonarCenterEcho 22
 #define pinSonarRightTrigger 30    
