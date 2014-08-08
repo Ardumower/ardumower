@@ -455,32 +455,34 @@ void Robot::motorControl(){
   //double TA = ((double)(millis() - lastMotorControlTime)) / 1000.0;  
   // normal drive
   if (odometryUse){
-  if ((millis() - lastMotorControlTime) < 100) return;
-  int motorLeftSetpoint = motorLeftSpeed;
-  int motorRightSetpoint = motorRightSpeed;
-  double P = 1.0;
-  if (millis() < stateStartTime + 500) {
-    motorLeftSetpoint = motorRightSetpoint = 0;
-    P = 3.0;
-  }
-  double motorLeftSpeedE =  motorLeftSetpoint - motorLeftRpm;          
-  double motorRightSpeedE = motorRightSetpoint - motorRightRpm;  
-  int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftSpeedE*P));
-  int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm,motorRightPWM + motorRightSpeedE*P));
+    if ((millis() - lastMotorControlTime) < 100) return;
+    int motorLeftSetpoint = motorLeftSpeed;
+    int motorRightSetpoint = motorRightSpeed;
+    double P = 1.0;
+    if (millis() < stateStartTime + 500) {
+      motorLeftSetpoint = motorRightSetpoint = 0;
+      P = 3.0;
+    }
+    double motorLeftSpeedE =  motorLeftSetpoint - motorLeftRpm;          
+    double motorRightSpeedE = motorRightSetpoint - motorRightRpm;  
+    int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftSpeedE*P));
+    int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm,motorRightPWM + motorRightSpeedE*P));
   
-  setMotorSpeed( leftSpeed, rightSpeed, false );  
-  lastMotorControlTime = millis();
+    if (((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE)) && (millis()-stateStartTime>1000)){
+      leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
+    }
+    setMotorSpeed( leftSpeed, rightSpeed, false );  
+    lastMotorControlTime = millis();
   }
   else{
-  int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
-  int rightSpeed =min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorRightSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
-  if (millis() < stateStartTime + 1000) {				
-    leftSpeed = rightSpeed = 0; // slow down at state start      
-    if (mowPatternCurr != MOW_LANES) imuDriveHeading = imuYaw; // set drive heading    
-  }
-  setMotorSpeed( leftSpeed, rightSpeed, true );    
-  }
-  
+    int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
+    int rightSpeed =min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorRightSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
+    if (millis() < stateStartTime + 1000) {				
+      leftSpeed = rightSpeed = 0; // slow down at state start      
+      if (mowPatternCurr != MOW_LANES) imuDriveHeading = imuYaw; // set drive heading    
+    }
+    setMotorSpeed( leftSpeed, rightSpeed, true );    
+  }  
 }
 
 
