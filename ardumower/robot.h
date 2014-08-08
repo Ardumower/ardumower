@@ -278,6 +278,7 @@ class Robot
     float lawnSensorBackOld ;
     // --------- rain -----------------------------------
     boolean rain;
+    boolean rainUse;
     // --------- sonar ----------------------------------
     // ultra sonic sensor distance-to-obstacle (cm)
     char sonarUse          ;      // use ultra sonic sensor?
@@ -329,6 +330,7 @@ class Robot
     byte ledState ;
     byte consoleMode ;
     unsigned long nextTimeButtonCheck ;
+    unsigned long nextTimeRain ;
     unsigned long nextTimeInfo ;
     unsigned long nextTimeMotorSense ;
     unsigned long nextTimeIMU ;

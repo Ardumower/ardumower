@@ -126,6 +126,8 @@ Mower::Mower(){
   motorMowPID.Kd = 0.01;
   //  ------ bumper -----------------------------------
   bumperUse         = 0;      // has bumpers? 
+  // ------ rain ------------------------------------
+  rainUse          = 1;      // use rain sensor?
   // ------ sonar ------------------------------------
   sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
@@ -176,7 +178,7 @@ Mower::Mower(){
   userSwitch2       = 0;       // user-defined switch 2 (default value)
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
-  timerUse          = 0;       // use timer?
+  timerUse          = 0;       // use timer?  
   // ------ configuration end -------------------------------------------   
 }
 
@@ -413,7 +415,7 @@ int Mower::readSensor(char type){
 // rtc--------------------------------------------------------------------------------------------------------
     case SEN_RTC: readDS1307(datetime); break;
 // rain--------------------------------------------------------------------------------------------------------
-    case SEN_RAIN: return(digitalRead(pinRain)); break;
+    case SEN_RAIN: if (digitalRead(pinRain)==LOW) return 1; break;
  
   }
   return 0;   
