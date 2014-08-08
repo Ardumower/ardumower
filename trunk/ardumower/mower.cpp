@@ -87,6 +87,7 @@
 #define pinUserSwitch1 46          // user-defined switch 1
 #define pinUserSwitch2 47          // user-defined switch 2
 #define pinUserSwitch3 48          // user-defined switch 3
+#define pinRain 44                 // rain sensor
 // IMU (compass/gyro/accel): I2C  (SCL, SDA) 
 // Bluetooth: Serial2 (TX2, RX2)
 // GPS: Serial3 (TX3, RX3) 
@@ -132,7 +133,7 @@ Mower::Mower(){
   perimeterUse       = 1;      // use perimeter?
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
-  perimeterPID.Kp    = 50.0;  // perimeter PID controller
+  perimeterPID.Kp    = 60.0;  // perimeter PID controller
   perimeterPID.Ki    = 10.0;
   perimeterPID.Kd    = 10.0;
   // ------ lawn sensor --------------------------------
@@ -284,6 +285,9 @@ void Mower::setup(){
   pinMode(pinSonarLeftEcho, INPUT); 
   pinMode(pinSonarRightTrigger, OUTPUT); 
   pinMode(pinSonarRightEcho, INPUT); 
+  
+  // rain
+  pinMode(pinRain, INPUT);
         
   // R/C
   pinMode(pinRemoteMow, INPUT);
@@ -408,6 +412,9 @@ int Mower::readSensor(char type){
     case SEN_IMU: float ypr[3]; imu.getEulerRad(ypr); imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; break;    
 // rtc--------------------------------------------------------------------------------------------------------
     case SEN_RTC: readDS1307(datetime); break;
+// rain--------------------------------------------------------------------------------------------------------
+    case SEN_RAIN: return(digitalRead(pinRain)); break;
+ 
   }
   return 0;   
 }

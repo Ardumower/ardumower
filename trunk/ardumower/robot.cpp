@@ -81,6 +81,8 @@ Robot::Robot(){
   lawnSensorCounter = 0;
   lawnSensor = false;
   lawnSensorFront = lawnSensorFrontOld = lawnSensorBack = lawnSensorBackOld = 0;  
+  
+  rain = false;
 
   sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
   sonarDistCounter = 0;
@@ -975,6 +977,7 @@ void Robot::readSensors(){
     // read RTC
     nextTimeRTC = millis() + 1000;
     readSensor(SEN_RTC);            
+    rain = (readSensor(SEN_RAIN) != 0);
   }
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
@@ -1329,6 +1332,12 @@ void Robot::checkLawn(){
   } else lawnSensor = false;
 }
 
+void Robot::checkRain(){
+  if (rain){
+    Console.println("RAIN");
+    setNextState(STATE_PERI_FIND, 0);    
+  }
+}
 
 // check sonar
 void Robot::checkSonar(){
@@ -1500,9 +1509,10 @@ void Robot::loop()  {
         if (stateTime > 4000) ratio = motorBiDirSpeedRatio2;
         if (rollDir == RIGHT) motorRightSpeed = ((double)motorLeftSpeed) * ratio;
           else motorLeftSpeed = ((double)motorRightSpeed) * ratio;                            
-      }       
+      }             
       checkErrorCounter();    
       checkTimer();
+      checkRain();
       checkCurrent();            
       checkBumpers();
       checkSonar();             
