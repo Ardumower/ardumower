@@ -1609,7 +1609,7 @@ void Robot::loop()  {
       break;
     case STATE_PERI_FIND:
       // find perimeter
-      if (motorLeftSpeed == motorRightSpeed){              
+      if (motorLeftSpeed == motorRightSpeed){ // do not check during 'outside=>inside' transition              
         checkCurrent();
         checkBumpersPerimeter();
         checkSonar();                   
