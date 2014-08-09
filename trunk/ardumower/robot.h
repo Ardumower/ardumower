@@ -279,6 +279,7 @@ class Robot
     // --------- rain -----------------------------------
     boolean rain;
     boolean rainUse;
+    int rainCounter;    
     // --------- sonar ----------------------------------
     // ultra sonic sensor distance-to-obstacle (cm)
     char sonarUse          ;      // use ultra sonic sensor?
