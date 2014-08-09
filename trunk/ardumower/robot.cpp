@@ -1332,7 +1332,17 @@ void Robot::checkPerimeterBoundary(){
 // check perimeter while finding it
 void Robot::checkPerimeterFind(){
   if (stateCurr == STATE_PERI_FIND){
-    if (!perimeter.isInside()) setNextState(STATE_PERI_TRACK, 0);    
+    if (perimeter.isInside()) {
+      // inside
+      if (motorLeftSpeed != motorRightSpeed){      
+        // we just made an 'outside=>inside' transition, now track
+        setNextState(STATE_PERI_TRACK, 0);    
+      }
+    } else {
+      // we are outside, now roll to get inside
+      motorRightSpeed = -motorSpeedMax / 1.5;
+      motorLeftSpeed  = motorSpeedMax / 1.5;
+    }
   }
 }
 
@@ -1599,10 +1609,12 @@ void Robot::loop()  {
       break;
     case STATE_PERI_FIND:
       // find perimeter
-      checkCurrent();            
-      checkBumpersPerimeter();
-      checkSonar();                   
-      checkPerimeterFind();
+      if (motorLeftSpeed == motorRightSpeed){              
+        checkCurrent();
+        checkBumpersPerimeter();
+        checkSonar();                   
+      }  
+      checkPerimeterFind();      
       break;
     case STATE_PERI_TRACK:
       // track perimeter
