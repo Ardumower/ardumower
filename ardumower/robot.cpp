@@ -83,6 +83,7 @@ Robot::Robot(){
   lawnSensorFront = lawnSensorFrontOld = lawnSensorBack = lawnSensorBackOld = 0;  
   
   rain = false;
+  rainCounter = 0;
 
   sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
   sonarDistCounter = 0;
@@ -1024,8 +1025,9 @@ void Robot::readSensors(){
   }      
   if ((rainUse) && (millis() >= nextTimeRain)) {
     // read rain sensor
-    nextTimeRain = millis() + 1000;
+    nextTimeRain = millis() + 5000;
     rain = (readSensor(SEN_RAIN) != 0);  
+    if (rain) rainCounter++;
   }
 }
 

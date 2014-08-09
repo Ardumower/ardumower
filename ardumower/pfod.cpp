@@ -174,7 +174,7 @@ void RemoteControl::sendPlotMenu(boolean update){
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Settings"));         
   Bluetooth.print(F("|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
-  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
+  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
 }  
 
 void RemoteControl::sendErrorMenu(boolean update){
@@ -403,6 +403,23 @@ void RemoteControl::processLawnSensorMenu(String pfodCmd){
   if (pfodCmd == "f00") robot->lawnSensorUse = !robot->lawnSensorUse;
   sendLawnSensorMenu(true);
 }
+
+void RemoteControl::sendRainMenu(boolean update){
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Rain`1000"));         
+  Bluetooth.print(F("|m00~Use "));
+  sendYesNo(robot->rainUse);  
+  Bluetooth.print(F("|m01~Counter "));
+  Bluetooth.print(robot->rainCounter);      
+  Bluetooth.println(F("|m02~Value"));
+  Bluetooth.print(robot->rain); 
+  Bluetooth.println("}");                
+}
+
+void RemoteControl::processRainMenu(String pfodCmd){      
+  if (pfodCmd == "m00") robot->rainUse = !robot->rainUse;
+  sendRainMenu(true);
+}
+
 
 void RemoteControl::sendImuMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.IMU`1000"));         
@@ -856,6 +873,7 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
       else if (pfodCmd == "s10") sendStationMenu(false);
       else if (pfodCmd == "s11") sendOdometryMenu(false);
       else if (pfodCmd == "s12") sendDateTimeMenu(false);      
+      else if (pfodCmd == "s13") sendRainMenu(false);            
       else if (pfodCmd == "sx") sendFactorySettingsMenu(false);
       else if (pfodCmd == "sz") { robot->saveUserSettings(); sendSettingsMenu(true); }
       else sendSettingsMenu(true);  
@@ -990,7 +1008,9 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->perimeterLeftCounter);
       Bluetooth.print(",");
-      Bluetooth.println(robot->lawnSensorCounter);
+      Bluetooth.print(robot->lawnSensorCounter);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->rainCounter);      
     }
   } else if (pfodState == PFOD_PLOT_SENSORS){
     if (millis() >= nextPlotTime){
@@ -1011,7 +1031,11 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->sonarDistRight);
       Bluetooth.print(",");
-      Bluetooth.println(robot->perimeter.isInside());
+      Bluetooth.print(robot->perimeter.isInside());
+      Bluetooth.print(",");      
+      Bluetooth.print(robot->lawnSensor);
+      Bluetooth.print(",");      
+      Bluetooth.println(robot->rain);
     }
   } else if (pfodState == PFOD_PLOT_PERIMETER){    
     if (millis() >= nextPlotTime){
@@ -1131,7 +1155,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd == "y5") {        
           // plot sensor counters
           Bluetooth.print(F("{=Sensor counters`300|time s`0|state`1|motL`2|motR`3|motM`4|bumL`5|bumR`6"));
-          Bluetooth.println(F("|son`7|peri`8|lawn`9}"));         
+          Bluetooth.println(F("|son`7|peri`8|lawn`9|rain`10}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_SENSOR_COUNTERS;
         }
@@ -1146,7 +1170,7 @@ void RemoteControl::readSerial(){
         }
         else if (pfodCmd == "y7") {
           // plot sensor values
-          Bluetooth.println(F("{=Sensors`300|time s`0|state`1|motL`2|motR`3|motM`4|sonL`5|sonC`6|sonR`7|peri`8}"));
+          Bluetooth.println(F("{=Sensors`300|time s`0|state`1|motL`2|motR`3|motM`4|sonL`5|sonC`6|sonR`7|peri`8|lawn`9|rain`10}"));
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_SENSORS;          
         }
@@ -1181,6 +1205,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("j")) processBatteryMenu(pfodCmd);       
         else if (pfodCmd.startsWith("k")) processStationMenu(pfodCmd);       
         else if (pfodCmd.startsWith("l")) processOdometryMenu(pfodCmd);  
+        else if (pfodCmd.startsWith("m")) processRainMenu(pfodCmd);               
         else if (pfodCmd.startsWith("t")) processDateTimeMenu(pfodCmd);  
         else if (pfodCmd.startsWith("i")) processTimerMenu(pfodCmd);      
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
