@@ -77,6 +77,7 @@ Robot::Robot(){
   perimeterLeft =  perimeterRight = 0;
   perimeterLeftState = true;
   perimeterLeftCounter = 0;  
+  perimeterLastTransitionTime = 0;
   
   lawnSensorCounter = 0;
   lawnSensor = false;
@@ -412,6 +413,12 @@ void Robot::motorControlImuRoll(){
 
 // PID controller: track perimeter 
 void Robot::motorControlPerimeter(){      
+  if ((millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + 5000)){
+    // robot is wheel-spinning while tracking => roll to get ground again
+    if (perimeterLeft < 0) setMotorSpeed( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
+      else setMotorSpeed( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);
+    return;
+  }   
   double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
   if (Ta > 0.05) Ta = 0.05; // should only happen for the very first call
   lastMotorControlTime = millis();  
@@ -928,10 +935,11 @@ void Robot::readSensors(){
     nextTimePerimeter = millis() +  50; // 50
     //perimeterRight = readSensor(SEN_PERIM_RIGHT) + readSensor(SEN_PERIM_RIGHT_EXTRA);
     perimeterLeft = readSensor(SEN_PERIM_LEFT) + readSensor(SEN_PERIM_LEFT_EXTRA);        
-    if ((!perimeter.isInside()) && (perimeterLeftState)){      
+    if ((perimeter.isInside() != perimeterLeftState)){      
       perimeterLeftCounter++;
-    }
-    perimeterLeftState = perimeter.isInside();
+      perimeterLastTransitionTime = millis();
+      perimeterLeftState = perimeter.isInside();
+    }    
     if (perimeterLeftState) setActuator(ACT_LED, HIGH);    
       else setActuator(ACT_LED, LOW);      
     if (perimeter.signalTimedOut()){
