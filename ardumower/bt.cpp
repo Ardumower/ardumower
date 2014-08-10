@@ -256,7 +256,11 @@ void BluetoothConfig::detectModuleType(){
 
 void BluetoothConfig::setParams(String name, int pin, long baudrate, boolean quickBaudScan) {
   //delay(2000);
-  Console.println(F("HC-03/04/05/06/linvor/ModiaTek Bluetooth config programmer")); 
+  Console.println(F("HC-03/04/05/06/linvor/ModiaTek Bluetooth config programmer"));
+  Console.println(F("NOTE for HC05: Connect KEY pin to 3.3V!"));
+  Console.println(F("NOTE for HC06/linvor: Do NOT pair/connect (LED must be blinking)"));
+  Console.println(F("NOTE for FBT06/MBTV4: First you have to solder the PIO11 pin to VCC (PIN 12) which is 3.3 Volts using a thin wire."));
+ 
   if (detectBaudrate(quickBaudScan)){
     detectModuleType();
     if (btType != BT_UNKNOWN){      
