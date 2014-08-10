@@ -1366,7 +1366,8 @@ void Robot::checkLawn(){
 void Robot::checkRain(){
   if (rain){
     Console.println("RAIN");
-    setNextState(STATE_PERI_FIND, 0);    
+    if (perimeterUse) setNextState(STATE_PERI_FIND, 0);    
+      else setNextState(STATE_OFF, 0);    
   }
 }
 
