@@ -267,6 +267,7 @@ class Robot
     int perimeterLeft ;
     int perimeterRight ;
     boolean perimeterLeftState ;
+    unsigned long perimeterLastTransitionTime;
     int perimeterLeftCounter ;
     //  --------- lawn state ----------------------------
     char lawnSensorUse     ;       // use capacitive Sensor
