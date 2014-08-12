@@ -19,7 +19,7 @@
 
 #include "robot.h"
 
-#define MAGIC 24
+#define MAGIC 25
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -74,10 +74,12 @@ Robot::Robot(){
   imuRollHeading = 0;
   imuRollDir = LEFT;  
   
-  perimeterLeft =  perimeterRight = 0;
-  perimeterLeftState = true;
-  perimeterLeftCounter = 0;  
+  perimeterMag = 0;
+  perimeterInside = true;
+  perimeterCounter = 0;  
   perimeterLastTransitionTime = 0;
+  perimeterTriggerTimeout = 0;
+  perimeterTriggerTime = 0;
   
   lawnSensorCounter = 0;
   lawnSensor = false;
@@ -167,11 +169,12 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, sonarUse);
   eereadwrite(readflag, addr, sonarTriggerBelow);
   eereadwrite(readflag, addr, perimeterUse);
+  eereadwrite(readflag, addr, perimeterTriggerTimeout);
   eereadwrite(readflag, addr, perimeterTrackRollTime );
   eereadwrite(readflag, addr, perimeterTrackRevTime);
   eereadwrite(readflag, addr, perimeterPID.Kp);
   eereadwrite(readflag, addr, perimeterPID.Ki);
-  eereadwrite(readflag, addr, perimeterPID.Kd);  
+  eereadwrite(readflag, addr, perimeterPID.Kd);    
   eereadwrite(readflag, addr, lawnSensorUse);
   eereadwrite(readflag, addr, imuUse);
   eereadwrite(readflag, addr, imuCorrectDir);
@@ -202,6 +205,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, userSwitch3);    
   eereadwrite(readflag, addr, timerUse);
   eereadwrite(readflag, addr, timer);  
+  eereadwrite(readflag, addr, rainUse);
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
@@ -415,15 +419,15 @@ void Robot::motorControlImuRoll(){
 void Robot::motorControlPerimeter(){      
   if ((millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + 5000)){
     // robot is wheel-spinning while tracking => roll to get ground again
-    if (perimeterLeft < 0) setMotorSpeed( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
+    if (perimeterMag < 0) setMotorSpeed( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
       else setMotorSpeed( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);
     return;
   }   
   double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
   if (Ta > 0.05) Ta = 0.05; // should only happen for the very first call
   lastMotorControlTime = millis();  
-  if (perimeterLeft < 0) perimeterPID.x = -1;
-    else if (perimeterLeft > 0) perimeterPID.x = 1; 
+  if (perimeterMag < 0) perimeterPID.x = -1;
+    else if (perimeterMag > 0) perimeterPID.x = 1; 
     else perimeterPID.x = 0;
   perimeterPID.w = 0;
   /*perimeterPID.Kp= 50;
@@ -624,9 +628,9 @@ void Robot::printInfo(Stream &s){
   if (consoleMode == CONSOLE_PERIMETER){
     Streamprint(s, "sig min %4d max %4d avg %4d  mag %5d",
       (int)perimeter.getSignalMin(), (int)perimeter.getSignalMax(), (int)perimeter.getSignalAvg(),
-      perimeterLeft);
+      perimeterMag);
     Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",  
-      (int)perimeterLeftState, perimeterLeftCounter, (int)(!perimeter.signalTimedOut()) );      
+      (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut()) );      
   } else {  
     if (odometryUse) Streamprint(s, "odo %4d %4d ", (int)odometryLeft, (int)odometryRight);   
     Streamprint(s, "spd %4d %4d %4d ", (int)motorLeftSpeed, (int)motorRightSpeed, (int)motorMowRpm);
@@ -638,7 +642,7 @@ void Robot::printInfo(Stream &s){
       Streamprint(s, "pit %3d ", (int)(imuPitch/PI*180.0));
       Streamprint(s, "rol %3d ", (int)(imuRoll/PI*180.0));
       Streamprint(s, "yaw %3d ", (int)(imuYaw/PI*180.0));  
-      if (perimeterUse) Streamprint(s, "per %3d ", (int)perimeterLeftState);              
+      if (perimeterUse) Streamprint(s, "per %3d ", (int)perimeterInside);              
       if (lawnSensorUse) Streamprint(s, "lawn %3d %3d ", (int)lawnSensorFront, (int)lawnSensorBack);
     } else {
       // sensor counters
@@ -649,7 +653,7 @@ void Robot::printInfo(Stream &s){
       Streamprint(s, "rol %3d ", (int)(imuRoll/PI*180.0));
       Streamprint(s, "yaw %3d ", (int)(imuYaw/PI*180.0));  
       //Streamprint(s, "per %3d ", perimeterLeft);          
-      if (perimeterUse) Streamprint(s, "per %3d ", perimeterLeftCounter);                  
+      if (perimeterUse) Streamprint(s, "per %3d ", perimeterCounter);                  
       if (lawnSensorUse) Streamprint(s, "lawn %3d ", lawnSensorCounter);
       if (gpsUse) Streamprint(s, "gps %2d ", (int)gps.satellites());            
     }
@@ -932,16 +936,18 @@ void Robot::readSensors(){
     }
   }   
   if ((perimeterUse) && (millis() >= nextTimePerimeter)){    
-    nextTimePerimeter = millis() +  50; // 50
-    //perimeterRight = readSensor(SEN_PERIM_RIGHT) + readSensor(SEN_PERIM_RIGHT_EXTRA);
-    perimeterLeft = readSensor(SEN_PERIM_LEFT) + readSensor(SEN_PERIM_LEFT_EXTRA);        
-    if ((perimeter.isInside() != perimeterLeftState)){      
-      perimeterLeftCounter++;
+    nextTimePerimeter = millis() +  50; // 50    
+    perimeterMag = readSensor(SEN_PERIM_LEFT);
+    if ((perimeter.isInside() != perimeterInside)){      
+      perimeterCounter++;
       perimeterLastTransitionTime = millis();
-      perimeterLeftState = perimeter.isInside();
+      perimeterInside = perimeter.isInside();
     }    
-    if (perimeterLeftState) setActuator(ACT_LED, HIGH);    
+    if (perimeterInside) setActuator(ACT_LED, HIGH);    
       else setActuator(ACT_LED, LOW);      
+    if ((!perimeterInside) && (perimeterTriggerTime == 0)){
+      perimeterTriggerTime = millis() + perimeterTriggerTimeout;
+    }
     if (perimeter.signalTimedOut()){
       if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
         Console.println("Error: Perimeter timeout");
@@ -1143,6 +1149,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateStartTime = millis();
   stateLast = stateCurr;
   stateCurr = stateNext;    
+  perimeterTriggerTime=0;
   printInfo(Console);          
 }
 
@@ -1316,7 +1323,7 @@ void Robot::checkBumpersPerimeter(){
 void Robot::checkPerimeterBoundary(){
   if (mowPatternCurr == MOW_BIDIR){
     if ((millis() < stateStartTime + 3000)) return;    
-    if (!perimeterLeftState) {
+    if (!perimeterInside) {
       if ((rand() % 2) == 0){      
         reverseOrBidir(LEFT);
       } else {
@@ -1325,13 +1332,11 @@ void Robot::checkPerimeterBoundary(){
     }
   } else {  
     if (stateCurr == STATE_FORWARD){
-      //if ((millis() < stateStartTime + 2500)) return;    
-      if (!perimeterLeftState) {
-      //  if ((rand() % 2) == 0){      
+      if (perimeterTriggerTime != 0) {
+        if (millis() >= perimeterTriggerTime){        
+          perimeterTriggerTime = 0;
           reverseOrBidir(LEFT);
-      //  }// else {
-        //  reverseOrBidir(RIGHT);
-      //  }
+        }
       }
     } 
   }

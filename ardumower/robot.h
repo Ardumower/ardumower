@@ -263,12 +263,13 @@ class Robot
     char perimeterUse       ;      // use perimeter?
     int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
     int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
-    PID perimeterPID ;    // perimeter PID controller
-    int perimeterLeft ;
-    int perimeterRight ;
-    boolean perimeterLeftState ;
+    PID perimeterPID ;             // perimeter PID controller
+    int perimeterMag ;             // perimeter magnitude
+    boolean perimeterInside ;      // is inside perimeter?
+    unsigned long perimeterTriggerTime; // time to trigger perimeter transition (timeout)
+    int perimeterTriggerTimeout;   // perimeter trigger timeout (ms)
     unsigned long perimeterLastTransitionTime;
-    int perimeterLeftCounter ;
+    int perimeterCounter ;         // counts perimeter transitions
     //  --------- lawn state ----------------------------
     char lawnSensorUse     ;       // use capacitive Sensor
     int lawnSensorCounter;
