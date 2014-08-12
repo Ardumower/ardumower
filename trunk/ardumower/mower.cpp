@@ -132,7 +132,8 @@ Mower::Mower(){
   sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 1;      // use perimeter?
+  perimeterUse       = 1;      // use perimeter?    
+  perimeterTriggerTimeout = 0; // perimeter trigger timeout (ms)  
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
   perimeterPID.Kp    = 60.0;  // perimeter PID controller
