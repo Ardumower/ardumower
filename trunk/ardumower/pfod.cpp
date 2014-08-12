@@ -368,10 +368,9 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Perimeter`1000"));         
   Bluetooth.print(F("|e00~Use "));
   sendYesNo(robot->perimeterUse);  
-  Bluetooth.println(F("|e02~Value l, r"));
-  Bluetooth.print(robot->perimeterLeft);
-  Bluetooth.print(", ");
-  Bluetooth.print(robot->perimeterRight);    
+  Bluetooth.println(F("|e02~Value"));
+  Bluetooth.print(robot->perimeterMag);  
+  sendSlider("e04", "Trigger timeout", robot->perimeterTriggerTimeout, "", 1, 2000);
   sendSlider("e05", F("Track roll time"), robot->perimeterTrackRollTime, "", 1, 8000);       
   sendSlider("e06", F("Track rev time"), robot->perimeterTrackRevTime, "", 1, 8000);         
   sendPIDSlider("e07", F("Track"), robot->perimeterPID, 0.1, 100);  
@@ -380,6 +379,7 @@ void RemoteControl::sendPerimeterMenu(boolean update){
 
 void RemoteControl::processPerimeterMenu(String pfodCmd){      
   if (pfodCmd == "e00") robot->perimeterUse = !robot->perimeterUse;
+    else if (pfodCmd.startsWith("e04")) processSlider(pfodCmd, robot->perimeterTriggerTimeout, 1);  
     else if (pfodCmd.startsWith("e05")) processSlider(pfodCmd, robot->perimeterTrackRollTime, 1);
     else if (pfodCmd.startsWith("e06")) processSlider(pfodCmd, robot->perimeterTrackRevTime, 1);
     else if (pfodCmd.startsWith("e07")) processPIDSlider(pfodCmd, "e07", robot->perimeterPID, 0.1, 100);    
@@ -1006,7 +1006,7 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->sonarDistCounter);
       Bluetooth.print(",");
-      Bluetooth.print(robot->perimeterLeftCounter);
+      Bluetooth.print(robot->perimeterCounter);
       Bluetooth.print(",");
       Bluetooth.print(robot->lawnSensorCounter);
       Bluetooth.print(",");
@@ -1050,13 +1050,13 @@ void RemoteControl::run(){
         nextPlotTime = millis() + 200;            
         Bluetooth.print(perimeterCapture[perimeterCaptureIdx]);          
         Bluetooth.print(",");                    
-        Bluetooth.print(robot->perimeterLeft);
+        Bluetooth.print(robot->perimeterMag);
         Bluetooth.print(",");
         Bluetooth.print(robot->perimeter.getSmoothMagnitude());
         Bluetooth.print(",");
         Bluetooth.print(robot->perimeter.isInside());
         Bluetooth.print(",");
-        Bluetooth.print(robot->perimeterLeftCounter);
+        Bluetooth.print(robot->perimeterCounter);
         Bluetooth.print(",");        
         Bluetooth.println(!robot->perimeter.signalTimedOut());        
         perimeterCaptureIdx++;
