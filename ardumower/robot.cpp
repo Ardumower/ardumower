@@ -78,7 +78,6 @@ Robot::Robot(){
   perimeterInside = true;
   perimeterCounter = 0;  
   perimeterLastTransitionTime = 0;
-  perimeterTriggerTimeout = 0;
   perimeterTriggerTime = 0;
   
   lawnSensorCounter = 0;
@@ -945,8 +944,13 @@ void Robot::readSensors(){
     }    
     if (perimeterInside) setActuator(ACT_LED, HIGH);    
       else setActuator(ACT_LED, LOW);      
-    if ((!perimeterInside) && (perimeterTriggerTime == 0)){
-      perimeterTriggerTime = millis() + perimeterTriggerTimeout;
+    if ((!perimeterInside) && (perimeterTriggerTime != 0)){
+      // set perimeter trigger time      
+      if (millis() > stateStartTime + 2000){ // far away from perimeter?
+        perimeterTriggerTime = millis() + perimeterTriggerTimeout;  
+      } else {  
+        perimeterTriggerTime = millis();
+      }
     }
     if (perimeter.signalTimedOut()){
       if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
