@@ -72,17 +72,20 @@ void setup()  {
   // 1 access mode RSSI
   // 9 max # devices to be discovered
   // 48 timeout
-  sendBT("AT+INQM=1,9,48\r\n");
+  sendBT("AT+INQM=1,9,3\r\n");
   delay(500);
   readBT();  
-
-  // Query Nearby Discoverable Devices    
-  sendBT("AT+INQ\r\n");    
+  
 }
 
 void loop()  {        
   
-  readBT();          
+  // Query Nearby Discoverable Devices    
+  sendBT("AT+INQ\r\n");      
+  unsigned long endtime = millis() + 6000;
+  while (millis() < endtime){  
+    readBT();            
+  }
 }
 
 
