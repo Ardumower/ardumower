@@ -378,6 +378,11 @@ void Robot::motorControlPerimeter(){
     // robot is wheel-spinning while tracking => roll to get ground again
     if (perimeterMag < 0) setMotorSpeed( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
       else setMotorSpeed( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);
+    if (millis() > perimeterLastTransitionTime + 10000){      
+      Console.println("Error: tracking error");
+      addErrorCounter(ERR_TRACKING);
+      setNextState(STATE_ERROR,0);
+    }
     return;
   }   
   double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
@@ -911,7 +916,7 @@ void Robot::readSensors(){
       }
     }
     if (perimeter.signalTimedOut()){
-      if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
+      if ( (stateCurr != STATE_PERI_TRACK) && (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
         Console.println("Error: Perimeter timeout");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
