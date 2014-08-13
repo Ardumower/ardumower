@@ -915,9 +915,9 @@ void Robot::readSensors(){
         perimeterTriggerTime = millis();
       }
     }
-    if ( (perimeter.signalTimedOut()) && (millis() > perimeterLastTransitionTime + 3000) ) {      
+    if ( (perimeter.signalTimedOut()) && (perimeter.getSmoothMagnitude() > 0) && (perimeter.getSmoothMagnitude() < 1000)  ) {      
       if (stateCurr == STATE_FORWARD) {
-        Console.println("Error: Perimeter timeout");
+        Console.println("Error: Perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
       }
