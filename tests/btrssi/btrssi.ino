@@ -75,19 +75,14 @@ void setup()  {
   sendBT("AT+INQM=1,9,48\r\n");
   delay(500);
   readBT();  
-  
+
   // Query Nearby Discoverable Devices    
-  sendBT("AT+INQ\r\n");  
-  delay(500);
-  readBT();    
+  sendBT("AT+INQ\r\n");    
 }
 
 void loop()  {        
-  //unsigned endtime = millis() + 1000;  
-  //while (millis() < endtime){
-  readBT();    
-  //}  
-  delay(30);
+  
+  readBT();          
 }
 
 
