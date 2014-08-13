@@ -915,7 +915,7 @@ void Robot::readSensors(){
         perimeterTriggerTime = millis();
       }
     }
-    if (perimeter.signalTimedOut()){      
+    if ( (perimeter.signalTimedOut()) && (millis() > perimeterLastTransitionTime + 3000) ) {      
       if (stateCurr == STATE_FORWARD) {
         Console.println("Error: Perimeter timeout");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
