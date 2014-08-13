@@ -5,7 +5,7 @@
 
 #include <Arduino.h>
 
-void readBT(){  
+boolean readBT(){  
   String s;
   if (Serial2.available()){
     Serial.print("receiving: ");
@@ -14,8 +14,10 @@ void readBT(){
       s += (char)data;          
       if (!Serial2.available()) delay(1);
     }        
-    Serial.println(s);
-  }  
+    Serial.print(s);
+    if (s.endsWith("OK\r\n")) return true;
+  } 
+  return false; 
 }
 
 void sendBT(String s){
@@ -72,20 +74,23 @@ void setup()  {
   // 1 access mode RSSI
   // 9 max # devices to be discovered
   // 48 timeout
-  sendBT("AT+INQM=1,9,3\r\n");
+  sendBT("AT+INQM=1,9,48\r\n");
   delay(500);
   readBT();  
   
+  // Query Nearby Discoverable Devices      
+  sendBT("AT+INQ\r\n");      
 }
 
 void loop()  {        
   
-  // Query Nearby Discoverable Devices    
-  sendBT("AT+INQ\r\n");      
-  unsigned long endtime = millis() + 6000;
+  if (readBT()){
+    sendBT("AT+INQ\r\n");              
+  }    
+  /*unsigned long endtime = millis() + 90000;
   while (millis() < endtime){  
     readBT();            
-  }
+  }*/
 }
 
 
