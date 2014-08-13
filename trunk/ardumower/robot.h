@@ -133,7 +133,6 @@ enum { MOW_RANDOM, MOW_LANES, MOW_BIDIR };
 enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER };
 
 
-#define BEHAVIOR_COUNT 5
 #define MAX_TIMERS 5
 
 
@@ -320,11 +319,6 @@ class Robot
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];
-    // --------- behavior -------------------------------
-    /*Behavior *behaviorCurr; // current behavior
-    int behaviorCurrIdx;    // current behavior index
-    Behavior *behaviors[BEHAVIOR_COUNT];  // all behaviors    
-    boolean suppresses[BEHAVIOR_COUNT][BEHAVIOR_COUNT]; // suppress matrix*/
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
     float loopsTa ;   // main loop-time factor (milliseconds)
@@ -401,12 +395,6 @@ class Robot
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
-
-    // initialize suppresses matrix
-    virtual void initSuppresses(boolean matrix[BEHAVIOR_COUNT][BEHAVIOR_COUNT]);
-
-    // perform robot behavior
-    virtual void performBehavior(void);
     virtual void loadSaveUserSettings(boolean readflag);
     virtual void loadUserSettings();
     virtual void addErrorCounter(byte errType);
