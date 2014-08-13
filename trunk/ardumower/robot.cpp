@@ -440,7 +440,7 @@ void Robot::motorControl(){
     int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftSpeedE*P));
     int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm,motorRightPWM + motorRightSpeedE*P));
   
-    if (((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE)) && (millis()-stateStartTime>1000)){
+    if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
     }
     setMotorSpeed( leftSpeed, rightSpeed, false );  

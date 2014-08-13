@@ -219,7 +219,8 @@ boolean Perimeter::isInside(){
 }
 
 boolean Perimeter::signalTimedOut(){
-  return (millis() > lastSignalTime + 5000);
+  //return (millis() > lastSignalTime + 5000);
+  return (smoothMag > 0);
 }
 
 // perimeter V1 uses a FFT band pass filter
