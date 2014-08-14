@@ -272,22 +272,35 @@ void Robot::setMotorMowRPMState(boolean motorMowRpmState){
 void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, boolean odometryLeftState2, boolean odometryRightState2){
   if (odometryLeftState != odometryLeftLastState){    
     if (odometryLeftState){
-      if (!odometryLeftState2) odometryLeft++; else odometryLeft--; 
+      if (twoWayOdometrySensorUse) {
+        if (!odometryLeftState2) odometryLeft++; else odometryLeft--;
+      } 
+      else { 
+         if (motorLeftPWM >0) odometryLeft++; else odometryLeft--;
+      }
     }
     odometryLeftLastState = odometryLeftState;
   } 
+
   if (odometryRightState != odometryRightLastState){
     if (odometryRightState){
-      if (!odometryRightState2) odometryRight++; else odometryRight--;     
+      if (twoWayOdometrySensorUse) {
+        if (!odometryRightState2) odometryRight++; else odometryRight--;
+      }     
+      else {
+         if (motorRightPWM >0) odometryRight++; else odometryRight--;    
+      }
     }
     odometryRightLastState = odometryRightState;
   }  
-  if (odometryRightState2 != odometryRightLastState2){
-    odometryRightLastState2 = odometryRightState2;    
-  }  
-  if (odometryLeftState2 != odometryLeftLastState2){
-    odometryLeftLastState2 = odometryLeftState2;    
-  }   
+  if (twoWayOdometrySensorUse) {
+    if (odometryRightState2 != odometryRightLastState2){
+      odometryRightLastState2 = odometryRightState2;    
+    }  
+    if (odometryLeftState2 != odometryLeftLastState2){
+      odometryLeftLastState2 = odometryLeftState2;    
+    }
+  }    
 }
 
 

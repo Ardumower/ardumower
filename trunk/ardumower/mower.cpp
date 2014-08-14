@@ -167,6 +167,7 @@ Mower::Mower(){
   stationForwTime    = 2000;    // charge station forward time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
+  twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
