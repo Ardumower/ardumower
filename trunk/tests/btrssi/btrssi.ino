@@ -1,5 +1,7 @@
 
 /* Bluetooth RSSI monitor (HC-05 module connected to serial2)
+  (Remember to connect KEY pin to 3.3V after powering on)
+
    Arduino Mega
  */
 
