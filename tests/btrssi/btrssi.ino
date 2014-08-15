@@ -32,74 +32,69 @@ void sendBT(String s){
   //Serial2.flush();
 }
 
+void sendReadBT(String s){
+  sendBT(s);
+  delay(500);
+  readBT();
+}
 
+
+void runAsMaster(){
+  Serial2.begin(19200);      
+  sendReadBT("AT\r\n");          
+  sendReadBT("AT+VERSION?\r\n");    
+  // get sniff params
+  // 1024  max time
+  // 512   min time
+  // 1024  test time
+  // 512   limited time
+  sendReadBT("AT+IPSCAN?\r\n");         
+  sendReadBT("AT+SNIFF?\r\n");         
+  // Initialize the SPP profile lib
+  sendReadBT("at+init\r\n");      
+  sendReadBT("at+role=1\r\n");        
+  sendReadBT("at+state?\r\n");        
+  // Inquire Bluetooth device has an access code    
+  //sendReadBT("AT+IAC=9e8b33\r\n");    
+  //sendReadBT("AT+CLASS=0x1f1f\r\n");
+  // 1 access mode RSSI
+  // 9 max # devices to be discovered
+  // 48 timeout
+  sendReadBT("AT+INQM=1,9,48\r\n");
+  // Query Nearby Discoverable Devices      
+  sendBT("AT+INQ\r\n");       
+  while(true){
+    if (readBT()){
+      sendBT("AT+INQ\r\n");              
+    }    
+  }
+}
+
+void configSlave(){
+  Serial2.begin(9600);      
+  sendReadBT("AT\r\n");          
+  sendReadBT("AT+VERSION?\r\n"); 
+  sendReadBT("AT+SNIFF?\r\n");           
+  //sendReadBT("AT+SNIFF=0,0,0,0\r\n");       
+  sendReadBT("AT+IPSCAN?\r\n");            
+  sendReadBT("AT+IPSCAN=1024,768,1024,768\r\n");       
+  sendReadBT("AT+IPSCAN?\r\n");            
+}
 
 void setup()  {  
   Serial.begin(19200);  
-  Serial2.begin(19200);    
 
   pinMode(pinBTKey, OUTPUT);// this pin will pull the HC-05 pin 34 (key pin) HIGH to switch module to AT mode
   digitalWrite(pinBTKey, HIGH);  
   
   delay(1000);
   Serial.println("START");    
-
   
-  /*sendBT("AT\r\n");      
-  delay(500);
-  readBT();
-  
-  sendBT("AT+VERSION?\r\n");    
-  delay(500);
-  readBT();  */
-  
-  // Initialize the SPP profile lib
-  sendBT("at+init\r\n");    
-  delay(500);
-  readBT();      
-  
-  sendBT("at+role=1\r\n");    
-  delay(500);
-  readBT();    
-  
-  
-  sendBT("at+state?\r\n");    
-  delay(500);
-  readBT();    
-  
-    
-  /*
-  // Inquire Bluetooth device has an access code    
-  sendBT("AT+IAC=9e8b33\r\n");
-  delay(500);  
-  readBT();  */
-       
-  /*
-  sendBT("AT+CLASS=0\r\n");
-  delay(500);  
-  readBT();  
-  */
-  
-  // 1 access mode RSSI
-  // 9 max # devices to be discovered
-  // 48 timeout
-  sendBT("AT+INQM=1,9,48\r\n");
-  delay(500);
-  readBT();  
-  
-  // Query Nearby Discoverable Devices      
-  sendBT("AT+INQ\r\n");      
+  //configSlave();  
+  runAsMaster();  
 }
 
-void loop()  {        
-  
-  if (readBT()){
-    sendBT("AT+INQ\r\n");              
-  }    
-  /*unsigned long endtime = millis() + 90000;
-  while (millis() < endtime){  
-    readBT();            
-  }*/
+void loop()  {          
 }
 
 
