@@ -49,6 +49,8 @@ void runAsMaster(){
   // 1024  test time
   // 512   limited time
   sendReadBT("AT+IPSCAN?\r\n");         
+  //sendReadBT("AT+IPSCAN=1024,512,1024,512\r\n");         
+  sendReadBT("AT+IPSCAN=1024,512,1024,512\r\n");         
   sendReadBT("AT+SNIFF?\r\n");         
   // Initialize the SPP profile lib
   sendReadBT("at+init\r\n");      
@@ -77,7 +79,7 @@ void configSlave(){
   sendReadBT("AT+SNIFF?\r\n");           
   //sendReadBT("AT+SNIFF=0,0,0,0\r\n");       
   sendReadBT("AT+IPSCAN?\r\n");            
-  sendReadBT("AT+IPSCAN=1024,768,1024,768\r\n");       
+  sendReadBT("AT+IPSCAN=1024,512,1024,512\r\n");       
   sendReadBT("AT+IPSCAN?\r\n");            
 }
 
