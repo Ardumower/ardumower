@@ -7,6 +7,9 @@
 
 #include <Arduino.h>
 
+#define pinBTKey 41
+
+
 boolean readBT(){  
   String s;
   if (Serial2.available()){
@@ -31,12 +34,16 @@ void sendBT(String s){
 
 
 
-void setup()  {
+void setup()  {  
   Serial.begin(19200);  
   Serial2.begin(19200);    
+
+  pinMode(pinBTKey, OUTPUT);// this pin will pull the HC-05 pin 34 (key pin) HIGH to switch module to AT mode
+  digitalWrite(pinBTKey, HIGH);  
   
   delay(1000);
   Serial.println("START");    
+
   
   /*sendBT("AT\r\n");      
   delay(500);
