@@ -10,6 +10,38 @@
 #define pinBTKey 41
 
 
+// convert RSSI to distance (meters)
+// http://en.wikipedia.org/wiki/FSPL
+// FSPL explicitly requires “free space” for calculation, while most Wifi signals are obstructed by walls and other materials.
+// Ideally, we will want to sample the signal strength many times (10+) to account for varying interference.
+
+float calculateDistance(double levelInDb, double freqInMHz)    {
+   float exp_ = (27.55 - (20 * log10(freqInMHz)) + abs(levelInDb)) / 20.0;
+   return pow(10.0, exp_);
+}
+
+
+// Trilateration algorithm ("three distances known")
+void getCoordinateWithBeacon(float ax, float ay, float dA, // 1st distance
+                             float bx, float by, float dB, // 2nd distance
+                             float cx, float cy, float dC, // 3rd distance
+                             float &rx, float &ry) {       // result
+    float W, Z, x, y, y2;
+    W = dA*dA - dB*dB - ax*ax - ay*ay + bx*bx + by*by;
+    Z = dB*dB - dC*dC - bx*bx - by*by + cx*cx + cy*cy;
+
+    x = (W*(cy-by) - Z*(by-ay)) / (2 * ((bx-ax)*(cy-by) - (cx-bx)*(by-ay)));
+    y = (W - 2*x*(bx-ax)) / (2*(by-ay));
+    //y2 is a second measure of y to mitigate errors
+    y2 = (Z - 2*x*(cx-bx)) / (2*(cy-by));
+
+    y = (y + y2) / 2;
+    
+    rx = x;
+    ry = y;    
+}
+
+
 boolean readBT(){  
   String s;
   if (Serial2.available()){
