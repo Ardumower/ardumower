@@ -8,7 +8,7 @@
 #include <Arduino.h>
 
 #define pinBTKey 41
-#define FREQ 2.4
+#define FREQ 2457
   
 
 // convert RSSI to distance (meters)
