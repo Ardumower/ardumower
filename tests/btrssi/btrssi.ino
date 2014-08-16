@@ -8,7 +8,8 @@
 #include <Arduino.h>
 
 #define pinBTKey 41
-
+#define FREQ 2.4
+  
 
 // convert RSSI to distance (meters)
 // http://en.wikipedia.org/wiki/FSPL
@@ -42,16 +43,38 @@ void getCoordinateWithBeacon(float ax, float ay, float dA, // 1st distance
 }
 
 
-boolean readBT(){  
-  String s;
-  if (Serial2.available()){
-    Serial.print("receiving: ");
+int hex2int(String a)
+{
+    int i;
+    unsigned int val = 0;
+
+    for(i=0;i<a.length();i++)
+       if(a[i] <= 57)
+        val += (a[i]-48)*(1<<(4*(a.length()-1-i)));
+       else
+        val += (a[i]-55)*(1<<(4*(a.length()-1-i)));
+    return (signed int)val;
+}
+
+int stringToInt(String &s){
+  float v;
+  char tmp[20];  
+  s.toCharArray(tmp, sizeof(tmp));
+  v = atoi(tmp);    
+  //v = strtod(tmp, NULL);
+  /*Console.print(s);
+  Console.print("=");
+  Console.println(v, 6);   */
+  return v;
+}
+
+boolean readBT(String &s){  
+  if (Serial2.available()){    
     while (Serial2.available()){
       char data = Serial2.read();
       s += (char)data;          
-      if (!Serial2.available()) delay(1);
-    }        
-    Serial.print(s);
+      if (!Serial2.available()) delay(1);      
+    }            
     if (s.endsWith("OK\r\n")) return true;
   } 
   return false; 
@@ -67,9 +90,35 @@ void sendBT(String s){
 void sendReadBT(String s){
   sendBT(s);
   delay(500);
-  readBT();
+  String r;
+  readBT(r);
+  Serial.print("receiving: ");
+  Serial.print(r);  
 }
 
+// +INQ:1234:56:0,1F1F,FFC0
+// +INQ:1234:56:0,1F1F,FFC0
+// +INQ:1234:56:0,1F1F,FFC0
+// OK
+void parseRSSI(String s){  
+  /*Serial.print("parsing ");
+  Serial.println(s);  
+  Serial.println();  */
+  while (true){
+    int idx = s.indexOf('+INQ');
+    if (idx == -1) break;
+    String res = s.substring(idx+19, idx+23);                
+    int rssi = hex2int(res);
+    float dist = calculateDistance(rssi, FREQ);
+    Serial.print("rssi=");
+    Serial.print(res);
+    Serial.print(",");
+    Serial.print(rssi);
+    Serial.print(",");
+    Serial.println(dist);
+    s = s.substring(idx+24);
+  }
+}
 
 void runAsMaster(){
   Serial2.begin(19200);      
@@ -97,9 +146,12 @@ void runAsMaster(){
   sendReadBT("AT+INQM=1,9,48\r\n");
   // Query Nearby Discoverable Devices      
   sendBT("AT+INQ\r\n");       
-  while(true){
-    if (readBT()){
+  String r;
+  while(true){    
+    if (readBT(r)){
+      parseRSSI(r);
       sendBT("AT+INQ\r\n");              
+      r = "";
     }    
   }
 }
