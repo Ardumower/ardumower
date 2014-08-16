@@ -107,14 +107,27 @@ void parseRSSI(String s){
   while (true){
     int idx = s.indexOf('+INQ');
     if (idx == -1) break;
-    String res = s.substring(idx+19, idx+23);                
-    int rssi = hex2int(res);
-    float dist = calculateDistance(rssi, FREQ);
+    
+    idx = s.indexOf(',');
+    if (idx == -1) break;
+    String addr = s.substring(0, idx);                
+    s = s.substring(idx+1);                
+    
+    idx = s.indexOf(',');
+    if (idx == -1) break;
+    String equip = s.substring(0, idx);                
+    s = s.substring(idx+1);                
+        
+    idx = s.indexOf('\r');
+    if (idx == -1) break;
+    String rssi = s.substring(0, idx);                        
+    int rssiValue = hex2int(rssi);
+    float dist = calculateDistance(rssiValue, FREQ);
     Serial.print("rssi=");
-    Serial.print(res);
-    Serial.print(",");
     Serial.print(rssi);
-    Serial.print(",");
+    Serial.print("\t");
+    Serial.print(rssiValue);
+    Serial.print("\t");
     Serial.println(dist);
     s = s.substring(idx+24);
   }
