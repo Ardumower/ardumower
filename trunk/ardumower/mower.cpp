@@ -106,11 +106,11 @@ Mower::Mower(){
   motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
   motorSpeedMax       = 33;   // motor wheel max RPM
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-  motorPowerMax     = 23.8;    // motor wheel max power (Watt)
+  motorPowerMax     = 30;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorRollTimeMax    = 3000;  // max. roll time (ms)
-  motorReverseTime    = 2500;  // max. reverse time (ms)
+  motorReverseTime    = 3500;  // max. reverse time (ms)
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
@@ -137,8 +137,8 @@ Mower::Mower(){
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
   perimeterPID.Kp    = 60.0;  // perimeter PID controller
-  perimeterPID.Ki    = 10.0;
-  perimeterPID.Kd    = 10.0;
+  perimeterPID.Ki    = 6.0;
+  perimeterPID.Kd    = 5.0;
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
