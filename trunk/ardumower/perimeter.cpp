@@ -21,7 +21,6 @@
 #include "perimeter.h"
 #include <Arduino.h>
 #include <limits.h>
-#include "fix_fft.h"
 #include "adcman.h"
 #include "drivers.h"
 
@@ -75,31 +74,21 @@ void Perimeter::gensignal(){
                    
 
 Perimeter::Perimeter(){    
-  type = PERIMETER_TYPE_V2;
   nextTime = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
-  peakBin = 0;
-  peakV = 0;  
   signalCounter = 0;  
   filterMinSmooth = 0;
   filterMaxSmooth = 0;
-  memset(peak, 0, sizeof peak);          
-  memset(allmag, 0, sizeof allmag);          
   //signalsize = sizeof matchSignal;
   gensignal();  
   lastSignalTime = millis();
 }
 
-void Perimeter::setType(byte type){
-  this->type = type;
-}
-
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
-  idxPin[1] = idx1Pin;
-  ADCMan.setCapture(idx0Pin, FFTBINS, 1);
-  ADCMan.setCapture(idx1Pin, FFTBINS, 1);  
+  idxPin[1] = idx1Pin;  
+  ADCMan.setCapture(idx0Pin, SAMPLES, 1);
   
   Console.print("matchSignal size=");
   Console.println(signalsize);  
@@ -107,14 +96,7 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
 
 int Perimeter::getMagnitude(byte idx){  
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
-    switch (type){
-      case PERIMETER_TYPE_V1:
-        filterFrequencyMagnitude(idx);
-        break;       
-      case PERIMETER_TYPE_V2:
-        matchedFilter(idx);
-        break;
-    } 
+    matchedFilter(idx);
   }
   return mag[idx];
 }
@@ -123,17 +105,10 @@ int Perimeter::getSmoothMagnitude(){
   return smoothMag;
 }
 
-int Perimeter::getSpectrum(int fftBin){
-  if (fftBin >= FFTBINS) return 0;
-  int v = allmag[fftBin];
-  allmag[fftBin] = 0;
-  return v;
-}
-
 void Perimeter::printADCMinMax(int8_t *samples){
   int8_t vmax = SCHAR_MIN;
   int8_t vmin = SCHAR_MAX;
-  for (byte i=0; i < FFTBINS; i++){
+  for (byte i=0; i < SAMPLES; i++){
     vmax = max(vmax, samples[i]);
     vmin = min(vmin, samples[i]);
   }
@@ -147,25 +122,25 @@ void Perimeter::printADCMinMax(int8_t *samples){
 void Perimeter::matchedFilter(byte idx){
   //double Ta = millis() - lastMeasureTime;
   //lastMeasureTime = millis();   
-  int16_t out[FFTBINS];
+  int16_t out[SAMPLES];
   memset(out, 0, sizeof out);      
   int8_t *samples = ADCMan.getCapture(idxPin[idx]);    
   signalMin = 9999;
   signalMax = -9999;
   signalAvg = 0;
-  for (int i=0; i < FFTBINS; i++){
+  for (int i=0; i < SAMPLES; i++){
     int8_t v = samples[i];
-    signalAvg += ((double)v) / ((double)FFTBINS);
+    signalAvg += ((double)v) / ((double)SAMPLES);
     signalMin = min(signalMin, v);
     signalMax = max(signalMax, v);
   }
   memset(out, 0, sizeof out);  
-  convFilter(matchSignal, signalsize, samples, out, FFTBINS-signalsize);    
+  convFilter(matchSignal, signalsize, samples, out, SAMPLES-signalsize);    
   double filterMin = 0;
   double filterMax = 0;
   double filterAvg = 0;
   double filterSum = 0;
-  for (int i=0; i < FFTBINS; i++){    
+  for (int i=0; i < SAMPLES; i++){    
     double v = out[i];      
     filterMin = min(filterMin, v);
     filterMax = max(filterMax, v);
@@ -173,11 +148,11 @@ void Perimeter::matchedFilter(byte idx){
   }
   //filterMaxSmooth = 0.95 * filterMaxSmooth + 0.05 * filterMax;
   //filterMinSmooth = 0.95 * filterMinSmooth + 0.05 * filterMin;  
-  filterAvg = ((double)filterSum) / ((double)FFTBINS);  
+  filterAvg = ((double)filterSum) / ((double)SAMPLES);  
   
   double filterVar = 0;
-  for (int i=0; i < FFTBINS; i++){    
-    filterVar += abs(out[i] - filterAvg) / FFTBINS;  
+  for (int i=0; i < SAMPLES; i++){    
+    filterVar += abs(out[i] - filterAvg) / SAMPLES;  
   } 
   
   // magnitude for tracking (fast but inaccurate)
@@ -222,77 +197,6 @@ boolean Perimeter::signalTimedOut(){
   //return (millis() > lastSignalTime + 5000);
   return (smoothMag > 0);
 }
-
-// perimeter V1 uses a FFT band pass filter
-void Perimeter::filterFrequencyMagnitude(byte idx){
-  mag[idx] = 0;          
-  int8_t im[FFTBINS];
-  memset(im, 0, sizeof im);      
-  int8_t *samples = ADCMan.getCapture(idxPin[idx]);    
-  //if (idx == 0) printADCMinMax(samples);
-  fix_fft(samples, im, 7, 0);              
-  //digitalWrite(pinLED, LOW);    
-  for (byte i=0; i < FFTBINS/2; i++){      
-    int v = sqrt(samples[i] * samples[i] + im[i] * im[i]);      
-    allmag[i] = max(allmag[i], v);
-    if (i > 0) { // ignore 50 Hz band
-     // find overall frequencies peak (peak)
-      if (v > peakV){
-        peakV = v;
-        peakBin = i;
-      }
-    }
-    if (i == BANDPASS_BIN) { 
-      // bandpass  
-      //analogWrite(LED, min(255, v));
-      mag[idx] = max(mag[idx], v);        
-      //mag[channel] += v;                
-      peak[idx] = max(peak[idx], v);                         
-      //if (v > 20) digitalWrite(pinLED, HIGH);          
-    }            
-  }     
-  //if (idx ==0) Console.println(mag[idx]);
-  ADCMan.restart(idxPin[idx]);
-  if (millis() >= nextTime){      
-    nextTime = millis() + 1000;
-    int sum = peak[0] + peak[1];
-    //printResults();
-    peak[0]=0;
-    peak[1]=0;
-    peakV = 0;
-    peakBin = 0;      
-  }     
-}
-
-int Perimeter::getFilterBinCount(){
-  return FFTBINS/2;
-}
-
-int Perimeter::getFilterBin(){
-  return BANDPASS_BIN;
-}
-  
-double Perimeter::getFilterBandwidth(){
-  return BIN_BANDWIDTH;
-}
-
-
-void Perimeter::printResults(){
-  Console.print(" fpeak=");
-  Console.print((int)(peakBin * BIN_BANDWIDTH));
-  Console.print(" fmin=");
-  Console.print((int)(BANDPASS_BIN * BIN_BANDWIDTH));
-  Console.print(" fmax=");
-  Console.print( ((int)((BANDPASS_BIN+1) * BIN_BANDWIDTH)) -1);
-  Console.print(" sum=");
-  int sum = peak[0] + peak[1];
-  Console.print(sum);
-  Console.print("  peak0=");
-  Console.print(peak[0]);
-  Console.print("  peak1=");
-  Console.print(peak[1]);            
-  Console.println();    
-}      
 
 
 /* 
