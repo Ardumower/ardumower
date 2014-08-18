@@ -18,11 +18,7 @@
 
 */
 /*
-perimeter receiver for Arduino sound sensors/LM386 - there are two different perimeter versions:
-
-v1 (old): digital filter: FFT bandpass - evaluates signal strength of certain frequency (7812 Hz) on two ADC pins (for two coils)
-
-v2: digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
+perimeter v2 receiver for Arduino sound sensors/LM386 using digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
  (for details see
     http://grauonline.de/wordpress/?page_id=364
     http://en.wikipedia.org/wiki/Matched_filter
@@ -41,33 +37,16 @@ How to use it (example):
 
 #include <Arduino.h>
 
-// perimeter version to use
-enum {
-  PERIMETER_TYPE_V1,
-  PERIMETER_TYPE_V2,  
-};
 
-
-// --------- perimeter V1 configuration -----------------------
-// choosen bandpass center frequency (f0) (Hz)
-#define F_BANDPASS 7812
 // ADC sampling rate (Hz) (has to match ADC setup!)
 #define F_SAMPLERATE 19231.0
-// number of FFT bins (2^8 - see FFT call)
-//#define FFTBINS 128
-#define FFTBINS (48 * 5)
-// bandwidth per FFT bin (75.12109375 Hz)
-const double BIN_BANDWIDTH = ( F_SAMPLERATE / FFTBINS )  ;
-const int BANDPASS_BIN = ( F_BANDPASS / BIN_BANDWIDTH + 0.5) ;
-// -------------------------------------------------------------
+#define SAMPLES (48 * 5)
 
 
 class Perimeter
 {
   public:
     Perimeter();
-    // choose perimeter type (v1 or v2)
-    void setType(byte type);    
     // set ADC pins
     void setPins(byte idx0Pin, byte idx1Pin);    
     // get perimeter magnitude
@@ -80,14 +59,9 @@ class Perimeter
     double getSignalMin();
     double getSignalMax();    
     double getSignalAvg();    
-    int getSpectrum(int fftBin);        
-    int getFilterBinCount();
-    int getFilterBin();
-    double getFilterBandwidth();    
   private:
     byte type; // which perimeter version to use
     byte idxPin[2]; // channel for idx
-    double peak[2];
     double mag [2]; // perimeter magnitude per channel
     double smoothMag;
     double signalMin;
@@ -96,15 +70,10 @@ class Perimeter
     double filterMinSmooth;
     double filterMaxSmooth;    
     int signalCounter;    
-    unsigned long lastSignalTime;
-    int peakBin;
-    double peakV;    
-    byte allmag[FFTBINS/2];
+    unsigned long lastSignalTime;    
     unsigned long nextTime;
-    void filterFrequencyMagnitude(byte idx);
     void matchedFilter(byte idx);
-    void convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts);
-    void printResults();            
+    void convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts);    
     void printADCMinMax(int8_t *samples);
     void gensignal();
 };
