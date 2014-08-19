@@ -659,7 +659,6 @@ void Robot::delayInfo(int ms){
   unsigned long endtime = millis() +ms;
   while (millis() < endtime){
     readSensors();
-    motorControl();
     printInfo(Console);
     delay(1000);
   }
@@ -669,12 +668,14 @@ void Robot::testOdometry(){
   char ch;
   int lastLeft = 0;
   int lastRight = 0;
-  setMotorSpeed(motorSpeedMax/5, motorSpeedMax/5, false);
+  motorLeftPWM = motorSpeedMaxPwm/5; motorRightPWM = motorSpeedMaxPwm/5;  
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
   while (true){ 
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
-      Console.print("left=");
+      Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
+      Console.print(F("left="));
       Console.print(odometryLeft);
-      Console.print("  right=");
+      Console.print(F("  right="));
       Console.println(odometryRight);              
       lastLeft = odometryLeft;
       lastRight = odometryRight;
@@ -683,29 +684,58 @@ void Robot::testOdometry(){
     if (Console.available() > 0){
       ch = (char)Console.read();      
       if (ch == '0') break;
+      if (ch == 'f') {
+          motorLeftPWM = motorSpeedMaxPwm/5; motorRightPWM = motorSpeedMaxPwm/5;  
+          setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+      }
+      if (ch == 'r') {
+          motorLeftPWM = -motorSpeedMaxPwm/5; motorRightPWM = -motorSpeedMaxPwm/5;  
+          setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+      } 
+      if (ch == 'z') {
+          odometryLeft = 0; odometryRight = 0;
+      }            
     }
   };
-  setMotorSpeed(0, 0, false);            
+  motorLeftPWM = 0; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);          
 }
 
 void Robot::testMotors(){
-  Console.println("testing left motor (forward) half speed...");    
-  setMotorSpeed(motorSpeedMax/2, 0, false);
+  motorLeftPWM = 0; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+
+  Console.println(F("testing left motor (forward) half speed..."));
+  delay(1000);  
+  motorLeftPWM = motorSpeedMaxPwm/2; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
   delayInfo(5000);
-  setMotorSpeed(0, 0, false);
-  Console.println("testing left motor (reverse) full speed...");
-  delay(1000);          
-  setMotorSpeed(-motorSpeedMax, 0, false);
-  delayInfo(5000);          
-  Console.println("testing right motor (forward) half speed...");
-  setMotorSpeed(0, motorSpeedMax/2, false);
+  motorLeftPWM = 0; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+
+  Console.println(F("testing left motor (reverse) full speed..."));
+  delay(1000); 
+  motorLeftPWM = -motorSpeedMaxPwm; motorRightPWM = 0; 
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+  delayInfo(5000);  
+  motorLeftPWM = 0; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+
+  Console.println(F("testing right motor (forward) half speed..."));
+  delay(1000);  
+  motorLeftPWM = 0; motorRightPWM= motorSpeedMaxPwm/2; 
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
   delayInfo(5000);
-  setMotorSpeed(0, 0, false);
-  Console.println("testing right motor (reverse) full speed...");
-  delay(1000);          
-  setMotorSpeed(0, -motorSpeedMax, false);
+  motorLeftPWM = 0; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
+
+  Console.println(F("testing right motor (reverse) full speed..."));
+  delay(1000);    
+  motorLeftPWM = 0; motorRightPWM = -motorSpeedMaxPwm;      
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);
   delayInfo(5000);
-  setMotorSpeed(0, 0, false);            
+  motorLeftPWM = 0; motorRightPWM = 0;
+  setMotorSpeed(motorLeftPWM, motorRightPWM, false);  
 }
 
 void Robot::menu(){  
