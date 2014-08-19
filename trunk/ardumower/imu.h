@@ -67,6 +67,7 @@ class IMU
 public:
   IMU();    
   boolean init();   
+  void update();
   void getEuler(float * angles); 
   void getEulerRad(float * angles);    
   // get yaw,pitch,roll (radiant)      
