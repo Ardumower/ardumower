@@ -1013,7 +1013,7 @@ void Robot::readSensors(){
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
     // read compass
-    nextTimeIMU = millis() + 50;   // 20 hz  (maximum: 100 hz)
+    nextTimeIMU = millis() + 500;   // 2 hz  (maximum: 100 hz)
     float ypr[3];
     imu.getEulerRad(ypr);
     //imu.getYawPitchRoll(ypr);
@@ -1691,6 +1691,7 @@ void Robot::loop()  {
   if (stateCurr != STATE_REMOTE) motorMowSpeed = motorMowSpeedMax;
   motorMowControl();  
   ADCMan.run();
+  if (imuUse) imu.update();
   if (gpsUse) gps.run();
     
   bumperRight = false;

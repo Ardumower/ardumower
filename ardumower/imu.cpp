@@ -31,7 +31,7 @@
 #define pinLED 13
 
 #define ADDR 256
-#define MAGIC 3
+#define MAGIC 4
 
 
 struct {
@@ -710,8 +710,7 @@ float IMU::invSqrt(float number) {
   return y;
 }
 
-
-void IMU::getQ(float * q) {
+void IMU::update(){
   read();  
   now = micros();
   float Ta = (now - lastAHRSTime) / 1000000.0;
@@ -722,6 +721,10 @@ void IMU::getQ(float * q) {
              comCal.x,  comCal.y,  comCal.z,
              Ta/2
              );    
+}  
+ 
+
+void IMU::getQ(float * q) {  
   q[0] = ahrs.q0;
   q[1] = ahrs.q1;
   q[2] = ahrs.q2;
@@ -771,6 +774,7 @@ void IMU::gravityCompensateAcc(float * acc, float * q) {
  * 
  * @param angles three floats array which will be populated by the Euler angles in radians
 */
+
 void IMU::getEulerRad(float * angles) {
   float q[4]; // quaternion
   getQ(q);
