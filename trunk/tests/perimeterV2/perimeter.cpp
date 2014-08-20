@@ -30,19 +30,14 @@ int signalsize = 0;
 int8_t matchSignal[100];
 
 // http://grauonline.de/alexwww/ardumower/filter/filter.html
-// "pulse3" signal
-/*int8_t matchSignal[] = {  1,1,1,1,  -1,-1,-1,-1,   
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0 };                   */
-                   
+// "pulse3" signal                   
 void Perimeter::gensignal(){
   //Console.println("gensignal");
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
-  int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+  //int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+  // "pseudonoise5_pw" signal
+  int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1 };
   int step=0;
   byte width = 1;
   int8_t state = -1;
@@ -92,6 +87,17 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   
   Console.print("matchSignal size=");
   Console.println(signalsize);  
+}
+
+void Perimeter::speedTest(){
+  int loops = 0;
+  unsigned long endTime = millis() + 1000;
+  while (millis() < endTime){
+    matchedFilter(0);
+    loops++;
+  }
+  Console.print("speedTest=");
+  Console.println(loops);
 }
 
 int Perimeter::getMagnitude(byte idx){  
@@ -233,7 +239,7 @@ void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, i
 // nPts is the length of the required output data 
 // subSmp is the subsampling rate subSmp=8 means output every 8th sample
 
-/*void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts, int8_t subSmp){  
+void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts, int8_t subSmp){  
   int16_t sum = 0;
   for (int16_t j=0; j<nPts; j++)
   {
@@ -245,9 +251,9 @@ void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, i
       }
       op[j] = sum;      
   }
-}*/
+}
 
-
+/*
 void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts, int8_t subSmp){  
   int16_t *opj = op;
   for (int16_t j=0; j<nPts; j++)
@@ -266,7 +272,7 @@ void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_
       ip++;
   }
 }
-
+*/
 
 
 

@@ -58,7 +58,8 @@ class Perimeter
     boolean signalTimedOut();
     double getSignalMin();
     double getSignalMax();    
-    double getSignalAvg();    
+    double getSignalAvg(); 
+    void speedTest();
   private:
     byte type; // which perimeter version to use
     byte idxPin[2]; // channel for idx
