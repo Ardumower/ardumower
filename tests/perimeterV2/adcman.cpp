@@ -32,6 +32,8 @@ volatile uint8_t calibrateChannel = NO_CHANNEL;
 volatile double calibrateMin = 0;
 volatile double calibrateMax = 0;
 volatile short position = 0;
+volatile uint16_t currSample = 0;
+volatile uint8_t currSampleCount = 0;
 volatile uint8_t channel = 0;
 volatile boolean busy = false;
 int8_t *capture[CHANNELS]; // ADC capture buffer (ADC0-ADC7) - 8 bit signed (signed: zero = ADC/2)     
@@ -123,10 +125,15 @@ void ADCManager::startCapture(boolean fast){
   startADC(fast);  
 }
 
-#ifdef __AVR__
+#ifdef __AVR__  // Arduino Mega
 // free running ADC fills capture buffer
 ISR(ADC_vect){
-  volatile int16_t value = ADC;  
+  volatile int16_t value = ADC;    
+#else  // Arduino Due (ARM)
+void ADC_Handler(void){   
+  if ((adc_get_status(ADC) & ADC_ISR_DRDY) != ADC_ISR_DRDY) return;
+  volatile int16_t value = adc_get_latest_value(ADC) >> 2;     
+#endif  
   if (!busy) return;
   if (position >= captureSize[channel]){
     // stop capture
@@ -134,40 +141,24 @@ ISR(ADC_vect){
     busy=false;
     return;
   } 
-  if (channel == calibrateChannel){  
+  currSample += value;
+  currSampleCount++;
+  if (currSampleCount == 2){      
+    value = currSample >> 1;
+    currSample = 0;
+    currSampleCount = 0;
+    if (channel == calibrateChannel){  
       if (value < calibrateMin) calibrateMin = value; //0.5 * calibrateMin + 0.5 * ((double)value);
       if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);    
-  } else {
-    value -= ofs[channel];        
-    capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)         
-    //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)         
-  }
-  sample[channel] = value; 
-  position++;
-}
-#else
-void ADC_Handler(void){   
-  if ((adc_get_status(ADC) & ADC_ISR_DRDY) == ADC_ISR_DRDY){
-    volatile int16_t value = adc_get_latest_value(ADC) >> 2;     
-    if (!busy) return;
-    if (position >= captureSize[channel]){
-      // stop capture
-      captureComplete[channel]=true;    
-      busy=false;
-      return;
-    }      
-    if (channel == calibrateChannel){  
-      if (value < calibrateMin) calibrateMin = value;// 0.5 * calibrateMin + 0.5 * ((double)value);
-      if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);    
-    } else {
-      value -= ofs[channel];        
-      capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)         
-    }      
-    sample[channel] = value;           
+    } else {    
+      value -= ofs[channel];                   
+      capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                     
+      //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)           
+    }
+    sample[channel] = value;   
     position++;
   }
 }
-#endif
 
 void ADCManager::stopCapture(){  
   //Console.print("stopping capture ch");

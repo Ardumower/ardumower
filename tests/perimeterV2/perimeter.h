@@ -73,7 +73,7 @@ class Perimeter
     unsigned long lastSignalTime;    
     unsigned long nextTime;
     void matchedFilter(byte idx);
-    void convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts);    
+    void convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts, int8_t subSmp);    
     void printADCMinMax(int8_t *samples);
     void gensignal();
 };
