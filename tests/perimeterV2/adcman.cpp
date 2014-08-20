@@ -32,8 +32,8 @@ volatile uint8_t calibrateChannel = NO_CHANNEL;
 volatile double calibrateMin = 0;
 volatile double calibrateMax = 0;
 volatile short position = 0;
-volatile uint16_t currSample = 0;
-volatile uint8_t currSampleCount = 0;
+volatile int16_t lastvalue = 0;
+volatile int8_t subsample = 0;
 volatile uint8_t channel = 0;
 volatile boolean busy = false;
 int8_t *capture[CHANNELS]; // ADC capture buffer (ADC0-ADC7) - 8 bit signed (signed: zero = ADC/2)     
@@ -107,7 +107,7 @@ void startADC(boolean fast){
   ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((channel >> 3) & 0x01) << MUX5);  
   if (fast)
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz 
-  else // slow but accurate
+  else // slow but accurate  
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz
   //sei();   
 #else 
@@ -141,23 +141,24 @@ void ADC_Handler(void){
     busy=false;
     return;
   } 
-  currSample += value;
-  currSampleCount++;
-  if (currSampleCount == 2){      
-    value = currSample >> 1;
-    currSample = 0;
-    currSampleCount = 0;
-    if (channel == calibrateChannel){  
-      if (value < calibrateMin) calibrateMin = value; //0.5 * calibrateMin + 0.5 * ((double)value);
-      if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);    
-    } else {    
-      value -= ofs[channel];                   
-      capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                     
-      //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)           
-    }
-    sample[channel] = value;   
+  if (channel == calibrateChannel){  
+    if (value < calibrateMin) calibrateMin = value; //0.5 * calibrateMin + 0.5 * ((double)value);
+    if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);    
     position++;
+  } else {    
+    value -= ofs[channel];                   
+    /*int16_t temp = value;
+    value = (value + lastvalue) / 2;
+    lastvalue = temp;
+    subsample++;
+    if (subsample == 2){             
+      subsample=0;*/
+      capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                     
+        //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)           
+      position++;
+    //}
   }
+  sample[channel] = value;     
 }
 
 void ADCManager::stopCapture(){  
@@ -237,5 +238,9 @@ int ADCManager::getCapturedChannels(){
   return res;
 }
 
+int ADCManager::getCaptureSize(byte pin){
+  int ch = pin-A0;  
+  return captureSize[ch];
 
+}
 
