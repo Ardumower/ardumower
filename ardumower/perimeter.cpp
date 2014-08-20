@@ -30,19 +30,14 @@ int signalsize = 0;
 int8_t matchSignal[100];
 
 // http://grauonline.de/alexwww/ardumower/filter/filter.html
-// "pulse3" signal
-/*int8_t matchSignal[] = {  1,1,1,1,  -1,-1,-1,-1,   
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0,  0,0,0,0,
-                   0,0,0,0 };                   */
-                   
+// "pulse3" signal                   
 void Perimeter::gensignal(){
   //Console.println("gensignal");
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
   int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+  // "pseudonoise5_pw" signal
+  //int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
   int step=0;
   byte width = 1;
   int8_t state = -1;
@@ -74,7 +69,7 @@ void Perimeter::gensignal(){
                    
 
 Perimeter::Perimeter(){    
-  nextTime = 0;
+  callCounter = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
   signalCounter = 0;  
@@ -82,16 +77,28 @@ Perimeter::Perimeter(){
   filterMaxSmooth = 0;
   //signalsize = sizeof matchSignal;
   gensignal();  
-  lastSignalTime = millis();
 }
 
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
-  ADCMan.setCapture(idx0Pin, SAMPLES, 1);
+  ADCMan.setCapture(idx0Pin, signalsize*2, true); 
   
   Console.print("matchSignal size=");
   Console.println(signalsize);  
+  Console.print("capture size=");
+  Console.println(ADCMan.getCaptureSize(idx0Pin));  
+}
+
+void Perimeter::speedTest(){
+  int loops = 0;
+  unsigned long endTime = millis() + 1000;
+  while (millis() < endTime){
+    matchedFilter(0);
+    loops++;
+  }
+  Console.print("speedTest=");
+  Console.println(loops);
 }
 
 int Perimeter::getMagnitude(byte idx){  
@@ -108,7 +115,7 @@ int Perimeter::getSmoothMagnitude(){
 void Perimeter::printADCMinMax(int8_t *samples){
   int8_t vmax = SCHAR_MIN;
   int8_t vmin = SCHAR_MAX;
-  for (byte i=0; i < SAMPLES; i++){
+  for (byte i=0; i < ADCMan.getCaptureSize(idxPin[0]); i++){
     vmax = max(vmax, samples[i]);
     vmin = min(vmin, samples[i]);
   }
@@ -120,72 +127,50 @@ void Perimeter::printADCMinMax(int8_t *samples){
 
 // perimeter V2 uses a digital matched filter
 void Perimeter::matchedFilter(byte idx){
-  //double Ta = millis() - lastMeasureTime;
-  //lastMeasureTime = millis();   
-  int16_t out[SAMPLES];
-  memset(out, 0, sizeof out);      
+  int16_t sampleCount = ADCMan.getCaptureSize(idxPin[0]);
   int8_t *samples = ADCMan.getCapture(idxPin[idx]);    
-  signalMin = 9999;
-  signalMax = -9999;
-  signalAvg = 0;
-  for (int i=0; i < SAMPLES; i++){
-    int8_t v = samples[i];
-    signalAvg += ((double)v) / ((double)SAMPLES);
-    signalMin = min(signalMin, v);
-    signalMax = max(signalMax, v);
+  if (callCounter == 100) {
+    // statistics only
+    callCounter = 0;
+    signalMin = 9999;
+    signalMax = -9999;
+    signalAvg = 0;  
+    for (int i=0; i < sampleCount; i++){
+      int8_t v = samples[i];
+      signalAvg += v;
+      signalMin = min(signalMin, v);
+      signalMax = max(signalMax, v);
+    }
+    signalAvg = ((double)signalAvg) / ((double)(sampleCount));
   }
-  memset(out, 0, sizeof out);  
-  convFilter(matchSignal, signalsize, samples, out, SAMPLES-signalsize);    
-  double filterMin = 0;
-  double filterMax = 0;
-  double filterAvg = 0;
-  double filterSum = 0;
-  for (int i=0; i < SAMPLES; i++){    
-    double v = out[i];      
-    filterMin = min(filterMin, v);
-    filterMax = max(filterMax, v);
-    filterSum += v;  
+  for (int i=0; i < sampleCount; i++) {
+    if (samples[i]>0) samples[i]=1;
+      else samples[i] = -1;
   }
-  //filterMaxSmooth = 0.95 * filterMaxSmooth + 0.05 * filterMax;
-  //filterMinSmooth = 0.95 * filterMinSmooth + 0.05 * filterMin;  
-  filterAvg = ((double)filterSum) / ((double)SAMPLES);  
-  
-  double filterVar = 0;
-  for (int i=0; i < SAMPLES; i++){    
-    filterVar += abs(out[i] - filterAvg) / SAMPLES;  
-  } 
-  
-  // magnitude for tracking (fast but inaccurate)
-  if (abs(filterMax) > abs(filterMin)) mag[idx] = filterMax;  
-    else mag[idx] = filterMin;  
-  smoothMag = 0.99 * smoothMag + 0.01 * mag[idx];
-  //Console.println(var);
+  // magnitude for tracking (fast but inaccurate)  
+  mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);      
+  smoothMag = 0.99 * smoothMag + 0.01 * ((float)mag[idx]);
 
   // perimeter inside/outside detection
-  if (abs(filterMax) > abs(filterMin)){
+  if (mag[idx] > 0){
     signalCounter = min(signalCounter + 1, 3);    
   } else {
     signalCounter = max(signalCounter - 1, -3);    
   }
     
-  // perimeter timeout
-  //if ((vmax > var*8) || (abs(vmin) > var*8)){        
-  //if ((filterMin < -400) || (filterMax > 400)){        
-     lastSignalTime = millis();    
-  //}
-       
   ADCMan.restart(idxPin[idx]);    
+  callCounter++;
 }
 
-double Perimeter::getSignalMin(){
+int16_t Perimeter::getSignalMin(){
   return signalMin;
 }
 
-double Perimeter::getSignalMax(){
+int16_t Perimeter::getSignalMax(){
   return signalMax;
 }
 
-double Perimeter::getSignalAvg(){
+int16_t Perimeter::getSignalAvg(){
   return signalAvg;
 }
 
@@ -194,55 +179,36 @@ boolean Perimeter::isInside(){
 }
 
 boolean Perimeter::signalTimedOut(){
-  //return (millis() > lastSignalTime + 5000);
   return (smoothMag > 0);
 }
-
-
-/* 
-// digital filter (cross correlation) for periodic filter coeffs
-// http://en.wikipedia.org/wiki/Cross-correlation
-// H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
-// ip[] holds input data (length > nPts + M )
-// op[] is output buffer
-// nPts is the length of the required output data 
-void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts){  
-  int16_t sum = 0;
-  for (int16_t k=0; k<M; k++)
-  {      
-    int16_t j=k;
-    sum = 0;
-    while (j<nPts)
-    {
-      for (int16_t i=0; i<M; i++)
-      {      
-        sum += ((int16_t)H[i]) * ((int16_t)ip[j+i]);
-      }
-      j += M;
-    }
-    op[j] = sum;    
-  }
-}*/
 
 
 // digital filter (cross correlation)
 // http://en.wikipedia.org/wiki/Cross-correlation
 // H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
 // ip[] holds input data (length > nPts + M )
-// op[] is output buffer
 // nPts is the length of the required output data 
-void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts){  
-  int16_t sum = 0;
+
+int16_t Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){  
+  int16_t sumMax = 0;
+  int16_t sumMin = 0;
   for (int16_t j=0; j<nPts; j++)
   {
-      sum = 0;
+      int16_t sum = 0;      
+      int8_t *Hi = H;
+      int8_t *ipi = ip;      
       for (int16_t i=0; i<M; i++)
-      {
-        //sum += H[i]*ip[subSmp*j+i];
-        sum += ((int16_t)H[i]) * ((int16_t)ip[j+i]);
-      }
-      op[j] = sum;      
+      {        
+        sum += ((int16_t)(*Hi)) * ((int16_t)(*ipi));
+        Hi++;
+        ipi++;
+      }      
+      if (sum > sumMax) sumMax = sum;
+      if (sum < sumMin) sumMin = sum;
+      ip++;
   }
+  if (sumMax > -sumMin) return sumMax;
+    else return sumMin;  
 }
 
 
