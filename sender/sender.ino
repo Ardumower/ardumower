@@ -43,7 +43,11 @@ volatile byte wait = 1;
 
 
 // must be multiple of 2 !
-char pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1, 1,-1,1,1,-1 };
+// http://grauonline.de/alexwww/ardumower/filter/filter.html    
+// "pseudonoise4_pw" signal
+int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+// "pseudonoise5_pw" signal
+//int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
 
 
 void timerCallback(){       
@@ -90,7 +94,7 @@ void setup() {
   digitalWrite(pinEnable, HIGH);
     
   //int T = 1000.0*1000.0/(7800*2);
-  // sample rate 19230,76923076923
+  // sample rate 19230,76923076923 / 2 => 9615.38
   int T = 1000.0*1000.0/(19230.76923076923/2.0);
   Serial.begin(19200);
   Serial.println("START");
@@ -98,7 +102,7 @@ void setup() {
   Serial.println(T);    
   Serial.print("f=");
   Serial.println(1000.0*1000.0/T);    
-  Timer1.initialize(T);         // initialize timer1, and set 128µsecond period (7812Hz)    
+  Timer1.initialize(T);         // initialize timer1, and set period
   //Timer1.pwm(pinPWM, 256);  
   Timer1.attachInterrupt(timerCallback);  
   //digitalWrite(pinIN1, HIGH);
