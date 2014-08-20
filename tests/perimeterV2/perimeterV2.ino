@@ -13,6 +13,7 @@
   #include "due.h"
 #endif
 
+#include "drivers.h"
 #include "adcman.h"
 #include "perimeter.h"
 
@@ -29,14 +30,16 @@ boolean inside = true;
 
 void setup()  {  
   Wire.begin();
-  Serial.begin(19200);  
+  Console.begin(19200);  
   pinMode(pinLED, OUTPUT);
 
   delay(100);
-  Serial.println("START");        
+  Console.println("START");        
   
   ADCMan.init();
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);        
+  
+  perimeter.speedTest();
 }
 
 void loop()  {     
@@ -52,35 +55,35 @@ void loop()  {
     if (perimeter.isInside()) digitalWrite(pinLED, HIGH);    
       else digitalWrite(pinLED, LOW);    
     
-    Serial.print("cnt ");
-    Serial.print(counter);
-    Serial.print("\t");    
-    Serial.print("min ");
-    Serial.print((int)perimeter.getSignalMin());
-    Serial.print("\t");
-    Serial.print("max ");
-    Serial.print((int)perimeter.getSignalMax());
-    Serial.print("\t");
-    Serial.print("avg ");
-    Serial.print((int)perimeter.getSignalAvg());    
-    Serial.print("\t\t");
-    Serial.print("mag ");
-    Serial.print((int)perimeter.getMagnitude(0));        
-    Serial.print("\t");
-    Serial.print("\t");    
-    Serial.print("smag ");    
-    Serial.print((int)perimeter.getSmoothMagnitude());                
-    Serial.print("\t");
-    Serial.print("\t");
-    Serial.print("in ");
-    Serial.print((int)perimeter.isInside());            
-    Serial.print("\t");
-    Serial.print("on ");
-    Serial.print((int)(!perimeter.signalTimedOut()));            
-    Serial.print("\t");
-    Serial.print("adc ");
-    Serial.print((int)(ADCMan.getCapturedChannels()));            
-    Serial.println();
+    Console.print("cnt ");
+    Console.print(counter);
+    Console.print("\t");    
+    Console.print("min ");
+    Console.print((int)perimeter.getSignalMin());
+    Console.print("\t");
+    Console.print("max ");
+    Console.print((int)perimeter.getSignalMax());
+    Console.print("\t");
+    Console.print("avg ");
+    Console.print((int)perimeter.getSignalAvg());    
+    Console.print("\t\t");
+    Console.print("mag ");
+    Console.print((int)perimeter.getMagnitude(0));        
+    Console.print("\t");
+    Console.print("\t");    
+    Console.print("smag ");    
+    Console.print((int)perimeter.getSmoothMagnitude());                
+    Console.print("\t");
+    Console.print("\t");
+    Console.print("in ");
+    Console.print((int)perimeter.isInside());            
+    Console.print("\t");
+    Console.print("on ");
+    Console.print((int)(!perimeter.signalTimedOut()));            
+    Console.print("\t");
+    Console.print("adc ");
+    Console.print((int)(ADCMan.getCapturedChannels()));            
+    Console.println();
   }
 }
 
