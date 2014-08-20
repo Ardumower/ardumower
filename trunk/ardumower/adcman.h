@@ -63,6 +63,8 @@ class ADCManager
     boolean isCaptureComplete(byte pin);
     // statistics only
     int getCapturedChannels();
+    // return number samples to capture
+    int getCaptureSize(byte pin);
     // get the manager running, starts sampling next pin
     void run();    
   private:
