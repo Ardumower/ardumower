@@ -54,9 +54,9 @@ void Perimeter::gensignal(){
       if (step == sizeof pncode) break;        
       state *= -1;      
       if (pncode[step] == 1) {
-        width = 4;    
-      } else {
         width = 2;    
+      } else {
+        width = 1;    
       } 
       step ++;          
     }
@@ -135,7 +135,7 @@ void Perimeter::matchedFilter(byte idx){
     signalMax = max(signalMax, v);
   }
   memset(out, 0, sizeof out);  
-  convFilter(matchSignal, signalsize, samples, out, SAMPLES-signalsize);    
+  convFilter(matchSignal, signalsize, samples, out, SAMPLES-signalsize, 2);    
   double filterMin = 0;
   double filterMax = 0;
   double filterAvg = 0;
@@ -231,7 +231,9 @@ void PerimeterClass::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, i
 // ip[] holds input data (length > nPts + M )
 // op[] is output buffer
 // nPts is the length of the required output data 
-void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts){  
+// subSmp is the subsampling rate subSmp=8 means output every 8th sample
+
+/*void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts, int8_t subSmp){  
   int16_t sum = 0;
   for (int16_t j=0; j<nPts; j++)
   {
@@ -242,6 +244,26 @@ void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_
         sum += ((int16_t)H[i]) * ((int16_t)ip[j+i]);
       }
       op[j] = sum;      
+  }
+}*/
+
+
+void Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t *op, int16_t nPts, int8_t subSmp){  
+  int16_t *opj = op;
+  for (int16_t j=0; j<nPts; j++)
+  {
+      int16_t sum = 0;      
+      int8_t *Hi = H;
+      int8_t *ipi = ip;      
+      for (int16_t i=0; i<M; i++)
+      {
+        sum += ((int16_t)(*Hi)) * ((int16_t)(*ipi));
+        Hi++;
+        ipi++;
+      }      
+      *opj = sum;      
+      opj++;  
+      ip++;
   }
 }
 

@@ -19,15 +19,18 @@
 
 #define pinPerimeterRight A4       // perimeter
 #define pinPerimeterLeft A5
-
+#define pinLED 13
 
 Perimeter perimeter;
 unsigned long nextTime = 0;
+int counter = 0;
+boolean inside = true;
 
 
 void setup()  {  
   Wire.begin();
   Serial.begin(19200);  
+  pinMode(pinLED, OUTPUT);
 
   delay(100);
   Serial.println("START");        
@@ -38,11 +41,20 @@ void setup()  {
 
 void loop()  {     
       
-  ADCMan.run();
+  ADCMan.run();  
   
   if (millis() >= nextTime){
-    nextTime = millis() + 500;
+    nextTime = millis() + 50;
+    if (perimeter.isInside() != inside){
+      inside = perimeter.isInside();
+      counter++;      
+    }
+    if (perimeter.isInside()) digitalWrite(pinLED, HIGH);    
+      else digitalWrite(pinLED, LOW);    
     
+    Serial.print("cnt ");
+    Serial.print(counter);
+    Serial.print("\t");    
     Serial.print("min ");
     Serial.print((int)perimeter.getSignalMin());
     Serial.print("\t");
@@ -51,13 +63,14 @@ void loop()  {
     Serial.print("\t");
     Serial.print("avg ");
     Serial.print((int)perimeter.getSignalAvg());    
-    Serial.print("\t");
+    Serial.print("\t\t");
     Serial.print("mag ");
     Serial.print((int)perimeter.getMagnitude(0));        
     Serial.print("\t");
     Serial.print("\t");    
     Serial.print("smag ");    
     Serial.print((int)perimeter.getSmoothMagnitude());                
+    Serial.print("\t");
     Serial.print("\t");
     Serial.print("in ");
     Serial.print((int)perimeter.isInside());            
