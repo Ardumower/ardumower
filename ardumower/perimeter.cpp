@@ -33,9 +33,9 @@ int8_t matchSignal[100];
 void Perimeter::gensignal(){
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
-  //int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+  int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
   // "pseudonoise5_pw" signal
-  int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
+  //int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
   int step=0;
   byte width = 1;
   int8_t state = -1;
@@ -78,7 +78,7 @@ Perimeter::Perimeter(){
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
-  ADCMan.setCapture(idx0Pin, signalsize*2, true); 
+  ADCMan.setCapture(idx0Pin, signalsize*5, true); 
   
   Console.print("matchSignal size=");
   Console.println(signalsize);  
@@ -139,10 +139,10 @@ void Perimeter::matchedFilter(byte idx){
     }
     signalAvg = ((double)signalAvg) / ((double)(sampleCount));
   }
-  for (int i=0; i < sampleCount; i++) {
+  /*for (int i=0; i < sampleCount; i++) {
     if (samples[i]>0) samples[i]=1;
       else samples[i] = -1;
-  }
+  }*/
   // magnitude for tracking (fast but inaccurate)    
   mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
   smoothMag = 0.99 * smoothMag + 0.01 * ((float)mag[idx]);

@@ -37,6 +37,9 @@ changes
 
 #define  pinLED 13
 
+//#define IMAX 0.14
+#define IMAX 1.5
+
 volatile int step = 0;
 volatile byte state = 0;
 volatile byte wait = 1;
@@ -45,9 +48,9 @@ volatile byte wait = 1;
 // must be multiple of 2 !
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
 // "pseudonoise4_pw" signal
-//int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
 // "pseudonoise5_pw" signal
-int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
+//int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
 
 
 void timerCallback(){       
@@ -150,12 +153,12 @@ void loop(){
   if (millis() >= nextTimeControl){                
     nextTimeControl = millis() + 100;
     // far away: fast control
-    if (I > 0.3) duty = max(minduty, duty - 0.1);  
-    if (I > 0.2) duty = max(minduty, duty - 0.01);  
-      else if (I < 0.1) duty = min(maxduty, duty + 0.01);
+    if (I > IMAX * 2) duty = max(minduty, duty - 0.1);  
+    if (I > IMAX * 1.5) duty = max(minduty, duty - 0.01);  
+      else if (I < IMAX * 0.5) duty = min(maxduty, duty + 0.01);
       // nearby: slow control
-      else if (I < 0.12) duty = min(maxduty, duty + 0.001);
-      else if (I > 0.16) duty = max(minduty, duty - 0.001);          
+      else if (I < IMAX * 0.9) duty = min(maxduty, duty + 0.001);
+      else if (I > IMAX * 1.1) duty = max(minduty, duty - 0.001);          
     dutyPWM = (int) (duty / 1.0 * 255.0);
     //analogWrite(pinPWM, 255);
     analogWrite(pinPWM, dutyPWM);
