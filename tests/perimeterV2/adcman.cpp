@@ -25,6 +25,10 @@
 #include "adcman.h"
 #include "drivers.h"
 
+#define ADDR 224
+#define MAGIC 1
+
+
 #define CHANNELS 16
 #define NO_CHANNEL 255
 
@@ -40,6 +44,7 @@ int8_t *capture[CHANNELS]; // ADC capture buffer (ADC0-ADC7) - 8 bit signed (sig
 uint8_t captureSize[CHANNELS]; // ADC sample buffer size (ADC0-ADC7)
 int16_t ofs[CHANNELS]; // ADC zero offset (ADC0-ADC7)
 boolean captureComplete[CHANNELS]; // ADC buffer filled?
+boolean autoCalibrate[CHANNELS]; // do auto-calibrate? (ADC0-ADC7)
 uint16_t sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
 ADCManager ADCMan;
 
@@ -50,8 +55,9 @@ ADCManager::ADCManager(){
     ofs[i]=0;
     captureComplete[i]=false;
     capture[i] = NULL;
+    autoCalibrate[i] = false;
   }
-  capturedChannels = 0;
+  capturedChannels = 0;  
 }
 
 void ADCManager::init(){    
@@ -66,13 +72,26 @@ void ADCManager::init(){
   NVIC_EnableIRQ(ADC_IRQn);    
 #endif
   delay(500); // wait for ADCRef to settle (stable ADCRef required for later calibration)
+  if (loadCalib()) printCalib();
 }
 
 void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs){
   int ch = pin-A0;
   captureSize[ch] = samplecount;
-  capture[ch] = new int8_t[samplecount]; 
-  if (autoCalibrateOfs) calibrateOfs(pin);
+  capture[ch] = new int8_t[samplecount];  
+  autoCalibrate[ch] = autoCalibrateOfs;
+}
+
+void ADCManager::calibrate(){
+  Console.println("ADC calibration...");
+  for (int ch=0; ch < CHANNELS; ch++){    
+    ofs[ch] = 0;
+    if (autoCalibrate[ch]){
+      calibrateOfs(A0 + ch);
+    }
+  }
+  printCalib();  
+  saveCalib();
 }
 
 void ADCManager::calibrateOfs(byte pin){
@@ -89,13 +108,19 @@ void ADCManager::calibrateOfs(byte pin){
     else {      
       double center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
       ofs[ch] = center;
-    }
-  Console.print("ADC");
-  Console.print(ch);
-  Console.print("ofs=");    
-  Console.println(ofs[ch]);
+    }  
 }
 
+void ADCManager::printCalib(){
+  Console.println("---ADC calib---");  
+  for (int ch=0; ch < CHANNELS; ch++){
+    Console.print("ch");
+    Console.print(ch);
+    Console.print("\t");    
+    Console.print("ofs=");    
+    Console.println(ofs[ch]);
+  }
+}
 
 void startADC(boolean fast){
 //  Console.print("startADC ch");
@@ -243,4 +268,33 @@ int ADCManager::getCaptureSize(byte pin){
   return captureSize[ch];
 
 }
+
+void ADCManager::loadSaveCalib(boolean readflag){
+  int addr = ADDR;
+  short magic = MAGIC;
+  eereadwrite(readflag, addr, magic); // magic
+  for (int ch=0; ch < CHANNELS; ch++){
+    eereadwrite(readflag, addr, ofs[ch]);
+  }  
+}
+
+boolean ADCManager::loadCalib(){
+  short magic = 0;
+  int addr = ADDR;
+  eeread(addr, magic);
+  if (magic != MAGIC) {
+    Console.println(F("ADCMan error: no calib data"));
+    return false;   
+  }
+  Console.println(F("ADCMan: found calib data"));
+  loadSaveCalib(true);
+  return true;
+}
+
+void ADCManager::saveCalib(){
+  loadSaveCalib(false);
+}
+
+
+
 

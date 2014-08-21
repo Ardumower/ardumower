@@ -49,6 +49,8 @@ class ADCManager
     ADCManager();
     // call this in setup
     void init();
+    // call this to calibrate offsets of channels with autocalibrate
+    void calibrate();
     // configure sampling for pin:
     // samplecount = 1: 10 bit sampling (unsigned)
     // samplecount > 1: 8 bit sampling (signed - zero = VCC/2)
@@ -73,6 +75,10 @@ class ADCManager
     void calibrateOfs(byte pin);
     void startCapture(boolean fast);
     void stopCapture();    
+    boolean loadCalib();
+    void loadSaveCalib(boolean readflag);
+    void saveCalib();    
+    void printCalib();
 };
 
 extern ADCManager ADCMan;
