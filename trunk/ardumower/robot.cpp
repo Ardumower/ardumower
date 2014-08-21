@@ -1271,40 +1271,32 @@ void Robot::checkCurrent(){
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       reverseOrBidir(RIGHT);
-    }
-    else {
-      if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
-        motorLeftSenseCounter++;
-        setMotorSpeed( 0, 0, false );  
-        //   reverseOrBidir(RIGHT);
-        setNextState(STATE_ROLL,RIGHT);				          
-      }
-      else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
-        motorLeftSenseCounter++;
-        setMotorSpeed( 0, 0, false );  
-        setNextState(STATE_FORWARD, 0);
-      }
-    }
+    } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
+      motorLeftSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+      //   reverseOrBidir(RIGHT);
+      setNextState(STATE_ROLL,RIGHT);				          
+    } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
+      motorLeftSenseCounter++;
+      setMotorSpeed( 0, 0, false );  
+      setNextState(STATE_FORWARD, 0);
+    }    
   }
   else if (motorRightSense >= motorPowerMax){       
      // right wheel motor overpowered
      if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
-      //beep(1);
-      motorRightSenseCounter++;
-      setMotorSpeed( 0, 0, false );  
-      reverseOrBidir(RIGHT);
-    }
-    else {
-      if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
-        motorRightSenseCounter++;
-        setMotorSpeed( 0, 0, false );  
-        setNextState(STATE_ROLL,LEFT);				          
-      }
-      else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
-        motorRightSenseCounter++;
-        setMotorSpeed( 0, 0, false );  
-        setNextState(STATE_FORWARD, 0);
-      }
+       //beep(1);
+       motorRightSenseCounter++;
+       setMotorSpeed( 0, 0, false );  
+       reverseOrBidir(RIGHT);
+     } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
+       motorRightSenseCounter++;
+       setMotorSpeed( 0, 0, false );  
+       setNextState(STATE_ROLL,LEFT);				          
+     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
+       motorRightSenseCounter++;
+       setMotorSpeed( 0, 0, false );  
+       setNextState(STATE_FORWARD, 0);
     }
   }
 }  
