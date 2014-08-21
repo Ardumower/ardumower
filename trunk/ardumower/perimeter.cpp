@@ -29,15 +29,13 @@
 int signalsize = 0;
 int8_t matchSignal[100];
 
-// http://grauonline.de/alexwww/ardumower/filter/filter.html
-// "pulse3" signal                   
+
 void Perimeter::gensignal(){
-  //Console.println("gensignal");
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
-  int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
+  //int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
   // "pseudonoise5_pw" signal
-  //int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
+  int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
   int step=0;
   byte width = 1;
   int8_t state = -1;
@@ -153,9 +151,9 @@ void Perimeter::matchedFilter(byte idx){
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){
-    signalCounter = min(signalCounter + 1, 3);    
+    signalCounter = min(signalCounter + 1, 6);    
   } else {
-    signalCounter = max(signalCounter - 1, -3);    
+    signalCounter = max(signalCounter - 1, -6);    
   }
     
   ADCMan.restart(idxPin[idx]);    
