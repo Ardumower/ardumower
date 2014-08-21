@@ -149,9 +149,9 @@ void Perimeter::matchedFilter(byte idx){
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){
-    signalCounter = min(signalCounter + 1, 6);    
+    signalCounter = min(signalCounter+1, 3);    
   } else {
-    signalCounter = max(signalCounter - 1, -6);    
+    signalCounter = max(signalCounter-1, -3);    
   }
   if (signalCounter < 0){
     lastInsideTime = millis();
