@@ -143,6 +143,10 @@ void Perimeter::matchedFilter(byte idx){
     }
     signalAvg = ((double)signalAvg) / ((double)(sampleCount));
   }
+  for (int i=0; i < sampleCount; i++) {
+    if (samples[i]>0) samples[i]=1;
+      else samples[i] = -1;
+  }
   // magnitude for tracking (fast but inaccurate)  
   mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);      
   smoothMag = 0.99 * smoothMag + 0.01 * ((float)mag[idx]);
@@ -194,7 +198,7 @@ int16_t Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){
       int8_t *Hi = H;
       int8_t *ipi = ip;      
       for (int16_t i=0; i<M; i++)
-      {
+      {        
         sum += ((int16_t)(*Hi)) * ((int16_t)(*ipi));
         Hi++;
         ipi++;
