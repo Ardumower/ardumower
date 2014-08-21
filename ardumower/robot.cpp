@@ -651,6 +651,7 @@ void Robot::printMenu(){
   Console.println(F("4=setup BT module config (extensive baudscan)"));
   Console.println(F("5=calibrate IMU acc"));
   Console.println(F("6=delete IMU calib"));
+  Console.println(F("7=ADC calib"));  
   Console.println(F("0=exit"));  
   Console.println();
 }
@@ -770,6 +771,9 @@ void Robot::menu(){
         case '6':
           imu.deleteCalib();
           printMenu();
+          break;
+        case '7':
+          ADCMan.calibrate();
           break;
       }      
     }

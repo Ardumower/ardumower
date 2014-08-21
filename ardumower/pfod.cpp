@@ -161,7 +161,7 @@ void RemoteControl::sendMainMenu(boolean update){
     Bluetooth.print(")");
   }
   Bluetooth.print(F("|r~Commands|n~Manual|s~Settings|in~Info|c~Test compass|ardumag~Monitor compass|yp~Plot"));
-  Bluetooth.println(F("|y4~Error counters}"));        
+  Bluetooth.println(F("|y4~Error counters|y9~ADC calibration}"));        
 }
 
 void RemoteControl::sendPlotMenu(boolean update){
@@ -1179,6 +1179,11 @@ void RemoteControl::readSerial(){
           Bluetooth.println(F("{=GPS`300|time s`0|hdop`1|sat`2|spd`3|course`4|alt`5|lat`6|lon`7}"));
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_GPS;          
+        }
+        else if (pfodCmd == "y9") {
+          // ADC calibration
+          ADCMan.calibrate();
+          robot->beep(2, false);      
         }
         else if (pfodCmd == "yp") sendPlotMenu(false);
         else if (pfodCmd == "y4")sendErrorMenu(false);
