@@ -71,9 +71,7 @@ Perimeter::Perimeter(){
   mag[0] = mag[1] = 0;
   smoothMag = 0;
   signalCounter = 0;  
-  filterMinSmooth = 0;
-  filterMaxSmooth = 0;
-  //signalsize = sizeof matchSignal;
+  lastInsideTime = 0;
   gensignal();  
 }
 
@@ -145,8 +143,8 @@ void Perimeter::matchedFilter(byte idx){
     if (samples[i]>0) samples[i]=1;
       else samples[i] = -1;
   }
-  // magnitude for tracking (fast but inaccurate)  
-  mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);      
+  // magnitude for tracking (fast but inaccurate)    
+  mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
   smoothMag = 0.99 * smoothMag + 0.01 * ((float)mag[idx]);
 
   // perimeter inside/outside detection
@@ -155,6 +153,9 @@ void Perimeter::matchedFilter(byte idx){
   } else {
     signalCounter = max(signalCounter - 1, -6);    
   }
+  if (signalCounter < 0){
+    lastInsideTime = millis();
+  } 
     
   ADCMan.restart(idxPin[idx]);    
   callCounter++;
@@ -176,8 +177,9 @@ boolean Perimeter::isInside(){
   return (signalCounter < 0);  
 }
 
+
 boolean Perimeter::signalTimedOut(){
-  return (smoothMag > 0);
+  return (millis() - lastInsideTime > 8000);
 }
 
 
