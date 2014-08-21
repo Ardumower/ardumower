@@ -60,6 +60,7 @@ class Perimeter
     int16_t getSignalAvg(); 
     void speedTest();
   private:
+    unsigned long lastInsideTime;
     byte type; // which perimeter version to use
     byte idxPin[2]; // channel for idx
     int callCounter;
@@ -68,8 +69,6 @@ class Perimeter
     int16_t signalMin;
     int16_t signalMax;
     int16_t signalAvg;
-    float filterMinSmooth;
-    float filterMaxSmooth;    
     int signalCounter;    
     void matchedFilter(byte idx);
     int16_t convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts);
