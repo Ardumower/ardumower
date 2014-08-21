@@ -33,8 +33,8 @@
 #define NO_CHANNEL 255
 
 volatile uint8_t calibrateChannel = NO_CHANNEL;
-volatile double calibrateMin = 0;
-volatile double calibrateMax = 0;
+volatile int16_t calibrateMin = 0;
+volatile int16_t calibrateMax = 0;
 volatile short position = 0;
 volatile int16_t lastvalue = 0;
 volatile int8_t subsample = 0;
@@ -94,11 +94,12 @@ void ADCManager::calibrate(){
   saveCalib();
 }
 
-void ADCManager::calibrateOfs(byte pin){
+void ADCManager::calibrateOfs(byte pin){  
   int ch = pin-A0;
   calibrateMin = 9999;
   calibrateMax = -9999;
   calibrateChannel = ch;  
+  captureComplete[ch]=false;      
   while (!isCaptureComplete(pin)) {
     delay(20);
     run();
@@ -106,9 +107,13 @@ void ADCManager::calibrateOfs(byte pin){
   calibrateChannel = NO_CHANNEL;
   if (captureSize[ch] == 1) ofs[ch] = sample[ch];
     else {      
-      double center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
+      int16_t center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
       ofs[ch] = center;
     }  
+  Console.print("ADC calibration ch");
+  Console.print(ch);
+  Console.print("=");
+  Console.println(ofs[ch]);
 }
 
 void ADCManager::printCalib(){
