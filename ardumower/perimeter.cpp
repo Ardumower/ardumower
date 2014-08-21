@@ -78,7 +78,8 @@ Perimeter::Perimeter(){
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
-  ADCMan.setCapture(idx0Pin, signalsize*5, true); 
+  // use max. 255 samples and multiple of signalsize
+  ADCMan.setCapture(idx0Pin, ((int)255 / signalsize) * signalsize, true); 
   
   Console.print("matchSignal size=");
   Console.println(signalsize);  
