@@ -37,8 +37,8 @@ void setup()  {
   Console.println("START");        
   
   ADCMan.init();
-  ADCMan.calibrate();
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);        
+  ADCMan.calibrate();
   
   perimeter.speedTest();
 }
