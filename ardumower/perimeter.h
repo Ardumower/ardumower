@@ -38,9 +38,6 @@ How to use it (example):
 #include <Arduino.h>
 
 
-// ADC sampling rate (Hz) (has to match ADC setup!)
-#define F_SAMPLERATE 19231.0
-
 
 class Perimeter
 {
