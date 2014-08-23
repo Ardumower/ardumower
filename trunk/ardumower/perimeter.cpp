@@ -146,7 +146,7 @@ void Perimeter::matchedFilter(byte idx){
   }*/
   // magnitude for tracking (fast but inaccurate)    
   mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
-  smoothMag = 0.99 * smoothMag + 0.01 * ((float)mag[idx]);
+  smoothMag = 0.99 * smoothMag + 0.01 * (1.0/((float)mag[idx]));
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){
