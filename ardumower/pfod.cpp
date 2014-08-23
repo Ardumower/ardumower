@@ -428,7 +428,7 @@ void RemoteControl::sendGPSMenu(boolean update){
 }
 
 void RemoteControl::processGPSMenu(String pfodCmd){      
-  if (pfodCmd == "q00") robot->rainUse = !robot->rainUse;
+  if (pfodCmd == "q00") robot->gpsUse = !robot->gpsUse;
   sendGPSMenu(true);
 }
 
