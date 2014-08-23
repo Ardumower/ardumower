@@ -209,6 +209,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timerUse);
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
+  eereadwrite(readflag, addr, gpsUse);
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
