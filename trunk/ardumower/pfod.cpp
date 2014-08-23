@@ -167,14 +167,14 @@ void RemoteControl::sendMainMenu(boolean update){
 void RemoteControl::sendPlotMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Plot"));           
   Bluetooth.print(F("|y7~Sensors|y5~Sensor counters|y3~IMU|y6~Perimeter|y8~GPS"));   
-  Bluetooth.println(F("|y1~Battery|y2~Odometry}"));
+  Bluetooth.println(F("|y1~Battery|y2~Odometry2D|y10~GPS2D}"));
 }  
 
 
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Settings"));         
   Bluetooth.print(F("|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
-  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
+  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
 }  
 
 void RemoteControl::sendErrorMenu(boolean update){
@@ -420,6 +420,18 @@ void RemoteControl::processRainMenu(String pfodCmd){
   sendRainMenu(true);
 }
 
+void RemoteControl::sendGPSMenu(boolean update){
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.GPS`1000"));         
+  Bluetooth.print(F("|q00~Use "));
+  sendYesNo(robot->gpsUse);     
+  Bluetooth.println("}");                
+}
+
+void RemoteControl::processGPSMenu(String pfodCmd){      
+  if (pfodCmd == "q00") robot->rainUse = !robot->rainUse;
+  sendGPSMenu(true);
+}
+
 
 void RemoteControl::sendImuMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.IMU`1000"));         
@@ -527,7 +539,7 @@ void RemoteControl::processStationMenu(String pfodCmd){
 }
 
 void RemoteControl::sendOdometryMenu(boolean update){
-  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Odometry`1000"));         
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Odometry2D`1000"));         
   Bluetooth.print(F("|l00~Use "));
   sendYesNo(robot->odometryUse);  
   Bluetooth.print(F("|l01~Value l, r "));
@@ -874,6 +886,7 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
       else if (pfodCmd == "s11") sendOdometryMenu(false);
       else if (pfodCmd == "s12") sendDateTimeMenu(false);      
       else if (pfodCmd == "s13") sendRainMenu(false);            
+      else if (pfodCmd == "s14") sendGPSMenu(false);
       else if (pfodCmd == "sx") sendFactorySettingsMenu(false);
       else if (pfodCmd == "sz") { robot->saveUserSettings(); sendSettingsMenu(true); }
       else sendSettingsMenu(true);  
@@ -939,7 +952,7 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.println(robot->batCapacity);         
     }
-  } else if (pfodState == PFOD_PLOT_ODO){
+  } else if (pfodState == PFOD_PLOT_ODO2D){
     if (millis() >= nextPlotTime){
       nextPlotTime = millis() + 500;
       Bluetooth.print(robot->odometryX);
@@ -1096,6 +1109,13 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.println(lon);
     }
+  } else if (pfodState == PFOD_PLOT_GPS2D){
+    if (millis() >= nextPlotTime){
+      nextPlotTime = millis() + 500;
+      Bluetooth.print(robot->gpsX);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->gpsY);
+    }
   }
 }
 
@@ -1140,10 +1160,10 @@ void RemoteControl::readSerial(){
           pfodState = PFOD_PLOT_BAT;
         }
         else if (pfodCmd == "y2") {
-          // plot odometry
-          Bluetooth.println(F("{=odometry|position`0~~~x|`~~~y}"));         
+          // plot odometry 2d
+          Bluetooth.println(F("{=odometry2d|position`0~~~x|`~~~y}"));         
           nextPlotTime = 0;
-          pfodState = PFOD_PLOT_ODO;
+          pfodState = PFOD_PLOT_ODO2D;
         }
         else if (pfodCmd == "y3") {        
           // plot IMU
@@ -1180,6 +1200,12 @@ void RemoteControl::readSerial(){
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_GPS;          
         }
+        else if (pfodCmd == "y10") {
+          // plot GPS 2d
+          Bluetooth.println(F("{=gps2d|position`0~~~x|`~~~y}"));         
+          nextPlotTime = 0;
+          pfodState = PFOD_PLOT_GPS2D;
+        }        
         else if (pfodCmd == "y9") {
           // ADC calibration
           ADCMan.calibrate();
@@ -1211,6 +1237,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("k")) processStationMenu(pfodCmd);       
         else if (pfodCmd.startsWith("l")) processOdometryMenu(pfodCmd);  
         else if (pfodCmd.startsWith("m")) processRainMenu(pfodCmd);               
+        else if (pfodCmd.startsWith("q")) processGPSMenu(pfodCmd);                       
         else if (pfodCmd.startsWith("t")) processDateTimeMenu(pfodCmd);  
         else if (pfodCmd.startsWith("i")) processTimerMenu(pfodCmd);      
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      

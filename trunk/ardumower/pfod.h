@@ -38,7 +38,8 @@
 
 // pfodApp state
 enum { PFOD_OFF, PFOD_MENU, PFOD_MONITOR, PFOD_ARDU_MAG,
-       PFOD_PLOT_BAT, PFOD_PLOT_ODO, PFOD_PLOT_IMU, PFOD_PLOT_SENSOR_COUNTERS, PFOD_PLOT_SENSORS, PFOD_PLOT_PERIMETER, PFOD_PLOT_GPS };
+       PFOD_PLOT_BAT, PFOD_PLOT_ODO2D, PFOD_PLOT_IMU, PFOD_PLOT_SENSOR_COUNTERS, 
+       PFOD_PLOT_SENSORS, PFOD_PLOT_PERIMETER, PFOD_PLOT_GPS, PFOD_PLOT_GPS2D };
 
 class Robot;
 
@@ -111,6 +112,7 @@ class RemoteControl
     void sendStationMenu(boolean update);
     void sendOdometryMenu(boolean update);
     void sendRainMenu(boolean update);    
+    void sendGPSMenu(boolean update);        
     void sendDateTimeMenu(boolean update);
     void sendFactorySettingsMenu(boolean update);    
     
@@ -121,6 +123,7 @@ class RemoteControl
     void processPerimeterMenu(String pfodCmd); 
     void processLawnSensorMenu(String pfodCmd);   
     void processRainMenu(String pfodCmd);       
+    void processGPSMenu(String pfodCmd);           
     void processImuMenu(String pfodCmd);         
     void processRemoteMenu(String pfodCmd);      
     void processBatteryMenu(String pfodCmd);

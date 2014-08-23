@@ -69,6 +69,8 @@ Robot::Robot(){
 
   bumperLeftCounter = bumperRightCounter = 0;
   bumperLeft = bumperRight = false;          
+  
+  gpsLat = gpsLon = gpsX = gpsY = 0;
 
   imuYaw = imuPitch = imuRoll = 0;
   imuDriveHeading = 0;
@@ -1061,7 +1063,7 @@ void Robot::readSensors(){
     nextTimeRain = millis() + 5000;
     rain = (readSensor(SEN_RAIN) != 0);  
     if (rain) rainCounter++;
-  }
+  }  
 }
 
 
@@ -1444,6 +1446,20 @@ void Robot::checkTilt(){
   }
 }
 
+void Robot::processGPSData()
+{
+  float nlat, nlon;
+  unsigned long age;
+  gps.f_get_position(&nlat, &nlon, &age);
+  if (nlat == GPS::GPS_INVALID_F_ANGLE ) return;
+  if (gpsLon == 0){
+    gpsLon = nlon;  // this is xy (0,0)
+    gpsLat = nlat;
+    return;
+  }
+  gpsX = (float)gps.distance_between(nlat,  gpsLon,  gpsLat, gpsLon);
+  gpsY = (float)gps.distance_between(gpsLat, nlon,   gpsLat, gpsLon);
+}
 
 // calculate map position by odometry sensors
 void Robot::calcOdometry(){
@@ -1693,7 +1709,9 @@ void Robot::loop()  {
   motorMowControl();  
   ADCMan.run();
   if (imuUse) imu.update();
-  if (gpsUse) gps.run();
+  if (gpsUse) { 
+    if (gps.feed()) processGPSData();
+  }
     
   bumperRight = false;
   bumperLeft = false;     
