@@ -160,6 +160,12 @@ class Robot
     // -------- mow pattern -----------------------------    
     byte mowPatternCurr;
     char *mowPatternName();
+    // -------- gps state -------------------------------
+    char gpsUse            ;       // use GPS?    
+    float gpsLat;
+    float gpsLon;
+    float gpsX ;   // X position (m)
+    float gpsY ;   // Y position (m)
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
@@ -293,8 +299,6 @@ class Robot
     unsigned int sonarDistLeft ; 
     unsigned int sonarDistCounter ;
     unsigned long sonarObstacleTimeout ;
-    // ----- GPS -------------------------------------------
-    char gpsUse            ;       // use GPS?
     // ----- other -----------------------------------------
     char buttonUse         ;       // has digital ON/OFF button?
     // ----- user-defined switch ---------------------------
@@ -374,6 +378,9 @@ class Robot
     // motor
     virtual void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel);    
     virtual void setMotorMowSpeed(int pwm, boolean useAccel);
+    
+    // GPS
+    virtual void processGPSData();
     
     // IMU
     virtual void imuCalibComDeviation();

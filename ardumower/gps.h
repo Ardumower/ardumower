@@ -49,7 +49,7 @@ public:
   GPS();
   bool encode(char c); // process one character received from GPS
   void init();
-  void run();
+  boolean feed();
   GPS &operator << (char c) {encode(c); return *this;}
 
   // lat/long in hundred thousandths of a degree and age of fix in milliseconds

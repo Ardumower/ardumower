@@ -57,12 +57,13 @@ void GPS::init(){
   Serial3.begin(9600);
 }
 
-void GPS::run(){
+boolean GPS::feed(){
   while (Serial3.available())
   {
     if (encode(Serial3.read()))
-      return;
+      return true;
   }  
+  return false;
 }
 
 bool GPS::encode(char c)
