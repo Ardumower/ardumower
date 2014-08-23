@@ -125,6 +125,7 @@ Robot::Robot(){
   nextTimeLawnSensorCheck = 0;
   nextTimeTimer = 0;
   nextTimeRTC = 0;
+  nextTimeGPS = 0;
   nextTimePfodLoop = 0;
   nextTimeRain = 0;
   lastMotorControlTime = millis();
@@ -1448,6 +1449,8 @@ void Robot::checkTilt(){
 
 void Robot::processGPSData()
 {
+  if (millis() < nextTimeGPS) return;
+  nextTimeGPS = millis() + 1000;
   float nlat, nlon;
   unsigned long age;
   gps.f_get_position(&nlat, &nlon, &age);
@@ -1710,7 +1713,8 @@ void Robot::loop()  {
   ADCMan.run();
   if (imuUse) imu.update();
   if (gpsUse) { 
-    if (gps.feed()) processGPSData();
+    gps.feed();
+    processGPSData();    
   }
     
   bumperRight = false;

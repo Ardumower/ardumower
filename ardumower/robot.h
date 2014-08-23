@@ -141,10 +141,6 @@ enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER };
 class Robot
 {
   public:    
-    Perimeter perimeter;
-    IMU imu;
-    GPS gps;      
-    RemoteControl rc;
     String name;
     // --------- state machine --------------------------
     byte stateCurr;
@@ -156,16 +152,19 @@ class Robot
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
-    char timerUse          ;       // use timer?        
+    char timerUse          ;       // use timer?
+    unsigned long nextTimeTimer ;        
     // -------- mow pattern -----------------------------    
     byte mowPatternCurr;
     char *mowPatternName();
     // -------- gps state -------------------------------
-    char gpsUse            ;       // use GPS?    
+    GPS gps;
+    char gpsUse            ;       // use GPS?        
     float gpsLat;
     float gpsLon;
     float gpsX ;   // X position (m)
     float gpsY ;   // Y position (m)
+    unsigned long nextTimeGPS ;
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
@@ -186,8 +185,10 @@ class Robot
     unsigned long lastMotorLeftRpmTime ; 
     int motorRightRpmCounter ; // right wheel rpm counter
     float motorRightRpm ; // right wheel rpm
-    unsigned long lastMotorRightRpmTime; 
-    // -------- RC remote control state -----------------
+    unsigned long lastMotorRightRpmTime;
+    unsigned long nextTimeOdometry ;
+    unsigned long nextTimeOdometryInfo ; 
+    // -------- RC remote control state -----------------    
     char remoteUse      ;       // use model remote control (R/C)?
     int remoteSteer ;  // range -100..100
     int remoteSpeed ;  // range -100..100
@@ -201,6 +202,7 @@ class Robot
     boolean remoteSpeedLastState ;
     boolean remoteMowLastState ;
     boolean remoteSwitchLastState ;
+    unsigned long nextTimeRTC ;
     // -------- mower motor state -----------------------
     int motorMowRpmCounter ;  // mower motor speed state
     boolean motorMowRpmLastState ;
@@ -230,6 +232,8 @@ class Robot
     float motorRightSense ;
     int motorLeftSenseCounter ;  // motor current counter
     int motorRightSenseCounter ;
+    unsigned long nextTimeMotorSense ;
+    unsigned long lastMotorControlTime ;
     // -------- mower motor state -----------------------
     // mower motor sppeed; range 0..motorMowSpeedMax
     float motorMowAccel       ;  // motor mower acceleration (warning: do not set too high)
@@ -247,6 +251,8 @@ class Robot
     int motorMowSenseCounter ;
     int motorMowSenseErrorCounter ;
     int motorMowRpm ;            // motor rpm (range 0..MOW_RPM)
+    unsigned long lastMotorMowControlTime;
+    unsigned long lastMotorMowRpmTime;    
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     
@@ -254,7 +260,9 @@ class Robot
     boolean bumperLeft ;          
     int bumperRightCounter ;
     boolean bumperRight ;
+    unsigned long nextTimeBumper ;
     // ------- IMU state --------------------------------
+    IMU imu;
     char imuUse            ;       // use IMU? 
     char imuCorrectDir     ;       // correct direction by compass?
     PID imuDirPID  ;    // direction PID controller
@@ -267,7 +275,9 @@ class Robot
     byte   imuRollDir;
     //point_float_t accMin;
     //point_float_t accMax;
+    unsigned long nextTimeIMU ;
     // ------- perimeter state --------------------------
+    Perimeter perimeter;
     char perimeterUse       ;      // use perimeter?
     int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
     int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
@@ -278,6 +288,7 @@ class Robot
     int perimeterTriggerTimeout;   // perimeter trigger timeout (ms)
     unsigned long perimeterLastTransitionTime;
     int perimeterCounter ;         // counts perimeter transitions
+    unsigned long nextTimePerimeter ;
     //  --------- lawn state ----------------------------
     char lawnSensorUse     ;       // use capacitive Sensor
     int lawnSensorCounter;
@@ -286,10 +297,13 @@ class Robot
     float lawnSensorFrontOld ;
     float lawnSensorBack ;   // back lawn sensor capacity (time)
     float lawnSensorBackOld ;
+    unsigned long nextTimeLawnSensor ;
+    unsigned long nextTimeLawnSensorCheck ;
     // --------- rain -----------------------------------
     boolean rain;
     boolean rainUse;
-    int rainCounter;    
+    int rainCounter; 
+    unsigned long nextTimeRain ;   
     // --------- sonar ----------------------------------
     // ultra sonic sensor distance-to-obstacle (cm)
     char sonarUse          ;      // use ultra sonic sensor?
@@ -299,6 +313,10 @@ class Robot
     unsigned int sonarDistLeft ; 
     unsigned int sonarDistCounter ;
     unsigned long sonarObstacleTimeout ;
+    unsigned long nextTimeSonar ;
+    // --------- pfodApp ----------------------------------
+    RemoteControl rc; // pfodApp
+    unsigned long nextTimePfodLoop ;    
     // ----- other -----------------------------------------
     char buttonUse         ;       // has digital ON/OFF button?
     // ----- user-defined switch ---------------------------
@@ -322,10 +340,11 @@ class Robot
     float chgCurrent ;  // charge current  (Ampere)
     int stationRevTime     ;    // charge station reverse time (ms)
     int stationRollTime    ;    // charge station roll time (ms)
-    int stationForwTime    ;    // charge station forward time (ms)    
+    int stationForwTime    ;    // charge station forward time (ms)
+    unsigned long nextTimeBattery ;    
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
-    byte errorCounter[ERR_ENUM_COUNT];
+    byte errorCounter[ERR_ENUM_COUNT];    
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
     float loopsTa ;   // main loop-time factor (milliseconds)
@@ -333,25 +352,8 @@ class Robot
     byte buttonCounter ;
     byte ledState ;
     byte consoleMode ;
-    unsigned long nextTimeButtonCheck ;
-    unsigned long nextTimeRain ;
-    unsigned long nextTimeInfo ;
-    unsigned long nextTimeMotorSense ;
-    unsigned long nextTimeIMU ;
-    unsigned long nextTimeOdometry ;
-    unsigned long nextTimeOdometryInfo ;
-    unsigned long nextTimeBumper ;
-    unsigned long nextTimeSonar ;
-    unsigned long nextTimeBattery ;
-    unsigned long nextTimePerimeter ;
-    unsigned long nextTimeLawnSensor ;
-    unsigned long nextTimeLawnSensorCheck ;
-    unsigned long nextTimeTimer ;
-    unsigned long nextTimeRTC ;
-    unsigned long nextTimePfodLoop ;
-    unsigned long lastMotorControlTime ;
-    unsigned long lastMotorMowControlTime;
-    unsigned long lastMotorMowRpmTime;
+    unsigned long nextTimeButtonCheck ;    
+    unsigned long nextTimeInfo ;                    
     byte rollDir;
     unsigned long nextTimeButton ;
     unsigned long nextTimeErrorCounterReset;    
