@@ -172,7 +172,7 @@ Mower::Mower(){
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
   // ----- GPS -------------------------------------------
-  gpsUse            = 0;       // use GPS?
+  gpsUse            = 1;       // use GPS?
   // ----- other -----------------------------------------
   buttonUse         = 1;       // has digital ON/OFF button?
   // ----- user-defined switch ---------------------------
