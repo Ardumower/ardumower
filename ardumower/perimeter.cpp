@@ -146,7 +146,8 @@ void Perimeter::matchedFilter(byte idx){
   }*/
   // magnitude for tracking (fast but inaccurate)    
   mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
-  smoothMag = 0.99 * smoothMag + 0.01 * (1.0/((float)mag[idx]));
+  // smoothed magnitude used for signal-off detection
+  smoothMag = 0.99 * smoothMag + 0.01 * ((float)abs(mag[idx]));
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){
@@ -180,7 +181,9 @@ boolean Perimeter::isInside(){
 
 
 boolean Perimeter::signalTimedOut(){
-  return (millis() - lastInsideTime > 8000);
+  if (getSmoothMagnitude() < 300) return true;
+  if (millis() - lastInsideTime > 8000) return true;
+  return false;
 }
 
 
