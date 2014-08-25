@@ -68,13 +68,6 @@ public:
   IMU();    
   boolean init();   
   void update();
-  void getEuler(float * angles); 
-  void getEulerRad(float * angles);    
-  // get yaw,pitch,roll (radiant)      
-  void getYawPitchRollRad(float * ypr);   
-  // get yaw,pitch,roll (degree)
-  void getYawPitchRoll(float * ypr);
-  void getMinMaxAcc(point_float_t &vmin, point_float_t &vmax);      
   void getComRaw(point_float_t &v);  
   void setComCalParam(int type, int i, int j, float value);
   void calibAcc();
@@ -117,12 +110,11 @@ public:
   float comDeviation[36]; // compass heading deviation (degree/10 => degree)
   boolean useComDeviation; 
   // ------ AHRS --------------------------------------
-  AHRS ahrs;
   unsigned long lastAHRSTime;
   unsigned long now;
+  ypr_t ypr;  // gyro yaw,pitch,roll  
   // --------------------------------------------------
   // IMU  
-  void getQ(float * q);  
   void read();
   // calibration
   void loadSaveCalib(boolean readflag);  
@@ -132,7 +124,6 @@ public:
   void calcComCal();
   void getComCal(point_float_t &v);   
   float compensateComYawDeviation(float degree);
-  void gravityCompensateAcc(float * acc, float * q);
   // print IMU values
   void printPt(point_float_t p);
   void printCalib();
@@ -143,8 +134,6 @@ public:
   float scale180(float v);
   float distancePI(float x, float w);
   float distance180(float x, float w);
-  float invSqrt(float number);
-  void arr3_rad_to_deg(float * arr);  
   float fusionPI(float w, float a, float b);  
   float sermin(float oldvalue, float newvalue);
   float sermax(float oldvalue, float newvalue);
