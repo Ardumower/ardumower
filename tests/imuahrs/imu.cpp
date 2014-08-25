@@ -61,6 +61,7 @@ IMU::IMU(){
   useAccCalibration = true; 
   accPitch = 0;
   accRoll = 0;
+  ypr.yaw=ypr.pitch=ypr.roll = 0;
   
   accMin.x=accMin.y=accMin.z = 0;
   accMax.x=accMax.y=accMax.z = 0;  
@@ -459,11 +460,11 @@ void IMU::calibComDeviation(){
     Console.println(F("next round"));
     unsigned long startTime = millis();
     now = startTime;
-    getEuler(ypr);        
+    update();
     int lastYaw = ((int)((ypr[0]+180)/10));
     while (true){ 
       now = millis();                                      
-      getEuler(ypr);              
+      update();
       int yaw = ((int)((ypr[0]+180)/10));
       if (yaw != lastYaw){
         if (startYaw == -200){
@@ -691,140 +692,44 @@ void IMU::printIMU(float * ypr){
   Console.print(comYawTilt/PI*180.0);  */
 }
 
+// newAngle = angle measured with atan2 using the accelerometer
+// newRate = angle measured using the gyro
+// looptime = loop time in millis()
+float Complementary2(float newAngle, float newRate,int looptime, float angle) {
+  float k=10;
+  float dtc2=float(looptime)/1000.0;
+  float x1 = (newAngle -   angle)*k*k;
+  float y1 = dtc2*x1 + y1;
+  float x2 = y1 + (newAngle -   angle)*2*k + newRate;
+  angle = dtc2*x2 + angle;
+  return angle;
+}
 
-/**
- * Fast inverse square root implementation
- * @see http://en.wikipedia.org/wiki/Fast_inverse_square_root
-*/
-float IMU::invSqrt(float number) {
-  volatile long i;
-  volatile float x, y;
-  volatile const float f = 1.5F;
-
-  x = number * 0.5F;
-  y = number;
-  i = * ( long * ) &y;
-  i = 0x5f375a86 - ( i >> 1 );
-  y = * ( float * ) &i;
-  y = y * ( f - ( x * y * y ) );
-  return y;
+// a=tau / (tau + loop time)
+// newAngle = angle measured with atan2 using the accelerometer
+// newRate = angle measured using the gyro
+// looptime = loop time in millis()
+float Complementary(float newAngle, float newRate,int looptime, float angle) {
+  float tau=0.075;
+  float a=0.0;
+  float dtC = float(looptime)/1000.0;
+  a=tau/(tau+dtC);
+  angle= a* (angle + newRate * dtC) + (1-a) * (newAngle);
+  return angle;
 }
 
 void IMU::update(){
   read();  
-  now = micros();
-  float Ta = (now - lastAHRSTime) / 1000000.0;
+  now = millis();
+  int looptime = (now - lastAHRSTime);
   lastAHRSTime = now;
-  ahrs.update( 
-             gyro.x, gyro.y, gyro.z,             
-             acc.x,  acc.y,  acc.z, 
-             comCal.x,  comCal.y,  comCal.z,
-             Ta/2
-             );    
+  
+  accPitch = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));
+  accRoll =  atan2(acc.y , acc.z);  
+  
+  ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
+  ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);  
 }  
- 
-
-void IMU::getQ(float * q) {  
-  q[0] = ahrs.q0;
-  q[1] = ahrs.q1;
-  q[2] = ahrs.q2;
-  q[3] = ahrs.q3;
-  
-  // gravity compensation
-  float accFloat[3];
-  accFloat[0] = acc.x;
-  accFloat[1] = acc.y;
-  accFloat[2] = acc.z;
-  gravityCompensateAcc(accFloat, q);      
-  accGrav.x = accFloat[0];
-  accGrav.y = accFloat[1];
-  accGrav.z = accFloat[2];  
-  accMin.x = max(accMin.x, accGrav.x );    
-  accMax.x = max(accMax.x, accGrav.x );    
-  accMin.y = max(accMin.y, accGrav.y );    
-  accMax.y = max(accMax.y, accGrav.y );    
-  accMin.z = max(accMin.z, accGrav.z );    
-  accMax.z = max(accMax.z, accGrav.z );    
-}
-
-
-/**
- * Compensates the accelerometer readings in the 3D vector acc expressed in the sensor frame for gravity
- * @param acc the accelerometer readings to compensate for gravity
- * @param q the quaternion orientation of the sensor board with respect to the world
-*/
-void IMU::gravityCompensateAcc(float * acc, float * q) {
-  float g[3];
-  
-  // get expected direction of gravity in the sensor frame
-  g[0] = 2 * (q[1] * q[3] - q[0] * q[2]);
-  g[1] = 2 * (q[0] * q[1] + q[2] * q[3]);
-  g[2] = q[0] * q[0] - q[1] * q[1] - q[2] * q[2] + q[3] * q[3];
-  
-  // compensate accelerometer readings with the expected direction of gravity
-  acc[0] = acc[0] - g[0];
-  acc[1] = acc[1] - g[1];
-  acc[2] = acc[2] - g[2];
-}
-
-/**
- * Returns the Euler angles in radians defined in the Aerospace sequence.
- * See Sebastian O.H. Madwick report "An efficient orientation filter for 
- * inertial and intertial/magnetic sensor arrays" Chapter 2 Quaternion representation
- * 
- * @param angles three floats array which will be populated by the Euler angles in radians
-*/
-
-void IMU::getEulerRad(float * angles) {
-  float q[4]; // quaternion
-  getQ(q);
-  angles[0] = atan2(2 * q[1] * q[2] - 2 * q[0] * q[3], 2 * q[0]*q[0] + 2 * q[1] * q[1] - 1); // psi
-  angles[1] = -asin(2 * q[1] * q[3] + 2 * q[0] * q[2]); // theta
-  angles[2] = atan2(2 * q[2] * q[3] - 2 * q[0] * q[1], 2 * q[0] * q[0] + 2 * q[3] * q[3] - 1); // phi
-}
-
-
-/**
- * Returns the Euler angles in degrees defined with the Aerospace sequence.
- * See Sebastian O.H. Madwick report "An efficient orientation filter for 
- * inertial and intertial/magnetic sensor arrays" Chapter 2 Quaternion representation
- * 
- * @param angles three floats array which will be populated by the Euler angles in degrees
-*/
-void IMU::getEuler(float * angles) {
-  getEulerRad(angles);  
-  arr3_rad_to_deg(angles);
-  if (useComDeviation) angles[0] = compensateComYawDeviation(angles[0]);
-}
-
-
-/**
- * Returns the yaw pitch and roll angles, respectively defined as the angles in radians between
- * the Earth North and the IMU X axis (yaw), the Earth ground plane and the IMU X axis (pitch)
- * and the Earth ground plane and the IMU Y axis.
- * 
- * @note This is not an Euler representation: the rotations aren't consecutive rotations but only
- * angles from Earth and the IMU. For Euler representation Yaw, Pitch and Roll see FreeIMU::getEuler
- * 
- * @param ypr three floats array which will be populated by Yaw, Pitch and Roll angles in radians
-*/
-void IMU::getYawPitchRoll(float * ypr) {
-  float q[4]; // quaternion
-  float gx, gy, gz; // estimated gravity direction
-  getQ(q);
-  
-  gx = 2 * (q[1]*q[3] - q[0]*q[2]);
-  gy = 2 * (q[0]*q[1] + q[2]*q[3]);
-  gz = q[0]*q[0] - q[1]*q[1] - q[2]*q[2] + q[3]*q[3];
-  
-  ypr[0] = atan2(2 * q[1] * q[2] - 2 * q[0] * q[3], 2 * q[0]*q[0] + 2 * q[1] * q[1] - 1);
-  ypr[1] = atan(gx / sqrt(gy*gy + gz*gz));
-  ypr[2] = atan(gy / sqrt(gx*gx + gz*gz));
-  
-  //arr3_rad_to_deg(ypr);
-  if (useComDeviation) ypr[0] = compensateComYawDeviation(ypr[0]);     
-}
-
 
 // compute calibrated compass values
 void IMU::calcComCal(){  
@@ -845,35 +750,6 @@ void IMU::calcComCal(){
   
     //comYawCal = scalePI( atan2(comCal.y, comCal.x)  );          
 }
-
-void IMU::getComRaw(point_float_t &v){
-  v.x = com.x;
-  v.y = com.y;
-  v.z = com.z;
-}
-
-void IMU::getComCal(point_float_t &v){
-  v.x = comCal.x;
-  v.y = comCal.y;
-  v.z = comCal.z;
-}
-
-void IMU::getMinMaxAcc(point_float_t &vmin, point_float_t &vmax){
-  vmin = accMin;
-  vmax = accMax;
-  accMin.x = accMin.y = accMin.z = 0;
-  accMax.x = accMax.y = accMax.z = 0;
-}
-
-/**
- * Converts a 3 elements array arr of angles expressed in radians into degrees
-*/
-void IMU::arr3_rad_to_deg(float * arr) {
-  arr[0] *= 180/M_PI;
-  arr[1] *= 180/M_PI;
-  arr[2] *= 180/M_PI;
-}
-
 
 boolean IMU::init(){    
   loadCalib();
@@ -904,7 +780,7 @@ void IMU::read(){
     return;
   }
   callCounter++;    
-  readL3G4200D(false); // false for AHRS
+  readL3G4200D(true);
   readADXL345B();
   readHMC5883L();  
   calcComCal();
