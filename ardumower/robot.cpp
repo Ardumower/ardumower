@@ -893,17 +893,17 @@ void Robot::checkButton(){
         // drive home
         setNextState(STATE_PERI_FIND, 0);        
       } else if (buttonCounter == 1){
-        if ((perimeterUse) && (!perimeter.isInside())){
+        /*if ((perimeterUse) && (!perimeter.isInside())){
           Console.println("start inside perimeter!");
           addErrorCounter(ERR_PERIMETER_TIMEOUT);
           setNextState(STATE_ERROR, 0);                          
-        } else {
+        } else {*/
           // start normal with mowing        
           motorMowEnable = true;
           //motorMowModulate = true;                     
           mowPatternCurr = MOW_RANDOM;   
           setNextState(STATE_FORWARD, 0);                
-        }
+        //}
       } 
       
       buttonCounter = 0;                 
@@ -1025,16 +1025,13 @@ void Robot::readSensors(){
   }
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
-    // read compass
-    nextTimeIMU = millis() + 500;   // 2 hz  (maximum: 100 hz)
-    float ypr[3];
-    imu.getEulerRad(ypr);
-    //imu.getYawPitchRoll(ypr);
+    // IMU
+    readSensor(SEN_IMU);
+    nextTimeIMU = millis() + 200;   // 5 hz
     if (imu.getErrorCounter()>0) {
       addErrorCounter(ERR_IMU_COMM);
       Console.println("IMU comm error");    
-    }
-    imuYaw=ypr[0]; imuPitch=ypr[1]; imuRoll=ypr[2]; 
+    }    
   }  
   if (millis() >= nextTimeBattery){
     // read battery
