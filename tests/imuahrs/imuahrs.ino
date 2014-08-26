@@ -28,24 +28,30 @@ void setup()  {
   delay(100);
   Serial.println("START");        
   imu.init();  
-  //imu.calibAcc();
-  //imu.calibCom();
 }
 
 void loop()  {           
   imu.update();
   if (millis() >= nextTime){
     nextTime = millis() + 200;    
+    if (Serial.available() > 0){
+      char ch = (char)Serial.read();  
+      if (ch == 'a') imu.calibAcc();    
+      if (ch == 'c') imu.calibCom();
+    }              
+    Serial.print("calls=");  
     Serial.print(imu.getCallCounter());  
-    Serial.print("\t");  
+    Serial.print("\tyaw=");  
     Serial.print(imu.ypr.yaw/PI*180.0);  
-    Serial.print("\t");  
+    Serial.print("\tpitch=");  
     Serial.print(imu.ypr.pitch/PI*180.0);    
-    Serial.print("\t");  
+    Serial.print("\troll=");  
     Serial.print(imu.ypr.roll/PI*180.0);    
-    Serial.print("\t");          
+    Serial.print("\tcom=");          
     Serial.print(imu.comYaw/PI*180.0);            
-    Serial.print("\t");          
+    Serial.print("\tcom180=");          
+    Serial.print(imu.scalePI(imu.comYaw+PI)/PI*180.0);            
+    Serial.print("\tgyroZ=");          
     Serial.print(imu.gyro.z);                
     /*Serial.print(imu.com.x);        
     Serial.print(",");          
