@@ -545,38 +545,43 @@ void IMU::calibCom(){
   Console.println(F("2. press key"));
   useComCalibration = false;
   comOfs.x = comOfs.y = comOfs.z = 0;  
-  float xmin =  99999;
-  float xmax = -99999;      
-  float ymin =  99999;
-  float ymax = -99999;        
-  float zmin =  99999;
-  float zmax = -99999;        
+  float xmin =  9999;
+  float xmax =  -9999;      
+  float ymin =  9999;
+  float ymax =  -9999;        
+  float zmin =  9999;
+  float zmax =  -9999;        
+  point_float_t pt;
+  while (Console.available()) Console.read();  
   while(true){        
-    delay(200);
+    delay(20);    
     readHMC5883L();      
     if (Console.available()) {
       while (Console.available()) Console.read();
       break;      
     }
-    xmin = min(xmin, com.x);
-    xmax = max(xmax, com.x);         
-    ymin = min(ymin, com.y);
-    ymax = max(ymax, com.y);
-    zmin = min(zmin, com.z);
-    zmax = max(zmax, com.z);                
-    Console.print("x:");
-    Console.print(xmin);
-    Console.print(",");
-    Console.print(xmax);
-    Console.print("\t  y:");
-    Console.print(ymin);
-    Console.print(",");
-    Console.print(ymax);
-    Console.print("\t  z:");
-    Console.print(zmin);
-    Console.print(",");
-    Console.print(zmax);    
-    Console.println("\t");
+    if ( (abs(com.x-pt.x)<10) &&  (abs(com.y-pt.y)<10) &&  (abs(com.z-pt.z)<10) ){
+      xmin = min(xmin, com.x);
+      xmax = max(xmax, com.x);         
+      ymin = min(ymin, com.y);
+      ymax = max(ymax, com.y);
+      zmin = min(zmin, com.z);
+      zmax = max(zmax, com.z);                    
+      Console.print("x:");
+      Console.print(xmin);
+      Console.print(",");
+      Console.print(xmax);
+      Console.print("\t  y:");
+      Console.print(ymin);
+      Console.print(",");
+      Console.print(ymax);
+      Console.print("\t  z:");
+      Console.print(zmin);
+      Console.print(",");
+      Console.print(zmax);    
+      Console.println("\t");
+    }
+    pt = com;
   } 
   float xrange = xmax - xmin;
   float yrange = ymax - ymin;
