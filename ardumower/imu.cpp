@@ -20,7 +20,6 @@
 #include "imu.h"
 #include <Arduino.h>
 #include <Wire.h>
-#include "AHRS.h"
 #include "drivers.h"
 
 // -------------I2C addresses ------------------------
@@ -31,7 +30,7 @@
 #define pinLED 13
 
 #define ADDR 256
-#define MAGIC 4
+#define MAGIC 5
 
 
 struct {
@@ -66,7 +65,7 @@ IMU::IMU(){
   accMin.x=accMin.y=accMin.z = 0;
   accMax.x=accMax.y=accMax.z = 0;  
   accOfs.x=accOfs.y=accOfs.z = 0;
-  accScale.x=accScale.y=accScale.z = 2;
+  accScale.x=accScale.y=accScale.z = 2;  
   com.x=com.y=com.z=0;  
   comCal.x=comCal.y=comCal.z=0;  
   comCalB[0]=comCalB[1]=comCalB[2]=0;
@@ -82,6 +81,10 @@ IMU::IMU(){
   comCalA_1[2][0] = 0; 
   comCalA_1[2][1] = 0; 
   comCalA_1[2][2] = 1;     
+  
+  comScale.x=comScale.y=comScale.z=2;  
+  comOfs.x=comOfs.y=comOfs.z=0;    
+  useComCalibration = true;
 
   // compass heading deviation (degree/10 => degree)    
   for (int i=0; i < 36; i++){
@@ -155,6 +158,8 @@ void IMU::loadSaveCalib(boolean readflag){
   eereadwrite(readflag, addr, magic); // magic
   eereadwrite(readflag, addr, accOfs);
   eereadwrite(readflag, addr, accScale);    
+  eereadwrite(readflag, addr, comOfs);
+  eereadwrite(readflag, addr, comScale);      
   eereadwrite(readflag, addr, comCalB);  
   eereadwrite(readflag, addr, comCalA_1);    
   for (int i=0; i < 36; i++){
@@ -213,6 +218,10 @@ void IMU::printCalib(){
   printPt(accOfs);
   Console.print(F("accScale="));
   printPt(accScale);
+  Console.print(F("comOfs="));
+  printPt(comOfs);
+  Console.print(F("comScale="));
+  printPt(comScale);  
   Console.print(F("comCalB="));
   for (int i=0; i < 3; i++){
     Console.print(comCalB[i], 6);
@@ -224,7 +233,7 @@ void IMU::printCalib(){
       Console.print(comCalA_1[i][j], 6);
       Console.print("  ");
     }    
-  }    
+  } 
   Console.println();    
   Console.println(F("comDev"));  
   for (int i=0; i < 36; i++){  
@@ -417,15 +426,31 @@ void  IMU::initHMC5883L(){
 }
 
 void IMU::readHMC5883L(){    
-  int8_t buf[6];  
+  uint8_t buf[6];  
   if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
     errorCounter++;
     return;
   }
   // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
-  com.x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
-  com.y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
-  com.z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);
+  float x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
+  float y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
+  float z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);  
+  if (useComCalibration){
+    x -= comOfs.x;
+    y -= comOfs.y;
+    z -= comOfs.z;
+    x /= comScale.x*0.5;    
+    y /= comScale.y*0.5;    
+    z /= comScale.z*0.5;
+    com.x = x;
+    //Console.println(z);
+    com.y = y;
+    com.z = z;
+  } else {
+    com.x = x;
+    com.y = y;
+    com.z = z;
+  }  
 }
 
 float IMU::sermin(float oldvalue, float newvalue){
@@ -518,28 +543,52 @@ void IMU::calibCom(){
   Console.println(F("com calib..."));
   Console.println(F("1. rotate sensor 360 degree around all three axis"));
   Console.println(F("2. press key"));
-  float oldX = 0;
-  float oldY = 0;
-  float oldZ = 0;
+  useComCalibration = false;
+  comOfs.x = comOfs.y = comOfs.z = 0;  
+  float xmin =  99999;
+  float xmax = -99999;      
+  float ymin =  99999;
+  float ymax = -99999;        
+  float zmin =  99999;
+  float zmax = -99999;        
   while(true){        
     delay(200);
     readHMC5883L();      
-    if (  (abs(oldX-com.x) > 1) || (abs(oldY-com.y) > 1) || (abs(oldZ-com.z) > 1)  ){
-      Console.print(com.x);
-      Console.print("\t");
-      Console.print(com.y);
-      Console.print("\t");
-      Console.print(com.z);
-      Console.println();      
-      oldX = com.x;
-      oldY = com.y;
-      oldZ = com.z;
-    }
     if (Console.available()) {
       while (Console.available()) Console.read();
       break;      
     }
+    xmin = min(xmin, com.x);
+    xmax = max(xmax, com.x);         
+    ymin = min(ymin, com.y);
+    ymax = max(ymax, com.y);
+    zmin = min(zmin, com.z);
+    zmax = max(zmax, com.z);                
+    Console.print("x:");
+    Console.print(xmin);
+    Console.print(",");
+    Console.print(xmax);
+    Console.print("\t  y:");
+    Console.print(ymin);
+    Console.print(",");
+    Console.print(ymax);
+    Console.print("\t  z:");
+    Console.print(zmin);
+    Console.print(",");
+    Console.print(zmax);    
+    Console.println("\t");
   } 
+  float xrange = xmax - xmin;
+  float yrange = ymax - ymin;
+  float zrange = zmax - zmin;
+  comOfs.x = xrange/2 + xmin;
+  comOfs.y = yrange/2 + ymin;
+  comOfs.z = zrange/2 + zmin;
+  comScale.x = xrange;
+  comScale.y = yrange;  
+  comScale.z = zrange;
+  useComCalibration = true;  
+  saveCalib();  
 }
 
 
@@ -723,12 +772,23 @@ void IMU::update(){
   now = millis();
   int looptime = (now - lastAHRSTime);
   lastAHRSTime = now;
-  
+
+  // ------ roll, pitch --------------  
   accPitch = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));
-  accRoll =  atan2(acc.y , acc.z);  
-  
+  accRoll =  atan2(acc.y , acc.z);    
+  // complementary filter
   ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
   ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);  
+
+  // ------ yaw --------------
+  // tilt-compensated yaw
+  comTilt.x =  com.x  * cos(ypr.pitch) + com.z * sin(ypr.pitch);
+  comTilt.y =  com.x  * sin(ypr.roll)         * sin(ypr.pitch) + com.y * cos(ypr.roll) - com.z * sin(ypr.roll) * cos(ypr.pitch);
+  comTilt.z = -com.x  * cos(ypr.roll)         * sin(ypr.pitch) + com.y * sin(ypr.roll) + com.z * cos(ypr.roll) * cos(ypr.pitch);     
+  comYaw = scalePI( atan2(comTilt.y, comTilt.x)  );  
+  //comYaw = atan2(com.y, com.x);  // assume pitch, roll are 0
+  // complementary filter
+  ypr.yaw = Complementary2(comYaw, -gyro.z, looptime, ypr.yaw);
 }  
 
 // compute calibrated compass values
@@ -783,7 +843,7 @@ void IMU::read(){
   readL3G4200D(true);
   readADXL345B();
   readHMC5883L();  
-  calcComCal();
+  //calcComCal();
 }
 
 

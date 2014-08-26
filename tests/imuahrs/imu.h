@@ -31,7 +31,7 @@ How to use it (example):
 #define IMU_H
 
 #include <Arduino.h>
-#include "AHRS.h"
+
 
 struct point_int_t {
   int16_t x;
@@ -104,10 +104,14 @@ public:
   // --------- compass state --------------------------
   point_float_t com; // compass sensor data (raw)
   point_float_t comCal; // compass sensor data (calibration corrected)
+  point_float_t comTilt; // compass sensor data (tilt corrected)
+  point_float_t comOfs;
+  point_float_t comScale;  
   float comYaw;         // compass heading (radiant, raw)
   float comCalB[3];
   float comCalA_1[3][3];
   float comDeviation[36]; // compass heading deviation (degree/10 => degree)
+  boolean useComCalibration;
   boolean useComDeviation; 
   // ------ AHRS --------------------------------------
   unsigned long lastAHRSTime;
