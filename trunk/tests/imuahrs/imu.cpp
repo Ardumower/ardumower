@@ -463,6 +463,9 @@ boolean IMU::newMinMaxFound(){
 }  
   
 void IMU::calibComUpdate(){
+  comLast = com;
+  delay(20);
+  readHMC5883L();  
   boolean newfound = false;
   if ( (abs(com.x-comLast.x)<10) &&  (abs(com.y-comLast.y)<10) &&  (abs(com.z-comLast.z)<10) ){
     if (com.x < comMin.x) { 
@@ -506,8 +509,7 @@ void IMU::calibComUpdate(){
       Console.print(comMax.z);    
       Console.println("\t");
     } else noTone(pinBuzzer);   
-  }  
-  comLast = com;
+  }    
 }
 
 // calculate acceleration sensor offsets

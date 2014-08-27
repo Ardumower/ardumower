@@ -750,6 +750,7 @@ void Robot::menu(){
   char ch;  
   printMenu();  
   while(true){    
+    imu.update();
     if (Console.available() > 0) {
       ch = (char)Console.read();            
       switch (ch){
@@ -777,7 +778,7 @@ void Robot::menu(){
           break;
         case '6':
           imu.calibComStartStop();          
-          return;          
+          break;          
         case '7':
           imu.deleteCalib();
           printMenu();
@@ -790,7 +791,7 @@ void Robot::menu(){
           break;          
       }      
     }
-    delay(100);
+    delay(10);
   }  
 }
 
