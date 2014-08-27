@@ -654,8 +654,8 @@ void Robot::printMenu(){
   Console.println(F("2=test odometry"));
   Console.println(F("3=setup BT module config (quick baudscan/recommended)"));
   Console.println(F("4=setup BT module config (extensive baudscan)"));
-  Console.println(F("5=calibrate IMU acc"));
-  Console.println(F("6=calibrate IMU com"));  
+  Console.println(F("5=calibrate IMU acc next side"));
+  Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
   Console.println(F("8=ADC calib"));  
   Console.println(F("9=load factory settings"));  
@@ -772,11 +772,11 @@ void Robot::menu(){
           printMenu();
           break;
         case '5':
-          imu.calibAcc();
+          imu.calibAccNextAxis();
           printMenu();
           break;
         case '6':
-          imu.calibCom();
+          imu.calibComStartStop();
           printMenu();
           break;
         case '7':

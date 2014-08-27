@@ -23,7 +23,7 @@
    
 How to use it (example):     
   1. initialize IMU:                 IMU imu;  imu.init(); 
-  2. read IMU (yaw/pitch/roll:       float ypr[3];  imu.getEulerRad(ypr);
+  2. read IMU (yaw/pitch/roll:       Serial.println( imu.ypr.yaw );
 */
 
 
@@ -31,6 +31,9 @@ How to use it (example):
 #define IMU_H
 
 #include <Arduino.h>
+
+// IMU state
+enum { IMU_RUN, IMU_CAL_COM };
 
 
 struct point_int_t {
@@ -66,22 +69,18 @@ class IMU
 {
 public:
   IMU();    
-  boolean init();   
-  void update();
-  void getComRaw(point_float_t &v);  
-  void setComCalParam(int type, int i, int j, float value);
-  void calibAcc();
-  void calibComDeviation();
+  boolean init(int aPinBuzzer);   
+  void update();  
   int getCallCounter();
   int getErrorCounter();
-  void printIMU(float * ypr);  
-  void printCom();
-  void printAcc();
-  void printGyro();  
-public:
+  void deleteCalib();  
   int callCounter;
   int errorCounter;
   boolean hardwareInitialized;  
+  byte state;
+  unsigned long lastAHRSTime;
+  unsigned long now;  
+  ypr_t ypr;  // gyro yaw,pitch,roll    
   // --------- gyro state -----------------------------
   point_float_t gyro;   // gyro sensor data (degree)    
   point_float_t gyroOfs; // gyro calibration data
@@ -101,44 +100,39 @@ public:
   float accRoll ;
   point_float_t accOfs;
   point_float_t accScale;
-  // --------- compass state --------------------------
+  int calibAccAxisCounter;
+  // calibrate acceleration sensor  
+  boolean calibAccNextAxis();  
+  // --------- compass state --------------------------  
   point_float_t com; // compass sensor data (raw)
-  point_float_t comCal; // compass sensor data (calibration corrected)
+  point_float_t comLast;
+  point_float_t comMin; // compass sensor data (raw)
+  point_float_t comMax; // compass sensor data (raw)  
   point_float_t comTilt; // compass sensor data (tilt corrected)
   point_float_t comOfs;
   point_float_t comScale;  
   float comYaw;         // compass heading (radiant, raw)
-  float comCalB[3];
-  float comCalA_1[3][3];
-  float comDeviation[36]; // compass heading deviation (degree/10 => degree)
   boolean useComCalibration;
-  boolean useComDeviation; 
-  // ------ AHRS --------------------------------------
-  unsigned long lastAHRSTime;
-  unsigned long now;
-  ypr_t ypr;  // gyro yaw,pitch,roll  
+  // calibrate compass sensor  
+  void calibComStartStop();  
+  void calibComUpdate();    
+  boolean newMinMaxFound();
   // --------------------------------------------------
-  // IMU  
-  void read();
-  // calibration
-  void loadSaveCalib(boolean readflag);  
-  void calibGyro();
-  void loadCalib();  
-  void calibCom();  
-  void calcComCal();
-  void getComCal(point_float_t &v);   
-  float compensateComYawDeviation(float degree);
-  // print IMU values
-  void printPt(point_float_t p);
-  void printCalib();
-  void deleteCalib();
-  void saveCalib();
   // helpers
   float scalePI(float v);
   float scale180(float v);
   float distancePI(float x, float w);
   float distance180(float x, float w);
-  float fusionPI(float w, float a, float b);  
+  float fusionPI(float w, float a, float b);    
+private:  
+  void read();
+  void loadSaveCalib(boolean readflag);  
+  void calibGyro();
+  void loadCalib();  
+  // print IMU values
+  void printPt(point_float_t p);
+  void printCalib();
+  void saveCalib();
   float sermin(float oldvalue, float newvalue);
   float sermax(float oldvalue, float newvalue);
   // hardware
@@ -148,6 +142,8 @@ public:
   void readL3G4200D(boolean useTa);
   void readADXL345B();
   void readHMC5883L();
+  boolean foundNewMinMax;
+  int pinBuzzer;
 };
 
 

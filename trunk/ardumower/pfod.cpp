@@ -450,7 +450,8 @@ void RemoteControl::sendImuMenu(boolean update){
   sendYesNo(robot->imuCorrectDir);  
   sendPIDSlider("g05", F("Dir"), robot->imuDirPID, 0.1, 20);
   sendPIDSlider("g06", F("Roll"), robot->imuRollPID, 0.1, 30);    
-  Bluetooth.print(F("|g07~Start Com Cal Dev"));
+  Bluetooth.print(F("|g07~Acc cal next side"));
+  Bluetooth.print(F("|g08~Com cal start/stop"));  
   Bluetooth.println("}");                
 }
 
@@ -459,7 +460,8 @@ void RemoteControl::processImuMenu(String pfodCmd){
     else if (pfodCmd == "g04" ) robot->imuCorrectDir = !robot->imuCorrectDir;
     else if (pfodCmd.startsWith("g05")) processPIDSlider(pfodCmd, "g05", robot->imuDirPID, 0.1, 20);    
     else if (pfodCmd.startsWith("g06")) processPIDSlider(pfodCmd, "g06", robot->imuRollPID, 0.1, 30);    
-    else if (pfodCmd == "g07") robot->imuCalibComDeviation();
+    else if (pfodCmd == "g07") robot->imu.calibAccNextAxis();
+    else if (pfodCmd == "g08") robot->imu.calibComStartStop();
   sendImuMenu(true);
 }
 
