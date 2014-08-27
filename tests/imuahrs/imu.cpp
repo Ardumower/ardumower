@@ -418,6 +418,7 @@ float IMU::sermax(float oldvalue, float newvalue){
 }
 
 void IMU::calibComStartStop(){  
+  while (Console.available()) Console.read();  
   if (state == IMU_CAL_COM){
     // stop 
     Console.println(F("com calib completed"));    
@@ -445,7 +446,6 @@ void IMU::calibComStartStop(){
     delay(500);
   } else {
     // start
-    while (Console.available()) Console.read();  
     Console.println(F("com calib..."));
     Console.println(F("rotate sensor 360 degree around all three axis"));
     foundNewMinMax = false;  

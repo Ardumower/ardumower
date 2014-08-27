@@ -776,9 +776,8 @@ void Robot::menu(){
           printMenu();
           break;
         case '6':
-          imu.calibComStartStop();
-          printMenu();
-          break;
+          imu.calibComStartStop();          
+          return;          
         case '7':
           imu.deleteCalib();
           printMenu();
