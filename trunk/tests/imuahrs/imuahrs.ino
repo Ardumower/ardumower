@@ -13,52 +13,62 @@
   #include "due.h"
 #endif
 
-
+#include "drivers.h"
 #include "imu.h"
 
+
+#define pinBuzzer 53
 
 IMU imu;
 unsigned long nextTime = 0;
 
+void printMenu(){  
+  Console.println("Press a for acc calibration next axis");        
+  Console.println("Press c for com calibration start/stop");           
+  delay(1000);
+}
 
 void setup()  {  
   Wire.begin();
-  Serial.begin(19200);  
+  Console.begin(19200);  
 
   delay(100);
-  Serial.println("START");        
-  imu.init();  
+  Console.println("START");        
+  imu.init(pinBuzzer);  
+  printMenu();
 }
 
 void loop()  {           
   imu.update();
   if (millis() >= nextTime){
     nextTime = millis() + 200;    
-    if (Serial.available() > 0){
-      char ch = (char)Serial.read();  
-      if (ch == 'a') imu.calibAcc();    
-      if (ch == 'c') imu.calibCom();
+    if (Console.available() > 0){
+      char ch = (char)Console.read();  
+      if (ch == 'a') imu.calibAccNextAxis();
+      else if (ch == 'c') imu.calibComStartStop();
     }              
-    Serial.print("calls=");  
-    Serial.print(imu.getCallCounter());  
-    Serial.print("\tyaw=");  
-    Serial.print(imu.ypr.yaw/PI*180.0);  
-    Serial.print("\tpitch=");  
-    Serial.print(imu.ypr.pitch/PI*180.0);    
-    Serial.print("\troll=");  
-    Serial.print(imu.ypr.roll/PI*180.0);    
-    Serial.print("\tcom=");          
-    Serial.print(imu.comYaw/PI*180.0);            
-    Serial.print("\tcom180=");          
-    Serial.print(imu.scalePI(imu.comYaw+PI)/PI*180.0);            
-    Serial.print("\tgyroZ=");          
-    Serial.print(imu.gyro.z);                
-    /*Serial.print(imu.com.x);        
-    Serial.print(",");          
-    Serial.print(imu.com.y);        
-    Serial.print(",");          
-    Serial.print(imu.com.z);            */
-    Serial.println();  
+    if (imu.state == IMU_RUN){
+      Console.print("calls=");  
+      Console.print(imu.getCallCounter());  
+      Console.print("\tyaw=");  
+      Console.print(imu.ypr.yaw/PI*180.0);  
+      Console.print("\tpitch=");  
+      Console.print(imu.ypr.pitch/PI*180.0);    
+      Console.print("\troll=");  
+      Console.print(imu.ypr.roll/PI*180.0);    
+      Console.print("\tcom=");          
+      Console.print(imu.comYaw/PI*180.0);            
+      Console.print("\tcom180=");          
+      Console.print(imu.scalePI(imu.comYaw+PI)/PI*180.0);            
+      Console.print("\tgyroZ=");          
+      Console.print(imu.gyro.z);                
+      /*Console.print(imu.com.x);        
+      Console.print(",");          
+      Console.print(imu.com.y);        
+      Console.print(",");          
+      Console.print(imu.com.z);            */
+      Console.println();  
+    } 
   }
 }
 
