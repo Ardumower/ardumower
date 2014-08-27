@@ -360,7 +360,7 @@ void Mower::setup(){
     delay(500);
   }*/
   
-  imu.init();
+  imu.init(pinBuzzer);
   gps.init();
 
   initBehaviors();  
