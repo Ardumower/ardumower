@@ -56,6 +56,7 @@ class Perimeter
     int16_t getSignalMax();    
     int16_t getSignalAvg(); 
     void speedTest();
+    int16_t timedOutIfBelowSmag;
   private:
     unsigned long lastInsideTime;
     byte type; // which perimeter version to use

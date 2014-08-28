@@ -86,7 +86,6 @@ public:
   point_float_t gyroOfs; // gyro calibration data
   float gyroNoise ;      // gyro noise
   int gyroCounter ; 
-  ypr_t gyroYpr;  // gyro yaw,pitch,roll
   boolean useGyroCalibration ; // gyro calibration flag
   unsigned long lastGyroTime;
   // --------- acceleration state ---------------------
