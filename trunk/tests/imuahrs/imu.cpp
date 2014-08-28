@@ -53,7 +53,6 @@ IMU::IMU(){
   gyroOfs.x=gyroOfs.y=gyroOfs.z=0;  
   gyroNoise = 0;      
   gyroCounter = 0; 
-  gyroYpr.yaw=gyroYpr.pitch=gyroYpr.roll=0;
   useGyroCalibration = false;
   lastGyroTime = millis();
   
@@ -356,10 +355,7 @@ void IMU::readL3G4200D(boolean useTa){
   if (useGyroCalibration){
     gyro.x *= 0.07 * PI/180.0;  // convert to radiant per second
     gyro.y *= 0.07 * PI/180.0; 
-    gyro.z *= 0.07 * PI/180.0;  
-    gyroYpr.yaw   = scalePI( gyroYpr.yaw   -  gyro.z  * Ta ); // integrate over time
-    gyroYpr.pitch = scalePI( gyroYpr.pitch +  gyro.y  * Ta );
-    gyroYpr.roll  = scalePI( gyroYpr.roll  +  gyro.x  * Ta );     
+    gyro.z *= 0.07 * PI/180.0;      
   }
   gyroCounter++;
 }
