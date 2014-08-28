@@ -73,6 +73,7 @@ public:
   void update();  
   int getCallCounter();
   int getErrorCounter();
+  void deleteCalib();  
   int callCounter;
   int errorCounter;
   boolean hardwareInitialized;  
@@ -85,7 +86,6 @@ public:
   point_float_t gyroOfs; // gyro calibration data
   float gyroNoise ;      // gyro noise
   int gyroCounter ; 
-  ypr_t gyroYpr;  // gyro yaw,pitch,roll
   boolean useGyroCalibration ; // gyro calibration flag
   unsigned long lastGyroTime;
   // --------- acceleration state ---------------------
@@ -131,7 +131,6 @@ private:
   // print IMU values
   void printPt(point_float_t p);
   void printCalib();
-  void deleteCalib();
   void saveCalib();
   float sermin(float oldvalue, float newvalue);
   float sermax(float oldvalue, float newvalue);
