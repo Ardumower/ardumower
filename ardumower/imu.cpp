@@ -607,12 +607,17 @@ void IMU::update(){
   
   if (state == IMU_RUN){
     // ------ roll, pitch --------------  
-    accPitch = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));
-    accRoll =  atan2(acc.y , acc.z);    
-    // complementary filter
-    ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
-    ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);  
-
+    float forceMagnitudeApprox = abs(acc.x) + abs(acc.y) + abs(acc.z);
+    if (forceMagnitudeApprox < 2){
+      accPitch = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));
+      accRoll =  atan2(acc.y , acc.z);    
+      // complementary filter
+      ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
+      ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);      
+    } else {
+      ypr.pitch = scalePI(ypr.pitch + gyro.x * ((float)(looptime))/1000.0);
+      ypr.roll  = scalePI(ypr.roll  + gyro.y * ((float)(looptime))/1000.0);
+    }
     // ------ yaw --------------
     // tilt-compensated yaw
     comTilt.x =  com.x  * cos(ypr.pitch) + com.z * sin(ypr.pitch);
