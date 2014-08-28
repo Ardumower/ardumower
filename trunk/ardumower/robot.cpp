@@ -20,7 +20,7 @@
 
 #include "robot.h"
 
-#define MAGIC 25
+#define MAGIC 26
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -72,7 +72,6 @@ Robot::Robot(){
   
   gpsLat = gpsLon = gpsX = gpsY = 0;
 
-  imuYaw = imuPitch = imuRoll = 0;
   imuDriveHeading = 0;
   imuRollHeading = 0;
   imuRollDir = LEFT;  
@@ -172,6 +171,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, sonarUse);
   eereadwrite(readflag, addr, sonarTriggerBelow);
   eereadwrite(readflag, addr, perimeterUse);
+  eereadwrite(readflag, addr, perimeter.timedOutIfBelowSmag);        
   eereadwrite(readflag, addr, perimeterTriggerTimeout);
   eereadwrite(readflag, addr, perimeterTrackRollTime );
   eereadwrite(readflag, addr, perimeterTrackRevTime);
@@ -377,7 +377,7 @@ void Robot::setMotorMowSpeed(int pwm, boolean useAccel){
 void Robot::motorControlImuRoll(){
   imuRollPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
   if (imuRollPID.Ta > 0.5) imuRollPID.Ta = 0; // should only happen for the very first call
-  imuRollPID.x = distancePI(imuYaw, imuRollHeading) / PI * 180.0;            
+  imuRollPID.x = distancePI(imu.ypr.yaw, imuRollHeading) / PI * 180.0;            
   //Console.println(imuRollPID.x);    
   imuRollPID.w = 0;
   imuRollPID.y_min = -motorSpeedMax;
@@ -433,7 +433,7 @@ void Robot::motorControlImuDir(){
   int rightSpeed = motorRightSpeed;
   imuDirPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			              
   if (imuDirPID.Ta > 0.5) imuDirPID.Ta = 0; // should only happen for the very first call
-  imuDirPID.x = distancePI(imuYaw, imuDriveHeading) / PI * 180.0;            
+  imuDirPID.x = distancePI(imu.ypr.yaw, imuDriveHeading) / PI * 180.0;            
   //Console.println(imuDirPID.x);    
   imuDirPID.w = 0;
   imuDirPID.y_min = -motorSpeedMax;
@@ -474,7 +474,7 @@ void Robot::motorControl(){
     int rightSpeed =min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorRightSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
     if (millis() < stateStartTime + 1000) {				
       leftSpeed = rightSpeed = 0; // slow down at state start      
-      if (mowPatternCurr != MOW_LANES) imuDriveHeading = imuYaw; // set drive heading    
+      if (mowPatternCurr != MOW_LANES) imuDriveHeading = imu.ypr.yaw; // set drive heading    
     }
     setMotorSpeed( leftSpeed, rightSpeed, true );    
   }  
@@ -619,9 +619,9 @@ void Robot::printInfo(Stream &s){
       Streamprint(s, "sen %4d %4d %4d ", (int)motorLeftSense, (int)motorRightSense, (int)motorMowSense);
       Streamprint(s, "bum %4d %4d ", bumperLeft, bumperRight);
       Streamprint(s, "son %4d %4d %4d ", sonarDistLeft, sonarDistCenter, sonarDistRight);
-      Streamprint(s, "pit %3d ", (int)(imuPitch/PI*180.0));
-      Streamprint(s, "rol %3d ", (int)(imuRoll/PI*180.0));
-      Streamprint(s, "yaw %3d ", (int)(imuYaw/PI*180.0));  
+      Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));  
+      Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
+      Streamprint(s, "rol %3d ", (int)(imu.ypr.roll/PI*180.0));
       if (perimeterUse) Streamprint(s, "per %3d ", (int)perimeterInside);              
       if (lawnSensorUse) Streamprint(s, "lawn %3d %3d ", (int)lawnSensorFront, (int)lawnSensorBack);
     } else {
@@ -629,9 +629,9 @@ void Robot::printInfo(Stream &s){
       Streamprint(s, "sen %4d %4d %4d ", motorLeftSenseCounter, motorRightSenseCounter, motorMowSenseCounter);
       Streamprint(s, "bum %4d %4d ", bumperLeftCounter, bumperRightCounter);
       Streamprint(s, "son %3d ", sonarDistCounter);
-      Streamprint(s, "pit %3d ", (int)(imuPitch/PI*180.0));
-      Streamprint(s, "rol %3d ", (int)(imuRoll/PI*180.0));
-      Streamprint(s, "yaw %3d ", (int)(imuYaw/PI*180.0));  
+      Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));        
+      Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
+      Streamprint(s, "rol %3d ", (int)(imu.ypr.roll/PI*180.0));
       //Streamprint(s, "per %3d ", perimeterLeft);          
       if (perimeterUse) Streamprint(s, "per %3d ", perimeterCounter);                  
       if (lawnSensorUse) Streamprint(s, "lawn %3d ", lawnSensorCounter);
@@ -1436,8 +1436,8 @@ void Robot::checkSonar(){
 
 // check IMU (tilt)
 void Robot::checkTilt(){
-  int pitchAngle = (imuPitch/PI*180.0);
-  int rollAngle  = (imuRoll/PI*180.0);
+  int pitchAngle = (imu.ypr.pitch/PI*180.0);
+  int rollAngle  = (imu.ypr.roll/PI*180.0);
   if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
       Console.println("Error: IMU tilt");
@@ -1496,8 +1496,8 @@ void Robot::calcOdometry(){
   //if (odometryTheta < -PI) odometryTheta += 2*PI; 
   //  else if (odometryTheta > PI) odometryTheta -= 2*PI;
   if (imuUse){
-    odometryX += avg_cm * sin(imuYaw); 
-    odometryY += avg_cm * cos(imuYaw); 
+    odometryX += avg_cm * sin(imu.ypr.yaw); 
+    odometryY += avg_cm * cos(imu.ypr.yaw); 
   } else {
     odometryX += avg_cm * sin(odometryTheta); 
     odometryY += avg_cm * cos(odometryTheta); 
@@ -1557,7 +1557,7 @@ void Robot::loop()  {
           setNextState(STATE_CHARGE, 0);
         }
       }
-      imuDriveHeading = imuYaw;
+      imuDriveHeading = imu.ypr.yaw;
       break;
     case STATE_REMOTE:
       // remote control mode (RC)
@@ -1605,7 +1605,7 @@ void Robot::loop()  {
       if (lawnSensorUse) checkLawn();
       // making a roll (left/right)            
       if (mowPatternCurr == MOW_LANES){
-        if (abs(distancePI(imuYaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
+        if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
       } else {
         if (millis() >= stateEndTime) {
           setNextState(STATE_FORWARD,0);				          

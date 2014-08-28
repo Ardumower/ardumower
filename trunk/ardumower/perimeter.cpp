@@ -67,6 +67,7 @@ void Perimeter::gensignal(){
                    
 
 Perimeter::Perimeter(){    
+  timedOutIfBelowSmag = 300;
   callCounter = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
@@ -181,7 +182,7 @@ boolean Perimeter::isInside(){
 
 
 boolean Perimeter::signalTimedOut(){
-  if (getSmoothMagnitude() < 300) return true;
+  if (getSmoothMagnitude() < timedOutIfBelowSmag) return true;
   if (millis() - lastInsideTime > 8000) return true;
   return false;
 }

@@ -266,10 +266,7 @@ class Robot
     char imuUse            ;       // use IMU? 
     char imuCorrectDir     ;       // correct direction by compass?
     PID imuDirPID  ;    // direction PID controller
-    PID imuRollPID ;    // roll PID controller    
-    float imuYaw ;    // compass course (radiant)
-    float imuPitch ;  // tilt angle (radiant)
-    float imuRoll ;   // tilt angle (radiant)
+    PID imuRollPID ;    // roll PID controller        
     float imuDriveHeading ;       // drive heading (IMU)
     float imuRollHeading ;      // roll heading  (IMU)
     byte   imuRollDir;

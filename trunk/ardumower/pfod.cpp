@@ -370,6 +370,7 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   sendYesNo(robot->perimeterUse);  
   Bluetooth.println(F("|e02~Value"));
   Bluetooth.print(robot->perimeterMag);  
+  sendSlider("e08", "Timed-out if below smag", robot->perimeter.timedOutIfBelowSmag, "", 1, 2000);  
   sendSlider("e04", "Trigger timeout", robot->perimeterTriggerTimeout, "", 1, 2000);
   sendSlider("e05", F("Track roll time"), robot->perimeterTrackRollTime, "", 1, 8000);       
   sendSlider("e06", F("Track rev time"), robot->perimeterTrackRevTime, "", 1, 8000);         
@@ -383,6 +384,7 @@ void RemoteControl::processPerimeterMenu(String pfodCmd){
     else if (pfodCmd.startsWith("e05")) processSlider(pfodCmd, robot->perimeterTrackRollTime, 1);
     else if (pfodCmd.startsWith("e06")) processSlider(pfodCmd, robot->perimeterTrackRevTime, 1);
     else if (pfodCmd.startsWith("e07")) processPIDSlider(pfodCmd, "e07", robot->perimeterPID, 0.1, 100);    
+    else if (pfodCmd.startsWith("e08")) processSlider(pfodCmd, robot->perimeter.timedOutIfBelowSmag, 1);    
   sendPerimeterMenu(true);
 }
 
@@ -438,13 +440,13 @@ void RemoteControl::sendImuMenu(boolean update){
   Bluetooth.print(F("|g00~Use "));  
   sendYesNo(robot->imuUse);
   Bluetooth.print(F("|g01~Yaw "));
-  Bluetooth.print(robot->imuYaw/PI*180);
+  Bluetooth.print(robot->imu.ypr.yaw/PI*180);
   Bluetooth.print(F(" deg"));  
   Bluetooth.print(F("|g02~Pitch "));
-  Bluetooth.print(robot->imuPitch/PI*180);
+  Bluetooth.print(robot->imu.ypr.pitch/PI*180);
   Bluetooth.print(F(" deg"));  
   Bluetooth.print(F("|g03~Roll "));
-  Bluetooth.print(robot->imuRoll/PI*180);
+  Bluetooth.print(robot->imu.ypr.roll/PI*180);
   Bluetooth.print(F(" deg"));  
   Bluetooth.print(F("|g04~Correct dir "));
   sendYesNo(robot->imuCorrectDir);  
@@ -804,7 +806,7 @@ void RemoteControl::sendManualMenu(boolean update){
 void RemoteControl::sendCompassMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.println(F("{^Compass`1000"));
   Bluetooth.print(F("|cw~West|ce~East|cn~North "));
-  Bluetooth.print(robot->imuYaw/PI*180);
+  Bluetooth.print(robot->imu.ypr.yaw/PI*180);
   Bluetooth.println(F("|cs~South|cm~Mow}"));  
 }
 
@@ -966,11 +968,11 @@ void RemoteControl::run(){
       nextPlotTime = millis() + 200;
       Bluetooth.print((float(millis())/1000.0f));
       Bluetooth.print(",");
-      Bluetooth.print(robot->imuYaw/PI*180);
+      Bluetooth.print(robot->imu.ypr.yaw/PI*180);
       Bluetooth.print(",");
-      Bluetooth.print(robot->imuPitch/PI*180);
+      Bluetooth.print(robot->imu.ypr.pitch/PI*180);
       Bluetooth.print(",");
-      Bluetooth.print(robot->imuRoll/PI*180);
+      Bluetooth.print(robot->imu.ypr.roll/PI*180);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.gyro.x/PI*180);
       Bluetooth.print(",");
@@ -978,23 +980,11 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.gyro.z/PI*180);
       Bluetooth.print(",");
-      Bluetooth.print(robot->imu.gyroYpr.yaw/PI*180);
-      Bluetooth.print(",");
-      Bluetooth.print(robot->imu.gyroYpr.pitch/PI*180);
-      Bluetooth.print(",");
-      Bluetooth.print(robot->imu.gyroYpr.roll/PI*180);
-      Bluetooth.print(",");            
       Bluetooth.print(robot->imu.acc.x);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.acc.y);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.acc.z);
-      Bluetooth.print(",");
-      Bluetooth.print(robot->imu.accGrav.x);
-      Bluetooth.print(",");
-      Bluetooth.print(robot->imu.accGrav.y);
-      Bluetooth.print(",");
-      Bluetooth.print(robot->imu.accGrav.z);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.com.x);
       Bluetooth.print(",");
@@ -1169,8 +1159,8 @@ void RemoteControl::readSerial(){
         }
         else if (pfodCmd == "y3") {        
           // plot IMU
-          Bluetooth.print(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~90~-90|gyroY`2|gyroZ`2|gyroY`3~180~-180|gyroP`3|gyroR`3|accX`4~2~-2|accY`4|accZ`4"));
-          Bluetooth.println(F("|acgX`5~2~-2|acgY`5|acgZ`5|comX`6~600~-600|comY`6|comZ`6}"));         
+          Bluetooth.print(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~90~-90|gyroY`2|gyroZ`2|accX`4~2~-2|accY`4|accZ`4"));
+          Bluetooth.println(F("|comX`6~600~-600|comY`6|comZ`6}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_IMU;
         }
