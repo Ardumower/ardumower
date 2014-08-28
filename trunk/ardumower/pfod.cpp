@@ -1159,8 +1159,8 @@ void RemoteControl::readSerial(){
         }
         else if (pfodCmd == "y3") {        
           // plot IMU
-          Bluetooth.print(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~90~-90|gyroY`2|gyroZ`2|accX`4~2~-2|accY`4|accZ`4"));
-          Bluetooth.println(F("|comX`6~600~-600|comY`6|comZ`6}"));         
+          Bluetooth.print(F("{=IMU`60|time s`0|yaw`1~180~-180|pitch`1|roll`1|gyroX`2~90~-90|gyroY`2|gyroZ`2|accX`3~2~-2|accY`3|accZ`3"));
+          Bluetooth.println(F("|comX`4~2~-2|comY`4|comZ`4}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_IMU;
         }
