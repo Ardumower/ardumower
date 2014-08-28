@@ -35,10 +35,14 @@ changes
 #define pinFeedback A0  // M1_FB
 #define pinEnable    3  // EN
 
+#define pinPot      A1  // 100k potentiometer (current control)   
+#define USE_POT      1  // use potentiometer for current control?
+
 #define  pinLED 13
 
+float IMAX = 1.5;
 //#define IMAX 0.14
-#define IMAX 1.5
+//#define IMAX 1.5
 
 volatile int step = 0;
 volatile byte state = 0;
@@ -93,6 +97,7 @@ void setup() {
   pinMode(pinPWM, OUTPUT);  
   pinMode(pinFeedback, INPUT);    
   pinMode(pinFault, INPUT);      
+  pinMode(pinPot, INPUT);      
   
   digitalWrite(pinEnable, HIGH);
     
@@ -138,6 +143,7 @@ unsigned long nextTimeInfo = 0;
   //if (digitalRead(pinPWM) == HIGH) fault = true; 
   //fault = true;
 
+
 void fault(){
   Serial.println("MC_FAULT");
   for (int i=0; i < 10; i++){
@@ -173,6 +179,8 @@ void loop(){
     nextTimeInfo = millis() + 500;    
     Serial.print("time=");
     Serial.print(millis()/1000);    
+    Serial.print("\tIMAX=");    
+    Serial.print(IMAX);    
     Serial.print("\tIpeak=");    
     Serial.print(Ipeak);
     Serial.print("\tI=");
@@ -195,7 +203,10 @@ void loop(){
   //   currPeak = max(0, currPeak - 0.001);
   Ipeak = max(Ipeak, I);  
   I = 0.9 * I + 0.1 * curr;
-  
+
+  if (USE_POT){
+    IMAX = ((float)map(analogRead(pinPot),  0,1023,   0,2000))  /1000.0;
+  }  
 }
 
 
