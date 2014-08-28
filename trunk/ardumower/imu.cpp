@@ -608,7 +608,7 @@ void IMU::update(){
   if (state == IMU_RUN){
     // ------ roll, pitch --------------  
     float forceMagnitudeApprox = abs(acc.x) + abs(acc.y) + abs(acc.z);
-    if (forceMagnitudeApprox < 2){
+    if (forceMagnitudeApprox < 1.5){
       accPitch = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));
       accRoll =  atan2(acc.y , acc.z);    
       // complementary filter
