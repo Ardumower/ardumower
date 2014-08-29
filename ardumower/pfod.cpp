@@ -896,51 +896,9 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
       else sendSettingsMenu(true);  
 }      
 
-void RemoteControl::processArduMagResult(String pfodCmd){  
-  // format:  ardumagMij|float
-  // examples: 
-  //   ardumagB00|987.4565  
-  //   ardumagA22|-34.998
-  if (pfodCmd.startsWith("ardumag")) {
-    int type;
-    if (pfodCmd[7] == 'B') type = 0;
-      else type = 1;
-    int i = pfodCmd[8]-'0';
-    int j = pfodCmd[9]-'0';
-    String s = pfodCmd.substring(11);        
-    //Console.println(tmp);
-    float value = stringToFloat(s);    
-    /*Console.print("type=");
-    Console.print(type);
-    Console.print(", i=");
-    Console.print(i);
-    Console.print(", j=");
-    Console.print(j);
-    Console.print(", value=");
-    Console.println(value);*/
-    robot->imuSetComCalParam(type, i, j, value);
-    if ((type == 1) && (i==2) && (j==2)) {
-      robot->imuSaveCalib();
-      robot->beep(2, false);      
-    }
-  }    
-}
-
 // process pfodState
 void RemoteControl::run(){  
-  if (pfodState == PFOD_ARDU_MAG){
-    if (millis() >= nextPlotTime){
-      nextPlotTime = millis() + 200;      
-      // output raw compass values (ArduMag state)
-      point_float_t v;
-      robot->imuGetComRaw(v);
-      Bluetooth.print(v.x);
-      Bluetooth.print("\t");
-      Bluetooth.print(v.y);
-      Bluetooth.print("\t");
-      Bluetooth.println(v.z);    
-    }
-  } else if (pfodState == PFOD_MONITOR){
+  if (pfodState == PFOD_MONITOR){
     robot->printInfo(Bluetooth);
     //Bluetooth.println("test");
   } else if (pfodState == PFOD_PLOT_BAT){
@@ -1127,12 +1085,6 @@ void RemoteControl::readSerial(){
       Console.println(pfodCmd);
       pfodState = PFOD_MENU;    
       if (pfodCmd == ".") sendMainMenu(false);      
-        else if (pfodCmd == "ardumag") {
-          // set compass calibration state (ArduMag)
-          robot->beep(1, false);
-          Bluetooth.println(F("{=monitor compass}")); 
-          pfodState = PFOD_ARDU_MAG;
-        }      
         else if (pfodCmd == "m1") {
           // set monitor counter state
           Bluetooth.println(F("{=monitor counters}")); 
@@ -1212,7 +1164,6 @@ void RemoteControl::readSerial(){
         else if (pfodCmd == "t") sendDateTimeMenu(false);
         else if (pfodCmd == "i") sendTimerMenu(false);   
         else if (pfodCmd == "in") sendInfoMenu(false);        
-        else if (pfodCmd.startsWith("ardumag")) processArduMagResult(pfodCmd);
         else if (pfodCmd.startsWith("s")) processSettingsMenu(pfodCmd);
         else if (pfodCmd.startsWith("r")) processCommandMenu(pfodCmd);
         else if (pfodCmd.startsWith("c")) processCompassMenu(pfodCmd);

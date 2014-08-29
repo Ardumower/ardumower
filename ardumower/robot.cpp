@@ -250,17 +250,6 @@ void Robot::checkErrorCounter(){
 }
 
 
-
-void Robot::imuSetComCalParam(int type, int i, int j, float value){
-}
-
-void Robot::imuSaveCalib(){
-}
-
-void Robot::imuGetComRaw(point_float_t &v){
-}
-
-
 // ---- motor RPM (interrupt) --------------------------------------------------------------
 // mower motor RPM driver
 void Robot::setMotorMowRPMState(boolean motorMowRpmState){
@@ -337,10 +326,6 @@ void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState
     if (remoteSwitchState) remoteSwitchLastTime = timeMicros; else remoteSwitch = rcValue(timeMicros - remoteSwitchLastTime);
   }  
 }
-
-void Robot::imuCalibComDeviation(){
-}
-
 
 // sets wheel motor actuators
 // - ensures that the motors (and gears) are not switched to 0% (or 100%) too fast (motorAccel)

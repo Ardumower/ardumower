@@ -381,12 +381,6 @@ class Robot
     // GPS
     virtual void processGPSData();
     
-    // IMU
-    virtual void imuCalibComDeviation();
-    virtual void imuSetComCalParam(int type, int i, int j, float value);    
-    virtual void imuSaveCalib();
-    virtual void imuGetComRaw(point_float_t &v);
-    
     // read hardware sensor (HAL)
     virtual int readSensor(char type){}    
     
