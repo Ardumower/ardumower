@@ -133,7 +133,7 @@ Robot::Robot(){
   nextTimeButton = 0;
   nextTimeErrorCounterReset = 0;    
   nextTimeErrorBeep = 0;
-  
+  nextTimeMotorControl = 0;  
 }
 
   
@@ -1700,19 +1700,24 @@ void Robot::loop()  {
     nextTimeButtonCheck = millis() + 50;      
     if (buttonUse) checkButton();  
   }
-    
-  // decide which motor control to use
-  if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) ) motorControlImuRoll();
-    else if (stateCurr == STATE_PERI_TRACK) motorControlPerimeter();
-    else if (  (stateCurr == STATE_FORWARD)
-     &&  (mowPatternCurr == MOW_RANDOM)
-     && (imuUse) 
-     && (imuCorrectDir || (mowPatternCurr == MOW_LANES))        
-     && (millis() > stateStartTime + 3000) ) motorControlImuDir();
-    else motorControl();  
 
-  if (stateCurr != STATE_REMOTE) motorMowSpeed = motorMowSpeedMax;
-  motorMowControl();  
+  if (millis() >= nextTimeMotorControl) {            
+    nextTimeMotorControl = millis() + 50;
+    // decide which motor control to use
+    if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) ) motorControlImuRoll();
+      else if (stateCurr == STATE_PERI_TRACK) motorControlPerimeter();
+      else if (  (stateCurr == STATE_FORWARD)
+       &&  (mowPatternCurr == MOW_RANDOM)
+       && (imuUse) 
+       && (imuCorrectDir || (mowPatternCurr == MOW_LANES))        
+       && (millis() > stateStartTime + 3000) ) motorControlImuDir();
+      else motorControl();  
+
+    if (stateCurr != STATE_REMOTE) motorMowSpeed = motorMowSpeedMax;
+   
+    motorMowControl();  
+  }
+  
   ADCMan.run();
   if (imuUse) imu.update();
   if (gpsUse) { 

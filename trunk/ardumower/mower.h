@@ -38,7 +38,6 @@ class Mower : public Robot
     virtual void setup(void);
     virtual int readSensor(char type);
     virtual void setActuator(char type, int value);
-    virtual void initBehaviors(void);
     virtual void configureBluetooth(boolean quick);
 };
 

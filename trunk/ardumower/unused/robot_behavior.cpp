@@ -51,3 +51,32 @@ void Robot::performBehavior(void) {
 }
 
 
+
+
+void Mower::initBehaviors(void){
+   
+  /*memset(behaviors, 0, sizeof behaviors);
+  behaviors[0] = new ManualBehavior(this);
+  behaviors[1] = new ObstacleBehavior(this);
+  behaviors[2] = new MowBehavior(this);
+  behaviors[3] = new TrackBehavior(this);
+  
+  // manual behavior 
+  // false, ...           not suppressed by manual behavior
+  // false, ...           not suppressed by obstacle behavior
+  // false, ...           not suppressed by mow behavior 
+  // false, ...           not suppressed by track behavior
+  
+  boolean suppresses[BEHAVIOR_COUNT][BEHAVIOR_COUNT] = {
+    { false, true,  true,  true  }, 
+    { false, false, true,  true  }, 
+    { false, false, false, true  }, 
+    { false, false, false, false }  
+  };
+  
+  initSuppresses(suppresses);    */
+}
+
+
+
+

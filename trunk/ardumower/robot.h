@@ -34,7 +34,6 @@
 //#include <Servo.h>  // for RC brushless contoller
 #include "drivers.h"
 #include "pid.h"
-//#include "behavior.h"
 #include "imu.h"
 #include "adcman.h"
 #include "perimeter.h"
@@ -253,6 +252,7 @@ class Robot
     int motorMowRpm ;            // motor rpm (range 0..MOW_RPM)
     unsigned long lastMotorMowControlTime;
     unsigned long lastMotorMowRpmTime;    
+    unsigned long nextTimeMotorControl;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     
