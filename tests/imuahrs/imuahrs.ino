@@ -62,6 +62,8 @@ void loop()  {
       Console.print(imu.scalePI(imu.comYaw+PI)/PI*180.0);            
       Console.print("\tgyroZ=");          
       Console.print(imu.gyro.z);                
+      Console.print("\taccZ=");          
+      Console.print(imu.acc.z);                      
       /*Console.print(imu.com.x);        
       Console.print(",");          
       Console.print(imu.com.y);        
