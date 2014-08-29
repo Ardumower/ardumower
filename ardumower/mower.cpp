@@ -351,19 +351,10 @@ void Mower::setup(){
   ADCMan.setCapture(pinBatteryVoltage, 1, false);
   ADCMan.setCapture(pinChargeVoltage, 1, false);  
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
-  
-  /*while (true){
-    int v = ADCMan.read(pinChargeVoltage);
-    //int v = analogRead(pinChargeVoltage);
-    Console.println(v);
-    ADCMan.run();
-    delay(500);
-  }*/
-  
+    
   imu.init(pinBuzzer);
   gps.init();
 
-  initBehaviors();  
   Robot::setup();  
 }
 
@@ -441,32 +432,9 @@ void Mower::setActuator(char type, int value){
   }
 }
 
-void Mower::initBehaviors(void){
-   
-  /*memset(behaviors, 0, sizeof behaviors);
-  behaviors[0] = new ManualBehavior(this);
-  behaviors[1] = new ObstacleBehavior(this);
-  behaviors[2] = new MowBehavior(this);
-  behaviors[3] = new TrackBehavior(this);
-  
-  // manual behavior 
-  // false, ...           not suppressed by manual behavior
-  // false, ...           not suppressed by obstacle behavior
-  // false, ...           not suppressed by mow behavior 
-  // false, ...           not suppressed by track behavior
-  
-  boolean suppresses[BEHAVIOR_COUNT][BEHAVIOR_COUNT] = {
-    { false, true,  true,  true  }, 
-    { false, false, true,  true  }, 
-    { false, false, false, true  }, 
-    { false, false, false, false }  
-  };
-  
-  initSuppresses(suppresses);    */
-}
-
 void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
   bt.setParams("Ardumower", 1234, PFOD_BAUDRATE, quick);  
 }
+
 
