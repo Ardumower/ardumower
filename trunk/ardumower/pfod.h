@@ -37,7 +37,7 @@
 #include "pid.h"
 
 // pfodApp state
-enum { PFOD_OFF, PFOD_MENU, PFOD_MONITOR, PFOD_ARDU_MAG,
+enum { PFOD_OFF, PFOD_MENU, PFOD_MONITOR, 
        PFOD_PLOT_BAT, PFOD_PLOT_ODO2D, PFOD_PLOT_IMU, PFOD_PLOT_SENSOR_COUNTERS, 
        PFOD_PLOT_SENSORS, PFOD_PLOT_PERIMETER, PFOD_PLOT_GPS, PFOD_PLOT_GPS2D };
 
@@ -61,7 +61,6 @@ class RemoteControl
     int8_t perimeterCapture[32]; 
     int perimeterCaptureIdx;        
     float stringToFloat(String &s);
-    void processArduMagResult(String pfodCmd);
 
     // generic
     void sendYesNo(int value);
