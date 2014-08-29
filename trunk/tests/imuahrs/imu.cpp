@@ -599,6 +599,14 @@ float Complementary(float newAngle, float newRate,int looptime, float angle) {
   return angle;
 }
 
+float scaleAngle(float newAngle, float angle){
+  if ((newAngle < 0) && (angle > 0))
+    return (newAngle+2*PI);
+  else if ((newAngle > 0) && (angle < 0))  
+    return (newAngle-2*PI);
+  else return newAngle;
+}
+
 void IMU::update(){
   read();  
   now = millis();
@@ -607,12 +615,22 @@ void IMU::update(){
   
   if (state == IMU_RUN){
     // ------ roll, pitch --------------  
-    accPitch = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));
-    accRoll =  atan2(acc.y , acc.z);    
-    // complementary filter
-    ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
-    ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);  
-
+    float forceMagnitudeApprox = abs(acc.x) + abs(acc.y) + abs(acc.z);    
+    if (forceMagnitudeApprox < 1.2) {
+      //Console.println(forceMagnitudeApprox);      
+      accPitch   = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));         
+      accRoll    = atan2(acc.y , acc.z);       
+      //accPitch = scaleAngle(accPitch, ypr.pitch);
+      //accRoll  = scaleAngle(accRoll, ypr.roll);
+      // complementary filter            
+      ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
+      ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);            
+    } else {
+      ypr.pitch = ypr.pitch + gyro.y * ((float)(looptime))/1000.0;
+      ypr.roll  = ypr.roll  + gyro.x * ((float)(looptime))/1000.0;
+    }
+    ypr.pitch=scalePI(ypr.pitch);
+    ypr.roll=scalePI(ypr.roll);
     // ------ yaw --------------
     // tilt-compensated yaw
     comTilt.x =  com.x  * cos(ypr.pitch) + com.z * sin(ypr.pitch);
