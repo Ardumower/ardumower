@@ -232,7 +232,6 @@ class Robot
     int motorLeftSenseCounter ;  // motor current counter
     int motorRightSenseCounter ;
     unsigned long nextTimeMotorSense ;
-    unsigned long lastMotorControlTime ;
     // -------- mower motor state -----------------------
     // mower motor sppeed; range 0..motorMowSpeedMax
     float motorMowAccel       ;  // motor mower acceleration (warning: do not set too high)
@@ -250,9 +249,9 @@ class Robot
     int motorMowSenseCounter ;
     int motorMowSenseErrorCounter ;
     int motorMowRpm ;            // motor rpm (range 0..MOW_RPM)
-    unsigned long lastMotorMowControlTime;
     unsigned long lastMotorMowRpmTime;    
     unsigned long nextTimeMotorControl;
+    unsigned long nextTimeMotorMowControl;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     

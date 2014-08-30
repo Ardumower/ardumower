@@ -127,13 +127,12 @@ Robot::Robot(){
   nextTimeGPS = 0;
   nextTimePfodLoop = 0;
   nextTimeRain = 0;
-  lastMotorControlTime = millis();
-  lastMotorMowControlTime = millis();
   lastMotorMowRpmTime = millis();
   nextTimeButton = 0;
   nextTimeErrorCounterReset = 0;    
   nextTimeErrorBeep = 0;
   nextTimeMotorControl = 0;  
+  nextTimeMotorMowControl = 0;
 }
 
   
@@ -360,8 +359,6 @@ void Robot::setMotorMowSpeed(int pwm, boolean useAccel){
 
 // PID controller: roll robot to heading (requires IMU)
 void Robot::motorControlImuRoll(){
-  imuRollPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
-  if (imuRollPID.Ta > 0.5) imuRollPID.Ta = 0; // should only happen for the very first call
   imuRollPID.x = distancePI(imu.ypr.yaw, imuRollHeading) / PI * 180.0;            
   //Console.println(imuRollPID.x);    
   imuRollPID.w = 0;
@@ -369,7 +366,6 @@ void Robot::motorControlImuRoll(){
   imuRollPID.y_max = motorSpeedMax;		
   imuRollPID.max_output = motorSpeedMax;
   imuRollPID.compute();						      
-  lastMotorControlTime = millis();
   setMotorSpeed( -imuRollPID.y, 
                 +imuRollPID.y,  false);    
 }
@@ -388,9 +384,6 @@ void Robot::motorControlPerimeter(){
     }
     return;
   }   
-  double Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			  
-  if (Ta > 0.05) Ta = 0.05; // should only happen for the very first call
-  lastMotorControlTime = millis();  
   if (perimeterMag < 0) perimeterPID.x = -1;
     else if (perimeterMag > 0) perimeterPID.x = 1; 
     else perimeterPID.x = 0;
@@ -402,7 +395,6 @@ void Robot::motorControlPerimeter(){
   perimeterPID.y_max = motorSpeedMaxPwm;		
   perimeterPID.max_output = motorSpeedMaxPwm;
   perimeterPID.compute();
-  lastMotorControlTime = millis();
   //setMotorSpeed( motorLeftPWM  +perimeterPID.y, 
   //               motorRightPWM -perimeterPID.y, false);      
   setMotorSpeed( max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/2 - perimeterPID.y)), 
@@ -416,8 +408,6 @@ void Robot::motorControlPerimeter(){
 void Robot::motorControlImuDir(){
   int leftSpeed = motorLeftSpeed;    
   int rightSpeed = motorRightSpeed;
-  imuDirPID.Ta = ((double)(millis() - lastMotorControlTime)) / 1000.0; 			              
-  if (imuDirPID.Ta > 0.5) imuDirPID.Ta = 0; // should only happen for the very first call
   imuDirPID.x = distancePI(imu.ypr.yaw, imuDriveHeading) / PI * 180.0;            
   //Console.println(imuDirPID.x);    
   imuDirPID.w = 0;
@@ -425,7 +415,6 @@ void Robot::motorControlImuDir(){
   imuDirPID.y_max = motorSpeedMax;		
   imuDirPID.max_output = motorSpeedMax;
   imuDirPID.compute();	  					      
-  lastMotorControlTime = millis();  
   setMotorSpeed( leftSpeed -imuDirPID.y, 
                  rightSpeed +imuDirPID.y, false );
 }
@@ -435,7 +424,6 @@ void Robot::motorControl(){
   //double TA = ((double)(millis() - lastMotorControlTime)) / 1000.0;  
   // normal drive
   if (odometryUse){
-    if ((millis() - lastMotorControlTime) < 100) return;
     int motorLeftSetpoint = motorLeftSpeed;
     int motorRightSetpoint = motorRightSpeed;
     double P = 1.0;
@@ -452,7 +440,6 @@ void Robot::motorControl(){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
     }
     setMotorSpeed( leftSpeed, rightSpeed, false );  
-    lastMotorControlTime = millis();
   }
   else{
     int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
@@ -478,9 +465,6 @@ void Robot::motorMowControl(){
   else {
     if ((motorMowModulate) && (motorMowRpm != 0)){
       // speed sensor available
-      if ((millis() - lastMotorMowControlTime) < 500) return;
-      motorMowPID.Ta = ((double)(millis() - lastMotorMowControlTime)) / 1000.0; 			      
-      if (motorMowPID.Ta > 0.5) motorMowPID.Ta = 0; // should only happen for the very first call
       motorMowPID.x = motorMowRpm;      
       motorMowPID.w = motorMowRPM; // 3300 => 2300
       motorMowPID.y_min = -motorMowSpeedMax;
@@ -495,7 +479,6 @@ void Robot::motorMowControl(){
       setMotorMowSpeed(mowSpeed, true);
     }
   }  
-  lastMotorMowControlTime = millis();        
 }
 
 void Robot::beep(int numberOfBeeps, boolean shortbeep = false){
@@ -1687,7 +1670,7 @@ void Robot::loop()  {
   }
 
   if (millis() >= nextTimeMotorControl) {            
-    nextTimeMotorControl = millis() + 50;
+    nextTimeMotorControl = millis() + 100;
     // decide which motor control to use
     if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) ) motorControlImuRoll();
       else if (stateCurr == STATE_PERI_TRACK) motorControlPerimeter();
@@ -1697,12 +1680,14 @@ void Robot::loop()  {
        && (imuCorrectDir || (mowPatternCurr == MOW_LANES))        
        && (millis() > stateStartTime + 3000) ) motorControlImuDir();
       else motorControl();  
-
-    if (stateCurr != STATE_REMOTE) motorMowSpeed = motorMowSpeedMax;
-   
-    motorMowControl();  
   }
   
+  if (stateCurr != STATE_REMOTE) motorMowSpeed = motorMowSpeedMax;
+  if (millis() >= nextTimeMotorMowControl){
+    nextTimeMotorMowControl = millis() + 500;
+    motorMowControl();  
+  }
+    
   ADCMan.run();
   if (imuUse) imu.update();
   if (gpsUse) { 
