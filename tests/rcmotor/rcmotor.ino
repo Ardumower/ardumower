@@ -6,21 +6,21 @@
 
 #include <Arduino.h>
 
-// model R/C 
-#define pinRemoteSpeed 10          // remote control speed
+// model R/C  (ppm signal)
+#define pinRemoteSpeed 10          // remote control speed 
 #define pinRemoteSteer 11          // remote control steering 
 #define pinRemoteMow   12          // remote control mower motor
 
-// wheel motors
+// wheel motors (PWM, Dir)
 #define pinMotorLeftPWM 5          // M1_IN1 left motor PWM pin
 #define pinMotorLeftDir 31         // M1_IN2 left motor Dir pin
 #define pinMotorRightPWM  3        // M2_IN1 right motor PWM pin
 #define pinMotorRightDir 33        // M2_IN2 right motor Dir pin
 
-// mower motor
+// mower motor (PWM)
 #define pinMotorMowPWM 2           // M1_IN1 mower motor PWM pin
 
-// lawn sensor
+// lawn sensor (digital)
 #define CHANNELS 6                 // number sensor channels
 int pinLawn[CHANNELS] = {A8,A9,A10,A11,A12,A13};     // lawn sensor pins
                                                              
