@@ -38,9 +38,9 @@ float PID::compute()
   lastControlTime = now;
   if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
 
-  // Regelabweichung ermitteln
+  // compute error
   int16_t e = (w - x);	
-  // fuer Integral aufsummieren
+  // integrate error
   esum += e;
   // anti wind-up	
   if (esum < -max_output)  esum = -max_output;
@@ -49,7 +49,7 @@ float PID::compute()
       + Ki * Ta * esum
       + Kd/Ta * (e - eold);
   eold = e;			
-  // auf Wertebereich fuer Stellgroesse begrenzen	
+  // restrict output to min/max	
   if (y > y_max) y = y_max;
   if (y < y_min) y = y_min;	
   
