@@ -18,7 +18,7 @@
 
 */
 
-//  GPS neo6m
+//  GPS neo6m  (NMEA-0183 protocol)
 
 
 #ifndef GPS_H
