@@ -599,12 +599,12 @@ float Complementary(float newAngle, float newRate,int looptime, float angle) {
   return angle;
 }
 
-float scaleAngle(float newAngle, float angle){
-  if ((newAngle < 0) && (angle > 0))
-    return (newAngle+2*PI);
-  else if ((newAngle > 0) && (angle < 0))  
-    return (newAngle-2*PI);
-  else return newAngle;
+
+// scale setangle, so that both PI angles have the same sign    
+float scalePIangles(float setAngle, float currAngle){
+  if ((setAngle >= PI/2) && (currAngle <= -PI/2)) return (setAngle-2*PI);
+    else if ((setAngle <= -PI/2) && (currAngle >= PI/2)) return (setAngle+2*PI);
+    else return setAngle;
 }
 
 void IMU::update(){
@@ -620,8 +620,8 @@ void IMU::update(){
       //Console.println(forceMagnitudeApprox);      
       accPitch   = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));         
       accRoll    = atan2(acc.y , acc.z);       
-      //accPitch = scaleAngle(accPitch, ypr.pitch);
-      //accRoll  = scaleAngle(accRoll, ypr.roll);
+      accPitch = scalePIangles(accPitch, ypr.pitch);
+      accRoll  = scalePIangles(accRoll, ypr.roll);
       // complementary filter            
       ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
       ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);            
@@ -637,9 +637,11 @@ void IMU::update(){
     comTilt.y =  com.x  * sin(ypr.roll)         * sin(ypr.pitch) + com.y * cos(ypr.roll) - com.z * sin(ypr.roll) * cos(ypr.pitch);
     comTilt.z = -com.x  * cos(ypr.roll)         * sin(ypr.pitch) + com.y * sin(ypr.roll) + com.z * cos(ypr.roll) * cos(ypr.pitch);     
     comYaw = scalePI( atan2(comTilt.y, comTilt.x)  );  
+    comYaw = scalePIangles(comYaw, ypr.yaw);
     //comYaw = atan2(com.y, com.x);  // assume pitch, roll are 0
     // complementary filter
     ypr.yaw = Complementary2(comYaw, -gyro.z, looptime, ypr.yaw);
+    ypr.yaw = scalePI(ypr.yaw);
   } 
   else if (state == IMU_CAL_COM) {
     calibComUpdate();
