@@ -1230,7 +1230,8 @@ void Robot::checkCurrent(){
     // mower motor overpowered    
     setActuator(ACT_MOTOR_MOW, 0);
     motorMowSenseCounter++;
-    if (millis() > stateStartTime + 3000){
+    // FIXME: doesn't work well with high gras :-/
+    /*if (millis() > stateStartTime + 3000){
       motorMowSenseErrorCounter++;
       if (motorMowSenseErrorCounter > 15){
         Console.println("Error: Motor mow current");
@@ -1238,7 +1239,7 @@ void Robot::checkCurrent(){
         setNextState(STATE_ERROR, 0);
         return;
       }
-    }
+    }*/
     if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
       else reverseOrBidir(RIGHT);        
   }  
