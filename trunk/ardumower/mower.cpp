@@ -115,7 +115,7 @@ Mower::Mower(){
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
   // ------ mower motor -------------------------------
-  motorMowAccel       = 0.001;  // motor mower acceleration (warning: do not set too high)
+  motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
   motorMowPowerMax = 50.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
