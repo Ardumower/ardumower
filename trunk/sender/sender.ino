@@ -38,8 +38,12 @@ changes
 #define pinPot      A1  // 100k potentiometer (current control)   
 #define USE_POT      1  // use potentiometer for current control?
 
+#define pinChargeCurrent A2  // ACS712-05 current sensor OUT
+#define USE_CHG_CURRENT   1      // use charging current sensor?
+
 #define  pinLED 13
 
+// --------------------------------------
 float IMAX = 1.5;
 //#define IMAX 0.14
 //#define IMAX 1.5
@@ -47,6 +51,20 @@ float IMAX = 1.5;
 volatile int step = 0;
 volatile byte state = 0;
 volatile byte wait = 1;
+
+
+double minduty = 0.05; // 5%
+double maxduty = 1.0; // 100%
+double duty = 0.1;    // 10%
+int dutyPWM = 0;
+double chargeCurrent = 0;
+double I = 0; // ampere
+double Ipeak = 0; // ampere
+int faults = 0;
+boolean perimeterSwitchON = true;
+
+unsigned long nextTimeControl = 0;
+unsigned long nextTimeInfo = 0;
 
 
 // must be multiple of 2 !
@@ -98,6 +116,7 @@ void setup() {
   pinMode(pinFeedback, INPUT);    
   pinMode(pinFault, INPUT);      
   pinMode(pinPot, INPUT);      
+  pinMode(pinChargeCurrent, INPUT);
   
   digitalWrite(pinEnable, HIGH);
     
@@ -126,16 +145,6 @@ void setup() {
   //sei();
 }
 
-double minduty = 0.05; // 5%
-double maxduty = 1.0; // 100%
-double duty = 0.1;    // 10%
-int dutyPWM = 0;
-double I = 0; // ampere
-double Ipeak = 0; // ampere
-int faults = 0;
-
-unsigned long nextTimeControl = 0;
-unsigned long nextTimeInfo = 0;
 
 // Interrupt service run when Timer/Counter2 reaches OCR2A
 //ISR(TIMER2_COMPA_vect) {
@@ -156,29 +165,39 @@ void fault(){
 }
 
 void loop(){    
-  if (millis() >= nextTimeControl){                
+  if (millis() >= nextTimeControl){                    
     nextTimeControl = millis() + 100;
-    // far away: fast control
-    if (I > IMAX * 2) duty = max(minduty, duty - 0.1);  
-    if (I > IMAX * 1.5) duty = max(minduty, duty - 0.01);  
-      else if (I < IMAX * 0.5) duty = min(maxduty, duty + 0.01);
-      // nearby: slow control
-      else if (I < IMAX * 0.9) duty = min(maxduty, duty + 0.001);
-      else if (I > IMAX * 1.1) duty = max(minduty, duty - 0.001);          
-    dutyPWM = (int) (duty / 1.0 * 255.0);
-    //analogWrite(pinPWM, 255);
-    analogWrite(pinPWM, dutyPWM);
-    if ( (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
-      duty = 0;
-      analogWrite(pinPWM, duty);
-      fault();    
-    }    
+    if (perimeterSwitchON){
+      digitalWrite(pinEnable, HIGH);
+      // far away: fast control
+      if (I > IMAX * 2) duty = max(minduty, duty - 0.1);  
+      if (I > IMAX * 1.5) duty = max(minduty, duty - 0.01);  
+        else if (I < IMAX * 0.5) duty = min(maxduty, duty + 0.01);
+        // nearby: slow control
+        else if (I < IMAX * 0.9) duty = min(maxduty, duty + 0.001);
+        else if (I > IMAX * 1.1) duty = max(minduty, duty - 0.001);          
+      dutyPWM = (int) (duty / 1.0 * 255.0);
+      //analogWrite(pinPWM, 255);
+      analogWrite(pinPWM, dutyPWM);
+      if ( (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
+        duty = 0;
+        analogWrite(pinPWM, duty);
+        fault();    
+      }    
+    } else {
+      // perimeter is off
+      digitalWrite(pinEnable, LOW);      
+    }
   }
 
   if (millis() >= nextTimeInfo){                
     nextTimeInfo = millis() + 500;    
     Serial.print("time=");
     Serial.print(millis()/1000);    
+    Serial.print("\tchgCurrent=");
+    Serial.print(chargeCurrent);
+    Serial.print("\tswitchON=");
+    Serial.print(perimeterSwitchON);    
     Serial.print("\tIMAX=");    
     Serial.print(IMAX);    
     Serial.print("\tIpeak=");    
@@ -194,6 +213,10 @@ void loop(){
     Serial.print(dutyI);    
     Serial.print("\tfaults=");
     Serial.println(faults);        
+    
+    if (USE_POT){
+      IMAX = ((float)map(analogRead(pinPot),  0,1023,   0,2000))  /1000.0;
+    }              
   }
   
   delay(10);
@@ -204,9 +227,12 @@ void loop(){
   Ipeak = max(Ipeak, I);  
   I = 0.9 * I + 0.1 * curr;
 
-  if (USE_POT){
-    IMAX = ((float)map(analogRead(pinPot),  0,1023,   0,2000))  /1000.0;
-  }  
+
+  if (USE_CHG_CURRENT){
+    chargeCurrent = 0.9 * chargeCurrent + 0.1 * ((double)map(analogRead(pinChargeCurrent),  0,1023,   -54,54))  /54.0;    
+    perimeterSwitchON = (abs(chargeCurrent) < 0.1);
+  }
+  
 }
 
 
