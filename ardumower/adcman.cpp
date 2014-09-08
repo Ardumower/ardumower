@@ -2,6 +2,7 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,8 +29,12 @@
 #define ADDR 224
 #define MAGIC 1
 
+#ifdef __AVR__
+  #define CHANNELS 16
+#else
+  #define CHANNELS 12
+#endif 
 
-#define CHANNELS 16
 #define NO_CHANNEL 255
 
 volatile uint8_t calibrateChannel = NO_CHANNEL;

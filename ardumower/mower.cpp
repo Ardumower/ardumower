@@ -2,6 +2,7 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -218,7 +219,7 @@ void rpm_interrupt(){
 void Mower::setup(){
   Wire.begin();            
   Console.begin(BAUDRATE);   
-  while (!Console) ; // required if using Due native port
+  //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
   rc.initSerial(PFOD_BAUDRATE);   
     
@@ -235,6 +236,7 @@ void Mower::setup(){
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    
   pinMode(pinBuzzer, OUTPUT);    
+  digitalWrite(pinBuzzer,0);    
   pinMode(pinBatteryVoltage, INPUT);        
   pinMode(pinChargeCurrent, INPUT);          
   pinMode(pinChargeVoltage, INPUT);            

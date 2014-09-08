@@ -2,6 +2,7 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,7 +37,7 @@ float PID::compute()
   unsigned long now = micros();
   Ta = ((now - lastControlTime) / 1000000.0);
   lastControlTime = now;
-  if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
+  if (Ta > 1.0) Ta = 1.0;   // should only happen for the very first call
 
   // compute error
   int16_t e = (w - x);	
