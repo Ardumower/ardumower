@@ -2,6 +2,7 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -123,9 +124,18 @@ void RemoteControl::processPIDSlider(String result, String cmd, PID &pid, double
   String s = result.substring(idx + 1);      
   //Console.println(tmp);
   float v = stringToFloat(s);
-  if (pfodCmd.startsWith(cmd + "p")) pid.Kp = v * scale;
-    else if (pfodCmd.startsWith(cmd + "i")) pid.Ki = v * scale;
-    else if (pfodCmd.startsWith(cmd + "d")) pid.Kd = v * scale;      
+  if (pfodCmd.startsWith(cmd + "p")){
+    pid.Kp = v * scale;
+    if (pid.Kp < scale) pid.Kp = 0.0;
+  }
+  else if (pfodCmd.startsWith(cmd + "i")){
+    pid.Ki = v * scale;
+    if (pid.Ki < scale) pid.Ki = 0.0;
+  }
+  else if (pfodCmd.startsWith(cmd + "d")){ 
+    pid.Kd = v * scale;      
+    if (pid.Kd < scale) pid.Kd = 0.0;
+  }
 }
 
 
@@ -289,8 +299,8 @@ void RemoteControl::sendMowMenu(boolean update){
   sendYesNo(robot->motorMowModulate);      
   Bluetooth.print(F("|o07~RPM "));
   Bluetooth.print(robot->motorMowRpm);    
-  sendSlider("o08", F("RPM set"), robot->motorMowRPM, "", 1, 8000);     
-  sendPIDSlider("o09", "RPM", robot->motorMowPID, 0.0001, 0.2);      
+  sendSlider("o08", F("RPM set"), robot->motorMowRPM, "", 1, 4500);     
+  sendPIDSlider("o09", "RPM", robot->motorMowPID, 0.01, 1.0);      
   Bluetooth.println(F("|o10~Testing is"));    
   switch (testmode){
     case 0: Bluetooth.print(F("OFF")); break;
@@ -311,11 +321,11 @@ void RemoteControl::processMowMenu(String pfodCmd){
     else if (pfodCmd.startsWith("o05")) processSlider(pfodCmd, robot->motorMowSpeedMax, 1);
     else if (pfodCmd == "o06") robot->motorMowModulate = !robot->motorMowModulate;    
     else if (pfodCmd.startsWith("o08")) processSlider(pfodCmd, robot->motorMowRPM, 1);    
-    else if (pfodCmd.startsWith("o09")) processPIDSlider(pfodCmd, "o09", robot->motorMowPID, 0.0001, 0.2);
+    else if (pfodCmd.startsWith("o09")) processPIDSlider(pfodCmd, "o09", robot->motorMowPID, 0.01, 1.0);
     else if (pfodCmd == "o10") { 
       testmode = (testmode + 1) % 2;
       switch (testmode){
-        case 0: robot->setNextState(STATE_OFF,0); break;
+        case 0: robot->setNextState(STATE_OFF,0);robot->motorMowRpm = 0; robot->motorMowEnable = false; break;
         case 1: robot->setNextState(STATE_MANUAL,0); robot->motorMowEnable = true; break;
       }
     }    

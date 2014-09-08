@@ -66,6 +66,7 @@ Robot::Robot(){
   motorMowSenseCounter = 0;
   motorMowSenseErrorCounter = 0;
   motorMowRpm = 0;
+  lastMowSpeed = 0;
 
   bumperLeftCounter = bumperRightCounter = 0;
   bumperLeft = bumperRight = false;          
@@ -457,22 +458,38 @@ void Robot::motorControl(){
 // input: motorMowEnable, motorMowModulate, motorMowRpm
 // output: motorMowPWM
 void Robot::motorMowControl(){
-  double mowSpeed = 0;
+  double mowSpeed ;
   if (!motorMowEnable) {
     mowSpeed = 0;         
+    lastMowSpeed = mowSpeed;
+    motorMowPID.esum=0; 
+    motorMowPID.x = 0;    
     setMotorMowSpeed(mowSpeed, true);
   } 
   else {
-    if ((motorMowModulate) && (motorMowRpm != 0)){
+    //if ((motorMowModulate) && (motorMowRpm != 0)){
       // speed sensor available
-      motorMowPID.x = motorMowRpm;      
-      motorMowPID.w = motorMowRPM; // 3300 => 2300
-      motorMowPID.y_min = -motorMowSpeedMax;
-      motorMowPID.y_max = motorMowSpeedMax;		
-      motorMowPID.max_output = motorMowSpeedMax;
+    if (motorMowModulate){
+
+
+      if (mowSpeed <motorMowRPM ){
+
+        mowSpeed = lastMowSpeed + 200;
+        if (mowSpeed >motorMowRPM) mowSpeed = motorMowRPM;
+      } else if (mowSpeed >motorMowRPM ){
+        mowSpeed = lastMowSpeed - 200;
+        if (mowSpeed <motorMowRPM) mowSpeed = motorMowRPM;
+      }
+
+      motorMowPID.x = 0.2* motorMowRpm + 0.8 * motorMowPID.x;      
+      motorMowPID.w = mowSpeed; // 3300 => 2300
+      motorMowPID.y_min = -motorMowSpeedMax/2;
+      motorMowPID.y_max = motorMowSpeedMax/2;		
+      motorMowPID.max_output = motorMowSpeedMax/2;
       motorMowPID.compute(); 
-      mowSpeed = motorMowPWM + motorMowPID.y;            
-      setMotorMowSpeed(mowSpeed, false);
+
+      setMotorMowSpeed(mowSpeed / 20.0 + motorMowPID.y, false);
+      lastMowSpeed = mowSpeed;
     } else {
       // no speed sensor available      
       mowSpeed = motorMowSpeed;
@@ -568,6 +585,9 @@ void Robot::printInfo(Stream &s){
   Console.println(motorMowPWM);
   return;*/
   //Console.println(time2str(datetime.time));
+
+  if (consoleMode == CONSOLE_OFF) {
+  } else {
   Streamprint(s, "t%6u ", (millis()-stateStartTime)/1000);  
   Streamprint(s, "l%3u ", loopsPerSec);  
   //Streamprint(s, "r%4u ", freeRam());  
@@ -614,6 +634,7 @@ void Robot::printInfo(Stream &s){
     Streamprint(s, "adc%3d ", ADCMan.getCapturedChannels());  
     Streamprint(s, "%s\r\n", name.c_str());                  
   }
+ }
 }
 
 void Robot::printMenu(){  
@@ -772,7 +793,7 @@ void Robot::readSerial() {
          menu(); // menu
          break;
        case 'v': 
-         consoleMode = (consoleMode +1) % 3;
+         consoleMode = (consoleMode +1) % 4;
          Console.println(consoleModeNames[consoleMode]);
          break; 
        case 'h':
@@ -1321,7 +1342,11 @@ void Robot::checkPerimeterBoundary(){
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
+          if ((rand() % 2) == 0){      
           reverseOrBidir(LEFT);
+          } else {
+            reverseOrBidir(RIGHT);
+          }
         }
       }
     } 

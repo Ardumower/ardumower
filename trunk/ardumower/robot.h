@@ -131,7 +131,7 @@ enum { LEFT, RIGHT };
 enum { MOW_RANDOM, MOW_LANES, MOW_BIDIR };
 
 // console mode
-enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER };
+enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER, CONSOLE_OFF };
 
 
 #define MAX_TIMERS 5
@@ -252,6 +252,7 @@ class Robot
     unsigned long lastMotorMowRpmTime;    
     unsigned long nextTimeMotorControl;
     unsigned long nextTimeMotorMowControl;
+    int lastMowSpeed;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     
