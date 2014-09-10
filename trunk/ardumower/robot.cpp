@@ -1071,6 +1071,10 @@ void Robot::setNextState(byte stateNew, byte dir){
   unsigned long stateTime = millis() - stateStartTime;
   if (stateNew == stateCurr) return;
   // state correction  
+  if (stateCurr == STATE_PERI_FIND){
+    if (stateNew == STATE_ROLL) stateNew = STATE_PERI_ROLL;
+    if (stateNew == STATE_REVERSE) stateNew = STATE_PERI_REV;    
+  }  
   if (stateNew == STATE_FORWARD) {    
     if ((stateCurr == STATE_CHARGE_REV) ||(stateCurr == STATE_CHARGE_ROLL)) return;  
     if (stateCurr == STATE_CHARGE) {
