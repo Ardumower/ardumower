@@ -1,0 +1,136 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 16/07/2014 17:46:38
+
+BeginCmp
+TimeStamp = /53A9816D;
+Reference = C1;
+ValeurCmp = 100nF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A9813A;
+Reference = C2;
+ValeurCmp = 10uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C69683;
+Reference = C3;
+ValeurCmp = 100nF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C69674;
+Reference = C4;
+ValeurCmp = 10uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C6A1EF;
+Reference = C5;
+ValeurCmp = 100nF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C6A1E9;
+Reference = C6;
+ValeurCmp = 10uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A99394;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A993A3;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A98E61;
+Reference = JP1;
+ValeurCmp = Double Current / Dual Loop;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A98E70;
+Reference = JP2;
+ValeurCmp = Double Current / Dual Loop;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A98E7F;
+Reference = JP3;
+ValeurCmp = Double Current / Dual Loop;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A99202;
+Reference = JP4;
+ValeurCmp = Double Current / Dual Loop;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A98828;
+Reference = JP5;
+ValeurCmp = M2D1;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A985FD;
+Reference = JP6;
+ValeurCmp = M1D1;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A9848C;
+Reference = JP7;
+ValeurCmp = Slew;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A992CD;
+Reference = R1;
+ValeurCmp = 470R;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A992DC;
+Reference = R2;
+ValeurCmp = 470R;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A980FA;
+Reference = U1;
+ValeurCmp = ARDUINO_MINI;
+IdModule  = arduino_mini;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A98109;
+Reference = U2;
+ValeurCmp = MC33926;
+IdModule  = Dual_MC33926;
+EndCmp
+
+EndListe
