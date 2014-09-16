@@ -1152,10 +1152,10 @@ void Robot::setNextState(byte stateNew, byte dir){
   if (stateNew == STATE_PERI_FIND){
     // find perimeter  => drive half speed      
     motorLeftSpeed = motorRightSpeed = motorSpeedMax / 1.5;    
-    motorMowEnable = false;    
+    //motorMowEnable = false;     // FIXME: should be an option?
   }
   if (stateNew == STATE_PERI_TRACK){        
-    motorMowEnable = false;    
+    //motorMowEnable = false;     // FIXME: should be an option?
     //beep(6);
   }   
   if (stateNew != STATE_REMOTE){
