@@ -1256,7 +1256,7 @@ void Robot::checkCurrent(){
     setActuator(ACT_MOTOR_MOW, 0);
     motorMowSenseCounter++;
     // FIXME: doesn't work well with high gras :-/
-    /*if (millis() > stateStartTime + 3000){
+    /*if (millis() > stateStartTime + motorReverseTime){
       motorMowSenseErrorCounter++;
       if (motorMowSenseErrorCounter > 15){
         Console.println("Error: Motor mow current");
@@ -1271,17 +1271,17 @@ void Robot::checkCurrent(){
     
   if (motorLeftSense >=motorPowerMax){  
     // left wheel motor overpowered    
-    if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
+    if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorReverseTime)){    				  
       //beep(1);
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       reverseOrBidir(RIGHT);
-    } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
+    } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorReverseTime)){
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       //   reverseOrBidir(RIGHT);
       setNextState(STATE_ROLL,RIGHT);				          
-    } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
+    } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorReverseTime)){
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       setNextState(STATE_FORWARD, 0);
@@ -1289,16 +1289,16 @@ void Robot::checkCurrent(){
   }
   else if (motorRightSense >= motorPowerMax){       
      // right wheel motor overpowered
-     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + 3000)){    				  
+     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorReverseTime)){    				  
        //beep(1);
        motorRightSenseCounter++;
        setMotorSpeed( 0, 0, false );  
        reverseOrBidir(RIGHT);
-     } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + 2000)){
+     } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorReverseTime)){
        motorRightSenseCounter++;
        setMotorSpeed( 0, 0, false );  
        setNextState(STATE_ROLL,LEFT);				          
-     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + 2000)){
+     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorReverseTime)){
        motorRightSenseCounter++;
        setMotorSpeed( 0, 0, false );  
        setNextState(STATE_FORWARD, 0);
@@ -1347,7 +1347,7 @@ void Robot::checkPerimeterBoundary(){
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
           if ((rand() % 2) == 0){      
-          reverseOrBidir(LEFT);
+            reverseOrBidir(LEFT);
           } else {
             reverseOrBidir(RIGHT);
           }
