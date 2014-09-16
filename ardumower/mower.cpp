@@ -171,7 +171,7 @@ Mower::Mower(){
   twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
-  odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
+  odometryWheelBaseCm = 36;    // wheel-to-wheel (left-to-right) distance (cm)
   // ----- GPS -------------------------------------------
   gpsUse            = 1;       // use GPS?
   // ----- other -----------------------------------------
