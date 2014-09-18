@@ -145,6 +145,7 @@ class Robot
     byte stateCurr;
     byte stateLast;
     byte stateNext;    
+    unsigned long stateTime;
     char* stateName();
     unsigned long stateStartTime;
     unsigned long stateEndTime;
@@ -422,6 +423,7 @@ protected:
     virtual void checkSonar();
     virtual void checkTilt();
     virtual void checkRain();
+    virtual void checkTimeout();
     
     // motor controllers
     virtual void motorControl();    
