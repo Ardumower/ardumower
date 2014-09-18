@@ -34,7 +34,8 @@ Robot::Robot(){
   name = "Generic";
   rc.setRobot(this);
   
-  stateLast = stateCurr = stateNext = STATE_OFF;
+  stateLast = stateCurr = stateNext = STATE_OFF; 
+  stateTime = 0;
   mowPatternCurr = MOW_RANDOM;
   
   odometryLeft = odometryRight = 0;
@@ -381,7 +382,8 @@ void Robot::motorControlPerimeter(){
     if (millis() > perimeterLastTransitionTime + 10000){      
       Console.println("Error: tracking error");
       addErrorCounter(ERR_TRACKING);
-      setNextState(STATE_ERROR,0);
+      //setNextState(STATE_ERROR,0);
+      setNextState(STATE_PERI_FIND,0);
     }
     return;
   }   
@@ -1363,7 +1365,7 @@ void Robot::checkPerimeterFind(){
     if (perimeter.isInside()) {
       // inside
       if (motorLeftSpeed != motorRightSpeed){      
-        // we just made an 'outside=>inside' transition, now track
+        // we just made an 'outside=>inside' rotation, now track
         setNextState(STATE_PERI_TRACK, 0);    
       }
     } else {
@@ -1502,9 +1504,18 @@ void Robot::calcOdometry(){
  }
 }
 
+void Robot::checkTimeout(){
+  if (stateTime > motorForwTimeMax){ 
+    // timeout 
+    motorMowSenseErrorCounter = 0;
+    if (rollDir == RIGHT) setNextState(STATE_REVERSE, LEFT); // toggle roll dir
+      else setNextState(STATE_REVERSE, RIGHT);
+  }
+}
+
 
 void Robot::loop()  {     
-  unsigned long stateTime = millis() - stateStartTime;
+  stateTime = millis() - stateStartTime;
   int steer;
   
   readSerial();   
@@ -1587,12 +1598,7 @@ void Robot::loop()  {
       checkBattery();
       checkPerimeterBoundary();      
       if (lawnSensorUse) checkLawn();      
-      if (stateTime > motorForwTimeMax){ 
-        // timeout 
-        motorMowSenseErrorCounter = 0;
-        if (rollDir == RIGHT) setNextState(STATE_REVERSE, LEFT); // toggle roll dir
-          else setNextState(STATE_REVERSE, RIGHT);
-      }
+      checkTimeout();      
       break;
     case STATE_ROLL:
       checkCurrent();            
@@ -1654,12 +1660,13 @@ void Robot::loop()  {
       break;
     case STATE_PERI_FIND:
       // find perimeter
-      if (motorLeftSpeed == motorRightSpeed){ // do not check during 'outside=>inside' transition              
+      if (motorLeftSpeed == motorRightSpeed){ // do not check during 'outside=>inside' rotation              
         checkCurrent();
         checkBumpersPerimeter();
-        checkSonar();                   
+        checkSonar();                           
       }  
       checkPerimeterFind();      
+      checkTimeout();                    
       break;
     case STATE_PERI_TRACK:
       // track perimeter
