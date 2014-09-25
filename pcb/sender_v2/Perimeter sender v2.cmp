@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 16/07/2014 17:46:38
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 25/09/2014 11:58:13
 
 BeginCmp
 TimeStamp = /53A9816D;
@@ -103,6 +103,20 @@ TimeStamp = /53A9848C;
 Reference = JP7;
 ValeurCmp = Slew;
 IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5423E6D0;
+Reference = K1;
+ValeurCmp = Charge current;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5423E838;
+Reference = K2;
+ValeurCmp = Current potmeter;
+IdModule  = PIN_ARRAY_3X1;
 EndCmp
 
 BeginCmp
