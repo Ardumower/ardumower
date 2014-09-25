@@ -44,9 +44,6 @@ changes
 #define  pinLED 13
 
 // --------------------------------------
-float IMAX = 1.5;
-//#define IMAX 0.14
-//#define IMAX 1.5
 
 volatile int step = 0;
 volatile byte state = 0;
@@ -58,13 +55,14 @@ double maxduty = 1.0; // 100%
 double duty = 0.1;    // 10%
 int dutyPWM = 0;
 double chargeCurrent = 0;
-double I = 0; // ampere
-double Ipeak = 0; // ampere
+double periCurrent = 0; 
 int faults = 0;
-boolean perimeterSwitchON = true;
+boolean isCharging = false;
+boolean stateLED = false;
 
 unsigned long nextTimeControl = 0;
 unsigned long nextTimeInfo = 0;
+unsigned long nextTimeToggleLED = 0;
 
 
 // must be multiple of 2 !
@@ -152,7 +150,6 @@ void setup() {
   //if (digitalRead(pinPWM) == HIGH) fault = true; 
   //fault = true;
 
-
 void fault(){
   Serial.println("MC_FAULT");
   for (int i=0; i < 10; i++){
@@ -164,18 +161,16 @@ void fault(){
   faults++;                          
 }
 
+
 void loop(){    
   if (millis() >= nextTimeControl){                    
     nextTimeControl = millis() + 100;
-    if (perimeterSwitchON){
-      digitalWrite(pinEnable, HIGH);
-      // far away: fast control
-      if (I > IMAX * 2) duty = max(minduty, duty - 0.1);  
-      if (I > IMAX * 1.5) duty = max(minduty, duty - 0.01);  
-        else if (I < IMAX * 0.5) duty = min(maxduty, duty + 0.01);
-        // nearby: slow control
-        else if (I < IMAX * 0.9) duty = min(maxduty, duty + 0.001);
-        else if (I > IMAX * 1.1) duty = max(minduty, duty - 0.001);          
+    if (isCharging){
+      // switch off perimeter 
+      digitalWrite(pinEnable, LOW);            
+    } else {
+      // switch on perimeter
+      digitalWrite(pinEnable, HIGH);           
       dutyPWM = (int) (duty / 1.0 * 255.0);
       //analogWrite(pinPWM, 255);
       analogWrite(pinPWM, dutyPWM);
@@ -184,9 +179,6 @@ void loop(){
         analogWrite(pinPWM, duty);
         fault();    
       }    
-    } else {
-      // perimeter is off
-      digitalWrite(pinEnable, LOW);      
     }
   }
 
@@ -196,42 +188,49 @@ void loop(){
     Serial.print(millis()/1000);    
     Serial.print("\tchgCurrent=");
     Serial.print(chargeCurrent);
-    Serial.print("\tswitchON=");
-    Serial.print(perimeterSwitchON);    
-    Serial.print("\tIMAX=");    
-    Serial.print(IMAX);    
-    Serial.print("\tIpeak=");    
-    Serial.print(Ipeak);
-    Serial.print("\tI=");
-    Serial.print(I);
+    Serial.print("\tisCharging=");
+    Serial.print(isCharging);    
+    Serial.print("\tperiCurrent=");
+    Serial.print(periCurrent);
     Serial.print("\tduty=");
     Serial.print(duty);
     Serial.print("\tdutyPWM=");        
     Serial.print((int)dutyPWM);        
-    Serial.print("\tduty/I=");
-    double dutyI = duty / I;
-    Serial.print(dutyI);    
     Serial.print("\tfaults=");
     Serial.println(faults);        
     
     if (USE_POT){
-      IMAX = ((float)map(analogRead(pinPot),  0,1023,   0,2000))  /1000.0;
+      // read potentiometer
+      duty = ((float)map(analogRead(pinPot),  0,1023,   0,1000))  /1000.0;
     }              
   }
   
   delay(10);
-    
+  
+  // determine perimeter current  
   // 525 mV per amp
-  double curr = ((double)analogRead(pinFeedback)) / 1023.0 * 5.0 / 0.525;  
-  //   currPeak = max(0, currPeak - 0.001);
-  Ipeak = max(Ipeak, I);  
-  I = 0.9 * I + 0.1 * curr;
+  double I = ((double)analogRead(pinFeedback)) / 1023.0 * 5.0 / 0.525;  
+  periCurrent = 0.9 * I + 0.1 * I;
 
 
   if (USE_CHG_CURRENT){
+    // determine charging current
     chargeCurrent = 0.9 * chargeCurrent + 0.1 * ((double)map(analogRead(pinChargeCurrent),  0,1023,   -54,54))  /54.0;    
-    perimeterSwitchON = (abs(chargeCurrent) < 0.1);
+    isCharging = (abs(chargeCurrent) >= 0.1);
   }
+   
+  // LED status 
+  if (isCharging) {    
+    // charging
+    if (millis() >= nextTimeToggleLED){
+      nextTimeToggleLED = millis() + 500;
+      stateLED = !stateLED;
+    }
+  } else {
+    // not charging => indicate perimeter wire state (OFF=broken)
+    stateLED = (periCurrent >= 0.1);
+  }
+  digitalWrite(pinLED, stateLED);   
   
 }
 
