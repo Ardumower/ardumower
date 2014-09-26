@@ -55,6 +55,8 @@ double maxduty = 1.0; // 100%
 double duty = 0.1;    // 10%
 int dutyPWM = 0;
 double chargeCurrent = 0;
+double chargeValue = 0;
+int chargeValueCounter = 0;
 double periCurrent = 0; 
 int faults = 0;
 boolean isCharging = false;
@@ -183,11 +185,16 @@ void loop(){
   }
 
   if (millis() >= nextTimeInfo){                
-    nextTimeInfo = millis() + 500;    
+    nextTimeInfo = millis() + 500;        
+    if (chargeValueCounter != 0) {
+      chargeCurrent = 0.9 * chargeCurrent + 0.1 * (chargeValue / ((double)chargeValueCounter));
+      chargeValueCounter = chargeValue = 0;          
+      isCharging = (abs(chargeCurrent) > 0.04);
+    }
     Serial.print("time=");
     Serial.print(millis()/1000);    
     Serial.print("\tchgCurrent=");
-    Serial.print(chargeCurrent);
+    Serial.print(chargeCurrent, 3);
     Serial.print("\tisCharging=");
     Serial.print(isCharging);    
     Serial.print("\tperiCurrent=");
@@ -215,8 +222,8 @@ void loop(){
 
   if (USE_CHG_CURRENT){
     // determine charging current
-    chargeCurrent = 0.9 * chargeCurrent + 0.1 * ((double)map(analogRead(pinChargeCurrent),  0,1023,   -54,54))  /54.0;    
-    isCharging = (abs(chargeCurrent) >= 0.01);
+    chargeValue += abs((double)map(analogRead(pinChargeCurrent),  0,1023,   -540,540))  /540.0;        
+    chargeValueCounter++;    
   }
    
   // LED status 
