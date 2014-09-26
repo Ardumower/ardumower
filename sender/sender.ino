@@ -189,7 +189,7 @@ void loop(){
     if (chargeValueCounter != 0) {
       chargeCurrent = 0.9 * chargeCurrent + 0.1 * (chargeValue / ((double)chargeValueCounter));
       chargeValueCounter = chargeValue = 0;          
-      isCharging = (abs(chargeCurrent) > 0.04);
+      isCharging = (abs(chargeCurrent) > 0.05);
     }
     Serial.print("time=");
     Serial.print(millis()/1000);    
