@@ -216,7 +216,7 @@ void loop(){
   if (USE_CHG_CURRENT){
     // determine charging current
     chargeCurrent = 0.9 * chargeCurrent + 0.1 * ((double)map(analogRead(pinChargeCurrent),  0,1023,   -54,54))  /54.0;    
-    isCharging = (abs(chargeCurrent) >= 0.1);
+    isCharging = (abs(chargeCurrent) >= 0.01);
   }
    
   // LED status 
