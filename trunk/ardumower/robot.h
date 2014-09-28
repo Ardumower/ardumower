@@ -49,6 +49,7 @@
 
 */
 
+#define VERTEST $Rev$
 #define VER 0x0932
 
 // sensors
