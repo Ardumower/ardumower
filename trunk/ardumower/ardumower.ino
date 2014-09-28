@@ -17,11 +17,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   
- changes:
-  v0.1      04.06.2013  first prototype (wheel/mower motors, bumper, compass, ultrasonic, state machine, PID)
-  v0.9.3.5  23.05.2014  Arduino Due support, new wiring scheme for both Mega and Due(!) NOTE: Requires Arduino IDE 1.5.6-r2 or higher
-  v0.9.3.6  24.05.2014  pinMotorLeftPWM changed, GPS time support  
-  
+ changes: see https://code.google.com/p/ardumower/source/list
 
 Operation modes (press button for x beeps):
 1 beeps : normal mowing                           OK, tested

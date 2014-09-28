@@ -546,8 +546,8 @@ void Robot::setup()  {
   setActuator(ACT_BUZZER, 0);
   delay(900);  
   Console.println(F("START"));  
-  Console.print(F("Ardumower v"));
-  Console.println(verToString(VER));
+  Console.print(F("Ardumower "));
+  Console.println(VER);
   Console.println(F("press..."));
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
