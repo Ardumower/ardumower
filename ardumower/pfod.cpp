@@ -713,8 +713,8 @@ void RemoteControl::processFactorySettingsMenu(String pfodCmd){
 
 void RemoteControl::sendInfoMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info"));     
-  Bluetooth.print(F("|d00~Ardumower v"));
-  Bluetooth.print(verToString(VER)); 
+  Bluetooth.print(F("|d00~Ardumower "));
+  Bluetooth.print(VER); 
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
   //Bluetooth.print("|d02~IMU v");  
