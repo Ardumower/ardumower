@@ -50,7 +50,7 @@ uint8_t captureSize[CHANNELS]; // ADC sample buffer size (ADC0-ADC7)
 int16_t ofs[CHANNELS]; // ADC zero offset (ADC0-ADC7)
 boolean captureComplete[CHANNELS]; // ADC buffer filled?
 boolean autoCalibrate[CHANNELS]; // do auto-calibrate? (ADC0-ADC7)
-uint16_t sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
+int16_t *sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
 ADCManager ADCMan;
 
 
@@ -84,6 +84,7 @@ void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs
   int ch = pin-A0;
   captureSize[ch] = samplecount;
   capture[ch] = new int8_t[samplecount];  
+  sample[ch]  = new int16_t[samplecount];
   autoCalibrate[ch] = autoCalibrateOfs;
 }
 
@@ -110,7 +111,7 @@ void ADCManager::calibrateOfs(byte pin){
     run();
   }  
   calibrateChannel = NO_CHANNEL;
-  if (captureSize[ch] == 1) ofs[ch] = sample[ch];
+  if (captureSize[ch] == 1) ofs[ch] = sample[ch][0];
     else {      
       int16_t center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
       ofs[ch] = center;
@@ -190,10 +191,11 @@ void ADC_Handler(void){
       subsample=0;*/
       capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                     
         //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)           
+      sample[channel][position] = value;           
       position++;
     //}
   }
-  sample[channel] = value;     
+  //sample[channel] [] = value;     
 }
 
 void ADCManager::stopCapture(){  
@@ -256,12 +258,44 @@ boolean ADCManager::isCaptureComplete(byte pin){
 }
 
 int ADCManager::read(byte pin){    
+  /*    
+  while (!isCaptureComplete(pin)) {
+    delay(20);
+    run();
+  }
+  */
+  
   int ch = pin-A0;
   captureComplete[ch]=false;    
   if (captureSize[ch] == 0) return 0;
-    else if (captureSize[ch] == 1) return sample[ch];
-    else return capture[ch][0];  
+    //else if (captureSize[ch] == 1) return sample[ch][0];
+    else return sample[ch][(captureSize[ch]-1)];
+    //else return capture[ch][0];  
 }
+
+
+
+int ADCManager::readMedian(byte pin){
+  int ch = pin-A0;
+  captureComplete[ch]=false;    
+  if (captureSize[ch] == 0) return 0;
+  else if (captureSize[ch] == 1) return sample[ch][0];
+   else { 
+    for (int i = 1; i < captureSize[ch]; ++i)
+    {
+      int j = sample[ch][i];
+      int k;
+      for (k = i - 1; (k >= 0) && (j > sample[ch][k]); k--)
+      {
+        sample[ch][k + 1] = sample[ch][k];
+      }
+      sample[ch][k + 1] = j;
+    }
+    return sample[ch][(int)(captureSize[ch]/2 )];
+  }
+}  
+
+
 
 void ADCManager::restart(byte pin){
   captureComplete[pin-A0]=false;
@@ -302,7 +336,9 @@ boolean ADCManager::loadCalib(){
 }
 
 void ADCManager::saveCalib(){
+#ifdef __AVR__
   loadSaveCalib(false);
+#endif
 }
 
 

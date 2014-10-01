@@ -63,6 +63,7 @@
 #define pinBatteryVoltage A2       // battery voltage sensor
 #define pinChargeVoltage A9        // charging voltage sensor
 #define pinChargeCurrent A8        // charge current sensor
+#define pinChargeRelay 49        // charge current sensor  
 #define pinRemoteMow 12            // remote control mower motor
 #define pinRemoteSteer 11          // remote control steering 
 #define pinRemoteSpeed 10          // remote control speed
@@ -158,6 +159,7 @@ Mower::Mower(){
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
   batFactor       = 0.0658;     // battery conversion factor
+  batChgFactor    = 0.0658;     // battery conversion factor
   batSenseZero       =77;        // battery volt sense zero point
   batFull          =29.4;      // battery reference Voltage (fully charged)
   chgSenseZero      = 0;       // charge current sense zero point
@@ -240,6 +242,8 @@ void Mower::setup(){
   pinMode(pinBatteryVoltage, INPUT);        
   pinMode(pinChargeCurrent, INPUT);          
   pinMode(pinChargeVoltage, INPUT);            
+  pinMode(pinChargeRelay, OUTPUT);
+  setActuator(ACT_CHGRELAY, 0);
   
   // left wheel motor
   pinMode(pinMotorEnable, OUTPUT);  
@@ -388,7 +392,7 @@ int Mower::readSensor(char type){
     case SEN_BAT_VOLTAGE: return ADCMan.read(pinBatteryVoltage); break;
     case SEN_CHG_VOLTAGE: return ADCMan.read(pinChargeVoltage); break;
     //case SEN_CHG_VOLTAGE: return((int)(((double)analogRead(pinChargeVoltage)) * batFactor)); break;
-    //case SEN_CHG_CURRENT: return((int)(((double)analogRead(pinChargeCurrent)-chgSenseZero) * chgFactor)); break;
+    case SEN_CHG_CURRENT: return ADCMan.read(pinChargeCurrent); break;
     
 // buttons------------------------------------------------------------------------------------------------
     case SEN_BUTTON: return(digitalRead(pinButton)); break; 
@@ -431,6 +435,9 @@ void Mower::setActuator(char type, int value){
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
     case ACT_RTC: setDS1307(datetime); break;
+    case ACT_CHGRELAY: digitalWrite(pinChargeRelay, value); break;
+    //case ACT_CHGRELAY: digitalWrite(pinChargeRelay, !value); break;
+
   }
 }
 
