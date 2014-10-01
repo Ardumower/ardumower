@@ -91,6 +91,7 @@ enum {
   ACT_USER_SW2,
   ACT_USER_SW3,    
   ACT_RTC,
+  ACT_CHGRELAY,
 };
 
 // error types
@@ -329,6 +330,7 @@ class Robot
     float batGoHomeIfBelow ;     // drive home voltage (Volt)
     float batSwitchOffIfBelow ;  // switch off if below voltage (Volt)
     float batFactor       ;     // battery conversion factor
+    float batChgFactor       ;     // battery conversion factor    
     float batSenseZero    ;        // battery volt sense zero point
     float batFull         ;      // battery reference Voltage (fully charged)
     int batADC;

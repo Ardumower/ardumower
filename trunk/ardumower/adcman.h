@@ -62,6 +62,8 @@ class ADCManager
     // samplecount=1: get one sample for pin
     // samplecount>1: get first sample for pin
     int read(byte pin);
+	// read the median value of samples
+    int readMedian(byte pin);
     boolean isCaptureComplete(byte pin);
     // statistics only
     int getCapturedChannels();

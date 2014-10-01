@@ -502,10 +502,12 @@ void Robot::motorMowControl(){
 
 void Robot::beep(int numberOfBeeps, boolean shortbeep = false){
   for (int i=0; i < numberOfBeeps; i++){
-    setActuator(ACT_BUZZER, 1200); 
+    setActuator(ACT_BUZZER, 4200); 
     if (shortbeep) delay(50);
       else delay(500);
     setActuator(ACT_BUZZER, 0); 
+    if (shortbeep) delay(250);
+      else delay(500);
   }
 }
 
@@ -541,10 +543,7 @@ void Robot::setup()  {
   }  
     
   stateStartTime = millis();  
-  setActuator(ACT_BUZZER, 1200);
-  delay(100);
-  setActuator(ACT_BUZZER, 0);
-  delay(900);  
+  beep(1);  
   Console.println(F("START"));  
   Console.print(F("Ardumower "));
   Console.println(VER);
@@ -1081,6 +1080,7 @@ void Robot::setNextState(byte stateNew, byte dir){
     if ((stateCurr == STATE_CHARGE_REV) ||(stateCurr == STATE_CHARGE_ROLL)) return;  
     if (stateCurr == STATE_CHARGE) {
       stateNew = STATE_CHARGE_REV;   
+      setActuator(ACT_CHGRELAY, 0);         
       motorMowEnable = false;
     } 
   }  
@@ -1142,9 +1142,11 @@ void Robot::setNextState(byte stateNew, byte dir){
     //motorMowModulate = false;              
   } 
   if (stateNew == STATE_CHARGE){
+    setActuator(ACT_CHGRELAY, 1); 
     setDefaults();        
   }
   if (stateNew == STATE_OFF){
+    setActuator(ACT_CHGRELAY, 0);
     setDefaults();        
   }  
   if (stateNew == STATE_ERROR){
@@ -1158,6 +1160,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   }
   if (stateNew == STATE_PERI_TRACK){        
     //motorMowEnable = false;     // FIXME: should be an option?
+    setActuator(ACT_CHGRELAY, 0);
     //beep(6);
   }   
   if (stateNew != STATE_REMOTE){
@@ -1538,7 +1541,7 @@ void Robot::loop()  {
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
     printInfo(Console);            
-    checkTilt(); 
+    if(imuUse) checkTilt(); 
     //checkErrorCounter();    
     if (stateCurr == STATE_REMOTE) printRemote();    
     loopsPerSec = loopsPerSecCounter;
@@ -1560,8 +1563,8 @@ void Robot::loop()  {
       // robot is turned off      
       checkTimer();
       checkBattery();
-      if (batMonitor){
-        if (chgVoltage > 5.0){
+      if (batMonitor && (millis()-stateStartTime>2000)){
+        if ((chgVoltage > 5.0 ) && (batVoltage < (batFull-1.0)) ){
           beep(2, true);      
           setNextState(STATE_CHARGE, 0);
         }
@@ -1681,7 +1684,12 @@ void Robot::loop()  {
       break;
     case STATE_CHARGE:
       // waiting until charging completed    
-      checkTimer();       // Check Timer when on charge  
+      if (batMonitor)
+      {
+        if (chgCurrent < 1.0 && (millis()-stateStartTime>2000)) checkTimer();       // Check Timer when charged 
+      } 
+      else checkTimer();
+
       break;      
     case STATE_CHARGE_REV:
       // charging: drive reverse 
