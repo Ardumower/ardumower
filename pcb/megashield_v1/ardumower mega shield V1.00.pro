@@ -42,8 +42,6 @@ LibName13=led
 LibName14=dip_sockets
 LibName15=pga_sockets
 LibName16=valves
-LibName17=C:/Dropbox/CAD/Kicad/Libs/Walter's
-LibName18=ardumower_logo
 [eeschema]
 version=1
 LibDir=C:/Dropbox/CAD/Kicad/Libs
