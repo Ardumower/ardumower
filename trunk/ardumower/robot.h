@@ -408,6 +408,7 @@ protected:
     virtual void loadUserSettings();
     virtual void addErrorCounter(byte errType);
     virtual void checkErrorCounter();
+    virtual void printSettingSerial();
     
     // read sensors
     virtual void readSensors();            
