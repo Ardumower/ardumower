@@ -129,12 +129,12 @@ Mower::Mower(){
   //  ------ bumper -----------------------------------
   bumperUse         = 0;      // has bumpers? 
   // ------ rain ------------------------------------
-  rainUse          = 1;      // use rain sensor?
+  rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
   sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 1;      // use perimeter?    
+  perimeterUse       = 0;      // use perimeter?    
   perimeterTriggerTimeout = 0; // perimeter trigger timeout (ms)  
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
@@ -144,7 +144,7 @@ Mower::Mower(){
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse            = 1;       // use IMU? 
+  imuUse            = 0;       // use IMU? 
   imuCorrectDir     = 0;       // correct direction by compass?
   imuDirPID.Kp      = 5.0;     // direction PID controller
   imuDirPID.Ki      = 1.0;
@@ -169,13 +169,13 @@ Mower::Mower(){
   stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
   // ------ odometry ------------------------------------
-  odometryUse       = 1;       // use odometry?
-  twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
+  odometryUse       = 0;       // use odometry?
+  twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
-  odometryWheelBaseCm = 36;    // wheel-to-wheel (left-to-right) distance (cm)
+  odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
   // ----- GPS -------------------------------------------
-  gpsUse            = 1;       // use GPS?
+  gpsUse            = 0;       // use GPS?
   // ----- other -----------------------------------------
   buttonUse         = 1;       // has digital ON/OFF button?
   // ----- user-defined switch ---------------------------
@@ -289,8 +289,8 @@ void Mower::setup(){
   pinMode(pinBumperRight, INPUT_PULLUP);
   
   // sonar
-  pinMode(pinSonarCenterTrigger, OUTPUT); 
-  pinMode(pinSonarCenterEcho, INPUT); 
+ // pinMode(pinSonarCenterTrigger, OUTPUT); 
+ // pinMode(pinSonarCenterEcho, INPUT); 
   pinMode(pinSonarLeftTrigger, OUTPUT); 
   pinMode(pinSonarLeftEcho, INPUT); 
   pinMode(pinSonarRightTrigger, OUTPUT); 
@@ -403,9 +403,9 @@ int Mower::readSensor(char type){
     
 // sonar---------------------------------------------------------------------------------------------------
     //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-    case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
- //   case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
- //    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
+ //   case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
+    case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
+    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
     //case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     

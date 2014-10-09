@@ -222,6 +222,140 @@ void Robot::loadUserSettings(){
   if (magic != MAGIC) return;
   loadSaveUserSettings(true);
 }
+void Robot::printSettingSerial(){
+ 
+  // ------- wheel motors -----------------------------
+  Console.print  ("motorAccel  : ");
+  Console.println( motorAccel);
+  Console.print  ("motorSpeedMax : ");
+  Console.println(motorSpeedMax);
+  Console.print  ("motorSpeedMaxPwm : "); 
+  Console.println(motorSpeedMaxPwm);
+  Console.print  ("motorPowerMax : ");    
+  Console.println(motorPowerMax);
+  Console.print  ("motorSenseRightScale : "); 
+  Console.println(motorSenseRightScale);
+  Console.print  ("motorSenseLeftScale : ");
+  Console.println(motorSenseLeftScale);
+  Console.print  ("motorRollTimeMax : ");
+  Console.println(motorRollTimeMax);
+  Console.print  ("motorReverseTime : ");
+  Console.println(motorReverseTime);
+  
+  Console.print  ("motorForwTimeMax : ");
+  Console.println(motorForwTimeMax);
+  
+  Console.print  ("motorBiDirSpeedRatio1 : ");
+  Console.println(motorBiDirSpeedRatio1);
+  
+  Console.print  ("motorBiDirSpeedRatio2 : ");
+  Console.println(motorBiDirSpeedRatio2);
+  
+  // ------ mower motor -------------------------------
+  Console.print  ("motorMowAccel : ");
+  Console.println(motorMowAccel);
+  Console.print  ("motorMowSpeedMax : ");
+  Console.println(motorMowSpeedMax);
+  Console.print  ("motorMowPowerMax : ");
+  Console.println(motorMowPowerMax);
+  Console.print  ("motorMowModulate : ");
+  Console.println(motorMowModulate);
+  Console.print  ("motorMowRPM : ");  
+  Console.println(motorMowRPM);
+  Console.print  ("motorMowSenseScale : ");
+  Console.println(motorMowSenseScale); 
+  Console.print  ("motorMowPID.Kp : ");
+  Console.println(motorMowPID.Kp);
+  Console.print  ("motorMowPID.Ki : ");
+  Console.println(motorMowPID.Ki);
+  Console.print  ("motorMowPID.Kd : ");
+  Console.println(motorMowPID.Kd);
+  
+  // ------ sonar ------------------------------------
+  Console.print  ("sonarUse : ");
+  Console.println(sonarUse);
+  Console.print  ("sonarTriggerBelow : ");
+  Console.println(sonarTriggerBelow);
+  
+  // ------ perimeter ---------------------------------
+  Console.print  ("perimeterUse : ");
+  Console.println(perimeterUse);
+  Console.print  ("perimeterTriggerTimeout : ");
+  Console.println(perimeterTriggerTimeout);
+  Console.print  ("perimeterTrackRollTime : ");
+  Console.println(perimeterTrackRollTime);
+  Console.print  ("perimeterTrackRevTime : ");
+  Console.println(perimeterTrackRevTime);
+  Console.print  ("perimeterPID.Kp : ");
+  Console.println(perimeterPID.Kp);
+  Console.print  ("perimeterPID.Ki : ");
+  Console.println( perimeterPID.Ki);
+  Console.print  ("perimeterPID.Kd : ");
+  Console.println(perimeterPID.Kd);
+    
+  // ------  IMU (compass/accel/gyro) ----------------------
+  
+  Console.print  ("imuUse : ");
+  Console.println( imuUse);
+  Console.print  ("imuCorrectDir : ");
+  Console.println(imuCorrectDir); 
+  Console.print  ("imuDirPID.Kp : ");
+  Console.println(imuDirPID.Kp); 
+  Console.print  ("imuDirPID.Ki : ");
+  Console.println(imuDirPID.Ki); 
+  Console.print  ("imuDirPID.Kd : ");
+  Console.println( imuDirPID.Kd);
+  Console.print  ("imuRollPID.Kp : ");
+  Console.println(imuRollPID.Kp); 
+  Console.print  ("imuRollPID.Ki : ");
+  Console.println(imuRollPID.Ki); 
+  Console.print  ("imuRollPID.Kd : ");
+  Console.println(imuRollPID.Kd); 
+  
+  // ------ battery -------------------------------------
+  
+  Console.print  ("batMonitor : ");
+  Console.println( batMonitor);
+  Console.print  ("batGoHomeIfBelow : ");
+  Console.println(batGoHomeIfBelow); 
+  Console.print  ("batSwitchOffIfBelow : ");
+  Console.println(batSwitchOffIfBelow); 
+  Console.print  ("batFactor : ");
+  Console.println( batFactor);
+  Console.print  ("batChgFactor : ");  
+  Console.println( batChgFactor);
+  Console.print  ("batSenseZero : ");
+  Console.println(batSenseZero); 
+  Console.print  ("batFull : ");
+  Console.println( batFull);
+  Console.print  ("chgSenseZero : ");
+  Console.println(chgSenseZero); 
+  Console.print  ("chgFactor : ");
+  Console.println( chgFactor);
+  // ------  charging station ---------------------------
+  
+  Console.print  ("stationRevTime : ");
+  Console.println(stationRevTime); 
+  Console.print  ("stationRollTime : ");
+  Console.println(stationRollTime); 
+  Console.print  ("stationForwTime : ");
+  Console.println( stationForwTime);
+  // ------ odometry ------------------------------------
+  
+  Console.print  ("odometryUse : ");
+  Console.println( odometryUse);
+  Console.print  ("twoWayOdometrySensorUse : ");
+  Console.println( twoWayOdometrySensorUse);
+  Console.print  ("odometryTicksPerRevolution : ");
+  Console.println( odometryTicksPerRevolution);
+  Console.print  ("odometryTicksPerCm : ");
+  Console.println( odometryTicksPerCm);
+  Console.print  ("odometryWheelBaseCm : ");
+  Console.println( odometryWheelBaseCm);
+
+  return;
+}
+
 
 
 void Robot::saveUserSettings(){
@@ -536,6 +670,7 @@ void Robot::setup()  {
   setMotorSpeed(0, 0, false);
   loadUserSettings();
   setUserSwitches();
+
   
   if (!buttonUse){
     // robot has no ON/OFF button => start immediately
@@ -649,6 +784,7 @@ void Robot::printMenu(){
   Console.println(F("7=delete IMU calib"));
   Console.println(F("8=ADC calib"));  
   Console.println(F("9=load factory settings"));  
+  Console.println(F("x=read settings"));  
   Console.println(F("0=exit"));  
   Console.println();
 }
@@ -778,6 +914,10 @@ void Robot::menu(){
           break;
         case '9':
           deleteUserSettings();
+          break;          
+        case 'x':
+          printSettingSerial();
+          Console.println("fertig");
           break;          
       }      
     }
