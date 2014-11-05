@@ -1,67 +1,34 @@
 EESchema Schematic File Version 2
-LIBS:transistors
-LIBS:74xgxx
-LIBS:74xx
-LIBS:ac-dc
-LIBS:actel
-LIBS:adc-dac
-LIBS:analog_switches
-LIBS:atmel
-LIBS:audio
-LIBS:brooktre
-LIBS:cmos4000
-LIBS:cmos_ieee
-LIBS:conn
-LIBS:contrib
-LIBS:cypress
-LIBS:dc-dc
-LIBS:device
-LIBS:digital-audio
-LIBS:display
-LIBS:dsp
-LIBS:elec-unifil
-LIBS:ftdi
-LIBS:gennum
-LIBS:graphic
-LIBS:hc11
-LIBS:intel
-LIBS:interface
-LIBS:ir
-LIBS:linear
-LIBS:logo
-LIBS:memory
-LIBS:microchip
-LIBS:microchip1
-LIBS:microchip_pic10mcu
-LIBS:microchip_pic12mcu
-LIBS:microchip_pic16mcu
-LIBS:microchip_pic18mcu
-LIBS:microcontrollers
-LIBS:motorola
-LIBS:msp430
-LIBS:nxp_armmcu
-LIBS:opto
-LIBS:philips
 LIBS:power
-LIBS:powerint
-LIBS:pspice
-LIBS:references
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
 LIBS:regul
-LIBS:relays
-LIBS:rfcom
-LIBS:sensors
-LIBS:siliconi
-LIBS:special
-LIBS:stm8
-LIBS:stm32
-LIBS:supertex
-LIBS:texas
-LIBS:transf
-LIBS:ttl_ieee
-LIBS:valves
-LIBS:video
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
 LIBS:xilinx
-LIBS:arduino_shieldsNCL
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
 LIBS:ardumower mega shield svn-cache
 EELAYER 24 0
 EELAYER END
@@ -590,7 +557,7 @@ U 1 1 53852DC8
 P 4900 1550
 F 0 "P9" V 4850 1550 50  0000 C CNN
 F 1 "ODO Left" V 4950 1550 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 4900 1550 60  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 4900 1550 60  0000 C CNN
 F 3 "" H 4900 1550 60  0000 C CNN
 	1    4900 1550
 	-1   0    0    -1  
@@ -843,13 +810,13 @@ $EndComp
 $Comp
 L GND #PWR029
 U 1 1 53866E0D
-P 3800 2350
-F 0 "#PWR029" H 3800 2350 30  0001 C CNN
-F 1 "GND" H 3800 2280 30  0001 C CNN
-F 2 "" H 3800 2350 60  0000 C CNN
-F 3 "" H 3800 2350 60  0000 C CNN
-	1    3800 2350
-	1    0    0    -1  
+P 4150 1700
+F 0 "#PWR029" H 4150 1700 30  0001 C CNN
+F 1 "GND" H 4150 1630 30  0001 C CNN
+F 2 "" H 4150 1700 60  0000 C CNN
+F 3 "" H 4150 1700 60  0000 C CNN
+	1    4150 1700
+	-1   0    0    1   
 $EndComp
 $Comp
 L GND #PWR030
@@ -1036,10 +1003,10 @@ pinMotorMowRpm
 Text GLabel 4000 5900 0    60   Input ~ 0
 pinButton
 $Comp
-L DS1307_RTC_EMARTEE U3
+L DS1307_RTC_EMARTEE U?
 U 1 1 53A3060D
 P 7300 2200
-F 0 "U3" H 7300 2050 60  0000 C CNN
+F 0 "U?" H 7300 2050 60  0000 C CNN
 F 1 "DS1307_RTC_EMARTEE" H 7300 2400 60  0000 C CNN
 F 2 "DS1307" H 7300 2200 60  0000 C CNN
 F 3 "~" H 7500 1450 60  0000 C CNN
@@ -1368,10 +1335,6 @@ Wire Wire Line
 Wire Wire Line
 	4750 1950 4750 1900
 Wire Wire Line
-	3150 1950 3400 1950
-Wire Wire Line
-	3800 2350 3800 2250
-Wire Wire Line
 	2350 3300 2350 3150
 Wire Wire Line
 	2350 3600 2350 3750
@@ -1598,8 +1561,6 @@ Wire Wire Line
 	3950 7100 3950 7200
 Wire Wire Line
 	3950 7200 3900 7200
-Wire Wire Line
-	4350 1950 4200 1950
 Connection ~ 10100 750 
 Connection ~ 2000 2800
 Wire Wire Line
@@ -2018,10 +1979,10 @@ F 3 "" H 10200 1200 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L DIODESCH D4
+L DIODESCH D1
 U 1 1 541680A1
 P 15200 4150
-F 0 "D4" H 15200 4250 40  0000 C CNN
+F 0 "D1" H 15200 4250 40  0000 C CNN
 F 1 "MBR1045 schotky" H 15200 4050 40  0000 C CNN
 F 2 "Diodes_ThroughHole:Diode_P600_Horizontal" H 15200 4150 60  0000 C CNN
 F 3 "~" H 15200 4150 60  0000 C CNN
@@ -2029,10 +1990,10 @@ F 3 "~" H 15200 4150 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L CONN_2 P15
+L CONN_2 P18
 U 1 1 54168B06
 P 15750 4150
-F 0 "P15" V 15700 4150 40  0000 C CNN
+F 0 "P18" V 15700 4150 40  0000 C CNN
 F 1 "Mow Motor" V 15800 4150 40  0000 C CNN
 F 2 "Connect:PINHEAD1-2" H 15750 4150 60  0000 C CNN
 F 3 "" H 15750 4150 60  0000 C CNN
@@ -2092,12 +2053,12 @@ $EndComp
 Wire Wire Line
 	9900 8000 9900 8150
 $Comp
-L ACS754SCB-200 U4
+L ACS712 U3
 U 1 1 5417150B
 P 11750 8700
-F 0 "U4" H 11750 8950 50  0000 C CNN
-F 1 "ACS754SCB-200" H 11750 8450 50  0000 C CNN
-F 2 "Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA" H 11750 8700 60  0001 C CNN
+F 0 "U3" H 11750 8950 50  0000 C CNN
+F 1 "ACS712" H 11750 8450 50  0000 C CNN
+F 2 "ACS712:ACS712BreakOut" H 11750 8700 60  0000 C CNN
 F 3 "" H 11750 8700 60  0000 C CNN
 	1    11750 8700
 	0    1    1    0   
@@ -2137,12 +2098,12 @@ Wire Wire Line
 $Comp
 L GND #PWR064
 U 1 1 54172562
-P 11650 9250
-F 0 "#PWR064" H 11650 9250 30  0001 C CNN
-F 1 "GND" H 11650 9180 30  0001 C CNN
-F 2 "" H 11650 9250 60  0000 C CNN
-F 3 "" H 11650 9250 60  0000 C CNN
-	1    11650 9250
+P 11600 9550
+F 0 "#PWR064" H 11600 9550 30  0001 C CNN
+F 1 "GND" H 11600 9480 30  0001 C CNN
+F 2 "" H 11600 9550 60  0000 C CNN
+F 3 "" H 11600 9550 60  0000 C CNN
+	1    11600 9550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -2231,21 +2192,10 @@ F 3 "" H 9800 7650 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L 7805 U1
-U 1 1 541D551B
-P 3800 2000
-F 0 "U1" H 3950 1804 60  0000 C CNN
-F 1 "7805" H 3800 2200 60  0000 C CNN
-F 2 "" H 3800 2000 60  0000 C CNN
-F 3 "" H 3800 2000 60  0000 C CNN
-	1    3800 2000
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_2 P7
+L CONN_2 P15
 U 1 1 541D1F00
 P 14550 4150
-F 0 "P7" V 14500 4150 40  0000 C CNN
+F 0 "P15" V 14500 4150 40  0000 C CNN
 F 1 "Dual2-M1Out" V 14600 4150 40  0000 C CNN
 F 2 "Connect:PINHEAD1-2" H 14550 4150 60  0000 C CNN
 F 3 "" H 14550 4150 60  0000 C CNN
@@ -2263,12 +2213,12 @@ LedPin-24v
 Text GLabel 8150 1500 0    60   Output ~ 0
 Led-Status
 $Comp
-L CONN_01X04 P16
+L CONN_01X04 P7
 U 1 1 541D5603
 P 2950 8000
-F 0 "P16" H 2950 8250 50  0000 C CNN
+F 0 "P7" H 2950 8250 50  0000 C CNN
 F 1 "CONN_01X04" V 3050 8000 50  0000 C CNN
-F 2 "" H 2950 8000 60  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 2950 8000 60  0001 C CNN
 F 3 "" H 2950 8000 60  0000 C CNN
 	1    2950 8000
 	1    0    0    -1  
@@ -2293,12 +2243,12 @@ $EndComp
 Wire Wire Line
 	2750 8150 2700 8300
 $Comp
-L CONN_01X02 K7
+L CONN_01X02 K2
 U 1 1 541DAF9A
 P 6500 1450
-F 0 "K7" H 6500 1600 50  0000 C CNN
+F 0 "K2" H 6500 1600 50  0000 C CNN
 F 1 "CONN_01X02" V 6600 1450 50  0000 C CNN
-F 2 "" H 6500 1450 60  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 6500 1450 60  0001 C CNN
 F 3 "" H 6500 1450 60  0000 C CNN
 	1    6500 1450
 	-1   0    0    1   
@@ -2306,21 +2256,21 @@ $EndComp
 NoConn ~ 14250 4100
 NoConn ~ 14250 4200
 $Comp
-L CONN_2 P17
+L CONN_2 P16
 U 1 1 541D656A
 P 15250 1850
-F 0 "P17" V 15200 1850 40  0000 C CNN
+F 0 "P16" V 15200 1850 40  0000 C CNN
 F 1 "Dual2-pwr" V 15300 1850 40  0000 C CNN
-F 2 "Connect:PINHEAD1-2" H 15250 1850 60  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 15250 1850 60  0000 C CNN
 F 3 "" H 15250 1850 60  0000 C CNN
 	1    15250 1850
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_2 P18
+L CONN_2 P17
 U 1 1 541D7765
 P 15250 2250
-F 0 "P18" V 15200 2250 40  0000 C CNN
+F 0 "P17" V 15200 2250 40  0000 C CNN
 F 1 "Dual1-pwr" V 15300 2250 40  0000 C CNN
 F 2 "Connect:PINHEAD1-2" H 15250 2250 60  0000 C CNN
 F 3 "" H 15250 2250 60  0000 C CNN
@@ -2335,4 +2285,60 @@ Wire Wire Line
 	14900 1950 14900 2000
 Wire Wire Line
 	14900 2350 14900 2400
+$Comp
+L CP1 C3
+U 1 1 541DF105
+P 11800 9500
+F 0 "C3" H 11850 9600 50  0000 L CNN
+F 1 "0,1uF" H 11850 9400 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_DM5_RM2-5" H 11800 9500 60  0000 C CNN
+F 3 "~" H 11800 9500 60  0000 C CNN
+	1    11800 9500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	11650 9250 11600 9500
+Wire Wire Line
+	11600 9500 11600 9550
+Wire Wire Line
+	11850 9150 13000 9150
+Wire Wire Line
+	13000 9150 13000 9500
+Wire Wire Line
+	13000 9500 12000 9500
+Connection ~ 11850 9150
+$Comp
+L DC-DC_Stepdown U1
+U 1 1 5459779F
+P 3800 1850
+F 0 "U1" H 5550 2000 60  0000 C CNN
+F 1 "DC-DC" H 5600 900 60  0000 C CNN
+F 2 "ACS712:DC-DC" H 5600 1750 60  0001 C CNN
+F 3 "" H 5600 1750 60  0000 C CNN
+	1    3800 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 1950 3450 1950
+Wire Wire Line
+	4350 1950 4150 1950
+$Comp
+L GND #PWR068
+U 1 1 54597FC1
+P 3450 1700
+F 0 "#PWR068" H 3450 1700 30  0001 C CNN
+F 1 "GND" H 3450 1630 30  0001 C CNN
+F 2 "" H 3450 1700 60  0000 C CNN
+F 3 "" H 3450 1700 60  0000 C CNN
+	1    3450 1700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4150 1700 4150 1750
+Wire Wire Line
+	3450 1700 3450 1750
+Connection ~ 3450 1950
+Connection ~ 4150 1950
+Connection ~ 4150 1750
+Connection ~ 3450 1750
 $EndSCHEMATC
