@@ -1,4 +1,3 @@
 (fp_lib_table
-  (lib (name acs)(type Legacy)(uri /usr/share/kicad/modules/packages3d/Allegro/Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA.mod)(options "")(descr ""))
-  (lib (name sensor)(type Legacy)(uri /usr/share/kicad/modules/packages3d/Allegro/Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA.mod)(options "")(descr ""))
+  (lib (name ACS712)(type KiCad)(uri /home/stefan/src/ardumover/pcb/acs712.pretty/)(options "")(descr ACS712))
 )

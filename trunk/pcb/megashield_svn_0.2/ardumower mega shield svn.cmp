@@ -1,12 +1,4 @@
-Cmp-Mod V01 Genere par PcbNew le Sa 20 Sep 2014 22:33:15 CEST
-
-BeginCmp
-TimeStamp = 541C1235
-Path = /541D551B
-Reference = U1;
-ValeurCmp = 7805;
-IdModule  = Power_Integrations:TO-220;
-EndCmp
+Cmp-Mod V01 Genere par PcbNew le Mi 05 Nov 2014 14:56:24 CET
 
 BeginCmp
 TimeStamp = 541C1095
@@ -22,22 +14,6 @@ Path = /53866E3A
 Reference = C2;
 ValeurCmp = 10uF;
 IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_DM5_RM2-5;
-EndCmp
-
-BeginCmp
-TimeStamp = 541C10C9
-Path = /538656B8
-Reference = Dual1;
-ValeurCmp = MC33926;
-IdModule  = Pin_Headers:Pin_Header_Angled_1x18;
-EndCmp
-
-BeginCmp
-TimeStamp = 541C10DF
-Path = /541DE74B
-Reference = Dual2;
-ValeurCmp = MC33926;
-IdModule  = Pin_Headers:Pin_Header_Angled_1x18;
 EndCmp
 
 BeginCmp
@@ -66,9 +42,9 @@ EndCmp
 
 BeginCmp
 TimeStamp = 541C10F9
-Path = /54199973
+Path = /541DAF9A
 Reference = K2;
-ValeurCmp = Led-Button;
+ValeurCmp = CONN_01X02;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
@@ -297,14 +273,6 @@ IdModule  = Connect:SIL-6;
 EndCmp
 
 BeginCmp
-TimeStamp = 541C10B3
-Path = /541680A1
-Reference = D4;
-ValeurCmp = MBR1045 schotky;
-IdModule  = Diodes_ThroughHole:Diode_P600_Horizontal;
-EndCmp
-
-BeginCmp
 TimeStamp = 541D25D4
 Path = /538A4012
 Reference = P13;
@@ -314,9 +282,9 @@ EndCmp
 
 BeginCmp
 TimeStamp = 541D27A1
-Path = /541D5603
+Path = /541D656A
 Reference = P16;
-ValeurCmp = CONN_01X04;
+ValeurCmp = Dual2-pwr;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
 EndCmp
 
@@ -377,7 +345,7 @@ IdModule  = Connect:SIL-2;
 EndCmp
 
 BeginCmp
-TimeStamp = 541C1100
+TimeStamp = 545A1D86
 Path = /541A0C85
 Reference = Ladeanschluss1;
 ValeurCmp = DC/DC;
@@ -394,33 +362,25 @@ EndCmp
 
 BeginCmp
 TimeStamp = 541C1170
-Path = /54168B06
-Reference = P15;
-ValeurCmp = Mow Motor;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = 541D19B2
 Path = /541D1F00
-Reference = P7;
+Reference = P15;
 ValeurCmp = Dual2-M1Out;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
 TimeStamp = 541D52DE
-Path = /541D656A
+Path = /541D7765
 Reference = P17;
-ValeurCmp = Dual2-pwr;
+ValeurCmp = Dual1-pwr;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
 TimeStamp = 541D52E9
-Path = /541D7765
+Path = /54168B06
 Reference = P18;
-ValeurCmp = Dual1-pwr;
+ValeurCmp = Mow Motor;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -433,11 +393,51 @@ IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_DM5_RM2-5;
 EndCmp
 
 BeginCmp
-TimeStamp = 541DF9E1
+TimeStamp = 545A0F5D
 Path = /5417150B
-Reference = U4;
-ValeurCmp = ACS754SCB-200;
-IdModule  = acs:Allegro_HallSensor_Package-CB-PFF_05Jun2012;
+Reference = U3;
+ValeurCmp = ACS712;
+IdModule  = ACS712:ACS712BreakOut;
+EndCmp
+
+BeginCmp
+TimeStamp = 545A1AEF
+Path = /5459779F
+Reference = U1;
+ValeurCmp = DC-DC;
+IdModule  = ACS712:DC-DC;
+EndCmp
+
+BeginCmp
+TimeStamp = 545A1D49
+Path = /541D5603
+Reference = P7;
+ValeurCmp = CONN_01X04;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 545A0F4D
+Path = /541680A1
+Reference = D1;
+ValeurCmp = MBR1045 schotky;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 541C10DF
+Path = /541DE74B
+Reference = Dual2;
+ValeurCmp = MC33926;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
+EndCmp
+
+BeginCmp
+TimeStamp = 541C10C9
+Path = /538656B8
+Reference = Dual1;
+ValeurCmp = MC33926;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
 EndCmp
 
 EndListe
