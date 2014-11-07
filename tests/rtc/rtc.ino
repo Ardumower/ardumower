@@ -6,7 +6,9 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#define DS1307_ADDRESS B1101000
+
+// default:  B1101000
+byte DS1307_ADDRESS = B1101000;
 
 byte hour = 0;
 byte minute = 0;  
@@ -14,7 +16,6 @@ byte dayOfWeek = 0;
 byte day = 0;
 byte month = 0;
 short year= 0;  
-
 
 
 // ---- I2C helpers --------------------------------------------------------------
@@ -57,6 +58,22 @@ int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], in
   return i;
 }
 
+boolean findDS1307(){
+  byte buf[8];  
+  for (byte addr=81; addr < 127; addr++){    
+    Serial.print("testing address=");    
+    Serial.print(addr);
+    Serial.print(" ");
+    if (I2CreadFrom(addr, 0x00, 8, buf, 1) == 8) {
+      Serial.println("success!");
+      DS1307_ADDRESS = addr;
+      return true;
+    }  
+    Serial.println();
+  }        
+  Serial.println("error: no RTC module found");
+  return false;
+}
 
 boolean readDS1307(){
   byte buf[8];  
@@ -135,12 +152,16 @@ void setup()  {
   Wire.begin();
   Serial.begin(19200);  
   Serial.println("START");   
-  randomSeed(analogRead(A7)+analogRead(A0)+analogRead(A1));  
-  testRead();  
-  testWrite();
-  testRead();  
-  Serial.println();
-  Serial.println("power-off RTC, and restart to verify!");
+  Serial.print("RTC default address=");
+  Serial.println(DS1307_ADDRESS);
+  if (findDS1307()){
+    randomSeed(analogRead(A7)+analogRead(A0)+analogRead(A1));  
+    testRead();  
+    testWrite();
+    testRead();  
+    Serial.println();
+    Serial.println("power-off RTC, and restart to verify!");
+  }
 }
 
 void loop(){
