@@ -20,7 +20,7 @@ double vcenter = 0;
 unsigned long startTime = 0;
 unsigned long stopTime = 0;
 unsigned long time = 0;
-unsigned long nextInfoTime = 0;
+unsigned long offTime = 0;
 unsigned long duration = 0;
 bool state = LOW;
 int thres = 1;
@@ -54,14 +54,15 @@ void loop() {
   }
   else if ((v < vcenter - thres) && (startTime != 0)) {                  
       stopTime = millis();
-      time = stopTime - startTime;
-      digitalWrite(pinLED, HIGH);      
+      time = stopTime - startTime;      
       startTime = 0;
       //vmax = 0;
       //vmin = 9999;      
   }
   
-  if ( (vdiff > 15) || (time != 0) ){
+  if ( (vdiff > 20) || (time != 0) ){
+    digitalWrite(pinLED, HIGH);      
+    offTime = millis() + 1000;    
     Serial.print("vdiff=");
     Serial.print(vdiff);
     Serial.print("  vcenter=");
@@ -74,11 +75,12 @@ void loop() {
     Serial.print(time);
     Serial.println();                
     //if (time == 0) tone(pinBuzzer, time);
-    //  else noTone(pinBuzzer);         
-    //nextInfoTime = millis() + 500;
-    digitalWrite(pinLED, LOW);      
+    //  else noTone(pinBuzzer);             
     time = 0;
   } 
+  if (millis() > offTime){
+    digitalWrite(pinLED, LOW);      
+  }
   delay(1);
 }
 
