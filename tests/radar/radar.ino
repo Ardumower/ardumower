@@ -1,7 +1,7 @@
 /*
   test Radar sensor ZY-JIN HB200A (10.525 Ghz, 3 Mhz, 13dBm EIRP)
 
-  Arduino A0 -- Radar sensor IF
+  Arduino A0 -- LM386 amplifier -- Radar sensor IF
  */
 
 #include <Wire.h>
