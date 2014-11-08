@@ -23,7 +23,7 @@ unsigned long time = 0;
 unsigned long offTime = 0;
 unsigned long duration = 0;
 bool state = LOW;
-int thres = 1;
+int thres = 10;
 
 void setup() {  
   Serial.begin(19200);
@@ -46,13 +46,13 @@ void loop() {
   int v = analogRead(RADAR_IF);  
   double vdiff = fabs(vavg-v);
   vavg = 0.99 * vavg + 0.01 * ((double)v);
-  vmax = max(vmax*0.9, v);
-  vmin = min(vmin*1.1, v);
+  vmax = max(vmax*0.99, v);
+  vmin = min(vmin*1.01, v);
   vcenter = vmin + (vmax - vmin) / 2;
-  if (v > vcenter + thres) {
+  if (v > vavg + thres) {
     startTime = millis();
   }
-  else if ((v < vcenter - thres) && (startTime != 0)) {                  
+  else if ((v < vavg - thres) && (startTime != 0)) {                  
       stopTime = millis();
       time = stopTime - startTime;      
       startTime = 0;
@@ -60,7 +60,7 @@ void loop() {
       //vmin = 9999;      
   }
   
-  if ( (vdiff > 20) || (time != 0) ){
+  if (time != 0) {
     digitalWrite(pinLED, HIGH);      
     offTime = millis() + 1000;    
     Serial.print("vdiff=");
