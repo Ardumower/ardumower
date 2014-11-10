@@ -101,6 +101,7 @@
 // ------- baudrates---------------------------------
 #define BAUDRATE 19200            // serial output baud rate
 #define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
+#define PFOD_PIN 1234             // Bluetooth pin
 
 
 Mower robot;
@@ -128,7 +129,7 @@ Mower::Mower(){
   motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
   motorMowPID.Kp = 0.005;    // motor mower RPM PID controller
-  motorMowPID.Ki = 0,01;
+  motorMowPID.Ki = 0.01;
   motorMowPID.Kd = 0.01;
   //  ------ bumper -----------------------------------
   bumperUse         = 0;      // has bumpers?
@@ -460,7 +461,7 @@ void Mower::setActuator(char type, int value){
 
 void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
-  bt.setParams("Ardumower", 1234, PFOD_BAUDRATE, quick);  
+  bt.setParams(name, PFOD_PIN, PFOD_BAUDRATE, quick);  
 }
 
 
