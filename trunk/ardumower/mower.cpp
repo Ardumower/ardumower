@@ -47,6 +47,10 @@
     
 #define pinBumperLeft 39           // bumper pins
 #define pinBumperRight 38
+
+#define pinDropLeft 45           // drop pins                                                                                          Dropsensor - Absturzsensor
+#define pinDropRight 23          // drop pins                                                                                          Dropsensor - Absturzsensor
+
 #define pinSonarCenterTrigger 24   // ultrasonic sensor pins
 #define pinSonarCenterEcho 22
 #define pinSonarRightTrigger 30    
@@ -124,10 +128,13 @@ Mower::Mower(){
   motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
   motorMowPID.Kp = 0.005;    // motor mower RPM PID controller
-  motorMowPID.Ki = 0.01;
+  motorMowPID.Ki = 0,01;
   motorMowPID.Kd = 0.01;
   //  ------ bumper -----------------------------------
-  bumperUse         = 0;      // has bumpers? 
+  bumperUse         = 0;      // has bumpers?
+  //  ------ drop -----------------------------------
+  dropUse          = 0;     // has drops?                                                                                              Dropsensor - Absturzsensor vorhanden ?
+  dropcontact      = 1;     //contact 0-openers 1-closers                                                                              Dropsensor - Kontakt 0-Öffner - 1-Schließer betätigt gegen GND
   // ------ rain ------------------------------------
   rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
@@ -144,7 +151,7 @@ Mower::Mower(){
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse            = 0;       // use IMU? 
+  imuUse            = 0;       // use IMU?
   imuCorrectDir     = 0;       // correct direction by compass?
   imuDirPID.Kp      = 5.0;     // direction PID controller
   imuDirPID.Ki      = 1.0;
@@ -160,7 +167,7 @@ Mower::Mower(){
   batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
   batFactor       = 0.0658;     // battery conversion factor
   batChgFactor    = 0.0658;     // battery conversion factor
-  batSenseZero       =77;        // battery volt sense zero point
+  batSenseZero       =77;        // battery volt sense zero point                                                                              
   batFull          =29.4;      // battery reference Voltage (fully charged)
   chgSenseZero      = 0;       // charge current sense zero point
   chgFactor       = 2.7;     // charge current conversion factor
@@ -183,7 +190,7 @@ Mower::Mower(){
   userSwitch2       = 0;       // user-defined switch 2 (default value)
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
-  timerUse          = 0;       // use timer?  
+  timerUse          = 0;       // use timer?
   // ------ configuration end -------------------------------------------   
 }
 
@@ -282,15 +289,21 @@ void Mower::setup(){
   pinMode(pinButton, INPUT);
   pinMode(pinButton, INPUT_PULLUP);
 
-  // bumpers  
-  pinMode(pinBumperLeft, INPUT); 
+  // bumpers
+  pinMode(pinBumperLeft, INPUT);
   pinMode(pinBumperLeft, INPUT_PULLUP);
-  pinMode(pinBumperRight, INPUT);     
+  pinMode(pinBumperRight, INPUT);
   pinMode(pinBumperRight, INPUT_PULLUP);
+ 
+ // drops
+  pinMode(pinDropLeft, INPUT);                                                                                                         // Dropsensor - Absturzsensor - Deklariert als Eingang
+  pinMode(pinDropLeft, INPUT_PULLUP);                                                                                                  // Dropsensor - Absturzsensor - Intern Pullab Widerstand aktiviert (Auslösung erfolgt gegen GND)
+  pinMode(pinDropRight, INPUT);                                                                                                        // Dropsensor - Absturzsensor - Deklariert als Eingang 
+  pinMode(pinDropRight, INPUT_PULLUP);                                                                                                 // Dropsensor - Absturzsensor - Intern Pullab Widerstand aktiviert (Auslösung erfolgt gegen GND)
   
   // sonar
- // pinMode(pinSonarCenterTrigger, OUTPUT); 
- // pinMode(pinSonarCenterEcho, INPUT); 
+  pinMode(pinSonarCenterTrigger, OUTPUT); 
+  pinMode(pinSonarCenterEcho, INPUT); 
   pinMode(pinSonarLeftTrigger, OUTPUT); 
   pinMode(pinSonarLeftEcho, INPUT); 
   pinMode(pinSonarRightTrigger, OUTPUT); 
@@ -401,12 +414,16 @@ int Mower::readSensor(char type){
     case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
     case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
     
+//drop----------------------------------------------------------------------------------------------------
+    case SEN_DROP_RIGHT: return(digitalRead(pinDropRight)); break;                                                                                      // Dropsensor - Absturzsensor
+    case SEN_DROP_LEFT: return(digitalRead(pinDropLeft)); break;                                                                                        // Dropsensor - Absturzsensor
+
 // sonar---------------------------------------------------------------------------------------------------
     //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
- //   case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-    case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break; 
-    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;    
-    //case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
+   case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
+    //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
+    //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
+   // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     
 // imu-------------------------------------------------------------------------------------------------------
@@ -422,10 +439,10 @@ int Mower::readSensor(char type){
 
 void Mower::setActuator(char type, int value){
   switch (type){
-    case ACT_MOTOR_MOW: setL298N(pinMotorMowDir, pinMotorMowPWM, value); break;
+    case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;//                                                                     Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     // normal direction
-    case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;
-    case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break;    
+    case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+    case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     // reverse direction
     //case ACT_MOTOR_LEFT: setL298N(pinMotorRightDir, pinMotorRightPWM, -value); break;
     //case ACT_MOTOR_RIGHT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, -value); break;    

@@ -70,6 +70,9 @@ enum {
   SEN_MOTOR_MOW,         // 0..MAX_MOW_CURRENT
   SEN_BUMPER_LEFT,       // LOW = pressed
   SEN_BUMPER_RIGHT,      // LOW = pressed
+  SEN_DROP_LEFT,       // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor
+  SEN_DROP_RIGHT,      // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor
+  
   SEN_SONAR_CENTER,      // 0..SONAR_TRIGGER_DISTANCE
   SEN_SONAR_LEFT,        // 0..SONAR_TRIGGER_DISTANCE
   SEN_SONAR_RIGHT,       // 0..SONAR_TRIGGER_DISTANCE
@@ -266,6 +269,15 @@ class Robot
     int bumperRightCounter ;
     boolean bumperRight ;
     unsigned long nextTimeBumper ;
+    // --------- drop state ---------------------------
+    // bumper state (true = pressed)                                                                                                  // Dropsensor - Absturzsensor vorhanden ?
+    char dropUse       ;      // has drops?                                                                                           // Dropsensor - Absturzsensor Zähler links
+    int dropLeftCounter ;                                                                                                             // Dropsensor - Absturzsensor
+    boolean dropLeft ;                                                                                                                // Dropsensor - Absturzsensor links betätigt ?
+    int dropRightCounter ;                                                                                                            // Dropsensor - Absturzsensor
+    boolean dropRight ;                                                                                                               // Dropsensor - Absturzsensor rechts betätigt ?
+    unsigned long nextTimeDrop ;                                                                                                      // Dropsensor - Absturzsensor
+    char dropcontact ; // contact 0-openers 1-closers                                                                                 // Dropsensor Kontakt 0 für Öffner - 1 Schließer
     // ------- IMU state --------------------------------
     IMU imu;
     char imuUse            ;       // use IMU? 
@@ -422,6 +434,7 @@ protected:
     virtual void checkTimer();
     virtual void checkCurrent();
     virtual void checkBumpers();
+    virtual void checkDrop();                                                                                                             // Dropsensor - Absturzsensor
     virtual void checkBumpersPerimeter();
     virtual void checkPerimeterBoundary();
     virtual void checkPerimeterFind();
