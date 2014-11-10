@@ -445,13 +445,19 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
 
 // ---- RC (interrupt) --------------------------------------------------------------
 // RC remote control helper
+// convert ppm time (us) to percent (-100..+100)
+// ppmtime: zero stick pos: 1500 uS 		
+//          right stick pos: 2000 uS 		
+//          left stick pos: 1000 uS
 int Robot::rcValue(int ppmTime){
   int value = (int) (((double)((ppmTime) - 1500)) / 3.4);
-  if ((value < 5) && (value > -5)) value = 0;
+  if ((value < 5) && (value > -5)) value = 0;  //  ensures exact zero position
   return value;
 }
 
 // RC remote control driver
+// 1. save time (uS) and RC channel states (HI/LO) 		
+// 2. if new state is LO, evaluate ppm time for channel
 void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState, boolean remoteSteerState, 
   boolean remoteMowState, boolean remoteSwitchState){
   if (remoteSpeedState != remoteSpeedLastState) {    
