@@ -71,6 +71,9 @@ Robot::Robot(){
 
   bumperLeftCounter = bumperRightCounter = 0;
   bumperLeft = bumperRight = false;          
+   
+   dropLeftCounter = dropRightCounter = 0;                                                                                              // Dropsensor - Absturzsensor
+   dropLeft = dropRight = false;                                                                                                        // Dropsensor - Absturzsensor
   
   gpsLat = gpsLon = gpsX = gpsY = 0;
 
@@ -119,6 +122,7 @@ Robot::Robot(){
   nextTimeOdometry = 0;
   nextTimeOdometryInfo = 0;
   nextTimeBumper = 0;
+  nextTimeDrop = 0;                                                                                                                    // Dropsensor - Absturzsensor
   nextTimeSonar = 0;
   nextTimeBattery = 0;
   nextTimePerimeter = 0;
@@ -211,6 +215,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
+  // eereadwrite(readflag, addr, dropUse);                                                                                        // Dropsensor - Absturzsensor (nicht getestet)
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
@@ -440,23 +445,17 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
 
 // ---- RC (interrupt) --------------------------------------------------------------
 // RC remote control helper
-// convert ppm time (us) to percent (-100..+100) 
 int Robot::rcValue(int ppmTime){
-  // ppmtime:  zero stick pos:   1500 uS
-  //           right stick pos:  2000 uS
-  //           left stick pos:   1000 uS  
-  int value = (int) (((double)((ppmTime) - 1500)) / 3.4); 
-  if ((value < 5) && (value > -5)) value = 0;  // ensures exact zero position
+  int value = (int) (((double)((ppmTime) - 1500)) / 3.4);
+  if ((value < 5) && (value > -5)) value = 0;
   return value;
 }
 
 // RC remote control driver
-// 1. save time (uS) and RC channel states (HI/LO)
-// 2. if new state is LO, evaluate ppm time for channel 
 void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState, boolean remoteSteerState, 
   boolean remoteMowState, boolean remoteSwitchState){
   if (remoteSpeedState != remoteSpeedLastState) {    
-    remoteSpeedLastState = remoteSpeedState; 
+    remoteSpeedLastState = remoteSpeedState;
     if (remoteSpeedState) remoteSpeedLastTime = timeMicros; else remoteSpeed = rcValue(timeMicros - remoteSpeedLastTime);
   }
   if (remoteSteerState != remoteSteerLastState) {    
@@ -753,6 +752,7 @@ void Robot::printInfo(Stream &s){
       // sensor values
       Streamprint(s, "sen %4d %4d %4d ", (int)motorLeftSense, (int)motorRightSense, (int)motorMowSense);
       Streamprint(s, "bum %4d %4d ", bumperLeft, bumperRight);
+      Streamprint(s, "dro %4d %4d ", dropLeft, dropRight);                                                                                      // Dropsensor - Absturzsensor
       Streamprint(s, "son %4d %4d %4d ", sonarDistLeft, sonarDistCenter, sonarDistRight);
       Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));  
       Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
@@ -763,6 +763,7 @@ void Robot::printInfo(Stream &s){
       // sensor counters
       Streamprint(s, "sen %4d %4d %4d ", motorLeftSenseCounter, motorRightSenseCounter, motorMowSenseCounter);
       Streamprint(s, "bum %4d %4d ", bumperLeftCounter, bumperRightCounter);
+      Streamprint(s, "dro %4d %4d ", dropLeftCounter, dropRightCounter);                                                                      // Dropsensor - Absturzsensor
       Streamprint(s, "son %3d ", sonarDistCounter);
       Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));        
       Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
@@ -961,7 +962,15 @@ void Robot::readSerial() {
        case 'r':
          bumperRight = true; // press 'r' to simulate right bumper
          bumperRightCounter++;
-         break; 
+         break;
+        case 'j':                                                                                                                    // Dropsensor - Absturzsensor
+         dropLeft = true; // press 'j' to simulate left drop                                                                         // Dropsensor - Absturzsensor
+         dropLeftCounter++;                                                                                                          // Dropsensor - Absturzsensor
+        break;                                                                                                                       // Dropsensor - Absturzsensor
+       case 'k':                                                                                                                     // Dropsensor - Absturzsensor
+        dropRight = true; // press 'k' to simulate right drop                                                                        // Dropsensor - Absturzsensor
+        dropRightCounter++;                                                                                                          // Dropsensor - Absturzsensor
+        break;                                                                                                                       // Dropsensor - Absturzsensor
        case 's':
          lawnSensor = true; // press 's' to simulate lawn sensor
          lawnSensorCounter++;
@@ -1159,11 +1168,25 @@ void Robot::readSensors(){
       bumperLeftCounter++;
       bumperLeft=true;
     }
+
     if (readSensor(SEN_BUMPER_RIGHT) == 0) {
       bumperRightCounter++;
       bumperRight=true;
     } 
   }    
+     if ((dropUse) && (millis() >= nextTimeDrop)){                                                                          // Dropsensor - Absturzsensor
+    nextTimeDrop = millis() + 100;                                                                                          // Dropsensor - Absturzsensor
+    if (readSensor(SEN_DROP_LEFT) == dropcontact) {                                                                         // Dropsensor - Absturzsensor
+      dropLeftCounter++;                                                                                                    // Dropsensor - Absturzsensor
+      dropLeft=true;                                                                                                        // Dropsensor - Absturzsensor
+    }                                                                                                                       // Dropsensor - Absturzsensor
+ 
+  if (readSensor(SEN_DROP_RIGHT) == dropcontact) {                                                                          // Dropsensor - Absturzsensor
+      dropRightCounter++;                                                                                                   // Dropsensor - Absturzsensor
+      dropRight=true;                                                                                                       // Dropsensor - Absturzsensor
+    } 
+  }    
+  
   if ((timerUse) && (millis() >= nextTimeRTC)) {
     // read RTC
     nextTimeRTC = millis() + 1000;    
@@ -1330,7 +1353,7 @@ void Robot::setNextState(byte stateNew, byte dir){
 // check (low) battery
 void Robot::checkBattery(){
   if (batMonitor){
-    if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF)) {
+    if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF)) {    // evl Fehlerhaft nicht getestet - Bei Batterieunterspannung aus ausgeschalteten Perimeter stoppt der Mover nicht sondern sucht den Perimeter. Änderung elv nach       if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF) && (perimeterUse = 1)) {
       Console.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
@@ -1474,6 +1497,19 @@ void Robot::checkBumpers(){
       }    
   }  
 }
+
+// check drop                                                                                                                       // Dropsensor - Absturzsensor
+void Robot::checkDrop(){                                                                                                            // Dropsensor - Absturzsensor
+  if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;                                                  // Dropsensor - Absturzsensor
+
+  if ((dropLeft || dropRight)) {                                                                                                    // Dropsensor - Absturzsensor  
+      if (dropLeft) {                                                                                                               // Dropsensor - Absturzsensor
+        reverseOrBidir(RIGHT);                                                                                                      // Dropsensor - Absturzsensor     
+      } else {                                                                                                                      // Dropsensor - Absturzsensor
+        reverseOrBidir(LEFT);                                                                                                       // Dropsensor - Absturzsensor
+      }                                                                                                                             // Dropsensor - Absturzsensor
+  }                                                                                                                                 // Dropsensor - Absturzsensor
+}                                                                                                                                   // Dropsensor - Absturzsensor
 
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
@@ -1748,6 +1784,7 @@ void Robot::loop()  {
       checkRain();
       checkCurrent();            
       checkBumpers();
+      checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
       checkBattery();
       checkPerimeterBoundary();      
@@ -1757,6 +1794,7 @@ void Robot::loop()  {
     case STATE_ROLL:
       checkCurrent();            
       checkBumpers();
+      checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
       checkBattery();
       checkPerimeterBoundary();      
@@ -1783,6 +1821,7 @@ void Robot::loop()  {
         checkTimer();
         checkCurrent();            
         checkBumpers();
+        checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
         checkSonar();             
         checkBattery();
         checkPerimeterBoundary();      
@@ -1893,6 +1932,9 @@ void Robot::loop()  {
     
   bumperRight = false;
   bumperLeft = false;     
+  
+  dropRight = false;                                                                                                                             // Dropsensor - Absturzsensor
+  dropLeft = false;                                                                                                                              // Dropsensor - Absturzsensor
   
   delay(5);                           
   loopsPerSecCounter++;
