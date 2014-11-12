@@ -28,9 +28,9 @@ changes
 
 #include "TimerOne.h"
 
-#define pinIN1       9  // M1_IN1
+#define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2
-#define pinPWM      11  // M1_PWM / nD2
+#define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
 #define pinFault    12  // M1_nSF
 #define pinFeedback A0  // M1_FB
 #define pinEnable    3  // EN
