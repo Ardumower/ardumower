@@ -1038,8 +1038,9 @@ void Robot::checkButton(){
         // start remote control mode
         setNextState(STATE_REMOTE, 0);
       } else if (buttonCounter == 4){
-        // start normal without mowing
-        motorMowEnable = false;        
+        // start normal without perimeter
+        //motorMowEnable = false;        
+        perimeterUse = false;
         setNextState(STATE_FORWARD,0);           
       } else if (buttonCounter == 7){
         // start normal with mowing in lanes
