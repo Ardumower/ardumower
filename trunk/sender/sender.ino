@@ -123,7 +123,9 @@ void calibrateChargeCurrentSensor(){
     measurements.add( m );
     delay(50);
   }
-  measurements.getMedian(chargeADCZero);  
+  float v;
+  measurements.getAverage(v);  
+  chargeADCZero = v;
   EEPROM.write(0, 42);
   EEPROM.write(1, chargeADCZero >> 8);
   EEPROM.write(2, chargeADCZero & 255);  
@@ -228,16 +230,17 @@ void loop(){
     nextTimeInfo = millis() + 500;                
     checkKey();        
 
-    unsigned int v = 0;
+    //unsigned int v = 0;
+    float v = 0;
     // determine charging current (Ampere)        
-    if (USE_CHG_CURRENT) {          
-      chargeCurrentMeasurements.getMedian(v);
+    if (USE_CHG_CURRENT) {                
+      chargeCurrentMeasurements.getAverage(v);
       chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp  
       isCharging = (abs(chargeCurrent) >= 0.009); // must be at least 9 mA for charging detection
     }  
     
     // determine perimeter current (Ampere)
-    periCurrentMeasurements.getMedian(v);    
+    periCurrentMeasurements.getAverage(v);    
     periCurrent = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
         
     Serial.print("time=");
@@ -265,7 +268,7 @@ void loop(){
   periCurrentMeasurements.add( analogRead(pinFeedback) );    
 
   if (USE_CHG_CURRENT){
-    // determine charging current (Ampere)        
+    // determine charging current (Ampere)         
     chargeCurrentMeasurements.add( analogRead( pinChargeCurrent) );
   }
    
