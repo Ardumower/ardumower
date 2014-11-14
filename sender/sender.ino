@@ -18,12 +18,8 @@
 */
 
 /*
-  Perimeter sender v2  - using 'pseudonoise4_pw' signal  (for details see   http://grauonline.de/alexwww/ardumower/filter/filter.html  )  
-  for schematics, see bottom of this page:  http://www.ardumower.de/index.php/de/anleitungen/2013-11-23-19-50-19/induktion                                                                                 
-
-
-changes
-  v2.0.0.0      27.06.2014  initial version
+  Perimeter sender v2   (for details see   http://wiki.ardumower.de/index.php?title=Perimeter_wire  )  
+ 
  */
 
 #include "TimerOne.h"
@@ -52,8 +48,6 @@ volatile byte state = 0;
 volatile byte wait = 1;
 
 
-double minduty = 0.05; // 5%
-double maxduty = 1.0; // 100%
 double duty = 0.1;    // 10%
 int dutyPWM = 0;
 double chargeCurrent = 0;
@@ -61,8 +55,9 @@ double periCurrent = 0;
 int faults = 0;
 boolean isCharging = false;
 boolean stateLED = false;
-int chargeADCZero = 511;
-RunningMedian<double,64> chargeCurrentValues;
+unsigned int chargeADCZero = 511;
+RunningMedian<unsigned int,32> periCurrentMeasurements;
+RunningMedian<unsigned int,32> chargeCurrentMeasurements;
 
 unsigned long nextTimeControl = 0;
 unsigned long nextTimeInfo = 0;
@@ -118,15 +113,24 @@ void readEEPROM(){
   Serial.println(chargeADCZero);  
 }
 
+
 void calibrateChargeCurrentSensor(){
   Serial.println("calibrateChargeCurrentSensor");
-  chargeADCZero = analogRead(pinChargeCurrent);
+  RunningMedian<unsigned int,32> measurements;
+  for (unsigned int i=0; i < measurements.getSize(); i++) {
+    unsigned int m = analogRead(pinChargeCurrent);
+    //Serial.println(m);
+    measurements.add( m );
+    delay(50);
+  }
+  measurements.getMedian(chargeADCZero);  
   EEPROM.write(0, 42);
   EEPROM.write(1, chargeADCZero >> 8);
   EEPROM.write(2, chargeADCZero & 255);  
   Serial.println("calibration done");
   readEEPROM();
 } 
+
 
   
 void setup() {  
@@ -203,13 +207,13 @@ void fault(){
 void loop(){    
   if (millis() >= nextTimeControl){                    
     nextTimeControl = millis() + 100;
+    dutyPWM = ((int)(duty * 255.0));
     if (isCharging){
       // switch off perimeter 
       digitalWrite(pinEnable, LOW);            
     } else {
       // switch on perimeter
-      digitalWrite(pinEnable, HIGH);           
-      dutyPWM = (int) (duty / 1.0 * 255.0);
+      digitalWrite(pinEnable, HIGH);                 
       //analogWrite(pinPWM, 255);
       analogWrite(pinPWM, dutyPWM);
       if ( (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
@@ -223,9 +227,19 @@ void loop(){
   if (millis() >= nextTimeInfo){                
     nextTimeInfo = millis() + 500;                
     checkKey();        
-    if (chargeCurrentValues.getMedian(chargeCurrent) == chargeCurrentValues.OK){
+
+    unsigned int v = 0;
+    // determine charging current (Ampere)        
+    if (USE_CHG_CURRENT) {          
+      chargeCurrentMeasurements.getMedian(v);
+      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp  
       isCharging = (abs(chargeCurrent) > 0.02); // must be at least 20 mA for charging detection
-    }
+    }  
+    
+    // determine perimeter current (Ampere)
+    periCurrentMeasurements.getMedian(v);    
+    periCurrent = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+        
     Serial.print("time=");
     Serial.print(millis()/1000);    
     Serial.print("\tchgCurrent=");
@@ -237,7 +251,7 @@ void loop(){
     Serial.print("\tduty=");
     Serial.print(duty);
     Serial.print("\tdutyPWM=");        
-    Serial.print((int)dutyPWM);        
+    Serial.print(dutyPWM);        
     Serial.print("\tfaults=");
     Serial.print(faults);        
     Serial.println();
@@ -247,19 +261,12 @@ void loop(){
       duty = ((float)map(analogRead(pinPot),  0,1023,   0,1000))  /1000.0;
     }              
   }
-  
-  delay(500);
-  
-  // determine perimeter current  
-  // 525 mV per amp
-  double I = ((double)analogRead(pinFeedback)) / 1023.0 * 5.0 / 0.525;  
-  periCurrent = 0.9 * I + 0.1 * I;
-
+    
+  periCurrentMeasurements.add( analogRead(pinFeedback) );    
 
   if (USE_CHG_CURRENT){
     // determine charging current (Ampere)        
-    double amp = ((double)(analogRead(pinChargeCurrent) - chargeADCZero)) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp
-    chargeCurrentValues.add(amp);
+    chargeCurrentMeasurements.add( analogRead( pinChargeCurrent) );
   }
    
   // LED status 
