@@ -56,8 +56,8 @@ int faults = 0;
 boolean isCharging = false;
 boolean stateLED = false;
 unsigned int chargeADCZero = 511;
-RunningMedian<unsigned int,32> periCurrentMeasurements;
-RunningMedian<unsigned int,32> chargeCurrentMeasurements;
+RunningMedian<unsigned int,16> periCurrentMeasurements;
+RunningMedian<unsigned int,96> chargeCurrentMeasurements;
 
 unsigned long nextTimeControl = 0;
 unsigned long nextTimeInfo = 0;
@@ -233,7 +233,7 @@ void loop(){
     if (USE_CHG_CURRENT) {          
       chargeCurrentMeasurements.getMedian(v);
       chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp  
-      isCharging = (abs(chargeCurrent) > 0.02); // must be at least 20 mA for charging detection
+      isCharging = (abs(chargeCurrent) >= 0.009); // must be at least 9 mA for charging detection
     }  
     
     // determine perimeter current (Ampere)
