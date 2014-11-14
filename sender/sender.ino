@@ -27,6 +27,8 @@ changes
  */
 
 #include "TimerOne.h"
+#include "EEPROM.h"
+#include "RunningMedian.h"
 
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2
@@ -55,12 +57,12 @@ double maxduty = 1.0; // 100%
 double duty = 0.1;    // 10%
 int dutyPWM = 0;
 double chargeCurrent = 0;
-double chargeValue = 0;
-int chargeValueCounter = 0;
 double periCurrent = 0; 
 int faults = 0;
 boolean isCharging = false;
 boolean stateLED = false;
+int chargeADCZero = 511;
+RunningMedian<double,64> chargeCurrentValues;
 
 unsigned long nextTimeControl = 0;
 unsigned long nextTimeInfo = 0;
@@ -107,6 +109,25 @@ void timerCallback(){
   }  
 }
 
+void readEEPROM(){
+  if (EEPROM.read(0) == 42){
+    // EEPROM data available
+    chargeADCZero = (EEPROM.read(1) << 8) | EEPROM.read(2);
+  } else Serial.println("no EEPROM data found, using default calibration");
+  Serial.print("chargeADCZero=");
+  Serial.println(chargeADCZero);  
+}
+
+void calibrateChargeCurrentSensor(){
+  Serial.println("calibrateChargeCurrentSensor");
+  chargeADCZero = analogRead(pinChargeCurrent);
+  EEPROM.write(0, 42);
+  EEPROM.write(1, chargeADCZero >> 8);
+  EEPROM.write(2, chargeADCZero & 255);  
+  Serial.println("calibration done");
+  readEEPROM();
+} 
+
   
 void setup() {  
   pinMode(pinIN1, OUTPUT);    
@@ -118,13 +139,15 @@ void setup() {
   pinMode(pinPot, INPUT);      
   pinMode(pinChargeCurrent, INPUT);
   
-  digitalWrite(pinEnable, HIGH);
+  digitalWrite(pinEnable, HIGH);   
     
   //int T = 1000.0*1000.0/(7800*2);
   // sample rate 19230,76923076923 / 2 => 9615.38
   int T = 1000.0*1000.0/(19230.76923076923/2.0);
   Serial.begin(19200);
+  
   Serial.println("START");
+  readEEPROM();
   Serial.print("T=");
   Serial.println(T);    
   Serial.print("f=");
@@ -145,6 +168,19 @@ void setup() {
   //sei();
 }
 
+void checkKey(){
+  if (Serial.available() > 0) {
+      char ch = (char)Serial.read();            
+      Serial.print("received key=");
+      Serial.println(ch);
+      while (Serial.available()) Serial.read();
+      switch (ch){
+        case '1': 
+          calibrateChargeCurrentSensor();           
+          break;
+      }
+  }             
+}
 
 // Interrupt service run when Timer/Counter2 reaches OCR2A
 //ISR(TIMER2_COMPA_vect) {
@@ -185,11 +221,10 @@ void loop(){
   }
 
   if (millis() >= nextTimeInfo){                
-    nextTimeInfo = millis() + 500;        
-    if (chargeValueCounter != 0) {
-      chargeCurrent = 0.9 * chargeCurrent + 0.1 * (chargeValue / ((double)chargeValueCounter));
-      chargeValueCounter = chargeValue = 0;          
-      isCharging = (abs(chargeCurrent) > 0.05);
+    nextTimeInfo = millis() + 500;                
+    checkKey();        
+    if (chargeCurrentValues.getMedian(chargeCurrent) == chargeCurrentValues.OK){
+      isCharging = (abs(chargeCurrent) > 0.02); // must be at least 20 mA for charging detection
     }
     Serial.print("time=");
     Serial.print(millis()/1000);    
@@ -204,7 +239,8 @@ void loop(){
     Serial.print("\tdutyPWM=");        
     Serial.print((int)dutyPWM);        
     Serial.print("\tfaults=");
-    Serial.println(faults);        
+    Serial.print(faults);        
+    Serial.println();
     
     if (USE_POT){
       // read potentiometer
@@ -212,7 +248,7 @@ void loop(){
     }              
   }
   
-  delay(10);
+  delay(500);
   
   // determine perimeter current  
   // 525 mV per amp
@@ -221,9 +257,9 @@ void loop(){
 
 
   if (USE_CHG_CURRENT){
-    // determine charging current
-    chargeValue += abs((double)map(analogRead(pinChargeCurrent),  0,1023,   -540,540))  /540.0;        
-    chargeValueCounter++;    
+    // determine charging current (Ampere)        
+    double amp = ((double)(analogRead(pinChargeCurrent) - chargeADCZero)) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp
+    chargeCurrentValues.add(amp);
   }
    
   // LED status 
@@ -238,9 +274,9 @@ void loop(){
     stateLED = (periCurrent >= 0.1);
   }
   digitalWrite(pinLED, stateLED);   
-  
-}
 
+
+}
 
 
 
