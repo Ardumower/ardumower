@@ -48,7 +48,7 @@
 
 // Ardumower code version - the revision keyword will be updated automatically by SVN
 // http://svnbook.red-bean.com/en/1.7/svn.advanced.props.special.keywords.html
-#define VER "$Rev: 259 $"
+#define VER "$Rev$"
 
 // --------------------------------------
 
