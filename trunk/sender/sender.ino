@@ -45,6 +45,11 @@
 
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
 
+
+// Ardumower code version - the revision keyword will be updated automatically by SVN
+// http://svnbook.red-bean.com/en/1.7/svn.advanced.props.special.keywords.html
+#define VER "$Rev: 259 $"
+
 // --------------------------------------
 
 volatile int step = 0;
@@ -157,7 +162,12 @@ void setup() {
   Serial.begin(19200);
   
   Serial.println("START");
-  Serial.println("note: press '1' for current sensor calibration");  
+  Serial.print("Ardumower ");
+  Serial.println(VER);
+  Serial.println("press...");
+  Serial.println("  1  for current sensor calibration");  
+  Serial.println();
+  
   readEEPROM();
   Serial.print("T=");
   Serial.println(T);    
