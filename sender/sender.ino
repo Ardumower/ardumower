@@ -39,7 +39,7 @@
 
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
 #define USE_CHG_CURRENT       1     // use charging current sensor?
-#define CHG_CURRENT_MIN   0.009     // must be at least 9 mA for charging detection
+#define CHG_CURRENT_MIN   0.050     // must be at least 50 mA for charging detection
 
 #define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter detection
 
