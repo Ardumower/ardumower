@@ -26,6 +26,7 @@
 #include "EEPROM.h"
 #include "RunningMedian.h"
 
+// MC33926 motor driver
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2
 #define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
@@ -36,10 +37,13 @@
 #define pinPot      A1  // 100k potentiometer (current control)   
 #define USE_POT      1  // use potentiometer for current control?
 
-#define pinChargeCurrent A2  // ACS712-05 current sensor OUT
-#define USE_CHG_CURRENT   1      // use charging current sensor?
+#define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
+#define USE_CHG_CURRENT       1     // use charging current sensor?
+#define CHG_CURRENT_MIN   0.009     // must be at least 9 mA for charging detection
 
-#define  pinLED 13
+#define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter detection
+
+#define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
 
 // --------------------------------------
 
@@ -115,7 +119,7 @@ void readEEPROM(){
 
 
 void calibrateChargeCurrentSensor(){
-  Serial.println("calibrateChargeCurrentSensor");
+  Serial.println("calibrateChargeCurrentSensor (note: robot must be outside charging station!)");
   RunningMedian<unsigned int,32> measurements;
   for (unsigned int i=0; i < measurements.getSize(); i++) {
     unsigned int m = analogRead(pinChargeCurrent);
@@ -153,6 +157,7 @@ void setup() {
   Serial.begin(19200);
   
   Serial.println("START");
+  Serial.println("note: press '1' for current sensor calibration");  
   readEEPROM();
   Serial.print("T=");
   Serial.println(T);    
@@ -236,7 +241,7 @@ void loop(){
     if (USE_CHG_CURRENT) {                
       chargeCurrentMeasurements.getAverage(v);
       chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp  
-      isCharging = (abs(chargeCurrent) >= 0.009); // must be at least 9 mA for charging detection
+      isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); // must be at least 9 mA for charging detection
     }  
     
     // determine perimeter current (Ampere)
@@ -281,7 +286,7 @@ void loop(){
     }
   } else {
     // not charging => indicate perimeter wire state (OFF=broken)
-    stateLED = (periCurrent >= 0.1);
+    stateLED = (periCurrent >= PERI_CURRENT_MIN);
   }
   digitalWrite(pinLED, stateLED);   
 
