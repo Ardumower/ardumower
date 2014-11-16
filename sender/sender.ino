@@ -250,7 +250,7 @@ void loop(){
     // determine charging current (Ampere)        
     if (USE_CHG_CURRENT) {                
       chargeCurrentMeasurements.getAverage(v);
-      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.5;  // 500 mV per amp  
+      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.185;  // 185 mV per amp  
       isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); // must be at least 9 mA for charging detection
     }  
     
