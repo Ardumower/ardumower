@@ -35,7 +35,7 @@ How to use it (example):
 2. Set ADC pin:     ADCMan.setCapture(pinMotorMowSense, 1, 1);
 3. Program loop:    while (true){
                       ADCMan.run();
-                      if (isCaptureComplete(pinMotorMowSense)){
+                      if (ADCMan.isCaptureComplete(pinMotorMowSense)){
                         int value = ADCMan.read(pinMotorMowSense);
                       }
                     }
