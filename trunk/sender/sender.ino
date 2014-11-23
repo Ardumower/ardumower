@@ -26,7 +26,7 @@
 #include "EEPROM.h"
 #include "RunningMedian.h"
 
-// MC33926 motor driver
+// --- MC33926 motor driver ---
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2
 #define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
@@ -34,15 +34,21 @@
 #define pinFeedback A0  // M1_FB
 #define pinEnable    3  // EN
 
-#define pinPot      A1  // 100k potentiometer (current control)   
-#define USE_POT      1  // use potentiometer for current control?
+// perimeter open/close detection (used for status LED)
+#define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter-is-closed detection 
 
+// ---- sender current control (via potentiometer) ----
+// sender modulates signal (PWM), based on duty-cycle set via this potentiometer
+#define USE_POT      1  // use potentiometer for current control? (set to '0' if not connected!)
+#define pinPot      A1  // 100k potentiometer (current control)   
+
+// ---- sender automatic standby (via current sensor for charger) ----
+// sender detects robot via a charging current through the charging pins
+#define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
-#define USE_CHG_CURRENT       1     // use charging current sensor?
 #define CHG_CURRENT_MIN   0.050     // must be at least 50 mA for charging detection
 
-#define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter detection
-
+// ---- sender status LED ----
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
 
 
