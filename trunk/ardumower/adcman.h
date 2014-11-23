@@ -33,8 +33,12 @@ Arduino ADC manager (ADC0-ADC9)
 How to use it (example):
 1. Initialize ADC:  ADCMan.init();
 2. Set ADC pin:     ADCMan.setCapture(pinMotorMowSense, 1, 1);
-3. Read ADC:        int value = ADCMan.read(pinMotorMowSense);
-
+3. Program loop:    while (true){
+                      ADCMan.run();
+                      if (isCaptureComplete(pinMotorMowSense)){
+                        int value = ADCMan.read(pinMotorMowSense);
+                      }
+                    }
 */
 
 
