@@ -17,9 +17,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*
+Problem: you have multiple analog inputs, some need only to be sampled once, other need
+a fixed sample rate. 
+
+Solution:  
 Arduino ADC manager (ADC0-ADC9)
 - can capture multiple pins one after the other (example ADC0: 1000 samples, ADC1: 100 samples, ADC2: 1 sample etc.)
-- can capture more than one sample into buffers
+- can capture more than one sample into buffers (fixed sample rate)
 - runs in background: interrupt-based (free-running) 
 - two types of ADC capture:
   1) free-running ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
