@@ -30,11 +30,15 @@
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2
 #define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
-#define pinFault    12  // M1_nSF
-#define pinFeedback A0  // M1_FB
 #define pinEnable    3  // EN
 
-// perimeter open/close detection (used for status LED)
+// motor driver fault pin
+#define pinFault    12  // M1_nSF
+#define USE_PERI_FAULT        0     // use pinFault for driver fault detection? (set to '0' if not connected!)
+
+// motor driver feedback pin (=perimeter open/close detection, used for status LED)
+#define USE_PERI_CURRENT      0     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
+#define pinFeedback A0  // M1_FB
 #define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter-is-closed detection 
 
 // ---- sender current control (via potentiometer) ----
@@ -44,7 +48,7 @@
 
 // ---- sender automatic standby (via current sensor for charger) ----
 // sender detects robot via a charging current through the charging pins
-#define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
+#define USE_CHG_CURRENT       0     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
 #define CHG_CURRENT_MIN   0.050     // must be at least 50 mA for charging detection
 
@@ -239,7 +243,7 @@ void loop(){
       digitalWrite(pinEnable, HIGH);                 
       //analogWrite(pinPWM, 255);
       analogWrite(pinPWM, dutyPWM);
-      if ( (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
+      if ( USE_PERI_FAULT && (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
         duty = 0;
         analogWrite(pinPWM, duty);
         fault();    
@@ -260,9 +264,11 @@ void loop(){
       isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); // must be at least 9 mA for charging detection
     }  
     
-    // determine perimeter current (Ampere)
-    periCurrentMeasurements.getAverage(v);    
-    periCurrent = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+    if (USE_PERI_CURRENT) {
+      // determine perimeter current (Ampere)
+      periCurrentMeasurements.getAverage(v);    
+      periCurrent = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+    }
         
     Serial.print("time=");
     Serial.print(millis()/1000);    
@@ -285,8 +291,10 @@ void loop(){
       duty = ((float)map(analogRead(pinPot),  0,1023,   0,1000))  /1000.0;
     }              
   }
-    
-  periCurrentMeasurements.add( analogRead(pinFeedback) );    
+  
+  if (USE_PERI_CURRENT) {
+    periCurrentMeasurements.add( analogRead(pinFeedback) );    
+  }
 
   if (USE_CHG_CURRENT){
     // determine charging current (Ampere)         
