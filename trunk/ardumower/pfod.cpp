@@ -508,7 +508,7 @@ void RemoteControl::sendBatteryMenu(boolean update){
   Bluetooth.print(robot->chgCurrent);
   Bluetooth.print("A");
   sendSlider("j06", F("Charge sense zero"), robot->chgSenseZero, "", 1, 600, 400);       
-  sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 10);     
+  sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);     
   Bluetooth.println(F("|j09~for config file: "));
   Bluetooth.print("batSenseZero ");
   Bluetooth.println(robot->batSenseZero);
