@@ -1228,7 +1228,25 @@ void Robot::readSensors(){
     double accel = 0.01;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
-    if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  
+    // if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  //Deaktiviert für Ladestromsensor berechnung 
+
+   //  Ladestromsensor berechnen ********** Anfang
+
+    float sense=185.0;                                   // mV/A empfindlichkeit des Stromsensors in mV/A (Für ACS712 5A = 185)
+    float vcc, asensor, amp;     
+    float chgAMP;                                        //Sensorwert des Ladestrompin
+
+    chgAMP = readSensor(SEN_CHG_CURRENT);                //Sensorwert einlesen vom Ladestrompin
+    vcc = (float) 3.30 / chgSenseZero * 1023.0;          // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
+    asensor = (float) chgAMP * vcc / 1023.0;             // Messwert auslesen
+    asensor = (float) asensor - (vcc/2);                 // Nulldurchgang (vcc/2) abziehen
+    sense = (float) 186.0 - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
+    amp = (float) asensor /sense *1000 ;                 // Ampere berechnen
+    
+    if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;  // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
+    
+    //  Ladestromsensor berechnen ********** Ende
+
     //batVoltage = batVolt
     //chgVoltage = chgvolt;
     //chgCurrent = current;        
