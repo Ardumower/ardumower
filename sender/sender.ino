@@ -28,16 +28,16 @@
 
 // --- MC33926 motor driver ---
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
-#define pinIN2       8  // M1_IN2
+#define pinIN2       8  // M1_IN2         (if using old L298N driver, leave open)
 #define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
-#define pinEnable    3  // EN
+#define pinEnable    3  // EN             (if using old L298N driver, leave open)
 
 // motor driver fault pin
 #define pinFault    12  // M1_nSF
-#define USE_PERI_FAULT        0     // use pinFault for driver fault detection? (set to '0' if not connected!)
+#define USE_PERI_FAULT        1     // use pinFault for driver fault detection? (set to '0' if not connected!)
 
 // motor driver feedback pin (=perimeter open/close detection, used for status LED)
-#define USE_PERI_CURRENT      0     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
+#define USE_PERI_CURRENT      1     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
 #define pinFeedback A0  // M1_FB
 #define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter-is-closed detection 
 
@@ -48,7 +48,7 @@
 
 // ---- sender automatic standby (via current sensor for charger) ----
 // sender detects robot via a charging current through the charging pins
-#define USE_CHG_CURRENT       0     // use charging current sensor for robot detection? (set to '0' if not connected!)
+#define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
 #define CHG_CURRENT_MIN   0.050     // must be at least 50 mA for charging detection
 
