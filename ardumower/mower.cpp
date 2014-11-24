@@ -365,6 +365,7 @@ void Mower::setup(){
     
   // ADC
   ADCMan.init();
+  ADCMan.setCapture(pinChargeCurrent, 1, true);//Aktivierung des LaddeStrom Pins beim ADC-Managers      
   ADCMan.setCapture(pinMotorMowSense, 1, true);
   ADCMan.setCapture(pinMotorLeftSense, 1, true);
   ADCMan.setCapture(pinMotorRightSense, 1, true);
