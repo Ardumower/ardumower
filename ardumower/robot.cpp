@@ -1223,7 +1223,7 @@ void Robot::readSensors(){
     int chgADC = readSensor(SEN_CHG_VOLTAGE);
     //Console.println(chgADC);
     double chgvolt = (((double)chgADC) - batSenseZero) * batFactor;
-    double current = ((double)((int)(readSensor(SEN_CHG_CURRENT) / 10))) / 10.0;  
+    double current = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
     // low-pass filter
     double accel = 0.01;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
@@ -1236,7 +1236,7 @@ void Robot::readSensors(){
     float vcc, asensor, amp;     
     float chgAMP;                                        //Sensorwert des Ladestrompin
 
-    chgAMP = readSensor(SEN_CHG_CURRENT);                //Sensorwert einlesen vom Ladestrompin
+    chgAMP = current;                                    //Sensorwert einlesen vom Ladestrompin
     vcc = (float) 3.30 / chgSenseZero * 1023.0;          // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
     asensor = (float) chgAMP * vcc / 1023.0;             // Messwert auslesen
     asensor = (float) asensor - (vcc/2);                 // Nulldurchgang (vcc/2) abziehen
