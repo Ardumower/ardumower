@@ -573,6 +573,7 @@ boolean IMU::calibAccNextAxis(){
   return complete;
 }      
 
+// first-order complementary filter
 // newAngle = angle measured with atan2 using the accelerometer
 // newRate = angle measured using the gyro
 // looptime = loop time in millis()
@@ -586,6 +587,7 @@ float Complementary2(float newAngle, float newRate,int looptime, float angle) {
   return angle;
 }
 
+// second-order complementary filter
 // a=tau / (tau + loop time)
 // newAngle = angle measured with atan2 using the accelerometer
 // newRate = angle measured using the gyro
@@ -599,6 +601,42 @@ float Complementary(float newAngle, float newRate,int looptime, float angle) {
   return angle;
 }
 
+// Kalman filter                                      
+// newAngle = angle measured with atan2 using the accelerometer
+// newRate = angle measured using the gyro
+// looptime = loop time in millis()
+float Kalman(float newAngle, float newRate,int looptime, float x_angle)
+{
+  float Q_angle  =  0.01; //0.001
+  float Q_gyro   =  0.0003;  //0.003
+  float R_angle  =  0.01;  //0.03
+
+  float x_bias = 0;
+  float P_00 = 0, P_01 = 0, P_10 = 0, P_11 = 0;
+  float  y, S;
+  float K_0, K_1;
+
+  float dt = float(looptime)/1000;
+  x_angle += dt * (newRate - x_bias);
+  P_00 +=  - dt * (P_10 + P_01) + Q_angle * dt;
+  P_01 +=  - dt * P_11;
+  P_10 +=  - dt * P_11;
+  P_11 +=  + Q_gyro * dt;
+
+  y = newAngle - x_angle;
+  S = P_00 + R_angle;
+  K_0 = P_00 / S;
+  K_1 = P_10 / S;
+
+  x_angle +=  K_0 * y;
+  x_bias  +=  K_1 * y;
+  P_00 -= K_0 * P_00;
+  P_01 -= K_0 * P_01;
+  P_10 -= K_1 * P_00;
+  P_11 -= K_1 * P_01;
+
+  return x_angle;
+}
 
 // scale setangle, so that both PI angles have the same sign    
 float scalePIangles(float setAngle, float currAngle){
@@ -616,19 +654,21 @@ void IMU::update(){
   if (state == IMU_RUN){
     // ------ roll, pitch --------------  
     float forceMagnitudeApprox = abs(acc.x) + abs(acc.y) + abs(acc.z);    
-    if (forceMagnitudeApprox < 1.2) {
+    //if (forceMagnitudeApprox < 1.2) {
       //Console.println(forceMagnitudeApprox);      
       accPitch   = atan2(-acc.x , sqrt(sq(acc.y) + sq(acc.z)));         
       accRoll    = atan2(acc.y , acc.z);       
       accPitch = scalePIangles(accPitch, ypr.pitch);
       accRoll  = scalePIangles(accRoll, ypr.roll);
       // complementary filter            
-      ypr.pitch = Complementary2(accPitch, gyro.x, looptime, ypr.pitch);  
-      ypr.roll  = Complementary2(accRoll,  gyro.y, looptime, ypr.roll);            
-    } else {
+      ypr.pitch = Kalman(accPitch, gyro.x, looptime, ypr.pitch);  
+      ypr.roll  = Kalman(accRoll,  gyro.y, looptime, ypr.roll);            
+    /*} else {
+      //Console.print("too much acceleration ");
+      //Console.println(forceMagnitudeApprox);
       ypr.pitch = ypr.pitch + gyro.y * ((float)(looptime))/1000.0;
       ypr.roll  = ypr.roll  + gyro.x * ((float)(looptime))/1000.0;
-    }
+    }*/
     ypr.pitch=scalePI(ypr.pitch);
     ypr.roll=scalePI(ypr.roll);
     // ------ yaw --------------
