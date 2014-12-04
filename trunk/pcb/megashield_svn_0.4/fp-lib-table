@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name ACS712)(type KiCad)(uri /home/stefan/src/ardumover/pcb/acs712.pretty/)(options "")(descr ACS712))
-)
