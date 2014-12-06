@@ -1242,7 +1242,7 @@ void Robot::readSensors(){
     asensor = (float) asensor - (vcc/2);                 // Nulldurchgang (vcc/2) abziehen
     chgSense = (float) 186.0 - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
     amp = (float) asensor /chgSense *1000 ;                 // Ampere berechnen
-    
+    if (chgChange >=1) amp = amp / -1;                      //Lade Strom Messwertumkehr von - nach +
     if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;  // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
     
     //  Ladestromsensor berechnen ********** Ende
