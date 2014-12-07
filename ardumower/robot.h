@@ -355,6 +355,7 @@ class Robot
     float batCapacity ; // battery capacity (mAh)
     float chgVoltage ;  // charge voltage (Volt)
     float chgCurrent ;  // charge current  (Ampere)
+    int chgNull;        // Nulldurchgang Ladestromsensor
     int stationRevTime     ;    // charge station reverse time (ms)
     int stationRollTime    ;    // charge station roll time (ms)
     int stationForwTime    ;    // charge station forward time (ms)

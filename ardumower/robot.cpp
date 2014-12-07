@@ -1239,8 +1239,8 @@ void Robot::readSensors(){
     chgAMP = current;                                    //Sensorwert einlesen vom Ladestrompin
     vcc = (float) 3.30 / chgSenseZero * 1023.0;          // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
     asensor = (float) chgAMP * vcc / 1023.0;             // Messwert auslesen
-    asensor = (float) asensor - (vcc/2);                 // Nulldurchgang (vcc/2) abziehen
-    chgSense = (float) 186.0 - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
+    asensor = (float) asensor - (vcc/chgNull);                 // Nulldurchgang (vcc/2) abziehen
+    chgSense = (float) chgSense - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
     amp = (float) asensor /chgSense *1000 ;                 // Ampere berechnen
     if (chgChange >=1) amp = amp / -1;                      //Lade Strom Messwertumkehr von - nach +
     if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;  // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
