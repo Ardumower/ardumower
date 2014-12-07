@@ -170,11 +170,12 @@ Mower::Mower(){
   batChgFactor    = 0.0658;     // battery conversion factor
   batSenseZero       =77;        // battery volt sense zero point                                                                              
   batFull          =29.4;      // battery reference Voltage (fully charged)
-  // Einstellungen ACS712 5A    (chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung))     
+  // Einstellungen ACS712 5A    (chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2) 
   chgSenseZero    = 511;        // charge current sense zero point
   chgFactor       = 39;         // charge current conversion factor   - Empfindlichkeit nimmt mit ca. 39/V Vcc ab
   chgSense        = 185.0;      // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
   chgChange       = 0;          // Messwertumkehr von - nach +         1 oder 0
+  chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)
   // ------  charging station ---------------------------
   stationRevTime     = 4000;    // charge station reverse time (ms)
   stationRollTime    = 2000;    // charge station roll time (ms)
