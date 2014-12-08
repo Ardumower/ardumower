@@ -38,11 +38,11 @@
 #define pinMotorRightSense A0      // M2_FB  right motor current sense
 #define pinMotorRightFault 27      // M2_SF  right motor fault
                                     
-#define pinMotorMowPWM 2           // M1_IN1 mower motor PWM pin
-#define pinMotorMowDir 29          // M1_IN2 mower motor Dir pin
-#define pinMotorMowSense A3        // M1_FB  mower motor current sense
-#define pinMotorMowFault 26        // M1_SF  mower motor fault
-#define pinMotorMowEnable 28       // EN mower motor enable
+#define pinMotorMowPWM 2           // M1_IN1 mower motor PWM pin (if using MOSFET, use this pin)
+#define pinMotorMowDir 29          // M1_IN2 mower motor Dir pin (if using MOSFET, keep unconnected)
+#define pinMotorMowSense A3        // M1_FB  mower motor current sense  
+#define pinMotorMowFault 26        // M1_SF  mower motor fault   (if using MOSFET/L298N, keep unconnected)
+#define pinMotorMowEnable 28       // EN mower motor enable      (if using MOSFET/L298N, keep unconnected)
 #define pinMotorMowRpm 18
     
 #define pinBumperLeft 39           // bumper pins
