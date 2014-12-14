@@ -1230,22 +1230,41 @@ void Robot::readSensors(){
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
     // if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  //Deaktiviert für Ladestromsensor berechnung 
 
-   //  Ladestromsensor berechnen ********** Anfang
-
+    // Anfang Ladestromsensor zur Glättung und Mittelwertbildung
+    // ********************************************************************
+    //  Variabeln
+    double currentmitte;
     
-    float vcc, asensor, amp;     
-    float chgAMP;                                        //Sensorwert des Ladestrompin
+    currentmitte = current;
+    
+    // ********************************************************************
+    // Ende Ladestromsensor zur Glättung und Mittelwertbildung
 
-    chgAMP = current;                                    //Sensorwert einlesen vom Ladestrompin
-    vcc = (float) 3.30 / chgSenseZero * 1023.0;          // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
-    asensor = (float) chgAMP * vcc / 1023.0;             // Messwert auslesen
+
+   //  Anfang Ladestromsensor berechnen
+   // ********************************************************************
+   //  Variabeln 
+    float vcc, asensor, amp;     
+    float chgAMP;                                               //Sensorwert des Ladestrompin
+
+    //Sensor Wert Ausgabe auf Seriellen Monitor oder HandyApp   wenn chgSelection =0
+    if ((chgSelection)==0) chgCurrent = current;
+
+    // Berechnung für Ladestromsensor ACS712 5A                 wenn chgSelection =1
+    if ((chgSelection)==1) {
+
+    chgAMP = currentmitte;                                     //Sensorwert übergabe vom Ladestrompin
+    vcc = (float) 3.30 / chgSenseZero * 1023.0;                // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
+    asensor = (float) chgAMP * vcc / 1023.0;                   // Messwert auslesen
     asensor = (float) asensor - (vcc/chgNull);                 // Nulldurchgang (vcc/2) abziehen
     chgSense = (float) chgSense - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
-    amp = (float) asensor /chgSense *1000 ;                 // Ampere berechnen
-    if (chgChange >=1) amp = amp / -1;                      //Lade Strom Messwertumkehr von - nach +
-    if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;  // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
+    amp = (float) asensor /chgSense *1000 ;                    // Ampere berechnen
+    if (chgChange ==1) amp = amp / -1;                         //Lade Strom Messwertumkehr von - nach +
+    if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;        // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
+    }
     
     //  Ladestromsensor berechnen ********** Ende
+    // ********************************************************************
 
     //batVoltage = batVolt
     //chgVoltage = chgvolt;

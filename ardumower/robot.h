@@ -351,6 +351,7 @@ class Robot
     float chgSense        ;       // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
     char chgChange        ;       // messwertumkehr von - nach +         1oder 0
     float batVoltage ;  // battery voltage (Volt)
+    byte chgSelection     ;       // Senor Auswahl
     float batRefFactor ;
     float batCapacity ; // battery capacity (mAh)
     float chgVoltage ;  // charge voltage (Volt)
