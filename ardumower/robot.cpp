@@ -1222,7 +1222,7 @@ void Robot::readSensors(){
     //double chgvolt = ((double)((int)(readSensor(SEN_CHG_VOLTAGE) / 10))) / 10.0;  
     int chgADC = readSensor(SEN_CHG_VOLTAGE);
     //Console.println(chgADC);
-    double chgvolt = (((double)chgADC) - batSenseZero) * batFactor;
+    double chgvolt = (((double)chgADC) - batSenseZero) * batChgFactor;
     double current = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
     // low-pass filter
     double accel = 0.01;
