@@ -1,4 +1,12 @@
-Cmp-Mod V01 Genere par PcbNew le Di 23 Dez 2014 15:11:06 CET
+Cmp-Mod V01 Genere par PcbNew le Di 30 Dez 2014 11:43:59 CET
+
+BeginCmp
+TimeStamp = 54A285B1
+Path = /5375252C
+Reference = SHIELD1;
+ValeurCmp = ARDUINO_MEGA_SHIELD;
+IdModule  = Arduino Mega Shield:ARDUINO MEGA SHIELD;
+EndCmp
 
 BeginCmp
 TimeStamp = 54995C16
@@ -124,7 +132,7 @@ BeginCmp
 TimeStamp = 54995C0F
 Path = /541D5603
 Reference = P7;
-ValeurCmp = CONN_01X04;
+ValeurCmp = Status LEDs;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
 EndCmp
 
@@ -190,14 +198,6 @@ Path = /541D1F00
 Reference = P15;
 ValeurCmp = Dual2-M1Out;
 IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = 54995BBC
-Path = /541D656A
-Reference = P16;
-ValeurCmp = Dual2-pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
 EndCmp
 
 BeginCmp
@@ -289,7 +289,7 @@ IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
-TimeStamp = 54995DB4
+TimeStamp = 54A18673
 Path = /5384FFAC
 Reference = R9;
 ValeurCmp = 47K;
@@ -297,7 +297,7 @@ IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
-TimeStamp = 54995DA6
+TimeStamp = 54A18659
 Path = /5417895F
 Reference = R11;
 ValeurCmp = 2k2;
@@ -310,46 +310,6 @@ Path = /5416F038
 Reference = RL1;
 ValeurCmp = RM50-xx21;
 IdModule  = Relays_ThroughHole:Relais_SPDT_Schrack-RP-II-1_RM3-5mm;
-EndCmp
-
-BeginCmp
-TimeStamp = 54995D89
-Path = /5478A23C
-Reference = RP1;
-ValeurCmp = 150;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
-EndCmp
-
-BeginCmp
-TimeStamp = 54995D7B
-Path = /5478C825
-Reference = RP2;
-ValeurCmp = 150;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
-EndCmp
-
-BeginCmp
-TimeStamp = 54995D6D
-Path = /54994E69
-Reference = RR1;
-ValeurCmp = C100uF;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
-EndCmp
-
-BeginCmp
-TimeStamp = 54995D5F
-Path = /5499A2BD
-Reference = RR2;
-ValeurCmp = C100uF;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
-EndCmp
-
-BeginCmp
-TimeStamp = 54995D51
-Path = /5375252C
-Reference = SHIELD1;
-ValeurCmp = ARDUINO_MEGA_SHIELD;
-IdModule  = Arduino Mega Shield:ARDUINO MEGA SHIELD;
 EndCmp
 
 BeginCmp
@@ -438,6 +398,54 @@ Path = /5385024E
 Reference = R12;
 ValeurCmp = 47K;
 IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54995BBC
+Path = /541D656A
+Reference = P16;
+ValeurCmp = Dual2-pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54A16604
+Path = /54A12C85
+Reference = P19;
+ValeurCmp = DS1307;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
+TimeStamp = 54A1763F
+Path = /54994E69
+Reference = RR1;
+ValeurCmp = C100uF;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
+EndCmp
+
+BeginCmp
+TimeStamp = 54A1764C
+Path = /5499A2BD
+Reference = RR2;
+ValeurCmp = C100uF;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
+TimeStamp = 54A17626
+Path = /5478A23C
+Reference = RP1;
+ValeurCmp = 150;
+IdModule  = Sockets_DIP:DIP-16__300;
+EndCmp
+
+BeginCmp
+TimeStamp = 54A18666
+Path = /5478C825
+Reference = RP2;
+ValeurCmp = 150;
+IdModule  = Sockets_DIP:DIP-8__300;
 EndCmp
 
 EndListe
