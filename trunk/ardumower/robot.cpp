@@ -1263,6 +1263,15 @@ void Robot::readSensors(){
     if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;        // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
     }
     
+    // Berechnung für Ladestromsensor INA169 board              wenn chgSelection =2
+    if ((chgSelection)==2) {
+    chgAMP = currentmitte;
+    asensor = ((chgAMP * 5) / 1023);                          // umrechnen von messwert in Spannung (5V Reference)
+    amp = asensor / (10 * 0,1);                               // Ampere berechnen RL = 10k    Is = (Vout x 1k) / (RS x RL)
+    if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;       // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 ansonsten Messwertaußsgabe in Ampere)
+    }  
+    
+    
     //  Ladestromsensor berechnen ********** Ende
     // ********************************************************************
 
