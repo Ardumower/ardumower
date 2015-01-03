@@ -146,7 +146,7 @@ void Perimeter::matchedFilter(byte idx){
       else samples[i] = -1;
   }*/
   // magnitude for tracking (fast but inaccurate)    
-  mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
+  mag[idx] = corrFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
   // smoothed magnitude used for signal-off detection
   smoothMag = 0.99 * smoothMag + 0.01 * ((float)abs(mag[idx]));
 
@@ -188,13 +188,13 @@ boolean Perimeter::signalTimedOut(){
 }
 
 
-// digital filter (cross correlation)
+// digital matched filter (cross correlation)
 // http://en.wikipedia.org/wiki/Cross-correlation
 // H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
 // ip[] holds input data (length > nPts + M )
 // nPts is the length of the required output data 
 
-int16_t Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){  
+int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){  
   int16_t sumMax = 0;
   int16_t sumMin = 0;
   for (int16_t j=0; j<nPts; j++)
