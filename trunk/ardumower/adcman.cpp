@@ -104,7 +104,8 @@ void ADCManager::calibrateOfs(byte pin){
   int ch = pin-A0;
   calibrateMin = 9999;
   calibrateMax = -9999;
-  calibrateChannel = ch;  
+  calibrateChannel = ch;
+  ofs[ch]=0;  
   captureComplete[ch]=false;      
   while (!isCaptureComplete(pin)) {
     delay(20);
@@ -178,24 +179,17 @@ void ADC_Handler(void){
     return;
   } 
   if (channel == calibrateChannel){  
+    // determine min/max for calibration
     if (value < calibrateMin) calibrateMin = value; //0.5 * calibrateMin + 0.5 * ((double)value);
-    if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);    
+    if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);
+    sample[channel][position] = value;    
     position++;
   } else {    
     value -= ofs[channel];                   
-    /*int16_t temp = value;
-    value = (value + lastvalue) / 2;
-    lastvalue = temp;
-    subsample++;
-    if (subsample == 2){             
-      subsample=0;*/
-      capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                     
-        //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)           
-      sample[channel][position] = value;           
-      position++;
-    //}
-  }
-  //sample[channel] [] = value;     
+    capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                                    
+    sample[channel][position] = value;           
+    position++;    
+  }       
 }
 
 void ADCManager::stopCapture(){  
@@ -212,7 +206,6 @@ void ADCManager::stopCapture(){
 
 
 void ADCManager::run(){
-  //return;
   if (busy) {
     //Console.print("busy pos=");
     //Console.println(position);
@@ -230,25 +223,14 @@ void ADCManager::run(){
     if ((captureSize[channel] != 0) && (!captureComplete[channel])){        
       // found channel for sampling
       boolean fast = (captureSize[channel] != 1); // use slow but accurate sampling if one sample only
-      startCapture( fast );        
-      /*} 
-        // one sample capture (slow but more accurate)
-        delayMicroseconds(100); // required to get accurate measurement
-        sample[channel] = analogRead(A0 + channel);
-        captureComplete[channel]=true;    
-        capturedChannels++;
-      } */     
+      startCapture( fast );                   
       break;
     }      
   }
 }
 
 
-int8_t* ADCManager::getCapture(byte pin){
-  /*channel = ch;
-  startCapture();
-  while (busy) delay(2);
-  stopCapture();*/
+int8_t* ADCManager::getCapture(byte pin){  
   return (int8_t*)capture[pin-A0];
 }
 
@@ -258,19 +240,10 @@ boolean ADCManager::isCaptureComplete(byte pin){
 }
 
 int ADCManager::read(byte pin){    
-  /*    
-  while (!isCaptureComplete(pin)) {
-    delay(20);
-    run();
-  }
-  */
-  
   int ch = pin-A0;
   captureComplete[ch]=false;    
-  if (captureSize[ch] == 0) return 0;
-    //else if (captureSize[ch] == 1) return sample[ch][0];
-    else return sample[ch][(captureSize[ch]-1)];
-    //else return capture[ch][0];  
+  if (captureSize[ch] == 0) return 0;  
+    else return sample[ch][(captureSize[ch]-1)];    
 }
 
 
