@@ -1,5 +1,5 @@
 EESchema Schematic File Version 2
-LIBS:power
+LIBS:conn
 LIBS:ardumower mega shield svn-cache
 EELAYER 24 0
 EELAYER END
@@ -952,7 +952,7 @@ F 3 "" H 6800 1150 60  0000 C CNN
 $EndComp
 Text GLabel 6850 1500 2    60   Output ~ 0
 pinButton
-Text GLabel 9650 4450 2    60   Input ~ 0
+Text GLabel 5350 5850 0    60   Input ~ 0
 pinMotorMowRpm
 Text GLabel 7050 5650 0    60   Input ~ 0
 pinButton
@@ -967,7 +967,7 @@ Text GLabel 6500 5550 0    60   Input ~ 0
 pinRemoteSwitch
 Text GLabel 6200 6150 0    60   Input ~ 0
 pinUserSwitch1
-Text GLabel 6250 5900 0    60   Input ~ 0
+Text GLabel 6250 6000 0    60   Input ~ 0
 pinUserSwitch3
 $Comp
 L JUMPER JP1
@@ -1003,7 +1003,6 @@ F 3 "" H 10850 -50 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 9100 2850
-NoConn ~ 7200 5900
 NoConn ~ 7200 3750
 NoConn ~ 14250 6800
 NoConn ~ 14250 6250
@@ -1031,7 +1030,6 @@ F 3 "" H 1350 2250 60  0000 C CNN
 $EndComp
 Text GLabel 1200 2450 2    60   Output ~ 0
 pinRain
-NoConn ~ 9100 4550
 $Comp
 L GND #PWR037
 U 1 1 541DCCBD
@@ -1959,7 +1957,7 @@ Wire Wire Line
 Wire Wire Line
 	9250 2850 9350 2850
 Wire Wire Line
-	9650 4450 9100 4450
+	9100 4450 10050 4450
 Wire Wire Line
 	7050 5650 7200 5650
 Wire Wire Line
@@ -2013,11 +2011,7 @@ Wire Wire Line
 Wire Wire Line
 	6250 6150 6250 6200
 Wire Wire Line
-	6250 5900 6500 5900
-Wire Wire Line
-	6500 5900 6500 6000
-Wire Wire Line
-	6500 6000 7200 6000
+	6250 6000 7200 6000
 Wire Wire Line
 	9250 6800 9250 7000
 Wire Wire Line
@@ -2744,69 +2738,75 @@ Wire Wire Line
 	6600 4650 6600 4550
 Wire Wire Line
 	6600 4550 6400 4550
-Text GLabel 3550 4400 0    60   Input ~ 0
-TX4
-Text GLabel 3550 4550 0    60   Input ~ 0
-RX4
-Wire Wire Line
-	7200 4450 7050 4450
-Wire Wire Line
-	7050 4450 7050 4400
-Wire Wire Line
-	7050 4400 3550 4400
-Wire Wire Line
-	7200 4550 6950 4550
-Wire Wire Line
-	6950 4550 6950 4450
-Wire Wire Line
-	6950 4450 3700 4450
-Wire Wire Line
-	3700 4450 3700 4550
-Wire Wire Line
-	3700 4550 3550 4550
-$Comp
-L CONN_4 P20
-U 1 1 54AE950B
-P 2300 3450
-F 0 "P20" V 2250 3450 50  0000 C CNN
-F 1 "Wlan" V 2350 3450 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 2300 3450 60  0000 C CNN
-F 3 "" H 2300 3450 60  0000 C CNN
-	1    2300 3450
-	-1   0    0    -1  
-$EndComp
-Text GLabel 3350 3350 2    60   Input ~ 0
-TX4
-Text GLabel 3350 3500 2    60   Input ~ 0
-RX4
+Text GLabel 10450 4400 2    60   Input ~ 0
+TX1
+Text GLabel 10450 4550 2    60   Input ~ 0
+RX1
+Text GLabel 3050 3650 2    60   Input ~ 0
+TX1
+Text GLabel 2300 3450 0    60   Input ~ 0
+RX1
 $Comp
 L +5V #PWR073
 U 1 1 54AE985A
-P 2650 3150
-F 0 "#PWR073" H 2650 3240 20  0001 C CNN
-F 1 "+5V" H 2650 3240 30  0000 C CNN
-F 2 "" H 2650 3150 60  0000 C CNN
-F 3 "" H 2650 3150 60  0000 C CNN
-	1    2650 3150
+P 2950 3300
+F 0 "#PWR073" H 2950 3390 20  0001 C CNN
+F 1 "+5V" H 2950 3390 30  0000 C CNN
+F 2 "" H 2950 3300 60  0000 C CNN
+F 3 "" H 2950 3300 60  0000 C CNN
+	1    2950 3300
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR074
 U 1 1 54AE9925
-P 2650 3750
-F 0 "#PWR074" H 2650 3750 30  0001 C CNN
-F 1 "GND" H 2650 3680 30  0001 C CNN
-F 2 "" H 2650 3750 60  0000 C CNN
-F 3 "" H 2650 3750 60  0000 C CNN
-	1    2650 3750
+P 2450 3800
+F 0 "#PWR074" H 2450 3800 30  0001 C CNN
+F 1 "GND" H 2450 3730 30  0001 C CNN
+F 2 "" H 2450 3800 60  0000 C CNN
+F 3 "" H 2450 3800 60  0000 C CNN
+	1    2450 3800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2650 3150 2650 3300
+	2950 3300 2950 3450
 Wire Wire Line
-	2650 3400 3350 3350
+	2450 3650 2450 3800
 Wire Wire Line
-	2650 3500 3350 3500
+	10050 4450 10050 4400
 Wire Wire Line
-	2650 3600 2650 3750
+	10050 4400 10450 4400
+Wire Wire Line
+	9100 4550 9100 4500
+Wire Wire Line
+	9100 4500 10400 4500
+Wire Wire Line
+	10400 4500 10400 4550
+Wire Wire Line
+	10400 4550 10450 4550
+NoConn ~ 7200 4550
+Wire Wire Line
+	7200 5900 5450 5900
+Wire Wire Line
+	5450 5900 5450 5850
+Wire Wire Line
+	5450 5850 5350 5850
+NoConn ~ 7200 4450
+$Comp
+L CONN_02X03 P20
+U 1 1 54AF3343
+P 2700 3550
+F 0 "P20" H 2700 3750 50  0000 C CNN
+F 1 "Wlan" H 2700 3350 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x03" H 2700 2350 60  0001 C CNN
+F 3 "" H 2700 2350 60  0000 C CNN
+	1    2700 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2300 3450 2450 3450
+Wire Wire Line
+	2950 3650 3050 3650
+NoConn ~ 2950 3550
+NoConn ~ 2450 3550
 $EndSCHEMATC

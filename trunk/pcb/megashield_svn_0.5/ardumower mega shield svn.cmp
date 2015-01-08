@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Do 08 Jan 2015 06:26:35 CET
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Do 08 Jan 2015 21:56:40 CET
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -253,10 +253,10 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
 EndCmp
 
 BeginCmp
-TimeStamp = /54AE950B;
+TimeStamp = /54AF3343;
 Reference = P20;
 ValeurCmp = Wlan;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
 EndCmp
 
 BeginCmp
