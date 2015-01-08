@@ -1,4 +1,4 @@
-update=Do 08 Jan 2015 06:26:44 CET
+update=Do 08 Jan 2015 21:48:09 CET
 version=1
 last_client=kicad
 [cvpcb]
@@ -38,17 +38,10 @@ RptD_X=0
 RptD_Y=100
 RptLab=1
 LabSize=60
-[eeschema]
-version=1
-PageLayoutDescrFile=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=PcbnewAdvanced
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
 [general]
 version=1
+[eeschema]
+version=1
+LibDir=
+[eeschema/libraries]
+LibName1=conn
