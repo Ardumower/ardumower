@@ -1,4 +1,4 @@
-update=Do 08 Jan 2015 21:48:09 CET
+update=So 11 Jan 2015 07:29:39 CET
 version=1
 last_client=kicad
 [cvpcb]
@@ -38,10 +38,10 @@ RptD_X=0
 RptD_Y=100
 RptLab=1
 LabSize=60
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=
 [eeschema/libraries]
 LibName1=conn
+[general]
+version=1
