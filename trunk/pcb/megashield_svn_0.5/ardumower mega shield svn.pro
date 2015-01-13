@@ -1,4 +1,4 @@
-update=So 11 Jan 2015 07:29:39 CET
+update=13.01.2015 11:54:21
 version=1
 last_client=kicad
 [cvpcb]
@@ -26,9 +26,18 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
+[eeschema]
+version=1
+LibDir=
+[eeschema/libraries]
+LibName1=conn
+LibName2=C:/Users/Uwe/Downloads/kicad/ACS712
+[general]
+version=1
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
+PlotDirectoryName=
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=PcbnewAdvanced
@@ -37,11 +46,4 @@ SpiceUseNetNumbers=0
 RptD_X=0
 RptD_Y=100
 RptLab=1
-LabSize=60
-[eeschema]
-version=1
-LibDir=
-[eeschema/libraries]
-LibName1=conn
-[general]
-version=1
+LabSize=39
