@@ -1,6 +1,5 @@
 EESchema Schematic File Version 2
 LIBS:conn
-LIBS:ACS712
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
@@ -1838,17 +1837,6 @@ F 3 "" H 5150 9150 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L DIODE D?
-U 1 1 54B49618
-P 4800 7850
-F 0 "D?" H 4800 7950 40  0000 C CNN
-F 1 "DIODE" H 4800 7750 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 4800 7850 60  0001 C CNN
-F 3 "" H 4800 7850 60  0000 C CNN
-	1    4800 7850
-	-1   0    0    1   
-$EndComp
-$Comp
 L JUMPER JP?
 U 1 1 54B504F9
 P 8700 9250
@@ -2951,8 +2939,6 @@ Wire Wire Line
 Wire Wire Line
 	7700 7850 7700 8350
 Wire Wire Line
-	5000 7850 7700 7850
-Wire Wire Line
 	3350 7850 4600 7850
 Wire Wire Line
 	4350 8250 4350 7850
@@ -3262,4 +3248,30 @@ Text Notes 10150 1450 0    39   ~ 0
 VCC muss das nicht auch 3.3V sein\n?????????????????????????????
 Wire Wire Line
 	750  1800 750  1700
+$Comp
+L DIODE D?
+U 1 1 54B49618
+P 4800 7850
+F 0 "D?" H 4800 7950 40  0000 C CNN
+F 1 "DIODE" H 4800 7750 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 4800 7850 60  0001 C CNN
+F 3 "" H 4800 7850 60  0000 C CNN
+	1    4800 7850
+	-1   0    0    1   
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 54B617F6
+P 5750 7850
+F 0 "D?" H 5750 7950 40  0000 C CNN
+F 1 "DIODE" H 5750 7750 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 5750 7850 60  0001 C CNN
+F 3 "" H 5750 7850 60  0000 C CNN
+	1    5750 7850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 7850 5950 7850
+Wire Wire Line
+	5550 7850 5000 7850
 $EndSCHEMATC
