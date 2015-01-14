@@ -1,4 +1,4 @@
-update=13.01.2015 11:54:21
+update=14.01.2015 17:24:11
 version=1
 last_client=kicad
 [cvpcb]
@@ -32,8 +32,6 @@ LibDir=
 [eeschema/libraries]
 LibName1=conn
 LibName2=C:/Users/Uwe/Downloads/kicad/ACS712
-[general]
-version=1
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -47,3 +45,5 @@ RptD_X=0
 RptD_Y=100
 RptLab=1
 LabSize=39
+[general]
+version=1
