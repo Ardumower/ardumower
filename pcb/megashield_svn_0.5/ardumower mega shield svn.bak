@@ -1,5 +1,6 @@
 EESchema Schematic File Version 2
 LIBS:conn
+LIBS:ACS712
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
@@ -2939,17 +2940,14 @@ Wire Wire Line
 Wire Wire Line
 	7700 7850 7700 8350
 Wire Wire Line
-	3350 7850 4600 7850
+	3350 7850 4350 7850
 Wire Wire Line
-	4350 8250 4350 7850
-Connection ~ 4350 7850
+	4350 7850 4350 8250
 Connection ~ 5550 7850
 Wire Wire Line
 	6700 8850 6700 9900
 Wire Wire Line
 	6700 8000 8700 8000
-Wire Wire Line
-	9100 8650 7500 8650
 Wire Wire Line
 	9100 7500 9100 8950
 Connection ~ 9100 8150
@@ -3250,17 +3248,6 @@ Wire Wire Line
 	750  1800 750  1700
 $Comp
 L DIODE D?
-U 1 1 54B49618
-P 4800 7850
-F 0 "D?" H 4800 7950 40  0000 C CNN
-F 1 "DIODE" H 4800 7750 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 4800 7850 60  0001 C CNN
-F 3 "" H 4800 7850 60  0000 C CNN
-	1    4800 7850
-	-1   0    0    1   
-$EndComp
-$Comp
-L DIODE D?
 U 1 1 54B617F6
 P 5750 7850
 F 0 "D?" H 5750 7950 40  0000 C CNN
@@ -3272,6 +3259,21 @@ F 3 "" H 5750 7850 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	7700 7850 5950 7850
+$Comp
+L DIODE D?
+U 1 1 54B63125
+P 8050 8650
+F 0 "D?" H 8050 8750 40  0000 C CNN
+F 1 "DIODE" H 8050 8550 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 8050 8650 60  0001 C CNN
+F 3 "" H 8050 8650 60  0000 C CNN
+	1    8050 8650
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	5550 7850 5000 7850
+	7500 8650 7850 8650
+Wire Wire Line
+	8250 8650 9100 8650
+Text Notes 7700 8600 0    39   ~ 0
+Sperrdiode die die Rückwärtsspannung \nvermeidet wenn DC-DC wander von\nLadestrom versorgt werden soll\n(@SteanM]\n\n
 $EndSCHEMATC
