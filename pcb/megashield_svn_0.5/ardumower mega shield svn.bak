@@ -115,31 +115,7 @@ F 3 "~" H 9650 2400 30  0000 C CNN
 	1    9650 2400
 	0    -1   -1   0   
 $EndComp
-$Comp
-L CONN_4 P12
-U 1 1 5384EE13
-P 14600 6300
-F 0 "P12" V 14550 6300 50  0000 C CNN
-F 1 "Perimeter" V 14650 6300 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 14600 6300 60  0001 C CNN
-F 3 "" H 14600 6300 60  0000 C CNN
-	1    14600 6300
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR65
-U 1 1 5384EE31
-P 14050 6450
-F 0 "#PWR65" H 14050 6450 30  0001 C CNN
-F 1 "GND" H 14050 6380 30  0001 C CNN
-F 2 "" H 14050 6450 60  0000 C CNN
-F 3 "" H 14050 6450 60  0000 C CNN
-	1    14050 6450
-	0    1    1    0   
-$EndComp
-Text GLabel 13800 6350 0    60   Output ~ 0
-pinPerimeterLeft
-Text GLabel 5000 3850 0    60   Input ~ 0
+Text GLabel 5100 3750 0    60   Input ~ 0
 pinPerimeterLeft
 $Comp
 L GND #PWR34
@@ -193,11 +169,11 @@ Text GLabel 1450 6100 2    60   Output ~ 0
 pinSonarLeftEcho
 Text GLabel 1350 3050 2    60   Output ~ 0
 pinTilt
-Text GLabel 5000 3550 0    60   Input ~ 0
+Text GLabel 5100 3300 0    60   Input ~ 0
 pinBatteryVoltage
-Text GLabel 5000 4000 0    60   Input ~ 0
+Text GLabel 5100 3900 0    60   Input ~ 0
 pinChargeCurrent
-Text GLabel 5000 4150 0    60   Input ~ 0
+Text GLabel 5100 4050 0    60   Input ~ 0
 pinChargeVoltage
 Text GLabel 13900 8350 0    60   Output ~ 0
 pinUserSwitch1
@@ -378,11 +354,11 @@ Text Notes 14700 6050 2    60   ~ 0
 Perimeter coil
 Text GLabel 9250 3650 2    60   Output ~ 0
 pinMotorMowPWM
-Text GLabel 5000 3700 0    60   Input ~ 0
+Text GLabel 5100 3450 0    60   Input ~ 0
 pinMotorMowSense
-Text GLabel 5000 3400 0    60   Input ~ 0
+Text GLabel 5100 3150 0    60   Input ~ 0
 pinMotorLeftSense
-Text GLabel 5000 3250 0    60   Input ~ 0
+Text GLabel 5100 3000 0    60   Input ~ 0
 pinMotorRightSense
 NoConn ~ 7200 3950
 NoConn ~ 7200 4050
@@ -509,7 +485,7 @@ F 3 "" H 5300 1100 60  0000 C CNN
 	1    5300 1100
 	1    0    0    -1  
 $EndComp
-Text GLabel 5000 4300 0    60   Input ~ 0
+Text GLabel 5100 4200 0    60   Input ~ 0
 pinOdometryLeft
 Text GLabel 5600 4800 0    60   Input ~ 0
 pinOdometryRight2
@@ -1001,7 +977,6 @@ F 3 "" H 10850 -50 60  0000 C CNN
 $EndComp
 NoConn ~ 9100 2850
 NoConn ~ 7200 3750
-NoConn ~ 14250 6250
 $Comp
 L CONN_2 P4
 U 1 1 541D6EC8
@@ -1223,17 +1198,6 @@ F 1 "+5V" H 12500 2390 30  0000 C CNN
 F 2 "" H 12500 2300 60  0000 C CNN
 F 3 "" H 12500 2300 60  0000 C CNN
 	1    12500 2300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L +5V #PWR64
-U 1 1 5415EB52
-P 14050 6150
-F 0 "#PWR64" H 14050 6240 20  0001 C CNN
-F 1 "+5V" H 14050 6240 30  0000 C CNN
-F 2 "" H 14050 6150 60  0000 C CNN
-F 3 "" H 14050 6150 60  0000 C CNN
-	1    14050 6150
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -1941,7 +1905,7 @@ Text Notes 6750 9450 0    39   ~ 0
 Laderelais Spulenspannung 5V\noder Variabel\nEingang Spulenspannung\nkann über Vorwiderspannung\nangepasst werden\ndurch Ladespannung
 Text Notes 5750 8300 0    39   ~ 0
 Vorwiderstand Relais\nkann über ändern \nangepasst werden an\nverschiedene\nLadespannung
-Text Notes 4550 7650 0    39   ~ 0
+Text Notes 5450 7700 0    39   ~ 0
 Rückflussdiode\nFalls Ladeschaltung nicht benötigt \nLadeschaltung nicht bestücken \nund für Diode Drahtbrücke einlöten\n
 Text GLabel 5600 4450 0    60   Input ~ 0
 pinChargingBilanz
@@ -2026,12 +1990,6 @@ Wire Wire Line
 	7200 2950 7200 3050
 Wire Wire Line
 	7800 1150 7800 1000
-Wire Wire Line
-	14250 6150 14050 6150
-Wire Wire Line
-	13800 6350 14250 6350
-Wire Wire Line
-	14250 6450 14050 6450
 Wire Wire Line
 	9100 2350 9250 2350
 Wire Wire Line
@@ -2622,15 +2580,9 @@ Wire Wire Line
 Wire Wire Line
 	3150 5200 3350 5200
 Wire Wire Line
-	5000 3250 6000 3250
-Wire Wire Line
 	6400 3250 7050 3250
 Wire Wire Line
-	5000 3550 5800 3550
-Wire Wire Line
-	5800 3550 5800 3450
-Wire Wire Line
-	5800 3450 6000 3450
+	5600 3450 6000 3450
 Wire Wire Line
 	6750 3450 6750 3550
 Wire Wire Line
@@ -2638,19 +2590,15 @@ Wire Wire Line
 Wire Wire Line
 	6650 2700 6650 3650
 Wire Wire Line
-	6000 3550 5850 3550
-Wire Wire Line
-	5850 3550 5850 3700
-Wire Wire Line
-	5850 3700 5000 3700
+	5550 3550 6000 3550
 Wire Wire Line
 	6600 2800 6600 3850
 Wire Wire Line
 	6000 3650 5900 3650
 Wire Wire Line
-	5900 3650 5900 3800
+	5900 3650 5900 3750
 Wire Wire Line
-	5900 3800 5650 3800
+	5900 3750 5100 3750
 Wire Wire Line
 	6900 4250 6900 3950
 Wire Wire Line
@@ -2702,27 +2650,17 @@ Wire Wire Line
 Wire Wire Line
 	4100 4550 4100 4650
 Wire Wire Line
-	5650 3800 5650 3850
+	5700 3850 5700 3900
 Wire Wire Line
-	5650 3850 5000 3850
+	5700 3900 5100 3900
 Wire Wire Line
-	6000 3350 5700 3350
+	5750 3900 5750 4050
 Wire Wire Line
-	5700 3350 5700 3400
+	5750 4050 5100 4050
 Wire Wire Line
-	5700 3400 5000 3400
+	6000 3950 6000 4200
 Wire Wire Line
-	5700 3850 5700 4000
-Wire Wire Line
-	5700 4000 5000 4000
-Wire Wire Line
-	5750 3900 5750 4150
-Wire Wire Line
-	5750 4150 5000 4150
-Wire Wire Line
-	6000 3950 6000 4300
-Wire Wire Line
-	6000 4300 5000 4300
+	6000 4200 5100 4200
 Wire Wire Line
 	6400 3450 6750 3450
 Wire Wire Line
@@ -2940,9 +2878,9 @@ Wire Wire Line
 Wire Wire Line
 	7700 7850 7700 8350
 Wire Wire Line
-	3350 7850 4350 7850
+	3350 7850 4700 7850
 Wire Wire Line
-	4350 7850 4350 8250
+	4350 8250 4350 7850
 Connection ~ 5550 7850
 Wire Wire Line
 	6700 8850 6700 9900
@@ -3276,4 +3214,130 @@ Wire Wire Line
 	8250 8650 9100 8650
 Text Notes 7700 8600 0    39   ~ 0
 Sperrdiode die die Rückwärtsspannung \nvermeidet wenn DC-DC wander von\nLadestrom versorgt werden soll\n(@SteanM]\n\n
+$Comp
+L JUMPER JP?
+U 1 1 54B661FE
+P 5000 7850
+F 0 "JP?" H 5000 8000 60  0000 C CNN
+F 1 "pwr" H 5000 7770 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 5000 7850 60  0001 C CNN
+F 3 "" H 5000 7850 60  0000 C CNN
+	1    5000 7850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 7850 5300 7850
+Connection ~ 4350 7850
+Text Notes 4400 7700 0    39   ~ 0
+Als Lötbrücke um\nLeiterbahn zu\nSchließen falls LM350T\nnicht bestückt wird
+Text GLabel 12300 6300 0    60   Output ~ 0
+pinPerimeterRight
+$Comp
+L CONN_3 P?
+U 1 1 54B6707E
+P 12750 6300
+F 0 "P?" V 12700 6300 50  0000 C CNN
+F 1 "PerimeterRight" V 12800 6300 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 12750 6300 60  0001 C CNN
+F 3 "" H 12750 6300 60  0000 C CNN
+	1    12750 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B67084
+P 12400 6550
+F 0 "#PWR?" H 12400 6550 30  0001 C CNN
+F 1 "GND" H 12400 6480 30  0001 C CNN
+F 2 "" H 12400 6550 60  0000 C CNN
+F 3 "" H 12400 6550 60  0000 C CNN
+	1    12400 6550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B6708A
+P 12400 6050
+F 0 "#PWR?" H 12400 6140 20  0001 C CNN
+F 1 "+5V" H 12400 6140 30  0000 C CNN
+F 2 "" H 12400 6050 60  0000 C CNN
+F 3 "" H 12400 6050 60  0000 C CNN
+	1    12400 6050
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	12400 6400 12400 6550
+Wire Wire Line
+	12300 6300 12400 6300
+Wire Wire Line
+	12400 6200 12400 6050
+Text GLabel 14150 6300 0    60   Output ~ 0
+pinPerimeterLeft
+$Comp
+L CONN_3 P12
+U 1 1 54B673DE
+P 14600 6300
+F 0 "P12" V 14550 6300 50  0000 C CNN
+F 1 "PerimeterRight" V 14650 6300 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 14600 6300 60  0001 C CNN
+F 3 "" H 14600 6300 60  0000 C CNN
+	1    14600 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B673E4
+P 14250 6550
+F 0 "#PWR?" H 14250 6550 30  0001 C CNN
+F 1 "GND" H 14250 6480 30  0001 C CNN
+F 2 "" H 14250 6550 60  0000 C CNN
+F 3 "" H 14250 6550 60  0000 C CNN
+	1    14250 6550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B673EA
+P 14250 6050
+F 0 "#PWR?" H 14250 6140 20  0001 C CNN
+F 1 "+5V" H 14250 6140 30  0000 C CNN
+F 2 "" H 14250 6050 60  0000 C CNN
+F 3 "" H 14250 6050 60  0000 C CNN
+	1    14250 6050
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	14250 6400 14250 6550
+Wire Wire Line
+	14150 6300 14250 6300
+Wire Wire Line
+	14250 6200 14250 6050
+Text Notes 11650 6150 0    39   ~ 0
+Perimeter rechts auf\nWunsch hinzugefügt
+Text GLabel 5100 3600 0    60   Input ~ 0
+pinPerimeterRight
+Wire Wire Line
+	6000 3250 5700 3250
+Wire Wire Line
+	5700 3250 5700 3000
+Wire Wire Line
+	5700 3000 5100 3000
+Wire Wire Line
+	6000 3350 5650 3350
+Wire Wire Line
+	5650 3350 5650 3150
+Wire Wire Line
+	5650 3150 5100 3150
+Wire Wire Line
+	5600 3450 5600 3300
+Wire Wire Line
+	5600 3300 5100 3300
+Wire Wire Line
+	5550 3550 5550 3450
+Wire Wire Line
+	5550 3450 5100 3450
+Text Notes 3150 3600 0    60   ~ 0
+wieder dazu gekommen\nTiefpassfilter fehlt noch
+Wire Wire Line
+	5100 3600 5250 3600
 $EndSCHEMATC
