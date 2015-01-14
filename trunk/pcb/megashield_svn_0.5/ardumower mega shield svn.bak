@@ -107,12 +107,12 @@ $EndComp
 $Comp
 L R R5
 U 1 1 5384EC7E
-P 9650 2400
-F 0 "R5" V 9730 2400 40  0000 C CNN
-F 1 "470R" V 9657 2401 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9580 2400 30  0001 C CNN
-F 3 "~" H 9650 2400 30  0000 C CNN
-	1    9650 2400
+P 9450 2450
+F 0 "R5" V 9530 2450 40  0000 C CNN
+F 1 "470R" V 9457 2451 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9380 2450 30  0001 C CNN
+F 3 "~" H 9450 2450 30  0000 C CNN
+	1    9450 2450
 	0    -1   -1   0   
 $EndComp
 Text GLabel 5400 3850 0    60   Input ~ 0
@@ -139,11 +139,11 @@ F 3 "" H 9250 2350 60  0000 C CNN
 	1    9250 2350
 	0    -1   -1   0   
 $EndComp
-Text GLabel 9300 3500 2    60   Output ~ 0
+Text GLabel 10450 3550 2    60   Output ~ 0
 pinMotorRightPWM
-Text GLabel 9300 3350 2    60   Output ~ 0
+Text GLabel 10450 3350 2    60   Output ~ 0
 pinMotorLeftPWM
-Text GLabel 9250 5450 2    60   Input ~ 0
+Text GLabel 9250 5550 2    60   Input ~ 0
 pinMotorLeftFault
 Text GLabel 9250 6600 2    60   Input ~ 0
 pinTilt
@@ -151,9 +151,9 @@ Text GLabel 7950 800  2    60   Input ~ 0
 pinBuzzer
 Text GLabel 5300 5550 0    60   Output ~ 0
 pinBuzzer
-Text GLabel 7050 7100 0    60   Input ~ 0
+Text GLabel 6200 6950 0    60   Input ~ 0
 pinBumperLeft
-Text GLabel 9250 7000 2    60   Output ~ 0
+Text GLabel 9250 6800 2    60   Output ~ 0
 pinMotorEnable
 Text GLabel 1450 4200 2    60   Input ~ 0
 pinSonarCenterTrigger
@@ -348,7 +348,7 @@ Text Notes 1500 4750 2    60   ~ 0
 Sonar HC SR-04\n
 Text Notes 14700 6050 2    60   ~ 0
 Perimeter coil
-Text GLabel 9250 3650 2    60   Output ~ 0
+Text GLabel 9450 3650 2    60   Output ~ 0
 pinMotorMowPWM
 Text GLabel 5400 3650 0    60   Input ~ 0
 pinMotorMowSense
@@ -360,9 +360,9 @@ NoConn ~ 7200 2650
 NoConn ~ 9100 2250
 NoConn ~ 9100 5000
 NoConn ~ 9100 5100
-Text GLabel 7050 7250 0    60   Input ~ 0
+Text GLabel 7050 7050 0    60   Input ~ 0
 pinBumperRight
-Text GLabel 6950 6950 0    60   Input ~ 0
+Text GLabel 7100 6850 0    60   Input ~ 0
 pinLawnFrontRecv
 $Comp
 L CONN_4 P2
@@ -427,9 +427,9 @@ F 3 "" H 1300 6250 60  0000 C CNN
 $EndComp
 Text Notes 1500 6450 2    60   ~ 0
 Sonar HC SR-04\n
-Text GLabel 9650 6700 2    60   Output ~ 0
+Text GLabel 10250 6500 2    60   Output ~ 0
 pinSonarLeftTrigger
-Text GLabel 9300 6850 2    60   Input ~ 0
+Text GLabel 10250 6700 2    60   Input ~ 0
 pinSonarLeftEcho
 $Comp
 L GND #PWR68
@@ -453,7 +453,7 @@ F 3 "" H 14700 8500 60  0000 C CNN
 	1    14700 8500
 	1    0    0    -1  
 $EndComp
-Text GLabel 7100 6750 0    60   Output ~ 0
+Text GLabel 6200 6750 0    60   Output ~ 0
 pinLawnFrontSend
 Text GLabel 6200 6500 0    60   Output ~ 0
 pinLawnBackSend
@@ -700,13 +700,13 @@ Text GLabel 11700 6950 0    60   Output ~ 0
 GPS_TX
 Text Notes 12600 6650 2    60   ~ 0
 GPS\n
-Text GLabel 9300 3900 2    60   Input ~ 0
+Text GLabel 9300 4050 2    60   Input ~ 0
 GPS_RX
-Text GLabel 9300 4050 2    60   Output ~ 0
+Text GLabel 9750 4150 2    60   Output ~ 0
 GPS_TX
-Text GLabel 9300 4200 2    60   Output ~ 0
+Text GLabel 9300 4250 2    60   Output ~ 0
 TX2
-Text GLabel 9300 4350 2    60   Input ~ 0
+Text GLabel 9750 4350 2    60   Input ~ 0
 RX2
 $Comp
 L CONN_2 Batterie1
@@ -800,7 +800,7 @@ Text GLabel 3350 5200 2    60   Input ~ 0
 SCL2
 Text GLabel 3350 5050 2    60   BiDi ~ 0
 SDA2
-Text GLabel 7050 6100 0    60   Input ~ 0
+Text GLabel 6250 6100 0    60   Input ~ 0
 pinUserSwitch2
 $Comp
 L GND #PWR66
@@ -819,9 +819,6 @@ Text GLabel 13800 7000 0    60   Output ~ 0
 pinBumperLeft
 Text Notes 14750 6800 2    60   ~ 0
 Bumper\n\n
-NoConn ~ 9100 2950
-NoConn ~ 9100 3750
-NoConn ~ 9100 3850
 $Comp
 L CONN_6 P13
 U 1 1 538A4012
@@ -863,40 +860,39 @@ Text GLabel 13950 7800 0    60   Output ~ 0
 pinRemoteSpeed
 Text GLabel 13950 7950 0    60   Output ~ 0
 pinRemoteSwitch
-Text GLabel 9350 2550 2    60   Input ~ 0
+Text GLabel 10450 2550 2    60   Input ~ 0
 pinRemoteMow
-Text GLabel 9350 2700 2    60   Input ~ 0
+Text GLabel 9450 2650 2    60   Input ~ 0
 pinRemoteSteer
-Text GLabel 9350 2850 2    60   Input ~ 0
+Text GLabel 10450 2750 2    60   Input ~ 0
 pinRemoteSpeed
 $Comp
 L R R1
 U 1 1 538A5BD3
-P 1100 1500
-F 0 "R1" V 1180 1500 40  0000 C CNN
-F 1 "470r" V 1107 1501 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 1030 1500 30  0001 C CNN
-F 3 "~" H 1100 1500 30  0000 C CNN
-	1    1100 1500
+P 1100 1000
+F 0 "R1" V 1180 1000 40  0000 C CNN
+F 1 "470r" V 1107 1001 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 1030 1000 30  0001 C CNN
+F 3 "~" H 1100 1000 30  0000 C CNN
+	1    1100 1000
 	0    -1   -1   0   
 $EndComp
 $Comp
 L R R2
 U 1 1 538A5BE2
-P 1100 1800
-F 0 "R2" V 1180 1800 40  0000 C CNN
-F 1 "2k2" V 1107 1801 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 1030 1800 30  0001 C CNN
-F 3 "~" H 1100 1800 30  0000 C CNN
-	1    1100 1800
+P 1100 1300
+F 0 "R2" V 1180 1300 40  0000 C CNN
+F 1 "2k2" V 1107 1301 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 1030 1300 30  0001 C CNN
+F 3 "~" H 1100 1300 30  0000 C CNN
+	1    1100 1300
 	0    -1   -1   0   
 $EndComp
-NoConn ~ 9100 3450
-Text GLabel 10100 6100 2    60   Output ~ 0
+Text GLabel 10250 6100 2    60   Output ~ 0
 pinSonarRightTrigger
-Text GLabel 10100 5850 2    60   Output ~ 0
+Text GLabel 10250 5850 2    60   Output ~ 0
 pinMotorMowEnable
-Text GLabel 10100 6300 2    60   Input ~ 0
+Text GLabel 10250 6300 2    60   Input ~ 0
 pinSonarRightEcho
 Text GLabel 12250 1500 0    60   Input ~ 0
 pinMotorEnable
@@ -922,17 +918,17 @@ pinMotorMowRpm
 Text GLabel 5350 5750 0    60   Input ~ 0
 pinButton
 NoConn ~ 10200 650 
-Text GLabel 9300 5600 2    60   Input ~ 0
+Text GLabel 10250 5650 2    60   Input ~ 0
 pinMotorMowFault
-Text GLabel 10150 5350 2    60   Input ~ 0
+Text GLabel 10250 5450 2    60   Input ~ 0
 pinSonarCenterTrigger
-Text GLabel 9250 5100 2    60   Input ~ 0
+Text GLabel 10250 5250 2    60   Input ~ 0
 pinSonarCenterEcho
 Text GLabel 4600 5650 0    60   Input ~ 0
 pinRemoteSwitch
-Text GLabel 6200 6150 0    60   Input ~ 0
+Text GLabel 7100 6200 0    60   Input ~ 0
 pinUserSwitch1
-Text GLabel 6250 6000 0    60   Input ~ 0
+Text GLabel 7100 6000 0    60   Input ~ 0
 pinUserSwitch3
 $Comp
 L JUMPER JP1
@@ -967,30 +963,7 @@ F 3 "" H 10850 -50 60  0000 C CNN
 	1    10650 700 
 	1    0    0    -1  
 $EndComp
-NoConn ~ 9100 2850
-$Comp
-L CONN_2 P4
-U 1 1 541D6EC8
-P 750 2350
-F 0 "P4" V 700 2350 40  0000 C CNN
-F 1 "Rain" V 800 2350 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 750 2350 60  0001 C CNN
-F 3 "" H 750 2350 60  0000 C CNN
-	1    750  2350
-	-1   0    0    1   
-$EndComp
-$Comp
-L GND #PWR15
-U 1 1 541D6F7F
-P 1350 2250
-F 0 "#PWR15" H 1350 2250 30  0001 C CNN
-F 1 "GND" H 1350 2180 30  0001 C CNN
-F 2 "" H 1350 2250 60  0000 C CNN
-F 3 "" H 1350 2250 60  0000 C CNN
-	1    1350 2250
-	0    -1   -1   0   
-$EndComp
-Text GLabel 1200 2450 2    60   Output ~ 0
+Text GLabel 1150 2250 2    60   Output ~ 0
 pinRain
 $Comp
 L GND #PWR74
@@ -1106,12 +1079,12 @@ $EndComp
 $Comp
 L +24V #PWR2
 U 1 1 54158880
-P 750 1700
-F 0 "#PWR2" H 750 1650 20  0001 C CNN
-F 1 "+24V" H 750 1800 30  0000 C CNN
-F 2 "" H 750 1700 60  0000 C CNN
-F 3 "" H 750 1700 60  0000 C CNN
-	1    750  1700
+P 750 1200
+F 0 "#PWR2" H 750 1150 20  0001 C CNN
+F 1 "+24V" H 750 1300 30  0000 C CNN
+F 2 "" H 750 1200 60  0000 C CNN
+F 3 "" H 750 1200 60  0000 C CNN
+	1    750  1200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1128,12 +1101,12 @@ $EndComp
 $Comp
 L +5V #PWR1
 U 1 1 5415981E
-P 750 1400
-F 0 "#PWR1" H 750 1490 20  0001 C CNN
-F 1 "+5V" H 750 1490 30  0000 C CNN
-F 2 "" H 750 1400 60  0000 C CNN
-F 3 "" H 750 1400 60  0000 C CNN
-	1    750  1400
+P 750 900
+F 0 "#PWR1" H 750 990 20  0001 C CNN
+F 1 "+5V" H 750 990 30  0000 C CNN
+F 2 "" H 750 900 60  0000 C CNN
+F 3 "" H 750 900 60  0000 C CNN
+	1    750  900 
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1227,12 +1200,12 @@ $EndComp
 $Comp
 L +5V #PWR50
 U 1 1 54163106
-P 10200 1200
-F 0 "#PWR50" H 10200 1290 20  0001 C CNN
-F 1 "+5V" H 10200 1290 30  0000 C CNN
-F 2 "" H 10200 1200 60  0000 C CNN
-F 3 "" H 10200 1200 60  0000 C CNN
-	1    10200 1200
+P 10200 2100
+F 0 "#PWR50" H 10200 2190 20  0001 C CNN
+F 1 "+5V" H 10200 2190 30  0000 C CNN
+F 2 "" H 10200 2100 60  0000 C CNN
+F 3 "" H 10200 2100 60  0000 C CNN
+	1    10200 2100
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -1338,11 +1311,11 @@ F 3 "" H 14550 4150 60  0000 C CNN
 	1    14550 4150
 	-1   0    0    1   
 $EndComp
-Text GLabel 1350 1500 2    60   Output ~ 0
+Text GLabel 1350 1000 2    60   Output ~ 0
 LedPin-5v
-Text GLabel 1350 1800 2    60   Output ~ 0
+Text GLabel 1350 1300 2    60   Output ~ 0
 LedPin-24v
-Text GLabel 10100 2400 2    60   Output ~ 0
+Text GLabel 9750 2450 2    60   Output ~ 0
 Led-Status
 Text GLabel 2850 1850 0    60   Input ~ 0
 LedPin-5v
@@ -1561,9 +1534,9 @@ F 3 "" H 15200 4150 60  0000 C CNN
 	1    15200 4150
 	0    -1   -1   0   
 $EndComp
-Text GLabel 5750 6300 0    60   Input ~ 0
+Text GLabel 6200 6300 0    60   Input ~ 0
 DropLeft
-Text GLabel 9400 5250 2    60   Input ~ 0
+Text GLabel 9250 5350 2    60   Input ~ 0
 DropRight
 Text GLabel 10450 4400 2    60   Input ~ 0
 TX1
@@ -1899,30 +1872,30 @@ Anschlußklemme geändert\n+ Duo LED hinzugefügt
 $Comp
 L R R?
 U 1 1 54B5FC72
-P 10350 3250
-F 0 "R?" V 10430 3250 40  0000 C CNN
-F 1 "470R" V 10357 3251 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 10280 3250 30  0001 C CNN
-F 3 "~" H 10350 3250 30  0000 C CNN
-	1    10350 3250
+P 9450 3250
+F 0 "R?" V 9530 3250 40  0000 C CNN
+F 1 "470R" V 9457 3251 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9380 3250 30  0001 C CNN
+F 3 "~" H 9450 3250 30  0000 C CNN
+	1    9450 3250
 	0    -1   -1   0   
 $EndComp
 $Comp
 L R R?
 U 1 1 54B5FD13
-P 10350 3050
-F 0 "R?" V 10430 3050 40  0000 C CNN
-F 1 "470R" V 10357 3051 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 10280 3050 30  0001 C CNN
-F 3 "~" H 10350 3050 30  0000 C CNN
-	1    10350 3050
+P 9450 3050
+F 0 "R?" V 9530 3050 40  0000 C CNN
+F 1 "470R" V 9457 3051 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9380 3050 30  0001 C CNN
+F 3 "~" H 9450 3050 30  0000 C CNN
+	1    9450 3050
 	0    -1   -1   0   
 $EndComp
-Text GLabel 10750 3050 2    60   Output ~ 0
+Text GLabel 9750 3050 2    60   Output ~ 0
 DuoLED-Rot
-Text GLabel 10750 3250 2    60   Output ~ 0
+Text GLabel 9750 3250 2    60   Output ~ 0
 DuoLED_Grün
-Text Notes 11500 3150 0    60   ~ 0
+Text Notes 10400 3150 0    60   ~ 0
 Duo LED hinzugefügt
 $Comp
 L R R?
@@ -2105,8 +2078,6 @@ F 3 "" H 12200 5650 60  0000 C CNN
 	1    12200 5650
 	-1   0    0    1   
 $EndComp
-Text Notes 10150 1450 0    39   ~ 0
-VCC muss das nicht auch 3.3V sein\n?????????????????????????????
 $Comp
 L DIODE D?
 U 1 1 54B617F6
@@ -2283,9 +2254,9 @@ Wire Wire Line
 Wire Wire Line
 	1400 4200 1450 4200
 Wire Wire Line
-	7050 6950 7200 6950
+	6200 6950 7200 6950
 Wire Wire Line
-	9250 6800 9100 6800
+	9100 6800 9250 6800
 Wire Wire Line
 	1250 5300 1300 5300
 Wire Wire Line
@@ -2307,9 +2278,9 @@ Wire Wire Line
 Wire Wire Line
 	1400 5050 1450 5050
 Wire Wire Line
-	9100 6100 10100 6100
+	9100 6100 10250 6100
 Wire Wire Line
-	9100 6300 10100 6300
+	9100 6300 10250 6300
 Wire Wire Line
 	1250 6150 1300 6150
 Wire Wire Line
@@ -2431,25 +2402,9 @@ Wire Wire Line
 Wire Wire Line
 	12150 7050 11950 7050
 Wire Wire Line
-	9100 4050 9200 4050
+	9100 4150 9750 4150
 Wire Wire Line
-	9200 4050 9200 3900
-Wire Wire Line
-	9200 3900 9300 3900
-Wire Wire Line
-	9300 4050 9250 4050
-Wire Wire Line
-	9250 4050 9250 4150
-Wire Wire Line
-	9250 4150 9100 4150
-Wire Wire Line
-	9100 4250 9250 4250
-Wire Wire Line
-	9250 4250 9250 4200
-Wire Wire Line
-	9250 4200 9300 4200
-Wire Wire Line
-	9100 4350 9300 4350
+	9100 4350 9750 4350
 Wire Wire Line
 	8450 7900 8450 7700
 Wire Wire Line
@@ -2500,11 +2455,11 @@ Wire Wire Line
 Wire Wire Line
 	7100 6600 7200 6600
 Wire Wire Line
-	750  1800 850  1800
+	750  1300 850  1300
 Wire Wire Line
-	750  1400 750  1500
+	750  900  750  1000
 Wire Wire Line
-	750  1500 850  1500
+	750  1000 850  1000
 Wire Wire Line
 	7200 5100 7200 5300
 Connection ~ 7200 5200
@@ -2529,7 +2484,7 @@ Wire Wire Line
 Wire Wire Line
 	12400 900  12650 900 
 Wire Wire Line
-	7100 6750 7200 6750
+	6200 6750 7200 6750
 Wire Wire Line
 	6700 1150 6700 1400
 Wire Wire Line
@@ -2537,21 +2492,9 @@ Wire Wire Line
 Wire Wire Line
 	6700 1500 6850 1500
 Wire Wire Line
-	7050 6100 7200 6100
+	6250 6100 7200 6100
 Wire Wire Line
-	9100 2550 9350 2550
-Wire Wire Line
-	9100 2650 9250 2650
-Wire Wire Line
-	9250 2650 9250 2700
-Wire Wire Line
-	9250 2700 9350 2700
-Wire Wire Line
-	9100 2750 9250 2750
-Wire Wire Line
-	9250 2750 9250 2850
-Wire Wire Line
-	9250 2850 9350 2850
+	9100 2550 10450 2550
 Wire Wire Line
 	9100 4450 10050 4450
 Wire Wire Line
@@ -2569,65 +2512,15 @@ Wire Wire Line
 Wire Wire Line
 	9950 1100 10200 1100
 Wire Wire Line
-	9250 5450 9200 5450
+	9100 5250 10250 5250
 Wire Wire Line
-	9200 5450 9200 5550
+	9100 5450 10250 5450
 Wire Wire Line
-	9200 5550 9100 5550
+	7100 6000 7200 6000
 Wire Wire Line
-	9150 5250 9100 5250
+	9100 6700 10250 6700
 Wire Wire Line
-	9150 5100 9150 5250
-Wire Wire Line
-	10150 5350 9250 5350
-Wire Wire Line
-	9250 5350 9250 5400
-Wire Wire Line
-	9250 5400 9150 5400
-Wire Wire Line
-	9150 5400 9150 5450
-Wire Wire Line
-	9150 5450 9100 5450
-Wire Wire Line
-	9150 5100 9250 5100
-Wire Wire Line
-	9100 2450 9350 2450
-Wire Wire Line
-	9350 2450 9350 2400
-Wire Wire Line
-	9350 2400 9400 2400
-Wire Wire Line
-	6250 6200 7200 6200
-Wire Wire Line
-	6200 6150 6250 6150
-Wire Wire Line
-	6250 6150 6250 6200
-Wire Wire Line
-	6250 6000 7200 6000
-Wire Wire Line
-	9250 6800 9250 7000
-Wire Wire Line
-	9100 6700 9300 6700
-Wire Wire Line
-	9300 6700 9300 6850
-Wire Wire Line
-	9100 6500 9650 6500
-Wire Wire Line
-	9650 6500 9650 6700
-Wire Wire Line
-	7200 7050 7150 7050
-Wire Wire Line
-	7150 7050 7150 7250
-Wire Wire Line
-	7150 7250 7050 7250
-Wire Wire Line
-	7050 6950 7050 7100
-Wire Wire Line
-	7200 6850 7000 6850
-Wire Wire Line
-	7000 6850 7000 6950
-Wire Wire Line
-	7000 6950 6950 6950
+	9100 6500 10250 6500
 Connection ~ 10100 750 
 Wire Wire Line
 	1050 2950 1050 2800
@@ -2650,13 +2543,9 @@ Wire Wire Line
 Wire Wire Line
 	5250 1650 5250 1600
 Wire Wire Line
-	9300 3500 9150 3500
+	9100 3650 9450 3650
 Wire Wire Line
-	9150 3500 9150 3550
-Wire Wire Line
-	9100 3650 9250 3650
-Wire Wire Line
-	9100 3350 9300 3350
+	9100 3350 10450 3350
 Wire Wire Line
 	14250 7350 14350 7350
 Wire Wire Line
@@ -2664,13 +2553,11 @@ Wire Wire Line
 Wire Wire Line
 	9100 5950 9250 5950
 Wire Wire Line
-	9100 5650 9300 5650
+	9100 5650 10250 5650
 Wire Wire Line
-	9300 5650 9300 5600
+	9100 5850 10250 5850
 Wire Wire Line
-	9100 5850 10100 5850
-Wire Wire Line
-	9150 3550 9100 3550
+	9100 3550 10450 3550
 Wire Wire Line
 	5250 800  5450 800 
 Wire Wire Line
@@ -2680,11 +2567,7 @@ Wire Wire Line
 Wire Wire Line
 	12350 2100 12650 2100
 Wire Wire Line
-	1100 2250 1350 2250
-Wire Wire Line
-	1100 2450 1200 2450
-Wire Wire Line
-	14250 800  14250 850 
+	1050 2250 1150 2250
 Wire Wire Line
 	12500 3650 12650 3650
 Wire Wire Line
@@ -2729,7 +2612,6 @@ Wire Wire Line
 Wire Wire Line
 	15400 4350 15400 4250
 Connection ~ 15200 4350
-Connection ~ 10200 1200
 Connection ~ 9500 750 
 Connection ~ 12500 2000
 Connection ~ 7200 2850
@@ -2769,7 +2651,7 @@ Connection ~ 11450 9400
 Connection ~ 11450 9200
 Connection ~ 10750 9200
 Wire Wire Line
-	9900 2400 10100 2400
+	9700 2450 9750 2450
 Wire Wire Line
 	9100 4650 9250 4650
 Wire Wire Line
@@ -2848,13 +2730,7 @@ Wire Wire Line
 Wire Wire Line
 	3550 8000 3550 8200
 Wire Wire Line
-	7200 6300 5750 6300
-Wire Wire Line
-	9200 5250 9400 5250
-Wire Wire Line
-	9200 5250 9200 5350
-Wire Wire Line
-	9200 5350 9100 5350
+	7200 6300 6200 6300
 Wire Wire Line
 	2600 3250 2600 3400
 Wire Wire Line
@@ -2993,17 +2869,11 @@ Wire Wire Line
 Wire Wire Line
 	3100 2450 2850 2450
 Wire Wire Line
-	10100 3250 9100 3250
+	9200 3250 9100 3250
 Wire Wire Line
-	9100 3150 9250 3150
+	9700 3050 9750 3050
 Wire Wire Line
-	9250 3150 9250 3050
-Wire Wire Line
-	9250 3050 10100 3050
-Wire Wire Line
-	10600 3050 10750 3050
-Wire Wire Line
-	10600 3250 10750 3250
+	9700 3250 9750 3250
 Wire Wire Line
 	2550 8800 2550 8950
 Wire Wire Line
@@ -3062,7 +2932,7 @@ Wire Wire Line
 Wire Wire Line
 	12000 5650 11900 5650
 Wire Wire Line
-	750  1800 750  1700
+	750  1300 750  1200
 Wire Wire Line
 	7700 7850 5950 7850
 Wire Wire Line
@@ -3285,4 +3155,344 @@ Wire Wire Line
 Wire Wire Line
 	3150 2450 3150 2600
 NoConn ~ 3250 2550
+$Comp
+L CONN_01X01 P?
+U 1 1 54B6892E
+P 9500 2850
+F 0 "P?" H 9700 2850 50  0000 C CNN
+F 1 "CONN_01X01" V 9600 2850 50  0001 C CNN
+F 2 "" H 9500 2850 60  0000 C CNN
+F 3 "" H 9500 2850 60  0000 C CNN
+	1    9500 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P?
+U 1 1 54B697B9
+P 9500 3850
+F 0 "P?" H 9700 3850 50  0000 C CNN
+F 1 "CONN_01X01" V 9600 3850 50  0001 C CNN
+F 2 "" H 9500 3850 60  0000 C CNN
+F 3 "" H 9500 3850 60  0000 C CNN
+	1    9500 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9300 3850 9100 3850
+$Comp
+L CONN_01X01 P?
+U 1 1 54B6A807
+P 10550 3750
+F 0 "P?" H 10750 3750 50  0000 C CNN
+F 1 "CONN_01X01" V 10650 3750 50  0001 C CNN
+F 2 "" H 10550 3750 60  0000 C CNN
+F 3 "" H 10550 3750 60  0000 C CNN
+	1    10550 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 3750 10350 3750
+$Comp
+L CONN_01X01 P?
+U 1 1 54B6AB7A
+P 9500 3450
+F 0 "P?" H 9700 3450 50  0000 C CNN
+F 1 "CONN_01X01" V 9600 3450 50  0001 C CNN
+F 2 "" H 9500 3450 60  0000 C CNN
+F 3 "" H 9500 3450 60  0000 C CNN
+	1    9500 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9300 3450 9100 3450
+Wire Wire Line
+	9100 3150 9150 3150
+Wire Wire Line
+	9150 3150 9150 3050
+Wire Wire Line
+	9150 3050 9200 3050
+$Comp
+L CONN_01X01 P?
+U 1 1 54B6C4D4
+P 10550 2950
+F 0 "P?" H 10750 2950 50  0000 C CNN
+F 1 "CONN_01X01" V 10650 2950 50  0001 C CNN
+F 2 "" H 10550 2950 60  0000 C CNN
+F 3 "" H 10550 2950 60  0000 C CNN
+	1    10550 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 2950 10350 2950
+Wire Wire Line
+	9200 2450 9100 2450
+Wire Wire Line
+	9100 2650 9450 2650
+Wire Wire Line
+	9100 2750 10450 2750
+Wire Wire Line
+	9100 2850 9300 2850
+Wire Wire Line
+	9100 4250 9300 4250
+Wire Wire Line
+	9300 4050 9100 4050
+Wire Wire Line
+	9100 5550 9250 5550
+Wire Wire Line
+	9100 5350 9250 5350
+Wire Wire Line
+	7200 6850 7100 6850
+Wire Wire Line
+	7200 7050 7050 7050
+Wire Wire Line
+	7200 6200 7100 6200
+$Comp
+L CONN_01X08 P?
+U 1 1 54B73600
+P 15300 3050
+F 0 "P?" H 15300 3500 50  0000 C CNN
+F 1 "Stromleiste 5V" V 15400 3050 50  0000 C CNN
+F 2 "" H 15300 3050 60  0000 C CNN
+F 3 "" H 15300 3050 60  0000 C CNN
+	1    15300 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X08 P?
+U 1 1 54B73B5A
+P 14800 3050
+F 0 "P?" H 14800 3500 50  0000 C CNN
+F 1 "Stromleiste GND" V 14900 3050 50  0000 C CNN
+F 2 "" H 14800 3050 60  0000 C CNN
+F 3 "" H 14800 3050 60  0000 C CNN
+	1    14800 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X08 P?
+U 1 1 54B73CFB
+P 15750 3050
+F 0 "P?" H 15750 3500 50  0000 C CNN
+F 1 "Stromleiste 3,3V" V 15850 3050 50  0000 C CNN
+F 2 "" H 15750 3050 60  0000 C CNN
+F 3 "" H 15750 3050 60  0000 C CNN
+	1    15750 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14600 2700 14600 3550
+Connection ~ 14600 2800
+Connection ~ 14600 2900
+Connection ~ 14600 3000
+Connection ~ 14600 3100
+Connection ~ 14600 3200
+Connection ~ 14600 3300
+Wire Wire Line
+	15100 2700 15100 3550
+Connection ~ 15100 2800
+Connection ~ 15100 2900
+Connection ~ 15100 3000
+Connection ~ 15100 3100
+Connection ~ 15100 3200
+Connection ~ 15100 3300
+Wire Wire Line
+	15550 2700 15550 3500
+Connection ~ 15550 2800
+Connection ~ 15550 2900
+Connection ~ 15550 3000
+Connection ~ 15550 3100
+Connection ~ 15550 3200
+Connection ~ 15550 3300
+$Comp
+L +5V #PWR?
+U 1 1 54B77FA5
+P 15100 3550
+F 0 "#PWR?" H 15100 3640 20  0001 C CNN
+F 1 "+5V" H 15100 3640 30  0000 C CNN
+F 2 "" H 15100 3550 60  0000 C CNN
+F 3 "" H 15100 3550 60  0000 C CNN
+	1    15100 3550
+	-1   0    0    1   
+$EndComp
+Connection ~ 15100 3400
+$Comp
+L +3.3V #PWR?
+U 1 1 54B7868E
+P 15550 3500
+F 0 "#PWR?" H 15550 3460 30  0001 C CNN
+F 1 "+3.3V" H 15550 3610 30  0000 C CNN
+F 2 "" H 15550 3500 60  0000 C CNN
+F 3 "" H 15550 3500 60  0000 C CNN
+	1    15550 3500
+	1    0    0    1   
+$EndComp
+Connection ~ 15550 3400
+$Comp
+L GND #PWR?
+U 1 1 54B7933B
+P 14600 3550
+F 0 "#PWR?" H 14600 3550 30  0001 C CNN
+F 1 "GND" H 14600 3480 30  0001 C CNN
+F 2 "" H 14600 3550 60  0000 C CNN
+F 3 "" H 14600 3550 60  0000 C CNN
+	1    14600 3550
+	1    0    0    -1  
+$EndComp
+Connection ~ 14600 3400
+$Comp
+L CP1 C?
+U 1 1 54B79CC4
+P 15550 1000
+F 0 "C?" H 15600 1100 50  0000 L CNN
+F 1 "??" H 15600 900 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:Capacitor3MMDiscRM2.5" H 15550 1000 60  0001 C CNN
+F 3 "~" H 15550 1000 60  0000 C CNN
+	1    15550 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 54B7A660
+P 15550 700
+F 0 "#PWR?" H 15550 660 30  0001 C CNN
+F 1 "+3.3V" H 15550 810 30  0000 C CNN
+F 2 "" H 15550 700 60  0000 C CNN
+F 3 "" H 15550 700 60  0000 C CNN
+	1    15550 700 
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B7A8AB
+P 15200 700
+F 0 "#PWR?" H 15200 790 20  0001 C CNN
+F 1 "+5V" H 15200 790 30  0000 C CNN
+F 2 "" H 15200 700 60  0000 C CNN
+F 3 "" H 15200 700 60  0000 C CNN
+	1    15200 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B7A916
+P 15550 1300
+F 0 "#PWR?" H 15550 1300 30  0001 C CNN
+F 1 "GND" H 15550 1230 30  0001 C CNN
+F 2 "" H 15550 1300 60  0000 C CNN
+F 3 "" H 15550 1300 60  0000 C CNN
+	1    15550 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	15550 800  15550 700 
+$Comp
+L CP1 C?
+U 1 1 54B7B4BD
+P 15200 1000
+F 0 "C?" H 15250 1100 50  0000 L CNN
+F 1 "??" H 15250 900 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:Capacitor3MMDiscRM2.5" H 15200 1000 60  0001 C CNN
+F 3 "~" H 15200 1000 60  0000 C CNN
+	1    15200 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B7B4C3
+P 15200 1300
+F 0 "#PWR?" H 15200 1300 30  0001 C CNN
+F 1 "GND" H 15200 1230 30  0001 C CNN
+F 2 "" H 15200 1300 60  0000 C CNN
+F 3 "" H 15200 1300 60  0000 C CNN
+	1    15200 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	15550 1300 15550 1200
+Wire Wire Line
+	15200 1300 15200 1200
+Wire Wire Line
+	15200 800  15200 700 
+Text Notes 14900 1650 0    39   ~ 0
+Pufferkondensator 3,3v und 5V\ndamit könten eigentlich die\neinzelnen Kondensatoren entfallen.\nz.B bei den INA
+$Comp
+L JUMPER JP?
+U 1 1 54B7D8CC
+P 10200 1700
+F 0 "JP?" H 10200 1850 60  0000 C CNN
+F 1 "5V" H 10200 1620 40  0000 C CNN
+F 2 "Connect:PINHEAD1-2" H 10200 1700 60  0001 C CNN
+F 3 "~" H 10200 1700 60  0000 C CNN
+	1    10200 1700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 54B7D8D2
+P 10550 2100
+F 0 "#PWR?" H 10550 2060 30  0001 C CNN
+F 1 "+3.3V" H 10550 2210 30  0000 C CNN
+F 2 "" H 10550 2100 60  0000 C CNN
+F 3 "" H 10550 2100 60  0000 C CNN
+	1    10550 2100
+	-1   0    0    1   
+$EndComp
+$Comp
+L JUMPER JP?
+U 1 1 54B7DF62
+P 10550 1700
+F 0 "JP?" H 10550 1850 60  0000 C CNN
+F 1 "3,3V" H 10550 1620 40  0000 C CNN
+F 2 "Connect:PINHEAD1-2" H 10550 1700 60  0001 C CNN
+F 3 "~" H 10550 1700 60  0000 C CNN
+	1    10550 1700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10550 2000 10550 2100
+Wire Wire Line
+	10200 2000 10200 2100
+Wire Wire Line
+	10550 1400 10200 1400
+Wire Wire Line
+	10200 1400 10200 1200
+$Comp
+L CONN_3 P4
+U 1 1 54B7F814
+P 700 2250
+F 0 "P4" V 650 2250 50  0000 C CNN
+F 1 "Rain" V 750 2250 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 700 2250 60  0001 C CNN
+F 3 "" H 700 2250 60  0000 C CNN
+	1    700  2250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B7FA3A
+P 1050 2500
+F 0 "#PWR?" H 1050 2500 30  0001 C CNN
+F 1 "GND" H 1050 2430 30  0001 C CNN
+F 2 "" H 1050 2500 60  0000 C CNN
+F 3 "" H 1050 2500 60  0000 C CNN
+	1    1050 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1050 2350 1050 2500
+$Comp
+L +5V #PWR?
+U 1 1 54B7FF16
+P 1050 2000
+F 0 "#PWR?" H 1050 2090 20  0001 C CNN
+F 1 "+5V" H 1050 2090 30  0000 C CNN
+F 2 "" H 1050 2000 60  0000 C CNN
+F 3 "" H 1050 2000 60  0000 C CNN
+	1    1050 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1050 2150 1050 2000
+Text Notes 14900 3750 0    39   ~ 0
+Abgriff 5V, 3V, GND
 $EndSCHEMATC
