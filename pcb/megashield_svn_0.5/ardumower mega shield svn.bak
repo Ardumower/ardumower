@@ -115,7 +115,7 @@ F 3 "~" H 9650 2400 30  0000 C CNN
 	1    9650 2400
 	0    -1   -1   0   
 $EndComp
-Text GLabel 5100 3750 0    60   Input ~ 0
+Text GLabel 5400 3850 0    60   Input ~ 0
 pinPerimeterLeft
 $Comp
 L GND #PWR34
@@ -149,7 +149,7 @@ Text GLabel 9250 6600 2    60   Input ~ 0
 pinTilt
 Text GLabel 7950 800  2    60   Input ~ 0
 pinBuzzer
-Text GLabel 7050 5450 0    60   Output ~ 0
+Text GLabel 5300 5550 0    60   Output ~ 0
 pinBuzzer
 Text GLabel 7050 7100 0    60   Input ~ 0
 pinBumperLeft
@@ -169,11 +169,11 @@ Text GLabel 1450 6100 2    60   Output ~ 0
 pinSonarLeftEcho
 Text GLabel 1350 3050 2    60   Output ~ 0
 pinTilt
-Text GLabel 5100 3300 0    60   Input ~ 0
+Text GLabel 4400 3550 0    60   Input ~ 0
 pinBatteryVoltage
-Text GLabel 5100 3900 0    60   Input ~ 0
+Text GLabel 4400 4250 0    60   Input ~ 0
 pinChargeCurrent
-Text GLabel 5100 4050 0    60   Input ~ 0
+Text GLabel 5400 4350 0    60   Input ~ 0
 pinChargeVoltage
 Text GLabel 13900 8350 0    60   Output ~ 0
 pinUserSwitch1
@@ -181,12 +181,8 @@ Text GLabel 13900 8500 0    60   Output ~ 0
 pinUserSwitch2
 Text GLabel 13900 8650 0    60   Output ~ 0
 pinUserSwitch3
-Text GLabel 5600 4650 0    60   Input ~ 0
-pinOdometryLeft2
 Text GLabel 5450 950  2    60   Output ~ 0
 pinOdometryRight2
-Text GLabel 5600 4950 0    60   Input ~ 0
-pinOdometryRight
 Text GLabel 9250 6200 2    60   Output ~ 0
 pinMotorLeftDir
 Text GLabel 9250 6400 2    60   Output ~ 0
@@ -354,14 +350,12 @@ Text Notes 14700 6050 2    60   ~ 0
 Perimeter coil
 Text GLabel 9250 3650 2    60   Output ~ 0
 pinMotorMowPWM
-Text GLabel 5100 3450 0    60   Input ~ 0
+Text GLabel 5400 3650 0    60   Input ~ 0
 pinMotorMowSense
-Text GLabel 5100 3150 0    60   Input ~ 0
+Text GLabel 5400 3450 0    60   Input ~ 0
 pinMotorLeftSense
-Text GLabel 5100 3000 0    60   Input ~ 0
+Text GLabel 4400 3350 0    60   Input ~ 0
 pinMotorRightSense
-NoConn ~ 7200 3950
-NoConn ~ 7200 4050
 NoConn ~ 7200 2650
 NoConn ~ 9100 2250
 NoConn ~ 9100 5000
@@ -485,10 +479,8 @@ F 3 "" H 5300 1100 60  0000 C CNN
 	1    5300 1100
 	1    0    0    -1  
 $EndComp
-Text GLabel 5100 4200 0    60   Input ~ 0
+Text GLabel 4400 4650 0    60   Input ~ 0
 pinOdometryLeft
-Text GLabel 5600 4800 0    60   Input ~ 0
-pinOdometryRight2
 Text GLabel 5450 1450 2    60   Output ~ 0
 pinOdometryLeft
 Text GLabel 5450 750  2    60   Output ~ 0
@@ -763,13 +755,13 @@ $EndComp
 $Comp
 L GND #PWR30
 U 1 1 53866E1C
-P 5750 2050
-F 0 "#PWR30" H 5750 2050 30  0001 C CNN
-F 1 "GND" H 5750 1980 30  0001 C CNN
-F 2 "" H 5750 2050 60  0000 C CNN
-F 3 "" H 5750 2050 60  0000 C CNN
-	1    5750 2050
-	-1   0    0    1   
+P 5800 2850
+F 0 "#PWR30" H 5800 2850 30  0001 C CNN
+F 1 "GND" H 5800 2780 30  0001 C CNN
+F 2 "" H 5800 2850 60  0000 C CNN
+F 3 "" H 5800 2850 60  0000 C CNN
+	1    5800 2850
+	0    1    1    0   
 $EndComp
 $Comp
 L CP1 C2
@@ -925,9 +917,9 @@ F 3 "" H 6800 1150 60  0000 C CNN
 $EndComp
 Text GLabel 6850 1500 2    60   Output ~ 0
 pinButton
-Text GLabel 5350 5850 0    60   Input ~ 0
+Text GLabel 5350 6000 0    60   Input ~ 0
 pinMotorMowRpm
-Text GLabel 7050 5650 0    60   Input ~ 0
+Text GLabel 5350 5750 0    60   Input ~ 0
 pinButton
 NoConn ~ 10200 650 
 Text GLabel 9300 5600 2    60   Input ~ 0
@@ -936,7 +928,7 @@ Text GLabel 10150 5350 2    60   Input ~ 0
 pinSonarCenterTrigger
 Text GLabel 9250 5100 2    60   Input ~ 0
 pinSonarCenterEcho
-Text GLabel 6500 5550 0    60   Input ~ 0
+Text GLabel 4600 5650 0    60   Input ~ 0
 pinRemoteSwitch
 Text GLabel 6200 6150 0    60   Input ~ 0
 pinUserSwitch1
@@ -976,7 +968,6 @@ F 3 "" H 10850 -50 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 9100 2850
-NoConn ~ 7200 3750
 $Comp
 L CONN_2 P4
 U 1 1 541D6EC8
@@ -1323,7 +1314,7 @@ F 3 "" H 6700 10600 60  0000 C CNN
 	1    6700 10600
 	1    0    0    -1  
 $EndComp
-Text GLabel 6350 5750 0    60   Output ~ 0
+Text GLabel 4600 5850 0    60   Output ~ 0
 pinChargingEnable
 $Comp
 L CONN_2 Ladeanschluss1
@@ -1446,57 +1437,46 @@ SCL
 $Comp
 L R_PACK8 RP1
 U 1 1 5478A23C
-P 6200 3600
-F 0 "RP1" H 6200 4050 40  0000 C CNN
-F 1 "150" H 6200 3150 40  0000 C CNN
-F 2 "Sockets_DIP:DIP-16__300" H 6200 3600 60  0001 C CNN
-F 3 "" H 6200 3600 60  0000 C CNN
-	1    6200 3600
-	1    0    0    -1  
-$EndComp
-$Comp
-L R_PACK4 RP2
-U 1 1 5478C825
-P 6250 5000
-F 0 "RP2" H 6250 5450 40  0000 C CNN
-F 1 "150" H 6250 4950 40  0000 C CNN
-F 2 "Sockets_DIP:DIP-8__300" H 6250 5000 60  0001 C CNN
-F 3 "" H 6250 5000 60  0000 C CNN
-	1    6250 5000
+P 5750 3700
+F 0 "RP1" H 5750 3600 40  0000 C CNN
+F 1 "150" H 5750 3250 40  0000 C CNN
+F 2 "Sockets_DIP:DIP-16__300" H 5750 3700 60  0001 C CNN
+F 3 "" H 5750 3700 60  0000 C CNN
+	1    5750 3700
 	1    0    0    -1  
 $EndComp
 $Comp
 L RR8 RR1
 U 1 1 54994E69
-P 6150 2700
-F 0 "RR1" H 6200 3250 70  0000 C CNN
-F 1 "C100uF" V 6180 2700 70  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x09" H 6150 2700 60  0001 C CNN
-F 3 "" H 6150 2700 60  0000 C CNN
-	1    6150 2700
-	1    0    0    -1  
+P 6450 2450
+F 0 "RR1" H 6500 3000 70  0000 C CNN
+F 1 "C100uF" V 6480 2450 70  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x09" H 6450 2450 60  0001 C CNN
+F 3 "" H 6450 2450 60  0000 C CNN
+	1    6450 2450
+	0    -1   -1   0   
 $EndComp
 $Comp
 L RR8 RR2
 U 1 1 5499A2BD
-P 4450 5100
-F 0 "RR2" H 4500 5650 70  0000 C CNN
-F 1 "C100uF" V 4480 5100 70  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 4450 5100 60  0001 C CNN
-F 3 "" H 4450 5100 60  0000 C CNN
-	1    4450 5100
-	1    0    0    -1  
+P 6450 5450
+F 0 "RR2" H 6500 6000 70  0000 C CNN
+F 1 "C100uF" V 6480 5450 70  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 6450 5450 60  0001 C CNN
+F 3 "" H 6450 5450 60  0000 C CNN
+	1    6450 5450
+	0    -1   1    0   
 $EndComp
 $Comp
 L GND #PWR23
 U 1 1 5499A343
-P 4100 4550
-F 0 "#PWR23" H 4100 4550 30  0001 C CNN
-F 1 "GND" H 4100 4480 30  0001 C CNN
-F 2 "" H 4100 4550 60  0000 C CNN
-F 3 "" H 4100 4550 60  0000 C CNN
-	1    4100 4550
-	-1   0    0    1   
+P 5900 5100
+F 0 "#PWR23" H 5900 5100 30  0001 C CNN
+F 1 "GND" H 5900 5030 30  0001 C CNN
+F 2 "" H 5900 5100 60  0000 C CNN
+F 3 "" H 5900 5100 60  0000 C CNN
+	1    5900 5100
+	0    1    1    0   
 $EndComp
 $Comp
 L GND #PWR53
@@ -1509,7 +1489,6 @@ F 3 "" H 11650 9900 60  0000 C CNN
 	1    11650 9900
 	1    0    0    -1  
 $EndComp
-NoConn ~ 6050 4950
 $Comp
 L CONN_5 P19
 U 1 1 54A12C85
@@ -1522,7 +1501,6 @@ F 3 "" H 2800 5950 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 NoConn ~ 3200 6150
-NoConn ~ 6450 4950
 Text GLabel 6750 2150 0    60   Input ~ 0
 Power
 Text GLabel 12550 9400 2    60   Output ~ 0
@@ -1583,11 +1561,6 @@ F 3 "" H 15200 4150 60  0000 C CNN
 	1    15200 4150
 	0    -1   -1   0   
 $EndComp
-NoConn ~ 4100 5050
-NoConn ~ 4100 5150
-NoConn ~ 4100 5250
-NoConn ~ 4100 5350
-NoConn ~ 4100 5450
 Text GLabel 5750 6300 0    60   Input ~ 0
 DropLeft
 Text GLabel 9400 5250 2    60   Input ~ 0
@@ -1596,99 +1569,98 @@ Text GLabel 10450 4400 2    60   Input ~ 0
 TX1
 Text GLabel 10450 4550 2    60   Input ~ 0
 RX1
-Text GLabel 2300 3450 0    60   Input ~ 0
+Text GLabel 1950 3400 0    60   Input ~ 0
 RX1
 $Comp
 L +3.3V #PWR19
 U 1 1 54AE985A
-P 2950 3300
-F 0 "#PWR19" H 2950 3390 20  0001 C CNN
-F 1 "+3.3V" H 2950 3390 30  0000 C CNN
-F 2 "" H 2950 3300 60  0000 C CNN
-F 3 "" H 2950 3300 60  0000 C CNN
-	1    2950 3300
+P 2600 3250
+F 0 "#PWR19" H 2600 3340 20  0001 C CNN
+F 1 "+3.3V" H 2600 3340 30  0000 C CNN
+F 2 "" H 2600 3250 60  0000 C CNN
+F 3 "" H 2600 3250 60  0000 C CNN
+	1    2600 3250
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR17
 U 1 1 54AE9925
-P 2450 3800
-F 0 "#PWR17" H 2450 3800 30  0001 C CNN
-F 1 "GND" H 2450 3730 30  0001 C CNN
-F 2 "" H 2450 3800 60  0000 C CNN
-F 3 "" H 2450 3800 60  0000 C CNN
-	1    2450 3800
+P 2100 3750
+F 0 "#PWR17" H 2100 3750 30  0001 C CNN
+F 1 "GND" H 2100 3680 30  0001 C CNN
+F 2 "" H 2100 3750 60  0000 C CNN
+F 3 "" H 2100 3750 60  0000 C CNN
+	1    2100 3750
 	1    0    0    -1  
 $EndComp
-NoConn ~ 7200 4550
 $Comp
 L CONN_02X03 P20
 U 1 1 54AF3343
-P 2700 3550
-F 0 "P20" H 2700 3750 50  0000 C CNN
-F 1 "Wlan" H 2700 3350 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x03" H 2700 2350 60  0001 C CNN
-F 3 "" H 2700 2350 60  0000 C CNN
-	1    2700 3550
+P 2350 3500
+F 0 "P20" H 2350 3700 50  0000 C CNN
+F 1 "Wlan" H 2350 3300 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x03" H 2350 2300 60  0001 C CNN
+F 3 "" H 2350 2300 60  0000 C CNN
+	1    2350 3500
 	1    0    0    -1  
 $EndComp
-NoConn ~ 2950 3550
-NoConn ~ 2450 3550
-Text GLabel 2950 3850 0    60   Input ~ 0
+NoConn ~ 2600 3500
+NoConn ~ 2100 3500
+Text GLabel 2600 3800 0    60   Input ~ 0
 TX1
 $Comp
 L R R15
 U 1 1 54B23352
-P 3200 3850
-F 0 "R15" V 3280 3850 40  0000 C CNN
-F 1 "470R" V 3207 3851 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 3130 3850 30  0001 C CNN
-F 3 "~" H 3200 3850 30  0000 C CNN
-	1    3200 3850
+P 2850 3800
+F 0 "R15" V 2930 3800 40  0000 C CNN
+F 1 "470R" V 2857 3801 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2780 3800 30  0001 C CNN
+F 3 "~" H 2850 3800 30  0000 C CNN
+	1    2850 3800
 	0    -1   -1   0   
 $EndComp
 $Comp
 L R R16
 U 1 1 54B23358
-P 3450 4250
-F 0 "R16" V 3530 4250 40  0000 C CNN
-F 1 "1K" V 3457 4251 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 3380 4250 30  0001 C CNN
-F 3 "~" H 3450 4250 30  0000 C CNN
-	1    3450 4250
+P 3100 4200
+F 0 "R16" V 3180 4200 40  0000 C CNN
+F 1 "1K" V 3107 4201 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 3030 4200 30  0001 C CNN
+F 3 "~" H 3100 4200 30  0000 C CNN
+	1    3100 4200
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR21
 U 1 1 54B2335E
-P 3450 4550
-F 0 "#PWR21" H 3450 4550 30  0001 C CNN
-F 1 "GND" H 3450 4480 30  0001 C CNN
-F 2 "" H 3450 4550 60  0000 C CNN
-F 3 "" H 3450 4550 60  0000 C CNN
-	1    3450 4550
+P 3100 4500
+F 0 "#PWR21" H 3100 4500 30  0001 C CNN
+F 1 "GND" H 3100 4430 30  0001 C CNN
+F 2 "" H 3100 4500 60  0000 C CNN
+F 3 "" H 3100 4500 60  0000 C CNN
+	1    3100 4500
 	1    0    0    -1  
 $EndComp
 $Comp
 L R R14
 U 1 1 54B24323
-P 2450 3150
-F 0 "R14" V 2530 3150 40  0000 C CNN
-F 1 "1K" V 2457 3151 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2380 3150 30  0001 C CNN
-F 3 "~" H 2450 3150 30  0000 C CNN
-	1    2450 3150
+P 2100 3100
+F 0 "R14" V 2180 3100 40  0000 C CNN
+F 1 "1K" V 2107 3101 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2030 3100 30  0001 C CNN
+F 3 "~" H 2100 3100 30  0000 C CNN
+	1    2100 3100
 	-1   0    0    1   
 $EndComp
 $Comp
 L +5V #PWR16
 U 1 1 54B24329
-P 2450 2900
-F 0 "#PWR16" H 2450 2990 20  0001 C CNN
-F 1 "+5V" H 2450 2990 30  0000 C CNN
-F 2 "" H 2450 2900 60  0000 C CNN
-F 3 "" H 2450 2900 60  0000 C CNN
-	1    2450 2900
+P 2100 2850
+F 0 "#PWR16" H 2100 2940 20  0001 C CNN
+F 1 "+5V" H 2100 2940 30  0000 C CNN
+F 2 "" H 2100 2850 60  0000 C CNN
+F 3 "" H 2100 2850 60  0000 C CNN
+	1    2100 2850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1907,30 +1879,15 @@ Text Notes 5750 8300 0    39   ~ 0
 Vorwiderstand Relais\nkann über ändern \nangepasst werden an\nverschiedene\nLadespannung
 Text Notes 5450 7700 0    39   ~ 0
 Rückflussdiode\nFalls Ladeschaltung nicht benötigt \nLadeschaltung nicht bestücken \nund für Diode Drahtbrücke einlöten\n
-Text GLabel 5600 4450 0    60   Input ~ 0
-pinChargingBilanz
-Text Notes 3600 4500 0    60   ~ 0
-Neu\nTiefpassfilter fehlt noch
-$Comp
-L CONN_6 P7
-U 1 1 54B5D3DE
-P 3600 2200
-F 0 "P7" V 3550 2200 60  0000 C CNN
-F 1 "Status LEDs" V 3650 2200 60  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 3600 2200 60  0001 C CNN
-F 3 "" H 3600 2200 60  0000 C CNN
-	1    3600 2200
-	1    0    0    -1  
-$EndComp
 $Comp
 L GND #PWR?
 U 1 1 54B5D3E4
-P 3150 2600
-F 0 "#PWR?" H 3150 2600 30  0001 C CNN
-F 1 "GND" H 3150 2530 30  0001 C CNN
-F 2 "" H 3150 2600 60  0000 C CNN
-F 3 "" H 3150 2600 60  0000 C CNN
-	1    3150 2600
+P 3150 2800
+F 0 "#PWR?" H 3150 2800 30  0001 C CNN
+F 1 "GND" H 3150 2730 30  0001 C CNN
+F 2 "" H 3150 2800 60  0000 C CNN
+F 3 "" H 3150 2800 60  0000 C CNN
+	1    3150 2800
 	1    0    0    -1  
 $EndComp
 Text GLabel 2850 2300 0    60   Input ~ 0
@@ -1982,10 +1939,304 @@ Text GLabel 2550 8950 3    60   Output ~ 0
 StationLed
 Text GLabel 2850 2600 0    60   Input ~ 0
 StationLed
-Text Notes 2550 2800 0    39   ~ 0
-Muss noch auf Stecker\naufgelegt werden
 Text Notes 2450 9750 0    39   ~ 0
 Station LED\nbzw:\nGrundlast\nPerimetersender
+Text Notes 2650 7300 0    39   ~ 0
+Strom von Relais muss vor der Diode geholt werden\nwenn nach Diode oderLM350T geholt wird\ngeht das Relais rückwärt in Selbthaltung\n und kann nicht mehr abfallen
+$Comp
+L +5V #PWR?
+U 1 1 54B507D5
+P 3150 4800
+F 0 "#PWR?" H 3150 4890 20  0001 C CNN
+F 1 "+5V" H 3150 4890 30  0000 C CNN
+F 2 "" H 3150 4800 60  0000 C CNN
+F 3 "" H 3150 4800 60  0000 C CNN
+	1    3150 4800
+	1    0    0    -1  
+$EndComp
+Text Notes 2650 4750 0    39   ~ 0
+Hier 5V richtig??
+Text GLabel 10700 10800 2    47   Output ~ 0
+pinChargingBilanz
+$Comp
+L ACS712 U?
+U 1 1 54B50EFB
+P 10450 10150
+F 0 "U?" H 10450 10400 50  0000 C CNN
+F 1 "INA169 Adafruit" H 10450 9900 50  0000 C CNN
+F 2 "ACS712:INA169" H 10450 10150 60  0000 C CNN
+F 3 "" H 10450 10150 60  0000 C CNN
+	1    10450 10150
+	0    1    1    0   
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B50F01
+P 10550 10650
+F 0 "#PWR?" H 10550 10740 20  0001 C CNN
+F 1 "+5V" H 10550 10740 30  0000 C CNN
+F 2 "" H 10550 10650 60  0000 C CNN
+F 3 "" H 10550 10650 60  0000 C CNN
+	1    10550 10650
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B50F07
+P 10300 11000
+F 0 "#PWR?" H 10300 11000 30  0001 C CNN
+F 1 "GND" H 10300 10930 30  0001 C CNN
+F 2 "" H 10300 11000 60  0000 C CNN
+F 3 "" H 10300 11000 60  0000 C CNN
+	1    10300 11000
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C?
+U 1 1 54B50F0D
+P 10500 10950
+F 0 "C?" H 10550 11050 50  0000 L CNN
+F 1 "0,1uF" H 10550 10850 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:Capacitor3MMDiscRM2.5" H 10500 10950 60  0001 C CNN
+F 3 "~" H 10500 10950 60  0000 C CNN
+	1    10500 10950
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_3 P21
+U 1 1 54B5391D
+P 14600 5650
+F 0 "P21" V 14550 5650 50  0000 C CNN
+F 1 "DropRight" V 14650 5650 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 14600 5650 60  0001 C CNN
+F 3 "" H 14600 5650 60  0000 C CNN
+	1    14600 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B53923
+P 14250 5900
+F 0 "#PWR?" H 14250 5900 30  0001 C CNN
+F 1 "GND" H 14250 5830 30  0001 C CNN
+F 2 "" H 14250 5900 60  0000 C CNN
+F 3 "" H 14250 5900 60  0000 C CNN
+	1    14250 5900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B5392A
+P 14250 5400
+F 0 "#PWR?" H 14250 5490 20  0001 C CNN
+F 1 "+5V" H 14250 5490 30  0000 C CNN
+F 2 "" H 14250 5400 60  0000 C CNN
+F 3 "" H 14250 5400 60  0000 C CNN
+	1    14250 5400
+	-1   0    0    -1  
+$EndComp
+Text GLabel 13650 5650 0    60   Output ~ 0
+DropRight
+$Comp
+L DIODE D?
+U 1 1 54B53F62
+P 13950 5650
+F 0 "D?" H 13950 5750 40  0000 C CNN
+F 1 "DIODE" H 13950 5550 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 13950 5650 60  0001 C CNN
+F 3 "" H 13950 5650 60  0000 C CNN
+	1    13950 5650
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B5558C
+P 14050 6800
+F 0 "#PWR?" H 14050 6800 30  0001 C CNN
+F 1 "GND" H 14050 6730 30  0001 C CNN
+F 2 "" H 14050 6800 60  0000 C CNN
+F 3 "" H 14050 6800 60  0000 C CNN
+	1    14050 6800
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_3 P?
+U 1 1 54B55773
+P 12850 5650
+F 0 "P?" V 12800 5650 50  0000 C CNN
+F 1 "DropLeft" V 12900 5650 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 12850 5650 60  0001 C CNN
+F 3 "" H 12850 5650 60  0000 C CNN
+	1    12850 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B55779
+P 12500 5900
+F 0 "#PWR?" H 12500 5900 30  0001 C CNN
+F 1 "GND" H 12500 5830 30  0001 C CNN
+F 2 "" H 12500 5900 60  0000 C CNN
+F 3 "" H 12500 5900 60  0000 C CNN
+	1    12500 5900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B5577F
+P 12500 5400
+F 0 "#PWR?" H 12500 5490 20  0001 C CNN
+F 1 "+5V" H 12500 5490 30  0000 C CNN
+F 2 "" H 12500 5400 60  0000 C CNN
+F 3 "" H 12500 5400 60  0000 C CNN
+	1    12500 5400
+	-1   0    0    -1  
+$EndComp
+Text GLabel 11900 5650 0    60   Output ~ 0
+DropLeft
+$Comp
+L DIODE D?
+U 1 1 54B55789
+P 12200 5650
+F 0 "D?" H 12200 5750 40  0000 C CNN
+F 1 "DIODE" H 12200 5550 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 12200 5650 60  0001 C CNN
+F 3 "" H 12200 5650 60  0000 C CNN
+	1    12200 5650
+	-1   0    0    1   
+$EndComp
+Text Notes 10150 1450 0    39   ~ 0
+VCC muss das nicht auch 3.3V sein\n?????????????????????????????
+$Comp
+L DIODE D?
+U 1 1 54B617F6
+P 5750 7850
+F 0 "D?" H 5750 7950 40  0000 C CNN
+F 1 "DIODE" H 5750 7750 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 5750 7850 60  0001 C CNN
+F 3 "" H 5750 7850 60  0000 C CNN
+	1    5750 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 54B63125
+P 8050 8650
+F 0 "D?" H 8050 8750 40  0000 C CNN
+F 1 "DIODE" H 8050 8550 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 8050 8650 60  0001 C CNN
+F 3 "" H 8050 8650 60  0000 C CNN
+	1    8050 8650
+	1    0    0    -1  
+$EndComp
+Text Notes 7700 8600 0    39   ~ 0
+Sperrdiode die die Rückwärtsspannung \nvermeidet wenn DC-DC wander von\nLadestrom versorgt werden soll\n(@SteanM]\n\n
+$Comp
+L JUMPER JP?
+U 1 1 54B661FE
+P 5000 7850
+F 0 "JP?" H 5000 8000 60  0000 C CNN
+F 1 "pwr" H 5000 7770 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 5000 7850 60  0001 C CNN
+F 3 "" H 5000 7850 60  0000 C CNN
+	1    5000 7850
+	1    0    0    -1  
+$EndComp
+Text Notes 4400 7700 0    39   ~ 0
+Als Lötbrücke um\nLeiterbahn zu\nSchließen falls LM350T\nnicht bestückt wird
+Text GLabel 12300 6300 0    60   Output ~ 0
+pinPerimeterRight
+$Comp
+L CONN_3 P?
+U 1 1 54B6707E
+P 12750 6300
+F 0 "P?" V 12700 6300 50  0000 C CNN
+F 1 "PerimeterRight" V 12800 6300 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 12750 6300 60  0001 C CNN
+F 3 "" H 12750 6300 60  0000 C CNN
+	1    12750 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B67084
+P 12400 6550
+F 0 "#PWR?" H 12400 6550 30  0001 C CNN
+F 1 "GND" H 12400 6480 30  0001 C CNN
+F 2 "" H 12400 6550 60  0000 C CNN
+F 3 "" H 12400 6550 60  0000 C CNN
+	1    12400 6550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B6708A
+P 12400 6050
+F 0 "#PWR?" H 12400 6140 20  0001 C CNN
+F 1 "+5V" H 12400 6140 30  0000 C CNN
+F 2 "" H 12400 6050 60  0000 C CNN
+F 3 "" H 12400 6050 60  0000 C CNN
+	1    12400 6050
+	-1   0    0    -1  
+$EndComp
+Text GLabel 14150 6300 0    60   Output ~ 0
+pinPerimeterLeft
+$Comp
+L CONN_3 P12
+U 1 1 54B673DE
+P 14600 6300
+F 0 "P12" V 14550 6300 50  0000 C CNN
+F 1 "PerimeterRight" V 14650 6300 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 14600 6300 60  0001 C CNN
+F 3 "" H 14600 6300 60  0000 C CNN
+	1    14600 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 54B673E4
+P 14250 6550
+F 0 "#PWR?" H 14250 6550 30  0001 C CNN
+F 1 "GND" H 14250 6480 30  0001 C CNN
+F 2 "" H 14250 6550 60  0000 C CNN
+F 3 "" H 14250 6550 60  0000 C CNN
+	1    14250 6550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 54B673EA
+P 14250 6050
+F 0 "#PWR?" H 14250 6140 20  0001 C CNN
+F 1 "+5V" H 14250 6140 30  0000 C CNN
+F 2 "" H 14250 6050 60  0000 C CNN
+F 3 "" H 14250 6050 60  0000 C CNN
+	1    14250 6050
+	-1   0    0    -1  
+$EndComp
+Text Notes 11650 6150 0    39   ~ 0
+Perimeter rechts auf\nWunsch hinzugefügt
+Text GLabel 4400 3750 0    60   Input ~ 0
+pinPerimeterRight
+Text GLabel 5400 4750 0    60   Input ~ 0
+pinOdometryLeft2
+Text GLabel 5400 4950 0    60   Input ~ 0
+pinOdometryRight
+Text GLabel 4400 4850 0    60   Input ~ 0
+pinOdometryRight2
+Text GLabel 4400 4450 0    60   Input ~ 0
+pinChargingBilanz
+$Comp
+L R_PACK8 RP?
+U 1 1 54B686DE
+P 5750 4600
+F 0 "RP?" H 5750 4600 40  0000 C CNN
+F 1 "150" H 5750 4150 40  0000 C CNN
+F 2 "Sockets_DIP:DIP-16__300" H 5750 4600 60  0001 C CNN
+F 3 "" H 5750 4600 60  0000 C CNN
+	1    5750 4600
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
 	7200 2950 7200 3050
 Wire Wire Line
@@ -2032,23 +2283,9 @@ Wire Wire Line
 Wire Wire Line
 	1400 4200 1450 4200
 Wire Wire Line
-	7200 4250 6900 4250
-Wire Wire Line
 	7050 6950 7200 6950
 Wire Wire Line
 	9250 6800 9100 6800
-Wire Wire Line
-	6900 3450 7200 3450
-Wire Wire Line
-	6900 3350 6900 3450
-Wire Wire Line
-	7050 3250 7050 3350
-Wire Wire Line
-	7050 3350 7200 3350
-Wire Wire Line
-	6650 3650 7200 3650
-Wire Wire Line
-	6600 3850 7200 3850
 Wire Wire Line
 	1250 5300 1300 5300
 Wire Wire Line
@@ -2292,10 +2529,6 @@ Wire Wire Line
 Wire Wire Line
 	12400 900  12650 900 
 Wire Wire Line
-	6850 4750 6850 4850
-Wire Wire Line
-	6900 4750 7200 4750
-Wire Wire Line
 	7100 6750 7200 6750
 Wire Wire Line
 	6700 1150 6700 1400
@@ -2305,8 +2538,6 @@ Wire Wire Line
 	6700 1500 6850 1500
 Wire Wire Line
 	7050 6100 7200 6100
-Wire Wire Line
-	7050 5450 7200 5450
 Wire Wire Line
 	9100 2550 9350 2550
 Wire Wire Line
@@ -2323,8 +2554,6 @@ Wire Wire Line
 	9250 2850 9350 2850
 Wire Wire Line
 	9100 4450 10050 4450
-Wire Wire Line
-	7050 5650 7200 5650
 Wire Wire Line
 	10150 750  10150 800 
 Wire Wire Line
@@ -2367,8 +2596,6 @@ Wire Wire Line
 	9350 2450 9350 2400
 Wire Wire Line
 	9350 2400 9400 2400
-Wire Wire Line
-	6500 5550 7200 5550
 Wire Wire Line
 	6250 6200 7200 6200
 Wire Wire Line
@@ -2430,10 +2657,6 @@ Wire Wire Line
 	9100 3650 9250 3650
 Wire Wire Line
 	9100 3350 9300 3350
-Wire Wire Line
-	6600 4650 7200 4650
-Wire Wire Line
-	6850 4850 7200 4850
 Wire Wire Line
 	14250 7350 14350 7350
 Wire Wire Line
@@ -2524,8 +2747,6 @@ Wire Wire Line
 Wire Wire Line
 	1500 7850 1500 8000
 Wire Wire Line
-	6350 5750 7200 5750
-Wire Wire Line
 	14900 3950 14900 4050
 Wire Wire Line
 	14900 4350 14900 4250
@@ -2580,97 +2801,11 @@ Wire Wire Line
 Wire Wire Line
 	3150 5200 3350 5200
 Wire Wire Line
-	6400 3250 7050 3250
-Wire Wire Line
-	5600 3450 6000 3450
-Wire Wire Line
-	6750 3450 6750 3550
-Wire Wire Line
-	6750 3550 7200 3550
-Wire Wire Line
-	6650 2700 6650 3650
-Wire Wire Line
-	5550 3550 6000 3550
-Wire Wire Line
-	6600 2800 6600 3850
-Wire Wire Line
-	6000 3650 5900 3650
-Wire Wire Line
-	5900 3650 5900 3750
-Wire Wire Line
-	5900 3750 5100 3750
-Wire Wire Line
-	6900 4250 6900 3950
-Wire Wire Line
-	6900 3950 6550 3950
-Wire Wire Line
-	6550 3950 6550 2900
-Wire Wire Line
-	6000 3750 5950 3750
-Wire Wire Line
-	5950 3750 5950 3850
-Wire Wire Line
-	5950 3850 5700 3850
-Wire Wire Line
-	6000 3850 6000 3900
-Wire Wire Line
-	6000 3900 5750 3900
-Wire Wire Line
-	6500 3000 6500 4350
-Wire Wire Line
-	6500 4350 7200 4350
-Wire Wire Line
-	6400 3950 6400 4550
-Wire Wire Line
-	6050 4650 5600 4650
-Wire Wire Line
-	5600 4800 5700 4800
-Wire Wire Line
-	5700 4800 5700 4750
-Wire Wire Line
-	5700 4750 6050 4750
-Wire Wire Line
-	6450 4750 6850 4750
-Wire Wire Line
-	7200 4950 6800 4950
-Wire Wire Line
-	6800 4950 6800 4850
-Wire Wire Line
-	6800 4850 6450 4850
-Wire Wire Line
-	6050 4850 5650 4850
-Wire Wire Line
-	5650 4850 5650 4950
-Wire Wire Line
-	5650 4950 5600 4950
-Wire Wire Line
 	7100 2950 7200 2950
 Wire Wire Line
-	5750 2050 5750 2250
+	5800 2850 6000 2850
 Wire Wire Line
-	4100 4550 4100 4650
-Wire Wire Line
-	5700 3850 5700 3900
-Wire Wire Line
-	5700 3900 5100 3900
-Wire Wire Line
-	5750 3900 5750 4050
-Wire Wire Line
-	5750 4050 5100 4050
-Wire Wire Line
-	6000 3950 6000 4200
-Wire Wire Line
-	6000 4200 5100 4200
-Wire Wire Line
-	6400 3450 6750 3450
-Wire Wire Line
-	6400 3550 6650 3550
-Wire Wire Line
-	6400 3650 6600 3650
-Wire Wire Line
-	6550 3750 6400 3750
-Wire Wire Line
-	6400 3850 6500 3850
+	5900 5100 6000 5100
 Wire Wire Line
 	3200 5600 3200 5750
 Wire Wire Line
@@ -2688,19 +2823,11 @@ Wire Wire Line
 Wire Wire Line
 	2200 8800 2100 8800
 Wire Wire Line
-	6400 3350 6900 3350
-Wire Wire Line
-	6400 3950 6450 3950
-Wire Wire Line
-	5750 2250 5800 2250
+	6000 2850 6000 2800
 Wire Wire Line
 	12250 9400 12550 9400
 Wire Wire Line
-	6750 2150 6950 2150
-Wire Wire Line
-	6950 2150 6950 3150
-Wire Wire Line
-	6950 3150 7200 3150
+	6750 2150 7000 2150
 Wire Wire Line
 	6700 10300 6700 10600
 Wire Wire Line
@@ -2709,65 +2836,6 @@ Wire Wire Line
 	8600 7500 8450 7500
 Connection ~ 6700 8250
 Wire Wire Line
-	5800 3050 5800 3150
-Wire Wire Line
-	5800 3150 6450 3150
-Wire Wire Line
-	6450 3150 6450 3950
-Wire Wire Line
-	5800 2950 5800 3000
-Wire Wire Line
-	5800 3000 6500 3000
-Connection ~ 6500 3850
-Wire Wire Line
-	5800 2850 5800 2900
-Wire Wire Line
-	5800 2900 6550 2900
-Connection ~ 6550 3750
-Wire Wire Line
-	5800 2750 5800 2800
-Wire Wire Line
-	5800 2800 6600 2800
-Connection ~ 6600 3650
-Wire Wire Line
-	5800 2650 5800 2700
-Wire Wire Line
-	5800 2700 6650 2700
-Connection ~ 6650 3550
-Wire Wire Line
-	5800 2550 5800 2600
-Wire Wire Line
-	5800 2600 6700 2600
-Wire Wire Line
-	6700 2600 6700 3450
-Connection ~ 6700 3450
-Wire Wire Line
-	5800 2450 5800 2500
-Wire Wire Line
-	5800 2500 6750 2500
-Wire Wire Line
-	6750 2500 6750 3350
-Connection ~ 6750 3350
-Wire Wire Line
-	5800 2350 5800 2400
-Wire Wire Line
-	5800 2400 6800 2400
-Wire Wire Line
-	6800 2400 6800 3250
-Connection ~ 6800 3250
-Wire Wire Line
-	4100 4900 4100 4950
-Wire Wire Line
-	4100 4700 6900 4700
-Wire Wire Line
-	6450 4700 6450 4650
-Wire Wire Line
-	6450 4800 6450 4750
-Wire Wire Line
-	4100 4900 6450 4900
-Wire Wire Line
-	6450 4900 6450 4850
-Wire Wire Line
 	6450 8750 6700 8750
 Wire Wire Line
 	6700 8000 6700 8550
@@ -2775,12 +2843,6 @@ Wire Wire Line
 	1700 7850 1700 8000
 Wire Wire Line
 	2100 8000 2650 8000
-Wire Wire Line
-	4100 4700 4100 4750
-Wire Wire Line
-	4100 4850 4100 4800
-Wire Wire Line
-	4100 4800 6450 4800
 Wire Wire Line
 	3050 8000 3550 8000
 Wire Wire Line
@@ -2794,16 +2856,9 @@ Wire Wire Line
 Wire Wire Line
 	9200 5350 9100 5350
 Wire Wire Line
-	6900 4700 6900 4750
-Connection ~ 6450 4700
+	2600 3250 2600 3400
 Wire Wire Line
-	6600 4650 6600 4550
-Wire Wire Line
-	6600 4550 6400 4550
-Wire Wire Line
-	2950 3300 2950 3450
-Wire Wire Line
-	2450 3650 2450 3800
+	2100 3600 2100 3750
 Wire Wire Line
 	10050 4450 10050 4400
 Wire Wire Line
@@ -2817,22 +2872,18 @@ Wire Wire Line
 Wire Wire Line
 	10400 4550 10450 4550
 Wire Wire Line
-	7200 5900 5450 5900
+	5400 5900 7200 5900
 Wire Wire Line
-	5450 5900 5450 5850
+	1950 3400 2100 3400
 Wire Wire Line
-	5450 5850 5350 5850
+	3100 4500 3100 4450
 Wire Wire Line
-	2300 3450 2450 3450
+	3100 3600 3100 3950
 Wire Wire Line
-	3450 4550 3450 4500
+	2600 3600 3100 3600
+Connection ~ 3100 3800
 Wire Wire Line
-	3450 3650 3450 4000
-Wire Wire Line
-	2950 3650 3450 3650
-Connection ~ 3450 3850
-Wire Wire Line
-	2450 3450 2450 3400
+	2100 3400 2100 3350
 Wire Wire Line
 	6300 10100 6400 10100
 Wire Wire Line
@@ -2916,12 +2967,6 @@ Connection ~ 6700 9700
 Wire Wire Line
 	7400 10500 7400 10600
 Wire Wire Line
-	7200 4450 5600 4450
-Wire Wire Line
-	3250 2450 3150 2450
-Wire Wire Line
-	3150 2450 3150 2600
-Wire Wire Line
 	3250 2150 2850 2150
 Wire Wire Line
 	3250 2050 3000 2050
@@ -2962,7 +3007,7 @@ Wire Wire Line
 Wire Wire Line
 	2550 8800 2550 8950
 Wire Wire Line
-	2850 2600 2950 2600
+	2850 2600 3150 2600
 Wire Wire Line
 	2550 7350 2550 8300
 Connection ~ 2550 8000
@@ -2970,67 +3015,6 @@ Wire Wire Line
 	6450 8000 6450 7350
 Wire Wire Line
 	6450 7350 2550 7350
-Text Notes 2650 7300 0    39   ~ 0
-Strom von Relais muss vor der Diode geholt werden\nwenn nach Diode oderLM350T geholt wird\ngeht das Relais rückwärt in Selbthaltung\n und kann nicht mehr abfallen
-$Comp
-L +5V #PWR?
-U 1 1 54B507D5
-P 3150 4800
-F 0 "#PWR?" H 3150 4890 20  0001 C CNN
-F 1 "+5V" H 3150 4890 30  0000 C CNN
-F 2 "" H 3150 4800 60  0000 C CNN
-F 3 "" H 3150 4800 60  0000 C CNN
-	1    3150 4800
-	1    0    0    -1  
-$EndComp
-Text Notes 2650 4750 0    39   ~ 0
-Hier 5V richtig??
-Text GLabel 10700 10800 2    47   Output ~ 0
-pinChargingBilanz
-$Comp
-L ACS712 U?
-U 1 1 54B50EFB
-P 10450 10150
-F 0 "U?" H 10450 10400 50  0000 C CNN
-F 1 "INA169 Adafruit" H 10450 9900 50  0000 C CNN
-F 2 "ACS712:INA169" H 10450 10150 60  0000 C CNN
-F 3 "" H 10450 10150 60  0000 C CNN
-	1    10450 10150
-	0    1    1    0   
-$EndComp
-$Comp
-L +5V #PWR?
-U 1 1 54B50F01
-P 10550 10650
-F 0 "#PWR?" H 10550 10740 20  0001 C CNN
-F 1 "+5V" H 10550 10740 30  0000 C CNN
-F 2 "" H 10550 10650 60  0000 C CNN
-F 3 "" H 10550 10650 60  0000 C CNN
-	1    10550 10650
-	-1   0    0    1   
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 54B50F07
-P 10300 11000
-F 0 "#PWR?" H 10300 11000 30  0001 C CNN
-F 1 "GND" H 10300 10930 30  0001 C CNN
-F 2 "" H 10300 11000 60  0000 C CNN
-F 3 "" H 10300 11000 60  0000 C CNN
-	1    10300 11000
-	1    0    0    -1  
-$EndComp
-$Comp
-L CP1 C?
-U 1 1 54B50F0D
-P 10500 10950
-F 0 "C?" H 10550 11050 50  0000 L CNN
-F 1 "0,1uF" H 10550 10850 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:Capacitor3MMDiscRM2.5" H 10500 10950 60  0001 C CNN
-F 3 "~" H 10500 10950 60  0000 C CNN
-	1    10500 10950
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	10550 10550 10550 10650
 Wire Wire Line
@@ -3059,285 +3043,246 @@ Wire Wire Line
 Connection ~ 9100 7500
 Wire Wire Line
 	11450 10950 11450 10600
-$Comp
-L CONN_3 P21
-U 1 1 54B5391D
-P 14600 5650
-F 0 "P21" V 14550 5650 50  0000 C CNN
-F 1 "DropRight" V 14650 5650 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 14600 5650 60  0001 C CNN
-F 3 "" H 14600 5650 60  0000 C CNN
-	1    14600 5650
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 54B53923
-P 14250 5900
-F 0 "#PWR?" H 14250 5900 30  0001 C CNN
-F 1 "GND" H 14250 5830 30  0001 C CNN
-F 2 "" H 14250 5900 60  0000 C CNN
-F 3 "" H 14250 5900 60  0000 C CNN
-	1    14250 5900
-	-1   0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR?
-U 1 1 54B5392A
-P 14250 5400
-F 0 "#PWR?" H 14250 5490 20  0001 C CNN
-F 1 "+5V" H 14250 5490 30  0000 C CNN
-F 2 "" H 14250 5400 60  0000 C CNN
-F 3 "" H 14250 5400 60  0000 C CNN
-	1    14250 5400
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	14250 5750 14250 5900
 Wire Wire Line
 	14150 5650 14250 5650
 Wire Wire Line
 	14250 5550 14250 5400
-Text GLabel 13650 5650 0    60   Output ~ 0
-DropRight
-$Comp
-L DIODE D?
-U 1 1 54B53F62
-P 13950 5650
-F 0 "D?" H 13950 5750 40  0000 C CNN
-F 1 "DIODE" H 13950 5550 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 13950 5650 60  0001 C CNN
-F 3 "" H 13950 5650 60  0000 C CNN
-	1    13950 5650
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	13750 5650 13650 5650
-$Comp
-L GND #PWR?
-U 1 1 54B5558C
-P 14050 6800
-F 0 "#PWR?" H 14050 6800 30  0001 C CNN
-F 1 "GND" H 14050 6730 30  0001 C CNN
-F 2 "" H 14050 6800 60  0000 C CNN
-F 3 "" H 14050 6800 60  0000 C CNN
-	1    14050 6800
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	14250 6800 14050 6800
-$Comp
-L CONN_3 P?
-U 1 1 54B55773
-P 12850 5650
-F 0 "P?" V 12800 5650 50  0000 C CNN
-F 1 "DropLeft" V 12900 5650 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 12850 5650 60  0001 C CNN
-F 3 "" H 12850 5650 60  0000 C CNN
-	1    12850 5650
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 54B55779
-P 12500 5900
-F 0 "#PWR?" H 12500 5900 30  0001 C CNN
-F 1 "GND" H 12500 5830 30  0001 C CNN
-F 2 "" H 12500 5900 60  0000 C CNN
-F 3 "" H 12500 5900 60  0000 C CNN
-	1    12500 5900
-	-1   0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR?
-U 1 1 54B5577F
-P 12500 5400
-F 0 "#PWR?" H 12500 5490 20  0001 C CNN
-F 1 "+5V" H 12500 5490 30  0000 C CNN
-F 2 "" H 12500 5400 60  0000 C CNN
-F 3 "" H 12500 5400 60  0000 C CNN
-	1    12500 5400
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	12500 5750 12500 5900
 Wire Wire Line
 	12400 5650 12500 5650
 Wire Wire Line
 	12500 5550 12500 5400
-Text GLabel 11900 5650 0    60   Output ~ 0
-DropLeft
-$Comp
-L DIODE D?
-U 1 1 54B55789
-P 12200 5650
-F 0 "D?" H 12200 5750 40  0000 C CNN
-F 1 "DIODE" H 12200 5550 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 12200 5650 60  0001 C CNN
-F 3 "" H 12200 5650 60  0000 C CNN
-	1    12200 5650
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	12000 5650 11900 5650
-Text Notes 10150 1450 0    39   ~ 0
-VCC muss das nicht auch 3.3V sein\n?????????????????????????????
 Wire Wire Line
 	750  1800 750  1700
-$Comp
-L DIODE D?
-U 1 1 54B617F6
-P 5750 7850
-F 0 "D?" H 5750 7950 40  0000 C CNN
-F 1 "DIODE" H 5750 7750 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 5750 7850 60  0001 C CNN
-F 3 "" H 5750 7850 60  0000 C CNN
-	1    5750 7850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7700 7850 5950 7850
-$Comp
-L DIODE D?
-U 1 1 54B63125
-P 8050 8650
-F 0 "D?" H 8050 8750 40  0000 C CNN
-F 1 "DIODE" H 8050 8550 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 8050 8650 60  0001 C CNN
-F 3 "" H 8050 8650 60  0000 C CNN
-	1    8050 8650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7500 8650 7850 8650
 Wire Wire Line
 	8250 8650 9100 8650
-Text Notes 7700 8600 0    39   ~ 0
-Sperrdiode die die Rückwärtsspannung \nvermeidet wenn DC-DC wander von\nLadestrom versorgt werden soll\n(@SteanM]\n\n
-$Comp
-L JUMPER JP?
-U 1 1 54B661FE
-P 5000 7850
-F 0 "JP?" H 5000 8000 60  0000 C CNN
-F 1 "pwr" H 5000 7770 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 5000 7850 60  0001 C CNN
-F 3 "" H 5000 7850 60  0000 C CNN
-	1    5000 7850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5550 7850 5300 7850
 Connection ~ 4350 7850
-Text Notes 4400 7700 0    39   ~ 0
-Als Lötbrücke um\nLeiterbahn zu\nSchließen falls LM350T\nnicht bestückt wird
-Text GLabel 12300 6300 0    60   Output ~ 0
-pinPerimeterRight
-$Comp
-L CONN_3 P?
-U 1 1 54B6707E
-P 12750 6300
-F 0 "P?" V 12700 6300 50  0000 C CNN
-F 1 "PerimeterRight" V 12800 6300 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 12750 6300 60  0001 C CNN
-F 3 "" H 12750 6300 60  0000 C CNN
-	1    12750 6300
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 54B67084
-P 12400 6550
-F 0 "#PWR?" H 12400 6550 30  0001 C CNN
-F 1 "GND" H 12400 6480 30  0001 C CNN
-F 2 "" H 12400 6550 60  0000 C CNN
-F 3 "" H 12400 6550 60  0000 C CNN
-	1    12400 6550
-	-1   0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR?
-U 1 1 54B6708A
-P 12400 6050
-F 0 "#PWR?" H 12400 6140 20  0001 C CNN
-F 1 "+5V" H 12400 6140 30  0000 C CNN
-F 2 "" H 12400 6050 60  0000 C CNN
-F 3 "" H 12400 6050 60  0000 C CNN
-	1    12400 6050
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	12400 6400 12400 6550
 Wire Wire Line
 	12300 6300 12400 6300
 Wire Wire Line
 	12400 6200 12400 6050
-Text GLabel 14150 6300 0    60   Output ~ 0
-pinPerimeterLeft
-$Comp
-L CONN_3 P12
-U 1 1 54B673DE
-P 14600 6300
-F 0 "P12" V 14550 6300 50  0000 C CNN
-F 1 "PerimeterRight" V 14650 6300 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 14600 6300 60  0001 C CNN
-F 3 "" H 14600 6300 60  0000 C CNN
-	1    14600 6300
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 54B673E4
-P 14250 6550
-F 0 "#PWR?" H 14250 6550 30  0001 C CNN
-F 1 "GND" H 14250 6480 30  0001 C CNN
-F 2 "" H 14250 6550 60  0000 C CNN
-F 3 "" H 14250 6550 60  0000 C CNN
-	1    14250 6550
-	-1   0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR?
-U 1 1 54B673EA
-P 14250 6050
-F 0 "#PWR?" H 14250 6140 20  0001 C CNN
-F 1 "+5V" H 14250 6140 30  0000 C CNN
-F 2 "" H 14250 6050 60  0000 C CNN
-F 3 "" H 14250 6050 60  0000 C CNN
-	1    14250 6050
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	14250 6400 14250 6550
 Wire Wire Line
 	14150 6300 14250 6300
 Wire Wire Line
 	14250 6200 14250 6050
-Text Notes 11650 6150 0    39   ~ 0
-Perimeter rechts auf\nWunsch hinzugefügt
-Text GLabel 5100 3600 0    60   Input ~ 0
-pinPerimeterRight
 Wire Wire Line
-	6000 3250 5700 3250
+	5950 4250 7200 4250
 Wire Wire Line
-	5700 3250 5700 3000
+	5950 4350 7200 4350
 Wire Wire Line
-	5700 3000 5100 3000
+	5950 4450 7200 4450
 Wire Wire Line
-	6000 3350 5650 3350
+	5950 4650 7200 4650
 Wire Wire Line
-	5650 3350 5650 3150
+	5950 4750 7200 4750
 Wire Wire Line
-	5650 3150 5100 3150
+	5950 4850 7200 4850
 Wire Wire Line
-	5600 3450 5600 3300
+	5950 4950 7200 4950
 Wire Wire Line
-	5600 3300 5100 3300
+	5950 4550 7200 4550
 Wire Wire Line
-	5550 3550 5550 3450
+	5950 3350 7200 3350
 Wire Wire Line
-	5550 3450 5100 3450
-Text Notes 3150 3600 0    60   ~ 0
-wieder dazu gekommen\nTiefpassfilter fehlt noch
+	5950 3450 7200 3450
 Wire Wire Line
-	5100 3600 5250 3600
+	5950 3550 7200 3550
+Wire Wire Line
+	5950 3650 7200 3650
+Wire Wire Line
+	5950 3750 7200 3750
+Wire Wire Line
+	5950 3850 7200 3850
+Wire Wire Line
+	5950 3950 7200 3950
+Wire Wire Line
+	5950 4050 7200 4050
+Wire Wire Line
+	7200 3150 7000 3150
+Wire Wire Line
+	7000 3150 7000 2150
+Wire Wire Line
+	6100 2800 6100 3350
+Connection ~ 6100 3350
+Wire Wire Line
+	6200 2800 6200 3450
+Connection ~ 6200 3450
+Wire Wire Line
+	6300 2800 6300 3550
+Connection ~ 6300 3550
+Wire Wire Line
+	6400 2800 6400 3650
+Connection ~ 6400 3650
+Wire Wire Line
+	6500 2800 6500 3750
+Connection ~ 6500 3750
+Wire Wire Line
+	6600 2800 6600 3850
+Connection ~ 6600 3850
+Wire Wire Line
+	6700 2800 6700 3950
+Connection ~ 6700 3950
+Wire Wire Line
+	6800 2800 6800 4050
+Connection ~ 6800 4050
+Wire Wire Line
+	6100 5100 6100 4250
+Connection ~ 6100 4250
+Wire Wire Line
+	6200 5100 6200 4350
+Connection ~ 6200 4350
+Wire Wire Line
+	6300 5100 6300 4450
+Connection ~ 6300 4450
+Wire Wire Line
+	6400 5100 6400 4550
+Connection ~ 6400 4550
+Wire Wire Line
+	6500 5100 6500 4650
+Connection ~ 6500 4650
+Wire Wire Line
+	6600 5100 6600 4750
+Connection ~ 6600 4750
+Wire Wire Line
+	6700 5100 6700 4850
+Connection ~ 6700 4850
+Wire Wire Line
+	6800 5100 6800 4950
+Connection ~ 6800 4950
+Wire Wire Line
+	5400 5900 5400 6000
+Wire Wire Line
+	5400 6000 5350 6000
+Wire Wire Line
+	5550 4850 4400 4850
+Wire Wire Line
+	5400 4950 5550 4950
+Wire Wire Line
+	5550 4750 5400 4750
+Wire Wire Line
+	5550 4450 4400 4450
+Wire Wire Line
+	5550 4650 4400 4650
+Wire Wire Line
+	5550 4550 5400 4550
+Wire Wire Line
+	5550 4350 5400 4350
+Wire Wire Line
+	5550 4250 4400 4250
+Wire Wire Line
+	4400 3350 5550 3350
+Wire Wire Line
+	5550 3450 5400 3450
+Wire Wire Line
+	5550 3550 4400 3550
+Wire Wire Line
+	5550 3650 5400 3650
+Wire Wire Line
+	5550 3950 4400 3950
+Wire Wire Line
+	5550 4050 5400 4050
+Wire Wire Line
+	5550 3750 4400 3750
+Wire Wire Line
+	5400 3850 5550 3850
+Wire Wire Line
+	7200 5750 7100 5750
+Wire Wire Line
+	7100 5750 7100 5850
+Wire Wire Line
+	7100 5850 4600 5850
+Wire Wire Line
+	7000 5650 7200 5650
+Wire Wire Line
+	7000 5650 7000 5750
+Wire Wire Line
+	7000 5750 5350 5750
+Wire Wire Line
+	7200 5550 6950 5550
+Wire Wire Line
+	6950 5550 6950 5650
+Wire Wire Line
+	6950 5650 4600 5650
+Wire Wire Line
+	7200 5450 6900 5450
+Wire Wire Line
+	6900 5450 6900 5600
+Wire Wire Line
+	6900 5600 5400 5600
+Wire Wire Line
+	5400 5600 5400 5550
+Wire Wire Line
+	5400 5550 5300 5550
+$Comp
+L CONN_01X01 P?
+U 1 1 54B79CA8
+P 5200 4050
+F 0 "P?" H 5400 4050 50  0000 C CNN
+F 1 "CONN_01X01" V 5300 4050 50  0001 C CNN
+F 2 "" H 5200 4050 60  0000 C CNN
+F 3 "" H 5200 4050 60  0000 C CNN
+	1    5200 4050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P?
+U 1 1 54B7A5B4
+P 5200 4550
+F 0 "P?" H 5400 4550 50  0000 C CNN
+F 1 "CONN_01X01" V 5300 4550 50  0001 C CNN
+F 2 "" H 5200 4550 60  0000 C CNN
+F 3 "" H 5200 4550 60  0000 C CNN
+	1    5200 4550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P?
+U 1 1 54B7A796
+P 4200 3950
+F 0 "P?" H 4400 3950 50  0000 C CNN
+F 1 "CONN_01X01" V 4300 3950 50  0001 C CNN
+F 2 "" H 4200 3950 60  0000 C CNN
+F 3 "" H 4200 3950 60  0000 C CNN
+	1    4200 3950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X08 P7
+U 1 1 54B7B04A
+P 3450 2300
+F 0 "P7" H 3450 2750 50  0000 C CNN
+F 1 "Status LEDs" V 3550 2300 50  0000 C CNN
+F 2 "" H 3450 2300 60  0000 C CNN
+F 3 "" H 3450 2300 60  0000 C CNN
+	1    3450 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 2650 3150 2650
+Wire Wire Line
+	3150 2650 3150 2800
+Wire Wire Line
+	3250 2450 3150 2450
+Wire Wire Line
+	3150 2450 3150 2600
+NoConn ~ 3250 2550
 $EndSCHEMATC
