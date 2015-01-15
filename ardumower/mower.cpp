@@ -78,8 +78,8 @@
 #ifdef __AVR__
   #define pinOdometryLeft A12      // left odometry sensor
   #define pinOdometryLeft2 A13     // left odometry sensor (optional two-wire)
-  #define pinOdometryRight A15     // right odometry sensor
-  #define pinOdometryRight2 A14    // right odometry sensor (optional two-wire)
+  #define pinOdometryRight A15     // right odometry sensor (TODO: verify with next PCB)
+  #define pinOdometryRight2 A14    // right odometry sensor (optional two-wire)  (TODO: verify with next PCB)
 #else
   #define pinOdometryLeft DAC0     // left odometry sensor
   #define pinOdometryLeft2 DAC1    // left odometry sensor (optional two-wire)
