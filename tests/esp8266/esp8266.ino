@@ -1,6 +1,7 @@
 /*
 
 ESP8266 ESP-01 Wifi module - test (Arduino Mega)
+http://playground.boxtec.ch/doku.php/wireless/esp8266
 
 wiring (IC side):
                                 ESP8266-01
@@ -14,7 +15,7 @@ Arduino Mega TX1 ------------RX---1 2---VCC (3.3V)
 
 
 String wifiSSID = "GRAUNET";
-String wifiPass = "19779";
+String wifiPass = "11779";
 
 
 
