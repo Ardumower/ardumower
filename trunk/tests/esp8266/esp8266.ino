@@ -72,7 +72,6 @@ boolean connectWifi(){
     Serial.println("ERROR: cannot connect");    
     return false;
   }    
-  Serial.println("success");      
   return true;  
 }
 
@@ -83,6 +82,7 @@ boolean joinWifi(){
   writeReadWifi("AT+RST\r", 4000);  // reset module  
   writeReadWifi("AT+GMR\r");  // get firmware version
   writeReadWifi("AT+CWMODE=1\r");  // station mode    
+  writeReadWifi("AT+CWMODE=3\r");  // station mode      
   writeReadWifi("AT+CIPMODE=1\r");  // data mode        
   writeReadWifi("AT+CIPMUX=1\r");  // multiple connection mode    
   //writeReadWifi("AT+CWLAP\r", 30000);  // get access points      
@@ -101,15 +101,8 @@ boolean joinWifi(){
     if (res) break;
   }
   if (res) {
-    Serial.println("success");                      
     writeReadWifi("AT+CWJAP?\r");  // list access point
-    //writeReadWifi("AT+CIPMUX=0\r");  // multiple connection mode    
-    for (int retry = 0; retry < 5; retry++){
-      Serial.println("waiting for getting IP (DHCP)...");
-      delay(8000);
-      String s = writeReadWifi("AT+CIFSR\r");  // get IP address      
-      if (s.indexOf("OK") != -1) break;
-    }      
+    //writeReadWifi("AT+CIPMUX=0\r");  // multiple connection mode        
   } else Serial.println("ERROR joining");      
   return res;
 }
@@ -119,6 +112,12 @@ void startServer(){
   Serial.println("--------startServer--------");  
   writeReadWifi("AT+CIPSERVER=1,80\r");   // start server
   writeReadWifi("AT+CIPSTO=10\r");   // set server timeout
+  for (int retry = 0; retry < 5; retry++){
+      Serial.println("waiting for getting IP (DHCP)...");
+      delay(15000);
+      String s = writeReadWifi("AT+CIFSR\r");  // get IP address      
+      if (s.indexOf("OK") != -1) break;
+  }      
 }
 
 void runServer(){
