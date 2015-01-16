@@ -34,11 +34,11 @@ String readWifi(int waitMillis = 2000){
   String s;
   char data;
   unsigned long startTime = millis();
-  while (millis() < startTime + waitMillis){
+  while (millis() < startTime + waitMillis) {
     while (Serial1.available()){
       data=Serial1.read();
       s += char(data);
-      Serial.print(data);
+      Serial.print(data);      
     }
   }
   Serial.println();
@@ -46,8 +46,9 @@ String readWifi(int waitMillis = 2000){
 }
 
 String writeReadWifi(String s, int waitMillis = 2000){
-  writeWifi(s);  
-  String res = readWifi(waitMillis);        
+  String res;
+  writeWifi(s);    
+  res = readWifi(waitMillis);          
   return res;
 }
 
@@ -59,15 +60,15 @@ boolean connectWifi(){
   while (true){    
     Serial.println("trying 115200...");  
     Serial1.begin(115200);   
-    s = writeReadWifi("AT\r");
+    s = writeReadWifi("AT\r\n");
     if (s.indexOf("OK") != -1) break;
     Serial.println("trying 57600...");  
     Serial1.begin(57600);     
-    s = writeReadWifi("AT\r");
+    s = writeReadWifi("AT\r\n");
     if (s.indexOf("OK") != -1) break;
     Serial.println("trying 9600...");  
     Serial1.begin(9600);         
-    s = writeReadWifi("AT\r");
+    s = writeReadWifi("AT\r\n");
     if (s.indexOf("OK") != -1) break;
     Serial.println("ERROR: cannot connect");    
     return false;
@@ -79,13 +80,12 @@ boolean connectWifi(){
 // join Wifi network
 boolean joinWifi(){
   Serial.println("--------joinWifi--------");
-  writeReadWifi("AT+RST\r", 4000);  // reset module  
-  writeReadWifi("AT+GMR\r");  // get firmware version
-  writeReadWifi("AT+CWMODE=1\r");  // station mode    
-  writeReadWifi("AT+CWMODE=3\r");  // station mode      
-  writeReadWifi("AT+CIPMODE=1\r");  // data mode        
-  writeReadWifi("AT+CIPMUX=1\r");  // multiple connection mode    
-  //writeReadWifi("AT+CWLAP\r", 30000);  // get access points      
+  writeReadWifi("AT+RST\r\n", 4000);  // reset module  
+  writeReadWifi("AT+GMR\r\n");  // get firmware version
+  writeReadWifi("AT+CWMODE=1\r\n");  // station mode    
+  //writeReadWifi("AT+CIPMODE=0\r\n");  // data mode        
+  writeReadWifi("AT+CIPMUX=1\r\n");  // multiple connection mode    
+  //writeReadWifi("AT+CWLAP\r\n", 10000);  // get access points        
   boolean res = false;
   // joining network
   for (int retry = 0; retry < 4; retry++){
@@ -96,13 +96,20 @@ boolean joinWifi(){
       conn += ",";      
       conn += String(wifiEncrypt);
     }
-    String s = writeReadWifi(conn + "\r", 3500);
+    String s = writeReadWifi(conn + "\r\n", 15000);
     res = (s.indexOf("OK") != -1);
     if (res) break;
   }
   if (res) {
-    writeReadWifi("AT+CWJAP?\r");  // list access point
-    //writeReadWifi("AT+CIPMUX=0\r");  // multiple connection mode        
+    for (int retry = 0; retry < 10; retry++){
+      Serial.print("waiting for getting IP (DHCP)... retry ");
+      Serial.println(retry);
+      delay(5000);
+      String s = writeReadWifi("AT+CIFSR\r\n");  // get IP address      
+      if (s.indexOf("OK") != -1) break;
+    }          
+    //writeReadWifi("AT+CWJAP?\r\n");  // list access point
+    //writeReadWifi("AT+CIPMUX=0\r\n");  // multiple connection mode        
   } else Serial.println("ERROR joining");      
   return res;
 }
@@ -110,15 +117,8 @@ boolean joinWifi(){
 
 void startServer(){
   Serial.println("--------startServer--------");  
-  writeReadWifi("AT+CIPSERVER=1,80\r");   // start server
-  writeReadWifi("AT+CIPSTO=10\r");   // set server timeout
-  for (int retry = 0; retry < 10; retry++){
-      Serial.print("waiting for getting IP (DHCP)... retry ");
-      Serial.println(retry);
-      delay(5000);
-      String s = writeReadWifi("AT+CIFSR\r");  // get IP address      
-      if (s.indexOf("OK") != -1) break;
-  }      
+  writeReadWifi("AT+CIPSERVER=1,80\r\n");   // start server
+  writeReadWifi("AT+CIPSTO=10\r\n");   // set server timeout
 }
 
 void runServer(){
@@ -132,9 +132,10 @@ void runServer(){
 }
 
 
-void setup(){
+void setup(){  
   Serial.begin(19200);
   Serial.println("START");
+  delay(1000);
   if (connectWifi()){
     if (joinWifi()){
       startServer();
