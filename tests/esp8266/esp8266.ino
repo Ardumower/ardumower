@@ -15,29 +15,17 @@ Arduino Mega TX1 ------------RX---1 2---VCC (3.3V)
 
 
 String wifiSSID = "GRAUNET";
-String wifiPass = "11779";
-
-
-
-void setup(){
-  Serial.begin(19200);
-  Serial.println("START");
-  
-  Serial1.begin(115200); // some older modules: 57600
-  Serial1.setTimeout(5000);
-  
-  writeReadWifi("AT+RST\r");
-}
+String wifiPass = "71979";
 
 
 void writeWifi(String s){
-  Serial.print("send: "+s);
-  Serial1.print(s);
+  Serial.println("SEND: "+s);
+  Serial1.print(s);  
 }
 
 
 String readWifi(){
-  Serial.print("received:");
+  Serial.print("RECV: ");
   String s;
   char data;
   while (Serial1.available()){
@@ -45,23 +33,69 @@ String readWifi(){
     s += char(data);
     Serial.print(data);
   }
+  Serial.println();
   return s;
 }
 
-void writeReadWifi(String s){
+String writeReadWifi(String s, int waitMillis = 1000){
   writeWifi(s);
-  delay(1000);
-  String res = readWifi();    
-  int counter = 0;
-  while ((res.startsWith("ERROR") && counter < 4)){
-    // retry 
-    writeWifi(s);
-    delay(1000);    
-    readWifi();
-    counter++;
-  }        
-  Serial.println();
+  delay(waitMillis);
+  String res = readWifi();        
+  return res;
 }
+
+// try out baudrate and connect
+boolean connectWifi(){
+  Serial.println("--------connectWifi--------");
+  String s;
+  Serial1.setTimeout(5000);
+  while (true){    
+    Serial.println("trying 115200...");  
+    Serial1.begin(115200);   
+    s = writeReadWifi("AT\r");
+    if (s.indexOf("OK") != -1) break;
+    Serial.println("trying 57600...");  
+    Serial1.begin(57600);     
+    s = writeReadWifi("AT\r");
+    if (s.indexOf("OK") != -1) break;
+    Serial.println("trying 9600...");  
+    Serial1.begin(9600);         
+    s = writeReadWifi("AT\r");
+    if (s.indexOf("OK") != -1) break;
+    Serial.println("ERROR: cannot connect");    
+    return false;
+  }    
+  Serial.println("success");      
+  return true;  
+}
+
+
+// join Wifi network
+boolean joinWifi(){
+  Serial.println("--------joinWifi--------");
+  writeReadWifi("AT+CWMODE=1\r");
+  writeReadWifi("AT+CIPMUX=0\r");  
+  boolean res = false;
+  for (int retry = 0; retry < 5; retry++){
+    String s = writeReadWifi("AT+CWJAP=\"" + wifiSSID + "\",\"" + wifiPass + "\"", 5000);
+    res = (s.indexOf("OK") != -1);
+    if (res) break;
+  }
+  if (res) Serial.println("success");   
+    else Serial.println("ERROR joining");      
+  return res;
+}
+
+
+void setup(){
+  Serial.begin(19200);
+  Serial.println("START");
+  if (connectWifi()){
+    joinWifi();
+  }
+}
+
+
 
 
 void loop(){
