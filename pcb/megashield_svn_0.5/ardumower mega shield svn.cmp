@@ -1,693 +1,792 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 15.01.2015 23:55:06
+Cmp-Mod V01 Genere par PcbNew le Fr 16 Jan 2015 09:01:21 CET
 
 BeginCmp
-TimeStamp = /53866CB8;
-Reference = Batterie1;
-ValeurCmp = DC/DC;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B48E9A;
-Reference = C1;
-ValeurCmp = 1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /53866E3A;
-Reference = C2;
-ValeurCmp = 10uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /541DF105;
-Reference = C3;
-ValeurCmp = 0,1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B48EA0;
-Reference = C4;
-ValeurCmp = 1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B51225;
-Reference = C5;
-ValeurCmp = ??????????????;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B50F0D;
-Reference = C6;
-ValeurCmp = 0,1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /54A7CE88;
-Reference = D1;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /54A7D925;
-Reference = D2;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B617F6;
-Reference = D3;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B63125;
-Reference = D4;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B55789;
-Reference = D5;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B53F62;
-Reference = D6;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /538656B8;
-Reference = Dual1;
-ValeurCmp = MC33926;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
-EndCmp
-
-BeginCmp
-TimeStamp = /541DE74B;
-Reference = Dual2;
-ValeurCmp = MC33926;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
-EndCmp
-
-BeginCmp
-TimeStamp = /54A79B5A;
-Reference = EF1;
-ValeurCmp = F_10A;
-IdModule  = Fuse_Holders_and_Fuses:BladeFuse-Mini;
-EndCmp
-
-BeginCmp
-TimeStamp = /54A7AB0D;
-Reference = EF2;
-ValeurCmp = F_10A;
-IdModule  = Fuse_Holders_and_Fuses:BladeFuse-Mini;
-EndCmp
-
-BeginCmp
-TimeStamp = /5417E831;
-Reference = JP1;
-ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /537FB697;
-Reference = JP2;
-ValeurCmp = Key;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B661FE;
-Reference = JP3;
-ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B57EFB;
-Reference = JP4;
-ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B5A1C5;
-Reference = JP5;
-ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B504F9;
-Reference = JP6;
-ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B50727;
-Reference = JP7;
-ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B7D8CC;
-Reference = JP8;
-ValeurCmp = 5V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B7DF62;
-Reference = JP9;
-ValeurCmp = 3,3V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /5385309E;
-Reference = K1;
-ValeurCmp = Tilt sens;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /541DAF9A;
-Reference = K2;
-ValeurCmp = Button;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54A679F2;
-Reference = K3;
-ValeurCmp = RELAY_2RT;
-IdModule  = Relays_ThroughHole:Relais_DPDT_Schrack-RT2_RM5mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /541A0C85;
-Reference = Ladeanschluss1;
-ValeurCmp = DC/DC;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /53850AD4;
-Reference = P1;
-ValeurCmp = Sonar C;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /53851A62;
-Reference = P2;
-ValeurCmp = Sonar R;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /53851BA4;
-Reference = P3;
-ValeurCmp = Sonar L;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /53867437;
-Reference = P5;
-ValeurCmp = IMU Kompas;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /5385368B;
-Reference = P6;
-ValeurCmp = Lawn sens;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B7B04A;
-Reference = P7;
-ValeurCmp = Status LEDs;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
-EndCmp
-
-BeginCmp
-TimeStamp = /53852D92;
-Reference = P8;
-ValeurCmp = ODO Right;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /53852DC8;
-Reference = P9;
-ValeurCmp = ODO Left;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /538663DA;
-Reference = P10;
-ValeurCmp = GPS;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /53878C5D;
-Reference = P11;
-ValeurCmp = Bumper;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B673DE;
-Reference = P12;
-ValeurCmp = PerimeterRight;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /538A4012;
-Reference = P13;
-ValeurCmp = RC Remote;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
-EndCmp
-
-BeginCmp
-TimeStamp = /541D1F00;
-Reference = P15;
-ValeurCmp = Dual2-M1Out;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /541D656A;
-Reference = P16;
-ValeurCmp = Dual2-pwr;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /541D7765;
-Reference = P17;
-ValeurCmp = Dual1-pwr;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /54168B06;
-Reference = P18;
-ValeurCmp = Mow Motor;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /54A12C85;
-Reference = P19;
-ValeurCmp = DS1307;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
-EndCmp
-
-BeginCmp
-TimeStamp = /54AF3343;
-Reference = P20;
-ValeurCmp = Wlan;
-IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B5391D;
-Reference = P21;
-ValeurCmp = DropRight;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B7A796;
-Reference = P22;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B79CA8;
-Reference = P23;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B7A5B4;
-Reference = P24;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B6892E;
-Reference = P25;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B6AB7A;
-Reference = P26;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B697B9;
-Reference = P27;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B6C4D4;
-Reference = P28;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B6A807;
-Reference = P29;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B6707E;
-Reference = P30;
-ValeurCmp = PerimeterRight;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B55773;
-Reference = P31;
-ValeurCmp = DropLeft;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B73B5A;
-Reference = P32;
-ValeurCmp = Stromleiste GND;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B73600;
-Reference = P33;
-ValeurCmp = Stromleiste 5V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B73CFB;
-Reference = P34;
-ValeurCmp = Stromleiste 3,3V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B8B4D4;
-Reference = P35;
-ValeurCmp = MowRpm;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B80ED9;
-Reference = P40;
-ValeurCmp = UserSwitsch;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B80251;
-Reference = P41;
-ValeurCmp = Rain;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B46879;
-Reference = Q1;
-ValeurCmp = BC237;
-IdModule  = Discret:TO92-EBC;
-EndCmp
-
-BeginCmp
-TimeStamp = /538A5BD3;
-Reference = R1;
-ValeurCmp = 470r;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /538A5BE2;
-Reference = R2;
-ValeurCmp = 2k2;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /538536B3;
-Reference = R3;
-ValeurCmp = 2M2;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /538536C2;
-Reference = R4;
-ValeurCmp = 2M2;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /5384EC7E;
-Reference = R5;
-ValeurCmp = 470R;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /53850775;
-Reference = R6;
-ValeurCmp = 470R;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /53850784;
-Reference = R7;
-ValeurCmp = 1K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /53850952;
-Reference = R8;
-ValeurCmp = 1K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /5384FFAC;
-Reference = R9;
-ValeurCmp = 47K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /5384FFC0;
-Reference = R10;
-ValeurCmp = 5K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B48CE0;
-Reference = R11;
-ValeurCmp = ??;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /5385024E;
-Reference = R12;
-ValeurCmp = 47K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /53850254;
-Reference = R13;
-ValeurCmp = 5K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B24323;
-Reference = R14;
-ValeurCmp = 1K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B23352;
-Reference = R15;
-ValeurCmp = 470R;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B23358;
-Reference = R16;
-ValeurCmp = 1K;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B48EBA;
-Reference = R17;
-ValeurCmp = 240;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B46970;
-Reference = R18;
-ValeurCmp = 2k2;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B574C4;
-Reference = R19;
-ValeurCmp = ????;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B5FD13;
-Reference = R20;
-ValeurCmp = 470R;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B5FC72;
-Reference = R21;
-ValeurCmp = 470R;
-IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /5478A23C;
-Reference = RP1;
-ValeurCmp = 150;
-IdModule  = Sockets_DIP:DIP-16__300;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B686DE;
-Reference = RP2;
-ValeurCmp = 150;
-IdModule  = Sockets_DIP:DIP-16__300;
-EndCmp
-
-BeginCmp
-TimeStamp = /54994E69;
-Reference = RR1;
-ValeurCmp = C100uF;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
-EndCmp
-
-BeginCmp
-TimeStamp = /5499A2BD;
-Reference = RR2;
-ValeurCmp = C100uF;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
-EndCmp
-
-BeginCmp
-TimeStamp = /54B48EC0;
-Reference = RV1;
-ValeurCmp = 5K;
-IdModule  = Potentiometers:Potentiometer_VishaySpectrol-Econtrim-Type36T;
-EndCmp
-
-BeginCmp
-TimeStamp = /5375252C;
+TimeStamp = 54A285B1
+Path = /5375252C
 Reference = SHIELD1;
 ValeurCmp = ARDUINO_MEGA_SHIELD;
 IdModule  = Arduino Mega Shield:ARDUINO MEGA SHIELD;
 EndCmp
 
 BeginCmp
-TimeStamp = /537FB76E;
+TimeStamp = 54B7AED6
+Path = /53866CB8
+Reference = Batterie1;
+ValeurCmp = DC/DC;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE01
+Path = /54A7CE88
+Reference = D1;
+ValeurCmp = DIODE;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 54995C93
+Path = /538656B8
+Reference = Dual1;
+ValeurCmp = MC33926;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
+EndCmp
+
+BeginCmp
+TimeStamp = 54995C7C
+Path = /541DE74B
+Reference = Dual2;
+ValeurCmp = MC33926;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ADE0
+Path = /5385309E
+Reference = K1;
+ValeurCmp = Tilt sens;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ADD1
+Path = /541DAF9A
+Reference = K2;
+ValeurCmp = Button;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ADC4
+Path = /541A0C85
+Reference = Ladeanschluss1;
+ValeurCmp = DC/DC;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ADB8
+Path = /53850AD4
+Reference = P1;
+ValeurCmp = Sonar C;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ADA8
+Path = /53851A62
+Reference = P2;
+ValeurCmp = Sonar R;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD98
+Path = /53851BA4
+Reference = P3;
+ValeurCmp = Sonar L;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD7B
+Path = /53867437
+Reference = P5;
+ValeurCmp = IMU Kompas;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD6B
+Path = /5385368B
+Reference = P6;
+ValeurCmp = Lawn sens;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7CAB3
+Path = /53852D92
+Reference = P8;
+ValeurCmp = ODO Right;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD3E
+Path = /53852DC8
+Reference = P9;
+ValeurCmp = ODO Left;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD2E
+Path = /538663DA
+Reference = P10;
+ValeurCmp = GPS;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD1E
+Path = /53878C5D
+Reference = P11;
+ValeurCmp = Bumper;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B80F03
+Path = /538A4012
+Reference = P13;
+ValeurCmp = RC Remote;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ACDA
+Path = /541D1F00
+Reference = P15;
+ValeurCmp = Dual2-M1Out;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ACCE
+Path = /541D7765
+Reference = P17;
+ValeurCmp = Dual1-pwr;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ACC2
+Path = /54168B06
+Reference = P18;
+ValeurCmp = Mow Motor;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ACB6
+Path = /538A5BD3
+Reference = R1;
+ValeurCmp = 470r;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AD5B
+Path = /538A5BE2
+Reference = R2;
+ValeurCmp = 2k2;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF66
+Path = /538536B3
+Reference = R3;
+ValeurCmp = 2M2;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF59
+Path = /538536C2
+Reference = R4;
+ValeurCmp = 2M2;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF4C
+Path = /5384EC7E
+Reference = R5;
+ValeurCmp = 470R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF3F
+Path = /53850775
+Reference = R6;
+ValeurCmp = 470R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF32
+Path = /53850784
+Reference = R7;
+ValeurCmp = 1K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF25
+Path = /53850952
+Reference = R8;
+ValeurCmp = 1K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF18
+Path = /5384FFAC
+Reference = R9;
+ValeurCmp = 47K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AF0B
+Path = /54B48CE0
+Reference = R11;
+ValeurCmp = ??;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AEFE
+Path = /537FB76E
 Reference = SP1;
 ValeurCmp = SPEAKER;
 IdModule  = Buzzers_Beepers:Buzzer_12x9.5RM7.6;
 EndCmp
 
 BeginCmp
-TimeStamp = /5459779F;
-Reference = U1;
-ValeurCmp = DC-DC;
-IdModule  = ACS712:DC-DC;
+TimeStamp = 54B7AEE2
+Path = /54B48E9A
+Reference = C1;
+ValeurCmp = 1uF;
+IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /5418B777;
+TimeStamp = 54B7AE0D
+Path = /53866E3A
+Reference = C2;
+ValeurCmp = 10uF;
+IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AECA
+Path = /541DF105
+Reference = C3;
+ValeurCmp = 0,1uF;
+IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AEBE
+Path = /5418B777
 Reference = U2;
 ValeurCmp = HC05_Bluetooth;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
 EndCmp
 
 BeginCmp
-TimeStamp = /5417150B;
-Reference = U3;
-ValeurCmp = INA169 Adafruit;
-IdModule  = ACS712:INA169;
+TimeStamp = 54B7AEAC
+Path = /5384FFC0
+Reference = R10;
+ValeurCmp = 5K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B48E94;
+TimeStamp = 54B7AE9F
+Path = /53850254
+Reference = R13;
+ValeurCmp = 5K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE92
+Path = /5385024E
+Reference = R12;
+ValeurCmp = 47K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE85
+Path = /54A12C85
+Reference = P19;
+ValeurCmp = DS1307;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE74
+Path = /54994E69
+Reference = RR1;
+ValeurCmp = C100uF;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE5F
+Path = /5478A23C
+Reference = RP1;
+ValeurCmp = 150;
+IdModule  = Sockets_DIP:DIP-16__300;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE2E
+Path = /54B48EA0
+Reference = C4;
+ValeurCmp = 1uF;
+IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AE22
+Path = /54A7D925
+Reference = D2;
+ValeurCmp = DIODE;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC17
+Path = /54A79B5A
+Reference = EF1;
+ValeurCmp = F_10A;
+IdModule  = Fuse_Holders_and_Fuses:BladeFuse-Mini;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AB5B
+Path = /54A7AB0D
+Reference = EF2;
+ValeurCmp = F_10A;
+IdModule  = Fuse_Holders_and_Fuses:BladeFuse-Mini;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AB41
+Path = /54B48EC0
+Reference = RV1;
+ValeurCmp = 5K;
+IdModule  = Potentiometers:Potentiometer_VishaySpectrol-Econtrim-Type36T;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AB17
+Path = /54B48E94
 Reference = U4;
 ValeurCmp = LM350T;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B50EFB;
+TimeStamp = 54B7AB08
+Path = /541D656A
+Reference = P16;
+ValeurCmp = Dual2-pwr;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AAFC
+Path = /5417E831
+Reference = JP1;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7D92E
+Path = /5459779F
+Reference = U1;
+ValeurCmp = DC-DC;
+IdModule  = ACS712:DC-DC;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AADE
+Path = /54B51225
+Reference = C5;
+ValeurCmp = ??????????????;
+IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AAD2
+Path = /54B50F0D
+Reference = C6;
+ValeurCmp = 0,1uF;
+IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AAAA
+Path = /54B617F6
+Reference = D3;
+ValeurCmp = DIODE;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA95
+Path = /54B63125
+Reference = D4;
+ValeurCmp = DIODE;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7E479
+Path = /54B55789
+Reference = D5;
+ValeurCmp = DIODE;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA6B
+Path = /54B53F62
+Reference = D6;
+ValeurCmp = DIODE;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA56
+Path = /54B661FE
+Reference = JP3;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA49
+Path = /54B57EFB
+Reference = JP4;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA3C
+Path = /54B5A1C5
+Reference = JP5;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA2F
+Path = /54B504F9
+Reference = JP6;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AA22
+Path = /54B50727
+Reference = JP7;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7A9FD
+Path = /54AF3343
+Reference = P20;
+ValeurCmp = Wlan;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC99
+Path = /54B7A796
+Reference = P22;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC8F
+Path = /54B79CA8
+Reference = P23;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC85
+Path = /54B7A5B4
+Reference = P24;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC7B
+Path = /54B6892E
+Reference = P25;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC71
+Path = /54B6AB7A
+Reference = P26;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC67
+Path = /54B697B9
+Reference = P27;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC5D
+Path = /54B6C4D4
+Reference = P28;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC53
+Path = /54B6A807
+Reference = P29;
+ValeurCmp = CONN_01X01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC49
+Path = /54B6707E
+Reference = P30;
+ValeurCmp = PerimeterRight;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC3A
+Path = /54B55773
+Reference = P31;
+ValeurCmp = DropLeft;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC2B
+Path = /54B73B5A
+Reference = P32;
+ValeurCmp = Stromleiste GND;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AB6F
+Path = /54B73600
+Reference = P33;
+ValeurCmp = Stromleiste 5V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AC0D
+Path = /54B73CFB
+Reference = P34;
+ValeurCmp = Stromleiste 3,3V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABF9
+Path = /54B46879
+Reference = Q1;
+ValeurCmp = BC237;
+IdModule  = Discret:TO92-EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABE9
+Path = /54B24323
+Reference = R14;
+ValeurCmp = 1K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABDC
+Path = /54B23352
+Reference = R15;
+ValeurCmp = 470R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABCF
+Path = /54B23358
+Reference = R16;
+ValeurCmp = 1K;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABC2
+Path = /54B48EBA
+Reference = R17;
+ValeurCmp = 240;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABB5
+Path = /54B46970
+Reference = R18;
+ValeurCmp = 2k2;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7ABA8
+Path = /54B574C4
+Reference = R19;
+ValeurCmp = ????;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AB9B
+Path = /54B5FD13
+Reference = R20;
+ValeurCmp = 470R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7AB8E
+Path = /54B5FC72
+Reference = R21;
+ValeurCmp = 470R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7BCDF
+Path = /54B686DE
+Reference = RP2;
+ValeurCmp = 150;
+IdModule  = Sockets_DIP:DIP-16__300;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7C2AC
+Path = /5499A2BD
+Reference = RR2;
+ValeurCmp = C100uF;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7C718
+Path = /54B5391D
+Reference = P21;
+ValeurCmp = DropRight;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7BF8D
+Path = /54B673DE
+Reference = P12;
+ValeurCmp = PerimeterRight;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7F340
+Path = /54B8B4D4
+Reference = P35;
+ValeurCmp = MowRpm;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7F735
+Path = /54B80ED9
+Reference = P40;
+ValeurCmp = UserSwitsch;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B7F743
+Path = /54B80251
+Reference = P41;
+ValeurCmp = Rain;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B843CA
+Path = /537FB697
+Reference = JP2;
+ValeurCmp = Key;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B84729
+Path = /54B7D8CC
+Reference = JP8;
+ValeurCmp = 5V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B8472E
+Path = /54B7DF62
+Reference = JP9;
+ValeurCmp = 3,3V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B84733
+Path = /54B7B04A
+Reference = P7;
+ValeurCmp = Status LEDs;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B8D11D
+Path = /54A679F2
+Reference = K3;
+ValeurCmp = RELAY_2RT;
+IdModule  = Relays_ThroughHole:Relais_DPDT_Schrack-RT2_RM5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B8D5AC
+Path = /5417150B
+Reference = U3;
+ValeurCmp = INA169 Adafruit;
+IdModule  = ACS712:INA169;
+EndCmp
+
+BeginCmp
+TimeStamp = 54B8D5BD
+Path = /54B50EFB
 Reference = U5;
 ValeurCmp = INA169 Adafruit;
 IdModule  = ACS712:INA169;

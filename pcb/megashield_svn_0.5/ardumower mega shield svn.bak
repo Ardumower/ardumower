@@ -1,7 +1,7 @@
 EESchema Schematic File Version 2
 LIBS:power
 LIBS:ardumower mega shield svn-cache
-EELAYER 25 0
+EELAYER 24 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1433,7 +1433,7 @@ U 1 1 54A679F2
 P 7100 8500
 F 0 "K3" H 7050 8900 70  0000 C CNN
 F 1 "RELAY_2RT" H 7250 8000 70  0000 C CNN
-F 2 "Relays_ThroughHole:Relais_DPDT_Schrack-RT2_RM5mm" H 7100 8500 60  0001 C CNN
+F 2 "ACS712:Relais_DPDT_Schrack-RT2_RM5mm" H 7100 8500 60  0001 C CNN
 F 3 "" H 7100 8500 60  0000 C CNN
 	1    7100 8500
 	1    0    0    -1  
