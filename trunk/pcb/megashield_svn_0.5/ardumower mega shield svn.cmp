@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 16.01.2015 11:08:32
+Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 16.01.2015 12:05:02
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -206,6 +206,13 @@ EndCmp
 BeginCmp
 TimeStamp = /54B92E19;
 Reference = JP11;
+ValeurCmp = pwr;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54B90ACC;
+Reference = JP12;
 ValeurCmp = pwr;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
@@ -689,7 +696,7 @@ EndCmp
 BeginCmp
 TimeStamp = /5459779F;
 Reference = U1;
-ValeurCmp = DC-DC;
+ValeurCmp = DC 10V;
 IdModule  = ACS712:DC-DC;
 EndCmp
 
