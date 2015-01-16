@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Do 15 Jan 2015 13:19:39 CET
+Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 15.01.2015 23:55:06
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -130,7 +130,7 @@ BeginCmp
 TimeStamp = /537FB697;
 Reference = JP2;
 ValeurCmp = Key;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
@@ -172,14 +172,14 @@ BeginCmp
 TimeStamp = /54B7D8CC;
 Reference = JP8;
 ValeurCmp = 5V;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B7DF62;
 Reference = JP9;
 ValeurCmp = 3,3V;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
@@ -232,13 +232,6 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B7F814;
-Reference = P4;
-ValeurCmp = Rain;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
 TimeStamp = /53867437;
 Reference = P5;
 ValeurCmp = IMU Kompas;
@@ -256,7 +249,7 @@ BeginCmp
 TimeStamp = /54B7B04A;
 Reference = P7;
 ValeurCmp = Status LEDs;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
@@ -298,13 +291,6 @@ BeginCmp
 TimeStamp = /538A4012;
 Reference = P13;
 ValeurCmp = RC Remote;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
-EndCmp
-
-BeginCmp
-TimeStamp = /53852677;
-Reference = P14;
-ValeurCmp = User switch;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
 EndCmp
 
@@ -446,6 +432,27 @@ TimeStamp = /54B73CFB;
 Reference = P34;
 ValeurCmp = Stromleiste 3,3V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+EndCmp
+
+BeginCmp
+TimeStamp = /54B8B4D4;
+Reference = P35;
+ValeurCmp = MowRpm;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /54B80ED9;
+Reference = P40;
+ValeurCmp = UserSwitsch;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
+TimeStamp = /54B80251;
+Reference = P41;
+ValeurCmp = Rain;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
