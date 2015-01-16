@@ -73,11 +73,13 @@ boolean connectWifi(){
 // join Wifi network
 boolean joinWifi(){
   Serial.println("--------joinWifi--------");
-  writeReadWifi("AT+CWMODE=1\r");
-  writeReadWifi("AT+CIPMUX=0\r");  
+  writeReadWifi("AT+RST\r");  // reset module
+  writeReadWifi("AT+CWMODE=1\r");  // station mode
+  writeReadWifi("AT+CIPMUX=0\r");  // single connection mode
   boolean res = false;
-  for (int retry = 0; retry < 5; retry++){
-    String s = writeReadWifi("AT+CWJAP=\"" + wifiSSID + "\",\"" + wifiPass + "\"", 5000);
+  // joining network
+  for (int retry = 0; retry < 4; retry++){
+    String s = writeReadWifi("AT+CWJAP=\"" + wifiSSID + "\",\"" + wifiPass + "\"\r", 3500);
     res = (s.indexOf("OK") != -1);
     if (res) break;
   }
