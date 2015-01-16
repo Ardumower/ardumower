@@ -23,13 +23,16 @@ int wifiEncrypt = ENCRYPT_AUTO;  // do not change
 int wifiChannel = 5;  // do not change (only used if used non-auto encryption)
 
 
+String connData;
+  
+
 void writeWifi(String s){
-  Serial.println("SEND: "+s);
+  Serial.print("SEND: "+s);
   Serial1.print(s);  
 }
 
 
-String readWifi(int waitMillis = 2000){
+String readWifi(int waitMillis = 500){
   Serial.print("RECV: ");
   String s;
   char data;
@@ -45,7 +48,7 @@ String readWifi(int waitMillis = 2000){
   return s;
 }
 
-String writeReadWifi(String s, int waitMillis = 2000){
+String writeReadWifi(String s, int waitMillis = 500){
   String res;
   writeWifi(s);    
   res = readWifi(waitMillis);          
@@ -85,7 +88,7 @@ boolean joinWifi(){
   writeReadWifi("AT+CWMODE=1\r\n");  // station mode    
   //writeReadWifi("AT+CIPMODE=0\r\n");  // data mode        
   writeReadWifi("AT+CIPMUX=1\r\n");  // multiple connection mode    
-  //writeReadWifi("AT+CWLAP\r\n", 10000);  // get access points        
+  //writeReadWifi("AT+CWLAP\r\n", 4000);  // get access points        
   boolean res = false;
   // joining network
   for (int retry = 0; retry < 4; retry++){
@@ -96,7 +99,7 @@ boolean joinWifi(){
       conn += ",";      
       conn += String(wifiEncrypt);
     }
-    String s = writeReadWifi(conn + "\r\n", 15000);
+    String s = writeReadWifi(conn + "\r\n", 5000);
     res = (s.indexOf("OK") != -1);
     if (res) break;
   }
@@ -104,9 +107,9 @@ boolean joinWifi(){
     for (int retry = 0; retry < 10; retry++){
       Serial.print("waiting for getting IP (DHCP)... retry ");
       Serial.println(retry);
-      delay(5000);
-      String s = writeReadWifi("AT+CIFSR\r\n");  // get IP address      
+      String s = writeReadWifi("AT+CIFSR\r\n", 500);  // get IP address      
       if (s.indexOf("OK") != -1) break;
+      delay(1500);
     }          
     //writeReadWifi("AT+CWJAP?\r\n");  // list access point
     //writeReadWifi("AT+CIPMUX=0\r\n");  // multiple connection mode        
@@ -121,27 +124,64 @@ void startServer(){
   writeReadWifi("AT+CIPSTO=10\r\n");   // set server timeout
 }
 
+void sendWifiTCP(String connId, String s){  
+  //Serial.print("SEND=");
+  //Serial.println(s);
+  //return;  
+  String data = "AT+CIPSEND=";
+  data += connId;
+  data += ",";
+  data += s.length() + 2;
+  data += "\r\n" + s;
+  writeReadWifi(data + "\r\n", 1500);
+  // close connection
+  //data = "AT+CIPCLOSE=";
+  //data += connId;
+  //writeReadWifi(data + "\r\n", 1500);
+}
+
 void runServer(){
-  String s;
   char data;
   while (Serial1.available()){
     data=Serial1.read();
-    s += char(data);
+    connData += char(data);
     Serial.print(data);
+  }
+  // +IPD,<id>,<len>,<data>  
+  int idx1 = connData.indexOf("+IPD");
+  if (idx1 != -1){    
+    String msg = connData.substring(idx1);
+    int idx2 = msg.indexOf("\r\n\r\n");
+    if (idx2 != -1){
+      connData = "";
+      String connId = msg.substring(5,6);
+      Serial.print("connId=");
+      Serial.println(connId);
+      String res = "HTTP/1.0 200 OK\r\n";
+      res += "Content-Type: text/html\r\n";
+      res += "Connection: close\r\n";
+      String content = "<html><body><h1>Hello, this is your Arduino!</h1>";
+      content += "<p>D5=" + String(digitalRead(5)) + "</p>"; 
+      content += "<p>ADC0=" + String(analogRead(A0)) + "</p>"; 
+      content += "</body></html>";
+      res += "Content-Length: " + String(content.length()) + "\r\n";
+      res += "\r\n";    
+      res += content;
+      sendWifiTCP(connId, res);
+    }
   }
 }
 
 
 void setup(){  
   Serial.begin(19200);
-  Serial.println("START");
-  delay(1000);
+  Serial.println("START");  
   if (connectWifi()){
     if (joinWifi()){
       startServer();
+      Serial.println("------now waiting for incoming connections on IP shown above-----");    
     }
-  }
-  Serial.println("--------loop--------");    
+  }  
 }
 
 
