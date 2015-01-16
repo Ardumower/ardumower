@@ -112,9 +112,10 @@ void startServer(){
   Serial.println("--------startServer--------");  
   writeReadWifi("AT+CIPSERVER=1,80\r");   // start server
   writeReadWifi("AT+CIPSTO=10\r");   // set server timeout
-  for (int retry = 0; retry < 5; retry++){
-      Serial.println("waiting for getting IP (DHCP)...");
-      delay(15000);
+  for (int retry = 0; retry < 10; retry++){
+      Serial.print("waiting for getting IP (DHCP)... retry ");
+      Serial.println(retry);
+      delay(5000);
       String s = writeReadWifi("AT+CIFSR\r");  // get IP address      
       if (s.indexOf("OK") != -1) break;
   }      
@@ -139,6 +140,7 @@ void setup(){
       startServer();
     }
   }
+  Serial.println("--------loop--------");    
 }
 
 
