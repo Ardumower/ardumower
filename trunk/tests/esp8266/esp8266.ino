@@ -1,5 +1,4 @@
 /*
-
 ESP8266 ESP-01 Wifi module - test (Arduino Mega)
 http://playground.boxtec.ch/doku.php/wireless/esp8266
 
@@ -9,13 +8,19 @@ Arduino Mega TX1 ------------RX---1 2---VCC (3.3V)
                           GPIO0---3 4---nRST
                |Antenna|  GPIO2---5 6---nCHPD ---------- connect to VCC (3.3V)
                             GND---7 8---TX-------------- RX  Arduino Mega RX1
-
 */
 
+// encryption types
+enum {
+  ENCRYPT_NO, ENCRYPT_WEP, ENCRYPT_WPA_PSK, ENCRYPT_WPA2_PSK, ENCRYPT_WPA_WPA2_PSK, ENCRYPT_AUTO,
+};
 
 
+// Wifi network settings (please adjust!)
 String wifiSSID = "GRAUNET";
 String wifiPass = "71979";
+int wifiEncrypt = ENCRYPT_AUTO;  // do not change
+int wifiChannel = 5;  // do not change (only used if used non-auto encryption)
 
 
 void writeWifi(String s){
@@ -75,17 +80,47 @@ boolean joinWifi(){
   Serial.println("--------joinWifi--------");
   writeReadWifi("AT+RST\r");  // reset module
   writeReadWifi("AT+CWMODE=1\r");  // station mode
-  writeReadWifi("AT+CIPMUX=0\r");  // single connection mode
+  writeReadWifi("AT+CIPMUX=1\r");  // multiple connection mode
   boolean res = false;
   // joining network
   for (int retry = 0; retry < 4; retry++){
-    String s = writeReadWifi("AT+CWJAP=\"" + wifiSSID + "\",\"" + wifiPass + "\"\r", 3500);
+    String conn = "AT+CWJAP=\"" + wifiSSID + "\",\"" + wifiPass + "\"";
+    if (wifiEncrypt != ENCRYPT_AUTO){
+      conn += ",";
+      conn += String(wifiChannel);
+      conn += ",";      
+      conn += String(wifiEncrypt);
+    }
+    String s = writeReadWifi(conn + "\r", 3500);
     res = (s.indexOf("OK") != -1);
     if (res) break;
   }
-  if (res) Serial.println("success");   
-    else Serial.println("ERROR joining");      
+  if (res) {
+    Serial.println("success");        
+    for (int retry = 0; retry < 4; retry++){
+      Serial.println("waiting for getting IP (DHCP)...");
+      delay(8000);
+      String s = writeReadWifi("AT+CIFSR\r");  // get IP address      
+      if (s.indexOf("OK") != -1) break;
+    }
+  } else Serial.println("ERROR joining");      
   return res;
+}
+
+
+void startServer(){
+  Serial.println("--------startServer--------");
+  writeReadWifi("AT+CIPSERVER=1,80\r");   // start server
+}
+
+void runServer(){
+  String s;
+  char data;
+  while (Serial1.available()){
+    data=Serial1.read();
+    s += char(data);
+    Serial.print(data);
+  }
 }
 
 
@@ -93,16 +128,15 @@ void setup(){
   Serial.begin(19200);
   Serial.println("START");
   if (connectWifi()){
-    joinWifi();
+    if (joinWifi()){
+      startServer();
+    }
   }
 }
 
 
-
-
 void loop(){
-  
-    
+  runServer();  
 }
 
 
