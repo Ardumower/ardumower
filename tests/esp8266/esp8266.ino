@@ -19,6 +19,7 @@ enum {
 // Wifi network settings (please adjust!)
 String wifiSSID = "GRAUNET";
 String wifiPass = "71979";
+unsigned long wifiBaudrate = 9600;
 int wifiEncrypt = ENCRYPT_AUTO;  // do not change
 int wifiChannel = 5;  // do not change (only used if used non-auto encryption)
 
@@ -76,6 +77,8 @@ boolean connectWifi(){
     Serial.println("ERROR: cannot connect");    
     return false;
   }    
+  writeReadWifi("AT+CIOBAUD=" + String(wifiBaudrate) + "\r\n");     
+  Serial1.begin(wifiBaudrate);     
   return true;  
 }
 
@@ -83,8 +86,8 @@ boolean connectWifi(){
 // join Wifi network
 boolean joinWifi(){
   Serial.println("--------joinWifi--------");
-  writeReadWifi("AT+RST\r\n", 4000);  // reset module  
-  writeReadWifi("AT+GMR\r\n");  // get firmware version
+  //writeReadWifi("AT+RST\r\n", 4000);  // reset module  
+  //writeReadWifi("AT+GMR\r\n");  // get firmware version
   writeReadWifi("AT+CWMODE=1\r\n");  // station mode    
   //writeReadWifi("AT+CIPMODE=0\r\n");  // data mode        
   writeReadWifi("AT+CIPMUX=1\r\n");  // multiple connection mode    
@@ -121,7 +124,7 @@ boolean joinWifi(){
 void startServer(){
   Serial.println("--------startServer--------");  
   writeReadWifi("AT+CIPSERVER=1,80\r\n");   // start server
-  writeReadWifi("AT+CIPSTO=10\r\n");   // set server timeout
+  //writeReadWifi("AT+CIPSTO=10\r\n");   // set server timeout
 }
 
 void sendWifiTCP(String connId, String s){  
