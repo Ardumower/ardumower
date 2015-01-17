@@ -1,4 +1,4 @@
-update=16.01.2015 11:09:10
+update=17.01.2015 14:19:47
 last_client=kicad
 [pcbnew]
 version=1
@@ -20,5 +20,8 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
+[eeschema]
+version=1
+LibDir=acs712.pretty
 [general]
 version=1

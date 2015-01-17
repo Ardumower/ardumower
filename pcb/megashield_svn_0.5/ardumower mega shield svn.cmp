@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 16.01.2015 12:05:02
+Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 17.01.2015 13:54:03
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -179,7 +179,7 @@ BeginCmp
 TimeStamp = /54B50727;
 Reference = JP7;
 ValeurCmp = pwr;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
@@ -267,6 +267,13 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
 EndCmp
 
 BeginCmp
+TimeStamp = /54BA7CCC;
+Reference = P4;
+ValeurCmp = ReserveAD11;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
 TimeStamp = /53867437;
 Reference = P5;
 ValeurCmp = IMU Kompas;
@@ -330,6 +337,13 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
 EndCmp
 
 BeginCmp
+TimeStamp = /54BA653E;
+Reference = P14;
+ValeurCmp = ReserveAD7;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
 TimeStamp = /541D1F00;
 Reference = P15;
 ValeurCmp = Dual2-M1Out;
@@ -379,59 +393,59 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B7A796;
+TimeStamp = /54BA46EA;
 Reference = P22;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = ReserveAD6;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B79CA8;
+TimeStamp = /54BA7798;
 Reference = P23;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = I2C Res.1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B7A5B4;
+TimeStamp = /54BA9F3B;
 Reference = P24;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = I2C Res.2;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B6892E;
+TimeStamp = /54BA0300;
 Reference = P25;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = ReservePin9;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B6AB7A;
+TimeStamp = /54B9D1FD;
 Reference = P26;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = ReservePin4;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B697B9;
+TimeStamp = /54B99CFF;
 Reference = P27;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = ReservePin0;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B6C4D4;
+TimeStamp = /54B9EA98;
 Reference = P28;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = ReservePin8;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B6A807;
+TimeStamp = /54B9BD45;
 Reference = P29;
-ValeurCmp = CONN_01X01;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+ValeurCmp = ReservePin1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
