@@ -124,7 +124,7 @@ boolean joinWifi(){
 void startServer(){
   Serial.println("--------startServer--------");  
   writeReadWifi("AT+CIPSERVER=1,80\r\n");   // start server
-  //writeReadWifi("AT+CIPSTO=10\r\n");   // set server timeout
+  writeReadWifi("AT+CIPSTO=5\r\n");   // set server timeout
 }
 
 void sendWifiTCP(String connId, String s){  
@@ -138,9 +138,9 @@ void sendWifiTCP(String connId, String s){
   data += "\r\n" + s;
   writeReadWifi(data + "\r\n", 1500);
   // close connection
-  //data = "AT+CIPCLOSE=";
-  //data += connId;
-  //writeReadWifi(data + "\r\n", 1500);
+  /*data = "AT+CIPCLOSE=";
+  data += connId;
+  writeReadWifi(data + "\r\n", 1500);*/
 }
 
 void runServer(){
