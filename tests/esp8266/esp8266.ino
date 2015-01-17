@@ -15,13 +15,14 @@ enum {
   ENCRYPT_NO, ENCRYPT_WEP, ENCRYPT_WPA_PSK, ENCRYPT_WPA2_PSK, ENCRYPT_WPA_WPA2_PSK, ENCRYPT_AUTO,
 };
 
-
 // Wifi network settings (please adjust!)
 String wifiSSID = "GRAUNET";
 String wifiPass = "71979";
 unsigned long wifiBaudrate = 9600;
 int wifiEncrypt = ENCRYPT_AUTO;  // do not change
 int wifiChannel = 5;  // do not change (only used if used non-auto encryption)
+
+unsigned long probeBauds[34] =  { 19200, 115200, 57600, 9600 };
 
 
 String connData;
@@ -61,24 +62,25 @@ boolean connectWifi(){
   Serial.println("--------connectWifi--------");
   String s;
   Serial1.setTimeout(5000);
-  while (true){    
-    Serial.println("trying 115200...");  
-    Serial1.begin(115200);   
+  boolean foundBaud = 0;
+  for (int i=0; i < 4; i++){
+    Serial.print("trying ");  
+    Serial.println(probeBauds[i]);
+    Serial1.begin(probeBauds[i]);   
     s = writeReadWifi("AT\r\n");
-    if (s.indexOf("OK") != -1) break;
-    Serial.println("trying 57600...");  
-    Serial1.begin(57600);     
-    s = writeReadWifi("AT\r\n");
-    if (s.indexOf("OK") != -1) break;
-    Serial.println("trying 9600...");  
-    Serial1.begin(9600);         
-    s = writeReadWifi("AT\r\n");
-    if (s.indexOf("OK") != -1) break;
+    if (s.indexOf("OK") != -1) {
+      foundBaud = probeBauds[i];
+      break;    
+    }
+  } 
+  if (foundBaud == 0){
     Serial.println("ERROR: cannot connect");    
     return false;
-  }    
-  writeReadWifi("AT+CIOBAUD=" + String(wifiBaudrate) + "\r\n");     
-  Serial1.begin(wifiBaudrate);     
+  }   
+  if (foundBaud != wifiBaudrate){
+    writeReadWifi("AT+CIOBAUD=" + String(wifiBaudrate) + "\r\n");     
+    Serial1.begin(wifiBaudrate);     
+  }
   return true;  
 }
 
