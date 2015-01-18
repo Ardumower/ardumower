@@ -5,6 +5,7 @@
 </head><body>
 Your machine IP: <h3 id=list>-</h3> 
 Your network: <h3 id=net>-</h3>
+Scanning: <h3 id=scan>-</h3>
 Found devices:  
 
 
@@ -18,6 +19,8 @@ var localNet = "";
 var foundText = "";
 var testIP = 1;
 var foundDevices = [];
+var scanTimeout = 8000;
+var scanRange = 17;
 
 
 if (RTCPeerConnection) (function () {
@@ -96,7 +99,8 @@ function AJAXInteraction(url) {
     // Might be able to force a faster timeout here with req.timeout and a 
     // timeout handler function rather than waiting the full 20-75 seconds. 
     // req.withCredentials = "true"; //creates a popup
-    req.onreadystatechange = processRequest;    
+    req.onreadystatechange = processRequest;
+    req.timeout = scanTimeout;    
 
     function processRequest () {
       //if (req.readyState == 1) req.close();
@@ -106,20 +110,18 @@ function AJAXInteraction(url) {
         var time = d2.getTime() - d.getTime();
         // Time will be more variable once you start scanning more than a 
         // few hosts... so this would need to be re-written.
-        if (time > 50) {
-          if (time < 9000) {          
+        if ( /*(url == "http://192.168.2.120") || */             
+             ((time > 10) && (time < scanTimeout)) ) {          
             if (foundDevices.indexOf(url) == -1){
               foundDevices.push(url);
               log (req.status + "," + time + ", <a href=" + url + ">" + url + "</a>");              
-            }        
-          } 
+            }                   
         }
       //}
     }
 
     this.doGet = function() {
-      //req.timeout = 20000;
-      req.open("GET", url, true);      
+      req.open("GET", url, true);            
       req.send();      
     }
 }
@@ -131,15 +133,16 @@ function makeRequest(url) {
     
 
 function scan(){    
-  for (var counter=1; counter < 255; counter++){
-    if (testIP == 255) break;  
+  document.getElementById('scan').textContent = testIP + "-" + (testIP + scanRange - 1);
+  for (var counter=0; counter < scanRange; counter++){    
+    if (testIP == 255) return;  
     var ip = localNet + "." + testIP;     
     var sock = "http://" + ip;
     //console.log("testing " + sock);  
-    makeRequest(sock);
+    makeRequest(sock);    
     testIP++;
   }
-  //setTimeout(scan, 500);
+  setTimeout(scan, scanTimeout);
 }
 
 function init() {
@@ -147,8 +150,8 @@ function init() {
   var parts = localIP.split('.');
   localNet = parts[0] + "." + parts[1] + "." + parts[2];
   document.getElementById('net').textContent = localNet;  
-  //setTimeout(scan, 100);
-  scan();   
+  //setTimeout(scan, 1000);
+  scan();     
 }
 
 //window.addEventListener('load', init );
