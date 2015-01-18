@@ -17,7 +17,7 @@ enum {
 
 // Wifi network settings (please adjust!)
 String wifiSSID = "GRAUNET";
-String wifiPass = "71979";
+String wifiPass = "11111";
 unsigned long wifiBaudrate = 9600;
 int wifiEncrypt = ENCRYPT_AUTO;  // do not change
 int wifiChannel = 5;  // do not change (only used if used non-auto encryption)
