@@ -1,4 +1,4 @@
-update=17.01.2015 14:19:47
+update=19.01.2015 22:30:59
 last_client=kicad
 [pcbnew]
 version=1
@@ -23,5 +23,10 @@ ModuleOutlineThickness=0.15
 [eeschema]
 version=1
 LibDir=acs712.pretty
+[eeschema/libraries]
+LibName1=acs712.pretty/Bluetooth_ZS_HC_05
+LibName2=acs712.pretty/Bluetooth_CZ_HC_05
+LibName3=Wlan_ESP8266
+LibName4=acs712.pretty/ds1307
 [general]
 version=1

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 17.01.2015 13:54:03
+Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 19.01.2015 22:32:49
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -66,7 +66,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54A7CE88;
 Reference = D1;
-ValeurCmp = DIODE;
+ValeurCmp = DIODE MPR 1045 ?;
 IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
 EndCmp
 
@@ -80,7 +80,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54B617F6;
 Reference = D3;
-ValeurCmp = DIODE;
+ValeurCmp = DIODE MPR 1045 ?;
 IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
 EndCmp
 
@@ -94,15 +94,29 @@ EndCmp
 BeginCmp
 TimeStamp = /54B55789;
 Reference = D5;
-ValeurCmp = DIODE;
+ValeurCmp = 1N4148;
 IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B53F62;
 Reference = D6;
+ValeurCmp = 1N4148;
+IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BB9425;
+Reference = D7;
 ValeurCmp = DIODE;
 IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BD3C36;
+Reference = D8;
+ValeurCmp = LED;
+IdModule  = ACS712:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
@@ -148,9 +162,9 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B661FE;
+TimeStamp = /54BD6B2E;
 Reference = JP3;
-ValeurCmp = pwr;
+ValeurCmp = EN;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
@@ -218,24 +232,10 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
-TimeStamp = /5385309E;
-Reference = K1;
-ValeurCmp = Tilt sens;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /541DAF9A;
-Reference = K2;
-ValeurCmp = Button;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
 TimeStamp = /54A679F2;
 Reference = K3;
 ValeurCmp = RELAY_2RT;
-IdModule  = Relays_ThroughHole:Relais_DPDT_Schrack-RT2_RM5mm;
+IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm;
 EndCmp
 
 BeginCmp
@@ -372,17 +372,17 @@ IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
-TimeStamp = /54A12C85;
+TimeStamp = /5385309E;
 Reference = P19;
-ValeurCmp = DS1307;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+ValeurCmp = Tilt sens;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54AF3343;
+TimeStamp = /541DAF9A;
 Reference = P20;
-ValeurCmp = Wlan;
-IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
+ValeurCmp = Button;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
@@ -659,6 +659,20 @@ IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
+TimeStamp = /54BD4662;
+Reference = R22;
+ValeurCmp = 2000R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BD9865;
+Reference = R23;
+ValeurCmp = ??;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
 TimeStamp = /5478A23C;
 Reference = RP1;
 ValeurCmp = 150;
@@ -715,10 +729,10 @@ IdModule  = ACS712:DC-DC;
 EndCmp
 
 BeginCmp
-TimeStamp = /5418B777;
+TimeStamp = /54BC29A1;
 Reference = U2;
-ValeurCmp = HC05_Bluetooth;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
+ValeurCmp = Bluetooth_CZ_HC_05;
+IdModule  = ACS712:Bluetooth_CZ_HC_05;
 EndCmp
 
 BeginCmp
@@ -754,6 +768,27 @@ TimeStamp = /54B92E1F;
 Reference = U7;
 ValeurCmp = DC  5V;
 IdModule  = ACS712:DC-DC;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BBCE9E;
+Reference = U8;
+ValeurCmp = DS1307+;
+IdModule  = ACS712:Tiny_RTC_DS1307;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BC06A2;
+Reference = U9;
+ValeurCmp = Wlan_ESP8266;
+IdModule  = ACS712:Wlan_ESP8266;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BC455C;
+Reference = U10;
+ValeurCmp = Bluetooth_ZS_HC_05;
+IdModule  = ACS712:Bluetooth_ZS_HC_05;
 EndCmp
 
 EndListe
