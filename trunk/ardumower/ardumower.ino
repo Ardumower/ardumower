@@ -1,7 +1,10 @@
 /*
   Ardumower (www.ardumower.de)
-  Copyright (c) 2013-2014 by Alexander Grau
-  Copyright (c) 2013-2014 by Sven Gennat
+  Copyright (c) 2013-2015 by Alexander Grau
+  Copyright (c) 2013-2015 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri    
+  Copyright (c) 2014-2015 by Stefan Manteuffel
+  Copyright (c) 2015 by Uwe Zimprich
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
