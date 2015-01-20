@@ -29,10 +29,16 @@
 
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
 // "pseudonoise4_pw" signal
+//int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };   // sender
+//int8_t sigcode[]   = { 1,0,-1, 0,1,-1,1,-1, 0,1,-1,1,0,-1, 0,1,-1, 0,1,-1, 0,1,0,-1 };   // receiver (coil only sees *changes*)
 
-int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 }; 
+// more motor driver friendly signal (receiver)
 
-                   
+int8_t sigcode[]   = { 1,-1,0,0,0,
+                       1,-1,0,0,0,
+                      -1, 1,0,0,0,
+                       1,-1,0,0,0  };
+
 
 Perimeter::Perimeter(){    
   timedOutIfBelowSmag = 300;
