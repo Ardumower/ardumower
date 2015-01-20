@@ -49,8 +49,8 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
 
 // ------ choose ONLY ONE robot configuration --------------------------------------------------
 
-//#include "mower.h"  // Ardumower Chassis Kit 1.0  (see mower.cpp for actual code)
-#include "car.h"  // Car robot
+#include "mower.h"  // Ardumower Chassis Kit 1.0  (see mower.cpp for actual code)
+//#include "car.h"  // Car robot
 //#include "sim.h"  // simbad simulator - maybe future :)
 
 
