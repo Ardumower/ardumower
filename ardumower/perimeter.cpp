@@ -26,44 +26,12 @@
 
 //#define pinLED 13                  
 
-int signalsize = 0;
-int8_t matchSignal[100];
 
+// http://grauonline.de/alexwww/ardumower/filter/filter.html    
+// "pseudonoise4_pw" signal
 
-void Perimeter::gensignal(){
-  // http://grauonline.de/alexwww/ardumower/filter/filter.html    
-  // "pseudonoise4_pw" signal
-  int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
-  // "pseudonoise5_pw" signal
-  //int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
-  int step=0;
-  byte width = 1;
-  int8_t state = -1;
-  byte signalidx = 0;
-  memset(matchSignal, 0, sizeof matchSignal);    
-  while (true){
-    width--;
-    if (width == 0){    
-      if (step == sizeof pncode) break;        
-      state *= -1;      
-      if (pncode[step] == 1) {
-        width = 4;    
-      } else {
-        width = 2;    
-      } 
-      step ++;          
-    }
-    matchSignal[signalidx] = state;    
-    ///Console.println(state);    
-    signalidx++;
-    signalsize++;
-    if (signalsize >= sizeof matchSignal){
-      Console.println("increase signal size!");
-      while (true);
-    }    
-  }   
-  //while (true);
-}
+int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 }; 
+
                    
 
 Perimeter::Perimeter(){    
@@ -72,18 +40,17 @@ Perimeter::Perimeter(){
   mag[0] = mag[1] = 0;
   smoothMag = 0;
   signalCounter = 0;  
-  lastInsideTime = 0;
-  gensignal();  
+  lastInsideTime = 0;    
 }
 
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
   // use max. 255 samples and multiple of signalsize
-  ADCMan.setCapture(idx0Pin, ((int)255 / signalsize) * signalsize, true); 
+  ADCMan.setCapture(idx0Pin, ((int)255 / sizeof sigcode) * sizeof sigcode, true); 
   
   Console.print("matchSignal size=");
-  Console.println(signalsize);  
+  Console.println(sizeof sigcode);  
   Console.print("capture size=");
   Console.println(ADCMan.getCaptureSize(idx0Pin));  
 }
@@ -146,7 +113,7 @@ void Perimeter::matchedFilter(byte idx){
       else samples[i] = -1;
   }*/
   // magnitude for tracking (fast but inaccurate)    
-  mag[idx] = corrFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
+  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode);        
   // smoothed magnitude used for signal-off detection
   smoothMag = 0.99 * smoothMag + 0.01 * ((float)abs(mag[idx]));
 
