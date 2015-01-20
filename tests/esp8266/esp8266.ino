@@ -26,7 +26,9 @@ unsigned long probeBauds[34] =  { 19200, 115200, 57600, 9600 };
 
 
 String connData;
-  
+boolean pfodCmdComplete = false;
+String pfodCmd = "";
+
 
 void writeWifi(String s){
   Serial.print("SEND: "+s);
@@ -177,6 +179,43 @@ void runServer(){
   }
 }
 
+void readWifiSerial(){
+  while(Serial1.available() > 0){
+    if (Serial1.available() > 0) {
+      char ch = Serial1.read();
+      //Console.print("pfod ch=");
+      //Console.println(ch);
+      if (ch == '}') pfodCmdComplete = true; 
+        else if (ch == '{') pfodCmd = "";
+        else pfodCmd += ch;                
+    }
+    if (pfodCmdComplete) {
+      Serial.print("pfod cmd=");
+      Serial.println(pfodCmd);      
+      if (pfodCmd == ".") {
+        // main menu
+        Serial1.println(F("{.mainmenu|m1~submenu1|m2~submenu2|m3~submenu3}"));        
+      } else if (pfodCmd == "m1") {
+          // submenu1
+          Serial1.print(F("{.submenu1"));
+          Serial1.print("|c1~D5=");
+          Serial1.print(digitalRead(5));
+          Serial1.print("|c2~A0=");
+          Serial1.print(analogRead(A0));
+          Serial1.println("}");                  
+        }
+        else {
+          // no match
+          Serial1.println("{}");         
+        }
+      Serial1.flush();
+      pfodCmd = "";
+      pfodCmdComplete = false;
+    }
+  }  
+}
+
+
 
 void setup(){  
   Serial.begin(19200);
@@ -188,7 +227,6 @@ void setup(){
     }
   }  
 }
-
 
 void loop(){
   runServer();  
