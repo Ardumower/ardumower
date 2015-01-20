@@ -26,6 +26,8 @@
 #include "EEPROM.h"
 #include "RunningMedian.h"
 
+#define USE_DEVELOPER_TEST     0      // set to '1' for new perimeter signal test (developers) 
+
 // --- MC33926 motor driver ---
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2         (if using old L298N driver, leave open)
@@ -85,13 +87,16 @@ unsigned long nextTimeToggleLED = 0;
 // must be multiple of 2 !
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
 // "pseudonoise4_pw" signal (sender)
-//int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
 
-// a more motor driver friendly signal (sender)
-int8_t sigcode[] = {  1,0,0,0,0,
-                      1,0,0,0,0,
-                     -1,0,0,0,0,
-                      1,0,0,0,0   };
+#ifdef USE_DEVELOPER_TEST
+  // a more motor driver friendly signal (sender)
+  int8_t sigcode[] = {  1,0,0,0,0,
+                        1,0,0,0,0,
+                       -1,0,0,0,0,
+                        1,0,0,0,0   };
+#else
+  int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
+#endif
                     
 
 void timerCallback(){       
@@ -166,6 +171,9 @@ void setup() {
   Serial.println("START");
   Serial.print("Ardumower ");
   Serial.println(VER);
+  #ifdef USE_DEVELOPER_TEST
+    Serial.println("Warning: USE_DEVELOPER_TEST activated");
+  #endif
   Serial.println("press...");
   Serial.println("  1  for current sensor calibration");  
   Serial.println();
