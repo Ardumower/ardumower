@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 19.01.2015 22:32:49
+Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 20.01.2015 16:38:49
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -123,14 +123,14 @@ BeginCmp
 TimeStamp = /538656B8;
 Reference = Dual1;
 ValeurCmp = MC33926;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
+IdModule  = ACS712:MC_33926_31polig;
 EndCmp
 
 BeginCmp
 TimeStamp = /541DE74B;
 Reference = Dual2;
 ValeurCmp = MC33926;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x18;
+IdModule  = ACS712:MC_33926_31polig;
 EndCmp
 
 BeginCmp
@@ -158,13 +158,6 @@ BeginCmp
 TimeStamp = /537FB697;
 Reference = JP2;
 ValeurCmp = Key;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54BD6B2E;
-Reference = JP3;
-ValeurCmp = EN;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
@@ -360,7 +353,7 @@ EndCmp
 BeginCmp
 TimeStamp = /541D7765;
 Reference = P17;
-ValeurCmp = Dual1-pwr;
+ValeurCmp = Dual2-pwr;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -488,6 +481,34 @@ TimeStamp = /54B8B4D4;
 Reference = P35;
 ValeurCmp = MowRpm;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BE082F;
+Reference = P36;
+ValeurCmp = Dual2 M1;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BE02C5;
+Reference = P37;
+ValeurCmp = Dual2 M2;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BEB61D;
+Reference = P38;
+ValeurCmp = Res24V-2;
+IdModule  = Connect:PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BEAE04;
+Reference = P39;
+ValeurCmp = Res24V-1;
+IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
@@ -782,13 +803,6 @@ TimeStamp = /54BC06A2;
 Reference = U9;
 ValeurCmp = Wlan_ESP8266;
 IdModule  = ACS712:Wlan_ESP8266;
-EndCmp
-
-BeginCmp
-TimeStamp = /54BC455C;
-Reference = U10;
-ValeurCmp = Bluetooth_ZS_HC_05;
-IdModule  = ACS712:Bluetooth_ZS_HC_05;
 EndCmp
 
 EndListe
