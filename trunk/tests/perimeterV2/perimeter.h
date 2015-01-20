@@ -38,9 +38,6 @@ How to use it (example):
 #include <Arduino.h>
 
 
-// ADC sampling rate (Hz) (has to match ADC setup!)
-#define F_SAMPLERATE 19231.0
-
 
 class Perimeter
 {
@@ -59,6 +56,7 @@ class Perimeter
     int16_t getSignalMax();    
     int16_t getSignalAvg(); 
     void speedTest();
+    int16_t timedOutIfBelowSmag;
   private:
     unsigned long lastInsideTime;
     byte type; // which perimeter version to use
@@ -71,7 +69,7 @@ class Perimeter
     int16_t signalAvg;
     int signalCounter;    
     void matchedFilter(byte idx);
-    int16_t convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts);
+    int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts);
     void printADCMinMax(int8_t *samples);
     void gensignal();
 };

@@ -26,62 +26,31 @@
 
 //#define pinLED 13                  
 
-int signalsize = 0;
-int8_t matchSignal[100];
 
+// http://grauonline.de/alexwww/ardumower/filter/filter.html    
+// "pseudonoise4_pw" signal
 
-void Perimeter::gensignal(){
-  // http://grauonline.de/alexwww/ardumower/filter/filter.html    
-  // "pseudonoise4_pw" signal
-  int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
-  // "pseudonoise5_pw" signal
-  //int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
-  int step=0;
-  byte width = 1;
-  int8_t state = -1;
-  byte signalidx = 0;
-  memset(matchSignal, 0, sizeof matchSignal);    
-  while (true){
-    width--;
-    if (width == 0){    
-      if (step == sizeof pncode) break;        
-      state *= -1;      
-      if (pncode[step] == 1) {
-        width = 4;    
-      } else {
-        width = 2;    
-      } 
-      step ++;          
-    }
-    matchSignal[signalidx] = state;    
-    ///Console.println(state);    
-    signalidx++;
-    signalsize++;
-    if (signalsize >= sizeof matchSignal){
-      Console.println("increase signal size!");
-      while (true);
-    }    
-  }   
-  //while (true);
-}
+int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 }; 
+
                    
 
 Perimeter::Perimeter(){    
+  timedOutIfBelowSmag = 300;
   callCounter = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
   signalCounter = 0;  
-  lastInsideTime = 0;
-  gensignal();  
+  lastInsideTime = 0;    
 }
 
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
-  ADCMan.setCapture(idx0Pin, signalsize*5, true); 
+  // use max. 255 samples and multiple of signalsize
+  ADCMan.setCapture(idx0Pin, ((int)255 / sizeof sigcode) * sizeof sigcode, true); 
   
   Console.print("matchSignal size=");
-  Console.println(signalsize);  
+  Console.println(sizeof sigcode);  
   Console.print("capture size=");
   Console.println(ADCMan.getCaptureSize(idx0Pin));  
 }
@@ -144,14 +113,15 @@ void Perimeter::matchedFilter(byte idx){
       else samples[i] = -1;
   }*/
   // magnitude for tracking (fast but inaccurate)    
-  mag[idx] = convFilter(matchSignal, signalsize, samples, sampleCount-signalsize);        
-  smoothMag = 0.99 * smoothMag + 0.01 * ((float)mag[idx]);
+  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode);        
+  // smoothed magnitude used for signal-off detection
+  smoothMag = 0.99 * smoothMag + 0.01 * ((float)abs(mag[idx]));
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){
-    signalCounter = min(signalCounter + 1, 6);    
+    signalCounter = min(signalCounter+1, 3);    
   } else {
-    signalCounter = max(signalCounter - 1, -6);    
+    signalCounter = max(signalCounter-1, -3);    
   }
   if (signalCounter < 0){
     lastInsideTime = millis();
@@ -179,17 +149,19 @@ boolean Perimeter::isInside(){
 
 
 boolean Perimeter::signalTimedOut(){
-  return (millis() - lastInsideTime > 8000);
+  if (getSmoothMagnitude() < timedOutIfBelowSmag) return true;
+  if (millis() - lastInsideTime > 8000) return true;
+  return false;
 }
 
 
-// digital filter (cross correlation)
+// digital matched filter (cross correlation)
 // http://en.wikipedia.org/wiki/Cross-correlation
 // H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
 // ip[] holds input data (length > nPts + M )
 // nPts is the length of the required output data 
 
-int16_t Perimeter::convFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){  
+int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){  
   int16_t sumMax = 0;
   int16_t sumMin = 0;
   for (int16_t j=0; j<nPts; j++)
