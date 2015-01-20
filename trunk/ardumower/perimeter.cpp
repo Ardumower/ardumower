@@ -27,17 +27,19 @@
 //#define pinLED 13                  
 
 
-// http://grauonline.de/alexwww/ardumower/filter/filter.html    
-// "pseudonoise4_pw" signal
-//int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };   // sender
-//int8_t sigcode[]   = { 1,0,-1, 0,1,-1,1,-1, 0,1,-1,1,0,-1, 0,1,-1, 0,1,-1, 0,1,0,-1 };   // receiver (coil only sees *changes*)
-
-// more motor driver friendly signal (receiver)
-
-int8_t sigcode[]   = { 1,-1,0,0,0,
-                       1,-1,0,0,0,
-                      -1, 1,0,0,0,
-                       1,-1,0,0,0  };
+// developer test to be activated in mower.cpp: 
+#ifdef USE_DEVELOPER_TEST
+  // more motor driver friendly signal (receiver)
+  int8_t sigcode[]   = { 1,-1,0,0,0,
+                         1,-1,0,0,0,
+                        -1, 1,0,0,0,
+                         1,-1,0,0,0  };
+#else
+  // http://grauonline.de/alexwww/ardumower/filter/filter.html    
+  // "pseudonoise4_pw" signal
+  int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };   // sender
+  //int8_t sigcode[]   = { 1,0,-1, 0,1,-1,1,-1, 0,1,-1,1,0,-1, 0,1,-1, 0,1,-1, 0,1,0,-1 };   // receiver (coil only sees *changes*)
+#endif
 
 
 Perimeter::Perimeter(){    
