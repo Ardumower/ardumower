@@ -37,7 +37,7 @@
 #define USE_PERI_FAULT        0     // use pinFault for driver fault detection? (set to '0' if not connected!)
 
 // motor driver feedback pin (=perimeter open/close detection, used for status LED)
-#define USE_PERI_CURRENT      1     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
+#define USE_PERI_CURRENT      0     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
 #define pinFeedback A0  // M1_FB
 #define PERI_CURRENT_MIN    0.1     // must be at least 100 mA for perimeter-is-closed detection 
 
@@ -84,10 +84,15 @@ unsigned long nextTimeToggleLED = 0;
 
 // must be multiple of 2 !
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
-// "pseudonoise4_pw" signal
-int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
-                    
+// "pseudonoise4_pw" signal (sender)
+//int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
 
+// a more motor driver friendly signal (sender)
+int8_t sigcode[] = {  1,0,0,0,0,
+                      1,0,0,0,0,
+                     -1,0,0,0,0,
+                      1,0,0,0,0   };
+                    
 
 void timerCallback(){       
   if (enableSender){
