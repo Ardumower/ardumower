@@ -30,11 +30,11 @@
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2         (if using old L298N driver, leave open)
 #define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
-#define pinEnable    3  // EN             (if using old L298N driver, leave open)
+#define pinEnable    3  // EN             (connect to motor driver enable)             
 
 // motor driver fault pin
 #define pinFault    12  // M1_nSF
-#define USE_PERI_FAULT        1     // use pinFault for driver fault detection? (set to '0' if not connected!)
+#define USE_PERI_FAULT        0     // use pinFault for driver fault detection? (set to '0' if not connected!)
 
 // motor driver feedback pin (=perimeter open/close detection, used for status LED)
 #define USE_PERI_CURRENT      1     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
@@ -48,7 +48,7 @@
 
 // ---- sender automatic standby (via current sensor for charger) ----
 // sender detects robot via a charging current through the charging pins
-#define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
+#define USE_CHG_CURRENT       0     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
 #define CHG_CURRENT_MIN   0.050     // must be at least 50 mA for charging detection
 
@@ -63,8 +63,7 @@
 // --------------------------------------
 
 volatile int step = 0;
-volatile byte state = 0;
-volatile byte wait = 1;
+volatile boolean enableSender = true;
 
 
 double duty = 0.1;    // 10%
@@ -86,41 +85,30 @@ unsigned long nextTimeToggleLED = 0;
 // must be multiple of 2 !
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
 // "pseudonoise4_pw" signal
-int8_t pncode[] = { 1,1,-1,-1,-1,1,-1,-1,1,1,-1,1,-1,1,1,-1 };
-// "pseudonoise5_pw" signal
-//int8_t pncode[] = { 1,1,1,-1,-1,-1,1,1,-1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,1,-1 };
+int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
+                    
 
 
 void timerCallback(){       
-  wait--;
-  if (wait == 0){  
-    //if (step == 0) state = 0;    
-    state = ~state;
-    if (state) {      
+  if (enableSender){
+    if (sigcode[step] == 1) {      
       digitalWrite(pinIN1, LOW);                           
       digitalWrite(pinIN2, HIGH);                                 
-      //digitalWrite(pinEnable, HIGH);                           
-      //delayMicroseconds(200);      
-    } else {      
+      digitalWrite(pinEnable, HIGH);
+    } else if (sigcode[step] == -1) {      
       digitalWrite(pinIN1, HIGH);                           
       digitalWrite(pinIN2, LOW);                                 
-      //digitalWrite(pinEnable, LOW);                           
-      //delayMicroseconds(200);
-      //digitalWrite(pinEnable, LOW);                           
-    }    
-    if (pncode[step] == 1) {
-      wait = 2;    
+      digitalWrite(pinEnable, HIGH);                           
     } else {
-      wait = 1;    
+      digitalWrite(pinEnable, LOW);
     } 
     step ++;    
-    if (step == sizeof pncode) {      
+    if (step == sizeof sigcode) {      
       step = 0;      
-    }
+    }    
   } else {
-    //digitalWrite(pinIN1, HIGH);                           
-    //digitalWrite(pinIN2, LOW);                               
-  }  
+    digitalWrite(pinEnable, LOW);    
+  }
 }
 
 void readEEPROM(){
@@ -163,8 +151,7 @@ void setup() {
   pinMode(pinFault, INPUT);      
   pinMode(pinPot, INPUT);      
   pinMode(pinChargeCurrent, INPUT);
-  
-  digitalWrite(pinEnable, HIGH);   
+    
     
   //int T = 1000.0*1000.0/(7800*2);
   // sample rate 19230,76923076923 / 2 => 9615.38
@@ -237,10 +224,10 @@ void loop(){
     dutyPWM = ((int)(duty * 255.0));
     if (isCharging){
       // switch off perimeter 
-      digitalWrite(pinEnable, LOW);            
+      enableSender = false;
     } else {
       // switch on perimeter
-      digitalWrite(pinEnable, HIGH);                 
+      enableSender = true;
       //analogWrite(pinPWM, 255);
       analogWrite(pinPWM, dutyPWM);
       if ( USE_PERI_FAULT && (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
