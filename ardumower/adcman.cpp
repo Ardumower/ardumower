@@ -138,6 +138,7 @@ void startADC(boolean fast){
 //  Console.print("startADC ch");
 //  Console.println(channel);
 #ifdef __AVR__
+  // http://www.atmel.com/images/doc2549.pdf
   /*  REFS0 : VCC use as a ref, IR_AUDIO : channel selection, ADEN : ADC Enable, ADSC : ADC Start, ADATE : ADC Auto Trigger Enable, ADIE : ADC Interrupt Enable,  ADPS : ADC Prescaler  */
   // free running ADC mode, f = ( 16MHz / prescaler ) / 13 cycles per conversion   
   ADMUX = _BV(REFS0) | (channel & 0x07); // | _BV(ADLAR); 
@@ -146,6 +147,9 @@ void startADC(boolean fast){
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz 
   else // slow but accurate  
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz
+  // disable digital buffers (reduces noise/capacity)
+  if (channel < 8) DIDR0 |= (1 << channel);
+    else DIDR2 |= (1 << (channel-8));
   //sei();   
 #else 
   adc_enable_channel( ADC, (adc_channel_num_t)g_APinDescription[A0+channel].ulADCChannelNumber  ); 
