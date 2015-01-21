@@ -701,7 +701,7 @@ void Robot::setup()  {
   Console.print(F("Ardumower "));
   Console.println(VER);
   #ifdef USE_DEVELOPER_TEST
-    Serial.println("Warning: USE_DEVELOPER_TEST activated");
+    Console.println("Warning: USE_DEVELOPER_TEST activated");
   #endif  
   Console.println(F("press..."));
   Console.println(F("  d for menu"));    
