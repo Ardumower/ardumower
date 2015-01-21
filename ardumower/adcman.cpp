@@ -134,7 +134,7 @@ void ADCManager::printCalib(){
   }
 }
 
-void startADC(boolean fast){
+void startADC(int sampleCount){
 //  Console.print("startADC ch");
 //  Console.println(channel);
 #ifdef __AVR__
@@ -143,10 +143,13 @@ void startADC(boolean fast){
   // free running ADC mode, f = ( 16MHz / prescaler ) / 13 cycles per conversion   
   ADMUX = _BV(REFS0) | (channel & 0x07); // | _BV(ADLAR); 
   ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((channel >> 3) & 0x01) << MUX5);  
-  if (fast)
-    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz 
-  else // slow but accurate  
-    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz
+  // use slow but accurate sampling if one sample only
+  if (sampleCount == 1)
+    // slow but accurate
+    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz      
+  else   
+    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz        
+    //ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz   
   // disable digital buffers (reduces noise/capacity)
   if (channel < 8) DIDR0 |= (1 << channel);
     else DIDR2 |= (1 << (channel-8));
@@ -158,12 +161,12 @@ void startADC(boolean fast){
 #endif      
 }
   
-void ADCManager::startCapture(boolean fast){
+void ADCManager::startCapture(int sampleCount){
   //Console.print("starting capture ch");
   //Console.println(channel);
   position = 0;
   busy=true;
-  startADC(fast);  
+  startADC(sampleCount);  
 }
 
 #ifdef __AVR__  // Arduino Mega
@@ -225,9 +228,8 @@ void ADCManager::run(){
     channel++;
     if (channel == CHANNELS) channel = 0;
     if ((captureSize[channel] != 0) && (!captureComplete[channel])){        
-      // found channel for sampling
-      boolean fast = (captureSize[channel] != 1); // use slow but accurate sampling if one sample only
-      startCapture( fast );                   
+      // found channel for sampling      
+      startCapture( captureSize[channel] );                   
       break;
     }      
   }

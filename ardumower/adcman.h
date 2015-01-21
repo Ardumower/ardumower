@@ -83,7 +83,7 @@ class ADCManager
     int capturedChannels;
     boolean channelReady[10]; // ready for capture?
     void calibrateOfs(byte pin);
-    void startCapture(boolean fast);
+    void startCapture(int sampleCount);
     void stopCapture();    
     boolean loadCalib();
     void loadSaveCalib(boolean readflag);
