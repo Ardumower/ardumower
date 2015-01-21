@@ -17,9 +17,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*
+Problem: you have multiple analog inputs, some need only to be sampled once, other need
+a fixed sample rate. 
+
+Solution:  
 Arduino ADC manager (ADC0-ADC9)
 - can capture multiple pins one after the other (example ADC0: 1000 samples, ADC1: 100 samples, ADC2: 1 sample etc.)
-- can capture more than one sample into buffers
+- can capture more than one sample into buffers (fixed sample rate)
 - runs in background: interrupt-based (free-running) 
 - two types of ADC capture:
   1) free-running ADC capturing (for certain sample count) (8 bit signed - zero = VCC/2)
@@ -29,8 +33,12 @@ Arduino ADC manager (ADC0-ADC9)
 How to use it (example):
 1. Initialize ADC:  ADCMan.init();
 2. Set ADC pin:     ADCMan.setCapture(pinMotorMowSense, 1, 1);
-3. Read ADC:        int value = ADCMan.read(pinMotorMowSense);
-
+3. Program loop:    while (true){
+                      ADCMan.run();
+                      if (ADCMan.isCaptureComplete(pinMotorMowSense)){
+                        int value = ADCMan.read(pinMotorMowSense);
+                      }
+                    }
 */
 
 
@@ -62,6 +70,8 @@ class ADCManager
     // samplecount=1: get one sample for pin
     // samplecount>1: get first sample for pin
     int read(byte pin);
+	// read the median value of samples
+    int readMedian(byte pin);
     boolean isCaptureComplete(byte pin);
     // statistics only
     int getCapturedChannels();
@@ -73,7 +83,7 @@ class ADCManager
     int capturedChannels;
     boolean channelReady[10]; // ready for capture?
     void calibrateOfs(byte pin);
-    void startCapture(boolean fast);
+    void startCapture(int sampleCount);
     void stopCapture();    
     boolean loadCalib();
     void loadSaveCalib(boolean readflag);

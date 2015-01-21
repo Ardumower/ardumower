@@ -2,6 +2,7 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,8 +29,12 @@
 #define ADDR 224
 #define MAGIC 1
 
+#ifdef __AVR__
+  #define CHANNELS 16
+#else
+  #define CHANNELS 12
+#endif 
 
-#define CHANNELS 16
 #define NO_CHANNEL 255
 
 volatile uint8_t calibrateChannel = NO_CHANNEL;
@@ -45,7 +50,7 @@ uint8_t captureSize[CHANNELS]; // ADC sample buffer size (ADC0-ADC7)
 int16_t ofs[CHANNELS]; // ADC zero offset (ADC0-ADC7)
 boolean captureComplete[CHANNELS]; // ADC buffer filled?
 boolean autoCalibrate[CHANNELS]; // do auto-calibrate? (ADC0-ADC7)
-uint16_t sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
+int16_t *sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
 ADCManager ADCMan;
 
 
@@ -79,6 +84,7 @@ void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs
   int ch = pin-A0;
   captureSize[ch] = samplecount;
   capture[ch] = new int8_t[samplecount];  
+  sample[ch]  = new int16_t[samplecount];
   autoCalibrate[ch] = autoCalibrateOfs;
 }
 
@@ -98,14 +104,15 @@ void ADCManager::calibrateOfs(byte pin){
   int ch = pin-A0;
   calibrateMin = 9999;
   calibrateMax = -9999;
-  calibrateChannel = ch;  
+  calibrateChannel = ch;
+  ofs[ch]=0;  
   captureComplete[ch]=false;      
   while (!isCaptureComplete(pin)) {
     delay(20);
     run();
   }  
   calibrateChannel = NO_CHANNEL;
-  if (captureSize[ch] == 1) ofs[ch] = sample[ch];
+  if (captureSize[ch] == 1) ofs[ch] = sample[ch][0];
     else {      
       int16_t center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
       ofs[ch] = center;
@@ -127,18 +134,25 @@ void ADCManager::printCalib(){
   }
 }
 
-void startADC(boolean fast){
+void startADC(int sampleCount){
 //  Console.print("startADC ch");
 //  Console.println(channel);
 #ifdef __AVR__
+  // http://www.atmel.com/images/doc2549.pdf
   /*  REFS0 : VCC use as a ref, IR_AUDIO : channel selection, ADEN : ADC Enable, ADSC : ADC Start, ADATE : ADC Auto Trigger Enable, ADIE : ADC Interrupt Enable,  ADPS : ADC Prescaler  */
   // free running ADC mode, f = ( 16MHz / prescaler ) / 13 cycles per conversion   
   ADMUX = _BV(REFS0) | (channel & 0x07); // | _BV(ADLAR); 
   ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((channel >> 3) & 0x01) << MUX5);  
-  if (fast)
-    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz 
-  else // slow but accurate  
-    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz
+  // use slow but accurate sampling if one sample only
+  if (sampleCount == 1)
+    // slow but accurate
+    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz      
+  else   
+    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz        
+    //ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz   
+  // disable digital buffers (reduces noise/capacity)
+  if (channel < 8) DIDR0 |= (1 << channel);
+    else DIDR2 |= (1 << (channel-8));
   //sei();   
 #else 
   adc_enable_channel( ADC, (adc_channel_num_t)g_APinDescription[A0+channel].ulADCChannelNumber  ); 
@@ -147,12 +161,12 @@ void startADC(boolean fast){
 #endif      
 }
   
-void ADCManager::startCapture(boolean fast){
+void ADCManager::startCapture(int sampleCount){
   //Console.print("starting capture ch");
   //Console.println(channel);
   position = 0;
   busy=true;
-  startADC(fast);  
+  startADC(sampleCount);  
 }
 
 #ifdef __AVR__  // Arduino Mega
@@ -172,23 +186,17 @@ void ADC_Handler(void){
     return;
   } 
   if (channel == calibrateChannel){  
+    // determine min/max for calibration
     if (value < calibrateMin) calibrateMin = value; //0.5 * calibrateMin + 0.5 * ((double)value);
-    if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);    
+    if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);
+    sample[channel][position] = value;    
     position++;
   } else {    
     value -= ofs[channel];                   
-    /*int16_t temp = value;
-    value = (value + lastvalue) / 2;
-    lastvalue = temp;
-    subsample++;
-    if (subsample == 2){             
-      subsample=0;*/
-      capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                     
-        //capture[channel][position] =  min(30,  max(-30, value / 4));   // convert to signed (zero = ADC/2)           
-      position++;
-    //}
-  }
-  sample[channel] = value;     
+    capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                                    
+    sample[channel][position] = value;           
+    position++;    
+  }       
 }
 
 void ADCManager::stopCapture(){  
@@ -205,7 +213,6 @@ void ADCManager::stopCapture(){
 
 
 void ADCManager::run(){
-  //return;
   if (busy) {
     //Console.print("busy pos=");
     //Console.println(position);
@@ -221,27 +228,15 @@ void ADCManager::run(){
     channel++;
     if (channel == CHANNELS) channel = 0;
     if ((captureSize[channel] != 0) && (!captureComplete[channel])){        
-      // found channel for sampling
-      boolean fast = (captureSize[channel] != 1); // use slow but accurate sampling if one sample only
-      startCapture( fast );        
-      /*} 
-        // one sample capture (slow but more accurate)
-        delayMicroseconds(100); // required to get accurate measurement
-        sample[channel] = analogRead(A0 + channel);
-        captureComplete[channel]=true;    
-        capturedChannels++;
-      } */     
+      // found channel for sampling      
+      startCapture( captureSize[channel] );                   
       break;
     }      
   }
 }
 
 
-int8_t* ADCManager::getCapture(byte pin){
-  /*channel = ch;
-  startCapture();
-  while (busy) delay(2);
-  stopCapture();*/
+int8_t* ADCManager::getCapture(byte pin){  
   return (int8_t*)capture[pin-A0];
 }
 
@@ -253,10 +248,33 @@ boolean ADCManager::isCaptureComplete(byte pin){
 int ADCManager::read(byte pin){    
   int ch = pin-A0;
   captureComplete[ch]=false;    
-  if (captureSize[ch] == 0) return 0;
-    else if (captureSize[ch] == 1) return sample[ch];
-    else return capture[ch][0];  
+  if (captureSize[ch] == 0) return 0;  
+    else return sample[ch][(captureSize[ch]-1)];    
 }
+
+
+
+int ADCManager::readMedian(byte pin){
+  int ch = pin-A0;
+  captureComplete[ch]=false;    
+  if (captureSize[ch] == 0) return 0;
+  else if (captureSize[ch] == 1) return sample[ch][0];
+   else { 
+    for (int i = 1; i < captureSize[ch]; ++i)
+    {
+      int j = sample[ch][i];
+      int k;
+      for (k = i - 1; (k >= 0) && (j > sample[ch][k]); k--)
+      {
+        sample[ch][k + 1] = sample[ch][k];
+      }
+      sample[ch][k + 1] = j;
+    }
+    return sample[ch][(int)(captureSize[ch]/2 )];
+  }
+}  
+
+
 
 void ADCManager::restart(byte pin){
   captureComplete[pin-A0]=false;
@@ -297,7 +315,9 @@ boolean ADCManager::loadCalib(){
 }
 
 void ADCManager::saveCalib(){
+#ifdef __AVR__
   loadSaveCalib(false);
+#endif
 }
 
 
