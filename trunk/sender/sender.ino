@@ -26,7 +26,7 @@
 #include "EEPROM.h"
 #include "RunningMedian.h"
 
-#define USE_DEVELOPER_TEST     0      // set to '1' for new perimeter signal test (developers) 
+// #define USE_DEVELOPER_TEST    1      // uncomment for new perimeter signal test (developers) 
 
 // --- MC33926 motor driver ---
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)

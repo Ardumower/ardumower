@@ -700,6 +700,9 @@ void Robot::setup()  {
   Console.println(F("START"));  
   Console.print(F("Ardumower "));
   Console.println(VER);
+  #ifdef USE_DEVELOPER_TEST
+    Serial.println("Warning: USE_DEVELOPER_TEST activated");
+  #endif  
   Console.println(F("press..."));
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
