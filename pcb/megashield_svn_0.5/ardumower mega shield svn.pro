@@ -1,4 +1,4 @@
-update=21.01.2015 09:30:34
+update=22.01.2015 20:29:45
 last_client=kicad
 [pcbnew]
 version=1
@@ -22,7 +22,7 @@ BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
 [eeschema]
 version=1
-LibDir=acs712.pretty
+LibDir=acs712.pretty;../../Documents/KICAD/Footprint_Uwe;../../Documents/KICAD/Bibliotheken_Uwe
 [eeschema/libraries]
 LibName1=acs712.pretty/Bluetooth_ZS_HC_05
 LibName2=acs712.pretty/Bluetooth_CZ_HC_05

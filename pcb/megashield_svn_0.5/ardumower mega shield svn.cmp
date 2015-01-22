@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 20.01.2015 16:38:49
+Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 22.01.2015 20:15:31
 
 BeginCmp
 TimeStamp = /53866CB8;
@@ -11,56 +11,56 @@ BeginCmp
 TimeStamp = /54B48E9A;
 Reference = C1;
 ValeurCmp = 1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /53866E3A;
 Reference = C2;
-ValeurCmp = 10uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+ValeurCmp = 100uF;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /541DF105;
 Reference = C3;
 ValeurCmp = 0,1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B48EA0;
 Reference = C4;
 ValeurCmp = 1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B51225;
 Reference = C5;
-ValeurCmp = ??????????????;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+ValeurCmp = 470uF;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B50F0D;
 Reference = C6;
 ValeurCmp = 0,1uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B8E469;
 Reference = C7;
-ValeurCmp = 10uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+ValeurCmp = 100uF;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B92E13;
 Reference = C8;
-ValeurCmp = 10uF;
-IdModule  = Capacitors_ThroughHole:Capacitor3MMDiscRM2.5;
+ValeurCmp = 100uF;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
@@ -115,7 +115,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BD3C36;
 Reference = D8;
-ValeurCmp = LED;
+ValeurCmp = BlueLED;
 IdModule  = ACS712:Pin_Header_Straight_1x02;
 EndCmp
 
@@ -150,7 +150,7 @@ EndCmp
 BeginCmp
 TimeStamp = /5417E831;
 Reference = JP1;
-ValeurCmp = pwr;
+ValeurCmp = pwr 10V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
@@ -162,65 +162,93 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
+TimeStamp = /54C10ED7;
+Reference = JP3;
+ValeurCmp = pwrAA3,3;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
 TimeStamp = /54B57EFB;
 Reference = JP4;
-ValeurCmp = pwr;
+ValeurCmp = R-Arduino;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B5A1C5;
 Reference = JP5;
-ValeurCmp = pwr;
+ValeurCmp = R-GND;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B504F9;
 Reference = JP6;
-ValeurCmp = pwr;
+ValeurCmp = V-A-Relais;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B50727;
 Reference = JP7;
-ValeurCmp = pwr;
+ValeurCmp = V-A-Relais;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B7D8CC;
 Reference = JP8;
-ValeurCmp = 5V;
+ValeurCmp = Blue5.0V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B7DF62;
 Reference = JP9;
-ValeurCmp = 3,3V;
+ValeurCmp = Blue3.3V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B8E46F;
 Reference = JP10;
-ValeurCmp = pwr;
+ValeurCmp = pwr 3,3V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B92E19;
 Reference = JP11;
-ValeurCmp = pwr;
+ValeurCmp = pwr 5V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B90ACC;
 Reference = JP12;
-ValeurCmp = pwr;
+ValeurCmp = pwrAA5.0V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C156E1;
+Reference = JP13;
+ValeurCmp = Mess3.3V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C157D5;
+Reference = JP14;
+ValeurCmp = Mess5.0V;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C158E5;
+Reference = JP15;
+ValeurCmp = MessA3.3V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
@@ -332,7 +360,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BA653E;
 Reference = P14;
-ValeurCmp = ReserveAD7;
+ValeurCmp = Mess V;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
@@ -535,14 +563,14 @@ EndCmp
 BeginCmp
 TimeStamp = /538A5BD3;
 Reference = R1;
-ValeurCmp = 470r;
+ValeurCmp = 220;
 IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /538A5BE2;
 Reference = R2;
-ValeurCmp = 2k2;
+ValeurCmp = 1K5;
 IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
@@ -605,7 +633,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54B48CE0;
 Reference = R11;
-ValeurCmp = ??;
+ValeurCmp = 1K5;
 IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
@@ -682,14 +710,14 @@ EndCmp
 BeginCmp
 TimeStamp = /54BD4662;
 Reference = R22;
-ValeurCmp = 2000R;
+ValeurCmp = 120;
 IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BD9865;
 Reference = R23;
-ValeurCmp = ??;
+ValeurCmp = 68;
 IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
@@ -795,7 +823,7 @@ BeginCmp
 TimeStamp = /54BBCE9E;
 Reference = U8;
 ValeurCmp = DS1307+;
-IdModule  = ACS712:Tiny_RTC_DS1307;
+IdModule  = ACS712:Tiny_RTC_DS1307_geändert;
 EndCmp
 
 BeginCmp
