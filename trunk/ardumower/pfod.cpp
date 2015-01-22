@@ -1032,7 +1032,9 @@ void RemoteControl::run(){
         Bluetooth.print(",");
         Bluetooth.print(robot->perimeterCounter);
         Bluetooth.print(",");        
-        Bluetooth.println(!robot->perimeter.signalTimedOut());        
+        Bluetooth.print(!robot->perimeter.signalTimedOut());        
+        Bluetooth.print(",");                
+        Bluetooth.println(robot->perimeter.getFilterQuality());                
         perimeterCaptureIdx++;
       }
       /*int filterBin = Perimeter.getFilterBin();
@@ -1139,7 +1141,7 @@ void RemoteControl::readSerial(){
           /*Bluetooth.print(F("{=Perimeter spectrum`"));
           Bluetooth.print(Perimeter.getFilterBinCount());
           Bluetooth.print(F("|freq (Hz)`0|magnitude`0~60~-1|selected band`0~60~-1}"));*/
-          Bluetooth.println(F("{=Perimeter`128|sig`1|mag`2|smag`3|in`4|cnt`5|on`6}"));                   
+          Bluetooth.println(F("{=Perimeter`128|sig`1|mag`2|smag`3|in`4|cnt`5|on`6|qty`7}"));                   
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_PERIMETER;          
         }
