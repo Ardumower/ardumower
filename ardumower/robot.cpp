@@ -751,9 +751,9 @@ void Robot::printInfo(Stream &s){
   Streamprint(s, "v%1d ", consoleMode);			    
   Streamprint(s, "%4s ", stateNames[stateCurr]);			    
   if (consoleMode == CONSOLE_PERIMETER){
-    Streamprint(s, "sig min %4d max %4d avg %4d  mag %5d",
+    Streamprint(s, "sig min %4d max %4d avg %4d  mag %5d  %qty %3d",
       (int)perimeter.getSignalMin(), (int)perimeter.getSignalMax(), (int)perimeter.getSignalAvg(),
-      perimeterMag);
+      perimeterMag, (int)perimeter.getFilterQuality()*100);
     Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",  
       (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut()) );      
   } else {  

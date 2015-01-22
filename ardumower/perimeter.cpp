@@ -47,6 +47,7 @@ Perimeter::Perimeter(){
   callCounter = 0;
   mag[0] = mag[1] = 0;
   smoothMag = 0;
+  filterQuality = 0;
   signalCounter = 0;  
   lastInsideTime = 0;    
 }
@@ -121,7 +122,7 @@ void Perimeter::matchedFilter(byte idx){
       else samples[i] = -1;
   }*/
   // magnitude for tracking (fast but inaccurate)    
-  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode);        
+  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode, filterQuality);        
   // smoothed magnitude used for signal-off detection
   smoothMag = 0.99 * smoothMag + 0.01 * ((float)abs(mag[idx]));
 
@@ -151,6 +152,10 @@ int16_t Perimeter::getSignalAvg(){
   return signalAvg;
 }
 
+float Perimeter::getFilterQuality(){
+  return filterQuality;
+}
+
 boolean Perimeter::isInside(){
   return (signalCounter < 0);  
 }
@@ -169,7 +174,7 @@ boolean Perimeter::signalTimedOut(){
 // ip[] holds input data (length > nPts + M )
 // nPts is the length of the required output data 
 
-int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){  
+int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &filterQuality){  
   int16_t sumMax = 0;
   int16_t sumMin = 0;
   for (int16_t j=0; j<nPts; j++)
@@ -187,6 +192,7 @@ int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts){
       if (sum < sumMin) sumMin = sum;
       ip++;
   }
+  filterQuality = ((float)(sumMax + sumMin))/((float)sumMax);
   if (sumMax > -sumMin) return sumMax;
     else return sumMin;  
 }

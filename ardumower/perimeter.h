@@ -19,11 +19,7 @@
 */
 /*
 perimeter v2 receiver for Arduino sound sensors/LM386 using digital filter: matched filter - evaluates signal polarity of 'pulse3' signal on one ADC pin (for one coil)
- (for details see
-    http://grauonline.de/wordpress/?page_id=364
-    http://en.wikipedia.org/wiki/Matched_filter
-    http://grauonline.de/alexwww/ardumower/filter/filter.html and bottom of this page
-    http://www.ardumower.de/index.php/de/anleitungen/2013-11-23-19-50-19/induktion    )
+ (for details see    http://wiki.ardumower.de/index.php?title=Perimeter_wire )
 
 How to use it (example):    
   1. initialize ADC:        ADCMan.init(); 
@@ -54,7 +50,8 @@ class Perimeter
     boolean signalTimedOut();
     int16_t getSignalMin();
     int16_t getSignalMax();    
-    int16_t getSignalAvg(); 
+    int16_t getSignalAvg();
+    float getFilterQuality(); 
     void speedTest();
     int16_t timedOutIfBelowSmag;
   private:
@@ -64,12 +61,13 @@ class Perimeter
     int callCounter;
     int16_t mag [2]; // perimeter magnitude per channel
     float smoothMag;
+    float filterQuality;
     int16_t signalMin;
     int16_t signalMax;
-    int16_t signalAvg;
+    int16_t signalAvg;    
     int signalCounter;    
     void matchedFilter(byte idx);
-    int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts);
+    int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &filterQuality);
     void printADCMinMax(int8_t *samples);
     void gensignal();
 };
