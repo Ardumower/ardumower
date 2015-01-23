@@ -66,7 +66,7 @@ void printConsole(){
     Console.print((int)perimeter.getSmoothMagnitude());                
     Console.print("\t");    
     Console.print("qty ");        
-    Console.print((int)(perimeter.getFilterQuality()*100.0));
+    Console.print(perimeter.getFilterQuality());
     Console.print("\t");
     Console.print("\t");
     Console.print("in ");
