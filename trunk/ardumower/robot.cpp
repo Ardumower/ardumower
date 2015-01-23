@@ -805,7 +805,7 @@ void Robot::printMenu(){
   Console.println(F("5=calibrate IMU acc next side"));
   Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
-  Console.println(F("8=ADC calib"));  
+  Console.println(F("8=ADC calib (sender must be off)"));  
   Console.println(F("9=load factory settings"));  
   Console.println(F("x=read settings"));  
   Console.println(F("0=exit"));  
