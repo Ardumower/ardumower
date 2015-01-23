@@ -288,7 +288,7 @@ void loop(){
     
     if (USE_POT){
       // read potentiometer
-      duty = ((float)map(analogRead(pinPot),  0,1023,   0,1000))  /1000.0;
+      duty = max(0.01, ((float)map(analogRead(pinPot),  0,1023,   0,1000))  /1000.0 );
     }              
   }
   
