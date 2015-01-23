@@ -172,7 +172,7 @@ void RemoteControl::sendMainMenu(boolean update){
     Bluetooth.print(")");
   }
   Bluetooth.print(F("|r~Commands|n~Manual|s~Settings|in~Info|c~Test compass|ardumag~Monitor compass|yp~Plot"));
-  Bluetooth.println(F("|y4~Error counters|y9~ADC calibration}"));        
+  Bluetooth.println(F("|y4~Error counters|y9~ADC calibration (perimeter sender must be off)}"));        
 }
 
 void RemoteControl::sendPlotMenu(boolean update){
