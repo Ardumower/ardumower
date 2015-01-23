@@ -67,7 +67,7 @@ class Perimeter
     int16_t signalAvg;    
     int signalCounter;    
     void matchedFilter(byte idx);
-    int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &filterQuality);
+    int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &quality);
     void printADCMinMax(int8_t *samples);
     void gensignal();
 };

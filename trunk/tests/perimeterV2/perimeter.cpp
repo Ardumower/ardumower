@@ -174,7 +174,7 @@ boolean Perimeter::signalTimedOut(){
 // ip[] holds input data (length > nPts + M )
 // nPts is the length of the required output data 
 
-int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &filterQuality){  
+int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &quality){  
   int16_t sumMax = 0;
   int16_t sumMin = 0;
   for (int16_t j=0; j<nPts; j++)
@@ -192,7 +192,7 @@ int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, fl
       if (sum < sumMin) sumMin = sum;
       ip++;
   }
-  filterQuality = ((float)(sumMax + sumMin))/((float)sumMax);
+  quality = abs((float)(sumMax + sumMin))/((float)sumMax);  
   if (sumMax > -sumMin) return sumMax;
     else return sumMin;  
 }
