@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
 LIBS:Wlan_ESP8266
@@ -172,74 +173,74 @@ Text GLabel 9250 5950 2    60   Output ~ 0
 pinMotorMowDir
 Text GLabel 9250 5750 2    60   Input ~ 0
 pinMotorRightFault
-Text GLabel 2100 8800 0    60   Output ~ 0
+Text GLabel 2500 8775 0    60   Output ~ 0
 pinChargeVoltage
 $Comp
 L R R9
 U 1 1 5384FFAC
-P 2200 8550
-F 0 "R9" V 2280 8550 40  0000 C CNN
-F 1 "47K" V 2207 8551 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2130 8550 30  0001 C CNN
-F 3 "~" H 2200 8550 30  0000 C CNN
-	1    2200 8550
+P 2600 8525
+F 0 "R9" V 2680 8525 40  0000 C CNN
+F 1 "47K" V 2607 8526 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2530 8525 30  0001 C CNN
+F 3 "~" H 2600 8525 30  0000 C CNN
+	1    2600 8525
 	1    0    0    -1  
 $EndComp
 $Comp
 L R R10
 U 1 1 5384FFC0
-P 2200 9150
-F 0 "R10" V 2280 9150 40  0000 C CNN
-F 1 "5K" V 2207 9151 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2130 9150 30  0001 C CNN
-F 3 "~" H 2200 9150 30  0000 C CNN
-	1    2200 9150
+P 2600 9125
+F 0 "R10" V 2680 9125 40  0000 C CNN
+F 1 "5K" V 2607 9126 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2530 9125 30  0001 C CNN
+F 3 "~" H 2600 9125 30  0000 C CNN
+	1    2600 9125
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR06
 U 1 1 53850044
-P 2200 9450
-F 0 "#PWR06" H 2200 9450 30  0001 C CNN
-F 1 "GND" H 2200 9380 30  0001 C CNN
-F 2 "" H 2200 9450 60  0000 C CNN
-F 3 "" H 2200 9450 60  0000 C CNN
-	1    2200 9450
+P 2600 9425
+F 0 "#PWR06" H 2600 9425 30  0001 C CNN
+F 1 "GND" H 2600 9355 30  0001 C CNN
+F 2 "" H 2600 9425 60  0000 C CNN
+F 3 "" H 2600 9425 60  0000 C CNN
+	1    2600 9425
 	1    0    0    -1  
 $EndComp
-Text GLabel 9800 7050 2    47   Output ~ 0
+Text GLabel 10175 7050 2    47   Output ~ 0
 pinBatteryVoltage
 $Comp
 L R R12
 U 1 1 5385024E
-P 9350 7050
-F 0 "R12" V 9430 7050 40  0000 C CNN
-F 1 "47K" V 9357 7051 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9280 7050 30  0001 C CNN
-F 3 "~" H 9350 7050 30  0000 C CNN
-	1    9350 7050
+P 9725 7050
+F 0 "R12" V 9805 7050 40  0000 C CNN
+F 1 "47K" V 9732 7051 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9655 7050 30  0001 C CNN
+F 3 "~" H 9725 7050 30  0000 C CNN
+	1    9725 7050
 	0    -1   -1   0   
 $EndComp
 $Comp
 L R R13
 U 1 1 53850254
-P 9650 7400
-F 0 "R13" V 9730 7400 40  0000 C CNN
-F 1 "5K" V 9657 7401 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9580 7400 30  0001 C CNN
-F 3 "~" H 9650 7400 30  0000 C CNN
-	1    9650 7400
+P 10025 7400
+F 0 "R13" V 10105 7400 40  0000 C CNN
+F 1 "5K" V 10032 7401 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 9955 7400 30  0001 C CNN
+F 3 "~" H 10025 7400 30  0000 C CNN
+	1    10025 7400
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR07
 U 1 1 5385025A
-P 9650 7700
-F 0 "#PWR07" H 9650 7700 30  0001 C CNN
-F 1 "GND" H 9650 7630 30  0001 C CNN
-F 2 "" H 9650 7700 60  0000 C CNN
-F 3 "" H 9650 7700 60  0000 C CNN
-	1    9650 7700
+P 10025 7700
+F 0 "#PWR07" H 10025 7700 30  0001 C CNN
+F 1 "GND" H 10025 7630 30  0001 C CNN
+F 2 "" H 10025 7700 60  0000 C CNN
+F 3 "" H 10025 7700 60  0000 C CNN
+	1    10025 7700
 	1    0    0    -1  
 $EndComp
 Text GLabel 3700 9250 2    47   Output ~ 0
@@ -1347,12 +1348,12 @@ $EndComp
 $Comp
 L DIODE D1
 U 1 1 54A7CE88
-P 2850 8000
-F 0 "D1" H 2850 8100 40  0000 C CNN
-F 1 "DIODE MPR 1045 ?" H 2850 7900 40  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 2850 8000 60  0001 C CNN
-F 3 "" H 2850 8000 60  0000 C CNN
-	1    2850 8000
+P 2350 8000
+F 0 "D1" H 2350 8100 40  0000 C CNN
+F 1 "MPR 1045" H 2350 7900 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 2350 8000 60  0001 C CNN
+F 3 "" H 2350 8000 60  0000 C CNN
+	1    2350 8000
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1557,39 +1558,39 @@ $EndComp
 $Comp
 L JUMPER JP7
 U 1 1 54B50727
-P 9100 9250
-F 0 "JP7" H 9100 9400 60  0000 C CNN
-F 1 "V-A-Relais" H 9100 9170 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 9100 9250 60  0001 C CNN
-F 3 "" H 9100 9250 60  0000 C CNN
-	1    9100 9250
+P 9450 9200
+F 0 "JP7" H 9450 9350 60  0000 C CNN
+F 1 "V-A-Relais" H 9450 9120 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 9450 9200 60  0001 C CNN
+F 3 "" H 9450 9200 60  0000 C CNN
+	1    9450 9200
 	0    -1   -1   0   
 $EndComp
 $Comp
 L CP1 C5
 U 1 1 54B51225
-P 9100 9950
-F 0 "C5" H 9150 10050 50  0000 L CNN
-F 1 "470uF" H 9150 9850 50  0000 L CNN
-F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 9100 9950 60  0001 C CNN
-F 3 "~" H 9100 9950 60  0000 C CNN
-	1    9100 9950
+P 9450 10025
+F 0 "C5" H 9500 10125 50  0000 L CNN
+F 1 "470uF" H 9500 9925 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 9450 10025 60  0001 C CNN
+F 3 "~" H 9450 10025 60  0000 C CNN
+	1    9450 10025
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR057
 U 1 1 54B5122B
-P 9100 10200
-F 0 "#PWR057" H 9100 10200 30  0001 C CNN
-F 1 "GND" H 9100 10130 30  0001 C CNN
-F 2 "" H 9100 10200 60  0000 C CNN
-F 3 "" H 9100 10200 60  0000 C CNN
-	1    9100 10200
+P 9450 10275
+F 0 "#PWR057" H 9450 10275 30  0001 C CNN
+F 1 "GND" H 9450 10205 30  0001 C CNN
+F 2 "" H 9450 10275 60  0000 C CNN
+F 3 "" H 9450 10275 60  0000 C CNN
+	1    9450 10275
 	1    0    0    -1  
 $EndComp
-Text Notes 8800 10450 0    60   ~ 0
+Text Notes 9150 10525 0    60   ~ 0
 Pufferkondensator\nfür Relaisumschaltung
-Text Notes 9200 9150 0    39   ~ 0
+Text Notes 9550 9100 0    39   ~ 0
 Jumper Spannungsversorgung \nvon Akku
 Text Notes 7750 9150 0    39   ~ 0
 Jumper Spannungsversorgung \nvon über Relais
@@ -1697,19 +1698,19 @@ Duo LED hinzugefügt
 $Comp
 L R R11
 U 1 1 54B48CE0
-P 2550 8550
-F 0 "R11" V 2630 8550 40  0000 C CNN
-F 1 "1K5" V 2557 8551 40  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2480 8550 30  0001 C CNN
-F 3 "~" H 2550 8550 30  0000 C CNN
-	1    2550 8550
+P 2925 8550
+F 0 "R11" V 3005 8550 40  0000 C CNN
+F 1 "1K5" V 2932 8551 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 2855 8550 30  0001 C CNN
+F 3 "~" H 2925 8550 30  0000 C CNN
+	1    2925 8550
 	1    0    0    -1  
 $EndComp
-Text GLabel 2550 8950 3    60   Output ~ 0
+Text GLabel 2925 8950 3    60   Output ~ 0
 StationLed
 Text GLabel 10175 1300 0    60   Input ~ 0
 StationLed
-Text Notes 2450 9750 0    39   ~ 0
+Text Notes 2825 9750 0    39   ~ 0
 Station LED\nbzw:\nGrundlast\nPerimetersender
 Text Notes 2700 7750 0    39   ~ 0
 Strom von Relais muss vor der Diode geholt werden\nwenn nach Diode oderLM350T geholt wird\ngeht das Relais rückwärt in Selbthaltung\n und kann nicht mehr abfallen
@@ -1880,7 +1881,7 @@ L DIODE D3
 U 1 1 54B617F6
 P 5750 7850
 F 0 "D3" H 5750 7950 40  0000 C CNN
-F 1 "DIODE MPR 1045 ?" H 5750 7750 40  0000 C CNN
+F 1 "MPR 1045" H 5750 7750 40  0000 C CNN
 F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 5750 7850 60  0001 C CNN
 F 3 "" H 5750 7850 60  0000 C CNN
 	1    5750 7850
@@ -1891,7 +1892,7 @@ L DIODE D4
 U 1 1 54B63125
 P 8050 8650
 F 0 "D4" H 8050 8750 40  0000 C CNN
-F 1 "DIODE" H 8050 8550 40  0000 C CNN
+F 1 "MBR 1045" H 8050 8550 40  0000 C CNN
 F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 8050 8650 60  0001 C CNN
 F 3 "" H 8050 8650 60  0000 C CNN
 	1    8050 8650
@@ -2949,13 +2950,13 @@ $EndComp
 $Comp
 L +24V #PWR0117
 U 1 1 54BE5BDF
-P 9300 7500
-F 0 "#PWR0117" H 9300 7450 20  0001 C CNN
-F 1 "+24V" H 9300 7600 30  0000 C CNN
-F 2 "" H 9300 7500 60  0000 C CNN
-F 3 "" H 9300 7500 60  0000 C CNN
-	1    9300 7500
-	1    0    0    -1  
+P 9300 8050
+F 0 "#PWR0117" H 9300 8000 20  0001 C CNN
+F 1 "+24V" H 9300 8150 30  0000 C CNN
+F 2 "" H 9300 8050 60  0000 C CNN
+F 3 "" H 9300 8050 60  0000 C CNN
+	1    9300 8050
+	-1   0    0    1   
 $EndComp
 $Comp
 L +3.3V #PWR0118
@@ -3139,6 +3140,32 @@ Text GLabel 7400 2450 1    60   Output ~ 0
 PowerA3,3
 Text GLabel 3600 1150 1    60   Input ~ 0
 PowerA3,3
+$Comp
+L +5V #PWR0128
+U 1 1 54C174E1
+P 3250 1200
+F 0 "#PWR0128" H 3250 1290 20  0001 C CNN
+F 1 "+5V" H 3250 1290 30  0000 C CNN
+F 2 "" H 3250 1200 60  0000 C CNN
+F 3 "" H 3250 1200 60  0000 C CNN
+	1    3250 1200
+	1    0    0    -1  
+$EndComp
+Text GLabel 3525 1950 0    60   Input ~ 0
+Spannungmessung
+Text Notes 2525 -125 0    60   ~ 0
+LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
+$Comp
+L DIODE D9
+U 1 1 54C30B35
+P 9300 7700
+F 0 "D9" H 9300 7800 40  0000 C CNN
+F 1 "MBR 1045" H 9300 7600 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 9300 7700 60  0001 C CNN
+F 3 "" H 9300 7700 60  0000 C CNN
+	1    9300 7700
+	0    1    1    0   
+$EndComp
 Wire Wire Line
 	7200 2950 7200 3050
 Wire Wire Line
@@ -3152,13 +3179,13 @@ Wire Wire Line
 Wire Wire Line
 	12300 2775 12150 2775
 Wire Wire Line
-	2200 8900 2200 8800
-Connection ~ 2200 8800
+	2600 8875 2600 8775
+Connection ~ 2600 8775
 Wire Wire Line
-	9600 7050 9800 7050
+	9975 7050 10175 7050
 Wire Wire Line
-	9650 7150 9650 7050
-Connection ~ 9650 7050
+	10025 7150 10025 7050
+Connection ~ 10025 7050
 Wire Wire Line
 	2050 1625 2050 1600
 Wire Wire Line
@@ -3513,11 +3540,11 @@ Wire Wire Line
 Wire Wire Line
 	11650 9850 11650 9950
 Wire Wire Line
-	9650 7650 9650 7700
+	10025 7650 10025 7700
 Wire Wire Line
-	2200 9400 2200 9450
+	2600 9375 2600 9425
 Wire Wire Line
-	2200 8800 2100 8800
+	2600 8775 2500 8775
 Wire Wire Line
 	6000 2850 6000 2800
 Wire Wire Line
@@ -3538,9 +3565,9 @@ Wire Wire Line
 Wire Wire Line
 	1700 7850 1700 8000
 Wire Wire Line
-	2100 8000 2650 8000
+	2100 8000 2200 8000
 Wire Wire Line
-	3050 8000 3550 8000
+	2550 8000 3550 8000
 Wire Wire Line
 	3550 8000 3550 8200
 Wire Wire Line
@@ -3612,22 +3639,21 @@ Wire Wire Line
 Wire Wire Line
 	6700 8000 8700 8000
 Wire Wire Line
-	9100 7050 9100 8950
+	9100 7500 9100 8650
 Connection ~ 9100 8150
 Wire Wire Line
 	8700 8000 8700 8950
-Connection ~ 9100 8650
 Wire Wire Line
 	8700 9550 8700 9700
 Wire Wire Line
 	8700 9700 10550 9700
 Wire Wire Line
-	9100 9550 9100 9750
-Connection ~ 9100 9700
+	9450 9500 9450 9825
+Connection ~ 9450 9700
 Wire Wire Line
-	9100 10150 9100 10200
+	9450 10225 9450 10275
 Wire Wire Line
-	2200 8300 2200 8000
+	2200 8000 2200 7350
 Connection ~ 2200 8000
 Wire Wire Line
 	5800 10100 5700 10100
@@ -3649,14 +3675,7 @@ Wire Wire Line
 Wire Wire Line
 	9700 3250 9750 3250
 Wire Wire Line
-	2550 8800 2550 8950
-Wire Wire Line
-	2550 7350 2550 8300
-Connection ~ 2550 8000
-Wire Wire Line
-	6450 8000 6450 7350
-Wire Wire Line
-	6450 7350 2550 7350
+	2925 8800 2925 8950
 Wire Wire Line
 	10550 10550 10550 10650
 Wire Wire Line
@@ -3704,7 +3723,7 @@ Wire Wire Line
 Wire Wire Line
 	4150 2475 4150 2375
 Wire Wire Line
-	8250 8650 9100 8650
+	9100 8650 8250 8650
 Connection ~ 4350 7850
 Wire Wire Line
 	12400 6300 12250 6300
@@ -4348,24 +4367,11 @@ Wire Wire Line
 	7125 2550 7400 2550
 Wire Wire Line
 	7400 2550 7400 2450
-$Comp
-L +5V #PWR0128
-U 1 1 54C174E1
-P 3250 1200
-F 0 "#PWR0128" H 3250 1290 20  0001 C CNN
-F 1 "+5V" H 3250 1290 30  0000 C CNN
-F 2 "" H 3250 1200 60  0000 C CNN
-F 3 "" H 3250 1200 60  0000 C CNN
-	1    3250 1200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3600 1225 3600 1150
 Wire Wire Line
 	2900 1825 3600 1825
 Connection ~ 3250 1825
-Text GLabel 3525 1950 0    60   Input ~ 0
-Spannungmessung
 Wire Wire Line
 	3525 1950 3600 1950
 Wire Wire Line
@@ -4377,6 +4383,24 @@ Wire Wire Line
 	3250 1225 3250 1200
 Wire Wire Line
 	2900 1225 2900 1175
-Text Notes 2525 -125 0    60   ~ 0
-LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
+Wire Wire Line
+	9300 7900 9300 8050
+Wire Wire Line
+	9450 7050 9450 8900
+Wire Wire Line
+	9450 7950 9300 7950
+Connection ~ 9300 7950
+Wire Wire Line
+	9450 7050 9475 7050
+Connection ~ 9450 7950
+Wire Wire Line
+	6450 7350 6450 8000
+Wire Wire Line
+	2200 7350 6450 7350
+Wire Wire Line
+	2925 8300 2925 8000
+Connection ~ 2925 8000
+Wire Wire Line
+	2600 8275 2600 8000
+Connection ~ 2600 8000
 $EndSCHEMATC
