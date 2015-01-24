@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
 LIBS:Wlan_ESP8266
@@ -713,7 +714,7 @@ U 1 1 53866E3A
 P 11650 9650
 F 0 "C2" H 11700 9750 50  0000 L CNN
 F 1 "100uF" H 11700 9550 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 11650 9650 60  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 11650 9650 60  0001 C CNN
 F 3 "~" H 11650 9650 60  0000 C CNN
 	1    11650 9650
 	1    0    0    -1  
@@ -1213,7 +1214,7 @@ U 1 1 541DF105
 P 3500 9400
 F 0 "C3" H 3550 9500 50  0000 L CNN
 F 1 "0,1uF" H 3550 9300 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 3500 9400 60  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 3500 9400 60  0001 C CNN
 F 3 "~" H 3500 9400 60  0000 C CNN
 	1    3500 9400
 	0    1    1    0   
@@ -1349,7 +1350,7 @@ L DIODE D1
 U 1 1 54A7CE88
 P 2850 8000
 F 0 "D1" H 2850 8100 40  0000 C CNN
-F 1 "DIODE MPR 1045 ?" H 2850 7900 40  0000 C CNN
+F 1 "MPR 1045" H 2850 7900 40  0000 C CNN
 F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 2850 8000 60  0001 C CNN
 F 3 "" H 2850 8000 60  0000 C CNN
 	1    2850 8000
@@ -1472,7 +1473,7 @@ U 1 1 54B48E9A
 P 4350 8450
 F 0 "C1" H 4350 8550 40  0000 L CNN
 F 1 "1uF" H 4356 8365 40  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 4388 8300 30  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 4388 8300 30  0001 C CNN
 F 3 "" H 4350 8450 60  0000 C CNN
 	1    4350 8450
 	1    0    0    -1  
@@ -1483,7 +1484,7 @@ U 1 1 54B48EA0
 P 5550 8450
 F 0 "C4" H 5550 8550 40  0000 L CNN
 F 1 "1uF" H 5556 8365 40  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 5588 8300 30  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 5588 8300 30  0001 C CNN
 F 3 "" H 5550 8450 60  0000 C CNN
 	1    5550 8450
 	1    0    0    -1  
@@ -1557,39 +1558,39 @@ $EndComp
 $Comp
 L JUMPER JP7
 U 1 1 54B50727
-P 9100 9250
-F 0 "JP7" H 9100 9400 60  0000 C CNN
-F 1 "V-A-Relais" H 9100 9170 40  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 9100 9250 60  0001 C CNN
-F 3 "" H 9100 9250 60  0000 C CNN
-	1    9100 9250
+P 9450 9200
+F 0 "JP7" H 9450 9350 60  0000 C CNN
+F 1 "V-A-Relais" H 9450 9120 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 9450 9200 60  0001 C CNN
+F 3 "" H 9450 9200 60  0000 C CNN
+	1    9450 9200
 	0    -1   -1   0   
 $EndComp
 $Comp
 L CP1 C5
 U 1 1 54B51225
-P 9100 9950
-F 0 "C5" H 9150 10050 50  0000 L CNN
-F 1 "470uF" H 9150 9850 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 9100 9950 60  0001 C CNN
-F 3 "~" H 9100 9950 60  0000 C CNN
-	1    9100 9950
+P 9450 10025
+F 0 "C5" H 9500 10125 50  0000 L CNN
+F 1 "470uF" H 9500 9925 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 9450 10025 60  0001 C CNN
+F 3 "~" H 9450 10025 60  0000 C CNN
+	1    9450 10025
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR057
 U 1 1 54B5122B
-P 9100 10200
-F 0 "#PWR057" H 9100 10200 30  0001 C CNN
-F 1 "GND" H 9100 10130 30  0001 C CNN
-F 2 "" H 9100 10200 60  0000 C CNN
-F 3 "" H 9100 10200 60  0000 C CNN
-	1    9100 10200
+P 9450 10275
+F 0 "#PWR057" H 9450 10275 30  0001 C CNN
+F 1 "GND" H 9450 10205 30  0001 C CNN
+F 2 "" H 9450 10275 60  0000 C CNN
+F 3 "" H 9450 10275 60  0000 C CNN
+	1    9450 10275
 	1    0    0    -1  
 $EndComp
-Text Notes 8800 10450 0    60   ~ 0
+Text Notes 9150 10525 0    60   ~ 0
 Pufferkondensator\nfür Relaisumschaltung
-Text Notes 9200 9150 0    39   ~ 0
+Text Notes 9550 9100 0    39   ~ 0
 Jumper Spannungsversorgung \nvon Akku
 Text Notes 7750 9150 0    39   ~ 0
 Jumper Spannungsversorgung \nvon über Relais
@@ -1767,7 +1768,7 @@ U 1 1 54B50F0D
 P 10500 10950
 F 0 "C6" H 10550 11050 50  0000 L CNN
 F 1 "0,1uF" H 10550 10850 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 10500 10950 60  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 10500 10950 60  0001 C CNN
 F 3 "~" H 10500 10950 60  0000 C CNN
 	1    10500 10950
 	0    1    1    0   
@@ -1880,7 +1881,7 @@ L DIODE D3
 U 1 1 54B617F6
 P 5750 7850
 F 0 "D3" H 5750 7950 40  0000 C CNN
-F 1 "DIODE MPR 1045 ?" H 5750 7750 40  0000 C CNN
+F 1 "MPR 1045" H 5750 7750 40  0000 C CNN
 F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 5750 7850 60  0001 C CNN
 F 3 "" H 5750 7850 60  0000 C CNN
 	1    5750 7850
@@ -1891,7 +1892,7 @@ L DIODE D4
 U 1 1 54B63125
 P 8050 8650
 F 0 "D4" H 8050 8750 40  0000 C CNN
-F 1 "DIODE" H 8050 8550 40  0000 C CNN
+F 1 "MBR 1045" H 8050 8550 40  0000 C CNN
 F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 8050 8650 60  0001 C CNN
 F 3 "" H 8050 8650 60  0000 C CNN
 	1    8050 8650
@@ -2219,7 +2220,7 @@ U 1 1 54B8E469
 P 11650 8750
 F 0 "C7" H 11700 8850 50  0000 L CNN
 F 1 "100uF" H 11700 8650 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 11650 8750 60  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 11650 8750 60  0001 C CNN
 F 3 "~" H 11650 8750 60  0000 C CNN
 	1    11650 8750
 	1    0    0    -1  
@@ -2285,7 +2286,7 @@ U 1 1 54B92E13
 P 11650 7800
 F 0 "C8" H 11700 7900 50  0000 L CNN
 F 1 "100uF" H 11700 7700 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 11650 7800 60  0001 C CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5" H 11650 7800 60  0001 C CNN
 F 3 "~" H 11650 7800 60  0000 C CNN
 	1    11650 7800
 	1    0    0    -1  
@@ -2949,13 +2950,13 @@ $EndComp
 $Comp
 L +24V #PWR0117
 U 1 1 54BE5BDF
-P 9300 7500
-F 0 "#PWR0117" H 9300 7450 20  0001 C CNN
-F 1 "+24V" H 9300 7600 30  0000 C CNN
-F 2 "" H 9300 7500 60  0000 C CNN
-F 3 "" H 9300 7500 60  0000 C CNN
-	1    9300 7500
-	1    0    0    -1  
+P 9300 8050
+F 0 "#PWR0117" H 9300 8000 20  0001 C CNN
+F 1 "+24V" H 9300 8150 30  0000 C CNN
+F 2 "" H 9300 8050 60  0000 C CNN
+F 3 "" H 9300 8050 60  0000 C CNN
+	1    9300 8050
+	-1   0    0    1   
 $EndComp
 $Comp
 L +3.3V #PWR0118
@@ -3139,6 +3140,32 @@ Text GLabel 7400 2450 1    60   Output ~ 0
 PowerA3,3
 Text GLabel 3600 1150 1    60   Input ~ 0
 PowerA3,3
+$Comp
+L +5V #PWR0128
+U 1 1 54C174E1
+P 3250 1200
+F 0 "#PWR0128" H 3250 1290 20  0001 C CNN
+F 1 "+5V" H 3250 1290 30  0000 C CNN
+F 2 "" H 3250 1200 60  0000 C CNN
+F 3 "" H 3250 1200 60  0000 C CNN
+	1    3250 1200
+	1    0    0    -1  
+$EndComp
+Text GLabel 3525 1950 0    60   Input ~ 0
+Spannungmessung
+Text Notes 2525 -125 0    60   ~ 0
+LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
+$Comp
+L DIODE D9
+U 1 1 54C30B35
+P 9300 7700
+F 0 "D9" H 9300 7800 40  0000 C CNN
+F 1 "MBR 1045" H 9300 7600 40  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 9300 7700 60  0001 C CNN
+F 3 "" H 9300 7700 60  0000 C CNN
+	1    9300 7700
+	0    1    1    0   
+$EndComp
 Wire Wire Line
 	7200 2950 7200 3050
 Wire Wire Line
@@ -3612,7 +3639,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 8000 8700 8000
 Wire Wire Line
-	9100 7050 9100 8950
+	9100 7050 9100 8650
 Connection ~ 9100 8150
 Wire Wire Line
 	8700 8000 8700 8950
@@ -3622,10 +3649,10 @@ Wire Wire Line
 Wire Wire Line
 	8700 9700 10550 9700
 Wire Wire Line
-	9100 9550 9100 9750
-Connection ~ 9100 9700
+	9450 9500 9450 9825
+Connection ~ 9450 9700
 Wire Wire Line
-	9100 10150 9100 10200
+	9450 10225 9450 10275
 Wire Wire Line
 	2200 8300 2200 8000
 Connection ~ 2200 8000
@@ -3704,7 +3731,7 @@ Wire Wire Line
 Wire Wire Line
 	4150 2475 4150 2375
 Wire Wire Line
-	8250 8650 9100 8650
+	9100 8650 8250 8650
 Connection ~ 4350 7850
 Wire Wire Line
 	12400 6300 12250 6300
@@ -4348,24 +4375,11 @@ Wire Wire Line
 	7125 2550 7400 2550
 Wire Wire Line
 	7400 2550 7400 2450
-$Comp
-L +5V #PWR0128
-U 1 1 54C174E1
-P 3250 1200
-F 0 "#PWR0128" H 3250 1290 20  0001 C CNN
-F 1 "+5V" H 3250 1290 30  0000 C CNN
-F 2 "" H 3250 1200 60  0000 C CNN
-F 3 "" H 3250 1200 60  0000 C CNN
-	1    3250 1200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3600 1225 3600 1150
 Wire Wire Line
 	2900 1825 3600 1825
 Connection ~ 3250 1825
-Text GLabel 3525 1950 0    60   Input ~ 0
-Spannungmessung
 Wire Wire Line
 	3525 1950 3600 1950
 Wire Wire Line
@@ -4377,6 +4391,11 @@ Wire Wire Line
 	3250 1225 3250 1200
 Wire Wire Line
 	2900 1225 2900 1175
-Text Notes 2525 -125 0    60   ~ 0
-LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
+Wire Wire Line
+	9300 7900 9300 8050
+Wire Wire Line
+	9450 8900 9450 7950
+Wire Wire Line
+	9450 7950 9300 7950
+Connection ~ 9300 7950
 $EndSCHEMATC
