@@ -22,7 +22,7 @@
 
 #include "robot.h"
 
-#define MAGIC 26
+#define MAGIC 27
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -217,7 +217,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
-  // eereadwrite(readflag, addr, dropUse);                                                                                        // Dropsensor - Absturzsensor (nicht getestet)
+  eereadwrite(readflag, addr, dropUse);
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
@@ -1186,14 +1186,14 @@ void Robot::readSensors(){
       bumperRight=true;
     } 
   }    
-     if ((dropUse) && (millis() >= nextTimeDrop)){                                                                          // Dropsensor - Absturzsensor
+  if ((dropUse) && (millis() >= nextTimeDrop)){                                                                          // Dropsensor - Absturzsensor
     nextTimeDrop = millis() + 100;                                                                                          // Dropsensor - Absturzsensor
     if (readSensor(SEN_DROP_LEFT) == dropcontact) {                                                                         // Dropsensor - Absturzsensor
       dropLeftCounter++;                                                                                                    // Dropsensor - Absturzsensor
       dropLeft=true;                                                                                                        // Dropsensor - Absturzsensor
     }                                                                                                                       // Dropsensor - Absturzsensor
  
-  if (readSensor(SEN_DROP_RIGHT) == dropcontact) {                                                                          // Dropsensor - Absturzsensor
+    if (readSensor(SEN_DROP_RIGHT) == dropcontact) {                                                                          // Dropsensor - Absturzsensor
       dropRightCounter++;                                                                                                   // Dropsensor - Absturzsensor
       dropRight=true;                                                                                                       // Dropsensor - Absturzsensor
     } 
