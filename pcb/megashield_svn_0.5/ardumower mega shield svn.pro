@@ -1,4 +1,4 @@
-update=23.01.2015 01:12:21
+update=25.01.2015 22:09:28
 last_client=kicad
 [pcbnew]
 version=1
@@ -20,8 +20,6 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=acs712.pretty;../../Documents/KICAD/BibliothekenUwe.pretty
@@ -31,3 +29,5 @@ LibName2=acs712.pretty/Bluetooth_ZS_HC_05
 LibName3=acs712.pretty/Bluetooth_CZ_HC_05
 LibName4=Wlan_ESP8266
 LibName5=acs712.pretty/ds1307
+[general]
+version=1

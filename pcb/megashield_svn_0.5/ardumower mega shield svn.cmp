@@ -1,10 +1,10 @@
-Cmp-Mod V01 Created by Cvpcb (2014-12-23 BZR 5337)-product   date = 22.01.2015 20:15:31
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 25.01.2015 22:33:44
 
 BeginCmp
 TimeStamp = /53866CB8;
 Reference = Batterie1;
 ValeurCmp = DC/DC;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
 BeginCmp
@@ -64,59 +64,66 @@ IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /54A7CE88;
+TimeStamp = /54C4EFC4;
 Reference = D1;
-ValeurCmp = DIODE MPR 1045 ?;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+ValeurCmp = MBR 1045;
+IdModule  = ACS712:MBR1045;
 EndCmp
 
 BeginCmp
 TimeStamp = /54A7D925;
 Reference = D2;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+ValeurCmp = MBR1045;
+IdModule  = ACS712:MBR1045_liegend;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B617F6;
 Reference = D3;
-ValeurCmp = DIODE MPR 1045 ?;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+ValeurCmp = MPR 1045;
+IdModule  = ACS712:MBR1045;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B63125;
 Reference = D4;
-ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+ValeurCmp = MBR 1045;
+IdModule  = ACS712:MBR1045;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B55789;
 Reference = D5;
 ValeurCmp = 1N4148;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B53F62;
 Reference = D6;
 ValeurCmp = 1N4148;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BB9425;
 Reference = D7;
 ValeurCmp = DIODE;
-IdModule  = Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10;
+IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BD3C36;
 Reference = D8;
 ValeurCmp = BlueLED;
-IdModule  = ACS712:Pin_Header_Straight_1x02;
+IdModule  = ACS712:Diode_LED_5mm_round_vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C30B35;
+Reference = D9;
+ValeurCmp = MBR 1045;
+IdModule  = ACS712:MBR1045;
 EndCmp
 
 BeginCmp
@@ -137,14 +144,14 @@ BeginCmp
 TimeStamp = /54A79B5A;
 Reference = EF1;
 ValeurCmp = F_10A;
-IdModule  = Fuse_Holders_and_Fuses:BladeFuse-Mini;
+IdModule  = ACS712:BladeFuse-Mini;
 EndCmp
 
 BeginCmp
 TimeStamp = /54A7AB0D;
 Reference = EF2;
 ValeurCmp = F_10A;
-IdModule  = Fuse_Holders_and_Fuses:BladeFuse-Mini;
+IdModule  = ACS712:BladeFuse-Mini;
 EndCmp
 
 BeginCmp
@@ -256,112 +263,112 @@ BeginCmp
 TimeStamp = /54A679F2;
 Reference = K3;
 ValeurCmp = RELAY_2RT;
-IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm;
+IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /541A0C85;
 Reference = Ladeanschluss1;
 ValeurCmp = DC/DC;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53850AD4;
 Reference = P1;
 ValeurCmp = Sonar C;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53851A62;
 Reference = P2;
 ValeurCmp = Sonar R;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53851BA4;
 Reference = P3;
 ValeurCmp = Sonar L;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BA7CCC;
 Reference = P4;
 ValeurCmp = ReserveAD11;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53867437;
 Reference = P5;
 ValeurCmp = IMU Kompas;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /5385368B;
 Reference = P6;
 ValeurCmp = Lawn sens;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B7B04A;
 Reference = P7;
 ValeurCmp = Status LEDs;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+IdModule  = ACS712:Pin_Header_KK110_1x08_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53852D92;
 Reference = P8;
 ValeurCmp = ODO Right;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53852DC8;
 Reference = P9;
 ValeurCmp = ODO Left;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /538663DA;
 Reference = P10;
 ValeurCmp = GPS;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53878C5D;
 Reference = P11;
 ValeurCmp = Bumper;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+IdModule  = ACS712:Pin_Header_KK110_1x04_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B673DE;
 Reference = P12;
 ValeurCmp = PerimeterRight;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /538A4012;
 Reference = P13;
 ValeurCmp = RC Remote;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
+IdModule  = ACS712:Pin_Header_KK110_1x06_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BA653E;
 Reference = P14;
 ValeurCmp = Mess V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
@@ -396,119 +403,119 @@ BeginCmp
 TimeStamp = /5385309E;
 Reference = P19;
 ValeurCmp = Tilt sens;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /541DAF9A;
 Reference = P20;
 ValeurCmp = Button;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+IdModule  = ACS712:Pin_Header_KK110_1x02_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B5391D;
 Reference = P21;
 ValeurCmp = DropRight;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BA46EA;
 Reference = P22;
 ValeurCmp = ReserveAD6;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BA7798;
 Reference = P23;
 ValeurCmp = I2C Res.1;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+IdModule  = ACS712:Pin_Header_KK110_1x05_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BA9F3B;
 Reference = P24;
 ValeurCmp = I2C Res.2;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+IdModule  = ACS712:Pin_Header_KK110_1x05_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BA0300;
 Reference = P25;
 ValeurCmp = ReservePin9;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B9D1FD;
 Reference = P26;
 ValeurCmp = ReservePin4;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B99CFF;
 Reference = P27;
 ValeurCmp = ReservePin0;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B9EA98;
 Reference = P28;
 ValeurCmp = ReservePin8;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B9BD45;
 Reference = P29;
 ValeurCmp = ReservePin1;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B6707E;
 Reference = P30;
 ValeurCmp = PerimeterRight;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B55773;
 Reference = P31;
 ValeurCmp = DropLeft;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B73B5A;
 Reference = P32;
 ValeurCmp = Stromleiste GND;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+IdModule  = ACS712:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B73600;
 Reference = P33;
 ValeurCmp = Stromleiste 5V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+IdModule  = ACS712:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B73CFB;
 Reference = P34;
 ValeurCmp = Stromleiste 3,3V;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+IdModule  = ACS712:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B8B4D4;
 Reference = P35;
 ValeurCmp = MowRpm;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
@@ -529,28 +536,28 @@ BeginCmp
 TimeStamp = /54BEB61D;
 Reference = P38;
 ValeurCmp = Res24V-2;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BEAE04;
 Reference = P39;
 ValeurCmp = Res24V-1;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B80ED9;
 Reference = P40;
 ValeurCmp = UserSwitsch;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+IdModule  = ACS712:Pin_Header_KK110_1x05_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B80251;
 Reference = P41;
 ValeurCmp = Rain;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
@@ -739,21 +746,21 @@ BeginCmp
 TimeStamp = /54994E69;
 Reference = RR1;
 ValeurCmp = C100uF;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
+IdModule  = ACS712:Kondensatorenleiste_8er_9pin_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /5499A2BD;
 Reference = RR2;
 ValeurCmp = C100uF;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x09;
+IdModule  = ACS712:Kondensatorenleiste_8er_9pin_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B48EC0;
 Reference = RV1;
 ValeurCmp = 5K;
-IdModule  = Potentiometers:Potentiometer_VishaySpectrol-Econtrim-Type36T;
+IdModule  = ACS712:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D;
 EndCmp
 
 BeginCmp
@@ -781,7 +788,7 @@ BeginCmp
 TimeStamp = /54BC29A1;
 Reference = U2;
 ValeurCmp = Bluetooth_CZ_HC_05;
-IdModule  = ACS712:Bluetooth_CZ_HC_05;
+IdModule  = ACS712:Bluetooth_Buchse_Platz;
 EndCmp
 
 BeginCmp
@@ -830,7 +837,7 @@ BeginCmp
 TimeStamp = /54BC06A2;
 Reference = U9;
 ValeurCmp = Wlan_ESP8266;
-IdModule  = ACS712:Wlan_ESP8266;
+IdModule  = ACS712:Wlan_ESP8266_3D;
 EndCmp
 
 EndListe
