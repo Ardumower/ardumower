@@ -984,7 +984,11 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->lawnSensorCounter);
       Bluetooth.print(",");
-      Bluetooth.println(robot->rainCounter);      
+      Bluetooth.print(robot->rainCounter);
+      Bluetooth.print(",");      
+      Bluetooth.print(robot->dropLeftCounter);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->dropRightCounter);
     }
   } else if (pfodState == PFOD_PLOT_SENSORS){
     if (millis() >= nextPlotTime){
@@ -1009,7 +1013,11 @@ void RemoteControl::run(){
       Bluetooth.print(",");      
       Bluetooth.print(robot->lawnSensor);
       Bluetooth.print(",");      
-      Bluetooth.println(robot->rain);
+      Bluetooth.print(robot->rain);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->dropLeft);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->dropRight);    
     }
   } else if (pfodState == PFOD_PLOT_PERIMETER){    
     if (millis() >= nextPlotTime){
@@ -1120,7 +1128,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd == "y5") {        
           // plot sensor counters
           Bluetooth.print(F("{=Sensor counters`300|time s`0|state`1|motL`2|motR`3|motM`4|bumL`5|bumR`6"));
-          Bluetooth.println(F("|son`7|peri`8|lawn`9|rain`10}"));         
+          Bluetooth.println(F("|son`7|peri`8|lawn`9|rain`10|dropL`11|dropR`12}"));         
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_SENSOR_COUNTERS;
         }
@@ -1135,7 +1143,8 @@ void RemoteControl::readSerial(){
         }
         else if (pfodCmd == "y7") {
           // plot sensor values
-          Bluetooth.println(F("{=Sensors`300|time s`0|state`1|motL`2|motR`3|motM`4|sonL`5|sonC`6|sonR`7|peri`8|lawn`9|rain`10}"));
+          Bluetooth.print(F("{=Sensors`300|time s`0|state`1|motL`2|motR`3|motM`4|sonL`5|sonC`6"));
+          Bluetooth.println(F("|sonR`7|peri`8|lawn`9|rain`10|dropL`11|dropR`12}"));
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_SENSORS;          
         }
