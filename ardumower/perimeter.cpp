@@ -38,6 +38,7 @@
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
   int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };   // if using coil and series capacitor, use this
+  // "pseudonoise4_pw" signal (differential)
   //int8_t sigcode[]   = { 1,0,-1, 0,1,-1,1,-1, 0,1,-1,1,0,-1, 0,1,-1, 0,1,-1, 0,1,0,-1 };   // if using coil without series capacitor, use this
 #endif
 
