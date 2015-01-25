@@ -350,13 +350,13 @@ void RemoteControl::sendBumperMenu(boolean update){
 
 void RemoteControl::sendDropMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Drop`1000"));         
-  Bluetooth.print(F("|b00~Use "));
+  Bluetooth.print(F("|z00~Use "));
   sendYesNo(robot->dropUse);    
-  Bluetooth.println(F("|b01~Counter l, r "));
+  Bluetooth.println(F("|z01~Counter l, r "));
   Bluetooth.print(robot->dropLeftCounter);  
   Bluetooth.print(", ");
   Bluetooth.print(robot->dropRightCounter);  
-  Bluetooth.println(F("|b02~Value l, r "));
+  Bluetooth.println(F("|z02~Value l, r "));
   Bluetooth.print(robot->dropLeft);
   Bluetooth.print(", ");
   Bluetooth.print(robot->dropRight);  
