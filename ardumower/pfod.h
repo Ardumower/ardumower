@@ -103,6 +103,7 @@ class RemoteControl
     void sendMotorMenu(boolean update);    
     void sendMowMenu(boolean update);
     void sendBumperMenu(boolean update);
+    void sendDropMenu(boolean update);
     void sendSonarMenu(boolean update);    
     void sendPerimeterMenu(boolean update);
     void sendLawnSensorMenu(boolean update);    
@@ -123,6 +124,7 @@ class RemoteControl
     void processPerimeterMenu(String pfodCmd); 
     void processLawnSensorMenu(String pfodCmd);   
     void processRainMenu(String pfodCmd);       
+    void processDropMenu(String pfodCmd);    
     void processGPSMenu(String pfodCmd);           
     void processImuMenu(String pfodCmd);         
     void processRemoteMenu(String pfodCmd);      
