@@ -185,7 +185,7 @@ void RemoteControl::sendPlotMenu(boolean update){
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Settings"));         
   Bluetooth.print(F("|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
-  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
+  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
 }  
 
 void RemoteControl::sendErrorMenu(boolean update){
@@ -348,10 +348,32 @@ void RemoteControl::sendBumperMenu(boolean update){
   Bluetooth.println("}");                
 }
 
+void RemoteControl::sendDropMenu(boolean update){
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Drop`1000"));         
+  Bluetooth.print(F("|b00~Use "));
+  sendYesNo(robot->dropUse);    
+  Bluetooth.println(F("|b01~Counter l, r "));
+  Bluetooth.print(robot->dropLeftCounter);  
+  Bluetooth.print(", ");
+  Bluetooth.print(robot->dropRightCounter);  
+  Bluetooth.println(F("|b02~Value l, r "));
+  Bluetooth.print(robot->dropLeft);
+  Bluetooth.print(", ");
+  Bluetooth.print(robot->dropRight);  
+  Bluetooth.println("}");                
+}
+
+
 void RemoteControl::processBumperMenu(String pfodCmd){      
   if (pfodCmd == "b00") robot->bumperUse = !robot->bumperUse;    
   sendBumperMenu(true);
 }
+
+void RemoteControl::processDropMenu(String pfodCmd){      
+  if (pfodCmd == "z00") robot->dropUse = !robot->dropUse;    
+  sendDropMenu(true);
+}
+
 
 void RemoteControl::sendSonarMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Sonar`1000"));         
@@ -901,6 +923,7 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
       else if (pfodCmd == "s11") sendOdometryMenu(false);
       else if (pfodCmd == "s12") sendDateTimeMenu(false);      
       else if (pfodCmd == "s13") sendRainMenu(false);            
+      else if (pfodCmd == "s15") sendDropMenu(false);
       else if (pfodCmd == "s14") sendGPSMenu(false);
       else if (pfodCmd == "sx") sendFactorySettingsMenu(false);
       else if (pfodCmd == "sz") { robot->saveUserSettings(); sendSettingsMenu(true); }
@@ -1194,7 +1217,8 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("t")) processDateTimeMenu(pfodCmd);  
         else if (pfodCmd.startsWith("i")) processTimerMenu(pfodCmd);      
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
-        else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);            
+        else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);
+        else if (pfodCmd.startsWith("z")) processDropMenu(pfodCmd);            
         else {
           // no match
           Bluetooth.println("{}");         
