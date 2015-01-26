@@ -1,7 +1,7 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 26.01.2015 13:21:07
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 26.01.2015 18:56:41
 
 BeginCmp
-TimeStamp = /54B48E9A;
+TimeStamp = /54C678D9;
 Reference = C1;
 ValeurCmp = 1uF;
 IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
@@ -22,7 +22,7 @@ IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /54B48EA0;
+TimeStamp = /54C67CEC;
 Reference = C4;
 ValeurCmp = 1uF;
 IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
@@ -64,10 +64,10 @@ IdModule  = ACS712:MBR1045;
 EndCmp
 
 BeginCmp
-TimeStamp = /54A7D925;
+TimeStamp = /54C69162;
 Reference = D2;
-ValeurCmp = MBR1045;
-IdModule  = ACS712:MBR1045_liegend;
+ValeurCmp = 1,5KE 30A ?;
+IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
@@ -101,7 +101,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BB9425;
 Reference = D7;
-ValeurCmp = DIODE;
+ValeurCmp = 1N5408;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
@@ -117,6 +117,13 @@ TimeStamp = /54C30B35;
 Reference = D9;
 ValeurCmp = MBR 1045;
 IdModule  = ACS712:MBR1045;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C6AF0E;
+Reference = D10;
+ValeurCmp = 1,5KE 30A ?;
+IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
@@ -354,13 +361,13 @@ BeginCmp
 TimeStamp = /54BA653E;
 Reference = P14;
 ValeurCmp = Mess V;
-IdModule  = ACS712:Pin_Header_Straight_1x03;
+IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /541D1F00;
 Reference = P15;
-ValeurCmp = Dual2-M1Out;
+ValeurCmp = Links;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -381,7 +388,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54168B06;
 Reference = P18;
-ValeurCmp = Mow Motor;
+ValeurCmp = Rechts;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -507,14 +514,14 @@ EndCmp
 BeginCmp
 TimeStamp = /54BE082F;
 Reference = P36;
-ValeurCmp = Dual2 M1;
+ValeurCmp = RES. M1;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BE02C5;
 Reference = P37;
-ValeurCmp = Dual2 M2;
+ValeurCmp = Mähteller;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -802,7 +809,7 @@ BeginCmp
 TimeStamp = /54B48E94;
 Reference = U4;
 ValeurCmp = LM350T;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = ACS712:LM350T_3D_muss_noch_auf_Masse_geprüft_werden;
 EndCmp
 
 BeginCmp
