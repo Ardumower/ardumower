@@ -1,8 +1,8 @@
-(module "Arduino Mega Shield:ARDUINO MEGA SHIELD" locked (layer F.Cu) (tedit 4D154886)
-  (fp_text reference SHIELD1 (at 2.54 -57.15) (layer F.SilkS)
+(module "Arduino Mega Shield:ARDUINO MEGA SHIELD" (layer F.Cu) (tedit 54BE4A2F)
+  (fp_text reference SHIELD1 (at 70.612 -24.892) (layer F.SilkS)
     (effects (font (thickness 0.3048)))
   )
-  (fp_text value ARDUINO_MEGA_SHIELD (at 5.08 -54.61) (layer F.SilkS) hide
+  (fp_text value ARDUINO_MEGA_SHIELD (at 69.596 -21.082) (layer F.SilkS) hide
     (effects (font (thickness 0.3048)))
   )
   (fp_line (start 99.06 0) (end 0 0) (layer F.SilkS) (width 0.381))
