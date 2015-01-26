@@ -1,10 +1,10 @@
-(module Pin_Headers:Pin_Header_Straight_1x08 (layer F.Cu) (tedit 54B8456B)
+(module ACS712:Pin_Header_Straight_1x08 (layer F.Cu) (tedit 54C60EE3)
   (descr "Through hole pin header")
   (tags "pin header")
-  (fp_text reference P7 (at 0 -2.286) (layer F.SilkS)
+  (fp_text reference P34 (at -8.89 -2.54) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (fp_text value "Status LEDs" (at 0 0) (layer F.SilkS) hide
+  (fp_text value "Stromleiste 3,3V" (at 3.81 -2.54) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_line (start -7.62 -1.27) (end 10.16 -1.27) (layer F.SilkS) (width 0.15))
