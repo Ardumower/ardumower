@@ -1,11 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 25.01.2015 22:33:44
-
-BeginCmp
-TimeStamp = /53866CB8;
-Reference = Batterie1;
-ValeurCmp = DC/DC;
-IdModule  = ACS712:Aschlussklemme_2p_3D;
-EndCmp
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 26.01.2015 13:21:07
 
 BeginCmp
 TimeStamp = /54B48E9A;
@@ -130,14 +123,14 @@ BeginCmp
 TimeStamp = /538656B8;
 Reference = Dual1;
 ValeurCmp = MC33926;
-IdModule  = ACS712:MC_33926_31polig;
+IdModule  = ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse;
 EndCmp
 
 BeginCmp
 TimeStamp = /541DE74B;
 Reference = Dual2;
 ValeurCmp = MC33926;
-IdModule  = ACS712:MC_33926_31polig;
+IdModule  = ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse;
 EndCmp
 
 BeginCmp
@@ -267,13 +260,6 @@ IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D;
 EndCmp
 
 BeginCmp
-TimeStamp = /541A0C85;
-Reference = Ladeanschluss1;
-ValeurCmp = DC/DC;
-IdModule  = ACS712:Aschlussklemme_2p_3D;
-EndCmp
-
-BeginCmp
 TimeStamp = /53850AD4;
 Reference = P1;
 ValeurCmp = Sonar C;
@@ -297,7 +283,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BA7CCC;
 Reference = P4;
-ValeurCmp = ReserveAD11;
+ValeurCmp = Res.AD11;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
@@ -353,7 +339,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54B673DE;
 Reference = P12;
-ValeurCmp = PerimeterRight;
+ValeurCmp = P.Left;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
@@ -381,14 +367,14 @@ EndCmp
 BeginCmp
 TimeStamp = /541D656A;
 Reference = P16;
-ValeurCmp = Dual2-pwr;
+ValeurCmp = V.OUT;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
 TimeStamp = /541D7765;
 Reference = P17;
-ValeurCmp = Dual2-pwr;
+ValeurCmp = V.OUT;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -423,7 +409,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BA46EA;
 Reference = P22;
-ValeurCmp = ReserveAD6;
+ValeurCmp = Res.AD6;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
@@ -444,42 +430,42 @@ EndCmp
 BeginCmp
 TimeStamp = /54BA0300;
 Reference = P25;
-ValeurCmp = ReservePin9;
+ValeurCmp = Res.Pin9;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B9D1FD;
 Reference = P26;
-ValeurCmp = ReservePin4;
+ValeurCmp = Res.Pin4;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B99CFF;
 Reference = P27;
-ValeurCmp = ReservePin0;
+ValeurCmp = Res.Pin0;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B9EA98;
 Reference = P28;
-ValeurCmp = ReservePin8;
+ValeurCmp = Res.Pin8;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B9BD45;
 Reference = P29;
-ValeurCmp = ReservePin1;
+ValeurCmp = Res.Pin1;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B6707E;
 Reference = P30;
-ValeurCmp = PerimeterRight;
+ValeurCmp = P.Right;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
 EndCmp
 
@@ -558,6 +544,20 @@ TimeStamp = /54B80251;
 Reference = P41;
 ValeurCmp = Rain;
 IdModule  = ACS712:Pin_Header_KK110_1x03_3D;
+EndCmp
+
+BeginCmp
+TimeStamp = /541A0C85;
+Reference = P42;
+ValeurCmp = Ladeanschluss;
+IdModule  = ACS712:Aschlussklemme_2p_3D;
+EndCmp
+
+BeginCmp
+TimeStamp = /53866CB8;
+Reference = P43;
+ValeurCmp = Akku;
+IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
 BeginCmp
@@ -781,7 +781,7 @@ BeginCmp
 TimeStamp = /5459779F;
 Reference = U1;
 ValeurCmp = DC 10V;
-IdModule  = ACS712:DC-DC;
+IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch;
 EndCmp
 
 BeginCmp
@@ -816,14 +816,14 @@ BeginCmp
 TimeStamp = /54B8E475;
 Reference = U6;
 ValeurCmp = DC  3,3V;
-IdModule  = ACS712:DC-DC;
+IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B92E1F;
 Reference = U7;
 ValeurCmp = DC  5V;
-IdModule  = ACS712:DC-DC;
+IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch;
 EndCmp
 
 BeginCmp
