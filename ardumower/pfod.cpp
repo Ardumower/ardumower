@@ -87,6 +87,8 @@ void RemoteControl::sendTimer(ttimer_t timer){
   }
 }
 
+
+// NOTE: pfodApp rev57 changed slider protocol:  displayValue = (sliderValue + offset) * scale
 void RemoteControl::sendSlider(String cmd, String title, float value, String unit, double scale, float maxvalue, float minvalue){
   Bluetooth.print("|"); 
   Bluetooth.print(cmd);  
