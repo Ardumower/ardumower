@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 26.01.2015 18:56:41
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 27.01.2015 11:16:13
 
 BeginCmp
 TimeStamp = /54C678D9;
@@ -736,6 +736,27 @@ IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
+TimeStamp = /54C789AB;
+Reference = R24;
+ValeurCmp = ??;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C77B6A;
+Reference = R25;
+ValeurCmp = ??;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C7A8A5;
+Reference = R26;
+ValeurCmp = ??;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
 TimeStamp = /5478A23C;
 Reference = RP1;
 ValeurCmp = 150;
@@ -837,7 +858,7 @@ BeginCmp
 TimeStamp = /54BBCE9E;
 Reference = U8;
 ValeurCmp = DS1307+;
-IdModule  = ACS712:Tiny_RTC_DS1307_geändert;
+IdModule  = ACS712:Tiny_RTC_DS1307_geändert_mit_Bohrloch;
 EndCmp
 
 BeginCmp
@@ -845,6 +866,27 @@ TimeStamp = /54BC06A2;
 Reference = U9;
 ValeurCmp = Wlan_ESP8266;
 IdModule  = ACS712:Wlan_ESP8266_3D;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C789A5;
+Reference = ZD1;
+ValeurCmp = ????;
+IdModule  = ACS712:Diode_ligend_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C773D8;
+Reference = ZD2;
+ValeurCmp = ????;
+IdModule  = ACS712:Diode_ligend_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /54C7A89F;
+Reference = ZD3;
+ValeurCmp = ????;
+IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 EndListe
