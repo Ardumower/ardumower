@@ -1,0 +1,149 @@
+object Form1: TForm1
+  Left = 306
+  Height = 527
+  Top = 139
+  Width = 919
+  Caption = 'Robot mower'
+  ClientHeight = 527
+  ClientWidth = 919
+  OnCreate = FormCreate
+  LCLVersion = '1.1'
+  object PaintBox1: TPaintBox
+    Left = 16
+    Height = 336
+    Top = 160
+    Width = 456
+    OnPaint = PaintBox1Paint
+  end
+  object CheckBoxBField: TCheckBox
+    Left = 16
+    Height = 19
+    Top = 48
+    Width = 96
+    Caption = 'Magnetic field'
+    Checked = True
+    State = cbChecked
+    TabOrder = 0
+  end
+  object Chart1: TChart
+    Left = 520
+    Height = 168
+    Top = 0
+    Width = 368
+    AxisList = <    
+      item
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Alignment = calBottom
+        Minors = <>
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    ParentColor = False
+    object Chart1LineSeries1: TLineSeries
+      LinePen.Width = 3
+    end
+  end
+  object Chart2: TChart
+    Left = 520
+    Height = 160
+    Top = 168
+    Width = 368
+    AxisList = <    
+      item
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Alignment = calBottom
+        Minors = <>
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    ParentColor = False
+    object Chart2LineSeries1: TLineSeries
+      LinePen.Width = 3
+    end
+  end
+  object Chart3: TChart
+    Left = 520
+    Height = 96
+    Top = 328
+    Width = 368
+    AxisList = <    
+      item
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Alignment = calBottom
+        Minors = <>
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    ParentColor = False
+    object Chart3LineSeries1: TLineSeries
+      LinePen.Color = clBlue
+      LinePen.Width = 3
+    end
+  end
+  object Chart4: TChart
+    Left = 520
+    Height = 96
+    Top = 424
+    Width = 368
+    AxisList = <    
+      item
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Alignment = calBottom
+        Minors = <>
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    ParentColor = False
+    object Chart4LineSeries1: TLineSeries
+      LinePen.Color = clRed
+      LinePen.Width = 3
+    end
+  end
+  object ButtonStart: TButton
+    Left = 152
+    Height = 25
+    Top = 48
+    Width = 75
+    Caption = 'Stop'
+    OnClick = ButtonStartClick
+    TabOrder = 5
+  end
+  object Timer1: TTimer
+    Interval = 100
+    OnTimer = Timer1Timer
+    left = 105
+    top = 6
+  end
+end
