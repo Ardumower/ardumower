@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 27.01.2015 11:16:13
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 28.01.2015 17:58:22
 
 BeginCmp
 TimeStamp = /54C678D9;
@@ -263,7 +263,7 @@ BeginCmp
 TimeStamp = /54A679F2;
 Reference = K3;
 ValeurCmp = RELAY_2RT;
-IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D;
+IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D_Kontaktbelegung_geändert_FIN40.52.9_6V;
 EndCmp
 
 BeginCmp
