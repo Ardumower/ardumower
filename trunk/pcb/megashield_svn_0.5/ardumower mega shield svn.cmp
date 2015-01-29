@@ -1,59 +1,59 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 28.01.2015 17:58:22
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 29.01.2015 11:37:55
 
 BeginCmp
 TimeStamp = /54C678D9;
 Reference = C1;
 ValeurCmp = 1uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /53866E3A;
 Reference = C2;
 ValeurCmp = 100uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /541DF105;
 Reference = C3;
 ValeurCmp = 0,1uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /54C67CEC;
 Reference = C4;
 ValeurCmp = 1uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B51225;
 Reference = C5;
 ValeurCmp = 470uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B50F0D;
 Reference = C6;
 ValeurCmp = 0,1uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B8E469;
 Reference = C7;
 ValeurCmp = 100uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B92E13;
 Reference = C8;
 ValeurCmp = 100uF;
-IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
@@ -802,7 +802,7 @@ BeginCmp
 TimeStamp = /537FB76E;
 Reference = SP1;
 ValeurCmp = SPEAKER;
-IdModule  = Buzzers_Beepers:Buzzer_12x9.5RM7.6;
+IdModule  = ACS712:Buzzer_12x9.5RM7.6_RM5.0;
 EndCmp
 
 BeginCmp
