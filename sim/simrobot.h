@@ -24,11 +24,23 @@ using namespace std;
 using namespace cv;
 
 
+// states
+enum {
+  STATE_FORW,
+  STATE_REV,
+  STATE_ROLL,
+};
+
 class World;
 
 class SimRobot
 {
   public:
+    Mat imgBfieldRobot;
+    float speed;
+    int state;
+    float stateTime;
+    int plotIdx;
     double x;
     double y;
     double orientation;
@@ -52,7 +64,12 @@ class SimRobot
     // measurement_prob
     //    computes the probability of a measurement
     double measurement_prob(vector <double>measurement);
+    // draw robot on surface
     void draw(Mat &img);
+    // run robot controller
+    void run(World &world, float timeStep);
+
+    void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot);
 };
 
 

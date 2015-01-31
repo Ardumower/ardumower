@@ -26,13 +26,6 @@
 using namespace std;
 using namespace cv;
 
-// states
-enum {
-  STATE_FORW,
-  STATE_REV,
-  STATE_ROLL,
-};
-
 class SimRobot;
 class World;
 
@@ -40,17 +33,12 @@ class World;
 class Sim
 {
   public:
-    Mat imgBfieldRobot;
+    float time;
     World world;
 	SimRobot robot;
-    float speed;
-    int state;
-    float stateTime;
-    int plotIdx;
     Sim();
     void step();
     void draw();
-    void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot);
 };
 
 
