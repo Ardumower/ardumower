@@ -287,7 +287,7 @@
 
 1313159656 c:\codeblocks\opencv\build\include\opencv2\flann\config.h
 
-1422718854 source:d:\projects\robomower\ardumower\googlecode\sim\main.cpp
+1422740584 source:d:\projects\robomower\ardumower\googlecode\sim\main.cpp
 	<opencv2/core/core.hpp>
 	<opencv/cv.h>
 	<opencv2/legacy/legacy.hpp>
@@ -298,4 +298,57 @@
 	<iostream>
 	<vector>
 	<stdio.h>
+	"sim.h"
+
+1422736119 source:d:\projects\robomower\ardumower\googlecode\sim\kalman.cpp
+	"Kalman.h"
+	"Matrix.h"
+
+1422736151 d:\projects\robomower\ardumower\googlecode\sim\kalman.h
+	"KalmanParams.h"
+
+1422736000 d:\projects\robomower\ardumower\googlecode\sim\kalmanparams.h
+	"Matrix.h"
+
+1379961576 d:\projects\robomower\ardumower\googlecode\sim\matrix.h
+
+1379961576 source:d:\projects\robomower\ardumower\googlecode\sim\matrix.cpp
+	"Matrix.h"
+	<math.h>
+
+1422735893 source:d:\projects\robomower\ardumower\googlecode\sim\particles.cpp
+	"particles.h"
+	"simrobot.h"
+	<vector>
+	<algorithm>
+
+1422735742 d:\projects\robomower\ardumower\googlecode\sim\particles.h
+	<vector>
+
+1422739998 d:\projects\robomower\ardumower\googlecode\sim\simrobot.h
+	<opencv2/core/core.hpp>
+
+1422740604 source:d:\projects\robomower\ardumower\googlecode\sim\simrobot.cpp
+	"simrobot.h"
+	"particles.h"
+	<exception>
+
+1422740415 source:d:\projects\robomower\ardumower\googlecode\sim\world.cpp
+	"world.h"
+
+1422740445 d:\projects\robomower\ardumower\googlecode\sim\world.h
+	<vector>
+	<opencv2/core/core.hpp>
+	<opencv/cv.h>
+	<opencv2/legacy/legacy.hpp>
+	<opencv2/legacy/compat.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/features2d/features2d.hpp>
+
+1422741659 d:\projects\robomower\ardumower\googlecode\sim\sim.h
+	<vector>
+	<opencv2/core/core.hpp>
+	"world.h"
+	"simrobot.h"
 

@@ -33,7 +33,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Kalman.cpp" />
+		<Unit filename="Kalman.h" />
+		<Unit filename="KalmanParams.h" />
+		<Unit filename="Matrix.cpp" />
+		<Unit filename="Matrix.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="particles.cpp" />
+		<Unit filename="particles.h" />
+		<Unit filename="sim.cpp" />
+		<Unit filename="sim.h" />
+		<Unit filename="simrobot.cpp" />
+		<Unit filename="simrobot.h" />
+		<Unit filename="world.cpp" />
+		<Unit filename="world.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

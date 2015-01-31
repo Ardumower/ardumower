@@ -16,38 +16,43 @@
 */
 
 
-#include <opencv2/core/core.hpp>
-#include <opencv/cv.h>
-#include <opencv2/legacy/legacy.hpp>
-#include <opencv2/legacy/compat.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/features2d/features2d.hpp>
-#include <iostream>
+#ifndef SIM_H
+
 #include <vector>
-#include <stdio.h>
-#include "sim.h"
+#include <opencv2/core/core.hpp>
+#include "world.h"
+#include "simrobot.h"
 
 using namespace std;
 using namespace cv;
 
+// states
+enum {
+  STATE_FORW,
+  STATE_REV,
+  STATE_ROLL,
+};
+
+class SimRobot;
+class World;
 
 
-int main()
+class Sim
 {
-	Sim sim;
+  public:
+    Mat imgBfieldRobot;
+    World world;
+	SimRobot robot;
+    float speed;
+    int state;
+    float stateTime;
+    int plotIdx;
+    Sim();
+    void step();
+    void draw();
+    void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot);
+};
 
-	//namedWindow( "Robot mower simulator");
-	//imshow("bfield", imgBfield);
 
-	while( 1 ){
-		// Exit on esc key
-		if( cvWaitKey( 10 ) == 27 )
-			break;
-        sim.step();
-        sim.draw();
-	}
 
-	return 0;
-}
-
+#endif

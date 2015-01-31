@@ -15,7 +15,9 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef WORLD_H
 
+#include <vector>
 #include <opencv2/core/core.hpp>
 #include <opencv/cv.h>
 #include <opencv2/legacy/legacy.hpp>
@@ -23,31 +25,39 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/features2d/features2d.hpp>
-#include <iostream>
-#include <vector>
-#include <stdio.h>
-#include "sim.h"
+
 
 using namespace std;
 using namespace cv;
 
+// world size
+#define SIZE_X 500
+#define SIZE_Y 350
+
+struct point_t {
+  float x;
+  float y;
+};
+
+typedef struct point_t point_t;
 
 
-int main()
+class World
 {
-	Sim sim;
+    // magnetic field
+    float bfield[SIZE_Y][SIZE_X];
+  public:
+    Mat imgBfield;
+    Mat imgWorld;
+    World();
+    // return world size
+    int sizeX(){ return SIZE_X; };
+    int sizeY(){ return SIZE_Y; };
+    // return magnetic field strength at world position
+    float getBfield(int x, int y);
+    void draw();
+};
 
-	//namedWindow( "Robot mower simulator");
-	//imshow("bfield", imgBfield);
 
-	while( 1 ){
-		// Exit on esc key
-		if( cvWaitKey( 10 ) == 27 )
-			break;
-        sim.step();
-        sim.draw();
-	}
 
-	return 0;
-}
-
+#endif
