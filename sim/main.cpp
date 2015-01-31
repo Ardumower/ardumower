@@ -39,8 +39,8 @@ enum {
 };
 
 struct point_t {
-  int x;
-  int y;
+  float x;
+  float y;
 };
 
 typedef struct point_t point_t;
@@ -51,8 +51,9 @@ typedef struct point_t point_t;
 
 // magnetic field
 float bfield[SIZE_Y][SIZE_X] = {0};
-Mat bfieldImg(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
-Mat worldImg(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
+Mat imgBfield(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
+Mat imgWorld(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
+Mat imgBfieldRobot(140, 500, CV_8UC3, Scalar(0,0,0));
 
 // robot state
 float dir; // direction (rad)
@@ -60,6 +61,15 @@ float speed;
 point_t realpos = (point_t){ 50, 50 }; // real position
 int state = STATE_FORW;
 float stateTime = 0;
+int plotIdx = 0;
+
+
+void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot){
+  if (clearplot) for (int y=0; y < image.rows; y++) image.at<Point3_<uchar> >(y, x) = Point3_<uchar>(0,0,0);
+  if ( (x< 0) || (y < 0) || (x >= image.cols) || (y >= image.rows)) return;
+  image.at<Point3_<uchar> >(image.rows-y-1, x) = Point3_<uchar>(r,g,b);
+  //line( image, Point( x, image.rows ), Point( x, image.rows-y-1), Scalar( r, g, b),  1, 8 );
+}
 
 
 void createMagneticField(){
@@ -89,9 +99,9 @@ void createMagneticField(){
         if ((py >= 0) && (py < SIZE_Y)
            && (px >=0) && (px < SIZE_X)) {
           float r = max(0.000001, sqrt( (cx-px)*(cx-px) + (cy-py)*(cy-py) ) );
-          float b=1000/(2*M_PI*r);
+          float b=1000.0/(2.0*M_PI*r);
           if ((y<=0) || (bfield[py][px] < 0)){
-            b=b*-1;
+            b=b*-1.0;
             bfield[py][px] =  min(bfield[py][px], b);
           } else bfield[py][px] = max(bfield[py][px], b);
         }
@@ -116,7 +126,7 @@ void createMagneticField(){
         intensity.val[1]=255-v;
         intensity.val[2]=255-v;
       }
-      bfieldImg.at<Vec3b>(y, x) = intensity;
+      imgBfield.at<Vec3b>(y, x) = intensity;
     }
   }
 }
@@ -149,10 +159,10 @@ void simulationStep(){
            break;
     case STATE_ROLL:
             speed=40;
-            dir += M_PI/8;
+            dir += M_PI/32;
             if (dir > 2*M_PI) dir -= 2*M_PI;
             if (dir < -2*M_PI) dir += 2*M_PI;
-            if (stateTime > 0.7){
+            if (stateTime > 1.0){
               state=STATE_FORW;
               stateTime=0;
             }
@@ -161,9 +171,15 @@ void simulationStep(){
   realpos.x +=  cos(dir) * speed * dt ;
   realpos.y +=  sin(dir) * speed * dt ;
 
-  if ((realpos.y >= 0) && (realpos.y < SIZE_Y)
-     && (realpos.x >=0) && (realpos.x < SIZE_X) ) {
-    float b=max(-2.0f, min(15.0f, bfield[realpos.y][realpos.x]));
+  int px = (int)realpos.x;
+  int py = (int)realpos.y;
+  if ((py >= 0) && (py < SIZE_Y)
+     && (px >=0) && (px < SIZE_X) ) {
+    float b=max(-2.0f, min(30.0f, bfield[py][px]));
+    //printf("b=%3.4f\n", b);
+    plotXY(imgBfieldRobot, plotIdx % imgBfieldRobot.cols, 15+b*5, 255,255,255, true);
+    imshow("bfieldrobot", imgBfieldRobot);
+    plotIdx++;
     if (b < 0){
       state=STATE_REV;
       stateTime=0;
@@ -171,12 +187,12 @@ void simulationStep(){
   }
   stateTime += dt;
 
-  bfieldImg.copyTo(worldImg);
-  circle( worldImg, Point( realpos.x, realpos.y ), 10.0, Scalar( 255, 255, 255 ), -1, 8 );
+  imgBfield.copyTo(imgWorld);
+  circle( imgWorld, Point( px, py ), 10.0, Scalar( 255, 255, 255 ), -1, 8 );
   //paintbox1.canvas.ellipse(realpos.x-10,realpos.y-10,realpos.x+10,realpos.y+10);
   //  drawLine(paintbox1.canvas, realpos.x, realpos.y, dir, -15, -10, 5,-10);
   //drawLine(paintbox1.canvas, realpos.x, realpos.y, dir, -15,  10, 5, 10);
-  imshow("world", worldImg);
+  imshow("world", imgWorld);
 }
 
 
@@ -185,8 +201,8 @@ int main()
 	createMagneticField();
 	// Initialize Kalman filter object, window, number generator, etc
 	namedWindow( "Robot mower simulator");
-	//imshow("bfield", bfieldImg);
-	imshow("world", worldImg);
+	//imshow("bfield", imgBfield);
+	imshow("world", imgWorld);
 
 	while( 1 ){
 		// Exit on esc key
