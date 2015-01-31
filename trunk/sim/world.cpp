@@ -1,0 +1,76 @@
+#include "world.h"
+
+
+World::World(){
+  imgBfield = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
+  imgWorld = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
+
+  std::vector<point_t> list;
+  list.push_back( (point_t) {30, 35 } );
+  list.push_back( (point_t) {400, 40 } );
+  list.push_back( (point_t) {410, 110 } );
+  list.push_back( (point_t) {210, 250 } );
+  list.push_back( (point_t) {50, 310 } );
+
+  int x1 = list[list.size()-1].x;
+  int y1 = list[list.size()-1].y;
+  for (int i=0; i < list.size(); i++){
+    int x2 = list[i].x;
+    int y2 = list[i].y;
+    int dx = (x2-x1);
+    int dy = (y2-y1);
+    int len=(sqrt( dx*dx + dy*dy ));
+    float phi = atan2(dy,dx);
+    for (int y=-200; y < 200; y++){
+      for (int x=-100; x < len*2+100-1; x++){
+        int px= x1 + cos(phi)*x/2 - sin(phi)*y;
+        int py= y1 + sin(phi)*x/2 + cos(phi)*y;
+        int xend = max(0, min(len, x/2));
+        int cx = x1 + cos(phi)*xend;
+        int cy = y1 + sin(phi)*xend;
+        if ((py >= 0) && (py < SIZE_Y)
+           && (px >=0) && (px < SIZE_X)) {
+          float r = max(0.000001, sqrt( (cx-px)*(cx-px) + (cy-py)*(cy-py) ) );
+          float b=1000.0/(2.0*M_PI*r);
+          if ((y<=0) || (bfield[py][px] < 0)){
+            b=b*-1.0;
+            bfield[py][px] =  min(bfield[py][px], b);
+          } else bfield[py][px] = max(bfield[py][px], b);
+        }
+      }
+    }
+    x1=x2;
+    y1=y2;
+  }
+
+  for (int y=0; y < SIZE_Y; y++){
+    for (int x=0; x < SIZE_X; x++) {
+      float b=30 + 30*sqrt( abs(bfield[y][x]));
+      //b:=10 + bfield[y][x];
+      int v = min(255, max(0, (int)b));
+      Vec3b intensity;
+      if (bfield[y][x] > 0){
+        intensity.val[0]=255-v;
+        intensity.val[1]=255-v;
+        intensity.val[2]=255;
+      } else {
+        intensity.val[0]=255;
+        intensity.val[1]=255-v;
+        intensity.val[2]=255-v;
+      }
+      imgBfield.at<Vec3b>(y, x) = intensity;
+    }
+  }
+}
+
+float World::getBfield(int x, int y){
+    if ((x >= 0) && (x < SIZE_X) && (y >= 0) && (y < SIZE_Y)){
+        return bfield[y][x];
+    } else return 0;
+}
+
+void World::draw(){
+  imshow("world", imgWorld);
+  imgBfield.copyTo(imgWorld);
+}
+
