@@ -33,12 +33,15 @@ class World;
 class Sim
 {
   public:
+    int plotIdx;
+    Mat imgBfieldRobot;
     float time;
     World world;
 	SimRobot robot;
     Sim();
     void step();
     void draw();
+    void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot);
 };
 
 

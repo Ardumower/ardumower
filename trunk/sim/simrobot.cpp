@@ -11,15 +11,6 @@ SimRobot::SimRobot(double length){
   state = STATE_FORW;
   stateTime = 0;
   speed = 0;
-  plotIdx = 0;
-  imgBfieldRobot = Mat(140, 500, CV_8UC3, Scalar(0,0,0));
-}
-
-void SimRobot::plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot){
-  if (clearplot) for (int y=0; y < image.rows; y++) image.at<Point3_<uchar> >(y, x) = Point3_<uchar>(0,0,0);
-  if ( (x< 0) || (y < 0) || (x >= image.cols) || (y >= image.rows)) return;
-  image.at<Point3_<uchar> >(image.rows-y-1, x) = Point3_<uchar>(r,g,b);
-  //line( image, Point( x, image.rows ), Point( x, image.rows-y-1), Scalar( r, g, b),  1, 8 );
 }
 
 
@@ -64,12 +55,9 @@ void SimRobot::run(World &world, float timeStep){
   int px = (int)x;
   int py = (int)y;
 
-  float b = max(-2.0f, min(30.0f, world.getBfield(px, py)));
+  bfieldStrength = world.getBfield(px, py);
   //printf("b=%3.4f\n", b);
-  plotXY(imgBfieldRobot, plotIdx % imgBfieldRobot.cols, 15+b*5, 255,255,255, true);
-  imshow("bfieldrobot", imgBfieldRobot);
-  plotIdx++;
-  if (b < 0){
+  if (bfieldStrength < 0){
     printf("REV\n");
     state=STATE_REV;
     stateTime=0;

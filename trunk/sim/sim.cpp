@@ -10,6 +10,8 @@ Sim::Sim(){
   robot.x = 50;
   robot.y = 50;
   time = 0;
+  plotIdx = 0;
+  imgBfieldRobot = Mat(140, 500, CV_8UC3, Scalar(0,0,0));
 }
 
 
@@ -25,6 +27,15 @@ void Sim::step(){
   // run robot controller
   robot.run(world, dt);
 
+
+  // plot robot bfield sensor
+  float bfieldStrength = max(-2.0f, min(30.0f, robot.bfieldStrength));
+  plotXY(imgBfieldRobot, plotIdx % imgBfieldRobot.cols, 15+bfieldStrength*5, 255,255,255, true);
+  imshow("bfieldrobot", imgBfieldRobot);
+  plotIdx++;
+
+
+
   // simulation time
   time += dt;
 }
@@ -35,3 +46,9 @@ void Sim::draw(){
   robot.draw(world.imgWorld);
 }
 
+void Sim::plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot){
+  if (clearplot) for (int y=0; y < image.rows; y++) image.at<Point3_<uchar> >(y, x) = Point3_<uchar>(0,0,0);
+  if ( (x< 0) || (y < 0) || (x >= image.cols) || (y >= image.rows)) return;
+  image.at<Point3_<uchar> >(image.rows-y-1, x) = Point3_<uchar>(r,g,b);
+  //line( image, Point( x, image.rows ), Point( x, image.rows-y-1), Scalar( r, g, b),  1, 8 );
+}

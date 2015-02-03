@@ -36,11 +36,10 @@ class World;
 class SimRobot
 {
   public:
-    Mat imgBfieldRobot;
     float speed;
     int state;
     float stateTime;
-    int plotIdx;
+    float bfieldStrength;
     double x;
     double y;
     double orientation;
@@ -69,7 +68,6 @@ class SimRobot
     // run robot controller
     void run(World &world, float timeStep);
 
-    void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot);
 };
 
 
