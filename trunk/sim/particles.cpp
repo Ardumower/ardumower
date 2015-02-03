@@ -6,8 +6,8 @@
 using namespace std;
 
 
-Particles::Particles(double x, double y, double theta,
-              double steering_noise, double distance_noise, double measurement_noise, int N)
+Particles::Particles(float x, float y, float theta,
+              float steering_noise, float distance_noise, float measurement_noise, int N)
 {
     this->N = N;
     this->steering_noise = steering_noise;
@@ -23,7 +23,7 @@ Particles::Particles(double x, double y, double theta,
 }
 
 
-void Particles::get_position(double &x, double &y, double &orientation){
+void Particles::get_position(float &x, float &y, float &orientation){
   x=0;
   y=0;
   orientation=0;
@@ -43,7 +43,7 @@ void Particles::get_position(double &x, double &y, double &orientation){
 }
 
 
-void Particles::move(World &world, double steer, double speed){
+void Particles::move(World &world, float steer, float speed){
   vector <SimRobot>newdata;
   for (int i=0; i < N; i++){
     SimRobot r = data[i].move(world, steer, speed);
@@ -52,16 +52,16 @@ void Particles::move(World &world, double steer, double speed){
   data = newdata;
 }
 
-void Particles::sense(vector<double>Z){
-  vector<double>w;
+void Particles::sense(vector<float>Z){
+  vector<float>w;
   for (int i=0; i < N; i++){
     w.push_back(data[i].measurement_prob(Z));
   }
   // resampling (careful, this is using shallow copy)
   vector<SimRobot>p3;
   int index = rand() % N;
-  double beta = 0.0;
-  double mw = *max_element(w.begin(), w.end());
+  float beta = 0.0;
+  float mw = *max_element(w.begin(), w.end());
   for (int i=0; i < N; i++){
     beta += fmod(rand(), (2.0 * mw));
     while (beta > w[index]){
