@@ -40,31 +40,31 @@ class SimRobot
     int state;
     float stateTime;
     float bfieldStrength;
-    double x;
-    double y;
-    double orientation;
-    double length;
-    double steering_noise;
-    double distance_noise;
-    double measurement_noise;
+    float x;
+    float y;
+    float orientation;
+    float length;
+    float steering_noise;
+    float distance_noise;
+    float measurement_noise;
     int num_collision;
     int num_steps;
     // initializes robot
-    SimRobot(double length = 0.5);
+    SimRobot(float length = 0.5);
     // sets a robot coordinate
-    void set(double new_x, double new_y, double new_orientation);
+    void set(float new_x, float new_y, float new_orientation);
     // sets the noise parameters
-    void set_noise(double new_s_noise, double new_d_noise, double new_m_noise);
+    void set_noise(float new_s_noise, float new_d_noise, float new_m_noise);
     // move:
     //    steering = front wheel steering angle, limited by max_steering_angle
     //    distance = total distance driven, most be non-negative
-    SimRobot move(World &world, double steering, double distance,
-             double tolerance = 0.001, double max_steering_angle = M_PI / 4.0);
+    SimRobot move(World &world, float steering, float distance,
+             float tolerance = 0.001, float max_steering_angle = M_PI / 4.0);
     // measurement_prob
     //    computes the probability of a measurement
-    double measurement_prob(vector <double>measurement);
+    float measurement_prob(vector <float>measurement);
     // draw robot on surface
-    void draw(Mat &img);
+    void draw(Mat &img, bool drawAsFilter = false);
     // run robot controller
     void run(World &world, float timeStep);
 

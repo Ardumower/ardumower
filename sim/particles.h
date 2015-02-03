@@ -14,19 +14,19 @@ class Particles
 {
   public:
     int N; // particle count
-    double steering_noise;
-    double distance_noise;
-    double measurement_noise;
+    float steering_noise;
+    float distance_noise;
+    float measurement_noise;
     vector <SimRobot>data; // particles
     // creates particle set with given initial position
-    Particles(double x, double y, double theta,
-              double steering_noise, double distance_noise, double measurement_noise, int N = 100);
+    Particles(float x, float y, float theta,
+              float steering_noise, float distance_noise, float measurement_noise, int N = 100);
     // extract position from a particle set
-    void get_position(double &x, double &y, double &orientation);
+    void get_position(float &x, float &y, float &orientation);
     // motion of particles
-    void move(World &world, double steer, double speed);
+    void move(World &world, float steer, float speed);
     // sensing and resampling
-    void sense(vector<double>Z);
+    void sense(vector<float>Z);
 };
 
 
