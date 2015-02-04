@@ -316,24 +316,27 @@
 	"Matrix.h"
 	<math.h>
 
-1423051577 source:d:\projects\robomower\ardumower\googlecode\sim\particles.cpp
+1423076031 source:d:\projects\robomower\ardumower\googlecode\sim\particles.cpp
 	"particles.h"
 	"simrobot.h"
 	<vector>
 	<algorithm>
+	"common.h"
 
-1422993697 d:\projects\robomower\ardumower\googlecode\sim\particles.h
+1423076086 d:\projects\robomower\ardumower\googlecode\sim\particles.h
 	<vector>
-
-1423053666 d:\projects\robomower\ardumower\googlecode\sim\simrobot.h
 	<opencv2/core/core.hpp>
 
-1423054307 source:d:\projects\robomower\ardumower\googlecode\sim\simrobot.cpp
+1423074674 d:\projects\robomower\ardumower\googlecode\sim\simrobot.h
+	<opencv2/core/core.hpp>
+
+1423075099 source:d:\projects\robomower\ardumower\googlecode\sim\simrobot.cpp
 	"simrobot.h"
 	"world.h"
 	"particles.h"
 	<exception>
 	<stdio.h>
+	"common.h"
 
 1422992897 source:d:\projects\robomower\ardumower\googlecode\sim\world.cpp
 	"world.h"
@@ -348,12 +351,26 @@
 	<opencv2/imgproc/imgproc.hpp>
 	<opencv2/features2d/features2d.hpp>
 
-1422988494 d:\projects\robomower\ardumower\googlecode\sim\sim.h
+1423075391 d:\projects\robomower\ardumower\googlecode\sim\sim.h
 	<vector>
 	<opencv2/core/core.hpp>
 	"world.h"
 	"simrobot.h"
+	"particles.h"
 
-1423053647 source:d:\projects\robomower\ardumower\googlecode\sim\sim.cpp
+1423076235 source:d:\projects\robomower\ardumower\googlecode\sim\sim.cpp
 	"sim.h"
+
+1423068131 source:d:\projects\robomower\ardumower\googlecode\sim\common.cpp
+	"common.h"
+
+1423068198 d:\projects\robomower\ardumower\googlecode\sim\common.h
+	<vector>
+	<opencv2/core/core.hpp>
+	<opencv/cv.h>
+	<opencv2/legacy/legacy.hpp>
+	<opencv2/legacy/compat.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/features2d/features2d.hpp>
 

@@ -6,8 +6,10 @@
 
 using namespace std;
 
+Particles::Particles(){
+}
 
-Particles::Particles(float x, float y, float theta,
+void Particles::init(float x, float y, float theta,
               float steering_noise, float distance_noise, float measurement_noise, int N)
 {
     this->N = N;
@@ -54,10 +56,10 @@ void Particles::move(World &world, float steer, float speed){
   //data = newdata;
 }
 
-void Particles::sense(vector<float>Z){
+void Particles::sense(World &world, float measurement){
   vector<float>w;
   for (int i=0; i < N; i++){
-    w.push_back(data[i].measurement_prob(Z));
+    w.push_back(data[i].measurement_prob(world, measurement));
   }
   // resampling (careful, this is using shallow copy)
   vector<SimRobot>p3;
@@ -73,6 +75,12 @@ void Particles::sense(vector<float>Z){
     p3.push_back(data[index]);
   }
   data = p3;
+}
+
+void Particles::draw(Mat &img){
+  for (int i =0; i < N; i++){
+    data[i].draw(img, true);
+  }
 }
 
 

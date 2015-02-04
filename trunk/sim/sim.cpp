@@ -12,6 +12,11 @@ Sim::Sim(){
   time = 0;
   plotIdx = 0;
   imgBfieldRobot = Mat(140, 500, CV_8UC3, Scalar(0,0,0));
+  float steering_noise    = 0.3;
+  float distance_noise    = 0.3;
+  float measurement_noise = 10.0;
+  filter.init(robot.x, robot.y, robot.orientation,
+              steering_noise, distance_noise, measurement_noise);
 }
 
 
@@ -21,7 +26,11 @@ void Sim::step(){
 
   // simulate robot movement
   robot.move(world, robot.steer, robot.speed);
+  filter.move(world, robot.steer, robot.speed);
+  //var [x,y,theta] = this.filter.get_position();
+
   robot.sense(world);
+  filter.sense(world, robot.bfieldStrength);
 
   // run robot controller
   robot.control(world, dt);
@@ -43,6 +52,7 @@ void Sim::step(){
 void Sim::draw(){
   world.draw();
   robot.draw(world.imgWorld);
+  filter.draw(world.imgWorld);
 }
 
 void Sim::plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot){

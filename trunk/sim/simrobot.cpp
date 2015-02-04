@@ -73,7 +73,12 @@ void SimRobot::sense(World &world){
 }
 
 
-float SimRobot::measurement_prob(vector <float>measurement){
+float SimRobot::measurement_prob(World &world, float measurement){
+  float prob = 1.0;
+
+  prob *= gaussian(world.getBfield(x, y), measurement_noise, measurement);
+
+  return prob;
 }
 
 // run robot controller
