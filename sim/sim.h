@@ -22,6 +22,7 @@
 #include <opencv2/core/core.hpp>
 #include "world.h"
 #include "simrobot.h"
+#include "particles.h"
 
 using namespace std;
 using namespace cv;
@@ -38,6 +39,7 @@ class Sim
     float time;
     World world;
 	SimRobot robot;
+	Particles filter;
     Sim();
     void step();
     void draw();

@@ -63,7 +63,7 @@ class SimRobot
              float tolerance = 0.001, float max_steering_angle = M_PI / 4.0);
     // measurement_prob
     //    computes the probability of a measurement
-    float measurement_prob(vector <float>measurement);
+    float measurement_prob(World &world, float measurement);
     // draw robot on surface
     void draw(Mat &img, bool drawAsFilter = false);
     // run robot controller
