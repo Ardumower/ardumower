@@ -38,6 +38,7 @@ class SimRobot
   public:
     float speed;
     int state;
+    float steer;
     float stateTime;
     float bfieldStrength;
     float x;
@@ -50,7 +51,7 @@ class SimRobot
     int num_collision;
     int num_steps;
     // initializes robot
-    SimRobot(float length = 0.5);
+    SimRobot();
     // sets a robot coordinate
     void set(float new_x, float new_y, float new_orientation);
     // sets the noise parameters
@@ -58,7 +59,7 @@ class SimRobot
     // move:
     //    steering = front wheel steering angle, limited by max_steering_angle
     //    distance = total distance driven, most be non-negative
-    SimRobot move(World &world, float steering, float distance,
+    void move(World &world, float steering, float distance,
              float tolerance = 0.001, float max_steering_angle = M_PI / 4.0);
     // measurement_prob
     //    computes the probability of a measurement
@@ -66,7 +67,7 @@ class SimRobot
     // draw robot on surface
     void draw(Mat &img, bool drawAsFilter = false);
     // run robot controller
-    void run(World &world, float timeStep);
+    void control(World &world, float timeStep);
 
 };
 

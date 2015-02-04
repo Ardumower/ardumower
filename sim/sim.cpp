@@ -20,12 +20,10 @@ void Sim::step(){
   //printf("stateTime=%1.4f\n", stateTime);
 
   // simulate robot movement
-  //robot.move(world, robot.orientation, robot.speed);
-  robot.x +=  cos(robot.orientation) * robot.speed * dt ;
-  robot.y +=  sin(robot.orientation) * robot.speed * dt ;
+  robot.move(world, robot.steer, robot.speed);
 
   // run robot controller
-  robot.run(world, dt);
+  robot.control(world, dt);
 
 
   // plot robot bfield sensor
