@@ -46,11 +46,11 @@ void Particles::get_position(float &x, float &y, float &orientation){
 }
 
 
-void Particles::move(World &world, float steer, float speed){
+void Particles::move(World &world, float course, float speed){
   //vector <SimRobot>newdata;
   for (int i=0; i < N; i++){
     //SimRobot r = data[i].move(world, steer, speed);
-    data[i].move(world, steer, speed);
+    data[i].move(world, course, speed);
     //newdata.push_back(r);
   }
   //data = newdata;
