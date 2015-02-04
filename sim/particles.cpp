@@ -63,7 +63,7 @@ void Particles::sense(World &world, float measurement){
   }
   // resampling (careful, this is using shallow copy)
   vector<SimRobot>p3;
-  int index = rand() % N;
+  int index = floor(random() * N);
   float beta = 0.0;
   float mw = *max_element(w.begin(), w.end());
   for (int i=0; i < N; i++){
