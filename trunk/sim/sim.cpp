@@ -12,12 +12,12 @@ Sim::Sim(){
   time = 0;
   plotIdx = 0;
   imgBfieldRobot = Mat(140, 500, CV_8UC3, Scalar(0,0,0));
-  float steering_noise    = 0.03;
-  float distance_noise    = 0.03;
-  float measurement_noise = 0.5;
+  float steering_noise    = 0.01;
+  float distance_noise    = 0.01;
+  float measurement_noise = 0.1;
   robot.set_noise(steering_noise, distance_noise, measurement_noise);
   filter.init(robot.x, robot.y, robot.orientation,
-              steering_noise, distance_noise, measurement_noise);
+              steering_noise*2, distance_noise*2, measurement_noise*2);
 }
 
 
