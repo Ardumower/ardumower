@@ -17,9 +17,9 @@ SimRobot::SimRobot(){
   speed = 0;
   steer = 0;
   length = 10;
-  steering_noise    = 0.3;
-  distance_noise    = 0.3;
-  measurement_noise = 10.0;
+  steering_noise    = 0.1;
+  distance_noise    = 0.1;
+  measurement_noise = 5.0;
 }
 
 
