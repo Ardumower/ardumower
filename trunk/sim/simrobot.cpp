@@ -36,29 +36,31 @@ void SimRobot::set_noise(float new_s_noise, float new_d_noise, float new_m_noise
 }
 
 
-void SimRobot::move(World &world, float steering, float distance,
+void SimRobot::move(World &world, float course, float distance,
              float tolerance,  float max_steering_angle){
-  if (steering > max_steering_angle)
+  /*if (steering > max_steering_angle)
     steering = max_steering_angle;
   if (steering < -max_steering_angle)
-    steering = -max_steering_angle;
+    steering = -max_steering_angle;*/
 
   // apply noise
   // gauss(mean, std)
-  float steering2 = gauss(steering, steering_noise);
+  //float steering2 = gauss(steering, steering_noise);
+  float course2 = gauss(course, steering_noise);
   float distance2 = gauss(distance, distance_noise) ;
   // printf("distance: %3.3f  steering: %3.3f\n", distance2, steering2);
 
   // Execute motion
   //float turn = tan(steering2) * distance2 / length;
-  float turn = steering2;
-  if (abs(turn) < tolerance){
+  //float turn = steering2;
+  //if (abs(turn) < tolerance){
     // approximate by straight line motion
     //printf("line motion  steering2=%3.3f  turn=%3.3f\n", steering2, turn);
     x = x + (distance2 * cos(orientation));
     y = y + (distance2 * sin(orientation));
-    orientation = fmod( (orientation + turn) , (2.0 * M_PI) );
-  } else {
+    //orientation = fmod( (orientation + turn) , (2.0 * M_PI) );
+    orientation = fmod( course2, (2.0 * M_PI) );
+  /*} else {
     // approximate bicycle model for motion
     float radius = distance2 / turn;
     float cx = x - (sin(orientation) * radius);
@@ -66,7 +68,7 @@ void SimRobot::move(World &world, float steering, float distance,
     orientation = fmod( (orientation + turn), (2.0 * M_PI) );
     x = cx + (sin(orientation) * radius);
     y = cy - (cos(orientation) * radius);
-  }
+  }*/
 }
 
 
@@ -90,7 +92,7 @@ void SimRobot::control(World &world, float timeStep){
   switch (state) {
     case STATE_FORW:
            speed = 1.0;
-           steer = 0;
+           //steer = 0;
            if (bfieldStrength < 0){
              printf("REV\n");
              state=STATE_REV;
@@ -99,7 +101,7 @@ void SimRobot::control(World &world, float timeStep){
            break;
     case STATE_REV:
            speed = -1.0;
-           steer = 0;
+           //steer = 0;
            if (stateTime > 1.0){
              printf("ROLL\n");
              state=STATE_ROLL;
@@ -108,7 +110,8 @@ void SimRobot::control(World &world, float timeStep){
            break;
     case STATE_ROLL:
            speed=0;
-           steer = M_PI/16;
+           //steer = M_PI/16;
+           orientation = fmod(orientation + M_PI/16, 2*M_PI);
            if (stateTime > 1.0){
              printf("FORW\n");
              state=STATE_FORW;

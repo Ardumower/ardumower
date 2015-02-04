@@ -59,7 +59,7 @@ class SimRobot
     // move:
     //    steering = front wheel steering angle, limited by max_steering_angle
     //    distance = total distance driven, most be non-negative
-    void move(World &world, float steering, float distance,
+    void move(World &world, float course, float distance,
              float tolerance = 0.001, float max_steering_angle = M_PI / 4.0);
     // measurement_prob
     //    computes the probability of a measurement

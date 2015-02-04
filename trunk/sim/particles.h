@@ -29,7 +29,7 @@ class Particles
     // extract position from a particle set
     void get_position(float &x, float &y, float &orientation);
     // motion of particles
-    void move(World &world, float steer, float speed);
+    void move(World &world, float course, float speed);
     // sensing and resampling
     void sense(World &world, float measurement);
     void draw(Mat &img);
