@@ -17,9 +17,9 @@ SimRobot::SimRobot(){
   speed = 0;
   steer = 0;
   length = 10;
-  steering_noise    = 0.1;
-  distance_noise    = 0.1;
-  measurement_noise = 5.0;
+  steering_noise    = 0.0;
+  distance_noise    = 0.0;
+  measurement_noise = 0.0;
 }
 
 
@@ -44,14 +44,17 @@ void SimRobot::move(World &world, float steering, float distance,
     steering = -max_steering_angle;
 
   // apply noise
+  // gauss(mean, std)
   float steering2 = gauss(steering, steering_noise);
   float distance2 = gauss(distance, distance_noise) ;
   // printf("distance: %3.3f  steering: %3.3f\n", distance2, steering2);
 
   // Execute motion
-  float turn = tan(steering2) * distance2 / length;
+  //float turn = tan(steering2) * distance2 / length;
+  float turn = steering2;
   if (abs(turn) < tolerance){
     // approximate by straight line motion
+    //printf("line motion  steering2=%3.3f  turn=%3.3f\n", steering2, turn);
     x = x + (distance2 * cos(orientation));
     y = y + (distance2 * sin(orientation));
     orientation = fmod( (orientation + turn) , (2.0 * M_PI) );
@@ -84,34 +87,29 @@ float SimRobot::measurement_prob(World &world, float measurement){
 
 // run robot controller
 void SimRobot::control(World &world, float timeStep){
-  if (bfieldStrength < 0){
-    printf("ROLL\n");
-    state=STATE_ROLL;
-    stateTime=0;
-  }
   switch (state) {
     case STATE_FORW:
            speed = 1.0;
            steer = 0;
+           if (bfieldStrength < 0){
+             printf("REV\n");
+             state=STATE_REV;
+             stateTime=0;
+           }
            break;
     case STATE_REV:
            speed = -1.0;
            steer = 0;
-           if (stateTime > 2.0){
+           if (stateTime > 1.0){
              printf("ROLL\n");
              state=STATE_ROLL;
              stateTime=0;
            }
            break;
     case STATE_ROLL:
-           speed=0.5;
-           steer = M_PI/8;
-           /*if (stateTime > 2.0){
-             printf("FORW\n");
-             state=STATE_FORW;
-             stateTime=0;
-           }*/
-           if (bfieldStrength > 0){
+           speed=0;
+           steer = M_PI/16;
+           if (stateTime > 1.0){
              printf("FORW\n");
              state=STATE_FORW;
              stateTime=0;
