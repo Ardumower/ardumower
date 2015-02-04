@@ -1,4 +1,4 @@
-(module Resistors_ThroughHole:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54C0358D)
+(module Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54C0358D)
   (descr "Resistor, Axial, RM 15mm,")
   (tags "Resistor, Axial, RM 15mm,")
   (fp_text reference R23 (at 3.048 0) (layer F.SilkS)
