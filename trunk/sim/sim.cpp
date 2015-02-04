@@ -21,6 +21,7 @@ void Sim::step(){
 
   // simulate robot movement
   robot.move(world, robot.steer, robot.speed);
+  robot.sense(world);
 
   // run robot controller
   robot.control(world, dt);

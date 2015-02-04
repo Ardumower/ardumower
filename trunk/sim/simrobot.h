@@ -68,7 +68,7 @@ class SimRobot
     void draw(Mat &img, bool drawAsFilter = false);
     // run robot controller
     void control(World &world, float timeStep);
-
+    void sense(World &world);
 };
 
 
