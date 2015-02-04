@@ -76,6 +76,7 @@ void SimRobot::sense(World &world){
 float SimRobot::measurement_prob(World &world, float measurement){
   float prob = 1.0;
 
+  // gaussian(mu, sigma, x)
   prob *= gaussian(world.getBfield(x, y), measurement_noise, measurement);
 
   return prob;
@@ -84,8 +85,8 @@ float SimRobot::measurement_prob(World &world, float measurement){
 // run robot controller
 void SimRobot::control(World &world, float timeStep){
   if (bfieldStrength < 0){
-    printf("REV\n");
-    state=STATE_REV;
+    printf("ROLL\n");
+    state=STATE_ROLL;
     stateTime=0;
   }
   switch (state) {
@@ -103,9 +104,14 @@ void SimRobot::control(World &world, float timeStep){
            }
            break;
     case STATE_ROLL:
-           speed=1.0;
+           speed=0.5;
            steer = M_PI/8;
-           if (stateTime > 2.0){
+           /*if (stateTime > 2.0){
+             printf("FORW\n");
+             state=STATE_FORW;
+             stateTime=0;
+           }*/
+           if (bfieldStrength > 0){
              printf("FORW\n");
              state=STATE_FORW;
              stateTime=0;
