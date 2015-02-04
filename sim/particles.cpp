@@ -2,6 +2,7 @@
 #include "simrobot.h"
 #include <vector>
 #include <algorithm>
+#include "common.h"
 
 using namespace std;
 
@@ -64,7 +65,7 @@ void Particles::sense(vector<float>Z){
   float beta = 0.0;
   float mw = *max_element(w.begin(), w.end());
   for (int i=0; i < N; i++){
-    beta += fmod(rand(), (2.0 * mw));
+    beta += random() * 2.0 * mw;
     while (beta > w[index]){
       beta -= w[index];
       index = (index + 1) % N;
