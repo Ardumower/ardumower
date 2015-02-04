@@ -15,11 +15,12 @@ float random(){
  * ~95% of numbers returned should fall between -2 and 2
  */
 float gaussRandom() {
-    float u = fmod( 2*random(), 1)-1;
+    //printf("random=%3.3f\n", random());
+    float u = 2*random()-1;
     float v = 2*random()-1;
     float r = u*u + v*v;
     /*if outside interval [0,1] start over*/
-    if(r == 0 || r > 1) return gaussRandom();
+    if ((r == 0) || (r > 1)) return gaussRandom();
 
     float c = sqrt(-2*log(r)/r);
     return u*c;
@@ -56,9 +57,9 @@ SimRobot::SimRobot(){
   speed = 0;
   steer = 0;
   length = 10;
-  steering_noise    = 0.0;
-  distance_noise    = 0.0;
-  measurement_noise = 0.0;
+  steering_noise    = 0.3;
+  distance_noise    = 0.3;
+  measurement_noise = 10.0;
 }
 
 
@@ -85,6 +86,7 @@ void SimRobot::move(World &world, float steering, float distance,
   // apply noise
   float steering2 = gauss(steering, steering_noise);
   float distance2 = gauss(distance, distance_noise) ;
+  // printf("distance: %3.3f  steering: %3.3f\n", distance2, steering2);
 
   // Execute motion
   float turn = tan(steering2) * distance2 / length;
@@ -114,36 +116,37 @@ void SimRobot::control(World &world, float timeStep){
     case STATE_FORW:
            speed = 1.0;
            steer = 0;
+           if (bfieldStrength < 0){
+             printf("REV\n");
+             state=STATE_REV;
+             stateTime=0;
+           }
            break;
     case STATE_REV:
            speed = -1.0;
            steer = 0;
-           if (stateTime > 3.0){
+           if (stateTime > 1.0){
              printf("ROLL\n");
              state=STATE_ROLL;
              stateTime=0;
            }
            break;
     case STATE_ROLL:
-            speed=0.5;
-            steer = M_PI/10;
-            if (stateTime > 6.0){
-              printf("FORW\n");
-              state=STATE_FORW;
-              stateTime=0;
-            }
-            break;
+           speed=0.5;
+           steer = M_PI/10;
+           if (stateTime > 1.0){
+             printf("FORW\n");
+             state=STATE_FORW;
+             stateTime=0;
+           }
+           break;
   }
   int px = (int)x;
   int py = (int)y;
 
   bfieldStrength = world.getBfield(px, py);
   //printf("b=%3.4f\n", b);
-  if (bfieldStrength < 0){
-    printf("REV\n");
-    state=STATE_REV;
-    stateTime=0;
-  }
+
   stateTime += timeStep;
 }
 
