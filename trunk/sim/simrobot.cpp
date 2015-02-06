@@ -82,6 +82,7 @@ void SimRobot::move(World &world, float course, float distance,
 // measures magnetic field
 void SimRobot::sense(World &world){
   bfieldStrength = world.getBfield(x, y);
+  bfieldStrength += gauss(0.0, measurement_noise);
   //printf("b=%3.4f\n", b);
 }
 
