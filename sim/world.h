@@ -42,6 +42,7 @@ struct point_t {
 typedef struct point_t point_t;
 
 
+// world (perimeter wire etc.)
 class World
 {
     // magnetic field

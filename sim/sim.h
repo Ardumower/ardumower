@@ -31,6 +31,7 @@ class SimRobot;
 class World;
 
 
+// simulation
 class Sim
 {
   public:

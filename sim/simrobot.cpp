@@ -8,12 +8,14 @@
 using namespace std;
 
 SimRobot::SimRobot(){
+  //	creates robot and initializes location/orientation to 0, 0, 0
   time_t t;
   time(&t);
   srand((unsigned int)t);
 
   state = STATE_FORW;
   stateTime = 0;
+  x = y = orientation = 0;
   speed = 0;
   steer = 0;
   length = 10;
@@ -22,20 +24,25 @@ SimRobot::SimRobot(){
   measurement_noise = 0.0;
 }
 
-
+//sets a robot coordinate
 void SimRobot::set(float new_x, float new_y, float new_orientation){
   x = new_x;
   y = new_y;
   orientation = new_orientation;
 }
 
+//	sets the noise parameters
 void SimRobot::set_noise(float new_s_noise, float new_d_noise, float new_m_noise){
+  // makes it possible to change the noise parameters
+  // this is often useful in particle filters
   steering_noise    = new_s_noise;
   distance_noise    = new_d_noise;
   measurement_noise = new_m_noise;
 }
 
 
+//    steering = front wheel steering angle, limited by max_steering_angle
+//    distance = total distance driven, most be non-negative
 void SimRobot::move(World &world, float course, float distance,
              float tolerance,  float max_steering_angle){
   /*if (steering > max_steering_angle)
@@ -72,15 +79,17 @@ void SimRobot::move(World &world, float course, float distance,
 }
 
 
+// measures magnetic field
 void SimRobot::sense(World &world){
   bfieldStrength = world.getBfield(x, y);
   //printf("b=%3.4f\n", b);
 }
 
-
+//  computes the probability of a measurement
 float SimRobot::measurement_prob(World &world, float measurement){
   float prob = 1.0;
 
+  // calculate Gaussian
   // gaussian(mu, sigma, x)
   prob *= gaussian(world.getBfield(x, y), measurement_noise, measurement);
 

@@ -12,6 +12,7 @@ Particles::Particles(){
 void Particles::init(float x, float y, float theta,
               float steering_noise, float distance_noise, float measurement_noise, int N)
 {
+    //	initializes particle set with given initial position
     this->N = N;
     this->steering_noise = steering_noise;
     this->distance_noise = distance_noise;
@@ -26,6 +27,7 @@ void Particles::init(float x, float y, float theta,
 }
 
 
+// extract position from a particle set
 void Particles::get_position(float &x, float &y, float &orientation){
   x=0;
   y=0;
@@ -46,6 +48,7 @@ void Particles::get_position(float &x, float &y, float &orientation){
 }
 
 
+// motion of the particles
 void Particles::move(World &world, float course, float speed){
   //vector <SimRobot>newdata;
   for (int i=0; i < N; i++){
@@ -56,6 +59,8 @@ void Particles::move(World &world, float course, float speed){
   //data = newdata;
 }
 
+
+// sensing and resampling
 void Particles::sense(World &world, float measurement){
   vector<float>w;
   for (int i=0; i < N; i++){
@@ -77,12 +82,14 @@ void Particles::sense(World &world, float measurement){
   data = p3;
 }
 
+// draw particle set
 void Particles::draw(Mat &img){
   for (int i =0; i < N; i++){
     data[i].draw(img, true);
   }
 }
 
+// draw particle set center
 void Particles::drawCenter(Mat &img, float x, float y, float theta){
   float length = 10;
   circle( img, Point( x, y), length, Scalar( 0, 0, 255), 2, 8 );
