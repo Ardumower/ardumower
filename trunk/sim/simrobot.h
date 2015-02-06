@@ -33,6 +33,8 @@ enum {
 
 class World;
 
+
+// simulated robot
 class SimRobot
 {
   public:

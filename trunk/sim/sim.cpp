@@ -5,6 +5,7 @@
 
 
 Sim::Sim(){
+  // simulation initialization
   // place robot onto world
   robot.orientation = M_PI/8;
   robot.x = 50;
@@ -21,6 +22,7 @@ Sim::Sim(){
 }
 
 
+// simulation step
 void Sim::step(){
   float dt=0.04;
   //printf("stateTime=%1.4f\n", stateTime);
@@ -35,20 +37,12 @@ void Sim::step(){
   // run robot controller
   robot.control(world, dt);
 
-
-  // plot robot bfield sensor
-  float bfieldStrength = max(-2.0f, min(30.0f, robot.bfieldStrength));
-  plotXY(imgBfieldRobot, plotIdx % imgBfieldRobot.cols, 15+bfieldStrength*5, 255,255,255, true);
-  imshow("bfieldrobot", imgBfieldRobot);
-  plotIdx++;
-
-
-
   // simulation time
   time += dt;
 }
 
 
+// draw world, robot, particles etc.
 void Sim::draw(){
   world.draw();
   filter.draw(world.imgWorld);
@@ -58,7 +52,14 @@ void Sim::draw(){
   filter.drawCenter(world.imgWorld, x,y,theta);
 
   robot.draw(world.imgWorld);
+
+  // plot robot bfield sensor
+  float bfieldStrength = max(-2.0f, min(30.0f, robot.bfieldStrength));
+  plotXY(imgBfieldRobot, plotIdx % imgBfieldRobot.cols, 15+bfieldStrength*5, 255,255,255, true);
+  imshow("bfieldrobot", imgBfieldRobot);
+  plotIdx++;
 }
+
 
 void Sim::plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot){
   if (clearplot) for (int y=0; y < image.rows; y++) image.at<Point3_<uchar> >(y, x) = Point3_<uchar>(0,0,0);
