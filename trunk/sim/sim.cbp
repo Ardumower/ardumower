@@ -38,6 +38,8 @@
 		<Unit filename="KalmanParams.h" />
 		<Unit filename="Matrix.cpp" />
 		<Unit filename="Matrix.h" />
+		<Unit filename="common.cpp" />
+		<Unit filename="common.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="particles.cpp" />
 		<Unit filename="particles.h" />
