@@ -33,6 +33,7 @@ class Particles
     // sensing and resampling
     void sense(World &world, float measurement);
     void draw(Mat &img);
+    void drawCenter(Mat &img, float x, float y, float theta);
 };
 
 
