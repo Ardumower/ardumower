@@ -63,8 +63,8 @@ void SimRobot::move(World &world, float course, float distance,
   //if (abs(turn) < tolerance){
     // approximate by straight line motion
     //printf("line motion  steering2=%3.3f  turn=%3.3f\n", steering2, turn);
-    x = x + (distance2 * cos(orientation));
-    y = y + (distance2 * sin(orientation));
+    x = x + (distance2 * cos(course2));
+    y = y + (distance2 * sin(course2));
     //orientation = fmod( (orientation + turn) , (2.0 * M_PI) );
     orientation = fmod( course2, (2.0 * M_PI) );
   /*} else {
