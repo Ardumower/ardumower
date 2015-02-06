@@ -28,7 +28,6 @@ void Sim::step(){
   // simulate robot movement
   robot.move(world, robot.orientation, robot.speed);
   filter.move(world, robot.orientation, robot.speed);
-  //var [x,y,theta] = this.filter.get_position();
 
   robot.sense(world);
   filter.sense(world, robot.bfieldStrength);
@@ -53,6 +52,11 @@ void Sim::step(){
 void Sim::draw(){
   world.draw();
   filter.draw(world.imgWorld);
+
+  float x,y,theta;
+  filter.get_position(x,y,theta);
+  filter.drawCenter(world.imgWorld, x,y,theta);
+
   robot.draw(world.imgWorld);
 }
 
