@@ -1747,6 +1747,7 @@ void Robot::calcOdometry(){
     odometryX += avg_cm * sin(imu.ypr.yaw); 
     odometryY += avg_cm * cos(imu.ypr.yaw); 
   } else {
+    // FIXME: theta should be old theta, not new theta?
     odometryX += avg_cm * sin(odometryTheta); 
     odometryY += avg_cm * cos(odometryTheta); 
  }
