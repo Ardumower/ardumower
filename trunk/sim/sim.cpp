@@ -18,7 +18,7 @@ Sim::Sim(){
   float measurement_noise = 0.5;
   robot.set_noise(steering_noise, distance_noise, measurement_noise);
   filter.init(robot.x, robot.y, robot.orientation,
-              steering_noise*3, distance_noise*3, measurement_noise*3);
+              steering_noise, distance_noise, measurement_noise);
 }
 
 

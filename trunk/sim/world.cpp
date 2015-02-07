@@ -1,4 +1,6 @@
 #include "world.h"
+#include "common.h"
+
 
 
 World::World(){
@@ -50,7 +52,7 @@ World::World(){
   // draw magnetic field onto image
   for (int y=0; y < SIZE_Y; y++){
     for (int x=0; x < SIZE_X; x++) {
-      float b=30 + 30*sqrt( abs(bfield[y][x]));
+      float b=30 + 30*sqrt( abs(getBfield(x,y)) );
       //b:=10 + bfield[y][x];
       int v = min(255, max(0, (int)b));
       Vec3b intensity;
@@ -69,9 +71,13 @@ World::World(){
 }
 
 float World::getBfield(int x, int y){
+  float res = 0;
   if ((x >= 0) && (x < SIZE_X) && (y >= 0) && (y < SIZE_Y)){
-        return bfield[y][x];
-  } else return 0;
+    res = bfield[y][x];
+  }
+  //float measurement_noise = 0.5;
+  //res += gauss(0.0, measurement_noise);
+  return res;
 }
 
 void World::draw(){
