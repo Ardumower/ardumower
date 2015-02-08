@@ -17,7 +17,7 @@ Sim::Sim(){
   time(&t);
   srand((unsigned int)t);
   // place robot onto world
-  robot.orientation = M_PI/8;
+  robot.orientation = 0;
   robot.x = world.chgStationX; //+ 10;
   robot.y = world.chgStationY; // + 10;
   float steering_noise    = 0.01;
