@@ -40,11 +40,18 @@ int main()
 	//namedWindow( "Robot mower simulator");
 	//imshow("bfield", imgBfield);
 
+	printf("press...\n");
+	printf("l   - toggle mowed lawn drawing\n");
+	printf("ESC - exit\n");
+
 	while( 1 ){
 		// Exit on esc key
-		if( cvWaitKey( 10 ) == 27 )
-			break;
-        sim.step();
+		char key = cvWaitKey( 10 );
+		switch (key){
+		  case 27: return 0;
+		  case 'l': sim.world.drawMowedLawn = !sim.world.drawMowedLawn;
+		}
+		sim.step();
         sim.draw();
 	}
 

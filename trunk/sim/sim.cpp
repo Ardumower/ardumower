@@ -30,6 +30,7 @@ void Sim::step(){
   // simulate robot movement
   robot.move(world, robot.orientation, robot.speed);
   filter.move(world, robot.orientation, robot.speed);
+  world.setLawnMowed(robot.x, robot.y);
 
   robot.sense(world);
   filter.sense(world, robot.bfieldStrength);
