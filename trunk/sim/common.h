@@ -44,6 +44,7 @@ float random();
 float gaussRandom();
 float gauss(float mean, float std_dev);
 float gaussian(float mu, float sigma, float x);
+float distance(float x1, float y1, float x2, float y2);
 
 
 #endif

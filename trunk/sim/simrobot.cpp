@@ -1,13 +1,19 @@
 #include "simrobot.h"
 #include "world.h"
 #include "particles.h"
+#include "sim.h"
 
 using namespace std;
 
 SimRobot::SimRobot(){
   //	creates robot and initializes location/orientation to 0, 0, 0
   //memset(robotMap, 0, sizeof robotMap);
-  state = STATE_FORW;
+  distanceToChgStation = 0;
+  state = STATE_TRACK;
+  pidTrack.Kp    = 60.0;  // perimeter PID controller
+  pidTrack.Ki    = 6.0;
+  pidTrack.Kd    = 5.0;
+
   stateTime = 0;
   x = y = orientation = 0;
   speed = 0;
@@ -37,7 +43,7 @@ void SimRobot::set_noise(float new_s_noise, float new_d_noise, float new_m_noise
 
 //    steering = front wheel steering angle, limited by max_steering_angle
 //    distance = total distance driven, most be non-negative
-void SimRobot::move(World &world, float course, float distance,
+void SimRobot::move(Sim &sim, float course, float distance,
              float tolerance,  float max_steering_angle){
   /*if (steering > max_steering_angle)
     steering = max_steering_angle;
@@ -57,8 +63,8 @@ void SimRobot::move(World &world, float course, float distance,
   //if (abs(turn) < tolerance){
     // approximate by straight line motion
     //printf("line motion  steering2=%3.3f  turn=%3.3f\n", steering2, turn);
-    x = x + (distance2 * cos(course2));
-    y = y + (distance2 * sin(course2));
+    x = x + (distance2 * cos(course2)) ;
+    y = y + (distance2 * sin(course2)) ;
     //orientation = fmod( (orientation + turn) , (2.0 * M_PI) );
     orientation = fmod( course2, (2.0 * M_PI) );
   /*} else {
@@ -74,26 +80,52 @@ void SimRobot::move(World &world, float course, float distance,
 
 
 // measures magnetic field
-void SimRobot::sense(World &world){
-  bfieldStrength = world.getBfield(x, y);
+void SimRobot::sense(Sim &sim){
+  bfieldStrength = sim.world.getBfield(x, y);
   bfieldStrength += gauss(0.0, measurement_noise);
   //printf("b=%3.4f\n", b);
 }
 
 //  computes the probability of a measurement
-float SimRobot::measurement_prob(World &world, float measurement){
+float SimRobot::measurement_prob(Sim &sim, float measurement){
   float prob = 1.0;
 
   // calculate Gaussian
   // gaussian(mu, sigma, x)
-  prob *= gaussian(world.getBfield(x, y), measurement_noise, measurement);
+  prob *= gaussian(sim.world.getBfield(x, y), measurement_noise, measurement);
 
   return prob;
 }
 
+
 // run robot controller
-void SimRobot::control(World &world, float timeStep){
+void SimRobot::control(Sim &sim, float timeStep){
+  float dist;
+  float delta;
+  distanceToChgStation = distance(x,y, sim.world.chgStationX, sim.world.chgStationY);
   switch (state) {
+    case STATE_OFF:
+           speed = 0;
+           break;
+    case STATE_TRACK:
+           if (sim.simTime > 10) {
+             if (distanceToChgStation < 10){
+               printf("REV\n");
+               state=STATE_REV;
+               stateTime=0;
+             }
+           }
+           pidTrack.x = 0;
+           if (bfieldStrength < 0) pidTrack.x = -1;
+            else if (bfieldStrength > 0) pidTrack.x = 1;
+           pidTrack.w = 0;
+           pidTrack.y_min = -M_PI/32;
+           pidTrack.y_max = M_PI/32;
+           pidTrack.max_output = M_PI/32;
+           pidTrack.compute(sim.simTime);
+           orientation = fmod(orientation + pidTrack.y, 2*M_PI);
+           speed = 0.7;
+           break;
     case STATE_FORW:
            speed = 1.0;
            //steer = 0;

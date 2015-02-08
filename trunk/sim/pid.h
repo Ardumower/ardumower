@@ -1,5 +1,7 @@
 /*
   Ardumower (www.ardumower.de)
+  Copyright (c) 2013-2014 by Alexander Grau
+  Copyright (c) 2013-2014 by Sven Gennat
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -13,43 +15,39 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 */
 
-
-#ifndef SIM_H
-#define SIM_H
-
-#include <vector>
-#include <opencv2/core/core.hpp>
-#include "world.h"
-#include "simrobot.h"
-#include "particles.h"
-
-using namespace std;
-using namespace cv;
-
-class SimRobot;
-class World;
+#ifndef PID_H
+#define PID_H
 
 
-// simulation
-class Sim
+/*
+  digital PID controller
+*/
+
+class PID
 {
   public:
-    int plotIdx;
-    Mat imgBfieldRobot;
-    float simTime;
-    float timeStep;
-    int stepCounter;
-    World world;
-	SimRobot robot;
-	Particles filter;
-    Sim();
-    void step();
-    void draw();
-    void plotXY(Mat &image, int x, int y, int r, int g, int b, bool clearplot);
+    PID();
+    PID(float Kp, float Ki, float Kd);
+    float compute(float timeNow);
+    double Ta; // sampling time
+    float w; // set value
+    float x; // current value
+    float esum; // error sum
+    float eold; // last error
+    float y;   // control output
+    float y_min; // minimum control output
+    float y_max; // maximum control output
+    float max_output; // maximum output
+    float Kp;   // proportional control
+    float Ki;   // integral control
+    float Kd;   // differential control
+    float lastControlTime;
 };
 
 
 
 #endif
+

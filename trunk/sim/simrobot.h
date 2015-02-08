@@ -21,6 +21,7 @@
 
 #include <opencv2/core/core.hpp>
 #include "common.h"
+#include "pid.h"
 
 using namespace std;
 using namespace cv;
@@ -28,19 +29,23 @@ using namespace cv;
 
 // states
 enum {
+  STATE_OFF,
   STATE_FORW,
   STATE_REV,
   STATE_ROLL,
+  STATE_TRACK,
 };
 
 class World;
-
+class Sim;
 
 // simulated robot
 class SimRobot
 {
   public:
     //char robotMap[WORLD_SIZE_Y][WORLD_SIZE_X];
+    PID pidTrack;
+    float distanceToChgStation;
     float speed;
     int state;
     float steer;
@@ -64,16 +69,16 @@ class SimRobot
     // move:
     //    steering = front wheel steering angle, limited by max_steering_angle
     //    distance = total distance driven, most be non-negative
-    void move(World &world, float course, float distance,
+    void move(Sim &sim, float course, float distance,
              float tolerance = 0.001, float max_steering_angle = M_PI / 4.0);
     // measurement_prob
     //    computes the probability of a measurement
-    float measurement_prob(World &world, float measurement);
+    float measurement_prob(Sim &sim, float measurement);
     // draw robot on surface
     void draw(Mat &img, bool drawAsFilter = false);
     // run robot controller
-    void control(World &world, float timeStep);
-    void sense(World &world);
+    void control(Sim &sim, float timeStep);
+    void sense(Sim &sim);
 };
 
 

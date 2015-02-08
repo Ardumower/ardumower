@@ -30,7 +30,7 @@ using namespace std;
 
 class World;
 class SimRobot;
-
+class Sim;
 
 // particle filter (with N particles)
 class Particles
@@ -48,9 +48,9 @@ class Particles
     // extract position from a particle set
     void get_position(float &x, float &y, float &orientation);
     // motion of particles
-    void move(World &world, float course, float speed);
+    void move(Sim &sim, float course, float speed);
     // sensing and resampling
-    void sense(World &world, float measurement);
+    void sense(Sim &sim, float measurement);
     void draw(Mat &img);
     void drawCenter(Mat &img, float x, float y, float theta);
 };
