@@ -30,7 +30,7 @@
 using namespace std;
 using namespace cv;
 
-// world size
+// world size (1/10 meter)
 #define SIZE_X 500
 #define SIZE_Y 350
 
@@ -51,7 +51,7 @@ class World
     Mat imgBfield;
     Mat imgWorld;
     World();
-    // return world size
+    // return world size (1/10 meter)
     int sizeX(){ return SIZE_X; };
     int sizeY(){ return SIZE_Y; };
     // return magnetic field strength at world position
