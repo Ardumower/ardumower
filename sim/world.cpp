@@ -73,10 +73,12 @@ World::World(){
   }
 }
 
-float World::getBfield(int x, int y){
+float World::getBfield(int x, int y, int resolution){
   float res = 0;
   if ((x >= 0) && (x < WORLD_SIZE_X) && (y >= 0) && (y < WORLD_SIZE_Y)){
-    res = bfield[y][x];
+    int xd = ((int)((x+resolution/2)/resolution))*resolution;
+    int yd = ((int)((y+resolution/2)/resolution))*resolution;
+    res = bfield[yd][xd];
   }
   //float measurement_noise = 0.5;
   //res += gauss(0.0, measurement_noise);
