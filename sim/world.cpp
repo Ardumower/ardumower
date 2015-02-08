@@ -4,6 +4,7 @@
 
 
 World::World(){
+  drawMowedLawn = true;
   imgBfield = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
   imgWorld = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
 
@@ -85,5 +86,30 @@ void World::draw(){
   sprintf(buf, " (%dm x %dm)", SIZE_X/10, SIZE_Y/10);
   imshow("world " + std::string(buf), imgWorld);
   imgBfield.copyTo(imgWorld);
+  // draw lawn mowed status
+  if (drawMowedLawn){
+    Vec3b intensity;
+    intensity.val[0]=0;
+    intensity.val[1]=255;
+    intensity.val[2]=0;
+    for (int y=0; y < SIZE_Y; y++){
+      for (int x=0; x < SIZE_X; x++){
+        if (lawnMowStatus[y][x] > 0) imgWorld.at<Vec3b>(y, x) = intensity;
+      }
+    }
+  }
+}
+
+// approximate circle pattern
+// 010
+// 111
+// 010
+void World::setLawnMowed(int x, int y){
+  if (  (x <= 5) || (x >= SIZE_X-5 ) || (y <= 5) || (y >= SIZE_Y-5 )  )return;
+  for (int i=-2; i <= 2; i++){
+    for (int j=-2; j <= 2; j++){
+      lawnMowStatus[y+i][x+j] = 1.0;
+    }
+  }
 }
 

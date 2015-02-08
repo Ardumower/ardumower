@@ -47,15 +47,19 @@ class World
 {
     // magnetic field
     float bfield[SIZE_Y][SIZE_X];
+    // lawn mow status
+    float lawnMowStatus[SIZE_Y][SIZE_X];
   public:
     Mat imgBfield;
     Mat imgWorld;
+    bool drawMowedLawn;
     World();
     // return world size (1/10 meter)
     int sizeX(){ return SIZE_X; };
     int sizeY(){ return SIZE_Y; };
     // return magnetic field strength at world position
     float getBfield(int x, int y);
+    void setLawnMowed(int x, int y);
     void draw();
 };
 
