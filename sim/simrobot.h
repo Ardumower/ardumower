@@ -46,7 +46,7 @@ class SimRobot
     //char robotMap[WORLD_SIZE_Y][WORLD_SIZE_X];
     PID pidTrack;
     float distanceToChgStation;
-    float speed;
+    float speed; // meter/sec
     int state;
     float steer;
     float stateTime;

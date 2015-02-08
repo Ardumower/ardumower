@@ -38,8 +38,8 @@ class Sim
   public:
     int plotIdx;
     Mat imgBfieldRobot;
-    float simTime;
-    float timeStep;
+    float simTime; // seconds
+    float timeStep; // seconds
     int stepCounter;
     World world;
 	SimRobot robot;

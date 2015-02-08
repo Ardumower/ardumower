@@ -10,7 +10,7 @@ Sim::Sim(){
   stepCounter = 0;
   plotIdx = 0;
   imgBfieldRobot = Mat(140, 500, CV_8UC3, Scalar(0,0,0));
-  timeStep = 0.1;
+  timeStep = 0.2; // one simulation step (seconds)
   simTime = 0;
   // start random generator
   time_t t;
@@ -18,10 +18,10 @@ Sim::Sim(){
   srand((unsigned int)t);
   // place robot onto world
   robot.orientation = M_PI/8;
-  robot.x = world.chgStationX;
-  robot.y = world.chgStationY;
+  robot.x = world.chgStationX; //+ 10;
+  robot.y = world.chgStationY; // + 10;
   float steering_noise    = 0.01;
-  float distance_noise    = 0.3;
+  float distance_noise    = 0.2;
   float measurement_noise = 0.5;
   robot.set_noise(steering_noise, distance_noise, measurement_noise);
   filter.init(robot.x, robot.y, robot.orientation,
@@ -34,8 +34,8 @@ void Sim::step(){
   //printf("stateTime=%1.4f\n", stateTime);
 
   // simulate robot movement
-  robot.move(*this, robot.orientation, robot.speed);
-  filter.move(*this, robot.orientation, robot.speed);
+  robot.move(*this, robot.orientation, robot.speed*10 * timeStep);
+  filter.move(*this, robot.orientation, robot.speed*10 * timeStep);
   world.setLawnMowed(robot.x, robot.y);
 
   robot.sense(*this);
@@ -49,7 +49,7 @@ void Sim::step(){
   stepCounter++;
 
   if ((stepCounter % 100) == 0){
-    printf("time=%5.1f  distChg=%3.1f\n", simTime, robot.distanceToChgStation);
+    printf("time=%5.1fs  distChg=%3.1fm\n", simTime, robot.distanceToChgStation/10);
   }
 }
 
