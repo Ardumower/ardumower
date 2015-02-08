@@ -41,8 +41,8 @@ void SimRobot::set_noise(float new_s_noise, float new_d_noise, float new_m_noise
 }
 
 
-//    steering = front wheel steering angle, limited by max_steering_angle
-//    distance = total distance driven, most be non-negative
+//    steering = front wheel steering angle (rad), limited by max_steering_angle
+//    distance = total distance driven (1/10m), most be non-negative
 void SimRobot::move(Sim &sim, float course, float distance,
              float tolerance,  float max_steering_angle){
   /*if (steering > max_steering_angle)
@@ -124,10 +124,10 @@ void SimRobot::control(Sim &sim, float timeStep){
            pidTrack.max_output = M_PI/32;
            pidTrack.compute(sim.simTime);
            orientation = fmod(orientation + pidTrack.y, 2*M_PI);
-           speed = 0.7;
+           speed = 0.5;
            break;
     case STATE_FORW:
-           speed = 1.0;
+           speed = 0.5;
            //steer = 0;
            if (bfieldStrength < 0){
              printf("REV\n");
@@ -136,9 +136,9 @@ void SimRobot::control(Sim &sim, float timeStep){
            }
            break;
     case STATE_REV:
-           speed = -1.0;
+           speed = -0.5;
            //steer = 0;
-           if (stateTime > 1.0){
+           if (stateTime > 4.0){
              printf("ROLL\n");
              state=STATE_ROLL;
              stateTime=0;
@@ -148,7 +148,7 @@ void SimRobot::control(Sim &sim, float timeStep){
            speed=0;
            //steer = M_PI/16;
            orientation = fmod(orientation + M_PI/16, 2*M_PI);
-           if (stateTime > 1.0){
+           if (stateTime > 4.0){
              printf("FORW\n");
              state=STATE_FORW;
              stateTime=0;
