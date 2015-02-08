@@ -16,6 +16,7 @@
 */
 
 #ifndef COMMON_H
+#define COMMON_H
 
 #include <vector>
 #include <opencv2/core/core.hpp>
@@ -25,6 +26,18 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/features2d/features2d.hpp>
+
+
+// world size (1/10 meter)
+#define WORLD_SIZE_X 500
+#define WORLD_SIZE_Y 350
+
+struct point_t {
+  float x;
+  float y;
+};
+
+typedef struct point_t point_t;
 
 
 float random();

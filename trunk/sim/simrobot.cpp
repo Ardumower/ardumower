@@ -1,12 +1,12 @@
 #include "simrobot.h"
 #include "world.h"
 #include "particles.h"
-#include "common.h"
 
 using namespace std;
 
 SimRobot::SimRobot(){
   //	creates robot and initializes location/orientation to 0, 0, 0
+  //memset(robotMap, 0, sizeof robotMap);
   state = STATE_FORW;
   stateTime = 0;
   x = y = orientation = 0;

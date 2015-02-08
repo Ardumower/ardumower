@@ -17,6 +17,7 @@
 
 
 #ifndef SIM_H
+#define SIM_H
 
 #include <vector>
 #include <opencv2/core/core.hpp>
