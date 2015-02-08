@@ -43,6 +43,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="particles.cpp" />
 		<Unit filename="particles.h" />
+		<Unit filename="pid.cpp" />
+		<Unit filename="pid.h" />
 		<Unit filename="sim.cpp" />
 		<Unit filename="sim.h" />
 		<Unit filename="simrobot.cpp" />
