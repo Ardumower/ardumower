@@ -1,16 +1,21 @@
 #include "sim.h"
+
 //#include "simrobot.h"
 //#include "world.h"
 
 
 
+// simulation initialization
 Sim::Sim(){
-  // simulation initialization
+  // start random generator
+  time_t t;
+  time(&t);
+  srand((unsigned int)t);
   // place robot onto world
   robot.orientation = M_PI/8;
   robot.x = 50;
   robot.y = 50;
-  time = 0;
+  simTime = 0;
   plotIdx = 0;
   imgBfieldRobot = Mat(140, 500, CV_8UC3, Scalar(0,0,0));
   float steering_noise    = 0.01;
@@ -39,7 +44,7 @@ void Sim::step(){
   robot.control(world, dt);
 
   // simulation time
-  time += dt;
+  simTime += dt;
 }
 
 

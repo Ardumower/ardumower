@@ -37,7 +37,7 @@ class Sim
   public:
     int plotIdx;
     Mat imgBfieldRobot;
-    float time;
+    float simTime;
     World world;
 	SimRobot robot;
 	Particles filter;
