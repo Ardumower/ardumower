@@ -18,7 +18,7 @@ SimRobot::SimRobot(){
   x = y = orientation = 0;
   speed = 0;
   steer = 0;
-  length = 10;
+  length = 7;
   steering_noise    = 0.0;
   distance_noise    = 0.0;
   measurement_noise = 0.0;
