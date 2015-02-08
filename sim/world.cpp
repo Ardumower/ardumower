@@ -5,6 +5,7 @@
 
 World::World(){
   drawMowedLawn = true;
+  memset(lawnMowStatus, 0, sizeof lawnMowStatus);
   imgBfield = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
   imgWorld = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
 
