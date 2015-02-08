@@ -1,5 +1,6 @@
 #include "particles.h"
 #include "simrobot.h"
+#include "sim.h"
 #include <vector>
 #include <algorithm>
 
@@ -48,11 +49,11 @@ void Particles::get_position(float &x, float &y, float &orientation){
 
 
 // motion of the particles
-void Particles::move(World &world, float course, float speed){
+void Particles::move(Sim &sim, float course, float speed){
   //vector <SimRobot>newdata;
   for (int i=0; i < N; i++){
     //SimRobot r = data[i].move(world, steer, speed);
-    data[i].move(world, course, speed);
+    data[i].move(sim, course, speed);
     //newdata.push_back(r);
   }
   //data = newdata;
@@ -60,10 +61,10 @@ void Particles::move(World &world, float course, float speed){
 
 
 // sensing and resampling
-void Particles::sense(World &world, float measurement){
+void Particles::sense(Sim &sim, float measurement){
   vector<float>w;
   for (int i=0; i < N; i++){
-    w.push_back(data[i].measurement_prob(world, measurement));
+    w.push_back(data[i].measurement_prob(sim, measurement));
   }
   // resampling (careful, this is using shallow copy)
   vector<SimRobot>p3;

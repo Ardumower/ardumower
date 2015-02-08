@@ -42,6 +42,7 @@ class World
     // lawn mow status
     float lawnMowStatus[WORLD_SIZE_Y][WORLD_SIZE_X];
   public:
+    int chgStationX, chgStationY;
     Mat imgBfield;
     Mat imgWorld;
     bool drawMowedLawn;

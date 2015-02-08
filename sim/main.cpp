@@ -42,14 +42,29 @@ int main()
 
 	printf("press...\n");
 	printf("l   - toggle mowed lawn drawing\n");
+	printf("+   - increase step wait\n");
+	printf("-   - decrease step wait\n");
 	printf("ESC - exit\n");
 
+    int stepWait = 10;
 	while( 1 ){
 		// Exit on esc key
-		char key = cvWaitKey( 10 );
+		char key = cvWaitKey( stepWait );
 		switch (key){
-		  case 27: return 0;
-		  case 'l': sim.world.drawMowedLawn = !sim.world.drawMowedLawn;
+		  case 27:
+            return 0;
+		  case '+':
+            stepWait = min(20, stepWait +1);
+            printf("stepWait=%d\n", stepWait);
+		    break;
+		  case '-':
+            stepWait = max(5, stepWait -1);
+            printf("stepWait=%d\n", stepWait);
+		    break;
+		  case 'l':
+            sim.world.drawMowedLawn = !sim.world.drawMowedLawn;
+            printf("toggled draw mowed lawn\n");
+		    break;
 		}
 		sim.step();
         sim.draw();

@@ -15,6 +15,9 @@ World::World(){
   list.push_back( (point_t) {210, 250 } );
   list.push_back( (point_t) {50, 310 } );
 
+  chgStationX = list[0].x;
+  chgStationY = list[0].y;
+
   // compute magnetic field (compute distance to perimeter lines)
   int x1 = list[list.size()-1].x;
   int y1 = list[list.size()-1].y;
