@@ -2,7 +2,6 @@
 #include "simrobot.h"
 #include <vector>
 #include <algorithm>
-#include "common.h"
 
 using namespace std;
 

@@ -17,8 +17,10 @@
 
 
 #ifndef SIMROBOT_H
+#define SIMROBOT_H
 
 #include <opencv2/core/core.hpp>
+#include "common.h"
 
 using namespace std;
 using namespace cv;
@@ -38,6 +40,7 @@ class World;
 class SimRobot
 {
   public:
+    //char robotMap[WORLD_SIZE_Y][WORLD_SIZE_X];
     float speed;
     int state;
     float steer;

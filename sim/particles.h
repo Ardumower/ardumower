@@ -16,6 +16,7 @@
 */
 
 #ifndef PARTICLES_H
+#define PARTICLES_H
 
 #include <vector>
 #include <opencv2/core/core.hpp>

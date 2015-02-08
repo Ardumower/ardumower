@@ -16,7 +16,9 @@
 */
 
 #ifndef WORLD_H
+#define WORLD_H
 
+#include "common.h"
 #include <vector>
 #include <opencv2/core/core.hpp>
 #include <opencv/cv.h>
@@ -30,33 +32,23 @@
 using namespace std;
 using namespace cv;
 
-// world size (1/10 meter)
-#define SIZE_X 500
-#define SIZE_Y 350
-
-struct point_t {
-  float x;
-  float y;
-};
-
-typedef struct point_t point_t;
 
 
 // world (perimeter wire etc.)
 class World
 {
     // magnetic field
-    float bfield[SIZE_Y][SIZE_X];
+    float bfield[WORLD_SIZE_Y][WORLD_SIZE_X];
     // lawn mow status
-    float lawnMowStatus[SIZE_Y][SIZE_X];
+    float lawnMowStatus[WORLD_SIZE_Y][WORLD_SIZE_X];
   public:
     Mat imgBfield;
     Mat imgWorld;
     bool drawMowedLawn;
     World();
     // return world size (1/10 meter)
-    int sizeX(){ return SIZE_X; };
-    int sizeY(){ return SIZE_Y; };
+    int sizeX(){ return WORLD_SIZE_X; };
+    int sizeY(){ return WORLD_SIZE_Y; };
     // return magnetic field strength at world position
     float getBfield(int x, int y);
     void setLawnMowed(int x, int y);
