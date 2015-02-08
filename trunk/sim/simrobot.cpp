@@ -10,9 +10,9 @@ SimRobot::SimRobot(){
   //memset(robotMap, 0, sizeof robotMap);
   distanceToChgStation = 0;
   state = STATE_TRACK;
-  pidTrack.Kp    = 60.0;  // perimeter PID controller
-  pidTrack.Ki    = 6.0;
-  pidTrack.Kd    = 5.0;
+  pidTrack.Kp    = 0.08;  // perimeter PID controller
+  pidTrack.Ki    = 0.02;
+  pidTrack.Kd    = 0.04;
 
   stateTime = 0;
   x = y = orientation = 0;
@@ -119,9 +119,9 @@ void SimRobot::control(Sim &sim, float timeStep){
            if (bfieldStrength < 0) pidTrack.x = -1;
             else if (bfieldStrength > 0) pidTrack.x = 1;
            pidTrack.w = 0;
-           pidTrack.y_min = -M_PI/32;
-           pidTrack.y_max = M_PI/32;
-           pidTrack.max_output = M_PI/32;
+           pidTrack.y_min = -M_PI/4;
+           pidTrack.y_max = M_PI/4;
+           pidTrack.max_output = M_PI/4;
            pidTrack.compute(sim.simTime);
            orientation = fmod(orientation + pidTrack.y, 2*M_PI);
            speed = 0.5;

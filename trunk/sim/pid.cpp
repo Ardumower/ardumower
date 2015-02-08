@@ -39,7 +39,6 @@ float PID::compute(float timeNow)
 {
   Ta = (timeNow - lastControlTime);
   lastControlTime = timeNow;
-  //  printf("Ta=%3.1f\n", Ta);
   if (Ta > 1.0) {
     Ta = 1.0;   // should only happen for the very first call
     printf("PID: corrected Ta\n");
@@ -60,6 +59,7 @@ float PID::compute(float timeNow)
   if (y > y_max) y = y_max;
   if (y < y_min) y = y_min;
 
+  // printf("Ta=%3.1f  e=%3.1f  y=%3.1f\n", Ta, e, y);
   return y;
 }
 
