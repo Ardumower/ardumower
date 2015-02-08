@@ -18,8 +18,8 @@ Sim::Sim(){
   srand((unsigned int)t);
   // place robot onto world
   robot.orientation = 0;
-  robot.x = world.chgStationX; //+ 10;
-  robot.y = world.chgStationY; // + 10;
+  robot.x = world.chgStationX+5; //+ 10;
+  robot.y = world.chgStationY+5; // + 10;
   float steering_noise    = 0.01;
   float distance_noise    = 0.2;
   float measurement_noise = 0.5;
@@ -49,7 +49,10 @@ void Sim::step(){
   stepCounter++;
 
   if ((stepCounter % 100) == 0){
-    printf("time=%5.1fs  distChg=%3.1fm\n", simTime, robot.distanceToChgStation/10);
+    printf("time=%5.1fs  distChg=%3.1fm  totalDist=%3.1fm\n",
+           simTime,
+           robot.distanceToChgStation/10,
+           robot.totalDistance/10);
   }
 }
 
@@ -66,7 +69,7 @@ void Sim::draw(){
   robot.draw(world.imgWorld);
 
   // plot robot bfield sensor
-  float bfieldStrength = max(-2.0f, min(30.0f, robot.bfieldStrength));
+  float bfieldStrength = max(-2.0f, min(24.0f, robot.bfieldStrength));
   plotXY(imgBfieldRobot, plotIdx % imgBfieldRobot.cols, 15+bfieldStrength*5, 255,255,255, true);
   imshow("bfieldrobot", imgBfieldRobot);
   plotIdx++;

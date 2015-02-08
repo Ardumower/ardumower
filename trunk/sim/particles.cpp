@@ -92,6 +92,6 @@ void Particles::draw(Mat &img){
 // draw particle set center
 void Particles::drawCenter(Mat &img, float x, float y, float theta){
   float length = 7;
-  circle( img, Point( x, y), length, Scalar( 0, 0, 255), 2, 8 );
-  line( img, Point(x, y), Point(x + 15 * cos(theta), y + length * sin(theta)), Scalar(0,0,255), 2, 8);
+  circle( img, Point( x, y), length, Scalar( 255, 0, 0), 2, 8 );
+  line( img, Point(x, y), Point(x + 15 * cos(theta), y + length * sin(theta)), Scalar(255,0,0), 2, 8);
 }

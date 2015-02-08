@@ -47,6 +47,7 @@ class SimRobot
     PID pidTrack;
     float distanceToChgStation;
     float speed; // meter/sec
+    float totalDistance; // meters
     int state;
     float steer;
     float stateTime;

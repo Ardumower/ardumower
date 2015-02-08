@@ -9,10 +9,11 @@ SimRobot::SimRobot(){
   //	creates robot and initializes location/orientation to 0, 0, 0
   //memset(robotMap, 0, sizeof robotMap);
   distanceToChgStation = 0;
+  totalDistance = 0;
   state = STATE_TRACK;
   pidTrack.Kp    = 0.08;  // perimeter PID controller
   pidTrack.Ki    = 0.02;
-  pidTrack.Kd    = 0.04;
+  pidTrack.Kd    = 0.08;
 
   stateTime = 0;
   x = y = orientation = 0;
@@ -55,6 +56,7 @@ void SimRobot::move(Sim &sim, float course, float distance,
   //float steering2 = gauss(steering, steering_noise);
   float course2 = gauss(course, steering_noise);
   float distance2 = gauss(distance, distance_noise) ;
+  totalDistance += distance2;
   // printf("distance: %3.3f  steering: %3.3f\n", distance2, steering2);
 
   // Execute motion
@@ -81,7 +83,7 @@ void SimRobot::move(Sim &sim, float course, float distance,
 
 // measures magnetic field
 void SimRobot::sense(Sim &sim){
-  bfieldStrength = sim.world.getBfield(x, y);
+  bfieldStrength = sim.world.getBfield(x, y, 1);
   bfieldStrength += gauss(0.0, measurement_noise);
   //printf("b=%3.4f\n", b);
 }
