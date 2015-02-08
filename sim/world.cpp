@@ -7,7 +7,7 @@ World::World(){
   imgBfield = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
   imgWorld = Mat(SIZE_Y, SIZE_X, CV_8UC3, Scalar(0,0,0));
 
-  // perimeter lines coordinates
+  // perimeter lines coordinates (1/10 meter)
   std::vector<point_t> list;
   list.push_back( (point_t) {30, 35 } );
   list.push_back( (point_t) {400, 40 } );
@@ -36,8 +36,8 @@ World::World(){
         int cy = y1 + sin(phi)*xend;  // cy on line
         if ((py >= 0) && (py < SIZE_Y)
            && (px >=0) && (px < SIZE_X)) {
-          float r = max(0.000001, sqrt( (cx-px)*(cx-px) + (cy-py)*(cy-py) ) ); // distance to line
-          float b=1000.0/(2.0*M_PI*r); // field strength
+          float r = max(0.000001, sqrt( (cx-px)*(cx-px) + (cy-py)*(cy-py) ) ) / 10; // distance to line (meter)
+          float b=100.0/(2.0*M_PI*r); // field strength
           if ((y<=0) || (bfield[py][px] < 0)){
             b=b*-1.0;
             bfield[py][px] =  min(bfield[py][px], b);
@@ -81,7 +81,9 @@ float World::getBfield(int x, int y){
 }
 
 void World::draw(){
-  imshow("world", imgWorld);
+  char buf[64];
+  sprintf(buf, " (%dm x %dm)", SIZE_X/10, SIZE_Y/10);
+  imshow("world " + std::string(buf), imgWorld);
   imgBfield.copyTo(imgWorld);
 }
 
