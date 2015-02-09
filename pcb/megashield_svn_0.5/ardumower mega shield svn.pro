@@ -1,4 +1,4 @@
-update=03.02.2015 22:43:46
+update=06.02.2015 17:19:50
 last_client=kicad
 [pcbnew]
 version=1
@@ -29,6 +29,8 @@ LibName2=acs712.pretty/Bluetooth_ZS_HC_05
 LibName3=acs712.pretty/Bluetooth_CZ_HC_05
 LibName4=Wlan_ESP8266
 LibName5=acs712.pretty/ds1307
+[general]
+version=1
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -42,5 +44,3 @@ RptD_X=0
 RptD_Y=100
 RptLab=1
 LabSize=60
-[general]
-version=1

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 03.02.2015 22:35:17
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 08.02.2015 22:46:02
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -907,14 +907,14 @@ BeginCmp
 TimeStamp = /5384FFAC;
 Reference = R9;
 ValeurCmp = 47K;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5384FFC0;
 Reference = R10;
 ValeurCmp = 4,99K;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
