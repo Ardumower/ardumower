@@ -102,6 +102,8 @@ void World::draw(){
       }
     }
   }
+  // draw charging station
+  circle( imgWorld, Point( chgStationX, chgStationY), 10, Scalar( 0, 255, 255 ), -1, 8 );
 }
 
 // approximate circle pattern

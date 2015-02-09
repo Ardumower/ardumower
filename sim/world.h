@@ -51,7 +51,7 @@ class World
     int sizeX(){ return WORLD_SIZE_X; };
     int sizeY(){ return WORLD_SIZE_Y; };
     // return magnetic field strength at world position
-    float getBfield(int x, int y, int resolution=10);
+    float getBfield(int x, int y, int resolution=1);
     void setLawnMowed(int x, int y);
     void draw();
 };

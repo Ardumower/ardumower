@@ -43,7 +43,7 @@ class Sim;
 class SimRobot
 {
   public:
-    //char robotMap[WORLD_SIZE_Y][WORLD_SIZE_X];
+    //float robotMap[WORLD_SIZE_Y/10][WORLD_SIZE_X/10];
     PID pidTrack;
     float distanceToChgStation;
     float speed; // meter/sec
