@@ -327,12 +327,12 @@
 	<vector>
 	<opencv2/core/core.hpp>
 
-1423420649 d:\projects\robomower\ardumower\googlecode\sim\simrobot.h
+1423519335 d:\projects\robomower\ardumower\googlecode\sim\simrobot.h
 	<opencv2/core/core.hpp>
 	"common.h"
 	"pid.h"
 
-1423422299 source:d:\projects\robomower\ardumower\googlecode\sim\simrobot.cpp
+1423519326 source:d:\projects\robomower\ardumower\googlecode\sim\simrobot.cpp
 	"simrobot.h"
 	"world.h"
 	"particles.h"
@@ -341,7 +341,7 @@
 1423422213 source:d:\projects\robomower\ardumower\googlecode\sim\world.cpp
 	"world.h"
 
-1423422162 d:\projects\robomower\ardumower\googlecode\sim\world.h
+1423424780 d:\projects\robomower\ardumower\googlecode\sim\world.h
 	"common.h"
 	<vector>
 	<opencv2/core/core.hpp>
@@ -352,14 +352,14 @@
 	<opencv2/imgproc/imgproc.hpp>
 	<opencv2/features2d/features2d.hpp>
 
-1423415267 d:\projects\robomower\ardumower\googlecode\sim\sim.h
+1423519351 d:\projects\robomower\ardumower\googlecode\sim\sim.h
 	<vector>
 	<opencv2/core/core.hpp>
 	"world.h"
 	"simrobot.h"
 	"particles.h"
 
-1423421927 source:d:\projects\robomower\ardumower\googlecode\sim\sim.cpp
+1423519343 source:d:\projects\robomower\ardumower\googlecode\sim\sim.cpp
 	"sim.h"
 
 1423414562 source:d:\projects\robomower\ardumower\googlecode\sim\common.cpp
@@ -381,4 +381,15 @@
 	<stdio.h>
 
 1423408071 d:\projects\robomower\ardumower\googlecode\sim\pid.h
+
+1423518203 d:\projects\robomower\ardumower\googlecode\sim\robotctrl.h
+	<opencv2/core/core.hpp>
+	"common.h"
+	"pid.h"
+
+1423518641 source:d:\projects\robomower\ardumower\googlecode\sim\robotctrl.cpp
+	"robotctrl.h"
+	"world.h"
+	"particles.h"
+	"sim.h"
 
