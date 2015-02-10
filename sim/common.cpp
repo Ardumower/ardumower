@@ -45,3 +45,29 @@ float gaussian(float mu, float sigma, float x)
 }
 
 
+// rescale to -PI..+PI
+float scalePI(float v)
+{
+  double d = v;
+  while (d < 0) d+=2*M_PI;
+  while (d >= 2*M_PI) d-=2*M_PI;
+  if (d >= M_PI) return (-2*M_PI+d);
+  else if (d < -M_PI) return (2*M_PI+d);
+  else return d;
+}
+
+// computes minimum distance between x radiant (current-value) and w radiant (set-value)
+float distancePI(float x, float w)
+{
+  // cases:
+  // w=330 degree, x=350 degree => -20 degree
+  // w=350 degree, x=10  degree => -20 degree
+  // w=10  degree, x=350 degree =>  20 degree
+  // w=0   degree, x=190 degree => 170 degree
+  // w=190 degree, x=0   degree => -170 degree
+  float d = scalePI(w - x);
+  if (d < -M_PI) d = d + 2*M_PI;
+  else if (d > M_PI) d = d - 2*M_PI;
+  return d;
+}
+
