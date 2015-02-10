@@ -11,12 +11,20 @@ SimRobot::SimRobot(){
   distanceToChgStation = 0;
   totalDistance = 0;
   state = STATE_TRACK;
+  //state = STATE_LANE_FORW;
   pidTrack.Kp    = 0.08;  // perimeter PID controller
   pidTrack.Ki    = 0.02;
   pidTrack.Kd    = 0.08;
 
+  pidHeading.Kp    = 0.08;  // heading PID controller
+  pidHeading.Ki    = 0.02;
+  pidHeading.Kd    = 0.08;
+
   stateTime = 0;
   x = y = orientation = 0;
+  laneHeading = M_PI/4;
+  laneDistance = 0;
+  laneCounter = 0;
   speed = 0;
   steer = 0;
   length = 7;
@@ -56,7 +64,7 @@ void SimRobot::move(Sim &sim, float course, float distance,
   //float steering2 = gauss(steering, steering_noise);
   float course2 = gauss(course, steering_noise);
   float distance2 = gauss(distance, distance_noise) ;
-  totalDistance += distance2;
+  totalDistance += fabs(distance2);
   // printf("distance: %3.3f  steering: %3.3f\n", distance2, steering2);
 
   // Execute motion
@@ -67,14 +75,14 @@ void SimRobot::move(Sim &sim, float course, float distance,
     //printf("line motion  steering2=%3.3f  turn=%3.3f\n", steering2, turn);
     x = x + (distance2 * cos(course2)) ;
     y = y + (distance2 * sin(course2)) ;
-    //orientation = fmod( (orientation + turn) , (2.0 * M_PI) );
-    orientation = fmod( course2, (2.0 * M_PI) );
+    //orientation = scalePI( orientation + turn);
+    orientation = scalePI( course2 );
   /*} else {
     // approximate bicycle model for motion
     float radius = distance2 / turn;
     float cx = x - (sin(orientation) * radius);
     float cy = y + (cos(orientation) * radius);
-    orientation = fmod( (orientation + turn), (2.0 * M_PI) );
+    orientation = scalePI((orientation + turn );
     x = cx + (sin(orientation) * radius);
     y = cy - (cos(orientation) * radius);
   }*/
@@ -102,9 +110,12 @@ float SimRobot::measurement_prob(Sim &sim, float measurement){
 
 // run robot controller
 void SimRobot::control(Sim &sim, float timeStep){
-  float dist;
-  float delta;
+  float laneHeadingTurn = M_PI*0.15;
+  if (laneCounter % 2 != 0) laneHeadingTurn *= -1;
+
+  float deltaDistance = totalDistance - lastTotalDistance;
   distanceToChgStation = distance(x,y, sim.world.chgStationX, sim.world.chgStationY);
+
   switch (state) {
     case STATE_OFF:
            speed = 0;
@@ -112,8 +123,8 @@ void SimRobot::control(Sim &sim, float timeStep){
     case STATE_TRACK:
            if (sim.simTime > 10) {
              if (distanceToChgStation < 10){
-               printf("REV\n");
-               state=STATE_REV;
+               printf("LANE_REV\n");
+               state=STATE_LANE_REV;
                stateTime=0;
              }
            }
@@ -125,39 +136,64 @@ void SimRobot::control(Sim &sim, float timeStep){
            pidTrack.y_max = M_PI/4;
            pidTrack.max_output = M_PI/4;
            pidTrack.compute(sim.simTime);
-           orientation = fmod(orientation + pidTrack.y, 2*M_PI);
+           orientation = scalePI(orientation + pidTrack.y);
            speed = 0.5;
            break;
-    case STATE_FORW:
+    case STATE_LANE_FORW:
+           laneDistance += deltaDistance;
+           if (laneDistance < 2){
+            pidHeading.x = distancePI(orientation, scalePI(laneHeading+laneHeadingTurn));
+           } else {
+            pidHeading.x = distancePI(orientation, laneHeading);
+           }
+           pidHeading.w = 0;
+           pidHeading.y_min = -M_PI/4;
+           pidHeading.y_max = M_PI/4;
+           pidHeading.max_output = M_PI/4;
+           pidHeading.compute(sim.simTime);
+           orientation = scalePI(orientation - pidHeading.y);
            speed = 0.5;
            //steer = 0;
-           if (bfieldStrength < 0){
-             printf("REV\n");
-             state=STATE_REV;
+           if (bfieldStrength < 0) { //|| (laneDistance > 300)) {
+             printf("LANE_REV\n");
+             state=STATE_LANE_REV;
              stateTime=0;
+             laneDistance =0;
            }
            break;
-    case STATE_REV:
+    case STATE_LANE_REV:
+           laneDistance += deltaDistance;
            speed = -0.5;
            //steer = 0;
-           if (stateTime > 4.0){
-             printf("ROLL\n");
-             state=STATE_ROLL;
+           if (laneDistance > 10.0){
+             printf("LANE_ROLL\n");
+             state=STATE_LANE_ROLL;
              stateTime=0;
+             laneDistance =0;
+             laneHeading = scalePI(laneHeading + M_PI);
            }
            break;
-    case STATE_ROLL:
-           speed=0;
+    case STATE_LANE_ROLL:
+           speed=0.0;
            //steer = M_PI/16;
-           orientation = fmod(orientation + M_PI/16, 2*M_PI);
-           if (stateTime > 4.0){
-             printf("FORW\n");
-             state=STATE_FORW;
+           float e = distancePI(orientation, scalePI(laneHeading+laneHeadingTurn));
+           if (e > 0)
+             orientation = scalePI(orientation + M_PI/72);
+           else
+             orientation = scalePI(orientation - M_PI/72);
+           if (abs(e) < M_PI/36){
+             //printf("err=%3.1f\n", e/M_PI*180);
+             //getchar();
+             printf("LANE_FORW\n");
+             state=STATE_LANE_FORW;
              stateTime=0;
+             laneDistance =0;
+             laneCounter++;
            }
            break;
   }
 
+  lastTotalDistance = totalDistance;
   stateTime += timeStep;
 }
 

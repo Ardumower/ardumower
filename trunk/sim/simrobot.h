@@ -30,10 +30,11 @@ using namespace cv;
 // states
 enum {
   STATE_OFF,
-  STATE_FORW,
-  STATE_REV,
-  STATE_ROLL,
   STATE_TRACK,
+  STATE_LANE_FORW,
+  STATE_LANE_REV,
+  STATE_LANE_ROLL,
+  STATE_GOAL,
 };
 
 class World;
@@ -45,9 +46,11 @@ class SimRobot
   public:
     //float robotMap[WORLD_SIZE_Y/10][WORLD_SIZE_X/10];
     PID pidTrack;
+    PID pidHeading;
     float distanceToChgStation;
     float speed; // meter/sec
     float totalDistance; // meters
+    float lastTotalDistance;
     int state;
     float steer;
     float stateTime;
@@ -55,6 +58,9 @@ class SimRobot
     float x;
     float y;
     float orientation;
+    float laneHeading;
+    int laneCounter;
+    float laneDistance;
     float length;
     float steering_noise;
     float distance_noise;

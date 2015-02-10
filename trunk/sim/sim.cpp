@@ -19,7 +19,9 @@ Sim::Sim(){
   // place robot onto world
   robot.orientation = 0;
   robot.x = world.chgStationX+5; //+ 10;
-  robot.y = world.chgStationY+5; // + 10;
+  robot.y = world.chgStationY-5; // + 10;
+  //robot.x = 100;
+  //robot.y = 100;
   float steering_noise    = 0.01;
   float distance_noise    = 0.2;
   float measurement_noise = 0.5;
@@ -46,14 +48,17 @@ void Sim::step(){
 
   // simulation time
   simTime += timeStep;
-  stepCounter++;
 
   if ((stepCounter % 100) == 0){
-    printf("time=%5.1fs  distChg=%3.1fm  totalDist=%3.1fm\n",
+    printf("time=%5.1fs  orient=%3.1f  laneHeading=%3.1f  laneCounter=%d  distChg=%3.1fm  totalDist=%3.1fm\n",
            simTime,
+           robot.orientation/M_PI*180.0,
+           robot.laneHeading/M_PI*180.0,
+           robot.laneCounter,
            robot.distanceToChgStation/10,
            robot.totalDistance/10);
   }
+  stepCounter++;
 }
 
 
