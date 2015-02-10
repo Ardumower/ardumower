@@ -44,6 +44,7 @@ int main()
 	printf("l   - toggle mowed lawn drawing\n");
 	printf("+   - increase step wait\n");
 	printf("-   - decrease step wait\n");
+	printf("s   - skip tracking\n");
 	printf("ESC - exit\n");
 
     int stepWait = 10;
@@ -65,6 +66,10 @@ int main()
             sim.world.drawMowedLawn = !sim.world.drawMowedLawn;
             printf("toggled draw mowed lawn\n");
 		    break;
+          case 's':
+            sim.robot.x = sim.robot.y = 100;
+            sim.robot.state = STATE_LANE_FORW;
+            break;
 		}
 		sim.step();
         sim.draw();
