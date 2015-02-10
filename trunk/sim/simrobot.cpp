@@ -132,9 +132,9 @@ void SimRobot::control(Sim &sim, float timeStep){
            if (bfieldStrength < 0) pidTrack.x = -1;
             else if (bfieldStrength > 0) pidTrack.x = 1;
            pidTrack.w = 0;
-           pidTrack.y_min = -M_PI/4;
-           pidTrack.y_max = M_PI/4;
-           pidTrack.max_output = M_PI/4;
+           pidTrack.y_min = -M_PI;
+           pidTrack.y_max = M_PI;
+           pidTrack.max_output = M_PI;
            pidTrack.compute(sim.simTime);
            orientation = scalePI(orientation + pidTrack.y);
            speed = 0.5;
@@ -165,7 +165,7 @@ void SimRobot::control(Sim &sim, float timeStep){
            laneDistance += deltaDistance;
            speed = -0.5;
            //steer = 0;
-           if (laneDistance > 10.0){
+           if (laneDistance > 15.0){
              printf("LANE_ROLL\n");
              state=STATE_LANE_ROLL;
              stateTime=0;
@@ -174,7 +174,7 @@ void SimRobot::control(Sim &sim, float timeStep){
            }
            break;
     case STATE_LANE_ROLL:
-           speed=0.0;
+           speed=0;
            //steer = M_PI/16;
            float e = distancePI(orientation, scalePI(laneHeading+laneHeadingTurn));
            if (e > 0)
