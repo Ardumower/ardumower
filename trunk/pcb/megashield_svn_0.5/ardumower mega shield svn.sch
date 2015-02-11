@@ -1,11 +1,10 @@
 EESchema Schematic File Version 2
-LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
 LIBS:Wlan_ESP8266
 LIBS:ds1307
 LIBS:ardumower mega shield svn-cache
-EELAYER 25 0
+EELAYER 24 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1278,7 +1277,7 @@ L RR8 RR1
 U 1 1 54994E69
 P 6450 2450
 F 0 "RR1" H 6500 3000 70  0000 C CNN
-F 1 "C100uF" V 6480 2450 70  0000 C CNN
+F 1 "C0,1uF" V 6480 2450 70  0000 C CNN
 F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 6450 2450 60  0001 C CNN
 F 3 "" H 6450 2450 60  0000 C CNN
 F 4 "Value" H 6450 2450 60  0000 C CNN "Bestellnummer"
@@ -1290,7 +1289,7 @@ L RR8 RR2
 U 1 1 5499A2BD
 P 6450 5450
 F 0 "RR2" H 6500 6000 70  0000 C CNN
-F 1 "C100uF" V 6480 5450 70  0000 C CNN
+F 1 "C0,1uF" V 6480 5450 70  0000 C CNN
 F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 6450 5450 60  0001 C CNN
 F 3 "" H 6450 5450 60  0000 C CNN
 	1    6450 5450
@@ -2868,7 +2867,7 @@ L R R23
 U 1 1 54BD9865
 P 4500 2800
 F 0 "R23" V 4580 2800 40  0000 C CNN
-F 1 "120" V 4507 2801 40  0000 C CNN
+F 1 "100" V 4507 2801 40  0000 C CNN
 F 2 "ACS712:Resistor_Horizontal_RM15mm" V 4430 2800 30  0001 C CNN
 F 3 "~" H 4500 2800 30  0000 C CNN
 	1    4500 2800
@@ -3925,10 +3924,6 @@ NoConn ~ 15600 -2100
 NoConn ~ 15600 -1825
 NoConn ~ 15600 -1550
 NoConn ~ 15600 -1275
-Text Notes 3975 5400 0    60   ~ 12
-Kondensator 100uf niergens gefunden.\nDas größte ist 0,1UF bei Conrad\nmuss noch geprüft werden evl anderes Bauteil\nConrad :  	1055268 - 62 
-Text Notes 5650 2925 0    60   ~ 12
-Kondensator 100uf niergens gefunden.\nDas größte ist 0,1UF bei Conrad\nmuss noch geprüft werden evl anderes Bauteil\nConrad :  	1055268 - 62 
 $Comp
 L Wlan_ESP8266 U11
 U 1 1 54D22728
