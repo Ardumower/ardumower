@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 08.02.2015 22:46:02
+Cmp-Mod V01 Created by Cvpcb (2015.01.23 BZR5386)-product   date = Mi 11 Feb 2015 22:09:43 CET
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -157,7 +157,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BB9425;
 Reference = D7;
-ValeurCmp = 1N4007;
+ValeurCmp = 1N 5059;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
@@ -178,7 +178,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54C6AF0E;
 Reference = D10;
-ValeurCmp = 1,5KE 30A;
+ValeurCmp = 1N4148;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
@@ -976,7 +976,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54B574C4;
 Reference = R19;
-ValeurCmp = ????;
+ValeurCmp = 0;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
@@ -1004,28 +1004,28 @@ EndCmp
 BeginCmp
 TimeStamp = /54BD9865;
 Reference = R23;
-ValeurCmp = 120;
+ValeurCmp = 100;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /54C789AB;
 Reference = R24;
-ValeurCmp = ??;
+ValeurCmp = 0;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /54C77B6A;
 Reference = R25;
-ValeurCmp = ??;
+ValeurCmp = 0;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /54C7A8A5;
 Reference = R26;
-ValeurCmp = ??;
+ValeurCmp = 0;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
@@ -1046,14 +1046,14 @@ EndCmp
 BeginCmp
 TimeStamp = /54994E69;
 Reference = RR1;
-ValeurCmp = C100uF;
+ValeurCmp = C0,1uF;
 IdModule  = ACS712:Kondensatorenleiste_8er_9pin_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /5499A2BD;
 Reference = RR2;
-ValeurCmp = C100uF;
+ValeurCmp = C0,1uF;
 IdModule  = ACS712:Kondensatorenleiste_8er_9pin_3D;
 EndCmp
 
@@ -1158,21 +1158,21 @@ EndCmp
 BeginCmp
 TimeStamp = /54C789A5;
 Reference = ZD1;
-ValeurCmp = ZD-5W 3,3V;
+ValeurCmp = ZD-5W 3,3V Optional;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
 TimeStamp = /54C773D8;
 Reference = ZD2;
-ValeurCmp = ZD-5W 5,1;
+ValeurCmp = ZD-5W 5,1 Optional;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
 TimeStamp = /54C7A89F;
 Reference = ZD3;
-ValeurCmp = ZD-5W 12V;
+ValeurCmp = ZD-5W 12V Optional;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 

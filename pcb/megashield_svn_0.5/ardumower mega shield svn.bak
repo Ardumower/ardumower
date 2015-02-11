@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
 LIBS:Wlan_ESP8266
@@ -1278,7 +1277,7 @@ L RR8 RR1
 U 1 1 54994E69
 P 6450 2450
 F 0 "RR1" H 6500 3000 70  0000 C CNN
-F 1 "C100uF" V 6480 2450 70  0000 C CNN
+F 1 "C0,1uF" V 6480 2450 70  0000 C CNN
 F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 6450 2450 60  0001 C CNN
 F 3 "" H 6450 2450 60  0000 C CNN
 F 4 "Value" H 6450 2450 60  0000 C CNN "Bestellnummer"
@@ -1290,7 +1289,7 @@ L RR8 RR2
 U 1 1 5499A2BD
 P 6450 5450
 F 0 "RR2" H 6500 6000 70  0000 C CNN
-F 1 "C100uF" V 6480 5450 70  0000 C CNN
+F 1 "C0,1uF" V 6480 5450 70  0000 C CNN
 F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 6450 5450 60  0001 C CNN
 F 3 "" H 6450 5450 60  0000 C CNN
 	1    6450 5450
@@ -1576,7 +1575,7 @@ L R R19
 U 1 1 54B574C4
 P 6450 8250
 F 0 "R19" V 6530 8250 40  0000 C CNN
-F 1 "????" V 6457 8251 40  0000 C CNN
+F 1 "0" V 6457 8251 40  0000 C CNN
 F 2 "ACS712:Resistor_Horizontal_RM15mm" V 6380 8250 30  0001 C CNN
 F 3 "" H 6450 8250 30  0000 C CNN
 	1    6450 8250
@@ -2735,10 +2734,10 @@ L DIODE D7
 U 1 1 54BB9425
 P 4750 7850
 F 0 "D7" H 4750 7950 40  0000 C CNN
-F 1 "1N4007" H 4750 7750 40  0000 C CNN
+F 1 "1N 5059" H 4750 7750 40  0000 C CNN
 F 2 "ACS712:Diode_ligend_RM10" H 4750 7850 60  0001 C CNN
 F 3 "" H 4750 7850 60  0000 C CNN
-F 4 "R: 1N 4007" H 4750 7850 60  0000 C CNN "Bestellnummer"
+F 4 "1N 5059" H 4750 7850 60  0000 C CNN "Bestellnummer"
 	1    4750 7850
 	-1   0    0    1   
 $EndComp
@@ -2868,7 +2867,7 @@ L R R23
 U 1 1 54BD9865
 P 4500 2800
 F 0 "R23" V 4580 2800 40  0000 C CNN
-F 1 "120" V 4507 2801 40  0000 C CNN
+F 1 "100" V 4507 2801 40  0000 C CNN
 F 2 "ACS712:Resistor_Horizontal_RM15mm" V 4430 2800 30  0001 C CNN
 F 3 "~" H 4500 2800 30  0000 C CNN
 	1    4500 2800
@@ -3055,7 +3054,7 @@ F 3 "" H 12550 4950 60  0000 C CNN
 	0    -1   1    0   
 $EndComp
 Text Notes 8700 -225 0    60   ~ 0
-LED Anzeigen - Hardware:\n\nLed 3V grün -   Betriebsanzeige Versorgungsspannung\nLED 24V grün - Betriebsanzeige Versorgungsspannung\nLED 5V grün -   Betriebsanzeige Versorgungsspannung\nLED Station - gelb - Statusanzeige ob Mover in Ladestation\n\n----------------------------------------------------------\n\nLED Anzeigen - Software:\n\nDual LED z.B:\nDual LED grün. Dauerlicht - Mover innerhalb Perimeter\nDual LED grün+rot = Orange - Dauerlicht Mover außerhalb Perimeter\nDual LED grün+rot = Orange - Blinkt Mover findet  Perimeter nicht oder sucht danach\nDual LED rot =  Blinkt Fehler kurzseitig Überlast Antriebmotor Treibe oder Mähmotor. \nDual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken \nvon Button zurückgesetzt werden\n----------------------------------------------------------\n\nLED Status - grün Dauerlicht - warte auf Eingabe\n\nLED Status - grün blinken 1 bis 5 mal hintereinander\nmit länger Pause dazwischen für Anzeige in welchen\nBetriebsmodi sich der Mover befindet
+LED Anzeigen - Hardware:\n\nLed 3V grün -   Betriebsanzeige Versorgungsspannung\nLED 24V grün - Betriebsanzeige Versorgungsspannung R2 für 12 V anpassen\nLED 5V grün -   Betriebsanzeige Versorgungsspannung\nLED Station - gelb - Statusanzeige ob Mover in Ladestation\n\n----------------------------------------------------------\n\nLED Anzeigen - Software:\n\nDual LED z.B:\nDual LED grün. Dauerlicht - Mover innerhalb Perimeter\nDual LED grün+rot = Orange - Dauerlicht Mover außerhalb Perimeter\nDual LED grün+rot = Orange - Blinkt Mover findet  Perimeter nicht oder sucht danach\nDual LED rot =  Blinkt Fehler kurzseitig Überlast Antriebmotor Treibe oder Mähmotor. \nDual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken \nvon Button zurückgesetzt werden\n----------------------------------------------------------\n\nLED Status - grün Dauerlicht - warte auf Eingabe\n\nLED Status - grün blinken 1 bis 5 mal hintereinander\nmit länger Pause dazwischen für Anzeige in welchen\nBetriebsmodi sich der Mover befindet
 $Comp
 L JUMPER JP3
 U 1 1 54C10ED7
@@ -3205,10 +3204,10 @@ L DIODE D10
 U 1 1 54C6AF0E
 P 6450 9050
 F 0 "D10" H 6450 9150 40  0000 C CNN
-F 1 "1,5KE 30A" H 6450 8950 40  0000 C CNN
+F 1 "1N4148" H 6450 8950 40  0000 C CNN
 F 2 "ACS712:Diode_ligend_RM10" H 6450 9050 60  0001 C CNN
 F 3 "" H 6450 9050 60  0000 C CNN
-F 4 "R: 1,5KE 30A" H 6450 9050 60  0000 C CNN "Bestellnummer"
+F 4 "1N4148" H 6450 9050 60  0000 C CNN "Bestellnummer"
 	1    6450 9050
 	0    -1   -1   0   
 $EndComp
@@ -3217,7 +3216,7 @@ L DIODE ZD2
 U 1 1 54C773D8
 P 11975 7750
 F 0 "ZD2" H 11975 7850 40  0000 C CNN
-F 1 "ZD-5W 5,1" H 11975 7650 40  0000 C CNN
+F 1 "ZD-5W 5,1 Optional" H 11975 7650 40  0000 C CNN
 F 2 "ACS712:Diode_ligend_RM10" H 11975 7750 60  0001 C CNN
 F 3 "" H 11975 7750 60  0000 C CNN
 F 4 "ZD-5W 5,1" H 11975 7750 60  0000 C CNN "Bestellnummer"
@@ -3229,7 +3228,7 @@ L R R25
 U 1 1 54C77B6A
 P 12225 8100
 F 0 "R25" V 12305 8100 40  0000 C CNN
-F 1 "??" V 12232 8101 40  0000 C CNN
+F 1 "0" V 12232 8101 40  0000 C CNN
 F 2 "ACS712:Resistor_Horizontal_RM15mm" V 12155 8100 30  0001 C CNN
 F 3 "~" H 12225 8100 30  0000 C CNN
 	1    12225 8100
@@ -3251,7 +3250,7 @@ L DIODE ZD1
 U 1 1 54C789A5
 P 11950 8700
 F 0 "ZD1" H 11950 8800 40  0000 C CNN
-F 1 "ZD-5W 3,3V" H 11950 8600 40  0000 C CNN
+F 1 "ZD-5W 3,3V Optional" H 11950 8600 40  0000 C CNN
 F 2 "ACS712:Diode_ligend_RM10" H 11950 8700 60  0001 C CNN
 F 3 "" H 11950 8700 60  0000 C CNN
 F 4 "R: ZD-5W 3,3V" H 11950 8700 60  0000 C CNN "Bestellnummer"
@@ -3263,7 +3262,7 @@ L R R24
 U 1 1 54C789AB
 P 12200 9050
 F 0 "R24" V 12280 9050 40  0000 C CNN
-F 1 "??" V 12207 9051 40  0000 C CNN
+F 1 "0" V 12207 9051 40  0000 C CNN
 F 2 "ACS712:Resistor_Horizontal_RM15mm" V 12130 9050 30  0001 C CNN
 F 3 "~" H 12200 9050 30  0000 C CNN
 	1    12200 9050
@@ -3285,7 +3284,7 @@ L DIODE ZD3
 U 1 1 54C7A89F
 P 12300 9675
 F 0 "ZD3" H 12300 9775 40  0000 C CNN
-F 1 "ZD-5W 12V" H 12300 9575 40  0000 C CNN
+F 1 "ZD-5W 12V Optional" H 12300 9575 40  0000 C CNN
 F 2 "ACS712:Diode_ligend_RM10" H 12300 9675 60  0001 C CNN
 F 3 "" H 12300 9675 60  0000 C CNN
 F 4 "R: ZD-5W 12V" H 12300 9675 60  0000 C CNN "Bestellnummer"
@@ -3297,7 +3296,7 @@ L R R26
 U 1 1 54C7A8A5
 P 12875 9675
 F 0 "R26" V 12955 9675 40  0000 C CNN
-F 1 "??" V 12882 9676 40  0000 C CNN
+F 1 "0" V 12882 9676 40  0000 C CNN
 F 2 "ACS712:Resistor_Horizontal_RM15mm" V 12805 9675 30  0001 C CNN
 F 3 "~" H 12875 9675 30  0000 C CNN
 	1    12875 9675
@@ -3925,10 +3924,6 @@ NoConn ~ 15600 -2100
 NoConn ~ 15600 -1825
 NoConn ~ 15600 -1550
 NoConn ~ 15600 -1275
-Text Notes 3975 5400 0    60   ~ 12
-Kondensator 100uf niergens gefunden.\nDas größte ist 0,1UF bei Conrad\nmuss noch geprüft werden evl anderes Bauteil\nConrad :  	1055268 - 62 
-Text Notes 5650 2925 0    60   ~ 12
-Kondensator 100uf niergens gefunden.\nDas größte ist 0,1UF bei Conrad\nmuss noch geprüft werden evl anderes Bauteil\nConrad :  	1055268 - 62 
 $Comp
 L Wlan_ESP8266 U11
 U 1 1 54D22728
@@ -3968,7 +3963,7 @@ NoConn ~ -250 3150
 NoConn ~ -250 3450
 NoConn ~ -250 3550
 Wire Wire Line
-	7200 2950 7200 3050
+	7200 3050 7200 2950
 Wire Wire Line
 	12150 3125 12150 2975
 Wire Wire Line
@@ -4324,7 +4319,7 @@ Connection ~ 9200 4800
 Wire Wire Line
 	3250 5500 3450 5500
 Wire Wire Line
-	7020 2950 7200 2950
+	7200 2950 7020 2950
 Wire Wire Line
 	5800 2850 6000 2850
 Wire Wire Line
@@ -5171,31 +5166,25 @@ Connection ~ 6600 3850
 Connection ~ 6700 3950
 Connection ~ 6800 4050
 Wire Wire Line
-	6900 3150 7000 3150
+	6900 3150 7200 3150
 Wire Wire Line
-	7100 3150 7200 3150
-Wire Wire Line
-	7200 3050 7150 3050
+	7050 3050 7200 3050
 Wire Wire Line
 	6850 1950 6950 1950
 Wire Wire Line
 	6950 1950 6950 2850
 Wire Wire Line
-	6950 2850 7050 2850
+	6950 2850 7200 2850
 Wire Wire Line
-	7200 2850 7150 2850
+	7025 2750 7200 2750
 Wire Wire Line
-	7200 2750 7025 2750
-Wire Wire Line
-	7025 2750 7025 2625
+	7025 1425 7025 2750
 Wire Wire Line
 	5950 650  5975 650 
 Wire Wire Line
 	5975 650  5975 575 
 Wire Wire Line
 	5975 575  6050 575 
-Wire Wire Line
-	7025 1425 7025 2525
 Wire Wire Line
 	7025 1700 6850 1700
 Wire Wire Line
@@ -5208,17 +5197,11 @@ Wire Wire Line
 Wire Wire Line
 	7150 2650 7150 2575
 Wire Wire Line
-	9100 5250 10050 5250
+	9100 5250 10250 5250
 Wire Wire Line
-	10250 5250 10150 5250
+	9100 6300 10250 6300
 Wire Wire Line
-	10050 6300 9100 6300
-Wire Wire Line
-	10150 6300 10250 6300
-Wire Wire Line
-	10050 6700 9100 6700
-Wire Wire Line
-	10150 6700 10250 6700
+	9100 6700 10250 6700
 Wire Wire Line
 	2225 3100 2175 3100
 Wire Wire Line
@@ -5299,9 +5282,7 @@ Wire Wire Line
 	7150 2985 7200 2985
 Connection ~ 7200 2985
 Wire Wire Line
-	9100 2250 9200 2250
-Wire Wire Line
-	9300 2250 9350 2250
+	9100 2250 9350 2250
 Wire Wire Line
 	7300 2250 7300 2050
 Wire Wire Line
@@ -5339,67 +5320,88 @@ Wire Wire Line
 	-175 2950 -250 2950
 Connection ~ 1200 2950
 Wire Wire Line
-	5625 4050 5550 4050
+	5050 4050 5625 4050
 Wire Wire Line
-	5625 3950 5350 3950
+	4050 3950 5625 3950
 Wire Wire Line
-	5625 3850 5550 3850
+	5050 3850 5625 3850
 Wire Wire Line
-	5625 3750 5350 3750
+	4050 3750 5625 3750
 Wire Wire Line
-	5625 3650 5550 3650
+	5050 3650 5625 3650
 Wire Wire Line
-	5625 3550 5350 3550
+	4050 3550 5625 3550
 Wire Wire Line
-	5625 3450 5550 3450
+	5050 3450 5625 3450
 Wire Wire Line
-	5625 3350 5350 3350
+	4050 3350 5625 3350
 Wire Wire Line
-	5450 4050 5050 4050
+	4075 4250 5625 4250
 Wire Wire Line
-	5250 3950 4050 3950
+	5075 4350 5625 4350
 Wire Wire Line
-	5050 3850 5450 3850
+	4075 4450 5625 4450
 Wire Wire Line
-	5250 3750 4050 3750
+	5075 4550 5625 4550
 Wire Wire Line
-	5050 3650 5450 3650
+	4075 4650 5625 4650
 Wire Wire Line
-	5250 3550 4050 3550
+	5075 4750 5625 4750
 Wire Wire Line
-	5050 3450 5450 3450
+	4075 4850 5625 4850
 Wire Wire Line
-	5250 3350 4050 3350
+	5050 4950 5625 4950
+Connection ~ 10150 5250
+Connection ~ 10050 5250
+Connection ~ 10150 6300
+Connection ~ 10050 6300
+Connection ~ 10150 6700
+Connection ~ 10050 6700
+Connection ~ 9300 2250
+Connection ~ 9200 2250
 Wire Wire Line
-	5625 4250 5350 4250
-Wire Wire Line
-	5250 4250 4075 4250
-Wire Wire Line
-	5075 4350 5450 4350
-Wire Wire Line
-	5550 4350 5625 4350
-Wire Wire Line
-	5625 4450 5350 4450
-Wire Wire Line
-	5250 4450 4075 4450
-Wire Wire Line
-	5075 4550 5450 4550
-Wire Wire Line
-	5550 4550 5625 4550
-Wire Wire Line
-	5625 4650 5350 4650
-Wire Wire Line
-	5625 4750 5550 4750
-Wire Wire Line
-	5625 4850 5350 4850
-Wire Wire Line
-	5625 4950 5550 4950
-Wire Wire Line
-	5250 4850 4075 4850
-Wire Wire Line
-	5450 4950 5050 4950
-Wire Wire Line
-	5450 4750 5075 4750
-Wire Wire Line
-	5250 4650 4075 4650
+	7150 2600 7150 2450
+Connection ~ 7150 2450
+Connection ~ 7150 2600
+Connection ~ 7150 2850
+Connection ~ 7050 2850
+Connection ~ 7150 3050
+Connection ~ 7000 3150
+Connection ~ 7100 3150
+Connection ~ 5350 3350
+Connection ~ 5250 3350
+Connection ~ 5550 3450
+Connection ~ 5450 3450
+Connection ~ 5350 3550
+Connection ~ 5250 3550
+Connection ~ 5550 3650
+Connection ~ 5450 3650
+Connection ~ 5350 3750
+Connection ~ 5250 3750
+Connection ~ 5550 3850
+Connection ~ 5450 3850
+Connection ~ 5250 3950
+Connection ~ 5350 3950
+Connection ~ 5550 4050
+Connection ~ 5450 4050
+Connection ~ 5350 4250
+Connection ~ 5250 4250
+Connection ~ 5550 4350
+Connection ~ 5450 4350
+Connection ~ 5250 4450
+Connection ~ 5350 4450
+Connection ~ 5550 4550
+Connection ~ 5450 4550
+Connection ~ 5350 4650
+Connection ~ 5250 4650
+Connection ~ 5550 4750
+Connection ~ 5450 4750
+Connection ~ 5250 4850
+Connection ~ 5350 4850
+Connection ~ 5550 4950
+Connection ~ 5450 4950
+Connection ~ 7025 2625
+Connection ~ 7025 2525
+Text Notes 4575 8075 0    60   ~ 0
+Ladereglung
 $EndSCHEMATC
