@@ -5404,4 +5404,6 @@ Connection ~ 7025 2625
 Connection ~ 7025 2525
 Text Notes 4575 8075 0    60   ~ 0
 Ladereglung
+Text Notes 5000 3100 0    60   ~ 0
+Lötpads, mit Brücke\nZur Einbindung des Due
 $EndSCHEMATC
