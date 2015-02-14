@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:/Users/Uwe/Downloads/megashield_svn_0.5/ardumower mega shield svn.sch")
-    (date "12.02.2015 21:16:43")
+    (date "14.02.2015 14:14:05")
     (tool "Eeschema (2015-01-23 BZR 5386)-product"))
   (components
     (comp (ref SHIELD1)
@@ -1116,34 +1116,6 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 54D22728)))
   (libparts
-    (libpart (lib Bluetooth_CZ_HC_05) (part Bluetooth_CZ_HC_05)
-      (fields
-        (field (name Reference) U)
-        (field (name Value) Bluetooth_CZ_HC_05)
-        (field (name Footprint) MODULE)
-        (field (name Datasheet) DOCUMENTATION))
-      (pins
-        (pin (num 1) (name VCC) (type power_in))
-        (pin (num 2) (name GND) (type power_out))
-        (pin (num 3) (name TXD) (type output))
-        (pin (num 4) (name RXD) (type input))
-        (pin (num 5) (name Key) (type input))
-        (pin (num 6) (name LED) (type output))))
-    (libpart (lib Wlan_ESP8266) (part Wlan_ESP8266)
-      (fields
-        (field (name Reference) U)
-        (field (name Value) Wlan_ESP8266)
-        (field (name Footprint) MODULE)
-        (field (name Datasheet) DOCUMENTATION))
-      (pins
-        (pin (num 1) (name TX) (type input))
-        (pin (num 2) (name CH_PD) (type input))
-        (pin (num 3) (name Reset) (type input))
-        (pin (num 4) (name VCC) (type input))
-        (pin (num 5) (name GND) (type input))
-        (pin (num 6) (name GP_IO2) (type input))
-        (pin (num 7) (name GP_IO0) (type input))
-        (pin (num 8) (name RX) (type input))))
     (libpart (lib ds1307) (part DS1307+)
       (aliases
         (alias DS1307N+)
@@ -1535,16 +1507,44 @@
         (field (name Value) SPEAKER))
       (pins
         (pin (num 1) (name 1) (type input))
-        (pin (num 2) (name 2) (type input)))))
+        (pin (num 2) (name 2) (type input))))
+    (libpart (lib Bluetooth_CZ_HC_05) (part Bluetooth_CZ_HC_05)
+      (fields
+        (field (name Reference) U)
+        (field (name Value) Bluetooth_CZ_HC_05)
+        (field (name Footprint) MODULE)
+        (field (name Datasheet) DOCUMENTATION))
+      (pins
+        (pin (num 1) (name VCC) (type power_in))
+        (pin (num 2) (name GND) (type power_out))
+        (pin (num 3) (name TXD) (type output))
+        (pin (num 4) (name RXD) (type input))
+        (pin (num 5) (name Key) (type input))
+        (pin (num 6) (name LED) (type output))))
+    (libpart (lib Wlan_ESP8266) (part Wlan_ESP8266)
+      (fields
+        (field (name Reference) U)
+        (field (name Value) Wlan_ESP8266)
+        (field (name Footprint) MODULE)
+        (field (name Datasheet) DOCUMENTATION))
+      (pins
+        (pin (num 1) (name TX) (type input))
+        (pin (num 2) (name CH_PD) (type input))
+        (pin (num 3) (name Reset) (type input))
+        (pin (num 4) (name VCC) (type input))
+        (pin (num 5) (name GND) (type input))
+        (pin (num 6) (name GP_IO2) (type input))
+        (pin (num 7) (name GP_IO0) (type input))
+        (pin (num 8) (name RX) (type input)))))
   (libraries
+    (library (logical "ardumower mega shield svn-cache")
+      (uri "C:\\Users\\Uwe\\Downloads\\megashield_svn_0.5\\ardumower mega shield svn-cache.lib"))
     (library (logical Bluetooth_CZ_HC_05)
       (uri C:\Users\Uwe\Downloads\megashield_svn_0.5\acs712.pretty\Bluetooth_CZ_HC_05.lib))
     (library (logical Wlan_ESP8266)
       (uri C:\Users\Uwe\Downloads\megashield_svn_0.5\acs712.pretty\Wlan_ESP8266.lib))
     (library (logical ds1307)
-      (uri C:\Users\Uwe\Downloads\megashield_svn_0.5\acs712.pretty\ds1307.lib))
-    (library (logical "ardumower mega shield svn-cache")
-      (uri "C:\\Users\\Uwe\\Downloads\\megashield_svn_0.5\\ardumower mega shield svn-cache.lib")))
+      (uri C:\Users\Uwe\Downloads\megashield_svn_0.5\acs712.pretty\ds1307.lib)))
   (nets
     (net (code 1) (name pinMotorMowPWM)
       (node (ref Dual2) (pin 14))
