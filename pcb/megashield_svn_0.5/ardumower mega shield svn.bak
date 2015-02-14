@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
 LIBS:Wlan_ESP8266
@@ -4424,7 +4425,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 8000 8700 8000
 Wire Wire Line
-	9100 7500 9100 8650
+	9100 7050 9100 8650
 Connection ~ 9100 8150
 Wire Wire Line
 	8700 8000 8700 8900
@@ -5094,13 +5095,10 @@ Wire Wire Line
 Wire Wire Line
 	9300 7900 9300 8050
 Wire Wire Line
-	9450 7050 9450 8900
+	9450 7950 9450 8900
 Wire Wire Line
 	9450 7950 9300 7950
 Connection ~ 9300 7950
-Wire Wire Line
-	9450 7050 9475 7050
-Connection ~ 9450 7950
 Wire Wire Line
 	6450 7350 6450 8000
 Wire Wire Line
@@ -5191,11 +5189,11 @@ Wire Wire Line
 	7025 1425 6800 1425
 Connection ~ 7025 1700
 Wire Wire Line
-	7150 2475 7150 2400
+	7150 2400 7150 2475
 Wire Wire Line
-	7200 2650 7150 2650
+	7150 2650 7200 2650
 Wire Wire Line
-	7150 2650 7150 2575
+	7150 2575 7150 2650
 Wire Wire Line
 	9100 5250 10250 5250
 Wire Wire Line
@@ -5406,4 +5404,6 @@ Text Notes 4575 8075 0    60   ~ 0
 Ladereglung
 Text Notes 5000 3100 0    60   ~ 0
 Lötpads, mit Brücke\nZur Einbindung des Due
+Wire Wire Line
+	9100 7050 9475 7050
 $EndSCHEMATC
