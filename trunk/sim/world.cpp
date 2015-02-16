@@ -12,6 +12,7 @@ World::World(){
   list.push_back( (point_t) {30, 35 } );
   list.push_back( (point_t) {400, 40 } );
   list.push_back( (point_t) {410, 110 } );
+  list.push_back( (point_t) {310, 140 } );
   list.push_back( (point_t) {210, 250 } );
   list.push_back( (point_t) {50, 310 } );
 
@@ -41,7 +42,9 @@ World::World(){
            && (px >=0) && (px < WORLD_SIZE_X)) {
           float r = max(0.000001, sqrt( (cx-px)*(cx-px) + (cy-py)*(cy-py) ) ) / 10; // distance to line (meter)
           float b=100.0/(2.0*M_PI*r); // field strength
-          if ((y<=0) || (bfield[py][px] < 0)){
+          int c = pnpoly(list, px, py);
+          //if ((y<=0) || (bfield[py][px] < 0)){
+          if (c == 0){
             b=b*-1.0;
             bfield[py][px] =  min(bfield[py][px], b);
           } else bfield[py][px] = max(bfield[py][px], b);
@@ -117,5 +120,26 @@ void World::setLawnMowed(int x, int y){
       lawnMowStatus[y+i][x+j] = 1.0;
     }
   }
+}
+
+
+// checks if point is inside polygon
+// The algorithm is ray-casting to the right. Each iteration of the loop, the test point is checked against
+// one of the polygon's edges. The first line of the if-test succeeds if the point's y-coord is within the
+// edge's scope. The second line checks whether the test point is to the left of the line
+// If that is true the line drawn rightwards from the test point crosses that edge.
+// By repeatedly inverting the value of c, the algorithm counts how many times the rightward line crosses the
+// polygon. If it crosses an odd number of times, then the point is inside; if an even number, the point is outside.
+
+int World::pnpoly(std::vector<point_t> &vertices, float testx, float testy)
+{
+  int i, j, c = 0;
+  int nvert = vertices.size();
+  for (i = 0, j = nvert-1; i < nvert; j = i++) {
+    if ( ((vertices[i].y>testy) != (vertices[j].y>testy)) &&
+     (testx < (vertices[j].x-vertices[i].x) * (testy-vertices[i].y) / (vertices[j].y-vertices[i].y) + vertices[i].x) )
+       c = !c;
+  }
+  return c;
 }
 
