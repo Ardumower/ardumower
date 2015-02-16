@@ -4,6 +4,8 @@
 World::World(){
   drawMowedLawn = true;
   memset(lawnMowStatus, 0, sizeof lawnMowStatus);
+  //printf("%d\n", sizeof bfield);
+  memset(bfield, 0, sizeof bfield);
   imgBfield = Mat(WORLD_SIZE_Y, WORLD_SIZE_X, CV_8UC3, Scalar(0,0,0));
   imgWorld = Mat(WORLD_SIZE_Y, WORLD_SIZE_X, CV_8UC3, Scalar(0,0,0));
 
@@ -11,7 +13,7 @@ World::World(){
   std::vector<point_t> list;
   list.push_back( (point_t) {30, 35 } );
   list.push_back( (point_t) {400, 40 } );
-  list.push_back( (point_t) {410, 110 } );
+  list.push_back( (point_t) {410, 180 } );
   list.push_back( (point_t) {310, 140 } );
   list.push_back( (point_t) {210, 250 } );
   list.push_back( (point_t) {50, 310 } );
