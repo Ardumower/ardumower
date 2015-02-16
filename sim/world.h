@@ -41,6 +41,7 @@ class World
     float bfield[WORLD_SIZE_Y][WORLD_SIZE_X];
     // lawn mow status
     float lawnMowStatus[WORLD_SIZE_Y][WORLD_SIZE_X];
+    int pnpoly(std::vector<point_t> &vertices, float testx, float testy);
   public:
     int chgStationX, chgStationY;
     Mat imgBfield;
