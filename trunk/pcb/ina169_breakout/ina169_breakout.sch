@@ -168,10 +168,10 @@ Wire Wire Line
 	3800 3900 3200 3900
 Connection ~ 6250 2300
 Connection ~ 4450 2300
-Text Notes 5700 3410 2    60   ~ 0
-Rshunt (RS)
+Text Notes 5850 3500 2    60   ~ 0
+Rshunt (RS)\nSMD CRM2512-FX-R100ELF
 Text Notes 4350 3550 1    60   ~ 0
-Load resistor (RL)
+Load resistor (RL)\nSMD-0603 100K
 Text Notes 2550 2750 0    60   ~ 0
 INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5A (1V/Amp)\nVout=RL/10K*I(Amps)
 Wire Wire Line
@@ -190,4 +190,10 @@ Wire Wire Line
 Wire Wire Line
 	3450 4500 3450 4200
 Connection ~ 3450 4200
+Text Notes 6500 3400 0    60   ~ 0
+SMD 12 X7R-G1206 100N
+Text Notes 5200 2900 0    60   ~ 0
+SOT23-5
+Text Notes 6550 2850 0    60   ~ 0
+http://de.wikipedia.org/wiki/Chip-Bauform
 $EndSCHEMATC
