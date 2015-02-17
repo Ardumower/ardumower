@@ -60,24 +60,24 @@ $EndComp
 $Comp
 L R R2
 U 1 1 54E30D69
-P 5400 3250
-F 0 "R2" V 5480 3250 50  0000 C CNN
-F 1 "100K 1%" V 5407 3251 50  0000 C CNN
-F 2 "" V 5330 3250 30  0000 C CNN
-F 3 "" H 5400 3250 30  0000 C CNN
-	1    5400 3250
-	0    1    1    0   
+P 4450 3200
+F 0 "R2" V 4530 3200 50  0000 C CNN
+F 1 "100K 1%" V 4457 3201 50  0000 C CNN
+F 2 "" V 4380 3200 30  0000 C CNN
+F 3 "" H 4450 3200 30  0000 C CNN
+	1    4450 3200
+	1    0    0    -1  
 $EndComp
 $Comp
 L R R1
 U 1 1 54E30DE5
-P 4450 3150
-F 0 "R1" V 4530 3150 50  0000 C CNN
-F 1 "0.1 1% 2W" V 4457 3151 50  0000 C CNN
-F 2 "" V 4380 3150 30  0000 C CNN
-F 3 "" H 4450 3150 30  0000 C CNN
-	1    4450 3150
-	1    0    0    -1  
+P 5450 3250
+F 0 "R1" V 5530 3250 50  0000 C CNN
+F 1 "0.1 1% 2W" V 5457 3251 50  0000 C CNN
+F 2 "" V 5380 3250 30  0000 C CNN
+F 3 "" H 5450 3250 30  0000 C CNN
+	1    5450 3250
+	0    -1   -1   0   
 $EndComp
 $Comp
 L GND #PWR01
@@ -135,19 +135,17 @@ $EndComp
 Wire Wire Line
 	6250 3600 6250 4500
 Wire Wire Line
-	3200 4000 4450 4000
+	4450 4000 3200 4000
 Wire Wire Line
 	4100 2500 4850 2500
 Wire Wire Line
-	4800 2500 4800 3250
-Wire Wire Line
-	4800 3250 5150 3250
+	4450 3450 4450 4000
 Wire Wire Line
 	5900 2500 5950 2500
 Wire Wire Line
 	5950 2500 5950 4300
 Wire Wire Line
-	5950 3250 5650 3250
+	4450 2300 4450 2950
 Wire Wire Line
 	4100 2500 4100 4200
 Wire Wire Line
@@ -169,15 +167,17 @@ Wire Wire Line
 Wire Wire Line
 	3800 3900 3200 3900
 Connection ~ 6250 2300
-Wire Wire Line
-	4450 2300 4450 2900
 Connection ~ 4450 2300
-Wire Wire Line
-	4450 4000 4450 3400
-Text Notes 4350 3400 1    60   ~ 0
+Text Notes 5700 3410 2    60   ~ 0
 Rshunt (RS)
-Text Notes 5050 3150 0    60   ~ 0
+Text Notes 4350 3550 1    60   ~ 0
 Load resistor (RL)
 Text Notes 2550 2750 0    60   ~ 0
 INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5A (1V/Amp)\nVout=RL/10K*I(Amps)
+Wire Wire Line
+	4800 2500 4800 3250
+Wire Wire Line
+	4800 3250 5200 3250
+Wire Wire Line
+	5950 3250 5700 3250
 $EndSCHEMATC
