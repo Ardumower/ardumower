@@ -302,7 +302,7 @@
   (gr_text GND (at 145.828119 114.256227) (layer F.SilkS)
     (effects (font (size 0.7 0.7) (thickness 0.1)))
   )
-  (gr_text VCC (at 142.17723 114.090278) (layer F.SilkS)
+  (gr_text VCC (at 141.688641 114.163382) (layer F.SilkS)
     (effects (font (size 0.7 0.7) (thickness 0.1)))
   )
   (gr_line (start 144.78 100.33) (end 144.78 96.52) (angle 90) (layer F.SilkS) (width 0.2))
