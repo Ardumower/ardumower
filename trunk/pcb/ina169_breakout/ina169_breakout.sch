@@ -62,7 +62,7 @@ L R R2
 U 1 1 54E30D69
 P 4450 3200
 F 0 "R2" V 4530 3200 50  0000 C CNN
-F 1 "100K 1%" V 4457 3201 50  0000 C CNN
+F 1 "10K 1%" V 4457 3201 50  0000 C CNN
 F 2 "" V 4380 3200 30  0000 C CNN
 F 3 "" H 4450 3200 30  0000 C CNN
 	1    4450 3200
@@ -171,7 +171,7 @@ Connection ~ 4450 2300
 Text Notes 5850 3500 2    60   ~ 0
 Rshunt (RS)\nSMD CRM2512-FX-R100ELF
 Text Notes 4350 3550 1    60   ~ 0
-Load resistor (RL)\nSMD-0603 100K
+Load resistor (RL)\nSMD-0603 10K
 Text Notes 2550 2750 0    60   ~ 0
 INA169 DC Current Sensor \nVCC/Vin: 2.7-50V\nMax Current: 5A (1V/Amp)\nVout=RL/10K*I(Amps)
 Wire Wire Line
