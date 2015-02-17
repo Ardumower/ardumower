@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 07.02.2015 22:54:00
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 16.02.2015 17:04:08
 
 BeginCmp
 TimeStamp = /54D689DE;
@@ -66,7 +66,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54D55253;
 Reference = EF1;
-ValeurCmp = F_10A;
+ValeurCmp = F_5A;
 IdModule  = sender_v2:Fuseholder_Reichelt_PL112000;
 EndCmp
 
