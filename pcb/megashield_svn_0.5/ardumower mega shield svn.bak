@@ -2617,7 +2617,7 @@ F 3 "" H 15550 5150 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 Text GLabel 15300 5350 0    60   Output ~ 0
-Spannungmessung
+Voltage measurement
 Text GLabel 5050 4050 0    60   Input ~ 0
 Voltage measurement
 $Comp

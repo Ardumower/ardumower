@@ -537,13 +537,13 @@ $EndComp
 $Comp
 L CONN_6 P3
 U 1 1 54D5527A
-P 6850 1250
-F 0 "P3" V 6800 1250 60  0000 C CNN
-F 1 "Status LED" V 6900 1250 60  0000 C CNN
-F 2 "sender_v2:Pin_Header_Straight_1x06" H 6850 1250 60  0001 C CNN
-F 3 "" H 6850 1250 60  0000 C CNN
-F 4 "Value" H 6850 1250 60  0001 C CNN "Bestellnummer"
-	1    6850 1250
+P 6850 1350
+F 0 "P3" V 6800 1350 60  0000 C CNN
+F 1 "Status LED" V 6900 1350 60  0000 C CNN
+F 2 "sender_v2:Pin_Header_Straight_1x06" H 6850 1350 60  0001 C CNN
+F 3 "" H 6850 1350 60  0000 C CNN
+F 4 "Value" H 6850 1350 60  0001 C CNN "Bestellnummer"
+	1    6850 1350
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -636,12 +636,12 @@ Wire Wire Line
 $Comp
 L GND #PWR020
 U 1 1 54D55FB8
-P 6375 1000
-F 0 "#PWR020" H 6375 1000 30  0001 C CNN
-F 1 "GND" H 6375 930 30  0001 C CNN
-F 2 "" H 6375 1000 60  0000 C CNN
-F 3 "" H 6375 1000 60  0000 C CNN
-	1    6375 1000
+P 6375 1600
+F 0 "#PWR020" H 6375 1600 30  0001 C CNN
+F 1 "GND" H 6375 1530 30  0001 C CNN
+F 2 "" H 6375 1600 60  0000 C CNN
+F 3 "" H 6375 1600 60  0000 C CNN
+	1    6375 1600
 	0    1    -1   0   
 $EndComp
 $Comp
@@ -694,7 +694,7 @@ Wire Wire Line
 NoConn ~ 10425 1525
 NoConn ~ 10425 1425
 Wire Wire Line
-	6375 1000 6500 1000
+	6375 1600 6500 1600
 Wire Wire Line
 	2375 2750 2200 2750
 Wire Wire Line
@@ -703,13 +703,13 @@ Wire Wire Line
 	1700 2250 1700 2175
 Text GLabel 5000 1100 0    60   Input ~ 0
 Mover_in_Ladestation
-Text GLabel 6350 1200 0    60   Input ~ 0
-M1_DuoLED_Schleife1_Grün
 Text GLabel 6350 1400 0    60   Input ~ 0
+M1_DuoLED_Schleife1_Grün
+Text GLabel 6350 1200 0    60   Input ~ 0
 M2_DuoLED_Schleife2_Grün
-Text GLabel 5000 1300 0    60   Input ~ 0
-M1_DuoLED_Schleife1_Rot
 Text GLabel 5000 1500 0    60   Input ~ 0
+M1_DuoLED_Schleife1_Rot
+Text GLabel 5000 1300 0    60   Input ~ 0
 M2_DuoLED_Schleife2_Rot
 Wire Wire Line
 	6500 1100 5000 1100
@@ -727,13 +727,13 @@ Connection ~ 1700 2750
 $Comp
 L CONN_3 P4
 U 1 1 54D57EFB
-P 6850 2100
-F 0 "P4" V 6800 2100 50  0000 C CNN
-F 1 "V.LED" V 6900 2100 40  0000 C CNN
-F 2 "sender_v2:Pin_Header_Straight_1x03" H 6850 2100 60  0001 C CNN
-F 3 "" H 6850 2100 60  0000 C CNN
-F 4 "Value" H 6850 2100 60  0001 C CNN "Bestellnummer"
-	1    6850 2100
+P 6850 2200
+F 0 "P4" V 6800 2200 50  0000 C CNN
+F 1 "V.LED" V 6900 2200 40  0000 C CNN
+F 2 "sender_v2:Pin_Header_Straight_1x03" H 6850 2200 60  0001 C CNN
+F 3 "" H 6850 2200 60  0000 C CNN
+F 4 "Value" H 6850 2200 60  0001 C CNN "Bestellnummer"
+	1    6850 2200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -801,16 +801,16 @@ Wire Wire Line
 $Comp
 L GND #PWR026
 U 1 1 54D58D55
-P 6375 2000
-F 0 "#PWR026" H 6375 2000 30  0001 C CNN
-F 1 "GND" H 6375 1930 30  0001 C CNN
-F 2 "" H 6375 2000 60  0000 C CNN
-F 3 "" H 6375 2000 60  0000 C CNN
-	1    6375 2000
+P 6375 2300
+F 0 "#PWR026" H 6375 2300 30  0001 C CNN
+F 1 "GND" H 6375 2230 30  0001 C CNN
+F 2 "" H 6375 2300 60  0000 C CNN
+F 3 "" H 6375 2300 60  0000 C CNN
+	1    6375 2300
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
-	6375 2000 6500 2000
+	6375 2300 6500 2300
 Wire Wire Line
 	6500 2100 5850 2100
 Wire Wire Line
@@ -912,4 +912,6 @@ NoConn ~ 5775 6250
 NoConn ~ 5775 6150
 NoConn ~ 5775 6050
 NoConn ~ 5775 5950
+Text Notes 7450 7500 0    60   ~ 0
+Schleifensender
 $EndSCHEMATC
