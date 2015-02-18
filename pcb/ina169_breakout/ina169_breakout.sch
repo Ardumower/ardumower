@@ -173,7 +173,7 @@ Rshunt (RS)\nSMD CRM2512-FX-R100ELF
 Text Notes 4350 3550 1    60   ~ 0
 Load resistor (RL)\nSMD-0603 10K
 Text Notes 2550 2750 0    60   ~ 0
-INA169 DC Current Sensor \nVCC/Vin: 2.7-50V\nMax Current: 4.5A (1V/Amp)\nVout=RL/10K*I(Amps)
+INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL/10K*I(Amps)
 Wire Wire Line
 	4800 2500 4800 3250
 Wire Wire Line
