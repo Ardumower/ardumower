@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source D:/Projects/robomower/ardumower/googlecode/pcb/ina169_breakout/ina169_breakout.sch)
-    (date "17.02.2015 14:53:29")
+    (date "18.02.2015 11:59:03")
     (tool "Eeschema (2015-01-13 BZR 5369)-product"))
   (components
     (comp (ref J1)
@@ -10,7 +10,7 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 54E30C13))
     (comp (ref R2)
-      (value "100K 1%")
+      (value "10K 1%")
       (libsource (lib device) (part R))
       (sheetpath (names /) (tstamps /))
       (tstamp 54E30D69))
@@ -42,6 +42,20 @@
       (pins
         (pin (num 1) (name ~) (type passive))
         (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistance)
+      (footprints
+        (fp R?)
+        (fp SM0603)
+        (fp SM0805)
+        (fp R?-*)
+        (fp SM1206))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
     (libpart (lib ina169_breakout_conn) (part INA169_Breakout_Conn)
       (fields
         (field (name Reference) J)
@@ -63,28 +77,14 @@
         (pin (num 2) (name GND) (type input))
         (pin (num 3) (name Vin+) (type input))
         (pin (num 4) (name Vin-) (type input))
-        (pin (num 5) (name V+) (type input))))
-    (libpart (lib device) (part R)
-      (description Resistance)
-      (footprints
-        (fp R?)
-        (fp SM0603)
-        (fp SM0805)
-        (fp R?-*)
-        (fp SM1206))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive)))))
+        (pin (num 5) (name V+) (type input)))))
   (libraries
     (library (logical device)
       (uri D:\kicad-winbuilder-3.4\kicad\share\library\device.lib))
-    (library (logical ina169_breakout_conn)
-      (uri D:\Projects\robomower\ardumower\googlecode\pcb\ina169_breakout\ina169_breakout_conn.lib))
     (library (logical ina169_ic)
-      (uri D:\Projects\robomower\ardumower\googlecode\pcb\ina169_breakout\ina169_ic.lib)))
+      (uri D:\Projects\robomower\ardumower\googlecode\pcb\ina169_breakout\ina169_ic.lib))
+    (library (logical ina169_breakout_conn)
+      (uri D:\Projects\robomower\ardumower\googlecode\pcb\ina169_breakout\ina169_breakout_conn.lib)))
   (nets
     (net (code 1) (name "Net-(J1-Pad3)")
       (node (ref U1) (pin 1))
