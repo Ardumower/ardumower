@@ -703,11 +703,11 @@ Wire Wire Line
 	1700 2250 1700 2175
 Text GLabel 5000 1100 0    60   Input ~ 0
 Mover_in_Ladestation
-Text GLabel 6350 1400 0    60   Input ~ 0
+Text GLabel 5000 1500 0    60   Input ~ 0
 M1_DuoLED_Schleife1_Grün
 Text GLabel 6350 1200 0    60   Input ~ 0
 M2_DuoLED_Schleife2_Grün
-Text GLabel 5000 1500 0    60   Input ~ 0
+Text GLabel 6350 1400 0    60   Input ~ 0
 M1_DuoLED_Schleife1_Rot
 Text GLabel 5000 1300 0    60   Input ~ 0
 M2_DuoLED_Schleife2_Rot

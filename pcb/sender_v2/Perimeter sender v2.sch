@@ -134,7 +134,7 @@ U 1 1 53A992CD
 P 6500 5050
 F 0 "R7" V 6580 5050 40  0000 C CNN
 F 1 "220R" V 6507 5051 40  0000 C CNN
-F 2 "Zacs712:Resistor_Horizontal_RM10mm" V 6430 5050 30  0001 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 6430 5050 30  0001 C CNN
 F 3 "~" H 6500 5050 30  0000 C CNN
 	1    6500 5050
 	0    1    -1   0   
