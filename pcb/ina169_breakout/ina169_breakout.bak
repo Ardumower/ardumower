@@ -49,12 +49,12 @@ $EndDescr
 $Comp
 L INA169_Breakout_Conn J1
 U 1 1 54E30C13
-P 2850 4250
-F 0 "J1" H 2850 4750 60  0000 C CNN
-F 1 "INA169_Breakout_Conn" H 2850 3800 60  0000 C CNN
-F 2 "" H 3000 4450 60  0000 C CNN
-F 3 "" H 3000 4450 60  0000 C CNN
-	1    2850 4250
+P 2850 4100
+F 0 "J1" H 2850 4600 60  0000 C CNN
+F 1 "INA169_Breakout_Conn" H 2850 3650 60  0000 C CNN
+F 2 "" H 3000 4300 60  0000 C CNN
+F 3 "" H 3000 4300 60  0000 C CNN
+	1    2850 4100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -143,23 +143,15 @@ Wire Wire Line
 Wire Wire Line
 	5900 2500 5950 2500
 Wire Wire Line
-	5950 2500 5950 4300
-Wire Wire Line
 	4450 2300 4450 2950
 Wire Wire Line
 	4100 2500 4100 4200
 Wire Wire Line
 	4100 4200 3200 4200
 Connection ~ 4800 2500
-Wire Wire Line
-	5950 4300 3200 4300
 Connection ~ 5950 3250
 Wire Wire Line
 	4850 2300 3900 2300
-Wire Wire Line
-	3900 2300 3900 4100
-Wire Wire Line
-	3900 4100 3200 4100
 Wire Wire Line
 	6250 2050 3800 2050
 Wire Wire Line
@@ -173,27 +165,25 @@ Rshunt (RS)\nSMD CRM2512-FX-R100ELF
 Text Notes 4350 3550 1    60   ~ 0
 Load resistor (RL)\nSMD-0603 10K
 Text Notes 2550 2750 0    60   ~ 0
-INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 4.5A (1V/Amp)\nVout=RL/10K*I(Amps)
+INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL/10K*I(Amps)
 Wire Wire Line
 	4800 2500 4800 3250
 Wire Wire Line
 	4800 3250 5200 3250
 Wire Wire Line
 	5950 3250 5700 3250
-Wire Wire Line
-	3200 4400 3350 4400
-Wire Wire Line
-	3350 4400 3350 4300
-Connection ~ 3350 4300
-Wire Wire Line
-	3200 4500 3450 4500
-Wire Wire Line
-	3450 4500 3450 4200
-Connection ~ 3450 4200
 Text Notes 6500 3400 0    60   ~ 0
 SMD 12 X7R-G1206 100N
 Text Notes 5200 2900 0    60   ~ 0
 SOT23-5
 Text Notes 6550 2850 0    60   ~ 0
 http://de.wikipedia.org/wiki/Chip-Bauform
+Wire Wire Line
+	3200 4100 5950 4100
+Wire Wire Line
+	5950 4100 5950 2500
+Wire Wire Line
+	3900 2300 3900 4300
+Wire Wire Line
+	3900 4300 3200 4300
 $EndSCHEMATC
