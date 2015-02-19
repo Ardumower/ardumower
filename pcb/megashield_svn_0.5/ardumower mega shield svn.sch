@@ -2816,7 +2816,6 @@ F 3 "" H 1225 3350 60  0000 C CNN
 	1    1225 3350
 	0    -1   -1   0   
 $EndComp
-NoConn ~ 1175 3050
 NoConn ~ 1175 3150
 NoConn ~ 1175 3450
 NoConn ~ 1175 3550
@@ -3960,7 +3959,6 @@ F 3 "" H -200 3350 60  0000 C CNN
 	1    -200 3350
 	0    -1   -1   0   
 $EndComp
-NoConn ~ -250 3050
 NoConn ~ -250 3150
 NoConn ~ -250 3450
 NoConn ~ -250 3550
@@ -5407,4 +5405,30 @@ Text Notes 5000 3100 0    60   ~ 0
 Lötpads, mit Brücke\nZur Einbindung des Due
 Wire Wire Line
 	9100 7050 9475 7050
+$Comp
+L +3.3V #PWR0147
+U 1 1 54E5E951
+P 1200 3050
+F 0 "#PWR0147" H 1200 3140 20  0001 C CNN
+F 1 "+3.3V" H 1200 3140 30  0000 C CNN
+F 2 "" H 1200 3050 60  0000 C CNN
+F 3 "" H 1200 3050 60  0000 C CNN
+	1    1200 3050
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	1200 3050 1175 3050
+$Comp
+L +3.3V #PWR0148
+U 1 1 54E5EFBB
+P -200 3050
+F 0 "#PWR0148" H -200 3140 20  0001 C CNN
+F 1 "+3.3V" H -200 3140 30  0000 C CNN
+F 2 "" H -200 3050 60  0000 C CNN
+F 3 "" H -200 3050 60  0000 C CNN
+	1    -200 3050
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	-250 3050 -200 3050
 $EndSCHEMATC
