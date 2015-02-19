@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 14.02.2015 21:25:22
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 19.02.2015 11:42:35
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -199,7 +199,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54A79B5A;
 Reference = EF1;
-ValeurCmp = F_10A;
+ValeurCmp = F_5A;
 IdModule  = ACS712:Fuseholder_Reichelt_PL112000;
 EndCmp
 
@@ -619,7 +619,7 @@ EndCmp
 BeginCmp
 TimeStamp = /541D1F00;
 Reference = P15;
-ValeurCmp = Links;
+ValeurCmp = Left;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -640,7 +640,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54168B06;
 Reference = P18;
-ValeurCmp = Rechts;
+ValeurCmp = Right;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -738,21 +738,21 @@ EndCmp
 BeginCmp
 TimeStamp = /54B73B5A;
 Reference = P32;
-ValeurCmp = Stromleiste GND;
+ValeurCmp = Voltage header GND;
 IdModule  = ACS712:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B73600;
 Reference = P33;
-ValeurCmp = Stromleiste 5V;
+ValeurCmp = Voltage header 5V;
 IdModule  = ACS712:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B73CFB;
 Reference = P34;
-ValeurCmp = Stromleiste 3,3V;
+ValeurCmp = Voltage header 3,3V;
 IdModule  = ACS712:Pin_Header_Straight_1x08;
 EndCmp
 
@@ -773,7 +773,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BE02C5;
 Reference = P37;
-ValeurCmp = Mähteller;
+ValeurCmp = Mower;
 IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
@@ -808,14 +808,14 @@ EndCmp
 BeginCmp
 TimeStamp = /541A0C85;
 Reference = P42;
-ValeurCmp = Ladeanschluss;
+ValeurCmp = Charger connector;
 IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /53866CB8;
 Reference = P43;
-ValeurCmp = Akku;
+ValeurCmp = Battery;
 IdModule  = ACS712:Aschlussklemme_2p_3D;
 EndCmp
 
@@ -1095,7 +1095,7 @@ EndCmp
 BeginCmp
 TimeStamp = /5417150B;
 Reference = U3;
-ValeurCmp = INA169 Adafruit;
+ValeurCmp = INA169;
 IdModule  = ACS712:INA169;
 EndCmp
 
@@ -1109,7 +1109,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54B50EFB;
 Reference = U5;
-ValeurCmp = INA169 Adafruit;
+ValeurCmp = INA169;
 IdModule  = ACS712:INA169;
 EndCmp
 
