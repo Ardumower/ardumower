@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 16.02.2015 17:04:08
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 19.02.2015 14:08:57
 
 BeginCmp
 TimeStamp = /54D689DE;
@@ -151,7 +151,7 @@ BeginCmp
 TimeStamp = /53A992CD;
 Reference = R7;
 ValeurCmp = 220R;
-IdModule  = Zacs712:Resistor_Horizontal_RM10mm;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
