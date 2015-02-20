@@ -52,7 +52,7 @@ U 1 1 54E30C13
 P 2850 4100
 F 0 "J1" H 2850 4600 60  0000 C CNN
 F 1 "INA169_Breakout_Conn" H 2850 3650 60  0000 C CNN
-F 2 "" H 3000 4300 60  0000 C CNN
+F 2 "ina169_breakout:ina169_breakout_footprint" H 3000 4300 60  0001 C CNN
 F 3 "" H 3000 4300 60  0000 C CNN
 	1    2850 4100
 	1    0    0    -1  
@@ -60,12 +60,12 @@ $EndComp
 $Comp
 L R R2
 U 1 1 54E30D69
-P 4450 3200
-F 0 "R2" V 4530 3200 50  0000 C CNN
-F 1 "10K 1%" V 4457 3201 50  0000 C CNN
-F 2 "" V 4380 3200 30  0000 C CNN
-F 3 "" H 4450 3200 30  0000 C CNN
-	1    4450 3200
+P 4190 3190
+F 0 "R2" V 4270 3190 50  0000 C CNN
+F 1 "10K 1%" V 4197 3191 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4120 3190 30  0001 C CNN
+F 3 "" H 4190 3190 30  0000 C CNN
+	1    4190 3190
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -74,7 +74,7 @@ U 1 1 54E30DE5
 P 5450 3250
 F 0 "R1" V 5530 3250 50  0000 C CNN
 F 1 "0.1 1% 2W" V 5457 3251 50  0000 C CNN
-F 2 "" V 5380 3250 30  0000 C CNN
+F 2 "Resistors_SMD:R_2512" V 5380 3250 30  0001 C CNN
 F 3 "" H 5450 3250 30  0000 C CNN
 	1    5450 3250
 	0    -1   -1   0   
@@ -90,18 +90,13 @@ F 3 "" H 4000 4500 60  0000 C CNN
 	1    4000 4500
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4000 2400 4000 4500
-Wire Wire Line
-	4850 2400 4000 2400
-Connection ~ 4000 4000
 $Comp
 L C C1
 U 1 1 54E30F8E
 P 6250 3400
 F 0 "C1" H 6300 3500 50  0000 L CNN
 F 1 "0.1uF" H 6300 3300 50  0000 L CNN
-F 2 "" H 6288 3250 30  0000 C CNN
+F 2 "Capacitors_SMD:C_1206" H 6288 3250 30  0001 C CNN
 F 3 "" H 6250 3400 60  0000 C CNN
 	1    6250 3400
 	1    0    0    -1  
@@ -109,18 +104,14 @@ $EndComp
 $Comp
 L INA169_IC U1
 U 1 1 54E31222
-P 5400 2450
-F 0 "U1" H 5400 2750 60  0000 C CNN
-F 1 "INA169_IC" H 5400 2150 60  0000 C CNN
-F 2 "" H 5400 2150 60  0000 C CNN
-F 3 "" H 5400 2150 60  0000 C CNN
-	1    5400 2450
+P 5440 2450
+F 0 "U1" H 5440 2750 60  0000 C CNN
+F 1 "INA169_IC" H 5440 2150 60  0000 C CNN
+F 2 "ina169_breakout:ina169_ic_sot23-5" H 5440 2150 60  0001 C CNN
+F 3 "" H 5440 2150 60  0000 C CNN
+	1    5440 2450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5900 2300 6250 2300
-Wire Wire Line
-	6250 2050 6250 3200
 $Comp
 L GND #PWR02
 U 1 1 54E31539
@@ -132,26 +123,50 @@ F 3 "" H 6250 4500 60  0000 C CNN
 	1    6250 4500
 	1    0    0    -1  
 $EndComp
+Text Notes 5850 3500 2    60   ~ 0
+Rshunt (RS)\nSMD CRM2512-FX-R100ELF
+Text Notes 4350 3550 1    60   ~ 0
+Load resistor (RL)\nSMD-0603 10K
+Text Notes 2550 2750 0    60   ~ 0
+INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL/10K*I(Amps)
+Text Notes 6500 3400 0    60   ~ 0
+SMD 12 X7R-G1206 100N
+Text Notes 5200 2900 0    60   ~ 0
+SOT23-5
+Text Notes 6550 2850 0    60   ~ 0
+http://de.wikipedia.org/wiki/Chip-Bauform
+$Comp
+L R R3
+U 1 1 54E656C3
+P 4580 2500
+F 0 "R3" V 4660 2500 50  0000 C CNN
+F 1 "OOHM Fake" V 4587 2501 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4510 2500 30  0001 C CNN
+F 3 "" H 4580 2500 30  0000 C CNN
+F 4 "Value" H 4580 2500 60  0001 C CNN "Bestellnummer"
+	1    4580 2500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4000 2400 4000 4500
+Wire Wire Line
+	4890 2400 4000 2400
+Connection ~ 4000 4000
+Wire Wire Line
+	5940 2300 6250 2300
+Wire Wire Line
+	6250 2050 6250 3200
 Wire Wire Line
 	6250 3600 6250 4500
 Wire Wire Line
-	4450 4000 3200 4000
+	3200 4000 4190 4000
 Wire Wire Line
-	4100 2500 4850 2500
+	4100 2500 4330 2500
 Wire Wire Line
-	4450 3450 4450 4000
-Wire Wire Line
-	5900 2500 5950 2500
-Wire Wire Line
-	4450 2300 4450 2950
-Wire Wire Line
-	4100 2500 4100 4200
-Wire Wire Line
-	4100 4200 3200 4200
-Connection ~ 4800 2500
+	5940 2500 5950 2500
 Connection ~ 5950 3250
 Wire Wire Line
-	4850 2300 3900 2300
+	3900 2300 4330 2300
 Wire Wire Line
 	6250 2050 3800 2050
 Wire Wire Line
@@ -159,31 +174,44 @@ Wire Wire Line
 Wire Wire Line
 	3800 3900 3200 3900
 Connection ~ 6250 2300
-Connection ~ 4450 2300
-Text Notes 5850 3500 2    60   ~ 0
-Rshunt (RS)\nSMD CRM2512-FX-R100ELF
-Text Notes 4350 3550 1    60   ~ 0
-Load resistor (RL)\nSMD-0603 10K
-Text Notes 2550 2750 0    60   ~ 0
-INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL/10K*I(Amps)
 Wire Wire Line
-	4800 2500 4800 3250
-Wire Wire Line
-	4800 3250 5200 3250
+	4270 3250 5200 3250
 Wire Wire Line
 	5950 3250 5700 3250
-Text Notes 6500 3400 0    60   ~ 0
-SMD 12 X7R-G1206 100N
-Text Notes 5200 2900 0    60   ~ 0
-SOT23-5
-Text Notes 6550 2850 0    60   ~ 0
-http://de.wikipedia.org/wiki/Chip-Bauform
 Wire Wire Line
-	3200 4100 5950 4100
+	5950 4100 3200 4100
 Wire Wire Line
-	5950 4100 5950 2500
+	5950 2500 5950 4100
 Wire Wire Line
 	3900 2300 3900 4300
 Wire Wire Line
 	3900 4300 3200 4300
+Wire Wire Line
+	4100 4200 3200 4200
+Wire Wire Line
+	4100 2500 4100 4200
+Wire Wire Line
+	4190 2300 4190 2940
+Wire Wire Line
+	4190 4000 4190 3440
+Wire Wire Line
+	4270 2500 4270 3250
+Wire Wire Line
+	4890 2500 4830 2500
+Connection ~ 4270 2500
+$Comp
+L R R4
+U 1 1 54E66200
+P 4580 2300
+F 0 "R4" V 4660 2300 50  0000 C CNN
+F 1 "OOHM Fake" V 4587 2301 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4510 2300 30  0001 C CNN
+F 3 "" H 4580 2300 30  0000 C CNN
+F 4 "Value" H 4580 2300 60  0001 C CNN "Bestellnummer"
+	1    4580 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4890 2300 4830 2300
+Connection ~ 4190 2300
 $EndSCHEMATC
