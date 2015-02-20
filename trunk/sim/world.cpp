@@ -19,8 +19,9 @@ World::World(){
   list.push_back( (point_t) {350, 160 } );
   list.push_back( (point_t) {320, 190 } );
   list.push_back( (point_t) {210, 250 } );
-  list.push_back( (point_t) {90, 290 } );
-  list.push_back( (point_t) {50, 230 } );
+  list.push_back( (point_t) {40, 300 } );
+  list.push_back( (point_t) {20, 290 } );
+  list.push_back( (point_t) {30, 230 } );
 
   chgStationX = 35;
   chgStationY = 150;
