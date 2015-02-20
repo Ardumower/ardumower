@@ -12,11 +12,15 @@ World::World(){
   // perimeter lines coordinates (1/10 meter)
   std::vector<point_t> list;
   list.push_back( (point_t) {30, 35 } );
+  list.push_back( (point_t) {50, 15 } );
   list.push_back( (point_t) {400, 40 } );
-  list.push_back( (point_t) {410, 180 } );
-  list.push_back( (point_t) {310, 140 } );
+  list.push_back( (point_t) {410, 50 } );
+  list.push_back( (point_t) {420, 90 } );
+  list.push_back( (point_t) {350, 160 } );
+  list.push_back( (point_t) {320, 190 } );
   list.push_back( (point_t) {210, 250 } );
-  list.push_back( (point_t) {50, 310 } );
+  list.push_back( (point_t) {90, 290 } );
+  list.push_back( (point_t) {50, 230 } );
 
   chgStationX = 35;
   chgStationY = 150;
