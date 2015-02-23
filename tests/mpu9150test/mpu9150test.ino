@@ -149,6 +149,10 @@ float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gra
 uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\n' };
 
 
+int16_t ax, ay, az;
+int16_t gx, gy, gz;
+int16_t mx, my, mz;
+
 
 // ================================================================
 // ===               INTERRUPT DETECTION ROUTINE                ===
@@ -243,6 +247,43 @@ void setup() {
 }
 
 
+void loop1() {
+    // if programming failed, don't try to do anything
+  
+    // read raw accel/gyro/mag measurements from device
+    mpu.getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
+
+    // these methods (and a few others) are also available
+    //accelGyroMag.getAcceleration(&ax, &ay, &az);
+    //mpu.getRotation(&gx, &gy, &gz);
+
+    // display tab-separated accel/gyro/mag x/y/z values
+//  Serial.print("a/g/m:\t");
+//  Serial.print(ax); Serial.print("\t");
+//  Serial.print(ay); Serial.print("\t");
+//  Serial.print(az); Serial.print("\t");
+    Serial.print(gx); Serial.print("\t");
+    Serial.print(gy); Serial.print("\t");
+    Serial.print(gz); Serial.print("\t");
+    Serial.print(int(mx)*int(mx)); Serial.print("\t");
+    Serial.print(int(my)*int(my)); Serial.print("\t");
+    Serial.print(int(mz)*int(mz)); Serial.print("\t | ");
+
+    const float N = 1024;
+    float mag = mx*mx/N + my*my/N + mz*mz/N;
+
+    Serial.print(mag); Serial.print("\t");
+    for (int i=0; i<mag; i++)
+        Serial.print("*");
+    Serial.print("\n");
+
+    // blink LED to indicate activity
+    blinkState = !blinkState;
+    digitalWrite(LED_PIN, blinkState);
+    delay(50);
+}
+
+
 void loop() {
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
@@ -275,7 +316,7 @@ void loop() {
         Serial.println(F("FIFO overflow!"));
 
     // otherwise, check for DMP data ready interrupt (this should happen frequently)
-    } else if (mpuIntStatus & 0x02) {
+    }   if (mpuIntStatus & 0x02) {
         // wait for correct available data length, should be a VERY short wait
         while (fifoCount < packetSize) fifoCount = mpu.getFIFOCount();
 
@@ -316,18 +357,15 @@ void loop() {
             mpu.dmpGetQuaternion(&q, fifoBuffer);
             mpu.dmpGetGravity(&gravity, &q);
             mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);            
-            mpu.dmpGetMag(&mag[0], fifoBuffer);            
-            int16_t ax, ay, az;
-            int16_t gx, gy, gz;
-            int16_t mx, my, mz;
-            mpu.getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
+            //mpu.dmpGetMag(&mag[0], fifoBuffer);            
+            //mpu.getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
             Serial.print("ypr\t");
             Serial.print(ypr[0] * 180/M_PI);
             Serial.print("\t");
             Serial.print(ypr[1] * 180/M_PI);
             Serial.print("\t");
             Serial.print(ypr[2] * 180/M_PI);
-            Serial.print("  mag: ");
+            /*Serial.print("  mag: ");
             Serial.print(mag[0]);
             Serial.print("\t");
             Serial.print(mag[1]);
@@ -338,7 +376,8 @@ void loop() {
             Serial.print("\t");
             Serial.print(my);
             Serial.print("\t");
-            Serial.println(mz);                        
+            Serial.print(mz);                        */
+            Serial.println();
         #endif
 
         #ifdef OUTPUT_READABLE_REALACCEL
@@ -387,7 +426,10 @@ void loop() {
         
 
         // blink LED to indicate activity
-        blinkState = !blinkState;
-        digitalWrite(LED_PIN, blinkState);
+        //blinkState = !blinkState;
+        //digitalWrite(LED_PIN, blinkState);
     }
 }
+
+
+
