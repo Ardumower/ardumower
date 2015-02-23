@@ -41,6 +41,10 @@ THE SOFTWARE.
 ===============================================
 */
 
+#define DEBUG 
+//#define I2CDEV_BUILTIN_NBWIRE  
+
+
 // I2Cdev and MPU6050 must be installed as libraries, or else the .cpp/.h files
 // for both classes must be in the include path of your project
 #include "I2Cdev.h"
@@ -172,8 +176,8 @@ void setup() {
     // initialize serial communication
     // (115200 chosen because it is required for Teapot Demo output, but it's
     // really up to you depending on your project)
- //   Serial.begin(115200);
-    Serial.begin(19200);
+    Serial.begin(115200);
+//    Serial.begin(19200);
     while (!Serial); // wait for Leonardo enumeration, others continue immediately
 
     // NOTE: 8MHz or slower host processors, like the Teensy @ 3.3v or Ardunio
@@ -201,6 +205,7 @@ void setup() {
     devStatus = mpu.dmpInitialize();
 
     // supply your own gyro offsets here, scaled for min sensitivity
+//    mpu.setClockSource(3);
     mpu.setXGyroOffset(220);
     mpu.setYGyroOffset(76);
     mpu.setZGyroOffset(-85);
