@@ -141,6 +141,7 @@ VectorInt16 aa;         // [x, y, z]            accel sensor measurements
 VectorInt16 aaReal;     // [x, y, z]            gravity-free accel sensor measurements
 VectorInt16 aaWorld;    // [x, y, z]            world-frame accel sensor measurements
 VectorFloat gravity;    // [x, y, z]            gravity vector
+int16_t mag[3];
 float euler[3];         // [psi, theta, phi]    Euler angle container
 float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
 
@@ -166,7 +167,7 @@ void dmpDataReady() {
 
 void setup() {
     // join I2C bus (I2Cdev library doesn't do this automatically)
-    #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+    #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE        
         Wire.begin();
         TWBR = 24; // 400kHz I2C clock (200kHz if CPU is 8MHz)
     #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
@@ -205,7 +206,6 @@ void setup() {
     devStatus = mpu.dmpInitialize();
 
     // supply your own gyro offsets here, scaled for min sensitivity
-//    mpu.setClockSource(3);
     mpu.setXGyroOffset(220);
     mpu.setYGyroOffset(76);
     mpu.setZGyroOffset(-85);
@@ -242,11 +242,6 @@ void setup() {
     pinMode(LED_PIN, OUTPUT);
 }
 
-
-
-// ================================================================
-// ===                    MAIN PROGRAM LOOP                     ===
-// ================================================================
 
 void loop() {
     // if programming failed, don't try to do anything
@@ -320,13 +315,30 @@ void loop() {
             // display Euler angles in degrees
             mpu.dmpGetQuaternion(&q, fifoBuffer);
             mpu.dmpGetGravity(&gravity, &q);
-            mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
+            mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);            
+            mpu.dmpGetMag(&mag[0], fifoBuffer);            
+            int16_t ax, ay, az;
+            int16_t gx, gy, gz;
+            int16_t mx, my, mz;
+            mpu.getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
             Serial.print("ypr\t");
             Serial.print(ypr[0] * 180/M_PI);
             Serial.print("\t");
             Serial.print(ypr[1] * 180/M_PI);
             Serial.print("\t");
-            Serial.println(ypr[2] * 180/M_PI);
+            Serial.print(ypr[2] * 180/M_PI);
+            Serial.print("  mag: ");
+            Serial.print(mag[0]);
+            Serial.print("\t");
+            Serial.print(mag[1]);
+            Serial.print("\t");
+            Serial.print(mag[2]);            
+            Serial.print("\t");            
+            Serial.print(mx);
+            Serial.print("\t");
+            Serial.print(my);
+            Serial.print("\t");
+            Serial.println(mz);                        
         #endif
 
         #ifdef OUTPUT_READABLE_REALACCEL
@@ -372,6 +384,7 @@ void loop() {
             Serial.write(teapotPacket, 14);
             teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
         #endif
+        
 
         // blink LED to indicate activity
         blinkState = !blinkState;
