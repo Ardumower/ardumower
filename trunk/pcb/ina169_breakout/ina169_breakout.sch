@@ -61,7 +61,7 @@ $Comp
 L R R2
 U 1 1 54E30D69
 P 4190 3190
-F 0 "R2" V 4270 3190 50  0000 C CNN
+F 0 "R2" V 4100 3180 50  0000 C CNN
 F 1 "10K 1%" V 4197 3191 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 4120 3190 30  0001 C CNN
 F 3 "" H 4190 3190 30  0000 C CNN
@@ -125,7 +125,7 @@ F 3 "" H 6250 4500 60  0000 C CNN
 $EndComp
 Text Notes 5850 3500 2    60   ~ 0
 Rshunt (RS)\nSMD CRM2512-FX-R100ELF
-Text Notes 4350 3550 1    60   ~ 0
+Text Notes 4450 3600 1    60   ~ 0
 Load resistor (RL)\nSMD-0603 10K
 Text Notes 2550 2750 0    60   ~ 0
 INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL/10K*I(Amps)
