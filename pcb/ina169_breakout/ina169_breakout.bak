@@ -135,18 +135,6 @@ Text Notes 5200 2900 0    60   ~ 0
 SOT23-5
 Text Notes 6550 2850 0    60   ~ 0
 http://de.wikipedia.org/wiki/Chip-Bauform
-$Comp
-L R R3
-U 1 1 54E656C3
-P 4580 2500
-F 0 "R3" V 4660 2500 50  0000 C CNN
-F 1 "OOHM Fake" V 4587 2501 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 4510 2500 30  0001 C CNN
-F 3 "" H 4580 2500 30  0000 C CNN
-F 4 "Value" H 4580 2500 60  0001 C CNN "Bestellnummer"
-	1    4580 2500
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	4000 2400 4000 4500
 Wire Wire Line
@@ -161,12 +149,12 @@ Wire Wire Line
 Wire Wire Line
 	3200 4000 4190 4000
 Wire Wire Line
-	4100 2500 4330 2500
+	4100 2500 4890 2500
 Wire Wire Line
 	5940 2500 5950 2500
 Connection ~ 5950 3250
 Wire Wire Line
-	3900 2300 4330 2300
+	3900 2300 4890 2300
 Wire Wire Line
 	6250 2050 3800 2050
 Wire Wire Line
@@ -196,22 +184,6 @@ Wire Wire Line
 	4190 4000 4190 3440
 Wire Wire Line
 	4270 2500 4270 3250
-Wire Wire Line
-	4890 2500 4830 2500
 Connection ~ 4270 2500
-$Comp
-L R R4
-U 1 1 54E66200
-P 4580 2300
-F 0 "R4" V 4660 2300 50  0000 C CNN
-F 1 "OOHM Fake" V 4587 2301 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 4510 2300 30  0001 C CNN
-F 3 "" H 4580 2300 30  0000 C CNN
-F 4 "Value" H 4580 2300 60  0001 C CNN "Bestellnummer"
-	1    4580 2300
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4890 2300 4830 2300
 Connection ~ 4190 2300
 $EndSCHEMATC
