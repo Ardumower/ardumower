@@ -303,11 +303,11 @@ const prog_uchar dmpConfig[MPU9150_DMP_CONFIG_SIZE] PROGMEM = {
     0x07,   0x67,   0x01,   0x9A,                     // ?
     0x07,   0x68,   0x04,   0xF1, 0x28, 0x30, 0x38,   // CFG_12 inv_send_accel -> inv_construct3_fifo
     0x07,   0x8D,   0x04,   0xF1, 0x28, 0x30, 0x38,   // ??? CFG_12 inv_send_mag -> inv_construct3_fifo
-    0x02,   0x16,   0x02,   0x00, 0x03                // D_0_22 inv_set_fifo_rate
+    0x02,   0x16,   0x02,   0x00, 0x27                // D_0_22 inv_set_fifo_rate  
 
     // This very last 0x01 WAS a 0x09, which drops the FIFO rate down to 20 Hz. 0x07 is 25 Hz,
     // 0x01 is 100Hz. Going faster than 100Hz (0x00=200Hz) tends to result in very noisy data.
-    // DMP output frequency is calculated easily using this equation: (200Hz / (1 + value))
+    // DMP output frequency is calculated easily using this equation: (200Hz / (1 + value))   =>  value = 200 / f - 1
 
     // It is important to make sure the host processor can keep up with reading and processing
     // the FIFO output at the desired rate. Handling FIFO overflow cleanly is also a good idea.
@@ -520,16 +520,16 @@ uint8_t MPU9150::dmpInitialize() {
 
             // setup AK8975 (0x0E) as Slave 0 in read mode
             DEBUG_PRINTLN(F("Setting up AK8975 read slave 0..."));
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV0_ADDR, 0x8E);
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV0_REG,  0x01);
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV0_CTRL, 0xDA);
+            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV0_ADDR, 0x8E); // rw=1 (read), addr=0xE
+            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV0_REG,  0x01); // reg=1
+            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV0_CTRL, 0xDA); // en=1  sw=1  dis=0  grp=1  len=0xA
 
             // setup AK8975 (0x0E) as Slave 2 in write mode
             DEBUG_PRINTLN(F("Setting up AK8975 write slave 2..."));
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_ADDR, 0x0E);
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_REG,  0x0A);
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_CTRL, 0x81);
-            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_DO,   0x01);
+            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_ADDR, 0x0E); // rw=0 (write), addr=0xE
+              I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_REG,  0x0A); // reg=0xA
+            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_CTRL, 0x81); // en=1  sw=0  dis=0  grp=0  len=1
+            I2Cdev::writeByte(0x68, MPU9150_RA_I2C_SLV2_DO,   0x01);  
 
             // setup I2C timing/delay control
             DEBUG_PRINTLN(F("Setting up slave access delay..."));
@@ -542,7 +542,8 @@ uint8_t MPU9150::dmpInitialize() {
 
             // enable I2C master mode and reset DMP/FIFO
             DEBUG_PRINTLN(F("Enabling I2C master mode..."));
-            I2Cdev::writeByte(0x68, MPU9150_RA_USER_CTRL, 0x20);
+            I2Cdev::writeByte(0x68, MPU9150_RA_USER_CTRL, 0x20);                        
+            
             DEBUG_PRINTLN(F("Resetting FIFO..."));
             I2Cdev::writeByte(0x68, MPU9150_RA_USER_CTRL, 0x24);
             DEBUG_PRINTLN(F("Rewriting I2C master mode enabled because...I don't know"));
@@ -637,9 +638,9 @@ uint8_t MPU9150::dmpInitialize() {
                 return 3; // TODO: proper error code for no memory
             }*/
 
-            DEBUG_PRINTLN(F("Resetting FIFO and clearing INT status one last time..."));
+            DEBUG_PRINTLN(F("Resetting FIFO and clearing INT status one last time..."));            
             resetFIFO();
-            getIntStatus();
+            getIntStatus();            
         } else {
             DEBUG_PRINTLN(F("ERROR! DMP configuration verification failed."));
             return 2; // configuration block loading failed
