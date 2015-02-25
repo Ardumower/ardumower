@@ -5,6 +5,8 @@
   Copyright (c) 2014 by Maxime Carpentieri    
   Copyright (c) 2014-2015 by Stefan Manteuffel
   Copyright (c) 2015 by Uwe Zimprich
+  
+  Private-use only! (you need to ask for a commercial-use)
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,6 +20,8 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+  Private-use only! (you need to ask for a commercial-use)
 */
 
 #include "robot.h"
