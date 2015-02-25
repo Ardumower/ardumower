@@ -183,8 +183,8 @@ void setup() {
     // initialize serial communication
     // (115200 chosen because it is required for Teapot Demo output, but it's
     // really up to you depending on your project)
-    Serial.begin(115200);
-//    Serial.begin(19200);
+//    Serial.begin(115200);
+    Serial.begin(19200);
     while (!Serial); // wait for Leonardo enumeration, others continue immediately
 
     // NOTE: 8MHz or slower host processors, like the Teensy @ 3.3v or Ardunio
@@ -234,6 +234,8 @@ void setup() {
 
         // get expected DMP packet size for later comparison
         packetSize = mpu.dmpGetFIFOPacketSize();
+        Serial.print("FIFO packet size=");
+        Serial.println(packetSize);
     } else {
         // ERROR!
         // 1 = initial memory load failed
@@ -308,9 +310,13 @@ void readMPU(){
             mpu.dmpGetQuaternion(&q, fifoBuffer);
             mpu.dmpGetGravity(&gravity, &q);
             mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);            
-            //mpu.dmpGetMag(&mag[0], fifoBuffer);            
-            //mpu.getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
-            //mpu.getAcceleration(&ax, &ay, &az);
+            mpu.dmpGetMag(mag, fifoBuffer);  
+            mpu.dmpGetAccel(&aa, fifoBuffer);
+            mpu.dmpGetGravity(&gravity, &q);
+            mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
+            mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
+            mpu.getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
+            //mpu.getAcceleration(&ax, &ay, &az);            
             //mpu.getRotation(&gx, &gy, &gz);            
             Serial.print("ypr\t");
             Serial.print(ypr[0] * 180/M_PI);
@@ -318,18 +324,25 @@ void readMPU(){
             Serial.print(ypr[1] * 180/M_PI);
             Serial.print("\t");
             Serial.print(ypr[2] * 180/M_PI);
-            /*Serial.print("  mag: ");
+            Serial.print("  acc: ");
+            Serial.print("aworld\t");
+            Serial.print(aaWorld.x);
+            Serial.print("\t");
+            Serial.print(aaWorld.y);
+            Serial.print("\t");
+            Serial.print(aaWorld.z);
+            Serial.print("  mag: ");
             Serial.print(mag[0]);
             Serial.print("\t");
             Serial.print(mag[1]);
             Serial.print("\t");
-            Serial.print(mag[2]);            
+            Serial.print(mag[2]);                        
             Serial.print("\t");            
             Serial.print(mx);
             Serial.print("\t");
             Serial.print(my);
             Serial.print("\t");
-            Serial.print(mz);                        */
+            Serial.print(mz);                        
             Serial.println();
         #endif
 

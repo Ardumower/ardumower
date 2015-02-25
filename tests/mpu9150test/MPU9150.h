@@ -52,7 +52,7 @@ THE SOFTWARE.
 #endif
 
 //Magnetometer Registers
-#define MPU9150_RA_MAG_ADDRESS		0x0C
+#define MPU9150_RA_MAG_ADDRESS		0x0E
 #define MPU9150_RA_MAG_XOUT_L		0x03
 #define MPU9150_RA_MAG_XOUT_H		0x04
 #define MPU9150_RA_MAG_YOUT_L		0x05
