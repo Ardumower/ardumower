@@ -961,7 +961,7 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->odometryX);
       Bluetooth.print(",");
-      Bluetooth.println(robot->odometryY);
+      Bluetooth.print(robot->odometryY);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.ypr.yaw/PI*180);
       Bluetooth.print(",");
@@ -985,7 +985,8 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.com.y);
       Bluetooth.print(",");
-      Bluetooth.println(robot->imu.com.z);
+      Bluetooth.print(robot->imu.com.z);
+      Bluetooth.print(",");
       float lat, lon;
       unsigned long age;
       robot->gps.f_get_position(&lat, &lon, &age);
