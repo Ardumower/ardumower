@@ -177,7 +177,7 @@ void RemoteControl::sendMainMenu(boolean update){
     Bluetooth.print(robot->name);
     Bluetooth.print(")");
   }
-  Bluetooth.print(F("|r~Commands|n~Manual|s~Settings|in~Info|c~Test compass|ardumag~Monitor compass|yp~Plot"));
+  Bluetooth.print(F("|r~Commands|n~Manual|s~Settings|in~Info|c~Test compass|m1~Log sensors|yp~Plot"));
   Bluetooth.println(F("|y4~Error counters|y9~ADC calibration (perimeter sender must be off)}"));        
 }
 
@@ -938,9 +938,71 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
 
 // process pfodState
 void RemoteControl::run(){  
-  if (pfodState == PFOD_MONITOR){
-    robot->printInfo(Bluetooth);
-    //Bluetooth.println("test");
+  if (pfodState == PFOD_LOG_SENSORS){
+      //robot->printInfo(Bluetooth);
+      //Bluetooth.println("test");
+      Bluetooth.print((float(millis())/1000.0f));
+      Bluetooth.print(",");            
+      Bluetooth.print(robot->motorLeftSense);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->motorRightSense);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->motorMowSense);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->sonarDistLeft);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->sonarDistCenter);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->sonarDistRight);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->perimeter.isInside());
+      Bluetooth.print(",");            
+      Bluetooth.print(robot->perimeterMag);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->odometryX);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->odometryY);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.ypr.yaw/PI*180);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.ypr.pitch/PI*180);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.ypr.roll/PI*180);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.gyro.x/PI*180);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.gyro.y/PI*180);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.gyro.z/PI*180);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.acc.x);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.acc.y);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.acc.z);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.com.x);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->imu.com.y);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->imu.com.z);
+      float lat, lon;
+      unsigned long age;
+      robot->gps.f_get_position(&lat, &lon, &age);
+      Bluetooth.print(robot->gps.hdop());
+      Bluetooth.print(",");
+      Bluetooth.print(robot->gps.satellites());
+      Bluetooth.print(",");
+      Bluetooth.print(robot->gps.f_speed_kmph());
+      Bluetooth.print(",");
+      Bluetooth.print(robot->gps.f_course());
+      Bluetooth.print(",");
+      Bluetooth.print(robot->gps.f_altitude());
+      Bluetooth.print(",");
+      Bluetooth.print(lat);
+      Bluetooth.print(",");
+      Bluetooth.print(lon);           
+      Bluetooth.println();      
   } else if (pfodState == PFOD_PLOT_BAT){
     if (millis() >= nextPlotTime){
       nextPlotTime = millis() + 60000;
@@ -1124,17 +1186,10 @@ void RemoteControl::readSerial(){
       pfodState = PFOD_MENU;    
       if (pfodCmd == ".") sendMainMenu(false);      
         else if (pfodCmd == "m1") {
-          // set monitor counter state
-          Bluetooth.println(F("{=monitor counters}")); 
-          robot->consoleMode = CONSOLE_SENSOR_COUNTERS;
-          pfodState = PFOD_MONITOR;
+          // log raw sensors
+          Bluetooth.println(F("{=Log sensors}"));           
+          pfodState = PFOD_LOG_SENSORS;
         }  
-        else if (pfodCmd == "m2"){
-          // set monitor values state
-          Bluetooth.println(F("{=monitor values}")); 
-          robot->consoleMode = CONSOLE_SENSOR_VALUES;
-          pfodState = PFOD_MONITOR;
-        } 
         else if (pfodCmd == "y1") {
           // plot battery
           Bluetooth.println(F("{=battery|time min`0|battery V`1|charge V`1|charge A`2|capacity Ah`3}")); 
