@@ -959,9 +959,9 @@ void RemoteControl::run(){
       Bluetooth.print(",");            
       Bluetooth.print(robot->perimeterMag);
       Bluetooth.print(",");
-      Bluetooth.print(robot->odometryX);
+      Bluetooth.print(robot->odometryLeft);
       Bluetooth.print(",");
-      Bluetooth.print(robot->odometryY);
+      Bluetooth.print(robot->odometryRight);
       Bluetooth.print(",");
       Bluetooth.print(robot->imu.ypr.yaw/PI*180);
       Bluetooth.print(",");
@@ -1190,7 +1190,7 @@ void RemoteControl::readSerial(){
           // log raw sensors
           Bluetooth.println(F("{=Log sensors}"));
           Bluetooth.print(F("time,leftsen,rightsen,mowsen,sonleft,soncenter,sonright,"));
-          Bluetooth.print(F("perinside,permag,odox,odoy,yaw,pitch,roll,gyrox,gyroy,"));
+          Bluetooth.print(F("perinside,permag,odoleft,odoright,yaw,pitch,roll,gyrox,gyroy,"));
           Bluetooth.print(F("gyroz,accx,accy,accz,comx,comy,comz,hdop,sats,gspeed,gcourse,"));
           Bluetooth.println(F("galt,lat,lon"));              
           pfodState = PFOD_LOG_SENSORS;
