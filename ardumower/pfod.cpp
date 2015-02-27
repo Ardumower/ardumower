@@ -1188,7 +1188,11 @@ void RemoteControl::readSerial(){
       if (pfodCmd == ".") sendMainMenu(false);      
         else if (pfodCmd == "m1") {
           // log raw sensors
-          Bluetooth.println(F("{=Log sensors}"));           
+          Bluetooth.println(F("{=Log sensors}"));
+          Bluetooth.print(F("time,leftsen,rightsen,mowsen,sonleft,soncenter,sonright,"));
+          Bluetooth.print(F("perinside,permag,odox,odoy,yaw,pitch,roll,gyrox,gyroy,"));
+          Bluetooth.print(F("gyroz,accx,accy,accz,comx,comy,comz,hdop,sats,gspeed,gcourse,"));
+          Bluetooth.println(F("galt,lat,lon"));              
           pfodState = PFOD_LOG_SENSORS;
         }  
         else if (pfodCmd == "y1") {
