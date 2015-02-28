@@ -51,10 +51,10 @@ Perimeter::Perimeter(){
   timedOutIfBelowSmag = 300;
   callCounter = 0;
   mag[0] = mag[1] = 0;
-  smoothMag = 0;
-  filterQuality = 0;
-  signalCounter = 0;  
-  lastInsideTime = 0;    
+  smoothMag[0] = smoothMag[1] = 0;
+  filterQuality[0] = filterQuality[1] = 0;
+  signalCounter[0] = signalCounter[1] = 0;  
+  lastInsideTime[0] = lastInsideTime[1] = 0;    
 }
 
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
@@ -62,11 +62,13 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[1] = idx1Pin;  
   // use max. 255 samples and multiple of signalsize
   ADCMan.setCapture(idx0Pin, ((int)255 / sizeof sigcode) * sizeof sigcode, true); 
+  ADCMan.setCapture(idx1Pin, ((int)255 / sizeof sigcode) * sizeof sigcode, true); 
   
   Console.print("matchSignal size=");
   Console.println(sizeof sigcode);  
   Console.print("capture size=");
   Console.println(ADCMan.getCaptureSize(idx0Pin));  
+  Console.println(ADCMan.getCaptureSize(idx1Pin));  
 }
 
 void Perimeter::speedTest(){
@@ -87,8 +89,8 @@ int Perimeter::getMagnitude(byte idx){
   return mag[idx];
 }
 
-int Perimeter::getSmoothMagnitude(){  
-  return smoothMag;
+int Perimeter::getSmoothMagnitude(byte idx){  
+  return smoothMag[idx];
 }
 
 void Perimeter::printADCMinMax(int8_t *samples){
@@ -111,64 +113,65 @@ void Perimeter::matchedFilter(byte idx){
   if (callCounter == 100) {
     // statistics only
     callCounter = 0;
-    signalMin = 9999;
-    signalMax = -9999;
-    signalAvg = 0;  
+    signalMin[idx] = 9999;
+    signalMax[idx] = -9999;
+    signalAvg[idx] = 0;  
     for (int i=0; i < sampleCount; i++){
       int8_t v = samples[i];
-      signalAvg += v;
-      signalMin = min(signalMin, v);
-      signalMax = max(signalMax, v);
+      signalAvg[idx] += v;
+      signalMin[idx] = min(signalMin[idx], v);
+      signalMax[idx] = max(signalMax[idx], v);
     }
-    signalAvg = ((double)signalAvg) / ((double)(sampleCount));
+    signalAvg[idx] = ((double)signalAvg[idx]) / ((double)(sampleCount));
   }
-  /*for (int i=0; i < sampleCount; i++) {
+  for (int i=0; i < sampleCount; i++) {
     if (samples[i]>0) samples[i]=1;
       else samples[i] = -1;
-  }*/
+  }
   // magnitude for tracking (fast but inaccurate)    
-  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode, filterQuality);        
+  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode, filterQuality[idx]);        
   // smoothed magnitude used for signal-off detection
-  smoothMag = 0.99 * smoothMag + 0.01 * ((float)abs(mag[idx]));
+  smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)abs(mag[idx]));
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){
-    signalCounter = min(signalCounter+1, 3);    
+    signalCounter[idx] = min(signalCounter[idx]+1, 3);    
   } else {
-    signalCounter = max(signalCounter-1, -3);    
+    signalCounter[idx] = max(signalCounter[idx]-1, -3);    
   }
-  if (signalCounter < 0){
-    lastInsideTime = millis();
+  if (signalCounter[idx] < 0){
+    lastInsideTime[idx] = millis();
   } 
     
   ADCMan.restart(idxPin[idx]);    
   callCounter++;
 }
 
-int16_t Perimeter::getSignalMin(){
-  return signalMin;
+int16_t Perimeter::getSignalMin(byte idx){
+  return signalMin[idx];
 }
 
-int16_t Perimeter::getSignalMax(){
-  return signalMax;
+int16_t Perimeter::getSignalMax(byte idx){
+  return signalMax[idx];
 }
 
-int16_t Perimeter::getSignalAvg(){
-  return signalAvg;
-}
-
-float Perimeter::getFilterQuality(){
-  return filterQuality;
-}
-
-boolean Perimeter::isInside(){
-  return (signalCounter < 0);  
+int16_t Perimeter::getSignalAvg(byte idx){
+  return signalAvg[idx];
 }
 
 
-boolean Perimeter::signalTimedOut(){
-  if (getSmoothMagnitude() < timedOutIfBelowSmag) return true;
-  if (millis() - lastInsideTime > 8000) return true;
+float Perimeter::getFilterQuality(byte idx){
+  return filterQuality[idx];
+}
+
+boolean Perimeter::isInside(byte idx){
+  return (signalCounter[idx] < 0);  
+}
+
+
+boolean Perimeter::signalTimedOut(byte idx){
+  if (getSmoothMagnitude(idx) < timedOutIfBelowSmag) return true;
+  if (millis() - lastInsideTime[idx] > 8000) return true;
   return false;
 }
 
