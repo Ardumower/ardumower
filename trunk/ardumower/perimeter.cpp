@@ -144,7 +144,7 @@ void Perimeter::matchedFilter(byte idx){
   } 
     
   ADCMan.restart(idxPin[idx]);    
-  callCounter++;
+  if (idx == 0) callCounter++;
 }
 
 int16_t Perimeter::getSignalMin(byte idx){
