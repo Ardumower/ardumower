@@ -196,7 +196,7 @@ U 1 1 54D4FE5B
 P 1750 1975
 F 0 "P1" H 1750 2125 50  0000 C CNN
 F 1 "Vin 24V" V 1850 1975 50  0000 C CNN
-F 2 "sender_v2:Aschlussklemme_2p_3D" H 1750 1975 60  0001 C CNN
+F 2 "sender_v2:Anschlussklemme_2P_RM5,08" H 1750 1975 60  0001 C CNN
 F 3 "" H 1750 1975 60  0000 C CNN
 	1    1750 1975
 	0    -1   -1   0   
@@ -207,7 +207,7 @@ U 1 1 54D4FE86
 P 1750 4325
 F 0 "P2" H 1750 4475 50  0000 C CNN
 F 1 "VOut 24V" V 1850 4325 50  0000 C CNN
-F 2 "sender_v2:Aschlussklemme_2p_3D" H 1750 4325 60  0001 C CNN
+F 2 "sender_v2:Anschlussklemme_2P_RM5,08" H 1750 4325 60  0001 C CNN
 F 3 "" H 1750 4325 60  0000 C CNN
 	1    1750 4325
 	0    -1   1    0   

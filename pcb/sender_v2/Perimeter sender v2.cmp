@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 19.02.2015 14:08:57
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 28.02.2015 21:51:23
 
 BeginCmp
 TimeStamp = /54D689DE;
@@ -81,14 +81,14 @@ BeginCmp
 TimeStamp = /54D4FE5B;
 Reference = P1;
 ValeurCmp = Vin 24V;
-IdModule  = sender_v2:Aschlussklemme_2p_3D;
+IdModule  = sender_v2:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54D4FE86;
 Reference = P2;
 ValeurCmp = VOut 24V;
-IdModule  = sender_v2:Aschlussklemme_2p_3D;
+IdModule  = sender_v2:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
