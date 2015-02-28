@@ -47,33 +47,31 @@ class Perimeter
     void setPins(byte idx0Pin, byte idx1Pin);    
     // get perimeter magnitude
     int getMagnitude(byte idx);    
-    int getSmoothMagnitude();
+    int getSmoothMagnitude(byte idx);
     // inside perimeter (true) or outside (false)?  
-    boolean isInside();
+    boolean isInside(byte idx);
     // perimeter signal timed out? (e.g. due to broken wire)
-    boolean signalTimedOut();
-    int16_t getSignalMin();
-    int16_t getSignalMax();    
-    int16_t getSignalAvg();
-    float getFilterQuality(); 
+    boolean signalTimedOut(byte idx);
+    int16_t getSignalMin(byte idx);
+    int16_t getSignalMax(byte idx);    
+    int16_t getSignalAvg(byte idx);
+    float getFilterQuality(byte idx); 
     void speedTest();
     int16_t timedOutIfBelowSmag;
   private:
-    unsigned long lastInsideTime;
-    byte type; // which perimeter version to use
+    unsigned long lastInsideTime[2];
     byte idxPin[2]; // channel for idx
     int callCounter;
     int16_t mag [2]; // perimeter magnitude per channel
-    float smoothMag;
-    float filterQuality;
-    int16_t signalMin;
-    int16_t signalMax;
-    int16_t signalAvg;    
-    int signalCounter;    
+    float smoothMag[2];
+    float filterQuality[2];
+    int16_t signalMin[2];
+    int16_t signalMax[2];
+    int16_t signalAvg[2];    
+    int signalCounter[2];    
     void matchedFilter(byte idx);
     int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &quality);
     void printADCMinMax(int8_t *samples);
-    void gensignal();
 };
 
 

@@ -756,10 +756,10 @@ void Robot::printInfo(Stream &s){
   Streamprint(s, "%4s ", stateNames[stateCurr]);			    
   if (consoleMode == CONSOLE_PERIMETER){
     Streamprint(s, "sig min %4d max %4d avg %4d mag %5d qty %3d",
-      (int)perimeter.getSignalMin(), (int)perimeter.getSignalMax(), (int)perimeter.getSignalAvg(),
-      perimeterMag, (int)(perimeter.getFilterQuality()*100.0));
+      (int)perimeter.getSignalMin(0), (int)perimeter.getSignalMax(0), (int)perimeter.getSignalAvg(0),
+      perimeterMag, (int)(perimeter.getFilterQuality(0)*100.0));
     Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",  
-      (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut()) );      
+      (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut(0)) );      
   } else {  
     if (odometryUse) Streamprint(s, "odo %4d %4d ", (int)odometryLeft, (int)odometryRight);   
     Streamprint(s, "spd %4d %4d %4d ", (int)motorLeftSpeed, (int)motorRightSpeed, (int)motorMowRpm);
@@ -1127,10 +1127,10 @@ void Robot::readSensors(){
   if ((perimeterUse) && (millis() >= nextTimePerimeter)){    
     nextTimePerimeter = millis() +  50; // 50    
     perimeterMag = readSensor(SEN_PERIM_LEFT);
-    if ((perimeter.isInside() != perimeterInside)){      
+    if ((perimeter.isInside(0) != perimeterInside)){      
       perimeterCounter++;
       perimeterLastTransitionTime = millis();
-      perimeterInside = perimeter.isInside();
+      perimeterInside = perimeter.isInside(0);
     }    
     if (perimeterInside) setActuator(ACT_LED, HIGH);    
       else setActuator(ACT_LED, LOW);      
@@ -1142,7 +1142,7 @@ void Robot::readSensors(){
         perimeterTriggerTime = millis();
       }
     }
-    if (perimeter.signalTimedOut())  {      
+    if (perimeter.signalTimedOut(0))  {      
       if (stateCurr == STATE_FORWARD) {
         Console.println("Error: perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
@@ -1614,7 +1614,7 @@ void Robot::checkPerimeterBoundary(){
 // check perimeter while finding it
 void Robot::checkPerimeterFind(){
   if (stateCurr == STATE_PERI_FIND){
-    if (perimeter.isInside()) {
+    if (perimeter.isInside(0)) {
       // inside
       if (motorLeftSpeed != motorRightSpeed){      
         // we just made an 'outside=>inside' rotation, now track

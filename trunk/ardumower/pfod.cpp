@@ -955,7 +955,7 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->sonarDistRight);
       Bluetooth.print(",");
-      Bluetooth.print(robot->perimeter.isInside());
+      Bluetooth.print(robot->perimeter.isInside(0));
       Bluetooth.print(",");            
       Bluetooth.print(robot->perimeterMag);
       Bluetooth.print(",");
@@ -1101,7 +1101,7 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->sonarDistRight);
       Bluetooth.print(",");
-      Bluetooth.print(robot->perimeter.isInside());
+      Bluetooth.print(robot->perimeter.isInside(0));
       Bluetooth.print(",");      
       Bluetooth.print(robot->lawnSensor);
       Bluetooth.print(",");      
@@ -1126,15 +1126,15 @@ void RemoteControl::run(){
         Bluetooth.print(",");                    
         Bluetooth.print(robot->perimeterMag);
         Bluetooth.print(",");
-        Bluetooth.print(robot->perimeter.getSmoothMagnitude());
+        Bluetooth.print(robot->perimeter.getSmoothMagnitude(0));
         Bluetooth.print(",");
-        Bluetooth.print(robot->perimeter.isInside());
+        Bluetooth.print(robot->perimeter.isInside(0));
         Bluetooth.print(",");
         Bluetooth.print(robot->perimeterCounter);
         Bluetooth.print(",");        
-        Bluetooth.print(!robot->perimeter.signalTimedOut());        
+        Bluetooth.print(!robot->perimeter.signalTimedOut(0));        
         Bluetooth.print(",");                
-        Bluetooth.println(robot->perimeter.getFilterQuality());                
+        Bluetooth.println(robot->perimeter.getFilterQuality(0));                
         perimeterCaptureIdx++;
       }
     }
