@@ -49,16 +49,11 @@ For additional circuits for button, buzzer etc. (DIY version), see www.ardumower
   // Arduino Due
   #include "due.h"
 #endif
+#include "config.h"
 
 
 // requires: Arduino Mega or Arduino Due
 // NOTE for Arduino Due:  use native USB port for programming and console!
-
-// ------ choose ONLY ONE robot configuration --------------------------------------------------
-
-#include "mower.h"  // Ardumower Chassis Kit 1.0  (see mower.cpp for actual code)
-// #include "car.h"  // Car robot
-//#include "sim.h"  // simbad simulator - maybe future :)
 
 
 void setup()  {     
