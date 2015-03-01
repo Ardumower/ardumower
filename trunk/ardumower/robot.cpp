@@ -565,8 +565,8 @@ void Robot::motorControlPerimeter(){
 
 // PID controller: correct direction during normal driving (requires IMU)
 void Robot::motorControlImuDir(){
-  int leftSpeed = motorLeftSpeed;    
-  int rightSpeed = motorRightSpeed;
+  int leftSpeed = motorSpeedMaxPwm;    
+  int rightSpeed = motorSpeedMaxPwm;
   imuDirPID.x = distancePI(imu.ypr.yaw, imuDriveHeading) / PI * 180.0;            
   //Console.println(imuDirPID.x);    
   imuDirPID.w = 0;
