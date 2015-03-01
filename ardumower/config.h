@@ -1,7 +1,7 @@
 
 // ------ choose ONLY ONE robot configuration ---------------------------------------------
-#define USE_MOWER
-//#define USE_MINI
+//#define USE_MOWER
+#define USE_MINI
 
 
 // ----------------------------------------------------------------------------------------

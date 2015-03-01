@@ -165,9 +165,9 @@ Mini::Mini(){
   imuDirPID.Kp      = 5.0;     // direction PID controller
   imuDirPID.Ki      = 1.0;
   imuDirPID.Kd      = 1.0;    
-  imuRollPID.Kp     = 0.8;   // roll PID controller
-  imuRollPID.Ki     = 21;
-  imuRollPID.Kd     = 0;  
+  imuRollPID.Kp     = 0.6;   // roll PID controller
+  imuRollPID.Ki     = 1.2;
+  imuRollPID.Kd     = 0.3;  
   // ------ model R/C ------------------------------------
   remoteUse         = 1;       // use model remote control (R/C)?
   // ------ battery -------------------------------------

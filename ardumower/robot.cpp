@@ -520,9 +520,9 @@ void Robot::motorControlImuRoll(){
   imuRollPID.x = distancePI(imu.ypr.yaw, imuRollHeading) / PI * 180.0;            
   //Console.println(imuRollPID.x);    
   imuRollPID.w = 0;
-  imuRollPID.y_min = -motorSpeedMax;
-  imuRollPID.y_max = motorSpeedMax;		
-  imuRollPID.max_output = motorSpeedMax;
+  imuRollPID.y_min = -motorSpeedMaxPwm;
+  imuRollPID.y_max = motorSpeedMaxPwm;		
+  imuRollPID.max_output = motorSpeedMaxPwm;
   imuRollPID.compute();						      
   setMotorSpeed( -imuRollPID.y, 
                 +imuRollPID.y,  false);    
@@ -570,9 +570,9 @@ void Robot::motorControlImuDir(){
   imuDirPID.x = distancePI(imu.ypr.yaw, imuDriveHeading) / PI * 180.0;            
   //Console.println(imuDirPID.x);    
   imuDirPID.w = 0;
-  imuDirPID.y_min = -motorSpeedMax;
-  imuDirPID.y_max = motorSpeedMax;		
-  imuDirPID.max_output = motorSpeedMax;
+  imuDirPID.y_min = -motorSpeedMaxPwm;
+  imuDirPID.y_max = motorSpeedMaxPwm;		
+  imuDirPID.max_output = motorSpeedMaxPwm;
   imuDirPID.compute();	  					      
   setMotorSpeed( leftSpeed -imuDirPID.y, 
                  rightSpeed +imuDirPID.y, false );
@@ -829,7 +829,7 @@ void Robot::testOdometry(){
   char ch;
   int lastLeft = 0;
   int lastRight = 0;
-  motorLeftPWM = motorSpeedMaxPwm/5; motorRightPWM = motorSpeedMaxPwm/5;  
+  motorLeftPWM = motorSpeedMaxPwm/2; motorRightPWM = motorSpeedMaxPwm/2;  
   setMotorSpeed(motorLeftPWM, motorRightPWM, false);
   while (true){ 
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
@@ -846,11 +846,11 @@ void Robot::testOdometry(){
       ch = (char)Console.read();      
       if (ch == '0') break;
       if (ch == 'f') {
-          motorLeftPWM = motorSpeedMaxPwm/5; motorRightPWM = motorSpeedMaxPwm/5;  
+          motorLeftPWM = motorSpeedMaxPwm/2; motorRightPWM = motorSpeedMaxPwm/2;  
           setMotorSpeed(motorLeftPWM, motorRightPWM, false);
       }
       if (ch == 'r') {
-          motorLeftPWM = -motorSpeedMaxPwm/5; motorRightPWM = -motorSpeedMaxPwm/5;  
+          motorLeftPWM = -motorSpeedMaxPwm/2; motorRightPWM = -motorSpeedMaxPwm/2;  
           setMotorSpeed(motorLeftPWM, motorRightPWM, false);
       } 
       if (ch == 'z') {
