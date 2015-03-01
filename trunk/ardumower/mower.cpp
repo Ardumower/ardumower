@@ -28,6 +28,9 @@
 /* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics)
    (Arduino Mega) */
 
+#include "config.h"
+#ifdef USE_MOWER
+
 #include <Arduino.h>
 #include "mower.h"
 #include "due.h"
@@ -480,4 +483,5 @@ void Mower::configureBluetooth(boolean quick){
   bt.setParams(name, PFOD_PIN, PFOD_BAUDRATE, quick);  
 }
 
+#endif
 
