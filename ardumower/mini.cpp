@@ -110,7 +110,7 @@
 #define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
 #define PFOD_PIN 1234             // Bluetooth pin
 
-#define USE_DEVELOPER_TEST     0      // set to '1' for new perimeter signal test (developers)
+//#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
 Mini robot;
 
