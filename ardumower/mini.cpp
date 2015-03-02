@@ -118,10 +118,11 @@ Mini robot;
 Mini::Mini(){
   name = "Mini";
   // ------- wheel motors -----------------------------
-  motorAccel       = 0.05;  // motor wheel acceleration (warning: do not set too high)
+  motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
   motorSpeedMax       = 33;   // motor wheel max RPM
   motorSpeedMaxPwm    = 127;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-  motorPowerMax     = 30;    // motor wheel max power (Watt)
+//  motorPowerMax     = 30;    // motor wheel max power (Watt)
+  motorPowerMax     = 30000;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorRollTimeMax    = 2000;  // max. roll time (ms)
@@ -132,7 +133,8 @@ Mini::Mini(){
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
-  motorMowPowerMax = 50.0;     // motor mower max power (Watt)
+//  motorMowPowerMax = 50.0;     // motor mower max power (Watt)
+  motorMowPowerMax = 50000.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
   motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
@@ -148,9 +150,9 @@ Mini::Mini(){
   rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
   sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
-  sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
+  sonarTriggerBelow = 300;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 1;      // use perimeter?    
+  perimeterUse       = 0;      // use perimeter?    
   perimeterTriggerTimeout = 0; // perimeter trigger timeout (ms)  
   perimeterTrackRollTime  = 2000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
@@ -160,11 +162,11 @@ Mini::Mini(){
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse            = 0;       // use IMU?
+  imuUse            = 1;       // use IMU?
   imuCorrectDir     = 0;       // correct direction by compass?
-  imuDirPID.Kp      = 5.0;     // direction PID controller
-  imuDirPID.Ki      = 1.0;
-  imuDirPID.Kd      = 1.0;    
+  imuDirPID.Kp      = 0.6;     // direction PID controller
+  imuDirPID.Ki      = 1.2;
+  imuDirPID.Kd      = 0.3;    
   imuRollPID.Kp     = 0.6;   // roll PID controller
   imuRollPID.Ki     = 1.2;
   imuRollPID.Kd     = 0.3;  
@@ -185,11 +187,11 @@ Mini::Mini(){
   stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
   // ------ odometry ------------------------------------
-  odometryUse       = 0;       // use odometry?
+  odometryUse       = 1;       // use odometry?
   twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
-  odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
-  odometryTicksPerCm = 13.49;  // encoder ticks per cm
-  odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
+  odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
+  odometryTicksPerCm = 0.5;    // encoder ticks per cm
+  odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)
   // ----- GPS -------------------------------------------
   gpsUse            = 0;       // use GPS?
   // ----- other -----------------------------------------
