@@ -414,6 +414,390 @@ F 3 "~" H 3450 4750 30  0000 C CNN
 	1    3450 4750
 	0    -1   -1   0   
 $EndComp
+$Comp
+L F_10A EF1
+U 1 1 54D55253
+P 1700 2450
+F 0 "EF1" H 1750 2375 40  0000 C CNN
+F 1 "F_5A" H 1600 2370 40  0000 C CNN
+F 2 "sender_v2:Fuseholder_Reichelt_PL112000" H 1700 2450 60  0001 C CNN
+F 3 "" H 1700 2450 60  0000 C CNN
+F 4 "R: PL112000" H 1600 2300 60  0000 C CNN "Bestellnummer"
+	1    1700 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_6 P3
+U 1 1 54D5527A
+P 6850 1350
+F 0 "P3" V 6800 1350 60  0000 C CNN
+F 1 "Status LED" V 6900 1350 60  0000 C CNN
+F 2 "sender_v2:Pin_Header_Straight_1x06" H 6850 1350 60  0001 C CNN
+F 3 "" H 6850 1350 60  0000 C CNN
+F 4 "Value" H 6850 1350 60  0001 C CNN "Bestellnummer"
+	1    6850 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C2
+U 1 1 54D55373
+P 2625 1675
+F 0 "C2" H 2675 1775 50  0000 L CNN
+F 1 "100uF" H 2675 1575 50  0000 L CNN
+F 2 "sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 2625 1675 60  0001 C CNN
+F 3 "" H 2625 1675 60  0000 C CNN
+	1    2625 1675
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C1
+U 1 1 54D555BA
+P 2250 1675
+F 0 "C1" H 2300 1775 50  0000 L CNN
+F 1 "100uF" H 2300 1575 50  0000 L CNN
+F 2 "sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 2250 1675 60  0001 C CNN
+F 3 "" H 2250 1675 60  0000 C CNN
+	1    2250 1675
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR016
+U 1 1 54D55677
+P 2625 1975
+F 0 "#PWR016" H 2625 1975 30  0001 C CNN
+F 1 "GND" H 2625 1905 30  0001 C CNN
+F 2 "" H 2625 1975 60  0000 C CNN
+F 3 "" H 2625 1975 60  0000 C CNN
+	1    2625 1975
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND #PWR017
+U 1 1 54D55697
+P 2250 1975
+F 0 "#PWR017" H 2250 1975 30  0001 C CNN
+F 1 "GND" H 2250 1905 30  0001 C CNN
+F 2 "" H 2250 1975 60  0000 C CNN
+F 3 "" H 2250 1975 60  0000 C CNN
+	1    2250 1975
+	-1   0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR018
+U 1 1 54D55836
+P 2250 1300
+F 0 "#PWR018" H 2250 1390 20  0001 C CNN
+F 1 "+5V" H 2250 1425 30  0000 C CNN
+F 2 "" H 2250 1300 60  0000 C CNN
+F 3 "" H 2250 1300 60  0000 C CNN
+F 4 "Value" H 2250 1300 60  0001 C CNN "Bestellnummer"
+	1    2250 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR019
+U 1 1 54D55968
+P 2625 1300
+F 0 "#PWR019" H 2625 1150 60  0001 C CNN
+F 1 "+12V" H 2625 1425 30  0000 C CNN
+F 2 "" H 2625 1300 60  0000 C CNN
+F 3 "" H 2625 1300 60  0000 C CNN
+F 4 "Value" H 2625 1300 60  0001 C CNN "Bestellnummer"
+	1    2625 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D1
+U 1 1 54D55CFC
+P 2000 2750
+F 0 "D1" H 2000 2850 50  0000 C CNN
+F 1 "MBR 1045" H 2000 2650 50  0000 C CNN
+F 2 "sender_v2:MBR1045_Horizontal" H 2000 2750 60  0001 C CNN
+F 3 "" H 2000 2750 60  0000 C CNN
+	1    2000 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR020
+U 1 1 54D55FB8
+P 6375 1600
+F 0 "#PWR020" H 6375 1600 30  0001 C CNN
+F 1 "GND" H 6375 1530 30  0001 C CNN
+F 2 "" H 6375 1600 60  0000 C CNN
+F 3 "" H 6375 1600 60  0000 C CNN
+	1    6375 1600
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR021
+U 1 1 54D55FF9
+P 8675 1575
+F 0 "#PWR021" H 8675 1575 30  0001 C CNN
+F 1 "GND" H 8675 1505 30  0001 C CNN
+F 2 "" H 8675 1575 60  0000 C CNN
+F 3 "" H 8675 1575 60  0000 C CNN
+	1    8675 1575
+	0    1    -1   0   
+$EndComp
+$Comp
+L +5V #PWR022
+U 1 1 54D560B9
+P 8275 1675
+F 0 "#PWR022" H 8275 1765 20  0001 C CNN
+F 1 "+5V" H 8275 1800 30  0000 C CNN
+F 2 "" H 8275 1675 60  0000 C CNN
+F 3 "" H 8275 1675 60  0000 C CNN
+F 4 "Value" H 8275 1675 60  0001 C CNN "Bestellnummer"
+	1    8275 1675
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +12V #PWR023
+U 1 1 54D564FF
+P 10500 1950
+F 0 "#PWR023" H 10500 1800 60  0001 C CNN
+F 1 "+12V" H 10500 2090 30  0000 C CNN
+F 2 "" H 10500 1950 60  0000 C CNN
+F 3 "" H 10500 1950 60  0000 C CNN
+F 4 "Value" H 10500 1950 60  0001 C CNN "Bestellnummer"
+	1    10500 1950
+	1    0    0    -1  
+$EndComp
+NoConn ~ 10425 1525
+NoConn ~ 10425 1425
+Text GLabel 5000 1100 0    60   Input ~ 0
+Mover_in_Ladestation
+Text GLabel 5000 1500 0    60   Input ~ 0
+M1_DuoLED_Schleife1_Grün
+Text GLabel 6350 1200 0    60   Input ~ 0
+M2_DuoLED_Schleife2_Grün
+Text GLabel 6350 1400 0    60   Input ~ 0
+M1_DuoLED_Schleife1_Rot
+Text GLabel 5000 1300 0    60   Input ~ 0
+M2_DuoLED_Schleife2_Rot
+$Comp
+L CONN_3 P4
+U 1 1 54D57EFB
+P 6850 2200
+F 0 "P4" V 6800 2200 50  0000 C CNN
+F 1 "V.LED" V 6900 2200 40  0000 C CNN
+F 2 "sender_v2:Pin_Header_Straight_1x03" H 6850 2200 60  0001 C CNN
+F 3 "" H 6850 2200 60  0000 C CNN
+F 4 "Value" H 6850 2200 60  0001 C CNN "Bestellnummer"
+	1    6850 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 54D586F5
+P 3150 1675
+F 0 "R1" V 3230 1675 40  0000 C CNN
+F 1 "220R" V 3157 1676 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3080 1675 30  0001 C CNN
+F 3 "~" H 3150 1675 30  0000 C CNN
+	1    3150 1675
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR024
+U 1 1 54D58864
+P 3150 1300
+F 0 "#PWR024" H 3150 1390 20  0001 C CNN
+F 1 "+5V" H 3150 1425 30  0000 C CNN
+F 2 "" H 3150 1300 60  0000 C CNN
+F 3 "" H 3150 1300 60  0000 C CNN
+F 4 "Value" H 3150 1300 60  0001 C CNN "Bestellnummer"
+	1    3150 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR025
+U 1 1 54D58885
+P 3350 1300
+F 0 "#PWR025" H 3350 1150 60  0001 C CNN
+F 1 "+12V" H 3350 1425 30  0000 C CNN
+F 2 "" H 3350 1300 60  0000 C CNN
+F 3 "" H 3350 1300 60  0000 C CNN
+F 4 "Value" H 3350 1300 60  0001 C CNN "Bestellnummer"
+	1    3350 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 54D588A5
+P 3350 1675
+F 0 "R2" V 3430 1675 40  0000 C CNN
+F 1 "560R" V 3357 1676 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3280 1675 30  0001 C CNN
+F 3 "~" H 3350 1675 30  0000 C CNN
+F 4 "Value" H 3350 1675 60  0001 C CNN "Bestellnummer"
+	1    3350 1675
+	1    0    0    -1  
+$EndComp
+Text GLabel 3150 2025 3    60   Output ~ 0
+LED_5V
+Text GLabel 5850 2100 0    60   Input ~ 0
+LED_5V
+Text GLabel 6350 2200 0    60   Input ~ 0
+LED_12V
+Text GLabel 3350 2025 3    60   Output ~ 0
+LED_12V
+$Comp
+L GND #PWR026
+U 1 1 54D58D55
+P 6375 2300
+F 0 "#PWR026" H 6375 2300 30  0001 C CNN
+F 1 "GND" H 6375 2230 30  0001 C CNN
+F 2 "" H 6375 2300 60  0000 C CNN
+F 3 "" H 6375 2300 60  0000 C CNN
+	1    6375 2300
+	0    1    -1   0   
+$EndComp
+$Comp
+L ARDUINO_NANO U4
+U 1 1 54D6487C
+P 4825 5450
+F 0 "U4" H 4825 5460 60  0000 C CNN
+F 1 "ARDUINO_NANO" H 4835 5230 60  0000 C CNN
+F 2 "sender_v2:arduino_nano" H 4825 5450 60  0001 C CNN
+F 3 "" H 4825 5450 60  0000 C CNN
+F 4 "Value" H 4825 5450 60  0001 C CNN "Bestellnummer"
+	1    4825 5450
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3875 6050
+NoConn ~ 3875 4950
+NoConn ~ 3875 4850
+$Comp
+L Bohrloch_3,2mm B1
+U 1 1 54D689DE
+P 12250 475
+F 0 "B1" H 12530 635 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 12480 555 60  0000 C CNN
+F 2 "sender_v2:Bohrloch_3,2mm" H 12250 475 60  0001 C CNN
+F 3 "" H 12250 475 60  0000 C CNN
+	1    12250 475 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B2
+U 1 1 54D68AA0
+P 12250 775
+F 0 "B2" H 12530 935 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 12480 855 60  0000 C CNN
+F 2 "sender_v2:Bohrloch_3,2mm" H 12250 775 60  0001 C CNN
+F 3 "" H 12250 775 60  0000 C CNN
+	1    12250 775 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B3
+U 1 1 54D68AE1
+P 12275 1100
+F 0 "B3" H 12555 1260 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 12505 1180 60  0000 C CNN
+F 2 "sender_v2:Bohrloch_3,2mm" H 12275 1100 60  0001 C CNN
+F 3 "" H 12275 1100 60  0000 C CNN
+	1    12275 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B4
+U 1 1 54D68B23
+P 13025 475
+F 0 "B4" H 13305 635 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 13255 555 60  0000 C CNN
+F 2 "sender_v2:Bohrloch_3,2mm" H 13025 475 60  0001 C CNN
+F 3 "" H 13025 475 60  0000 C CNN
+	1    13025 475 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B5
+U 1 1 54D68B6A
+P 13050 775
+F 0 "B5" H 13330 935 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 13280 855 60  0000 C CNN
+F 2 "sender_v2:Bohrloch_3,2mm" H 13050 775 60  0001 C CNN
+F 3 "" H 13050 775 60  0000 C CNN
+	1    13050 775 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B6
+U 1 1 54D68BA6
+P 13050 1050
+F 0 "B6" H 13330 1210 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 13280 1130 60  0000 C CNN
+F 2 "sender_v2:Bohrloch_3,2mm" H 13050 1050 60  0001 C CNN
+F 3 "" H 13050 1050 60  0000 C CNN
+	1    13050 1050
+	1    0    0    -1  
+$EndComp
+NoConn ~ 12250 475 
+NoConn ~ 12250 775 
+NoConn ~ 12275 1100
+NoConn ~ 13050 1050
+NoConn ~ 13050 775 
+NoConn ~ 13025 475 
+Text Notes 4225 3800 0    60   ~ 0
+Led Mover in Ladestation:\nAn wenn in Ladestation - aus wenn nicht in Ladestation\n\nSchleife 1 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nSchleife 2 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nMuss geklärt werden ob der DC Stepdownwanler in der Lage ist 2 Schleifen zu versorgen
+NoConn ~ 3875 5450
+NoConn ~ 3875 5550
+NoConn ~ 3900 5650
+NoConn ~ 3875 5750
+NoConn ~ 5775 6250
+NoConn ~ 5775 6150
+NoConn ~ 5775 6050
+NoConn ~ 5775 5950
+Text Notes 7450 7500 0    60   ~ 0
+Schleifensender
+$Comp
+L CONN_3 P5
+U 1 1 54F4BE76
+P 7490 2200
+F 0 "P5" V 7440 2200 50  0000 C CNN
+F 1 "V.LED GND" V 7540 2200 40  0000 C CNN
+F 2 "sender_v2:Pin_Header_Straight_1x03" H 7490 2200 60  0001 C CNN
+F 3 "" H 7490 2200 60  0000 C CNN
+F 4 "Value" H 7490 2200 60  0001 C CNN "Bestellnummer"
+	1    7490 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_6 P6
+U 1 1 54F4BF8D
+P 7550 1360
+F 0 "P6" V 7500 1360 60  0000 C CNN
+F 1 "Status LED GND" V 7600 1360 60  0000 C CNN
+F 2 "sender_v2:Pin_Header_Straight_1x06" H 7550 1360 60  0001 C CNN
+F 3 "" H 7550 1360 60  0000 C CNN
+F 4 "Value" H 7550 1360 60  0001 C CNN "Bestellnummer"
+	1    7550 1360
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR027
+U 1 1 54F4C038
+P 7090 2460
+F 0 "#PWR027" H 7090 2460 30  0001 C CNN
+F 1 "GND" H 7090 2390 30  0001 C CNN
+F 2 "" H 7090 2460 60  0000 C CNN
+F 3 "" H 7090 2460 60  0000 C CNN
+	1    7090 2460
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR028
+U 1 1 54F4C060
+P 7120 1750
+F 0 "#PWR028" H 7120 1750 30  0001 C CNN
+F 1 "GND" H 7120 1680 30  0001 C CNN
+F 2 "" H 7120 1750 60  0000 C CNN
+F 3 "" H 7120 1750 60  0000 C CNN
+	1    7120 1750
+	0    1    -1   0   
+$EndComp
 Wire Wire Line
 	8575 2875 8825 2875
 Wire Wire Line
@@ -522,151 +906,14 @@ Wire Wire Line
 	6350 4750 6875 4750
 Wire Wire Line
 	3200 4750 2975 4750
-$Comp
-L F_10A EF1
-U 1 1 54D55253
-P 1700 2450
-F 0 "EF1" H 1750 2375 40  0000 C CNN
-F 1 "F_5A" H 1600 2370 40  0000 C CNN
-F 2 "sender_v2:Fuseholder_Reichelt_PL112000" H 1700 2450 60  0001 C CNN
-F 3 "" H 1700 2450 60  0000 C CNN
-F 4 "R: PL112000" H 1600 2300 60  0000 C CNN "Bestellnummer"
-	1    1700 2450
-	0    1    1    0   
-$EndComp
-$Comp
-L CONN_6 P3
-U 1 1 54D5527A
-P 6850 1350
-F 0 "P3" V 6800 1350 60  0000 C CNN
-F 1 "Status LED" V 6900 1350 60  0000 C CNN
-F 2 "sender_v2:Pin_Header_Straight_1x06" H 6850 1350 60  0001 C CNN
-F 3 "" H 6850 1350 60  0000 C CNN
-F 4 "Value" H 6850 1350 60  0001 C CNN "Bestellnummer"
-	1    6850 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L CP1 C2
-U 1 1 54D55373
-P 2625 1675
-F 0 "C2" H 2675 1775 50  0000 L CNN
-F 1 "100uF" H 2675 1575 50  0000 L CNN
-F 2 "sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 2625 1675 60  0001 C CNN
-F 3 "" H 2625 1675 60  0000 C CNN
-	1    2625 1675
-	1    0    0    -1  
-$EndComp
-$Comp
-L CP1 C1
-U 1 1 54D555BA
-P 2250 1675
-F 0 "C1" H 2300 1775 50  0000 L CNN
-F 1 "100uF" H 2300 1575 50  0000 L CNN
-F 2 "sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 2250 1675 60  0001 C CNN
-F 3 "" H 2250 1675 60  0000 C CNN
-	1    2250 1675
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR016
-U 1 1 54D55677
-P 2625 1975
-F 0 "#PWR016" H 2625 1975 30  0001 C CNN
-F 1 "GND" H 2625 1905 30  0001 C CNN
-F 2 "" H 2625 1975 60  0000 C CNN
-F 3 "" H 2625 1975 60  0000 C CNN
-	1    2625 1975
-	-1   0    0    -1  
-$EndComp
-$Comp
-L GND #PWR017
-U 1 1 54D55697
-P 2250 1975
-F 0 "#PWR017" H 2250 1975 30  0001 C CNN
-F 1 "GND" H 2250 1905 30  0001 C CNN
-F 2 "" H 2250 1975 60  0000 C CNN
-F 3 "" H 2250 1975 60  0000 C CNN
-	1    2250 1975
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	2625 1875 2625 1975
 Wire Wire Line
 	2250 1875 2250 1975
-$Comp
-L +5V #PWR018
-U 1 1 54D55836
-P 2250 1300
-F 0 "#PWR018" H 2250 1390 20  0001 C CNN
-F 1 "+5V" H 2250 1425 30  0000 C CNN
-F 2 "" H 2250 1300 60  0000 C CNN
-F 3 "" H 2250 1300 60  0000 C CNN
-F 4 "Value" H 2250 1300 60  0001 C CNN "Bestellnummer"
-	1    2250 1300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2250 1475 2250 1300
-$Comp
-L +12V #PWR019
-U 1 1 54D55968
-P 2625 1300
-F 0 "#PWR019" H 2625 1150 60  0001 C CNN
-F 1 "+12V" H 2625 1425 30  0000 C CNN
-F 2 "" H 2625 1300 60  0000 C CNN
-F 3 "" H 2625 1300 60  0000 C CNN
-F 4 "Value" H 2625 1300 60  0001 C CNN "Bestellnummer"
-	1    2625 1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L DIODE D1
-U 1 1 54D55CFC
-P 2000 2750
-F 0 "D1" H 2000 2850 50  0000 C CNN
-F 1 "MBR 1045" H 2000 2650 50  0000 C CNN
-F 2 "sender_v2:MBR1045_Horizontal" H 2000 2750 60  0001 C CNN
-F 3 "" H 2000 2750 60  0000 C CNN
-	1    2000 2750
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2625 1475 2625 1300
-$Comp
-L GND #PWR020
-U 1 1 54D55FB8
-P 6375 1600
-F 0 "#PWR020" H 6375 1600 30  0001 C CNN
-F 1 "GND" H 6375 1530 30  0001 C CNN
-F 2 "" H 6375 1600 60  0000 C CNN
-F 3 "" H 6375 1600 60  0000 C CNN
-	1    6375 1600
-	0    1    -1   0   
-$EndComp
-$Comp
-L GND #PWR021
-U 1 1 54D55FF9
-P 8675 1575
-F 0 "#PWR021" H 8675 1575 30  0001 C CNN
-F 1 "GND" H 8675 1505 30  0001 C CNN
-F 2 "" H 8675 1575 60  0000 C CNN
-F 3 "" H 8675 1575 60  0000 C CNN
-	1    8675 1575
-	0    1    -1   0   
-$EndComp
-$Comp
-L +5V #PWR022
-U 1 1 54D560B9
-P 8275 1675
-F 0 "#PWR022" H 8275 1765 20  0001 C CNN
-F 1 "+5V" H 8275 1800 30  0000 C CNN
-F 2 "" H 8275 1675 60  0000 C CNN
-F 3 "" H 8275 1675 60  0000 C CNN
-F 4 "Value" H 8275 1675 60  0001 C CNN "Bestellnummer"
-	1    8275 1675
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	8675 1575 8825 1575
 Wire Wire Line
@@ -675,24 +922,10 @@ Wire Wire Line
 	10500 2200 10500 2125
 Wire Wire Line
 	10500 2125 10425 2125
-$Comp
-L +12V #PWR023
-U 1 1 54D564FF
-P 10500 1950
-F 0 "#PWR023" H 10500 1800 60  0001 C CNN
-F 1 "+12V" H 10500 2090 30  0000 C CNN
-F 2 "" H 10500 1950 60  0000 C CNN
-F 3 "" H 10500 1950 60  0000 C CNN
-F 4 "Value" H 10500 1950 60  0001 C CNN "Bestellnummer"
-	1    10500 1950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	10425 2025 10500 2025
 Wire Wire Line
 	10500 2025 10500 1950
-NoConn ~ 10425 1525
-NoConn ~ 10425 1425
 Wire Wire Line
 	6375 1600 6500 1600
 Wire Wire Line
@@ -701,16 +934,6 @@ Wire Wire Line
 	1700 2650 1700 3600
 Wire Wire Line
 	1700 2250 1700 2175
-Text GLabel 5000 1100 0    60   Input ~ 0
-Mover_in_Ladestation
-Text GLabel 5000 1500 0    60   Input ~ 0
-M1_DuoLED_Schleife1_Grün
-Text GLabel 6350 1200 0    60   Input ~ 0
-M2_DuoLED_Schleife2_Grün
-Text GLabel 6350 1400 0    60   Input ~ 0
-M1_DuoLED_Schleife1_Rot
-Text GLabel 5000 1300 0    60   Input ~ 0
-M2_DuoLED_Schleife2_Rot
 Wire Wire Line
 	6500 1100 5000 1100
 Wire Wire Line
@@ -724,194 +947,37 @@ Wire Wire Line
 Wire Wire Line
 	1800 2750 1700 2750
 Connection ~ 1700 2750
-$Comp
-L CONN_3 P4
-U 1 1 54D57EFB
-P 6850 2200
-F 0 "P4" V 6800 2200 50  0000 C CNN
-F 1 "V.LED" V 6900 2200 40  0000 C CNN
-F 2 "sender_v2:Pin_Header_Straight_1x03" H 6850 2200 60  0001 C CNN
-F 3 "" H 6850 2200 60  0000 C CNN
-F 4 "Value" H 6850 2200 60  0001 C CNN "Bestellnummer"
-	1    6850 2200
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R1
-U 1 1 54D586F5
-P 3150 1675
-F 0 "R1" V 3230 1675 40  0000 C CNN
-F 1 "220R" V 3157 1676 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3080 1675 30  0001 C CNN
-F 3 "~" H 3150 1675 30  0000 C CNN
-	1    3150 1675
-	1    0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR024
-U 1 1 54D58864
-P 3150 1300
-F 0 "#PWR024" H 3150 1390 20  0001 C CNN
-F 1 "+5V" H 3150 1425 30  0000 C CNN
-F 2 "" H 3150 1300 60  0000 C CNN
-F 3 "" H 3150 1300 60  0000 C CNN
-F 4 "Value" H 3150 1300 60  0001 C CNN "Bestellnummer"
-	1    3150 1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L +12V #PWR025
-U 1 1 54D58885
-P 3350 1300
-F 0 "#PWR025" H 3350 1150 60  0001 C CNN
-F 1 "+12V" H 3350 1425 30  0000 C CNN
-F 2 "" H 3350 1300 60  0000 C CNN
-F 3 "" H 3350 1300 60  0000 C CNN
-F 4 "Value" H 3350 1300 60  0001 C CNN "Bestellnummer"
-	1    3350 1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R2
-U 1 1 54D588A5
-P 3350 1675
-F 0 "R2" V 3430 1675 40  0000 C CNN
-F 1 "220R" V 3357 1676 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3280 1675 30  0001 C CNN
-F 3 "~" H 3350 1675 30  0000 C CNN
-	1    3350 1675
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3350 1425 3350 1300
 Wire Wire Line
 	3150 1425 3150 1300
-Text GLabel 3150 2025 3    60   Output ~ 0
-LED_5V
-Text GLabel 5850 2100 0    60   Input ~ 0
-LED_5V
-Text GLabel 6350 2200 0    60   Input ~ 0
-LED_12V
-Text GLabel 3350 2025 3    60   Output ~ 0
-LED_12V
 Wire Wire Line
 	3350 2025 3350 1925
 Wire Wire Line
 	3150 2025 3150 1925
-$Comp
-L GND #PWR026
-U 1 1 54D58D55
-P 6375 2300
-F 0 "#PWR026" H 6375 2300 30  0001 C CNN
-F 1 "GND" H 6375 2230 30  0001 C CNN
-F 2 "" H 6375 2300 60  0000 C CNN
-F 3 "" H 6375 2300 60  0000 C CNN
-	1    6375 2300
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	6375 2300 6500 2300
 Wire Wire Line
 	6500 2100 5850 2100
 Wire Wire Line
 	6350 2200 6500 2200
-$Comp
-L ARDUINO_NANO U4
-U 1 1 54D6487C
-P 4825 5450
-F 0 "U4" H 4825 5460 60  0000 C CNN
-F 1 "ARDUINO_NANO" H 4835 5230 60  0000 C CNN
-F 2 "sender_v2:arduino_nano" H 4825 5450 60  0001 C CNN
-F 3 "" H 4825 5450 60  0000 C CNN
-F 4 "Value" H 4825 5450 60  0001 C CNN "Bestellnummer"
-	1    4825 5450
-	1    0    0    -1  
-$EndComp
-NoConn ~ 3875 6050
-NoConn ~ 3875 4950
-NoConn ~ 3875 4850
-$Comp
-L Bohrloch_3,2mm B1
-U 1 1 54D689DE
-P 12250 475
-F 0 "B1" H 12530 635 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 12480 555 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 12250 475 60  0001 C CNN
-F 3 "" H 12250 475 60  0000 C CNN
-	1    12250 475 
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B2
-U 1 1 54D68AA0
-P 12250 775
-F 0 "B2" H 12530 935 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 12480 855 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 12250 775 60  0001 C CNN
-F 3 "" H 12250 775 60  0000 C CNN
-	1    12250 775 
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B3
-U 1 1 54D68AE1
-P 12275 1100
-F 0 "B3" H 12555 1260 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 12505 1180 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 12275 1100 60  0001 C CNN
-F 3 "" H 12275 1100 60  0000 C CNN
-	1    12275 1100
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B4
-U 1 1 54D68B23
-P 13025 475
-F 0 "B4" H 13305 635 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 13255 555 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 13025 475 60  0001 C CNN
-F 3 "" H 13025 475 60  0000 C CNN
-	1    13025 475 
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B5
-U 1 1 54D68B6A
-P 13050 775
-F 0 "B5" H 13330 935 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 13280 855 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 13050 775 60  0001 C CNN
-F 3 "" H 13050 775 60  0000 C CNN
-	1    13050 775 
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B6
-U 1 1 54D68BA6
-P 13050 1050
-F 0 "B6" H 13330 1210 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 13280 1130 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 13050 1050 60  0001 C CNN
-F 3 "" H 13050 1050 60  0000 C CNN
-	1    13050 1050
-	1    0    0    -1  
-$EndComp
-NoConn ~ 12250 475 
-NoConn ~ 12250 775 
-NoConn ~ 12275 1100
-NoConn ~ 13050 1050
-NoConn ~ 13050 775 
-NoConn ~ 13025 475 
-Text Notes 4225 3800 0    60   ~ 0
-Led Mover in Ladestation:\nAn wenn in Ladestation - aus wenn nicht in Ladestation\n\nSchleife 1 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nSchleife 2 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nMuss geklärt werden ob der DC Stepdownwanler in der Lage ist 2 Schleifen zu versorgen
-NoConn ~ 3875 5450
-NoConn ~ 3875 5550
-NoConn ~ 3900 5650
-NoConn ~ 3875 5750
-NoConn ~ 5775 6250
-NoConn ~ 5775 6150
-NoConn ~ 5775 6050
-NoConn ~ 5775 5950
-Text Notes 7450 7500 0    60   ~ 0
-Schleifensender
+Wire Wire Line
+	7140 2100 7140 2460
+Connection ~ 7140 2200
+Wire Wire Line
+	7140 2460 7090 2460
+Connection ~ 7140 2300
+Wire Wire Line
+	7200 1110 7200 1750
+Connection ~ 7200 1210
+Connection ~ 7200 1410
+Wire Wire Line
+	7200 1310 7210 1310
+Connection ~ 7200 1310
+Wire Wire Line
+	7200 1750 7120 1750
+Connection ~ 7200 1610
+Wire Wire Line
+	7200 1610 7200 1510
+Connection ~ 7200 1510
 $EndSCHEMATC
