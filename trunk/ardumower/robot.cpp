@@ -421,7 +421,7 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
         if (!odometryLeftState2) odometryLeft++; else odometryLeft--;
       } 
       else { 
-         if (motorLeftPWM >0) odometryLeft++; else odometryLeft--;
+         if (motorLeftPWM >=0) odometryLeft++; else odometryLeft--;
       }
     }
     odometryLeftLastState = odometryLeftState;
@@ -433,7 +433,7 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
         if (!odometryRightState2) odometryRight++; else odometryRight--;
       }     
       else {
-         if (motorRightPWM >0) odometryRight++; else odometryRight--;    
+         if (motorRightPWM >=0) odometryRight++; else odometryRight--;    
       }
     }
     odometryRightLastState = odometryRightState;
@@ -497,8 +497,11 @@ void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
     motorLeftPWM = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft); 
     motorRightPWM = (1.0 - accel) * motorRightPWM + accel * ((double)pwmRight);  
   }
-    setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
-    setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
+  Serial.print(motorLeftPWM);
+  Serial.print("\t");
+  Serial.println(motorRightPWM);
+  setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
+  setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
 }
 
 // sets mower motor actuator
@@ -1736,11 +1739,11 @@ void Robot::calcOdometry(){
   odometryTheta += wheel_theta; 
   
   motorLeftRpmCounter = ticksLeft;
-  motorLeftRpm = double ((((double)motorLeftRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorLeftRpmTime))) * 60000.0);
+  motorLeftRpm = double ((( ((double)motorLeftRpmCounter)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorLeftRpmTime))) * 60000.0);
   motorLeftRpmCounter = 0;              
   lastMotorLeftRpmTime = millis();
   motorRightRpmCounter = ticksRight;
-  motorRightRpm = double ((((double)motorRightRpmCounter/odometryTicksPerRevolution) / ((double)(millis() - lastMotorRightRpmTime))) * 60000.0);
+  motorRightRpm = double ((( ((double)motorRightRpmCounter)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRightRpmTime))) * 60000.0);
   motorRightRpmCounter = 0;              
   lastMotorRightRpmTime = millis();
   
