@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 02.03.2015 21:39:46
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 02.03.2015 22:51:31
 
 BeginCmp
 TimeStamp = /54D689DE;
@@ -92,10 +92,10 @@ IdModule  = sender_v2:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
-TimeStamp = /54D5527A;
+TimeStamp = /54F4D933;
 Reference = P3;
 ValeurCmp = Status LED;
-IdModule  = sender_v2:Pin_Header_Straight_1x06;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
@@ -103,20 +103,6 @@ TimeStamp = /54D57EFB;
 Reference = P4;
 ValeurCmp = V.LED;
 IdModule  = sender_v2:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54F4BE76;
-Reference = P5;
-ValeurCmp = V.LED GND;
-IdModule  = sender_v2:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /54F4BF8D;
-Reference = P6;
-ValeurCmp = Status LED GND;
-IdModule  = sender_v2:Pin_Header_Straight_1x06;
 EndCmp
 
 BeginCmp
