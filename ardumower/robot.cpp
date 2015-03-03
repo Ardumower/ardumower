@@ -709,7 +709,9 @@ void Robot::setup()  {
   Console.println(VER);
   #ifdef USE_DEVELOPER_TEST
     Console.println("Warning: USE_DEVELOPER_TEST activated");
-  #endif  
+  #endif
+  Console.print(F("Config: "));
+  Console.println(name);  
   Console.println(F("press..."));
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
