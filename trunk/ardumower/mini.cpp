@@ -119,7 +119,7 @@ Mini::Mini(){
   name = "Mini";
   // ------- wheel motors -----------------------------
   motorAccel       = 0.03;  // motor wheel acceleration (warning: do not set too high)
-  motorSpeedMax       = 150;   // motor wheel max RPM
+  motorSpeedMax       = 120;   // motor wheel max RPM
   motorSpeedMaxPwm    = 127;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
 //  motorPowerMax     = 30;    // motor wheel max power (Watt)
   motorPowerMax     = 30000;    // motor wheel max power (Watt)
@@ -153,7 +153,7 @@ Mini::Mini(){
   rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
   sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
-  sonarTriggerBelow = 300;    // ultrasonic sensor trigger distance
+  sonarTriggerBelow = 300;     // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
   perimeterUse       = 0;      // use perimeter?    
   perimeterTriggerTimeout = 0; // perimeter trigger timeout (ms)  
