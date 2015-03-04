@@ -184,7 +184,7 @@ void RemoteControl::sendMainMenu(boolean update){
 void RemoteControl::sendPlotMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Plot"));           
   Bluetooth.print(F("|y7~Sensors|y5~Sensor counters|y3~IMU|y6~Perimeter|y8~GPS"));   
-  Bluetooth.println(F("|y1~Battery|y2~Odometry2D|y10~GPS2D}"));
+  Bluetooth.println(F("|y1~Battery|y2~Odometry2D|y11~Motor control|y10~GPS2D}"));
 }  
 
 
@@ -1169,6 +1169,17 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.println(robot->gpsY);
     }
+  } else if (pfodState == PFOD_PLOT_MOTOR){
+    if (millis() >= nextPlotTime){
+      nextPlotTime = millis() + 50;
+      Bluetooth.print((float(millis())/1000.0f));
+      Bluetooth.print(",");
+      Bluetooth.print(robot->motorLeftRpm);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->motorLeftSpeed);
+      Bluetooth.print(",");
+      Bluetooth.println(robot->motorLeftPWM);            
+    }
   }
 }
 
@@ -1256,6 +1267,12 @@ void RemoteControl::readSerial(){
           ADCMan.calibrate();
           robot->beep(2, false);      
         }
+        else if (pfodCmd == "y11"){
+          // motor control
+          Bluetooth.println(F("{=Motor control`300|time s`0|rpm_curr`1|rpm_set`2|pwm`3}"));                   
+          nextPlotTime = 0;
+          pfodState = PFOD_PLOT_MOTOR;
+        }              
         else if (pfodCmd == "yp") sendPlotMenu(false);
         else if (pfodCmd == "y4")sendErrorMenu(false);
         else if (pfodCmd == "n") sendManualMenu(false);
