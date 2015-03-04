@@ -190,13 +190,10 @@ class Robot
     boolean odometryRightLastState2;
     float odometryTheta; // theta angle (radiant)
     float odometryX ;   // X map position (cm)
-    float odometryY ;   // Y map position (cm)
-    int motorLeftRpmCounter ; // left wheel rpm counter
+    float odometryY ;   // Y map position (cm)    
     float motorLeftRpm ; // left wheel rpm
-    unsigned long lastMotorLeftRpmTime ; 
-    int motorRightRpmCounter ; // right wheel rpm counter
-    float motorRightRpm ; // right wheel rpm
-    unsigned long lastMotorRightRpmTime;
+    unsigned long lastMotorRpmTime ;     
+    float motorRightRpm ; // right wheel rpm    
     unsigned long nextTimeOdometry ;
     unsigned long nextTimeOdometryInfo ; 
     // -------- RC remote control state -----------------    
@@ -224,6 +221,8 @@ class Robot
     int motorSpeedMax   ;   // motor wheel max RPM
     int motorSpeedMaxPwm  ;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
     float motorPowerMax   ;    // motor wheel max power (Watt)
+    PID motorLeftPID;              // motor left wheel PID controller
+    PID motorRightPID;              // motor right wheel PID controller
     float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)/scale)
     float motorSenseLeftScale ; // motor left sense scale  (mA=(ADC-zero)/scale)
     int motorRollTimeMax ;  // max. roll time (ms)

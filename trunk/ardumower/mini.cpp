@@ -118,8 +118,8 @@ Mini robot;
 Mini::Mini(){
   name = "Mini";
   // ------- wheel motors -----------------------------
-  motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
-  motorSpeedMax       = 33;   // motor wheel max RPM
+  motorAccel       = 0.03;  // motor wheel acceleration (warning: do not set too high)
+  motorSpeedMax       = 150;   // motor wheel max RPM
   motorSpeedMaxPwm    = 127;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
 //  motorPowerMax     = 30;    // motor wheel max power (Watt)
   motorPowerMax     = 30000;    // motor wheel max power (Watt)
@@ -130,6 +130,9 @@ Mini::Mini(){
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
+  motorLeftPID.Kp       = 0.2;    // motor wheel PID controller
+  motorLeftPID.Ki       = 0.0;
+  motorLeftPID.Kd       = 0.0;  
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
@@ -452,8 +455,8 @@ void Mini::setActuator(char type, int value){
   switch (type){
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;//                                                                     Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     // normal direction
-    case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+    case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+    case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     // reverse direction
     //case ACT_MOTOR_LEFT: setL298N(pinMotorRightDir, pinMotorRightPWM, -value); break;
     //case ACT_MOTOR_RIGHT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, -value); break;    
