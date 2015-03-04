@@ -62,5 +62,47 @@ float PID::compute()
 }
 
 
+// ---------------------------------
 
+VelocityPID::VelocityPID()
+{
+}
+    
+VelocityPID::VelocityPID(float Kp, float Ki, float Kd){
+  this->Kp = Kp;
+  this->Ki = Ki;
+  this->Kd = Kd;
+}
+
+
+float VelocityPID::compute()
+{   
+  unsigned long now = micros();
+  Ta = ((now - lastControlTime) / 1000000.0);
+  lastControlTime = now;
+  if (Ta > 1.0) Ta = 1.0;   // should only happen for the very first call
+
+  // compute error
+  int16_t e = (w - x);
+
+  // compute max/min output
+  if (w < 0) { y_min = -max_output; y_max = 0; }
+  if (w > 0) { y_min = 0; y_max = max_output; }     
+
+  y = yold
+      + Kp * (e - eold1)
+      + Ki * Ta * e
+      + Kd/Ta * (e - 2* eold1 + eold2);
+     
+  // restrict output to min/max 
+  if (y > y_max) y = y_max;
+  if (y < y_min) y = y_min; 
+
+  // save variable for next time
+  eold2 = eold1;
+  eold1 = e;
+  yold = y ;  
+  
+  return y;
+}
 
