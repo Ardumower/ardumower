@@ -23,8 +23,9 @@
 
 */
 
-/* Ardumower Mini - robot configuration (Ardumower electronics)
-   (Arduino Mega) */
+/* Ardumower Mini - robot configuration (Ardumower electronics, Arduino Mega) 
+   http://wiki.ardumower.de/index.php?title=Ardumower_Mini
+*/
 
 #include "config.h"
 #ifdef USE_MINI
