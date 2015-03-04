@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 27
+#define MAGIC 28
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -47,10 +47,9 @@ Robot::Robot(){
   odometryLeft = odometryRight = 0;
   odometryLeftLastState = odometryLeftLastState2 = odometryRightLastState = odometryRightLastState2 = LOW;
   odometryTheta = odometryX = odometryY = 0;
-  
-  motorLeftRpmCounter = motorRightRpmCounter = 0;  
+    
   motorRightRpm = motorLeftRpm = 0;
-  lastMotorLeftRpmTime = lastMotorRightRpmTime = 0;
+  lastMotorRpmTime = 0;
   motorLeftSpeed =  motorRightSpeed = 0; 
   motorLeftPWM = motorRightPWM = 0;
   motorRightSenseADC = motorLeftSenseADC = 0;
@@ -173,6 +172,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorMowPowerMax);
   eereadwrite(readflag, addr, motorMowRPM);
   eereadwrite(readflag, addr, motorMowSenseScale);
+  eereadwrite(readflag, addr, motorLeftPID.Kp);
+  eereadwrite(readflag, addr, motorLeftPID.Ki);
+  eereadwrite(readflag, addr, motorLeftPID.Kd);
   eereadwrite(readflag, addr, motorMowPID.Kp);
   eereadwrite(readflag, addr, motorMowPID.Ki);
   eereadwrite(readflag, addr, motorMowPID.Kd);
@@ -497,9 +499,9 @@ void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
     motorLeftPWM = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft); 
     motorRightPWM = (1.0 - accel) * motorRightPWM + accel * ((double)pwmRight);  
   }
-  Serial.print(motorLeftPWM);
+  /*Serial.print(motorLeftPWM);
   Serial.print("\t");
-  Serial.println(motorRightPWM);
+  Serial.println(motorRightPWM);*/
   setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
   setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
 }
@@ -586,21 +588,43 @@ void Robot::motorControl(){
   //double TA = ((double)(millis() - lastMotorControlTime)) / 1000.0;  
   // normal drive
   if (odometryUse){
-    int motorLeftSetpoint = motorLeftSpeed;
-    int motorRightSetpoint = motorRightSpeed;
-    double P = 1.0;
-    if (millis() < stateStartTime + 500) {
-      motorLeftSetpoint = motorRightSetpoint = 0;
-      P = 3.0;
-    }
-    double motorLeftSpeedE =  motorLeftSetpoint - motorLeftRpm;          
-    double motorRightSpeedE = motorRightSetpoint - motorRightRpm;  
-    int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftSpeedE*P));
-    int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm,motorRightPWM + motorRightSpeedE*P));
-  
+    motorLeftPID.x = motorLeftRpm;       
+    motorLeftPID.w = motorLeftSpeed;
+    motorLeftPID.y_min = -motorSpeedMaxPwm;
+    motorLeftPID.y_max = motorSpeedMaxPwm;		
+    motorLeftPID.max_output = motorSpeedMaxPwm;
+    motorLeftPID.compute();
+    int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftPID.y));
+    if((motorLeftSpeed >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
+    if((motorLeftSpeed <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
+    motorRightPID.Kp = motorLeftPID.Kp;
+    motorRightPID.Ki = motorLeftPID.Ki;
+    motorRightPID.Kd = motorLeftPID.Kd;
+    motorRightPID.x = motorRightRpm;       
+    motorRightPID.w = motorRightSpeed;
+    motorRightPID.y_min = -motorSpeedMaxPwm;
+    motorRightPID.y_max = motorSpeedMaxPwm;		
+    motorRightPID.max_output = motorSpeedMaxPwm;
+    motorRightPID.compute();            
+    int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWM + motorRightPID.y));
+    if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
+    if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
     if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
     }
+    /*Serial.print(motorLeftRpm);
+    Serial.print(",");   
+    Serial.print(motorLeftSpeed);
+    Serial.print(",");   
+    Serial.print(leftSpeed);
+    Serial.print(",");   
+    Serial.print(",");       
+    Serial.print(motorRightRpm);
+    Serial.print(",");   
+    Serial.print(motorRightSpeed);    
+    Serial.print(",");   
+    Serial.print(rightSpeed);
+    Serial.println();*/        
     setMotorSpeed( leftSpeed, rightSpeed, false );  
   }
   else{
@@ -1732,7 +1756,7 @@ void Robot::calcOdometry(){
   int odoRight = odometryRight;
   int ticksLeft = odoLeft - lastOdoLeft;
   int ticksRight = odoRight - lastOdoRight;
-  if ((ticksLeft == 0) && (ticksRight == 0)) return; // nothing to compute
+  //if ((ticksLeft == 0) && (ticksRight == 0)) return; // nothing to compute  
   lastOdoLeft = odoLeft;
   lastOdoRight = odoRight;    
   double left_cm = ((double)ticksLeft) / ((double)odometryTicksPerCm);
@@ -1741,14 +1765,9 @@ void Robot::calcOdometry(){
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
   odometryTheta += wheel_theta; 
   
-  motorLeftRpmCounter = ticksLeft;
-  motorLeftRpm = double ((( ((double)motorLeftRpmCounter)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorLeftRpmTime))) * 60000.0);
-  motorLeftRpmCounter = 0;              
-  lastMotorLeftRpmTime = millis();
-  motorRightRpmCounter = ticksRight;
-  motorRightRpm = double ((( ((double)motorRightRpmCounter)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRightRpmTime))) * 60000.0);
-  motorRightRpmCounter = 0;              
-  lastMotorRightRpmTime = millis();
+  motorLeftRpm = double ((( ((double)ticksLeft)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);  
+  motorRightRpm = double ((( ((double)ticksRight)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
+  lastMotorRpmTime = millis();
   
   //odometryTheta -= (double)((int)(odometryTheta/(2*PI)))*2*PI;
   //if (odometryTheta < -PI) odometryTheta += 2*PI; 

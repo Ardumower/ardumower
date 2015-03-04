@@ -131,6 +131,9 @@ Mower::Mower(){
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
+  motorLeftPID.Kp       = 3.0;    // motor wheel PID controller
+  motorLeftPID.Ki       = 0.0;
+  motorLeftPID.Kd       = 0.0;  
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
