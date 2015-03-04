@@ -1088,10 +1088,10 @@ void Robot::checkButton(){
 }
 
 void Robot::readSensors(){
-  if ((odometryUse) && (millis() >= nextTimeOdometry)) {        
-    nextTimeOdometry = millis() + 50;    
+  //if ((odometryUse) && (millis() >= nextTimeOdometry)) {        
+  //  nextTimeOdometry = millis() + 50;    
     calcOdometry();
-  }    
+  //}    
   if (millis() >= nextTimeMotorSense){    
     nextTimeMotorSense = millis() +  50;
     double accel = 0.05;
@@ -1732,6 +1732,7 @@ void Robot::calcOdometry(){
   int odoRight = odometryRight;
   int ticksLeft = odoLeft - lastOdoLeft;
   int ticksRight = odoRight - lastOdoRight;
+  if ((ticksLeft == 0) && (ticksRight == 0)) return; // nothing to compute
   lastOdoLeft = odoLeft;
   lastOdoRight = odoRight;    
   double left_cm = ((double)ticksLeft) / ((double)odometryTicksPerCm);
