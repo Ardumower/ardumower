@@ -32,6 +32,7 @@
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       8  // M1_IN2         (if using old L298N driver, leave open)
 #define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
+// FIXME: this should NOT use the timer2 pin ?!  http://wiki.ardumower.de/index.php?title=Arduino_Due#PWM_frequencies
 #define pinEnable    3  // EN             (connect to motor driver enable)             
 
 // motor driver fault pin
