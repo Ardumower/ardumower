@@ -364,8 +364,6 @@ F 3 "" H 1125 775 60  0000 C CNN
 	1    1125 775 
 	0    1    1    0   
 $EndComp
-NoConn ~ 8825 2475
-NoConn ~ 8825 2575
 Text GLabel 1400 1025 2    60   Output ~ 0
 POTI
 Text GLabel 3300 5350 0    60   Input ~ 0
@@ -709,7 +707,6 @@ Text Notes 4225 3800 0    60   ~ 0
 Led Mover in Ladestation:\nAn wenn in Ladestation - aus wenn nicht in Ladestation\n\nSchleife 1 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nSchleife 2 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nMuss geklärt werden ob der DC Stepdownwanler in der Lage ist 2 Schleifen zu versorgen
 NoConn ~ 3875 5450
 NoConn ~ 3875 5550
-NoConn ~ 3900 5650
 NoConn ~ 3875 5750
 NoConn ~ 5775 6250
 NoConn ~ 5775 6150
@@ -953,4 +950,32 @@ F 3 "" H 6575 2070 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	6575 2070 6700 2070
+NoConn ~ 3870 5650
+$Comp
+L GND #PWR030
+U 1 1 54F74294
+P 8675 2475
+F 0 "#PWR030" H 8675 2475 30  0001 C CNN
+F 1 "GND" H 8675 2405 30  0001 C CNN
+F 2 "" H 8675 2475 60  0000 C CNN
+F 3 "" H 8675 2475 60  0000 C CNN
+	1    8675 2475
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	8675 2475 8825 2475
+$Comp
+L +5V #PWR031
+U 1 1 54F742ED
+P 8275 2575
+F 0 "#PWR031" H 8275 2665 20  0001 C CNN
+F 1 "+5V" H 8275 2700 30  0000 C CNN
+F 2 "" H 8275 2575 60  0000 C CNN
+F 3 "" H 8275 2575 60  0000 C CNN
+F 4 "Value" H 8275 2575 60  0001 C CNN "Bestellnummer"
+	1    8275 2575
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8825 2575 8275 2575
 $EndSCHEMATC

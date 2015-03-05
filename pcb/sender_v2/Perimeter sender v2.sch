@@ -53,66 +53,66 @@ $EndDescr
 $Comp
 L MC33926 U3
 U 1 1 53A98109
-P 9675 2325
-F 0 "U3" H 9625 1375 60  0000 C CNN
-F 1 "MC33926" H 9675 3475 60  0000 C CNN
-F 2 "sender_v2:MC_33926_31polig_mit_Bohrloch_neue_Masse" H 9825 2375 60  0001 C CNN
-F 3 "~" H 9825 2375 60  0000 C CNN
-	1    9675 2325
+P 9655 2295
+F 0 "U3" H 9605 1345 60  0000 C CNN
+F 1 "MC33926" H 9655 3445 60  0000 C CNN
+F 2 "sender_v2:MC_33926_31polig_mit_Bohrloch_neue_Masse" H 9805 2345 60  0001 C CNN
+F 3 "~" H 9805 2345 60  0000 C CNN
+	1    9655 2295
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR01
 U 1 1 53A981F2
-P 10500 2200
-F 0 "#PWR01" H 10500 2200 30  0001 C CNN
-F 1 "GND" H 10500 2130 30  0001 C CNN
-F 2 "" H 10500 2200 60  0000 C CNN
-F 3 "" H 10500 2200 60  0000 C CNN
-	1    10500 2200
+P 10480 2170
+F 0 "#PWR01" H 10480 2170 30  0001 C CNN
+F 1 "GND" H 10480 2100 30  0001 C CNN
+F 2 "" H 10480 2170 60  0000 C CNN
+F 3 "" H 10480 2170 60  0000 C CNN
+	1    10480 2170
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR02
 U 1 1 53A98276
-P 8625 2975
-F 0 "#PWR02" H 8625 2975 30  0001 C CNN
-F 1 "GND" H 8625 2905 30  0001 C CNN
-F 2 "" H 8625 2975 60  0000 C CNN
-F 3 "" H 8625 2975 60  0000 C CNN
-	1    8625 2975
+P 8605 2945
+F 0 "#PWR02" H 8605 2945 30  0001 C CNN
+F 1 "GND" H 8605 2875 30  0001 C CNN
+F 2 "" H 8605 2945 60  0000 C CNN
+F 3 "" H 8605 2945 60  0000 C CNN
+	1    8605 2945
 	0    1    1    0   
 $EndComp
 $Comp
 L +5V #PWR03
 U 1 1 53A9829A
-P 8575 2875
-F 0 "#PWR03" H 8575 2965 20  0001 C CNN
-F 1 "+5V" H 8575 2965 30  0000 C CNN
-F 2 "" H 8575 2875 60  0000 C CNN
-F 3 "" H 8575 2875 60  0000 C CNN
-	1    8575 2875
+P 8555 2845
+F 0 "#PWR03" H 8555 2935 20  0001 C CNN
+F 1 "+5V" H 8555 2935 30  0000 C CNN
+F 2 "" H 8555 2845 60  0000 C CNN
+F 3 "" H 8555 2845 60  0000 C CNN
+	1    8555 2845
 	0    -1   -1   0   
 $EndComp
-Text GLabel 8675 1375 0    60   Input ~ 0
+Text GLabel 8655 1345 0    60   Input ~ 0
 M2FB
-Text GLabel 8225 1475 0    60   Input ~ 0
+Text GLabel 8205 1445 0    60   Input ~ 0
 M2nSF
-Text GLabel 8675 1775 0    60   Input ~ 0
+Text GLabel 8655 1745 0    60   Input ~ 0
 M2IN1
-Text GLabel 8225 1875 0    60   Input ~ 0
+Text GLabel 8205 1845 0    60   Input ~ 0
 M2IN2
-Text GLabel 8225 2175 0    60   Input ~ 0
+Text GLabel 8205 2145 0    60   Input ~ 0
 EN
-Text GLabel 8675 2275 0    60   Input ~ 0
+Text GLabel 8655 2245 0    60   Input ~ 0
 M1FB
-Text GLabel 8225 2375 0    60   Input ~ 0
+Text GLabel 8205 2345 0    60   Input ~ 0
 M1nSF
-Text GLabel 8200 5050 2    60   Output ~ 0
+Text GLabel 1450 5750 0    60   Output ~ 0
 M1_DuoLED_Schleife1_Grün
-Text GLabel 8675 2675 0    60   Input ~ 0
+Text GLabel 8655 2645 0    60   Input ~ 0
 M1IN1
-Text GLabel 8225 2775 0    60   Input ~ 0
+Text GLabel 8205 2745 0    60   Input ~ 0
 M1IN2
 Text GLabel 3700 5050 0    60   Input ~ 0
 M1FB
@@ -120,40 +120,40 @@ Text GLabel 6350 5550 2    60   Input ~ 0
 EN
 Text GLabel 5925 5650 2    60   Input ~ 0
 M1nSF
-Text GLabel 8200 4850 2    60   Output ~ 0
+Text GLabel 1450 5550 0    60   Output ~ 0
 M2_DuoLED_Schleife2_Grün
-Text GLabel 6350 5750 2    60   Input ~ 0
+Text GLabel 6350 5050 2    60   Input ~ 0
 M1IN1
 Text GLabel 5925 5850 2    60   Input ~ 0
 M1IN2
-Text GLabel 6875 4950 2    60   Output ~ 0
+Text GLabel 2775 5650 0    60   Output ~ 0
 M1_DuoLED_Schleife1_Rot
 $Comp
 L R R7
 U 1 1 53A992CD
-P 6500 5050
-F 0 "R7" V 6580 5050 40  0000 C CNN
-F 1 "220R" V 6507 5051 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 6430 5050 30  0001 C CNN
-F 3 "~" H 6500 5050 30  0000 C CNN
-	1    6500 5050
-	0    1    -1   0   
+P 3150 5750
+F 0 "R7" V 3230 5750 40  0000 C CNN
+F 1 "220R" V 3157 5751 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3080 5750 30  0001 C CNN
+F 3 "~" H 3150 5750 30  0000 C CNN
+	1    3150 5750
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R R5
 U 1 1 53A992DC
-P 6100 4950
-F 0 "R5" V 6180 4950 40  0000 C CNN
-F 1 "220R" V 6107 4951 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 6030 4950 30  0001 C CNN
-F 3 "~" H 6100 4950 30  0000 C CNN
-F 4 "Value" H 6100 4950 60  0001 C CNN "Bestellnummer"
-	1    6100 4950
-	0    1    1    0   
+P 3550 5650
+F 0 "R5" V 3630 5650 40  0000 C CNN
+F 1 "220R" V 3557 5651 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3480 5650 30  0001 C CNN
+F 3 "~" H 3550 5650 30  0000 C CNN
+F 4 "Value" H 3550 5650 60  0001 C CNN "Bestellnummer"
+	1    3550 5650
+	0    -1   1    0   
 $EndComp
-NoConn ~ 8825 1975
-NoConn ~ 10425 2675
-NoConn ~ 10425 2775
+NoConn ~ 8805 1945
+NoConn ~ 10405 2645
+NoConn ~ 10405 2745
 Text GLabel 3300 5150 0    60   Input ~ 0
 M2FB
 $Comp
@@ -167,10 +167,10 @@ F 3 "" H 3475 5950 60  0000 C CNN
 	1    3475 5950
 	0    -1   -1   0   
 $EndComp
-NoConn ~ 8825 2075
+NoConn ~ 8805 2045
 Text GLabel 5925 5150 2    60   Input ~ 0
 M2nSF
-Text GLabel 6875 4750 2    60   Output ~ 0
+Text GLabel 2775 5450 0    60   Output ~ 0
 M2_DuoLED_Schleife2_Rot
 Text GLabel 2975 4750 0    60   Output ~ 0
 Mover_in_Ladestation
@@ -178,7 +178,7 @@ Text GLabel 6350 5250 2    60   Input ~ 0
 M2IN1
 Text GLabel 5925 5350 2    60   Input ~ 0
 M2IN2
-NoConn ~ 8825 3075
+NoConn ~ 8805 3045
 $Comp
 L DC-DC_Stepdown U2
 U 1 1 54D4FA89
@@ -382,24 +382,24 @@ $EndComp
 $Comp
 L R R6
 U 1 1 54D53F97
-P 6500 4850
-F 0 "R6" V 6580 4850 40  0000 C CNN
-F 1 "220R" V 6507 4851 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 6430 4850 30  0001 C CNN
-F 3 "~" H 6500 4850 30  0000 C CNN
-	1    6500 4850
-	0    1    1    0   
+P 3150 5550
+F 0 "R6" V 3230 5550 40  0000 C CNN
+F 1 "220R" V 3157 5551 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3080 5550 30  0001 C CNN
+F 3 "~" H 3150 5550 30  0000 C CNN
+	1    3150 5550
+	0    -1   1    0   
 $EndComp
 $Comp
 L R R4
 U 1 1 54D5424D
-P 6100 4750
-F 0 "R4" V 6180 4750 40  0000 C CNN
-F 1 "220R" V 6107 4751 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 6030 4750 30  0001 C CNN
-F 3 "~" H 6100 4750 30  0000 C CNN
-	1    6100 4750
-	0    1    1    0   
+P 3550 5450
+F 0 "R4" V 3630 5450 40  0000 C CNN
+F 1 "220R" V 3557 5451 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3480 5450 30  0001 C CNN
+F 3 "~" H 3550 5450 30  0000 C CNN
+	1    3550 5450
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R R3
@@ -506,40 +506,28 @@ $EndComp
 $Comp
 L GND #PWR020
 U 1 1 54D55FF9
-P 8675 1575
-F 0 "#PWR020" H 8675 1575 30  0001 C CNN
-F 1 "GND" H 8675 1505 30  0001 C CNN
-F 2 "" H 8675 1575 60  0000 C CNN
-F 3 "" H 8675 1575 60  0000 C CNN
-	1    8675 1575
+P 8655 1545
+F 0 "#PWR020" H 8655 1545 30  0001 C CNN
+F 1 "GND" H 8655 1475 30  0001 C CNN
+F 2 "" H 8655 1545 60  0000 C CNN
+F 3 "" H 8655 1545 60  0000 C CNN
+	1    8655 1545
 	0    1    -1   0   
-$EndComp
-$Comp
-L +5V #PWR021
-U 1 1 54D560B9
-P 8275 1675
-F 0 "#PWR021" H 8275 1765 20  0001 C CNN
-F 1 "+5V" H 8275 1800 30  0000 C CNN
-F 2 "" H 8275 1675 60  0000 C CNN
-F 3 "" H 8275 1675 60  0000 C CNN
-F 4 "Value" H 8275 1675 60  0001 C CNN "Bestellnummer"
-	1    8275 1675
-	0    -1   -1   0   
 $EndComp
 $Comp
 L +12V #PWR022
 U 1 1 54D564FF
-P 10500 1950
-F 0 "#PWR022" H 10500 1800 60  0001 C CNN
-F 1 "+12V" H 10500 2090 30  0000 C CNN
-F 2 "" H 10500 1950 60  0000 C CNN
-F 3 "" H 10500 1950 60  0000 C CNN
-F 4 "Value" H 10500 1950 60  0001 C CNN "Bestellnummer"
-	1    10500 1950
+P 10480 1920
+F 0 "#PWR022" H 10480 1770 60  0001 C CNN
+F 1 "+12V" H 10480 2060 30  0000 C CNN
+F 2 "" H 10480 1920 60  0000 C CNN
+F 3 "" H 10480 1920 60  0000 C CNN
+F 4 "Value" H 10480 1920 60  0001 C CNN "Bestellnummer"
+	1    10480 1920
 	1    0    0    -1  
 $EndComp
-NoConn ~ 10425 1525
-NoConn ~ 10425 1425
+NoConn ~ 10405 1495
+NoConn ~ 10405 1395
 Text GLabel 5380 880  0    60   Input ~ 0
 Mover_in_Ladestation
 Text GLabel 5380 1580 0    60   Input ~ 0
@@ -703,43 +691,126 @@ NoConn ~ 12275 1100
 NoConn ~ 13050 1050
 NoConn ~ 13050 775 
 NoConn ~ 13025 475 
-Text Notes 4225 3800 0    60   ~ 0
+Text Notes 4205 3770 0    60   ~ 0
 Led Mover in Ladestation:\nAn wenn in Ladestation - aus wenn nicht in Ladestation\n\nSchleife 1 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nSchleife 2 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nMuss geklärt werden ob der DC Stepdownwanler in der Lage ist 2 Schleifen zu versorgen
-NoConn ~ 3875 5450
-NoConn ~ 3875 5550
-NoConn ~ 3875 5750
 NoConn ~ 5775 6250
 NoConn ~ 5775 6150
 NoConn ~ 5775 6050
 NoConn ~ 5775 5950
 Text Notes 7450 7500 0    60   ~ 0
 Schleifensender
+$Comp
+L CONN_01X08 P3
+U 1 1 54F4D933
+P 7080 1230
+F 0 "P3" H 7080 1680 50  0000 C CNN
+F 1 "Status LED" V 7180 1230 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 7080 1230 60  0001 C CNN
+F 3 "" H 7080 1230 60  0000 C CNN
+	1    7080 1230
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR026
+U 1 1 54F4DA22
+P 6755 980
+F 0 "#PWR026" H 6755 980 30  0001 C CNN
+F 1 "GND" H 6755 910 30  0001 C CNN
+F 2 "" H 6755 980 60  0000 C CNN
+F 3 "" H 6755 980 60  0000 C CNN
+	1    6755 980 
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR027
+U 1 1 54F4DB09
+P 6755 1180
+F 0 "#PWR027" H 6755 1180 30  0001 C CNN
+F 1 "GND" H 6755 1110 30  0001 C CNN
+F 2 "" H 6755 1180 60  0000 C CNN
+F 3 "" H 6755 1180 60  0000 C CNN
+	1    6755 1180
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR028
+U 1 1 54F4DB80
+P 6755 1480
+F 0 "#PWR028" H 6755 1480 30  0001 C CNN
+F 1 "GND" H 6755 1410 30  0001 C CNN
+F 2 "" H 6755 1480 60  0000 C CNN
+F 3 "" H 6755 1480 60  0000 C CNN
+	1    6755 1480
+	0    1    -1   0   
+$EndComp
+$Comp
+L CONN_4 P4
+U 1 1 54F4E811
+P 7050 2120
+F 0 "P4" V 7000 2120 50  0000 C CNN
+F 1 "V.LED" V 7100 2120 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 7050 2120 60  0001 C CNN
+F 3 "" H 7050 2120 60  0000 C CNN
+F 4 "Value" H 7050 2120 60  0001 C CNN "Bestellnummer"
+	1    7050 2120
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR029
+U 1 1 54F4EA91
+P 6575 2070
+F 0 "#PWR029" H 6575 2070 30  0001 C CNN
+F 1 "GND" H 6575 2000 30  0001 C CNN
+F 2 "" H 6575 2070 60  0000 C CNN
+F 3 "" H 6575 2070 60  0000 C CNN
+	1    6575 2070
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR030
+U 1 1 54F74294
+P 8655 2445
+F 0 "#PWR030" H 8655 2445 30  0001 C CNN
+F 1 "GND" H 8655 2375 30  0001 C CNN
+F 2 "" H 8655 2445 60  0000 C CNN
+F 3 "" H 8655 2445 60  0000 C CNN
+	1    8655 2445
+	0    1    -1   0   
+$EndComp
+Text GLabel 8230 2545 0    60   Input ~ 0
+M1nD2 pwm
+Text GLabel 6350 5750 2    60   Input ~ 0
+M1nD2 pwm
+Text GLabel 8250 1645 0    60   Input ~ 0
+M2nD2 pwm
+Text GLabel 5910 4850 2    60   Input ~ 0
+M2nD2 pwm
 Wire Wire Line
-	8575 2875 8825 2875
+	8555 2845 8805 2845
 Wire Wire Line
 	3475 5950 3875 5950
 Wire Wire Line
-	8675 1375 8825 1375
+	8655 1345 8805 1345
 Wire Wire Line
-	8825 1475 8225 1475
+	8805 1445 8205 1445
 Wire Wire Line
-	8675 1775 8825 1775
+	8655 1745 8805 1745
 Wire Wire Line
-	8825 1875 8225 1875
+	8805 1845 8205 1845
 Wire Wire Line
-	8225 2175 8825 2175
+	8205 2145 8805 2145
 Wire Wire Line
-	8825 2275 8675 2275
+	8805 2245 8655 2245
 Wire Wire Line
-	8825 2375 8225 2375
+	8805 2345 8205 2345
 Wire Wire Line
-	8825 2675 8675 2675
+	8805 2645 8655 2645
 Wire Wire Line
-	8825 2775 8225 2775
+	8805 2745 8205 2745
 Wire Wire Line
 	3700 5050 3875 5050
 Wire Wire Line
-	5775 5750 6350 5750
+	5775 5050 6350 5050
 Wire Wire Line
 	5775 5850 5925 5850
 Wire Wire Line
@@ -749,7 +820,7 @@ Wire Wire Line
 Wire Wire Line
 	5775 5250 6350 5250
 Wire Wire Line
-	8625 2975 8825 2975
+	8605 2945 8805 2945
 Wire Wire Line
 	5925 5350 5775 5350
 Wire Wire Line
@@ -803,23 +874,23 @@ Wire Wire Line
 Wire Wire Line
 	3075 2750 3450 2750
 Wire Wire Line
-	5850 4950 5775 4950
+	3800 5650 3875 5650
 Wire Wire Line
-	5775 4850 6250 4850
+	3875 5550 3400 5550
 Wire Wire Line
-	5850 4750 5775 4750
+	3800 5450 3875 5450
 Wire Wire Line
 	3875 4750 3700 4750
 Wire Wire Line
-	6250 5050 5775 5050
+	3400 5750 3875 5750
 Wire Wire Line
-	6350 4950 6875 4950
+	3300 5650 2775 5650
 Wire Wire Line
-	6750 5050 8200 5050
+	2900 5750 1450 5750
 Wire Wire Line
-	6750 4850 8200 4850
+	2900 5550 1450 5550
 Wire Wire Line
-	6350 4750 6875 4750
+	3300 5450 2775 5450
 Wire Wire Line
 	3200 4750 2975 4750
 Wire Wire Line
@@ -831,17 +902,15 @@ Wire Wire Line
 Wire Wire Line
 	2625 1475 2625 1300
 Wire Wire Line
-	8675 1575 8825 1575
+	8655 1545 8805 1545
 Wire Wire Line
-	8825 1675 8275 1675
+	10480 2170 10480 2095
 Wire Wire Line
-	10500 2200 10500 2125
+	10480 2095 10405 2095
 Wire Wire Line
-	10500 2125 10425 2125
+	10405 1995 10480 1995
 Wire Wire Line
-	10425 2025 10500 2025
-Wire Wire Line
-	10500 2025 10500 1950
+	10480 1995 10480 1920
 Wire Wire Line
 	2375 2750 2200 2750
 Wire Wire Line
@@ -873,109 +942,26 @@ Wire Wire Line
 	6700 1970 6470 1970
 Wire Wire Line
 	6470 2170 6700 2170
-$Comp
-L CONN_01X08 P3
-U 1 1 54F4D933
-P 7080 1230
-F 0 "P3" H 7080 1680 50  0000 C CNN
-F 1 "Status LED" V 7180 1230 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 7080 1230 60  0001 C CNN
-F 3 "" H 7080 1230 60  0000 C CNN
-	1    7080 1230
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR026
-U 1 1 54F4DA22
-P 6755 980
-F 0 "#PWR026" H 6755 980 30  0001 C CNN
-F 1 "GND" H 6755 910 30  0001 C CNN
-F 2 "" H 6755 980 60  0000 C CNN
-F 3 "" H 6755 980 60  0000 C CNN
-	1    6755 980 
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	6755 980  6880 980 
-$Comp
-L GND #PWR027
-U 1 1 54F4DB09
-P 6755 1180
-F 0 "#PWR027" H 6755 1180 30  0001 C CNN
-F 1 "GND" H 6755 1110 30  0001 C CNN
-F 2 "" H 6755 1180 60  0000 C CNN
-F 3 "" H 6755 1180 60  0000 C CNN
-	1    6755 1180
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	6755 1180 6880 1180
-$Comp
-L GND #PWR028
-U 1 1 54F4DB80
-P 6755 1480
-F 0 "#PWR028" H 6755 1480 30  0001 C CNN
-F 1 "GND" H 6755 1410 30  0001 C CNN
-F 2 "" H 6755 1480 60  0000 C CNN
-F 3 "" H 6755 1480 60  0000 C CNN
-	1    6755 1480
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	6755 1480 6880 1480
 Wire Wire Line
 	6610 1280 6880 1280
-$Comp
-L CONN_4 P4
-U 1 1 54F4E811
-P 7050 2120
-F 0 "P4" V 7000 2120 50  0000 C CNN
-F 1 "V.LED" V 7100 2120 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 7050 2120 60  0001 C CNN
-F 3 "" H 7050 2120 60  0000 C CNN
-F 4 "Value" H 7050 2120 60  0001 C CNN "Bestellnummer"
-	1    7050 2120
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR029
-U 1 1 54F4EA91
-P 6575 2070
-F 0 "#PWR029" H 6575 2070 30  0001 C CNN
-F 1 "GND" H 6575 2000 30  0001 C CNN
-F 2 "" H 6575 2070 60  0000 C CNN
-F 3 "" H 6575 2070 60  0000 C CNN
-	1    6575 2070
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	6575 2070 6700 2070
-NoConn ~ 3870 5650
-$Comp
-L GND #PWR030
-U 1 1 54F74294
-P 8675 2475
-F 0 "#PWR030" H 8675 2475 30  0001 C CNN
-F 1 "GND" H 8675 2405 30  0001 C CNN
-F 2 "" H 8675 2475 60  0000 C CNN
-F 3 "" H 8675 2475 60  0000 C CNN
-	1    8675 2475
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
-	8675 2475 8825 2475
-$Comp
-L +5V #PWR031
-U 1 1 54F742ED
-P 8275 2575
-F 0 "#PWR031" H 8275 2665 20  0001 C CNN
-F 1 "+5V" H 8275 2700 30  0000 C CNN
-F 2 "" H 8275 2575 60  0000 C CNN
-F 3 "" H 8275 2575 60  0000 C CNN
-F 4 "Value" H 8275 2575 60  0001 C CNN "Bestellnummer"
-	1    8275 2575
-	0    -1   -1   0   
-$EndComp
+	8655 2445 8805 2445
 Wire Wire Line
-	8825 2575 8275 2575
+	5775 4850 5910 4850
+Wire Wire Line
+	5775 5750 6350 5750
+Wire Wire Line
+	8805 2545 8230 2545
+Wire Wire Line
+	8805 1645 8250 1645
+NoConn ~ 5780 4950
+NoConn ~ 5775 4750
 $EndSCHEMATC

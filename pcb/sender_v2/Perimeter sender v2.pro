@@ -1,4 +1,4 @@
-update=28.02.2015 21:47:27
+update=05.03.2015 10:03:35
 version=1
 last_client=kicad
 [pcbnew]
@@ -46,8 +46,6 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=sender_v2.pretty;../sender_v2;../megashield_svn_0.5;../megashield_svn_0.5/acs712.pretty;sender_v2.pretty;../../../../Program Files (x86)/KiCAD/share/library;F:/Arbeit/KICAD/zimprich.pretty
@@ -89,3 +87,5 @@ LibName34=Perimeter sender v2-cache
 LibName35=C:/Users/Uwe/Downloads/megashield_svn_0.5/ardumower mega shield svn-cache
 LibName36=C:/Users/Uwe/Downloads/footprints eigene/Arduino
 LibName37=Ina169
+[general]
+version=1
