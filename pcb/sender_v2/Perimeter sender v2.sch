@@ -108,7 +108,7 @@ Text GLabel 8655 2245 0    60   Input ~ 0
 M1FB
 Text GLabel 8205 2345 0    60   Input ~ 0
 M1nSF
-Text GLabel 1450 5750 0    60   Output ~ 0
+Text GLabel 7220 4750 2    60   Output ~ 0
 M1_DuoLED_Schleife1_Grün
 Text GLabel 8655 2645 0    60   Input ~ 0
 M1IN1
@@ -120,7 +120,7 @@ Text GLabel 6350 5550 2    60   Input ~ 0
 EN
 Text GLabel 5925 5650 2    60   Input ~ 0
 M1nSF
-Text GLabel 1450 5550 0    60   Output ~ 0
+Text GLabel 1460 5550 0    60   Output ~ 0
 M2_DuoLED_Schleife2_Grün
 Text GLabel 6350 5050 2    60   Input ~ 0
 M1IN1
@@ -131,13 +131,13 @@ M1_DuoLED_Schleife1_Rot
 $Comp
 L R R7
 U 1 1 53A992CD
-P 3150 5750
-F 0 "R7" V 3230 5750 40  0000 C CNN
-F 1 "220R" V 3157 5751 40  0000 C CNN
-F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3080 5750 30  0001 C CNN
-F 3 "~" H 3150 5750 30  0000 C CNN
-	1    3150 5750
-	0    -1   -1   0   
+P 6790 4750
+F 0 "R7" V 6870 4750 40  0000 C CNN
+F 1 "220R" V 6797 4751 40  0000 C CNN
+F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 6720 4750 30  0001 C CNN
+F 3 "~" H 6790 4750 30  0000 C CNN
+	1    6790 4750
+	0    1    1    0   
 $EndComp
 $Comp
 L R R5
@@ -325,7 +325,7 @@ L POT RV1
 U 1 1 54D524A0
 P 1025 1025
 F 0 "RV1" H 1025 925 50  0000 C CNN
-F 1 "POT" H 1025 1025 50  0000 C CNN
+F 1 "47K" H 1025 1025 50  0000 C CNN
 F 2 "sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop" H 1025 1025 60  0001 C CNN
 F 3 "" H 1025 1025 60  0000 C CNN
 	1    1025 1025
@@ -365,9 +365,9 @@ F 3 "" H 1125 775 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 Text GLabel 1400 1025 2    60   Output ~ 0
-POTI
+POTI1
 Text GLabel 3300 5350 0    60   Input ~ 0
-POTI
+POTI1
 $Comp
 L JUMPER JP1
 U 1 1 54D53A2E
@@ -388,7 +388,7 @@ F 1 "220R" V 3157 5551 40  0000 C CNN
 F 2 "sender_v2:Resistor_Horizontal_RM10mm" V 3080 5550 30  0001 C CNN
 F 3 "~" H 3150 5550 30  0000 C CNN
 	1    3150 5550
-	0    -1   1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R R4
@@ -515,10 +515,10 @@ F 3 "" H 8655 1545 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +12V #PWR022
+L +12V #PWR021
 U 1 1 54D564FF
 P 10480 1920
-F 0 "#PWR022" H 10480 1770 60  0001 C CNN
+F 0 "#PWR021" H 10480 1770 60  0001 C CNN
 F 1 "+12V" H 10480 2060 30  0000 C CNN
 F 2 "" H 10480 1920 60  0000 C CNN
 F 3 "" H 10480 1920 60  0000 C CNN
@@ -550,10 +550,10 @@ F 3 "~" H 3150 1675 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR023
+L +5V #PWR022
 U 1 1 54D58864
 P 3150 1300
-F 0 "#PWR023" H 3150 1390 20  0001 C CNN
+F 0 "#PWR022" H 3150 1390 20  0001 C CNN
 F 1 "+5V" H 3150 1425 30  0000 C CNN
 F 2 "" H 3150 1300 60  0000 C CNN
 F 3 "" H 3150 1300 60  0000 C CNN
@@ -562,10 +562,10 @@ F 4 "Value" H 3150 1300 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR024
+L +12V #PWR023
 U 1 1 54D58885
 P 3350 1300
-F 0 "#PWR024" H 3350 1150 60  0001 C CNN
+F 0 "#PWR023" H 3350 1150 60  0001 C CNN
 F 1 "+12V" H 3350 1425 30  0000 C CNN
 F 2 "" H 3350 1300 60  0000 C CNN
 F 3 "" H 3350 1300 60  0000 C CNN
@@ -594,10 +594,10 @@ LED_12V
 Text GLabel 3350 2025 3    60   Output ~ 0
 LED_12V
 $Comp
-L GND #PWR025
+L GND #PWR024
 U 1 1 54D58D55
 P 6575 2270
-F 0 "#PWR025" H 6575 2270 30  0001 C CNN
+F 0 "#PWR024" H 6575 2270 30  0001 C CNN
 F 1 "GND" H 6575 2200 30  0001 C CNN
 F 2 "" H 6575 2270 60  0000 C CNN
 F 3 "" H 6575 2270 60  0000 C CNN
@@ -653,17 +653,6 @@ F 3 "" H 12275 1100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B4
-U 1 1 54D68B23
-P 13025 475
-F 0 "B4" H 13305 635 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 13255 555 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 13025 475 60  0001 C CNN
-F 3 "" H 13025 475 60  0000 C CNN
-	1    13025 475 
-	1    0    0    -1  
-$EndComp
-$Comp
 L Bohrloch_3,2mm B5
 U 1 1 54D68B6A
 P 13050 775
@@ -690,7 +679,6 @@ NoConn ~ 12250 775
 NoConn ~ 12275 1100
 NoConn ~ 13050 1050
 NoConn ~ 13050 775 
-NoConn ~ 13025 475 
 Text Notes 4205 3770 0    60   ~ 0
 Led Mover in Ladestation:\nAn wenn in Ladestation - aus wenn nicht in Ladestation\n\nSchleife 1 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nSchleife 2 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nMuss geklärt werden ob der DC Stepdownwanler in der Lage ist 2 Schleifen zu versorgen
 NoConn ~ 5775 6250
@@ -711,10 +699,10 @@ F 3 "" H 7080 1230 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR026
+L GND #PWR025
 U 1 1 54F4DA22
 P 6755 980
-F 0 "#PWR026" H 6755 980 30  0001 C CNN
+F 0 "#PWR025" H 6755 980 30  0001 C CNN
 F 1 "GND" H 6755 910 30  0001 C CNN
 F 2 "" H 6755 980 60  0000 C CNN
 F 3 "" H 6755 980 60  0000 C CNN
@@ -722,10 +710,10 @@ F 3 "" H 6755 980 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR027
+L GND #PWR026
 U 1 1 54F4DB09
 P 6755 1180
-F 0 "#PWR027" H 6755 1180 30  0001 C CNN
+F 0 "#PWR026" H 6755 1180 30  0001 C CNN
 F 1 "GND" H 6755 1110 30  0001 C CNN
 F 2 "" H 6755 1180 60  0000 C CNN
 F 3 "" H 6755 1180 60  0000 C CNN
@@ -733,10 +721,10 @@ F 3 "" H 6755 1180 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR028
+L GND #PWR027
 U 1 1 54F4DB80
 P 6755 1480
-F 0 "#PWR028" H 6755 1480 30  0001 C CNN
+F 0 "#PWR027" H 6755 1480 30  0001 C CNN
 F 1 "GND" H 6755 1410 30  0001 C CNN
 F 2 "" H 6755 1480 60  0000 C CNN
 F 3 "" H 6755 1480 60  0000 C CNN
@@ -756,10 +744,10 @@ F 4 "Value" H 7050 2120 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR029
+L GND #PWR028
 U 1 1 54F4EA91
 P 6575 2070
-F 0 "#PWR029" H 6575 2070 30  0001 C CNN
+F 0 "#PWR028" H 6575 2070 30  0001 C CNN
 F 1 "GND" H 6575 2000 30  0001 C CNN
 F 2 "" H 6575 2070 60  0000 C CNN
 F 3 "" H 6575 2070 60  0000 C CNN
@@ -767,10 +755,10 @@ F 3 "" H 6575 2070 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR030
+L GND #PWR029
 U 1 1 54F74294
 P 8655 2445
-F 0 "#PWR030" H 8655 2445 30  0001 C CNN
+F 0 "#PWR029" H 8655 2445 30  0001 C CNN
 F 1 "GND" H 8655 2375 30  0001 C CNN
 F 2 "" H 8655 2445 60  0000 C CNN
 F 3 "" H 8655 2445 60  0000 C CNN
@@ -882,13 +870,13 @@ Wire Wire Line
 Wire Wire Line
 	3875 4750 3700 4750
 Wire Wire Line
-	3400 5750 3875 5750
+	6540 4750 5775 4750
 Wire Wire Line
 	3300 5650 2775 5650
 Wire Wire Line
-	2900 5750 1450 5750
+	7040 4750 7220 4750
 Wire Wire Line
-	2900 5550 1450 5550
+	2900 5550 1460 5550
 Wire Wire Line
 	3300 5450 2775 5450
 Wire Wire Line
@@ -963,5 +951,49 @@ Wire Wire Line
 Wire Wire Line
 	8805 1645 8250 1645
 NoConn ~ 5780 4950
-NoConn ~ 5775 4750
+$Comp
+L POT RV2
+U 1 1 54FCCD61
+P 1025 1695
+F 0 "RV2" H 1025 1595 50  0000 C CNN
+F 1 "47K" H 1025 1695 50  0000 C CNN
+F 2 "sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop" H 1025 1695 60  0001 C CNN
+F 3 "" H 1025 1695 60  0000 C CNN
+	1    1025 1695
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR030
+U 1 1 54FCCD67
+P 1125 1945
+F 0 "#PWR030" H 1125 1945 30  0001 C CNN
+F 1 "GND" H 1125 1875 30  0001 C CNN
+F 2 "" H 1125 1945 60  0000 C CNN
+F 3 "" H 1125 1945 60  0000 C CNN
+	1    1125 1945
+	0    -1   1    0   
+$EndComp
+$Comp
+L +5V #PWR031
+U 1 1 54FCCD6D
+P 1125 1445
+F 0 "#PWR031" H 1125 1535 20  0001 C CNN
+F 1 "+5V" H 1125 1570 30  0000 C CNN
+F 2 "" H 1125 1445 60  0000 C CNN
+F 3 "" H 1125 1445 60  0000 C CNN
+	1    1125 1445
+	0    1    1    0   
+$EndComp
+Text GLabel 1400 1695 2    60   Output ~ 0
+POTI2
+Wire Wire Line
+	1125 1945 1025 1945
+Wire Wire Line
+	1025 1445 1125 1445
+Wire Wire Line
+	1400 1695 1175 1695
+Text GLabel 3300 5750 0    60   Input ~ 0
+POTI2
+Wire Wire Line
+	3300 5750 3875 5750
 $EndSCHEMATC
