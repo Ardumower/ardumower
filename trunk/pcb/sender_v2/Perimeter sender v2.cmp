@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 02.03.2015 23:37:39
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 08.03.2015 23:24:40
 
 BeginCmp
 TimeStamp = /54D689DE;
@@ -17,13 +17,6 @@ EndCmp
 BeginCmp
 TimeStamp = /54D68AE1;
 Reference = B3;
-ValeurCmp = Bohrloch_3,2mm;
-IdModule  = sender_v2:Bohrloch_3,2mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /54D68B23;
-Reference = B4;
 ValeurCmp = Bohrloch_3,2mm;
 IdModule  = sender_v2:Bohrloch_3,2mm;
 EndCmp
@@ -157,7 +150,14 @@ EndCmp
 BeginCmp
 TimeStamp = /54D524A0;
 Reference = RV1;
-ValeurCmp = POT;
+ValeurCmp = 47K;
+IdModule  = sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop;
+EndCmp
+
+BeginCmp
+TimeStamp = /54FCCD61;
+Reference = RV2;
+ValeurCmp = 47K;
 IdModule  = sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop;
 EndCmp
 
