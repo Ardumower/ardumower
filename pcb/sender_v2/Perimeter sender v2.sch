@@ -12,7 +12,6 @@ LIBS:adc-dac
 LIBS:memory
 LIBS:xilinx
 LIBS:special
-LIBS:w_microcontrollers
 LIBS:microcontrollers
 LIBS:dsp
 LIBS:microchip
@@ -34,7 +33,6 @@ LIBS:valves
 LIBS:MC33926
 LIBS:Perimeter sender v2-cache
 LIBS:ardumower mega shield svn-cache
-LIBS:Arduino
 LIBS:Ina169
 EELAYER 25 0
 EELAYER END
@@ -736,7 +734,7 @@ L CONN_4 P4
 U 1 1 54F4E811
 P 7050 2120
 F 0 "P4" V 7000 2120 50  0000 C CNN
-F 1 "V.LED" V 7100 2120 50  0000 C CNN
+F 1 "Power LED" V 7100 2120 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 7050 2120 60  0001 C CNN
 F 3 "" H 7050 2120 60  0000 C CNN
 F 4 "Value" H 7050 2120 60  0001 C CNN "Bestellnummer"

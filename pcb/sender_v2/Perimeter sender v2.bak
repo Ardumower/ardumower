@@ -653,17 +653,6 @@ F 3 "" H 12275 1100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B4
-U 1 1 54D68B23
-P 13025 475
-F 0 "B4" H 13305 635 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 13255 555 60  0000 C CNN
-F 2 "sender_v2:Bohrloch_3,2mm" H 13025 475 60  0001 C CNN
-F 3 "" H 13025 475 60  0000 C CNN
-	1    13025 475 
-	1    0    0    -1  
-$EndComp
-$Comp
 L Bohrloch_3,2mm B5
 U 1 1 54D68B6A
 P 13050 775
@@ -690,7 +679,6 @@ NoConn ~ 12250 775
 NoConn ~ 12275 1100
 NoConn ~ 13050 1050
 NoConn ~ 13050 775 
-NoConn ~ 13025 475 
 Text Notes 4205 3770 0    60   ~ 0
 Led Mover in Ladestation:\nAn wenn in Ladestation - aus wenn nicht in Ladestation\n\nSchleife 1 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nSchleife 2 Duo LED\ngrün blinken Perimeter aktiv - rot Dauerlicht überlast oder fehler\n\nMuss geklärt werden ob der DC Stepdownwanler in der Lage ist 2 Schleifen zu versorgen
 NoConn ~ 5775 6250
