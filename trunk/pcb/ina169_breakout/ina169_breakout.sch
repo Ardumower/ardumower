@@ -60,12 +60,12 @@ $EndComp
 $Comp
 L R R2
 U 1 1 54E30D69
-P 4190 3190
-F 0 "R2" V 4100 3180 50  0000 C CNN
-F 1 "10K 1%" V 4197 3191 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 4120 3190 30  0001 C CNN
-F 3 "" H 4190 3190 30  0000 C CNN
-	1    4190 3190
+P 4200 2900
+F 0 "R2" V 4110 2890 50  0000 C CNN
+F 1 "10K 1%" V 4207 2901 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4130 2900 30  0001 C CNN
+F 3 "" H 4200 2900 30  0000 C CNN
+	1    4200 2900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -125,7 +125,7 @@ F 3 "" H 6250 4500 60  0000 C CNN
 $EndComp
 Text Notes 5850 3500 2    60   ~ 0
 Rshunt (RS)\nSMD CRM2512-FX-R100ELF
-Text Notes 4450 3600 1    60   ~ 0
+Text Notes 4450 3350 1    60   ~ 0
 Load resistor (RL)\nSMD-0603 10K
 Text Notes 2550 2750 0    60   ~ 0
 INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL/10K*I(Amps)
@@ -135,6 +135,17 @@ Text Notes 5200 2900 0    60   ~ 0
 SOT23-5
 Text Notes 6550 2850 0    60   ~ 0
 http://de.wikipedia.org/wiki/Chip-Bauform
+$Comp
+L R R3
+U 1 1 550174AC
+P 4200 3700
+F 0 "R3" V 4110 3690 50  0000 C CNN
+F 1 "10K 1%" V 4207 3701 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4130 3700 30  0001 C CNN
+F 3 "" H 4200 3700 30  0000 C CNN
+	1    4200 3700
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
 	4000 2400 4000 4500
 Wire Wire Line
@@ -147,7 +158,7 @@ Wire Wire Line
 Wire Wire Line
 	6250 3600 6250 4500
 Wire Wire Line
-	3200 4000 4190 4000
+	3200 4000 4200 4000
 Wire Wire Line
 	4100 2500 4890 2500
 Wire Wire Line
@@ -179,11 +190,13 @@ Wire Wire Line
 Wire Wire Line
 	4100 2500 4100 4200
 Wire Wire Line
-	4190 2300 4190 2940
-Wire Wire Line
-	4190 4000 4190 3440
-Wire Wire Line
 	4270 2500 4270 3250
 Connection ~ 4270 2500
-Connection ~ 4190 2300
+Wire Wire Line
+	4200 3150 4200 3450
+Wire Wire Line
+	4200 4000 4200 3950
+Wire Wire Line
+	4200 2650 4200 2300
+Connection ~ 4200 2300
 $EndSCHEMATC

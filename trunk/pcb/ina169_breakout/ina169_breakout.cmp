@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 19.02.2015 22:52:45
+Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 12.03.2015 12:13:01
 
 BeginCmp
 TimeStamp = /54E30F8E;
@@ -29,16 +29,9 @@ IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54E656C3;
+TimeStamp = /550174AC;
 Reference = R3;
-ValeurCmp = OOHM Fake;
-IdModule  = Resistors_SMD:R_0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /54E66200;
-Reference = R4;
-ValeurCmp = OOHM Fake;
+ValeurCmp = 10K 1%;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
