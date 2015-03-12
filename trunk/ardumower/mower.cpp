@@ -27,6 +27,10 @@
 
 /* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics, Arduino Mega) 
    http://wiki.ardumower.de/index.php?title=Ardumower_chassis */
+   
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// NOTE: Verify in config.h that you have enabled 'USE_MOWER' ! 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *   
 
 #include "config.h"
 #ifdef USE_MOWER

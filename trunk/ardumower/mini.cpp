@@ -27,6 +27,11 @@
    http://wiki.ardumower.de/index.php?title=Ardumower_Mini
 */
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// NOTE: Verify in config.h that you have enabled 'USE_MINI' ! 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *   
+
+
 #include "config.h"
 #ifdef USE_MINI
 
