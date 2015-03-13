@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 13.03.2015 18:58:15
+Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 13.03.2015 19:08:08
 
 BeginCmp
 TimeStamp = /550208A2;
@@ -67,7 +67,7 @@ BeginCmp
 TimeStamp = /5503192E;
 Reference = D1;
 ValeurCmp = ZENER;
-IdModule  = Diodes_SMD:Diode-MiniMELF_Standard;
+IdModule  = Capacitors_SMD:C_0603;
 EndCmp
 
 BeginCmp
