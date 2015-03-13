@@ -1,8 +1,8 @@
 (kicad_pcb (version 4) (host pcbnew "(2015-01-13 BZR 5369)-product")
 
   (general
-    (links 117)
-    (no_connects 117)
+    (links 124)
+    (no_connects 124)
     (area 147.9971 65.558599 200.070431 105.5076)
     (thickness 1.6)
     (drawings 0)
@@ -408,7 +408,7 @@
   )
 
   (module Capacitors_SMD:c_elec_6.3x5.8 (layer F.Cu) (tedit 55030206) (tstamp 55030405)
-    (at 157.48 81.28 180)
+    (at 157.515179 80.658277 180)
     (descr "SMT capacitor, aluminium electrolytic, 6.3x5.8")
     (path /55020EC9)
     (fp_text reference C5 (at 0 -3.937 180) (layer F.SilkS)
@@ -443,7 +443,7 @@
   )
 
   (module Capacitors_SMD:c_elec_6.3x5.8 (layer F.Cu) (tedit 55030206) (tstamp 55030419)
-    (at 193.04 78.74)
+    (at 193.040761 79.414191)
     (descr "SMT capacitor, aluminium electrolytic, 6.3x5.8")
     (path /55021C94)
     (fp_text reference C6 (at 0 -3.937) (layer F.SilkS)
@@ -1145,7 +1145,7 @@
   )
 
   (module mc33926:mc33926_ic_pqfn32 (layer F.Cu) (tedit 51DB9533) (tstamp 550305A7)
-    (at 167.64 82.55 270)
+    (at 168.366378 82.524407 270)
     (path /550205D0)
     (fp_text reference U2 (at 0 5.7 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1223,7 +1223,7 @@
   )
 
   (module mc33926:mc33926_ic_pqfn32 (layer F.Cu) (tedit 51DB9533) (tstamp 550305CD)
-    (at 182.88 82.55 270)
+    (at 182.05133 82.524407 270)
     (path /55021C19)
     (fp_text reference U3 (at 0 5.7 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
