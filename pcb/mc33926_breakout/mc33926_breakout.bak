@@ -70,18 +70,18 @@ F 3 "" H 2050 1950 60  0000 C CNN
 $EndComp
 Text GLabel 6250 1150 1    60   Input ~ 0
 VIN
-Text GLabel 2750 1150 2    60   Output ~ 0
+Text GLabel 2850 1000 1    60   Output ~ 0
 VIN
 $Comp
 L C C?
 U 1 1 5502035D
-P 6250 1750
-F 0 "C?" H 6300 1850 50  0000 L CNN
-F 1 "33nF" H 6300 1650 50  0000 L CNN
-F 2 "" H 6288 1600 30  0000 C CNN
-F 3 "" H 6250 1750 60  0000 C CNN
-	1    6250 1750
-	1    0    0    -1  
+P 6450 1950
+F 0 "C?" H 6500 2050 50  0000 L CNN
+F 1 "33nF" H 6500 1850 50  0000 L CNN
+F 2 "" H 6488 1800 30  0000 C CNN
+F 3 "" H 6450 1950 60  0000 C CNN
+	1    6450 1950
+	0    1    1    0   
 $EndComp
 $Comp
 L R R?
@@ -132,12 +132,12 @@ $EndComp
 $Comp
 L R R?
 U 1 1 55020A17
-P 4400 1700
-F 0 "R?" V 4480 1700 50  0000 C CNN
-F 1 "1k" V 4407 1701 50  0000 C CNN
-F 2 "" V 4330 1700 30  0000 C CNN
-F 3 "" H 4400 1700 30  0000 C CNN
-	1    4400 1700
+P 4050 1700
+F 0 "R?" V 4130 1700 50  0000 C CNN
+F 1 "1k" V 4057 1701 50  0000 C CNN
+F 2 "" V 3980 1700 30  0000 C CNN
+F 3 "" H 4050 1700 30  0000 C CNN
+	1    4050 1700
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -403,13 +403,13 @@ Text GLabel 4100 6850 1    60   Input ~ 0
 VIN
 Text GLabel 3800 7450 3    60   Input ~ 0
 FGND
-Text GLabel 4450 1950 0    60   Input ~ 0
+Text GLabel 4450 1950 1    60   Input ~ 0
 ENP
 Text GLabel 4200 5800 0    60   Output ~ 0
 ENP
-Text GLabel 4650 2300 0    60   Input ~ 0
+Text GLabel 4600 2300 1    60   Input ~ 0
 INVP
-Text GLabel 4650 2200 0    60   Input ~ 0
+Text GLabel 4300 2200 1    60   Input ~ 0
 SLEWP
 Text GLabel 4650 5950 0    60   Output ~ 0
 SLEWP
@@ -423,7 +423,7 @@ Text GLabel 1150 1450 0    60   Input ~ 0
 M1OUT1
 Text GLabel 1150 1550 0    60   Input ~ 0
 M1OUT2
-Text GLabel 1150 2200 0    60   Input ~ 0
+Text GLabel 1150 2200 0    60   Output ~ 0
 VIN
 $Comp
 L GND #PWR03
@@ -443,13 +443,13 @@ M2OUT2
 $Comp
 L C C?
 U 1 1 5502C0D7
-P 6250 5500
-F 0 "C?" H 6300 5600 50  0000 L CNN
-F 1 "33nF" H 6300 5400 50  0000 L CNN
-F 2 "" H 6288 5350 30  0000 C CNN
-F 3 "" H 6250 5500 60  0000 C CNN
-	1    6250 5500
-	1    0    0    -1  
+P 6450 5700
+F 0 "C?" H 6500 5800 50  0000 L CNN
+F 1 "33nF" H 6500 5600 50  0000 L CNN
+F 2 "" H 6488 5550 30  0000 C CNN
+F 3 "" H 6450 5700 60  0000 C CNN
+	1    6450 5700
+	0    1    1    0   
 $EndComp
 Text GLabel 6250 4900 1    60   Input ~ 0
 VIN
@@ -470,8 +470,6 @@ Wire Wire Line
 	4650 1550 4050 1550
 Wire Wire Line
 	3550 1550 2750 1550
-Wire Wire Line
-	3050 1700 4150 1700
 Wire Wire Line
 	3050 1700 3050 1650
 Wire Wire Line
@@ -656,7 +654,7 @@ Wire Wire Line
 Wire Wire Line
 	700  2100 700  2150
 Wire Wire Line
-	6250 4900 6250 5300
+	6250 4900 6250 5350
 Connection ~ 6250 5050
 Connection ~ 6250 5350
 Connection ~ 6250 5250
@@ -679,4 +677,43 @@ Connection ~ 6250 6750
 Connection ~ 6250 7000
 Connection ~ 6250 7100
 Connection ~ 6250 7200
+Wire Wire Line
+	6650 1950 6650 1600
+Wire Wire Line
+	6650 1600 6250 1600
+Wire Wire Line
+	6650 5700 6650 5350
+Wire Wire Line
+	6650 5350 6250 5350
+$Comp
+L GND #PWR?
+U 1 1 5502E55D
+P 3450 850
+F 0 "#PWR?" H 3450 600 60  0001 C CNN
+F 1 "GND" H 3450 700 60  0000 C CNN
+F 2 "" H 3450 850 60  0000 C CNN
+F 3 "" H 3450 850 60  0000 C CNN
+	1    3450 850 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 1150 2750 1150
+Text GLabel 3050 1000 1    60   Output ~ 0
+Vdd
+Wire Wire Line
+	2850 1150 2850 1000
+Wire Wire Line
+	3450 850  3350 850 
+Wire Wire Line
+	3350 850  3350 1250
+Wire Wire Line
+	3350 1250 2750 1250
+Wire Wire Line
+	2750 1350 3050 1350
+Wire Wire Line
+	3050 1350 3050 1000
+Wire Wire Line
+	4650 1700 4300 1700
+Wire Wire Line
+	3800 1700 3050 1700
 $EndSCHEMATC
