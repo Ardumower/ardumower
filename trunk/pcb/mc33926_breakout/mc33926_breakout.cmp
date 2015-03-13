@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 13.03.2015 16:26:42
+Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 13.03.2015 18:58:15
 
 BeginCmp
 TimeStamp = /550208A2;
@@ -67,13 +67,13 @@ BeginCmp
 TimeStamp = /5503192E;
 Reference = D1;
 ValeurCmp = ZENER;
-IdModule  = Diodes_SMD:Diode_SOT23;
+IdModule  = Diodes_SMD:Diode-MiniMELF_Standard;
 EndCmp
 
 BeginCmp
-TimeStamp = /55031A80;
+TimeStamp = /5503241E;
 Reference = Q1;
-ValeurCmp = MOSFET_N;
+ValeurCmp = MOSN-SO8;
 IdModule  = SMD_Packages:SOIC-8-N;
 EndCmp
 
