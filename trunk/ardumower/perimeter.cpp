@@ -199,10 +199,14 @@ int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, fl
       if (sum > sumMax) sumMax = sum;
       if (sum < sumMin) sumMin = sum;
       ip++;
-  }
-  quality = abs((float)(sumMax + sumMin))/((float)sumMax);  
-  if (sumMax > -sumMin) return sumMax;
-    else return sumMin;  
+  }      
+  if (sumMax > -sumMin) {
+    quality = ((float)sumMax) / ((float)-sumMin);
+    return sumMax;
+  } else {
+    quality = ((float)-sumMin) / ((float)sumMax);
+    return sumMin;
+  }  
 }
 
 
