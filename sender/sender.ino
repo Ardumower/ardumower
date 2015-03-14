@@ -19,6 +19,7 @@
 
 /*
   Perimeter sender v2   (for details see   http://wiki.ardumower.de/index.php?title=Perimeter_wire  )  
+  Requires: Perimeter sender PCB v1.0   ( https://www.marotronics.de/Perimeter-Sender-Prototyp )
  
  */
 
@@ -30,12 +31,12 @@
 
 // --- MC33926 motor driver ---
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
-#define pinIN2       8  // M1_IN2         (if using old L298N driver, leave open)
-#define pinPWM      11  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
-#define pinEnable    3  // EN             (connect to motor driver enable)             
+#define pinIN2       2  // M1_IN2         (if using old L298N driver, leave open)
+#define pinPWM       3  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
+#define pinEnable    5  // EN             (connect to motor driver enable)             
 
 // motor driver fault pin
-#define pinFault    12  // M1_nSF
+#define pinFault     4  // M1_nSF
 #define USE_PERI_FAULT        0     // use pinFault for driver fault detection? (set to '0' if not connected!)
 
 // motor driver feedback pin (=perimeter open/close detection, used for status LED)
@@ -46,7 +47,7 @@
 // ---- sender current control (via potentiometer) ----
 // sender modulates signal (PWM), based on duty-cycle set via this potentiometer
 #define USE_POT      1  // use potentiometer for current control? (set to '0' if not connected!)
-#define pinPot      A1  // 100k potentiometer (current control)   
+#define pinPot      A3  // 100k potentiometer (current control)   
 
 // ---- sender automatic standby (via current sensor for charger) ----
 // sender detects robot via a charging current through the charging pins
