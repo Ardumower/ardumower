@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 19.02.2015 13:24:47
+Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 15.03.2015 22:26:26
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -620,28 +620,28 @@ BeginCmp
 TimeStamp = /541D1F00;
 Reference = P15;
 ValeurCmp = Left;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
 TimeStamp = /541D656A;
 Reference = P16;
 ValeurCmp = V.OUT;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
 TimeStamp = /541D7765;
 Reference = P17;
 ValeurCmp = V.OUT;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54168B06;
 Reference = P18;
 ValeurCmp = Right;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
@@ -767,28 +767,21 @@ BeginCmp
 TimeStamp = /54BE082F;
 Reference = P36;
 ValeurCmp = RES. M1;
-IdModule  = Connect:PINHEAD1-2;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BE02C5;
 Reference = P37;
 ValeurCmp = Mower;
-IdModule  = Connect:PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /54BEB61D;
-Reference = P38;
-ValeurCmp = Res24V-2;
-IdModule  = ACS712:Aschlussklemme_2p_3D;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
 TimeStamp = /54BEAE04;
 Reference = P39;
 ValeurCmp = Res24V-1;
-IdModule  = ACS712:Aschlussklemme_2p_3D;
+IdModule  = ACS712:Anschlussklemme_2P_RM5,08;
 EndCmp
 
 BeginCmp
@@ -809,14 +802,14 @@ BeginCmp
 TimeStamp = /541A0C85;
 Reference = P42;
 ValeurCmp = Charger connector;
-IdModule  = ACS712:Aschlussklemme_2p_3D;
+IdModule  = ACS712:Anschlussklemme_RM5,08-RM7,62;
 EndCmp
 
 BeginCmp
 TimeStamp = /53866CB8;
 Reference = P43;
 ValeurCmp = Battery;
-IdModule  = ACS712:Aschlussklemme_2p_3D;
+IdModule  = ACS712:Anschlussklemme_RM5,08-RM7,62;
 EndCmp
 
 BeginCmp
@@ -906,14 +899,14 @@ EndCmp
 BeginCmp
 TimeStamp = /5384FFAC;
 Reference = R9;
-ValeurCmp = 47K;
+ValeurCmp = 47K 0,1%;
 IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5384FFC0;
 Reference = R10;
-ValeurCmp = 4,99K;
+ValeurCmp = 5,10K 0,1%;
 IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
@@ -927,14 +920,14 @@ EndCmp
 BeginCmp
 TimeStamp = /5385024E;
 Reference = R12;
-ValeurCmp = 47K;
+ValeurCmp = 47K 0,1%;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /53850254;
 Reference = R13;
-ValeurCmp = 4,99K;
+ValeurCmp = 5,10K 0,1%;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
 EndCmp
 
