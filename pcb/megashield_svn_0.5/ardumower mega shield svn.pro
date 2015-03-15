@@ -1,4 +1,4 @@
-update=19.02.2015 13:32:47
+update=15.03.2015 21:38:08
 last_client=kicad
 [pcbnew]
 version=1
@@ -20,15 +20,6 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
-[eeschema]
-version=1
-LibDir=acs712.pretty;../../Documents/KICAD/BibliothekenUwe.pretty
-[eeschema/libraries]
-LibName1=C:/Users/Uwe/Documents/KICAD/BibliothekenUwe.pretty/power
-LibName2=acs712.pretty/Bluetooth_ZS_HC_05
-LibName3=acs712.pretty/Bluetooth_CZ_HC_05
-LibName4=Wlan_ESP8266
-LibName5=acs712.pretty/ds1307
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -44,3 +35,12 @@ RptLab=1
 LabSize=60
 [general]
 version=1
+[eeschema]
+version=1
+LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
+[eeschema/libraries]
+LibName1=C:/Users/Uwe/Documents/KICAD/BibliothekenUwe.pretty/power
+LibName2=acs712.pretty/Bluetooth_ZS_HC_05
+LibName3=acs712.pretty/Bluetooth_CZ_HC_05
+LibName4=Wlan_ESP8266
+LibName5=acs712.pretty/ds1307
