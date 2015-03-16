@@ -124,10 +124,6 @@ void Perimeter::matchedFilter(byte idx){
     }
     signalAvg[idx] = ((double)signalAvg[idx]) / ((double)(sampleCount));
   }
-  for (int i=0; i < sampleCount; i++) {
-    if (samples[i]>0) samples[i]=1;
-      else samples[i] = -1;
-  }
   // magnitude for tracking (fast but inaccurate)    
   mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode, filterQuality[idx]);        
   // smoothed magnitude used for signal-off detection
