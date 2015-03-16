@@ -1,0 +1,241 @@
+Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 13.03.2015 19:08:08
+
+BeginCmp
+TimeStamp = /550208A2;
+Reference = C1;
+ValeurCmp = 0.47uF;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C7D;
+Reference = C2;
+ValeurCmp = 0.47uF;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020F62;
+Reference = C3;
+ValeurCmp = 47uF;
+IdModule  = Capacitors_SMD:c_elec_6.3x5.8;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C9A;
+Reference = C4;
+ValeurCmp = 47uF;
+IdModule  = Capacitors_SMD:c_elec_6.3x5.8;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020EC9;
+Reference = C5;
+ValeurCmp = 47uF;
+IdModule  = Capacitors_SMD:c_elec_6.3x5.8;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C94;
+Reference = C6;
+ValeurCmp = 47uF;
+IdModule  = Capacitors_SMD:c_elec_6.3x5.8;
+EndCmp
+
+BeginCmp
+TimeStamp = /5502035D;
+Reference = C7;
+ValeurCmp = 33nF;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5502C0D7;
+Reference = C8;
+ValeurCmp = 33nF;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55033875;
+Reference = C9;
+ValeurCmp = 0.1uF;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5503192E;
+Reference = D1;
+ValeurCmp = ZENER;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5503241E;
+Reference = Q1;
+ValeurCmp = MOSN-SO8;
+IdModule  = SMD_Packages:SOIC-8-N;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020AC8;
+Reference = R1;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C4A;
+Reference = R2;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020D39;
+Reference = R3;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020FE4;
+Reference = R4;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C73;
+Reference = R5;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5502094F;
+Reference = R6;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C39;
+Reference = R7;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020974;
+Reference = R8;
+ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C84;
+Reference = R9;
+ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020B9B;
+Reference = R10;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5502064D;
+Reference = R11;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020EDC;
+Reference = R12;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C27;
+Reference = R13;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020A17;
+Reference = R14;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5502044D;
+Reference = R15;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55020712;
+Reference = R16;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C20;
+Reference = R17;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C2F;
+Reference = R18;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C41;
+Reference = R19;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /550329E9;
+Reference = R20;
+ValeurCmp = 100k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501F2BE;
+Reference = U1;
+ValeurCmp = MC33926_Conn;
+IdModule  = mc33926:mc33926_breakout_footprint;
+EndCmp
+
+BeginCmp
+TimeStamp = /550205D0;
+Reference = U2;
+ValeurCmp = MC33926_IC;
+IdModule  = mc33926:mc33926_ic_pqfn32;
+EndCmp
+
+BeginCmp
+TimeStamp = /55021C19;
+Reference = U3;
+ValeurCmp = MC33926_IC;
+IdModule  = mc33926:mc33926_ic_pqfn32;
+EndCmp
+
+EndListe
