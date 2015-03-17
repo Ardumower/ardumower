@@ -1,4 +1,4 @@
-(module Anschlussklemme_RM5,08-RM7,62 (layer F.Cu) (tedit 5505DE37)
+(module Anschlussklemme_RM5,08-RM7,62 (layer F.Cu) (tedit 550852BD)
   (descr "2-way 7,62mm pitch terminal block, Phoenix GMKDS series")
   (fp_text reference gmkds_3/2-7,62 (at 0 -7.55) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
@@ -22,9 +22,10 @@
   (fp_line (start 7.7 -5.9) (end 7.7 5.3) (layer F.SilkS) (width 0.381))
   (fp_line (start -7.7 -5.9) (end 7.7 -5.9) (layer F.SilkS) (width 0.381))
   (fp_line (start -7.7 -5.9) (end -7.7 5.3) (layer F.SilkS) (width 0.381))
-  (pad 1 thru_hole rect (at -3.81 0) (size 2.6 2.6) (drill 1.3) (layers *.Cu *.Mask F.SilkS))
+  (pad 1 thru_hole rect (at -3.81 0) (size 2.6 2.6) (drill oval 1.9 1.3) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole circle (at 3.81 0) (size 2.6 2.6) (drill 1.3) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole rect (at -1.27 0) (size 2.6 2.6) (drill 1.3) (layers *.Cu *.Mask F.SilkS))
+  (pad 1 thru_hole rect (at -3.81 0) (size 2.6 2.6) (drill oval 1.9 1.3) (layers *.Cu *.Mask F.SilkS))
   (model ../../../../../../kicad/kicad/share/modules/packages3d/conn_gmkds/gmkds_3-2-7,62.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
