@@ -419,8 +419,9 @@ void Robot::setMotorMowRPMState(boolean motorMowRpmState){
 // odometryState2: 2nd left and right odometry signal (optional two-wire encoders)
 void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, boolean odometryLeftState2, boolean odometryRightState2){
   if (odometryLeftState != odometryLeftLastState){    
-    if (odometryLeftState){
-      if (twoWayOdometrySensorUse) {
+    if (odometryLeftState){ // pin1 makes LOW->HIGH transition
+      if (twoWayOdometrySensorUse) { 
+        // pin2 = HIGH? => forward 
         if (odometryLeftState2) odometryLeft++; else odometryLeft--;
       } 
       else { 
@@ -431,8 +432,9 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
   } 
 
   if (odometryRightState != odometryRightLastState){
-    if (odometryRightState){
+    if (odometryRightState){ // pin1 makes LOW->HIGH transition
       if (twoWayOdometrySensorUse) {
+        // pin2 = HIGH? => forward
         if (odometryRightState2) odometryRight++; else odometryRight--;
       }     
       else {
