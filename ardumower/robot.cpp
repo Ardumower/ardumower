@@ -410,9 +410,10 @@ void Robot::setMotorMowRPMState(boolean motorMowRpmState){
 
 // ---- odometry (interrupt) --------------------------------------------------------
 // Determines the rotation count and direction of the odometry encoders. Called in the odometry pins interrupt.
+// encoder signal/Ardumower pinout etc. at http://wiki.ardumower.de/index.php?title=Odometry
 // Logic is: 
 //    If the pin1 change transition (odometryLeftState) is LOW -> HIGH... 
-//      If the pin2 current state is LOW :  step count forward   (odometryLeft++)
+//      If the pin2 current state is HIGH :  step count forward   (odometryLeft++)
 //        Otherwise :  step count reverse   (odometryLeft--)   
 // odometryState:  1st left and right odometry signal
 // odometryState2: 2nd left and right odometry signal (optional two-wire encoders)
@@ -420,7 +421,7 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
   if (odometryLeftState != odometryLeftLastState){    
     if (odometryLeftState){
       if (twoWayOdometrySensorUse) {
-        if (!odometryLeftState2) odometryLeft++; else odometryLeft--;
+        if (odometryLeftState2) odometryLeft++; else odometryLeft--;
       } 
       else { 
          if (motorLeftPWM >=0) odometryLeft++; else odometryLeft--;
@@ -432,7 +433,7 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
   if (odometryRightState != odometryRightLastState){
     if (odometryRightState){
       if (twoWayOdometrySensorUse) {
-        if (!odometryRightState2) odometryRight++; else odometryRight--;
+        if (odometryRightState2) odometryRight++; else odometryRight--;
       }     
       else {
          if (motorRightPWM >=0) odometryRight++; else odometryRight--;    
