@@ -178,8 +178,30 @@ void RemoteControl::sendMainMenu(boolean update){
     Bluetooth.print(")");
   }
   Bluetooth.print(F("|r~Commands|n~Manual|s~Settings|in~Info|c~Test compass|m1~Log sensors|yp~Plot"));
-  Bluetooth.println(F("|y4~Error counters|y9~ADC calibration (perimeter sender must be off)}"));        
+  Bluetooth.println(F("|y4~Error counters|y9~ADC calibration}"));        
 }
+
+void RemoteControl::sendADCMenu(boolean update){
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.ADC calibration`1000"));         
+  Bluetooth.print(F("|c1~Calibrate (perimeter sender must be off) "));
+  for (int ch=0; ch < 16; ch++){   
+    int16_t adcMin = ADCMan.getADCMin(A0+ch);
+    int16_t adcMax = ADCMan.getADCMax(A0+ch);
+    int16_t adcOfs = ADCMan.getADCOfs(A0+ch);    
+    Bluetooth.print(F("|zz~AD"));
+    Bluetooth.print(ch);
+    Bluetooth.print(" min=");
+    Bluetooth.print(adcMin);
+    Bluetooth.print(" max=");
+    Bluetooth.print(adcMax);
+    Bluetooth.print(" diff=");
+    Bluetooth.print(adcMax-adcMin);    
+    Bluetooth.print(" ofs=");
+    Bluetooth.print(adcOfs);            
+  }
+  Bluetooth.println("}");
+}  
+
 
 void RemoteControl::sendPlotMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Plot"));           
@@ -1262,8 +1284,8 @@ void RemoteControl::readSerial(){
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_GPS2D;
         }        
-        else if (pfodCmd == "y9") {
-          // ADC calibration
+        else if (pfodCmd == "c1") {
+          // ADC calibration          
           ADCMan.calibrate();
           robot->beep(2, false);      
         }
@@ -1275,6 +1297,7 @@ void RemoteControl::readSerial(){
         }              
         else if (pfodCmd == "yp") sendPlotMenu(false);
         else if (pfodCmd == "y4")sendErrorMenu(false);
+        else if (pfodCmd == "y9")sendADCMenu(false);
         else if (pfodCmd == "n") sendManualMenu(false);
         else if (pfodCmd == "s") sendSettingsMenu(false);      
         else if (pfodCmd == "r") sendCommandMenu(false);

@@ -79,13 +79,15 @@ class ADCManager
     boolean isCaptureComplete(byte pin);
     // statistics only
     int getCapturedChannels();
+    int16_t getADCMin(byte pin);
+    int16_t getADCMax(byte pin);    
+    int16_t getADCOfs(byte pin);    
     // return number samples to capture
     int getCaptureSize(byte pin);
     // get the manager running, starts sampling next pin
     void run();    
   private:
-    int capturedChannels;
-    boolean channelReady[10]; // ready for capture?
+    int capturedChannels;    
     void calibrateOfs(byte pin);
     void startCapture(int sampleCount);
     void stopCapture();    

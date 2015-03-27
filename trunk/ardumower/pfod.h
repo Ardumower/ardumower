@@ -66,7 +66,7 @@ class RemoteControl
     unsigned long nextPlotTime;
     int8_t perimeterCapture[32]; 
     int perimeterCaptureIdx;        
-    float stringToFloat(String &s);
+    float stringToFloat(String &s);   
 
     // generic
     void sendYesNo(int value);
@@ -121,6 +121,7 @@ class RemoteControl
     void sendGPSMenu(boolean update);        
     void sendDateTimeMenu(boolean update);
     void sendFactorySettingsMenu(boolean update);    
+    void sendADCMenu(boolean update);
     
     void processMotorMenu(String pfodCmd);    
     void processMowMenu(String pfodCmd);
