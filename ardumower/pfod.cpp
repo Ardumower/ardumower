@@ -380,13 +380,13 @@ void RemoteControl::sendBumperMenu(boolean update){
 
 void RemoteControl::sendDropMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Drop`1000"));         
-  Bluetooth.print(F("|z00~Use "));
+  Bluetooth.print(F("|u00~Use "));
   sendYesNo(robot->dropUse);    
-  Bluetooth.println(F("|z01~Counter l, r "));
+  Bluetooth.println(F("|u01~Counter l, r "));
   Bluetooth.print(robot->dropLeftCounter);  
   Bluetooth.print(", ");
   Bluetooth.print(robot->dropRightCounter);  
-  Bluetooth.println(F("|z02~Value l, r "));
+  Bluetooth.println(F("|u02~Value l, r "));
   Bluetooth.print(robot->dropLeft);
   Bluetooth.print(", ");
   Bluetooth.print(robot->dropRight);  
@@ -400,7 +400,7 @@ void RemoteControl::processBumperMenu(String pfodCmd){
 }
 
 void RemoteControl::processDropMenu(String pfodCmd){      
-  if (pfodCmd == "z00") robot->dropUse = !robot->dropUse;    
+  if (pfodCmd == "u00") robot->dropUse = !robot->dropUse;    
   sendDropMenu(true);
 }
 
@@ -1326,7 +1326,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("i")) processTimerMenu(pfodCmd);      
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
         else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);
-        else if (pfodCmd.startsWith("z")) processDropMenu(pfodCmd);            
+        else if (pfodCmd.startsWith("u")) processDropMenu(pfodCmd);            
         else {
           // no match
           Bluetooth.println("{}");         
