@@ -76,7 +76,7 @@
 #define pinSonarLeftEcho 36
 #define pinPerimeterRight A4       // perimeter
 #define pinPerimeterLeft A5
-//#define pinPerimeterMuxZ A6      // perimeter mux Z (only TC-G158 board)
+
 #define pinLED 13                  // LED
 #define pinBuzzer 53               // Buzzer
 #define pinTilt 35                 // Tilt sensor (required for TC-G158 board)
@@ -89,9 +89,7 @@
 #define pinRemoteSteer 11          // remote control steering 
 #define pinRemoteSpeed 10          // remote control speed
 #define pinRemoteSwitch 52         // remote control switch
-//#define pinMuxS0 28              // mux S0 (only TC-G158 board)
-//#define pinMuxS1 26              // mux S1 (only TC-G158 board)
-//#define pinMuxZ A7                 // mux Z (only TC-G158 board)
+#define pinVoltageMeasurement A7   // test pin for your own voltage measurements
 #ifdef __AVR__
   #define pinOdometryLeft A12      // left odometry sensor
   #define pinOdometryLeft2 A13     // left odometry sensor (optional two-wire)
@@ -358,6 +356,9 @@ void Mower::setup(){
   pinMode(pinUserSwitch1, OUTPUT);
   pinMode(pinUserSwitch2, OUTPUT);
   pinMode(pinUserSwitch3, OUTPUT);   
+  
+  // other
+  pinMode(pinVoltageMeasurement, INPUT);
 
   // enable interrupts
   #ifdef __AVR__
@@ -400,6 +401,7 @@ void Mower::setup(){
   ADCMan.setCapture(pinMotorRightSense, 1, true);
   ADCMan.setCapture(pinBatteryVoltage, 1, false);
   ADCMan.setCapture(pinChargeVoltage, 1, false);  
+  ADCMan.setCapture(pinVoltageMeasurement, 1, false);    
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
     
   imu.init(pinBuzzer);
@@ -433,7 +435,7 @@ int Mower::readSensor(char type){
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;
     
 // battery------------------------------------------------------------------------------------------------
-    case SEN_BAT_VOLTAGE: return ADCMan.read(pinBatteryVoltage); break;
+    case SEN_BAT_VOLTAGE: ADCMan.read(pinVoltageMeasurement);  return ADCMan.read(pinBatteryVoltage); break;
     case SEN_CHG_VOLTAGE: return ADCMan.read(pinChargeVoltage); break;
     //case SEN_CHG_VOLTAGE: return((int)(((double)analogRead(pinChargeVoltage)) * batFactor)); break;
     case SEN_CHG_CURRENT: return ADCMan.read(pinChargeCurrent); break;
