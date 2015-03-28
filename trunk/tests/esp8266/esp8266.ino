@@ -4,10 +4,10 @@ http://playground.boxtec.ch/doku.php/wireless/esp8266
 
 wiring (IC side):
                                 ESP8266-01
-Arduino Mega TX1 ------------RX---1 2---VCC (3.3V)
-                          GPIO0---3 4---nRST
-               |Antenna|  GPIO2---5 6---nCHPD ---------- connect to VCC (3.3V)
-                            GND---7 8---TX-------------- RX  Arduino Mega RX1
+Arduino Mega TX1 ------------RX---8 4---VCC (3.3V)
+                          GPIO0---7 3---nRST
+               |Antenna|  GPIO2---6 2---nCHPD ---------- connect to VCC (3.3V)
+                            GND---5 1---TX-------------- RX  Arduino Mega RX1
 */
 
 // encryption types
