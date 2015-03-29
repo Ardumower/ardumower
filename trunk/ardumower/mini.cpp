@@ -139,6 +139,8 @@ Mini::Mini(){
   motorLeftPID.Kp       = 0.2;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.0;
   motorLeftPID.Kd       = 0.0;  
+  motorRightSwapDir     = 0;    // inverse right motor direction? 
+  motorLeftSwapDir      = 0;    // inverse left motor direction?  
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
@@ -201,6 +203,8 @@ Mini::Mini(){
   odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
   odometryTicksPerCm = 0.5;    // encoder ticks per cm
   odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)
+  odometryRightSwapDir = 0;       // inverse right encoder direction?
+  odometryLeftSwapDir  = 0;       // inverse left encoder direction?  
   // ----- GPS -------------------------------------------
   gpsUse            = 0;       // use GPS?
   // ----- other -----------------------------------------
@@ -460,12 +464,8 @@ int Mini::readSensor(char type){
 void Mini::setActuator(char type, int value){
   switch (type){
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;//                                                                     Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    // normal direction
     case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    // reverse direction
-    //case ACT_MOTOR_LEFT: setL298N(pinMotorRightDir, pinMotorRightPWM, -value); break;
-    //case ACT_MOTOR_RIGHT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, -value); break;    
     case ACT_BUZZER: if (value == 0) noTone(pinBuzzer); else tone(pinBuzzer, value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     

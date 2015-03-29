@@ -181,7 +181,9 @@ class Robot
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
     int odometryTicksPerRevolution ;   // encoder ticks per one full resolution
     float odometryTicksPerCm ;  // encoder ticks per cm
-    float odometryWheelBaseCm ;    // wheel-to-wheel distance (cm)    
+    float odometryWheelBaseCm ;    // wheel-to-wheel distance (cm)
+    bool odometryRightSwapDir;       // inverse right encoder direction?
+    bool odometryLeftSwapDir;       // inverse left encoder direction?        
     int odometryLeft ;   // left wheel counter
     int odometryRight ;  // right wheel counter
     boolean odometryLeftLastState;
@@ -230,6 +232,8 @@ class Robot
     long motorForwTimeMax; // max. forward time (ms) / timeout
     float motorBiDirSpeedRatio1 ;   // bidir mow pattern speed ratio 1
     float motorBiDirSpeedRatio2 ;   // bidir mow pattern speed ratio 2
+    bool motorRightSwapDir     ;    // inverse right motor direction? 
+    bool motorLeftSwapDir      ;    // inverse left motor direction?  
     int motorLeftSpeed ; // set speed
     int motorRightSpeed ;
     float motorLeftPWM ; // current speed

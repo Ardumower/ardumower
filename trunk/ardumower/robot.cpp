@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 28
+#define MAGIC 29
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -224,6 +224,10 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
   eereadwrite(readflag, addr, dropUse);
+  eereadwrite(readflag, addr, motorLeftSwapDir);
+  eereadwrite(readflag, addr, motorRightSwapDir);
+  eereadwrite(readflag, addr, odometryLeftSwapDir);
+  eereadwrite(readflag, addr, odometryRightSwapDir);  
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
@@ -418,14 +422,18 @@ void Robot::setMotorMowRPMState(boolean motorMowRpmState){
 // odometryState:  1st left and right odometry signal
 // odometryState2: 2nd left and right odometry signal (optional two-wire encoders)
 void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, boolean odometryLeftState2, boolean odometryRightState2){
+  int leftStep = 1;
+  int rightStep = 1;
+  if (odometryLeftSwapDir) leftStep = -1;
+  if (odometryRightSwapDir) rightStep = -1;
   if (odometryLeftState != odometryLeftLastState){    
     if (odometryLeftState){ // pin1 makes LOW->HIGH transition
       if (twoWayOdometrySensorUse) { 
         // pin2 = HIGH? => forward 
-        if (odometryLeftState2) odometryLeft++; else odometryLeft--;
+        if (odometryLeftState2) odometryLeft += leftStep; else odometryLeft -= leftStep;
       } 
       else { 
-         if (motorLeftPWM >=0) odometryLeft++; else odometryLeft--;
+         if (motorLeftPWM >=0) odometryLeft ++; else odometryLeft --;
       }
     }
     odometryLeftLastState = odometryLeftState;
@@ -435,10 +443,10 @@ void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState
     if (odometryRightState){ // pin1 makes LOW->HIGH transition
       if (twoWayOdometrySensorUse) {
         // pin2 = HIGH? => forward
-        if (odometryRightState2) odometryRight++; else odometryRight--;
+        if (odometryRightState2) odometryRight += rightStep; else odometryRight -= rightStep;
       }     
       else {
-         if (motorRightPWM >=0) odometryRight++; else odometryRight--;    
+         if (motorRightPWM >=0) odometryRight ++; else odometryRight --;    
       }
     }
     odometryRightLastState = odometryRightState;
@@ -505,8 +513,14 @@ void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
   /*Serial.print(motorLeftPWM);
   Serial.print("\t");
   Serial.println(motorRightPWM);*/
-  setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
-  setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
+  if (motorLeftSwapDir)
+    setActuator(ACT_MOTOR_LEFT, -motorLeftPWM);
+  else
+    setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
+  if (motorRightSwapDir)
+    setActuator(ACT_MOTOR_RIGHT, -motorRightPWM);
+  else 
+    setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
 }
 
 // sets mower motor actuator

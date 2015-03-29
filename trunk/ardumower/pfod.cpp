@@ -252,7 +252,7 @@ void RemoteControl::sendMotorMenu(boolean update){
   sendSlider("a02", F("Power max"), robot->motorPowerMax, "", 0.1, 100);  
   sendSlider("a03", F("calibrate left motor "), robot->motorLeftSenseCurrent, "", 1, 1000, 0);       
   sendSlider("a04", F("calibrate right motor"), robot->motorRightSenseCurrent, "", 1, 1000, 0);      
-  Bluetooth.println(F("|a05~Speed l, r"));    
+  Bluetooth.print(F("|a05~Speed l, r"));    
   Bluetooth.print(robot->motorLeftPWM);
   Bluetooth.print(", ");  
   Bluetooth.print(robot->motorRightPWM);   
@@ -271,11 +271,15 @@ void RemoteControl::sendMotorMenu(boolean update){
     case 1: Bluetooth.print(F("Left motor forw")); break;
     case 2: Bluetooth.print(F("Right motor forw")); break;
   }
-  Bluetooth.println(F("|a14~for config file:"));    
-  Bluetooth.println(F("motorSenseScale l, r"));
+  Bluetooth.print(F("|a14~for config file:"));    
+  Bluetooth.print(F("motorSenseScale l, r"));
   Bluetooth.print(robot->motorSenseLeftScale);
   Bluetooth.print(", ");  
-  Bluetooth.print(robot->motorSenseRightScale);   
+  Bluetooth.print(robot->motorSenseRightScale);
+  Bluetooth.print(F("|a16~Swap left direction "));
+  sendYesNo(robot->motorLeftSwapDir);
+  Bluetooth.print(F("|a17~Swap right direction "));
+  sendYesNo(robot->motorRightSwapDir);
   Bluetooth.println("}");            
 }
 
@@ -301,7 +305,9 @@ void RemoteControl::processMotorMenu(String pfodCmd){
     else if (pfodCmd.startsWith("a11")) processSlider(pfodCmd, robot->motorAccel, 0.001);    
     else if (pfodCmd.startsWith("a12")) processSlider(pfodCmd, robot->motorBiDirSpeedRatio1, 0.01);    
     else if (pfodCmd.startsWith("a13")) processSlider(pfodCmd, robot->motorBiDirSpeedRatio2, 0.01);    
-    else if (pfodCmd.startsWith("a14")) processPIDSlider(pfodCmd, "a14", robot->motorLeftPID, 0.1, 3.0);    
+    else if (pfodCmd.startsWith("a14")) processPIDSlider(pfodCmd, "a14", robot->motorLeftPID, 0.1, 3.0);
+    else if (pfodCmd.startsWith("a16")) robot->motorLeftSwapDir = !robot->motorLeftSwapDir;
+    else if (pfodCmd.startsWith("a17")) robot->motorRightSwapDir = !robot->motorRightSwapDir;         
     else if (pfodCmd == "a10") { 
       testmode = (testmode + 1) % 3;
       switch (testmode){
@@ -619,7 +625,11 @@ void RemoteControl::sendOdometryMenu(boolean update){
   Bluetooth.println(robot->motorRightRpm);
   sendSlider("l04", F("Ticks per one full revolution"), robot->odometryTicksPerRevolution, "", 1, 2000);       
   sendSlider("l01", F("Ticks per cm"), robot->odometryTicksPerCm, "", 0.1, 30);       
-  sendSlider("l02", F("Wheel base cm"), robot->odometryWheelBaseCm, "", 0.1, 50);         
+  sendSlider("l02", F("Wheel base cm"), robot->odometryWheelBaseCm, "", 0.1, 50);  
+  Bluetooth.print(F("|l05~Swap left direction "));
+  sendYesNo(robot->odometryLeftSwapDir);
+  Bluetooth.print(F("|l06~Swap right direction "));
+  sendYesNo(robot->odometryRightSwapDir);
   Bluetooth.println("}");                
 }
 
@@ -628,8 +638,9 @@ void RemoteControl::processOdometryMenu(String pfodCmd){
   if (pfodCmd == "l00") robot->odometryUse = !robot->odometryUse;
     else if (pfodCmd.startsWith("l01")) processSlider(pfodCmd, robot->odometryTicksPerCm, 0.1);
     else if (pfodCmd.startsWith("l02")) processSlider(pfodCmd, robot->odometryWheelBaseCm, 0.1); 
-    else if (pfodCmd.startsWith("l04")) processSlider(pfodCmd, robot->odometryTicksPerRevolution, 1);    
-   
+    else if (pfodCmd.startsWith("l04")) processSlider(pfodCmd, robot->odometryTicksPerRevolution, 1);
+    else if (pfodCmd.startsWith("l05")) robot->odometryLeftSwapDir = !robot->odometryLeftSwapDir;     
+    else if (pfodCmd.startsWith("l06")) robot->odometryRightSwapDir = !robot->odometryRightSwapDir;
   sendOdometryMenu(true);
 }
 
