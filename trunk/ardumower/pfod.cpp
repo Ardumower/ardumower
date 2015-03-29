@@ -626,6 +626,8 @@ void RemoteControl::sendOdometryMenu(boolean update){
   sendSlider("l04", F("Ticks per one full revolution"), robot->odometryTicksPerRevolution, "", 1, 2000);       
   sendSlider("l01", F("Ticks per cm"), robot->odometryTicksPerCm, "", 0.1, 30);       
   sendSlider("l02", F("Wheel base cm"), robot->odometryWheelBaseCm, "", 0.1, 50);  
+  Bluetooth.print(F("|l08~Use two-way encoder "));
+  sendYesNo(robot->twoWayOdometrySensorUse);
   Bluetooth.print(F("|l05~Swap left direction "));
   sendYesNo(robot->odometryLeftSwapDir);
   Bluetooth.print(F("|l06~Swap right direction "));
@@ -641,6 +643,7 @@ void RemoteControl::processOdometryMenu(String pfodCmd){
     else if (pfodCmd.startsWith("l04")) processSlider(pfodCmd, robot->odometryTicksPerRevolution, 1);
     else if (pfodCmd.startsWith("l05")) robot->odometryLeftSwapDir = !robot->odometryLeftSwapDir;     
     else if (pfodCmd.startsWith("l06")) robot->odometryRightSwapDir = !robot->odometryRightSwapDir;
+    else if (pfodCmd.startsWith("l08")) robot->twoWayOdometrySensorUse = !robot->twoWayOdometrySensorUse;    
   sendOdometryMenu(true);
 }
 
