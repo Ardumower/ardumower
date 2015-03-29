@@ -139,7 +139,9 @@ Mower::Mower(){
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
   motorLeftPID.Kp       = 3.0;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.0;
-  motorLeftPID.Kd       = 0.0;  
+  motorLeftPID.Kd       = 0.0;
+  motorRightSwapDir     = 0;    // inverse right motor direction? 
+  motorLeftSwapDir      = 1;    // inverse left motor direction?
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMax   = 255;    // motor mower max PWM
@@ -204,10 +206,12 @@ Mower::Mower(){
   stationForwTime    = 2000;    // charge station forward time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 0;       // use odometry?
-  twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
+  twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
+  odometryRightSwapDir = 0;       // inverse right encoder direction?
+  odometryLeftSwapDir  = 0;       // inverse left encoder direction?
   // ----- GPS -------------------------------------------
   gpsUse            = 0;       // use GPS?
   // ----- other -----------------------------------------
@@ -233,7 +237,7 @@ ISR(PCINT0_vect){
 }
 
 // odometry signal change interrupt
-ISR(PCINT2_vect){   
+ISR(PCINT2_vect){
   unsigned long timeMicros = micros();
   boolean odometryLeftState = digitalRead(pinOdometryLeft);
   boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
@@ -472,13 +476,9 @@ int Mower::readSensor(char type){
 
 void Mower::setActuator(char type, int value){
   switch (type){
-    case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;//                                                                     Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    // normal direction
+    case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    // reverse direction
-    //case ACT_MOTOR_LEFT: setL298N(pinMotorRightDir, pinMotorRightPWM, -value); break;
-    //case ACT_MOTOR_RIGHT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, -value); break;    
     case ACT_BUZZER: if (value == 0) noTone(pinBuzzer); else tone(pinBuzzer, value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
