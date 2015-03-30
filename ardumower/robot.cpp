@@ -856,7 +856,7 @@ void Robot::printMenu(){
   Console.println(F("5=calibrate IMU acc next side"));
   Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
-  Console.println(F("8=ADC calib (perimeter sender must be off)"));  
+  Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
   Console.println(F("9=load factory settings"));  
   Console.println(F("x=read settings"));  
   Console.println(F("0=exit"));  
@@ -1289,10 +1289,7 @@ void Robot::readSensors(){
     // Anfang Ladestromsensor zur Glättung und Mittelwertbildung
     // ********************************************************************
     //  Variabeln
-    double currentmitte;
-    
-    currentmitte = current;
-    
+    double currentmitte = current;    
     // ********************************************************************
     // Ende Ladestromsensor zur Glättung und Mittelwertbildung
 
@@ -1304,29 +1301,27 @@ void Robot::readSensors(){
     float chgAMP;                                               //Sensorwert des Ladestrompin
 
     //Sensor Wert Ausgabe auf Seriellen Monitor oder HandyApp   wenn chgSelection =0
-    if ((chgSelection)==0) chgCurrent = current;
+    if (chgSelection==0) chgCurrent = current;
 
     // Berechnung für Ladestromsensor ACS712 5A                 wenn chgSelection =1
-    if ((chgSelection)==1) {
-
-    chgAMP = currentmitte;                                     //Sensorwert übergabe vom Ladestrompin
-    vcc = (float) 3.30 / chgSenseZero * 1023.0;                // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
-    asensor = (float) chgAMP * vcc / 1023.0;                   // Messwert auslesen
-    asensor = (float) asensor - (vcc/chgNull);                 // Nulldurchgang (vcc/2) abziehen
-    chgSense = (float) chgSense - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
-    amp = (float) asensor /chgSense *1000 ;                    // Ampere berechnen
-    if (chgChange ==1) amp = amp / -1;                         //Lade Strom Messwertumkehr von - nach +
-    if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;        // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
+    if (chgSelection==1) {  
+      chgAMP = currentmitte;                                     //Sensorwert übergabe vom Ladestrompin
+      vcc = (float) 3.30 / chgSenseZero * 1023.0;                // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
+      asensor = (float) chgAMP * vcc / 1023.0;                   // Messwert auslesen
+      asensor = (float) asensor - (vcc/chgNull);                 // Nulldurchgang (vcc/2) abziehen
+      chgSense = (float) chgSense - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
+      amp = (float) asensor /chgSense *1000 ;                    // Ampere berechnen
+      if (chgChange ==1) amp = amp / -1;                         //Lade Strom Messwertumkehr von - nach +
+      if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;        // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
     }
     
     // Berechnung für Ladestromsensor INA169 board              wenn chgSelection =2
-    if ((chgSelection)==2) {
-    chgAMP = currentmitte;
-    asensor = ((chgAMP * 5) / 1023);                          // umrechnen von messwert in Spannung (5V Reference)
-    amp = asensor / (10 * 0,1);                               // Ampere berechnen RL = 10k    Is = (Vout x 1k) / (RS x RL)
-    if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;       // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 ansonsten Messwertaußsgabe in Ampere)
-    }  
-    
+    if (chgSelection==2) {
+      chgAMP = currentmitte;
+      asensor = (chgAMP * 5) / 1023;                          // umrechnen von messwert in Spannung (5V Reference)
+      amp = asensor / (10 * 0.1);                               // Ampere berechnen RL = 10k    Is = (Vout x 1k) / (RS x RL)
+      if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;       // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 ansonsten Messwertaußsgabe in Ampere)
+    }      
     
     //  Ladestromsensor berechnen ********** Ende
     // ********************************************************************

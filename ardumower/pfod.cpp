@@ -183,7 +183,7 @@ void RemoteControl::sendMainMenu(boolean update){
 
 void RemoteControl::sendADCMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.ADC calibration`1000"));         
-  Bluetooth.print(F("|c1~Calibrate (perimeter sender must be off) "));
+  Bluetooth.print(F("|c1~Calibrate (perimeter sender, charger must be off) "));
   for (int ch=0; ch < 16; ch++){   
     int16_t adcMin = ADCMan.getADCMin(A0+ch);
     int16_t adcMax = ADCMan.getADCMax(A0+ch);
