@@ -187,9 +187,9 @@ Mower::Mower(){
   batMonitor = 1;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
-  batFactor       = 0.0658;     // battery conversion factor
-  batChgFactor    = 0.0658;     // battery conversion factor
-  batSenseZero       =77;        // battery volt sense zero point                                                                              
+  batFactor       = 0.05;      // battery conversion factor
+  batChgFactor    = 0.05;      // battery conversion factor
+  batSenseZero     =0;          // battery volt sense zero point                                                                              
   batFull          =29.4;      // battery reference Voltage (fully charged)
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
