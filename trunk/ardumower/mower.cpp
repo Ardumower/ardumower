@@ -194,7 +194,7 @@ Mower::Mower(){
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
   // Einstellungen INA169 board (chgSelection =2)
-  chgSelection    = 1;
+  chgSelection    = 2;
   chgSenseZero    = 511;        // charge current sense zero point
   chgFactor       = 39;         // charge current conversion factor   - Empfindlichkeit nimmt mit ca. 39/V Vcc ab
   chgSense        = 185.0;      // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
