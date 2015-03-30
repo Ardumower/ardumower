@@ -84,7 +84,7 @@
 #define pinBatteryVoltage A2       // battery voltage sensor
 #define pinChargeVoltage A9        // charging voltage sensor
 #define pinChargeCurrent A8        // charge current sensor
-#define pinChargeRelay 49        // charge current sensor  
+#define pinChargeRelay 50          // charge relay
 #define pinRemoteMow 12            // remote control mower motor
 #define pinRemoteSteer 11          // remote control steering 
 #define pinRemoteSpeed 10          // remote control speed
