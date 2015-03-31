@@ -1,16 +1,21 @@
 # Ardumower
+
 ## Description
 Develop an open source robotic lawn mower software for every robotic lawn mower in the universe!
+
 ## Project site
 http://www.ardumower.de
+
 ## Wiki site
 http://wiki.ardumower.de
+
 ## This repository contains
 * Ardumower robot code (Arduino code)
 * Ardumower perimeter sender code (Arduino code)
 * Ardumower PCB schematics (KiCAD)
 * Ardumower simulator (requires CodeBlocks - see installation details here: * http://wiki.ardumower.de/index.php?title=Sensor_fusion#SLAM_simulation)
-## Ardumower tests (MC33926, DS1307, LM386, HCSR04, GY-80, ESP8266, HB200A, MPU9150, HC-05, PfodApp)
+* Ardumower tests (MC33926, DS1307, LM386, HCSR04, GY-80, ESP8266, HB200A, MPU9150, HC-05, PfodApp)
+
 ## License
 Ardumower (www.ardumower.de)
 Copyright (c) 2015 by Uwe Zimprich 
