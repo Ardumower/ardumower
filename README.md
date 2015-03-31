@@ -12,8 +12,8 @@ http://wiki.ardumower.de
 ## This repository contains
 * Ardumower robot code (Arduino code)
 * Ardumower perimeter sender code (Arduino code)
-* Ardumower PCB schematics (KiCAD)
-* Ardumower simulator (requires CodeBlocks - see installation details here: * http://wiki.ardumower.de/index.php?title=Sensor_fusion#SLAM_simulation)
+* Ardumower PCB schematics (PDF, KiCAD)
+* Ardumower simulator (requires CodeBlocks - see installation details here:  http://wiki.ardumower.de/index.php?title=Sensor_fusion#SLAM_simulation)
 * Ardumower tests (MC33926, DS1307, LM386, HCSR04, GY-80, ESP8266, HB200A, MPU9150, HC-05, PfodApp)
 
 ## License
