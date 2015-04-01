@@ -28,7 +28,7 @@
 /* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics, Arduino Mega) 
    http://wiki.ardumower.de/index.php?title=Ardumower_chassis
    
-   Requires: Ardumower PCB v1.0  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
+   Requires: Ardumower PCB v0.5  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
    
 */
    
