@@ -299,6 +299,7 @@ class Robot
     // ------- perimeter state --------------------------
     Perimeter perimeter;
     char perimeterUse       ;      // use perimeter?
+    char perimeterUseDiffSignal;   // use differential signal?
     int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
     int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
     PID perimeterPID ;             // perimeter PID controller

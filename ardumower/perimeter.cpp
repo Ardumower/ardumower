@@ -34,20 +34,23 @@
 // developer test to be activated in mower.cpp: 
 #ifdef USE_DEVELOPER_TEST
   // more motor driver friendly signal (receiver)
-  int8_t sigcode[]   = { 1,-1,0,0,0,
-                         1,-1,0,0,0,
-                        -1, 1,0,0,0,
-                         1,-1,0,0,0  };
+  int8_t sigcode_norm[]   = { 1,-1,0,0,0,
+                              1,-1,0,0,0,
+                             -1, 1,0,0,0,
+                              1,-1,0,0,0  };
 #else
   // http://grauonline.de/alexwww/ardumower/filter/filter.html    
   // "pseudonoise4_pw" signal
-  int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };   // if using coil and series capacitor, use this
+  // if using reconstructed sender signal, use this
+  int8_t sigcode_norm[]        = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };   
   // "pseudonoise4_pw" signal (differential)
-  //int8_t sigcode[]   = { 1,0,-1, 0,1,-1,1,-1, 0,1,-1,1,0,-1, 0,1,-1, 0,1,-1, 0,1,0,-1 };   // if using coil without series capacitor, use this
+  // if using the coil differential signal, use this
+  int8_t sigcode_diff[]        = { 1,0,-1, 0,1,-1,1,-1, 0,1,-1,1,0,-1, 0,1,-1, 0,1,-1, 0,1,0,-1 };   
 #endif
 
 
 Perimeter::Perimeter(){    
+  useDifferentialPerimeterSignal = false;
   timedOutIfBelowSmag = 300;
   callCounter = 0;
   mag[0] = mag[1] = 0;
@@ -61,11 +64,11 @@ void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
   // use max. 255 samples and multiple of signalsize
-  ADCMan.setCapture(idx0Pin, ((int)255 / sizeof sigcode) * sizeof sigcode, true); 
-  ADCMan.setCapture(idx1Pin, ((int)255 / sizeof sigcode) * sizeof sigcode, true); 
+  ADCMan.setCapture(idx0Pin, ((int)255 / sizeof sigcode_norm) * sizeof sigcode_norm, true); 
+  ADCMan.setCapture(idx1Pin, ((int)255 / sizeof sigcode_norm) * sizeof sigcode_norm, true); 
   
   Console.print("matchSignal size=");
-  Console.println(sizeof sigcode);  
+  Console.println(sizeof sigcode_norm);  
   Console.print("capture size=");
   Console.println(ADCMan.getCaptureSize(idx0Pin));  
   Console.println(ADCMan.getCaptureSize(idx1Pin));  
@@ -125,7 +128,10 @@ void Perimeter::matchedFilter(byte idx){
     signalAvg[idx] = ((double)signalAvg[idx]) / ((double)(sampleCount));
   }
   // magnitude for tracking (fast but inaccurate)    
-  mag[idx] = corrFilter(sigcode, sizeof sigcode, samples, sampleCount-sizeof sigcode, filterQuality[idx]);        
+  int16_t sigcode_size = sizeof sigcode_norm;
+  int8_t *sigcode = sigcode_norm;  
+  if (useDifferentialPerimeterSignal) sigcode = sigcode_diff;
+  mag[idx] = corrFilter(sigcode, sigcode_size, samples, sampleCount-sigcode_size, filterQuality[idx]);        
   // smoothed magnitude used for signal-off detection
   smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)abs(mag[idx]));
 

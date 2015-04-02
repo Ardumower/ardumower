@@ -169,7 +169,7 @@ Mower::Mower(){
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
   perimeterPID.Kp    = 60.0;  // perimeter PID controller
   perimeterPID.Ki    = 6.0;
-  perimeterPID.Kd    = 5.0;
+  perimeterPID.Kd    = 5.0;  
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
