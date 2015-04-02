@@ -349,7 +349,6 @@ class Robot
     float batSwitchOffIfBelow ;  // switch off if below voltage (Volt)
     float batFactor       ;     // battery conversion factor
     float batChgFactor       ;     // battery conversion factor    
-    float batSenseZero    ;        // battery volt sense zero point
     float batFull         ;      // battery reference Voltage (fully charged)
     int batADC;
     float chgSenseZero    ;       // charge current sense zero point

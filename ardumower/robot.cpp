@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 30
+#define MAGIC 32
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -205,7 +205,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, batGoHomeIfBelow);
   eereadwrite(readflag, addr, batSwitchOffIfBelow);  
   eereadwrite(readflag, addr, batFactor);
-  eereadwrite(readflag, addr, batSenseZero);
+  eereadwrite(readflag, addr, batChgFactor);
   eereadwrite(readflag, addr, chgSenseZero);
   eereadwrite(readflag, addr, chgFactor);
   eereadwrite(readflag, addr, stationRevTime);
@@ -342,8 +342,6 @@ void Robot::printSettingSerial(){
   Console.println( batFactor);
   Console.print  ("batChgFactor : ");  
   Console.println( batChgFactor);
-  Console.print  ("batSenseZero : ");
-  Console.println(batSenseZero); 
   Console.print  ("batFull : ");
   Console.println( batFull);
   Console.print  ("chgSenseZero : ");
@@ -540,16 +538,47 @@ void Robot::setMotorMowSpeed(int pwm, boolean useAccel){
 
 // PID controller: roll robot to heading (requires IMU)
 void Robot::motorControlImuRoll(){
+  
+  // Regelbereich entspricht 80% der maximalen Drehzahl am Antriebsrad (motorSpeedMax)
   imuRollPID.x = distancePI(imu.ypr.yaw, imuRollHeading) / PI * 180.0;            
-  //Console.println(imuRollPID.x);    
   imuRollPID.w = 0;
-  imuRollPID.y_min = -motorSpeedMaxPwm;
-  imuRollPID.y_max = motorSpeedMaxPwm;		
-  imuRollPID.max_output = motorSpeedMaxPwm;
-  imuRollPID.compute();						      
-  setMotorSpeed( -imuRollPID.y, 
-                +imuRollPID.y,  false);    
+  imuRollPID.y_min = -motorSpeedMax/1.25;        // da der Roll generell langsamer erfolgen soll
+  imuRollPID.y_max = motorSpeedMax/1.25;   // 
+  imuRollPID.max_output = motorSpeedMax/1.25;    //
+  imuRollPID.compute();                 
+
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  motorLeftPID.x = motorLeftRpm;                 // IST 
+  motorLeftPID.w = -imuRollPID.y;                // SOLL 
+  motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
+  motorLeftPID.y_max = motorSpeedMaxPwm;   // Regel-MAX
+  motorLeftPID.max_output = motorSpeedMaxPwm;    // Begrenzung
+  motorLeftPID.compute();
+  int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftPID.y));
+  //if((motorLeftSpeed >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
+  //if((motorLeftSpeed <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
+
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  motorRightPID.Kp = motorLeftPID.Kp;
+  motorRightPID.Ki = motorLeftPID.Ki;
+  motorRightPID.Kd = motorLeftPID.Kd;
+  motorRightPID.x = motorRightRpm;               // IST   
+  motorRightPID.w = imuRollPID.y;                // SOLL
+  motorRightPID.y_min = -motorSpeedMaxPwm;       // Regel-MIN
+  motorRightPID.y_max = motorSpeedMaxPwm;  // Regel-MAX 
+  motorRightPID.max_output = motorSpeedMaxPwm;   // Begrenzung
+  motorRightPID.compute();            
+  int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWM + motorRightPID.y));
+  //if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
+  //if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
+
+  if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
+    leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
+  }
+  setMotorSpeed( leftSpeed, rightSpeed, false );                   
+
 }
+
 
 
 // PID controller: track perimeter 
@@ -588,67 +617,91 @@ void Robot::motorControlPerimeter(){
 
 // PID controller: correct direction during normal driving (requires IMU)
 void Robot::motorControlImuDir(){
-  int leftSpeed = motorSpeedMaxPwm;    
-  int rightSpeed = motorSpeedMaxPwm;
+  int correctLeft = 0;
+  int correctRight = 0;
+  
+  // Regelbereich entspricht maximaler Drehzahl am Antriebsrad (motorSpeedMax)
   imuDirPID.x = distancePI(imu.ypr.yaw, imuDriveHeading) / PI * 180.0;            
-  //Console.println(imuDirPID.x);    
   imuDirPID.w = 0;
-  imuDirPID.y_min = -motorSpeedMaxPwm;
-  imuDirPID.y_max = motorSpeedMaxPwm;		
-  imuDirPID.max_output = motorSpeedMaxPwm;
-  imuDirPID.compute();	  					      
-  setMotorSpeed( leftSpeed -imuDirPID.y, 
-                 rightSpeed +imuDirPID.y, false );
+  imuDirPID.y_min = -motorSpeedMax;
+  imuDirPID.y_max = motorSpeedMax;    
+  imuDirPID.max_output = motorSpeedMax;
+  imuDirPID.compute();                    
+                 
+  if (imuDirPID.y < 0) correctRight = abs(imuDirPID.y);
+  if (imuDirPID.y > 0) correctLeft  = abs(imuDirPID.y);
+                 
+  // Korrektur erfolgt über Abbremsen des linken Antriebsrades, falls Kursabweichung nach rechts
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  motorLeftPID.x = motorLeftRpm;                     // IST 
+  motorLeftPID.w = motorLeftSpeed - correctLeft;     // SOLL 
+  motorLeftPID.y_min = -motorSpeedMaxPwm;            // Regel-MIN
+  motorLeftPID.y_max = motorSpeedMaxPwm;       // Regel-MAX
+  motorLeftPID.max_output = motorSpeedMaxPwm;        // Begrenzung
+  motorLeftPID.compute();
+  int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftPID.y));
+  if((motorLeftSpeed >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
+  if((motorLeftSpeed <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;    
+
+  // Korrektur erfolgt über Abbremsen des rechten Antriebsrades, falls Kursabweichung nach links 
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  motorRightPID.Kp = motorLeftPID.Kp;
+  motorRightPID.Ki = motorLeftPID.Ki;
+  motorRightPID.Kd = motorLeftPID.Kd;
+  motorRightPID.x = motorRightRpm;                   // IST 
+  motorRightPID.w = motorRightSpeed - correctRight;  // SOLL 
+  motorRightPID.y_min = -motorSpeedMaxPwm;           // Regel-MIN
+  motorRightPID.y_max = motorSpeedMaxPwm;      // Regel-MAX
+  motorRightPID.max_output = motorSpeedMaxPwm;       // Begrenzung
+  motorRightPID.compute();            
+  int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWM + motorRightPID.y));
+  if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
+  if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
+  
+  if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
+    leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
+  }
+  setMotorSpeed( leftSpeed, rightSpeed, false );                   
+                 
 }
 
 
 void Robot::motorControl(){
-  //double TA = ((double)(millis() - lastMotorControlTime)) / 1000.0;  
-  // normal drive
   if (odometryUse){
-    motorLeftPID.x = motorLeftRpm;       
-    motorLeftPID.w = motorLeftSpeed;
-    motorLeftPID.y_min = -motorSpeedMaxPwm;
-    motorLeftPID.y_max = motorSpeedMaxPwm;		
-    motorLeftPID.max_output = motorSpeedMaxPwm;
+    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+    motorLeftPID.x = motorLeftRpm;                 // IST 
+    motorLeftPID.w = motorLeftSpeed;               // SOLL 
+    motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
+    motorLeftPID.y_max = motorSpeedMaxPwm;     // Regel-MAX
+    motorLeftPID.max_output = motorSpeedMaxPwm;    // Begrenzung
     motorLeftPID.compute();
     int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftPID.y));
     if((motorLeftSpeed >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
     if((motorLeftSpeed <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
+
+    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorRightPID.Kp = motorLeftPID.Kp;
     motorRightPID.Ki = motorLeftPID.Ki;
-    motorRightPID.Kd = motorLeftPID.Kd;
-    motorRightPID.x = motorRightRpm;       
-    motorRightPID.w = motorRightSpeed;
-    motorRightPID.y_min = -motorSpeedMaxPwm;
-    motorRightPID.y_max = motorSpeedMaxPwm;		
-    motorRightPID.max_output = motorSpeedMaxPwm;
+    motorRightPID.Kd = motorLeftPID.Kd;          
+    motorRightPID.x = motorRightRpm;               // IST
+    motorRightPID.w = motorRightSpeed;             // SOLL
+    motorRightPID.y_min = -motorSpeedMaxPwm;       // Regel-MIN
+    motorRightPID.y_max = motorSpeedMaxPwm;        // Regel-MAX
+    motorRightPID.max_output = motorSpeedMaxPwm;   // Begrenzung
     motorRightPID.compute();            
     int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWM + motorRightPID.y));
     if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
     if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
+
     if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
     }
-    /*Serial.print(motorLeftRpm);
-    Serial.print(",");   
-    Serial.print(motorLeftSpeed);
-    Serial.print(",");   
-    Serial.print(leftSpeed);
-    Serial.print(",");   
-    Serial.print(",");       
-    Serial.print(motorRightRpm);
-    Serial.print(",");   
-    Serial.print(motorRightSpeed);    
-    Serial.print(",");   
-    Serial.print(rightSpeed);
-    Serial.println();*/        
     setMotorSpeed( leftSpeed, rightSpeed, false );  
   }
   else{
     int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
     int rightSpeed =min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorRightSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
-    if (millis() < stateStartTime + 1000) {				
+    if (millis() < stateStartTime + 1000) {       
       leftSpeed = rightSpeed = 0; // slow down at state start      
       if (mowPatternCurr != MOW_LANES) imuDriveHeading = imu.ypr.yaw; // set drive heading    
     }
@@ -1274,11 +1327,11 @@ void Robot::readSensors(){
     }
     // convert to double  
     batADC = readSensor(SEN_BAT_VOLTAGE);
-    double batvolt = (((double)batADC) - batSenseZero) * batFactor;
+    double batvolt = (double)batADC * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
     //double chgvolt = ((double)((int)(readSensor(SEN_CHG_VOLTAGE) / 10))) / 10.0;  
     int chgADC = readSensor(SEN_CHG_VOLTAGE);
     //Console.println(chgADC);
-    double chgvolt = (((double)chgADC) - batSenseZero) * batChgFactor;
+    double chgvolt = (double)chgADC * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
     double current = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
     // low-pass filter
     double accel = 0.01;
@@ -2011,10 +2064,10 @@ void Robot::loop()  {
     if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) ) motorControlImuRoll();
       else if (stateCurr == STATE_PERI_TRACK) motorControlPerimeter();
       else if (  (stateCurr == STATE_FORWARD)
-       &&  (mowPatternCurr == MOW_RANDOM)
+       //&&  (mowPatternCurr == MOW_RANDOM)
        && (imuUse) 
        && (imuCorrectDir || (mowPatternCurr == MOW_LANES))        
-       && (millis() > stateStartTime + 3000) ) motorControlImuDir();
+       ) motorControlImuDir();                                   //&& (millis() > stateStartTime + 3000)
       else motorControl();  
   }
   

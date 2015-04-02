@@ -129,7 +129,7 @@ Mower::Mower(){
   motorAccel       = 0.002;  // motor wheel acceleration (warning: do not set too high)
   motorSpeedMax       = 33;   // motor wheel max RPM
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-  motorPowerMax     = 30;    // motor wheel max power (Watt)
+  motorPowerMax     = 50;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorRollTimeMax    = 3000;  // max. roll time (ms)
@@ -187,9 +187,8 @@ Mower::Mower(){
   batMonitor = 1;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
-  batFactor       = 0.05;      // battery conversion factor
-  batChgFactor    = 0.05;      // battery conversion factor
-  batSenseZero     =0;          // battery volt sense zero point                                                                              
+  batFactor       = 0.5;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+  batChgFactor    = 0.5;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged)
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
@@ -205,7 +204,7 @@ Mower::Mower(){
   stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
   // ------ odometry ------------------------------------
-  odometryUse       = 0;       // use odometry?
+  odometryUse       = 1;       // use odometry?
   twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
@@ -457,9 +456,9 @@ int Mower::readSensor(char type){
 
 // sonar---------------------------------------------------------------------------------------------------
     //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-   case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
-    //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
-    //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
+   //case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
+    case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
+    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
    // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     

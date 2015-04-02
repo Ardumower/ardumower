@@ -555,9 +555,9 @@ void RemoteControl::sendBatteryMenu(boolean update){
   Bluetooth.print(" V");
   Bluetooth.print(F("|j01~Monitor "));  
   sendYesNo(robot->batMonitor);
-  sendSlider("j05", F("Calibrate battery V "), robot->batVoltage, "", 0.01, 30, 0);   
-  //Console.print("gohomeifbelow=");
-  //Console.println(robot->batGoHomeIfBelow);  
+  sendSlider("j05", F("Calibrate batFactor "), robot->batFactor, "", 0.01, 1.0);   
+  //Console.print("batFactor=");
+  //Console.println(robot->batFactor);  
   sendSlider("j02", F("Go home if below"), robot->batGoHomeIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
   sendSlider("j03", F("Switch off if below"), robot->batSwitchOffIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  
   Bluetooth.print(F("|j04~Charge "));
@@ -565,13 +565,9 @@ void RemoteControl::sendBatteryMenu(boolean update){
   Bluetooth.print("V ");
   Bluetooth.print(robot->chgCurrent);
   Bluetooth.print("A");
+  sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
   sendSlider("j06", F("Charge sense zero"), robot->chgSenseZero, "", 1, 600, 400);       
-  sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);     
-  Bluetooth.println(F("|j09~for config file: "));
-  Bluetooth.print("batSenseZero ");
-  Bluetooth.println(robot->batSenseZero);
-  Bluetooth.print("batFactor ");  
-  Bluetooth.print(robot->batFactor);  
+  sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);       
   Bluetooth.println("}");
 }
 
@@ -583,16 +579,10 @@ void RemoteControl::processBatteryMenu(String pfodCmd){
       //Console.println(robot->batGoHomeIfBelow);
     }
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, robot->batSwitchOffIfBelow, 0.1); 
-    else if (pfodCmd.startsWith("j05")) {
-      if (robot->batVoltage < 8){        
-        robot->batSenseZero = robot->batADC;        
-      } else {        
-        processSlider(pfodCmd, robot->batVoltage, 0.01);
-        robot->batFactor = robot->batVoltage / max(0, (((float)robot->batADC)-robot->batSenseZero));        
-      }      
-    }
+    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.01);
     else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, robot->chgSenseZero, 1);   
     else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, robot->chgFactor, 0.01);    
+    else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
   sendBatteryMenu(true);
 }
 
