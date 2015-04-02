@@ -1,0 +1,22 @@
+About the file
+Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA.mod
+
+
+Contains the KiCAD module/footprint of some
+allegro halleffect current sensors ACS754 / ACS755 /ACS756.
+Maybe they can used for CB-PFF / CB-PSF /CB-PSS hausings in general.
+
+
+Allegro_HallSensor_Package-CB-PFF_05Jun2012
+Allegro_HallSensor_Package-CB-PSF_05Jun2012
+Allegro_HallSensor_Package-CB-PSS_05Jun2012
+
+There is also a file Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA.lib
+which contains the symbol for those ICs.
+
+There is also a file Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA.pdf which contains 
+a pdf preview of the footprints.
+
+Author: Bernd Wiebus / Uedem / Germany / 11th June 2012
+GNU-GPL, NO WARRANTY!
+
