@@ -1,3 +1,5 @@
+
+
 /*
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
@@ -192,9 +194,9 @@ class Robot
     float odometryTheta; // theta angle (radiant)
     float odometryX ;   // X map position (cm)
     float odometryY ;   // Y map position (cm)    
-    float motorLeftRpm ; // left wheel rpm
+    int motorLeftRpm ; // left wheel rpm
     unsigned long lastMotorRpmTime ;     
-    float motorRightRpm ; // right wheel rpm    
+    int motorRightRpm ; // right wheel rpm    
     unsigned long nextTimeOdometry ;
     unsigned long nextTimeOdometryInfo ; 
     // -------- RC remote control state -----------------    

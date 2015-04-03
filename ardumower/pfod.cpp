@@ -258,13 +258,13 @@ void RemoteControl::sendMotorMenu(boolean update){
   Bluetooth.print(robot->motorRightPWM);   
   sendSlider("a06", F("Speed max in rpm"), robot->motorSpeedMax, "", 1, 100);    
   sendSlider("a15", F("Speed max in pwm"), robot->motorSpeedMaxPwm, "", 1, 255);    
-  sendSlider("a11", F("Accel"), robot->motorAccel, "", 0.001, 0.05);    
+  sendSlider("a11", F("Accel"), robot->motorAccel, "", 0.01, 0.1);    
   sendSlider("a07", F("Roll time max"), robot->motorRollTimeMax, "", 1, 8000);     
   sendSlider("a08", F("Reverse time"), robot->motorReverseTime, "", 1, 8000);     
   sendSlider("a09", F("Forw time max"), robot->motorForwTimeMax, "", 10, 80000);       
   sendSlider("a12", F("Bidir speed ratio 1"), robot->motorBiDirSpeedRatio1, "", 0.01, 1.0);       
   sendSlider("a13", F("Bidir speed ratio 2"), robot->motorBiDirSpeedRatio2, "", 0.01, 1.0);       
-  sendPIDSlider("a14", "RPM", robot->motorLeftPID, 0.1, 3.0);        
+  sendPIDSlider("a14", "RPM", robot->motorLeftPID, 0.01, 3.0);        
   Bluetooth.println(F("|a10~Testing is"));    
   switch (testmode){
     case 0: Bluetooth.print(F("OFF")); break;
@@ -302,10 +302,10 @@ void RemoteControl::processMotorMenu(String pfodCmd){
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, robot->motorRollTimeMax, 1);    
     else if (pfodCmd.startsWith("a08")) processSlider(pfodCmd, robot->motorReverseTime, 1);
     else if (pfodCmd.startsWith("a09")) processSlider(pfodCmd, robot->motorForwTimeMax, 10);
-    else if (pfodCmd.startsWith("a11")) processSlider(pfodCmd, robot->motorAccel, 0.001);    
+    else if (pfodCmd.startsWith("a11")) processSlider(pfodCmd, robot->motorAccel, 0.01);    
     else if (pfodCmd.startsWith("a12")) processSlider(pfodCmd, robot->motorBiDirSpeedRatio1, 0.01);    
     else if (pfodCmd.startsWith("a13")) processSlider(pfodCmd, robot->motorBiDirSpeedRatio2, 0.01);    
-    else if (pfodCmd.startsWith("a14")) processPIDSlider(pfodCmd, "a14", robot->motorLeftPID, 0.1, 3.0);
+    else if (pfodCmd.startsWith("a14")) processPIDSlider(pfodCmd, "a14", robot->motorLeftPID, 0.01, 3.0);
     else if (pfodCmd.startsWith("a16")) robot->motorLeftSwapDir = !robot->motorLeftSwapDir;
     else if (pfodCmd.startsWith("a17")) robot->motorRightSwapDir = !robot->motorRightSwapDir;         
     else if (pfodCmd == "a10") { 

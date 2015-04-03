@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 33
+#define MAGIC 34
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -1186,7 +1186,7 @@ void Robot::checkButton(){
 void Robot::readSensors(){
   //if ((odometryUse) && (millis() >= nextTimeOdometry)) {        
   //  nextTimeOdometry = millis() + 50;    
-    calcOdometry();
+  //  calcOdometry();
   //}    
   if (millis() >= nextTimeMotorSense){    
     nextTimeMotorSense = millis() +  50;
@@ -1832,8 +1832,8 @@ void Robot::calcOdometry(){
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
   odometryTheta += wheel_theta; 
   
-  motorLeftRpm = double ((( ((double)ticksLeft)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);  
-  motorRightRpm = double ((( ((double)ticksRight)/((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
+  motorLeftRpm  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
+  motorRightRpm = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
   lastMotorRpmTime = millis();
   
   //odometryTheta -= (double)((int)(odometryTheta/(2*PI)))*2*PI;
@@ -1869,6 +1869,7 @@ void Robot::loop()  {
 
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
     nextTimeOdometryInfo = millis() + 300;
+    calcOdometry();
     //printOdometry();        
   }
   
