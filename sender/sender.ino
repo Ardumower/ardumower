@@ -244,8 +244,9 @@ void loop(){
       //analogWrite(pinPWM, 255);
       analogWrite(pinPWM, dutyPWM);
       if ( USE_PERI_FAULT && (dutyPWM == 255) && (digitalRead(pinFault) == LOW) ) {
-        duty = 0;
-        analogWrite(pinPWM, duty);
+        enableSender = false;
+        dutyPWM = 0;
+        analogWrite(pinPWM, dutyPWM);
         fault();    
       }    
     }
