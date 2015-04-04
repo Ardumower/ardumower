@@ -28,7 +28,7 @@
 
 #define MAGIC 34
 
-char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "CHRG", 
+char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG"
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
   
 char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
@@ -1095,7 +1095,7 @@ void Robot::readSerial() {
          motorMowEnable = !motorMowEnable; // press 'm' to toggle mower motor
          break;
        case 'c':
-         setNextState(STATE_STATION, 0); // press 'c' to simulate charging
+         setNextState(STATE_STATION, 0); // press 'c' to simulate in station
          break;
        case '+':
          setNextState(STATE_ROLL_WAIT, 0); // press '+' to rotate 90 degrees (IMU)
@@ -1474,6 +1474,10 @@ void Robot::setNextState(byte stateNew, byte dir){
     //motorMowModulate = false;              
   } 
   if (stateNew == STATE_STATION){
+    setActuator(ACT_CHGRELAY, 0); 
+    setDefaults();        
+  }
+  if (stateNew == STATE_STATION_CHARGING){
     setActuator(ACT_CHGRELAY, 1); 
     setDefaults();        
   }
@@ -1907,7 +1911,7 @@ void Robot::loop()  {
       checkTimer();
       checkBattery();
       if (batMonitor && (millis()-stateStartTime>2000)){
-        if ((chgVoltage > 5.0 ) && (batVoltage < startChargingIfBelow) ){
+        if (chgVoltage > 5.0 ){
           beep(2, true);      
           setNextState(STATE_STATION, 0);
         }
@@ -2029,12 +2033,21 @@ void Robot::loop()  {
       }
       break;
     case STATE_STATION:
-      // waiting until charging completed    
+      // waiting until charging completed  
       if (batMonitor){
-        if (chgCurrent < batFullCurrent && (millis()-stateStartTime>2000)) checkTimer();       // Check Timer when charged 
+        if (batVoltage < startChargingIfBelow && (millis()-stateStartTime>2000)){
+          setNextState(STATE_STATION_CHARGING,0);
+        }
+        else checkTimer();
       } 
       else checkTimer();
 
+      break;     
+    case STATE_STATION_CHARGING:
+      // waiting until charging completed    
+      if (batMonitor){
+        if ((chgCurrent < batFullCurrent && (millis()-stateStartTime>2000)) || (millis()-stateStartTime > chargingTimeout)) setNextState(STATE_STATION,0); 
+      } 
       break;      
     case STATE_STATION_REV:
       // charging: drive reverse 

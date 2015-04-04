@@ -128,7 +128,8 @@ enum {
   STATE_PERI_TRACK,   // perimeter track
   STATE_PERI_ROLL,    // perimeter roll
   STATE_PERI_REV,     // perimeter reverse
-  STATE_STATION,       // charge
+  STATE_STATION,       // in station
+  STATE_STATION_CHARGING,       // in station charging
   STATE_STATION_REV,   // charge reverse
   STATE_STATION_ROLL,  // charge roll
   STATE_STATION_FORW,  // charge forward
@@ -355,6 +356,7 @@ class Robot
     float batFull         ;      // battery reference Voltage (fully charged)
     float batFullCurrent   ; // current flowing when battery is fully charged
     float startChargingIfBelow; // start charging if battery Voltage is below
+    unsigned long chargingTimeout; // safety timer for charging
     int batADC;
     float chgSenseZero    ;       // charge current sense zero point
     float chgFactor       ;     // charge current conversion factor
