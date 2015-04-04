@@ -190,6 +190,8 @@ Mower::Mower(){
   batFactor       = 0.5;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batChgFactor    = 0.5;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged)
+  batFullCurrent  = 0.3;      // current flowing when battery is fully charged
+  startChargingIfBelow = 27.0; // start charging if battery Voltage is below
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
   // Einstellungen INA169 board (chgSelection =2)

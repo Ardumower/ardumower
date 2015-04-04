@@ -573,7 +573,7 @@ void Robot::motorControlImuRoll(){
   //if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
   //if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
-  if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
+  if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
     leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
   }
   setMotorSpeed( leftSpeed, rightSpeed, false );                   
@@ -659,7 +659,7 @@ void Robot::motorControlImuDir(){
   if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
   if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
   
-  if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
+  if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
     leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
   }
   setMotorSpeed( leftSpeed, rightSpeed, false );                   
@@ -694,7 +694,7 @@ void Robot::motorControl(){
     if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
     if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
-    if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_CHARGE) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
+    if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
     }
     setMotorSpeed( leftSpeed, rightSpeed, false );  
@@ -1095,7 +1095,7 @@ void Robot::readSerial() {
          motorMowEnable = !motorMowEnable; // press 'm' to toggle mower motor
          break;
        case 'c':
-         setNextState(STATE_CHARGE, 0); // press 'c' to simulate charging
+         setNextState(STATE_STATION, 0); // press 'c' to simulate charging
          break;
        case '+':
          setNextState(STATE_ROLL_WAIT, 0); // press '+' to rotate 90 degrees (IMU)
@@ -1138,7 +1138,7 @@ void Robot::checkButton(){
     } 
     else { 
       // ON/OFF button released          
-      if  ( ((stateCurr != STATE_OFF) || (stateCurr == STATE_ERROR)) && (stateCurr != STATE_CHARGE) ) {
+      if  ( ((stateCurr != STATE_OFF) || (stateCurr == STATE_ERROR)) && (stateCurr != STATE_STATION) ) {
         setNextState(STATE_OFF, 0);
       } else if (buttonCounter == 2){
         motorMowEnable = true;
@@ -1409,9 +1409,9 @@ void Robot::setNextState(byte stateNew, byte dir){
     if (stateNew == STATE_REVERSE) stateNew = STATE_PERI_REV;    
   }  
   if (stateNew == STATE_FORWARD) {    
-    if ((stateCurr == STATE_CHARGE_REV) ||(stateCurr == STATE_CHARGE_ROLL)) return;  
-    if (stateCurr == STATE_CHARGE) {
-      stateNew = STATE_CHARGE_REV;   
+    if ((stateCurr == STATE_STATION_REV) ||(stateCurr == STATE_STATION_ROLL)) return;  
+    if (stateCurr == STATE_STATION) {
+      stateNew = STATE_STATION_REV;   
       setActuator(ACT_CHGRELAY, 0);         
       motorMowEnable = false;
     } 
@@ -1419,14 +1419,14 @@ void Robot::setNextState(byte stateNew, byte dir){
   // evaluate new state
   stateNext = stateNew;
   rollDir = dir;
-  if (stateNew == STATE_CHARGE_REV){
+  if (stateNew == STATE_STATION_REV){
     motorLeftSpeed = motorRightSpeed = -motorSpeedMax;                    
     stateEndTime = millis() + stationRevTime;                     
-  } else if (stateNew == STATE_CHARGE_ROLL){
+  } else if (stateNew == STATE_STATION_ROLL){
     motorLeftSpeed = motorSpeedMax;
     motorRightSpeed = -motorLeftSpeed;						      
     stateEndTime = millis() + stationRollTime;                     
-  } else if (stateNew == STATE_CHARGE_FORW){
+  } else if (stateNew == STATE_STATION_FORW){
     motorLeftSpeed = motorRightSpeed = motorSpeedMax;      
     motorMowEnable = true;    
     stateEndTime = millis() + stationForwTime;                     
@@ -1473,7 +1473,7 @@ void Robot::setNextState(byte stateNew, byte dir){
     motorMowEnable = true;
     //motorMowModulate = false;              
   } 
-  if (stateNew == STATE_CHARGE){
+  if (stateNew == STATE_STATION){
     setActuator(ACT_CHGRELAY, 1); 
     setDefaults();        
   }
@@ -1558,7 +1558,7 @@ void Robot::checkTimer(){
           if ((currmin >= startmin) && (currmin < stopmin)){
             // start timer triggered
             stopTimerTriggered = false;
-            if ((stateCurr == STATE_CHARGE) || (stateCurr == STATE_OFF)){
+            if ((stateCurr == STATE_STATION) || (stateCurr == STATE_OFF)){
               Console.println("timer start triggered");
               motorMowEnable = true;
               setNextState(STATE_FORWARD, 0);
@@ -1786,7 +1786,7 @@ void Robot::checkSonar(){
 void Robot::checkTilt(){
   int pitchAngle = (imu.ypr.pitch/PI*180.0);
   int rollAngle  = (imu.ypr.roll/PI*180.0);
-  if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_CHARGE) ){
+  if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_STATION) ){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
       Console.println("Error: IMU tilt");
       addErrorCounter(ERR_IMU_TILT);
@@ -1907,9 +1907,9 @@ void Robot::loop()  {
       checkTimer();
       checkBattery();
       if (batMonitor && (millis()-stateStartTime>2000)){
-        if ((chgVoltage > 5.0 ) && (batVoltage < (batFull-1.0)) ){
+        if ((chgVoltage > 5.0 ) && (batVoltage < startChargingIfBelow) ){
           beep(2, true);      
-          setNextState(STATE_CHARGE, 0);
+          setNextState(STATE_STATION, 0);
         }
       }
       imuDriveHeading = imu.ypr.yaw;
@@ -2024,28 +2024,27 @@ void Robot::loop()  {
       //checkSonar();                   
       if (batMonitor){
         if (chgVoltage > 5.0){ 
-          setNextState(STATE_CHARGE, 0);
+          setNextState(STATE_STATION, 0);
         }
       }
       break;
-    case STATE_CHARGE:
+    case STATE_STATION:
       // waiting until charging completed    
-      if (batMonitor)
-      {
-        if (chgCurrent < 1.0 && (millis()-stateStartTime>2000)) checkTimer();       // Check Timer when charged 
+      if (batMonitor){
+        if (chgCurrent < batFullCurrent && (millis()-stateStartTime>2000)) checkTimer();       // Check Timer when charged 
       } 
       else checkTimer();
 
       break;      
-    case STATE_CHARGE_REV:
+    case STATE_STATION_REV:
       // charging: drive reverse 
-      if (millis() >= stateEndTime) setNextState(STATE_CHARGE_ROLL, 0);				             
+      if (millis() >= stateEndTime) setNextState(STATE_STATION_ROLL, 0);				             
       break;
-    case STATE_CHARGE_ROLL:
+    case STATE_STATION_ROLL:
       // charging: roll 
-      if (millis() >= stateEndTime) setNextState(STATE_CHARGE_FORW,0);				
+      if (millis() >= stateEndTime) setNextState(STATE_STATION_FORW,0);				
       break;
-    case STATE_CHARGE_FORW:
+    case STATE_STATION_FORW:
       // forward (charge station)    
       if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);				        
       break;      
