@@ -59,7 +59,9 @@ class Perimeter
     void speedTest();
     int16_t timedOutIfBelowSmag;
     // use differential perimeter signal as input for the matched filter? 
-    bool useDifferentialPerimeterSignal; 
+    bool useDifferentialPerimeterSignal;
+    // swap coil polarity?
+    bool swapCoilPolarity;  
   private:
     unsigned long lastInsideTime[2];
     byte idxPin[2]; // channel for idx

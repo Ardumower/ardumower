@@ -446,6 +446,8 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   sendPIDSlider("e07", F("Track"), robot->perimeterPID, 0.1, 100);  
   Bluetooth.print(F("|e09~Use differential signal "));
   sendYesNo(robot->perimeter.useDifferentialPerimeterSignal);    
+  Bluetooth.print(F("|e10~Swap coil polarity "));
+  sendYesNo(robot->perimeter.swapCoilPolarity);
   Bluetooth.println("}");                
 }
 
@@ -457,6 +459,7 @@ void RemoteControl::processPerimeterMenu(String pfodCmd){
     else if (pfodCmd.startsWith("e07")) processPIDSlider(pfodCmd, "e07", robot->perimeterPID, 0.1, 100);    
     else if (pfodCmd.startsWith("e08")) processSlider(pfodCmd, robot->perimeter.timedOutIfBelowSmag, 1);    
     else if (pfodCmd.startsWith("e09")) robot->perimeter.useDifferentialPerimeterSignal = !robot->perimeter.useDifferentialPerimeterSignal;
+    else if (pfodCmd.startsWith("e10")) robot->perimeter.swapCoilPolarity = !robot->perimeter.swapCoilPolarity;
   sendPerimeterMenu(true);
 }
 

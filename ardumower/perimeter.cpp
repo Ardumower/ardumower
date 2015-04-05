@@ -51,6 +51,7 @@
 
 Perimeter::Perimeter(){    
   useDifferentialPerimeterSignal = false;
+  swapCoilPolarity = false;
   timedOutIfBelowSmag = 300;
   callCounter = 0;
   mag[0] = mag[1] = 0;
@@ -131,7 +132,8 @@ void Perimeter::matchedFilter(byte idx){
   int16_t sigcode_size = sizeof sigcode_norm;
   int8_t *sigcode = sigcode_norm;  
   if (useDifferentialPerimeterSignal) sigcode = sigcode_diff;
-  mag[idx] = corrFilter(sigcode, sigcode_size, samples, sampleCount-sigcode_size, filterQuality[idx]);        
+  mag[idx] = corrFilter(sigcode, sigcode_size, samples, sampleCount-sigcode_size, filterQuality[idx]);
+  if (swapCoilPolarity) mag[idx] *= -1;        
   // smoothed magnitude used for signal-off detection
   smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)abs(mag[idx]));
 

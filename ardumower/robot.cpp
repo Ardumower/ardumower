@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 34
+#define MAGIC 35
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG"
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -230,6 +230,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, odometryRightSwapDir);
   eereadwrite(readflag, addr, twoWayOdometrySensorUse);      
   eereadwrite(readflag, addr, perimeter.useDifferentialPerimeterSignal);        
+  eereadwrite(readflag, addr, perimeter.swapCoilPolarity);  
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
