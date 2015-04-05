@@ -28,7 +28,7 @@
 
 #define MAGIC 35
 
-char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG"
+char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
   
 char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
@@ -2036,10 +2036,14 @@ void Robot::loop()  {
     case STATE_STATION:
       // waiting until charging completed  
       if (batMonitor){
+        if (chgVoltage > 5.0){
         if (batVoltage < startChargingIfBelow && (millis()-stateStartTime>2000)){
           setNextState(STATE_STATION_CHARGING,0);
         }
-        else checkTimer();
+         else checkTimer();  
+      }
+         else setNextState(STATE_OFF,0);
+
       } 
       else checkTimer();
 
