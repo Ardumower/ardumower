@@ -206,6 +206,7 @@ Mower::Mower(){
   stationRevTime     = 4000;    // charge station reverse time (ms)
   stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
+  stationCheckTime   = 2000;    // charge station reverse check time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
   twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?

@@ -130,6 +130,7 @@ enum {
   STATE_PERI_REV,     // perimeter reverse
   STATE_STATION,       // in station
   STATE_STATION_CHARGING,       // in station charging
+  STATE_STATION_CHECK, //checks if station is present
   STATE_STATION_REV,   // charge reverse
   STATE_STATION_ROLL,  // charge roll
   STATE_STATION_FORW,  // charge forward
@@ -372,6 +373,7 @@ class Robot
     int stationRevTime     ;    // charge station reverse time (ms)
     int stationRollTime    ;    // charge station roll time (ms)
     int stationForwTime    ;    // charge station forward time (ms)
+    int stationCheckTime   ;    // charge station reverse check time (ms)
     unsigned long nextTimeBattery ;    
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];

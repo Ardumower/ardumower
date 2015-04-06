@@ -26,9 +26,9 @@
 
 #include "robot.h"
 
-#define MAGIC 35
+#define MAGIC 36
 
-char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG",
+char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
   
 char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
@@ -208,9 +208,12 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, batChgFactor);
   eereadwrite(readflag, addr, chgSenseZero);
   eereadwrite(readflag, addr, chgFactor);
+  eereadwrite(readflag, addr, batFullCurrent);
+  eereadwrite(readflag, addr, startChargingIfBelow);
   eereadwrite(readflag, addr, stationRevTime);
   eereadwrite(readflag, addr, stationRollTime);
   eereadwrite(readflag, addr, stationForwTime);
+  eereadwrite(readflag, addr, stationCheckTime);
   eereadwrite(readflag, addr, odometryUse);
   eereadwrite(readflag, addr, odometryTicksPerRevolution);
   eereadwrite(readflag, addr, odometryTicksPerCm);
@@ -1410,9 +1413,9 @@ void Robot::setNextState(byte stateNew, byte dir){
     if (stateNew == STATE_REVERSE) stateNew = STATE_PERI_REV;    
   }  
   if (stateNew == STATE_FORWARD) {    
-    if ((stateCurr == STATE_STATION_REV) ||(stateCurr == STATE_STATION_ROLL)) return;  
-    if (stateCurr == STATE_STATION) {
-      stateNew = STATE_STATION_REV;   
+    if ((stateCurr == STATE_STATION_REV) ||(stateCurr == STATE_STATION_ROLL) || (stateCurr == STATE_STATION_CHECK) ) return;  
+    if ((stateCurr == STATE_STATION) || (stateCurr == STATE_STATION_CHARGING)) {
+      stateNew = STATE_STATION_CHECK;   
       setActuator(ACT_CHGRELAY, 0);         
       motorMowEnable = false;
     } 
@@ -1431,8 +1434,11 @@ void Robot::setNextState(byte stateNew, byte dir){
     motorLeftSpeed = motorRightSpeed = motorSpeedMax;      
     motorMowEnable = true;    
     stateEndTime = millis() + stationForwTime;                     
-  } 
-  else if (stateNew == STATE_PERI_ROLL) {    
+  } else if (stateNew == STATE_STATION_CHECK){
+    motorLeftSpeed = motorRightSpeed = -motorSpeedMax/2; 
+    stateEndTime = millis() + stationCheckTime; 
+  
+  } else if (stateNew == STATE_PERI_ROLL) {    
     stateEndTime = millis() + perimeterTrackRollTime;                     
     if (dir == RIGHT){
 	motorLeftSpeed = motorSpeedMax/2;
@@ -1912,7 +1918,7 @@ void Robot::loop()  {
       checkTimer();
       checkBattery();
       if (batMonitor && (millis()-stateStartTime>2000)){
-        if (chgVoltage > 5.0 ){
+        if ((chgVoltage > 5.0)  && (batVoltage > 8)){
           beep(2, true);      
           setNextState(STATE_STATION, 0);
         }
@@ -2036,7 +2042,7 @@ void Robot::loop()  {
     case STATE_STATION:
       // waiting until charging completed  
       if (batMonitor){
-        if (chgVoltage > 5.0){
+        if ((chgVoltage > 5.0) && (batVoltage > 8)){
         if (batVoltage < startChargingIfBelow && (millis()-stateStartTime>2000)){
           setNextState(STATE_STATION_CHARGING,0);
         }
@@ -2053,7 +2059,15 @@ void Robot::loop()  {
       if (batMonitor){
         if ((chgCurrent < batFullCurrent && (millis()-stateStartTime>2000)) || (millis()-stateStartTime > chargingTimeout)) setNextState(STATE_STATION,0); 
       } 
-      break;      
+      break;  
+
+    case STATE_STATION_CHECK:
+       if (millis() >= stateEndTime){
+        if (chgVoltage > 5) setNextState(STATE_ERROR, 0);
+            else setNextState(STATE_STATION_REV, 0);
+          }
+      //  else setNextState(STATE_ERROR,0);
+      break;
     case STATE_STATION_REV:
       // charging: drive reverse 
       if (millis() >= stateEndTime) setNextState(STATE_STATION_ROLL, 0);				             

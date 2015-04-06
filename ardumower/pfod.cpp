@@ -574,6 +574,8 @@ void RemoteControl::sendBatteryMenu(boolean update){
   sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
   sendSlider("j06", F("Charge sense zero"), robot->chgSenseZero, "", 1, 600, 400);       
   sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);       
+  sendSlider("j10", F("charging starts if Voltage is below"), robot->startChargingIfBelow, "", 0.1, 50);       
+  sendSlider("j11", F("Battery is fully charged if current is below"), robot->batFullCurrent, "", 0.1, 10);       
   Bluetooth.println("}");
 }
 
@@ -589,6 +591,8 @@ void RemoteControl::processBatteryMenu(String pfodCmd){
     else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, robot->chgSenseZero, 1);   
     else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, robot->chgFactor, 0.01);    
     else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
+    else if (pfodCmd.startsWith("j10")) processSlider(pfodCmd, robot->startChargingIfBelow, 0.1);
+    else if (pfodCmd.startsWith("j11")) processSlider(pfodCmd, robot->batFullCurrent, 0.1);
   sendBatteryMenu(true);
 }
 
@@ -597,6 +601,7 @@ void RemoteControl::sendStationMenu(boolean update){
   sendSlider("k00", F("Reverse time"), robot->stationRevTime, "", 1, 8000);     
   sendSlider("k01", F("Roll time"), robot->stationRollTime, "", 1, 8000);       
   sendSlider("k02", F("Forw time"), robot->stationForwTime, "", 1, 8000);         
+  sendSlider("k03", F("Station reverse check time"), robot->stationCheckTime, "", 1, 8000);         
   Bluetooth.println("}");                
 }
 
@@ -604,6 +609,7 @@ void RemoteControl::processStationMenu(String pfodCmd){
   if (pfodCmd.startsWith("k00")) processSlider(pfodCmd, robot->stationRevTime, 1);
     else if (pfodCmd.startsWith("k01")) processSlider(pfodCmd, robot->stationRollTime, 1);
     else if (pfodCmd.startsWith("k02")) processSlider(pfodCmd, robot->stationForwTime, 1);
+    else if (pfodCmd.startsWith("k03")) processSlider(pfodCmd, robot->stationCheckTime, 1);
   sendStationMenu(true);
 }
 
