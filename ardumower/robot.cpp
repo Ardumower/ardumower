@@ -1494,7 +1494,9 @@ void Robot::setNextState(byte stateNew, byte dir){
   }  
   if (stateNew == STATE_ERROR){
     motorMowEnable = false;    
-    motorLeftSpeed = motorRightSpeed = 0;    
+    motorLeftSpeed = motorRightSpeed = 0; 
+    setActuator(ACT_CHGRELAY, 0);
+   
   }
   if (stateNew == STATE_PERI_FIND){
     // find perimeter  => drive half speed      
@@ -2057,7 +2059,8 @@ void Robot::loop()  {
     case STATE_STATION_CHARGING:
       // waiting until charging completed    
       if (batMonitor){
-        if ((chgCurrent < batFullCurrent && (millis()-stateStartTime>2000)) || (millis()-stateStartTime > chargingTimeout)) setNextState(STATE_STATION,0); 
+        if ((chgCurrent < batFullCurrent) && (millis()-stateStartTime>2000)) setNextState(STATE_STATION,0); 
+        else if (millis()-stateStartTime > chargingTimeout) setNextState(STATE_ERROR, 0);
       } 
       break;  
 

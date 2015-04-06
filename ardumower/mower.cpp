@@ -188,7 +188,7 @@ Mower::Mower(){
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
   batFactor       = 0.5;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-  batChgFactor    = 0.5;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+  batChgFactor    = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged)
   batFullCurrent  = 0.3;      // current flowing when battery is fully charged
   startChargingIfBelow = 27.0; // start charging if battery Voltage is below
@@ -206,7 +206,7 @@ Mower::Mower(){
   stationRevTime     = 4000;    // charge station reverse time (ms)
   stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
-  stationCheckTime   = 2000;    // charge station reverse check time (ms)
+  stationCheckTime   = 2500;    // charge station reverse check time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
   twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
