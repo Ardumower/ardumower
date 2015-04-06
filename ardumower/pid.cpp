@@ -48,10 +48,11 @@ float PID::compute()
   // integrate error
   esum += e;
   // anti wind-up	
-  if (esum < -max_output)  esum = -max_output;
-  if (esum > max_output)  esum = max_output;			
+  int iTerm = Ki * Ta * esum;	
+  if (iTerm < -max_output)  iTerm = -max_output;
+  if (iTerm > max_output)  iTerm = max_output;			
   y = Kp * e
-      + Ki * Ta * esum
+      + iTerm
       + Kd/Ta * (e - eold);
   eold = e;			
   // restrict output to min/max	
