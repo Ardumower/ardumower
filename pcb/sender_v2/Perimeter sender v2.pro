@@ -1,4 +1,4 @@
-update=05.03.2015 10:03:35
+update=08.04.2015 14:44:13
 version=1
 last_client=kicad
 [pcbnew]
@@ -89,3 +89,16 @@ LibName36=C:/Users/Uwe/Downloads/footprints eigene/Arduino
 LibName37=Ina169
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
