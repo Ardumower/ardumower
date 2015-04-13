@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 01.04.2015 23:57:56
+Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 13.04.2015 12:37:02
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -96,6 +96,34 @@ TimeStamp = /551DD3C1;
 Reference = B14;
 ValeurCmp = Bohrloch_6,5mm;
 IdModule  = ACS712:Bohrloch_6,5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /552BAD35;
+Reference = B15;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = ACS712:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /552BAD3C;
+Reference = B16;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = ACS712:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /552BAD43;
+Reference = B17;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = ACS712:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /552BAD4A;
+Reference = B18;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = ACS712:Bohrloch_3,2mm;
 EndCmp
 
 BeginCmp
@@ -1222,7 +1250,7 @@ BeginCmp
 TimeStamp = /5459779F;
 Reference = U1;
 ValeurCmp = DC 10V;
-IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch;
+IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe;
 EndCmp
 
 BeginCmp
@@ -1257,14 +1285,14 @@ BeginCmp
 TimeStamp = /54B8E475;
 Reference = U6;
 ValeurCmp = DC  3,3V;
-IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch;
+IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B92E1F;
 Reference = U7;
 ValeurCmp = DC  5V;
-IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch;
+IdModule  = ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe;
 EndCmp
 
 BeginCmp
