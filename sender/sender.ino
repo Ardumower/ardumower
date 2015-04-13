@@ -30,6 +30,9 @@
 // #define USE_DEVELOPER_TEST    1      // uncomment for new perimeter signal test (developers) 
 
 // --- MC33926 motor driver ---
+#define USE_DOUBLE_AMPLTIUDE    1         // uncomment to use +/- input voltage for amplitude (default), 
+                                         // comment to use only +input/GND voltage for amplitude
+                                         
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       2  // M1_IN2         (if using old L298N driver, leave open)
 #define pinPWM       3  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
@@ -60,7 +63,7 @@
 
 
 // code version 
-#define VER "590"
+#define VER "591"
 
 // --------------------------------------
 
@@ -103,10 +106,12 @@ void timerCallback(){
   if (enableSender){
     if (sigcode[step] == 1) {      
       digitalWrite(pinIN1, LOW);                           
+      #ifdef USE_DOUBLE_AMPLTIUDE      
       digitalWrite(pinIN2, HIGH);                                 
+      #endif             
       digitalWrite(pinEnable, HIGH);
-    } else if (sigcode[step] == -1) {      
-      digitalWrite(pinIN1, HIGH);                           
+    } else if (sigcode[step] == -1) {              
+      digitalWrite(pinIN1, HIGH);          
       digitalWrite(pinIN2, LOW);                                 
       digitalWrite(pinEnable, HIGH);                           
     } else {
