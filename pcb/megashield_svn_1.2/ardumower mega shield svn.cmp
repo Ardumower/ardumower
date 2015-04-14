@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 13.04.2015 12:37:02
+Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 14.04.2015 11:58:56
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -249,20 +249,6 @@ BeginCmp
 TimeStamp = /54C6AF0E;
 Reference = D10;
 ValeurCmp = 1N4148;
-IdModule  = ACS712:Diode_ligend_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /55188313;
-Reference = D11;
-ValeurCmp = 1N4148;
-IdModule  = ACS712:Diode_ligend_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /551D3821;
-Reference = D12;
-ValeurCmp = ZPD15;
 IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
@@ -1009,13 +995,6 @@ IdModule  = Discret:TO92-EBC;
 EndCmp
 
 BeginCmp
-TimeStamp = /551D35DA;
-Reference = Q2;
-ValeurCmp = IRF9530;
-IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical;
-EndCmp
-
-BeginCmp
 TimeStamp = /538A5BD3;
 Reference = R1;
 ValeurCmp = 220;
@@ -1142,6 +1121,13 @@ IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
+TimeStamp = /552CF3A3;
+Reference = R19;
+ValeurCmp = 0;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
 TimeStamp = /54B5FD13;
 Reference = R20;
 ValeurCmp = 220R;
@@ -1188,13 +1174,6 @@ TimeStamp = /54C7A8A5;
 Reference = R26;
 ValeurCmp = 0;
 IdModule  = ACS712:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /551D4425;
-Reference = R27;
-ValeurCmp = 100K;
-IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
@@ -1317,9 +1296,9 @@ IdModule  = ACS712:I2C_5-3V;
 EndCmp
 
 BeginCmp
-TimeStamp = /54D22728;
+TimeStamp = /552D6DDE;
 Reference = U11;
-ValeurCmp = Wlan_ESP8266 Rückseite;
+ValeurCmp = Wlan_ESP8266;
 IdModule  = ACS712:Wlan_ESP8266_3D;
 EndCmp
 

@@ -2,8 +2,8 @@ EESchema Schematic File Version 2
 LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
-LIBS:Wlan_ESP8266
 LIBS:ds1307
+LIBS:Wlan_ESP8266
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
@@ -1646,7 +1646,7 @@ Text GLabel 2280 8950 3    60   Output ~ 0
 StationLed
 Text GLabel 10175 1300 0    60   Input ~ 0
 StationLed
-Text Notes 1625 7885 0    39   ~ 0
+Text Notes 1405 7830 0    39   ~ 0
 Station LED\nbzw:\nGrundlast\nPerimetersender
 Text Notes 2055 7750 0    39   ~ 0
 Strom von Relais muss vor der Diode geholt werden\nwenn nach Diode oderLM350T geholt wird\ngeht das Relais rückwärt in Selbthaltung\n und kann nicht mehr abfallen
@@ -1934,7 +1934,7 @@ F 0 "RP2" H 5825 4600 40  0000 C CNN
 F 1 "150" H 5825 4150 40  0000 C CNN
 F 2 "Sockets_DIP:DIP-16__300" H 5825 4600 60  0001 C CNN
 F 3 "" H 5825 4600 60  0000 C CNN
-F 4 "C: 1055159 - 62 " H 5825 4600 60  0000 C CNN "Bestellnummer"
+F 4 "C: 1055159 - 62" H 5825 4600 60  0001 C CNN "Bestellnummer"
 	1    5825 4600
 	1    0    0    1   
 $EndComp
@@ -3841,18 +3841,6 @@ NoConn ~ 15600 -1825
 NoConn ~ 15600 -1550
 NoConn ~ 15600 -1275
 $Comp
-L Wlan_ESP8266 U11
-U 1 1 54D22728
-P 870 1600
-F 0 "U11" H 820 1100 50  0000 C CNN
-F 1 "Wlan_ESP8266 Rückseite" V 1020 1600 50  0000 C CNN
-F 2 "ACS712:Wlan_ESP8266_3D" H 870 1600 50  0001 C CNN
-F 3 "DOCUMENTATION" H 870 1600 50  0001 C CNN
-F 4 "Value" H 870 1600 60  0001 C CNN "Bestellnummer"
-	1    870  1600
-	-1   0    0    -1  
-$EndComp
-$Comp
 L +3.3V #PWR0143
 U 1 1 54D2272E
 P 1320 1550
@@ -4115,18 +4103,6 @@ F 3 "" H 15355 715 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DIODE D11
-U 1 1 55188313
-P 6450 8485
-F 0 "D11" H 6450 8585 40  0000 C CNN
-F 1 "1N4148" H 6450 8385 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 6450 8485 60  0001 C CNN
-F 3 "" H 6450 8485 60  0000 C CNN
-F 4 "1N4148" H 6450 8485 60  0001 C CNN "Bestellnummer"
-	1    6450 8485
-	0    1    1    0   
-$EndComp
-$Comp
 L CONN_5 P5
 U 1 1 5519014E
 P 2850 5400
@@ -4226,6 +4202,212 @@ F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 8050 8985 60  0001 C CNN
 F 3 "" H 8050 8985 60  0000 C CNN
 F 4 "Value" H 8050 8985 60  0001 C CNN "Bestellnummer"
 	1    8050 8985
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP36
+U 1 1 551D89BF
+P 6400 2950
+F 0 "LP36" H 6390 3000 20  0000 C CNN
+F 1 "Lötpad" H 6400 2930 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 6400 2950 60  0001 C CNN
+F 3 "" H 6400 2950 60  0000 C CNN
+	1    6400 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L Bohrloch_3,2mm B9
+U 1 1 551DD39D
+P 18075 -3110
+F 0 "B9" H 18355 -2950 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 18305 -3030 60  0000 C CNN
+F 2 "ACS712:Bohrloch_6,5mm" H 18075 -3110 60  0001 C CNN
+F 3 "" H 18075 -3110 60  0000 C CNN
+F 4 "Value" H 18075 -3110 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    18075 -3110
+	1    0    0    -1  
+$EndComp
+NoConn ~ 18275 -3110
+$Comp
+L Bohrloch_3,2mm B10
+U 1 1 551DD3A5
+P 18075 -2835
+F 0 "B10" H 18355 -2675 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 18305 -2755 60  0000 C CNN
+F 2 "ACS712:Bohrloch_6,5mm" H 18075 -2835 60  0001 C CNN
+F 3 "" H 18075 -2835 60  0000 C CNN
+F 4 "Value" H 18075 -2835 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    18075 -2835
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B11
+U 1 1 551DD3AC
+P 18075 -2560
+F 0 "B11" H 18355 -2400 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 18305 -2480 60  0000 C CNN
+F 2 "ACS712:Bohrloch_6,5mm" H 18075 -2560 60  0001 C CNN
+F 3 "" H 18075 -2560 60  0000 C CNN
+F 4 "Value" H 18075 -2560 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 18075 -2560 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    18075 -2560
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B12
+U 1 1 551DD3B3
+P 18055 -2105
+F 0 "B12" H 18335 -1945 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 18285 -2025 60  0000 C CNN
+F 2 "ACS712:Bohrloch_6,5mm" H 18055 -2105 60  0001 C CNN
+F 3 "" H 18055 -2105 60  0000 C CNN
+F 4 "Value" H 18055 -2105 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 18055 -2105 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    18055 -2105
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B13
+U 1 1 551DD3BA
+P 18055 -1830
+F 0 "B13" H 18335 -1670 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 18285 -1750 60  0000 C CNN
+F 2 "ACS712:Bohrloch_6,5mm" H 18055 -1830 60  0001 C CNN
+F 3 "" H 18055 -1830 60  0000 C CNN
+F 4 "Value" H 18055 -1830 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    18055 -1830
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B14
+U 1 1 551DD3C1
+P 18055 -1555
+F 0 "B14" H 18335 -1395 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 18285 -1475 60  0000 C CNN
+F 2 "ACS712:Bohrloch_6,5mm" H 18055 -1555 60  0001 C CNN
+F 3 "" H 18055 -1555 60  0000 C CNN
+F 4 "Value" H 18055 -1555 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 18055 -1555 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    18055 -1555
+	1    0    0    -1  
+$EndComp
+NoConn ~ 18275 -2835
+NoConn ~ 18255 -2105
+NoConn ~ 18255 -1830
+$Comp
+L GND #PWR0161
+U 1 1 551E1986
+P 17910 -1555
+F 0 "#PWR0161" H 17910 -1555 30  0001 C CNN
+F 1 "GND" H 17910 -1625 30  0001 C CNN
+F 2 "" H 17910 -1555 60  0000 C CNN
+F 3 "" H 17910 -1555 60  0000 C CNN
+	1    17910 -1555
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR0162
+U 1 1 551E3A82
+P 17910 -1830
+F 0 "#PWR0162" H 17910 -1830 30  0001 C CNN
+F 1 "GND" H 17910 -1900 30  0001 C CNN
+F 2 "" H 17910 -1830 60  0000 C CNN
+F 3 "" H 17910 -1830 60  0000 C CNN
+	1    17910 -1830
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR0163
+U 1 1 551E3ED9
+P 17910 -2105
+F 0 "#PWR0163" H 17910 -2105 30  0001 C CNN
+F 1 "GND" H 17910 -2175 30  0001 C CNN
+F 2 "" H 17910 -2105 60  0000 C CNN
+F 3 "" H 17910 -2105 60  0000 C CNN
+	1    17910 -2105
+	0    1    -1   0   
+$EndComp
+Text GLabel 780  8100 3    60   Output ~ 0
+Charg_Pin
+Text GLabel 17925 -3110 0    60   Output ~ 0
+Charg_Pin
+Text GLabel 17925 -2835 0    60   Output ~ 0
+Charg_Pin
+Text GLabel 17925 -2560 0    60   Output ~ 0
+Charg_Pin
+$Comp
+L Bohrloch_3,2mm B15
+U 1 1 552BAD35
+P 16205 -2090
+F 0 "B15" H 16485 -1930 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 16435 -2010 60  0000 C CNN
+F 2 "ACS712:Bohrloch_3,2mm" H 16205 -2090 60  0001 C CNN
+F 3 "" H 16205 -2090 60  0000 C CNN
+F 4 "Value" H 16205 -2090 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    16205 -2090
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B16
+U 1 1 552BAD3C
+P 16205 -1815
+F 0 "B16" H 16485 -1655 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 16435 -1735 60  0000 C CNN
+F 2 "ACS712:Bohrloch_3,2mm" H 16205 -1815 60  0001 C CNN
+F 3 "" H 16205 -1815 60  0000 C CNN
+F 4 "Value" H 16205 -1815 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    16205 -1815
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B17
+U 1 1 552BAD43
+P 16205 -1540
+F 0 "B17" H 16485 -1380 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 16435 -1460 60  0000 C CNN
+F 2 "ACS712:Bohrloch_3,2mm" H 16205 -1540 60  0001 C CNN
+F 3 "" H 16205 -1540 60  0000 C CNN
+F 4 "Value" H 16205 -1540 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    16205 -1540
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B18
+U 1 1 552BAD4A
+P 16205 -1265
+F 0 "B18" H 16485 -1105 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 16435 -1185 60  0000 C CNN
+F 2 "ACS712:Bohrloch_3,2mm" H 16205 -1265 60  0001 C CNN
+F 3 "" H 16205 -1265 60  0000 C CNN
+F 4 "Value" H 16205 -1265 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    16205 -1265
+	1    0    0    -1  
+$EndComp
+NoConn ~ 16405 -2090
+NoConn ~ 16405 -1815
+NoConn ~ 16405 -1540
+NoConn ~ 16405 -1265
+$Comp
+L Wlan_ESP8266 U11
+U 1 1 552D6DDE
+P 870 1600
+F 0 "U11" H 870 1155 50  0000 C CNN
+F 1 "Wlan_ESP8266" V 1032 1634 50  0000 C CNN
+F 2 "ACS712:Wlan_ESP8266_3D" H 870 1600 50  0001 C CNN
+F 3 "DOCUMENTATION" H 870 1600 50  0001 C CNN
+F 4 "Value" H 870 1600 60  0001 C CNN "Bestellnummer"
+	1    870  1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R19
+U 1 1 552CF3A3
+P 6450 8435
+F 0 "R19" V 6530 8435 40  0000 C CNN
+F 1 "0" V 6457 8436 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 6380 8435 30  0001 C CNN
+F 3 "~" H 6450 8435 30  0000 C CNN
+	1    6450 8435
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -4665,9 +4847,6 @@ Wire Wire Line
 Connection ~ 9450 9700
 Wire Wire Line
 	9450 10225 9450 10275
-Wire Wire Line
-	1280 8000 1280 7350
-Connection ~ 1280 8000
 Wire Wire Line
 	5800 10100 5700 10100
 Wire Wire Line
@@ -5289,13 +5468,9 @@ Wire Wire Line
 	9450 7950 9300 7950
 Connection ~ 9300 7950
 Wire Wire Line
-	6450 7350 6450 8285
-Wire Wire Line
-	1280 7350 6450 7350
-Wire Wire Line
 	2280 8000 2280 8300
 Wire Wire Line
-	1955 8275 1955 8000
+	1955 7350 1955 8275
 Connection ~ 1955 8000
 Connection ~ 6450 8750
 Wire Wire Line
@@ -5727,152 +5902,21 @@ Connection ~ 6030 4650
 Connection ~ 5625 4650
 Connection ~ 6025 3650
 Connection ~ 5625 3650
-$Comp
-L Lötpad LP36
-U 1 1 551D89BF
-P 6400 2950
-F 0 "LP36" H 6390 3000 20  0000 C CNN
-F 1 "Lötpad" H 6400 2930 20  0000 C CNN
-F 2 "ACS712:Lötpad0,508_CU" H 6400 2950 60  0001 C CNN
-F 3 "" H 6400 2950 60  0000 C CNN
-	1    6400 2950
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	6400 2800 6400 2900
 Wire Wire Line
 	6400 3000 6400 3650
-$Comp
-L Bohrloch_3,2mm B9
-U 1 1 551DD39D
-P 18075 -3110
-F 0 "B9" H 18355 -2950 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 18305 -3030 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 18075 -3110 60  0001 C CNN
-F 3 "" H 18075 -3110 60  0000 C CNN
-F 4 "Value" H 18075 -3110 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    18075 -3110
-	1    0    0    -1  
-$EndComp
-NoConn ~ 18275 -3110
-$Comp
-L Bohrloch_3,2mm B10
-U 1 1 551DD3A5
-P 18075 -2835
-F 0 "B10" H 18355 -2675 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 18305 -2755 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 18075 -2835 60  0001 C CNN
-F 3 "" H 18075 -2835 60  0000 C CNN
-F 4 "Value" H 18075 -2835 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    18075 -2835
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B11
-U 1 1 551DD3AC
-P 18075 -2560
-F 0 "B11" H 18355 -2400 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 18305 -2480 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 18075 -2560 60  0001 C CNN
-F 3 "" H 18075 -2560 60  0000 C CNN
-F 4 "Value" H 18075 -2560 60  0001 C CNN "Bestellnummer"
-F 5 "Value" H 18075 -2560 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    18075 -2560
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B12
-U 1 1 551DD3B3
-P 18055 -2105
-F 0 "B12" H 18335 -1945 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 18285 -2025 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 18055 -2105 60  0001 C CNN
-F 3 "" H 18055 -2105 60  0000 C CNN
-F 4 "Value" H 18055 -2105 60  0001 C CNN "Bestellnummer"
-F 5 "Value" H 18055 -2105 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    18055 -2105
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B13
-U 1 1 551DD3BA
-P 18055 -1830
-F 0 "B13" H 18335 -1670 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 18285 -1750 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 18055 -1830 60  0001 C CNN
-F 3 "" H 18055 -1830 60  0000 C CNN
-F 4 "Value" H 18055 -1830 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    18055 -1830
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B14
-U 1 1 551DD3C1
-P 18055 -1555
-F 0 "B14" H 18335 -1395 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 18285 -1475 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 18055 -1555 60  0001 C CNN
-F 3 "" H 18055 -1555 60  0000 C CNN
-F 4 "Value" H 18055 -1555 60  0001 C CNN "Bestellnummer"
-F 5 "Value" H 18055 -1555 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    18055 -1555
-	1    0    0    -1  
-$EndComp
-NoConn ~ 18275 -2835
-NoConn ~ 18255 -2105
-NoConn ~ 18255 -1830
-$Comp
-L GND #PWR0161
-U 1 1 551E1986
-P 17910 -1555
-F 0 "#PWR0161" H 17910 -1555 30  0001 C CNN
-F 1 "GND" H 17910 -1625 30  0001 C CNN
-F 2 "" H 17910 -1555 60  0000 C CNN
-F 3 "" H 17910 -1555 60  0000 C CNN
-	1    17910 -1555
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	17910 -1555 18055 -1555
-$Comp
-L GND #PWR0162
-U 1 1 551E3A82
-P 17910 -1830
-F 0 "#PWR0162" H 17910 -1830 30  0001 C CNN
-F 1 "GND" H 17910 -1900 30  0001 C CNN
-F 2 "" H 17910 -1830 60  0000 C CNN
-F 3 "" H 17910 -1830 60  0000 C CNN
-	1    17910 -1830
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	17910 -1830 18055 -1830
-$Comp
-L GND #PWR0163
-U 1 1 551E3ED9
-P 17910 -2105
-F 0 "#PWR0163" H 17910 -2105 30  0001 C CNN
-F 1 "GND" H 17910 -2175 30  0001 C CNN
-F 2 "" H 17910 -2105 60  0000 C CNN
-F 3 "" H 17910 -2105 60  0000 C CNN
-	1    17910 -2105
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	17910 -2105 18055 -2105
-Text GLabel 780  8100 3    60   Output ~ 0
-Charg_Pin
 Connection ~ 780  8000
-Text GLabel 17925 -3110 0    60   Output ~ 0
-Charg_Pin
 Wire Wire Line
 	17925 -3110 18075 -3110
-Text GLabel 17925 -2835 0    60   Output ~ 0
-Charg_Pin
 Wire Wire Line
 	17925 -2835 18075 -2835
-Text GLabel 17925 -2560 0    60   Output ~ 0
-Charg_Pin
 Wire Wire Line
 	17925 -2560 18075 -2560
 Wire Wire Line
@@ -5893,56 +5937,8 @@ Wire Wire Line
 Wire Wire Line
 	2895 8000 2895 8640
 Connection ~ 2280 8000
-$Comp
-L Bohrloch_3,2mm B15
-U 1 1 552BAD35
-P 16205 -2090
-F 0 "B15" H 16485 -1930 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 16435 -2010 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 16205 -2090 60  0001 C CNN
-F 3 "" H 16205 -2090 60  0000 C CNN
-F 4 "Value" H 16205 -2090 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    16205 -2090
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B16
-U 1 1 552BAD3C
-P 16205 -1815
-F 0 "B16" H 16485 -1655 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 16435 -1735 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 16205 -1815 60  0001 C CNN
-F 3 "" H 16205 -1815 60  0000 C CNN
-F 4 "Value" H 16205 -1815 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    16205 -1815
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B17
-U 1 1 552BAD43
-P 16205 -1540
-F 0 "B17" H 16485 -1380 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 16435 -1460 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 16205 -1540 60  0001 C CNN
-F 3 "" H 16205 -1540 60  0000 C CNN
-F 4 "Value" H 16205 -1540 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    16205 -1540
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B18
-U 1 1 552BAD4A
-P 16205 -1265
-F 0 "B18" H 16485 -1105 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 16435 -1185 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 16205 -1265 60  0001 C CNN
-F 3 "" H 16205 -1265 60  0000 C CNN
-F 4 "Value" H 16205 -1265 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    16205 -1265
-	1    0    0    -1  
-$EndComp
-NoConn ~ 16405 -2090
-NoConn ~ 16405 -1815
-NoConn ~ 16405 -1540
-NoConn ~ 16405 -1265
+Wire Wire Line
+	6450 7350 6450 8185
+Wire Wire Line
+	6450 7350 1955 7350
 $EndSCHEMATC
