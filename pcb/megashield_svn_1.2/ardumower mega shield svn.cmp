@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 14.04.2015 11:58:56
+Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 15.04.2015 21:37:38
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -654,13 +654,6 @@ EndCmp
 BeginCmp
 TimeStamp = /551BAF3A;
 Reference = LP35;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad0,508_CU;
-EndCmp
-
-BeginCmp
-TimeStamp = /551D89BF;
-Reference = LP36;
 ValeurCmp = Lötpad;
 IdModule  = ACS712:Lötpad0,508_CU;
 EndCmp
