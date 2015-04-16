@@ -60,7 +60,7 @@
 #define pinMotorMowSense A3        // M1_FB  mower motor current sense  
 #define pinMotorMowFault 26        // M1_SF  mower motor fault   (if using MOSFET/L298N, keep unconnected)
 #define pinMotorMowEnable 28       // EN mower motor enable      (if using MOSFET/L298N, keep unconnected)
-#define pinMotorMowRpm 18
+#define pinMotorMowRpm A10
     
 #define pinBumperLeft 39           // bumper pins
 #define pinBumperRight 38
@@ -243,20 +243,21 @@ ISR(PCINT0_vect){
 }
 
 // odometry signal change interrupt
+// mower motor speed sensor interrupt
 ISR(PCINT2_vect){
   unsigned long timeMicros = micros();
   boolean odometryLeftState = digitalRead(pinOdometryLeft);
   boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
   boolean odometryRightState = digitalRead(pinOdometryRight);  
   boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-  robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);
+  boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
+  robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
+  robot.setMotorMowRPMState(motorMowRpmState);  
 }
 
 // mower motor speed sensor interrupt
-void rpm_interrupt(){
-  boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
-  robot.setMotorMowRPMState(motorMowRpmState);
-}
+//void rpm_interrupt(){
+//}
 
 
 // WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
@@ -387,7 +388,8 @@ void Mower::setup(){
     PCMSK2 |= (1<<PCINT23);          
     
     // mower motor speed sensor interrupt
-    attachInterrupt(5, rpm_interrupt, CHANGE);  
+    //attachInterrupt(5, rpm_interrupt, CHANGE);
+    PCMSK2 |= (1<<PCINT18);  
   #else
     // Due interrupts
     attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
@@ -400,7 +402,8 @@ void Mower::setup(){
     attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
     attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
     
-    attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
+    //attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
+    attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
   #endif   
     
   // ADC
