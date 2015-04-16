@@ -588,11 +588,18 @@ void Robot::motorControlImuRoll(){
 
 // PID controller: track perimeter 
 void Robot::motorControlPerimeter(){      
-  if ((millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + 5000)){
+  if ((millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + trackingPerimeterTransitionTimeOut)){
     // robot is wheel-spinning while tracking => roll to get ground again
+    if (trackingBlockInnerWheelWhilePerimeterStruggling == 0){
     if (perimeterMag < 0) setMotorSpeed( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
-      else setMotorSpeed( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);
-    if (millis() > perimeterLastTransitionTime + 10000){      
+        else setMotorSpeed( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);}
+
+    else if (trackingBlockInnerWheelWhilePerimeterStruggling == 1){
+      if (perimeterMag < 0) setMotorSpeed( 0, motorSpeedMaxPwm/1.5, false);
+        else setMotorSpeed( motorSpeedMaxPwm/1.5, 0, false);
+    }
+
+    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut){      
       Console.println("Error: tracking error");
       addErrorCounter(ERR_TRACKING);
       //setNextState(STATE_ERROR,0);

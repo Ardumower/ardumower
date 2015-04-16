@@ -314,6 +314,9 @@ class Robot
     unsigned long perimeterLastTransitionTime;
     int perimeterCounter ;         // counts perimeter transitions
     unsigned long nextTimePerimeter ;
+    int trackingPerimeterTransitionTimeOut;
+    int trackingErrorTimeOut;    
+    char trackingBlockInnerWheelWhilePerimeterStruggling;
     //  --------- lawn state ----------------------------
     char lawnSensorUse     ;       // use capacitive Sensor
     int lawnSensorCounter;

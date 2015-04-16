@@ -170,6 +170,9 @@ Mower::Mower(){
   perimeterPID.Kp    = 60.0;  // perimeter PID controller
   perimeterPID.Ki    = 6.0;
   perimeterPID.Kd    = 5.0;  
+  trackingPerimeterTransitionTimeOut = 5000;
+  trackingErrorTimeOut = 10000;
+  trackingBlockInnerWheelWhilePerimeterStruggling = 0;
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------

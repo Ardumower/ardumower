@@ -443,11 +443,15 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   sendSlider("e04", "Trigger timeout", robot->perimeterTriggerTimeout, "", 1, 2000);
   sendSlider("e05", F("Track roll time"), robot->perimeterTrackRollTime, "", 1, 8000);       
   sendSlider("e06", F("Track rev time"), robot->perimeterTrackRevTime, "", 1, 8000);         
+  sendSlider("e11", F("Transition timeout"), robot->trackingPerimeterTransitionTimeOut, "", 1, 5000);
+  sendSlider("e12", F("Track error timeout"), robot->trackingErrorTimeOut, "", 1, 10000);             
   sendPIDSlider("e07", F("Track"), robot->perimeterPID, 0.1, 100);  
   Bluetooth.print(F("|e09~Use differential signal "));
   sendYesNo(robot->perimeter.useDifferentialPerimeterSignal);    
   Bluetooth.print(F("|e10~Swap coil polarity "));
   sendYesNo(robot->perimeter.swapCoilPolarity);
+  Bluetooth.print(F("|e13~Block inner wheel  "));
+  sendYesNo(robot->trackingBlockInnerWheelWhilePerimeterStruggling);
   Bluetooth.println("}");                
 }
 
@@ -460,6 +464,9 @@ void RemoteControl::processPerimeterMenu(String pfodCmd){
     else if (pfodCmd.startsWith("e08")) processSlider(pfodCmd, robot->perimeter.timedOutIfBelowSmag, 1);    
     else if (pfodCmd.startsWith("e09")) robot->perimeter.useDifferentialPerimeterSignal = !robot->perimeter.useDifferentialPerimeterSignal;
     else if (pfodCmd.startsWith("e10")) robot->perimeter.swapCoilPolarity = !robot->perimeter.swapCoilPolarity;
+    else if (pfodCmd.startsWith("e11")) processSlider(pfodCmd, robot->trackingPerimeterTransitionTimeOut, 1);
+    else if (pfodCmd.startsWith("e12")) processSlider(pfodCmd, robot->trackingErrorTimeOut, 1);
+    else if (pfodCmd.startsWith("e13")) robot->trackingBlockInnerWheelWhilePerimeterStruggling = !robot->trackingBlockInnerWheelWhilePerimeterStruggling;          
   sendPerimeterMenu(true);
 }
 
@@ -516,6 +523,9 @@ void RemoteControl::sendImuMenu(boolean update){
   sendYesNo(robot->imuUse);
   Bluetooth.print(F("|g01~Yaw "));
   Bluetooth.print(robot->imu.ypr.yaw/PI*180);
+  Bluetooth.print(F(" deg"));  
+  Bluetooth.print(F("|g09~DriveHeading "));
+  Bluetooth.print(robot->imuDriveHeading/PI*180);
   Bluetooth.print(F(" deg"));  
   Bluetooth.print(F("|g02~Pitch "));
   Bluetooth.print(robot->imu.ypr.pitch/PI*180);
