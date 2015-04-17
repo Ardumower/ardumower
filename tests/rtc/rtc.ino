@@ -155,16 +155,22 @@ void setup()  {
   Serial.print("RTC default address=");
   Serial.println(DS1307_ADDRESS);
   if (findDS1307()){
-    randomSeed(analogRead(A7)+analogRead(A0)+analogRead(A1));  
-    testRead();  
-    testWrite();
-    testRead();  
-    Serial.println();
-    Serial.println("power-off RTC, and restart to verify!");
+    testRead();      
+    Serial.println("press 'a' to set new random date+time");    
   }
 }
 
-void loop(){
+void loop(){  
+  if (Serial.available() > 0){
+    char ch = (char)Serial.read();  
+    if (ch == 'a') {
+      randomSeed(analogRead(A7)+analogRead(A0)+analogRead(A1));  
+      testWrite();
+      testRead();  
+      Serial.println();
+      Serial.println("power-off RTC, and restart to verify!");      
+    }    
+  }
 }
 
 
