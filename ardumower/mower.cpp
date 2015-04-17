@@ -60,7 +60,7 @@
 #define pinMotorMowSense A3        // M1_FB  mower motor current sense  
 #define pinMotorMowFault 26        // M1_SF  mower motor fault   (if using MOSFET/L298N, keep unconnected)
 #define pinMotorMowEnable 28       // EN mower motor enable      (if using MOSFET/L298N, keep unconnected)
-#define pinMotorMowRpm A10
+#define pinMotorMowRpm A11
     
 #define pinBumperLeft 39           // bumper pins
 #define pinBumperRight 38
@@ -389,7 +389,7 @@ void Mower::setup(){
     
     // mower motor speed sensor interrupt
     //attachInterrupt(5, rpm_interrupt, CHANGE);
-    PCMSK2 |= (1<<PCINT18);  
+    PCMSK2 |= (1<<PCINT19);  
   #else
     // Due interrupts
     attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
