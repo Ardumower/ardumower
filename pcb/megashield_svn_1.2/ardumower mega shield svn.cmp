@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 15.04.2015 21:37:38
+Cmp-Mod V01 Created by Cvpcb (2015-03-09 BZR 5487)-product   date = 17.04.2015 16:25:03
 
 BeginCmp
 TimeStamp = /54CFDBE9;
@@ -659,6 +659,13 @@ IdModule  = ACS712:Lötpad0,508_CU;
 EndCmp
 
 BeginCmp
+TimeStamp = /55320D6B;
+Reference = LP36;
+ValeurCmp = Lötpad;
+IdModule  = ACS712:Lötpad0,508_CU;
+EndCmp
+
+BeginCmp
 TimeStamp = /53850AD4;
 Reference = P1;
 ValeurCmp = Sonar C;
@@ -682,7 +689,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54BA7CCC;
 Reference = P4;
-ValeurCmp = Res.AD11;
+ValeurCmp = MowRpm;
 IdModule  = ACS712:Pin_Header_Straight_1x03;
 EndCmp
 
@@ -899,7 +906,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54B8B4D4;
 Reference = P35;
-ValeurCmp = MowRpm;
+ValeurCmp = Resv.Pin49;
 IdModule  = ACS712:Pin_Header_Straight_1x03;
 EndCmp
 

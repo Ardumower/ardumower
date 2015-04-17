@@ -540,8 +540,6 @@ F 4 "Value" H 4850 10665 60  0001 C CNN "Bestellnummer"
 $EndComp
 Text Notes 6050 11115 2    60   ~ 0
 Lawn sensor\n\n\n\n
-Text Notes 4130 7350 2    60   ~ 0
-Tilt sensor\n\n\n\n\n
 $Comp
 L MC33926 Dual1
 U 1 1 538656B8
@@ -831,7 +829,7 @@ $EndComp
 Text GLabel 6700 790  2    60   Output ~ 0
 pinButton
 Text GLabel 5350 6000 0    60   Input ~ 0
-pinMotorMowRpm
+ReservePin49
 Text GLabel 5350 5750 0    60   Input ~ 0
 pinButton
 Text GLabel 10250 5650 2    60   Input ~ 0
@@ -2032,9 +2030,10 @@ L CONN_3 P35
 U 1 1 54B8B4D4
 P 2100 5650
 F 0 "P35" V 2050 5650 50  0000 C CNN
-F 1 "MowRpm" V 2150 5650 40  0000 C CNN
+F 1 "Resv.Pin49" V 2150 5650 40  0000 C CNN
 F 2 "ACS712:Pin_Header_Straight_1x03" H 2100 5650 60  0001 C CNN
 F 3 "" H 2100 5650 60  0000 C CNN
+F 4 "Value" H 2100 5650 60  0001 C CNN "Bestellnummer"
 	1    2100 5650
 	-1   0    0    -1  
 $EndComp
@@ -2061,7 +2060,7 @@ F 3 "" H 2450 5400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 2750 5750 2    60   Output ~ 0
-pinMotorMowRpm
+ReservePin49
 $Comp
 L CONN_3 P41
 U 1 1 54B80251
@@ -2570,40 +2569,41 @@ Voltage measurement
 $Comp
 L CONN_3 P4
 U 1 1 54BA7CCC
-P 15900 4375
-F 0 "P4" V 15850 4375 50  0000 C CNN
-F 1 "Res.AD11" V 15950 4375 40  0000 C CNN
-F 2 "ACS712:Pin_Header_Straight_1x03" H 15900 4375 60  0001 C CNN
-F 3 "" H 15900 4375 60  0000 C CNN
-	1    15900 4375
+P 15890 4820
+F 0 "P4" V 15840 4820 50  0000 C CNN
+F 1 "MowRpm" V 15940 4820 40  0000 C CNN
+F 2 "ACS712:Pin_Header_Straight_1x03" H 15890 4820 60  0001 C CNN
+F 3 "" H 15890 4820 60  0000 C CNN
+F 4 "Value" H 15890 4820 60  0001 C CNN "Bestellnummer"
+	1    15890 4820
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR0103
 U 1 1 54BA7CD2
-P 15450 4375
-F 0 "#PWR0103" H 15450 4375 30  0001 C CNN
-F 1 "GND" H 15450 4305 30  0001 C CNN
-F 2 "" H 15450 4375 60  0000 C CNN
-F 3 "" H 15450 4375 60  0000 C CNN
-	1    15450 4375
+P 15440 4820
+F 0 "#PWR0103" H 15440 4820 30  0001 C CNN
+F 1 "GND" H 15440 4750 30  0001 C CNN
+F 2 "" H 15440 4820 60  0000 C CNN
+F 3 "" H 15440 4820 60  0000 C CNN
+	1    15440 4820
 	0    1    -1   0   
 $EndComp
 $Comp
 L +5V #PWR0104
 U 1 1 54BA7CD8
-P 15550 4275
-F 0 "#PWR0104" H 15550 4365 20  0001 C CNN
-F 1 "+5V" H 15550 4400 30  0000 C CNN
-F 2 "" H 15550 4275 60  0000 C CNN
-F 3 "" H 15550 4275 60  0000 C CNN
-	1    15550 4275
+P 15540 4720
+F 0 "#PWR0104" H 15540 4810 20  0001 C CNN
+F 1 "+5V" H 15540 4845 30  0000 C CNN
+F 2 "" H 15540 4720 60  0000 C CNN
+F 3 "" H 15540 4720 60  0000 C CNN
+	1    15540 4720
 	-1   0    0    -1  
 $EndComp
-Text GLabel 15300 4475 0    60   Output ~ 0
-ReserveAD11
+Text GLabel 15290 4920 0    60   Output ~ 0
+pinMotorMowRpm_neu
 Text GLabel 5075 4550 0    60   Input ~ 0
-ReserveAD11
+pinMotorMowRpm_neu
 $Comp
 L GND #PWR0105
 U 1 1 54BA6AAA
@@ -4173,7 +4173,7 @@ $Comp
 L Lötpad LP32
 U 1 1 551BB55E
 P 6500 5020
-F 0 "LP32" H 6490 5070 20  0000 C CNN
+F 0 "LP32" H 6410 4995 20  0000 C CNN
 F 1 "Lötpad" H 6500 5000 20  0000 C CNN
 F 2 "ACS712:Lötpad0,508_CU" H 6500 5020 60  0001 C CNN
 F 3 "" H 6500 5020 60  0000 C CNN
@@ -4944,9 +4944,6 @@ Wire Wire Line
 	6300 5100 6300 4450
 Connection ~ 6300 4450
 Wire Wire Line
-	6400 5100 6400 4550
-Connection ~ 6400 4550
-Wire Wire Line
 	5400 5900 5400 6000
 Wire Wire Line
 	5400 6000 5350 6000
@@ -5244,11 +5241,11 @@ Wire Wire Line
 Wire Wire Line
 	15300 5350 15550 5350
 Wire Wire Line
-	15450 4375 15550 4375
+	15440 4820 15540 4820
 Wire Wire Line
-	15550 4275 15550 4275
+	15540 4720 15540 4720
 Wire Wire Line
-	15300 4475 15550 4475
+	15290 4920 15540 4920
 Wire Wire Line
 	1100 6800 1550 6800
 Wire Wire Line
@@ -5485,7 +5482,7 @@ Wire Wire Line
 Wire Wire Line
 	4075 4650 7200 4650
 Wire Wire Line
-	6025 4550 7200 4550
+	5075 4550 7200 4550
 Wire Wire Line
 	6025 4450 7200 4450
 Wire Wire Line
@@ -5675,8 +5672,6 @@ Wire Wire Line
 	5075 4350 5625 4350
 Wire Wire Line
 	4075 4450 5625 4450
-Wire Wire Line
-	5075 4550 5625 4550
 Wire Wire Line
 	5620 4950 5625 4950
 Connection ~ 10150 5250
@@ -5930,4 +5925,22 @@ Wire Wire Line
 	5550 3650 5625 3650
 Wire Wire Line
 	5050 3650 5450 3650
+$Comp
+L Lötpad LP36
+U 1 1 55320D6B
+P 6400 5020
+F 0 "LP36" H 6310 5005 20  0000 C CNN
+F 1 "Lötpad" H 6400 5000 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 6400 5020 60  0001 C CNN
+F 3 "" H 6400 5020 60  0000 C CNN
+	1    6400 5020
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6400 5100 6400 5070
+Wire Wire Line
+	6400 4970 6400 4550
+Connection ~ 6400 4550
+Connection ~ 6025 4550
+Connection ~ 5625 4550
 $EndSCHEMATC
