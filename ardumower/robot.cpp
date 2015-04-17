@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 36
+#define MAGIC 37
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -167,6 +167,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorSenseLeftScale);
   eereadwrite(readflag, addr, motorRollTimeMax);
   eereadwrite(readflag, addr, motorReverseTime);
+  eereadwrite(readflag, addr, motorPowerIgnoreTime);
   eereadwrite(readflag, addr, motorForwTimeMax);
   eereadwrite(readflag, addr, motorMowSpeedMax);
   eereadwrite(readflag, addr, motorMowPowerMax);
@@ -688,8 +689,8 @@ void Robot::motorControl(){
     motorLeftPID.max_output = motorSpeedMaxPwm;    // Begrenzung
     motorLeftPID.compute();
     int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWM + motorLeftPID.y));
-    if((motorLeftSpeed >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
-    if((motorLeftSpeed <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
+    //if((motorLeftSpeed >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
+    //if((motorLeftSpeed <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
 
     // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorRightPID.Kp = motorLeftPID.Kp;
@@ -702,8 +703,8 @@ void Robot::motorControl(){
     motorRightPID.max_output = motorSpeedMaxPwm;   // Begrenzung
     motorRightPID.compute();            
     int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWM + motorRightPID.y));
-    if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
-    if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
+    //if((motorRightSpeed >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
+    //if((motorRightSpeed <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
     if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
@@ -1206,13 +1207,13 @@ void Robot::readSensors(){
     motorLeftSenseADC = readSensor(SEN_MOTOR_LEFT);
     motorMowSenseADC = readSensor(SEN_MOTOR_MOW);
     
-    if (motorRightPWM < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.25) * accel;
+    if (motorRightPWM < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.0) * accel;
         else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
     
-    if (motorLeftPWM < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.25) * accel;
+    if (motorLeftPWM < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.0) * accel;
         else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
         
-    if (motorMowPWM < 160) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.25) * accel;
+    if (motorMowPWM < 160) motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * (motorMowSenseScale*1.0) * accel;
         else motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel;
    
     if (batVoltage > 8){
@@ -1628,17 +1629,17 @@ void Robot::checkCurrent(){
     
   if (motorLeftSense >=motorPowerMax){  
     // left wheel motor overpowered    
-    if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorReverseTime)){    				  
+    if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
       //beep(1);
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       reverseOrBidir(RIGHT);
-    } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorReverseTime)){
+    } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       //   reverseOrBidir(RIGHT);
       setNextState(STATE_ROLL,RIGHT);				          
-    } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorReverseTime)){
+    } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
       setMotorSpeed( 0, 0, false );  
       setNextState(STATE_FORWARD, 0);
@@ -1646,16 +1647,16 @@ void Robot::checkCurrent(){
   }
   else if (motorRightSense >= motorPowerMax){       
      // right wheel motor overpowered
-     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorReverseTime)){    				  
+     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
        //beep(1);
        motorRightSenseCounter++;
        setMotorSpeed( 0, 0, false );  
        reverseOrBidir(RIGHT);
-     } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorReverseTime)){
+     } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
        motorRightSenseCounter++;
        setMotorSpeed( 0, 0, false );  
        setNextState(STATE_ROLL,LEFT);				          
-     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorReverseTime)){
+     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorPowerIgnoreTime)){
        motorRightSenseCounter++;
        setMotorSpeed( 0, 0, false );  
        setNextState(STATE_FORWARD, 0);

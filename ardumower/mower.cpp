@@ -132,6 +132,7 @@ Mower::Mower(){
   motorPowerMax     = 50;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
+  motorPowerIgnoreTime = 2000; // time to ignore motor power (ms)
   motorRollTimeMax    = 3000;  // max. roll time (ms)
   motorReverseTime    = 3500;  // max. reverse time (ms)
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout

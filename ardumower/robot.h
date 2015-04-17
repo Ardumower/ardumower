@@ -247,6 +247,7 @@ class Robot
     float motorRightSenseCurrent ;
     float motorLeftSense ;      // motor power (range 0..MAX_MOTOR_POWER)
     float motorRightSense ;
+    int motorPowerIgnoreTime; 
     int motorLeftSenseCounter ;  // motor current counter
     int motorRightSenseCounter ;
     unsigned long nextTimeMotorSense ;
