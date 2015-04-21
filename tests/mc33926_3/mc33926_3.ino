@@ -1,9 +1,13 @@
 
-int speed = 255;
+int speed = 0;
+
+#define MAX_SPEED 127
 
 #define pinMotorEnable  37         // EN motors enable
-#define pinMotorLeftPWM 3           // M1_IN1 left motor PWM pin
-#define pinMotorLeftDir 33          // M1_IN2 left motor Dir pin
+#define pinMotorLeftPWM 5           // M1_IN1 left motor PWM pin
+#define pinMotorLeftDir 6          // M1_IN2 left motor Dir pin
+//#define pinMotorLeftPWM 3           // M1_IN1 left motor PWM pin
+//#define pinMotorLeftDir 33          // M1_IN2 left motor Dir pin
 #define pinMotorLeftSense A1       // M1_FB  left motor current sense
 #define pinMotorLeftFault 25       // M1_SF  left motor fault
 
@@ -40,7 +44,7 @@ void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
   if ( ((pwmLeft < 0) && (motorLeftPWM >= 0)) ||
        ((pwmLeft > 0) && (motorLeftPWM <= 0)) ) {
     // changing direction should take place          
-    if (( motorLeftEMF > 0.5) || (motorLeftEMF < -0.5)) {
+    if ( motorLeftEMF > 0.1) {
       // reduce motor rotation (will reduce EMF)       
       pwmLeft = motorLeftPWM - (motorLeftPWM * 2.0 * TaC); // reduce by 200% in one second
     } 
@@ -80,10 +84,11 @@ void loop()
   if (state == 0){
     //Serial.println("FORW");               
     setMotorSpeed(speed, speed, false);
-    if (millis() > startTime + 2000) {
+    //if (millis() > startTime + 2000) {    
+    if (random(0,255) == 0){
       startTime = millis();
-      speed = random(0,255);
-      state = 1;    
+      speed = random(0,MAX_SPEED);
+      state = random(0,2);
     }
   }  
     
@@ -91,10 +96,11 @@ void loop()
     //Serial.println("REV");            
     //setMotorSpeed(0, 0, false);
     setMotorSpeed(-speed, -speed, false); 
-    if (millis() > startTime + 2000) {
+    //    if (millis() > startTime + 2000) {
+    if (random(0,255) == 0){      
       startTime = millis();
-      speed = random(0,255);
-      state = 0;    
+      speed = random(0,MAX_SPEED);
+      state = random(0,2);
     }
   } 
 }
