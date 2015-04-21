@@ -1,7 +1,15 @@
 
-int speed = 0;
+// MC33926 stress-test
+// 
+// WARNING: FOR DEVELOPERS ONLY!!
+// THIS TEST WILL DAMAGE YOUR MOTOR DRIVER IF NOT USED CORRECTLY - USE CAREFULLY! YOU HAVE BEEN WARNED!
 
-#define MAX_SPEED 127
+
+#define MAX_SPEED 255
+
+int test = 1;
+
+int speed = MAX_SPEED;
 
 #define pinMotorEnable  37         // EN motors enable
 #define pinMotorLeftPWM 5           // M1_IN1 left motor PWM pin
@@ -16,6 +24,7 @@ float motorLeftEMF = 0;
 float motorRightPWM = 0;
 
 unsigned long startTime;
+unsigned long nextMotorInfoTime = 0;
 unsigned long lastSetMotorSpeedControlTime = 0;
 int state = 0;
 
@@ -26,10 +35,10 @@ int state = 0;
 // IN1 PinPWM         IN2 PinDir
 // PWM                L     Forward
 // nPWM               H     Reverse
-void setMC33926(int pinDir, int pinPWM, int speed){
-  if (speed < 0){
+void setMC33926(int pinDir, int pinPWM, int speed) {
+  if (speed < 0) {
     digitalWrite(pinDir, HIGH) ;
-    analogWrite(pinPWM, 255-((byte)abs(speed)));
+    analogWrite(pinPWM, 255 - ((byte)abs(speed)));
   } else {
     digitalWrite(pinDir, LOW) ;
     analogWrite(pinPWM, ((byte)speed));
@@ -37,72 +46,84 @@ void setMC33926(int pinDir, int pinPWM, int speed){
 }
 
 // sets wheel motor actuators
-void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
+void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel) {
   float TaC = ((float) (millis() - lastSetMotorSpeedControlTime)) / 1000.0;    // sampling time in seconds
-  if (TaC > 1.0) TaC = 0;    
-  lastSetMotorSpeedControlTime = millis();  
+  if (TaC > 1.0) TaC = 0;
+  lastSetMotorSpeedControlTime = millis();
   if ( ((pwmLeft < 0) && (motorLeftPWM >= 0)) ||
        ((pwmLeft > 0) && (motorLeftPWM <= 0)) ) {
-    // changing direction should take place          
+    // changing direction should take place
     if ( motorLeftEMF > 0.1) {
-      // reduce motor rotation (will reduce EMF)       
+      // reduce motor rotation (will reduce EMF)
       pwmLeft = motorLeftPWM - (motorLeftPWM * 2.0 * TaC); // reduce by 200% in one second
-    } 
+    }
   }
   motorLeftPWM = pwmLeft;
-  motorRightPWM = pwmRight;  
+  motorRightPWM = pwmRight;
   // compute electromotive force (sort of PWM low pass filter)
   // added force:        pwm * sampling time
   // force reduced by:   fraction * sampling time
   float fraction = 5.0;
-  motorLeftEMF = max(0, motorLeftEMF -    motorLeftEMF*fraction* TaC    +    abs(motorLeftPWM)*TaC );   
-  Serial.println(motorLeftEMF);
-  setMC33926(pinMotorLeftDir, pinMotorLeftPWM, motorLeftPWM);    
+  motorLeftEMF = max(0, motorLeftEMF -    motorLeftEMF * fraction * TaC    +    abs(motorLeftPWM) * TaC );
+  setMC33926(pinMotorLeftDir, pinMotorLeftPWM, motorLeftPWM);
 }
 
 
 void setup()
 {
-  Serial.begin(19200);  
+  Serial.begin(115200);
 
   // left wheel motor
-  pinMode(pinMotorEnable, OUTPUT);  
+  pinMode(pinMotorEnable, OUTPUT);
   digitalWrite(pinMotorEnable, HIGH);
   pinMode(pinMotorLeftPWM, OUTPUT);
-  pinMode(pinMotorLeftDir, OUTPUT);   
-  pinMode(pinMotorLeftSense, INPUT);     
-  pinMode(pinMotorLeftFault, INPUT);    
-  
-  Serial.println("SETUP");  
+  pinMode(pinMotorLeftDir, OUTPUT);
+  pinMode(pinMotorLeftSense, INPUT);
+  pinMode(pinMotorLeftFault, INPUT);
+
+  //  Serial.println("SETUP");
   startTime = 0;
-  randomSeed(analogRead(A7)+analogRead(A0)+analogRead(A1));
+  randomSeed(analogRead(A7) + analogRead(A0) + analogRead(A1));
 }
 
 
 void loop()
-{  
-  if (state == 0){
-    //Serial.println("FORW");               
+{
+  if (test == 0) {
+    setMotorSpeed(MAX_SPEED, MAX_SPEED, false);
+    delay(5000);
+    setMotorSpeed(0, 0, false);
+    delay(10000);
+  }
+
+  else if (test == 1){
     setMotorSpeed(speed, speed, false);
-    //if (millis() > startTime + 2000) {    
-    if (random(0,255) == 0){
-      startTime = millis();
-      speed = random(0,MAX_SPEED);
-      state = random(0,2);
-    }
-  }  
-    
-  if (state == 1){
-    //Serial.println("REV");            
-    //setMotorSpeed(0, 0, false);
-    setMotorSpeed(-speed, -speed, false); 
-    //    if (millis() > startTime + 2000) {
-    if (random(0,255) == 0){      
-      startTime = millis();
-      speed = random(0,MAX_SPEED);
-      state = random(0,2);
+    if (millis() > startTime + 2000) {
+      startTime = millis();      
+      speed *= -1;
+      state = random(0, 2);
     }
   } 
+
+  else if (test == 2){
+    setMotorSpeed(speed, speed, false);
+    if (random(0,4000) == 0){
+      startTime = millis();
+      speed = random(-MAX_SPEED,MAX_SPEED);
+      state = random(0, 2);
+    }    
+  }    
+    
+  if (millis() >= nextMotorInfoTime) {
+     nextMotorInfoTime = millis() + 40;
+      Serial.print(motorLeftEMF);
+      Serial.print(",");
+      Serial.print(speed);
+      Serial.print(",");
+      Serial.print(motorLeftPWM);
+      Serial.println();  
+  }
+
 }
 
 
