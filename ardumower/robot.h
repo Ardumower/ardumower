@@ -189,7 +189,6 @@ class Robot
     bool odometryLeftSwapDir;       // inverse left encoder direction?        
     int odometryLeft ;   // left wheel counter
     int odometryRight ;  // right wheel counter
-      int calcOdometryIsCalled ; //only for temp debugging purposes
     boolean odometryLeftLastState;
     boolean odometryLeftLastState2;
     boolean odometryRightLastState;
