@@ -7,7 +7,8 @@
 
 #define MAX_SPEED 255
 
-int test = 1;
+// ALWAYS check below that you are using the right test!
+int test = 2;
 
 int speed = MAX_SPEED;
 
@@ -25,7 +26,7 @@ float motorRightPWM = 0;
 
 unsigned long startTime;
 unsigned long nextMotorInfoTime = 0;
-unsigned long lastSetMotorSpeedControlTime = 0;
+unsigned long lastSetMotorSpeedTime = 0;
 int state = 0;
 
 
@@ -47,9 +48,9 @@ void setMC33926(int pinDir, int pinPWM, int speed) {
 
 // sets wheel motor actuators
 void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel) {
-  float TaC = ((float) (millis() - lastSetMotorSpeedControlTime)) / 1000.0;    // sampling time in seconds
+  float TaC = ((float) (millis() - lastSetMotorSpeedTime)) / 1000.0;    // sampling time in seconds
   if (TaC > 1.0) TaC = 0;
-  lastSetMotorSpeedControlTime = millis();
+  lastSetMotorSpeedTime = millis();
   if ( ((pwmLeft < 0) && (motorLeftPWM >= 0)) ||
        ((pwmLeft > 0) && (motorLeftPWM <= 0)) ) {
     // changing direction should take place
@@ -90,6 +91,7 @@ void setup()
 void loop()
 {
   if (test == 0) {
+    // 5 sec FORWARD, 10 sec STOP
     setMotorSpeed(MAX_SPEED, MAX_SPEED, false);
     delay(5000);
     setMotorSpeed(0, 0, false);
@@ -97,6 +99,7 @@ void loop()
   }
 
   else if (test == 1){
+    // 2 sec FORWARD, 2 sec REVERSE
     setMotorSpeed(speed, speed, false);
     if (millis() > startTime + 2000) {
       startTime = millis();      
@@ -106,6 +109,7 @@ void loop()
   } 
 
   else if (test == 2){
+    // random FORWARD/REVERSE at random SPEED for random TIME
     setMotorSpeed(speed, speed, false);
     if (random(0,4000) == 0){
       startTime = millis();
@@ -113,6 +117,17 @@ void loop()
       state = random(0, 2);
     }    
   }    
+  
+  else if (test == 3){
+    // 5 sec FORWARD, 5 sec REVERSE, 10 sec STOP - 
+    // WARNING: WITHOUT PROTECTION !! THIS MAY KILL YOUR MOTOR DRIVER!
+    setMC33926(pinMotorLeftDir, pinMotorLeftPWM, MAX_SPEED);    
+    delay(5000);
+    setMC33926(pinMotorLeftDir, pinMotorLeftPWM, -MAX_SPEED);    
+    delay(5000);
+    setMC33926(pinMotorLeftDir, pinMotorLeftPWM, 0);    
+    delay(10000);
+  }
     
   if (millis() >= nextMotorInfoTime) {
      nextMotorInfoTime = millis() + 40;
