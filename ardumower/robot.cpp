@@ -182,6 +182,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorMowPID.Kd);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio1);
   eereadwrite(readflag, addr, motorBiDirSpeedRatio2);  
+  eereadwrite(readflag, addr, motorLeftSwapDir);
+  eereadwrite(readflag, addr, motorRightSwapDir);  
   eereadwrite(readflag, addr, bumperUse);
   eereadwrite(readflag, addr, sonarUse);
   eereadwrite(readflag, addr, sonarTriggerBelow);
@@ -192,7 +194,10 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, perimeterTrackRevTime);
   eereadwrite(readflag, addr, perimeterPID.Kp);
   eereadwrite(readflag, addr, perimeterPID.Ki);
-  eereadwrite(readflag, addr, perimeterPID.Kd);    
+  eereadwrite(readflag, addr, perimeterPID.Kd);
+  eereadwrite(readflag, addr, perimeter.useDifferentialPerimeterSignal);        
+  eereadwrite(readflag, addr, perimeter.swapCoilPolarity);  
+  eereadwrite(readflag, addr, trackingBlockInnerWheelWhilePerimeterStruggling);  
   eereadwrite(readflag, addr, lawnSensorUse);
   eereadwrite(readflag, addr, imuUse);
   eereadwrite(readflag, addr, imuCorrectDir);
@@ -220,6 +225,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, odometryTicksPerRevolution);
   eereadwrite(readflag, addr, odometryTicksPerCm);
   eereadwrite(readflag, addr, odometryWheelBaseCm);
+  eereadwrite(readflag, addr, odometryLeftSwapDir);
+  eereadwrite(readflag, addr, odometryRightSwapDir);
+  eereadwrite(readflag, addr, twoWayOdometrySensorUse);
   eereadwrite(readflag, addr, buttonUse);
   eereadwrite(readflag, addr, userSwitch1);
   eereadwrite(readflag, addr, userSwitch2);
@@ -228,14 +236,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
-  eereadwrite(readflag, addr, dropUse);
-  eereadwrite(readflag, addr, motorLeftSwapDir);
-  eereadwrite(readflag, addr, motorRightSwapDir);
-  eereadwrite(readflag, addr, odometryLeftSwapDir);
-  eereadwrite(readflag, addr, odometryRightSwapDir);
-  eereadwrite(readflag, addr, twoWayOdometrySensorUse);      
-  eereadwrite(readflag, addr, perimeter.useDifferentialPerimeterSignal);        
-  eereadwrite(readflag, addr, perimeter.swapCoilPolarity);  
+  eereadwrite(readflag, addr, dropUse);      
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }
