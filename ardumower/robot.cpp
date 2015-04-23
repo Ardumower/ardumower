@@ -47,6 +47,8 @@ Robot::Robot(){
   odometryLeft = odometryRight = 0;
   odometryLeftLastState = odometryLeftLastState2 = odometryRightLastState = odometryRightLastState2 = LOW;
   odometryTheta = odometryX = odometryY = 0;
+  calcOdometryIsCalled = 0;
+
     
   motorRightRpm = motorLeftRpm = 0;
   lastMotorRpmTime = 0;
@@ -1844,7 +1846,7 @@ void Robot::calcOdometry(){
   int odoRight = odometryRight;
   int ticksLeft = odoLeft - lastOdoLeft;
   int ticksRight = odoRight - lastOdoRight;
-  if ((ticksLeft == 0) || (ticksRight == 0)) return; // nothing to compute yet
+  //if ((ticksLeft == 0) || (ticksRight == 0)) return; // nothing to compute yet
   lastOdoLeft = odoLeft;
   lastOdoRight = odoRight;    
   double left_cm = ((double)ticksLeft) / ((double)odometryTicksPerCm);
@@ -1856,6 +1858,19 @@ void Robot::calcOdometry(){
   motorLeftRpm  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
   motorRightRpm = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
   lastMotorRpmTime = millis();
+            
+  calcOdometryIsCalled ++;
+  Console.print("motorLeftRpm = ");
+  Console.println(motorLeftRpm);
+  Console.print("motorRightRpm = ");
+  Console.println(motorRightRpm);
+  Console.print("calcOdometry is called = ");
+  Console.println(calcOdometryIsCalled);
+  
+
+
+
+
   
   //odometryTheta -= (double)((int)(odometryTheta/(2*PI)))*2*PI;
   //if (odometryTheta < -PI) odometryTheta += 2*PI; 
