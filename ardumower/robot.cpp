@@ -26,7 +26,7 @@
 
 #include "robot.h"
 
-#define MAGIC 37
+#define MAGIC 38
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
