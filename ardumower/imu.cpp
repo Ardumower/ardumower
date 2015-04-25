@@ -33,7 +33,7 @@
 
 #define pinLED 13
 
-#define ADDR 256
+#define ADDR 600
 #define MAGIC 6
 
 

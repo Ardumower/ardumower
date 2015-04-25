@@ -30,7 +30,7 @@
 #include "adcman.h"
 #include "drivers.h"
 
-#define ADDR 224
+#define ADDR 500
 #define MAGIC 1
 
 #ifdef __AVR__
