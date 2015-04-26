@@ -1,0 +1,312 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:Bluetooth_ZS_HC_05
+LIBS:Bluetooth_CZ_HC_05
+LIBS:ds1307
+LIBS:Wlan_ESP8266
+LIBS:transistor-fet
+LIBS:transistor-fet+irf7201
+LIBS:transistors
+LIBS:w_transistor
+LIBS:diode
+LIBS:diode-1
+LIBS:led
+LIBS:ardumower mega shield svn-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 16
+Title "Ardumower shield SVN Version 1.3"
+Date "Sonntag, 26. April 2015"
+Rev "1.3"
+Comp " by UweZ"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MOS_P Q3
+U 1 1 553A6942
+P 4270 3220
+F 0 "Q3" H 4173 3470 70  0000 C CNN
+F 1 "IRF9540N" H 4123 2973 60  0000 C CNN
+F 2 "" H 4270 3220 60  0000 C CNN
+F 3 "" H 4270 3220 60  0000 C CNN
+	1    4270 3220
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R28
+U 1 1 553A69D5
+P 4670 2390
+F 0 "R28" V 4750 2390 40  0000 C CNN
+F 1 "100K" V 4677 2391 40  0000 C CNN
+F 2 "" V 4600 2390 30  0000 C CNN
+F 3 "" H 4670 2390 30  0000 C CNN
+F 4 "Value" H 4670 2390 60  0001 C CNN "Bestellnummer"
+	1    4670 2390
+	1    0    0    -1  
+$EndComp
+$Comp
+L Z-DIODE D12
+U 1 1 553A6A52
+P 5045 2440
+F 0 "D12" H 5045 2540 40  0000 C CNN
+F 1 "ZPD15" H 5045 2340 40  0000 C CNN
+F 2 "" H 5045 2440 60  0000 C CNN
+F 3 "" H 5045 2440 60  0000 C CNN
+	1    5045 2440
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R29
+U 1 1 553A6BF0
+P 6240 3220
+F 0 "R29" V 6320 3220 40  0000 C CNN
+F 1 "1K" V 6247 3221 40  0000 C CNN
+F 2 "" V 6170 3220 30  0000 C CNN
+F 3 "" H 6240 3220 30  0000 C CNN
+F 4 "Value" H 6240 3220 60  0001 C CNN "Bestellnummer"
+	1    6240 3220
+	0    1    1    0   
+$EndComp
+$Comp
+L DIODE D14
+U 1 1 553A6C81
+P 6745 2780
+F 0 "D14" H 6745 2880 40  0000 C CNN
+F 1 "DIODE" H 6745 2680 40  0000 C CNN
+F 2 "" H 6745 2780 60  0000 C CNN
+F 3 "" H 6745 2780 60  0000 C CNN
+	1    6745 2780
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DIODE D16
+U 1 1 553A6D45
+P 7135 3220
+F 0 "D16" H 7135 3320 40  0000 C CNN
+F 1 "DIODE" H 7135 3120 40  0000 C CNN
+F 2 "" H 7135 3220 60  0000 C CNN
+F 3 "" H 7135 3220 60  0000 C CNN
+	1    7135 3220
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D15
+U 1 1 553A6F4A
+P 7120 2040
+F 0 "D15" H 7120 2140 40  0000 C CNN
+F 1 "DIODE" H 7120 1940 40  0000 C CNN
+F 2 "" H 7120 2040 60  0000 C CNN
+F 3 "" H 7120 2040 60  0000 C CNN
+	1    7120 2040
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R30
+U 1 1 553A7069
+P 6745 3725
+F 0 "R30" V 6825 3725 40  0000 C CNN
+F 1 "100" V 6752 3726 40  0000 C CNN
+F 2 "" V 6675 3725 30  0000 C CNN
+F 3 "" H 6745 3725 30  0000 C CNN
+	1    6745 3725
+	-1   0    0    1   
+$EndComp
+$Comp
+L BC237 Q4
+U 1 1 553A747E
+P 7620 3765
+F 0 "Q4" H 7820 3840 50  0000 L CNN
+F 1 "BC337" H 7820 3765 50  0000 L CNN
+F 2 "TO-92" H 7820 3690 50  0001 L CIN
+F 3 "" H 7620 3765 50  0000 L CNN
+	1    7620 3765
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R33
+U 1 1 553A7597
+P 8375 3765
+F 0 "R33" V 8455 3765 40  0000 C CNN
+F 1 "30K" V 8382 3766 40  0000 C CNN
+F 2 "" V 8305 3765 30  0000 C CNN
+F 3 "" H 8375 3765 30  0000 C CNN
+	1    8375 3765
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R32
+U 1 1 553A76F3
+P 7975 4550
+F 0 "R32" V 8055 4550 40  0000 C CNN
+F 1 "10K" V 7982 4551 40  0000 C CNN
+F 2 "" V 7905 4550 30  0000 C CNN
+F 3 "" H 7975 4550 30  0000 C CNN
+	1    7975 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R31
+U 1 1 553A79BF
+P 6745 4365
+F 0 "R31" V 6825 4365 40  0000 C CNN
+F 1 "10K" V 6752 4366 40  0000 C CNN
+F 2 "" V 6675 4365 30  0000 C CNN
+F 3 "" H 6745 4365 30  0000 C CNN
+F 4 "Value" H 6745 4365 60  0001 C CNN "Bestellnummer"
+	1    6745 4365
+	-1   0    0    1   
+$EndComp
+$Comp
+L DIODE D13
+U 1 1 553A7BF7
+P 6395 4355
+F 0 "D13" H 6395 4455 40  0000 C CNN
+F 1 "DIODE" H 6395 4255 40  0000 C CNN
+F 2 "" H 6395 4355 60  0000 C CNN
+F 3 "" H 6395 4355 60  0000 C CNN
+	1    6395 4355
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CP1 C9
+U 1 1 553A7C73
+P 6745 5010
+F 0 "C9" H 6795 5110 50  0000 L CNN
+F 1 "22uF" H 6795 4910 50  0000 L CNN
+F 2 "" H 6745 5010 60  0000 C CNN
+F 3 "" H 6745 5010 60  0000 C CNN
+F 4 "Value" H 6745 5010 60  0001 C CNN "Bestellnummer"
+	1    6745 5010
+	1    0    0    1   
+$EndComp
+$Comp
+L GND #PWR037
+U 1 1 553A83F5
+P 7520 5580
+F 0 "#PWR037" H 7520 5330 60  0001 C CNN
+F 1 "GND" H 7520 5430 60  0000 C CNN
+F 2 "" H 7520 5580 60  0000 C CNN
+F 3 "" H 7520 5580 60  0000 C CNN
+	1    7520 5580
+	1    0    0    -1  
+$EndComp
+Text Notes 4490 4650 0    60   ~ 0
+Batterie Ausgang 24V
+Text Notes 2585 2090 0    60   ~ 0
+Batterieeingang 24V
+Text Notes 7580 2395 0    60   ~ 0
+Taster Eingang gegen GND geschaltet
+Text Notes 7605 2080 0    60   ~ 0
+Arduino Mega auf Pin 51 ????
+Text Notes 8270 3635 0    60   ~ 0
+??2
+Text Notes 8775 3800 0    60   ~ 0
+Arduino Mega B auf Pin ??
+Wire Wire Line
+	5045 3220 5045 2640
+Wire Wire Line
+	4670 2640 4670 3220
+Wire Wire Line
+	4670 2040 4670 2140
+Wire Wire Line
+	3555 2040 5045 2040
+Wire Wire Line
+	5045 2040 5045 2240
+Wire Wire Line
+	4170 3070 4170 2040
+Connection ~ 4670 2040
+Wire Wire Line
+	6745 2980 6745 3475
+Wire Wire Line
+	6490 3220 6935 3220
+Connection ~ 6745 3220
+Wire Wire Line
+	7335 3220 7520 3220
+Wire Wire Line
+	7520 3220 7520 3565
+Wire Wire Line
+	7820 3765 8125 3765
+Wire Wire Line
+	7975 4300 7975 3765
+Connection ~ 7975 3765
+Wire Wire Line
+	7975 4800 7975 5375
+Wire Wire Line
+	6745 4615 6745 4810
+Wire Wire Line
+	6745 3975 6745 4115
+Wire Wire Line
+	6395 4155 6395 4050
+Wire Wire Line
+	6395 4050 6745 4050
+Connection ~ 6745 4050
+Wire Wire Line
+	6395 4555 6395 4720
+Wire Wire Line
+	6395 4720 6745 4720
+Connection ~ 6745 4720
+Wire Wire Line
+	7975 5375 7520 5375
+Wire Wire Line
+	7520 3965 7520 5580
+Connection ~ 7520 5375
+Wire Wire Line
+	4370 3220 5990 3220
+Wire Wire Line
+	3875 2040 3875 5360
+Wire Wire Line
+	3875 5360 6745 5360
+Wire Wire Line
+	6745 5360 6745 5210
+Connection ~ 4170 2040
+Wire Wire Line
+	4170 3370 4170 4720
+Wire Wire Line
+	4170 4720 4455 4720
+Connection ~ 3875 2040
+Wire Wire Line
+	6745 2040 6745 2580
+Wire Wire Line
+	7530 2350 6745 2350
+Connection ~ 6745 2350
+Connection ~ 5045 3220
+Connection ~ 4670 3220
+Wire Wire Line
+	6920 2040 6745 2040
+Wire Wire Line
+	7320 2040 7530 2040
+$Comp
+L CONN_2 P20
+U 1 1 553E561A
+P 8570 1075
+F 0 "P20" V 8520 1075 40  0000 C CNN
+F 1 "Button" V 8620 1075 40  0000 C CNN
+F 2 "" H 8570 1075 60  0000 C CNN
+F 3 "" H 8570 1075 60  0000 C CNN
+F 4 "Value" H 8570 1075 60  0001 C CNN "Bestellnummer"
+	1    8570 1075
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR038
+U 1 1 553E5900
+P 9165 975
+F 0 "#PWR038" H 9165 725 60  0001 C CNN
+F 1 "GND" V 9165 760 60  0000 C CNN
+F 2 "" H 9165 975 60  0000 C CNN
+F 3 "" H 9165 975 60  0000 C CNN
+	1    9165 975 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8920 975  9165 975 
+Text GLabel 9165 1175 2    39   Output ~ 0
+pinButton
+Wire Wire Line
+	8920 1175 9165 1175
+$EndSCHEMATC

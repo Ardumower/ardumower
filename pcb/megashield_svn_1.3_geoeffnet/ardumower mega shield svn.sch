@@ -1,0 +1,2453 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:Bluetooth_ZS_HC_05
+LIBS:Bluetooth_CZ_HC_05
+LIBS:ds1307
+LIBS:Wlan_ESP8266
+LIBS:transistor-fet
+LIBS:transistor-fet+irf7201
+LIBS:transistors
+LIBS:w_transistor
+LIBS:diode
+LIBS:diode-1
+LIBS:led
+LIBS:ardumower mega shield svn-cache
+EELAYER 25 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 16
+Title "Ardumower shield SVN Version 1.3"
+Date "Sonntag, 26. April 2015"
+Rev "1.3"
+Comp " by UweZ"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ARDUINO_MEGA_SHIELD SHIELD1
+U 1 1 5375252C
+P 4670 8330
+F 0 "SHIELD1" H 4720 8380 60  0001 C CNN
+F 1 "ARDUINO_MEGA_SHIELD" H 4670 8330 60  0001 C CNN
+F 2 "ACS712:ARDUINO_MEGA_SHIELD_DUO_3D" H 4670 8330 60  0001 C CNN
+F 3 "" H 4670 8330 60  0001 C CNN
+F 4 "SHIELD" H 4270 10830 60  0000 C CNN "Reference"
+F 5 "ARDUINO_MEGA_SHIELD" H 4570 5630 60  0000 C CNN "Value"
+F 6 "" H 4670 8330 60  0000 C CNN "Datasheet"
+	1    4670 8330
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR01
+U 1 1 537FB5E8
+P 3490 6680
+F 0 "#PWR01" H 3490 6680 30  0001 C CNN
+F 1 "GND" H 3490 6610 30  0001 C CNN
+F 2 "" H 3490 6680 60  0000 C CNN
+F 3 "" H 3490 6680 60  0000 C CNN
+	1    3490 6680
+	0    1    1    0   
+$EndComp
+Text GLabel 5725 8480 2    39   Output ~ 0
+SCL2
+Text GLabel 5720 8380 2    39   BiDi ~ 0
+SDA2
+$Comp
+L R R5
+U 1 1 5384EC7E
+P 5880 6180
+F 0 "R5" V 5960 6180 40  0000 C CNN
+F 1 "220R" V 5887 6181 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 5810 6180 30  0001 C CNN
+F 3 "~" H 5880 6180 30  0000 C CNN
+	1    5880 6180
+	0    -1   -1   0   
+$EndComp
+Text GLabel 1545 7580 0    39   Input ~ 0
+pinPerimeterLeft
+$Comp
+L GND #PWR02
+U 1 1 5384F323
+P 3620 9030
+F 0 "#PWR02" H 3620 9030 30  0001 C CNN
+F 1 "GND" H 3620 8960 30  0001 C CNN
+F 2 "" H 3620 9030 60  0000 C CNN
+F 3 "" H 3620 9030 60  0000 C CNN
+	1    3620 9030
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR03
+U 1 1 5384F385
+P 6170 6080
+F 0 "#PWR03" H 6170 6080 30  0001 C CNN
+F 1 "GND" H 6170 6010 30  0001 C CNN
+F 2 "" H 6170 6080 60  0000 C CNN
+F 3 "" H 6170 6080 60  0000 C CNN
+	1    6170 6080
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6180 7280 2    39   Output ~ 0
+pinMotorRightPWM
+Text GLabel 6180 7080 2    39   Output ~ 0
+pinMotorLeftPWM
+Text GLabel 6175 9280 2    39   Input ~ 0
+pinMotorLeftFault
+Text GLabel 6195 10330 2    39   Input ~ 0
+pinTilt
+Text GLabel 3410 9330 0    39   Output ~ 0
+pinBuzzer
+Text GLabel 3420 10680 0    39   Input ~ 0
+pinBumperLeft
+Text GLabel 6195 10530 2    39   Output ~ 0
+pinMotorEnable
+Text GLabel 1545 7280 0    39   Input ~ 0
+pinBatteryVoltage
+Text GLabel 1545 7980 0    39   Input ~ 0
+pinChargeCurrent
+Text GLabel 1545 8080 0    39   Input ~ 0
+pinChargeVoltage
+Text GLabel 6190 9930 2    39   Output ~ 0
+pinMotorLeftDir
+Text GLabel 6190 10130 2    39   Output ~ 0
+pinMotorRightDir
+Text GLabel 6190 9680 2    39   Output ~ 0
+pinMotorMowDir
+Text GLabel 6175 9480 2    39   Input ~ 0
+pinMotorRightFault
+Text GLabel 3005 2455 3    60   Output ~ 0
+pinChargeVoltage
+$Comp
+L R R9
+U 1 1 5384FFAC
+P 2830 2030
+F 0 "R9" V 2910 2030 40  0000 C CNN
+F 1 "47K 0,1%" V 2837 2031 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 2760 2030 30  0001 C CNN
+F 3 "~" H 2830 2030 30  0000 C CNN
+F 4 "R: MPR 47,0K" H 2830 2030 60  0001 C CNN "Bestellnummer"
+	1    2830 2030
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R10
+U 1 1 5384FFC0
+P 2830 2630
+F 0 "R10" V 2910 2630 40  0000 C CNN
+F 1 "5,10K 0,1%" V 2837 2631 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 2760 2630 30  0001 C CNN
+F 3 "~" H 2830 2630 30  0000 C CNN
+F 4 "R: MPR 5,10K" H 2830 2630 60  0001 C CNN "Bestellnummer"
+	1    2830 2630
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR04
+U 1 1 53850044
+P 2830 2930
+F 0 "#PWR04" H 2830 2930 30  0001 C CNN
+F 1 "GND" H 2830 2860 30  0001 C CNN
+F 2 "" H 2830 2930 60  0000 C CNN
+F 3 "" H 2830 2930 60  0000 C CNN
+	1    2830 2930
+	1    0    0    -1  
+$EndComp
+Text GLabel 10895 925  2    47   Output ~ 0
+pinBatteryVoltage
+$Comp
+L R R12
+U 1 1 5385024E
+P 10445 925
+F 0 "R12" V 10525 925 40  0000 C CNN
+F 1 "47K 0,1%" V 10452 926 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 10375 925 30  0001 C CNN
+F 3 "~" H 10445 925 30  0000 C CNN
+F 4 "R: MPR 47,0K" H 10445 925 60  0001 C CNN "Bestellnummer"
+	1    10445 925 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R13
+U 1 1 53850254
+P 10745 1275
+F 0 "R13" V 10825 1275 40  0000 C CNN
+F 1 "5,10K 0,1%" V 10752 1276 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 10675 1275 30  0001 C CNN
+F 3 "~" H 10745 1275 30  0000 C CNN
+F 4 "MPR 5,10K" H 10745 1275 60  0001 C CNN "Bestellnummer"
+	1    10745 1275
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR05
+U 1 1 5385025A
+P 10745 1575
+F 0 "#PWR05" H 10745 1575 30  0001 C CNN
+F 1 "GND" H 10745 1505 30  0001 C CNN
+F 2 "" H 10745 1575 60  0000 C CNN
+F 3 "" H 10745 1575 60  0000 C CNN
+	1    10745 1575
+	1    0    0    -1  
+$EndComp
+Text GLabel 3920 3195 2    47   Output ~ 0
+pinChargeCurrent
+Text GLabel 6180 7380 2    39   Output ~ 0
+pinMotorMowPWM
+Text GLabel 1545 7380 0    39   Input ~ 0
+pinMotorMowSense
+Text GLabel 1545 7180 0    39   Input ~ 0
+pinMotorLeftSense
+Text GLabel 1545 7080 0    39   Input ~ 0
+pinMotorRightSense
+NoConn ~ 5570 8730
+NoConn ~ 5570 8830
+Text GLabel 3420 10780 0    39   Input ~ 0
+pinBumperRight
+Text GLabel 3420 10580 0    39   Input ~ 0
+pinLawnFrontRecv
+Text GLabel 3420 10330 0    39   Input ~ 0
+pinLawnBackRecv
+Text GLabel 3420 10130 0    39   Input ~ 0
+pinRain
+Text GLabel 6195 10230 2    39   Output ~ 0
+pinSonarLeftTrigger
+Text GLabel 6195 10430 2    39   Input ~ 0
+pinSonarLeftEcho
+Text GLabel 3420 10480 0    39   Output ~ 0
+pinLawnFrontSend
+Text GLabel 3415 10230 0    39   Output ~ 0
+pinLawnBackSend
+Text GLabel 1545 8380 0    39   Input ~ 0
+pinOdometryLeft
+Text GLabel 6180 7780 2    39   Input ~ 0
+GPS_RX
+Text GLabel 6180 7880 2    39   Output ~ 0
+GPS_TX
+Text GLabel 6180 7980 2    39   Output ~ 0
+TX2
+Text GLabel 6180 8080 2    39   Input ~ 0
+RX2
+$Comp
+L CONN_2 P43
+U 1 1 53866CB8
+P 8975 1105
+F 0 "P43" V 8925 1105 40  0000 C CNN
+F 1 "Battery" V 9025 1105 40  0000 C CNN
+F 2 "ACS712:Anschlussklemme_RM5,08-RM7,62" H 8975 1105 98  0001 C CNN
+F 3 "" H 8975 1105 60  0000 C CNN
+	1    8975 1105
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 53866CD6
+P 9325 1255
+F 0 "#PWR06" H 9325 1255 30  0001 C CNN
+F 1 "GND" H 9325 1185 30  0001 C CNN
+F 2 "" H 9325 1255 60  0000 C CNN
+F 3 "" H 9325 1255 60  0000 C CNN
+	1    9325 1255
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR07
+U 1 1 53866E0D
+P 12325 2655
+F 0 "#PWR07" H 12325 2655 30  0001 C CNN
+F 1 "GND" H 12325 2585 30  0001 C CNN
+F 2 "" H 12325 2655 60  0000 C CNN
+F 3 "" H 12325 2655 60  0000 C CNN
+	1    12325 2655
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR08
+U 1 1 53866E1C
+P 2270 6580
+F 0 "#PWR08" H 2270 6580 30  0001 C CNN
+F 1 "GND" H 2270 6510 30  0001 C CNN
+F 2 "" H 2270 6580 60  0000 C CNN
+F 3 "" H 2270 6580 60  0000 C CNN
+	1    2270 6580
+	0    1    1    0   
+$EndComp
+$Comp
+L CP1 C2
+U 1 1 53866E3A
+P 12525 3155
+F 0 "C2" H 12575 3255 50  0000 L CNN
+F 1 "100uF" H 12575 3055 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 12525 3155 60  0001 C CNN
+F 3 "~" H 12525 3155 60  0000 C CNN
+F 4 "R: RAD FC 100/50" H 12525 3155 60  0001 C CNN "Bestellnummer"
+	1    12525 3155
+	1    0    0    -1  
+$EndComp
+Text GLabel 3420 9830 0    39   Input ~ 0
+pinUserSwitch2
+Text GLabel 6180 6280 2    39   Input ~ 0
+pinRemoteMow
+Text GLabel 6180 6380 2    39   Input ~ 0
+pinRemoteSteer
+Text GLabel 6180 6480 2    39   Input ~ 0
+pinRemoteSpeed
+Text GLabel 6190 9830 2    39   Output ~ 0
+pinSonarRightTrigger
+Text GLabel 6190 9580 2    39   Output ~ 0
+pinMotorMowEnable
+Text GLabel 6190 10030 2    39   Input ~ 0
+pinSonarRightEcho
+Text GLabel 3415 9630 0    39   Input ~ 0
+ReservePin49
+Text GLabel 3410 9480 0    39   Input ~ 0
+pinButton
+Text GLabel 6175 9380 2    39   Input ~ 0
+pinMotorMowFault
+Text GLabel 6180 9180 2    39   Input ~ 0
+pinSonarCenterTrigger
+Text GLabel 6185 8980 2    39   Input ~ 0
+pinSonarCenterEcho
+Text GLabel 2800 9380 0    39   Input ~ 0
+pinRemoteSwitch
+Text GLabel 3420 9930 0    39   Input ~ 0
+pinUserSwitch1
+Text GLabel 3420 9730 0    39   Input ~ 0
+pinUserSwitch3
+$Comp
+L JUMPER JP1
+U 1 1 5417E831
+P 13275 2905
+F 0 "JP1" H 13275 3055 60  0000 C CNN
+F 1 "pwr 10V" H 13275 2825 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 13275 2905 60  0001 C CNN
+F 3 "" H 13275 2905 60  0000 C CNN
+	1    13275 2905
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR09
+U 1 1 541E6ED6
+P 2170 5680
+F 0 "#PWR09" H 2170 5770 20  0001 C CNN
+F 1 "+5V" V 2170 5845 30  0000 C CNN
+F 2 "" H 2170 5680 60  0000 C CNN
+F 3 "" H 2170 5680 60  0000 C CNN
+	1    2170 5680
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR010
+U 1 1 541E96E8
+P 13875 2005
+F 0 "#PWR010" H 13875 1965 30  0001 C CNN
+F 1 "+3.3V" H 13875 2115 30  0000 C CNN
+F 2 "" H 13875 2005 60  0000 C CNN
+F 3 "" H 13875 2005 60  0000 C CNN
+	1    13875 2005
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR011
+U 1 1 5416EE98
+P 1455 1505
+F 0 "#PWR011" H 1455 1505 30  0001 C CNN
+F 1 "GND" H 1455 1435 30  0001 C CNN
+F 2 "" H 1455 1505 60  0000 C CNN
+F 3 "" H 1455 1505 60  0000 C CNN
+	1    1455 1505
+	1    0    0    -1  
+$EndComp
+$Comp
+L ACS712 U3
+U 1 1 5417150B
+P 3670 2545
+F 0 "U3" H 3670 2795 50  0000 C CNN
+F 1 "INA169" H 3670 2295 50  0000 C CNN
+F 2 "ACS712:INA169" H 3670 2545 60  0001 C CNN
+F 3 "" H 3670 2545 60  0000 C CNN
+F 4 "Value" H 3670 2545 60  0001 C CNN "Bestellnummer"
+	1    3670 2545
+	0    1    1    0   
+$EndComp
+Text Notes 8625 1455 0    99   ~ 0
+Batterie\n
+$Comp
+L +5V #PWR012
+U 1 1 54172399
+P 3770 3045
+F 0 "#PWR012" H 3770 3135 20  0001 C CNN
+F 1 "+5V" H 3770 3170 30  0000 C CNN
+F 2 "" H 3770 3045 60  0000 C CNN
+F 3 "" H 3770 3045 60  0000 C CNN
+	1    3770 3045
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR013
+U 1 1 54172562
+P 3520 3395
+F 0 "#PWR013" H 3520 3395 30  0001 C CNN
+F 1 "GND" H 3520 3325 30  0001 C CNN
+F 2 "" H 3520 3395 60  0000 C CNN
+F 3 "" H 3520 3395 60  0000 C CNN
+	1    3520 3395
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR014
+U 1 1 541751D4
+P 7575 4105
+F 0 "#PWR014" H 7575 4105 30  0001 C CNN
+F 1 "GND" H 7575 4035 30  0001 C CNN
+F 2 "" H 7575 4105 60  0000 C CNN
+F 3 "" H 7575 4105 60  0000 C CNN
+	1    7575 4105
+	1    0    0    -1  
+$EndComp
+Text GLabel 2800 9580 0    39   Output ~ 0
+pinChargingEnable
+$Comp
+L CONN_2 P42
+U 1 1 541A0C85
+P 1555 1005
+F 0 "P42" V 1505 1005 40  0000 C CNN
+F 1 "Charger connector" V 1605 1005 40  0000 C CNN
+F 2 "ACS712:Anschlussklemme_RM5,08-RM7,62" H 1555 1005 98  0001 C CNN
+F 3 "" H 1555 1005 60  0000 C CNN
+	1    1555 1005
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6180 6180 2    39   Output ~ 0
+Led-Status
+$Comp
+L CP1 C3
+U 1 1 541DF105
+P 3720 3345
+F 0 "C3" H 3770 3445 50  0000 L CNN
+F 1 "1,0uF" H 3770 3245 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 3720 3345 60  0001 C CNN
+F 3 "~" H 3720 3345 60  0000 C CNN
+F 4 "R: RAD FC 1,0/50" H 3720 3345 60  0001 C CNN "Bestellnummer"
+	1    3720 3345
+	0    1    1    0   
+$EndComp
+$Comp
+L DC-DC_Stepdown U1
+U 1 1 5459779F
+P 11975 2805
+F 0 "U1" H 11975 2855 60  0000 C CNN
+F 1 "DC 10V" H 11975 2555 60  0000 C CNN
+F 2 "ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe" H 13775 2705 60  0001 C CNN
+F 3 "" H 13775 2705 60  0000 C CNN
+	1    11975 2805
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR015
+U 1 1 54597FC1
+P 11625 2655
+F 0 "#PWR015" H 11625 2655 30  0001 C CNN
+F 1 "GND" H 11625 2585 30  0001 C CNN
+F 2 "" H 11625 2655 60  0000 C CNN
+F 3 "" H 11625 2655 60  0000 C CNN
+	1    11625 2655
+	-1   0    0    1   
+$EndComp
+Text GLabel 6185 8380 2    39   BiDi ~ 0
+SDA1
+Text GLabel 6185 8480 2    39   Output ~ 0
+SCL1
+$Comp
+L RR8 RR1
+U 1 1 54994E69
+P 2920 6180
+F 0 "RR1" H 2970 6730 70  0000 C CNN
+F 1 "C0,1uF" V 2950 6180 70  0000 C CNN
+F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 2920 6180 60  0001 C CNN
+F 3 "" H 2920 6180 60  0000 C CNN
+F 4 "Value" H 2920 6180 60  0000 C CNN "Bestellnummer"
+	1    2920 6180
+	0    -1   -1   0   
+$EndComp
+$Comp
+L RR8 RR2
+U 1 1 5499A2BD
+P 2920 9180
+F 0 "RR2" H 2970 9730 70  0000 C CNN
+F 1 "C0,1uF" V 2950 9180 70  0000 C CNN
+F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 2920 9180 60  0001 C CNN
+F 3 "" H 2920 9180 60  0000 C CNN
+	1    2920 9180
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR016
+U 1 1 5499A343
+P 3470 8830
+F 0 "#PWR016" H 3470 8830 30  0001 C CNN
+F 1 "GND" H 3470 8760 30  0001 C CNN
+F 2 "" H 3470 8830 60  0000 C CNN
+F 3 "" H 3470 8830 60  0000 C CNN
+	1    3470 8830
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR017
+U 1 1 54999A98
+P 12525 2505
+F 0 "#PWR017" H 12525 2505 30  0001 C CNN
+F 1 "GND" H 12525 2435 30  0001 C CNN
+F 2 "" H 12525 2505 60  0000 C CNN
+F 3 "" H 12525 2505 60  0000 C CNN
+	1    12525 2505
+	1    0    0    -1  
+$EndComp
+Text GLabel 3120 5880 0    60   Input ~ 0
+Power
+Text GLabel 13875 2905 2    60   Output ~ 0
+Power
+$Comp
+L RELAY_2RT K3
+U 1 1 54A679F2
+P 7975 2005
+F 0 "K3" H 7925 2405 70  0000 C CNN
+F 1 "RELAY_2RT" H 8125 1505 70  0000 C CNN
+F 2 "ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D_Kontaktbelegung_geändert_FIN40.52.9_6V" H 7975 2005 60  0001 C CNN
+F 3 "" H 7975 2005 60  0000 C CNN
+F 4 "Siehe Bauteileigenschaften" H 7975 2005 60  0001 C CNN "Bestellnummer"
+F 5 "http://www.reichelt.de/Print-Steckrelais/FIN-40-52-9-6V/3/index.html?&ACTION=3&LA=2&ARTICLE=8108&GROUPID=3293&artnr=FIN+40.52.9+6V" H 7975 2005 60  0001 C CNN "Quelle"
+F 6 "R: FIN 40.52.9 24V" H 7975 2005 60  0001 C CNN "Bestellnummer 24V"
+F 7 "R: FIN 40.52.9 12V" H 7975 2005 60  0001 C CNN "Bestellnummer 12V"
+F 8 "R: FIN 40.52.9 6V" H 7975 2005 60  0001 C CNN "Bestellnummer 6V"
+F 9 "R: FIN 95.15.2" H 7975 2005 60  0001 C CNN "Printfassung für Relais"
+	1    7975 2005
+	1    0    0    -1  
+$EndComp
+$Comp
+L F_10A EF1
+U 1 1 54A79B5A
+P 1855 1505
+F 0 "EF1" H 1675 1585 40  0000 C CNN
+F 1 "F_5A" H 1755 1425 40  0000 C CNN
+F 2 "ACS712:Fuseholder_Reichelt_PL112000" H 1855 1505 60  0001 C CNN
+F 3 "" H 1855 1505 60  0000 C CNN
+F 4 "R: PL 112000" H 1855 1505 60  0001 C CNN "Bestellnummer"
+	1    1855 1505
+	-1   0    0    1   
+$EndComp
+$Comp
+L F_10A EF2
+U 1 1 54A7AB0D
+P 9675 1005
+F 0 "EF2" H 9495 1085 40  0000 C CNN
+F 1 "F_10A" H 9575 925 40  0000 C CNN
+F 2 "ACS712:Fuseholder_Reichelt_PL112000" H 9675 1005 60  0001 C CNN
+F 3 "" H 9675 1005 60  0000 C CNN
+F 4 "R: PL 112000" H 9675 1005 60  0001 C CNN "Bestellnummer"
+	1    9675 1005
+	1    0    0    -1  
+$EndComp
+Text GLabel 3420 10030 0    39   Input ~ 0
+DropLeft
+Text GLabel 6185 9080 2    39   Input ~ 0
+DropRight
+Text GLabel 6180 8180 2    39   Input ~ 0
+TX1
+Text GLabel 6180 8280 2    39   Input ~ 0
+RX1
+$Comp
+L BC237 Q1
+U 1 1 54B46879
+P 7475 3605
+F 0 "Q1" H 7675 3505 50  0000 C CNN
+F 1 "BC547" H 7725 3755 50  0000 C CNN
+F 2 "Discret:TO92-EBC" H 7665 3605 30  0001 C CNN
+F 3 "" H 7475 3605 60  0000 C CNN
+	1    7475 3605
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R18
+U 1 1 54B46970
+P 6925 3605
+F 0 "R18" V 7005 3605 40  0000 C CNN
+F 1 "2k2" V 6932 3606 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 6855 3605 30  0001 C CNN
+F 3 "" H 6925 3605 30  0000 C CNN
+	1    6925 3605
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LM350T U4
+U 1 1 54B48E94
+P 5030 1805
+F 0 "U4" H 4830 2005 40  0000 C CNN
+F 1 "LM350T" H 5030 2005 40  0000 L CNN
+F 2 "ACS712:LM350T_3D_muss_noch_auf_Masse_geprüft_werden" H 5030 1905 30  0001 C CIN
+F 3 "" H 5030 1805 60  0000 C CNN
+	1    5030 1805
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR018
+U 1 1 54B48EA8
+P 4580 2355
+F 0 "#PWR018" H 4580 2355 30  0001 C CNN
+F 1 "GND" H 4580 2285 30  0001 C CNN
+F 2 "" H 4580 2355 60  0000 C CNN
+F 3 "" H 4580 2355 60  0000 C CNN
+	1    4580 2355
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR019
+U 1 1 54B48EAE
+P 5780 2355
+F 0 "#PWR019" H 5780 2355 30  0001 C CNN
+F 1 "GND" H 5780 2285 30  0001 C CNN
+F 2 "" H 5780 2355 60  0000 C CNN
+F 3 "" H 5780 2355 60  0000 C CNN
+	1    5780 2355
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R17
+U 1 1 54B48EBA
+P 5530 2055
+F 0 "R17" V 5610 2055 40  0000 C CNN
+F 1 "240" V 5537 2056 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 5460 2055 30  0001 C CNN
+F 3 "" H 5530 2055 30  0000 C CNN
+	1    5530 2055
+	1    0    0    -1  
+$EndComp
+$Comp
+L POT RV1
+U 1 1 54B48EC0
+P 5030 2405
+F 0 "RV1" H 5030 2305 50  0000 C CNN
+F 1 "5K" H 5030 2405 50  0000 C CNN
+F 2 "ACS712:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D" H 5030 2405 60  0001 C CNN
+F 3 "" H 5030 2405 60  0000 C CNN
+F 4 "R: PT 6-L 5,0K" H 5030 2405 60  0001 C CNN "Bestellnummer"
+	1    5030 2405
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR020
+U 1 1 54B48ECF
+P 5380 2655
+F 0 "#PWR020" H 5380 2655 30  0001 C CNN
+F 1 "GND" H 5380 2585 30  0001 C CNN
+F 2 "" H 5380 2655 60  0000 C CNN
+F 3 "" H 5380 2655 60  0000 C CNN
+	1    5380 2655
+	0    -1   -1   0   
+$EndComp
+$Comp
+L JUMPER JP6
+U 1 1 54B504F9
+P 9575 2705
+F 0 "JP6" H 9575 2855 60  0000 C CNN
+F 1 "V-A-Relay" H 9575 2625 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 9575 2705 60  0001 C CNN
+F 3 "" H 9575 2705 60  0000 C CNN
+	1    9575 2705
+	0    -1   -1   0   
+$EndComp
+$Comp
+L JUMPER JP7
+U 1 1 54B50727
+P 10325 2705
+F 0 "JP7" H 10325 2855 60  0000 C CNN
+F 1 "V-A-Relay" H 10325 2625 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 10325 2705 60  0001 C CNN
+F 3 "" H 10325 2705 60  0000 C CNN
+	1    10325 2705
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CP1 C5
+U 1 1 54B51225
+P 10325 3530
+F 0 "C5" H 10375 3630 50  0000 L CNN
+F 1 "1000uF" H 10375 3430 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_31.5x16mm_RM7.5" H 10325 3530 60  0001 C CNN
+F 3 "~" H 10325 3530 60  0000 C CNN
+F 4 "R: RAD FC 1000/50V" H 10325 3530 60  0001 C CNN "Bestellnummer"
+	1    10325 3530
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR021
+U 1 1 54B5122B
+P 10325 3780
+F 0 "#PWR021" H 10325 3780 30  0001 C CNN
+F 1 "GND" H 10325 3710 30  0001 C CNN
+F 2 "" H 10325 3780 60  0000 C CNN
+F 3 "" H 10325 3780 60  0000 C CNN
+	1    10325 3780
+	1    0    0    -1  
+$EndComp
+Text Notes 10025 4030 0    60   ~ 0
+Pufferkondensator\nfür Relaisumschaltung
+Text Notes 10425 2605 0    39   ~ 0
+Jumper Spannungsversorgung \nvon Akku
+Text Notes 8670 2945 0    39   ~ 0
+Jumper Spannungsversorgung \nvon über Relais
+Text GLabel 5875 3605 0    60   Output ~ 0
+pinChargingEnable
+$Comp
+L JUMPER JP4
+U 1 1 54B57EFB
+P 6275 3605
+F 0 "JP4" H 6275 3755 60  0000 C CNN
+F 1 "R-Arduino" H 6275 3525 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 6275 3605 60  0001 C CNN
+F 3 "" H 6275 3605 60  0000 C CNN
+	1    6275 3605
+	1    0    0    -1  
+$EndComp
+Text Notes 5925 3905 0    39   ~ 0
+Jumper Relais\nEin oder Ausschalten Ansteuerung\ndurch Arduino
+$Comp
+L JUMPER JP5
+U 1 1 54B5A1C5
+P 8275 3605
+F 0 "JP5" H 8275 3755 60  0000 C CNN
+F 1 "R-GND" H 8275 3525 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 8275 3605 60  0001 C CNN
+F 3 "" H 8275 3605 60  0000 C CNN
+	1    8275 3605
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR022
+U 1 1 54B5A511
+P 8275 4105
+F 0 "#PWR022" H 8275 4105 30  0001 C CNN
+F 1 "GND" H 8275 4035 30  0001 C CNN
+F 2 "" H 8275 4105 60  0000 C CNN
+F 3 "" H 8275 4105 60  0000 C CNN
+	1    8275 4105
+	1    0    0    -1  
+$EndComp
+Text Notes 8475 3705 0    39   ~ 0
+Jumper Relais\nEin oder Ausschalten Ansteuerung\ndurch Ladespannung
+Text Notes 7625 2955 0    39   ~ 0
+Laderelais Spulenspannung 5V\noder Variabel\nEingang Spulenspannung\nkann über Vorwiderspannung\nangepasst werden\ndurch Ladespannung
+Text Notes 5680 1205 0    39   ~ 0
+Rückflussdiode\nFalls Ladeschaltung nicht benötigt \nLadeschaltung nicht bestücken \nund für Diode Drahtbrücke einlöten\n
+$Comp
+L R R21
+U 1 1 54B5FC72
+P 5875 6980
+F 0 "R21" V 5955 6980 40  0000 C CNN
+F 1 "220R" V 5882 6981 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 5805 6980 30  0001 C CNN
+F 3 "~" H 5875 6980 30  0000 C CNN
+	1    5875 6980
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R20
+U 1 1 54B5FD13
+P 5875 6780
+F 0 "R20" V 5955 6780 40  0000 C CNN
+F 1 "220R" V 5882 6781 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 5805 6780 30  0001 C CNN
+F 3 "~" H 5875 6780 30  0000 C CNN
+	1    5875 6780
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6180 6780 2    39   Output ~ 0
+DuoLED-Rot
+Text GLabel 6180 6980 2    39   Output ~ 0
+DuoLED_Grün
+Text Notes 6030 6915 0    60   ~ 0
+Duo LED hinzugefügt
+$Comp
+L R R11
+U 1 1 54B48CE0
+P 3155 2055
+F 0 "R11" V 3235 2055 40  0000 C CNN
+F 1 "1K5" V 3162 2056 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 3085 2055 30  0001 C CNN
+F 3 "~" H 3155 2055 30  0000 C CNN
+	1    3155 2055
+	1    0    0    -1  
+$EndComp
+Text GLabel 3155 2455 3    60   Output ~ 0
+StationLed
+Text Notes 2280 1335 0    39   ~ 0
+Station LED\nbzw:\nGrundlast\nPerimetersender
+Text Notes 2930 1255 0    39   ~ 0
+Strom von Relais muss vor der Diode geholt werden\nwenn nach Diode oderLM350T geholt wird\ngeht das Relais rückwärt in Selbthaltung\n und kann nicht mehr abfallen
+Text GLabel 11575 4305 2    47   Output ~ 0
+pinChargingBilanz
+$Comp
+L ACS712 U5
+U 1 1 54B50EFB
+P 11325 3655
+F 0 "U5" H 11325 3905 50  0000 C CNN
+F 1 "INA169" H 11325 3405 50  0000 C CNN
+F 2 "ACS712:INA169" H 11325 3655 60  0001 C CNN
+F 3 "" H 11325 3655 60  0001 C CNN
+F 4 "Value" H 11325 3655 60  0001 C CNN "Bestellnummer"
+	1    11325 3655
+	0    1    1    0   
+$EndComp
+$Comp
+L +5V #PWR023
+U 1 1 54B50F01
+P 11425 4155
+F 0 "#PWR023" H 11425 4245 20  0001 C CNN
+F 1 "+5V" H 11425 4280 30  0000 C CNN
+F 2 "" H 11425 4155 60  0000 C CNN
+F 3 "" H 11425 4155 60  0000 C CNN
+	1    11425 4155
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR024
+U 1 1 54B50F07
+P 11175 4505
+F 0 "#PWR024" H 11175 4505 30  0001 C CNN
+F 1 "GND" H 11175 4435 30  0001 C CNN
+F 2 "" H 11175 4505 60  0000 C CNN
+F 3 "" H 11175 4505 60  0000 C CNN
+	1    11175 4505
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C6
+U 1 1 54B50F0D
+P 11375 4455
+F 0 "C6" H 11425 4555 50  0000 L CNN
+F 1 "1,0uF" H 11425 4355 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 11375 4455 60  0001 C CNN
+F 3 "R: RAD FC 1,0/50" H 11375 4455 60  0001 C CNN
+F 4 "Value" H 11375 4455 60  0000 C CNN "Bestellnummer"
+	1    11375 4455
+	0    1    1    0   
+$EndComp
+$Comp
+L DIODE D3
+U 1 1 54B617F6
+P 5980 1355
+F 0 "D3" H 5980 1455 40  0000 C CNN
+F 1 "MPR 1045" H 5980 1255 40  0000 C CNN
+F 2 "ACS712:MBR1045" H 5980 1355 60  0001 C CNN
+F 3 "" H 5980 1355 60  0000 C CNN
+F 4 "R: MBR 1045" H 5980 1355 60  0001 C CNN "Bestellnummer"
+	1    5980 1355
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D4
+U 1 1 54B63125
+P 8925 2155
+F 0 "D4" H 8925 2255 40  0000 C CNN
+F 1 "MBR 1045" H 8925 2055 40  0000 C CNN
+F 2 "ACS712:MBR1045" H 8925 2155 60  0001 C CNN
+F 3 "" H 8925 2155 60  0000 C CNN
+F 4 "R: MBR 1045" H 8925 2155 60  0001 C CNN "Bestellnummer"
+	1    8925 2155
+	1    0    0    -1  
+$EndComp
+Text Notes 8575 2105 0    39   ~ 0
+Sperrdiode die die Rückwärtsspannung \nvermeidet wenn DC-DC wander von\nLadestrom versorgt werden soll\n(@SteanM]\n\n
+Text Notes 4630 1205 0    39   ~ 0
+Rückflussdiode oder\nLötbrücke um\nLeiterbahn zu\nSchließen falls LM350T\nnicht bestückt wird
+Text GLabel 1545 7480 0    39   Input ~ 0
+pinPerimeterRight
+Text GLabel 1545 8480 0    39   Input ~ 0
+pinOdometryLeft2
+Text GLabel 1545 8680 0    39   Input ~ 0
+pinOdometryRight2
+Text GLabel 1545 8580 0    39   Input ~ 0
+pinOdometryRight
+Text GLabel 1545 8180 0    39   Input ~ 0
+pinChargingBilanz
+$Comp
+L R_PACK8 RP2
+U 1 1 54B686DE
+P 2295 8330
+F 0 "RP2" H 2295 8330 40  0000 C CNN
+F 1 "150" H 2295 7880 40  0000 C CNN
+F 2 "Sockets_DIP:DIP-16__300" H 2295 8330 60  0001 C CNN
+F 3 "" H 2295 8330 60  0000 C CNN
+F 4 "C: 1055159 - 62" H 2295 8330 60  0001 C CNN "Bestellnummer"
+	1    2295 8330
+	1    0    0    1   
+$EndComp
+$Comp
+L GND #PWR025
+U 1 1 54B8E463
+P 12325 1755
+F 0 "#PWR025" H 12325 1755 30  0001 C CNN
+F 1 "GND" H 12325 1685 30  0001 C CNN
+F 2 "" H 12325 1755 60  0000 C CNN
+F 3 "" H 12325 1755 60  0000 C CNN
+	1    12325 1755
+	-1   0    0    1   
+$EndComp
+$Comp
+L CP1 C7
+U 1 1 54B8E469
+P 12525 2255
+F 0 "C7" H 12575 2355 50  0000 L CNN
+F 1 "100uF" H 12575 2155 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 12525 2255 60  0001 C CNN
+F 3 "~" H 12525 2255 60  0000 C CNN
+F 4 "R: RAD FC 100/50" H 12525 2255 60  0001 C CNN "Bestellnummer"
+	1    12525 2255
+	1    0    0    -1  
+$EndComp
+$Comp
+L JUMPER JP10
+U 1 1 54B8E46F
+P 13275 2005
+F 0 "JP10" H 13275 2155 60  0000 C CNN
+F 1 "pwr 3,3V" H 13275 1925 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 13275 2005 60  0001 C CNN
+F 3 "" H 13275 2005 60  0000 C CNN
+	1    13275 2005
+	1    0    0    -1  
+$EndComp
+$Comp
+L DC-DC_Stepdown U6
+U 1 1 54B8E475
+P 11975 1905
+F 0 "U6" H 11975 1955 60  0000 C CNN
+F 1 "DC  3,3V" H 11975 1655 60  0000 C CNN
+F 2 "ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe" H 13775 1805 60  0001 C CNN
+F 3 "" H 13775 1805 60  0000 C CNN
+	1    11975 1905
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR026
+U 1 1 54B8E47B
+P 11625 1755
+F 0 "#PWR026" H 11625 1755 30  0001 C CNN
+F 1 "GND" H 11625 1685 30  0001 C CNN
+F 2 "" H 11625 1755 60  0000 C CNN
+F 3 "" H 11625 1755 60  0000 C CNN
+	1    11625 1755
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR027
+U 1 1 54B91415
+P 12525 3455
+F 0 "#PWR027" H 12525 3455 30  0001 C CNN
+F 1 "GND" H 12525 3385 30  0001 C CNN
+F 2 "" H 12525 3455 60  0000 C CNN
+F 3 "" H 12525 3455 60  0000 C CNN
+	1    12525 3455
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR028
+U 1 1 54B92E0D
+P 12325 805
+F 0 "#PWR028" H 12325 805 30  0001 C CNN
+F 1 "GND" H 12325 735 30  0001 C CNN
+F 2 "" H 12325 805 60  0000 C CNN
+F 3 "" H 12325 805 60  0000 C CNN
+	1    12325 805 
+	-1   0    0    1   
+$EndComp
+$Comp
+L CP1 C8
+U 1 1 54B92E13
+P 12525 1305
+F 0 "C8" H 12575 1405 50  0000 L CNN
+F 1 "100uF" H 12575 1205 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 12525 1305 60  0001 C CNN
+F 3 "R: RAD FC 100/50" H 12525 1305 60  0001 C CNN
+F 4 "Value" H 12525 1305 60  0001 C CNN "Bestellnummer"
+	1    12525 1305
+	1    0    0    -1  
+$EndComp
+$Comp
+L JUMPER JP11
+U 1 1 54B92E19
+P 13275 1055
+F 0 "JP11" H 13275 1205 60  0000 C CNN
+F 1 "pwr 5V" H 13275 975 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 13275 1055 60  0001 C CNN
+F 3 "" H 13275 1055 60  0000 C CNN
+	1    13275 1055
+	1    0    0    -1  
+$EndComp
+$Comp
+L DC-DC_Stepdown U7
+U 1 1 54B92E1F
+P 11975 955
+F 0 "U7" H 11975 1005 60  0000 C CNN
+F 1 "DC  5V" H 11975 705 60  0000 C CNN
+F 2 "ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe" H 13775 855 60  0001 C CNN
+F 3 "" H 13775 855 60  0000 C CNN
+	1    11975 955 
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR029
+U 1 1 54B92E25
+P 11625 805
+F 0 "#PWR029" H 11625 805 30  0001 C CNN
+F 1 "GND" H 11625 735 30  0001 C CNN
+F 2 "" H 11625 805 60  0000 C CNN
+F 3 "" H 11625 805 60  0000 C CNN
+	1    11625 805 
+	-1   0    0    1   
+$EndComp
+Text GLabel 13725 1030 2    60   Output ~ 0
+Power5
+$Comp
+L GND #PWR030
+U 1 1 54B93040
+P 12525 1555
+F 0 "#PWR030" H 12525 1555 30  0001 C CNN
+F 1 "GND" H 12525 1485 30  0001 C CNN
+F 2 "" H 12525 1555 60  0000 C CNN
+F 3 "" H 12525 1555 60  0000 C CNN
+	1    12525 1555
+	1    0    0    -1  
+$EndComp
+Text GLabel 2270 5880 2    60   Input ~ 0
+Power5
+$Comp
+L JUMPER JP12
+U 1 1 54B90ACC
+P 3020 5680
+F 0 "JP12" H 3020 5830 60  0000 C CNN
+F 1 "pwrAA5.0V" H 3020 5760 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 3020 5680 60  0001 C CNN
+F 3 "" H 3020 5680 60  0000 C CNN
+	1    3020 5680
+	1    0    0    -1  
+$EndComp
+NoConn ~ 8375 1955
+Text GLabel 6180 7580 2    39   Input ~ 0
+ReservePin0
+Text GLabel 6180 7480 2    39   Input ~ 0
+ReservePin1
+Text GLabel 6180 7180 2    39   Input ~ 0
+ReservePin4
+Text GLabel 6180 6680 2    39   Input ~ 0
+ReservePin8
+Text GLabel 6180 6580 2    39   Input ~ 0
+ReservePin9
+Text GLabel 1545 7680 0    39   Input ~ 0
+ReserveAD6
+Text GLabel 1545 7780 0    39   Input ~ 0
+Voltage measurement
+Text GLabel 1545 8280 0    39   Input ~ 0
+pinMotorMowRpm
+$Comp
+L DIODE D7
+U 1 1 54BB9425
+P 4980 1355
+F 0 "D7" H 4980 1455 40  0000 C CNN
+F 1 "1N 5059" H 4980 1255 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 4980 1355 60  0001 C CNN
+F 3 "" H 4980 1355 60  0000 C CNN
+F 4 "1N 5059" H 4980 1355 60  0001 C CNN "Bestellnummer"
+	1    4980 1355
+	-1   0    0    1   
+$EndComp
+$Comp
+L +24V #PWR031
+U 1 1 54BE5BDF
+P 10175 1555
+F 0 "#PWR031" H 10175 1505 20  0001 C CNN
+F 1 "+24V" H 10175 1685 30  0000 C CNN
+F 2 "" H 10175 1555 60  0000 C CNN
+F 3 "" H 10175 1555 60  0000 C CNN
+	1    10175 1555
+	-1   0    0    1   
+$EndComp
+$Comp
+L JUMPER JP3
+U 1 1 54C10ED7
+P 3020 5430
+F 0 "JP3" H 3020 5580 60  0000 C CNN
+F 1 "pwrAA3,3" H 3020 5500 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 3020 5430 60  0001 C CNN
+F 3 "" H 3020 5430 60  0000 C CNN
+	1    3020 5430
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR032
+U 1 1 54C11BD9
+P 2720 5430
+F 0 "#PWR032" H 2720 5390 30  0001 C CNN
+F 1 "+3.3V" V 2720 5600 30  0000 C CNN
+F 2 "" H 2720 5430 60  0000 C CNN
+F 3 "" H 2720 5430 60  0000 C CNN
+	1    2720 5430
+	0    -1   1    0   
+$EndComp
+Text GLabel 3270 5155 0    60   Output ~ 0
+PowerA3,3
+$Comp
+L DIODE D9
+U 1 1 54C30B35
+P 10175 1205
+F 0 "D9" H 10175 1305 40  0000 C CNN
+F 1 "MBR 1045" H 10175 1105 40  0000 C CNN
+F 2 "ACS712:MBR1045_liegend" H 10175 1205 60  0001 C CNN
+F 3 "R: MBR 1045" H 10175 1205 60  0001 C CNN
+F 4 "Value" H 10175 1205 60  0001 C CNN "Bestellnummer"
+	1    10175 1205
+	0    1    1    0   
+$EndComp
+$Comp
+L DIODE D1
+U 1 1 54C4EFC4
+P 2405 1505
+F 0 "D1" H 2405 1605 40  0000 C CNN
+F 1 "MBR 1045" H 2405 1405 40  0000 C CNN
+F 2 "ACS712:MBR1045" H 2405 1505 60  0001 C CNN
+F 3 "" H 2405 1505 60  0000 C CNN
+F 4 "R: MBR 1045" H 2405 1505 60  0001 C CNN "Bestellnummer"
+	1    2405 1505
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C1
+U 1 1 54C678D9
+P 4580 1955
+F 0 "C1" H 4630 2055 50  0000 L CNN
+F 1 "1uF" H 4630 1855 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 4580 1955 60  0001 C CNN
+F 3 "~" H 4580 1955 60  0000 C CNN
+F 4 "R: RAD FC 1,0/50" H 4580 1955 60  0001 C CNN "Bestellnummer"
+	1    4580 1955
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C4
+U 1 1 54C67CEC
+P 5780 1955
+F 0 "C4" H 5830 2055 50  0000 L CNN
+F 1 "1uF" H 5830 1855 50  0000 L CNN
+F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 5780 1955 60  0001 C CNN
+F 3 "~" H 5780 1955 60  0000 C CNN
+F 4 "RAD FC 1,0/50" H 5780 1955 60  0001 C CNN "Bestellnummer"
+	1    5780 1955
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D10
+U 1 1 54C6AF0E
+P 7325 2555
+F 0 "D10" H 7325 2655 40  0000 C CNN
+F 1 "1N4148" H 7325 2455 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 7325 2555 60  0001 C CNN
+F 3 "Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A" H 7325 2555 60  0001 C CNN
+F 4 "1N4148" H 7325 2555 60  0001 C CNN "Bestellnummer"
+	1    7325 2555
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DIODE ZD2
+U 1 1 54C773D8
+P 12850 1255
+F 0 "ZD2" H 12850 1355 40  0000 C CNN
+F 1 "ZD-5W 5,1 Optional" H 12850 1155 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 12850 1255 60  0001 C CNN
+F 3 "" H 12850 1255 60  0000 C CNN
+F 4 "ZD-5W 5,1" H 12850 1255 60  0001 C CNN "Bestellnummer"
+	1    12850 1255
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R25
+U 1 1 54C77B6A
+P 13100 1605
+F 0 "R25" V 13180 1605 40  0000 C CNN
+F 1 "0" V 13107 1606 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 13030 1605 30  0001 C CNN
+F 3 "~" H 13100 1605 30  0000 C CNN
+	1    13100 1605
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR033
+U 1 1 54C781D9
+P 13450 1605
+F 0 "#PWR033" H 13450 1605 30  0001 C CNN
+F 1 "GND" H 13450 1535 30  0001 C CNN
+F 2 "" H 13450 1605 60  0000 C CNN
+F 3 "" H 13450 1605 60  0000 C CNN
+	1    13450 1605
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DIODE ZD1
+U 1 1 54C789A5
+P 12825 2205
+F 0 "ZD1" H 12825 2305 40  0000 C CNN
+F 1 "ZD-5W 3,3V Optional" H 12825 2105 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 12825 2205 60  0001 C CNN
+F 3 "" H 12825 2205 60  0000 C CNN
+F 4 "R: ZD-5W 3,3V" H 12825 2205 60  0001 C CNN "Bestellnummer"
+	1    12825 2205
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R24
+U 1 1 54C789AB
+P 13075 2555
+F 0 "R24" V 13155 2555 40  0000 C CNN
+F 1 "0" V 13082 2556 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 13005 2555 30  0001 C CNN
+F 3 "~" H 13075 2555 30  0000 C CNN
+	1    13075 2555
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR034
+U 1 1 54C789B1
+P 13425 2555
+F 0 "#PWR034" H 13425 2555 30  0001 C CNN
+F 1 "GND" H 13425 2485 30  0001 C CNN
+F 2 "" H 13425 2555 60  0000 C CNN
+F 3 "" H 13425 2555 60  0000 C CNN
+	1    13425 2555
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DIODE ZD3
+U 1 1 54C7A89F
+P 13175 3180
+F 0 "ZD3" H 13175 3280 40  0000 C CNN
+F 1 "ZD-5W 12V Optional" H 13175 3080 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 13175 3180 60  0001 C CNN
+F 3 "" H 13175 3180 60  0000 C CNN
+F 4 "R: ZD-5W 12V" H 13175 3180 60  0001 C CNN "Bestellnummer"
+	1    13175 3180
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R26
+U 1 1 54C7A8A5
+P 13750 3180
+F 0 "R26" V 13830 3180 40  0000 C CNN
+F 1 "0" V 13757 3181 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM15mm" V 13680 3180 30  0001 C CNN
+F 3 "~" H 13750 3180 30  0000 C CNN
+	1    13750 3180
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR035
+U 1 1 54C7A8AB
+P 14100 3180
+F 0 "#PWR035" H 14100 3180 30  0001 C CNN
+F 1 "GND" H 14100 3110 30  0001 C CNN
+F 2 "" H 14100 3180 60  0000 C CNN
+F 3 "" H 14100 3180 60  0000 C CNN
+	1    14100 3180
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Lötpad LP15
+U 1 1 54CEA36A
+P 1970 8680
+F 0 "LP15" H 1960 8730 20  0000 C CNN
+F 1 "Lötpad" H 1970 8660 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 8680 60  0001 C CNN
+F 3 "" H 1970 8680 60  0000 C CNN
+	1    1970 8680
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP14
+U 1 1 54CEDC4A
+P 1770 8580
+F 0 "LP14" H 1760 8630 20  0000 C CNN
+F 1 "Lötpad" H 1770 8560 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 8580 60  0001 C CNN
+F 3 "" H 1770 8580 60  0000 C CNN
+	1    1770 8580
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP13
+U 1 1 54CEF1D7
+P 1970 8480
+F 0 "LP13" H 1960 8530 20  0000 C CNN
+F 1 "Lötpad" H 1970 8460 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 8480 60  0001 C CNN
+F 3 "" H 1970 8480 60  0000 C CNN
+	1    1970 8480
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP12
+U 1 1 54CEF278
+P 1770 8380
+F 0 "LP12" H 1760 8430 20  0000 C CNN
+F 1 "Lötpad" H 1770 8360 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 8380 60  0001 C CNN
+F 3 "" H 1770 8380 60  0000 C CNN
+	1    1770 8380
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP11
+U 1 1 54CEF31C
+P 1970 8280
+F 0 "LP11" H 1960 8330 20  0000 C CNN
+F 1 "Lötpad" H 1970 8260 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 8280 60  0001 C CNN
+F 3 "" H 1970 8280 60  0000 C CNN
+	1    1970 8280
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP10
+U 1 1 54CEF3BF
+P 1770 8180
+F 0 "LP10" H 1760 8230 20  0000 C CNN
+F 1 "Lötpad" H 1770 8160 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 8180 60  0001 C CNN
+F 3 "" H 1770 8180 60  0000 C CNN
+	1    1770 8180
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP9
+U 1 1 54CF2B48
+P 1970 8080
+F 0 "LP9" H 1960 8130 20  0000 C CNN
+F 1 "Lötpad" H 1970 8060 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 8080 60  0001 C CNN
+F 3 "" H 1970 8080 60  0000 C CNN
+	1    1970 8080
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP8
+U 1 1 54CF2BEF
+P 1770 7980
+F 0 "LP8" H 1760 8030 20  0000 C CNN
+F 1 "Lötpad" H 1770 7960 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 7980 60  0001 C CNN
+F 3 "" H 1770 7980 60  0000 C CNN
+	1    1770 7980
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP7
+U 1 1 54CF6B08
+P 1970 7780
+F 0 "LP7" H 1960 7830 20  0000 C CNN
+F 1 "Lötpad" H 1970 7760 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 7780 60  0001 C CNN
+F 3 "" H 1970 7780 60  0000 C CNN
+	1    1970 7780
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP6
+U 1 1 54CF6BED
+P 1770 7680
+F 0 "LP6" H 1760 7730 20  0000 C CNN
+F 1 "Lötpad" H 1770 7660 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 7680 60  0001 C CNN
+F 3 "" H 1770 7680 60  0000 C CNN
+	1    1770 7680
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP5
+U 1 1 54CF6DA7
+P 1970 7580
+F 0 "LP5" H 1960 7630 20  0000 C CNN
+F 1 "Lötpad" H 1970 7560 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 7580 60  0001 C CNN
+F 3 "" H 1970 7580 60  0000 C CNN
+	1    1970 7580
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP4
+U 1 1 54CF6E54
+P 1770 7480
+F 0 "LP4" H 1760 7530 20  0000 C CNN
+F 1 "Lötpad" H 1770 7460 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 7480 60  0001 C CNN
+F 3 "" H 1770 7480 60  0000 C CNN
+	1    1770 7480
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP3
+U 1 1 54CF6F02
+P 1970 7380
+F 0 "LP3" H 1960 7430 20  0000 C CNN
+F 1 "Lötpad" H 1970 7360 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 7380 60  0001 C CNN
+F 3 "" H 1970 7380 60  0000 C CNN
+	1    1970 7380
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP2
+U 1 1 54CF6FAB
+P 1770 7280
+F 0 "LP2" H 1760 7330 20  0000 C CNN
+F 1 "Lötpad" H 1770 7260 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 7280 60  0001 C CNN
+F 3 "" H 1770 7280 60  0000 C CNN
+	1    1770 7280
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP1
+U 1 1 54CF7059
+P 1970 7180
+F 0 "LP1" H 1960 7230 20  0000 C CNN
+F 1 "Lötpad" H 1970 7160 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1970 7180 60  0001 C CNN
+F 3 "" H 1970 7180 60  0000 C CNN
+	1    1970 7180
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP0
+U 1 1 54CF710A
+P 1770 7080
+F 0 "LP0" H 1760 7130 20  0000 C CNN
+F 1 "Lötpad" H 1770 7060 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 1770 7080 60  0001 C CNN
+F 3 "" H 1770 7080 60  0000 C CNN
+	1    1770 7080
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP17
+U 1 1 54CFD7DE
+P 3520 6880
+F 0 "LP17" H 3510 6930 20  0000 C CNN
+F 1 "Lötpad" H 3520 6860 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3520 6880 60  0001 C CNN
+F 3 "" H 3520 6880 60  0000 C CNN
+	1    3520 6880
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP18
+U 1 1 54CFDC50
+P 3570 6580
+F 0 "LP18" H 3560 6630 20  0000 C CNN
+F 1 "Lötpad" H 3570 6560 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3570 6580 60  0001 C CNN
+F 3 "" H 3570 6580 60  0000 C CNN
+	1    3570 6580
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP16
+U 1 1 54CFDD02
+P 3495 6305
+F 0 "LP16" H 3485 6355 20  0000 C CNN
+F 1 "Lötpad" H 3495 6285 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3495 6305 60  0001 C CNN
+F 3 "" H 3495 6305 60  0000 C CNN
+	1    3495 6305
+	0    1    1    0   
+$EndComp
+$Comp
+L Lötpad LP19
+U 1 1 54CFE61F
+P 3570 6780
+F 0 "LP19" H 3560 6830 20  0000 C CNN
+F 1 "Lötpad" H 3570 6760 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3570 6780 60  0001 C CNN
+F 3 "" H 3570 6780 60  0000 C CNN
+	1    3570 6780
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3520 6780
+$Comp
+L Lötpad LP21
+U 1 1 54D046E1
+P 3620 6255
+F 0 "LP21" H 3610 6305 20  0000 C CNN
+F 1 "Lötpad" H 3620 6235 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3620 6255 60  0001 C CNN
+F 3 "" H 3620 6255 60  0000 C CNN
+	1    3620 6255
+	0    1    1    0   
+$EndComp
+NoConn ~ 3620 6130
+$Comp
+L Lötpad LP20
+U 1 1 54CF4FEC
+P 5805 8980
+F 0 "LP20" H 5795 9030 20  0000 C CNN
+F 1 "Lötpad" H 5805 8960 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 5805 8980 60  0001 C CNN
+F 3 "" H 5805 8980 60  0000 C CNN
+	1    5805 8980
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP22
+U 1 1 54CF5460
+P 5815 10030
+F 0 "LP22" H 5805 10080 20  0000 C CNN
+F 1 "Lötpad" H 5815 10010 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 5815 10030 60  0001 C CNN
+F 3 "" H 5815 10030 60  0000 C CNN
+	1    5815 10030
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP23
+U 1 1 54CF5519
+P 5795 10430
+F 0 "LP23" H 5785 10480 20  0000 C CNN
+F 1 "Lötpad" H 5795 10410 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 5795 10430 60  0001 C CNN
+F 3 "" H 5795 10430 60  0000 C CNN
+	1    5795 10430
+	1    0    0    -1  
+$EndComp
+$Comp
+L Lötpad LP24
+U 1 1 54CFA30B
+P 3570 6715
+F 0 "LP24" H 3560 6765 20  0000 C CNN
+F 1 "Lötpad" H 3570 6695 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3570 6715 60  0001 C CNN
+F 3 "" H 3570 6715 60  0000 C CNN
+	1    3570 6715
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3520 6715
+$Comp
+L Lötpad LP26
+U 1 1 54CFB165
+P 3770 5730
+F 0 "LP26" H 3760 5780 20  0000 C CNN
+F 1 "Lötpad" H 3770 5710 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3770 5730 60  0001 C CNN
+F 3 "" H 3770 5730 60  0000 C CNN
+	1    3770 5730
+	0    1    1    0   
+$EndComp
+$Comp
+L Lötpad LP25
+U 1 1 54CFB233
+P 3695 5730
+F 0 "LP25" H 3685 5780 20  0000 C CNN
+F 1 "Lötpad" H 3695 5710 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 3695 5730 60  0001 C CNN
+F 3 "" H 3695 5730 60  0000 C CNN
+	1    3695 5730
+	0    1    1    0   
+$EndComp
+$Comp
+L Lötpad LP27
+U 1 1 54CFB2E6
+P 5720 5980
+F 0 "LP27" H 5710 6030 20  0000 C CNN
+F 1 "Lötpad" H 5720 5960 20  0000 C CNN
+F 2 "ACS712:Lötpad_1x02" H 5720 5980 60  0001 C CNN
+F 3 "" H 5720 5980 60  0000 C CNN
+	1    5720 5980
+	-1   0    0    1   
+$EndComp
+NoConn ~ 6240 5980
+NoConn ~ 3770 5680
+NoConn ~ 3695 5680
+NoConn ~ 3770 6280
+NoConn ~ 3770 6180
+Text Notes 4805 1580 0    60   ~ 0
+Ladereglung
+Text Notes 1470 6830 0    60   ~ 0
+Lötpads, mit Brücke\nZur Einbindung des Due
+$Comp
+L Lötpad LP35
+U 1 1 551BAF3A
+P 3270 8750
+F 0 "LP35" H 3260 8800 20  0000 C CNN
+F 1 "Lötpad" H 3270 8730 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 3270 8750 60  0001 C CNN
+F 3 "" H 3270 8750 60  0000 C CNN
+	1    3270 8750
+	0    1    1    0   
+$EndComp
+$Comp
+L Lötpad LP34
+U 1 1 551BB23C
+P 3170 8750
+F 0 "LP34" H 3160 8800 20  0000 C CNN
+F 1 "Lötpad" H 3170 8730 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 3170 8750 60  0001 C CNN
+F 3 "" H 3170 8750 60  0000 C CNN
+	1    3170 8750
+	0    1    1    0   
+$EndComp
+$Comp
+L Lötpad LP33
+U 1 1 551BB3C6
+P 3070 8750
+F 0 "LP33" H 3060 8800 20  0000 C CNN
+F 1 "Lötpad" H 3070 8730 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 3070 8750 60  0001 C CNN
+F 3 "" H 3070 8750 60  0000 C CNN
+	1    3070 8750
+	0    1    1    0   
+$EndComp
+$Comp
+L Lötpad LP32
+U 1 1 551BB55E
+P 2970 8750
+F 0 "LP32" H 2880 8725 20  0000 C CNN
+F 1 "Lötpad" H 2970 8730 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 2970 8750 60  0001 C CNN
+F 3 "" H 2970 8750 60  0000 C CNN
+	1    2970 8750
+	0    1    1    0   
+$EndComp
+$Comp
+L JUMPER JP17
+U 1 1 551CD747
+P 8925 2490
+F 0 "JP17" H 8925 2640 60  0000 C CNN
+F 1 "JP-D4" H 8925 2410 40  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 8925 2490 60  0001 C CNN
+F 3 "" H 8925 2490 60  0000 C CNN
+F 4 "Value" H 8925 2490 60  0001 C CNN "Bestellnummer"
+	1    8925 2490
+	1    0    0    -1  
+$EndComp
+Text GLabel 1655 1605 3    60   Output ~ 0
+Charg_Pin
+$Comp
+L R R19
+U 1 1 552CF3A3
+P 7325 1940
+F 0 "R19" V 7405 1940 40  0000 C CNN
+F 1 "0" V 7332 1941 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 7255 1940 30  0001 C CNN
+F 3 "~" H 7325 1940 30  0000 C CNN
+	1    7325 1940
+	1    0    0    -1  
+$EndComp
+$Comp
+L R_PACK8 RP1
+U 1 1 5478A23C
+P 2295 7430
+F 0 "RP1" H 2295 7330 40  0000 C CNN
+F 1 "150" H 2295 6980 40  0000 C CNN
+F 2 "Sockets_DIP:DIP-16__300" H 2295 7430 60  0001 C CNN
+F 3 "" H 2295 7430 60  0000 C CNN
+F 4 "C: 1055159 - 62" H 2295 7430 60  0001 C CNN "Bestellnummer"
+	1    2295 7430
+	1    0    0    1   
+$EndComp
+$Comp
+L Lötpad LP36
+U 1 1 55320D6B
+P 2870 8750
+F 0 "LP36" H 2780 8735 20  0000 C CNN
+F 1 "Lötpad" H 2870 8730 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H 2870 8750 60  0001 C CNN
+F 3 "" H 2870 8750 60  0000 C CNN
+	1    2870 8750
+	0    1    1    0   
+$EndComp
+$Sheet
+S -870 6175 705  310 
+U 553A1252
+F0 "Verpols.L" 60
+F1 "Verpols.L.sch" 60
+F2 "Verpols.L.aus" O R -165 6275 60 
+F3 "Verpol.s.L.in" I R -165 6390 60 
+$EndSheet
+Wire Wire Line
+	3670 6780 3670 6680
+Wire Wire Line
+	5570 6080 6170 6080
+Wire Wire Line
+	5570 10130 6190 10130
+Wire Wire Line
+	6190 9930 5570 9930
+Wire Wire Line
+	2830 2280 2830 2380
+Wire Wire Line
+	10695 925  10895 925 
+Wire Wire Line
+	10745 1025 10745 925 
+Connection ~ 10745 925 
+Wire Wire Line
+	3420 10680 3670 10680
+Wire Wire Line
+	5570 10530 6195 10530
+Wire Wire Line
+	5570 9830 6190 9830
+Wire Wire Line
+	5570 9480 6175 9480
+Wire Wire Line
+	3415 10230 3670 10230
+Wire Wire Line
+	5570 7880 6180 7880
+Wire Wire Line
+	5570 8080 6180 8080
+Wire Wire Line
+	9325 1255 9325 1205
+Wire Wire Line
+	12525 2955 12525 2905
+Connection ~ 12525 2905
+Wire Wire Line
+	6195 10330 5570 10330
+Wire Wire Line
+	3420 10330 3670 10330
+Wire Wire Line
+	3420 10480 3670 10480
+Wire Wire Line
+	3420 9830 3670 9830
+Wire Wire Line
+	5570 6280 6180 6280
+Wire Wire Line
+	5570 9180 6180 9180
+Wire Wire Line
+	3420 9730 3670 9730
+Wire Wire Line
+	5570 10230 6195 10230
+Wire Wire Line
+	3420 10130 3670 10130
+Wire Wire Line
+	5570 7380 6180 7380
+Wire Wire Line
+	5570 7080 6180 7080
+Wire Wire Line
+	5570 9680 6190 9680
+Wire Wire Line
+	5570 9380 6175 9380
+Wire Wire Line
+	5570 9580 6190 9580
+Wire Wire Line
+	5570 7280 6180 7280
+Wire Wire Line
+	3770 2945 3770 3045
+Wire Wire Line
+	3570 2945 3570 3095
+Wire Wire Line
+	3670 2945 3670 3195
+Wire Wire Line
+	3670 3195 3920 3195
+Wire Wire Line
+	1455 1355 1455 1505
+Wire Wire Line
+	3570 3095 3520 3345
+Wire Wire Line
+	3520 3345 3520 3395
+Wire Wire Line
+	12325 2905 12975 2905
+Wire Wire Line
+	12325 2655 12325 2705
+Wire Wire Line
+	11625 2655 11625 2705
+Connection ~ 11625 2905
+Connection ~ 12325 2905
+Connection ~ 12325 2705
+Connection ~ 11625 2705
+Wire Wire Line
+	6130 6180 6180 6180
+Wire Wire Line
+	5570 8380 5720 8380
+Wire Wire Line
+	5570 8480 5725 8480
+Wire Wire Line
+	5670 8380 5670 8430
+Wire Wire Line
+	3670 6680 3490 6680
+Wire Wire Line
+	2270 6580 2470 6580
+Wire Wire Line
+	12525 3355 12525 3455
+Wire Wire Line
+	10745 1525 10745 1575
+Wire Wire Line
+	2830 2880 2830 2930
+Wire Wire Line
+	2470 6580 2470 6530
+Wire Wire Line
+	13575 2905 13875 2905
+Wire Wire Line
+	3120 5880 3370 5880
+Wire Wire Line
+	7575 3805 7575 4105
+Wire Wire Line
+	9975 1655 8375 1655
+Wire Wire Line
+	9475 1005 9325 1005
+Wire Wire Line
+	7325 2255 7575 2255
+Wire Wire Line
+	1655 1355 1655 1605
+Wire Wire Line
+	2605 1505 3770 1505
+Wire Wire Line
+	3670 10030 3420 10030
+Wire Wire Line
+	7175 3605 7275 3605
+Wire Wire Line
+	3770 2995 4620 2995
+Wire Wire Line
+	4620 3345 3920 3345
+Connection ~ 3770 2995
+Wire Wire Line
+	7325 2190 7325 2355
+Wire Wire Line
+	4630 1755 4580 1755
+Wire Wire Line
+	5430 1755 5780 1755
+Wire Wire Line
+	5530 1755 5530 1805
+Connection ~ 5530 1755
+Wire Wire Line
+	5530 2305 5330 2305
+Wire Wire Line
+	5330 2305 5330 2105
+Wire Wire Line
+	5330 2105 5030 2105
+Wire Wire Line
+	5030 2055 5030 2155
+Connection ~ 5030 2105
+Wire Wire Line
+	5180 2405 5180 2655
+Wire Wire Line
+	5030 2655 5380 2655
+Connection ~ 5180 2655
+Wire Wire Line
+	5780 2155 5780 2355
+Wire Wire Line
+	4580 2155 4580 2355
+Wire Wire Line
+	8575 1855 8375 1855
+Wire Wire Line
+	8575 1355 8575 1855
+Wire Wire Line
+	3570 1355 4780 1355
+Wire Wire Line
+	4580 1755 4580 1355
+Wire Wire Line
+	7575 2355 7575 3405
+Wire Wire Line
+	7510 1505 9575 1505
+Connection ~ 9975 1655
+Wire Wire Line
+	9575 1505 9575 2405
+Wire Wire Line
+	9575 3005 9575 3205
+Wire Wire Line
+	9575 3205 11425 3205
+Wire Wire Line
+	10325 3005 10325 3330
+Connection ~ 10325 3205
+Wire Wire Line
+	10325 3730 10325 3780
+Wire Wire Line
+	6675 3605 6575 3605
+Wire Wire Line
+	5975 3605 5875 3605
+Wire Wire Line
+	8275 3305 8275 3205
+Wire Wire Line
+	8275 3205 7575 3205
+Connection ~ 7575 3205
+Wire Wire Line
+	8275 3905 8275 4105
+Wire Wire Line
+	5625 6980 5570 6980
+Wire Wire Line
+	6125 6780 6180 6780
+Wire Wire Line
+	6125 6980 6180 6980
+Wire Wire Line
+	3155 2305 3155 2455
+Wire Wire Line
+	11425 4055 11425 4155
+Wire Wire Line
+	11225 4055 11225 4205
+Wire Wire Line
+	11325 4055 11325 4305
+Wire Wire Line
+	11325 4305 11575 4305
+Wire Wire Line
+	11225 4205 11175 4455
+Wire Wire Line
+	11175 4455 11175 4505
+Wire Wire Line
+	11425 4105 12325 4105
+Wire Wire Line
+	11575 4455 12325 4455
+Connection ~ 11425 4105
+Wire Wire Line
+	11425 3205 11425 3255
+Wire Wire Line
+	11225 1055 11225 3255
+Wire Wire Line
+	11225 2905 11625 2905
+Wire Wire Line
+	9875 1005 10175 1005
+Connection ~ 9975 1005
+Wire Wire Line
+	12325 4455 12325 4105
+Wire Wire Line
+	9975 2155 9125 2155
+Wire Wire Line
+	1545 8680 3670 8680
+Wire Wire Line
+	2495 7080 3670 7080
+Wire Wire Line
+	2495 7180 3670 7180
+Wire Wire Line
+	2495 7280 3670 7280
+Wire Wire Line
+	2495 7480 3670 7480
+Wire Wire Line
+	2495 7580 3670 7580
+Wire Wire Line
+	2495 7680 3670 7680
+Wire Wire Line
+	2495 7780 3670 7780
+Wire Wire Line
+	3370 5880 3370 6880
+Wire Wire Line
+	2570 6530 2570 7080
+Wire Wire Line
+	2670 6530 2670 7180
+Wire Wire Line
+	2770 6530 2770 7280
+Wire Wire Line
+	2970 6530 2970 7480
+Wire Wire Line
+	3070 6530 3070 7580
+Wire Wire Line
+	3170 6530 3170 7680
+Wire Wire Line
+	3270 6530 3270 7780
+Wire Wire Line
+	2570 8830 2570 7980
+Wire Wire Line
+	2670 8830 2670 8080
+Connection ~ 2670 8080
+Wire Wire Line
+	2770 8830 2770 8180
+Connection ~ 2770 8180
+Wire Wire Line
+	2800 9580 3670 9580
+Wire Wire Line
+	3410 9480 3620 9480
+Wire Wire Line
+	2800 9380 3570 9380
+Wire Wire Line
+	5570 7580 6180 7580
+Wire Wire Line
+	5570 7480 6180 7480
+Wire Wire Line
+	5570 7180 6180 7180
+Wire Wire Line
+	5570 6880 5620 6880
+Wire Wire Line
+	5620 6880 5620 6780
+Wire Wire Line
+	5620 6780 5625 6780
+Wire Wire Line
+	5570 6680 6180 6680
+Wire Wire Line
+	5630 6180 5570 6180
+Wire Wire Line
+	5570 6380 6180 6380
+Wire Wire Line
+	5570 6480 6180 6480
+Wire Wire Line
+	5570 6580 6180 6580
+Wire Wire Line
+	5570 7980 6180 7980
+Wire Wire Line
+	6180 7780 5570 7780
+Wire Wire Line
+	5570 9280 6175 9280
+Wire Wire Line
+	5570 9080 6185 9080
+Wire Wire Line
+	3670 10580 3420 10580
+Wire Wire Line
+	3670 10780 3420 10780
+Wire Wire Line
+	3670 9930 3420 9930
+Wire Wire Line
+	6180 1355 8575 1355
+Wire Wire Line
+	5180 1355 5780 1355
+Wire Wire Line
+	5780 1355 5780 1755
+Wire Wire Line
+	12525 2055 12525 2005
+Connection ~ 12525 2005
+Wire Wire Line
+	12325 2005 12975 2005
+Wire Wire Line
+	12325 1755 12325 1805
+Wire Wire Line
+	11625 1755 11625 1805
+Connection ~ 11625 2005
+Connection ~ 12325 2005
+Connection ~ 12325 1805
+Connection ~ 11625 1805
+Wire Wire Line
+	13575 2005 13875 2005
+Wire Wire Line
+	11225 2005 11625 2005
+Connection ~ 11225 2905
+Wire Wire Line
+	12525 2505 12525 2455
+Wire Wire Line
+	12525 1105 12525 1055
+Connection ~ 12525 1055
+Wire Wire Line
+	12325 1055 12975 1055
+Wire Wire Line
+	12325 805  12325 855 
+Wire Wire Line
+	11625 805  11625 855 
+Connection ~ 11625 1055
+Connection ~ 12325 1055
+Connection ~ 12325 855 
+Connection ~ 11625 855 
+Wire Wire Line
+	11225 1055 11625 1055
+Wire Wire Line
+	12525 1555 12525 1505
+Connection ~ 11225 2005
+Wire Wire Line
+	2170 5680 2720 5680
+Wire Wire Line
+	2270 5880 2220 5880
+Wire Wire Line
+	2220 5880 2220 5680
+Connection ~ 2220 5680
+Wire Wire Line
+	8375 2155 8725 2155
+Wire Wire Line
+	3670 9580 3670 9480
+Wire Wire Line
+	3620 9480 3620 9380
+Wire Wire Line
+	3620 9380 3670 9380
+Wire Wire Line
+	3570 9380 3570 9280
+Wire Wire Line
+	3570 9280 3670 9280
+Wire Wire Line
+	3520 9330 3520 9180
+Wire Wire Line
+	3520 9180 3670 9180
+Wire Wire Line
+	3670 8930 3670 9030
+Wire Wire Line
+	3670 9030 3620 9030
+Wire Wire Line
+	3370 8830 3470 8830
+Wire Wire Line
+	10175 1405 10175 1555
+Wire Wire Line
+	10325 1455 10325 2405
+Wire Wire Line
+	10325 1455 10175 1455
+Connection ~ 10175 1455
+Wire Wire Line
+	3155 1505 3155 1805
+Wire Wire Line
+	2830 855  2830 1780
+Connection ~ 2830 1505
+Connection ~ 7325 2255
+Wire Wire Line
+	7325 2755 7325 2880
+Wire Wire Line
+	7325 2880 7575 2880
+Connection ~ 7575 2880
+Wire Wire Line
+	13450 1605 13350 1605
+Wire Wire Line
+	12850 1605 12850 1455
+Wire Wire Line
+	13425 2555 13325 2555
+Wire Wire Line
+	12825 2555 12825 2405
+Wire Wire Line
+	14100 3180 14000 3180
+Connection ~ 12825 2005
+Connection ~ 12850 1055
+Wire Wire Line
+	12975 3180 12825 3180
+Wire Wire Line
+	12825 3180 12825 2905
+Connection ~ 12825 2905
+Wire Wire Line
+	13375 3180 13500 3180
+Wire Wire Line
+	13575 1055 13675 1055
+Wire Wire Line
+	13675 1055 13675 1030
+Wire Wire Line
+	13675 1030 13725 1030
+Wire Wire Line
+	1545 8580 3670 8580
+Wire Wire Line
+	1545 8480 3670 8480
+Wire Wire Line
+	1545 8380 3670 8380
+Wire Wire Line
+	1545 8280 3670 8280
+Wire Wire Line
+	2495 8180 3670 8180
+Wire Wire Line
+	2495 7980 3670 7980
+Wire Wire Line
+	2495 8080 3670 8080
+Connection ~ 2570 7980
+Connection ~ 2570 7080
+Connection ~ 2670 7180
+Connection ~ 2770 7280
+Connection ~ 2870 7380
+Connection ~ 2970 7480
+Connection ~ 3070 7580
+Connection ~ 3170 7680
+Connection ~ 3270 7780
+Wire Wire Line
+	3370 6880 3670 6880
+Wire Wire Line
+	3520 6780 3670 6780
+Wire Wire Line
+	3320 5680 3420 5680
+Wire Wire Line
+	3420 5680 3420 6580
+Wire Wire Line
+	3420 6580 3670 6580
+Wire Wire Line
+	3495 6480 3670 6480
+Wire Wire Line
+	3495 5155 3495 6480
+Wire Wire Line
+	3495 5430 3320 5430
+Wire Wire Line
+	3495 5155 3270 5155
+Connection ~ 3495 5430
+Wire Wire Line
+	3620 6130 3620 6205
+Wire Wire Line
+	3620 6380 3670 6380
+Wire Wire Line
+	3620 6305 3620 6380
+Wire Wire Line
+	5570 8980 6185 8980
+Wire Wire Line
+	5570 10030 6190 10030
+Wire Wire Line
+	5570 10430 6195 10430
+Wire Wire Line
+	3620 6715 3670 6715
+Connection ~ 3670 6715
+Wire Wire Line
+	5570 5980 6240 5980
+Wire Wire Line
+	3770 5980 3770 5780
+Wire Wire Line
+	3695 5780 3695 6080
+Wire Wire Line
+	3695 6080 3770 6080
+Wire Wire Line
+	3620 6715 3620 6725
+Wire Wire Line
+	3620 6725 3520 6725
+Wire Wire Line
+	3520 6725 3520 6715
+Wire Wire Line
+	1545 7780 2095 7780
+Wire Wire Line
+	1545 7680 2095 7680
+Wire Wire Line
+	1545 7580 2095 7580
+Wire Wire Line
+	1545 7480 2095 7480
+Wire Wire Line
+	1545 7280 2095 7280
+Wire Wire Line
+	1545 7180 2095 7180
+Wire Wire Line
+	1545 7080 2095 7080
+Wire Wire Line
+	1545 7980 2095 7980
+Wire Wire Line
+	1545 8080 2095 8080
+Wire Wire Line
+	1545 8180 2095 8180
+Wire Wire Line
+	2090 8680 2095 8680
+Connection ~ 5855 8980
+Connection ~ 5755 8980
+Connection ~ 5865 10030
+Connection ~ 5765 10030
+Connection ~ 5845 10430
+Connection ~ 5745 10430
+Connection ~ 5770 5980
+Connection ~ 5670 5980
+Wire Wire Line
+	3620 6330 3620 6180
+Connection ~ 3620 6180
+Connection ~ 3620 6330
+Connection ~ 3620 6580
+Connection ~ 3520 6580
+Connection ~ 3620 6780
+Connection ~ 3470 6880
+Connection ~ 3570 6880
+Connection ~ 1820 7080
+Connection ~ 1720 7080
+Connection ~ 2020 7180
+Connection ~ 1920 7180
+Connection ~ 1820 7280
+Connection ~ 1720 7280
+Connection ~ 2020 7380
+Connection ~ 1920 7380
+Connection ~ 1820 7480
+Connection ~ 1720 7480
+Connection ~ 2020 7580
+Connection ~ 1920 7580
+Connection ~ 1720 7680
+Connection ~ 1820 7680
+Connection ~ 2020 7780
+Connection ~ 1920 7780
+Connection ~ 1820 7980
+Connection ~ 1720 7980
+Connection ~ 2020 8080
+Connection ~ 1920 8080
+Connection ~ 1720 8180
+Connection ~ 1820 8180
+Connection ~ 2020 8280
+Connection ~ 1920 8280
+Connection ~ 1820 8380
+Connection ~ 1720 8380
+Connection ~ 2020 8480
+Connection ~ 1920 8480
+Connection ~ 1720 8580
+Connection ~ 1820 8580
+Connection ~ 2020 8680
+Connection ~ 1920 8680
+Connection ~ 3495 6355
+Connection ~ 3495 6255
+Wire Wire Line
+	3270 8830 3270 8800
+Wire Wire Line
+	3270 8700 3270 8680
+Connection ~ 3270 8680
+Wire Wire Line
+	3170 8830 3170 8800
+Wire Wire Line
+	3070 8830 3070 8800
+Wire Wire Line
+	2970 8830 2970 8800
+Wire Wire Line
+	3170 8700 3170 8580
+Connection ~ 3170 8580
+Wire Wire Line
+	3070 8700 3070 8480
+Connection ~ 3070 8480
+Wire Wire Line
+	2970 8700 2970 8380
+Connection ~ 2970 8380
+Wire Wire Line
+	7510 2055 7575 2055
+Wire Wire Line
+	7510 1505 7510 2055
+Wire Wire Line
+	9225 2490 9225 2155
+Connection ~ 9225 2155
+Wire Wire Line
+	8625 2490 8625 2155
+Connection ~ 8625 2155
+Connection ~ 2495 8680
+Connection ~ 2090 8680
+Connection ~ 2495 8580
+Connection ~ 2095 8580
+Connection ~ 2495 8480
+Connection ~ 2095 8480
+Wire Wire Line
+	2495 8380 2495 8385
+Wire Wire Line
+	2495 8385 2500 8385
+Wire Wire Line
+	2500 8385 2500 8380
+Connection ~ 2500 8380
+Connection ~ 2095 8380
+Wire Wire Line
+	2870 6530 2870 7380
+Connection ~ 1655 1505
+Wire Wire Line
+	3005 2335 3005 2455
+Wire Wire Line
+	3005 2335 2830 2335
+Connection ~ 2830 2335
+Wire Wire Line
+	4620 2995 4620 3345
+Wire Wire Line
+	7575 1755 7510 1755
+Connection ~ 7510 1755
+Connection ~ 4580 1355
+Wire Wire Line
+	3570 1355 3570 2145
+Wire Wire Line
+	3770 1505 3770 2145
+Connection ~ 3155 1505
+Wire Wire Line
+	7325 855  7325 1690
+Wire Wire Line
+	7325 855  2830 855 
+Wire Wire Line
+	2495 7380 3670 7380
+Wire Wire Line
+	2020 7380 2095 7380
+Wire Wire Line
+	1545 7380 1920 7380
+Wire Wire Line
+	2870 8830 2870 8800
+Wire Wire Line
+	2870 8700 2870 8280
+Connection ~ 2870 8280
+Connection ~ 2495 8280
+Connection ~ 2095 8280
+Wire Wire Line
+	2205 1505 2055 1505
+$Sheet
+S -1345 4215 1220 880 
+U 553A6702
+F0 "UnterSpannungsSchutz" 60
+F1 "UnterSpannungsSchutz.sch" 60
+$EndSheet
+$Sheet
+S -865 5510 735  345 
+U 553A788C
+F0 "Verpols.B" 60
+F1 "Verpols.B.sch" 60
+F2 "Verpols.B.aus" O R -130 5740 60 
+F3 "Verpol.s.B.in" I R -130 5605 60 
+$EndSheet
+$Sheet
+S -835 55   620  150 
+U 553A7355
+F0 "Sonar" 39
+F1 "Sonar.sch" 39
+$EndSheet
+$Sheet
+S -845 410  630  160 
+U 553B3D38
+F0 "Odometry" 39
+F1 "Odometry.sch" 39
+$EndSheet
+$Sheet
+S -855 795  640  165 
+U 553BB67C
+F0 "Perimeter" 39
+F1 "Perimeter.sch" 39
+$EndSheet
+$Sheet
+S -955 1155 860  175 
+U 553B6850
+F0 "ReservePins" 39
+F1 "ReservePins.sch" 39
+$EndSheet
+$Sheet
+S -935 1545 870  195 
+U 553C8677
+F0 "Dropsensor" 39
+F1 "Dropsensor.sch" 39
+$EndSheet
+$Sheet
+S -960 1965 875  195 
+U 553D014E
+F0 "I2C" 39
+F1 "I2C.sch" 39
+$EndSheet
+$Sheet
+S -770 2860 680  225 
+U 553DFC0F
+F0 "Stiftleisten" 39
+F1 "Stiftleisten.sch" 39
+$EndSheet
+$Sheet
+S -825 -330 615  175 
+U 5540C583
+F0 "RTC Uhr" 39
+F1 "RTC Uhr.sch" 39
+$EndSheet
+$Sheet
+S -960 2420 880  185 
+U 553BDA33
+F0 "serielle Schnittstelle" 39
+F1 "serielle Schnittstelle.sch" 39
+$EndSheet
+$Sheet
+S 185  -330 585  175 
+U 553D2376
+F0 "Bohrlöcher" 39
+F1 "Bohrlöcher.sch" 39
+$EndSheet
+$Sheet
+S -765 3275 685  185 
+U 553D8AD9
+F0 "Motortreiber" 39
+F1 "Motortreiber.sch" 39
+$EndSheet
+Wire Wire Line
+	3670 9630 3415 9630
+Wire Wire Line
+	3520 9330 3410 9330
+Wire Wire Line
+	5570 8180 6180 8180
+Wire Wire Line
+	5670 8430 6115 8430
+Wire Wire Line
+	6115 8430 6115 8380
+Wire Wire Line
+	6115 8380 6185 8380
+Wire Wire Line
+	5670 8480 5670 8530
+Wire Wire Line
+	5670 8530 6115 8530
+Wire Wire Line
+	6115 8530 6115 8480
+Wire Wire Line
+	6115 8480 6185 8480
+Connection ~ 5670 8480
+Wire Wire Line
+	5570 8280 6180 8280
+Connection ~ 5670 8380
+Wire Wire Line
+	10195 925  9975 925 
+Wire Wire Line
+	9975 925  9975 2155
+$Sheet
+S -640 3715 555  225 
+U 554017E4
+F0 "Sonstiges" 39
+F1 "Sonstiges.sch" 39
+$EndSheet
+$EndSCHEMATC
