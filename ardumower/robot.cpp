@@ -51,12 +51,16 @@ Robot::Robot(){
     
   motorRightRpm = motorLeftRpm = 0;
   lastMotorRpmTime = 0;
+  lastSetMotorSpeedTime = 0;
   motorLeftSpeed =  motorRightSpeed = 0; 
   motorLeftPWM = motorRightPWM = 0;
   motorRightSenseADC = motorLeftSenseADC = 0;
   motorLeftSenseCurrent = motorRightSenseCurrent = 0;     
   motorLeftSense = motorRightSense = 0;
   motorLeftSenseCounter = motorRightSenseCounter = 0;  
+  motorZeroSettleTime = 0;  
+  motorLeftZeroTimeout = 0;
+  motorRightZeroTimeout = 0;  
   
   remoteSteer = remoteSpeed = remoteMow = remoteSwitch = 0;  
   remoteSteerLastTime = remoteSpeedLastTime =remoteMowLastTime =remoteSwitchLastTime = 0;
@@ -245,7 +249,10 @@ void Robot::loadUserSettings(){
   short magic = 0;
   int addr = 0;
   eeread(addr, magic);
-  if (magic != MAGIC) return;
+  if (magic != MAGIC) {
+    Console.println("NO EEPROM SETTINGS FOUND");
+    return;
+  }
   loadSaveUserSettings(true);
 }
 void Robot::printSettingSerial(){
@@ -505,30 +512,49 @@ void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState
 }
 
 // sets wheel motor actuators
-// - ensures that the motors (and gears) are not switched to 0% (or 100%) too fast (motorAccel)
-// - ensures that motors voltage is not higher than motorSpeedMax
+// - driver protection: delays polarity change until motor speed (EMV) is zero
+//   http://wiki.ardumower.de/images/a/a5/Motor_polarity_switch_protection.png 
+// - optional: ensures that the motors (and gears) are not switched to 0% (or 100%) too fast (motorAccel)
 void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
-  // FIXME: we might need to ingore acceleration for PID controllers 
-  if (!useAccel){
-    motorLeftPWM = pwmLeft;
-    motorRightPWM = pwmRight;
-  } else {
+  if (useAccel){
     double accel = motorAccel * loopsTa;       
-    motorLeftPWM = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft); 
-    motorRightPWM = (1.0 - accel) * motorRightPWM + accel * ((double)pwmRight);  
+    pwmLeft = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft); 
+    pwmRight = (1.0 - accel) * motorRightPWM + accel * ((double)pwmRight);  
   }
+  // ----- driver protection (avoids driver explosion) ----------
+  unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
+  lastSetMotorSpeedTime = millis();  
+  if (TaC > 1000) TaC = 0;  
+  if ( ((pwmLeft < 0) && (motorLeftPWM >= 0)) ||
+       ((pwmLeft > 0) && (motorLeftPWM <= 0)) ) { // changing direction should take place?
+    if (motorLeftZeroTimeout != 0)
+      pwmLeft = motorLeftPWM - motorLeftPWM *  ((float)TaC)/200.0; // reduce speed
+  }
+  if ( ((pwmRight < 0) && (motorRightPWM >= 0)) ||
+       ((pwmRight > 0) && (motorRightPWM <= 0)) ) { // changing direction should take place?    
+    if (motorRightZeroTimeout != 0) // reduce motor rotation? (will reduce EMF)      
+      pwmRight = motorRightPWM - motorRightPWM *   ((float)TaC)/200.0;  // reduce speed
+  }            
+  if (pwmLeft == 0) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
+    else motorLeftZeroTimeout = 300;  
+  if (pwmRight == 0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
+    else motorRightZeroTimeout = 300;  
+  // ---------------------------------
+  motorLeftPWM = pwmLeft;
+  motorRightPWM = pwmRight;
   /*Serial.print(motorLeftPWM);
   Serial.print("\t");
   Serial.println(motorRightPWM);*/
-  if (motorLeftSwapDir)
+  if (motorLeftSwapDir)  // swap pin polarity?
     setActuator(ACT_MOTOR_LEFT, -motorLeftPWM);
   else
     setActuator(ACT_MOTOR_LEFT, motorLeftPWM);
-  if (motorRightSwapDir)
+  if (motorRightSwapDir)   // swap pin polarity?
     setActuator(ACT_MOTOR_RIGHT, -motorRightPWM);
   else 
     setActuator(ACT_MOTOR_RIGHT, motorRightPWM);
 }
+
 
 // sets mower motor actuator
 // - ensures that the motor is not switched to 100% too fast (motorMowAccel)
@@ -686,6 +712,7 @@ void Robot::motorControl(){
     // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorLeftPID.x = motorLeftRpm;                 // IST 
     motorLeftPID.w = motorLeftSpeed;               // SOLL 
+    if (millis() < stateStartTime + motorZeroSettleTime) motorLeftPID.w = 0; // get zero speed first after state change
     motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
     motorLeftPID.y_max = motorSpeedMaxPwm;     // Regel-MAX
     motorLeftPID.max_output = motorSpeedMaxPwm;    // Begrenzung
@@ -700,6 +727,7 @@ void Robot::motorControl(){
     motorRightPID.Kd = motorLeftPID.Kd;          
     motorRightPID.x = motorRightRpm;               // IST
     motorRightPID.w = motorRightSpeed;             // SOLL
+    if (millis() < stateStartTime + motorZeroSettleTime) motorRightPID.w = 0; // get zero speed first after state change
     motorRightPID.y_min = -motorSpeedMaxPwm;       // Regel-MIN
     motorRightPID.y_max = motorSpeedMaxPwm;        // Regel-MAX
     motorRightPID.max_output = motorSpeedMaxPwm;   // Begrenzung
@@ -716,7 +744,7 @@ void Robot::motorControl(){
   else{
     int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
     int rightSpeed =min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorRightSpeed, -motorSpeedMax, motorSpeedMax, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
-    if (millis() < stateStartTime + 1000) {       
+    if (millis() < stateStartTime + motorZeroSettleTime) {
       leftSpeed = rightSpeed = 0; // slow down at state start      
       if (mowPatternCurr != MOW_LANES) imuDriveHeading = imu.ypr.yaw; // set drive heading    
     }
@@ -1466,7 +1494,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   } 
   else if (stateNew == STATE_REVERSE)  {
     motorLeftSpeed = motorRightSpeed = -motorSpeedMax/1.25;                    
-    stateEndTime = millis() + motorReverseTime;                     
+    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime;
   }   
   else if (stateNew == STATE_ROLL) {                  
       imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
@@ -1477,7 +1505,7 @@ void Robot::setNextState(byte stateNew, byte dir){
         imuRollHeading = scalePI(imuDriveHeading + PI/20);        
         imuRollDir = LEFT;
       }      
-      stateEndTime = millis() + rand() % motorRollTimeMax/2 + motorRollTimeMax/2;               
+      stateEndTime = millis() + random(motorRollTimeMax/2,motorRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
 	motorLeftSpeed = motorSpeedMax/1.25;
 	motorRightSpeed = -motorLeftSpeed/1.25;						
