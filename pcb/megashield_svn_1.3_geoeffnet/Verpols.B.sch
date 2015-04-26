@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Lötpad_2,5mm
 LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
@@ -16,11 +17,11 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 16
+Sheet 4 17
 Title "Ardumower shield SVN Version 1.3"
 Date "Sonntag, 26. April 2015"
 Rev "1.3"
-Comp " by UweZ"
+Comp "von UweZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -60,10 +61,10 @@ Verpols.B.aus
 Text HLabel 4385 1835 0    60   Input ~ 0
 Verpol.s.B.in
 $Comp
-L GND #PWR039
+L GND #PWR026
 U 1 1 553AAF15
 P 5095 3155
-F 0 "#PWR039" H 5095 2905 60  0001 C CNN
+F 0 "#PWR026" H 5095 2905 60  0001 C CNN
 F 1 "GND" H 5095 3005 60  0000 C CNN
 F 2 "" H 5095 3155 60  0000 C CNN
 F 3 "" H 5095 3155 60  0000 C CNN

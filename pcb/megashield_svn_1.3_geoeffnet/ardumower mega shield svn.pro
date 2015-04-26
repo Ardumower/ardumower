@@ -1,4 +1,4 @@
-update=24.04.2015 11:43:56
+update=26.04.2015 23:59:06
 last_client=kicad
 [pcbnew]
 version=1
@@ -37,18 +37,19 @@ RptLab=1
 LabSize=60
 [eeschema]
 version=1
-LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
+LibDir=acs712.pretty
 [eeschema/libraries]
-LibName1=C:/Users/Uwe/Documents/KICAD/BibliothekenUwe.pretty/power
-LibName2=acs712.pretty/Bluetooth_ZS_HC_05
-LibName3=acs712.pretty/Bluetooth_CZ_HC_05
-LibName4=acs712.pretty/ds1307
-LibName5=acs712.pretty/Wlan_ESP8266
-LibName6=transistor-fet
-LibName7=transistor-fet+irf7201
-LibName8=transistors
-LibName9=w_transistor
-LibName10=diode
-LibName11=diode-1
-LibName12=led
-LibName13=ardumower mega shield svn-cache
+LibName1=acs712.pretty/Lötpad_2,5mm
+LibName2=C:/Users/Uwe/Documents/KICAD/BibliothekenUwe.pretty/power
+LibName3=acs712.pretty/Bluetooth_ZS_HC_05
+LibName4=acs712.pretty/Bluetooth_CZ_HC_05
+LibName5=acs712.pretty/ds1307
+LibName6=acs712.pretty/Wlan_ESP8266
+LibName7=transistor-fet
+LibName8=transistor-fet+irf7201
+LibName9=transistors
+LibName10=w_transistor
+LibName11=diode
+LibName12=diode-1
+LibName13=led
+LibName14=ardumower mega shield svn-cache
