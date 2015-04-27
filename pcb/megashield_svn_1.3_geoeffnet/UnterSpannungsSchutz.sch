@@ -17,7 +17,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 17
+Sheet 16 17
 Title "Ardumower shield SVN Version 1.3"
 Date "Sonntag, 26. April 2015"
 Rev "1.3"
@@ -98,12 +98,12 @@ $EndComp
 $Comp
 L DIODE D15
 U 1 1 553A6F4A
-P 7120 2040
-F 0 "D15" H 7120 2140 40  0000 C CNN
-F 1 "1N4148" H 7120 1940 40  0000 C CNN
-F 2 "" H 7120 2040 60  0001 C CNN
-F 3 "" H 7120 2040 60  0000 C CNN
-	1    7120 2040
+P 7120 1515
+F 0 "D15" H 7120 1615 40  0000 C CNN
+F 1 "1N4148" H 7120 1415 40  0000 C CNN
+F 2 "" H 7120 1515 60  0001 C CNN
+F 3 "" H 7120 1515 60  0000 C CNN
+	1    7120 1515
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -185,11 +185,11 @@ F 3 "" H 7520 5580 60  0000 C CNN
 	1    7520 5580
 	1    0    0    -1  
 $EndComp
-Text Notes 7580 2395 0    60   ~ 0
+Text Notes 8300 2305 0    60   ~ 0
 Taster Eingang gegen GND geschaltet
-Text Notes 7605 2080 0    60   ~ 0
+Text Notes 8250 1555 0    60   ~ 0
 Arduino Mega auf Pin 51 ????
-Text Notes 8395 3800 0    60   ~ 0
+Text Notes 9175 3820 0    60   ~ 0
 Arduino Mega B auf Pin ??
 Wire Wire Line
 	5045 3220 5045 2640
@@ -214,7 +214,7 @@ Wire Wire Line
 Wire Wire Line
 	7520 3220 7520 3565
 Wire Wire Line
-	7820 3765 8125 3765
+	7820 3765 8265 3765
 Wire Wire Line
 	7975 4300 7975 3765
 Connection ~ 7975 3765
@@ -254,47 +254,47 @@ Wire Wire Line
 	4170 4720 4490 4720
 Connection ~ 3875 2040
 Wire Wire Line
-	6745 2040 6745 2580
+	6745 1515 6745 2580
 Wire Wire Line
-	7530 2350 6745 2350
+	6745 2350 7890 2350
 Connection ~ 6745 2350
 Connection ~ 5045 3220
 Connection ~ 4670 3220
 Wire Wire Line
-	6920 2040 6745 2040
+	6920 1515 6745 1515
 Wire Wire Line
-	7320 2040 7530 2040
+	7320 1515 7530 1515
 $Comp
 L CONN_2 P20
 U 1 1 553E561A
-P 8570 1075
-F 0 "P20" V 8520 1075 40  0000 C CNN
-F 1 "Button" V 8620 1075 40  0000 C CNN
-F 2 "ACS712:Pin_Header_Straight_1x02" H 8570 1075 60  0001 C CNN
-F 3 "" H 8570 1075 60  0000 C CNN
-F 4 "Value" H 8570 1075 60  0001 C CNN "Bestellnummer"
-	1    8570 1075
-	-1   0    0    1   
+P 7990 2000
+F 0 "P20" V 7940 2000 40  0000 C CNN
+F 1 "Button" V 8040 2000 40  0000 C CNN
+F 2 "ACS712:Pin_Header_Straight_1x02" H 7990 2000 60  0001 C CNN
+F 3 "" H 7990 2000 60  0000 C CNN
+F 4 "Value" H 7990 2000 60  0001 C CNN "Bestellnummer"
+	1    7990 2000
+	0    -1   -1   0   
 $EndComp
 $Comp
 L GND #PWR025
 U 1 1 553E5900
-P 9165 975
-F 0 "#PWR025" H 9165 725 60  0001 C CNN
-F 1 "GND" V 9165 760 60  0000 C CNN
-F 2 "" H 9165 975 60  0000 C CNN
-F 3 "" H 9165 975 60  0000 C CNN
-	1    9165 975 
-	0    -1   -1   0   
+P 8090 2595
+F 0 "#PWR025" H 8090 2345 60  0001 C CNN
+F 1 "GND" V 8090 2380 60  0000 C CNN
+F 2 "" H 8090 2595 60  0000 C CNN
+F 3 "" H 8090 2595 60  0000 C CNN
+	1    8090 2595
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8920 975  9165 975 
-Text GLabel 9165 1175 2    39   Output ~ 0
-pinButton
-Wire Wire Line
-	8920 1175 9165 1175
+	8090 2350 8090 2595
 Text HLabel 3510 2040 0    60   Input ~ 0
 Batterieeingang 24V
 Text HLabel 4490 4720 2    60   Output ~ 0
 Batterieausgang 24V
+Text HLabel 7530 1515 2    60   Output ~ 0
+PinButton
+Text HLabel 8265 3765 2    60   Input ~ 0
+Ausschalter
 $EndSCHEMATC
