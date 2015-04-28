@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "590"
+#define VER "591"
  
 
 // sensors
@@ -104,6 +104,9 @@ enum {
 
 // error types
 enum {
+  ERR_MOTOR_LEFT,
+  ERR_MOTOR_RIGHT,
+  ERR_MOTOR_MOW,
   ERR_MOW_SENSE,
   ERR_IMU_COMM,
   ERR_IMU_TILT,
@@ -438,13 +441,13 @@ class Robot
     // other
     virtual void beep(int numberOfBeeps, boolean shortbeep);    
     virtual void printInfo(Stream &s);        
-    virtual void setUserSwitches();        
+    virtual void setUserSwitches(); 
+    virtual void addErrorCounter(byte errType);    
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
     virtual void loadSaveUserSettings(boolean readflag);
     virtual void loadUserSettings();
-    virtual void addErrorCounter(byte errType);
     virtual void checkErrorCounter();
     virtual void printSettingSerial();
     

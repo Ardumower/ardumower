@@ -218,6 +218,12 @@ void RemoteControl::sendSettingsMenu(boolean update){
 
 void RemoteControl::sendErrorMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Error counters`1000"));         
+  Bluetooth.print(F("|zz~Motor left "));
+  Bluetooth.print(robot->errorCounterMax[ERR_MOTOR_LEFT]);
+  Bluetooth.print(F("|zz~Motor right "));
+  Bluetooth.print(robot->errorCounterMax[ERR_MOTOR_RIGHT]);
+  Bluetooth.print(F("|zz~Motor mow "));
+  Bluetooth.print(robot->errorCounterMax[ERR_MOTOR_MOW]);  
   Bluetooth.print(F("|zz~Mow sense "));
   Bluetooth.print(robot->errorCounterMax[ERR_MOW_SENSE]);
   Bluetooth.print(F("|zz~IMU comm "));

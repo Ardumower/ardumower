@@ -426,11 +426,18 @@ void Mower::setup(){
 }
 
 void checkMotorFault(){
-  if ( (digitalRead(pinMotorLeftFault)==LOW) || (digitalRead(pinMotorRightFault)==LOW) ){
+  if (digitalRead(pinMotorLeftFault)==LOW){
+    robot.addErrorCounter(ERR_MOTOR_LEFT);
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+  }
+  if  (digitalRead(pinMotorRightFault)==LOW){
+    robot.addErrorCounter(ERR_MOTOR_RIGHT);
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
   }
   if (digitalRead(pinMotorMowFault)==LOW){  
+    robot.addErrorCounter(ERR_MOTOR_MOW);
     digitalWrite(pinMotorMowEnable, LOW);
     digitalWrite(pinMotorMowEnable, HIGH);
   }
