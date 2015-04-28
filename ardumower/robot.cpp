@@ -399,17 +399,24 @@ void Robot::deleteUserSettings(){
 }
 
 void Robot::addErrorCounter(byte errType){   
+  // increase error counters (both temporary and maximum error counters)
   if (errorCounter[errType] < 255) errorCounter[errType]++;
   if (errorCounterMax[errType] < 255) errorCounterMax[errType]++;    
 }
 
+void Robot::resetErrorCounters(){
+    for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=errorCounterMax[i]=0;
+}
+
 void Robot::checkErrorCounter(){
   if (millis() >= nextTimeErrorCounterReset){
+    // reset all temporary error counters after 30 seconds (maximum error counters still continue to count) 
     for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=0;
     nextTimeErrorCounterReset = millis() + 30000; // 30 sec
   }  
   if (stateCurr != STATE_OFF) {
    for (int i=0; i < ERR_ENUM_COUNT; i++){
+     // set to fatal error if any temporary error counter reaches 10
      if (errorCounter[i] > 10) setNextState(STATE_ERROR, 0);
     }
   }

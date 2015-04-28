@@ -124,6 +124,7 @@ class RemoteControl
     void sendADCMenu(boolean update);
     
     void processMotorMenu(String pfodCmd);    
+    void processErrorMenu(String pfodCmd);        
     void processMowMenu(String pfodCmd);
     void processBumperMenu(String pfodCmd);
     void processSonarMenu(String pfodCmd);    

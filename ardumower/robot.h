@@ -443,6 +443,7 @@ class Robot
     virtual void printInfo(Stream &s);        
     virtual void setUserSwitches(); 
     virtual void addErrorCounter(byte errType);    
+    virtual void resetErrorCounters();
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);

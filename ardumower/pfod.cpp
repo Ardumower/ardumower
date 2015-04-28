@@ -218,6 +218,7 @@ void RemoteControl::sendSettingsMenu(boolean update){
 
 void RemoteControl::sendErrorMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Error counters`1000"));         
+  Bluetooth.print(F("|z00~Reset"));
   Bluetooth.print(F("|zz~Motor left "));
   Bluetooth.print(robot->errorCounterMax[ERR_MOTOR_LEFT]);
   Bluetooth.print(F("|zz~Motor right "));
@@ -238,6 +239,12 @@ void RemoteControl::sendErrorMenu(boolean update){
   Bluetooth.print(robot->errorCounterMax[ERR_RTC_DATA]);
   Bluetooth.println("}");
 }  
+
+void RemoteControl::processErrorMenu(String pfodCmd){      
+  if (pfodCmd == "z00") robot->resetErrorCounters();
+  sendErrorMenu(true);
+}
+
 
 void RemoteControl::sendMotorMenu(boolean update){  
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Motor`1000"));     
@@ -1361,6 +1368,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
         else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);
         else if (pfodCmd.startsWith("u")) processDropMenu(pfodCmd);            
+        else if (pfodCmd.startsWith("z")) processErrorMenu(pfodCmd);                    
         else {
           // no match
           Bluetooth.println("{}");         
