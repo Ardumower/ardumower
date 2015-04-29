@@ -1,7 +1,7 @@
 # Ardumower
 
 ## Description
-Develop an open source robotic lawn mower software for every robotic lawn mower in the universe!
+Develop an open source robotic lawn mower
 
 ## Project site
 http://www.ardumower.de
