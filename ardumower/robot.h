@@ -113,7 +113,8 @@ enum {
   ERR_RTC_COMM,
   ERR_RTC_DATA,
   ERR_PERIMETER_TIMEOUT,
-  ERR_TRACKING,  
+  ERR_TRACKING,
+  // <---- add new error types here  
   ERR_ENUM_COUNT,  
 };  
 
