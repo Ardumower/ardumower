@@ -1,5 +1,8 @@
 # Ardumower
 
+## Reporting a bug / Fehler melden
+[Click here!](https://github.com/Ardumower/ardumower/issues/new?title=Error+XYZ+%2F+Fehler+XYZ&body=Please+always+fill-in+below%2FBitte+unbedingt+ausf%C3%BCllen%21%0D%0A%0D%0A--English--%0D%0AYour+battery+voltage+%2812v%2C+24v%29%3A+24v%0D%0AYour+gear+motor+%28Ardumower%2C+other%29%3A+Ardumower+motor%0D%0AYour+Ardumower+software+version+%28pfodApp-%3EInfo%29%3A+890%0D%0AYour+PCB+version+%28printed+on+PCB%29%3A+0.5%0D%0AExact+error+description%3A++....%0D%0A%0D%0A--Deutsch--%0D%0ADeine+Akku-Spannung+%2812v%2C+24v%29%3A+24v%0D%0ADein+Antriebsmotor+%28Ardumower%2C+anderer%29%3A+Ardumower+Motor%0D%0ADeine+Ardumower-Software+Version%3A+%28pfodApp-%3EInfo%29%3A+890%0D%0ADeine+PCB-Version+%28siehe+Aufdruck%29%3A+0.5%0D%0AGenaue+Fehlerbeschreibung%3A++....%0D%0A) 
+
 ## Description
 Develop an open source robotic lawn mower
 
