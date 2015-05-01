@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 38
+#define MAGIC 39
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -525,11 +525,12 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
   //Console.print(pwmLeft);
   unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
   lastSetMotorSpeedTime = millis();  
-  if (TaC > 1000) TaC = 0;  
-  if (useAccel){
-    double accel = motorAccel * loopsTa;       
-    pwmLeft = (1.0 - accel) * motorLeftPWMCurr + accel * ((double)pwmLeft); 
-    pwmRight = (1.0 - accel) * motorRightPWMCurr + accel * ((double)pwmRight);  
+  if (TaC > 1000) TaC = 1;  
+  if (useAccel){    
+    // http://phrogz.net/js/framerate-independent-low-pass-filter.html
+    // value += (currentValue - value) / (smoothing / timeSinceLastSample);        
+    pwmLeft = motorLeftPWMCurr + (((float)pwmLeft)-motorLeftPWMCurr) / (motorAccel/((float)TaC));    
+    pwmRight = motorRightPWMCurr + (((float)pwmRight)-motorRightPWMCurr) / (motorAccel/((float)TaC));        
   }
   // ----- driver protection (avoids driver explosion) ----------
   if ( ((pwmLeft < 0) && (motorLeftPWMCurr >= 0)) ||
@@ -549,9 +550,9 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
       else motorRightZeroTimeout = 500;
   } else {
     if (pwmLeft == 0)  motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
-      else motorLeftZeroTimeout = 2000;  
+      else motorLeftZeroTimeout = 700;  
     if (pwmRight == 0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
-      else motorRightZeroTimeout = 2000;  
+      else motorRightZeroTimeout = 700;  
   }
   // ---------------------------------
   motorLeftPWMCurr = pwmLeft;

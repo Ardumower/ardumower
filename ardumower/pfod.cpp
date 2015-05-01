@@ -281,7 +281,7 @@ void RemoteControl::sendMotorMenu(boolean update){
   Bluetooth.print(robot->motorRightPWMCurr);   
   sendSlider("a06", F("Speed max in rpm"), robot->motorSpeedMaxRpm, "", 1, 100);    
   sendSlider("a15", F("Speed max in pwm"), robot->motorSpeedMaxPwm, "", 1, 255);    
-  sendSlider("a11", F("Accel"), robot->motorAccel, "", 0.01, 0.1);  
+  sendSlider("a11", F("Accel"), robot->motorAccel, "", 1, 1000);  
   sendSlider("a18", F("Power ignore time"), robot->motorPowerIgnoreTime, "", 1, 8000);     
   sendSlider("a07", F("Roll time max"), robot->motorRollTimeMax, "", 1, 8000);     
   sendSlider("a08", F("Reverse time"), robot->motorReverseTime, "", 1, 8000);     
@@ -326,7 +326,7 @@ void RemoteControl::processMotorMenu(String pfodCmd){
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, robot->motorRollTimeMax, 1); 
     else if (pfodCmd.startsWith("a08")) processSlider(pfodCmd, robot->motorReverseTime, 1);
     else if (pfodCmd.startsWith("a09")) processSlider(pfodCmd, robot->motorForwTimeMax, 10);
-    else if (pfodCmd.startsWith("a11")) processSlider(pfodCmd, robot->motorAccel, 0.01);    
+    else if (pfodCmd.startsWith("a11")) processSlider(pfodCmd, robot->motorAccel, 1);    
     else if (pfodCmd.startsWith("a12")) processSlider(pfodCmd, robot->motorBiDirSpeedRatio1, 0.01);    
     else if (pfodCmd.startsWith("a13")) processSlider(pfodCmd, robot->motorBiDirSpeedRatio2, 0.01);    
     else if (pfodCmd.startsWith("a14")) processPIDSlider(pfodCmd, "a14", robot->motorLeftPID, 0.01, 3.0);

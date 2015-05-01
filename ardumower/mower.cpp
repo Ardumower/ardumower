@@ -126,7 +126,7 @@ Mower robot;
 Mower::Mower(){
   name = "Ardumower";
   // ------- wheel motors -----------------------------
-  motorAccel       = 0.002;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too high)
+  motorAccel       = 500;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
   motorSpeedMaxRpm       = 33;   // motor wheel max RPM
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
   motorPowerMax     = 50;    // motor wheel max power (Watt)
