@@ -721,24 +721,33 @@ void Robot::motorControlImuDir(){
 
 // check for odometry sensor faults    
 void Robot::checkOdometryFaults(){
-    if ( (odometryUse) && (stateCurr == STATE_ROLL) &&  (millis()-stateStartTime>1000) ) {      
-      if ( ((motorLeftPWMCurr > 100) && (motorLeftRpmCurr < 3)) || ((motorLeftPWMCurr < -100) && (motorLeftRpmCurr > 3)) )  {
-        Console.print("Left odometry error: PWM=");
-        Console.print(motorLeftPWMCurr);
-        Console.print("\tRPM=");
-        Console.println(motorLeftRpmCurr);
-        addErrorCounter(ERR_ODOMETRY_LEFT);
-        setNextState(STATE_ERROR, 0);
-      }
-      if ( ((motorRightPWMCurr > 100) && (motorRightRpmCurr < 3)) || ((motorRightPWMCurr < -100) && (motorRightRpmCurr > 3)) )  {
-        Console.print("Right odometry error: PWM=");
-        Console.print(motorRightPWMCurr);
-        Console.print("\tRPM=");
-        Console.println(motorRightRpmCurr);
-        addErrorCounter(ERR_ODOMETRY_RIGHT);
-        setNextState(STATE_ERROR, 0);
-      }
-    }  
+  if (!odometryUse)  return;
+  bool leftErr = false;
+  bool rightErr = false;
+  if ((stateCurr == STATE_FORWARD) &&  (millis()-stateStartTime>8000) ) {
+    if ( (motorLeftPWMCurr > 100) && (motorLeftRpmCurr == 0)) leftErr = true;
+    if ( (motorRightPWMCurr > 100) && (motorRightRpmCurr == 0)) rightErr = true;
+  }  
+  if ((stateCurr == STATE_ROLL) &&  (millis()-stateStartTime>1000) ) {
+    if ( ((motorLeftPWMCurr > 100) && (motorLeftRpmCurr < -3)) || ((motorLeftPWMCurr < -100) && (motorLeftRpmCurr > 3)) ) leftErr = true;
+    if ( ((motorRightPWMCurr > 100) && (motorRightRpmCurr < -3)) || ((motorRightPWMCurr < -100) && (motorRightRpmCurr > 3)) ) rightErr = true;
+  }  
+  if (leftErr){
+    Console.print("Left odometry error: PWM=");
+    Console.print(motorLeftPWMCurr);
+    Console.print("\tRPM=");
+    Console.println(motorLeftRpmCurr);
+    addErrorCounter(ERR_ODOMETRY_LEFT);
+    setNextState(STATE_ERROR, 0);
+  }
+  if (rightErr){
+    Console.print("Right odometry error: PWM=");
+    Console.print(motorRightPWMCurr);
+    Console.print("\tRPM=");
+    Console.println(motorRightRpmCurr);
+    addErrorCounter(ERR_ODOMETRY_RIGHT);
+    setNextState(STATE_ERROR, 0);
+  }
 }
 
 
