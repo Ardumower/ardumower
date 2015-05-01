@@ -523,15 +523,15 @@ void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState
 //   http://wiki.ardumower.de/images/a/a5/Motor_polarity_switch_protection.png 
 // - optional: ensures that the motors (and gears) are not switched to 0% (or 100%) too fast (motorAccel)
 void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
+  unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
+  lastSetMotorSpeedTime = millis();  
+  if (TaC > 1000) TaC = 0;  
   if (useAccel){
     double accel = motorAccel * loopsTa;       
     pwmLeft = (1.0 - accel) * motorLeftPWM + accel * ((double)pwmLeft); 
     pwmRight = (1.0 - accel) * motorRightPWM + accel * ((double)pwmRight);  
   }
   // ----- driver protection (avoids driver explosion) ----------
-  unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
-  lastSetMotorSpeedTime = millis();  
-  if (TaC > 1000) TaC = 0;  
   if ( ((pwmLeft < 0) && (motorLeftPWM >= 0)) ||
        ((pwmLeft > 0) && (motorLeftPWM <= 0)) ) { // changing direction should take place?
     if (motorLeftZeroTimeout != 0)
@@ -542,10 +542,17 @@ void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
     if (motorRightZeroTimeout != 0) // reduce motor rotation? (will reduce EMF)      
       pwmRight = motorRightPWM - motorRightPWM *   ((float)TaC)/200.0;  // reduce speed
   }            
-  if (pwmLeft == 0) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
-    else motorLeftZeroTimeout = 300;  
-  if (pwmRight == 0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
-    else motorRightZeroTimeout = 300;  
+  if (odometryUse){
+    if (motorLeftRpm ==0) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
+      else motorLeftZeroTimeout = 500;
+    if (motorRightRpm ==0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
+      else motorRightZeroTimeout = 500;
+  } else {
+    if (pwmLeft == 0)  motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
+      else motorLeftZeroTimeout = 2000;  
+    if (pwmRight == 0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
+      else motorRightZeroTimeout = 2000;  
+  }
   // ---------------------------------
   motorLeftPWM = pwmLeft;
   motorRightPWM = pwmRight;
@@ -1881,7 +1888,6 @@ void Robot::calcOdometry(){
   int odoRight = odometryRight;
   int ticksLeft = odoLeft - lastOdoLeft;
   int ticksRight = odoRight - lastOdoRight;
-  //if ((ticksLeft == 0) || (ticksRight == 0)) return; // nothing to compute yet
   lastOdoLeft = odoLeft;
   lastOdoRight = odoRight;    
   double left_cm = ((double)ticksLeft) / ((double)odometryTicksPerCm);
@@ -1893,13 +1899,7 @@ void Robot::calcOdometry(){
   motorLeftRpm  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
   motorRightRpm = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
   lastMotorRpmTime = millis();
-            
- 
-  
-  
-  //odometryTheta -= (double)((int)(odometryTheta/(2*PI)))*2*PI;
-  //if (odometryTheta < -PI) odometryTheta += 2*PI; 
-  //  else if (odometryTheta > PI) odometryTheta -= 2*PI;
+               
   if (imuUse){
     odometryX += avg_cm * sin(imu.ypr.yaw); 
     odometryY += avg_cm * cos(imu.ypr.yaw); 
