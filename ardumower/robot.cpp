@@ -754,6 +754,7 @@ void Robot::checkOdometryFaults(){
 
 
 void Robot::motorControl(){
+  static unsigned long nextMotorControlOutputTime = 0;
   if (odometryUse){
     // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorLeftPID.x = motorLeftRpmCurr;                 // IST 
@@ -782,10 +783,21 @@ void Robot::motorControl(){
     //if((motorRightSpeedRpmSet >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
     //if((motorRightSpeedRpmSet <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
-    if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION_CHARGING) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
-      leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
-    }
-    setMotorPWM( leftSpeed, rightSpeed, false );          
+    if ( (motorLeftPID.x == 0) && (motorLeftPID.w == 0) ) leftSpeed = 0; // ensures PWM is really zero 
+    if ( (motorRightPID.x == 0) && (motorRightPID.w == 0) ) rightSpeed = 0; // ensures PWM is really zero     
+
+    if (millis() >= nextMotorControlOutputTime){
+      nextMotorControlOutputTime = millis() + 3000; 
+      Console.print("PID x=");
+      Console.print(motorLeftPID.x);
+      Console.print("\tPID w=");
+      Console.print(motorLeftPID.w);
+      Console.print("\tPID y=");
+      Console.print(motorLeftPID.y);
+      Console.print("\tPWM=");
+      Console.println(leftSpeed);            
+    }    
+    setMotorPWM( leftSpeed, rightSpeed, false );              
   }
   else{
     int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeedRpmSet, -motorSpeedMaxRpm, motorSpeedMaxRpm, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
