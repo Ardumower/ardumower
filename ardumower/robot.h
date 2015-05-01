@@ -116,6 +116,8 @@ enum {
   ERR_TRACKING,
   ERR_ODOMETRY_LEFT,
   ERR_ODOMETRY_RIGHT,
+  ERR_BATTERY,
+  ERR_CHARGER,
   // <---- add new error types here  
   ERR_ENUM_COUNT,  
 };  

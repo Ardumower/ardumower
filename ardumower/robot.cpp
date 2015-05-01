@@ -2136,15 +2136,20 @@ void Robot::loop()  {
       // waiting until charging completed    
       if (batMonitor){
         if ((chgCurrent < batFullCurrent) && (millis()-stateStartTime>2000)) setNextState(STATE_STATION,0); 
-          else if (millis()-stateStartTime > chargingTimeout) setNextState(STATE_ERROR, 0);
+          else if (millis()-stateStartTime > chargingTimeout) {
+            addErrorCounter(ERR_BATTERY);
+            setNextState(STATE_ERROR, 0);
+          }
       } 
       break;  
 
     case STATE_STATION_CHECK:
       // check for charging voltage disappearing before leaving charging station
       if (millis() >= stateEndTime){
-        if (chgVoltage > 5) setNextState(STATE_ERROR, 0);
-          else setNextState(STATE_STATION_REV, 0);
+        if (chgVoltage > 5) {
+          addErrorCounter(ERR_CHARGER);
+          setNextState(STATE_ERROR, 0);
+        } else setNextState(STATE_STATION_REV, 0);
       }      
       break;
     case STATE_STATION_REV:

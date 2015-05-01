@@ -219,6 +219,10 @@ void RemoteControl::sendSettingsMenu(boolean update){
 void RemoteControl::sendErrorMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Error counters`1000"));         
   Bluetooth.print(F("|z00~Reset"));
+  Bluetooth.print(F("|zz~Charger "));
+  Bluetooth.print(robot->errorCounterMax[ERR_CHARGER]);
+  Bluetooth.print(F("|zz~Battery "));
+  Bluetooth.print(robot->errorCounterMax[ERR_BATTERY]);
   Bluetooth.print(F("|zz~Motor left "));
   Bluetooth.print(robot->errorCounterMax[ERR_MOTOR_LEFT]);
   Bluetooth.print(F("|zz~Motor right "));
@@ -237,6 +241,8 @@ void RemoteControl::sendErrorMenu(boolean update){
   Bluetooth.print(robot->errorCounterMax[ERR_IMU_TILT]);
   Bluetooth.print(F("|zz~Perimeter timeout "));
   Bluetooth.print(robot->errorCounterMax[ERR_PERIMETER_TIMEOUT]);
+  Bluetooth.print(F("|zz~Perimeter tracking "));
+  Bluetooth.print(robot->errorCounterMax[ERR_TRACKING]);  
   Bluetooth.print(F("|zz~RTC comm "));
   Bluetooth.print(robot->errorCounterMax[ERR_RTC_COMM]);
   Bluetooth.print(F("|zz~RTC data "));
