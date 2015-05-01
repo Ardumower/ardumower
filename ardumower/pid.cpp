@@ -49,8 +49,14 @@ float PID::compute()
   esum += e;
   // anti wind-up	
   int iTerm = Ki * Ta * esum;	
-  if (iTerm < -max_output)  iTerm = -max_output;
-  if (iTerm > max_output)  iTerm = max_output;			
+  if (iTerm < -max_output)  {
+    iTerm = -max_output;
+    esum = -max_output / Ta / Ki;
+  }
+  if (iTerm > max_output)  {
+    iTerm = max_output;			
+    esum = max_output / Ta / Ki;
+  }
   y = Kp * e
       + iTerm
       + Kd/Ta * (e - eold);
