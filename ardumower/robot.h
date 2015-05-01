@@ -114,6 +114,8 @@ enum {
   ERR_RTC_DATA,
   ERR_PERIMETER_TIMEOUT,
   ERR_TRACKING,
+  ERR_ODOMETRY_LEFT,
+  ERR_ODOMETRY_RIGHT,
   // <---- add new error types here  
   ERR_ENUM_COUNT,  
 };  
@@ -423,8 +425,8 @@ class Robot
     virtual void setNextState(byte stateNew, byte dir);    
     
     // motor
-    virtual void setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel);    
-    virtual void setMotorMowSpeed(int pwm, boolean useAccel);
+    virtual void setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel);    
+    virtual void setMotorMowPWM(int pwm, boolean useAccel);
     
     // GPS
     virtual void processGPSData();
