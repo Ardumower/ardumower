@@ -725,10 +725,12 @@ void Robot::checkOdometryFaults(){
   bool leftErr = false;
   bool rightErr = false;
   if ((stateCurr == STATE_FORWARD) &&  (millis()-stateStartTime>8000) ) {
+    // just check if odometry sensors may not be working at all
     if ( (motorLeftPWMCurr > 100) && (motorLeftRpmCurr == 0)) leftErr = true;
     if ( (motorRightPWMCurr > 100) && (motorRightRpmCurr == 0)) rightErr = true;
   }  
   if ((stateCurr == STATE_ROLL) &&  (millis()-stateStartTime>1000) ) {
+    // just check if odometry sensors may be turning in the wrong direction
     if ( ((motorLeftPWMCurr > 100) && (motorLeftRpmCurr < -3)) || ((motorLeftPWMCurr < -100) && (motorLeftRpmCurr > 3)) ) leftErr = true;
     if ( ((motorRightPWMCurr > 100) && (motorRightRpmCurr < -3)) || ((motorRightPWMCurr < -100) && (motorRightRpmCurr > 3)) ) rightErr = true;
   }  
