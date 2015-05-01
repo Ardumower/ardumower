@@ -476,6 +476,7 @@ protected:
     virtual void checkTilt();
     virtual void checkRain();
     virtual void checkTimeout();
+    virtual void checkOdometryFaults();
     
     // motor controllers
     virtual void motorControl();    

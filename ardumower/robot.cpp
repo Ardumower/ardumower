@@ -522,6 +522,7 @@ void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState
 //   http://wiki.ardumower.de/images/a/a5/Motor_polarity_switch_protection.png 
 // - optional: ensures that the motors (and gears) are not switched to 0% (or 100%) too fast (motorAccel)
 void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
+  Serial.print(pwmLeft);
   unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
   lastSetMotorSpeedTime = millis();  
   if (TaC > 1000) TaC = 0;  
@@ -555,9 +556,8 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
   // ---------------------------------
   motorLeftPWMCurr = pwmLeft;
   motorRightPWMCurr = pwmRight;
-  /*Serial.print(motorLeftPWMCurr);
   Serial.print("\t");
-  Serial.println(motorRightPWMCurr);*/
+  Serial.println(motorLeftPWMCurr);
   if (motorLeftSwapDir)  // swap pin polarity?
     setActuator(ACT_MOTOR_LEFT, -motorLeftPWMCurr);
   else
@@ -719,6 +719,28 @@ void Robot::motorControlImuDir(){
                  
 }
 
+// check for odometry sensor faults    
+void Robot::checkOdometryFaults(){
+    if ( (odometryUse) && (stateCurr == STATE_ROLL) &&  (millis()-stateStartTime>1000) ) {      
+      if ( ((motorLeftPWMCurr > 100) && (motorLeftRpmCurr < 3)) || ((motorLeftPWMCurr < -100) && (motorLeftRpmCurr > 3)) )  {
+        Serial.print("Left odometry error: PWM=");
+        Serial.print(motorLeftPWMCurr);
+        Serial.print("\tRPM=");
+        Serial.println(motorLeftRpmCurr);
+        addErrorCounter(ERR_ODOMETRY_LEFT);
+        setNextState(STATE_ERROR, 0);
+      }
+      if ( ((motorRightPWMCurr > 100) && (motorRightRpmCurr < 3)) || ((motorRightPWMCurr < -100) && (motorRightRpmCurr > 3)) )  {
+        Serial.print("Right odometry error: PWM=");
+        Serial.print(motorRightPWMCurr);
+        Serial.print("\tRPM=");
+        Serial.println(motorRightRpmCurr);
+        addErrorCounter(ERR_ODOMETRY_RIGHT);
+        setNextState(STATE_ERROR, 0);
+      }
+    }  
+}
+
 
 void Robot::motorControl(){
   if (odometryUse){
@@ -749,11 +771,10 @@ void Robot::motorControl(){
     //if((motorRightSpeedRpmSet >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
     //if((motorRightSpeedRpmSet <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
-    if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
+    if (  ((stateCurr == STATE_OFF) || (stateCurr == STATE_STATION_CHARGING) || (stateCurr == STATE_STATION) || (stateCurr == STATE_ERROR)) && (millis()-stateStartTime>1000)  ){
       leftSpeed = rightSpeed = 0; // ensures PWM is zero if OFF/CHARGING
     }
-    setMotorPWM( leftSpeed, rightSpeed, false );  
-    // check for odometry sensor faults
+    setMotorPWM( leftSpeed, rightSpeed, false );          
   }
   else{
     int leftSpeed = min(motorSpeedMaxPwm, max(-motorSpeedMaxPwm, map(motorLeftSpeedRpmSet, -motorSpeedMaxRpm, motorSpeedMaxRpm, -motorSpeedMaxPwm, motorSpeedMaxPwm)));
@@ -1931,6 +1952,7 @@ void Robot::loop()  {
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
     nextTimeOdometryInfo = millis() + 300;
     calcOdometry();
+    checkOdometryFaults();    
     //printOdometry();        
   }
   
