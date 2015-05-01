@@ -225,9 +225,9 @@ class Robot
     boolean motorMowRpmLastState ;
     boolean motorMowEnable ;
     // --------- wheel motor state ----------------------------
-    // wheel motor speed ( <0 backward, >0 forward); range -motorSpeedMax..motorSpeedMax
+    // wheel motor speed ( <0 backward, >0 forward); range -motorSpeedMaxRpm..motorSpeedMaxRpm
     float motorAccel  ;  // motor wheel acceleration (warning: do not set too high)
-    int motorSpeedMax   ;   // motor wheel max RPM
+    int motorSpeedMaxRpm   ;   // motor wheel max RPM
     int motorSpeedMaxPwm  ;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
     float motorPowerMax   ;    // motor wheel max power (Watt)
     PID motorLeftPID;              // motor left wheel PID controller
@@ -241,10 +241,10 @@ class Robot
     float motorBiDirSpeedRatio2 ;   // bidir mow pattern speed ratio 2
     bool motorRightSwapDir     ;    // inverse right motor direction? 
     bool motorLeftSwapDir      ;    // inverse left motor direction?  
-    int motorLeftSpeed ; // set speed
-    int motorRightSpeed ;
-    float motorLeftPWM ; // current speed
-    float motorRightPWM ;
+    int motorLeftSpeedRpmSet ; // set speed
+    int motorRightSpeedRpmSet ;
+    float motorLeftPWMCurr ; // current speed
+    float motorRightPWMCurr ;
     int motorRightSenseADC ;
     int motorLeftSenseADC ;
     float motorLeftSenseCurrent ;     
@@ -260,26 +260,26 @@ class Robot
     unsigned long motorLeftZeroTimeout;
     unsigned long motorRightZeroTimeout;
     // -------- mower motor state -----------------------
-    // mower motor sppeed; range 0..motorMowSpeedMax
+    // mower motor sppeed; range 0..motorMowSpeedMaxPwm
     float motorMowAccel       ;  // motor mower acceleration (warning: do not set too high)
-    int motorMowSpeedMax ;    // motor mower max PWM
+    int motorMowSpeedMaxPwm ;    // motor mower max PWM
     float motorMowPowerMax ;     // motor mower max power (Watt)
     char motorMowModulate  ;      // motor mower cutter modulation?
-    int motorMowRPM        ;   // motor mower RPM (only for cutter modulation)
+    int motorMowRPMSet        ;   // motor mower RPM (only for cutter modulation)
     float motorMowSenseScale ; // motor mower sense scale (mA=(ADC-zero)/scale)
     PID motorMowPID ;    // motor mower RPM PID controller    
-    int motorMowSpeed;
-    float motorMowPWM ;         // current speed
+    int motorMowSpeedPWMSet;
+    float motorMowPWMCurr ;         // current speed
     int motorMowSenseADC ; 
     float motorMowSenseCurrent ;
     float motorMowSense ;       // motor power (range 0..MAX_MOW_POWER)
     int motorMowSenseCounter ;
     int motorMowSenseErrorCounter ;
-    int motorMowRpm ;            // motor rpm (range 0..MOW_RPM)
+    int motorMowRpmCurr ;            // motor rpm (range 0..MOW_RPM)
     unsigned long lastMotorMowRpmTime;    
     unsigned long nextTimeMotorControl;
     unsigned long nextTimeMotorMowControl;
-    int lastMowSpeed;
+    int lastMowSpeedPWM;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     

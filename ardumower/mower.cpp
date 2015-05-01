@@ -127,7 +127,7 @@ Mower::Mower(){
   name = "Ardumower";
   // ------- wheel motors -----------------------------
   motorAccel       = 0.002;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too high)
-  motorSpeedMax       = 33;   // motor wheel max RPM
+  motorSpeedMaxRpm       = 33;   // motor wheel max RPM
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
   motorPowerMax     = 50;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
@@ -146,10 +146,10 @@ Mower::Mower(){
   motorLeftSwapDir      = 1;    // inverse left motor direction?
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
-  motorMowSpeedMax   = 255;    // motor mower max PWM
+  motorMowSpeedMaxPwm   = 255;    // motor mower max PWM
   motorMowPowerMax = 50.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
-  motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
+  motorMowRPMSet        = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
   motorMowPID.Kp = 0.005;    // motor mower RPM PID controller
   motorMowPID.Ki = 0.01;
