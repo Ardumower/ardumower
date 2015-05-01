@@ -2123,34 +2123,29 @@ void Robot::loop()  {
       }
       break;
     case STATE_STATION:
-      // waiting until charging completed  
+      // waiting until auto-start by user or timer triggered
       if (batMonitor){
         if ((chgVoltage > 5.0) && (batVoltage > 8)){
-        if (batVoltage < startChargingIfBelow && (millis()-stateStartTime>2000)){
-          setNextState(STATE_STATION_CHARGING,0);
-        }
-         else checkTimer();  
-      }
-         else setNextState(STATE_OFF,0);
-
-      } 
-      else checkTimer();
-
+          if (batVoltage < startChargingIfBelow && (millis()-stateStartTime>2000)){
+            setNextState(STATE_STATION_CHARGING,0);
+          } else checkTimer();  
+        } else setNextState(STATE_OFF,0);
+      }  else checkTimer();
       break;     
     case STATE_STATION_CHARGING:
       // waiting until charging completed    
       if (batMonitor){
         if ((chgCurrent < batFullCurrent) && (millis()-stateStartTime>2000)) setNextState(STATE_STATION,0); 
-        else if (millis()-stateStartTime > chargingTimeout) setNextState(STATE_ERROR, 0);
+          else if (millis()-stateStartTime > chargingTimeout) setNextState(STATE_ERROR, 0);
       } 
       break;  
 
     case STATE_STATION_CHECK:
-       if (millis() >= stateEndTime){
+      // check for charging voltage disappearing before leaving charging station
+      if (millis() >= stateEndTime){
         if (chgVoltage > 5) setNextState(STATE_ERROR, 0);
-            else setNextState(STATE_STATION_REV, 0);
-          }
-      //  else setNextState(STATE_ERROR,0);
+          else setNextState(STATE_STATION_REV, 0);
+      }      
       break;
     case STATE_STATION_REV:
       // charging: drive reverse 
