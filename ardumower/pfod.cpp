@@ -647,9 +647,9 @@ void RemoteControl::sendOdometryMenu(boolean update){
   Bluetooth.print(", "); 
   Bluetooth.println(robot->odometryRight); 
   Bluetooth.println(F("|l03~RPM Motor l, r "));
-  Bluetooth.print(robot->motorLeftRpm);
+  Bluetooth.print(robot->motorLeftRpmCurr);
   Bluetooth.print(", "); 
-  Bluetooth.println(robot->motorRightRpm);
+  Bluetooth.println(robot->motorRightRpmCurr);
   sendSlider("l04", F("Ticks per one full revolution"), robot->odometryTicksPerRevolution, "", 1, 2000);       
   sendSlider("l01", F("Ticks per cm"), robot->odometryTicksPerCm, "", 0.1, 30);       
   sendSlider("l02", F("Wheel base cm"), robot->odometryWheelBaseCm, "", 0.1, 50);  
@@ -1237,7 +1237,7 @@ void RemoteControl::run(){
       nextPlotTime = millis() + 50;
       Bluetooth.print((float(millis())/1000.0f));
       Bluetooth.print(",");
-      Bluetooth.print(robot->motorLeftRpm);
+      Bluetooth.print(robot->motorLeftRpmCurr);
       Bluetooth.print(",");
       Bluetooth.print(robot->motorLeftSpeedRpmSet);
       Bluetooth.print(",");

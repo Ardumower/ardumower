@@ -200,9 +200,9 @@ class Robot
     float odometryTheta; // theta angle (radiant)
     float odometryX ;   // X map position (cm)
     float odometryY ;   // Y map position (cm)    
-    int motorLeftRpm ; // left wheel rpm
+    int motorLeftRpmCurr ; // left wheel rpm
     unsigned long lastMotorRpmTime ;     
-    int motorRightRpm ; // right wheel rpm    
+    int motorRightRpmCurr ; // right wheel rpm    
     unsigned long nextTimeOdometry ;
     unsigned long nextTimeOdometryInfo ; 
     // -------- RC remote control state -----------------    

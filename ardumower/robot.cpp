@@ -48,7 +48,7 @@ Robot::Robot(){
   odometryTheta = odometryX = odometryY = 0;
 
     
-  motorRightRpm = motorLeftRpm = 0;
+  motorRightRpmCurr = motorLeftRpmCurr = 0;
   lastMotorRpmTime = 0;
   lastSetMotorSpeedTime = 0;
   motorLeftSpeedRpmSet =  motorRightSpeedRpmSet = 0; 
@@ -542,9 +542,9 @@ void Robot::setMotorSpeed(int pwmLeft, int pwmRight, boolean useAccel){
       pwmRight = motorRightPWMCurr - motorRightPWMCurr *   ((float)TaC)/200.0;  // reduce speed
   }            
   if (odometryUse){
-    if (motorLeftRpm ==0) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
+    if (motorLeftRpmCurr ==0) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
       else motorLeftZeroTimeout = 500;
-    if (motorRightRpm ==0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
+    if (motorRightRpmCurr ==0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
       else motorRightZeroTimeout = 500;
   } else {
     if (pwmLeft == 0)  motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
@@ -595,7 +595,7 @@ void Robot::motorControlImuRoll(){
   imuRollPID.compute();                 
 
   // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
-  motorLeftPID.x = motorLeftRpm;                 // IST 
+  motorLeftPID.x = motorLeftRpmCurr;                 // IST 
   motorLeftPID.w = -imuRollPID.y;                // SOLL 
   motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
   motorLeftPID.y_max = motorSpeedMaxPwm;   // Regel-MAX
@@ -609,7 +609,7 @@ void Robot::motorControlImuRoll(){
   motorRightPID.Kp = motorLeftPID.Kp;
   motorRightPID.Ki = motorLeftPID.Ki;
   motorRightPID.Kd = motorLeftPID.Kd;
-  motorRightPID.x = motorRightRpm;               // IST   
+  motorRightPID.x = motorRightRpmCurr;               // IST   
   motorRightPID.w = imuRollPID.y;                // SOLL
   motorRightPID.y_min = -motorSpeedMaxPwm;       // Regel-MIN
   motorRightPID.y_max = motorSpeedMaxPwm;  // Regel-MAX 
@@ -687,7 +687,7 @@ void Robot::motorControlImuDir(){
                  
   // Korrektur erfolgt über Abbremsen des linken Antriebsrades, falls Kursabweichung nach rechts
   // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
-  motorLeftPID.x = motorLeftRpm;                     // IST 
+  motorLeftPID.x = motorLeftRpmCurr;                     // IST 
   motorLeftPID.w = motorLeftSpeedRpmSet - correctLeft;     // SOLL 
   motorLeftPID.y_min = -motorSpeedMaxPwm;            // Regel-MIN
   motorLeftPID.y_max = motorSpeedMaxPwm;       // Regel-MAX
@@ -702,7 +702,7 @@ void Robot::motorControlImuDir(){
   motorRightPID.Kp = motorLeftPID.Kp;
   motorRightPID.Ki = motorLeftPID.Ki;
   motorRightPID.Kd = motorLeftPID.Kd;
-  motorRightPID.x = motorRightRpm;                   // IST 
+  motorRightPID.x = motorRightRpmCurr;                   // IST 
   motorRightPID.w = motorRightSpeedRpmSet - correctRight;  // SOLL 
   motorRightPID.y_min = -motorSpeedMaxPwm;           // Regel-MIN
   motorRightPID.y_max = motorSpeedMaxPwm;      // Regel-MAX
@@ -723,7 +723,7 @@ void Robot::motorControlImuDir(){
 void Robot::motorControl(){
   if (odometryUse){
     // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
-    motorLeftPID.x = motorLeftRpm;                 // IST 
+    motorLeftPID.x = motorLeftRpmCurr;                 // IST 
     motorLeftPID.w = motorLeftSpeedRpmSet;               // SOLL 
     if (millis() < stateStartTime + motorZeroSettleTime) motorLeftPID.w = 0; // get zero speed first after state change
     motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
@@ -738,7 +738,7 @@ void Robot::motorControl(){
     motorRightPID.Kp = motorLeftPID.Kp;
     motorRightPID.Ki = motorLeftPID.Ki;
     motorRightPID.Kd = motorLeftPID.Kd;          
-    motorRightPID.x = motorRightRpm;               // IST
+    motorRightPID.x = motorRightRpmCurr;               // IST
     motorRightPID.w = motorRightSpeedRpmSet;             // SOLL
     if (millis() < stateStartTime + motorZeroSettleTime) motorRightPID.w = 0; // get zero speed first after state change
     motorRightPID.y_min = -motorSpeedMaxPwm;       // Regel-MIN
@@ -1895,8 +1895,8 @@ void Robot::calcOdometry(){
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
   odometryTheta += wheel_theta; 
   
-  motorLeftRpm  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
-  motorRightRpm = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
+  motorLeftRpmCurr  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
+  motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
   lastMotorRpmTime = millis();
                
   if (imuUse){
