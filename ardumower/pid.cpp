@@ -20,6 +20,11 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
   
   Private-use only! (you need to ask for a commercial-use)
+    
+  How to find out P,I,D:
+    1. Increase P until system starts to oscillate
+    2. Set I =0.6 * P and D = 0.125 * P 
+   
 */
 
 #include "pid.h"
