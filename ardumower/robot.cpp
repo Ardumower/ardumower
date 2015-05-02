@@ -1623,6 +1623,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   printInfo(Console);          
 }
 
+// check battery voltage and decide what to do
 void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;
