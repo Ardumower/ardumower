@@ -139,8 +139,8 @@ Mower::Mower(){
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
-  motorLeftPID.Kp       = 1.0;    // motor wheel PID controller
-  motorLeftPID.Ki       = 0.1;
+  motorLeftPID.Kp       = 0.5;    // motor wheel PID controller
+  motorLeftPID.Ki       = 0.0;
   motorLeftPID.Kd       = 0.0;
   motorRightSwapDir     = 0;    // inverse right motor direction? 
   motorLeftSwapDir      = 1;    // inverse left motor direction?
