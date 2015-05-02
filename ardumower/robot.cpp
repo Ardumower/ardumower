@@ -654,9 +654,6 @@ void Robot::motorControlPerimeter(){
     else if (perimeterMag > 0) perimeterPID.x = 1; 
     else perimeterPID.x = 0;
   perimeterPID.w = 0;
-  /*perimeterPID.Kp= 50;
-  perimeterPID.Ki= 10;
-  perimeterPID.Kd= 10;*/
   perimeterPID.y_min = -motorSpeedMaxPwm;
   perimeterPID.y_max = motorSpeedMaxPwm;		
   perimeterPID.max_output = motorSpeedMaxPwm;
@@ -766,6 +763,7 @@ void Robot::motorControl(){
     motorLeftPID.max_output = motorSpeedMaxPwm;    // Begrenzung
     motorLeftPID.compute();
     int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWMCurr + motorLeftPID.y));
+    // Sven reported the next two lines do make the PID controlling worse
     //if((motorLeftSpeedRpmSet >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
     //if((motorLeftSpeedRpmSet <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
 
@@ -781,6 +779,7 @@ void Robot::motorControl(){
     motorRightPID.max_output = motorSpeedMaxPwm;   // Begrenzung
     motorRightPID.compute();            
     int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWMCurr + motorRightPID.y));
+    // Sven reported the next two lines do make the PID controlling worse
     //if((motorRightSpeedRpmSet >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
     //if((motorRightSpeedRpmSet <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
