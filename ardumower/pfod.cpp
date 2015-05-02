@@ -280,8 +280,8 @@ void RemoteControl::sendMotorMenu(boolean update){
   Bluetooth.print(", ");  
   Bluetooth.print(robot->motorRightPWMCurr);   
   sendSlider("a06", F("Speed max in rpm"), robot->motorSpeedMaxRpm, "", 1, 100);    
-  sendSlider("a15", F("Speed max in pwm"), robot->motorSpeedMaxPwm, "", 1, 255);    
-  sendSlider("a11", F("Accel"), robot->motorAccel, "", 1, 1000);  
+  sendSlider("a15", F("Speed max in pwm"), robot->motorSpeedMaxPwm, "", 1, 255);      
+  sendSlider("a11", F("Accel"), robot->motorAccel, "", 1, 1000, 300);  
   sendSlider("a18", F("Power ignore time"), robot->motorPowerIgnoreTime, "", 1, 8000);     
   sendSlider("a07", F("Roll time max"), robot->motorRollTimeMax, "", 1, 8000);     
   sendSlider("a08", F("Reverse time"), robot->motorReverseTime, "", 1, 8000);     
