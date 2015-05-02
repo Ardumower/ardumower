@@ -139,6 +139,7 @@ Mower::Mower(){
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
+  // ---- normal control ---
   motorLeftPID.Kp       = 1.0;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.1;
   motorLeftPID.Kd       = 0.0;
@@ -171,15 +172,15 @@ Mower::Mower(){
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
   perimeterUse       = 0;      // use perimeter?    
-  perimeterTriggerTimeout = 0; // perimeter trigger timeout (ms)  
+  perimeterTriggerTimeout = 2000; // perimeter trigger timeout (ms)  
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
   perimeterPID.Kp    = 60.0;  // perimeter PID controller
-  perimeterPID.Ki    = 6.0;
-  perimeterPID.Kd    = 5.0;  
+  perimeterPID.Ki    = 5.0;
+  perimeterPID.Kd    = 3.0;  
   trackingPerimeterTransitionTimeOut = 5000;
   trackingErrorTimeOut = 10000;
-  trackingBlockInnerWheelWhilePerimeterStruggling = 0;
+  trackingBlockInnerWheelWhilePerimeterStruggling = 1;
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
