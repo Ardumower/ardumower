@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 39
+#define MAGIC 40
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -37,6 +37,7 @@ char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter"};
 
 Robot::Robot(){
   name = "Generic";
+  developerActive = false;
   rc.setRobot(this);
   
   stateLast = stateCurr = stateNext = STATE_OFF; 
@@ -163,6 +164,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   int addr = 0;
   short magic = MAGIC;
   eereadwrite(readflag, addr, magic); // magic
+  eereadwrite(readflag, addr, developerActive);          
   eereadwrite(readflag, addr, motorAccel);    
   eereadwrite(readflag, addr, motorSpeedMaxRpm);
   eereadwrite(readflag, addr, motorSpeedMaxPwm); 
@@ -239,7 +241,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
-  eereadwrite(readflag, addr, dropUse);      
+  eereadwrite(readflag, addr, dropUse);        
   Console.print("loadSaveUserSettings addrstop=");
   Console.println(addr);
 }

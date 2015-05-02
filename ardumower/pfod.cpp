@@ -212,8 +212,8 @@ void RemoteControl::sendPlotMenu(boolean update){
 
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Settings"));         
-  Bluetooth.print(F("|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
-  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings|sz~Save}"));
+  Bluetooth.print(F("|sz~Save setting|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
+  Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings}"));
 }  
 
 void RemoteControl::sendErrorMenu(boolean update){
@@ -596,7 +596,7 @@ void RemoteControl::sendBatteryMenu(boolean update){
   Bluetooth.print(" V");
   Bluetooth.print(F("|j01~Monitor "));  
   sendYesNo(robot->batMonitor);
-  sendSlider("j05", F("Calibrate batFactor "), robot->batFactor, "", 0.01, 1.0);   
+  if (robot->developerActive) sendSlider("j05", F("Calibrate batFactor "), robot->batFactor, "", 0.01, 1.0);   
   //Console.print("batFactor=");
   //Console.println(robot->batFactor);  
   sendSlider("j02", F("Go home if below"), robot->batGoHomeIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
@@ -817,8 +817,10 @@ void RemoteControl::processFactorySettingsMenu(String pfodCmd){
 
 void RemoteControl::sendInfoMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info"));     
-  Bluetooth.print(F("|d00~Ardumower "));
+  Bluetooth.print(F("|y00~Ardumower "));
   Bluetooth.print(VER); 
+  Bluetooth.print(F("|y01~Developer "));  
+  sendYesNo(robot->developerActive);        
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
   //Bluetooth.print("|d02~IMU v");  
@@ -826,6 +828,11 @@ void RemoteControl::sendInfoMenu(boolean update){
   //Bluetooth.print("|d02~Stepper v");  
   //Bluetooth.print(verToString(readStepperVer())); 
   Bluetooth.println("}");        
+}
+
+void RemoteControl::processInfoMenu(String pfodCmd){      
+  if (pfodCmd == "y01") robot->developerActive = !robot->developerActive;
+  sendInfoMenu(true);
 }
 
 void RemoteControl::sendCommandMenu(boolean update){  
@@ -1382,6 +1389,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
         else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);
         else if (pfodCmd.startsWith("u")) processDropMenu(pfodCmd);            
+        else if (pfodCmd.startsWith("y")) processInfoMenu(pfodCmd);                    
         else if (pfodCmd.startsWith("z")) processErrorMenu(pfodCmd);                    
         else {
           // no match

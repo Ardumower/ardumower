@@ -163,6 +163,7 @@ class Robot
 {
   public:    
     String name;
+    bool developerActive;
     // --------- state machine --------------------------
     byte stateCurr;
     byte stateLast;
