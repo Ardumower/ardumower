@@ -135,6 +135,7 @@ Robot::Robot(){
   nextTimeDrop = 0;                                                                                                                    // Dropsensor - Absturzsensor
   nextTimeSonar = 0;
   nextTimeBattery = 0;
+  nextTimeCheckBattery = 0;
   nextTimePerimeter = 0;
   nextTimeLawnSensor = 0;
   nextTimeLawnSensorCheck = 0;
@@ -1286,10 +1287,12 @@ void Robot::checkButton(){
 }
 
 void Robot::readSensors(){
+/*NOTE: this function should only read in sensors into variables - it should NOT change any state!
+
   //if ((odometryUse) && (millis() >= nextTimeOdometry)) {        
   //  nextTimeOdometry = millis() + 50;    
   //  calcOdometry();
-  //}    
+  //}    */
   if (millis() >= nextTimeMotorSense){    
     nextTimeMotorSense = millis() +  50;
     double accel = 0.05;
@@ -1485,7 +1488,8 @@ void Robot::readSensors(){
     //batVoltage = batVolt
     //chgVoltage = chgvolt;
     //chgCurrent = current;        
-  }      
+  } 
+
   if ((rainUse) && (millis() >= nextTimeRain)) {
     // read rain sensor
     nextTimeRain = millis() + 5000;
@@ -1621,8 +1625,10 @@ void Robot::setNextState(byte stateNew, byte dir){
 
 // check (low) battery
 void Robot::checkBattery(){
+if (millis() < nextTimeCheckBattery) return;
+	nextTimeCheckBattery = millis() + 1000;
   if (batMonitor){
-    if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF)) {    // evl Fehlerhaft nicht getestet - Bei Batterieunterspannung aus ausgeschalteten Perimeter stoppt der Mover nicht sondern sucht den Perimeter. Änderung elv nach       if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF) && (perimeterUse = 1)) {
+    if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF) && (perimeterUse = 1)) {    //UNTESTED please verify
       Console.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
@@ -1972,7 +1978,8 @@ void Robot::loop()  {
   
   readSerial();   
   rc.readSerial();    
-  readSensors();  
+  readSensors(); 
+  checkBattery(); 
 
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
     nextTimeOdometryInfo = millis() + 300;
@@ -2013,7 +2020,6 @@ void Robot::loop()  {
     case STATE_OFF:
       // robot is turned off      
       checkTimer();
-      checkBattery();
       if (batMonitor && (millis()-stateStartTime>2000)){
         if ((chgVoltage > 5.0)  && (batVoltage > 8)){
           beep(2, true);      
@@ -2050,7 +2056,6 @@ void Robot::loop()  {
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
-      checkBattery();
       checkPerimeterBoundary();      
       if (lawnSensorUse) checkLawn();      
       checkTimeout();      
@@ -2060,7 +2065,6 @@ void Robot::loop()  {
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
-      checkBattery();
       checkPerimeterBoundary();      
       if (lawnSensorUse) checkLawn();
       // making a roll (left/right)            
@@ -2087,7 +2091,6 @@ void Robot::loop()  {
         checkBumpers();
         checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
         checkSonar();             
-        checkBattery();
         checkPerimeterBoundary();      
         if (lawnSensorUse) checkLawn();    
         

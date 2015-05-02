@@ -393,6 +393,7 @@ class Robot
     int stationForwTime    ;    // charge station forward time (ms)
     int stationCheckTime   ;    // charge station reverse check time (ms)
     unsigned long nextTimeBattery ;    
+    unsigned long nextTimeCheckBattery;
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];    
