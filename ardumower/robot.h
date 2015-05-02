@@ -371,6 +371,7 @@ class Robot
     float batFactor       ;     // battery conversion factor
     float batChgFactor       ;     // battery conversion factor    
     float batFull         ;      // battery reference Voltage (fully charged)
+    float batChargingCurrentMax ; // maximum current your charger can devliver
     float batFullCurrent   ; // current flowing when battery is fully charged
     float startChargingIfBelow; // start charging if battery Voltage is below
     unsigned long chargingTimeout; // safety timer for charging

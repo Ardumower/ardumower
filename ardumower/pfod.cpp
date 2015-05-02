@@ -609,8 +609,8 @@ void RemoteControl::sendBatteryMenu(boolean update){
   sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
   sendSlider("j06", F("Charge sense zero"), robot->chgSenseZero, "", 1, 600, 400);       
   sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);       
-  sendSlider("j10", F("charging starts if Voltage is below"), robot->startChargingIfBelow, "", 0.1, 50);       
-  sendSlider("j11", F("Battery is fully charged if current is below"), robot->batFullCurrent, "", 0.1, 10);       
+  sendSlider("j10", F("charging starts if Voltage is below"), robot->startChargingIfBelow, "", 0.1, robot->batFull);       
+  sendSlider("j11", F("Battery is fully charged if current is below"), robot->batFullCurrent, "", 0.1, robot->batChargingCurrentMax);       
   Bluetooth.println("}");
 }
 
