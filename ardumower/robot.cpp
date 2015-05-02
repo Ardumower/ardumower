@@ -1623,16 +1623,15 @@ void Robot::setNextState(byte stateNew, byte dir){
   printInfo(Console);          
 }
 
-// check (low) battery
 void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;
   if (batMonitor){
-    if ((batVoltage < batGoHomeIfBelow) && (stateCurr !=STATE_OFF) && (perimeterUse = 1)) {    //UNTESTED please verify
+    if ((batVoltage < batGoHomeIfBelow) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE) && (perimeterUse = 1)) {    //UNTESTED please verify
       Console.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
-    } else if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF))  {
+    } else if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
       Console.println(F("triggered batSwitchOffIfBelow"));
       beep(2, true);      
       setNextState(STATE_OFF, 0);
