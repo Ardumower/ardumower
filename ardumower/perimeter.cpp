@@ -53,6 +53,7 @@ Perimeter::Perimeter(){
   useDifferentialPerimeterSignal = false;
   swapCoilPolarity = false;
   timedOutIfBelowSmag = 300;
+  timeOutSecIfNotInside = 8;
   callCounter = 0;
   mag[0] = mag[1] = 0;
   smoothMag[0] = smoothMag[1] = 0;
@@ -175,7 +176,7 @@ boolean Perimeter::isInside(byte idx){
 
 boolean Perimeter::signalTimedOut(byte idx){
   if (getSmoothMagnitude(idx) < timedOutIfBelowSmag) return true;
-  if (millis() - lastInsideTime[idx] > 8000) return true;
+  if (millis() - lastInsideTime[idx] > timeOutSecIfNotInside * 1000) return true;
   return false;
 }
 
