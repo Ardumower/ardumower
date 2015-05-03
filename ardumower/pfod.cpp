@@ -464,9 +464,9 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   sendYesNo(robot->perimeterUse);  
   Bluetooth.println(F("|e02~Value"));
   Bluetooth.print(robot->perimeterMag);  
-  sendSlider("e08", "Timed-out if below smag", robot->perimeter.timedOutIfBelowSmag, "", 1, 2000);  
-  sendSlider("e14", "Timeout (s) if not inside", robot->perimeter.timeOutSecIfNotInside, "", 1, 20, 1);  
-  sendSlider("e04", "Trigger timeout", robot->perimeterTriggerTimeout, "", 1, 2000);
+  sendSlider("e08", F("Timed-out if below smag"), robot->perimeter.timedOutIfBelowSmag, "", 1, 2000);  
+  sendSlider("e14", F("Timeout (s) if not inside"), robot->perimeter.timeOutSecIfNotInside, "", 1, 20, 1);  
+  sendSlider("e04", F("Trigger timeout"), robot->perimeterTriggerTimeout, "", 1, 2000);
   sendSlider("e05", F("Track roll time"), robot->perimeterTrackRollTime, "", 1, 8000);       
   sendSlider("e06", F("Track rev time"), robot->perimeterTrackRevTime, "", 1, 8000);         
   sendSlider("e11", F("Transition timeout"), robot->trackingPerimeterTransitionTimeOut, "", 1, 5000);
