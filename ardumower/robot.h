@@ -118,6 +118,7 @@ enum {
   ERR_ODOMETRY_RIGHT,
   ERR_BATTERY,
   ERR_CHARGER,
+  ERR_GPS_DATA,
   // <---- add new error types here  
   ERR_ENUM_COUNT,  
 };  

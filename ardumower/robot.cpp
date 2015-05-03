@@ -1645,10 +1645,15 @@ if (millis() < nextTimeCheckBattery) return;
 
 void Robot::receiveGPSTime(){
   if (gpsUse){
-    if (gps.satellites() > 0){
-      Console.print(F("GPS satellites in view: "));
-      Console.println(gps.satellites());      
-    }
+    unsigned long chars = 0;
+    unsigned short good_sentences = 0;
+    unsigned short failed_cs = 0;
+    gps.stats(&chars, &good_sentences, &failed_cs);    
+    if (good_sentences == 0) addErrorCounter(ERR_GPS_DATA);
+    Console.print(F("GPS sentences: "));
+    Console.println(good_sentences);              
+    Console.print(F("GPS satellites in view: "));
+    Console.println(gps.satellites());          
     int year;
     byte month, day, hour, minute, second, hundredths;
     unsigned long age; 

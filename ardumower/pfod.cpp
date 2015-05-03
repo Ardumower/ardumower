@@ -247,6 +247,8 @@ void RemoteControl::sendErrorMenu(boolean update){
   Bluetooth.print(robot->errorCounterMax[ERR_RTC_COMM]);
   Bluetooth.print(F("|zz~RTC data "));
   Bluetooth.print(robot->errorCounterMax[ERR_RTC_DATA]);
+  Bluetooth.print(F("|zz~GPS data "));
+  Bluetooth.print(robot->errorCounterMax[ERR_GPS_DATA]);
   Bluetooth.println("}");
 }  
 
