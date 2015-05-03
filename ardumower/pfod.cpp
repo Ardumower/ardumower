@@ -817,9 +817,9 @@ void RemoteControl::processFactorySettingsMenu(String pfodCmd){
 
 void RemoteControl::sendInfoMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info"));     
-  Bluetooth.print(F("|y00~Ardumower "));
+  Bluetooth.print(F("|v00~Ardumower "));
   Bluetooth.print(VER); 
-  Bluetooth.print(F("|y01~Developer "));  
+  Bluetooth.print(F("|v01~Developer "));  
   sendYesNo(robot->developerActive);        
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
@@ -831,7 +831,7 @@ void RemoteControl::sendInfoMenu(boolean update){
 }
 
 void RemoteControl::processInfoMenu(String pfodCmd){      
-  if (pfodCmd == "y01") robot->developerActive = !robot->developerActive;
+  if (pfodCmd == "v01") robot->developerActive = !robot->developerActive;
   sendInfoMenu(true);
 }
 
@@ -1389,7 +1389,7 @@ void RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
         else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);
         else if (pfodCmd.startsWith("u")) processDropMenu(pfodCmd);            
-        else if (pfodCmd.startsWith("y")) processInfoMenu(pfodCmd);                    
+        else if (pfodCmd.startsWith("v")) processInfoMenu(pfodCmd);                    
         else if (pfodCmd.startsWith("z")) processErrorMenu(pfodCmd);                    
         else {
           // no match
