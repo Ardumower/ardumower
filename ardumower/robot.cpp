@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 41
+#define MAGIC 42
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -104,9 +104,10 @@ Robot::Robot(){
   rain = false;
   rainCounter = 0;
 
+  sonarLeftUse = sonarRightUse = sonarCenterUse = false;
   sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
   sonarDistCounter = 0;
-  sonarObstacleTimeout = 0;
+  sonarObstacleTimeout = 0;  
 
   batADC = 0;
   batVoltage = 0;
@@ -192,6 +193,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorRightSwapDir);  
   eereadwrite(readflag, addr, bumperUse);
   eereadwrite(readflag, addr, sonarUse);
+  eereadwrite(readflag, addr, sonarCenterUse);
+  eereadwrite(readflag, addr, sonarLeftUse);
+  eereadwrite(readflag, addr, sonarRightUse);  
   eereadwrite(readflag, addr, sonarTriggerBelow);
   eereadwrite(readflag, addr, perimeterUse);
   eereadwrite(readflag, addr, perimeter.timedOutIfBelowSmag);        
@@ -1381,9 +1385,9 @@ void Robot::readSensors(){
   if ((sonarUse) && (millis() >= nextTimeSonar)){
 //    nextTimeSonar = millis() + 500;   
     nextTimeSonar = millis() + 250;   
-    sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
-    sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
-    sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
+    if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
+    if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
+    if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
   }
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
     nextTimeBumper = millis() + 100;               

@@ -350,6 +350,9 @@ class Robot
     // --------- sonar ----------------------------------
     // ultra sonic sensor distance-to-obstacle (cm)
     char sonarUse          ;      // use ultra sonic sensor?
+    char sonarLeftUse;
+    char sonarRightUse;
+    char sonarCenterUse;
     int sonarTriggerBelow ;    // ultrasonic sensor trigger distance
     unsigned int sonarDistCenter ;
     unsigned int sonarDistRight ;

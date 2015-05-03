@@ -442,6 +442,12 @@ void RemoteControl::sendSonarMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Sonar`1000"));         
   Bluetooth.print(F("|d00~Use "));
   sendYesNo(robot->sonarUse);
+  Bluetooth.print(F("|d04~Use left"));
+  sendYesNo(robot->sonarLeftUse);
+  Bluetooth.print(F("|d05~Use center"));
+  sendYesNo(robot->sonarCenterUse);
+  Bluetooth.print(F("|d06~Use right"));
+  sendYesNo(robot->sonarRightUse);
   Bluetooth.print(F("|d01~Counter "));
   Bluetooth.print(robot->sonarDistCounter);    
   Bluetooth.println(F("|d02~Value l, c, r"));
@@ -457,6 +463,9 @@ void RemoteControl::sendSonarMenu(boolean update){
 void RemoteControl::processSonarMenu(String pfodCmd){      
   if (pfodCmd == "d00") robot->sonarUse = !robot->sonarUse;
     else if (pfodCmd.startsWith("d03")) processSlider(pfodCmd, robot->sonarTriggerBelow, 1);
+    else if (pfodCmd == "d04") robot->sonarLeftUse = !robot->sonarLeftUse;
+    else if (pfodCmd == "d05") robot->sonarCenterUse = !robot->sonarCenterUse;
+    else if (pfodCmd == "d06") robot->sonarRightUse = !robot->sonarRightUse;
   sendSonarMenu(true);
 }
 
