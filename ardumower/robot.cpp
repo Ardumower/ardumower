@@ -790,7 +790,7 @@ void Robot::motorControl(){
     if ( (motorLeftPID.x == 0) && (motorLeftPID.w == 0) ) leftSpeed = 0; // ensures PWM is really zero 
     if ( (motorRightPID.x == 0) && (motorRightPID.w == 0) ) rightSpeed = 0; // ensures PWM is really zero     
 
-    if (millis() >= nextMotorControlOutputTime){
+    /*if (millis() >= nextMotorControlOutputTime){
       nextMotorControlOutputTime = millis() + 3000; 
       Console.print("PID x=");
       Console.print(motorLeftPID.x);
@@ -800,7 +800,7 @@ void Robot::motorControl(){
       Console.print(motorLeftPID.y);
       Console.print("\tPWM=");
       Console.println(leftSpeed);            
-    }    
+    } */   
     setMotorPWM( leftSpeed, rightSpeed, false );              
   }
   else{
