@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "591"
+#define VER "592"
  
 
 // sensors
