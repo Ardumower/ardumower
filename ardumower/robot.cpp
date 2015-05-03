@@ -1410,10 +1410,12 @@ void Robot::readSensors(){
     } 
   }    
   
-  if ((timerUse) && (millis() >= nextTimeRTC)) {
+  if (millis() >= nextTimeRTC) {
     // read RTC
-    nextTimeRTC = millis() + 1000;    
+    nextTimeRTC = millis() + 60000;    
     readSensor(SEN_RTC);                
+    Console.print(F("RTC date received: "));
+    Console.println(date2str(datetime.date));  
   }
   
   if ((imuUse) && (millis() >= nextTimeIMU)) {
@@ -1643,18 +1645,26 @@ if (millis() < nextTimeCheckBattery) return;
 
 void Robot::receiveGPSTime(){
   if (gpsUse){
+    if (gps.satellites() > 0){
+      Console.print(F("GPS satellites in view: "));
+      Console.println(gps.satellites());      
+    }
     int year;
     byte month, day, hour, minute, second, hundredths;
     unsigned long age; 
     gps.crack_datetime(&year, &month, &day, &hour, &minute, &second, &hundredths, &age);
     if (age != GPS::GPS_INVALID_AGE)
     {
+      Console.print(F("GPS date received: "));
+      Console.println(date2str(datetime.date));  
       datetime.date.dayOfWeek = getDayOfWeek(month, day, year, 1);      
       datetime.date.day = day;
       datetime.date.month = month;
       datetime.date.year = year;
       datetime.time.hour = hour;
       datetime.time.minute = minute;
+      Console.print(F("RTC date set: "));
+      Console.println(date2str(datetime.date));  
       setActuator(ACT_RTC, 0);            
     }      
   }

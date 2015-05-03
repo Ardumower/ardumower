@@ -491,7 +491,7 @@ int Mower::readSensor(char type){
 // imu-------------------------------------------------------------------------------------------------------
     //case SEN_IMU: imuYaw=imu.ypr.yaw; imuPitch=imu.ypr.pitch; imuRoll=imu.ypr.roll; break;    
 // rtc--------------------------------------------------------------------------------------------------------
-    case SEN_RTC: readDS1307(datetime); break;
+    case SEN_RTC: if (!readDS1307(datetime)) addErrorCounter(ERR_RTC_DATA); break;
 // rain--------------------------------------------------------------------------------------------------------
     case SEN_RAIN: if (digitalRead(pinRain)==LOW) return 1; break;
  
@@ -509,7 +509,7 @@ void Mower::setActuator(char type, int value){
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
-    case ACT_RTC: setDS1307(datetime); break;
+    case ACT_RTC:  if (!setDS1307(datetime)) addErrorCounter(ERR_RTC_COMM); break;
     case ACT_CHGRELAY: digitalWrite(pinChargeRelay, value); break;
     //case ACT_CHGRELAY: digitalWrite(pinChargeRelay, !value); break;
 

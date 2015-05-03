@@ -709,6 +709,8 @@ void RemoteControl::processDateTimeMenu(String pfodCmd){
     else if (pfodCmd.startsWith("t05")) processSlider(pfodCmd, robot->datetime.time.hour, 1);
     else if (pfodCmd.startsWith("t06")) processSlider(pfodCmd, robot->datetime.time.minute, 1);    
   sendDateTimeMenu(true);
+  Console.print(F("setting RTC datetime: "));
+  Console.println(date2str(robot->datetime.date));  
   robot->setActuator(ACT_RTC, 0);            
 }
 
