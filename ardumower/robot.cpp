@@ -140,7 +140,7 @@ Robot::Robot(){
   nextTimePerimeter = 0;
   nextTimeLawnSensor = 0;
   nextTimeLawnSensorCheck = 0;
-  nextTimeTimer = 0;
+  nextTimeTimer = millis() + 60000;
   nextTimeRTC = 0;
   nextTimeGPS = 0;
   nextTimePfodLoop = 0;
@@ -1658,16 +1658,21 @@ if (millis() < nextTimeCheckBattery) return;
 }
 
 void Robot::receiveGPSTime(){
-  if (gpsUse){
+  if (gpsUse) {
     unsigned long chars = 0;
     unsigned short good_sentences = 0;
     unsigned short failed_cs = 0;
     gps.stats(&chars, &good_sentences, &failed_cs);    
-    if (good_sentences == 0) addErrorCounter(ERR_GPS_DATA);
-    Console.print(F("GPS sentences: "));
-    Console.println(good_sentences);              
-    Console.print(F("GPS satellites in view: "));
+    if (good_sentences == 0) {
+      Console.print(F("GPS communication error!"));      
+      addErrorCounter(ERR_GPS_COMM);
+      setNextState(STATE_ERROR, 0);
+    }
+    Console.print(F("GPS sentences: "));    
+    Console.println(good_sentences);    
+    Console.print(F("GPS satellites in view: "));          
     Console.println(gps.satellites());          
+    if (gps.satellites() == 255) addErrorCounter(ERR_GPS_DATA);    
     int year;
     byte month, day, hour, minute, second, hundredths;
     unsigned long age; 

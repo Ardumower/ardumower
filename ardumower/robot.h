@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "592"
+#define VER "593"
  
 
 // sensors
@@ -118,6 +118,7 @@ enum {
   ERR_ODOMETRY_RIGHT,
   ERR_BATTERY,
   ERR_CHARGER,
+  ERR_GPS_COMM,
   ERR_GPS_DATA,
   ERR_ADC_CALIB,
   ERR_IMU_CALIB,
