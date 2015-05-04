@@ -50,6 +50,7 @@ struct {
 
 IMU::IMU(){
   hardwareInitialized = false;
+  calibrationAvail = false;
   state = IMU_RUN;
   callCounter = 0;  
   errorCounter = 0;
@@ -155,6 +156,7 @@ void IMU::loadCalib(){
     Console.println(F("IMU error: no calib data"));
     return;  
   }
+  calibrationAvail = true;
   Console.println(F("IMU: found calib data"));
   loadSaveCalib(true);
 }
@@ -422,6 +424,7 @@ void IMU::calibComStartStop(){
   if (state == IMU_CAL_COM){
     // stop 
     Console.println(F("com calib completed"));    
+    calibrationAvail = true;
     float xrange = comMax.x - comMin.x;
     float yrange = comMax.y - comMin.y;
     float zrange = comMax.z - comMin.z;

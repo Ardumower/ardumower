@@ -57,6 +57,7 @@ ADCManager ADCMan;
 
 
 ADCManager::ADCManager(){
+  calibrationAvail = false;
   for (int i=0; i < CHANNELS; i++) {
     captureSize[i]=0;
     ofs[i]=0;
@@ -105,6 +106,11 @@ void ADCManager::calibrate(){
   }
   printCalib();  
   saveCalib();
+  calibrationAvail = true;
+}
+
+boolean ADCManager::calibrationDataAvail(){
+  return calibrationAvail;
 }
 
 void ADCManager::calibrateOfs(byte pin){  
@@ -336,6 +342,7 @@ boolean ADCManager::loadCalib(){
     Console.println(F("ADCMan error: no calib data"));
     return false;   
   }
+  calibrationAvail = true;
   Console.println(F("ADCMan: found calib data"));
   loadSaveCalib(true);
   return true;

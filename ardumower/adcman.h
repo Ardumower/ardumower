@@ -65,7 +65,7 @@ class ADCManager
     void calibrate();
     // configure sampling for pin:
     // samplecount = 1: 10 bit sampling (unsigned)
-    // samplecount > 1: 8 bit sampling (signed - zero = VCC/2)
+    // samplecount > 1: 8 bit sampling (signed - zero = VCC/2)    
     void setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs);    
     // get buffer with samples for pin
     int8_t* getCapture(byte pin);        
@@ -84,10 +84,13 @@ class ADCManager
     int16_t getADCOfs(byte pin);    
     // return number samples to capture
     int getCaptureSize(byte pin);
+    // calibration data available?
+    boolean calibrationDataAvail();
     // get the manager running, starts sampling next pin
     void run();    
   private:
     int capturedChannels;    
+    bool calibrationAvail;
     void calibrateOfs(byte pin);
     void startCapture(int sampleCount);
     void stopCapture();    

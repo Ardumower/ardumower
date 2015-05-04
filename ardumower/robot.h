@@ -119,6 +119,8 @@ enum {
   ERR_BATTERY,
   ERR_CHARGER,
   ERR_GPS_DATA,
+  ERR_ADC_CALIB,
+  ERR_IMU_CALIB,
   // <---- add new error types here  
   ERR_ENUM_COUNT,  
 };  
