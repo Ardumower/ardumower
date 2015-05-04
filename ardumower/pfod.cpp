@@ -259,7 +259,10 @@ void RemoteControl::sendErrorMenu(boolean update){
 }  
 
 void RemoteControl::processErrorMenu(String pfodCmd){      
-  if (pfodCmd == "z00") robot->resetErrorCounters();
+  if (pfodCmd == "z00") {
+    robot->resetErrorCounters();
+    robot->setNextState(STATE_OFF, 0);
+  }
   sendErrorMenu(true);
 }
 

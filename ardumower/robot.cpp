@@ -1419,7 +1419,7 @@ void Robot::readSensors(){
     } 
   }    
   
-  if (millis() >= nextTimeRTC) {
+  if ((timerUse) && (millis() >= nextTimeRTC)) {
     // read RTC
     nextTimeRTC = millis() + 60000;    
     readSensor(SEN_RTC);                
@@ -1664,15 +1664,20 @@ void Robot::receiveGPSTime(){
     unsigned short failed_cs = 0;
     gps.stats(&chars, &good_sentences, &failed_cs);    
     if (good_sentences == 0) {
-      Console.print(F("GPS communication error!"));      
+      // no GPS sentences received so far
+      Console.println(F("GPS communication error!"));      
       addErrorCounter(ERR_GPS_COMM);
-      setNextState(STATE_ERROR, 0);
+      // next line commented out as GPS communication may not be available if GPS signal is poor
+      //setNextState(STATE_ERROR, 0);
     }
     Console.print(F("GPS sentences: "));    
     Console.println(good_sentences);    
     Console.print(F("GPS satellites in view: "));          
     Console.println(gps.satellites());          
-    if (gps.satellites() == 255) addErrorCounter(ERR_GPS_DATA);    
+    if (gps.satellites() == 255) {
+      // no GPS satellites received so far
+      addErrorCounter(ERR_GPS_DATA);          
+    }
     int year;
     byte month, day, hour, minute, second, hundredths;
     unsigned long age; 
@@ -1687,9 +1692,12 @@ void Robot::receiveGPSTime(){
       datetime.date.year = year;
       datetime.time.hour = hour;
       datetime.time.minute = minute;
-      Console.print(F("RTC date set: "));
-      Console.println(date2str(datetime.date));  
-      setActuator(ACT_RTC, 0);            
+      if (timerUse){
+        // set RTC using GPS data
+        Console.print(F("RTC date set: "));
+        Console.println(date2str(datetime.date));  
+        setActuator(ACT_RTC, 0);            
+      }
     }      
   }
 }

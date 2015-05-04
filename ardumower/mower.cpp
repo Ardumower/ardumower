@@ -239,7 +239,7 @@ Mower::Mower(){
   userSwitch2       = 0;       // user-defined switch 2 (default value)
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
-  timerUse          = 0;       // use timer?
+  timerUse          = 0;       // use RTC and timer?
   // ------ configuration end -------------------------------------------   
 }
 
@@ -497,7 +497,13 @@ int Mower::readSensor(char type){
 // imu-------------------------------------------------------------------------------------------------------
     //case SEN_IMU: imuYaw=imu.ypr.yaw; imuPitch=imu.ypr.pitch; imuRoll=imu.ypr.roll; break;    
 // rtc--------------------------------------------------------------------------------------------------------
-    case SEN_RTC: if (!readDS1307(datetime)) addErrorCounter(ERR_RTC_DATA); break;
+    case SEN_RTC: 
+      if (!readDS1307(datetime)) {
+        Console.println("RTC data error!");        
+        addErrorCounter(ERR_RTC_DATA);         
+        setNextState(STATE_ERROR, 0);       
+      }
+      break;
 // rain--------------------------------------------------------------------------------------------------------
     case SEN_RAIN: if (digitalRead(pinRain)==LOW) return 1; break;
  
@@ -515,7 +521,13 @@ void Mower::setActuator(char type, int value){
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
-    case ACT_RTC:  if (!setDS1307(datetime)) addErrorCounter(ERR_RTC_COMM); break;
+    case ACT_RTC:  
+      if (!setDS1307(datetime)) {
+        Console.println("RTC comm error!");
+        addErrorCounter(ERR_RTC_COMM); 
+        setNextState(STATE_ERROR, 0);       
+      }
+      break;
     case ACT_CHGRELAY: digitalWrite(pinChargeRelay, value); break;
     //case ACT_CHGRELAY: digitalWrite(pinChargeRelay, !value); break;
 
