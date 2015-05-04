@@ -74,7 +74,8 @@ volatile boolean enableSender = true;
 double duty = 0.1;    // 10%
 int dutyPWM = 0;
 double chargeCurrent = 0;
-double periCurrent = 0; 
+double periCurrentAvg = 0; 
+double periCurrentMax = 0; 
 int faults = 0;
 boolean isCharging = false;
 boolean stateLED = false;
@@ -273,7 +274,10 @@ void loop(){
     if (USE_PERI_CURRENT) {
       // determine perimeter current (Ampere)
       periCurrentMeasurements.getAverage(v);    
-      periCurrent = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+      periCurrentAvg = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+      unsigned int h;
+      periCurrentMeasurements.getHighest(h);    
+      periCurrentMax = ((double)h) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
     }
         
     Serial.print("time=");
@@ -282,8 +286,10 @@ void loop(){
     Serial.print(chargeCurrent, 3);
     Serial.print("\tisCharging=");
     Serial.print(isCharging);    
-    Serial.print("\tperiCurrent=");
-    Serial.print(periCurrent);
+    Serial.print("\tperiCurrent avg=");
+    Serial.print(periCurrentAvg);
+    Serial.print("\tmax=");
+    Serial.print(periCurrentMax);
     Serial.print("\tduty=");
     Serial.print(duty);
     Serial.print("\tdutyPWM=");        
@@ -316,7 +322,7 @@ void loop(){
     }
   } else {
     // not charging => indicate perimeter wire state (OFF=broken)
-    stateLED = (periCurrent >= PERI_CURRENT_MIN);
+    stateLED = (periCurrentAvg >= PERI_CURRENT_MIN);
   }
   digitalWrite(pinLED, stateLED);   
 
