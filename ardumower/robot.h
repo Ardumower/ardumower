@@ -320,8 +320,7 @@ class Robot
     unsigned long nextTimeIMU ;
     // ------- perimeter state --------------------------
     Perimeter perimeter;
-    char perimeterUse       ;      // use perimeter?
-    char perimeterUseDiffSignal;   // use differential signal?
+    char perimeterUse       ;      // use perimeter?    
     int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
     int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
     PID perimeterPID ;             // perimeter PID controller
