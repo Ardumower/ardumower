@@ -451,11 +451,11 @@ void RemoteControl::sendSonarMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Sonar`1000"));         
   Bluetooth.print(F("|d00~Use "));
   sendYesNo(robot->sonarUse);
-  Bluetooth.print(F("|d04~Use left"));
+  Bluetooth.print(F("|d04~Use left "));
   sendYesNo(robot->sonarLeftUse);
-  Bluetooth.print(F("|d05~Use center"));
+  Bluetooth.print(F("|d05~Use center "));
   sendYesNo(robot->sonarCenterUse);
-  Bluetooth.print(F("|d06~Use right"));
+  Bluetooth.print(F("|d06~Use right "));
   sendYesNo(robot->sonarRightUse);
   Bluetooth.print(F("|d01~Counter "));
   Bluetooth.print(robot->sonarDistCounter);    
