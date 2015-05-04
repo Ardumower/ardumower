@@ -1333,7 +1333,11 @@ void Robot::readSensors(){
         motorMowRpmCounter = 0;        
       }       
       lastMotorMowRpmTime = millis();     
-      if (!ADCMan.calibrationDataAvail()) addErrorCounter(ERR_ADC_CALIB);
+      if (!ADCMan.calibrationDataAvail()) {
+        Console.println("Error: missing ADC calibration data");
+        addErrorCounter(ERR_ADC_CALIB);
+        setNextState(STATE_ERROR, 0);
+      }
     }
   }   
   if ((perimeterUse) && (millis() >= nextTimePerimeter)){    
@@ -1431,7 +1435,11 @@ void Robot::readSensors(){
       addErrorCounter(ERR_IMU_COMM);
       Console.println("IMU comm error");    
     }    
-    if (!imu.calibrationAvail) addErrorCounter(ERR_IMU_CALIB);
+    if (!imu.calibrationAvail) {
+      Console.println("Error: missing IMU calibration data");
+      addErrorCounter(ERR_IMU_CALIB);
+      setNextState(STATE_ERROR, 0);
+    }
   }  
   if (millis() >= nextTimeBattery){
     // read battery
