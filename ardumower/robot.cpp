@@ -552,9 +552,9 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
       pwmRight = motorRightPWMCurr - motorRightPWMCurr *   ((float)TaC)/200.0;  // reduce speed
   }            
   if (odometryUse){
-    if (abs(motorLeftRpmCurr <0.1)) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
+    if (abs(motorLeftRpmCurr) <1) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
       else motorLeftZeroTimeout = 500;
-    if (abs(motorRightRpmCurr <0.1)) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
+    if (abs(motorRightRpmCurr) <1) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
       else motorRightZeroTimeout = 500;
   } else {
     if (pwmLeft == 0)  motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
@@ -732,8 +732,8 @@ void Robot::checkOdometryFaults(){
   bool rightErr = false;
   if ((stateCurr == STATE_FORWARD) &&  (millis()-stateStartTime>8000) ) {
     // just check if odometry sensors may not be working at all
-    if ( (motorLeftPWMCurr > 100) && (abs(motorLeftRpmCurr) < 0.1)  )  leftErr = true;
-    if ( (motorRightPWMCurr > 100) && (abs(motorRightRpmCurr) < 0.1)  ) rightErr = true;
+    if ( (motorLeftPWMCurr > 100) && (abs(motorLeftRpmCurr) < 1)  )  leftErr = true;
+    if ( (motorRightPWMCurr > 100) && (abs(motorRightRpmCurr) < 1)  ) rightErr = true;
   }  
   if ((stateCurr == STATE_ROLL) &&  (millis()-stateStartTime>1000) ) {
     // just check if odometry sensors may be turning in the wrong direction

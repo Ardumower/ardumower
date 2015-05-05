@@ -1280,13 +1280,19 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->motorLeftRpmCurr);
       Bluetooth.print(",");
+      Bluetooth.print(robot->motorRightRpmCurr);
+      Bluetooth.print(",");
       Bluetooth.print(robot->motorLeftSpeedRpmSet);
-      Bluetooth.print(",");      
-      Bluetooth.print(robot->motorLeftPWMCurr);
-      Bluetooth.print(",");                        
+      Bluetooth.print(",");            
+      Bluetooth.print(robot->motorRightSpeedRpmSet);
+      Bluetooth.print(",");            
+      Bluetooth.print(robot->motorLeftPWMCurr);      
+      Bluetooth.print(",");                    
+      Bluetooth.print(robot->motorRightPWMCurr);
+      Bluetooth.print(",");                                  
       Bluetooth.print(robot->motorLeftPID.eold);      
       Bluetooth.print(",");                        
-      Bluetooth.println(robot->motorRightPID.eold);      
+      Bluetooth.println(robot->motorRightPID.eold);            
     }
   }
 }
@@ -1377,7 +1383,7 @@ void RemoteControl::readSerial(){
         }
         else if (pfodCmd == "y11"){
           // motor control
-          Bluetooth.println(F("{=Motor control`300|time s`0|rpm_curr`1|rpm_set`2|pwm`3|lerr`4|rerr`5}"));                   
+          Bluetooth.println(F("{=Motor control`300|time s`0|lrpm_curr`1|rrpm_curr`2|lrpm_set`3|rrpm_set`4|lpwm`5|rpwm`6|lerr`7|rerr`8}"));                   
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_MOTOR;
         }              
