@@ -49,11 +49,11 @@ float PID::compute()
   if (Ta > 1.0) Ta = 1.0;   // should only happen for the very first call
 
   // compute error
-  int16_t e = (w - x);	
+  float e = (w - x);	
   // integrate error
   esum += e;
   // anti wind-up	
-  int iTerm = Ki * Ta * esum;	
+  float iTerm = Ki * Ta * esum;	
   if (iTerm < -max_output)  {
     iTerm = -max_output;
     esum = -max_output / Ta / Ki;
