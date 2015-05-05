@@ -127,7 +127,7 @@ Mower::Mower(){
   name = "Ardumower";
   // ------- wheel motors -----------------------------
   motorAccel       = 500;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
-  motorSpeedMaxRpm       = 25;   // motor wheel max RPM
+  motorSpeedMaxRpm       = 25;   // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
   motorPowerMax     = 50;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
@@ -140,9 +140,9 @@ Mower::Mower(){
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
   // ---- normal control ---
-  motorLeftPID.Kp       = 0.5;    // motor wheel PID controller
-  motorLeftPID.Ki       = 0.1;
-  motorLeftPID.Kd       = 0.0;
+  motorLeftPID.Kp       = 0.87;    // motor wheel PID controller
+  motorLeftPID.Ki       = 0.29;
+  motorLeftPID.Kd       = 0.25;
   /*// ---- fast control ---
   motorLeftPID.Kp       = 1.76;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.87;
