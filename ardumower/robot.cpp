@@ -1655,17 +1655,20 @@ void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
-    if ((batVoltage < batGoHomeIfBelow) && (stateCurr != STATE_OFF) 
+    if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
+      Console.println(F("triggered batSwitchOffIfBelow"));
+      addErrorCounter(ERR_BATTERY);
+      beep(2, true);      
+      setNextState(STATE_OFF, 0);
+    }
+    else if ((batVoltage < batGoHomeIfBelow) && (stateCurr != STATE_OFF) 
          && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
          && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE) 
+         && (stateCurr != STATE_ERROR) && (stateCurr != STATE_PERI_TRACK)
          && (perimeterUse)) {    //UNTESTED please verify
       Console.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
-    } else if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
-      Console.println(F("triggered batSwitchOffIfBelow"));
-      beep(2, true);      
-      setNextState(STATE_OFF, 0);
     }
   }
   // check if idle and robot battery can be switched off  
