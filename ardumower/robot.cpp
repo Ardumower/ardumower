@@ -25,7 +25,10 @@
 
 #include "robot.h"
 
-#define MAGIC 44
+#define MAGIC 45
+
+#define ADDR_USER_SETTINGS 0
+#define ADDR_ERR_COUNTERS 400
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -163,10 +166,31 @@ char *Robot::mowPatternName(){
   return mowPatternNames[mowPatternCurr];
 }
 
-void Robot::loadSaveUserSettings(boolean readflag){
-  int addr = 0;
-  short magic = MAGIC;
+void Robot::loadSaveErrorCounters(boolean readflag){
+  if (readflag) Console.println(F("loadSaveErrorCounters: read"));
+    else Console.println(F("loadSaveErrorCounters: write"));
+  int addr = ADDR_ERR_COUNTERS;
+  short magic = 0;
+  if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
+  if ((readflag) && (magic != MAGIC)) {
+    Console.println(F("EEPROM ERR COUNTERS: NO EEPROM DATA"));
+    return;
+  }
+  eereadwrite(readflag, addr, errorCounterMax);  
+  Console.print(F("loadSaveErrorCounters addrstop="));
+  Console.println(addr);
+}
+
+void Robot::loadSaveUserSettings(boolean readflag){
+  int addr = ADDR_USER_SETTINGS;
+  short magic = 0;
+  if (!readflag) magic = MAGIC;  
+  eereadwrite(readflag, addr, magic); // magic
+  if ((readflag) && (magic != MAGIC)) {
+    Console.println(F("EEPROM USER: NO EEPROM DATA"));
+    return;
+  }
   eereadwrite(readflag, addr, developerActive);          
   eereadwrite(readflag, addr, motorAccel);    
   eereadwrite(readflag, addr, motorSpeedMaxRpm);
@@ -249,22 +273,17 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
-  eereadwrite(readflag, addr, dropUse);        
-  eereadwrite(readflag, addr, errorCounterMax);
+  eereadwrite(readflag, addr, dropUse);          
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
 
-void Robot::loadUserSettings(){
-  short magic = 0;
-  int addr = 0;
-  eeread(addr, magic);
-  if (magic != MAGIC) {
-    Console.println(F("NO EEPROM SETTINGS FOUND"));
-    return;
-  }
+void Robot::loadUserSettings(){  
+  Console.println(F("loadUserSettings"));  
   loadSaveUserSettings(true);
 }
+
+
 void Robot::printSettingSerial(){
  
   // ------- wheel motors -----------------------------
@@ -911,6 +930,7 @@ void Robot::setup()  {
   setDefaultTime();
   setMotorPWM(0, 0, false);
   loadUserSettings();
+  loadSaveErrorCounters(true);
   setUserSwitches();
 
   
@@ -1685,7 +1705,7 @@ if (millis() < nextTimeCheckBattery) return;
       if (idleTimeSec > batSwitchOffIfIdle * 60) {        
         Console.println(F("triggered batSwitchOffIfIdle"));      
         beep(1, true);      
-        saveUserSettings();
+        loadSaveErrorCounters(false);
         idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
         Console.println(F("BATTERY switching OFF"));
         setActuator(ACT_BATTERY_SW, 0);  // switch off battery               

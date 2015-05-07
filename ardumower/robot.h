@@ -467,6 +467,7 @@ class Robot
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
+    virtual void loadSaveErrorCounters(boolean readflag);
     virtual void loadSaveUserSettings(boolean readflag);
     virtual void loadUserSettings();
     virtual void checkErrorCounter();
