@@ -377,7 +377,7 @@ class Robot
     char batMonitor ;              // monitor battery and charge voltage?
     float batGoHomeIfBelow ;     // drive home voltage (Volt)
     float batSwitchOffIfBelow ;  // switch off if below voltage (Volt)
-    int batSwitchOffIfIdleSec ;  // switch off battery if idle for seconds
+    int batSwitchOffIfIdle;      // switch off battery if idle for minutes
     float batFactor       ;     // battery conversion factor
     float batChgFactor       ;     // battery conversion factor    
     float batFull         ;      // battery reference Voltage (fully charged)

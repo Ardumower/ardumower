@@ -202,7 +202,7 @@ Mower::Mower(){
   batMonitor = 1;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   batSwitchOffIfBelow = 21.7;  // switch off battery if below voltage (Volt)
-  batSwitchOffIfIdleSec = 30;  // switch off battery if idle for seconds
+  batSwitchOffIfIdle = 1;      // switch off battery if idle (minutes)
   batFactor       = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batChgFactor    = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
