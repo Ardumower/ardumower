@@ -250,7 +250,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
   eereadwrite(readflag, addr, dropUse);        
-  Console.print("loadSaveUserSettings addrstop=");
+  eereadwrite(readflag, addr, errorCounterMax);
+  Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
 
@@ -259,7 +260,7 @@ void Robot::loadUserSettings(){
   int addr = 0;
   eeread(addr, magic);
   if (magic != MAGIC) {
-    Console.println("NO EEPROM SETTINGS FOUND");
+    Console.println(F("NO EEPROM SETTINGS FOUND"));
     return;
   }
   loadSaveUserSettings(true);
@@ -267,130 +268,130 @@ void Robot::loadUserSettings(){
 void Robot::printSettingSerial(){
  
   // ------- wheel motors -----------------------------
-  Console.print  ("motorAccel  : ");
+  Console.print  (F("motorAccel  : "));
   Console.println( motorAccel);
-  Console.print  ("motorSpeedMaxRpm : ");
+  Console.print  (F("motorSpeedMaxRpm : "));
   Console.println(motorSpeedMaxRpm);
-  Console.print  ("motorSpeedMaxPwm : "); 
+  Console.print  (F("motorSpeedMaxPwm : ")); 
   Console.println(motorSpeedMaxPwm);
-  Console.print  ("motorPowerMax : ");    
+  Console.print  (F("motorPowerMax : "));    
   Console.println(motorPowerMax);
-  Console.print  ("motorSenseRightScale : "); 
+  Console.print  (F("motorSenseRightScale : ")); 
   Console.println(motorSenseRightScale);
-  Console.print  ("motorSenseLeftScale : ");
+  Console.print  (F("motorSenseLeftScale : "));
   Console.println(motorSenseLeftScale);
-  Console.print  ("motorRollTimeMax : ");
+  Console.print  (F("motorRollTimeMax : "));
   Console.println(motorRollTimeMax);
-  Console.print  ("motorReverseTime : ");
+  Console.print  (F("motorReverseTime : "));
   Console.println(motorReverseTime);
   
-  Console.print  ("motorForwTimeMax : ");
+  Console.print  (F("motorForwTimeMax : "));
   Console.println(motorForwTimeMax);
   
-  Console.print  ("motorBiDirSpeedRatio1 : ");
+  Console.print  (F("motorBiDirSpeedRatio1 : "));
   Console.println(motorBiDirSpeedRatio1);
   
-  Console.print  ("motorBiDirSpeedRatio2 : ");
+  Console.print  (F("motorBiDirSpeedRatio2 : "));
   Console.println(motorBiDirSpeedRatio2);
   
   // ------ mower motor -------------------------------
-  Console.print  ("motorMowAccel : ");
+  Console.print  (F("motorMowAccel : "));
   Console.println(motorMowAccel);
-  Console.print  ("motorMowSpeedMaxPwm : ");
+  Console.print  (F("motorMowSpeedMaxPwm : "));
   Console.println(motorMowSpeedMaxPwm);
-  Console.print  ("motorMowPowerMax : ");
+  Console.print  (F("motorMowPowerMax : "));
   Console.println(motorMowPowerMax);
-  Console.print  ("motorMowModulate : ");
+  Console.print  (F("motorMowModulate : "));
   Console.println(motorMowModulate);
-  Console.print  ("motorMowRPMSet : ");  
+  Console.print  (F("motorMowRPMSet : "));  
   Console.println(motorMowRPMSet);
-  Console.print  ("motorMowSenseScale : ");
+  Console.print  (F("motorMowSenseScale : "));
   Console.println(motorMowSenseScale); 
-  Console.print  ("motorMowPID.Kp : ");
+  Console.print  (F("motorMowPID.Kp : "));
   Console.println(motorMowPID.Kp);
-  Console.print  ("motorMowPID.Ki : ");
+  Console.print  (F("motorMowPID.Ki : "));
   Console.println(motorMowPID.Ki);
-  Console.print  ("motorMowPID.Kd : ");
+  Console.print  (F("motorMowPID.Kd : "));
   Console.println(motorMowPID.Kd);
   
   // ------ sonar ------------------------------------
-  Console.print  ("sonarUse : ");
+  Console.print  (F("sonarUse : "));
   Console.println(sonarUse);
-  Console.print  ("sonarTriggerBelow : ");
+  Console.print  (F("sonarTriggerBelow : "));
   Console.println(sonarTriggerBelow);
   
   // ------ perimeter ---------------------------------
-  Console.print  ("perimeterUse : ");
+  Console.print  (F("perimeterUse : "));
   Console.println(perimeterUse);
-  Console.print  ("perimeterTriggerTimeout : ");
+  Console.print  (F("perimeterTriggerTimeout : "));
   Console.println(perimeterTriggerTimeout);
-  Console.print  ("perimeterTrackRollTime : ");
+  Console.print  (F("perimeterTrackRollTime : "));
   Console.println(perimeterTrackRollTime);
-  Console.print  ("perimeterTrackRevTime : ");
+  Console.print  (F("perimeterTrackRevTime : "));
   Console.println(perimeterTrackRevTime);
-  Console.print  ("perimeterPID.Kp : ");
+  Console.print  (F("perimeterPID.Kp : "));
   Console.println(perimeterPID.Kp);
-  Console.print  ("perimeterPID.Ki : ");
+  Console.print  (F("perimeterPID.Ki : "));
   Console.println( perimeterPID.Ki);
-  Console.print  ("perimeterPID.Kd : ");
+  Console.print  (F("perimeterPID.Kd : "));
   Console.println(perimeterPID.Kd);
     
   // ------  IMU (compass/accel/gyro) ----------------------
   
-  Console.print  ("imuUse : ");
+  Console.print  (F("imuUse : "));
   Console.println( imuUse);
-  Console.print  ("imuCorrectDir : ");
+  Console.print  (F("imuCorrectDir : "));
   Console.println(imuCorrectDir); 
-  Console.print  ("imuDirPID.Kp : ");
+  Console.print  (F("imuDirPID.Kp : "));
   Console.println(imuDirPID.Kp); 
-  Console.print  ("imuDirPID.Ki : ");
+  Console.print  (F("imuDirPID.Ki : "));
   Console.println(imuDirPID.Ki); 
-  Console.print  ("imuDirPID.Kd : ");
+  Console.print  (F("imuDirPID.Kd : "));
   Console.println( imuDirPID.Kd);
-  Console.print  ("imuRollPID.Kp : ");
+  Console.print  (F("imuRollPID.Kp : "));
   Console.println(imuRollPID.Kp); 
-  Console.print  ("imuRollPID.Ki : ");
+  Console.print  (F("imuRollPID.Ki : "));
   Console.println(imuRollPID.Ki); 
-  Console.print  ("imuRollPID.Kd : ");
+  Console.print  (F("imuRollPID.Kd : "));
   Console.println(imuRollPID.Kd); 
   
   // ------ battery -------------------------------------
   
-  Console.print  ("batMonitor : ");
+  Console.print  (F("batMonitor : "));
   Console.println( batMonitor);
-  Console.print  ("batGoHomeIfBelow : ");
+  Console.print  (F("batGoHomeIfBelow : "));
   Console.println(batGoHomeIfBelow); 
-  Console.print  ("batSwitchOffIfBelow : ");
+  Console.print  (F("batSwitchOffIfBelow : "));
   Console.println(batSwitchOffIfBelow); 
-  Console.print  ("batFactor : ");
+  Console.print  (F("batFactor : "));
   Console.println( batFactor);
-  Console.print  ("batChgFactor : ");  
+  Console.print  (F("batChgFactor : "));  
   Console.println( batChgFactor);
-  Console.print  ("batFull : ");
+  Console.print  (F("batFull : "));
   Console.println( batFull);
-  Console.print  ("chgSenseZero : ");
+  Console.print  (F("chgSenseZero : "));
   Console.println(chgSenseZero); 
-  Console.print  ("chgFactor : ");
+  Console.print  (F("chgFactor : "));
   Console.println( chgFactor);
   // ------  charging station ---------------------------
   
-  Console.print  ("stationRevTime : ");
+  Console.print  (F("stationRevTime : "));
   Console.println(stationRevTime); 
-  Console.print  ("stationRollTime : ");
+  Console.print  (F("stationRollTime : "));
   Console.println(stationRollTime); 
-  Console.print  ("stationForwTime : ");
+  Console.print  (F("stationForwTime : "));
   Console.println( stationForwTime);
   // ------ odometry ------------------------------------
   
-  Console.print  ("odometryUse : ");
+  Console.print  (F("odometryUse : "));
   Console.println( odometryUse);
-  Console.print  ("twoWayOdometrySensorUse : ");
+  Console.print  (F("twoWayOdometrySensorUse : "));
   Console.println( twoWayOdometrySensorUse);
-  Console.print  ("odometryTicksPerRevolution : ");
+  Console.print  (F("odometryTicksPerRevolution : "));
   Console.println( odometryTicksPerRevolution);
-  Console.print  ("odometryTicksPerCm : ");
+  Console.print  (F("odometryTicksPerCm : "));
   Console.println( odometryTicksPerCm);
-  Console.print  ("odometryWheelBaseCm : ");
+  Console.print  (F("odometryWheelBaseCm : "));
   Console.println( odometryWheelBaseCm);
 
   return;
@@ -399,11 +400,13 @@ void Robot::printSettingSerial(){
 
 
 void Robot::saveUserSettings(){
+  Console.println(F("saveUserSettings"));
   loadSaveUserSettings(false);
 }
 
 void Robot::deleteUserSettings(){
   int addr = 0;
+  Console.println(F("deleteUserSettings"));
   eewrite(addr, (short)0); // magic  
 }
 
@@ -866,6 +869,10 @@ void Robot::motorMowControl(){
 }
 
 void Robot::resetIdleTime(){
+  if (idleTimeSec == BATTERY_SW_OFF){ // battery switched off?
+    Console.println(F("BATTERY switching ON again"));
+    setActuator(ACT_BATTERY_SW, 1);  // switch on battery again (if connected via USB)
+  }
   idleTimeSec = 0;
 }
 
@@ -930,7 +937,7 @@ void Robot::setup()  {
 
 
 void Robot::printRemote(){
-  Console.print("RC ");    
+  Console.print(F("RC "));    
   Console.print(remoteSwitch);  
   Console.print(",");      
   Console.print(remoteSteer);
@@ -941,11 +948,11 @@ void Robot::printRemote(){
 }
 
 void Robot::printOdometry(){
-  Console.print("ODO,");
+  Console.print(F("ODO,"));
   Console.print(odometryX);
   Console.print(",");
   Console.println(odometryY);  
-  Console.print("ODO,");
+  Console.print(F("ODO,"));
   Console.print(odometryX);
   Console.print(",");
   Console.println(odometryY);  
@@ -1161,7 +1168,7 @@ void Robot::menu(){
           break;          
         case 'x':
           printSettingSerial();
-          Console.println("fertig");
+          Console.println(F("fertig"));
           break;          
       }      
     }
@@ -1344,7 +1351,7 @@ void Robot::readSensors(){
       }       
       lastMotorMowRpmTime = millis();     
       if (!ADCMan.calibrationDataAvail()) {
-        Console.println("Error: missing ADC calibration data");
+        Console.println(F("Error: missing ADC calibration data"));
         addErrorCounter(ERR_ADC_CALIB);
         setNextState(STATE_ERROR, 0);
       }
@@ -1370,7 +1377,7 @@ void Robot::readSensors(){
     }
     if (perimeter.signalTimedOut(0))  {      
       if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE)) {
-        Console.println("Error: perimeter too far away");
+        Console.println(F("Error: perimeter too far away"));
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
       }
@@ -1387,7 +1394,7 @@ void Robot::readSensors(){
     double deltaFront = lawnSensorFront/lawnSensorFrontOld * 100.0;    
     double deltaBack = lawnSensorBack/lawnSensorBackOld * 100.0;        
     if ((deltaFront <= 95) || (deltaBack <= 95)){
-      Console.print("LAWN ");
+      Console.print(F("LAWN "));
       Console.print(deltaFront);
       Console.print(",");
       Console.println(deltaBack);
@@ -1443,10 +1450,10 @@ void Robot::readSensors(){
     nextTimeIMU = millis() + 200;   // 5 hz    
     if (imu.getErrorCounter()>0) {
       addErrorCounter(ERR_IMU_COMM);
-      Console.println("IMU comm error");    
+      Console.println(F("IMU comm error"));    
     }    
     if (!imu.calibrationAvail) {
-      Console.println("Error: missing IMU calibration data");
+      Console.println(F("Error: missing IMU calibration data"));
       addErrorCounter(ERR_IMU_CALIB);
       setNextState(STATE_ERROR, 0);
     }
@@ -1673,13 +1680,20 @@ if (millis() < nextTimeCheckBattery) return;
   }
   // check if idle and robot battery can be switched off  
   if ( (stateCurr == STATE_OFF) || (stateCurr == STATE_ERROR) ) {      
+    if (idleTimeSec != BATTERY_SW_OFF){ // battery already switched off?
       idleTimeSec ++; // add one second idle time
       if (idleTimeSec > batSwitchOffIfIdle * 60) {        
         Console.println(F("triggered batSwitchOffIfIdle"));      
-        //beep(1, true);      
-        setActuator(ACT_BATTERY_SW, 0);
+        beep(1, true);      
+        saveUserSettings();
+        idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
+        Console.println(F("BATTERY switching OFF"));
+        setActuator(ACT_BATTERY_SW, 0);  // switch off battery               
       }
-  } else idleTimeSec = 0;
+    }
+  } else {
+    resetIdleTime();          
+  }
 }
 
 
@@ -1745,7 +1759,7 @@ void Robot::checkTimer(){
             // start timer triggered
             stopTimerTriggered = false;
             if ((stateCurr == STATE_STATION) || (stateCurr == STATE_OFF)){
-              Console.println("timer start triggered");
+              Console.println(F("timer start triggered"));
               motorMowEnable = true;
               setNextState(STATE_FORWARD, 0);
             } 
@@ -1755,7 +1769,7 @@ void Robot::checkTimer(){
     }
     if (stopTimerTriggered){
       if (stateCurr == STATE_FORWARD){
-        Console.println("timer stop triggered");
+        Console.println(F("timer stop triggered"));
         setNextState(STATE_PERI_FIND, 0);
       } 
     }
@@ -1921,7 +1935,7 @@ void Robot::checkLawn(){
 
 void Robot::checkRain(){
   if (rain){
-    Console.println("RAIN");
+    Console.println(F("RAIN"));
     if (perimeterUse) setNextState(STATE_PERI_FIND, 0);    
       else setNextState(STATE_OFF, 0);    
   }
@@ -1974,7 +1988,7 @@ void Robot::checkTilt(){
   int rollAngle  = (imu.ypr.roll/PI*180.0);
   if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_STATION) ){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
-      Console.println("Error: IMU tilt");
+      Console.println(F("Error: IMU tilt"));
       addErrorCounter(ERR_IMU_TILT);
       setNextState(STATE_ERROR,0);
     }

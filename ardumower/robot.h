@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "595"
+#define VER "597"
  
 
 // sensors
@@ -123,7 +123,7 @@ enum {
   ERR_GPS_DATA,
   ERR_ADC_CALIB,
   ERR_IMU_CALIB,
-  // <---- add new error types here  
+  // <---- add new error types here (NOTE: increase MAGIC to avoid corrupt EEPROM error data!)
   ERR_ENUM_COUNT,  
 };  
 
@@ -163,6 +163,7 @@ enum { CONSOLE_SENSOR_COUNTERS, CONSOLE_SENSOR_VALUES, CONSOLE_PERIMETER, CONSOL
 
 #define MAX_TIMERS 5
 
+#define BATTERY_SW_OFF -1
 
 class Robot
 {
