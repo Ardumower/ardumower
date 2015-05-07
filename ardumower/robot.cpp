@@ -1558,7 +1558,8 @@ void Robot::setDefaults(){
   motorMowEnable = false;                
 }
 
-
+// set state machine new state
+// http://wiki.ardumower.de/images/f/ff/Ardumower_states.png
 // called *ONCE* to set to a *NEW* state
 void Robot::setNextState(byte stateNew, byte dir){
   unsigned long stateTime = millis() - stateStartTime;
@@ -2074,6 +2075,9 @@ void Robot::checkTimeout(){
   }
 }
 
+
+// robot state machine
+// http://wiki.ardumower.de/images/f/ff/Ardumower_states.png
 
 void Robot::loop()  {     
   stateTime = millis() - stateStartTime;
