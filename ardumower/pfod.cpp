@@ -212,7 +212,7 @@ void RemoteControl::sendPlotMenu(boolean update){
 
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Settings"));         
-  Bluetooth.print(F("|sz~Save setting|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
+  Bluetooth.print(F("|sz~Save settings|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
   Bluetooth.println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings}"));
 }  
 
