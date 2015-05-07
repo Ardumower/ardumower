@@ -622,6 +622,7 @@ void RemoteControl::sendBatteryMenu(boolean update){
   //Console.print("batFactor=");
   //Console.println(robot->batFactor);  
   sendSlider("j02", F("Go home if below"), robot->batGoHomeIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
+  sendSlider("j12", F("Switch off if idle sec"), robot->batSwitchOffIfIdleSec, "", 1, 600, 30);  
   sendSlider("j03", F("Switch off if below"), robot->batSwitchOffIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  
   Bluetooth.print(F("|j04~Charge "));
   Bluetooth.print(robot->chgVoltage);
@@ -650,6 +651,7 @@ void RemoteControl::processBatteryMenu(String pfodCmd){
     else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
     else if (pfodCmd.startsWith("j10")) processSlider(pfodCmd, robot->startChargingIfBelow, 0.1);
     else if (pfodCmd.startsWith("j11")) processSlider(pfodCmd, robot->batFullCurrent, 0.1);
+    else if (pfodCmd.startsWith("j12")) processSlider(pfodCmd, robot->batSwitchOffIfIdleSec, 1);
   sendBatteryMenu(true);
 }
 
@@ -1298,8 +1300,10 @@ void RemoteControl::run(){
 }
 
 // process serial input from pfod App
-void RemoteControl::readSerial(){
+bool RemoteControl::readSerial(){
+  bool res = false;
   while(Bluetooth.available() > 0){
+    res = true;
     if (Bluetooth.available() > 0) {
       char ch = Bluetooth.read();
       //Console.print("pfod ch=");
@@ -1430,6 +1434,7 @@ void RemoteControl::readSerial(){
       pfodCmdComplete = false;
     }
   }  
+  return res;
 }
 
 

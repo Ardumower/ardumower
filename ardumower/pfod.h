@@ -55,7 +55,7 @@ class RemoteControl
     RemoteControl();
     void setRobot(Robot *aRobot);
     void initSerial(int baudrate);
-    void readSerial();
+    bool readSerial();
     void run();    
   private:
     Robot *robot;    

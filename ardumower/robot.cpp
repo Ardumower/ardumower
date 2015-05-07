@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 42
+#define MAGIC 43
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -42,6 +42,7 @@ Robot::Robot(){
   
   stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
+  idleTimeSec = 0;
   mowPatternCurr = MOW_RANDOM;
   
   odometryLeft = odometryRight = 0;
@@ -222,6 +223,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, batMonitor);
   eereadwrite(readflag, addr, batGoHomeIfBelow);
   eereadwrite(readflag, addr, batSwitchOffIfBelow);  
+  eereadwrite(readflag, addr, batSwitchOffIfIdleSec);  
   eereadwrite(readflag, addr, batFactor);
   eereadwrite(readflag, addr, batChgFactor);
   eereadwrite(readflag, addr, chgSenseZero);
@@ -863,6 +865,10 @@ void Robot::motorMowControl(){
   }  
 }
 
+void Robot::resetIdleTime(){
+  idleTimeSec = 0;
+}
+
 void Robot::beep(int numberOfBeeps, boolean shortbeep = false){
   for (int i=0; i < numberOfBeeps; i++){
     setActuator(ACT_BUZZER, 4200); 
@@ -1041,6 +1047,7 @@ void Robot::testOdometry(){
   motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;  
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
   while (true){ 
+    resetIdleTime();
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
       Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
       Console.print(F("left="));
@@ -1052,7 +1059,7 @@ void Robot::testOdometry(){
     }
     delay(100);
     if (Console.available() > 0){
-      ch = (char)Console.read();      
+      ch = (char)Console.read();            
       if (ch == '0') break;
       if (ch == 'f') {
           motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;  
@@ -1105,13 +1112,14 @@ void Robot::testMotors(){
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
   delayInfo(5000);
   motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
-  setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);  
+  setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);    
 }
 
 void Robot::menu(){  
   char ch;  
   printMenu();  
   while(true){    
+    resetIdleTime();
     imu.update();
     if (Console.available() > 0) {
       ch = (char)Console.read();            
@@ -1163,8 +1171,9 @@ void Robot::menu(){
 
 void Robot::readSerial() {
   // serial input
-  if (Console.available() > 0) {
+  if (Console.available() > 0) {     
      char ch = (char)Console.read();
+     resetIdleTime();
      switch (ch){
        case 'd': 
          menu(); // menu
@@ -1243,6 +1252,7 @@ void Robot::checkButton(){
       // ON/OFF button pressed                                                
       beep(1);
       buttonCounter++;
+      resetIdleTime();
     } 
     else { 
       // ON/OFF button released          
@@ -1643,7 +1653,7 @@ void Robot::setNextState(byte stateNew, byte dir){
 // check battery voltage and decide what to do
 void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
-	nextTimeCheckBattery = millis() + 1000;
+	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
     if ((batVoltage < batGoHomeIfBelow) && (stateCurr != STATE_OFF) 
          && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
@@ -1658,7 +1668,17 @@ if (millis() < nextTimeCheckBattery) return;
       setNextState(STATE_OFF, 0);
     }
   }
+  // check if idle and robot battery can be switched off  
+  if ( (stateCurr == STATE_OFF) || (stateCurr == STATE_ERROR) ) {      
+      idleTimeSec ++; // add one second idle time
+      if (idleTimeSec > batSwitchOffIfIdleSec) {        
+        Console.println(F("triggered batSwitchOffIfIdleSec"));      
+        //beep(1, true);      
+        setActuator(ACT_BATTERY_SW, 0);
+      }
+  } else idleTimeSec = 0;
 }
+
 
 void Robot::receiveGPSTime(){
   if (gpsUse) {
@@ -2023,7 +2043,7 @@ void Robot::loop()  {
   int steer;
   
   readSerial();   
-  rc.readSerial();    
+  if (rc.readSerial()) resetIdleTime();
   readSensors(); 
   checkBattery(); 
 

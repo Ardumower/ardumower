@@ -100,6 +100,7 @@ enum {
   ACT_USER_SW3,    
   ACT_RTC,
   ACT_CHGRELAY,
+  ACT_BATTERY_SW,
 };
 
 // error types
@@ -176,6 +177,7 @@ class Robot
     char* stateName();
     unsigned long stateStartTime;
     unsigned long stateEndTime;
+    int idleTimeSec;
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
@@ -375,6 +377,7 @@ class Robot
     char batMonitor ;              // monitor battery and charge voltage?
     float batGoHomeIfBelow ;     // drive home voltage (Volt)
     float batSwitchOffIfBelow ;  // switch off if below voltage (Volt)
+    int batSwitchOffIfIdleSec ;  // switch off battery if idle for seconds
     float batFactor       ;     // battery conversion factor
     float batChgFactor       ;     // battery conversion factor    
     float batFull         ;      // battery reference Voltage (fully charged)
@@ -422,6 +425,8 @@ class Robot
     virtual void setup();
     // robot main loop
     virtual void loop();        
+
+    virtual void resetIdleTime();
     
     // call this from R/C control interrupt
     virtual void setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState, boolean remoteSteerState, 

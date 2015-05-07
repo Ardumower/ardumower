@@ -82,6 +82,7 @@
 #define pinTilt 35                 // Tilt sensor (required for TC-G158 board)
 #define pinButton 51               // digital ON/OFF button
 #define pinBatteryVoltage A2       // battery voltage sensor
+#define pinBatterySwitch 4         // battery-OFF switch   
 #define pinChargeVoltage A9        // charging voltage sensor
 #define pinChargeCurrent A8        // charge current sensor
 #define pinChargeRelay 50          // charge relay
@@ -200,7 +201,8 @@ Mower::Mower(){
   // ------ battery -------------------------------------
   batMonitor = 1;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
-  batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
+  batSwitchOffIfBelow = 21.7;  // switch off battery if below voltage (Volt)
+  batSwitchOffIfIdleSec = 30;  // switch off battery if idle for seconds
   batFactor       = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batChgFactor    = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
@@ -292,6 +294,10 @@ void Mower::setup(){
   // i2c -- turn off internal pull-ups (and use external pull-ups)
   //digitalWrite(SDA, 0);  
   //digitalWrite(SCL, 0);
+
+  // keep battery switched ON
+  pinMode(pinBatterySwitch, OUTPUT);
+  digitalWrite(pinBatterySwitch, HIGH);
   
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    
@@ -530,7 +536,7 @@ void Mower::setActuator(char type, int value){
       break;
     case ACT_CHGRELAY: digitalWrite(pinChargeRelay, value); break;
     //case ACT_CHGRELAY: digitalWrite(pinChargeRelay, !value); break;
-
+    case ACT_BATTERY_SW: digitalWrite(pinBatterySwitch, value); break;
   }
 }
 
