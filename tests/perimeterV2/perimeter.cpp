@@ -223,9 +223,9 @@ int16_t Perimeter::corrFilter(int8_t *H, int8_t subsample, int16_t M, int8_t *ip
       if (sum < sumMin) sumMin = sum;
       ip++;
   }      
-  // normalize to 4096
-  sumMin = ((float)sumMin) / ((float)(Ms*127)) * 4096.0;
-  sumMax = ((float)sumMax) / ((float)(Ms*127)) * 4096.0;
+  // normalize to 4095
+  sumMin = ((float)sumMin) / ((float)(Ms*127)) * 4095.0;
+  sumMax = ((float)sumMax) / ((float)(Ms*127)) * 4095.0;
   
   // compute ratio min/max 
   if (sumMax > -sumMin) {
