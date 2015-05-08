@@ -67,8 +67,11 @@ ADCManager::ADCManager(){
     ADCMax[i] = -9999;
     ADCMin[i] = 9999;
   }
-  capturedChannels = 0;  
-  sampleRate = SRATE_19231;
+  capturedChannels = 0;
+  // NOTE: when choosing a higher sample rate (38 kHz) and using odometry interrupts, 
+  // the Arduino Mega cannot handle all ADC interrupts anymore - the result is a 'noisy'
+  // perimeter filter output (which disappears when disabling odometry interrupts)    
+  sampleRate = SRATE_9615;
   //sampleRate = SRATE_38462;
   //sampleRate = SRATE_9615;
 }
