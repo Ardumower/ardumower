@@ -65,15 +65,26 @@ Perimeter::Perimeter(){
 void Perimeter::setPins(byte idx0Pin, byte idx1Pin){
   idxPin[0] = idx0Pin;
   idxPin[1] = idx1Pin;  
-  // use max. 255 samples and multiple of signalsize
-  ADCMan.setCapture(idx0Pin, ((int)255 / sizeof sigcode_norm) * sizeof sigcode_norm, true); 
-  ADCMan.setCapture(idx1Pin, ((int)255 / sizeof sigcode_norm) * sizeof sigcode_norm, true); 
+
+  switch (ADCMan.sampleRate){
+    case SRATE_9615: subSample = 1; break;
+    case SRATE_19231: subSample = 2; break;
+    case SRATE_38462: subSample = 4; break;
+  }
   
-  Console.print("matchSignal size=");
+  // use max. 255 samples and multiple of signalsize
+  int adcSampleCount = sizeof sigcode_norm * subSample;
+  ADCMan.setCapture(idx0Pin, ((int)255 / adcSampleCount) * adcSampleCount, true); 
+  ADCMan.setCapture(idx1Pin, ((int)255 / adcSampleCount) * adcSampleCount, true); 
+ // ADCMan.setCapture(idx0Pin, adcSampleCount*2, true); 
+ // ADCMan.setCapture(idx1Pin, adcSampleCount*2, true); 
+  
+  Console.print(F("matchSignal size="));
   Console.println(sizeof sigcode_norm);  
-  Console.print("capture size=");
+  Console.print(F("subSample="));  
+  Console.println((int)subSample);    
+  Console.print(F("capture size="));
   Console.println(ADCMan.getCaptureSize(idx0Pin));  
-  Console.println(ADCMan.getCaptureSize(idx1Pin));  
 }
 
 void Perimeter::speedTest(){
@@ -83,7 +94,7 @@ void Perimeter::speedTest(){
     matchedFilter(0);
     loops++;
   }
-  Console.print("speedTest=");
+  Console.print(F("speedTest="));
   Console.println(loops);
 }
 
@@ -105,9 +116,9 @@ void Perimeter::printADCMinMax(int8_t *samples){
     vmax = max(vmax, samples[i]);
     vmin = min(vmin, samples[i]);
   }
-  Console.print("perimter min,max=");
+  Console.print(F("perimter min,max="));
   Console.print((int)vmin);
-  Console.print(",");
+  Console.print(F(","));
   Console.println((int)vmax);  
 }
 
@@ -133,7 +144,7 @@ void Perimeter::matchedFilter(byte idx){
   int16_t sigcode_size = sizeof sigcode_norm;
   int8_t *sigcode = sigcode_norm;  
   if (useDifferentialPerimeterSignal) sigcode = sigcode_diff;
-  mag[idx] = corrFilter(sigcode, sigcode_size, samples, sampleCount-sigcode_size, filterQuality[idx]);
+  mag[idx] = corrFilter(sigcode, subSample, sigcode_size, samples, sampleCount-sigcode_size, filterQuality[idx]);
   if (swapCoilPolarity) mag[idx] *= -1;        
   // smoothed magnitude used for signal-off detection
   smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)abs(mag[idx]));
@@ -184,21 +195,28 @@ boolean Perimeter::signalTimedOut(byte idx){
 // digital matched filter (cross correlation)
 // http://en.wikipedia.org/wiki/Cross-correlation
 // H[] holds the double sided filter coeffs, M = H.length (number of points in FIR)
+// subsample is the number of times for each filter coeff to repeat 
 // ip[] holds input data (length > nPts + M )
 // nPts is the length of the required output data 
 
-int16_t Perimeter::corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &quality){  
+int16_t Perimeter::corrFilter(int8_t *H, int8_t subsample, int16_t M, int8_t *ip, int16_t nPts, float &quality){  
   int16_t sumMax = 0;
   int16_t sumMin = 0;
+  int16_t Ms = M * subsample;
   for (int16_t j=0; j<nPts; j++)
   {
       int16_t sum = 0;      
       int8_t *Hi = H;
+      int8_t ss = 0;
       int8_t *ipi = ip;      
-      for (int16_t i=0; i<M; i++)
+      for (int16_t i=0; i<Ms; i++)
       {        
         sum += ((int16_t)(*Hi)) * ((int16_t)(*ipi));
-        Hi++;
+        ss++;
+        if (ss == subsample) {
+          ss=0;
+          Hi++;
+        }
         ipi++;
       }      
       if (sum > sumMax) sumMax = sum;

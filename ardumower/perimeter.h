@@ -63,6 +63,7 @@ class Perimeter
     bool useDifferentialPerimeterSignal;
     // swap coil polarity?
     bool swapCoilPolarity;  
+    char subSample;
   private:
     unsigned long lastInsideTime[2];
     byte idxPin[2]; // channel for idx
@@ -75,7 +76,7 @@ class Perimeter
     int16_t signalAvg[2];    
     int signalCounter[2];    
     void matchedFilter(byte idx);
-    int16_t corrFilter(int8_t *H, int16_t M, int8_t *ip, int16_t nPts, float &quality);
+    int16_t corrFilter(int8_t *H, int8_t subsample, int16_t M, int8_t *ip, int16_t nPts, float &quality);
     void printADCMinMax(int8_t *samples);
 };
 

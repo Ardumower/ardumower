@@ -3,6 +3,8 @@
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
   Copyright (c) 2014 by Maxime Carpentieri
+  
+  Private-use only! (you need to ask for a commercial-use) 
  
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -16,6 +18,8 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+  Private-use only! (you need to ask for a commercial-use)
 */
 
 #ifndef __AVR__
@@ -26,7 +30,7 @@
 #include "adcman.h"
 #include "drivers.h"
 
-#define ADDR 224
+#define ADDR 500
 #define MAGIC 1
 
 #ifdef __AVR__
@@ -37,17 +41,15 @@
 
 #define NO_CHANNEL 255
 
-volatile uint8_t calibrateChannel = NO_CHANNEL;
-volatile int16_t calibrateMin = 0;
-volatile int16_t calibrateMax = 0;
 volatile short position = 0;
 volatile int16_t lastvalue = 0;
-volatile int8_t subsample = 0;
 volatile uint8_t channel = 0;
 volatile boolean busy = false;
 int8_t *capture[CHANNELS]; // ADC capture buffer (ADC0-ADC7) - 8 bit signed (signed: zero = ADC/2)     
 uint8_t captureSize[CHANNELS]; // ADC sample buffer size (ADC0-ADC7)
 int16_t ofs[CHANNELS]; // ADC zero offset (ADC0-ADC7)
+int16_t ADCMin[CHANNELS]; // ADC min sample value (ADC-ADC7)
+int16_t ADCMax[CHANNELS]; // ADC max sample value (ADC-ADC7)
 boolean captureComplete[CHANNELS]; // ADC buffer filled?
 boolean autoCalibrate[CHANNELS]; // do auto-calibrate? (ADC0-ADC7)
 int16_t *sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
@@ -55,24 +57,33 @@ ADCManager ADCMan;
 
 
 ADCManager::ADCManager(){
+  calibrationAvail = false;
   for (int i=0; i < CHANNELS; i++) {
     captureSize[i]=0;
     ofs[i]=0;
     captureComplete[i]=false;
     capture[i] = NULL;
     autoCalibrate[i] = false;
+    ADCMax[i] = -9999;
+    ADCMin[i] = 9999;
   }
   capturedChannels = 0;  
+  //sampleRate = SRATE_19231;
+  sampleRate = SRATE_38462;
+  //sampleRate = SRATE_9615;
 }
 
 void ADCManager::init(){    
 #ifndef __AVR__
   // free running ADC mode, f = ( adclock / 21 cycles per conversion )
-  // using ADCCLK=405797 will result in a adcclock=403846 (due to adc_init internal conversion)
-  // f = 19230,7619047619  Hz
-  //#define ADCCLK 405797        // f = 19230,7619047619  Hz
-  #define ADCCLK 202898          // f = 9615 Hz      
-  adc_init(ADC, SystemCoreClock, ADCCLK, ADC_STARTUP_FAST); // startup=768 clocks
+  // example f = 19231  Hz:  using ADCCLK=405797 will result in a adcclock=403846 (due to adc_init internal conversion)
+  uint32_t adcclk;
+  switch (sampleRate){
+    case SRATE_38462: adcclk = 811595; break;
+    case SRATE_19231: adcclk = 405797; break;
+    case SRATE_9615 : adcclk = 202898; break;
+  }  
+  adc_init(ADC, SystemCoreClock, adcclk, ADC_STARTUP_FAST); // startup=768 clocks
   adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);  // tracking=0, settling=17, transfer=1    
   ADC->ADC_MR |= ADC_MR_FREERUN_ON;   // free running  
   NVIC_EnableIRQ(ADC_IRQn);    
@@ -92,50 +103,70 @@ void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs
 void ADCManager::calibrate(){
   Console.println("ADC calibration...");
   for (int ch=0; ch < CHANNELS; ch++){    
-    ofs[ch] = 0;
+    ADCMax[ch] = -9999;
+    ADCMin[ch] = 9999;    
+    ofs[ch] = 0;    
     if (autoCalibrate[ch]){
       calibrateOfs(A0 + ch);
     }
   }
   printCalib();  
   saveCalib();
+  calibrationAvail = true;
+}
+
+boolean ADCManager::calibrationDataAvail(){
+  return calibrationAvail;
 }
 
 void ADCManager::calibrateOfs(byte pin){  
   int ch = pin-A0;
-  calibrateMin = 9999;
-  calibrateMax = -9999;
-  calibrateChannel = ch;
-  ofs[ch]=0;  
-  captureComplete[ch]=false;      
-  while (!isCaptureComplete(pin)) {
-    delay(20);
-    run();
-  }  
-  calibrateChannel = NO_CHANNEL;
-  if (captureSize[ch] == 1) ofs[ch] = sample[ch][0];
-    else {      
-      int16_t center = calibrateMin + (calibrateMax - calibrateMin) / 2.0;
-      ofs[ch] = center;
-    }  
-  Console.print("ADC calibration ch");
+  ADCMax[ch] = -9999;
+  ADCMin[ch] = 9999;
+  ofs[ch]=0;    
+  for (int i=0; i < 10; i++){
+    captureComplete[ch]=false;      
+    while (!isCaptureComplete(pin)) {
+      delay(20);
+      run();    
+    } 
+  }
+  int16_t center = ADCMin[ch] + (ADCMax[ch] - ADCMin[ch]) / 2.0;
+  ofs[ch] = center;   
+
+  Console.print(F("ADC calibration ch"));
   Console.print(ch);
-  Console.print("=");
+  Console.print(F("="));
   Console.println(ofs[ch]);
 }
 
 void ADCManager::printCalib(){
-  Console.println("---ADC calib---");  
+  Console.println(F("---ADC calib---"));  
+  Console.print(F("ADC sampleRate="));
+  switch (sampleRate){
+    case SRATE_38462: Console.println(F("38462")); break;
+    case SRATE_19231: Console.println(F("19231")); break;
+    case SRATE_9615 : Console.println(F("9615")); break;
+  }    
   for (int ch=0; ch < CHANNELS; ch++){
-    Console.print("ch");
+    Console.print(F("AD"));
     Console.print(ch);
-    Console.print("\t");    
-    Console.print("ofs=");    
+    Console.print(F("\t"));    
+    Console.print(F("min="));    
+    Console.print(ADCMin[ch]);
+    Console.print(F("\t"));    
+    Console.print(F("max="));    
+    Console.print(ADCMax[ch]);    
+    Console.print(F("\t"));    
+    Console.print(F("diff="));        
+    Console.print(ADCMax[ch]-ADCMin[ch]);    
+    Console.print(F("\t"));    
+    Console.print(F("ofs="));    
     Console.println(ofs[ch]);
   }
 }
 
-void startADC(int sampleCount){
+void ADCManager::startADC(int sampleCount){
 //  Console.print("startADC ch");
 //  Console.println(channel);
 #ifdef __AVR__
@@ -148,9 +179,13 @@ void startADC(int sampleCount){
   if (sampleCount == 1)
     // slow but accurate
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz      
-  else   
-    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz        
-    //ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz   
+  else {   
+    switch (sampleRate){
+      case SRATE_38462: ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS0); break; // prescaler 32 : 38462 Hz        
+      case SRATE_19231: ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); break; //prescaler 64 : 19231 Hz   
+      case SRATE_9615 : ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); break; // prescaler 128 : 9615 Hz        
+    }        
+  }
   // disable digital buffers (reduces noise/capacity)
   if (channel < 8) DIDR0 |= (1 << channel);
     else DIDR2 |= (1 << (channel-8));
@@ -186,18 +221,13 @@ void ADC_Handler(void){
     busy=false;
     return;
   } 
-  if (channel == calibrateChannel){  
-    // determine min/max for calibration
-    if (value < calibrateMin) calibrateMin = value; //0.5 * calibrateMin + 0.5 * ((double)value);
-    if (value > calibrateMax) calibrateMax = value; //0.5 * calibrateMax + 0.5 * ((double)value);
-    sample[channel][position] = value;    
-    position++;
-  } else {    
-    value -= ofs[channel];                   
-    capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                                    
-    sample[channel][position] = value;           
-    position++;    
-  }       
+  value -= ofs[channel];                   
+  capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)                                    
+  sample[channel][position] = value;           
+  // determine min/max 
+  if (value < ADCMin[channel]) ADCMin[channel]  = value;
+  if (value > ADCMax[channel]) ADCMax[channel]  = value;        
+  position++;      
 }
 
 void ADCManager::stopCapture(){  
@@ -293,6 +323,24 @@ int ADCManager::getCaptureSize(byte pin){
 
 }
 
+int16_t ADCManager::getADCMin(byte pin){
+  int ch = pin-A0;  
+  if (ch >= CHANNELS) return 0;
+  return ADCMin[ch];
+}
+
+int16_t ADCManager::getADCMax(byte pin){
+  int ch = pin-A0;  
+  if (ch >= CHANNELS) return 0;
+  return ADCMax[ch];
+}
+
+int16_t ADCManager::getADCOfs(byte pin){
+  int ch = pin-A0;  
+  if (ch >= CHANNELS) return 0;
+  return ofs[ch];
+}  
+
 void ADCManager::loadSaveCalib(boolean readflag){
   int addr = ADDR;
   short magic = MAGIC;
@@ -310,6 +358,7 @@ boolean ADCManager::loadCalib(){
     Console.println(F("ADCMan error: no calib data"));
     return false;   
   }
+  calibrationAvail = true;
   Console.println(F("ADCMan: found calib data"));
   loadSaveCalib(true);
   return true;

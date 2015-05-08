@@ -52,7 +52,13 @@ How to use it (example):
 
 #include <Arduino.h>
 
-#define ADC_MAX_CAPTURE_SIZE 128
+
+// sample rates
+enum {
+  SRATE_9615,
+  SRATE_19231,
+  SRATE_38462  
+};
 
 
 class ADCManager
@@ -88,8 +94,10 @@ class ADCManager
     boolean calibrationDataAvail();
     // get the manager running, starts sampling next pin
     void run();    
+    uint8_t sampleRate;
   private:
     int capturedChannels;    
+    void startADC(int sampleCount);
     bool calibrationAvail;
     void calibrateOfs(byte pin);
     void startCapture(int sampleCount);

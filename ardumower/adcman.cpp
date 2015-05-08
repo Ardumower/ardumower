@@ -68,16 +68,22 @@ ADCManager::ADCManager(){
     ADCMin[i] = 9999;
   }
   capturedChannels = 0;  
+  //sampleRate = SRATE_19231;
+  sampleRate = SRATE_38462;
+  //sampleRate = SRATE_9615;
 }
 
 void ADCManager::init(){    
 #ifndef __AVR__
   // free running ADC mode, f = ( adclock / 21 cycles per conversion )
-  // using ADCCLK=405797 will result in a adcclock=403846 (due to adc_init internal conversion)
-  // f = 19230,7619047619  Hz
-  //#define ADCCLK 405797        // f = 19230,7619047619  Hz
-  #define ADCCLK 202898          // f = 9615 Hz      
-  adc_init(ADC, SystemCoreClock, ADCCLK, ADC_STARTUP_FAST); // startup=768 clocks
+  // example f = 19231  Hz:  using ADCCLK=405797 will result in a adcclock=403846 (due to adc_init internal conversion)
+  uint32_t adcclk;
+  switch (sampleRate){
+    case SRATE_38462: adcclk = 811595; break;
+    case SRATE_19231: adcclk = 405797; break;
+    case SRATE_9615 : adcclk = 202898; break;
+  }  
+  adc_init(ADC, SystemCoreClock, adcclk, ADC_STARTUP_FAST); // startup=768 clocks
   adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);  // tracking=0, settling=17, transfer=1    
   ADC->ADC_MR |= ADC_MR_FREERUN_ON;   // free running  
   NVIC_EnableIRQ(ADC_IRQn);    
@@ -128,33 +134,39 @@ void ADCManager::calibrateOfs(byte pin){
   int16_t center = ADCMin[ch] + (ADCMax[ch] - ADCMin[ch]) / 2.0;
   ofs[ch] = center;   
 
-  Console.print("ADC calibration ch");
+  Console.print(F("ADC calibration ch"));
   Console.print(ch);
-  Console.print("=");
+  Console.print(F("="));
   Console.println(ofs[ch]);
 }
 
 void ADCManager::printCalib(){
-  Console.println("---ADC calib---");  
+  Console.println(F("---ADC calib---"));  
+  Console.print(F("ADC sampleRate="));
+  switch (sampleRate){
+    case SRATE_38462: Console.println(F("38462")); break;
+    case SRATE_19231: Console.println(F("19231")); break;
+    case SRATE_9615 : Console.println(F("9615")); break;
+  }    
   for (int ch=0; ch < CHANNELS; ch++){
-    Console.print("AD");
+    Console.print(F("AD"));
     Console.print(ch);
-    Console.print("\t");    
-    Console.print("min=");    
+    Console.print(F("\t"));    
+    Console.print(F("min="));    
     Console.print(ADCMin[ch]);
-    Console.print("\t");    
-    Console.print("max=");    
+    Console.print(F("\t"));    
+    Console.print(F("max="));    
     Console.print(ADCMax[ch]);    
-    Console.print("\t");    
-    Console.print("diff=");        
+    Console.print(F("\t"));    
+    Console.print(F("diff="));        
     Console.print(ADCMax[ch]-ADCMin[ch]);    
-    Console.print("\t");    
-    Console.print("ofs=");    
+    Console.print(F("\t"));    
+    Console.print(F("ofs="));    
     Console.println(ofs[ch]);
   }
 }
 
-void startADC(int sampleCount){
+void ADCManager::startADC(int sampleCount){
 //  Console.print("startADC ch");
 //  Console.println(channel);
 #ifdef __AVR__
@@ -167,9 +179,13 @@ void startADC(int sampleCount){
   if (sampleCount == 1)
     // slow but accurate
     ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz      
-  else   
-    ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // prescaler 128 : 9615 Hz        
-    //ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); //prescaler 64 : 19231 Hz   
+  else {   
+    switch (sampleRate){
+      case SRATE_38462: ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS0); break; // prescaler 32 : 38462 Hz        
+      case SRATE_19231: ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1); break; //prescaler 64 : 19231 Hz   
+      case SRATE_9615 : ADCSRA = _BV(ADSC) | _BV(ADEN) | _BV(ADATE) | _BV(ADIE) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); break; // prescaler 128 : 9615 Hz        
+    }        
+  }
   // disable digital buffers (reduces noise/capacity)
   if (channel < 8) DIDR0 |= (1 << channel);
     else DIDR2 |= (1 << (channel-8));
