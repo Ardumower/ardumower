@@ -200,22 +200,31 @@ boolean Perimeter::signalTimedOut(byte idx){
 // nPts is the length of the required output data 
 
 int16_t Perimeter::corrFilter(int8_t *H, int8_t subsample, int16_t M, int8_t *ip, int16_t nPts, float &quality){  
-  int16_t sumMax = 0;
-  int16_t sumMin = 0;
-  int16_t Ms = M * subsample;
+  int16_t sumMax = 0; // max correlation sum
+  int16_t sumMin = 0; // min correlation sum
+  int16_t Ms = M * subsample; // number of filter coeffs including subsampling
+
+  // compute sum of absolute filter coeffs
+  int16_t Hsum = 0;
+  for (int16_t i=0; i<M; i++) Hsum += abs(H[i]); 
+  Hsum *= subsample;
+
+  // compute correlation
+  // for each input value
   for (int16_t j=0; j<nPts; j++)
   {
       int16_t sum = 0;      
       int8_t *Hi = H;
       int8_t ss = 0;
       int8_t *ipi = ip;      
+      // for each filter coeffs
       for (int16_t i=0; i<Ms; i++)
       {        
         sum += ((int16_t)(*Hi)) * ((int16_t)(*ipi));
         ss++;
         if (ss == subsample) {
           ss=0;
-          Hi++;
+          Hi++; // next filter coeffs
         }
         ipi++;
       }      
@@ -224,8 +233,8 @@ int16_t Perimeter::corrFilter(int8_t *H, int8_t subsample, int16_t M, int8_t *ip
       ip++;
   }      
   // normalize to 4095
-  sumMin = ((float)sumMin) / ((float)(Ms*127)) * 4095.0;
-  sumMax = ((float)sumMax) / ((float)(Ms*127)) * 4095.0;
+  sumMin = ((float)sumMin) / ((float)(Hsum*127)) * 4095.0;
+  sumMax = ((float)sumMax) / ((float)(Hsum*127)) * 4095.0;
   
   // compute ratio min/max 
   if (sumMax > -sumMin) {
