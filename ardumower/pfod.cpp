@@ -483,7 +483,9 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   Bluetooth.print(F("|e00~Use "));
   sendYesNo(robot->perimeterUse);  
   Bluetooth.println(F("|e02~Value"));
-  Bluetooth.print(robot->perimeterMag);  
+  Bluetooth.print(robot->perimeterMag);
+  if (robot->perimeterMag < 0) Bluetooth.print(" (inside)");
+    else Bluetooth.print(" (outside)");     
   sendSlider("e08", F("Timed-out if below smag"), robot->perimeter.timedOutIfBelowSmag, "", 1, 2000);  
   sendSlider("e14", F("Timeout (s) if not inside"), robot->perimeter.timeOutSecIfNotInside, "", 1, 20, 1);  
   sendSlider("e04", F("Trigger timeout"), robot->perimeterTriggerTimeout, "", 1, 2000);
