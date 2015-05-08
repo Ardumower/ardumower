@@ -169,9 +169,8 @@ void setup() {
   pinMode(pinChargeCurrent, INPUT);
     
     
-  //int T = 1000.0*1000.0/(7800*2);
-  // sample rate 19230,76923076923 / 2 => 9615.38
-  int T = 1000.0*1000.0/(19230.76923076923/2.0);
+  // sample rate 9615 Hz (19230,76923076923 / 2 => 9615.38)
+  int T = 1000.0*1000.0/ 9615.38;
   Serial.begin(19200);
   
   Serial.println("START");
