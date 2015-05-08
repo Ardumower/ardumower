@@ -68,8 +68,8 @@ ADCManager::ADCManager(){
     ADCMin[i] = 9999;
   }
   capturedChannels = 0;  
-  //sampleRate = SRATE_19231;
-  sampleRate = SRATE_38462;
+  sampleRate = SRATE_19231;
+  //sampleRate = SRATE_38462;
   //sampleRate = SRATE_9615;
 }
 
