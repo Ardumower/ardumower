@@ -1369,7 +1369,10 @@ void Robot::readSensors(){
       }
     }
     if (perimeter.signalTimedOut(0))  {      
-      if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE)) {
+      if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
+      	&& (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
+      	&& (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
+      	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE)) {
         Console.println("Error: perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
