@@ -258,7 +258,12 @@ ISR(PCINT0_vect){
 
 // odometry signal change interrupt
 // mower motor speed sensor interrupt
-ISR(PCINT2_vect){
+// NOTE: when choosing a higher perimeter sample rate (38 kHz) and using odometry interrupts, 
+// the Arduino Mega cannot handle all ADC interrupts anymore - the result will be a 'noisy'
+// perimeter filter output (mag value) which disappears when disabling odometry interrupts.
+// SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
+// http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
+ISR(PCINT2_vect, ISR_NOBLOCK){
   unsigned long timeMicros = micros();
   boolean odometryLeftState = digitalRead(pinOdometryLeft);
   boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
