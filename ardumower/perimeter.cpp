@@ -50,7 +50,7 @@
 
 
 Perimeter::Perimeter(){    
-  useDifferentialPerimeterSignal = false;
+  useDifferentialPerimeterSignal = true;
   swapCoilPolarity = false;
   timedOutIfBelowSmag = 300;
   timeOutSecIfNotInside = 8;
