@@ -1398,8 +1398,11 @@ void Robot::readSensors(){
       }
     }
     if (perimeter.signalTimedOut(0))  {      
-      if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE)) {
-        Console.println(F("Error: perimeter too far away"));
+      if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
+      	&& (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
+      	&& (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
+      	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE)) {
+        Console.println("Error: perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
       }
@@ -1584,18 +1587,18 @@ void Robot::setNextState(byte stateNew, byte dir){
   rollDir = dir;
   if (stateNew == STATE_STATION_REV){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm;                    
-    stateEndTime = millis() + stationRevTime;                     
+    stateEndTime = millis() + stationRevTime + motorZeroSettleTime;                     
   } else if (stateNew == STATE_STATION_ROLL){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm;
     motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						      
-    stateEndTime = millis() + stationRollTime;                     
+    stateEndTime = millis() + stationRollTime + motorZeroSettleTime;                     
   } else if (stateNew == STATE_STATION_FORW){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
     motorMowEnable = true;    
-    stateEndTime = millis() + stationForwTime;                     
+    stateEndTime = millis() + stationForwTime + motorZeroSettleTime;                     
   } else if (stateNew == STATE_STATION_CHECK){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/2; 
-    stateEndTime = millis() + stationCheckTime; 
+    stateEndTime = millis() + stationCheckTime + motorZeroSettleTime; 
   
   } else if (stateNew == STATE_PERI_ROLL) {    
     stateEndTime = millis() + perimeterTrackRollTime;                     
