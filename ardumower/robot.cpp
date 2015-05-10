@@ -1584,18 +1584,18 @@ void Robot::setNextState(byte stateNew, byte dir){
   rollDir = dir;
   if (stateNew == STATE_STATION_REV){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm;                    
-    stateEndTime = millis() + stationRevTime + motorZeroSettleTime;                     
+    stateEndTime = millis() + stationRevTime;                     
   } else if (stateNew == STATE_STATION_ROLL){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm;
     motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						      
-    stateEndTime = millis() + stationRollTime + motorZeroSettleTime;                     
+    stateEndTime = millis() + stationRollTime;                     
   } else if (stateNew == STATE_STATION_FORW){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
     motorMowEnable = true;    
-    stateEndTime = millis() + stationForwTime + motorZeroSettleTime;                     
+    stateEndTime = millis() + stationForwTime;                     
   } else if (stateNew == STATE_STATION_CHECK){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/2; 
-    stateEndTime = millis() + stationCheckTime + motorZeroSettleTime; 
+    stateEndTime = millis() + stationCheckTime; 
   
   } else if (stateNew == STATE_PERI_ROLL) {    
     stateEndTime = millis() + perimeterTrackRollTime;                     

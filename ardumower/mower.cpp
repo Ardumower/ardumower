@@ -130,7 +130,7 @@ Mower::Mower(){
   motorAccel       = 500;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
   motorSpeedMaxRpm       = 25;   // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-  motorPowerMax     = 75;    // motor wheel max power (Watt)
+  motorPowerMax     = 50;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorPowerIgnoreTime = 2000; // time to ignore motor power (ms)
@@ -179,10 +179,10 @@ Mower::Mower(){
   perimeterTriggerTimeout = 0;      // perimeter trigger timeout when escaping from inside (ms)  
   perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
   perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
-  perimeterPID.Kp    = 51.0;  // perimeter PID controller
-  perimeterPID.Ki    = 12.5;
-  perimeterPID.Kd    = 0.8;  
-  trackingPerimeterTransitionTimeOut = 2000;
+  perimeterPID.Kp    = 60.0;  // perimeter PID controller
+  perimeterPID.Ki    = 5.0;
+  perimeterPID.Kd    = 3.0;  
+  trackingPerimeterTransitionTimeOut = 5000;
   trackingErrorTimeOut = 10000;
   trackingBlockInnerWheelWhilePerimeterStruggling = 1;
   // ------ lawn sensor --------------------------------
