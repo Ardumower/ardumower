@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 43
+#define MAGIC 44
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "CREV", "CROL", "CFOR", "MANU", "ROLW" };
@@ -223,7 +223,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, batMonitor);
   eereadwrite(readflag, addr, batGoHomeIfBelow);
   eereadwrite(readflag, addr, batSwitchOffIfBelow);  
-  eereadwrite(readflag, addr, batSwitchOffIfIdleSec);  
+  eereadwrite(readflag, addr, batSwitchOffIfIdle);  
   eereadwrite(readflag, addr, batFactor);
   eereadwrite(readflag, addr, batChgFactor);
   eereadwrite(readflag, addr, chgSenseZero);
@@ -1677,8 +1677,8 @@ if (millis() < nextTimeCheckBattery) return;
   // check if idle and robot battery can be switched off  
   if ( (stateCurr == STATE_OFF) || (stateCurr == STATE_ERROR) ) {      
       idleTimeSec ++; // add one second idle time
-      if (idleTimeSec > batSwitchOffIfIdleSec) {        
-        Console.println(F("triggered batSwitchOffIfIdleSec"));      
+      if (idleTimeSec > batSwitchOffIfIdle * 60) {        
+        Console.println(F("triggered batSwitchOffIfIdle"));      
         //beep(1, true);      
         setActuator(ACT_BATTERY_SW, 0);
       }
