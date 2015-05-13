@@ -1,4 +1,4 @@
-// MC33926 current measurement (CSV output for Excel etc.)
+// MC33926 pwm versus current measurement (CSV output for Excel etc.)
 
 #include "RunningMedian.h"
 #include "TimerThree.h"
