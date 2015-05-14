@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 04.03.2015 01:27:59
+Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 08.05.2015 20:19:49
 
 BeginCmp
 TimeStamp = /54CF710A;
@@ -193,6 +193,34 @@ BeginCmp
 TimeStamp = /54CFB2E6;
 Reference = LP27;
 ValeurCmp = Lötpad AREF;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D0578;
+Reference = LP28;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D069C;
+Reference = LP29;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D073D;
+Reference = LP30;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D07D8;
+Reference = LP31;
+ValeurCmp = Lötpad;
 IdModule  = Duo:Lötpad_1x02_Buchse;
 EndCmp
 
@@ -467,6 +495,13 @@ TimeStamp = /5375252C;
 Reference = SHIELD1;
 ValeurCmp = ARDUINO_MEGA_SHIELD;
 IdModule  = Duo:ARDUINO_MEGA_SHIELD_DUO_3D;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D0CEF;
+Reference = U1;
+ValeurCmp = 74HC4050;
+IdModule  = Duo:DIP-16__300;
 EndCmp
 
 EndListe
