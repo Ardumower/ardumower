@@ -1,27 +1,16 @@
 EESchema Schematic File Version 2
-LIBS:Lötpad_2,5mm
-LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
 LIBS:Wlan_ESP8266
-LIBS:transistor-fet
-LIBS:transistor-fet+irf7201
-LIBS:transistors
-LIBS:w_transistor
-LIBS:diode
-LIBS:diode-1
-LIBS:led
+LIBS:power
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 17 17
-Title "Ardumower shield SVN Version 1.3"
+Sheet 21 24
+Title "Ardumower Shield - Verpolungsschutz Batterie"
 Date "Sonntag, 26. April 2015"
-Rev "1.3"
-Comp "von UweZ"
+Rev "V1.3"
+Comp "Layout & Plan von UweZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -44,7 +33,7 @@ U 1 1 553A4BC1
 P 5095 2770
 F 0 "R34" V 5175 2770 40  0000 C CNN
 F 1 "100K" V 5102 2771 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM15mm" V 5025 2770 30  0001 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 5025 2770 30  0001 C CNN
 F 3 "" H 5095 2770 30  0000 C CNN
 F 4 "Value" H 5095 2770 60  0001 C CNN "Bestellnummer"
 	1    5095 2770
@@ -61,10 +50,10 @@ Verpols.B.aus
 Text HLabel 4385 1835 0    60   Input ~ 0
 Verpol.s.B.in
 $Comp
-L GND #PWR026
+L GND #PWR0161
 U 1 1 553AAF15
 P 5095 3155
-F 0 "#PWR026" H 5095 2905 60  0001 C CNN
+F 0 "#PWR0161" H 5095 2905 60  0001 C CNN
 F 1 "GND" H 5095 3005 60  0000 C CNN
 F 2 "" H 5095 3155 60  0000 C CNN
 F 3 "" H 5095 3155 60  0000 C CNN
@@ -74,10 +63,10 @@ $EndComp
 Wire Wire Line
 	5095 3020 5095 3155
 $Comp
-L Z-DIODE D17
+L Z-DIODE ZD7
 U 1 1 553AC2EA
 P 5525 2240
-F 0 "D17" H 5525 2340 40  0000 C CNN
+F 0 "ZD7" H 5525 2340 40  0000 C CNN
 F 1 "ZPD15" H 5525 2140 40  0000 C CNN
 F 2 "ACS712:Diode_ligend_RM10" H 5525 2240 60  0001 C CNN
 F 3 "" H 5525 2240 60  0000 C CNN

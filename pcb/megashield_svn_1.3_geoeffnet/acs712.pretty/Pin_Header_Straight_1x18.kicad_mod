@@ -1,4 +1,4 @@
-(module Pin_Headers:Pin_Header_Straight_1x18 locked (layer F.Cu) (tedit 54995485)
+(module Pin_Header_Straight_1x18 locked (layer F.Cu) (tedit 54995485)
   (descr "Through hole pin header")
   (tags "pin header")
   (fp_text reference Dual2 (at 0 -2.286) (layer F.SilkS)
@@ -32,7 +32,7 @@
   (pad 16 thru_hole oval (at 16.51 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 17 thru_hole oval (at 19.05 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 18 thru_hole oval (at 21.59 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model Pin_Headers/Pin_Header_Straight_1x18.wrl
+  (model walter/pin_strip/pin_socket_18.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

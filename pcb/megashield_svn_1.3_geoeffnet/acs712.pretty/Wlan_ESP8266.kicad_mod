@@ -1,4 +1,4 @@
-(module "Wlan ESP8266" (layer F.Cu) (tedit 54BAE6E9)
+(module Wlan_ESP8266 (layer F.Cu) (tedit 54BAE6E9)
   (fp_text reference "Wlan ESP8266" (at 15.748 -11.43) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -17,4 +17,9 @@
   (pad 2 thru_hole circle (at 2.54 -8.763) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 6 thru_hole circle (at 5.08 -8.763) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 5 thru_hole circle (at 5.08 -11.303) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
+  (model walter/pin_strip/pin_socket_4x2.wrl
+    (at (xyz 0.15 0.3 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
 )

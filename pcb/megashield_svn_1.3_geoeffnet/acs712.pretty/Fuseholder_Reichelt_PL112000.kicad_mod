@@ -29,9 +29,9 @@
   (pad 2 thru_hole oval (at 11.00074 0 270) (size 2.49936 4.0005) (drill 1.50114) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole oval (at -11.00074 0 270) (size 2.49936 4.0005) (drill 1.50114) (layers *.Cu *.Mask F.SilkS))
   (pad ~ thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask F.SilkS))
-  (model fuse_socket/fuse_socket.wrl
+  (model walter/misc_comp/fuse_cq-200c.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
 )

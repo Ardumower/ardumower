@@ -1,0 +1,188 @@
+EESchema Schematic File Version 2
+LIBS:cap-master
+LIBS:Lötpad_2,5mm
+LIBS:power
+LIBS:Bluetooth_ZS_HC_05
+LIBS:Bluetooth_CZ_HC_05
+LIBS:ds1307
+LIBS:Wlan_ESP8266
+LIBS:transistor-fet
+LIBS:transistor-fet+irf7201
+LIBS:transistors
+LIBS:w_transistor
+LIBS:diode
+LIBS:diode-1
+LIBS:led
+LIBS:ardumower mega shield svn-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 14 18
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 2940 3870 0    60   BiDi ~ 0
+MotorRechtsA
+Text HLabel 5125 3870 2    60   BiDi ~ 0
+MotorRechtsB
+$Comp
+L +24V #PWR?
+U 1 1 5542A3B1
+P 4895 3310
+F 0 "#PWR?" H 4895 3160 60  0001 C CNN
+F 1 "+24V" H 4895 3450 60  0000 C CNN
+F 2 "" H 4895 3310 60  0000 C CNN
+F 3 "" H 4895 3310 60  0000 C CNN
+	1    4895 3310
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5542A3C5
+P 4895 4445
+F 0 "#PWR?" H 4895 4195 60  0001 C CNN
+F 1 "GND" H 4895 4295 60  0000 C CNN
+F 2 "" H 4895 4445 60  0000 C CNN
+F 3 "" H 4895 4445 60  0000 C CNN
+	1    4895 4445
+	-1   0    0    -1  
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 5542A3D9
+P 4895 3580
+F 0 "D?" H 4895 3680 40  0000 C CNN
+F 1 "SB 5100 ?" H 4895 3480 40  0000 C CNN
+F 2 "" H 4895 3580 60  0000 C CNN
+F 3 "" H 4895 3580 60  0000 C CNN
+	1    4895 3580
+	0    1    -1   0   
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 5542A4FC
+P 4895 4140
+F 0 "D?" H 4895 4240 40  0000 C CNN
+F 1 "SB 5100 ?" H 4895 4040 40  0000 C CNN
+F 2 "" H 4895 4140 60  0000 C CNN
+F 3 "" H 4895 4140 60  0000 C CNN
+	1    4895 4140
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	4895 3380 4895 3310
+Wire Wire Line
+	4895 3780 4895 3940
+Wire Wire Line
+	4895 4340 4895 4445
+Wire Wire Line
+	4600 3870 5125 3870
+Connection ~ 4895 3870
+$Comp
+L +24V #PWR?
+U 1 1 5542A69A
+P 3170 3310
+F 0 "#PWR?" H 3170 3160 60  0001 C CNN
+F 1 "+24V" H 3170 3450 60  0000 C CNN
+F 2 "" H 3170 3310 60  0000 C CNN
+F 3 "" H 3170 3310 60  0000 C CNN
+	1    3170 3310
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5542A6A0
+P 3170 4445
+F 0 "#PWR?" H 3170 4195 60  0001 C CNN
+F 1 "GND" H 3170 4295 60  0000 C CNN
+F 2 "" H 3170 4445 60  0000 C CNN
+F 3 "" H 3170 4445 60  0000 C CNN
+	1    3170 4445
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 5542A6A6
+P 3170 3580
+F 0 "D?" H 3170 3680 40  0000 C CNN
+F 1 "SB 5100 ?" H 3170 3480 40  0000 C CNN
+F 2 "" H 3170 3580 60  0000 C CNN
+F 3 "" H 3170 3580 60  0000 C CNN
+	1    3170 3580
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 5542A6AC
+P 3170 4140
+F 0 "D?" H 3170 4240 40  0000 C CNN
+F 1 "SB 5100 ?" H 3170 4040 40  0000 C CNN
+F 2 "" H 3170 4140 60  0000 C CNN
+F 3 "" H 3170 4140 60  0000 C CNN
+	1    3170 4140
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3170 3380 3170 3310
+Wire Wire Line
+	3170 3780 3170 3940
+Wire Wire Line
+	3170 4340 3170 4445
+Wire Wire Line
+	2940 3870 3415 3870
+Connection ~ 3170 3870
+$Comp
+L CONN_2 P18
+U 1 1 554342A7
+P 4050 4515
+F 0 "P18" V 4000 4515 40  0000 C CNN
+F 1 "Right" V 4100 4515 40  0000 C CNN
+F 2 "" H 4050 4515 60  0000 C CNN
+F 3 "" H 4050 4515 60  0000 C CNN
+	1    4050 4515
+	0    -1   1    0   
+$EndComp
+$Comp
+L R R?
+U 1 1 55434642
+P 4350 3870
+F 0 "R?" V 4430 3870 40  0000 C CNN
+F 1 "R" V 4357 3871 40  0000 C CNN
+F 2 "" V 4280 3870 30  0000 C CNN
+F 3 "" H 4350 3870 30  0000 C CNN
+	1    4350 3870
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CP1 C?
+U 1 1 554346CB
+P 3615 3870
+F 0 "C?" H 3665 3970 50  0000 L CNN
+F 1 "CP1" H 3665 3770 50  0000 L CNN
+F 2 "" H 3615 3870 60  0000 C CNN
+F 3 "" H 3615 3870 60  0000 C CNN
+	1    3615 3870
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3815 3870 4100 3870
+Wire Wire Line
+	4150 4165 4700 4165
+Wire Wire Line
+	4700 4165 4700 3870
+Connection ~ 4700 3870
+Wire Wire Line
+	3950 4165 3325 4165
+Wire Wire Line
+	3325 4165 3325 3870
+Connection ~ 3325 3870
+Text Notes 3410 3590 0    60   ~ 0
+Kondensator noch \nnicht der richtige\ndarf kein Elko sein
+$EndSCHEMATC

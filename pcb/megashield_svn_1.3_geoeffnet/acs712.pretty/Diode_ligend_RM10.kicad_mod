@@ -23,9 +23,9 @@
   (fp_line (start -2.54 1.27) (end 2.54 1.27) (layer F.SilkS) (width 0.15))
   (pad 1 thru_hole circle (at -5.08 0) (size 1.99898 1.99898) (drill 1.27) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole rect (at 5.08 0) (size 1.99898 1.99898) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
-  (model Diodes_ThroughHole/Diode_DO-35_SOD27_Horizontal_RM10.wrl
+  (model Diodes_ThroughHole.3dshapes/Diode_DO-35_SOD27_Horizontal_RM10.wrl
     (at (xyz 0 0 0))
-    (scale (xyz 0.5 0.5 0.5))
+    (scale (xyz 0.41 0.41 0.41))
     (rotate (xyz 0 0 0))
   )
 )

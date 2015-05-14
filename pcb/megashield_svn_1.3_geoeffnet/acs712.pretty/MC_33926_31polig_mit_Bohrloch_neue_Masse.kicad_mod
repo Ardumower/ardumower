@@ -54,4 +54,19 @@
   (pad 31 thru_hole circle (at 43.18 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad ~ thru_hole circle (at 6.2865 -13.3985) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
   (pad ~ thru_hole circle (at 47.0535 -13.3985) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
+  (model walter/pin_strip/pin_socket_18.wrl
+    (at (xyz 1.05 1.49 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model walter/pin_strip/pin_socket_11.wrl
+    (at (xyz 1.2 1.39 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model walter/pin_strip/pin_socket_8.wrl
+    (at (xyz 1.03 0.57 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

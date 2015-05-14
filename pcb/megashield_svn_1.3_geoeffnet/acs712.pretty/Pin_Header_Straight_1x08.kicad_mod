@@ -1,4 +1,4 @@
-(module ACS712:Pin_Header_Straight_1x08 (layer F.Cu) (tedit 54C60EE3)
+(module Pin_Header_Straight_1x08 (layer F.Cu) (tedit 54C60EE3)
   (descr "Through hole pin header")
   (tags "pin header")
   (fp_text reference P34 (at -8.89 -2.54) (layer F.SilkS)
@@ -22,7 +22,7 @@
   (pad 6 thru_hole oval (at 3.81 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 7 thru_hole oval (at 6.35 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model Pin_Headers/Pin_Header_Straight_1x08.wrl
+  (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

@@ -17,7 +17,7 @@
   (fp_circle (center 1.27 0) (end 4.4196 0) (layer F.SilkS) (width 0.15))
   (pad 2 thru_hole circle (at 2.54 0) (size 1.50114 1.50114) (drill 0.8001) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole circle (at 0 0) (size 1.50114 1.50114) (drill 0.8001) (layers *.Cu *.Mask F.SilkS))
-  (model Capacitors_Elko_ThroughHole/Elko_vert_11.2x6.3mm_RM2.5.wrl
+  (model Capacitors_ThroughHole.3dshapes/C_Radial_D6.3_L11.2_P2.5.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

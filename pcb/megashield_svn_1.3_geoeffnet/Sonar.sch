@@ -1,27 +1,16 @@
 EESchema Schematic File Version 2
-LIBS:Lötpad_2,5mm
-LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
 LIBS:Wlan_ESP8266
-LIBS:transistor-fet
-LIBS:transistor-fet+irf7201
-LIBS:transistors
-LIBS:w_transistor
-LIBS:diode
-LIBS:diode-1
-LIBS:led
+LIBS:power
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 17
-Title "Ardumower shield SVN Version 1.3"
+Sheet 2 24
+Title "Ardumower Shield  - Ultraschallsensoren"
 Date "Sonntag, 26. April 2015"
-Rev "1.3"
-Comp "von UweZ"
+Rev "V1.3"
+Comp "Layout & Plan von UweZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -42,10 +31,10 @@ F 4 "Value" H 2660 2480 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR027
+L GND #PWR017
 U 1 1 553AEB8F
 P 4405 2430
-F 0 "#PWR027" H 4405 2180 60  0001 C CNN
+F 0 "#PWR017" H 4405 2180 60  0001 C CNN
 F 1 "GND" V 4405 2205 60  0000 C CNN
 F 2 "" H 4405 2430 60  0000 C CNN
 F 3 "" H 4405 2430 60  0000 C CNN
@@ -53,10 +42,10 @@ F 3 "" H 4405 2430 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR028
+L +5V #PWR018
 U 1 1 553AEBA4
 P 3310 2330
-F 0 "#PWR028" H 3310 2180 60  0001 C CNN
+F 0 "#PWR018" H 3310 2180 60  0001 C CNN
 F 1 "+5V" V 3310 2545 60  0000 C CNN
 F 2 "" H 3310 2330 60  0000 C CNN
 F 3 "" H 3310 2330 60  0000 C CNN
@@ -88,10 +77,10 @@ F 4 "Value" H 2660 3040 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR029
+L GND #PWR019
 U 1 1 553AF416
 P 4405 2990
-F 0 "#PWR029" H 4405 2740 60  0001 C CNN
+F 0 "#PWR019" H 4405 2740 60  0001 C CNN
 F 1 "GND" V 4405 2765 60  0000 C CNN
 F 2 "" H 4405 2990 60  0000 C CNN
 F 3 "" H 4405 2990 60  0000 C CNN
@@ -99,10 +88,10 @@ F 3 "" H 4405 2990 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR030
+L +5V #PWR020
 U 1 1 553AF41C
 P 3310 2890
-F 0 "#PWR030" H 3310 2740 60  0001 C CNN
+F 0 "#PWR020" H 3310 2740 60  0001 C CNN
 F 1 "+5V" V 3310 3105 60  0000 C CNN
 F 2 "" H 3310 2890 60  0000 C CNN
 F 3 "" H 3310 2890 60  0000 C CNN
@@ -134,10 +123,10 @@ F 4 "Value" H 2650 3605 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR031
+L GND #PWR021
 U 1 1 553AFE26
 P 4395 3555
-F 0 "#PWR031" H 4395 3305 60  0001 C CNN
+F 0 "#PWR021" H 4395 3305 60  0001 C CNN
 F 1 "GND" V 4395 3330 60  0000 C CNN
 F 2 "" H 4395 3555 60  0000 C CNN
 F 3 "" H 4395 3555 60  0000 C CNN
@@ -145,10 +134,10 @@ F 3 "" H 4395 3555 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR032
+L +5V #PWR022
 U 1 1 553AFE2C
 P 3300 3455
-F 0 "#PWR032" H 3300 3305 60  0001 C CNN
+F 0 "#PWR022" H 3300 3305 60  0001 C CNN
 F 1 "+5V" V 3300 3670 60  0000 C CNN
 F 2 "" H 3300 3455 60  0000 C CNN
 F 3 "" H 3300 3455 60  0000 C CNN

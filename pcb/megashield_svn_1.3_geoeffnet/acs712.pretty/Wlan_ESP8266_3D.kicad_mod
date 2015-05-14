@@ -55,7 +55,7 @@
   (pad GP_2 thru_hole oval (at -1.27 -1.27 180) (size 1.7272 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad TX thru_hole oval (at -3.81 1.27 180) (size 1.7272 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad GND thru_hole oval (at -3.81 -1.27 180) (size 1.7272 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model Socket_Strips/Socket_Strip_Straight_2x04.wrl
+  (model walter/pin_strip/pin_socket_4x2.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
