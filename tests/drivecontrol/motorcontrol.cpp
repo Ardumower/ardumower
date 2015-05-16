@@ -18,7 +18,7 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
   boolean odometryRightState = digitalRead(pinOdometryRight);      
   if (odometryLeftState != odometryLeftLastState){    
     if (odometryLeftState){ // pin1 makes LOW->HIGH transition
-      odometryLeftTickTime = timeMicros - odometryLeftLastHighTime;
+      if (timeMicros > odometryLeftLastHighTime) odometryLeftTickTime = timeMicros - odometryLeftLastHighTime;
       if (MotorCtrl.motorLeftPWMCurr >=0) MotorCtrl.odometryLeft ++; else MotorCtrl.odometryLeft --;           
       odometryLeftLastHighTime = timeMicros;      
     } else {
@@ -28,7 +28,7 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
   } 
   if (odometryRightState != odometryRightLastState){
     if (odometryRightState){ // pin1 makes LOW->HIGH transition
-      odometryRightTickTime = timeMicros - odometryRightLastHighTime;
+      if (timeMicros > odometryRightLastHighTime) odometryRightTickTime = timeMicros - odometryRightLastHighTime;
       if (MotorCtrl.motorRightPWMCurr >=0) MotorCtrl.odometryRight ++; else MotorCtrl.odometryRight --;    
       odometryRightLastHighTime = timeMicros;
     } else {
@@ -133,7 +133,7 @@ void MotorControl::readOdometry(){
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
   odometryTheta += wheel_theta; 
 
-  float smooth = 0.9;  
+  float smooth = 0.0;  
   // 1 rpm = 20 ticks per minute, micros per rpm = 6000*1000 micros / 20 ticks 
   if (ticksLeft != 0) {
     motorLeftRpmCurr  = motorLeftRpmCurr * smooth + (1.0-smooth) *  6000.0*1000.0 / ((double)odometryTicksPerRevolution) / ((double)leftTime);  

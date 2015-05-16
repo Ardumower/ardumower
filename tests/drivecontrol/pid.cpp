@@ -43,7 +43,7 @@ PID::PID(float Kp, float Ki, float Kd){
 
 float PID::compute()
 {		
-  unsigned long now = micros();
+/*  unsigned long now = micros();
   Ta = ((now - lastControlTime) / 1000000.0);
   lastControlTime = now;
   if (Ta > 1.0) Ta = 1.0;   // should only happen for the very first call
@@ -70,9 +70,9 @@ float PID::compute()
   if (y > y_max) y = y_max;
   if (y < y_min) y = y_min;	
   
-  return y;
+  return y;*/
   
- /*  
+ 
   unsigned long now = micros();
   Ta = ((now - lastControlTime) / 1000000.0);
   lastControlTime = now;
@@ -93,7 +93,7 @@ float PID::compute()
   if (y > y_max) y = y_max;
   if (y < y_min) y = y_min;	
   
-  return y;  */
+  return y;  
 }
 
 

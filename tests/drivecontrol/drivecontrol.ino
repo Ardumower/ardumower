@@ -51,7 +51,7 @@ void loop(){
 
   if (Serial.available() > 0){
     char ch = (char)Serial.read();      
-    if (ch == 'r') { 
+    if (ch == 'm') { 
       MotorCtrl.enableSpeedControl = true;
       useModelRC = true;
       Serial.println("useModelRC");
@@ -76,10 +76,20 @@ void loop(){
     }    
     if (ch == '3') {
       useModelRC = false;
-      Serial.print("rpm=10,10");
-      Serial.println(useModelRC);      
+      Serial.println("rpm=10,10");      
       MotorCtrl.setSpeedRpm(10, 10); 
     }    
+    if (ch == '4') {
+      useModelRC = false;
+      Serial.println("rpm=-5,+5");
+      MotorCtrl.setSpeedRpm(-5, +5); 
+    }    
+    if (ch == '5') {
+      useModelRC = false;
+      Serial.println("rpm=+5,-5");
+      MotorCtrl.setSpeedRpm(+5, -5); 
+    }    
+    
     
   }
   
