@@ -1,37 +1,26 @@
 EESchema Schematic File Version 2
-LIBS:Lötpad_2,5mm
-LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
 LIBS:Wlan_ESP8266
-LIBS:transistor-fet
-LIBS:transistor-fet+irf7201
-LIBS:transistors
-LIBS:w_transistor
-LIBS:diode
-LIBS:diode-1
-LIBS:led
+LIBS:power
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 17
-Title "Ardumower shield SVN Version 1.3"
+Sheet 3 24
+Title "Ardumower Shield - Odometry"
 Date "Sonntag, 26. April 2015"
-Rev "1.3"
-Comp "von UweZ"
+Rev "V1.3"
+Comp "Layout & Plan von UweZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L GND #PWR033
+L GND #PWR023
 U 1 1 553AD719
 P 5610 2910
-F 0 "#PWR033" H 5610 2660 60  0001 C CNN
+F 0 "#PWR023" H 5610 2660 60  0001 C CNN
 F 1 "GND" V 5610 2685 60  0000 C CNN
 F 2 "" H 5610 2910 60  0000 C CNN
 F 3 "" H 5610 2910 60  0000 C CNN
@@ -39,10 +28,10 @@ F 3 "" H 5610 2910 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR034
+L +5V #PWR024
 U 1 1 553AD72D
 P 4655 2810
-F 0 "#PWR034" H 4655 2660 60  0001 C CNN
+F 0 "#PWR024" H 4655 2660 60  0001 C CNN
 F 1 "+5V" V 4655 3025 60  0000 C CNN
 F 2 "" H 4655 2810 60  0000 C CNN
 F 3 "" H 4655 2810 60  0000 C CNN
@@ -74,10 +63,10 @@ Wire Wire Line
 Wire Wire Line
 	4535 3110 5610 3110
 $Comp
-L GND #PWR035
+L GND #PWR025
 U 1 1 553B1AA7
 P 5605 3435
-F 0 "#PWR035" H 5605 3185 60  0001 C CNN
+F 0 "#PWR025" H 5605 3185 60  0001 C CNN
 F 1 "GND" V 5605 3210 60  0000 C CNN
 F 2 "" H 5605 3435 60  0000 C CNN
 F 3 "" H 5605 3435 60  0000 C CNN
@@ -85,10 +74,10 @@ F 3 "" H 5605 3435 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR036
+L +5V #PWR026
 U 1 1 553B1AAD
 P 4650 3335
-F 0 "#PWR036" H 4650 3185 60  0001 C CNN
+F 0 "#PWR026" H 4650 3185 60  0001 C CNN
 F 1 "+5V" V 4650 3550 60  0000 C CNN
 F 2 "" H 4650 3335 60  0000 C CNN
 F 3 "" H 4650 3335 60  0000 C CNN

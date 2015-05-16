@@ -104,7 +104,7 @@
   (pad SCL1 thru_hole oval (at 18.796 -50.8 90) (size 2.54 1.524) (drill 0.812) (layers *.Cu *.Mask F.SilkS))
   (pad IORE thru_hole oval (at 30.48 -2.54 90) (size 2.54 1.524) (drill 0.812) (layers *.Cu *.Mask F.SilkS))
   (pad FREI thru_hole oval (at 27.94 -2.54 90) (size 2.54 1.524) (drill 0.812) (layers *.Cu *.Mask F.SilkS))
-  (model ../../../../../Users/Uwe/Downloads/megashield_svn_0.5/arduino_mega_header.wrl
+  (model ../../../../../Users/Uwe/Downloads/ardumower/pcb/megashield_svn_1.3_geoeffnet/arduino_mega_header.wrl
     (at (xyz 1.95 1.05 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

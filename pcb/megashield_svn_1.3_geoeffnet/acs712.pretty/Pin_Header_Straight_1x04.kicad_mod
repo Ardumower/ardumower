@@ -1,4 +1,4 @@
-(module Pin_Headers:Pin_Header_Straight_1x04 (layer F.Cu) (tedit 54B7A364)
+(module Pin_Header_Straight_1x04 (layer F.Cu) (tedit 54B7A364)
   (descr "Through hole pin header")
   (tags "pin header")
   (fp_text reference P11 (at 0 -2.286) (layer F.SilkS)
@@ -18,7 +18,7 @@
   (pad 2 thru_hole oval (at -1.27 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 3 thru_hole oval (at 1.27 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 4 thru_hole oval (at 3.81 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model Pin_Headers/Pin_Header_Straight_1x04.wrl
+  (model Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

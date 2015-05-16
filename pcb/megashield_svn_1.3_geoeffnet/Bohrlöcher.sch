@@ -1,27 +1,16 @@
 EESchema Schematic File Version 2
-LIBS:Lötpad_2,5mm
-LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
 LIBS:Wlan_ESP8266
-LIBS:transistor-fet
-LIBS:transistor-fet+irf7201
-LIBS:transistors
-LIBS:w_transistor
-LIBS:diode
-LIBS:diode-1
-LIBS:led
+LIBS:power
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 12 17
-Title "Ardumower shield SVN Version 1.3"
+Sheet 11 24
+Title "Ardumower Shield - Bohrlöcher Platine"
 Date "Sonntag, 26. April 2015"
-Rev "1.3"
-Comp "von UweZ"
+Rev "V1.3"
+Comp "Layout & Plan von UweZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -205,10 +194,10 @@ F 3 "" H 3915 1610 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0121
+L GND #PWR0108
 U 1 1 553D45B9
 P 3820 1070
-F 0 "#PWR0121" H 3820 820 60  0001 C CNN
+F 0 "#PWR0108" H 3820 820 60  0001 C CNN
 F 1 "GND" V 3820 855 60  0000 C CNN
 F 2 "" H 3820 1070 60  0000 C CNN
 F 3 "" H 3820 1070 60  0000 C CNN
@@ -216,10 +205,10 @@ F 3 "" H 3820 1070 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0122
+L GND #PWR0109
 U 1 1 553D46A2
 P 3820 1345
-F 0 "#PWR0122" H 3820 1095 60  0001 C CNN
+F 0 "#PWR0109" H 3820 1095 60  0001 C CNN
 F 1 "GND" V 3820 1130 60  0000 C CNN
 F 2 "" H 3820 1345 60  0000 C CNN
 F 3 "" H 3820 1345 60  0000 C CNN
@@ -227,10 +216,10 @@ F 3 "" H 3820 1345 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0123
+L GND #PWR0110
 U 1 1 553D46E4
 P 3820 1610
-F 0 "#PWR0123" H 3820 1360 60  0001 C CNN
+F 0 "#PWR0110" H 3820 1360 60  0001 C CNN
 F 1 "GND" V 3820 1395 60  0000 C CNN
 F 2 "" H 3820 1610 60  0000 C CNN
 F 3 "" H 3820 1610 60  0000 C CNN

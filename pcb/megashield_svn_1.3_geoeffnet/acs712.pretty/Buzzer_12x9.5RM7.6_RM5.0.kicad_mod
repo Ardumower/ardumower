@@ -16,7 +16,7 @@
   (pad 2 thru_hole circle (at 3.79984 0) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole circle (at -2.54 0) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole circle (at 2.54 0) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
-  (model Buzzers_Beepers/Buzzer_12x9.5RM7.6.wrl
+  (model Buzzers_Beepers.3dshapes/Buzzer_12x9.5RM7.6.wrl
     (at (xyz 0 0 0))
     (scale (xyz 4 4 4))
     (rotate (xyz 0 0 0))

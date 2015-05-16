@@ -26,7 +26,7 @@
   (pad 2 thru_hole circle (at 3.81 0) (size 2.6 2.6) (drill 1.3) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole rect (at -1.27 0) (size 2.6 2.6) (drill 1.3) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole rect (at -3.81 0) (size 2.6 2.6) (drill oval 1.9 1.3) (layers *.Cu *.Mask F.SilkS))
-  (model ../../../../../../kicad/kicad/share/modules/packages3d/conn_gmkds/gmkds_3-2-7,62.wrl
+  (model walter/conn_gmkds/gmkds_3-2-7,62.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

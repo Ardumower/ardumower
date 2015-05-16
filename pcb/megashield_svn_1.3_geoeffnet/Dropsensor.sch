@@ -1,27 +1,16 @@
 EESchema Schematic File Version 2
-LIBS:Lötpad_2,5mm
-LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
 LIBS:Wlan_ESP8266
-LIBS:transistor-fet
-LIBS:transistor-fet+irf7201
-LIBS:transistors
-LIBS:w_transistor
-LIBS:diode
-LIBS:diode-1
-LIBS:led
+LIBS:power
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 17
-Title "Ardumower shield SVN Version 1.3"
+Sheet 6 24
+Title "Ardumower Shield - Dropsensor"
 Date "Sonntag, 26. April 2015"
-Rev "1.3"
-Comp "von UweZ"
+Rev "V1.3"
+Comp "Layout & Plan von UweZ"
 Comment1 "Dropsensoren"
 Comment2 ""
 Comment3 ""
@@ -40,10 +29,10 @@ F 4 "Value" H 4265 2425 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR055
+L GND #PWR045
 U 1 1 553C96A2
 P 4820 2425
-F 0 "#PWR055" H 4820 2175 60  0001 C CNN
+F 0 "#PWR045" H 4820 2175 60  0001 C CNN
 F 1 "GND" V 4820 2205 60  0000 C CNN
 F 2 "" H 4820 2425 60  0000 C CNN
 F 3 "" H 4820 2425 60  0000 C CNN
@@ -51,10 +40,10 @@ F 3 "" H 4820 2425 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR056
+L +5V #PWR046
 U 1 1 553C96B7
 P 4820 2325
-F 0 "#PWR056" H 4820 2175 60  0001 C CNN
+F 0 "#PWR046" H 4820 2175 60  0001 C CNN
 F 1 "+5V" V 4820 2540 60  0000 C CNN
 F 2 "" H 4820 2325 60  0000 C CNN
 F 3 "" H 4820 2325 60  0000 C CNN
@@ -95,10 +84,10 @@ F 4 "Value" H 4260 2925 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR057
+L GND #PWR047
 U 1 1 553CC968
 P 4815 2925
-F 0 "#PWR057" H 4815 2675 60  0001 C CNN
+F 0 "#PWR047" H 4815 2675 60  0001 C CNN
 F 1 "GND" V 4815 2705 60  0000 C CNN
 F 2 "" H 4815 2925 60  0000 C CNN
 F 3 "" H 4815 2925 60  0000 C CNN
@@ -106,10 +95,10 @@ F 3 "" H 4815 2925 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR058
+L +5V #PWR048
 U 1 1 553CC96E
 P 4815 2825
-F 0 "#PWR058" H 4815 2675 60  0001 C CNN
+F 0 "#PWR048" H 4815 2675 60  0001 C CNN
 F 1 "+5V" V 4815 3040 60  0000 C CNN
 F 2 "" H 4815 2825 60  0000 C CNN
 F 3 "" H 4815 2825 60  0000 C CNN

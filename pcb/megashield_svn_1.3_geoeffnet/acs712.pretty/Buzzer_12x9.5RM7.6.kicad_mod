@@ -1,4 +1,4 @@
-(module Buzzers_Beepers:Buzzer_12x9.5RM7.6 (layer F.Cu) (tedit 54C60960)
+(module Buzzer_12x9.5RM7.6 (layer F.Cu) (tedit 54C60960)
   (descr "Generic Buzzer, D12mm height 9.5mm with RM7.6mm")
   (tags buzzer)
   (fp_text reference SP1 (at -9.271 -0.254 90) (layer F.SilkS)
@@ -14,7 +14,7 @@
   (fp_circle (center 0 0) (end 6.20014 0) (layer F.SilkS) (width 0.15))
   (pad 1 thru_hole circle (at -3.79984 0) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole circle (at 3.79984 0) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
-  (model Buzzers_Beepers/Buzzer_12x9.5RM7.6.wrl
+  (model Buzzers_Beepers.3dshapes/Buzzer_12x9.5RM7.6.wrl
     (at (xyz 0 0 0))
     (scale (xyz 4 4 4))
     (rotate (xyz 0 0 0))

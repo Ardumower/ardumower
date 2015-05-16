@@ -15,7 +15,7 @@
   (fp_line (start 2.54 -1.27) (end -2.54 -1.27) (layer F.SilkS) (width 0.15))
   (pad 1 thru_hole rect (at -1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model F:/Arbeit/KICAD/walter.pretty/conn_kk100/22-23-2021.wrl
+  (model walter/conn_kk100/22-23-2021.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

@@ -1,27 +1,16 @@
 EESchema Schematic File Version 2
-LIBS:Lötpad_2,5mm
-LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
 LIBS:Wlan_ESP8266
-LIBS:transistor-fet
-LIBS:transistor-fet+irf7201
-LIBS:transistors
-LIBS:w_transistor
-LIBS:diode
-LIBS:diode-1
-LIBS:led
+LIBS:power
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 17
-Title "Ardumower shield SVN Version 1.3"
+Sheet 9 24
+Title "Ardumower Shield - RTC Uhr"
 Date "Sonntag, 26. April 2015"
-Rev "1.3"
-Comp "von UweZ"
+Rev "V1.3"
+Comp "Layout & Plan von UweZ"
 Comment1 "RTC Uhr"
 Comment2 ""
 Comment3 ""
@@ -40,10 +29,10 @@ F 4 "Value" H 5395 3070 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR098
+L +5V #PWR088
 U 1 1 5540D156
 P 5395 2410
-F 0 "#PWR098" H 5395 2260 60  0001 C CNN
+F 0 "#PWR088" H 5395 2260 60  0001 C CNN
 F 1 "+5V" H 5395 2550 60  0000 C CNN
 F 2 "" H 5395 2410 60  0000 C CNN
 F 3 "" H 5395 2410 60  0000 C CNN
@@ -53,10 +42,10 @@ $EndComp
 Wire Wire Line
 	5395 2470 5395 2410
 $Comp
-L GND #PWR099
+L GND #PWR089
 U 1 1 5540D459
 P 5395 3790
-F 0 "#PWR099" H 5395 3540 60  0001 C CNN
+F 0 "#PWR089" H 5395 3540 60  0001 C CNN
 F 1 "GND" H 5395 3640 60  0000 C CNN
 F 2 "" H 5395 3790 60  0000 C CNN
 F 3 "" H 5395 3790 60  0000 C CNN
