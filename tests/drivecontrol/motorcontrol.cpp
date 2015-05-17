@@ -140,22 +140,26 @@ void MotorControl::run(){
   readOdometry();
   if (enableSpeedControl) {
     switch (motion){
+      case MOTION_SPEED: 
+        break;      
       case MOTION_LINE_SPEED: 
         break;      
       case MOTION_LINE_DISTANCE: 
-        if (abs(odometryDistanceCmCurr - odometryDistanceCmSet) < 1.0) {
+        distanceToTargetCm = abs(odometryDistanceCmCurr - odometryDistanceCmSet);
+        if (distanceToTargetCm < 20.0) {
           Serial.println("reached destination");
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
           motion = MOTION_STOP;
         }
-        if (odometryDistanceCmCurr > odometryDistanceCmSet) {        
+        /*if (odometryDistanceCmCurr > odometryDistanceCmSet) {        
           Serial.println("reached destination (overshoot)");
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
           motion = MOTION_STOP;
-        }          
+        }*/          
         break;
       case MOTION_ROTATE_ANGLE: 
-        if (distancePI(odometryThetaRadCurr, odometryThetaRadSet) < PI/64){
+        angleToTargetRad = abs(distancePI(odometryThetaRadCurr, odometryThetaRadSet));
+        if (angleToTargetRad < PI/32){
           Serial.println("reached angle");          
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;        
           motion = MOTION_STOP;
@@ -184,7 +188,7 @@ void MotorControl::readOdometry(){
   double right_cm = ((double)ticksRight) / ((double)odometryTicksPerCm);  
   double avg_cm  = (left_cm + right_cm) / 2.0;
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
-  odometryThetaRadCurr += wheel_theta;   
+  odometryThetaRadCurr = scalePI( odometryThetaRadCurr + wheel_theta );    
   odometryDistanceCmCurr += avg_cm;
   odometryXcmCurr += avg_cm * sin(odometryThetaRadCurr); 
   odometryYcmCurr += avg_cm * cos(odometryThetaRadCurr);
@@ -264,7 +268,7 @@ void MotorControl::setSpeedRpm(int leftRpm, int rightRpm){
   motorRightSpeedRpmSet = rightRpm;
   motorLeftSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorLeftSpeedRpmSet));
   motorRightSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorRightSpeedRpmSet));   
-  motion = MOTION_LINE_SPEED;   
+  motion = MOTION_SPEED;   
 }
 
 void MotorControl::stopImmediately(){
@@ -272,17 +276,34 @@ void MotorControl::stopImmediately(){
   motion = MOTION_STOP;
 }
 
-void MotorControl::travelDistance(int distanceCm, int speedRpm){
+void MotorControl::travelLineSpeedRpm(int speedRpm){
+  motorLeftSpeedRpmSet = motorRightSpeedRpmSet = speedRpm;
+  motion = MOTION_LINE_SPEED;   
+}
+
+void MotorControl::travelLineDistance(int distanceCm, int speedRpm){
   motion = MOTION_LINE_DISTANCE;
   odometryDistanceCmSet = odometryDistanceCmCurr + distanceCm;
-  motorLeftSpeedRpmSet = motorRightSpeedRpmSet = speedRpm;
+  Serial.print("target distance=");  
+  Serial.println(odometryDistanceCmSet);      
+  if (distanceCm < 0) 
+    motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -speedRpm;
+  else 
+    motorLeftSpeedRpmSet = motorRightSpeedRpmSet = speedRpm;  
 }
 
 void MotorControl::rotate(float angleRad, int speedRpm){
   motion = MOTION_ROTATE_ANGLE;    
-  odometryThetaRadSet = odometryThetaRadCurr + angleRad;
-  motorLeftSpeedRpmSet = speedRpm;
-  motorRightSpeedRpmSet = -speedRpm;
+  odometryThetaRadSet = scalePI(odometryThetaRadCurr + angleRad);
+  Serial.print("target angle=");  
+  Serial.println(odometryThetaRadSet/PI*180.0);    
+  if (angleRad < 0){
+    motorLeftSpeedRpmSet  = -speedRpm;
+    motorRightSpeedRpmSet = speedRpm;
+  } else {
+    motorLeftSpeedRpmSet  = speedRpm;
+    motorRightSpeedRpmSet = -speedRpm;    
+  }
 }
 
 bool MotorControl::hasStopped(){

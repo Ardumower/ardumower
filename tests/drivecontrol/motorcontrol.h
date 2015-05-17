@@ -24,7 +24,8 @@
 
 
 enum {
-  MOTION_LINE_SPEED,
+  MOTION_SPEED,
+  MOTION_LINE_SPEED,  
   MOTION_LINE_DISTANCE,
   MOTION_ROTATE_ANGLE,
   MOTION_STOP,
@@ -60,14 +61,17 @@ class MotorControl
     float odometryDistanceCmCurr; // distance traveled (cm)    
     float odometryThetaRadSet; // set angle (radiant)
     int odometryDistanceCmSet;  // set distance (cm)
+    float distanceToTargetCm; // distance to target (cm)
+    float angleToTargetRad; // angle to target (rad)
         
     bool enableSpeedControl;
     MotorControl();
     void run();    
-    void setSpeedRpm(int leftRpm, int rightRpm);
+    void setSpeedRpm(int leftRpm, int rightRpm);    
     void setSpeedPWM(int leftPWM, int rightPWM);    
     void stopImmediately();
-    void travelDistance(int distanceCm, int speedRpm);
+    void travelLineSpeedRpm(int speedRpm);    
+    void travelLineDistance(int distanceCm, int speedRpm);
     void rotate(float angleRad, int speedRpm);
     bool hasStopped();
 private:    

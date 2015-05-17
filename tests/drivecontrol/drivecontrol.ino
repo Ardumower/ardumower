@@ -25,10 +25,19 @@ void loop(){
     Serial.print("\t");
     Serial.print(ModelRC.remoteSteer);
     Serial.print("\t");
-    Serial.print("  ODO: ");    
-    Serial.print(MotorCtrl.odometryLeftTicks);
+    Serial.print("  TICKS: ");    
+    Serial.print(MotorCtrl.odometryLeftTicks);    
     Serial.print("\t");    
     Serial.print(MotorCtrl.odometryRightTicks);    
+    Serial.print("  THETA,DIST: ");    
+    Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
+    Serial.print("\t");    
+    Serial.print(MotorCtrl.odometryDistanceCmCurr);       
+    Serial.print(" ## ");    
+    Serial.print(MotorCtrl.angleToTargetRad/PI*180.0);    
+    Serial.print("\t");        
+    Serial.print(MotorCtrl.distanceToTargetCm);        
+    Serial.print("\t");    
     Serial.print("  SET: ");    
     Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
     Serial.print("\t");
@@ -91,18 +100,25 @@ void loop(){
     }    
     if (ch == '6') {
       useModelRC = false;
-      Serial.println("theta=45deg");
+      Serial.println("theta=+45deg");
       MotorCtrl.rotate(PI/2, 5); 
     }    
     if (ch == '7') {
       useModelRC = false;
-      Serial.println("distance=10cm"); 
-      MotorCtrl.travelDistance(10, 5); 
+      Serial.println("theta=-45deg"); 
+      MotorCtrl.rotate(-PI/2, 5); 
     }    
-    
-    
-  }
-  
+    if (ch == '8') {
+      useModelRC = false;
+      Serial.println("distance=+30cm"); 
+      MotorCtrl.travelLineDistance(30, 5); 
+    }    
+    if (ch == '9') {
+      useModelRC = false;
+      Serial.println("distance=-30cm"); 
+      MotorCtrl.travelLineDistance(-30, 5); 
+    }           
+  }  
   
   if (useModelRC) ModelRC.run();
   MotorCtrl.run();
