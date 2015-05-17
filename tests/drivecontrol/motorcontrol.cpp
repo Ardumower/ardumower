@@ -1,4 +1,7 @@
 #include "motorcontrol.h"
+#include "adcman.h"
+#include "drivers.h"
+
 
 MotorControl MotorCtrl;
 volatile static boolean odometryLeftLastState;
@@ -9,7 +12,7 @@ volatile static unsigned long odometryRightLastHighTime = 0;
 volatile static unsigned long odometryLeftTickTime = 0;
 volatile static unsigned long odometryRightTickTime = 0;
 
-
+/*
 // rescale to -PI..+PI
 double scalePI(double v)
 {
@@ -34,7 +37,7 @@ double distancePI(double x, double w)
   if (d < -PI) d = d + 2*PI;
   else if (d > PI) d = d - 2*PI;  
   return d;
-}
+}*/
 
 
 // odometry interrupt handler
@@ -81,6 +84,9 @@ MotorControl::MotorControl(){
   odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
   odometryTicksPerCm = 0.5;    // encoder ticks per cm
   odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)    
+  
+  motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
+  motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)  
 
   motion = MOTION_STOP;
   enableSpeedControl = true;
@@ -114,6 +120,10 @@ MotorControl::MotorControl(){
   PCMSK2 |= (1<<PCINT20);
   PCMSK2 |= (1<<PCINT22);            
 
+  // current ADC configuration
+  ADCMan.setCapture(pinMotorLeftSense, 1, true);
+  ADCMan.setCapture(pinMotorRightSense, 1, true);  
+
   //setSpeedPWM(0, 80);
 //  setSpeedPWM(127, 127);  
    setSpeedPWM(0, 0);
@@ -133,6 +143,17 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
   } else {
     digitalWrite(pinDir, LOW) ;
     analogWrite(pinPWM, ((byte)speed));
+  }
+}
+
+void MotorControl::checkMotorFault(){
+  if (digitalRead(pinMotorLeftFault)==LOW){
+    //robot.addErrorCounter(ERR_MOTOR_LEFT);
+    //robot.setNextState(STATE_ERROR, 0);
+  }
+  if  (digitalRead(pinMotorRightFault)==LOW){
+    //robot.addErrorCounter(ERR_MOTOR_RIGHT);
+    //robot.setNextState(STATE_ERROR, 0);
   }
 }
 
@@ -169,6 +190,28 @@ void MotorControl::run(){
     speedControl();
   }
 }  
+
+void MotorControl::readCurrent(){
+    double accel = 0.05;
+        
+    motorRightSenseADC = ADCMan.read(pinMotorRightSense);    
+    motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);    
+    
+    if (motorRightPWMCurr < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.0) * accel;
+        else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
+    
+    if (motorLeftPWMCurr < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.0) * accel;
+        else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
+            
+    /*if (batVoltage > 8){
+      motorRightSense = motorRightSenseCurrent * batVoltage /1000;   // conversion to power in Watt
+      motorLeftSense  = motorLeftSenseCurrent  * batVoltage /1000;
+    }
+    else {
+      motorRightSense = motorRightSenseCurrent * batFull /1000;   // conversion to power in Watt in absence of battery voltage measurement
+      motorLeftSense  = motorLeftSenseCurrent  * batFull /1000;
+    }  */
+}
 
 void MotorControl::readOdometry(){
   unsigned long TaC = millis() - lastOdometryTime;    // sampling time in millis
@@ -256,11 +299,13 @@ void MotorControl::speedControl(){
 }
 
 
+// forward speed: 0..+255
+// reverse speed: 0..-255
 void MotorControl::setSpeedPWM(int leftPWM, int rightPWM){
   motorLeftPWMCurr = leftPWM;
   motorRightPWMCurr = rightPWM;
-  setMC33926(pinMotorLeftDir,  pinMotorLeftPWM,  leftPWM);
-  setMC33926(pinMotorRightDir, pinMotorRightPWM, rightPWM);    
+  setMC33926(pinMotorLeftDir,  pinMotorLeftPWM,  max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, leftPWM)));
+  setMC33926(pinMotorRightDir, pinMotorRightPWM, max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, rightPWM)));    
 }
 
 void MotorControl::setSpeedRpm(int leftRpm, int rightRpm){

@@ -2,6 +2,17 @@
 #define MOTORCONTROL_H
 
 // differential drive motor controller
+// requires: 
+//   - 2 gear motors with encoders (odometry)
+//   - MC33926 motor driver
+//
+// how to use:
+//
+//  MotorCtrl.travelLineDistance(-30, 5);
+//  void loop(){
+//    MotorCtrl.run();
+//  }
+
 
 #include <Arduino.h>
 #include "pid.h"
@@ -38,6 +49,7 @@ class MotorControl
   public:
     byte motion; // motion to perform
   
+    // gear motors
     int motorLeftSpeedRpmSet ; // set speed
     int motorRightSpeedRpmSet ;
     float motorLeftRpmCurr ; // left wheel rpm    
@@ -48,7 +60,18 @@ class MotorControl
     PID motorRightPID;              // motor right wheel PID controll    
     float motorLeftPWMCurr ; // current speed
     float motorRightPWMCurr ;      
+    
+    // motor current
+    int motorRightSenseADC ;
+    int motorLeftSenseADC ;
+    float motorLeftSenseCurrent ;     
+    float motorRightSenseCurrent ;
+    float motorLeftSense ;      
+    float motorRightSense ;    
+    float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)/scale)
+    float motorSenseLeftScale ; // motor left sense scale  (mA=(ADC-zero)/scale)    
   
+    // odometry
     int odometryLeftTicks ;   // left wheel counter
     int odometryRightTicks ;  // right wheel counter    
     int odometryLeftTicksZeroCounter; // counts number of times ticks did not change
@@ -81,6 +104,8 @@ private:
     void readOdometry();
     void speedControl();
     void setMC33926(int pinDir, int pinPWM, int speed);    
+    void readCurrent();
+    void checkMotorFault();
 };
 
 

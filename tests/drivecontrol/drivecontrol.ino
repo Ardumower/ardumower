@@ -1,8 +1,19 @@
 // differential wheels drive controller experiments 
 // Requires: Ardumower Mini, Arduino Mega
 
+
 #include <Arduino.h>
 #include <Wire.h>
+#ifdef __AVR__
+  // Arduino Mega
+  #include <EEPROM.h>
+#else 
+  // Arduino Due
+  #include "due.h"
+#endif
+
+#include "drivers.h"
+#include "adcman.h"
 #include "motorcontrol.h"
 #include "modelrc.h"
 
