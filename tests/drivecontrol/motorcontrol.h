@@ -6,6 +6,7 @@
 #include <Arduino.h>
 #include "pid.h"
 
+// Warning: if you change pinout, interrupt pin configuration need to be changed too!
 
 #define pinMotorEnable  37         // EN motors enable
 

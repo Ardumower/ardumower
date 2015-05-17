@@ -109,7 +109,7 @@ MotorControl::MotorControl(){
   pinMode(pinOdometryLeft, INPUT_PULLUP);  
   pinMode(pinOdometryRight, INPUT_PULLUP);    
   
-  // odometry
+  // odometry interrupt configuration
   PCICR |= (1<<PCIE2);
   PCMSK2 |= (1<<PCINT20);
   PCMSK2 |= (1<<PCINT22);            
