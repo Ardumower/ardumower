@@ -357,6 +357,10 @@ void MotorControl::readCurrent(){
     // P_output = U_Battery * pwmDuty * I_Motor     
     motorRightSense = motorRightSenseCurrent * motorVoltageDC * motorRightPWMCurr /1000;   // conversion to power in Watt
     motorLeftSense  = motorLeftSenseCurrent  * motorVoltageDC * motorLeftPWMCurr  /1000;
+    
+    // Ist es nicht aussagekraeftiger über die Beschleunigung?
+    // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
+    // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
 }
 
 
