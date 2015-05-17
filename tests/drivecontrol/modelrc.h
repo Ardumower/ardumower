@@ -5,6 +5,7 @@
 
 #include <Arduino.h>
 
+// Warning: If you change pinout, interrupt configuration need to be changed too!
 #define pinRemoteSteer 11          // remote control steering 
 #define pinRemoteSpeed 10          // remote control speed
 

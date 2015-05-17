@@ -38,14 +38,14 @@ ISR(PCINT0_vect){
 }
 
 ModelReceiver::ModelReceiver(){
-  // R/C
+  // configure R/C interrupts
   PCICR |= (1<<PCIE0);
   PCMSK0 |= (1<<PCINT4);
   PCMSK0 |= (1<<PCINT5);      
 }
 
 void ModelReceiver::run(){
-  // R/C
+  // control motor by R/C receiver
   int steer = ((double)MotorCtrl.motorSpeedMaxRpm/2) * (((double)remoteSteer)/100.0);
   if (remoteSpeed < 0) steer *= -1;
     

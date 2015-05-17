@@ -3,7 +3,7 @@
 
 // differential drive motor controller
 // requires: 
-//   - 2 gear motors with encoders (odometry)
+//   - 2 brushed gear motors with 1-way encoder (odometry)
 //   - MC33926 motor driver
 //
 // how to use:
