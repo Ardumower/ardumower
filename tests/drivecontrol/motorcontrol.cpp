@@ -192,21 +192,6 @@ void MotorControl::run(){
   }
 }  
 
-void MotorControl::readCurrent(){
-    double accel = 0.05;
-        
-    motorRightSenseADC = ADCMan.read(pinMotorRightSense);    
-    motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);    
-    
-    if (motorRightPWMCurr < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.0) * accel;
-        else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
-    
-    if (motorLeftPWMCurr < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.0) * accel;
-        else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
-            
-    motorRightSense = motorRightSenseCurrent * motorVoltageDC /1000;   // conversion to power in Watt
-    motorLeftSense  = motorLeftSenseCurrent  * motorVoltageDC /1000;
-}
 
 void MotorControl::readOdometry(){
   unsigned long TaC = millis() - lastOdometryTime;    // sampling time in millis
@@ -350,6 +335,29 @@ bool MotorControl::hasStopped(){
   return (motorLeftPWMCurr == motorRightPWMCurr == 0);
 }
 
+
+// read motor current
+void MotorControl::readCurrent(){
+    double accel = 0.05;
+        
+    motorRightSenseADC = ADCMan.read(pinMotorRightSense);    
+    motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);    
+    
+    if (motorRightPWMCurr < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.0) * accel;
+        else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
+    
+    if (motorLeftPWMCurr < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.0) * accel;
+        else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
+    
+    // obstacle detection via motor torque (output power)
+    // NOTE: at obstacles, our motors typically do not stall - they are too powerful, and just reduce speed (rotate through the lawn)
+    // http://wiki.ardumower.de/images/9/96/Wheel_motor_diagram.png
+    //
+    // goal: calculate motor output power (by calculating battery voltage, pwm duty cycle and motor current)  
+    // P_output = U_Battery * pwmDuty * I_Motor     
+    motorRightSense = motorRightSenseCurrent * motorVoltageDC * motorRightPWMCurr /1000;   // conversion to power in Watt
+    motorLeftSense  = motorLeftSenseCurrent  * motorVoltageDC * motorLeftPWMCurr  /1000;
+}
 
 
 
