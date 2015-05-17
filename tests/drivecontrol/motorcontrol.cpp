@@ -84,6 +84,14 @@ MotorControl::MotorControl(){
   odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
   odometryTicksPerCm = 0.5;    // encoder ticks per cm
   odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)    
+  motorLeftSwapDir = false;
+  motorRightSwapDir = false;
+  
+  /*odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
+  odometryTicksPerCm = 13.49;  // encoder ticks per cm
+  odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)  
+  motorLeftSwapDir = true;
+  motorRightSwapDir = false;*/
   
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)  
@@ -284,6 +292,8 @@ void MotorControl::speedControl(){
 void MotorControl::setSpeedPWM(int leftPWM, int rightPWM){
   motorLeftPWMCurr = leftPWM;
   motorRightPWMCurr = rightPWM;
+  if (motorLeftSwapDir) leftPWM *= -1;  
+  if (motorRightSwapDir) rightPWM *= -1;
   setMC33926(pinMotorLeftDir,  pinMotorLeftPWM,  max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, leftPWM)));
   setMC33926(pinMotorRightDir, pinMotorRightPWM, max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, rightPWM)));    
 }
@@ -358,7 +368,7 @@ void MotorControl::readCurrent(){
     motorRightSense = motorRightSenseCurrent * motorVoltageDC * motorRightPWMCurr /1000;   // conversion to power in Watt
     motorLeftSense  = motorLeftSenseCurrent  * motorVoltageDC * motorLeftPWMCurr  /1000;
     
-    // Ist es nicht aussagekraeftiger über die Beschleunigung?
+    // Ist es nicht aussagekraeftiger ï¿½ber die Beschleunigung?
     // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
     // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
 }

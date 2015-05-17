@@ -29,6 +29,9 @@ void setup(){
   Serial.begin(19200);
   Serial.println("SETUP");       
   LED.playSequence(LED_RED_BLINK);
+  
+  pinMode(4, OUTPUT);
+  digitalWrite(4, HIGH);  
 }
 
 void loop(){  

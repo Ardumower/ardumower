@@ -50,6 +50,8 @@ class MotorControl
     byte motion; // motion to perform
   
     // gear motors
+    bool motorRightSwapDir     ;    // inverse right motor direction? 
+    bool motorLeftSwapDir      ;    // inverse left motor direction?         
     float motorVoltageDC;  // known operating voltage (DC)
     int motorLeftSpeedRpmSet ; // set speed
     int motorRightSpeedRpmSet ;
