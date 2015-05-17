@@ -10,6 +10,33 @@ volatile static unsigned long odometryLeftTickTime = 0;
 volatile static unsigned long odometryRightTickTime = 0;
 
 
+// rescale to -PI..+PI
+double scalePI(double v)
+{
+  double d = v;
+  while (d < 0) d+=2*PI;
+  while (d >= 2*PI) d-=2*PI;
+  if (d >= PI) return (-2*PI+d); 
+  else if (d < -PI) return (2*PI+d);
+  else return d;  
+}
+
+// computes minimum distance between x radiant (current-value) and w radiant (set-value)
+double distancePI(double x, double w)
+{
+  // cases:   
+  // w=330 degree, x=350 degree => -20 degree
+  // w=350 degree, x=10  degree => -20 degree
+  // w=10  degree, x=350 degree =>  20 degree
+  // w=0   degree, x=190 degree => 170 degree
+  // w=190 degree, x=0   degree => -170 degree 
+  double d = scalePI(w - x);
+  if (d < -PI) d = d + 2*PI;
+  else if (d > PI) d = d - 2*PI;  
+  return d;
+}
+
+
 // odometry interrupt handler
 ISR(PCINT2_vect, ISR_NOBLOCK){
 //  ISR(PCINT2_vect){
@@ -19,7 +46,7 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
   if (odometryLeftState != odometryLeftLastState){    
     if (odometryLeftState){ // pin1 makes LOW->HIGH transition
       if (timeMicros > odometryLeftLastHighTime) odometryLeftTickTime = timeMicros - odometryLeftLastHighTime;
-      if (MotorCtrl.motorLeftPWMCurr >=0) MotorCtrl.odometryLeft ++; else MotorCtrl.odometryLeft --;           
+      if (MotorCtrl.motorLeftPWMCurr >=0) MotorCtrl.odometryLeftTicks ++; else MotorCtrl.odometryLeftTicks --;           
       odometryLeftLastHighTime = timeMicros;      
     } else {
       //odometryLeftLowTime = timeMicros;
@@ -29,7 +56,7 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
   if (odometryRightState != odometryRightLastState){
     if (odometryRightState){ // pin1 makes LOW->HIGH transition
       if (timeMicros > odometryRightLastHighTime) odometryRightTickTime = timeMicros - odometryRightLastHighTime;
-      if (MotorCtrl.motorRightPWMCurr >=0) MotorCtrl.odometryRight ++; else MotorCtrl.odometryRight --;    
+      if (MotorCtrl.motorRightPWMCurr >=0) MotorCtrl.odometryRightTicks ++; else MotorCtrl.odometryRightTicks --;    
       odometryRightLastHighTime = timeMicros;
     } else {
       //odometryRightLowTime = timeMicros;
@@ -54,7 +81,8 @@ MotorControl::MotorControl(){
   odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
   odometryTicksPerCm = 0.5;    // encoder ticks per cm
   odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)    
-      
+
+  motion = MOTION_STOP;
   enableSpeedControl = true;
   motorLeftPWMCurr = motorRightPWMCurr = 0;
   lastOdometryTime = lastMotorControlTime = 0;  
@@ -110,7 +138,32 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
 
 void MotorControl::run(){
   readOdometry();
-  if (enableSpeedControl) speedControl();
+  if (enableSpeedControl) {
+    switch (motion){
+      case MOTION_LINE_SPEED: 
+        break;      
+      case MOTION_LINE_DISTANCE: 
+        if (abs(odometryDistanceCmCurr - odometryDistanceCmSet) < 1.0) {
+          Serial.println("reached destination");
+          motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
+          motion = MOTION_STOP;
+        }
+        if (odometryDistanceCmCurr > odometryDistanceCmSet) {        
+          Serial.println("reached destination (overshoot)");
+          motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
+          motion = MOTION_STOP;
+        }          
+        break;
+      case MOTION_ROTATE_ANGLE: 
+        if (distancePI(odometryThetaRadCurr, odometryThetaRadSet) < PI/64){
+          Serial.println("reached angle");          
+          motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;        
+          motion = MOTION_STOP;
+        }
+        break;
+    }
+    speedControl();
+  }
 }  
 
 void MotorControl::readOdometry(){
@@ -119,8 +172,8 @@ void MotorControl::readOdometry(){
   if (TaC > 1000) TaC = 1;      
   static int lastOdoLeft = 0;
   static int lastOdoRight = 0;
-  int odoLeft = odometryLeft;
-  int odoRight = odometryRight;
+  int odoLeft = odometryLeftTicks;
+  int odoRight = odometryRightTicks;
   unsigned long leftTime = odometryLeftTickTime;
   unsigned long rightTime = odometryRightTickTime;  
   int ticksLeft = odoLeft - lastOdoLeft;
@@ -131,7 +184,10 @@ void MotorControl::readOdometry(){
   double right_cm = ((double)ticksRight) / ((double)odometryTicksPerCm);  
   double avg_cm  = (left_cm + right_cm) / 2.0;
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
-  odometryTheta += wheel_theta; 
+  odometryThetaRadCurr += wheel_theta;   
+  odometryDistanceCmCurr += avg_cm;
+  odometryXcmCurr += avg_cm * sin(odometryThetaRadCurr); 
+  odometryYcmCurr += avg_cm * cos(odometryThetaRadCurr);
 
   float smooth = 0.0;  
   // 1 rpm = 20 ticks per minute, micros per rpm = 6000*1000 micros / 20 ticks 
@@ -195,6 +251,7 @@ void MotorControl::speedControl(){
   setSpeedPWM( leftSpeed, rightSpeed );  
 }
 
+
 void MotorControl::setSpeedPWM(int leftPWM, int rightPWM){
   motorLeftPWMCurr = leftPWM;
   motorRightPWMCurr = rightPWM;
@@ -203,11 +260,36 @@ void MotorControl::setSpeedPWM(int leftPWM, int rightPWM){
 }
 
 void MotorControl::setSpeedRpm(int leftRpm, int rightRpm){
-   motorLeftSpeedRpmSet = leftRpm;
-   motorRightSpeedRpmSet = rightRpm;
-   motorLeftSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorLeftSpeedRpmSet));
-   motorRightSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorRightSpeedRpmSet));   
+  motorLeftSpeedRpmSet = leftRpm;
+  motorRightSpeedRpmSet = rightRpm;
+  motorLeftSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorLeftSpeedRpmSet));
+  motorRightSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorRightSpeedRpmSet));   
+  motion = MOTION_LINE_SPEED;   
 }
+
+void MotorControl::stopImmediately(){
+  setSpeedPWM(0, 0);
+  motion = MOTION_STOP;
+}
+
+void MotorControl::travelDistance(int distanceCm, int speedRpm){
+  motion = MOTION_LINE_DISTANCE;
+  odometryDistanceCmSet = odometryDistanceCmCurr + distanceCm;
+  motorLeftSpeedRpmSet = motorRightSpeedRpmSet = speedRpm;
+}
+
+void MotorControl::rotate(float angleRad, int speedRpm){
+  motion = MOTION_ROTATE_ANGLE;    
+  odometryThetaRadSet = odometryThetaRadCurr + angleRad;
+  motorLeftSpeedRpmSet = speedRpm;
+  motorRightSpeedRpmSet = -speedRpm;
+}
+
+bool MotorControl::hasStopped(){
+  return (motorLeftPWMCurr == motorRightPWMCurr == 0);
+}
+
+
 
 
 

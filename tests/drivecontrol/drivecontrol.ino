@@ -26,9 +26,9 @@ void loop(){
     Serial.print(ModelRC.remoteSteer);
     Serial.print("\t");
     Serial.print("  ODO: ");    
-    Serial.print(MotorCtrl.odometryLeft);
+    Serial.print(MotorCtrl.odometryLeftTicks);
     Serial.print("\t");    
-    Serial.print(MotorCtrl.odometryRight);    
+    Serial.print(MotorCtrl.odometryRightTicks);    
     Serial.print("  SET: ");    
     Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
     Serial.print("\t");
@@ -88,6 +88,16 @@ void loop(){
       useModelRC = false;
       Serial.println("rpm=+5,-5");
       MotorCtrl.setSpeedRpm(+5, -5); 
+    }    
+    if (ch == '6') {
+      useModelRC = false;
+      Serial.println("theta=45deg");
+      MotorCtrl.rotate(PI/2, 5); 
+    }    
+    if (ch == '7') {
+      useModelRC = false;
+      Serial.println("distance=10cm"); 
+      MotorCtrl.travelDistance(10, 5); 
     }    
     
     
