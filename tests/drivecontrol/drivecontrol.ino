@@ -14,6 +14,8 @@
 
 #include "drivers.h"
 #include "adcman.h"
+#include "buzzer.h"
+#include "led.h"
 #include "motorcontrol.h"
 #include "modelrc.h"
 
@@ -26,6 +28,7 @@ void setup(){
   Wire.begin();            
   Serial.begin(19200);
   Serial.println("SETUP");       
+  LED.playSequence(LED_RED_BLINK);
 }
 
 void loop(){  
@@ -133,7 +136,11 @@ void loop(){
   
   if (useModelRC) ModelRC.run();
   MotorCtrl.run();
+  Buzzer.run();  
+  LED.run();
   delay(50);
+  
+  //if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);
 }
 
 

@@ -1,7 +1,7 @@
 #ifndef LED_H
 #define LED_H
 
-// Ardumower LEDs  (play LED ON/OFF sequences)
+// Ardumower LEDs  (play LED 'sequences')
 
 #include <Arduino.h>
 
@@ -9,6 +9,15 @@
 #define pinLEDDuoRed 7            
 #define pinLEDDuoGreen 6            
 
+// playable LED sequences
+enum {
+  LED_OFF,
+  LED_GREEN_ON,
+  LED_ORANGE_ON,
+  LED_ORANGE_BLINK,
+  LED_RED_BLINK,
+  LED_RED_ON,
+};
 
 /*
 LED Anzeigen - Hardware:
@@ -32,7 +41,12 @@ class LEDControl
 {
   public:
     LEDControl();
+    void playSequence(int sequenceIdx);
     void run();
+  private:
+    unsigned long nextLEDTime;
+    int ledSequenceIdx;
+    bool onState;
 };
 
 extern LEDControl LED;

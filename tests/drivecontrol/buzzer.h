@@ -7,41 +7,32 @@
 
 #define pinBuzzer 53               // Buzzer
 
-
-// beep type names ('tones')
+// beep types ('tones')
 enum {
   BEEP_MUTE,
   BEEP_SHORT,
   BEEP_LONG
 };
 
-// beep code names ('melodies')
+// beep codes ('melodies')
 enum {
   BC_SILENCE,
   BC_SHORT,
-  BC_LONG,
   BC_SHORT_SHORT,
-  BC_SHORT_LONG,
-  BC_LONG_LONG,
+  BC_SHORT_SHORT_SHORT,
+  BC_LONG,  
+  BC_LONG_SHORT_SHORT,
+  BC_LONG_LONG,    
+  BC_LONG_SHORT_LONG,
 };
-
-// beep codes table (memory stored melodies)
-byte beepCodesTable[][4]={  
-  {BEEP_MUTE,  BEEP_MUTE, BEEP_MUTE,  BEEP_MUTE},
-  {BEEP_SHORT, BEEP_MUTE, BEEP_MUTE,  BEEP_MUTE},
-  {BEEP_LONG,  BEEP_MUTE, BEEP_MUTE,  BEEP_MUTE},
-  {BEEP_SHORT, BEEP_MUTE, BEEP_SHORT, BEEP_MUTE},
-  {BEEP_SHORT, BEEP_MUTE, BEEP_LONG,  BEEP_MUTE},
-  {BEEP_LONG,  BEEP_MUTE, BEEP_LONG,  BEEP_MUTE},
-};
-
 
 class BuzzerControl
 {
   public:
     BuzzerControl();
     // play a 'melody' (non-blocking)
-    void beep(int code);
+    void play(int beepCode);
+    bool isPlaying();
     void run();
   private:
     unsigned long nextBeepTime;
