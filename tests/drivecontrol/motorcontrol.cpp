@@ -87,6 +87,7 @@ MotorControl::MotorControl(){
   
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)  
+  motorVoltageDC = 24.0;
 
   motion = MOTION_STOP;
   enableSpeedControl = true;
@@ -203,14 +204,8 @@ void MotorControl::readCurrent(){
     if (motorLeftPWMCurr < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.0) * accel;
         else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
             
-    /*if (batVoltage > 8){
-      motorRightSense = motorRightSenseCurrent * batVoltage /1000;   // conversion to power in Watt
-      motorLeftSense  = motorLeftSenseCurrent  * batVoltage /1000;
-    }
-    else {
-      motorRightSense = motorRightSenseCurrent * batFull /1000;   // conversion to power in Watt in absence of battery voltage measurement
-      motorLeftSense  = motorLeftSenseCurrent  * batFull /1000;
-    }  */
+    motorRightSense = motorRightSenseCurrent * motorVoltageDC /1000;   // conversion to power in Watt
+    motorLeftSense  = motorLeftSenseCurrent  * motorVoltageDC /1000;
 }
 
 void MotorControl::readOdometry(){

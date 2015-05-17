@@ -50,6 +50,7 @@ class MotorControl
     byte motion; // motion to perform
   
     // gear motors
+    float motorVoltageDC;  // known operating voltage (DC)
     int motorLeftSpeedRpmSet ; // set speed
     int motorRightSpeedRpmSet ;
     float motorLeftRpmCurr ; // left wheel rpm    
