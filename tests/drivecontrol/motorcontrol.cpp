@@ -91,12 +91,19 @@ MotorControl::MotorControl(){
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)  
   motorLeftSwapDir = true;
+//  motorLeftSwapDir = false;
   motorRightSwapDir = false;
+//  motorRightSwapDir = true; 
   
-  motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
-  motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)  
+  // MC33926 current:  5V / 1024 ADC counts,  525 mV per A  => 9.3 mA per ADC step
+  motorSenseRightScale = 9.3;  // motor right sense scale (mA=(ADC-zero) * scale)
+  motorSenseLeftScale  = 9.3;  // motor left sense scale  (mA=(ADC-zero) * scale)  
   motorVoltageDC = 24.0;
+}
 
+
+void MotorControl::init(){
+  Serial.println("MotorControl::init");
   motion = MOTION_STOP;
   enableSpeedControl = true;
   motorLeftPWMCurr = motorRightPWMCurr = 0;
@@ -128,10 +135,10 @@ MotorControl::MotorControl(){
   PCICR |= (1<<PCIE2);
   PCMSK2 |= (1<<PCINT20);
   PCMSK2 |= (1<<PCINT22);            
-
+  
   // current ADC configuration
-  ADCMan.setCapture(pinMotorLeftSense, 1, true);
-  ADCMan.setCapture(pinMotorRightSense, 1, true);  
+  ADCMan.setCapture(pinMotorLeftSense, 1, false);
+  ADCMan.setCapture(pinMotorRightSense, 1, false);  
 
   //setSpeedPWM(0, 80);
 //  setSpeedPWM(127, 127);  
@@ -167,6 +174,10 @@ void MotorControl::checkMotorFault(){
 }
 
 void MotorControl::run(){
+  unsigned long TaC = millis() - lastMotorRunTime;    // sampling time in millis
+  if (TaC < 50) return;
+  lastMotorRunTime = millis();
+  
   readOdometry();
   if (enableSpeedControl) {
     switch (motion){
@@ -198,6 +209,7 @@ void MotorControl::run(){
     }
     speedControl();
   }
+  readCurrent();  
 }  
 
 
@@ -250,8 +262,9 @@ void MotorControl::readOdometry(){
 
 void MotorControl::speedControl(){  
   unsigned long TaC = millis() - lastMotorControlTime;    // sampling time in millis
-  lastMotorControlTime = millis(); 
-  if (TaC > 1000) TaC = 1;     
+  if (TaC < 50) return;
+  
+  if (TaC > 500) TaC = 1;     
   //float TaS = ((double)TaC) / 1000.0;
   
   static float leftRightCompensation = 0;
@@ -347,29 +360,39 @@ bool MotorControl::hasStopped(){
 
 // read motor current
 void MotorControl::readCurrent(){
-    double accel = 0.05;
-        
+    //double smooth = 0.95;
+    double smooth = 0.0;
+
+    motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);              
     motorRightSenseADC = ADCMan.read(pinMotorRightSense);    
-    motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);    
+    //motorLeftSenseADC = analogRead(pinMotorLeftSense);    
+    //motorRightSenseADC = analogRead(pinMotorRightSense);        
+        
+    /*Serial.print(motorLeftSenseADC);
+    Serial.print(",");
+    Serial.println(motorRightSenseADC);*/
+
+    // FIXME (workaround):  forward/reverse direction has different output current - why?    
+    if (motorLeftSwapDir)  motorLeftSenseADC  = ((double)motorLeftSenseADC)  *  (1.0 - abs(motorLeftPWMCurr)  / 255.0);  
+    if (motorRightSwapDir) motorRightSenseADC = ((double)motorRightSenseADC) *  (1.0 - abs(motorRightPWMCurr) / 255.0);            
     
-    if (motorRightPWMCurr < 160) motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * (motorSenseRightScale*1.0) * accel;
-        else motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
-    
-    if (motorLeftPWMCurr < 160) motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * (motorSenseLeftScale*1.0) * accel;
-        else motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
-    
+    // compute motor current (mA)
+    motorRightSenseCurrent = motorRightSenseCurrent * smooth + ((double)motorRightSenseADC) * motorSenseRightScale * (1.0-smooth);    
+    motorLeftSenseCurrent  = motorLeftSenseCurrent  * smooth + ((double)motorLeftSenseADC)  * motorSenseLeftScale  * (1.0-smooth);
+        
     // obstacle detection via motor torque (output power)
     // NOTE: at obstacles, our motors typically do not stall - they are too powerful, and just reduce speed (rotate through the lawn)
     // http://wiki.ardumower.de/images/9/96/Wheel_motor_diagram.png
     //
-    // goal: calculate motor output power (by calculating battery voltage, pwm duty cycle and motor current)  
+    // compute motor output power (W) by calculating battery voltage, pwm duty cycle and motor current
     // P_output = U_Battery * pwmDuty * I_Motor     
-    motorRightSense = motorRightSenseCurrent * motorVoltageDC * motorRightPWMCurr /1000;   // conversion to power in Watt
-    motorLeftSense  = motorLeftSenseCurrent  * motorVoltageDC * motorLeftPWMCurr  /1000;
+    motorRightSensePower = motorRightSenseCurrent * motorVoltageDC * ((double)abs(motorRightPWMCurr)/255.0)  /1000;   // conversion to power in Watt
+    motorLeftSensePower  = motorLeftSenseCurrent  * motorVoltageDC * ((double)abs(motorLeftPWMCurr) /255.0)  /1000;
     
-    // Ist es nicht aussagekraeftiger �ber die Beschleunigung?
+    // Ist es nicht aussagekraeftiger ueber die Beschleunigung?
     // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
     // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
+    
 }
 
 

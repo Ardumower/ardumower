@@ -27,50 +27,56 @@ unsigned long nextInfoTime = 0;
 void setup(){
   Wire.begin();            
   Serial.begin(19200);
-  Serial.println("SETUP");       
-  LED.playSequence(LED_RED_BLINK);
+  Serial.println("SETUP");         
   
   pinMode(4, OUTPUT);
   digitalWrite(4, HIGH);  
+  ADCMan.init();  
+  MotorCtrl.init();
+  
+  LED.playSequence(LED_RED_BLINK);
 }
 
 void loop(){  
   if (millis() >= nextInfoTime){
     nextInfoTime = millis() + 500;
-    Serial.print("R/C: ");
+    Serial.print("RC:");
     Serial.print(ModelRC.remoteSpeed);
-    Serial.print("\t");
+    Serial.print(",");
     Serial.print(ModelRC.remoteSteer);
-    Serial.print("\t");
-    Serial.print("  TICKS: ");    
+    Serial.print(" ticks:");    
     Serial.print(MotorCtrl.odometryLeftTicks);    
-    Serial.print("\t");    
+    Serial.print(",");    
     Serial.print(MotorCtrl.odometryRightTicks);    
-    Serial.print("  THETA,DIST: ");    
+    Serial.print("  thet,dist:");    
     Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
-    Serial.print("\t");    
-    Serial.print(MotorCtrl.odometryDistanceCmCurr);       
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
     Serial.print(" ## ");    
-    Serial.print(MotorCtrl.angleToTargetRad/PI*180.0);    
-    Serial.print("\t");        
-    Serial.print(MotorCtrl.distanceToTargetCm);        
-    Serial.print("\t");    
-    Serial.print("  SET: ");    
+    Serial.print(MotorCtrl.angleToTargetRad/PI*180.0, 1);    
+    Serial.print(",");        
+    Serial.print(MotorCtrl.distanceToTargetCm, 1);        
+    Serial.print("  set:");    
     Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
-    Serial.print("\t");
+    Serial.print(",");
     Serial.print(MotorCtrl.motorRightSpeedRpmSet);        
-    Serial.print("  CUR: ");    
-    Serial.print(MotorCtrl.motorLeftRpmCurr);
-    Serial.print("\t");
-    Serial.print(MotorCtrl.motorRightRpmCurr);        
-    Serial.print("  ERR: ");    
-    Serial.print(MotorCtrl.motorLeftPID.eold);
-    Serial.print("\t");
-    Serial.print(MotorCtrl.motorRightPID.eold);            
-    Serial.print("  PWM: ");    
-    Serial.print(MotorCtrl.motorLeftPWMCurr);
-    Serial.print("\t");
-    Serial.print(MotorCtrl.motorRightPWMCurr);        
+    Serial.print("  cur:");    
+    Serial.print(MotorCtrl.motorLeftRpmCurr, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightRpmCurr, 1);        
+    Serial.print("  err:");    
+    Serial.print(MotorCtrl.motorLeftPID.eold, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightPID.eold, 1);            
+    Serial.print("  pwm:");    
+    Serial.print(MotorCtrl.motorLeftPWMCurr, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightPWMCurr, 0);        
+    Serial.print("  mA:");    
+    Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);        
+    
     
     Serial.println();
   } 
@@ -138,6 +144,7 @@ void loop(){
   }  
   
   if (useModelRC) ModelRC.run();
+  ADCMan.run();
   MotorCtrl.run();
   Buzzer.run();  
   LED.run();

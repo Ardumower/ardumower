@@ -65,14 +65,14 @@ class MotorControl
     float motorRightPWMCurr ;      
     
     // motor current
-    int motorRightSenseADC ;
+    int motorRightSenseADC ; // ADC value
     int motorLeftSenseADC ;
-    float motorLeftSenseCurrent ;     
+    float motorLeftSenseCurrent ;  // current (mA)
     float motorRightSenseCurrent ;
-    float motorLeftSense ;      
-    float motorRightSense ;    
-    float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)/scale)
-    float motorSenseLeftScale ; // motor left sense scale  (mA=(ADC-zero)/scale)    
+    float motorLeftSensePower ;   // power (W)     
+    float motorRightSensePower ;    
+    float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)*scale)
+    float motorSenseLeftScale ; // motor left sense scale  (mA=(ADC-zero)*scale)    
   
     // odometry
     int odometryLeftTicks ;   // left wheel counter
@@ -93,6 +93,7 @@ class MotorControl
         
     bool enableSpeedControl;
     MotorControl();
+    void init();
     void run();    
     void setSpeedRpm(int leftRpm, int rightRpm);    
     void setSpeedPWM(int leftPWM, int rightPWM);    
@@ -102,8 +103,9 @@ class MotorControl
     void rotate(float angleRad, int speedRpm);
     bool hasStopped();
 private:    
+    unsigned long lastMotorRunTime;
     unsigned long lastMotorControlTime;
-    unsigned long lastOdometryTime;
+    unsigned long lastOdometryTime;    
     void readOdometry();
     void speedControl();
     void setMC33926(int pinDir, int pinPWM, int speed);    
