@@ -107,7 +107,7 @@ void MotorControl::init(){
   motion = MOTION_STOP;
   enableSpeedControl = true;
   motorLeftPWMCurr = motorRightPWMCurr = 0;
-  lastOdometryTime = lastMotorControlTime = 0;  
+  lastOdometryTime = lastMotorControlTime = lastMotorCurrentTime = lastMotorRunTime = 0;  
   odometryLeftTicksZeroCounter = odometryRightTicksZeroCounter = 0;
   motorLeftError = motorRightError = false;
   motorLeftStalled = motorRightStalled = false;
@@ -269,9 +269,9 @@ void MotorControl::readOdometry(){
 void MotorControl::speedControl(){  
   unsigned long TaC = millis() - lastMotorControlTime;    // sampling time in millis
   if (TaC < 50) return;
-  
+  lastMotorControlTime = millis();  
   if (TaC > 500) TaC = 1;     
-  //float TaS = ((double)TaC) / 1000.0;
+  //double TaS = ((double)TaC) / 1000.0;
   
   static float leftRightCompensation = 0;
   //leftRightCompensation += (motorLeftRpmCurr - motorRightRpmCurr)* 2;
@@ -308,6 +308,9 @@ void MotorControl::speedControl(){
 // forward speed: 0..+255
 // reverse speed: 0..-255
 void MotorControl::setSpeedPWM(int leftPWM, int rightPWM){
+  if ((motorLeftStalled) || (motorRightStalled)){
+    if ((leftPWM != 0) || (rightPWM != 0)) return;
+  }
   motorLeftPWMCurr = leftPWM;
   motorRightPWMCurr = rightPWM;
   if (motorLeftSwapDir) leftPWM *= -1;  
@@ -366,24 +369,41 @@ bool MotorControl::hasStopped(){
 
 // read motor current
 void MotorControl::readCurrent(){
+    unsigned long TaC = millis() - lastMotorCurrentTime;    // sampling time in millis
+    lastMotorCurrentTime = millis();
+    if (TaC > 500) TaC = 1;   
+    double TaS = ((double)TaC) / 1000.0;
+
     //double smooth = 0.95;
-    double smooth = 0.9;
-    //double smooth = 0.0;
+    //double smooth = 0.9;
+    
+    int lastMotorLeftSenseADC  = motorLeftSenseADC; 
+    int lastMotorRightSenseADC = motorRightSenseADC; 
 
     // read current - NOTE: MC33926 datasheets says: accuracy is better than 20% from 0.5 to 6.0 A
     motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);              
-    motorRightSenseADC = ADCMan.read(pinMotorRightSense);    
+    motorRightSenseADC = ADCMan.read(pinMotorRightSense);            
     //motorLeftSenseADC = analogRead(pinMotorLeftSense);    
-    //motorRightSenseADC = analogRead(pinMotorRightSense);        
+    //motorRightSenseADC = analogRead(pinMotorRightSense);       
         
     /*Serial.print(motorLeftSenseADC);
     Serial.print(",");
     Serial.println(motorRightSenseADC);*/    
     
+    // compute gradient
+    motorLeftSenseGradient  =  (((double)motorLeftSenseADC)  - ((double)lastMotorLeftSenseADC))  / TaS;
+    motorRightSenseGradient =  (((double)motorRightSenseADC) - ((double)lastMotorRightSenseADC)) / TaS;        
+            
     // compute motor current (mA)
+    double smooth = 0.9;    
     motorRightSenseCurrent = motorRightSenseCurrent * smooth + ((double)motorRightSenseADC) * motorSenseRightScale * (1.0-smooth);    
     motorLeftSenseCurrent  = motorLeftSenseCurrent  * smooth + ((double)motorLeftSenseADC)  * motorSenseLeftScale  * (1.0-smooth);
-        
+    
+    // compute effiency (output rotation/input power)        
+    smooth = 0.9;
+    motorLeftEfficiency  = motorLeftEfficiency  * smooth + (abs(motorLeftRpmCurr) / max(0.01, abs(motorLeftSenseCurrent))   * 100.0) * (1.0-smooth);
+    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSenseCurrent)) * 100.0) * (1.0-smooth);
+            
     // obstacle detection via motor torque (output power)
     // NOTE: at obstacles, our motors typically do not stall - they are too powerful, and just reduce speed (rotate through the lawn)
     // http://wiki.ardumower.de/images/9/96/Wheel_motor_diagram.png
@@ -397,8 +417,20 @@ void MotorControl::readCurrent(){
     // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
     // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
 
-    if (motorRightSenseCurrent > 400) motorRightStalled = true;    
-    if (motorLeftSenseCurrent > 400) motorLeftStalled = true;        
+//    if (motorRightSenseCurrent > 400) motorRightStalled = true;    
+//    if (motorLeftSenseCurrent > 400) motorLeftStalled = true;        
+
+//      if (motorRightSenseGradient > 600) motorRightStalled = true;    
+//      if (motorLeftSenseGradient > 600) motorLeftStalled = true;          
+
+     if ( (abs(motorLeftSenseCurrent) > 400)   && (motorLeftEfficiency < 2.5)  ) {
+       motorLeftStalled = true;
+       stopImmediately();
+     }
+     if ( (abs(motorRightSenseCurrent) > 400) && (motorRightEfficiency < 2.5) ) {
+       motorRightStalled = true;     
+       stopImmediately();       
+     }
 }
 
 

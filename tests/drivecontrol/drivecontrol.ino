@@ -75,8 +75,11 @@ void loop(){
     Serial.print("  mA:");    
     Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
     Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);        
-    
+    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
+    Serial.print("  eff:");    
+    Serial.print(MotorCtrl.motorLeftEfficiency, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightEfficiency, 0);      
     
     Serial.println();
   } 
@@ -147,22 +150,29 @@ void loop(){
     Serial.println("ERROR");    
     if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT_SHORT);    
   }
-  if (MotorCtrl.motorLeftStalled){
-    Serial.println("LEFT STALL");    
-    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);        
-    MotorCtrl.resetStalled();    
-  }
-  if (MotorCtrl.motorRightStalled){
-    Serial.println("RIGHT STALL");
-    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);        
-    MotorCtrl.resetStalled();
-  }
 
   if (useModelRC) ModelRC.run();
   ADCMan.run();
-  MotorCtrl.run();
+  MotorCtrl.run();    
   Buzzer.run();  
   LED.run();
+  
+  if (MotorCtrl.motorLeftStalled){
+    Serial.print("LEFT STALL ");    
+    //Serial.println(MotorCtrl.motorLeftSenseGradient);
+    Serial.println(MotorCtrl.motorLeftEfficiency);
+    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);           
+  }
+  if (MotorCtrl.motorRightStalled){
+    Serial.print("RIGHT STALL ");
+    //Serial.println(MotorCtrl.motorRightSenseGradient);    
+    Serial.println(MotorCtrl.motorRightEfficiency);            
+    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);            
+  }
+  if ( (abs(ModelRC.remoteSpeed) < 5) && (abs(ModelRC.remoteSteer) < 5) ) {
+    MotorCtrl.resetStalled();    
+  }
+  
   delay(50);
   
 }

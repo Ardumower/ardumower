@@ -73,6 +73,10 @@ class MotorControl
     int motorLeftSenseADC ;
     float motorLeftSenseCurrent ;  // current (mA)
     float motorRightSenseCurrent ;
+    float motorLeftSenseGradient; // current gradient
+    float motorRightSenseGradient; // current gradient    
+    float motorLeftEfficiency; //  efficiency (output rotation/input power)
+    float motorRightEfficiency; //  efficiency (output rotation/input power)    
     float motorLeftSensePower ;   // power (W)     
     float motorRightSensePower ;    
     float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)*scale)
@@ -111,6 +115,7 @@ private:
     unsigned long lastMotorRunTime;
     unsigned long lastMotorControlTime;
     unsigned long lastOdometryTime;    
+    unsigned long lastMotorCurrentTime;        
     void readOdometry();
     void speedControl();
     void setMC33926(int pinDir, int pinPWM, int speed);    
