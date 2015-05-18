@@ -48,7 +48,7 @@ void loop(){
     Serial.print(MotorCtrl.odometryLeftTicks);    
     Serial.print(",");    
     Serial.print(MotorCtrl.odometryRightTicks);    
-    Serial.print("  thet,dist:");    
+    Serial.print("  th,dist:");    
     Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
     Serial.print(",");    
     Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
@@ -143,6 +143,21 @@ void loop(){
     }           
   }  
   
+  if ((MotorCtrl.motorRightError) || (MotorCtrl.motorLeftError)){
+    Serial.println("ERROR");    
+    if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT_SHORT);    
+  }
+  if (MotorCtrl.motorLeftStalled){
+    Serial.println("LEFT STALL");    
+    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);        
+    MotorCtrl.resetStalled();    
+  }
+  if (MotorCtrl.motorRightStalled){
+    Serial.println("RIGHT STALL");
+    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);        
+    MotorCtrl.resetStalled();
+  }
+
   if (useModelRC) ModelRC.run();
   ADCMan.run();
   MotorCtrl.run();
@@ -150,7 +165,6 @@ void loop(){
   LED.run();
   delay(50);
   
-  //if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);
 }
 
 

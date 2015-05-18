@@ -109,6 +109,8 @@ void MotorControl::init(){
   motorLeftPWMCurr = motorRightPWMCurr = 0;
   lastOdometryTime = lastMotorControlTime = 0;  
   odometryLeftTicksZeroCounter = odometryRightTicksZeroCounter = 0;
+  motorLeftError = motorRightError = false;
+  motorLeftStalled = motorRightStalled = false;
   
   TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)    
   
@@ -145,6 +147,9 @@ void MotorControl::init(){
    setSpeedPWM(0, 0);
 }
 
+void MotorControl::resetStalled(){
+  motorLeftStalled = motorRightStalled = false;
+}
 
 // MC33926 motor driver
 // Check http://forum.pololu.com/viewtopic.php?f=15&t=5272#p25031 for explanations.
@@ -164,12 +169,10 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
 
 void MotorControl::checkMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
-    //robot.addErrorCounter(ERR_MOTOR_LEFT);
-    //robot.setNextState(STATE_ERROR, 0);
+    motorLeftError = true;
   }
   if  (digitalRead(pinMotorRightFault)==LOW){
-    //robot.addErrorCounter(ERR_MOTOR_RIGHT);
-    //robot.setNextState(STATE_ERROR, 0);
+    motorRightError = true;
   }
 }
 
@@ -210,6 +213,7 @@ void MotorControl::run(){
     speedControl();
   }
   readCurrent();  
+  checkMotorFault();
 }  
 
 
@@ -242,6 +246,7 @@ void MotorControl::readOdometry(){
     odometryLeftTicksZeroCounter = 0;
   } else {
     odometryLeftTicksZeroCounter++;
+    //Serial.println("LEFT TICKS ZERO");
     if (odometryLeftTicksZeroCounter > 10) motorLeftRpmCurr = 0;     // ensures rpm gets zero
   }
   if (motorLeftPWMCurr < 0) motorLeftRpmCurr *= -1;
@@ -251,6 +256,7 @@ void MotorControl::readOdometry(){
     odometryRightTicksZeroCounter = 0;
   } else {
     odometryRightTicksZeroCounter++;
+    //Serial.println("RIGHT TICKS ZERO");    
     if (odometryRightTicksZeroCounter > 10) motorRightRpmCurr = 0;   // ensures rpm gets zero 
   }
   if (motorRightPWMCurr < 0) motorRightRpmCurr *= -1;  
@@ -361,8 +367,10 @@ bool MotorControl::hasStopped(){
 // read motor current
 void MotorControl::readCurrent(){
     //double smooth = 0.95;
-    double smooth = 0.0;
+    double smooth = 0.9;
+    //double smooth = 0.0;
 
+    // read current - NOTE: MC33926 datasheets says: accuracy is better than 20% from 0.5 to 6.0 A
     motorLeftSenseADC = ADCMan.read(pinMotorLeftSense);              
     motorRightSenseADC = ADCMan.read(pinMotorRightSense);    
     //motorLeftSenseADC = analogRead(pinMotorLeftSense);    
@@ -370,11 +378,7 @@ void MotorControl::readCurrent(){
         
     /*Serial.print(motorLeftSenseADC);
     Serial.print(",");
-    Serial.println(motorRightSenseADC);*/
-
-    // FIXME (workaround):  forward/reverse direction has different output current - why?    
-    if (motorLeftSwapDir)  motorLeftSenseADC  = ((double)motorLeftSenseADC)  *  (1.0 - abs(motorLeftPWMCurr)  / 255.0);  
-    if (motorRightSwapDir) motorRightSenseADC = ((double)motorRightSenseADC) *  (1.0 - abs(motorRightPWMCurr) / 255.0);            
+    Serial.println(motorRightSenseADC);*/    
     
     // compute motor current (mA)
     motorRightSenseCurrent = motorRightSenseCurrent * smooth + ((double)motorRightSenseADC) * motorSenseRightScale * (1.0-smooth);    
@@ -392,7 +396,9 @@ void MotorControl::readCurrent(){
     // Ist es nicht aussagekraeftiger ueber die Beschleunigung?
     // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
     // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
-    
+
+    if (motorRightSenseCurrent > 400) motorRightStalled = true;    
+    if (motorLeftSenseCurrent > 400) motorLeftStalled = true;        
 }
 
 

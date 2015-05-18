@@ -52,6 +52,10 @@ class MotorControl
     // gear motors
     bool motorRightSwapDir     ;    // inverse right motor direction? 
     bool motorLeftSwapDir      ;    // inverse left motor direction?         
+    bool motorLeftError;            // left motor error?
+    bool motorRightError;          // right  motor error?
+    bool motorLeftStalled;        // left motor stalled?
+    bool motorRightStalled;        // right motor stalled?    
     float motorVoltageDC;  // known operating voltage (DC)
     int motorLeftSpeedRpmSet ; // set speed
     int motorRightSpeedRpmSet ;
@@ -102,6 +106,7 @@ class MotorControl
     void travelLineDistance(int distanceCm, int speedRpm);
     void rotate(float angleRad, int speedRpm);
     bool hasStopped();
+    void resetStalled();
 private:    
     unsigned long lastMotorRunTime;
     unsigned long lastMotorControlTime;
