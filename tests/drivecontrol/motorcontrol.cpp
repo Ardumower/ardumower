@@ -81,17 +81,17 @@ MotorControl::MotorControl(){
   motorLeftPID.Ki       = 0.29;
   motorLeftPID.Kd       = 0.25;  
     
-  odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
+/*  odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
   odometryTicksPerCm = 0.5;    // encoder ticks per cm
   odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)    
   motorLeftSwapDir = false;
-  motorRightSwapDir = false;
+  motorRightSwapDir = false;*/
   
-  /*odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
+  odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)  
   motorLeftSwapDir = true;
-  motorRightSwapDir = false;*/
+  motorRightSwapDir = false;
   
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)  
@@ -225,9 +225,8 @@ void MotorControl::readOdometry(){
   odometryYcmCurr += avg_cm * cos(odometryThetaRadCurr);
 
   float smooth = 0.0;  
-  // 1 rpm = 20 ticks per minute, micros per rpm = 6000*1000 micros / 20 ticks 
   if (ticksLeft != 0) {
-    motorLeftRpmCurr  = motorLeftRpmCurr * smooth + (1.0-smooth) *  6000.0*1000.0 / ((double)odometryTicksPerRevolution) / ((double)leftTime);  
+    motorLeftRpmCurr  = motorLeftRpmCurr * smooth + (1.0-smooth) *  60.0/((double)odometryTicksPerRevolution)/ (((double)leftTime)/1000.0/1000.0);  
     odometryLeftTicksZeroCounter = 0;
   } else {
     odometryLeftTicksZeroCounter++;
@@ -236,7 +235,7 @@ void MotorControl::readOdometry(){
   if (motorLeftPWMCurr < 0) motorLeftRpmCurr *= -1;
 
   if (ticksRight != 0) {
-    motorRightRpmCurr  = motorRightRpmCurr * smooth + (1.0-smooth) * 6000.0*1000.0 / ((double)odometryTicksPerRevolution) / ((double)rightTime);  
+    motorRightRpmCurr  = motorRightRpmCurr * smooth + (1.0-smooth) * 60.0 / ((double)odometryTicksPerRevolution)/ (((double)rightTime)/1000.0/1000.0);  
     odometryRightTicksZeroCounter = 0;
   } else {
     odometryRightTicksZeroCounter++;
@@ -281,8 +280,8 @@ void MotorControl::speedControl(){
   if (motorRightSpeedRpmSet >= 0) rightSpeed = min( max(0, rightSpeed), motorSpeedMaxPwm);
   if (motorRightSpeedRpmSet < 0) rightSpeed = max(-motorSpeedMaxPwm, min(0, rightSpeed));
   
-  if ( (motorLeftPID.x  == 0) && (motorLeftPID.w  == 0) ) leftSpeed = 0; // ensures PWM is really zero 
-  if ( (motorRightPID.x == 0) && (motorRightPID.w == 0) ) rightSpeed = 0; // ensures PWM is really zero     
+  if ( (abs(motorLeftPID.x)  < 2) && (motorLeftPID.w  == 0) ) leftSpeed = 0; // ensures PWM is really zero 
+  if ( (abs(motorRightPID.x) < 2) && (motorRightPID.w == 0) ) rightSpeed = 0; // ensures PWM is really zero     
   setSpeedPWM( leftSpeed, rightSpeed );  
 }
 
