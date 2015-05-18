@@ -76,6 +76,10 @@ void loop(){
     Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
     Serial.print(",");
     Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
+    Serial.print("  P:");    
+    Serial.print(MotorCtrl.motorLeftSensePower, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSensePower, 0);      
     Serial.print("  eff:");    
     Serial.print(MotorCtrl.motorLeftEfficiency, 0);
     Serial.print(",");

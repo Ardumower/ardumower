@@ -398,12 +398,7 @@ void MotorControl::readCurrent(){
     double smooth = 0.9;    
     motorRightSenseCurrent = motorRightSenseCurrent * smooth + ((double)motorRightSenseADC) * motorSenseRightScale * (1.0-smooth);    
     motorLeftSenseCurrent  = motorLeftSenseCurrent  * smooth + ((double)motorLeftSenseADC)  * motorSenseLeftScale  * (1.0-smooth);
-    
-    // compute effiency (output rotation/input power)        
-    smooth = 0.9;
-    motorLeftEfficiency  = motorLeftEfficiency  * smooth + (abs(motorLeftRpmCurr) / max(0.01, abs(motorLeftSenseCurrent))   * 100.0) * (1.0-smooth);
-    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSenseCurrent)) * 100.0) * (1.0-smooth);
-            
+                
     // obstacle detection via motor torque (output power)
     // NOTE: at obstacles, our motors typically do not stall - they are too powerful, and just reduce speed (rotate through the lawn)
     // http://wiki.ardumower.de/images/9/96/Wheel_motor_diagram.png
@@ -416,6 +411,13 @@ void MotorControl::readCurrent(){
     // Ist es nicht aussagekraeftiger ueber die Beschleunigung?
     // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
     // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
+    
+    // compute effiency (output rotation/input power)        
+    smooth = 0.9;
+    motorLeftEfficiency  = motorLeftEfficiency  * smooth + (abs(motorLeftRpmCurr) / max(0.01, abs(motorLeftSensePower))   * 100.0) * (1.0-smooth);
+    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSensePower)) * 100.0) * (1.0-smooth);    
+    motorLeftEfficiency = max(179, motorLeftEfficiency);
+    motorRightEfficiency = max(179, motorRightEfficiency);
 
 //    if (motorRightSenseCurrent > 400) motorRightStalled = true;    
 //    if (motorLeftSenseCurrent > 400) motorLeftStalled = true;        
@@ -423,11 +425,11 @@ void MotorControl::readCurrent(){
 //      if (motorRightSenseGradient > 600) motorRightStalled = true;    
 //      if (motorLeftSenseGradient > 600) motorLeftStalled = true;          
 
-     if ( (abs(motorLeftSenseCurrent) > 400)   && (motorLeftEfficiency < 2.5)  ) {
+     if ( (abs(motorLeftSensePower) > 1)   && (motorLeftEfficiency < 180)  ) {
        motorLeftStalled = true;
        stopImmediately();
      }
-     if ( (abs(motorRightSenseCurrent) > 400) && (motorRightEfficiency < 2.5) ) {
+     if ( (abs(motorRightSensePower) > 1) && (motorRightEfficiency < 180) ) {
        motorRightStalled = true;     
        stopImmediately();       
      }
