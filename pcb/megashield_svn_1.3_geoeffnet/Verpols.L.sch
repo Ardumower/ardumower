@@ -6,7 +6,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 24
+Sheet 24 25
 Title "Ardumower Shield - Verpolungsschutz Ladespannung"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -49,10 +49,10 @@ Verpols.L.aus
 Text HLabel 4385 1835 0    60   Input ~ 0
 Verpol.s.L.in
 $Comp
-L GND #PWR0166
+L GND #PWR0177
 U 1 1 553AC2ED
 P 5095 3155
-F 0 "#PWR0166" H 5095 2905 60  0001 C CNN
+F 0 "#PWR0177" H 5095 2905 60  0001 C CNN
 F 1 "GND" H 5095 3005 60  0000 C CNN
 F 2 "" H 5095 3155 60  0000 C CNN
 F 3 "" H 5095 3155 60  0000 C CNN

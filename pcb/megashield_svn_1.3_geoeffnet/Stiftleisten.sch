@@ -6,7 +6,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 8 24
+Sheet 8 25
 Title "Ardumower Shield - Stiftleisten"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -72,10 +72,10 @@ Wire Wire Line
 Wire Wire Line
 	1390 1415 2140 1415
 $Comp
-L +5V #PWR068
+L +5V #PWR071
 U 1 1 553E3A32
 P 1515 795
-F 0 "#PWR068" H 1515 645 60  0001 C CNN
+F 0 "#PWR071" H 1515 645 60  0001 C CNN
 F 1 "+5V" V 1515 1015 60  0000 C CNN
 F 2 "" H 1515 795 60  0000 C CNN
 F 3 "" H 1515 795 60  0000 C CNN
@@ -83,10 +83,10 @@ F 3 "" H 1515 795 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR069
+L GND #PWR072
 U 1 1 553E3A49
 P 1510 895
-F 0 "#PWR069" H 1510 645 60  0001 C CNN
+F 0 "#PWR072" H 1510 645 60  0001 C CNN
 F 1 "GND" V 1510 670 60  0000 C CNN
 F 2 "" H 1510 895 60  0000 C CNN
 F 3 "" H 1510 895 60  0000 C CNN
@@ -114,10 +114,10 @@ Wire Wire Line
 Wire Wire Line
 	1385 995  1515 995 
 $Comp
-L +5V #PWR070
+L +5V #PWR073
 U 1 1 553E7056
 P 1510 1855
-F 0 "#PWR070" H 1510 1705 60  0001 C CNN
+F 0 "#PWR073" H 1510 1705 60  0001 C CNN
 F 1 "+5V" V 1510 2075 60  0000 C CNN
 F 2 "" H 1510 1855 60  0000 C CNN
 F 3 "" H 1510 1855 60  0000 C CNN
@@ -125,10 +125,10 @@ F 3 "" H 1510 1855 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR071
+L GND #PWR074
 U 1 1 553E705C
 P 1505 1955
-F 0 "#PWR071" H 1505 1705 60  0001 C CNN
+F 0 "#PWR074" H 1505 1705 60  0001 C CNN
 F 1 "GND" V 1505 1730 60  0000 C CNN
 F 2 "" H 1505 1955 60  0000 C CNN
 F 3 "" H 1505 1955 60  0000 C CNN
@@ -156,10 +156,10 @@ Wire Wire Line
 Wire Wire Line
 	1380 2055 1510 2055
 $Comp
-L +5V #PWR072
+L +5V #PWR075
 U 1 1 553E917A
 P 1505 2265
-F 0 "#PWR072" H 1505 2115 60  0001 C CNN
+F 0 "#PWR075" H 1505 2115 60  0001 C CNN
 F 1 "+5V" V 1505 2485 60  0000 C CNN
 F 2 "" H 1505 2265 60  0000 C CNN
 F 3 "" H 1505 2265 60  0000 C CNN
@@ -167,10 +167,10 @@ F 3 "" H 1505 2265 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR073
+L GND #PWR076
 U 1 1 553E9180
 P 1500 2365
-F 0 "#PWR073" H 1500 2115 60  0001 C CNN
+F 0 "#PWR076" H 1500 2115 60  0001 C CNN
 F 1 "GND" V 1500 2140 60  0000 C CNN
 F 2 "" H 1500 2365 60  0000 C CNN
 F 3 "" H 1500 2365 60  0000 C CNN
@@ -198,10 +198,10 @@ Wire Wire Line
 Wire Wire Line
 	1375 2465 1505 2465
 $Comp
-L +5V #PWR074
+L +5V #PWR077
 U 1 1 553EA88B
 P 1500 2645
-F 0 "#PWR074" H 1500 2495 60  0001 C CNN
+F 0 "#PWR077" H 1500 2495 60  0001 C CNN
 F 1 "+5V" V 1500 2865 60  0000 C CNN
 F 2 "" H 1500 2645 60  0000 C CNN
 F 3 "" H 1500 2645 60  0000 C CNN
@@ -209,10 +209,10 @@ F 3 "" H 1500 2645 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR075
+L GND #PWR078
 U 1 1 553EA891
 P 1495 2745
-F 0 "#PWR075" H 1495 2495 60  0001 C CNN
+F 0 "#PWR078" H 1495 2495 60  0001 C CNN
 F 1 "GND" V 1495 2520 60  0000 C CNN
 F 2 "" H 1495 2745 60  0000 C CNN
 F 3 "" H 1495 2745 60  0000 C CNN
@@ -260,10 +260,10 @@ Wire Wire Line
 Wire Wire Line
 	1370 3350 1495 3350
 $Comp
-L GND #PWR076
+L GND #PWR079
 U 1 1 553ECD4C
 P 1495 3050
-F 0 "#PWR076" H 1495 2800 60  0001 C CNN
+F 0 "#PWR079" H 1495 2800 60  0001 C CNN
 F 1 "GND" V 1495 2825 60  0000 C CNN
 F 2 "" H 1495 3050 60  0000 C CNN
 F 3 "" H 1495 3050 60  0000 C CNN
@@ -290,10 +290,10 @@ F 4 "Value" H 1010 3770 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR077
+L +5V #PWR080
 U 1 1 553F049F
 P 1540 3570
-F 0 "#PWR077" H 1540 3420 60  0001 C CNN
+F 0 "#PWR080" H 1540 3420 60  0001 C CNN
 F 1 "+5V" V 1540 3790 60  0000 C CNN
 F 2 "" H 1540 3570 60  0000 C CNN
 F 3 "" H 1540 3570 60  0000 C CNN
@@ -301,10 +301,10 @@ F 3 "" H 1540 3570 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR078
+L GND #PWR081
 U 1 1 553F04A5
 P 1535 3670
-F 0 "#PWR078" H 1535 3420 60  0001 C CNN
+F 0 "#PWR081" H 1535 3420 60  0001 C CNN
 F 1 "GND" V 1535 3445 60  0000 C CNN
 F 2 "" H 1535 3670 60  0000 C CNN
 F 3 "" H 1535 3670 60  0000 C CNN
@@ -352,10 +352,10 @@ F 4 "Value" H 1590 4440 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR079
+L +5V #PWR082
 U 1 1 553F2197
 P 1485 4240
-F 0 "#PWR079" H 1485 4090 60  0001 C CNN
+F 0 "#PWR082" H 1485 4090 60  0001 C CNN
 F 1 "+5V" V 1485 4460 60  0000 C CNN
 F 2 "" H 1485 4240 60  0000 C CNN
 F 3 "" H 1485 4240 60  0000 C CNN
@@ -363,10 +363,10 @@ F 3 "" H 1485 4240 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR080
+L GND #PWR083
 U 1 1 553F219D
 P 1480 4340
-F 0 "#PWR080" H 1480 4090 60  0001 C CNN
+F 0 "#PWR083" H 1480 4090 60  0001 C CNN
 F 1 "GND" V 1480 4115 60  0000 C CNN
 F 2 "" H 1480 4340 60  0000 C CNN
 F 3 "" H 1480 4340 60  0000 C CNN
@@ -482,10 +482,10 @@ F 4 "Value" H 5585 1220 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR081
+L +3.3V #PWR084
 U 1 1 553FC409
 P 5895 1705
-F 0 "#PWR081" H 5895 1665 30  0001 C CNN
+F 0 "#PWR084" H 5895 1665 30  0001 C CNN
 F 1 "+3.3V" H 5895 1815 30  0000 C CNN
 F 2 "" H 5895 1705 60  0000 C CNN
 F 3 "" H 5895 1705 60  0000 C CNN
@@ -555,10 +555,10 @@ Wire Wire Line
 	5035 1575 5145 1575
 Connection ~ 5145 1575
 $Comp
-L +5V #PWR082
+L +5V #PWR085
 U 1 1 553FE1B9
 P 5145 1710
-F 0 "#PWR082" H 5145 1560 60  0001 C CNN
+F 0 "#PWR085" H 5145 1560 60  0001 C CNN
 F 1 "+5V" H 5145 1870 60  0000 C CNN
 F 2 "" H 5145 1710 60  0000 C CNN
 F 3 "" H 5145 1710 60  0000 C CNN
@@ -603,10 +603,10 @@ Wire Wire Line
 	4245 1595 4355 1595
 Connection ~ 4355 1595
 $Comp
-L GND #PWR083
+L GND #PWR086
 U 1 1 553FFF8E
 P 4355 1730
-F 0 "#PWR083" H 4355 1480 60  0001 C CNN
+F 0 "#PWR086" H 4355 1480 60  0001 C CNN
 F 1 "GND" H 4355 1565 60  0000 C CNN
 F 2 "" H 4355 1730 60  0000 C CNN
 F 3 "" H 4355 1730 60  0000 C CNN
@@ -653,10 +653,10 @@ Wire Wire Line
 	7275 1545 7385 1545
 Connection ~ 7385 1545
 $Comp
-L GND #PWR084
+L GND #PWR087
 U 1 1 55401F1D
 P 7385 1680
-F 0 "#PWR084" H 7385 1430 60  0001 C CNN
+F 0 "#PWR087" H 7385 1430 60  0001 C CNN
 F 1 "GND" H 7385 1515 60  0000 C CNN
 F 2 "" H 7385 1680 60  0000 C CNN
 F 3 "" H 7385 1680 60  0000 C CNN
@@ -675,10 +675,10 @@ F 3 "" H 8100 1225 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR085
+L GND #PWR088
 U 1 1 55403610
 P 8425 875
-F 0 "#PWR085" H 8425 625 60  0001 C CNN
+F 0 "#PWR088" H 8425 625 60  0001 C CNN
 F 1 "GND" V 8425 650 60  0000 C CNN
 F 2 "" H 8425 875 60  0000 C CNN
 F 3 "" H 8425 875 60  0000 C CNN
@@ -736,10 +736,10 @@ LedPin-5v
 Wire Wire Line
 	8510 2215 8675 2215
 $Comp
-L +24V #PWR086
+L +24V #PWR089
 U 1 1 5540858D
 P 7835 2500
-F 0 "#PWR086" H 7835 2350 60  0001 C CNN
+F 0 "#PWR089" H 7835 2350 60  0001 C CNN
 F 1 "+24V" V 7835 2750 60  0000 C CNN
 F 2 "" H 7835 2500 60  0000 C CNN
 F 3 "" H 7835 2500 60  0000 C CNN
@@ -783,10 +783,10 @@ LedPin-3V
 Wire Wire Line
 	8510 2730 8675 2730
 $Comp
-L +3.3V #PWR087
+L +3.3V #PWR090
 U 1 1 55409ED6
 P 7840 2730
-F 0 "#PWR087" H 7840 2690 30  0001 C CNN
+F 0 "#PWR090" H 7840 2690 30  0001 C CNN
 F 1 "+3.3V" V 7840 2910 30  0000 C CNN
 F 2 "" H 7840 2730 60  0000 C CNN
 F 3 "" H 7840 2730 60  0000 C CNN
@@ -797,4 +797,46 @@ Text Notes 4135 2530 0    39   ~ 0
 LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
 Text Notes 4110 4200 0    39   ~ 0
 LED Anzeigen - Hardware:\n\nLed 3V grün -   Betriebsanzeige Versorgungsspannung\nLED 24V grün - Betriebsanzeige Versorgungsspannung R2 für 12 V anpassen\nLED 5V grün -   Betriebsanzeige Versorgungsspannung\nLED Station - gelb - Statusanzeige ob Mover in Ladestation\n\n----------------------------------------------------------\n\nLED Anzeigen - Software:\n\nDual LED z.B:\nDual LED grün. Dauerlicht - Mover innerhalb Perimeter\nDual LED grün+rot = Orange - Dauerlicht Mover außerhalb Perimeter\nDual LED grün+rot = Orange - Blinkt Mover findet  Perimeter nicht oder sucht danach\nDual LED rot =  Blinkt Fehler kurzseitig Überlast Antriebmotor Treibe oder Mähmotor. \nDual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken \nvon Button zurückgesetzt werden\n----------------------------------------------------------\n\nLED Status - grün Dauerlicht - warte auf Eingabe\n\nLED Status - grün blinken 1 bis 5 mal hintereinander\nmit länger Pause dazwischen für Anzeige in welchen\nBetriebsmodi sich der Mover befindet
+$Comp
+L +5V #PWR091
+U 1 1 55571675
+P 1490 5020
+F 0 "#PWR091" H 1490 4870 60  0001 C CNN
+F 1 "+5V" V 1490 5240 60  0000 C CNN
+F 2 "" H 1490 5020 60  0000 C CNN
+F 3 "" H 1490 5020 60  0000 C CNN
+	1    1490 5020
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR092
+U 1 1 5557167B
+P 1485 5120
+F 0 "#PWR092" H 1485 4870 60  0001 C CNN
+F 1 "GND" V 1485 4895 60  0000 C CNN
+F 2 "" H 1485 5120 60  0000 C CNN
+F 3 "" H 1485 5120 60  0000 C CNN
+	1    1485 5120
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_3 P48
+U 1 1 55571682
+P 1010 5120
+F 0 "P48" V 960 5120 50  0000 C CNN
+F 1 "Reset" V 1060 5120 40  0000 C CNN
+F 2 "ACS712:Pin_Header_Straight_1x03" H 1010 5120 60  0001 C CNN
+F 3 "" H 1010 5120 60  0000 C CNN
+F 4 "Value" H 1010 5120 60  0001 C CNN "Bestellnummer"
+	1    1010 5120
+	-1   0    0    -1  
+$EndComp
+Text GLabel 1490 5220 2    39   Output ~ 0
+Reset
+Wire Wire Line
+	1360 5020 1490 5020
+Wire Wire Line
+	1360 5120 1485 5120
+Wire Wire Line
+	1360 5220 1490 5220
 $EndSCHEMATC

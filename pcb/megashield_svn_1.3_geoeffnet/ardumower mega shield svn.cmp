@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 14.05.2015 15:05:13
+Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 19.05.2015 12:19:01
 
 BeginCmp
 TimeStamp = /553D2376/553D2728;
@@ -271,6 +271,153 @@ TimeStamp = /553A6702/553A7C73;
 Reference = C9;
 ValeurCmp = 22uF;
 IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5558B8D1;
+Reference = C10;
+ValeurCmp = 10uF 16V;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5558C050;
+Reference = C11;
+ValeurCmp = 10uF 16V;
+IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558C608;
+Reference = CC1;
+ValeurCmp = 100 nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5558A920;
+Reference = CC2;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5558AB3B;
+Reference = CC3;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /554BCB67/5558A33B;
+Reference = CC4;
+ValeurCmp = 100 nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /554BCB67/5558A3B2;
+Reference = CC5;
+ValeurCmp = 100 nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /554C1C35/5558A079;
+Reference = CC6;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /554C1C35/5558A184;
+Reference = CC7;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558E6C2;
+Reference = CC8;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558E705;
+Reference = CC9;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558DF5E;
+Reference = CC10;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558E80E;
+Reference = CC11;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558E824;
+Reference = CC12;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558E7F8;
+Reference = CC13;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558EAA2;
+Reference = CC14;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558EAB8;
+Reference = CC15;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558EA8C;
+Reference = CC16;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558EAE4;
+Reference = CC17;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558EAFA;
+Reference = CC18;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5558EACE;
+Reference = CC19;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
@@ -1093,6 +1240,20 @@ IdModule  = ACS712:Anschlussklemme_RM5,08-RM7,62;
 EndCmp
 
 BeginCmp
+TimeStamp = /553DFC0F/55571682;
+Reference = P48;
+ValeurCmp = Reset;
+IdModule  = ACS712:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /553B6850/5558F7C0;
+Reference = P49;
+ValeurCmp = Res.AD10;
+IdModule  = ACS712:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
 TimeStamp = /553D8AD9/5543A988/5543B2C4;
 Reference = PRFA1;
 ValeurCmp = PFRA 500;
@@ -1104,6 +1265,27 @@ TimeStamp = /553D8AD9/554D9DA2/554BE927;
 Reference = PRFA2;
 ValeurCmp = PFRA 500;
 IdModule  = ACS712:PRFA_500;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/555B2389;
+Reference = PRFA3;
+ValeurCmp = PFRA 185;
+IdModule  = ACS712:PRFA_500_stehend;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/555B2AC8;
+Reference = PRFA4;
+ValeurCmp = PFRA 185;
+IdModule  = ACS712:PRFA_500_stehend;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/555B1C87;
+Reference = PRFA5;
+ValeurCmp = PFRA 185;
+IdModule  = ACS712:PRFA_500_stehend;
 EndCmp
 
 BeginCmp
@@ -1229,7 +1411,7 @@ BeginCmp
 TimeStamp = /554BCB67/554BCD3E;
 Reference = R13;
 ValeurCmp = 5,10K 0,1%;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp

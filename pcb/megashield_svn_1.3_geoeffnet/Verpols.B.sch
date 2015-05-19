@@ -6,7 +6,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 21 24
+Sheet 21 25
 Title "Ardumower Shield - Verpolungsschutz Batterie"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -50,10 +50,10 @@ Verpols.B.aus
 Text HLabel 4385 1835 0    60   Input ~ 0
 Verpol.s.B.in
 $Comp
-L GND #PWR0161
+L GND #PWR0170
 U 1 1 553AAF15
 P 5095 3155
-F 0 "#PWR0161" H 5095 2905 60  0001 C CNN
+F 0 "#PWR0170" H 5095 2905 60  0001 C CNN
 F 1 "GND" H 5095 3005 60  0000 C CNN
 F 2 "" H 5095 3155 60  0000 C CNN
 F 3 "" H 5095 3155 60  0000 C CNN
