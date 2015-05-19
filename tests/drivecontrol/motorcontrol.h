@@ -65,7 +65,7 @@ class MotorControl
     int motorSpeedMaxPwm  ;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)     
     PID motorLeftPID;              // motor left wheel PID controller
     PID motorRightPID;              // motor right wheel PID controll    
-    float motorLeftPWMCurr ; // current speed
+    float motorLeftPWMCurr ; // current motor pwm
     float motorRightPWMCurr ;      
     
     // motor current
@@ -99,7 +99,8 @@ class MotorControl
     float distanceToTargetCm; // distance to target (cm)
     float angleToTargetRad; // angle to target (rad)
         
-    bool enableSpeedControl;
+    bool enableSpeedControl; // enable speed controller?
+    bool enableStallDetection; // enable stall detection?
     MotorControl();
     void init();
     void run();    
@@ -112,6 +113,7 @@ class MotorControl
     bool hasStopped();    
     void resetStalled();
     void print();
+    void printCSV(bool includeHeader);
 private:    
     unsigned long lastMotorRunTime;
     unsigned long lastMotorControlTime;

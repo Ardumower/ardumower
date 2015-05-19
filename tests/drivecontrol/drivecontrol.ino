@@ -33,6 +33,7 @@ void setup(){
   digitalWrite(4, HIGH);  
   ADCMan.init();  
   MotorCtrl.init();
+  //MotorCtrl.enableStallDetection = false;
   
   LED.playSequence(LED_RED_BLINK);
 }
@@ -40,10 +41,9 @@ void setup(){
 void loop(){  
   if (millis() >= nextInfoTime){
     nextInfoTime = millis() + 500;
-    ModelRC.print();
-    MotorCtrl.print();    
-    
-    Serial.println();
+    //ModelRC.print();
+    //MotorCtrl.print();        
+    //Serial.println();
   } 
 
   if (Serial.available() > 0){

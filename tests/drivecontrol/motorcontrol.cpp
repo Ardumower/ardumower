@@ -104,8 +104,9 @@ MotorControl::MotorControl(){
 
 void MotorControl::init(){
   Serial.println("MotorControl::init");
+  printCSV(true);
   motion = MOTION_STOP;
-  enableSpeedControl = true;
+  enableSpeedControl = enableStallDetection = true;
   motorLeftPWMCurr = motorRightPWMCurr = 0;
   lastOdometryTime = lastMotorControlTime = lastMotorCurrentTime = lastMotorRunTime = 0;  
   odometryLeftTicksZeroCounter = odometryRightTicksZeroCounter = 0;
@@ -420,38 +421,88 @@ void MotorControl::readCurrent(){
     
     // compute efficiency (output rotation/input power)        
     //smooth = 0.95;
-    smooth = 0.0;
+    smooth = 0.9;
     motorLeftEfficiency  = motorLeftEfficiency  * smooth + (abs(motorLeftRpmCurr) / max(0.01, abs(motorLeftSensePower))   * 100.0) * (1.0-smooth);
-    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSensePower)) * 100.0) * (1.0-smooth);            
-
-//    if (motorRightSenseCurrent > 400) motorRightStalled = true;    
-//    if (motorLeftSenseCurrent > 400) motorLeftStalled = true;        
-
-//      if (motorRightSenseGradient > 600) motorRightStalled = true;    
-//      if (motorLeftSenseGradient > 600) motorLeftStalled = true;          
-
+    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSensePower)) * 100.0) * (1.0-smooth);
+    
+    // tracktion control
+    // idea:     sigma_b = (Vf - Vu) / Vf    (break tracktion)
+    //           sigma_a = (Vu - Vf) / Vu    (acceleration tracktion)
+    // Vf: vehicle velocity
+    // Vu: tire velocity
+      
     //print();         
     //Serial.println();
-    
-    if (!motorLeftStalled){
-       if ( (abs(motorLeftSensePower) > 1)   && (motorLeftEfficiency < 100)  ) {
+    printCSV(false);             
+                       
+    if (enableStallDetection) {    
+      if (!motorLeftStalled){
+       if ( (abs(motorLeftPWMCurr) > 0) && (motorLeftSensePower > 1) && (motorLeftEfficiency < 200)  ) {
          print();         
          Serial.print("  LEFT STALL");         
          Serial.println();                  
          motorLeftStalled = true;         
          stopImmediately();                  
        }
-    }
-    if (!motorRightStalled){
-       if ( (abs(motorRightSensePower) > 1) && (motorRightEfficiency < 100) ) {
+      }
+      if (!motorRightStalled){
+       if ( (abs(motorRightPWMCurr) > 0) && (motorRightSensePower > 1) && (motorRightEfficiency < 200) ) {
          print();         
          Serial.print("  RIGHT STALL");         
          Serial.println();         
          motorRightStalled = true;     
          stopImmediately();                         
        }
+      }
     }
 }
+
+void MotorControl::printCSV(bool includeHeader){
+    if (includeHeader) Serial.println("millis,tickL,tickR,th,dist,setL,setR,curL,curR,errL,errR,pwmL,pwmR,maL,maR,gmaL,gmaR,pL,pR,effL,effR");    
+    /*Serial.print(millis());
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryLeftTicks);    
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryRightTicks);    
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
+    Serial.print(",");        
+    Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSpeedRpmSet);        
+    Serial.print(",");    
+    Serial.print(MotorCtrl.motorLeftRpmCurr, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightRpmCurr, 1);        
+    Serial.print(",");    
+    Serial.print(MotorCtrl.motorLeftPID.eold, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightPID.eold, 1);            
+    Serial.print(",");    
+    Serial.print(MotorCtrl.motorLeftPWMCurr, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightPWMCurr, 0);        
+    Serial.print(",");    
+    Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
+    Serial.print(",");        
+    Serial.print(MotorCtrl.motorLeftSenseGradient, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSenseGradient, 0);      
+    Serial.print(",");    
+    Serial.print(MotorCtrl.motorLeftSensePower, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSensePower, 1);      
+    Serial.print(",");    */
+    Serial.print(MotorCtrl.motorLeftEfficiency, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightEfficiency, 0);        
+    Serial.println();
+}
+
 
 void MotorControl::print(){
     Serial.print(" ticks:");    
