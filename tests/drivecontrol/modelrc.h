@@ -17,6 +17,7 @@ class ModelReceiver
     int remoteSpeed ;  // range -100..100      
     ModelReceiver();    
     void run();
+    void print();
 };
 
 extern ModelReceiver ModelRC;

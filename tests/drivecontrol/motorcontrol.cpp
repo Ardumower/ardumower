@@ -149,6 +149,7 @@ void MotorControl::init(){
 
 void MotorControl::resetStalled(){
   motorLeftStalled = motorRightStalled = false;
+  Serial.println("STALL RESET");           
 }
 
 // MC33926 motor driver
@@ -393,9 +394,10 @@ void MotorControl::readCurrent(){
     // compute gradient
     motorLeftSenseGradient  =  (((double)motorLeftSenseADC)  - ((double)lastMotorLeftSenseADC))  / TaS;
     motorRightSenseGradient =  (((double)motorRightSenseADC) - ((double)lastMotorRightSenseADC)) / TaS;        
-            
+                
     // compute motor current (mA)
-    double smooth = 0.9;    
+    //double smooth = 0.0;    
+    double smooth = 0.5;    
     motorRightSenseCurrent = motorRightSenseCurrent * smooth + ((double)motorRightSenseADC) * motorSenseRightScale * (1.0-smooth);    
     motorLeftSenseCurrent  = motorLeftSenseCurrent  * smooth + ((double)motorLeftSenseADC)  * motorSenseLeftScale  * (1.0-smooth);
                 
@@ -403,21 +405,24 @@ void MotorControl::readCurrent(){
     // NOTE: at obstacles, our motors typically do not stall - they are too powerful, and just reduce speed (rotate through the lawn)
     // http://wiki.ardumower.de/images/9/96/Wheel_motor_diagram.png
     //
+    float lastMotorLeftSensePower  = motorLeftSensePower;
+    float lastMotorRightSensePower = motorRightSensePower;
+        
     // compute motor output power (W) by calculating battery voltage, pwm duty cycle and motor current
     // P_output = U_Battery * pwmDuty * I_Motor     
-    motorRightSensePower = motorRightSenseCurrent * motorVoltageDC * ((double)abs(motorRightPWMCurr)/255.0)  /1000;   // conversion to power in Watt
-    motorLeftSensePower  = motorLeftSenseCurrent  * motorVoltageDC * ((double)abs(motorLeftPWMCurr) /255.0)  /1000;
-    
+    smooth = 0.9;        
+    motorRightSensePower = motorRightSensePower * smooth + (1.0-smooth) * (motorRightSenseCurrent * motorVoltageDC * ((double)abs(motorRightPWMCurr)/255.0)  /1000);   
+    motorLeftSensePower  = motorLeftSensePower  * smooth + (1.0-smooth) * (motorLeftSenseCurrent  * motorVoltageDC * ((double)abs(motorLeftPWMCurr) /255.0)  /1000);
+        
     // Ist es nicht aussagekraeftiger ueber die Beschleunigung?
     // Mit der PWM und der Odometrie gibst du eine soll Drehzahl = Soll Geschwindigkeit vor. 
     // Wird die in einem bestimmten Rahmen nicht erreicht und dein Strom geht hoch hast du ein Hindernis.    
     
-    // compute effiency (output rotation/input power)        
-    smooth = 0.9;
+    // compute efficiency (output rotation/input power)        
+    //smooth = 0.95;
+    smooth = 0.0;
     motorLeftEfficiency  = motorLeftEfficiency  * smooth + (abs(motorLeftRpmCurr) / max(0.01, abs(motorLeftSensePower))   * 100.0) * (1.0-smooth);
-    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSensePower)) * 100.0) * (1.0-smooth);    
-    motorLeftEfficiency = max(179, motorLeftEfficiency);
-    motorRightEfficiency = max(179, motorRightEfficiency);
+    motorRightEfficiency = motorRightEfficiency * smooth + (abs(motorRightRpmCurr) / max(0.01, abs(motorRightSensePower)) * 100.0) * (1.0-smooth);            
 
 //    if (motorRightSenseCurrent > 400) motorRightStalled = true;    
 //    if (motorLeftSenseCurrent > 400) motorLeftStalled = true;        
@@ -425,16 +430,74 @@ void MotorControl::readCurrent(){
 //      if (motorRightSenseGradient > 600) motorRightStalled = true;    
 //      if (motorLeftSenseGradient > 600) motorLeftStalled = true;          
 
-     if ( (abs(motorLeftSensePower) > 1)   && (motorLeftEfficiency < 180)  ) {
-       motorLeftStalled = true;
-       stopImmediately();
-     }
-     if ( (abs(motorRightSensePower) > 1) && (motorRightEfficiency < 180) ) {
-       motorRightStalled = true;     
-       stopImmediately();       
-     }
+    //print();         
+    //Serial.println();
+    
+    if (!motorLeftStalled){
+       if ( (abs(motorLeftSensePower) > 1)   && (motorLeftEfficiency < 100)  ) {
+         print();         
+         Serial.print("  LEFT STALL");         
+         Serial.println();                  
+         motorLeftStalled = true;         
+         stopImmediately();                  
+       }
+    }
+    if (!motorRightStalled){
+       if ( (abs(motorRightSensePower) > 1) && (motorRightEfficiency < 100) ) {
+         print();         
+         Serial.print("  RIGHT STALL");         
+         Serial.println();         
+         motorRightStalled = true;     
+         stopImmediately();                         
+       }
+    }
 }
 
-
+void MotorControl::print(){
+    Serial.print(" ticks:");    
+    Serial.print(MotorCtrl.odometryLeftTicks);    
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryRightTicks);    
+    Serial.print("  th,dist:");    
+    Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
+    Serial.print(",");    
+    Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
+    Serial.print(" ## ");    
+    Serial.print(MotorCtrl.angleToTargetRad/PI*180.0, 1);    
+    Serial.print(",");        
+    Serial.print(MotorCtrl.distanceToTargetCm, 1);        
+    Serial.print("  set:");    
+    Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSpeedRpmSet);        
+    Serial.print("  cur:");    
+    Serial.print(MotorCtrl.motorLeftRpmCurr, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightRpmCurr, 1);        
+    Serial.print("  err:");    
+    Serial.print(MotorCtrl.motorLeftPID.eold, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightPID.eold, 1);            
+    Serial.print("  pwm:");    
+    Serial.print(MotorCtrl.motorLeftPWMCurr, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightPWMCurr, 0);        
+    Serial.print("  mA:");    
+    Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
+    Serial.print(" ## ");        
+    Serial.print(MotorCtrl.motorLeftSenseGradient, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSenseGradient, 0);      
+    Serial.print("  P:");    
+    Serial.print(MotorCtrl.motorLeftSensePower, 1);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightSensePower, 1);      
+    Serial.print("  eff:");    
+    Serial.print(MotorCtrl.motorLeftEfficiency, 0);
+    Serial.print(",");
+    Serial.print(MotorCtrl.motorRightEfficiency, 0);        
+}
 
 

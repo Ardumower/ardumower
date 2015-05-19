@@ -40,50 +40,8 @@ void setup(){
 void loop(){  
   if (millis() >= nextInfoTime){
     nextInfoTime = millis() + 500;
-    Serial.print("RC:");
-    Serial.print(ModelRC.remoteSpeed);
-    Serial.print(",");
-    Serial.print(ModelRC.remoteSteer);
-    Serial.print(" ticks:");    
-    Serial.print(MotorCtrl.odometryLeftTicks);    
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryRightTicks);    
-    Serial.print("  th,dist:");    
-    Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
-    Serial.print(" ## ");    
-    Serial.print(MotorCtrl.angleToTargetRad/PI*180.0, 1);    
-    Serial.print(",");        
-    Serial.print(MotorCtrl.distanceToTargetCm, 1);        
-    Serial.print("  set:");    
-    Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSpeedRpmSet);        
-    Serial.print("  cur:");    
-    Serial.print(MotorCtrl.motorLeftRpmCurr, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightRpmCurr, 1);        
-    Serial.print("  err:");    
-    Serial.print(MotorCtrl.motorLeftPID.eold, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightPID.eold, 1);            
-    Serial.print("  pwm:");    
-    Serial.print(MotorCtrl.motorLeftPWMCurr, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightPWMCurr, 0);        
-    Serial.print("  mA:");    
-    Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
-    Serial.print("  P:");    
-    Serial.print(MotorCtrl.motorLeftSensePower, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSensePower, 0);      
-    Serial.print("  eff:");    
-    Serial.print(MotorCtrl.motorLeftEfficiency, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightEfficiency, 0);      
+    ModelRC.print();
+    MotorCtrl.print();    
     
     Serial.println();
   } 
@@ -95,17 +53,24 @@ void loop(){
       useModelRC = true;
       Serial.println("useModelRC");
     }            
-    if (ch == 'p') { 
+    if (ch == 'o') { 
       MotorCtrl.enableSpeedControl = false;
       useModelRC = false;
       Serial.println("pwm=127,127");      
       MotorCtrl.setSpeedPWM(127, 127); 
+    }        
+    if (ch == 'p') { 
+      MotorCtrl.enableSpeedControl = false;
+      useModelRC = false;
+      Serial.println("pwm=255,255");      
+      MotorCtrl.setSpeedPWM(255, 255); 
     }    
     if (ch == '1') { 
       MotorCtrl.enableSpeedControl = true;      
       useModelRC = false;
       Serial.println("rpm=0,0");
       MotorCtrl.setSpeedRpm(0, 0); 
+      MotorCtrl.resetStalled();          
     }        
     if (ch == '2') {
       MotorCtrl.enableSpeedControl = true;      
@@ -155,27 +120,23 @@ void loop(){
     if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT_SHORT);    
   }
 
-  if (useModelRC) ModelRC.run();
   ADCMan.run();
   MotorCtrl.run();    
   Buzzer.run();  
   LED.run();
   
-  if (MotorCtrl.motorLeftStalled){
-    Serial.print("LEFT STALL ");    
-    //Serial.println(MotorCtrl.motorLeftSenseGradient);
-    Serial.println(MotorCtrl.motorLeftEfficiency);
-    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);           
-  }
-  if (MotorCtrl.motorRightStalled){
-    Serial.print("RIGHT STALL ");
-    //Serial.println(MotorCtrl.motorRightSenseGradient);    
-    Serial.println(MotorCtrl.motorRightEfficiency);            
+  if ((MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled)){
     if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);            
+    if (useModelRC) {
+      if ( (abs(ModelRC.remoteSpeed) < 5) && (abs(ModelRC.remoteSteer) < 5) ) {
+        MotorCtrl.resetStalled();    
+      }
+    }          
   }
-  if ( (abs(ModelRC.remoteSpeed) < 5) && (abs(ModelRC.remoteSteer) < 5) ) {
-    MotorCtrl.resetStalled();    
-  }
+  
+  if (useModelRC) {
+    ModelRC.run();
+  }  
   
   delay(50);
   

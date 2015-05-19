@@ -54,5 +54,12 @@ void ModelReceiver::run(){
   MotorCtrl.setSpeedRpm(motorLeftSpeedRpmSet, motorRightSpeedRpmSet);  
 }
 
+void ModelReceiver::print(){
+    Serial.print("RC:");
+    Serial.print(ModelRC.remoteSpeed);
+    Serial.print(",");
+    Serial.print(ModelRC.remoteSteer);
+}
+
 
   

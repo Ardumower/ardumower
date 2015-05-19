@@ -109,8 +109,9 @@ class MotorControl
     void travelLineSpeedRpm(int speedRpm);    
     void travelLineDistance(int distanceCm, int speedRpm);
     void rotate(float angleRad, int speedRpm);
-    bool hasStopped();
+    bool hasStopped();    
     void resetStalled();
+    void print();
 private:    
     unsigned long lastMotorRunTime;
     unsigned long lastMotorControlTime;
