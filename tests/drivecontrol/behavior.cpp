@@ -18,7 +18,7 @@ void DriveForwardBehavior::action(){
   // forward
   MotorCtrl.setSpeedRpm(+10, +10); 
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
-    Robot.loop();   
+    Robot.run();   
   }
 }
 
@@ -42,7 +42,7 @@ void HitObstacleBehavior::action(){
   // reverse
   MotorCtrl.travelLineDistance(-30, 10);             
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ) {
-    Robot.loop();   
+    Robot.run();   
   }
   
   // rotate
@@ -52,7 +52,7 @@ void HitObstacleBehavior::action(){
     MotorCtrl.rotate(+PI/2, 10);                   
   } 
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
-    Robot.loop();   
+    Robot.run();   
   }
 }
 

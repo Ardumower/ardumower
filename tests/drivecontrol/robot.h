@@ -17,12 +17,14 @@
 class RobotControl
 {
   public:
+    unsigned long loopCounter;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
     Arbitrator arbitrator;  
     RobotControl();    
-    virtual void loop();
+    virtual void run();
     virtual void setup();
+    virtual void loop();
   private:
     
 };

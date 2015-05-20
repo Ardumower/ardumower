@@ -5,8 +5,6 @@
 #include "behavior.h"
 
 
-#define MAX_BEHAVIORS 20
-
 
 class Arbitrator
 {

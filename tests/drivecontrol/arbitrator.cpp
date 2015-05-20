@@ -1,5 +1,6 @@
 #include "arbitrator.h"
 
+#define MAX_BEHAVIORS 30
 
 // stored in increasing priority order
 Behavior *behaviors[MAX_BEHAVIORS];    
@@ -8,8 +9,7 @@ Behavior *behaviors[MAX_BEHAVIORS];
 Arbitrator::Arbitrator(){
   behaviorCount = 0;
   activeBehavior = nextBehavior = NULL;
-  activeBehaviorIdx = 0;
-  nextBehaviorIdx = -1;
+  activeBehaviorIdx = nextBehaviorIdx = -1;
 }  
  
 void Arbitrator::addBehavior(Behavior *behavior){
@@ -18,12 +18,15 @@ void Arbitrator::addBehavior(Behavior *behavior){
     return;
   }
   Serial.print("Arbitrator::addBehavior ");  
+  Serial.print(behaviorCount);
+  Serial.print(": ");  
   Serial.println(behavior->name);
   behaviors[behaviorCount] = behavior;
   behaviorCount++;
 }  
    
 void Arbitrator::run(){
+  Serial.println("Arbitrator::run");
   if (activeBehavior){
     activeBehavior->action();  
     Serial.print("COMPLETED: ");
@@ -31,7 +34,7 @@ void Arbitrator::run(){
   }
   activeBehavior = NULL;
   activeBehaviorIdx = -1;
-  if (nextBehavior == NULL) {
+  while (nextBehavior == NULL) {
     // no next behavior (no supression) => find out next behavior    
     Serial.println("NO SUPPRESSION");
     monitor();
@@ -39,6 +42,7 @@ void Arbitrator::run(){
   activeBehaviorIdx=nextBehaviorIdx;    
   activeBehavior = nextBehavior;
   nextBehavior = NULL;    
+  nextBehaviorIdx = -1;
   Serial.print("CHANGED activeBehavior Idx: ");
   Serial.print(activeBehaviorIdx);
   Serial.print("  ");
@@ -46,14 +50,22 @@ void Arbitrator::run(){
 }
    
 void Arbitrator::monitor() {
+  //Serial.println("Arbitrator::monitor");
   for (int idx=behaviorCount-1; idx >= 0; idx--) {   
     Behavior *behavior = behaviors[idx];
-    if ((behavior->takeControl()) && (idx >= activeBehaviorIdx)){
-      if (activeBehavior){
+    
+    /*Serial.print("takeControl ");
+    Serial.print(idx);    
+    Serial.print("  ");    
+    Serial.println(behavior->name);    */
+    
+    if ( (idx > activeBehaviorIdx) && (behavior->takeControl()) ){
+      if (activeBehavior != NULL){    
+        Serial.println("Arbitrator::monitor suppressing");
         activeBehavior->suppress(); 
       }
       nextBehavior = behavior;
-      nextBehaviorIdx = idx;      
+      nextBehaviorIdx = idx;            
       break;
     }
   }    
