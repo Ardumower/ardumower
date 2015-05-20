@@ -18,10 +18,16 @@
 #include "led.h"
 #include "motorcontrol.h"
 #include "modelrc.h"
+#include "behavior.h"
+#include "arbitrator.h"
 
 
 boolean useModelRC = true;
 unsigned long nextInfoTime = 0;
+
+DriveForwardBehavior driveForwardBehavior;  
+HitObstacleBehavior  hitObstacleBehavior;
+Arbitrator arbitrator;
 
 
 void setup(){
@@ -36,9 +42,14 @@ void setup(){
   //MotorCtrl.enableStallDetection = false;
   
   LED.playSequence(LED_RED_BLINK);
+
+  
+  arbitrator.addBehavior(&driveForwardBehavior);  
+  arbitrator.addBehavior(&hitObstacleBehavior);  
 }
 
-void loop(){  
+
+void testloop(){
   if (millis() >= nextInfoTime){
     nextInfoTime = millis() + 500;
     //ModelRC.print();
@@ -138,9 +149,26 @@ void loop(){
     ModelRC.run();
   }  
   
+  delay(50);  
+}
+
+  
+
+void loop(){  
+  // testloop();  
+
+  arbitrator.run();    
+  ADCMan.run();
+  MotorCtrl.run();    
+  Buzzer.run();  
+  LED.run();
+  
   delay(50);
   
 }
+
+
+
 
 
 

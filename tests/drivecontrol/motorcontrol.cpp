@@ -433,7 +433,7 @@ void MotorControl::readCurrent(){
       
     //print();         
     //Serial.println();
-    printCSV(false);             
+    //printCSV(false);             
                        
     if (enableStallDetection) {    
       if (!motorLeftStalled){
