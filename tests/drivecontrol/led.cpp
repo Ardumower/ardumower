@@ -1,4 +1,5 @@
 #include "led.h"
+#include "drivers.h"
 
 LEDControl LED;
 
@@ -6,10 +7,14 @@ LEDControl LED;
 LEDControl::LEDControl(){
   nextLEDTime = 0;
   ledSequenceIdx = LED_OFF;
-  onState = 0;  
+  onState = 0;   
+}
+
+void LEDControl::setup(){
+  Console.println("LEDControl::setup");
   pinMode(pinLED, OUTPUT);
   pinMode(pinLEDDuoRed, OUTPUT);
-  pinMode(pinLEDDuoGreen, OUTPUT);  
+  pinMode(pinLEDDuoGreen, OUTPUT); 
 }
 
 void LEDControl::run(){
@@ -23,7 +28,7 @@ void LEDControl::run(){
     case LED_GREEN_ON:
       digitalWrite(pinLEDDuoRed, LOW);
       digitalWrite(pinLEDDuoGreen, HIGH);
-      break;    
+      break;          
     case LED_ORANGE_ON:
       digitalWrite(pinLEDDuoRed, HIGH);
       digitalWrite(pinLEDDuoGreen, HIGH);

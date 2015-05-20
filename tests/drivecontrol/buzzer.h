@@ -31,8 +31,9 @@ class BuzzerControl
   public:
     BuzzerControl();
     // play a 'melody' (non-blocking)
-    void play(int beepCode);
+    void play(int beepCode);    
     bool isPlaying();
+    void setup();
     void run();
   private:
     unsigned long nextBeepTime;

@@ -43,6 +43,7 @@ class LEDControl
     LEDControl();
     void playSequence(int sequenceIdx);
     void run();
+    void setup();
   private:
     unsigned long nextLEDTime;
     int ledSequenceIdx;

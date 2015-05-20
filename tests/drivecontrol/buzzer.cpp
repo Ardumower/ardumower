@@ -1,4 +1,5 @@
 #include "buzzer.h"
+#include "drivers.h"
 
 BuzzerControl Buzzer;
 
@@ -21,6 +22,11 @@ BuzzerControl::BuzzerControl(){
   nextBeepTime = 0;
   beepCodeToneIdx = 6;
   beepCodeIdx = BC_SILENCE; 
+}
+
+void BuzzerControl::setup(){
+  Console.println("BuzzerControl::setup");  
+  pinMode(pinBuzzer, OUTPUT);
 }
 
 // call this in main loop

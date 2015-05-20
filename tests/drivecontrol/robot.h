@@ -7,6 +7,7 @@
 #include "drivers.h"
 #include "adcman.h"
 #include "buzzer.h"
+#include "button.h"
 #include "led.h"
 #include "battery.h"
 #include "motorcontrol.h"
@@ -19,6 +20,8 @@ class RobotControl
 {
   public:
     unsigned long loopCounter;
+    StopBehavior stopBehavior;
+    StandbyBehavior standbyBehavior;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
     ChargerConnectedBehavior  chargerConnectedBehavior;

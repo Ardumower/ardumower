@@ -16,6 +16,22 @@ class Behavior
     virtual void action() {}    
 };
 
+class StandbyBehavior : public Behavior
+{
+  public:        
+    StandbyBehavior();
+    virtual bool takeControl();
+    virtual void action();      
+};
+
+class StopBehavior : public Behavior
+{
+  public:        
+    StopBehavior();
+    virtual bool takeControl();
+    virtual void action();      
+};
+
 
 class DriveForwardBehavior : public Behavior
 {

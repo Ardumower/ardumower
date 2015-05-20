@@ -29,6 +29,13 @@ BatteryControl::BatteryControl(){
 
 void BatteryControl::setup(){
   Console.println("BatteryControl::setup");
+  pinMode(pinBatterySwitch, OUTPUT);
+  pinMode(pinBatteryVoltage, INPUT);        
+  pinMode(pinChargeCurrent, INPUT);          
+  pinMode(pinChargeVoltage, INPUT); 
+  pinMode(pinVoltageMeasurement, INPUT);    
+  pinMode(pinChargeRelay, OUTPUT);  
+  
   ADCMan.setCapture(pinChargeCurrent, 1, true);//Aktivierung des LaddeStrom Pins beim ADC-Managers  
   ADCMan.setCapture(pinBatteryVoltage, 1, false);
   ADCMan.setCapture(pinChargeVoltage, 1, false);  
