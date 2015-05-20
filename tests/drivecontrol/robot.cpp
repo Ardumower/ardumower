@@ -27,6 +27,28 @@ void RobotControl::setup(){
   
   LED.playSequence(LED_RED_BLINK);
 
+  /* program flow:
+     a. aribitrator.run (1) calls specific behavior.run (2)
+     b. specific behavior.run periodically calls Robot.run (3)
+     c. Robot.run processes MotorCtrl, BuzzerCtrl, PfodApp etc. and monitors (4) for behavior suppression (5)
+     d. behavior is finsihed if finished or suppressed
+     e. arbitrator.run is called again for next behavior     
+      
+  
+     aribitrator                  behavior                   Robot
+     --------------------------------------------------------------
+(1) run-->|                           |                         |
+          |----------------(2)--run-->|                         |
+          |                           |--------------(3)--run-->|
+          |                           |                         |
+          |                           |                         |
+          |<--monitor--(4)--------------------------------------|
+          |                           |                         |
+          |-----------(5)--suppress-->|                         |
+          |                           X                         |
+          |                                                     |
+          |                                                     |
+   */
   
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);  
