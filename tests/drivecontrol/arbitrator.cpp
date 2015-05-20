@@ -7,8 +7,9 @@ Behavior *behaviors[MAX_BEHAVIORS];
     
 Arbitrator::Arbitrator(){
   behaviorCount = 0;
-  activeBehavior = 0;
+  activeBehavior = nextBehavior = NULL;
   activeBehaviorIdx = 0;
+  nextBehaviorIdx = -1;
 }  
  
 void Arbitrator::addBehavior(Behavior *behavior){
@@ -22,29 +23,40 @@ void Arbitrator::addBehavior(Behavior *behavior){
   behaviorCount++;
 }  
    
+void Arbitrator::run(){
+  if (activeBehavior){
+    activeBehavior->action();  
+    Serial.print("COMPLETED: ");
+    Serial.println(activeBehavior->name);    
+  }
+  activeBehavior = NULL;
+  activeBehaviorIdx = -1;
+  if (nextBehavior == NULL) {
+    // no next behavior (no supression) => find out next behavior    
+    Serial.println("NO SUPPRESSION");
+    monitor();
+  }
+  activeBehaviorIdx=nextBehaviorIdx;    
+  activeBehavior = nextBehavior;
+  nextBehavior = NULL;    
+  Serial.print("CHANGED activeBehavior Idx: ");
+  Serial.print(activeBehaviorIdx);
+  Serial.print("  ");
+  Serial.println(activeBehavior->name);
+}
    
-void Arbitrator::run() {
+void Arbitrator::monitor() {
   for (int idx=behaviorCount-1; idx >= 0; idx--) {   
     Behavior *behavior = behaviors[idx];
     if ((behavior->takeControl()) && (idx >= activeBehaviorIdx)){
       if (activeBehavior){
-       activeBehavior->suppress(); 
+        activeBehavior->suppress(); 
       }
-      activeBehavior = behavior;
-      activeBehaviorIdx = idx;      
-      Serial.print("CHANGED activeBehavior Idx: ");
-      Serial.print(activeBehaviorIdx);
-      Serial.print("  ");
-      Serial.println(activeBehavior->name);
+      nextBehavior = behavior;
+      nextBehaviorIdx = idx;      
       break;
     }
-  }  
-  bool actionCompleted = activeBehavior->actionCompleted();  
-  if (actionCompleted){
-    Serial.print("COMPLETED: ");
-    Serial.println(activeBehavior->name);    
-    activeBehaviorIdx=-1;
-  }
+  }    
 }
 
 

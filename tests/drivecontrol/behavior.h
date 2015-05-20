@@ -13,7 +13,7 @@ class Behavior
     Behavior() { suppressed = false; }
     virtual void suppress() { suppressed = true; }
     virtual bool takeControl() {}
-    virtual bool actionCompleted() {}    
+    virtual void action() {}    
 };
 
 
@@ -22,7 +22,7 @@ class DriveForwardBehavior : public Behavior
   public:    
     DriveForwardBehavior();
     virtual bool takeControl();    
-    virtual bool actionCompleted();    
+    virtual void action();    
 };
 
 class HitObstacleBehavior : public Behavior
@@ -30,7 +30,7 @@ class HitObstacleBehavior : public Behavior
   public:        
     HitObstacleBehavior();
     virtual bool takeControl();
-    virtual bool actionCompleted();    
+    virtual void action();    
 };
 
 

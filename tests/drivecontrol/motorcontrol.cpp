@@ -313,6 +313,8 @@ void MotorControl::setSpeedPWM(int leftPWM, int rightPWM){
   if ((motorLeftStalled) || (motorRightStalled)){
     if ((leftPWM != 0) || (rightPWM != 0)) return;
   }
+  if (leftPWM == 0) motorLeftSensePower = 0;
+  if (rightPWM == 0) motorRightSensePower = 0;
   motorLeftPWMCurr = leftPWM;
   motorRightPWMCurr = rightPWM;
   if (motorLeftSwapDir) leftPWM *= -1;  
