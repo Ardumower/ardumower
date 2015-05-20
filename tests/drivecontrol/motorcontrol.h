@@ -102,7 +102,7 @@ class MotorControl
     bool enableSpeedControl; // enable speed controller?
     bool enableStallDetection; // enable stall detection?
     MotorControl();
-    void init();
+    void setup();
     void run();    
     void setSpeedRpm(int leftRpm, int rightRpm);    
     void setSpeedPWM(int leftPWM, int rightPWM);    

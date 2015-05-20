@@ -20,16 +20,16 @@ void RobotControl::setup(){
   Serial.begin(19200);
   Serial.println("SETUP");         
   
-  pinMode(4, OUTPUT);
-  digitalWrite(4, HIGH);  
-  ADCMan.init();  
-  MotorCtrl.init();
+  ADCMan.setup();  
+  MotorCtrl.setup();  
   //MotorCtrl.enableStallDetection = false;
+  Battery.setup();
   
   LED.playSequence(LED_RED_BLINK);
   
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);    
+  arbitrator.addBehavior(&chargerConnectedBehavior);      
   Serial.println("SETUP completed");
 }
 
@@ -147,6 +147,7 @@ void RobotControl::run(){
   MotorCtrl.run();    
   Buzzer.run();  
   LED.run();
+  Battery.run();
   
   delay(50);  
 }

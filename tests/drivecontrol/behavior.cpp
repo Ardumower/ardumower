@@ -56,6 +56,28 @@ void HitObstacleBehavior::action(){
   }
 }
 
+// ----------------------------------------------------------
+
+ChargerConnectedBehavior::ChargerConnectedBehavior() : Behavior() {
+  name = "ChargerConnectedBehavior";
+}
+
+bool ChargerConnectedBehavior::takeControl(){
+  return Battery.chargerConnected();
+}
+
+void ChargerConnectedBehavior::action(){  
+  suppressed = false;
+  
+  MotorCtrl.stopImmediately();
+  Buzzer.play(BC_SHORT_SHORT_SHORT);                  
+  Battery.enableChargingRelay(true);
+
+  // wait until charging completed  
+  while ( !suppressed ){
+    Robot.run();   
+  }
+}
 
 
 

@@ -33,6 +33,15 @@ class HitObstacleBehavior : public Behavior
     virtual void action();    
 };
 
+class ChargerConnectedBehavior : public Behavior
+{
+  public:        
+    ChargerConnectedBehavior();
+    virtual bool takeControl();
+    virtual void action();    
+};
+
+
 
 #endif
 

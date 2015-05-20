@@ -35,7 +35,7 @@ Arduino ADC manager (ADC0-ADC9)
 - WARNING: never use any 'analogRead()' in your code when using this class!
 
 How to use it (example):
-1. Initialize ADC:  ADCMan.init();
+1. Initialize ADC:  ADCMan.setup();
 2. Set ADC pin:     ADCMan.setCapture(pinMotorMowSense, 1, 1);
 3. Program loop:    while (true){
                       ADCMan.run();
@@ -66,7 +66,7 @@ class ADCManager
   public:
     ADCManager();
     // call this in setup
-    void init();
+    void setup();
     // call this to calibrate offsets of channels with autocalibrate
     void calibrate();
     // configure sampling for pin:

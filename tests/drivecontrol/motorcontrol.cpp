@@ -102,8 +102,8 @@ MotorControl::MotorControl(){
 }
 
 
-void MotorControl::init(){
-  Serial.println("MotorControl::init");
+void MotorControl::setup(){
+  Serial.println("MotorControl::setup");
   printCSV(true);
   motion = MOTION_STOP;
   enableSpeedControl = enableStallDetection = true;

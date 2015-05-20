@@ -8,6 +8,7 @@
 #include "adcman.h"
 #include "buzzer.h"
 #include "led.h"
+#include "battery.h"
 #include "motorcontrol.h"
 #include "modelrc.h"
 #include "behavior.h"
@@ -20,6 +21,7 @@ class RobotControl
     unsigned long loopCounter;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
+    ChargerConnectedBehavior  chargerConnectedBehavior;
     Arbitrator arbitrator;  
     RobotControl();    
     virtual void run();

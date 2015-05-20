@@ -77,7 +77,7 @@ ADCManager::ADCManager(){
   //sampleRate = SRATE_9615;
 }
 
-void ADCManager::init(){    
+void ADCManager::setup(){    
 #ifndef __AVR__
   // free running ADC mode, f = ( adclock / 21 cycles per conversion )
   // example f = 19231  Hz:  using ADCCLK=405797 will result in a adcclock=403846 (due to adc_init internal conversion)
