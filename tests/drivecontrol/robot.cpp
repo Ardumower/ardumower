@@ -21,10 +21,10 @@ void RobotControl::setup(){
   Serial.println("SETUP");         
   
   ADCMan.setup();  
+  Battery.setup();  
   MotorCtrl.setup();  
   //MotorCtrl.enableStallDetection = false;
-  Buzzer.setup();  
-  Battery.setup();
+  Buzzer.setup();    
   Button.setup();  
   LED.setup();
   

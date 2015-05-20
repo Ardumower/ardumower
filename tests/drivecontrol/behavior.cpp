@@ -16,7 +16,8 @@ bool StandbyBehavior::takeControl(){
 
 void StandbyBehavior::action(){  
   suppressed = false;
-  while ( !suppressed ) {
+  MotorCtrl.stopImmediately();
+  while ( !suppressed ) {    
     Robot.run();   
   }  
 }
@@ -33,6 +34,7 @@ bool StopBehavior::takeControl(){
 
 void StopBehavior::action(){  
   suppressed = false;
+  MotorCtrl.stopImmediately();  
   Button.resetBeepCounter();  
 }
 
