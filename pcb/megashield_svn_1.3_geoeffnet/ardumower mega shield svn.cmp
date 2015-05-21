@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 19.05.2015 12:19:01
+Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 20.05.2015 21:54:29
 
 BeginCmp
 TimeStamp = /553D2376/553D2728;
@@ -311,14 +311,14 @@ EndCmp
 BeginCmp
 TimeStamp = /554BCB67/5558A33B;
 Reference = CC4;
-ValeurCmp = 100 nF;
+ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /554BCB67/5558A3B2;
 Reference = CC5;
-ValeurCmp = 100 nF;
+ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
@@ -330,7 +330,7 @@ IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /554C1C35/5558A184;
+TimeStamp = /5558DDF4/555C50C2;
 Reference = CC7;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
@@ -416,6 +416,83 @@ EndCmp
 BeginCmp
 TimeStamp = /5558DDF4/5558EACE;
 Reference = CC19;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /554C1C35/5558A184;
+Reference = CC20;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF76F;
+Reference = CC21;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF79B;
+Reference = CC22;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF7B1;
+Reference = CC23;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF785;
+Reference = CC24;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF7DD;
+Reference = CC25;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF7F3;
+Reference = CC26;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF7C7;
+Reference = CC27;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF81F;
+Reference = CC28;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF835;
+Reference = CC29;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555CF809;
+Reference = CC30;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
@@ -631,230 +708,6 @@ IdModule  = ACS712:Diode_15KE33CA;
 EndCmp
 
 BeginCmp
-TimeStamp = /54CF710A;
-Reference = LP0;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF7059;
-Reference = LP1;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF6FAB;
-Reference = LP2;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF6F02;
-Reference = LP3;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF6E54;
-Reference = LP4;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF6DA7;
-Reference = LP5;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF6BED;
-Reference = LP6;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF6B08;
-Reference = LP7;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF2BEF;
-Reference = LP8;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF2B48;
-Reference = LP9;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CEF3BF;
-Reference = LP10;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CEF31C;
-Reference = LP11;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CEF278;
-Reference = LP12;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CEF1D7;
-Reference = LP13;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CEDC4A;
-Reference = LP14;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CEA36A;
-Reference = LP15;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFDD02;
-Reference = LP16;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFD7DE;
-Reference = LP17;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFDC50;
-Reference = LP18;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFE61F;
-Reference = LP19;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF4FEC;
-Reference = LP20;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54D046E1;
-Reference = LP21;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF5460;
-Reference = LP22;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CF5519;
-Reference = LP23;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFA30B;
-Reference = LP24;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFB233;
-Reference = LP25;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFB165;
-Reference = LP26;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /54CFB2E6;
-Reference = LP27;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /553DFC0F/553F1FB3;
-Reference = LP28;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /553DFC0F/553F21FB;
-Reference = LP29;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /553DFC0F/553F2244;
-Reference = LP30;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /553DFC0F/553F22D1;
-Reference = LP31;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
 TimeStamp = /551BB55E;
 Reference = LP32;
 ValeurCmp = Lötpad;
@@ -887,27 +740,6 @@ TimeStamp = /55320D6B;
 Reference = LP36;
 ValeurCmp = Lötpad;
 IdModule  = ACS712:Lötpad0,508_CU;
-EndCmp
-
-BeginCmp
-TimeStamp = /5552699F;
-Reference = LP37;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /55526E80;
-Reference = LP38;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
-EndCmp
-
-BeginCmp
-TimeStamp = /55527084;
-Reference = LP39;
-ValeurCmp = Lötpad;
-IdModule  = ACS712:Lötpad_1x02;
 EndCmp
 
 BeginCmp
@@ -1573,6 +1405,34 @@ TimeStamp = /553D8AD9/554D4C79/554BE922;
 Reference = R36;
 ValeurCmp = 2W METALL 1,8;
 IdModule  = ACS712:Resistor_Horizontal_RM20mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /553B3D38/555C6E5F;
+Reference = R37;
+ValeurCmp = 4,7K;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /553B3D38/555C6BCC;
+Reference = R38;
+ValeurCmp = 4,7K;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /553B3D38/555C6EC6;
+Reference = R39;
+ValeurCmp = 4,7K;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /553B3D38/555C6CE7;
+Reference = R40;
+ValeurCmp = 4,7K;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp

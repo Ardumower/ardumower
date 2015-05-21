@@ -121,10 +121,10 @@ F 5 "http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&ACTION=3&LA=2&ARTI
 	1    0    0    -1  
 $EndComp
 $Comp
-L Kondensator CC7
+L Kondensator CC20
 U 1 1 5558A184
 P 5875 2175
-F 0 "CC7" H 5925 2275 50  0000 L CNN
+F 0 "CC20" H 5925 2275 50  0000 L CNN
 F 1 "100nF" H 5925 2075 50  0000 L CNN
 F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 5875 2175 60  0001 C CNN
 F 3 "" H 5875 2175 60  0000 C CNN

@@ -59,18 +59,6 @@ Text GLabel 2140 1515 2    39   Input ~ 0
 pinLawnBackSend
 Text GLabel 2140 1615 2    39   Output ~ 0
 pinLawnBackRecv
-Wire Wire Line
-	1390 1315 1515 1315
-Wire Wire Line
-	2015 1315 2140 1315
-Wire Wire Line
-	1390 1515 1515 1515
-Wire Wire Line
-	2015 1515 2140 1515
-Wire Wire Line
-	1390 1615 2140 1615
-Wire Wire Line
-	1390 1415 2140 1415
 $Comp
 L +5V #PWR071
 U 1 1 553E3A32
@@ -107,12 +95,6 @@ F 4 "Value" H 1035 895 60  0001 C CNN "Bestellnummer"
 $EndComp
 Text GLabel 1515 995  2    39   Output ~ 0
 pinTilt
-Wire Wire Line
-	1385 795  1515 795 
-Wire Wire Line
-	1385 895  1510 895 
-Wire Wire Line
-	1385 995  1515 995 
 $Comp
 L +5V #PWR073
 U 1 1 553E7056
@@ -149,12 +131,6 @@ F 4 "Value" H 1030 1955 60  0001 C CNN "Bestellnummer"
 $EndComp
 Text GLabel 1510 2055 2    39   Output ~ 0
 pinMotorMowRpm
-Wire Wire Line
-	1380 1855 1510 1855
-Wire Wire Line
-	1380 1955 1505 1955
-Wire Wire Line
-	1380 2055 1510 2055
 $Comp
 L +5V #PWR075
 U 1 1 553E917A
@@ -191,12 +167,6 @@ F 4 "Value" H 1025 2365 60  0001 C CNN "Bestellnummer"
 $EndComp
 Text GLabel 1505 2465 2    39   Output ~ 0
 pinRain
-Wire Wire Line
-	1375 2265 1505 2265
-Wire Wire Line
-	1375 2365 1500 2365
-Wire Wire Line
-	1375 2465 1505 2465
 $Comp
 L +5V #PWR077
 U 1 1 553EA88B
@@ -233,12 +203,6 @@ F 4 "Value" H 1020 2745 60  0001 C CNN "Bestellnummer"
 $EndComp
 Text GLabel 1500 2845 2    39   Output ~ 0
 Voltage measurement
-Wire Wire Line
-	1370 2645 1500 2645
-Wire Wire Line
-	1370 2745 1495 2745
-Wire Wire Line
-	1370 2845 1500 2845
 $Comp
 L CONN_4 P11
 U 1 1 553ECCEE
@@ -255,10 +219,6 @@ Text GLabel 1495 3250 2    39   Output ~ 0
 pinBumperRight
 Text GLabel 1495 3350 2    39   Output ~ 0
 pinBumperLeft
-Wire Wire Line
-	1370 3250 1495 3250
-Wire Wire Line
-	1370 3350 1495 3350
 $Comp
 L GND #PWR079
 U 1 1 553ECD4C
@@ -270,13 +230,6 @@ F 3 "" H 1495 3050 60  0000 C CNN
 	1    1495 3050
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	1370 3050 1495 3050
-Wire Wire Line
-	1370 3150 1445 3150
-Wire Wire Line
-	1445 3150 1445 3050
-Connection ~ 1445 3050
 $Comp
 L CONN_5 P40
 U 1 1 553EF93A
@@ -313,42 +266,20 @@ F 3 "" H 1535 3670 60  0000 C CNN
 $EndComp
 Text GLabel 1540 3770 2    39   Output ~ 0
 pinUserSwitch1
-Wire Wire Line
-	1410 3570 1540 3570
-Wire Wire Line
-	1410 3670 1535 3670
-Wire Wire Line
-	1410 3770 1540 3770
 Text GLabel 1540 3870 2    39   Output ~ 0
 pinUserSwitch2
-Wire Wire Line
-	1410 3870 1540 3870
 Text GLabel 1540 3970 2    39   Output ~ 0
 pinUserSwitch3
-Wire Wire Line
-	1410 3970 1540 3970
 $Comp
 L CONN_6 P13
 U 1 1 553F19AF
-P 1005 4490
-F 0 "P13" V 955 4490 60  0000 C CNN
-F 1 "RC Remote" V 1055 4490 60  0000 C CNN
-F 2 "ACS712:Pin_Header_Straight_1x06" H 1005 4490 60  0001 C CNN
-F 3 "" H 1005 4490 60  0000 C CNN
-F 4 "Value" H 1005 4490 60  0001 C CNN "Bestellnummer"
-	1    1005 4490
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP28
-U 1 1 553F1FB3
-P 1590 4440
-F 0 "LP28" H 1580 4490 20  0000 C CNN
-F 1 "Lötpad" H 1590 4420 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1590 4440 60  0001 C CNN
-F 3 "" H 1590 4440 60  0000 C CNN
-F 4 "Value" H 1590 4440 60  0001 C CNN "Bestellnummer"
-	1    1590 4440
+P 995 4490
+F 0 "P13" V 945 4490 60  0000 C CNN
+F 1 "RC Remote" V 1045 4490 60  0000 C CNN
+F 2 "ACS712:Pin_Header_Straight_1x06" H 995 4490 60  0001 C CNN
+F 3 "" H 995 4490 60  0000 C CNN
+F 4 "Value" H 995 4490 60  0001 C CNN "Bestellnummer"
+	1    995  4490
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -373,102 +304,14 @@ F 3 "" H 1480 4340 60  0000 C CNN
 	1    1480 4340
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	1355 4240 1485 4240
-Wire Wire Line
-	1355 4340 1480 4340
-$Comp
-L Lötpad LP29
-U 1 1 553F21FB
-P 1590 4540
-F 0 "LP29" H 1580 4590 20  0000 C CNN
-F 1 "Lötpad" H 1590 4520 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1590 4540 60  0001 C CNN
-F 3 "" H 1590 4540 60  0000 C CNN
-F 4 "Value" H 1590 4540 60  0001 C CNN "Bestellnummer"
-	1    1590 4540
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP30
-U 1 1 553F2244
-P 1590 4640
-F 0 "LP30" H 1580 4690 20  0000 C CNN
-F 1 "Lötpad" H 1590 4620 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1590 4640 60  0001 C CNN
-F 3 "" H 1590 4640 60  0000 C CNN
-F 4 "Value" H 1590 4640 60  0001 C CNN "Bestellnummer"
-	1    1590 4640
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP31
-U 1 1 553F22D1
-P 1590 4740
-F 0 "LP31" H 1580 4790 20  0000 C CNN
-F 1 "Lötpad" H 1590 4720 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1590 4740 60  0001 C CNN
-F 3 "" H 1590 4740 60  0000 C CNN
-F 4 "Value" H 1590 4740 60  0001 C CNN "Bestellnummer"
-	1    1590 4740
-	-1   0    0    -1  
-$EndComp
-Text GLabel 1795 4440 2    39   Output ~ 0
+Text GLabel 1800 4440 2    39   Output ~ 0
 pinRemoteMow
-Text GLabel 1795 4540 2    39   Output ~ 0
+Text GLabel 1800 4540 2    39   Output ~ 0
 pinRemoteSteer
-Text GLabel 1795 4640 2    39   Output ~ 0
+Text GLabel 1800 4640 2    39   Output ~ 0
 pinRemoteSpeed
-Text GLabel 1795 4740 2    39   Output ~ 0
+Text GLabel 1800 4740 2    39   Output ~ 0
 pinRemoteSwitch
-Wire Wire Line
-	1355 4440 1540 4440
-Wire Wire Line
-	1640 4440 1795 4440
-Wire Wire Line
-	1640 4540 1795 4540
-Wire Wire Line
-	1355 4540 1540 4540
-Wire Wire Line
-	1355 4640 1540 4640
-Wire Wire Line
-	1355 4740 1540 4740
-Wire Wire Line
-	1640 4640 1795 4640
-Wire Wire Line
-	1640 4740 1795 4740
-Wire Wire Line
-	1495 4740 1495 4785
-Wire Wire Line
-	1495 4785 1690 4785
-Wire Wire Line
-	1690 4785 1690 4740
-Connection ~ 1690 4740
-Connection ~ 1495 4740
-Wire Wire Line
-	1495 4640 1495 4675
-Wire Wire Line
-	1495 4675 1685 4675
-Wire Wire Line
-	1685 4675 1685 4640
-Connection ~ 1685 4640
-Connection ~ 1495 4640
-Wire Wire Line
-	1495 4540 1495 4575
-Wire Wire Line
-	1495 4575 1685 4575
-Wire Wire Line
-	1685 4575 1685 4540
-Connection ~ 1685 4540
-Connection ~ 1495 4540
-Wire Wire Line
-	1495 4440 1495 4475
-Wire Wire Line
-	1495 4475 1685 4475
-Wire Wire Line
-	1685 4475 1685 4440
-Connection ~ 1685 4440
-Connection ~ 1495 4440
 $Comp
 L CONN_01X08 P34
 U 1 1 553FB959
@@ -492,31 +335,6 @@ F 3 "" H 5895 1705 60  0000 C CNN
 	1    5895 1705
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	5895 1705 5895 870 
-Wire Wire Line
-	5895 870  5785 870 
-Wire Wire Line
-	5785 970  5895 970 
-Connection ~ 5895 970 
-Wire Wire Line
-	5785 1070 5895 1070
-Connection ~ 5895 1070
-Wire Wire Line
-	5785 1170 5895 1170
-Connection ~ 5895 1170
-Wire Wire Line
-	5785 1270 5895 1270
-Connection ~ 5895 1270
-Wire Wire Line
-	5785 1370 5895 1370
-Connection ~ 5895 1370
-Wire Wire Line
-	5785 1470 5895 1470
-Connection ~ 5895 1470
-Wire Wire Line
-	5785 1570 5895 1570
-Connection ~ 5895 1570
 $Comp
 L CONN_01X08 P33
 U 1 1 553FE0F1
@@ -529,31 +347,6 @@ F 4 "Value" H 4835 1225 60  0001 C CNN "Bestellnummer"
 	1    4835 1225
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	5145 1710 5145 875 
-Wire Wire Line
-	5145 875  5035 875 
-Wire Wire Line
-	5035 975  5145 975 
-Connection ~ 5145 975 
-Wire Wire Line
-	5035 1075 5145 1075
-Connection ~ 5145 1075
-Wire Wire Line
-	5035 1175 5145 1175
-Connection ~ 5145 1175
-Wire Wire Line
-	5035 1275 5145 1275
-Connection ~ 5145 1275
-Wire Wire Line
-	5035 1375 5145 1375
-Connection ~ 5145 1375
-Wire Wire Line
-	5035 1475 5145 1475
-Connection ~ 5145 1475
-Wire Wire Line
-	5035 1575 5145 1575
-Connection ~ 5145 1575
 $Comp
 L +5V #PWR085
 U 1 1 553FE1B9
@@ -577,31 +370,6 @@ F 4 "Value" H 4045 1245 60  0001 C CNN "Bestellnummer"
 	1    4045 1245
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	4355 1730 4355 895 
-Wire Wire Line
-	4355 895  4245 895 
-Wire Wire Line
-	4245 995  4355 995 
-Connection ~ 4355 995 
-Wire Wire Line
-	4245 1095 4355 1095
-Connection ~ 4355 1095
-Wire Wire Line
-	4245 1195 4355 1195
-Connection ~ 4355 1195
-Wire Wire Line
-	4245 1295 4355 1295
-Connection ~ 4355 1295
-Wire Wire Line
-	4245 1395 4355 1395
-Connection ~ 4355 1395
-Wire Wire Line
-	4245 1495 4355 1495
-Connection ~ 4355 1495
-Wire Wire Line
-	4245 1595 4355 1595
-Connection ~ 4355 1595
 $Comp
 L GND #PWR086
 U 1 1 553FFF8E
@@ -627,31 +395,6 @@ F 4 "Value" H 7075 1195 60  0001 C CNN "Bestellnummer"
 	1    7075 1195
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	7385 1680 7385 845 
-Wire Wire Line
-	7385 845  7275 845 
-Wire Wire Line
-	7275 945  7385 945 
-Connection ~ 7385 945 
-Wire Wire Line
-	7275 1045 7385 1045
-Connection ~ 7385 1045
-Wire Wire Line
-	7275 1145 7385 1145
-Connection ~ 7385 1145
-Wire Wire Line
-	7275 1245 7385 1245
-Connection ~ 7385 1245
-Wire Wire Line
-	7275 1345 7385 1345
-Connection ~ 7385 1345
-Wire Wire Line
-	7275 1445 7385 1445
-Connection ~ 7385 1445
-Wire Wire Line
-	7275 1545 7385 1545
-Connection ~ 7385 1545
 $Comp
 L GND #PWR087
 U 1 1 55401F1D
@@ -685,36 +428,20 @@ F 3 "" H 8425 875 60  0000 C CNN
 	1    8425 875 
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	8300 875  8425 875 
 Text GLabel 8430 975  2    39   Output ~ 0
 LedPin-3V
-Wire Wire Line
-	8300 975  8430 975 
 Text GLabel 8430 1075 2    39   Output ~ 0
 LedPin-24v
-Wire Wire Line
-	8300 1075 8430 1075
 Text GLabel 8430 1175 2    39   Output ~ 0
 LedPin-5v
-Wire Wire Line
-	8300 1175 8430 1175
 Text GLabel 8430 1275 2    39   Output ~ 0
 StationLed
-Wire Wire Line
-	8300 1275 8430 1275
 Text GLabel 8430 1375 2    39   Output ~ 0
 DuoLED_Grün
-Wire Wire Line
-	8300 1375 8430 1375
 Text GLabel 8430 1475 2    39   Output ~ 0
 DuoLED-Rot
-Wire Wire Line
-	8300 1475 8430 1475
 Text GLabel 8430 1575 2    39   Output ~ 0
 Led-Status
-Wire Wire Line
-	8300 1575 8430 1575
 $Comp
 L R R1
 U 1 1 55406FDF
@@ -729,12 +456,8 @@ F 4 "Value" H 8260 2215 60  0001 C CNN "Bestellnummer"
 $EndComp
 Text GLabel 7840 2215 0    39   Input ~ 0
 Power5
-Wire Wire Line
-	8010 2215 7840 2215
 Text GLabel 8675 2215 2    39   Output ~ 0
 LedPin-5v
-Wire Wire Line
-	8510 2215 8675 2215
 $Comp
 L +24V #PWR089
 U 1 1 5540858D
@@ -758,12 +481,8 @@ F 4 "Value" H 8255 2500 60  0001 C CNN "Bestellnummer"
 	1    8255 2500
 	0    -1   1    0   
 $EndComp
-Wire Wire Line
-	8005 2500 7835 2500
 Text GLabel 8670 2500 2    39   Output ~ 0
 LedPin-24v
-Wire Wire Line
-	8505 2500 8670 2500
 $Comp
 L R R23
 U 1 1 55409786
@@ -776,12 +495,8 @@ F 4 "Value" H 8260 2730 60  0001 C CNN "Bestellnummer"
 	1    8260 2730
 	0    -1   1    0   
 $EndComp
-Wire Wire Line
-	8010 2730 7840 2730
 Text GLabel 8675 2730 2    39   Output ~ 0
 LedPin-3V
-Wire Wire Line
-	8510 2730 8675 2730
 $Comp
 L +3.3V #PWR090
 U 1 1 55409ED6
@@ -834,9 +549,206 @@ $EndComp
 Text GLabel 1490 5220 2    39   Output ~ 0
 Reset
 Wire Wire Line
+	1390 1315 1515 1315
+Wire Wire Line
+	2015 1315 2140 1315
+Wire Wire Line
+	1390 1515 1515 1515
+Wire Wire Line
+	2015 1515 2140 1515
+Wire Wire Line
+	1390 1615 2140 1615
+Wire Wire Line
+	1390 1415 2140 1415
+Wire Wire Line
+	1385 795  1515 795 
+Wire Wire Line
+	1385 895  1510 895 
+Wire Wire Line
+	1385 995  1515 995 
+Wire Wire Line
+	1380 1855 1510 1855
+Wire Wire Line
+	1380 1955 1505 1955
+Wire Wire Line
+	1380 2055 1510 2055
+Wire Wire Line
+	1375 2265 1505 2265
+Wire Wire Line
+	1375 2365 1500 2365
+Wire Wire Line
+	1375 2465 1505 2465
+Wire Wire Line
+	1370 2645 1500 2645
+Wire Wire Line
+	1370 2745 1495 2745
+Wire Wire Line
+	1370 2845 1500 2845
+Wire Wire Line
+	1370 3250 1495 3250
+Wire Wire Line
+	1370 3350 1495 3350
+Wire Wire Line
+	1370 3050 1495 3050
+Wire Wire Line
+	1370 3150 1445 3150
+Wire Wire Line
+	1445 3150 1445 3050
+Connection ~ 1445 3050
+Wire Wire Line
+	1410 3570 1540 3570
+Wire Wire Line
+	1410 3670 1535 3670
+Wire Wire Line
+	1410 3770 1540 3770
+Wire Wire Line
+	1410 3870 1540 3870
+Wire Wire Line
+	1410 3970 1540 3970
+Wire Wire Line
+	5895 870  5895 1705
+Wire Wire Line
+	5895 870  5785 870 
+Wire Wire Line
+	5785 970  5895 970 
+Connection ~ 5895 970 
+Wire Wire Line
+	5785 1070 5895 1070
+Connection ~ 5895 1070
+Wire Wire Line
+	5785 1170 5895 1170
+Connection ~ 5895 1170
+Wire Wire Line
+	5785 1270 5895 1270
+Connection ~ 5895 1270
+Wire Wire Line
+	5785 1370 5895 1370
+Connection ~ 5895 1370
+Wire Wire Line
+	5785 1470 5895 1470
+Connection ~ 5895 1470
+Wire Wire Line
+	5785 1570 5895 1570
+Connection ~ 5895 1570
+Wire Wire Line
+	5145 875  5145 1710
+Wire Wire Line
+	5145 875  5035 875 
+Wire Wire Line
+	5035 975  5145 975 
+Connection ~ 5145 975 
+Wire Wire Line
+	5035 1075 5145 1075
+Connection ~ 5145 1075
+Wire Wire Line
+	5035 1175 5145 1175
+Connection ~ 5145 1175
+Wire Wire Line
+	5035 1275 5145 1275
+Connection ~ 5145 1275
+Wire Wire Line
+	5035 1375 5145 1375
+Connection ~ 5145 1375
+Wire Wire Line
+	5035 1475 5145 1475
+Connection ~ 5145 1475
+Wire Wire Line
+	5035 1575 5145 1575
+Connection ~ 5145 1575
+Wire Wire Line
+	4355 895  4355 1730
+Wire Wire Line
+	4355 895  4245 895 
+Wire Wire Line
+	4245 995  4355 995 
+Connection ~ 4355 995 
+Wire Wire Line
+	4245 1095 4355 1095
+Connection ~ 4355 1095
+Wire Wire Line
+	4245 1195 4355 1195
+Connection ~ 4355 1195
+Wire Wire Line
+	4245 1295 4355 1295
+Connection ~ 4355 1295
+Wire Wire Line
+	4245 1395 4355 1395
+Connection ~ 4355 1395
+Wire Wire Line
+	4245 1495 4355 1495
+Connection ~ 4355 1495
+Wire Wire Line
+	4245 1595 4355 1595
+Connection ~ 4355 1595
+Wire Wire Line
+	7385 845  7385 1680
+Wire Wire Line
+	7385 845  7275 845 
+Wire Wire Line
+	7275 945  7385 945 
+Connection ~ 7385 945 
+Wire Wire Line
+	7275 1045 7385 1045
+Connection ~ 7385 1045
+Wire Wire Line
+	7275 1145 7385 1145
+Connection ~ 7385 1145
+Wire Wire Line
+	7275 1245 7385 1245
+Connection ~ 7385 1245
+Wire Wire Line
+	7275 1345 7385 1345
+Connection ~ 7385 1345
+Wire Wire Line
+	7275 1445 7385 1445
+Connection ~ 7385 1445
+Wire Wire Line
+	7275 1545 7385 1545
+Connection ~ 7385 1545
+Wire Wire Line
+	8300 875  8425 875 
+Wire Wire Line
+	8300 975  8430 975 
+Wire Wire Line
+	8300 1075 8430 1075
+Wire Wire Line
+	8300 1175 8430 1175
+Wire Wire Line
+	8300 1275 8430 1275
+Wire Wire Line
+	8300 1375 8430 1375
+Wire Wire Line
+	8300 1475 8430 1475
+Wire Wire Line
+	8300 1575 8430 1575
+Wire Wire Line
+	8010 2215 7840 2215
+Wire Wire Line
+	8510 2215 8675 2215
+Wire Wire Line
+	8005 2500 7835 2500
+Wire Wire Line
+	8505 2500 8670 2500
+Wire Wire Line
+	8010 2730 7840 2730
+Wire Wire Line
+	8510 2730 8675 2730
+Wire Wire Line
 	1360 5020 1490 5020
 Wire Wire Line
 	1360 5120 1485 5120
 Wire Wire Line
 	1360 5220 1490 5220
+Wire Wire Line
+	1345 4440 1800 4440
+Wire Wire Line
+	1345 4340 1480 4340
+Wire Wire Line
+	1345 4240 1485 4240
+Wire Wire Line
+	1345 4540 1800 4540
+Wire Wire Line
+	1345 4640 1800 4640
+Wire Wire Line
+	1345 4740 1800 4740
 $EndSCHEMATC

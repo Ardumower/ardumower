@@ -584,319 +584,6 @@ F 4 "1N4148" H 4200 3290 60  0001 C CNN "Bestellnummer"
 	1    4200 3290
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Lötpad LP15
-U 1 1 54CEA36A
-P 1970 8680
-F 0 "LP15" H 1960 8730 20  0000 C CNN
-F 1 "Lötpad" H 1970 8660 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8680 60  0001 C CNN
-F 3 "" H 1970 8680 60  0000 C CNN
-	1    1970 8680
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP14
-U 1 1 54CEDC4A
-P 1770 8580
-F 0 "LP14" H 1760 8630 20  0000 C CNN
-F 1 "Lötpad" H 1770 8560 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 8580 60  0001 C CNN
-F 3 "" H 1770 8580 60  0000 C CNN
-	1    1770 8580
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP13
-U 1 1 54CEF1D7
-P 1970 8480
-F 0 "LP13" H 1960 8530 20  0000 C CNN
-F 1 "Lötpad" H 1970 8460 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8480 60  0001 C CNN
-F 3 "" H 1970 8480 60  0000 C CNN
-	1    1970 8480
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP12
-U 1 1 54CEF278
-P 1770 8380
-F 0 "LP12" H 1760 8430 20  0000 C CNN
-F 1 "Lötpad" H 1770 8360 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 8380 60  0001 C CNN
-F 3 "" H 1770 8380 60  0000 C CNN
-	1    1770 8380
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP11
-U 1 1 54CEF31C
-P 1970 8280
-F 0 "LP11" H 1960 8330 20  0000 C CNN
-F 1 "Lötpad" H 1970 8260 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8280 60  0001 C CNN
-F 3 "" H 1970 8280 60  0000 C CNN
-	1    1970 8280
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP10
-U 1 1 54CEF3BF
-P 1770 8180
-F 0 "LP10" H 1760 8230 20  0000 C CNN
-F 1 "Lötpad" H 1770 8160 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 8180 60  0001 C CNN
-F 3 "" H 1770 8180 60  0000 C CNN
-	1    1770 8180
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP9
-U 1 1 54CF2B48
-P 1970 8080
-F 0 "LP9" H 1960 8130 20  0000 C CNN
-F 1 "Lötpad" H 1970 8060 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8080 60  0001 C CNN
-F 3 "" H 1970 8080 60  0000 C CNN
-	1    1970 8080
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP8
-U 1 1 54CF2BEF
-P 1770 7980
-F 0 "LP8" H 1760 8030 20  0000 C CNN
-F 1 "Lötpad" H 1770 7960 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7980 60  0001 C CNN
-F 3 "" H 1770 7980 60  0000 C CNN
-	1    1770 7980
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP7
-U 1 1 54CF6B08
-P 1970 7780
-F 0 "LP7" H 1960 7830 20  0000 C CNN
-F 1 "Lötpad" H 1970 7760 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7780 60  0001 C CNN
-F 3 "" H 1970 7780 60  0000 C CNN
-	1    1970 7780
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP6
-U 1 1 54CF6BED
-P 1770 7680
-F 0 "LP6" H 1760 7730 20  0000 C CNN
-F 1 "Lötpad" H 1770 7660 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7680 60  0001 C CNN
-F 3 "" H 1770 7680 60  0000 C CNN
-	1    1770 7680
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP5
-U 1 1 54CF6DA7
-P 1970 7580
-F 0 "LP5" H 1960 7630 20  0000 C CNN
-F 1 "Lötpad" H 1970 7560 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7580 60  0001 C CNN
-F 3 "" H 1970 7580 60  0000 C CNN
-	1    1970 7580
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP4
-U 1 1 54CF6E54
-P 1770 7480
-F 0 "LP4" H 1760 7530 20  0000 C CNN
-F 1 "Lötpad" H 1770 7460 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7480 60  0001 C CNN
-F 3 "" H 1770 7480 60  0000 C CNN
-	1    1770 7480
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP3
-U 1 1 54CF6F02
-P 1970 7380
-F 0 "LP3" H 1960 7430 20  0000 C CNN
-F 1 "Lötpad" H 1970 7360 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7380 60  0001 C CNN
-F 3 "" H 1970 7380 60  0000 C CNN
-	1    1970 7380
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP2
-U 1 1 54CF6FAB
-P 1770 7280
-F 0 "LP2" H 1760 7330 20  0000 C CNN
-F 1 "Lötpad" H 1770 7260 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7280 60  0001 C CNN
-F 3 "" H 1770 7280 60  0000 C CNN
-	1    1770 7280
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP1
-U 1 1 54CF7059
-P 1970 7180
-F 0 "LP1" H 1960 7230 20  0000 C CNN
-F 1 "Lötpad" H 1970 7160 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7180 60  0001 C CNN
-F 3 "" H 1970 7180 60  0000 C CNN
-	1    1970 7180
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP0
-U 1 1 54CF710A
-P 1770 7080
-F 0 "LP0" H 1760 7130 20  0000 C CNN
-F 1 "Lötpad" H 1770 7060 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7080 60  0001 C CNN
-F 3 "" H 1770 7080 60  0000 C CNN
-	1    1770 7080
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP17
-U 1 1 54CFD7DE
-P 3520 6880
-F 0 "LP17" H 3510 6930 20  0000 C CNN
-F 1 "Lötpad" H 3520 6860 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3520 6880 60  0001 C CNN
-F 3 "" H 3520 6880 60  0000 C CNN
-	1    3520 6880
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP18
-U 1 1 54CFDC50
-P 3570 6580
-F 0 "LP18" H 3560 6630 20  0000 C CNN
-F 1 "Lötpad" H 3570 6560 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3570 6580 60  0001 C CNN
-F 3 "" H 3570 6580 60  0000 C CNN
-	1    3570 6580
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP16
-U 1 1 54CFDD02
-P 3495 6305
-F 0 "LP16" H 3485 6355 20  0000 C CNN
-F 1 "Lötpad" H 3495 6285 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3495 6305 60  0001 C CNN
-F 3 "" H 3495 6305 60  0000 C CNN
-	1    3495 6305
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP19
-U 1 1 54CFE61F
-P 3570 6780
-F 0 "LP19" H 3560 6830 20  0000 C CNN
-F 1 "Lötpad" H 3570 6760 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3570 6780 60  0001 C CNN
-F 3 "" H 3570 6780 60  0000 C CNN
-	1    3570 6780
-	1    0    0    -1  
-$EndComp
-NoConn ~ 3520 6780
-$Comp
-L Lötpad LP21
-U 1 1 54D046E1
-P 3620 6255
-F 0 "LP21" H 3610 6305 20  0000 C CNN
-F 1 "Lötpad" H 3620 6235 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3620 6255 60  0001 C CNN
-F 3 "" H 3620 6255 60  0000 C CNN
-	1    3620 6255
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP20
-U 1 1 54CF4FEC
-P 5805 8980
-F 0 "LP20" H 5795 9030 20  0000 C CNN
-F 1 "Lötpad" H 5805 8960 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5805 8980 60  0001 C CNN
-F 3 "" H 5805 8980 60  0000 C CNN
-	1    5805 8980
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP22
-U 1 1 54CF5460
-P 5815 10030
-F 0 "LP22" H 5805 10080 20  0000 C CNN
-F 1 "Lötpad" H 5815 10010 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5815 10030 60  0001 C CNN
-F 3 "" H 5815 10030 60  0000 C CNN
-	1    5815 10030
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP23
-U 1 1 54CF5519
-P 5795 10430
-F 0 "LP23" H 5785 10480 20  0000 C CNN
-F 1 "Lötpad" H 5795 10410 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5795 10430 60  0001 C CNN
-F 3 "" H 5795 10430 60  0000 C CNN
-	1    5795 10430
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP24
-U 1 1 54CFA30B
-P 3570 6715
-F 0 "LP24" H 3560 6765 20  0000 C CNN
-F 1 "Lötpad" H 3570 6695 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3570 6715 60  0001 C CNN
-F 3 "" H 3570 6715 60  0000 C CNN
-	1    3570 6715
-	1    0    0    -1  
-$EndComp
-NoConn ~ 3520 6715
-$Comp
-L Lötpad LP26
-U 1 1 54CFB165
-P 3770 5710
-F 0 "LP26" H 3760 5760 20  0000 C CNN
-F 1 "Lötpad" H 3770 5690 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3770 5710 60  0001 C CNN
-F 3 "" H 3770 5710 60  0000 C CNN
-	1    3770 5710
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP25
-U 1 1 54CFB233
-P 3695 5730
-F 0 "LP25" H 3685 5780 20  0000 C CNN
-F 1 "Lötpad" H 3695 5710 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3695 5730 60  0001 C CNN
-F 3 "" H 3695 5730 60  0000 C CNN
-	1    3695 5730
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP27
-U 1 1 54CFB2E6
-P 5720 5980
-F 0 "LP27" H 5710 6030 20  0000 C CNN
-F 1 "Lötpad" H 5720 5960 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5720 5980 60  0001 C CNN
-F 3 "" H 5720 5980 60  0000 C CNN
-	1    5720 5980
-	-1   0    0    1   
-$EndComp
-NoConn ~ 6240 5980
-NoConn ~ 3770 5660
-NoConn ~ 3695 5680
 Text Notes 1470 6830 0    60   ~ 0
 Lötpads, mit Brücke\nZur Einbindung des Due
 $Comp
@@ -1177,39 +864,6 @@ F3 "Verpol.s.L.in" I T 2295 2235 60
 $EndSheet
 Text Notes 7200 9565 0    60   ~ 0
 MC treiber SF pin braucht noch einen pegelwandler\n(falls MC beim due mit 5v betrieben werden soll
-$Comp
-L Lötpad LP37
-U 1 1 5552699F
-P 5810 9280
-F 0 "LP37" H 5810 9320 20  0000 C CNN
-F 1 "Lötpad" H 5810 9260 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5810 9280 60  0001 C CNN
-F 3 "" H 5810 9280 60  0000 C CNN
-	1    5810 9280
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP38
-U 1 1 55526E80
-P 5810 9380
-F 0 "LP38" H 5810 9420 20  0000 C CNN
-F 1 "Lötpad" H 5810 9360 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5810 9380 60  0001 C CNN
-F 3 "" H 5810 9380 60  0000 C CNN
-	1    5810 9380
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP39
-U 1 1 55527084
-P 5810 9480
-F 0 "LP39" H 5810 9520 20  0000 C CNN
-F 1 "Lötpad" H 5810 9460 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5810 9480 60  0001 C CNN
-F 3 "" H 5810 9480 60  0000 C CNN
-	1    5810 9480
-	1    0    0    -1  
-$EndComp
 Text Notes 7105 6400 0    60   ~ 0
 bei den Leuchtdioden darauf achten \ndas die widerstandswerte evl bei den \nDuo auch funktionieren \nmax strom muss nachgesehen werden\n
 $Bitmap
@@ -3463,6 +3117,12 @@ F 3 "" H 4805 1720 60  0000 C CNN
 	1    4805 1720
 	1    0    0    -1  
 $EndComp
+$Sheet
+S -1320 4110 560  210 
+U 5558DDF4
+F0 "Blockkondensatoren" 60
+F1 "Blockkondensatoren.sch" 60
+$EndSheet
 Connection ~ 4805 1105
 Wire Wire Line
 	4805 1270 4805 1105
@@ -3473,18 +3133,6 @@ Wire Wire Line
 	7790 1060 7790 2890
 Wire Wire Line
 	3620 5005 3290 5005
-Connection ~ 5760 9480
-Connection ~ 5860 9480
-Connection ~ 5760 9380
-Connection ~ 5860 9380
-Connection ~ 5760 9280
-Connection ~ 5860 9280
-Wire Wire Line
-	5570 9480 6175 9480
-Wire Wire Line
-	5570 9380 6175 9380
-Wire Wire Line
-	5570 9280 6175 9280
 Connection ~ 1710 2090
 Wire Wire Line
 	1710 2235 1710 2090
@@ -3597,9 +3245,7 @@ Wire Wire Line
 Wire Wire Line
 	2870 8830 2870 8800
 Wire Wire Line
-	1545 7380 1920 7380
-Wire Wire Line
-	2020 7380 2095 7380
+	1545 7380 2095 7380
 Wire Wire Line
 	2495 7380 3670 7380
 Connection ~ 2910 2090
@@ -3640,57 +3286,8 @@ Wire Wire Line
 	3270 8680 3270 8700
 Wire Wire Line
 	3270 8830 3270 8800
-Connection ~ 3495 6255
-Connection ~ 3495 6355
-Connection ~ 1920 8680
-Connection ~ 2020 8680
-Connection ~ 1820 8580
-Connection ~ 1720 8580
-Connection ~ 1920 8480
-Connection ~ 2020 8480
-Connection ~ 1720 8380
-Connection ~ 1820 8380
-Connection ~ 1920 8280
-Connection ~ 2020 8280
-Connection ~ 1820 8180
-Connection ~ 1720 8180
-Connection ~ 1920 8080
-Connection ~ 2020 8080
-Connection ~ 1720 7980
-Connection ~ 1820 7980
-Connection ~ 1920 7780
-Connection ~ 2020 7780
-Connection ~ 1820 7680
-Connection ~ 1720 7680
-Connection ~ 1920 7580
-Connection ~ 2020 7580
-Connection ~ 1720 7480
-Connection ~ 1820 7480
-Connection ~ 1920 7380
-Connection ~ 2020 7380
-Connection ~ 1720 7280
-Connection ~ 1820 7280
-Connection ~ 1920 7180
-Connection ~ 2020 7180
-Connection ~ 1720 7080
-Connection ~ 1820 7080
-Connection ~ 3570 6880
-Connection ~ 3470 6880
-Connection ~ 3620 6780
-Connection ~ 3520 6580
-Connection ~ 3620 6580
-Connection ~ 3620 6330
-Connection ~ 3620 6180
 Wire Wire Line
 	3620 5005 3620 6380
-Connection ~ 5670 5980
-Connection ~ 5770 5980
-Connection ~ 5745 10430
-Connection ~ 5845 10430
-Connection ~ 5765 10030
-Connection ~ 5865 10030
-Connection ~ 5755 8980
-Connection ~ 5855 8980
 Wire Wire Line
 	1545 8680 2095 8680
 Wire Wire Line
@@ -3713,33 +3310,6 @@ Wire Wire Line
 	1545 7680 2095 7680
 Wire Wire Line
 	1545 7780 2095 7780
-Wire Wire Line
-	3520 6725 3520 6715
-Wire Wire Line
-	3620 6725 3520 6725
-Wire Wire Line
-	3620 6715 3620 6725
-Wire Wire Line
-	3695 6060 3770 6060
-Wire Wire Line
-	3695 5780 3695 6060
-Wire Wire Line
-	3770 5960 3770 5760
-Wire Wire Line
-	5570 5980 6240 5980
-Connection ~ 3670 6715
-Wire Wire Line
-	3620 6715 3670 6715
-Wire Wire Line
-	5570 10430 6195 10430
-Wire Wire Line
-	5570 10030 6190 10030
-Wire Wire Line
-	5570 8980 6185 8980
-Wire Wire Line
-	3620 6380 3670 6380
-Wire Wire Line
-	3620 6180 3620 6205
 Connection ~ 3495 5430
 Wire Wire Line
 	3495 5155 3270 5155
@@ -3750,13 +3320,9 @@ Wire Wire Line
 Wire Wire Line
 	3495 6480 3670 6480
 Wire Wire Line
-	3420 6580 3670 6580
-Wire Wire Line
 	3420 5680 3420 6580
 Wire Wire Line
 	3320 5680 3420 5680
-Wire Wire Line
-	3670 6780 3520 6780
 Wire Wire Line
 	3370 6880 3670 6880
 Connection ~ 3270 7780
@@ -3936,7 +3502,7 @@ Wire Wire Line
 Wire Wire Line
 	2270 6580 2470 6580
 Wire Wire Line
-	3670 6680 3490 6680
+	3490 6680 3670 6680
 Wire Wire Line
 	5670 8380 5670 8430
 Wire Wire Line
@@ -4008,11 +3574,27 @@ Wire Wire Line
 Wire Wire Line
 	5570 6080 6170 6080
 Wire Wire Line
-	3670 6680 3670 6780
-$Sheet
-S -1320 4110 560  210 
-U 5558DDF4
-F0 "Blockkondensatoren" 60
-F1 "Blockkondensatoren.sch" 60
-$EndSheet
+	5570 8980 6185 8980
+Wire Wire Line
+	6190 10030 5570 10030
+Wire Wire Line
+	5570 10430 6195 10430
+Wire Wire Line
+	6175 9380 5570 9380
+Wire Wire Line
+	6175 9280 5570 9280
+Wire Wire Line
+	6175 9480 5570 9480
+NoConn ~ 3770 5960
+NoConn ~ 3770 6060
+NoConn ~ 5570 5980
+Wire Wire Line
+	3670 6780 3620 6780
+Wire Wire Line
+	3620 6780 3620 6680
+Connection ~ 3620 6680
+Wire Wire Line
+	3620 6380 3670 6380
+Wire Wire Line
+	3420 6580 3670 6580
 $EndSCHEMATC
