@@ -49,45 +49,6 @@
 
 // I2C addresses
 #define STEPPER_ADDRESS 0xBB
-#define DS1307_ADDRESS B1101000
-
-
-// ---------- date time --------------------------------------
-
-extern char *dayOfWeek[];
-
-struct timehm_t {
-  byte hour;
-  byte minute;  
-};
-
-typedef struct timehm_t timehm_t;
-
-struct date_t {
-  byte dayOfWeek;
-  byte day;
-  byte month;
-  short year;  
-};
-
-typedef struct date_t date_t;
-
-struct datetime_t {
-  timehm_t time;
-  date_t date;
-};
-
-typedef struct datetime_t datetime_t;
-
-// ---------- timers --------------------------------------
-struct ttimer_t {
-  boolean active;
-  timehm_t startTime;
-  timehm_t stopTime;
-  byte daysOfWeek;
-};
-
-typedef struct ttimer_t ttimer_t;
 
 
 // ---- other ----------------------------------
@@ -141,16 +102,12 @@ void StreamPrint_progmem(Print &out,PGM_P format,...);
 #define Streamprint(stream,format, ...) StreamPrint_progmem(stream,PSTR(format),##__VA_ARGS__)
 String verToString(int v);
 
-// time helpers
-void minutes2time(int minutes, timehm_t &time);
-int time2minutes(timehm_t time);
-String time2str(timehm_t time);
-String date2str(date_t date);
 
 String versionToStr(byte v[]);
 
 // I2C helpers
 void I2CwriteTo(uint8_t device, uint8_t address, uint8_t val);
+void I2CwriteTo(uint8_t device, uint8_t address, int num, uint8_t buff[]);
 int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], int retryCount = 0);
 
 // rescale to -PI..+PI
@@ -159,27 +116,6 @@ double scalePI(double v);
 // computes minimum distance between x radiant (current-value) and w radiant (set-value)
 double distancePI(double x, double w);
 
-// ultrasonic sensor
-unsigned int readHCSR04(int triggerPin, int echoPin);
-unsigned int readURM37(int triggerPin, int echoPin);
-
-// motor drivers
-void setPwmFrequency(int pin, int divisor);
-void setL298N(int pinDir, int pinPWM, int speed);
-void setL9958(int pinDir, int pinPWM, int speed);
-void setRomeoMotor(int pinDir, int pinPWM, int speed);
-void setMC33926(int pinDir, int pinPWM, int speed);
-
-// lawn sensor
-int measureLawnCapacity(int pinSend, int pinReceive);
-
-// real time drivers
-boolean readDS1307(datetime_t &dt);
-boolean setDS1307(datetime_t &dt);
-
-
-// Returns the day of week (0=Sunday, 6=Saturday) for a given date
-int getDayOfWeek(int month, int day, int year, int CalendarSystem);
 
 #endif 
 

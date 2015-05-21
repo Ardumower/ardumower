@@ -25,6 +25,8 @@ void RobotControl::setup(){
   MotorCtrl.setup();  
   //MotorCtrl.enableStallDetection = false;
   Buzzer.setup();    
+  Sonar.setup();
+  Timer.setup();
   Button.setup();  
   LED.setup();
   
@@ -155,6 +157,8 @@ void RobotControl::run(){
   LED.run();
   Button.run();
   Battery.run();
+  Sonar.run();
+  Timer.run();
   
   delay(50);  
 }

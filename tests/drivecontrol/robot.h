@@ -9,6 +9,8 @@
 #include "buzzer.h"
 #include "button.h"
 #include "led.h"
+#include "sonar.h"
+#include "timer.h"
 #include "battery.h"
 #include "motorcontrol.h"
 #include "modelrc.h"
