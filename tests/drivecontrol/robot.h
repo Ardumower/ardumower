@@ -13,6 +13,7 @@
 #include "timer.h"
 #include "battery.h"
 #include "motorcontrol.h"
+#include "motormow.h"
 #include "modelrc.h"
 #include "behavior.h"
 #include "arbitrator.h"

@@ -24,6 +24,7 @@ void RobotControl::setup(){
   Battery.setup();  
   MotorCtrl.setup();  
   //MotorCtrl.enableStallDetection = false;
+  MotorMow.setup();
   Buzzer.setup();    
   Sonar.setup();
   Timer.setup();
@@ -153,6 +154,7 @@ void RobotControl::run(){
   arbitrator.monitor();    
   ADCMan.run();
   MotorCtrl.run();    
+  MotorMow.run();
   Buzzer.run();  
   LED.run();
   Button.run();
