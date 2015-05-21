@@ -1,15 +1,9 @@
 #include "sonar.h"
 #include "drivers.h"
+#include "config.h"
 
 
 SonarControl Sonar;
-
-#define pinSonarCenterTrigger 24   // ultrasonic sensor pins
-#define pinSonarCenterEcho 22
-#define pinSonarRightTrigger 30    
-#define pinSonarRightEcho 32
-#define pinSonarLeftTrigger 34         
-#define pinSonarLeftEcho 36
 
 
 #define NO_ECHO 0

@@ -1,5 +1,6 @@
 #include "modelrc.h"
 #include "motorcontrol.h"
+#include "config.h"
 
 ModelReceiver ModelRC;
 

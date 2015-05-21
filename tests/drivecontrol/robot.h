@@ -4,6 +4,7 @@
 // Ardumower robot 
 
 #include <Arduino.h>
+#include "config.h"
 #include "drivers.h"
 #include "adcman.h"
 #include "buzzer.h"
@@ -36,7 +37,6 @@ class RobotControl
   private:
     
 };
-
 
 extern RobotControl Robot;  
 

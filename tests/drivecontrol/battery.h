@@ -5,13 +5,6 @@
 
 #include <Arduino.h>
 
-#define pinBatteryVoltage A2       // battery voltage sensor
-#define pinBatterySwitch 4         // battery-OFF switch   
-#define pinChargeVoltage A9        // charging voltage sensor
-#define pinChargeCurrent A8        // charge current sensor
-#define pinChargeRelay 50          // charge relay
-#define pinVoltageMeasurement A7   // test pin for your own voltage measurements
-
 
 class BatteryControl
 {

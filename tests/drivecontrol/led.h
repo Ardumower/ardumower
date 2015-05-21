@@ -5,9 +5,6 @@
 
 #include <Arduino.h>
 
-#define pinLED 13                  // LED
-#define pinLEDDuoRed 7            
-#define pinLEDDuoGreen 6            
 
 // playable LED sequences
 enum {

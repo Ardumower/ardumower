@@ -1,5 +1,6 @@
 #include "button.h"
 #include "drivers.h"
+#include "config.h"
 #include "buzzer.h"
 
 ButtonControl Button;

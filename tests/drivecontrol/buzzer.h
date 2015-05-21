@@ -5,7 +5,6 @@
 
 #include <Arduino.h>
 
-#define pinBuzzer 53               // Buzzer
 
 // beep types ('tones')
 enum {

@@ -2,9 +2,7 @@
 #include <Wire.h>
 #include "robot.h"
 
-
 RobotControl Robot;
-
 
 boolean useModelRC = true;
 unsigned long nextInfoTime = 0;

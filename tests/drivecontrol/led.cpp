@@ -1,5 +1,6 @@
 #include "led.h"
 #include "drivers.h"
+#include "config.h"
 
 LEDControl LED;
 

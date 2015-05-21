@@ -5,9 +5,6 @@
 
 #include <Arduino.h>
 
-#define pinButton 51               // digital ON/OFF button
-
-
 
 class ButtonControl
 {

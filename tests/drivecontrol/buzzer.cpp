@@ -1,5 +1,6 @@
 #include "buzzer.h"
 #include "drivers.h"
+#include "config.h"
 
 BuzzerControl Buzzer;
 

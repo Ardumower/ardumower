@@ -1,6 +1,7 @@
 #include "motorcontrol.h"
 #include "adcman.h"
 #include "drivers.h"
+#include "config.h"
 
 
 MotorControl MotorCtrl;
