@@ -25,7 +25,9 @@
 
 #include "robot.h"
 
+//#define MAGIC 45
 #define MAGIC 45
+
 
 #define ADDR_USER_SETTINGS 0
 #define ADDR_ERR_COUNTERS 400
@@ -174,7 +176,10 @@ void Robot::loadSaveErrorCounters(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM ERR COUNTERS: NO EEPROM DATA"));
+    Console.println(F("EEPROM ERR COUNTERS: NO EEPROM ERROR DATA"));
+    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    addErrorCounter(ERR_EEPROM_DATA);
+    setNextState(STATE_ERROR, 0);
     return;
   }
   eereadwrite(readflag, addr, errorCounterMax);  
@@ -188,7 +193,10 @@ void Robot::loadSaveUserSettings(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM USER: NO EEPROM DATA"));
+    Console.println(F("EEPROM USERDATA: NO EEPROM USER DATA"));
+    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    addErrorCounter(ERR_EEPROM_DATA);
+    setNextState(STATE_ERROR, 0);
     return;
   }
   eereadwrite(readflag, addr, developerActive);          
@@ -419,13 +427,13 @@ void Robot::printSettingSerial(){
 
 
 void Robot::saveUserSettings(){
-  Console.println(F("saveUserSettings"));
+  Console.println(F("USER SETTINGS ARE SAVED"));
   loadSaveUserSettings(false);
 }
 
 void Robot::deleteUserSettings(){
   int addr = 0;
-  Console.println(F("deleteUserSettings"));
+  Console.println(F("ALL USER SETTINGS ARE DELETED"));
   eewrite(addr, (short)0); // magic  
 }
 
@@ -932,8 +940,8 @@ void Robot::setDefaultTime(){
 void Robot::setup()  {     
   setDefaultTime();
   setMotorPWM(0, 0, false);
-  loadUserSettings();
   loadSaveErrorCounters(true);
+  loadUserSettings();
   setUserSwitches();
 
   
@@ -1055,7 +1063,8 @@ void Robot::printMenu(){
   Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
   Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
-  Console.println(F("9=load factory settings"));  
+  Console.println(F("9=save user settings"));  
+  Console.println(F("l=load factory settings"));  
   Console.println(F("x=read settings"));  
   Console.println(F("e=delete all errors"));  
   Console.println(F("0=exit"));  
@@ -1188,17 +1197,23 @@ void Robot::menu(){
           ADCMan.calibrate();
           break;
         case '9':
+          saveUserSettings();
+          printMenu();
+          break;
+        case 'l':
           deleteUserSettings();
+          printMenu();
           break;          
         case 'x':
           printSettingSerial();
-          Console.println(F("fertig"));
+          Console.println(F("DONE"));
+          printMenu();
           break;          
         case 'e':
         resetErrorCounters();
         setNextState(STATE_OFF, 0);
-        Console.println(F("all errors are deleted"));
-        Console.println(F("Press 0 to continue"));
+        Console.println(F("ALL ERRORS ARE DELETED"));
+        printMenu();
         break;          
       }      
     }

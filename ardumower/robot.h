@@ -123,6 +123,7 @@ enum {
   ERR_GPS_DATA,
   ERR_ADC_CALIB,
   ERR_IMU_CALIB,
+  ERR_EEPROM_DATA,
   // <---- add new error types here (NOTE: increase MAGIC to avoid corrupt EEPROM error data!)
   ERR_ENUM_COUNT,  
 };  
