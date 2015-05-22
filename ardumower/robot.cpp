@@ -436,9 +436,10 @@ void Robot::addErrorCounter(byte errType){
 }
 
 void Robot::resetErrorCounters(){
-   Console.println(F("resetErrorCounters"));
-   for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=errorCounterMax[i]=0;
-   loadSaveErrorCounters(false);
+  Console.println(F("resetErrorCounters"));
+  for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=errorCounterMax[i]=0;
+  loadSaveErrorCounters(false);
+  resetMotorFault();
 }
 
 void Robot::checkErrorCounter(){

@@ -467,6 +467,21 @@ void checkMotorFault(){
   }
 }
 
+void Mower::resetMotorFault(){
+  if (digitalRead(pinMotorLeftFault)==LOW){
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+  }
+  if  (digitalRead(pinMotorRightFault)==LOW){
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+  }
+  if (digitalRead(pinMotorMowFault)==LOW){  
+    digitalWrite(pinMotorMowEnable, LOW);
+    digitalWrite(pinMotorMowEnable, HIGH);
+  }
+}
+
  
 int Mower::readSensor(char type){
   switch (type) {

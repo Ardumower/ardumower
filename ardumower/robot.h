@@ -464,6 +464,8 @@ class Robot
     virtual void setUserSwitches(); 
     virtual void addErrorCounter(byte errType);    
     virtual void resetErrorCounters();
+    virtual void resetMotorFault(){}
+
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);
