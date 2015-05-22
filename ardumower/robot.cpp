@@ -1057,6 +1057,7 @@ void Robot::printMenu(){
   Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
   Console.println(F("9=load factory settings"));  
   Console.println(F("x=read settings"));  
+  Console.println(F("e=delete all errors"));  
   Console.println(F("0=exit"));  
   Console.println();
 }
@@ -1193,6 +1194,12 @@ void Robot::menu(){
           printSettingSerial();
           Console.println(F("fertig"));
           break;          
+        case 'e':
+        resetErrorCounters();
+        setNextState(STATE_OFF, 0);
+        Console.println(F("all errors are deleted"));
+        Console.println(F("Press 0 to continue"));
+        break;          
       }      
     }
     delay(10);

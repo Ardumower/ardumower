@@ -449,18 +449,21 @@ void Mower::setup(){
 void checkMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_LEFT);
+    Console.println(F("Error: motor left fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorEnable, LOW);
     //digitalWrite(pinMotorEnable, HIGH);
   }
   if  (digitalRead(pinMotorRightFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_RIGHT);
+    Console.println(F("Error: motor right fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorEnable, LOW);
     //digitalWrite(pinMotorEnable, HIGH);
   }
   if (digitalRead(pinMotorMowFault)==LOW){  
     robot.addErrorCounter(ERR_MOTOR_MOW);
+    Console.println(F("Error: motor mow fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorMowEnable, LOW);
     //digitalWrite(pinMotorMowEnable, HIGH);
@@ -471,15 +474,18 @@ void Mower::resetMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
-  }
+    Console.println(F("Reset motor left fault"));
+}
   if  (digitalRead(pinMotorRightFault)==LOW){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
-  }
+    Console.println(F("Reset motor right fault"));
+}
   if (digitalRead(pinMotorMowFault)==LOW){  
     digitalWrite(pinMotorMowEnable, LOW);
     digitalWrite(pinMotorMowEnable, HIGH);
-  }
+    Console.println(F("Reset motor mow fault"));
+}
 }
 
  
