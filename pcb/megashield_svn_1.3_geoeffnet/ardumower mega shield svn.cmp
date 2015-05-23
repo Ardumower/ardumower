@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 20.05.2015 21:54:29
+Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 23.05.2015 17:07:26
 
 BeginCmp
 TimeStamp = /553D2376/553D2728;
@@ -309,7 +309,7 @@ IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /554BCB67/5558A33B;
+TimeStamp = /5558DDF4/55609DFC;
 Reference = CC4;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
@@ -323,7 +323,7 @@ IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /554C1C35/5558A079;
+TimeStamp = /5558DDF4/55609E28;
 Reference = CC6;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
@@ -493,6 +493,111 @@ EndCmp
 BeginCmp
 TimeStamp = /5558DDF4/555CF809;
 Reference = CC30;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA50B;
+Reference = CC31;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA521;
+Reference = CC32;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA4F5;
+Reference = CC33;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA54D;
+Reference = CC34;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA563;
+Reference = CC35;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA537;
+Reference = CC36;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA58F;
+Reference = CC37;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA5A5;
+Reference = CC38;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/555FA579;
+Reference = CC39;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/55609E3E;
+Reference = CC40;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/55609E12;
+Reference = CC41;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5560A623;
+Reference = CC42;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5560A639;
+Reference = CC43;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5558DDF4/5560A60D;
+Reference = CC44;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /553BDA33/5560BCE1;
+Reference = CC45;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
@@ -1236,7 +1341,7 @@ BeginCmp
 TimeStamp = /554BCB67/554C8CE5;
 Reference = R12;
 ValeurCmp = 47K 0,1%;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp

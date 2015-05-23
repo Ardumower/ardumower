@@ -77,13 +77,13 @@ Wire Wire Line
 $Comp
 L Bluetooth_CZ_HC_05 U2
 U 1 1 553C3493
-P 1125 1580
-F 0 "U2" H 1125 1480 50  0000 C CNN
-F 1 "Bluetooth_CZ_HC_05" V 1231 1588 50  0000 C CNN
-F 2 "ACS712:Bluetooth_Buchse_Platz" H 1125 1580 50  0001 C CNN
-F 3 "DOCUMENTATION" H 1125 1580 50  0001 C CNN
-F 4 "Value" H 1125 1580 60  0001 C CNN "Bestellnummer"
-	1    1125 1580
+P 900 1580
+F 0 "U2" H 900 1480 50  0000 C CNN
+F 1 "Bluetooth_CZ_HC_05" V 1006 1588 50  0000 C CNN
+F 2 "ACS712:Bluetooth_Buchse_Platz" H 900 1580 50  0001 C CNN
+F 3 "DOCUMENTATION" H 900 1580 50  0001 C CNN
+F 4 "Value" H 900 1580 60  0001 C CNN "Bestellnummer"
+	1    900  1580
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -111,9 +111,9 @@ F 4 "Value" H 2085 1145 60  0001 C CNN "Bestellnummer"
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1525 1430 1770 1430
+	1300 1430 1770 1430
 Wire Wire Line
-	1525 1330 1680 1330
+	1300 1330 1680 1330
 Wire Wire Line
 	1680 1330 1680 1145
 Wire Wire Line
@@ -157,7 +157,7 @@ F 3 "" H 1775 1730 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1525 1730 1775 1730
+	1300 1730 1775 1730
 $Comp
 L JUMPER JP8
 U 1 1 553C4C94
@@ -209,7 +209,7 @@ $EndComp
 Wire Wire Line
 	2290 2585 2290 2695
 Wire Wire Line
-	1525 1830 2290 1830
+	1300 1830 2290 1830
 Wire Wire Line
 	2290 1830 2290 1985
 Wire Wire Line
@@ -240,7 +240,7 @@ $EndComp
 Wire Wire Line
 	2665 2485 2665 2700
 Wire Wire Line
-	1525 1630 2825 1630
+	1300 1630 2825 1630
 Wire Wire Line
 	2665 1630 2665 1985
 Text GLabel 2825 1630 2    39   Input ~ 0
@@ -270,7 +270,7 @@ F 4 "Value" H 3660 2240 60  0001 C CNN "Bestellnummer"
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	1525 1530 3660 1530
+	1300 1530 3660 1530
 Wire Wire Line
 	3235 1530 3235 1990
 Wire Wire Line
@@ -513,4 +513,33 @@ Wire Wire Line
 	2865 4535 2720 4535
 Wire Wire Line
 	2865 3835 2720 3835
+$Comp
+L Kondensator CC45
+U 1 1 5560BCE1
+P 1425 2310
+F 0 "CC45" H 1475 2410 50  0000 L CNN
+F 1 "100nF" H 1475 2210 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 1425 2310 60  0001 C CNN
+F 3 "" H 1425 2310 60  0000 C CNN
+F 4 "R:KERKO 100N" H 1425 2310 60  0001 C CNN "Bestellnummer"
+F 5 "http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&ACTION=3&LA=2&ARTICLE=9265&GROUPID=3169&artnr=KERKO+100N" H 1425 2310 60  0001 C CNN "Bestelllink"
+	1    1425 2310
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0113
+U 1 1 5560C24F
+P 1425 2690
+F 0 "#PWR0113" H 1425 2440 60  0001 C CNN
+F 1 "GND" V 1425 2470 60  0000 C CNN
+F 2 "" H 1425 2690 60  0000 C CNN
+F 3 "" H 1425 2690 60  0000 C CNN
+	1    1425 2690
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1425 2510 1425 2690
+Wire Wire Line
+	1425 2110 1425 1830
+Connection ~ 1425 1830
 $EndSCHEMATC
