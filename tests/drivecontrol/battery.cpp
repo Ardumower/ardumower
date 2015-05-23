@@ -1,7 +1,7 @@
 #include "battery.h"
+#include "config.h"
 #include "ADCMan.h"
 #include "drivers.h"
-#include "config.h"
 
 BatteryControl Battery;
 

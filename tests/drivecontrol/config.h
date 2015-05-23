@@ -1,8 +1,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+
 // ------ pins---------------------------------------
-// Warning: If you change pinout, interrupt configuration (odometry, R/C) need to be changed too!
+// Warning: If you change pinout, interrupt configuration (odometry, R/C, rpm) need to be changed too!
 
 #define pinMotorEnable  37         // EN motors enable
 #define pinMotorLeftPWM 5          // M1_IN1 left motor PWM pin
@@ -72,9 +73,10 @@
 #define pinUserSwitch2 47          // user-defined switch 2
 #define pinUserSwitch3 48          // user-defined switch 3
 #define pinRain 44                 // rain sensor
-// IMU (compass/gyro/accel): I2C  (SCL, SDA) 
+// RTC, IMU (compass/gyro/accel): I2C  (SCL, SDA) 
+// GPS: Serial3 (TX3, RX3)
 // Bluetooth: Serial2 (TX2, RX2)
-// GPS: Serial3 (TX3, RX3) 
+// WLAN: Serial1 (TX1, RX1) 
 
 // ------- baudrates---------------------------------
 #define BAUDRATE 19200            // serial output baud rate
@@ -82,5 +84,25 @@
 #define PFOD_PIN 1234             // Bluetooth pin
 
 
+// ------ drivers  ----------------------------------
+#define MOTOR_DRIVER_MC33926       // enable this for MC33926 gear motor driver
+#define MOTOR_MOW_DRIVER_MC33926   // enable this for MC33926 mower motor driver
+
+
+// ----- robot configuration ------------------------
+// see config.cpp for factory configuration!
+
+
+class FactoryConfig
+{
+  public:
+    FactoryConfig();
+    void setup();
+};
+
+
+
 #endif
+
+
 

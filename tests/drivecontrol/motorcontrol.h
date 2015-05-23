@@ -16,6 +16,7 @@
 
 #include <Arduino.h>
 #include "pid.h"
+#include "config.h"
 
 
 enum {
@@ -85,32 +86,51 @@ class MotorControl
     bool enableSpeedControl; // enable speed controller?
     bool enableStallDetection; // enable stall detection?
     MotorControl();
-    void setup();
-    void run();    
-    void setSpeedRpm(int leftRpm, int rightRpm);    
-    void setSpeedPWM(int leftPWM, int rightPWM);    
-    void stopImmediately();
-    void travelLineSpeedRpm(int speedRpm);    
-    void travelLineDistance(int distanceCm, int speedRpm);
-    void rotate(float angleRad, int speedRpm);
-    bool hasStopped();    
-    void resetStalled();
-    void print();
-    void printCSV(bool includeHeader);
+    virtual void setup();
+    virtual void run();    
+    virtual void setSpeedRpm(int leftRpm, int rightRpm);    
+    virtual void setSpeedPWM(int leftPWM, int rightPWM);    
+    virtual void stopImmediately();
+    virtual void travelLineSpeedRpm(int speedRpm);    
+    virtual void travelLineDistance(int distanceCm, int speedRpm);
+    virtual void rotate(float angleRad, int speedRpm);
+    virtual bool hasStopped();    
+    virtual void resetStalled();
+    virtual void print();
+    virtual void printCSV(bool includeHeader);
 private:    
     unsigned long lastMotorRunTime;
     unsigned long lastMotorControlTime;
     unsigned long lastOdometryTime;    
     unsigned long lastMotorCurrentTime;        
-    void readOdometry();
-    void speedControl();
-    void setMC33926(int pinDir, int pinPWM, int speed);    
-    void readCurrent();
-    void checkMotorFault();
+    virtual void readOdometry();
+    virtual void speedControl();
+    virtual void setMC33926(int pinDir, int pinPWM, int speed);    
+    virtual void readCurrent();
+    virtual void checkFault();
+    virtual void resetFault();    
+};
+
+// -------------------------------------------------------------------
+
+// MC33926 motor control
+class MotorControlMC33926 : public MotorControl
+{
+  public:
+    virtual void setSpeedPWM(int leftPWM, int rightPWM){}
+private:    
+    virtual void readCurrent(){}
+    virtual void checkFault(){}
+    virtual void resetFault(){}
 };
 
 
-extern MotorControl MotorCtrl;
+#ifdef MOTOR_DRIVER_MC33926
+  extern MotorControlMC33926 MotorCtrl;
+#elif MOTOR_DRIVER_XYZ
+  extern MotorControlXYZ MotorCtrl;
+#endif
+
 
 #endif
 

@@ -4,7 +4,13 @@
 #include "config.h"
 
 
-MotorControl MotorCtrl;
+#ifdef MOTOR_DRIVER_MC33926
+  MotorControlMC33926 MotorCtrl;
+#elif MOTOR_DRIVER_XYZ
+  extern MotorControlXYZ MotorCtrl;  
+#endif
+
+
 volatile static boolean odometryLeftLastState;
 volatile static boolean odometryRightLastState;       
 
@@ -170,13 +176,18 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
   }
 }
 
-void MotorControl::checkMotorFault(){
+void MotorControl::checkFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     motorLeftError = true;
   }
   if  (digitalRead(pinMotorRightFault)==LOW){
     motorRightError = true;
   }
+}
+
+void MotorControl::resetFault(){
+  digitalWrite(pinMotorEnable, LOW);
+  digitalWrite(pinMotorEnable, HIGH);  
 }
 
 void MotorControl::run(){
@@ -216,7 +227,7 @@ void MotorControl::run(){
     speedControl();
   }
   readCurrent();  
-  checkMotorFault();
+  checkFault();
 }  
 
 
