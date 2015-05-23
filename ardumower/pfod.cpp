@@ -254,7 +254,9 @@ void RemoteControl::sendErrorMenu(boolean update){
   Bluetooth.print(F("|zz~GPS comm "));
   Bluetooth.print(robot->errorCounterMax[ERR_GPS_COMM]);  
   Bluetooth.print(F("|zz~GPS data "));
-  Bluetooth.print(robot->errorCounterMax[ERR_GPS_DATA]);  
+  Bluetooth.print(robot->errorCounterMax[ERR_GPS_DATA]); 
+  Bluetooth.print(F("|zz~EEPROM data "));
+  Bluetooth.print(robot->errorCounterMax[ERR_EEPROM_DATA]); 
   Bluetooth.println("}");
 }  
 

@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "602"
+#define VER "1.0a3-Azurit-dev"
  
 
 // sensors
@@ -123,6 +123,7 @@ enum {
   ERR_GPS_DATA,
   ERR_ADC_CALIB,
   ERR_IMU_CALIB,
+  ERR_EEPROM_DATA,
   // <---- add new error types here (NOTE: increase MAGIC to avoid corrupt EEPROM error data!)
   ERR_ENUM_COUNT,  
 };  
@@ -464,6 +465,8 @@ class Robot
     virtual void setUserSwitches(); 
     virtual void addErrorCounter(byte errType);    
     virtual void resetErrorCounters();
+    virtual void resetMotorFault(){}
+
 protected:
     // convert ppm time to RC slider value
     virtual int rcValue(int ppmTime);

@@ -25,7 +25,9 @@
 
 #include "robot.h"
 
+//#define MAGIC 45
 #define MAGIC 45
+
 
 #define ADDR_USER_SETTINGS 0
 #define ADDR_ERR_COUNTERS 400
@@ -174,7 +176,10 @@ void Robot::loadSaveErrorCounters(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM ERR COUNTERS: NO EEPROM DATA"));
+    Console.println(F("EEPROM ERR COUNTERS: NO EEPROM ERROR DATA"));
+    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    addErrorCounter(ERR_EEPROM_DATA);
+    setNextState(STATE_ERROR, 0);
     return;
   }
   eereadwrite(readflag, addr, errorCounterMax);  
@@ -188,7 +193,10 @@ void Robot::loadSaveUserSettings(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM USER: NO EEPROM DATA"));
+    Console.println(F("EEPROM USERDATA: NO EEPROM USER DATA"));
+    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    addErrorCounter(ERR_EEPROM_DATA);
+    setNextState(STATE_ERROR, 0);
     return;
   }
   eereadwrite(readflag, addr, developerActive);          
@@ -288,7 +296,7 @@ void Robot::printSettingSerial(){
  
   // ------- wheel motors -----------------------------
   Console.print  (F("motorAccel  : "));
-  Console.println( motorAccel);
+  Console.println(motorAccel);
   Console.print  (F("motorSpeedMaxRpm : "));
   Console.println(motorSpeedMaxRpm);
   Console.print  (F("motorSpeedMaxPwm : ")); 
@@ -299,6 +307,10 @@ void Robot::printSettingSerial(){
   Console.println(motorSenseRightScale);
   Console.print  (F("motorSenseLeftScale : "));
   Console.println(motorSenseLeftScale);
+  Console.print  (F("motorPowerIgnoreTime : "));
+  Console.println(motorPowerIgnoreTime);
+  Console.print  (F("motorZeroSettleTime : "));
+  Console.println(motorZeroSettleTime);
   Console.print  (F("motorRollTimeMax : "));
   Console.println(motorRollTimeMax);
   Console.print  (F("motorReverseTime : "));
@@ -312,6 +324,18 @@ void Robot::printSettingSerial(){
   
   Console.print  (F("motorBiDirSpeedRatio2 : "));
   Console.println(motorBiDirSpeedRatio2);
+
+  Console.print  (F("motorLeftPID.Kp : "));
+  Console.println(motorLeftPID.Kp);
+  Console.print  (F("motorLeftPID.Ki : "));
+  Console.println(motorLeftPID.Ki);
+  Console.print  (F("motorLeftPID.Kd : "));
+  Console.println(motorLeftPID.Kd);
+
+  Console.print  (F("motorRightSwapDir : "));
+  Console.println(motorRightSwapDir);
+  Console.print  (F("motorLeftSwapDir : "));
+  Console.println(motorLeftSwapDir);
   
   // ------ mower motor -------------------------------
   Console.print  (F("motorMowAccel : "));
@@ -333,9 +357,30 @@ void Robot::printSettingSerial(){
   Console.print  (F("motorMowPID.Kd : "));
   Console.println(motorMowPID.Kd);
   
+  // ------ bumper ------------------------------------
+  Console.print  (F("bumperUse : "));
+  Console.println(bumperUse);
+
+  // ------ drop ------------------------------------
+  Console.print  (F("dropUse : "));
+  Console.println(dropUse);
+
+  Console.print  (F("dropContact : "));
+  Console.println(dropcontact);
+
+  // ------ rain ------------------------------------
+  Console.print  (F("rainUse : "));
+  Console.println(rainUse);
+
   // ------ sonar ------------------------------------
   Console.print  (F("sonarUse : "));
   Console.println(sonarUse);
+  Console.print  (F("sonarLeftUse : "));
+  Console.println(sonarLeftUse);
+  Console.print  (F("sonarRightUse : "));
+  Console.println(sonarRightUse);
+  Console.print  (F("sonarCenterUse : "));
+  Console.println(sonarCenterUse);
   Console.print  (F("sonarTriggerBelow : "));
   Console.println(sonarTriggerBelow);
   
@@ -354,7 +399,17 @@ void Robot::printSettingSerial(){
   Console.println( perimeterPID.Ki);
   Console.print  (F("perimeterPID.Kd : "));
   Console.println(perimeterPID.Kd);
-    
+  Console.print  (F("trackingPerimeterTransitionTimeOut : "));
+  Console.println(trackingPerimeterTransitionTimeOut);
+  Console.print  (F("trackingErrorTimeOut : "));
+  Console.println(trackingErrorTimeOut);
+  Console.print  (F("trackingBlockInnerWheelWhilePerimeterStruggling : "));
+  Console.println(trackingBlockInnerWheelWhilePerimeterStruggling);
+  
+  // ------ lawn sensor --------------------------------
+  Console.print  (F("lawnSensorUse : "));
+  Console.println(lawnSensorUse);
+
   // ------  IMU (compass/accel/gyro) ----------------------
   
   Console.print  (F("imuUse : "));
@@ -373,6 +428,10 @@ void Robot::printSettingSerial(){
   Console.println(imuRollPID.Ki); 
   Console.print  (F("imuRollPID.Kd : "));
   Console.println(imuRollPID.Kd); 
+
+  // ------ model R/C ------------------------------------
+  Console.print  (F("remoteUse : "));
+  Console.println(remoteUse); 
   
   // ------ battery -------------------------------------
   
@@ -382,16 +441,34 @@ void Robot::printSettingSerial(){
   Console.println(batGoHomeIfBelow); 
   Console.print  (F("batSwitchOffIfBelow : "));
   Console.println(batSwitchOffIfBelow); 
+  Console.print  (F("batSwitchOffIfIdle : "));
+  Console.println(batSwitchOffIfIdle); 
   Console.print  (F("batFactor : "));
   Console.println( batFactor);
   Console.print  (F("batChgFactor : "));  
   Console.println( batChgFactor);
   Console.print  (F("batFull : "));
   Console.println( batFull);
+  Console.print  (F("batChargingCurrentMax : "));
+  Console.println(batChargingCurrentMax); 
+  Console.print  (F("batFullCurrent : "));
+  Console.println(batFullCurrent); 
+  Console.print  (F("startChargingIfBelow : "));
+  Console.println(startChargingIfBelow); 
+  Console.print  (F("chargingTimeout : "));
+  Console.println(chargingTimeout); 
+  Console.print  (F("chgSelection : "));
+  Console.println(chgSelection); 
   Console.print  (F("chgSenseZero : "));
   Console.println(chgSenseZero); 
   Console.print  (F("chgFactor : "));
   Console.println( chgFactor);
+  Console.print  (F("chgSense : "));
+  Console.println(chgSense); 
+  Console.print  (F("chgChange : "));
+  Console.println(chgChange); 
+  Console.print  (F("chgNull : "));
+  Console.println(chgNull); 
   // ------  charging station ---------------------------
   
   Console.print  (F("stationRevTime : "));
@@ -400,6 +477,8 @@ void Robot::printSettingSerial(){
   Console.println(stationRollTime); 
   Console.print  (F("stationForwTime : "));
   Console.println( stationForwTime);
+  Console.print  (F("stationCheckTime : "));
+  Console.println(stationCheckTime); 
   // ------ odometry ------------------------------------
   
   Console.print  (F("odometryUse : "));
@@ -412,20 +491,45 @@ void Robot::printSettingSerial(){
   Console.println( odometryTicksPerCm);
   Console.print  (F("odometryWheelBaseCm : "));
   Console.println( odometryWheelBaseCm);
+  Console.print  (F("odometryRightSwapDir : "));
+  Console.println(odometryRightSwapDir); 
+  Console.print  (F("odometryLeftSwapDir : "));
+  Console.println(odometryLeftSwapDir); 
 
+// ----- GPS -------------------------------------------
+  Console.print  (F("gpsUse : "));
+  Console.println(gpsUse); 
+
+// ----- other -----------------------------------------
+  Console.print  (F("buttonUse : "));
+  Console.println(buttonUse); 
+
+// ----- user-defined switch ---------------------------
+  Console.print  (F("userSwitch1 : "));
+  Console.println(userSwitch1); 
+  Console.print  (F("userSwitch2 : "));
+  Console.println(userSwitch2); 
+  Console.print  (F("userSwitch3 : "));
+  Console.println(userSwitch3); 
+
+// ----- timer -----------------------------------------
+  Console.print  (F("timerUse : "));
+  Console.println(timerUse); 
+  
   return;
+
 }
 
 
 
 void Robot::saveUserSettings(){
-  Console.println(F("saveUserSettings"));
+  Console.println(F("USER SETTINGS ARE SAVED"));
   loadSaveUserSettings(false);
 }
 
 void Robot::deleteUserSettings(){
   int addr = 0;
-  Console.println(F("deleteUserSettings"));
+  Console.println(F("ALL USER SETTINGS ARE DELETED"));
   eewrite(addr, (short)0); // magic  
 }
 
@@ -436,9 +540,10 @@ void Robot::addErrorCounter(byte errType){
 }
 
 void Robot::resetErrorCounters(){
-   Console.println(F("resetErrorCounters"));
-   for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=errorCounterMax[i]=0;
-   loadSaveErrorCounters(false);
+  Console.println(F("resetErrorCounters"));
+  for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=errorCounterMax[i]=0;
+  loadSaveErrorCounters(false);
+  resetMotorFault();
 }
 
 void Robot::checkErrorCounter(){
@@ -931,8 +1036,8 @@ void Robot::setDefaultTime(){
 void Robot::setup()  {     
   setDefaultTime();
   setMotorPWM(0, 0, false);
-  loadUserSettings();
   loadSaveErrorCounters(true);
+  loadUserSettings();
   setUserSwitches();
 
   
@@ -1054,8 +1159,10 @@ void Robot::printMenu(){
   Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
   Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
-  Console.println(F("9=load factory settings"));  
+  Console.println(F("9=save user settings"));  
+  Console.println(F("l=load factory settings"));  
   Console.println(F("x=read settings"));  
+  Console.println(F("e=delete all errors"));  
   Console.println(F("0=exit"));  
   Console.println();
 }
@@ -1186,12 +1293,24 @@ void Robot::menu(){
           ADCMan.calibrate();
           break;
         case '9':
+          saveUserSettings();
+          printMenu();
+          break;
+        case 'l':
           deleteUserSettings();
+          printMenu();
           break;          
         case 'x':
           printSettingSerial();
-          Console.println(F("fertig"));
+          Console.println(F("DONE"));
+          printMenu();
           break;          
+        case 'e':
+        resetErrorCounters();
+        setNextState(STATE_OFF, 0);
+        Console.println(F("ALL ERRORS ARE DELETED"));
+        printMenu();
+        break;          
       }      
     }
     delay(10);
@@ -1688,7 +1807,7 @@ void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
-    if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
+    if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_ERROR) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
       Console.println(F("triggered batSwitchOffIfBelow"));
       addErrorCounter(ERR_BATTERY);
       beep(2, true);      
