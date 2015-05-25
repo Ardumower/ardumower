@@ -8,7 +8,8 @@ SonarControl Sonar;
 
 #define NO_ECHO 0
 // ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
-#define MAX_ECHO_TIME 3000         
+#define MAX_ECHO_TIME 3000
+#define MIN_ECHO_TIME 350                  
 
 
 SonarControl::SonarControl(){  
@@ -61,6 +62,7 @@ unsigned int SonarControl::readHCSR04(int triggerPin, int echoPin){
   digitalWrite(triggerPin, LOW);
   uS = pulseIn(echoPin, HIGH, MAX_ECHO_TIME + 1000);  
   if (uS > MAX_ECHO_TIME) uS = NO_ECHO;
+    else if (uS < MIN_ECHO_TIME) uS = NO_ECHO;
   return uS;
 }
 
