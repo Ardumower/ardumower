@@ -2250,7 +2250,7 @@ void Robot::loop()  {
       break;
     case STATE_OFF:
       // robot is turned off      
-      checkTimer();
+      //checkTimer();   // deactivated due to safety issues. when mower is off it should stay off. timer is only active when mower is n STATE_STATION.
       if (batMonitor && (millis()-stateStartTime>2000)){
         if ((chgVoltage > 5.0)  && (batVoltage > 8)){
           beep(2, true);      
