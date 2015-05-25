@@ -1910,13 +1910,16 @@ void Robot::checkTimer(){
             } 
           }           
         }
-      }
-    }
-    if (stopTimerTriggered){
+      if ((stopTimerTriggered) && (timer[i].active)){
       if (stateCurr == STATE_FORWARD){
         Console.println(F("timer stop triggered"));
+        if (perimeterUse){
         setNextState(STATE_PERI_FIND, 0);
+      }
+        else setNextState(STATE_OFF,0);
       } 
+    }
+      }
     }
   }
 }
