@@ -84,9 +84,7 @@
 #define PFOD_PIN 1234             // Bluetooth pin
 
 
-// ------ drivers  ----------------------------------
-#define MOTOR_DRIVER_MC33926       // enable this for MC33926 gear motor driver
-#define MOTOR_MOW_DRIVER_MC33926   // enable this for MC33926 mower motor driver
+#define SIM_MOTOR 1      // enable for simulation
 
 
 // ----- robot configuration ------------------------
@@ -96,11 +94,11 @@
 class FactoryConfig
 {
   public:
-    FactoryConfig();
     void setup();
 };
 
 
+extern FactoryConfig Config;
 
 #endif
 

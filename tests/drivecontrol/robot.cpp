@@ -15,19 +15,21 @@ RobotControl::RobotControl(){
 
 void RobotControl::setup(){
   Wire.begin();            
-  Console.begin(19200);
+  Console.begin(BAUDRATE);
   Console.println(F("SETUP"));         
   
   ADCMan.setup();  
   Battery.setup();  
   MotorCtrl.setup();  
-  //MotorCtrl.enableStallDetection = false;
   MotorMow.setup();
+  ModelRC.setup();
   Buzzer.setup();    
   Sonar.setup();
   Timer.setup();
   Button.setup();  
   LED.setup();
+
+  Config.setup();
   
   LED.playSequence(LED_RED_BLINK);
   
@@ -41,6 +43,75 @@ void RobotControl::setup(){
   Console.println(F("SETUP completed"));
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
 }
+
+
+void RobotControl::checkKey(){
+  if (Console.available() > 0){
+    char ch = (char)Console.read();          
+    switch (ch){
+      case '1': Button.setBeepCount(1); break;       
+      case '2': Button.setBeepCount(2); break;             
+      case '3': Button.setBeepCount(3); break;             
+      case '4': Button.setBeepCount(4); break;             
+      case '5': Button.setBeepCount(5); break;                   
+      case 's': Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; break;
+    }
+  }        
+}
+
+  
+// call this in ANY loop!
+void RobotControl::run(){  
+  //Console.println(F("RobotControl::run"));
+  
+  checkKey();  
+  arbitrator.monitor();    
+  ADCMan.run();
+  MotorCtrl.run();    
+  MotorMow.run();
+  Buzzer.run();  
+  LED.run();
+  Button.run();
+  Battery.run();
+  Sonar.run();
+  Timer.run();
+  
+  delay(50);  
+}
+
+  
+  /* program flow:
+     a. aribitrator.run (1) calls specific behavior.run (2)
+     b. specific behavior.run periodically calls Robot.run (3)
+     c. Robot.run processes MotorCtrl, BuzzerCtrl, PfodApp etc. and monitors (4) for behavior suppression (5)
+     d. behavior is finsihed if finished or suppressed
+     e. arbitrator.run is called again for next behavior     
+      
+  
+     aribitrator                  behavior                   Robot
+     --------------------------------------------------------------
+(1) run-->|                           |                         |
+          |----------------(2)--run-->|                         |
+          |                           |--------------(3)--run-->|
+          |                           |                         |
+          |                           |                         |
+          |<--monitor--(4)--------------------------------------|
+          |                           |                         |
+          |-----------(5)--suppress-->|                         |
+          |                           X                         |
+          |                                                     |
+          |                                                     |
+   */
+
+// this is called over and over from the Arduino loop
+void RobotControl::loop(){
+  //Console.print(F("RobotControl::loop "));
+  //Console.println(loopCounter);  
+  arbitrator.run();      
+  loopCounter++;
+}
+
+
 
 
 void testloop(){
@@ -145,73 +216,4 @@ void testloop(){
   
   delay(50);  
 }
-
-
-void RobotControl::checkKey(){
-  if (Console.available() > 0){
-    char ch = (char)Console.read();          
-    switch (ch){
-      case '1': Button.setBeepCount(1); break;       
-      case '2': Button.setBeepCount(2); break;             
-      case '3': Button.setBeepCount(3); break;             
-      case '4': Button.setBeepCount(4); break;             
-      case '5': Button.setBeepCount(5); break;                   
-      case 's': Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; break;
-    }
-  }        
-}
-
-  
-// call this in ANY loop!
-void RobotControl::run(){  
-  //Console.println(F("RobotControl::run"));
-  
-  checkKey();  
-  arbitrator.monitor();    
-  ADCMan.run();
-  MotorCtrl.run();    
-  MotorMow.run();
-  Buzzer.run();  
-  LED.run();
-  Button.run();
-  Battery.run();
-  Sonar.run();
-  Timer.run();
-  
-  delay(50);  
-}
-
-  
-  /* program flow:
-     a. aribitrator.run (1) calls specific behavior.run (2)
-     b. specific behavior.run periodically calls Robot.run (3)
-     c. Robot.run processes MotorCtrl, BuzzerCtrl, PfodApp etc. and monitors (4) for behavior suppression (5)
-     d. behavior is finsihed if finished or suppressed
-     e. arbitrator.run is called again for next behavior     
-      
-  
-     aribitrator                  behavior                   Robot
-     --------------------------------------------------------------
-(1) run-->|                           |                         |
-          |----------------(2)--run-->|                         |
-          |                           |--------------(3)--run-->|
-          |                           |                         |
-          |                           |                         |
-          |<--monitor--(4)--------------------------------------|
-          |                           |                         |
-          |-----------(5)--suppress-->|                         |
-          |                           X                         |
-          |                                                     |
-          |                                                     |
-   */
-
-// this is called over and over from the Arduino loop
-void RobotControl::loop(){
-  //Console.print(F("RobotControl::loop "));
-  //Console.println(loopCounter);  
-  arbitrator.run();      
-  loopCounter++;
-}
-
-
 

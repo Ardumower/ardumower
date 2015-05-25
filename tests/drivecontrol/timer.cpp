@@ -10,7 +10,8 @@ char *dayOfWeek[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 
 
 
-TimerControl::TimerControl(){        
+TimerControl::TimerControl(){    
+  enable = false;    
   powerTimeMin = 0;
   nextTimerTime = 60000;    
   stopTimerTriggered = true;
@@ -25,6 +26,7 @@ void TimerControl::setup(){
 
 // call this in main loop
 void TimerControl::run(){
+  if (!enable) return;
   if (millis() < nextTimerTime) return;
   nextTimerTime = millis() + 60000;  
   powerTimeMin++;

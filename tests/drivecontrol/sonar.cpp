@@ -14,9 +14,9 @@ SonarControl Sonar;
 
 SonarControl::SonarControl(){  
   nextSonarTime = 0;
-  sonarLeftUse      = 1;
-  sonarRightUse     = 1;
-  sonarCenterUse    = 0;
+  enableLeft = false;
+  enableRight = false;
+  enableCenter = false;
   sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
   sonarDistCenter = sonarDistLeft = sonarDistRight = 0;
   sonarDistCounter  = 0;             
@@ -50,9 +50,9 @@ void SonarControl::run(){
   if (millis() < nextSonarTime) return; 
   nextSonarTime = millis() + 1000;
   
-  if (sonarRightUse)  sonarDistRight  = readHCSR04(pinSonarRightTrigger,  pinSonarRightEcho);
-  if (sonarLeftUse)   sonarDistLeft   = readHCSR04(pinSonarLeftTrigger,   pinSonarLeftEcho);
-  if (sonarCenterUse) sonarDistCenter = readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho);
+  if (enableRight)  sonarDistRight  = readHCSR04(pinSonarRightTrigger,  pinSonarRightEcho);
+  if (enableLeft)   sonarDistLeft   = readHCSR04(pinSonarLeftTrigger,   pinSonarLeftEcho);
+  if (enableCenter) sonarDistCenter = readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho);
   
   if ( (triggeredRight()) || (triggeredLeft()) || (triggeredCenter()) )
     sonarDistCounter++;    
@@ -64,11 +64,12 @@ void SonarControl::run(){
 // HC-SR04 ultrasonic sensor driver
 unsigned int SonarControl::readHCSR04(int triggerPin, int echoPin){
   unsigned int uS;  
-  digitalWrite(triggerPin, LOW); 
+  digitalWrite(triggerPin, LOW);   
   delayMicroseconds(2); 
   digitalWrite(triggerPin, HIGH);
   delayMicroseconds(10); 
   digitalWrite(triggerPin, LOW);
+  // ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
   uS = pulseIn(echoPin, HIGH, MAX_ECHO_TIME + 1000);  
   if (uS > MAX_ECHO_TIME) uS = NO_ECHO;
     else if (uS < MIN_ECHO_TIME) uS = NO_ECHO;

@@ -50,7 +50,7 @@ StopBehavior::StopBehavior() : Behavior() {
 }
 
 bool StopBehavior::takeControl(){
-  return ( (Button.beepCounter == 1) && (MotorCtrl.motion != MOTION_STOP) );
+  return ( (Button.beepCounter == 2) && (MotorCtrl.motion != MOTION_STOP) );
 }
 
 void StopBehavior::action(){  

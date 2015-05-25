@@ -4,11 +4,7 @@
 #include "config.h"
 
 
-#ifdef MOTOR_DRIVER_MC33926
-  MotorControlMC33926 MotorCtrl;
-#elif MOTOR_DRIVER_XYZ
-  extern MotorControlXYZ MotorCtrl;  
-#endif
+MotorControl MotorCtrl;
 
 
 volatile static boolean odometryLeftLastState;
@@ -18,33 +14,6 @@ volatile static unsigned long odometryLeftLastHighTime = 0;
 volatile static unsigned long odometryRightLastHighTime = 0;
 volatile static unsigned long odometryLeftTickTime = 0;
 volatile static unsigned long odometryRightTickTime = 0;
-
-/*
-// rescale to -PI..+PI
-double scalePI(double v)
-{
-  double d = v;
-  while (d < 0) d+=2*PI;
-  while (d >= 2*PI) d-=2*PI;
-  if (d >= PI) return (-2*PI+d); 
-  else if (d < -PI) return (2*PI+d);
-  else return d;  
-}
-
-// computes minimum distance between x radiant (current-value) and w radiant (set-value)
-double distancePI(double x, double w)
-{
-  // cases:   
-  // w=330 degree, x=350 degree => -20 degree
-  // w=350 degree, x=10  degree => -20 degree
-  // w=10  degree, x=350 degree =>  20 degree
-  // w=0   degree, x=190 degree => 170 degree
-  // w=190 degree, x=0   degree => -170 degree 
-  double d = scalePI(w - x);
-  if (d < -PI) d = d + 2*PI;
-  else if (d > PI) d = d - 2*PI;  
-  return d;
-}*/
 
 
 // odometry interrupt handler
@@ -80,10 +49,6 @@ MotorControl::MotorControl(){
   motorSpeedMaxRpm = 18;
   motorSpeedMaxPwm = 255;
     
-/*  motorLeftPID.Kp       = 0.87;    // motor wheel PID controller
-  motorLeftPID.Ki       = 0.29;
-  motorLeftPID.Kd       = 0.25;  */
-  
   motorLeftPID.Kp       = 0.87;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.29;
   motorLeftPID.Kd       = 0.25;  
@@ -237,6 +202,12 @@ void MotorControl::readOdometry(){
   if (TaC > 1000) TaC = 1;      
   static int lastOdoLeft = 0;
   static int lastOdoRight = 0;
+  #if SIM_MOTOR
+    odometryLeftTicks  += motorLeftPWMCurr;
+    odometryRightTicks += motorRightPWMCurr;
+    odometryLeftTickTime  = 255.0 / ((double)motorLeftPWMCurr);
+    odometryRightTickTime = 255.0 / ((double)motorRightPWMCurr);    
+  #endif        
   int odoLeft = odometryLeftTicks;
   int odoRight = odometryRightTicks;
   unsigned long leftTime = odometryLeftTickTime;
@@ -444,9 +415,9 @@ void MotorControl::readCurrent(){
     //           sigma_a = (Vu - Vf) / Vu    (acceleration tracktion)
     // Vf: vehicle velocity
     // Vu: tire velocity
-      
-    //print();         
-    //Console.println();
+            
+    print();         
+    Console.println();
     //printCSV(false);             
                        
     if (enableStallDetection) {    

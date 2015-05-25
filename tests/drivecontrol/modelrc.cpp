@@ -39,7 +39,17 @@ ISR(PCINT0_vect){
   }  
 }
 
+void ModelReceiver::setup(){
+  Console.println(F("ModelReceiver::setup"));
+  // R/C
+  pinMode(pinRemoteMow, INPUT);
+  pinMode(pinRemoteSteer, INPUT);
+  pinMode(pinRemoteSpeed, INPUT); 
+  pinMode(pinRemoteSwitch, INPUT);       
+}
+
 ModelReceiver::ModelReceiver(){
+  enable=false;
   // configure R/C interrupts
   PCICR |= (1<<PCIE0);
   PCMSK0 |= (1<<PCINT4);
@@ -47,6 +57,7 @@ ModelReceiver::ModelReceiver(){
 }
 
 void ModelReceiver::run(){
+  if (!enable) return;
   // control motor by R/C receiver
   int steer = ((double)MotorCtrl.motorSpeedMaxRpm/2) * (((double)remoteSteer)/100.0);
   if (remoteSpeed < 0) steer *= -1;

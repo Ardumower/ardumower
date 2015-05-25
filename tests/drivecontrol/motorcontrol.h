@@ -111,25 +111,9 @@ private:
     virtual void resetFault();    
 };
 
-// -------------------------------------------------------------------
 
-// MC33926 motor control
-class MotorControlMC33926 : public MotorControl
-{
-  public:
-    virtual void setSpeedPWM(int leftPWM, int rightPWM){}
-private:    
-    virtual void readCurrent(){}
-    virtual void checkFault(){}
-    virtual void resetFault(){}
-};
+extern MotorControl MotorCtrl;
 
-
-#ifdef MOTOR_DRIVER_MC33926
-  extern MotorControlMC33926 MotorCtrl;
-#elif MOTOR_DRIVER_XYZ
-  extern MotorControlXYZ MotorCtrl;
-#endif
 
 
 #endif

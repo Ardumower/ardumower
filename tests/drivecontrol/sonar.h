@@ -9,9 +9,9 @@
 class SonarControl
 {
   public:
-    char sonarLeftUse;
-    char sonarRightUse;
-    char sonarCenterUse;
+    bool enableLeft;
+    bool enableRight;
+    bool enableCenter;
     int sonarTriggerBelow ;    // ultrasonic sensor trigger distance
     unsigned int sonarDistCenter ;
     unsigned int sonarDistRight ;
