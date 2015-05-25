@@ -292,8 +292,8 @@ void Mower::setup(){
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
   // http://www.atmel.com/images/doc2549.pdf
   #ifdef __AVR__  
-  // NOTE: next line commented out so we can use default 450 Hz PWM freq (perimeter v2 otherwise uses the same freq band) 
-  //  TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
+  // NOTE: if next line commented out we use default 450 Hz PWM freq (perimeter v2 otherwise uses the same freq band) 
+    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) MC33926 runs a lot cooler at 3.9kHz
   #endif
   
   // i2c -- turn off internal pull-ups (and use external pull-ups)
