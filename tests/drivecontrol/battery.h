@@ -9,7 +9,11 @@
 class BatteryControl
 {
   public:
+    bool enableMonitor;
     float batFactor       ;     // battery conversion factor
+    float batGoHomeIfBelow;     // drive home voltage (Volt)
+    float batSwitchOffIfBelow;  // switch off battery if below voltage (Volt)
+    int batSwitchOffIfIdle ;      // switch off battery if idle (minutes)  
     float batChgFactor       ;     // battery conversion factor    
     float batFull         ;      // battery reference Voltage (fully charged)
     float batChargingCurrentMax ; // maximum current your charger can devliver
@@ -30,6 +34,7 @@ class BatteryControl
     int chgNull;        // Nulldurchgang Ladestromsensor         
     int batteryReadCounter;
     bool chargeRelayEnabled;
+    int idleTimeSec;    // number of seconds robot is idle (no user-interaction and no mowing)
     BatteryControl();            
     void setup();    
     void run();        
@@ -37,6 +42,9 @@ class BatteryControl
     void print();    
     void setBatterySwitch(bool state);
     bool chargerConnected();
+    bool robotShouldGoHome();
+    bool robotShouldSwitchOff();
+    bool robotShouldStartCharging();
     void enableChargingRelay(bool state);
   private:
     unsigned long nextBatteryTime;

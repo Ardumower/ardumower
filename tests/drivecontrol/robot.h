@@ -23,7 +23,7 @@
 class RobotControl
 {
   public:
-    unsigned long loopCounter;
+    unsigned long loopCounter;   // Arduino loop counter
     ModelRCBehavior modelRCBehavior;
     StopBehavior stopBehavior;
     StandbyBehavior standbyBehavior;

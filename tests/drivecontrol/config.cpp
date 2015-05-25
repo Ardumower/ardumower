@@ -3,7 +3,9 @@
 #include "motorcontrol.h"
 #include "motormow.h"
 #include "timer.h"
+#include "modelrc.h"
 #include "sonar.h"
+#include "battery.h"
 
 
 FactoryConfig Config;
@@ -50,8 +52,33 @@ void FactoryConfig::setup(){
   Sonar.enableRight = true;
   Sonar.enableLeft = true;
 
+  // ------------------ battery ------------------------------------------
+  Battery.enableMonitor = true;
+  Battery.batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
+  Battery.batSwitchOffIfBelow = 21.7;  // switch off battery if below voltage (Volt)
+  Battery.batSwitchOffIfIdle = 1;      // switch off battery if idle (minutes)  
+  Battery.batFactor     = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+  Battery.batChgFactor  = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+  Battery.batFull       =29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
+  Battery.batChargingCurrentMax =1.6;  // maximum current your charger can devliver
+  Battery.batFullCurrent  = 0.3;      // current flowing when battery is fully charged
+  Battery.startChargingIfBelow = 27.0; // start charging if battery Voltage is below
+  Battery.chargingTimeout = 12600000; // safety timer for charging (ms) 12600000 = 3.5hrs
+  // Sensorausgabe Konsole      (chgSelection =0)
+  // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
+  // Einstellungen INA169 board (chgSelection =2)
+  Battery.chgSelection    = 2;
+  Battery.chgSenseZero    = 511;        // charge current sense zero point
+  Battery.chgFactor       = 39;         // charge current conversion factor   - Empfindlichkeit nimmt mit ca. 39/V Vcc ab
+  Battery.chgSense        = 185.0;      // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
+  Battery.chgChange       = 0;          // Messwertumkehr von - nach +         1 oder 0
+  Battery.chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)  
+
   // ----------------- timer/RTC -----------------------------------------
   Timer.enable = true;
+
+  // ------------------ model R/C ----------------------------------------
+  ModelRC.enable = true;
 }
 
 

@@ -9,6 +9,8 @@ BatteryControl Battery;
 
 BatteryControl::BatteryControl(){  
   nextBatteryTime = batteryReadCounter = 0;
+  idleTimeSec = 0;
+  enableMonitor = false;
   chargeRelayEnabled = false;
   batFactor       = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batChgFactor    = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
@@ -25,7 +27,7 @@ BatteryControl::BatteryControl(){
   chgFactor       = 39;         // charge current conversion factor   - Empfindlichkeit nimmt mit ca. 39/V Vcc ab
   chgSense        = 185.0;      // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
   chgChange       = 0;          // Messwertumkehr von - nach +         1 oder 0
-  chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)  
+  chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)    
 }
 
 void BatteryControl::setup(){
@@ -58,9 +60,23 @@ void BatteryControl::run(){
   if (batteryReadCounter == 10) {    
     batteryReadCounter = 0;
     print();
-  }    
+  }      
+  idleTimeSec++;
 }
 
+bool BatteryControl::robotShouldGoHome(){
+  return ((enableMonitor) &&  (batVoltage < batGoHomeIfBelow));
+}
+
+bool BatteryControl::robotShouldSwitchOff(){
+  return (     (enableMonitor) 
+           &&  (  (idleTimeSec > batSwitchOffIfIdle * 60) || (batVoltage < batSwitchOffIfBelow) )
+         );
+}
+
+bool BatteryControl::robotShouldStartCharging(){
+  return ((enableMonitor) &&  (batVoltage < startChargingIfBelow));
+}
 
 // read battery
 void BatteryControl::read(){

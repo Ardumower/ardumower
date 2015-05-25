@@ -49,11 +49,11 @@ class TimerControl
 {
   public:
     bool enable;
-    unsigned long powerTimeMin;  // total power-time (minutes)
+    unsigned long powerTimeMin;  // power-ON time (minutes)
     ttimer_t timer[MAX_TIMERS];  // timers
     datetime_t datetime;         // current date & time                                         
-    bool stopTimerTriggered;     // stop timer triggered?
-    bool startTimerTriggered;    // start timer triggered?
+    bool stopTimerTriggered;     // has stop timer triggered?
+    bool startTimerTriggered;    // has start timer triggered?
     TimerControl();
     void setup();
     bool rtcError;              // RTC communication error?
