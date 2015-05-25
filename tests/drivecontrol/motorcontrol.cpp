@@ -416,8 +416,8 @@ void MotorControl::readCurrent(){
     // Vf: vehicle velocity
     // Vu: tire velocity
             
-    print();         
-    Console.println();
+    // print();         
+    // Console.println();
     //printCSV(false);             
                        
     if (enableStallDetection) {    

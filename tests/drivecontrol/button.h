@@ -9,14 +9,14 @@
 class ButtonControl
 {
   public:    
+    bool pressed;
     int beepCounter;
     ButtonControl();    
     void run();
-    void setup();    
-    bool pressed();    
+    void setup();        
     void resetBeepCounter();
     void setBeepCount(int count);
-  private:    
+  private:     
     int tempBeepCounter;
     unsigned long nextButtonTime;    
 };

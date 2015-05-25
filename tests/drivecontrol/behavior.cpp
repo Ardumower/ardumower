@@ -36,7 +36,8 @@ bool ModelRCBehavior::takeControl(){
 void ModelRCBehavior::action(){  
   suppressed = false;
   MotorCtrl.stopImmediately();
-  while ( !suppressed ) {    
+  Button.resetBeepCounter();    
+  while ( (!suppressed) && (!Button.pressed) )  {    
     ModelRC.run();
     Robot.run();   
   }  
@@ -50,13 +51,16 @@ StopBehavior::StopBehavior() : Behavior() {
 }
 
 bool StopBehavior::takeControl(){
-  return ( (Button.beepCounter == 2) && (MotorCtrl.motion != MOTION_STOP) );
+  return ( (Button.beepCounter == 1) && (MotorCtrl.motion != MOTION_STOP) );
 }
 
 void StopBehavior::action(){  
   suppressed = false;
   MotorCtrl.stopImmediately();  
   Button.resetBeepCounter();  
+  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
+    Robot.run();   
+  }
 }
 
 // ----------------------------------------------------------
@@ -87,7 +91,7 @@ HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
 }
 
 bool HitObstacleBehavior::takeControl(){
-  return ( (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredLeft()) );
+  return ( (MotorCtrl.motion != MOTION_STOP) && (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredLeft()) );
 }
 
 void HitObstacleBehavior::action(){  

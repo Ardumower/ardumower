@@ -37,8 +37,8 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&standbyBehavior);          
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);      
-  arbitrator.addBehavior(&stopBehavior);        
   arbitrator.addBehavior(&modelRCBehavior);     
+  arbitrator.addBehavior(&stopBehavior);          
   // arbitrator.addBehavior(&chargerConnectedBehavior);        
   Console.println(F("SETUP completed"));
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
@@ -46,7 +46,8 @@ void RobotControl::setup(){
 
 
 void RobotControl::checkKey(){
-  if (Console.available() > 0){
+  while (Console.available() > 0){
+    Button.pressed = true;
     char ch = (char)Console.read();          
     switch (ch){
       case '1': Button.setBeepCount(1); break;       
@@ -63,15 +64,15 @@ void RobotControl::checkKey(){
 // call this in ANY loop!
 void RobotControl::run(){  
   //Console.println(F("RobotControl::run"));
-  
-  checkKey();  
-  arbitrator.monitor();    
+    
+  arbitrator.monitor();        
   ADCMan.run();
   MotorCtrl.run();    
   MotorMow.run();
   Buzzer.run();  
   LED.run();
   Button.run();
+  checkKey();  
   Battery.run();
   Sonar.run();
   Timer.run();

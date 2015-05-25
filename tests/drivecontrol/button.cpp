@@ -9,6 +9,7 @@ ButtonControl Button;
 ButtonControl::ButtonControl(){  
   nextButtonTime = 0;
   beepCounter = tempBeepCounter = 0;  
+  pressed = false;
 }
 
 void ButtonControl::setup(){
@@ -22,10 +23,6 @@ void ButtonControl::resetBeepCounter(){
   beepCounter = 0;
 }
 
-bool ButtonControl::pressed(){
-  return (digitalRead(pinButton) == LOW);
-}
-
 void ButtonControl::setBeepCount(int count){
   nextButtonTime = millis() + 2000;      
   beepCounter = count;
@@ -36,13 +33,14 @@ void ButtonControl::setBeepCount(int count){
 
 // call this in main loop
 void ButtonControl::run(){    
-  boolean buttonPressed = pressed();
-  
-  if ( (!buttonPressed) && (tempBeepCounter > 0) ){
+  //if (pressed) Console.println(F("BUTTON pressed"));  
+  pressed = (digitalRead(pinButton) == LOW);  
+
+  if ( (!pressed) && (tempBeepCounter > 0) ){
     setBeepCount(tempBeepCounter);
   }  
   if (millis() >= nextButtonTime){    
-    if (buttonPressed) {
+    if (pressed) {
       nextButtonTime = millis() + 1000;      
       Buzzer.play(BC_SHORT);
       tempBeepCounter++;       
