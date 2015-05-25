@@ -25,8 +25,7 @@
 
 #include "robot.h"
 
-//#define MAGIC 45
-#define MAGIC 45
+#define MAGIC 46
 
 
 #define ADDR_USER_SETTINGS 0
@@ -207,6 +206,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, motorSenseRightScale);
   eereadwrite(readflag, addr, motorSenseLeftScale);
   eereadwrite(readflag, addr, motorRollTimeMax);
+  eereadwrite(readflag, addr, motorRollTimeMin);
   eereadwrite(readflag, addr, motorReverseTime);
   eereadwrite(readflag, addr, motorPowerIgnoreTime);
   eereadwrite(readflag, addr, motorForwTimeMax);
@@ -313,6 +313,8 @@ void Robot::printSettingSerial(){
   Console.println(motorZeroSettleTime);
   Console.print  (F("motorRollTimeMax : "));
   Console.println(motorRollTimeMax);
+  Console.print  (F("motorRollTimeMin : "));
+  Console.println(motorRollTimeMin);
   Console.print  (F("motorReverseTime : "));
   Console.println(motorReverseTime);
   
@@ -1748,7 +1750,7 @@ void Robot::setNextState(byte stateNew, byte dir){
         imuRollHeading = scalePI(imuDriveHeading + PI/20);        
         imuRollDir = LEFT;
       }      
-      stateEndTime = millis() + random(motorRollTimeMax/2,motorRollTimeMax) + motorZeroSettleTime;
+      stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
 	motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
 	motorRightSpeedRpmSet = -motorLeftSpeedRpmSet/1.25;						

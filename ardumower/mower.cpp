@@ -136,6 +136,7 @@ Mower::Mower(){
   motorPowerIgnoreTime = 2000; // time to ignore motor power (ms)
   motorZeroSettleTime   = 2000 ; // how long (ms) to wait for motors to settle at zero speed
   motorRollTimeMax    = 3000;  // max. roll time (ms)
+  motorRollTimeMin    = 1000; //min. roll time (ms) should be smaller than motorRollTimeMax
   motorReverseTime    = 3500;  // max. reverse time (ms)
   motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1

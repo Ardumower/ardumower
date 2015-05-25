@@ -248,6 +248,7 @@ class Robot
     float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)/scale)
     float motorSenseLeftScale ; // motor left sense scale  (mA=(ADC-zero)/scale)
     int motorRollTimeMax ;  // max. roll time (ms)
+    int motorRollTimeMin  ; // min. roll time (ms)
     int motorReverseTime ;  // max. reverse time (ms)
     long motorForwTimeMax; // max. forward time (ms) / timeout
     float motorBiDirSpeedRatio1 ;   // bidir mow pattern speed ratio 1
