@@ -18,6 +18,9 @@ class SonarControl
     unsigned int sonarDistLeft ; 
     unsigned int sonarDistCounter ;
     unsigned long sonarObstacleTimeout ;      
+    bool triggeredCenter();
+    bool triggeredLeft();    
+    bool triggeredRight();        
     SonarControl();
     void setup();
     void run();

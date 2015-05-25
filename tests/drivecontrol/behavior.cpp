@@ -3,6 +3,7 @@
 #include "buzzer.h"
 #include "button.h"
 #include "robot.h"
+#include "modelrc.h"
 
 
 
@@ -21,6 +22,26 @@ void StandbyBehavior::action(){
     Robot.run();   
   }  
 }
+
+// ----------------------------------------------------------
+
+ModelRCBehavior::ModelRCBehavior() : Behavior() {
+  name = "ModelRCBehavior";
+}
+
+bool ModelRCBehavior::takeControl(){
+  return (Button.beepCounter == 3);
+}
+
+void ModelRCBehavior::action(){  
+  suppressed = false;
+  MotorCtrl.stopImmediately();
+  while ( !suppressed ) {    
+    ModelRC.run();
+    Robot.run();   
+  }  
+}
+
 
 // ----------------------------------------------------------
 
@@ -66,7 +87,7 @@ HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
 }
 
 bool HitObstacleBehavior::takeControl(){
-  return ((MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled));
+  return ( (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredLeft()) );
 }
 
 void HitObstacleBehavior::action(){  

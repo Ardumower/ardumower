@@ -15,6 +15,7 @@ class ButtonControl
     void setup();    
     bool pressed();    
     void resetBeepCounter();
+    void setBeepCount(int count);
   private:    
     int tempBeepCounter;
     unsigned long nextButtonTime;    

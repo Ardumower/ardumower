@@ -24,6 +24,7 @@ class RobotControl
 {
   public:
     unsigned long loopCounter;
+    ModelRCBehavior modelRCBehavior;
     StopBehavior stopBehavior;
     StandbyBehavior standbyBehavior;
     DriveForwardBehavior driveForwardBehavior;  
@@ -35,7 +36,7 @@ class RobotControl
     virtual void setup();
     virtual void loop();
   private:
-    
+    void checkKey();
 };
 
 extern RobotControl Robot;  

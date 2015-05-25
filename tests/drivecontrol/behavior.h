@@ -16,6 +16,14 @@ class Behavior
     virtual void action() {}    
 };
 
+class ModelRCBehavior : public Behavior
+{
+  public: 
+    ModelRCBehavior();
+    virtual bool takeControl();
+    virtual void action();       
+};
+
 class StandbyBehavior : public Behavior
 {
   public:        

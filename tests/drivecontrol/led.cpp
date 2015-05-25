@@ -41,6 +41,7 @@ void LEDControl::run(){
       break;      
     case LED_RED_BLINK:
       onState = !onState;
+      digitalWrite(pinLED, onState);                  
       digitalWrite(pinLEDDuoRed, onState);
       digitalWrite(pinLEDDuoGreen, LOW);            
       break;      

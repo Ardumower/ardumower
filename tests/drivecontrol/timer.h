@@ -48,6 +48,7 @@ typedef struct ttimer_t ttimer_t;
 class TimerControl
 {
   public:
+    unsigned long powerTimeMin;  // total power-time (minutes)
     ttimer_t timer[MAX_TIMERS];  // timers
     datetime_t datetime;         // current date & time                                         
     bool stopTimerTriggered;     // stop timer triggered?

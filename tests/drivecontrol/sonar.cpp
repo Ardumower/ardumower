@@ -33,22 +33,31 @@ void SonarControl::setup(){
   pinMode(pinSonarRightEcho, INPUT); 
 }
 
+bool SonarControl::triggeredLeft(){
+  return ((sonarDistLeft != NO_ECHO) &&  (sonarDistLeft < sonarTriggerBelow));
+}
+
+bool SonarControl::triggeredRight(){
+  return ((sonarDistRight != NO_ECHO) &&  (sonarDistRight < sonarTriggerBelow));
+}
+
+bool SonarControl::triggeredCenter(){
+  return ((sonarDistCenter != NO_ECHO) &&  (sonarDistCenter < sonarTriggerBelow));
+}
+
 // call this in main loop
 void SonarControl::run(){
   if (millis() < nextSonarTime) return; 
   nextSonarTime = millis() + 1000;
+  
   if (sonarRightUse)  sonarDistRight  = readHCSR04(pinSonarRightTrigger,  pinSonarRightEcho);
   if (sonarLeftUse)   sonarDistLeft   = readHCSR04(pinSonarLeftTrigger,   pinSonarLeftEcho);
   if (sonarCenterUse) sonarDistCenter = readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho);
   
-  if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow))
+  if ( (triggeredRight()) || (triggeredLeft()) || (triggeredCenter()) )
     sonarDistCounter++;    
-
-  if ((sonarDistRight != NO_ECHO) && (sonarDistRight < sonarTriggerBelow))
-    sonarDistCounter++;    
-
-  if ((sonarDistLeft != NO_ECHO) && (sonarDistLeft < sonarTriggerBelow))
-    sonarDistCounter++;     
+    
+  print();
 }
 
 

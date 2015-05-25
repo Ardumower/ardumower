@@ -26,15 +26,20 @@ bool ButtonControl::pressed(){
   return (digitalRead(pinButton) == LOW);
 }
 
+void ButtonControl::setBeepCount(int count){
+  nextButtonTime = millis() + 2000;      
+  beepCounter = count;
+  Console.print(F("BUTTON beeps "));
+  Console.println(beepCounter);
+  tempBeepCounter = 0;    
+}
+
 // call this in main loop
-void ButtonControl::run(){
+void ButtonControl::run(){    
   boolean buttonPressed = pressed();
+  
   if ( (!buttonPressed) && (tempBeepCounter > 0) ){
-    nextButtonTime = millis() + 2000;      
-    beepCounter = tempBeepCounter;
-    Console.print(F("BUTTON beeps "));
-    Console.println(beepCounter);
-    tempBeepCounter = 0;    
+    setBeepCount(tempBeepCounter);
   }  
   if (millis() >= nextButtonTime){    
     if (buttonPressed) {

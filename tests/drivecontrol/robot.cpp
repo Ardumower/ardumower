@@ -31,13 +31,15 @@ void RobotControl::setup(){
   
   LED.playSequence(LED_RED_BLINK);
   
-  // low-to-high priority
+  // low-to-high priority  
   arbitrator.addBehavior(&standbyBehavior);          
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);      
-  arbitrator.addBehavior(&stopBehavior);      
-  arbitrator.addBehavior(&chargerConnectedBehavior);      
+  arbitrator.addBehavior(&stopBehavior);        
+  arbitrator.addBehavior(&modelRCBehavior);     
+  // arbitrator.addBehavior(&chargerConnectedBehavior);        
   Console.println(F("SETUP completed"));
+  if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
 }
 
 
@@ -144,11 +146,27 @@ void testloop(){
   delay(50);  
 }
 
+
+void RobotControl::checkKey(){
+  if (Console.available() > 0){
+    char ch = (char)Console.read();          
+    switch (ch){
+      case '1': Button.setBeepCount(1); break;       
+      case '2': Button.setBeepCount(2); break;             
+      case '3': Button.setBeepCount(3); break;             
+      case '4': Button.setBeepCount(4); break;             
+      case '5': Button.setBeepCount(5); break;                   
+      case 's': Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; break;
+    }
+  }        
+}
+
   
 // call this in ANY loop!
 void RobotControl::run(){  
   //Console.println(F("RobotControl::run"));
   
+  checkKey();  
   arbitrator.monitor();    
   ADCMan.run();
   MotorCtrl.run();    
