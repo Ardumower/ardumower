@@ -1582,7 +1582,8 @@ void Robot::readSensors(){
     } 
   }    
   
-  if ((timerUse) && (millis() >= nextTimeRTC)) {
+  //if ((timerUse) && (millis() >= nextTimeRTC)) {
+  if (millis() >= nextTimeRTC) {  
     // read RTC
     nextTimeRTC = millis() + 60000;    
     readSensor(SEN_RTC);                
