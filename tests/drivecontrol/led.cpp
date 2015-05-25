@@ -12,7 +12,7 @@ LEDControl::LEDControl(){
 }
 
 void LEDControl::setup(){
-  Console.println("LEDControl::setup");
+  Console.println(F("LEDControl::setup"));
   pinMode(pinLED, OUTPUT);
   pinMode(pinLEDDuoRed, OUTPUT);
   pinMode(pinLEDDuoGreen, OUTPUT); 

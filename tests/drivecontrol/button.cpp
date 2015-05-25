@@ -13,7 +13,7 @@ ButtonControl::ButtonControl(){
 
 void ButtonControl::setup(){
   // button
-  Console.println("ButtonControl::setup");
+  Console.println(F("ButtonControl::setup"));
   pinMode(pinButton, INPUT);
   pinMode(pinButton, INPUT_PULLUP);  
 }
@@ -32,7 +32,7 @@ void ButtonControl::run(){
   if ( (!buttonPressed) && (tempBeepCounter > 0) ){
     nextButtonTime = millis() + 2000;      
     beepCounter = tempBeepCounter;
-    Console.print("BUTTON beeps ");
+    Console.print(F("BUTTON beeps "));
     Console.println(beepCounter);
     tempBeepCounter = 0;    
   }  

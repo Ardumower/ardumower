@@ -1,4 +1,5 @@
 #include "arbitrator.h"
+#include "drivers.h"
 
 #define MAX_BEHAVIORS 30
 
@@ -14,54 +15,54 @@ Arbitrator::Arbitrator(){
  
 void Arbitrator::addBehavior(Behavior *behavior){
   if (behaviorCount >= MAX_BEHAVIORS) {
-    Serial.println("ERROR: Arbitrator::add");
+    Console.println(F("ERROR: Arbitrator::add"));
     return;
   }
-  Serial.print("Arbitrator::addBehavior ");  
-  Serial.print(behaviorCount);
-  Serial.print(": ");  
-  Serial.println(behavior->name);
+  Console.print(F("Arbitrator::addBehavior "));  
+  Console.print(behaviorCount);
+  Console.print(": ");  
+  Console.println(behavior->name);
   behaviors[behaviorCount] = behavior;
   behaviorCount++;
 }  
    
 void Arbitrator::run(){
-  Serial.println("Arbitrator::run");
+  Console.println(F("Arbitrator::run"));
   if (activeBehavior){
     activeBehavior->action();  
-    Serial.print("COMPLETED: ");
-    Serial.println(activeBehavior->name);    
+    Console.print(F("COMPLETED: "));
+    Console.println(activeBehavior->name);    
   }
   activeBehavior = NULL;
   activeBehaviorIdx = -1;
   while (nextBehavior == NULL) {
     // no next behavior (no supression) => find out next behavior    
-    Serial.println("NO SUPPRESSION");
+    Console.println(F("NO SUPPRESSION"));
     monitor();
   }
   activeBehaviorIdx=nextBehaviorIdx;    
   activeBehavior = nextBehavior;
   nextBehavior = NULL;    
   nextBehaviorIdx = -1;
-  Serial.print("CHANGED activeBehavior Idx: ");
-  Serial.print(activeBehaviorIdx);
-  Serial.print("  ");
-  Serial.println(activeBehavior->name);
+  Console.print(F("CHANGED activeBehavior Idx: "));
+  Console.print(activeBehaviorIdx);
+  Console.print("  ");
+  Console.println(activeBehavior->name);
 }
    
 void Arbitrator::monitor() {
-  //Serial.println("Arbitrator::monitor");
+  //Console.println("Arbitrator::monitor");
   for (int idx=behaviorCount-1; idx >= 0; idx--) {   
     Behavior *behavior = behaviors[idx];
     
-    /*Serial.print("takeControl ");
-    Serial.print(idx);    
-    Serial.print("  ");    
-    Serial.println(behavior->name);    */
+    /*Console.print("takeControl ");
+    Console.print(idx);    
+    Console.print("  ");    
+    Console.println(behavior->name);    */
     
     if ( (idx > activeBehaviorIdx) && (behavior->takeControl()) ){
       if (activeBehavior != NULL){    
-        Serial.println("Arbitrator::monitor suppressing");
+        Console.println(F("Arbitrator::monitor suppressing"));
         activeBehavior->suppress(); 
       }
       nextBehavior = behavior;

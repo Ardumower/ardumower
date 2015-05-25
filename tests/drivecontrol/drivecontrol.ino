@@ -18,11 +18,15 @@
 
 void setup(){
   Robot.setup();  
+  //Console.begin(19200);
+  //Console.println("setup()");  
 }
 
 
 void loop(){  
   Robot.loop();
+  //Console.println("loop()");
+  //delay(1000);
 }
 
 

@@ -23,7 +23,7 @@ SonarControl::SonarControl(){
 }
 
 void SonarControl::setup(){
-  Console.println("SonarControl::setup");
+  Console.println(F("SonarControl::setup"));
   // sonar
   pinMode(pinSonarCenterTrigger, OUTPUT); 
   pinMode(pinSonarCenterEcho, INPUT); 
@@ -67,7 +67,7 @@ unsigned int SonarControl::readHCSR04(int triggerPin, int echoPin){
 }
 
 void SonarControl::print(){
-  Console.print("sonar L,C,R=");
+  Console.print(F("sonar L,C,R="));
   Console.print(sonarDistLeft);
   Console.print(sonarDistCenter);
   Console.print(sonarDistRight);  

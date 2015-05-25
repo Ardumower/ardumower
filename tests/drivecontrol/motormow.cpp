@@ -23,7 +23,7 @@ MotorMowControl::MotorMowControl(){
 }
 
 void MotorMowControl::setup(){
-  Console.println("MotorMowControl::setup");
+  Console.println(F("MotorMowControl::setup"));
   // mower motor
   pinMode(pinMotorMowDir, OUTPUT); 
   pinMode(pinMotorMowPWM, OUTPUT);     
@@ -55,13 +55,13 @@ void MotorMowControl::setSpeedPWM(int pwm){
 
 
 void MotorMowControl::print(){
-    Serial.print("  pwm:");    
-    Serial.print(motorPWMCurr, 0);
-    Serial.print(",");
-    Serial.print("  mA:");    
-    Serial.print(motorSenseCurrent, 0);
-    Serial.print("  P:");    
-    Serial.print(motorSensePower, 1);
+    Console.print(F("  pwm:"));    
+    Console.print(motorPWMCurr, 0);
+    Console.print(",");
+    Console.print(F("  mA:"));    
+    Console.print(motorSenseCurrent, 0);
+    Console.print(F("  P:"));    
+    Console.print(motorSensePower, 1);
 }
 
 
@@ -76,7 +76,7 @@ bool MotorMowControl::hasStopped(){
 
 void MotorMowControl::resetStalled(){
   motorStalled = false;
-  Serial.println("STALL RESET");
+  Console.println(F("STALL RESET"));
 }
 
 
@@ -110,8 +110,8 @@ void MotorMowControl::readCurrent(){
     if (!motorStalled){
        if ( (abs(motorPWMCurr) > 0) && (motorSensePower > motorMowPowerMax) ) {
          print();         
-         Serial.print("  MOW STALL");         
-         Serial.println();                  
+         Console.print(F("  MOW STALL"));         
+         Console.println();                  
          motorStalled = true;         
          stopImmediately();                  
        }            

@@ -1,6 +1,7 @@
 #include "modelrc.h"
 #include "motorcontrol.h"
 #include "config.h"
+#include "drivers.h"
 
 ModelReceiver ModelRC;
 
@@ -56,10 +57,10 @@ void ModelReceiver::run(){
 }
 
 void ModelReceiver::print(){
-    Serial.print("RC:");
-    Serial.print(ModelRC.remoteSpeed);
-    Serial.print(",");
-    Serial.print(ModelRC.remoteSteer);
+    Console.print(F("RC:"));
+    Console.print(ModelRC.remoteSpeed);
+    Console.print(",");
+    Console.print(ModelRC.remoteSteer);
 }
 
 

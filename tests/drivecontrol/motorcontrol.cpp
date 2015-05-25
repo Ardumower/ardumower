@@ -110,7 +110,7 @@ MotorControl::MotorControl(){
 
 
 void MotorControl::setup(){
-  Serial.println("MotorControl::setup");
+  Console.println(F("MotorControl::setup"));
   printCSV(true);
   motion = MOTION_STOP;
   enableSpeedControl = enableStallDetection = true;
@@ -157,7 +157,7 @@ void MotorControl::setup(){
 
 void MotorControl::resetStalled(){
   motorLeftStalled = motorRightStalled = false;
-  Serial.println("STALL RESET");           
+  Console.println(F("STALL RESET"));           
 }
 
 // MC33926 motor driver
@@ -205,12 +205,12 @@ void MotorControl::run(){
       case MOTION_LINE_DISTANCE: 
         distanceToTargetCm = abs(odometryDistanceCmCurr - odometryDistanceCmSet);
         if (distanceToTargetCm < 20.0) {
-          Serial.println("reached destination");
+          Console.println(F("reached destination"));
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
           motion = MOTION_STOP;
         }
         /*if (odometryDistanceCmCurr > odometryDistanceCmSet) {        
-          Serial.println("reached destination (overshoot)");
+          Console.println(F("reached destination (overshoot)"));
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
           motion = MOTION_STOP;
         }*/          
@@ -218,7 +218,7 @@ void MotorControl::run(){
       case MOTION_ROTATE_ANGLE: 
         angleToTargetRad = abs(distancePI(odometryThetaRadCurr, odometryThetaRadSet));
         if (angleToTargetRad < PI/32){
-          Serial.println("reached angle");          
+          Console.println(F("reached angle"));          
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;        
           motion = MOTION_STOP;
         }
@@ -260,7 +260,7 @@ void MotorControl::readOdometry(){
     odometryLeftTicksZeroCounter = 0;
   } else {
     odometryLeftTicksZeroCounter++;
-    //Serial.println("LEFT TICKS ZERO");
+    //Console.println(F("LEFT TICKS ZERO"));
     if (odometryLeftTicksZeroCounter > 10) motorLeftRpmCurr = 0;     // ensures rpm gets zero
   }
   if (motorLeftPWMCurr < 0) motorLeftRpmCurr *= -1;
@@ -270,7 +270,7 @@ void MotorControl::readOdometry(){
     odometryRightTicksZeroCounter = 0;
   } else {
     odometryRightTicksZeroCounter++;
-    //Serial.println("RIGHT TICKS ZERO");    
+    //Console.println(F("RIGHT TICKS ZERO"));    
     if (odometryRightTicksZeroCounter > 10) motorRightRpmCurr = 0;   // ensures rpm gets zero 
   }
   if (motorRightPWMCurr < 0) motorRightRpmCurr *= -1;  
@@ -356,8 +356,8 @@ void MotorControl::travelLineSpeedRpm(int speedRpm){
 void MotorControl::travelLineDistance(int distanceCm, int speedRpm){
   motion = MOTION_LINE_DISTANCE;
   odometryDistanceCmSet = odometryDistanceCmCurr + distanceCm;
-  Serial.print("target distance=");  
-  Serial.println(odometryDistanceCmSet);      
+  Console.print(F("target distance="));  
+  Console.println(odometryDistanceCmSet);      
   if (distanceCm < 0) 
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -speedRpm;
   else 
@@ -367,8 +367,8 @@ void MotorControl::travelLineDistance(int distanceCm, int speedRpm){
 void MotorControl::rotate(float angleRad, int speedRpm){
   motion = MOTION_ROTATE_ANGLE;    
   odometryThetaRadSet = scalePI(odometryThetaRadCurr + angleRad);
-  Serial.print("target angle=");  
-  Serial.println(odometryThetaRadSet/PI*180.0);    
+  Console.print(F("target angle="));  
+  Console.println(odometryThetaRadSet/PI*180.0);    
   if (angleRad < 0){
     motorLeftSpeedRpmSet  = -speedRpm;
     motorRightSpeedRpmSet = speedRpm;
@@ -402,9 +402,9 @@ void MotorControl::readCurrent(){
     //motorLeftSenseADC = analogRead(pinMotorLeftSense);    
     //motorRightSenseADC = analogRead(pinMotorRightSense);       
         
-    /*Serial.print(motorLeftSenseADC);
-    Serial.print(",");
-    Serial.println(motorRightSenseADC);*/    
+    /*Console.print(motorLeftSenseADC);
+    Console.print(",");
+    Console.println(motorRightSenseADC);*/    
     
     // compute gradient
     motorLeftSenseGradient  =  (((double)motorLeftSenseADC)  - ((double)lastMotorLeftSenseADC))  / TaS;
@@ -446,15 +446,15 @@ void MotorControl::readCurrent(){
     // Vu: tire velocity
       
     //print();         
-    //Serial.println();
+    //Console.println();
     //printCSV(false);             
                        
     if (enableStallDetection) {    
       if (!motorLeftStalled){
        if ( (abs(motorLeftPWMCurr) > 0) && (motorLeftSensePower > 1) && (motorLeftEfficiency < 200)  ) {
          print();         
-         Serial.print("  LEFT STALL");         
-         Serial.println();                  
+         Console.print(F("  LEFT STALL"));         
+         Console.println();                  
          motorLeftStalled = true;         
          stopImmediately();                  
        }
@@ -462,8 +462,8 @@ void MotorControl::readCurrent(){
       if (!motorRightStalled){
        if ( (abs(motorRightPWMCurr) > 0) && (motorRightSensePower > 1) && (motorRightEfficiency < 200) ) {
          print();         
-         Serial.print("  RIGHT STALL");         
-         Serial.println();         
+         Console.print(F("  RIGHT STALL"));         
+         Console.println();         
          motorRightStalled = true;     
          stopImmediately();                         
        }
@@ -472,97 +472,97 @@ void MotorControl::readCurrent(){
 }
 
 void MotorControl::printCSV(bool includeHeader){
-    if (includeHeader) Serial.println("millis,tickL,tickR,th,dist,setL,setR,curL,curR,errL,errR,pwmL,pwmR,maL,maR,gmaL,gmaR,pL,pR,effL,effR");    
-    /*Serial.print(millis());
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryLeftTicks);    
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryRightTicks);    
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
-    Serial.print(",");        
-    Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSpeedRpmSet);        
-    Serial.print(",");    
-    Serial.print(MotorCtrl.motorLeftRpmCurr, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightRpmCurr, 1);        
-    Serial.print(",");    
-    Serial.print(MotorCtrl.motorLeftPID.eold, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightPID.eold, 1);            
-    Serial.print(",");    
-    Serial.print(MotorCtrl.motorLeftPWMCurr, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightPWMCurr, 0);        
-    Serial.print(",");    
-    Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
-    Serial.print(",");        
-    Serial.print(MotorCtrl.motorLeftSenseGradient, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSenseGradient, 0);      
-    Serial.print(",");    
-    Serial.print(MotorCtrl.motorLeftSensePower, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSensePower, 1);      
-    Serial.print(",");    */
-    Serial.print(MotorCtrl.motorLeftEfficiency, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightEfficiency, 0);        
-    Serial.println();
+    if (includeHeader) Console.println(F("millis,tickL,tickR,th,dist,setL,setR,curL,curR,errL,errR,pwmL,pwmR,maL,maR,gmaL,gmaR,pL,pR,effL,effR"));    
+    /*Console.print(millis());
+    Console.print(",");    
+    Console.print(MotorCtrl.odometryLeftTicks);    
+    Console.print(",");    
+    Console.print(MotorCtrl.odometryRightTicks);    
+    Console.print(",");    
+    Console.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
+    Console.print(",");    
+    Console.print(MotorCtrl.odometryDistanceCmCurr, 1);       
+    Console.print(",");        
+    Console.print(MotorCtrl.motorLeftSpeedRpmSet);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSpeedRpmSet);        
+    Console.print(",");    
+    Console.print(MotorCtrl.motorLeftRpmCurr, 1);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightRpmCurr, 1);        
+    Console.print(",");    
+    Console.print(MotorCtrl.motorLeftPID.eold, 1);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightPID.eold, 1);            
+    Console.print(",");    
+    Console.print(MotorCtrl.motorLeftPWMCurr, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightPWMCurr, 0);        
+    Console.print(",");    
+    Console.print(MotorCtrl.motorLeftSenseCurrent, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSenseCurrent, 0);  
+    Console.print(",");        
+    Console.print(MotorCtrl.motorLeftSenseGradient, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSenseGradient, 0);      
+    Console.print(",");    
+    Console.print(MotorCtrl.motorLeftSensePower, 1);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSensePower, 1);      
+    Console.print(",");    */
+    Console.print(MotorCtrl.motorLeftEfficiency, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightEfficiency, 0);        
+    Console.println();
 }
 
 
 void MotorControl::print(){
-    Serial.print(" ticks:");    
-    Serial.print(MotorCtrl.odometryLeftTicks);    
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryRightTicks);    
-    Serial.print("  th,dist:");    
-    Serial.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
-    Serial.print(",");    
-    Serial.print(MotorCtrl.odometryDistanceCmCurr, 1);       
-    Serial.print(" ## ");    
-    Serial.print(MotorCtrl.angleToTargetRad/PI*180.0, 1);    
-    Serial.print(",");        
-    Serial.print(MotorCtrl.distanceToTargetCm, 1);        
-    Serial.print("  set:");    
-    Serial.print(MotorCtrl.motorLeftSpeedRpmSet);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSpeedRpmSet);        
-    Serial.print("  cur:");    
-    Serial.print(MotorCtrl.motorLeftRpmCurr, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightRpmCurr, 1);        
-    Serial.print("  err:");    
-    Serial.print(MotorCtrl.motorLeftPID.eold, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightPID.eold, 1);            
-    Serial.print("  pwm:");    
-    Serial.print(MotorCtrl.motorLeftPWMCurr, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightPWMCurr, 0);        
-    Serial.print("  mA:");    
-    Serial.print(MotorCtrl.motorLeftSenseCurrent, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSenseCurrent, 0);  
-    Serial.print(" ## ");        
-    Serial.print(MotorCtrl.motorLeftSenseGradient, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSenseGradient, 0);      
-    Serial.print("  P:");    
-    Serial.print(MotorCtrl.motorLeftSensePower, 1);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightSensePower, 1);      
-    Serial.print("  eff:");    
-    Serial.print(MotorCtrl.motorLeftEfficiency, 0);
-    Serial.print(",");
-    Serial.print(MotorCtrl.motorRightEfficiency, 0);        
+    Console.print(F(" ticks:"));    
+    Console.print(MotorCtrl.odometryLeftTicks);    
+    Console.print(",");    
+    Console.print(MotorCtrl.odometryRightTicks);    
+    Console.print(F("  th,dist:"));    
+    Console.print(MotorCtrl.odometryThetaRadCurr/PI*180.0);        
+    Console.print(",");    
+    Console.print(MotorCtrl.odometryDistanceCmCurr, 1);       
+    Console.print(F(" ## "));    
+    Console.print(MotorCtrl.angleToTargetRad/PI*180.0, 1);    
+    Console.print(",");        
+    Console.print(MotorCtrl.distanceToTargetCm, 1);        
+    Console.print(F("  set:"));    
+    Console.print(MotorCtrl.motorLeftSpeedRpmSet);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSpeedRpmSet);        
+    Console.print(F("  cur:"));    
+    Console.print(MotorCtrl.motorLeftRpmCurr, 1);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightRpmCurr, 1);        
+    Console.print(F("  err:"));    
+    Console.print(MotorCtrl.motorLeftPID.eold, 1);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightPID.eold, 1);            
+    Console.print(F("  pwm:"));    
+    Console.print(MotorCtrl.motorLeftPWMCurr, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightPWMCurr, 0);        
+    Console.print(F("  mA:"));    
+    Console.print(MotorCtrl.motorLeftSenseCurrent, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSenseCurrent, 0);  
+    Console.print(F(" ## "));        
+    Console.print(MotorCtrl.motorLeftSenseGradient, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSenseGradient, 0);      
+    Console.print(F("  P:"));    
+    Console.print(MotorCtrl.motorLeftSensePower, 1);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightSensePower, 1);      
+    Console.print(F("  eff:"));    
+    Console.print(MotorCtrl.motorLeftEfficiency, 0);
+    Console.print(",");
+    Console.print(MotorCtrl.motorRightEfficiency, 0);        
 }
 
 

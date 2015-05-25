@@ -15,8 +15,8 @@ RobotControl::RobotControl(){
 
 void RobotControl::setup(){
   Wire.begin();            
-  Serial.begin(19200);
-  Serial.println("SETUP");         
+  Console.begin(19200);
+  Console.println(F("SETUP"));         
   
   ADCMan.setup();  
   Battery.setup();  
@@ -37,7 +37,7 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&hitObstacleBehavior);      
   arbitrator.addBehavior(&stopBehavior);      
   arbitrator.addBehavior(&chargerConnectedBehavior);      
-  Serial.println("SETUP completed");
+  Console.println(F("SETUP completed"));
 }
 
 
@@ -46,80 +46,80 @@ void testloop(){
     nextInfoTime = millis() + 500;
     //ModelRC.print();
     //MotorCtrl.print();        
-    //Serial.println();
+    //Console.println();
   } 
 
-  if (Serial.available() > 0){
-    char ch = (char)Serial.read();      
+  if (Console.available() > 0){
+    char ch = (char)Console.read();      
     if (ch == 'm') { 
       MotorCtrl.enableSpeedControl = true;
       useModelRC = true;
-      Serial.println("useModelRC");
+      Console.println(F("useModelRC"));
     }            
     if (ch == 'o') { 
       MotorCtrl.enableSpeedControl = false;
       useModelRC = false;
-      Serial.println("pwm=127,127");      
+      Console.println(F("pwm=127,127"));      
       MotorCtrl.setSpeedPWM(127, 127); 
     }        
     if (ch == 'p') { 
       MotorCtrl.enableSpeedControl = false;
       useModelRC = false;
-      Serial.println("pwm=255,255");      
+      Console.println(F("pwm=255,255"));      
       MotorCtrl.setSpeedPWM(255, 255); 
     }    
     if (ch == '1') { 
       MotorCtrl.enableSpeedControl = true;      
       useModelRC = false;
-      Serial.println("rpm=0,0");
+      Console.println(F("rpm=0,0"));
       MotorCtrl.setSpeedRpm(0, 0); 
       MotorCtrl.resetStalled();          
     }        
     if (ch == '2') {
       MotorCtrl.enableSpeedControl = true;      
       useModelRC = false;
-      Serial.println("rpm=5,5");
+      Console.println(F("rpm=5,5"));
       MotorCtrl.setSpeedRpm(5, 5); 
     }    
     if (ch == '3') {
       useModelRC = false;
-      Serial.println("rpm=10,10");      
+      Console.println(F("rpm=10,10"));      
       MotorCtrl.setSpeedRpm(10, 10); 
     }    
     if (ch == '4') {
       useModelRC = false;
-      Serial.println("rpm=-5,+5");
+      Console.println(F("rpm=-5,+5"));
       MotorCtrl.setSpeedRpm(-5, +5); 
     }    
     if (ch == '5') {
       useModelRC = false;
-      Serial.println("rpm=+5,-5");
+      Console.println(F("rpm=+5,-5"));
       MotorCtrl.setSpeedRpm(+5, -5); 
     }    
     if (ch == '6') {
       useModelRC = false;
-      Serial.println("theta=+45deg");
+      Console.println(F("theta=+45deg"));
       MotorCtrl.rotate(PI/2, 5); 
     }    
     if (ch == '7') {
       useModelRC = false;
-      Serial.println("theta=-45deg"); 
+      Console.println(F("theta=-45deg")); 
       MotorCtrl.rotate(-PI/2, 5); 
     }    
     if (ch == '8') {
       useModelRC = false;
-      Serial.println("distance=+30cm"); 
+      Console.println(F("distance=+30cm")); 
       MotorCtrl.travelLineDistance(30, 5); 
     }    
     if (ch == '9') {
       useModelRC = false;
-      Serial.println("distance=-30cm"); 
+      Console.println(F("distance=-30cm")); 
       MotorCtrl.travelLineDistance(-30, 5); 
     }           
   }  
   
   if ((MotorCtrl.motorRightError) || (MotorCtrl.motorLeftError)){
-    Serial.println("ERROR");    
+    Console.println(F("ERROR"));    
     if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT_SHORT);    
   }
 
@@ -147,7 +147,7 @@ void testloop(){
   
 // call this in ANY loop!
 void RobotControl::run(){  
-  //Serial.println("RobotControl::run");
+  //Console.println(F("RobotControl::run"));
   
   arbitrator.monitor();    
   ADCMan.run();
@@ -189,8 +189,8 @@ void RobotControl::run(){
 
 // this is called over and over from the Arduino loop
 void RobotControl::loop(){
-  //Serial.print("RobotControl::loop ");
-  //Serial.println(loopCounter);  
+  //Console.print(F("RobotControl::loop "));
+  //Console.println(loopCounter);  
   arbitrator.run();      
   loopCounter++;
 }

@@ -29,7 +29,7 @@ BatteryControl::BatteryControl(){
 }
 
 void BatteryControl::setup(){
-  Console.println("BatteryControl::setup");
+  Console.println(F("BatteryControl::setup"));
   pinMode(pinBatterySwitch, OUTPUT);
   pinMode(pinBatteryVoltage, INPUT);        
   pinMode(pinChargeCurrent, INPUT);          
@@ -45,7 +45,7 @@ void BatteryControl::setup(){
 }
 
 void BatteryControl::setBatterySwitch(bool state){
-  Console.print("BatteryControl::setBatterySwitch ");
+  Console.print(F("BatteryControl::setBatterySwitch "));
   Console.println(state);
   digitalWrite(pinBatterySwitch, state);
 }
@@ -133,7 +133,7 @@ bool BatteryControl::chargerConnected(){
 }
 
 void BatteryControl::enableChargingRelay(bool state){
-  Console.print("BatteryControll::enableChargingRelay ");
+  Console.print(F("BatteryControll::enableChargingRelay "));
   Console.println(state);
   chargeRelayEnabled = state;
   digitalWrite(pinChargeRelay, state);
@@ -141,15 +141,15 @@ void BatteryControl::enableChargingRelay(bool state){
 
 
 void BatteryControl::print(){
-  Console.print("batVoltage=");
+  Console.print(F("batVoltage="));
   Console.print(batVoltage);
-  Console.print("  chgVoltage=");
+  Console.print(F("  chgVoltage="));
   Console.print(chgVoltage);
-  Console.print("  chgCurrent=");
+  Console.print(F("  chgCurrent="));
   Console.print(chgCurrent);  
-  Console.print("  chargerConnected=");
+  Console.print(F("  chargerConnected="));
   Console.print(chargerConnected());
-  Console.print("  chargeRelayEnabled=");
+  Console.print(F("  chargeRelayEnabled="));
   Console.print(chargeRelayEnabled);  
   Console.println();
 }

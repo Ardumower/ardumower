@@ -26,7 +26,7 @@ BuzzerControl::BuzzerControl(){
 }
 
 void BuzzerControl::setup(){
-  Console.println("BuzzerControl::setup");  
+  Console.println(F("BuzzerControl::setup"));  
   pinMode(pinBuzzer, OUTPUT);
 }
 
