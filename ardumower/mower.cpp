@@ -289,16 +289,6 @@ void Mower::setup(){
   Console.println("SETUP");
   rc.initSerial(PFOD_BAUDRATE);   
     
-  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
-  // http://www.atmel.com/images/doc2549.pdf
-  #ifdef __AVR__  
-  // NOTE: next line commented out so we can use default 450 Hz PWM freq (perimeter v2 otherwise uses the same freq band) 
-  //  TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
-  #endif
-  
-  // i2c -- turn off internal pull-ups (and use external pull-ups)
-  //digitalWrite(SDA, 0);  
-  //digitalWrite(SCL, 0);
 
   // keep battery switched ON
   pinMode(pinBatterySwitch, OUTPUT);
@@ -394,6 +384,20 @@ void Mower::setup(){
   // other
   pinMode(pinVoltageMeasurement, INPUT);
 
+  // PWM frequency setup  
+  // For obstacle detection, motor torque should be detectable - torque can be computed by motor current.
+  // To get consistent current values, PWM frequency should be 3.9 Khz
+  // http://wiki.ardumower.de/index.php?title=Motor_driver  
+  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
+  // http://www.atmel.com/images/doc2549.pdf
+  #ifdef __AVR__  
+    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)     
+  #else
+    analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
+    pmc_enable_periph_clk(PWM_INTERFACE_ID);
+    PWMC_ConfigureClocks(3900 * PWM_MAX_DUTY_CYCLE, 0, VARIANT_MCK);   // 3.9 Khz  
+  #endif  
+
   // enable interrupts
   #ifdef __AVR__
     // R/C
@@ -449,22 +453,43 @@ void Mower::setup(){
 void checkMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_LEFT);
+    Console.println(F("Error: motor left fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorEnable, LOW);
     //digitalWrite(pinMotorEnable, HIGH);
   }
   if  (digitalRead(pinMotorRightFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_RIGHT);
+    Console.println(F("Error: motor right fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorEnable, LOW);
     //digitalWrite(pinMotorEnable, HIGH);
   }
   if (digitalRead(pinMotorMowFault)==LOW){  
     robot.addErrorCounter(ERR_MOTOR_MOW);
+    Console.println(F("Error: motor mow fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorMowEnable, LOW);
     //digitalWrite(pinMotorMowEnable, HIGH);
   }
+}
+
+void Mower::resetMotorFault(){
+  if (digitalRead(pinMotorLeftFault)==LOW){
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+    Console.println(F("Reset motor left fault"));
+}
+  if  (digitalRead(pinMotorRightFault)==LOW){
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+    Console.println(F("Reset motor right fault"));
+}
+  if (digitalRead(pinMotorMowFault)==LOW){  
+    digitalWrite(pinMotorMowEnable, LOW);
+    digitalWrite(pinMotorMowEnable, HIGH);
+    Console.println(F("Reset motor mow fault"));
+}
 }
 
  

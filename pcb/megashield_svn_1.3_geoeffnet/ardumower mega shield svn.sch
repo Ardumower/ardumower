@@ -6,7 +6,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 24
+Sheet 1 25
 Title "Ardumower Shield - Hauptschaltplan"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -299,7 +299,8 @@ F 0 "C3" H 4280 855 50  0000 L CNN
 F 1 "1,0uF" H 4280 655 50  0000 L CNN
 F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 4230 755 60  0001 C CNN
 F 3 "~" H 4230 755 60  0000 C CNN
-F 4 "R: RAD FC 1,0/50" H 4230 755 60  0001 C CNN "Bestellnummer"
+F 4 "R: " H 4230 755 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 4230 755 60  0001 C CNN "Bestelllink"
 	1    4230 755 
 	0    1    -1   0   
 $EndComp
@@ -493,7 +494,7 @@ pinOdometryRight2
 Text GLabel 1545 8580 0    39   Input ~ 0
 pinOdometryRight
 Text GLabel 1545 8180 0    39   Input ~ 0
-pinChargingBilanz
+ReserveAD10
 $Comp
 L R_PACK8 RP2
 U 1 1 54B686DE
@@ -583,320 +584,6 @@ F 4 "1N4148" H 4200 3290 60  0001 C CNN "Bestellnummer"
 	1    4200 3290
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Lötpad LP15
-U 1 1 54CEA36A
-P 1970 8680
-F 0 "LP15" H 1960 8730 20  0000 C CNN
-F 1 "Lötpad" H 1970 8660 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8680 60  0001 C CNN
-F 3 "" H 1970 8680 60  0000 C CNN
-	1    1970 8680
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP14
-U 1 1 54CEDC4A
-P 1770 8580
-F 0 "LP14" H 1760 8630 20  0000 C CNN
-F 1 "Lötpad" H 1770 8560 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 8580 60  0001 C CNN
-F 3 "" H 1770 8580 60  0000 C CNN
-	1    1770 8580
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP13
-U 1 1 54CEF1D7
-P 1970 8480
-F 0 "LP13" H 1960 8530 20  0000 C CNN
-F 1 "Lötpad" H 1970 8460 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8480 60  0001 C CNN
-F 3 "" H 1970 8480 60  0000 C CNN
-	1    1970 8480
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP12
-U 1 1 54CEF278
-P 1770 8380
-F 0 "LP12" H 1760 8430 20  0000 C CNN
-F 1 "Lötpad" H 1770 8360 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 8380 60  0001 C CNN
-F 3 "" H 1770 8380 60  0000 C CNN
-	1    1770 8380
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP11
-U 1 1 54CEF31C
-P 1970 8280
-F 0 "LP11" H 1960 8330 20  0000 C CNN
-F 1 "Lötpad" H 1970 8260 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8280 60  0001 C CNN
-F 3 "" H 1970 8280 60  0000 C CNN
-	1    1970 8280
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP10
-U 1 1 54CEF3BF
-P 1770 8180
-F 0 "LP10" H 1760 8230 20  0000 C CNN
-F 1 "Lötpad" H 1770 8160 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 8180 60  0001 C CNN
-F 3 "" H 1770 8180 60  0000 C CNN
-	1    1770 8180
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP9
-U 1 1 54CF2B48
-P 1970 8080
-F 0 "LP9" H 1960 8130 20  0000 C CNN
-F 1 "Lötpad" H 1970 8060 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 8080 60  0001 C CNN
-F 3 "" H 1970 8080 60  0000 C CNN
-	1    1970 8080
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP8
-U 1 1 54CF2BEF
-P 1770 7980
-F 0 "LP8" H 1760 8030 20  0000 C CNN
-F 1 "Lötpad" H 1770 7960 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7980 60  0001 C CNN
-F 3 "" H 1770 7980 60  0000 C CNN
-	1    1770 7980
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP7
-U 1 1 54CF6B08
-P 1970 7780
-F 0 "LP7" H 1960 7830 20  0000 C CNN
-F 1 "Lötpad" H 1970 7760 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7780 60  0001 C CNN
-F 3 "" H 1970 7780 60  0000 C CNN
-	1    1970 7780
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP6
-U 1 1 54CF6BED
-P 1770 7680
-F 0 "LP6" H 1760 7730 20  0000 C CNN
-F 1 "Lötpad" H 1770 7660 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7680 60  0001 C CNN
-F 3 "" H 1770 7680 60  0000 C CNN
-	1    1770 7680
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP5
-U 1 1 54CF6DA7
-P 1970 7580
-F 0 "LP5" H 1960 7630 20  0000 C CNN
-F 1 "Lötpad" H 1970 7560 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7580 60  0001 C CNN
-F 3 "" H 1970 7580 60  0000 C CNN
-	1    1970 7580
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP4
-U 1 1 54CF6E54
-P 1770 7480
-F 0 "LP4" H 1760 7530 20  0000 C CNN
-F 1 "Lötpad" H 1770 7460 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7480 60  0001 C CNN
-F 3 "" H 1770 7480 60  0000 C CNN
-	1    1770 7480
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP3
-U 1 1 54CF6F02
-P 1970 7380
-F 0 "LP3" H 1960 7430 20  0000 C CNN
-F 1 "Lötpad" H 1970 7360 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7380 60  0001 C CNN
-F 3 "" H 1970 7380 60  0000 C CNN
-	1    1970 7380
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP2
-U 1 1 54CF6FAB
-P 1770 7280
-F 0 "LP2" H 1760 7330 20  0000 C CNN
-F 1 "Lötpad" H 1770 7260 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7280 60  0001 C CNN
-F 3 "" H 1770 7280 60  0000 C CNN
-	1    1770 7280
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP1
-U 1 1 54CF7059
-P 1970 7180
-F 0 "LP1" H 1960 7230 20  0000 C CNN
-F 1 "Lötpad" H 1970 7160 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1970 7180 60  0001 C CNN
-F 3 "" H 1970 7180 60  0000 C CNN
-	1    1970 7180
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP0
-U 1 1 54CF710A
-P 1770 7080
-F 0 "LP0" H 1760 7130 20  0000 C CNN
-F 1 "Lötpad" H 1770 7060 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 1770 7080 60  0001 C CNN
-F 3 "" H 1770 7080 60  0000 C CNN
-	1    1770 7080
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP17
-U 1 1 54CFD7DE
-P 3520 6880
-F 0 "LP17" H 3510 6930 20  0000 C CNN
-F 1 "Lötpad" H 3520 6860 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3520 6880 60  0001 C CNN
-F 3 "" H 3520 6880 60  0000 C CNN
-	1    3520 6880
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP18
-U 1 1 54CFDC50
-P 3570 6580
-F 0 "LP18" H 3560 6630 20  0000 C CNN
-F 1 "Lötpad" H 3570 6560 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3570 6580 60  0001 C CNN
-F 3 "" H 3570 6580 60  0000 C CNN
-	1    3570 6580
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP16
-U 1 1 54CFDD02
-P 3495 6305
-F 0 "LP16" H 3485 6355 20  0000 C CNN
-F 1 "Lötpad" H 3495 6285 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3495 6305 60  0001 C CNN
-F 3 "" H 3495 6305 60  0000 C CNN
-	1    3495 6305
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP19
-U 1 1 54CFE61F
-P 3570 6780
-F 0 "LP19" H 3560 6830 20  0000 C CNN
-F 1 "Lötpad" H 3570 6760 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3570 6780 60  0001 C CNN
-F 3 "" H 3570 6780 60  0000 C CNN
-	1    3570 6780
-	1    0    0    -1  
-$EndComp
-NoConn ~ 3520 6780
-$Comp
-L Lötpad LP21
-U 1 1 54D046E1
-P 3620 6255
-F 0 "LP21" H 3610 6305 20  0000 C CNN
-F 1 "Lötpad" H 3620 6235 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3620 6255 60  0001 C CNN
-F 3 "" H 3620 6255 60  0000 C CNN
-	1    3620 6255
-	0    1    1    0   
-$EndComp
-NoConn ~ 3620 6130
-$Comp
-L Lötpad LP20
-U 1 1 54CF4FEC
-P 5805 8980
-F 0 "LP20" H 5795 9030 20  0000 C CNN
-F 1 "Lötpad" H 5805 8960 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5805 8980 60  0001 C CNN
-F 3 "" H 5805 8980 60  0000 C CNN
-	1    5805 8980
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP22
-U 1 1 54CF5460
-P 5815 10030
-F 0 "LP22" H 5805 10080 20  0000 C CNN
-F 1 "Lötpad" H 5815 10010 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5815 10030 60  0001 C CNN
-F 3 "" H 5815 10030 60  0000 C CNN
-	1    5815 10030
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP23
-U 1 1 54CF5519
-P 5795 10430
-F 0 "LP23" H 5785 10480 20  0000 C CNN
-F 1 "Lötpad" H 5795 10410 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5795 10430 60  0001 C CNN
-F 3 "" H 5795 10430 60  0000 C CNN
-	1    5795 10430
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP24
-U 1 1 54CFA30B
-P 3570 6715
-F 0 "LP24" H 3560 6765 20  0000 C CNN
-F 1 "Lötpad" H 3570 6695 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3570 6715 60  0001 C CNN
-F 3 "" H 3570 6715 60  0000 C CNN
-	1    3570 6715
-	1    0    0    -1  
-$EndComp
-NoConn ~ 3520 6715
-$Comp
-L Lötpad LP26
-U 1 1 54CFB165
-P 3770 5710
-F 0 "LP26" H 3760 5760 20  0000 C CNN
-F 1 "Lötpad" H 3770 5690 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3770 5710 60  0001 C CNN
-F 3 "" H 3770 5710 60  0000 C CNN
-	1    3770 5710
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP25
-U 1 1 54CFB233
-P 3695 5730
-F 0 "LP25" H 3685 5780 20  0000 C CNN
-F 1 "Lötpad" H 3695 5710 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 3695 5730 60  0001 C CNN
-F 3 "" H 3695 5730 60  0000 C CNN
-	1    3695 5730
-	0    1    1    0   
-$EndComp
-$Comp
-L Lötpad LP27
-U 1 1 54CFB2E6
-P 5720 5980
-F 0 "LP27" H 5710 6030 20  0000 C CNN
-F 1 "Lötpad" H 5720 5960 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5720 5980 60  0001 C CNN
-F 3 "" H 5720 5980 60  0000 C CNN
-	1    5720 5980
-	-1   0    0    1   
-$EndComp
-NoConn ~ 6240 5980
-NoConn ~ 3770 5660
-NoConn ~ 3695 5680
 Text Notes 1470 6830 0    60   ~ 0
 Lötpads, mit Brücke\nZur Einbindung des Due
 $Comp
@@ -1082,488 +769,6 @@ F 4 "1N4148" H 4000 2990 60  0001 C CNN "Bestellnummer"
 	1    4000 2990
 	1    0    0    1   
 $EndComp
-Wire Wire Line
-	3670 6780 3670 6680
-Wire Wire Line
-	5570 6080 6170 6080
-Wire Wire Line
-	5570 10130 6190 10130
-Wire Wire Line
-	6190 9930 5570 9930
-Wire Wire Line
-	3420 10680 3670 10680
-Wire Wire Line
-	5570 10530 6195 10530
-Wire Wire Line
-	5570 9830 6190 9830
-Wire Wire Line
-	3415 10230 3670 10230
-Wire Wire Line
-	5570 7880 6180 7880
-Wire Wire Line
-	5570 8080 6180 8080
-Wire Wire Line
-	5405 1110 5405 1060
-Wire Wire Line
-	6195 10330 5570 10330
-Wire Wire Line
-	3420 10330 3670 10330
-Wire Wire Line
-	3420 10480 3670 10480
-Wire Wire Line
-	3420 9830 3670 9830
-Wire Wire Line
-	5570 6280 6180 6280
-Wire Wire Line
-	5570 9180 6180 9180
-Wire Wire Line
-	3420 9730 3670 9730
-Wire Wire Line
-	5570 10230 6195 10230
-Wire Wire Line
-	3420 10130 3670 10130
-Wire Wire Line
-	5570 7380 6180 7380
-Wire Wire Line
-	5570 7080 6180 7080
-Wire Wire Line
-	5570 9680 6190 9680
-Wire Wire Line
-	5570 9580 6190 9580
-Wire Wire Line
-	5570 7280 6180 7280
-Wire Wire Line
-	4280 1055 4280 1155
-Wire Wire Line
-	4080 1155 4080 1005
-Wire Wire Line
-	4180 1155 4180 905 
-Wire Wire Line
-	4180 905  4430 905 
-Wire Wire Line
-	765  1940 765  2090
-Wire Wire Line
-	4080 1005 4030 755 
-Wire Wire Line
-	4030 755  4030 705 
-Wire Wire Line
-	6130 6180 6180 6180
-Wire Wire Line
-	5570 8380 5720 8380
-Wire Wire Line
-	5570 8480 5725 8480
-Wire Wire Line
-	5670 8380 5670 8430
-Wire Wire Line
-	3670 6680 3490 6680
-Wire Wire Line
-	2270 6580 2470 6580
-Wire Wire Line
-	2470 6580 2470 6530
-Wire Wire Line
-	3120 5880 3370 5880
-Wire Wire Line
-	4450 4540 4450 4840
-Wire Wire Line
-	5755 1060 5605 1060
-Wire Wire Line
-	965  1940 965  2190
-Wire Wire Line
-	3670 10030 3420 10030
-Wire Wire Line
-	4050 4340 4150 4340
-Wire Wire Line
-	4280 1105 5130 1105
-Wire Wire Line
-	5130 755  4430 755 
-Connection ~ 4280 1105
-Wire Wire Line
-	4450 3090 4450 4140
-Wire Wire Line
-	11635 1515 11635 1565
-Wire Wire Line
-	3550 4340 3450 4340
-Wire Wire Line
-	5625 6980 5570 6980
-Wire Wire Line
-	6125 6780 6180 6780
-Wire Wire Line
-	6125 6980 6180 6980
-Wire Wire Line
-	2910 2890 2910 3040
-Wire Wire Line
-	6545 1060 9070 1060
-Wire Wire Line
-	1545 8680 3670 8680
-Wire Wire Line
-	2495 7080 3670 7080
-Wire Wire Line
-	2495 7180 3670 7180
-Wire Wire Line
-	2495 7280 3670 7280
-Wire Wire Line
-	2495 7480 3670 7480
-Wire Wire Line
-	2495 7580 3670 7580
-Wire Wire Line
-	2495 7680 3670 7680
-Wire Wire Line
-	2495 7780 3670 7780
-Wire Wire Line
-	3370 5880 3370 6880
-Wire Wire Line
-	2570 6530 2570 7080
-Wire Wire Line
-	2670 6530 2670 7180
-Wire Wire Line
-	2770 6530 2770 7280
-Wire Wire Line
-	2970 6530 2970 7480
-Wire Wire Line
-	3070 6530 3070 7580
-Wire Wire Line
-	3170 6530 3170 7680
-Wire Wire Line
-	3270 6530 3270 7780
-Wire Wire Line
-	2570 8830 2570 7980
-Wire Wire Line
-	2670 8830 2670 8080
-Connection ~ 2670 8080
-Wire Wire Line
-	2770 8830 2770 8180
-Connection ~ 2770 8180
-Wire Wire Line
-	2800 9580 3670 9580
-Wire Wire Line
-	3410 9480 3620 9480
-Wire Wire Line
-	2800 9380 3570 9380
-Wire Wire Line
-	5570 7580 6180 7580
-Wire Wire Line
-	5570 7480 6180 7480
-Wire Wire Line
-	5570 7180 6180 7180
-Wire Wire Line
-	5570 6880 5620 6880
-Wire Wire Line
-	5620 6880 5620 6780
-Wire Wire Line
-	5620 6780 5625 6780
-Wire Wire Line
-	5570 6680 6180 6680
-Wire Wire Line
-	5630 6180 5570 6180
-Wire Wire Line
-	5570 6380 6180 6380
-Wire Wire Line
-	5570 6480 6180 6480
-Wire Wire Line
-	5570 6580 6180 6580
-Wire Wire Line
-	5570 7980 6180 7980
-Wire Wire Line
-	6180 7780 5570 7780
-Wire Wire Line
-	5570 9080 6185 9080
-Wire Wire Line
-	3670 10580 3420 10580
-Wire Wire Line
-	3670 10780 3420 10780
-Wire Wire Line
-	3670 9930 3420 9930
-Wire Wire Line
-	2170 5680 2720 5680
-Wire Wire Line
-	2270 5880 2220 5880
-Wire Wire Line
-	2220 5880 2220 5680
-Connection ~ 2220 5680
-Wire Wire Line
-	3670 9580 3670 9480
-Wire Wire Line
-	3620 9480 3620 9380
-Wire Wire Line
-	3620 9380 3670 9380
-Wire Wire Line
-	3570 9380 3570 9280
-Wire Wire Line
-	3570 9280 3670 9280
-Wire Wire Line
-	3520 9330 3520 9180
-Wire Wire Line
-	3520 9180 3670 9180
-Wire Wire Line
-	3670 8930 3670 9030
-Wire Wire Line
-	3670 9030 3620 9030
-Wire Wire Line
-	3370 8830 3470 8830
-Wire Wire Line
-	13675 1055 13675 1270
-Wire Wire Line
-	2910 2090 2910 2390
-Wire Wire Line
-	4200 3490 4200 3615
-Wire Wire Line
-	4200 3615 4450 3615
-Connection ~ 4450 3615
-Wire Wire Line
-	1545 8580 3670 8580
-Wire Wire Line
-	1545 8480 3670 8480
-Wire Wire Line
-	1545 8380 3670 8380
-Wire Wire Line
-	1545 8280 3670 8280
-Wire Wire Line
-	2495 8180 3670 8180
-Wire Wire Line
-	2495 7980 3670 7980
-Wire Wire Line
-	2495 8080 3670 8080
-Connection ~ 2570 7980
-Connection ~ 2570 7080
-Connection ~ 2670 7180
-Connection ~ 2770 7280
-Connection ~ 2870 7380
-Connection ~ 2970 7480
-Connection ~ 3070 7580
-Connection ~ 3170 7680
-Connection ~ 3270 7780
-Wire Wire Line
-	3370 6880 3670 6880
-Wire Wire Line
-	3520 6780 3670 6780
-Wire Wire Line
-	3320 5680 3420 5680
-Wire Wire Line
-	3420 5680 3420 6580
-Wire Wire Line
-	3420 6580 3670 6580
-Wire Wire Line
-	3495 6480 3670 6480
-Wire Wire Line
-	3495 5155 3495 6480
-Wire Wire Line
-	3495 5430 3320 5430
-Wire Wire Line
-	3495 5155 3270 5155
-Connection ~ 3495 5430
-Wire Wire Line
-	3620 6130 3620 6205
-Wire Wire Line
-	3620 6380 3670 6380
-Wire Wire Line
-	3620 6305 3620 6380
-Wire Wire Line
-	5570 8980 6185 8980
-Wire Wire Line
-	5570 10030 6190 10030
-Wire Wire Line
-	5570 10430 6195 10430
-Wire Wire Line
-	3620 6715 3670 6715
-Connection ~ 3670 6715
-Wire Wire Line
-	5570 5980 6240 5980
-Wire Wire Line
-	3770 5960 3770 5760
-Wire Wire Line
-	3695 5780 3695 6060
-Wire Wire Line
-	3695 6060 3770 6060
-Wire Wire Line
-	3620 6715 3620 6725
-Wire Wire Line
-	3620 6725 3520 6725
-Wire Wire Line
-	3520 6725 3520 6715
-Wire Wire Line
-	1545 7780 2095 7780
-Wire Wire Line
-	1545 7680 2095 7680
-Wire Wire Line
-	1545 7580 2095 7580
-Wire Wire Line
-	1545 7480 2095 7480
-Wire Wire Line
-	1545 7280 2095 7280
-Wire Wire Line
-	1545 7180 2095 7180
-Wire Wire Line
-	1545 7080 2095 7080
-Wire Wire Line
-	1545 7980 2095 7980
-Wire Wire Line
-	1545 8080 2095 8080
-Wire Wire Line
-	1545 8180 2095 8180
-Wire Wire Line
-	2090 8680 2095 8680
-Connection ~ 5855 8980
-Connection ~ 5755 8980
-Connection ~ 5865 10030
-Connection ~ 5765 10030
-Connection ~ 5845 10430
-Connection ~ 5745 10430
-Connection ~ 5770 5980
-Connection ~ 5670 5980
-Wire Wire Line
-	3620 6330 3620 6180
-Connection ~ 3620 6180
-Connection ~ 3620 6330
-Connection ~ 3620 6580
-Connection ~ 3520 6580
-Connection ~ 3620 6780
-Connection ~ 3470 6880
-Connection ~ 3570 6880
-Connection ~ 1820 7080
-Connection ~ 1720 7080
-Connection ~ 2020 7180
-Connection ~ 1920 7180
-Connection ~ 1820 7280
-Connection ~ 1720 7280
-Connection ~ 2020 7380
-Connection ~ 1920 7380
-Connection ~ 1820 7480
-Connection ~ 1720 7480
-Connection ~ 2020 7580
-Connection ~ 1920 7580
-Connection ~ 1720 7680
-Connection ~ 1820 7680
-Connection ~ 2020 7780
-Connection ~ 1920 7780
-Connection ~ 1820 7980
-Connection ~ 1720 7980
-Connection ~ 2020 8080
-Connection ~ 1920 8080
-Connection ~ 1720 8180
-Connection ~ 1820 8180
-Connection ~ 2020 8280
-Connection ~ 1920 8280
-Connection ~ 1820 8380
-Connection ~ 1720 8380
-Connection ~ 2020 8480
-Connection ~ 1920 8480
-Connection ~ 1720 8580
-Connection ~ 1820 8580
-Connection ~ 2020 8680
-Connection ~ 1920 8680
-Connection ~ 3495 6355
-Connection ~ 3495 6255
-Wire Wire Line
-	3270 8830 3270 8800
-Wire Wire Line
-	3270 8700 3270 8680
-Connection ~ 3270 8680
-Wire Wire Line
-	3170 8830 3170 8800
-Wire Wire Line
-	3070 8830 3070 8800
-Wire Wire Line
-	2970 8830 2970 8800
-Wire Wire Line
-	3170 8700 3170 8580
-Connection ~ 3170 8580
-Wire Wire Line
-	3070 8700 3070 8480
-Connection ~ 3070 8480
-Wire Wire Line
-	2970 8700 2970 8380
-Connection ~ 2970 8380
-Connection ~ 2495 8680
-Connection ~ 2090 8680
-Connection ~ 2495 8580
-Connection ~ 2095 8580
-Connection ~ 2495 8480
-Connection ~ 2095 8480
-Wire Wire Line
-	2495 8380 2495 8385
-Wire Wire Line
-	2495 8385 2500 8385
-Wire Wire Line
-	2500 8385 2500 8380
-Connection ~ 2500 8380
-Connection ~ 2095 8380
-Wire Wire Line
-	2870 6530 2870 7380
-Connection ~ 965  2090
-Connection ~ 2910 2090
-Wire Wire Line
-	2495 7380 3670 7380
-Wire Wire Line
-	2020 7380 2095 7380
-Wire Wire Line
-	1545 7380 1920 7380
-Wire Wire Line
-	2870 8830 2870 8800
-Wire Wire Line
-	2870 8700 2870 8280
-Connection ~ 2870 8280
-Connection ~ 2495 8280
-Connection ~ 2095 8280
-Wire Wire Line
-	1365 2090 2295 2090
-Wire Wire Line
-	3670 9630 3415 9630
-Wire Wire Line
-	3520 9330 3410 9330
-Wire Wire Line
-	5570 8180 6180 8180
-Wire Wire Line
-	5670 8430 6115 8430
-Wire Wire Line
-	6115 8430 6115 8380
-Wire Wire Line
-	6115 8380 6185 8380
-Wire Wire Line
-	5670 8480 5670 8530
-Wire Wire Line
-	5670 8530 6115 8530
-Wire Wire Line
-	6115 8530 6115 8480
-Wire Wire Line
-	6115 8480 6185 8480
-Connection ~ 5670 8480
-Wire Wire Line
-	5570 8280 6180 8280
-Connection ~ 5670 8380
-Wire Wire Line
-	2295 2090 2295 2235
-Wire Wire Line
-	2410 2090 2410 2235
-Wire Wire Line
-	6155 1060 6345 1060
-Wire Wire Line
-	10255 1055 13875 1055
-Wire Wire Line
-	4200 3090 4200 2990
-Wire Wire Line
-	4200 2990 4450 2990
-Wire Wire Line
-	3680 2990 3800 2990
-Wire Wire Line
-	3180 2090 3180 2990
-Connection ~ 3180 2090
-Wire Wire Line
-	5130 1105 5130 755 
-Wire Wire Line
-	4280 1955 4280 2490
-Wire Wire Line
-	4080 1955 4080 2790
-Wire Wire Line
-	4280 2490 4450 2490
-Wire Wire Line
-	4080 2790 4450 2790
-Wire Wire Line
-	5415 2090 5415 2590
-Wire Wire Line
-	5415 2590 5250 2590
-Wire Wire Line
-	2410 2090 5415 2090
-Connection ~ 13675 1055
 $Sheet
 S 9980 2420 880  1220
 U 553A6702
@@ -1574,11 +779,6 @@ F3 "Batterieausgang 24V" O T 10255 2420 60
 F4 "PinButton" O T 10410 2420 60 
 F5 "Ausschalter" I T 10565 2420 60 
 $EndSheet
-Wire Wire Line
-	7330 1060 7330 2890
-Connection ~ 7330 1060
-Wire Wire Line
-	7330 2890 5250 2890
 $Sheet
 S 8975 1595 345  860 
 U 553A788C
@@ -1587,35 +787,11 @@ F1 "Verpols.B.sch" 60
 F2 "Verpols.B.aus" O T 9205 1595 60 
 F3 "Verpol.s.B.in" I T 9070 1595 60 
 $EndSheet
-Wire Wire Line
-	10110 2420 10110 1055
-Wire Wire Line
-	10110 1055 9205 1055
-Wire Wire Line
-	9205 1055 9205 1595
-Wire Wire Line
-	10255 1055 10255 2420
-Wire Wire Line
-	13155 1055 13155 2195
-Connection ~ 13155 1055
-Wire Wire Line
-	11635 1115 11635 1055
-Connection ~ 11635 1055
-Wire Wire Line
-	13155 2195 13385 2195
 NoConn ~ 5250 2390
 Text GLabel 10575 1570 2    60   Output ~ 0
 pinButton
-Wire Wire Line
-	10410 2420 10410 1570
-Wire Wire Line
-	10410 1570 10575 1570
 Text GLabel 10725 2030 2    60   Input ~ 0
 pinUndervoltageSwitch
-Wire Wire Line
-	10565 2420 10565 2030
-Wire Wire Line
-	10565 2030 10725 2030
 $Comp
 L 15KEXXC KE2
 U 1 1 5540B0B9
@@ -1638,13 +814,8 @@ F 3 "" H 12620 1695 60  0000 C CNN
 	1    12620 1695
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	12620 1645 12620 1695
 Text Notes 12675 2070 3    60   ~ 0
 Überspannungsschutzdiode\n?? ob richtiges Zeichen und Polung
-Wire Wire Line
-	12620 1345 12620 1055
-Connection ~ 12620 1055
 $Comp
 L 15KEXXC KE1
 U 1 1 5541A8DB
@@ -1667,11 +838,6 @@ F 3 "" H 6935 1700 60  0000 C CNN
 	1    6935 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6935 1650 6935 1700
-Wire Wire Line
-	6935 1350 6935 1060
-Connection ~ 6935 1060
 NoConn ~ 3770 6160
 NoConn ~ 3770 6250
 $Sheet
@@ -1681,8 +847,6 @@ F0 "Batteriespannung" 60
 F1 "Batteriespannung.sch" 60
 F2 "Batteriespannung" I T 8105 1595 60 
 $EndSheet
-Wire Wire Line
-	9070 1060 9070 1595
 $Sheet
 S 1585 2235 245  1150
 U 554C1C35
@@ -1698,59 +862,8 @@ F1 "Verpols.L.sch" 60
 F2 "Verpols.L.aus" O T 2410 2235 60 
 F3 "Verpol.s.L.in" I T 2295 2235 60 
 $EndSheet
-Wire Wire Line
-	8105 1595 8105 1060
-Connection ~ 8105 1060
-Wire Wire Line
-	1710 2235 1710 2090
-Connection ~ 1710 2090
 Text Notes 7200 9565 0    60   ~ 0
 MC treiber SF pin braucht noch einen pegelwandler\n(falls MC beim due mit 5v betrieben werden soll
-$Comp
-L Lötpad LP37
-U 1 1 5552699F
-P 5810 9280
-F 0 "LP37" H 5810 9320 20  0000 C CNN
-F 1 "Lötpad" H 5810 9260 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5810 9280 60  0001 C CNN
-F 3 "" H 5810 9280 60  0000 C CNN
-	1    5810 9280
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP38
-U 1 1 55526E80
-P 5810 9380
-F 0 "LP38" H 5810 9420 20  0000 C CNN
-F 1 "Lötpad" H 5810 9360 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5810 9380 60  0001 C CNN
-F 3 "" H 5810 9380 60  0000 C CNN
-	1    5810 9380
-	1    0    0    -1  
-$EndComp
-$Comp
-L Lötpad LP39
-U 1 1 55527084
-P 5810 9480
-F 0 "LP39" H 5810 9520 20  0000 C CNN
-F 1 "Lötpad" H 5810 9460 20  0000 C CNN
-F 2 "ACS712:Lötpad_1x02" H 5810 9480 60  0001 C CNN
-F 3 "" H 5810 9480 60  0000 C CNN
-	1    5810 9480
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5570 9280 6175 9280
-Wire Wire Line
-	5570 9380 6175 9380
-Wire Wire Line
-	5570 9480 6175 9480
-Connection ~ 5860 9280
-Connection ~ 5760 9280
-Connection ~ 5860 9380
-Connection ~ 5760 9380
-Connection ~ 5860 9480
-Connection ~ 5760 9480
 Text Notes 7105 6400 0    60   ~ 0
 bei den Leuchtdioden darauf achten \ndas die widerstandswerte evl bei den \nDuo auch funktionieren \nmax strom muss nachgesehen werden\n
 $Bitmap
@@ -1758,8 +871,8 @@ Pos 9400 7505
 Scale 1,000000
 Data
 89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 00 DC 00 00 00 F0 08 02 00 00 00 E4 56 9D 
-9B 00 00 00 03 73 42 49 54 08 08 08 DB E1 4F E0 00 00 00 09 70 48 59 73 00 00 0B 12 00 00 0B 12 
-01 D2 DD 7E FC 00 00 20 00 49 44 41 54 78 9C EC BD 79 98 6D 45 75 36 FE AE AA DA F3 99 7A BE 13 
+9B 00 00 00 03 73 42 49 54 08 08 08 DB E1 4F E0 00 00 00 09 70 48 59 73 00 00 0A F0 00 00 0A F0 
+01 42 AC 34 98 00 00 20 00 49 44 41 54 78 9C EC BD 79 98 6D 45 75 36 FE AE AA DA F3 99 7A BE 13 
 70 99 51 2E 2A 1A D4 A8 10 45 23 1A C4 7C A2 F8 0B C6 44 3F 05 E2 84 01 9C 50 26 13 0C 44 83 A8 
 18 0D C1 7C 06 23 8A 24 F9 9C 62 1C 40 21 EA CF 24 46 10 C1 11 64 BC 73 DF 1E CF B0 E7 AA 5A DF 
 1F 75 4E DF 46 31 DE 26 48 E4 79 B2 9E F3 EC 3E DD BD 87 DA BB D6 5E E3 BB 56 11 33 E3 D1 40 5A 
@@ -3978,4 +3091,510 @@ EndData
 $EndBitmap
 Text Notes 8180 8400 0    60   ~ 0
 für die Leuchtddioden und evl Summer\nund RC noch ein IC einbauen \n74HC 4050\nwegen Arduino Duo\nund max Strom pro Pin
+Text GLabel 3290 5005 0    60   Input ~ 0
+Reset
+$Comp
+L Kondensator CC1
+U 1 1 5558C608
+P 4805 1470
+F 0 "CC1" H 4855 1570 50  0000 L CNN
+F 1 "100 nF" H 4855 1370 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 4805 1470 60  0001 C CNN
+F 3 "" H 4805 1470 60  0000 C CNN
+F 4 "R: KERKO 100N" H 4805 1470 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 4805 1470 60  0001 C CNN "Bestelllink"
+	1    4805 1470
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR017
+U 1 1 5558CC4E
+P 4805 1720
+F 0 "#PWR017" H 4805 1720 30  0001 C CNN
+F 1 "GND" H 4805 1650 30  0001 C CNN
+F 2 "" H 4805 1720 60  0000 C CNN
+F 3 "" H 4805 1720 60  0000 C CNN
+	1    4805 1720
+	1    0    0    -1  
+$EndComp
+$Sheet
+S -1320 4110 560  210 
+U 5558DDF4
+F0 "Blockkondensatoren" 60
+F1 "Blockkondensatoren.sch" 60
+$EndSheet
+Connection ~ 4805 1105
+Wire Wire Line
+	4805 1270 4805 1105
+Wire Wire Line
+	4805 1720 4805 1670
+Connection ~ 7790 1060
+Wire Wire Line
+	7790 1060 7790 2890
+Wire Wire Line
+	3620 5005 3290 5005
+Connection ~ 1710 2090
+Wire Wire Line
+	1710 2235 1710 2090
+Connection ~ 8105 1060
+Wire Wire Line
+	8105 1060 8105 1595
+Wire Wire Line
+	9070 1060 9070 1595
+Connection ~ 6935 1060
+Wire Wire Line
+	6935 1350 6935 1060
+Wire Wire Line
+	6935 1650 6935 1700
+Connection ~ 12620 1055
+Wire Wire Line
+	12620 1055 12620 1345
+Wire Wire Line
+	12620 1645 12620 1695
+Wire Wire Line
+	10565 2030 10725 2030
+Wire Wire Line
+	10565 2420 10565 2030
+Wire Wire Line
+	10410 1570 10575 1570
+Wire Wire Line
+	10410 2420 10410 1570
+Wire Wire Line
+	13155 2195 13385 2195
+Connection ~ 11635 1055
+Wire Wire Line
+	11635 1115 11635 1055
+Connection ~ 13155 1055
+Wire Wire Line
+	13155 1055 13155 2195
+Wire Wire Line
+	10255 1055 10255 2420
+Wire Wire Line
+	9205 1055 9205 1595
+Wire Wire Line
+	10110 1055 9205 1055
+Wire Wire Line
+	10110 2420 10110 1055
+Wire Wire Line
+	7790 2890 5250 2890
+Connection ~ 13675 1055
+Wire Wire Line
+	2410 2090 5415 2090
+Wire Wire Line
+	5415 2590 5250 2590
+Wire Wire Line
+	5415 2090 5415 2590
+Wire Wire Line
+	4080 2790 4450 2790
+Wire Wire Line
+	4280 2490 4450 2490
+Wire Wire Line
+	4080 1955 4080 2790
+Wire Wire Line
+	4280 1955 4280 2490
+Wire Wire Line
+	5130 1105 5130 755 
+Connection ~ 3180 2090
+Wire Wire Line
+	3180 2090 3180 2990
+Wire Wire Line
+	3680 2990 3800 2990
+Wire Wire Line
+	4200 2990 4450 2990
+Wire Wire Line
+	4200 3090 4200 2990
+Wire Wire Line
+	10255 1055 13875 1055
+Wire Wire Line
+	6155 1060 6345 1060
+Wire Wire Line
+	2410 2090 2410 2235
+Wire Wire Line
+	2295 2090 2295 2235
+Connection ~ 5670 8380
+Wire Wire Line
+	5570 8280 6180 8280
+Connection ~ 5670 8480
+Wire Wire Line
+	6115 8480 6185 8480
+Wire Wire Line
+	6115 8530 6115 8480
+Wire Wire Line
+	5670 8530 6115 8530
+Wire Wire Line
+	5670 8480 5670 8530
+Wire Wire Line
+	6115 8380 6185 8380
+Wire Wire Line
+	6115 8430 6115 8380
+Wire Wire Line
+	5670 8430 6115 8430
+Wire Wire Line
+	5570 8180 6180 8180
+Wire Wire Line
+	3520 9330 3410 9330
+Wire Wire Line
+	3670 9630 3415 9630
+Wire Wire Line
+	1365 2090 2295 2090
+Connection ~ 2095 8280
+Connection ~ 2495 8280
+Connection ~ 2870 8280
+Wire Wire Line
+	2870 8280 2870 8700
+Wire Wire Line
+	2870 8830 2870 8800
+Wire Wire Line
+	1545 7380 2095 7380
+Wire Wire Line
+	2495 7380 3670 7380
+Connection ~ 2910 2090
+Connection ~ 965  2090
+Wire Wire Line
+	2870 6530 2870 7380
+Connection ~ 2095 8380
+Connection ~ 2500 8380
+Wire Wire Line
+	2500 8380 2500 8385
+Wire Wire Line
+	2500 8385 2495 8385
+Wire Wire Line
+	2495 8385 2495 8380
+Connection ~ 2095 8480
+Connection ~ 2495 8480
+Connection ~ 2095 8580
+Connection ~ 2495 8580
+Connection ~ 2090 8680
+Connection ~ 2495 8680
+Connection ~ 2970 8380
+Wire Wire Line
+	2970 8380 2970 8700
+Connection ~ 3070 8480
+Wire Wire Line
+	3070 8480 3070 8700
+Connection ~ 3170 8580
+Wire Wire Line
+	3170 8580 3170 8700
+Wire Wire Line
+	2970 8830 2970 8800
+Wire Wire Line
+	3070 8830 3070 8800
+Wire Wire Line
+	3170 8830 3170 8800
+Connection ~ 3270 8680
+Wire Wire Line
+	3270 8680 3270 8700
+Wire Wire Line
+	3270 8830 3270 8800
+Wire Wire Line
+	3620 5005 3620 6380
+Wire Wire Line
+	1545 8680 2095 8680
+Wire Wire Line
+	1545 8180 2095 8180
+Wire Wire Line
+	1545 8080 2095 8080
+Wire Wire Line
+	1545 7980 2095 7980
+Wire Wire Line
+	1545 7080 2095 7080
+Wire Wire Line
+	1545 7180 2095 7180
+Wire Wire Line
+	1545 7280 2095 7280
+Wire Wire Line
+	1545 7480 2095 7480
+Wire Wire Line
+	1545 7580 2095 7580
+Wire Wire Line
+	1545 7680 2095 7680
+Wire Wire Line
+	1545 7780 2095 7780
+Connection ~ 3495 5430
+Wire Wire Line
+	3495 5155 3270 5155
+Wire Wire Line
+	3495 5430 3320 5430
+Wire Wire Line
+	3495 5155 3495 6480
+Wire Wire Line
+	3495 6480 3670 6480
+Wire Wire Line
+	3420 5680 3420 6580
+Wire Wire Line
+	3320 5680 3420 5680
+Wire Wire Line
+	3370 6880 3670 6880
+Connection ~ 3270 7780
+Connection ~ 3170 7680
+Connection ~ 3070 7580
+Connection ~ 2970 7480
+Connection ~ 2870 7380
+Connection ~ 2770 7280
+Connection ~ 2670 7180
+Connection ~ 2570 7080
+Connection ~ 2570 7980
+Wire Wire Line
+	2495 8080 3670 8080
+Wire Wire Line
+	2495 7980 3670 7980
+Wire Wire Line
+	2495 8180 3670 8180
+Wire Wire Line
+	1545 8280 3670 8280
+Wire Wire Line
+	1545 8380 3670 8380
+Wire Wire Line
+	1545 8480 3670 8480
+Wire Wire Line
+	1545 8580 3670 8580
+Connection ~ 4450 3615
+Wire Wire Line
+	4200 3615 4450 3615
+Wire Wire Line
+	4200 3490 4200 3615
+Wire Wire Line
+	2910 2090 2910 2390
+Wire Wire Line
+	13675 1055 13675 1270
+Wire Wire Line
+	3370 8830 3470 8830
+Wire Wire Line
+	3670 9030 3620 9030
+Wire Wire Line
+	3670 8930 3670 9030
+Wire Wire Line
+	3520 9180 3670 9180
+Wire Wire Line
+	3520 9330 3520 9180
+Wire Wire Line
+	3570 9280 3670 9280
+Wire Wire Line
+	3570 9380 3570 9280
+Wire Wire Line
+	3620 9380 3670 9380
+Wire Wire Line
+	3620 9480 3620 9380
+Wire Wire Line
+	3670 9580 3670 9480
+Connection ~ 2220 5680
+Wire Wire Line
+	2220 5880 2220 5680
+Wire Wire Line
+	2270 5880 2220 5880
+Wire Wire Line
+	2170 5680 2720 5680
+Wire Wire Line
+	3670 9930 3420 9930
+Wire Wire Line
+	3670 10780 3420 10780
+Wire Wire Line
+	3670 10580 3420 10580
+Wire Wire Line
+	5570 9080 6185 9080
+Wire Wire Line
+	6180 7780 5570 7780
+Wire Wire Line
+	5570 7980 6180 7980
+Wire Wire Line
+	5570 6580 6180 6580
+Wire Wire Line
+	5570 6480 6180 6480
+Wire Wire Line
+	5570 6380 6180 6380
+Wire Wire Line
+	5630 6180 5570 6180
+Wire Wire Line
+	5570 6680 6180 6680
+Wire Wire Line
+	5620 6780 5625 6780
+Wire Wire Line
+	5620 6880 5620 6780
+Wire Wire Line
+	5570 6880 5620 6880
+Wire Wire Line
+	5570 7180 6180 7180
+Wire Wire Line
+	5570 7480 6180 7480
+Wire Wire Line
+	5570 7580 6180 7580
+Wire Wire Line
+	2800 9380 3570 9380
+Wire Wire Line
+	3410 9480 3620 9480
+Wire Wire Line
+	2800 9580 3670 9580
+Connection ~ 2770 8180
+Wire Wire Line
+	2770 8830 2770 8180
+Connection ~ 2670 8080
+Wire Wire Line
+	2670 8830 2670 8080
+Wire Wire Line
+	2570 8830 2570 7980
+Wire Wire Line
+	3270 6530 3270 7780
+Wire Wire Line
+	3170 6530 3170 7680
+Wire Wire Line
+	3070 6530 3070 7580
+Wire Wire Line
+	2970 6530 2970 7480
+Wire Wire Line
+	2770 6530 2770 7280
+Wire Wire Line
+	2670 6530 2670 7180
+Wire Wire Line
+	2570 6530 2570 7080
+Wire Wire Line
+	3370 5880 3370 6880
+Wire Wire Line
+	2495 7780 3670 7780
+Wire Wire Line
+	2495 7680 3670 7680
+Wire Wire Line
+	2495 7580 3670 7580
+Wire Wire Line
+	2495 7480 3670 7480
+Wire Wire Line
+	2495 7280 3670 7280
+Wire Wire Line
+	2495 7180 3670 7180
+Wire Wire Line
+	2495 7080 3670 7080
+Wire Wire Line
+	2090 8680 3670 8680
+Wire Wire Line
+	6545 1060 9070 1060
+Wire Wire Line
+	2910 2890 2910 3040
+Wire Wire Line
+	6125 6980 6180 6980
+Wire Wire Line
+	6125 6780 6180 6780
+Wire Wire Line
+	5625 6980 5570 6980
+Wire Wire Line
+	3550 4340 3450 4340
+Wire Wire Line
+	11635 1515 11635 1565
+Wire Wire Line
+	4450 3090 4450 4140
+Connection ~ 4280 1105
+Wire Wire Line
+	5130 755  4430 755 
+Wire Wire Line
+	4280 1105 5130 1105
+Wire Wire Line
+	4050 4340 4150 4340
+Wire Wire Line
+	3670 10030 3420 10030
+Wire Wire Line
+	965  1940 965  2190
+Wire Wire Line
+	5755 1060 5605 1060
+Wire Wire Line
+	4450 4540 4450 4840
+Wire Wire Line
+	3120 5880 3370 5880
+Wire Wire Line
+	2470 6580 2470 6530
+Wire Wire Line
+	2270 6580 2470 6580
+Wire Wire Line
+	3490 6680 3670 6680
+Wire Wire Line
+	5670 8380 5670 8430
+Wire Wire Line
+	5570 8480 5725 8480
+Wire Wire Line
+	5570 8380 5720 8380
+Wire Wire Line
+	6130 6180 6180 6180
+Wire Wire Line
+	4030 755  4030 705 
+Wire Wire Line
+	4080 1005 4030 755 
+Wire Wire Line
+	765  1940 765  2090
+Wire Wire Line
+	4180 905  4430 905 
+Wire Wire Line
+	4180 1155 4180 905 
+Wire Wire Line
+	4080 1155 4080 1005
+Wire Wire Line
+	4280 1055 4280 1155
+Wire Wire Line
+	5570 7280 6180 7280
+Wire Wire Line
+	5570 9580 6190 9580
+Wire Wire Line
+	5570 9680 6190 9680
+Wire Wire Line
+	5570 7080 6180 7080
+Wire Wire Line
+	5570 7380 6180 7380
+Wire Wire Line
+	3420 10130 3670 10130
+Wire Wire Line
+	5570 10230 6195 10230
+Wire Wire Line
+	3420 9730 3670 9730
+Wire Wire Line
+	5570 9180 6180 9180
+Wire Wire Line
+	5570 6280 6180 6280
+Wire Wire Line
+	3420 9830 3670 9830
+Wire Wire Line
+	3420 10480 3670 10480
+Wire Wire Line
+	3420 10330 3670 10330
+Wire Wire Line
+	6195 10330 5570 10330
+Wire Wire Line
+	5405 1110 5405 1060
+Wire Wire Line
+	5570 8080 6180 8080
+Wire Wire Line
+	5570 7880 6180 7880
+Wire Wire Line
+	3415 10230 3670 10230
+Wire Wire Line
+	5570 9830 6190 9830
+Wire Wire Line
+	5570 10530 6195 10530
+Wire Wire Line
+	3420 10680 3670 10680
+Wire Wire Line
+	6190 9930 5570 9930
+Wire Wire Line
+	5570 10130 6190 10130
+Wire Wire Line
+	5570 6080 6170 6080
+Wire Wire Line
+	5570 8980 6185 8980
+Wire Wire Line
+	6190 10030 5570 10030
+Wire Wire Line
+	5570 10430 6195 10430
+Wire Wire Line
+	6175 9380 5570 9380
+Wire Wire Line
+	6175 9280 5570 9280
+Wire Wire Line
+	6175 9480 5570 9480
+NoConn ~ 3770 5960
+NoConn ~ 3770 6060
+NoConn ~ 5570 5980
+Wire Wire Line
+	3670 6780 3620 6780
+Wire Wire Line
+	3620 6780 3620 6680
+Connection ~ 3620 6680
+Wire Wire Line
+	3620 6380 3670 6380
+Wire Wire Line
+	3420 6580 3670 6580
 $EndSCHEMATC
