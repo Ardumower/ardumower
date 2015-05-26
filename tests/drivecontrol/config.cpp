@@ -6,6 +6,7 @@
 #include "modelrc.h"
 #include "sonar.h"
 #include "battery.h"
+#include "perimeter.h"
 
 
 FactoryConfig Config;
@@ -15,7 +16,7 @@ void FactoryConfig::setup(){
   Console.println(F("FactoryConfig::setup"));
   
   // -------------- gear motors -------------------------------------------
-  MotorCtrl.motorSpeedMaxRpm = 18;      
+  MotorCtrl.motorSpeedMaxRpm = 10;      
   MotorCtrl.enableStallDetection = true;
   MotorCtrl.motorSpeedMaxPwm = 255;    
   MotorCtrl.motorLeftPID.Kp       = 0.87;    // PID speed controller
@@ -37,6 +38,7 @@ void FactoryConfig::setup(){
   MotorCtrl.motorSenseRightScale = 9.3;  // motor right sense scale (mA=(ADC-zero) * scale)
   MotorCtrl.motorSenseLeftScale  = 9.3;  // motor left sense scale  (mA=(ADC-zero) * scale)  
   MotorCtrl.motorVoltageDC = 24.0;
+  MotorCtrl.motorEfficiencyMin = 200;    // minimum motor efficiency (stall detection)
 
   // ---------------- mower motor ---------------------------------------
   MotorMow.motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
@@ -45,6 +47,11 @@ void FactoryConfig::setup(){
   // MC33926 current:  5V / 1024 ADC counts,  525 mV per A  => 9.3 mA per ADC step  
   MotorMow.motorSenseScale  = 9.3;  // motor left sense scale  (mA=(ADC-zero) * scale)
   MotorMow.motorVoltageDC = 24.0;      
+  
+  // ------------------ perimeter -------------------------------------------  
+  Perimeter.enable = true;
+  Perimeter.timedOutIfBelowSmag = 300;
+  Perimeter.timeOutSecIfNotInside = 8;  
 
   // ------------------ sonar -------------------------------------------
   Sonar.sonarTriggerBelow = 900;

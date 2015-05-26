@@ -71,6 +71,8 @@ MotorControl::MotorControl(){
   motorSenseRightScale = 9.3;  // motor right sense scale (mA=(ADC-zero) * scale)
   motorSenseLeftScale  = 9.3;  // motor left sense scale  (mA=(ADC-zero) * scale)  
   motorVoltageDC = 24.0;
+  
+  motorEfficiencyMin = 200;
 }
 
 
@@ -325,6 +327,8 @@ void MotorControl::setSpeedRpm(int leftRpm, int rightRpm){
   motion = MOTION_SPEED;   
 }
 
+
+
 void MotorControl::stopImmediately(){
   setSpeedPWM(0, 0);
   motion = MOTION_STOP;
@@ -430,7 +434,7 @@ void MotorControl::readCurrent(){
                                    
     if (enableStallDetection) {    
       if (!motorLeftStalled){
-       if ( (abs(motorLeftPWMCurr) > 0) && (motorLeftSensePower > 1) && (motorLeftEfficiency < 200)  ) {
+       if ( (abs(motorLeftPWMCurr) > 0) && (motorLeftSensePower > 1) && (motorLeftEfficiency < motorEfficiencyMin)  ) {
          print();         
          Console.print(F("  LEFT STALL"));         
          Console.println();                  
@@ -439,7 +443,7 @@ void MotorControl::readCurrent(){
        }
       }
       if (!motorRightStalled){
-       if ( (abs(motorRightPWMCurr) > 0) && (motorRightSensePower > 1) && (motorRightEfficiency < 200) ) {
+       if ( (abs(motorRightPWMCurr) > 0) && (motorRightSensePower > 1) && (motorRightEfficiency < motorEfficiencyMin) ) {
          print();         
          Console.print(F("  RIGHT STALL"));         
          Console.println();         

@@ -11,6 +11,7 @@
 #include "button.h"
 #include "led.h"
 #include "sonar.h"
+#include "perimeter.h"
 #include "timer.h"
 #include "battery.h"
 #include "motorcontrol.h"
@@ -31,6 +32,7 @@ class RobotControl
     StandbyBehavior standbyBehavior;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
+    HitPerimeterBehavior  hitPerimeterBehavior;    
     ChargingBehavior  chargingBehavior;
     FatalErrorBehavior fatalErrorBehavior;
     TrackingBehavior trackingBehavior;

@@ -26,6 +26,7 @@ void RobotControl::setup(){
   MotorMow.setup();
   ModelRC.setup();
   Sonar.setup();  
+  Perimeter.setup();
 
   Config.setup();
   
@@ -34,6 +35,7 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&trackingBehavior);    
   arbitrator.addBehavior(&hitObstacleBehavior);      
+  arbitrator.addBehavior(&hitPerimeterBehavior);        
   arbitrator.addBehavior(&modelRCBehavior);     
   arbitrator.addBehavior(&fatalErrorBehavior);  
   arbitrator.addBehavior(&chargingBehavior);          
@@ -50,6 +52,7 @@ void RobotControl::setAutoMode(){
   Console.println(F("RobotControl::setAutoMode"));
   Robot.driveForwardBehavior.enable(true);          
   Robot.hitObstacleBehavior.enable(true);          
+  Robot.hitPerimeterBehavior.enable(true);            
   Robot.trackingBehavior.enable(true);  
   Robot.modelRCBehavior.enable(false);            
 }
@@ -58,7 +61,8 @@ void RobotControl::setModelRCMode(){
   Console.println(F("RobotControl::setModelRCMode"));
   Robot.modelRCBehavior.enable(true);    
   Robot.driveForwardBehavior.enable(false);          
-  Robot.hitObstacleBehavior.enable(false);                      
+  Robot.hitObstacleBehavior.enable(false);            
+  Robot.hitPerimeterBehavior.enable(false);              
   Robot.trackingBehavior.enable(false);
 }
  
@@ -67,6 +71,7 @@ void RobotControl::setStandbyMode(){
   Robot.modelRCBehavior.enable(false);    
   Robot.driveForwardBehavior.enable(false);          
   Robot.hitObstacleBehavior.enable(false);                        
+  Robot.hitPerimeterBehavior.enable(false);              
   Robot.trackingBehavior.enable(false);  
 }
 

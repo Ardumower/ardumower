@@ -53,6 +53,7 @@ class MotorControl
     float motorRightPWMCurr ;      
     
     // motor current
+    float motorEfficiencyMin; // minimum motor efficiency (stall detection)    
     int motorRightSenseADC ; // ADC value
     int motorLeftSenseADC ;
     float motorLeftSenseCurrent ;  // current (mA)
@@ -93,6 +94,7 @@ class MotorControl
     virtual void stopImmediately();
     virtual void travelLineSpeedRpm(int speedRpm);    
     virtual void travelLineDistance(int distanceCm, int speedRpm);
+    // rotate (+counter-clock / -clock-wise)
     virtual void rotate(float angleRad, int speedRpm);
     virtual bool hasStopped();    
     virtual void resetStalled();

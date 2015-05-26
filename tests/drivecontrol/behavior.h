@@ -77,6 +77,15 @@ class HitObstacleBehavior : public Behavior
     virtual void action();    
 };
 
+// robot hit perimeter
+class HitPerimeterBehavior : public Behavior
+{
+  public:        
+    HitPerimeterBehavior();
+    virtual bool takeControl();
+    virtual void action();    
+};
+
 // robot is perimeter tracking
 class TrackingBehavior : public Behavior
 {

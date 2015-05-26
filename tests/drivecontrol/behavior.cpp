@@ -1,6 +1,7 @@
 #include "behavior.h"
 #include "motorcontrol.h"
 #include "buzzer.h"
+#include "perimeter.h"
 #include "button.h"
 #include "robot.h"
 #include "modelrc.h"
@@ -94,7 +95,7 @@ void DriveForwardBehavior::action(){
   LED.playSequence(LED_GREEN_ON);             
 
   // forward
-  MotorCtrl.setSpeedRpm(+10, +10); 
+  MotorCtrl.setSpeedRpm(MotorCtrl.motorSpeedMaxRpm, MotorCtrl.motorSpeedMaxRpm); 
 
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
     Robot.run();   
@@ -119,16 +120,16 @@ void HitObstacleBehavior::action(){
   if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);                  
   
   // reverse
-  MotorCtrl.travelLineDistance(-30, 10);             
+  MotorCtrl.travelLineDistance(-30, MotorCtrl.motorSpeedMaxRpm);             
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ) {
     Robot.run();   
   }
   
   // rotate
   if (rotateRight){
-    MotorCtrl.rotate(-PI/2, 10);               
+    MotorCtrl.rotate(-PI/2, MotorCtrl.motorSpeedMaxRpm/2);               
   } else {
-    MotorCtrl.rotate(+PI/2, 10);                   
+    MotorCtrl.rotate(+PI/2, MotorCtrl.motorSpeedMaxRpm/2);                   
   } 
   // wait until motion stop
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
@@ -207,12 +208,12 @@ void TrackingBehavior::action(){
   Buzzer.play(BC_LONG_LONG);                  
   
   // find perimeter wire
-  MotorCtrl.setSpeedRpm(+10, +10); 
+  MotorCtrl.setSpeedRpm(MotorCtrl.motorSpeedMaxRpm, MotorCtrl.motorSpeedMaxRpm); 
 
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
-    //if (perimeter.isOutside){
-    //  MotorCtrl.stopImmediately();
-    //}
+    if (!Perimeter.isInside(0)){
+      MotorCtrl.stopImmediately();
+    }
     Robot.run();   
   }
   
@@ -224,5 +225,46 @@ void TrackingBehavior::action(){
     Robot.run();       
   }
 }
+
+// ----------------------------------------------------------
+
+HitPerimeterBehavior::HitPerimeterBehavior()  : Behavior(){
+  name = "HitPerimeterBehavior";
+}
+
+bool HitPerimeterBehavior::takeControl(){
+  return ( !Perimeter.isInside(0) );
+}
+
+void HitPerimeterBehavior::action(){  
+  suppressed = false;    
+  MotorCtrl.stopImmediately();
+  bool rotateRight = ((rand() % 2) == 0);
+  float angle = random(PI/36, PI/2);
+  if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT);                  
+  
+  // reverse  
+  MotorCtrl.setSpeedRpm(-MotorCtrl.motorSpeedMaxRpm, -MotorCtrl.motorSpeedMaxRpm);   
+  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ) {  
+    if (Perimeter.isInside(0)) {
+      MotorCtrl.stopImmediately();
+      break;
+    }
+    Robot.run();   
+  }
+  
+  // rotate
+  if (rotateRight){
+    MotorCtrl.rotate(-angle, MotorCtrl.motorSpeedMaxRpm/2);               
+  } else {
+    MotorCtrl.rotate(+angle, MotorCtrl.motorSpeedMaxRpm/2);                   
+  } 
+  // wait until motion stop
+  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
+    Robot.run();   
+  }
+}
+
+// ----------------------------------------------------------
 
 
