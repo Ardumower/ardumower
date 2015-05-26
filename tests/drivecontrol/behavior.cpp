@@ -62,18 +62,12 @@ void UserInteractionBehavior::action(){
     if (bc != 0){
       switch (bc){
         case 1: 
-          if ((Robot.modelRCBehavior.enabled) || (Robot.driveForwardBehavior.enabled)){            
-            Robot.driveForwardBehavior.enable(false);          
-          } else {         
-            Robot.driveForwardBehavior.enable(true);
-          }
-          Robot.modelRCBehavior.enable(false);          
-          Robot.hitObstacleBehavior.enable(true);          
+          if (Robot.modelRCBehavior.enabled) Robot.setStandbyMode();
+            else if (Robot.driveForwardBehavior.enabled) Robot.setStandbyMode();
+            else Robot.setAutoMode();
           break;
         case 3: 
-          Robot.modelRCBehavior.enable(true);
-          Robot.driveForwardBehavior.enable(false);
-          Robot.hitObstacleBehavior.enable(false);          
+          Robot.setModelRCMode();
           break;
       }
       Button.resetBeepCounter();

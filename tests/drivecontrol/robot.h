@@ -33,12 +33,15 @@ class RobotControl
     HitObstacleBehavior  hitObstacleBehavior;
     ChargingBehavior  chargingBehavior;
     FatalErrorBehavior fatalErrorBehavior;
-    Arbitrator arbitrator;  
+    Arbitrator arbitrator;      
     RobotControl();    
+    virtual void setAutoMode(); // activate auto mode
+    virtual void setModelRCMode(); // activate model R/C mode    
+    virtual void setStandbyMode(); // set robot to standby/idle mode
     virtual void run();
     virtual void setup();
     virtual void loop();
-  private:
+  private:    
     void checkKey();
 };
 

@@ -15,17 +15,17 @@ void RobotControl::setup(){
   Wire.begin();            
   Console.begin(BAUDRATE);
   Console.println(F("-----SETUP-----"));         
-  
+
+  Button.setup();    
   ADCMan.setup();  
-  Battery.setup();  
+  Battery.setup();    
+  Buzzer.setup();    
+  LED.setup();  
+  Timer.setup();  
   MotorCtrl.setup();  
   MotorMow.setup();
   ModelRC.setup();
-  Buzzer.setup();    
-  Sonar.setup();
-  Timer.setup();
-  Button.setup();  
-  LED.setup();
+  Sonar.setup();  
 
   Config.setup();
   
@@ -38,12 +38,32 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&chargingBehavior);          
   arbitrator.addBehavior(&userInteractionBehavior);            
   
-  driveForwardBehavior.enable(false);
-  hitObstacleBehavior.enable(false);
-  modelRCBehavior.enable(false);  
+  setStandbyMode();
   
   Console.println(F("-----SETUP completed-----"));
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
+}
+
+
+void RobotControl::setAutoMode(){
+  Console.println(F("RobotControl::setAutoMode"));
+  Robot.driveForwardBehavior.enable(true);          
+  Robot.hitObstacleBehavior.enable(true);          
+  Robot.modelRCBehavior.enable(false);            
+}
+ 
+void RobotControl::setModelRCMode(){
+  Console.println(F("RobotControl::setModelRCMode"));
+  Robot.modelRCBehavior.enable(true);    
+  Robot.driveForwardBehavior.enable(false);          
+  Robot.hitObstacleBehavior.enable(false);                      
+}
+ 
+void RobotControl::setStandbyMode(){
+  Console.println(F("RobotControl::setStandbyMode"));  
+  Robot.modelRCBehavior.enable(false);    
+  Robot.driveForwardBehavior.enable(false);          
+  Robot.hitObstacleBehavior.enable(false);                        
 }
 
 
