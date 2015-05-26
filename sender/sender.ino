@@ -34,8 +34,8 @@
                                          // comment to use only +input/GND voltage for amplitude
                                          
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
-#define pinIN2       2  // M1_IN2         (if using old L298N driver, leave open)
-#define pinPWM       3  // M1_PWM / nD2   (if using old L298N driver, connect this pin to L298N-IN2)
+#define pinIN2       2  // M1_IN2         (if using old L298N driver, connect this pin to L298N-IN2)
+#define pinPWM       3  // M1_PWM / nD2   (if using old L298N driver, leave open)
 #define pinEnable    5  // EN             (connect to motor driver enable)             
 
 // motor driver fault pin
