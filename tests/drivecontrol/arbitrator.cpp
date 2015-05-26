@@ -61,7 +61,7 @@ void Arbitrator::monitor() {
     Console.print("  ");    
     Console.println(behavior->name);    */
     
-    if ( (idx > activeBehaviorIdx) && (behavior->takeControl()) ){
+    if ( (behavior->enabled) && (idx > activeBehaviorIdx) && (behavior->takeControl()) ){
       if (activeBehavior != NULL){    
         Console.println(F("Arbitrator::monitor suppressing"));
         activeBehavior->suppress(); 

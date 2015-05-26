@@ -2,6 +2,7 @@
 #define BEHAVIOR_H
 
 #include <Arduino.h>
+#include "drivers.h"
 
 // subsumption architecture
 // external resources:
@@ -16,7 +17,16 @@ class Behavior
   public:    
     String name;
     bool suppressed;
-    Behavior() { suppressed = false; }
+    bool enabled;
+    Behavior() { suppressed = false; enabled = true; }
+    virtual void enable(bool flag){ 
+      if (enabled == flag) return;
+      enabled = flag; 
+      Console.print(F("ENABLE "));
+      Console.print(name);
+      Console.print(" ");
+      Console.println(enabled);      
+    }
     virtual void suppress() { suppressed = true; }
     virtual bool takeControl() {}
     virtual void action() {}    

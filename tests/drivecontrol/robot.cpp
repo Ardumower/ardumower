@@ -8,19 +8,6 @@ RobotControl Robot;
 
 RobotControl::RobotControl(){     
   loopCounter = 0;
-  mode = -1;
-}
-
-void RobotControl::setMode(int newMode){
-  if (mode == newMode) return;
-  mode = newMode;
-  switch (mode){
-    case MODE_STANDBY: Console.println(F("MODE_STANDBY")); break;
-    case MODE_MODEL_RC:Console.println(F("MODE_MODEL_RC")); break;        
-    case MODE_AUTO:    Console.println(F("MODE_AUTO")); break;    
-    case MODE_MANUAL:  Console.println(F("MODE_MANUAL")); break;        
-    case MODE_ERROR:   Console.println(F("MODE_ERROR")); break;            
-  }
 }
 
 
@@ -51,7 +38,9 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&fatalErrorBehavior);  
   arbitrator.addBehavior(&userInteractionBehavior);            
   
-  setMode(MODE_STANDBY);  
+  driveForwardBehavior.enable(false);
+  hitObstacleBehavior.enable(false);
+  modelRCBehavior.enable(false);  
   
   Console.println(F("-----SETUP completed-----"));
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
