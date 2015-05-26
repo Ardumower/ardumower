@@ -54,10 +54,10 @@ void SonarControl::run(){
   if (enableLeft)   sonarDistLeft   = readHCSR04(pinSonarLeftTrigger,   pinSonarLeftEcho);
   if (enableCenter) sonarDistCenter = readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho);
   
-  if ( (triggeredRight()) || (triggeredLeft()) || (triggeredCenter()) )
+  if ( (triggeredRight()) || (triggeredLeft()) || (triggeredCenter()) ){    
     sonarDistCounter++;    
-    
-  print();
+    print();    
+  }   
 }
 
 

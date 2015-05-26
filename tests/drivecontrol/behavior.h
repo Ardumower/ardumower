@@ -32,10 +32,10 @@ class StandbyBehavior : public Behavior
     virtual void action();      
 };
 
-class StopBehavior : public Behavior
+class UserStopBehavior : public Behavior
 {
   public:        
-    StopBehavior();
+    UserStopBehavior();
     virtual bool takeControl();
     virtual void action();      
 };
@@ -64,6 +64,16 @@ class ChargerConnectedBehavior : public Behavior
     virtual bool takeControl();
     virtual void action();    
 };
+
+
+class FatalErrorBehavior : public Behavior
+{
+  public:        
+    FatalErrorBehavior();
+    virtual bool takeControl();
+    virtual void action();    
+};
+
 
 
 

@@ -25,11 +25,12 @@ class RobotControl
   public:
     unsigned long loopCounter;   // Arduino loop counter
     ModelRCBehavior modelRCBehavior;
-    StopBehavior stopBehavior;
+    UserStopBehavior userStopBehavior;
     StandbyBehavior standbyBehavior;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
     ChargerConnectedBehavior  chargerConnectedBehavior;
+    FatalErrorBehavior fatalErrorBehavior;
     Arbitrator arbitrator;  
     RobotControl();    
     virtual void run();

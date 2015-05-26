@@ -81,9 +81,17 @@ void MotorMowControl::resetStalled(){
 
 
 void MotorMowControl::checkMotorFault(){
-  if (digitalRead(pinMotorMowFault)==LOW){
+  if ( (!motorError) && (digitalRead(pinMotorMowFault)==LOW) ){
+    Console.println(F("ERROR: mower motor/MC33926"));        
     motorError = true;
   }
+}
+
+void MotorMowControl::resetFault(){
+  Console.println(F("MotorMowControl::resetFault"));      
+  digitalWrite(pinMotorMowEnable, LOW);
+  digitalWrite(pinMotorMowEnable, HIGH);  
+  motorError = false;
 }
 
 

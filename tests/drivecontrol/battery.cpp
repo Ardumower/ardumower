@@ -166,6 +166,7 @@ int BatteryControl::getChargingTimeMinutes(){
 }
 
 void BatteryControl::enableChargingRelay(bool state){
+  if (state == chargeRelayEnabled) return;
   Console.print(F("BatteryControll::enableChargingRelay "));
   Console.println(state);
   chargeRelayEnabled = state;

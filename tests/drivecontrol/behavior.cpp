@@ -46,15 +46,16 @@ void ModelRCBehavior::action(){
 
 // ----------------------------------------------------------
 
-StopBehavior::StopBehavior() : Behavior() {
-  name = "StopBehavior";
+// user stopped robot
+UserStopBehavior::UserStopBehavior() : Behavior() {
+  name = "UserStopBehavior";
 }
 
-bool StopBehavior::takeControl(){
+bool UserStopBehavior::takeControl(){
   return ( (Button.beepCounter == 1) && (MotorCtrl.motion != MOTION_STOP) );
 }
 
-void StopBehavior::action(){  
+void UserStopBehavior::action(){  
   suppressed = false;
   MotorCtrl.stopImmediately();  
   Button.resetBeepCounter();  
@@ -65,6 +66,7 @@ void StopBehavior::action(){
 
 // ----------------------------------------------------------
 
+// robot is mowing and driving forward
 DriveForwardBehavior::DriveForwardBehavior() : Behavior() {
   name = "DriveForwardBehavior";
 }
@@ -87,6 +89,7 @@ void DriveForwardBehavior::action(){
 
 // ----------------------------------------------------------
 
+// robot hit obstacle
 HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
   name = "HitObstacleBehavior";
 }
@@ -121,6 +124,7 @@ void HitObstacleBehavior::action(){
 
 // ----------------------------------------------------------
 
+// charger connected to robot
 ChargerConnectedBehavior::ChargerConnectedBehavior() : Behavior() {
   name = "ChargerConnectedBehavior";
 }
@@ -141,5 +145,31 @@ void ChargerConnectedBehavior::action(){
   }
 }
 
+
+// ----------------------------------------------------------
+
+// fatal error appeared
+FatalErrorBehavior::FatalErrorBehavior() : Behavior() {
+  name = "FatalErrorBehavior";
+}
+
+bool FatalErrorBehavior::takeControl(){
+  return (MotorCtrl.motorLeftError || MotorCtrl.motorRightError || MotorMow.motorError);
+}
+
+void FatalErrorBehavior::action(){  
+  suppressed = false;
+  
+  MotorCtrl.stopImmediately();
+  Buzzer.play(BC_SHORT_SHORT_SHORT);                  
+
+  // wait until some other behavior was activated
+  while ( (!suppressed )&& (!Button.pressed) ) {
+    Robot.run();       
+  }
+  
+  MotorCtrl.resetFault();
+  MotorMow.resetFault();  
+}
 
 

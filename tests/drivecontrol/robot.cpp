@@ -38,8 +38,9 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);      
   arbitrator.addBehavior(&modelRCBehavior);     
-  arbitrator.addBehavior(&stopBehavior);          
-  // arbitrator.addBehavior(&chargerConnectedBehavior);        
+  arbitrator.addBehavior(&userStopBehavior);          
+  arbitrator.addBehavior(&chargerConnectedBehavior);        
+  arbitrator.addBehavior(&fatalErrorBehavior);        
   Console.println(F("SETUP completed"));
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
 }

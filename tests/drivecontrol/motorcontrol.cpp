@@ -142,17 +142,21 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
 }
 
 void MotorControl::checkFault(){
-  if (digitalRead(pinMotorLeftFault)==LOW){
+  if ( (!motorLeftError) && (digitalRead(pinMotorLeftFault)==LOW) ){
+    Console.println(F("ERROR: left gear motor/MC33926"));
     motorLeftError = true;
   }
-  if  (digitalRead(pinMotorRightFault)==LOW){
+  if ( (!motorRightError) && (digitalRead(pinMotorRightFault)==LOW) ){
+    Console.println(F("ERROR: right gear motor/MC33926"));    
     motorRightError = true;
   }
 }
 
 void MotorControl::resetFault(){
+  Console.println(F("MotorControl::resetFault"));      
   digitalWrite(pinMotorEnable, LOW);
   digitalWrite(pinMotorEnable, HIGH);  
+  motorRightError = motorLeftError = false;
 }
 
 void MotorControl::run(){

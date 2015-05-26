@@ -30,6 +30,7 @@ class MotorMowControl
     void setSpeedPWM(int pwm);
     bool hasStopped();    
     void resetStalled();
+    void resetFault();
     void stopImmediately();
   private:
     unsigned long lastMotorCurrentTime;

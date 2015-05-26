@@ -96,6 +96,7 @@ class MotorControl
     virtual void rotate(float angleRad, int speedRpm);
     virtual bool hasStopped();    
     virtual void resetStalled();
+    virtual void resetFault();        
     virtual void print();
     virtual void printCSV(bool includeHeader);
 private:    
@@ -108,7 +109,6 @@ private:
     virtual void setMC33926(int pinDir, int pinPWM, int speed);    
     virtual void readCurrent();
     virtual void checkFault();
-    virtual void resetFault();    
 };
 
 
