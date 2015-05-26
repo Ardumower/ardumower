@@ -33,6 +33,7 @@ class RobotControl
     HitObstacleBehavior  hitObstacleBehavior;
     ChargingBehavior  chargingBehavior;
     FatalErrorBehavior fatalErrorBehavior;
+    TrackingBehavior trackingBehavior;
     Arbitrator arbitrator;      
     RobotControl();    
     virtual void setAutoMode(); // activate auto mode

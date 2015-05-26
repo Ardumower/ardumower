@@ -188,3 +188,27 @@ void FatalErrorBehavior::action(){
 }
 
 
+// ----------------------------------------------------------
+
+TrackingBehavior::TrackingBehavior() : Behavior() {
+  name = "TrackingBehavior";
+}
+
+bool TrackingBehavior::takeControl(){
+  return ( Battery.robotShouldGoHome() );
+}
+
+void TrackingBehavior::action(){  
+  suppressed = false;
+  
+  MotorCtrl.stopImmediately();
+  LED.playSequence(LED_OFF);             
+  Buzzer.play(BC_LONG_LONG);                  
+
+  // wait until some other behavior was activated
+  while ( !suppressed )  {
+    Robot.run();       
+  }
+}
+
+

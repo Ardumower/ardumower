@@ -11,14 +11,17 @@ BatteryControl Battery;
 BatteryControl::BatteryControl(){  
   nextBatteryTime = batteryReadCounter = 0;
   chargingStartTimeMinutes = 0;
+  batVoltage = 24;
+  chgVoltage = 0;
   idleTimeSec = 0;
   enableMonitor = false;
-  chargeRelayEnabled = false;
+  chargeRelayEnabled = false;  
   batFactor       = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batChgFactor    = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
   batChargingCurrentMax =1.6;  // maximum current your charger can devliver
   batFullCurrent  = 0.3;      // current flowing when battery is fully charged
+  batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   startChargingIfBelow = 27.0; // start charging if battery Voltage is below
   chargingTimeoutMinutes = 210; // safety timer for charging (minutes)    
   // Sensorausgabe Konsole      (chgSelection =0)

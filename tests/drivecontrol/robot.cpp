@@ -32,6 +32,7 @@ void RobotControl::setup(){
   // low-to-high priority  
   arbitrator.addBehavior(&standbyBehavior);          
   arbitrator.addBehavior(&driveForwardBehavior);  
+  arbitrator.addBehavior(&trackingBehavior);    
   arbitrator.addBehavior(&hitObstacleBehavior);      
   arbitrator.addBehavior(&modelRCBehavior);     
   arbitrator.addBehavior(&fatalErrorBehavior);  
@@ -49,6 +50,7 @@ void RobotControl::setAutoMode(){
   Console.println(F("RobotControl::setAutoMode"));
   Robot.driveForwardBehavior.enable(true);          
   Robot.hitObstacleBehavior.enable(true);          
+  Robot.trackingBehavior.enable(true);  
   Robot.modelRCBehavior.enable(false);            
 }
  
@@ -57,6 +59,7 @@ void RobotControl::setModelRCMode(){
   Robot.modelRCBehavior.enable(true);    
   Robot.driveForwardBehavior.enable(false);          
   Robot.hitObstacleBehavior.enable(false);                      
+  Robot.trackingBehavior.enable(false);
 }
  
 void RobotControl::setStandbyMode(){
@@ -64,6 +67,7 @@ void RobotControl::setStandbyMode(){
   Robot.modelRCBehavior.enable(false);    
   Robot.driveForwardBehavior.enable(false);          
   Robot.hitObstacleBehavior.enable(false);                        
+  Robot.trackingBehavior.enable(false);  
 }
 
 
@@ -78,6 +82,9 @@ void RobotControl::checkKey(){
       case '5': Button.setBeepCount(5); break;                   
       case 's': Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; break;
       case 'e': MotorCtrl.motorLeftError = true;  break;
+      case 'h':
+        Battery.batVoltage = 18;
+        break;
       case 'b': 
         if (Battery.chgVoltage > 5){
           Battery.chgVoltage = 0; 
