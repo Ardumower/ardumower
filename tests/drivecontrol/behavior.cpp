@@ -46,7 +46,6 @@ void ModelRCBehavior::action(){
 
 // ----------------------------------------------------------
 
-// user stopped robot
 UserStopBehavior::UserStopBehavior() : Behavior() {
   name = "UserStopBehavior";
 }
@@ -66,7 +65,6 @@ void UserStopBehavior::action(){
 
 // ----------------------------------------------------------
 
-// robot is mowing and driving forward
 DriveForwardBehavior::DriveForwardBehavior() : Behavior() {
   name = "DriveForwardBehavior";
 }
@@ -89,7 +87,6 @@ void DriveForwardBehavior::action(){
 
 // ----------------------------------------------------------
 
-// robot hit obstacle
 HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
   name = "HitObstacleBehavior";
 }
@@ -124,7 +121,6 @@ void HitObstacleBehavior::action(){
 
 // ----------------------------------------------------------
 
-// charger connected to robot
 ChargerConnectedBehavior::ChargerConnectedBehavior() : Behavior() {
   name = "ChargerConnectedBehavior";
 }
@@ -148,7 +144,6 @@ void ChargerConnectedBehavior::action(){
 
 // ----------------------------------------------------------
 
-// fatal error appeared
 FatalErrorBehavior::FatalErrorBehavior() : Behavior() {
   name = "FatalErrorBehavior";
 }

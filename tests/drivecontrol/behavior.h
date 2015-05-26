@@ -3,6 +3,12 @@
 
 #include <Arduino.h>
 
+// subsumption architecture
+// external resources:
+//   http://www.convict.lu/Jeunes/Subsumption.htm
+//   http://www.lejos.org/nxt/nxj/tutorial/Behaviors/BehaviorProgramming.htm
+//   http://www.ibm.com/developerworks/library/j-robots/
+
 
 // abstract superclass
 class Behavior
@@ -16,6 +22,7 @@ class Behavior
     virtual void action() {}    
 };
 
+// Model R/C control activated
 class ModelRCBehavior : public Behavior
 {
   public: 
@@ -24,6 +31,7 @@ class ModelRCBehavior : public Behavior
     virtual void action();       
 };
 
+// robot is idle (not driving around or charging)
 class StandbyBehavior : public Behavior
 {
   public:        
@@ -32,6 +40,7 @@ class StandbyBehavior : public Behavior
     virtual void action();      
 };
 
+// user stopped robot
 class UserStopBehavior : public Behavior
 {
   public:        
@@ -40,7 +49,7 @@ class UserStopBehavior : public Behavior
     virtual void action();      
 };
 
-
+// robot is mowing and driving forward
 class DriveForwardBehavior : public Behavior
 {
   public:    
@@ -49,6 +58,7 @@ class DriveForwardBehavior : public Behavior
     virtual void action();    
 };
 
+// robot hit obstacle
 class HitObstacleBehavior : public Behavior
 {
   public:        
@@ -57,6 +67,7 @@ class HitObstacleBehavior : public Behavior
     virtual void action();    
 };
 
+// charger connected to robot
 class ChargerConnectedBehavior : public Behavior
 {
   public:        
@@ -66,6 +77,7 @@ class ChargerConnectedBehavior : public Behavior
 };
 
 
+// fatal error appeared
 class FatalErrorBehavior : public Behavior
 {
   public:        
