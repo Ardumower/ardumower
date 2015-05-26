@@ -73,8 +73,8 @@ ADCManager::ADCManager(){
   // perimeter filter output (mag value) which disappears when disabling odometry interrupts.
   // SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
   //sampleRate = SRATE_19231;
-  sampleRate = SRATE_38462;
-  //sampleRate = SRATE_9615;
+  //sampleRate = SRATE_38462;
+  sampleRate = SRATE_9615;
 }
 
 void ADCManager::setup(){    

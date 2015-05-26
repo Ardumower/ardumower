@@ -197,7 +197,7 @@ TrackingBehavior::TrackingBehavior() : Behavior() {
 }
 
 bool TrackingBehavior::takeControl(){
-  return ( Battery.robotShouldGoHome() );
+  return ( (Perimeter.enable) && (Battery.robotShouldGoHome()) );
 }
 
 void TrackingBehavior::action(){  
@@ -233,7 +233,7 @@ HitPerimeterBehavior::HitPerimeterBehavior()  : Behavior(){
 }
 
 bool HitPerimeterBehavior::takeControl(){
-  return ( !Perimeter.isInside(0) );
+  return ( (Perimeter.enable) && (!Perimeter.isInside(0)) );
 }
 
 void HitPerimeterBehavior::action(){  

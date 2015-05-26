@@ -82,7 +82,7 @@ void MotorControl::setup(){
   motion = MOTION_STOP;
   enableSpeedControl = enableStallDetection = true;
   motorLeftPWMCurr = motorRightPWMCurr = 0;
-  lastOdometryTime = lastMotorControlTime = lastMotorCurrentTime = lastMotorRunTime = 0;  
+  lastOdometryTime = lastMotorControlTime = lastMotorCurrentTime = lastMotorRunTime = nextMotorPrintTime = 0;  
   odometryLeftTicksZeroCounter = odometryRightTicksZeroCounter = 0;
   motorLeftError = motorRightError = false;
   motorLeftStalled = motorRightStalled = false;
@@ -202,9 +202,12 @@ void MotorControl::run(){
   readCurrent();  
   checkFault();
   if (motion != MOTION_STOP) {
-    print();         
-    Console.println();      
-    //printCSV(false);             
+    if (millis() >= nextMotorPrintTime){
+      nextMotorPrintTime = millis() + 500;
+      print();         
+      Console.println();      
+      //printCSV(false);             
+    }
   }  
 }  
 

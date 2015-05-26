@@ -53,6 +53,7 @@ PerimeterControl Perimeter;
 
 
 PerimeterControl::PerimeterControl(){    
+  nextPerimeterTime = 0;
   useDifferentialPerimeterSignal = true;
   swapCoilPolarity = false;
   timedOutIfBelowSmag = 300;
@@ -77,6 +78,8 @@ void PerimeterControl::setup(){
 void PerimeterControl::run(){
   #ifndef SIMULATION
   if (!enable) return;
+  if (millis() < nextPerimeterTime) return; 
+  nextPerimeterTime = millis() + 100;
   if (ADCMan.isCaptureComplete(idxPin[0])) {
     matchedFilter(0);
   }  

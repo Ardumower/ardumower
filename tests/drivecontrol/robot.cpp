@@ -8,6 +8,7 @@ RobotControl Robot;
 
 RobotControl::RobotControl(){     
   loopCounter = 0;
+  nextPrintTime = 0;
 }
 
 
@@ -116,6 +117,17 @@ void RobotControl::checkKey(){
   }        
 }
 
+
+void RobotControl::print(){  
+  Console.print("loopsPerSec=");
+  Console.print(((double)loopCounter)/10.0);  
+  Console.print("  behavior=");
+  if (arbitrator.activeBehavior){
+    Console.print(arbitrator.activeBehavior->name);
+  }
+  Console.println();
+  loopCounter = 0;
+}
   
 // call this in ANY loop!
 void RobotControl::run(){  
@@ -133,7 +145,13 @@ void RobotControl::run(){
   Sonar.run();
   Timer.run();
   
-  delay(50);  
+  if (millis() >= nextPrintTime){
+    nextPrintTime = millis() + 10000;
+    print();
+  }
+  
+  //delay(50);  
+  loopCounter++;
 }
 
   
@@ -165,7 +183,6 @@ void RobotControl::loop(){
   //Console.print(F("RobotControl::loop "));
   //Console.println(loopCounter);  
   arbitrator.run();      
-  loopCounter++;
 }
 
 

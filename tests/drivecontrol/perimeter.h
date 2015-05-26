@@ -68,6 +68,7 @@ class PerimeterControl
     void setup();
     void run();
   private:
+    unsigned long nextPerimeterTime;
     unsigned long lastInsideTime[2];
     byte idxPin[2]; // channel for idx
     int callCounter;

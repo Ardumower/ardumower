@@ -38,12 +38,14 @@ class RobotControl
     TrackingBehavior trackingBehavior;
     Arbitrator arbitrator;      
     RobotControl();    
+    unsigned long nextPrintTime;
     virtual void setAutoMode(); // activate auto mode
     virtual void setModelRCMode(); // activate model R/C mode    
     virtual void setStandbyMode(); // set robot to standby/idle mode
     virtual void run();
     virtual void setup();
     virtual void loop();
+    virtual void print();
   private:    
     void checkKey();
 };

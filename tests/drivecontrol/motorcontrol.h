@@ -103,6 +103,7 @@ class MotorControl
     virtual void printCSV(bool includeHeader);
 private:    
     unsigned long lastMotorRunTime;
+    unsigned long nextMotorPrintTime;    
     unsigned long lastMotorControlTime;
     unsigned long lastOdometryTime;    
     unsigned long lastMotorCurrentTime;        
