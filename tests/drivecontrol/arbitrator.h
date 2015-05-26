@@ -16,6 +16,7 @@ class Arbitrator
     int nextBehaviorIdx;    
     Arbitrator();
     virtual void addBehavior(Behavior *behavior);
+    virtual void setNextBehavior(Behavior *behavior);
     virtual void run();
     virtual void monitor();
 };

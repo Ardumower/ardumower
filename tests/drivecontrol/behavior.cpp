@@ -55,16 +55,16 @@ bool UserInteractionBehavior::takeControl(){
 }
 
 void UserInteractionBehavior::action(){  
-  suppressed = false;
-  MotorCtrl.stopImmediately();  
+  suppressed = false;  
   while ( !suppressed ){
     int bc = Button.beepCounter;
     if (bc != 0){
       switch (bc){
         case 1: 
-          if (Robot.modelRCBehavior.enabled) Robot.setStandbyMode();
-            else if (Robot.driveForwardBehavior.enabled) Robot.setStandbyMode();
-            else Robot.setAutoMode();
+          if (MotorCtrl.motion == MOTION_STOP)
+            Robot.setAutoMode();
+          else 
+            Robot.setStandbyMode();
           break;
         case 3: 
           Robot.setModelRCMode();
@@ -73,6 +73,7 @@ void UserInteractionBehavior::action(){
       Button.resetBeepCounter();
       break;
     }
+    MotorCtrl.stopImmediately();  
     Robot.run();   
   }
 }
@@ -204,9 +205,22 @@ void TrackingBehavior::action(){
   MotorCtrl.stopImmediately();
   LED.playSequence(LED_OFF);             
   Buzzer.play(BC_LONG_LONG);                  
+  
+  // find perimeter wire
+  MotorCtrl.setSpeedRpm(+10, +10); 
 
-  // wait until some other behavior was activated
+  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
+    //if (perimeter.isOutside){
+    //  MotorCtrl.stopImmediately();
+    //}
+    Robot.run();   
+  }
+  
+  // track perimeter until some other behavior was activated
   while ( !suppressed )  {
+
+    // TODO: add perimeter tracking code
+    
     Robot.run();       
   }
 }

@@ -75,17 +75,26 @@ void RobotControl::checkKey(){
   while (Console.available() > 0){    
     char ch = (char)Console.read();          
     switch (ch){
+      // simulate button press
       case '1': Button.setBeepCount(1); break;       
       case '2': Button.setBeepCount(2); break;             
       case '3': Button.setBeepCount(3); break;             
       case '4': Button.setBeepCount(4); break;             
       case '5': Button.setBeepCount(5); break;                   
-      case 's': Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; break;
-      case 'e': MotorCtrl.motorLeftError = true;  break;
+      case 's': 
+        // simulate sonar trigger
+        Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; 
+        break;
+      case 'e': 
+        // simulate motor error
+        MotorCtrl.motorLeftError = true;  
+        break;
       case 'h':
+        // simulate low battery voltage
         Battery.batVoltage = 18;
         break;
       case 'b': 
+        // simulate charger connection
         if (Battery.chgVoltage > 5){
           Battery.chgVoltage = 0; 
           Battery.batVoltage = 24;           
@@ -93,6 +102,10 @@ void RobotControl::checkKey(){
           Battery.chgVoltage = 27; 
           Battery.batVoltage = 24;           
         }          
+        break;
+      case 't':
+        // force tracking behavior
+        arbitrator.setNextBehavior(&trackingBehavior);
         break;
     }
   }        

@@ -62,15 +62,31 @@ void Arbitrator::monitor() {
     Console.println(behavior->name);    */
     
     if ( (behavior->enabled) && (idx > activeBehaviorIdx) && (behavior->takeControl()) ){
-      if (activeBehavior != NULL){    
-        Console.println(F("Arbitrator::monitor suppressing"));
-        activeBehavior->suppress(); 
-      }
-      nextBehavior = behavior;
-      nextBehaviorIdx = idx;            
+      setNextBehavior(behavior);
+      //if (activeBehavior != NULL){    
+      //  Console.println(F("Arbitrator::monitor suppressing"));
+      //  activeBehavior->suppress(); 
+      //}
+      //nextBehavior = behavior;
+      //nextBehaviorIdx = idx;             
       break;
     }
   }    
 }
 
+void Arbitrator::setNextBehavior(Behavior *behavior){
+  //Console.print(F("Arbitrator::setNextBehavior "));
+  //Console.println(behavior->name);
+  if (activeBehavior != NULL){    
+    Console.println(F("Arbitrator::monitor suppressing"));
+    activeBehavior->suppress(); 
+  }
+  for (int idx=0; idx < behaviorCount; idx++){
+    if (behaviors[idx] == behavior){
+      nextBehavior = behavior;
+      nextBehaviorIdx = idx;            
+      break;
+    }
+  }  
+}
 
