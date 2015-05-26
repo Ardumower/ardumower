@@ -17,7 +17,7 @@ bool StandbyBehavior::takeControl(){
 
 void StandbyBehavior::action(){  
   suppressed = false;
-  LED.playSequence(LED_GREEN_ON);         
+  LED.playSequence(LED_OFF);           
   MotorCtrl.stopImmediately();  
   while ( !suppressed ) {    
     Robot.run();   
@@ -95,6 +95,8 @@ bool DriveForwardBehavior::takeControl(){
 
 void DriveForwardBehavior::action(){  
   suppressed = false;
+  
+  LED.playSequence(LED_GREEN_ON);             
 
   // forward
   MotorCtrl.setSpeedRpm(+10, +10); 
@@ -141,18 +143,19 @@ void HitObstacleBehavior::action(){
 
 // ----------------------------------------------------------
 
-ChargerConnectedBehavior::ChargerConnectedBehavior() : Behavior() {
-  name = "ChargerConnectedBehavior";
+ChargingBehavior::ChargingBehavior() : Behavior() {
+  name = "ChargingBehavior";
 }
 
-bool ChargerConnectedBehavior::takeControl(){
+bool ChargingBehavior::takeControl(){
   return ( Battery.isCharging() );
 }
 
-void ChargerConnectedBehavior::action(){  
+void ChargingBehavior::action(){  
   suppressed = false;
   
   MotorCtrl.stopImmediately();
+  LED.playSequence(LED_OFF);             
   Buzzer.play(BC_SHORT_SHORT_SHORT);                  
 
   // wait until some other behavior was activated

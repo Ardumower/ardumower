@@ -31,7 +31,7 @@ class RobotControl
     StandbyBehavior standbyBehavior;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
-    ChargerConnectedBehavior  chargerConnectedBehavior;
+    ChargingBehavior  chargingBehavior;
     FatalErrorBehavior fatalErrorBehavior;
     Arbitrator arbitrator;  
     RobotControl();    

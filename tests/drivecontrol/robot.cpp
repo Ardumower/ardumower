@@ -34,8 +34,8 @@ void RobotControl::setup(){
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);      
   arbitrator.addBehavior(&modelRCBehavior);     
-  arbitrator.addBehavior(&chargerConnectedBehavior);        
   arbitrator.addBehavior(&fatalErrorBehavior);  
+  arbitrator.addBehavior(&chargingBehavior);          
   arbitrator.addBehavior(&userInteractionBehavior);            
   
   driveForwardBehavior.enable(false);

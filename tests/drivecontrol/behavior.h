@@ -32,7 +32,7 @@ class Behavior
     virtual void action() {}    
 };
 
-// Model R/C control activated
+// Model R/C control 
 class ModelRCBehavior : public Behavior
 {
   public: 
@@ -77,11 +77,11 @@ class HitObstacleBehavior : public Behavior
     virtual void action();    
 };
 
-// charger connected to robot
-class ChargerConnectedBehavior : public Behavior
+// robot is charging
+class ChargingBehavior : public Behavior
 {
   public:        
-    ChargerConnectedBehavior();
+    ChargingBehavior();
     virtual bool takeControl();
     virtual void action();    
 };
