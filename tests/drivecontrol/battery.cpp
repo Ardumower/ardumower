@@ -63,15 +63,16 @@ void BatteryControl::run(){
     batteryReadCounter = 0;
     print();
   }      
-  if (chargerConnected()) {
-    if (robotShouldCharge()) {
-      Battery.enableChargingRelay(true);
-    } 
-    else {
-      Battery.enableChargingRelay(false);
-    }
+  if ( (chargerConnected()) && (robotShouldCharge()) ) {
+    Battery.enableChargingRelay(true);
+  } else {
+    Battery.enableChargingRelay(false);    
   }
   idleTimeSec++;
+}
+
+bool BatteryControl::isCharging(){
+  return chargeRelayEnabled;
 }
 
 bool BatteryControl::robotShouldGoHome(){
@@ -92,6 +93,9 @@ bool BatteryControl::robotShouldCharge(){
 
 // read battery
 void BatteryControl::read(){
+  batteryReadCounter++;
+  
+  #ifndef SIMULATE
     if ((abs(chgCurrent) > 0.04) && (chgVoltage > 5)){
       // charging
       batCapacity += (chgCurrent / 36.0);
@@ -153,7 +157,7 @@ void BatteryControl::read(){
     //batVoltage = batVolt
     //chgVoltage = chgvolt;
     //chgCurrent = current;          
-    batteryReadCounter++;
+  #endif        
 }
 
 bool BatteryControl::chargerConnected(){
@@ -161,8 +165,8 @@ bool BatteryControl::chargerConnected(){
 }
 
 int BatteryControl::getChargingTimeMinutes(){
-  if (chargingStartTimeMinutes == 0) return 0;
-    else return (Timer.powerTimeMinutes - chargingStartTimeMinutes);
+  if (!chargeRelayEnabled) return 0;
+  return (Timer.powerTimeMinutes - chargingStartTimeMinutes);
 }
 
 void BatteryControl::enableChargingRelay(bool state){
@@ -171,11 +175,7 @@ void BatteryControl::enableChargingRelay(bool state){
   Console.println(state);
   chargeRelayEnabled = state;
   digitalWrite(pinChargeRelay, state);
-  if (state){    
-    chargingStartTimeMinutes = Timer.powerTimeMinutes;
-  } else {
-    chargingStartTimeMinutes = 0;
-  }
+  if (state) chargingStartTimeMinutes = Timer.powerTimeMinutes;    
 }
 
 
@@ -189,7 +189,9 @@ void BatteryControl::print(){
   Console.print(F("  chargerConnected="));
   Console.print(chargerConnected());
   Console.print(F("  chargeRelayEnabled="));
-  Console.print(chargeRelayEnabled);  
+  Console.print(chargeRelayEnabled);    
+  Console.print(F("  chargingTimeMinutes="));
+  Console.print(getChargingTimeMinutes());
   Console.println();
 }
 

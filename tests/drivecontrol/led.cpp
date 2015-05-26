@@ -23,10 +23,12 @@ void LEDControl::run(){
   nextLEDTime = millis() + 500;      
   switch (ledSequenceIdx){
     case LED_OFF: 
+      digitalWrite(pinLED, LOW);    
       digitalWrite(pinLEDDuoRed, LOW);
       digitalWrite(pinLEDDuoGreen, LOW);
       break;
     case LED_GREEN_ON:
+      digitalWrite(pinLED, HIGH);    
       digitalWrite(pinLEDDuoRed, LOW);
       digitalWrite(pinLEDDuoGreen, HIGH);
       break;          

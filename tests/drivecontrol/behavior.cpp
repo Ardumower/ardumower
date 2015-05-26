@@ -18,6 +18,7 @@ bool StandbyBehavior::takeControl(){
 void StandbyBehavior::action(){  
   suppressed = false;
   MotorCtrl.stopImmediately();
+  LED.playSequence(LED_GREEN_ON);    
   while ( !suppressed ) {    
     Robot.run();   
   }  
@@ -30,14 +31,14 @@ ModelRCBehavior::ModelRCBehavior() : Behavior() {
 }
 
 bool ModelRCBehavior::takeControl(){
-  return (Button.beepCounter == 3);
+  return (Robot.mode == MODE_MODEL_RC);
 }
 
 void ModelRCBehavior::action(){  
   suppressed = false;
   MotorCtrl.stopImmediately();
   Button.resetBeepCounter();    
-  while ( (!suppressed) && (!Button.pressed) )  {    
+  while ( (!suppressed) && (Robot.mode == MODE_MODEL_RC) )  {    
     ModelRC.run();
     Robot.run();   
   }  
@@ -46,19 +47,34 @@ void ModelRCBehavior::action(){
 
 // ----------------------------------------------------------
 
-UserStopBehavior::UserStopBehavior() : Behavior() {
-  name = "UserStopBehavior";
+UserInteractionBehavior::UserInteractionBehavior() : Behavior() {
+  name = "UserInteractionBehavior";
 }
 
-bool UserStopBehavior::takeControl(){
-  return ( (Button.beepCounter == 1) && (MotorCtrl.motion != MOTION_STOP) );
+bool UserInteractionBehavior::takeControl(){
+  return ( Button.pressed );
 }
 
-void UserStopBehavior::action(){  
+void UserInteractionBehavior::action(){  
   suppressed = false;
   MotorCtrl.stopImmediately();  
-  Button.resetBeepCounter();  
-  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
+  while ( !suppressed ){
+    int bc = Button.beepCounter;
+    if (bc != 0){
+      switch (bc){
+        case 1: 
+          if (Robot.mode == MODE_STANDBY) 
+            Robot.setMode(MODE_AUTO);           
+          else  
+            Robot.setMode(MODE_STANDBY);             
+          break;
+        case 3: 
+          Robot.setMode(MODE_MODEL_RC);           
+          break;
+      }
+      Button.resetBeepCounter();
+      break;
+    }
     Robot.run();   
   }
 }
@@ -70,7 +86,7 @@ DriveForwardBehavior::DriveForwardBehavior() : Behavior() {
 }
 
 bool DriveForwardBehavior::takeControl(){
-  return (Button.beepCounter == 1);
+  return (Robot.mode == MODE_AUTO);
 }
 
 void DriveForwardBehavior::action(){  
@@ -92,7 +108,9 @@ HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
 }
 
 bool HitObstacleBehavior::takeControl(){
-  return ( (MotorCtrl.motion != MOTION_STOP) && (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredLeft()) );
+  return (  (Robot.mode == MODE_AUTO) 
+         && (MotorCtrl.motion != MOTION_STOP) 
+         && (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredLeft()) );
 }
 
 void HitObstacleBehavior::action(){  
@@ -126,7 +144,7 @@ ChargerConnectedBehavior::ChargerConnectedBehavior() : Behavior() {
 }
 
 bool ChargerConnectedBehavior::takeControl(){
-  return Battery.chargerConnected();
+  return ( Battery.isCharging() );
 }
 
 void ChargerConnectedBehavior::action(){  
@@ -136,7 +154,7 @@ void ChargerConnectedBehavior::action(){
   Buzzer.play(BC_SHORT_SHORT_SHORT);                  
 
   // wait until some other behavior was activated
-  while ( !suppressed ){
+  while ( (!suppressed ) && (Battery.isCharging()) ) {
     Robot.run();       
   }
 }
@@ -149,17 +167,21 @@ FatalErrorBehavior::FatalErrorBehavior() : Behavior() {
 }
 
 bool FatalErrorBehavior::takeControl(){
-  return (MotorCtrl.motorLeftError || MotorCtrl.motorRightError || MotorMow.motorError);
+  return   (   (Robot.mode == MODE_AUTO) 
+            && (MotorCtrl.motorLeftError || MotorCtrl.motorRightError || MotorMow.motorError  )
+           );
 }
 
 void FatalErrorBehavior::action(){  
   suppressed = false;
   
+  Robot.setMode(MODE_ERROR);
   MotorCtrl.stopImmediately();
   Buzzer.play(BC_SHORT_SHORT_SHORT);                  
+  LED.playSequence(LED_RED_BLINK);  
 
   // wait until some other behavior was activated
-  while ( (!suppressed )&& (!Button.pressed) ) {
+  while ( (!suppressed )&& (Robot.mode == MODE_ERROR) ) {
     Robot.run();       
   }
   

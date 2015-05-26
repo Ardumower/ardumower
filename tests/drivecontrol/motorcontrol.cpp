@@ -142,6 +142,7 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
 }
 
 void MotorControl::checkFault(){
+  #ifndef SIMULATE
   if ( (!motorLeftError) && (digitalRead(pinMotorLeftFault)==LOW) ){
     Console.println(F("ERROR: left gear motor/MC33926"));
     motorLeftError = true;
@@ -150,6 +151,7 @@ void MotorControl::checkFault(){
     Console.println(F("ERROR: right gear motor/MC33926"));    
     motorRightError = true;
   }
+  #endif
 }
 
 void MotorControl::resetFault(){
@@ -197,6 +199,11 @@ void MotorControl::run(){
   }
   readCurrent();  
   checkFault();
+  if (motion != MOTION_STOP) {
+    print();         
+    Console.println();      
+    //printCSV(false);             
+  }  
 }  
 
 
@@ -206,7 +213,7 @@ void MotorControl::readOdometry(){
   if (TaC > 1000) TaC = 1;      
   static int lastOdoLeft = 0;
   static int lastOdoRight = 0;
-  #if SIM_MOTOR
+  #if SIMULATE
     odometryLeftTicks  += motorLeftPWMCurr;
     odometryRightTicks += motorRightPWMCurr;
     odometryLeftTickTime  = 255.0 / ((double)motorLeftPWMCurr);
@@ -360,6 +367,7 @@ bool MotorControl::hasStopped(){
 
 // read motor current
 void MotorControl::readCurrent(){
+  #ifndef SIMULATE
     unsigned long TaC = millis() - lastMotorCurrentTime;    // sampling time in millis
     lastMotorCurrentTime = millis();
     if (TaC > 500) TaC = 1;   
@@ -419,11 +427,7 @@ void MotorControl::readCurrent(){
     //           sigma_a = (Vu - Vf) / Vu    (acceleration tracktion)
     // Vf: vehicle velocity
     // Vu: tire velocity
-            
-    // print();         
-    // Console.println();
-    //printCSV(false);             
-                       
+                                   
     if (enableStallDetection) {    
       if (!motorLeftStalled){
        if ( (abs(motorLeftPWMCurr) > 0) && (motorLeftSensePower > 1) && (motorLeftEfficiency < 200)  ) {
@@ -444,6 +448,7 @@ void MotorControl::readCurrent(){
        }
       }
     }
+  #endif
 }
 
 void MotorControl::printCSV(bool includeHeader){

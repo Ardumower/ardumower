@@ -44,10 +44,11 @@ void Arbitrator::run(){
   activeBehavior = nextBehavior;
   nextBehavior = NULL;    
   nextBehaviorIdx = -1;
-  Console.print(F("CHANGED activeBehavior Idx: "));
+  Console.print(F("-----CHANGED activeBehavior Idx: "));
   Console.print(activeBehaviorIdx);
   Console.print("  ");
-  Console.println(activeBehavior->name);
+  Console.print(activeBehavior->name);
+  Console.println(F("-----"));
 }
    
 void Arbitrator::monitor() {

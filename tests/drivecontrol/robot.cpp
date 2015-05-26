@@ -4,19 +4,30 @@
 
 RobotControl Robot;
 
-boolean useModelRC = true;
-unsigned long nextInfoTime = 0;
 
 
 RobotControl::RobotControl(){     
   loopCounter = 0;
+  mode = -1;
+}
+
+void RobotControl::setMode(int newMode){
+  if (mode == newMode) return;
+  mode = newMode;
+  switch (mode){
+    case MODE_STANDBY: Console.println(F("MODE_STANDBY")); break;
+    case MODE_MODEL_RC:Console.println(F("MODE_MODEL_RC")); break;        
+    case MODE_AUTO:    Console.println(F("MODE_AUTO")); break;    
+    case MODE_MANUAL:  Console.println(F("MODE_MANUAL")); break;        
+    case MODE_ERROR:   Console.println(F("MODE_ERROR")); break;            
+  }
 }
 
 
 void RobotControl::setup(){
   Wire.begin();            
   Console.begin(BAUDRATE);
-  Console.println(F("SETUP"));         
+  Console.println(F("-----SETUP-----"));         
   
   ADCMan.setup();  
   Battery.setup();  
@@ -31,24 +42,24 @@ void RobotControl::setup(){
 
   Config.setup();
   
-  LED.playSequence(LED_RED_BLINK);
-  
   // low-to-high priority  
   arbitrator.addBehavior(&standbyBehavior);          
   arbitrator.addBehavior(&driveForwardBehavior);  
   arbitrator.addBehavior(&hitObstacleBehavior);      
   arbitrator.addBehavior(&modelRCBehavior);     
-  arbitrator.addBehavior(&userStopBehavior);          
   arbitrator.addBehavior(&chargerConnectedBehavior);        
-  arbitrator.addBehavior(&fatalErrorBehavior);        
-  Console.println(F("SETUP completed"));
+  arbitrator.addBehavior(&fatalErrorBehavior);  
+  arbitrator.addBehavior(&userInteractionBehavior);            
+  
+  setMode(MODE_STANDBY);  
+  
+  Console.println(F("-----SETUP completed-----"));
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
 }
 
 
 void RobotControl::checkKey(){
-  while (Console.available() > 0){
-    Button.pressed = true;
+  while (Console.available() > 0){    
     char ch = (char)Console.read();          
     switch (ch){
       case '1': Button.setBeepCount(1); break;       
@@ -57,6 +68,16 @@ void RobotControl::checkKey(){
       case '4': Button.setBeepCount(4); break;             
       case '5': Button.setBeepCount(5); break;                   
       case 's': Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; break;
+      case 'e': MotorCtrl.motorLeftError = true;  break;
+      case 'b': 
+        if (Battery.chgVoltage > 5){
+          Battery.chgVoltage = 0; 
+          Battery.batVoltage = 24;           
+        } else { 
+          Battery.chgVoltage = 27; 
+          Battery.batVoltage = 24;           
+        }          
+        break;
     }
   }        
 }
@@ -115,8 +136,12 @@ void RobotControl::loop(){
 
 
 
-
+/*
 void testloop(){
+  boolean useModelRC = true;
+  unsigned long nextInfoTime = 0;
+  
+  
   if (millis() >= nextInfoTime){
     nextInfoTime = millis() + 500;
     //ModelRC.print();
@@ -218,4 +243,7 @@ void testloop(){
   
   delay(50);  
 }
+
+*/
+
 

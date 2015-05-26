@@ -20,12 +20,25 @@
 #include "arbitrator.h"
 
 
+// modes
+enum { 
+  MODE_STANDBY,      // standby
+  MODE_MODEL_RC,     // model remote control (R/C)
+  MODE_AUTO,         // auto mowing
+  MODE_MANUAL,       // manual mowing
+  MODE_ERROR,        // error
+};
+
+
+
+
 class RobotControl
 {
   public:
+    int mode; // current mode
     unsigned long loopCounter;   // Arduino loop counter
     ModelRCBehavior modelRCBehavior;
-    UserStopBehavior userStopBehavior;
+    UserInteractionBehavior userInteractionBehavior;
     StandbyBehavior standbyBehavior;
     DriveForwardBehavior driveForwardBehavior;  
     HitObstacleBehavior  hitObstacleBehavior;
@@ -33,6 +46,7 @@ class RobotControl
     FatalErrorBehavior fatalErrorBehavior;
     Arbitrator arbitrator;  
     RobotControl();    
+    virtual void setMode(int newMode);
     virtual void run();
     virtual void setup();
     virtual void loop();

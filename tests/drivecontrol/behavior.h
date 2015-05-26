@@ -40,11 +40,11 @@ class StandbyBehavior : public Behavior
     virtual void action();      
 };
 
-// user stopped robot
-class UserStopBehavior : public Behavior
+// user is interacting with robot (via button)
+class UserInteractionBehavior : public Behavior
 {
   public:        
-    UserStopBehavior();
+    UserInteractionBehavior();
     virtual bool takeControl();
     virtual void action();      
 };

@@ -40,15 +40,16 @@ class BatteryControl
     void setup();    
     void run();        
     void read();       
-    void print();    
-    int getChargingTimeMinutes();    
+    void print();        
     bool chargerConnected();
-    bool robotShouldGoHome();
-    bool robotShouldSwitchOff();
-    bool robotShouldCharge();
-    void enableChargingRelay(bool state);
+    bool isCharging();
+    int getChargingTimeMinutes();            
+    bool robotShouldGoHome();        
+  private:    
     void setBatterySwitch(bool state);
-  private:
+    void enableChargingRelay(bool state);
+    bool robotShouldSwitchOff();
+    bool robotShouldCharge();  
     unsigned long nextBatteryTime;
 };
 

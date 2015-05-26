@@ -29,6 +29,7 @@ void ButtonControl::setBeepCount(int count){
   Console.print(F("BUTTON beeps "));
   Console.println(beepCounter);
   tempBeepCounter = 0;    
+  pressed = true; 
 }
 
 // call this in main loop

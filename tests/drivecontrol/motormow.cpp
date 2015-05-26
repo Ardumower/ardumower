@@ -81,10 +81,12 @@ void MotorMowControl::resetStalled(){
 
 
 void MotorMowControl::checkMotorFault(){
+  #ifndef SIMULATE
   if ( (!motorError) && (digitalRead(pinMotorMowFault)==LOW) ){
     Console.println(F("ERROR: mower motor/MC33926"));        
     motorError = true;
   }
+  #endif
 }
 
 void MotorMowControl::resetFault(){
@@ -97,6 +99,7 @@ void MotorMowControl::resetFault(){
 
 // read motor current
 void MotorMowControl::readCurrent(){
+  #ifndef SIMULATE  
     unsigned long TaC = millis() - lastMotorCurrentTime;    // sampling time in millis
     lastMotorCurrentTime = millis();
     if (TaC > 500) TaC = 1;   
@@ -124,6 +127,7 @@ void MotorMowControl::readCurrent(){
          stopImmediately();                  
        }            
     }
+  #endif
 }
 
 
