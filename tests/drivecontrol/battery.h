@@ -19,7 +19,7 @@ class BatteryControl
     float batChargingCurrentMax ; // maximum current your charger can devliver
     float batFullCurrent   ; // current flowing when battery is fully charged
     float startChargingIfBelow; // start charging if battery Voltage is below
-    unsigned long chargingTimeout; // safety timer for charging
+    unsigned long chargingTimeoutMinutes; // safety timer for charging (minutes)
     int batADC;
     float chgSenseZero    ;       // charge current sense zero point
     float chgFactor       ;     // charge current conversion factor
@@ -35,17 +35,19 @@ class BatteryControl
     int batteryReadCounter;
     bool chargeRelayEnabled;
     int idleTimeSec;    // number of seconds robot is idle (no user-interaction and no mowing)
+    unsigned long chargingStartTimeMinutes; // start time of charging
     BatteryControl();            
     void setup();    
     void run();        
     void read();       
     void print();    
-    void setBatterySwitch(bool state);
+    int getChargingTimeMinutes();    
     bool chargerConnected();
     bool robotShouldGoHome();
     bool robotShouldSwitchOff();
-    bool robotShouldStartCharging();
+    bool robotShouldCharge();
     void enableChargingRelay(bool state);
+    void setBatterySwitch(bool state);
   private:
     unsigned long nextBatteryTime;
 };

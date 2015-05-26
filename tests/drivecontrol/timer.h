@@ -49,7 +49,7 @@ class TimerControl
 {
   public:
     bool enable;
-    unsigned long powerTimeMin;  // power-ON time (minutes)
+    unsigned long powerTimeMinutes;  // power-ON time (minutes)
     ttimer_t timer[MAX_TIMERS];  // timers
     datetime_t datetime;         // current date & time                                         
     bool stopTimerTriggered;     // has stop timer triggered?

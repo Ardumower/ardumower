@@ -1,6 +1,7 @@
 #include "battery.h"
 #include "config.h"
 #include "ADCMan.h"
+#include "timer.h"
 #include "drivers.h"
 
 BatteryControl Battery;
@@ -9,6 +10,7 @@ BatteryControl Battery;
 
 BatteryControl::BatteryControl(){  
   nextBatteryTime = batteryReadCounter = 0;
+  chargingStartTimeMinutes = 0;
   idleTimeSec = 0;
   enableMonitor = false;
   chargeRelayEnabled = false;
@@ -18,7 +20,7 @@ BatteryControl::BatteryControl(){
   batChargingCurrentMax =1.6;  // maximum current your charger can devliver
   batFullCurrent  = 0.3;      // current flowing when battery is fully charged
   startChargingIfBelow = 27.0; // start charging if battery Voltage is below
-  chargingTimeout = 12600000; // safety timer for charging (ms) 12600000 = 3.5hrs
+  chargingTimeoutMinutes = 210; // safety timer for charging (minutes)    
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
   // Einstellungen INA169 board (chgSelection =2)
@@ -61,6 +63,14 @@ void BatteryControl::run(){
     batteryReadCounter = 0;
     print();
   }      
+  if (chargerConnected()) {
+    if (robotShouldCharge()) {
+      Battery.enableChargingRelay(true);
+    } 
+    else {
+      Battery.enableChargingRelay(false);
+    }
+  }
   idleTimeSec++;
 }
 
@@ -74,8 +84,10 @@ bool BatteryControl::robotShouldSwitchOff(){
          );
 }
 
-bool BatteryControl::robotShouldStartCharging(){
-  return ((enableMonitor) &&  (batVoltage < startChargingIfBelow));
+bool BatteryControl::robotShouldCharge(){
+  return (     (enableMonitor) &&  (batVoltage < startChargingIfBelow)
+               && (getChargingTimeMinutes() < chargingTimeoutMinutes) 
+         );
 }
 
 // read battery
@@ -148,11 +160,21 @@ bool BatteryControl::chargerConnected(){
   return ((chgVoltage > 5.0)  && (batVoltage > 8));
 }
 
+int BatteryControl::getChargingTimeMinutes(){
+  if (chargingStartTimeMinutes == 0) return 0;
+    else return (Timer.powerTimeMinutes - chargingStartTimeMinutes);
+}
+
 void BatteryControl::enableChargingRelay(bool state){
   Console.print(F("BatteryControll::enableChargingRelay "));
   Console.println(state);
   chargeRelayEnabled = state;
   digitalWrite(pinChargeRelay, state);
+  if (state){    
+    chargingStartTimeMinutes = Timer.powerTimeMinutes;
+  } else {
+    chargingStartTimeMinutes = 0;
+  }
 }
 
 

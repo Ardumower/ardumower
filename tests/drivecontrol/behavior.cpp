@@ -79,6 +79,7 @@ void DriveForwardBehavior::action(){
 
   // forward
   MotorCtrl.setSpeedRpm(+10, +10); 
+
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
     Robot.run();   
   }
@@ -112,6 +113,7 @@ void HitObstacleBehavior::action(){
   } else {
     MotorCtrl.rotate(+PI/2, 10);                   
   } 
+  // wait until motion stop
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
     Robot.run();   
   }
@@ -132,11 +134,10 @@ void ChargerConnectedBehavior::action(){
   
   MotorCtrl.stopImmediately();
   Buzzer.play(BC_SHORT_SHORT_SHORT);                  
-  Battery.enableChargingRelay(true);
 
-  // wait until charging completed  
+  // wait until some other behavior was activated
   while ( !suppressed ){
-    Robot.run();   
+    Robot.run();       
   }
 }
 

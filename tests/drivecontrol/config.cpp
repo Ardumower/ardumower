@@ -63,7 +63,7 @@ void FactoryConfig::setup(){
   Battery.batChargingCurrentMax =1.6;  // maximum current your charger can devliver
   Battery.batFullCurrent  = 0.3;      // current flowing when battery is fully charged
   Battery.startChargingIfBelow = 27.0; // start charging if battery Voltage is below
-  Battery.chargingTimeout = 12600000; // safety timer for charging (ms) 12600000 = 3.5hrs
+  Battery.chargingTimeoutMinutes = 210; // safety timer for charging (minutes)
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
   // Einstellungen INA169 board (chgSelection =2)

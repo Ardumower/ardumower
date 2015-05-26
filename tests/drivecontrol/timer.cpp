@@ -12,7 +12,7 @@ char *dayOfWeek[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 
 TimerControl::TimerControl(){    
   enable = false;    
-  powerTimeMin = 0;
+  powerTimeMinutes = 0;
   nextTimerTime = 60000;    
   stopTimerTriggered = true;
   startTimerTriggered = false;
@@ -29,7 +29,7 @@ void TimerControl::run(){
   if (!enable) return;
   if (millis() < nextTimerTime) return;
   nextTimerTime = millis() + 60000;  
-  powerTimeMin++;
+  powerTimeMinutes++;
   readDS1307(datetime);
   print();
   checkTimer();
@@ -155,7 +155,7 @@ void TimerControl::setDefaultTime(){
 
 void TimerControl::print(){
   Console.print(F("powerTime: "));
-  Console.print(powerTimeMin);
+  Console.print(powerTimeMinutes);
   Console.print(F("  RTC date: "));
   Console.println(date2str(datetime.date));
 }
