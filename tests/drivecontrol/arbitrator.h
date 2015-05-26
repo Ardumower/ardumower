@@ -4,7 +4,10 @@
 #include <Arduino.h>
 #include "behavior.h"
 
-
+/* the arbitrator decides 
+   -if there is any behavior with higher priority requiring action (monitor)
+   -if so, sets next behavior (run) 
+*/                                               
 
 class Arbitrator
 {

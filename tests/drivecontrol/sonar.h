@@ -1,7 +1,8 @@
 #ifndef SONAR_H
 #define SONAR_H
 
-// Ardumower ultrasonic sensor 
+// Ardumower ultrasonic sensor
+// requires: HCSR04  
 
 #include <Arduino.h>
 

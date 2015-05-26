@@ -12,6 +12,8 @@
 FactoryConfig Config;
 
 
+// Ardumower factory configuration  (NOTE: see 'config.h' for pin layout!)
+
 void FactoryConfig::setup(){
   Console.println(F("FactoryConfig::setup"));
   

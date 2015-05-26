@@ -23,7 +23,7 @@
 
 */
 
-// drivers (motor driver, sensor drivers, etc.)
+// utility functions
 
 #ifndef DRIVERS_H
 #define DRIVERS_H
