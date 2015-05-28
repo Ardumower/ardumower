@@ -38,6 +38,7 @@ class PID
     PID();
     PID(float Kp, float Ki, float Kd);
     float compute();
+    void reset();
     double Ta; // sampling time	
     float w; // set value
     float x; // current value

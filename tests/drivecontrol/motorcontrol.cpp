@@ -86,6 +86,7 @@ void MotorControl::setup(){
   odometryLeftTicksZeroCounter = odometryRightTicksZeroCounter = 0;
   motorLeftError = motorRightError = false;
   motorLeftStalled = motorRightStalled = false;
+  leftRightCompensation = 0;  
   
   TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)    
   
@@ -270,14 +271,27 @@ void MotorControl::readOdometry(){
 
 
 void MotorControl::speedControl(){  
+  //static float leftRightCompensationFactor = 0.001;
+  static float leftRightCompensationFactor = 0;
+  
   unsigned long TaC = millis() - lastMotorControlTime;    // sampling time in millis
   if (TaC < 50) return;
   lastMotorControlTime = millis();  
   if (TaC > 500) TaC = 1;     
-  //double TaS = ((double)TaC) / 1000.0;
+  //double TaS = ((double)TaC) / 1000.0;    
   
-  static float leftRightCompensation = 0;
-  //leftRightCompensation += (motorLeftRpmCurr - motorRightRpmCurr)* 2;
+  switch (motion){
+    case MOTION_LINE_SPEED:
+    case MOTION_LINE_DISTANCE:
+      leftRightCompensation += (motorLeftRpmCurr - motorRightRpmCurr)* leftRightCompensationFactor;
+      break;
+    case MOTION_ROTATE_ANGLE:
+      if (motorLeftSpeedRpmSet > motorRightSpeedRpmSet)
+        leftRightCompensation += (motorLeftRpmCurr + motorRightRpmCurr)* leftRightCompensationFactor;
+      else
+        leftRightCompensation -= (motorLeftRpmCurr + motorRightRpmCurr)* leftRightCompensationFactor;
+      break;
+  }      
   
   motorLeftPID.x = motorLeftRpmCurr;                 // CURRENT
   motorLeftPID.w = motorLeftSpeedRpmSet;               // SET
@@ -330,24 +344,36 @@ void MotorControl::setSpeedRpm(int leftRpm, int rightRpm){
   motorLeftSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorLeftSpeedRpmSet));
   motorRightSpeedRpmSet = max(-motorSpeedMaxRpm, min(motorSpeedMaxRpm, motorRightSpeedRpmSet));   
   motion = MOTION_SPEED;   
+  motorRightPID.reset();
+  motorLeftPID.reset();
+  leftRightCompensation = 0;  
 }
 
 
 
 void MotorControl::stopImmediately(){
   setSpeedPWM(0, 0);
+  leftRightCompensation = 0;
+  motorRightPID.reset();
+  motorLeftPID.reset();
   motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
   motion = MOTION_STOP;
 }
 
 void MotorControl::travelLineSpeedRpm(int speedRpm){
   motorLeftSpeedRpmSet = motorRightSpeedRpmSet = speedRpm;
+  leftRightCompensation = 0;
+  motorRightPID.reset();
+  motorLeftPID.reset();
   motion = MOTION_LINE_SPEED;   
 }
 
 void MotorControl::travelLineDistance(int distanceCm, int speedRpm){
   motion = MOTION_LINE_DISTANCE;
   odometryDistanceCmSet = odometryDistanceCmCurr + distanceCm;
+  leftRightCompensation = 0;
+  motorRightPID.reset();
+  motorLeftPID.reset();
   Console.print(F("target distance="));  
   Console.println(odometryDistanceCmSet);      
   if (distanceCm < 0) 
@@ -359,6 +385,9 @@ void MotorControl::travelLineDistance(int distanceCm, int speedRpm){
 void MotorControl::rotate(float angleRad, int speedRpm){
   motion = MOTION_ROTATE_ANGLE;    
   odometryThetaRadSet = scalePI(odometryThetaRadCurr + angleRad);
+  leftRightCompensation = 0;
+  motorRightPID.reset();
+  motorLeftPID.reset();
   Console.print(F("target angle="));  
   Console.println(odometryThetaRadSet/PI*180.0);    
   if (angleRad < 0){
@@ -371,7 +400,7 @@ void MotorControl::rotate(float angleRad, int speedRpm){
 }
 
 bool MotorControl::hasStopped(){
-  return (motorLeftPWMCurr == motorRightPWMCurr == 0);
+  return ( (motion == MOTION_STOP) && (abs(motorLeftPWMCurr) < 1) && (abs(motorRightPWMCurr) < 1) && (abs(motorRightRpmCurr) < 1) && (abs(motorLeftRpmCurr) < 1)  );
 }
 
 
@@ -553,6 +582,14 @@ void MotorControl::print(){
     Console.print(MotorCtrl.motorLeftEfficiency, 0);
     Console.print(",");
     Console.print(MotorCtrl.motorRightEfficiency, 0);        
+    Console.print(F("  pid:"));    
+    Console.print(MotorCtrl.motorLeftPID.Kp);
+    Console.print(F(","));    
+    Console.print(MotorCtrl.motorLeftPID.Ki);
+    Console.print(F(","));        
+    Console.print(MotorCtrl.motorLeftPID.Kd);    
+    Console.print(F("  lrc:"));        
+    Console.print(MotorCtrl.leftRightCompensation);    
 }
 
 

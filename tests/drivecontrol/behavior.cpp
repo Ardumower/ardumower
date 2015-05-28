@@ -109,8 +109,8 @@ HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
 }
 
 bool HitObstacleBehavior::takeControl(){
-  return (  (MotorCtrl.motion != MOTION_STOP) 
-         && (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredCenter()) );
+  return (  //(MotorCtrl.motion != MOTION_STOP) &&
+         (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredCenter()) );
 }
 
 void HitObstacleBehavior::action(){  
@@ -121,7 +121,7 @@ void HitObstacleBehavior::action(){
   
   // reverse
   MotorCtrl.travelLineDistance(-30, MotorCtrl.motorSpeedMaxRpm);             
-  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ) {
+  while ( (!suppressed) && (!MotorCtrl.hasStopped()) ) {
     Robot.run();   
   }
   
@@ -132,7 +132,7 @@ void HitObstacleBehavior::action(){
     MotorCtrl.rotate(+PI/2, MotorCtrl.motorSpeedMaxRpm);                   
   } 
   // wait until motion stop
-  while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){
+  while ( (!suppressed) && (!MotorCtrl.hasStopped()) ){
     Robot.run();   
   }
 }
@@ -266,5 +266,7 @@ void HitPerimeterBehavior::action(){
 }
 
 // ----------------------------------------------------------
+
+
 
 

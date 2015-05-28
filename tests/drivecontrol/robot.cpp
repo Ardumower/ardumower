@@ -95,6 +95,9 @@ void RobotControl::checkKey(){
         MotorCtrl.enableSpeedControl = false;
         MotorCtrl.setSpeedPWM(127, 127);  
         break;
+      case 'p':
+        motorPIDTest();
+        break;                
       case 's': 
         // simulate sonar trigger
         Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; 
@@ -195,114 +198,67 @@ void RobotControl::loop(){
 
 
 
-/*
-void testloop(){
-  boolean useModelRC = true;
+void RobotControl::motorPIDTest(){
   unsigned long nextInfoTime = 0;
-  
-  
-  if (millis() >= nextInfoTime){
-    nextInfoTime = millis() + 500;
-    //ModelRC.print();
-    //MotorCtrl.print();        
-    //Console.println();
-  } 
+  unsigned long nextSpeedTime = 0;  
+  int test = 0;
 
-  if (Console.available() > 0){
-    char ch = (char)Console.read();      
-    if (ch == 'm') { 
-      MotorCtrl.enableSpeedControl = true;
-      useModelRC = true;
-      Console.println(F("useModelRC"));
-    }            
-    if (ch == 'o') { 
-      MotorCtrl.enableSpeedControl = false;
-      useModelRC = false;
-      Console.println(F("pwm=127,127"));      
-      MotorCtrl.setSpeedPWM(127, 127); 
-    }        
-    if (ch == 'p') { 
-      MotorCtrl.enableSpeedControl = false;
-      useModelRC = false;
-      Console.println(F("pwm=255,255"));      
-      MotorCtrl.setSpeedPWM(255, 255); 
-    }    
-    if (ch == '1') { 
-      MotorCtrl.enableSpeedControl = true;      
-      useModelRC = false;
-      Console.println(F("rpm=0,0"));
-      MotorCtrl.setSpeedRpm(0, 0); 
-      MotorCtrl.resetStalled();          
-    }        
-    if (ch == '2') {
-      MotorCtrl.enableSpeedControl = true;      
-      useModelRC = false;
-      Console.println(F("rpm=5,5"));
-      MotorCtrl.setSpeedRpm(5, 5); 
-    }    
-    if (ch == '3') {
-      useModelRC = false;
-      Console.println(F("rpm=10,10"));      
-      MotorCtrl.setSpeedRpm(10, 10); 
-    }    
-    if (ch == '4') {
-      useModelRC = false;
-      Console.println(F("rpm=-5,+5"));
-      MotorCtrl.setSpeedRpm(-5, +5); 
-    }    
-    if (ch == '5') {
-      useModelRC = false;
-      Console.println(F("rpm=+5,-5"));
-      MotorCtrl.setSpeedRpm(+5, -5); 
-    }    
-    if (ch == '6') {
-      useModelRC = false;
-      Console.println(F("theta=+45deg"));
-      MotorCtrl.rotate(PI/2, 5); 
-    }    
-    if (ch == '7') {
-      useModelRC = false;
-      Console.println(F("theta=-45deg")); 
-      MotorCtrl.rotate(-PI/2, 5); 
-    }    
-    if (ch == '8') {
-      useModelRC = false;
-      Console.println(F("distance=+30cm")); 
-      MotorCtrl.travelLineDistance(30, 5); 
-    }    
-    if (ch == '9') {
-      useModelRC = false;
-      Console.println(F("distance=-30cm")); 
-      MotorCtrl.travelLineDistance(-30, 5); 
-    }           
-  }  
+  while (true){    
+    if (millis() >= nextInfoTime){
+      nextInfoTime = millis() + 1000;    
+      MotorCtrl.print();        
+      Console.println();
+    } 
   
-  if ((MotorCtrl.motorRightError) || (MotorCtrl.motorLeftError)){
-    Console.println(F("ERROR"));    
-    if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT_SHORT);    
+    //if (MotorCtrl.motion == MOTION_STOP)  {
+    if (MotorCtrl.hasStopped())  {
+      switch(test){
+        case 0:
+          Console.println("=========FORWARD==========");
+          MotorCtrl.travelLineDistance(200, MotorCtrl.motorSpeedMaxRpm);             
+          //MotorCtrl.setSpeedRpm(0, 0);               
+          break;
+        case 1:
+          Console.println("=========REVERSE==========");        
+          MotorCtrl.travelLineDistance(-200, MotorCtrl.motorSpeedMaxRpm);                     
+          break;
+        case 2:        
+          Console.println("=========ROTATE==========");                
+          MotorCtrl.rotate(1.5*PI, MotorCtrl.motorSpeedMaxRpm);                   
+          break;
+      }      
+      test++;
+      if (test >= 3) test = 0;
+    }
+    
+    MotorCtrl.run();          
+  
+    if (Console.available() > 0){
+      char ch = (char)Console.read();      
+      switch (ch){
+        case '1':
+         MotorCtrl.motorLeftPID.Kp += 0.01;
+         break;
+        case 'q':
+          MotorCtrl.motorLeftPID.Kp -= 0.01;
+          break;
+        case '2':
+          MotorCtrl.motorLeftPID.Ki += 0.01;
+          break;
+        case 'w':
+          MotorCtrl.motorLeftPID.Ki -= 0.01;
+          break;
+        case '3':
+          MotorCtrl.motorLeftPID.Kd += 0.01;
+          break;
+        case 'e':
+          MotorCtrl.motorLeftPID.Kd -= 0.01;
+          break;
+      }  
+    }  
   }
-
-  ADCMan.run();
-  MotorCtrl.run();    
-  Buzzer.run();  
-  LED.run();
-  
-  if ((MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled)){
-    if (!Buzzer.isPlaying()) Buzzer.play(BC_LONG_SHORT_SHORT);            
-    if (useModelRC) {
-      if ( (abs(ModelRC.remoteSpeed) < 5) && (abs(ModelRC.remoteSteer) < 5) ) {
-        MotorCtrl.resetStalled();    
-      }
-    }          
-  }
-  
-  if (useModelRC) {
-    ModelRC.run();
-  }  
-  
-  delay(50);  
 }
 
-*/
+
 
 

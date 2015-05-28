@@ -51,6 +51,7 @@ class MotorControl
     PID motorRightPID;              // motor right wheel PID controll    
     float motorLeftPWMCurr ; // current motor pwm
     float motorRightPWMCurr ;      
+    float leftRightCompensation; // left-right speed compensation
     
     // motor current
     float motorEfficiencyMin; // minimum motor efficiency (stall detection)    

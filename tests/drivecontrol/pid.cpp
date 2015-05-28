@@ -38,8 +38,13 @@ PID::PID(float Kp, float Ki, float Kd){
   this->Kp = Kp;
   this->Ki = Ki;
   this->Kd = Kd;
+  reset();
 }
 
+void PID::reset(){
+  esum = 0;
+  eold = 0;    
+}
 
 float PID::compute()
 {		

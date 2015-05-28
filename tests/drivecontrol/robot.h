@@ -46,6 +46,7 @@ class RobotControl
     virtual void setup();
     virtual void loop();
     virtual void print();
+    virtual void motorPIDTest();
   private:    
     void checkKey();
 };
