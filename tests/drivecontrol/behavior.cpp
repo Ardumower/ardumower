@@ -110,7 +110,7 @@ HitObstacleBehavior::HitObstacleBehavior()  : Behavior(){
 
 bool HitObstacleBehavior::takeControl(){
   return (  (MotorCtrl.motion != MOTION_STOP) 
-         && (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredLeft()) );
+         && (MotorCtrl.motorRightStalled) || (MotorCtrl.motorLeftStalled) || (Sonar.triggeredCenter()) );
 }
 
 void HitObstacleBehavior::action(){  
@@ -127,9 +127,9 @@ void HitObstacleBehavior::action(){
   
   // rotate
   if (rotateRight){
-    MotorCtrl.rotate(-PI/2, MotorCtrl.motorSpeedMaxRpm/2);               
+    MotorCtrl.rotate(-PI/2, MotorCtrl.motorSpeedMaxRpm);               
   } else {
-    MotorCtrl.rotate(+PI/2, MotorCtrl.motorSpeedMaxRpm/2);                   
+    MotorCtrl.rotate(+PI/2, MotorCtrl.motorSpeedMaxRpm);                   
   } 
   // wait until motion stop
   while ( (!suppressed) && (MotorCtrl.motion != MOTION_STOP) ){

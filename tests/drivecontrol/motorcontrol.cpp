@@ -192,7 +192,7 @@ void MotorControl::run(){
         break;
       case MOTION_ROTATE_ANGLE: 
         angleToTargetRad = abs(distancePI(odometryThetaRadCurr, odometryThetaRadSet));
-        if (angleToTargetRad < PI/32){
+        if (angleToTargetRad < PI/4){
           Console.println(F("reached angle"));          
           motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;        
           motion = MOTION_STOP;
@@ -336,6 +336,7 @@ void MotorControl::setSpeedRpm(int leftRpm, int rightRpm){
 
 void MotorControl::stopImmediately(){
   setSpeedPWM(0, 0);
+  motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0;
   motion = MOTION_STOP;
 }
 

@@ -19,7 +19,7 @@ void FactoryConfig::setup(){
   
   // -------------- gear motors -------------------------------------------
   // -- Ardumower Mini --
-  MotorCtrl.motorSpeedMaxRpm = 100;      
+  MotorCtrl.motorSpeedMaxRpm = 50;      
   MotorCtrl.enableStallDetection = false;
   MotorCtrl.enableErrorDetection = false;  
   MotorCtrl.motorSpeedMaxPwm = 255;      
@@ -29,8 +29,8 @@ void FactoryConfig::setup(){
   MotorCtrl.motorLeftSwapDir = false;
   MotorCtrl.motorRightSwapDir = false;
   MotorCtrl.motorLeftPID.Kp       = 0.1;    // PID speed controller
-  MotorCtrl.motorLeftPID.Ki       = 0.05;
-  MotorCtrl.motorLeftPID.Kd       = 0.05;       
+  MotorCtrl.motorLeftPID.Ki       = 0.01;
+  MotorCtrl.motorLeftPID.Kd       = 0.01;       
   
 /*
   // -- Ardumower --
@@ -71,7 +71,7 @@ void FactoryConfig::setup(){
 
   // ------------------ sonar -------------------------------------------
   Sonar.sonarTriggerBelow = 900;
-  Sonar.enableCenter = false;
+  Sonar.enableCenter = true;
   Sonar.enableRight = false;
   Sonar.enableLeft = false;
 
