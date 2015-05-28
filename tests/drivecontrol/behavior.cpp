@@ -57,7 +57,7 @@ bool UserInteractionBehavior::takeControl(){
 
 void UserInteractionBehavior::action(){  
   suppressed = false;  
-  while ( !suppressed ){
+  while (( !suppressed ) && (Button.pressed)) {
     int bc = Button.beepCounter;
     if (bc != 0){
       switch (bc){

@@ -86,6 +86,7 @@ class MotorControl
         
     bool enableSpeedControl; // enable speed controller?
     bool enableStallDetection; // enable stall detection?
+    bool enableErrorDetection; // enable error detection?
     MotorControl();
     virtual void setup();
     virtual void run();    

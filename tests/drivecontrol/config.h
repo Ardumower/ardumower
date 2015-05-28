@@ -84,7 +84,7 @@
 #define PFOD_PIN 1234             // Bluetooth pin
 
 
-#define SIMULATE 1      // enable for simulation (not using hardware)
+//#define SIMULATE 1      // enable for simulation (not using hardware)
 
 
 // ----- robot configuration ------------------------

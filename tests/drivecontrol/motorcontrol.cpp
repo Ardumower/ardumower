@@ -80,7 +80,7 @@ void MotorControl::setup(){
   Console.println(F("MotorControl::setup"));
   printCSV(true);
   motion = MOTION_STOP;
-  enableSpeedControl = enableStallDetection = true;
+  enableSpeedControl = enableStallDetection = enableErrorDetection = true;
   motorLeftPWMCurr = motorRightPWMCurr = 0;
   lastOdometryTime = lastMotorControlTime = lastMotorCurrentTime = lastMotorRunTime = nextMotorPrintTime = 0;  
   odometryLeftTicksZeroCounter = odometryRightTicksZeroCounter = 0;
@@ -145,13 +145,15 @@ void MotorControl::setMC33926(int pinDir, int pinPWM, int speed){
 
 void MotorControl::checkFault(){
   #ifndef SIMULATE
-  if ( (!motorLeftError) && (digitalRead(pinMotorLeftFault)==LOW) ){
-    Console.println(F("ERROR: left gear motor/MC33926"));
-    motorLeftError = true;
-  }
-  if ( (!motorRightError) && (digitalRead(pinMotorRightFault)==LOW) ){
-    Console.println(F("ERROR: right gear motor/MC33926"));    
-    motorRightError = true;
+  if (enableErrorDetection){
+    if ( (!motorLeftError) && (digitalRead(pinMotorLeftFault)==LOW) ){
+      Console.println(F("ERROR: left gear motor/MC33926"));
+      motorLeftError = true;
+    }
+    if ( (!motorRightError) && (digitalRead(pinMotorRightFault)==LOW) ){
+      Console.println(F("ERROR: right gear motor/MC33926"));    
+      motorRightError = true;
+    }
   }
   #endif
 }
@@ -201,7 +203,7 @@ void MotorControl::run(){
   }
   readCurrent();  
   checkFault();
-  if (motion != MOTION_STOP) {
+  if ( (motion != MOTION_STOP) || (motorLeftPWMCurr > 0) || (motorRightPWMCurr > 0) ) {
     if (millis() >= nextMotorPrintTime){
       nextMotorPrintTime = millis() + 500;
       print();         

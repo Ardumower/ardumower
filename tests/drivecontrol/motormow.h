@@ -22,6 +22,8 @@ class MotorMowControl
   
     bool motorError;            // motor error?    
     bool motorStalled;          // motor stalled?    
+    bool enableErrorDetection;  // enable error detection?
+    bool enableStallDetection;  // enable stall detection?
     
     MotorMowControl();
     void setup();

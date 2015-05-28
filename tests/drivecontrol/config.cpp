@@ -18,17 +18,26 @@ void FactoryConfig::setup(){
   Console.println(F("FactoryConfig::setup"));
   
   // -------------- gear motors -------------------------------------------
-  MotorCtrl.motorSpeedMaxRpm = 10;      
-  MotorCtrl.enableStallDetection = true;
-  MotorCtrl.motorSpeedMaxPwm = 255;    
-  MotorCtrl.motorLeftPID.Kp       = 0.87;    // PID speed controller
-  MotorCtrl.motorLeftPID.Ki       = 0.29;
-  MotorCtrl.motorLeftPID.Kd       = 0.25;     
-/*  MotorCtrl.odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
+  // -- Ardumower Mini --
+  MotorCtrl.motorSpeedMaxRpm = 100;      
+  MotorCtrl.enableStallDetection = false;
+  MotorCtrl.enableErrorDetection = false;  
+  MotorCtrl.motorSpeedMaxPwm = 255;      
+  MotorCtrl.odometryTicksPerRevolution = 20;   // encoder ticks per one full resolution
   MotorCtrl.odometryTicksPerCm = 0.5;    // encoder ticks per cm
   MotorCtrl.odometryWheelBaseCm = 14;    // wheel-to-wheel distance (cm)    
   MotorCtrl.motorLeftSwapDir = false;
-  MotorCtrl.motorRightSwapDir = false;*/  
+  MotorCtrl.motorRightSwapDir = false;
+  MotorCtrl.motorLeftPID.Kp       = 0.1;    // PID speed controller
+  MotorCtrl.motorLeftPID.Ki       = 0.05;
+  MotorCtrl.motorLeftPID.Kd       = 0.05;       
+  
+/*
+  // -- Ardumower --
+  MotorCtrl.motorSpeedMaxRpm = 10;      
+  MotorCtrl.enableStallDetection = true;
+  MotorCtrl.enableErrorDetection = true;  
+  MotorCtrl.motorSpeedMaxPwm = 255;    
   MotorCtrl.odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   MotorCtrl.odometryTicksPerCm = 13.49;  // encoder ticks per cm
   MotorCtrl.odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)  
@@ -41,8 +50,13 @@ void FactoryConfig::setup(){
   MotorCtrl.motorSenseLeftScale  = 9.3;  // motor left sense scale  (mA=(ADC-zero) * scale)  
   MotorCtrl.motorVoltageDC = 24.0;
   MotorCtrl.motorEfficiencyMin = 200;    // minimum motor efficiency (stall detection)
+  MotorCtrl.motorLeftPID.Kp       = 0.87;    // PID speed controller
+  MotorCtrl.motorLeftPID.Ki       = 0.29;
+  MotorCtrl.motorLeftPID.Kd       = 0.25;*/       
 
   // ---------------- mower motor ---------------------------------------
+  MotorMow.enableStallDetection = false;
+  MotorMow.enableErrorDetection = false;  
   MotorMow.motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   MotorMow.motorMowSpeedMaxPwm   = 255;    // motor mower max PWM
   MotorMow.motorMowPowerMax = 75.0;     // motor mower max power (Watt)  
@@ -51,18 +65,18 @@ void FactoryConfig::setup(){
   MotorMow.motorVoltageDC = 24.0;      
   
   // ------------------ perimeter -------------------------------------------  
-  Perimeter.enable = true;
+  Perimeter.enable = false;
   Perimeter.timedOutIfBelowSmag = 300;
   Perimeter.timeOutSecIfNotInside = 8;  
 
   // ------------------ sonar -------------------------------------------
   Sonar.sonarTriggerBelow = 900;
   Sonar.enableCenter = false;
-  Sonar.enableRight = true;
-  Sonar.enableLeft = true;
+  Sonar.enableRight = false;
+  Sonar.enableLeft = false;
 
   // ------------------ battery ------------------------------------------
-  Battery.enableMonitor = true;
+  Battery.enableMonitor = false;
   Battery.batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   Battery.batSwitchOffIfBelow = 21.7;  // switch off battery if below voltage (Volt)
   Battery.batSwitchOffIfIdle = 1;      // switch off battery if idle (minutes)  

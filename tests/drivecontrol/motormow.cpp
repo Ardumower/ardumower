@@ -20,6 +20,7 @@ MotorMowControl::MotorMowControl(){
   nextMotorMowTime = 0;           
   lastMotorCurrentTime = 0;
   motorSenseCurrent = 0;  
+  enableErrorDetection = enableStallDetection = true;
 }
 
 void MotorMowControl::setup(){
@@ -82,9 +83,11 @@ void MotorMowControl::resetStalled(){
 
 void MotorMowControl::checkMotorFault(){
   #ifndef SIMULATE
-  if ( (!motorError) && (digitalRead(pinMotorMowFault)==LOW) ){
-    Console.println(F("ERROR: mower motor/MC33926"));        
-    motorError = true;
+  if (enableErrorDetection){
+    if ( (!motorError) && (digitalRead(pinMotorMowFault)==LOW) ){
+      Console.println(F("ERROR: mower motor/MC33926"));        
+      motorError = true;
+    }
   }
   #endif
 }
@@ -117,8 +120,9 @@ void MotorMowControl::readCurrent(){
     // P_output = U_Battery * pwmDuty * I_Motor     
     smooth = 0.9;        
     motorSensePower = motorSensePower * smooth + (1.0-smooth) * (motorSenseCurrent * motorVoltageDC * ((double)abs(motorPWMCurr)/255.0)  /1000);   
-        
-    if (!motorStalled){
+
+    if (enableStallDetection) {            
+      if (!motorStalled){
        if ( (abs(motorPWMCurr) > 0) && (motorSensePower > motorMowPowerMax) ) {
          print();         
          Console.print(F("  MOW STALL"));         
@@ -126,6 +130,7 @@ void MotorMowControl::readCurrent(){
          motorStalled = true;         
          stopImmediately();                  
        }            
+     }
     }
   #endif
 }

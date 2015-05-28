@@ -45,6 +45,10 @@ void RobotControl::setup(){
   setStandbyMode();
   
   Console.println(F("-----SETUP completed-----"));
+  #ifdef SIMULATE
+    Console.println(F("SIMULATION active!"));
+    if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT_SHORT_SHORT);      
+  #endif
   if (!Buzzer.isPlaying()) Buzzer.play(BC_SHORT);      
 }
 
@@ -87,6 +91,10 @@ void RobotControl::checkKey(){
       case '3': Button.setBeepCount(3); break;             
       case '4': Button.setBeepCount(4); break;             
       case '5': Button.setBeepCount(5); break;                   
+      case 'm': 
+        MotorCtrl.enableSpeedControl = false;
+        MotorCtrl.setSpeedPWM(127, 127);  
+        break;
       case 's': 
         // simulate sonar trigger
         Sonar.sonarDistLeft = Sonar.sonarTriggerBelow-1; 
