@@ -2176,7 +2176,7 @@ void Robot::checkIfStucked(){
     if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
         && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
         && (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
-        && (stateCurr != STATE_REMOTE)) {
+        && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_ERROR)) {
         motorMowEnable = true;
         errorCounterMax[ERR_STUCK] = 0;
   }
