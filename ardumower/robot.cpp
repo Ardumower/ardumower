@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 46
+#define MAGIC 47
 
 
 #define ADDR_USER_SETTINGS 0
@@ -91,6 +91,7 @@ Robot::Robot(){
    dropLeft = dropRight = false;                                                                                                        // Dropsensor - Absturzsensor
   
   gpsLat = gpsLon = gpsX = gpsY = 0;
+  robotIsStuckedCounter = 0;
 
   imuDriveHeading = 0;
   imuRollHeading = 0;
@@ -148,6 +149,7 @@ Robot::Robot(){
   nextTimeTimer = millis() + 60000;
   nextTimeRTC = 0;
   nextTimeGPS = 0;
+  nextTimeCheckIfStucked = 0;
   nextTimePfodLoop = 0;
   nextTimeRain = 0;
   lastMotorMowRpmTime = millis();
@@ -156,6 +158,7 @@ Robot::Robot(){
   nextTimeErrorBeep = 0;
   nextTimeMotorControl = 0;  
   nextTimeMotorMowControl = 0;
+
 }
 
   
@@ -281,6 +284,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
+  eereadwrite(readflag, addr, stuckedIfGpsSpeedBelow);
+  eereadwrite(readflag, addr, gpsSpeedIgnoreTime);
+
   eereadwrite(readflag, addr, dropUse);          
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
@@ -552,7 +558,7 @@ void Robot::checkErrorCounter(){
   if (millis() >= nextTimeErrorCounterReset){
     // reset all temporary error counters after 30 seconds (maximum error counters still continue to count) 
     for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=0;
-    nextTimeErrorCounterReset = millis() + 30000; // 30 sec
+    nextTimeErrorCounterReset = millis() + 60000; // 30 sec
   }  
   if (stateCurr != STATE_OFF) {
    for (int i=0; i < ERR_ENUM_COUNT; i++){
@@ -2149,6 +2155,53 @@ void Robot::checkTilt(){
   }
 }
 
+// check if mower is stucked ToDo: take HDOP into consideration if gpsSpeed is reliable
+void Robot::checkIfStucked(){
+  if ((gpsUse) && (gps.hdop() < 500))  {
+  //float gpsSpeedRead = gps.f_speed_kmph();
+  float gpsSpeed = gps.f_speed_kmph();
+  // low-pass filter
+   // double accel = 0.1;
+   // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
+   // Console.println(gpsSpeed);
+     // Console.println(robotIsStuckedCounter);
+     // Console.println(errorCounter[ERR_STUCK]);
+  if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckedIfGpsSpeedBelow)    // checks if mower is stucked and counts up
+      && ((motorLeftRpmCurr && motorRightRpmCurr) != 0) && (millis() > stateStartTime + gpsSpeedIgnoreTime) ){
+      robotIsStuckedCounter++;
+  }
+
+    else {                         // if mower gets unstucked itresets errorCounterMax to zero and reenabling motorMow
+    robotIsStuckedCounter = 0;    // resets temporary counter to zero
+    if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
+        && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
+        && (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
+        && (stateCurr != STATE_REMOTE)) {
+        motorMowEnable = true;
+        errorCounterMax[ERR_STUCK] = 0;
+  }
+    return;
+  }
+
+  if (robotIsStuckedCounter >= 5){    
+    motorMowEnable = false;
+    if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stucked and unable to move
+    Console.println(F("Error: Mower is stucked"));
+    addErrorCounter(ERR_STUCK);
+    setNextState(STATE_ERROR,0);    //mower is switched into ERROR
+    //robotIsStuckedCounter = 0;
+    }
+      else if ((stateCurr == STATE_FORWARD) && (errorCounter[ERR_STUCK] < 3)) {   // mower tries 3 times to get unstucked
+      motorMowEnable = false;
+      addErrorCounter(ERR_STUCK);             
+      setMotorPWM( 0, 0, false );  
+      reverseOrBidir(RIGHT);
+    }
+  }
+}
+  }
+
+
 void Robot::processGPSData()
 {
   if (millis() < nextTimeGPS) return;
@@ -2217,6 +2270,10 @@ void Robot::loop()  {
   if (rc.readSerial()) resetIdleTime();
   readSensors(); 
   checkBattery(); 
+  if (millis() >= nextTimeCheckIfStucked){
+      nextTimeCheckIfStucked = millis() + 300;
+      checkIfStucked();
+       }
 
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
     nextTimeOdometryInfo = millis() + 300;

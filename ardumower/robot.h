@@ -124,6 +124,7 @@ enum {
   ERR_ADC_CALIB,
   ERR_IMU_CALIB,
   ERR_EEPROM_DATA,
+  ERR_STUCK,
   // <---- add new error types here (NOTE: increase MAGIC to avoid corrupt EEPROM error data!)
   ERR_ENUM_COUNT,  
 };  
@@ -196,6 +197,10 @@ class Robot
     float gpsX ;   // X position (m)
     float gpsY ;   // Y position (m)
     unsigned long nextTimeGPS ;
+    unsigned long nextTimeCheckIfStucked ;
+    float stuckedIfGpsSpeedBelow ;
+    int gpsSpeedIgnoreTime ; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
+    int robotIsStuckedCounter ;
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
@@ -499,6 +504,7 @@ protected:
     virtual void checkRain();
     virtual void checkTimeout();
     virtual void checkOdometryFaults();
+    virtual void checkIfStucked();
     
     // motor controllers
     virtual void motorControl();    
