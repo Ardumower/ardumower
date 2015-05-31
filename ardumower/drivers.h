@@ -44,7 +44,8 @@
 
 
 // ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
-#define MAX_ECHO_TIME 3000         
+#define MAX_ECHO_TIME 3000     
+#define MIN_ECHO_TIME 150    
 #define NO_ECHO 0
 
 // I2C addresses

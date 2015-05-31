@@ -113,6 +113,7 @@ Robot::Robot(){
   sonarLeftUse = sonarRightUse = sonarCenterUse = false;
   sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
   sonarDistCounter = 0;
+  tempSonarDistCounter = 0;
   sonarObstacleTimeout = 0;  
 
   batADC = 0;
@@ -2138,30 +2139,34 @@ void Robot::checkSonar(){
           if (     ((NO_ECHO != sonarDistCenter) && (sonarDistCenter < sonarTriggerBelow*2)) 
                ||  ((NO_ECHO != sonarDistRight) && (sonarDistRight < sonarTriggerBelow*2)) 
                ||  ((NO_ECHO != sonarDistLeft) && (sonarDistLeft < sonarTriggerBelow*2))  ) {    
-              //Console.println("sonar slow down");
+              tempSonarDistCounter++;
+            if (tempSonarDistCounter >= 50){
+             // Console.println("sonar slow down");
               motorLeftSpeedRpmSet /= 1.5;
               motorRightSpeedRpmSet /= 1.5;
               sonarObstacleTimeout = millis() + 7000;
+            }
           }
         } else if ((sonarObstacleTimeout != 0) && (millis() > sonarObstacleTimeout)) {
           //Console.println("no sonar");
           sonarObstacleTimeout = 0;
+          tempSonarDistCounter = 0;
           motorLeftSpeedRpmSet *= 1.5;
           motorRightSpeedRpmSet *= 1.5;
         }
     }  
   
-  if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)){
-    sonarDistCounter++;    
+  if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)) {
+    sonarDistCounter++;   
     if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
       else reverseOrBidir(RIGHT);    
   }
   if ((sonarDistRight != NO_ECHO) && (sonarDistRight < sonarTriggerBelow)){
-    sonarDistCounter++;     
+    sonarDistCounter++;
     reverseOrBidir(LEFT);
   }
   if ((sonarDistLeft != NO_ECHO) && (sonarDistLeft < sonarTriggerBelow)){
-    sonarDistCounter++;     
+    sonarDistCounter++; 
     reverseOrBidir(RIGHT);
   }
 }

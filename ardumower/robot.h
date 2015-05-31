@@ -373,6 +373,7 @@ class Robot
     unsigned int sonarDistRight ;
     unsigned int sonarDistLeft ; 
     unsigned int sonarDistCounter ;
+    unsigned int tempSonarDistCounter ;
     unsigned long sonarObstacleTimeout ;
     unsigned long nextTimeSonar ;
     // --------- pfodApp ----------------------------------
