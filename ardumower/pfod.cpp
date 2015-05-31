@@ -564,7 +564,7 @@ void RemoteControl::sendGPSMenu(boolean update){
   Bluetooth.print(F("|q00~Use "));
   sendYesNo(robot->gpsUse);
   sendSlider("q01", F("Stucked if GPS speed is below"), robot->stuckedIfGpsSpeedBelow, "", 0.1, 3); 
-  sendSlider("q02", F("GPS speed ignore time"), robot->gpsSpeedIgnoreTime, "", 1, 8000);       
+  sendSlider("q02", F("GPS speed ignore time"), robot->gpsSpeedIgnoreTime, "", 1, 10000, robot->motorReverseTime);       
   Bluetooth.println("}");                
 }
 

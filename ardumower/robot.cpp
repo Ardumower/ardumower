@@ -2188,6 +2188,7 @@ void Robot::checkIfStucked(){
   if ((gpsUse) && (gps.hdop() < 500))  {
   //float gpsSpeedRead = gps.f_speed_kmph();
   float gpsSpeed = gps.f_speed_kmph();
+  if (gpsSpeedIgnoreTime >= motorReverseTime) gpsSpeedIgnoreTime = motorReverseTime - 500;
   // low-pass filter
    // double accel = 0.1;
    // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
@@ -2219,11 +2220,19 @@ void Robot::checkIfStucked(){
     setNextState(STATE_ERROR,0);    //mower is switched into ERROR
     //robotIsStuckedCounter = 0;
     }
-      else if ((stateCurr == STATE_FORWARD) && (errorCounter[ERR_STUCK] < 3)) {   // mower tries 3 times to get unstucked
+      else if (errorCounter[ERR_STUCK] < 3) {   // mower tries 3 times to get unstucked
+        if (stateCurr == STATE_FORWARD){
       motorMowEnable = false;
       addErrorCounter(ERR_STUCK);             
       setMotorPWM( 0, 0, false );  
       reverseOrBidir(RIGHT);
+    }
+    else if (stateCurr == STATE_ROLL){
+      motorMowEnable = false;
+      addErrorCounter(ERR_STUCK);             
+      setMotorPWM( 0, 0, false );  
+      setNextState (STATE_FORWARD,0);
+    }
     }
   }
 }
