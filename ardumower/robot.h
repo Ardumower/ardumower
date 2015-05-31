@@ -151,6 +151,9 @@ enum {
   STATE_STATION_FORW,  // charge forward
   STATE_MANUAL,       // manual navigation  
   STATE_ROLL_WAIT,    // drive roll right/left
+  STATE_PERI_OUT_FORW, // outside perimeter forward driving without checkPerimeterBoundary()
+  STATE_PERI_OUT_REV,   // outside perimeter reverse driving without checkPerimeterBoundary()
+  STATE_PERI_OUT_ROLL,   // outside perimeter rolling driving without checkPerimeterBoundary()
 };
 
 // roll types

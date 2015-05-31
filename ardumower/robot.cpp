@@ -32,8 +32,8 @@
 #define ADDR_ERR_COUNTERS 400
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
-  "CREV", "CROL", "CFOR", "MANU", "ROLW" };
-  
+  "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL"};
+
 char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
 char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter"}; 
@@ -1528,7 +1528,8 @@ void Robot::readSensors(){
       if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
       	&& (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
       	&& (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
-      	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE)) {
+      	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_PERI_OUT_FORW)
+        && (stateCurr != STATE_PERI_OUT_REV) && (stateCurr != STATE_PERI_OUT_ROLL)) {
         Console.println("Error: perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
@@ -1740,6 +1741,24 @@ void Robot::setNextState(byte stateNew, byte dir){
   } if (stateNew == STATE_PERI_REV) {
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/2;                    
     stateEndTime = millis() + perimeterTrackRevTime;                     
+  }
+  else if (stateNew == STATE_PERI_OUT_FORW){
+    motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
+    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime + 2000;   
+  }
+  else if (stateNew == STATE_PERI_OUT_REV){
+    motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/1.25;                    
+    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime; 
+  }
+  else if (stateNew == STATE_PERI_OUT_ROLL){
+    stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
+      if (dir == RIGHT){
+    motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
+    motorRightSpeedRpmSet = -motorLeftSpeedRpmSet/1.25;           
+      } else {
+    motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
+    motorLeftSpeedRpmSet = -motorRightSpeedRpmSet/1.25; 
+      }
   }
   else if (stateNew == STATE_FORWARD){      
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;              
@@ -2049,18 +2068,27 @@ void Robot::checkPerimeterBoundary(){
       }     
     }
   } else {  
-    if (stateCurr == STATE_FORWARD){
+    if (stateCurr == STATE_FORWARD) {
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
           if ((rand() % 2) == 0){      
-            reverseOrBidir(LEFT);
+          setNextState(STATE_PERI_OUT_REV, LEFT);
           } else {
-            reverseOrBidir(RIGHT);
+          setNextState(STATE_PERI_OUT_REV, RIGHT);
           }
         }
       }
     } 
+    else if ((stateCurr == STATE_ROLL)) {
+      if (perimeterTriggerTime != 0) {
+        if (millis() >= perimeterTriggerTime){ 
+          perimeterTriggerTime = 0;
+          setMotorPWM( 0, 0, false );  
+          setNextState(STATE_PERI_OUT_FORW, 0);
+        }
+      }
+    }
   }
 }
 
@@ -2453,6 +2481,15 @@ void Robot::loop()  {
           }
       } 
       break;  
+    case STATE_PERI_OUT_FORW:             
+      if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
+      break;
+    case STATE_PERI_OUT_REV: 
+      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL,0);                
+      break;
+    case STATE_PERI_OUT_ROLL: 
+      if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
+      break;
 
     case STATE_STATION_CHECK:
       // check for charging voltage disappearing before leaving charging station
