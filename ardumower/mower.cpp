@@ -151,7 +151,7 @@ Mower::Mower(){
   motorLeftPID.Kd       = 0.4;*/
   
   motorRightSwapDir     = 0;    // inverse right motor direction? 
-  motorLeftSwapDir      = 1;    // inverse left motor direction?
+  motorLeftSwapDir      = 0;    // inverse left motor direction?
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMaxPwm   = 255;    // motor mower max PWM
