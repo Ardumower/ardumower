@@ -10,20 +10,23 @@
   #include <EEPROM.h>
 #else 
   // Arduino Due
-//  #include "due.h"
+  #include "due.h"
 #endif
 
-//#include "robot.h"
+#include "robot.h"
 
 
 void setup(){
-  //Robot.setup();      
+  Robot.setup();  
+  //Console.begin(19200);
+  //Console.println("setup()");  
 }
 
 
 void loop(){  
-  //Robot.loop();
-    
+  Robot.loop();
+  //Console.println("loop()");
+  //delay(1000);
 }
 
 

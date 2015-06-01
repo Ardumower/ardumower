@@ -3,7 +3,6 @@
 
 // Ardumower ON/start button 
 
-#include <Arduino.h>
 
 
 class ButtonControl

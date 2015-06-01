@@ -215,7 +215,7 @@ void RobotControl::motorPIDTest(){
       switch(test){
         case 0:
           Console.println("=========FORWARD==========");
-          MotorCtrl.travelLineDistance(200, MotorCtrl.motorSpeedMaxRpm);             
+          MotorCtrl.travelLineDistance(9000, MotorCtrl.motorSpeedMaxRpm);             
           //MotorCtrl.setSpeedRpm(0, 0);               
           break;
         case 1:

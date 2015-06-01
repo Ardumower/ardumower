@@ -1,4 +1,4 @@
-#include "config.h"
+#include "mower.h"
 #include "drivers.h"
 #include "motorcontrol.h"
 #include "motormow.h"
@@ -9,6 +9,8 @@
 #include "perimeter.h"
 
 
+// instances
+AMotorControl MotorCtrl;
 FactoryConfig Config;
 
 
@@ -19,7 +21,8 @@ void FactoryConfig::setup(){
   
   // -------------- gear motors -------------------------------------------
   // -- Ardumower Mini --
-  MotorCtrl.motorSpeedMaxRpm = 50;      
+  //MotorCtrl.motorSpeedMaxRpm = 50;        
+  MotorCtrl.motorSpeedMaxRpm = 30;      
   MotorCtrl.enableStallDetection = false;
   MotorCtrl.enableErrorDetection = false;  
   MotorCtrl.motorSpeedMaxPwm = 255;      

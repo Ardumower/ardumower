@@ -3,21 +3,17 @@
 
 // Ardumower LEDs  (play LED 'sequences')
 
+#include <Arduino.h>
+
+
 // playable LED sequences
 enum {
-  LED_SEQ_OFF,
-  LED_SEQ_GREEN_ON,
-  LED_SEQ_ORANGE_ON,
-  LED_SEQ_ORANGE_BLINK,
-  LED_SEQ_RED_BLINK,
-  LED_SEQ_RED_ON,
-};
-
-// LED types
-enum {
-  LED_ARDUINO,
-  LED_DUAL_RED,
-  LED_DUAL_GREEN,
+  LED_OFF,
+  LED_GREEN_ON,
+  LED_ORANGE_ON,
+  LED_ORANGE_BLINK,
+  LED_RED_BLINK,
+  LED_RED_ON,
 };
 
 /*
@@ -33,7 +29,7 @@ Dual LED grün. Dauerlicht - Mover innerhalb Perimeter
 Dual LED grün+rot = Orange - Dauerlicht Mover außerhalb Perimeter
 Dual LED grün+rot = Orange - Blinkt Mover findet Perimeter nicht oder sucht danach
 Dual LED rot = Blinkt Fehler kurzseitig Überlast Antriebmotor Treibe oder Mähmotor.
-Dual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken
+Dual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken 
 */
 
 
@@ -46,12 +42,12 @@ class LEDControl
     void run();
     void setup();
   private:
-    virtual void setDriverLED(int LEDidx, bool state);
     unsigned long nextLEDTime;
     int ledSequenceIdx;
     bool onState;
 };
 
+extern LEDControl LED;
 
 #endif
 
