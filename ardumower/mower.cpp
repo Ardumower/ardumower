@@ -151,7 +151,7 @@ Mower::Mower(){
   motorLeftPID.Kd       = 0.4;*/
   
   motorRightSwapDir     = 0;    // inverse right motor direction? 
-  motorLeftSwapDir      = 1;    // inverse left motor direction?
+  motorLeftSwapDir      = 0;    // inverse left motor direction?
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMaxPwm   = 255;    // motor mower max PWM
@@ -227,7 +227,7 @@ Mower::Mower(){
   stationCheckTime   = 2500;    // charge station reverse check time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
-  twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
+  twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
