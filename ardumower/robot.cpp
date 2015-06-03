@@ -1720,7 +1720,7 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + stationRevTime + motorZeroSettleTime;                     
   } else if (stateNew == STATE_STATION_ROLL){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm;
-    motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						      
+    motorRightSpeedRpmSet = -motorSpeedMaxRpm;						      
     stateEndTime = millis() + stationRollTime + motorZeroSettleTime;                     
   } else if (stateNew == STATE_STATION_FORW){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
@@ -1745,7 +1745,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   }
   else if (stateNew == STATE_PERI_OUT_FORW){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
-    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime + 2000;   
+    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime + 1000;   
   }
   else if (stateNew == STATE_PERI_OUT_REV){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/1.25;                    
@@ -1755,10 +1755,10 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
-    motorRightSpeedRpmSet = -motorLeftSpeedRpmSet/1.25;           
+    motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;           
       } else {
     motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
-    motorLeftSpeedRpmSet = -motorRightSpeedRpmSet/1.25; 
+    motorLeftSpeedRpmSet = -motorRightSpeedRpmSet; 
       }
   }
   else if (stateNew == STATE_FORWARD){      
@@ -1780,10 +1780,12 @@ void Robot::setNextState(byte stateNew, byte dir){
       stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
 	motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
-	motorRightSpeedRpmSet = -motorLeftSpeedRpmSet/1.25;						
+	motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
       } else {
 	motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
-	motorLeftSpeedRpmSet = -motorRightSpeedRpmSet/1.25;	
+	motorLeftSpeedRpmSet = -motorRightSpeedRpmSet
+
+  ;	
       }      
   }  
   if (stateNew == STATE_REMOTE){
@@ -1920,6 +1922,8 @@ void Robot::receiveGPSTime(){
 void Robot::checkTimer(){
   if (millis() < nextTimeTimer) return;
   nextTimeTimer = millis() + 60000;
+  srand(time2minutes(datetime.time)); // initializes the pseudo-random number generator for c++ rand()
+  randomSeed(time2minutes(datetime.time)); // initializes the pseudo-random number generator for arduino random()
   receiveGPSTime();
   boolean stopTimerTriggered = true;
   if (timerUse){    
@@ -2073,7 +2077,7 @@ void Robot::checkPerimeterBoundary(){
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
-          if ((rand() % 2) == 0){      
+          if ((rand() % 2) == 0){    
           setNextState(STATE_PERI_OUT_REV, LEFT);
           } else {
           setNextState(STATE_PERI_OUT_REV, RIGHT);
@@ -2085,8 +2089,12 @@ void Robot::checkPerimeterBoundary(){
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){ 
           perimeterTriggerTime = 0;
-          setMotorPWM( 0, 0, false );  
-          setNextState(STATE_PERI_OUT_FORW, 0);
+          setMotorPWM( 0, 0, false );
+          if ((rand() % 2) == 0){    
+          setNextState(STATE_PERI_OUT_FORW, LEFT);
+          } else {
+          setNextState(STATE_PERI_OUT_FORW, RIGHT);
+          }  
         }
       }
     }
@@ -2499,7 +2507,7 @@ void Robot::loop()  {
       if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
       break;
     case STATE_PERI_OUT_REV: 
-      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL,0);                
+      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);                
       break;
     case STATE_PERI_OUT_ROLL: 
       if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
