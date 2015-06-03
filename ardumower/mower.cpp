@@ -134,11 +134,11 @@ Mower::Mower(){
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorPowerIgnoreTime = 2000; // time to ignore motor power (ms)
-  motorZeroSettleTime   = 2000 ; // how long (ms) to wait for motors to settle at zero speed
-  motorRollTimeMax    = 3000;  // max. roll time (ms)
-  motorRollTimeMin    = 1000; //min. roll time (ms) should be smaller than motorRollTimeMax
-  motorReverseTime    = 3500;  // max. reverse time (ms)
-  motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
+  motorZeroSettleTime   = 2500 ; // how long (ms) to wait for motors to settle at zero speed
+  motorRollTimeMax    = 2000;  // max. roll time (ms)
+  motorRollTimeMin    = 750; //min. roll time (ms) should be smaller than motorRollTimeMax
+  motorReverseTime    = 2200;  // max. reverse time (ms)
+  motorForwTimeMax   = 80000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
   // ---- normal control ---
@@ -174,12 +174,12 @@ Mower::Mower(){
   sonarLeftUse      = 1;
   sonarRightUse     = 1;
   sonarCenterUse    = 0;
-  sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
+  sonarTriggerBelow = 1050;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 0;      // use perimeter?    
+  perimeterUse       = 1;      // use perimeter?    
   perimeterTriggerTimeout = 0;      // perimeter trigger timeout when escaping from inside (ms)  
-  perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
-  perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
+  perimeterTrackRollTime  = 2000;   // perimter tracking roll time (ms)
+  perimeterTrackRevTime   = 2200;   // perimter tracking reverse time (ms)
   perimeterPID.Kp    = 51.0;  // perimeter PID controller
   perimeterPID.Ki    = 12.5;
   perimeterPID.Kd    = 0.8;  
