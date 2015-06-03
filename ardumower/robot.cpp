@@ -508,6 +508,11 @@ void Robot::printSettingSerial(){
 // ----- GPS -------------------------------------------
   Console.print  (F("gpsUse : "));
   Console.println(gpsUse); 
+  Console.print  (F("stuckedIfGpsSpeedBelow : "));
+  Console.println(stuckedIfGpsSpeedBelow); 
+  Console.print  (F("gpsSpeedIgnoreTime : "));
+  Console.println(gpsSpeedIgnoreTime); 
+  
 
 // ----- other -----------------------------------------
   Console.print  (F("buttonUse : "));
