@@ -2509,7 +2509,7 @@ void Robot::loop()  {
       } 
       break;  
     case STATE_PERI_OUT_FORW:             
-      if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
+      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);                
       break;
     case STATE_PERI_OUT_REV: 
       if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);                
