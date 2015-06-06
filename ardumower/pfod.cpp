@@ -854,11 +854,15 @@ void RemoteControl::processFactorySettingsMenu(String pfodCmd){
 }
 
 void RemoteControl::sendInfoMenu(boolean update){
-  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info"));     
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info` 1000"));     
   Bluetooth.print(F("|v00~Ardumower "));
   Bluetooth.print(VER); 
   Bluetooth.print(F("|v01~Developer "));  
-  sendYesNo(robot->developerActive);        
+  sendYesNo(robot->developerActive);   
+  Bluetooth.print(F("|v02~Mowing time trip "));
+  Bluetooth.print(robot->statsMowTimeMinutesTrip);    
+  Bluetooth.print(F("|v03~Mowing time total "));
+  Bluetooth.print(robot->statsMowTimeHoursTotal);    
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
   //Bluetooth.print("|d02~IMU v");  

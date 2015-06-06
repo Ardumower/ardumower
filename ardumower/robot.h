@@ -431,7 +431,14 @@ class Robot
     unsigned long nextTimeButton ;
     unsigned long nextTimeErrorCounterReset;    
     unsigned long nextTimeErrorBeep ;  
-    // ---------------------------------------
+    // ------------robot stats---------------------------
+    boolean statsMowTimeTotalStart ;
+    unsigned int statsMowTimeMinutesTripCounter ;
+    unsigned long statsMowTimeMinutesTotal ;
+    float statsMowTimeHoursTotal ;
+    int statsMowTimeMinutesTrip ;
+    unsigned long nextTimeRobotStats ;
+    // --------------------------------------------------
     Robot();
     // robot setup
     virtual void setup();
@@ -468,6 +475,7 @@ class Robot
     // settings
     virtual void deleteUserSettings();        
     virtual void saveUserSettings();
+    virtual void deleteRobotStats();
     
     // other
     virtual void beep(int numberOfBeeps, boolean shortbeep);    
@@ -482,6 +490,7 @@ protected:
     virtual int rcValue(int ppmTime);
     virtual void loadSaveErrorCounters(boolean readflag);
     virtual void loadSaveUserSettings(boolean readflag);
+    virtual void loadSaveRobotStats(boolean readflag);
     virtual void loadUserSettings();
     virtual void checkErrorCounter();
     virtual void printSettingSerial();
@@ -509,6 +518,7 @@ protected:
     virtual void checkTimeout();
     virtual void checkOdometryFaults();
     virtual void checkIfStucked();
+    virtual void checkRobotStats();
     
     // motor controllers
     virtual void motorControl();    

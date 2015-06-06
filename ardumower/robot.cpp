@@ -25,11 +25,12 @@
 
 #include "robot.h"
 
-#define MAGIC 47
+#define MAGIC 48
 
 
 #define ADDR_USER_SETTINGS 0
 #define ADDR_ERR_COUNTERS 400
+#define ADDR_ROBOT_STATS 800
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL"};
@@ -47,6 +48,7 @@ Robot::Robot(){
   stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
   idleTimeSec = 0;
+  statsMowTimeTotalStart = false;            
   mowPatternCurr = MOW_RANDOM;
   
   odometryLeft = odometryRight = 0;
@@ -160,6 +162,8 @@ Robot::Robot(){
   nextTimeMotorControl = 0;  
   nextTimeMotorMowControl = 0;
 
+  nextTimeRobotStats = 0;
+  statsMowTimeMinutesTripCounter = 0;
 }
 
   
@@ -169,6 +173,22 @@ char* Robot::stateName(){
 
 char *Robot::mowPatternName(){
   return mowPatternNames[mowPatternCurr];
+}
+
+void Robot::loadSaveRobotStats(boolean readflag){
+  if (readflag) Console.println(F("loadSaveRobotStats: read"));
+    else Console.println(F("loadSaveRobotStats: write"));
+  int addr = ADDR_ROBOT_STATS;
+  short magic = 0;
+  if (!readflag) magic = MAGIC;  
+  eereadwrite(readflag, addr, magic); // magic
+  if ((readflag) && (magic != MAGIC)) {
+    Console.println(F("PLEASE CHECK IF YOUR ROBOT STATS ARE CORRECT"));
+  }
+  eereadwrite(readflag, addr, statsMowTimeMinutesTrip); 
+  eereadwrite(readflag, addr, statsMowTimeMinutesTotal);   
+  Console.print(F("loadSaveRobotStats addrstop="));
+  Console.println(addr);
 }
 
 void Robot::loadSaveErrorCounters(boolean readflag){
@@ -287,7 +307,6 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, gpsUse);
   eereadwrite(readflag, addr, stuckedIfGpsSpeedBelow);
   eereadwrite(readflag, addr, gpsSpeedIgnoreTime);
-
   eereadwrite(readflag, addr, dropUse);          
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
@@ -529,7 +548,12 @@ void Robot::printSettingSerial(){
 // ----- timer -----------------------------------------
   Console.print  (F("timerUse : "));
   Console.println(timerUse); 
-  
+
+// -------robot stats------------------------------------
+  Console.print  (F("statsMowTimeMinutesTrip : "));
+  Console.println(statsMowTimeMinutesTrip);
+  Console.print  (F("statsMowTimeMinutesTotal : "));
+  Console.println(statsMowTimeMinutesTotal);
   return;
 
 }
@@ -542,9 +566,17 @@ void Robot::saveUserSettings(){
 }
 
 void Robot::deleteUserSettings(){
+  loadSaveRobotStats(true);
   int addr = 0;
   Console.println(F("ALL USER SETTINGS ARE DELETED"));
   eewrite(addr, (short)0); // magic  
+  loadSaveRobotStats(false);
+}
+
+void Robot::deleteRobotStats(){
+  statsMowTimeMinutesTrip = statsMowTimeMinutesTotal = 0;
+  loadSaveRobotStats(false);
+  Console.println(F("ALL ROBOT STATS ARE DELETED")); 
 }
 
 void Robot::addErrorCounter(byte errType){   
@@ -1052,6 +1084,7 @@ void Robot::setup()  {
   setMotorPWM(0, 0, false);
   loadSaveErrorCounters(true);
   loadUserSettings();
+  loadSaveRobotStats(true);
   setUserSwitches();
 
   
@@ -1767,7 +1800,8 @@ void Robot::setNextState(byte stateNew, byte dir){
       }
   }
   else if (stateNew == STATE_FORWARD){      
-    motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;              
+    motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;  
+    statsMowTimeTotalStart = true;            
   } 
   else if (stateNew == STATE_REVERSE)  {
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/1.25;                    
@@ -1799,7 +1833,10 @@ void Robot::setNextState(byte stateNew, byte dir){
   } 
   if (stateNew == STATE_STATION){
     setActuator(ACT_CHGRELAY, 0); 
-    setDefaults();        
+    setDefaults(); 
+    statsMowTimeTotalStart = false;  
+    loadSaveRobotStats(false);   
+       
   }
   if (stateNew == STATE_STATION_CHARGING){
     setActuator(ACT_CHGRELAY, 1); 
@@ -1807,13 +1844,16 @@ void Robot::setNextState(byte stateNew, byte dir){
   }
   if (stateNew == STATE_OFF){
     setActuator(ACT_CHGRELAY, 0);
-    setDefaults();        
+    setDefaults();   
+    statsMowTimeTotalStart = false; 
+    loadSaveRobotStats(false);    
   }  
   if (stateNew == STATE_ERROR){
     motorMowEnable = false;    
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0; 
     setActuator(ACT_CHGRELAY, 0);
-   
+    statsMowTimeTotalStart = false;  
+    //loadSaveRobotStats(false);   
   }
   if (stateNew == STATE_PERI_FIND){
     // find perimeter  => drive half speed      
@@ -1867,6 +1907,7 @@ if (millis() < nextTimeCheckBattery) return;
         Console.println(F("triggered batSwitchOffIfIdle"));      
         beep(1, true);      
         loadSaveErrorCounters(false);
+        loadSaveRobotStats(false);
         idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
         Console.println(F("BATTERY switching OFF"));
         setActuator(ACT_BATTERY_SW, 0);  // switch off battery               
@@ -1923,13 +1964,33 @@ void Robot::receiveGPSTime(){
   }
 }
 
+// check robot stats
+void Robot::checkRobotStats(){
+  if (millis() < nextTimeRobotStats) return;
+  nextTimeRobotStats = millis() + 60000;
+  Console.println(statsMowTimeTotalStart);
+  if (statsMowTimeTotalStart) {
+        statsMowTimeMinutesTripCounter++;
+        Console.println(statsMowTimeMinutesTripCounter);
+        statsMowTimeMinutesTrip = statsMowTimeMinutesTripCounter;
+        statsMowTimeMinutesTotal++;
+        statsMowTimeHoursTotal = statsMowTimeMinutesTotal/60; 
+  } 
+  else 
+    if (statsMowTimeMinutesTripCounter != 0){
+        statsMowTimeMinutesTripCounter = 0;
+
+    }
+
+}
+
 // check timer
 void Robot::checkTimer(){
   if (millis() < nextTimeTimer) return;
   nextTimeTimer = millis() + 60000;
   srand(time2minutes(datetime.time)); // initializes the pseudo-random number generator for c++ rand()
   randomSeed(time2minutes(datetime.time)); // initializes the pseudo-random number generator for arduino random()
-  receiveGPSTime();
+  receiveGPSTime(); 
   boolean stopTimerTriggered = true;
   if (timerUse){    
     for (int i=0; i < MAX_TIMERS; i++){
@@ -2203,6 +2264,8 @@ void Robot::checkTilt(){
 
 // check if mower is stucked ToDo: take HDOP into consideration if gpsSpeed is reliable
 void Robot::checkIfStucked(){
+  if (millis() < nextTimeCheckIfStucked) return;
+  nextTimeCheckIfStucked = millis() + 300;
   if ((gpsUse) && (gps.hdop() < 500))  {
   //float gpsSpeedRead = gps.f_speed_kmph();
   float gpsSpeed = gps.f_speed_kmph();
@@ -2325,10 +2388,8 @@ void Robot::loop()  {
   if (rc.readSerial()) resetIdleTime();
   readSensors(); 
   checkBattery(); 
-  if (millis() >= nextTimeCheckIfStucked){
-      nextTimeCheckIfStucked = millis() + 300;
-      checkIfStucked();
-       }
+  checkIfStucked();
+  checkRobotStats();
 
   if ((odometryUse) && (millis() >= nextTimeOdometryInfo)){
     nextTimeOdometryInfo = millis() + 300;
