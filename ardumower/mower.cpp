@@ -246,7 +246,10 @@ Mower::Mower(){
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use RTC and timer?
-  // ------ configuration end -------------------------------------------   
+  // ------ mower stats-------------------------------------------  
+  statsOverride = false; // if set to true mower stats are overwritten - be careful
+  statsMowTimeMinutesTotal = 300;
+  // -----------configuration end-------------------------------------
 }
 
 

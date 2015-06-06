@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 48
+#define MAGIC 49
 
 
 #define ADDR_USER_SETTINGS 0
@@ -307,7 +307,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, gpsUse);
   eereadwrite(readflag, addr, stuckedIfGpsSpeedBelow);
   eereadwrite(readflag, addr, gpsSpeedIgnoreTime);
-  eereadwrite(readflag, addr, dropUse);          
+  eereadwrite(readflag, addr, dropUse);   
+  eereadwrite(readflag, addr, statsOverride);   
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -1084,7 +1085,8 @@ void Robot::setup()  {
   setMotorPWM(0, 0, false);
   loadSaveErrorCounters(true);
   loadUserSettings();
-  loadSaveRobotStats(true);
+  if (!statsOverride) loadSaveRobotStats(true);
+  else loadSaveRobotStats(false);
   setUserSwitches();
 
   
@@ -1208,6 +1210,7 @@ void Robot::printMenu(){
   Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
   Console.println(F("9=save user settings"));  
   Console.println(F("l=load factory settings"));  
+  Console.println(F("r=delete robot stats"));  
   Console.println(F("x=read settings"));  
   Console.println(F("e=delete all errors"));  
   Console.println(F("0=exit"));  
@@ -1344,9 +1347,15 @@ void Robot::menu(){
           printMenu();
           break;
         case 'l':
+          printSettingSerial();
           deleteUserSettings();
           printMenu();
-          break;          
+          break;    
+        case 'r':
+          printSettingSerial();
+          deleteRobotStats();
+          printMenu();
+          break;              
         case 'x':
           printSettingSerial();
           Console.println(F("DONE"));
@@ -1968,13 +1977,11 @@ void Robot::receiveGPSTime(){
 void Robot::checkRobotStats(){
   if (millis() < nextTimeRobotStats) return;
   nextTimeRobotStats = millis() + 60000;
-  Console.println(statsMowTimeTotalStart);
+  statsMowTimeHoursTotal = double(statsMowTimeMinutesTotal)/60; 
   if (statsMowTimeTotalStart) {
         statsMowTimeMinutesTripCounter++;
-        Console.println(statsMowTimeMinutesTripCounter);
         statsMowTimeMinutesTrip = statsMowTimeMinutesTripCounter;
         statsMowTimeMinutesTotal++;
-        statsMowTimeHoursTotal = statsMowTimeMinutesTotal/60; 
   } 
   else 
     if (statsMowTimeMinutesTripCounter != 0){

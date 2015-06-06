@@ -858,10 +858,12 @@ void RemoteControl::sendInfoMenu(boolean update){
   Bluetooth.print(F("|v00~Ardumower "));
   Bluetooth.print(VER); 
   Bluetooth.print(F("|v01~Developer "));  
-  sendYesNo(robot->developerActive);   
-  Bluetooth.print(F("|v02~Mowing time trip "));
+  sendYesNo(robot->developerActive); 
+  Bluetooth.print(F("|v04~Stats override "));  
+  sendYesNo(robot->statsOverride);     
+  Bluetooth.print(F("|v02~Mowing time trip (min) "));
   Bluetooth.print(robot->statsMowTimeMinutesTrip);    
-  Bluetooth.print(F("|v03~Mowing time total "));
+  Bluetooth.print(F("|v03~Mowing time total (hrs) "));
   Bluetooth.print(robot->statsMowTimeHoursTotal);    
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
@@ -874,6 +876,8 @@ void RemoteControl::sendInfoMenu(boolean update){
 
 void RemoteControl::processInfoMenu(String pfodCmd){      
   if (pfodCmd == "v01") robot->developerActive = !robot->developerActive;
+  if (pfodCmd == "v04") robot->statsOverride = !robot->statsOverride; robot->saveUserSettings();
+
   sendInfoMenu(true);
 }
 

@@ -432,6 +432,7 @@ class Robot
     unsigned long nextTimeErrorCounterReset;    
     unsigned long nextTimeErrorBeep ;  
     // ------------robot stats---------------------------
+    boolean statsOverride ;
     boolean statsMowTimeTotalStart ;
     unsigned int statsMowTimeMinutesTripCounter ;
     unsigned long statsMowTimeMinutesTotal ;
