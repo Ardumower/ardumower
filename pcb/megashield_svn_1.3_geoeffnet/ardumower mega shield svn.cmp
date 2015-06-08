@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 23.05.2015 17:07:26
+Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 08.06.2015 21:57:17
 
 BeginCmp
 TimeStamp = /553D2376/553D2728;
@@ -127,90 +127,6 @@ IdModule  = ACS712:Bohrloch_3,2mm;
 EndCmp
 
 BeginCmp
-TimeStamp = /553D8AD9/5542A35A/554BE91C;
-Reference = BY1;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/5542A35A/554BE91E;
-Reference = BY2;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/5542A35A/554BE913;
-Reference = BY3;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/5542A35A/554BE915;
-Reference = BY4;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D3EE8/554BE91B;
-Reference = BY5;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D3EE8/554BE91D;
-Reference = BY6;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D3EE8/5542A3D9;
-Reference = BY7;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D3EE8/5542A4FC;
-Reference = BY8;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D4C79/5542A6A6;
-Reference = BY9;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D4C79/5542A6AC;
-Reference = BY10;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D4C79/554BE914;
-Reference = BY11;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D4C79/554BE916;
-Reference = BY12;
-ValeurCmp = BY 500/1000;
-IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
-EndCmp
-
-BeginCmp
 TimeStamp = /553D8AD9/5542A35A/554BE928;
 Reference = C1;
 ValeurCmp = MP3-Y2 10N Rastermass 15mm;
@@ -288,9 +204,23 @@ IdModule  = ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
 EndCmp
 
 BeginCmp
+TimeStamp = /553D8AD9/5543A988/55723D66;
+Reference = C12;
+ValeurCmp = 2200uF 63V;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D9DA2/55723BFA;
+Reference = C13;
+ValeurCmp = 2200uF 63V;
+IdModule  = ;
+EndCmp
+
+BeginCmp
 TimeStamp = /5558C608;
 Reference = CC1;
-ValeurCmp = 100 nF;
+ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
@@ -316,10 +246,10 @@ IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /554BCB67/5558A3B2;
+TimeStamp = /55722368;
 Reference = CC5;
-ValeurCmp = 100nF;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+ValeurCmp = 100nf;
+IdModule  = ;
 EndCmp
 
 BeginCmp
@@ -416,13 +346,6 @@ EndCmp
 BeginCmp
 TimeStamp = /5558DDF4/5558EACE;
 Reference = CC19;
-ValeurCmp = 100nF;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
-EndCmp
-
-BeginCmp
-TimeStamp = /554C1C35/5558A184;
-Reference = CC20;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
@@ -603,6 +526,34 @@ IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
+TimeStamp = /557628C2;
+Reference = D1;
+ValeurCmp = MBR 1045;
+IdModule  = ACS712:MBR1045;
+EndCmp
+
+BeginCmp
+TimeStamp = /55764E0D;
+Reference = D2;
+ValeurCmp = MBR 1045;
+IdModule  = ACS712:MBR1045;
+EndCmp
+
+BeginCmp
+TimeStamp = /557673DD;
+Reference = D3;
+ValeurCmp = MBR 1045;
+IdModule  = ACS712:MBR1045;
+EndCmp
+
+BeginCmp
+TimeStamp = /5576E06B;
+Reference = D4;
+ValeurCmp = 1N4148;
+IdModule  = ACS712:Diode_ligend_RM10;
+EndCmp
+
+BeginCmp
 TimeStamp = /553C8677/553C96CC;
 Reference = D5;
 ValeurCmp = 1N4148;
@@ -614,13 +565,6 @@ TimeStamp = /553C8677/553CC974;
 Reference = D6;
 ValeurCmp = 1N4148;
 IdModule  = ACS712:Diode_ligend_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553BDA33/553C450A;
-Reference = D8;
-ValeurCmp = BlueLED;
-IdModule  = ACS712:Diode_LED_5mm_round_vertical;
 EndCmp
 
 BeginCmp
@@ -666,17 +610,192 @@ IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
+TimeStamp = /553D8AD9/5542A35A/554BE91C;
+Reference = DBY1;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5542A35A/554BE91E;
+Reference = DBY2;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5542A35A/554BE913;
+Reference = DBY3;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5542A35A/554BE915;
+Reference = DBY4;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D3EE8/554BE91B;
+Reference = DBY5;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D3EE8/554BE91D;
+Reference = DBY6;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D3EE8/5542A3D9;
+Reference = DBY7;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D3EE8/5542A4FC;
+Reference = DBY8;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D4C79/5542A6A6;
+Reference = DBY9;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D4C79/5542A6AC;
+Reference = DBY10;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D4C79/554BE914;
+Reference = DBY11;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D4C79/554BE916;
+Reference = DBY12;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/5571FCFE;
+Reference = DBY13;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/557200E3;
+Reference = DBY14;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/55761C96;
+Reference = DBY15;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/55760557;
+Reference = DBY16;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/5576199E;
+Reference = DBY17;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/5576055D;
+Reference = DBY18;
+ValeurCmp = BY 500/1000;
+IdModule  = ACS712:Diode_liegend_BY500_1000_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541A8DB;
+Reference = DKE1;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
+TimeStamp = /5540B0B9;
+Reference = DKE2;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/5543A988/5543B245;
+Reference = DKE3;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
+TimeStamp = /553D8AD9/554D9DA2/554BE926;
+Reference = DKE4;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/5572085B;
+Reference = DKE5;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/55761C9E;
+Reference = DKE6;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/55760568;
+Reference = DKE7;
+ValeurCmp = 15KE33CA;
+IdModule  = ACS712:Diode_15KE33CA;
+EndCmp
+
+BeginCmp
 TimeStamp = /553D8AD9/553D8D88;
 Reference = Dual1;
 ValeurCmp = MC33926;
-IdModule  = ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse;
+IdModule  = ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse_mit_zweite_Lochreihe;
 EndCmp
 
 BeginCmp
 TimeStamp = /553D8AD9/553DEB14;
 Reference = Dual2;
 ValeurCmp = MC33926;
-IdModule  = ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse;
+IdModule  = ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse_mit_zweite_Lochreihe;
 EndCmp
 
 BeginCmp
@@ -785,34 +904,6 @@ IdModule  = ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D_Kontaktbelegung_geändert_FI
 EndCmp
 
 BeginCmp
-TimeStamp = /5541A8DB;
-Reference = KE1;
-ValeurCmp = 15KE33CA;
-IdModule  = ACS712:Diode_15KE33CA;
-EndCmp
-
-BeginCmp
-TimeStamp = /5540B0B9;
-Reference = KE2;
-ValeurCmp = 15KE33CA;
-IdModule  = ACS712:Diode_15KE33CA;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/5543A988/5543B245;
-Reference = KE3;
-ValeurCmp = 15KE33CA;
-IdModule  = ACS712:Diode_15KE33CA;
-EndCmp
-
-BeginCmp
-TimeStamp = /553D8AD9/554D9DA2/554BE926;
-Reference = KE4;
-ValeurCmp = 15KE33CA;
-IdModule  = ACS712:Diode_15KE33CA;
-EndCmp
-
-BeginCmp
 TimeStamp = /551BB55E;
 Reference = LP32;
 ValeurCmp = Lötpad;
@@ -890,10 +981,10 @@ IdModule  = ACS712:Pin_Header_Straight_1x04;
 EndCmp
 
 BeginCmp
-TimeStamp = /553DFC0F/55403386;
+TimeStamp = /553DFC0F/556A48CF;
 Reference = P7;
 ValeurCmp = Status LEDs;
-IdModule  = ACS712:Pin_Header_Straight_1x08;
+IdModule  = ACS712:Pin_Header_Straight_1x09;
 EndCmp
 
 BeginCmp
@@ -1107,10 +1198,10 @@ IdModule  = ACS712:Anschlussklemme_RM5,08-RM7,62;
 EndCmp
 
 BeginCmp
-TimeStamp = /553DFC0F/55401F07;
+TimeStamp = /553DFC0F/556A5011;
 Reference = P38;
 ValeurCmp = Status LEDs GND;
-IdModule  = ACS712:Pin_Header_Straight_1x08;
+IdModule  = ACS712:Pin_Header_Straight_1x09;
 EndCmp
 
 BeginCmp
@@ -1207,22 +1298,43 @@ EndCmp
 BeginCmp
 TimeStamp = /553E526C/555B2389;
 Reference = PRFA3;
-ValeurCmp = PFRA 185;
+ValeurCmp = PFRA 040;
 IdModule  = ACS712:PRFA_500_stehend;
 EndCmp
 
 BeginCmp
 TimeStamp = /553E526C/555B2AC8;
 Reference = PRFA4;
-ValeurCmp = PFRA 185;
+ValeurCmp = PFRA 040;
 IdModule  = ACS712:PRFA_500_stehend;
 EndCmp
 
 BeginCmp
-TimeStamp = /553E526C/555B1C87;
+TimeStamp = /553E526C/5575F491;
 Reference = PRFA5;
-ValeurCmp = PFRA 185;
+ValeurCmp = PFRA 040;
 IdModule  = ACS712:PRFA_500_stehend;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/557204F7;
+Reference = PRFA6;
+ValeurCmp = PFRA 040;
+IdModule  = ACS712:PRFA_500_stehend;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/55762018;
+Reference = PRFA7;
+ValeurCmp = PFRA 040;
+IdModule  = ACS712:PRFA_500_stehend;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E526C/5575FF8A;
+Reference = PRFA8;
+ValeurCmp = PFRA 040;
+IdModule  = ;
 EndCmp
 
 BeginCmp
@@ -1422,27 +1534,6 @@ IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
-TimeStamp = /553E526C/553E7D11;
-Reference = R24;
-ValeurCmp = 0;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /553E526C/553E6E97;
-Reference = R25;
-ValeurCmp = 0;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
-TimeStamp = /553E526C/553E914B;
-Reference = R26;
-ValeurCmp = 0;
-IdModule  = ACS712:Resistor_Horizontal_RM15mm;
-EndCmp
-
-BeginCmp
 TimeStamp = /553A1252/553AC2EC;
 Reference = R27;
 ValeurCmp = 100K;
@@ -1541,30 +1632,37 @@ IdModule  = ACS712:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
+TimeStamp = /553DFC0F/5566DACB;
+Reference = R41;
+ValeurCmp = 4,7K;
+IdModule  = ACS712:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
 TimeStamp = /5478A23C;
 Reference = RP1;
-ValeurCmp = 150;
+ValeurCmp = 220R;
 IdModule  = ACS712:DIP-16__300;
 EndCmp
 
 BeginCmp
 TimeStamp = /54B686DE;
 Reference = RP2;
-ValeurCmp = 150;
+ValeurCmp = 220R;
 IdModule  = ACS712:DIP-16__300;
 EndCmp
 
 BeginCmp
 TimeStamp = /54994E69;
 Reference = RR1;
-ValeurCmp = C0,1uF;
+ValeurCmp = (0,01uF) 10nF;
 IdModule  = ACS712:Kondensatorenleiste_8er_9pin_3D;
 EndCmp
 
 BeginCmp
 TimeStamp = /5499A2BD;
 Reference = RR2;
-ValeurCmp = C0,1uF;
+ValeurCmp = (0,01uF) 10nF;
 IdModule  = ACS712:Kondensatorenleiste_8er_9pin_3D;
 EndCmp
 
@@ -1636,27 +1734,6 @@ TimeStamp = /553BDA33/553C9758;
 Reference = U11;
 ValeurCmp = Wlan_ESP8266;
 IdModule  = ACS712:Wlan_ESP8266_3D;
-EndCmp
-
-BeginCmp
-TimeStamp = /553E526C/553E7CFF;
-Reference = ZD1;
-ValeurCmp = ZD-5W 3,3V Optional;
-IdModule  = ACS712:Diode_ligend_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553E526C/553E5DC0;
-Reference = ZD2;
-ValeurCmp = ZD-5W 5,1 Optional;
-IdModule  = ACS712:Diode_ligend_RM10;
-EndCmp
-
-BeginCmp
-TimeStamp = /553E526C/553E9139;
-Reference = ZD3;
-ValeurCmp = ZD-5W 12V Optional;
-IdModule  = ACS712:Diode_ligend_RM10;
 EndCmp
 
 BeginCmp
