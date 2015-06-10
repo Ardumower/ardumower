@@ -300,8 +300,11 @@ class Robot
     int motorMowRpmCurr ;            // motor rpm (range 0..MOW_RPM)
     unsigned long lastMotorMowRpmTime;    
     unsigned long nextTimeMotorControl;
+    unsigned long nextTimeMotorImuControl ;
+    unsigned long nextTimeMotorPerimeterControl;
     unsigned long nextTimeMotorMowControl;
     int lastMowSpeedPWM;
+    unsigned long lastSetMotorMowSpeedTime;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     

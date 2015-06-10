@@ -127,7 +127,7 @@ Mower robot;
 Mower::Mower(){
   name = "Ardumower";
   // ------- wheel motors -----------------------------
-  motorAccel       = 500;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
+  motorAccel       = 1000;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
   motorSpeedMaxRpm       = 25;   // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
   motorPowerMax     = 75;    // motor wheel max power (Watt)
@@ -153,7 +153,7 @@ Mower::Mower(){
   motorRightSwapDir     = 0;    // inverse right motor direction? 
   motorLeftSwapDir      = 0;    // inverse left motor direction?
   // ------ mower motor -------------------------------
-  motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
+  motorMowAccel       = 2000;  // motor mower acceleration (warning: do not set too low) 2000 seems to fit best considerating start time and power consumption 
   motorMowSpeedMaxPwm   = 255;    // motor mower max PWM
   motorMowPowerMax = 75.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
