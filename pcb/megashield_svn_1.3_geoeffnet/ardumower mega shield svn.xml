@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>C:/Users/Uwe/Downloads/ardumower/pcb/megashield_svn_1.3_geoeffnet/ardumower mega shield svn.sch</source>
-    <date>21.05.2015 18:32:01</date>
+    <date>24.05.2015 03:24:05</date>
     <tool>Eeschema (2015-05-08 BZR 5647)-product</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -1239,6 +1239,17 @@
       <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
       <tstamp>553CE8AC</tstamp>
     </comp>
+    <comp ref="CC45">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>5560BCE1</tstamp>
+    </comp>
     <comp ref="B1">
       <value>Bohrloch_3,2mm</value>
       <footprint>ACS712:Bohrloch_3,2mm</footprint>
@@ -2123,7 +2134,7 @@
     </comp>
     <comp ref="R12">
       <value>47K 0,1%</value>
-      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
       <fields>
         <field name="Bestellnummer">R: MPR 47,0K</field>
         <field name="Technische Daten">Value</field>
@@ -2153,17 +2164,6 @@
       <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
       <sheetpath names="/Batteriespannung/" tstamps="/554BCB67/"/>
       <tstamp>554BCD9F</tstamp>
-    </comp>
-    <comp ref="CC4">
-      <value>100nF</value>
-      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
-      <fields>
-        <field name="Bestellnummer">R: KERKO 100N</field>
-        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
-      </fields>
-      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
-      <sheetpath names="/Batteriespannung/" tstamps="/554BCB67/"/>
-      <tstamp>5558A33B</tstamp>
     </comp>
     <comp ref="CC5">
       <value>100nF</value>
@@ -2208,17 +2208,6 @@
       <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
       <sheetpath names="/Ladespannung/" tstamps="/554C1C35/"/>
       <tstamp>554C8CE7</tstamp>
-    </comp>
-    <comp ref="CC6">
-      <value>100nF</value>
-      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
-      <fields>
-        <field name="Bestellnummer">R: KERKO 100N</field>
-        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
-      </fields>
-      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
-      <sheetpath names="/Ladespannung/" tstamps="/554C1C35/"/>
-      <tstamp>5558A079</tstamp>
     </comp>
     <comp ref="CC20">
       <value>100nF</value>
@@ -2504,6 +2493,182 @@
       <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
       <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
       <tstamp>555CF835</tstamp>
+    </comp>
+    <comp ref="CC33">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA4F5</tstamp>
+    </comp>
+    <comp ref="CC31">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA50B</tstamp>
+    </comp>
+    <comp ref="CC32">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA521</tstamp>
+    </comp>
+    <comp ref="CC36">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA537</tstamp>
+    </comp>
+    <comp ref="CC34">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA54D</tstamp>
+    </comp>
+    <comp ref="CC35">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA563</tstamp>
+    </comp>
+    <comp ref="CC39">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA579</tstamp>
+    </comp>
+    <comp ref="CC37">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA58F</tstamp>
+    </comp>
+    <comp ref="CC38">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA5A5</tstamp>
+    </comp>
+    <comp ref="CC4">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609DFC</tstamp>
+    </comp>
+    <comp ref="CC41">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609E12</tstamp>
+    </comp>
+    <comp ref="CC6">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609E28</tstamp>
+    </comp>
+    <comp ref="CC40">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609E3E</tstamp>
+    </comp>
+    <comp ref="CC44">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5560A60D</tstamp>
+    </comp>
+    <comp ref="CC42">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5560A623</tstamp>
+    </comp>
+    <comp ref="CC43">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5560A639</tstamp>
     </comp>
   </components>
   <libparts>
@@ -2821,13 +2986,13 @@
         <field name="Value">DS1307+</field>
       </fields>
       <pins>
-        <pin num="1" name="Batt" type="input"/>
-        <pin num="2" name="GND" type="power_in"/>
-        <pin num="3" name="VCC" type="power_in"/>
-        <pin num="4" name="SDA" type="BiDi"/>
-        <pin num="5" name="SCL" type="input"/>
-        <pin num="6" name="DS" type="input"/>
-        <pin num="7" name="SQ" type="output"/>
+        <pin num="Bat" name="Bat" type="input"/>
+        <pin num="DS" name="DS" type="input"/>
+        <pin num="GND" name="GND" type="power_in"/>
+        <pin num="SCL" name="SCL" type="input"/>
+        <pin num="SDA" name="SDA" type="BiDi"/>
+        <pin num="SQ" name="SQ" type="output"/>
+        <pin num="VCC" name="VCC" type="power_in"/>
       </pins>
     </libpart>
     <libpart lib="ardumower mega shield svn-cache" part="F_10A">
@@ -3042,24 +3207,24 @@
   </libraries>
   <nets>
     <net code="1" name="Net-(LP36-Pad2)">
-      <node ref="LP36" pin="2"/>
       <node ref="RR2" pin="6"/>
+      <node ref="LP36" pin="2"/>
     </net>
     <net code="2" name="TX1">
-      <node ref="SHIELD1" pin="18"/>
       <node ref="R15" pin="1"/>
+      <node ref="SHIELD1" pin="18"/>
     </net>
     <net code="3" name="pinBuzzer">
-      <node ref="SHIELD1" pin="53"/>
       <node ref="SP1" pin="2"/>
+      <node ref="SHIELD1" pin="53"/>
     </net>
     <net code="4" name="ReservePin49">
-      <node ref="P35" pin="3"/>
       <node ref="SHIELD1" pin="49"/>
+      <node ref="P35" pin="3"/>
     </net>
     <net code="5" name="pinMotorMowSense">
-      <node ref="RP1" pin="5"/>
       <node ref="Dual2" pin="18"/>
+      <node ref="RP1" pin="5"/>
     </net>
     <net code="6" name="Net-(RP1-Pad12)">
       <node ref="RR1" pin="5"/>
@@ -3067,59 +3232,58 @@
       <node ref="SHIELD1" pin="AD3"/>
     </net>
     <net code="7" name="Net-(D11-Pad1)">
-      <node ref="D11" pin="1"/>
       <node ref="R19" pin="2"/>
+      <node ref="D11" pin="1"/>
     </net>
     <net code="8" name="Net-(D10-Pad2)">
-      <node ref="D10" pin="2"/>
       <node ref="D11" pin="2"/>
       <node ref="K3" pin="8"/>
+      <node ref="D10" pin="2"/>
     </net>
     <net code="9" name="Net-(EF2-Pad1)">
-      <node ref="P47" pin="2"/>
       <node ref="EF2" pin="1"/>
+      <node ref="P47" pin="2"/>
     </net>
     <net code="10" name="SDA1">
-      <node ref="U8" pin="4"/>
       <node ref="SHIELD1" pin="20"/>
-      <node ref="P5" pin="3"/>
       <node ref="P24" pin="3"/>
-      <node ref="U10" pin="3"/>
       <node ref="P23" pin="3"/>
+      <node ref="P5" pin="3"/>
+      <node ref="U10" pin="3"/>
+      <node ref="U8" pin="SDA"/>
     </net>
     <net code="11" name="RX1">
+      <node ref="SHIELD1" pin="19"/>
+      <node ref="U11" pin="TX"/>
       <node ref="R14" pin="1"/>
       <node ref="P44" pin="3"/>
-      <node ref="U11" pin="TX"/>
-      <node ref="SHIELD1" pin="19"/>
     </net>
-    <net code="12" name="SCL1">
-      <node ref="U8" pin="5"/>
-      <node ref="P23" pin="4"/>
-      <node ref="U10" pin="2"/>
+    <net code="12" name="SCL2">
+      <node ref="U8" pin="SCL"/>
       <node ref="P24" pin="4"/>
       <node ref="P5" pin="4"/>
       <node ref="SHIELD1" pin="21"/>
+      <node ref="P23" pin="4"/>
+      <node ref="U10" pin="2"/>
     </net>
     <net code="13" name="pinPerimeterRight">
-      <node ref="RP1" pin="4"/>
       <node ref="P30" pin="3"/>
+      <node ref="RP1" pin="4"/>
     </net>
     <net code="14" name="Net-(LP35-Pad2)">
-      <node ref="LP35" pin="2"/>
       <node ref="RR2" pin="2"/>
+      <node ref="LP35" pin="2"/>
     </net>
     <net code="15" name="ReserveAD10">
       <node ref="P49" pin="3"/>
       <node ref="RP2" pin="6"/>
     </net>
     <net code="16" name="pinChargeVoltage">
-      <node ref="ZD8" pin="2"/>
-      <node ref="R9" pin="2"/>
-      <node ref="R10" pin="1"/>
       <node ref="RP2" pin="7"/>
-      <node ref="CC6" pin="2"/>
+      <node ref="ZD8" pin="2"/>
+      <node ref="R10" pin="1"/>
       <node ref="CC20" pin="1"/>
+      <node ref="R9" pin="2"/>
     </net>
     <net code="17" name="pinChargeCurrent">
       <node ref="U3" pin="3"/>
@@ -3130,49 +3294,48 @@
       <node ref="Dual1" pin="18"/>
     </net>
     <net code="19" name="pinMotorLeftSense">
-      <node ref="Dual1" pin="9"/>
       <node ref="RP1" pin="7"/>
+      <node ref="Dual1" pin="9"/>
     </net>
     <net code="20" name="pinBatteryVoltage">
-      <node ref="RP1" pin="6"/>
       <node ref="CC5" pin="1"/>
-      <node ref="CC4" pin="2"/>
       <node ref="ZD4" pin="2"/>
       <node ref="R12" pin="2"/>
       <node ref="R13" pin="1"/>
+      <node ref="RP1" pin="6"/>
     </net>
     <net code="21" name="pinPerimeterLeft">
-      <node ref="P12" pin="3"/>
       <node ref="RP1" pin="3"/>
+      <node ref="P12" pin="3"/>
     </net>
     <net code="22" name="ReserveAD6">
+      <node ref="JP16" pin="1"/>
       <node ref="P22" pin="3"/>
       <node ref="RP1" pin="2"/>
-      <node ref="JP16" pin="1"/>
     </net>
     <net code="23" name="Voltage measurement">
-      <node ref="RP1" pin="1"/>
-      <node ref="JP13" pin="2"/>
-      <node ref="JP15" pin="2"/>
-      <node ref="JP14" pin="2"/>
       <node ref="P14" pin="3"/>
+      <node ref="RP1" pin="1"/>
+      <node ref="JP14" pin="2"/>
+      <node ref="JP15" pin="2"/>
+      <node ref="JP13" pin="2"/>
     </net>
     <net code="24" name="PowerA3,3">
+      <node ref="JP3" pin="2"/>
       <node ref="SHIELD1" pin="3V3"/>
       <node ref="JP15" pin="1"/>
-      <node ref="JP3" pin="2"/>
     </net>
     <net code="25" name="Net-(K3-Pad12)">
-      <node ref="K3" pin="12"/>
       <node ref="U3" pin="4"/>
+      <node ref="K3" pin="12"/>
     </net>
     <net code="26" name="Net-(LP32-Pad2)">
       <node ref="LP32" pin="2"/>
       <node ref="RR2" pin="5"/>
     </net>
     <net code="27" name="Net-(LP33-Pad2)">
-      <node ref="RR2" pin="4"/>
       <node ref="LP33" pin="2"/>
+      <node ref="RR2" pin="4"/>
     </net>
     <net code="28" name="Net-(LP34-Pad2)">
       <node ref="LP34" pin="2"/>
@@ -3193,12 +3356,12 @@
       <node ref="D15" pin="1"/>
     </net>
     <net code="33" name="/UnterSpannungsSchutz/Batterieeingang 24V">
-      <node ref="Q3" pin="S"/>
-      <node ref="C9" pin="1"/>
-      <node ref="ZD7" pin="2"/>
       <node ref="ZD6" pin="2"/>
       <node ref="R28" pin="1"/>
+      <node ref="Q3" pin="S"/>
+      <node ref="C9" pin="1"/>
       <node ref="Q5" pin="S"/>
+      <node ref="ZD7" pin="2"/>
     </net>
     <net code="34" name="Net-(K3-Pad14)">
       <node ref="K3" pin="14"/>
@@ -3208,11 +3371,11 @@
       <node ref="SHIELD1" pin="4"/>
     </net>
     <net code="36" name="/Verpols.L/Verpols.L.aus">
-      <node ref="R19" pin="1"/>
       <node ref="ZD5" pin="2"/>
+      <node ref="K3" pin="16"/>
+      <node ref="R19" pin="1"/>
       <node ref="R11" pin="1"/>
       <node ref="Q2" pin="S"/>
-      <node ref="K3" pin="16"/>
     </net>
     <net code="37" name="Net-(K3-Pad5)">
       <node ref="K3" pin="5"/>
@@ -3220,56 +3383,54 @@
     </net>
     <net code="38" name="/Ladespannung/Ladespannung">
       <node ref="R9" pin="1"/>
-      <node ref="CC6" pin="1"/>
-      <node ref="Q2" pin="D"/>
       <node ref="EF1" pin="1"/>
+      <node ref="Q2" pin="D"/>
     </net>
     <net code="39" name="Net-(JP12-Pad2)">
       <node ref="JP12" pin="2"/>
       <node ref="SHIELD1" pin="5V"/>
     </net>
     <net code="40" name="/Batteriespannung/Batteriespannung">
-      <node ref="KE1" pin="2"/>
-      <node ref="R12" pin="1"/>
-      <node ref="K3" pin="1"/>
-      <node ref="Q5" pin="D"/>
       <node ref="P47" pin="1"/>
-      <node ref="CC4" pin="1"/>
+      <node ref="KE1" pin="2"/>
+      <node ref="Q5" pin="D"/>
+      <node ref="K3" pin="1"/>
+      <node ref="R12" pin="1"/>
     </net>
     <net code="41" name="+24V">
-      <node ref="BY5" pin="2"/>
-      <node ref="PRFA2" pin="1"/>
-      <node ref="KE2" pin="2"/>
-      <node ref="C5" pin="1"/>
       <node ref="BY7" pin="2"/>
+      <node ref="BY3" pin="2"/>
+      <node ref="PRFA2" pin="1"/>
+      <node ref="BY5" pin="2"/>
+      <node ref="BY1" pin="2"/>
+      <node ref="U1" pin="3"/>
+      <node ref="P39" pin="2"/>
       <node ref="Q3" pin="D"/>
+      <node ref="R2" pin="1"/>
       <node ref="U6" pin="3"/>
       <node ref="U7" pin="3"/>
-      <node ref="P39" pin="2"/>
-      <node ref="BY11" pin="2"/>
-      <node ref="U1" pin="3"/>
-      <node ref="P36" pin="2"/>
-      <node ref="R2" pin="1"/>
       <node ref="BY9" pin="2"/>
-      <node ref="BY3" pin="2"/>
+      <node ref="C5" pin="1"/>
+      <node ref="BY11" pin="2"/>
+      <node ref="P36" pin="2"/>
+      <node ref="KE2" pin="2"/>
       <node ref="PRFA1" pin="1"/>
-      <node ref="BY1" pin="2"/>
     </net>
     <net code="42" name="Led-Status">
-      <node ref="R5" pin="2"/>
       <node ref="P7" pin="8"/>
+      <node ref="R5" pin="2"/>
     </net>
     <net code="43" name="Net-(EF2-Pad2)">
-      <node ref="P43" pin="1"/>
       <node ref="EF2" pin="2"/>
+      <node ref="P43" pin="1"/>
     </net>
     <net code="44" name="pinMotorRightPWM">
-      <node ref="Dual1" pin="14"/>
       <node ref="SHIELD1" pin="3"/>
+      <node ref="Dual1" pin="14"/>
     </net>
     <net code="45" name="pinMotorMowEnable">
-      <node ref="Dual2" pin="10"/>
       <node ref="SHIELD1" pin="28"/>
+      <node ref="Dual2" pin="10"/>
     </net>
     <net code="46" name="StationLed">
       <node ref="R11" pin="2"/>
@@ -3288,28 +3449,28 @@
       <node ref="R21" pin="1"/>
     </net>
     <net code="50" name="pinMotorMowDir">
+      <node ref="Dual2" pin="4"/>
       <node ref="Dual2" pin="13"/>
       <node ref="SHIELD1" pin="29"/>
-      <node ref="Dual2" pin="4"/>
     </net>
     <net code="51" name="Net-(Q1-PadB)">
       <node ref="Q1" pin="B"/>
       <node ref="R18" pin="2"/>
     </net>
     <net code="52" name="DropLeft">
-      <node ref="D5" pin="1"/>
       <node ref="SHIELD1" pin="45"/>
+      <node ref="D5" pin="1"/>
     </net>
     <net code="53" name="Net-(SHIELD1-PadSDA1)">
       <node ref="SHIELD1" pin="SDA1"/>
     </net>
     <net code="54" name="pinMotorLeftDir">
-      <node ref="SHIELD1" pin="31"/>
       <node ref="Dual1" pin="4"/>
+      <node ref="SHIELD1" pin="31"/>
     </net>
     <net code="55" name="pinMotorRightDir">
-      <node ref="SHIELD1" pin="33"/>
       <node ref="Dual1" pin="13"/>
+      <node ref="SHIELD1" pin="33"/>
     </net>
     <net code="56" name="pinSonarCenterEcho">
       <node ref="P1" pin="4"/>
@@ -3320,13 +3481,13 @@
       <node ref="SHIELD1" pin="32"/>
     </net>
     <net code="58" name="pinSonarLeftEcho">
-      <node ref="P3" pin="4"/>
       <node ref="SHIELD1" pin="36"/>
+      <node ref="P3" pin="4"/>
     </net>
     <net code="59" name="pinMotorMowFault">
       <node ref="Dual2" pin="8"/>
-      <node ref="SHIELD1" pin="26"/>
       <node ref="Dual2" pin="17"/>
+      <node ref="SHIELD1" pin="26"/>
     </net>
     <net code="60" name="pinMotorLeftFault">
       <node ref="SHIELD1" pin="25"/>
@@ -3337,8 +3498,8 @@
       <node ref="SHIELD1" pin="27"/>
     </net>
     <net code="62" name="pinBumperLeft">
-      <node ref="P11" pin="4"/>
       <node ref="SHIELD1" pin="39"/>
+      <node ref="P11" pin="4"/>
     </net>
     <net code="63" name="Net-(SHIELD1-PadSCL1)">
       <node ref="SHIELD1" pin="SCL1"/>
@@ -3347,8 +3508,8 @@
       <node ref="SHIELD1" pin="AREF"/>
     </net>
     <net code="65" name="ReservePin0">
-      <node ref="P27" pin="3"/>
       <node ref="SHIELD1" pin="0"/>
+      <node ref="P27" pin="3"/>
     </net>
     <net code="66" name="pinLawnFrontSend">
       <node ref="SHIELD1" pin="41"/>
@@ -3368,8 +3529,8 @@
       <node ref="P41" pin="3"/>
     </net>
     <net code="70" name="pinSonarLeftTrigger">
-      <node ref="SHIELD1" pin="34"/>
       <node ref="P3" pin="3"/>
+      <node ref="SHIELD1" pin="34"/>
     </net>
     <net code="71" name="pinUserSwitch3">
       <node ref="SHIELD1" pin="48"/>
@@ -3380,162 +3541,174 @@
       <node ref="SHIELD1" pin="24"/>
     </net>
     <net code="73" name="pinRemoteMow">
-      <node ref="P13" pin="3"/>
       <node ref="SHIELD1" pin="12"/>
+      <node ref="P13" pin="3"/>
     </net>
     <net code="74" name="pinUserSwitch2">
-      <node ref="SHIELD1" pin="47"/>
       <node ref="P40" pin="4"/>
+      <node ref="SHIELD1" pin="47"/>
     </net>
     <net code="75" name="pinLawnBackRecv">
-      <node ref="P6" pin="4"/>
       <node ref="SHIELD1" pin="42"/>
+      <node ref="P6" pin="4"/>
     </net>
     <net code="76" name="pinTilt">
       <node ref="SHIELD1" pin="35"/>
       <node ref="P19" pin="3"/>
     </net>
     <net code="77" name="RX2">
-      <node ref="U2" pin="TXD"/>
-      <node ref="R8" pin="1"/>
       <node ref="SHIELD1" pin="17"/>
+      <node ref="R8" pin="1"/>
+      <node ref="U2" pin="TXD"/>
     </net>
     <net code="78" name="GPS_TX">
       <node ref="SHIELD1" pin="15"/>
       <node ref="P10" pin="4"/>
     </net>
     <net code="79" name="pinLawnBackSend">
-      <node ref="SHIELD1" pin="43"/>
       <node ref="R3" pin="2"/>
+      <node ref="SHIELD1" pin="43"/>
     </net>
     <net code="80" name="pinSonarRightTrigger">
-      <node ref="P2" pin="3"/>
       <node ref="SHIELD1" pin="30"/>
+      <node ref="P2" pin="3"/>
     </net>
     <net code="81" name="pinMotorEnable">
-      <node ref="Dual1" pin="10"/>
       <node ref="SHIELD1" pin="37"/>
+      <node ref="Dual1" pin="10"/>
     </net>
     <net code="82" name="Net-(D10-Pad1)">
+      <node ref="D10" pin="1"/>
       <node ref="Q1" pin="C"/>
       <node ref="K3" pin="9"/>
-      <node ref="D10" pin="1"/>
     </net>
     <net code="83" name="pinRemoteSwitch">
       <node ref="P13" pin="6"/>
       <node ref="SHIELD1" pin="52"/>
     </net>
     <net code="84" name="pinChargingEnable">
-      <node ref="SHIELD1" pin="50"/>
       <node ref="R18" pin="1"/>
+      <node ref="SHIELD1" pin="50"/>
     </net>
     <net code="85" name="Power5">
-      <node ref="CC18" pin="1"/>
-      <node ref="P23" pin="1"/>
-      <node ref="JP8" pin="1"/>
-      <node ref="JP14" pin="1"/>
-      <node ref="U10" pin="1"/>
-      <node ref="CC10" pin="1"/>
-      <node ref="CC17" pin="1"/>
-      <node ref="Dual1" pin="6"/>
-      <node ref="Dual1" pin="3"/>
-      <node ref="JP11" pin="2"/>
-      <node ref="P10" pin="1"/>
-      <node ref="Dual1" pin="15"/>
-      <node ref="CC24" pin="1"/>
-      <node ref="P5" pin="1"/>
-      <node ref="CC21" pin="1"/>
-      <node ref="R14" pin="2"/>
-      <node ref="P45" pin="1"/>
-      <node ref="P46" pin="1"/>
-      <node ref="CC15" pin="1"/>
-      <node ref="U8" pin="3"/>
-      <node ref="P24" pin="1"/>
+      <node ref="P49" pin="1"/>
+      <node ref="CC43" pin="1"/>
+      <node ref="C11" pin="1"/>
+      <node ref="CC38" pin="1"/>
+      <node ref="P26" pin="1"/>
       <node ref="P44" pin="1"/>
-      <node ref="R8" pin="2"/>
-      <node ref="CC7" pin="1"/>
-      <node ref="P21" pin="1"/>
-      <node ref="P31" pin="1"/>
-      <node ref="CC14" pin="1"/>
-      <node ref="P33" pin="8"/>
-      <node ref="CC13" pin="1"/>
-      <node ref="R1" pin="1"/>
-      <node ref="P33" pin="7"/>
-      <node ref="P33" pin="6"/>
-      <node ref="P33" pin="5"/>
-      <node ref="P33" pin="4"/>
-      <node ref="CC28" pin="1"/>
-      <node ref="P33" pin="3"/>
-      <node ref="P4" pin="1"/>
-      <node ref="P40" pin="1"/>
-      <node ref="CC30" pin="1"/>
-      <node ref="P14" pin="1"/>
+      <node ref="CC42" pin="1"/>
+      <node ref="P22" pin="1"/>
+      <node ref="CC37" pin="1"/>
+      <node ref="P25" pin="1"/>
+      <node ref="P12" pin="1"/>
+      <node ref="P30" pin="1"/>
+      <node ref="CC22" pin="1"/>
       <node ref="P48" pin="1"/>
-      <node ref="CC9" pin="1"/>
+      <node ref="CC26" pin="1"/>
+      <node ref="P46" pin="1"/>
+      <node ref="U10" pin="1"/>
+      <node ref="Dual1" pin="15"/>
       <node ref="CC25" pin="1"/>
+      <node ref="P31" pin="1"/>
+      <node ref="P41" pin="1"/>
+      <node ref="P5" pin="1"/>
+      <node ref="CC7" pin="1"/>
+      <node ref="P45" pin="1"/>
+      <node ref="JP14" pin="1"/>
+      <node ref="Dual1" pin="3"/>
+      <node ref="P4" pin="1"/>
+      <node ref="P23" pin="1"/>
+      <node ref="Dual1" pin="6"/>
+      <node ref="P24" pin="1"/>
       <node ref="CC23" pin="1"/>
       <node ref="CC27" pin="1"/>
-      <node ref="P19" pin="1"/>
-      <node ref="P13" pin="1"/>
-      <node ref="CC29" pin="1"/>
-      <node ref="P33" pin="2"/>
-      <node ref="P33" pin="1"/>
-      <node ref="P41" pin="1"/>
-      <node ref="CC22" pin="1"/>
-      <node ref="C11" pin="1"/>
-      <node ref="CC11" pin="1"/>
-      <node ref="CC19" pin="1"/>
-      <node ref="CC12" pin="1"/>
-      <node ref="Dual2" pin="15"/>
+      <node ref="JP8" pin="1"/>
+      <node ref="R8" pin="2"/>
+      <node ref="CC24" pin="1"/>
       <node ref="C10" pin="1"/>
-      <node ref="Dual2" pin="6"/>
-      <node ref="CC8" pin="1"/>
-      <node ref="CC2" pin="1"/>
+      <node ref="U8" pin="VCC"/>
+      <node ref="P21" pin="1"/>
+      <node ref="CC21" pin="1"/>
+      <node ref="JP11" pin="2"/>
+      <node ref="CC17" pin="1"/>
+      <node ref="CC19" pin="1"/>
+      <node ref="P10" pin="1"/>
+      <node ref="R14" pin="2"/>
+      <node ref="CC18" pin="1"/>
+      <node ref="R1" pin="1"/>
       <node ref="CC3" pin="1"/>
-      <node ref="CC26" pin="1"/>
-      <node ref="CC16" pin="1"/>
-      <node ref="Dual2" pin="3"/>
-      <node ref="P22" pin="1"/>
-      <node ref="P27" pin="1"/>
-      <node ref="R39" pin="2"/>
-      <node ref="R37" pin="2"/>
-      <node ref="P49" pin="1"/>
-      <node ref="R40" pin="2"/>
-      <node ref="C3" pin="1"/>
-      <node ref="R38" pin="2"/>
-      <node ref="P26" pin="1"/>
-      <node ref="P8" pin="1"/>
-      <node ref="P9" pin="1"/>
-      <node ref="CC1" pin="1"/>
-      <node ref="P25" pin="1"/>
-      <node ref="P29" pin="1"/>
-      <node ref="P12" pin="1"/>
+      <node ref="P33" pin="7"/>
+      <node ref="P33" pin="1"/>
+      <node ref="P33" pin="2"/>
+      <node ref="P33" pin="3"/>
+      <node ref="P33" pin="4"/>
+      <node ref="P33" pin="5"/>
+      <node ref="CC36" pin="1"/>
+      <node ref="P33" pin="6"/>
+      <node ref="P33" pin="8"/>
       <node ref="P3" pin="1"/>
-      <node ref="P1" pin="1"/>
-      <node ref="P35" pin="1"/>
-      <node ref="P28" pin="1"/>
+      <node ref="CC35" pin="1"/>
       <node ref="P2" pin="1"/>
-      <node ref="U3" pin="1"/>
-      <node ref="P30" pin="1"/>
+      <node ref="CC39" pin="1"/>
+      <node ref="CC32" pin="1"/>
+      <node ref="CC2" pin="1"/>
+      <node ref="CC14" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="P13" pin="1"/>
+      <node ref="CC16" pin="1"/>
+      <node ref="CC12" pin="1"/>
+      <node ref="CC1" pin="1"/>
+      <node ref="CC15" pin="1"/>
       <node ref="JP12" pin="1"/>
+      <node ref="P14" pin="1"/>
+      <node ref="CC13" pin="1"/>
+      <node ref="CC9" pin="1"/>
+      <node ref="CC11" pin="1"/>
+      <node ref="CC10" pin="1"/>
+      <node ref="CC8" pin="1"/>
+      <node ref="U3" pin="1"/>
+      <node ref="P40" pin="1"/>
+      <node ref="P29" pin="1"/>
+      <node ref="CC33" pin="1"/>
+      <node ref="CC29" pin="1"/>
+      <node ref="P9" pin="1"/>
+      <node ref="P19" pin="1"/>
+      <node ref="P27" pin="1"/>
+      <node ref="Dual2" pin="15"/>
+      <node ref="P35" pin="1"/>
+      <node ref="CC34" pin="1"/>
+      <node ref="P28" pin="1"/>
+      <node ref="CC44" pin="1"/>
+      <node ref="R40" pin="2"/>
+      <node ref="R38" pin="2"/>
+      <node ref="P8" pin="1"/>
+      <node ref="CC31" pin="1"/>
+      <node ref="CC30" pin="1"/>
+      <node ref="Dual2" pin="6"/>
+      <node ref="CC28" pin="1"/>
+      <node ref="P1" pin="1"/>
+      <node ref="Dual2" pin="3"/>
+      <node ref="R37" pin="2"/>
+      <node ref="R39" pin="2"/>
     </net>
     <net code="86" name="Net-(RP1-Pad10)">
-      <node ref="RR1" pin="3"/>
       <node ref="RP1" pin="10"/>
       <node ref="SHIELD1" pin="AD1"/>
+      <node ref="RR1" pin="3"/>
     </net>
     <net code="87" name="Power">
-      <node ref="JP1" pin="2"/>
       <node ref="SHIELD1" pin="V_IN"/>
+      <node ref="JP1" pin="2"/>
     </net>
     <net code="88" name="Net-(RP1-Pad16)">
-      <node ref="RR1" pin="9"/>
       <node ref="SHIELD1" pin="AD7"/>
+      <node ref="RR1" pin="9"/>
       <node ref="RP1" pin="16"/>
     </net>
     <net code="89" name="Net-(RP1-Pad15)">
-      <node ref="SHIELD1" pin="AD6"/>
       <node ref="RP1" pin="15"/>
+      <node ref="SHIELD1" pin="AD6"/>
       <node ref="RR1" pin="8"/>
     </net>
     <net code="90" name="Net-(RP1-Pad14)">
@@ -3544,54 +3717,54 @@
       <node ref="RR1" pin="7"/>
     </net>
     <net code="91" name="Net-(RP1-Pad13)">
-      <node ref="SHIELD1" pin="AD4"/>
       <node ref="RP1" pin="13"/>
       <node ref="RR1" pin="6"/>
+      <node ref="SHIELD1" pin="AD4"/>
     </net>
     <net code="92" name="Net-(RP1-Pad11)">
       <node ref="RR1" pin="4"/>
-      <node ref="RP1" pin="11"/>
       <node ref="SHIELD1" pin="AD2"/>
+      <node ref="RP1" pin="11"/>
     </net>
     <net code="93" name="Net-(RP1-Pad9)">
       <node ref="SHIELD1" pin="AD0"/>
-      <node ref="RP1" pin="9"/>
       <node ref="RR1" pin="2"/>
+      <node ref="RP1" pin="9"/>
     </net>
     <net code="94" name="Net-(RP2-Pad9)">
-      <node ref="SHIELD1" pin="AD8"/>
-      <node ref="RR2" pin="9"/>
       <node ref="RP2" pin="9"/>
+      <node ref="RR2" pin="9"/>
+      <node ref="SHIELD1" pin="AD8"/>
     </net>
     <net code="95" name="Net-(RP2-Pad11)">
-      <node ref="SHIELD1" pin="AD10"/>
       <node ref="RR2" pin="7"/>
+      <node ref="SHIELD1" pin="AD10"/>
       <node ref="RP2" pin="11"/>
     </net>
     <net code="96" name="Net-(RP2-Pad10)">
-      <node ref="RP2" pin="10"/>
       <node ref="RR2" pin="8"/>
+      <node ref="RP2" pin="10"/>
       <node ref="SHIELD1" pin="AD9"/>
     </net>
     <net code="97" name="pinRemoteSteer">
-      <node ref="SHIELD1" pin="11"/>
       <node ref="P13" pin="4"/>
+      <node ref="SHIELD1" pin="11"/>
     </net>
     <net code="98" name="pinUserSwitch1">
-      <node ref="SHIELD1" pin="46"/>
       <node ref="P40" pin="3"/>
+      <node ref="SHIELD1" pin="46"/>
     </net>
     <net code="99" name="pinBumperRight">
-      <node ref="SHIELD1" pin="38"/>
       <node ref="P11" pin="3"/>
+      <node ref="SHIELD1" pin="38"/>
     </net>
     <net code="100" name="pinLawnFrontRecv">
-      <node ref="SHIELD1" pin="40"/>
       <node ref="P6" pin="2"/>
+      <node ref="SHIELD1" pin="40"/>
     </net>
     <net code="101" name="DropRight">
-      <node ref="SHIELD1" pin="23"/>
       <node ref="D6" pin="1"/>
+      <node ref="SHIELD1" pin="23"/>
     </net>
     <net code="102" name="GPS_RX">
       <node ref="SHIELD1" pin="14"/>
@@ -3606,16 +3779,16 @@
       <node ref="P25" pin="3"/>
     </net>
     <net code="105" name="pinRemoteSpeed">
-      <node ref="P13" pin="5"/>
       <node ref="SHIELD1" pin="10"/>
+      <node ref="P13" pin="5"/>
     </net>
     <net code="106" name="ReservePin1">
-      <node ref="P29" pin="3"/>
       <node ref="SHIELD1" pin="1"/>
+      <node ref="P29" pin="3"/>
     </net>
     <net code="107" name="Net-(R5-Pad1)">
-      <node ref="SHIELD1" pin="13"/>
       <node ref="R5" pin="1"/>
+      <node ref="SHIELD1" pin="13"/>
     </net>
     <net code="108" name="ReservePin8">
       <node ref="P28" pin="3"/>
@@ -3632,165 +3805,170 @@
       <node ref="SHIELD1" pin="5V_5"/>
     </net>
     <net code="112" name="pinOdometryRight2">
+      <node ref="SHIELD1" pin="AD15"/>
       <node ref="P8" pin="4"/>
       <node ref="R40" pin="1"/>
+      <node ref="LP35" pin="1"/>
       <node ref="RP2" pin="16"/>
       <node ref="RP2" pin="1"/>
-      <node ref="LP35" pin="1"/>
-      <node ref="SHIELD1" pin="AD15"/>
     </net>
     <net code="113" name="Net-(K3-Pad3)">
       <node ref="K3" pin="3"/>
     </net>
     <net code="114" name="pinOdometryRight">
       <node ref="LP34" pin="1"/>
-      <node ref="RP2" pin="15"/>
-      <node ref="SHIELD1" pin="AD14"/>
       <node ref="R38" pin="1"/>
+      <node ref="SHIELD1" pin="AD14"/>
       <node ref="P8" pin="3"/>
+      <node ref="RP2" pin="15"/>
       <node ref="RP2" pin="2"/>
     </net>
     <net code="115" name="pinOdometryLeft2">
-      <node ref="RP2" pin="3"/>
       <node ref="SHIELD1" pin="AD13"/>
+      <node ref="LP33" pin="1"/>
+      <node ref="RP2" pin="3"/>
       <node ref="R39" pin="1"/>
       <node ref="RP2" pin="14"/>
-      <node ref="LP33" pin="1"/>
       <node ref="P9" pin="4"/>
     </net>
     <net code="116" name="pinOdometryLeft">
+      <node ref="R37" pin="1"/>
+      <node ref="LP32" pin="1"/>
+      <node ref="RP2" pin="4"/>
+      <node ref="P9" pin="3"/>
       <node ref="RP2" pin="13"/>
       <node ref="SHIELD1" pin="AD12"/>
-      <node ref="P9" pin="3"/>
-      <node ref="RP2" pin="4"/>
-      <node ref="LP32" pin="1"/>
-      <node ref="R37" pin="1"/>
     </net>
     <net code="117" name="pinMotorMowRpm">
       <node ref="P4" pin="3"/>
-      <node ref="RP2" pin="12"/>
+      <node ref="LP36" pin="1"/>
       <node ref="SHIELD1" pin="AD11"/>
       <node ref="RP2" pin="5"/>
-      <node ref="LP36" pin="1"/>
+      <node ref="RP2" pin="12"/>
     </net>
     <net code="118" name="+3V3">
-      <node ref="R23" pin="1"/>
-      <node ref="JP13" pin="1"/>
-      <node ref="P5" pin="5"/>
-      <node ref="P24" pin="5"/>
       <node ref="U10" pin="5"/>
       <node ref="P46" pin="5"/>
-      <node ref="U11" pin="CH_P"/>
-      <node ref="U11" pin="VCC"/>
-      <node ref="JP10" pin="2"/>
-      <node ref="P44" pin="5"/>
-      <node ref="JP3" pin="1"/>
-      <node ref="P34" pin="7"/>
-      <node ref="P10" pin="5"/>
-      <node ref="P34" pin="2"/>
+      <node ref="CC4" pin="1"/>
+      <node ref="R23" pin="1"/>
+      <node ref="CC41" pin="1"/>
+      <node ref="CC6" pin="1"/>
+      <node ref="CC40" pin="1"/>
       <node ref="P45" pin="5"/>
-      <node ref="P34" pin="8"/>
-      <node ref="P34" pin="6"/>
-      <node ref="P34" pin="5"/>
-      <node ref="P34" pin="4"/>
-      <node ref="P34" pin="3"/>
-      <node ref="P34" pin="1"/>
+      <node ref="P5" pin="5"/>
       <node ref="P23" pin="5"/>
-      <node ref="JP9" pin="1"/>
+      <node ref="JP13" pin="1"/>
+      <node ref="P34" pin="2"/>
+      <node ref="P34" pin="8"/>
+      <node ref="JP3" pin="1"/>
+      <node ref="P34" pin="1"/>
+      <node ref="U11" pin="CH_P"/>
+      <node ref="P34" pin="3"/>
+      <node ref="P34" pin="4"/>
+      <node ref="P34" pin="5"/>
+      <node ref="P34" pin="6"/>
+      <node ref="P34" pin="7"/>
+      <node ref="P24" pin="5"/>
       <node ref="JP2" pin="1"/>
+      <node ref="JP10" pin="2"/>
+      <node ref="JP9" pin="1"/>
+      <node ref="P10" pin="5"/>
+      <node ref="P44" pin="5"/>
+      <node ref="U11" pin="VCC"/>
     </net>
     <net code="119" name="Charg_Pin">
-      <node ref="B11" pin="1"/>
-      <node ref="B10" pin="1"/>
-      <node ref="B9" pin="1"/>
       <node ref="EF1" pin="2"/>
       <node ref="P42" pin="1"/>
+      <node ref="B10" pin="1"/>
+      <node ref="B11" pin="1"/>
+      <node ref="B9" pin="1"/>
     </net>
     <net code="120" name="Net-(Q2-PadG)">
-      <node ref="R27" pin="1"/>
       <node ref="Q2" pin="G"/>
+      <node ref="R27" pin="1"/>
       <node ref="ZD5" pin="1"/>
     </net>
-    <net code="121" name="Net-(Q3-PadG)">
+    <net code="121" name="Net-(D14-Pad2)">
+      <node ref="D15" pin="2"/>
+      <node ref="D14" pin="2"/>
+      <node ref="P20" pin="1"/>
+    </net>
+    <net code="122" name="Net-(Q3-PadG)">
+      <node ref="R29" pin="2"/>
       <node ref="ZD6" pin="1"/>
       <node ref="R28" pin="2"/>
       <node ref="Q3" pin="G"/>
-      <node ref="R29" pin="2"/>
     </net>
-    <net code="122" name="Net-(D14-Pad1)">
-      <node ref="R29" pin="1"/>
+    <net code="123" name="Net-(D16-Pad2)">
+      <node ref="D16" pin="2"/>
+      <node ref="Q4" pin="C"/>
+    </net>
+    <net code="124" name="Net-(D14-Pad1)">
       <node ref="D14" pin="1"/>
       <node ref="R30" pin="2"/>
       <node ref="D16" pin="1"/>
-    </net>
-    <net code="123" name="Net-(D16-Pad2)">
-      <node ref="Q4" pin="C"/>
-      <node ref="D16" pin="2"/>
-    </net>
-    <net code="124" name="Net-(Q4-PadB)">
-      <node ref="R32" pin="1"/>
-      <node ref="R35" pin="1"/>
-      <node ref="Q4" pin="B"/>
+      <node ref="R29" pin="1"/>
     </net>
     <net code="125" name="Net-(D13-Pad2)">
-      <node ref="R31" pin="2"/>
-      <node ref="R30" pin="1"/>
       <node ref="D13" pin="2"/>
+      <node ref="R30" pin="1"/>
+      <node ref="R31" pin="2"/>
     </net>
     <net code="126" name="Net-(C9-Pad2)">
       <node ref="R31" pin="1"/>
       <node ref="C9" pin="2"/>
       <node ref="D13" pin="1"/>
     </net>
-    <net code="127" name="Net-(D14-Pad2)">
-      <node ref="D15" pin="2"/>
-      <node ref="D14" pin="2"/>
-      <node ref="P20" pin="1"/>
+    <net code="127" name="Net-(Q4-PadB)">
+      <node ref="Q4" pin="B"/>
+      <node ref="R35" pin="1"/>
+      <node ref="R32" pin="1"/>
     </net>
     <net code="128" name="Net-(Q5-PadG)">
-      <node ref="ZD7" pin="1"/>
-      <node ref="R34" pin="1"/>
       <node ref="Q5" pin="G"/>
+      <node ref="R34" pin="1"/>
+      <node ref="ZD7" pin="1"/>
     </net>
     <net code="129" name="pinBatterySwitch">
       <node ref="P26" pin="3"/>
     </net>
-    <net code="130" name="Net-(P44-Pad4)">
-      <node ref="U11" pin="RX"/>
-      <node ref="R16" pin="1"/>
-      <node ref="R15" pin="2"/>
-      <node ref="P44" pin="4"/>
+    <net code="130" name="Net-(D8-Pad2)">
+      <node ref="D8" pin="2"/>
+      <node ref="R22" pin="2"/>
     </net>
-    <net code="131" name="Net-(JP2-Pad2)">
-      <node ref="U2" pin="Key"/>
+    <net code="131" name="Net-(R22-Pad1)">
+      <node ref="R22" pin="1"/>
+      <node ref="U2" pin="LED"/>
+    </net>
+    <net code="132" name="Net-(JP2-Pad2)">
       <node ref="JP2" pin="2"/>
-    </net>
-    <net code="132" name="Net-(JP8-Pad2)">
-      <node ref="JP9" pin="2"/>
-      <node ref="U2" pin="VCC"/>
-      <node ref="JP8" pin="2"/>
+      <node ref="U2" pin="Key"/>
     </net>
     <net code="133" name="Net-(R6-Pad2)">
       <node ref="U2" pin="RXD"/>
       <node ref="R6" pin="2"/>
       <node ref="R7" pin="1"/>
     </net>
-    <net code="134" name="Net-(D8-Pad2)">
-      <node ref="D8" pin="2"/>
-      <node ref="R22" pin="2"/>
+    <net code="134" name="Net-(CC45-Pad1)">
+      <node ref="JP8" pin="2"/>
+      <node ref="CC45" pin="1"/>
+      <node ref="JP9" pin="2"/>
+      <node ref="U2" pin="VCC"/>
     </net>
-    <net code="135" name="Net-(R22-Pad1)">
-      <node ref="U2" pin="LED"/>
-      <node ref="R22" pin="1"/>
+    <net code="135" name="Net-(U11-PadRese)">
+      <node ref="U11" pin="Rese"/>
     </net>
-    <net code="136" name="Net-(U11-PadGP_0)">
-      <node ref="U11" pin="GP_0"/>
-    </net>
-    <net code="137" name="Net-(U11-PadGP_2)">
+    <net code="136" name="Net-(U11-PadGP_2)">
       <node ref="U11" pin="GP_2"/>
     </net>
-    <net code="138" name="Net-(U11-PadRese)">
-      <node ref="U11" pin="Rese"/>
+    <net code="137" name="Net-(U11-PadGP_0)">
+      <node ref="U11" pin="GP_0"/>
+    </net>
+    <net code="138" name="Net-(P44-Pad4)">
+      <node ref="U11" pin="RX"/>
+      <node ref="P44" pin="4"/>
+      <node ref="R16" pin="1"/>
+      <node ref="R15" pin="2"/>
     </net>
     <net code="139" name="Net-(D5-Pad2)">
       <node ref="D5" pin="2"/>
@@ -3801,269 +3979,286 @@
       <node ref="D6" pin="2"/>
     </net>
     <net code="141" name="Net-(P45-Pad4)">
-      <node ref="P45" pin="4"/>
       <node ref="U10" pin="6"/>
       <node ref="P46" pin="4"/>
+      <node ref="P45" pin="4"/>
     </net>
     <net code="142" name="Net-(P45-Pad3)">
-      <node ref="P46" pin="3"/>
       <node ref="U10" pin="7"/>
       <node ref="P45" pin="3"/>
+      <node ref="P46" pin="3"/>
     </net>
-    <net code="143" name="Net-(B18-Pad1)">
-      <node ref="B18" pin="1"/>
+    <net code="143" name="Net-(B17-Pad1)">
+      <node ref="B17" pin="1"/>
     </net>
-    <net code="144" name="Net-(B1-Pad1)">
-      <node ref="B1" pin="1"/>
-    </net>
-    <net code="145" name="Net-(B2-Pad1)">
-      <node ref="B2" pin="1"/>
-    </net>
-    <net code="146" name="Net-(B3-Pad1)">
-      <node ref="B3" pin="1"/>
-    </net>
-    <net code="147" name="Net-(B4-Pad1)">
+    <net code="144" name="Net-(B4-Pad1)">
       <node ref="B4" pin="1"/>
     </net>
-    <net code="148" name="Net-(B5-Pad1)">
+    <net code="145" name="Net-(B3-Pad1)">
+      <node ref="B3" pin="1"/>
+    </net>
+    <net code="146" name="Net-(B2-Pad1)">
+      <node ref="B2" pin="1"/>
+    </net>
+    <net code="147" name="Net-(B1-Pad1)">
+      <node ref="B1" pin="1"/>
+    </net>
+    <net code="148" name="Net-(B18-Pad1)">
+      <node ref="B18" pin="1"/>
+    </net>
+    <net code="149" name="Net-(B5-Pad1)">
       <node ref="B5" pin="1"/>
     </net>
-    <net code="149" name="Net-(B6-Pad1)">
+    <net code="150" name="Net-(B6-Pad1)">
       <node ref="B6" pin="1"/>
     </net>
-    <net code="150" name="Net-(B7-Pad1)">
+    <net code="151" name="Net-(B7-Pad1)">
       <node ref="B7" pin="1"/>
     </net>
-    <net code="151" name="Net-(B8-Pad1)">
+    <net code="152" name="Net-(B8-Pad1)">
       <node ref="B8" pin="1"/>
     </net>
-    <net code="152" name="Net-(B15-Pad1)">
+    <net code="153" name="Net-(B15-Pad1)">
       <node ref="B15" pin="1"/>
-    </net>
-    <net code="153" name="Net-(B17-Pad1)">
-      <node ref="B17" pin="1"/>
     </net>
     <net code="154" name="Net-(B16-Pad1)">
       <node ref="B16" pin="1"/>
     </net>
-    <net code="155" name="Net-(Dual1-Pad12)">
+    <net code="155" name="Net-(Dual1-Pad1)">
+      <node ref="Dual1" pin="1"/>
+    </net>
+    <net code="156" name="Net-(Dual1-Pad11)">
+      <node ref="Dual1" pin="11"/>
+    </net>
+    <net code="157" name="Net-(Dual1-Pad12)">
       <node ref="Dual1" pin="12"/>
     </net>
-    <net code="156" name="/Motortreiber/Dual1_Ms_Rechts/MotorRechtsA">
-      <node ref="BY2" pin="2"/>
-      <node ref="BY1" pin="1"/>
-      <node ref="C1" pin="1"/>
-      <node ref="Dual1" pin="23"/>
-      <node ref="P18" pin="1"/>
+    <net code="158" name="/Motortreiber/Dual1_Ms_Links/MotorLinksA">
+      <node ref="P15" pin="1"/>
+      <node ref="BY5" pin="1"/>
+      <node ref="BY6" pin="2"/>
+      <node ref="Dual1" pin="19"/>
+      <node ref="C4" pin="1"/>
     </net>
-    <net code="157" name="/Motortreiber/Dual1_Ms_Rechts/MotorRechtsB">
-      <node ref="Dual1" pin="24"/>
+    <net code="159" name="/Motortreiber/Dual1_Ms_Rechts/MotorRechtsB">
       <node ref="BY4" pin="2"/>
       <node ref="BY3" pin="1"/>
       <node ref="P18" pin="2"/>
+      <node ref="Dual1" pin="24"/>
       <node ref="R17" pin="2"/>
     </net>
-    <net code="158" name="/Motortreiber/Dual1_Ms_Links/MotorLinksA">
-      <node ref="BY5" pin="1"/>
-      <node ref="C4" pin="1"/>
-      <node ref="BY6" pin="2"/>
-      <node ref="Dual1" pin="19"/>
-      <node ref="P15" pin="1"/>
+    <net code="160" name="/Motortreiber/Dual1_Ms_Rechts/MotorRechtsA">
+      <node ref="P18" pin="1"/>
+      <node ref="Dual1" pin="23"/>
+      <node ref="BY2" pin="2"/>
+      <node ref="C1" pin="1"/>
+      <node ref="BY1" pin="1"/>
     </net>
-    <net code="159" name="Net-(Dual1-Pad11)">
-      <node ref="Dual1" pin="11"/>
-    </net>
-    <net code="160" name="Net-(Dual1-Pad1)">
-      <node ref="Dual1" pin="1"/>
-    </net>
-    <net code="161" name="/Motortreiber/Dual1_Ms_Links/MotorLinksB">
-      <node ref="R33" pin="2"/>
-      <node ref="P15" pin="2"/>
-      <node ref="BY8" pin="2"/>
-      <node ref="BY7" pin="1"/>
-      <node ref="Dual1" pin="20"/>
-    </net>
-    <net code="162" name="/Motortreiber/Dual1_Vin/Dual1_Vin">
-      <node ref="PRFA1" pin="2"/>
+    <net code="161" name="/Motortreiber/Dual1_Vin/Dual1_Vin">
       <node ref="KE3" pin="1"/>
+      <node ref="PRFA1" pin="2"/>
       <node ref="P16" pin="2"/>
       <node ref="Dual1" pin="22"/>
     </net>
+    <net code="162" name="/Motortreiber/Dual1_Ms_Links/MotorLinksB">
+      <node ref="Dual1" pin="20"/>
+      <node ref="R33" pin="2"/>
+      <node ref="BY8" pin="2"/>
+      <node ref="P15" pin="2"/>
+      <node ref="BY7" pin="1"/>
+    </net>
     <net code="163" name="/Motortreiber/Dual2_Ms_Mower/MotorMowerA">
-      <node ref="C6" pin="1"/>
-      <node ref="BY9" pin="1"/>
-      <node ref="BY10" pin="2"/>
-      <node ref="P37" pin="1"/>
       <node ref="Dual2" pin="19"/>
+      <node ref="BY9" pin="1"/>
+      <node ref="C6" pin="1"/>
+      <node ref="P37" pin="1"/>
+      <node ref="BY10" pin="2"/>
       <node ref="Dual2" pin="23"/>
     </net>
     <net code="164" name="Net-(Dual2-Pad9)">
-      <node ref="Dual2" pin="9"/>
       <node ref="JP16" pin="2"/>
+      <node ref="Dual2" pin="9"/>
     </net>
     <net code="165" name="/Motortreiber/Dual2_Ms_Mower/MotorMowerB">
       <node ref="BY11" pin="1"/>
       <node ref="Dual2" pin="24"/>
-      <node ref="BY12" pin="2"/>
       <node ref="P37" pin="2"/>
-      <node ref="Dual2" pin="20"/>
       <node ref="R36" pin="2"/>
+      <node ref="Dual2" pin="20"/>
+      <node ref="BY12" pin="2"/>
     </net>
     <net code="166" name="GND">
-      <node ref="CC17" pin="2"/>
-      <node ref="SHIELD1" pin="GND3"/>
-      <node ref="KE2" pin="1"/>
-      <node ref="ZD4" pin="1"/>
-      <node ref="BY10" pin="1"/>
-      <node ref="CC5" pin="2"/>
-      <node ref="R10" pin="2"/>
-      <node ref="P43" pin="2"/>
-      <node ref="R13" pin="2"/>
-      <node ref="CC20" pin="2"/>
-      <node ref="CC14" pin="2"/>
-      <node ref="SP1" pin="1"/>
-      <node ref="KE4" pin="2"/>
-      <node ref="P17" pin="1"/>
-      <node ref="U1" pin="1"/>
-      <node ref="U1" pin="4"/>
-      <node ref="CC24" pin="2"/>
-      <node ref="BY12" pin="1"/>
-      <node ref="CC15" pin="2"/>
-      <node ref="CC7" pin="2"/>
-      <node ref="SHIELD1" pin="GND1"/>
-      <node ref="U8" pin="2"/>
-      <node ref="SHIELD1" pin="GND2"/>
-      <node ref="CC21" pin="2"/>
-      <node ref="CC9" pin="2"/>
-      <node ref="CC8" pin="2"/>
-      <node ref="CC29" pin="2"/>
-      <node ref="KE1" pin="1"/>
-      <node ref="CC16" pin="2"/>
       <node ref="CC28" pin="2"/>
-      <node ref="P16" pin="1"/>
-      <node ref="KE3" pin="2"/>
-      <node ref="CC23" pin="2"/>
-      <node ref="CC25" pin="2"/>
-      <node ref="CC27" pin="2"/>
-      <node ref="BY4" pin="1"/>
-      <node ref="CC22" pin="2"/>
-      <node ref="CC13" pin="2"/>
-      <node ref="SHIELD1" pin="GND4"/>
-      <node ref="CC10" pin="2"/>
-      <node ref="BY8" pin="1"/>
-      <node ref="ZD8" pin="1"/>
-      <node ref="CC19" pin="2"/>
-      <node ref="CC18" pin="2"/>
-      <node ref="SHIELD1" pin="GND5"/>
-      <node ref="CC12" pin="2"/>
-      <node ref="CC11" pin="2"/>
-      <node ref="BY6" pin="1"/>
-      <node ref="BY2" pin="1"/>
-      <node ref="CC30" pin="2"/>
-      <node ref="CC1" pin="2"/>
-      <node ref="CC26" pin="2"/>
-      <node ref="P8" pin="2"/>
-      <node ref="C10" pin="2"/>
-      <node ref="C11" pin="2"/>
-      <node ref="Dual2" pin="16"/>
-      <node ref="Dual2" pin="21"/>
       <node ref="R34" pin="2"/>
-      <node ref="P3" pin="2"/>
-      <node ref="P9" pin="2"/>
-      <node ref="B14" pin="1"/>
-      <node ref="B13" pin="1"/>
-      <node ref="B12" pin="1"/>
       <node ref="P35" pin="2"/>
-      <node ref="Dual1" pin="16"/>
-      <node ref="P27" pin="2"/>
-      <node ref="Dual1" pin="2"/>
-      <node ref="Dual1" pin="7"/>
-      <node ref="Dual1" pin="21"/>
-      <node ref="P36" pin="1"/>
-      <node ref="P20" pin="2"/>
-      <node ref="P41" pin="2"/>
-      <node ref="P4" pin="2"/>
-      <node ref="P11" pin="2"/>
-      <node ref="P40" pin="2"/>
-      <node ref="P11" pin="1"/>
-      <node ref="P14" pin="2"/>
-      <node ref="Q4" pin="E"/>
-      <node ref="Dual2" pin="2"/>
-      <node ref="P2" pin="2"/>
-      <node ref="Dual2" pin="7"/>
+      <node ref="CC39" pin="2"/>
       <node ref="P1" pin="2"/>
-      <node ref="P39" pin="1"/>
-      <node ref="CC2" pin="2"/>
-      <node ref="CC3" pin="2"/>
-      <node ref="P44" pin="2"/>
-      <node ref="R7" pin="2"/>
-      <node ref="U11" pin="GND"/>
-      <node ref="P31" pin="2"/>
-      <node ref="P26" pin="2"/>
-      <node ref="P21" pin="2"/>
-      <node ref="U2" pin="GND"/>
-      <node ref="P10" pin="2"/>
-      <node ref="P12" pin="2"/>
-      <node ref="D8" pin="1"/>
-      <node ref="P30" pin="2"/>
-      <node ref="R16" pin="2"/>
       <node ref="P28" pin="2"/>
-      <node ref="P23" pin="2"/>
-      <node ref="U10" pin="4"/>
-      <node ref="P46" pin="2"/>
+      <node ref="CC29" pin="2"/>
+      <node ref="P9" pin="2"/>
+      <node ref="CC33" pin="2"/>
+      <node ref="P8" pin="2"/>
       <node ref="P29" pin="2"/>
-      <node ref="P45" pin="2"/>
-      <node ref="P49" pin="2"/>
-      <node ref="P25" pin="2"/>
-      <node ref="U10" pin="8"/>
-      <node ref="P24" pin="2"/>
+      <node ref="CC31" pin="2"/>
+      <node ref="CC44" pin="2"/>
+      <node ref="CC30" pin="2"/>
+      <node ref="CC22" pin="2"/>
+      <node ref="CC45" pin="2"/>
+      <node ref="CC41" pin="2"/>
+      <node ref="CC4" pin="2"/>
+      <node ref="P44" pin="2"/>
+      <node ref="P12" pin="2"/>
+      <node ref="CC6" pin="2"/>
+      <node ref="CC27" pin="2"/>
+      <node ref="CC24" pin="2"/>
+      <node ref="U2" pin="GND"/>
+      <node ref="D8" pin="1"/>
+      <node ref="CC43" pin="2"/>
       <node ref="P22" pin="2"/>
-      <node ref="P5" pin="2"/>
-      <node ref="U6" pin="1"/>
-      <node ref="Q1" pin="E"/>
-      <node ref="U3" pin="2"/>
-      <node ref="P19" pin="2"/>
+      <node ref="CC42" pin="2"/>
+      <node ref="P49" pin="2"/>
+      <node ref="P27" pin="2"/>
+      <node ref="CC40" pin="2"/>
+      <node ref="P25" pin="2"/>
+      <node ref="P30" pin="2"/>
+      <node ref="CC37" pin="2"/>
+      <node ref="CC38" pin="2"/>
+      <node ref="P26" pin="2"/>
+      <node ref="KE3" pin="2"/>
+      <node ref="P16" pin="1"/>
+      <node ref="SHIELD1" pin="GND5"/>
+      <node ref="P43" pin="2"/>
+      <node ref="CC12" pin="2"/>
+      <node ref="BY6" pin="1"/>
+      <node ref="CC16" pin="2"/>
+      <node ref="SHIELD1" pin="GND4"/>
+      <node ref="BY2" pin="1"/>
+      <node ref="BY4" pin="1"/>
+      <node ref="BY12" pin="1"/>
+      <node ref="CC1" pin="2"/>
+      <node ref="KE4" pin="2"/>
+      <node ref="KE1" pin="1"/>
+      <node ref="P17" pin="1"/>
+      <node ref="BY8" pin="1"/>
+      <node ref="BY10" pin="1"/>
+      <node ref="KE2" pin="1"/>
+      <node ref="CC32" pin="2"/>
+      <node ref="R32" pin="2"/>
+      <node ref="P20" pin="2"/>
+      <node ref="CC36" pin="2"/>
+      <node ref="CC9" pin="2"/>
+      <node ref="R27" pin="2"/>
+      <node ref="CC13" pin="2"/>
+      <node ref="CC34" pin="2"/>
+      <node ref="P3" pin="2"/>
+      <node ref="CC35" pin="2"/>
+      <node ref="P2" pin="2"/>
+      <node ref="Q4" pin="E"/>
+      <node ref="SHIELD1" pin="GND2"/>
+      <node ref="RR2" pin="1"/>
+      <node ref="RR1" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="CC14" pin="2"/>
+      <node ref="P42" pin="2"/>
+      <node ref="SHIELD1" pin="GND1"/>
+      <node ref="SHIELD1" pin="GND3"/>
+      <node ref="CC15" pin="2"/>
+      <node ref="R7" pin="2"/>
+      <node ref="CC11" pin="2"/>
       <node ref="C5" pin="2"/>
-      <node ref="C8" pin="2"/>
-      <node ref="C7" pin="2"/>
+      <node ref="Q1" pin="E"/>
+      <node ref="CC10" pin="2"/>
+      <node ref="U3" pin="2"/>
+      <node ref="CC8" pin="2"/>
+      <node ref="C11" pin="2"/>
+      <node ref="C10" pin="2"/>
+      <node ref="P48" pin="2"/>
+      <node ref="Dual2" pin="21"/>
+      <node ref="Dual2" pin="16"/>
       <node ref="U6" pin="4"/>
+      <node ref="C7" pin="2"/>
+      <node ref="U6" pin="1"/>
+      <node ref="C8" pin="2"/>
       <node ref="R25" pin="2"/>
       <node ref="U7" pin="4"/>
-      <node ref="R24" pin="2"/>
       <node ref="U7" pin="1"/>
-      <node ref="RR1" pin="1"/>
-      <node ref="RR2" pin="1"/>
-      <node ref="P42" pin="2"/>
-      <node ref="C3" pin="2"/>
-      <node ref="P38" pin="7"/>
-      <node ref="P32" pin="1"/>
-      <node ref="P32" pin="8"/>
-      <node ref="P38" pin="6"/>
-      <node ref="P7" pin="1"/>
-      <node ref="P38" pin="8"/>
-      <node ref="P32" pin="2"/>
-      <node ref="P38" pin="5"/>
+      <node ref="R24" pin="2"/>
+      <node ref="P32" pin="6"/>
+      <node ref="P40" pin="2"/>
       <node ref="P38" pin="4"/>
+      <node ref="P13" pin="2"/>
+      <node ref="P32" pin="5"/>
+      <node ref="P32" pin="7"/>
+      <node ref="P32" pin="4"/>
+      <node ref="P32" pin="3"/>
+      <node ref="P32" pin="2"/>
+      <node ref="P32" pin="1"/>
+      <node ref="P14" pin="2"/>
+      <node ref="P11" pin="1"/>
+      <node ref="P38" pin="7"/>
+      <node ref="P19" pin="2"/>
+      <node ref="P7" pin="1"/>
+      <node ref="P41" pin="2"/>
+      <node ref="P38" pin="8"/>
+      <node ref="P11" pin="2"/>
+      <node ref="P38" pin="6"/>
+      <node ref="P38" pin="5"/>
       <node ref="P38" pin="3"/>
       <node ref="P38" pin="2"/>
       <node ref="P38" pin="1"/>
-      <node ref="R32" pin="2"/>
-      <node ref="P48" pin="2"/>
-      <node ref="P32" pin="7"/>
-      <node ref="P32" pin="6"/>
-      <node ref="P32" pin="5"/>
-      <node ref="P32" pin="4"/>
-      <node ref="P32" pin="3"/>
+      <node ref="P32" pin="8"/>
+      <node ref="CC3" pin="2"/>
+      <node ref="CC2" pin="2"/>
+      <node ref="P39" pin="1"/>
+      <node ref="Dual2" pin="7"/>
+      <node ref="Dual2" pin="2"/>
+      <node ref="P36" pin="1"/>
+      <node ref="P23" pin="2"/>
+      <node ref="R10" pin="2"/>
+      <node ref="P24" pin="2"/>
+      <node ref="U10" pin="8"/>
+      <node ref="ZD8" pin="1"/>
+      <node ref="CC5" pin="2"/>
+      <node ref="R13" pin="2"/>
+      <node ref="P5" pin="2"/>
+      <node ref="P45" pin="2"/>
+      <node ref="CC20" pin="2"/>
+      <node ref="CC19" pin="2"/>
+      <node ref="P4" pin="2"/>
+      <node ref="P10" pin="2"/>
+      <node ref="CC17" pin="2"/>
+      <node ref="CC21" pin="2"/>
+      <node ref="R16" pin="2"/>
+      <node ref="CC23" pin="2"/>
+      <node ref="P46" pin="2"/>
+      <node ref="U10" pin="4"/>
+      <node ref="CC25" pin="2"/>
+      <node ref="CC26" pin="2"/>
+      <node ref="P31" pin="2"/>
+      <node ref="ZD4" pin="1"/>
+      <node ref="CC7" pin="2"/>
+      <node ref="CC18" pin="2"/>
+      <node ref="P21" pin="2"/>
+      <node ref="U11" pin="GND"/>
+      <node ref="SP1" pin="1"/>
+      <node ref="Dual1" pin="16"/>
+      <node ref="B13" pin="1"/>
+      <node ref="Dual1" pin="2"/>
+      <node ref="U1" pin="1"/>
+      <node ref="Dual1" pin="7"/>
+      <node ref="U1" pin="4"/>
       <node ref="R26" pin="2"/>
+      <node ref="B12" pin="1"/>
       <node ref="C2" pin="2"/>
-      <node ref="P13" pin="2"/>
-      <node ref="R27" pin="2"/>
+      <node ref="Dual1" pin="21"/>
+      <node ref="U8" pin="GND"/>
+      <node ref="B14" pin="1"/>
     </net>
     <net code="167" name="/Motortreiber/Dual2_Vin/Dual2_Vin">
+      <node ref="Dual2" pin="22"/>
+      <node ref="P17" pin="2"/>
       <node ref="KE4" pin="1"/>
       <node ref="PRFA2" pin="2"/>
-      <node ref="P17" pin="2"/>
-      <node ref="Dual2" pin="22"/>
     </net>
     <net code="168" name="Net-(Dual2-Pad11)">
       <node ref="Dual2" pin="11"/>
@@ -4074,13 +4269,13 @@
     <net code="170" name="Net-(Dual2-Pad1)">
       <node ref="Dual2" pin="1"/>
     </net>
-    <net code="171" name="LedPin-24v">
+    <net code="171" name="LedPin-3V">
+      <node ref="R23" pin="2"/>
+      <node ref="P7" pin="2"/>
+    </net>
+    <net code="172" name="LedPin-24v">
       <node ref="R2" pin="2"/>
       <node ref="P7" pin="3"/>
-    </net>
-    <net code="172" name="LedPin-3V">
-      <node ref="P7" pin="2"/>
-      <node ref="R23" pin="2"/>
     </net>
     <net code="173" name="LedPin-5v">
       <node ref="P7" pin="4"/>
@@ -4095,63 +4290,63 @@
       <node ref="R3" pin="1"/>
     </net>
     <net code="176" name="Net-(C8-Pad1)">
-      <node ref="C8" pin="1"/>
-      <node ref="ZD2" pin="2"/>
-      <node ref="JP11" pin="1"/>
       <node ref="PRFA3" pin="1"/>
+      <node ref="JP11" pin="1"/>
+      <node ref="ZD2" pin="2"/>
+      <node ref="C8" pin="1"/>
     </net>
     <net code="177" name="Net-(R25-Pad1)">
       <node ref="ZD2" pin="1"/>
       <node ref="R25" pin="1"/>
     </net>
     <net code="178" name="Net-(PRFA3-Pad2)">
-      <node ref="PRFA3" pin="2"/>
       <node ref="U7" pin="2"/>
+      <node ref="PRFA3" pin="2"/>
     </net>
     <net code="179" name="Net-(C7-Pad1)">
       <node ref="PRFA5" pin="1"/>
-      <node ref="C7" pin="1"/>
-      <node ref="ZD1" pin="2"/>
       <node ref="JP10" pin="1"/>
+      <node ref="ZD1" pin="2"/>
+      <node ref="C7" pin="1"/>
     </net>
     <net code="180" name="Net-(R24-Pad1)">
-      <node ref="R24" pin="1"/>
       <node ref="ZD1" pin="1"/>
+      <node ref="R24" pin="1"/>
     </net>
     <net code="181" name="Net-(PRFA5-Pad2)">
-      <node ref="U6" pin="2"/>
       <node ref="PRFA5" pin="2"/>
+      <node ref="U6" pin="2"/>
     </net>
     <net code="182" name="Net-(R26-Pad1)">
       <node ref="ZD3" pin="1"/>
       <node ref="R26" pin="1"/>
     </net>
     <net code="183" name="Net-(C2-Pad1)">
-      <node ref="C2" pin="1"/>
       <node ref="ZD3" pin="2"/>
-      <node ref="PRFA4" pin="1"/>
+      <node ref="C2" pin="1"/>
       <node ref="JP1" pin="1"/>
+      <node ref="PRFA4" pin="1"/>
     </net>
     <net code="184" name="Net-(PRFA4-Pad2)">
-      <node ref="PRFA4" pin="2"/>
       <node ref="U1" pin="2"/>
+      <node ref="PRFA4" pin="2"/>
     </net>
-    <net code="185" name="Net-(U8-Pad6)">
-      <node ref="U8" pin="6"/>
+    <net code="185" name="Net-(U8-PadSQ)">
+      <node ref="U8" pin="SQ"/>
     </net>
-    <net code="186" name="Net-(U8-Pad1)">
-      <node ref="U8" pin="1"/>
+    <net code="186" name="Net-(U8-PadDS)">
+      <node ref="U8" pin="DS"/>
     </net>
-    <net code="187" name="Net-(U8-Pad7)">
-      <node ref="U8" pin="7"/>
+    <net code="187" name="Net-(U8-PadBat)">
+      <node ref="U8" pin="Bat"/>
     </net>
     <net code="188" name="Net-(C1-Pad2)">
       <node ref="R17" pin="1"/>
       <node ref="C1" pin="2"/>
     </net>
     <net code="189" name="Net-(C4-Pad2)">
-      <node ref="C4" pin="2"/>
       <node ref="R33" pin="1"/>
+      <node ref="C4" pin="2"/>
     </net>
     <net code="190" name="Net-(C6-Pad2)">
       <node ref="R36" pin="1"/>
