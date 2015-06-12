@@ -1697,7 +1697,7 @@ void Robot::readSensors(){
   if (millis() >= nextTimeBattery){
     // read battery
     nextTimeBattery = millis() + 100;       
-    if (stateCurr == STATE_STATION_CHARGING){
+    if ((abs(chgCurrent) > 0.04) && (chgVoltage > 5)){
       // charging
       batCapacity += (chgCurrent / 36.0);
     }
