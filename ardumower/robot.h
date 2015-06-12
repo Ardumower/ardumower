@@ -245,6 +245,7 @@ class Robot
     int motorMowRpmCounter ;  // mower motor speed state
     boolean motorMowRpmLastState ;
     boolean motorMowEnable ;
+    boolean motorMowEnableOverride ; // user switch for mower motor on/off has highest priority
     // --------- wheel motor state ----------------------------
     // wheel motor speed ( <0 backward, >0 forward); range -motorSpeedMaxRpm..motorSpeedMaxRpm
     float motorAccel  ;  // motor wheel acceleration (warning: do not set too high)
@@ -305,6 +306,8 @@ class Robot
     unsigned long nextTimeMotorMowControl;
     int lastMowSpeedPWM;
     unsigned long lastSetMotorMowSpeedTime;
+    unsigned long nextTimeCheckCurrent;
+    unsigned long lastTimeMotorMowStucked;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     

@@ -76,6 +76,7 @@ Robot::Robot(){
   motorMowRpmCounter = 0;
   motorMowRpmLastState = LOW;
   motorMowEnable = false;
+  motorMowEnableOverride = false;
   motorMowSpeedPWMSet = motorSpeedMaxRpm;
   motorMowPWMCurr = 0;
   motorMowSenseADC = 0;
@@ -86,6 +87,8 @@ Robot::Robot(){
   motorMowRpmCurr = 0;
   lastMowSpeedPWM = 0;
   lastSetMotorMowSpeedTime = 0;
+  nextTimeCheckCurrent = 0;
+  lastTimeMotorMowStucked = 0;
 
   bumperLeftCounter = bumperRightCounter = 0;
   bumperLeft = bumperRight = false;          
@@ -600,7 +603,7 @@ void Robot::checkErrorCounter(){
   if (millis() >= nextTimeErrorCounterReset){
     // reset all temporary error counters after 30 seconds (maximum error counters still continue to count) 
     for (int i=0; i < ERR_ENUM_COUNT; i++) errorCounter[i]=0;
-    nextTimeErrorCounterReset = millis() + 60000; // 30 sec
+    nextTimeErrorCounterReset = millis() + 30000; // 30 sec
   }  
   if (stateCurr != STATE_OFF) {
    for (int i=0; i < ERR_ENUM_COUNT; i++){
@@ -1021,6 +1024,7 @@ void Robot::motorMowControl(){
   if (millis() < nextTimeMotorMowControl) return;
 
     nextTimeMotorMowControl = millis() + 100;
+    if (motorMowEnableOverride) motorMowEnable = false;
   double mowSpeed ;
   if (!motorMowEnable) {
     mowSpeed = 0;         
@@ -1053,10 +1057,13 @@ void Robot::motorMowControl(){
 
       setMotorMowPWM(mowSpeed / 20.0 + motorMowPID.y, false);
       lastMowSpeedPWM = mowSpeed;
-    } else {
+    } 
+    else {
+      if((errorCounter[ERR_MOW_SENSE] == 0) && (errorCounter[ERR_STUCK] == 0)){
       // no speed sensor available      
       mowSpeed = motorMowSpeedPWMSet;
       setMotorMowPWM(mowSpeed, true);
+      }
     }
   }  
 }
@@ -1433,6 +1440,8 @@ void Robot::readSerial() {
          lawnSensorCounter++;
          break; 
        case 'm':
+         if (stateCurr == STATE_OFF || stateCurr == STATE_MANUAL) motorMowEnableOverride = false; 
+         else motorMowEnableOverride = !motorMowEnableOverride;
          motorMowEnable = !motorMowEnable; // press 'm' to toggle mower motor
          break;
        case 'c':
@@ -2067,23 +2076,31 @@ void Robot::reverseOrBidir(byte aRollDir){
 
 // check motor current
 void Robot::checkCurrent(){
+  if (millis() < nextTimeCheckCurrent) return;
+  nextTimeCheckCurrent = millis() + 100;
+
   if (motorMowSense >= motorMowPowerMax){
-    // mower motor overpowered    
-    setActuator(ACT_MOTOR_MOW, 0);
-    motorMowSenseCounter++;
-    // FIXME: doesn't work well with high gras :-/
-    /*if (millis() > stateStartTime + motorReverseTime){
-      motorMowSenseErrorCounter++;
-      if (motorMowSenseErrorCounter > 15){
-        Console.println("Error: Motor mow current");
-        addErrorCounter(ERR_MOW_SENSE);
-        setNextState(STATE_ERROR, 0);
-        return;
+      motorMowSenseCounter++;
+  }
+  else{ 
+      errorCounterMax[ERR_MOW_SENSE] = 0;
+      motorMowSenseCounter = 0;
+      if (millis() >= lastTimeMotorMowStucked + 30000){ // wait 30 seconds before switching on again
+        errorCounter[ERR_MOW_SENSE] = 0;
+        motorMowEnable = true;
       }
-    }*/
-    if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
-      else reverseOrBidir(RIGHT);        
-  }  
+  }
+
+
+  if (motorMowSenseCounter >= 30){ //ignore motorMowPower for 3 seconds
+      motorMowEnable = false;
+      Console.println("Error: Motor mow current");
+      addErrorCounter(ERR_MOW_SENSE);
+      lastTimeMotorMowStucked = millis();
+     // if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
+     //else reverseOrBidir(RIGHT); 
+  }       
+
     
   if (motorLeftSense >=motorPowerMax){  
     // left wheel motor overpowered    
@@ -2314,8 +2331,8 @@ void Robot::checkIfStucked(){
       robotIsStuckedCounter++;
   }
 
-    else {                         // if mower gets unstucked itresets errorCounterMax to zero and reenabling motorMow
-    robotIsStuckedCounter = 0;    // resets temporary counter to zero
+    else {                         // if mower gets unstucked it resets errorCounterMax to zero and reenabling motorMow
+        robotIsStuckedCounter = 0;    // resets temporary counter to zero
     if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
         && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
         && (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 

@@ -931,7 +931,9 @@ void RemoteControl::processCommandMenu(String pfodCmd){
     robot->setNextState(STATE_REMOTE, 0);    
     sendCommandMenu(true);
   } else if (pfodCmd == "rm"){
-    // cmd: mower motor on/off      
+    // cmd: mower motor on/off
+    if (robot->stateCurr == STATE_OFF || robot->stateCurr == STATE_MANUAL) robot->motorMowEnableOverride = false;
+    else robot->motorMowEnableOverride = !robot->motorMowEnableOverride;     
     robot->motorMowEnable = !robot->motorMowEnable;      
     sendCommandMenu(true);
   } else if (pfodCmd == "rs"){
