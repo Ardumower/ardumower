@@ -31,10 +31,16 @@ struct {
 char configMsg[MAX_CONFIG_LEN];
 param_t params[] = { 
   {"SSID",""},
-  {"Password",""}
+  {"Password",""},
+  {"IPAddress",""},
+  {"Gateway",""},
+  {"Subnet",""},
 };
 #define PARAMID_SSID    0
 #define PARAMID_PASSWD  1
+#define PARAMID_LOCALIP  2
+#define PARAMID_GATEWAY 3
+#define PARAMID_SUBNET  4
 #define NBPARAMS (sizeof(params)/sizeof(params[0]))
        
 const ledSequence_t ledSeq_waitForConfig  =   {1,1};      
@@ -154,6 +160,19 @@ void printParams(void) {
   }
 }
 
+void str2IpAddr(const char* str, IPAddress* ip) {
+  int i;
+  for (i=0; i<4; i++) {
+    (*ip)[i]=atoi(str);
+    Serial.println((*ip)[i]);
+    str=strchr(str,'.');
+    if (str)
+      str++;
+    else
+      break;
+  }
+}
+
 void setup() {
   Serial.begin(BAUDRATE);
 
@@ -171,6 +190,18 @@ void setup() {
   setLedSequence(ledSeq_connecting);
   
   WiFi.begin(params[PARAMID_SSID].valueStr, params[PARAMID_PASSWD].valueStr);
+  
+  if (strlen(params[PARAMID_LOCALIP].valueStr) > 0) {
+    IPAddress localIp;
+    IPAddress gateway;
+    IPAddress subnet;
+    
+    str2IpAddr(params[PARAMID_LOCALIP].valueStr, &localIp);
+    str2IpAddr(params[PARAMID_GATEWAY].valueStr, &gateway);
+    str2IpAddr(params[PARAMID_SUBNET].valueStr, &subnet);
+    
+    WiFi.config(localIp, gateway, subnet);
+  }
   
   uint8 connectCnt = 0; 
   while (WiFi.status() != WL_CONNECTED ) {
