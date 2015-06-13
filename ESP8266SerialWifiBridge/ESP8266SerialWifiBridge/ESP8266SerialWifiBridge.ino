@@ -1,3 +1,31 @@
+/*
+  Ardumower (www.ardumower.de)
+  Copyright (c) 2013-2015 by Alexander Grau
+  Copyright (c) 2013-2015 by Sven Gennat
+  Copyright (c) 2014 by Maxime Carpentieri    
+  Copyright (c) 2014-2015 by Stefan Manteuffel
+  Copyright (c) 2015 by Uwe Zimprich
+  Copyright (c) 2015 by Frederic Goddeeris
+  Private-use only! (you need to ask for a commercial-use)
+ 
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+  Private-use only! (you need to ask for a commercial-use)
+*/
+
+
+
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
 
@@ -6,7 +34,7 @@
 
 #define MAX_CONFIG_LEN  100
 #define MSG_HEADER "[WSB]"
-#define VESRION "v1.0"
+#define VESRION "v0.9"
 #define CONFIG_MSG_START "config:"
 
 typedef struct {
@@ -164,7 +192,6 @@ void str2IpAddr(const char* str, IPAddress* ip) {
   int i;
   for (i=0; i<4; i++) {
     (*ip)[i]=atoi(str);
-    Serial.println((*ip)[i]);
     str=strchr(str,'.');
     if (str)
       str++;
