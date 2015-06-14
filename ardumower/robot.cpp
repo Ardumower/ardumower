@@ -144,6 +144,7 @@ Robot::Robot(){
   nextTimeInfo = 0;
   nextTimeMotorSense = 0;
   nextTimeIMU = 0;
+  nextTimeCheckTilt = 0;
   nextTimeOdometry = 0;
   nextTimeOdometryInfo = 0;
   nextTimeBumper = 0;
@@ -1178,6 +1179,7 @@ void Robot::printOdometry(){
 }
 
 void Robot::printInfo(Stream &s){
+  
   /*Console.print(millis()/1000);
   Console.print(",");
   Console.print(motorMowRPMSet);
@@ -2275,6 +2277,7 @@ void Robot::checkPerimeterFind(){
  
 // check lawn 
 void Robot::checkLawn(){
+  if (!lawnSensorUse) return;
   if ( (lawnSensor) && (millis() > stateStartTime + 3000) ) {      
     if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
        else reverseOrBidir(RIGHT);        
@@ -2282,6 +2285,7 @@ void Robot::checkLawn(){
 }
 
 void Robot::checkRain(){
+  if (!rainUse) return;
   if (rain){
     Console.println(F("RAIN"));
     if (perimeterUse) setNextState(STATE_PERI_FIND, 0);    
@@ -2337,6 +2341,9 @@ void Robot::checkSonar(){
 // check IMU (tilt)
 void Robot::checkTilt(){
   if(!imuUse) return;
+  if (millis() < nextTimeCheckTilt) return;
+  nextTimeCheckTilt = millis() + 200; // 5Hz same as nextTimeImu
+
   int pitchAngle = (imu.ypr.pitch/PI*180.0);
   int rollAngle  = (imu.ypr.roll/PI*180.0);
   if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_STATION) ){
@@ -2482,7 +2489,8 @@ void Robot::loop()  {
   calcOdometry();
   checkOdometryFaults();    
   checkButton(); 
-  motorMowControl();  
+  motorMowControl(); 
+  checkTilt(); 
   
   if (imuUse) imu.update();  
 
@@ -2563,8 +2571,8 @@ void Robot::loop()  {
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
-      checkPerimeterBoundary();      
-      if (lawnSensorUse) checkLawn();      
+      checkPerimeterBoundary(); 
+      checkLawn();      
       checkTimeout();      
       break;
     case STATE_ROLL:
@@ -2572,8 +2580,8 @@ void Robot::loop()  {
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
-      checkPerimeterBoundary();      
-      if (lawnSensorUse) checkLawn();
+      checkPerimeterBoundary(); 
+      checkLawn();
       // making a roll (left/right)            
       if (mowPatternCurr == MOW_LANES){
         if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
@@ -2599,7 +2607,7 @@ void Robot::loop()  {
         checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
         checkSonar();             
         checkPerimeterBoundary();      
-        if (lawnSensorUse) checkLawn();    
+        checkLawn();    
         
       if (mowPatternCurr == MOW_BIDIR){
         double ratio = motorBiDirSpeedRatio1;
