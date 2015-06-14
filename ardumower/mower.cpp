@@ -249,6 +249,8 @@ Mower::Mower(){
   // ------ mower stats-------------------------------------------  
   statsOverride = false; // if set to true mower stats are overwritten - be careful
   statsMowTimeMinutesTotal = 300;
+  statsBatteryChargingCounterTotal = 11;
+  statsBatteryChargingCapacityTotal = 30000;
   // -----------configuration end-------------------------------------
 }
 

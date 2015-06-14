@@ -247,8 +247,10 @@ Mower::Mower(){
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use RTC and timer?
   // ------ mower stats-------------------------------------------  
-  statsOverride = false; // if set to true mower stats are overwritten - be careful
+  statsOverride = false; // if set to true mower stats are overwritten with the values below - be careful
   statsMowTimeMinutesTotal = 300;
+  statsBatteryChargingCounterTotal = 11;
+  statsBatteryChargingCapacityTotal = 30000;
   // -----------configuration end-------------------------------------
 }
 

@@ -421,6 +421,12 @@ class Robot
     int stationCheckTime   ;    // charge station reverse check time (ms)
     unsigned long nextTimeBattery ;    
     unsigned long nextTimeCheckBattery;
+    int statsBatteryChargingCounter;
+    int statsBatteryChargingCounterTotal;
+    float  statsBatteryChargingCapacityTrip;
+    float statsBatteryChargingCapacityTotal;
+    float statsBatteryChargingCapacityAverage;
+    float lastTimeBatCapacity;
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];    

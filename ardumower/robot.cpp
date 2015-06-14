@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 49
+#define MAGIC 50
 
 
 #define ADDR_USER_SETTINGS 0
@@ -125,7 +125,8 @@ Robot::Robot(){
   batADC = 0;
   batVoltage = 0;
   batRefFactor = 0;
-  batCapacity = 0; 
+  batCapacity = 0;
+  lastTimeBatCapacity = 0;
   chgVoltage = 0;
   chgCurrent = 0;
     
@@ -170,6 +171,7 @@ Robot::Robot(){
 
   nextTimeRobotStats = 0;
   statsMowTimeMinutesTripCounter = 0;
+  statsBatteryChargingCounter = 0;
 }
 
   
@@ -192,7 +194,12 @@ void Robot::loadSaveRobotStats(boolean readflag){
     Console.println(F("PLEASE CHECK IF YOUR ROBOT STATS ARE CORRECT"));
   }
   eereadwrite(readflag, addr, statsMowTimeMinutesTrip); 
-  eereadwrite(readflag, addr, statsMowTimeMinutesTotal);   
+  eereadwrite(readflag, addr, statsMowTimeMinutesTotal);
+  eereadwrite(readflag, addr, statsBatteryChargingCounterTotal);
+  eereadwrite(readflag, addr, statsBatteryChargingCapacityTrip);
+  eereadwrite(readflag, addr, statsBatteryChargingCapacityTotal);
+  eereadwrite(readflag, addr, statsBatteryChargingCapacityAverage);
+   // <----------------------------new robot stats to save goes here!----------------
   Console.print(F("loadSaveRobotStats addrstop="));
   Console.println(addr);
 }
@@ -561,6 +568,14 @@ void Robot::printSettingSerial(){
   Console.println(statsMowTimeMinutesTrip);
   Console.print  (F("statsMowTimeMinutesTotal : "));
   Console.println(statsMowTimeMinutesTotal);
+  Console.print  (F("statsBatteryChargingCounterTotal : "));
+  Console.println(statsBatteryChargingCounterTotal);
+  Console.print  (F("statsBatteryChargingCapacityTrip in mAh : "));
+  Console.println(statsBatteryChargingCapacityTrip);
+  Console.print  (F("statsBatteryChargingCapacityTotal in Ah : "));
+  Console.println(statsBatteryChargingCapacityTotal / 1000);
+  Console.print  (F("statsBatteryChargingCapacityAverage in mAh : "));
+  Console.println(statsBatteryChargingCapacityAverage);
   return;
 
 }
@@ -581,7 +596,8 @@ void Robot::deleteUserSettings(){
 }
 
 void Robot::deleteRobotStats(){
-  statsMowTimeMinutesTrip = statsMowTimeMinutesTotal = 0;
+  statsMowTimeMinutesTrip = statsMowTimeMinutesTotal = statsBatteryChargingCounterTotal =
+  statsBatteryChargingCapacityTotal = statsBatteryChargingCapacityTrip = 0;
   loadSaveRobotStats(false);
   Console.println(F("ALL ROBOT STATS ARE DELETED")); 
 }
@@ -1447,6 +1463,9 @@ void Robot::readSerial() {
        case 'c':
          setNextState(STATE_STATION, 0); // press 'c' to simulate in station
          break;
+       case 'a':
+         setNextState(STATE_STATION_CHARGING, 0); // press 't' to simulate in station charging
+         break;
        case '+':
          setNextState(STATE_ROLL_WAIT, 0); // press '+' to rotate 90 degrees (IMU)
          imuRollHeading = scalePI(imuRollHeading + PI/2);
@@ -1877,8 +1896,8 @@ void Robot::setNextState(byte stateNew, byte dir){
   if (stateNew == STATE_STATION){
     setActuator(ACT_CHGRELAY, 0); 
     setDefaults(); 
-    statsMowTimeTotalStart = false;  
-    loadSaveRobotStats(false);   
+    statsMowTimeTotalStart = false;  // stop stats mowTime counter
+    loadSaveRobotStats(false);        //save robot stats
        
   }
   if (stateNew == STATE_STATION_CHARGING){
@@ -1888,8 +1907,8 @@ void Robot::setNextState(byte stateNew, byte dir){
   if (stateNew == STATE_OFF){
     setActuator(ACT_CHGRELAY, 0);
     setDefaults();   
-    statsMowTimeTotalStart = false; 
-    loadSaveRobotStats(false);    
+    statsMowTimeTotalStart = false; // stop stats mowTime counter
+    loadSaveRobotStats(false);      //save robot stats
   }  
   if (stateNew == STATE_ERROR){
     motorMowEnable = false;    
@@ -1949,8 +1968,8 @@ if (millis() < nextTimeCheckBattery) return;
       if (idleTimeSec > batSwitchOffIfIdle * 60) {        
         Console.println(F("triggered batSwitchOffIfIdle"));      
         beep(1, true);      
-        loadSaveErrorCounters(false);
-        loadSaveRobotStats(false);
+        loadSaveErrorCounters(false); // saves error counters
+        loadSaveRobotStats(false);    // saves robot stats
         idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
         Console.println(F("BATTERY switching OFF"));
         setActuator(ACT_BATTERY_SW, 0);  // switch off battery               
@@ -2010,7 +2029,9 @@ void Robot::receiveGPSTime(){
 // check robot stats
 void Robot::checkRobotStats(){
   if (millis() < nextTimeRobotStats) return;
-  nextTimeRobotStats = millis() + 60000;
+      nextTimeRobotStats = millis() + 60000;
+
+//----------------stats mow time------------------------------------------------------
   statsMowTimeHoursTotal = double(statsMowTimeMinutesTotal)/60; 
   if (statsMowTimeTotalStart) {
         statsMowTimeMinutesTripCounter++;
@@ -2023,6 +2044,24 @@ void Robot::checkRobotStats(){
 
     }
 
+//---------------stats Battery---------------------------------------------------------
+  if ((stateCurr == STATE_STATION_CHARGING) && (stateTime >= 60000)){ // count only if mower is charged longer then 60sec
+    statsBatteryChargingCounter++; // temporary counter
+    if (statsBatteryChargingCounter == 1) statsBatteryChargingCounterTotal +=1; 
+    statsBatteryChargingCapacityTrip = batCapacity;
+    statsBatteryChargingCapacityTotal += (batCapacity - lastTimeBatCapacity); // summ up only the difference between actual batCapacity and last batCapacity
+    lastTimeBatCapacity = batCapacity;
+  }
+  else{                         // resets values to 0 when mower is not charging
+    statsBatteryChargingCounter = 0; 
+    batCapacity = 0;
+  }
+
+    if(statsBatteryChargingCounterTotal <= 0) statsBatteryChargingCounterTotal = 0; // for first run ensures that the counter is 0
+    if(statsBatteryChargingCapacityTotal == 0 || statsBatteryChargingCounterTotal == 0) statsBatteryChargingCapacityAverage = 0; // make sure that there is no dividing by zero
+    else statsBatteryChargingCapacityAverage = statsBatteryChargingCapacityTotal / statsBatteryChargingCounterTotal;
+
+//----------------new stats goes here------------------------------------------------------
 }
 
 // check timer

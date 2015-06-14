@@ -864,7 +864,15 @@ void RemoteControl::sendInfoMenu(boolean update){
   Bluetooth.print(F("|v02~Mowing time trip (min) "));
   Bluetooth.print(robot->statsMowTimeMinutesTrip);    
   Bluetooth.print(F("|v03~Mowing time total (hrs) "));
-  Bluetooth.print(robot->statsMowTimeHoursTotal);    
+  Bluetooth.print(robot->statsMowTimeHoursTotal);
+  Bluetooth.print(F("|v05~Battery charging cycles "));
+  Bluetooth.print(robot->statsBatteryChargingCounterTotal);    
+  Bluetooth.print(F("|v06~Battery recharged capacity trip (mAh)"));
+  Bluetooth.print(robot->statsBatteryChargingCapacityTrip);    
+  Bluetooth.print(F("|v07~Battery recharged capacity total (Ah)"));
+  Bluetooth.print(robot->statsBatteryChargingCapacityTotal / 1000);    
+  Bluetooth.print(F("|v08~Battery recharged capacity average (mAh)"));
+  Bluetooth.print(robot->statsBatteryChargingCapacityAverage);        
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
   //Bluetooth.print("|d02~IMU v");  
