@@ -24,9 +24,9 @@
 */
 
 #include "robot.h"
+#include "drivers.h"  // In order to get the baudrates; not logical that drivers.h needs to be included here....
 
-//#define MAGIC 45
-#define MAGIC 45
+#define MAGIC 47
 
 
 #define ADDR_USER_SETTINGS 0
@@ -281,7 +281,10 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
-  eereadwrite(readflag, addr, dropUse);          
+  eereadwrite(readflag, addr, dropUse);
+  eereadwrite(readflag, addr, bluetoothUse);
+  eereadwrite(readflag, addr, esp8266Use);
+  eereadwriteString(readflag, addr, esp8266ConfigString);
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -1045,6 +1048,17 @@ void Robot::setup()  {
     // robot has no ON/OFF button => start immediately
     setNextState(STATE_FORWARD,0);
   }  
+
+  if (esp8266Use) {
+     Console.println(F("Sending ESP8266 Config"));
+     ESP8266port.begin(ESP8266_BAUDRATE);
+     ESP8266port.println(esp8266ConfigString);
+     ESP8266port.flush();
+     ESP8266port.end();
+     rc.initSerial(&Serial1, ESP8266_BAUDRATE);
+  } else if (bluetoothUse) {
+    rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
+  }
     
   stateStartTime = millis();  
   beep(1);  
@@ -1151,10 +1165,10 @@ void Robot::printInfo(Stream &s){
 
 void Robot::printMenu(){  
   Console.println();
+  Console.println(F(" MAIN MENU:"));
   Console.println(F("1=test motors"));
   Console.println(F("2=test odometry"));
-  Console.println(F("3=setup BT module config (quick baudscan/recommended)"));
-  Console.println(F("4=setup BT module config (extensive baudscan)"));
+  Console.println(F("3=communications menu"));
   Console.println(F("5=calibrate IMU acc next side"));
   Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
@@ -1166,6 +1180,8 @@ void Robot::printMenu(){
   Console.println(F("0=exit"));  
   Console.println();
 }
+
+
 
 void Robot::delayInfo(int ms){
   unsigned long endtime = millis() +ms;
@@ -1271,11 +1287,10 @@ void Robot::menu(){
           printMenu();
           break;
         case '3':
-          configureBluetooth(true);          
-          printMenu();
-          break;
-        case '4':          
-          configureBluetooth(false);                    
+          if (bluetoothUse)
+            commsMenuBT();
+          else if (esp8266Use)
+            commsMenuWifi();
           printMenu();
           break;
         case '5':
@@ -1315,6 +1330,115 @@ void Robot::menu(){
     }
     delay(10);
   }  
+}
+
+void Robot::printCommsMenuBT(){
+  Console.println();
+  Console.println(F("COMMUNICATIONS MENU Bluetooth:"));
+  Console.println(F(" 1=Select other communication method"));
+  Console.println(F(" 2=setup BT module config (quick baudscan/recommended)"));
+  Console.println(F(" 3=setup BT module config (extensive baudscan)"));
+  Console.println(F(" 0=Main Menu"));
+  Console.println();
+}
+
+
+
+void Robot::commsMenuBT(){
+  char ch;
+  printCommsMenuBT();
+  while(true){
+    if (Console.available() > 0) {
+      ch = (char)Console.read();
+      switch (ch){
+        case '0':
+          return;
+        case '1':
+          menuSelectComms();
+          return;
+      }
+    }
+    delay(10);
+  }
+}
+
+void Robot::printCommsMenuWifi(){
+  Console.println();
+  Console.println(F("COMMUNICATIONS MENU WIFI:"));
+  Console.print(F(" Current Config: \""));
+  Console.print(esp8266ConfigString);
+  Console.println(F("\""));
+  Console.println(F(" 1=Select other communication method"));
+  Console.println(F(" 2=configure"));
+  Console.println(F(" 3=passthrough"));
+  Console.println(F(" 0=Main Menu"));
+  Console.println();
+}
+
+void Robot::commsMenuWifi(){
+  printCommsMenuWifi();
+  while(true){
+    if (Console.available() > 0) {
+      char ch = (char)Console.read();
+      switch (ch){
+        case '0':
+          return;
+        case '1':
+          menuSelectComms();
+          return;
+        case '2':
+          Console.print(F("Enter Connection String: "));
+          esp8266ConfigString = "";
+          while (Console.available()) Console.read();
+          while (1) {
+            if (Console.available()) {
+              char ch=Console.read();
+              if (ch=='\n' || ch=='\r') {
+                break;
+              } else {
+                esp8266ConfigString += ch;
+              }
+            }
+          }
+          Console.println();
+          printCommsMenuWifi();
+          break;
+        case '3':
+          Console.println(F("Passthrough Activated @"));
+          Console.print(ESP8266_BAUDRATE);
+          Console.println(F("baud. Reset device to exit."));
+          Console.end();
+          Console.begin(ESP8266_BAUDRATE);
+          while (true) {
+          if (ESP8266port.available()>0){
+              Console.write(ESP8266port.read());
+            }
+            if (Console.available()>0){
+              ESP8266port.write(Console.read());
+            }
+          }
+      }
+    }
+    delay(10);
+  }
+}
+
+void Robot::menuSelectComms(void) {
+  bluetoothUse = 0;
+  esp8266Use = 0;
+
+  while (true) {
+    Console.println(F("Select communication method"));
+    Console.println(F(" 1=Bluetooth"));
+    Console.println(F(" 2=Wifi"));
+    while (Console.available()) Console.read();
+    while (!Console.available());
+    char ch = Console.read();
+    switch(ch) {
+    case '1': bluetoothUse = 1; return;
+    case '2': esp8266Use = 1; return;
+    }
+  }
 }
 
 void Robot::readSerial() {

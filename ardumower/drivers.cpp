@@ -336,3 +336,21 @@ int getDayOfWeek(int month, int day, int year, int CalendarSystem)
 }
 
 
+// --- eereadwrite -------------------------------------------------
+int eereadwriteString(boolean readflag, int &ee, String& value)
+{
+  unsigned int i;
+  if (readflag) {
+    value = "";
+    char ch = EEPROM.read(ee++);
+    while (ch) {
+      value += ch;
+      ch = EEPROM.read(ee++);
+    }
+  } else {
+    for(i=0; i<value.length(); i++) {
+      EEPROM.write(ee++, value.charAt(i));
+    }
+    EEPROM.write(ee++, 0);
+  }
+}

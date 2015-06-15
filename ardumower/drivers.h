@@ -33,15 +33,22 @@
   // Arduino Mega
   #include <EEPROM.h>  
   #define Console Serial
-  #define Bluetooth Serial1
+  #define ESP8266port Serial1
+  #define Bluetooth Serial2
 #else 
   // Arduino Due
   #include "due.h"
    // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
   #define Console SerialUSB
-  #define Bluetooth Serial1  
+  #define ESP8266Port Serial1
+  #define Bluetooth Serial2
 #endif
 
+
+#define CONSOLE_BAUDRATE    115200
+#define BLUETOOTH_PIN       1234
+#define BLUETOOTH_BAUDRATE  19200
+#define ESP8266_BAUDRATE    115200
 
 // ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
 #define MAX_ECHO_TIME 3000         
@@ -130,6 +137,8 @@ template <class T> int eereadwrite(boolean readflag, int &ee, T& value)
     return i;
 }
 
+
+int eereadwriteString(boolean readflag, int &ee, String& value);
 
 // ---------- driver functions ----------------------------------
 

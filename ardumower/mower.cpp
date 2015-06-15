@@ -42,6 +42,7 @@
 #include <Arduino.h>
 #include "mower.h"
 #include "due.h"
+#include "drivers.h"
 
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
@@ -114,10 +115,6 @@
 // Bluetooth: Serial2 (TX2, RX2)
 // GPS: Serial3 (TX3, RX3) 
 
-// ------- baudrates---------------------------------
-#define BAUDRATE 19200            // serial output baud rate
-#define PFOD_BAUDRATE 115200       // pfod app serial output baud rate
-#define PFOD_PIN 1234             // Bluetooth pin
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
@@ -242,6 +239,11 @@ Mower::Mower(){
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use RTC and timer?
+  // ----- bluetooth -------------------------------------
+  bluetoothUse      = 1;       // use Bluetooth module?
+  // ----- esp8266 ---------------------------------------
+  esp8266Use        = 0;       // use ESP8266 Wifi module?
+  esp8266ConfigString = "";
   // ------ configuration end -------------------------------------------   
 }
 
@@ -284,11 +286,9 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
 
 void Mower::setup(){
   Wire.begin();            
-  Console.begin(BAUDRATE);   
+  Console.begin(CONSOLE_BAUDRATE);
   //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
-  rc.initSerial(PFOD_BAUDRATE);   
-    
 
   // keep battery switched ON
   pinMode(pinBatterySwitch, OUTPUT);
@@ -573,7 +573,7 @@ void Mower::setActuator(char type, int value){
 
 void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
-  bt.setParams(name, PFOD_PIN, PFOD_BAUDRATE, quick);  
+  bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);
 }
 
 #endif

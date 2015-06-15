@@ -111,10 +111,6 @@
 // Bluetooth: Serial2 (TX2, RX2)
 // GPS: Serial3 (TX3, RX3) 
 
-// ------- baudrates---------------------------------
-#define BAUDRATE 19200            // serial output baud rate
-#define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define PFOD_PIN 1234             // Bluetooth pin
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
