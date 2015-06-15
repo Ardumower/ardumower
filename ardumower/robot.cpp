@@ -986,8 +986,15 @@ void Robot::motorControl(){
     static unsigned long nextMotorControlOutputTime = 0;
   if (odometryUse){
     // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
-    motorLeftPID.x = motorLeftRpmCurr;                 // IST 
     motorLeftPID.w = motorLeftSpeedRpmSet;               // SOLL 
+    motorRightPID.w = motorRightSpeedRpmSet;             // SOLL    
+    float RLdiff = motorLeftRpmCurr - motorRightRpmCurr;
+    if (motorLeftSpeedRpmSet == motorRightSpeedRpmSet){
+      // line motion
+      motorLeftPID.w = motorLeftSpeedRpmSet - RLdiff/2;
+      motorRightPID.w = motorRightSpeedRpmSet + RLdiff/2;      
+    }
+    motorLeftPID.x = motorLeftRpmCurr;                 // IST     
     if (millis() < stateStartTime + motorZeroSettleTime) motorLeftPID.w = 0; // get zero speed first after state change
     motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
     motorLeftPID.y_max = motorSpeedMaxPwm;     // Regel-MAX
@@ -1003,7 +1010,6 @@ void Robot::motorControl(){
     motorRightPID.Ki = motorLeftPID.Ki;
     motorRightPID.Kd = motorLeftPID.Kd;          
     motorRightPID.x = motorRightRpmCurr;               // IST
-    motorRightPID.w = motorRightSpeedRpmSet;             // SOLL
     if (millis() < stateStartTime + motorZeroSettleTime) motorRightPID.w = 0; // get zero speed first after state change
     motorRightPID.y_min = -motorSpeedMaxPwm;       // Regel-MIN
     motorRightPID.y_max = motorSpeedMaxPwm;        // Regel-MAX
