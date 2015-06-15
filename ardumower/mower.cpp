@@ -134,10 +134,10 @@ Mower::Mower(){
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorPowerIgnoreTime = 2000; // time to ignore motor power (ms)
-  motorZeroSettleTime   = 2500 ; // how long (ms) to wait for motors to settle at zero speed
-  motorRollTimeMax    = 2000;  // max. roll time (ms)
+  motorZeroSettleTime   = 3000 ; // how long (ms) to wait for motors to settle at zero speed
+  motorRollTimeMax    = 1500;  // max. roll time (ms)
   motorRollTimeMin    = 750; //min. roll time (ms) should be smaller than motorRollTimeMax
-  motorReverseTime    = 2200;  // max. reverse time (ms)
+  motorReverseTime    = 1200;  // max. reverse time (ms)
   motorForwTimeMax   = 80000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
@@ -178,8 +178,11 @@ Mower::Mower(){
   // ------ perimeter ---------------------------------
   perimeterUse       = 1;      // use perimeter?    
   perimeterTriggerTimeout = 0;      // perimeter trigger timeout when escaping from inside (ms)  
-  perimeterTrackRollTime  = 2000;   // perimter tracking roll time (ms)
-  perimeterTrackRevTime   = 2200;   // perimter tracking reverse time (ms)
+  perimeterOutRollTimeMax  = 2000;   // roll time max after perimeter out (ms)
+  perimeterOutRollTimeMin = 750;    // roll time min after perimeter out (ms)
+  perimeterOutRevTime   = 2200;   // reverse time after perimeter out (ms)
+  perimeterTrackRollTime = 1500; //roll time during perimeter tracking
+  perimeterTrackRevTime = 2200;  // reverse time during perimeter tracking
   perimeterPID.Kp    = 51.0;  // perimeter PID controller
   perimeterPID.Ki    = 12.5;
   perimeterPID.Kd    = 0.8;  

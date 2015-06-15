@@ -341,8 +341,11 @@ class Robot
     // ------- perimeter state --------------------------
     Perimeter perimeter;
     char perimeterUse       ;      // use perimeter?    
-    int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
-    int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
+    int perimeterOutRollTimeMax ;   
+    int perimeterOutRollTimeMin ;
+    int perimeterOutRevTime  ;   
+    int perimeterTrackRollTime ; // perimeter tracking roll time (ms)
+    int perimeterTrackRevTime ; // perimeter tracking reverse time (ms)
     PID perimeterPID ;             // perimeter PID controller
     int perimeterMag ;             // perimeter magnitude
     boolean perimeterInside ;      // is inside perimeter?

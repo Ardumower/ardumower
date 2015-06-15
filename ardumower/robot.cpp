@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 50
+#define MAGIC 51
 
 
 #define ADDR_USER_SETTINGS 0
@@ -271,6 +271,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, perimeterUse);
   eereadwrite(readflag, addr, perimeter.timedOutIfBelowSmag);        
   eereadwrite(readflag, addr, perimeterTriggerTimeout);
+  eereadwrite(readflag, addr, perimeterOutRollTimeMax);
+  eereadwrite(readflag, addr, perimeterOutRollTimeMin);
+  eereadwrite(readflag, addr, perimeterOutRevTime);
   eereadwrite(readflag, addr, perimeterTrackRollTime );
   eereadwrite(readflag, addr, perimeterTrackRevTime);
   eereadwrite(readflag, addr, perimeterPID.Kp);
@@ -432,6 +435,12 @@ void Robot::printSettingSerial(){
   Console.println(perimeterUse);
   Console.print  (F("perimeterTriggerTimeout : "));
   Console.println(perimeterTriggerTimeout);
+  Console.print  (F("perimeterOutRollTimeMax : "));
+  Console.println(perimeterOutRollTimeMax);
+  Console.print  (F("perimeterOutRollTimeMin : "));
+  Console.println(perimeterOutRollTimeMin);
+  Console.print  (F("perimeterOutRevTime : "));
+  Console.println(perimeterOutRevTime);
   Console.print  (F("perimeterTrackRollTime : "));
   Console.println(perimeterTrackRollTime);
   Console.print  (F("perimeterTrackRevTime : "));
@@ -1847,14 +1856,14 @@ void Robot::setNextState(byte stateNew, byte dir){
   }
   else if (stateNew == STATE_PERI_OUT_FORW){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
-    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime + 1000;   
+    stateEndTime = millis() + perimeterOutRevTime + motorZeroSettleTime + 1000;   
   }
   else if (stateNew == STATE_PERI_OUT_REV){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/1.25;                    
-    stateEndTime = millis() + motorReverseTime + motorZeroSettleTime; 
+    stateEndTime = millis() + perimeterOutRevTime + motorZeroSettleTime; 
   }
   else if (stateNew == STATE_PERI_OUT_ROLL){
-    stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
+    stateEndTime = millis() + random(perimeterOutRollTimeMin,perimeterOutRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
     motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;           
