@@ -1320,9 +1320,11 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->motorRightRpmCurr);
       Bluetooth.print(",");
-      Bluetooth.print(robot->motorLeftSpeedRpmSet);
+      //      Bluetooth.print(robot->motorLeftSpeedRpmSet);
+      Bluetooth.print(robot->motorLeftPID.w);
       Bluetooth.print(",");            
-      Bluetooth.print(robot->motorRightSpeedRpmSet);
+      //      Bluetooth.print(robot->motorRightSpeedRpmSet);
+      Bluetooth.print(robot->motorRightPID.w);
       Bluetooth.print(",");            
       Bluetooth.print(robot->motorLeftPWMCurr);      
       Bluetooth.print(",");                    
