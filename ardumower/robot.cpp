@@ -1020,8 +1020,8 @@ void Robot::motorControl(){
     //if((motorRightSpeedRpmSet >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
     //if((motorRightSpeedRpmSet <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
 
-    if ( (abs(motorLeftPID.x) < 2) && (motorLeftPID.w == 0) ) leftSpeed = 0; // ensures PWM is really zero 
-    if ( (abs(motorRightPID.x)  < 2) && (motorRightPID.w == 0) ) rightSpeed = 0; // ensures PWM is really zero     
+    if ( (abs(motorLeftPID.x) < 2) && (abs(motorLeftPID.w) < 0.1) ) leftSpeed = 0; // ensures PWM is really zero 
+    if ( (abs(motorRightPID.x)  < 2) && (abs(motorRightPID.w) < 0.1) ) rightSpeed = 0; // ensures PWM is really zero     
 
     /*if (millis() >= nextMotorControlOutputTime){
       nextMotorControlOutputTime = millis() + 3000; 
