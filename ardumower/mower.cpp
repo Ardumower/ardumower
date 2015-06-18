@@ -451,7 +451,6 @@ void Mower::setup(){
 }
 
 void checkMotorFault(){
-  return;
   if (digitalRead(pinMotorLeftFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_LEFT);
     Console.println(F("Error: motor left fault"));
