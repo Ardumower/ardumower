@@ -1817,7 +1817,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   unsigned long stateTime = millis() - stateStartTime;
   if (stateNew == stateCurr) return;
   // state correction  
-  if (stateCurr == STATE_PERI_FIND){
+  if ((stateCurr == STATE_PERI_FIND) || (stateCurr == STATE_PERI_TRACK)) {
     if (stateNew == STATE_ROLL) stateNew = STATE_PERI_ROLL;
     if (stateNew == STATE_REVERSE) stateNew = STATE_PERI_REV;    
   }  
@@ -1848,7 +1848,7 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + stationCheckTime + motorZeroSettleTime; 
   
   } else if (stateNew == STATE_PERI_ROLL) {    
-    stateEndTime = millis() + perimeterTrackRollTime;                     
+    stateEndTime = millis() + perimeterTrackRollTime + motorZeroSettleTime;                     
     if (dir == RIGHT){
 	motorLeftSpeedRpmSet = motorSpeedMaxRpm/2;
 	motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
@@ -1858,7 +1858,7 @@ void Robot::setNextState(byte stateNew, byte dir){
       }
   } if (stateNew == STATE_PERI_REV) {
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/2;                    
-    stateEndTime = millis() + perimeterTrackRevTime;                     
+    stateEndTime = millis() + perimeterTrackRevTime + motorZeroSettleTime;                     
   }
   else if (stateNew == STATE_PERI_OUT_FORW){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;      
@@ -2160,12 +2160,13 @@ void Robot::checkCurrent(){
     
   if (motorLeftSense >=motorPowerMax){  
     // left wheel motor overpowered    
-    if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
+    if (     ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_PERI_FIND)  || (stateCurr == STATE_PERI_TRACK)) 
+          && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
       //beep(1);
       motorLeftSenseCounter++;
       setMotorPWM( 0, 0, false );  
       reverseOrBidir(RIGHT);
-    } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
+    } else if    ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
       setMotorPWM( 0, 0, false );  
       //   reverseOrBidir(RIGHT);
@@ -2178,7 +2179,7 @@ void Robot::checkCurrent(){
   }
   else if (motorRightSense >= motorPowerMax){       
      // right wheel motor overpowered
-     if ((stateCurr == STATE_FORWARD) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
+     if ( ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_PERI_FIND)) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
        //beep(1);
        motorRightSenseCounter++;
        setMotorPWM( 0, 0, false );  
@@ -2660,7 +2661,7 @@ void Robot::loop()  {
       break;
     case STATE_PERI_TRACK:
       // track perimeter
-      //checkCurrent();                  
+      checkCurrent();                  
       checkBumpersPerimeter();
       //checkSonar();                   
       if (batMonitor){
