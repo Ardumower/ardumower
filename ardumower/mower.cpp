@@ -224,10 +224,10 @@ Mower::Mower(){
   chgChange       = 0;          // Messwertumkehr von - nach +         1 oder 0
   chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)
   // ------  charging station ---------------------------
-  stationRevTime     = 4000;    // charge station reverse time (ms)
-  stationRollTime    = 2000;    // charge station roll time (ms)
-  stationForwTime    = 2000;    // charge station forward time (ms)
-  stationCheckTime   = 2500;    // charge station reverse check time (ms)
+  stationRevTime     = 1800;    // charge station reverse time (ms)
+  stationRollTime    = 1000;    // charge station roll time (ms)
+  stationForwTime    = 1500;    // charge station forward time (ms)
+  stationCheckTime   = 1700;    // charge station reverse check time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
   twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
