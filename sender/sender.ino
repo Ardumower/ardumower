@@ -56,7 +56,7 @@
 // sender detects robot via a charging current through the charging pins
 #define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
-#define CHG_CURRENT_MIN   0.02      // must be at least 50 mA for charging detection
+#define CHG_CURRENT_MIN   0.0025      // must be at least 50 mA for charging detection
 
 // ---- sender status LED ----
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
@@ -79,7 +79,7 @@ double periCurrentMax = 0;
 int faults = 0;
 boolean isCharging = false;
 boolean stateLED = false;
-unsigned int chargeADCZero = 511;
+unsigned int chargeADCZero = 0;
 RunningMedian<unsigned int,16> periCurrentMeasurements;
 RunningMedian<unsigned int,96> chargeCurrentMeasurements;
 
@@ -266,7 +266,8 @@ void loop(){
     // determine charging current (Ampere)        
     if (USE_CHG_CURRENT) {                
       chargeCurrentMeasurements.getAverage(v);
-      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.185;  // 185 mV per amp  
+      //chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.185;  // 185 mV per amp  
+      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0; // 0.185;  // 185 mV per amp  
       isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); // must be at least 9 mA for charging detection
     }  
     
@@ -294,7 +295,9 @@ void loop(){
     Serial.print("\tdutyPWM=");        
     Serial.print(dutyPWM);        
     Serial.print("\tfaults=");
-    Serial.print(faults);        
+    Serial.print(faults);   
+    Serial.print("\tadc=");
+    Serial.print( analogRead( pinChargeCurrent) );       
     Serial.println();
     
     if (USE_POT){
