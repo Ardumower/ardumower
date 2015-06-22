@@ -374,8 +374,10 @@ void RemoteControl::sendMowMenu(boolean update){
   Bluetooth.print(F("|o04~Speed "));
   Bluetooth.print(robot->motorMowPWMCurr);      
   sendSlider("o05", F("Speed max"), robot->motorMowSpeedMaxPwm, "", 1, 255);       
-  Bluetooth.print(F("|o06~Modulate "));
-  sendYesNo(robot->motorMowModulate);      
+  if (robot->developerActive) {
+    Bluetooth.print(F("|o06~Modulate "));
+    sendYesNo(robot->motorMowModulate);
+  }      
   Bluetooth.print(F("|o07~RPM "));
   Bluetooth.print(robot->motorMowRpmCurr);    
   sendSlider("o08", F("RPM set"), robot->motorMowRPMSet, "", 1, 4500);     
