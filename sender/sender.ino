@@ -101,7 +101,25 @@ unsigned long nextTimeToggleLED = 0;
 #else
   int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
 #endif
-                    
+
+
+// using transparently 5v / 1.1v ref
+int analogReadMillivolt(int pin){
+  int millivolt;
+  int adc;
+  // first read using 5v ref 
+  adc = analogRead(pin);
+  millivolt = ((double)adc) / 1024.0 * 5000.0;  
+  if (adc < 10){
+    // read using 1.1v ref
+    analogReference(INTERNAL);
+    adc = analogRead(pin);
+    millivolt = ((double)adc) / 1024.0 * 1100.0;
+    analogReference(DEFAULT); 
+  }
+  return millivolt;
+}
+
 
 void timerCallback(){       
   if (enableSender){
