@@ -45,7 +45,7 @@
 // motor driver feedback pin (=perimeter open/close detection, used for status LED)
 #define USE_PERI_CURRENT      1     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
 #define pinFeedback A0  // M1_FB
-#define PERI_CURRENT_MIN    0.03     // must be at least 100 mA for perimeter-is-closed detection 
+#define PERI_CURRENT_MIN    0.03     // minimum Ampere for perimeter-is-closed detection 
 
 // ---- sender current control (via potentiometer) ----
 // sender modulates signal (PWM), based on duty-cycle set via this potentiometer
@@ -56,7 +56,7 @@
 // sender detects robot via a charging current through the charging pins
 #define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
-#define CHG_CURRENT_MIN   0.0025      // must be at least 50 mA for charging detection
+#define CHG_CURRENT_MIN   0.008      // minimum Ampere for charging detection
 
 // ---- sender status LED ----
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
@@ -71,7 +71,7 @@ volatile int step = 0;
 volatile boolean enableSender = true;
 
 
-double duty = 0.1;    // 10%
+double duty = 1.0;    // 100 duty%
 int dutyPWM = 0;
 double chargeCurrent = 0;
 double periCurrentAvg = 0; 
