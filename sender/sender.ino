@@ -49,7 +49,7 @@
 
 // ---- sender current control (via potentiometer) ----
 // sender modulates signal (PWM), based on duty-cycle set via this potentiometer
-#define USE_POT      1  // use potentiometer for current control? (set to '0' if not connected!)
+#define USE_POT      0  // use potentiometer for current control? (set to '0' if not connected!)
 #define pinPot      A3  // 100k potentiometer (current control)   
 
 // ---- sender automatic standby (via current sensor for charger) ----
@@ -63,7 +63,7 @@
 
 
 // code version 
-#define VER "591"
+#define VER "592"
 
 // --------------------------------------
 
@@ -146,7 +146,7 @@ void timerCallback(){
 }
 
 void readEEPROM(){
-  if (EEPROM.read(0) == 42){
+  if (EEPROM.read(0) == 43){
     // EEPROM data available
     chargeADCZero = (EEPROM.read(1) << 8) | EEPROM.read(2);
   } else Serial.println("no EEPROM data found, using default calibration");
@@ -185,7 +185,10 @@ void setup() {
   pinMode(pinFault, INPUT);      
   pinMode(pinPot, INPUT);      
   pinMode(pinChargeCurrent, INPUT);
-    
+  
+  // configure ADC reference
+  // analogReference(DEFAULT); // ADC 5.0v ref    
+  analogReference(INTERNAL); // ADC 1.1v ref       
     
   // sample rate 9615 Hz (19230,76923076923 / 2 => 9615.38)
   int T = 1000.0*1000.0/ 9615.38;
@@ -283,25 +286,27 @@ void loop(){
     float v = 0;
     // determine charging current (Ampere)        
     if (USE_CHG_CURRENT) {                
-      chargeCurrentMeasurements.getAverage(v);
-      //chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0 / 0.185;  // 185 mV per amp  
-      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 5.0; // 0.185;  // 185 mV per amp  
-      isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); // must be at least 9 mA for charging detection
+      chargeCurrentMeasurements.getAverage(v);        
+      chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 1.1;  
+      isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); 
     }  
     
     if (USE_PERI_CURRENT) {
       // determine perimeter current (Ampere)
       periCurrentMeasurements.getAverage(v);    
-      periCurrentAvg = ((double)v) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+      periCurrentAvg = ((double)v) / 1023.0 * 1.1 / 0.525;   // 525 mV per amp    
       unsigned int h;
       periCurrentMeasurements.getHighest(h);    
-      periCurrentMax = ((double)h) / 1023.0 * 5.0 / 0.525;   // 525 mV per amp    
+      periCurrentMax = ((double)h) / 1023.0 * 1.1 / 0.525;   // 525 mV per amp    
     }
         
     Serial.print("time=");
     Serial.print(millis()/1000);    
     Serial.print("\tchgCurrent=");
     Serial.print(chargeCurrent, 3);
+    Serial.print("\tchgCurrentADC=");
+    chargeCurrentMeasurements.getAverage(v);        
+    Serial.print( v );       
     Serial.print("\tisCharging=");
     Serial.print(isCharging);    
     Serial.print("\tperiCurrent avg=");
@@ -313,9 +318,7 @@ void loop(){
     Serial.print("\tdutyPWM=");        
     Serial.print(dutyPWM);        
     Serial.print("\tfaults=");
-    Serial.print(faults);   
-    Serial.print("\tadc=");
-    Serial.print( analogRead( pinChargeCurrent) );       
+    Serial.print(faults);       
     Serial.println();
     
     if (USE_POT){
