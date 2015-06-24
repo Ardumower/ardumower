@@ -2075,7 +2075,7 @@ void Robot::checkRobotStats(){
   }
 
     if(statsBatteryChargingCounterTotal <= 0) statsBatteryChargingCounterTotal = 0; // for first run ensures that the counter is 0
-    if(statsBatteryChargingCapacityTotal == 0 || statsBatteryChargingCounterTotal == 0) statsBatteryChargingCapacityAverage = 0; // make sure that there is no dividing by zero
+    if(statsBatteryChargingCapacityTotal <= 0 || statsBatteryChargingCounterTotal == 0) statsBatteryChargingCapacityAverage = 0; // make sure that there is no dividing by zero
     else statsBatteryChargingCapacityAverage = statsBatteryChargingCapacityTotal / statsBatteryChargingCounterTotal;
 
 //----------------new stats goes here------------------------------------------------------
