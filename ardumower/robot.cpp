@@ -68,6 +68,7 @@ Robot::Robot(){
   motorZeroSettleTime = 0;  
   motorLeftZeroTimeout = 0;
   motorRightZeroTimeout = 0;  
+  rotateLeft = true;
   
   remoteSteer = remoteSpeed = remoteMow = remoteSwitch = 0;  
   remoteSteerLastTime = remoteSpeedLastTime =remoteMowLastTime =remoteSwitchLastTime = 0;
@@ -169,6 +170,7 @@ Robot::Robot(){
   nextTimeMotorImuControl = 0;
   nextTimeMotorPerimeterControl = 0;
   nextTimeMotorMowControl = 0;
+  nextTimeRotationChange = 0;
 
   nextTimeRobotStats = 0;
   statsMowTimeMinutesTripCounter = 0;
@@ -2257,6 +2259,11 @@ void Robot::checkBumpersPerimeter(){
 
 // check perimeter as a boundary
 void Robot::checkPerimeterBoundary(){
+  if (millis() >= nextTimeRotationChange){
+      nextTimeRotationChange = millis() + 60000;
+      rotateLeft = !rotateLeft;
+    }
+
   if (mowPatternCurr == MOW_BIDIR){
     if ((millis() < stateStartTime + 3000)) return;    
     if (!perimeterInside) {
@@ -2271,7 +2278,8 @@ void Robot::checkPerimeterBoundary(){
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
-          if ((rand() % 2) == 0){    
+          //if ((rand() % 2) == 0){  
+          if(rotateLeft){  
           setNextState(STATE_PERI_OUT_REV, LEFT);
           } else {
           setNextState(STATE_PERI_OUT_REV, RIGHT);
@@ -2284,7 +2292,8 @@ void Robot::checkPerimeterBoundary(){
         if (millis() >= perimeterTriggerTime){ 
           perimeterTriggerTime = 0;
           setMotorPWM( 0, 0, false );
-          if ((rand() % 2) == 0){    
+          //if ((rand() % 2) == 0){
+          if (rotateLeft){    
           setNextState(STATE_PERI_OUT_FORW, LEFT);
           } else {
           setNextState(STATE_PERI_OUT_FORW, RIGHT);
