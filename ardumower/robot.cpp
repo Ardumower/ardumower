@@ -1671,10 +1671,30 @@ void Robot::readSensors(){
 
 
   if ((sonarUse) && (millis() >= nextTimeSonar)){
-    nextTimeSonar = millis() + 250;   
-    if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
-    if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
-    if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
+    static char senSonarTurn = SEN_SONAR_RIGHT;    
+    nextTimeSonar = millis() + 80;
+    
+    switch(senSonarTurn) {
+      case SEN_SONAR_RIGHT:
+        if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);
+        senSonarTurn = SEN_SONAR_LEFT;
+        break;
+      case SEN_SONAR_LEFT:
+        if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);
+        senSonarTurn = SEN_SONAR_CENTER;
+        break;
+      case SEN_SONAR_CENTER:
+        if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);
+        senSonarTurn = SEN_SONAR_RIGHT;
+        break;
+      default:
+        senSonarTurn = SEN_SONAR_RIGHT;
+        break;
+    }   
+    
+    //if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
+    //if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
+    //if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
   }
 
 
