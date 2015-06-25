@@ -1931,6 +1931,7 @@ void Robot::setNextState(byte stateNew, byte dir){
     //motorMowModulate = false;              
   } 
   if (stateNew == STATE_STATION){
+    setMotorPWM(0,0,false);
     setActuator(ACT_CHGRELAY, 0); 
     setDefaults(); 
     statsMowTimeTotalStart = false;  // stop stats mowTime counter
