@@ -149,7 +149,7 @@ void readEEPROM(){
   if (EEPROM.read(0) == 43){
     // EEPROM data available
     chargeADCZero = (EEPROM.read(1) << 8) | EEPROM.read(2);
-  } else Serial.println("no EEPROM data found, using default calibration");
+  } else Serial.println("no EEPROM data found, using default calibration (INA169)");
   Serial.print("chargeADCZero=");
   Serial.println(chargeADCZero);  
 }
@@ -195,14 +195,14 @@ void setup() {
   Serial.begin(19200);
   
   Serial.println("START");
-  Serial.print("Ardumower ");
+  Serial.print("Ardumower Sender ");
   Serial.println(VER);
   #ifdef USE_DEVELOPER_TEST
     Serial.println("Warning: USE_DEVELOPER_TEST activated");
   #endif
-  Serial.println("press...");
-  Serial.println("  1  for current sensor calibration");  
-  Serial.println();
+  //Serial.println("press...");
+  //Serial.println("  1  for current sensor calibration");  
+  //Serial.println();
   
   readEEPROM();
   Serial.print("T=");
