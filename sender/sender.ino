@@ -167,7 +167,7 @@ void calibrateChargeCurrentSensor(){
   float v;
   measurements.getAverage(v);  
   chargeADCZero = v;
-  EEPROM.write(0, 42);
+  EEPROM.write(0, 43);
   EEPROM.write(1, chargeADCZero >> 8);
   EEPROM.write(2, chargeADCZero & 255);  
   Serial.println("calibration done");
