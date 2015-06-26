@@ -388,6 +388,7 @@ class Robot
     unsigned int tempSonarDistCounter ;
     unsigned long sonarObstacleTimeout ;
     unsigned long nextTimeSonar ;
+    unsigned long nextTimeCheckSonar ;
     // --------- pfodApp ----------------------------------
     RemoteControl rc; // pfodApp
     unsigned long nextTimePfodLoop ;    

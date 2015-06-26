@@ -1673,10 +1673,10 @@ void Robot::readSensors(){
 
 
   if ((sonarUse) && (millis() >= nextTimeSonar)){
-    static char senSonarTurn = SEN_SONAR_RIGHT;    
-    nextTimeSonar = millis() + 80;
+    //static char senSonarTurn = SEN_SONAR_RIGHT;    
+    nextTimeSonar = millis() + 250;
     
-    switch(senSonarTurn) {
+    /*switch(senSonarTurn) {
       case SEN_SONAR_RIGHT:
         if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);
         senSonarTurn = SEN_SONAR_LEFT;
@@ -1693,10 +1693,10 @@ void Robot::readSensors(){
         senSonarTurn = SEN_SONAR_RIGHT;
         break;
     }   
-    
-    //if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
-    //if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
-    //if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
+    */
+    if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
+    if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
+    if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
   }
 
 
@@ -2344,8 +2344,11 @@ void Robot::checkRain(){
 
 // check sonar
 void Robot::checkSonar(){
+  if(!sonarUse) return;
+  if (millis() < nextTimeCheckSonar) return;
+  nextTimeCheckSonar = millis() + 200;
   if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;
-  
+
   // slow down motor wheel speed near obstacles   
   if (     (stateCurr == STATE_FORWARD) 
           || (  (mowPatternCurr == MOW_BIDIR) && ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_REVERSE))  )  
@@ -2355,13 +2358,13 @@ void Robot::checkSonar(){
                ||  ((NO_ECHO != sonarDistRight) && (sonarDistRight < sonarTriggerBelow*2)) 
                ||  ((NO_ECHO != sonarDistLeft) && (sonarDistLeft < sonarTriggerBelow*2))  ) {    
               tempSonarDistCounter++;
-            if (tempSonarDistCounter >= 50){
+            if (tempSonarDistCounter >= 5){
              // Console.println("sonar slow down");
               motorLeftSpeedRpmSet /= 1.5;
               motorRightSpeedRpmSet /= 1.5;
-              sonarObstacleTimeout = millis() + 7000;
+              sonarObstacleTimeout = millis() + 3000;
             }
-          }
+          } else tempSonarDistCounter = 0;
         } else if ((sonarObstacleTimeout != 0) && (millis() > sonarObstacleTimeout)) {
           //Console.println("no sonar");
           sonarObstacleTimeout = 0;
@@ -2628,7 +2631,7 @@ void Robot::loop()  {
       checkCurrent();            
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
-      checkSonar();             
+      //checkSonar();             
       checkPerimeterBoundary(); 
       checkLawn();
       // making a roll (left/right)            
@@ -2654,7 +2657,7 @@ void Robot::loop()  {
         checkCurrent();            
         checkBumpers();
         checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
-        checkSonar();             
+        //checkSonar();             
         checkPerimeterBoundary();      
         checkLawn();    
         
