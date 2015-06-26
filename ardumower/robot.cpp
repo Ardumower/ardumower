@@ -2726,11 +2726,15 @@ void Robot::loop()  {
           }
       } 
       break;  
-    case STATE_PERI_OUT_FORW:             
-      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);                
+    case STATE_PERI_OUT_FORW:  
+      checkPerimeterBoundary();                 
+      //if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);  
+      if (perimeterInside || (millis() >= stateEndTime)) setNextState(STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_REV: 
-      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);                
+      checkPerimeterBoundary();      
+     // if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);   
+      if (perimeterInside || (millis() >= stateEndTime)) setNextState (STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_ROLL: 
       if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
