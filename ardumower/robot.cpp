@@ -2097,10 +2097,12 @@ void Robot::checkRobotStats(){
     batCapacity = 0;
   }
 
-    if(statsBatteryChargingCounterTotal <= 0) statsBatteryChargingCounterTotal = 0; // for first run ensures that the counter is 0
-    if(statsBatteryChargingCapacityTotal <= 0) statsBatteryChargingCapacityTotal = 0; // for first run ensures that the counter is 0
-    if(statsBatteryChargingCapacityTotal <= 0 || statsBatteryChargingCounterTotal == 0) statsBatteryChargingCapacityAverage = 0; // make sure that there is no dividing by zero
+  if(isnan(statsBatteryChargingCapacityTrip)) statsBatteryChargingCapacityTrip = 0;
+  if(isnan(statsBatteryChargingCounterTotal)) statsBatteryChargingCounterTotal = 0; // for first run ensures that the counter is 0
+  if(isnan(statsBatteryChargingCapacityTotal)) statsBatteryChargingCapacityTotal = 0; // for first run ensures that the counter is 0
+  if(statsBatteryChargingCapacityTotal <= 0 || statsBatteryChargingCounterTotal == 0) statsBatteryChargingCapacityAverage = 0; // make sure that there is no dividing by zero
     else statsBatteryChargingCapacityAverage = statsBatteryChargingCapacityTotal / statsBatteryChargingCounterTotal;
+
 
 //----------------new stats goes here------------------------------------------------------
 }
