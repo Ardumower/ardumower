@@ -36,7 +36,7 @@
 
 #define MAX_CONFIG_LEN  100
 #define MSG_HEADER "[WSB]"
-#define VESRION "v0.9"
+#define VESRION "v0.1"
 #define CONFIG_MSG_START "config:"
 
 typedef struct {
@@ -68,7 +68,7 @@ param_t params[] = {
 };
 #define PARAMID_SSID    0
 #define PARAMID_PASSWD  1
-#define PARAMID_LOCALIP  2
+#define PARAMID_LOCALIP 2
 #define PARAMID_GATEWAY 3
 #define PARAMID_SUBNET  4
 #define NBPARAMS (sizeof(params)/sizeof(params[0]))
@@ -79,6 +79,7 @@ const ledSequence_t ledSeq_connecting  =      {3,3};
 const ledSequence_t ledSeq_connected  =       {1,0};      
 const ledSequence_t ledSeq_clientConnected  = {10,1};      
       
+bool wifiConnected = false;
 WiFiServer server(8080);
 WiFiClient client;
 bool clientConnected = false;
@@ -276,6 +277,7 @@ void setup() {
   
   // Connected
   setLedSequence(ledSeq_connected);
+  wifiConnected = true;
   Serial.print(MSG_HEADER " CONNECTED! ");
   Serial.print(" IP address: ");
   Serial.println(WiFi.localIP());
@@ -286,6 +288,15 @@ void setup() {
 }
 
 void loop() {
+  if (WiFi.status() != WL_CONNECTED)
+  {
+    if (wifiConnected) 
+    {
+      wifiConnected = false;
+      setLedSequence(ledSeq_connecting);
+    }
+  }
+  
   if (clientConnected) {
     if (!client.connected())  {
       // Client is disconnected
@@ -315,8 +326,10 @@ void loop() {
   if (clientConnected){
     if(client.available()){
       while(client.available()) {
-        char ch = client.read();
-        Serial.write(ch);
+        size_t len = min(client.available(), 255);
+        uint8_t sbuf[len];
+        client.read(sbuf, len);
+        Serial.write(sbuf, len);
         #ifdef ECHOTEST
           echotestProcess(ch);
         #endif 
@@ -326,12 +339,11 @@ void loop() {
   
   // What is received on the Serial Port is sent to the client
   if(Serial.available()){
-    size_t len = Serial.available();
+    size_t len = min(Serial.available(), 255);
     uint8_t sbuf[len];
     Serial.readBytes(sbuf, len);
     if (clientConnected){
       client.write(sbuf, len);
-      delay(1);
     }
   }
 }
