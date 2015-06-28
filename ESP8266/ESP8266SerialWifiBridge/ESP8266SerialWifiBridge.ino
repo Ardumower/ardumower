@@ -36,7 +36,7 @@
 
 #define MAX_CONFIG_LEN  100
 #define MSG_HEADER "[WSB]"
-#define VESRION "v0.1"
+#define VESRION "v0.2"
 #define CONFIG_MSG_START "config:"
 
 typedef struct {
@@ -84,6 +84,7 @@ WiFiServer server(8080);
 WiFiClient client;
 bool clientConnected = false;
 Ticker ledTicker;
+uint16 connectCnt = 0;
 
 
 void setLed(boolean on) {
@@ -266,42 +267,53 @@ void setup() {
     WiFi.config(localIp, gateway, subnet);
   }
   
-  // Waiting for connection
-  uint8 connectCnt = 0; 
-  while (WiFi.status() != WL_CONNECTED ) {
-    Serial.print(MSG_HEADER " Connecting ..."); 
-    Serial.println(connectCnt); 
-    connectCnt++;
-    delay(500);
-  }
-  
-  // Connected
-  setLedSequence(ledSeq_connected);
-  wifiConnected = true;
-  Serial.print(MSG_HEADER " CONNECTED! ");
-  Serial.print(" IP address: ");
-  Serial.println(WiFi.localIP());
-  
   // Start server
   server.begin();
   server.setNoDelay(true);
 }
 
+void disconnectClient(void) {
+  client.stop();
+  clientConnected = false;  
+}
+
 void loop() {
-  if (WiFi.status() != WL_CONNECTED)
-  {
-    if (wifiConnected) 
-    {
+  //
+  // Handle AccessPoint connection
+  //
+  if (WiFi.status() == WL_CONNECTED) {
+    // Connected to AP
+    if (!wifiConnected) {
+      // Transition Disconnected => Connected
+      wifiConnected = true;
+      setLedSequence(ledSeq_connected);
+      Serial.print(MSG_HEADER " CONNECTED! ");
+      Serial.print(" IP address: ");
+      Serial.println(WiFi.localIP());
+    }
+  } else {
+    // Disconnected from AP
+    if (wifiConnected) {
+      // Transition Connected => Disconnected
       wifiConnected = false;
       setLedSequence(ledSeq_connecting);
+      Serial.print(MSG_HEADER " DISCONNECTED");
+      disconnectClient();
+      connectCnt = 0;
     }
+    Serial.print(MSG_HEADER " Connecting ..."); 
+    Serial.println(connectCnt); 
+    connectCnt++;
+    delay(250);
   }
   
+  // 
+  // Handle Client connection
+  //
   if (clientConnected) {
     if (!client.connected())  {
       // Client is disconnected
-      client.stop();
-      clientConnected = false;
+      disconnectClient();
       setLedSequence(ledSeq_connected);
       Serial.println(MSG_HEADER " Client Disconnected");
     }
@@ -322,7 +334,9 @@ void loop() {
     }
   }
  
+  //
   // Send all bytes received form the client to the Serial Port
+  //
   if (clientConnected){
     if(client.available()){
       while(client.available()) {
@@ -337,7 +351,9 @@ void loop() {
     }
   }
   
+  //
   // What is received on the Serial Port is sent to the client
+  //
   if(Serial.available()){
     size_t len = min(Serial.available(), 255);
     uint8_t sbuf[len];
