@@ -27,8 +27,8 @@ unsigned int readHCSR04(int triggerPin, int echoPin){
   digitalWrite(triggerPin, HIGH);
   delayMicroseconds(10); 
   digitalWrite(triggerPin, LOW);
+  // if there is no reflection, we will get 0  (NO_ECHO)
   uS = pulseIn(echoPin, HIGH, MAX_ECHO_TIME);  
-  // if there is no reflection, we will get MAX_ECHO_TIME
   //if (uS == MAX_ECHO_TIME) uS = NO_ECHO;
   //if (uS < MIN_ECHO_TIME) uS = NO_ECHO;
   return uS;
@@ -41,10 +41,11 @@ void setup()  {
 
   Serial.begin(19200);  
   Serial.println("START");  
-  Serial.println("raw,avg,median");      
+  Serial.println("raw,avg,median,triggered");      
 }
 
 void loop()  {
+  int triggered = 0;
   float avg;
   unsigned int median;
   int raw;
@@ -57,13 +58,17 @@ void loop()  {
     sonarMeasurements.getMedian(median); 
   //}
   
+  if ( (median != NO_ECHO) && (median < 800) ) triggered = 1;
+  
   for (int i=0; i < 10; i++){
     Serial.print(raw);    
     Serial.print(",");    
     Serial.print(avg);    
     Serial.print(",");    
     Serial.print(median);        
-    Serial.println();
+    Serial.print(",");
+    Serial.print(triggered);
+    Serial.println();    
   }
   delay(250);
 }
