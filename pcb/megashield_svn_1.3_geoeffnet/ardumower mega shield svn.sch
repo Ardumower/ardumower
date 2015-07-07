@@ -1,8 +1,9 @@
 EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-cache
 LIBS:Wlan_ESP8266
 LIBS:power
-LIBS:ardumower mega shield svn-cache
 LIBS:conn
+LIBS:uln-udn
 EELAYER 25 0
 EELAYER END
 $Descr A3 16535 11693
@@ -46,17 +47,6 @@ Text GLabel 5725 8480 2    39   Output ~ 0
 SCL2
 Text GLabel 5720 8380 2    39   BiDi ~ 0
 SDA2
-$Comp
-L R R5
-U 1 1 5384EC7E
-P 5880 6180
-F 0 "R5" V 5950 6180 40  0000 C CNN
-F 1 "220R" V 5887 6181 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 5810 6180 30  0001 C CNN
-F 3 "~" H 5880 6180 30  0000 C CNN
-	1    5880 6180
-	0    -1   -1   0   
-$EndComp
 Text GLabel 1545 7580 0    39   Input ~ 0
 pinPerimeterLeft
 $Comp
@@ -439,52 +429,19 @@ F 3 "" H 11635 1565 60  0000 C CNN
 	1    11635 1565
 	1    0    0    -1  
 $EndComp
-Text GLabel 3450 4340 0    60   Output ~ 0
+Text GLabel 3450 4340 0    60   Input ~ 0
 pinChargingEnable
-Text Notes 3105 3495 0    39   ~ 0
+Text Notes 10710 14280 0    39   ~ 0
 Laderelais Spulenspannung 5V\noder Variabel\nEingang Spulenspannung\nkann über Vorwiderspannung\nangepasst werden\ndurch Ladespannung
-$Comp
-L R R21
-U 1 1 54B5FC72
-P 5875 6980
-F 0 "R21" V 5955 6980 40  0000 C CNN
-F 1 "220R" V 5882 6981 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 5805 6980 30  0001 C CNN
-F 3 "~" H 5875 6980 30  0000 C CNN
-	1    5875 6980
-	0    -1   -1   0   
-$EndComp
-$Comp
-L R R20
-U 1 1 54B5FD13
-P 5875 6780
-F 0 "R20" V 5945 6780 40  0000 C CNN
-F 1 "220R" V 5882 6781 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 5805 6780 30  0001 C CNN
-F 3 "~" H 5875 6780 30  0000 C CNN
-	1    5875 6780
-	0    -1   -1   0   
-$EndComp
 Text GLabel 6180 6780 2    39   Output ~ 0
 DuoLED-Rot
 Text GLabel 6180 6980 2    39   Output ~ 0
 DuoLED_Grün
 Text Notes 6030 6915 0    60   ~ 0
 Duo LED hinzugefügt
-$Comp
-L R R11
-U 1 1 54B48CE0
-P 2910 2640
-F 0 "R11" V 2990 2640 40  0000 C CNN
-F 1 "1K5" V 2917 2641 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 2840 2640 30  0001 C CNN
-F 3 "~" H 2910 2640 30  0000 C CNN
-	1    2910 2640
-	1    0    0    -1  
-$EndComp
-Text GLabel 2910 3040 3    60   Output ~ 0
+Text GLabel 2910 3510 3    60   Output ~ 0
 StationLed
-Text Notes 3285 3814 2    39   ~ 0
+Text Notes 3290 4204 2    39   ~ 0
 Station LED\nbzw:\nGrundlast\nPerimetersender
 Text GLabel 1545 7480 0    39   Input ~ 0
 pinPerimeterRight
@@ -635,13 +592,13 @@ Charg_Pin
 $Comp
 L R R19
 U 1 1 552CF3A3
-P 3430 2990
-F 0 "R19" V 3510 2990 40  0000 C CNN
-F 1 "0" V 3437 2991 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 3360 2990 30  0001 C CNN
-F 3 "~" H 3430 2990 30  0000 C CNN
-	1    3430 2990
-	0    -1   -1   0   
+P 10670 13090
+F 0 "R19" V 10750 13090 40  0000 C CNN
+F 1 "0" V 10677 13091 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 10600 13090 30  0001 C CNN
+F 3 "~" H 10670 13090 30  0000 C CNN
+	1    10670 13090
+	1    0    0    -1  
 $EndComp
 $Comp
 L R_PACK8 RP1
@@ -760,14 +717,14 @@ $EndComp
 $Comp
 L DIODE D11
 U 1 1 553DC320
-P 4000 2990
-F 0 "D11" H 4000 3090 40  0000 C CNN
-F 1 "1N4148" H 4000 2890 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 4000 2990 60  0001 C CNN
-F 3 "Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A" H 4000 2990 60  0001 C CNN
-F 4 "1N4148" H 4000 2990 60  0001 C CNN "Bestellnummer"
-	1    4000 2990
-	1    0    0    1   
+P 3180 2395
+F 0 "D11" H 3180 2495 40  0000 C CNN
+F 1 "1N4148" H 3180 2295 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 3180 2395 60  0001 C CNN
+F 3 "Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A" H 3180 2395 60  0001 C CNN
+F 4 "1N4148" H 3180 2395 60  0001 C CNN "Bestellnummer"
+	1    3180 2395
+	0    -1   1    0   
 $EndComp
 $Sheet
 S 9980 2420 880  1220
@@ -818,40 +775,33 @@ Text Notes 12675 2070 3    60   ~ 0
 $Comp
 L 15KEXXC DKE1
 U 1 1 5541A8DB
-P 7395 1555
-F 0 "DKE1" H 7345 1630 50  0000 L BNN
-F 1 "15KE33CA" H 7345 1420 50  0000 L BNN
-F 2 "ACS712:Diode_15KE33CA" H 7395 1705 50  0001 C CNN
-F 3 "" H 7395 1555 60  0000 C CNN
-	1    7395 1555
+P 7235 1555
+F 0 "DKE1" H 7185 1630 50  0000 L BNN
+F 1 "15KE33CA" H 7185 1420 50  0000 L BNN
+F 2 "ACS712:Diode_15KE33CA" H 7235 1705 50  0001 C CNN
+F 3 "" H 7235 1555 60  0000 C CNN
+	1    7235 1555
 	0    -1   -1   0   
 $EndComp
 $Comp
 L GND #PWR016
 U 1 1 5541A8E1
-P 7395 1705
-F 0 "#PWR016" H 7395 1705 30  0001 C CNN
-F 1 "GND" H 7395 1635 30  0001 C CNN
-F 2 "" H 7395 1705 60  0000 C CNN
-F 3 "" H 7395 1705 60  0000 C CNN
-	1    7395 1705
+P 7235 1705
+F 0 "#PWR016" H 7235 1705 30  0001 C CNN
+F 1 "GND" H 7235 1635 30  0001 C CNN
+F 2 "" H 7235 1705 60  0000 C CNN
+F 3 "" H 7235 1705 60  0000 C CNN
+	1    7235 1705
 	1    0    0    -1  
 $EndComp
 NoConn ~ 3770 6160
 NoConn ~ 3770 6250
 $Sheet
-S 9240 2420 245  1150
+S 8385 2420 245  1150
 U 554BCB67
 F0 "Batteriespannung" 60
 F1 "Batteriespannung.sch" 60
-F2 "Batteriespannung" I T 9350 2420 60 
-$EndSheet
-$Sheet
-S 2285 2235 245  1150
-U 554C1C35
-F0 "Ladespannung" 60
-F1 "Ladespannung.sch" 60
-F2 "Ladespannung" I T 2410 2235 60 
+F2 "Batteriespannung" I T 8495 2420 60 
 $EndSheet
 $Sheet
 S 2905 13440 315  870 
@@ -3127,13 +3077,10 @@ Wire Wire Line
 	4805 1270 4805 1105
 Wire Wire Line
 	4805 1720 4805 1670
-Connection ~ 7790 1060
-Wire Wire Line
-	7790 1060 7790 2890
 Wire Wire Line
 	3620 5005 3290 5005
 Wire Wire Line
-	7395 1655 7395 1705
+	7235 1655 7235 1705
 Wire Wire Line
 	12620 1645 12620 1695
 Wire Wire Line
@@ -3145,9 +3092,7 @@ Wire Wire Line
 Wire Wire Line
 	10410 2420 10410 1570
 Wire Wire Line
-	7790 2890 5250 2890
-Wire Wire Line
-	1365 2090 5415 2090
+	1365 2090 9170 2090
 Wire Wire Line
 	5415 2590 5250 2590
 Wire Wire Line
@@ -3164,11 +3109,7 @@ Wire Wire Line
 	5130 1105 5130 755 
 Connection ~ 3180 2090
 Wire Wire Line
-	3180 2090 3180 2990
-Wire Wire Line
-	3680 2990 3800 2990
-Wire Wire Line
-	4200 2990 4450 2990
+	3180 2990 4450 2990
 Wire Wire Line
 	4200 3090 4200 2990
 Wire Wire Line
@@ -3314,8 +3255,6 @@ Wire Wire Line
 Wire Wire Line
 	4200 3490 4200 3615
 Wire Wire Line
-	2910 2090 2910 2390
-Wire Wire Line
 	3370 8830 3470 8830
 Wire Wire Line
 	3670 9030 3620 9030
@@ -3361,11 +3300,11 @@ Wire Wire Line
 Wire Wire Line
 	5570 6380 6180 6380
 Wire Wire Line
-	5630 6180 5570 6180
+	5570 6180 6180 6180
 Wire Wire Line
 	5570 6680 6180 6680
 Wire Wire Line
-	5620 6780 5625 6780
+	5620 6780 6180 6780
 Wire Wire Line
 	5620 6880 5620 6780
 Wire Wire Line
@@ -3423,13 +3362,9 @@ Wire Wire Line
 Wire Wire Line
 	2090 8680 3670 8680
 Wire Wire Line
-	2910 2890 2910 3040
+	2910 2600 2910 3510
 Wire Wire Line
-	6125 6980 6180 6980
-Wire Wire Line
-	6125 6780 6180 6780
-Wire Wire Line
-	5625 6980 5570 6980
+	5570 6980 6180 6980
 Wire Wire Line
 	3550 4340 3450 4340
 Wire Wire Line
@@ -3463,8 +3398,6 @@ Wire Wire Line
 	5570 8480 5725 8480
 Wire Wire Line
 	5570 8380 5720 8380
-Wire Wire Line
-	6130 6180 6180 6180
 Wire Wire Line
 	4030 755  4030 705 
 Wire Wire Line
@@ -3599,8 +3532,6 @@ F 5 "https://www.reichelt.de/PFRA-040/3/index.html?ACTION=3;ARTICLE=41944;SEARCH
 	1    1665 2605
 	0    1    -1   0   
 $EndComp
-Wire Wire Line
-	2410 2235 2410 2090
 Connection ~ 2410 2090
 $Comp
 L GND #PWR019
@@ -3623,48 +3554,45 @@ Verpolschutz\nAlternativ
 $Comp
 L DIODE D2
 U 1 1 55764E0D
-P 6725 1570
-F 0 "D2" H 6725 1670 40  0000 C CNN
-F 1 "MBR 1045" H 6725 1470 40  0000 C CNN
-F 2 "ACS712:MBR1045" H 6725 1570 60  0001 C CNN
-F 3 "" H 6725 1570 60  0000 C CNN
-F 4 "R: MBR 1045" H 6725 1570 60  0001 C CNN "Bestellnummer"
-F 5 "https://www.reichelt.de/PFRA-040/3/index.html?ACTION=3;ARTICLE=41944;SEARCH=MBR%201045" H 6725 1570 60  0001 C CNN "Bestelllink"
-	1    6725 1570
+P 6725 1320
+F 0 "D2" H 6725 1420 40  0000 C CNN
+F 1 "MBR 1045" H 6725 1220 40  0000 C CNN
+F 2 "ACS712:MBR1045" H 6725 1320 60  0001 C CNN
+F 3 "" H 6725 1320 60  0000 C CNN
+F 4 "R: MBR 1045" H 6725 1320 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/PFRA-040/3/index.html?ACTION=3;ARTICLE=41944;SEARCH=MBR%201045" H 6725 1320 60  0001 C CNN "Bestelllink"
+	1    6725 1320
 	0    1    -1   0   
 $EndComp
 $Comp
 L GND #PWR020
 U 1 1 55764E13
-P 6725 1855
-F 0 "#PWR020" H 6725 1855 30  0001 C CNN
-F 1 "GND" H 6725 1785 30  0001 C CNN
-F 2 "" H 6725 1855 60  0000 C CNN
-F 3 "" H 6725 1855 60  0000 C CNN
-	1    6725 1855
+P 6725 1605
+F 0 "#PWR020" H 6725 1605 30  0001 C CNN
+F 1 "GND" H 6725 1535 30  0001 C CNN
+F 2 "" H 6725 1605 60  0000 C CNN
+F 3 "" H 6725 1605 60  0000 C CNN
+	1    6725 1605
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6725 1770 6725 1855
-Text Notes 6470 2170 0    60   ~ 0
+	6725 1520 6725 1605
+Text Notes 6470 1920 0    60   ~ 0
 Verpolschutz\nAlternativ
 Wire Wire Line
 	10110 1060 10110 2420
-Wire Wire Line
-	9350 1060 9350 2420
-Connection ~ 9350 1060
 $Comp
 L DIODE D3
 U 1 1 557673DD
-P 13155 1545
-F 0 "D3" H 13155 1645 40  0000 C CNN
-F 1 "MBR 1045" H 13155 1445 40  0000 C CNN
-F 2 "ACS712:MBR1045" H 13155 1545 60  0001 C CNN
-F 3 "" H 13155 1545 60  0000 C CNN
-F 4 "R: MBR 1045" H 13155 1545 60  0001 C CNN "Bestellnummer"
-F 5 "https://www.reichelt.de/PFRA-040/3/index.html?ACTION=3;ARTICLE=41944;SEARCH=MBR%201045" H 13155 1545 60  0001 C CNN "Bestelllink"
-	1    13155 1545
-	0    1    1    0   
+P 8820 1060
+F 0 "D3" H 8820 1160 40  0000 C CNN
+F 1 "MBR 1045" H 8820 960 40  0000 C CNN
+F 2 "ACS712:MBR1045" H 8820 1060 60  0001 C CNN
+F 3 "" H 8820 1060 60  0000 C CNN
+F 4 "R: MBR 1045" H 8820 1060 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/PFRA-040/3/index.html?ACTION=3;ARTICLE=41944;SEARCH=MBR%201045" H 8820 1060 60  0001 C CNN "Bestelllink"
+	1    8820 1060
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	10255 2420 10255 1060
@@ -3676,17 +3604,13 @@ Wire Wire Line
 	12620 1060 12620 1345
 Connection ~ 11635 1060
 Wire Wire Line
-	13155 1060 13155 1345
+	13155 1060 13155 2370
 Connection ~ 12620 1060
 Wire Wire Line
 	13675 1060 13675 1270
 Connection ~ 13155 1060
-Wire Wire Line
-	13155 1745 13155 2370
 Text Notes 13630 1585 0    60   ~ 0
 zu den Motortreibern
-Wire Wire Line
-	6545 1060 10110 1060
 $Comp
 L DIODE D4
 U 1 1 5576E06B
@@ -3706,9 +3630,103 @@ Wire Wire Line
 Text Notes 4640 4955 0    60   ~ 0
 Schutzdiode (Angstdiode)Transistor\nfür den Fall das die Ladespannung verpolt ist
 Wire Wire Line
-	7395 1355 7395 1060
-Connection ~ 7395 1060
-Wire Wire Line
-	6725 1370 6725 1060
+	6725 1120 6725 1060
 Connection ~ 6725 1060
+Text GLabel 2800 9690 0    39   Output ~ 0
+Led-Laderelais
+Wire Wire Line
+	3180 2195 3180 2090
+Connection ~ 4200 2990
+$Sheet
+S 2285 2705 245  1150
+U 554C1C35
+F0 "Ladespannung" 60
+F1 "Ladespannung.sch" 60
+F2 "Ladespannung" I T 2410 2705 60 
+$EndSheet
+Wire Wire Line
+	3180 2595 3180 2990
+$Comp
+L DIODE D8
+U 1 1 557FA386
+P 2910 2400
+F 0 "D8" H 2910 2500 40  0000 C CNN
+F 1 "1N4148" H 2910 2300 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 2910 2400 60  0001 C CNN
+F 3 "Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A" H 2910 2400 60  0001 C CNN
+F 4 "1N4148" H 2910 2400 60  0001 C CNN "Bestellnummer"
+	1    2910 2400
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	2910 2200 2910 2090
+$Comp
+L DIODE D7
+U 1 1 557FABFB
+P 2410 2400
+F 0 "D7" H 2410 2500 40  0000 C CNN
+F 1 "1N4148" H 2410 2300 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 2410 2400 60  0001 C CNN
+F 3 "Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A" H 2410 2400 60  0001 C CNN
+F 4 "1N4148" H 2410 2400 60  0001 C CNN "Bestellnummer"
+	1    2410 2400
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	2410 2200 2410 2090
+Wire Wire Line
+	2410 2600 2410 2705
+$Comp
+L DIODE D9
+U 1 1 557FB482
+P 8495 1510
+F 0 "D9" H 8495 1610 40  0000 C CNN
+F 1 "1N4148" H 8495 1410 40  0000 C CNN
+F 2 "ACS712:Diode_ligend_RM10" H 8495 1510 60  0001 C CNN
+F 3 "Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A" H 8495 1510 60  0001 C CNN
+F 4 "1N4148" H 8495 1510 60  0001 C CNN "Bestellnummer"
+	1    8495 1510
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8495 2420 8495 1710
+$Comp
+L DIODE D12
+U 1 1 557FC8FC
+P 9170 1490
+F 0 "D12" H 9170 1590 40  0000 C CNN
+F 1 "MBR 1045" H 9170 1390 40  0000 C CNN
+F 2 "ACS712:MBR1045" H 9170 1490 60  0001 C CNN
+F 3 "" H 9170 1490 60  0000 C CNN
+F 4 "R: MBR 1045" H 9170 1490 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/PFRA-040/3/index.html?ACTION=3;ARTICLE=41944;SEARCH=MBR%201045" H 9170 1490 60  0001 C CNN "Bestelllink"
+	1    9170 1490
+	0    1    -1   0   
+$EndComp
+Connection ~ 5415 2090
+Wire Wire Line
+	5250 2890 7610 2890
+Wire Wire Line
+	7610 2890 7610 1060
+Connection ~ 7610 1060
+Wire Wire Line
+	7235 1060 7235 1355
+Connection ~ 7235 1060
+Wire Wire Line
+	8495 1060 8495 1310
+Connection ~ 8495 1060
+Wire Wire Line
+	6545 1060 8620 1060
+Wire Wire Line
+	9020 1060 10110 1060
+Wire Wire Line
+	9170 2090 9170 1690
+Wire Wire Line
+	9170 1290 9170 1060
+Connection ~ 9170 1060
+Wire Wire Line
+	2800 9690 2875 9690
+Wire Wire Line
+	2875 9690 2875 9580
+Connection ~ 2875 9580
 $EndSCHEMATC
