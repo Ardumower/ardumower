@@ -1,59 +1,59 @@
 #include "led.h"
-#include "drivers.h"
 #include "config.h"
-
-LEDControl LED;
 
 
 LEDControl::LEDControl(){
   nextLEDTime = 0;
-  ledSequenceIdx = LED_OFF;
-  onState = 0;   
+  ledSequenceIdx = LED_SEQ_OFF;
+  onState = 0;
 }
 
 void LEDControl::setup(){
-  Console.println("LEDControl::setup");
-  pinMode(pinLED, OUTPUT);
-  pinMode(pinLEDDuoRed, OUTPUT);
-  pinMode(pinLEDDuoGreen, OUTPUT); 
+  Console.println(F("LEDControl::setup"));
 }
 
 void LEDControl::run(){
-  if (millis() < nextLEDTime) return;  
-  nextLEDTime = millis() + 500;      
+  if (millis() < nextLEDTime) return;
+  nextLEDTime = millis() + 500;
   switch (ledSequenceIdx){
-    case LED_OFF: 
-      digitalWrite(pinLEDDuoRed, LOW);
-      digitalWrite(pinLEDDuoGreen, LOW);
+    case LED_SEQ_OFF:
+      setDriverLED(LED_ARDUINO, LOW);
+      setDriverLED(LED_DUAL_RED, LOW);
+      setDriverLED(LED_DUAL_GREEN, LOW);
       break;
-    case LED_GREEN_ON:
-      digitalWrite(pinLEDDuoRed, LOW);
-      digitalWrite(pinLEDDuoGreen, HIGH);
-      break;          
-    case LED_ORANGE_ON:
-      digitalWrite(pinLEDDuoRed, HIGH);
-      digitalWrite(pinLEDDuoGreen, HIGH);
-      break;        
-    case LED_ORANGE_BLINK:
+    case LED_SEQ_GREEN_ON:
+      setDriverLED(LED_ARDUINO, HIGH);
+      setDriverLED(LED_DUAL_RED, LOW);
+      setDriverLED(LED_DUAL_GREEN, HIGH);
+      break;
+    case LED_SEQ_ORANGE_ON:
+      setDriverLED(LED_DUAL_RED, HIGH);
+      setDriverLED(LED_DUAL_GREEN, HIGH);
+      break;
+    case LED_SEQ_ORANGE_BLINK:
       onState = !onState;
-      digitalWrite(pinLEDDuoRed, onState);
-      digitalWrite(pinLEDDuoGreen, onState);      
-      break;      
-    case LED_RED_BLINK:
+      setDriverLED(LED_DUAL_RED, onState);
+      setDriverLED(LED_DUAL_GREEN, onState);
+      break;
+    case LED_SEQ_RED_BLINK:
       onState = !onState;
-      digitalWrite(pinLEDDuoRed, onState);
-      digitalWrite(pinLEDDuoGreen, LOW);            
-      break;      
-    case LED_RED_ON:
-      digitalWrite(pinLEDDuoRed, HIGH);
-      digitalWrite(pinLEDDuoGreen, LOW);      
-      break;    
-  };  
+      setDriverLED(LED_ARDUINO, onState);
+      setDriverLED(LED_DUAL_RED, onState);
+      setDriverLED(LED_DUAL_GREEN, LOW);
+      break;
+    case LED_SEQ_RED_ON:
+      setDriverLED(LED_DUAL_RED, HIGH);
+      setDriverLED(LED_DUAL_GREEN, LOW);
+      break;
+  };
+}
+
+void LEDControl::setDriverLED(int LEDidx, bool state){
 }
 
 void LEDControl::playSequence(int sequenceIdx){
   ledSequenceIdx = sequenceIdx;
-  nextLEDTime = 0;  
+  nextLEDTime = 0;
 }
 
 

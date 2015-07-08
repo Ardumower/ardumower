@@ -1,7 +1,9 @@
 EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-cache
 LIBS:Wlan_ESP8266
 LIBS:power
-LIBS:ardumower mega shield svn-cache
+LIBS:conn
+LIBS:uln-udn
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -29,10 +31,10 @@ F 4 "Value" H 5395 3070 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR093
+L +5V #PWR099
 U 1 1 5540D156
 P 5395 2410
-F 0 "#PWR093" H 5395 2260 60  0001 C CNN
+F 0 "#PWR099" H 5395 2260 60  0001 C CNN
 F 1 "+5V" H 5395 2550 60  0000 C CNN
 F 2 "" H 5395 2410 60  0000 C CNN
 F 3 "" H 5395 2410 60  0000 C CNN
@@ -42,10 +44,10 @@ $EndComp
 Wire Wire Line
 	5395 2470 5395 2410
 $Comp
-L GND #PWR094
+L GND #PWR0100
 U 1 1 5540D459
 P 5395 3790
-F 0 "#PWR094" H 5395 3540 60  0001 C CNN
+F 0 "#PWR0100" H 5395 3540 60  0001 C CNN
 F 1 "GND" H 5395 3640 60  0000 C CNN
 F 2 "" H 5395 3790 60  0000 C CNN
 F 3 "" H 5395 3790 60  0000 C CNN

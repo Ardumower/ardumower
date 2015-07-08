@@ -1,7 +1,9 @@
 EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-cache
 LIBS:Wlan_ESP8266
 LIBS:power
-LIBS:ardumower mega shield svn-cache
+LIBS:conn
+LIBS:uln-udn
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -49,10 +51,10 @@ Verpols.L.aus
 Text HLabel 4385 1835 0    60   Input ~ 0
 Verpol.s.L.in
 $Comp
-L GND #PWR0178
+L GND #PWR0182
 U 1 1 553AC2ED
 P 5095 3155
-F 0 "#PWR0178" H 5095 2905 60  0001 C CNN
+F 0 "#PWR0182" H 5095 2905 60  0001 C CNN
 F 1 "GND" H 5095 3005 60  0000 C CNN
 F 2 "" H 5095 3155 60  0000 C CNN
 F 3 "" H 5095 3155 60  0000 C CNN
