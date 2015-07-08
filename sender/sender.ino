@@ -54,7 +54,7 @@
 
 // ---- sender automatic standby (via current sensor for charger) ----
 // sender detects robot via a charging current through the charging pins
-#define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
+#define USE_CHG_CURRENT       0     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
 #define CHG_CURRENT_MIN   0.008      // minimum Ampere for charging detection
 
