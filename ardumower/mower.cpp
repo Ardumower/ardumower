@@ -142,7 +142,7 @@ Mower::Mower(){
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
   // ---- normal control ---
-  motorLeftPID.Kp       = 0.87;    // motor wheel PID controller
+  motorLeftPID.Kp       = 1.5;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.29;
   motorLeftPID.Kd       = 0.25;
   /*// ---- fast control ---
