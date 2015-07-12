@@ -1727,8 +1727,7 @@ void Robot::readSensors(){
     } 
   }    
   
-  //if ((timerUse) && (millis() >= nextTimeRTC)) {
-  if (millis() >= nextTimeRTC) {  
+  if ((timerUse) && (millis() >= nextTimeRTC)) {
     nextTimeRTC = millis() + 60000;    
     readSensor(SEN_RTC);       // read RTC             
     Console.print(F("RTC date received: "));
