@@ -1,8 +1,8 @@
-(module ARDUINO_MEGA_SHIELD_DUO_3D (layer F.Cu) (tedit 54CA83C9)
+(module ARDUINO_MEGA_SHIELD_DUO_3D locked (layer F.Cu) (tedit 54CA83C9)
   (fp_text reference SHIELD1 (at 70.612 -24.892) (layer F.SilkS)
     (effects (font (thickness 0.3048)))
   )
-  (fp_text value ARDUINO_MEGA_SHIELD_DUO (at 69.596 -21.082) (layer F.SilkS) hide
+  (fp_text value ARDUINO_MEGA_SHIELD (at 69.596 -21.082) (layer F.SilkS) hide
     (effects (font (thickness 0.3048)))
   )
   (fp_line (start 99.06 0) (end 0 0) (layer F.SilkS) (width 0.381))
@@ -106,6 +106,11 @@
   (pad FREI thru_hole oval (at 27.94 -2.54 90) (size 2.54 1.524) (drill 0.812) (layers *.Cu *.Mask F.SilkS))
   (model ../../../../../Users/Uwe/Downloads/ardumower/pcb/megashield_svn_1.3_geoeffnet/arduino_mega_header.wrl
     (at (xyz 1.95 1.05 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model Arduino_Shield_Modules_for_KiCad_V3/ArduinoMegaShield.wrl
+    (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )

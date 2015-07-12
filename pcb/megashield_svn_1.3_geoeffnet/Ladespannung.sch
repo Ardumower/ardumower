@@ -1,7 +1,9 @@
 EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-cache
 LIBS:Wlan_ESP8266
 LIBS:power
-LIBS:ardumower mega shield svn-cache
+LIBS:conn
+LIBS:uln-udn
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -68,8 +70,8 @@ L GND #PWR164
 U 1 1 554C8CE8
 P 6340 2600
 AR Path="/554BCB67/554C8CE8" Ref="#PWR164"  Part="1" 
-AR Path="/554C1C35/554C8CE8" Ref="#PWR0175"  Part="1" 
-F 0 "#PWR0175" H 6340 2350 60  0001 C CNN
+AR Path="/554C1C35/554C8CE8" Ref="#PWR0261"  Part="1" 
+F 0 "#PWR0261" H 6340 2350 60  0001 C CNN
 F 1 "GND" H 6340 2450 60  0000 C CNN
 F 2 "" H 6340 2600 60  0000 C CNN
 F 3 "" H 6340 2600 60  0000 C CNN
@@ -83,8 +85,8 @@ L GND #PWR165
 U 1 1 554BDA01
 P 6660 2600
 AR Path="/554BCB67/554BDA01" Ref="#PWR165"  Part="1" 
-AR Path="/554C1C35/554BDA01" Ref="#PWR0176"  Part="1" 
-F 0 "#PWR0176" H 6660 2350 60  0001 C CNN
+AR Path="/554C1C35/554BDA01" Ref="#PWR0262"  Part="1" 
+F 0 "#PWR0262" H 6660 2350 60  0001 C CNN
 F 1 "GND" H 6660 2450 60  0000 C CNN
 F 2 "" H 6660 2600 60  0000 C CNN
 F 3 "" H 6660 2600 60  0000 C CNN
@@ -95,8 +97,6 @@ Wire Wire Line
 	6660 2395 6660 2600
 Wire Wire Line
 	6660 1870 6660 1995
-Wire Wire Line
-	5875 1870 6900 1870
 Connection ~ 6340 1870
 Text HLabel 5625 1150 0    60   Input ~ 0
 Ladespannung
@@ -107,32 +107,6 @@ Wire Wire Line
 Text GLabel 6900 1870 2    60   Output ~ 0
 pinChargeVoltage
 Connection ~ 6660 1870
-$Comp
-L Kondensator CC20
-U 1 1 5558A184
-P 5875 2175
-F 0 "CC20" H 5925 2275 50  0000 L CNN
-F 1 "100nF" H 5925 2075 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 5875 2175 60  0001 C CNN
-F 3 "" H 5875 2175 60  0000 C CNN
-F 4 "R: KERKO 100N" H 5875 2175 60  0001 C CNN "Bestellnummer"
-F 5 "http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&ACTION=3&LA=2&ARTICLE=9265&GROUPID=3169&artnr=KERKO+100N" H 5875 2175 60  0001 C CNN "Bestelllink"
-	1    5875 2175
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	5875 1870 5875 1975
-Wire Wire Line
-	5875 2375 5875 2600
-$Comp
-L GND #PWR0177
-U 1 1 5558A294
-P 5875 2600
-F 0 "#PWR0177" H 5875 2350 60  0001 C CNN
-F 1 "GND" H 5875 2450 60  0000 C CNN
-F 2 "" H 5875 2600 60  0000 C CNN
-F 3 "" H 5875 2600 60  0000 C CNN
-	1    5875 2600
-	1    0    0    -1  
-$EndComp
+	6900 1870 6340 1870
 $EndSCHEMATC
