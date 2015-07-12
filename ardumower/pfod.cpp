@@ -1259,30 +1259,30 @@ void RemoteControl::run(){
     }
   } else if (pfodState == PFOD_PLOT_PERIMETER){    
     if (millis() >= nextPlotTime){
-      if (perimeterCaptureIdx == 32*3){
-        if (ADCMan.isCaptureComplete(A5)){
-          int8_t *samples = ADCMan.getCapture(A5);      
-          memcpy(perimeterCapture, samples, 32);
-          perimeterCaptureIdx = 0;
-        }
+
+      if (perimeterCaptureIdx>=RAW_SIGNAL_SAMPLE_SIZE*3)
+              perimeterCaptureIdx = 0;
+
+      if (perimeterCaptureIdx == 0) {
+        // Get new Perimeter sample to plot
+        memcpy(perimeterCapture, robot->perimeter.getRawSignalSample(0), RAW_SIGNAL_SAMPLE_SIZE);
       }
-      if (perimeterCaptureIdx < 32*3){      
-        nextPlotTime = millis() + 200;            
-        Bluetooth.print(perimeterCapture[perimeterCaptureIdx / 3]);          
-        Bluetooth.print(",");                    
-        Bluetooth.print(robot->perimeterMag);
-        Bluetooth.print(",");
-        Bluetooth.print(robot->perimeter.getSmoothMagnitude(0));
-        Bluetooth.print(",");
-        Bluetooth.print(robot->perimeter.isInside(0));
-        Bluetooth.print(",");
-        Bluetooth.print(robot->perimeterCounter);
-        Bluetooth.print(",");        
-        Bluetooth.print(!robot->perimeter.signalTimedOut(0));        
-        Bluetooth.print(",");                
-        Bluetooth.println(robot->perimeter.getFilterQuality(0));                
-        perimeterCaptureIdx++;
-      }
+
+      nextPlotTime = millis() + 200;
+      Bluetooth.print(perimeterCapture[perimeterCaptureIdx / 3]);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->perimeterMag);
+      Bluetooth.print(",");
+      Bluetooth.print(robot->perimeter.getSmoothMagnitude(0));
+      Bluetooth.print(",");
+      Bluetooth.print(robot->perimeter.isInside(0));
+      Bluetooth.print(",");
+      Bluetooth.print(robot->perimeterCounter);
+      Bluetooth.print(",");
+      Bluetooth.print(!robot->perimeter.signalTimedOut(0));
+      Bluetooth.print(",");
+      Bluetooth.println(robot->perimeter.getFilterQuality(0));
+      perimeterCaptureIdx++;
     }
   } else if (pfodState == PFOD_PLOT_GPS){
     if (millis() >= nextPlotTime){

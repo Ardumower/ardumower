@@ -98,8 +98,16 @@ void Perimeter::speedTest(){
   Console.println(loops);
 }
 
+const int8_t* Perimeter::getRawSignalSample(byte idx) {
+  return rawSignalSample[idx];
+}
+
 int Perimeter::getMagnitude(byte idx){  
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
+    // Keep a sample of the raw signal
+    memset(rawSignalSample[idx], 0, RAW_SIGNAL_SAMPLE_SIZE);
+    memcpy(rawSignalSample[idx], ADCMan.getCapture(idxPin[idx]), min(ADCMan.getCaptureSize(idxPin[0]), RAW_SIGNAL_SAMPLE_SIZE));
+    // Process signal
     matchedFilter(idx);
   }
   return mag[idx];

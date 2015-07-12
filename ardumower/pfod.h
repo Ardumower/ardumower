@@ -40,6 +40,7 @@
 #include <Arduino.h>
 #include "drivers.h"
 #include "pid.h"
+#include "perimeter.h"
 
 // pfodApp state
 enum { PFOD_OFF, PFOD_MENU, PFOD_LOG_SENSORS, 
@@ -64,7 +65,7 @@ class RemoteControl
     byte pfodState;
     int testmode;
     unsigned long nextPlotTime;
-    int8_t perimeterCapture[32]; 
+    int8_t perimeterCapture[RAW_SIGNAL_SAMPLE_SIZE];
     int perimeterCaptureIdx;        
     float stringToFloat(String &s);   
 
