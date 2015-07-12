@@ -456,7 +456,9 @@ void Mower::setup(){
   ADCMan.setCapture(pinVoltageMeasurement, 1, false);    
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
     
-  imu.init(pinBuzzer);
+  if (imuUse)
+	  imu.init(pinBuzzer);
+	  
   gps.init();
 
   Robot::setup();  
