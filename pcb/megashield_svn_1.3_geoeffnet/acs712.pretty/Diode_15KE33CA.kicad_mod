@@ -1,4 +1,4 @@
-(module Diode_15KE33CA (layer F.Cu) (tedit 55548248)
+(module Diode_15KE33CA (layer F.Cu) (tedit 55624909)
   (descr "Diode, DO-15 package")
   (fp_text reference KE2 (at 0 0.127) (layer F.SilkS)
     (effects (font (thickness 0.3048)))
@@ -24,8 +24,8 @@
   (fp_line (start -3.8 1.8) (end -3.8 -1.8) (layer F.SilkS) (width 0.3048))
   (fp_line (start 6 0) (end 3.8 0) (layer F.SilkS) (width 0.3048))
   (fp_line (start -6 0) (end -3.8 0) (layer F.SilkS) (width 0.3048))
-  (pad 1 thru_hole circle (at -6 0) (size 2 2) (drill 1) (layers *.Cu *.Mask F.SilkS))
-  (pad 2 thru_hole circle (at 6 0) (size 2 2) (drill 1) (layers *.Cu *.Mask F.SilkS))
+  (pad 1 thru_hole circle (at -6 0) (size 2.2 2.2) (drill 1.2) (layers *.Cu *.Mask F.SilkS))
+  (pad 2 thru_hole circle (at 6 0) (size 2.2 2.2) (drill 1.2) (layers *.Cu *.Mask F.SilkS))
   (model walter/pth_diodes/diode_do35.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1.6 1.6 1.6))

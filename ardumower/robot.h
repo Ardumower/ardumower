@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "1.0.2a3-Azurit"
+#define VER "1.0a4-Azurit"
  
 
 // sensors
@@ -124,6 +124,7 @@ enum {
   ERR_ADC_CALIB,
   ERR_IMU_CALIB,
   ERR_EEPROM_DATA,
+  ERR_STUCK,
   // <---- add new error types here (NOTE: increase MAGIC to avoid corrupt EEPROM error data!)
   ERR_ENUM_COUNT,  
 };  
@@ -150,6 +151,9 @@ enum {
   STATE_STATION_FORW,  // charge forward
   STATE_MANUAL,       // manual navigation  
   STATE_ROLL_WAIT,    // drive roll right/left
+  STATE_PERI_OUT_FORW, // outside perimeter forward driving without checkPerimeterBoundary()
+  STATE_PERI_OUT_REV,   // outside perimeter reverse driving without checkPerimeterBoundary()
+  STATE_PERI_OUT_ROLL,   // outside perimeter rolling driving without checkPerimeterBoundary()
 };
 
 // roll types
@@ -201,6 +205,10 @@ class Robot
     float gpsX ;   // X position (m)
     float gpsY ;   // Y position (m)
     unsigned long nextTimeGPS ;
+    unsigned long nextTimeCheckIfStucked ;
+    float stuckedIfGpsSpeedBelow ;
+    int gpsSpeedIgnoreTime ; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
+    int robotIsStuckedCounter ;
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
@@ -242,6 +250,7 @@ class Robot
     int motorMowRpmCounter ;  // mower motor speed state
     boolean motorMowRpmLastState ;
     boolean motorMowEnable ;
+    boolean motorMowEnableOverride ; // user switch for mower motor on/off has highest priority
     // --------- wheel motor state ----------------------------
     // wheel motor speed ( <0 backward, >0 forward); range -motorSpeedMaxRpm..motorSpeedMaxRpm
     float motorAccel  ;  // motor wheel acceleration (warning: do not set too high)
@@ -253,6 +262,7 @@ class Robot
     float motorSenseRightScale ; // motor right sense scale (mA=(ADC-zero)/scale)
     float motorSenseLeftScale ; // motor left sense scale  (mA=(ADC-zero)/scale)
     int motorRollTimeMax ;  // max. roll time (ms)
+    int motorRollTimeMin  ; // min. roll time (ms)
     int motorReverseTime ;  // max. reverse time (ms)
     long motorForwTimeMax; // max. forward time (ms) / timeout
     float motorBiDirSpeedRatio1 ;   // bidir mow pattern speed ratio 1
@@ -277,6 +287,8 @@ class Robot
     unsigned long lastSetMotorSpeedTime;
     unsigned long motorLeftZeroTimeout;
     unsigned long motorRightZeroTimeout;
+    boolean rotateLeft;
+    unsigned long nextTimeRotationChange;
     // -------- mower motor state -----------------------
     // mower motor sppeed; range 0..motorMowSpeedMaxPwm
     float motorMowAccel       ;  // motor mower acceleration (warning: do not set too high)
@@ -296,8 +308,13 @@ class Robot
     int motorMowRpmCurr ;            // motor rpm (range 0..MOW_RPM)
     unsigned long lastMotorMowRpmTime;    
     unsigned long nextTimeMotorControl;
+    unsigned long nextTimeMotorImuControl ;
+    unsigned long nextTimeMotorPerimeterControl;
     unsigned long nextTimeMotorMowControl;
     int lastMowSpeedPWM;
+    unsigned long lastSetMotorMowSpeedTime;
+    unsigned long nextTimeCheckCurrent;
+    unsigned long lastTimeMotorMowStucked;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     
@@ -326,12 +343,16 @@ class Robot
     byte   imuRollDir;
     //point_float_t accMin;
     //point_float_t accMax;
-    unsigned long nextTimeIMU ;
+    unsigned long nextTimeIMU ; //read IMU data
+    unsigned long nextTimeCheckTilt; // check if
     // ------- perimeter state --------------------------
     Perimeter perimeter;
     char perimeterUse       ;      // use perimeter?    
-    int perimeterTrackRollTime ;   // perimter tracking roll time (ms)
-    int perimeterTrackRevTime  ;   // perimter tracking reverse time (ms)
+    int perimeterOutRollTimeMax ;   
+    int perimeterOutRollTimeMin ;
+    int perimeterOutRevTime  ;   
+    int perimeterTrackRollTime ; // perimeter tracking roll time (ms)
+    int perimeterTrackRevTime ; // perimeter tracking reverse time (ms)
     PID perimeterPID ;             // perimeter PID controller
     int perimeterMag ;             // perimeter magnitude
     boolean perimeterInside ;      // is inside perimeter?
@@ -369,8 +390,10 @@ class Robot
     unsigned int sonarDistRight ;
     unsigned int sonarDistLeft ; 
     unsigned int sonarDistCounter ;
+    unsigned int tempSonarDistCounter ;
     unsigned long sonarObstacleTimeout ;
     unsigned long nextTimeSonar ;
+    unsigned long nextTimeCheckSonar ;
     // --------- pfodApp ----------------------------------
     RemoteControl rc; // pfodApp
     unsigned long nextTimePfodLoop ;    
@@ -410,6 +433,12 @@ class Robot
     int stationCheckTime   ;    // charge station reverse check time (ms)
     unsigned long nextTimeBattery ;    
     unsigned long nextTimeCheckBattery;
+    int statsBatteryChargingCounter;
+    int statsBatteryChargingCounterTotal;
+    float  statsBatteryChargingCapacityTrip;
+    float statsBatteryChargingCapacityTotal;
+    float statsBatteryChargingCapacityAverage;
+    float lastTimeBatCapacity;
     // --------- error counters --------------------------
     byte errorCounterMax[ERR_ENUM_COUNT];
     byte errorCounter[ERR_ENUM_COUNT];    
@@ -426,7 +455,15 @@ class Robot
     unsigned long nextTimeButton ;
     unsigned long nextTimeErrorCounterReset;    
     unsigned long nextTimeErrorBeep ;  
-    // ---------------------------------------
+    // ------------robot stats---------------------------
+    boolean statsOverride ;
+    boolean statsMowTimeTotalStart ;
+    unsigned int statsMowTimeMinutesTripCounter ;
+    unsigned long statsMowTimeMinutesTotal ;
+    float statsMowTimeHoursTotal ;
+    int statsMowTimeMinutesTrip ;
+    unsigned long nextTimeRobotStats ;
+    // --------------------------------------------------
     Robot();
     // robot setup
     virtual void setup();
@@ -463,6 +500,7 @@ class Robot
     // settings
     virtual void deleteUserSettings();        
     virtual void saveUserSettings();
+    virtual void deleteRobotStats();
     
     // other
     virtual void beep(int numberOfBeeps, boolean shortbeep);    
@@ -477,6 +515,7 @@ protected:
     virtual int rcValue(int ppmTime);
     virtual void loadSaveErrorCounters(boolean readflag);
     virtual void loadSaveUserSettings(boolean readflag);
+    virtual void loadSaveRobotStats(boolean readflag);
     virtual void loadUserSettings();
     virtual void checkErrorCounter();
     virtual void printSettingSerial();
@@ -503,6 +542,8 @@ protected:
     virtual void checkRain();
     virtual void checkTimeout();
     virtual void checkOdometryFaults();
+    virtual void checkIfStucked();
+    virtual void checkRobotStats();
     
     // motor controllers
     virtual void motorControl();    

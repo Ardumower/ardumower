@@ -234,6 +234,7 @@ unsigned int readHCSR04(int triggerPin, int echoPin){
   digitalWrite(triggerPin, LOW);
   uS = pulseIn(echoPin, HIGH, MAX_ECHO_TIME + 1000);  
   if (uS > MAX_ECHO_TIME) uS = NO_ECHO;
+  else if (uS < MIN_ECHO_TIME) uS = NO_ECHO;
   return uS;
 }
 
