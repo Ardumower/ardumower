@@ -238,7 +238,7 @@ Mower::Mower(){
   odometryLeftSwapDir  = 1;       // inverse left encoder direction?
   // ----- GPS -------------------------------------------
   gpsUse            = 0;       // use GPS?
-  stuckedIfGpsSpeedBelow = 0.2; // if Gps speed is below given value the mower is stucked
+  stuckIfGpsSpeedBelow = 0.2; // if Gps speed is below given value the mower is stuck
   gpsSpeedIgnoreTime = 5000; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
 
   // ----- other -----------------------------------------
