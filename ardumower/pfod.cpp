@@ -255,7 +255,7 @@ void RemoteControl::sendErrorMenu(boolean update){
   Bluetooth.print(robot->errorCounterMax[ERR_GPS_COMM]);  
   Bluetooth.print(F("|zz~GPS data "));
   Bluetooth.print(robot->errorCounterMax[ERR_GPS_DATA]);
-  Bluetooth.print(F("|zz~Robot stucked "));
+  Bluetooth.print(F("|zz~Robot stuck "));
   Bluetooth.print(robot->errorCounterMax[ERR_STUCK]);
   Bluetooth.print(F("|zz~EEPROM data "));
   Bluetooth.print(robot->errorCounterMax[ERR_EEPROM_DATA]); 
@@ -571,14 +571,14 @@ void RemoteControl::sendGPSMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.GPS`1000"));         
   Bluetooth.print(F("|q00~Use "));
   sendYesNo(robot->gpsUse);
-  sendSlider("q01", F("Stucked if GPS speed is below"), robot->stuckedIfGpsSpeedBelow, "", 0.1, 3); 
+  sendSlider("q01", F("Stuck if GPS speed is below"), robot->stuckIfGpsSpeedBelow, "", 0.1, 3); 
   sendSlider("q02", F("GPS speed ignore time"), robot->gpsSpeedIgnoreTime, "", 1, 10000, robot->motorReverseTime);       
   Bluetooth.println("}");                
 }
 
 void RemoteControl::processGPSMenu(String pfodCmd){      
   if (pfodCmd == "q00") robot->gpsUse = !robot->gpsUse;
-  else if (pfodCmd.startsWith("q01")) processSlider(pfodCmd, robot->stuckedIfGpsSpeedBelow, 0.1);  
+  else if (pfodCmd.startsWith("q01")) processSlider(pfodCmd, robot->stuckIfGpsSpeedBelow, 0.1);  
   else if (pfodCmd.startsWith("q02")) processSlider(pfodCmd, robot->gpsSpeedIgnoreTime, 1);  
   sendGPSMenu(true);
 }

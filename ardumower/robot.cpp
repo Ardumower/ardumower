@@ -89,7 +89,7 @@ Robot::Robot(){
   lastMowSpeedPWM = 0;
   lastSetMotorMowSpeedTime = 0;
   nextTimeCheckCurrent = 0;
-  lastTimeMotorMowStucked = 0;
+  lastTimeMotorMowStuck = 0;
 
   bumperLeftCounter = bumperRightCounter = 0;
   bumperLeft = bumperRight = false;          
@@ -98,7 +98,7 @@ Robot::Robot(){
    dropLeft = dropRight = false;                                                                                                        // Dropsensor - Absturzsensor
   
   gpsLat = gpsLon = gpsX = gpsY = 0;
-  robotIsStuckedCounter = 0;
+  robotIsStuckCounter = 0;
 
   imuDriveHeading = 0;
   imuRollHeading = 0;
@@ -159,7 +159,7 @@ Robot::Robot(){
   nextTimeTimer = millis() + 60000;
   nextTimeRTC = 0;
   nextTimeGPS = 0;
-  nextTimeCheckIfStucked = 0;
+  nextTimeCheckIfStuck = 0;
   nextTimePfodLoop = 0;
   nextTimeRain = 0;
   lastMotorMowRpmTime = millis();
@@ -324,7 +324,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, timer);  
   eereadwrite(readflag, addr, rainUse);
   eereadwrite(readflag, addr, gpsUse);
-  eereadwrite(readflag, addr, stuckedIfGpsSpeedBelow);
+  eereadwrite(readflag, addr, stuckIfGpsSpeedBelow);
   eereadwrite(readflag, addr, gpsSpeedIgnoreTime);
   eereadwrite(readflag, addr, dropUse);   
   eereadwrite(readflag, addr, statsOverride);   
@@ -553,8 +553,8 @@ void Robot::printSettingSerial(){
 // ----- GPS -------------------------------------------
   Console.print  (F("gpsUse : "));
   Console.println(gpsUse); 
-  Console.print  (F("stuckedIfGpsSpeedBelow : "));
-  Console.println(stuckedIfGpsSpeedBelow); 
+  Console.print  (F("stuckIfGpsSpeedBelow : "));
+  Console.println(stuckIfGpsSpeedBelow); 
   Console.print  (F("gpsSpeedIgnoreTime : "));
   Console.println(gpsSpeedIgnoreTime); 
   
@@ -2167,7 +2167,7 @@ void Robot::checkCurrent(){
   else{ 
       errorCounterMax[ERR_MOW_SENSE] = 0;
       motorMowSenseCounter = 0;
-      if (millis() >= lastTimeMotorMowStucked + 30000){ // wait 30 seconds before switching on again
+      if (millis() >= lastTimeMotorMowStuck + 30000){ // wait 30 seconds before switching on again
         errorCounter[ERR_MOW_SENSE] = 0;
         motorMowEnable = true;
       }
@@ -2178,7 +2178,7 @@ void Robot::checkCurrent(){
       motorMowEnable = false;
       Console.println("Error: Motor mow current");
       addErrorCounter(ERR_MOW_SENSE);
-      lastTimeMotorMowStucked = millis();
+      lastTimeMotorMowStuck = millis();
      // if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
      //else reverseOrBidir(RIGHT); 
   }       
@@ -2410,10 +2410,10 @@ void Robot::checkTilt(){
   }
 }
 
-// check if mower is stucked ToDo: take HDOP into consideration if gpsSpeed is reliable
-void Robot::checkIfStucked(){
-  if (millis() < nextTimeCheckIfStucked) return;
-  nextTimeCheckIfStucked = millis() + 300;
+// check if mower is stuck ToDo: take HDOP into consideration if gpsSpeed is reliable
+void Robot::checkIfStuck(){
+  if (millis() < nextTimeCheckIfStuck) return;
+  nextTimeCheckIfStuck = millis() + 300;
   if ((gpsUse) && (gps.hdop() < 500))  {
   //float gpsSpeedRead = gps.f_speed_kmph();
   float gpsSpeed = gps.f_speed_kmph();
@@ -2422,15 +2422,15 @@ void Robot::checkIfStucked(){
    // double accel = 0.1;
    // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
    // Console.println(gpsSpeed);
-     // Console.println(robotIsStuckedCounter);
+     // Console.println(robotIsStuckCounter);
      // Console.println(errorCounter[ERR_STUCK]);
-  if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckedIfGpsSpeedBelow)    // checks if mower is stucked and counts up
+  if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckIfGpsSpeedBelow)    // checks if mower is stuck and counts up
       && ((motorLeftRpmCurr && motorRightRpmCurr) != 0) && (millis() > stateStartTime + gpsSpeedIgnoreTime) ){
-      robotIsStuckedCounter++;
+      robotIsStuckCounter++;
   }
 
-    else {                         // if mower gets unstucked it resets errorCounterMax to zero and reenabling motorMow
-        robotIsStuckedCounter = 0;    // resets temporary counter to zero
+    else {                         // if mower gets unstuck it resets errorCounterMax to zero and reenabling motorMow
+        robotIsStuckCounter = 0;    // resets temporary counter to zero
     if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
         && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
         && (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
@@ -2441,15 +2441,15 @@ void Robot::checkIfStucked(){
     return;
   }
 
-  if (robotIsStuckedCounter >= 5){    
+  if (robotIsStuckCounter >= 5){    
     motorMowEnable = false;
-    if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stucked and unable to move
-    Console.println(F("Error: Mower is stucked"));
+    if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stuck and unable to move
+    Console.println(F("Error: Mower is stuck"));
     addErrorCounter(ERR_STUCK);
     setNextState(STATE_ERROR,0);    //mower is switched into ERROR
-    //robotIsStuckedCounter = 0;
+    //robotIsStuckCounter = 0;
     }
-      else if (errorCounter[ERR_STUCK] < 3) {   // mower tries 3 times to get unstucked
+      else if (errorCounter[ERR_STUCK] < 3) {   // mower tries 3 times to get unstuck
         if (stateCurr == STATE_FORWARD){
       motorMowEnable = false;
       addErrorCounter(ERR_STUCK);             
@@ -2536,7 +2536,7 @@ void Robot::loop()  {
   if (rc.readSerial()) resetIdleTime();
   readSensors(); 
   checkBattery(); 
-  checkIfStucked();
+  checkIfStuck();
   checkRobotStats();
   calcOdometry();
   checkOdometryFaults();    
