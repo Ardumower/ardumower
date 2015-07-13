@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:/Users/Uwe/Downloads/sender_v2/Perimeter sender v2.sch</source>
+    <date>08.02.2015 16:01:53</date>
+    <tool>Eeschema (2015-01-23 BZR 5386)-product</tool>
+  </design>
+  <components>
+    <comp ref="U3">
+      <value>MC33926</value>
+      <footprint>sender_v2:MC_33926_31polig_mit_Bohrloch_neue_Masse</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="MC33926"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>53A98109</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>220R</value>
+      <footprint>Zacs712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>53A992CD</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>220R</value>
+      <footprint>sender_v2:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>53A992DC</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>DC-DC_Stepdown</value>
+      <footprint>sender_v2:DC_DC_DSN2596_mit_Bohrloch</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="DC-DC_Stepdown"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D4FA89</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>Vin 24V</value>
+      <footprint>sender_v2:Aschlussklemme_2p_3D</footprint>
+      <libsource lib="conn" part="CONN_01X02"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D4FE5B</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>VOut 24V</value>
+      <footprint>sender_v2:Aschlussklemme_2p_3D</footprint>
+      <libsource lib="conn" part="CONN_01X02"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D4FE86</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>INA 169</value>
+      <footprint>sender_v2:INA169</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="Perimeter sender v2-cache" part="ACS712"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D51331</tstamp>
+    </comp>
+    <comp ref="RV1">
+      <value>POT</value>
+      <footprint>sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D</footprint>
+      <libsource lib="device" part="POT"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D524A0</tstamp>
+    </comp>
+    <comp ref="JP1">
+      <value>pwr12V</value>
+      <footprint>sender_v2:Pin_Header_Straight_1x02</footprint>
+      <libsource lib="device" part="JUMPER"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D53A2E</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>220R</value>
+      <footprint>sender_v2:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D53F97</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>220R</value>
+      <footprint>sender_v2:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D5424D</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>220R</value>
+      <footprint>sender_v2:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D5428C</tstamp>
+    </comp>
+    <comp ref="EF1">
+      <value>F_5A</value>
+      <footprint>sender_v2:Fuseholder_Reichelt_PL112000</footprint>
+      <fields>
+        <field name="Bestellnummer">R: PL112000</field>
+      </fields>
+      <libsource lib="Perimeter sender v2-cache" part="F_10A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D55253</tstamp>
+    </comp>
+    <comp ref="P3">
+      <value>Status LED</value>
+      <footprint>sender_v2:Pin_Header_Straight_1x06</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="Perimeter sender v2-cache" part="CONN_6"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D5527A</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100uF</value>
+      <footprint>sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <libsource lib="device" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D55373</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100uF</value>
+      <footprint>sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <libsource lib="device" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D555BA</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>MBR 1045</value>
+      <footprint>sender_v2:MBR1045_Horizontal</footprint>
+      <libsource lib="device" part="DIODE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D55CFC</tstamp>
+    </comp>
+    <comp ref="P4">
+      <value>V.LED</value>
+      <footprint>sender_v2:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="Perimeter sender v2-cache" part="CONN_3"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D57EFB</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>220R</value>
+      <footprint>sender_v2:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D586F5</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>220R</value>
+      <footprint>sender_v2:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D588A5</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>ARDUINO_NANO</value>
+      <footprint>sender_v2:arduino_nano</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="arduino_shieldsNCL" part="ARDUINO_NANO"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D6487C</tstamp>
+    </comp>
+    <comp ref="B1">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>sender_v2:Bohrloch_3,2mm</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D689DE</tstamp>
+    </comp>
+    <comp ref="B2">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>sender_v2:Bohrloch_3,2mm</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D68AA0</tstamp>
+    </comp>
+    <comp ref="B3">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>sender_v2:Bohrloch_3,2mm</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D68AE1</tstamp>
+    </comp>
+    <comp ref="B4">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>sender_v2:Bohrloch_3,2mm</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D68B23</tstamp>
+    </comp>
+    <comp ref="B5">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>sender_v2:Bohrloch_3,2mm</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D68B6A</tstamp>
+    </comp>
+    <comp ref="B6">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>sender_v2:Bohrloch_3,2mm</footprint>
+      <libsource lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54D68BA6</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="arduino_shieldsNCL" part="ARDUINO_NANO">
+      <fields>
+        <field name="Reference">SHIELD</field>
+        <field name="Value">ARDUINO_NANO</field>
+      </fields>
+      <pins>
+        <pin num="5V" name="5V" type="BiDi"/>
+        <pin num="3V3" name="3V3" type="input"/>
+        <pin num="A0" name="A0" type="input"/>
+        <pin num="A1" name="A1" type="power_in"/>
+        <pin num="A2" name="A2" type="power_in"/>
+        <pin num="A3" name="A3" type="power_in"/>
+        <pin num="A4" name="A4" type="power_in"/>
+        <pin num="A5" name="A5" type="power_in"/>
+        <pin num="A6" name="A6" type="BiDi"/>
+        <pin num="A7" name="A7" type="BiDi"/>
+        <pin num="D2" name="D2" type="BiDi"/>
+        <pin num="D3" name="D3" type="BiDi"/>
+        <pin num="D4" name="D4" type="BiDi"/>
+        <pin num="D5" name="D5" type="BiDi"/>
+        <pin num="D6" name="D6" type="BiDi"/>
+        <pin num="D7" name="D7" type="BiDi"/>
+        <pin num="D8" name="D8" type="BiDi"/>
+        <pin num="D9" name="D9" type="BiDi"/>
+        <pin num="D10" name="D10" type="BiDi"/>
+        <pin num="D11" name="D11" type="BiDi"/>
+        <pin num="D12" name="D12" type="power_in"/>
+        <pin num="D13" name="D13" type="input"/>
+        <pin num="GND0" name="GND0" type="BiDi"/>
+        <pin num="GND1" name="GND1" type="BiDi"/>
+        <pin num="REF" name="REF" type="input"/>
+        <pin num="RST0" name="RST0" type="BiDi"/>
+        <pin num="RST1" name="RST1" type="BiDi"/>
+        <pin num="RX0" name="RX0" type="BiDi"/>
+        <pin num="TX1" name="TX1" type="BiDi"/>
+        <pin num="VIN" name="VIN" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="CP1">
+      <description>Condensateur polarise</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="DIODE">
+      <description>Diode simple</description>
+      <footprints>
+        <fp>D?</fp>
+        <fp>S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">DIODE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="JUMPER">
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">JUMPER</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="POT">
+      <description>Potentionmetre</description>
+      <fields>
+        <field name="Reference">RV</field>
+        <field name="Value">POT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistance</description>
+      <footprints>
+        <fp>R?</fp>
+        <fp>SM0603</fp>
+        <fp>SM0805</fp>
+        <fp>R?-*</fp>
+        <fp>SM1206</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X02">
+      <footprints>
+        <fp>Pin_Header_Straight_1X02</fp>
+        <fp>Pin_Header_Angled_1X02</fp>
+        <fp>Socket_Strip_Straight_1X02</fp>
+        <fp>Socket_Strip_Angled_1X02</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="ACS712">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ACS712</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VCC" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="OUT" type="output"/>
+        <pin num="4" name="IP+" type="input"/>
+        <pin num="5" name="IP-" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="Bohrloch_3,2mm">
+      <fields>
+        <field name="Reference">B</field>
+        <field name="Value">Bohrloch_3,2mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B3,2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="CONN_3">
+      <fields>
+        <field name="Reference">K</field>
+        <field name="Value">CONN_3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="PM" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="CONN_6">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="DC-DC_Stepdown">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DC-DC_Stepdown</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="output"/>
+        <pin num="2" name="Vout" type="output"/>
+        <pin num="3" name="VIN" type="input"/>
+        <pin num="4" name="GND" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="F_10A">
+      <fields>
+        <field name="Reference">EF</field>
+        <field name="Value">F_10A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="power_in"/>
+        <pin num="2" name="~" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Perimeter sender v2-cache" part="MC33926">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MC33926</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="input"/>
+        <pin num="2" name="GND" type="input"/>
+        <pin num="3" name="Vdd" type="input"/>
+        <pin num="4" name="M1IN2" type="input"/>
+        <pin num="5" name="M1IN1" type="input"/>
+        <pin num="6" name="M1nD2" type="input"/>
+        <pin num="7" name="M1D1" type="input"/>
+        <pin num="8" name="M1nSF" type="input"/>
+        <pin num="9" name="M1FB" type="input"/>
+        <pin num="10" name="EN" type="input"/>
+        <pin num="11" name="SLEW" type="input"/>
+        <pin num="12" name="INV" type="input"/>
+        <pin num="13" name="M2IN2" type="input"/>
+        <pin num="14" name="M2IN1" type="input"/>
+        <pin num="15" name="M2nD2" type="input"/>
+        <pin num="16" name="M2D1" type="input"/>
+        <pin num="17" name="M2nSF" type="input"/>
+        <pin num="18" name="M2_FB" type="input"/>
+        <pin num="19" name="M1OUT1" type="input"/>
+        <pin num="20" name="M1OUT2" type="input"/>
+        <pin num="21" name="GND" type="input"/>
+        <pin num="22" name="VIN" type="input"/>
+        <pin num="23" name="M2OUT1" type="input"/>
+        <pin num="24" name="M2OUT2" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="arduino_shieldsNCL">
+      <uri>C:\Users\Uwe\Downloads\sender_v2\arduino_shieldsNCL.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>C:\Program Files (x86)\KiCAD\share\library\device.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>C:\Program Files (x86)\KiCAD\share\library\conn.lib</uri>
+    </library>
+    <library logical="Perimeter sender v2-cache">
+      <uri>C:\Users\Uwe\Downloads\sender_v2\Perimeter sender v2-cache.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+5V">
+      <node ref="U3" pin="3"/>
+      <node ref="R1" pin="1"/>
+      <node ref="U3" pin="15"/>
+      <node ref="U4" pin="5V"/>
+      <node ref="C1" pin="1"/>
+      <node ref="RV1" pin="3"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="2" name="+12V">
+      <node ref="U3" pin="22"/>
+      <node ref="C2" pin="1"/>
+      <node ref="U4" pin="VIN"/>
+      <node ref="JP1" pin="2"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="3" name="GND">
+      <node ref="U3" pin="16"/>
+      <node ref="U3" pin="2"/>
+      <node ref="P4" pin="1"/>
+      <node ref="U3" pin="21"/>
+      <node ref="U2" pin="1"/>
+      <node ref="U2" pin="4"/>
+      <node ref="P1" pin="2"/>
+      <node ref="P2" pin="2"/>
+      <node ref="RV1" pin="1"/>
+      <node ref="U1" pin="2"/>
+      <node ref="U4" pin="GND1"/>
+      <node ref="P3" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C2" pin="2"/>
+    </net>
+    <net code="4" name="Net-(U3-Pad23)">
+      <node ref="U3" pin="23"/>
+    </net>
+    <net code="5" name="Net-(D1-Pad2)">
+      <node ref="U2" pin="3"/>
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="6" name="M1_DuoLED_Schleife1_Rot">
+      <node ref="P3" pin="4"/>
+      <node ref="R5" pin="1"/>
+    </net>
+    <net code="7" name="Net-(D1-Pad1)">
+      <node ref="U1" pin="4"/>
+      <node ref="EF1" pin="1"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="8" name="M2_DuoLED_Schleife2_Rot">
+      <node ref="P3" pin="6"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="9" name="M2_DuoLED_Schleife2_Grün">
+      <node ref="R6" pin="1"/>
+      <node ref="P3" pin="5"/>
+    </net>
+    <net code="10" name="M1_DuoLED_Schleife1_Grün">
+      <node ref="R7" pin="1"/>
+      <node ref="P3" pin="3"/>
+    </net>
+    <net code="11" name="Mover_in_Ladestation">
+      <node ref="P3" pin="2"/>
+      <node ref="R3" pin="1"/>
+    </net>
+    <net code="12" name="Net-(EF1-Pad2)">
+      <node ref="P1" pin="1"/>
+      <node ref="EF1" pin="2"/>
+    </net>
+    <net code="13" name="Net-(U3-Pad24)">
+      <node ref="U3" pin="24"/>
+    </net>
+    <net code="14" name="Net-(R6-Pad2)">
+      <node ref="R6" pin="2"/>
+      <node ref="U4" pin="D11"/>
+    </net>
+    <net code="15" name="Net-(R7-Pad2)">
+      <node ref="U4" pin="D9"/>
+      <node ref="R7" pin="2"/>
+    </net>
+    <net code="16" name="Net-(R3-Pad2)">
+      <node ref="U4" pin="D13"/>
+      <node ref="R3" pin="2"/>
+    </net>
+    <net code="17" name="Net-(R4-Pad2)">
+      <node ref="R4" pin="2"/>
+      <node ref="U4" pin="D12"/>
+    </net>
+    <net code="18" name="Net-(R5-Pad2)">
+      <node ref="R5" pin="2"/>
+      <node ref="U4" pin="D10"/>
+    </net>
+    <net code="19" name="Net-(JP1-Pad1)">
+      <node ref="U2" pin="2"/>
+      <node ref="JP1" pin="1"/>
+    </net>
+    <net code="20" name="Net-(U4-PadREF)">
+      <node ref="U4" pin="REF"/>
+    </net>
+    <net code="21" name="Net-(B1-Pad1)">
+      <node ref="B1" pin="1"/>
+    </net>
+    <net code="22" name="Net-(U4-Pad3V3)">
+      <node ref="U4" pin="3V3"/>
+    </net>
+    <net code="23" name="Net-(U4-PadRST0)">
+      <node ref="U4" pin="RST0"/>
+    </net>
+    <net code="24" name="Net-(U4-PadRST1)">
+      <node ref="U4" pin="RST1"/>
+    </net>
+    <net code="25" name="Net-(U4-PadGND0)">
+      <node ref="U4" pin="GND0"/>
+    </net>
+    <net code="26" name="Net-(B2-Pad1)">
+      <node ref="B2" pin="1"/>
+    </net>
+    <net code="27" name="Net-(U4-PadTX1)">
+      <node ref="U4" pin="TX1"/>
+    </net>
+    <net code="28" name="Net-(U4-PadRX0)">
+      <node ref="U4" pin="RX0"/>
+    </net>
+    <net code="29" name="Net-(B5-Pad1)">
+      <node ref="B5" pin="1"/>
+    </net>
+    <net code="30" name="Net-(U4-PadA7)">
+      <node ref="U4" pin="A7"/>
+    </net>
+    <net code="32" name="Net-(U4-PadA5)">
+      <node ref="U4" pin="A5"/>
+    </net>
+    <net code="33" name="Net-(U4-PadA4)">
+      <node ref="U4" pin="A4"/>
+    </net>
+    <net code="34" name="Net-(B4-Pad1)">
+      <node ref="B4" pin="1"/>
+    </net>
+    <net code="35" name="Net-(B6-Pad1)">
+      <node ref="B6" pin="1"/>
+    </net>
+    <net code="36" name="Net-(B3-Pad1)">
+      <node ref="B3" pin="1"/>
+    </net>
+    <net code="37" name="LED_12V">
+      <node ref="P4" pin="3"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="38" name="LED_5V">
+      <node ref="P4" pin="2"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="39" name="Net-(U4-PadA6)">
+      <node ref="U4" pin="A6"/>
+    </net>
+    <net code="40" name="INA169">
+      <node ref="U1" pin="3"/>
+      <node ref="U4" pin="A2"/>
+    </net>
+    <net code="41" name="POTI">
+      <node ref="U4" pin="A3"/>
+      <node ref="RV1" pin="2"/>
+    </net>
+    <net code="42" name="M2FB">
+      <node ref="U4" pin="A1"/>
+      <node ref="U3" pin="18"/>
+    </net>
+    <net code="43" name="Net-(U3-Pad19)">
+      <node ref="U3" pin="19"/>
+    </net>
+    <net code="44" name="Net-(U3-Pad20)">
+      <node ref="U3" pin="20"/>
+    </net>
+    <net code="45" name="Net-(U3-Pad12)">
+      <node ref="U3" pin="12"/>
+    </net>
+    <net code="46" name="Net-(U3-Pad11)">
+      <node ref="U3" pin="11"/>
+    </net>
+    <net code="47" name="M1IN2">
+      <node ref="U3" pin="4"/>
+      <node ref="U4" pin="D2"/>
+    </net>
+    <net code="48" name="M1IN1">
+      <node ref="U4" pin="D3"/>
+      <node ref="U3" pin="5"/>
+    </net>
+    <net code="49" name="M1nSF">
+      <node ref="U3" pin="8"/>
+      <node ref="U4" pin="D4"/>
+    </net>
+    <net code="50" name="EN">
+      <node ref="U4" pin="D5"/>
+      <node ref="U3" pin="10"/>
+    </net>
+    <net code="51" name="M1FB">
+      <node ref="U3" pin="9"/>
+      <node ref="U4" pin="A0"/>
+    </net>
+    <net code="52" name="Net-(P2-Pad1)">
+      <node ref="P2" pin="1"/>
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="53" name="Net-(U3-Pad1)">
+      <node ref="U3" pin="1"/>
+    </net>
+    <net code="54" name="M2IN2">
+      <node ref="U3" pin="13"/>
+      <node ref="U4" pin="D6"/>
+    </net>
+    <net code="55" name="M2IN1">
+      <node ref="U3" pin="14"/>
+      <node ref="U4" pin="D7"/>
+    </net>
+    <net code="56" name="M2nSF">
+      <node ref="U4" pin="D8"/>
+      <node ref="U3" pin="17"/>
+    </net>
+    <net code="57" name="Net-(U3-Pad7)">
+      <node ref="U3" pin="7"/>
+    </net>
+    <net code="58" name="Net-(U3-Pad6)">
+      <node ref="U3" pin="6"/>
+    </net>
+  </nets>
+</export>
