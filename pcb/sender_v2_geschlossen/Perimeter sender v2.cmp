@@ -1,0 +1,192 @@
+Cmp-Mod V01 Created by Cvpcb (2015-01-23 BZR 5386)-product   date = 08.03.2015 23:24:40
+
+BeginCmp
+TimeStamp = /54D689DE;
+Reference = B1;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = sender_v2:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D68AA0;
+Reference = B2;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = sender_v2:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D68AE1;
+Reference = B3;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = sender_v2:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D68B6A;
+Reference = B5;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = sender_v2:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D68BA6;
+Reference = B6;
+ValeurCmp = Bohrloch_3,2mm;
+IdModule  = sender_v2:Bohrloch_3,2mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D555BA;
+Reference = C1;
+ValeurCmp = 100uF;
+IdModule  = sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D55373;
+Reference = C2;
+ValeurCmp = 100uF;
+IdModule  = sender_v2:Elko_vert_11.2x6.3mm_RM2.5_RM5.0;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D55CFC;
+Reference = D1;
+ValeurCmp = MBR 1045;
+IdModule  = sender_v2:MBR1045_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D55253;
+Reference = EF1;
+ValeurCmp = F_5A;
+IdModule  = sender_v2:Fuseholder_Reichelt_PL112000;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D53A2E;
+Reference = JP1;
+ValeurCmp = pwr12V;
+IdModule  = sender_v2:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D4FE5B;
+Reference = P1;
+ValeurCmp = Vin 24V;
+IdModule  = sender_v2:Anschlussklemme_2P_RM5,08;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D4FE86;
+Reference = P2;
+ValeurCmp = VOut 24V;
+IdModule  = sender_v2:Anschlussklemme_2P_RM5,08;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F4D933;
+Reference = P3;
+ValeurCmp = Status LED;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F4E811;
+Reference = P4;
+ValeurCmp = V.LED;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D586F5;
+Reference = R1;
+ValeurCmp = 220R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D588A5;
+Reference = R2;
+ValeurCmp = 560R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D5428C;
+Reference = R3;
+ValeurCmp = 220R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D5424D;
+Reference = R4;
+ValeurCmp = 220R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A992DC;
+Reference = R5;
+ValeurCmp = 220R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D53F97;
+Reference = R6;
+ValeurCmp = 220R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A992CD;
+Reference = R7;
+ValeurCmp = 220R;
+IdModule  = sender_v2:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D524A0;
+Reference = RV1;
+ValeurCmp = 47K;
+IdModule  = sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop;
+EndCmp
+
+BeginCmp
+TimeStamp = /54FCCD61;
+Reference = RV2;
+ValeurCmp = 47K;
+IdModule  = sender_v2:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D51331;
+Reference = U1;
+ValeurCmp = INA 169;
+IdModule  = sender_v2:INA169;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D4FA89;
+Reference = U2;
+ValeurCmp = DC-DC_Stepdown;
+IdModule  = sender_v2:DC_DC_DSN2596_mit_Bohrloch;
+EndCmp
+
+BeginCmp
+TimeStamp = /53A98109;
+Reference = U3;
+ValeurCmp = MC33926;
+IdModule  = sender_v2:MC_33926_31polig_mit_Bohrloch_neue_Masse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D6487C;
+Reference = U4;
+ValeurCmp = ARDUINO_NANO;
+IdModule  = sender_v2:arduino_nano;
+EndCmp
+
+EndListe

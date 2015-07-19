@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "1.0a4-Azurit"
+#define VER "1.0b1-Azurit-dev"
  
 
 // sensors
@@ -200,10 +200,10 @@ class Robot
     float gpsX ;   // X position (m)
     float gpsY ;   // Y position (m)
     unsigned long nextTimeGPS ;
-    unsigned long nextTimeCheckIfStucked ;
-    float stuckedIfGpsSpeedBelow ;
+    unsigned long nextTimeCheckIfStuck ;
+    float stuckIfGpsSpeedBelow ;
     int gpsSpeedIgnoreTime ; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
-    int robotIsStuckedCounter ;
+    int robotIsStuckCounter ;
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
@@ -309,7 +309,7 @@ class Robot
     int lastMowSpeedPWM;
     unsigned long lastSetMotorMowSpeedTime;
     unsigned long nextTimeCheckCurrent;
-    unsigned long lastTimeMotorMowStucked;
+    unsigned long lastTimeMotorMowStuck;
     // --------- bumper state ---------------------------
     // bumper state (true = pressed)
     char bumperUse       ;      // has bumpers?     
@@ -537,7 +537,7 @@ protected:
     virtual void checkRain();
     virtual void checkTimeout();
     virtual void checkOdometryFaults();
-    virtual void checkIfStucked();
+    virtual void checkIfStuck();
     virtual void checkRobotStats();
     
     // motor controllers
