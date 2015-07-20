@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Q_NMOS_GDS
+D Transistor N-MOSFET (general)
+K nmos n-mos n-mosfet transistor
+$ENDCMP
+#
+#End Doc Library
