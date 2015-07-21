@@ -40,7 +40,7 @@
 
 // motor driver fault pin
 #define pinFault     4  // M1_nSF
-#define USE_PERI_FAULT        0     // use pinFault for driver fault detection? (set to '0' if not connected!)
+#define USE_PERI_FAULT        1     // use pinFault for driver fault detection? (set to '0' if not connected!)
 
 // motor driver feedback pin (=perimeter open/close detection, used for status LED)
 #define USE_PERI_CURRENT      1     // use pinFeedback for perimeter current measurements? (set to '0' if not connected!)
@@ -54,16 +54,17 @@
 
 // ---- sender automatic standby (via current sensor for charger) ----
 // sender detects robot via a charging current through the charging pins
-#define USE_CHG_CURRENT       0     // use charging current sensor for robot detection? (set to '0' if not connected!)
+#define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
 #define CHG_CURRENT_MIN   0.008      // minimum Ampere for charging detection
+#define ROBOT_OUT_OF_STATION_TIMEOUT_MINS 360  // timeout for perimeter switch-off if robot not in station (minutes)
 
 // ---- sender status LED ----
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
 
 
 // code version 
-#define VER "592"
+#define VER "594"
 
 // --------------------------------------
 
@@ -83,9 +84,13 @@ unsigned int chargeADCZero = 0;
 RunningMedian<unsigned int,16> periCurrentMeasurements;
 RunningMedian<unsigned int,96> chargeCurrentMeasurements;
 
+int timeSeconds = 0;
+
 unsigned long nextTimeControl = 0;
 unsigned long nextTimeInfo = 0;
 unsigned long nextTimeToggleLED = 0;
+unsigned long nextTimeSec = 0;
+int robotOutOfStationTimeMins = 0;
 
 
 // must be multiple of 2 !
@@ -200,6 +205,12 @@ void setup() {
   #ifdef USE_DEVELOPER_TEST
     Serial.println("Warning: USE_DEVELOPER_TEST activated");
   #endif
+  Serial.print("USE_PERI_FAULT=");
+  Serial.println(USE_PERI_FAULT);
+  Serial.print("USE_PERI_CURRENT=");
+  Serial.println(USE_PERI_CURRENT); 
+  Serial.print("USE_CHG_CURRENT =");
+  Serial.println(USE_CHG_CURRENT ); 
   //Serial.println("press...");
   //Serial.println("  1  for current sensor calibration");  
   //Serial.println();
@@ -261,7 +272,7 @@ void loop(){
   if (millis() >= nextTimeControl){                    
     nextTimeControl = millis() + 100;
     dutyPWM = ((int)(duty * 255.0));
-    if (isCharging){
+    if  ( (isCharging) || (robotOutOfStationTimeMins >= ROBOT_OUT_OF_STATION_TIMEOUT_MINS) ){
       // switch off perimeter 
       enableSender = false;
     } else {
@@ -277,6 +288,15 @@ void loop(){
       }    
     }
   }
+  
+  if (millis() >= nextTimeSec){
+    nextTimeSec = millis() + 1000;
+    timeSeconds++;
+    if (timeSeconds >= 60){
+      if (robotOutOfStationTimeMins < 1440) robotOutOfStationTimeMins++;
+      timeSeconds=0;
+    }
+  }
 
   if (millis() >= nextTimeInfo){                
     nextTimeInfo = millis() + 500;                
@@ -289,6 +309,7 @@ void loop(){
       chargeCurrentMeasurements.getAverage(v);        
       chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 1.1;  
       isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); 
+      if (isCharging) robotOutOfStationTimeMins = 0; // reset timeout
     }  
     
     if (USE_PERI_CURRENT) {
@@ -305,6 +326,7 @@ void loop(){
     Serial.print("\tchgCurrent=");
     Serial.print(chargeCurrent, 3);
     Serial.print("\tchgCurrentADC=");
+    v=0;
     chargeCurrentMeasurements.getAverage(v);        
     Serial.print( v );       
     Serial.print("\tisCharging=");
@@ -318,7 +340,9 @@ void loop(){
     Serial.print("\tdutyPWM=");        
     Serial.print(dutyPWM);        
     Serial.print("\tfaults=");
-    Serial.print(faults);       
+    Serial.print(faults); 
+    Serial.print("\ttout=");    
+    Serial.print(robotOutOfStationTimeMins);
     Serial.println();
     
     if (USE_POT){
@@ -344,11 +368,10 @@ void loop(){
       stateLED = !stateLED;
     }
   } else {
-    // not charging => indicate perimeter wire state (OFF=broken)
+    // not charging => indicate perimeter wire state (OFF=broken/perimeter turned off)
     stateLED = (periCurrentAvg >= PERI_CURRENT_MIN);
   }
   digitalWrite(pinLED, stateLED);   
-
 
 }
 
