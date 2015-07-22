@@ -745,13 +745,14 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
   unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
   lastSetMotorSpeedTime = millis();  
   if (TaC > 1000) TaC = 1;
+
   if (useAccel){  
     // http://phrogz.net/js/framerate-independent-low-pass-filter.html 
     // smoothed += elapsedTime * ( newValue - smoothed ) / smoothing;          
     motorLeftPWMCurr += TaC * (pwmLeft - motorLeftPWMCurr) / motorAccel;
     motorRightPWMCurr += TaC * (pwmRight - motorRightPWMCurr) / motorAccel;   
-   
   }
+
   // ----- driver protection (avoids driver explosion) ----------
   if ( ((pwmLeft < 0) && (motorLeftPWMCurr >= 0)) ||
        ((pwmLeft > 0) && (motorLeftPWMCurr <= 0)) ) { // changing direction should take place?
@@ -762,10 +763,12 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
        ((pwmRight > 0) && (motorRightPWMCurr <= 0)) ) { // changing direction should take place?    
     if (motorRightZeroTimeout != 0) // reduce motor rotation? (will reduce EMF)      
       pwmRight = motorRightPWMCurr - motorRightPWMCurr *   ((float)TaC)/200.0;  // reduce speed
-  }            
+  }
+
+  motorLeftPWMCurr = pwmLeft;
+  motorRightPWMCurr = pwmRight;
+
   if (odometryUse){
-    motorLeftPWMCurr = pwmLeft;
-    motorRightPWMCurr = pwmRight;
     if (abs(motorLeftRpmCurr) <1) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
       else motorLeftZeroTimeout = 500;
     if (abs(motorRightRpmCurr) <1) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
@@ -776,6 +779,7 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
     if (pwmRight == 0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
       else motorRightZeroTimeout = 700;  
   }
+
   // ---------------------------------
   if (motorLeftSwapDir)  // swap pin polarity?
     setActuator(ACT_MOTOR_LEFT, -motorLeftPWMCurr);
