@@ -1491,7 +1491,6 @@ Wire Wire Line
 	9245 3765 9245 3600
 NoConn ~ 9145 3600
 NoConn ~ 9045 3600
-NoConn ~ 8970 3505
 $Comp
 L FUSE F1
 U 1 1 55ACE95B
@@ -1585,4 +1584,5 @@ Text Notes 5215 2560 0    60   ~ 0
 Zener Diode \nzum Begrenzen von\nUgs auf -15 Volt
 Text Notes 4275 3545 0    60   ~ 0
 Ugs=-15V (pmos schaltet)\nUgs=0V (pmos schaltet nicht)
+NoConn ~ 7795 1390
 $EndSCHEMATC
