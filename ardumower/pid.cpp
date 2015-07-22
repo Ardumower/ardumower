@@ -41,8 +41,12 @@ PID::PID(float Kp, float Ki, float Kd){
 }
 
 
-float PID::compute()
-{		
+void PID::reset(void) {
+  this->eold = 0;
+  this->esum = 0;
+}
+
+float PID::compute() {
   unsigned long now = micros();
   Ta = ((now - lastControlTime) / 1000000.0);
   lastControlTime = now;

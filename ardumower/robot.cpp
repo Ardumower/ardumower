@@ -1968,6 +1968,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   if (stateNew == STATE_PERI_TRACK){        
     //motorMowEnable = false;     // FIXME: should be an option?
     setActuator(ACT_CHGRELAY, 0);
+    perimeterPID.reset();
     //beep(6);
   }   
   if (stateNew != STATE_REMOTE){

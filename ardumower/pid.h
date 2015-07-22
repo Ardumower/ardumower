@@ -37,6 +37,7 @@ class PID
   public:
     PID();
     PID(float Kp, float Ki, float Kd);
+    void reset(void);
     float compute();
     double Ta; // sampling time	
     float w; // set value
