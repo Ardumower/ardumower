@@ -117,7 +117,9 @@
 // ------- baudrates---------------------------------
 #define BAUDRATE 19200            // serial output baud rate
 #define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define PFOD_PIN 1234             // Bluetooth pin
+//#define PFOD_BAUDRATE 115200       // pfod app serial output baud rate (wifi)
+#define PFOD_PIN 1234             // Bluetooth pin 
+//#define PFOD_CONNECT "config:GRAUNET,xxxxxx,192.168.2.13,192.168.2.1,255.255.255.0" // wifi connect 
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
@@ -299,8 +301,10 @@ void Mower::setup(){
   Console.begin(BAUDRATE);   
   //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
-  rc.initSerial(PFOD_BAUDRATE);   
-    
+  rc.initSerial(PFOD_BAUDRATE);
+  #ifdef PFOD_CONNECT 
+    Bluetooth.println(PFOD_CONNECT);
+  #endif       
 
   // keep battery switched ON
   pinMode(pinBatterySwitch, OUTPUT);
