@@ -42,6 +42,7 @@
 #include <Arduino.h>
 #include "mower.h"
 #include "due.h"
+#include "drivers.h"
 
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
@@ -114,10 +115,6 @@
 // Bluetooth: Serial2 (TX2, RX2)
 // GPS: Serial3 (TX3, RX3) 
 
-// ------- baudrates---------------------------------
-#define BAUDRATE 19200            // serial output baud rate
-#define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define PFOD_PIN 1234             // Bluetooth pin
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
@@ -170,7 +167,7 @@ Mower::Mower(){
   // ------ rain ------------------------------------
   rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
-  sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
+  sonarUse          = 0;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarLeftUse      = 1;
   sonarRightUse     = 1;
   sonarCenterUse    = 0;
@@ -201,7 +198,7 @@ Mower::Mower(){
   imuRollPID.Ki     = 21;
   imuRollPID.Kd     = 0;  
   // ------ model R/C ------------------------------------
-  remoteUse         = 1;       // use model remote control (R/C)?
+  remoteUse         = 0;       // use model remote control (R/C)?
   // ------ battery -------------------------------------
   batMonitor = 1;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
@@ -242,19 +239,25 @@ Mower::Mower(){
   gpsSpeedIgnoreTime = 5000; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
 
   // ----- other -----------------------------------------
-  buttonUse         = 1;       // has digital ON/OFF button?
+  buttonUse         = 0;       // has digital ON/OFF button?
   // ----- user-defined switch ---------------------------
   userSwitch1       = 0;       // user-defined switch 1 (default value)
   userSwitch2       = 0;       // user-defined switch 2 (default value)
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use RTC and timer?
+  // ----- bluetooth -------------------------------------
+  bluetoothUse      = 1;       // use Bluetooth module?
+  // ----- esp8266 ---------------------------------------
+  esp8266Use        = 0;       // use ESP8266 Wifi module?
+  esp8266ConfigString = "";
   // ------ mower stats-------------------------------------------  
   statsOverride = false; // if set to true mower stats are overwritten - be careful
   statsMowTimeMinutesTotal = 300;
   statsBatteryChargingCounterTotal = 11;
   statsBatteryChargingCapacityTotal = 30000;
-  // -----------configuration end-------------------------------------
+  // ------ configuration end -------------------------------------------
+     
 }
 
 
@@ -296,11 +299,9 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
 
 void Mower::setup(){
   Wire.begin();            
-  Console.begin(BAUDRATE);   
+  Console.begin(CONSOLE_BAUDRATE);
   //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
-  rc.initSerial(PFOD_BAUDRATE);   
-    
 
   // keep battery switched ON
   pinMode(pinBatterySwitch, OUTPUT);
@@ -456,7 +457,7 @@ void Mower::setup(){
   ADCMan.setCapture(pinVoltageMeasurement, 1, false);    
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
     
-  imu.init(pinBuzzer);
+  //imu.init(pinBuzzer);
   gps.init();
 
   Robot::setup();  
@@ -584,7 +585,7 @@ void Mower::setActuator(char type, int value){
 
 void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
-  bt.setParams(name, PFOD_PIN, PFOD_BAUDRATE, quick);  
+  bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);
 }
 
 #endif
