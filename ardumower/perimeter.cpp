@@ -189,7 +189,14 @@ float Perimeter::getFilterQuality(byte idx){
 }
 
 boolean Perimeter::isInside(byte idx){
-  return (signalCounter[idx] < 0);  
+  if (abs(mag[idx]) > 1000) {
+    // Large signal, the in/out detection is reliable.
+    // Using mag yields very fast in/out transition reporting.
+    return (mag[idx]<0);
+  } else {
+    // Low signal, use filtered value for increased reliability
+    return (signalCounter[idx] < 0);
+  }
 }
 
 

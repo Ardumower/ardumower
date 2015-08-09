@@ -869,11 +869,11 @@ void Robot::motorControlPerimeter(){
   if ((millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + trackingPerimeterTransitionTimeOut)){
     // robot is wheel-spinning while tracking => roll to get ground again
     if (trackingBlockInnerWheelWhilePerimeterStruggling == 0){
-    if (perimeterMag < 0) setMotorPWM( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
+    if (perimeterInside) setMotorPWM( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
         else setMotorPWM( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);}
 
     else if (trackingBlockInnerWheelWhilePerimeterStruggling == 1){
-      if (perimeterMag < 0) setMotorPWM( 0, motorSpeedMaxPwm/1.5, false);
+      if (perimeterInside) setMotorPWM( 0, motorSpeedMaxPwm/1.5, false);
         else setMotorPWM( motorSpeedMaxPwm/1.5, 0, false);
     }
 
@@ -885,9 +885,11 @@ void Robot::motorControlPerimeter(){
     }
     return;
   }   
-  if (perimeterMag < 0) perimeterPID.x = -1;
-    else if (perimeterMag > 0) perimeterPID.x = 1; 
-    else perimeterPID.x = 0;
+  if (perimeterInside)
+      perimeterPID.x = -1;
+    else
+      perimeterPID.x = 1;
+
   perimeterPID.w = 0;
   perimeterPID.y_min = -motorSpeedMaxPwm;
   perimeterPID.y_max = motorSpeedMaxPwm;		
@@ -1714,7 +1716,7 @@ void Robot::readSensors(){
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
-    if (perimeterMag < 0) setActuator(ACT_LED, HIGH);    
+    if (perimeterInside < 0) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);      
     if ((!perimeterInside) && (perimeterTriggerTime == 0)){
       // set perimeter trigger time      
@@ -2398,7 +2400,7 @@ void Robot::checkPerimeterBoundary(){
 // check perimeter while finding it
 void Robot::checkPerimeterFind(){
   if (stateCurr == STATE_PERI_FIND){
-    if (perimeter.isInside(0)) {
+    if (perimeterInside) {
       // inside
       if (motorLeftSpeedRpmSet != motorRightSpeedRpmSet){      
         // we just made an 'outside=>inside' rotation, now track
