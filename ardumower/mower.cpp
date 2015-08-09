@@ -42,6 +42,7 @@
 #include <Arduino.h>
 #include "mower.h"
 #include "due.h"
+#include "drivers.h"
 
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
@@ -115,9 +116,11 @@
 // GPS: Serial3 (TX3, RX3) 
 
 // ------- baudrates---------------------------------
-#define BAUDRATE 19200            // serial output baud rate
-#define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define PFOD_PIN 1234             // Bluetooth pin
+#define CONSOLE_BAUDRATE    19200       // baudrate used for console
+#define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module
+#define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
+#define BLUETOOTH_PIN       1234
+
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
@@ -249,6 +252,11 @@ Mower::Mower(){
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use RTC and timer?
+  // ----- bluetooth -------------------------------------
+  bluetoothUse      = 1;       // use Bluetooth module?
+  // ----- esp8266 ---------------------------------------
+  esp8266Use        = 0;       // use ESP8266 Wifi module?
+  esp8266ConfigString = "";
   // ------ mower stats-------------------------------------------  
   statsOverride = false; // if set to true mower stats are overwritten - be careful
   statsMowTimeMinutesTotal = 300;
@@ -296,11 +304,9 @@ ISR(PCINT2_vect, ISR_NOBLOCK){
 
 void Mower::setup(){
   Wire.begin();            
-  Console.begin(BAUDRATE);   
+  Console.begin(CONSOLE_BAUDRATE);
   //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
-  rc.initSerial(PFOD_BAUDRATE);   
-    
 
   // keep battery switched ON
   pinMode(pinBatterySwitch, OUTPUT);
@@ -462,6 +468,17 @@ void Mower::setup(){
   gps.init();
 
   Robot::setup();  
+
+  if (esp8266Use) {
+    Console.println(F("Sending ESP8266 Config"));
+    ESP8266port.begin(ESP8266_BAUDRATE);
+    ESP8266port.println(esp8266ConfigString);
+    ESP8266port.flush();
+    ESP8266port.end();
+    rc.initSerial(&Serial1, ESP8266_BAUDRATE);
+  } else if (bluetoothUse) {
+    rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
+  }
 }
 
 void checkMotorFault(){
@@ -586,7 +603,7 @@ void Mower::setActuator(char type, int value){
 
 void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
-  bt.setParams(name, PFOD_PIN, PFOD_BAUDRATE, quick);  
+  bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);
 }
 
 #endif

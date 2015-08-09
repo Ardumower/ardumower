@@ -25,7 +25,7 @@
 
 #include "robot.h"
 
-#define MAGIC 51
+#define MAGIC 52
 
 
 #define ADDR_USER_SETTINGS 0
@@ -328,6 +328,9 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, gpsSpeedIgnoreTime);
   eereadwrite(readflag, addr, dropUse);   
   eereadwrite(readflag, addr, statsOverride);   
+  eereadwrite(readflag, addr, bluetoothUse);
+  eereadwrite(readflag, addr, esp8266Use);
+  eereadwriteString(readflag, addr, esp8266ConfigString);
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -1266,10 +1269,10 @@ void Robot::printInfo(Stream &s){
 
 void Robot::printMenu(){  
   Console.println();
+  Console.println(F(" MAIN MENU:"));
   Console.println(F("1=test motors"));
   Console.println(F("2=test odometry"));
-  Console.println(F("3=setup BT module config (quick baudscan/recommended)"));
-  Console.println(F("4=setup BT module config (extensive baudscan)"));
+  Console.println(F("3=communications menu"));
   Console.println(F("5=calibrate IMU acc next side"));
   Console.println(F("6=calibrate IMU com start/stop"));  
   Console.println(F("7=delete IMU calib"));
@@ -1282,6 +1285,8 @@ void Robot::printMenu(){
   Console.println(F("0=exit"));  
   Console.println();
 }
+
+
 
 void Robot::delayInfo(int ms){
   unsigned long endtime = millis() +ms;
@@ -1387,11 +1392,10 @@ void Robot::menu(){
           printMenu();
           break;
         case '3':
-          configureBluetooth(true);          
-          printMenu();
-          break;
-        case '4':          
-          configureBluetooth(false);                    
+          if (bluetoothUse)
+            commsMenuBT();
+          else if (esp8266Use)
+            commsMenuWifi();
           printMenu();
           break;
         case '5':
@@ -1437,6 +1441,87 @@ void Robot::menu(){
     }
     delay(10);
   }  
+}
+
+
+
+void Robot::commsMenuBT(){
+  while(true){
+    Console.println();
+    Console.println(F("COMMUNICATIONS MENU  == Bluetooth =="));
+    Console.println(F(" 1=Select other communication method"));
+    Console.println(F(" 2=setup BT module config (quick baudscan (recommended))"));
+    Console.println(F(" 3=setup BT module config (extensive baudscan)"));
+    Console.println(F(" 0=Main Menu"));
+    Console.println();
+
+    delay(100);
+    purgeConsole();
+
+    switch (waitCharConsole()){
+    case '0':
+      return;
+    case '1':
+      commsMenuSelect();
+      return;
+    case '2':
+      configureBluetooth(true);
+      break;
+    case '3':
+      configureBluetooth(false);
+      break;
+    }
+  }
+}
+
+void Robot::commsMenuWifi(){
+  while(true){
+    Console.println();
+    Console.println(F("COMMUNICATIONS MENU  === WIFI =="));
+    Console.print(F(" Current Config: \""));
+    Console.print(esp8266ConfigString);
+    Console.println(F("\""));
+    Console.println(F(" 1=Select other communication method"));
+    Console.println(F(" 2=configure"));
+    Console.println(F(" 0=Main Menu"));
+    Console.println();
+
+    delay(100);
+    purgeConsole();
+
+    switch (waitCharConsole()){
+    case '0':
+      return;
+    case '1':
+      commsMenuSelect();
+      return;
+    case '2':
+      Console.print(F("\nEnter Connection String: "));
+      delay(100);
+      purgeConsole();
+      esp8266ConfigString = waitStringConsole();
+      break;
+    }
+  }
+}
+
+void Robot::commsMenuSelect(void) {
+  bluetoothUse = 0;
+  esp8266Use = 0;
+
+  while (true) {
+    Console.println(F("Select communication method"));
+    Console.println(F(" 1=Bluetooth"));
+    Console.println(F(" 2=Wifi"));
+
+    delay(100);
+    purgeConsole();
+
+    switch(waitCharConsole()) {
+    case '1': bluetoothUse = 1; return;
+    case '2': esp8266Use = 1; return;
+    }
+  }
 }
 
 void Robot::readSerial() {
@@ -2531,6 +2616,29 @@ void Robot::checkTimeout(){
   }
 }
 
+
+void Robot::purgeConsole() {
+  while (Console.available())
+    Console.read();
+}
+
+char Robot::waitCharConsole() {
+  while (Console.available() == 0);
+  return (char)Console.read();
+}
+
+String Robot::waitStringConsole() {
+  String s = "";
+  char ch;
+  while (true) {
+    ch = waitCharConsole();
+    if (ch=='\n' || ch=='\r')
+      break;
+    else
+      s += ch;
+  };
+  return s;
+}
 
 void Robot::loop()  {
   stateTime = millis() - stateStartTime;

@@ -188,7 +188,12 @@ class Robot
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
     char timerUse          ;       // use timer?
-    unsigned long nextTimeTimer ;        
+    unsigned long nextTimeTimer ;
+    // ----- bluetooth -------------------------------------
+    char bluetoothUse;       // use Bluetooth module?
+    // ----- esp8266 ---------------------------------------
+    char esp8266Use;         // use ESP8266 Wifi module?
+    String esp8266ConfigString = "";
     // -------- mow pattern -----------------------------    
     byte mowPatternCurr;
     char *mowPatternName();
@@ -564,7 +569,15 @@ protected:
     virtual void receiveGPSTime();
     virtual void calcOdometry();
     virtual void menu();
+    virtual void commsMenuBT();
+    virtual void commsMenuWifi();
+    virtual void commsMenuSelect();
     virtual void configureBluetooth(boolean quick){};
+
+    // Console helpers
+    virtual void purgeConsole();
+    virtual char waitCharConsole();
+    virtual String waitStringConsole();
 };    
 
 

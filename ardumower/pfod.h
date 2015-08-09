@@ -55,10 +55,11 @@ class RemoteControl
   public:
     RemoteControl();
     void setRobot(Robot *aRobot);
-    void initSerial(int baudrate);
+    void initSerial(HardwareSerial* serialPort, uint32_t baudrate);
     bool readSerial();
     void run();    
   private:
+    HardwareSerial* serialPort;
     Robot *robot;    
     boolean pfodCmdComplete;
     String pfodCmd;

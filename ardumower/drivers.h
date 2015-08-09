@@ -33,13 +33,15 @@
   // Arduino Mega
   #include <EEPROM.h>  
   #define Console Serial
+  #define ESP8266port Serial1
   #define Bluetooth Serial2
 #else 
   // Arduino Due
   #include "due.h"
    // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
   #define Console SerialUSB
-  #define Bluetooth Serial2  
+  #define ESP8266Port Serial1
+  #define Bluetooth Serial2
 #endif
 
 
@@ -131,6 +133,8 @@ template <class T> int eereadwrite(boolean readflag, int &ee, T& value)
     return i;
 }
 
+
+int eereadwriteString(boolean readflag, int &ee, String& value);
 
 // ---------- driver functions ----------------------------------
 
