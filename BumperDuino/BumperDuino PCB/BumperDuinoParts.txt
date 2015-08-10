@@ -1,0 +1,72 @@
+Partlist
+
+Exported from BumperDuino.brd at 30.07.2015 18:01:02
+
+EAGLE Version 6.4.0 Copyright (c) 1988-2013 CadSoft
+
+Assembly variant: 
+
+Part         Value                       Package                Library                       Position (mm)         Orientation
+
+ACTIVE                                   LED3MM                 led                           (50.8 72.39)          R90
+BUMPER-OC                                1X04                   pinhead                       (68.58 33.02)         R0
+C1           100nF                       C025-025X050           resistor                      (82.55 44.45)         R180
+C2           100nF                       C025-025X050           resistor                      (82.55 54.61)         R180
+C3           100nF                       C025-025X050           resistor                      (30.48 43.18)         R180
+C4           100nF                       C025-025X050           resistor                      (38.1 59.69)          R0
+C5           100nF                       C025-025X050           resistor                      (31.75 59.69)         R180
+C6           100nF                       C025-025X050           resistor                      (39.37 66.04)         R0
+C7           100nF                       C025-025X050           resistor                      (72.39 66.04)         R0
+C8           100nF                       C025-025X050           resistor                      (60.96 59.69)         R0
+C10          27pF                        C025-025X050           resistor                      (36.83 39.37)         R180
+C11          27pF                        C025-025X050           resistor                      (41.91 39.37)         R0
+C12          330nF                       C025_050-035X075       resistor                      (46.99 59.69)         R180
+C13          330nF                       C025_050-035X075       resistor                      (69.85 59.69)         R180
+C16          10µF                        E2,5-5                 resistor                      (68.58 41.91)         R180
+C17          22µF                        E2,5-5                 resistor                      (80.01 60.96)         R90
+C18          10µF                        E2,5-5                 resistor                      (30.48 39.37)         R0
+C19          10µF                        E2,5-5                 resistor                      (55.88 60.96)         R90
+C20          10µF                        E2,5-5                 resistor                      (39.37 69.85)         R0
+C21          10µF                        E2,5-5                 resistor                      (72.39 69.85)         R0
+C23          100n                        C025-025X050           resistor                      (17.78 41.91)         R270
+COLLISION-P1                             LED3MM                 led                           (34.29 72.39)         R90
+COLLISION-P2                             LED3MM                 led                           (67.31 72.39)         R90
+D1           1N4004                      DO41-10                diode                         (77.47 41.91)         R0
+DIGITAL                                  1X05                   pinhead                       (39.37 33.02)         R0
+F1           SMD-PTC                     SMD-PTC                Sicherungen Siba              (78.74 38.1)          R0
+ICSP         3x2 M                       2X03                   SmartPrj                      (15.24 68.58)         R270
+J4           6x1F Low profile (machined) 1X06-TH                SmartPrj                      (85.09 64.77)         R270
+L1           10µH                        0204/7                 resistor                      (45.72 50.8)          R0
+POWER                                    LED3MM                 led                           (67.31 46.99)         R270
+Q1                                       HC49/S                 quartz                        (39.37 43.18)         R180
+R1           1K                          R1206                  resistor                      (45.72 66.04)         R0
+R2           1K                          R1206                  resistor                      (78.74 66.04)         R0
+R3           1K                          R1206                  resistor                      (68.58 53.34)         R270
+R4           10K                         R1206                  resistor                      (22.86 63.5)          R0
+R5           10K                         R1206                  resistor                      (22.86 59.69)         R0
+R6           100                         R1206                  resistor                      (16.51 59.69)         R90
+R7           100                         R1206                  resistor                      (13.97 59.69)         R90
+R8           100                         R1206                  resistor                      (25.4 40.64)          R90
+R9           100                         R1206                  resistor                      (21.59 40.64)         R90
+R10          2K7                         R1206                  resistor                      (46.99 39.37)         R90
+R11          2K7                         R1206                  resistor                      (52.07 39.37)         R90
+R12          10K                         R1206                  resistor                      (49.53 39.37)         R90
+R13          10K                         R1206                  resistor                      (54.61 39.37)         R90
+R14          1K                          R1206                  resistor                      (45.72 69.85)         R0
+R15          1K                          R1206                  resistor                      (60.96 69.85)         R0
+R16          1K                          R1206                  resistor                      (27.94 69.85)         R0
+R17          1K                          R1206                  resistor                      (15.24 41.91)         R90
+RS232-TTL                                1X05                   pinhead                       (24.13 33.02)         R0
+SJ1                                      SJW                    jumper                        (54.61 29.21)         MR270
+SJ2                                      SJW                    jumper                        (24.13 29.21)         MR270
+SW1          RESET                       157SW                  MySMD                         (13.97 45.72)         R90
+T1           BC547                       TO92                   transistor                    (59.69 39.37)         R90
+T2           BC547                       TO92                   transistor                    (64.77 39.37)         R90
+TWI                                      1X05                   pinhead                       (54.61 33.02)         R0
+U1           MPX5010DP                   FREESCALE_CASE_867C-05 MXP5010DP                     (27.94 63.5)          MR0
+U2           MPX5010DP                   FREESCALE_CASE_867C-05 MXP5010DP                     (60.96 63.5)          MR0
+U3           ATMEGA328P-PU               DIP254P762X457-28      Atmel_By_element14_Batch_1-00 (50.8 54.61)          R90
+U4           OPA2340PA                   DIP254P762X508-8       OPA2340PA                     (63.5 46.99)          R0
+U6           LM2940CS-5.0                TO254P1435X464-4N      LM2940CS-5.0                  (74.93 49.53)         R90
+VIN                                      1X02                   pinhead                       (78.74 33.02)         R0
+VIN_                                     1X03                   pinhead                       (87.63 45.72)         R90
