@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2
+﻿EESchema Schematic File Version 2
 LIBS:Perimeter sender v2-rescue
 LIBS:arduino_shieldsNCL
 LIBS:power

@@ -1,4 +1,4 @@
-update=12.07.2015 22:01:49
+update=12.08.2015 17:39:27
 version=1
 last_client=kicad
 [pcbnew]
@@ -46,8 +46,6 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -103,3 +101,5 @@ LibName35=Perimeter sender v2-cache
 LibName36=C:/Users/Uwe/Downloads/megashield_svn_0.5/ardumower mega shield svn-cache
 LibName37=C:/Users/Uwe/Downloads/footprints eigene/Arduino
 LibName38=Ina169
+[general]
+version=1

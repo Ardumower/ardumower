@@ -3,7 +3,7 @@
   (general
     (links 68)
     (no_connects 0)
-    (area 54.813999 32.004799 164.819801 93.572801)
+    (area 30.846487 24.6366 170.5284 93.572801)
     (thickness 1.6)
     (drawings 27)
     (tracks 399)
@@ -14,8 +14,8 @@
 
   (page A4 portrait)
   (layers
-    (0 F.Cu signal hide)
-    (31 B.Cu signal hide)
+    (0 F.Cu signal)
+    (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -27,12 +27,12 @@
     (40 Dwgs.User user)
     (41 Cmts.User user)
     (42 Eco1.User user)
-    (43 Eco2.User user hide)
+    (43 Eco2.User user)
     (44 Edge.Cuts user)
   )
 
   (setup
-    (last_trace_width 1.7778)
+    (last_trace_width 1)
     (user_trace_width 0.254)
     (user_trace_width 0.508)
     (user_trace_width 0.762)
@@ -1107,7 +1107,7 @@
   (gr_text - (at 147.2438 33.9852) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
-  (gr_text "www.ardumower.de\nPerimeter Sender V2.0\nPCB V1.0" (at 111.6584 89.8398) (layer F.SilkS) (tstamp 550061AB)
+  (gr_text "www.ardumower.de\nPerimeter Sender V2.0\nPCB V1.0 One side copper by unlogic" (at 111.6584 89.8398) (layer F.SilkS) (tstamp 550061AB)
     (effects (font (size 1.5 1.5) (thickness 0.2)) (justify left))
   )
   (gr_text M1OUT1 (at 161.1884 73.3298) (layer F.SilkS)
