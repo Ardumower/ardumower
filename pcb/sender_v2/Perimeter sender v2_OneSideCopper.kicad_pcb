@@ -32,7 +32,7 @@
   )
 
   (setup
-    (last_trace_width 1.7778)
+    (last_trace_width 1)
     (user_trace_width 0.254)
     (user_trace_width 0.508)
     (user_trace_width 0.762)
@@ -575,10 +575,10 @@
     (pad 1 thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask F.SilkS))
   )
 
-  (module sender_v2:Bohrloch_3,2mm (layer F.Cu) (tedit 54E27D1F) (tstamp 54D68A04)
+  (module sender_v2:Bohrloch_3,2mm (layer F.Cu) (tedit 55CB5FAC) (tstamp 54D68A04)
     (at 159.9184 88.5698)
     (path /54D68BA6)
-    (fp_text reference B6 (at 0 3.175) (layer F.SilkS) hide
+    (fp_text reference B6 (at 2.80416 -2.17932) (layer F.SilkS) hide
       (effects (font (size 1.5 1.5) (thickness 0.15)))
     )
     (fp_text value Bohrloch_3,2mm (at -11.43 0) (layer F.SilkS) hide
@@ -1190,7 +1190,7 @@
   (segment (start 76.4032 91.7448) (end 73.5584 91.7448) (width 1.016) (layer B.Cu) (net 1) (tstamp 55A2F2CE))
   (segment (start 93.218 91.743486) (end 93.216687 91.743487) (width 1.016) (layer B.Cu) (net 1) (tstamp 55A2EC74))
   (segment (start 116.078 78.5368) (end 116.078 78.5368) (width 1.016) (layer B.Cu) (net 1) (tstamp 54E26002))
-  (segment (start 96.6216 88.0364) (end 96.6216 80.1878) (width 1.7778) (layer B.Cu) (net 2) (status 400000))
+  (segment (start 96.6216 88.0364) (end 96.6216 80.1878) (width 1.7778) (layer B.Cu) (net 2))
   (segment (start 96.6216 80.1878) (end 99.7204 77.089) (width 1.7778) (layer B.Cu) (net 2) (tstamp 55CB5A66))
   (segment (start 87.7316 39.3192) (end 87.7316 34.0614) (width 1.7778) (layer B.Cu) (net 2))
   (segment (start 87.7316 34.0614) (end 88.0618 33.7312) (width 1.7778) (layer B.Cu) (net 2) (tstamp 55A589AC))
