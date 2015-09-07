@@ -4,11 +4,15 @@ LIBS:Wlan_ESP8266
 LIBS:power
 LIBS:conn
 LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 25
+Sheet 7 26
 Title "Ardumower Shield - I2C Schnittstelle"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -64,9 +68,9 @@ F 4 "Value" H 1800 1355 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 Text GLabel 2710 1355 2    60   BiDi ~ 0
-SDA2
+SDA
 Text GLabel 2380 1455 2    60   Input ~ 0
-SCL2
+SCL
 $Comp
 L GND #PWR058
 U 1 1 553D38C9
@@ -113,9 +117,9 @@ F 4 "Value" H 1795 1965 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 Text GLabel 2705 1965 2    60   BiDi ~ 0
-SDA2
+SDA
 Text GLabel 2375 2065 2    60   Input ~ 0
-SCL2
+SCL
 $Comp
 L GND #PWR061
 U 1 1 553D4F12
@@ -162,9 +166,9 @@ F 4 "Value" H 1785 2620 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 Text GLabel 2695 2620 2    60   BiDi ~ 0
-SDA2
+SDA
 Text GLabel 2365 2720 2    60   Input ~ 0
-SCL2
+SCL
 $Comp
 L GND #PWR064
 U 1 1 553DB84D
@@ -366,9 +370,9 @@ F 3 "" H 4555 2360 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 3830 2465 0    23   Output ~ 0
-SCL1
+SCL
 Text GLabel 3830 2525 0    23   BiDi ~ 0
-SDA1
+SDA
 Wire Wire Line
 	4450 2465 5840 2465
 Wire Wire Line

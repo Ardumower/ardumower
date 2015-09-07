@@ -4,11 +4,15 @@ LIBS:Wlan_ESP8266
 LIBS:power
 LIBS:conn
 LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 25
+Sheet 11 26
 Title "Ardumower Shield - Bohrlöcher Platine"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"

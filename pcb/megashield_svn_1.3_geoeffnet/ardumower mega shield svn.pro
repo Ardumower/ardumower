@@ -1,4 +1,4 @@
-update=06.07.2015 20:06:50
+update=07.09.2015 19:44:33
 last_client=kicad
 [general]
 version=1
@@ -41,4 +41,7 @@ LibName2=acs712.pretty/Wlan_ESP8266
 LibName3=power
 LibName4=conn
 LibName5=uln-udn
-LibName6=C:/Users/Uwe/Documents/KICAD/BibliothekenUwe.pretty/power
+LibName6=acs712.pretty/ina169_ic
+LibName7=DS1307_Dil8
+LibName8=device
+LibName9=supply

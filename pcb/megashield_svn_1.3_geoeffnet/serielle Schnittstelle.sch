@@ -4,11 +4,15 @@ LIBS:Wlan_ESP8266
 LIBS:power
 LIBS:conn
 LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 25
+Sheet 10 26
 Title "Ardumower Shield - serielle Schnittstelle"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -3273,7 +3277,7 @@ A2 15 45 AD B6 5C 99 84 65 FC B3 27 D3 AD 8C 8C 19 C3 B6 75 4B 4F 56 42 70 00 D6
 29 F8 04 AA 5D 28 24 8D F1 59 22 07 EE 43 C8 6A 23 2C 05 01 60 1A 8D 2A 7C 4E 5C 2A 18 00 1C 8C 
 1B AD C3 34 17 14 41 5C 13 18 40 36 55 49 23 66 36 62 24 B8 6F C0 08 96 81 3C 90 04 23 CB DA 25 
 0F D4 D6 CE AC 92 3C E3 26 E0 1F 00 19 86 D0 65 A1 44 8A 88 00 00 00 00 49 45 4E 44 AE 42 60 82 
-1C 
+E9 
 EndData
 $EndBitmap
 Text Notes 5545 5355 0    60   ~ 0
@@ -3318,4 +3322,6 @@ Wire Wire Line
 	1820 4335 1820 4280
 Wire Wire Line
 	1820 4280 1915 4280
+Text Notes 4950 2220 0    60   ~ 0
+27.08.2015 [14:23:27] Frederic Goddeeris: Regarding ESP8266 and PCB 1.3:\n\n- Can you please add these changes: https://github.com/FredericG-BE/ardumower/blob/esp8266/ESP8266/doc/HWChanges.jpg\n\n- For wireless flashing, the ESP needs to be able to reset the AVR. Do we want to make this possible for PCB 1.3? If so, I need to urgently look into it.\n\n- Today the status of the ESP is reported by one LED; the way it is blinking indicates if it is connected to the Access Point, it a client is connected and so on. Afternatively we could: \n1. use one or more LEDs like https://www.adafruit.com/datasheets/WS2811.pdf that the ESP can control with just one IO line. \n2. have the ESP report its status between FPOD messages to the AVR and the AVR drives status LEDs. These status messages could perhaps also in the future hold the WIFI RSSI (but I need to investigate if this will work)\nPerhaps, at least for 1.3, keep it with just one simple led?\n[14:25:27] Frederic Goddeeris: https://www.adafruit.com/products/1734
 $EndSCHEMATC

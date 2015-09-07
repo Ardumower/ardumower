@@ -4,11 +4,15 @@ LIBS:Wlan_ESP8266
 LIBS:power
 LIBS:conn
 LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
 EELAYER 25 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 25
+Sheet 1 26
 Title "Ardumower Shield - Hauptschaltplan"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -43,10 +47,6 @@ F 3 "" H 3490 6680 60  0000 C CNN
 	1    3490 6680
 	0    1    1    0   
 $EndComp
-Text GLabel 5725 8480 2    39   Output ~ 0
-SCL2
-Text GLabel 5720 8380 2    39   BiDi ~ 0
-SDA2
 Text GLabel 1545 7580 0    39   Input ~ 0
 pinPerimeterLeft
 $Comp
@@ -225,13 +225,13 @@ $EndComp
 $Comp
 L ACS712 U3
 U 1 1 5417150B
-P 4180 1555
-F 0 "U3" H 4180 1805 50  0000 C CNN
-F 1 "INA169" H 4180 1305 50  0000 C CNN
-F 2 "ACS712:INA169" H 4180 1555 60  0001 C CNN
-F 3 "" H 4180 1555 60  0000 C CNN
-F 4 "Value" H 4180 1555 60  0001 C CNN "Bestellnummer"
-	1    4180 1555
+P 3070 1550
+F 0 "U3" H 3070 1800 50  0000 C CNN
+F 1 "INA169" H 3070 1300 50  0000 C CNN
+F 2 "ACS712:INA169" H 3070 1550 60  0001 C CNN
+F 3 "" H 3070 1550 60  0000 C CNN
+F 4 "Value" H 3070 1550 60  0001 C CNN "Bestellnummer"
+	1    3070 1550
 	0    1    -1   0   
 $EndComp
 $Comp
@@ -296,9 +296,9 @@ F 5 "Value" H 4230 755 60  0001 C CNN "Bestelllink"
 	0    1    -1   0   
 $EndComp
 Text GLabel 6185 8380 2    39   BiDi ~ 0
-SDA1
+SDA
 Text GLabel 6185 8480 2    39   Output ~ 0
-SCL1
+SCL
 $Comp
 L RR8 RR1
 U 1 1 54994E69
@@ -431,7 +431,7 @@ F 3 "" H 11635 1565 60  0000 C CNN
 $EndComp
 Text GLabel 3450 4340 0    60   Input ~ 0
 pinChargingEnable
-Text Notes 10710 14280 0    39   ~ 0
+Text Notes 10350 13255 0    39   ~ 0
 Laderelais Spulenspannung 5V\noder Variabel\nEingang Spulenspannung\nkann über Vorwiderspannung\nangepasst werden\ndurch Ladespannung
 Text GLabel 6180 6780 2    39   Output ~ 0
 DuoLED-Rot
@@ -592,12 +592,12 @@ Charg_Pin
 $Comp
 L R R19
 U 1 1 552CF3A3
-P 10670 13090
-F 0 "R19" V 10750 13090 40  0000 C CNN
-F 1 "0" V 10677 13091 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 10600 13090 30  0001 C CNN
-F 3 "~" H 10670 13090 30  0000 C CNN
-	1    10670 13090
+P 10310 12065
+F 0 "R19" V 10390 12065 40  0000 C CNN
+F 1 "0" V 10317 12066 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 10240 12065 30  0001 C CNN
+F 3 "~" H 10310 12065 30  0000 C CNN
+	1    10310 12065
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -737,12 +737,12 @@ F4 "PinButton" O T 10410 2420 60
 F5 "Ausschalter" I T 10565 2420 60 
 $EndSheet
 $Sheet
-S 7195 13375 345  860 
+S 7490 11805 345  860 
 U 553A788C
 F0 "Verpols.B" 60
 F1 "Verpols.B.sch" 60
-F2 "Verpols.B.aus" O T 7425 13375 60 
-F3 "Verpol.s.B.in" I T 7290 13375 60 
+F2 "Verpols.B.aus" O T 7720 11805 60 
+F3 "Verpol.s.B.in" I T 7585 11805 60 
 $EndSheet
 Text GLabel 10575 1570 2    60   Output ~ 0
 pinButton
@@ -804,12 +804,12 @@ F1 "Batteriespannung.sch" 60
 F2 "Batteriespannung" I T 8495 2420 60 
 $EndSheet
 $Sheet
-S 2905 13440 315  870 
+S 3200 11870 315  870 
 U 553A1252
 F0 "Verpols.L" 60
 F1 "Verpols.L.sch" 60
-F2 "Verpols.L.aus" O T 3120 13440 60 
-F3 "Verpol.s.L.in" I T 3005 13440 60 
+F2 "Verpols.L.aus" O T 3415 11870 60 
+F3 "Verpol.s.L.in" I T 3300 11870 60 
 $EndSheet
 Text Notes 7200 9565 0    60   ~ 0
 MC treiber SF pin braucht noch einen pegelwandler\n(falls MC beim due mit 5v betrieben werden soll
@@ -3102,9 +3102,9 @@ Wire Wire Line
 Wire Wire Line
 	4280 2490 4450 2490
 Wire Wire Line
-	4080 1955 4080 2790
+	4080 1885 4080 2790
 Wire Wire Line
-	4280 1955 4280 2490
+	4280 1885 4280 2490
 Wire Wire Line
 	5130 1105 5130 755 
 Connection ~ 3180 2090
@@ -3114,24 +3114,8 @@ Wire Wire Line
 	4200 3090 4200 2990
 Wire Wire Line
 	6155 1060 6345 1060
-Connection ~ 5670 8380
 Wire Wire Line
 	5570 8280 6180 8280
-Connection ~ 5670 8480
-Wire Wire Line
-	6115 8480 6185 8480
-Wire Wire Line
-	6115 8530 6115 8480
-Wire Wire Line
-	5670 8530 6115 8530
-Wire Wire Line
-	5670 8480 5670 8530
-Wire Wire Line
-	6115 8380 6185 8380
-Wire Wire Line
-	6115 8430 6115 8380
-Wire Wire Line
-	5670 8430 6115 8430
 Wire Wire Line
 	5570 8180 6180 8180
 Wire Wire Line
@@ -3393,12 +3377,6 @@ Wire Wire Line
 Wire Wire Line
 	3490 6680 3670 6680
 Wire Wire Line
-	5670 8380 5670 8430
-Wire Wire Line
-	5570 8480 5725 8480
-Wire Wire Line
-	5570 8380 5720 8380
-Wire Wire Line
 	4030 755  4030 705 
 Wire Wire Line
 	4080 1005 4030 755 
@@ -3407,11 +3385,11 @@ Wire Wire Line
 Wire Wire Line
 	4180 905  4430 905 
 Wire Wire Line
-	4180 1155 4180 905 
+	4180 905  4180 1270
 Wire Wire Line
-	4080 1155 4080 1005
+	4080 1005 4080 1270
 Wire Wire Line
-	4280 1055 4280 1155
+	4280 1055 4280 1270
 Wire Wire Line
 	5570 7280 6180 7280
 Wire Wire Line
@@ -3486,14 +3464,14 @@ Wire Wire Line
 Text Notes 8160 4755 0    60   ~ 0
 Bei den Schutzdioden noch den den Drahtdurchmesser und Lochdruchmesser im Footprint kontrollieren.\nBe den Kidioden das Loch für den footprint von 1mm auf 1,2mm vergrößert
 Text Notes 9940 5770 0    60   ~ 0
-25052015 Kondesatornetzwerk wert geändert 100nf - Jürgen\n25052015 Odemetrie 4 Widerstände 4,7k eingefügt\n25052015 Widerstansnetzwerk Wert geändert von 150 Ohm nach 220 Ohm - Jürgen\n25052015 Footprint MC Driver geändert\n28052015 MowRpm 4,7K Widerstand eingefügt\n20150603 AREF Kondesator eingefügt
+25052015 Kondesatornetzwerk wert geändert 100nf - Jürgen\n25052015 Odemetrie 4 Widerstände 4,7k eingefügt\n25052015 Widerstansnetzwerk Wert geändert von 150 Ohm nach 220 Ohm - Jürgen\n25052015 Footprint MC Driver geändert\n28052015 MowRpm 4,7K Widerstand eingefügt\n20150603 AREF Kondesator eingefügt\n07092015 RTC Uhr und ina 169
 $Comp
 L Kondensator CC5
 U 1 1 55722368
 P 5895 5915
 F 0 "CC5" V 6110 5900 50  0000 L CNN
 F 1 "100nf" V 6035 5830 50  0000 L CNN
-F 2 "" H 5895 5915 60  0001 C CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 5895 5915 60  0001 C CNN
 F 3 "" H 5895 5915 60  0000 C CNN
 F 4 "R:KERKO 100N" H 5895 5915 60  0001 C CNN "Bestellnummer"
 F 5 "http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&ACTION=3&LA=2&ARTICLE=9265&GROUPID=3169&artnr=KERKO+100N" H 5895 5915 60  0001 C CNN "Bestelllink"
@@ -3729,4 +3707,19 @@ Wire Wire Line
 Wire Wire Line
 	2875 9690 2875 9580
 Connection ~ 2875 9580
+$Sheet
+S 4015 1270 315  615 
+U 55DE1949
+F0 "INA169" 39
+F1 "INA169.sch" 39
+F2 "VCC" I T 4280 1270 60 
+F3 "GND" O T 4080 1270 60 
+F4 "Vin-" O B 4080 1885 60 
+F5 "Vin+" I B 4280 1885 60 
+F6 "Out" O T 4180 1270 60 
+$EndSheet
+Wire Wire Line
+	6185 8380 5570 8380
+Wire Wire Line
+	6185 8480 5570 8480
 $EndSCHEMATC

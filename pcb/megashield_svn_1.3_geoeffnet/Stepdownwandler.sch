@@ -4,11 +4,15 @@ LIBS:Wlan_ESP8266
 LIBS:power
 LIBS:conn
 LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 19 25
+Sheet 19 26
 Title "Ardumower Shield - Stepdownwandler"
 Date ""
 Rev "V1.3"
@@ -440,7 +444,7 @@ U 1 1 5575FF8A
 P 3855 3545
 F 0 "PRFA8" H 3675 3625 40  0000 C CNN
 F 1 "PFRA 040" H 3755 3465 40  0000 C CNN
-F 2 "" H 3855 3545 60  0001 C CNN
+F 2 "ACS712:PRFA_500_stehend" H 3855 3545 60  0001 C CNN
 F 3 "" H 3855 3545 60  0000 C CNN
 F 4 "R: PFRA 040" H 3855 3545 60  0001 C CNN "Bestellnummer"
 F 5 "https://www.reichelt.de/PFRA-040/3/index.html?&ACTION=3&LA=446&ARTICLE=35206&artnr=PFRA+040&SEARCH=pfra+040" H 3855 3545 60  0001 C CNN "Bestelllink"

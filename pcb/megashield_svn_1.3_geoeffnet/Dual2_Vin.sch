@@ -4,11 +4,15 @@ LIBS:Wlan_ESP8266
 LIBS:power
 LIBS:conn
 LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 17 25
+Sheet 17 26
 Title "Ardumower Shield - Motortreiber 2 - Spannungsversorgung"
 Date ""
 Rev "V1.3"
@@ -115,7 +119,7 @@ U 1 1 55723BFA
 P 3350 3995
 F 0 "C13" H 3400 4095 50  0000 L CNN
 F 1 "2200uF 63V" H 3400 3895 50  0000 L CNN
-F 2 "" H 3350 3995 60  0001 C CNN
+F 2 "Capacitors_ThroughHole:C_Radial_D18_L36_P7.5" H 3350 3995 60  0001 C CNN
 F 3 "" H 3350 3995 60  0000 C CNN
 F 4 "Value" H 3350 3995 60  0001 C CNN "Bestellnummer"
 F 5 "Value" H 3350 3995 60  0001 C CNN "Bestelllink"
