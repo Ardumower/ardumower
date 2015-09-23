@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:/Users/Uwe/Documents/KICAD/Ardmover_Empfangsspule_Yann/Ardmover_Empfangsspule_Yann.sch</source>
+    <date>01.09.2015 16:53:41</date>
+    <tool>Eeschema (2015-08-30 BZR 6134)-product</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Schleifenempfänger Yann</title>
+        <company>Schaltung von Yann</company>
+        <rev>1.0</rev>
+        <date>2015-09-01</date>
+        <source>Ardmover_Empfangsspule_Yann.sch</source>
+        <comment number="1" value="Übertrag KiCad UZ"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C12">
+      <value>100nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0A394</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>1uF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0A3DB</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>TLC274</value>
+      <footprint>SMD_Packages:SOIC-14_N</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="linear" part="TLC274"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0AD81</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>TLC2272</value>
+      <footprint>SMD_Packages:DIP-8_SMD</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="reflowmaster2000plus-cache" part="TLC2272"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0B319</tstamp>
+    </comp>
+    <comp ref="C14">
+      <value>100nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0B9D6</tstamp>
+    </comp>
+    <comp ref="C13">
+      <value>1uF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0B9DF</tstamp>
+    </comp>
+    <comp ref="R15">
+      <value>470K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0BE35</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>470</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0C2A9</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>1uF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0C4DA</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>10K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0C85F</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>27pF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0CEE6</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0D24B</tstamp>
+    </comp>
+    <comp ref="L1">
+      <value>11P-154K-50</value>
+      <footprint>Inductors:INDUCTOR_V</footprint>
+      <fields>
+        <field name="Technische Daten">5 mm 150 mH Fastron 11P-154K-50</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="L_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0D4C2</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>10nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0D917</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>10nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0DA0D</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0E06F</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0E5A1</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0EF6D</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>ZENER</value>
+      <footprint>Diodes_SMD:MELF-RM10_Universal_Handsoldering</footprint>
+      <libsource lib="device" part="ZENER"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0F2F9</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>27pF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E0F7AF</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E1020A</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>10nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E10468</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E1069B</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E10706</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>10nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E10EBB</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E11737</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E11905</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E12987</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>10nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E12D3D</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>100K</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E12FCC</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>CONN_01X05</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x05</footprint>
+      <libsource lib="conn" part="CONN_01X05"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E14B98</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>LM 4040 AIM3-2,5</value>
+      <footprint>Housings_SOT-23_SOT-143_TSOT-6:SOT-23</footprint>
+      <datasheet>https://www.reichelt.de/LM-4040-AIM3-2-5/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=109409&amp;artnr=LM+4040+AIM3-2%2C5&amp;SEARCH=LM4040</datasheet>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">R: LM 4040 AIM3-2,5</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="regul" part="LD1117S25TR"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E16457</tstamp>
+    </comp>
+    <comp ref="B1">
+      <value>Bohrloch</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <fields>
+        <field name="Technische Daten">Value</field>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bauform">Value</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E4E1D2</tstamp>
+    </comp>
+    <comp ref="B4">
+      <value>Bohrloch</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E4E3AD</tstamp>
+    </comp>
+    <comp ref="B2">
+      <value>Bohrloch</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E4E485</tstamp>
+    </comp>
+    <comp ref="B3">
+      <value>Bohrloch</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55E4E48B</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="linear" part="LM2902N">
+      <aliases>
+        <alias>LM324</alias>
+        <alias>TLC274</alias>
+        <alias>TL074</alias>
+        <alias>LM324N</alias>
+        <alias>LM324AN</alias>
+      </aliases>
+      <description>Quad Op amp.</description>
+      <docs>op_amps/lm324.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM2902N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="output"/>
+        <pin num="2" name="-" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="V+" type="power_in"/>
+        <pin num="5" name="+" type="input"/>
+        <pin num="6" name="-" type="input"/>
+        <pin num="7" name="~" type="output"/>
+        <pin num="8" name="~" type="output"/>
+        <pin num="9" name="-" type="input"/>
+        <pin num="10" name="+" type="input"/>
+        <pin num="11" name="V-" type="power_in"/>
+        <pin num="12" name="+" type="input"/>
+        <pin num="13" name="-" type="input"/>
+        <pin num="14" name="~" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="ZENER">
+      <description>Diode zener</description>
+      <footprints>
+        <fp>D?</fp>
+        <fp>SO*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">ZENER</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="regul" part="LD1117S33TR">
+      <aliases>
+        <alias>LD1117S33CTR</alias>
+        <alias>LD1117S12TR</alias>
+        <alias>LD1117S12CTR</alias>
+        <alias>LD1117S18TR</alias>
+        <alias>LD1117S18CTR</alias>
+        <alias>LD1117S25TR</alias>
+        <alias>LD1117S25CTR</alias>
+        <alias>LD1117S50TR</alias>
+        <alias>LD1117S50CTR</alias>
+      </aliases>
+      <description>800mA Fixed Low Drop Positive Voltage Regulator, Fixed Output 3.3V, SOT223</description>
+      <docs>http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00000544.pdf</docs>
+      <footprints>
+        <fp>SOT223</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LD1117S33TR</field>
+        <field name="Footprint">SOT-223</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VO" type="power_out"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="L_Small">
+      <description>Inductor</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="CP1">
+      <description>Polarised capacitor</description>
+      <footprints>
+        <fp>SMD*_Pol</fp>
+        <fp>c_elec*</fp>
+        <fp>C*elec</fp>
+        <fp>TantalC*</fp>
+        <fp>Elko*</fp>
+        <fp>CP*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="reflowmaster2000plus-cache" part="TLC2272">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TLC2272</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="output"/>
+        <pin num="2" name="-" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="V-" type="power_in"/>
+        <pin num="5" name="+" type="input"/>
+        <pin num="6" name="-" type="input"/>
+        <pin num="7" name="~" type="output"/>
+        <pin num="8" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X05">
+      <footprints>
+        <fp>Pin_Header_Straight_1X05</fp>
+        <fp>Pin_Header_Angled_1X05</fp>
+        <fp>Socket_Strip_Straight_1X05</fp>
+        <fp>Socket_Strip_Angled_1X05</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X05</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X01">
+      <footprints>
+        <fp>Pin_Header_Straight_1X01</fp>
+        <fp>Pin_Header_Angled_1X01</fp>
+        <fp>Socket_Strip_Straight_1X01</fp>
+        <fp>Socket_Strip_Angled_1X01</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X01</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="regul">
+      <uri>C:\kicad\kicad\share\library\regul.lib</uri>
+    </library>
+    <library logical="reflowmaster2000plus-cache">
+      <uri>C:\kicad\kicad\share\library\reflowmaster2000plus-cache.lib</uri>
+    </library>
+    <library logical="linear">
+      <uri>C:\kicad\kicad\share\library\linear.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>C:\kicad\kicad\share\library\device.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>C:\kicad\kicad\share\library\conn.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(R11-Pad1)">
+      <node ref="U1" pin="14"/>
+      <node ref="R8" pin="2"/>
+      <node ref="R11" pin="1"/>
+    </net>
+    <net code="2" name="VCC">
+      <node ref="C11" pin="1"/>
+      <node ref="U2" pin="8"/>
+      <node ref="C12" pin="1"/>
+      <node ref="R4" pin="1"/>
+      <node ref="C14" pin="1"/>
+      <node ref="U1" pin="11"/>
+      <node ref="P1" pin="2"/>
+      <node ref="C13" pin="1"/>
+    </net>
+    <net code="3" name="GND">
+      <node ref="U3" pin="1"/>
+      <node ref="U3" pin="2"/>
+      <node ref="P1" pin="1"/>
+      <node ref="C9" pin="2"/>
+      <node ref="R12" pin="2"/>
+      <node ref="R15" pin="2"/>
+      <node ref="C13" pin="2"/>
+      <node ref="C14" pin="2"/>
+      <node ref="U1" pin="4"/>
+      <node ref="C12" pin="2"/>
+      <node ref="C7" pin="2"/>
+      <node ref="U2" pin="4"/>
+      <node ref="C11" pin="2"/>
+    </net>
+    <net code="4" name="Net-(R7-Pad2)">
+      <node ref="R7" pin="2"/>
+      <node ref="U1" pin="12"/>
+      <node ref="R8" pin="1"/>
+    </net>
+    <net code="5" name="GNDA">
+      <node ref="C4" pin="2"/>
+      <node ref="U2" pin="2"/>
+      <node ref="U2" pin="1"/>
+      <node ref="L1" pin="1"/>
+      <node ref="U1" pin="3"/>
+      <node ref="C8" pin="2"/>
+      <node ref="R13" pin="2"/>
+      <node ref="R15" pin="1"/>
+      <node ref="C10" pin="2"/>
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="6" name="Net-(C4-Pad1)">
+      <node ref="C4" pin="1"/>
+      <node ref="R3" pin="2"/>
+      <node ref="R7" pin="1"/>
+      <node ref="U1" pin="10"/>
+    </net>
+    <net code="7" name="Net-(D1-Pad1)">
+      <node ref="R9" pin="1"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="8" name="Net-(C8-Pad1)">
+      <node ref="R10" pin="1"/>
+      <node ref="R9" pin="2"/>
+      <node ref="C8" pin="1"/>
+    </net>
+    <net code="9" name="Peak">
+      <node ref="P1" pin="4"/>
+      <node ref="U2" pin="6"/>
+      <node ref="U2" pin="7"/>
+    </net>
+    <net code="10" name="ANA">
+      <node ref="U1" pin="9"/>
+      <node ref="U1" pin="8"/>
+      <node ref="P1" pin="3"/>
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="11" name="Trigger">
+      <node ref="R12" pin="1"/>
+      <node ref="P1" pin="5"/>
+      <node ref="R11" pin="2"/>
+      <node ref="C9" pin="1"/>
+    </net>
+    <net code="12" name="Net-(B3-Pad1)">
+      <node ref="B3" pin="1"/>
+    </net>
+    <net code="13" name="Net-(B2-Pad1)">
+      <node ref="B2" pin="1"/>
+    </net>
+    <net code="14" name="Net-(B4-Pad1)">
+      <node ref="B4" pin="1"/>
+    </net>
+    <net code="15" name="Net-(B1-Pad1)">
+      <node ref="B1" pin="1"/>
+    </net>
+    <net code="16" name="Net-(C10-Pad1)">
+      <node ref="C10" pin="1"/>
+      <node ref="R10" pin="2"/>
+      <node ref="U1" pin="13"/>
+      <node ref="U2" pin="5"/>
+      <node ref="R13" pin="1"/>
+    </net>
+    <net code="19" name="Net-(C1-Pad1)">
+      <node ref="C1" pin="1"/>
+      <node ref="L1" pin="2"/>
+      <node ref="R1" pin="1"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="22" name="Net-(R14-Pad1)">
+      <node ref="R14" pin="1"/>
+      <node ref="R4" pin="2"/>
+      <node ref="U3" pin="3"/>
+    </net>
+    <net code="23" name="Net-(C3-Pad2)">
+      <node ref="U1" pin="5"/>
+      <node ref="C3" pin="2"/>
+      <node ref="R5" pin="1"/>
+    </net>
+    <net code="24" name="Net-(C2-Pad2)">
+      <node ref="R2" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C2" pin="2"/>
+    </net>
+    <net code="29" name="Net-(R2-Pad2)">
+      <node ref="U1" pin="7"/>
+      <node ref="U1" pin="6"/>
+      <node ref="R3" pin="1"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="30" name="Net-(C7-Pad1)">
+      <node ref="C7" pin="1"/>
+      <node ref="R14" pin="2"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="31" name="Net-(C1-Pad2)">
+      <node ref="C2" pin="1"/>
+      <node ref="U1" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="R1" pin="2"/>
+    </net>
+  </nets>
+</export>

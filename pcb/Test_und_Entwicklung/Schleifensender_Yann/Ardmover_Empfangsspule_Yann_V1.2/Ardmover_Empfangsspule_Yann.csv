@@ -1,0 +1,16 @@
+"Id";"Bezeichner";"Gehäuse";"Stückzahl";"Bezeichnung";"Anbieter und Ref";
+1;"R12,R7,R1,R2,R3,R5,R8,R9,R10,R11,R13";"R_0805";11;"100K";;;
+2;"U2";"DIP-8_SMD";1;"TLC2272";;;
+3;"C3,C2,C8,C9,C10";"C_0805";5;"10nF";;;
+4;"P1";"Pin_Header_Straight_1x05";1;"CONN_01X05";;;
+5;"C1,C4,C5,C6";"C_0805";4;"27pF";;;
+6;"C7,C11,C13";"C_0805";3;"1uF";;;
+7;"C12,C14";"C_0805";2;"100nF";;;
+8;"U1";"SOIC-14_N";1;"TLC274";;;
+9;"U3";"SOT-23";1;"LM 4040 AIM3-2,5";;;
+10;"D1";"MELF-RM10_Universal_Handsoldering";1;"ZENER";;;
+11;"L1";"INDUCTOR_V";1;"11P-154K-50";;;
+12;"R4";"R_0805";1;"10K";;;
+13;"R14";"R_0805";1;"470";;;
+14;"R15";"R_0805";1;"470K";;;
+15;"B1,B3,B4,B2";"Bohrloch_3,2mm";4;"Bohrloch";;;
