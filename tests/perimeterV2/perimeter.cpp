@@ -131,7 +131,7 @@ void Perimeter::printADCMinMax(int8_t *samples){
 }
 
 // perimeter V2 uses a digital matched filter
-void Perimeter::matchedFilter(byte idx){
+void Perimeter::matchedFilter(byte idx){ 
   int16_t sampleCount = ADCMan.getCaptureSize(idxPin[0]);
   int8_t *samples = ADCMan.getCapture(idxPin[idx]);    
   if (callCounter == 100) {

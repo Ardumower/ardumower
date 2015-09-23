@@ -32,11 +32,8 @@ int mode = 0;
 
 void setup()  {  
   Wire.begin();
-  Console.begin(19200);  
+  Console.begin(115200);  
   pinMode(pinLED, OUTPUT);
-
-  pinMode(4, OUTPUT);
-  digitalWrite(4, HIGH);
 
   delay(100);
   Console.println("START");        
@@ -46,6 +43,11 @@ void setup()  {
   perimeter.useDifferentialPerimeterSignal = true;
   
   perimeter.speedTest();
+
+  Console.println("press...");
+  Console.println("  v to toggle between serial chart/console output");  
+  Console.println("  c to calibrate zero point (sender must be off!)");   
+  delay(1000);
 }
 
 
@@ -64,6 +66,8 @@ void printConsole(){
     Console.print("\t\t");
     Console.print("mag ");
     Console.print((int)perimeter.getMagnitude(0));        
+    Console.print(",");
+    Console.print((int)perimeter.getMagnitude(1));        
     Console.print("\t");
     Console.print("\t");    
     Console.print("smag ");    
@@ -120,7 +124,7 @@ void loop()  {
   }
   
   if (millis() >= nextTime){
-    nextTime = millis() + 50;
+    nextTime = millis() + 500;
     if (perimeter.isInside(0) != inside){
       inside = perimeter.isInside(0);
       counter++;      
