@@ -50,7 +50,7 @@
 
 
 Perimeter::Perimeter(){    
-  useDifferentialPerimeterSignal = false;
+  useDifferentialPerimeterSignal = true;
   swapCoilPolarity = false;
   timedOutIfBelowSmag = 300;
   timeOutSecIfNotInside = 8;
@@ -98,8 +98,16 @@ void Perimeter::speedTest(){
   Console.println(loops);
 }
 
+const int8_t* Perimeter::getRawSignalSample(byte idx) {
+  return rawSignalSample[idx];
+}
+
 int Perimeter::getMagnitude(byte idx){  
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
+    // Keep a sample of the raw signal
+    memset(rawSignalSample[idx], 0, RAW_SIGNAL_SAMPLE_SIZE);
+    memcpy(rawSignalSample[idx], ADCMan.getCapture(idxPin[idx]), min(ADCMan.getCaptureSize(idxPin[0]), RAW_SIGNAL_SAMPLE_SIZE));
+    // Process signal
     matchedFilter(idx);
   }
   return mag[idx];
@@ -181,7 +189,14 @@ float Perimeter::getFilterQuality(byte idx){
 }
 
 boolean Perimeter::isInside(byte idx){
-  return (signalCounter[idx] < 0);  
+  if (abs(mag[idx]) > 1000) {
+    // Large signal, the in/out detection is reliable.
+    // Using mag yields very fast in/out transition reporting.
+    return (mag[idx]<0);
+  } else {
+    // Low signal, use filtered value for increased reliability
+    return (signalCounter[idx] < 0);
+  }
 }
 
 

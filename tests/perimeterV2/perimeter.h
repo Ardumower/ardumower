@@ -37,6 +37,7 @@ How to use it (example):
 
 #include <Arduino.h>
 
+#define RAW_SIGNAL_SAMPLE_SIZE 32
 
 
 class Perimeter
@@ -44,7 +45,8 @@ class Perimeter
   public:
     Perimeter();
     // set ADC pins
-    void setPins(byte idx0Pin, byte idx1Pin);    
+    void setPins(byte idx0Pin, byte idx1Pin);
+    const int8_t* getRawSignalSample(byte idx);
     // get perimeter magnitude
     int getMagnitude(byte idx);    
     int getSmoothMagnitude(byte idx);
@@ -75,6 +77,7 @@ class Perimeter
     int16_t signalMax[2];
     int16_t signalAvg[2];    
     int signalCounter[2];    
+    int8_t rawSignalSample[2][RAW_SIGNAL_SAMPLE_SIZE];
     void matchedFilter(byte idx);
     int16_t corrFilter(int8_t *H, int8_t subsample, int16_t M, int8_t *ip, int16_t nPts, float &quality);
     void printADCMinMax(int8_t *samples);
