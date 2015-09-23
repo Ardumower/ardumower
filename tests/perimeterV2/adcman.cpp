@@ -174,7 +174,9 @@ void ADCManager::startADC(int sampleCount){
   /*  REFS0 : VCC use as a ref, IR_AUDIO : channel selection, ADEN : ADC Enable, ADSC : ADC Start, ADATE : ADC Auto Trigger Enable, ADIE : ADC Interrupt Enable,  ADPS : ADC Prescaler  */
   // free running ADC mode, f = ( 16MHz / prescaler ) / 13 cycles per conversion   
   ADMUX = _BV(REFS0) | (channel & 0x07); // | _BV(ADLAR); 
+#if defined(__AVR_ATmega2560__)  
   ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((channel >> 3) & 0x01) << MUX5);  
+#endif  
   // use slow but accurate sampling if one sample only
   if (sampleCount == 1)
     // slow but accurate
@@ -188,7 +190,9 @@ void ADCManager::startADC(int sampleCount){
   }
   // disable digital buffers (reduces noise/capacity)
   if (channel < 8) DIDR0 |= (1 << channel);
+#if defined(__AVR_ATmega2560__)  
     else DIDR2 |= (1 << (channel-8));
+#endif    
   //sei();   
 #else 
   adc_enable_channel( ADC, (adc_channel_num_t)g_APinDescription[A0+channel].ulADCChannelNumber  ); 
