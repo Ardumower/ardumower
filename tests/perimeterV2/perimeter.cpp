@@ -105,8 +105,8 @@ const int8_t* Perimeter::getRawSignalSample(byte idx) {
 int Perimeter::getMagnitude(byte idx){  
   if (ADCMan.isCaptureComplete(idxPin[idx])) {
     // Keep a sample of the raw signal
-    memset(rawSignalSample[idx], 0, RAW_SIGNAL_SAMPLE_SIZE);
-    memcpy(rawSignalSample[idx], ADCMan.getCapture(idxPin[idx]), min(ADCMan.getCaptureSize(idxPin[0]), RAW_SIGNAL_SAMPLE_SIZE));
+    //memset(rawSignalSample[idx], 0, RAW_SIGNAL_SAMPLE_SIZE);
+    //memcpy(rawSignalSample[idx], ADCMan.getCapture(idxPin[idx]), min(ADCMan.getCaptureSize(idxPin[0]), RAW_SIGNAL_SAMPLE_SIZE));
     // Process signal
     matchedFilter(idx);
   }
@@ -134,28 +134,18 @@ void Perimeter::printADCMinMax(int8_t *samples){
 void Perimeter::matchedFilter(byte idx){ 
   int16_t sampleCount = ADCMan.getCaptureSize(idxPin[0]);
   int8_t *samples = ADCMan.getCapture(idxPin[idx]);    
-  if (callCounter == 100) {
-    // statistics only
-    callCounter = 0;
-    signalMin[idx] = 9999;
-    signalMax[idx] = -9999;
-    signalAvg[idx] = 0;  
-    for (int i=0; i < sampleCount; i++){
-      int8_t v = samples[i];
-      signalAvg[idx] += v;
-      signalMin[idx] = min(signalMin[idx], v);
-      signalMax[idx] = max(signalMax[idx], v);
-    }
-    signalAvg[idx] = ((double)signalAvg[idx]) / ((double)(sampleCount));
-  }
+  signalMin[idx] = ADCMan.getADCMin(idxPin[idx]);
+  signalMax[idx] = ADCMan.getADCMax(idxPin[idx]);
+  signalAvg[idx] = ADCMan.getADCAvg(idxPin[idx]);    
   // magnitude for tracking (fast but inaccurate)    
   int16_t sigcode_size = sizeof sigcode_norm;
   int8_t *sigcode = sigcode_norm;  
   if (useDifferentialPerimeterSignal) sigcode = sigcode_diff;
   mag[idx] = corrFilter(sigcode, subSample, sigcode_size, samples, sampleCount-sigcode_size*subSample, filterQuality[idx]);
   if (swapCoilPolarity) mag[idx] *= -1;        
-  // smoothed magnitude used for signal-off detection
-  smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)abs(mag[idx]));
+  // smoothed magnitude used for signal-off detection  
+  smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)abs(mag[idx]));  
+  //smoothMag[idx] = 0.99 * smoothMag[idx] + 0.01 * ((float)mag[idx]);  
 
   // perimeter inside/outside detection
   if (mag[idx] > 0){

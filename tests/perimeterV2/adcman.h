@@ -87,6 +87,7 @@ class ADCManager
     int getCapturedChannels();
     int16_t getADCMin(byte pin);
     int16_t getADCMax(byte pin);    
+    int16_t getADCAvg(byte pin);    
     int16_t getADCOfs(byte pin);    
     // return number samples to capture
     int getCaptureSize(byte pin);
@@ -106,6 +107,7 @@ class ADCManager
     void loadSaveCalib(boolean readflag);
     void saveCalib();    
     void printCalib();
+    void postProcess();
 };
 
 extern ADCManager ADCMan;

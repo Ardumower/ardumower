@@ -66,8 +66,8 @@ void printConsole(){
     Console.print("\t\t");
     Console.print("mag ");
     Console.print((int)perimeter.getMagnitude(0));        
-    Console.print(",");
-    Console.print((int)perimeter.getMagnitude(1));        
+    //Console.print(",");
+    //Console.print((int)perimeter.getMagnitude(1));        
     Console.print("\t");
     Console.print("\t");    
     Console.print("smag ");    
@@ -86,11 +86,22 @@ void printConsole(){
     Console.print("adc ");
     Console.print((int)(ADCMan.getCapturedChannels()));            
     Console.println();   
+    delay(500);
 }
 
 
 // https://code.google.com/p/serialchart/
 void printSerialChart(){
+  static float delta = 0;
+  Console.print((int)perimeter.getMagnitude(0));                  
+  Console.print(",");                  
+  Console.print((int)perimeter.getSmoothMagnitude(0));                
+  Console.print(",");                  
+  float d = perimeter.getSignalMax(0)-perimeter.getSignalMin(0);
+  delta = 0.95 * delta + 0.05 * d;
+  Console.print(delta);
+  Console.println();
+  /*    
   if (!ADCMan.isCaptureComplete(pinPerimeterLeft)) return;
   int8_t *samples = ADCMan.getCapture(pinPerimeterLeft);      
   int sz = ADCMan.getCaptureSize(pinPerimeterLeft);      
@@ -105,7 +116,7 @@ void printSerialChart(){
       Console.println(samples[i]);
     }
   }
-  delay(5000);
+  delay(5000);*/
 }
 
 void loop()  {     
@@ -124,7 +135,7 @@ void loop()  {
   }
   
   if (millis() >= nextTime){
-    nextTime = millis() + 500;
+    nextTime = millis() + 50;
     if (perimeter.isInside(0) != inside){
       inside = perimeter.isInside(0);
       counter++;      
