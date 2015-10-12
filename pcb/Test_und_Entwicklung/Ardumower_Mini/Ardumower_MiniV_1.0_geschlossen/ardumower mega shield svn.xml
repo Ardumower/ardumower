@@ -1,0 +1,4356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:/Users/Uwe/Downloads/ardumower/pcb/megashield_svn_1.3_geoeffnet/ardumower mega shield svn.sch</source>
+    <date>24.05.2015 03:24:05</date>
+    <tool>Eeschema (2015-05-08 BZR 5647)-product</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Ardumower Shield - Hauptschaltplan</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>ardumower mega shield svn.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Sonar/" tstamps="/553A7355/">
+      <title_block>
+        <title>Ardumower Shield  - Ultraschallsensoren</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Sonar.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/Odometry/" tstamps="/553B3D38/">
+      <title_block>
+        <title>Ardumower Shield - Odometry</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Odometry.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/Perimeter/" tstamps="/553BB67C/">
+      <title_block>
+        <title>Ardumower Shield - Perimeter</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Perimeter.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="5" name="/ReservePins/" tstamps="/553B6850/">
+      <title_block>
+        <title>Ardumower Shield - Reserve Pins</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>ReservePins.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="6" name="/Dropsensor/" tstamps="/553C8677/">
+      <title_block>
+        <title>Ardumower Shield - Dropsensor</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Dropsensor.sch</source>
+        <comment number="1" value="Dropsensoren"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="7" name="/I2C/" tstamps="/553D014E/">
+      <title_block>
+        <title>Ardumower Shield - I2C Schnittstelle</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>I2C.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="8" name="/Stiftleisten/" tstamps="/553DFC0F/">
+      <title_block>
+        <title>Ardumower Shield - Stiftleisten</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Stiftleisten.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="9" name="/RTC Uhr/" tstamps="/5540C583/">
+      <title_block>
+        <title>Ardumower Shield - RTC Uhr</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>RTC Uhr.sch</source>
+        <comment number="1" value="RTC Uhr"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="10" name="/serielle Schnittstelle/" tstamps="/553BDA33/">
+      <title_block>
+        <title>Ardumower Shield - serielle Schnittstelle</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>serielle Schnittstelle.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="11" name="/Bohrlöcher/" tstamps="/553D2376/">
+      <title_block>
+        <title>Ardumower Shield - Bohrlöcher Platine</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Bohrlöcher.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="12" name="/Motortreiber/" tstamps="/553D8AD9/">
+      <title_block>
+        <title>Ardumower Shield - Motortreiber</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Motortreiber.sch</source>
+        <comment number="1" value="Motordriverschutz von JürgenL"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="13" name="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/">
+      <title_block>
+        <title>Ardumower Shield - Motortreiber 1 - Rechts</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Dual1_Ms_Rechts.sch</source>
+        <comment number="1" value="Motordriverschutz von JürgenL"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="14" name="/Motortreiber/Dual1_Vin/" tstamps="/553D8AD9/5543A988/">
+      <title_block>
+        <title>Ardumower Shield - Motortreiber 1 - Spannungsversorgung</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Dual1_Vin.sch</source>
+        <comment number="1" value="Motordriverschutz von JürgenL"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="15" name="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/">
+      <title_block>
+        <title>Ardumower Shield - Motortreiber 1 - Links</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Dual1_Ms_Links.sch</source>
+        <comment number="1" value="Motordriverschutz von JürgenL"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="16" name="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/">
+      <title_block>
+        <title>Ardumower Shield - Motortreiber 2 - Mähteller</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Dual2_Ms_Mower.sch</source>
+        <comment number="1" value="Motordriverschutz von JürgenL"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="17" name="/Motortreiber/Dual2_Vin/" tstamps="/553D8AD9/554D9DA2/">
+      <title_block>
+        <title>Ardumower Shield - Motortreiber 2 - Spannungsversorgung</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Dual2_Vin.sch</source>
+        <comment number="1" value="Motordriverschutz von JürgenL"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="18" name="/Sonstiges/" tstamps="/554017E4/">
+      <title_block>
+        <title>Ardumower Shield - Sonstiges</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Sonstiges.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="19" name="/Stepdownwandler/" tstamps="/553E526C/">
+      <title_block>
+        <title>Ardumower Shield - Stepdownwandler</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Stepdownwandler.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="20" name="/UnterSpannungsSchutz/" tstamps="/553A6702/">
+      <title_block>
+        <title>Ardumower Shield - Unterspannungsschutz</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>UnterSpannungsSchutz.sch</source>
+        <comment number="1" value="Unterspannungsschutz von AlexanderG"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="21" name="/Verpols.B/" tstamps="/553A788C/">
+      <title_block>
+        <title>Ardumower Shield - Verpolungsschutz Batterie</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Verpols.B.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="22" name="/Batteriespannung/" tstamps="/554BCB67/">
+      <title_block>
+        <title>Ardumower Shield - Batteriespannungsmessung</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Batteriespannung.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="23" name="/Ladespannung/" tstamps="/554C1C35/">
+      <title_block>
+        <title>Ardumower Shield - Ladespannungsmessung</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date/>
+        <source>Ladespannung.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="24" name="/Verpols.L/" tstamps="/553A1252/">
+      <title_block>
+        <title>Ardumower Shield - Verpolungsschutz Ladespannung</title>
+        <company>Layout &amp; Plan von UweZ</company>
+        <rev>V1.3</rev>
+        <date>Sonntag, 26. April 2015</date>
+        <source>Verpols.L.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="25" name="/Blockkondensatoren/" tstamps="/5558DDF4/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>Blockkondensatoren.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="SHIELD1">
+      <value>ARDUINO_MEGA_SHIELD</value>
+      <footprint>ACS712:ARDUINO_MEGA_SHIELD_DUO_3D</footprint>
+      <fields>
+        <field name="Reference">SHIELD</field>
+        <field name="Value">ARDUINO_MEGA_SHIELD</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="ARDUINO_MEGA_SHIELD"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5375252C</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>220R</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5384EC7E</tstamp>
+    </comp>
+    <comp ref="P43">
+      <value>Battery</value>
+      <footprint>ACS712:Anschlussklemme_RM5,08-RM7,62</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>53866CB8</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>INA169</value>
+      <footprint>ACS712:INA169</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="ACS712"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5417150B</tstamp>
+    </comp>
+    <comp ref="P42">
+      <value>Charger connector</value>
+      <footprint>ACS712:Anschlussklemme_RM5,08-RM7,62</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>541A0C85</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>1,0uF</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">R: </field>
+        <field name="Bestelllink">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>541DF105</tstamp>
+    </comp>
+    <comp ref="RR1">
+      <value>C0,1uF</value>
+      <footprint>ACS712:Kondensatorenleiste_8er_9pin_3D</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="RR8"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54994E69</tstamp>
+    </comp>
+    <comp ref="RR2">
+      <value>C0,1uF</value>
+      <footprint>ACS712:Kondensatorenleiste_8er_9pin_3D</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="RR8"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5499A2BD</tstamp>
+    </comp>
+    <comp ref="K3">
+      <value>RELAY_2RT</value>
+      <footprint>ACS712:Relais_DPDT_Schrack-RT2_RM5mm_3D_Kontaktbelegung_geändert_FIN40.52.9_6V</footprint>
+      <fields>
+        <field name="Bestellnummer">Siehe Bauteileigenschaften</field>
+        <field name="Quelle">http://www.reichelt.de/Print-Steckrelais/FIN-40-52-9-6V/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=8108&amp;GROUPID=3293&amp;artnr=FIN+40.52.9+6V</field>
+        <field name="Bestellnummer 24V">R: FIN 40.52.9 24V</field>
+        <field name="Bestellnummer 12V">R: FIN 40.52.9 12V</field>
+        <field name="Bestellnummer 6V">R: FIN 40.52.9 6V</field>
+        <field name="Printfassung für Relais">R: FIN 95.15.2</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="RELAY_2RT"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54A679F2</tstamp>
+    </comp>
+    <comp ref="EF1">
+      <value>F_5A</value>
+      <footprint>ACS712:Fuseholder_Reichelt_PL112000</footprint>
+      <fields>
+        <field name="Bestellnummer">R: PL 112000</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54A79B5A</tstamp>
+    </comp>
+    <comp ref="EF2">
+      <value>F_10A</value>
+      <footprint>ACS712:Fuseholder_Reichelt_PL112000</footprint>
+      <fields>
+        <field name="Bestellnummer">R: PL 112000</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54A7AB0D</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>BC547</value>
+      <footprint>ACS712:TO92-EBC</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="BC237"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B46879</tstamp>
+    </comp>
+    <comp ref="R18">
+      <value>2k2</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B46970</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>1000uF</value>
+      <footprint>Capacitors_ThroughHole:C_Radial_D16_L31.5_P7.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R: RAD FC 1000/50V</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B51225</tstamp>
+    </comp>
+    <comp ref="R21">
+      <value>220R</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B5FC72</tstamp>
+    </comp>
+    <comp ref="R20">
+      <value>220R</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B5FD13</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>1K5</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B48CE0</tstamp>
+    </comp>
+    <comp ref="RP2">
+      <value>150</value>
+      <footprint>ACS712:DIP-16__300</footprint>
+      <fields>
+        <field name="Bestellnummer">C: 1055159 - 62</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R_PACK8"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B686DE</tstamp>
+    </comp>
+    <comp ref="JP12">
+      <value>pwrAA5.0V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54B90ACC</tstamp>
+    </comp>
+    <comp ref="JP3">
+      <value>pwrAA3,3</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54C10ED7</tstamp>
+    </comp>
+    <comp ref="D10">
+      <value>1N4148</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <datasheet>Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A</datasheet>
+      <fields>
+        <field name="Bestellnummer">1N4148</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54C6AF0E</tstamp>
+    </comp>
+    <comp ref="LP35">
+      <value>Lötpad</value>
+      <footprint>ACS712:Lötpad0,508_CU</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Lötpad"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>551BAF3A</tstamp>
+    </comp>
+    <comp ref="LP34">
+      <value>Lötpad</value>
+      <footprint>ACS712:Lötpad0,508_CU</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Lötpad"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>551BB23C</tstamp>
+    </comp>
+    <comp ref="LP33">
+      <value>Lötpad</value>
+      <footprint>ACS712:Lötpad0,508_CU</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Lötpad"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>551BB3C6</tstamp>
+    </comp>
+    <comp ref="LP32">
+      <value>Lötpad</value>
+      <footprint>ACS712:Lötpad0,508_CU</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Lötpad"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>551BB55E</tstamp>
+    </comp>
+    <comp ref="R19">
+      <value>0</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>552CF3A3</tstamp>
+    </comp>
+    <comp ref="RP1">
+      <value>150</value>
+      <footprint>ACS712:DIP-16__300</footprint>
+      <fields>
+        <field name="Bestellnummer">C: 1055159 - 62</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R_PACK8"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5478A23C</tstamp>
+    </comp>
+    <comp ref="LP36">
+      <value>Lötpad</value>
+      <footprint>ACS712:Lötpad0,508_CU</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Lötpad"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55320D6B</tstamp>
+    </comp>
+    <comp ref="P47">
+      <value>Not Aus</value>
+      <footprint>ACS712:Anschlussklemme_RM5,08-RM7,62</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>553DAE0C</tstamp>
+    </comp>
+    <comp ref="D11">
+      <value>1N4148</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <datasheet>Planar Epitaxial Schaltdiode, DO35, 100V, 0,15A</datasheet>
+      <fields>
+        <field name="Bestellnummer">1N4148</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>553DC320</tstamp>
+    </comp>
+    <comp ref="KE2">
+      <value>15KE33CA</value>
+      <footprint>ACS712:Diode_15KE33CA</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="15KEXXC"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5540B0B9</tstamp>
+    </comp>
+    <comp ref="KE1">
+      <value>15KE33CA</value>
+      <footprint>ACS712:Diode_15KE33CA</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="15KEXXC"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541A8DB</tstamp>
+    </comp>
+    <comp ref="CC1">
+      <value>100 nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R: KERKO 100N</field>
+        <field name="Bestelllink">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5558C608</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>Sonar C.</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Sonar/" tstamps="/553A7355/"/>
+      <tstamp>553AEB77</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>Sonar R.</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Sonar/" tstamps="/553A7355/"/>
+      <tstamp>553AF410</tstamp>
+    </comp>
+    <comp ref="P3">
+      <value>Sonar L.</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Sonar/" tstamps="/553A7355/"/>
+      <tstamp>553AFE20</tstamp>
+    </comp>
+    <comp ref="P8">
+      <value>ODO Right</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Odometry/" tstamps="/553B3D38/"/>
+      <tstamp>553AD741</tstamp>
+    </comp>
+    <comp ref="P9">
+      <value>ODO Left</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Odometry/" tstamps="/553B3D38/"/>
+      <tstamp>553B1AB4</tstamp>
+    </comp>
+    <comp ref="R38">
+      <value>4,7K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">R: METALL 4,70K</field>
+        <field name="Bestelllink">https://www.reichelt.de/METALL-4-70K/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=11784&amp;artnr=METALL+4%2C70K&amp;SEARCH=widerstand+4k7</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Odometry/" tstamps="/553B3D38/"/>
+      <tstamp>555C6BCC</tstamp>
+    </comp>
+    <comp ref="R40">
+      <value>4,7K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">R: METALL 4,70K</field>
+        <field name="Bestelllink">https://www.reichelt.de/METALL-4-70K/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=11784&amp;artnr=METALL+4%2C70K&amp;SEARCH=widerstand+4k7</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Odometry/" tstamps="/553B3D38/"/>
+      <tstamp>555C6CE7</tstamp>
+    </comp>
+    <comp ref="R39">
+      <value>4,7K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">R: METALL 4,70K</field>
+        <field name="Bestelllink">https://www.reichelt.de/METALL-4-70K/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=11784&amp;artnr=METALL+4%2C70K&amp;SEARCH=widerstand+4k7</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Odometry/" tstamps="/553B3D38/"/>
+      <tstamp>555C6EC6</tstamp>
+    </comp>
+    <comp ref="R37">
+      <value>4,7K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">R: METALL 4,70K</field>
+        <field name="Bestelllink">https://www.reichelt.de/METALL-4-70K/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=11784&amp;artnr=METALL+4%2C70K&amp;SEARCH=widerstand+4k7</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Odometry/" tstamps="/553B3D38/"/>
+      <tstamp>555C6E5F</tstamp>
+    </comp>
+    <comp ref="P30">
+      <value>P.Right</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Perimeter/" tstamps="/553BB67C/"/>
+      <tstamp>553A9732</tstamp>
+    </comp>
+    <comp ref="P12">
+      <value>P.Left</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Perimeter/" tstamps="/553BB67C/"/>
+      <tstamp>553AAAF7</tstamp>
+    </comp>
+    <comp ref="P25">
+      <value>Res.Pin9</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553B7663</tstamp>
+    </comp>
+    <comp ref="P26">
+      <value>Res.Pin4</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553BA344</tstamp>
+    </comp>
+    <comp ref="P28">
+      <value>Res.Pin8</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553BC8E0</tstamp>
+    </comp>
+    <comp ref="P29">
+      <value>Res.Pin1</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553BF1B4</tstamp>
+    </comp>
+    <comp ref="P27">
+      <value>Res.Pin0</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553C1023</tstamp>
+    </comp>
+    <comp ref="P35">
+      <value>Resv.Pin49</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553C32D8</tstamp>
+    </comp>
+    <comp ref="P22">
+      <value>Res.AD6</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>553C570A</tstamp>
+    </comp>
+    <comp ref="P49">
+      <value>Res.AD10</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/ReservePins/" tstamps="/553B6850/"/>
+      <tstamp>5558F7C0</tstamp>
+    </comp>
+    <comp ref="P31">
+      <value>DropLeft</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Dropsensor/" tstamps="/553C8677/"/>
+      <tstamp>553C964A</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>1N4148</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Dropsensor/" tstamps="/553C8677/"/>
+      <tstamp>553C96CC</tstamp>
+    </comp>
+    <comp ref="P21">
+      <value>DropRight</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Dropsensor/" tstamps="/553C8677/"/>
+      <tstamp>553CC962</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>1N4148</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Dropsensor/" tstamps="/553C8677/"/>
+      <tstamp>553CC974</tstamp>
+    </comp>
+    <comp ref="P23">
+      <value>I2C Res.1</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/I2C/" tstamps="/553D014E/"/>
+      <tstamp>553D119E</tstamp>
+    </comp>
+    <comp ref="P24">
+      <value>I2C Res.2</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/I2C/" tstamps="/553D014E/"/>
+      <tstamp>553D38DC</tstamp>
+    </comp>
+    <comp ref="P5">
+      <value>IMU Compas</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/I2C/" tstamps="/553D014E/"/>
+      <tstamp>553D4F25</tstamp>
+    </comp>
+    <comp ref="P45">
+      <value>I2C Res.3</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/I2C/" tstamps="/553D014E/"/>
+      <tstamp>553DB860</tstamp>
+    </comp>
+    <comp ref="P46">
+      <value>I2C Res.4</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/I2C/" tstamps="/553D014E/"/>
+      <tstamp>553DBF0E</tstamp>
+    </comp>
+    <comp ref="U10">
+      <value>I2C_5-3V</value>
+      <footprint>ACS712:I2C_5-3V</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="I2C_5-3V"/>
+      <sheetpath names="/I2C/" tstamps="/553D014E/"/>
+      <tstamp>553DC2B8</tstamp>
+    </comp>
+    <comp ref="P6">
+      <value>Lawn sens</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553DFED0</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>2M2</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553DFF72</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>2M2</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553DFFFF</tstamp>
+    </comp>
+    <comp ref="P19">
+      <value>Tilt sens</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553E3A60</tstamp>
+    </comp>
+    <comp ref="P4">
+      <value>MowRpm</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553E7063</tstamp>
+    </comp>
+    <comp ref="P41">
+      <value>Rain</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553E9187</tstamp>
+    </comp>
+    <comp ref="P14">
+      <value>Meas V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553EA898</tstamp>
+    </comp>
+    <comp ref="P11">
+      <value>Bumper</value>
+      <footprint>ACS712:Pin_Header_Straight_1x04</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_4"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553ECCEE</tstamp>
+    </comp>
+    <comp ref="P40">
+      <value>UserSwitsch</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553EF93A</tstamp>
+    </comp>
+    <comp ref="P13">
+      <value>RC Remote</value>
+      <footprint>ACS712:Pin_Header_Straight_1x06</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_6"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553F19AF</tstamp>
+    </comp>
+    <comp ref="P34">
+      <value>Voltage header 3,3V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_01X08"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553FB959</tstamp>
+    </comp>
+    <comp ref="P33">
+      <value>Voltage header 5V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_01X08"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553FE0F1</tstamp>
+    </comp>
+    <comp ref="P32">
+      <value>Voltage header GND</value>
+      <footprint>ACS712:Pin_Header_Straight_1x08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_01X08"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>553FFEDE</tstamp>
+    </comp>
+    <comp ref="P38">
+      <value>Status LEDs GND</value>
+      <footprint>ACS712:Pin_Header_Straight_1x08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_01X08"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>55401F07</tstamp>
+    </comp>
+    <comp ref="P7">
+      <value>Status LEDs</value>
+      <footprint>ACS712:Pin_Header_Straight_1x08</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_01X08"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>55403386</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>220</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>55406FDF</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>1K5</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>55408729</tstamp>
+    </comp>
+    <comp ref="R23">
+      <value>100</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>55409786</tstamp>
+    </comp>
+    <comp ref="P48">
+      <value>Reset</value>
+      <footprint>ACS712:Pin_Header_Straight_1x03</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_3"/>
+      <sheetpath names="/Stiftleisten/" tstamps="/553DFC0F/"/>
+      <tstamp>55571682</tstamp>
+    </comp>
+    <comp ref="U8">
+      <value>DS1307+</value>
+      <footprint>ACS712:Tiny_RTC_DS1307_geändert_mit_Bohrloch_4Lochreihen</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DS1307+"/>
+      <sheetpath names="/RTC Uhr/" tstamps="/5540C583/"/>
+      <tstamp>5540CB56</tstamp>
+    </comp>
+    <comp ref="P10">
+      <value>GPS</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C0979</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>Bluetooth_CZ_HC_05</value>
+      <footprint>ACS712:Bluetooth_Buchse_Platz</footprint>
+      <datasheet>DOCUMENTATION</datasheet>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Bluetooth_CZ_HC_05"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C3493</tstamp>
+    </comp>
+    <comp ref="JP2">
+      <value>Key</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C3C10</tstamp>
+    </comp>
+    <comp ref="R22">
+      <value>120</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C3C5A</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>BlueLED</value>
+      <footprint>ACS712:Diode_LED_5mm_round_vertical</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C450A</tstamp>
+    </comp>
+    <comp ref="JP8">
+      <value>Blue5.0V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C4C94</tstamp>
+    </comp>
+    <comp ref="JP9">
+      <value>Blue3.3V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C509B</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>1K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C5735</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>1K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C61C5</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>470R</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C6212</tstamp>
+    </comp>
+    <comp ref="U11">
+      <value>Wlan_ESP8266</value>
+      <footprint>ACS712:Wlan_ESP8266_3D</footprint>
+      <datasheet>DOCUMENTATION</datasheet>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="Wlan_ESP8266" part="Wlan_ESP8266"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553C9758</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>1K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553CAC27</tstamp>
+    </comp>
+    <comp ref="R16">
+      <value>1K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553CB350</tstamp>
+    </comp>
+    <comp ref="R15">
+      <value>470</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553CB8DD</tstamp>
+    </comp>
+    <comp ref="P44">
+      <value>Wlan</value>
+      <footprint>ACS712:Pin_Header_Straight_1x05</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_5"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>553CE8AC</tstamp>
+    </comp>
+    <comp ref="CC45">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/serielle Schnittstelle/" tstamps="/553BDA33/"/>
+      <tstamp>5560BCE1</tstamp>
+    </comp>
+    <comp ref="B1">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2728</tstamp>
+    </comp>
+    <comp ref="B2">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2940</tstamp>
+    </comp>
+    <comp ref="B3">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D29B5</tstamp>
+    </comp>
+    <comp ref="B4">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2A32</tstamp>
+    </comp>
+    <comp ref="B5">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2EF2</tstamp>
+    </comp>
+    <comp ref="B6">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2EF9</tstamp>
+    </comp>
+    <comp ref="B7">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2F00</tstamp>
+    </comp>
+    <comp ref="B8">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D2F07</tstamp>
+    </comp>
+    <comp ref="B15">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D3232</tstamp>
+    </comp>
+    <comp ref="B16">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D3239</tstamp>
+    </comp>
+    <comp ref="B17">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D3240</tstamp>
+    </comp>
+    <comp ref="B18">
+      <value>Bohrloch_3,2mm</value>
+      <footprint>ACS712:Bohrloch_3,2mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D3247</tstamp>
+    </comp>
+    <comp ref="B12">
+      <value>Bohrloch_6,5mm</value>
+      <footprint>ACS712:Bohrloch_6,5mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D418C</tstamp>
+    </comp>
+    <comp ref="B13">
+      <value>Bohrloch_6,5mm</value>
+      <footprint>ACS712:Bohrloch_6,5mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D4193</tstamp>
+    </comp>
+    <comp ref="B14">
+      <value>Bohrloch_6,5mm</value>
+      <footprint>ACS712:Bohrloch_6,5mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D419A</tstamp>
+    </comp>
+    <comp ref="B9">
+      <value>Bohrloch_6,5mm</value>
+      <footprint>ACS712:Bohrloch_6,5mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D4CF9</tstamp>
+    </comp>
+    <comp ref="B10">
+      <value>Bohrloch_6,5mm</value>
+      <footprint>ACS712:Bohrloch_6,5mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D4CFF</tstamp>
+    </comp>
+    <comp ref="B11">
+      <value>Bohrloch_6,5mm</value>
+      <footprint>ACS712:Bohrloch_6,5mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm"/>
+      <sheetpath names="/Bohrlöcher/" tstamps="/553D2376/"/>
+      <tstamp>553D4D05</tstamp>
+    </comp>
+    <comp ref="Dual1">
+      <value>MC33926</value>
+      <footprint>ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="MC33926"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>553D8D88</tstamp>
+    </comp>
+    <comp ref="Dual2">
+      <value>MC33926</value>
+      <footprint>ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="MC33926"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>553DEB14</tstamp>
+    </comp>
+    <comp ref="JP16">
+      <value>M1FB</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>553E1515</tstamp>
+    </comp>
+    <comp ref="P36">
+      <value>Res24V-2</value>
+      <footprint>ACS712:Anschlussklemme_2P_RM5,08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>553E3A88</tstamp>
+    </comp>
+    <comp ref="P39">
+      <value>Res24V-1</value>
+      <footprint>ACS712:Anschlussklemme_2P_RM5,08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>553E4037</tstamp>
+    </comp>
+    <comp ref="CC2">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R: KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>5558A920</tstamp>
+    </comp>
+    <comp ref="CC3">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R: KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>5558AB3B</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>10uF 16V</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bestelllink">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>5558B8D1</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>10uF 16V</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Bestelllink">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/Motortreiber/" tstamps="/553D8AD9/"/>
+      <tstamp>5558C050</tstamp>
+    </comp>
+    <comp ref="BY3">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>554BE913</tstamp>
+    </comp>
+    <comp ref="BY4">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>554BE915</tstamp>
+    </comp>
+    <comp ref="BY1">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>554BE91C</tstamp>
+    </comp>
+    <comp ref="BY2">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>554BE91E</tstamp>
+    </comp>
+    <comp ref="P18">
+      <value>Right</value>
+      <footprint>ACS712:Anschlussklemme_2P_RM5,08</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>554BE920</tstamp>
+    </comp>
+    <comp ref="R17">
+      <value>2W METALL 1,8</value>
+      <footprint>Resistors_ThroughHole:Resistor_Horizontal_RM20mm</footprint>
+      <datasheet>https://www.reichelt.de/2W-METALL-1-8/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=2309&amp;artnr=2W+METALL+1%2C8&amp;SEARCH=2W+METALL+1%2C8</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: 2W METALL 1,8</field>
+        <field name="Technische Daten">Metalloxidschicht-Widerstand 2W, 5% 1,8 Ohm</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>55434642</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>MP3-Y2 10N Rastermass 15mm</value>
+      <footprint>ACS712:Kondensator_cnp_18x5mm</footprint>
+      <datasheet>https://www.reichelt.de/MP3-Y2-10N/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=32025&amp;artnr=MP3-Y2+10N&amp;SEARCH=MP3-Y2+10N</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: MP3-Y2 10N</field>
+        <field name="Technische Daten">IMA, Funk-Entstörkondensator, Klasse Y2</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Rechts/" tstamps="/553D8AD9/5542A35A/"/>
+      <tstamp>554BE928</tstamp>
+    </comp>
+    <comp ref="P16">
+      <value>V.OUT</value>
+      <footprint>ACS712:Anschlussklemme_2P_RM5,08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/Dual1_Vin/" tstamps="/553D8AD9/5543A988/"/>
+      <tstamp>554BE923</tstamp>
+    </comp>
+    <comp ref="KE3">
+      <value>15KE33CA</value>
+      <footprint>ACS712:Diode_15KE33CA</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="15KEXXC"/>
+      <sheetpath names="/Motortreiber/Dual1_Vin/" tstamps="/553D8AD9/5543A988/"/>
+      <tstamp>5543B245</tstamp>
+    </comp>
+    <comp ref="PRFA1">
+      <value>PFRA 500</value>
+      <footprint>ACS712:PRFA_500</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/Motortreiber/Dual1_Vin/" tstamps="/553D8AD9/5543A988/"/>
+      <tstamp>5543B2C4</tstamp>
+    </comp>
+    <comp ref="BY7">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM10</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>5542A3D9</tstamp>
+    </comp>
+    <comp ref="BY8">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM10</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>5542A4FC</tstamp>
+    </comp>
+    <comp ref="BY5">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM10</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>554BE91B</tstamp>
+    </comp>
+    <comp ref="BY6">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM10</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>554BE91D</tstamp>
+    </comp>
+    <comp ref="P15">
+      <value>Left</value>
+      <footprint>ACS712:Anschlussklemme_2P_RM5,08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>554BE91F</tstamp>
+    </comp>
+    <comp ref="R33">
+      <value>2W METALL 1,8</value>
+      <footprint>ACS712:Resistor_Horizontal_RM20mm</footprint>
+      <datasheet>https://www.reichelt.de/2W-METALL-1-8/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=2309&amp;artnr=2W+METALL+1%2C8&amp;SEARCH=2W+METALL+1%2C8</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: 2W METALL 1,8</field>
+        <field name="Technische Daten">Metalloxidschicht-Widerstand 2W, 5% 1,8 Ohm</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>554BE921</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>MP3-Y2 10N Rastermass 15mm</value>
+      <footprint>ACS712:Kondensator_cnp_18x5mm</footprint>
+      <datasheet>https://www.reichelt.de/MP3-Y2-10N/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=32025&amp;artnr=MP3-Y2+10N&amp;SEARCH=MP3-Y2+10N</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: MP3-Y2 10N</field>
+        <field name="Technische Daten">IMA, Funk-Entstörkondensator, Klasse Y2</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Motortreiber/Dual1_Ms_Links/" tstamps="/553D8AD9/554D3EE8/"/>
+      <tstamp>554AC8CC</tstamp>
+    </comp>
+    <comp ref="BY11">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>554BE914</tstamp>
+    </comp>
+    <comp ref="BY12">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>554BE916</tstamp>
+    </comp>
+    <comp ref="BY9">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>5542A6A6</tstamp>
+    </comp>
+    <comp ref="BY10">
+      <value>BY 500/1000</value>
+      <footprint>ACS712:Diode_liegend_BY500_1000_RM15</footprint>
+      <datasheet>https://www.reichelt.de/BY-500-1000/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=6337&amp;artnr=BY+500%2F1000&amp;SEARCH=BY+500%2F1000</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: BY 500/1000</field>
+        <field name="Technische Daten">Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>5542A6AC</tstamp>
+    </comp>
+    <comp ref="P37">
+      <value>Mower</value>
+      <footprint>ACS712:Anschlussklemme_RM5,08-RM7,62</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>554342A7</tstamp>
+    </comp>
+    <comp ref="R36">
+      <value>2W METALL 1,8</value>
+      <footprint>ACS712:Resistor_Horizontal_RM20mm</footprint>
+      <datasheet>https://www.reichelt.de/2W-METALL-1-8/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=2309&amp;artnr=2W+METALL+1%2C8&amp;SEARCH=2W+METALL+1%2C8</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: 2W METALL 1,8</field>
+        <field name="Technische Daten">Metalloxidschicht-Widerstand 2W, 5% 1,8 Ohm</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>554BE922</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>MP3-Y2 10N Rastermass 15mm</value>
+      <footprint>ACS712:Kondensator_cnp_18x5mm</footprint>
+      <datasheet>https://www.reichelt.de/MP3-Y2-10N/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=32025&amp;artnr=MP3-Y2+10N&amp;SEARCH=MP3-Y2+10N</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: MP3-Y2 10N</field>
+        <field name="Technische Daten">IMA, Funk-Entstörkondensator, Klasse Y2</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Motortreiber/Dual2_Ms_Mower/" tstamps="/553D8AD9/554D4C79/"/>
+      <tstamp>554BE929</tstamp>
+    </comp>
+    <comp ref="P17">
+      <value>V.OUT</value>
+      <footprint>ACS712:Anschlussklemme_2P_RM5,08</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/Motortreiber/Dual2_Vin/" tstamps="/553D8AD9/554D9DA2/"/>
+      <tstamp>5543AA2F</tstamp>
+    </comp>
+    <comp ref="KE4">
+      <value>15KE33CA</value>
+      <footprint>ACS712:Diode_15KE33CA</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="15KEXXC"/>
+      <sheetpath names="/Motortreiber/Dual2_Vin/" tstamps="/553D8AD9/554D9DA2/"/>
+      <tstamp>554BE926</tstamp>
+    </comp>
+    <comp ref="PRFA2">
+      <value>PFRA 500</value>
+      <footprint>ACS712:PRFA_500</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/Motortreiber/Dual2_Vin/" tstamps="/553D8AD9/554D9DA2/"/>
+      <tstamp>554BE927</tstamp>
+    </comp>
+    <comp ref="SP1">
+      <value>SPEAKER</value>
+      <footprint>ACS712:Buzzer_12x9.5RM7.6_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">R: SUMMER TDB 05</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="SPEAKER"/>
+      <sheetpath names="/Sonstiges/" tstamps="/554017E4/"/>
+      <tstamp>55401981</tstamp>
+    </comp>
+    <comp ref="JP14">
+      <value>Meas5.0V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Sonstiges/" tstamps="/554017E4/"/>
+      <tstamp>553CA94E</tstamp>
+    </comp>
+    <comp ref="JP15">
+      <value>MeasA3.3V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Sonstiges/" tstamps="/554017E4/"/>
+      <tstamp>553CAB00</tstamp>
+    </comp>
+    <comp ref="JP13">
+      <value>Meas3.3V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Sonstiges/" tstamps="/554017E4/"/>
+      <tstamp>553CAB7C</tstamp>
+    </comp>
+    <comp ref="U7">
+      <value>DC  5V</value>
+      <footprint>ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DC-DC_Stepdown"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E5460</tstamp>
+    </comp>
+    <comp ref="ZD2">
+      <value>ZD-5W 5,1 Optional</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <fields>
+        <field name="Bestellnummer">R: ZD-5W 5,1</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E5DC0</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>100uF</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">R: RAD FC 100/50</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E5E05</tstamp>
+    </comp>
+    <comp ref="R25">
+      <value>0</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E6E97</tstamp>
+    </comp>
+    <comp ref="JP11">
+      <value>pwr 5V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E7279</tstamp>
+    </comp>
+    <comp ref="U6">
+      <value>DC  3,3V</value>
+      <footprint>ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DC-DC_Stepdown"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E7CE8</tstamp>
+    </comp>
+    <comp ref="ZD1">
+      <value>ZD-5W 3,3V Optional</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <fields>
+        <field name="Bestellnummer">R: ZD-5W 3,3V</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E7CFF</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>100uF</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">R: RAD FC 100/50</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E7D06</tstamp>
+    </comp>
+    <comp ref="R24">
+      <value>0</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E7D11</tstamp>
+    </comp>
+    <comp ref="JP10">
+      <value>pwr 3,3V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E7D1D</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>DC 10V</value>
+      <footprint>ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DC-DC_Stepdown"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E9122</tstamp>
+    </comp>
+    <comp ref="ZD3">
+      <value>ZD-5W 12V Optional</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <fields>
+        <field name="Bestellnummer">R: ZD-5W 12V</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E9139</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100uF</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">R: RAD FC 100/50</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E9140</tstamp>
+    </comp>
+    <comp ref="R26">
+      <value>0</value>
+      <footprint>ACS712:Resistor_Horizontal_RM15mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E914B</tstamp>
+    </comp>
+    <comp ref="JP1">
+      <value>pwr 10V</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="JUMPER"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>553E9158</tstamp>
+    </comp>
+    <comp ref="PRFA5">
+      <value>PFRA 185</value>
+      <footprint>ACS712:PRFA_500_stehend</footprint>
+      <fields>
+        <field name="Bestellnummer">R: PFRA 185</field>
+        <field name="Bestelllink">http://www.reichelt.de/index.html?ACTION=3;ARTICLE=35184;SEARCH=PFRA%20185</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>555B1C87</tstamp>
+    </comp>
+    <comp ref="PRFA3">
+      <value>PFRA 185</value>
+      <footprint>ACS712:PRFA_500_stehend</footprint>
+      <fields>
+        <field name="Bestellnummer">R: PFRA 185</field>
+        <field name="Bestelllink">http://www.reichelt.de/index.html?ACTION=3;ARTICLE=35184;SEARCH=PFRA%20185</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>555B2389</tstamp>
+    </comp>
+    <comp ref="PRFA4">
+      <value>PFRA 185</value>
+      <footprint>ACS712:PRFA_500_stehend</footprint>
+      <fields>
+        <field name="Bestellnummer">R: PFRA 185</field>
+        <field name="Bestelllink">http://www.reichelt.de/index.html?ACTION=3;ARTICLE=35184;SEARCH=PFRA%20185</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="F_10A"/>
+      <sheetpath names="/Stepdownwandler/" tstamps="/553E526C/"/>
+      <tstamp>555B2AC8</tstamp>
+    </comp>
+    <comp ref="Q3">
+      <value>IRF9540N</value>
+      <footprint>Transistors_TO-220:TO-220_FET-GDS_Vertical</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="MOS_P"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A6942</tstamp>
+    </comp>
+    <comp ref="R28">
+      <value>100K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A69D5</tstamp>
+    </comp>
+    <comp ref="ZD6">
+      <value>ZPD15</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A6A52</tstamp>
+    </comp>
+    <comp ref="R29">
+      <value>1K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A6BF0</tstamp>
+    </comp>
+    <comp ref="D14">
+      <value>1N4148</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A6C81</tstamp>
+    </comp>
+    <comp ref="D16">
+      <value>1N5819</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <datasheet>https://www.reichelt.de/1N-5819/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=41850&amp;artnr=1N+5819&amp;SEARCH=1N5819</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: 1N 5819</field>
+        <field name="Technische Daten">Schottky Diode, DO41, 40V, 1A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A6D45</tstamp>
+    </comp>
+    <comp ref="D15">
+      <value>1N4148</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A6F4A</tstamp>
+    </comp>
+    <comp ref="R30">
+      <value>100</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A7069</tstamp>
+    </comp>
+    <comp ref="Q4">
+      <value>BC337</value>
+      <footprint>ACS712:TO92-EBC</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="BC237"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A747E</tstamp>
+    </comp>
+    <comp ref="R32">
+      <value>10K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A76F3</tstamp>
+    </comp>
+    <comp ref="R31">
+      <value>10K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A79BF</tstamp>
+    </comp>
+    <comp ref="D13">
+      <value>1N5819</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <datasheet>https://www.reichelt.de/1N-5819/3/index.html?&amp;ACTION=3&amp;LA=446&amp;ARTICLE=41850&amp;artnr=1N+5819&amp;SEARCH=1N5819</datasheet>
+      <fields>
+        <field name="Bestellnummer">R: 1N 5819</field>
+        <field name="Technische Daten">Schottky Diode, DO41, 40V, 1A</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="DIODE"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A7BF7</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>22uF</value>
+      <footprint>ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CP1"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553A7C73</tstamp>
+    </comp>
+    <comp ref="P20">
+      <value>Button</value>
+      <footprint>ACS712:Pin_Header_Straight_1x02</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="CONN_2"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>553E561A</tstamp>
+    </comp>
+    <comp ref="R35">
+      <value>30K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/UnterSpannungsSchutz/" tstamps="/553A6702/"/>
+      <tstamp>554A9E96</tstamp>
+    </comp>
+    <comp ref="Q5">
+      <value>IRF9530N</value>
+      <footprint>Transistors_TO-220:TO-220_FET-GDS_Vertical</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="MOS_P"/>
+      <sheetpath names="/Verpols.B/" tstamps="/553A788C/"/>
+      <tstamp>553A4B73</tstamp>
+    </comp>
+    <comp ref="R34">
+      <value>100K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Verpols.B/" tstamps="/553A788C/"/>
+      <tstamp>553A4BC1</tstamp>
+    </comp>
+    <comp ref="ZD7">
+      <value>ZPD15</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
+      <sheetpath names="/Verpols.B/" tstamps="/553A788C/"/>
+      <tstamp>553AC2EA</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>47K 0,1%</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">R: MPR 47,0K</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Batteriespannung/" tstamps="/554BCB67/"/>
+      <tstamp>554C8CE5</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>5,10K 0,1%</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Batteriespannung/" tstamps="/554BCB67/"/>
+      <tstamp>554BCD3E</tstamp>
+    </comp>
+    <comp ref="ZD4">
+      <value>ZD-5W 5,1</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <fields>
+        <field name="Bestellnummer">R: ZD-5W 5,1</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
+      <sheetpath names="/Batteriespannung/" tstamps="/554BCB67/"/>
+      <tstamp>554BCD9F</tstamp>
+    </comp>
+    <comp ref="CC5">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R: KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Batteriespannung/" tstamps="/554BCB67/"/>
+      <tstamp>5558A3B2</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>47K 0,1%</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">R: MPR 47,0K</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Ladespannung/" tstamps="/554C1C35/"/>
+      <tstamp>554BCCCE</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>5,10K 0,1%</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <fields>
+        <field name="Bestellnummer">Value</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Ladespannung/" tstamps="/554C1C35/"/>
+      <tstamp>554C8CE6</tstamp>
+    </comp>
+    <comp ref="ZD8">
+      <value>ZD-5W 5,1</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <fields>
+        <field name="Bestellnummer">R: ZD-5W 5,1</field>
+        <field name="Technische Daten">Value</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
+      <sheetpath names="/Ladespannung/" tstamps="/554C1C35/"/>
+      <tstamp>554C8CE7</tstamp>
+    </comp>
+    <comp ref="CC20">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R: KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Ladespannung/" tstamps="/554C1C35/"/>
+      <tstamp>5558A184</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>IRF9530N</value>
+      <footprint>Transistors_TO-220:TO-220_FET-GDS_Vertical</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="MOS_P"/>
+      <sheetpath names="/Verpols.L/" tstamps="/553A1252/"/>
+      <tstamp>553AC2EB</tstamp>
+    </comp>
+    <comp ref="R27">
+      <value>100K</value>
+      <footprint>ACS712:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="R"/>
+      <sheetpath names="/Verpols.L/" tstamps="/553A1252/"/>
+      <tstamp>553AC2EC</tstamp>
+    </comp>
+    <comp ref="ZD5">
+      <value>ZPD15</value>
+      <footprint>ACS712:Diode_ligend_RM10</footprint>
+      <libsource lib="ardumower mega shield svn-cache" part="Z-DIODE"/>
+      <sheetpath names="/Verpols.L/" tstamps="/553A1252/"/>
+      <tstamp>553A38F8</tstamp>
+    </comp>
+    <comp ref="CC10">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558DF5E</tstamp>
+    </comp>
+    <comp ref="CC8">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558E6C2</tstamp>
+    </comp>
+    <comp ref="CC9">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558E705</tstamp>
+    </comp>
+    <comp ref="CC13">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558E7F8</tstamp>
+    </comp>
+    <comp ref="CC11">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558E80E</tstamp>
+    </comp>
+    <comp ref="CC12">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558E824</tstamp>
+    </comp>
+    <comp ref="CC16">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558EA8C</tstamp>
+    </comp>
+    <comp ref="CC14">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558EAA2</tstamp>
+    </comp>
+    <comp ref="CC15">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558EAB8</tstamp>
+    </comp>
+    <comp ref="CC19">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558EACE</tstamp>
+    </comp>
+    <comp ref="CC17">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558EAE4</tstamp>
+    </comp>
+    <comp ref="CC18">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5558EAFA</tstamp>
+    </comp>
+    <comp ref="CC7">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555C50C2</tstamp>
+    </comp>
+    <comp ref="CC21">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF76F</tstamp>
+    </comp>
+    <comp ref="CC24">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF785</tstamp>
+    </comp>
+    <comp ref="CC22">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF79B</tstamp>
+    </comp>
+    <comp ref="CC23">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF7B1</tstamp>
+    </comp>
+    <comp ref="CC27">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF7C7</tstamp>
+    </comp>
+    <comp ref="CC25">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF7DD</tstamp>
+    </comp>
+    <comp ref="CC26">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF7F3</tstamp>
+    </comp>
+    <comp ref="CC30">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF809</tstamp>
+    </comp>
+    <comp ref="CC28">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF81F</tstamp>
+    </comp>
+    <comp ref="CC29">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555CF835</tstamp>
+    </comp>
+    <comp ref="CC33">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA4F5</tstamp>
+    </comp>
+    <comp ref="CC31">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA50B</tstamp>
+    </comp>
+    <comp ref="CC32">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA521</tstamp>
+    </comp>
+    <comp ref="CC36">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA537</tstamp>
+    </comp>
+    <comp ref="CC34">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA54D</tstamp>
+    </comp>
+    <comp ref="CC35">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA563</tstamp>
+    </comp>
+    <comp ref="CC39">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA579</tstamp>
+    </comp>
+    <comp ref="CC37">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA58F</tstamp>
+    </comp>
+    <comp ref="CC38">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>555FA5A5</tstamp>
+    </comp>
+    <comp ref="CC4">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609DFC</tstamp>
+    </comp>
+    <comp ref="CC41">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609E12</tstamp>
+    </comp>
+    <comp ref="CC6">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609E28</tstamp>
+    </comp>
+    <comp ref="CC40">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>55609E3E</tstamp>
+    </comp>
+    <comp ref="CC44">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5560A60D</tstamp>
+    </comp>
+    <comp ref="CC42">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5560A623</tstamp>
+    </comp>
+    <comp ref="CC43">
+      <value>100nF</value>
+      <footprint>Capacitors_ThroughHole:C_Disc_D3_P2.5</footprint>
+      <fields>
+        <field name="Bestellnummer">R:KERKO 100N</field>
+        <field name="Bestelllink">http://www.reichelt.de/Scheiben/KERKO-100N/3/index.html?&amp;ACTION=3&amp;LA=2&amp;ARTICLE=9265&amp;GROUPID=3169&amp;artnr=KERKO+100N</field>
+      </fields>
+      <libsource lib="ardumower mega shield svn-cache" part="Kondensator"/>
+      <sheetpath names="/Blockkondensatoren/" tstamps="/5558DDF4/"/>
+      <tstamp>5560A639</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Wlan_ESP8266" part="Wlan_ESP8266">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Wlan_ESP8266</field>
+        <field name="Footprint">MODULE</field>
+        <field name="Datasheet">DOCUMENTATION</field>
+      </fields>
+      <pins>
+        <pin num="CH_P" name="CH_PD" type="input"/>
+        <pin num="GND" name="GND" type="input"/>
+        <pin num="GP_0" name="GP_IO0" type="input"/>
+        <pin num="GP_2" name="GP_IO2" type="input"/>
+        <pin num="Rese" name="Reset" type="input"/>
+        <pin num="RX" name="RX" type="input"/>
+        <pin num="TX" name="TX" type="input"/>
+        <pin num="VCC" name="VCC" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="15KEXXC">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">15KEXXC</field>
+        <field name="Footprint">diode-CB429-17</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="ACS712">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ACS712</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VCC" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="OUT" type="output"/>
+        <pin num="4" name="IP+" type="input"/>
+        <pin num="5" name="IP-" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="ARDUINO_MEGA_SHIELD">
+      <fields>
+        <field name="Reference">SHIELD</field>
+        <field name="Value">ARDUINO_MEGA_SHIELD</field>
+      </fields>
+      <pins>
+        <pin num="0" name="RX0" type="BiDi"/>
+        <pin num="1" name="TX0" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="5V" name="5V" type="power_in"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="TX3" type="BiDi"/>
+        <pin num="15" name="RX3" type="BiDi"/>
+        <pin num="16" name="TX2" type="BiDi"/>
+        <pin num="17" name="RX2" type="BiDi"/>
+        <pin num="18" name="TX1" type="BiDi"/>
+        <pin num="19" name="RX1" type="BiDi"/>
+        <pin num="20" name="SDA" type="BiDi"/>
+        <pin num="21" name="SCL" type="BiDi"/>
+        <pin num="22" name="PA0" type="BiDi"/>
+        <pin num="23" name="PA1" type="BiDi"/>
+        <pin num="24" name="PA2" type="BiDi"/>
+        <pin num="25" name="PA3" type="BiDi"/>
+        <pin num="26" name="PA4" type="BiDi"/>
+        <pin num="27" name="PA5" type="BiDi"/>
+        <pin num="28" name="PA6" type="BiDi"/>
+        <pin num="29" name="PA7" type="BiDi"/>
+        <pin num="30" name="PC7" type="BiDi"/>
+        <pin num="31" name="PC6" type="BiDi"/>
+        <pin num="32" name="PC5" type="BiDi"/>
+        <pin num="33" name="PC4" type="BiDi"/>
+        <pin num="34" name="PC3" type="BiDi"/>
+        <pin num="35" name="PC2" type="BiDi"/>
+        <pin num="36" name="PC1" type="BiDi"/>
+        <pin num="37" name="PC0" type="BiDi"/>
+        <pin num="38" name="PD7" type="BiDi"/>
+        <pin num="39" name="PG2" type="BiDi"/>
+        <pin num="40" name="PG1" type="BiDi"/>
+        <pin num="41" name="PG0" type="BiDi"/>
+        <pin num="42" name="PL7" type="BiDi"/>
+        <pin num="43" name="PL6" type="BiDi"/>
+        <pin num="44" name="PL5" type="BiDi"/>
+        <pin num="45" name="PL4" type="BiDi"/>
+        <pin num="46" name="PL3" type="BiDi"/>
+        <pin num="47" name="PL2" type="BiDi"/>
+        <pin num="48" name="PL1" type="BiDi"/>
+        <pin num="49" name="PL0" type="BiDi"/>
+        <pin num="50" name="PB3_(MISO)" type="BiDi"/>
+        <pin num="51" name="PB2_(MOSI)" type="BiDi"/>
+        <pin num="52" name="PB1_(SCK)" type="BiDi"/>
+        <pin num="53" name="PB0_(SS)" type="BiDi"/>
+        <pin num="3V3" name="3V3" type="power_in"/>
+        <pin num="5V_4" name="5V_4" type="power_in"/>
+        <pin num="5V_5" name="5V_5" type="power_in"/>
+        <pin num="AD0" name="AD0" type="BiDi"/>
+        <pin num="AD1" name="AD1" type="BiDi"/>
+        <pin num="AD2" name="AD2" type="BiDi"/>
+        <pin num="AD3" name="AD3" type="BiDi"/>
+        <pin num="AD4" name="AD4" type="BiDi"/>
+        <pin num="AD5" name="AD5" type="BiDi"/>
+        <pin num="AD6" name="AD6" type="BiDi"/>
+        <pin num="AD7" name="AD7" type="BiDi"/>
+        <pin num="AD8" name="AD8" type="BiDi"/>
+        <pin num="AD9" name="AD9" type="BiDi"/>
+        <pin num="AD10" name="AD10" type="BiDi"/>
+        <pin num="AD11" name="AD11" type="BiDi"/>
+        <pin num="AD12" name="AD12" type="BiDi"/>
+        <pin num="AD13" name="AD13" type="BiDi"/>
+        <pin num="AD14" name="AD14" type="BiDi"/>
+        <pin num="AD15" name="AD15" type="BiDi"/>
+        <pin num="AREF" name="AREF" type="power_in"/>
+        <pin num="FREI" name="FREI1" type="input"/>
+        <pin num="GND1" name="GND1" type="power_in"/>
+        <pin num="GND2" name="GND2" type="power_in"/>
+        <pin num="GND3" name="GND3" type="power_in"/>
+        <pin num="GND4" name="GND4" type="power_in"/>
+        <pin num="GND5" name="GND5" type="power_in"/>
+        <pin num="IORE" name="IOREF" type="input"/>
+        <pin num="RST" name="RST" type="input"/>
+        <pin num="SCL1" name="SCL1" type="power_in"/>
+        <pin num="SDA1" name="SDA1" type="power_in"/>
+        <pin num="V_IN" name="V_IN" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="BC237">
+      <footprints>
+        <fp>TO92-EBC</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BC237</field>
+        <field name="Footprint">TO92-EBC</field>
+      </fields>
+      <pins>
+        <pin num="B" name="B" type="input"/>
+        <pin num="C" name="C" type="passive"/>
+        <pin num="E" name="E" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="Bluetooth_CZ_HC_05">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Bluetooth_CZ_HC_05</field>
+        <field name="Footprint">MODULE</field>
+        <field name="Datasheet">DOCUMENTATION</field>
+      </fields>
+      <pins>
+        <pin num="GND" name="GND" type="power_out"/>
+        <pin num="Key" name="Key" type="input"/>
+        <pin num="LED" name="LED" type="output"/>
+        <pin num="RXD" name="RXD" type="input"/>
+        <pin num="TXD" name="TXD" type="output"/>
+        <pin num="VCC" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm">
+      <fields>
+        <field name="Reference">B</field>
+        <field name="Value">Bohrloch_3,2mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B3,2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CONN_01X08">
+      <footprints>
+        <fp>Pin_Header_Straight_1X08</fp>
+        <fp>Pin_Header_Angled_1X08</fp>
+        <fp>Socket_Strip_Straight_1X08</fp>
+        <fp>Socket_Strip_Angled_1X08</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X08</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+        <pin num="7" name="P7" type="passive"/>
+        <pin num="8" name="P8" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CONN_2">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="PM" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CONN_3">
+      <fields>
+        <field name="Reference">K</field>
+        <field name="Value">CONN_3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="PM" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CONN_4">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_4</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CONN_5">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_5</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="passive"/>
+        <pin num="5" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CONN_6">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="CP1">
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="DC-DC_Stepdown">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DC-DC_Stepdown</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="output"/>
+        <pin num="2" name="Vout" type="output"/>
+        <pin num="3" name="VIN" type="input"/>
+        <pin num="4" name="GND" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="DIODE">
+      <footprints>
+        <fp>D?</fp>
+        <fp>S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">DIODE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="DS1307+">
+      <aliases>
+        <alias>DS1307N+</alias>
+        <alias>DS1307Z+</alias>
+      </aliases>
+      <description>I2C Real-Time Clock</description>
+      <docs>http://datasheets.maximintegrated.com/en/ds/DS1307.pdf</docs>
+      <footprints>
+        <fp>SO8E</fp>
+        <fp>DIP-8_300_ELL</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DS1307+</field>
+      </fields>
+      <pins>
+        <pin num="Bat" name="Bat" type="input"/>
+        <pin num="DS" name="DS" type="input"/>
+        <pin num="GND" name="GND" type="power_in"/>
+        <pin num="SCL" name="SCL" type="input"/>
+        <pin num="SDA" name="SDA" type="BiDi"/>
+        <pin num="SQ" name="SQ" type="output"/>
+        <pin num="VCC" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="F_10A">
+      <fields>
+        <field name="Reference">EF</field>
+        <field name="Value">F_10A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="power_in"/>
+        <pin num="2" name="~" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="I2C_5-3V">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">I2C_5-3V</field>
+      </fields>
+      <pins>
+        <pin num="1" name="AVCC_5V" type="input"/>
+        <pin num="2" name="ASCL_5V" type="input"/>
+        <pin num="3" name="ASDA_5V" type="input"/>
+        <pin num="4" name="AGND_5V" type="input"/>
+        <pin num="5" name="BVCC_" type="input"/>
+        <pin num="6" name="BSCL_3V" type="input"/>
+        <pin num="7" name="BSDA_3V" type="input"/>
+        <pin num="8" name="BGND" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="JUMPER">
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">JUMPER</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="Kondensator">
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">Kondensator</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="Lötpad">
+      <fields>
+        <field name="Reference">LP</field>
+        <field name="Value">Lötpad</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="MC33926">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MC33926</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="input"/>
+        <pin num="2" name="GND" type="input"/>
+        <pin num="3" name="Vdd" type="input"/>
+        <pin num="4" name="M1IN2" type="input"/>
+        <pin num="5" name="M1IN1" type="input"/>
+        <pin num="6" name="M1nD2" type="input"/>
+        <pin num="7" name="M1D1" type="input"/>
+        <pin num="8" name="M1nSF" type="input"/>
+        <pin num="9" name="M1FB" type="input"/>
+        <pin num="10" name="EN" type="input"/>
+        <pin num="11" name="SLEW" type="input"/>
+        <pin num="12" name="INV" type="input"/>
+        <pin num="13" name="M2IN2" type="input"/>
+        <pin num="14" name="M2IN1" type="input"/>
+        <pin num="15" name="M2nD2" type="input"/>
+        <pin num="16" name="M2D1" type="input"/>
+        <pin num="17" name="M2nSF" type="input"/>
+        <pin num="18" name="M2_FB" type="input"/>
+        <pin num="19" name="M1OUT1" type="input"/>
+        <pin num="20" name="M1OUT2" type="input"/>
+        <pin num="21" name="GND" type="input"/>
+        <pin num="22" name="VIN" type="input"/>
+        <pin num="23" name="M2OUT1" type="input"/>
+        <pin num="24" name="M2OUT2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="MOS_P">
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MOS_P</field>
+      </fields>
+      <pins>
+        <pin num="D" name="D" type="passive"/>
+        <pin num="G" name="G" type="input"/>
+        <pin num="S" name="S" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="R">
+      <footprints>
+        <fp>R?</fp>
+        <fp>SM0603</fp>
+        <fp>SM0805</fp>
+        <fp>R?-*</fp>
+        <fp>SM1206</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="RELAY_2RT">
+      <fields>
+        <field name="Reference">K</field>
+        <field name="Value">RELAY_2RT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="T1" type="passive"/>
+        <pin num="3" name="R1" type="passive"/>
+        <pin num="5" name="C1" type="passive"/>
+        <pin num="8" name="8" type="input"/>
+        <pin num="9" name="9" type="input"/>
+        <pin num="12" name="C2" type="passive"/>
+        <pin num="14" name="R2" type="passive"/>
+        <pin num="16" name="T2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="RR8">
+      <fields>
+        <field name="Reference">RR</field>
+        <field name="Value">RR8</field>
+      </fields>
+      <pins>
+        <pin num="1" name="COM" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="R_PACK8">
+      <fields>
+        <field name="Reference">RP</field>
+        <field name="Value">R_PACK8</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+        <pin num="7" name="P7" type="passive"/>
+        <pin num="8" name="P8" type="passive"/>
+        <pin num="9" name="R8" type="passive"/>
+        <pin num="10" name="R7" type="passive"/>
+        <pin num="11" name="R6" type="passive"/>
+        <pin num="12" name="R5" type="passive"/>
+        <pin num="13" name="R4" type="passive"/>
+        <pin num="14" name="R3" type="passive"/>
+        <pin num="15" name="R2" type="passive"/>
+        <pin num="16" name="R1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="SPEAKER">
+      <fields>
+        <field name="Reference">SP</field>
+        <field name="Value">SPEAKER</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+        <pin num="2" name="2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="Z-DIODE">
+      <footprints>
+        <fp>D?</fp>
+        <fp>S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">Z-DIODE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Wlan_ESP8266">
+      <uri>C:\Users\Uwe\Downloads\ardumower\pcb\megashield_svn_1.3_geoeffnet\acs712.pretty\Wlan_ESP8266.lib</uri>
+    </library>
+    <library logical="ardumower mega shield svn-cache">
+      <uri>C:\Users\Uwe\Downloads\ardumower\pcb\megashield_svn_1.3_geoeffnet\ardumower mega shield svn-cache.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(LP36-Pad2)">
+      <node ref="RR2" pin="6"/>
+      <node ref="LP36" pin="2"/>
+    </net>
+    <net code="2" name="TX1">
+      <node ref="R15" pin="1"/>
+      <node ref="SHIELD1" pin="18"/>
+    </net>
+    <net code="3" name="pinBuzzer">
+      <node ref="SP1" pin="2"/>
+      <node ref="SHIELD1" pin="53"/>
+    </net>
+    <net code="4" name="ReservePin49">
+      <node ref="SHIELD1" pin="49"/>
+      <node ref="P35" pin="3"/>
+    </net>
+    <net code="5" name="pinMotorMowSense">
+      <node ref="Dual2" pin="18"/>
+      <node ref="RP1" pin="5"/>
+    </net>
+    <net code="6" name="Net-(RP1-Pad12)">
+      <node ref="RR1" pin="5"/>
+      <node ref="RP1" pin="12"/>
+      <node ref="SHIELD1" pin="AD3"/>
+    </net>
+    <net code="7" name="Net-(D11-Pad1)">
+      <node ref="R19" pin="2"/>
+      <node ref="D11" pin="1"/>
+    </net>
+    <net code="8" name="Net-(D10-Pad2)">
+      <node ref="D11" pin="2"/>
+      <node ref="K3" pin="8"/>
+      <node ref="D10" pin="2"/>
+    </net>
+    <net code="9" name="Net-(EF2-Pad1)">
+      <node ref="EF2" pin="1"/>
+      <node ref="P47" pin="2"/>
+    </net>
+    <net code="10" name="SDA1">
+      <node ref="SHIELD1" pin="20"/>
+      <node ref="P24" pin="3"/>
+      <node ref="P23" pin="3"/>
+      <node ref="P5" pin="3"/>
+      <node ref="U10" pin="3"/>
+      <node ref="U8" pin="SDA"/>
+    </net>
+    <net code="11" name="RX1">
+      <node ref="SHIELD1" pin="19"/>
+      <node ref="U11" pin="TX"/>
+      <node ref="R14" pin="1"/>
+      <node ref="P44" pin="3"/>
+    </net>
+    <net code="12" name="SCL2">
+      <node ref="U8" pin="SCL"/>
+      <node ref="P24" pin="4"/>
+      <node ref="P5" pin="4"/>
+      <node ref="SHIELD1" pin="21"/>
+      <node ref="P23" pin="4"/>
+      <node ref="U10" pin="2"/>
+    </net>
+    <net code="13" name="pinPerimeterRight">
+      <node ref="P30" pin="3"/>
+      <node ref="RP1" pin="4"/>
+    </net>
+    <net code="14" name="Net-(LP35-Pad2)">
+      <node ref="RR2" pin="2"/>
+      <node ref="LP35" pin="2"/>
+    </net>
+    <net code="15" name="ReserveAD10">
+      <node ref="P49" pin="3"/>
+      <node ref="RP2" pin="6"/>
+    </net>
+    <net code="16" name="pinChargeVoltage">
+      <node ref="RP2" pin="7"/>
+      <node ref="ZD8" pin="2"/>
+      <node ref="R10" pin="1"/>
+      <node ref="CC20" pin="1"/>
+      <node ref="R9" pin="2"/>
+    </net>
+    <net code="17" name="pinChargeCurrent">
+      <node ref="U3" pin="3"/>
+      <node ref="RP2" pin="8"/>
+    </net>
+    <net code="18" name="pinMotorRightSense">
+      <node ref="RP1" pin="8"/>
+      <node ref="Dual1" pin="18"/>
+    </net>
+    <net code="19" name="pinMotorLeftSense">
+      <node ref="RP1" pin="7"/>
+      <node ref="Dual1" pin="9"/>
+    </net>
+    <net code="20" name="pinBatteryVoltage">
+      <node ref="CC5" pin="1"/>
+      <node ref="ZD4" pin="2"/>
+      <node ref="R12" pin="2"/>
+      <node ref="R13" pin="1"/>
+      <node ref="RP1" pin="6"/>
+    </net>
+    <net code="21" name="pinPerimeterLeft">
+      <node ref="RP1" pin="3"/>
+      <node ref="P12" pin="3"/>
+    </net>
+    <net code="22" name="ReserveAD6">
+      <node ref="JP16" pin="1"/>
+      <node ref="P22" pin="3"/>
+      <node ref="RP1" pin="2"/>
+    </net>
+    <net code="23" name="Voltage measurement">
+      <node ref="P14" pin="3"/>
+      <node ref="RP1" pin="1"/>
+      <node ref="JP14" pin="2"/>
+      <node ref="JP15" pin="2"/>
+      <node ref="JP13" pin="2"/>
+    </net>
+    <net code="24" name="PowerA3,3">
+      <node ref="JP3" pin="2"/>
+      <node ref="SHIELD1" pin="3V3"/>
+      <node ref="JP15" pin="1"/>
+    </net>
+    <net code="25" name="Net-(K3-Pad12)">
+      <node ref="U3" pin="4"/>
+      <node ref="K3" pin="12"/>
+    </net>
+    <net code="26" name="Net-(LP32-Pad2)">
+      <node ref="LP32" pin="2"/>
+      <node ref="RR2" pin="5"/>
+    </net>
+    <net code="27" name="Net-(LP33-Pad2)">
+      <node ref="LP33" pin="2"/>
+      <node ref="RR2" pin="4"/>
+    </net>
+    <net code="28" name="Net-(LP34-Pad2)">
+      <node ref="LP34" pin="2"/>
+      <node ref="RR2" pin="3"/>
+    </net>
+    <net code="29" name="Net-(SHIELD1-PadFREI)">
+      <node ref="SHIELD1" pin="FREI"/>
+    </net>
+    <net code="30" name="Net-(SHIELD1-PadIORE)">
+      <node ref="SHIELD1" pin="IORE"/>
+    </net>
+    <net code="31" name="Reset">
+      <node ref="SHIELD1" pin="RST"/>
+      <node ref="P48" pin="3"/>
+    </net>
+    <net code="32" name="pinButton">
+      <node ref="SHIELD1" pin="51"/>
+      <node ref="D15" pin="1"/>
+    </net>
+    <net code="33" name="/UnterSpannungsSchutz/Batterieeingang 24V">
+      <node ref="ZD6" pin="2"/>
+      <node ref="R28" pin="1"/>
+      <node ref="Q3" pin="S"/>
+      <node ref="C9" pin="1"/>
+      <node ref="Q5" pin="S"/>
+      <node ref="ZD7" pin="2"/>
+    </net>
+    <net code="34" name="Net-(K3-Pad14)">
+      <node ref="K3" pin="14"/>
+    </net>
+    <net code="35" name="pinUndervoltageSwitch">
+      <node ref="R35" pin="2"/>
+      <node ref="SHIELD1" pin="4"/>
+    </net>
+    <net code="36" name="/Verpols.L/Verpols.L.aus">
+      <node ref="ZD5" pin="2"/>
+      <node ref="K3" pin="16"/>
+      <node ref="R19" pin="1"/>
+      <node ref="R11" pin="1"/>
+      <node ref="Q2" pin="S"/>
+    </net>
+    <net code="37" name="Net-(K3-Pad5)">
+      <node ref="K3" pin="5"/>
+      <node ref="U3" pin="5"/>
+    </net>
+    <net code="38" name="/Ladespannung/Ladespannung">
+      <node ref="R9" pin="1"/>
+      <node ref="EF1" pin="1"/>
+      <node ref="Q2" pin="D"/>
+    </net>
+    <net code="39" name="Net-(JP12-Pad2)">
+      <node ref="JP12" pin="2"/>
+      <node ref="SHIELD1" pin="5V"/>
+    </net>
+    <net code="40" name="/Batteriespannung/Batteriespannung">
+      <node ref="P47" pin="1"/>
+      <node ref="KE1" pin="2"/>
+      <node ref="Q5" pin="D"/>
+      <node ref="K3" pin="1"/>
+      <node ref="R12" pin="1"/>
+    </net>
+    <net code="41" name="+24V">
+      <node ref="BY7" pin="2"/>
+      <node ref="BY3" pin="2"/>
+      <node ref="PRFA2" pin="1"/>
+      <node ref="BY5" pin="2"/>
+      <node ref="BY1" pin="2"/>
+      <node ref="U1" pin="3"/>
+      <node ref="P39" pin="2"/>
+      <node ref="Q3" pin="D"/>
+      <node ref="R2" pin="1"/>
+      <node ref="U6" pin="3"/>
+      <node ref="U7" pin="3"/>
+      <node ref="BY9" pin="2"/>
+      <node ref="C5" pin="1"/>
+      <node ref="BY11" pin="2"/>
+      <node ref="P36" pin="2"/>
+      <node ref="KE2" pin="2"/>
+      <node ref="PRFA1" pin="1"/>
+    </net>
+    <net code="42" name="Led-Status">
+      <node ref="P7" pin="8"/>
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="43" name="Net-(EF2-Pad2)">
+      <node ref="EF2" pin="2"/>
+      <node ref="P43" pin="1"/>
+    </net>
+    <net code="44" name="pinMotorRightPWM">
+      <node ref="SHIELD1" pin="3"/>
+      <node ref="Dual1" pin="14"/>
+    </net>
+    <net code="45" name="pinMotorMowEnable">
+      <node ref="SHIELD1" pin="28"/>
+      <node ref="Dual2" pin="10"/>
+    </net>
+    <net code="46" name="StationLed">
+      <node ref="R11" pin="2"/>
+      <node ref="P7" pin="5"/>
+    </net>
+    <net code="47" name="DuoLED_Grün">
+      <node ref="P7" pin="6"/>
+      <node ref="R21" pin="2"/>
+    </net>
+    <net code="48" name="DuoLED-Rot">
+      <node ref="R20" pin="2"/>
+      <node ref="P7" pin="7"/>
+    </net>
+    <net code="49" name="Net-(R21-Pad1)">
+      <node ref="SHIELD1" pin="6"/>
+      <node ref="R21" pin="1"/>
+    </net>
+    <net code="50" name="pinMotorMowDir">
+      <node ref="Dual2" pin="4"/>
+      <node ref="Dual2" pin="13"/>
+      <node ref="SHIELD1" pin="29"/>
+    </net>
+    <net code="51" name="Net-(Q1-PadB)">
+      <node ref="Q1" pin="B"/>
+      <node ref="R18" pin="2"/>
+    </net>
+    <net code="52" name="DropLeft">
+      <node ref="SHIELD1" pin="45"/>
+      <node ref="D5" pin="1"/>
+    </net>
+    <net code="53" name="Net-(SHIELD1-PadSDA1)">
+      <node ref="SHIELD1" pin="SDA1"/>
+    </net>
+    <net code="54" name="pinMotorLeftDir">
+      <node ref="Dual1" pin="4"/>
+      <node ref="SHIELD1" pin="31"/>
+    </net>
+    <net code="55" name="pinMotorRightDir">
+      <node ref="Dual1" pin="13"/>
+      <node ref="SHIELD1" pin="33"/>
+    </net>
+    <net code="56" name="pinSonarCenterEcho">
+      <node ref="P1" pin="4"/>
+      <node ref="SHIELD1" pin="22"/>
+    </net>
+    <net code="57" name="pinSonarRightEcho">
+      <node ref="P2" pin="4"/>
+      <node ref="SHIELD1" pin="32"/>
+    </net>
+    <net code="58" name="pinSonarLeftEcho">
+      <node ref="SHIELD1" pin="36"/>
+      <node ref="P3" pin="4"/>
+    </net>
+    <net code="59" name="pinMotorMowFault">
+      <node ref="Dual2" pin="8"/>
+      <node ref="Dual2" pin="17"/>
+      <node ref="SHIELD1" pin="26"/>
+    </net>
+    <net code="60" name="pinMotorLeftFault">
+      <node ref="SHIELD1" pin="25"/>
+      <node ref="Dual1" pin="8"/>
+    </net>
+    <net code="61" name="pinMotorRightFault">
+      <node ref="Dual1" pin="17"/>
+      <node ref="SHIELD1" pin="27"/>
+    </net>
+    <net code="62" name="pinBumperLeft">
+      <node ref="SHIELD1" pin="39"/>
+      <node ref="P11" pin="4"/>
+    </net>
+    <net code="63" name="Net-(SHIELD1-PadSCL1)">
+      <node ref="SHIELD1" pin="SCL1"/>
+    </net>
+    <net code="64" name="Net-(SHIELD1-PadAREF)">
+      <node ref="SHIELD1" pin="AREF"/>
+    </net>
+    <net code="65" name="ReservePin0">
+      <node ref="SHIELD1" pin="0"/>
+      <node ref="P27" pin="3"/>
+    </net>
+    <net code="66" name="pinLawnFrontSend">
+      <node ref="SHIELD1" pin="41"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="67" name="pinMotorLeftPWM">
+      <node ref="Dual1" pin="5"/>
+      <node ref="SHIELD1" pin="5"/>
+    </net>
+    <net code="68" name="pinMotorMowPWM">
+      <node ref="SHIELD1" pin="2"/>
+      <node ref="Dual2" pin="14"/>
+      <node ref="Dual2" pin="5"/>
+    </net>
+    <net code="69" name="pinRain">
+      <node ref="SHIELD1" pin="44"/>
+      <node ref="P41" pin="3"/>
+    </net>
+    <net code="70" name="pinSonarLeftTrigger">
+      <node ref="P3" pin="3"/>
+      <node ref="SHIELD1" pin="34"/>
+    </net>
+    <net code="71" name="pinUserSwitch3">
+      <node ref="SHIELD1" pin="48"/>
+      <node ref="P40" pin="5"/>
+    </net>
+    <net code="72" name="pinSonarCenterTrigger">
+      <node ref="P1" pin="3"/>
+      <node ref="SHIELD1" pin="24"/>
+    </net>
+    <net code="73" name="pinRemoteMow">
+      <node ref="SHIELD1" pin="12"/>
+      <node ref="P13" pin="3"/>
+    </net>
+    <net code="74" name="pinUserSwitch2">
+      <node ref="P40" pin="4"/>
+      <node ref="SHIELD1" pin="47"/>
+    </net>
+    <net code="75" name="pinLawnBackRecv">
+      <node ref="SHIELD1" pin="42"/>
+      <node ref="P6" pin="4"/>
+    </net>
+    <net code="76" name="pinTilt">
+      <node ref="SHIELD1" pin="35"/>
+      <node ref="P19" pin="3"/>
+    </net>
+    <net code="77" name="RX2">
+      <node ref="SHIELD1" pin="17"/>
+      <node ref="R8" pin="1"/>
+      <node ref="U2" pin="TXD"/>
+    </net>
+    <net code="78" name="GPS_TX">
+      <node ref="SHIELD1" pin="15"/>
+      <node ref="P10" pin="4"/>
+    </net>
+    <net code="79" name="pinLawnBackSend">
+      <node ref="R3" pin="2"/>
+      <node ref="SHIELD1" pin="43"/>
+    </net>
+    <net code="80" name="pinSonarRightTrigger">
+      <node ref="SHIELD1" pin="30"/>
+      <node ref="P2" pin="3"/>
+    </net>
+    <net code="81" name="pinMotorEnable">
+      <node ref="SHIELD1" pin="37"/>
+      <node ref="Dual1" pin="10"/>
+    </net>
+    <net code="82" name="Net-(D10-Pad1)">
+      <node ref="D10" pin="1"/>
+      <node ref="Q1" pin="C"/>
+      <node ref="K3" pin="9"/>
+    </net>
+    <net code="83" name="pinRemoteSwitch">
+      <node ref="P13" pin="6"/>
+      <node ref="SHIELD1" pin="52"/>
+    </net>
+    <net code="84" name="pinChargingEnable">
+      <node ref="R18" pin="1"/>
+      <node ref="SHIELD1" pin="50"/>
+    </net>
+    <net code="85" name="Power5">
+      <node ref="P49" pin="1"/>
+      <node ref="CC43" pin="1"/>
+      <node ref="C11" pin="1"/>
+      <node ref="CC38" pin="1"/>
+      <node ref="P26" pin="1"/>
+      <node ref="P44" pin="1"/>
+      <node ref="CC42" pin="1"/>
+      <node ref="P22" pin="1"/>
+      <node ref="CC37" pin="1"/>
+      <node ref="P25" pin="1"/>
+      <node ref="P12" pin="1"/>
+      <node ref="P30" pin="1"/>
+      <node ref="CC22" pin="1"/>
+      <node ref="P48" pin="1"/>
+      <node ref="CC26" pin="1"/>
+      <node ref="P46" pin="1"/>
+      <node ref="U10" pin="1"/>
+      <node ref="Dual1" pin="15"/>
+      <node ref="CC25" pin="1"/>
+      <node ref="P31" pin="1"/>
+      <node ref="P41" pin="1"/>
+      <node ref="P5" pin="1"/>
+      <node ref="CC7" pin="1"/>
+      <node ref="P45" pin="1"/>
+      <node ref="JP14" pin="1"/>
+      <node ref="Dual1" pin="3"/>
+      <node ref="P4" pin="1"/>
+      <node ref="P23" pin="1"/>
+      <node ref="Dual1" pin="6"/>
+      <node ref="P24" pin="1"/>
+      <node ref="CC23" pin="1"/>
+      <node ref="CC27" pin="1"/>
+      <node ref="JP8" pin="1"/>
+      <node ref="R8" pin="2"/>
+      <node ref="CC24" pin="1"/>
+      <node ref="C10" pin="1"/>
+      <node ref="U8" pin="VCC"/>
+      <node ref="P21" pin="1"/>
+      <node ref="CC21" pin="1"/>
+      <node ref="JP11" pin="2"/>
+      <node ref="CC17" pin="1"/>
+      <node ref="CC19" pin="1"/>
+      <node ref="P10" pin="1"/>
+      <node ref="R14" pin="2"/>
+      <node ref="CC18" pin="1"/>
+      <node ref="R1" pin="1"/>
+      <node ref="CC3" pin="1"/>
+      <node ref="P33" pin="7"/>
+      <node ref="P33" pin="1"/>
+      <node ref="P33" pin="2"/>
+      <node ref="P33" pin="3"/>
+      <node ref="P33" pin="4"/>
+      <node ref="P33" pin="5"/>
+      <node ref="CC36" pin="1"/>
+      <node ref="P33" pin="6"/>
+      <node ref="P33" pin="8"/>
+      <node ref="P3" pin="1"/>
+      <node ref="CC35" pin="1"/>
+      <node ref="P2" pin="1"/>
+      <node ref="CC39" pin="1"/>
+      <node ref="CC32" pin="1"/>
+      <node ref="CC2" pin="1"/>
+      <node ref="CC14" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="P13" pin="1"/>
+      <node ref="CC16" pin="1"/>
+      <node ref="CC12" pin="1"/>
+      <node ref="CC1" pin="1"/>
+      <node ref="CC15" pin="1"/>
+      <node ref="JP12" pin="1"/>
+      <node ref="P14" pin="1"/>
+      <node ref="CC13" pin="1"/>
+      <node ref="CC9" pin="1"/>
+      <node ref="CC11" pin="1"/>
+      <node ref="CC10" pin="1"/>
+      <node ref="CC8" pin="1"/>
+      <node ref="U3" pin="1"/>
+      <node ref="P40" pin="1"/>
+      <node ref="P29" pin="1"/>
+      <node ref="CC33" pin="1"/>
+      <node ref="CC29" pin="1"/>
+      <node ref="P9" pin="1"/>
+      <node ref="P19" pin="1"/>
+      <node ref="P27" pin="1"/>
+      <node ref="Dual2" pin="15"/>
+      <node ref="P35" pin="1"/>
+      <node ref="CC34" pin="1"/>
+      <node ref="P28" pin="1"/>
+      <node ref="CC44" pin="1"/>
+      <node ref="R40" pin="2"/>
+      <node ref="R38" pin="2"/>
+      <node ref="P8" pin="1"/>
+      <node ref="CC31" pin="1"/>
+      <node ref="CC30" pin="1"/>
+      <node ref="Dual2" pin="6"/>
+      <node ref="CC28" pin="1"/>
+      <node ref="P1" pin="1"/>
+      <node ref="Dual2" pin="3"/>
+      <node ref="R37" pin="2"/>
+      <node ref="R39" pin="2"/>
+    </net>
+    <net code="86" name="Net-(RP1-Pad10)">
+      <node ref="RP1" pin="10"/>
+      <node ref="SHIELD1" pin="AD1"/>
+      <node ref="RR1" pin="3"/>
+    </net>
+    <net code="87" name="Power">
+      <node ref="SHIELD1" pin="V_IN"/>
+      <node ref="JP1" pin="2"/>
+    </net>
+    <net code="88" name="Net-(RP1-Pad16)">
+      <node ref="SHIELD1" pin="AD7"/>
+      <node ref="RR1" pin="9"/>
+      <node ref="RP1" pin="16"/>
+    </net>
+    <net code="89" name="Net-(RP1-Pad15)">
+      <node ref="RP1" pin="15"/>
+      <node ref="SHIELD1" pin="AD6"/>
+      <node ref="RR1" pin="8"/>
+    </net>
+    <net code="90" name="Net-(RP1-Pad14)">
+      <node ref="RP1" pin="14"/>
+      <node ref="SHIELD1" pin="AD5"/>
+      <node ref="RR1" pin="7"/>
+    </net>
+    <net code="91" name="Net-(RP1-Pad13)">
+      <node ref="RP1" pin="13"/>
+      <node ref="RR1" pin="6"/>
+      <node ref="SHIELD1" pin="AD4"/>
+    </net>
+    <net code="92" name="Net-(RP1-Pad11)">
+      <node ref="RR1" pin="4"/>
+      <node ref="SHIELD1" pin="AD2"/>
+      <node ref="RP1" pin="11"/>
+    </net>
+    <net code="93" name="Net-(RP1-Pad9)">
+      <node ref="SHIELD1" pin="AD0"/>
+      <node ref="RR1" pin="2"/>
+      <node ref="RP1" pin="9"/>
+    </net>
+    <net code="94" name="Net-(RP2-Pad9)">
+      <node ref="RP2" pin="9"/>
+      <node ref="RR2" pin="9"/>
+      <node ref="SHIELD1" pin="AD8"/>
+    </net>
+    <net code="95" name="Net-(RP2-Pad11)">
+      <node ref="RR2" pin="7"/>
+      <node ref="SHIELD1" pin="AD10"/>
+      <node ref="RP2" pin="11"/>
+    </net>
+    <net code="96" name="Net-(RP2-Pad10)">
+      <node ref="RR2" pin="8"/>
+      <node ref="RP2" pin="10"/>
+      <node ref="SHIELD1" pin="AD9"/>
+    </net>
+    <net code="97" name="pinRemoteSteer">
+      <node ref="P13" pin="4"/>
+      <node ref="SHIELD1" pin="11"/>
+    </net>
+    <net code="98" name="pinUserSwitch1">
+      <node ref="P40" pin="3"/>
+      <node ref="SHIELD1" pin="46"/>
+    </net>
+    <net code="99" name="pinBumperRight">
+      <node ref="P11" pin="3"/>
+      <node ref="SHIELD1" pin="38"/>
+    </net>
+    <net code="100" name="pinLawnFrontRecv">
+      <node ref="P6" pin="2"/>
+      <node ref="SHIELD1" pin="40"/>
+    </net>
+    <net code="101" name="DropRight">
+      <node ref="D6" pin="1"/>
+      <node ref="SHIELD1" pin="23"/>
+    </net>
+    <net code="102" name="GPS_RX">
+      <node ref="SHIELD1" pin="14"/>
+      <node ref="P10" pin="3"/>
+    </net>
+    <net code="103" name="TX2">
+      <node ref="R6" pin="1"/>
+      <node ref="SHIELD1" pin="16"/>
+    </net>
+    <net code="104" name="ReservePin9">
+      <node ref="SHIELD1" pin="9"/>
+      <node ref="P25" pin="3"/>
+    </net>
+    <net code="105" name="pinRemoteSpeed">
+      <node ref="SHIELD1" pin="10"/>
+      <node ref="P13" pin="5"/>
+    </net>
+    <net code="106" name="ReservePin1">
+      <node ref="SHIELD1" pin="1"/>
+      <node ref="P29" pin="3"/>
+    </net>
+    <net code="107" name="Net-(R5-Pad1)">
+      <node ref="R5" pin="1"/>
+      <node ref="SHIELD1" pin="13"/>
+    </net>
+    <net code="108" name="ReservePin8">
+      <node ref="P28" pin="3"/>
+      <node ref="SHIELD1" pin="8"/>
+    </net>
+    <net code="109" name="Net-(R20-Pad1)">
+      <node ref="R20" pin="1"/>
+      <node ref="SHIELD1" pin="7"/>
+    </net>
+    <net code="110" name="Net-(SHIELD1-Pad5V_4)">
+      <node ref="SHIELD1" pin="5V_4"/>
+    </net>
+    <net code="111" name="Net-(SHIELD1-Pad5V_5)">
+      <node ref="SHIELD1" pin="5V_5"/>
+    </net>
+    <net code="112" name="pinOdometryRight2">
+      <node ref="SHIELD1" pin="AD15"/>
+      <node ref="P8" pin="4"/>
+      <node ref="R40" pin="1"/>
+      <node ref="LP35" pin="1"/>
+      <node ref="RP2" pin="16"/>
+      <node ref="RP2" pin="1"/>
+    </net>
+    <net code="113" name="Net-(K3-Pad3)">
+      <node ref="K3" pin="3"/>
+    </net>
+    <net code="114" name="pinOdometryRight">
+      <node ref="LP34" pin="1"/>
+      <node ref="R38" pin="1"/>
+      <node ref="SHIELD1" pin="AD14"/>
+      <node ref="P8" pin="3"/>
+      <node ref="RP2" pin="15"/>
+      <node ref="RP2" pin="2"/>
+    </net>
+    <net code="115" name="pinOdometryLeft2">
+      <node ref="SHIELD1" pin="AD13"/>
+      <node ref="LP33" pin="1"/>
+      <node ref="RP2" pin="3"/>
+      <node ref="R39" pin="1"/>
+      <node ref="RP2" pin="14"/>
+      <node ref="P9" pin="4"/>
+    </net>
+    <net code="116" name="pinOdometryLeft">
+      <node ref="R37" pin="1"/>
+      <node ref="LP32" pin="1"/>
+      <node ref="RP2" pin="4"/>
+      <node ref="P9" pin="3"/>
+      <node ref="RP2" pin="13"/>
+      <node ref="SHIELD1" pin="AD12"/>
+    </net>
+    <net code="117" name="pinMotorMowRpm">
+      <node ref="P4" pin="3"/>
+      <node ref="LP36" pin="1"/>
+      <node ref="SHIELD1" pin="AD11"/>
+      <node ref="RP2" pin="5"/>
+      <node ref="RP2" pin="12"/>
+    </net>
+    <net code="118" name="+3V3">
+      <node ref="U10" pin="5"/>
+      <node ref="P46" pin="5"/>
+      <node ref="CC4" pin="1"/>
+      <node ref="R23" pin="1"/>
+      <node ref="CC41" pin="1"/>
+      <node ref="CC6" pin="1"/>
+      <node ref="CC40" pin="1"/>
+      <node ref="P45" pin="5"/>
+      <node ref="P5" pin="5"/>
+      <node ref="P23" pin="5"/>
+      <node ref="JP13" pin="1"/>
+      <node ref="P34" pin="2"/>
+      <node ref="P34" pin="8"/>
+      <node ref="JP3" pin="1"/>
+      <node ref="P34" pin="1"/>
+      <node ref="U11" pin="CH_P"/>
+      <node ref="P34" pin="3"/>
+      <node ref="P34" pin="4"/>
+      <node ref="P34" pin="5"/>
+      <node ref="P34" pin="6"/>
+      <node ref="P34" pin="7"/>
+      <node ref="P24" pin="5"/>
+      <node ref="JP2" pin="1"/>
+      <node ref="JP10" pin="2"/>
+      <node ref="JP9" pin="1"/>
+      <node ref="P10" pin="5"/>
+      <node ref="P44" pin="5"/>
+      <node ref="U11" pin="VCC"/>
+    </net>
+    <net code="119" name="Charg_Pin">
+      <node ref="EF1" pin="2"/>
+      <node ref="P42" pin="1"/>
+      <node ref="B10" pin="1"/>
+      <node ref="B11" pin="1"/>
+      <node ref="B9" pin="1"/>
+    </net>
+    <net code="120" name="Net-(Q2-PadG)">
+      <node ref="Q2" pin="G"/>
+      <node ref="R27" pin="1"/>
+      <node ref="ZD5" pin="1"/>
+    </net>
+    <net code="121" name="Net-(D14-Pad2)">
+      <node ref="D15" pin="2"/>
+      <node ref="D14" pin="2"/>
+      <node ref="P20" pin="1"/>
+    </net>
+    <net code="122" name="Net-(Q3-PadG)">
+      <node ref="R29" pin="2"/>
+      <node ref="ZD6" pin="1"/>
+      <node ref="R28" pin="2"/>
+      <node ref="Q3" pin="G"/>
+    </net>
+    <net code="123" name="Net-(D16-Pad2)">
+      <node ref="D16" pin="2"/>
+      <node ref="Q4" pin="C"/>
+    </net>
+    <net code="124" name="Net-(D14-Pad1)">
+      <node ref="D14" pin="1"/>
+      <node ref="R30" pin="2"/>
+      <node ref="D16" pin="1"/>
+      <node ref="R29" pin="1"/>
+    </net>
+    <net code="125" name="Net-(D13-Pad2)">
+      <node ref="D13" pin="2"/>
+      <node ref="R30" pin="1"/>
+      <node ref="R31" pin="2"/>
+    </net>
+    <net code="126" name="Net-(C9-Pad2)">
+      <node ref="R31" pin="1"/>
+      <node ref="C9" pin="2"/>
+      <node ref="D13" pin="1"/>
+    </net>
+    <net code="127" name="Net-(Q4-PadB)">
+      <node ref="Q4" pin="B"/>
+      <node ref="R35" pin="1"/>
+      <node ref="R32" pin="1"/>
+    </net>
+    <net code="128" name="Net-(Q5-PadG)">
+      <node ref="Q5" pin="G"/>
+      <node ref="R34" pin="1"/>
+      <node ref="ZD7" pin="1"/>
+    </net>
+    <net code="129" name="pinBatterySwitch">
+      <node ref="P26" pin="3"/>
+    </net>
+    <net code="130" name="Net-(D8-Pad2)">
+      <node ref="D8" pin="2"/>
+      <node ref="R22" pin="2"/>
+    </net>
+    <net code="131" name="Net-(R22-Pad1)">
+      <node ref="R22" pin="1"/>
+      <node ref="U2" pin="LED"/>
+    </net>
+    <net code="132" name="Net-(JP2-Pad2)">
+      <node ref="JP2" pin="2"/>
+      <node ref="U2" pin="Key"/>
+    </net>
+    <net code="133" name="Net-(R6-Pad2)">
+      <node ref="U2" pin="RXD"/>
+      <node ref="R6" pin="2"/>
+      <node ref="R7" pin="1"/>
+    </net>
+    <net code="134" name="Net-(CC45-Pad1)">
+      <node ref="JP8" pin="2"/>
+      <node ref="CC45" pin="1"/>
+      <node ref="JP9" pin="2"/>
+      <node ref="U2" pin="VCC"/>
+    </net>
+    <net code="135" name="Net-(U11-PadRese)">
+      <node ref="U11" pin="Rese"/>
+    </net>
+    <net code="136" name="Net-(U11-PadGP_2)">
+      <node ref="U11" pin="GP_2"/>
+    </net>
+    <net code="137" name="Net-(U11-PadGP_0)">
+      <node ref="U11" pin="GP_0"/>
+    </net>
+    <net code="138" name="Net-(P44-Pad4)">
+      <node ref="U11" pin="RX"/>
+      <node ref="P44" pin="4"/>
+      <node ref="R16" pin="1"/>
+      <node ref="R15" pin="2"/>
+    </net>
+    <net code="139" name="Net-(D5-Pad2)">
+      <node ref="D5" pin="2"/>
+      <node ref="P31" pin="3"/>
+    </net>
+    <net code="140" name="Net-(D6-Pad2)">
+      <node ref="P21" pin="3"/>
+      <node ref="D6" pin="2"/>
+    </net>
+    <net code="141" name="Net-(P45-Pad4)">
+      <node ref="U10" pin="6"/>
+      <node ref="P46" pin="4"/>
+      <node ref="P45" pin="4"/>
+    </net>
+    <net code="142" name="Net-(P45-Pad3)">
+      <node ref="U10" pin="7"/>
+      <node ref="P45" pin="3"/>
+      <node ref="P46" pin="3"/>
+    </net>
+    <net code="143" name="Net-(B17-Pad1)">
+      <node ref="B17" pin="1"/>
+    </net>
+    <net code="144" name="Net-(B4-Pad1)">
+      <node ref="B4" pin="1"/>
+    </net>
+    <net code="145" name="Net-(B3-Pad1)">
+      <node ref="B3" pin="1"/>
+    </net>
+    <net code="146" name="Net-(B2-Pad1)">
+      <node ref="B2" pin="1"/>
+    </net>
+    <net code="147" name="Net-(B1-Pad1)">
+      <node ref="B1" pin="1"/>
+    </net>
+    <net code="148" name="Net-(B18-Pad1)">
+      <node ref="B18" pin="1"/>
+    </net>
+    <net code="149" name="Net-(B5-Pad1)">
+      <node ref="B5" pin="1"/>
+    </net>
+    <net code="150" name="Net-(B6-Pad1)">
+      <node ref="B6" pin="1"/>
+    </net>
+    <net code="151" name="Net-(B7-Pad1)">
+      <node ref="B7" pin="1"/>
+    </net>
+    <net code="152" name="Net-(B8-Pad1)">
+      <node ref="B8" pin="1"/>
+    </net>
+    <net code="153" name="Net-(B15-Pad1)">
+      <node ref="B15" pin="1"/>
+    </net>
+    <net code="154" name="Net-(B16-Pad1)">
+      <node ref="B16" pin="1"/>
+    </net>
+    <net code="155" name="Net-(Dual1-Pad1)">
+      <node ref="Dual1" pin="1"/>
+    </net>
+    <net code="156" name="Net-(Dual1-Pad11)">
+      <node ref="Dual1" pin="11"/>
+    </net>
+    <net code="157" name="Net-(Dual1-Pad12)">
+      <node ref="Dual1" pin="12"/>
+    </net>
+    <net code="158" name="/Motortreiber/Dual1_Ms_Links/MotorLinksA">
+      <node ref="P15" pin="1"/>
+      <node ref="BY5" pin="1"/>
+      <node ref="BY6" pin="2"/>
+      <node ref="Dual1" pin="19"/>
+      <node ref="C4" pin="1"/>
+    </net>
+    <net code="159" name="/Motortreiber/Dual1_Ms_Rechts/MotorRechtsB">
+      <node ref="BY4" pin="2"/>
+      <node ref="BY3" pin="1"/>
+      <node ref="P18" pin="2"/>
+      <node ref="Dual1" pin="24"/>
+      <node ref="R17" pin="2"/>
+    </net>
+    <net code="160" name="/Motortreiber/Dual1_Ms_Rechts/MotorRechtsA">
+      <node ref="P18" pin="1"/>
+      <node ref="Dual1" pin="23"/>
+      <node ref="BY2" pin="2"/>
+      <node ref="C1" pin="1"/>
+      <node ref="BY1" pin="1"/>
+    </net>
+    <net code="161" name="/Motortreiber/Dual1_Vin/Dual1_Vin">
+      <node ref="KE3" pin="1"/>
+      <node ref="PRFA1" pin="2"/>
+      <node ref="P16" pin="2"/>
+      <node ref="Dual1" pin="22"/>
+    </net>
+    <net code="162" name="/Motortreiber/Dual1_Ms_Links/MotorLinksB">
+      <node ref="Dual1" pin="20"/>
+      <node ref="R33" pin="2"/>
+      <node ref="BY8" pin="2"/>
+      <node ref="P15" pin="2"/>
+      <node ref="BY7" pin="1"/>
+    </net>
+    <net code="163" name="/Motortreiber/Dual2_Ms_Mower/MotorMowerA">
+      <node ref="Dual2" pin="19"/>
+      <node ref="BY9" pin="1"/>
+      <node ref="C6" pin="1"/>
+      <node ref="P37" pin="1"/>
+      <node ref="BY10" pin="2"/>
+      <node ref="Dual2" pin="23"/>
+    </net>
+    <net code="164" name="Net-(Dual2-Pad9)">
+      <node ref="JP16" pin="2"/>
+      <node ref="Dual2" pin="9"/>
+    </net>
+    <net code="165" name="/Motortreiber/Dual2_Ms_Mower/MotorMowerB">
+      <node ref="BY11" pin="1"/>
+      <node ref="Dual2" pin="24"/>
+      <node ref="P37" pin="2"/>
+      <node ref="R36" pin="2"/>
+      <node ref="Dual2" pin="20"/>
+      <node ref="BY12" pin="2"/>
+    </net>
+    <net code="166" name="GND">
+      <node ref="CC28" pin="2"/>
+      <node ref="R34" pin="2"/>
+      <node ref="P35" pin="2"/>
+      <node ref="CC39" pin="2"/>
+      <node ref="P1" pin="2"/>
+      <node ref="P28" pin="2"/>
+      <node ref="CC29" pin="2"/>
+      <node ref="P9" pin="2"/>
+      <node ref="CC33" pin="2"/>
+      <node ref="P8" pin="2"/>
+      <node ref="P29" pin="2"/>
+      <node ref="CC31" pin="2"/>
+      <node ref="CC44" pin="2"/>
+      <node ref="CC30" pin="2"/>
+      <node ref="CC22" pin="2"/>
+      <node ref="CC45" pin="2"/>
+      <node ref="CC41" pin="2"/>
+      <node ref="CC4" pin="2"/>
+      <node ref="P44" pin="2"/>
+      <node ref="P12" pin="2"/>
+      <node ref="CC6" pin="2"/>
+      <node ref="CC27" pin="2"/>
+      <node ref="CC24" pin="2"/>
+      <node ref="U2" pin="GND"/>
+      <node ref="D8" pin="1"/>
+      <node ref="CC43" pin="2"/>
+      <node ref="P22" pin="2"/>
+      <node ref="CC42" pin="2"/>
+      <node ref="P49" pin="2"/>
+      <node ref="P27" pin="2"/>
+      <node ref="CC40" pin="2"/>
+      <node ref="P25" pin="2"/>
+      <node ref="P30" pin="2"/>
+      <node ref="CC37" pin="2"/>
+      <node ref="CC38" pin="2"/>
+      <node ref="P26" pin="2"/>
+      <node ref="KE3" pin="2"/>
+      <node ref="P16" pin="1"/>
+      <node ref="SHIELD1" pin="GND5"/>
+      <node ref="P43" pin="2"/>
+      <node ref="CC12" pin="2"/>
+      <node ref="BY6" pin="1"/>
+      <node ref="CC16" pin="2"/>
+      <node ref="SHIELD1" pin="GND4"/>
+      <node ref="BY2" pin="1"/>
+      <node ref="BY4" pin="1"/>
+      <node ref="BY12" pin="1"/>
+      <node ref="CC1" pin="2"/>
+      <node ref="KE4" pin="2"/>
+      <node ref="KE1" pin="1"/>
+      <node ref="P17" pin="1"/>
+      <node ref="BY8" pin="1"/>
+      <node ref="BY10" pin="1"/>
+      <node ref="KE2" pin="1"/>
+      <node ref="CC32" pin="2"/>
+      <node ref="R32" pin="2"/>
+      <node ref="P20" pin="2"/>
+      <node ref="CC36" pin="2"/>
+      <node ref="CC9" pin="2"/>
+      <node ref="R27" pin="2"/>
+      <node ref="CC13" pin="2"/>
+      <node ref="CC34" pin="2"/>
+      <node ref="P3" pin="2"/>
+      <node ref="CC35" pin="2"/>
+      <node ref="P2" pin="2"/>
+      <node ref="Q4" pin="E"/>
+      <node ref="SHIELD1" pin="GND2"/>
+      <node ref="RR2" pin="1"/>
+      <node ref="RR1" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="CC14" pin="2"/>
+      <node ref="P42" pin="2"/>
+      <node ref="SHIELD1" pin="GND1"/>
+      <node ref="SHIELD1" pin="GND3"/>
+      <node ref="CC15" pin="2"/>
+      <node ref="R7" pin="2"/>
+      <node ref="CC11" pin="2"/>
+      <node ref="C5" pin="2"/>
+      <node ref="Q1" pin="E"/>
+      <node ref="CC10" pin="2"/>
+      <node ref="U3" pin="2"/>
+      <node ref="CC8" pin="2"/>
+      <node ref="C11" pin="2"/>
+      <node ref="C10" pin="2"/>
+      <node ref="P48" pin="2"/>
+      <node ref="Dual2" pin="21"/>
+      <node ref="Dual2" pin="16"/>
+      <node ref="U6" pin="4"/>
+      <node ref="C7" pin="2"/>
+      <node ref="U6" pin="1"/>
+      <node ref="C8" pin="2"/>
+      <node ref="R25" pin="2"/>
+      <node ref="U7" pin="4"/>
+      <node ref="U7" pin="1"/>
+      <node ref="R24" pin="2"/>
+      <node ref="P32" pin="6"/>
+      <node ref="P40" pin="2"/>
+      <node ref="P38" pin="4"/>
+      <node ref="P13" pin="2"/>
+      <node ref="P32" pin="5"/>
+      <node ref="P32" pin="7"/>
+      <node ref="P32" pin="4"/>
+      <node ref="P32" pin="3"/>
+      <node ref="P32" pin="2"/>
+      <node ref="P32" pin="1"/>
+      <node ref="P14" pin="2"/>
+      <node ref="P11" pin="1"/>
+      <node ref="P38" pin="7"/>
+      <node ref="P19" pin="2"/>
+      <node ref="P7" pin="1"/>
+      <node ref="P41" pin="2"/>
+      <node ref="P38" pin="8"/>
+      <node ref="P11" pin="2"/>
+      <node ref="P38" pin="6"/>
+      <node ref="P38" pin="5"/>
+      <node ref="P38" pin="3"/>
+      <node ref="P38" pin="2"/>
+      <node ref="P38" pin="1"/>
+      <node ref="P32" pin="8"/>
+      <node ref="CC3" pin="2"/>
+      <node ref="CC2" pin="2"/>
+      <node ref="P39" pin="1"/>
+      <node ref="Dual2" pin="7"/>
+      <node ref="Dual2" pin="2"/>
+      <node ref="P36" pin="1"/>
+      <node ref="P23" pin="2"/>
+      <node ref="R10" pin="2"/>
+      <node ref="P24" pin="2"/>
+      <node ref="U10" pin="8"/>
+      <node ref="ZD8" pin="1"/>
+      <node ref="CC5" pin="2"/>
+      <node ref="R13" pin="2"/>
+      <node ref="P5" pin="2"/>
+      <node ref="P45" pin="2"/>
+      <node ref="CC20" pin="2"/>
+      <node ref="CC19" pin="2"/>
+      <node ref="P4" pin="2"/>
+      <node ref="P10" pin="2"/>
+      <node ref="CC17" pin="2"/>
+      <node ref="CC21" pin="2"/>
+      <node ref="R16" pin="2"/>
+      <node ref="CC23" pin="2"/>
+      <node ref="P46" pin="2"/>
+      <node ref="U10" pin="4"/>
+      <node ref="CC25" pin="2"/>
+      <node ref="CC26" pin="2"/>
+      <node ref="P31" pin="2"/>
+      <node ref="ZD4" pin="1"/>
+      <node ref="CC7" pin="2"/>
+      <node ref="CC18" pin="2"/>
+      <node ref="P21" pin="2"/>
+      <node ref="U11" pin="GND"/>
+      <node ref="SP1" pin="1"/>
+      <node ref="Dual1" pin="16"/>
+      <node ref="B13" pin="1"/>
+      <node ref="Dual1" pin="2"/>
+      <node ref="U1" pin="1"/>
+      <node ref="Dual1" pin="7"/>
+      <node ref="U1" pin="4"/>
+      <node ref="R26" pin="2"/>
+      <node ref="B12" pin="1"/>
+      <node ref="C2" pin="2"/>
+      <node ref="Dual1" pin="21"/>
+      <node ref="U8" pin="GND"/>
+      <node ref="B14" pin="1"/>
+    </net>
+    <net code="167" name="/Motortreiber/Dual2_Vin/Dual2_Vin">
+      <node ref="Dual2" pin="22"/>
+      <node ref="P17" pin="2"/>
+      <node ref="KE4" pin="1"/>
+      <node ref="PRFA2" pin="2"/>
+    </net>
+    <net code="168" name="Net-(Dual2-Pad11)">
+      <node ref="Dual2" pin="11"/>
+    </net>
+    <net code="169" name="Net-(Dual2-Pad12)">
+      <node ref="Dual2" pin="12"/>
+    </net>
+    <net code="170" name="Net-(Dual2-Pad1)">
+      <node ref="Dual2" pin="1"/>
+    </net>
+    <net code="171" name="LedPin-3V">
+      <node ref="R23" pin="2"/>
+      <node ref="P7" pin="2"/>
+    </net>
+    <net code="172" name="LedPin-24v">
+      <node ref="R2" pin="2"/>
+      <node ref="P7" pin="3"/>
+    </net>
+    <net code="173" name="LedPin-5v">
+      <node ref="P7" pin="4"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="174" name="Net-(P6-Pad1)">
+      <node ref="R4" pin="1"/>
+      <node ref="P6" pin="1"/>
+    </net>
+    <net code="175" name="Net-(P6-Pad3)">
+      <node ref="P6" pin="3"/>
+      <node ref="R3" pin="1"/>
+    </net>
+    <net code="176" name="Net-(C8-Pad1)">
+      <node ref="PRFA3" pin="1"/>
+      <node ref="JP11" pin="1"/>
+      <node ref="ZD2" pin="2"/>
+      <node ref="C8" pin="1"/>
+    </net>
+    <net code="177" name="Net-(R25-Pad1)">
+      <node ref="ZD2" pin="1"/>
+      <node ref="R25" pin="1"/>
+    </net>
+    <net code="178" name="Net-(PRFA3-Pad2)">
+      <node ref="U7" pin="2"/>
+      <node ref="PRFA3" pin="2"/>
+    </net>
+    <net code="179" name="Net-(C7-Pad1)">
+      <node ref="PRFA5" pin="1"/>
+      <node ref="JP10" pin="1"/>
+      <node ref="ZD1" pin="2"/>
+      <node ref="C7" pin="1"/>
+    </net>
+    <net code="180" name="Net-(R24-Pad1)">
+      <node ref="ZD1" pin="1"/>
+      <node ref="R24" pin="1"/>
+    </net>
+    <net code="181" name="Net-(PRFA5-Pad2)">
+      <node ref="PRFA5" pin="2"/>
+      <node ref="U6" pin="2"/>
+    </net>
+    <net code="182" name="Net-(R26-Pad1)">
+      <node ref="ZD3" pin="1"/>
+      <node ref="R26" pin="1"/>
+    </net>
+    <net code="183" name="Net-(C2-Pad1)">
+      <node ref="ZD3" pin="2"/>
+      <node ref="C2" pin="1"/>
+      <node ref="JP1" pin="1"/>
+      <node ref="PRFA4" pin="1"/>
+    </net>
+    <net code="184" name="Net-(PRFA4-Pad2)">
+      <node ref="U1" pin="2"/>
+      <node ref="PRFA4" pin="2"/>
+    </net>
+    <net code="185" name="Net-(U8-PadSQ)">
+      <node ref="U8" pin="SQ"/>
+    </net>
+    <net code="186" name="Net-(U8-PadDS)">
+      <node ref="U8" pin="DS"/>
+    </net>
+    <net code="187" name="Net-(U8-PadBat)">
+      <node ref="U8" pin="Bat"/>
+    </net>
+    <net code="188" name="Net-(C1-Pad2)">
+      <node ref="R17" pin="1"/>
+      <node ref="C1" pin="2"/>
+    </net>
+    <net code="189" name="Net-(C4-Pad2)">
+      <node ref="R33" pin="1"/>
+      <node ref="C4" pin="2"/>
+    </net>
+    <net code="190" name="Net-(C6-Pad2)">
+      <node ref="R36" pin="1"/>
+      <node ref="C6" pin="2"/>
+    </net>
+  </nets>
+</export>

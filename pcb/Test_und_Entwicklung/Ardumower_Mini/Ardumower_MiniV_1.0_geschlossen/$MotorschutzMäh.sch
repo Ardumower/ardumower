@@ -1,0 +1,125 @@
+EESchema Schematic File Version 2
+LIBS:Lötpad_2,5mm
+LIBS:power
+LIBS:Bluetooth_ZS_HC_05
+LIBS:Bluetooth_CZ_HC_05
+LIBS:ds1307
+LIBS:Wlan_ESP8266
+LIBS:transistor-fet
+LIBS:transistor-fet+irf7201
+LIBS:transistors
+LIBS:w_transistor
+LIBS:diode
+LIBS:diode-1
+LIBS:led
+LIBS:ardumower mega shield svn-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 14 18
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 2740 2450 0    60   BiDi ~ 0
+MotorAnschluss1
+Text HLabel 4070 2450 2    60   BiDi ~ 0
+MotorAnschluss2
+$Comp
+L +24V #PWR?
+U 1 1 55413803
+P 5370 1990
+F 0 "#PWR?" H 5370 1840 60  0001 C CNN
+F 1 "+24V" H 5370 2130 60  0000 C CNN
+F 2 "" H 5370 1990 60  0000 C CNN
+F 3 "" H 5370 1990 60  0000 C CNN
+	1    5370 1990
+	1    0    0    -1  
+$EndComp
+$Comp
+L 15KEXXC D?
+U 1 1 55413817
+P 3370 2450
+F 0 "D?" H 3320 2525 50  0000 L BNN
+F 1 "15KE33CA" H 3320 2315 50  0000 L BNN
+F 2 "diode-CB429-17" H 3370 2600 50  0001 C CNN
+F 3 "" H 3370 2450 60  0000 C CNN
+	1    3370 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 5541387F
+P 5425 2340
+F 0 "D?" H 5425 2440 40  0000 C CNN
+F 1 "1N4001" H 5425 2240 40  0000 C CNN
+F 2 "" H 5425 2340 60  0000 C CNN
+F 3 "" H 5425 2340 60  0000 C CNN
+	1    5425 2340
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 55413AD4
+P 2940 3210
+F 0 "#PWR?" H 2940 2960 60  0001 C CNN
+F 1 "GND" H 2940 3060 60  0000 C CNN
+F 2 "" H 2940 3210 60  0000 C CNN
+F 3 "" H 2940 3210 60  0000 C CNN
+	1    2940 3210
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2740 2450 3270 2450
+Wire Wire Line
+	3570 2450 4070 2450
+$Comp
+L 15KEXXC D?
+U 1 1 55413BD9
+P 2940 2975
+F 0 "D?" H 2890 3050 50  0000 L BNN
+F 1 "15KE33CA" H 2890 2840 50  0000 L BNN
+F 2 "diode-CB429-17" H 2940 3125 50  0001 C CNN
+F 3 "" H 2940 2975 60  0000 C CNN
+	1    2940 2975
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	2940 2775 2940 2450
+Connection ~ 2940 2450
+Wire Wire Line
+	2940 3075 2940 3210
+$Comp
+L GND #PWR?
+U 1 1 55413CA3
+P 3855 3210
+F 0 "#PWR?" H 3855 2960 60  0001 C CNN
+F 1 "GND" H 3855 3060 60  0000 C CNN
+F 2 "" H 3855 3210 60  0000 C CNN
+F 3 "" H 3855 3210 60  0000 C CNN
+	1    3855 3210
+	1    0    0    -1  
+$EndComp
+$Comp
+L 15KEXXC D?
+U 1 1 55413CA9
+P 3855 2975
+F 0 "D?" H 3805 3050 50  0000 L BNN
+F 1 "15KE33CA" H 3805 2840 50  0000 L BNN
+F 2 "diode-CB429-17" H 3855 3125 50  0001 C CNN
+F 3 "" H 3855 2975 60  0000 C CNN
+	1    3855 2975
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3855 2775 3855 2450
+Wire Wire Line
+	3855 3075 3855 3210
+Connection ~ 3855 2450
+$EndSCHEMATC
