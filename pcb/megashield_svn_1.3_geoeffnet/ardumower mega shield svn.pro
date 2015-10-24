@@ -1,4 +1,4 @@
-update=07.09.2015 19:44:33
+update=07.10.2015 20:58:02
 last_client=kicad
 [general]
 version=1
@@ -45,3 +45,4 @@ LibName6=acs712.pretty/ina169_ic
 LibName7=DS1307_Dil8
 LibName8=device
 LibName9=supply
+LibName10=atmel

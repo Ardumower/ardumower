@@ -8,11 +8,12 @@ LIBS:ina169_ic
 LIBS:DS1307_Dil8
 LIBS:device
 LIBS:supply
+LIBS:atmel
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 26
+Sheet 10 27
 Title "Ardumower Shield - serielle Schnittstelle"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -32,17 +33,6 @@ F 2 "ACS712:Pin_Header_Straight_1x05" H 1210 6935 60  0001 C CNN
 F 3 "" H 1210 6935 60  0000 C CNN
 	1    1210 6935
 	-1   0    0    -1  
-$EndComp
-$Comp
-L +3.3V #PWR0101
-U 1 1 553C09C7
-P 2005 7135
-F 0 "#PWR0101" H 2005 7095 30  0001 C CNN
-F 1 "+3.3V" V 2005 7335 30  0000 C CNN
-F 2 "" H 2005 7135 60  0000 C CNN
-F 3 "" H 2005 7135 60  0000 C CNN
-	1    2005 7135
-	0    1    -1   0   
 $EndComp
 $Comp
 L +5V #PWR0102
@@ -176,17 +166,6 @@ F 4 "Value" H 2290 2285 60  0001 C CNN "Bestellnummer"
 	1    2290 2285
 	0    -1   -1   0   
 $EndComp
-$Comp
-L +3.3V #PWR0106
-U 1 1 553C50BF
-P 2290 2695
-F 0 "#PWR0106" H 2290 2655 30  0001 C CNN
-F 1 "+3.3V" H 2290 2805 30  0000 C CNN
-F 2 "" H 2290 2695 60  0000 C CNN
-F 3 "" H 2290 2695 60  0000 C CNN
-	1    2290 2695
-	1    0    0    1   
-$EndComp
 Wire Wire Line
 	2290 2585 2290 2695
 Wire Wire Line
@@ -274,17 +253,6 @@ Text GLabel 3660 2705 3    39   Input ~ 0
 TX2
 Wire Wire Line
 	3660 2490 3660 2705
-$Comp
-L +3.3V #PWR0109
-U 1 1 553C7E45
-P 2505 1430
-F 0 "#PWR0109" H 2505 1390 30  0001 C CNN
-F 1 "+3.3V" V 2505 1600 30  0000 C CNN
-F 2 "" H 2505 1430 60  0000 C CNN
-F 3 "" H 2505 1430 60  0000 C CNN
-	1    2505 1430
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	2505 1430 2370 1430
 $Comp
@@ -300,17 +268,6 @@ F 4 "Value" H 1070 4185 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0110
-U 1 1 553C9AF2
-P 2105 3935
-F 0 "#PWR0110" H 2105 3895 30  0001 C CNN
-F 1 "+3.3V" V 2105 4110 30  0000 C CNN
-F 2 "" H 2105 3935 60  0000 C CNN
-F 3 "" H 2105 3935 60  0000 C CNN
-	1    2105 3935
-	0    1    -1   0   
-$EndComp
-$Comp
 L GND #PWR0111
 U 1 1 553C9B11
 P 1495 4235
@@ -320,17 +277,6 @@ F 2 "" H 1495 4235 60  0000 C CNN
 F 3 "" H 1495 4235 60  0000 C CNN
 	1    1495 4235
 	0    -1   -1   0   
-$EndComp
-$Comp
-L +3.3V #PWR0112
-U 1 1 553C9F70
-P 2105 4135
-F 0 "#PWR0112" H 2105 4095 30  0001 C CNN
-F 1 "+3.3V" V 2105 4310 30  0000 C CNN
-F 2 "" H 2105 4135 60  0000 C CNN
-F 3 "" H 2105 4135 60  0000 C CNN
-	1    2105 4135
-	0    1    -1   0   
 $EndComp
 Wire Wire Line
 	1470 3935 2105 3935
@@ -447,17 +393,6 @@ F 2 "" H 4440 4085 60  0000 C CNN
 F 3 "" H 4440 4085 60  0000 C CNN
 	1    4440 4085
 	0    1    -1   0   
-$EndComp
-$Comp
-L +3.3V #PWR0117
-U 1 1 553CEF31
-P 4440 4385
-F 0 "#PWR0117" H 4440 4345 30  0001 C CNN
-F 1 "+3.3V" V 4440 4560 30  0000 C CNN
-F 2 "" H 4440 4385 60  0000 C CNN
-F 3 "" H 4440 4385 60  0000 C CNN
-	1    4440 4385
-	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	4570 3985 4440 3985
@@ -3277,7 +3212,7 @@ A2 15 45 AD B6 5C 99 84 65 FC B3 27 D3 AD 8C 8C 19 C3 B6 75 4B 4F 56 42 70 00 D6
 29 F8 04 AA 5D 28 24 8D F1 59 22 07 EE 43 C8 6A 23 2C 05 01 60 1A 8D 2A 7C 4E 5C 2A 18 00 1C 8C 
 1B AD C3 34 17 14 41 5C 13 18 40 36 55 49 23 66 36 62 24 B8 6F C0 08 96 81 3C 90 04 23 CB DA 25 
 0F D4 D6 CE AC 92 3C E3 26 E0 1F 00 19 86 D0 65 A1 44 8A 88 00 00 00 00 49 45 4E 44 AE 42 60 82 
-E9 
+5A 
 EndData
 $EndBitmap
 Text Notes 5545 5355 0    60   ~ 0
@@ -3324,4 +3259,72 @@ Wire Wire Line
 	1820 4280 1915 4280
 Text Notes 4950 2220 0    60   ~ 0
 27.08.2015 [14:23:27] Frederic Goddeeris: Regarding ESP8266 and PCB 1.3:\n\n- Can you please add these changes: https://github.com/FredericG-BE/ardumower/blob/esp8266/ESP8266/doc/HWChanges.jpg\n\n- For wireless flashing, the ESP needs to be able to reset the AVR. Do we want to make this possible for PCB 1.3? If so, I need to urgently look into it.\n\n- Today the status of the ESP is reported by one LED; the way it is blinking indicates if it is connected to the Access Point, it a client is connected and so on. Afternatively we could: \n1. use one or more LEDs like https://www.adafruit.com/datasheets/WS2811.pdf that the ESP can control with just one IO line. \n2. have the ESP report its status between FPOD messages to the AVR and the AVR drives status LEDs. These status messages could perhaps also in the future hold the WIFI RSSI (but I need to investigate if this will work)\nPerhaps, at least for 1.3, keep it with just one simple led?\n[14:25:27] Frederic Goddeeris: https://www.adafruit.com/products/1734
+Text Notes 5550 5685 0    39   ~ 0
+[14:15:25] Frederic Goddeeris: It is a ledstrip with WS8212 leds.\nEach led has its own RGB driver.\nBy sending 3 bytes to it, you can control the led, when you send more the next bytes are forwardedn to the next led. This way one can control up to 32 leds with just one output pin. Here I plan to use the different leds to show conenction to AP, c;lient connection, RSSI info?, RX and TX \nhttps://www.adafruit.com/datasheets/WS2812.pdf\n[14:16:21] Frederic Goddeeris: The 3 pin device is a 1A switching DC/DC converter to 5V, it has the formfactor of an 7805.
+$Comp
+L +3.3V #PWR?
+U 1 1 56309494
+P 2290 2695
+F 0 "#PWR?" H 2290 2545 50  0001 C CNN
+F 1 "+3.3V" H 2290 2835 50  0000 C CNN
+F 2 "" H 2290 2695 60  0000 C CNN
+F 3 "" H 2290 2695 60  0000 C CNN
+	1    2290 2695
+	1    0    0    1   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 563095A6
+P 2505 1430
+F 0 "#PWR?" H 2505 1280 50  0001 C CNN
+F 1 "+3.3V" V 2505 1650 50  0000 C CNN
+F 2 "" H 2505 1430 60  0000 C CNN
+F 3 "" H 2505 1430 60  0000 C CNN
+	1    2505 1430
+	0    1    -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 563097CB
+P 2105 3935
+F 0 "#PWR?" H 2105 3785 50  0001 C CNN
+F 1 "+3.3V" V 2105 4155 50  0000 C CNN
+F 2 "" H 2105 3935 60  0000 C CNN
+F 3 "" H 2105 3935 60  0000 C CNN
+	1    2105 3935
+	0    1    -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 563098D1
+P 2105 4135
+F 0 "#PWR?" H 2105 3985 50  0001 C CNN
+F 1 "+3.3V" V 2105 4355 50  0000 C CNN
+F 2 "" H 2105 4135 60  0000 C CNN
+F 3 "" H 2105 4135 60  0000 C CNN
+	1    2105 4135
+	0    1    -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 56309927
+P 4440 4385
+F 0 "#PWR?" H 4440 4235 50  0001 C CNN
+F 1 "+3.3V" V 4440 4605 50  0000 C CNN
+F 2 "" H 4440 4385 60  0000 C CNN
+F 3 "" H 4440 4385 60  0000 C CNN
+	1    4440 4385
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 56309A9D
+P 2005 7135
+F 0 "#PWR?" H 2005 6985 50  0001 C CNN
+F 1 "+3.3V" V 2005 7355 50  0000 C CNN
+F 2 "" H 2005 7135 60  0000 C CNN
+F 3 "" H 2005 7135 60  0000 C CNN
+	1    2005 7135
+	0    1    -1   0   
+$EndComp
 $EndSCHEMATC

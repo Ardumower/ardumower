@@ -8,11 +8,12 @@ LIBS:ina169_ic
 LIBS:DS1307_Dil8
 LIBS:device
 LIBS:supply
+LIBS:atmel
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 26
+Sheet 4 27
 Title "Ardumower Shield - Perimeter"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"

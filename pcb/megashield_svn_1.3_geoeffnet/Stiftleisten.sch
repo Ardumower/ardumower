@@ -8,11 +8,12 @@ LIBS:ina169_ic
 LIBS:DS1307_Dil8
 LIBS:device
 LIBS:supply
+LIBS:atmel
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 8 26
+Sheet 8 27
 Title "Ardumower Shield - Stiftleisten"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -332,17 +333,6 @@ F 4 "Value" H 5585 1220 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR087
-U 1 1 553FC409
-P 5895 1705
-F 0 "#PWR087" H 5895 1665 30  0001 C CNN
-F 1 "+3.3V" H 5895 1815 30  0000 C CNN
-F 2 "" H 5895 1705 60  0000 C CNN
-F 3 "" H 5895 1705 60  0000 C CNN
-	1    5895 1705
-	-1   0    0    1   
-$EndComp
-$Comp
 L CONN_01X08 P33
 U 1 1 553FE0F1
 P 4835 1225
@@ -393,12 +383,12 @@ Abgriff 5V, 3V, GND
 $Comp
 L GND #PWR090
 U 1 1 55401F1D
-P 7145 2320
-F 0 "#PWR090" H 7145 2070 60  0001 C CNN
-F 1 "GND" H 7145 2155 60  0000 C CNN
-F 2 "" H 7145 2320 60  0000 C CNN
-F 3 "" H 7145 2320 60  0000 C CNN
-	1    7145 2320
+P 7145 2415
+F 0 "#PWR090" H 7145 2165 60  0001 C CNN
+F 1 "GND" H 7145 2250 60  0000 C CNN
+F 2 "" H 7145 2415 60  0000 C CNN
+F 3 "" H 7145 2415 60  0000 C CNN
+	1    7145 2415
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -432,17 +422,15 @@ F 4 "Value" H 9980 1290 60  0001 C CNN "Bestellnummer"
 	1    9980 1290
 	0    -1   1    0   
 $EndComp
-Text GLabel 9670 1290 0    39   Input ~ 0
-Power5
 $Comp
 L +24V #PWR092
 U 1 1 5540858D
-P 9705 1190
-F 0 "#PWR092" H 9705 1040 60  0001 C CNN
-F 1 "+24V" V 9705 1440 60  0000 C CNN
-F 2 "" H 9705 1190 60  0000 C CNN
-F 3 "" H 9705 1190 60  0000 C CNN
-	1    9705 1190
+P 9655 1190
+F 0 "#PWR092" H 9655 1040 60  0001 C CNN
+F 1 "+24V" V 9655 1440 60  0000 C CNN
+F 2 "" H 9655 1190 60  0000 C CNN
+F 3 "" H 9655 1190 60  0000 C CNN
+	1    9655 1190
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -468,17 +456,6 @@ F 3 "" H 9985 1090 30  0000 C CNN
 F 4 "Value" H 9985 1090 60  0001 C CNN "Bestellnummer"
 	1    9985 1090
 	0    -1   1    0   
-$EndComp
-$Comp
-L +3.3V #PWR093
-U 1 1 55409ED6
-P 9655 1090
-F 0 "#PWR093" H 9655 1050 30  0001 C CNN
-F 1 "+3.3V" V 9655 1270 30  0000 C CNN
-F 2 "" H 9655 1090 60  0000 C CNN
-F 3 "" H 9655 1090 60  0000 C CNN
-	1    9655 1090
-	0    -1   -1   0   
 $EndComp
 Text Notes 630  6155 0    39   ~ 0
 LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
@@ -535,28 +512,6 @@ Text GLabel 8090 1790 0    39   Input ~ 0
 Led-BT
 Text GLabel 8090 1890 0    39   Input ~ 0
 Led-Wlan
-$Comp
-L CONN_01X11 P7
-U 1 1 557F69AD
-P 10915 1490
-F 0 "P7" H 10915 2090 50  0000 C CNN
-F 1 "Status LEDs" V 11015 1490 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x11" H 10915 1490 60  0001 C CNN
-F 3 "" H 10915 1490 60  0000 C CNN
-	1    10915 1490
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_01X11 P38
-U 1 1 557F6DAC
-P 6835 1755
-F 0 "P38" H 6835 2355 50  0000 C CNN
-F 1 "Status LEDs GND" V 6935 1755 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x11" H 6835 1755 60  0001 C CNN
-F 3 "" H 6835 1755 60  0000 C CNN
-	1    6835 1755
-	-1   0    0    -1  
-$EndComp
 Text Notes 7210 685  0    60   ~ 0
 P7 und P38 (evl2) mal so anorden das vom Abstand\nher eine Led Leiste eingelötet werden kann.\n
 Text Notes 7305 220  0    60   ~ 0
@@ -1794,7 +1749,7 @@ A8 6B 9D 80 F1 FA 3C E6 26 56 CD 44 A4 D1 68 14 8B 45 63 19 35 26 0C F4 BD F2 45
 CD 5E 3C D9 32 B1 6A 46 77 93 4E A9 D6 06 8D 49 BD DF 95 26 74 2D D1 4A A7 59 90 18 59 93 93 25 
 13 AB 66 08 3D 82 F4 ED 6A 33 FC 72 2F EA 75 21 FA 55 EB 37 CF 19 F7 FA 0C CF 26 5C CD 56 65 55 
 56 82 BC 1E 8F 96 55 59 95 25 96 55 35 5B 95 55 39 E4 F2 FF 01 E2 E8 02 51 02 3C 3A 9F 00 00 00 
-00 49 45 4E 44 AE 42 60 82 00 
+00 49 45 4E 44 AE 42 60 82 0C 
 EndData
 $EndBitmap
 $Comp
@@ -1946,11 +1901,15 @@ Wire Wire Line
 Wire Wire Line
 	1385 995  1515 995 
 Wire Wire Line
-	1380 1855 2545 1855
+	1380 1855 2470 1855
+Wire Wire Line
+	2470 1855 2545 1855
 Wire Wire Line
 	1380 1955 1505 1955
 Wire Wire Line
-	1380 2055 2135 2055
+	1380 2055 1970 2055
+Wire Wire Line
+	1970 2055 2135 2055
 Wire Wire Line
 	1375 2265 1505 2265
 Wire Wire Line
@@ -1968,7 +1927,9 @@ Wire Wire Line
 Wire Wire Line
 	1370 3350 1495 3350
 Wire Wire Line
-	1370 3050 1495 3050
+	1370 3050 1445 3050
+Wire Wire Line
+	1445 3050 1495 3050
 Wire Wire Line
 	1370 3150 1445 3150
 Wire Wire Line
@@ -1985,7 +1946,21 @@ Wire Wire Line
 Wire Wire Line
 	1410 3970 1540 3970
 Wire Wire Line
-	5895 870  5895 1705
+	5895 870  5895 970 
+Wire Wire Line
+	5895 970  5895 1070
+Wire Wire Line
+	5895 1070 5895 1170
+Wire Wire Line
+	5895 1170 5895 1270
+Wire Wire Line
+	5895 1270 5895 1370
+Wire Wire Line
+	5895 1370 5895 1470
+Wire Wire Line
+	5895 1470 5895 1570
+Wire Wire Line
+	5895 1570 5895 1705
 Wire Wire Line
 	5895 870  5785 870 
 Wire Wire Line
@@ -2010,7 +1985,21 @@ Wire Wire Line
 	5785 1570 5895 1570
 Connection ~ 5895 1570
 Wire Wire Line
-	5145 875  5145 1710
+	5145 875  5145 975 
+Wire Wire Line
+	5145 975  5145 1075
+Wire Wire Line
+	5145 1075 5145 1175
+Wire Wire Line
+	5145 1175 5145 1275
+Wire Wire Line
+	5145 1275 5145 1375
+Wire Wire Line
+	5145 1375 5145 1475
+Wire Wire Line
+	5145 1475 5145 1575
+Wire Wire Line
+	5145 1575 5145 1710
 Wire Wire Line
 	5145 875  5035 875 
 Wire Wire Line
@@ -2035,7 +2024,21 @@ Wire Wire Line
 	5035 1575 5145 1575
 Connection ~ 5145 1575
 Wire Wire Line
-	4355 895  4355 1730
+	4355 895  4355 995 
+Wire Wire Line
+	4355 995  4355 1095
+Wire Wire Line
+	4355 1095 4355 1195
+Wire Wire Line
+	4355 1195 4355 1295
+Wire Wire Line
+	4355 1295 4355 1395
+Wire Wire Line
+	4355 1395 4355 1495
+Wire Wire Line
+	4355 1495 4355 1595
+Wire Wire Line
+	4355 1595 4355 1730
 Wire Wire Line
 	4355 895  4245 895 
 Wire Wire Line
@@ -2060,7 +2063,29 @@ Wire Wire Line
 	4245 1595 4355 1595
 Connection ~ 4355 1595
 Wire Wire Line
-	7145 1255 7145 2320
+	7145 1255 7145 1355
+Wire Wire Line
+	7145 1355 7145 1455
+Wire Wire Line
+	7145 1455 7145 1555
+Wire Wire Line
+	7145 1555 7145 1655
+Wire Wire Line
+	7145 1655 7145 1755
+Wire Wire Line
+	7145 1755 7145 1855
+Wire Wire Line
+	7145 1855 7145 1955
+Wire Wire Line
+	7145 1955 7145 2055
+Wire Wire Line
+	7145 2055 7145 2155
+Wire Wire Line
+	7145 2155 7145 2255
+Wire Wire Line
+	7145 2255 7145 2355
+Wire Wire Line
+	7145 2355 7145 2415
 Wire Wire Line
 	7145 1255 7035 1255
 Wire Wire Line
@@ -2095,9 +2120,9 @@ Wire Wire Line
 Wire Wire Line
 	10715 1690 10230 1690
 Wire Wire Line
-	9730 1290 9670 1290
+	9730 1290 9655 1290
 Wire Wire Line
-	10150 1190 9705 1190
+	10150 1190 9655 1190
 Wire Wire Line
 	9735 1090 9655 1090
 Wire Wire Line
@@ -2171,8 +2196,6 @@ Wire Wire Line
 	9205 2290 9260 2290
 Wire Wire Line
 	8205 2290 8075 2290
-NoConn ~ 8205 2090
-NoConn ~ 9205 2090
 Wire Wire Line
 	8090 2190 8205 2190
 Wire Wire Line
@@ -2199,4 +2222,90 @@ Wire Wire Line
 	10650 1190 10715 1190
 Wire Wire Line
 	10235 1090 10715 1090
+Text GLabel 8090 2090 0    39   Input ~ 0
+Led-SCK-Active
+$Comp
+L CONN_01X12 P7
+U 1 1 562E804C
+P 10915 1540
+F 0 "P7" H 10915 2190 50  0000 C CNN
+F 1 "Status LEDs" V 11015 1540 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x12" H 10915 1540 60  0001 C CNN
+F 3 "" H 10915 1540 60  0000 C CNN
+F 4 "Value" H 10915 1540 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 10915 1540 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 10915 1540 60  0001 C CNN "Bauform"
+F 7 "Value" H 10915 1540 60  0001 C CNN "Bestelllink"
+	1    10915 1540
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X12 P38
+U 1 1 562E8776
+P 6835 1805
+F 0 "P38" H 6835 2455 50  0000 C CNN
+F 1 "Status LEDs GND" V 6935 1805 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x12" H 6835 1805 60  0001 C CNN
+F 3 "" H 6835 1805 60  0000 C CNN
+F 4 "Value" H 6835 1805 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 6835 1805 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 6835 1805 60  0001 C CNN "Bauform"
+F 7 "Value" H 6835 1805 60  0001 C CNN "Bestelllink"
+	1    6835 1805
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7035 2355 7145 2355
+Connection ~ 7145 2355
+Wire Wire Line
+	8205 2090 8090 2090
+$Comp
+L R R?
+U 1 1 562E9294
+P 9980 2090
+F 0 "R?" V 9950 2320 40  0000 C CNN
+F 1 "220" V 9987 2091 40  0000 C CNN
+F 2 "ACS712:Resistor_Horizontal_RM10mm" V 9910 2090 30  0001 C CNN
+F 3 "" H 9980 2090 30  0000 C CNN
+F 4 "220" H 9980 2090 60  0001 C CNN "Bestellnummer"
+	1    9980 2090
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	10230 2090 10715 2090
+Wire Wire Line
+	9205 2090 9730 2090
+$Comp
+L +5V #PWR?
+U 1 1 562E9408
+P 9655 1290
+F 0 "#PWR?" H 9655 1140 60  0001 C CNN
+F 1 "+5V" V 9655 1510 60  0000 C CNN
+F 2 "" H 9655 1290 60  0000 C CNN
+F 3 "" H 9655 1290 60  0000 C CNN
+	1    9655 1290
+	0    -1   1    0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 56309E18
+P 5895 1705
+F 0 "#PWR?" H 5895 1555 50  0001 C CNN
+F 1 "+3.3V" H 5895 1845 50  0000 C CNN
+F 2 "" H 5895 1705 60  0000 C CNN
+F 3 "" H 5895 1705 60  0000 C CNN
+	1    5895 1705
+	1    0    0    1   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 5630A0FA
+P 9655 1090
+F 0 "#PWR?" H 9655 940 50  0001 C CNN
+F 1 "+3.3V" V 9655 1355 60  0000 C CNN
+F 2 "" H 9655 1090 60  0000 C CNN
+F 3 "" H 9655 1090 60  0000 C CNN
+	1    9655 1090
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

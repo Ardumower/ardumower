@@ -1,0 +1,538 @@
+EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-cache
+LIBS:Wlan_ESP8266
+LIBS:power
+LIBS:conn
+LIBS:uln-udn
+LIBS:ina169_ic
+LIBS:DS1307_Dil8
+LIBS:device
+LIBS:supply
+LIBS:atmel
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 27 27
+Title "BumperDuino"
+Date "2015-08-14"
+Rev ""
+Comp "Layout & Plan von UweZ"
+Comment1 "Übertrag in KIcad von UZ"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L F_Small F?
+U 1 1 5629263E
+P 2305 1595
+F 0 "F?" H 2265 1655 50  0000 L CNN
+F 1 "PTC" H 2185 1535 50  0000 L CNN
+F 2 "Fuse_Holders_and_Fuses:Fuse_SMD1206_Reflow" H 2305 1595 60  0001 C CNN
+F 3 "" H 2305 1595 60  0000 C CNN
+	1    2305 1595
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D?
+U 1 1 5629263F
+P 2655 1595
+F 0 "D?" H 2655 1695 50  0000 C CNN
+F 1 "1N4004" H 2655 1495 50  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-35_SOD27_Horizontal_RM10" H 2655 1595 60  0001 C CNN
+F 3 "" H 2655 1595 60  0000 C CNN
+	1    2655 1595
+	-1   0    0    -1  
+$EndComp
+$Comp
+L LM2940CS-5.0 U?
+U 1 1 56292641
+P 4505 1595
+F 0 "U?" H 4275 1846 50  0000 L CNN
+F 1 "LM2940CS-5.0" H 4332 986 50  0000 L CNN
+F 2 "LM2940CS-5.0:TO254P1435X464-4N" H 4505 1595 50  0001 L CNN
+F 3 "" H 4505 1595 60  0000 C CNN
+	1    4505 1595
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP_Small C?
+U 1 1 56292642
+P 2955 1795
+F 0 "C?" H 2965 1865 50  0000 L CNN
+F 1 "10uF" H 2965 1715 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 2955 1795 60  0001 C CNN
+F 3 "" H 2955 1795 60  0000 C CNN
+	1    2955 1795
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 56292643
+P 3305 1795
+F 0 "C?" H 3315 1865 50  0000 L CNN
+F 1 "100nF" H 3315 1715 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 3305 1795 60  0001 C CNN
+F 3 "" H 3305 1795 60  0000 C CNN
+	1    3305 1795
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP_Small C?
+U 1 1 5629264D
+P 5905 1795
+F 0 "C?" H 5915 1865 50  0000 L CNN
+F 1 "22uF" H 5915 1715 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 5905 1795 60  0001 C CNN
+F 3 "" H 5905 1795 60  0000 C CNN
+	1    5905 1795
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 5629264E
+P 5455 1795
+F 0 "C?" H 5465 1865 50  0000 L CNN
+F 1 "100nF" H 5465 1715 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 5455 1795 60  0001 C CNN
+F 3 "" H 5455 1795 60  0000 C CNN
+	1    5455 1795
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED POWER?
+U 1 1 56292650
+P 6330 2295
+F 0 "POWER?" H 6330 2395 50  0000 C CNN
+F 1 "POWER" H 6330 2195 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 6330 2295 60  0001 C CNN
+F 3 "" H 6330 2295 60  0000 C CNN
+	1    6330 2295
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_Small R?
+U 1 1 56292651
+P 6330 1795
+F 0 "R?" H 6360 1815 50  0000 L CNN
+F 1 "1K" H 6360 1755 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 6330 1795 60  0001 C CNN
+F 3 "" H 6330 1795 60  0000 C CNN
+	1    6330 1795
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1850 1595 2115 1595
+Wire Wire Line
+	2115 1595 2205 1595
+Wire Wire Line
+	2405 1595 2505 1595
+Wire Wire Line
+	2955 1695 2955 1595
+Wire Wire Line
+	2805 1595 2955 1595
+Wire Wire Line
+	2955 1595 3305 1595
+Wire Wire Line
+	3305 1595 3805 1595
+Wire Wire Line
+	3305 1595 3305 1695
+Connection ~ 2955 1595
+Connection ~ 3305 1595
+Wire Wire Line
+	3805 1895 3705 1895
+Wire Wire Line
+	3705 1795 3805 1795
+Wire Wire Line
+	3305 2595 3305 1895
+Connection ~ 3705 1895
+Wire Wire Line
+	2955 1895 2955 2595
+Wire Wire Line
+	5205 1595 5455 1595
+Wire Wire Line
+	5455 1595 5905 1595
+Wire Wire Line
+	5905 1595 6330 1595
+Wire Wire Line
+	6330 1595 6725 1595
+Wire Wire Line
+	6725 1595 7275 1595
+Wire Wire Line
+	7275 1595 7625 1595
+Wire Wire Line
+	7625 1595 8375 1595
+Wire Wire Line
+	5455 1595 5455 1695
+Wire Wire Line
+	5905 1595 5905 1695
+Connection ~ 5455 1595
+Wire Wire Line
+	6330 2095 6330 1895
+Connection ~ 5905 1595
+Text HLabel 8375 1595 2    60   Output ~ 0
+VCC
+Text HLabel 8375 1895 2    60   Output ~ 0
+AVCC
+Text HLabel 8375 2195 2    60   Input ~ 0
+AREF
+$Comp
+L CP_Small C?
+U 1 1 562931A9
+P 7675 2395
+F 0 "C?" H 7685 2465 50  0000 L CNN
+F 1 "10uF" H 7685 2315 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 7675 2395 60  0001 C CNN
+F 3 "" H 7675 2395 60  0000 C CNN
+	1    7675 2395
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 562931AF
+P 8025 2395
+F 0 "C?" H 8035 2465 50  0000 L CNN
+F 1 "100nF" H 8035 2315 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 8025 2395 60  0001 C CNN
+F 3 "" H 8025 2395 60  0000 C CNN
+	1    8025 2395
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 562931B5
+P 7275 2395
+F 0 "C?" H 7285 2465 50  0000 L CNN
+F 1 "100nF" H 7285 2315 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 7275 2395 60  0001 C CNN
+F 3 "" H 7275 2395 60  0000 C CNN
+	1    7275 2395
+	1    0    0    -1  
+$EndComp
+$Comp
+L L_Small L?
+U 1 1 562931C7
+P 7025 1895
+F 0 "L?" H 7055 1935 50  0000 L CNN
+F 1 "10uH" H 7055 1855 50  0000 L CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" H 7025 1895 60  0001 C CNN
+F 3 "" H 7025 1895 60  0000 C CNN
+	1    7025 1895
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CP_Small C?
+U 1 1 562931D3
+P 7275 1345
+F 0 "C?" H 7285 1415 50  0000 L CNN
+F 1 "10uF" H 7285 1265 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 7275 1345 60  0001 C CNN
+F 3 "" H 7275 1345 60  0000 C CNN
+	1    7275 1345
+	1    0    0    1   
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 562931D9
+P 7625 1345
+F 0 "C?" H 7635 1415 50  0000 L CNN
+F 1 "100nF" H 7635 1265 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 7625 1345 60  0001 C CNN
+F 3 "" H 7625 1345 60  0000 C CNN
+	1    7625 1345
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 562931DF
+P 7975 1245
+F 0 "#PWR?" H 7975 995 50  0001 C CNN
+F 1 "GND" H 7975 1095 50  0000 C CNN
+F 2 "" H 7975 1245 60  0000 C CNN
+F 3 "" H 7975 1245 60  0000 C CNN
+	1    7975 1245
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8375 2195 8025 2195
+Wire Wire Line
+	8025 2195 8025 2295
+Wire Wire Line
+	8025 2595 8025 2495
+Wire Wire Line
+	1850 2595 1980 2595
+Wire Wire Line
+	1980 2595 2955 2595
+Wire Wire Line
+	2955 2595 3305 2595
+Wire Wire Line
+	3305 2595 3705 2595
+Wire Wire Line
+	3705 2595 5455 2595
+Wire Wire Line
+	5455 2595 5905 2595
+Wire Wire Line
+	5905 2595 6330 2595
+Wire Wire Line
+	6330 2595 7275 2595
+Wire Wire Line
+	7275 2595 7675 2595
+Wire Wire Line
+	7675 2595 8025 2595
+Wire Wire Line
+	7675 2595 7675 2495
+Wire Wire Line
+	7675 1895 7675 2295
+Wire Wire Line
+	7125 1895 7275 1895
+Wire Wire Line
+	7275 1895 7675 1895
+Wire Wire Line
+	7675 1895 8375 1895
+Wire Wire Line
+	7275 2295 7275 1895
+Connection ~ 7675 1895
+Connection ~ 7275 1895
+Wire Wire Line
+	6725 1895 6925 1895
+Connection ~ 7675 2595
+Wire Wire Line
+	7275 1445 7275 1595
+Connection ~ 7275 1595
+Wire Wire Line
+	7625 1445 7625 1595
+Connection ~ 7625 1595
+Wire Wire Line
+	7275 1245 7275 1145
+Wire Wire Line
+	7275 1145 7625 1145
+Wire Wire Line
+	7625 1145 7975 1145
+Wire Wire Line
+	7625 1145 7625 1245
+Wire Wire Line
+	7975 1145 7975 1245
+Connection ~ 7625 1145
+Wire Wire Line
+	3705 1795 3705 1895
+Wire Wire Line
+	3705 1895 3705 2595
+Wire Wire Line
+	5905 1895 5905 2045
+Wire Wire Line
+	5905 2045 5905 2595
+Wire Wire Line
+	6330 1695 6330 1595
+Connection ~ 6330 1595
+Text HLabel 1850 2595 0    60   Input ~ 0
+GND
+Wire Wire Line
+	7275 2595 7275 2495
+Wire Wire Line
+	6330 2595 6330 2495
+Connection ~ 7275 2595
+Connection ~ 5905 2045
+Connection ~ 6330 2595
+Wire Wire Line
+	5455 1895 5455 2595
+Connection ~ 5905 2595
+Connection ~ 5455 2595
+Connection ~ 3705 2595
+Connection ~ 3305 2595
+Text HLabel 1850 1595 0    60   Input ~ 0
+VIN
+Connection ~ 2955 2595
+Wire Wire Line
+	6725 1895 6725 1595
+Connection ~ 6725 1595
+$Comp
+L F_Small F?
+U 1 1 56300E2B
+P 2305 3580
+F 0 "F?" H 2265 3640 50  0000 L CNN
+F 1 "PTC" H 2185 3520 50  0000 L CNN
+F 2 "Fuse_Holders_and_Fuses:Fuse_SMD1206_Reflow" H 2305 3580 60  0001 C CNN
+F 3 "" H 2305 3580 60  0000 C CNN
+	1    2305 3580
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D?
+U 1 1 56300E31
+P 2655 3580
+F 0 "D?" H 2655 3680 50  0000 C CNN
+F 1 "1N4004" H 2655 3480 50  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-35_SOD27_Horizontal_RM10" H 2655 3580 60  0001 C CNN
+F 3 "" H 2655 3580 60  0000 C CNN
+	1    2655 3580
+	-1   0    0    -1  
+$EndComp
+$Comp
+L LM2940CS-5.0 U?
+U 1 1 56300E37
+P 4505 3580
+F 0 "U?" H 4275 3831 50  0000 L CNN
+F 1 "LM2940CS-3.3" H 4332 2971 50  0000 L CNN
+F 2 "LM2940CS-5.0:TO254P1435X464-4N" H 4505 3580 50  0001 L CNN
+F 3 "" H 4505 3580 60  0000 C CNN
+	1    4505 3580
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP_Small C?
+U 1 1 56300E3D
+P 2955 3780
+F 0 "C?" H 2965 3850 50  0000 L CNN
+F 1 "10uF" H 2965 3700 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 2955 3780 60  0001 C CNN
+F 3 "" H 2955 3780 60  0000 C CNN
+	1    2955 3780
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 56300E43
+P 3305 3780
+F 0 "C?" H 3315 3850 50  0000 L CNN
+F 1 "100nF" H 3315 3700 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 3305 3780 60  0001 C CNN
+F 3 "" H 3305 3780 60  0000 C CNN
+	1    3305 3780
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP_Small C?
+U 1 1 56300E49
+P 5905 3780
+F 0 "C?" H 5915 3850 50  0000 L CNN
+F 1 "22uF" H 5915 3700 50  0000 L CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 5905 3780 60  0001 C CNN
+F 3 "" H 5905 3780 60  0000 C CNN
+	1    5905 3780
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 56300E4F
+P 5455 3780
+F 0 "C?" H 5465 3850 50  0000 L CNN
+F 1 "100nF" H 5465 3700 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5" H 5455 3780 60  0001 C CNN
+F 3 "" H 5455 3780 60  0000 C CNN
+	1    5455 3780
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED POWER?
+U 1 1 56300E55
+P 6330 4280
+F 0 "POWER?" H 6330 4380 50  0000 C CNN
+F 1 "POWER" H 6330 4180 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 6330 4280 60  0001 C CNN
+F 3 "" H 6330 4280 60  0000 C CNN
+	1    6330 4280
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_Small R?
+U 1 1 56300E5B
+P 6330 3780
+F 0 "R?" H 6360 3800 50  0000 L CNN
+F 1 "1K" H 6360 3740 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 6330 3780 60  0001 C CNN
+F 3 "" H 6330 3780 60  0000 C CNN
+	1    6330 3780
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2405 3580 2505 3580
+Wire Wire Line
+	2955 3680 2955 3580
+Wire Wire Line
+	2805 3580 2955 3580
+Wire Wire Line
+	2955 3580 3305 3580
+Wire Wire Line
+	3305 3580 3805 3580
+Wire Wire Line
+	3305 3580 3305 3680
+Connection ~ 2955 3580
+Connection ~ 3305 3580
+Wire Wire Line
+	3805 3880 3705 3880
+Wire Wire Line
+	3705 3780 3805 3780
+Wire Wire Line
+	3305 4580 3305 3880
+Connection ~ 3705 3880
+Wire Wire Line
+	2955 3880 2955 4580
+Wire Wire Line
+	5205 3580 5455 3580
+Wire Wire Line
+	5455 3580 5905 3580
+Wire Wire Line
+	5905 3580 6330 3580
+Wire Wire Line
+	6330 3580 6550 3580
+Wire Wire Line
+	5455 3580 5455 3680
+Wire Wire Line
+	5905 3580 5905 3680
+Connection ~ 5455 3580
+Wire Wire Line
+	6330 4080 6330 3880
+Connection ~ 5905 3580
+Wire Wire Line
+	3705 4580 3705 3880
+Wire Wire Line
+	3705 3880 3705 3780
+Wire Wire Line
+	5905 4580 5905 4030
+Wire Wire Line
+	5905 4030 5905 3880
+Wire Wire Line
+	6330 3680 6330 3580
+Connection ~ 6330 3580
+Wire Wire Line
+	6330 4580 6330 4480
+Connection ~ 5905 4030
+Wire Wire Line
+	5455 4580 5455 3880
+Connection ~ 5905 4580
+Connection ~ 5455 4580
+Connection ~ 3705 4580
+Connection ~ 3305 4580
+Connection ~ 2955 4580
+Wire Wire Line
+	2205 3580 2115 3580
+Wire Wire Line
+	2115 3580 2115 1595
+Connection ~ 2115 1595
+Wire Wire Line
+	1980 4580 1980 2595
+Connection ~ 1980 2595
+Text Notes 6375 3795 0    39   ~ 0
+Vorwiderstand muss an 3,3V angepasst werden
+Wire Wire Line
+	1980 4580 2955 4580
+Wire Wire Line
+	2955 4580 3305 4580
+Wire Wire Line
+	3305 4580 3705 4580
+Wire Wire Line
+	3705 4580 5455 4580
+Wire Wire Line
+	5455 4580 5905 4580
+Wire Wire Line
+	5905 4580 6330 4580
+Text HLabel 6550 3580 2    60   Output ~ 0
+3,3V
+Text Notes 4430 1280 0    157  ~ 0
+5V
+Text Notes 4400 3280 0    157  ~ 0
+3,3V
+Text Notes 4090 4355 0    39   ~ 0
+Gibt es das Bauteil LM2940CS-3.3\noder als Ersatz evl R-78E3.3-0.5
+$EndSCHEMATC

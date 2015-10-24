@@ -8,15 +8,16 @@ LIBS:ina169_ic
 LIBS:DS1307_Dil8
 LIBS:device
 LIBS:supply
+LIBS:atmel
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 26
+Sheet 24 27
 Title ""
 Date ""
 Rev ""
-Comp ""
+Comp "Layout & Plan von UweZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""

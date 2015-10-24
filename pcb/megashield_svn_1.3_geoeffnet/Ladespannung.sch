@@ -8,11 +8,12 @@ LIBS:ina169_ic
 LIBS:DS1307_Dil8
 LIBS:device
 LIBS:supply
+LIBS:atmel
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 23 26
+Sheet 25 27
 Title "Ardumower Shield - Ladespannungsmessung"
 Date ""
 Rev "V1.3"
