@@ -123,19 +123,13 @@ F 3 "" H 6330 1795 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1850 1595 2115 1595
-Wire Wire Line
-	2115 1595 2205 1595
+	1850 1595 2205 1595
 Wire Wire Line
 	2405 1595 2505 1595
 Wire Wire Line
 	2955 1695 2955 1595
 Wire Wire Line
-	2805 1595 2955 1595
-Wire Wire Line
-	2955 1595 3305 1595
-Wire Wire Line
-	3305 1595 3805 1595
+	2805 1595 3805 1595
 Wire Wire Line
 	3305 1595 3305 1695
 Connection ~ 2955 1595
@@ -148,21 +142,9 @@ Wire Wire Line
 	3305 2595 3305 1895
 Connection ~ 3705 1895
 Wire Wire Line
-	2955 1895 2955 2595
+	2955 2595 2955 1895
 Wire Wire Line
-	5205 1595 5455 1595
-Wire Wire Line
-	5455 1595 5905 1595
-Wire Wire Line
-	5905 1595 6330 1595
-Wire Wire Line
-	6330 1595 6725 1595
-Wire Wire Line
-	6725 1595 7275 1595
-Wire Wire Line
-	7275 1595 7625 1595
-Wire Wire Line
-	7625 1595 8375 1595
+	5205 1595 8375 1595
 Wire Wire Line
 	5455 1595 5455 1695
 Wire Wire Line
@@ -261,35 +243,13 @@ Wire Wire Line
 Wire Wire Line
 	8025 2595 8025 2495
 Wire Wire Line
-	1850 2595 1980 2595
-Wire Wire Line
-	1980 2595 2955 2595
-Wire Wire Line
-	2955 2595 3305 2595
-Wire Wire Line
-	3305 2595 3705 2595
-Wire Wire Line
-	3705 2595 5455 2595
-Wire Wire Line
-	5455 2595 5905 2595
-Wire Wire Line
-	5905 2595 6330 2595
-Wire Wire Line
-	6330 2595 7275 2595
-Wire Wire Line
-	7275 2595 7675 2595
-Wire Wire Line
-	7675 2595 8025 2595
+	1850 2595 8025 2595
 Wire Wire Line
 	7675 2595 7675 2495
 Wire Wire Line
 	7675 1895 7675 2295
 Wire Wire Line
-	7125 1895 7275 1895
-Wire Wire Line
-	7275 1895 7675 1895
-Wire Wire Line
-	7675 1895 8375 1895
+	7125 1895 8375 1895
 Wire Wire Line
 	7275 2295 7275 1895
 Connection ~ 7675 1895
@@ -306,22 +266,16 @@ Connection ~ 7625 1595
 Wire Wire Line
 	7275 1245 7275 1145
 Wire Wire Line
-	7275 1145 7625 1145
-Wire Wire Line
-	7625 1145 7975 1145
+	7275 1145 7975 1145
 Wire Wire Line
 	7625 1145 7625 1245
 Wire Wire Line
 	7975 1145 7975 1245
 Connection ~ 7625 1145
 Wire Wire Line
-	3705 1795 3705 1895
+	3705 1795 3705 2595
 Wire Wire Line
-	3705 1895 3705 2595
-Wire Wire Line
-	5905 1895 5905 2045
-Wire Wire Line
-	5905 2045 5905 2595
+	5905 1895 5905 2595
 Wire Wire Line
 	6330 1695 6330 1595
 Connection ~ 6330 1595
@@ -450,11 +404,7 @@ Wire Wire Line
 Wire Wire Line
 	2955 3680 2955 3580
 Wire Wire Line
-	2805 3580 2955 3580
-Wire Wire Line
-	2955 3580 3305 3580
-Wire Wire Line
-	3305 3580 3805 3580
+	2805 3580 3805 3580
 Wire Wire Line
 	3305 3580 3305 3680
 Connection ~ 2955 3580
@@ -469,13 +419,7 @@ Connection ~ 3705 3880
 Wire Wire Line
 	2955 3880 2955 4580
 Wire Wire Line
-	5205 3580 5455 3580
-Wire Wire Line
-	5455 3580 5905 3580
-Wire Wire Line
-	5905 3580 6330 3580
-Wire Wire Line
-	6330 3580 6550 3580
+	5205 3580 6550 3580
 Wire Wire Line
 	5455 3580 5455 3680
 Wire Wire Line
@@ -485,13 +429,9 @@ Wire Wire Line
 	6330 4080 6330 3880
 Connection ~ 5905 3580
 Wire Wire Line
-	3705 4580 3705 3880
+	3705 4580 3705 3780
 Wire Wire Line
-	3705 3880 3705 3780
-Wire Wire Line
-	5905 4580 5905 4030
-Wire Wire Line
-	5905 4030 5905 3880
+	5905 4580 5905 3880
 Wire Wire Line
 	6330 3680 6330 3580
 Connection ~ 6330 3580
@@ -516,17 +456,7 @@ Connection ~ 1980 2595
 Text Notes 6375 3795 0    39   ~ 0
 Vorwiderstand muss an 3,3V angepasst werden
 Wire Wire Line
-	1980 4580 2955 4580
-Wire Wire Line
-	2955 4580 3305 4580
-Wire Wire Line
-	3305 4580 3705 4580
-Wire Wire Line
-	3705 4580 5455 4580
-Wire Wire Line
-	5455 4580 5905 4580
-Wire Wire Line
-	5905 4580 6330 4580
+	1980 4580 6330 4580
 Text HLabel 6550 3580 2    60   Output ~ 0
 3,3V
 Text Notes 4430 1280 0    157  ~ 0

@@ -114,12 +114,12 @@ $EndComp
 $Comp
 L GND #PWR05
 U 1 1 53866E1C
-P 8170 9310
-F 0 "#PWR05" H 8170 9310 30  0001 C CNN
-F 1 "GND" H 8170 9240 30  0001 C CNN
-F 2 "" H 8170 9310 60  0000 C CNN
-F 3 "" H 8170 9310 60  0000 C CNN
-	1    8170 9310
+P 8170 9240
+F 0 "#PWR05" H 8170 9240 30  0001 C CNN
+F 1 "GND" H 8170 9170 30  0001 C CNN
+F 2 "" H 8170 9240 60  0000 C CNN
+F 3 "" H 8170 9240 60  0000 C CNN
+	1    8170 9240
 	0    -1   1    0   
 $EndComp
 Text GLabel 3265 6410 0    39   Input ~ 0
@@ -166,13 +166,13 @@ $EndComp
 $Comp
 L ACS712 U3
 U 1 1 5417150B
-P 3160 1525
-F 0 "U3" H 3160 1775 50  0000 C CNN
-F 1 "INA169" H 3160 1275 50  0000 C CNN
-F 2 "ACS712:INA169" H 3160 1525 60  0001 C CNN
-F 3 "" H 3160 1525 60  0000 C CNN
-F 4 "Value" H 3160 1525 60  0001 C CNN "Bestellnummer"
-	1    3160 1525
+P 3170 -105
+F 0 "U3" H 3170 145 50  0000 C CNN
+F 1 "INA169" H 3170 -355 50  0000 C CNN
+F 2 "ACS712:INA169" H 3170 -105 60  0001 C CNN
+F 3 "" H 3170 -105 60  0000 C CNN
+F 4 "Value" H 3170 -105 60  0001 C CNN "Bestellnummer"
+	1    3170 -105
 	0    1    -1   0   
 $EndComp
 $Comp
@@ -243,35 +243,35 @@ SCL
 $Comp
 L RR8 RR1
 U 1 1 54994E69
-P 7520 8910
-F 0 "RR1" H 7570 9460 70  0000 C CNN
-F 1 "(0,01uF) 10nF" V 7550 8910 70  0000 C CNN
-F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 7520 8910 60  0001 C CNN
-F 3 "" H 7520 8910 60  0000 C CNN
-F 4 "Value" H 7520 8910 60  0001 C CNN "Bestellnummer"
-	1    7520 8910
+P 6460 11595
+F 0 "RR1" H 6510 12145 70  0000 C CNN
+F 1 "(0,01uF) 10nF" V 6490 11595 70  0000 C CNN
+F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 6460 11595 60  0001 C CNN
+F 3 "" H 6460 11595 60  0000 C CNN
+F 4 "Value" H 6460 11595 60  0001 C CNN "Bestellnummer"
+	1    6460 11595
 	0    1    -1   0   
 $EndComp
 $Comp
 L RR8 RR2
 U 1 1 5499A2BD
-P 2335 8310
-F 0 "RR2" H 2385 8860 70  0000 C CNN
-F 1 "(0,01uF) 10nF" V 2365 8310 70  0000 C CNN
-F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H 2335 8310 60  0001 C CNN
-F 3 "" H 2335 8310 60  0000 C CNN
-	1    2335 8310
+P -275 8485
+F 0 "RR2" H -225 9035 70  0000 C CNN
+F 1 "(0,01uF) 10nF" V -245 8485 70  0000 C CNN
+F 2 "ACS712:Kondensatorenleiste_8er_9pin_3D" H -275 8485 60  0001 C CNN
+F 3 "" H -275 8485 60  0000 C CNN
+	1    -275 8485
 	0    1    1    0   
 $EndComp
 $Comp
 L GND #PWR011
 U 1 1 5499A343
-P 2885 7960
-F 0 "#PWR011" H 2885 7960 30  0001 C CNN
-F 1 "GND" H 2885 7890 30  0001 C CNN
-F 2 "" H 2885 7960 60  0000 C CNN
-F 3 "" H 2885 7960 60  0000 C CNN
-	1    2885 7960
+P 2905 8435
+F 0 "#PWR011" H 2905 8435 30  0001 C CNN
+F 1 "GND" H 2905 8365 30  0001 C CNN
+F 2 "" H 2905 8435 60  0000 C CNN
+F 3 "" H 2905 8435 60  0000 C CNN
+	1    2905 8435
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -393,13 +393,13 @@ ReserveAD10
 $Comp
 L R_PACK8 RP2
 U 1 1 54B686DE
-P 1710 7460
-F 0 "RP2" H 1710 7460 40  0000 C CNN
-F 1 "220R" H 1710 7010 40  0000 C CNN
-F 2 "ACS712:DIP-16__300" H 1710 7460 60  0001 C CNN
-F 3 "" H 1710 7460 60  0000 C CNN
-F 4 "C: 1055159 - 62" H 1710 7460 60  0001 C CNN "Bestellnummer"
-	1    1710 7460
+P 65 7545
+F 0 "RP2" H 65  7545 40  0000 C CNN
+F 1 "220R" H 65  7095 40  0000 C CNN
+F 2 "ACS712:DIP-16__300" H 65  7545 60  0001 C CNN
+F 3 "" H 65  7545 60  0000 C CNN
+F 4 "C: 1055159 - 62" H 65  7545 60  0001 C CNN "Bestellnummer"
+	1    65   7545
 	1    0    0    1   
 $EndComp
 Text GLabel 6365 8910 2    39   Input ~ 0
@@ -441,50 +441,48 @@ F 4 "1N4148" H 5785 3270 60  0001 C CNN "Bestellnummer"
 	1    5785 3270
 	0    -1   -1   0   
 $EndComp
-Text Notes 8970 9560 2    60   ~ 0
-Lötpads, mit Brücke\nZur Einbindung des Due
 $Comp
 L Lötpad LP35
 U 1 1 551BAF3A
-P 2685 7880
-F 0 "LP35" H 2675 7930 20  0000 C CNN
-F 1 "Lötpad" H 2685 7860 20  0000 C CNN
-F 2 "ACS712:Lötpad0,508_CU" H 2685 7880 60  0001 C CNN
-F 3 "" H 2685 7880 60  0000 C CNN
-	1    2685 7880
+P -280 7455
+F 0 "LP35" H -290 7505 20  0000 C CNN
+F 1 "Lötpad" H -280 7435 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H -280 7455 60  0001 C CNN
+F 3 "" H -280 7455 60  0000 C CNN
+	1    -280 7455
 	0    1    1    0   
 $EndComp
 $Comp
 L Lötpad LP34
 U 1 1 551BB23C
-P 2585 7880
-F 0 "LP34" H 2575 7930 20  0000 C CNN
-F 1 "Lötpad" H 2585 7860 20  0000 C CNN
-F 2 "ACS712:Lötpad0,508_CU" H 2585 7880 60  0001 C CNN
-F 3 "" H 2585 7880 60  0000 C CNN
-	1    2585 7880
+P -385 7440
+F 0 "LP34" H -395 7490 20  0000 C CNN
+F 1 "Lötpad" H -385 7420 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H -385 7440 60  0001 C CNN
+F 3 "" H -385 7440 60  0000 C CNN
+	1    -385 7440
 	0    1    1    0   
 $EndComp
 $Comp
 L Lötpad LP33
 U 1 1 551BB3C6
-P 2485 7880
-F 0 "LP33" H 2475 7930 20  0000 C CNN
-F 1 "Lötpad" H 2485 7860 20  0000 C CNN
-F 2 "ACS712:Lötpad0,508_CU" H 2485 7880 60  0001 C CNN
-F 3 "" H 2485 7880 60  0000 C CNN
-	1    2485 7880
+P -495 7445
+F 0 "LP33" H -505 7495 20  0000 C CNN
+F 1 "Lötpad" H -495 7425 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H -495 7445 60  0001 C CNN
+F 3 "" H -495 7445 60  0000 C CNN
+	1    -495 7445
 	0    1    1    0   
 $EndComp
 $Comp
 L Lötpad LP32
 U 1 1 551BB55E
-P 2385 7880
-F 0 "LP32" H 2295 7855 20  0000 C CNN
-F 1 "Lötpad" H 2385 7860 20  0000 C CNN
-F 2 "ACS712:Lötpad0,508_CU" H 2385 7880 60  0001 C CNN
-F 3 "" H 2385 7880 60  0000 C CNN
-	1    2385 7880
+P -545 7445
+F 0 "LP32" H -635 7420 20  0000 C CNN
+F 1 "Lötpad" H -545 7425 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H -545 7445 60  0001 C CNN
+F 3 "" H -545 7445 60  0000 C CNN
+	1    -545 7445
 	0    1    1    0   
 $EndComp
 Text GLabel 1055 2230 3    60   Output ~ 0
@@ -503,24 +501,24 @@ $EndComp
 $Comp
 L R_PACK8 RP1
 U 1 1 5478A23C
-P 8145 10160
-F 0 "RP1" H 8145 10060 40  0000 C CNN
-F 1 "220R" H 8145 9710 40  0000 C CNN
-F 2 "ACS712:DIP-16__300" H 8145 10160 60  0001 C CNN
-F 3 "" H 8145 10160 60  0000 C CNN
-F 4 "C: 1055159 - 62" H 8145 10160 60  0001 C CNN "Bestellnummer"
-	1    8145 10160
+P 7440 11990
+F 0 "RP1" H 7440 11890 40  0000 C CNN
+F 1 "220R" H 7440 11540 40  0000 C CNN
+F 2 "ACS712:DIP-16__300" H 7440 11990 60  0001 C CNN
+F 3 "" H 7440 11990 60  0000 C CNN
+F 4 "C: 1055159 - 62" H 7440 11990 60  0001 C CNN "Bestellnummer"
+	1    7440 11990
 	-1   0    0    1   
 $EndComp
 $Comp
 L Lötpad LP36
 U 1 1 55320D6B
-P 2285 7880
-F 0 "LP36" H 2195 7865 20  0000 C CNN
-F 1 "Lötpad" H 2285 7860 20  0000 C CNN
-F 2 "ACS712:Lötpad0,508_CU" H 2285 7880 60  0001 C CNN
-F 3 "" H 2285 7880 60  0000 C CNN
-	1    2285 7880
+P -635 7450
+F 0 "LP36" H -725 7435 20  0000 C CNN
+F 1 "Lötpad" H -635 7430 20  0000 C CNN
+F 2 "ACS712:Lötpad0,508_CU" H -635 7450 60  0001 C CNN
+F 3 "" H -635 7450 60  0000 C CNN
+	1    -635 7450
 	0    1    1    0   
 $EndComp
 $Sheet
@@ -20485,8 +20483,6 @@ Wire Wire Line
 Wire Wire Line
 	7000 2570 6835 2570
 Wire Wire Line
-	6995 2065 7000 2570
-Wire Wire Line
 	4170 2770 6035 2770
 Wire Wire Line
 	4370 2470 6035 2470
@@ -20498,9 +20494,7 @@ Wire Wire Line
 	5220 1080 5220 730 
 Connection ~ 3270 2065
 Wire Wire Line
-	3270 2965 5785 2970
-Wire Wire Line
-	5785 2970 6035 2970
+	3270 2970 6035 2970
 Wire Wire Line
 	5785 2970 5785 3070
 Wire Wire Line
@@ -20513,80 +20507,52 @@ Wire Wire Line
 	6115 6210 6375 6210
 Wire Wire Line
 	3515 6210 3260 6210
-Connection ~ 1510 7410
-Connection ~ 1910 7410
 Connection ~ 2285 7410
 Wire Wire Line
-	2285 7410 2285 7830
+	2285 7410 2285 8185
 Wire Wire Line
-	2285 7960 2285 7930
+	8235 10110 8525 10110
 Wire Wire Line
-	8525 10110 8345 10110
-Wire Wire Line
-	6115 10110 7945 10110
+	6115 10110 8035 10110
 Connection ~ 3000 2065
 Connection ~ 1055 2065
 Wire Wire Line
-	7570 10110 7570 9260
-Connection ~ 1510 7510
-Connection ~ 1915 7510
+	7570 10110 7570 9715
 Wire Wire Line
-	1915 7510 1915 7515
-Wire Wire Line
-	1915 7515 1910 7515
-Wire Wire Line
-	1910 7515 1910 7510
-Connection ~ 1510 7610
-Connection ~ 1910 7610
-Connection ~ 1510 7710
-Connection ~ 1910 7710
-Connection ~ 1505 7810
-Connection ~ 1910 7810
-Connection ~ 2385 7510
-Wire Wire Line
-	2385 7510 2385 7830
+	2385 7510 2385 7960
 Connection ~ 2485 7610
 Wire Wire Line
-	2485 7610 2485 7830
+	2485 7610 2485 8185
 Connection ~ 2585 7710
 Wire Wire Line
-	2585 7710 2585 7830
+	2585 7710 2585 7960
 Wire Wire Line
-	2385 7960 2385 7930
+	2685 7810 2685 8185
 Wire Wire Line
-	2485 7960 2485 7930
+	1300 7810 1600 7810
 Wire Wire Line
-	2585 7960 2585 7930
-Connection ~ 2685 7810
+	1300 7310 1600 7310
 Wire Wire Line
-	2685 7810 2685 7830
+	1300 7210 1600 7210
 Wire Wire Line
-	2685 7960 2685 7930
+	1300 7110 1600 7110
 Wire Wire Line
-	1300 7810 1510 7810
+	8235 9810 8525 9810
 Wire Wire Line
-	1300 7310 1510 7310
+	8235 9910 8525 9910
 Wire Wire Line
-	1300 7210 1510 7210
+	8235 10010 8525 10010
 Wire Wire Line
-	1300 7110 1510 7110
+	8235 10210 8525 10210
 Wire Wire Line
-	8525 9810 8345 9810
+	8235 10310 8525 10310
 Wire Wire Line
-	8525 9910 8345 9910
+	8235 10410 8525 10410
 Wire Wire Line
-	8525 10010 8345 10010
-Wire Wire Line
-	8525 10210 8345 10210
-Wire Wire Line
-	8525 10310 8345 10310
-Wire Wire Line
-	8525 10410 8345 10410
-Wire Wire Line
-	8525 10510 8345 10510
+	8235 10510 8525 10510
 Connection ~ 7170 10510
 Connection ~ 7270 10410
-Connection ~ 7370 10310
+Connection ~ 7370 10315
 Connection ~ 7470 10210
 Connection ~ 7570 10110
 Connection ~ 7670 10010
@@ -20594,21 +20560,29 @@ Connection ~ 7770 9910
 Connection ~ 7870 9810
 Connection ~ 1985 7110
 Wire Wire Line
-	1910 7210 3515 7210
+	1800 7210 3515 7210
 Wire Wire Line
-	1910 7110 3515 7110
+	1800 7110 3515 7110
 Wire Wire Line
-	1910 7310 3515 7310
+	1800 7310 3515 7310
 Wire Wire Line
-	1300 7410 3515 7410
+	1300 7410 1600 7410
 Wire Wire Line
-	1300 7510 3515 7510
+	1800 7410 3515 7410
 Wire Wire Line
-	1300 7610 3515 7610
+	1300 7510 1600 7510
 Wire Wire Line
-	1300 7710 3515 7710
+	1800 7510 3515 7510
 Wire Wire Line
-	2785 7960 2885 7960
+	1300 7610 1600 7610
+Wire Wire Line
+	1800 7610 3515 7610
+Wire Wire Line
+	1300 7710 1600 7710
+Wire Wire Line
+	1800 7710 3515 7710
+Wire Wire Line
+	1985 8435 2905 8435
 Wire Wire Line
 	3515 6510 3265 6510
 Wire Wire Line
@@ -20648,39 +20622,41 @@ Wire Wire Line
 	2185 7960 2185 7310
 Connection ~ 2085 7210
 Wire Wire Line
-	2085 7960 2085 7210
+	2085 7210 2085 8185
 Wire Wire Line
 	1985 7960 1985 7110
 Wire Wire Line
-	7170 9260 7170 10510
+	7170 9715 7170 10510
 Wire Wire Line
-	7270 9260 7270 10410
+	7270 9495 7270 10410
 Wire Wire Line
-	7370 9260 7370 10310
+	7370 9715 7370 10315
 Wire Wire Line
-	7470 9260 7470 10210
+	7470 9495 7470 10210
 Wire Wire Line
-	7670 9260 7670 10010
+	7670 9495 7670 10010
 Wire Wire Line
-	7770 9260 7770 9910
+	7770 9715 7770 9910
 Wire Wire Line
-	7870 9260 7870 9810
+	7870 9495 7870 9810
 Wire Wire Line
-	6115 10510 7945 10510
+	6115 10510 8035 10510
 Wire Wire Line
-	6115 10410 7945 10410
+	6115 10410 8035 10410
 Wire Wire Line
-	6115 10310 7945 10310
+	7370 10315 6115 10310
 Wire Wire Line
-	6115 10210 7945 10210
+	7370 10315 8035 10310
 Wire Wire Line
-	6115 10010 7945 10010
+	6115 10210 8035 10210
 Wire Wire Line
-	6115 9910 7945 9910
+	6115 10010 8035 10010
 Wire Wire Line
-	6115 9810 7945 9810
+	6115 9910 8035 9910
 Wire Wire Line
-	1505 7810 3515 7810
+	6115 9810 8035 9810
+Wire Wire Line
+	1800 7810 3515 7810
 Wire Wire Line
 	3000 2575 3000 2680
 Wire Wire Line
@@ -20705,9 +20681,7 @@ Wire Wire Line
 Wire Wire Line
 	5845 1035 5695 1035
 Wire Wire Line
-	7970 9310 7970 9260
-Wire Wire Line
-	8170 9310 7970 9310
+	7170 9240 8170 9240
 Wire Wire Line
 	4120 730  4120 680 
 Wire Wire Line
@@ -20813,7 +20787,7 @@ Wire Wire Line
 	3270 2170 3270 2065
 Connection ~ 5785 2970
 Wire Wire Line
-	3270 2570 3270 2965
+	3270 2570 3270 2970
 Wire Wire Line
 	3000 2175 3000 2065
 Wire Wire Line
@@ -20822,11 +20796,6 @@ Wire Wire Line
 	2500 2575 2500 2680
 Wire Wire Line
 	8585 2395 8585 1685
-Connection ~ 6995 2065
-Wire Wire Line
-	6835 2870 7700 2865
-Wire Wire Line
-	7700 2865 7700 1035
 Connection ~ 7700 1035
 Wire Wire Line
 	7325 1035 7325 1330
@@ -21052,7 +21021,7 @@ F 3 "" H 4865 11025 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 Text Notes 5060 4870 0    39   ~ 0
-Jürgren fragen\nIst VCC = +5V oder AVCC =+5V\nDie Sensoren z.B INA BTModul usw \nwerden worüber versorgt\nVCC oder AVCC
+Jürgen fragen\nIst VCC = +5V oder AVCC =+5V\nDie Sensoren z.B INA BTModul usw \nwerden worüber versorgt\nVCC oder AVCC
 Wire Wire Line
 	5785 3470 6035 3470
 Connection ~ 6035 3470
@@ -21304,4 +21273,542 @@ Wire Wire Line
 	1620 4435 1620 4680
 Text Notes 2455 5215 0    39   ~ 0
 Progspannungsjumper\nrichtig verdrahtet?
+NoConn ~ 3515 8710
+$Comp
+L R_Small RT?
+U 1 1 5636620A
+P 8135 10510
+F 0 "RT?" V 8090 10500 24  0000 L CNN
+F 1 "220R" V 8135 10475 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 10510 60  0001 C CNN
+F 3 "" H 8135 10510 60  0000 C CNN
+F 4 "Value" H 8135 10510 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 10510 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 10510 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 10510 60  0001 C CNN "Bestelllink"
+	1    8135 10510
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 563682FC
+P 8135 10410
+F 0 "RT?" V 8090 10400 24  0000 L CNN
+F 1 "220R" V 8135 10375 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 10410 60  0001 C CNN
+F 3 "" H 8135 10410 60  0000 C CNN
+F 4 "Value" H 8135 10410 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 10410 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 10410 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 10410 60  0001 C CNN "Bestelllink"
+	1    8135 10410
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 56368420
+P 8135 10310
+F 0 "RT?" V 8090 10300 24  0000 L CNN
+F 1 "220R" V 8135 10275 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 10310 60  0001 C CNN
+F 3 "" H 8135 10310 60  0000 C CNN
+F 4 "Value" H 8135 10310 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 10310 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 10310 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 10310 60  0001 C CNN "Bestelllink"
+	1    8135 10310
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 563685F7
+P 8135 10210
+F 0 "RT?" V 8090 10200 24  0000 L CNN
+F 1 "220R" V 8135 10175 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 10210 60  0001 C CNN
+F 3 "" H 8135 10210 60  0000 C CNN
+F 4 "Value" H 8135 10210 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 10210 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 10210 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 10210 60  0001 C CNN "Bestelllink"
+	1    8135 10210
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 56368855
+P 8135 10110
+F 0 "RT?" V 8090 10100 24  0000 L CNN
+F 1 "220R" V 8135 10075 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 10110 60  0001 C CNN
+F 3 "" H 8135 10110 60  0000 C CNN
+F 4 "Value" H 8135 10110 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 10110 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 10110 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 10110 60  0001 C CNN "Bestelllink"
+	1    8135 10110
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636897E
+P 8135 10010
+F 0 "RT?" V 8090 10000 24  0000 L CNN
+F 1 "220R" V 8135 9975 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 10010 60  0001 C CNN
+F 3 "" H 8135 10010 60  0000 C CNN
+F 4 "Value" H 8135 10010 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 10010 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 10010 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 10010 60  0001 C CNN "Bestelllink"
+	1    8135 10010
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 56368CCA
+P 8135 9910
+F 0 "RT?" V 8090 9900 24  0000 L CNN
+F 1 "220R" V 8135 9875 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 9910 60  0001 C CNN
+F 3 "" H 8135 9910 60  0000 C CNN
+F 4 "Value" H 8135 9910 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 9910 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 9910 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 9910 60  0001 C CNN "Bestelllink"
+	1    8135 9910
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 56368DF9
+P 8135 9810
+F 0 "RT?" V 8090 9800 24  0000 L CNN
+F 1 "220R" V 8135 9775 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8135 9810 60  0001 C CNN
+F 3 "" H 8135 9810 60  0000 C CNN
+F 4 "Value" H 8135 9810 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 8135 9810 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 8135 9810 60  0001 C CNN "Bauform"
+F 7 "Value" H 8135 9810 60  0001 C CNN "Bestelllink"
+	1    8135 9810
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636B41A
+P 1700 7110
+F 0 "RT?" V 1655 7100 24  0000 L CNN
+F 1 "220R" V 1700 7075 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7110 60  0001 C CNN
+F 3 "" H 1700 7110 60  0000 C CNN
+F 4 "Value" H 1700 7110 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7110 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7110 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7110 60  0001 C CNN "Bestelllink"
+	1    1700 7110
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636B884
+P 1700 7210
+F 0 "RT?" V 1655 7200 24  0000 L CNN
+F 1 "220R" V 1700 7175 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7210 60  0001 C CNN
+F 3 "" H 1700 7210 60  0000 C CNN
+F 4 "Value" H 1700 7210 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7210 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7210 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7210 60  0001 C CNN "Bestelllink"
+	1    1700 7210
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636BA68
+P 1700 7310
+F 0 "RT?" V 1655 7300 24  0000 L CNN
+F 1 "220R" V 1700 7275 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7310 60  0001 C CNN
+F 3 "" H 1700 7310 60  0000 C CNN
+F 4 "Value" H 1700 7310 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7310 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7310 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7310 60  0001 C CNN "Bestelllink"
+	1    1700 7310
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636BBA2
+P 1700 7410
+F 0 "RT?" V 1655 7400 24  0000 L CNN
+F 1 "0R" V 1700 7375 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7410 60  0001 C CNN
+F 3 "" H 1700 7410 60  0000 C CNN
+F 4 "Value" H 1700 7410 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7410 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7410 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7410 60  0001 C CNN "Bestelllink"
+	1    1700 7410
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636D627
+P 1700 7510
+F 0 "RT?" V 1655 7500 24  0000 L CNN
+F 1 "0R" V 1700 7475 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7510 60  0001 C CNN
+F 3 "" H 1700 7510 60  0000 C CNN
+F 4 "Value" H 1700 7510 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7510 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7510 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7510 60  0001 C CNN "Bestelllink"
+	1    1700 7510
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636D768
+P 1700 7610
+F 0 "RT?" V 1655 7600 24  0000 L CNN
+F 1 "0R" V 1700 7575 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7610 60  0001 C CNN
+F 3 "" H 1700 7610 60  0000 C CNN
+F 4 "Value" H 1700 7610 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7610 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7610 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7610 60  0001 C CNN "Bestelllink"
+	1    1700 7610
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636D8AE
+P 1700 7710
+F 0 "RT?" V 1655 7700 24  0000 L CNN
+F 1 "0R" V 1700 7675 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7710 60  0001 C CNN
+F 3 "" H 1700 7710 60  0000 C CNN
+F 4 "Value" H 1700 7710 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7710 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7710 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7710 60  0001 C CNN "Bestelllink"
+	1    1700 7710
+	0    -1   1    0   
+$EndComp
+$Comp
+L R_Small RT?
+U 1 1 5636D9FB
+P 1700 7810
+F 0 "RT?" V 1655 7800 24  0000 L CNN
+F 1 "0R" V 1700 7775 24  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 1700 7810 60  0001 C CNN
+F 3 "" H 1700 7810 60  0000 C CNN
+F 4 "Value" H 1700 7810 60  0001 C CNN "Technische Daten"
+F 5 "Value" H 1700 7810 60  0001 C CNN "Bestellnummer"
+F 6 "Value" H 1700 7810 60  0001 C CNN "Bauform"
+F 7 "Value" H 1700 7810 60  0001 C CNN "Bestelllink"
+	1    1700 7810
+	0    -1   1    0   
+$EndComp
+Connection ~ 2385 7510
+$Comp
+L C_Small CT?
+U 1 1 563701F6
+P 1985 8060
+F 0 "CT?" H 2020 8150 24  0000 L CNN
+F 1 "10nf" H 1995 7980 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 1985 8060 60  0001 C CNN
+F 3 "" H 1985 8060 60  0000 C CNN
+F 4 "10%" H 1985 8060 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 1985 8060 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 1985 8060 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 1985 8060 60  0001 C CNN "Bestelllink"
+	1    1985 8060
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 563722EB
+P 2085 8285
+F 0 "CT?" H 2120 8375 24  0000 L CNN
+F 1 "10nf" H 2095 8205 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2085 8285 60  0001 C CNN
+F 3 "" H 2085 8285 60  0000 C CNN
+F 4 "10%" H 2085 8285 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 2085 8285 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2085 8285 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 2085 8285 60  0001 C CNN "Bestelllink"
+	1    2085 8285
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56372CBB
+P 2185 8060
+F 0 "CT?" H 2220 8150 24  0000 L CNN
+F 1 "10nf" H 2195 7980 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2185 8060 60  0001 C CNN
+F 3 "" H 2185 8060 60  0000 C CNN
+F 4 "10%" H 2185 8060 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 2185 8060 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2185 8060 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 2185 8060 60  0001 C CNN "Bestelllink"
+	1    2185 8060
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 563732F4
+P 2285 8285
+F 0 "CT?" H 2320 8375 24  0000 L CNN
+F 1 "XX" H 2295 8205 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2285 8285 60  0001 C CNN
+F 3 "" H 2285 8285 60  0000 C CNN
+F 4 "unbestückt" H 2285 8285 60  0001 C CNN "Technische Daten"
+F 5 "unbestückt" H 2285 8285 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2285 8285 60  0001 C CNN "Bauform"
+F 7 "unbestückt" H 2285 8285 60  0001 C CNN "Bestelllink"
+	1    2285 8285
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56373C8B
+P 2385 8060
+F 0 "CT?" H 2420 8150 24  0000 L CNN
+F 1 "XX" H 2395 7980 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2385 8060 60  0001 C CNN
+F 3 "" H 2385 8060 60  0000 C CNN
+F 4 "unbestückt" H 2385 8060 60  0001 C CNN "Technische Daten"
+F 5 "unbestückt" H 2385 8060 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2385 8060 60  0001 C CNN "Bauform"
+F 7 "unbestückt" H 2385 8060 60  0001 C CNN "Bestelllink"
+	1    2385 8060
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56373FA8
+P 2485 8285
+F 0 "CT?" H 2520 8375 24  0000 L CNN
+F 1 "XX" H 2495 8205 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2485 8285 60  0001 C CNN
+F 3 "" H 2485 8285 60  0000 C CNN
+F 4 "unbestückt" H 2485 8285 60  0001 C CNN "Technische Daten"
+F 5 "unbestückt" H 2485 8285 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2485 8285 60  0001 C CNN "Bauform"
+F 7 "unbestückt" H 2485 8285 60  0001 C CNN "Bestelllink"
+	1    2485 8285
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56374124
+P 2685 8285
+F 0 "CT?" H 2720 8375 24  0000 L CNN
+F 1 "XX" H 2695 8205 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2685 8285 60  0001 C CNN
+F 3 "" H 2685 8285 60  0000 C CNN
+F 4 "unbestückt" H 2685 8285 60  0001 C CNN "Technische Daten"
+F 5 "unbestückt" H 2685 8285 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2685 8285 60  0001 C CNN "Bauform"
+F 7 "unbestückt" H 2685 8285 60  0001 C CNN "Bestelllink"
+	1    2685 8285
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 563742A7
+P 2585 8060
+F 0 "CT?" H 2620 8150 24  0000 L CNN
+F 1 "XX" H 2595 7980 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 2585 8060 60  0001 C CNN
+F 3 "" H 2585 8060 60  0000 C CNN
+F 4 "unbestückt" H 2585 8060 60  0001 C CNN "Technische Daten"
+F 5 "unbestückt" H 2585 8060 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 2585 8060 60  0001 C CNN "Bauform"
+F 7 "unbestückt" H 2585 8060 60  0001 C CNN "Bestelllink"
+	1    2585 8060
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2085 8385 2085 8435
+Wire Wire Line
+	2285 8435 2285 8385
+Wire Wire Line
+	2485 8435 2485 8385
+Connection ~ 2285 8435
+Wire Wire Line
+	2185 8160 2185 8435
+Connection ~ 2185 8435
+Wire Wire Line
+	2385 8160 2385 8435
+Connection ~ 2385 8435
+Wire Wire Line
+	2685 8435 2685 8385
+Connection ~ 2485 8435
+Wire Wire Line
+	2585 8160 2585 8435
+Connection ~ 2585 8435
+Wire Wire Line
+	1985 8435 1985 8160
+Connection ~ 2085 8435
+Connection ~ 2685 8435
+Connection ~ 2685 7810
+Text Notes 710  8040 0    31   ~ 0
+Bauteil mit Wert XX = unbestückt\nBauteil Mit Wert 0R bestückt mit 0Ohm = Brücke
+Wire Wire Line
+	7000 2570 7000 2065
+Connection ~ 7000 2065
+Wire Wire Line
+	6835 2870 7700 2870
+Wire Wire Line
+	7700 2870 7700 1035
+$Comp
+L C_Small CT?
+U 1 1 56393F2D
+P 7170 9615
+F 0 "CT?" H 7205 9705 24  0000 L CNN
+F 1 "10nf" H 7180 9535 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7170 9615 60  0001 C CNN
+F 3 "" H 7170 9615 60  0000 C CNN
+F 4 "10%" H 7170 9615 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7170 9615 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7170 9615 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7170 9615 60  0001 C CNN "Bestelllink"
+	1    7170 9615
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56394343
+P 7270 9395
+F 0 "CT?" H 7305 9485 24  0000 L CNN
+F 1 "10nf" H 7280 9315 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7270 9395 60  0001 C CNN
+F 3 "" H 7270 9395 60  0000 C CNN
+F 4 "10%" H 7270 9395 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7270 9395 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7270 9395 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7270 9395 60  0001 C CNN "Bestelllink"
+	1    7270 9395
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56394589
+P 7370 9615
+F 0 "CT?" H 7405 9705 24  0000 L CNN
+F 1 "10nf" H 7380 9535 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7370 9615 60  0001 C CNN
+F 3 "" H 7370 9615 60  0000 C CNN
+F 4 "10%" H 7370 9615 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7370 9615 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7370 9615 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7370 9615 60  0001 C CNN "Bestelllink"
+	1    7370 9615
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 5639471E
+P 7470 9395
+F 0 "CT?" H 7505 9485 24  0000 L CNN
+F 1 "10nf" H 7480 9315 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7470 9395 60  0001 C CNN
+F 3 "" H 7470 9395 60  0000 C CNN
+F 4 "10%" H 7470 9395 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7470 9395 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7470 9395 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7470 9395 60  0001 C CNN "Bestelllink"
+	1    7470 9395
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 56395114
+P 7570 9615
+F 0 "CT?" H 7605 9705 24  0000 L CNN
+F 1 "10nf" H 7580 9535 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7570 9615 60  0001 C CNN
+F 3 "" H 7570 9615 60  0000 C CNN
+F 4 "10%" H 7570 9615 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7570 9615 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7570 9615 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7570 9615 60  0001 C CNN "Bestelllink"
+	1    7570 9615
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 5639529B
+P 7770 9615
+F 0 "CT?" H 7805 9705 24  0000 L CNN
+F 1 "10nf" H 7780 9535 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7770 9615 60  0001 C CNN
+F 3 "" H 7770 9615 60  0000 C CNN
+F 4 "10%" H 7770 9615 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7770 9615 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7770 9615 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7770 9615 60  0001 C CNN "Bestelllink"
+	1    7770 9615
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 5639542F
+P 7670 9395
+F 0 "CT?" H 7705 9485 24  0000 L CNN
+F 1 "10nf" H 7680 9315 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7670 9395 60  0001 C CNN
+F 3 "" H 7670 9395 60  0000 C CNN
+F 4 "10%" H 7670 9395 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7670 9395 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7670 9395 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7670 9395 60  0001 C CNN "Bestelllink"
+	1    7670 9395
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C_Small CT?
+U 1 1 563955B0
+P 7870 9395
+F 0 "CT?" H 7905 9485 24  0000 L CNN
+F 1 "10nf" H 7880 9315 24  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 7870 9395 60  0001 C CNN
+F 3 "" H 7870 9395 60  0000 C CNN
+F 4 "10%" H 7870 9395 60  0001 C CNN "Technische Daten"
+F 5 "R: X7R-G1206 10N" H 7870 9395 60  0001 C CNN "Bestellnummer"
+F 6 "1206" H 7870 9395 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/X7R-G1206-10N/3/index.html?&ACTION=3&LA=446&ARTICLE=31897&artnr=X7R-G1206+10N&SEARCH=smd+kondensator+10n" H 7870 9395 60  0001 C CNN "Bestelllink"
+	1    7870 9395
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7870 9240 7870 9295
+Wire Wire Line
+	7670 9240 7670 9295
+Connection ~ 7870 9240
+Wire Wire Line
+	7770 9515 7770 9240
+Connection ~ 7770 9240
+Wire Wire Line
+	7170 9240 7170 9515
+Connection ~ 7670 9240
+Wire Wire Line
+	7270 9295 7270 9240
+Connection ~ 7270 9240
+Wire Wire Line
+	7370 9515 7370 9240
+Connection ~ 7370 9240
+Wire Wire Line
+	7470 9295 7470 9240
+Connection ~ 7470 9240
+Wire Wire Line
+	7570 9515 7570 9240
+Connection ~ 7570 9240
 $EndSCHEMATC
