@@ -1,4 +1,4 @@
-update=07.10.2015 20:58:02
+update=02.11.2015 10:35:27
 last_client=kicad
 [general]
 version=1
@@ -22,16 +22,6 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
 [eeschema]
 version=1
 LibDir=acs712.pretty;C:/Users/Uwe/Downloads/ardumower/pcb/megashield_svn_1.3_geoeffnet/acs712.pretty;../../../../../../KiCad/share/modules
@@ -46,3 +36,13 @@ LibName7=DS1307_Dil8
 LibName8=device
 LibName9=supply
 LibName10=atmel
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60

@@ -13,7 +13,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 20 27
+Sheet 20 25
 Title "Ardumower Shield - Unterspannungsschutz"
 Date "Sonntag, 26. April 2015"
 Rev "V1.3"
@@ -40,20 +40,24 @@ U 1 1 553A69D5
 P 4670 2390
 F 0 "R28" V 4750 2390 40  0000 C CNN
 F 1 "100K" V 4677 2391 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 4600 2390 30  0001 C CNN
+F 2 "Resistors_SMD:R_1206" V 4600 2390 30  0001 C CNN
 F 3 "" H 4670 2390 30  0000 C CNN
 F 4 "Value" H 4670 2390 60  0001 C CNN "Bestellnummer"
 	1    4670 2390
 	1    0    0    -1  
 $EndComp
 $Comp
-L Z-DIODE ZD6
+L Z-DIODE ZD1
 U 1 1 553A6A52
 P 5045 2440
-F 0 "ZD6" H 5045 2540 40  0000 C CNN
-F 1 "ZPD15" H 5045 2340 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 5045 2440 60  0001 C CNN
+F 0 "ZD1" H 5045 2540 40  0000 C CNN
+F 1 "SMD ZF 15" H 5045 2340 40  0000 C CNN
+F 2 "Diodes_SMD:MiniMELF_Standard" H 5045 2440 60  0001 C CNN
 F 3 "" H 5045 2440 60  0000 C CNN
+F 4 "Chip-Zener-Diode 0,5W 15V" H 5045 2440 60  0001 C CNN "Technische Daten"
+F 5 "R:SMD ZF 15" H 5045 2440 60  0001 C CNN "Bestellnummer"
+F 6 "Mini Melf" H 5045 2440 60  0001 C CNN "Bauform"
+F 7 "http://www.reichelt.de/SMD-ZF-15/3/index.html?&ACTION=3&LA=446&ARTICLE=18932&artnr=SMD+ZF+15&SEARCH=SMD+ZF+15" H 5045 2440 60  0001 C CNN "Bestelllink"
 	1    5045 2440
 	0    -1   -1   0   
 $EndComp
@@ -63,54 +67,34 @@ U 1 1 553A6BF0
 P 6240 3220
 F 0 "R29" V 6320 3220 40  0000 C CNN
 F 1 "1K" V 6247 3221 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 6170 3220 30  0001 C CNN
+F 2 "Resistors_SMD:R_1206" V 6170 3220 30  0001 C CNN
 F 3 "" H 6240 3220 30  0000 C CNN
 F 4 "Value" H 6240 3220 60  0001 C CNN "Bestellnummer"
 	1    6240 3220
 	0    1    1    0   
 $EndComp
 $Comp
-L DIODE D14
+L DIODE D9
 U 1 1 553A6C81
 P 6745 2780
-F 0 "D14" H 6745 2880 40  0000 C CNN
-F 1 "1N4148" H 6745 2680 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 6745 2780 60  0001 C CNN
+F 0 "D9" H 6745 2880 40  0000 C CNN
+F 1 "1N 4148 SMD" H 6745 2680 40  0000 C CNN
+F 2 "Diodes_SMD:MiniMELF_Standard" H 6745 2780 60  0001 C CNN
 F 3 "" H 6745 2780 60  0000 C CNN
+F 4 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6745 2780 60  0001 C CNN "Technische Daten"
+F 5 "R: 1N 4148 SMD" H 6745 2780 60  0001 C CNN "Bestellnummer"
+F 6 "Mini Melf" H 6745 2780 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6745 2780 60  0001 C CNN "Bestelllink"
 	1    6745 2780
 	0    -1   -1   0   
-$EndComp
-$Comp
-L DIODE D16
-U 1 1 553A6D45
-P 7135 3220
-F 0 "D16" H 7135 3320 40  0000 C CNN
-F 1 "1N5819" H 7135 3120 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 7135 3220 60  0001 C CNN
-F 3 "https://www.reichelt.de/1N-5819/3/index.html?&ACTION=3&LA=446&ARTICLE=41850&artnr=1N+5819&SEARCH=1N5819" H 7135 3220 60  0001 C CNN
-F 4 "R: 1N 5819" H 7135 3220 60  0001 C CNN "Bestellnummer"
-F 5 "Schottky Diode, DO41, 40V, 1A" H 7135 3220 60  0001 C CNN "Technische Daten"
-	1    7135 3220
-	1    0    0    -1  
-$EndComp
-$Comp
-L DIODE D15
-U 1 1 553A6F4A
-P 7120 1515
-F 0 "D15" H 7120 1615 40  0000 C CNN
-F 1 "1N4148" H 7120 1415 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 7120 1515 60  0001 C CNN
-F 3 "" H 7120 1515 60  0000 C CNN
-	1    7120 1515
-	-1   0    0    1   
 $EndComp
 $Comp
 L R R30
 U 1 1 553A7069
 P 6745 3725
 F 0 "R30" V 6825 3725 40  0000 C CNN
-F 1 "100" V 6752 3726 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 6675 3725 30  0001 C CNN
+F 1 "100R" V 6752 3726 40  0000 C CNN
+F 2 "Resistors_SMD:R_1206" V 6675 3725 30  0001 C CNN
 F 3 "" H 6745 3725 30  0000 C CNN
 	1    6745 3725
 	-1   0    0    1   
@@ -132,7 +116,7 @@ U 1 1 553A76F3
 P 7975 4550
 F 0 "R32" V 8055 4550 40  0000 C CNN
 F 1 "10K" V 7982 4551 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 7905 4550 30  0001 C CNN
+F 2 "Resistors_SMD:R_1206" V 7905 4550 30  0001 C CNN
 F 3 "" H 7975 4550 30  0000 C CNN
 	1    7975 4550
 	1    0    0    -1  
@@ -143,7 +127,7 @@ U 1 1 553A79BF
 P 6745 4365
 F 0 "R31" V 6825 4365 40  0000 C CNN
 F 1 "10K" V 6752 4366 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 6675 4365 30  0001 C CNN
+F 2 "Resistors_SMD:R_1206" V 6675 4365 30  0001 C CNN
 F 3 "" H 6745 4365 30  0000 C CNN
 F 4 "Value" H 6745 4365 60  0001 C CNN "Bestellnummer"
 	1    6745 4365
@@ -154,11 +138,13 @@ L DIODE D13
 U 1 1 553A7BF7
 P 6395 4355
 F 0 "D13" H 6395 4455 40  0000 C CNN
-F 1 "1N5819" H 6395 4255 40  0000 C CNN
-F 2 "ACS712:Diode_ligend_RM10" H 6395 4355 60  0001 C CNN
-F 3 "https://www.reichelt.de/1N-5819/3/index.html?&ACTION=3&LA=446&ARTICLE=41850&artnr=1N+5819&SEARCH=1N5819" H 6395 4355 60  0001 C CNN
-F 4 "R: 1N 5819" H 6395 4355 60  0001 C CNN "Bestellnummer"
-F 5 "Schottky Diode, DO41, 40V, 1A" H 6395 4355 60  0001 C CNN "Technische Daten"
+F 1 "1N5819 HW-7-F" H 6395 4255 40  0000 C CNN
+F 2 "Diodes_SMD:SOD-123" H 6395 4355 60  0001 C CNN
+F 3 "" H 6395 4355 60  0001 C CNN
+F 4 "Schottky Diode, DO41, 40V, 1A" H 6395 4355 60  0001 C CNN "Technische Daten"
+F 5 "C: 557892 - 62" H 6395 4355 60  0001 C CNN "Bestellnummer"
+F 6 "SOD-123" H 6395 4355 60  0001 C CNN "Bauform"
+F 7 "https://www.conrad.de/de/schottky-diode-diodes-incorporated-1n5819hw-7-f-gehaeuseart-sod-123-557892.html" H 6395 4355 60  0001 C CNN "Bestelllink"
 	1    6395 4355
 	0    -1   -1   0   
 $EndComp
@@ -167,18 +153,21 @@ L CP1 C9
 U 1 1 553A7C73
 P 6745 5010
 F 0 "C9" H 6795 5110 50  0000 L CNN
-F 1 "22uF" H 6795 4910 50  0000 L CNN
-F 2 "ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 6745 5010 60  0001 C CNN
+F 1 "22uF / 63V" H 6795 4910 50  0000 L CNN
+F 2 "Capacitors_SMD:c_elec_8x6.5" H 6745 5010 60  0001 C CNN
 F 3 "" H 6745 5010 60  0000 C CNN
-F 4 "Value" H 6745 5010 60  0001 C CNN "Bestellnummer"
+F 4 "Elektrolytkondensator 22µF • 63V • 105°C +-20%" H 6745 5010 60  0001 C CNN "Technische Daten"
+F 5 "R: VF 22/63 K-E" H 6745 5010 60  0001 C CNN "Bestellnummer"
+F 6 "D:8mm  H:6,2mm" H 6745 5010 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/Elkos-SMD-Low-ESR-105-C/2/index.html?ACTION=3;ARTICLE=84746;SEARCH=VF%2022/63%20K-E" H 6745 5010 60  0001 C CNN "Bestelllink"
 	1    6745 5010
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR0177
+L GND #PWR0176
 U 1 1 553A83F5
 P 7520 5580
-F 0 "#PWR0177" H 7520 5330 60  0001 C CNN
+F 0 "#PWR0176" H 7520 5330 60  0001 C CNN
 F 1 "GND" H 7520 5430 60  0000 C CNN
 F 2 "" H 7520 5580 60  0000 C CNN
 F 3 "" H 7520 5580 60  0000 C CNN
@@ -270,17 +259,17 @@ U 1 1 553E561A
 P 7990 2000
 F 0 "P20" V 7940 2000 40  0000 C CNN
 F 1 "Button" V 8040 2000 40  0000 C CNN
-F 2 "ACS712:Pin_Header_Straight_1x02" H 7990 2000 60  0001 C CNN
+F 2 "w_conn_kk100:kk100_22-23-2021" H 7990 2000 60  0001 C CNN
 F 3 "" H 7990 2000 60  0000 C CNN
 F 4 "Value" H 7990 2000 60  0001 C CNN "Bestellnummer"
 	1    7990 2000
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR0178
+L GND #PWR0177
 U 1 1 553E5900
 P 8090 2595
-F 0 "#PWR0178" H 8090 2345 60  0001 C CNN
+F 0 "#PWR0177" H 8090 2345 60  0001 C CNN
 F 1 "GND" V 8090 2380 60  0000 C CNN
 F 2 "" H 8090 2595 60  0000 C CNN
 F 3 "" H 8090 2595 60  0000 C CNN
@@ -307,7 +296,7 @@ U 1 1 554A9E96
 P 8515 3765
 F 0 "R35" V 8595 3765 40  0000 C CNN
 F 1 "30K" V 8522 3766 40  0000 C CNN
-F 2 "ACS712:Resistor_Horizontal_RM10mm" V 8445 3765 30  0001 C CNN
+F 2 "Resistors_SMD:R_1206" V 8445 3765 30  0001 C CNN
 F 3 "" H 8515 3765 30  0000 C CNN
 F 4 "Value" H 8515 3765 60  0001 C CNN "Bestellnummer"
 	1    8515 3765
@@ -1392,4 +1381,34 @@ Wire Wire Line
 	8765 3765 8820 3765
 Text Notes 14215 5915 0    60   ~ 0
 beim flashen über usb wird der akku getrennt (alle pins gehen auf hochomig) - das sollte aber kein problem sein (usb versorgung des arduinos) - beim programmstart wird der akku dann wieder zugeschaltet
+$Comp
+L DIODE D10
+U 1 1 563D37F6
+P 7120 1515
+F 0 "D10" H 7120 1615 40  0000 C CNN
+F 1 "1N 4148 SMD" H 7120 1415 40  0000 C CNN
+F 2 "Diodes_SMD:MiniMELF_Standard" H 7120 1515 60  0001 C CNN
+F 3 "" H 7120 1515 60  0000 C CNN
+F 4 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7120 1515 60  0001 C CNN "Technische Daten"
+F 5 "R: 1N 4148 SMD" H 7120 1515 60  0001 C CNN "Bestellnummer"
+F 6 "Mini Melf" H 7120 1515 60  0001 C CNN "Bauform"
+F 7 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7120 1515 60  0001 C CNN "Bestelllink"
+	1    7120 1515
+	-1   0    0    1   
+$EndComp
+$Comp
+L DIODE D16
+U 1 1 563D3DD9
+P 7135 3220
+F 0 "D16" H 7135 3320 40  0000 C CNN
+F 1 "1N5819 HW-7-F" H 7135 3120 40  0000 C CNN
+F 2 "Diodes_SMD:SOD-123" H 7135 3220 60  0001 C CNN
+F 3 "" H 7135 3220 60  0001 C CNN
+F 4 "Schottky Diode, DO41, 40V, 1A" H 7135 3220 60  0001 C CNN "Technische Daten"
+F 5 "C: 557892 - 62" H 7135 3220 60  0001 C CNN "Bestellnummer"
+F 6 "SOD-123" H 7135 3220 60  0001 C CNN "Bauform"
+F 7 "https://www.conrad.de/de/schottky-diode-diodes-incorporated-1n5819hw-7-f-gehaeuseart-sod-123-557892.html" H 7135 3220 60  0001 C CNN "Bestelllink"
+	1    7135 3220
+	1    0    0    1   
+$EndComp
 $EndSCHEMATC

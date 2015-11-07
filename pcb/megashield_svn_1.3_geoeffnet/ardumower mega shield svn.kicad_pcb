@@ -1,9 +1,9 @@
-(kicad_pcb (version 4) (host pcbnew "(2015-08-23 BZR 6115)-product")
+(kicad_pcb (version 4) (host pcbnew "(2015-11-06 BZR 6302)-product")
 
   (general
     (links 707)
     (no_connects 97)
-    (area 12.624999 30.404999 284.555001 144.855001)
+    (area -130.785667 -27.432 342.278 218.1098)
     (thickness 1.6)
     (drawings 204)
     (tracks 2840)
@@ -1881,7 +1881,7 @@
     )
   )
 
-  (module ACS712:ARDUINO_MEGA_SHIELD_DUO_3D locked (layer B.Cu) (tedit 54CA83C9) (tstamp 555143F4)
+  (module ACS712:ARDUINO_MEGA_SHIELD_DUO_3D (layer B.Cu) (tedit 54CA83C9) (tstamp 555143F4)
     (at 96.52 66.04)
     (path /5375252C)
     (fp_text reference SHIELD1 (at 70.612 24.892) (layer B.SilkS)
