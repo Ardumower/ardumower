@@ -10,6 +10,10 @@
   #include "mower.h"  // Ardumower Chassis Kit 1.0  (see mower.cpp for actual code)
 #endif
 
+#ifdef USE_BLANK_MEGA
+  #include "mega.h"
+#endif
+
 #ifdef USE_MINI
   #include "mini.h"  // Mini robot
 #endif

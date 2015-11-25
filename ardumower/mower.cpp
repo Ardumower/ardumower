@@ -127,21 +127,22 @@ Mower robot;
 Mower::Mower(){
   name = "Ardumower";
   // ------- wheel motors -----------------------------
-  motorAccel       = 500;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
+  motorAccel       = 1000;  // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
   motorSpeedMaxRpm       = 25;   // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
   motorSpeedMaxPwm    = 255;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
   motorPowerMax     = 75;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
   motorPowerIgnoreTime = 2000; // time to ignore motor power (ms)
-  motorZeroSettleTime   = 2000 ; // how long (ms) to wait for motors to settle at zero speed
-  motorRollTimeMax    = 3000;  // max. roll time (ms)
-  motorReverseTime    = 3500;  // max. reverse time (ms)
-  motorForwTimeMax   = 60000; // max. forward time (ms) / timeout
+  motorZeroSettleTime   = 3000 ; // how long (ms) to wait for motors to settle at zero speed
+  motorRollTimeMax    = 1500;  // max. roll time (ms)
+  motorRollTimeMin    = 750; //min. roll time (ms) should be smaller than motorRollTimeMax
+  motorReverseTime    = 1200;  // max. reverse time (ms)
+  motorForwTimeMax   = 80000; // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1 = 0.3;   // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2 = 0.92;   // bidir mow pattern speed ratio 2
   // ---- normal control ---
-  motorLeftPID.Kp       = 0.87;    // motor wheel PID controller
+  motorLeftPID.Kp       = 1.5;    // motor wheel PID controller
   motorLeftPID.Ki       = 0.29;
   motorLeftPID.Kd       = 0.25;
   /*// ---- fast control ---
@@ -150,9 +151,9 @@ Mower::Mower(){
   motorLeftPID.Kd       = 0.4;*/
   
   motorRightSwapDir     = 0;    // inverse right motor direction? 
-  motorLeftSwapDir      = 1;    // inverse left motor direction?
+  motorLeftSwapDir      = 0;    // inverse left motor direction?
   // ------ mower motor -------------------------------
-  motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
+  motorMowAccel       = 2000;  // motor mower acceleration (warning: do not set too low) 2000 seems to fit best considerating start time and power consumption 
   motorMowSpeedMaxPwm   = 255;    // motor mower max PWM
   motorMowPowerMax = 75.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
@@ -173,12 +174,15 @@ Mower::Mower(){
   sonarLeftUse      = 1;
   sonarRightUse     = 1;
   sonarCenterUse    = 0;
-  sonarTriggerBelow = 900;    // ultrasonic sensor trigger distance
+  sonarTriggerBelow = 1050;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 0;      // use perimeter?    
+  perimeterUse       = 1;      // use perimeter?    
   perimeterTriggerTimeout = 0;      // perimeter trigger timeout when escaping from inside (ms)  
-  perimeterTrackRollTime  = 3000;   // perimter tracking roll time (ms)
-  perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
+  perimeterOutRollTimeMax  = 2000;   // roll time max after perimeter out (ms)
+  perimeterOutRollTimeMin = 750;    // roll time min after perimeter out (ms)
+  perimeterOutRevTime   = 2200;   // reverse time after perimeter out (ms)
+  perimeterTrackRollTime = 1500; //roll time during perimeter tracking
+  perimeterTrackRevTime = 2200;  // reverse time during perimeter tracking
   perimeterPID.Kp    = 51.0;  // perimeter PID controller
   perimeterPID.Ki    = 12.5;
   perimeterPID.Kd    = 0.8;  
@@ -220,13 +224,13 @@ Mower::Mower(){
   chgChange       = 0;          // Messwertumkehr von - nach +         1 oder 0
   chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)
   // ------  charging station ---------------------------
-  stationRevTime     = 4000;    // charge station reverse time (ms)
-  stationRollTime    = 2000;    // charge station roll time (ms)
-  stationForwTime    = 2000;    // charge station forward time (ms)
-  stationCheckTime   = 2500;    // charge station reverse check time (ms)
+  stationRevTime     = 1800;    // charge station reverse time (ms)
+  stationRollTime    = 1000;    // charge station roll time (ms)
+  stationForwTime    = 1500;    // charge station forward time (ms)
+  stationCheckTime   = 1700;    // charge station reverse check time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
-  twoWayOdometrySensorUse = 1; // use optional two-wire odometry sensor?
+  twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
   odometryTicksPerRevolution = 1060;   // encoder ticks per one full resolution
   odometryTicksPerCm = 13.49;  // encoder ticks per cm
   odometryWheelBaseCm = 36;    // wheel-to-wheel distance (cm)
@@ -234,6 +238,9 @@ Mower::Mower(){
   odometryLeftSwapDir  = 1;       // inverse left encoder direction?
   // ----- GPS -------------------------------------------
   gpsUse            = 0;       // use GPS?
+  stuckedIfGpsSpeedBelow = 0.2; // if Gps speed is below given value the mower is stucked
+  gpsSpeedIgnoreTime = 5000; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
+
   // ----- other -----------------------------------------
   buttonUse         = 1;       // has digital ON/OFF button?
   // ----- user-defined switch ---------------------------
@@ -242,7 +249,12 @@ Mower::Mower(){
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use RTC and timer?
-  // ------ configuration end -------------------------------------------   
+  // ------ mower stats-------------------------------------------  
+  statsOverride = false; // if set to true mower stats are overwritten - be careful
+  statsMowTimeMinutesTotal = 300;
+  statsBatteryChargingCounterTotal = 11;
+  statsBatteryChargingCapacityTotal = 30000;
+  // -----------configuration end-------------------------------------
 }
 
 

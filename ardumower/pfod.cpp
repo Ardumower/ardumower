@@ -254,7 +254,9 @@ void RemoteControl::sendErrorMenu(boolean update){
   Bluetooth.print(F("|zz~GPS comm "));
   Bluetooth.print(robot->errorCounterMax[ERR_GPS_COMM]);  
   Bluetooth.print(F("|zz~GPS data "));
-  Bluetooth.print(robot->errorCounterMax[ERR_GPS_DATA]); 
+  Bluetooth.print(robot->errorCounterMax[ERR_GPS_DATA]);
+  Bluetooth.print(F("|zz~Robot stucked "));
+  Bluetooth.print(robot->errorCounterMax[ERR_STUCK]);
   Bluetooth.print(F("|zz~EEPROM data "));
   Bluetooth.print(robot->errorCounterMax[ERR_EEPROM_DATA]); 
   Bluetooth.println("}");
@@ -294,9 +296,10 @@ void RemoteControl::sendMotorMenu(boolean update){
   Bluetooth.print(robot->motorRightPWMCurr);   
   sendSlider("a06", F("Speed max in rpm"), robot->motorSpeedMaxRpm, "", 1, 100);    
   sendSlider("a15", F("Speed max in pwm"), robot->motorSpeedMaxPwm, "", 1, 255);      
-  sendSlider("a11", F("Accel"), robot->motorAccel, "", 1, 1000, 300);  
+  sendSlider("a11", F("Accel"), robot->motorAccel, "", 1, 2000, 500);  
   sendSlider("a18", F("Power ignore time"), robot->motorPowerIgnoreTime, "", 1, 8000);     
-  sendSlider("a07", F("Roll time max"), robot->motorRollTimeMax, "", 1, 8000);     
+  sendSlider("a07", F("Roll time max"), robot->motorRollTimeMax, "", 1, 8000); 
+  sendSlider("a19", F("Roll time min"), robot->motorRollTimeMin, "", 1, (robot->motorRollTimeMax - 500)); 
   sendSlider("a08", F("Reverse time"), robot->motorReverseTime, "", 1, 8000);     
   sendSlider("a09", F("Forw time max"), robot->motorForwTimeMax, "", 10, 80000);       
   sendSlider("a12", F("Bidir speed ratio 1"), robot->motorBiDirSpeedRatio1, "", 0.01, 1.0);       
@@ -337,6 +340,7 @@ void RemoteControl::processMotorMenu(String pfodCmd){
     else if (pfodCmd.startsWith("a06")) processSlider(pfodCmd, robot->motorSpeedMaxRpm, 1);
     else if (pfodCmd.startsWith("a15")) processSlider(pfodCmd, robot->motorSpeedMaxPwm, 1);
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, robot->motorRollTimeMax, 1); 
+    else if (pfodCmd.startsWith("a19")) processSlider(pfodCmd, robot->motorRollTimeMin, 1); 
     else if (pfodCmd.startsWith("a08")) processSlider(pfodCmd, robot->motorReverseTime, 1);
     else if (pfodCmd.startsWith("a09")) processSlider(pfodCmd, robot->motorForwTimeMax, 10);
     else if (pfodCmd.startsWith("a11")) processSlider(pfodCmd, robot->motorAccel, 1);    
@@ -370,8 +374,10 @@ void RemoteControl::sendMowMenu(boolean update){
   Bluetooth.print(F("|o04~Speed "));
   Bluetooth.print(robot->motorMowPWMCurr);      
   sendSlider("o05", F("Speed max"), robot->motorMowSpeedMaxPwm, "", 1, 255);       
-  Bluetooth.print(F("|o06~Modulate "));
-  sendYesNo(robot->motorMowModulate);      
+  if (robot->developerActive) {
+    Bluetooth.print(F("|o06~Modulate "));
+    sendYesNo(robot->motorMowModulate);
+  }      
   Bluetooth.print(F("|o07~RPM "));
   Bluetooth.print(robot->motorMowRpmCurr);    
   sendSlider("o08", F("RPM set"), robot->motorMowRPMSet, "", 1, 4500);     
@@ -491,8 +497,11 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   sendSlider("e08", F("Timed-out if below smag"), robot->perimeter.timedOutIfBelowSmag, "", 1, 2000);  
   sendSlider("e14", F("Timeout (s) if not inside"), robot->perimeter.timeOutSecIfNotInside, "", 1, 20, 1);  
   sendSlider("e04", F("Trigger timeout"), robot->perimeterTriggerTimeout, "", 1, 2000);
-  sendSlider("e05", F("Track roll time"), robot->perimeterTrackRollTime, "", 1, 8000);       
-  sendSlider("e06", F("Track rev time"), robot->perimeterTrackRevTime, "", 1, 8000);         
+  sendSlider("e05", F("Perimeter out roll time max"), robot->perimeterOutRollTimeMax, "", 1, 8000);       
+  sendSlider("e06", F("Perimeter out roll time min"), robot->perimeterOutRollTimeMin, "", 1, 8000); 
+  sendSlider("e15", F("Perimeter out reverse time"), robot->perimeterOutRevTime, "", 1, 8000); 
+  sendSlider("e16", F("Perimeter tracking roll time"), robot->perimeterTrackRollTime, "", 1, 8000); 
+  sendSlider("e17", F("Perimeter tracking reverse time"), robot->perimeterTrackRevTime, "", 1, 8000); 
   sendSlider("e11", F("Transition timeout"), robot->trackingPerimeterTransitionTimeOut, "", 1, 5000);
   sendSlider("e12", F("Track error timeout"), robot->trackingErrorTimeOut, "", 1, 10000);             
   sendPIDSlider("e07", F("Track"), robot->perimeterPID, 0.1, 100);  
@@ -508,8 +517,11 @@ void RemoteControl::sendPerimeterMenu(boolean update){
 void RemoteControl::processPerimeterMenu(String pfodCmd){      
   if (pfodCmd == "e00") robot->perimeterUse = !robot->perimeterUse;
     else if (pfodCmd.startsWith("e04")) processSlider(pfodCmd, robot->perimeterTriggerTimeout, 1);  
-    else if (pfodCmd.startsWith("e05")) processSlider(pfodCmd, robot->perimeterTrackRollTime, 1);
-    else if (pfodCmd.startsWith("e06")) processSlider(pfodCmd, robot->perimeterTrackRevTime, 1);
+    else if (pfodCmd.startsWith("e05")) processSlider(pfodCmd, robot->perimeterOutRollTimeMax, 1);
+    else if (pfodCmd.startsWith("e06")) processSlider(pfodCmd, robot->perimeterOutRollTimeMin, 1);
+    else if (pfodCmd.startsWith("e15")) processSlider(pfodCmd, robot->perimeterOutRevTime, 1);
+    else if (pfodCmd.startsWith("e16")) processSlider(pfodCmd, robot->perimeterTrackRollTime, 1);
+    else if (pfodCmd.startsWith("e17")) processSlider(pfodCmd, robot->perimeterTrackRevTime, 1);
     else if (pfodCmd.startsWith("e07")) processPIDSlider(pfodCmd, "e07", robot->perimeterPID, 0.1, 100);    
     else if (pfodCmd.startsWith("e08")) processSlider(pfodCmd, robot->perimeter.timedOutIfBelowSmag, 1);    
     else if (pfodCmd.startsWith("e09")) robot->perimeter.useDifferentialPerimeterSignal = !robot->perimeter.useDifferentialPerimeterSignal;
@@ -558,12 +570,16 @@ void RemoteControl::processRainMenu(String pfodCmd){
 void RemoteControl::sendGPSMenu(boolean update){
   if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.GPS`1000"));         
   Bluetooth.print(F("|q00~Use "));
-  sendYesNo(robot->gpsUse);     
+  sendYesNo(robot->gpsUse);
+  sendSlider("q01", F("Stucked if GPS speed is below"), robot->stuckedIfGpsSpeedBelow, "", 0.1, 3); 
+  sendSlider("q02", F("GPS speed ignore time"), robot->gpsSpeedIgnoreTime, "", 1, 10000, robot->motorReverseTime);       
   Bluetooth.println("}");                
 }
 
 void RemoteControl::processGPSMenu(String pfodCmd){      
   if (pfodCmd == "q00") robot->gpsUse = !robot->gpsUse;
+  else if (pfodCmd.startsWith("q01")) processSlider(pfodCmd, robot->stuckedIfGpsSpeedBelow, 0.1);  
+  else if (pfodCmd.startsWith("q02")) processSlider(pfodCmd, robot->gpsSpeedIgnoreTime, 1);  
   sendGPSMenu(true);
 }
 
@@ -846,11 +862,25 @@ void RemoteControl::processFactorySettingsMenu(String pfodCmd){
 }
 
 void RemoteControl::sendInfoMenu(boolean update){
-  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info"));     
+  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Info` 1000"));     
   Bluetooth.print(F("|v00~Ardumower "));
   Bluetooth.print(VER); 
   Bluetooth.print(F("|v01~Developer "));  
-  sendYesNo(robot->developerActive);        
+  sendYesNo(robot->developerActive); 
+  Bluetooth.print(F("|v04~Stats override "));  
+  sendYesNo(robot->statsOverride);     
+  Bluetooth.print(F("|v02~Mowing time trip (min) "));
+  Bluetooth.print(robot->statsMowTimeMinutesTrip);    
+  Bluetooth.print(F("|v03~Mowing time total (hrs) "));
+  Bluetooth.print(robot->statsMowTimeHoursTotal);
+  Bluetooth.print(F("|v05~Battery charging cycles "));
+  Bluetooth.print(robot->statsBatteryChargingCounterTotal);    
+  Bluetooth.print(F("|v06~Battery recharged capacity trip (mAh)"));
+  Bluetooth.print(robot->statsBatteryChargingCapacityTrip);    
+  Bluetooth.print(F("|v07~Battery recharged capacity total (Ah)"));
+  Bluetooth.print(robot->statsBatteryChargingCapacityTotal / 1000);    
+  Bluetooth.print(F("|v08~Battery recharged capacity average (mAh)"));
+  Bluetooth.print(robot->statsBatteryChargingCapacityAverage);        
   //Bluetooth.print("|d01~Perimeter v");
   //Bluetooth.print(verToString(readPerimeterVer())); 
   //Bluetooth.print("|d02~IMU v");  
@@ -862,6 +892,8 @@ void RemoteControl::sendInfoMenu(boolean update){
 
 void RemoteControl::processInfoMenu(String pfodCmd){      
   if (pfodCmd == "v01") robot->developerActive = !robot->developerActive;
+  if (pfodCmd == "v04") robot->statsOverride = !robot->statsOverride; robot->saveUserSettings();
+
   sendInfoMenu(true);
 }
 
@@ -915,7 +947,9 @@ void RemoteControl::processCommandMenu(String pfodCmd){
     robot->setNextState(STATE_REMOTE, 0);    
     sendCommandMenu(true);
   } else if (pfodCmd == "rm"){
-    // cmd: mower motor on/off      
+    // cmd: mower motor on/off
+    if (robot->stateCurr == STATE_OFF || robot->stateCurr == STATE_MANUAL) robot->motorMowEnableOverride = false;
+    else robot->motorMowEnableOverride = !robot->motorMowEnableOverride;     
     robot->motorMowEnable = !robot->motorMowEnable;      
     sendCommandMenu(true);
   } else if (pfodCmd == "rs"){
@@ -1288,9 +1322,11 @@ void RemoteControl::run(){
       Bluetooth.print(",");
       Bluetooth.print(robot->motorRightRpmCurr);
       Bluetooth.print(",");
-      Bluetooth.print(robot->motorLeftSpeedRpmSet);
+      //      Bluetooth.print(robot->motorLeftSpeedRpmSet);
+      Bluetooth.print(robot->motorLeftPID.w);
       Bluetooth.print(",");            
-      Bluetooth.print(robot->motorRightSpeedRpmSet);
+      //      Bluetooth.print(robot->motorRightSpeedRpmSet);
+      Bluetooth.print(robot->motorRightPID.w);
       Bluetooth.print(",");            
       Bluetooth.print(robot->motorLeftPWMCurr);      
       Bluetooth.print(",");                    

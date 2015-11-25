@@ -91,8 +91,8 @@
 #ifdef __AVR__
   #define pinOdometryLeft A12      // left odometry sensor
   #define pinOdometryLeft2 A13     // left odometry sensor (optional two-wire)
-  #define pinOdometryRight A15     // right odometry sensor
-  #define pinOdometryRight2 A14    // right odometry sensor (optional two-wire)
+  #define pinOdometryRight A14     // right odometry sensor
+  #define pinOdometryRight2 A15    // right odometry sensor (optional two-wire)
 #else
   #define pinOdometryLeft DAC0     // left odometry sensor
   #define pinOdometryLeft2 DAC1    // left odometry sensor (optional two-wire)
@@ -125,7 +125,7 @@ Mini::Mini(){
   name = "Mini";
   // ------- wheel motors -----------------------------
   motorAccel       = 0.03;  // motor wheel acceleration (warning: do not set too high)
-  motorSpeedMax       = 120;   // motor wheel max RPM
+  motorSpeedMaxRpm    = 120;   // motor wheel max RPM
   motorSpeedMaxPwm    = 127;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
 //  motorPowerMax     = 30;    // motor wheel max power (Watt)
   motorPowerMax     = 30000;    // motor wheel max power (Watt)
@@ -143,11 +143,11 @@ Mini::Mini(){
   motorLeftSwapDir      = 0;    // inverse left motor direction?  
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
-  motorMowSpeedMax   = 255;    // motor mower max PWM
+  motorMowSpeedMaxPwm = 255;    // motor mower max PWM
 //  motorMowPowerMax = 50.0;     // motor mower max power (Watt)
   motorMowPowerMax = 50000.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
-  motorMowRPM        = 3300;   // motor mower RPM (only for cutter modulation)
+  motorMowRPMSet     = 3300;   // motor mower RPM (only for cutter modulation)
   motorMowSenseScale = 15.3; // motor mower sense scale (mA=(ADC-zero)/scale)
   motorMowPID.Kp = 0.005;    // motor mower RPM PID controller
   motorMowPID.Ki = 0.01;
@@ -186,10 +186,11 @@ Mini::Mini(){
   // ------ battery -------------------------------------
   batMonitor = 0;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
-  batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
+  //batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
+  batSwitchOffIfBelow = 0.0;  // switch off if below voltage (Volt)
   batFactor       = 0.0658;     // battery conversion factor
   batChgFactor    = 0.0658;     // battery conversion factor
-  batSenseZero       =77;        // battery volt sense zero point                                                                              
+  //batSenseZero       =77;        // battery volt sense zero point                                                                              
   batFull          =29.4;      // battery reference Voltage (fully charged)
   chgSenseZero      = 0;       // charge current sense zero point
   chgFactor       = 2.7;     // charge current conversion factor

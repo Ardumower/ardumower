@@ -1,7 +1,9 @@
 EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-cache
 LIBS:Wlan_ESP8266
 LIBS:power
-LIBS:ardumower mega shield svn-cache
+LIBS:conn
+LIBS:uln-udn
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -168,10 +170,10 @@ F 4 "Value" H 6745 5010 60  0001 C CNN "Bestellnummer"
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR0169
+L GND #PWR0177
 U 1 1 553A83F5
 P 7520 5580
-F 0 "#PWR0169" H 7520 5330 60  0001 C CNN
+F 0 "#PWR0177" H 7520 5330 60  0001 C CNN
 F 1 "GND" H 7520 5430 60  0000 C CNN
 F 2 "" H 7520 5580 60  0000 C CNN
 F 3 "" H 7520 5580 60  0000 C CNN
@@ -270,10 +272,10 @@ F 4 "Value" H 7990 2000 60  0001 C CNN "Bestellnummer"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR0170
+L GND #PWR0178
 U 1 1 553E5900
 P 8090 2595
-F 0 "#PWR0170" H 8090 2345 60  0001 C CNN
+F 0 "#PWR0178" H 8090 2345 60  0001 C CNN
 F 1 "GND" V 8090 2380 60  0000 C CNN
 F 2 "" H 8090 2595 60  0000 C CNN
 F 3 "" H 8090 2595 60  0000 C CNN
