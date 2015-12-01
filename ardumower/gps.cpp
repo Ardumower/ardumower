@@ -398,7 +398,7 @@ void GPS::f_get_position(float *latitude, float *longitude, unsigned long *fix_a
   long lat, lon;
   get_position(&lat, &lon, fix_age);
   *latitude = lat == GPS_INVALID_ANGLE ? GPS_INVALID_F_ANGLE : (lat / 100000.0);
-  *longitude = lat == GPS_INVALID_ANGLE ? GPS_INVALID_F_ANGLE : (lon / 100000.0);
+  *longitude = lon == GPS_INVALID_ANGLE ? GPS_INVALID_F_ANGLE : (lon / 100000.0);
 }
 
 void GPS::crack_datetime(int *year, byte *month, byte *day, 
