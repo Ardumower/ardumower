@@ -1,0 +1,25 @@
+Id;Bezeichner;Gehäuse;Stückzahl;Bezeichnung;Anbieter und Ref
+1;EF1,EF2;Fuseholder_Reichelt_PL112000;2;????;
+2;B1,B2,B3,B5,B6;Bohrloch_3,2mm;5;Bohrloch_3,2mm;
+3;U2;DC_DC_DSN2596_mit_Bohrloch;1;DC-DC_Stepdown;
+4;U4;arduino_nano;1;ARDUINO_NANO;
+5;U1;INA169;1;INA 169;
+6;P1;Anschlussklemme_2P_RM5,08;1;Vin 24V;
+7;P2;Anschlussklemme_2P_RM5,08;1;VOut 24V;
+8;24V1;RV_Disc_D7_W3.4_P5;1;VR;
+9;C1,C3;Elko_vert_11.2x6.3mm_RM2.5_RM5.0;2;220uF/63V;
+10;C2;C_Rect_L4_W2.5_P2.5_P5.0;1;220nF;
+11;C4;C_Rect_L4_W2.5_P2.5_P5.0;1;47pP;
+12;C5;Elko_vert_11.2x6.3mm_RM2.5_RM5.0;1;47uF/16V;
+13;C6,C8;C_Rect_L4_W2.5_P2.5_P5.0;2;100nF;
+14;C7,C9;Elko_vert_11.2x6.3mm_RM2.5_RM5.0;2;10uF/16V;
+15;D2,D3;Diode_DO-35_SOD27_Horizontal_RM10;2;1N4148;
+16;D4;Diode_DO-35_SOD27_Horizontal_RM10;1;ZPD5,1V;
+17;P6;Pin_Header_Straight_1x01;1;CONN_01X01;
+18;R1,R4;Resistor_Horizontal_RM10mm;2;10K/1%;
+19;R2;Resistor_Horizontal_RM10mm;1;47K;
+20;R3;Resistor_Horizontal_RM10mm;1;100K/1%;
+21;R5;Resistor_Horizontal_RM10mm;1;1K;
+22;U5;40xx-DIL08;1;OPA2340PA;
+23;D1,D5;Diode_TO-220_Vertical;2;MBR 1045;
+24;JP1;Pin_Header_Straight_1x02;1;PWR;
