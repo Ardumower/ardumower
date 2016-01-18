@@ -1,0 +1,162 @@
+--- gcc/config/avr/avr.c.orig	2008-10-29 12:46:40.110056200 -0600
++++ gcc/config/avr/avr.c	2008-10-29 15:38:35.031795900 -0600
+@@ -299,10 +299,16 @@ static const struct mcu_type_s avr_mcu_t
+     /* Xmega, > 8K, <= 64K FLASH, <= 64K RAM.  */
+     /* Xmega, > 8K, <= 64K FLASH, > 64K RAM.  */
+     /* Xmega, > 64K, <= 128K FLASH, <= 64K RAM.  */
++  { "avrxmega4",    ARCH_AVRXMEGA4, NULL },
++  { "atxmega64a3",  ARCH_AVRXMEGA4, "__AVR_ATxmega64A3__" },
+     /* Xmega, > 64K, <= 128K FLASH, > 64K RAM.  */
+   { "avrxmega5",    ARCH_AVRXMEGA5, NULL },
+   { "atxmega64a1",  ARCH_AVRXMEGA5, "__AVR_ATxmega64A1__" },
+     /* Xmega, > 128K, <= 256K FLASH, <= 64K RAM.  */
++  { "avrxmega6",    ARCH_AVRXMEGA6, NULL },
++  { "atxmega128a3", ARCH_AVRXMEGA6, "__AVR_ATxmega128A3__" },
++  { "atxmega256a3", ARCH_AVRXMEGA6, "__AVR_ATxmega256A3__" },
++  { "atxmega256a3b",ARCH_AVRXMEGA6, "__AVR_ATxmega256A3B__" },
+     /* Xmega, > 128K, <= 256K FLASH, > 64K RAM.  */
+   { "avrxmega7",    ARCH_AVRXMEGA7, NULL },
+   { "atxmega128a1", ARCH_AVRXMEGA7, "__AVR_ATxmega128A1__" },
+@@ -694,6 +700,37 @@ expand_prologue (void)
+       insn = emit_move_insn (pushbyte, tmp_reg_rtx);
+       RTX_FRAME_RELATED_P (insn) = 1;
+ 
++      /* Push RAMPD, RAMPX, RAMPY. */
++      if (AVR_HAVE_RAMPX_Y_D)
++        {
++          /* Push RAMPD. */
++          insn = emit_move_insn (tmp_reg_rtx, 
++                                 gen_rtx_MEM (QImode, GEN_INT (AVR_RAMPD_ADDR)));
++          RTX_FRAME_RELATED_P (insn) = 1;
++          insn = emit_move_insn (pushbyte, tmp_reg_rtx);
++          RTX_FRAME_RELATED_P (insn) = 1;
++
++          /* Push RAMPX. */
++          if (TEST_HARD_REG_BIT (set, REG_X) && TEST_HARD_REG_BIT (set, REG_X + 1))
++            {
++              insn = emit_move_insn (tmp_reg_rtx, 
++                                     gen_rtx_MEM (QImode, GEN_INT (AVR_RAMPX_ADDR)));
++              RTX_FRAME_RELATED_P (insn) = 1;
++              insn = emit_move_insn (pushbyte, tmp_reg_rtx);
++              RTX_FRAME_RELATED_P (insn) = 1;
++            }
++
++          /* Push RAMPY. */
++          if (TEST_HARD_REG_BIT (set, REG_Y) && TEST_HARD_REG_BIT (set, REG_Y + 1))
++            {
++              insn = emit_move_insn (tmp_reg_rtx, 
++                                     gen_rtx_MEM (QImode, GEN_INT (AVR_RAMPY_ADDR)));
++              RTX_FRAME_RELATED_P (insn) = 1;
++              insn = emit_move_insn (pushbyte, tmp_reg_rtx);
++              RTX_FRAME_RELATED_P (insn) = 1;
++            }
++        }
++
+       /* Push RAMPZ.  */
+       if(AVR_HAVE_RAMPZ 
+          && (TEST_HARD_REG_BIT (set, REG_Z) && TEST_HARD_REG_BIT (set, REG_Z + 1)))
+@@ -978,6 +1015,31 @@ expand_epilogue (void)
+ 			      tmp_reg_rtx);
+ 	    }
+ 
++          /* Restore RAMPY, RAMPX, RAMPD using tmp reg as scratch. */
++          if (AVR_HAVE_RAMPX_Y_D)
++            {
++              /* Pop RAMPY. */
++              if (TEST_HARD_REG_BIT (set, REG_Y) && TEST_HARD_REG_BIT (set, REG_Y + 1))
++                {
++                  emit_insn (gen_popqi (tmp_reg_rtx));
++                  emit_move_insn (gen_rtx_MEM (QImode, GEN_INT (AVR_RAMPY_ADDR)),
++                                  tmp_reg_rtx);
++                }
++
++              /* Pop RAMPX. */
++              if (TEST_HARD_REG_BIT (set, REG_X) && TEST_HARD_REG_BIT (set, REG_X + 1))
++                {
++                  emit_insn (gen_popqi (tmp_reg_rtx));
++                  emit_move_insn (gen_rtx_MEM (QImode, GEN_INT (AVR_RAMPX_ADDR)),
++                                  tmp_reg_rtx);
++                }
++
++              /* Pop RAMPD. */
++              emit_insn (gen_popqi (tmp_reg_rtx));
++              emit_move_insn (gen_rtx_MEM (QImode, GEN_INT (AVR_RAMPD_ADDR)),
++                              tmp_reg_rtx);
++            }
++
+           /* Restore SREG using tmp reg as scratch.  */
+           emit_insn (gen_popqi (tmp_reg_rtx));
+       
+--- gcc/config/avr/avr.h.orig	2008-10-29 12:46:40.125681500 -0600
++++ gcc/config/avr/avr.h	2008-10-29 15:37:15.120431900 -0600
+@@ -129,11 +129,15 @@ extern GTY(()) section *progmem_section;
+ #define AVR_HAVE_RAMPZ (avr_current_arch->have_elpm)
+ #define AVR_HAVE_EIJMP_EICALL (avr_current_arch->have_eijmp_eicall)
+ #define AVR_XMEGA (avr_current_arch->xmega)
++#define AVR_HAVE_RAMPX_Y_D (avr_current_arch->have_rampx_y_d)
+ 
+ #define AVR_2_BYTE_PC (!AVR_HAVE_EIJMP_EICALL)
+ #define AVR_3_BYTE_PC (AVR_HAVE_EIJMP_EICALL)
+ 
+ #define AVR_IO_OFFSET (AVR_XMEGA ? 0 : 0x20)
++#define AVR_RAMPD_ADDR (AVR_XMEGA ? 0x38 : 0)
++#define AVR_RAMPX_ADDR (AVR_XMEGA ? 0x39 : 0)
++#define AVR_RAMPY_ADDR (AVR_XMEGA ? 0x3A : 0)
+ #define AVR_RAMPZ_ADDR (AVR_XMEGA ? 0x3B : 0x5B)
+ #define AVR_SREG_ADDR (AVR_XMEGA ? 0x3F: 0x5F)
+ 
+@@ -868,7 +872,10 @@ mmcu=*:-mmcu=%*}"
+   mmcu=at90usb128*|\
+   mmcu=at94k: -m avr5}\
+ %{mmcu=atmega256*:-m avr6}\
++%{mmcu=atxmega64a3:-m avrxmega4} \
+ %{mmcu=atxmega64a1:-m avrxmega5} \
++%{mmcu=atxmega128a3| \
++  mmcu=atxmega256a3*:-m avrxmega6} \
+ %{mmcu=atxmega128a1:-m avrxmega7} \
+ %{mmcu=atmega324*|\
+   mmcu=atmega325*|\
+@@ -1016,7 +1023,11 @@ mmcu=*:-mmcu=%*}"
+ %{mmcu=at90can128:crtcan128.o%s} \
+ %{mmcu=at90usb1286:crtusb1286.o%s} \
+ %{mmcu=at90usb1287:crtusb1287.o%s} \
++%{mmcu=atxmega4|mmcu=atxmega64a3:crtx64a3.o%s} \
+ %{mmcu=atxmega5|mmcu=atxmega64a1:crtx64a1.o%s} \
++%{mmcu=atxmega6|mmcu=atxmega128a3:crtx128a3.o%s} \
++%{mmcu=atxmega256a3:crtx256a3.o%s} \
++%{mmcu=atxmega256a3b:crtx256a3b.o%s} \
+ %{mmcu=atxmega7|mmcu=atxmega128a1:crtx128a1.o%s}"
+ 
+ #define EXTRA_SPECS {"crt_binutils", CRT_BINUTILS_SPECS},
+--- gcc/config/avr/t-avr.orig	2008-10-29 12:46:40.156932100 -0600
++++ gcc/config/avr/t-avr	2008-10-29 14:26:00.176563300 -0600
+@@ -37,8 +37,8 @@ fp-bit.c: $(srcdir)/config/fp-bit.c $(sr
+ 
+ FPBIT = fp-bit.c
+ 
+-MULTILIB_OPTIONS = mmcu=avr2/mmcu=avr25/mmcu=avr3/mmcu=avr31/mmcu=avr35/mmcu=avr4/mmcu=avr5/mmcu=avr51/mmcu=avr6/mmcu=avrxmega5/mmcu=avrxmega7
+-MULTILIB_DIRNAMES = avr2 avr25 avr3 avr31 avr35 avr4 avr5 avr51 avr6 avrxmega5 avrxmega7
++MULTILIB_OPTIONS = mmcu=avr2/mmcu=avr25/mmcu=avr3/mmcu=avr31/mmcu=avr35/mmcu=avr4/mmcu=avr5/mmcu=avr51/mmcu=avr6/mmcu=avrxmega4/mmcu=avrxmega5/mmcu=avrxmega6/mmcu=avrxmega7
++MULTILIB_DIRNAMES = avr2 avr25 avr3 avr31 avr35 avr4 avr5 avr51 avr6 avrxmega4 avrxmega5 avrxmega6 avrxmega7
+ 
+ # The many avr2 matches are not listed here - this is the default.
+ MULTILIB_MATCHES = \
+@@ -124,10 +124,14 @@ MULTILIB_MATCHES = \
+ 	mmcu?avr51=mmcu?at90can128 \
+ 	mmcu?avr51=mmcu?at90usb1286 \
+ 	mmcu?avr51=mmcu?at90usb1287 \
+- 	mmcu?avr6=mmcu?atmega2560 \
+- 	mmcu?avr6=mmcu?atmega2561 \
+- 	mmcu?avrxmega5=mmcu?atxmega64a1 \
+- 	mmcu?avrxmega7=mmcu?atxmega128a1
++	mmcu?avr6=mmcu?atmega2560 \
++	mmcu?avr6=mmcu?atmega2561 \
++	mmcu?avrxmega4=mmcu?atxmega64a3 \
++	mmcu?avrxmega5=mmcu?atxmega64a1 \
++	mmcu?avrxmega6=mmcu?atxmega128a3 \
++	mmcu?avrxmega6=mmcu?atxmega256a3 \
++	mmcu?avrxmega6=mmcu?atxmega256a3b \
++	mmcu?avrxmega7=mmcu?atxmega128a1
+ 
+ MULTILIB_EXCEPTIONS =
+ 

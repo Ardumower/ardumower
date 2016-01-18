@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+<title>MIPS ASE instruction generation overrides - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="MIPS_002dDependent.html#MIPS_002dDependent" title="MIPS-Dependent">
+<link rel="prev" href="MIPS-option-stack.html#MIPS-option-stack" title="MIPS option stack">
+<link rel="next" href="MIPS-floating_002dpoint.html#MIPS-floating_002dpoint" title="MIPS floating-point">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="MIPS-ASE-instruction-generation-overrides"></a>Next:&nbsp;<a rel="next" accesskey="n" href="MIPS-floating_002dpoint.html#MIPS-floating_002dpoint">MIPS floating-point</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="MIPS-option-stack.html#MIPS-option-stack">MIPS option stack</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="MIPS_002dDependent.html#MIPS_002dDependent">MIPS-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.22.9 Directives to control generation of MIPS ASE instructions</h4>
+
+<p><a name="index-MIPS-MIPS_002d3D-instruction-generation-override-1225"></a><a name="index-_0040code_007b_002eset-mips3d_007d-1226"></a><a name="index-_0040code_007b_002eset-nomips3d_007d-1227"></a>The directive <code>.set mips3d</code> makes the assembler accept instructions
+from the MIPS-3D Application Specific Extension from that point on
+in the assembly.  The <code>.set nomips3d</code> directive prevents MIPS-3D
+instructions from being accepted.
+
+   <p><a name="index-SmartMIPS-instruction-generation-override-1228"></a><a name="index-_0040code_007b_002eset-smartmips_007d-1229"></a><a name="index-_0040code_007b_002eset-nosmartmips_007d-1230"></a>The directive <code>.set smartmips</code> makes the assembler accept
+instructions from the SmartMIPS Application Specific Extension to the
+MIPS32 <span class="sc">isa</span> from that point on in the assembly.  The
+<code>.set nosmartmips</code> directive prevents SmartMIPS instructions from
+being accepted.
+
+   <p><a name="index-MIPS-MDMX-instruction-generation-override-1231"></a><a name="index-_0040code_007b_002eset-mdmx_007d-1232"></a><a name="index-_0040code_007b_002eset-nomdmx_007d-1233"></a>The directive <code>.set mdmx</code> makes the assembler accept instructions
+from the MDMX Application Specific Extension from that point on
+in the assembly.  The <code>.set nomdmx</code> directive prevents MDMX
+instructions from being accepted.
+
+   <p><a name="index-MIPS-DSP-Release-1-instruction-generation-override-1234"></a><a name="index-_0040code_007b_002eset-dsp_007d-1235"></a><a name="index-_0040code_007b_002eset-nodsp_007d-1236"></a>The directive <code>.set dsp</code> makes the assembler accept instructions
+from the DSP Release 1 Application Specific Extension from that point
+on in the assembly.  The <code>.set nodsp</code> directive prevents DSP
+Release 1 instructions from being accepted.
+
+   <p><a name="index-MIPS-DSP-Release-2-instruction-generation-override-1237"></a><a name="index-_0040code_007b_002eset-dspr2_007d-1238"></a><a name="index-_0040code_007b_002eset-nodspr2_007d-1239"></a>The directive <code>.set dspr2</code> makes the assembler accept instructions
+from the DSP Release 2 Application Specific Extension from that point
+on in the assembly.  This dirctive implies <code>.set dsp</code>.  The
+<code>.set nodspr2</code> directive prevents DSP Release 2 instructions from
+being accepted.
+
+   <p><a name="index-MIPS-MT-instruction-generation-override-1240"></a><a name="index-_0040code_007b_002eset-mt_007d-1241"></a><a name="index-_0040code_007b_002eset-nomt_007d-1242"></a>The directive <code>.set mt</code> makes the assembler accept instructions
+from the MT Application Specific Extension from that point on
+in the assembly.  The <code>.set nomt</code> directive prevents MT
+instructions from being accepted.
+
+   <p>Traditional <span class="sc">mips</span> assemblers do not support these directives.
+
+   </body></html>
+

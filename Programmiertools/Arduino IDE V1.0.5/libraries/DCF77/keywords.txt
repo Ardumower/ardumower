@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map For DCF77
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+getTime	KEYWORD2
+Start KEYWORD2
+int0handler	KEYWORD2
+Stop KEYWORD2
+day KEYWORD2
+getTime KEYWORD2
+getUTCTime KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+DCF77	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

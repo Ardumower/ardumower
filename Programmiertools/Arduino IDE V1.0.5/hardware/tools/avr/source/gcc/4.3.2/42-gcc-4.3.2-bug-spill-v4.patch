@@ -1,0 +1,47 @@
+
+2008-09-10  Andy Hutchinson  <hutchinsonandy@aim.com>
+
+	* config/avr/avr.c (legitimate_address_p): Fix problem where subreg 
+	is not recognized as a valid register usage. Allow REG_X to be used 
+	as a base pointer.
+	* config/avr/avr.h (LEGITIMIZE_RELOAD_ADDRESS): Remove code that 
+	forces a reload when using a base register.
+	
+
+Index: gcc/config/avr/avr.c
+===================================================================
+--- gcc/config/avr/avr.c	(revision 140164)
++++ gcc/config/avr/avr.c	(working copy)
+@@ -1089,6 +1089,8 @@
+ 		 true_regnum (XEXP (x, 0)));
+       debug_rtx (x);
+     }
++  if (!strict && GET_CODE (x) == SUBREG)
++	x = SUBREG_REG (x);		   
+   if (REG_P (x) && (strict ? REG_OK_FOR_BASE_STRICT_P (x)
+                     : REG_OK_FOR_BASE_NOSTRICT_P (x)))
+     r = POINTER_REGS;
+@@ -1103,6 +1105,7 @@
+       if (fit)
+ 	{
+ 	  if (! strict
++	      || REGNO (XEXP (x,0)) == REG_X
+ 	      || REGNO (XEXP (x,0)) == REG_Y
+ 	      || REGNO (XEXP (x,0)) == REG_Z)
+ 	    r = BASE_POINTER_REGS;
+Index: gcc/config/avr/avr.h
+===================================================================
+--- gcc/config/avr/avr.h	(revision 140164)
++++ gcc/config/avr/avr.h	(working copy)
+@@ -483,10 +483,6 @@
+ 		           OPNUM, TYPE);				    \
+ 	      goto WIN;							    \
+ 	    }								    \
+-	  push_reload (XEXP (X, 0), NULL_RTX, &XEXP (X, 0), NULL,	    \
+-		       BASE_POINTER_REGS, GET_MODE (X), VOIDmode, 0, 0,	    \
+-		       OPNUM, TYPE);					    \
+-          goto WIN;							    \
+ 	}								    \
+       else if (! (frame_pointer_needed && XEXP (X,0) == frame_pointer_rtx)) \
+ 	{								    \
+

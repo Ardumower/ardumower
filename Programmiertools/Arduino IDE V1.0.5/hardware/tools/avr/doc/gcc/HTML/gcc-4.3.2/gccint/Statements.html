@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+<title>Statements - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="GIMPLE.html#GIMPLE" title="GIMPLE">
+<link rel="prev" href="GIMPLE-Expressions.html#GIMPLE-Expressions" title="GIMPLE Expressions">
+<link rel="next" href="GIMPLE-Example.html#GIMPLE-Example" title="GIMPLE Example">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Statements"></a>Next:&nbsp;<a rel="next" accesskey="n" href="GIMPLE-Example.html#GIMPLE-Example">GIMPLE Example</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="GIMPLE-Expressions.html#GIMPLE-Expressions">GIMPLE Expressions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="GIMPLE.html#GIMPLE">GIMPLE</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">10.2.4 Statements</h4>
+
+<p><a name="index-Statements-2077"></a>
+Most statements will be assignment statements, represented by
+<code>MODIFY_EXPR</code>.  A <code>CALL_EXPR</code> whose value is ignored can
+also be a statement.  No other C expressions can appear at statement level;
+a reference to a volatile object is converted into a <code>MODIFY_EXPR</code>. 
+In GIMPLE form, type of <code>MODIFY_EXPR</code> is not meaningful.  Instead, use type
+of LHS or RHS.
+
+ <p>There are also several varieties of complex statements.
+
+<ul class="menu">
+<li><a accesskey="1" href="Blocks.html#Blocks">Blocks</a>
+<li><a accesskey="2" href="Statement-Sequences.html#Statement-Sequences">Statement Sequences</a>
+<li><a accesskey="3" href="Empty-Statements.html#Empty-Statements">Empty Statements</a>
+<li><a accesskey="4" href="Loops.html#Loops">Loops</a>
+<li><a accesskey="5" href="Selection-Statements.html#Selection-Statements">Selection Statements</a>
+<li><a accesskey="6" href="Jumps.html#Jumps">Jumps</a>
+<li><a accesskey="7" href="Cleanups.html#Cleanups">Cleanups</a>
+<li><a accesskey="8" href="GIMPLE-Exception-Handling.html#GIMPLE-Exception-Handling">GIMPLE Exception Handling</a>
+</ul>
+
+ </body></html>
+

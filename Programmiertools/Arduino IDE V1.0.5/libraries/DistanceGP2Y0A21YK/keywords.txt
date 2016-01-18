@@ -1,0 +1,24 @@
+##############################################
+# Syntax Coloring Map For DistanceGP2Y0A21YK #
+##############################################
+
+##############################################
+# Datatypes (KEYWORD1)
+##############################################
+
+DistanceGP2Y0A21YK	KEYWORD1
+
+##############################################
+# Methods and Functions (KEYWORD2)
+##############################################
+
+begin	KEYWORD2
+getDistanceRaw	KEYWORD2
+getDistanceVolt	KEYWORD2
+getDistanceCentimeter	KEYWORD2
+setAveraging	KEYWORD2
+setARefVoltage	KEYWORD2
+
+##############################################
+# Constants (LITERAL1)
+##############################################

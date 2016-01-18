@@ -1,0 +1,89 @@
+<clips name="C Standard"><clip name="----- Block -----" shortcut=""></clip><clip name="Main body" shortcut="">
+  void main(void)
+  //
+  {
+    |;
+  }
+
+</clip><clip name="Function body" shortcut="">
+  void | (void)
+  //
+  {
+    ;
+  }
+
+</clip><clip name="return" shortcut="">  return;
+|</clip><clip name="----- Control -----" shortcut=""></clip><clip name="if (short)" shortcut="">  if (|) {;}
+</clip><clip name="if" shortcut="">  if (|)
+  {
+    ;
+  }
+
+</clip><clip name="if else (short)" shortcut="">  if (|) {;} else {;}
+</clip><clip name="if else" shortcut="">  if (|)
+  {
+    ;
+  } 
+  else
+  {
+    ;
+  }
+
+</clip><clip name="if else if" shortcut="">  if (|)
+  {
+    ;
+  }
+  else if ()
+  {
+    ;
+  } 
+  else if ()
+  {
+    ;
+  } 
+  else
+  {
+    ;
+  }
+
+</clip><clip name="switch" shortcut="">  switch (|)
+  {
+    case ():
+      ;
+      break;
+
+    case ():
+      ;
+      break;
+
+    case ():
+      ;
+      break;
+
+    default:
+      ;
+      break;
+  }
+
+</clip><clip name="for (short)" shortcut="">  for(|;;) {;}
+</clip><clip name="for" shortcut="">  for(|;;)
+  {
+    ;    
+  }
+
+</clip><clip name="while (short)" shortcut="">  while(|) {;}
+</clip><clip name="while" shortcut="">  while(|)
+  {
+    ;
+  }
+
+</clip><clip name="do while (short)" shortcut="">  do {;} while (|);
+</clip><clip name="do while" shortcut="">  do
+  {
+    ;
+  }
+  while (|);
+
+</clip><clip name="break" shortcut="">  break;
+|</clip><clip name="continue" shortcut="">  continue;
+|</clip><clip name="----- Other -----" shortcut=""></clip><clip name="#define" shortcut="">#define |</clip><clip name="#include &quot;&quot;" shortcut="">#include "|"</clip><clip name="#include &lt;>" shortcut="">#include &lt;|&gt;</clip><clip name="Comment /**/" shortcut="">/*|*/</clip><clip name="Comment //" shortcut="">//|</clip><clip name="Comment //***" shortcut="">//***|</clip></clips>

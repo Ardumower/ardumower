@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+<title>Miscellaneous Options - GNU gprof</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU gprof">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Invoking.html#Invoking" title="Invoking">
+<link rel="prev" href="Analysis-Options.html#Analysis-Options" title="Analysis Options">
+<link rel="next" href="Deprecated-Options.html#Deprecated-Options" title="Deprecated Options">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the gprof profiler of the GNU system.
+
+Copyright (C) 1988, 92, 97, 98, 99, 2000, 2001, 2003, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Miscellaneous-Options"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Deprecated-Options.html#Deprecated-Options">Deprecated Options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Analysis-Options.html#Analysis-Options">Analysis Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Invoking.html#Invoking">Invoking</a>
+<hr><br>
+</div>
+
+<h3 class="section">4.3 Miscellaneous Options</h3>
+
+     <dl>
+<dt><code>-d[</code><var>num</var><code>]</code><dt><code>--debug[=</code><var>num</var><code>]</code><dd>The <span class="samp">-d </span><var>num</var> option specifies debugging options. 
+If <var>num</var> is not specified, enable all debugging. 
+See <a href="Debugging.html#Debugging">Debugging <code>gprof</code></a>.
+
+     <br><dt><code>-h</code><dt><code>--help</code><dd>The <span class="samp">-h</span> option prints command line usage.
+
+     <br><dt><code>-O</code><var>name</var><dt><code>--file-format=</code><var>name</var><dd>Selects the format of the profile data files.  Recognized formats are
+<span class="samp">auto</span> (the default), <span class="samp">bsd</span>, <span class="samp">4.4bsd</span>, <span class="samp">magic</span>, and
+<span class="samp">prof</span> (not yet supported).
+
+     <br><dt><code>-s</code><dt><code>--sum</code><dd>The <span class="samp">-s</span> option causes <code>gprof</code> to summarize the information
+in the profile data files it read in, and write out a profile data
+file called <span class="file">gmon.sum</span>, which contains all the information from
+the profile data files that <code>gprof</code> read in.  The file <span class="file">gmon.sum</span>
+may be one of the specified input files; the effect of this is to
+merge the data in the other input files into <span class="file">gmon.sum</span>.
+
+     <p>Eventually you can run <code>gprof</code> again without <span class="samp">-s</span> to analyze the
+cumulative data in the file <span class="file">gmon.sum</span>.
+
+     <br><dt><code>-v</code><dt><code>--version</code><dd>The <span class="samp">-v</span> flag causes <code>gprof</code> to print the current version
+number, and then exit.
+
+</dl>
+
+   </body></html>
+

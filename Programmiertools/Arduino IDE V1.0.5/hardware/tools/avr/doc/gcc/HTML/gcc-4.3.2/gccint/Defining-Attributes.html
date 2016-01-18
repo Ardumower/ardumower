@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+<title>Defining Attributes - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Insn-Attributes.html#Insn-Attributes" title="Insn Attributes">
+<link rel="next" href="Expressions.html#Expressions" title="Expressions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Defining-Attributes"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Expressions.html#Expressions">Expressions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Insn-Attributes.html#Insn-Attributes">Insn Attributes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">14.19.1 Defining Attributes and their Values</h4>
+
+<p><a name="index-defining-attributes-and-their-values-3205"></a><a name="index-attributes_002c-defining-3206"></a>
+<a name="index-define_005fattr-3207"></a>The <code>define_attr</code> expression is used to define each attribute required
+by the target machine.  It looks like:
+
+<pre class="smallexample">     (define_attr <var>name</var> <var>list-of-values</var> <var>default</var>)
+</pre>
+ <p><var>name</var> is a string specifying the name of the attribute being defined.
+
+ <p><var>list-of-values</var> is either a string that specifies a comma-separated
+list of values that can be assigned to the attribute, or a null string to
+indicate that the attribute takes numeric values.
+
+ <p><var>default</var> is an attribute expression that gives the value of this
+attribute for insns that match patterns whose definition does not include
+an explicit value for this attribute.  See <a href="Attr-Example.html#Attr-Example">Attr Example</a>, for more
+information on the handling of defaults.  See <a href="Constant-Attributes.html#Constant-Attributes">Constant Attributes</a>,
+for information on attributes that do not depend on any particular insn.
+
+ <p><a name="index-insn_002dattr_002eh-3208"></a>For each defined attribute, a number of definitions are written to the
+<span class="file">insn-attr.h</span> file.  For cases where an explicit set of values is
+specified for an attribute, the following are defined:
+
+     <ul>
+<li>A <span class="samp">#define</span> is written for the symbol <span class="samp">HAVE_ATTR_</span><var>name</var>.
+
+     <li>An enumerated class is defined for <span class="samp">attr_</span><var>name</var> with
+elements of the form <var>upper-name</var><span class="samp">_</span><var>upper-value</var> where
+the attribute name and value are first converted to uppercase.
+
+     <li>A function <span class="samp">get_attr_</span><var>name</var> is defined that is passed an insn and
+returns the attribute value for that insn. 
+</ul>
+
+ <p>For example, if the following is present in the <span class="file">md</span> file:
+
+<pre class="smallexample">     (define_attr "type" "branch,fp,load,store,arith" ...)
+</pre>
+ <p class="noindent">the following lines will be written to the file <span class="file">insn-attr.h</span>.
+
+<pre class="smallexample">     #define HAVE_ATTR_type
+     enum attr_type {TYPE_BRANCH, TYPE_FP, TYPE_LOAD,
+                      TYPE_STORE, TYPE_ARITH};
+     extern enum attr_type get_attr_type ();
+</pre>
+ <p>If the attribute takes numeric values, no <code>enum</code> type will be
+defined and the function to obtain the attribute's value will return
+<code>int</code>.
+
+ </body></html>
+

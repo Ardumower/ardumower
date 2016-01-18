@@ -1,0 +1,1128 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Agent Expressions</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Agent Expressions">
+<META NAME="keywords" CONTENT="Debugging with GDB: Agent Expressions">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC738"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC737"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC739"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> E. The GDB Agent Expression Mechanism </H1>
+<!--docid::SEC738::-->
+<P>
+
+In some applications, it is not feasible for the debugger to interrupt
+the program's execution long enough for the developer to learn anything
+helpful about its behavior.  If the program's correctness depends on its
+real-time behavior, delays introduced by a debugger might cause the
+program to fail, even when the code itself is correct.  It is useful to
+be able to observe the program's behavior without interrupting it.
+</P><P>
+
+Using GDB's <CODE>trace</CODE> and <CODE>collect</CODE> commands, the user can
+specify locations in the program, and arbitrary expressions to evaluate
+when those locations are reached.  Later, using the <CODE>tfind</CODE>
+command, she can examine the values those expressions had when the
+program hit the trace points.  The expressions may also denote objects
+in memory -- structures or arrays, for example -- whose values GDB
+should record; while visiting a particular tracepoint, the user may
+inspect those objects as if they were in memory at that moment.
+However, because GDB records these values without interacting with the
+user, it can do so quickly and unobtrusively, hopefully not disturbing
+the program's behavior.
+</P><P>
+
+When GDB is debugging a remote target, the GDB <EM>agent</EM> code running
+on the target computes the values of the expressions itself.  To avoid
+having a full symbolic expression evaluator on the agent, GDB translates
+expressions in the source language into a simpler bytecode language, and
+then sends the bytecode to the agent; the agent then executes the
+bytecode, and records the values for GDB to retrieve later.
+</P><P>
+
+The bytecode language is simple; there are forty-odd opcodes, the bulk
+of which are the usual vocabulary of C operands (addition, subtraction,
+shifts, and so on) and various sizes of literals and memory reference
+operations.  The bytecode interpreter operates strictly on machine-level
+values -- various sizes of integers and floating point numbers -- and
+requires no information about types or symbols; thus, the interpreter's
+internal data structures are simple, and each bytecode requires only a
+few native machine instructions to implement it.  The interpreter is
+small, and strict limits on the memory and time required to evaluate an
+expression are easy to determine, making it suitable for use by the
+debugging agent in real-time applications.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_34.html#SEC739">E.1 General Bytecode Design</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Overview of the interpreter.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_34.html#SEC740">E.2 Bytecode Descriptions</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">What each one does.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_34.html#SEC741">E.3 Using Agent Expressions</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">How agent expressions fit into the big picture.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_34.html#SEC742">E.4 Varying Target Capabilities</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">How to discover what the target can do.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_34.html#SEC743">E.5 Tracing on Symmetrix</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Special info for implementation on EMC's
+                                boxes.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_34.html#SEC744">E.6 Rationale</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Why we did it this way.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="General Bytecode Design"></A>
+<HR SIZE="6">
+<A NAME="SEC739"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC740"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> E.1 General Bytecode Design </H2>
+<!--docid::SEC739::-->
+<P>
+
+The agent represents bytecode expressions as an array of bytes.  Each
+instruction is one byte long (thus the term <EM>bytecode</EM>).  Some
+instructions are followed by operand bytes; for example, the <CODE>goto</CODE>
+instruction is followed by a destination for the jump.
+</P><P>
+
+The bytecode interpreter is a stack-based machine; most instructions pop
+their operands off the stack, perform some operation, and push the
+result back on the stack for the next instruction to consume.  Each
+element of the stack may contain either a integer or a floating point
+value; these values are as many bits wide as the largest integer that
+can be directly manipulated in the source language.  Stack elements
+carry no record of their type; bytecode could push a value as an
+integer, then pop it as a floating point value.  However, GDB will not
+generate code which does this.  In C, one might define the type of a
+stack element as follows:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>union agent_val {
+  LONGEST l;
+  DOUBLEST d;
+};
+</pre></td></tr></table>where <CODE>LONGEST</CODE> and <CODE>DOUBLEST</CODE> are <CODE>typedef</CODE> names for
+the largest integer and floating point types on the machine.
+</P><P>
+
+By the time the bytecode interpreter reaches the end of the expression,
+the value of the expression should be the only value left on the stack.
+For tracing applications, <CODE>trace</CODE> bytecodes in the expression will
+have recorded the necessary data, and the value on the stack may be
+discarded.  For other applications, like conditional breakpoints, the
+value may be useful.
+</P><P>
+
+Separate from the stack, the interpreter has two registers:
+<DL COMPACT>
+<DT><CODE>pc</CODE>
+<DD>The address of the next bytecode to execute.
+<P>
+
+<DT><CODE>start</CODE>
+<DD>The address of the start of the bytecode expression, necessary for
+interpreting the <CODE>goto</CODE> and <CODE>if_goto</CODE> instructions.
+<P>
+
+</DL>
+Neither of these registers is directly visible to the bytecode language
+itself, but they are useful for defining the meanings of the bytecode
+operations.
+<P>
+
+There are no instructions to perform side effects on the running
+program, or call the program's functions; we assume that these
+expressions are only used for unobtrusive debugging, not for patching
+the running code.  
+</P><P>
+
+Most bytecode instructions do not distinguish between the various sizes
+of values, and operate on full-width values; the upper bits of the
+values are simply ignored, since they do not usually make a difference
+to the value computed.  The exceptions to this rule are:
+<DL COMPACT>
+
+<DT>memory reference instructions (<CODE>ref</CODE><VAR>n</VAR>)
+<DD>There are distinct instructions to fetch different word sizes from
+memory.  Once on the stack, however, the values are treated as full-size
+integers.  They may need to be sign-extended; the <CODE>ext</CODE> instruction
+exists for this purpose.
+<P>
+
+<DT>the sign-extension instruction (<CODE>ext</CODE> <VAR>n</VAR>)
+<DD>These clearly need to know which portion of their operand is to be
+extended to occupy the full length of the word.
+<P>
+
+</DL>
+<P>
+
+If the interpreter is unable to evaluate an expression completely for
+some reason (a memory location is inaccessible, or a divisor is zero,
+for example), we say that interpretation "terminates with an error".
+This means that the problem is reported back to the interpreter's caller
+in some helpful way.  In general, code using agent expressions should
+assume that they may attempt to divide by zero, fetch arbitrary memory
+locations, and misbehave in other ways.
+</P><P>
+
+Even complicated C expressions compile to a few bytecode instructions;
+for example, the expression <CODE>x + y * z</CODE> would typically produce
+code like the following, assuming that <CODE>x</CODE> and <CODE>y</CODE> live in
+registers, and <CODE>z</CODE> is a global variable holding a 32-bit
+<CODE>int</CODE>:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>reg 1
+reg 2
+const32 <I>address of z</I>
+ref32
+ext 32
+mul
+add
+end
+</pre></td></tr></table></P><P>
+
+In detail, these mean:
+<DL COMPACT>
+
+<DT><CODE>reg 1</CODE>
+<DD>Push the value of register 1 (presumably holding <CODE>x</CODE>) onto the
+stack.
+<P>
+
+<DT><CODE>reg 2</CODE>
+<DD>Push the value of register 2 (holding <CODE>y</CODE>).
+<P>
+
+<DT><CODE>const32 <I>address of z</I></CODE>
+<DD>Push the address of <CODE>z</CODE> onto the stack.
+<P>
+
+<DT><CODE>ref32</CODE>
+<DD>Fetch a 32-bit word from the address at the top of the stack; replace
+the address on the stack with the value.  Thus, we replace the address
+of <CODE>z</CODE> with <CODE>z</CODE>'s value.
+<P>
+
+<DT><CODE>ext 32</CODE>
+<DD>Sign-extend the value on the top of the stack from 32 bits to full
+length.  This is necessary because <CODE>z</CODE> is a signed integer.
+<P>
+
+<DT><CODE>mul</CODE>
+<DD>Pop the top two numbers on the stack, multiply them, and push their
+product.  Now the top of the stack contains the value of the expression
+<CODE>y * z</CODE>.
+<P>
+
+<DT><CODE>add</CODE>
+<DD>Pop the top two numbers, add them, and push the sum.  Now the top of the
+stack contains the value of <CODE>x + y * z</CODE>.
+<P>
+
+<DT><CODE>end</CODE>
+<DD>Stop executing; the value left on the stack top is the value to be
+recorded.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Bytecode Descriptions"></A>
+<HR SIZE="6">
+<A NAME="SEC740"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC739"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC741"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC741"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> E.2 Bytecode Descriptions </H2>
+<!--docid::SEC740::-->
+<P>
+
+Each bytecode description has the following form:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>add</CODE> (0x02): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a+b</VAR>
+<DD><P>
+
+Pop the top two stack items, <VAR>a</VAR> and <VAR>b</VAR>, as integers; push
+their sum, as an integer.
+</P><P>
+
+</DL>
+<P>
+
+In this example, <CODE>add</CODE> is the name of the bytecode, and
+<CODE>(0x02)</CODE> is the one-byte value used to encode the bytecode, in
+hexadecimal.  The phrase "<VAR>a</VAR> <VAR>b</VAR> => <VAR>a+b</VAR>" shows
+the stack before and after the bytecode executes.  Beforehand, the stack
+must contain at least two values, <VAR>a</VAR> and <VAR>b</VAR>; since the top of
+the stack is to the right, <VAR>b</VAR> is on the top of the stack, and
+<VAR>a</VAR> is underneath it.  After execution, the bytecode will have
+popped <VAR>a</VAR> and <VAR>b</VAR> from the stack, and replaced them with a
+single value, <VAR>a+b</VAR>.  There may be other values on the stack below
+those shown, but the bytecode affects only those shown.
+</P><P>
+
+Here is another example:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>const8</CODE> (0x22) <VAR>n</VAR>: => <VAR>n</VAR>
+<DD>Push the 8-bit integer constant <VAR>n</VAR> on the stack, without sign
+extension.
+<P>
+
+</DL>
+<P>
+
+In this example, the bytecode <CODE>const8</CODE> takes an operand <VAR>n</VAR>
+directly from the bytecode stream; the operand follows the <CODE>const8</CODE>
+bytecode itself.  We write any such operands immediately after the name
+of the bytecode, before the colon, and describe the exact encoding of
+the operand in the bytecode stream in the body of the bytecode
+description.
+</P><P>
+
+For the <CODE>const8</CODE> bytecode, there are no stack items given before
+the =>; this simply means that the bytecode consumes no values
+from the stack.  If a bytecode consumes no values, or produces no
+values, the list on either side of the => may be empty.
+</P><P>
+
+If a value is written as <VAR>a</VAR>, <VAR>b</VAR>, or <VAR>n</VAR>, then the bytecode
+treats it as an integer.  If a value is written is <VAR>addr</VAR>, then the
+bytecode treats it as an address.
+</P><P>
+
+We do not fully describe the floating point operations here; although
+this design can be extended in a clean way to handle floating point
+values, they are not of immediate interest to the customer, so we avoid
+describing them, to save time.
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>float</CODE> (0x01): =>
+<DD><P>
+
+Prefix for floating-point bytecodes.  Not implemented yet.
+</P><P>
+
+<DT><CODE>add</CODE> (0x02): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a+b</VAR>
+<DD>Pop two integers from the stack, and push their sum, as an integer.
+<P>
+
+<DT><CODE>sub</CODE> (0x03): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a-b</VAR>
+<DD>Pop two integers from the stack, subtract the top value from the
+next-to-top value, and push the difference.
+<P>
+
+<DT><CODE>mul</CODE> (0x04): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a*b</VAR>
+<DD>Pop two integers from the stack, multiply them, and push the product on
+the stack.  Note that, when one multiplies two <VAR>n</VAR>-bit numbers
+yielding another <VAR>n</VAR>-bit number, it is irrelevant whether the
+numbers are signed or not; the results are the same.
+<P>
+
+<DT><CODE>div_signed</CODE> (0x05): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a/b</VAR>
+<DD>Pop two signed integers from the stack; divide the next-to-top value by
+the top value, and push the quotient.  If the divisor is zero, terminate
+with an error.
+<P>
+
+<DT><CODE>div_unsigned</CODE> (0x06): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a/b</VAR>
+<DD>Pop two unsigned integers from the stack; divide the next-to-top value
+by the top value, and push the quotient.  If the divisor is zero,
+terminate with an error.
+<P>
+
+<DT><CODE>rem_signed</CODE> (0x07): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a modulo b</VAR>
+<DD>Pop two signed integers from the stack; divide the next-to-top value by
+the top value, and push the remainder.  If the divisor is zero,
+terminate with an error.
+<P>
+
+<DT><CODE>rem_unsigned</CODE> (0x08): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a modulo b</VAR>
+<DD>Pop two unsigned integers from the stack; divide the next-to-top value
+by the top value, and push the remainder.  If the divisor is zero,
+terminate with an error.
+<P>
+
+<DT><CODE>lsh</CODE> (0x09): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a&#60;&#60;b</VAR>
+<DD>Pop two integers from the stack; let <VAR>a</VAR> be the next-to-top value,
+and <VAR>b</VAR> be the top value.  Shift <VAR>a</VAR> left by <VAR>b</VAR> bits, and
+push the result.
+<P>
+
+<DT><CODE>rsh_signed</CODE> (0x0a): <VAR>a</VAR> <VAR>b</VAR> => <CODE>(signed)</CODE><VAR>a&#62;&#62;b</VAR>
+<DD>Pop two integers from the stack; let <VAR>a</VAR> be the next-to-top value,
+and <VAR>b</VAR> be the top value.  Shift <VAR>a</VAR> right by <VAR>b</VAR> bits,
+inserting copies of the top bit at the high end, and push the result.
+<P>
+
+<DT><CODE>rsh_unsigned</CODE> (0x0b): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a&#62;&#62;b</VAR>
+<DD>Pop two integers from the stack; let <VAR>a</VAR> be the next-to-top value,
+and <VAR>b</VAR> be the top value.  Shift <VAR>a</VAR> right by <VAR>b</VAR> bits,
+inserting zero bits at the high end, and push the result.
+<P>
+
+<DT><CODE>log_not</CODE> (0x0e): <VAR>a</VAR> => <VAR>!a</VAR>
+<DD>Pop an integer from the stack; if it is zero, push the value one;
+otherwise, push the value zero.
+<P>
+
+<DT><CODE>bit_and</CODE> (0x0f): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a&#38;b</VAR>
+<DD>Pop two integers from the stack, and push their bitwise <CODE>and</CODE>.
+<P>
+
+<DT><CODE>bit_or</CODE> (0x10): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a|b</VAR>
+<DD>Pop two integers from the stack, and push their bitwise <CODE>or</CODE>.
+<P>
+
+<DT><CODE>bit_xor</CODE> (0x11): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a^b</VAR>
+<DD>Pop two integers from the stack, and push their bitwise
+exclusive-<CODE>or</CODE>.
+<P>
+
+<DT><CODE>bit_not</CODE> (0x12): <VAR>a</VAR> => <VAR>~a</VAR>
+<DD>Pop an integer from the stack, and push its bitwise complement.
+<P>
+
+<DT><CODE>equal</CODE> (0x13): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a=b</VAR>
+<DD>Pop two integers from the stack; if they are equal, push the value one;
+otherwise, push the value zero.
+<P>
+
+<DT><CODE>less_signed</CODE> (0x14): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a&#60;b</VAR>
+<DD>Pop two signed integers from the stack; if the next-to-top value is less
+than the top value, push the value one; otherwise, push the value zero.
+<P>
+
+<DT><CODE>less_unsigned</CODE> (0x15): <VAR>a</VAR> <VAR>b</VAR> => <VAR>a&#60;b</VAR>
+<DD>Pop two unsigned integers from the stack; if the next-to-top value is less
+than the top value, push the value one; otherwise, push the value zero.
+<P>
+
+<DT><CODE>ext</CODE> (0x16) <VAR>n</VAR>: <VAR>a</VAR> => <VAR>a</VAR>, sign-extended from <VAR>n</VAR> bits
+<DD>Pop an unsigned value from the stack; treating it as an <VAR>n</VAR>-bit
+twos-complement value, extend it to full length.  This means that all
+bits to the left of bit <VAR>n-1</VAR> (where the least significant bit is bit
+0) are set to the value of bit <VAR>n-1</VAR>.  Note that <VAR>n</VAR> may be
+larger than or equal to the width of the stack elements of the bytecode
+engine; in this case, the bytecode should have no effect.
+<P>
+
+The number of source bits to preserve, <VAR>n</VAR>, is encoded as a single
+byte unsigned integer following the <CODE>ext</CODE> bytecode.
+</P><P>
+
+<DT><CODE>zero_ext</CODE> (0x2a) <VAR>n</VAR>: <VAR>a</VAR> => <VAR>a</VAR>, zero-extended from <VAR>n</VAR> bits
+<DD>Pop an unsigned value from the stack; zero all but the bottom <VAR>n</VAR>
+bits.  This means that all bits to the left of bit <VAR>n-1</VAR> (where the
+least significant bit is bit 0) are set to the value of bit <VAR>n-1</VAR>.
+<P>
+
+The number of source bits to preserve, <VAR>n</VAR>, is encoded as a single
+byte unsigned integer following the <CODE>zero_ext</CODE> bytecode.
+</P><P>
+
+<DT><CODE>ref8</CODE> (0x17): <VAR>addr</VAR> => <VAR>a</VAR>
+<DD><DT><CODE>ref16</CODE> (0x18): <VAR>addr</VAR> => <VAR>a</VAR>
+<DD><DT><CODE>ref32</CODE> (0x19): <VAR>addr</VAR> => <VAR>a</VAR>
+<DD><DT><CODE>ref64</CODE> (0x1a): <VAR>addr</VAR> => <VAR>a</VAR>
+<DD>Pop an address <VAR>addr</VAR> from the stack.  For bytecode
+<CODE>ref</CODE><VAR>n</VAR>, fetch an <VAR>n</VAR>-bit value from <VAR>addr</VAR>, using the
+natural target endianness.  Push the fetched value as an unsigned
+integer.
+<P>
+
+Note that <VAR>addr</VAR> may not be aligned in any particular way; the
+<CODE>ref<VAR>n</VAR></CODE> bytecodes should operate correctly for any address.
+</P><P>
+
+If attempting to access memory at <VAR>addr</VAR> would cause a processor
+exception of some sort, terminate with an error.
+</P><P>
+
+<DT><CODE>ref_float</CODE> (0x1b): <VAR>addr</VAR> => <VAR>d</VAR>
+<DD><DT><CODE>ref_double</CODE> (0x1c): <VAR>addr</VAR> => <VAR>d</VAR>
+<DD><DT><CODE>ref_long_double</CODE> (0x1d): <VAR>addr</VAR> => <VAR>d</VAR>
+<DD><DT><CODE>l_to_d</CODE> (0x1e): <VAR>a</VAR> => <VAR>d</VAR>
+<DD><DT><CODE>d_to_l</CODE> (0x1f): <VAR>d</VAR> => <VAR>a</VAR>
+<DD>Not implemented yet.
+<P>
+
+<DT><CODE>dup</CODE> (0x28): <VAR>a</VAR> =&#62; <VAR>a</VAR> <VAR>a</VAR>
+<DD>Push another copy of the stack's top element.
+<P>
+
+<DT><CODE>swap</CODE> (0x2b): <VAR>a</VAR> <VAR>b</VAR> =&#62; <VAR>b</VAR> <VAR>a</VAR>
+<DD>Exchange the top two items on the stack.
+<P>
+
+<DT><CODE>pop</CODE> (0x29): <VAR>a</VAR> =&#62;
+<DD>Discard the top value on the stack.
+<P>
+
+<DT><CODE>if_goto</CODE> (0x20) <VAR>offset</VAR>: <VAR>a</VAR> =>
+<DD>Pop an integer off the stack; if it is non-zero, branch to the given
+offset in the bytecode string.  Otherwise, continue to the next
+instruction in the bytecode stream.  In other words, if <VAR>a</VAR> is
+non-zero, set the <CODE>pc</CODE> register to <CODE>start</CODE> + <VAR>offset</VAR>.
+Thus, an offset of zero denotes the beginning of the expression.
+<P>
+
+The <VAR>offset</VAR> is stored as a sixteen-bit unsigned value, stored
+immediately following the <CODE>if_goto</CODE> bytecode.  It is always stored
+most significant byte first, regardless of the target's normal
+endianness.  The offset is not guaranteed to fall at any particular
+alignment within the bytecode stream; thus, on machines where fetching a
+16-bit on an unaligned address raises an exception, you should fetch the
+offset one byte at a time.
+</P><P>
+
+<DT><CODE>goto</CODE> (0x21) <VAR>offset</VAR>: =>
+<DD>Branch unconditionally to <VAR>offset</VAR>; in other words, set the
+<CODE>pc</CODE> register to <CODE>start</CODE> + <VAR>offset</VAR>.
+<P>
+
+The offset is stored in the same way as for the <CODE>if_goto</CODE> bytecode.
+</P><P>
+
+<DT><CODE>const8</CODE> (0x22) <VAR>n</VAR>: => <VAR>n</VAR>
+<DD><DT><CODE>const16</CODE> (0x23) <VAR>n</VAR>: => <VAR>n</VAR>
+<DD><DT><CODE>const32</CODE> (0x24) <VAR>n</VAR>: => <VAR>n</VAR>
+<DD><DT><CODE>const64</CODE> (0x25) <VAR>n</VAR>: => <VAR>n</VAR>
+<DD>Push the integer constant <VAR>n</VAR> on the stack, without sign extension.
+To produce a small negative value, push a small twos-complement value,
+and then sign-extend it using the <CODE>ext</CODE> bytecode.
+<P>
+
+The constant <VAR>n</VAR> is stored in the appropriate number of bytes
+following the <CODE>const</CODE><VAR>b</VAR> bytecode.  The constant <VAR>n</VAR> is
+always stored most significant byte first, regardless of the target's
+normal endianness.  The constant is not guaranteed to fall at any
+particular alignment within the bytecode stream; thus, on machines where
+fetching a 16-bit on an unaligned address raises an exception, you
+should fetch <VAR>n</VAR> one byte at a time.
+</P><P>
+
+<DT><CODE>reg</CODE> (0x26) <VAR>n</VAR>: => <VAR>a</VAR>
+<DD>Push the value of register number <VAR>n</VAR>, without sign extension.  The
+registers are numbered following GDB's conventions.
+<P>
+
+The register number <VAR>n</VAR> is encoded as a 16-bit unsigned integer
+immediately following the <CODE>reg</CODE> bytecode.  It is always stored most
+significant byte first, regardless of the target's normal endianness.
+The register number is not guaranteed to fall at any particular
+alignment within the bytecode stream; thus, on machines where fetching a
+16-bit on an unaligned address raises an exception, you should fetch the
+register number one byte at a time.
+</P><P>
+
+<DT><CODE>trace</CODE> (0x0c): <VAR>addr</VAR> <VAR>size</VAR> =>
+<DD>Record the contents of the <VAR>size</VAR> bytes at <VAR>addr</VAR> in a trace
+buffer, for later retrieval by GDB.
+<P>
+
+<DT><CODE>trace_quick</CODE> (0x0d) <VAR>size</VAR>: <VAR>addr</VAR> => <VAR>addr</VAR>
+<DD>Record the contents of the <VAR>size</VAR> bytes at <VAR>addr</VAR> in a trace
+buffer, for later retrieval by GDB.  <VAR>size</VAR> is a single byte
+unsigned integer following the <CODE>trace</CODE> opcode.
+<P>
+
+This bytecode is equivalent to the sequence <CODE>dup const8 <VAR>size</VAR>
+trace</CODE>, but we provide it anyway to save space in bytecode strings.
+</P><P>
+
+<DT><CODE>trace16</CODE> (0x30) <VAR>size</VAR>: <VAR>addr</VAR> => <VAR>addr</VAR>
+<DD>Identical to trace_quick, except that <VAR>size</VAR> is a 16-bit big-endian
+unsigned integer, not a single byte.  This should probably have been
+named <CODE>trace_quick16</CODE>, for consistency.
+<P>
+
+<DT><CODE>end</CODE> (0x27): =>
+<DD>Stop executing bytecode; the result should be the top element of the
+stack.  If the purpose of the expression was to compute an lvalue or a
+range of memory, then the next-to-top of the stack is the lvalue's
+address, and the top of the stack is the lvalue's size, in bytes.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Using Agent Expressions"></A>
+<HR SIZE="6">
+<A NAME="SEC741"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC740"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC742"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC742"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> E.3 Using Agent Expressions </H2>
+<!--docid::SEC741::-->
+<P>
+
+Here is a sketch of a full non-stop debugging cycle, showing how agent
+expressions fit into the process.
+</P><P>
+
+<UL>
+
+<LI>
+The user selects trace points in the program's code at which GDB should
+collect data.
+<P>
+
+<LI>
+The user specifies expressions to evaluate at each trace point.  These
+expressions may denote objects in memory, in which case those objects'
+contents are recorded as the program runs, or computed values, in which
+case the values themselves are recorded.
+<P>
+
+<LI>
+GDB transmits the tracepoints and their associated expressions to the
+GDB agent, running on the debugging target.
+<P>
+
+<LI>
+The agent arranges to be notified when a trace point is hit.  Note that,
+on some systems, the target operating system is completely responsible
+for collecting the data; see <A HREF="gdb_34.html#SEC743">E.5 Tracing on Symmetrix</A>.
+<P>
+
+<LI>
+When execution on the target reaches a trace point, the agent evaluates
+the expressions associated with that trace point, and records the
+resulting values and memory ranges.
+<P>
+
+<LI>
+Later, when the user selects a given trace event and inspects the
+objects and expression values recorded, GDB talks to the agent to
+retrieve recorded data as necessary to meet the user's requests.  If the
+user asks to see an object whose contents have not been recorded, GDB
+reports an error.
+<P>
+
+</UL>
+<P>
+
+<A NAME="Varying Target Capabilities"></A>
+<HR SIZE="6">
+<A NAME="SEC742"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC741"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC743"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC743"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> E.4 Varying Target Capabilities </H2>
+<!--docid::SEC742::-->
+<P>
+
+Some targets don't support floating-point, and some would rather not
+have to deal with <CODE>long long</CODE> operations.  Also, different targets
+will have different stack sizes, and different bytecode buffer lengths.
+</P><P>
+
+Thus, GDB needs a way to ask the target about itself.  We haven't worked
+out the details yet, but in general, GDB should be able to send the
+target a packet asking it to describe itself.  The reply should be a
+packet whose length is explicit, so we can add new information to the
+packet in future revisions of the agent, without confusing old versions
+of GDB, and it should contain a version number.  It should contain at
+least the following information:
+</P><P>
+
+<UL>
+
+<LI>
+whether floating point is supported
+<P>
+
+<LI>
+whether <CODE>long long</CODE> is supported
+<P>
+
+<LI>
+maximum acceptable size of bytecode stack
+<P>
+
+<LI>
+maximum acceptable length of bytecode expressions
+<P>
+
+<LI>
+which registers are actually available for collection
+<P>
+
+<LI>
+whether the target supports disabled tracepoints
+<P>
+
+</UL>
+<P>
+
+<A NAME="Tracing on Symmetrix"></A>
+<HR SIZE="6">
+<A NAME="SEC743"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC742"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC744"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC744"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> E.5 Tracing on Symmetrix </H2>
+<!--docid::SEC743::-->
+<P>
+
+This section documents the API used by the GDB agent to collect data on
+Symmetrix systems.
+</P><P>
+
+Cygnus originally implemented these tracing features to help EMC
+Corporation debug their Symmetrix high-availability disk drives.  The
+Symmetrix application code already includes substantial tracing
+facilities; the GDB agent for the Symmetrix system uses those facilities
+for its own data collection, via the API described here.
+</P><P>
+
+<A NAME="IDX1654"></A>
+<DL>
+<DT><U>Function:</U> DTC_RESPONSE <B>adbg_find_memory_in_frame</B> <I>(FRAME_DEF *<VAR>frame</VAR>, char *<VAR>address</VAR>, char **<VAR>buffer</VAR>, unsigned int *<VAR>size</VAR>)</I>
+<DD>Search the trace frame <VAR>frame</VAR> for memory saved from <VAR>address</VAR>.
+If the memory is available, provide the address of the buffer holding
+it; otherwise, provide the address of the next saved area.
+</P><P>
+
+<UL>
+
+<LI>
+If the memory at <VAR>address</VAR> was saved in <VAR>frame</VAR>, set
+<CODE>*<VAR>buffer</VAR></CODE> to point to the buffer in which that memory was
+saved, set <CODE>*<VAR>size</VAR></CODE> to the number of bytes from <VAR>address</VAR>
+that are saved at <CODE>*<VAR>buffer</VAR></CODE>, and return
+<CODE>OK_TARGET_RESPONSE</CODE>.  (Clearly, in this case, the function will
+always set <CODE>*<VAR>size</VAR></CODE> to a value greater than zero.)
+<P>
+
+<LI>
+If <VAR>frame</VAR> does not record any memory at <VAR>address</VAR>, set
+<CODE>*<VAR>size</VAR></CODE> to the distance from <VAR>address</VAR> to the start of
+the saved region with the lowest address higher than <VAR>address</VAR>.  If
+there is no memory saved from any higher address, set <CODE>*<VAR>size</VAR></CODE>
+to zero.  Return <CODE>NOT_FOUND_TARGET_RESPONSE</CODE>.
+</UL>
+<P>
+
+These two possibilities allow the caller to either retrieve the data, or
+walk the address space to the next saved area.
+</DL>
+</P><P>
+
+This function allows the GDB agent to map the regions of memory saved in
+a particular frame, and retrieve their contents efficiently.
+</P><P>
+
+This function also provides a clean interface between the GDB agent and
+the Symmetrix tracing structures, making it easier to adapt the GDB
+agent to future versions of the Symmetrix system, and vice versa.  This
+function searches all data saved in <VAR>frame</VAR>, whether the data is
+there at the request of a bytecode expression, or because it falls in
+one of the format's memory ranges, or because it was saved from the top
+of the stack.  EMC can arbitrarily change and enhance the tracing
+mechanism, but as long as this function works properly, all collected
+memory is visible to GDB.
+</P><P>
+
+The function itself is straightforward to implement.  A single pass over
+the trace frame's stack area, memory ranges, and expression blocks can
+yield the address of the buffer (if the requested address was saved),
+and also note the address of the next higher range of memory, to be
+returned when the search fails.
+</P><P>
+
+As an example, suppose the trace frame <CODE>f</CODE> has saved sixteen bytes
+from address <CODE>0x8000</CODE> in a buffer at <CODE>0x1000</CODE>, and thirty-two
+bytes from address <CODE>0xc000</CODE> in a buffer at <CODE>0x1010</CODE>.  Here are
+some sample calls, and the effect each would have:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>adbg_find_memory_in_frame (f, (char*) 0x8000, &#38;buffer, &#38;size)</CODE>
+<DD>This would set <CODE>buffer</CODE> to <CODE>0x1000</CODE>, set <CODE>size</CODE> to
+sixteen, and return <CODE>OK_TARGET_RESPONSE</CODE>, since <CODE>f</CODE> saves
+sixteen bytes from <CODE>0x8000</CODE> at <CODE>0x1000</CODE>.
+<P>
+
+<DT><CODE>adbg_find_memory_in_frame (f, (char *) 0x8004, &#38;buffer, &#38;size)</CODE>
+<DD>This would set <CODE>buffer</CODE> to <CODE>0x1004</CODE>, set <CODE>size</CODE> to
+twelve, and return <CODE>OK_TARGET_RESPONSE</CODE>, since <TT>`f'</TT> saves the
+twelve bytes from <CODE>0x8004</CODE> starting four bytes into the buffer at
+<CODE>0x1000</CODE>.  This shows that request addresses may fall in the middle
+of saved areas; the function should return the address and size of the
+remainder of the buffer.
+<P>
+
+<DT><CODE>adbg_find_memory_in_frame (f, (char *) 0x8100, &#38;buffer, &#38;size)</CODE>
+<DD>This would set <CODE>size</CODE> to <CODE>0x3f00</CODE> and return
+<CODE>NOT_FOUND_TARGET_RESPONSE</CODE>, since there is no memory saved in
+<CODE>f</CODE> from the address <CODE>0x8100</CODE>, and the next memory available
+is at <CODE>0x8100 + 0x3f00</CODE>, or <CODE>0xc000</CODE>.  This shows that request
+addresses may fall outside of all saved memory ranges; the function
+should indicate the next saved area, if any.
+<P>
+
+<DT><CODE>adbg_find_memory_in_frame (f, (char *) 0x7000, &#38;buffer, &#38;size)</CODE>
+<DD>This would set <CODE>size</CODE> to <CODE>0x1000</CODE> and return
+<CODE>NOT_FOUND_TARGET_RESPONSE</CODE>, since the next saved memory is at
+<CODE>0x7000 + 0x1000</CODE>, or <CODE>0x8000</CODE>.
+<P>
+
+<DT><CODE>adbg_find_memory_in_frame (f, (char *) 0xf000, &#38;buffer, &#38;size)</CODE>
+<DD>This would set <CODE>size</CODE> to zero, and return
+<CODE>NOT_FOUND_TARGET_RESPONSE</CODE>.  This shows how the function tells the
+caller that no further memory ranges have been saved.
+<P>
+
+</DL>
+<P>
+
+As another example, here is a function which will print out the
+addresses of all memory saved in the trace frame <CODE>frame</CODE> on the
+Symmetrix INLINES console:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>void
+print_frame_addresses (FRAME_DEF *frame)
+{
+  char *addr;
+  char *buffer;
+  unsigned long size;
+
+  addr = 0;
+  for (;;)
+    {
+      /* Either find out how much memory we have here, or discover
+         where the next saved region is.  */
+      if (adbg_find_memory_in_frame (frame, addr, &#38;buffer, &#38;size)
+          == OK_TARGET_RESPONSE)
+        printp ("saved %x to %x\n", addr, addr + size);
+      if (size == 0)
+        break;
+      addr += size;
+    }
+}
+</pre></td></tr></table></P><P>
+
+Note that there is not necessarily any connection between the order in
+which the data is saved in the trace frame, and the order in which
+<CODE>adbg_find_memory_in_frame</CODE> will return those memory ranges.  The
+code above will always print the saved memory regions in order of
+increasing address, while the underlying frame structure might store the
+data in a random order.
+</P><P>
+
+[[This section should cover the rest of the Symmetrix functions the stub
+relies upon, too.]]
+</P><P>
+
+<A NAME="Rationale"></A>
+<HR SIZE="6">
+<A NAME="SEC744"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC743"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> E.6 Rationale </H2>
+<!--docid::SEC744::-->
+<P>
+
+Some of the design decisions apparent above are arguable.
+</P><P>
+
+<DL COMPACT>
+
+<DT><B>What about stack overflow/underflow?</B>
+<DD>GDB should be able to query the target to discover its stack size.
+Given that information, GDB can determine at translation time whether a
+given expression will overflow the stack.  But this spec isn't about
+what kinds of error-checking GDB ought to do.
+<P>
+
+<DT><B>Why are you doing everything in LONGEST?</B>
+<DD><P>
+
+Speed isn't important, but agent code size is; using LONGEST brings in a
+bunch of support code to do things like division, etc.  So this is a
+serious concern.
+</P><P>
+
+First, note that you don't need different bytecodes for different
+operand sizes.  You can generate code without <EM>knowing</EM> how big the
+stack elements actually are on the target.  If the target only supports
+32-bit ints, and you don't send any 64-bit bytecodes, everything just
+works.  The observation here is that the MIPS and the Alpha have only
+fixed-size registers, and you can still get C's semantics even though
+most instructions only operate on full-sized words.  You just need to
+make sure everything is properly sign-extended at the right times.  So
+there is no need for 32- and 64-bit variants of the bytecodes.  Just
+implement everything using the largest size you support.
+</P><P>
+
+GDB should certainly check to see what sizes the target supports, so the
+user can get an error earlier, rather than later.  But this information
+is not necessary for correctness.
+</P><P>
+
+<DT><B>Why don't you have <CODE>&#62;</CODE> or <CODE>&#60;=</CODE> operators?</B>
+<DD>I want to keep the interpreter small, and we don't need them.  We can
+combine the <CODE>less_</CODE> opcodes with <CODE>log_not</CODE>, and swap the order
+of the operands, yielding all four asymmetrical comparison operators.
+For example, <CODE>(x &#60;= y)</CODE> is <CODE>! (x &#62; y)</CODE>, which is <CODE>! (y &#60;
+x)</CODE>.
+<P>
+
+<DT><B>Why do you have <CODE>log_not</CODE>?</B>
+<DD><DT><B>Why do you have <CODE>ext</CODE>?</B>
+<DD><DT><B>Why do you have <CODE>zero_ext</CODE>?</B>
+<DD>These are all easily synthesized from other instructions, but I expect
+them to be used frequently, and they're simple, so I include them to
+keep bytecode strings short.
+<P>
+
+<CODE>log_not</CODE> is equivalent to <CODE>const8 0 equal</CODE>; it's used in half
+the relational operators.
+</P><P>
+
+<CODE>ext <VAR>n</VAR></CODE> is equivalent to <CODE>const8 <VAR>s-n</VAR> lsh const8
+<VAR>s-n</VAR> rsh_signed</CODE>, where <VAR>s</VAR> is the size of the stack elements;
+it follows <CODE>ref<VAR>m</VAR></CODE> and <VAR>reg</VAR> bytecodes when the value
+should be signed.  See the next bulleted item.
+</P><P>
+
+<CODE>zero_ext <VAR>n</VAR></CODE> is equivalent to <CODE>const<VAR>m</VAR> <VAR>mask</VAR>
+log_and</CODE>; it's used whenever we push the value of a register, because we
+can't assume the upper bits of the register aren't garbage.
+</P><P>
+
+<DT><B>Why not have sign-extending variants of the <CODE>ref</CODE> operators?</B>
+<DD>Because that would double the number of <CODE>ref</CODE> operators, and we
+need the <CODE>ext</CODE> bytecode anyway for accessing bitfields.
+<P>
+
+<DT><B>Why not have constant-address variants of the <CODE>ref</CODE> operators?</B>
+<DD>Because that would double the number of <CODE>ref</CODE> operators again, and
+<CODE>const32 <VAR>address</VAR> ref32</CODE> is only one byte longer.
+<P>
+
+<DT><B>Why do the <CODE>ref<VAR>n</VAR></CODE> operators have to support unaligned fetches?</B>
+<DD>GDB will generate bytecode that fetches multi-byte values at unaligned
+addresses whenever the executable's debugging information tells it to.
+Furthermore, GDB does not know the value the pointer will have when GDB
+generates the bytecode, so it cannot determine whether a particular
+fetch will be aligned or not.
+<P>
+
+In particular, structure bitfields may be several bytes long, but follow
+no alignment rules; members of packed structures are not necessarily
+aligned either.
+</P><P>
+
+In general, there are many cases where unaligned references occur in
+correct C code, either at the programmer's explicit request, or at the
+compiler's discretion.  Thus, it is simpler to make the GDB agent
+bytecodes work correctly in all circumstances than to make GDB guess in
+each case whether the compiler did the usual thing.
+</P><P>
+
+<DT><B>Why are there no side-effecting operators?</B>
+<DD>Because our current client doesn't want them?  That's a cheap answer.  I
+think the real answer is that I'm afraid of implementing function
+calls.  We should re-visit this issue after the present contract is
+delivered.
+<P>
+
+<DT><B>Why aren't the <CODE>goto</CODE> ops PC-relative?</B>
+<DD>The interpreter has the base address around anyway for PC bounds
+checking, and it seemed simpler.
+<P>
+
+<DT><B>Why is there only one offset size for the <CODE>goto</CODE> ops?</B>
+<DD>Offsets are currently sixteen bits.  I'm not happy with this situation
+either:
+<P>
+
+Suppose we have multiple branch ops with different offset sizes.  As I
+generate code left-to-right, all my jumps are forward jumps (there are
+no loops in expressions), so I never know the target when I emit the
+jump opcode.  Thus, I have to either always assume the largest offset
+size, or do jump relaxation on the code after I generate it, which seems
+like a big waste of time.
+</P><P>
+
+I can imagine a reasonable expression being longer than 256 bytes.  I
+can't imagine one being longer than 64k.  Thus, we need 16-bit offsets.
+This kind of reasoning is so bogus, but relaxation is pathetic.
+</P><P>
+
+The other approach would be to generate code right-to-left.  Then I'd
+always know my offset size.  That might be fun.
+</P><P>
+
+<DT><B>Where is the function call bytecode?</B>
+<DD><P>
+
+When we add side-effects, we should add this.
+</P><P>
+
+<DT><B>Why does the <CODE>reg</CODE> bytecode take a 16-bit register number?</B>
+<DD><P>
+
+Intel's IA-64 architecture has 128 general-purpose registers,
+and 128 floating-point registers, and I'm sure it has some random
+control registers.
+</P><P>
+
+<DT><B>Why do we need <CODE>trace</CODE> and <CODE>trace_quick</CODE>?</B>
+<DD>Because GDB needs to record all the memory contents and registers an
+expression touches.  If the user wants to evaluate an expression
+<CODE>x-&#62;y-&#62;z</CODE>, the agent must record the values of <CODE>x</CODE> and
+<CODE>x-&#62;y</CODE> as well as the value of <CODE>x-&#62;y-&#62;z</CODE>.
+<P>
+
+<DT><B>Don't the <CODE>trace</CODE> bytecodes make the interpreter less general?</B>
+<DD>They do mean that the interpreter contains special-purpose code, but
+that doesn't mean the interpreter can only be used for that purpose.  If
+an expression doesn't use the <CODE>trace</CODE> bytecodes, they don't get in
+its way.
+<P>
+
+<DT><B>Why doesn't <CODE>trace_quick</CODE> consume its arguments the way everything else does?</B>
+<DD>In general, you do want your operators to consume their arguments; it's
+consistent, and generally reduces the amount of stack rearrangement
+necessary.  However, <CODE>trace_quick</CODE> is a kludge to save space; it
+only exists so we needn't write <CODE>dup const8 <VAR>SIZE</VAR> trace</CODE>
+before every memory reference.  Therefore, it's okay for it not to
+consume its arguments; it's meant for a specific context in which we
+know exactly what it should do with the stack.  If we're going to have a
+kludge, it should be an effective kludge.
+<P>
+
+<DT><B>Why does <CODE>trace16</CODE> exist?</B>
+<DD>That opcode was added by the customer that contracted Cygnus for the
+data tracing work.  I personally think it is unnecessary; objects that
+large will be quite rare, so it is okay to use <CODE>dup const16
+<VAR>size</VAR> trace</CODE> in those cases.
+<P>
+
+Whatever we decide to do with <CODE>trace16</CODE>, we should at least leave
+opcode 0x30 reserved, to remain compatible with the customer who added
+it.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="Target Descriptions"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,367 @@
+========================================
+Release Name: 2.0.6.0
+Build: 2.0.6.0, Version Label: ella
+========================================
+
+What's new?
+-----------
+
+1) Project Properties
+2) Editable Magic Folder Properties
+3) Ctrl+H for Replace.
+4) Right-Click on a file to add to a project.
+5) Selected text insertion into find dialog is more selective (no pun intended).
+6) Project changed indicator (appends * to name).
+7) Project tools.
+8) Tab usage option per scheme (SF RFE #1050938).
+9) Stack Based Ctrl-Tab Ordering (SF RFE #995790).
+10) Browse for folder in find in files dialog.
+11) Support for vbc compiler output (SF Bug #1168477).
+12) Docbook Scheme
+13) Scintilla version 1.6.6
+14) CSS-2 Support in CSS lexer
+15) Projects remember folder expansion state.
+16) Added Ctrl-W to close the current file (as well as Ctrl-F4) (SF RFE #1169428).
+17) New Project dialog.
+18) Save project from context menu.
+19) Refresh magic folder from context menu.
+20) Ctrl+[ jumps to matching or nearest brace.
+21) Ruby scheme
+22) Better behaviour with files opened using relative paths.
+23) Wrap text clips around selected text (SF RFE #1199676).
+24) Escape key closes find results if no output windows are open.
+25) Optionally save workspace between runs ("Remember open files and projects between sessions" in General options).
+26) Open to save workspace files from File menu, opening a .pnws file opens the saved workspace.
+27) SmartStart applied to opened files.
+28) New Incremental FindBar (Press Ctrl+/ and start typing, escape to cancel).
+29) Customisable scheme mappings (choose schemes for file types - Options|Files).
+30) Find Previous - Shift+F3
+31) Support for Java properties files (SF RFE #1267017).
+32) Find in Files can ignore hidden files.
+33) Remember Selected Text Clips Set (SF RFE #1279158).
+34) Press Enter to insert a text clip (SF RFE #1259865).
+35) Show textclips in tool tip text (SF RFE #1116510).
+36) Add Assembly Scheme (SF RFE #1290453).
+37) No more default comic sans for comments in web schemes!
+38) Support Ctrl+Shift+[X|V] for VNC cut-paste with caps lock support, Ctrl+Shift+C already taken for clipboard swap.
+
+Bug Fixes:
+----------
+
+1) Find in Files gets selected text.
+2) Find in selection fixed.
+3) Find Next and Replace One no longer supported in "in selection" mode.
+4) Find Next replaces selection in find text box when text not found.
+5) Switching tabs causes "re-maximization" (SF Bug #1169434).
+6) Launch Search Dialog With No Document (SF Bug #1168100).
+7) "Allow backslash expressions" does not work in search.
+8) Crash on Running Find in Files With Operation in Progress (SF Bug #1168101).
+9) code-folding works not correct (SF Bug #1050483).
+10) HTML export uses wrong CSS syntax (SF Bug #1074120).
+11) Normal Search does not work with UTF-8 (Unicode) chars > 127 (SF Bug #1200456).
+12) Relative paths don't work from command-line with single-instance PN (SF Bug #1161783).
+13) Window Dimensions After Un-Maximizing (SF Bug #1167299).
+14) File -> New Broken (SF Bug #1221755).
+15) Don't exit if save is cancelled for a previously unsaved item.
+16) Selecting the XML lexer after another does not correctly style.
+17) No code-folding for XML (SF Bug #1212335).
+18) Keyword customisation causes hang (SF Bug #1209962).
+19) Delete Line same as Cut Line (SF Bug #1234653).
+20) "Search Up" box not visible for replace.
+21) Bad coloring in Text Clips combo box with non-white window colors (SF Bug #1065666).
+22) Tried to open a file twice when that file was not found.
+23) VHDL Syntax file inclusion (SF Bug #1165830).
+24) Crash when adding a project tool (SF Bug #1195786).
+25) Show Lines Numbers" setting does not affect open files (SF Bug #1212355).
+26) Toggling syntax highlighting looses word wrap (SF Bug #1151704).
+27) Undo/Redo in folded area does not unfold (SF Bug #1286210).
+28) PN2 is confused by relative path names (SF Bug #1232939).
+29) Docking windows resize to tiny (SF Bug #1018105).
+30) Sub-windows initialization issue (SF Bug #1065665).
+31) Fixed a bug with default styles and the Plain Text scheme.
+
+========================================
+Release Name: 2.0.5.6
+Build: 2.0.5.34, Version Label: 
+========================================
+
+What's new?
+-----------
+
+1) Document Properties Window (hit alt-enter).
+2) Editor Defaults options page.
+3) Default word-wrap option.
+4) Most Recently Used Projects menu.
+5) HTML export now names the styles by scheme, allowing you to easily 
+   combine exported code.
+6) Look in projects for relative file names in the output window.
+7) Look in the current directory for relative file names in the output window.
+8) Added current project path to the tool variables.
+9) New (fairly empty) confirmations options page.
+10) Drag files from explorer onto the projects window.
+11) Upgraded to Scintilla 1.60
+12) Project files now written using Genx.
+13) Project files keep most unknown XML elements between load and save.
+14) Added Duplicate, Copy, Cut and Transpose Line commands.
+15) Added Uppercase/Lowercase
+16) Bjoern Graf tidied the Options dialog plus some others.
+17) Keyboard works in the projects tree (inc. "del" to remove project files).
+18) Added error parsing for microsoft error messages.
+19) Middle-click mouse on the document tab to close a document.
+20) Allow specification of default character set (includes Shift-JIS and UTF-8).
+21) Optimised file loading - significantly reduces load time for large files.
+22) Drag and drop in the projects window.
+23) Folders in project window now remain above files.
+24) Drag to re-arrange tabs.
+25) Optional new, empty file on startup.
+26) Magic Folders in projects - folders that reflect real directory contents.
+27) Now open the "open file" dialog in the same directory as the current file.
+28) Now shows tool keyboard shortcuts on the tools menu.
+19) File association editor.
+
+Bug Fixes:
+----------
+
+1)  Empty search on google causes crash (SF Bug #870649).
+2)  Change line endings in Save-As dialog doesn't work (SF Bug #885586).
+3)  Tools run without capture don't show (SF Bug #896269).
+4)  Conflict in shortcut assignment (SF Bug #891208).
+5)  Crash if mouse over 'Recent Files'->(empty) (SF Bug #900929).
+6)  PN doesn't become active after clicking Output window (SF Bug #760362).
+7)  HTML export doubles the '&' (SF Bug #899079).
+8)  HTML export leaves open the last span tag (SF Bug #904149).
+9)  Fixed HTML export to use full style range (previously stopped at 31).
+10) Dropped files always open new windows (SF Bug #873386).
+11) Deal with all URL encoded chars in output window, not just %20.
+12) Projects window renames too readily.
+13) Auto-indent empty line (SF Bug #879950).
+14) Can't export a file that isn't saved to disk (SF Bug #911381).
+15) Can't bring up project context menus with the keyboard.
+16) Changing full path option doesn't affect open files (SF Bug #871628).
+17) Update status bar when last file closed (SF Bug #514527).
+18) Highlight colors in scheme wrong when choosing defaults (SF Bug #909343).
+19) PN loses focus on closing search dialogs (SF Bug #939917).
+20) Duplicate brace match colour settings (SF Bug #951146).
+21) Esc doesn't close the refresh dialog (SF Bug #939931).
+22) Pseudo misspelt in CSS scheme (SF Bug #969586).
+23) Regular Expression replace (SF Bug #957788).
+24) Global keyboard shortcuts don't work (SF Bug #960000).
+25) Fixed file associations case comparison.
+26) Text clips line endings (SF Bug #995845).
+27) Crash after options dialog (SF Bug #995786).
+28) Crash when search string is empty (SF Bug #995783).
+29) Fixed infinite loop when working with magic folders containing ".files".
+30) Fixed word-wrap default preference.
+31) Fixed a problem with checking for updated files with a captured cursor.
+32) Fixed a magic folder problem with relative paths.
+
+========================================
+Release Name: 2.0.5.0
+Build: 2.0.5.18, Version Label: mingus
+========================================
+
+What's new?
+-----------
+
+1) Scheme-selector toolbar.
+2) Find toolbar.
+3) Many find improvements (thanks mostly to Bjoern Graf).
+4) Tile Vertical / Tile Horizontal.
+5) Show path of file to be executed (SF Feature #765270).
+6) Visual Help options (highlight current line, long line help).
+7) Sanitise file names from output window to better find files.
+8) Text clips browser.
+9) Projects/Project Groups.
+10) Change MRU text length. (SF Feature #760660)
+11) Keyboard-shortcuts for Tools.
+12) More editor colouring options.
+13) Statusbar text on mouse-over MRU items.
+14) (X)HTML Export.
+15) Added Modula-2 Scheme.
+16) Pre-defined toolsets can now be added in the %pn%\tools directory.
+17) Updates to the tab and docking frameworks.
+18) Added encoding menu.
+19) Configurable alternate file switching (use Ctrl-Shift-H to switch).
+
+Bug Fixes:
+----------
+
+1) Show Full Path turns off after a revert. (SF Bug #773608)
+2) Stop Tools doesn't work. (SF Bug #773294)
+3) If you don't update a file when it's changed on disk it is marked as changed.
+4) Maximized window state not saved. (SF Bug #770302)
+5) Mixed path styles now sanitised in output window. (SF Bug #797397)
+6) File opened from the wrong directory from output window. (SF Bug #806343)
+7) No way to find out what file you're working on. (SF Bug #783786)
+8) NT4 recent files menu disappears. (SF Bug #780828)
+9) Edit SmartStart Phrase Dialog no scheme list. (SF Bug #771661)
+10) WindowState is not save when close. (SF Bug #770302)
+11) Unable to define a shortcut for a custom tool. (SF Bug #753458)
+12) Collapse all folds menu item fixed.
+13) Italic font customisations not picked up. (SF Bug #834967)
+14) Save All only saves unchanged files. (SF Bug #827998)
+15) Fixed view->toolbars menu. Now represents correct startup state.
+16) Files read as unicode now saved as unicode.
+17) Tool Modifies File w/o Capture Output. (SF Bug #799763)
+18) Tool Modifies File causes refresh oddness. (SF Bug #800331)
+19) Regular Expression loop. (SF Bug #793002)
+20) Close when minimized bug. (SF Bug #849572)
+
+
+========================================
+Release Name: 2.0.4.2
+Build: 2.0.4.18, Version Label: (none)
+========================================
+
+What's new?
+-----------
+
+1) Re-organised general options page to clarify.
+2) Show full path in title bar option.
+3) Save none / one / all files on running a tool.
+
+Bug Fixes:
+----------
+
+1) Global output window not toggled properly by running a tool.
+2) SF Bug #763393 - files opened at startup do not get tabs.
+
+========================================
+Release Name: 2.0.4.1
+Build: 2.0.4.14, Version Label: (none)
+========================================
+
+Bug Fixes:
+----------
+
+1) Global output window flickers when text is added (SF Bugs #760349 and #752839).
+2) Tool editor dialog output window selector combo fixed (SF Bug #752826).
+3) Line Number display related corruption fixed (SF Bugs #752847 and #753457).
+4) Minor UI bug in tool editor (SF Bug #760347).
+5) Tools order up button doesn't work correctly (SF Bugs #752831 and #752834).
+6) click error in output window and PN2 always opens file (SF Bug #760351).
+
+What's new?
+-----------
+
+1) Select All menu item to show availability (SF RFE #754417).
+2) Folding keyboard shortcuts shown in menu (SF Bug #760346).
+
+========================================
+Release Name: 2.0.4-miles
+Build: 2.0.4.14, Version Label: miles
+========================================
+
+What's new?
+-----------
+
+1) Groups of scheme settings can now be configured using their style group head item.
+
+example: To change the background for all PHP styles, simply change the background
+on the main PHP item that contains the styles below it. This will not override any
+custom backgrounds already set on those items - those will need to be reset.
+
+2) User-Schemes
+
+Define your own schemes using simple XML - can support a large number of languages. 
+See the included vhdl.schemedef sample. There will be documentation for this soon.
+
+3) Tool output parsing for a number of built-in types.
+4) Output parsing for user-defined output strings.
+5) Matched output jumps to the correct position in the correct file when clicked.
+6) Tool editor dialog re-designed (a bit)
+7) Docking global output window.
+8) Clipboard Swap (Ctrl-Shift-C)
+
+paste clipboard into selection and place selection on the clipboard.
+
+9) Options dialog more keyboard accessible.
+10) Maximise on opening.
+11) PN remembers its window positioning between loads.
+12) Perl scheme.
+13) Better pascal scheme.
+14) Folding keyboard shortcuts: 
+
+Ctrl-Alt-+ Expand All, Ctrl-Alt-- Collapse All, Ctrl+* toggle current fold block
+
+15) Copy as RTF and export RTF.
+
+16-ish) A Modula-2 scheme will be released separately in a week or two. Some code changes were made to Scintilla for this.
+
+========================================
+Release Name: 2.0.3-coltrane
+Build: 2.0.3.30, Version Label: coltrane
+========================================
+
+Breaking Change Notices:
+------------------------
+User configuration files have moved from:
+%usersettings%\Echo Software\Programmers Notepad\Schemes\
+to:
+%usersettings%\Echo Software\PN2\
+
+this will lose any scheme colouring changes you have made. 
+You can simply move all files from the previous version into
+the new correct location to fix this. Sorry for any 
+inconvenience...
+
+What's new?
+-----------
+
+1) Configurable scheme keywords.
+2) Now opens filenames from the command-line (or explorer associations).
+3) Tools functionality. Configure from Options->Tools.
+4) CSS Scheme now works.
+5) Colourised output capturing in tools (configurable in Options->Schemes).
+6) C#, JavaScript, Batch, Diff and makefile schemes.
+7) Double-click on MDI area to open file.
+8) General options page - default editor options.
+
+======================================
+Release Name: 2.0.2-simba
+Build: 2.0.2.27, Version Label: simba
+======================================
+
+This is the second release of Programmers Notepad 2.
+
+What's new?
+-----------
+
+1) Options dialog.
+2) Printing support.
+3) Less bugs.
+4) Configurable schemes (through options dialog).
+5) Python Scheme
+
+Printing note: This feature is experimental, and we have experienced the odd problem after printing. Please experiment and let us know how you get on.
+
+=======================================
+Release Name: 2.0.1-poptart
+Build: 2.0.1.32, Version Label: poptart
+=======================================
+
+This is the first release of Programmers Notepad 2. Obviously there are a limited number of features at the moment.
+
+Please don't moan about the following, they are all quite obvious to us already:
+
+1) No options dialog.
+2) Missing schemes from pn1.
+3) No options dialog (incase you missed it above).
+4) No project management.
+5) No tools.
+6) No printing.
+7) Toolbars aren't dockable.
+8) You can't turn the tabs off.
+
+So what is good?
+
+1) New editing engine (The excellent Scintilla: http://www.scintilla.org/).
+2) Now written in C++ using the Windows Template Library.
+3) Fast. Really Fast - compare opening times for large files with PN1.
+4) Two (count-em!) toolbars. Obviously this sort of stuff will get better as time goes on.
+5) Lovely XP-Style tabs.
+6) Save-As dialog contains a "File Format" feature.
+7) Support for C++, HTML, XML and Object Pascal. More schemes coming soon.
+8) Highly configurable XML backend for scheme configuration, config dialog coming to a release near you soon.
+9) The minibar from pn1 is here (see at the bottom of the edit windows).
+10) Scoping / Folding / Outlining (Open a C++ or Pascal file to see this, it's lovely).

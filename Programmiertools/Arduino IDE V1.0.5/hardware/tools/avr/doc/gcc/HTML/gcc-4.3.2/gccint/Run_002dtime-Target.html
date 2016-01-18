@@ -1,0 +1,233 @@
+<html lang="en">
+<head>
+<title>Run-time Target - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Target-Macros.html#Target-Macros" title="Target Macros">
+<link rel="prev" href="Driver.html#Driver" title="Driver">
+<link rel="next" href="Per_002dFunction-Data.html#Per_002dFunction-Data" title="Per-Function Data">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Run_002dtime-Target"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Per_002dFunction-Data.html#Per_002dFunction-Data">Per-Function Data</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Driver.html#Driver">Driver</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Target-Macros.html#Target-Macros">Target Macros</a>
+<hr><br>
+</div>
+
+<h3 class="section">15.3 Run-time Target Specification</h3>
+
+<p><a name="index-run_002dtime-target-specification-3367"></a><a name="index-predefined-macros-3368"></a><a name="index-target-specifications-3369"></a>
+<!-- prevent bad page break with this line -->
+Here are run-time target specifications.
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_CPU_CPP_BUILTINS</b> ()<var><a name="index-TARGET_005fCPU_005fCPP_005fBUILTINS-3370"></a></var><br>
+<blockquote><p>This function-like macro expands to a block of code that defines
+built-in preprocessor macros and assertions for the target CPU, using
+the functions <code>builtin_define</code>, <code>builtin_define_std</code> and
+<code>builtin_assert</code>.  When the front end
+calls this macro it provides a trailing semicolon, and since it has
+finished command line option processing your code can use those
+results freely.
+
+      <p><code>builtin_assert</code> takes a string in the form you pass to the
+command-line option <span class="option">-A</span>, such as <code>cpu=mips</code>, and creates
+the assertion.  <code>builtin_define</code> takes a string in the form
+accepted by option <span class="option">-D</span> and unconditionally defines the macro.
+
+      <p><code>builtin_define_std</code> takes a string representing the name of an
+object-like macro.  If it doesn't lie in the user's namespace,
+<code>builtin_define_std</code> defines it unconditionally.  Otherwise, it
+defines a version with two leading underscores, and another version
+with two leading and trailing underscores, and defines the original
+only if an ISO standard was not requested on the command line.  For
+example, passing <code>unix</code> defines <code>__unix</code>, <code>__unix__</code>
+and possibly <code>unix</code>; passing <code>_mips</code> defines <code>__mips</code>,
+<code>__mips__</code> and possibly <code>_mips</code>, and passing <code>_ABI64</code>
+defines only <code>_ABI64</code>.
+
+      <p>You can also test for the C dialect being compiled.  The variable
+<code>c_language</code> is set to one of <code>clk_c</code>, <code>clk_cplusplus</code>
+or <code>clk_objective_c</code>.  Note that if we are preprocessing
+assembler, this variable will be <code>clk_c</code> but the function-like
+macro <code>preprocessing_asm_p()</code> will return true, so you might want
+to check for that first.  If you need to check for strict ANSI, the
+variable <code>flag_iso</code> can be used.  The function-like macro
+<code>preprocessing_trad_p()</code> can be used to check for traditional
+preprocessing. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_OS_CPP_BUILTINS</b> ()<var><a name="index-TARGET_005fOS_005fCPP_005fBUILTINS-3371"></a></var><br>
+<blockquote><p>Similarly to <code>TARGET_CPU_CPP_BUILTINS</code> but this macro is optional
+and is used for the target operating system instead. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_OBJFMT_CPP_BUILTINS</b> ()<var><a name="index-TARGET_005fOBJFMT_005fCPP_005fBUILTINS-3372"></a></var><br>
+<blockquote><p>Similarly to <code>TARGET_CPU_CPP_BUILTINS</code> but this macro is optional
+and is used for the target object format.  <span class="file">elfos.h</span> uses this
+macro to define <code>__ELF__</code>, so you probably do not need to define
+it yourself. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: extern int <b>target_flags</b><var><a name="index-target_005fflags-3373"></a></var><br>
+<blockquote><p>This variable is declared in <span class="file">options.h</span>, which is included before
+any target-specific headers. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: Target Hook <b>int</b><var> TARGET_DEFAULT_TARGET_FLAGS<a name="index-int-3374"></a></var><br>
+<blockquote><p>This variable specifies the initial value of <code>target_flags</code>. 
+Its default setting is 0. 
+</p></blockquote></div>
+
+ <p><a name="index-optional-hardware-or-system-features-3375"></a><a name="index-features_002c-optional_002c-in-system-conventions-3376"></a>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_HANDLE_OPTION</b> (<var>size_t code, const char *arg, int value</var>)<var><a name="index-TARGET_005fHANDLE_005fOPTION-3377"></a></var><br>
+<blockquote><p>This hook is called whenever the user specifies one of the
+target-specific options described by the <span class="file">.opt</span> definition files
+(see <a href="Options.html#Options">Options</a>).  It has the opportunity to do some option-specific
+processing and should return true if the option is valid.  The default
+definition does nothing but return true.
+
+      <p><var>code</var> specifies the <code>OPT_</code><var>name</var> enumeration value
+associated with the selected option; <var>name</var> is just a rendering of
+the option name in which non-alphanumeric characters are replaced by
+underscores.  <var>arg</var> specifies the string argument and is null if
+no argument was given.  If the option is flagged as a <code>UInteger</code>
+(see <a href="Option-properties.html#Option-properties">Option properties</a>), <var>value</var> is the numeric value of the
+argument.  Otherwise <var>value</var> is 1 if the positive form of the
+option was used and 0 if the &ldquo;no-&rdquo; form was. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_HANDLE_C_OPTION</b> (<var>size_t code, const char *arg, int value</var>)<var><a name="index-TARGET_005fHANDLE_005fC_005fOPTION-3378"></a></var><br>
+<blockquote><p>This target hook is called whenever the user specifies one of the
+target-specific C language family options described by the <span class="file">.opt</span>
+definition files(see <a href="Options.html#Options">Options</a>).  It has the opportunity to do some
+option-specific processing and should return true if the option is
+valid.  The default definition does nothing but return false.
+
+      <p>In general, you should use <code>TARGET_HANDLE_OPTION</code> to handle
+options.  However, if processing an option requires routines that are
+only available in the C (and related language) front ends, then you
+should use <code>TARGET_HANDLE_C_OPTION</code> instead. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_VERSION</b><var><a name="index-TARGET_005fVERSION-3379"></a></var><br>
+<blockquote><p>This macro is a C statement to print on <code>stderr</code> a string
+describing the particular machine description choice.  Every machine
+description should define <code>TARGET_VERSION</code>.  For example:
+
+     <pre class="smallexample">          #ifdef MOTOROLA
+          #define TARGET_VERSION \
+            fprintf (stderr, " (68k, Motorola syntax)");
+          #else
+          #define TARGET_VERSION \
+            fprintf (stderr, " (68k, MIT syntax)");
+          #endif
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>OVERRIDE_OPTIONS</b><var><a name="index-OVERRIDE_005fOPTIONS-3380"></a></var><br>
+<blockquote><p>Sometimes certain combinations of command options do not make sense on
+a particular target machine.  You can define a macro
+<code>OVERRIDE_OPTIONS</code> to take account of this.  This macro, if
+defined, is executed once just after all the command options have been
+parsed.
+
+      <p>Don't use this macro to turn on various extra optimizations for
+<span class="option">-O</span>.  That is what <code>OPTIMIZATION_OPTIONS</code> is for. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>C_COMMON_OVERRIDE_OPTIONS</b><var><a name="index-C_005fCOMMON_005fOVERRIDE_005fOPTIONS-3381"></a></var><br>
+<blockquote><p>This is similar to <code>OVERRIDE_OPTIONS</code> but is only used in the C
+language frontends (C, Objective-C, C++, Objective-C++) and so can be
+used to alter option flag variables which only exist in those
+frontends. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>OPTIMIZATION_OPTIONS</b> (<var>level, size</var>)<var><a name="index-OPTIMIZATION_005fOPTIONS-3382"></a></var><br>
+<blockquote><p>Some machines may desire to change what optimizations are performed for
+various optimization levels.   This macro, if defined, is executed once
+just after the optimization level is determined and before the remainder
+of the command options have been parsed.  Values set in this macro are
+used as the default values for the other command line options.
+
+      <p><var>level</var> is the optimization level specified; 2 if <span class="option">-O2</span> is
+specified, 1 if <span class="option">-O</span> is specified, and 0 if neither is specified.
+
+      <p><var>size</var> is nonzero if <span class="option">-Os</span> is specified and zero otherwise.
+
+      <p>You should not use this macro to change options that are not
+machine-specific.  These should uniformly selected by the same
+optimization level on all supported machines.  Use this macro to enable
+machine-specific optimizations.
+
+      <p><strong>Do not examine </strong><code>write_symbols</code><strong> in
+this macro!</strong> The debugging options are not supposed to alter the
+generated code. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_HELP</b> (<var>void</var>)<var><a name="index-TARGET_005fHELP-3383"></a></var><br>
+<blockquote><p>This hook is called in response to the user invoking
+<span class="option">--target-help</span> on the command line.  It gives the target a
+chance to display extra information on the target specific command
+line options found in its <span class="file">.opt</span> file. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CAN_DEBUG_WITHOUT_FP</b><var><a name="index-CAN_005fDEBUG_005fWITHOUT_005fFP-3384"></a></var><br>
+<blockquote><p>Define this macro if debugging can be performed even without a frame
+pointer.  If this macro is defined, GCC will turn on the
+<span class="option">-fomit-frame-pointer</span> option whenever <span class="option">-O</span> is specified. 
+</p></blockquote></div>
+
+ </body></html>
+

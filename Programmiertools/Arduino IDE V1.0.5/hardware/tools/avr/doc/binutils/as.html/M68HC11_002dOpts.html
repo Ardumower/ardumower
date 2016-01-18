@@ -1,0 +1,121 @@
+<html lang="en">
+<head>
+<title>M68HC11-Opts - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="M68HC11_002dDependent.html#M68HC11_002dDependent" title="M68HC11-Dependent">
+<link rel="next" href="M68HC11_002dSyntax.html#M68HC11_002dSyntax" title="M68HC11-Syntax">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="M68HC11_002dOpts"></a>Next:&nbsp;<a rel="next" accesskey="n" href="M68HC11_002dSyntax.html#M68HC11_002dSyntax">M68HC11-Syntax</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="M68HC11_002dDependent.html#M68HC11_002dDependent">M68HC11-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.21.1 M68HC11 and M68HC12 Options</h4>
+
+<p><a name="index-options_002c-M68HC11-1144"></a><a name="index-M68HC11-options-1145"></a>The Motorola 68HC11 and 68HC12 version of <code>as</code> have a few machine
+dependent options.
+
+     
+<a name="index-_0040samp_007b_002dm68hc11_007d-1146"></a>
+<dl><dt><code>-m68hc11</code><dd>This option switches the assembler in the M68HC11 mode. In this mode,
+the assembler only accepts 68HC11 operands and mnemonics. It produces
+code for the 68HC11.
+
+     <p><a name="index-_0040samp_007b_002dm68hc12_007d-1147"></a><br><dt><code>-m68hc12</code><dd>This option switches the assembler in the M68HC12 mode. In this mode,
+the assembler also accepts 68HC12 operands and mnemonics. It produces
+code for the 68HC12. A few 68HC11 instructions are replaced by
+some 68HC12 instructions as recommended by Motorola specifications.
+
+     <p><a name="index-_0040samp_007b_002dm68hcs12_007d-1148"></a><br><dt><code>-m68hcs12</code><dd>This option switches the assembler in the M68HCS12 mode.  This mode is
+similar to <span class="samp">-m68hc12</span> but specifies to assemble for the 68HCS12
+series.  The only difference is on the assembling of the <span class="samp">movb</span>
+and <span class="samp">movw</span> instruction when a PC-relative operand is used.
+
+     <p><a name="index-_0040samp_007b_002dmshort_007d-1149"></a><br><dt><code>-mshort</code><dd>This option controls the ABI and indicates to use a 16-bit integer ABI. 
+It has no effect on the assembled instructions. 
+This is the default.
+
+     <p><a name="index-_0040samp_007b_002dmlong_007d-1150"></a><br><dt><code>-mlong</code><dd>This option controls the ABI and indicates to use a 32-bit integer ABI.
+
+     <p><a name="index-_0040samp_007b_002dmshort_002ddouble_007d-1151"></a><br><dt><code>-mshort-double</code><dd>This option controls the ABI and indicates to use a 32-bit float ABI. 
+This is the default.
+
+     <p><a name="index-_0040samp_007b_002dmlong_002ddouble_007d-1152"></a><br><dt><code>-mlong-double</code><dd>This option controls the ABI and indicates to use a 64-bit float ABI.
+
+     <p><a name="index-_0040samp_007b_002d_002dstrict_002ddirect_002dmode_007d-1153"></a><br><dt><code>--strict-direct-mode</code><dd>You can use the <span class="samp">--strict-direct-mode</span> option to disable
+the automatic translation of direct page mode addressing into
+extended mode when the instruction does not support direct mode. 
+For example, the <span class="samp">clr</span> instruction does not support direct page
+mode addressing. When it is used with the direct page mode,
+<code>as</code> will ignore it and generate an absolute addressing. 
+This option prevents <code>as</code> from doing this, and the wrong
+usage of the direct page mode will raise an error.
+
+     <p><a name="index-_0040samp_007b_002d_002dshort_002dbranches_007d-1154"></a><br><dt><code>--short-branches</code><dd>The <span class="samp">--short-branches</span> option turns off the translation of
+relative branches into absolute branches when the branch offset is
+out of range. By default <code>as</code> transforms the relative
+branch (<span class="samp">bsr</span>, <span class="samp">bgt</span>, <span class="samp">bge</span>, <span class="samp">beq</span>, <span class="samp">bne</span>,
+<span class="samp">ble</span>, <span class="samp">blt</span>, <span class="samp">bhi</span>, <span class="samp">bcc</span>, <span class="samp">bls</span>,
+<span class="samp">bcs</span>, <span class="samp">bmi</span>, <span class="samp">bvs</span>, <span class="samp">bvs</span>, <span class="samp">bra</span>) into
+an absolute branch when the offset is out of the -128 .. 127 range. 
+In that case, the <span class="samp">bsr</span> instruction is translated into a
+<span class="samp">jsr</span>, the <span class="samp">bra</span> instruction is translated into a
+<span class="samp">jmp</span> and the conditional branches instructions are inverted and
+followed by a <span class="samp">jmp</span>. This option disables these translations
+and <code>as</code> will generate an error if a relative branch
+is out of range. This option does not affect the optimization
+associated to the <span class="samp">jbra</span>, <span class="samp">jbsr</span> and <span class="samp">jbXX</span> pseudo opcodes.
+
+     <p><a name="index-_0040samp_007b_002d_002dforce_002dlong_002dbranches_007d-1155"></a><br><dt><code>--force-long-branches</code><dd>The <span class="samp">--force-long-branches</span> option forces the translation of
+relative branches into absolute branches. This option does not affect
+the optimization associated to the <span class="samp">jbra</span>, <span class="samp">jbsr</span> and
+<span class="samp">jbXX</span> pseudo opcodes.
+
+     <p><a name="index-_0040samp_007b_002d_002dprint_002dinsn_002dsyntax_007d-1156"></a><br><dt><code>--print-insn-syntax</code><dd>You can use the <span class="samp">--print-insn-syntax</span> option to obtain the
+syntax description of the instruction when an error is detected.
+
+     <p><a name="index-_0040samp_007b_002d_002dprint_002dopcodes_007d-1157"></a><br><dt><code>--print-opcodes</code><dd>The <span class="samp">--print-opcodes</span> option prints the list of all the
+instructions with their syntax. The first item of each line
+represents the instruction name and the rest of the line indicates
+the possible operands for that instruction. The list is printed
+in alphabetical order. Once the list is printed <code>as</code>
+exits.
+
+     <p><a name="index-_0040samp_007b_002d_002dgenerate_002dexample_007d-1158"></a><br><dt><code>--generate-example</code><dd>The <span class="samp">--generate-example</span> option is similar to <span class="samp">--print-opcodes</span>
+but it generates an example for each instruction instead. 
+</dl>
+
+   </body></html>
+

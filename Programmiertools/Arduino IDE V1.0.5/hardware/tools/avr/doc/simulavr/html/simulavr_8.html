@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on November, 7 2008 by texi2html 1.78 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+
+-->
+<head>
+<title>Simulavr: 4. Display Coprocesses</title>
+
+<meta name="description" content="Simulavr: 4. Display Coprocesses">
+<meta name="keywords" content="Simulavr: 4. Display Coprocesses">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.78">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Display-Coprocesses"></a>
+<a name="SEC8"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_7.html#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_9.html#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_9.html#SEC9" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_11.html#SEC11" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter"> 4. Display Coprocesses </h1>
+
+<p>This chapter documents the protocol that simulavr uses to pass register
+and memory information to a display coprocess.
+</p>
+<p>A display coprocess is a separate program started by simulavr for the
+sole purpose of displaying register and memory information while an AVR
+program is running in the simulator. Using a separate program and a
+standardized communication protocol, keeps the simulavr code simpler and
+allows for a variety of display programs to be used.
+</p>
+<p>When the user asks simulavr to display register and memory information
+during execution, simulavr will start a coprocess to perform the display
+work. A pipe will be opened in simulavr into which the data will be
+written using the following commands:
+</p>
+<table>
+<tr><td><p> &lsquo;<samp>q</samp>&rsquo;
+</p></td><td><p> Quit.
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>r&lt;reg&gt;:&lt;val&gt;</samp>&rsquo;
+</p></td><td><p> Set register to val.
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>p&lt;val&gt;</samp>&rsquo;
+</p></td><td><p> Set program counter to val.
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>i&lt;reg&gt;:&lt;val&gt;</samp>&rsquo;
+</p></td><td><p> Set io register to val.
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>I&lt;reg&gt;:&lt;name&gt;</samp>&rsquo;
+</p></td><td><p> Set io register name.
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>s&lt;addr&gt;,&lt;len&gt;:XX</samp>&rsquo;
+</p></td><td><p> Set sram addrs to values (one XX pair per addr).
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>e&lt;addr&gt;,&lt;len&gt;:XX</samp>&rsquo;
+</p></td><td><p> Set eeprom addrs to values (one XX pair per addr).
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>f&lt;addr&gt;,&lt;len&gt;:XXXX</samp>&rsquo;
+</p></td><td><p> Set flash addrs to values (one XXXX quad per addr).
+</p>
+</td></tr>
+<tr><td><p> &lsquo;<samp>n&lt;clock_ticks&gt;</samp>&rsquo;
+</p></td><td><p> Update the number of clock ticks.
+</p>
+</td></tr>
+</table>
+
+<p>All values are hexidecimal numbers, except for &lt;name&gt; which is a string.
+</p>
+<p>In order for the display process to know which pipe to read the
+information, it must handle either the &lsquo;<samp>--pfd &lt;fd&gt;</samp>&rsquo; option or check
+the <code>SIM_PIPE_FD</code> enviroment variable. The value passed using
+either method will be the file descriptor number of the pipe from which
+the display prgram will read the informtion.
+</p>
+<p>Simulavr will start all display programs like so (sizes are decimal
+numbers of bytes and sram_start is just the decimal address of the
+first byte of sram, usually 0x60 [96] or 0x100 [256]):
+</p>
+<p>&lsquo;<samp>&lt;prog&gt; --pfd &lt;fd&gt; &lt;flash_size&gt; &lt;sram_size&gt; &lt;sram_start&gt; &lt;eeprom_size&gt;</samp>&rsquo;
+</p>
+<p>The user can specify the display program to use via the
+&lsquo;<samp>--disp-prog</samp>&rsquo; option to simulavr or using the <code>SIM_DISP_PROG</code>
+environment variable. If both are not specified, then no display will be
+used.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_7.html#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_9.html#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_9.html#SEC9" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>eweddington</em> on <em>November, 7 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.78</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

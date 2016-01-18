@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+<title>i386-Float - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dJumps.html#i386_002dJumps" title="i386-Jumps">
+<link rel="next" href="i386_002dSIMD.html#i386_002dSIMD" title="i386-SIMD">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dFloat"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002dSIMD.html#i386_002dSIMD">i386-SIMD</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dJumps.html#i386_002dJumps">i386-Jumps</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.10 Floating Point</h4>
+
+<p><a name="index-i386-floating-point-923"></a><a name="index-floating-point_002c-i386-924"></a><a name="index-x86_002d64-floating-point-925"></a><a name="index-floating-point_002c-x86_002d64-926"></a>All 80387 floating point types except packed BCD are supported. 
+(BCD support may be added without much difficulty).  These data
+types are 16-, 32-, and 64- bit integers, and single (32-bit),
+double (64-bit), and extended (80-bit) precision floating point. 
+Each supported type has an instruction mnemonic suffix and a constructor
+associated with it.  Instruction mnemonic suffixes specify the operand's
+data type.  Constructors build these data types into memory.
+
+   <p><a name="index-_0040code_007bfloat_007d-directive_002c-i386-927"></a><a name="index-_0040code_007bsingle_007d-directive_002c-i386-928"></a><a name="index-_0040code_007bdouble_007d-directive_002c-i386-929"></a><a name="index-_0040code_007btfloat_007d-directive_002c-i386-930"></a><a name="index-_0040code_007bfloat_007d-directive_002c-x86_002d64-931"></a><a name="index-_0040code_007bsingle_007d-directive_002c-x86_002d64-932"></a><a name="index-_0040code_007bdouble_007d-directive_002c-x86_002d64-933"></a><a name="index-_0040code_007btfloat_007d-directive_002c-x86_002d64-934"></a>
+     <ul>
+<li>Floating point constructors are <span class="samp">.float</span> or <span class="samp">.single</span>,
+<span class="samp">.double</span>, and <span class="samp">.tfloat</span> for 32-, 64-, and 80-bit formats. 
+These correspond to instruction mnemonic suffixes <span class="samp">s</span>, <span class="samp">l</span>,
+and <span class="samp">t</span>. <span class="samp">t</span> stands for 80-bit (ten byte) real.  The 80387
+only supports this format via the <span class="samp">fldt</span> (load 80-bit real to stack
+top) and <span class="samp">fstpt</span> (store 80-bit real and pop stack) instructions.
+
+     <p><a name="index-_0040code_007bword_007d-directive_002c-i386-935"></a><a name="index-_0040code_007blong_007d-directive_002c-i386-936"></a><a name="index-_0040code_007bint_007d-directive_002c-i386-937"></a><a name="index-_0040code_007bquad_007d-directive_002c-i386-938"></a><a name="index-_0040code_007bword_007d-directive_002c-x86_002d64-939"></a><a name="index-_0040code_007blong_007d-directive_002c-x86_002d64-940"></a><a name="index-_0040code_007bint_007d-directive_002c-x86_002d64-941"></a><a name="index-_0040code_007bquad_007d-directive_002c-x86_002d64-942"></a><li>Integer constructors are <span class="samp">.word</span>, <span class="samp">.long</span> or <span class="samp">.int</span>, and
+<span class="samp">.quad</span> for the 16-, 32-, and 64-bit integer formats.  The
+corresponding instruction mnemonic suffixes are <span class="samp">s</span> (single),
+<span class="samp">l</span> (long), and <span class="samp">q</span> (quad).  As with the 80-bit real format,
+the 64-bit <span class="samp">q</span> format is only present in the <span class="samp">fildq</span> (load
+quad integer to stack top) and <span class="samp">fistpq</span> (store quad integer and pop
+stack) instructions. 
+</ul>
+
+   <p>Register to register operations should not use instruction mnemonic suffixes. 
+<span class="samp">fstl %st, %st(1)</span> will give a warning, and be assembled as if you
+wrote <span class="samp">fst %st, %st(1)</span>, since all register to register operations
+use 80-bit floating point operands. (Contrast this with <span class="samp">fstl %st, mem</span>,
+which converts <span class="samp">%st</span> from 80-bit to 64-bit floating point format,
+then stores the result in the 4 byte location <span class="samp">mem</span>)
+
+   </body></html>
+

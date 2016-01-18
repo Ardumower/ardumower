@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Arduino Reference - KeyboardModifiers </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body>
+<div id="page">
+  <!--PageHeaderFmt-->
+  <div id="pageheader">
+    <div class="title"><a href='http://arduino.cc/en'>Arduino</a></div>
+  </div>
+  <!--/PageHeaderFmt-->
+
+  <!--PageLeftFmt-->
+  <div id="pagenav">
+    <div id="navbar">
+  	<p><a class='wikilink' href='http://arduino.cc/en/Main/Buy'>Buy</a>
+<a class='wikilink' href='http://arduino.cc/en/Main/Software'>Download</a>
+<a class='wikilink' href='Guide_index.html'>Getting Started</a>
+<a class='wikilink' href='http://arduino.cc/en/Tutorial/HomePage'>Learning</a>
+<a class='wikilink' href='index.html'>Reference</a>
+<a class='wikilink' href='http://arduino.cc/en/Main/Hardware'>Hardware</a>
+<a class='wikilink' href='FAQ.html'>FAQ</a>
+</p>
+<p class='vspace'></p>
+
+    </div>
+  </div>
+  <!--/PageLeftFmt-->
+
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>Reference</strong> &nbsp;  <a class='wikilink' href='index.html'>Language</a> | <a class='wikilink' href='Libraries.html'>Libraries</a> | <a class='wikilink' href='Comparison.html'>Comparison</a> | <a class='wikilink' href='Changes.html'>Changes</a>
+</p>
+<p class='vspace'></p><h4>Keyboard Modifiers</h4>
+<p>The Keyboard.write() and Keyboard.press() and Keyboard.release() commands don’t work with every possible ASCII character, only those that correspond to a key on the keyboard. For example, backspace works, but many of the other non-printable characters produce unpredictable results. For capital letters (and other keys), what’s sent is shift plus the character (i.e. the equivalent of pressing both of those keys on the keyboard). 
+</p>
+<p class='vspace'></p><p>A modifier key is a special key on a computer keyboard that modifies the normal action of another key when the two are pressed in combination. 
+</p>
+<p class='vspace'></p><p>For more on ASCII values and the characters or functions they represent, see <a class='urllink' href='http://www.asciitable.com' rel='nofollow'>asciitable.com</a>
+</p>
+<p class='vspace'></p><p>For multiple key presses use <a class='wikilink' href='KeyboardPress.html'>Keyboard.press</a>() 
+</p>
+<p class='vspace'></p><p>The Leonardo's definitions for modifier keys are listed below:
+</p>	 
+<table  width='500'><tr><td  valign='top'> <strong>Key</strong>	 
+</td><td  valign='top'> <strong>Hexadecimal value</strong>	 
+</td><td  valign='top'> <strong>Decimal value</strong>	 
+</td></tr><tr><td  valign='top'> KEY_LEFT_CTRL
+</td><td  valign='top'> 0x80
+</td><td  valign='top'> 128	
+</td></tr><tr><td  valign='top'> KEY_LEFT_SHIFT 
+</td><td  valign='top'> 0x81
+</td><td  valign='top'> 129	
+</td></tr><tr><td  valign='top'> KEY_LEFT_ALT 
+</td><td  valign='top'> 0x82
+</td><td  valign='top'> 130	
+</td></tr><tr><td  valign='top'> KEY_LEFT_GUI 
+</td><td  valign='top'> 0x83
+</td><td  valign='top'> 131	
+</td></tr><tr><td  valign='top'> KEY_RIGHT_CTRL 
+</td><td  valign='top'> 0x84
+</td><td  valign='top'> 132	
+</td></tr><tr><td  valign='top'> KEY_RIGHT_SHIFT 
+</td><td  valign='top'> 0x85
+</td><td  valign='top'> 133	
+</td></tr><tr><td  valign='top'> KEY_RIGHT_ALT 
+</td><td  valign='top'> 0x86
+</td><td  valign='top'> 134	
+</td></tr><tr><td  valign='top'> KEY_RIGHT_GUI 
+</td><td  valign='top'> 0x87
+</td><td  valign='top'> 135	
+</td></tr><tr><td  valign='top'> KEY_UP_ARROW 
+</td><td  valign='top'> 0xDA
+</td><td  valign='top'> 218	
+</td></tr><tr><td  valign='top'> KEY_DOWN_ARROW 
+</td><td  valign='top'> 0xD9
+</td><td  valign='top'> 217	
+</td></tr><tr><td  valign='top'> KEY_LEFT_ARROW 
+</td><td  valign='top'> 0xD8
+</td><td  valign='top'> 216	
+</td></tr><tr><td  valign='top'> KEY_RIGHT_ARROW 
+</td><td  valign='top'> 0xD7
+</td><td  valign='top'> 215	
+</td></tr><tr><td  valign='top'> KEY_BACKSPACE 
+</td><td  valign='top'> 0xB2
+</td><td  valign='top'> 178	
+</td></tr><tr><td  valign='top'> KEY_TAB 
+</td><td  valign='top'> 0xB3
+</td><td  valign='top'> 179	
+</td></tr><tr><td  valign='top'> KEY_RETURN 
+</td><td  valign='top'> 0xB0
+</td><td  valign='top'> 176	
+</td></tr><tr><td  valign='top'> KEY_ESC 
+</td><td  valign='top'> 0xB1
+</td><td  valign='top'> 177	
+</td></tr><tr><td  valign='top'> KEY_INSERT 
+</td><td  valign='top'> 0xD1
+</td><td  valign='top'> 209	
+</td></tr><tr><td  valign='top'> KEY_DELETE 
+</td><td  valign='top'> 0xD4
+</td><td  valign='top'> 212	
+</td></tr><tr><td  valign='top'> KEY_PAGE_UP 
+</td><td  valign='top'> 0xD3
+</td><td  valign='top'> 211	
+</td></tr><tr><td  valign='top'> KEY_PAGE_DOWN 
+</td><td  valign='top'> 0xD6
+</td><td  valign='top'> 214	
+</td></tr><tr><td  valign='top'> KEY_HOME 
+</td><td  valign='top'> 0xD2
+</td><td  valign='top'> 210	
+</td></tr><tr><td  valign='top'> KEY_END 
+</td><td  valign='top'> 0xD5
+</td><td  valign='top'> 213	
+</td></tr><tr><td  valign='top'> KEY_CAPS_LOCK 
+</td><td  valign='top'> 0xC1
+</td><td  valign='top'> 193	
+</td></tr><tr><td  valign='top'> KEY_F1 
+</td><td  valign='top'> 0xC2
+</td><td  valign='top'> 194	
+</td></tr><tr><td  valign='top'> KEY_F2 
+</td><td  valign='top'> 0xC3
+</td><td  valign='top'> 195	
+</td></tr><tr><td  valign='top'> KEY_F3 
+</td><td  valign='top'> 0xC4
+</td><td  valign='top'> 196	
+</td></tr><tr><td  valign='top'> KEY_F4 
+</td><td  valign='top'> 0xC5
+</td><td  valign='top'> 197	
+</td></tr><tr><td  valign='top'> KEY_F5 
+</td><td  valign='top'> 0xC6
+</td><td  valign='top'> 198	
+</td></tr><tr><td  valign='top'> KEY_F6 
+</td><td  valign='top'> 0xC7
+</td><td  valign='top'> 199	
+</td></tr><tr><td  valign='top'> KEY_F7 
+</td><td  valign='top'> 0xC8
+</td><td  valign='top'> 200	
+</td></tr><tr><td  valign='top'> KEY_F8 
+</td><td  valign='top'> 0xC9
+</td><td  valign='top'> 201	
+</td></tr><tr><td  valign='top'> KEY_F9 
+</td><td  valign='top'> 0xCA
+</td><td  valign='top'> 202	
+</td></tr><tr><td  valign='top'> KEY_F10 
+</td><td  valign='top'> 0xCB
+</td><td  valign='top'> 203	
+</td></tr><tr><td  valign='top'> KEY_F11 
+</td><td  valign='top'> 0xCC
+</td><td  valign='top'> 204	
+</td></tr><tr><td  valign='top'> KEY_F12 
+</td><td  valign='top'> 0xCD
+</td><td  valign='top'> 205	
+</td></tr></table>	 
+<p class='vspace'></p><h4>See Also</h4>
+<ul><li><a class='wikilink' href='KeyboardBegin.html'>Keyboard.begin</a>()
+</li><li><a class='wikilink' href='KeyboardEnd.html'>Keyboard.end</a>()
+</li><li><a class='wikilink' href='KeyboardPress.html'>Keyboard.press</a>()
+</li><li><a class='wikilink' href='KeyboardRelease.html'>Keyboard.release</a>()
+</li><li><a class='wikilink' href='KeyboardReleaseAll.html'>Keyboard.releaseAll</a>()
+</li></ul><p><br /><a class='wikilink' href='index.html'>Reference Home</a>
+</p>
+<p class='vspace'></p><p><em>Corrections, suggestions, and new documentation should be posted to the <a class='urllink' href='http://arduino.cc/forum/index.php/board,23.0.html' rel='nofollow'>Forum</a>.</em>
+</p>
+<p class='vspace'></p><p>The text of the Arduino reference is licensed under a
+<a class='urllink' href='http://creativecommons.org/licenses/by-sa/3.0/' rel='nofollow'>Creative Commons Attribution-ShareAlike 3.0 License</a>.  Code samples in the reference are released into the public domain.
+</p>
+</div>
+
+
+  </div>
+
+  <!--PageFooterFmt-->
+  <div id="pagefooter">
+&copy;Arduino | 
+  <a href='#'>Edit Page</a> | <a href='#'>Page History</a> | <a href='#' target='_blank'>Printable View</a> | <a href='http://arduino.cc/en/Site/AllRecentChanges'>All Recent Site Changes</a>
+  </div>
+  <!--/PageFooterFmt-->
+
+</div>
+</body>
+</html>

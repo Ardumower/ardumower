@@ -1,0 +1,175 @@
+<html lang="en">
+<head>
+<title>Directory Options - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Invoking-GCC.html#Invoking-GCC" title="Invoking GCC">
+<link rel="prev" href="Link-Options.html#Link-Options" title="Link Options">
+<link rel="next" href="Spec-Files.html#Spec-Files" title="Spec Files">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Directory-Options"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Spec-Files.html#Spec-Files">Spec Files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Link-Options.html#Link-Options">Link Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GCC.html#Invoking-GCC">Invoking GCC</a>
+<hr><br>
+</div>
+
+<h3 class="section">3.14 Options for Directory Search</h3>
+
+<p><a name="index-directory-options-880"></a><a name="index-options_002c-directory-search-881"></a><a name="index-search-path-882"></a>
+These options specify directories to search for header files, for
+libraries and for parts of the compiler:
+
+     <dl>
+<dt><code>-I</code><var>dir</var><dd><a name="index-I-883"></a>Add the directory <var>dir</var> to the head of the list of directories to be
+searched for header files.  This can be used to override a system header
+file, substituting your own version, since these directories are
+searched before the system header file directories.  However, you should
+not use this option to add directories that contain vendor-supplied
+system header files (use <span class="option">-isystem</span> for that).  If you use more than
+one <span class="option">-I</span> option, the directories are scanned in left-to-right
+order; the standard system directories come after.
+
+     <p>If a standard system include directory, or a directory specified with
+<span class="option">-isystem</span>, is also specified with <span class="option">-I</span>, the <span class="option">-I</span>
+option will be ignored.  The directory will still be searched but as a
+system directory at its normal position in the system include chain. 
+This is to ensure that GCC's procedure to fix buggy system headers and
+the ordering for the include_next directive are not inadvertently changed. 
+If you really need to change the search order for system directories,
+use the <span class="option">-nostdinc</span> and/or <span class="option">-isystem</span> options.
+
+     <br><dt><code>-iquote</code><var>dir</var><dd><a name="index-iquote-884"></a>Add the directory <var>dir</var> to the head of the list of directories to
+be searched for header files only for the case of <span class="samp">#include
+"</span><var>file</var><span class="samp">"</span>; they are not searched for <span class="samp">#include &lt;</span><var>file</var><span class="samp">&gt;</span>,
+otherwise just like <span class="option">-I</span>.
+
+     <br><dt><code>-L</code><var>dir</var><dd><a name="index-L-885"></a>Add directory <var>dir</var> to the list of directories to be searched
+for <span class="option">-l</span>.
+
+     <br><dt><code>-B</code><var>prefix</var><dd><a name="index-B-886"></a>This option specifies where to find the executables, libraries,
+include files, and data files of the compiler itself.
+
+     <p>The compiler driver program runs one or more of the subprograms
+<span class="file">cpp</span>, <span class="file">cc1</span>, <span class="file">as</span> and <span class="file">ld</span>.  It tries
+<var>prefix</var> as a prefix for each program it tries to run, both with and
+without <var>machine</var><span class="samp">/</span><var>version</var><span class="samp">/</span> (see <a href="Target-Options.html#Target-Options">Target Options</a>).
+
+     <p>For each subprogram to be run, the compiler driver first tries the
+<span class="option">-B</span> prefix, if any.  If that name is not found, or if <span class="option">-B</span>
+was not specified, the driver tries two standard prefixes, which are
+<span class="file">/usr/lib/gcc/</span> and <span class="file">/usr/local/lib/gcc/</span>.  If neither of
+those results in a file name that is found, the unmodified program
+name is searched for using the directories specified in your
+<span class="env">PATH</span> environment variable.
+
+     <p>The compiler will check to see if the path provided by the <span class="option">-B</span>
+refers to a directory, and if necessary it will add a directory
+separator character at the end of the path.
+
+     <p><span class="option">-B</span> prefixes that effectively specify directory names also apply
+to libraries in the linker, because the compiler translates these
+options into <span class="option">-L</span> options for the linker.  They also apply to
+includes files in the preprocessor, because the compiler translates these
+options into <span class="option">-isystem</span> options for the preprocessor.  In this case,
+the compiler appends <span class="samp">include</span> to the prefix.
+
+     <p>The run-time support file <span class="file">libgcc.a</span> can also be searched for using
+the <span class="option">-B</span> prefix, if needed.  If it is not found there, the two
+standard prefixes above are tried, and that is all.  The file is left
+out of the link if it is not found by those means.
+
+     <p>Another way to specify a prefix much like the <span class="option">-B</span> prefix is to use
+the environment variable <span class="env">GCC_EXEC_PREFIX</span>.  See <a href="Environment-Variables.html#Environment-Variables">Environment Variables</a>.
+
+     <p>As a special kludge, if the path provided by <span class="option">-B</span> is
+<span class="file">[dir/]stage</span><var>N</var><span class="file">/</span>, where <var>N</var> is a number in the range 0 to
+9, then it will be replaced by <span class="file">[dir/]include</span>.  This is to help
+with boot-strapping the compiler.
+
+     <br><dt><code>-specs=</code><var>file</var><dd><a name="index-specs-887"></a>Process <var>file</var> after the compiler reads in the standard <span class="file">specs</span>
+file, in order to override the defaults that the <span class="file">gcc</span> driver
+program uses when determining what switches to pass to <span class="file">cc1</span>,
+<span class="file">cc1plus</span>, <span class="file">as</span>, <span class="file">ld</span>, etc.  More than one
+<span class="option">-specs=</span><var>file</var> can be specified on the command line, and they
+are processed in order, from left to right.
+
+     <br><dt><code>--sysroot=</code><var>dir</var><dd><a name="index-sysroot-888"></a>Use <var>dir</var> as the logical root directory for headers and libraries. 
+For example, if the compiler would normally search for headers in
+<span class="file">/usr/include</span> and libraries in <span class="file">/usr/lib</span>, it will instead
+search <var>dir</var><span class="file">/usr/include</span> and <var>dir</var><span class="file">/usr/lib</span>.
+
+     <p>If you use both this option and the <span class="option">-isysroot</span> option, then
+the <span class="option">--sysroot</span> option will apply to libraries, but the
+<span class="option">-isysroot</span> option will apply to header files.
+
+     <p>The GNU linker (beginning with version 2.16) has the necessary support
+for this option.  If your linker does not support this option, the
+header file aspect of <span class="option">--sysroot</span> will still work, but the
+library aspect will not.
+
+     <br><dt><code>-I-</code><dd><a name="index-I_002d-889"></a>This option has been deprecated.  Please use <span class="option">-iquote</span> instead for
+<span class="option">-I</span> directories before the <span class="option">-I-</span> and remove the <span class="option">-I-</span>. 
+Any directories you specify with <span class="option">-I</span> options before the <span class="option">-I-</span>
+option are searched only for the case of <span class="samp">#include "</span><var>file</var><span class="samp">"</span>;
+they are not searched for <span class="samp">#include &lt;</span><var>file</var><span class="samp">&gt;</span>.
+
+     <p>If additional directories are specified with <span class="option">-I</span> options after
+the <span class="option">-I-</span>, these directories are searched for all <span class="samp">#include</span>
+directives.  (Ordinarily <em>all</em> <span class="option">-I</span> directories are used
+this way.)
+
+     <p>In addition, the <span class="option">-I-</span> option inhibits the use of the current
+directory (where the current input file came from) as the first search
+directory for <span class="samp">#include "</span><var>file</var><span class="samp">"</span>.  There is no way to
+override this effect of <span class="option">-I-</span>.  With <span class="option">-I.</span> you can specify
+searching the directory which was current when the compiler was
+invoked.  That is not exactly the same as what the preprocessor does
+by default, but it is often satisfactory.
+
+     <p><span class="option">-I-</span> does not inhibit the use of the standard system directories
+for header files.  Thus, <span class="option">-I-</span> and <span class="option">-nostdinc</span> are
+independent. 
+</dl>
+
+<!-- man end -->
+</body></html>
+

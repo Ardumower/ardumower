@@ -1,0 +1,166 @@
+<html lang="en">
+<head>
+<title>Target Fragment - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Fragments.html#Fragments" title="Fragments">
+<link rel="next" href="Host-Fragment.html#Host-Fragment" title="Host Fragment">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Target-Fragment"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Host-Fragment.html#Host-Fragment">Host Fragment</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Fragments.html#Fragments">Fragments</a>
+<hr><br>
+</div>
+
+<h3 class="section">17.1 Target Makefile Fragments</h3>
+
+<p><a name="index-target-makefile-fragment-4349"></a><a name="index-_0040file_007bt_002d_0040var_007btarget_007d_007d-4350"></a>
+Target makefile fragments can set these Makefile variables.
+
+     
+<a name="index-LIBGCC2_005fCFLAGS-4351"></a>
+<dl><dt><code>LIBGCC2_CFLAGS</code><dd>Compiler flags to use when compiling <span class="file">libgcc2.c</span>.
+
+     <p><a name="index-LIB2FUNCS_005fEXTRA-4352"></a><br><dt><code>LIB2FUNCS_EXTRA</code><dd>A list of source file names to be compiled or assembled and inserted
+into <span class="file">libgcc.a</span>.
+
+     <p><a name="index-Floating-Point-Emulation-4353"></a><br><dt><code>Floating Point Emulation</code><dd>To have GCC include software floating point libraries in <span class="file">libgcc.a</span>
+define <code>FPBIT</code> and <code>DPBIT</code> along with a few rules as follows:
+     <pre class="smallexample">          # We want fine grained libraries, so use the new code
+          # to build the floating point emulation libraries.
+          FPBIT = fp-bit.c
+          DPBIT = dp-bit.c
+          
+          
+          fp-bit.c: $(srcdir)/config/fp-bit.c
+                  echo '#define FLOAT' &gt; fp-bit.c
+                  cat $(srcdir)/config/fp-bit.c &gt;&gt; fp-bit.c
+          
+          dp-bit.c: $(srcdir)/config/fp-bit.c
+                  cat $(srcdir)/config/fp-bit.c &gt; dp-bit.c
+     </pre>
+     <p>You may need to provide additional #defines at the beginning of <span class="file">fp-bit.c</span>
+and <span class="file">dp-bit.c</span> to control target endianness and other options.
+
+     <p><a name="index-CRTSTUFF_005fT_005fCFLAGS-4354"></a><br><dt><code>CRTSTUFF_T_CFLAGS</code><dd>Special flags used when compiling <span class="file">crtstuff.c</span>. 
+See <a href="Initialization.html#Initialization">Initialization</a>.
+
+     <p><a name="index-CRTSTUFF_005fT_005fCFLAGS_005fS-4355"></a><br><dt><code>CRTSTUFF_T_CFLAGS_S</code><dd>Special flags used when compiling <span class="file">crtstuff.c</span> for shared
+linking.  Used if you use <span class="file">crtbeginS.o</span> and <span class="file">crtendS.o</span>
+in <code>EXTRA-PARTS</code>. 
+See <a href="Initialization.html#Initialization">Initialization</a>.
+
+     <p><a name="index-MULTILIB_005fOPTIONS-4356"></a><br><dt><code>MULTILIB_OPTIONS</code><dd>For some targets, invoking GCC in different ways produces objects
+that can not be linked together.  For example, for some targets GCC
+produces both big and little endian code.  For these targets, you must
+arrange for multiple versions of <span class="file">libgcc.a</span> to be compiled, one for
+each set of incompatible options.  When GCC invokes the linker, it
+arranges to link in the right version of <span class="file">libgcc.a</span>, based on
+the command line options used.
+
+     <p>The <code>MULTILIB_OPTIONS</code> macro lists the set of options for which
+special versions of <span class="file">libgcc.a</span> must be built.  Write options that
+are mutually incompatible side by side, separated by a slash.  Write
+options that may be used together separated by a space.  The build
+procedure will build all combinations of compatible options.
+
+     <p>For example, if you set <code>MULTILIB_OPTIONS</code> to <span class="samp">m68000/m68020
+msoft-float</span>, <span class="file">Makefile</span> will build special versions of
+<span class="file">libgcc.a</span> using the following sets of options:  <span class="option">-m68000</span>,
+<span class="option">-m68020</span>, <span class="option">-msoft-float</span>, <span class="samp">-m68000 -msoft-float</span>, and
+<span class="samp">-m68020 -msoft-float</span>.
+
+     <p><a name="index-MULTILIB_005fDIRNAMES-4357"></a><br><dt><code>MULTILIB_DIRNAMES</code><dd>If <code>MULTILIB_OPTIONS</code> is used, this variable specifies the
+directory names that should be used to hold the various libraries. 
+Write one element in <code>MULTILIB_DIRNAMES</code> for each element in
+<code>MULTILIB_OPTIONS</code>.  If <code>MULTILIB_DIRNAMES</code> is not used, the
+default value will be <code>MULTILIB_OPTIONS</code>, with all slashes treated
+as spaces.
+
+     <p>For example, if <code>MULTILIB_OPTIONS</code> is set to <span class="samp">m68000/m68020
+msoft-float</span>, then the default value of <code>MULTILIB_DIRNAMES</code> is
+<span class="samp">m68000 m68020 msoft-float</span>.  You may specify a different value if
+you desire a different set of directory names.
+
+     <p><a name="index-MULTILIB_005fMATCHES-4358"></a><br><dt><code>MULTILIB_MATCHES</code><dd>Sometimes the same option may be written in two different ways.  If an
+option is listed in <code>MULTILIB_OPTIONS</code>, GCC needs to know about
+any synonyms.  In that case, set <code>MULTILIB_MATCHES</code> to a list of
+items of the form <span class="samp">option=option</span> to describe all relevant
+synonyms.  For example, <span class="samp">m68000=mc68000 m68020=mc68020</span>.
+
+     <p><a name="index-MULTILIB_005fEXCEPTIONS-4359"></a><br><dt><code>MULTILIB_EXCEPTIONS</code><dd>Sometimes when there are multiple sets of <code>MULTILIB_OPTIONS</code> being
+specified, there are combinations that should not be built.  In that
+case, set <code>MULTILIB_EXCEPTIONS</code> to be all of the switch exceptions
+in shell case syntax that should not be built.
+
+     <p>For example the ARM processor cannot execute both hardware floating
+point instructions and the reduced size THUMB instructions at the same
+time, so there is no need to build libraries with both of these
+options enabled.  Therefore <code>MULTILIB_EXCEPTIONS</code> is set to:
+     <pre class="smallexample">          *mthumb/*mhard-float*
+     </pre>
+     <p><a name="index-MULTILIB_005fEXTRA_005fOPTS-4360"></a><br><dt><code>MULTILIB_EXTRA_OPTS</code><dd>Sometimes it is desirable that when building multiple versions of
+<span class="file">libgcc.a</span> certain options should always be passed on to the
+compiler.  In that case, set <code>MULTILIB_EXTRA_OPTS</code> to be the list
+of options to be used for all builds.  If you set this, you should
+probably set <code>CRTSTUFF_T_CFLAGS</code> to a dash followed by it.
+
+     <p><a name="index-NATIVE_005fSYSTEM_005fHEADER_005fDIR-4361"></a><br><dt><code>NATIVE_SYSTEM_HEADER_DIR</code><dd>If the default location for system headers is not <span class="file">/usr/include</span>,
+you must set this to the directory containing the headers.  This value
+should match the value of the <code>SYSTEM_INCLUDE_DIR</code> macro.
+
+     <p><a name="index-SPECS-4362"></a><br><dt><code>SPECS</code><dd>Unfortunately, setting <code>MULTILIB_EXTRA_OPTS</code> is not enough, since
+it does not affect the build of target libraries, at least not the
+build of the default multilib.  One possible work-around is to use
+<code>DRIVER_SELF_SPECS</code> to bring options from the <span class="file">specs</span> file
+as if they had been passed in the compiler driver command line. 
+However, you don't want to be adding these options after the toolchain
+is installed, so you can instead tweak the <span class="file">specs</span> file that will
+be used during the toolchain build, while you still install the
+original, built-in <span class="file">specs</span>.  The trick is to set <code>SPECS</code> to
+some other filename (say <span class="file">specs.install</span>), that will then be
+created out of the built-in specs, and introduce a <span class="file">Makefile</span>
+rule to generate the <span class="file">specs</span> file that's going to be used at
+build time out of your <span class="file">specs.install</span>. 
+</dl>
+
+ </body></html>
+

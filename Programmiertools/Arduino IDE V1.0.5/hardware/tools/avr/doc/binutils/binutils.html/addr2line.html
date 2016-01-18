@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+<title>addr2line - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="c_002b_002bfilt.html#c_002b_002bfilt" title="c++filt">
+<link rel="next" href="nlmconv.html#nlmconv" title="nlmconv">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="addr2line"></a>Next:&nbsp;<a rel="next" accesskey="n" href="nlmconv.html#nlmconv">nlmconv</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="c_002b_002bfilt.html#c_002b_002bfilt">c++filt</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">10 addr2line</h2>
+
+<p><a name="index-addr2line-118"></a><a name="index-address-to-file-name-and-line-number-119"></a>
+<!-- man title addr2line convert addresses into file names and line numbers. -->
+
+<pre class="smallexample">     <!-- man begin SYNOPSIS addr2line -->
+     addr2line [<span class="option">-b</span> <var>bfdname</var>|<span class="option">--target=</span><var>bfdname</var>]
+               [<span class="option">-C</span>|<span class="option">--demangle</span>[=<var>style</var>]]
+               [<span class="option">-e</span> <var>filename</var>|<span class="option">--exe=</span><var>filename</var>]
+               [<span class="option">-f</span>|<span class="option">--functions</span>] [<span class="option">-s</span>|<span class="option">--basename</span>]
+               [<span class="option">-i</span>|<span class="option">--inlines</span>]
+               [<span class="option">-j</span>|<span class="option">--section=</span><var>name</var>]
+               [<span class="option">-H</span>|<span class="option">--help</span>] [<span class="option">-V</span>|<span class="option">--version</span>]
+               [addr addr ...]
+     <!-- man end -->
+</pre>
+   <!-- man begin DESCRIPTION addr2line -->
+<p><span class="command">addr2line</span> translates addresses into file names and line numbers. 
+Given an address in an executable or an offset in a section of a relocatable
+object, it uses the debugging information to figure out which file name and
+line number are associated with it.
+
+   <p>The executable or relocatable object to use is specified with the <span class="option">-e</span>
+option.  The default is the file <span class="file">a.out</span>.  The section in the relocatable
+object to use is specified with the <span class="option">-j</span> option.
+
+   <p><span class="command">addr2line</span> has two modes of operation.
+
+   <p>In the first, hexadecimal addresses are specified on the command line,
+and <span class="command">addr2line</span> displays the file name and line number for each
+address.
+
+   <p>In the second, <span class="command">addr2line</span> reads hexadecimal addresses from
+standard input, and prints the file name and line number for each
+address on standard output.  In this mode, <span class="command">addr2line</span> may be used
+in a pipe to convert dynamically chosen addresses.
+
+   <p>The format of the output is <span class="samp">FILENAME:LINENO</span>.  The file name and
+line number for each address is printed on a separate line.  If the
+<span class="command">-f</span> option is used, then each <span class="samp">FILENAME:LINENO</span> line is
+preceded by a <span class="samp">FUNCTIONNAME</span> line which is the name of the function
+containing the address.
+
+   <p>If the file name or function name can not be determined,
+<span class="command">addr2line</span> will print two question marks in their place.  If the
+line number can not be determined, <span class="command">addr2line</span> will print 0.
+
+<!-- man end -->
+<!-- man begin OPTIONS addr2line -->
+<p>The long and short forms of options, shown here as alternatives, are
+equivalent.
+
+     <dl>
+<dt><span class="env">-b </span><var>bfdname</var><dt><span class="env">--target=</span><var>bfdname</var><dd><a name="index-object-code-format-120"></a>Specify that the object-code format for the object files is
+<var>bfdname</var>.
+
+     <br><dt><span class="env">-C</span><dt><span class="env">--demangle[=</span><var>style</var><span class="env">]</span><dd><a name="index-demangling-in-objdump-121"></a>Decode (<dfn>demangle</dfn>) low-level symbol names into user-level names. 
+Besides removing any initial underscore prepended by the system, this
+makes C++ function names readable.  Different compilers have different
+mangling styles. The optional demangling style argument can be used to
+choose an appropriate demangling style for your compiler. See <a href="c_002b_002bfilt.html#c_002b_002bfilt">c++filt</a>,
+for more information on demangling.
+
+     <br><dt><span class="env">-e </span><var>filename</var><dt><span class="env">--exe=</span><var>filename</var><dd>Specify the name of the executable for which addresses should be
+translated.  The default file is <span class="file">a.out</span>.
+
+     <br><dt><span class="env">-f</span><dt><span class="env">--functions</span><dd>Display function names as well as file and line number information.
+
+     <br><dt><span class="env">-s</span><dt><span class="env">--basenames</span><dd>Display only the base of each file name.
+
+     <br><dt><span class="env">-i</span><dt><span class="env">--inlines</span><dd>If the address belongs to a function that was inlined, the source
+information for all enclosing scopes back to the first non-inlined
+function will also be printed.  For example, if <code>main</code> inlines
+<code>callee1</code> which inlines <code>callee2</code>, and address is from
+<code>callee2</code>, the source information for <code>callee1</code> and <code>main</code>
+will also be printed.
+
+     <br><dt><span class="env">-j</span><dt><span class="env">--section</span><dd>Read offsets relative to the specified section instead of absolute addresses. 
+</dl>
+
+<!-- man end -->
+</body></html>
+

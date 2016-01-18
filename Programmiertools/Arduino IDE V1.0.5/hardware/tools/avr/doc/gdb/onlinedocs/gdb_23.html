@@ -1,0 +1,654 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: TUI</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: TUI">
+<META NAME="keywords" CONTENT="Debugging with GDB: TUI">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC235"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_22.html#SEC234"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC236"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_4.html#SEC14"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 22. GDB Text User Interface </H1>
+<!--docid::SEC235::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_23.html#SEC236">22.1 TUI Overview</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">TUI overview</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">TUI key bindings</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_23.html#SEC238">22.3 TUI Single Key Mode</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">TUI single key mode</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_23.html#SEC239">22.4 TUI-specific Commands</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">TUI-specific commands</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_23.html#SEC240">22.5 TUI Configuration Variables</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">TUI configuration variables</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+The GDB Text User Interface (TUI) is a terminal
+interface which uses the <CODE>curses</CODE> library to show the source
+file, the assembly output, the program registers and GDB
+commands in separate text windows.  The TUI mode is supported only
+on platforms where a suitable version of the <CODE>curses</CODE> library
+is available.
+</P><P>
+
+<A NAME="IDX1220"></A>
+The TUI mode is enabled by default when you invoke GDB as
+either <SAMP>`gdbtui'</SAMP> or <SAMP>`gdb -tui'</SAMP>.
+You can also switch in and out of TUI mode while GDB runs by
+using various TUI commands and key bindings, such as <KBD>C-x C-a</KBD>. 
+See section <A HREF="gdb_23.html#SEC237">TUI Key Bindings</A>.
+</P><P>
+
+<A NAME="TUI Overview"></A>
+<HR SIZE="6">
+<A NAME="SEC236"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC237"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 22.1 TUI Overview </H2>
+<!--docid::SEC236::-->
+<P>
+
+In TUI mode, GDB can display several text windows:
+</P><P>
+
+<DL COMPACT>
+<DT><EM>command</EM>
+<DD>This window is the GDB command window with the GDB
+prompt and the GDB output.  The GDB input is still
+managed using readline.
+<P>
+
+<DT><EM>source</EM>
+<DD>The source window shows the source file of the program.  The current
+line and active breakpoints are displayed in this window.
+<P>
+
+<DT><EM>assembly</EM>
+<DD>The assembly window shows the disassembly output of the program.
+<P>
+
+<DT><EM>register</EM>
+<DD>This window shows the processor registers.  Registers are highlighted
+when their values change.
+</DL>
+<P>
+
+The source and assembly windows show the current program position
+by highlighting the current line and marking it with a <SAMP>`&#62;'</SAMP> marker.
+Breakpoints are indicated with two markers.  The first marker
+indicates the breakpoint type:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>B</CODE>
+<DD>Breakpoint which was hit at least once.
+<P>
+
+<DT><CODE>b</CODE>
+<DD>Breakpoint which was never hit.
+<P>
+
+<DT><CODE>H</CODE>
+<DD>Hardware breakpoint which was hit at least once.
+<P>
+
+<DT><CODE>h</CODE>
+<DD>Hardware breakpoint which was never hit.
+</DL>
+<P>
+
+The second marker indicates whether the breakpoint is enabled or not:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>+</CODE>
+<DD>Breakpoint is enabled.
+<P>
+
+<DT><CODE>-</CODE>
+<DD>Breakpoint is disabled.
+</DL>
+<P>
+
+The source, assembly and register windows are updated when the current
+thread changes, when the frame changes, or when the program counter
+changes.
+</P><P>
+
+These windows are not all visible at the same time.  The command
+window is always visible.  The others can be arranged in several
+layouts:
+</P><P>
+
+<UL>
+<LI>
+source only,
+<P>
+
+<LI>
+assembly only,
+<P>
+
+<LI>
+source and assembly,
+<P>
+
+<LI>
+source and registers, or
+<P>
+
+<LI>
+assembly and registers.
+</UL>
+<P>
+
+A status line above the command window shows the following information:
+</P><P>
+
+<DL COMPACT>
+<DT><EM>target</EM>
+<DD>Indicates the current GDB target.
+(see section <A HREF="gdb_17.html#SEC158">Specifying a Debugging Target</A>).
+<P>
+
+<DT><EM>process</EM>
+<DD>Gives the current process or thread number.
+When no process is being debugged, this field is set to <CODE>No process</CODE>.
+<P>
+
+<DT><EM>function</EM>
+<DD>Gives the current function name for the selected frame.
+The name is demangled if demangling is turned on (see section <A HREF="gdb_9.html#SEC66">8.7 Print Settings</A>).
+When there is no symbol corresponding to the current program counter,
+the string <CODE>??</CODE> is displayed.
+<P>
+
+<DT><EM>line</EM>
+<DD>Indicates the current line number for the selected frame.
+When the current line number is not known, the string <CODE>??</CODE> is displayed.
+<P>
+
+<DT><EM>pc</EM>
+<DD>Indicates the current program counter address.
+</DL>
+<P>
+
+<A NAME="TUI Keys"></A>
+<HR SIZE="6">
+<A NAME="SEC237"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC236"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC238"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC238"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 22.2 TUI Key Bindings </H2>
+<!--docid::SEC237::-->
+<P>
+
+The TUI installs several key bindings in the readline keymaps
+(see section <A HREF="gdb_28.html#SEC657">27. Command Line Editing</A>).  The following key bindings
+are installed for both TUI mode and the GDB standard mode.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1221"></A>
+<DT><KBD>C-x C-a</KBD>
+<DD><A NAME="IDX1222"></A>
+<DT><KBD>C-x a</KBD>
+<DD><A NAME="IDX1223"></A>
+<DT><KBD>C-x A</KBD>
+<DD>Enter or leave the TUI mode.  When leaving the TUI mode,
+the curses window management stops and GDB operates using
+its standard mode, writing on the terminal directly.  When reentering
+the TUI mode, control is given back to the curses windows.
+The screen is then refreshed.
+<P>
+
+<A NAME="IDX1224"></A>
+<DT><KBD>C-x 1</KBD>
+<DD>Use a TUI layout with only one window.  The layout will
+either be <SAMP>`source'</SAMP> or <SAMP>`assembly'</SAMP>.  When the TUI mode
+is not active, it will switch to the TUI mode.
+<P>
+
+Think of this key binding as the Emacs <KBD>C-x 1</KBD> binding.
+</P><P>
+
+<A NAME="IDX1225"></A>
+<DT><KBD>C-x 2</KBD>
+<DD>Use a TUI layout with at least two windows.  When the current
+layout already has two windows, the next layout with two windows is used.
+When a new layout is chosen, one window will always be common to the
+previous layout and the new one.
+<P>
+
+Think of it as the Emacs <KBD>C-x 2</KBD> binding.
+</P><P>
+
+<A NAME="IDX1226"></A>
+<DT><KBD>C-x o</KBD>
+<DD>Change the active window.  The TUI associates several key bindings
+(like scrolling and arrow keys) with the active window.  This command
+gives the focus to the next TUI window.
+<P>
+
+Think of it as the Emacs <KBD>C-x o</KBD> binding.
+</P><P>
+
+<A NAME="IDX1227"></A>
+<DT><KBD>C-x s</KBD>
+<DD>Switch in and out of the TUI SingleKey mode that binds single
+keys to GDB commands (see section <A HREF="gdb_23.html#SEC238">22.3 TUI Single Key Mode</A>).
+</DL>
+<P>
+
+The following key bindings only work in the TUI mode:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1228"></A>
+<DT><KBD>PgUp</KBD>
+<DD>Scroll the active window one page up.
+<P>
+
+<A NAME="IDX1229"></A>
+<DT><KBD>PgDn</KBD>
+<DD>Scroll the active window one page down.
+<P>
+
+<A NAME="IDX1230"></A>
+<DT><KBD>Up</KBD>
+<DD>Scroll the active window one line up.
+<P>
+
+<A NAME="IDX1231"></A>
+<DT><KBD>Down</KBD>
+<DD>Scroll the active window one line down.
+<P>
+
+<A NAME="IDX1232"></A>
+<DT><KBD>Left</KBD>
+<DD>Scroll the active window one column left.
+<P>
+
+<A NAME="IDX1233"></A>
+<DT><KBD>Right</KBD>
+<DD>Scroll the active window one column right.
+<P>
+
+<A NAME="IDX1234"></A>
+<DT><KBD>C-L</KBD>
+<DD>Refresh the screen.
+</DL>
+<P>
+
+Because the arrow keys scroll the active window in the TUI mode, they
+are not available for their normal use by readline unless the command
+window has the focus.  When another window is active, you must use
+other readline key bindings such as <KBD>C-p</KBD>, <KBD>C-n</KBD>, <KBD>C-b</KBD>
+and <KBD>C-f</KBD> to control the command window.
+</P><P>
+
+<A NAME="TUI Single Key Mode"></A>
+<HR SIZE="6">
+<A NAME="SEC238"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC237"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC239"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC239"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 22.3 TUI Single Key Mode </H2>
+<!--docid::SEC238::-->
+<P>
+
+The TUI also provides a <EM>SingleKey</EM> mode, which binds several
+frequently used GDB commands to single keys.  Type <KBD>C-x s</KBD> to
+switch into this mode, where the following key bindings are used:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1235"></A>
+<DT><KBD>c</KBD>
+<DD>continue
+<P>
+
+<A NAME="IDX1236"></A>
+<DT><KBD>d</KBD>
+<DD>down
+<P>
+
+<A NAME="IDX1237"></A>
+<DT><KBD>f</KBD>
+<DD>finish
+<P>
+
+<A NAME="IDX1238"></A>
+<DT><KBD>n</KBD>
+<DD>next
+<P>
+
+<A NAME="IDX1239"></A>
+<DT><KBD>q</KBD>
+<DD>exit the SingleKey mode.
+<P>
+
+<A NAME="IDX1240"></A>
+<DT><KBD>r</KBD>
+<DD>run
+<P>
+
+<A NAME="IDX1241"></A>
+<DT><KBD>s</KBD>
+<DD>step
+<P>
+
+<A NAME="IDX1242"></A>
+<DT><KBD>u</KBD>
+<DD>up
+<P>
+
+<A NAME="IDX1243"></A>
+<DT><KBD>v</KBD>
+<DD>info locals
+<P>
+
+<A NAME="IDX1244"></A>
+<DT><KBD>w</KBD>
+<DD>where
+</DL>
+<P>
+
+Other keys temporarily switch to the GDB command prompt.
+The key that was pressed is inserted in the editing buffer so that
+it is possible to type most GDB commands without interaction
+with the TUI SingleKey mode.  Once the command is entered the TUI
+SingleKey mode is restored.  The only way to permanently leave
+this mode is by typing <KBD>q</KBD> or <KBD>C-x s</KBD>.
+</P><P>
+
+<A NAME="TUI Commands"></A>
+<HR SIZE="6">
+<A NAME="SEC239"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC238"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC240"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC240"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 22.4 TUI-specific Commands </H2>
+<!--docid::SEC239::-->
+<P>
+
+The TUI has specific commands to control the text windows.
+These commands are always available, even when GDB is not in
+the TUI mode.  When GDB is in the standard mode, most
+of these commands will automatically switch to the TUI mode.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>info win</CODE>
+<DD><A NAME="IDX1245"></A>
+List and give the size of all displayed windows.
+<P>
+
+<DT><CODE>layout next</CODE>
+<DD><A NAME="IDX1246"></A>
+Display the next layout.
+<P>
+
+<DT><CODE>layout prev</CODE>
+<DD>Display the previous layout.
+<P>
+
+<DT><CODE>layout src</CODE>
+<DD>Display the source window only.
+<P>
+
+<DT><CODE>layout asm</CODE>
+<DD>Display the assembly window only.
+<P>
+
+<DT><CODE>layout split</CODE>
+<DD>Display the source and assembly window.
+<P>
+
+<DT><CODE>layout regs</CODE>
+<DD>Display the register window together with the source or assembly window.
+<P>
+
+<DT><CODE>focus next</CODE>
+<DD><A NAME="IDX1247"></A>
+Make the next window active for scrolling.
+<P>
+
+<DT><CODE>focus prev</CODE>
+<DD>Make the previous window active for scrolling.
+<P>
+
+<DT><CODE>focus src</CODE>
+<DD>Make the source window active for scrolling.
+<P>
+
+<DT><CODE>focus asm</CODE>
+<DD>Make the assembly window active for scrolling.
+<P>
+
+<DT><CODE>focus regs</CODE>
+<DD>Make the register window active for scrolling.
+<P>
+
+<DT><CODE>focus cmd</CODE>
+<DD>Make the command window active for scrolling.
+<P>
+
+<DT><CODE>refresh</CODE>
+<DD><A NAME="IDX1248"></A>
+Refresh the screen.  This is similar to typing <KBD>C-L</KBD>.
+<P>
+
+<DT><CODE>tui reg float</CODE>
+<DD><A NAME="IDX1249"></A>
+Show the floating point registers in the register window.
+<P>
+
+<DT><CODE>tui reg general</CODE>
+<DD>Show the general registers in the register window.
+<P>
+
+<DT><CODE>tui reg next</CODE>
+<DD>Show the next register group.  The list of register groups as well as
+their order is target specific.  The predefined register groups are the
+following: <CODE>general</CODE>, <CODE>float</CODE>, <CODE>system</CODE>, <CODE>vector</CODE>,
+<CODE>all</CODE>, <CODE>save</CODE>, <CODE>restore</CODE>.
+<P>
+
+<DT><CODE>tui reg system</CODE>
+<DD>Show the system registers in the register window.
+<P>
+
+<DT><CODE>update</CODE>
+<DD><A NAME="IDX1250"></A>
+Update the source window and the current execution point.
+<P>
+
+<DT><CODE>winheight <VAR>name</VAR> +<VAR>count</VAR></CODE>
+<DD><DT><CODE>winheight <VAR>name</VAR> -<VAR>count</VAR></CODE>
+<DD><A NAME="IDX1251"></A>
+Change the height of the window <VAR>name</VAR> by <VAR>count</VAR>
+lines.  Positive counts increase the height, while negative counts
+decrease it.
+<P>
+
+<DT><CODE>tabset <VAR>nchars</VAR></CODE>
+<DD><A NAME="IDX1252"></A>
+Set the width of tab stops to be <VAR>nchars</VAR> characters.
+</DL>
+<P>
+
+<A NAME="TUI Configuration"></A>
+<HR SIZE="6">
+<A NAME="SEC240"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC239"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 22.5 TUI Configuration Variables </H2>
+<!--docid::SEC240::-->
+<P>
+
+Several configuration variables control the appearance of TUI windows.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set tui border-kind <VAR>kind</VAR></CODE>
+<DD><A NAME="IDX1253"></A>
+Select the border appearance for the source, assembly and register windows.
+The possible values are the following:
+<DL COMPACT>
+<DT><CODE>space</CODE>
+<DD>Use a space character to draw the border.
+<P>
+
+<DT><CODE>ascii</CODE>
+<DD>Use ASCII characters <SAMP>`+'</SAMP>, <SAMP>`-'</SAMP> and <SAMP>`|'</SAMP> to draw the border.
+<P>
+
+<DT><CODE>acs</CODE>
+<DD>Use the Alternate Character Set to draw the border.  The border is
+drawn using character line graphics if the terminal supports them.
+</DL>
+<P>
+
+<DT><CODE>set tui border-mode <VAR>mode</VAR></CODE>
+<DD><A NAME="IDX1254"></A>
+<DT><CODE>set tui active-border-mode <VAR>mode</VAR></CODE>
+<DD><A NAME="IDX1255"></A>
+Select the display attributes for the borders of the inactive windows
+or the active window.  The <VAR>mode</VAR> can be one of the following:
+<DL COMPACT>
+<DT><CODE>normal</CODE>
+<DD>Use normal attributes to display the border.
+<P>
+
+<DT><CODE>standout</CODE>
+<DD>Use standout mode.
+<P>
+
+<DT><CODE>reverse</CODE>
+<DD>Use reverse video mode.
+<P>
+
+<DT><CODE>half</CODE>
+<DD>Use half bright mode.
+<P>
+
+<DT><CODE>half-standout</CODE>
+<DD>Use half bright and standout mode.
+<P>
+
+<DT><CODE>bold</CODE>
+<DD>Use extra bright or bold mode.
+<P>
+
+<DT><CODE>bold-standout</CODE>
+<DD>Use extra bright or bold and standout mode.
+</DL>
+</DL>
+<P>
+
+<A NAME="Emacs"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_24.html#SEC241"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

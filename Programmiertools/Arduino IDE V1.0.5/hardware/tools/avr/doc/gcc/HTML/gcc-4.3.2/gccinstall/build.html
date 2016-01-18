@@ -1,0 +1,313 @@
+<html lang="en">
+<head>
+<title>Installing GCC: Building</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Installing GCC: Building">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+   Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, the Front-Cover texts being (a) (see below), and
+with the Back-Cover Texts being (b) (see below).  A copy of the
+license is included in the section entitled "GNU Free Documentation License".
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">Installing GCC: Building</h1>
+<a name="index-Installing-GCC_003a-Building-1"></a>
+Now that GCC is configured, you are ready to build the compiler and
+runtime libraries.
+
+   <p>Some commands executed when making the compiler may fail (return a
+nonzero status) and be ignored by <span class="command">make</span>.  These failures, which
+are often due to files that were not found, are expected, and can safely
+be ignored.
+
+   <p>It is normal to have compiler warnings when compiling certain files. 
+Unless you are a GCC developer, you can generally ignore these warnings
+unless they cause compilation to fail.  Developers should attempt to fix
+any warnings encountered, however they can temporarily continue past
+warnings-as-errors by specifying the configure flag
+<span class="option">--disable-werror</span>.
+
+   <p>On certain old systems, defining certain environment variables such as
+<span class="env">CC</span> can interfere with the functioning of <span class="command">make</span>.
+
+   <p>If you encounter seemingly strange errors when trying to build the
+compiler in a directory other than the source directory, it could be
+because you have previously configured the compiler in the source
+directory.  Make sure you have done all the necessary preparations.
+
+   <p>If you build GCC on a BSD system using a directory stored in an old System
+V file system, problems may occur in running <span class="command">fixincludes</span> if the
+System V file system doesn't support symbolic links.  These problems
+result in a failure to fix the declaration of <code>size_t</code> in
+<span class="file">sys/types.h</span>.  If you find that <code>size_t</code> is a signed type and
+that type mismatches occur, this could be the cause.
+
+   <p>The solution is not to use such a directory for building GCC.
+
+   <p>When building from SVN or snapshots and enabling the <code>treelang</code>
+front end, or if you modify <span class="file">*.y</span> files, you need the Bison parser
+generator installed.  If you do not modify <span class="file">*.y</span> files, releases
+contain the Bison-generated files and you do not need Bison installed
+to build them.  Note that most front ends now use hand-written parsers,
+which can be modified with no need for Bison.
+
+   <p>Similarly, when building from SVN or snapshots, or if you modify
+<span class="file">*.l</span> files, you need the Flex lexical analyzer generator installed. 
+There is still one Flex-based lexical analyzer (part of the build
+machinery, not of GCC itself) that is used even if you only build the
+C front end.
+
+   <p>When building from SVN or snapshots, or if you modify Texinfo
+documentation, you need version 4.4 or later of Texinfo installed if you
+want Info documentation to be regenerated.  Releases contain Info
+documentation pre-built for the unmodified documentation in the release.
+
+<h3 class="section"><a name="TOC0"></a>0.1 Building a native compiler</h3>
+
+<p>For a native build, the default configuration is to perform
+a 3-stage bootstrap of the compiler when <span class="samp">make</span> is invoked. 
+This will build the entire GCC system and ensure that it compiles
+itself correctly.  It can be disabled with the <span class="option">--disable-bootstrap</span>
+parameter to <span class="samp">configure</span>, but bootstrapping is suggested because
+the compiler will be tested more completely and could also have
+better performance.
+
+   <p>The bootstrapping process will complete the following steps:
+
+     <ul>
+<li>Build tools necessary to build the compiler.
+
+     <li>Perform a 3-stage bootstrap of the compiler.  This includes building
+three times the target tools for use by the compiler such as binutils
+(bfd, binutils, gas, gprof, ld, and opcodes) if they have been
+individually linked or moved into the top level GCC source tree before
+configuring.
+
+     <li>Perform a comparison test of the stage2 and stage3 compilers.
+
+     <li>Build runtime libraries using the stage3 compiler from the previous step.
+
+   </ul>
+
+   <p>If you are short on disk space you might consider <span class="samp">make
+bootstrap-lean</span> instead.  The sequence of compilation is the
+same described above, but object files from the stage1 and
+stage2 of the 3-stage bootstrap of the compiler are deleted as
+soon as they are no longer needed.
+
+   <p>If you want to save additional space during the bootstrap and in
+the final installation as well, you can build the compiler binaries
+without debugging information as in the following example.  This will save
+roughly 40% of disk space both for the bootstrap and the final installation. 
+(Libraries will still contain debugging information.)
+
+<pre class="smallexample">          make CFLAGS='-O' LIBCFLAGS='-g -O2' \
+            LIBCXXFLAGS='-g -O2 -fno-implicit-templates' bootstrap
+</pre>
+   <p>If you wish to use non-default GCC flags when compiling the stage2 and
+stage3 compilers, set <code>BOOT_CFLAGS</code> on the command line when doing
+<span class="samp">make</span>.  Non-default optimization flags are less well
+tested here than the default of <span class="samp">-g -O2</span>, but should still work. 
+In a few cases, you may find that you need to specify special flags such
+as <span class="option">-msoft-float</span> here to complete the bootstrap; or, if the
+native compiler miscompiles the stage1 compiler, you may need to work
+around this, by choosing <code>BOOT_CFLAGS</code> to avoid the parts of the
+stage1 compiler that were miscompiled, or by using <span class="samp">make
+bootstrap4</span> to increase the number of stages of bootstrap.
+
+   <p>Note that using non-standard <code>CFLAGS</code> can cause bootstrap to fail
+if these trigger a warning with the new compiler.  For example using
+<span class="samp">-O2 -g -mcpu=i686</span> on <code>i686-pc-linux-gnu</code> will cause bootstrap
+failure as <span class="option">-mcpu=</span> is deprecated in 3.4.0 and above.
+
+   <p>If you used the flag <span class="option">--enable-languages=...</span> to restrict
+the compilers to be built, only those you've actually enabled will be
+built.  This will of course only build those runtime libraries, for
+which the particular compiler has been built.  Please note,
+that re-defining <span class="env">LANGUAGES</span> when calling <span class="samp">make</span>
+<strong>does not</strong> work anymore!
+
+   <p>If the comparison of stage2 and stage3 fails, this normally indicates
+that the stage2 compiler has compiled GCC incorrectly, and is therefore
+a potentially serious bug which you should investigate and report.  (On
+a few systems, meaningful comparison of object files is impossible; they
+always appear &ldquo;different&rdquo;.  If you encounter this problem, you will
+need to disable comparison in the <span class="file">Makefile</span>.)
+
+   <p>If you do not want to bootstrap your compiler, you can configure with
+<span class="option">--disable-bootstrap</span>.  In particular cases, you may want to
+bootstrap your compiler even if the target system is not the same as
+the one you are building on: for example, you could build a
+<code>powerpc-unknown-linux-gnu</code> toolchain on a
+<code>powerpc64-unknown-linux-gnu</code> host.  In this case, pass
+<span class="option">--enable-bootstrap</span> to the configure script.
+
+<h3 class="section"><a name="TOC1"></a>0.2 Building a cross compiler</h3>
+
+<p>When building a cross compiler, it is not generally possible to do a
+3-stage bootstrap of the compiler.  This makes for an interesting problem
+as parts of GCC can only be built with GCC.
+
+   <p>To build a cross compiler, we first recommend building and installing a
+native compiler.  You can then use the native GCC compiler to build the
+cross compiler.  The installed native compiler needs to be GCC version
+2.95 or later.
+
+   <p>If the cross compiler is to be built with support for the Java
+programming language and the ability to compile .java source files is
+desired, the installed native compiler used to build the cross
+compiler needs to be the same GCC version as the cross compiler.  In
+addition the cross compiler needs to be configured with
+<span class="option">--with-ecj-jar=...</span>.
+
+   <p>Assuming you have already installed a native copy of GCC and configured
+your cross compiler, issue the command <span class="command">make</span>, which performs the
+following steps:
+
+     <ul>
+<li>Build host tools necessary to build the compiler.
+
+     <li>Build target tools for use by the compiler such as binutils (bfd,
+binutils, gas, gprof, ld, and opcodes)
+if they have been individually linked or moved into the top level GCC source
+tree before configuring.
+
+     <li>Build the compiler (single stage only).
+
+     <li>Build runtime libraries using the compiler from the previous step. 
+</ul>
+
+   <p>Note that if an error occurs in any step the make process will exit.
+
+   <p>If you are not building GNU binutils in the same source tree as GCC,
+you will need a cross-assembler and cross-linker installed before
+configuring GCC.  Put them in the directory
+<var>prefix</var><span class="file">/</span><var>target</var><span class="file">/bin</span>.  Here is a table of the tools
+you should put in this directory:
+
+     <dl>
+<dt><span class="file">as</span><dd>This should be the cross-assembler.
+
+     <br><dt><span class="file">ld</span><dd>This should be the cross-linker.
+
+     <br><dt><span class="file">ar</span><dd>This should be the cross-archiver: a program which can manipulate
+archive files (linker libraries) in the target machine's format.
+
+     <br><dt><span class="file">ranlib</span><dd>This should be a program to construct a symbol table in an archive file. 
+</dl>
+
+   <p>The installation of GCC will find these programs in that directory,
+and copy or link them to the proper place to for the cross-compiler to
+find them when run later.
+
+   <p>The easiest way to provide these files is to build the Binutils package. 
+Configure it with the same <span class="option">--host</span> and <span class="option">--target</span>
+options that you use for configuring GCC, then build and install
+them.  They install their executables automatically into the proper
+directory.  Alas, they do not support all the targets that GCC
+supports.
+
+   <p>If you are not building a C library in the same source tree as GCC,
+you should also provide the target libraries and headers before
+configuring GCC, specifying the directories with
+<span class="option">--with-sysroot</span> or <span class="option">--with-headers</span> and
+<span class="option">--with-libs</span>.  Many targets also require &ldquo;start files&rdquo; such
+as <span class="file">crt0.o</span> and
+<span class="file">crtn.o</span> which are linked into each executable.  There may be several
+alternatives for <span class="file">crt0.o</span>, for use with profiling or other
+compilation options.  Check your target's definition of
+<code>STARTFILE_SPEC</code> to find out what start files it uses.
+
+<h3 class="section"><a name="TOC2"></a>0.3 Building in parallel</h3>
+
+<p>GNU Make 3.79 and above, which is necessary to build GCC, support
+building in parallel.  To activate this, you can use <span class="samp">make -j 2</span>
+instead of <span class="samp">make</span>.  You can also specify a bigger number, and
+in most cases using a value greater than the number of processors in
+your machine will result in fewer and shorter I/O latency hits, thus
+improving overall throughput; this is especially true for slow drives
+and network filesystems.
+
+<h3 class="section"><a name="TOC3"></a>0.4 Building the Ada compiler</h3>
+
+<p>In order to build GNAT, the Ada compiler, you need a working GNAT
+compiler (GNAT version 3.14 or later, or GCC version 3.1 or later). 
+This includes GNAT tools such as <span class="command">gnatmake</span> and
+<span class="command">gnatlink</span>, since the Ada front end is written in Ada and
+uses some GNAT-specific extensions.
+
+   <p>In order to build a cross compiler, it is suggested to install
+the new compiler as native first, and then use it to build the cross
+compiler.
+
+   <p><span class="command">configure</span> does not test whether the GNAT installation works
+and has a sufficiently recent version; if too old a GNAT version is
+installed, the build will fail unless <span class="option">--enable-languages</span> is
+used to disable building the Ada front end.
+
+   <p><span class="env">ADA_INCLUDE_PATH</span> and <span class="env">ADA_OBJECT_PATH</span> environment variables
+must not be set when building the Ada compiler, the Ada tools, or the
+Ada runtime libraries. You can check that your build environment is clean
+by verifying that <span class="samp">gnatls -v</span> lists only one explicit path in each
+section.
+
+<h3 class="section"><a name="TOC4"></a>0.5 Building with profile feedback</h3>
+
+<p>It is possible to use profile feedback to optimize the compiler itself.  This
+should result in a faster compiler binary.  Experiments done on x86 using gcc
+3.3 showed approximately 7 percent speedup on compiling C programs.  To
+bootstrap the compiler with profile feedback, use <code>make profiledbootstrap</code>.
+
+   <p>When <span class="samp">make profiledbootstrap</span> is run, it will first build a <code>stage1</code>
+compiler.  This compiler is used to build a <code>stageprofile</code> compiler
+instrumented to collect execution counts of instruction and branch
+probabilities.  Then runtime libraries are compiled with profile collected. 
+Finally a <code>stagefeedback</code> compiler is built using the information collected.
+
+   <p>Unlike standard bootstrap, several additional restrictions apply.  The
+compiler used to build <code>stage1</code> needs to support a 64-bit integral type. 
+It is recommended to only use GCC for this.  Also parallel make is currently
+not supported since collisions in profile collecting may occur.
+
+   <p><hr />
+<p><a href="./index.html">Return to the GCC Installation page</a>
+
+<!-- ***Testing***************************************************************** -->
+<!-- ***Final install*********************************************************** -->
+<!-- ***Binaries**************************************************************** -->
+<!-- ***Specific**************************************************************** -->
+<!-- ***Old documentation****************************************************** -->
+<!-- ***GFDL******************************************************************** -->
+<!-- *************************************************************************** -->
+<!-- Part 6 The End of the Document -->
+</body></html>
+

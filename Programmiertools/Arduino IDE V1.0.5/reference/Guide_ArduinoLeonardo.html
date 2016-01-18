@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Arduino Reference - ArduinoLeonardo </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+/**
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ */
+.arduino  {font-family:monospace;}
+.arduino .imp {font-weight: bold; color: red;}
+.arduino .kw1 {color: #CC6600;}
+.arduino .kw2 {color: #006699;}
+.arduino .kw3 {color: #CC6600; font-weight: bold;}
+.arduino .co1 {color: #7E7E7E; font-style: italic;}
+.arduino .co2 {color: #7E7E7E;}
+.arduino .coMULTI {color: #7E7E7E; font-style: italic;}
+.arduino .es0 {color: #000099; font-weight: bold;}
+.arduino .es1 {color: #000099; font-weight: bold;}
+.arduino .es2 {color: #660099; font-weight: bold;}
+.arduino .es3 {color: #660099; font-weight: bold;}
+.arduino .es4 {color: #660099; font-weight: bold;}
+.arduino .es5 {color: #006699; font-weight: bold;}
+.arduino .br0 {color: #000000;}
+.arduino .sy0 {color: #000000;}
+.arduino .st0 {color: #0066CC;}
+.arduino .nu0 {color: #000000;}
+.arduino .nu6 {color: #208080;}
+.arduino .nu8 {color: #208080;}
+.arduino .nu12 {color: #208080;}
+.arduino .nu16 {color:#800080;}
+.arduino .nu17 {color:#800080;}
+.arduino .nu18 {color:#800080;}
+.arduino .nu19 {color:#800080;}
+.arduino .me1 {color: #ff1493;}
+.arduino .me2 {color: #ff1493;}
+.arduino span.xtra { display:block; }
+
+.sourceblocklink {
+  text-align: right;
+  font-size: smaller;
+}
+.sourceblocktext {
+  padding: 0.5em;
+  color: #000000;
+  background-color: #ffffff;
+}
+.sourceblocktext div {
+  font-family: monospace;
+  font-size: small;
+  line-height: 1;
+  height: 1%;
+}
+.sourceblocktext div.head,
+.sourceblocktext div.foot {
+  font: italic medium serif;
+  padding: 0.5em;
+}
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body>
+<div id="page">
+  <!--PageHeaderFmt-->
+  <div id="pageheader">
+    <div class="title"><a href='http://arduino.cc/en'>Arduino</a></div>
+  </div>
+  <!--/PageHeaderFmt-->
+
+  <!--PageLeftFmt-->
+  <div id="pagenav">
+    <div id="navbar">
+  	<p><a class='wikilink' href='http://arduino.cc/en/Main/Buy'>Buy</a>
+<a class='wikilink' href='http://arduino.cc/en/Main/Software'>Download</a>
+<a class='wikilink' href='Guide_index.html'>Getting Started</a>
+<a class='wikilink' href='http://arduino.cc/en/Tutorial/HomePage'>Learning</a>
+<a class='wikilink' href='index.html'>Reference</a>
+<a class='wikilink' href='http://arduino.cc/en/Main/Hardware'>Hardware</a>
+<a class='wikilink' href='FAQ.html'>FAQ</a>
+</p>
+<p class='vspace'></p>
+
+    </div>
+  </div>
+  <!--/PageLeftFmt-->
+
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<h2>Guide to the Arduino Leonardo</h2>
+<p>To connect the Arduino Leonardo to your computer, you'll need a Micro-B USB cable.  This USB cable provides power and data to the board.  When programming the Leonardo, you must choose <strong>Arduino Leonardo</strong> from the <strong>Tools &gt; Board</strong> menu in the Arduino IDE.  
+</p>
+<p class='vspace'></p><p>(:*toc:)
+</p>
+<p class='vspace'></p><h4> <strong>Differences from the Arduino Uno</strong></h4>
+<p>In general, you program and use the Leonardo as you would other Arduino boards.  There are, however, a few important differences.  
+</p>
+<p class='vspace'></p><h3>Single processor for sketches and USB communication.</h3>
+<p>The Leonardo differs from previous Arduino boards in that it uses a single microcontroller to both run your sketches and for USB communication with the computer.  The Uno and other boards use separate microcontrollers for these two functions, meaning that the USB connection to the computer remains established regardless of the state of the main microcontroller.  By combining these two functions onto a single processor, the Leonardo allows for more flexibility in its communication with the computer.  It also helps to lower the cost of the board by removing the need for an additional processor. 
+</p>
+<p class='vspace'></p><h3>Serial re-enumeration on reset.</h3>
+<p>Since the Leonardo does not have a dedicated chip to handle serial communication, it means that the serial port is <strong>virtual</strong> -- it's a software routine, both on your operating system, and on the Leonardo itself.  Just as your computer creates an instance of the serial port driver when you plug in any Arduino, the Leonardo creates a serial instance whenever it runs its bootloader. The Leonardo is an instance of USB's <strong>Connected Device Class (CDC)</strong> driver. 
+</p>
+<p class='vspace'></p><p>This means that every time you reset the board, the Leonardo's USB serial connection will be broken and re-established.  The Leonardo will disappear from the list of serial ports, and the list will re-enumerate. Any program that has an open serial connection to the Leonardo will lose its connection.  This is in contrast to the Arduino Uno, with which you can reset the main processor (the <span class='wikiword'>ATmega328P</span>) without closing the USB connection (which is maintained by the secondary <span class='wikiword'>ATmega8U2</span> or <span class='wikiword'>ATmega16U2</span> processor).  This difference has implications for driver installation, uploading, and communication; these are discussed below.
+</p>
+<p class='vspace'></p><h3>No reset when you open the serial port.</h3>
+<p>Unlike the Arduino Uno, the Leonardo doesn't restart your sketch when you open its serial port on the computer.  That means you won't see serial data that's already been sent to the computer by the board, including, for example, most data sent in the setup() function.  
+</p>
+<p class='vspace'></p><p>This change means that if you're using any Serial print(), println() or write() statments in your setup, they won't show up when you open the serial monitor. To work around this, you can check to see if the serial port is open like so:
+</p>
+<p class='vspace'></p><p>
+<div class='sourceblock ' id='sourceblock1'>
+  <div class='sourceblocktext'><div class="arduino"><span class="co1">// while the serial stream is not open, do nothing:</span><br />
+&nbsp; &nbsp;<span class="kw1">while</span> <span class="br0">&#40;</span><span class="sy0">!</span><span class="kw1">Serial</span><span class="br0">&#41;</span> <span class="sy0">;</span></div></div>
+  <div class='sourceblocklink'><a href='Guide_ArduinoLeonardo?action=sourceblock&amp;num=1.html' type='text/plain'>[Get Code]</a></div>
+</div>
+
+</p>
+<p class='vspace'></p><h3>Keyboard and mouse emulation.</h3>
+<p>One advantage of using a single chip for your sketches and for USB is increased flexibility in the communication with the computer.  While the Leonardo appears as a virtual serial port to your operating system (also called CDC) for programming and communication (as with the Arduino Uno), it can also behave as a (HID) keyboard or mouse.  See the "Good Coding Practice" section below for a warning about using this functionality.
+</p>
+<p class='vspace'></p><h3>Separation of USB and serial communication.</h3>
+<p>On the Leonardo, the main <strong>Serial</strong> class refers to the virtual serial driver on the Leonardo for connection to your computer over USB.  It's not connected to the physical pins 0 and 1 as it is on the Uno and earlier boards.  To use the hardware serial port (pins 0 and 1, RX and TX), use <strong>Serial1</strong>.  (See the <a class='wikilink' href='Serial.html'>Serial reference pages</a> for more information.)
+</p>
+<p class='vspace'></p><h3>Differences in pin capabilities.</h3>
+<p>The Leonardo has some slight differences in the capabilities and assignments of various pins (especially for SPI and TWI).  These are detailed on the <a class='wikilink' href='http://arduino.cc/en/Main/ArduinoBoardLeonardo'>hardware page</a>.
+</p>
+<p class='vspace'></p><h4> <strong>Installing Drivers for the Leonardo</strong></h4>
+<h3>OSX</h3>
+<ul><li>The first time you plug a Leonardo into a Mac, the "Keyboard Setup Assistant" will launch. There's nothing to configure with the Leonardo, so you can close this dialogue by clicking the red button in the top left of the window. 
+</li></ul><p class='vspace'></p><div><img src='http://arduino.cc/en/uploads/Guide/OSXKeyboardNotification.png' alt='' title='' /></div>
+<p class='vspace'></p><h3>Windows (tested on XP and 7)<br /></h3>
+<p>The process for Windows XP and Windows 7 is similar. These screenshots are from an XP installation. <br />
+</p><ul><li>Plug in your board and wait for Windows to begin its driver installation process. If the installer does not launch automatically, Navigate to the Windows Device Manager (Start&gt;Control Panel&gt;Hardware) and find the Arduino Leonardo listing. Right click and choose <strong>Update driver</strong>.  
+</li><li>If prompted to search for drivers online, choose "No, not this time". And click <strong>Next</strong>
+</li></ul><div><img src='http://arduino.cc/en/uploads/Guide/LeonardoWindowsDrivers1.png' alt='' title='' /></div>
+<ul><li>When asked to install automatically or from a specific location, select "Install from a list or specific location" and press <strong>Next</strong>
+</li></ul><div><img src='http://arduino.cc/en/uploads/Guide/LeonardoWindowsDrivers2.png' alt='' title='' /></div>
+<ul><li>Choose "Search for the best driver in these locations", and check the box "incude this location in the search". Click the <strong>Browse</strong> button and navigate to your Arduino 1.0.1 or later installation. Select the <strong>drivers</strong> folder an click <strong>OK</strong>
+</li></ul><div><img src='http://arduino.cc/en/uploads/Guide/LeonardoWindowsDrivers3.png' alt='' title='' /></div>
+<ul><li>Click <strong>Next</strong>
+</li><li>You will receive a notification that the Leonardo has not passed Windows Logo testing. Click on the button <strong>Continue Anyway</strong>
+</li></ul><div><img src='http://arduino.cc/en/uploads/Guide/LeonardoWindowsDrivers5.png' alt='' title='' /></div>
+<dl><dd><ul><li>After a few moments, a window will tell you the wizard has finished installing software for Arduino Leonardo. Press the <strong>Finish</strong> button
+</li></ul></dd></dl><p class='vspace'></p><h3>Linux<br /></h3>
+<p>There is no need to install drivers for Ubuntu 10.0.4
+</p>
+<p class='vspace'></p><h4> <strong>Uploading Code to the Leonardo</strong></h4>
+<p>In general, you upload code to the Leonardo as you would with the Uno or other Arduino boards.  Click the upload button in the Arduino software and your sketch will be automatically uploaded onto the Leonardo and then started.  This works more or less the same way as with the Uno: the Arduino software initiates a reset of the Leonardo, launching the bootloader - which is responsible for receiving, storing, and starting the new sketch.
+</p>
+<p class='vspace'></p><p>However, because the Leonardo's serial port is virtual, it disappears when the boards resets, the Arduino software uses a different strategy for timing the upload than with the Uno and other boards.  In particular, after initiating the auto-reset of the Leonardo (using the serial port selected in the <strong>Tools &gt; Serial Port</strong> menu), the Arduino software waits for a new virtual (CDC) serial / COM port to appear - one that it assumes represents the Leonardo bootloader.  It then performs the upload on this newly-appeared port.  
+</p>
+<p class='vspace'></p><p>These differences affect the way you use the physical reset button to perform an upload if the auto-reset isn't working.  Press and hold the reset button on the Leonardo, <em>then</em> hit the upload button in the Arduino software.  Only release the reset button after you see the message "Uploading..." appear in the software's status bar.  When you do so, the bootloader will start, creating a new virtual (CDC) serial port on the computer.  The software will see that port appear and perform the upload using it.  Again, this is only necessary if the normal upload process (i.e. just pressing the uploading button) doesn't work.  (Note that the auto-reset is initiated when the computer opens the Leonardo's serial port at 1200 baud and then closes it; this won't work if something interferes with the board's USB communication - e.g. disabling interrupts.)
+</p>
+<p class='vspace'></p><h4><strong>Good Coding Practice With the Leonardo</strong></h4>
+<p><strong>A word of caution on using the Leonardo as a Mouse or Keyboard</strong>: if the Mouse or Keyboard library is constantly running, it will be difficult to program your board. Functions such as Mouse.move() and Keyboard.print() will move your cursor or send keystrokes to a connected computer and should only be called when you are ready to handle them. It is recommended to use a control system to turn this functionality on, like a physical switch or only responding to specific input you can control. When using the Mouse or Keyboard library, it may be best to test your output first using Serial.print(). This way, you can be sure you know what values are being reported. Refer to the Mouse and Keyboard examples for some ways to handle this.
+</p>
+<p class='vspace'></p><p><strong>Using the serial monitor effectively</strong>: Since serial is going through only one processor on the Leonardo, the board is capable of filling your computer's serial buffer faster than the Uno or earlier boards.  You may notice that if you send serial continually, for example like this:
+</p>
+<p class='vspace'></p><p>
+<div class='sourceblock ' id='sourceblock2'>
+  <div class='sourceblocktext'><div class="arduino"><span class="kw1">void</span> <span class="kw3">loop</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+&nbsp; &nbsp; <span class="kw1">int</span> sensorReading <span class="sy0">=</span> <span class="kw1">analogRead</span><span class="br0">&#40;</span>A0<span class="br0">&#41;</span><span class="sy0">;</span><br />
+&nbsp; &nbsp; <span class="kw1">Serial</span>.<span class="kw1">println</span><span class="br0">&#40;</span>sensorReading<span class="br0">&#41;</span><span class="sy0">;</span><br />
+<span class="br0">&#125;</span></div></div>
+  <div class='sourceblocklink'><a href='Guide_ArduinoLeonardo?action=sourceblock&amp;num=2.html' type='text/plain'>[Get Code]</a></div>
+</div>
+
+</p>
+<p class='vspace'></p><p>the Serial Monitor in the IDE slows down considerably as it tries to keep up. If you encounter this, add a short delay to your loop so that the computer's serial buffer is not filled as fast.  Even a millisecond delay will help:
+</p>
+<p class='vspace'></p><p>
+<div class='sourceblock ' id='sourceblock3'>
+  <div class='sourceblocktext'><div class="arduino"><span class="kw1">void</span> <span class="kw3">loop</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+&nbsp; &nbsp; <span class="kw1">int</span> sensorReading <span class="sy0">=</span> <span class="kw1">analogRead</span><span class="br0">&#40;</span>A0<span class="br0">&#41;</span><span class="sy0">;</span><br />
+&nbsp; &nbsp; <span class="kw1">Serial</span>.<span class="kw1">println</span><span class="br0">&#40;</span>sensorReading<span class="br0">&#41;</span><span class="sy0">;</span><br />
+&nbsp; &nbsp; <span class="kw1">delay</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+<span class="br0">&#125;</span></div></div>
+  <div class='sourceblocklink'><a href='Guide_ArduinoLeonardo?action=sourceblock&amp;num=3.html' type='text/plain'>[Get Code]</a></div>
+</div>
+
+</p>
+<p class='vspace'></p><p>Serial applications using native libraries other than RXTX library read the serial buffer faster, so you may not encounter this error much outside of the Serial Monitor, Processing, or other RXTX-based serial applications
+</p>
+<p class='vspace'></p><p>For more details on the Arduino Leonardo, see the <a class='wikilink' href='http://arduino.cc/en/Main/ArduinoBoardLeonardo'>hardware page</a> and the <a class='wikilink' href='MouseKeyboard.html'>Mouse and Keyboard reference pages</a>. 
+<br /><br />The text of the Arduino getting started guide is licensed under a
+<a class='urllink' href='http://creativecommons.org/licenses/by-sa/3.0/' rel='nofollow'>Creative Commons Attribution-ShareAlike 3.0 License</a>.  Code samples in the guide are released into the public domain.
+</p>
+</div>
+
+
+  </div>
+
+  <!--PageFooterFmt-->
+  <div id="pagefooter">
+&copy;Arduino | 
+  <a href='Guide_ArduinoLeonardo?action=edit.html'>Edit Page</a> | <a href='Guide_ArduinoLeonardo?action=diff.html'>Page History</a> | <a href='Guide_ArduinoLeonardo?action=print.html' target='_blank'>Printable View</a> | <a href='http://arduino.cc/en/Site/AllRecentChanges'>All Recent Site Changes</a>
+  </div>
+  <!--/PageFooterFmt-->
+
+</div>
+</body>
+</html>

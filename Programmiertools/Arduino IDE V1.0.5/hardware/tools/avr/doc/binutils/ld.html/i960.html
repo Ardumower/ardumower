@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+<title>i960 - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Dependent.html#Machine-Dependent" title="Machine Dependent">
+<link rel="prev" href="H8_002f300.html#H8_002f300" title="H8/300">
+<link rel="next" href="ARM.html#ARM" title="ARM">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU linker LD
+(GNU Binutils)
+version 2.19.
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000,
+2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i960"></a>Next:&nbsp;<a rel="next" accesskey="n" href="ARM.html#ARM">ARM</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="H8_002f300.html#H8_002f300">H8/300</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Dependent.html#Machine-Dependent">Machine Dependent</a>
+<hr><br>
+</div>
+
+<h3 class="section">4.2 <span class="command">ld</span> and the Intel 960 Family</h3>
+
+<p><a name="index-i960-support-525"></a>
+You can use the <span class="samp">-A</span><var>architecture</var> command line option to
+specify one of the two-letter names identifying members of the 960
+family; the option specifies the desired output target, and warns of any
+incompatible instructions in the input files.  It also modifies the
+linker's search strategy for archive libraries, to support the use of
+libraries specific to each particular architecture, by including in the
+search loop names suffixed with the string identifying the architecture.
+
+   <p>For example, if your <span class="command">ld</span> command line included <span class="samp">-ACA</span><!-- /@w --> as
+well as <span class="samp">-ltry</span><!-- /@w -->, the linker would look (in its built-in search
+paths, and in any paths you specify with <span class="samp">-L</span>) for a library with
+the names
+
+<pre class="smallexample">     try
+     libtry.a
+     tryca
+     libtryca.a
+</pre>
+   <p class="noindent">The first two possibilities would be considered in any event; the last
+two are due to the use of <span class="samp">-ACA</span><!-- /@w -->.
+
+   <p>You can meaningfully use <span class="samp">-A</span> more than once on a command line, since
+the 960 architecture family allows combination of target architectures; each
+use will add another pair of name variants to search for when <span class="samp">-l</span><!-- /@w -->
+specifies a library.
+
+   <p><a name="index-_0040option_007b_002d_002drelax_007d-on-i960-526"></a><a name="index-relaxing-on-i960-527"></a><span class="command">ld</span> supports the <span class="samp">--relax</span> option for the i960 family.  If
+you specify <span class="samp">--relax</span>, <span class="command">ld</span> finds all <code>balx</code> and
+<code>calx</code> instructions whose targets are within 24 bits, and turns
+them into 24-bit program-counter relative <code>bal</code> and <code>cal</code>
+instructions, respectively.  <span class="command">ld</span> also turns <code>cal</code>
+instructions into <code>bal</code> instructions when it determines that the
+target subroutine is a leaf routine (that is, the target subroutine does
+not itself call any subroutines).
+
+   </body></html>
+

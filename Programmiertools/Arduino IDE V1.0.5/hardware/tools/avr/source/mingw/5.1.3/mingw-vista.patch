@@ -1,0 +1,23 @@
+===================================================================
+RCS file: /cvs/src/src/winsup/mingw/include/io.h,v
+retrieving revision 1.16
+retrieving revision 1.17
+diff -u -r1.16 -r1.17
+--- mingw/include/io.h	2007/02/08 08:15:32	1.16
++++ mingw/include/io.h	2007/03/05 08:25:32	1.17
+@@ -293,6 +293,15 @@
+ _CRTIMP int __cdecl write (int, const void*, unsigned int);
+ #endif /* _UWIN */
+ 
++#ifdef __USE_MINGW_ACCESS
++/*  Old versions of MSVCRT access() just ignored X_OK, while the version
++    shipped with Vista, returns an error code.  This will restore the
++    old behaviour  */
++static inline int __mingw_access (const char* __fname, int __mode)
++  { return  _access (__fname, __mode & ~X_OK); }
++#define access(__f,__m)  __mingw_access (__f, __m)
++#endif
++
+ /* Wide character versions. Also declared in wchar.h. */
+ /* Where do these live? Not in libmoldname.a nor in libmsvcrt.a */
+ #if 0

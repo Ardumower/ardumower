@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+<title>MIPS floating-point - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="MIPS_002dDependent.html#MIPS_002dDependent" title="MIPS-Dependent">
+<link rel="prev" href="MIPS-ASE-instruction-generation-overrides.html#MIPS-ASE-instruction-generation-overrides" title="MIPS ASE instruction generation overrides">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="MIPS-floating_002dpoint"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="MIPS-ASE-instruction-generation-overrides.html#MIPS-ASE-instruction-generation-overrides">MIPS ASE instruction generation overrides</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="MIPS_002dDependent.html#MIPS_002dDependent">MIPS-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.22.10 Directives to override floating-point options</h4>
+
+<p><a name="index-Disable-floating_002dpoint-instructions-1243"></a><a name="index-_0040code_007b_002eset-softfloat_007d-1244"></a><a name="index-_0040code_007b_002eset-hardfloat_007d-1245"></a>The directives <code>.set softfloat</code> and <code>.set hardfloat</code> provide
+finer control of disabling and enabling float-point instructions. 
+These directives always override the default (that hard-float
+instructions are accepted) or the command-line options
+(<span class="samp">-msoft-float</span> and <span class="samp">-mhard-float</span>).
+
+   <p><a name="index-Disable-single_002dprecision-floating_002dpoint-operations-1246"></a><a name="index-_0040code_007b_002eset-softfloat_007d-1247"></a><a name="index-_0040code_007b_002eset-hardfloat_007d-1248"></a>The directives <code>.set singlefloat</code> and <code>.set doublefloat</code>
+provide finer control of disabling and enabling double-precision
+float-point operations.  These directives always override the default
+(that double-precision operations are accepted) or the command-line
+options (<span class="samp">-msingle-float</span> and <span class="samp">-mdouble-float</span>).
+
+   <p>Traditional <span class="sc">mips</span> assemblers do not support these directives.
+
+<!-- Copyright 2001, 2002, 2003 Free Software Foundation, Inc. -->
+<!-- This is part of the GAS manual. -->
+<!-- For copying conditions, see the file as.texinfo. -->
+<!-- MMIX description by Hans-Peter Nilsson, hp@bitrange.com -->
+</body></html>
+

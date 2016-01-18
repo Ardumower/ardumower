@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+<title>Obsolete once-only headers - The C Preprocessor</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The C Preprocessor">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Obsolete-Features.html#Obsolete-Features" title="Obsolete Features">
+<link rel="prev" href="Assertions.html#Assertions" title="Assertions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1987, 1989, 1991, 1992, 1993, 1994, 1995, 1996,
+1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation.  A copy of
+the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+This manual contains no Invariant Sections.  The Front-Cover Texts are
+(a) (see below), and the Back-Cover Texts are (b) (see below).
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Obsolete-once_002donly-headers"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Assertions.html#Assertions">Assertions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Obsolete-Features.html#Obsolete-Features">Obsolete Features</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">11.3.2 Obsolete once-only headers</h4>
+
+<p>CPP supports two more ways of indicating that a header file should be
+read only once.  Neither one is as portable as a wrapper <span class="samp">#ifndef</span>,
+and we recommend you do not use them in new programs.
+
+   <p><a name="index-_0023import-116"></a>In the Objective-C language, there is a variant of <span class="samp">#include</span>
+called <span class="samp">#import</span> which includes a file, but does so at most once. 
+If you use <span class="samp">#import</span> instead of <span class="samp">#include</span>, then you don't
+need the conditionals inside the header file to prevent multiple
+inclusion of the contents.  GCC permits the use of <span class="samp">#import</span> in C
+and C++ as well as Objective-C.  However, it is not in standard C or C++
+and should therefore not be used by portable programs.
+
+   <p><span class="samp">#import</span> is not a well designed feature.  It requires the users of
+a header file to know that it should only be included once.  It is much
+better for the header file's implementor to write the file so that users
+don't need to know this.  Using a wrapper <span class="samp">#ifndef</span> accomplishes
+this goal.
+
+   <p>In the present implementation, a single use of <span class="samp">#import</span> will
+prevent the file from ever being read again, by either <span class="samp">#import</span> or
+<span class="samp">#include</span>.  You should not rely on this; do not use both
+<span class="samp">#import</span> and <span class="samp">#include</span> to refer to the same header file.
+
+   <p>Another way to prevent a header file from being included more than once
+is with the <span class="samp">#pragma once</span> directive.  If <span class="samp">#pragma once</span> is
+seen when scanning a header file, that file will never be read again, no
+matter what.
+
+   <p><span class="samp">#pragma once</span> does not have the problems that <span class="samp">#import</span> does,
+but it is not recognized by all preprocessors, so you cannot rely on it
+in a portable program.
+
+   </body></html>
+

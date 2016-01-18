@@ -1,0 +1,1985 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Command Line Editing</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Command Line Editing">
+<META NAME="keywords" CONTENT="Debugging with GDB: Command Line Editing">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC657"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_27.html#SEC656"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC658"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_4.html#SEC14"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_29.html#SEC679"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 27. Command Line Editing </H1>
+<!--docid::SEC657::-->
+<P>
+
+This chapter describes the basic features of the GNU
+command line editing interface.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC658">27.1 Introduction to Line Editing</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Notation used in this text.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC659">27.2 Readline Interaction</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">The minimum set of commands for editing a line.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC665">27.3 Readline Init File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Customizing Readline from a user's view.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC669">27.4 Bindable Readline Commands</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">A description of most of the Readline commands
+				available for binding</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC678">27.5 Readline vi Mode</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">A short description of how to make Readline
+				behave like the vi editor.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Introduction and Notation"></A>
+<HR SIZE="6">
+<A NAME="SEC658"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_29.html#SEC679"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 27.1 Introduction to Line Editing </H2>
+<!--docid::SEC658::-->
+<P>
+
+The following paragraphs describe the notation used to represent
+keystrokes.
+</P><P>
+
+The text <KBD>C-k</KBD> is read as `Control-K' and describes the character
+produced when the <KBD>k</KBD> key is pressed while the Control key
+is depressed.
+</P><P>
+
+The text <KBD>M-k</KBD> is read as `Meta-K' and describes the character
+produced when the Meta key (if you have one) is depressed, and the <KBD>k</KBD>
+key is pressed.
+The Meta key is labeled <KBD>ALT</KBD> on many keyboards.
+On keyboards with two keys labeled <KBD>ALT</KBD> (usually to either side of
+the space bar), the <KBD>ALT</KBD> on the left side is generally set to
+work as a Meta key.
+The <KBD>ALT</KBD> key on the right may also be configured to work as a
+Meta key or may be configured as some other modifier, such as a
+Compose key for typing accented characters.
+</P><P>
+
+If you do not have a Meta or <KBD>ALT</KBD> key, or another key working as
+a Meta key, the identical keystroke can be generated by typing <KBD>ESC</KBD>
+<EM>first</EM>, and then typing <KBD>k</KBD>.
+Either process is known as <EM>metafying</EM> the <KBD>k</KBD> key.
+</P><P>
+
+The text <KBD>M-C-k</KBD> is read as `Meta-Control-k' and describes the
+character produced by <EM>metafying</EM> <KBD>C-k</KBD>.
+</P><P>
+
+In addition, several keys have their own names.  Specifically,
+<KBD>DEL</KBD>, <KBD>ESC</KBD>, <KBD>LFD</KBD>, <KBD>SPC</KBD>, <KBD>RET</KBD>, and <KBD>TAB</KBD> all
+stand for themselves when seen in this text, or in an init file
+(see section <A HREF="gdb_28.html#SEC665">27.3 Readline Init File</A>).
+If your keyboard lacks a <KBD>LFD</KBD> key, typing <KBD>C-j</KBD> will
+produce the desired character.
+The <KBD>RET</KBD> key may be labeled <KBD>Return</KBD> or <KBD>Enter</KBD> on
+some keyboards.
+</P><P>
+
+<A NAME="Readline Interaction"></A>
+<HR SIZE="6">
+<A NAME="SEC659"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC658"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC660"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 27.2 Readline Interaction </H2>
+<!--docid::SEC659::-->
+<P>
+
+Often during an interactive session you type in a long line of text,
+only to notice that the first word on the line is misspelled.  The
+Readline library gives you a set of commands for manipulating the text
+as you type it in, allowing you to just fix your typo, and not forcing
+you to retype the majority of the line.  Using these editing commands,
+you move the cursor to the place that needs correction, and delete or
+insert the text of the corrections.  Then, when you are satisfied with
+the line, you simply press <KBD>RET</KBD>.  You do not have to be at the
+end of the line to press <KBD>RET</KBD>; the entire line is accepted
+regardless of the location of the cursor within the line.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC660">27.2.1 Readline Bare Essentials</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">The least you need to know about Readline.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC661">27.2.2 Readline Movement Commands</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Moving about the input line.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC662">27.2.3 Readline Killing Commands</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">How to delete text, and how to get it back!</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC663">27.2.4 Readline Arguments</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Giving numeric arguments to commands.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC664">27.2.5 Searching for Commands in the History</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Searching through previous lines.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Readline Bare Essentials"></A>
+<HR SIZE="6">
+<A NAME="SEC660"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC661"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.2.1 Readline Bare Essentials </H3>
+<!--docid::SEC660::-->
+<P>
+
+In order to enter characters into the line, simply type them.  The typed
+character appears where the cursor was, and then the cursor moves one
+space to the right.  If you mistype a character, you can use your
+erase character to back up and delete the mistyped character.
+</P><P>
+
+Sometimes you may mistype a character, and
+not notice the error until you have typed several other characters.  In
+that case, you can type <KBD>C-b</KBD> to move the cursor to the left, and then
+correct your mistake.  Afterwards, you can move the cursor to the right
+with <KBD>C-f</KBD>.
+</P><P>
+
+When you add text in the middle of a line, you will notice that characters
+to the right of the cursor are `pushed over' to make room for the text
+that you have inserted.  Likewise, when you delete text behind the cursor,
+characters to the right of the cursor are `pulled back' to fill in the
+blank space created by the removal of the text.  A list of the bare
+essentials for editing the text of an input line follows.
+</P><P>
+
+<DL COMPACT>
+<DT><KBD>C-b</KBD>
+<DD>Move back one character.
+<DT><KBD>C-f</KBD>
+<DD>Move forward one character.
+<DT><KBD>DEL</KBD> or <KBD>Backspace</KBD>
+<DD>Delete the character to the left of the cursor.
+<DT><KBD>C-d</KBD>
+<DD>Delete the character underneath the cursor.
+<DT>Printing characters
+<DD>Insert the character into the line at the cursor.
+<DT><KBD>C-_</KBD> or <KBD>C-x C-u</KBD>
+<DD>Undo the last editing command.  You can undo all the way back to an
+empty line.
+</DL>
+<P>
+
+(Depending on your configuration, the <KBD>Backspace</KBD> key be set to
+delete the character to the left of the cursor and the <KBD>DEL</KBD> key set
+to delete the character underneath the cursor, like <KBD>C-d</KBD>, rather
+than the character to the left of the cursor.)
+</P><P>
+
+<A NAME="Readline Movement Commands"></A>
+<HR SIZE="6">
+<A NAME="SEC661"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC660"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC662"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC662"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.2.2 Readline Movement Commands </H3>
+<!--docid::SEC661::-->
+<P>
+
+The above table describes the most basic keystrokes that you need
+in order to do editing of the input line.  For your convenience, many
+other commands have been added in addition to <KBD>C-b</KBD>, <KBD>C-f</KBD>,
+<KBD>C-d</KBD>, and <KBD>DEL</KBD>.  Here are some commands for moving more rapidly
+about the line.
+</P><P>
+
+<DL COMPACT>
+<DT><KBD>C-a</KBD>
+<DD>Move to the start of the line.
+<DT><KBD>C-e</KBD>
+<DD>Move to the end of the line.
+<DT><KBD>M-f</KBD>
+<DD>Move forward a word, where a word is composed of letters and digits.
+<DT><KBD>M-b</KBD>
+<DD>Move backward a word.
+<DT><KBD>C-l</KBD>
+<DD>Clear the screen, reprinting the current line at the top.
+</DL>
+<P>
+
+Notice how <KBD>C-f</KBD> moves forward a character, while <KBD>M-f</KBD> moves
+forward a word.  It is a loose convention that control keystrokes
+operate on characters while meta keystrokes operate on words.
+</P><P>
+
+<A NAME="Readline Killing Commands"></A>
+<HR SIZE="6">
+<A NAME="SEC662"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC661"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC663"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC663"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.2.3 Readline Killing Commands </H3>
+<!--docid::SEC662::-->
+<P>
+
+<A NAME="IDX1333"></A>
+<A NAME="IDX1334"></A>
+</P><P>
+
+<EM>Killing</EM> text means to delete the text from the line, but to save
+it away for later use, usually by <EM>yanking</EM> (re-inserting)
+it back into the line.
+(`Cut' and `paste' are more recent jargon for `kill' and `yank'.)
+</P><P>
+
+If the description for a command says that it `kills' text, then you can
+be sure that you can get the text back in a different (or the same)
+place later.
+</P><P>
+
+When you use a kill command, the text is saved in a <EM>kill-ring</EM>.
+Any number of consecutive kills save all of the killed text together, so
+that when you yank it back, you get it all.  The kill
+ring is not line specific; the text that you killed on a previously
+typed line is available to be yanked back later, when you are typing
+another line.
+<A NAME="IDX1335"></A>
+</P><P>
+
+Here is the list of commands for killing text.
+</P><P>
+
+<DL COMPACT>
+<DT><KBD>C-k</KBD>
+<DD>Kill the text from the current cursor position to the end of the line.
+<P>
+
+<DT><KBD>M-d</KBD>
+<DD>Kill from the cursor to the end of the current word, or, if between
+words, to the end of the next word.
+Word boundaries are the same as those used by <KBD>M-f</KBD>.
+<P>
+
+<DT><KBD>M-<KBD>DEL</KBD></KBD>
+<DD>Kill from the cursor the start of the current word, or, if between
+words, to the start of the previous word.
+Word boundaries are the same as those used by <KBD>M-b</KBD>.
+<P>
+
+<DT><KBD>C-w</KBD>
+<DD>Kill from the cursor to the previous whitespace.  This is different than
+<KBD>M-<KBD>DEL</KBD></KBD> because the word boundaries differ.
+<P>
+
+</DL>
+<P>
+
+Here is how to <EM>yank</EM> the text back into the line.  Yanking
+means to copy the most-recently-killed text from the kill buffer.
+</P><P>
+
+<DL COMPACT>
+<DT><KBD>C-y</KBD>
+<DD>Yank the most recently killed text back into the buffer at the cursor.
+<P>
+
+<DT><KBD>M-y</KBD>
+<DD>Rotate the kill-ring, and yank the new top.  You can only do this if
+the prior command is <KBD>C-y</KBD> or <KBD>M-y</KBD>.
+</DL>
+<P>
+
+<A NAME="Readline Arguments"></A>
+<HR SIZE="6">
+<A NAME="SEC663"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC662"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC664"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC664"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.2.4 Readline Arguments </H3>
+<!--docid::SEC663::-->
+<P>
+
+You can pass numeric arguments to Readline commands.  Sometimes the
+argument acts as a repeat count, other times it is the <I>sign</I> of the
+argument that is significant.  If you pass a negative argument to a
+command which normally acts in a forward direction, that command will
+act in a backward direction.  For example, to kill text back to the
+start of the line, you might type <SAMP>`M-- C-k'</SAMP>.
+</P><P>
+
+The general way to pass numeric arguments to a command is to type meta
+digits before the command.  If the first `digit' typed is a minus
+sign (<SAMP>`-'</SAMP>), then the sign of the argument will be negative.  Once
+you have typed one meta digit to get the argument started, you can type
+the remainder of the digits, and then the command.  For example, to give
+the <KBD>C-d</KBD> command an argument of 10, you could type <SAMP>`M-1 0 C-d'</SAMP>,
+which will delete the next ten characters on the input line.
+</P><P>
+
+<A NAME="Searching"></A>
+<HR SIZE="6">
+<A NAME="SEC664"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC663"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC659"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.2.5 Searching for Commands in the History </H3>
+<!--docid::SEC664::-->
+<P>
+
+Readline provides commands for searching through the command history
+for lines containing a specified string.
+There are two search modes:  <EM>incremental</EM> and <EM>non-incremental</EM>.
+</P><P>
+
+Incremental searches begin before the user has finished typing the
+search string.
+As each character of the search string is typed, Readline displays
+the next entry from the history matching the string typed so far.
+An incremental search requires only as many characters as needed to
+find the desired history entry.
+To search backward in the history for a particular string, type
+<KBD>C-r</KBD>.  Typing <KBD>C-s</KBD> searches forward through the history.
+The characters present in the value of the <CODE>isearch-terminators</CODE> variable
+are used to terminate an incremental search.
+If that variable has not been assigned a value, the <KBD>ESC</KBD> and
+<KBD>C-J</KBD> characters will terminate an incremental search.
+<KBD>C-g</KBD> will abort an incremental search and restore the original line.
+When the search is terminated, the history entry containing the
+search string becomes the current line.
+</P><P>
+
+To find other matching entries in the history list, type <KBD>C-r</KBD> or
+<KBD>C-s</KBD> as appropriate.
+This will search backward or forward in the history for the next
+entry matching the search string typed so far.
+Any other key sequence bound to a Readline command will terminate
+the search and execute that command.
+For instance, a <KBD>RET</KBD> will terminate the search and accept
+the line, thereby executing the command from the history list.
+A movement command will terminate the search, make the last line found
+the current line, and begin editing.
+</P><P>
+
+Readline remembers the last incremental search string.  If two
+<KBD>C-r</KBD>s are typed without any intervening characters defining a new
+search string, any remembered search string is used.
+</P><P>
+
+Non-incremental searches read the entire search string before starting
+to search for matching history lines.  The search string may be
+typed by the user or be part of the contents of the current line.
+</P><P>
+
+<A NAME="Readline Init File"></A>
+<HR SIZE="6">
+<A NAME="SEC665"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC664"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC666"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 27.3 Readline Init File </H2>
+<!--docid::SEC665::-->
+<P>
+
+Although the Readline library comes with a set of Emacs-like
+keybindings installed by default, it is possible to use a different set
+of keybindings.
+Any user can customize programs that use Readline by putting
+commands in an <EM>inputrc</EM> file, conventionally in his home directory.
+The name of this
+file is taken from the value of the environment variable <CODE>INPUTRC</CODE>.  If
+that variable is unset, the default is <TT>`~/.inputrc'</TT>.
+</P><P>
+
+When a program which uses the Readline library starts up, the
+init file is read, and the key bindings are set.
+</P><P>
+
+In addition, the <CODE>C-x C-r</CODE> command re-reads this init file, thus
+incorporating any changes that you might have made to it.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC666">27.3.1 Readline Init File Syntax</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Syntax for the commands in the inputrc file.</TD></TR>
+</TABLE>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC667">27.3.2 Conditional Init Constructs</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Conditional key bindings in the inputrc file.</TD></TR>
+</TABLE>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC668">27.3.3 Sample Init File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">An example inputrc file.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Readline Init File Syntax"></A>
+<HR SIZE="6">
+<A NAME="SEC666"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC667"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.3.1 Readline Init File Syntax </H3>
+<!--docid::SEC666::-->
+<P>
+
+There are only a few basic constructs allowed in the
+Readline init file.  Blank lines are ignored.
+Lines beginning with a <SAMP>`#'</SAMP> are comments.
+Lines beginning with a <SAMP>`$'</SAMP> indicate conditional
+constructs (see section <A HREF="gdb_28.html#SEC667">27.3.2 Conditional Init Constructs</A>).  Other lines
+denote variable settings and key bindings.
+</P><P>
+
+<DL COMPACT>
+<DT>Variable Settings
+<DD>You can modify the run-time behavior of Readline by
+altering the values of variables in Readline
+using the <CODE>set</CODE> command within the init file.
+The syntax is simple:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>set <VAR>variable</VAR> <VAR>value</VAR>
+</pre></td></tr></table></P><P>
+
+Here, for example, is how to
+change from the default Emacs-like key binding to use
+<CODE>vi</CODE> line editing commands:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>set editing-mode vi
+</pre></td></tr></table></P><P>
+
+Variable names and values, where appropriate, are recognized without regard
+to case.  Unrecognized variable names are ignored.
+</P><P>
+
+Boolean variables (those that can be set to on or off) are set to on if
+the value is null or empty, <VAR>on</VAR> (case-insensitive), or 1.  Any other
+value results in the variable being set to off.
+</P><P>
+
+A great deal of run-time behavior is changeable with the following
+variables.
+</P><P>
+
+<A NAME="IDX1336"></A>
+<DL COMPACT>
+
+<DT><CODE>bell-style</CODE>
+<DD><A NAME="IDX1337"></A>
+Controls what happens when Readline wants to ring the terminal bell.
+If set to <SAMP>`none'</SAMP>, Readline never rings the bell.  If set to
+<SAMP>`visible'</SAMP>, Readline uses a visible bell if one is available.
+If set to <SAMP>`audible'</SAMP> (the default), Readline attempts to ring
+the terminal's bell.
+<P>
+
+<DT><CODE>bind-tty-special-chars</CODE>
+<DD><A NAME="IDX1338"></A>
+If set to <SAMP>`on'</SAMP>, Readline attempts to bind the control characters  
+treated specially by the kernel's terminal driver to their Readline
+equivalents.
+<P>
+
+<DT><CODE>comment-begin</CODE>
+<DD><A NAME="IDX1339"></A>
+The string to insert at the beginning of the line when the
+<CODE>insert-comment</CODE> command is executed.  The default value
+is <CODE>"#"</CODE>.
+<P>
+
+<DT><CODE>completion-ignore-case</CODE>
+<DD>If set to <SAMP>`on'</SAMP>, Readline performs filename matching and completion
+in a case-insensitive fashion.
+The default value is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>completion-query-items</CODE>
+<DD><A NAME="IDX1340"></A>
+The number of possible completions that determines when the user is
+asked whether the list of possibilities should be displayed.
+If the number of possible completions is greater than this value,
+Readline will ask the user whether or not he wishes to view
+them; otherwise, they are simply listed.
+This variable must be set to an integer value greater than or equal to 0.
+A negative value means Readline should never ask.
+The default limit is <CODE>100</CODE>.
+<P>
+
+<DT><CODE>convert-meta</CODE>
+<DD><A NAME="IDX1341"></A>
+If set to <SAMP>`on'</SAMP>, Readline will convert characters with the
+eighth bit set to an ASCII key sequence by stripping the eighth
+bit and prefixing an <KBD>ESC</KBD> character, converting them to a
+meta-prefixed key sequence.  The default value is <SAMP>`on'</SAMP>.
+<P>
+
+<DT><CODE>disable-completion</CODE>
+<DD><A NAME="IDX1342"></A>
+If set to <SAMP>`On'</SAMP>, Readline will inhibit word completion.
+Completion  characters will be inserted into the line as if they had
+been mapped to <CODE>self-insert</CODE>.  The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>editing-mode</CODE>
+<DD><A NAME="IDX1343"></A>
+The <CODE>editing-mode</CODE> variable controls which default set of
+key bindings is used.  By default, Readline starts up in Emacs editing
+mode, where the keystrokes are most similar to Emacs.  This variable can be
+set to either <SAMP>`emacs'</SAMP> or <SAMP>`vi'</SAMP>.
+<P>
+
+<DT><CODE>enable-keypad</CODE>
+<DD><A NAME="IDX1344"></A>
+When set to <SAMP>`on'</SAMP>, Readline will try to enable the application
+keypad when it is called.  Some systems need this to enable the
+arrow keys.  The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>expand-tilde</CODE>
+<DD><A NAME="IDX1345"></A>
+If set to <SAMP>`on'</SAMP>, tilde expansion is performed when Readline
+attempts word completion.  The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>history-preserve-point</CODE>
+<DD><A NAME="IDX1346"></A>
+If set to <SAMP>`on'</SAMP>, the history code attempts to place point at the
+same location on each history line retrieved with <CODE>previous-history</CODE>
+or <CODE>next-history</CODE>.  The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>horizontal-scroll-mode</CODE>
+<DD><A NAME="IDX1347"></A>
+This variable can be set to either <SAMP>`on'</SAMP> or <SAMP>`off'</SAMP>.  Setting it
+to <SAMP>`on'</SAMP> means that the text of the lines being edited will scroll
+horizontally on a single screen line when they are longer than the width
+of the screen, instead of wrapping onto a new screen line.  By default,
+this variable is set to <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>input-meta</CODE>
+<DD><A NAME="IDX1348"></A>
+<A NAME="IDX1349"></A>
+If set to <SAMP>`on'</SAMP>, Readline will enable eight-bit input (it
+will not clear the eighth bit in the characters it reads),
+regardless of what the terminal claims it can support.  The
+default value is <SAMP>`off'</SAMP>.  The name <CODE>meta-flag</CODE> is a
+synonym for this variable.
+<P>
+
+<DT><CODE>isearch-terminators</CODE>
+<DD><A NAME="IDX1350"></A>
+The string of characters that should terminate an incremental search without
+subsequently executing the character as a command (see section <A HREF="gdb_28.html#SEC664">27.2.5 Searching for Commands in the History</A>).
+If this variable has not been given a value, the characters <KBD>ESC</KBD> and
+<KBD>C-J</KBD> will terminate an incremental search.
+<P>
+
+<DT><CODE>keymap</CODE>
+<DD><A NAME="IDX1351"></A>
+Sets Readline's idea of the current keymap for key binding commands.
+Acceptable <CODE>keymap</CODE> names are
+<CODE>emacs</CODE>,
+<CODE>emacs-standard</CODE>,
+<CODE>emacs-meta</CODE>,
+<CODE>emacs-ctlx</CODE>,
+<CODE>vi</CODE>,
+<CODE>vi-move</CODE>,
+<CODE>vi-command</CODE>, and
+<CODE>vi-insert</CODE>.
+<CODE>vi</CODE> is equivalent to <CODE>vi-command</CODE>; <CODE>emacs</CODE> is
+equivalent to <CODE>emacs-standard</CODE>.  The default value is <CODE>emacs</CODE>.
+The value of the <CODE>editing-mode</CODE> variable also affects the
+default keymap.
+<P>
+
+<DT><CODE>mark-directories</CODE>
+<DD>If set to <SAMP>`on'</SAMP>, completed directory names have a slash
+appended.  The default is <SAMP>`on'</SAMP>.
+<P>
+
+<DT><CODE>mark-modified-lines</CODE>
+<DD><A NAME="IDX1352"></A>
+This variable, when set to <SAMP>`on'</SAMP>, causes Readline to display an
+asterisk (<SAMP>`*'</SAMP>) at the start of history lines which have been modified.
+This variable is <SAMP>`off'</SAMP> by default.
+<P>
+
+<DT><CODE>mark-symlinked-directories</CODE>
+<DD><A NAME="IDX1353"></A>
+If set to <SAMP>`on'</SAMP>, completed names which are symbolic links
+to directories have a slash appended (subject to the value of
+<CODE>mark-directories</CODE>).
+The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>match-hidden-files</CODE>
+<DD><A NAME="IDX1354"></A>
+This variable, when set to <SAMP>`on'</SAMP>, causes Readline to match files whose
+names begin with a <SAMP>`.'</SAMP> (hidden files) when performing filename
+completion, unless the leading <SAMP>`.'</SAMP> is
+supplied by the user in the filename to be completed.
+This variable is <SAMP>`on'</SAMP> by default.
+<P>
+
+<DT><CODE>output-meta</CODE>
+<DD><A NAME="IDX1355"></A>
+If set to <SAMP>`on'</SAMP>, Readline will display characters with the
+eighth bit set directly rather than as a meta-prefixed escape
+sequence.  The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>page-completions</CODE>
+<DD><A NAME="IDX1356"></A>
+If set to <SAMP>`on'</SAMP>, Readline uses an internal <CODE>more</CODE>-like pager
+to display a screenful of possible completions at a time.
+This variable is <SAMP>`on'</SAMP> by default.
+<P>
+
+<DT><CODE>print-completions-horizontally</CODE>
+<DD>If set to <SAMP>`on'</SAMP>, Readline will display completions with matches
+sorted horizontally in alphabetical order, rather than down the screen.
+The default is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>show-all-if-ambiguous</CODE>
+<DD><A NAME="IDX1357"></A>
+This alters the default behavior of the completion functions.  If
+set to <SAMP>`on'</SAMP>, 
+words which have more than one possible completion cause the
+matches to be listed immediately instead of ringing the bell.
+The default value is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>show-all-if-unmodified</CODE>
+<DD><A NAME="IDX1358"></A>
+This alters the default behavior of the completion functions in
+a fashion similar to <VAR>show-all-if-ambiguous</VAR>.
+If set to <SAMP>`on'</SAMP>, 
+words which have more than one possible completion without any
+possible partial completion (the possible completions don't share
+a common prefix) cause the matches to be listed immediately instead
+of ringing the bell.
+The default value is <SAMP>`off'</SAMP>.
+<P>
+
+<DT><CODE>visible-stats</CODE>
+<DD><A NAME="IDX1359"></A>
+If set to <SAMP>`on'</SAMP>, a character denoting a file's type
+is appended to the filename when listing possible
+completions.  The default is <SAMP>`off'</SAMP>.
+<P>
+
+</DL>
+<P>
+
+<DT>Key Bindings
+<DD>The syntax for controlling key bindings in the init file is
+simple.  First you need to find the name of the command that you
+want to change.  The following sections contain tables of the command
+name, the default keybinding, if any, and a short description of what
+the command does.
+<P>
+
+Once you know the name of the command, simply place on a line
+in the init file the name of the key
+you wish to bind the command to, a colon, and then the name of the
+command.  The name of the key
+can be expressed in different ways, depending on what you find most
+comfortable.
+</P><P>
+
+In addition to command names, readline allows keys to be bound
+to a string that is inserted when the key is pressed (a <VAR>macro</VAR>).
+</P><P>
+
+<DL COMPACT>
+<DT><VAR>keyname</VAR>: <VAR>function-name</VAR> or <VAR>macro</VAR>
+<DD><VAR>keyname</VAR> is the name of a key spelled out in English.  For example:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>Control-u: universal-argument
+Meta-Rubout: backward-kill-word
+Control-o: "&#62; output"
+</pre></td></tr></table><P>
+
+In the above example, <KBD>C-u</KBD> is bound to the function
+<CODE>universal-argument</CODE>,
+<KBD>M-DEL</KBD> is bound to the function <CODE>backward-kill-word</CODE>, and
+<KBD>C-o</KBD> is bound to run the macro
+expressed on the right hand side (that is, to insert the text
+<SAMP>`&#62; output'</SAMP> into the line).
+</P><P>
+
+A number of symbolic character names are recognized while
+processing this key binding syntax:
+<VAR>DEL</VAR>,
+<VAR>ESC</VAR>,
+<VAR>ESCAPE</VAR>,
+<VAR>LFD</VAR>,
+<VAR>NEWLINE</VAR>,
+<VAR>RET</VAR>,
+<VAR>RETURN</VAR>,
+<VAR>RUBOUT</VAR>,
+<VAR>SPACE</VAR>,
+<VAR>SPC</VAR>,
+and
+<VAR>TAB</VAR>.
+</P><P>
+
+<DT>"<VAR>keyseq</VAR>": <VAR>function-name</VAR> or <VAR>macro</VAR>
+<DD><VAR>keyseq</VAR> differs from <VAR>keyname</VAR> above in that strings
+denoting an entire key sequence can be specified, by placing
+the key sequence in double quotes.  Some GNU Emacs style key
+escapes can be used, as in the following example, but the
+special character names are not recognized.
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>"\C-u": universal-argument
+"\C-x\C-r": re-read-init-file
+"\e[11~": "Function Key 1"
+</pre></td></tr></table></P><P>
+
+In the above example, <KBD>C-u</KBD> is again bound to the function
+<CODE>universal-argument</CODE> (just as it was in the first example),
+<SAMP>`<KBD>C-x</KBD> <KBD>C-r</KBD>'</SAMP> is bound to the function <CODE>re-read-init-file</CODE>,
+and <SAMP>`<KBD>ESC</KBD> <KBD>[</KBD> <KBD>1</KBD> <KBD>1</KBD> <KBD>~</KBD>'</SAMP> is bound to insert
+the text <SAMP>`Function Key 1'</SAMP>.
+</P><P>
+
+</DL>
+<P>
+
+The following GNU Emacs style escape sequences are available when
+specifying key sequences:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE><KBD>\C-</KBD></CODE>
+<DD>control prefix
+<DT><CODE><KBD>\M-</KBD></CODE>
+<DD>meta prefix
+<DT><CODE><KBD>\e</KBD></CODE>
+<DD>an escape character
+<DT><CODE><KBD>\\</KBD></CODE>
+<DD>backslash
+<DT><CODE><KBD>\"</KBD></CODE>
+<DD><KBD>"</KBD>, a double quotation mark
+<DT><CODE><KBD>\'</KBD></CODE>
+<DD><KBD>'</KBD>, a single quote or apostrophe
+</DL>
+<P>
+
+In addition to the GNU Emacs style escape sequences, a second
+set of backslash escapes is available:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>\a</CODE>
+<DD>alert (bell)
+<DT><CODE>\b</CODE>
+<DD>backspace
+<DT><CODE>\d</CODE>
+<DD>delete
+<DT><CODE>\f</CODE>
+<DD>form feed
+<DT><CODE>\n</CODE>
+<DD>newline
+<DT><CODE>\r</CODE>
+<DD>carriage return
+<DT><CODE>\t</CODE>
+<DD>horizontal tab
+<DT><CODE>\v</CODE>
+<DD>vertical tab
+<DT><CODE>\<VAR>nnn</VAR></CODE>
+<DD>the eight-bit character whose value is the octal value <VAR>nnn</VAR>
+(one to three digits)
+<DT><CODE>\x<VAR>HH</VAR></CODE>
+<DD>the eight-bit character whose value is the hexadecimal value <VAR>HH</VAR>
+(one or two hex digits)
+</DL>
+<P>
+
+When entering the text of a macro, single or double quotes must
+be used to indicate a macro definition.
+Unquoted text is assumed to be a function name.
+In the macro body, the backslash escapes described above are expanded.
+Backslash will quote any other character in the macro text,
+including <SAMP>`"'</SAMP> and <SAMP>`''</SAMP>.
+For example, the following binding will make <SAMP>`<KBD>C-x</KBD> \'</SAMP>
+insert a single <SAMP>`\'</SAMP> into the line:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>"\C-x\\": "\\"
+</pre></td></tr></table></P><P>
+
+</DL>
+<P>
+
+<A NAME="Conditional Init Constructs"></A>
+<HR SIZE="6">
+<A NAME="SEC667"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC666"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC668"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC668"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.3.2 Conditional Init Constructs </H3>
+<!--docid::SEC667::-->
+<P>
+
+Readline implements a facility similar in spirit to the conditional
+compilation features of the C preprocessor which allows key
+bindings and variable settings to be performed as the result
+of tests.  There are four parser directives used.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>$if</CODE>
+<DD>The <CODE>$if</CODE> construct allows bindings to be made based on the
+editing mode, the terminal being used, or the application using
+Readline.  The text of the test extends to the end of the line;
+no characters are required to isolate it.
+<P>
+
+<DL COMPACT>
+<DT><CODE>mode</CODE>
+<DD>The <CODE>mode=</CODE> form of the <CODE>$if</CODE> directive is used to test
+whether Readline is in <CODE>emacs</CODE> or <CODE>vi</CODE> mode.
+This may be used in conjunction
+with the <SAMP>`set keymap'</SAMP> command, for instance, to set bindings in
+the <CODE>emacs-standard</CODE> and <CODE>emacs-ctlx</CODE> keymaps only if
+Readline is starting out in <CODE>emacs</CODE> mode.
+<P>
+
+<DT><CODE>term</CODE>
+<DD>The <CODE>term=</CODE> form may be used to include terminal-specific
+key bindings, perhaps to bind the key sequences output by the
+terminal's function keys.  The word on the right side of the
+<SAMP>`='</SAMP> is tested against both the full name of the terminal and
+the portion of the terminal name before the first <SAMP>`-'</SAMP>.  This
+allows <CODE>sun</CODE> to match both <CODE>sun</CODE> and <CODE>sun-cmd</CODE>,
+for instance.
+<P>
+
+<DT><CODE>application</CODE>
+<DD>The <VAR>application</VAR> construct is used to include
+application-specific settings.  Each program using the Readline
+library sets the <VAR>application name</VAR>, and you can test for
+a particular value. 
+This could be used to bind key sequences to functions useful for
+a specific program.  For instance, the following command adds a
+key sequence that quotes the current or previous word in Bash:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>$if Bash
+# Quote the current or previous word
+"\C-xq": "\eb\"\ef\""
+$endif
+</pre></td></tr></table></DL>
+<P>
+
+<DT><CODE>$endif</CODE>
+<DD>This command, as seen in the previous example, terminates an
+<CODE>$if</CODE> command.
+<P>
+
+<DT><CODE>$else</CODE>
+<DD>Commands in this branch of the <CODE>$if</CODE> directive are executed if
+the test fails.
+<P>
+
+<DT><CODE>$include</CODE>
+<DD>This directive takes a single filename as an argument and reads commands
+and bindings from that file.
+For example, the following directive reads from <TT>`/etc/inputrc'</TT>:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>$include /etc/inputrc
+</pre></td></tr></table></DL>
+<P>
+
+<A NAME="Sample Init File"></A>
+<HR SIZE="6">
+<A NAME="SEC668"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC667"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC665"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.3.3 Sample Init File </H3>
+<!--docid::SEC668::-->
+<P>
+
+Here is an example of an <VAR>inputrc</VAR> file.  This illustrates key
+binding, variable assignment, and conditional syntax.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre># This file controls the behaviour of line input editing for
+# programs that use the GNU Readline library.  Existing
+# programs include FTP, Bash, and GDB.
+#
+# You can re-read the inputrc file with C-x C-r.
+# Lines beginning with '#' are comments.
+#
+# First, include any systemwide bindings and variable
+# assignments from /etc/Inputrc
+$include /etc/Inputrc
+
+#
+# Set various bindings for emacs mode.
+
+set editing-mode emacs 
+
+$if mode=emacs
+
+Meta-Control-h:	backward-kill-word	Text after the function name is ignored
+
+#
+# Arrow keys in keypad mode
+#
+#"\M-OD":        backward-char
+#"\M-OC":        forward-char
+#"\M-OA":        previous-history
+#"\M-OB":        next-history
+#
+# Arrow keys in ANSI mode
+#
+"\M-[D":        backward-char
+"\M-[C":        forward-char
+"\M-[A":        previous-history
+"\M-[B":        next-history
+#
+# Arrow keys in 8 bit keypad mode
+#
+#"\M-\C-OD":       backward-char
+#"\M-\C-OC":       forward-char
+#"\M-\C-OA":       previous-history
+#"\M-\C-OB":       next-history
+#
+# Arrow keys in 8 bit ANSI mode
+#
+#"\M-\C-[D":       backward-char
+#"\M-\C-[C":       forward-char
+#"\M-\C-[A":       previous-history
+#"\M-\C-[B":       next-history
+
+C-q: quoted-insert
+
+$endif
+
+# An old-style binding.  This happens to be the default.
+TAB: complete
+
+# Macros that are convenient for shell interaction
+$if Bash
+# edit the path
+"\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+# prepare to type a quoted word --
+# insert open and close double quotes
+# and move to just after the open quote
+"\C-x\"": "\"\"\C-b"
+# insert a backslash (testing backslash escapes
+# in sequences and macros)
+"\C-x\\": "\\"
+# Quote the current or previous word
+"\C-xq": "\eb\"\ef\""
+# Add a binding to refresh the line, which is unbound
+"\C-xr": redraw-current-line
+# Edit variable on current line.
+"\M-\C-v": "\C-a\C-k$\C-y\M-\C-e\C-a\C-y="
+$endif
+
+# use a visible bell if one is available
+set bell-style visible
+
+# don't strip characters to 7 bits when reading
+set input-meta on
+
+# allow iso-latin1 characters to be inserted rather
+# than converted to prefix-meta sequences
+set convert-meta off
+
+# display characters with the eighth bit set directly
+# rather than as meta-prefixed characters
+set output-meta on
+
+# if there are more than 150 possible completions for
+# a word, ask the user if he wants to see all of them
+set completion-query-items 150
+
+# For FTP
+$if Ftp
+"\C-xg": "get \M-?"
+"\C-xt": "put \M-?"
+"\M-.": yank-last-arg
+$endif
+</pre></td></tr></table></P><P>
+
+<A NAME="Bindable Readline Commands"></A>
+<HR SIZE="6">
+<A NAME="SEC669"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC668"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC670"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 27.4 Bindable Readline Commands </H2>
+<!--docid::SEC669::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC670">27.4.1 Commands For Moving</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Moving about the line.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC671">27.4.2 Commands For Manipulating The History</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Getting at previous lines.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC672">27.4.3 Commands For Changing Text</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Commands for changing text.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Commands for killing and yanking.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC674">27.4.5 Specifying Numeric Arguments</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Specifying numeric arguments, repeat counts.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC675">27.4.6 Letting Readline Type For You</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Getting Readline to do the typing for you.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC676">27.4.7 Keyboard Macros</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Saving and re-executing typed characters</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_28.html#SEC677">27.4.8 Some Miscellaneous Commands</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Other miscellaneous commands.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+This section describes Readline commands that may be bound to key
+sequences.
+Command names without an accompanying key sequence are unbound by default.
+</P><P>
+
+In the following descriptions, <EM>point</EM> refers to the current cursor
+position, and <EM>mark</EM> refers to a cursor position saved by the
+<CODE>set-mark</CODE> command.
+The text between the point and mark is referred to as the <EM>region</EM>.
+</P><P>
+
+<A NAME="Commands For Moving"></A>
+<HR SIZE="6">
+<A NAME="SEC670"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC671"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.1 Commands For Moving </H3>
+<!--docid::SEC670::-->
+<DL COMPACT>
+<A NAME="IDX1360"></A>
+<DT><CODE>beginning-of-line (C-a)</CODE>
+<DD><A NAME="IDX1361"></A>
+Move to the start of the current line.
+<P>
+
+<A NAME="IDX1362"></A>
+<DT><CODE>end-of-line (C-e)</CODE>
+<DD><A NAME="IDX1363"></A>
+Move to the end of the line.
+<P>
+
+<A NAME="IDX1364"></A>
+<DT><CODE>forward-char (C-f)</CODE>
+<DD><A NAME="IDX1365"></A>
+Move forward a character.
+<P>
+
+<A NAME="IDX1366"></A>
+<DT><CODE>backward-char (C-b)</CODE>
+<DD><A NAME="IDX1367"></A>
+Move back a character.
+<P>
+
+<A NAME="IDX1368"></A>
+<DT><CODE>forward-word (M-f)</CODE>
+<DD><A NAME="IDX1369"></A>
+Move forward to the end of the next word.  Words are composed of
+letters and digits.
+<P>
+
+<A NAME="IDX1370"></A>
+<DT><CODE>backward-word (M-b)</CODE>
+<DD><A NAME="IDX1371"></A>
+Move back to the start of the current or previous word.  Words are
+composed of letters and digits.
+<P>
+
+<A NAME="IDX1372"></A>
+<DT><CODE>clear-screen (C-l)</CODE>
+<DD><A NAME="IDX1373"></A>
+Clear the screen and redraw the current line,
+leaving the current line at the top of the screen.
+<P>
+
+<A NAME="IDX1374"></A>
+<DT><CODE>redraw-current-line ()</CODE>
+<DD><A NAME="IDX1375"></A>
+Refresh the current line.  By default, this is unbound.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Commands For History"></A>
+<HR SIZE="6">
+<A NAME="SEC671"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC670"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC672"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC672"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.2 Commands For Manipulating The History </H3>
+<!--docid::SEC671::-->
+<P>
+
+<DL COMPACT>
+<A NAME="IDX1376"></A>
+<DT><CODE>accept-line (Newline or Return)</CODE>
+<DD><A NAME="IDX1377"></A>
+Accept the line regardless of where the cursor is.
+If this line is
+non-empty, it may be added to the history list for future recall with
+<CODE>add_history()</CODE>.
+If this line is a modified history line, the history line is restored
+to its original state.
+<P>
+
+<A NAME="IDX1378"></A>
+<DT><CODE>previous-history (C-p)</CODE>
+<DD><A NAME="IDX1379"></A>
+Move `back' through the history list, fetching the previous command.
+<P>
+
+<A NAME="IDX1380"></A>
+<DT><CODE>next-history (C-n)</CODE>
+<DD><A NAME="IDX1381"></A>
+Move `forward' through the history list, fetching the next command.
+<P>
+
+<A NAME="IDX1382"></A>
+<DT><CODE>beginning-of-history (M-&#60;)</CODE>
+<DD><A NAME="IDX1383"></A>
+Move to the first line in the history.
+<P>
+
+<A NAME="IDX1384"></A>
+<DT><CODE>end-of-history (M-&#62;)</CODE>
+<DD><A NAME="IDX1385"></A>
+Move to the end of the input history, i.e., the line currently
+being entered.
+<P>
+
+<A NAME="IDX1386"></A>
+<DT><CODE>reverse-search-history (C-r)</CODE>
+<DD><A NAME="IDX1387"></A>
+Search backward starting at the current line and moving `up' through
+the history as necessary.  This is an incremental search.
+<P>
+
+<A NAME="IDX1388"></A>
+<DT><CODE>forward-search-history (C-s)</CODE>
+<DD><A NAME="IDX1389"></A>
+Search forward starting at the current line and moving `down' through
+the the history as necessary.  This is an incremental search.
+<P>
+
+<A NAME="IDX1390"></A>
+<DT><CODE>non-incremental-reverse-search-history (M-p)</CODE>
+<DD><A NAME="IDX1391"></A>
+Search backward starting at the current line and moving `up'
+through the history as necessary using a non-incremental search
+for a string supplied by the user.
+<P>
+
+<A NAME="IDX1392"></A>
+<DT><CODE>non-incremental-forward-search-history (M-n)</CODE>
+<DD><A NAME="IDX1393"></A>
+Search forward starting at the current line and moving `down'
+through the the history as necessary using a non-incremental search
+for a string supplied by the user.
+<P>
+
+<A NAME="IDX1394"></A>
+<DT><CODE>history-search-forward ()</CODE>
+<DD><A NAME="IDX1395"></A>
+Search forward through the history for the string of characters
+between the start of the current line and the point.
+This is a non-incremental search.
+By default, this command is unbound.
+<P>
+
+<A NAME="IDX1396"></A>
+<DT><CODE>history-search-backward ()</CODE>
+<DD><A NAME="IDX1397"></A>
+Search backward through the history for the string of characters
+between the start of the current line and the point.  This
+is a non-incremental search.  By default, this command is unbound.
+<P>
+
+<A NAME="IDX1398"></A>
+<DT><CODE>yank-nth-arg (M-C-y)</CODE>
+<DD><A NAME="IDX1399"></A>
+Insert the first argument to the previous command (usually
+the second word on the previous line) at point.
+With an argument <VAR>n</VAR>,
+insert the <VAR>n</VAR>th word from the previous command (the words
+in the previous command begin with word 0).  A negative argument
+inserts the <VAR>n</VAR>th word from the end of the previous command.
+Once the argument <VAR>n</VAR> is computed, the argument is extracted
+as if the <SAMP>`!<VAR>n</VAR>'</SAMP> history expansion had been specified.
+<P>
+
+<A NAME="IDX1400"></A>
+<DT><CODE>yank-last-arg (M-. or M-_)</CODE>
+<DD><A NAME="IDX1401"></A>
+Insert last argument to the previous command (the last word of the
+previous history entry).  With an
+argument, behave exactly like <CODE>yank-nth-arg</CODE>.
+Successive calls to <CODE>yank-last-arg</CODE> move back through the history
+list, inserting the last argument of each line in turn.
+The history expansion facilities are used to extract the last argument,
+as if the <SAMP>`!$'</SAMP> history expansion had been specified.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Commands For Text"></A>
+<HR SIZE="6">
+<A NAME="SEC672"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC671"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC673"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC673"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.3 Commands For Changing Text </H3>
+<!--docid::SEC672::-->
+<P>
+
+<DL COMPACT>
+<A NAME="IDX1402"></A>
+<DT><CODE>delete-char (C-d)</CODE>
+<DD><A NAME="IDX1403"></A>
+Delete the character at point.  If point is at the
+beginning of the line, there are no characters in the line, and
+the last character typed was not bound to <CODE>delete-char</CODE>, then
+return EOF.
+<P>
+
+<A NAME="IDX1404"></A>
+<DT><CODE>backward-delete-char (Rubout)</CODE>
+<DD><A NAME="IDX1405"></A>
+Delete the character behind the cursor.  A numeric argument means
+to kill the characters instead of deleting them.
+<P>
+
+<A NAME="IDX1406"></A>
+<DT><CODE>forward-backward-delete-char ()</CODE>
+<DD><A NAME="IDX1407"></A>
+Delete the character under the cursor, unless the cursor is at the
+end of the line, in which case the character behind the cursor is
+deleted.  By default, this is not bound to a key.
+<P>
+
+<A NAME="IDX1408"></A>
+<DT><CODE>quoted-insert (C-q or C-v)</CODE>
+<DD><A NAME="IDX1409"></A>
+Add the next character typed to the line verbatim.  This is
+how to insert key sequences like <KBD>C-q</KBD>, for example.
+<P>
+
+<A NAME="IDX1410"></A>
+<DT><CODE>tab-insert (M-<KBD>TAB</KBD>)</CODE>
+<DD><A NAME="IDX1411"></A>
+Insert a tab character.
+<P>
+
+<A NAME="IDX1412"></A>
+<DT><CODE>self-insert (a, b, A, 1, !, <small>...</small>)</CODE>
+<DD><A NAME="IDX1413"></A>
+Insert yourself.
+<P>
+
+<A NAME="IDX1414"></A>
+<DT><CODE>transpose-chars (C-t)</CODE>
+<DD><A NAME="IDX1415"></A>
+Drag the character before the cursor forward over
+the character at the cursor, moving the
+cursor forward as well.  If the insertion point
+is at the end of the line, then this
+transposes the last two characters of the line.
+Negative arguments have no effect.
+<P>
+
+<A NAME="IDX1416"></A>
+<DT><CODE>transpose-words (M-t)</CODE>
+<DD><A NAME="IDX1417"></A>
+Drag the word before point past the word after point,
+moving point past that word as well.
+If the insertion point is at the end of the line, this transposes
+the last two words on the line.
+<P>
+
+<A NAME="IDX1418"></A>
+<DT><CODE>upcase-word (M-u)</CODE>
+<DD><A NAME="IDX1419"></A>
+Uppercase the current (or following) word.  With a negative argument,
+uppercase the previous word, but do not move the cursor.
+<P>
+
+<A NAME="IDX1420"></A>
+<DT><CODE>downcase-word (M-l)</CODE>
+<DD><A NAME="IDX1421"></A>
+Lowercase the current (or following) word.  With a negative argument,
+lowercase the previous word, but do not move the cursor.
+<P>
+
+<A NAME="IDX1422"></A>
+<DT><CODE>capitalize-word (M-c)</CODE>
+<DD><A NAME="IDX1423"></A>
+Capitalize the current (or following) word.  With a negative argument,
+capitalize the previous word, but do not move the cursor.
+<P>
+
+<A NAME="IDX1424"></A>
+<DT><CODE>overwrite-mode ()</CODE>
+<DD><A NAME="IDX1425"></A>
+Toggle overwrite mode.  With an explicit positive numeric argument,
+switches to overwrite mode.  With an explicit non-positive numeric
+argument, switches to insert mode.  This command affects only
+<CODE>emacs</CODE> mode; <CODE>vi</CODE> mode does overwrite differently.
+Each call to <CODE>readline()</CODE> starts in insert mode.
+<P>
+
+In overwrite mode, characters bound to <CODE>self-insert</CODE> replace
+the text at point rather than pushing the text to the right.
+Characters bound to <CODE>backward-delete-char</CODE> replace the character
+before point with a space.
+</P><P>
+
+By default, this command is unbound.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="Commands For Killing"></A>
+<HR SIZE="6">
+<A NAME="SEC673"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC672"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC674"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC674"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.4 Killing And Yanking </H3>
+<!--docid::SEC673::-->
+<P>
+
+<DL COMPACT>
+
+<A NAME="IDX1426"></A>
+<DT><CODE>kill-line (C-k)</CODE>
+<DD><A NAME="IDX1427"></A>
+Kill the text from point to the end of the line.
+<P>
+
+<A NAME="IDX1428"></A>
+<DT><CODE>backward-kill-line (C-x Rubout)</CODE>
+<DD><A NAME="IDX1429"></A>
+Kill backward to the beginning of the line.
+<P>
+
+<A NAME="IDX1430"></A>
+<DT><CODE>unix-line-discard (C-u)</CODE>
+<DD><A NAME="IDX1431"></A>
+Kill backward from the cursor to the beginning of the current line.
+<P>
+
+<A NAME="IDX1432"></A>
+<DT><CODE>kill-whole-line ()</CODE>
+<DD><A NAME="IDX1433"></A>
+Kill all characters on the current line, no matter where point is.
+By default, this is unbound.
+<P>
+
+<A NAME="IDX1434"></A>
+<DT><CODE>kill-word (M-d)</CODE>
+<DD><A NAME="IDX1435"></A>
+Kill from point to the end of the current word, or if between
+words, to the end of the next word.
+Word boundaries are the same as <CODE>forward-word</CODE>.
+<P>
+
+<A NAME="IDX1436"></A>
+<DT><CODE>backward-kill-word (M-<KBD>DEL</KBD>)</CODE>
+<DD><A NAME="IDX1437"></A>
+Kill the word behind point.
+Word boundaries are the same as <CODE>backward-word</CODE>.
+<P>
+
+<A NAME="IDX1438"></A>
+<DT><CODE>unix-word-rubout (C-w)</CODE>
+<DD><A NAME="IDX1439"></A>
+Kill the word behind point, using white space as a word boundary.
+The killed text is saved on the kill-ring.
+<P>
+
+<A NAME="IDX1440"></A>
+<DT><CODE>unix-filename-rubout ()</CODE>
+<DD><A NAME="IDX1441"></A>
+Kill the word behind point, using white space and the slash character
+as the word boundaries.
+The killed text is saved on the kill-ring.
+<P>
+
+<A NAME="IDX1442"></A>
+<DT><CODE>delete-horizontal-space ()</CODE>
+<DD><A NAME="IDX1443"></A>
+Delete all spaces and tabs around point.  By default, this is unbound.
+<P>
+
+<A NAME="IDX1444"></A>
+<DT><CODE>kill-region ()</CODE>
+<DD><A NAME="IDX1445"></A>
+Kill the text in the current region.
+By default, this command is unbound.
+<P>
+
+<A NAME="IDX1446"></A>
+<DT><CODE>copy-region-as-kill ()</CODE>
+<DD><A NAME="IDX1447"></A>
+Copy the text in the region to the kill buffer, so it can be yanked
+right away.  By default, this command is unbound.
+<P>
+
+<A NAME="IDX1448"></A>
+<DT><CODE>copy-backward-word ()</CODE>
+<DD><A NAME="IDX1449"></A>
+Copy the word before point to the kill buffer.
+The word boundaries are the same as <CODE>backward-word</CODE>.
+By default, this command is unbound.
+<P>
+
+<A NAME="IDX1450"></A>
+<DT><CODE>copy-forward-word ()</CODE>
+<DD><A NAME="IDX1451"></A>
+Copy the word following point to the kill buffer.
+The word boundaries are the same as <CODE>forward-word</CODE>.
+By default, this command is unbound.
+<P>
+
+<A NAME="IDX1452"></A>
+<DT><CODE>yank (C-y)</CODE>
+<DD><A NAME="IDX1453"></A>
+Yank the top of the kill ring into the buffer at point.
+<P>
+
+<A NAME="IDX1454"></A>
+<DT><CODE>yank-pop (M-y)</CODE>
+<DD><A NAME="IDX1455"></A>
+Rotate the kill-ring, and yank the new top.  You can only do this if
+the prior command is <CODE>yank</CODE> or <CODE>yank-pop</CODE>.
+</DL>
+<P>
+
+<A NAME="Numeric Arguments"></A>
+<HR SIZE="6">
+<A NAME="SEC674"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC673"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC675"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC675"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.5 Specifying Numeric Arguments </H3>
+<!--docid::SEC674::-->
+<DL COMPACT>
+
+<A NAME="IDX1456"></A>
+<DT><CODE>digit-argument (<KBD>M-0</KBD>, <KBD>M-1</KBD>, <small>...</small> <KBD>M--</KBD>)</CODE>
+<DD><A NAME="IDX1457"></A>
+Add this digit to the argument already accumulating, or start a new
+argument.  <KBD>M--</KBD> starts a negative argument.
+<P>
+
+<A NAME="IDX1458"></A>
+<DT><CODE>universal-argument ()</CODE>
+<DD><A NAME="IDX1459"></A>
+This is another way to specify an argument.
+If this command is followed by one or more digits, optionally with a
+leading minus sign, those digits define the argument.
+If the command is followed by digits, executing <CODE>universal-argument</CODE>
+again ends the numeric argument, but is otherwise ignored.
+As a special case, if this command is immediately followed by a
+character that is neither a digit or minus sign, the argument count
+for the next command is multiplied by four.
+The argument count is initially one, so executing this function the
+first time makes the argument count four, a second time makes the
+argument count sixteen, and so on.
+By default, this is not bound to a key.
+</DL>
+<P>
+
+<A NAME="Commands For Completion"></A>
+<HR SIZE="6">
+<A NAME="SEC675"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC674"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC676"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC676"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.6 Letting Readline Type For You </H3>
+<!--docid::SEC675::-->
+<P>
+
+<DL COMPACT>
+<A NAME="IDX1460"></A>
+<DT><CODE>complete (<KBD>TAB</KBD>)</CODE>
+<DD><A NAME="IDX1461"></A>
+Attempt to perform completion on the text before point.
+The actual completion performed is application-specific.
+The default is filename completion.
+<P>
+
+<A NAME="IDX1462"></A>
+<DT><CODE>possible-completions (M-?)</CODE>
+<DD><A NAME="IDX1463"></A>
+List the possible completions of the text before point.
+<P>
+
+<A NAME="IDX1464"></A>
+<DT><CODE>insert-completions (M-*)</CODE>
+<DD><A NAME="IDX1465"></A>
+Insert all completions of the text before point that would have
+been generated by <CODE>possible-completions</CODE>.
+<P>
+
+<A NAME="IDX1466"></A>
+<DT><CODE>menu-complete ()</CODE>
+<DD><A NAME="IDX1467"></A>
+Similar to <CODE>complete</CODE>, but replaces the word to be completed
+with a single match from the list of possible completions.
+Repeated execution of <CODE>menu-complete</CODE> steps through the list
+of possible completions, inserting each match in turn.
+At the end of the list of completions, the bell is rung
+(subject to the setting of <CODE>bell-style</CODE>)
+and the original text is restored.
+An argument of <VAR>n</VAR> moves <VAR>n</VAR> positions forward in the list
+of matches; a negative argument may be used to move backward
+through the list.
+This command is intended to be bound to <KBD>TAB</KBD>, but is unbound
+by default.
+<P>
+
+<A NAME="IDX1468"></A>
+<DT><CODE>delete-char-or-list ()</CODE>
+<DD><A NAME="IDX1469"></A>
+Deletes the character under the cursor if not at the beginning or
+end of the line (like <CODE>delete-char</CODE>).
+If at the end of the line, behaves identically to
+<CODE>possible-completions</CODE>.
+This command is unbound by default.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Keyboard Macros"></A>
+<HR SIZE="6">
+<A NAME="SEC676"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC675"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC677"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC677"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.7 Keyboard Macros </H3>
+<!--docid::SEC676::-->
+<DL COMPACT>
+
+<A NAME="IDX1470"></A>
+<DT><CODE>start-kbd-macro (C-x ()</CODE>
+<DD><A NAME="IDX1471"></A>
+Begin saving the characters typed into the current keyboard macro.
+<P>
+
+<A NAME="IDX1472"></A>
+<DT><CODE>end-kbd-macro (C-x ))</CODE>
+<DD><A NAME="IDX1473"></A>
+Stop saving the characters typed into the current keyboard macro
+and save the definition.
+<P>
+
+<A NAME="IDX1474"></A>
+<DT><CODE>call-last-kbd-macro (C-x e)</CODE>
+<DD><A NAME="IDX1475"></A>
+Re-execute the last keyboard macro defined, by making the characters
+in the macro appear as if typed at the keyboard.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Miscellaneous Commands"></A>
+<HR SIZE="6">
+<A NAME="SEC677"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC676"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC669"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC678"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 27.4.8 Some Miscellaneous Commands </H3>
+<!--docid::SEC677::-->
+<DL COMPACT>
+
+<A NAME="IDX1476"></A>
+<DT><CODE>re-read-init-file (C-x C-r)</CODE>
+<DD><A NAME="IDX1477"></A>
+Read in the contents of the <VAR>inputrc</VAR> file, and incorporate
+any bindings or variable assignments found there.
+<P>
+
+<A NAME="IDX1478"></A>
+<DT><CODE>abort (C-g)</CODE>
+<DD><A NAME="IDX1479"></A>
+Abort the current editing command and
+ring the terminal's bell (subject to the setting of
+<CODE>bell-style</CODE>).
+<P>
+
+<A NAME="IDX1480"></A>
+<DT><CODE>do-uppercase-version (M-a, M-b, M-<VAR>x</VAR>, <small>...</small>)</CODE>
+<DD><A NAME="IDX1481"></A>
+If the metafied character <VAR>x</VAR> is lowercase, run the command
+that is bound to the corresponding uppercase character.
+<P>
+
+<A NAME="IDX1482"></A>
+<DT><CODE>prefix-meta (<KBD>ESC</KBD>)</CODE>
+<DD><A NAME="IDX1483"></A>
+Metafy the next character typed.  This is for keyboards
+without a meta key.  Typing <SAMP>`<KBD>ESC</KBD> f'</SAMP> is equivalent to typing
+<KBD>M-f</KBD>.
+<P>
+
+<A NAME="IDX1484"></A>
+<DT><CODE>undo (C-_ or C-x C-u)</CODE>
+<DD><A NAME="IDX1485"></A>
+Incremental undo, separately remembered for each line.
+<P>
+
+<A NAME="IDX1486"></A>
+<DT><CODE>revert-line (M-r)</CODE>
+<DD><A NAME="IDX1487"></A>
+Undo all changes made to this line.  This is like executing the <CODE>undo</CODE>
+command enough times to get back to the beginning.
+<P>
+
+<A NAME="IDX1488"></A>
+<DT><CODE>tilde-expand (M-~)</CODE>
+<DD><A NAME="IDX1489"></A>
+Perform tilde expansion on the current word.
+<P>
+
+<A NAME="IDX1490"></A>
+<DT><CODE>set-mark (C-@)</CODE>
+<DD><A NAME="IDX1491"></A>
+Set the mark to the point.  If a
+numeric argument is supplied, the mark is set to that position.
+<P>
+
+<A NAME="IDX1492"></A>
+<DT><CODE>exchange-point-and-mark (C-x C-x)</CODE>
+<DD><A NAME="IDX1493"></A>
+Swap the point with the mark.  The current cursor position is set to
+the saved position, and the old cursor position is saved as the mark.
+<P>
+
+<A NAME="IDX1494"></A>
+<DT><CODE>character-search (C-])</CODE>
+<DD><A NAME="IDX1495"></A>
+A character is read and point is moved to the next occurrence of that
+character.  A negative count searches for previous occurrences.
+<P>
+
+<A NAME="IDX1496"></A>
+<DT><CODE>character-search-backward (M-C-])</CODE>
+<DD><A NAME="IDX1497"></A>
+A character is read and point is moved to the previous occurrence
+of that character.  A negative count searches for subsequent
+occurrences.
+<P>
+
+<A NAME="IDX1498"></A>
+<DT><CODE>insert-comment (M-#)</CODE>
+<DD><A NAME="IDX1499"></A>
+Without a numeric argument, the value of the <CODE>comment-begin</CODE>
+variable is inserted at the beginning of the current line.
+If a numeric argument is supplied, this command acts as a toggle:  if
+the characters at the beginning of the line do not match the value
+of <CODE>comment-begin</CODE>, the value is inserted, otherwise
+the characters in <CODE>comment-begin</CODE> are deleted from the beginning of
+the line.
+In either case, the line is accepted as if a newline had been typed.
+<P>
+
+<A NAME="IDX1500"></A>
+<DT><CODE>dump-functions ()</CODE>
+<DD><A NAME="IDX1501"></A>
+Print all of the functions and their key bindings to the
+Readline output stream.  If a numeric argument is supplied,
+the output is formatted in such a way that it can be made part
+of an <VAR>inputrc</VAR> file.  This command is unbound by default.
+<P>
+
+<A NAME="IDX1502"></A>
+<DT><CODE>dump-variables ()</CODE>
+<DD><A NAME="IDX1503"></A>
+Print all of the settable variables and their values to the
+Readline output stream.  If a numeric argument is supplied,
+the output is formatted in such a way that it can be made part
+of an <VAR>inputrc</VAR> file.  This command is unbound by default.
+<P>
+
+<A NAME="IDX1504"></A>
+<DT><CODE>dump-macros ()</CODE>
+<DD><A NAME="IDX1505"></A>
+Print all of the Readline key sequences bound to macros and the
+strings they output.  If a numeric argument is supplied,
+the output is formatted in such a way that it can be made part
+of an <VAR>inputrc</VAR> file.  This command is unbound by default.
+<P>
+
+<A NAME="IDX1506"></A>
+<DT><CODE>emacs-editing-mode (C-e)</CODE>
+<DD><A NAME="IDX1507"></A>
+When in <CODE>vi</CODE> command mode, this causes a switch to <CODE>emacs</CODE>
+editing mode.
+<P>
+
+<A NAME="IDX1508"></A>
+<DT><CODE>vi-editing-mode (M-C-j)</CODE>
+<DD><A NAME="IDX1509"></A>
+When in <CODE>emacs</CODE> editing mode, this causes a switch to <CODE>vi</CODE>
+editing mode.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Readline vi Mode"></A>
+<HR SIZE="6">
+<A NAME="SEC678"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC677"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_29.html#SEC679"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_29.html#SEC679"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 27.5 Readline vi Mode </H2>
+<!--docid::SEC678::-->
+<P>
+
+While the Readline library does not have a full set of <CODE>vi</CODE>
+editing functions, it does contain enough to allow simple editing
+of the line.  The Readline <CODE>vi</CODE> mode behaves as specified in
+the POSIX 1003.2 standard.
+</P><P>
+
+In order to switch interactively between <CODE>emacs</CODE> and <CODE>vi</CODE>
+editing modes, use the command <KBD>M-C-j</KBD> (bound to emacs-editing-mode
+when in <CODE>vi</CODE> mode and to vi-editing-mode in <CODE>emacs</CODE> mode).
+The Readline default is <CODE>emacs</CODE> mode.
+</P><P>
+
+When you enter a line in <CODE>vi</CODE> mode, you are already placed in
+`insertion' mode, as if you had typed an <SAMP>`i'</SAMP>.  Pressing <KBD>ESC</KBD>
+switches you into `command' mode, where you can edit the text of the
+line with the standard <CODE>vi</CODE> movement keys, move to previous
+history lines with <SAMP>`k'</SAMP> and subsequent lines with <SAMP>`j'</SAMP>, and
+so forth.
+</P><P>
+
+<A NAME="Using History Interactively"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_28.html#SEC657"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_29.html#SEC679"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

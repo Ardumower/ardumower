@@ -1,0 +1,49 @@
+#######################################
+# Syntax Coloring Map For DS1307new
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DS1307new	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+startClock	KEYWORD2
+stopClock	KEYWORD2
+setTime	KEYWORD2
+getTime	KEYWORD2
+setCTRL	KEYWORD2
+getCTRL	KEYWORD2
+setRAM	KEYWORD2
+getRAM	KEYWORD2
+second	KEYWORD2
+minute	KEYWORD2
+hour	KEYWORD2
+dow	KEYWORD2
+day	KEYWORD2
+month	KEYWORD2
+year	KEYWORD2
+ctrl	KEYWORD2
+ydn	KEYWORD2
+cdn	KEYWORD2
+time2000	KEYWORD2
+fillByCDN	KEYWORD2
+fillByTime2000	KEYWORD2
+fillByHMS	KEYWORD2
+fillByYMD	KEYWORD2
+isMEZSummerTime	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+RTC KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

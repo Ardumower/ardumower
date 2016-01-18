@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+<title>VAX-operands - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Vax_002dDependent.html#Vax_002dDependent" title="Vax-Dependent">
+<link rel="prev" href="VAX_002dbranch.html#VAX_002dbranch" title="VAX-branch">
+<link rel="next" href="VAX_002dno.html#VAX_002dno" title="VAX-no">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="VAX_002doperands"></a>Next:&nbsp;<a rel="next" accesskey="n" href="VAX_002dno.html#VAX_002dno">VAX-no</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="VAX_002dbranch.html#VAX_002dbranch">VAX-branch</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Vax_002dDependent.html#Vax_002dDependent">Vax-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.34.6 VAX Operands</h4>
+
+<p><a name="index-VAX-operand-notation-1770"></a><a name="index-operand-notation_002c-VAX-1771"></a><a name="index-immediate-character_002c-VAX-1772"></a><a name="index-VAX-immediate-character-1773"></a>The immediate character is <span class="samp">$</span> for Unix compatibility, not
+<span class="samp">#</span> as DEC writes it.
+
+   <p><a name="index-indirect-character_002c-VAX-1774"></a><a name="index-VAX-indirect-character-1775"></a>The indirect character is <span class="samp">*</span> for Unix compatibility, not
+<span class="samp">@</span> as DEC writes it.
+
+   <p><a name="index-displacement-sizing-character_002c-VAX-1776"></a><a name="index-VAX-displacement-sizing-character-1777"></a>The displacement sizing character is <span class="samp">`</span> (an accent grave) for
+Unix compatibility, not <span class="samp">^</span> as DEC writes it.  The letter
+preceding <span class="samp">`</span> may have either case.  <span class="samp">G</span> is not
+understood, but all other letters (<code>b i l s w</code>) are understood.
+
+   <p><a name="index-register-names_002c-VAX-1778"></a><a name="index-VAX-register-names-1779"></a>Register names understood are <code>r0 r1 r2 ... r15 ap fp sp
+pc</code>.  Upper and lower case letters are equivalent.
+
+   <p>For instance
+<pre class="smallexample">     tstb *w`$4(r5)
+</pre>
+   <p>Any expression is permitted in an operand.  Operands are comma
+separated.
+
+<!-- There is some bug to do with recognizing expressions -->
+<!-- in operands, but I forget what it is.  It is -->
+<!-- a syntax clash because () is used as an address mode -->
+<!-- and to encapsulate sub-expressions. -->
+</body></html>
+

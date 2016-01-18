@@ -1,0 +1,147 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Interpreters</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Interpreters">
+<META NAME="keywords" CONTENT="Debugging with GDB: Interpreters">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC234"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_21.html#SEC233"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_4.html#SEC14"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 21. Command Interpreters </H1>
+<!--docid::SEC234::-->
+<P>
+
+GDB supports multiple command interpreters, and some command
+infrastructure to allow users or user interface writers to switch
+between interpreters or run commands in other interpreters.
+</P><P>
+
+GDB currently supports two command interpreters, the console
+interpreter (sometimes called the command-line interpreter or CLI)
+and the machine interface interpreter (or GDB/MI).  This manual
+describes both of these interfaces in great detail.
+</P><P>
+
+By default, GDB will start with the console interpreter.
+However, the user may choose to start GDB with another
+interpreter by specifying the <SAMP>`-i'</SAMP> or <SAMP>`--interpreter'</SAMP>
+startup options.  Defined interpreters include:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>console</CODE>
+<DD><A NAME="IDX1214"></A>
+The traditional console or command-line interpreter.  This is the most often
+used interpreter with GDB. With no interpreter specified at runtime,
+GDB will use this interpreter.
+<P>
+
+<DT><CODE>mi</CODE>
+<DD><A NAME="IDX1215"></A>
+The newest GDB/MI interface (currently <CODE>mi2</CODE>).  Used primarily
+by programs wishing to use GDB as a backend for a debugger GUI
+or an IDE.  For more information, see <A HREF="gdb_25.html#SEC242">The GDB/MI Interface</A>.
+<P>
+
+<DT><CODE>mi2</CODE>
+<DD><A NAME="IDX1216"></A>
+The current GDB/MI interface.
+<P>
+
+<DT><CODE>mi1</CODE>
+<DD><A NAME="IDX1217"></A>
+The GDB/MI interface included in GDB 5.1, 5.2, and 5.3.
+<P>
+
+</DL>
+<P>
+
+<A NAME="IDX1218"></A>
+The interpreter being used by GDB may not be dynamically
+switched at runtime.  Although possible, this could lead to a very
+precarious situation.  Consider an IDE using GDB/MI.  If a user
+enters the command "interpreter-set console" in a console view,
+GDB would switch to using the console interpreter, rendering
+the IDE inoperable!
+</P><P>
+
+<A NAME="IDX1219"></A>
+Although you may only choose a single interpreter at startup, you may execute
+commands in any interpreter from the current interpreter using the appropriate
+command.  If you are running the console interpreter, simply use the
+<CODE>interpreter-exec</CODE> command:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>interpreter-exec mi "-data-list-register-names"
+</FONT></pre></td></tr></table></P><P>
+
+GDB/MI has a similar command, although it is only available in versions of
+GDB which support GDB/MI version 2 (or greater).
+</P><P>
+
+<A NAME="TUI"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_4.html#SEC14"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_23.html#SEC235"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

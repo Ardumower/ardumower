@@ -1,0 +1,36 @@
+2008-05-26  Tristan Gingold <gingold@adacore.com>
+            Anatoly Sokolov <aesok@post.ru>
+
+        * config/avr/avr.md ("call_prologue_saves"): Use hi8(gs())/lo8(gs())
+        instead of pm_lo8/pm_hi8 to makes this call working on avr6.
+        * config/avr/avr.c (expand_prologue): Tune "call_prologue" 
+        optimization for 'avr6' architecture.
+
+Index: gcc/config/avr/avr.c
+===================================================================
+--- gcc/config/avr/avr.c        (revision 135845)
++++ gcc/config/avr/avr.c        (working copy)
+@@ -682,7 +694,9 @@
+       /* Prevent any attempt to delete the setting of ZERO_REG!  */
+       emit_insn (gen_rtx_USE (VOIDmode, zero_reg_rtx));
+     }
+-  if (minimize && (frame_pointer_needed || live_seq > 6)) 
++  if (minimize && (frame_pointer_needed 
++                  || (AVR_2_BYTE_PC && live_seq > 6)
++                  || live_seq > 7)) 
+     {
+       insn = emit_move_insn (gen_rtx_REG (HImode, REG_X), 
+                              gen_int_mode (size, HImode));
+--- gcc/config/avr/avr.md.orig	Wed Aug 20 16:55:20 2008
++++ gcc/config/avr/avr.md	Wed Aug 20 16:59:52 2008
+@@ -2764,8 +2764,8 @@
+    (use (reg:HI REG_X))
+    (clobber (reg:HI REG_Z))]
+   ""
+-  "ldi r30,pm_lo8(1f)
+-	ldi r31,pm_hi8(1f)
++  "ldi r30,lo8(gs(1f))
++	ldi r31,hi8(gs(1f))
+ 	%~jmp __prologue_saves__+((18 - %0) * 2)
+ 1:"
+   [(set_attr_alternative "length"

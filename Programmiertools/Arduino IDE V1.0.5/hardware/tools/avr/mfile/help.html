@@ -1,0 +1,165 @@
+<!-- Help text for mfile.tcl -->
+<!--------------------------------------------------------------------------->
+<!-- "THE BEER-WARE LICENSE" (Revision 42) (by Poul-Henning Kamp):         -->
+<!-- Joerg Wunsch wrote this file.  As long as you retain this notice you  -->
+<!-- can do whatever you want with this stuff. If we meet some day, and    -->
+<!-- you think this stuff is worth it, you can buy me a beer in return.    -->
+<!--------------------------------------------------------------------------->
+<!-- $Id: help.html,v 2.0 2006/03/21 21:22:12 joerg_wunsch Exp $ -->
+<html>
+<head><title>Mfile help</title></head>
+<body>
+<h1>Simple Makefile generator for AVR-GCC</h1>
+<p>Copyright © 2003, 2004 Jörg Wunsch</p>
+
+<hr>
+<p>This simple Makefile generator is meant as an aid to quickly
+customize the WinAVR Makefile template, producing a file called
+<tt>Makefile</tt> in the current directory as result.</p>
+
+<p>The application consists of a (scrollable) text editor widget, and
+a menu bar.</p>
+
+<p>The <b>File</b> menu has only two entries:</p>
+
+<ul>
+  <li><b>Save</b> writes the contents of the text editor widget to a
+      file called <tt>Makefile</tt>.  Should any file by that name
+      already exist, it will be renamed.  Under Unix, a tilde will be
+      appended to the old name, all other platforms append a <tt>.bak</tt>
+      suffix.
+  <li><b>Save As</b> opens a filename selection dialog, and allows
+      the user to select a file to save to.  After selecting the file
+      name, it behaves identical to <b>Save</b>.
+  <li><b>Open</b> opens a filename selection dialog, requesting an
+      existing file to be opened by the user.  This file will be loaded
+      into the editor buffer, and the <b>Makefile</b> menu will be
+      updated accordingly.
+  <li><b>Exit</b> will quit the application.  No checks whatsoever
+      are done to ensure the user has saved his editing work before.
+</ul>
+
+<p>The <b>Makefile</b> menu allows customization of the generated
+Makefile.  Note that the various menu items described below will only
+be present if the corresponding feature is present in the parsed
+template or input file.  This menu is divided into three areas:</p>
+
+<ul>
+<li><b>Code generation options</b>
+<ul>
+  <li>The entry <b>Main file name</b> opens a popup window that asks
+      for the basic name of this
+      project.  This will become the base name for all major output files
+      (ELF file, MCU output file, several auxiliary files).  By default, it
+      will also serve as the name of the primary C source file, with a
+      <tt>.c</tt> suffix appended.  The popup will be closed by pressing
+      <i><Enter></i> in the entry field.
+  <li>The entries <b>MCU type</b>, <b>Output format</b>,
+      <b>Optimization level</b>,
+      and <b>C standard level</b> select possible values out of a
+      predefined list.  When selecting one of these options, the
+      respective Makefile macro will be modified accordingly, and the
+      widget will be adjusted so the new values can be seen
+      immediately.
+  <li>The entry <b>printf() options</b> works similar, only it does
+      not modify a Makefile macro of its own but edits the PRINTF_LIB
+      macro instead.  Note that setting this away from
+      <i>none/standard</i> will cause the generated application to
+      always include the code for vfprintf() (which is huge),
+      regardless of whether the application actually uses any member
+      of the printf() family.  See the avr-libc documentation for the
+      meaning of the different options.
+  <li>Likewise, changing the <b>scanf() options</b> changes the
+      macro SCANF_LIB, in the same manner.  Note that the
+      <tt>scanf()</tt> format %[ (string match out of a set of
+      characters) will only be present in the floating point version
+      since it requires a lot of code, as well as using
+      <tt>malloc()</tt> (which is otherwise only required for the
+      floating point version).
+  <li>The entry <b>C/C++ source file(s)</b> opens a popup that asks
+      for a list of C (or C++) source files.  C source files get the
+      suffix <tt>.c</tt> (lower-case letter c), C++ source files get
+      either of <tt>.C</tt> (capital c), <tt>.cxx</tt>, or <tt>.cc</tt>.
+      Multiple file names shall be seperated by spaces.  A checkbox
+      indicates whether the primary C source file name derived from
+      the <b>Main file name</b> setting should be included or not.
+      The popup will be closed by pressing <i><Enter></i> in the entry
+      field.
+  <li>The entry <b>Assembler source file(s)</b> works similar
+      except there are no default assembler sources to be included.
+      Note that assembler source files get the suffix <tt>.S</tt>
+      (capital letter s) which means they are being pre-processed by
+      the C preprocessor, so <tt>#include</tt> etc. will work.  A
+      lower-case letter <tt>.s</tt> suffix is considered to be a
+      temporary compiler output file, and should not be used here.
+  <li>Using <b>External RAM options</b>, several possible variants
+      to use external RAM can be selected.  This is internally handled
+      by editing the EXTMEMOPTS macro which eventually gets added to
+      the LDFLAGS during linking.  The options are to either use
+      external RAM for both, variables (i. e. sections .data and .bss)
+      as well as for the heap (dynamic memory for <tt>malloc()</tt>),
+      or to leave variables in internal memory and use the external
+      RAM only for the heap.  In both cases, the stack will always
+      remain in internal memory; this is the fastest way, and some
+      AVR MCUs have hardware bugs so they would not work when the
+      stack is located in external RAM.  It can be selected whether
+      the external RAM should start at the lowest possible memory
+      location (right behind the internal RAM), or at a different
+      memory address.  Several common memory sizes can be chosen from.
+      Obviously, these options are only accessible for MCU types that
+      do have an external memory interface.
+  <li>The entry <b>Debug format</b> selects one out of the following
+      options:
+      <ul>
+      <li><b>ELF/stabs</b> ELF object files with stabs debugging
+      information are currently the native way to debug under Unix
+      and/or GDB.  This includes any GDB frontend, like Insight or
+      DDD.
+      <li><b>AVR-COFF</b> Selecting this format will internally also
+      generate an ELF/stabs file, but change the Makefile to
+      subsequently convert the ELF file into a COFF file that adheres
+      to the originally Atmel AVR COFF file format specification.
+      This file format is understood by AVR Studio up to 3.x, and
+      VMLAB up to 3.9.
+      <li><b>AVR-ext-COFF</b> The conversion from internal ELF to
+      COFF will be tuned to produce a file according to the later
+      AVR "extended" COFF specification by Atmel, understood by AVR
+      Studio 4.07 and above, and VMLAB 3.10 and above.
+      <li><b>ELF/DWARF-2</b> Create an ELF standard object file with
+      DWARF-2 debug information.  This is the proposed standard debug
+      format for ELF.  It is currently Beta, the GNU tools are slowly
+      changing towards that standard (though it is not yet known
+      whether AVR-GDB will already fully understand the format yet),
+      and Atmel has released a beta ELF/DWARF-2 parser for their AVR
+      Studio.
+      </ul>
+</ul>
+<li><b>AVRdude options</b>
+<ul>
+  <li>The entry <b>Programmer</b> allows the selection of
+      the programming hardware (parallel port "dongle", or serially
+      connected hardware).
+  <li>The entry <b>Port</b> selects the serial or parallel
+      port AVRdude is going to talk across.  This menu item might
+      be missing on some operating systems where no default ports
+      are known.
+</ul>
+<li><b>Miscellaneous</b>
+<ul>
+  <li>By default, the editor widget is read-only, and can only be
+      modified by the menu entries mentioned above.  By checking the
+      <b>Enable Editing of Makefile</b> checkbox, this restriction can be lifted,
+      and the widget can be used as a simple standard text editor for
+      the generated Makefile.  Note that the menu operations mentioned
+      above are not guaranteed to work on arbitrary input texts since
+      they search for certain patterns in order to implement their
+      functionality, so manual editing should always be used as a last
+      step before eventually saving the generated Makefile.
+</ul>
+</ul>
+
+</body>
+<address><hr>
+Jörg Wunsch · &lt;j.gnu@uriah.heep.sax.de&gt; ·
+$Date: 2006/03/21 21:22:12 $</address>
+</html>

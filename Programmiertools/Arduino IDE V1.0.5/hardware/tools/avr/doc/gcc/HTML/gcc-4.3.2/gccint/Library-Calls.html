@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+<title>Library Calls - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Target-Macros.html#Target-Macros" title="Target Macros">
+<link rel="prev" href="Trampolines.html#Trampolines" title="Trampolines">
+<link rel="next" href="Addressing-Modes.html#Addressing-Modes" title="Addressing Modes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Library-Calls"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Addressing-Modes.html#Addressing-Modes">Addressing Modes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Trampolines.html#Trampolines">Trampolines</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Target-Macros.html#Target-Macros">Target Macros</a>
+<hr><br>
+</div>
+
+<h3 class="section">15.13 Implicit Calls to Library Routines</h3>
+
+<p><a name="index-library-subroutine-names-3771"></a><a name="index-_0040file_007blibgcc_002ea_007d-3772"></a>
+<!-- prevent bad page break with this line -->
+Here is an explanation of implicit calls to library routines.
+
+<div class="defun">
+&mdash; Macro: <b>DECLARE_LIBRARY_RENAMES</b><var><a name="index-DECLARE_005fLIBRARY_005fRENAMES-3773"></a></var><br>
+<blockquote><p>This macro, if defined, should expand to a piece of C code that will get
+expanded when compiling functions for libgcc.a.  It can be used to
+provide alternate names for GCC's internal library functions if there
+are ABI-mandated names that the compiler should provide. 
+</p></blockquote></div>
+
+ <p><a name="index-init_005fone_005flibfunc-3774"></a><a name="index-set_005foptab_005flibfunc-3775"></a>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_INIT_LIBFUNCS</b> (<var>void</var>)<var><a name="index-TARGET_005fINIT_005fLIBFUNCS-3776"></a></var><br>
+<blockquote><p>This hook should declare additional library routines or rename
+existing ones, using the functions <code>set_optab_libfunc</code> and
+<code>init_one_libfunc</code> defined in <span class="file">optabs.c</span>. 
+<code>init_optabs</code> calls this macro after initializing all the normal
+library routines.
+
+      <p>The default is to do nothing.  Most ports don't need to define this hook. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>FLOAT_LIB_COMPARE_RETURNS_BOOL</b> (<var>mode, comparison</var>)<var><a name="index-FLOAT_005fLIB_005fCOMPARE_005fRETURNS_005fBOOL-3777"></a></var><br>
+<blockquote><p>This macro should return <code>true</code> if the library routine that
+implements the floating point comparison operator <var>comparison</var> in
+mode <var>mode</var> will return a boolean, and <var>false</var> if it will
+return a tristate.
+
+      <p>GCC's own floating point libraries return tristates from the
+comparison operators, so the default returns false always.  Most ports
+don't need to define this macro. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_LIB_INT_CMP_BIASED</b><var><a name="index-TARGET_005fLIB_005fINT_005fCMP_005fBIASED-3778"></a></var><br>
+<blockquote><p>This macro should evaluate to <code>true</code> if the integer comparison
+functions (like <code>__cmpdi2</code>) return 0 to indicate that the first
+operand is smaller than the second, 1 to indicate that they are equal,
+and 2 to indicate that the first operand is greater than the second. 
+If this macro evaluates to <code>false</code> the comparison functions return
+&minus;1, 0, and 1 instead of 0, 1, and 2.  If the target uses the routines
+in <span class="file">libgcc.a</span>, you do not need to define this macro. 
+</p></blockquote></div>
+
+ <p><a name="index-US-Software-GOFAST_002c-floating-point-emulation-library-3779"></a><a name="index-floating-point-emulation-library_002c-US-Software-GOFAST-3780"></a><a name="index-GOFAST_002c-floating-point-emulation-library-3781"></a><a name="index-gofast_005fmaybe_005finit_005flibfuncs-3782"></a>
+
+<div class="defun">
+&mdash; Macro: <b>US_SOFTWARE_GOFAST</b><var><a name="index-US_005fSOFTWARE_005fGOFAST-3783"></a></var><br>
+<blockquote><p>Define this macro if your system C library uses the US Software GOFAST
+library to provide floating point emulation.
+
+      <p>In addition to defining this macro, your architecture must set
+<code>TARGET_INIT_LIBFUNCS</code> to <code>gofast_maybe_init_libfuncs</code>, or
+else call that function from its version of that hook.  It is defined
+in <span class="file">config/gofast.h</span>, which must be included by your
+architecture's <var>cpu</var><span class="file">.c</span> file.  See <span class="file">sparc/sparc.c</span> for
+an example.
+
+      <p>If this macro is defined, the
+<code>TARGET_FLOAT_LIB_COMPARE_RETURNS_BOOL</code> target hook must return
+false for <code>SFmode</code> and <code>DFmode</code> comparisons. 
+</p></blockquote></div>
+
+ <p><a name="index-_0040code_007bEDOM_007d_002c-implicit-usage-3784"></a><a name="index-matherr-3785"></a>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_EDOM</b><var><a name="index-TARGET_005fEDOM-3786"></a></var><br>
+<blockquote><p>The value of <code>EDOM</code> on the target machine, as a C integer constant
+expression.  If you don't define this macro, GCC does not attempt to
+deposit the value of <code>EDOM</code> into <code>errno</code> directly.  Look in
+<span class="file">/usr/include/errno.h</span> to find the value of <code>EDOM</code> on your
+system.
+
+      <p>If you do not define <code>TARGET_EDOM</code>, then compiled code reports
+domain errors by calling the library function and letting it report the
+error.  If mathematical functions on your system use <code>matherr</code> when
+there is an error, then you should leave <code>TARGET_EDOM</code> undefined so
+that <code>matherr</code> is used normally. 
+</p></blockquote></div>
+
+ <p><a name="index-_0040code_007berrno_007d_002c-implicit-usage-3787"></a>
+
+<div class="defun">
+&mdash; Macro: <b>GEN_ERRNO_RTX</b><var><a name="index-GEN_005fERRNO_005fRTX-3788"></a></var><br>
+<blockquote><p>Define this macro as a C expression to create an rtl expression that
+refers to the global &ldquo;variable&rdquo; <code>errno</code>.  (On certain systems,
+<code>errno</code> may not actually be a variable.)  If you don't define this
+macro, a reasonable default is used. 
+</p></blockquote></div>
+
+ <p><a name="index-C99-math-functions_002c-implicit-usage-3789"></a>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_C99_FUNCTIONS</b><var><a name="index-TARGET_005fC99_005fFUNCTIONS-3790"></a></var><br>
+<blockquote><p>When this macro is nonzero, GCC will implicitly optimize <code>sin</code> calls into
+<code>sinf</code> and similarly for other functions defined by C99 standard.  The
+default is nonzero that should be proper value for most modern systems, however
+number of existing systems lacks support for these functions in the runtime so
+they needs this macro to be redefined to 0. 
+</p></blockquote></div>
+
+ <p><a name="index-sincos-math-function_002c-implicit-usage-3791"></a>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_HAS_SINCOS</b><var><a name="index-TARGET_005fHAS_005fSINCOS-3792"></a></var><br>
+<blockquote><p>When this macro is nonzero, GCC will implicitly optimize calls to <code>sin</code>
+and <code>cos</code> with the same argument to a call to <code>sincos</code>.  The
+default is zero.  The target has to provide the following functions:
+     <pre class="smallexample">          void sincos(double x, double *sin, double *cos);
+          void sincosf(float x, float *sin, float *cos);
+          void sincosl(long double x, long double *sin, long double *cos);
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>NEXT_OBJC_RUNTIME</b><var><a name="index-NEXT_005fOBJC_005fRUNTIME-3793"></a></var><br>
+<blockquote><p>Define this macro to generate code for Objective-C message sending using
+the calling convention of the NeXT system.  This calling convention
+involves passing the object, the selector and the method arguments all
+at once to the method-lookup library function.
+
+      <p>The default calling convention passes just the object and the selector
+to the lookup function, which returns a pointer to the method. 
+</p></blockquote></div>
+
+ </body></html>
+

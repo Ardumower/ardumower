@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on November, 7 2008 by texi2html 1.78 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+
+-->
+<head>
+<title>Simulavr: 2.2 Options</title>
+
+<meta name="description" content="Simulavr: 2.2 Options">
+<meta name="keywords" content="Simulavr: 2.2 Options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.78">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Options"></a>
+<a name="SEC4"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_3.html#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_2.html#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_11.html#SEC11" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section"> 2.2 Options </h2>
+
+<p>simulavr supports the following options:
+</p>
+<dl compact="compact">
+<dd><a name="IDX1"></a>
+</dd>
+<dt> <code>--help</code></dt>
+<dt> <code>-h</code></dt>
+<dd><p>Print an informative help message describing the options and available
+device types, then exit.
+</p>
+<a name="IDX2"></a>
+</dd>
+<dt> <code>--debug</code></dt>
+<dt> <code>-D</code></dt>
+<dd><p>Print assembly instruction mnemonics and program counter (&lsquo;<samp>PC</samp>&rsquo;) to
+output as device program is running.
+</p>
+<a name="IDX3"></a>
+</dd>
+<dt> <code>--version</code></dt>
+<dt> <code>-v</code></dt>
+<dd><p>Print out the version number and exit.
+</p>
+<a name="IDX4"></a>
+</dd>
+<dt> <code>--gdbserver</code></dt>
+<dt> <code>-g</code></dt>
+<dd><p>Run as a gdbserver process.
+</p>
+<a name="IDX5"></a>
+</dd>
+<dt> <code>--gdb-debug</code></dt>
+<dt> <code>-G</code></dt>
+<dd><p>Print out messages  for debugging the gdb remote serial protocol interface.
+</p>
+<a name="IDX6"></a>
+</dd>
+<dt> <code>--port <var>&lt;port&gt;</var></code></dt>
+<dt> <code>-p</code></dt>
+<dd><p>Listen for gdb connection on TCP port. If not specified, a default will
+be used. Run &lsquo;<samp>simulavr --help</samp>&rsquo; to see what the default is. This
+option is ignored if the &lsquo;<samp>--gdbserver</samp>&rsquo; is not specified.
+</p>
+<a name="IDX7"></a>
+</dd>
+<dt> <code>--device <var>&lt;dev&gt;</var></code></dt>
+<dt> <code>-d</code></dt>
+<dd><p>Specify device type. The device types available for use with a specific
+version of simulavr can be obtained using the &lsquo;<samp>--list-devices</samp>&rsquo; option.
+</p>
+<a name="IDX8"></a>
+</dd>
+<dt> <code>--eeprom-image <var>&lt;img&gt;</var></code></dt>
+<dt> <code>-e</code></dt>
+<dd><p>Specify an optional eeprom image file to be loaded into the device's
+eeprom memory space.
+</p>
+<a name="IDX9"></a>
+</dd>
+<dt> <code>--eeprom-type <var>&lt;type&gt;</var></code></dt>
+<dt> <code>-E</code></dt>
+<dd><p>Specify the type of the eeprom image file. If not specified, the default
+is binary.
+</p>
+<a name="IDX10"></a>
+</dd>
+<dt> <code>--flash-type <var>&lt;type&gt;</var></code></dt>
+<dt> <code>-F</code></dt>
+<dd><p>Specify the type of the flash image file. If not specified, the default
+is binary.
+</p>
+<a name="IDX11"></a>
+</dd>
+<dt> <code>--list-devices</code></dt>
+<dt> <code>-L</code></dt>
+<dd><p>Prints a list of supported devices to stdout and exits.
+</p>
+<a name="IDX12"></a>
+</dd>
+<dt> <code>--disp-prog <var>&lt;prog&gt;</var></code></dt>
+<dt> <code>-P</code></dt>
+<dd><p>Specify a program to be used to display register and memory information
+in real time as a child process. The display program can also be
+specified by setting the <code>SIM_DISP_PROG</code> environment variable.
+</p>
+<a name="IDX13"></a>
+</dd>
+<dt> <code>--without-xterm</code></dt>
+<dt> <code>-X</code></dt>
+<dd><p>Don't start display coprocess program in an xterm.  This is useful if
+the display coprocess supplies it's own window for input and output,
+such as a process which uses a GUI.
+</p>
+<a name="IDX14"></a>
+</dd>
+<dt> <code>--core-dump</code></dt>
+<dt> <code>-C</code></dt>
+<dd><p>Dump a core memory image to file on exit. This isn't as useful as it
+sounds.  The display coprocess mechanism is much more informative.
+</p>
+<a name="IDX15"></a>
+</dd>
+<dt> <code>--clock-freq <var>&lt;freq&gt;</var></code></dt>
+<dt> <code>-c</code></dt>
+<dd><p>Set the simulated mcu clock freqency in Hz.
+</p>
+<a name="IDX16"></a>
+</dd>
+<dt> <code>--breakpoint <var>&lt;addr&gt;</var></code></dt>
+<dt> <code>-B</code></dt>
+<dd><p>Set a breakpoint at <var>&lt;addr&gt;</var>.  Note that the break address is
+interpreted as a byte address instead of a word address.  This makes
+it easier on the user since binutils, gcc and gdb all work in terms of
+byte addresses.  The address can be specified in any base (decimal,
+hexidecimal, octal, etc).
+</p> 
+</dd>
+</dl>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_3.html#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_2.html#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>eweddington</em> on <em>November, 7 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.78</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

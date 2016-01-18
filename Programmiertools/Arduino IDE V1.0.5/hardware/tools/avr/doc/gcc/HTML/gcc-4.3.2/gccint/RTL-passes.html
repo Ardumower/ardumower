@@ -1,0 +1,323 @@
+<html lang="en">
+<head>
+<title>RTL passes - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Passes.html#Passes" title="Passes">
+<link rel="prev" href="Tree_002dSSA-passes.html#Tree_002dSSA-passes" title="Tree-SSA passes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="RTL-passes"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Tree_002dSSA-passes.html#Tree_002dSSA-passes">Tree-SSA passes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Passes.html#Passes">Passes</a>
+<hr><br>
+</div>
+
+<h3 class="section">8.5 RTL passes</h3>
+
+<p>The following briefly describes the rtl generation and optimization
+passes that are run after tree optimization.
+
+     <ul>
+<li>RTL generation
+
+     <!-- Avoiding overfull is tricky here. -->
+<p>The source files for RTL generation include
+<span class="file">stmt.c</span>,
+<span class="file">calls.c</span>,
+<span class="file">expr.c</span>,
+<span class="file">explow.c</span>,
+<span class="file">expmed.c</span>,
+<span class="file">function.c</span>,
+<span class="file">optabs.c</span>
+and <span class="file">emit-rtl.c</span>. 
+Also, the file
+<span class="file">insn-emit.c</span>, generated from the machine description by the
+program <code>genemit</code>, is used in this pass.  The header file
+<span class="file">expr.h</span> is used for communication within this pass.
+
+     <p><a name="index-genflags-1684"></a><a name="index-gencodes-1685"></a>The header files <span class="file">insn-flags.h</span> and <span class="file">insn-codes.h</span>,
+generated from the machine description by the programs <code>genflags</code>
+and <code>gencodes</code>, tell this pass which standard names are available
+for use and which patterns correspond to them.
+
+     <li>Generate exception handling landing pads
+
+     <p>This pass generates the glue that handles communication between the
+exception handling library routines and the exception handlers within
+the function.  Entry points in the function that are invoked by the
+exception handling library are called <dfn>landing pads</dfn>.  The code
+for this pass is located within <span class="file">except.c</span>.
+
+     <li>Cleanup control flow graph
+
+     <p>This pass removes unreachable code, simplifies jumps to next, jumps to
+jump, jumps across jumps, etc.  The pass is run multiple times. 
+For historical reasons, it is occasionally referred to as the &ldquo;jump
+optimization pass&rdquo;.  The bulk of the code for this pass is in
+<span class="file">cfgcleanup.c</span>, and there are support routines in <span class="file">cfgrtl.c</span>
+and <span class="file">jump.c</span>.
+
+     <li>Forward propagation of single-def values
+
+     <p>This pass attempts to remove redundant computation by substituting
+variables that come from a single definition, and
+seeing if the result can be simplified.  It performs copy propagation
+and addressing mode selection.  The pass is run twice, with values
+being propagated into loops only on the second run.  It is located in
+<span class="file">fwprop.c</span>.
+
+     <li>Common subexpression elimination
+
+     <p>This pass removes redundant computation within basic blocks, and
+optimizes addressing modes based on cost.  The pass is run twice. 
+The source is located in <span class="file">cse.c</span>.
+
+     <li>Global common subexpression elimination.
+
+     <p>This pass performs two
+different types of GCSE  depending on whether you are optimizing for
+size or not (LCM based GCSE tends to increase code size for a gain in
+speed, while Morel-Renvoise based GCSE does not). 
+When optimizing for size, GCSE is done using Morel-Renvoise Partial
+Redundancy Elimination, with the exception that it does not try to move
+invariants out of loops&mdash;that is left to  the loop optimization pass. 
+If MR PRE GCSE is done, code hoisting (aka unification) is also done, as
+well as load motion. 
+If you are optimizing for speed, LCM (lazy code motion) based GCSE is
+done.  LCM is based on the work of Knoop, Ruthing, and Steffen.  LCM
+based GCSE also does loop invariant code motion.  We also perform load
+and store motion when optimizing for speed. 
+Regardless of which type of GCSE is used, the GCSE pass also performs
+global constant and  copy propagation. 
+The source file for this pass is <span class="file">gcse.c</span>, and the LCM routines
+are in <span class="file">lcm.c</span>.
+
+     <li>Loop optimization
+
+     <p>This pass performs several loop related optimizations. 
+The source files <span class="file">cfgloopanal.c</span> and <span class="file">cfgloopmanip.c</span> contain
+generic loop analysis and manipulation code.  Initialization and finalization
+of loop structures is handled by <span class="file">loop-init.c</span>. 
+A loop invariant motion pass is implemented in <span class="file">loop-invariant.c</span>. 
+Basic block level optimizations&mdash;unrolling, peeling and unswitching loops&mdash;
+are implemented in <span class="file">loop-unswitch.c</span> and <span class="file">loop-unroll.c</span>. 
+Replacing of the exit condition of loops by special machine-dependent
+instructions is handled by <span class="file">loop-doloop.c</span>.
+
+     <li>Jump bypassing
+
+     <p>This pass is an aggressive form of GCSE that transforms the control
+flow graph of a function by propagating constants into conditional
+branch instructions.  The source file for this pass is <span class="file">gcse.c</span>.
+
+     <li>If conversion
+
+     <p>This pass attempts to replace conditional branches and surrounding
+assignments with arithmetic, boolean value producing comparison
+instructions, and conditional move instructions.  In the very last
+invocation after reload, it will generate predicated instructions
+when supported by the target.  The pass is located in <span class="file">ifcvt.c</span>.
+
+     <li>Web construction
+
+     <p>This pass splits independent uses of each pseudo-register.  This can
+improve effect of the other transformation, such as CSE or register
+allocation.  Its source files are <span class="file">web.c</span>.
+
+     <li>Life analysis
+
+     <p>This pass computes which pseudo-registers are live at each point in
+the program, and makes the first instruction that uses a value point
+at the instruction that computed the value.  It then deletes
+computations whose results are never used, and combines memory
+references with add or subtract instructions to make autoincrement or
+autodecrement addressing.  The pass is located in <span class="file">flow.c</span>.
+
+     <li>Instruction combination
+
+     <p>This pass attempts to combine groups of two or three instructions that
+are related by data flow into single instructions.  It combines the
+RTL expressions for the instructions by substitution, simplifies the
+result using algebra, and then attempts to match the result against
+the machine description.  The pass is located in <span class="file">combine.c</span>.
+
+     <li>Register movement
+
+     <p>This pass looks for cases where matching constraints would force an
+instruction to need a reload, and this reload would be a
+register-to-register move.  It then attempts to change the registers
+used by the instruction to avoid the move instruction. 
+The pass is located in <span class="file">regmove.c</span>.
+
+     <li>Optimize mode switching
+
+     <p>This pass looks for instructions that require the processor to be in a
+specific &ldquo;mode&rdquo; and minimizes the number of mode changes required to
+satisfy all users.  What these modes are, and what they apply to are
+completely target-specific. 
+The source is located in <span class="file">mode-switching.c</span>.
+
+     <p><a name="index-modulo-scheduling-1686"></a><a name="index-sms_002c-swing_002c-software-pipelining-1687"></a><li>Modulo scheduling
+
+     <p>This pass looks at innermost loops and reorders their instructions
+by overlapping different iterations.  Modulo scheduling is performed
+immediately before instruction scheduling. 
+The pass is located in (<span class="file">modulo-sched.c</span>).
+
+     <li>Instruction scheduling
+
+     <p>This pass looks for instructions whose output will not be available by
+the time that it is used in subsequent instructions.  Memory loads and
+floating point instructions often have this behavior on RISC machines. 
+It re-orders instructions within a basic block to try to separate the
+definition and use of items that otherwise would cause pipeline
+stalls.  This pass is performed twice, before and after register
+allocation.  The pass is located in <span class="file">haifa-sched.c</span>,
+<span class="file">sched-deps.c</span>, <span class="file">sched-ebb.c</span>, <span class="file">sched-rgn.c</span> and
+<span class="file">sched-vis.c</span>.
+
+     <li>Register allocation
+
+     <p>These passes make sure that all occurrences of pseudo registers are
+eliminated, either by allocating them to a hard register, replacing
+them by an equivalent expression (e.g. a constant) or by placing
+them on the stack.  This is done in several subpasses:
+
+          <ul>
+<li>Register class preferencing.  The RTL code is scanned to find out
+which register class is best for each pseudo register.  The source
+file is <span class="file">regclass.c</span>.
+
+          <li>Local register allocation.  This pass allocates hard registers to
+pseudo registers that are used only within one basic block.  Because
+the basic block is linear, it can use fast and powerful techniques to
+do a decent job.  The source is located in <span class="file">local-alloc.c</span>.
+
+          <li>Global register allocation.  This pass allocates hard registers for
+the remaining pseudo registers (those whose life spans are not
+contained in one basic block).  The pass is located in <span class="file">global.c</span>.
+
+          <p><a name="index-reloading-1688"></a><li>Reloading.  This pass renumbers pseudo registers with the hardware
+registers numbers they were allocated.  Pseudo registers that did not
+get hard registers are replaced with stack slots.  Then it finds
+instructions that are invalid because a value has failed to end up in
+a register, or has ended up in a register of the wrong kind.  It fixes
+up these instructions by reloading the problematical values
+temporarily into registers.  Additional instructions are generated to
+do the copying.
+
+          <p>The reload pass also optionally eliminates the frame pointer and inserts
+instructions to save and restore call-clobbered registers around calls.
+
+          <p>Source files are <span class="file">reload.c</span> and <span class="file">reload1.c</span>, plus the header
+<span class="file">reload.h</span> used for communication between them. 
+</ul>
+
+     <li>Basic block reordering
+
+     <p>This pass implements profile guided code positioning.  If profile
+information is not available, various types of static analysis are
+performed to make the predictions normally coming from the profile
+feedback (IE execution frequency, branch probability, etc).  It is
+implemented in the file <span class="file">bb-reorder.c</span>, and the various
+prediction routines are in <span class="file">predict.c</span>.
+
+     <li>Variable tracking
+
+     <p>This pass computes where the variables are stored at each
+position in code and generates notes describing the variable locations
+to RTL code.  The location lists are then generated according to these
+notes to debug information if the debugging information format supports
+location lists.
+
+     <li>Delayed branch scheduling
+
+     <p>This optional pass attempts to find instructions that can go into the
+delay slots of other instructions, usually jumps and calls.  The
+source file name is <span class="file">reorg.c</span>.
+
+     <li>Branch shortening
+
+     <p>On many RISC machines, branch instructions have a limited range. 
+Thus, longer sequences of instructions must be used for long branches. 
+In this pass, the compiler figures out what how far each instruction
+will be from each other instruction, and therefore whether the usual
+instructions, or the longer sequences, must be used for each branch.
+
+     <li>Register-to-stack conversion
+
+     <p>Conversion from usage of some hard registers to usage of a register
+stack may be done at this point.  Currently, this is supported only
+for the floating-point registers of the Intel 80387 coprocessor.   The
+source file name is <span class="file">reg-stack.c</span>.
+
+     <li>Final
+
+     <p>This pass outputs the assembler code for the function.  The source files
+are <span class="file">final.c</span> plus <span class="file">insn-output.c</span>; the latter is generated
+automatically from the machine description by the tool <span class="file">genoutput</span>. 
+The header file <span class="file">conditions.h</span> is used for communication between
+these files.  If mudflap is enabled, the queue of deferred declarations
+and any addressed constants (e.g., string literals) is processed by
+<code>mudflap_finish_file</code> into a synthetic constructor function
+containing calls into the mudflap runtime.
+
+     <li>Debugging information output
+
+     <p>This is run after final because it must output the stack slot offsets
+for pseudo registers that did not get hard registers.  Source files
+are <span class="file">dbxout.c</span> for DBX symbol table format, <span class="file">sdbout.c</span> for
+SDB symbol table format, <span class="file">dwarfout.c</span> for DWARF symbol table
+format, files <span class="file">dwarf2out.c</span> and <span class="file">dwarf2asm.c</span> for DWARF2
+symbol table format, and <span class="file">vmsdbgout.c</span> for VMS debug symbol table
+format.
+
+ </ul>
+
+<!-- Copyright (c) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 -->
+<!-- Free Software Foundation, Inc. -->
+<!-- This is part of the GCC manual. -->
+<!-- For copying conditions, see the file gcc.texi. -->
+<!--  -->
+<!-- Trees -->
+<!--  -->
+</body></html>
+

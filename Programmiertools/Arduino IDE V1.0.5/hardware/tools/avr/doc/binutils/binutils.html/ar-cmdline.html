@@ -1,0 +1,240 @@
+<html lang="en">
+<head>
+<title>ar cmdline - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="ar.html#ar" title="ar">
+<link rel="next" href="ar-scripts.html#ar-scripts" title="ar scripts">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="ar-cmdline"></a>Next:&nbsp;<a rel="next" accesskey="n" href="ar-scripts.html#ar-scripts">ar scripts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="ar.html#ar">ar</a>
+<hr><br>
+</div>
+
+<h3 class="section">1.1 Controlling <span class="command">ar</span> on the Command Line</h3>
+
+<pre class="smallexample">     <!-- man begin SYNOPSIS ar -->
+     ar [<span class="option">-X32_64</span>] [<span class="option">-</span>]<var>p</var>[<var>mod</var> [<var>relpos</var>] [<var>count</var>]] <var>archive</var> [<var>member</var>...]
+     <!-- man end -->
+</pre>
+   <p><a name="index-Unix-compatibility_002c-_0040command_007bar_007d-11"></a>When you use <span class="command">ar</span> in the Unix style, <span class="command">ar</span> insists on at least two
+arguments to execute: one keyletter specifying the <em>operation</em>
+(optionally accompanied by other keyletters specifying
+<em>modifiers</em>), and the archive name to act on.
+
+   <p>Most operations can also accept further <var>member</var> arguments,
+specifying particular files to operate on.
+
+<!-- man begin OPTIONS ar -->
+<p><span class="sc">gnu</span> <span class="command">ar</span> allows you to mix the operation code <var>p</var> and modifier
+flags <var>mod</var> in any order, within the first command-line argument.
+
+   <p>If you wish, you may begin the first command-line argument with a
+dash.
+
+   <p><a name="index-operations-on-archive-12"></a>The <var>p</var> keyletter specifies what operation to execute; it may be
+any of the following, but you must specify only one of them:
+
+     <dl>
+<dt><span class="samp">d</span><dd><a name="index-deleting-from-archive-13"></a><em>Delete</em> modules from the archive.  Specify the names of modules to
+be deleted as <var>member</var><small class="dots">...</small>; the archive is untouched if you
+specify no files to delete.
+
+     <p>If you specify the <span class="samp">v</span> modifier, <span class="command">ar</span> lists each module
+as it is deleted.
+
+     <br><dt><span class="samp">m</span><dd><a name="index-moving-in-archive-14"></a>Use this operation to <em>move</em> members in an archive.
+
+     <p>The ordering of members in an archive can make a difference in how
+programs are linked using the library, if a symbol is defined in more
+than one member.
+
+     <p>If no modifiers are used with <code>m</code>, any members you name in the
+<var>member</var> arguments are moved to the <em>end</em> of the archive;
+you can use the <span class="samp">a</span>, <span class="samp">b</span>, or <span class="samp">i</span> modifiers to move them to a
+specified place instead.
+
+     <br><dt><span class="samp">p</span><dd><a name="index-printing-from-archive-15"></a><em>Print</em> the specified members of the archive, to the standard
+output file.  If the <span class="samp">v</span> modifier is specified, show the member
+name before copying its contents to standard output.
+
+     <p>If you specify no <var>member</var> arguments, all the files in the archive are
+printed.
+
+     <br><dt><span class="samp">q</span><dd><a name="index-quick-append-to-archive-16"></a><em>Quick append</em>; Historically, add the files <var>member</var><small class="dots">...</small> to the end of
+<var>archive</var>, without checking for replacement.
+
+     <p>The modifiers <span class="samp">a</span>, <span class="samp">b</span>, and <span class="samp">i</span> do <em>not</em> affect this
+operation; new members are always placed at the end of the archive.
+
+     <p>The modifier <span class="samp">v</span> makes <span class="command">ar</span> list each file as it is appended.
+
+     <p>Since the point of this operation is speed, the archive's symbol table
+index is not updated, even if it already existed; you can use <span class="samp">ar s</span> or
+<span class="command">ranlib</span> explicitly to update the symbol table index.
+
+     <p>However, too many different systems assume quick append rebuilds the
+index, so <span class="sc">gnu</span> <span class="command">ar</span> implements <span class="samp">q</span> as a synonym for <span class="samp">r</span>.
+
+     <br><dt><span class="samp">r</span><dd><a name="index-replacement-in-archive-17"></a>Insert the files <var>member</var><small class="dots">...</small> into <var>archive</var> (with
+<em>replacement</em>). This operation differs from <span class="samp">q</span> in that any
+previously existing members are deleted if their names match those being
+added.
+
+     <p>If one of the files named in <var>member</var><small class="dots">...</small> does not exist, <span class="command">ar</span>
+displays an error message, and leaves undisturbed any existing members
+of the archive matching that name.
+
+     <p>By default, new members are added at the end of the file; but you may
+use one of the modifiers <span class="samp">a</span>, <span class="samp">b</span>, or <span class="samp">i</span> to request
+placement relative to some existing member.
+
+     <p>The modifier <span class="samp">v</span> used with this operation elicits a line of
+output for each file inserted, along with one of the letters <span class="samp">a</span> or
+<span class="samp">r</span> to indicate whether the file was appended (no old member
+deleted) or replaced.
+
+     <br><dt><span class="samp">t</span><dd><a name="index-contents-of-archive-18"></a>Display a <em>table</em> listing the contents of <var>archive</var>, or those
+of the files listed in <var>member</var><small class="dots">...</small> that are present in the
+archive.  Normally only the member name is shown; if you also want to
+see the modes (permissions), timestamp, owner, group, and size, you can
+request that by also specifying the <span class="samp">v</span> modifier.
+
+     <p>If you do not specify a <var>member</var>, all files in the archive
+are listed.
+
+     <p><a name="index-repeated-names-in-archive-19"></a><a name="index-name-duplication-in-archive-20"></a>If there is more than one file with the same name (say, <span class="samp">fie</span>) in
+an archive (say <span class="samp">b.a</span>), <span class="samp">ar t b.a fie</span> lists only the
+first instance; to see them all, you must ask for a complete
+listing&mdash;in our example, <span class="samp">ar t b.a</span>. 
+<!-- WRS only; per Gumby, this is implementation-dependent, and in a more -->
+<!-- recent case in fact works the other way. -->
+
+     <br><dt><span class="samp">x</span><dd><a name="index-extract-from-archive-21"></a><em>Extract</em> members (named <var>member</var>) from the archive.  You can
+use the <span class="samp">v</span> modifier with this operation, to request that
+<span class="command">ar</span> list each name as it extracts it.
+
+     <p>If you do not specify a <var>member</var>, all files in the archive
+are extracted.
+
+     <p>Files cannot be extracted from a thin archive.
+
+   </dl>
+
+   <p>A number of modifiers (<var>mod</var>) may immediately follow the <var>p</var>
+keyletter, to specify variations on an operation's behavior:
+
+     <dl>
+<dt><span class="samp">a</span><dd><a name="index-relative-placement-in-archive-22"></a>Add new files <em>after</em> an existing member of the
+archive.  If you use the modifier <span class="samp">a</span>, the name of an existing archive
+member must be present as the <var>relpos</var> argument, before the
+<var>archive</var> specification.
+
+     <br><dt><span class="samp">b</span><dd>Add new files <em>before</em> an existing member of the
+archive.  If you use the modifier <span class="samp">b</span>, the name of an existing archive
+member must be present as the <var>relpos</var> argument, before the
+<var>archive</var> specification.  (same as <span class="samp">i</span>).
+
+     <br><dt><span class="samp">c</span><dd><a name="index-creating-archives-23"></a><em>Create</em> the archive.  The specified <var>archive</var> is always
+created if it did not exist, when you request an update.  But a warning is
+issued unless you specify in advance that you expect to create it, by
+using this modifier.
+
+     <br><dt><span class="samp">f</span><dd>Truncate names in the archive.  <span class="sc">gnu</span> <span class="command">ar</span> will normally permit file
+names of any length.  This will cause it to create archives which are
+not compatible with the native <span class="command">ar</span> program on some systems.  If
+this is a concern, the <span class="samp">f</span> modifier may be used to truncate file
+names when putting them in the archive.
+
+     <br><dt><span class="samp">i</span><dd>Insert new files <em>before</em> an existing member of the
+archive.  If you use the modifier <span class="samp">i</span>, the name of an existing archive
+member must be present as the <var>relpos</var> argument, before the
+<var>archive</var> specification.  (same as <span class="samp">b</span>).
+
+     <br><dt><span class="samp">l</span><dd>This modifier is accepted but not used. 
+<!-- whaffor ar l modifier??? presumably compat; with -->
+<!-- what???-doc@@cygnus.com, 25jan91 -->
+
+     <br><dt><span class="samp">N</span><dd>Uses the <var>count</var> parameter.  This is used if there are multiple
+entries in the archive with the same name.  Extract or delete instance
+<var>count</var> of the given name from the archive.
+
+     <br><dt><span class="samp">o</span><dd><a name="index-dates-in-archive-24"></a>Preserve the <em>original</em> dates of members when extracting them.  If
+you do not specify this modifier, files extracted from the archive
+are stamped with the time of extraction.
+
+     <br><dt><span class="samp">P</span><dd>Use the full path name when matching names in the archive.  <span class="sc">gnu</span>
+<span class="command">ar</span> can not create an archive with a full path name (such archives
+are not POSIX complaint), but other archive creators can.  This option
+will cause <span class="sc">gnu</span> <span class="command">ar</span> to match file names using a complete path
+name, which can be convenient when extracting a single file from an
+archive created by another tool.
+
+     <br><dt><span class="samp">s</span><dd><a name="index-writing-archive-index-25"></a>Write an object-file index into the archive, or update an existing one,
+even if no other change is made to the archive.  You may use this modifier
+flag either with any operation, or alone.  Running <span class="samp">ar s</span> on an
+archive is equivalent to running <span class="samp">ranlib</span> on it.
+
+     <br><dt><span class="samp">S</span><dd><a name="index-not-writing-archive-index-26"></a>Do not generate an archive symbol table.  This can speed up building a
+large library in several steps.  The resulting archive can not be used
+with the linker.  In order to build a symbol table, you must omit the
+<span class="samp">S</span> modifier on the last execution of <span class="samp">ar</span>, or you must run
+<span class="samp">ranlib</span> on the archive.
+
+     <br><dt><span class="samp">T</span><dd><a name="index-creating-thin-archive-27"></a>Make the specified <var>archive</var> a <em>thin</em> archive.  If it already
+exists and is a regular archive, the existing members must be present
+in the same directory as <var>archive</var>.
+
+     <br><dt><span class="samp">u</span><dd><a name="index-updating-an-archive-28"></a>Normally, <span class="samp">ar r</span><small class="dots">...</small> inserts all files
+listed into the archive.  If you would like to insert <em>only</em> those
+of the files you list that are newer than existing members of the same
+names, use this modifier.  The <span class="samp">u</span> modifier is allowed only for the
+operation <span class="samp">r</span> (replace).  In particular, the combination <span class="samp">qu</span> is
+not allowed, since checking the timestamps would lose any speed
+advantage from the operation <span class="samp">q</span>.
+
+     <br><dt><span class="samp">v</span><dd>This modifier requests the <em>verbose</em> version of an operation.  Many
+operations display additional information, such as filenames processed,
+when the modifier <span class="samp">v</span> is appended.
+
+     <br><dt><span class="samp">V</span><dd>This modifier shows the version number of <span class="command">ar</span>. 
+</dl>
+
+   <p><span class="command">ar</span> ignores an initial option spelt <span class="samp">-X32_64</span>, for
+compatibility with AIX.  The behaviour produced by this option is the
+default for <span class="sc">gnu</span> <span class="command">ar</span>.  <span class="command">ar</span> does not support any of the other
+<span class="samp">-X</span> options; in particular, it does not support <span class="option">-X32</span>
+which is the default for AIX <span class="command">ar</span>.
+
+<!-- man end -->
+</body></html>
+

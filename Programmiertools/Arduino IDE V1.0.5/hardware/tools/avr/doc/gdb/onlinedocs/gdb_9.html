@@ -1,0 +1,2596 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Data</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Data">
+<META NAME="keywords" CONTENT="Debugging with GDB: Data">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC59"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC58"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC60"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 8. Examining Data </H1>
+<!--docid::SEC59::-->
+<P>
+
+<A NAME="IDX367"></A>
+<A NAME="IDX368"></A>
+<A NAME="IDX369"></A>
+<A NAME="IDX370"></A>
+The usual way to examine data in your program is with the <CODE>print</CODE>
+command (abbreviated <CODE>p</CODE>), or its synonym <CODE>inspect</CODE>.  It
+evaluates and prints the value of an expression of the language your
+program is written in (see section <A HREF="gdb_13.html#SEC102">Using GDB with Different Languages</A>).
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>print <VAR>expr</VAR></CODE>
+<DD><DT><CODE>print /<VAR>f</VAR> <VAR>expr</VAR></CODE>
+<DD><VAR>expr</VAR> is an expression (in the source language).  By default the
+value of <VAR>expr</VAR> is printed in a format appropriate to its data type;
+you can choose a different format by specifying <SAMP>`/<VAR>f</VAR>'</SAMP>, where
+<VAR>f</VAR> is a letter specifying the format; see <A HREF="gdb_9.html#SEC63">Output Formats</A>.
+<P>
+
+<DT><CODE>print</CODE>
+<DD><DT><CODE>print /<VAR>f</VAR></CODE>
+<DD><A NAME="IDX371"></A>
+If you omit <VAR>expr</VAR>, GDB displays the last value again (from the
+<EM>value history</EM>; see section <A HREF="gdb_9.html#SEC67">Value History</A>).  This allows you to
+conveniently inspect the same value in an alternative format.
+</DL>
+<P>
+
+A more low-level way of examining data is with the <CODE>x</CODE> command.
+It examines data in memory at a specified address and prints it in a
+specified format.  See section <A HREF="gdb_9.html#SEC64">Examining Memory</A>.
+</P><P>
+
+If you are interested in information about types, or about how the
+fields of a struct or a class are declared, use the <CODE>ptype <VAR>exp</VAR></CODE>
+command rather than <CODE>print</CODE>.  See section <A HREF="gdb_14.html#SEC146">Examining the Symbol Table</A>.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC60">8.1 Expressions</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC61">8.2 Program Variables</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Program variables</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC62">8.3 Artificial Arrays</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Artificial arrays</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC63">8.4 Output Formats</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Output formats</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC64">8.5 Examining Memory</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Examining memory</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC65">8.6 Automatic Display</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Automatic display</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC66">8.7 Print Settings</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Print settings</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC67">8.8 Value History</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Value history</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC68">8.9 Convenience Variables</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Convenience variables</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC69">8.10 Registers</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC70">8.11 Floating Point Hardware</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Floating point hardware</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC71">8.12 Vector Unit</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC72">8.13 Operating System Auxiliary Information</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Auxiliary data provided by operating system</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC73">8.14 Memory Region Attributes</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Memory region attributes</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC79">8.15 Copy Between Memory and a File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Copy between memory and a file</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC80">8.16 How to Produce a Core File from Your Program</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Cause a program dump its core</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC81">8.17 Character Sets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Debugging programs that use a different
+                                character set than GDB does</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_9.html#SEC82">8.18 Caching Data of Remote Targets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Data caching for remote targets</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Expressions"></A>
+<HR SIZE="6">
+<A NAME="SEC60"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.1 Expressions </H2>
+<!--docid::SEC60::-->
+<P>
+
+<A NAME="IDX372"></A>
+<CODE>print</CODE> and many other GDB commands accept an expression and
+compute its value.  Any kind of constant, variable or operator defined
+by the programming language you are using is valid in an expression in
+GDB.  This includes conditional expressions, function calls,
+casts, and string constants.  It also includes preprocessor macros, if
+you compiled your program to include this information; see
+<A HREF="gdb_5.html#SEC19">4.1 Compiling for Debugging</A>.
+</P><P>
+
+<A NAME="IDX373"></A>
+GDB supports array constants in expressions input by
+the user.  The syntax is {<VAR>element</VAR>, <VAR>element</VAR><small>...</small>}.  For example,
+you can use the command <CODE>print {1, 2, 3}</CODE> to build up an array in
+memory that is <CODE>malloc</CODE>ed in the target program.
+</P><P>
+
+Because C is so widespread, most of the expressions shown in examples in
+this manual are in C.  See section <A HREF="gdb_13.html#SEC102">Using GDB with Different Languages</A>, for information on how to use expressions in other
+languages.
+</P><P>
+
+In this section, we discuss operators that you can use in GDB
+expressions regardless of your programming language.
+</P><P>
+
+<A NAME="IDX374"></A>
+Casts are supported in all languages, not just in C, because it is so
+useful to cast a number into a pointer in order to examine a structure
+at that address in memory.
+</P><P>
+
+GDB supports these operators, in addition to those common
+to programming languages:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>@</CODE>
+<DD><SAMP>`@'</SAMP> is a binary operator for treating parts of memory as arrays.
+See section <A HREF="gdb_9.html#SEC62">Artificial Arrays</A>, for more information.
+<P>
+
+<DT><CODE>::</CODE>
+<DD><SAMP>`::'</SAMP> allows you to specify a variable in terms of the file or
+function where it is defined.  See section <A HREF="gdb_9.html#SEC61">Program Variables</A>.
+<P>
+
+<A NAME="IDX375"></A>
+<A NAME="IDX376"></A>
+<A NAME="IDX377"></A>
+<A NAME="IDX378"></A>
+<DT><CODE>{<VAR>type</VAR>} <VAR>addr</VAR></CODE>
+<DD>Refers to an object of type <VAR>type</VAR> stored at address <VAR>addr</VAR> in
+memory.  <VAR>addr</VAR> may be any expression whose value is an integer or
+pointer (but parentheses are required around binary operators, just as in
+a cast).  This construct is allowed regardless of what kind of data is
+normally supposed to reside at <VAR>addr</VAR>.
+</DL>
+<P>
+
+<A NAME="Variables"></A>
+<HR SIZE="6">
+<A NAME="SEC61"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC60"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC62"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.2 Program Variables </H2>
+<!--docid::SEC61::-->
+<P>
+
+The most common kind of expression to use is the name of a variable
+in your program.
+</P><P>
+
+Variables in expressions are understood in the selected stack frame
+(see section <A HREF="gdb_7.html#SEC49">Selecting a Frame</A>); they must be either:
+</P><P>
+
+<UL>
+<LI>
+global (or file-static)
+</UL>
+<P>
+
+or
+</P><P>
+
+<UL>
+<LI>
+visible according to the scope rules of the
+programming language from the point of execution in that frame
+</UL>
+<P>
+
+This means that in the function
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>foo (a)
+     int a;
+{
+  bar (a);
+  {
+    int b = test ();
+    bar (b);
+  }
+}
+</FONT></pre></td></tr></table></P><P>
+
+you can examine and use the variable <CODE>a</CODE> whenever your program is
+executing within the function <CODE>foo</CODE>, but you can only use or
+examine the variable <CODE>b</CODE> while your program is executing inside
+the block where <CODE>b</CODE> is declared.
+</P><P>
+
+<A NAME="IDX379"></A>
+There is an exception: you can refer to a variable or function whose
+scope is a single source file even if the current execution point is not
+in this file.  But it is possible to have more than one such variable or
+function with the same name (in different source files).  If that
+happens, referring to that name has unpredictable effects.  If you wish,
+you can specify a static variable in a particular function or file,
+using the colon-colon (<CODE>::</CODE>) notation:
+</P><P>
+
+<A NAME="IDX380"></A>
+<A NAME="IDX381"></A>
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><VAR>file</VAR>::<VAR>variable</VAR>
+<VAR>function</VAR>::<VAR>variable</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+Here <VAR>file</VAR> or <VAR>function</VAR> is the name of the context for the
+static <VAR>variable</VAR>.  In the case of file names, you can use quotes to
+make sure GDB parses the file name as a single word--for example,
+to print a global value of <CODE>x</CODE> defined in <TT>`f2.c'</TT>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) p 'f2.c'::x
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX382"></A>
+This use of <SAMP>`::'</SAMP> is very rarely in conflict with the very similar
+use of the same notation in C<TT>++</TT>.  GDB also supports use of the C<TT>++</TT>
+scope resolution operator in GDB expressions.
+</P><P>
+
+<A NAME="IDX383"></A>
+<A NAME="IDX384"></A>
+<A NAME="IDX385"></A>
+<A NAME="IDX386"></A>
+<BLOCKQUOTE>
+<EM>Warning:</EM> Occasionally, a local variable may appear to have the
+wrong value at certain points in a function--just after entry to a new
+scope, and just before exit.
+</BLOCKQUOTE>
+You may see this problem when you are stepping by machine instructions.
+This is because, on most machines, it takes more than one instruction to
+set up a stack frame (including local variable definitions); if you are
+stepping by machine instructions, variables may appear to have the wrong
+values until the stack frame is completely built.  On exit, it usually
+also takes more than one machine instruction to destroy a stack frame;
+after you begin stepping through that group of instructions, local
+variable definitions may be gone.
+<P>
+
+This may also happen when the compiler does significant optimizations.
+To be sure of always seeing accurate values, turn off all optimization
+when compiling.
+</P><P>
+
+<A NAME="IDX387"></A>
+Another possible effect of compiler optimizations is to optimize
+unused variables out of existence, or assign variables to registers (as
+opposed to memory addresses).  Depending on the support for such cases
+offered by the debug info format used by the compiler, GDB
+might not be able to display values for such local variables.  If that
+happens, GDB will print a message like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>No symbol "foo" in current context.
+</FONT></pre></td></tr></table></P><P>
+
+To solve such problems, either recompile without optimizations, or use a
+different debug info format, if the compiler supports several such
+formats.  For example, GCC, the GNU C/C<TT>++</TT> compiler,
+usually supports the <SAMP>`-gstabs+'</SAMP> option.  <SAMP>`-gstabs+'</SAMP>
+produces debug info in a format that is superior to formats such as
+COFF.  You may be able to use DWARF 2 (<SAMP>`-gdwarf-2'</SAMP>), which is also
+an effective form for debug info.  See section `Options for Debugging Your Program or GCC' in <CITE>Using the GNU Compiler Collection (GCC)</CITE>.
+See section <A HREF="gdb_13.html#SEC112">C and C<TT>++</TT></A>, for more information about debug info formats
+that are best suited to C<TT>++</TT> programs.
+</P><P>
+
+If you ask to print an object whose contents are unknown to
+GDB, e.g., because its data type is not completely specified
+by the debug information, GDB will say <SAMP>`&#60;incomplete
+type&#62;'</SAMP>.  See section <A HREF="gdb_14.html#SEC146">incomplete type</A>, for more about this.
+</P><P>
+
+Strings are identified as arrays of <CODE>char</CODE> values without specified
+signedness.  Arrays of either <CODE>signed char</CODE> or <CODE>unsigned char</CODE> get
+printed as arrays of 1 byte sized integers.  <CODE>-fsigned-char</CODE> or
+<CODE>-funsigned-char</CODE> GCC options have no effect as GDB
+defines literal string type <CODE>"char"</CODE> as <CODE>char</CODE> without a sign.
+For program code
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>char var0[] = "A";
+signed char var1[] = "A";
+</FONT></pre></td></tr></table></P><P>
+
+You get during debugging
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print var0
+$1 = "A"
+(gdb) print var1
+$2 = {65 'A', 0 '\0'}
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Arrays"></A>
+<HR SIZE="6">
+<A NAME="SEC62"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC63"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC63"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.3 Artificial Arrays </H2>
+<!--docid::SEC62::-->
+<P>
+
+<A NAME="IDX388"></A>
+<A NAME="IDX389"></A>
+<A NAME="IDX390"></A>
+It is often useful to print out several successive objects of the
+same type in memory; a section of an array, or an array of
+dynamically determined size for which only a pointer exists in the
+program.
+</P><P>
+
+You can do this by referring to a contiguous span of memory as an
+<EM>artificial array</EM>, using the binary operator <SAMP>`@'</SAMP>.  The left
+operand of <SAMP>`@'</SAMP> should be the first element of the desired array
+and be an individual object.  The right operand should be the desired length
+of the array.  The result is an array value whose elements are all of
+the type of the left argument.  The first element is actually the left
+argument; the second element comes from bytes of memory immediately
+following those that hold the first element, and so on.  Here is an
+example.  If a program says
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int *array = (int *) malloc (len * sizeof (int));
+</FONT></pre></td></tr></table></P><P>
+
+you can print the contents of <CODE>array</CODE> with
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>p *array@len
+</FONT></pre></td></tr></table></P><P>
+
+The left operand of <SAMP>`@'</SAMP> must reside in memory.  Array values made
+with <SAMP>`@'</SAMP> in this way behave just like other arrays in terms of
+subscripting, and are coerced to pointers when used in expressions.
+Artificial arrays most often appear in expressions via the value history
+(see section <A HREF="gdb_9.html#SEC67">Value History</A>), after printing one out.
+</P><P>
+
+Another way to create an artificial array is to use a cast.
+This re-interprets a value as if it were an array.
+The value need not be in memory:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) p/x (short[2])0x12345678
+$1 = {0x1234, 0x5678}
+</FONT></pre></td></tr></table></P><P>
+
+As a convenience, if you leave the array length out (as in
+<SAMP>`(<VAR>type</VAR>[])<VAR>value</VAR>'</SAMP>) GDB calculates the size to fill
+the value (as <SAMP>`sizeof(<VAR>value</VAR>)/sizeof(<VAR>type</VAR>)'</SAMP>:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) p/x (short[])0x12345678
+$2 = {0x1234, 0x5678}
+</FONT></pre></td></tr></table></P><P>
+
+Sometimes the artificial array mechanism is not quite enough; in
+moderately complex data structures, the elements of interest may not
+actually be adjacent--for example, if you are interested in the values
+of pointers in an array.  One useful work-around in this situation is
+to use a convenience variable (see section <A HREF="gdb_9.html#SEC68">Convenience Variables</A>) as a counter in an expression that prints the first
+interesting value, and then repeat that expression via <KBD>RET</KBD>.  For
+instance, suppose you have an array <CODE>dtab</CODE> of pointers to
+structures, and you are interested in the values of a field <CODE>fv</CODE>
+in each structure.  Here is an example of what you might type:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>set $i = 0
+p dtab[$i++]-&#62;fv
+<KBD>RET</KBD>
+<KBD>RET</KBD>
+<small>...</small>
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Output Formats"></A>
+<HR SIZE="6">
+<A NAME="SEC63"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC62"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC64"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC64"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.4 Output Formats </H2>
+<!--docid::SEC63::-->
+<P>
+
+<A NAME="IDX391"></A>
+<A NAME="IDX392"></A>
+By default, GDB prints a value according to its data type.  Sometimes
+this is not what you want.  For example, you might want to print a number
+in hex, or a pointer in decimal.  Or you might want to view data in memory
+at a certain address as a character string or as an instruction.  To do
+these things, specify an <EM>output format</EM> when you print a value.
+</P><P>
+
+The simplest use of output formats is to say how to print a value
+already computed.  This is done by starting the arguments of the
+<CODE>print</CODE> command with a slash and a format letter.  The format
+letters supported are:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>x</CODE>
+<DD>Regard the bits of the value as an integer, and print the integer in
+hexadecimal.
+<P>
+
+<DT><CODE>d</CODE>
+<DD>Print as integer in signed decimal.
+<P>
+
+<DT><CODE>u</CODE>
+<DD>Print as integer in unsigned decimal.
+<P>
+
+<DT><CODE>o</CODE>
+<DD>Print as integer in octal.
+<P>
+
+<DT><CODE>t</CODE>
+<DD>Print as integer in binary.  The letter <SAMP>`t'</SAMP> stands for "two".
+<A NAME="DOCF5" HREF="gdb_fot.html#FOOT5">(5)</A>
+<P>
+
+<DT><CODE>a</CODE>
+<DD><A NAME="IDX393"></A>
+<A NAME="IDX394"></A>
+Print as an address, both absolute in hexadecimal and as an offset from
+the nearest preceding symbol.  You can use this format used to discover
+where (in what function) an unknown address is located:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) p/a 0x54320
+$3 = 0x54320 &#60;_initialize_vx+396&#62;
+</FONT></pre></td></tr></table></P><P>
+
+The command <CODE>info symbol 0x54320</CODE> yields similar results.
+See section <A HREF="gdb_14.html#SEC146">info symbol</A>.
+</P><P>
+
+<DT><CODE>c</CODE>
+<DD>Regard as an integer and print it as a character constant.  This
+prints both the numerical value and its character representation.  The
+character representation is replaced with the octal escape <SAMP>`\nnn'</SAMP>
+for characters outside the 7-bit ASCII range.
+<P>
+
+Without this format, GDB displays <CODE>char</CODE>,
+<CODE>unsigned char</CODE>, and <CODE>signed char</CODE> data as character
+constants.  Single-byte members of vectors are displayed as integer
+data.
+</P><P>
+
+<DT><CODE>f</CODE>
+<DD>Regard the bits of the value as a floating point number and print
+using typical floating point syntax.
+<P>
+
+<DT><CODE>s</CODE>
+<DD><A NAME="IDX395"></A>
+<A NAME="IDX396"></A>
+Regard as a string, if possible.  With this format, pointers to single-byte
+data are displayed as null-terminated strings and arrays of single-byte data
+are displayed as fixed-length strings.  Other values are displayed in their
+natural types.
+<P>
+
+Without this format, GDB displays pointers to and arrays of
+<CODE>char</CODE>, <CODE>unsigned char</CODE>, and <CODE>signed char</CODE> as
+strings.  Single-byte members of a vector are displayed as an integer
+array.
+</DL>
+<P>
+
+For example, to print the program counter in hex (see section <A HREF="gdb_9.html#SEC69">8.10 Registers</A>), type
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>p/x $pc
+</FONT></pre></td></tr></table></P><P>
+
+Note that no space is required before the slash; this is because command
+names in GDB cannot contain a slash.
+</P><P>
+
+To reprint the last value in the value history with a different format,
+you can use the <CODE>print</CODE> command with just a format and no
+expression.  For example, <SAMP>`p/x'</SAMP> reprints the last value in hex.
+</P><P>
+
+<A NAME="Memory"></A>
+<HR SIZE="6">
+<A NAME="SEC64"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC63"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC65"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC65"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.5 Examining Memory </H2>
+<!--docid::SEC64::-->
+<P>
+
+You can use the command <CODE>x</CODE> (for "examine") to examine memory in
+any of several formats, independently of your program's data types.
+</P><P>
+
+<A NAME="IDX397"></A>
+<DL COMPACT>
+<A NAME="IDX398"></A>
+<DT><CODE>x/<VAR>nfu</VAR> <VAR>addr</VAR></CODE>
+<DD><DT><CODE>x <VAR>addr</VAR></CODE>
+<DD><DT><CODE>x</CODE>
+<DD>Use the <CODE>x</CODE> command to examine memory.
+</DL>
+<P>
+
+<VAR>n</VAR>, <VAR>f</VAR>, and <VAR>u</VAR> are all optional parameters that specify how
+much memory to display and how to format it; <VAR>addr</VAR> is an
+expression giving the address where you want to start displaying memory.
+If you use defaults for <VAR>nfu</VAR>, you need not type the slash <SAMP>`/'</SAMP>.
+Several commands set convenient defaults for <VAR>addr</VAR>.
+</P><P>
+
+<DL COMPACT>
+<DT><VAR>n</VAR>, the repeat count
+<DD>The repeat count is a decimal integer; the default is 1.  It specifies
+how much memory (counting by units <VAR>u</VAR>) to display.
+<P>
+
+<DT><VAR>f</VAR>, the display format
+<DD>The display format is one of the formats used by <CODE>print</CODE>
+(<SAMP>`x'</SAMP>, <SAMP>`d'</SAMP>, <SAMP>`u'</SAMP>, <SAMP>`o'</SAMP>, <SAMP>`t'</SAMP>, <SAMP>`a'</SAMP>, <SAMP>`c'</SAMP>,
+<SAMP>`f'</SAMP>, <SAMP>`s'</SAMP>), and in addition <SAMP>`i'</SAMP> (for machine instructions).
+The default is <SAMP>`x'</SAMP> (hexadecimal) initially.  The default changes
+each time you use either <CODE>x</CODE> or <CODE>print</CODE>.
+<P>
+
+<DT><VAR>u</VAR>, the unit size
+<DD>The unit size is any of
+<P>
+
+<DL COMPACT>
+<DT><CODE>b</CODE>
+<DD>Bytes.
+<DT><CODE>h</CODE>
+<DD>Halfwords (two bytes).
+<DT><CODE>w</CODE>
+<DD>Words (four bytes).  This is the initial default.
+<DT><CODE>g</CODE>
+<DD>Giant words (eight bytes).
+</DL>
+<P>
+
+Each time you specify a unit size with <CODE>x</CODE>, that size becomes the
+default unit the next time you use <CODE>x</CODE>.  (For the <SAMP>`s'</SAMP> and
+<SAMP>`i'</SAMP> formats, the unit size is ignored and is normally not written.)
+</P><P>
+
+<DT><VAR>addr</VAR>, starting display address
+<DD><VAR>addr</VAR> is the address where you want GDB to begin displaying
+memory.  The expression need not have a pointer value (though it may);
+it is always interpreted as an integer address of a byte of memory.
+See section <A HREF="gdb_9.html#SEC60">Expressions</A>, for more information on expressions.  The default for
+<VAR>addr</VAR> is usually just after the last address examined--but several
+other commands also set the default address: <CODE>info breakpoints</CODE> (to
+the address of the last breakpoint listed), <CODE>info line</CODE> (to the
+starting address of a line), and <CODE>print</CODE> (if you use it to display
+a value from memory).
+</DL>
+<P>
+
+For example, <SAMP>`x/3uh 0x54320'</SAMP> is a request to display three halfwords
+(<CODE>h</CODE>) of memory, formatted as unsigned decimal integers (<SAMP>`u'</SAMP>),
+starting at address <CODE>0x54320</CODE>.  <SAMP>`x/4xw $sp'</SAMP> prints the four
+words (<SAMP>`w'</SAMP>) of memory above the stack pointer (here, <SAMP>`$sp'</SAMP>;
+see section <A HREF="gdb_9.html#SEC69">Registers</A>) in hexadecimal (<SAMP>`x'</SAMP>).
+</P><P>
+
+Since the letters indicating unit sizes are all distinct from the
+letters specifying output formats, you do not have to remember whether
+unit size or format comes first; either order works.  The output
+specifications <SAMP>`4xw'</SAMP> and <SAMP>`4wx'</SAMP> mean exactly the same thing.
+(However, the count <VAR>n</VAR> must come first; <SAMP>`wx4'</SAMP> does not work.)
+</P><P>
+
+Even though the unit size <VAR>u</VAR> is ignored for the formats <SAMP>`s'</SAMP>
+and <SAMP>`i'</SAMP>, you might still want to use a count <VAR>n</VAR>; for example,
+<SAMP>`3i'</SAMP> specifies that you want to see three machine instructions,
+including any operands.  For convenience, especially when used with
+the <CODE>display</CODE> command, the <SAMP>`i'</SAMP> format also prints branch delay
+slot instructions, if any, beyond the count specified, which immediately
+follow the last instruction that is within the count.  The command
+<CODE>disassemble</CODE> gives an alternative way of inspecting machine
+instructions; see <A HREF="gdb_8.html#SEC58">Source and Machine Code</A>.
+</P><P>
+
+All the defaults for the arguments to <CODE>x</CODE> are designed to make it
+easy to continue scanning memory with minimal specifications each time
+you use <CODE>x</CODE>.  For example, after you have inspected three machine
+instructions with <SAMP>`x/3i <VAR>addr</VAR>'</SAMP>, you can inspect the next seven
+with just <SAMP>`x/7'</SAMP>.  If you use <KBD>RET</KBD> to repeat the <CODE>x</CODE> command,
+the repeat count <VAR>n</VAR> is used again; the other arguments default as
+for successive uses of <CODE>x</CODE>.
+</P><P>
+
+<A NAME="IDX399"></A>
+The addresses and contents printed by the <CODE>x</CODE> command are not saved
+in the value history because there is often too much of them and they
+would get in the way.  Instead, GDB makes these values available for
+subsequent use in expressions as values of the convenience variables
+<CODE>$_</CODE> and <CODE>$__</CODE>.  After an <CODE>x</CODE> command, the last address
+examined is available for use in expressions in the convenience variable
+<CODE>$_</CODE>.  The contents of that address, as examined, are available in
+the convenience variable <CODE>$__</CODE>.
+</P><P>
+
+If the <CODE>x</CODE> command has a repeat count, the address and contents saved
+are from the last memory unit printed; this is not the same as the last
+address printed if several units were printed on the last line of output.
+</P><P>
+
+<A NAME="IDX400"></A>
+<A NAME="IDX401"></A>
+When you are debugging a program running on a remote target machine
+(see section <A HREF="gdb_18.html#SEC162">17. Debugging Remote Programs</A>), you may wish to verify the program's image in the
+remote machine's memory against the executable file you downloaded to
+the target.  The <CODE>compare-sections</CODE> command is provided for such
+situations.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX402"></A>
+<DT><CODE>compare-sections [<VAR>section-name</VAR>]</CODE>
+<DD>Compare the data of a loadable section <VAR>section-name</VAR> in the
+executable file of the program being debugged with the same section in
+the remote machine's memory, and report any mismatches.  With no
+arguments, compares all loadable sections.  This command's
+availability depends on the target's support for the <CODE>"qCRC"</CODE>
+remote request.
+</DL>
+<P>
+
+<A NAME="Auto Display"></A>
+<HR SIZE="6">
+<A NAME="SEC65"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC64"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC66"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC66"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.6 Automatic Display </H2>
+<!--docid::SEC65::-->
+<P>
+
+If you find that you want to print the value of an expression frequently
+(to see how it changes), you might want to add it to the <EM>automatic
+display list</EM> so that GDB prints its value each time your program stops.
+Each expression added to the list is given a number to identify it;
+to remove an expression from the list, you specify that number.
+The automatic display looks like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>2: foo = 38
+3: bar[5] = (struct hack *) 0x3804
+</FONT></pre></td></tr></table></P><P>
+
+This display shows item numbers, expressions and their current values.  As with
+displays you request manually using <CODE>x</CODE> or <CODE>print</CODE>, you can
+specify the output format you prefer; in fact, <CODE>display</CODE> decides
+whether to use <CODE>print</CODE> or <CODE>x</CODE> depending your format
+specification--it uses <CODE>x</CODE> if you specify either the <SAMP>`i'</SAMP>
+or <SAMP>`s'</SAMP> format, or a unit size; otherwise it uses <CODE>print</CODE>.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX403"></A>
+<DT><CODE>display <VAR>expr</VAR></CODE>
+<DD>Add the expression <VAR>expr</VAR> to the list of expressions to display
+each time your program stops.  See section <A HREF="gdb_9.html#SEC60">Expressions</A>.
+<P>
+
+<CODE>display</CODE> does not repeat if you press <KBD>RET</KBD> again after using it.
+</P><P>
+
+<DT><CODE>display/<VAR>fmt</VAR> <VAR>expr</VAR></CODE>
+<DD>For <VAR>fmt</VAR> specifying only a display format and not a size or
+count, add the expression <VAR>expr</VAR> to the auto-display list but
+arrange to display it each time in the specified format <VAR>fmt</VAR>.
+See section <A HREF="gdb_9.html#SEC63">Output Formats</A>.
+<P>
+
+<DT><CODE>display/<VAR>fmt</VAR> <VAR>addr</VAR></CODE>
+<DD>For <VAR>fmt</VAR> <SAMP>`i'</SAMP> or <SAMP>`s'</SAMP>, or including a unit-size or a
+number of units, add the expression <VAR>addr</VAR> as a memory address to
+be examined each time your program stops.  Examining means in effect
+doing <SAMP>`x/<VAR>fmt</VAR> <VAR>addr</VAR>'</SAMP>.  See section <A HREF="gdb_9.html#SEC64">Examining Memory</A>.
+</DL>
+<P>
+
+For example, <SAMP>`display/i $pc'</SAMP> can be helpful, to see the machine
+instruction about to be executed each time execution stops (<SAMP>`$pc'</SAMP>
+is a common name for the program counter; see section <A HREF="gdb_9.html#SEC69">Registers</A>).
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX404"></A>
+<A NAME="IDX405"></A>
+<DT><CODE>undisplay <VAR>dnums</VAR><small>...</small></CODE>
+<DD><DT><CODE>delete display <VAR>dnums</VAR><small>...</small></CODE>
+<DD>Remove item numbers <VAR>dnums</VAR> from the list of expressions to display.
+<P>
+
+<CODE>undisplay</CODE> does not repeat if you press <KBD>RET</KBD> after using it.
+(Otherwise you would just get the error <SAMP>`No display number <small>...</small>'</SAMP>.)
+</P><P>
+
+<A NAME="IDX406"></A>
+<DT><CODE>disable display <VAR>dnums</VAR><small>...</small></CODE>
+<DD>Disable the display of item numbers <VAR>dnums</VAR>.  A disabled display
+item is not printed automatically, but is not forgotten.  It may be
+enabled again later.
+<P>
+
+<A NAME="IDX407"></A>
+<DT><CODE>enable display <VAR>dnums</VAR><small>...</small></CODE>
+<DD>Enable display of item numbers <VAR>dnums</VAR>.  It becomes effective once
+again in auto display of its expression, until you specify otherwise.
+<P>
+
+<DT><CODE>display</CODE>
+<DD>Display the current values of the expressions on the list, just as is
+done when your program stops.
+<P>
+
+<A NAME="IDX408"></A>
+<DT><CODE>info display</CODE>
+<DD>Print the list of expressions previously set up to display
+automatically, each one with its item number, but without showing the
+values.  This includes disabled expressions, which are marked as such.
+It also includes expressions which would not be displayed right now
+because they refer to automatic variables not currently available.
+</DL>
+<P>
+
+<A NAME="IDX409"></A>
+If a display expression refers to local variables, then it does not make
+sense outside the lexical context for which it was set up.  Such an
+expression is disabled when execution enters a context where one of its
+variables is not defined.  For example, if you give the command
+<CODE>display last_char</CODE> while inside a function with an argument
+<CODE>last_char</CODE>, GDB displays this argument while your program
+continues to stop inside that function.  When it stops elsewhere--where
+there is no variable <CODE>last_char</CODE>---the display is disabled
+automatically.  The next time your program stops where <CODE>last_char</CODE>
+is meaningful, you can enable the display expression once again.
+</P><P>
+
+<A NAME="Print Settings"></A>
+<HR SIZE="6">
+<A NAME="SEC66"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC65"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC67"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC67"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.7 Print Settings </H2>
+<!--docid::SEC66::-->
+<P>
+
+<A NAME="IDX410"></A>
+<A NAME="IDX411"></A>
+GDB provides the following ways to control how arrays, structures,
+and symbols are printed.
+</P><P>
+
+These settings are useful for debugging programs in any language:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX412"></A>
+<DT><CODE>set print address</CODE>
+<DD><DT><CODE>set print address on</CODE>
+<DD><A NAME="IDX413"></A>
+GDB prints memory addresses showing the location of stack
+traces, structure values, pointer values, breakpoints, and so forth,
+even when it also displays the contents of those addresses.  The default
+is <CODE>on</CODE>.  For example, this is what a stack frame display looks like with
+<CODE>set print address on</CODE>:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) f
+#0  set_quotes (lq=0x34c78 "&#60;&#60;", rq=0x34c88 ">&#62;")
+    at input.c:530
+530         if (lquote != def_lquote)
+</FONT></pre></td></tr></table></P><P>
+
+<DT><CODE>set print address off</CODE>
+<DD>Do not print addresses when displaying their contents.  For example,
+this is the same stack frame displayed with <CODE>set print address off</CODE>:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set print addr off
+(gdb) f
+#0  set_quotes (lq="&#60;&#60;", rq=">&#62;") at input.c:530
+530         if (lquote != def_lquote)
+</FONT></pre></td></tr></table></P><P>
+
+You can use <SAMP>`set print address off'</SAMP> to eliminate all machine
+dependent displays from the GDB interface.  For example, with
+<CODE>print address off</CODE>, you should get the same text for backtraces on
+all machines--whether or not they involve pointer arguments.
+</P><P>
+
+<A NAME="IDX414"></A>
+<DT><CODE>show print address</CODE>
+<DD>Show whether or not addresses are to be printed.
+</DL>
+<P>
+
+When GDB prints a symbolic address, it normally prints the
+closest earlier symbol plus an offset.  If that symbol does not uniquely
+identify the address (for example, it is a name whose scope is a single
+source file), you may need to clarify.  One way to do this is with
+<CODE>info line</CODE>, for example <SAMP>`info line *0x4537'</SAMP>.  Alternately,
+you can set GDB to print the source file and line number when
+it prints a symbolic address:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set print symbol-filename on</CODE>
+<DD><A NAME="IDX415"></A>
+<A NAME="IDX416"></A>
+Tell GDB to print the source file name and line number of a
+symbol in the symbolic form of an address.
+<P>
+
+<DT><CODE>set print symbol-filename off</CODE>
+<DD>Do not print source file name and line number of a symbol.  This is the
+default.
+<P>
+
+<DT><CODE>show print symbol-filename</CODE>
+<DD>Show whether or not GDB will print the source file name and
+line number of a symbol in the symbolic form of an address.
+</DL>
+<P>
+
+Another situation where it is helpful to show symbol filenames and line
+numbers is when disassembling code; GDB shows you the line
+number and source file that corresponds to each instruction.
+</P><P>
+
+Also, you may wish to see the symbolic form only if the address being
+printed is reasonably close to the closest earlier symbol:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set print max-symbolic-offset <VAR>max-offset</VAR></CODE>
+<DD><A NAME="IDX417"></A>
+Tell GDB to only display the symbolic form of an address if the
+offset between the closest earlier symbol and the address is less than
+<VAR>max-offset</VAR>.  The default is 0, which tells GDB
+to always print the symbolic form of an address if any symbol precedes it.
+<P>
+
+<DT><CODE>show print max-symbolic-offset</CODE>
+<DD>Ask how large the maximum offset is that GDB prints in a
+symbolic address.
+</DL>
+<P>
+
+<A NAME="IDX418"></A>
+<A NAME="IDX419"></A>
+If you have a pointer and you are not sure where it points, try
+<SAMP>`set print symbol-filename on'</SAMP>.  Then you can determine the name
+and source file location of the variable where it points, using
+<SAMP>`p/a <VAR>pointer</VAR>'</SAMP>.  This interprets the address in symbolic form.
+For example, here GDB shows that a variable <CODE>ptt</CODE> points
+at another variable <CODE>t</CODE>, defined in <TT>`hi2.c'</TT>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set print symbol-filename on
+(gdb) p/a ptt
+$4 = 0xe008 &#60;t in hi2.c&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<BLOCKQUOTE>
+<EM>Warning:</EM> For pointers that point to a local variable, <SAMP>`p/a'</SAMP>
+does not show the symbol name and filename of the referent, even with
+the appropriate <CODE>set print</CODE> options turned on.
+</BLOCKQUOTE>
+<P>
+
+Other settings control how different kinds of objects are printed:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set print array</CODE>
+<DD><DT><CODE>set print array on</CODE>
+<DD><A NAME="IDX420"></A>
+Pretty print arrays.  This format is more convenient to read,
+but uses more space.  The default is off.
+<P>
+
+<DT><CODE>set print array off</CODE>
+<DD>Return to compressed format for arrays.
+<P>
+
+<DT><CODE>show print array</CODE>
+<DD>Show whether compressed or pretty format is selected for displaying
+arrays.
+<P>
+
+<A NAME="IDX421"></A>
+<DT><CODE>set print array-indexes</CODE>
+<DD><DT><CODE>set print array-indexes on</CODE>
+<DD>Print the index of each element when displaying arrays.  May be more
+convenient to locate a given element in the array or quickly find the
+index of a given element in that printed array.  The default is off.
+<P>
+
+<DT><CODE>set print array-indexes off</CODE>
+<DD>Stop printing element indexes when displaying arrays.
+<P>
+
+<DT><CODE>show print array-indexes</CODE>
+<DD>Show whether the index of each element is printed when displaying
+arrays.
+<P>
+
+<DT><CODE>set print elements <VAR>number-of-elements</VAR></CODE>
+<DD><A NAME="IDX422"></A>
+<A NAME="IDX423"></A>
+Set a limit on how many elements of an array GDB will print.
+If GDB is printing a large array, it stops printing after it has
+printed the number of elements set by the <CODE>set print elements</CODE> command.
+This limit also applies to the display of strings.
+When GDB starts, this limit is set to 200.
+Setting  <VAR>number-of-elements</VAR> to zero means that the printing is unlimited.
+<P>
+
+<DT><CODE>show print elements</CODE>
+<DD>Display the number of elements of a large array that GDB will print.
+If the number is 0, then the printing is unlimited.
+<P>
+
+<DT><CODE>set print frame-arguments <VAR>value</VAR></CODE>
+<DD><A NAME="IDX424"></A>
+<A NAME="IDX425"></A>
+<A NAME="IDX426"></A>
+<A NAME="IDX427"></A>
+This command allows to control how the values of arguments are printed
+when the debugger prints a frame (see section <A HREF="gdb_7.html#SEC47">6.1 Stack Frames</A>).  The possible
+values are:
+<P>
+
+<DL COMPACT>
+<DT><CODE>all</CODE>
+<DD>The values of all arguments are printed.  This is the default.
+<P>
+
+<DT><CODE>scalars</CODE>
+<DD>Print the value of an argument only if it is a scalar.  The value of more
+complex arguments such as arrays, structures, unions, etc, is replaced
+by <CODE><small>...</small></CODE>.  Here is an example where only scalar arguments are shown:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>#1  0x08048361 in call_me (i=3, s=<small>...</small>, ss=0xbf8d508c, u=<small>...</small>, e=green)
+  at frame-args.c:23
+</FONT></pre></td></tr></table></P><P>
+
+<DT><CODE>none</CODE>
+<DD>None of the argument values are printed.  Instead, the value of each argument
+is replaced by <CODE><small>...</small></CODE>.  In this case, the example above now becomes:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>#1  0x08048361 in call_me (i=<small>...</small>, s=<small>...</small>, ss=<small>...</small>, u=<small>...</small>, e=<small>...</small>)
+  at frame-args.c:23
+</FONT></pre></td></tr></table></DL>
+<P>
+
+By default, all argument values are always printed.  But this command
+can be useful in several cases.  For instance, it can be used to reduce
+the amount of information printed in each frame, making the backtrace
+more readable.  Also, this command can be used to improve performance
+when displaying Ada frames, because the computation of large arguments
+can sometimes be CPU-intensive, especiallly in large applications.
+Setting <CODE>print frame-arguments</CODE> to <CODE>scalars</CODE> or <CODE>none</CODE>
+avoids this computation, thus speeding up the display of each Ada frame.
+</P><P>
+
+<DT><CODE>show print frame-arguments</CODE>
+<DD>Show how the value of arguments should be displayed when printing a frame.
+<P>
+
+<DT><CODE>set print repeats</CODE>
+<DD><A NAME="IDX428"></A>
+Set the threshold for suppressing display of repeated array
+elements.  When the number of consecutive identical elements of an
+array exceeds the threshold, GDB prints the string
+<CODE>"&#60;repeats <VAR>n</VAR> times&#62;"</CODE>, where <VAR>n</VAR> is the number of
+identical repetitions, instead of displaying the identical elements
+themselves.  Setting the threshold to zero will cause all elements to
+be individually printed.  The default threshold is 10.
+<P>
+
+<DT><CODE>show print repeats</CODE>
+<DD>Display the current threshold for printing repeated identical
+elements.
+<P>
+
+<DT><CODE>set print null-stop</CODE>
+<DD><A NAME="IDX429"></A>
+Cause GDB to stop printing the characters of an array when the first
+NULL is encountered.  This is useful when large arrays actually
+contain only short strings.
+The default is off.
+<P>
+
+<DT><CODE>show print null-stop</CODE>
+<DD>Show whether GDB stops printing an array on the first
+NULL character.
+<P>
+
+<DT><CODE>set print pretty on</CODE>
+<DD><A NAME="IDX430"></A>
+<A NAME="IDX431"></A>
+Cause GDB to print structures in an indented format with one member
+per line, like this:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>$1 = {
+  next = 0x0,
+  flags = {
+    sweet = 1,
+    sour = 1
+  },
+  meat = 0x54 "Pork"
+}
+</FONT></pre></td></tr></table></P><P>
+
+<DT><CODE>set print pretty off</CODE>
+<DD>Cause GDB to print structures in a compact format, like this:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>$1 = {next = 0x0, flags = {sweet = 1, sour = 1}, \
+meat = 0x54 "Pork"}
+</FONT></pre></td></tr></table></P><P>
+
+This is the default format.
+</P><P>
+
+<DT><CODE>show print pretty</CODE>
+<DD>Show which format GDB is using to print structures.
+<P>
+
+<DT><CODE>set print sevenbit-strings on</CODE>
+<DD><A NAME="IDX432"></A>
+<A NAME="IDX433"></A>
+Print using only seven-bit characters; if this option is set,
+GDB displays any eight-bit characters (in strings or
+character values) using the notation <CODE>\</CODE><VAR>nnn</VAR>.  This setting is
+best if you are working in English (ASCII) and you use the
+high-order bit of characters as a marker or "meta" bit.
+<P>
+
+<DT><CODE>set print sevenbit-strings off</CODE>
+<DD>Print full eight-bit characters.  This allows the use of more
+international character sets, and is the default.
+<P>
+
+<DT><CODE>show print sevenbit-strings</CODE>
+<DD>Show whether or not GDB is printing only seven-bit characters.
+<P>
+
+<DT><CODE>set print union on</CODE>
+<DD><A NAME="IDX434"></A>
+Tell GDB to print unions which are contained in structures
+and other unions.  This is the default setting.
+<P>
+
+<DT><CODE>set print union off</CODE>
+<DD>Tell GDB not to print unions which are contained in
+structures and other unions.  GDB will print <CODE>"{...}"</CODE>
+instead.
+<P>
+
+<DT><CODE>show print union</CODE>
+<DD>Ask GDB whether or not it will print unions which are contained in
+structures and other unions.
+<P>
+
+For example, given the declarations
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>typedef enum {Tree, Bug} Species;
+typedef enum {Big_tree, Acorn, Seedling} Tree_forms;
+typedef enum {Caterpillar, Cocoon, Butterfly}
+              Bug_forms;
+
+struct thing {
+  Species it;
+  union {
+    Tree_forms tree;
+    Bug_forms bug;
+  } form;
+};
+
+struct thing foo = {Tree, {Acorn}};
+</FONT></pre></td></tr></table></P><P>
+
+with <CODE>set print union on</CODE> in effect <SAMP>`p foo'</SAMP> would print
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>$1 = {it = Tree, form = {tree = Acorn, bug = Cocoon}}
+</FONT></pre></td></tr></table></P><P>
+
+and with <CODE>set print union off</CODE> in effect it would print
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>$1 = {it = Tree, form = {...}}
+</FONT></pre></td></tr></table></P><P>
+
+<CODE>set print union</CODE> affects programs written in C-like languages
+and in Pascal.
+</DL>
+<P>
+
+These settings are of interest when debugging C<TT>++</TT> programs:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX435"></A>
+<DT><CODE>set print demangle</CODE>
+<DD><DT><CODE>set print demangle on</CODE>
+<DD>Print C<TT>++</TT> names in their source form rather than in the encoded
+("mangled") form passed to the assembler and linker for type-safe
+linkage.  The default is on.
+<P>
+
+<DT><CODE>show print demangle</CODE>
+<DD>Show whether C<TT>++</TT> names are printed in mangled or demangled form.
+<P>
+
+<DT><CODE>set print asm-demangle</CODE>
+<DD><DT><CODE>set print asm-demangle on</CODE>
+<DD>Print C<TT>++</TT> names in their source form rather than their mangled form, even
+in assembler code printouts such as instruction disassemblies.
+The default is off.
+<P>
+
+<DT><CODE>show print asm-demangle</CODE>
+<DD>Show whether C<TT>++</TT> names in assembly listings are printed in mangled
+or demangled form.
+<P>
+
+<A NAME="IDX436"></A>
+<A NAME="IDX437"></A>
+<A NAME="IDX438"></A>
+<DT><CODE>set demangle-style <VAR>style</VAR></CODE>
+<DD>Choose among several encoding schemes used by different compilers to
+represent C<TT>++</TT> names.  The choices for <VAR>style</VAR> are currently:
+<P>
+
+<DL COMPACT>
+<DT><CODE>auto</CODE>
+<DD>Allow GDB to choose a decoding style by inspecting your program.
+<P>
+
+<DT><CODE>gnu</CODE>
+<DD>Decode based on the GNU C<TT>++</TT> compiler (<CODE>g++</CODE>) encoding algorithm.
+This is the default.
+<P>
+
+<DT><CODE>hp</CODE>
+<DD>Decode based on the HP ANSI C<TT>++</TT> (<CODE>aCC</CODE>) encoding algorithm.
+<P>
+
+<DT><CODE>lucid</CODE>
+<DD>Decode based on the Lucid C<TT>++</TT> compiler (<CODE>lcc</CODE>) encoding algorithm.
+<P>
+
+<DT><CODE>arm</CODE>
+<DD>Decode using the algorithm in the <CITE>C<TT>++</TT> Annotated Reference Manual</CITE>.
+<STRONG>Warning:</STRONG> this setting alone is not sufficient to allow
+debugging <CODE>cfront</CODE>-generated executables.  GDB would
+require further enhancement to permit that.
+<P>
+
+</DL>
+If you omit <VAR>style</VAR>, you will see a list of possible formats.
+<P>
+
+<DT><CODE>show demangle-style</CODE>
+<DD>Display the encoding style currently in use for decoding C<TT>++</TT> symbols.
+<P>
+
+<DT><CODE>set print object</CODE>
+<DD><DT><CODE>set print object on</CODE>
+<DD><A NAME="IDX439"></A>
+<A NAME="IDX440"></A>
+When displaying a pointer to an object, identify the <EM>actual</EM>
+(derived) type of the object rather than the <EM>declared</EM> type, using
+the virtual function table.
+<P>
+
+<DT><CODE>set print object off</CODE>
+<DD>Display only the declared type of objects, without reference to the
+virtual function table.  This is the default setting.
+<P>
+
+<DT><CODE>show print object</CODE>
+<DD>Show whether actual, or declared, object types are displayed.
+<P>
+
+<DT><CODE>set print static-members</CODE>
+<DD><DT><CODE>set print static-members on</CODE>
+<DD><A NAME="IDX441"></A>
+Print static members when displaying a C<TT>++</TT> object.  The default is on.
+<P>
+
+<DT><CODE>set print static-members off</CODE>
+<DD>Do not print static members when displaying a C<TT>++</TT> object.
+<P>
+
+<DT><CODE>show print static-members</CODE>
+<DD>Show whether C<TT>++</TT> static members are printed or not.
+<P>
+
+<DT><CODE>set print pascal_static-members</CODE>
+<DD><DT><CODE>set print pascal_static-members on</CODE>
+<DD><A NAME="IDX442"></A>
+<A NAME="IDX443"></A>
+Print static members when displaying a Pascal object.  The default is on.
+<P>
+
+<DT><CODE>set print pascal_static-members off</CODE>
+<DD>Do not print static members when displaying a Pascal object.
+<P>
+
+<DT><CODE>show print pascal_static-members</CODE>
+<DD>Show whether Pascal static members are printed or not.
+<P>
+
+<DT><CODE>set print vtbl</CODE>
+<DD><DT><CODE>set print vtbl on</CODE>
+<DD><A NAME="IDX444"></A>
+<A NAME="IDX445"></A>
+<A NAME="IDX446"></A>
+Pretty print C<TT>++</TT> virtual function tables.  The default is off.
+(The <CODE>vtbl</CODE> commands do not work on programs compiled with the HP
+ANSI C<TT>++</TT> compiler (<CODE>aCC</CODE>).)
+<P>
+
+<DT><CODE>set print vtbl off</CODE>
+<DD>Do not pretty print C<TT>++</TT> virtual function tables.
+<P>
+
+<DT><CODE>show print vtbl</CODE>
+<DD>Show whether C<TT>++</TT> virtual function tables are pretty printed, or not.
+</DL>
+<P>
+
+<A NAME="Value History"></A>
+<HR SIZE="6">
+<A NAME="SEC67"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC66"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC68"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC68"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.8 Value History </H2>
+<!--docid::SEC67::-->
+<P>
+
+<A NAME="IDX447"></A>
+<A NAME="IDX448"></A>
+Values printed by the <CODE>print</CODE> command are saved in the GDB
+<EM>value history</EM>.  This allows you to refer to them in other expressions.
+Values are kept until the symbol table is re-read or discarded
+(for example with the <CODE>file</CODE> or <CODE>symbol-file</CODE> commands).
+When the symbol table changes, the value history is discarded,
+since the values may contain pointers back to the types defined in the
+symbol table.
+</P><P>
+
+<A NAME="IDX449"></A>
+<A NAME="IDX450"></A>
+<A NAME="IDX451"></A>
+The values printed are given <EM>history numbers</EM> by which you can
+refer to them.  These are successive integers starting with one.
+<CODE>print</CODE> shows you the history number assigned to a value by
+printing <SAMP>`$<VAR>num</VAR> = '</SAMP> before the value; here <VAR>num</VAR> is the
+history number.
+</P><P>
+
+To refer to any previous value, use <SAMP>`$'</SAMP> followed by the value's
+history number.  The way <CODE>print</CODE> labels its output is designed to
+remind you of this.  Just <CODE>$</CODE> refers to the most recent value in
+the history, and <CODE>$$</CODE> refers to the value before that.
+<CODE>$$<VAR>n</VAR></CODE> refers to the <VAR>n</VAR>th value from the end; <CODE>$$2</CODE>
+is the value just prior to <CODE>$$</CODE>, <CODE>$$1</CODE> is equivalent to
+<CODE>$$</CODE>, and <CODE>$$0</CODE> is equivalent to <CODE>$</CODE>.
+</P><P>
+
+For example, suppose you have just printed a pointer to a structure and
+want to see the contents of the structure.  It suffices to type
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>p *$
+</FONT></pre></td></tr></table></P><P>
+
+If you have a chain of structures where the component <CODE>next</CODE> points
+to the next one, you can print the contents of the next one with this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>p *$.next
+</FONT></pre></td></tr></table></P><P>
+
+You can print successive links in the chain by repeating this
+command--which you can do by just typing <KBD>RET</KBD>.
+</P><P>
+
+Note that the history records values, not expressions.  If the value of
+<CODE>x</CODE> is 4 and you type these commands:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>print x
+set x=5
+</FONT></pre></td></tr></table></P><P>
+
+then the value recorded in the value history by the <CODE>print</CODE> command
+remains 4 even though the value of <CODE>x</CODE> has changed.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX452"></A>
+<DT><CODE>show values</CODE>
+<DD>Print the last ten values in the value history, with their item numbers.
+This is like <SAMP>`p $$9'</SAMP> repeated ten times, except that <CODE>show
+values</CODE> does not change the history.
+<P>
+
+<DT><CODE>show values <VAR>n</VAR></CODE>
+<DD>Print ten history values centered on history item number <VAR>n</VAR>.
+<P>
+
+<DT><CODE>show values +</CODE>
+<DD>Print ten history values just after the values last printed.  If no more
+values are available, <CODE>show values +</CODE> produces no display.
+</DL>
+<P>
+
+Pressing <KBD>RET</KBD> to repeat <CODE>show values <VAR>n</VAR></CODE> has exactly the
+same effect as <SAMP>`show values +'</SAMP>.
+</P><P>
+
+<A NAME="Convenience Vars"></A>
+<HR SIZE="6">
+<A NAME="SEC68"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC67"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC69"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.9 Convenience Variables </H2>
+<!--docid::SEC68::-->
+<P>
+
+<A NAME="IDX453"></A>
+<A NAME="IDX454"></A>
+GDB provides <EM>convenience variables</EM> that you can use within
+GDB to hold on to a value and refer to it later.  These variables
+exist entirely within GDB; they are not part of your program, and
+setting a convenience variable has no direct effect on further execution
+of your program.  That is why you can use them freely.
+</P><P>
+
+Convenience variables are prefixed with <SAMP>`$'</SAMP>.  Any name preceded by
+<SAMP>`$'</SAMP> can be used for a convenience variable, unless it is one of
+the predefined machine-specific register names (see section <A HREF="gdb_9.html#SEC69">Registers</A>).
+(Value history references, in contrast, are <EM>numbers</EM> preceded
+by <SAMP>`$'</SAMP>.  See section <A HREF="gdb_9.html#SEC67">Value History</A>.)
+</P><P>
+
+You can save a value in a convenience variable with an assignment
+expression, just as you would set a variable in your program.
+For example:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>set $foo = *object_ptr
+</FONT></pre></td></tr></table></P><P>
+
+would save in <CODE>$foo</CODE> the value contained in the object pointed to by
+<CODE>object_ptr</CODE>.
+</P><P>
+
+Using a convenience variable for the first time creates it, but its
+value is <CODE>void</CODE> until you assign a new value.  You can alter the
+value with another assignment at any time.
+</P><P>
+
+Convenience variables have no fixed types.  You can assign a convenience
+variable any type of value, including structures and arrays, even if
+that variable already has a value of a different type.  The convenience
+variable, when used as an expression, has the type of its current value.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX455"></A>
+<A NAME="IDX456"></A>
+<DT><CODE>show convenience</CODE>
+<DD>Print a list of convenience variables used so far, and their values.
+Abbreviated <CODE>show conv</CODE>.
+<P>
+
+<A NAME="IDX457"></A>
+<A NAME="IDX458"></A>
+<DT><CODE>init-if-undefined $<VAR>variable</VAR> = <VAR>expression</VAR></CODE>
+<DD>Set a convenience variable if it has not already been set.  This is useful
+for user-defined commands that keep some state.  It is similar, in concept,
+to using local static variables with initializers in C (except that
+convenience variables are global).  It can also be used to allow users to
+override default values used in a command script.
+<P>
+
+If the variable is already defined then the expression is not evaluated so
+any side-effects do not occur.
+</DL>
+<P>
+
+One of the ways to use a convenience variable is as a counter to be
+incremented or a pointer to be advanced.  For example, to print
+a field from successive elements of an array of structures:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>set $i = 0
+print bar[$i++]-&#62;contents
+</FONT></pre></td></tr></table></P><P>
+
+Repeat that command by typing <KBD>RET</KBD>.
+</P><P>
+
+Some convenience variables are created automatically by GDB and given
+values likely to be useful.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX459"></A>
+<DT><CODE>$_</CODE>
+<DD>The variable <CODE>$_</CODE> is automatically set by the <CODE>x</CODE> command to
+the last address examined (see section <A HREF="gdb_9.html#SEC64">Examining Memory</A>).  Other
+commands which provide a default address for <CODE>x</CODE> to examine also
+set <CODE>$_</CODE> to that address; these commands include <CODE>info line</CODE>
+and <CODE>info breakpoint</CODE>.  The type of <CODE>$_</CODE> is <CODE>void *</CODE>
+except when set by the <CODE>x</CODE> command, in which case it is a pointer
+to the type of <CODE>$__</CODE>.
+<P>
+
+<A NAME="IDX460"></A>
+<DT><CODE>$__</CODE>
+<DD>The variable <CODE>$__</CODE> is automatically set by the <CODE>x</CODE> command
+to the value found in the last address examined.  Its type is chosen
+to match the format in which the data was printed.
+<P>
+
+<DT><CODE>$_exitcode</CODE>
+<DD><A NAME="IDX461"></A>
+The variable <CODE>$_exitcode</CODE> is automatically set to the exit code when
+the program being debugged terminates.
+</DL>
+<P>
+
+On HP-UX systems, if you refer to a function or variable name that
+begins with a dollar sign, GDB searches for a user or system
+name first, before it searches for a convenience variable.
+</P><P>
+
+<A NAME="Registers"></A>
+<HR SIZE="6">
+<A NAME="SEC69"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC68"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC70"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.10 Registers </H2>
+<!--docid::SEC69::-->
+<P>
+
+<A NAME="IDX462"></A>
+You can refer to machine register contents, in expressions, as variables
+with names starting with <SAMP>`$'</SAMP>.  The names of registers are different
+for each machine; use <CODE>info registers</CODE> to see the names used on
+your machine.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX463"></A>
+<DT><CODE>info registers</CODE>
+<DD>Print the names and values of all registers except floating-point
+and vector registers (in the selected stack frame).
+<P>
+
+<A NAME="IDX464"></A>
+<A NAME="IDX465"></A>
+<DT><CODE>info all-registers</CODE>
+<DD>Print the names and values of all registers, including floating-point
+and vector registers (in the selected stack frame).
+<P>
+
+<DT><CODE>info registers <VAR>regname</VAR> <small>...</small></CODE>
+<DD>Print the <EM>relativized</EM> value of each specified register <VAR>regname</VAR>.
+As discussed in detail below, register values are normally relative to
+the selected stack frame.  <VAR>regname</VAR> may be any register name valid on
+the machine you are using, with or without the initial <SAMP>`$'</SAMP>.
+</DL>
+<P>
+
+<A NAME="IDX466"></A>
+<A NAME="IDX467"></A>
+<A NAME="IDX468"></A>
+<A NAME="IDX469"></A>
+<A NAME="IDX470"></A>
+GDB has four "standard" register names that are available (in
+expressions) on most machines--whenever they do not conflict with an
+architecture's canonical mnemonics for registers.  The register names
+<CODE>$pc</CODE> and <CODE>$sp</CODE> are used for the program counter register and
+the stack pointer.  <CODE>$fp</CODE> is used for a register that contains a
+pointer to the current stack frame, and <CODE>$ps</CODE> is used for a
+register that contains the processor status.  For example,
+you could print the program counter in hex with
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>p/x $pc
+</FONT></pre></td></tr></table></P><P>
+
+or print the instruction to be executed next with
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>x/i $pc
+</FONT></pre></td></tr></table></P><P>
+
+or add four to the stack pointer<A NAME="DOCF6" HREF="gdb_fot.html#FOOT6">(6)</A> with
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>set $sp += 4
+</FONT></pre></td></tr></table></P><P>
+
+Whenever possible, these four standard register names are available on
+your machine even though the machine has different canonical mnemonics,
+so long as there is no conflict.  The <CODE>info registers</CODE> command
+shows the canonical names.  For example, on the SPARC, <CODE>info
+registers</CODE> displays the processor status register as <CODE>$psr</CODE> but you
+can also refer to it as <CODE>$ps</CODE>; and on x86-based machines <CODE>$ps</CODE>
+is an alias for the EFLAGS register.
+</P><P>
+
+GDB always considers the contents of an ordinary register as an
+integer when the register is examined in this way.  Some machines have
+special registers which can hold nothing but floating point; these
+registers are considered to have floating point values.  There is no way
+to refer to the contents of an ordinary register as floating point value
+(although you can <EM>print</EM> it as a floating point value with
+<SAMP>`print/f $<VAR>regname</VAR>'</SAMP>).
+</P><P>
+
+Some registers have distinct "raw" and "virtual" data formats.  This
+means that the data format in which the register contents are saved by
+the operating system is not the same one that your program normally
+sees.  For example, the registers of the 68881 floating point
+coprocessor are always saved in "extended" (raw) format, but all C
+programs expect to work with "double" (virtual) format.  In such
+cases, GDB normally works with the virtual format only (the format
+that makes sense for your program), but the <CODE>info registers</CODE> command
+prints the data in both formats.
+</P><P>
+
+<A NAME="IDX471"></A>
+<A NAME="IDX472"></A>
+Some machines have special registers whose contents can be interpreted
+in several different ways.  For example, modern x86-based machines
+have SSE and MMX registers that can hold several values packed
+together in several different formats.  GDB refers to such
+registers in <CODE>struct</CODE> notation:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print $xmm1
+$1 = {
+  v4_float = {0, 3.43859137e-038, 1.54142831e-044, 1.821688e-044},
+  v2_double = {9.92129282474342e-303, 2.7585945287983262e-313},
+  v16_int8 = "\000\000\000\000\3706;\001\v\000\000\000\r\000\000",
+  v8_int16 = {0, 0, 14072, 315, 11, 0, 13, 0},
+  v4_int32 = {0, 20657912, 11, 13},
+  v2_int64 = {88725056443645952, 55834574859},
+  uint128 = 0x0000000d0000000b013b36f800000000
+}
+</FONT></pre></td></tr></table></P><P>
+
+To set values of such registers, you need to tell GDB which
+view of the register you wish to change, as if you were assigning
+value to a <CODE>struct</CODE> member:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre> (gdb) set $xmm1.uint128 = 0x000000000000000000000000FFFFFFFF
+</FONT></pre></td></tr></table></P><P>
+
+Normally, register values are relative to the selected stack frame
+(see section <A HREF="gdb_7.html#SEC49">Selecting a Frame</A>).  This means that you get the
+value that the register would contain if all stack frames farther in
+were exited and their saved registers restored.  In order to see the
+true contents of hardware registers, you must select the innermost
+frame (with <SAMP>`frame 0'</SAMP>).
+</P><P>
+
+However, GDB must deduce where registers are saved, from the machine
+code generated by your compiler.  If some registers are not saved, or if
+GDB is unable to locate the saved registers, the selected stack
+frame makes no difference.
+</P><P>
+
+<A NAME="Floating Point Hardware"></A>
+<HR SIZE="6">
+<A NAME="SEC70"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC69"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC71"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.11 Floating Point Hardware </H2>
+<!--docid::SEC70::-->
+<P>
+
+Depending on the configuration, GDB may be able to give
+you more information about the status of the floating point hardware.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX473"></A>
+<DT><CODE>info float</CODE>
+<DD>Display hardware-dependent information about the floating
+point unit.  The exact contents and layout vary depending on the
+floating point chip.  Currently, <SAMP>`info float'</SAMP> is supported on
+the ARM and x86 machines.
+</DL>
+<P>
+
+<A NAME="Vector Unit"></A>
+<HR SIZE="6">
+<A NAME="SEC71"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC70"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC72"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.12 Vector Unit </H2>
+<!--docid::SEC71::-->
+<P>
+
+Depending on the configuration, GDB may be able to give you
+more information about the status of the vector unit.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX474"></A>
+<DT><CODE>info vector</CODE>
+<DD>Display information about the vector unit.  The exact contents and
+layout vary depending on the hardware.
+</DL>
+<P>
+
+<A NAME="OS Information"></A>
+<HR SIZE="6">
+<A NAME="SEC72"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC71"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC73"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.13 Operating System Auxiliary Information </H2>
+<!--docid::SEC72::-->
+<P>
+
+GDB provides interfaces to useful OS facilities that can help
+you debug your program.
+</P><P>
+
+<A NAME="IDX475"></A>
+<A NAME="IDX476"></A>
+When GDB runs on a <EM>Posix system</EM> (such as GNU or Unix
+machines), it interfaces with the inferior via the <CODE>ptrace</CODE>
+system call.  The operating system creates a special sata structure,
+called <CODE>struct user</CODE>, for this interface.  You can use the
+command <CODE>info udot</CODE> to display the contents of this data
+structure.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>info udot</CODE>
+<DD><A NAME="IDX477"></A>
+Display the contents of the <CODE>struct user</CODE> maintained by the OS
+kernel for the program being debugged.  GDB displays the
+contents of <CODE>struct user</CODE> as a list of hex numbers, similar to
+the <CODE>examine</CODE> command.
+</DL>
+<P>
+
+<A NAME="IDX478"></A>
+<A NAME="IDX479"></A>
+Some operating systems supply an <EM>auxiliary vector</EM> to programs at
+startup.  This is akin to the arguments and environment that you
+specify for a program, but contains a system-dependent variety of
+binary values that tell system libraries important details about the
+hardware, operating system, and process.  Each value's purpose is
+identified by an integer tag; the meanings are well-known but system-specific.
+Depending on the configuration and operating system facilities,
+GDB may be able to show you this information.  For remote
+targets, this functionality may further depend on the remote stub's
+support of the <SAMP>`qXfer:auxv:read'</SAMP> packet, see
+ <A HREF="gdb_33.html#qXfer auxiliary vector read">qXfer auxiliary vector read</A>.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX480"></A>
+<DT><CODE>info auxv</CODE>
+<DD>Display the auxiliary vector of the inferior, which can be either a
+live process or a core dump file.  GDB prints each tag value
+numerically, and also shows names and text descriptions for recognized
+tags.  Some values in the vector are numbers, some bit masks, and some
+pointers to strings or other data.  GDB displays each value in the
+most appropriate form for a recognized tag, and in hexadecimal for
+an unrecognized tag.
+</DL>
+<P>
+
+<A NAME="Memory Region Attributes"></A>
+<HR SIZE="6">
+<A NAME="SEC73"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC72"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC74"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC79"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.14 Memory Region Attributes </H2>
+<!--docid::SEC73::-->
+<P>
+
+<EM>Memory region attributes</EM> allow you to describe special handling
+required by regions of your target's memory.  GDB uses
+attributes to determine whether to allow certain types of memory
+accesses; whether to use specific width accesses; and whether to cache
+target memory.  By default the description of memory regions is
+fetched from the target (if the current target supports this), but the
+user can override the fetched regions.
+</P><P>
+
+Defined memory regions can be individually enabled and disabled.  When a
+memory region is disabled, GDB uses the default attributes when
+accessing memory in that region.  Similarly, if no memory regions have
+been defined, GDB uses the default attributes when accessing
+all memory.
+</P><P>
+
+When a memory region is defined, it is given a number to identify it;
+to enable, disable, or remove a memory region, you specify that number.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX481"></A>
+<DT><CODE>mem <VAR>lower</VAR> <VAR>upper</VAR> <VAR>attributes</VAR><small>...</small></CODE>
+<DD>Define a memory region bounded by <VAR>lower</VAR> and <VAR>upper</VAR> with
+attributes <VAR>attributes</VAR><small>...</small>, and add it to the list of regions
+monitored by GDB.  Note that <VAR>upper</VAR> == 0 is a special
+case: it is treated as the target's maximum memory address.
+(0xffff on 16 bit targets, 0xffffffff on 32 bit targets, etc.)
+<P>
+
+<DT><CODE>mem auto</CODE>
+<DD>Discard any user changes to the memory regions and use target-supplied
+regions, if available, or no regions if the target does not support.
+<P>
+
+<A NAME="IDX482"></A>
+<DT><CODE>delete mem <VAR>nums</VAR><small>...</small></CODE>
+<DD>Remove memory regions <VAR>nums</VAR><small>...</small> from the list of regions
+monitored by GDB.
+<P>
+
+<A NAME="IDX483"></A>
+<DT><CODE>disable mem <VAR>nums</VAR><small>...</small></CODE>
+<DD>Disable monitoring of memory regions <VAR>nums</VAR><small>...</small>.
+A disabled memory region is not forgotten.
+It may be enabled again later.
+<P>
+
+<A NAME="IDX484"></A>
+<DT><CODE>enable mem <VAR>nums</VAR><small>...</small></CODE>
+<DD>Enable monitoring of memory regions <VAR>nums</VAR><small>...</small>.
+<P>
+
+<A NAME="IDX485"></A>
+<DT><CODE>info mem</CODE>
+<DD>Print a table of all defined memory regions, with the following columns
+for each region:
+<P>
+
+<DL COMPACT>
+<DT><EM>Memory Region Number</EM>
+<DD><DT><EM>Enabled or Disabled.</EM>
+<DD>Enabled memory regions are marked with <SAMP>`y'</SAMP>.
+Disabled memory regions are marked with <SAMP>`n'</SAMP>.
+<P>
+
+<DT><EM>Lo Address</EM>
+<DD>The address defining the inclusive lower bound of the memory region.
+<P>
+
+<DT><EM>Hi Address</EM>
+<DD>The address defining the exclusive upper bound of the memory region.
+<P>
+
+<DT><EM>Attributes</EM>
+<DD>The list of attributes set for this memory region.
+</DL>
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC74"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC73"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC75"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC73"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 8.14.1 Attributes </H3>
+<!--docid::SEC74::-->
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC75"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC74"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC76"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC74"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 8.14.1.1 Memory Access Mode </H4>
+<!--docid::SEC75::-->
+The access mode attributes set whether GDB may make read or
+write accesses to a memory region.
+<P>
+
+While these attributes prevent GDB from performing invalid
+memory accesses, they do nothing to prevent the target system, I/O DMA,
+etc. from accessing memory.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>ro</CODE>
+<DD>Memory is read only.
+<DT><CODE>wo</CODE>
+<DD>Memory is write only.
+<DT><CODE>rw</CODE>
+<DD>Memory is read/write.  This is the default.
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC76"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC75"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC77"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC77"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC74"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 8.14.1.2 Memory Access Size </H4>
+<!--docid::SEC76::-->
+The access size attribute tells GDB to use specific sized
+accesses in the memory region.  Often memory mapped device registers
+require specific sized accesses.  If no access size attribute is
+specified, GDB may use accesses of any size.
+<P>
+
+<DL COMPACT>
+<DT><CODE>8</CODE>
+<DD>Use 8 bit memory accesses.
+<DT><CODE>16</CODE>
+<DD>Use 16 bit memory accesses.
+<DT><CODE>32</CODE>
+<DD>Use 32 bit memory accesses.
+<DT><CODE>64</CODE>
+<DD>Use 64 bit memory accesses.
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC77"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC76"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC78"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC74"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 8.14.1.3 Data Cache </H4>
+<!--docid::SEC77::-->
+The data cache attributes set whether GDB will cache target
+memory.  While this generally improves performance by reducing debug
+protocol overhead, it can lead to incorrect results because GDB
+does not know about volatile variables or memory mapped device
+registers.
+<P>
+
+<DL COMPACT>
+<DT><CODE>cache</CODE>
+<DD>Enable GDB to cache target memory.
+<DT><CODE>nocache</CODE>
+<DD>Disable GDB from caching target memory.  This is the default.
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC78"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC77"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC79"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC73"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC79"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 8.14.2 Memory Access Checking </H3>
+<!--docid::SEC78::-->
+GDB can be instructed to refuse accesses to memory that is
+not explicitly described.  This can be useful if accessing such
+regions has undesired effects for a specific target, or to provide
+better error checking.  The following commands control this behaviour.
+<P>
+
+<DL COMPACT>
+<A NAME="IDX486"></A>
+<DT><CODE>set mem inaccessible-by-default [on|off]</CODE>
+<DD>If <CODE>on</CODE> is specified, make  GDB treat memory not
+explicitly described by the memory ranges as non-existent and refuse accesses
+to such memory.  The checks are only performed if there's at least one
+memory range defined.  If <CODE>off</CODE> is specified, make GDB
+treat the memory not explicitly described by the memory ranges as RAM.
+The default value is <CODE>on</CODE>.
+<A NAME="IDX487"></A>
+<DT><CODE>show mem inaccessible-by-default</CODE>
+<DD>Show the current handling of accesses to unknown memory.
+</DL>
+<P>
+
+<A NAME="Dump/Restore Files"></A>
+<HR SIZE="6">
+<A NAME="SEC79"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC78"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC80"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.15 Copy Between Memory and a File </H2>
+<!--docid::SEC79::-->
+<P>
+
+You can use the commands <CODE>dump</CODE>, <CODE>append</CODE>, and
+<CODE>restore</CODE> to copy data between target memory and a file.  The
+<CODE>dump</CODE> and <CODE>append</CODE> commands write data to a file, and the
+<CODE>restore</CODE> command reads data from a file back into the inferior's
+memory.  Files may be in binary, Motorola S-record, Intel hex, or
+Tektronix Hex format; however, GDB can only append to binary
+files.
+</P><P>
+
+<DL COMPACT>
+
+<A NAME="IDX488"></A>
+<DT><CODE>dump [<VAR>format</VAR>] memory <VAR>filename</VAR> <VAR>start_addr</VAR> <VAR>end_addr</VAR></CODE>
+<DD><DT><CODE>dump [<VAR>format</VAR>] value <VAR>filename</VAR> <VAR>expr</VAR></CODE>
+<DD>Dump the contents of memory from <VAR>start_addr</VAR> to <VAR>end_addr</VAR>,
+or the value of <VAR>expr</VAR>, to <VAR>filename</VAR> in the given format.
+<P>
+
+The <VAR>format</VAR> parameter may be any one of:
+<DL COMPACT>
+<DT><CODE>binary</CODE>
+<DD>Raw binary form.
+<DT><CODE>ihex</CODE>
+<DD>Intel hex format.
+<DT><CODE>srec</CODE>
+<DD>Motorola S-record format.
+<DT><CODE>tekhex</CODE>
+<DD>Tektronix Hex format.
+</DL>
+<P>
+
+GDB uses the same definitions of these formats as the
+GNU binary utilities, like <SAMP>`objdump'</SAMP> and <SAMP>`objcopy'</SAMP>.  If
+<VAR>format</VAR> is omitted, GDB dumps the data in raw binary
+form.
+</P><P>
+
+<A NAME="IDX489"></A>
+<DT><CODE>append [binary] memory <VAR>filename</VAR> <VAR>start_addr</VAR> <VAR>end_addr</VAR></CODE>
+<DD><DT><CODE>append [binary] value <VAR>filename</VAR> <VAR>expr</VAR></CODE>
+<DD>Append the contents of memory from <VAR>start_addr</VAR> to <VAR>end_addr</VAR>,
+or the value of <VAR>expr</VAR>, to the file <VAR>filename</VAR>, in raw binary form.
+(GDB can only append data to files in raw binary form.)
+<P>
+
+<A NAME="IDX490"></A>
+<DT><CODE>restore <VAR>filename</VAR> [binary] <VAR>bias</VAR> <VAR>start</VAR> <VAR>end</VAR></CODE>
+<DD>Restore the contents of file <VAR>filename</VAR> into memory.  The
+<CODE>restore</CODE> command can automatically recognize any known BFD
+file format, except for raw binary.  To restore a raw binary file you
+must specify the optional keyword <CODE>binary</CODE> after the filename.
+<P>
+
+If <VAR>bias</VAR> is non-zero, its value will be added to the addresses
+contained in the file.  Binary files always start at address zero, so
+they will be restored at address <VAR>bias</VAR>.  Other bfd files have
+a built-in location; they will be restored at offset <VAR>bias</VAR>
+from that location.
+</P><P>
+
+If <VAR>start</VAR> and/or <VAR>end</VAR> are non-zero, then only data between
+file offset <VAR>start</VAR> and file offset <VAR>end</VAR> will be restored.
+These offsets are relative to the addresses in the file, before
+the <VAR>bias</VAR> argument is applied.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="Core File Generation"></A>
+<HR SIZE="6">
+<A NAME="SEC80"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC79"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC81"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.16 How to Produce a Core File from Your Program </H2>
+<!--docid::SEC80::-->
+<P>
+
+A <EM>core file</EM> or <EM>core dump</EM> is a file that records the memory
+image of a running process and its process status (register values
+etc.).  Its primary use is post-mortem debugging of a program that
+crashed while it ran outside a debugger.  A program that crashes
+automatically produces a core file, unless this feature is disabled by
+the user.  See section <A HREF="gdb_16.html#SEC155">15.1 Commands to Specify Files</A>, for information on invoking GDB in
+the post-mortem debugging mode.
+</P><P>
+
+Occasionally, you may wish to produce a core file of the program you
+are debugging in order to preserve a snapshot of its state.
+GDB has a special command for that.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX491"></A>
+<A NAME="IDX492"></A>
+<DT><CODE>generate-core-file [<VAR>file</VAR>]</CODE>
+<DD><DT><CODE>gcore [<VAR>file</VAR>]</CODE>
+<DD>Produce a core dump of the inferior process.  The optional argument
+<VAR>file</VAR> specifies the file name where to put the core dump.  If not
+specified, the file name defaults to <TT>`core.<VAR>pid</VAR>'</TT>, where
+<VAR>pid</VAR> is the inferior process ID.
+<P>
+
+Note that this command is implemented only for some systems (as of
+this writing, GNU/Linux, FreeBSD, Solaris, Unixware, and S390).
+</DL>
+<P>
+
+<A NAME="Character Sets"></A>
+<HR SIZE="6">
+<A NAME="SEC81"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC80"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC82"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.17 Character Sets </H2>
+<!--docid::SEC81::-->
+<P>
+
+If the program you are debugging uses a different character set to
+represent characters and strings than the one GDB uses itself,
+GDB can automatically translate between the character sets for
+you.  The character set GDB uses we call the <EM>host
+character set</EM>; the one the inferior program uses we call the
+<EM>target character set</EM>.
+</P><P>
+
+For example, if you are running GDB on a GNU/Linux system, which
+uses the ISO Latin 1 character set, but you are using GDB's
+remote protocol (see section <A HREF="gdb_18.html#SEC162">17. Debugging Remote Programs</A>) to debug a program
+running on an IBM mainframe, which uses the EBCDIC character set,
+then the host character set is Latin-1, and the target character set is
+EBCDIC.  If you give GDB the command <CODE>set
+target-charset EBCDIC-US</CODE>, then GDB translates between
+EBCDIC and Latin 1 as you print character or string values, or use
+character and string literals in expressions.
+</P><P>
+
+GDB has no way to automatically recognize which character set
+the inferior program uses; you must tell it, using the <CODE>set
+target-charset</CODE> command, described below.
+</P><P>
+
+Here are the commands for controlling GDB's character set
+support:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set target-charset <VAR>charset</VAR></CODE>
+<DD><A NAME="IDX493"></A>
+Set the current target character set to <VAR>charset</VAR>.  We list the
+character set names GDB recognizes below, but if you type
+<CODE>set target-charset</CODE> followed by <KBD>TAB</KBD><KBD>TAB</KBD>, GDB will
+list the target character sets it supports.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><CODE>set host-charset <VAR>charset</VAR></CODE>
+<DD><A NAME="IDX494"></A>
+Set the current host character set to <VAR>charset</VAR>.
+<P>
+
+By default, GDB uses a host character set appropriate to the
+system it is running on; you can override that default using the
+<CODE>set host-charset</CODE> command.
+</P><P>
+
+GDB can only use certain character sets as its host character
+set.  We list the character set names GDB recognizes below, and
+indicate which can be host character sets, but if you type
+<CODE>set target-charset</CODE> followed by <KBD>TAB</KBD><KBD>TAB</KBD>, GDB will
+list the host character sets it supports.
+</P><P>
+
+<DT><CODE>set charset <VAR>charset</VAR></CODE>
+<DD><A NAME="IDX495"></A>
+Set the current host and target character sets to <VAR>charset</VAR>.  As
+above, if you type <CODE>set charset</CODE> followed by <KBD>TAB</KBD><KBD>TAB</KBD>,
+GDB will list the name of the character sets that can be used
+for both host and target.
+<P>
+
+<DT><CODE>show charset</CODE>
+<DD><A NAME="IDX496"></A>
+Show the names of the current host and target charsets.
+<P>
+
+<DT><CODE>show host-charset</CODE>
+<DD><A NAME="IDX497"></A>
+Show the name of the current host charset.
+<P>
+
+<DT><CODE>show target-charset</CODE>
+<DD><A NAME="IDX498"></A>
+Show the name of the current target charset.
+<P>
+
+</DL>
+<P>
+
+GDB currently includes support for the following character
+sets:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>ASCII</CODE>
+<DD><A NAME="IDX499"></A>
+Seven-bit U.S. ASCII.  GDB can use this as its host
+character set.
+<P>
+
+<DT><CODE>ISO-8859-1</CODE>
+<DD><A NAME="IDX500"></A>
+<A NAME="IDX501"></A>
+The ISO Latin 1 character set.  This extends ASCII with accented
+characters needed for French, German, and Spanish.  GDB can use
+this as its host character set.
+<P>
+
+<DT><CODE>EBCDIC-US</CODE>
+<DD><DT><CODE>IBM1047</CODE>
+<DD><A NAME="IDX502"></A>
+<A NAME="IDX503"></A>
+Variants of the EBCDIC character set, used on some of IBM's
+mainframe operating systems.  (GNU/Linux on the S/390 uses U.S. ASCII.)
+GDB cannot use these as its host character set.
+<P>
+
+</DL>
+<P>
+
+Note that these are all single-byte character sets.  More work inside
+GDB is needed to support multi-byte or variable-width character
+encodings, like the UTF-8 and UCS-2 encodings of Unicode.
+</P><P>
+
+Here is an example of GDB's character set support in action.
+Assume that the following source code has been placed in the file
+<TT>`charset-test.c'</TT>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>#include &#60;stdio.h&#62;
+
+char ascii_hello[]
+  = {72, 101, 108, 108, 111, 44, 32, 119,
+     111, 114, 108, 100, 33, 10, 0};
+char ibm1047_hello[]
+  = {200, 133, 147, 147, 150, 107, 64, 166,
+     150, 153, 147, 132, 90, 37, 0};
+
+main ()
+{
+  printf ("Hello, world!\n");
+}
+</FONT></pre></td></tr></table></P><P>
+
+In this program, <CODE>ascii_hello</CODE> and <CODE>ibm1047_hello</CODE> are arrays
+containing the string <SAMP>`Hello, world!'</SAMP> followed by a newline,
+encoded in the ASCII and IBM1047 character sets.
+</P><P>
+
+We compile the program, and invoke the debugger on it:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>$ gcc -g charset-test.c -o charset-test
+$ gdb -nw charset-test
+GNU gdb 2001-12-19-cvs
+Copyright 2001 Free Software Foundation, Inc.
+<small>...</small>
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+We can use the <CODE>show charset</CODE> command to see what character sets
+GDB is currently using to interpret and display characters and
+strings:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) show charset
+The current host and target character set is `ISO-8859-1'.
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+For the sake of printing this manual, let's use ASCII as our
+initial character set:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set charset ASCII
+(gdb) show charset
+The current host and target character set is `ASCII'.
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+Let's assume that ASCII is indeed the correct character set for our
+host system -- in other words, let's assume that if GDB prints
+characters using the ASCII character set, our terminal will display
+them properly.  Since our current target character set is also
+ASCII, the contents of <CODE>ascii_hello</CODE> print legibly:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print ascii_hello
+$1 = 0x401698 "Hello, world!\n"
+(gdb) print ascii_hello[0]
+$2 = 72 'H'
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+GDB uses the target character set for character and string
+literals you use in expressions:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print '+'
+$3 = 43 '+'
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+The ASCII character set uses the number 43 to encode the <SAMP>`+'</SAMP>
+character.
+</P><P>
+
+GDB relies on the user to tell it which character set the
+target program uses.  If we print <CODE>ibm1047_hello</CODE> while our target
+character set is still ASCII, we get jibberish:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print ibm1047_hello
+$4 = 0x4016a8 "\310\205\223\223\226k@\246\226\231\223\204Z%"
+(gdb) print ibm1047_hello[0]
+$5 = 200 '\310'
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+If we invoke the <CODE>set target-charset</CODE> followed by <KBD>TAB</KBD><KBD>TAB</KBD>,
+GDB tells us the character sets it supports:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set target-charset
+ASCII       EBCDIC-US   IBM1047     ISO-8859-1
+(gdb) set target-charset
+</FONT></pre></td></tr></table></P><P>
+
+We can select IBM1047 as our target character set, and examine the
+program's strings again.  Now the ASCII string is wrong, but
+GDB translates the contents of <CODE>ibm1047_hello</CODE> from the
+target character set, IBM1047, to the host character set,
+ASCII, and they display correctly:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set target-charset IBM1047
+(gdb) show charset
+The current host character set is `ASCII'.
+The current target character set is `IBM1047'.
+(gdb) print ascii_hello
+$6 = 0x401698 "\110\145%%?\054\040\167?\162%\144\041\012"
+(gdb) print ascii_hello[0]
+$7 = 72 '\110'
+(gdb) print ibm1047_hello
+$8 = 0x4016a8 "Hello, world!\n"
+(gdb) print ibm1047_hello[0]
+$9 = 200 'H'
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+As above, GDB uses the target character set for character and
+string literals you use in expressions:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print '+'
+$10 = 78 '+'
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+The IBM1047 character set uses the number 78 to encode the <SAMP>`+'</SAMP>
+character.
+</P><P>
+
+<A NAME="Caching Remote Data"></A>
+<HR SIZE="6">
+<A NAME="SEC82"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC81"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.18 Caching Data of Remote Targets </H2>
+<!--docid::SEC82::-->
+<P>
+
+GDB can cache data exchanged between the debugger and a
+remote target (see section <A HREF="gdb_18.html#SEC162">17. Debugging Remote Programs</A>).  Such caching generally improves
+performance, because it reduces the overhead of the remote protocol by
+bundling memory reads and writes into large chunks.  Unfortunately,
+GDB does not currently know anything about volatile
+registers, and thus data caching will produce incorrect results when
+volatile registers are in use.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX504"></A>
+<DT><CODE>set remotecache on</CODE>
+<DD><DT><CODE>set remotecache off</CODE>
+<DD>Set caching state for remote targets.  When <CODE>ON</CODE>, use data
+caching.  By default, this option is <CODE>OFF</CODE>.
+<P>
+
+<A NAME="IDX505"></A>
+<DT><CODE>show remotecache</CODE>
+<DD>Show the current state of data caching for remote targets.
+<P>
+
+<A NAME="IDX506"></A>
+<DT><CODE>info dcache</CODE>
+<DD>Print the information about the data cache performance.  The
+information displayed includes: the dcache width and depth; and for
+each cache line, how many times it was referenced, and its data and
+state (dirty, bad, ok, etc.).  This command is useful for debugging
+the data cache operation.
+</DL>
+<P>
+
+<A NAME="Macros"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_10.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

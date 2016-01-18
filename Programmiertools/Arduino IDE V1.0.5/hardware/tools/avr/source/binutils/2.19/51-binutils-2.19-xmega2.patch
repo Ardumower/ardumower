@@ -1,0 +1,47 @@
+--- gas/config/tc-avr.c.orig	2008-10-29 14:10:04.264816900 -0600
++++ gas/config/tc-avr.c	2008-10-29 15:55:03.798197900 -0600
+@@ -193,7 +193,11 @@ static struct mcu_type_s mcu_types[] =
+   {"at90usb1287",AVR_ISA_AVR51,   bfd_mach_avr51},
+   {"atmega2560", AVR_ISA_AVR6,    bfd_mach_avr6},
+   {"atmega2561", AVR_ISA_AVR6,    bfd_mach_avr6},
++  {"atxmega64a3", AVR_ISA_XMEGA,  bfd_mach_avrxmega4},
+   {"atxmega64a1", AVR_ISA_XMEGA,  bfd_mach_avrxmega5},
++  {"atxmega128a3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
++  {"atxmega256a3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
++  {"atxmega256a3b",AVR_ISA_XMEGA, bfd_mach_avrxmega6},
+   {"atxmega128a1", AVR_ISA_XMEGA, bfd_mach_avrxmega7},
+   {NULL, 0, 0}
+ };
+@@ -372,6 +376,10 @@ md_show_usage (FILE *stream)
+ 	"                   avr5  - enhanced AVR core with up to 64K program memory\n"
+ 	"                   avr51 - enhanced AVR core with up to 128K program memory\n"
+ 	"                   avr6  - enhanced AVR core with up to 256K program memory\n"
++	"                   avrxmega4 - XMEGA, > 64K, <= 128K FLASH, <= 64K RAM\n"
++	"                   avrxmega5 - XMEGA, > 64K, <= 128K FLASH, > 64K RAM\n"
++	"                   avrxmega6 - XMEGA, > 128K, <= 256K FLASH, <= 64K RAM\n"
++	"                   avrxmega7 - XMEGA, > 128K, <= 256K FLASH, > 64K RAM\n"
+ 	"                   or immediate microcontroller name.\n"));
+   fprintf (stream,
+       _("  -mall-opcodes    accept all AVR opcodes, even if not supported by MCU\n"
+--- gas/doc/c-avr.texi.orig	2008-08-29 10:58:02.000000000 -0600
++++ gas/doc/c-avr.texi	2008-10-29 15:59:25.299307900 -0600
+@@ -76,6 +76,19 @@ at90can128, at90usb1286, at90usb1287).
+ Instruction set avr6 is for the enhanced AVR core with a 3-byte PC (MCU types:
+ atmega2560, atmega2561).
+ 
++Instruction set avrxmega4 is for the XMEGA AVR cor with up to 64K program
++memory space and less than 64K data space (MCU types: atxmega64a3).
++
++Instruction set avrxmega5 is for the XMEGA AVR core with up to 64K program 
++memory space and greater than 64K data space (MCU types: atxmega64a1).
++
++Instruction set avrxmega6 is for the XMEGA AVR core with up to 256K program
++memory space and less than 64K data space (MCU types: atxmega128a3,
++atxmega256a3, atxmega256a3b).
++
++Instruction set avrxmega7 is for the XMEGA AVR core with up to 256K program
++memory space and greater than 64K data space (MCU types: atxmega128a1).
++
+ @cindex @code{-mall-opcodes} command line option, AVR
+ @item -mall-opcodes
+ Accept all AVR opcodes, even if not supported by @code{-mmcu}.

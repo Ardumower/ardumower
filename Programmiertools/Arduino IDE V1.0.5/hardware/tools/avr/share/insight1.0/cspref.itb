@@ -1,0 +1,152 @@
+# Color Scheme preferences dialog for Insight.
+# Copyright (C) 2004 Red Hat
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+
+# ------------------------------------------------------------------
+#  CONSTRUCTOR - create new source preferences window
+# ------------------------------------------------------------------
+itcl::body CSPref::constructor {args} {
+  window_name "Color Scheme Preferences"
+  _init_var
+  _build_win
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  init_var - initialize preference variables
+# ------------------------------------------------------------------
+itcl::body CSPref::_init_var {} {
+  for {set i 0} {$i < 16} {incr i} {
+    lappend vlist gdb/bg/$i
+  }
+
+  foreach var $vlist {
+    set _saved($var) [pref get $var]
+    set _new($var) $_saved($var)
+  }
+}
+
+
+# ------------------------------------------------------------------
+#  METHOD:  build_win - build the dialog
+# ------------------------------------------------------------------
+itcl::body CSPref::_build_win {} {
+  frame $itk_interior.f
+  frame $itk_interior.f.a
+  frame $itk_interior.f.b
+  set f $itk_interior.f.a
+
+  # Description frame
+  set d [labelframe $f.desc -text "Description"]
+  label $d.txt -justify left -wraplength 6i -background $::Colors(textbg) \
+    -text "There are many situations where multiple instances\
+of Insight may be running.  Some examples are when debugging itself, when debugging\
+client and server programs, or multiprocessor systems. In these situations, it is easy\
+to get confused by the many different windows.  Insight provides a simple way to have\
+all the windows belonging to a particular Insight instance use the same background color.\
+\n\nClick on a color below to edit it. This is a text background color.  Other colors are\
+computed based on it."
+  pack $d.txt -side top
+  pack $f.desc -expand yes -fill both 
+
+  set w [labelframe $f.colors -text "Text Backgrounds"]
+  for {set i 0} {$i < 16} {incr i} {
+    set color $_new(gdb/bg/$i)
+    button $w.$i -text [format "%X" $i] -activebackground $color -bg $color \
+      -command [code $this _pick $color $w.$i  $i]
+  }
+
+  grid $w.0 $w.1 $w.2 $w.3 $w.4 $w.5 $w.6 $w.7 -padx 10 -pady 10 -sticky we
+  grid $w.8 $w.9 $w.10 $w.11 $w.12 $w.13 $w.14 $w.15 -padx 10 -pady 10 -sticky we
+
+  pack $w -fill both -expand yes
+  pack $f.colors -fill both -expand yes
+
+  button $itk_interior.f.b.ok -text OK -width 7 -underline 0 -command [code $this _save]
+  button $itk_interior.f.b.apply -text Apply -width 7 -underline 0 -command [code $this _apply]
+  button $itk_interior.f.b.quit -text Cancel -width 7 -underline 0 -command [code $this _cancel]
+  standard_button_box $itk_interior.f.b
+  pack $itk_interior.f.a $itk_interior.f.b $itk_interior.f -expand yes -fill both -padx 5 -pady 5
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  apply - apply changes
+# ------------------------------------------------------------------
+itcl::body CSPref::_apply {} {
+  foreach var [array names _new] {
+    if {$_new($var) != [pref get $var]} {
+      pref set $var $_new($var)
+    }
+  }
+  set_bg_colors
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  _cancel
+# ------------------------------------------------------------------
+itcl::body CSPref::_cancel {} {
+  set bg_changed 0
+
+  if {[string compare [pref get gdb/bg/$::gdb_bg_num] $_saved(gdb/bg/$::gdb_bg_num)] != 0} {
+    set bg_changed 1
+  }
+  
+  foreach elem [array names _saved] {
+    set cur_val [pref get $elem]
+    if {[string compare $cur_val $_saved($elem)] != 0} {
+      pref set $elem $_saved($elem)
+    }
+  }
+
+  if {$bg_changed} {
+    set_bg_colors
+  } else {
+    ManagedWin::restart
+  }
+  unpost
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  save - apply changes and quit
+# ------------------------------------------------------------------
+itcl::body CSPref::_save {} {
+  _apply
+  unpost
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  reconfig - called when windows are reconfigured
+# ------------------------------------------------------------------
+
+itcl::body CSPref::reconfig {} {
+  # Unfortunately, r_setcolors recolors buttons if we do an Apply, 
+  # so fix them up here.
+
+  for {set i 0} {$i < 10} {incr i} {
+    set color $_new(gdb/bg/$i)
+    $w.$i configure -activebackground $color -bg $color
+  }
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  pick - pick colors
+# ------------------------------------------------------------------
+itcl::body CSPref::_pick {color win num} {
+  #debug "$color $win $num"
+  set new_color [tk_chooseColor -initialcolor $color -title "Choose color"]
+  if {$new_color != $color && $new_color != {}} {
+    $win configure -activebackground $new_color -bg $new_color \
+      -command [code $this _pick $new_color $w.${num}b  $num]
+    set _new(gdb/bg/$num) $new_color
+    pref set gdb/bg/$num $new_color
+  }
+}

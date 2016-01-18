@@ -1,0 +1,813 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Source</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Source">
+<META NAME="keywords" CONTENT="Debugging with GDB: Source">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC51"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_7.html#SEC50"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC52"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 7. Examining Source Files </H1>
+<!--docid::SEC51::-->
+<P>
+
+GDB can print parts of your program's source, since the debugging
+information recorded in the program tells GDB what source files were
+used to build it.  When your program stops, GDB spontaneously prints
+the line where it stopped.  Likewise, when you select a stack frame
+(see section <A HREF="gdb_7.html#SEC49">Selecting a Frame</A>), GDB prints the line where
+execution in that frame has stopped.  You can print other portions of
+source files by explicit command.
+</P><P>
+
+If you use GDB through its GNU Emacs interface, you may
+prefer to use Emacs facilities to view source; see <A HREF="gdb_24.html#SEC241">Using GDB under GNU Emacs</A>.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_8.html#SEC52">7.1 Printing Source Lines</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Printing source lines</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_8.html#SEC53">7.2 Specifying a Location</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">How to specify code locations</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_8.html#SEC54">7.3 Editing Source Files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Editing source files</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_8.html#SEC56">7.4 Searching Source Files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Searching source files</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_8.html#SEC57">7.5 Specifying Source Directories</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Specifying source directories</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_8.html#SEC58">7.6 Source and Machine Code</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Source and machine code</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="List"></A>
+<HR SIZE="6">
+<A NAME="SEC52"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC53"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.1 Printing Source Lines </H2>
+<!--docid::SEC52::-->
+<P>
+
+<A NAME="IDX326"></A>
+<A NAME="IDX327"></A>
+To print lines from a source file, use the <CODE>list</CODE> command
+(abbreviated <CODE>l</CODE>).  By default, ten lines are printed.
+There are several ways to specify what part of the file you want to
+print; see <A HREF="gdb_8.html#SEC53">7.2 Specifying a Location</A>, for the full list.
+</P><P>
+
+Here are the forms of the <CODE>list</CODE> command most commonly used:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>list <VAR>linenum</VAR></CODE>
+<DD>Print lines centered around line number <VAR>linenum</VAR> in the
+current source file.
+<P>
+
+<DT><CODE>list <VAR>function</VAR></CODE>
+<DD>Print lines centered around the beginning of function
+<VAR>function</VAR>.
+<P>
+
+<DT><CODE>list</CODE>
+<DD>Print more lines.  If the last lines printed were printed with a
+<CODE>list</CODE> command, this prints lines following the last lines
+printed; however, if the last line printed was a solitary line printed
+as part of displaying a stack frame (see section <A HREF="gdb_7.html#SEC46">Examining the Stack</A>), this prints lines centered around that line.
+<P>
+
+<DT><CODE>list -</CODE>
+<DD>Print lines just before the lines last printed.
+</DL>
+<P>
+
+<A NAME="IDX328"></A>
+By default, GDB prints ten source lines with any of these forms of
+the <CODE>list</CODE> command.  You can change this using <CODE>set listsize</CODE>:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX329"></A>
+<DT><CODE>set listsize <VAR>count</VAR></CODE>
+<DD>Make the <CODE>list</CODE> command display <VAR>count</VAR> source lines (unless
+the <CODE>list</CODE> argument explicitly specifies some other number).
+<P>
+
+<A NAME="IDX330"></A>
+<DT><CODE>show listsize</CODE>
+<DD>Display the number of lines that <CODE>list</CODE> prints.
+</DL>
+<P>
+
+Repeating a <CODE>list</CODE> command with <KBD>RET</KBD> discards the argument,
+so it is equivalent to typing just <CODE>list</CODE>.  This is more useful
+than listing the same lines again.  An exception is made for an
+argument of <SAMP>`-'</SAMP>; that argument is preserved in repetition so that
+each repetition moves up in the source file.
+</P><P>
+
+In general, the <CODE>list</CODE> command expects you to supply zero, one or two
+<EM>linespecs</EM>.  Linespecs specify source lines; there are several ways
+of writing them (see section <A HREF="gdb_8.html#SEC53">7.2 Specifying a Location</A>), but the effect is always
+to specify some source line.
+</P><P>
+
+Here is a complete description of the possible arguments for <CODE>list</CODE>:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>list <VAR>linespec</VAR></CODE>
+<DD>Print lines centered around the line specified by <VAR>linespec</VAR>.
+<P>
+
+<DT><CODE>list <VAR>first</VAR>,<VAR>last</VAR></CODE>
+<DD>Print lines from <VAR>first</VAR> to <VAR>last</VAR>.  Both arguments are
+linespecs.  When a <CODE>list</CODE> command has two linespecs, and the
+source file of the second linespec is omitted, this refers to
+the same source file as the first linespec.
+<P>
+
+<DT><CODE>list ,<VAR>last</VAR></CODE>
+<DD>Print lines ending with <VAR>last</VAR>.
+<P>
+
+<DT><CODE>list <VAR>first</VAR>,</CODE>
+<DD>Print lines starting with <VAR>first</VAR>.
+<P>
+
+<DT><CODE>list +</CODE>
+<DD>Print lines just after the lines last printed.
+<P>
+
+<DT><CODE>list -</CODE>
+<DD>Print lines just before the lines last printed.
+<P>
+
+<DT><CODE>list</CODE>
+<DD>As described in the preceding table.
+</DL>
+<P>
+
+<A NAME="Specify Location"></A>
+<HR SIZE="6">
+<A NAME="SEC53"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC52"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC54"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC54"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.2 Specifying a Location </H2>
+<!--docid::SEC53::-->
+<P>
+
+Several GDB commands accept arguments that specify a location
+of your program's code.  Since GDB is a source-level
+debugger, a location usually specifies some line in the source code;
+for that reason, locations are also known as <EM>linespecs</EM>.
+</P><P>
+
+Here are all the different ways of specifying a code location that
+GDB understands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE><VAR>linenum</VAR></CODE>
+<DD>Specifies the line number <VAR>linenum</VAR> of the current source file.
+<P>
+
+<DT><CODE>-<VAR>offset</VAR></CODE>
+<DD><DT><CODE>+<VAR>offset</VAR></CODE>
+<DD>Specifies the line <VAR>offset</VAR> lines before or after the <EM>current
+line</EM>.  For the <CODE>list</CODE> command, the current line is the last one
+printed; for the breakpoint commands, this is the line at which
+execution stopped in the currently selected <EM>stack frame</EM>
+(see section <A HREF="gdb_7.html#SEC47">Frames</A>, for a description of stack frames.)  When
+used as the second of the two linespecs in a <CODE>list</CODE> command,
+this specifies the line <VAR>offset</VAR> lines up or down from the first
+linespec.
+<P>
+
+<DT><CODE><VAR>filename</VAR>:<VAR>linenum</VAR></CODE>
+<DD>Specifies the line <VAR>linenum</VAR> in the source file <VAR>filename</VAR>.
+<P>
+
+<DT><CODE><VAR>function</VAR></CODE>
+<DD>Specifies the line that begins the body of the function <VAR>function</VAR>.
+For example, in C, this is the line with the open brace.
+<P>
+
+<DT><CODE><VAR>filename</VAR>:<VAR>function</VAR></CODE>
+<DD>Specifies the line that begins the body of the function <VAR>function</VAR>
+in the file <VAR>filename</VAR>.  You only need the file name with a
+function name to avoid ambiguity when there are identically named
+functions in different source files.
+<P>
+
+<DT><CODE>*<VAR>address</VAR></CODE>
+<DD>Specifies the program address <VAR>address</VAR>.  For line-oriented
+commands, such as <CODE>list</CODE> and <CODE>edit</CODE>, this specifies a source
+line that contains <VAR>address</VAR>.  For <CODE>break</CODE> and other
+breakpoint oriented commands, this can be used to set breakpoints in
+parts of your program which do not have debugging information or
+source files.
+<P>
+
+Here <VAR>address</VAR> may be any expression valid in the current working
+language (see section <A HREF="gdb_13.html#SEC102">working language</A>) that specifies a code
+address.  In addition, as a convenience, GDB extends the
+semantics of expressions used in locations to cover the situations
+that frequently happen during debugging.  Here are the various forms
+of <VAR>address</VAR>:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE><VAR>expression</VAR></CODE>
+<DD>Any expression valid in the current working language.
+<P>
+
+<DT><CODE><VAR>funcaddr</VAR></CODE>
+<DD>An address of a function or procedure derived from its name.  In C,
+C<TT>++</TT>, Java, Objective-C, Fortran, minimal, and assembly, this is
+simply the function's name <VAR>function</VAR> (and actually a special case
+of a valid expression).  In Pascal and Modula-2, this is
+<CODE>&#38;<VAR>function</VAR></CODE>.  In Ada, this is <CODE><VAR>function</VAR>'Address</CODE>
+(although the Pascal form also works).
+<P>
+
+This form specifies the address of the function's first instruction,
+before the stack frame and arguments have been set up.
+</P><P>
+
+<DT><CODE>'<VAR>filename</VAR>'::<VAR>funcaddr</VAR></CODE>
+<DD>Like <VAR>funcaddr</VAR> above, but also specifies the name of the source
+file explicitly.  This is useful if the name of the function does not
+specify the function unambiguously, e.g., if there are several
+functions with identical names in different source files.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="Edit"></A>
+<HR SIZE="6">
+<A NAME="SEC54"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC53"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC55"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC56"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC56"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.3 Editing Source Files </H2>
+<!--docid::SEC54::-->
+<P>
+
+<A NAME="IDX331"></A>
+<A NAME="IDX332"></A>
+To edit the lines in a source file, use the <CODE>edit</CODE> command.
+The editing program of your choice
+is invoked with the current line set to
+the active line in the program.
+Alternatively, there are several ways to specify what part of the file you
+want to print if you want to see other parts of the program:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>edit <VAR>location</VAR></CODE>
+<DD>Edit the source file specified by <CODE>location</CODE>.  Editing starts at
+that <VAR>location</VAR>, e.g., at the specified source line of the
+specified file.  See section <A HREF="gdb_8.html#SEC53">7.2 Specifying a Location</A>, for all the possible forms
+of the <VAR>location</VAR> argument; here are the forms of the <CODE>edit</CODE>
+command most commonly used:
+<P>
+
+<DL COMPACT>
+<DT><CODE>edit <VAR>number</VAR></CODE>
+<DD>Edit the current source file with <VAR>number</VAR> as the active line number.
+<P>
+
+<DT><CODE>edit <VAR>function</VAR></CODE>
+<DD>Edit the file containing <VAR>function</VAR> at the beginning of its definition.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC55"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC54"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC56"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC56"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC54"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC56"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.3.1 Choosing your Editor </H3>
+<!--docid::SEC55::-->
+You can customize GDB to use any editor you want
+<A NAME="DOCF4" HREF="gdb_fot.html#FOOT4">(4)</A>.
+By default, it is <TT>`/bin/ex'</TT>, but you can change this
+by setting the environment variable <CODE>EDITOR</CODE> before using
+GDB.  For example, to configure GDB to use the
+<CODE>vi</CODE> editor, you could use these commands with the <CODE>sh</CODE> shell:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>EDITOR=/usr/bin/vi
+export EDITOR
+gdb <small>...</small>
+</FONT></pre></td></tr></table>or in the <CODE>csh</CODE> shell,
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>setenv EDITOR /usr/bin/vi
+gdb <small>...</small>
+</FONT></pre></td></tr></table><P>
+
+<A NAME="Search"></A>
+<HR SIZE="6">
+<A NAME="SEC56"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC55"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC57"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC57"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.4 Searching Source Files </H2>
+<!--docid::SEC56::-->
+<P>
+
+There are two commands for searching through the current source file for a
+regular expression.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX333"></A>
+<A NAME="IDX334"></A>
+<DT><CODE>forward-search <VAR>regexp</VAR></CODE>
+<DD><DT><CODE>search <VAR>regexp</VAR></CODE>
+<DD>The command <SAMP>`forward-search <VAR>regexp</VAR>'</SAMP> checks each line,
+starting with the one following the last line listed, for a match for
+<VAR>regexp</VAR>.  It lists the line that is found.  You can use the
+synonym <SAMP>`search <VAR>regexp</VAR>'</SAMP> or abbreviate the command name as
+<CODE>fo</CODE>.
+<P>
+
+<A NAME="IDX335"></A>
+<DT><CODE>reverse-search <VAR>regexp</VAR></CODE>
+<DD>The command <SAMP>`reverse-search <VAR>regexp</VAR>'</SAMP> checks each line, starting
+with the one before the last line listed and going backward, for a match
+for <VAR>regexp</VAR>.  It lists the line that is found.  You can abbreviate
+this command as <CODE>rev</CODE>.
+</DL>
+<P>
+
+<A NAME="Source Path"></A>
+<HR SIZE="6">
+<A NAME="SEC57"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC56"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC58"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC58"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.5 Specifying Source Directories </H2>
+<!--docid::SEC57::-->
+<P>
+
+<A NAME="IDX336"></A>
+<A NAME="IDX337"></A>
+Executable programs sometimes do not record the directories of the source
+files from which they were compiled, just the names.  Even when they do,
+the directories could be moved between the compilation and your debugging
+session.  GDB has a list of directories to search for source files;
+this is called the <EM>source path</EM>.  Each time GDB wants a source file,
+it tries all the directories in the list, in the order they are present
+in the list, until it finds a file with the desired name.
+</P><P>
+
+For example, suppose an executable references the file
+<TT>`/usr/src/foo-1.0/lib/foo.c'</TT>, and our source path is
+<TT>`/mnt/cross'</TT>.  The file is first looked up literally; if this
+fails, <TT>`/mnt/cross/usr/src/foo-1.0/lib/foo.c'</TT> is tried; if this
+fails, <TT>`/mnt/cross/foo.c'</TT> is opened; if this fails, an error
+message is printed.  GDB does not look up the parts of the
+source file name, such as <TT>`/mnt/cross/src/foo-1.0/lib/foo.c'</TT>.
+Likewise, the subdirectories of the source path are not searched: if
+the source path is <TT>`/mnt/cross'</TT>, and the binary refers to
+<TT>`foo.c'</TT>, GDB would not find it under
+<TT>`/mnt/cross/usr/src/foo-1.0/lib'</TT>.
+</P><P>
+
+Plain file names, relative file names with leading directories, file
+names containing dots, etc. are all treated as described above; for
+instance, if the source path is <TT>`/mnt/cross'</TT>, and the source file
+is recorded as <TT>`../lib/foo.c'</TT>, GDB would first try
+<TT>`../lib/foo.c'</TT>, then <TT>`/mnt/cross/../lib/foo.c'</TT>, and after
+that---<TT>`/mnt/cross/foo.c'</TT>.
+</P><P>
+
+Note that the executable search path is <EM>not</EM> used to locate the
+source files.
+</P><P>
+
+Whenever you reset or rearrange the source path, GDB clears out
+any information it has cached about where source files are found and where
+each line is in the file.
+</P><P>
+
+<A NAME="IDX338"></A>
+<A NAME="IDX339"></A>
+When you start GDB, its source path includes only <SAMP>`cdir'</SAMP>
+and <SAMP>`cwd'</SAMP>, in that order.
+To add other directories, use the <CODE>directory</CODE> command.
+</P><P>
+
+The search path is used to find both program source files and GDB
+script files (read using the <SAMP>`-command'</SAMP> option and <SAMP>`source'</SAMP> command).
+</P><P>
+
+In addition to the source path, GDB provides a set of commands
+that manage a list of source path substitution rules.  A <EM>substitution
+rule</EM> specifies how to rewrite source directories stored in the program's
+debug information in case the sources were moved to a different
+directory between compilation and debugging.  A rule is made of
+two strings, the first specifying what needs to be rewritten in
+the path, and the second specifying how it should be rewritten.
+In  <A HREF="gdb_8.html#set substitute-path">set substitute-path</A>, we name these two parts <VAR>from</VAR> and
+<VAR>to</VAR> respectively.  GDB does a simple string replacement
+of <VAR>from</VAR> with <VAR>to</VAR> at the start of the directory part of the
+source file name, and uses that result instead of the original file
+name to look up the sources.
+</P><P>
+
+Using the previous example, suppose the <TT>`foo-1.0'</TT> tree has been
+moved from <TT>`/usr/src'</TT> to <TT>`/mnt/cross'</TT>, then you can tell
+GDB to replace <TT>`/usr/src'</TT> in all source path names with
+<TT>`/mnt/cross'</TT>.  The first lookup will then be
+<TT>`/mnt/cross/foo-1.0/lib/foo.c'</TT> in place of the original location
+of <TT>`/usr/src/foo-1.0/lib/foo.c'</TT>.  To define a source path
+substitution rule, use the <CODE>set substitute-path</CODE> command
+(see  <A HREF="gdb_8.html#set substitute-path">set substitute-path</A>).
+</P><P>
+
+To avoid unexpected substitution results, a rule is applied only if the
+<VAR>from</VAR> part of the directory name ends at a directory separator.
+For instance, a rule substituting  <TT>`/usr/source'</TT> into
+<TT>`/mnt/cross'</TT> will be applied to <TT>`/usr/source/foo-1.0'</TT> but
+not to <TT>`/usr/sourceware/foo-2.0'</TT>.  And because the substitution
+is applied only at the beginning of the directory name, this rule will
+not be applied to <TT>`/root/usr/source/baz.c'</TT> either.
+</P><P>
+
+In many cases, you can achieve the same result using the <CODE>directory</CODE>
+command.  However, <CODE>set substitute-path</CODE> can be more efficient in
+the case where the sources are organized in a complex tree with multiple
+subdirectories.  With the <CODE>directory</CODE> command, you need to add each
+subdirectory of your project.  If you moved the entire tree while
+preserving its internal organization, then <CODE>set substitute-path</CODE>
+allows you to direct the debugger to all the sources with one single
+command.
+</P><P>
+
+<CODE>set substitute-path</CODE> is also more than just a shortcut command.
+The source path is only used if the file at the original location no
+longer exists.  On the other hand, <CODE>set substitute-path</CODE> modifies
+the debugger behavior to look at the rewritten location instead.  So, if
+for any reason a source file that is not relevant to your executable is
+located at the original location, a substitution rule is the only
+method available to point GDB at the new location.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>directory <VAR>dirname</VAR> <small>...</small></CODE>
+<DD><DT><CODE>dir <VAR>dirname</VAR> <small>...</small></CODE>
+<DD>Add directory <VAR>dirname</VAR> to the front of the source path.  Several
+directory names may be given to this command, separated by <SAMP>`:'</SAMP>
+(<SAMP>`;'</SAMP> on MS-DOS and MS-Windows, where <SAMP>`:'</SAMP> usually appears as
+part of absolute file names) or
+whitespace.  You may specify a directory that is already in the source
+path; this moves it forward, so GDB searches it sooner.
+<P>
+
+<A NAME="IDX340"></A>
+<A NAME="IDX341"></A>
+<A NAME="IDX342"></A>
+<A NAME="IDX343"></A>
+<A NAME="IDX344"></A>
+<A NAME="IDX345"></A>
+<A NAME="IDX346"></A>
+<A NAME="IDX347"></A>
+<A NAME="IDX348"></A>
+You can use the string <SAMP>`$cdir'</SAMP> to refer to the compilation
+directory (if one is recorded), and <SAMP>`$cwd'</SAMP> to refer to the current
+working directory.  <SAMP>`$cwd'</SAMP> is not the same as <SAMP>`.'</SAMP>---the former
+tracks the current working directory as it changes during your GDB
+session, while the latter is immediately expanded to the current
+directory at the time you add an entry to the source path.
+</P><P>
+
+<DT><CODE>directory</CODE>
+<DD>Reset the source path to its default value (<SAMP>`$cdir:$cwd'</SAMP> on Unix systems).  This requires confirmation.
+<P>
+
+<DT><CODE>show directories</CODE>
+<DD><A NAME="IDX349"></A>
+Print the source path: show which directories it contains.
+<P>
+
+<A NAME="set substitute-path"></A>
+<DT><CODE>set substitute-path <VAR>from</VAR> <VAR>to</VAR></CODE>
+<DD><A NAME="IDX350"></A>
+Define a source path substitution rule, and add it at the end of the
+current list of existing substitution rules.  If a rule with the same
+<VAR>from</VAR> was already defined, then the old rule is also deleted.
+<P>
+
+For example, if the file <TT>`/foo/bar/baz.c'</TT> was moved to
+<TT>`/mnt/cross/baz.c'</TT>, then the command
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set substitute-path /usr/src /mnt/cross
+</FONT></pre></td></tr></table></P><P>
+
+will tell GDB to replace <SAMP>`/usr/src'</SAMP> with
+<SAMP>`/mnt/cross'</SAMP>, which will allow GDB to find the file
+<TT>`baz.c'</TT> even though it was moved.
+</P><P>
+
+In the case when more than one substitution rule have been defined,
+the rules are evaluated one by one in the order where they have been
+defined.  The first one matching, if any, is selected to perform
+the substitution.
+</P><P>
+
+For instance, if we had entered the following commands:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) set substitute-path /usr/src/include /mnt/include
+(gdb) set substitute-path /usr/src /mnt/src
+</FONT></pre></td></tr></table></P><P>
+
+GDB would then rewrite <TT>`/usr/src/include/defs.h'</TT> into
+<TT>`/mnt/include/defs.h'</TT> by using the first rule.  However, it would
+use the second rule to rewrite <TT>`/usr/src/lib/foo.c'</TT> into
+<TT>`/mnt/src/lib/foo.c'</TT>.
+</P><P>
+
+<DT><CODE>unset substitute-path [path]</CODE>
+<DD><A NAME="IDX351"></A>
+If a path is specified, search the current list of substitution rules
+for a rule that would rewrite that path.  Delete that rule if found.
+A warning is emitted by the debugger if no rule could be found.
+<P>
+
+If no path is specified, then all substitution rules are deleted.
+</P><P>
+
+<DT><CODE>show substitute-path [path]</CODE>
+<DD><A NAME="IDX352"></A>
+If a path is specified, then print the source path substitution rule
+which would rewrite that path, if any.
+<P>
+
+If no path is specified, then print all existing source path substitution
+rules.
+</P><P>
+
+</DL>
+<P>
+
+If your source path is cluttered with directories that are no longer of
+interest, GDB may sometimes cause confusion by finding the wrong
+versions of source.  You can correct the situation as follows:
+</P><P>
+
+<OL>
+<LI>
+Use <CODE>directory</CODE> with no argument to reset the source path to its default value.
+<P>
+
+<LI>
+Use <CODE>directory</CODE> with suitable arguments to reinstall the
+directories you want in the source path.  You can add all the
+directories in one command.
+</OL>
+<P>
+
+<A NAME="Machine Code"></A>
+<HR SIZE="6">
+<A NAME="SEC58"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC57"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.6 Source and Machine Code </H2>
+<!--docid::SEC58::-->
+<P>
+
+You can use the command <CODE>info line</CODE> to map source lines to program
+addresses (and vice versa), and the command <CODE>disassemble</CODE> to display
+a range of addresses as machine instructions.  When run under GNU Emacs
+mode, the <CODE>info line</CODE> command causes the arrow to point to the
+line specified.  Also, <CODE>info line</CODE> prints addresses in symbolic form as
+well as hex.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX353"></A>
+<DT><CODE>info line <VAR>linespec</VAR></CODE>
+<DD>Print the starting and ending addresses of the compiled code for
+source line <VAR>linespec</VAR>.  You can specify source lines in any of
+the ways documented in <A HREF="gdb_8.html#SEC53">7.2 Specifying a Location</A>.
+</DL>
+<P>
+
+For example, we can use <CODE>info line</CODE> to discover the location of
+the object code for the first line of function
+<CODE>m4_changequote</CODE>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) info line m4_changequote
+Line 895 of "builtin.c" starts at pc 0x634c and ends at 0x6350.
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX354"></A>
+We can also inquire (using <CODE>*<VAR>addr</VAR></CODE> as the form for
+<VAR>linespec</VAR>) what source line covers a particular address:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) info line *0x63ff
+Line 926 of "builtin.c" starts at pc 0x63e4 and ends at 0x6404.
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX355"></A>
+<A NAME="IDX356"></A>
+<A NAME="IDX357"></A>
+After <CODE>info line</CODE>, the default address for the <CODE>x</CODE> command
+is changed to the starting address of the line, so that <SAMP>`x/i'</SAMP> is
+sufficient to begin examining the machine code (see section <A HREF="gdb_9.html#SEC64">Examining Memory</A>).  Also, this address is saved as the value of the
+convenience variable <CODE>$_</CODE> (see section <A HREF="gdb_9.html#SEC68">Convenience Variables</A>).
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX358"></A>
+<A NAME="IDX359"></A>
+<A NAME="IDX360"></A>
+<A NAME="IDX361"></A>
+<A NAME="IDX362"></A>
+<DT><CODE>disassemble</CODE>
+<DD>This specialized command dumps a range of memory as machine
+instructions.  The default memory range is the function surrounding the
+program counter of the selected frame.  A single argument to this
+command is a program counter value; GDB dumps the function
+surrounding this value.  Two arguments specify a range of addresses
+(first inclusive, second exclusive) to dump.
+</DL>
+<P>
+
+The following example shows the disassembly of a range of addresses of
+HP PA-RISC 2.0 code:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) disas 0x32c4 0x32e4
+Dump of assembler code from 0x32c4 to 0x32e4:
+0x32c4 &#60;main+204&#62;:      addil 0,dp
+0x32c8 &#60;main+208&#62;:      ldw 0x22c(sr0,r1),r26
+0x32cc &#60;main+212&#62;:      ldil 0x3000,r31
+0x32d0 &#60;main+216&#62;:      ble 0x3f8(sr4,r31)
+0x32d4 &#60;main+220&#62;:      ldo 0(r31),rp
+0x32d8 &#60;main+224&#62;:      addil -0x800,dp
+0x32dc &#60;main+228&#62;:      ldo 0x588(r1),r26
+0x32e0 &#60;main+232&#62;:      ldil 0x3000,r31
+End of assembler dump.
+</FONT></pre></td></tr></table></P><P>
+
+Some architectures have more than one commonly-used set of instruction
+mnemonics or other syntax.
+</P><P>
+
+For programs that were dynamically linked and use shared libraries,
+instructions that call functions or branch to locations in the shared
+libraries might show a seemingly bogus location--it's actually a
+location of the relocation table.  On some architectures, GDB
+might be able to resolve these to actual function names.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX363"></A>
+<A NAME="IDX364"></A>
+<A NAME="IDX365"></A>
+<DT><CODE>set disassembly-flavor <VAR>instruction-set</VAR></CODE>
+<DD>Select the instruction set to use when disassembling the
+program via the <CODE>disassemble</CODE> or <CODE>x/i</CODE> commands.
+<P>
+
+Currently this command is only defined for the Intel x86 family.  You
+can set <VAR>instruction-set</VAR> to either <CODE>intel</CODE> or <CODE>att</CODE>.
+The default is <CODE>att</CODE>, the AT&#38;T flavor used by default by Unix
+assemblers for x86-based targets.
+</P><P>
+
+<A NAME="IDX366"></A>
+<DT><CODE>show disassembly-flavor</CODE>
+<DD>Show the current setting of the disassembly flavor.
+</DL>
+<P>
+
+<A NAME="Data"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_8.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_9.html#SEC59"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

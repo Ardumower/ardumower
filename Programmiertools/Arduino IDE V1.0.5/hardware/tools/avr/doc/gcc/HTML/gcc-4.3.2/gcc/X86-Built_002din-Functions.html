@@ -1,0 +1,833 @@
+<html lang="en">
+<head>
+<title>X86 Built-in Functions - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Target-Builtins.html#Target-Builtins" title="Target Builtins">
+<link rel="prev" href="FR_002dV-Built_002din-Functions.html#FR_002dV-Built_002din-Functions" title="FR-V Built-in Functions">
+<link rel="next" href="MIPS-DSP-Built_002din-Functions.html#MIPS-DSP-Built_002din-Functions" title="MIPS DSP Built-in Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="X86-Built_002din-Functions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="MIPS-DSP-Built_002din-Functions.html#MIPS-DSP-Built_002din-Functions">MIPS DSP Built-in Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="FR_002dV-Built_002din-Functions.html#FR_002dV-Built_002din-Functions">FR-V Built-in Functions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Target-Builtins.html#Target-Builtins">Target Builtins</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.50.6 X86 Built-in Functions</h4>
+
+<p>These built-in functions are available for the i386 and x86-64 family
+of computers, depending on the command-line switches used.
+
+ <p>Note that, if you specify command-line switches such as <span class="option">-msse</span>,
+the compiler could use the extended instruction sets even if the built-ins
+are not used explicitly in the program.  For this reason, applications
+which perform runtime CPU detection must compile separate files for each
+supported architecture, using the appropriate flags.  In particular,
+the file containing the CPU detection code should be compiled without
+these options.
+
+ <p>The following machine modes are available for use with MMX built-in functions
+(see <a href="Vector-Extensions.html#Vector-Extensions">Vector Extensions</a>): <code>V2SI</code> for a vector of two 32-bit integers,
+<code>V4HI</code> for a vector of four 16-bit integers, and <code>V8QI</code> for a
+vector of eight 8-bit integers.  Some of the built-in functions operate on
+MMX registers as a whole 64-bit entity, these use <code>DI</code> as their mode.
+
+ <p>If 3Dnow extensions are enabled, <code>V2SF</code> is used as a mode for a vector
+of two 32-bit floating point values.
+
+ <p>If SSE extensions are enabled, <code>V4SF</code> is used for a vector of four 32-bit
+floating point values.  Some instructions use a vector of four 32-bit
+integers, these use <code>V4SI</code>.  Finally, some instructions operate on an
+entire vector register, interpreting it as a 128-bit integer, these use mode
+<code>TI</code>.
+
+ <p>In 64-bit mode, the x86-64 family of processors uses additional built-in
+functions for efficient use of <code>TF</code> (<code>__float128</code>) 128-bit
+floating point and <code>TC</code> 128-bit complex floating point values.
+
+ <p>The following floating point built-in functions are available in 64-bit
+mode.  All of them implement the function that is part of the name.
+
+<pre class="smallexample">     __float128 __builtin_fabsq (__float128)
+     __float128 __builtin_copysignq (__float128, __float128)
+</pre>
+ <p>The following floating point built-in functions are made available in the
+64-bit mode.
+
+     <dl>
+<dt><code>__float128 __builtin_infq (void)</code><dd>Similar to <code>__builtin_inf</code>, except the return type is <code>__float128</code>. 
+</dl>
+
+ <p>The following built-in functions are made available by <span class="option">-mmmx</span>. 
+All of them generate the machine instruction that is part of the name.
+
+<pre class="smallexample">     v8qi __builtin_ia32_paddb (v8qi, v8qi)
+     v4hi __builtin_ia32_paddw (v4hi, v4hi)
+     v2si __builtin_ia32_paddd (v2si, v2si)
+     v8qi __builtin_ia32_psubb (v8qi, v8qi)
+     v4hi __builtin_ia32_psubw (v4hi, v4hi)
+     v2si __builtin_ia32_psubd (v2si, v2si)
+     v8qi __builtin_ia32_paddsb (v8qi, v8qi)
+     v4hi __builtin_ia32_paddsw (v4hi, v4hi)
+     v8qi __builtin_ia32_psubsb (v8qi, v8qi)
+     v4hi __builtin_ia32_psubsw (v4hi, v4hi)
+     v8qi __builtin_ia32_paddusb (v8qi, v8qi)
+     v4hi __builtin_ia32_paddusw (v4hi, v4hi)
+     v8qi __builtin_ia32_psubusb (v8qi, v8qi)
+     v4hi __builtin_ia32_psubusw (v4hi, v4hi)
+     v4hi __builtin_ia32_pmullw (v4hi, v4hi)
+     v4hi __builtin_ia32_pmulhw (v4hi, v4hi)
+     di __builtin_ia32_pand (di, di)
+     di __builtin_ia32_pandn (di,di)
+     di __builtin_ia32_por (di, di)
+     di __builtin_ia32_pxor (di, di)
+     v8qi __builtin_ia32_pcmpeqb (v8qi, v8qi)
+     v4hi __builtin_ia32_pcmpeqw (v4hi, v4hi)
+     v2si __builtin_ia32_pcmpeqd (v2si, v2si)
+     v8qi __builtin_ia32_pcmpgtb (v8qi, v8qi)
+     v4hi __builtin_ia32_pcmpgtw (v4hi, v4hi)
+     v2si __builtin_ia32_pcmpgtd (v2si, v2si)
+     v8qi __builtin_ia32_punpckhbw (v8qi, v8qi)
+     v4hi __builtin_ia32_punpckhwd (v4hi, v4hi)
+     v2si __builtin_ia32_punpckhdq (v2si, v2si)
+     v8qi __builtin_ia32_punpcklbw (v8qi, v8qi)
+     v4hi __builtin_ia32_punpcklwd (v4hi, v4hi)
+     v2si __builtin_ia32_punpckldq (v2si, v2si)
+     v8qi __builtin_ia32_packsswb (v4hi, v4hi)
+     v4hi __builtin_ia32_packssdw (v2si, v2si)
+     v8qi __builtin_ia32_packuswb (v4hi, v4hi)
+</pre>
+ <p>The following built-in functions are made available either with
+<span class="option">-msse</span>, or with a combination of <span class="option">-m3dnow</span> and
+<span class="option">-march=athlon</span>.  All of them generate the machine
+instruction that is part of the name.
+
+<pre class="smallexample">     v4hi __builtin_ia32_pmulhuw (v4hi, v4hi)
+     v8qi __builtin_ia32_pavgb (v8qi, v8qi)
+     v4hi __builtin_ia32_pavgw (v4hi, v4hi)
+     v4hi __builtin_ia32_psadbw (v8qi, v8qi)
+     v8qi __builtin_ia32_pmaxub (v8qi, v8qi)
+     v4hi __builtin_ia32_pmaxsw (v4hi, v4hi)
+     v8qi __builtin_ia32_pminub (v8qi, v8qi)
+     v4hi __builtin_ia32_pminsw (v4hi, v4hi)
+     int __builtin_ia32_pextrw (v4hi, int)
+     v4hi __builtin_ia32_pinsrw (v4hi, int, int)
+     int __builtin_ia32_pmovmskb (v8qi)
+     void __builtin_ia32_maskmovq (v8qi, v8qi, char *)
+     void __builtin_ia32_movntq (di *, di)
+     void __builtin_ia32_sfence (void)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse</span> is used. 
+All of them generate the machine instruction that is part of the name.
+
+<pre class="smallexample">     int __builtin_ia32_comieq (v4sf, v4sf)
+     int __builtin_ia32_comineq (v4sf, v4sf)
+     int __builtin_ia32_comilt (v4sf, v4sf)
+     int __builtin_ia32_comile (v4sf, v4sf)
+     int __builtin_ia32_comigt (v4sf, v4sf)
+     int __builtin_ia32_comige (v4sf, v4sf)
+     int __builtin_ia32_ucomieq (v4sf, v4sf)
+     int __builtin_ia32_ucomineq (v4sf, v4sf)
+     int __builtin_ia32_ucomilt (v4sf, v4sf)
+     int __builtin_ia32_ucomile (v4sf, v4sf)
+     int __builtin_ia32_ucomigt (v4sf, v4sf)
+     int __builtin_ia32_ucomige (v4sf, v4sf)
+     v4sf __builtin_ia32_addps (v4sf, v4sf)
+     v4sf __builtin_ia32_subps (v4sf, v4sf)
+     v4sf __builtin_ia32_mulps (v4sf, v4sf)
+     v4sf __builtin_ia32_divps (v4sf, v4sf)
+     v4sf __builtin_ia32_addss (v4sf, v4sf)
+     v4sf __builtin_ia32_subss (v4sf, v4sf)
+     v4sf __builtin_ia32_mulss (v4sf, v4sf)
+     v4sf __builtin_ia32_divss (v4sf, v4sf)
+     v4si __builtin_ia32_cmpeqps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpltps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpleps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpgtps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpgeps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpunordps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpneqps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpnltps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpnleps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpngtps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpngeps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpordps (v4sf, v4sf)
+     v4si __builtin_ia32_cmpeqss (v4sf, v4sf)
+     v4si __builtin_ia32_cmpltss (v4sf, v4sf)
+     v4si __builtin_ia32_cmpless (v4sf, v4sf)
+     v4si __builtin_ia32_cmpunordss (v4sf, v4sf)
+     v4si __builtin_ia32_cmpneqss (v4sf, v4sf)
+     v4si __builtin_ia32_cmpnlts (v4sf, v4sf)
+     v4si __builtin_ia32_cmpnless (v4sf, v4sf)
+     v4si __builtin_ia32_cmpordss (v4sf, v4sf)
+     v4sf __builtin_ia32_maxps (v4sf, v4sf)
+     v4sf __builtin_ia32_maxss (v4sf, v4sf)
+     v4sf __builtin_ia32_minps (v4sf, v4sf)
+     v4sf __builtin_ia32_minss (v4sf, v4sf)
+     v4sf __builtin_ia32_andps (v4sf, v4sf)
+     v4sf __builtin_ia32_andnps (v4sf, v4sf)
+     v4sf __builtin_ia32_orps (v4sf, v4sf)
+     v4sf __builtin_ia32_xorps (v4sf, v4sf)
+     v4sf __builtin_ia32_movss (v4sf, v4sf)
+     v4sf __builtin_ia32_movhlps (v4sf, v4sf)
+     v4sf __builtin_ia32_movlhps (v4sf, v4sf)
+     v4sf __builtin_ia32_unpckhps (v4sf, v4sf)
+     v4sf __builtin_ia32_unpcklps (v4sf, v4sf)
+     v4sf __builtin_ia32_cvtpi2ps (v4sf, v2si)
+     v4sf __builtin_ia32_cvtsi2ss (v4sf, int)
+     v2si __builtin_ia32_cvtps2pi (v4sf)
+     int __builtin_ia32_cvtss2si (v4sf)
+     v2si __builtin_ia32_cvttps2pi (v4sf)
+     int __builtin_ia32_cvttss2si (v4sf)
+     v4sf __builtin_ia32_rcpps (v4sf)
+     v4sf __builtin_ia32_rsqrtps (v4sf)
+     v4sf __builtin_ia32_sqrtps (v4sf)
+     v4sf __builtin_ia32_rcpss (v4sf)
+     v4sf __builtin_ia32_rsqrtss (v4sf)
+     v4sf __builtin_ia32_sqrtss (v4sf)
+     v4sf __builtin_ia32_shufps (v4sf, v4sf, int)
+     void __builtin_ia32_movntps (float *, v4sf)
+     int __builtin_ia32_movmskps (v4sf)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse</span> is used.
+
+     <dl>
+<dt><code>v4sf __builtin_ia32_loadaps (float *)</code><dd>Generates the <code>movaps</code> machine instruction as a load from memory. 
+<br><dt><code>void __builtin_ia32_storeaps (float *, v4sf)</code><dd>Generates the <code>movaps</code> machine instruction as a store to memory. 
+<br><dt><code>v4sf __builtin_ia32_loadups (float *)</code><dd>Generates the <code>movups</code> machine instruction as a load from memory. 
+<br><dt><code>void __builtin_ia32_storeups (float *, v4sf)</code><dd>Generates the <code>movups</code> machine instruction as a store to memory. 
+<br><dt><code>v4sf __builtin_ia32_loadsss (float *)</code><dd>Generates the <code>movss</code> machine instruction as a load from memory. 
+<br><dt><code>void __builtin_ia32_storess (float *, v4sf)</code><dd>Generates the <code>movss</code> machine instruction as a store to memory. 
+<br><dt><code>v4sf __builtin_ia32_loadhps (v4sf, v2si *)</code><dd>Generates the <code>movhps</code> machine instruction as a load from memory. 
+<br><dt><code>v4sf __builtin_ia32_loadlps (v4sf, v2si *)</code><dd>Generates the <code>movlps</code> machine instruction as a load from memory
+<br><dt><code>void __builtin_ia32_storehps (v4sf, v2si *)</code><dd>Generates the <code>movhps</code> machine instruction as a store to memory. 
+<br><dt><code>void __builtin_ia32_storelps (v4sf, v2si *)</code><dd>Generates the <code>movlps</code> machine instruction as a store to memory. 
+</dl>
+
+ <p>The following built-in functions are available when <span class="option">-msse2</span> is used. 
+All of them generate the machine instruction that is part of the name.
+
+<pre class="smallexample">     int __builtin_ia32_comisdeq (v2df, v2df)
+     int __builtin_ia32_comisdlt (v2df, v2df)
+     int __builtin_ia32_comisdle (v2df, v2df)
+     int __builtin_ia32_comisdgt (v2df, v2df)
+     int __builtin_ia32_comisdge (v2df, v2df)
+     int __builtin_ia32_comisdneq (v2df, v2df)
+     int __builtin_ia32_ucomisdeq (v2df, v2df)
+     int __builtin_ia32_ucomisdlt (v2df, v2df)
+     int __builtin_ia32_ucomisdle (v2df, v2df)
+     int __builtin_ia32_ucomisdgt (v2df, v2df)
+     int __builtin_ia32_ucomisdge (v2df, v2df)
+     int __builtin_ia32_ucomisdneq (v2df, v2df)
+     v2df __builtin_ia32_cmpeqpd (v2df, v2df)
+     v2df __builtin_ia32_cmpltpd (v2df, v2df)
+     v2df __builtin_ia32_cmplepd (v2df, v2df)
+     v2df __builtin_ia32_cmpgtpd (v2df, v2df)
+     v2df __builtin_ia32_cmpgepd (v2df, v2df)
+     v2df __builtin_ia32_cmpunordpd (v2df, v2df)
+     v2df __builtin_ia32_cmpneqpd (v2df, v2df)
+     v2df __builtin_ia32_cmpnltpd (v2df, v2df)
+     v2df __builtin_ia32_cmpnlepd (v2df, v2df)
+     v2df __builtin_ia32_cmpngtpd (v2df, v2df)
+     v2df __builtin_ia32_cmpngepd (v2df, v2df)
+     v2df __builtin_ia32_cmpordpd (v2df, v2df)
+     v2df __builtin_ia32_cmpeqsd (v2df, v2df)
+     v2df __builtin_ia32_cmpltsd (v2df, v2df)
+     v2df __builtin_ia32_cmplesd (v2df, v2df)
+     v2df __builtin_ia32_cmpunordsd (v2df, v2df)
+     v2df __builtin_ia32_cmpneqsd (v2df, v2df)
+     v2df __builtin_ia32_cmpnltsd (v2df, v2df)
+     v2df __builtin_ia32_cmpnlesd (v2df, v2df)
+     v2df __builtin_ia32_cmpordsd (v2df, v2df)
+     v2di __builtin_ia32_paddq (v2di, v2di)
+     v2di __builtin_ia32_psubq (v2di, v2di)
+     v2df __builtin_ia32_addpd (v2df, v2df)
+     v2df __builtin_ia32_subpd (v2df, v2df)
+     v2df __builtin_ia32_mulpd (v2df, v2df)
+     v2df __builtin_ia32_divpd (v2df, v2df)
+     v2df __builtin_ia32_addsd (v2df, v2df)
+     v2df __builtin_ia32_subsd (v2df, v2df)
+     v2df __builtin_ia32_mulsd (v2df, v2df)
+     v2df __builtin_ia32_divsd (v2df, v2df)
+     v2df __builtin_ia32_minpd (v2df, v2df)
+     v2df __builtin_ia32_maxpd (v2df, v2df)
+     v2df __builtin_ia32_minsd (v2df, v2df)
+     v2df __builtin_ia32_maxsd (v2df, v2df)
+     v2df __builtin_ia32_andpd (v2df, v2df)
+     v2df __builtin_ia32_andnpd (v2df, v2df)
+     v2df __builtin_ia32_orpd (v2df, v2df)
+     v2df __builtin_ia32_xorpd (v2df, v2df)
+     v2df __builtin_ia32_movsd (v2df, v2df)
+     v2df __builtin_ia32_unpckhpd (v2df, v2df)
+     v2df __builtin_ia32_unpcklpd (v2df, v2df)
+     v16qi __builtin_ia32_paddb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_paddw128 (v8hi, v8hi)
+     v4si __builtin_ia32_paddd128 (v4si, v4si)
+     v2di __builtin_ia32_paddq128 (v2di, v2di)
+     v16qi __builtin_ia32_psubb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_psubw128 (v8hi, v8hi)
+     v4si __builtin_ia32_psubd128 (v4si, v4si)
+     v2di __builtin_ia32_psubq128 (v2di, v2di)
+     v8hi __builtin_ia32_pmullw128 (v8hi, v8hi)
+     v8hi __builtin_ia32_pmulhw128 (v8hi, v8hi)
+     v2di __builtin_ia32_pand128 (v2di, v2di)
+     v2di __builtin_ia32_pandn128 (v2di, v2di)
+     v2di __builtin_ia32_por128 (v2di, v2di)
+     v2di __builtin_ia32_pxor128 (v2di, v2di)
+     v16qi __builtin_ia32_pavgb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pavgw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_pcmpeqb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pcmpeqw128 (v8hi, v8hi)
+     v4si __builtin_ia32_pcmpeqd128 (v4si, v4si)
+     v16qi __builtin_ia32_pcmpgtb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pcmpgtw128 (v8hi, v8hi)
+     v4si __builtin_ia32_pcmpgtd128 (v4si, v4si)
+     v16qi __builtin_ia32_pmaxub128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pmaxsw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_pminub128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pminsw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_punpckhbw128 (v16qi, v16qi)
+     v8hi __builtin_ia32_punpckhwd128 (v8hi, v8hi)
+     v4si __builtin_ia32_punpckhdq128 (v4si, v4si)
+     v2di __builtin_ia32_punpckhqdq128 (v2di, v2di)
+     v16qi __builtin_ia32_punpcklbw128 (v16qi, v16qi)
+     v8hi __builtin_ia32_punpcklwd128 (v8hi, v8hi)
+     v4si __builtin_ia32_punpckldq128 (v4si, v4si)
+     v2di __builtin_ia32_punpcklqdq128 (v2di, v2di)
+     v16qi __builtin_ia32_packsswb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_packssdw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_packuswb128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pmulhuw128 (v8hi, v8hi)
+     void __builtin_ia32_maskmovdqu (v16qi, v16qi)
+     v2df __builtin_ia32_loadupd (double *)
+     void __builtin_ia32_storeupd (double *, v2df)
+     v2df __builtin_ia32_loadhpd (v2df, double *)
+     v2df __builtin_ia32_loadlpd (v2df, double *)
+     int __builtin_ia32_movmskpd (v2df)
+     int __builtin_ia32_pmovmskb128 (v16qi)
+     void __builtin_ia32_movnti (int *, int)
+     void __builtin_ia32_movntpd (double *, v2df)
+     void __builtin_ia32_movntdq (v2df *, v2df)
+     v4si __builtin_ia32_pshufd (v4si, int)
+     v8hi __builtin_ia32_pshuflw (v8hi, int)
+     v8hi __builtin_ia32_pshufhw (v8hi, int)
+     v2di __builtin_ia32_psadbw128 (v16qi, v16qi)
+     v2df __builtin_ia32_sqrtpd (v2df)
+     v2df __builtin_ia32_sqrtsd (v2df)
+     v2df __builtin_ia32_shufpd (v2df, v2df, int)
+     v2df __builtin_ia32_cvtdq2pd (v4si)
+     v4sf __builtin_ia32_cvtdq2ps (v4si)
+     v4si __builtin_ia32_cvtpd2dq (v2df)
+     v2si __builtin_ia32_cvtpd2pi (v2df)
+     v4sf __builtin_ia32_cvtpd2ps (v2df)
+     v4si __builtin_ia32_cvttpd2dq (v2df)
+     v2si __builtin_ia32_cvttpd2pi (v2df)
+     v2df __builtin_ia32_cvtpi2pd (v2si)
+     int __builtin_ia32_cvtsd2si (v2df)
+     int __builtin_ia32_cvttsd2si (v2df)
+     long long __builtin_ia32_cvtsd2si64 (v2df)
+     long long __builtin_ia32_cvttsd2si64 (v2df)
+     v4si __builtin_ia32_cvtps2dq (v4sf)
+     v2df __builtin_ia32_cvtps2pd (v4sf)
+     v4si __builtin_ia32_cvttps2dq (v4sf)
+     v2df __builtin_ia32_cvtsi2sd (v2df, int)
+     v2df __builtin_ia32_cvtsi642sd (v2df, long long)
+     v4sf __builtin_ia32_cvtsd2ss (v4sf, v2df)
+     v2df __builtin_ia32_cvtss2sd (v2df, v4sf)
+     void __builtin_ia32_clflush (const void *)
+     void __builtin_ia32_lfence (void)
+     void __builtin_ia32_mfence (void)
+     v16qi __builtin_ia32_loaddqu (const char *)
+     void __builtin_ia32_storedqu (char *, v16qi)
+     unsigned long long __builtin_ia32_pmuludq (v2si, v2si)
+     v2di __builtin_ia32_pmuludq128 (v4si, v4si)
+     v8hi __builtin_ia32_psllw128 (v8hi, v2di)
+     v4si __builtin_ia32_pslld128 (v4si, v2di)
+     v2di __builtin_ia32_psllq128 (v4si, v2di)
+     v8hi __builtin_ia32_psrlw128 (v8hi, v2di)
+     v4si __builtin_ia32_psrld128 (v4si, v2di)
+     v2di __builtin_ia32_psrlq128 (v2di, v2di)
+     v8hi __builtin_ia32_psraw128 (v8hi, v2di)
+     v4si __builtin_ia32_psrad128 (v4si, v2di)
+     v2di __builtin_ia32_pslldqi128 (v2di, int)
+     v8hi __builtin_ia32_psllwi128 (v8hi, int)
+     v4si __builtin_ia32_pslldi128 (v4si, int)
+     v2di __builtin_ia32_psllqi128 (v2di, int)
+     v2di __builtin_ia32_psrldqi128 (v2di, int)
+     v8hi __builtin_ia32_psrlwi128 (v8hi, int)
+     v4si __builtin_ia32_psrldi128 (v4si, int)
+     v2di __builtin_ia32_psrlqi128 (v2di, int)
+     v8hi __builtin_ia32_psrawi128 (v8hi, int)
+     v4si __builtin_ia32_psradi128 (v4si, int)
+     v4si __builtin_ia32_pmaddwd128 (v8hi, v8hi)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse3</span> is used. 
+All of them generate the machine instruction that is part of the name.
+
+<pre class="smallexample">     v2df __builtin_ia32_addsubpd (v2df, v2df)
+     v4sf __builtin_ia32_addsubps (v4sf, v4sf)
+     v2df __builtin_ia32_haddpd (v2df, v2df)
+     v4sf __builtin_ia32_haddps (v4sf, v4sf)
+     v2df __builtin_ia32_hsubpd (v2df, v2df)
+     v4sf __builtin_ia32_hsubps (v4sf, v4sf)
+     v16qi __builtin_ia32_lddqu (char const *)
+     void __builtin_ia32_monitor (void *, unsigned int, unsigned int)
+     v2df __builtin_ia32_movddup (v2df)
+     v4sf __builtin_ia32_movshdup (v4sf)
+     v4sf __builtin_ia32_movsldup (v4sf)
+     void __builtin_ia32_mwait (unsigned int, unsigned int)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse3</span> is used.
+
+     <dl>
+<dt><code>v2df __builtin_ia32_loadddup (double const *)</code><dd>Generates the <code>movddup</code> machine instruction as a load from memory. 
+</dl>
+
+ <p>The following built-in functions are available when <span class="option">-mssse3</span> is used. 
+All of them generate the machine instruction that is part of the name
+with MMX registers.
+
+<pre class="smallexample">     v2si __builtin_ia32_phaddd (v2si, v2si)
+     v4hi __builtin_ia32_phaddw (v4hi, v4hi)
+     v4hi __builtin_ia32_phaddsw (v4hi, v4hi)
+     v2si __builtin_ia32_phsubd (v2si, v2si)
+     v4hi __builtin_ia32_phsubw (v4hi, v4hi)
+     v4hi __builtin_ia32_phsubsw (v4hi, v4hi)
+     v8qi __builtin_ia32_pmaddubsw (v8qi, v8qi)
+     v4hi __builtin_ia32_pmulhrsw (v4hi, v4hi)
+     v8qi __builtin_ia32_pshufb (v8qi, v8qi)
+     v8qi __builtin_ia32_psignb (v8qi, v8qi)
+     v2si __builtin_ia32_psignd (v2si, v2si)
+     v4hi __builtin_ia32_psignw (v4hi, v4hi)
+     long long __builtin_ia32_palignr (long long, long long, int)
+     v8qi __builtin_ia32_pabsb (v8qi)
+     v2si __builtin_ia32_pabsd (v2si)
+     v4hi __builtin_ia32_pabsw (v4hi)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-mssse3</span> is used. 
+All of them generate the machine instruction that is part of the name
+with SSE registers.
+
+<pre class="smallexample">     v4si __builtin_ia32_phaddd128 (v4si, v4si)
+     v8hi __builtin_ia32_phaddw128 (v8hi, v8hi)
+     v8hi __builtin_ia32_phaddsw128 (v8hi, v8hi)
+     v4si __builtin_ia32_phsubd128 (v4si, v4si)
+     v8hi __builtin_ia32_phsubw128 (v8hi, v8hi)
+     v8hi __builtin_ia32_phsubsw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_pmaddubsw128 (v16qi, v16qi)
+     v8hi __builtin_ia32_pmulhrsw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_pshufb128 (v16qi, v16qi)
+     v16qi __builtin_ia32_psignb128 (v16qi, v16qi)
+     v4si __builtin_ia32_psignd128 (v4si, v4si)
+     v8hi __builtin_ia32_psignw128 (v8hi, v8hi)
+     v2di __builtin_ia32_palignr (v2di, v2di, int)
+     v16qi __builtin_ia32_pabsb128 (v16qi)
+     v4si __builtin_ia32_pabsd128 (v4si)
+     v8hi __builtin_ia32_pabsw128 (v8hi)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse4.1</span> is
+used.  All of them generate the machine instruction that is part of the
+name.
+
+<pre class="smallexample">     v2df __builtin_ia32_blendpd (v2df, v2df, const int)
+     v4sf __builtin_ia32_blendps (v4sf, v4sf, const int)
+     v2df __builtin_ia32_blendvpd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_blendvps (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_dppd (v2df, v2df, const int)
+     v4sf __builtin_ia32_dpps (v4sf, v4sf, const int)
+     v4sf __builtin_ia32_insertps128 (v4sf, v4sf, const int)
+     v2di __builtin_ia32_movntdqa (v2di *);
+     v16qi __builtin_ia32_mpsadbw128 (v16qi, v16qi, const int)
+     v8hi __builtin_ia32_packusdw128 (v4si, v4si)
+     v16qi __builtin_ia32_pblendvb128 (v16qi, v16qi, v16qi)
+     v8hi __builtin_ia32_pblendw128 (v8hi, v8hi, const int)
+     v2di __builtin_ia32_pcmpeqq (v2di, v2di)
+     v8hi __builtin_ia32_phminposuw128 (v8hi)
+     v16qi __builtin_ia32_pmaxsb128 (v16qi, v16qi)
+     v4si __builtin_ia32_pmaxsd128 (v4si, v4si)
+     v4si __builtin_ia32_pmaxud128 (v4si, v4si)
+     v8hi __builtin_ia32_pmaxuw128 (v8hi, v8hi)
+     v16qi __builtin_ia32_pminsb128 (v16qi, v16qi)
+     v4si __builtin_ia32_pminsd128 (v4si, v4si)
+     v4si __builtin_ia32_pminud128 (v4si, v4si)
+     v8hi __builtin_ia32_pminuw128 (v8hi, v8hi)
+     v4si __builtin_ia32_pmovsxbd128 (v16qi)
+     v2di __builtin_ia32_pmovsxbq128 (v16qi)
+     v8hi __builtin_ia32_pmovsxbw128 (v16qi)
+     v2di __builtin_ia32_pmovsxdq128 (v4si)
+     v4si __builtin_ia32_pmovsxwd128 (v8hi)
+     v2di __builtin_ia32_pmovsxwq128 (v8hi)
+     v4si __builtin_ia32_pmovzxbd128 (v16qi)
+     v2di __builtin_ia32_pmovzxbq128 (v16qi)
+     v8hi __builtin_ia32_pmovzxbw128 (v16qi)
+     v2di __builtin_ia32_pmovzxdq128 (v4si)
+     v4si __builtin_ia32_pmovzxwd128 (v8hi)
+     v2di __builtin_ia32_pmovzxwq128 (v8hi)
+     v2di __builtin_ia32_pmuldq128 (v4si, v4si)
+     v4si __builtin_ia32_pmulld128 (v4si, v4si)
+     int __builtin_ia32_ptestc128 (v2di, v2di)
+     int __builtin_ia32_ptestnzc128 (v2di, v2di)
+     int __builtin_ia32_ptestz128 (v2di, v2di)
+     v2df __builtin_ia32_roundpd (v2df, const int)
+     v4sf __builtin_ia32_roundps (v4sf, const int)
+     v2df __builtin_ia32_roundsd (v2df, v2df, const int)
+     v4sf __builtin_ia32_roundss (v4sf, v4sf, const int)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse4.1</span> is
+used.
+
+     <dl>
+<dt><code>v4sf __builtin_ia32_vec_set_v4sf (v4sf, float, const int)</code><dd>Generates the <code>insertps</code> machine instruction. 
+<br><dt><code>int __builtin_ia32_vec_ext_v16qi (v16qi, const int)</code><dd>Generates the <code>pextrb</code> machine instruction. 
+<br><dt><code>v16qi __builtin_ia32_vec_set_v16qi (v16qi, int, const int)</code><dd>Generates the <code>pinsrb</code> machine instruction. 
+<br><dt><code>v4si __builtin_ia32_vec_set_v4si (v4si, int, const int)</code><dd>Generates the <code>pinsrd</code> machine instruction. 
+<br><dt><code>v2di __builtin_ia32_vec_set_v2di (v2di, long long, const int)</code><dd>Generates the <code>pinsrq</code> machine instruction in 64bit mode. 
+</dl>
+
+ <p>The following built-in functions are changed to generate new SSE4.1
+instructions when <span class="option">-msse4.1</span> is used.
+
+     <dl>
+<dt><code>float __builtin_ia32_vec_ext_v4sf (v4sf, const int)</code><dd>Generates the <code>extractps</code> machine instruction. 
+<br><dt><code>int __builtin_ia32_vec_ext_v4si (v4si, const int)</code><dd>Generates the <code>pextrd</code> machine instruction. 
+<br><dt><code>long long __builtin_ia32_vec_ext_v2di (v2di, const int)</code><dd>Generates the <code>pextrq</code> machine instruction in 64bit mode. 
+</dl>
+
+ <p>The following built-in functions are available when <span class="option">-msse4.2</span> is
+used.  All of them generate the machine instruction that is part of the
+name.
+
+<pre class="smallexample">     v16qi __builtin_ia32_pcmpestrm128 (v16qi, int, v16qi, int, const int)
+     int __builtin_ia32_pcmpestri128 (v16qi, int, v16qi, int, const int)
+     int __builtin_ia32_pcmpestria128 (v16qi, int, v16qi, int, const int)
+     int __builtin_ia32_pcmpestric128 (v16qi, int, v16qi, int, const int)
+     int __builtin_ia32_pcmpestrio128 (v16qi, int, v16qi, int, const int)
+     int __builtin_ia32_pcmpestris128 (v16qi, int, v16qi, int, const int)
+     int __builtin_ia32_pcmpestriz128 (v16qi, int, v16qi, int, const int)
+     v16qi __builtin_ia32_pcmpistrm128 (v16qi, v16qi, const int)
+     int __builtin_ia32_pcmpistri128 (v16qi, v16qi, const int)
+     int __builtin_ia32_pcmpistria128 (v16qi, v16qi, const int)
+     int __builtin_ia32_pcmpistric128 (v16qi, v16qi, const int)
+     int __builtin_ia32_pcmpistrio128 (v16qi, v16qi, const int)
+     int __builtin_ia32_pcmpistris128 (v16qi, v16qi, const int)
+     int __builtin_ia32_pcmpistriz128 (v16qi, v16qi, const int)
+     v2di __builtin_ia32_pcmpgtq (v2di, v2di)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse4.2</span> is
+used.
+
+     <dl>
+<dt><code>unsigned int __builtin_ia32_crc32qi (unsigned int, unsigned char)</code><dd>Generates the <code>crc32b</code> machine instruction. 
+<br><dt><code>unsigned int __builtin_ia32_crc32hi (unsigned int, unsigned short)</code><dd>Generates the <code>crc32w</code> machine instruction. 
+<br><dt><code>unsigned int __builtin_ia32_crc32si (unsigned int, unsigned int)</code><dd>Generates the <code>crc32l</code> machine instruction. 
+<br><dt><code>unsigned long long __builtin_ia32_crc32di (unsigned long long, unsigned long long)</code><dd></dl>
+
+ <p>The following built-in functions are changed to generate new SSE4.2
+instructions when <span class="option">-msse4.2</span> is used.
+
+     <dl>
+<dt><code>int __builtin_popcount (unsigned int)</code><dd>Generates the <code>popcntl</code> machine instruction. 
+<br><dt><code>int __builtin_popcountl (unsigned long)</code><dd>Generates the <code>popcntl</code> or <code>popcntq</code> machine instruction,
+depending on the size of <code>unsigned long</code>. 
+<br><dt><code>int __builtin_popcountll (unsigned long long)</code><dd>Generates the <code>popcntq</code> machine instruction. 
+</dl>
+
+ <p>The following built-in functions are available when <span class="option">-msse4a</span> is used. 
+All of them generate the machine instruction that is part of the name.
+
+<pre class="smallexample">     void __builtin_ia32_movntsd (double *, v2df)
+     void __builtin_ia32_movntss (float *, v4sf)
+     v2di __builtin_ia32_extrq  (v2di, v16qi)
+     v2di __builtin_ia32_extrqi (v2di, const unsigned int, const unsigned int)
+     v2di __builtin_ia32_insertq (v2di, v2di)
+     v2di __builtin_ia32_insertqi (v2di, v2di, const unsigned int, const unsigned int)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-msse5</span> is used. 
+All of them generate the machine instruction that is part of the name
+with MMX registers.
+
+<pre class="smallexample">     v2df __builtin_ia32_comeqpd (v2df, v2df)
+     v2df __builtin_ia32_comeqps (v2df, v2df)
+     v4sf __builtin_ia32_comeqsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comeqss (v4sf, v4sf)
+     v2df __builtin_ia32_comfalsepd (v2df, v2df)
+     v2df __builtin_ia32_comfalseps (v2df, v2df)
+     v4sf __builtin_ia32_comfalsesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comfalsess (v4sf, v4sf)
+     v2df __builtin_ia32_comgepd (v2df, v2df)
+     v2df __builtin_ia32_comgeps (v2df, v2df)
+     v4sf __builtin_ia32_comgesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comgess (v4sf, v4sf)
+     v2df __builtin_ia32_comgtpd (v2df, v2df)
+     v2df __builtin_ia32_comgtps (v2df, v2df)
+     v4sf __builtin_ia32_comgtsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comgtss (v4sf, v4sf)
+     v2df __builtin_ia32_comlepd (v2df, v2df)
+     v2df __builtin_ia32_comleps (v2df, v2df)
+     v4sf __builtin_ia32_comlesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comless (v4sf, v4sf)
+     v2df __builtin_ia32_comltpd (v2df, v2df)
+     v2df __builtin_ia32_comltps (v2df, v2df)
+     v4sf __builtin_ia32_comltsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comltss (v4sf, v4sf)
+     v2df __builtin_ia32_comnepd (v2df, v2df)
+     v2df __builtin_ia32_comneps (v2df, v2df)
+     v4sf __builtin_ia32_comnesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comness (v4sf, v4sf)
+     v2df __builtin_ia32_comordpd (v2df, v2df)
+     v2df __builtin_ia32_comordps (v2df, v2df)
+     v4sf __builtin_ia32_comordsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comordss (v4sf, v4sf)
+     v2df __builtin_ia32_comtruepd (v2df, v2df)
+     v2df __builtin_ia32_comtrueps (v2df, v2df)
+     v4sf __builtin_ia32_comtruesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comtruess (v4sf, v4sf)
+     v2df __builtin_ia32_comueqpd (v2df, v2df)
+     v2df __builtin_ia32_comueqps (v2df, v2df)
+     v4sf __builtin_ia32_comueqsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comueqss (v4sf, v4sf)
+     v2df __builtin_ia32_comugepd (v2df, v2df)
+     v2df __builtin_ia32_comugeps (v2df, v2df)
+     v4sf __builtin_ia32_comugesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comugess (v4sf, v4sf)
+     v2df __builtin_ia32_comugtpd (v2df, v2df)
+     v2df __builtin_ia32_comugtps (v2df, v2df)
+     v4sf __builtin_ia32_comugtsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comugtss (v4sf, v4sf)
+     v2df __builtin_ia32_comulepd (v2df, v2df)
+     v2df __builtin_ia32_comuleps (v2df, v2df)
+     v4sf __builtin_ia32_comulesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comuless (v4sf, v4sf)
+     v2df __builtin_ia32_comultpd (v2df, v2df)
+     v2df __builtin_ia32_comultps (v2df, v2df)
+     v4sf __builtin_ia32_comultsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comultss (v4sf, v4sf)
+     v2df __builtin_ia32_comunepd (v2df, v2df)
+     v2df __builtin_ia32_comuneps (v2df, v2df)
+     v4sf __builtin_ia32_comunesd (v4sf, v4sf)
+     v4sf __builtin_ia32_comuness (v4sf, v4sf)
+     v2df __builtin_ia32_comunordpd (v2df, v2df)
+     v2df __builtin_ia32_comunordps (v2df, v2df)
+     v4sf __builtin_ia32_comunordsd (v4sf, v4sf)
+     v4sf __builtin_ia32_comunordss (v4sf, v4sf)
+     v2df __builtin_ia32_fmaddpd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fmaddps (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fmaddsd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fmaddss (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fmsubpd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fmsubps (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fmsubsd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fmsubss (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fnmaddpd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fnmaddps (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fnmaddsd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fnmaddss (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fnmsubpd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fnmsubps (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_fnmsubsd (v2df, v2df, v2df)
+     v4sf __builtin_ia32_fnmsubss (v4sf, v4sf, v4sf)
+     v2df __builtin_ia32_frczpd (v2df)
+     v4sf __builtin_ia32_frczps (v4sf)
+     v2df __builtin_ia32_frczsd (v2df, v2df)
+     v4sf __builtin_ia32_frczss (v4sf, v4sf)
+     v2di __builtin_ia32_pcmov (v2di, v2di, v2di)
+     v2di __builtin_ia32_pcmov_v2di (v2di, v2di, v2di)
+     v4si __builtin_ia32_pcmov_v4si (v4si, v4si, v4si)
+     v8hi __builtin_ia32_pcmov_v8hi (v8hi, v8hi, v8hi)
+     v16qi __builtin_ia32_pcmov_v16qi (v16qi, v16qi, v16qi)
+     v2df __builtin_ia32_pcmov_v2df (v2df, v2df, v2df)
+     v4sf __builtin_ia32_pcmov_v4sf (v4sf, v4sf, v4sf)
+     v16qi __builtin_ia32_pcomeqb (v16qi, v16qi)
+     v8hi __builtin_ia32_pcomeqw (v8hi, v8hi)
+     v4si __builtin_ia32_pcomeqd (v4si, v4si)
+     v2di __builtin_ia32_pcomeqq (v2di, v2di)
+     v16qi __builtin_ia32_pcomequb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomequd (v4si, v4si)
+     v2di __builtin_ia32_pcomequq (v2di, v2di)
+     v8hi __builtin_ia32_pcomequw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomeqw (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomfalseb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomfalsed (v4si, v4si)
+     v2di __builtin_ia32_pcomfalseq (v2di, v2di)
+     v16qi __builtin_ia32_pcomfalseub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomfalseud (v4si, v4si)
+     v2di __builtin_ia32_pcomfalseuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomfalseuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomfalsew (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomgeb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomged (v4si, v4si)
+     v2di __builtin_ia32_pcomgeq (v2di, v2di)
+     v16qi __builtin_ia32_pcomgeub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomgeud (v4si, v4si)
+     v2di __builtin_ia32_pcomgeuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomgeuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomgew (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomgtb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomgtd (v4si, v4si)
+     v2di __builtin_ia32_pcomgtq (v2di, v2di)
+     v16qi __builtin_ia32_pcomgtub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomgtud (v4si, v4si)
+     v2di __builtin_ia32_pcomgtuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomgtuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomgtw (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomleb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomled (v4si, v4si)
+     v2di __builtin_ia32_pcomleq (v2di, v2di)
+     v16qi __builtin_ia32_pcomleub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomleud (v4si, v4si)
+     v2di __builtin_ia32_pcomleuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomleuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomlew (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomltb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomltd (v4si, v4si)
+     v2di __builtin_ia32_pcomltq (v2di, v2di)
+     v16qi __builtin_ia32_pcomltub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomltud (v4si, v4si)
+     v2di __builtin_ia32_pcomltuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomltuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomltw (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomneb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomned (v4si, v4si)
+     v2di __builtin_ia32_pcomneq (v2di, v2di)
+     v16qi __builtin_ia32_pcomneub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomneud (v4si, v4si)
+     v2di __builtin_ia32_pcomneuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomneuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomnew (v8hi, v8hi)
+     v16qi __builtin_ia32_pcomtrueb (v16qi, v16qi)
+     v4si __builtin_ia32_pcomtrued (v4si, v4si)
+     v2di __builtin_ia32_pcomtrueq (v2di, v2di)
+     v16qi __builtin_ia32_pcomtrueub (v16qi, v16qi)
+     v4si __builtin_ia32_pcomtrueud (v4si, v4si)
+     v2di __builtin_ia32_pcomtrueuq (v2di, v2di)
+     v8hi __builtin_ia32_pcomtrueuw (v8hi, v8hi)
+     v8hi __builtin_ia32_pcomtruew (v8hi, v8hi)
+     v4df __builtin_ia32_permpd (v2df, v2df, v16qi)
+     v4sf __builtin_ia32_permps (v4sf, v4sf, v16qi)
+     v4si __builtin_ia32_phaddbd (v16qi)
+     v2di __builtin_ia32_phaddbq (v16qi)
+     v8hi __builtin_ia32_phaddbw (v16qi)
+     v2di __builtin_ia32_phadddq (v4si)
+     v4si __builtin_ia32_phaddubd (v16qi)
+     v2di __builtin_ia32_phaddubq (v16qi)
+     v8hi __builtin_ia32_phaddubw (v16qi)
+     v2di __builtin_ia32_phaddudq (v4si)
+     v4si __builtin_ia32_phadduwd (v8hi)
+     v2di __builtin_ia32_phadduwq (v8hi)
+     v4si __builtin_ia32_phaddwd (v8hi)
+     v2di __builtin_ia32_phaddwq (v8hi)
+     v8hi __builtin_ia32_phsubbw (v16qi)
+     v2di __builtin_ia32_phsubdq (v4si)
+     v4si __builtin_ia32_phsubwd (v8hi)
+     v4si __builtin_ia32_pmacsdd (v4si, v4si, v4si)
+     v2di __builtin_ia32_pmacsdqh (v4si, v4si, v2di)
+     v2di __builtin_ia32_pmacsdql (v4si, v4si, v2di)
+     v4si __builtin_ia32_pmacssdd (v4si, v4si, v4si)
+     v2di __builtin_ia32_pmacssdqh (v4si, v4si, v2di)
+     v2di __builtin_ia32_pmacssdql (v4si, v4si, v2di)
+     v4si __builtin_ia32_pmacsswd (v8hi, v8hi, v4si)
+     v8hi __builtin_ia32_pmacssww (v8hi, v8hi, v8hi)
+     v4si __builtin_ia32_pmacswd (v8hi, v8hi, v4si)
+     v8hi __builtin_ia32_pmacsww (v8hi, v8hi, v8hi)
+     v4si __builtin_ia32_pmadcsswd (v8hi, v8hi, v4si)
+     v4si __builtin_ia32_pmadcswd (v8hi, v8hi, v4si)
+     v16qi __builtin_ia32_pperm (v16qi, v16qi, v16qi)
+     v16qi __builtin_ia32_protb (v16qi, v16qi)
+     v4si __builtin_ia32_protd (v4si, v4si)
+     v2di __builtin_ia32_protq (v2di, v2di)
+     v8hi __builtin_ia32_protw (v8hi, v8hi)
+     v16qi __builtin_ia32_pshab (v16qi, v16qi)
+     v4si __builtin_ia32_pshad (v4si, v4si)
+     v2di __builtin_ia32_pshaq (v2di, v2di)
+     v8hi __builtin_ia32_pshaw (v8hi, v8hi)
+     v16qi __builtin_ia32_pshlb (v16qi, v16qi)
+     v4si __builtin_ia32_pshld (v4si, v4si)
+     v2di __builtin_ia32_pshlq (v2di, v2di)
+     v8hi __builtin_ia32_pshlw (v8hi, v8hi)
+</pre>
+ <p>The following builtin-in functions are available when <span class="option">-msse5</span>
+is used.  The second argument must be an integer constant and generate
+the machine instruction that is part of the name with the <span class="samp">_imm</span>
+suffix removed.
+
+<pre class="smallexample">     v16qi __builtin_ia32_protb_imm (v16qi, int)
+     v4si __builtin_ia32_protd_imm (v4si, int)
+     v2di __builtin_ia32_protq_imm (v2di, int)
+     v8hi __builtin_ia32_protw_imm (v8hi, int)
+</pre>
+ <p>The following built-in functions are available when <span class="option">-m3dnow</span> is used. 
+All of them generate the machine instruction that is part of the name.
+
+<pre class="smallexample">     void __builtin_ia32_femms (void)
+     v8qi __builtin_ia32_pavgusb (v8qi, v8qi)
+     v2si __builtin_ia32_pf2id (v2sf)
+     v2sf __builtin_ia32_pfacc (v2sf, v2sf)
+     v2sf __builtin_ia32_pfadd (v2sf, v2sf)
+     v2si __builtin_ia32_pfcmpeq (v2sf, v2sf)
+     v2si __builtin_ia32_pfcmpge (v2sf, v2sf)
+     v2si __builtin_ia32_pfcmpgt (v2sf, v2sf)
+     v2sf __builtin_ia32_pfmax (v2sf, v2sf)
+     v2sf __builtin_ia32_pfmin (v2sf, v2sf)
+     v2sf __builtin_ia32_pfmul (v2sf, v2sf)
+     v2sf __builtin_ia32_pfrcp (v2sf)
+     v2sf __builtin_ia32_pfrcpit1 (v2sf, v2sf)
+     v2sf __builtin_ia32_pfrcpit2 (v2sf, v2sf)
+     v2sf __builtin_ia32_pfrsqrt (v2sf)
+     v2sf __builtin_ia32_pfrsqrtit1 (v2sf, v2sf)
+     v2sf __builtin_ia32_pfsub (v2sf, v2sf)
+     v2sf __builtin_ia32_pfsubr (v2sf, v2sf)
+     v2sf __builtin_ia32_pi2fd (v2si)
+     v4hi __builtin_ia32_pmulhrw (v4hi, v4hi)
+</pre>
+ <p>The following built-in functions are available when both <span class="option">-m3dnow</span>
+and <span class="option">-march=athlon</span> are used.  All of them generate the machine
+instruction that is part of the name.
+
+<pre class="smallexample">     v2si __builtin_ia32_pf2iw (v2sf)
+     v2sf __builtin_ia32_pfnacc (v2sf, v2sf)
+     v2sf __builtin_ia32_pfpnacc (v2sf, v2sf)
+     v2sf __builtin_ia32_pi2fw (v2si)
+     v2sf __builtin_ia32_pswapdsf (v2sf)
+     v2si __builtin_ia32_pswapdsi (v2si)
+</pre>
+ </body></html>
+

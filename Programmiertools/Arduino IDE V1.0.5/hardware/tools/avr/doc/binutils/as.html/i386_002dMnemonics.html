@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+<title>i386-Mnemonics - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dSyntax.html#i386_002dSyntax" title="i386-Syntax">
+<link rel="next" href="i386_002dRegs.html#i386_002dRegs" title="i386-Regs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dMnemonics"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002dRegs.html#i386_002dRegs">i386-Regs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dSyntax.html#i386_002dSyntax">i386-Syntax</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.4 Instruction Naming</h4>
+
+<p><a name="index-i386-instruction-naming-887"></a><a name="index-instruction-naming_002c-i386-888"></a><a name="index-x86_002d64-instruction-naming-889"></a><a name="index-instruction-naming_002c-x86_002d64-890"></a>
+Instruction mnemonics are suffixed with one character modifiers which
+specify the size of operands.  The letters <span class="samp">b</span>, <span class="samp">w</span>, <span class="samp">l</span>
+and <span class="samp">q</span> specify byte, word, long and quadruple word operands.  If
+no suffix is specified by an instruction then <code>as</code> tries to
+fill in the missing suffix based on the destination register operand
+(the last one by convention).  Thus, <span class="samp">mov %ax, %bx</span> is equivalent
+to <span class="samp">movw %ax, %bx</span>; also, <span class="samp">mov $1, %bx</span> is equivalent to
+<span class="samp">movw $1, bx</span>.  Note that this is incompatible with the AT&amp;T Unix
+assembler which assumes that a missing mnemonic suffix implies long
+operand size.  (This incompatibility does not affect compiler output
+since compilers always explicitly specify the mnemonic suffix.)
+
+   <p>Almost all instructions have the same names in AT&amp;T and Intel format. 
+There are a few exceptions.  The sign extend and zero extend
+instructions need two sizes to specify them.  They need a size to
+sign/zero extend <em>from</em> and a size to zero extend <em>to</em>.  This
+is accomplished by using two instruction mnemonic suffixes in AT&amp;T
+syntax.  Base names for sign extend and zero extend are
+<span class="samp">movs...</span> and <span class="samp">movz...</span> in AT&amp;T syntax (<span class="samp">movsx</span>
+and <span class="samp">movzx</span> in Intel syntax).  The instruction mnemonic suffixes
+are tacked on to this base name, the <em>from</em> suffix before the
+<em>to</em> suffix.  Thus, <span class="samp">movsbl %al, %edx</span> is AT&amp;T syntax for
+&ldquo;move sign extend <em>from</em> %al <em>to</em> %edx.&rdquo;  Possible suffixes,
+thus, are <span class="samp">bl</span> (from byte to long), <span class="samp">bw</span> (from byte to word),
+<span class="samp">wl</span> (from word to long), <span class="samp">bq</span> (from byte to quadruple word),
+<span class="samp">wq</span> (from word to quadruple word), and <span class="samp">lq</span> (from long to
+quadruple word).
+
+   <p><a name="index-conversion-instructions_002c-i386-891"></a><a name="index-i386-conversion-instructions-892"></a><a name="index-conversion-instructions_002c-x86_002d64-893"></a><a name="index-x86_002d64-conversion-instructions-894"></a>The Intel-syntax conversion instructions
+
+     <ul>
+<li><span class="samp">cbw</span> &mdash; sign-extend byte in <span class="samp">%al</span> to word in <span class="samp">%ax</span>,
+
+     <li><span class="samp">cwde</span> &mdash; sign-extend word in <span class="samp">%ax</span> to long in <span class="samp">%eax</span>,
+
+     <li><span class="samp">cwd</span> &mdash; sign-extend word in <span class="samp">%ax</span> to long in <span class="samp">%dx:%ax</span>,
+
+     <li><span class="samp">cdq</span> &mdash; sign-extend dword in <span class="samp">%eax</span> to quad in <span class="samp">%edx:%eax</span>,
+
+     <li><span class="samp">cdqe</span> &mdash; sign-extend dword in <span class="samp">%eax</span> to quad in <span class="samp">%rax</span>
+(x86-64 only),
+
+     <li><span class="samp">cqo</span> &mdash; sign-extend quad in <span class="samp">%rax</span> to octuple in
+<span class="samp">%rdx:%rax</span> (x86-64 only),
+</ul>
+
+<p class="noindent">are called <span class="samp">cbtw</span>, <span class="samp">cwtl</span>, <span class="samp">cwtd</span>, <span class="samp">cltd</span>, <span class="samp">cltq</span>, and
+<span class="samp">cqto</span> in AT&amp;T naming.  <code>as</code> accepts either naming for these
+instructions.
+
+   <p><a name="index-jump-instructions_002c-i386-895"></a><a name="index-call-instructions_002c-i386-896"></a><a name="index-jump-instructions_002c-x86_002d64-897"></a><a name="index-call-instructions_002c-x86_002d64-898"></a>Far call/jump instructions are <span class="samp">lcall</span> and <span class="samp">ljmp</span> in
+AT&amp;T syntax, but are <span class="samp">call far</span> and <span class="samp">jump far</span> in Intel
+convention.
+
+<h4 class="subsection">9.13.5 AT&amp;T Mnemonic versus Intel Mnemonic</h4>
+
+<p><a name="index-i386-mnemonic-compatibility-899"></a><a name="index-mnemonic-compatibility_002c-i386-900"></a>
+<code>as</code> supports assembly using Intel mnemonic. 
+<code>.intel_mnemonic</code> selects Intel mnemonic with Intel syntax, and
+<code>.att_mnemonic</code> switches back to the usual AT&amp;T mnemonic with AT&amp;T
+syntax for compatibility with the output of <code>gcc</code>. 
+Several x87 instructions, <span class="samp">fadd</span>, <span class="samp">fdiv</span>, <span class="samp">fdivp</span>,
+<span class="samp">fdivr</span>, <span class="samp">fdivrp</span>, <span class="samp">fmul</span>, <span class="samp">fsub</span>, <span class="samp">fsubp</span>,
+<span class="samp">fsubr</span> and <span class="samp">fsubrp</span>,  are implemented in AT&amp;T System V/386
+assembler with different mnemonics from those in Intel IA32 specification. 
+<code>gcc</code> generates those instructions with AT&amp;T mnemonic.
+
+   </body></html>
+

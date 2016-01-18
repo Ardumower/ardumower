@@ -1,0 +1,21 @@
+--- gas/config/tc-avr.c.orig	2008-11-03 20:26:36.667612400 -0700
++++ gas/config/tc-avr.c	2008-11-04 10:21:02.655736600 -0700
+@@ -181,6 +181,7 @@ static struct mcu_type_s mcu_types[] =
+   {"atmega32c1", AVR_ISA_AVR5,    bfd_mach_avr5},
+   {"atmega32m1", AVR_ISA_AVR5,    bfd_mach_avr5},
+   {"atmega32u4", AVR_ISA_AVR5,    bfd_mach_avr5},
++  {"atmega32u6", AVR_ISA_AVR5,    bfd_mach_avr5},
+   {"at90usb646", AVR_ISA_AVR5,    bfd_mach_avr5},
+   {"at90usb647", AVR_ISA_AVR5,    bfd_mach_avr5},
+   {"at94k",      AVR_ISA_94K,     bfd_mach_avr5},
+--- gas/doc/c-avr.texi.orig	2008-08-29 10:58:02.000000000 -0600
++++ gas/doc/c-avr.texi	2008-11-04 13:20:43.724525000 -0700
+@@ -67,7 +67,7 @@ atmega323, atmega324p, atmega325, atmega
+ atmega328p, atmega329, atmega329p, atmega3290, atmega3290p, atmega406, atmega64,
+ atmega640, atmega644, atmega644p, atmega645, atmega6450, atmega649, atmega6490,
+ atmega16hva, at90can32, at90can64, at90pwm216, at90pwm316, atmega16u4,
+-atmega32c1, atmega32m1, atmega32u4, at90usb646, at90usb647, at94k).
++atmega32c1, atmega32m1, atmega32u4, atmega32u6, at90usb646, at90usb647, at94k).
+ 
+ Instruction set avr51 is for the enhanced AVR core with exactly 128K program
+ memory space (MCU types: atmega128, atmega1280, atmega1281, atmega1284p,

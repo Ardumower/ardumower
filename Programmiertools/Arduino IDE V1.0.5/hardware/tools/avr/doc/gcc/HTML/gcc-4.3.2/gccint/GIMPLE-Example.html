@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+<title>GIMPLE Example - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="GIMPLE.html#GIMPLE" title="GIMPLE">
+<link rel="prev" href="Statements.html#Statements" title="Statements">
+<link rel="next" href="Rough-GIMPLE-Grammar.html#Rough-GIMPLE-Grammar" title="Rough GIMPLE Grammar">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="GIMPLE-Example"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Rough-GIMPLE-Grammar.html#Rough-GIMPLE-Grammar">Rough GIMPLE Grammar</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Statements.html#Statements">Statements</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="GIMPLE.html#GIMPLE">GIMPLE</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">10.2.5 GIMPLE Example</h4>
+
+<p><a name="index-GIMPLE-Example-2086"></a>
+<pre class="smallexample">     struct A { A(); ~A(); };
+     
+     int i;
+     int g();
+     void f()
+     {
+       A a;
+       int j = (--i, i ? 0 : 1);
+     
+       for (int x = 42; x &gt; 0; --x)
+         {
+           i += g()*4 + 32;
+         }
+     }
+</pre>
+ <p>becomes
+
+<pre class="smallexample">     void f()
+     {
+       int i.0;
+       int T.1;
+       int iftmp.2;
+       int T.3;
+       int T.4;
+       int T.5;
+       int T.6;
+     
+       {
+         struct A a;
+         int j;
+     
+         __comp_ctor (&amp;a);
+         try
+           {
+             i.0 = i;
+             T.1 = i.0 - 1;
+             i = T.1;
+             i.0 = i;
+             if (i.0 == 0)
+               iftmp.2 = 1;
+             else
+               iftmp.2 = 0;
+             j = iftmp.2;
+             {
+               int x;
+     
+               x = 42;
+               goto test;
+               loop:;
+     
+               T.3 = g ();
+               T.4 = T.3 * 4;
+               i.0 = i;
+               T.5 = T.4 + i.0;
+               T.6 = T.5 + 32;
+               i = T.6;
+               x = x - 1;
+     
+               test:;
+               if (x &gt; 0)
+                 goto loop;
+               else
+                 goto break_;
+               break_:;
+             }
+           }
+         finally
+           {
+             __comp_dtor (&amp;a);
+           }
+       }
+     }
+</pre>
+ </body></html>
+

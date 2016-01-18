@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on November, 7 2008 by texi2html 1.78 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+
+-->
+<head>
+<title>Simulavr: 3.1 GDB Hints</title>
+
+<meta name="description" content="Simulavr: 3.1 GDB Hints">
+<meta name="keywords" content="Simulavr: 3.1 GDB Hints">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.78">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="GDB-Hints"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_7.html#SEC7" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_8.html#SEC8" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_11.html#SEC11" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section"> 3.1 GDB Hints </h2>
+
+<p>Since debugging an AVR program with gdb requires gdb to connect to a
+remote target (either simulavr or some other debugging tool, such as
+avarice), a series of commands must be issued every time gdb is started.
+The easiest way around this is to put the commands into a
+&lsquo;<tt>.gdbinit</tt>&rsquo; file in the project directory.  The following example is
+from a &lsquo;<tt>.gdbinit</tt>&rsquo; which I use for many projects.
+</p>
+<table><tr><td>&nbsp;</td><td><table class="cartouche" border="1"><tr><td>
+<pre class="example">
+## Print out structures in a sane way
+
+echo (gdb) set print pretty
+set print pretty
+
+## Use this for debugging the remote protocol. (Don't use unless
+## debugging simulavr or avr-gdb)
+
+#echo (gdb) set debug remote 1\n
+#set debug remote 1
+
+## If you don't want specify the program to debug when invoking gdb, 
+## you can tell gdb to read it in here. The file should be an elf file
+## compiled with debugging information (-g for C files and -gstabs for
+## asm files).
+
+#echo (gdb) file myprog.elf\n
+#file myprog.elf
+
+## Connect to the remote target via a TCP socket on host:port.
+
+echo (gdb) target remote localhost:1212\n
+target remote localhost:1212
+
+## If you are using simulavr as the remote target, this will upload
+## the program into flash memory for you.
+
+echo (gdb) load\n
+load
+
+## Set a break point at the beginning of main().
+
+echo (gdb) break main\n
+break main
+
+## Run the program up to the first break point.  Gdb's `run` command
+## does not work when using a remote target, must use continue.
+
+echo (gdb) continue\n
+continue
+
+</pre></td></tr></table>
+</td></tr></table>
+
+<p>As you can see, I <code>echo</code> every command so I can see what gdb has
+done when it runs the commands in the &lsquo;<tt>.gdbinit</tt>&rsquo; file.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_7.html#SEC7" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_5.html#SEC5" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_8.html#SEC8" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>eweddington</em> on <em>November, 7 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.78</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

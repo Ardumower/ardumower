@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<title>Config Fragments - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Configuration.html#Configuration" title="Configuration">
+<link rel="next" href="System-Config.html#System-Config" title="System Config">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Config-Fragments"></a>Next:&nbsp;<a rel="next" accesskey="n" href="System-Config.html#System-Config">System Config</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Configuration.html#Configuration">Configuration</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">6.3.2.1 Scripts Used by <span class="file">configure</span></h5>
+
+<p><span class="file">configure</span> uses some other scripts to help in its work:
+
+     <ul>
+<li>The standard GNU <span class="file">config.sub</span> and <span class="file">config.guess</span>
+files, kept in the top level directory, are used.  FIXME: when is the
+<span class="file">config.guess</span> file in the <span class="file">gcc</span> directory (that just calls
+the top level one) used?
+
+     <li>The file <span class="file">config.gcc</span> is used to handle configuration
+specific to the particular target machine.  The file
+<span class="file">config.build</span> is used to handle configuration specific to the
+particular build machine.  The file <span class="file">config.host</span> is used to handle
+configuration specific to the particular host machine.  (In general,
+these should only be used for features that cannot reasonably be tested in
+Autoconf feature tests.) 
+See <a href="System-Config.html#System-Config">The <span class="file">config.build</span>; <span class="file">config.host</span>; and <span class="file">config.gcc</span> Files</a>, for details of the contents of these files.
+
+     <li>Each language subdirectory has a file
+<var>language</var><span class="file">/config-lang.in</span> that is used for
+front-end-specific configuration.  See <a href="Front-End-Config.html#Front-End-Config">The Front End <span class="file">config-lang.in</span> File</a>, for details of this file.
+
+     <li>A helper script <span class="file">configure.frag</span> is used as part of
+creating the output of <span class="file">configure</span>. 
+</ul>
+
+ </body></html>
+

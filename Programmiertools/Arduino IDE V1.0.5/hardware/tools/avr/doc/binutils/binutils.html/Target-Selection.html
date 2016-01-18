@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+<title>Target Selection - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Selecting-the-Target-System.html#Selecting-the-Target-System" title="Selecting the Target System">
+<link rel="next" href="Architecture-Selection.html#Architecture-Selection" title="Architecture Selection">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Target-Selection"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Architecture-Selection.html#Architecture-Selection">Architecture Selection</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Selecting-the-Target-System.html#Selecting-the-Target-System">Selecting the Target System</a>
+<hr><br>
+</div>
+
+<h3 class="section">17.1 Target Selection</h3>
+
+<p>A <dfn>target</dfn> is an object file format.  A given target may be
+supported for multiple architectures (see <a href="Architecture-Selection.html#Architecture-Selection">Architecture Selection</a>). 
+A target selection may also have variations for different operating
+systems or architectures.
+
+   <p>The command to list valid target values is <span class="samp">objdump -i</span>
+(the first column of output contains the relevant information).
+
+   <p>Some sample values are: <span class="samp">a.out-hp300bsd</span>, <span class="samp">ecoff-littlemips</span>,
+<span class="samp">a.out-sunos-big</span>.
+
+   <p>You can also specify a target using a configuration triplet.  This is
+the same sort of name that is passed to <span class="file">configure</span> to specify a
+target.  When you use a configuration triplet as an argument, it must be
+fully canonicalized.  You can see the canonical version of a triplet by
+running the shell script <span class="file">config.sub</span> which is included with the
+sources.
+
+   <p>Some sample configuration triplets are: <span class="samp">m68k-hp-bsd</span>,
+<span class="samp">mips-dec-ultrix</span>, <span class="samp">sparc-sun-sunos</span>.
+
+<h4 class="subheading"><span class="command">objdump</span> Target</h4>
+
+<p>Ways to specify:
+
+     <ol type=1 start=1>
+<li>command line option: <span class="option">-b</span> or <span class="option">--target</span>
+
+     <li>environment variable <code>GNUTARGET</code>
+
+     <li>deduced from the input file
+        </ol>
+
+<h4 class="subheading"><span class="command">objcopy</span> and <span class="command">strip</span> Input Target</h4>
+
+<p>Ways to specify:
+
+     <ol type=1 start=1>
+<li>command line options: <span class="option">-I</span> or <span class="option">--input-target</span>, or <span class="option">-F</span> or <span class="option">--target</span>
+
+     <li>environment variable <code>GNUTARGET</code>
+
+     <li>deduced from the input file
+        </ol>
+
+<h4 class="subheading"><span class="command">objcopy</span> and <span class="command">strip</span> Output Target</h4>
+
+<p>Ways to specify:
+
+     <ol type=1 start=1>
+<li>command line options: <span class="option">-O</span> or <span class="option">--output-target</span>, or <span class="option">-F</span> or <span class="option">--target</span>
+
+     <li>the input target (see &ldquo;<span class="command">objcopy</span> and <span class="command">strip</span> Input Target&rdquo; above)
+
+     <li>environment variable <code>GNUTARGET</code>
+
+     <li>deduced from the input file
+        </ol>
+
+<h4 class="subheading"><span class="command">nm</span>, <span class="command">size</span>, and <span class="command">strings</span> Target</h4>
+
+<p>Ways to specify:
+
+     <ol type=1 start=1>
+<li>command line option: <span class="option">--target</span>
+
+     <li>environment variable <code>GNUTARGET</code>
+
+     <li>deduced from the input file
+        </ol>
+
+   </body></html>
+
