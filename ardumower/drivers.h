@@ -40,7 +40,7 @@
   #include "due.h"
    // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
   #define Console SerialUSB
-  #define ESP8266Port Serial1
+  #define ESP8266port Serial1
   #define Bluetooth Serial2
 #endif
 

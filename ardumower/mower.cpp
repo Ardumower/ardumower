@@ -283,7 +283,11 @@ ISR(PCINT0_vect){
 // perimeter filter output (mag value) which disappears when disabling odometry interrupts.
 // SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
 // http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
+#ifdef __AVR__
 ISR(PCINT2_vect, ISR_NOBLOCK){
+#else
+ISR(PCINT2_vect){
+#endif
   unsigned long timeMicros = micros();
   boolean odometryLeftState = digitalRead(pinOdometryLeft);
   boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);

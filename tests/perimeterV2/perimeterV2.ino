@@ -100,6 +100,8 @@ void printSerialChart(){
   float d = perimeter.getSignalMax(0)-perimeter.getSignalMin(0);
   delta = 0.95 * delta + 0.05 * d;
   Console.print(delta);
+  Console.print(",");        
+  Console.print(perimeter.getFilterQuality(0));    
   Console.println();
   /*    
   if (!ADCMan.isCaptureComplete(pinPerimeterLeft)) return;
