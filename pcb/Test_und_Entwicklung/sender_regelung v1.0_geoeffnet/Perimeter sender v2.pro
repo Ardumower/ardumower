@@ -1,4 +1,4 @@
-update=15.11.2015 19:53:47
+update=06.05.2016 14:29:32
 version=1
 last_client=kicad
 [pcbnew]
@@ -52,8 +52,8 @@ version=1
 version=1
 LibDir=sender_v2.pretty;../sender_v2;../megashield_svn_0.5;../megashield_svn_0.5/acs712.pretty;sender_v2.pretty;../../../../Program Files (x86)/KiCAD/share/library;F:/Arbeit/KICAD/zimprich.pretty
 [eeschema/libraries]
-LibName1=op-amp
-LibName2=Perimeter sender v2-rescue
+LibName1=Perimeter sender v2-rescue
+LibName2=op-amp
 LibName3=arduino_shieldsNCL
 LibName4=power
 LibName5=device
@@ -102,3 +102,4 @@ NetFmtName=Pcbnew
 SpiceForceRefPrefix=0
 SpiceUseNetNumbers=0
 LabSize=60
+ERC_TestSimilarLabels=1
