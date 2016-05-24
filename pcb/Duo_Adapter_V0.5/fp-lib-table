@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name Duo)(type KiCad)(uri ${KIPRJMOD}/Duo.pretty)(options "")(descr ""))
-)

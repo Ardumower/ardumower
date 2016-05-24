@@ -1,0 +1,21 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# INA169_Breakout_Conn
+#
+DEF INA169_Breakout_Conn J 0 40 Y Y 1 F N
+F0 "J" 0 300 60 H V C CNN
+F1 "INA169_Breakout_Conn" 50 -350 60 H V C CNN
+F2 "" 150 200 60 H V C CNN
+F3 "" 150 200 60 H V C CNN
+DRAW
+S -150 250 150 -250 0 1 0 N
+X VCC 1 350 200 200 L 50 50 1 1 I
+X GND 2 350 100 200 L 50 50 1 1 I
+X Vin- 3 350 0 200 L 50 50 1 1 I
+X Vin+ 4 350 -100 200 L 50 50 1 1 I
+X OUT 5 350 -200 200 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+#End Library

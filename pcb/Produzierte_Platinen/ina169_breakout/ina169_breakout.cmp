@@ -1,0 +1,45 @@
+Cmp-Mod V01 Created by Cvpcb (2015-01-13 BZR 5369)-product   date = 12.03.2015 12:13:01
+
+BeginCmp
+TimeStamp = /54E30F8E;
+Reference = C1;
+ValeurCmp = 0.1uF;
+IdModule  = Capacitors_SMD:C_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E30C13;
+Reference = J1;
+ValeurCmp = INA169_Breakout_Conn;
+IdModule  = ina169_breakout:ina169_breakout_footprint;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E30DE5;
+Reference = R1;
+ValeurCmp = 0.1 1% 2W;
+IdModule  = Resistors_SMD:R_2512;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E30D69;
+Reference = R2;
+ValeurCmp = 10K 1%;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /550174AC;
+Reference = R3;
+ValeurCmp = 10K 1%;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E31222;
+Reference = U1;
+ValeurCmp = INA169_IC;
+IdModule  = ina169_breakout:ina169_ic_sot23-5;
+EndCmp
+
+EndListe

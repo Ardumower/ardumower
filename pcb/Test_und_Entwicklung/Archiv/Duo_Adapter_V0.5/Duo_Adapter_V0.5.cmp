@@ -1,0 +1,507 @@
+Cmp-Mod V01 Created by Cvpcb (2015-05-08 BZR 5647)-product   date = 08.05.2015 20:19:49
+
+BeginCmp
+TimeStamp = /54CF710A;
+Reference = LP0;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF7059;
+Reference = LP1;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF6FAB;
+Reference = LP2;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF6F02;
+Reference = LP3;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF6E54;
+Reference = LP4;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF6DA7;
+Reference = LP5;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF6BED;
+Reference = LP6;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF6B08;
+Reference = LP7;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF2BEF;
+Reference = LP8;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF2B48;
+Reference = LP9;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CEF3BF;
+Reference = LP10;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CEF31C;
+Reference = LP11;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CEF278;
+Reference = LP12;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CEF1D7;
+Reference = LP13;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CEDC4A;
+Reference = LP14;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CEA36A;
+Reference = LP15;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFDD02;
+Reference = LP16;
+ValeurCmp = Lötpad 3.3V;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFD7DE;
+Reference = LP17;
+ValeurCmp = Lötpad VIN;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFDC50;
+Reference = LP18;
+ValeurCmp = Lötpad 5V;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFE61F;
+Reference = LP19;
+ValeurCmp = Lötpad GND;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF4FEC;
+Reference = LP20;
+ValeurCmp = Lötpad Center Echo;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D046E1;
+Reference = LP21;
+ValeurCmp = Lötpad RST;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF5460;
+Reference = LP22;
+ValeurCmp = Lötpad Right Echo;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CF5519;
+Reference = LP23;
+ValeurCmp = Lötpad Left Echo;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFA30B;
+Reference = LP24;
+ValeurCmp = Lötpad GND;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFB233;
+Reference = LP25;
+ValeurCmp = Lötpad SCL 1;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFB165;
+Reference = LP26;
+ValeurCmp = Lötpad SDA 1;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54CFB2E6;
+Reference = LP27;
+ValeurCmp = Lötpad AREF;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D0578;
+Reference = LP28;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D069C;
+Reference = LP29;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D073D;
+Reference = LP30;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D07D8;
+Reference = LP31;
+ValeurCmp = Lötpad;
+IdModule  = Duo:Lötpad_1x02_Buchse;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F65064;
+Reference = R1;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650BB;
+Reference = R2;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650D8;
+Reference = R3;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6509E;
+Reference = R4;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F65081;
+Reference = R5;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650F5;
+Reference = R6;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F67C53;
+Reference = R7;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F65112;
+Reference = R8;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6506B;
+Reference = R9;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650C2;
+Reference = R10;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650DF;
+Reference = R11;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650A5;
+Reference = R12;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F65088;
+Reference = R13;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F650FC;
+Reference = R14;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F67C5A;
+Reference = R15;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F65119;
+Reference = R16;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F62B07;
+Reference = R17;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6428C;
+Reference = R18;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6438B;
+Reference = R19;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F674CC;
+Reference = R20;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F64145;
+Reference = R21;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6401A;
+Reference = R22;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6452E;
+Reference = R23;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6463D;
+Reference = R24;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F62B0E;
+Reference = R25;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F64293;
+Reference = R26;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F64392;
+Reference = R27;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F674D3;
+Reference = R28;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6414C;
+Reference = R29;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F64021;
+Reference = R30;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F64535;
+Reference = R31;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F64644;
+Reference = R32;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6351C;
+Reference = R33;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F62F37;
+Reference = R34;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F61446;
+Reference = R35;
+ValeurCmp = R 20K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F63515;
+Reference = R36;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F62F30;
+Reference = R37;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F6143F;
+Reference = R38;
+ValeurCmp = R 10K;
+IdModule  = Duo:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5375252C;
+Reference = SHIELD1;
+ValeurCmp = ARDUINO_MEGA_SHIELD;
+IdModule  = Duo:ARDUINO_MEGA_SHIELD_DUO_3D;
+EndCmp
+
+BeginCmp
+TimeStamp = /554D0CEF;
+Reference = U1;
+ValeurCmp = 74HC4050;
+IdModule  = Duo:DIP-16__300;
+EndCmp
+
+EndListe

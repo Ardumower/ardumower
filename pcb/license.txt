@@ -1,5 +1,6 @@
   Ardumower (www.ardumower.de)
-  Copyright (c) 2015 by Uwe Zimprich 
+  Copyright (c) 2015 by Uwe Zimprich
+  Copyright (c) 2015 by Jürgen Lange
   Copyright (c) 2014-2015 by Stefan Manteuffel
   Copyright (c) 2014 by Walter Crauwels
   Copyright (c) 2013-2015 by Sven Gennat    
