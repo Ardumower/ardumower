@@ -37,7 +37,7 @@ char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFN
 
 char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
-char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter"}; 
+char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter", "off"}; 
 
 
 Robot::Robot(){
