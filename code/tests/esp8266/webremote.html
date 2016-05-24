@@ -1,0 +1,87 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Ardumower Web Remote (incomplete)</title>
+</head><body>
+
+<canvas id="cv" width="500" height="200"></canvas>
+ 
+<script>
+
+
+var mx = 0;
+var my = 0;
+var cv = null;
+var cx = null;
+var midx = -1; 
+var items = ["TestgabGQp1", "test0983_*2", "test3", "test4", "ABCDEFGHIJKLM", "test test test"];
+
+function Req(url) {
+    var d = new Date;
+    var req = new XMLHttpRequest();    
+    req.onreadystatechange = processReq;
+    req.timeout = 8000;    
+
+    function processReq() {
+      //if (req.readyState == 1) req.close();
+      //if (req.readyState == 2) {
+      if (req.status == 200) {
+        console.log("processReq");
+      }
+    }
+
+    this.doGet = function() {
+      req.open("GET", url, true);            
+      req.send();      
+    }
+}
+
+function makeRequest(url) {
+  var ai = new Req(url);
+  ai.doGet();
+}
+    
+
+function scan(){    
+  //setTimeout(scan, scanTimeout);
+}
+
+function update(){
+  cx.font = '8pt Verdana';  
+  cx.clearRect(0, 0, cv.width, cv.height);
+  cx.textAlign="center";
+  //cx.fillText(mx + ", " + my, 0, 20);
+  var y = 0;
+  midx = -1;
+  for (var i = 0; i < items.length; i++){
+    cx.font = '11pt Verdana';                  
+    if ((my > y) && (my <= y + 25)){
+      cx.beginPath();      
+      cx.rect(0,y,500,25);
+      cx.stroke();
+      mitem = i;      
+    }      
+    cx.fillText(items[i], 230, y+20);        
+    y += 25;
+  }
+}
+
+function init() {
+  cv = document.getElementById("cv");
+  cx = cv.getContext("2d");
+  cv.addEventListener('mousemove', function(evt) {
+        var rect = cv.getBoundingClientRect();
+        mx = evt.clientX - rect.left;
+        my = evt.clientY - rect.top;        
+        update();
+  }, false);
+    
+  update();
+  //setTimeout(scan, 1000);         
+}
+
+window.addEventListener('load', init );
+
+</script>
+
+</body></html>

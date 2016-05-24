@@ -1,0 +1,148 @@
+  Ardumower (www.ardumower.de)
+  Copyright (c) 2013-2014 by Alexander Grau
+  Copyright (c) 2013-2014 by Sven Gennat
+  
+  Private-use only! (you need to ask for a commercial-use)
+ 
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  Private-use only! (you need to ask for a commercial-use)
+
+--Wiring--
+
+
+Ok, here's a summary of the changes for the Due wiring:
+
+1. Due
+The Due runs at 3.3V - all signal lines connected to the Due have to run at 3.3V too. If it's not possible to run a specific sensor module at 3.3V, keep 5V for that module and use a voltage divider for the signal line of that module:
+
+[code]
+5V sensor signal out --10k---+---20k---GND
+                             | 
+                 Arduino Due signal in
+[/code]
+
+2. Mega Sensor shield
+If using the Mega sensor shield (recommended), make sure to remove jumper "PWR_SEL" on the Mega shield, so all "V" pins are open (and no longer connected to 5V). Then connect any 3.3V pin (e.g. "Bluetooth" pin no.1) to one "V" pin, so all "V" pins get 3.3V instead of 5V.
+
+3. Motor drivers
+Motor drivers, MOSFET mower driver and current sensors will be replaced by 2 x dual MC33926. The MC driver has built-in current sensor and it's 3.3V compatible. Same signal lines for the Due as on the Mega.   
+
+4. Perimeter Nano
+The perimeter Arduino Nano is obsolete now. Also, we are using only one coil now. The LM386 is not designed for 3.3V (although you might get it to work). Use a voltage divider for the output signal (see point 1). 
+
+[code]
+LM386 in  --- 100 mH coil ----- 4.7nF --+
+LM386 GND ------------------------------+ 
+LM386 out --- 10k --- Arduino Due pin A5 -- 20k -- GND
+LM386 VCC --- 5V
+[/code] 
+     
+5. Perimeter sender
+The perimeter sender is using a dual MC33926 motor driver and new sender code (new signal).
+
+[code]
+motor driver M1OUT1 o---------- perimeter loop (20-450 meter)--+
+                                                               |
+motor driver M1OUT2 o------------------------------------------+
+motor driver Vin    o-- 12V
+motor driver M1IN1  o-- Arduino Nano IN1
+motor driver M1IN2  o-- Arduino Nano IN2
+motor driver VDD    o-- Arduino +5V
+motor driver EN     o-- VDD (via Jumper)
+motor driver M1D1   o-- GND (via Jumper)
+motor driver M1D2   o-- VDD (via Jumper) 
+[/code]
+
+6. IMU
+The IMU Arduino Nano is obsolete now. Run it at 3.3V instead 5V. 
+
+[code]
+IMU VCC3.3 --- 3.3V
+IMU SCL    --- Arduino Due SCL         
+IMU SDA    --- Arduino Due SDA
+[/code]
+
+7. Bluetooth module
+Bluetooth module will run at 3.3V, no voltage divider for RX line anymore.
+
+8. Charge sensing
+Current sensor ACS712-05 is not designed for 3.3V, so use a voltage divider if your signal voltage is too high (>3.3V) for your charging current.  
+
+9. Ultrasonic
+HC-SR04 is not designed for 3.3V, so use a voltage divider for Echo line.
+
+
+------------------------------
+MEGA
+------------------------------
+DC Stepup 5V
+DC Stepup 3.3V
+
+Arduino Mega 5V -- 5V
+
+------------------------------
+DUE
+------------------------------
+DC Stepup 5V
+DC Stepup 3.3V
+
+Arduino Due 5V -- 5V
+
+LM386 VCC -- 5V
+LM386 Out -- 10k -- Arduino In -- 20k -- GND
+                  
+
+HC-SR04 VCC -- 5V
+HC-SR04 Echo -- 10k -- Arduino In -- 20k -- GND
+
+------------------------------
+
+Ardumower Chassis components
+
+2 x MC driver
+2 x LM386
+2 x Tracopower (5V and 3.3V)
+buzzer
+RTC
+bluetooth
+GPS
+GY-80
+RTC
+connectors for : odometry, button, HC-SR04
+
+
+---------------------------------------------------------------
+
+Arduino Mega 2560 interrupts
+
+6	PE4	OC3B	INT4		Digital pin 02	PWM		
+7	PE5	OC3C	INT5		Digital pin 03	PWM		
+19	PB0	SS	PCINT0		Digital pin 53		SS	(SPI Slave Select input or Pin Change Interrupt 0)
+20	PB1	SCK	PCINT1		Digital pin 52		SCK	(SPI Bus Serial Clock or Pin Change Interrupt 1)
+21	PB2	MOSI	PCINT2		Digital pin 51		MOSI	(SPI Bus Master Output/Slave Input or Pin Change Interrupt 2)
+22	PB3	MISO	PCINT3		Digital pin 50		MISO	(SPI Bus Master Input/Slave Output or Pin Change Interrupt 3)
+23	PB4	OC2A	PCINT4		Digital pin 10	PWM		
+24	PB5	OC1A	PCINT5		Digital pin 11	PWM		
+25	PB6	OC1B	PCINT6		Digital pin 12	PWM		
+26	PB7	OC0A	PCINT7	OC1C	Digital pin 13	PWM		
+82	PK7	ADC15	PCINT23		Analog pin 15			
+83	PK6	ADC14	PCINT22		Analog pin 14			
+84	PK5	ADC13	PCINT21		Analog pin 13			
+85	PK4	ADC12	PCINT20		Analog pin 12			
+86	PK3	ADC11	PCINT19		Analog pin 11			
+87	PK2	ADC10	PCINT18		Analog pin 10			
+88	PK1	ADC9	PCINT17		Analog pin 09			
+89	PK0	ADC8	PCINT16		Analog pin 08			
+

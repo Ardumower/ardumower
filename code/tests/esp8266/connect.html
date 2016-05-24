@@ -1,0 +1,162 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Network IP Address Scanner</title>
+</head><body>
+Your machine IP: <h3 id=list>-</h3> 
+Your network: <h3 id=net>-</h3>
+Scanning: <h3 id=scan>-</h3>
+Found devices:  
+
+
+
+<script>
+
+// NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
+var RTCPeerConnection = /*window.RTCPeerConnection ||*/ window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+var localIP = "";
+var localNet = "";
+var foundText = "";
+var testIP = 1;
+var foundDevices = [];
+var scanTimeout = 9000;
+var scanRange = 17;
+
+
+if (RTCPeerConnection) (function () {
+    console.log("RTCPeerConnection");
+    var rtc = new RTCPeerConnection({iceServers:[]});
+    if (1 || window.mozRTCPeerConnection) {      // FF [and now Chrome!] needs a channel/stream to proceed
+        console.log("rtc.createDataChannel");
+        rtc.createDataChannel('', {reliable:false});
+    };
+    
+    rtc.onicecandidate = function (evt) {
+        console.log("rtc.onicecandidate");
+        // convert the candidate to SDP so we can run it through our general parser
+        // see https://twitter.com/lancestout/status/525796175425720320 for details
+        if (evt.candidate) grepSDP("a="+evt.candidate.candidate);                
+    };
+    rtc.createOffer(function (offerDesc) {
+        console.log("rtc.createOffer");
+        grepSDP(offerDesc.sdp);
+        rtc.setLocalDescription(offerDesc);        
+    }, function (e) { console.warn("offer failed", e); });
+    
+    
+    var addrs = Object.create(null);
+    addrs["0.0.0.0"] = false;
+    function updateDisplay(newAddr) {
+        console.log("updateDisplay " + newAddr);
+        localIP = newAddr;        
+        if (newAddr in addrs) return;
+        else addrs[newAddr] = true;
+        var displayAddrs = Object.keys(addrs).filter(function (k) { return addrs[k]; });
+        document.getElementById('list').textContent = displayAddrs.join(" or perhaps ") || "n/a";                  
+    }
+    
+    function grepSDP(sdp) {
+        console.log("grepSDP " + sdp);
+        var hosts = [];
+        sdp.split('\r\n').forEach(function (line) { // c.f. http://tools.ietf.org/html/rfc4566#page-39
+            if (~line.indexOf("a=candidate")) {     // http://tools.ietf.org/html/rfc4566#section-5.13
+                var parts = line.split(' '),        // http://tools.ietf.org/html/rfc5245#section-15.1
+                    addr = parts[4],
+                    type = parts[7];
+                if (type === 'host') updateDisplay(addr);
+            } else if (~line.indexOf("c=")) {       // http://tools.ietf.org/html/rfc4566#section-5.7
+                var parts = line.split(' '),
+                    addr = parts[2];
+                updateDisplay(addr);
+            }
+        });
+    }
+        
+})(); else {
+    console.log("RTCPeerConnection not available");
+    document.getElementById('list').innerHTML = "<code>ifconfig | grep inet | grep -v inet6 | cut -d\" \" -f2 | tail -n1</code>";
+    document.getElementById('list').nextSibling.textContent = "In Chrome and Firefox your IP should display automatically, by the power of WebRTCskull.";
+}
+
+function log(data) { 
+  // Normally you wouldn't output to the page/DOM - you'd log to a server...
+  var text;
+  text = document.createElement('div');
+  text = document.createElement('h3');
+  text.innerHTML = data + "<br>";
+  document.body.appendChild(text);
+}
+
+function delay(ms){
+  ms += new Date().getTime();
+  while (new Date() < ms){}
+} 
+
+function AJAXInteraction(url) {
+    var d = new Date;
+    // Might investigate IE8.0's XDomainRequest as well...
+    var req = new XMLHttpRequest();    
+    // Might be able to force a faster timeout here with req.timeout and a 
+    // timeout handler function rather than waiting the full 20-75 seconds. 
+    // req.withCredentials = "true"; //creates a popup
+    req.onreadystatechange = processRequest;
+    req.timeout = scanTimeout;    
+
+    function processRequest () {
+      //if (req.readyState == 1) req.close();
+      //if (req.readyState == 2) {
+      //if (req.status == 200) {
+        var d2 = new Date;
+        var time = d2.getTime() - d.getTime();
+        // Time will be more variable once you start scanning more than a 
+        // few hosts... so this would need to be re-written.
+        if ( /*(url == "http://192.168.2.120") || */             
+             ((time > 10) && (time < scanTimeout)) ) {          
+            if (foundDevices.indexOf(url) == -1){
+              foundDevices.push(url);
+              log (req.status + "," + time + ", <a href=" + url + ">" + url + "</a>");              
+            }                   
+        }
+      //}
+    }
+
+    this.doGet = function() {
+      req.open("GET", url, true);            
+      req.send();      
+    }
+}
+
+function makeRequest(url) {
+  var ai = new AJAXInteraction(url);
+  ai.doGet();
+}
+    
+
+function scan(){    
+  document.getElementById('scan').textContent = testIP + "-" + (testIP + scanRange - 1);
+  for (var counter=0; counter < scanRange; counter++){    
+    if (testIP == 255) return;  
+    var ip = localNet + "." + testIP;     
+    var sock = "http://" + ip;
+    //console.log("testing " + sock);  
+    makeRequest(sock);    
+    testIP++;
+  }
+  setTimeout(scan, scanTimeout);
+}
+
+function init() {
+  //alert(localIP);
+  var parts = localIP.split('.');
+  localNet = parts[0] + "." + parts[1] + "." + parts[2];
+  document.getElementById('net').textContent = localNet;  
+  //setTimeout(scan, 1000);
+  scan();     
+}
+
+//window.addEventListener('load', init );
+setTimeout(init, 1000);
+
+</script>
+
+</body></html>
