@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+<title>MSP430-Ext - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="MSP430-Syntax.html#MSP430-Syntax" title="MSP430 Syntax">
+<link rel="prev" href="MSP430_002dRegs.html#MSP430_002dRegs" title="MSP430-Regs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="MSP430_002dExt"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="MSP430_002dRegs.html#MSP430_002dRegs">MSP430-Regs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="MSP430-Syntax.html#MSP430-Syntax">MSP430 Syntax</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">9.24.2.4 Assembler Extensions</h5>
+
+<p><a name="index-MSP430-Assembler-Extensions-1331"></a>
+     <dl>
+<dt><code>@rN</code><dd>As destination operand being treated as <span class="samp">0(rn)</span>
+
+     <br><dt><code>0(rN)</code><dd>As source operand being treated as <span class="samp">@rn</span>
+
+     <br><dt><code>jCOND +N</code><dd>Skips next N bytes followed by jump instruction and equivalent to
+<span class="samp">jCOND $+N+2</span>
+
+   </dl>
+
+   <p>Also, there are some instructions, which cannot be found in other assemblers. 
+These are branch instructions, which has different opcodes upon jump distance. 
+They all got PC relative addressing mode.
+
+     <dl>
+<dt><code>beq label</code><dd>A polymorph instruction which is <span class="samp">jeq label</span> in case if jump distance
+within allowed range for cpu's jump instruction. If not, this unrolls into
+a sequence of
+     <pre class="smallexample">            jne $+6
+            br  label
+     </pre>
+     <br><dt><code>bne label</code><dd>A polymorph instruction which is <span class="samp">jne label</span> or <span class="samp">jeq +4; br label</span>
+
+     <br><dt><code>blt label</code><dd>A polymorph instruction which is <span class="samp">jl label</span> or <span class="samp">jge +4; br label</span>
+
+     <br><dt><code>bltn label</code><dd>A polymorph instruction which is <span class="samp">jn label</span> or <span class="samp">jn +2; jmp +4; br label</span>
+
+     <br><dt><code>bltu label</code><dd>A polymorph instruction which is <span class="samp">jlo label</span> or <span class="samp">jhs +2; br label</span>
+
+     <br><dt><code>bge label</code><dd>A polymorph instruction which is <span class="samp">jge label</span> or <span class="samp">jl +4; br label</span>
+
+     <br><dt><code>bgeu label</code><dd>A polymorph instruction which is <span class="samp">jhs label</span> or <span class="samp">jlo +4; br label</span>
+
+     <br><dt><code>bgt label</code><dd>A polymorph instruction which is <span class="samp">jeq +2; jge label</span> or <span class="samp">jeq +6; jl  +4; br label</span>
+
+     <br><dt><code>bgtu label</code><dd>A polymorph instruction which is <span class="samp">jeq +2; jhs label</span> or <span class="samp">jeq +6; jlo +4; br label</span>
+
+     <br><dt><code>bleu label</code><dd>A polymorph instruction which is <span class="samp">jeq label; jlo label</span> or <span class="samp">jeq +2; jhs +4; br label</span>
+
+     <br><dt><code>ble label</code><dd>A polymorph instruction which is <span class="samp">jeq label; jl  label</span> or <span class="samp">jeq +2; jge +4; br label</span>
+
+     <br><dt><code>jump label</code><dd>A polymorph instruction which is <span class="samp">jmp label</span> or <span class="samp">br label</span>
+</dl>
+
+   </body></html>
+

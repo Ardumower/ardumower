@@ -1,0 +1,38 @@
+--- gcc/config/avr/avr.c.old	2008-04-02 15:32:52.060936100 -0600
++++ gcc/config/avr/avr.c	2008-04-02 15:41:15.506387300 -0600
+@@ -266,7 +266,6 @@ static const struct mcu_type_s avr_mcu_t
+   { "atmega329p",   ARCH_AVR5, "__AVR_ATmega329P__" },
+   { "atmega3290",   ARCH_AVR5, "__AVR_ATmega3290__" },
+   { "atmega3290p",  ARCH_AVR5, "__AVR_ATmega3290P__" },
+-  { "atmega32hvb",  ARCH_AVR5, "__AVR_ATmega32HVB__" },
+   { "atmega406",    ARCH_AVR5, "__AVR_ATmega406__" },
+   { "atmega64",     ARCH_AVR5, "__AVR_ATmega64__" },
+   { "atmega640",    ARCH_AVR5, "__AVR_ATmega640__" },
+--- gcc/config/avr/avr.h.old	2008-04-02 15:32:52.060936100 -0600
++++ gcc/config/avr/avr.h	2008-04-02 15:41:38.809251300 -0600
+@@ -899,7 +899,6 @@ mmcu=*:-mmcu=%*}"
+   mmcu=atmega169*|\
+   mmcu=atmega8hva|\
+   mmcu=atmega16hva|\
+-  mmcu=atmega32hvb|\
+   mmcu=attiny48|\
+   mmcu=attiny88|\
+   mmcu=attiny167|\
+@@ -1002,7 +1001,6 @@ mmcu=*:-mmcu=%*}"
+ %{mmcu=atmega329p:crtm329p.o%s} \
+ %{mmcu=atmega3290:crtm3290.o%s} \
+ %{mmcu=atmega3290p:crtm3290p.o%s} \
+-%{mmcu=atmega32hvb:crtm32hvb.o%s} \
+ %{mmcu=atmega406:crtm406.o%s} \
+ %{mmcu=atmega64:crtm64.o%s} \
+ %{mmcu=atmega640:crtm640.o%s} \
+--- gcc/config/avr/t-avr.old	2008-04-02 15:32:51.671301100 -0600
++++ gcc/config/avr/t-avr	2008-04-02 15:41:27.415008100 -0600
+@@ -100,7 +100,6 @@ MULTILIB_MATCHES = \
+ 	mmcu?avr5=mmcu?atmega329p \
+ 	mmcu?avr5=mmcu?atmega3290 \
+ 	mmcu?avr5=mmcu?atmega3290p \
+-	mmcu?avr5=mmcu?atmega32hvb \
+ 	mmcu?avr5=mmcu?atmega406 \
+ 	mmcu?avr5=mmcu?atmega64  \
+ 	mmcu?avr5=mmcu?atmega640 \

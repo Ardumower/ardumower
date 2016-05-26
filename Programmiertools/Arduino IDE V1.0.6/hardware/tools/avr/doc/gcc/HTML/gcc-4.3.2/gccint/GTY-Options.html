@@ -1,0 +1,285 @@
+<html lang="en">
+<head>
+<title>GTY Options - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Type-Information.html#Type-Information" title="Type Information">
+<link rel="next" href="GGC-Roots.html#GGC-Roots" title="GGC Roots">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="GTY-Options"></a>Next:&nbsp;<a rel="next" accesskey="n" href="GGC-Roots.html#GGC-Roots">GGC Roots</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Type-Information.html#Type-Information">Type Information</a>
+<hr><br>
+</div>
+
+<h3 class="section">20.1 The Inside of a <code>GTY(())</code></h3>
+
+<p>Sometimes the C code is not enough to fully describe the type
+structure.  Extra information can be provided with <code>GTY</code> options
+and additional markers.  Some options take a parameter, which may be
+either a string or a type name, depending on the parameter.  If an
+option takes no parameter, it is acceptable either to omit the
+parameter entirely, or to provide an empty string as a parameter.  For
+example, <code>GTY&nbsp;((skip))<!-- /@w --></code> and <code>GTY&nbsp;((skip&nbsp;("")))<!-- /@w --></code> are
+equivalent.
+
+ <p>When the parameter is a string, often it is a fragment of C code.  Four
+special escapes may be used in these strings, to refer to pieces of
+the data structure being marked:
+
+ <p><a name="index-_0025-in-GTY-option-4369"></a>
+     <dl>
+<dt><code>%h</code><dd>The current structure. 
+<br><dt><code>%1</code><dd>The structure that immediately contains the current structure. 
+<br><dt><code>%0</code><dd>The outermost structure that contains the current structure. 
+<br><dt><code>%a</code><dd>A partial expression of the form <code>[i1][i2]...</code> that indexes
+the array item currently being marked. 
+</dl>
+
+ <p>For instance, suppose that you have a structure of the form
+<pre class="smallexample">     struct A {
+       ...
+     };
+     struct B {
+       struct A foo[12];
+     };
+</pre>
+ <p class="noindent">and <code>b</code> is a variable of type <code>struct B</code>.  When marking
+<span class="samp">b.foo[11]</span>, <code>%h</code> would expand to <span class="samp">b.foo[11]</span>,
+<code>%0</code> and <code>%1</code> would both expand to <span class="samp">b</span>, and <code>%a</code>
+would expand to <span class="samp">[11]</span>.
+
+ <p>As in ordinary C, adjacent strings will be concatenated; this is
+helpful when you have a complicated expression.
+<pre class="smallexample">     GTY ((chain_next ("TREE_CODE (&amp;%h.generic) == INTEGER_TYPE"
+                       " ? TYPE_NEXT_VARIANT (&amp;%h.generic)"
+                       " : TREE_CHAIN (&amp;%h.generic)")))
+</pre>
+ <p>The available options are:
+
+     
+<a name="index-length-4370"></a>
+<dl><dt><code>length ("</code><var>expression</var><code>")</code><dd>
+There are two places the type machinery will need to be explicitly told
+the length of an array.  The first case is when a structure ends in a
+variable-length array, like this:
+     <pre class="smallexample">          struct rtvec_def GTY(()) {
+            int num_elem;		/* <span class="roman">number of elements</span> */
+            rtx GTY ((length ("%h.num_elem"))) elem[1];
+          };
+     </pre>
+     <p>In this case, the <code>length</code> option is used to override the specified
+array length (which should usually be <code>1</code>).  The parameter of the
+option is a fragment of C code that calculates the length.
+
+     <p>The second case is when a structure or a global variable contains a
+pointer to an array, like this:
+     <pre class="smallexample">          tree *
+            GTY ((length ("%h.regno_pointer_align_length"))) regno_decl;
+     </pre>
+     <p>In this case, <code>regno_decl</code> has been allocated by writing something like
+     <pre class="smallexample">            x-&gt;regno_decl =
+              ggc_alloc (x-&gt;regno_pointer_align_length * sizeof (tree));
+     </pre>
+     <p>and the <code>length</code> provides the length of the field.
+
+     <p>This second use of <code>length</code> also works on global variables, like:
+<pre class="verbatim">     
+       static GTY((length ("reg_base_value_size")))
+         rtx *reg_base_value;
+</pre>
+
+     <p><a name="index-skip-4371"></a><br><dt><code>skip</code><dd>
+If <code>skip</code> is applied to a field, the type machinery will ignore it. 
+This is somewhat dangerous; the only safe use is in a union when one
+field really isn't ever used.
+
+     <p><a name="index-desc-4372"></a><a name="index-tag-4373"></a><a name="index-default-4374"></a><br><dt><code>desc ("</code><var>expression</var><code>")</code><dt><code>tag ("</code><var>constant</var><code>")</code><dt><code>default</code><dd>
+The type machinery needs to be told which field of a <code>union</code> is
+currently active.  This is done by giving each field a constant
+<code>tag</code> value, and then specifying a discriminator using <code>desc</code>. 
+The value of the expression given by <code>desc</code> is compared against
+each <code>tag</code> value, each of which should be different.  If no
+<code>tag</code> is matched, the field marked with <code>default</code> is used if
+there is one, otherwise no field in the union will be marked.
+
+     <p>In the <code>desc</code> option, the &ldquo;current structure&rdquo; is the union that
+it discriminates.  Use <code>%1</code> to mean the structure containing it. 
+There are no escapes available to the <code>tag</code> option, since it is a
+constant.
+
+     <p>For example,
+     <pre class="smallexample">          struct tree_binding GTY(())
+          {
+            struct tree_common common;
+            union tree_binding_u {
+              tree GTY ((tag ("0"))) scope;
+              struct cp_binding_level * GTY ((tag ("1"))) level;
+            } GTY ((desc ("BINDING_HAS_LEVEL_P ((tree)&amp;%0)"))) xscope;
+            tree value;
+          };
+     </pre>
+     <p>In this example, the value of BINDING_HAS_LEVEL_P when applied to a
+<code>struct tree_binding *</code> is presumed to be 0 or 1.  If 1, the type
+mechanism will treat the field <code>level</code> as being present and if 0,
+will treat the field <code>scope</code> as being present.
+
+     <p><a name="index-param_005fis-4375"></a><a name="index-use_005fparam-4376"></a><br><dt><code>param_is (</code><var>type</var><code>)</code><dt><code>use_param</code><dd>
+Sometimes it's convenient to define some data structure to work on
+generic pointers (that is, <code>PTR</code>) and then use it with a specific
+type.  <code>param_is</code> specifies the real type pointed to, and
+<code>use_param</code> says where in the generic data structure that type
+should be put.
+
+     <p>For instance, to have a <code>htab_t</code> that points to trees, one would
+write the definition of <code>htab_t</code> like this:
+     <pre class="smallexample">          typedef struct GTY(()) {
+            ...
+            void ** GTY ((use_param, ...)) entries;
+            ...
+          } htab_t;
+     </pre>
+     <p>and then declare variables like this:
+     <pre class="smallexample">            static htab_t GTY ((param_is (union tree_node))) ict;
+     </pre>
+     <p><a name="index-param_0040var_007bn_007d_005fis-4377"></a><a name="index-use_005fparam_0040var_007bn_007d-4378"></a><br><dt><code>param</code><var>n</var><code>_is (</code><var>type</var><code>)</code><dt><code>use_param</code><var>n</var><dd>
+In more complicated cases, the data structure might need to work on
+several different types, which might not necessarily all be pointers. 
+For this, <code>param1_is</code> through <code>param9_is</code> may be used to
+specify the real type of a field identified by <code>use_param1</code> through
+<code>use_param9</code>.
+
+     <p><a name="index-use_005fparams-4379"></a><br><dt><code>use_params</code><dd>
+When a structure contains another structure that is parameterized,
+there's no need to do anything special, the inner structure inherits the
+parameters of the outer one.  When a structure contains a pointer to a
+parameterized structure, the type machinery won't automatically detect
+this (it could, it just doesn't yet), so it's necessary to tell it that
+the pointed-to structure should use the same parameters as the outer
+structure.  This is done by marking the pointer with the
+<code>use_params</code> option.
+
+     <p><a name="index-deletable-4380"></a><br><dt><code>deletable</code><dd>
+<code>deletable</code>, when applied to a global variable, indicates that when
+garbage collection runs, there's no need to mark anything pointed to
+by this variable, it can just be set to <code>NULL</code> instead.  This is used
+to keep a list of free structures around for re-use.
+
+     <p><a name="index-if_005fmarked-4381"></a><br><dt><code>if_marked ("</code><var>expression</var><code>")</code><dd>
+Suppose you want some kinds of object to be unique, and so you put them
+in a hash table.  If garbage collection marks the hash table, these
+objects will never be freed, even if the last other reference to them
+goes away.  GGC has special handling to deal with this: if you use the
+<code>if_marked</code> option on a global hash table, GGC will call the
+routine whose name is the parameter to the option on each hash table
+entry.  If the routine returns nonzero, the hash table entry will
+be marked as usual.  If the routine returns zero, the hash table entry
+will be deleted.
+
+     <p>The routine <code>ggc_marked_p</code> can be used to determine if an element
+has been marked already; in fact, the usual case is to use
+<code>if_marked ("ggc_marked_p")</code>.
+
+     <p><a name="index-mark_005fhook-4382"></a><br><dt><code>mark_hook ("</code><var>hook-routine-name</var><code>")</code><dd>
+If provided for a structure or union type, the given
+<var>hook-routine-name</var> (between double-quotes) is the name of a
+routine called when the garbage collector has just marked the data as
+reachable. This routine should not change the data, or call any ggc
+routine. Its only argument is a pointer to the just marked (const)
+structure or union.
+
+     <p><a name="index-maybe_005fundef-4383"></a><br><dt><code>maybe_undef</code><dd>
+When applied to a field, <code>maybe_undef</code> indicates that it's OK if
+the structure that this fields points to is never defined, so long as
+this field is always <code>NULL</code>.  This is used to avoid requiring
+backends to define certain optional structures.  It doesn't work with
+language frontends.
+
+     <p><a name="index-nested_005fptr-4384"></a><br><dt><code>nested_ptr (</code><var>type</var><code>, "</code><var>to expression</var><code>", "</code><var>from expression</var><code>")</code><dd>
+The type machinery expects all pointers to point to the start of an
+object.  Sometimes for abstraction purposes it's convenient to have
+a pointer which points inside an object.  So long as it's possible to
+convert the original object to and from the pointer, such pointers
+can still be used.  <var>type</var> is the type of the original object,
+the <var>to expression</var> returns the pointer given the original object,
+and the <var>from expression</var> returns the original object given
+the pointer.  The pointer will be available using the <code>%h</code>
+escape.
+
+     <p><a name="index-chain_005fnext-4385"></a><a name="index-chain_005fprev-4386"></a><a name="index-chain_005fcircular-4387"></a><br><dt><code>chain_next ("</code><var>expression</var><code>")</code><dt><code>chain_prev ("</code><var>expression</var><code>")</code><dt><code>chain_circular ("</code><var>expression</var><code>")</code><dd>
+It's helpful for the type machinery to know if objects are often
+chained together in long lists; this lets it generate code that uses
+less stack space by iterating along the list instead of recursing down
+it.  <code>chain_next</code> is an expression for the next item in the list,
+<code>chain_prev</code> is an expression for the previous item.  For singly
+linked lists, use only <code>chain_next</code>; for doubly linked lists, use
+both.  The machinery requires that taking the next item of the
+previous item gives the original item.  <code>chain_circular</code> is similar
+to <code>chain_next</code>, but can be used for circular single linked lists.
+
+     <p><a name="index-reorder-4388"></a><br><dt><code>reorder ("</code><var>function name</var><code>")</code><dd>
+Some data structures depend on the relative ordering of pointers.  If
+the precompiled header machinery needs to change that ordering, it
+will call the function referenced by the <code>reorder</code> option, before
+changing the pointers in the object that's pointed to by the field the
+option applies to.  The function must take four arguments, with the
+signature <span class="samp">void&nbsp;*,&nbsp;void&nbsp;*,&nbsp;gt_pointer_operator,&nbsp;void&nbsp;*<!-- /@w --></span>. 
+The first parameter is a pointer to the structure that contains the
+object being updated, or the object itself if there is no containing
+structure.  The second parameter is a cookie that should be ignored. 
+The third parameter is a routine that, given a pointer, will update it
+to its correct new value.  The fourth parameter is a cookie that must
+be passed to the second parameter.
+
+     <p>PCH cannot handle data structures that depend on the absolute values
+of pointers.  <code>reorder</code> functions can be expensive.  When
+possible, it is better to depend on properties of the data, like an ID
+number or the hash of a string instead.
+
+     <p><a name="index-special-4389"></a><br><dt><code>special ("</code><var>name</var><code>")</code><dd>
+The <code>special</code> option is used to mark types that have to be dealt
+with by special case machinery.  The parameter is the name of the
+special case.  See <span class="file">gengtype.c</span> for further details.  Avoid
+adding new special cases unless there is no other alternative. 
+</dl>
+
+ </body></html>
+

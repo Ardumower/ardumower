@@ -1,0 +1,1030 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: GDB Files</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: GDB Files">
+<META NAME="keywords" CONTENT="Debugging with GDB: GDB Files">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC154"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_15.html#SEC153"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC155"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_3.html#SEC6"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC158"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 15. GDB Files </H1>
+<!--docid::SEC154::-->
+<P>
+
+GDB needs to know the file name of the program to be debugged,
+both in order to read its symbol table and in order to start your
+program.  To debug a core dump of a previous run, you must also tell
+GDB the name of the core dump file.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_16.html#SEC155">15.1 Commands to Specify Files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Commands to specify files</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_16.html#SEC156">15.2 Debugging Information in Separate Files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Debugging information in separate files</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_16.html#SEC157">15.3 Errors Reading Symbol Files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Errors reading symbol files</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Files"></A>
+<HR SIZE="6">
+<A NAME="SEC155"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC156"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC158"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 15.1 Commands to Specify Files </H2>
+<!--docid::SEC155::-->
+<P>
+
+<A NAME="IDX702"></A>
+<A NAME="IDX703"></A>
+</P><P>
+
+You may want to specify executable and core dump file names.  The usual
+way to do this is at start-up time, using the arguments to
+GDB's start-up commands (see section <A HREF="gdb_3.html#SEC6">Getting In and Out of GDB</A>).
+</P><P>
+
+Occasionally it is necessary to change to a different file during a
+GDB session.  Or you may run GDB and forget to
+specify a file you want to use.  Or you are debugging a remote target
+via <CODE>gdbserver</CODE> (see section <A HREF="gdb_18.html#SEC165">Using the <CODE>gdbserver</CODE> Program</A>).  In these situations the GDB commands to specify
+new files are useful.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX704"></A>
+<A NAME="IDX705"></A>
+<DT><CODE>file <VAR>filename</VAR></CODE>
+<DD>Use <VAR>filename</VAR> as the program to be debugged.  It is read for its
+symbols and for the contents of pure memory.  It is also the program
+executed when you use the <CODE>run</CODE> command.  If you do not specify a
+directory and the file is not found in the GDB working directory,
+GDB uses the environment variable <CODE>PATH</CODE> as a list of
+directories to search, just as the shell does when looking for a program
+to run.  You can change the value of this variable, for both GDB
+and your program, using the <CODE>path</CODE> command.
+<P>
+
+<A NAME="IDX706"></A>
+<A NAME="IDX707"></A>
+You can load unlinked object <TT>`.o'</TT> files into GDB using
+the <CODE>file</CODE> command.  You will not be able to "run" an object
+file, but you can disassemble functions and inspect variables.  Also,
+if the underlying BFD functionality supports it, you could use
+<KBD>gdb -write</KBD> to patch object files using this technique.  Note
+that GDB can neither interpret nor modify relocations in this
+case, so branches and some initialized variables will appear to go to
+the wrong place.  But this feature is still handy from time to time.
+</P><P>
+
+<DT><CODE>file</CODE>
+<DD><CODE>file</CODE> with no argument makes GDB discard any information it
+has on both executable file and the symbol table.
+<P>
+
+<A NAME="IDX708"></A>
+<DT><CODE>exec-file [ <VAR>filename</VAR> ]</CODE>
+<DD>Specify that the program to be run (but not the symbol table) is found
+in <VAR>filename</VAR>.  GDB searches the environment variable <CODE>PATH</CODE>
+if necessary to locate your program.  Omitting <VAR>filename</VAR> means to
+discard information on the executable file.
+<P>
+
+<A NAME="IDX709"></A>
+<DT><CODE>symbol-file [ <VAR>filename</VAR> ]</CODE>
+<DD>Read symbol table information from file <VAR>filename</VAR>.  <CODE>PATH</CODE> is
+searched when necessary.  Use the <CODE>file</CODE> command to get both symbol
+table and program to run from the same file.
+<P>
+
+<CODE>symbol-file</CODE> with no argument clears out GDB information on your
+program's symbol table.
+</P><P>
+
+The <CODE>symbol-file</CODE> command causes GDB to forget the contents of
+some breakpoints and auto-display expressions.  This is because they may
+contain pointers to the internal data recording symbols and data types,
+which are part of the old symbol table data being discarded inside
+GDB.
+</P><P>
+
+<CODE>symbol-file</CODE> does not repeat if you press <KBD>RET</KBD> again after
+executing it once.
+</P><P>
+
+When GDB is configured for a particular environment, it
+understands debugging information in whatever format is the standard
+generated for that environment; you may use either a GNU compiler, or
+other compilers that adhere to the local conventions.
+Best results are usually obtained from GNU compilers; for example,
+using <CODE>GCC</CODE> you can generate debugging information for
+optimized code.
+</P><P>
+
+For most kinds of object files, with the exception of old SVR3 systems
+using COFF, the <CODE>symbol-file</CODE> command does not normally read the
+symbol table in full right away.  Instead, it scans the symbol table
+quickly to find which source files and which symbols are present.  The
+details are read later, one source file at a time, as they are needed.
+</P><P>
+
+The purpose of this two-stage reading strategy is to make GDB
+start up faster.  For the most part, it is invisible except for
+occasional pauses while the symbol table details for a particular source
+file are being read.  (The <CODE>set verbose</CODE> command can turn these
+pauses into messages if desired.  See section <A HREF="gdb_20.html#SEC227">Optional Warnings and Messages</A>.)
+</P><P>
+
+We have not implemented the two-stage strategy for COFF yet.  When the
+symbol table is stored in COFF format, <CODE>symbol-file</CODE> reads the
+symbol table data in full right away.  Note that "stabs-in-COFF"
+still does the two-stage strategy, since the debug info is actually
+in stabs format.
+</P><P>
+
+<A NAME="IDX710"></A>
+<A NAME="IDX711"></A>
+<A NAME="IDX712"></A>
+<DT><CODE>symbol-file <VAR>filename</VAR> [ -readnow ]</CODE>
+<DD><DT><CODE>file <VAR>filename</VAR> [ -readnow ]</CODE>
+<DD>You can override the GDB two-stage strategy for reading symbol
+tables by using the <SAMP>`-readnow'</SAMP> option with any of the commands that
+load symbol table information, if you want to be sure GDB has the
+entire symbol table available.
+<P>
+
+<A NAME="IDX713"></A>
+<DT><CODE>core-file [<VAR>filename</VAR>]</CODE>
+<DD><DT><CODE>core</CODE>
+<DD>Specify the whereabouts of a core dump file to be used as the "contents
+of memory".  Traditionally, core files contain only some parts of the
+address space of the process that generated them; GDB can access the
+executable file itself for other parts.
+<P>
+
+<CODE>core-file</CODE> with no argument specifies that no core file is
+to be used.
+</P><P>
+
+Note that the core file is ignored when your program is actually running
+under GDB.  So, if you have been running your program and you
+wish to debug a core file instead, you must kill the subprocess in which
+the program is running.  To do this, use the <CODE>kill</CODE> command
+(see section <A HREF="gdb_5.html#SEC26">Killing the Child Process</A>).
+</P><P>
+
+<A NAME="IDX714"></A>
+<A NAME="IDX715"></A>
+<DT><CODE>add-symbol-file <VAR>filename</VAR> <VAR>address</VAR></CODE>
+<DD><DT><CODE>add-symbol-file <VAR>filename</VAR> <VAR>address</VAR> [ -readnow ]</CODE>
+<DD><DT><CODE>add-symbol-file <VAR>filename</VAR> -s<VAR>section</VAR> <VAR>address</VAR> <small>...</small></CODE>
+<DD>The <CODE>add-symbol-file</CODE> command reads additional symbol table
+information from the file <VAR>filename</VAR>.  You would use this command
+when <VAR>filename</VAR> has been dynamically loaded (by some other means)
+into the program that is running.  <VAR>address</VAR> should be the memory
+address at which the file has been loaded; GDB cannot figure
+this out for itself.  You can additionally specify an arbitrary number
+of <SAMP>`-s<VAR>section</VAR> <VAR>address</VAR>'</SAMP> pairs, to give an explicit
+section name and base address for that section.  You can specify any
+<VAR>address</VAR> as an expression.
+<P>
+
+The symbol table of the file <VAR>filename</VAR> is added to the symbol table
+originally read with the <CODE>symbol-file</CODE> command.  You can use the
+<CODE>add-symbol-file</CODE> command any number of times; the new symbol data
+thus read keeps adding to the old.  To discard all old symbol data
+instead, use the <CODE>symbol-file</CODE> command without any arguments.
+</P><P>
+
+<A NAME="IDX716"></A>
+<A NAME="IDX717"></A>
+<A NAME="IDX718"></A>
+<A NAME="IDX719"></A>
+<A NAME="IDX720"></A>
+Although <VAR>filename</VAR> is typically a shared library file, an
+executable file, or some other object file which has been fully
+relocated for loading into a process, you can also load symbolic
+information from relocatable <TT>`.o'</TT> files, as long as:
+</P><P>
+
+<UL>
+<LI>
+the file's symbolic information refers only to linker symbols defined in
+that file, not to symbols defined by other object files,
+<LI>
+every section the file's symbolic information refers to has actually
+been loaded into the inferior, as it appears in the file, and
+<LI>
+you can determine the address at which every section was loaded, and
+provide these to the <CODE>add-symbol-file</CODE> command.
+</UL>
+<P>
+
+Some embedded operating systems, like Sun Chorus and VxWorks, can load
+relocatable files into an already running program; such systems
+typically make the requirements above easy to meet.  However, it's
+important to recognize that many native systems use complex link
+procedures (<CODE>.linkonce</CODE> section factoring and C<TT>++</TT> constructor table
+assembly, for example) that make the requirements difficult to meet.  In
+general, one cannot assume that using <CODE>add-symbol-file</CODE> to read a
+relocatable object file's symbolic information will have the same effect
+as linking the relocatable object file into the program in the normal
+way.
+</P><P>
+
+<CODE>add-symbol-file</CODE> does not repeat if you press <KBD>RET</KBD> after using it.
+</P><P>
+
+<A NAME="IDX721"></A>
+<A NAME="IDX722"></A>
+<A NAME="IDX723"></A>
+<DT><CODE>add-symbol-file-from-memory <VAR>address</VAR></CODE>
+<DD>Load symbols from the given <VAR>address</VAR> in a dynamically loaded
+object file whose image is mapped directly into the inferior's memory.
+For example, the Linux kernel maps a <CODE>syscall DSO</CODE> into each
+process's address space; this DSO provides kernel-specific code for
+some system calls.  The argument can be any expression whose
+evaluation yields the address of the file's shared object file header.
+For this command to work, you must have used <CODE>symbol-file</CODE> or
+<CODE>exec-file</CODE> commands in advance.
+<P>
+
+<A NAME="IDX724"></A>
+<A NAME="IDX725"></A>
+<DT><CODE>add-shared-symbol-files <VAR>library-file</VAR></CODE>
+<DD><DT><CODE>assf <VAR>library-file</VAR></CODE>
+<DD>The <CODE>add-shared-symbol-files</CODE> command can currently be used only
+in the Cygwin build of GDB on MS-Windows OS, where it is an
+alias for the <CODE>dll-symbols</CODE> command (see section <A HREF="gdb_19.html#SEC183">18.1.5 Features for Debugging MS Windows PE Executables</A>).
+GDB automatically looks for shared libraries, however if
+GDB does not find yours, you can invoke
+<CODE>add-shared-symbol-files</CODE>.  It takes one argument: the shared
+library's file name.  <CODE>assf</CODE> is a shorthand alias for
+<CODE>add-shared-symbol-files</CODE>.
+<P>
+
+<A NAME="IDX726"></A>
+<DT><CODE>section <VAR>section</VAR> <VAR>addr</VAR></CODE>
+<DD>The <CODE>section</CODE> command changes the base address of the named
+<VAR>section</VAR> of the exec file to <VAR>addr</VAR>.  This can be used if the
+exec file does not contain section addresses, (such as in the
+<CODE>a.out</CODE> format), or when the addresses specified in the file
+itself are wrong.  Each section must be changed separately.  The
+<CODE>info files</CODE> command, described below, lists all the sections and
+their addresses.
+<P>
+
+<A NAME="IDX727"></A>
+<A NAME="IDX728"></A>
+<DT><CODE>info files</CODE>
+<DD><DT><CODE>info target</CODE>
+<DD><CODE>info files</CODE> and <CODE>info target</CODE> are synonymous; both print the
+current target (see section <A HREF="gdb_17.html#SEC158">Specifying a Debugging Target</A>),
+including the names of the executable and core dump files currently in
+use by GDB, and the files from which symbols were loaded.  The
+command <CODE>help target</CODE> lists all possible targets rather than
+current ones.
+<P>
+
+<A NAME="IDX729"></A>
+<DT><CODE>maint info sections</CODE>
+<DD>Another command that can give you extra information about program sections
+is <CODE>maint info sections</CODE>.  In addition to the section information
+displayed by <CODE>info files</CODE>, this command displays the flags and file
+offset of each section in the executable and core dump files.  In addition,
+<CODE>maint info sections</CODE> provides the following command options (which
+may be arbitrarily combined):
+<P>
+
+<DL COMPACT>
+<DT><CODE>ALLOBJ</CODE>
+<DD>Display sections for all loaded object files, including shared libraries.
+<DT><CODE><VAR>sections</VAR></CODE>
+<DD>Display info only for named <VAR>sections</VAR>.
+<DT><CODE><VAR>section-flags</VAR></CODE>
+<DD>Display info only for sections for which <VAR>section-flags</VAR> are true.
+The section flags that GDB currently knows about are:
+<DL COMPACT>
+<DT><CODE>ALLOC</CODE>
+<DD>Section will have space allocated in the process when loaded.
+Set for all sections except those containing debug information.
+<DT><CODE>LOAD</CODE>
+<DD>Section will be loaded from the file into the child process memory.
+Set for pre-initialized code and data, clear for <CODE>.bss</CODE> sections.
+<DT><CODE>RELOC</CODE>
+<DD>Section needs to be relocated before loading.
+<DT><CODE>READONLY</CODE>
+<DD>Section cannot be modified by the child process.
+<DT><CODE>CODE</CODE>
+<DD>Section contains executable code only.
+<DT><CODE>DATA</CODE>
+<DD>Section contains data only (no executable code).
+<DT><CODE>ROM</CODE>
+<DD>Section will reside in ROM.
+<DT><CODE>CONSTRUCTOR</CODE>
+<DD>Section contains data for constructor/destructor lists.
+<DT><CODE>HAS_CONTENTS</CODE>
+<DD>Section is not empty.
+<DT><CODE>NEVER_LOAD</CODE>
+<DD>An instruction to the linker to not output the section.
+<DT><CODE>COFF_SHARED_LIBRARY</CODE>
+<DD>A notification to the linker that the section contains
+COFF shared library information.
+<DT><CODE>IS_COMMON</CODE>
+<DD>Section contains common symbols.
+</DL>
+</DL>
+<A NAME="IDX730"></A>
+<A NAME="IDX731"></A>
+<DT><CODE>set trust-readonly-sections on</CODE>
+<DD>Tell GDB that readonly sections in your object file
+really are read-only (i.e. that their contents will not change).
+In that case, GDB can fetch values from these sections
+out of the object file, rather than from the target program.
+For some targets (notably embedded ones), this can be a significant
+enhancement to debugging performance.
+<P>
+
+The default is off.
+</P><P>
+
+<DT><CODE>set trust-readonly-sections off</CODE>
+<DD>Tell GDB not to trust readonly sections.  This means that
+the contents of the section might change while the program is running,
+and must therefore be fetched from the target when needed.
+<P>
+
+<DT><CODE>show trust-readonly-sections</CODE>
+<DD>Show the current setting of trusting readonly sections.
+</DL>
+<P>
+
+All file-specifying commands allow both absolute and relative file names
+as arguments.  GDB always converts the file name to an absolute file
+name and remembers it that way.
+</P><P>
+
+<A NAME="IDX732"></A>
+<A NAME="Shared Libraries"></A>
+GDB supports GNU/Linux, MS-Windows, HP-UX, SunOS, SVr4, Irix,
+and IBM RS/6000 AIX shared libraries.
+</P><P>
+
+On MS-Windows GDB must be linked with the Expat library to support
+shared libraries.  See  <A HREF="gdb_31.html#Expat">Expat</A>.
+</P><P>
+
+GDB automatically loads symbol definitions from shared libraries
+when you use the <CODE>run</CODE> command, or when you examine a core file.
+(Before you issue the <CODE>run</CODE> command, GDB does not understand
+references to a function in a shared library, however--unless you are
+debugging a core file).
+</P><P>
+
+On HP-UX, if the program loads a library explicitly, GDB
+automatically loads the symbols at the time of the <CODE>shl_load</CODE> call.
+</P><P>
+
+There are times, however, when you may wish to not automatically load
+symbol definitions from shared libraries, such as when they are
+particularly large or there are many of them.
+</P><P>
+
+To control the automatic loading of shared library symbols, use the
+commands:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX733"></A>
+<DT><CODE>set auto-solib-add <VAR>mode</VAR></CODE>
+<DD>If <VAR>mode</VAR> is <CODE>on</CODE>, symbols from all shared object libraries
+will be loaded automatically when the inferior begins execution, you
+attach to an independently started inferior, or when the dynamic linker
+informs GDB that a new library has been loaded.  If <VAR>mode</VAR>
+is <CODE>off</CODE>, symbols must be loaded manually, using the
+<CODE>sharedlibrary</CODE> command.  The default value is <CODE>on</CODE>.
+<P>
+
+<A NAME="IDX734"></A>
+If your program uses lots of shared libraries with debug info that
+takes large amounts of memory, you can decrease the GDB
+memory footprint by preventing it from automatically loading the
+symbols from shared libraries.  To that end, type <KBD>set
+auto-solib-add off</KBD> before running the inferior, then load each
+library whose debug symbols you do need with <KBD>sharedlibrary
+<VAR>regexp</VAR></KBD>, where <VAR>regexp</VAR> is a regular expression that matches
+the libraries whose symbols you want to be loaded.
+</P><P>
+
+<A NAME="IDX735"></A>
+<DT><CODE>show auto-solib-add</CODE>
+<DD>Display the current autoloading mode.
+</DL>
+<P>
+
+<A NAME="IDX736"></A>
+To explicitly load shared library symbols, use the <CODE>sharedlibrary</CODE>
+command:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX737"></A>
+<A NAME="IDX738"></A>
+<DT><CODE>info share</CODE>
+<DD><DT><CODE>info sharedlibrary</CODE>
+<DD>Print the names of the shared libraries which are currently loaded.
+<P>
+
+<A NAME="IDX739"></A>
+<A NAME="IDX740"></A>
+<DT><CODE>sharedlibrary <VAR>regex</VAR></CODE>
+<DD><DT><CODE>share <VAR>regex</VAR></CODE>
+<DD>Load shared object library symbols for files matching a
+Unix regular expression.
+As with files loaded automatically, it only loads shared libraries
+required by your program for a core file or after typing <CODE>run</CODE>.  If
+<VAR>regex</VAR> is omitted all shared libraries required by your program are
+loaded.
+<P>
+
+<DT><CODE>nosharedlibrary</CODE>
+<DD><A NAME="IDX741"></A>
+<A NAME="IDX742"></A>
+Unload all shared object library symbols.  This discards all symbols
+that have been loaded from all shared libraries.  Symbols from shared
+libraries that were loaded by explicit user requests are not
+discarded.
+</DL>
+<P>
+
+Sometimes you may wish that GDB stops and gives you control
+when any of shared library events happen.  Use the <CODE>set
+stop-on-solib-events</CODE> command for this:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set stop-on-solib-events</CODE>
+<DD><A NAME="IDX743"></A>
+This command controls whether GDB should give you control
+when the dynamic linker notifies it about some shared library event.
+The most common event of interest is loading or unloading of a new
+shared library.
+<P>
+
+<DT><CODE>show stop-on-solib-events</CODE>
+<DD><A NAME="IDX744"></A>
+Show whether GDB stops and gives you control when shared
+library events happen.
+</DL>
+<P>
+
+Shared libraries are also supported in many cross or remote debugging
+configurations.  A copy of the target's libraries need to be present on the
+host system; they need to be the same as the target libraries, although the
+copies on the target can be stripped as long as the copies on the host are
+not.
+</P><P>
+
+<A NAME="IDX745"></A>
+For remote debugging, you need to tell GDB where the target
+libraries are, so that it can load the correct copies--otherwise, it
+may try to load the host's libraries.  GDB has two variables
+to specify the search directories for target libraries.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX746"></A>
+<A NAME="IDX747"></A>
+<A NAME="IDX748"></A>
+<A NAME="IDX749"></A>
+<DT><CODE>set sysroot <VAR>path</VAR></CODE>
+<DD>Use <VAR>path</VAR> as the system root for the program being debugged.  Any
+absolute shared library paths will be prefixed with <VAR>path</VAR>; many
+runtime loaders store the absolute paths to the shared library in the
+target program's memory.  If you use <CODE>set sysroot</CODE> to find shared
+libraries, they need to be laid out in the same way that they are on
+the target, with e.g. a <TT>`/lib'</TT> and <TT>`/usr/lib'</TT> hierarchy
+under <VAR>path</VAR>.
+<P>
+
+The <CODE>set solib-absolute-prefix</CODE> command is an alias for <CODE>set
+sysroot</CODE>.
+</P><P>
+
+<A NAME="IDX750"></A>
+<A NAME="IDX751"></A>
+You can set the default system root by using the configure-time
+<SAMP>`--with-sysroot'</SAMP> option.  If the system root is inside
+GDB's configured binary prefix (set with <SAMP>`--prefix'</SAMP> or
+<SAMP>`--exec-prefix'</SAMP>), then the default system root will be updated
+automatically if the installed GDB is moved to a new
+location.
+</P><P>
+
+<A NAME="IDX752"></A>
+<DT><CODE>show sysroot</CODE>
+<DD>Display the current shared library prefix.
+<P>
+
+<A NAME="IDX753"></A>
+<DT><CODE>set solib-search-path <VAR>path</VAR></CODE>
+<DD>If this variable is set, <VAR>path</VAR> is a colon-separated list of
+directories to search for shared libraries.  <SAMP>`solib-search-path'</SAMP>
+is used after <SAMP>`sysroot'</SAMP> fails to locate the library, or if the
+path to the library is relative instead of absolute.  If you want to
+use <SAMP>`solib-search-path'</SAMP> instead of <SAMP>`sysroot'</SAMP>, be sure to set
+<SAMP>`sysroot'</SAMP> to a nonexistent directory to prevent GDB from
+finding your host's libraries.  <SAMP>`sysroot'</SAMP> is preferred; setting
+it to a nonexistent directory may interfere with automatic loading
+of shared library symbols.
+<P>
+
+<A NAME="IDX754"></A>
+<DT><CODE>show solib-search-path</CODE>
+<DD>Display the current shared library search path.
+</DL>
+<P>
+
+<A NAME="Separate Debug Files"></A>
+<HR SIZE="6">
+<A NAME="SEC156"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC155"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC157"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC157"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC158"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 15.2 Debugging Information in Separate Files </H2>
+<!--docid::SEC156::-->
+<P>
+
+GDB allows you to put a program's debugging information in a
+file separate from the executable itself, in a way that allows
+GDB to find and load the debugging information automatically.
+Since debugging information can be very large--sometimes larger
+than the executable code itself--some systems distribute debugging
+information for their executables in separate files, which users can
+install only when they need to debug a problem.
+</P><P>
+
+GDB supports two ways of specifying the separate debug info
+file:
+</P><P>
+
+<UL>
+<LI>
+The executable contains a <EM>debug link</EM> that specifies the name of
+the separate debug info file.  The separate debug file's name is
+usually <TT>`<VAR>executable</VAR>.debug'</TT>, where <VAR>executable</VAR> is the
+name of the corresponding executable file without leading directories
+(e.g., <TT>`ls.debug'</TT> for <TT>`/usr/bin/ls'</TT>).  In addition, the
+debug link specifies a CRC32 checksum for the debug file, which
+GDB uses to validate that the executable and the debug file
+came from the same build.
+<P>
+
+<LI>
+The executable contains a <EM>build ID</EM>, a unique bit string that is
+also present in the corresponding debug info file.  (This is supported
+only on some operating systems, notably those which use the ELF format
+for binary files and the GNU Binutils.)  For more details about
+this feature, see the description of the <SAMP>`--build-id'</SAMP>
+command-line option in section `Command Line Options' in <CITE>The GNU Linker</CITE>.  The debug info file's name is not specified
+explicitly by the build ID, but can be computed from the build ID, see
+below.
+</UL>
+<P>
+
+Depending on the way the debug info file is specified, GDB
+uses two different methods of looking for the debug file:
+</P><P>
+
+<UL>
+<LI>
+For the "debug link" method, GDB looks up the named file in
+the directory of the executable file, then in a subdirectory of that
+directory named <TT>`.debug'</TT>, and finally under the global debug
+directory, in a subdirectory whose name is identical to the leading
+directories of the executable's absolute file name.
+<P>
+
+<LI>
+For the "build ID" method, GDB looks in the
+<TT>`.build-id'</TT> subdirectory of the global debug directory for a file
+named <TT>`<VAR>nn</VAR>/<VAR>nnnnnnnn</VAR>.debug'</TT>, where <VAR>nn</VAR> are the
+first 2 hex characters of the build ID bit string, and <VAR>nnnnnnnn</VAR>
+are the rest of the bit string.  (Real build ID strings are 32 or more
+hex characters, not 10.)
+</UL>
+<P>
+
+So, for example, suppose you ask GDB to debug
+<TT>`/usr/bin/ls'</TT>, which has a debug link that specifies the
+file <TT>`ls.debug'</TT>, and a build ID whose value in hex is
+<CODE>abcdef1234</CODE>.  If the global debug directory is
+<TT>`/usr/lib/debug'</TT>, then GDB will look for the following
+debug information files, in the indicated order:
+</P><P>
+
+<UL>
+<LI>
+<TT>`/usr/lib/debug/.build-id/ab/cdef1234.debug'</TT>
+<LI>
+<TT>`/usr/bin/ls.debug'</TT>
+<LI>
+<TT>`/usr/bin/.debug/ls.debug'</TT>
+<LI>
+<TT>`/usr/lib/debug/usr/bin/ls.debug'</TT>.
+</UL>
+<P>
+
+You can set the global debugging info directory's name, and view the
+name GDB is currently using.
+</P><P>
+
+<DL COMPACT>
+
+<A NAME="IDX755"></A>
+<DT><CODE>set debug-file-directory <VAR>directory</VAR></CODE>
+<DD>Set the directory which GDB searches for separate debugging
+information files to <VAR>directory</VAR>.
+<P>
+
+<A NAME="IDX756"></A>
+<DT><CODE>show debug-file-directory</CODE>
+<DD>Show the directory GDB searches for separate debugging
+information files.
+<P>
+
+</DL>
+<P>
+
+<A NAME="IDX757"></A>
+<A NAME="IDX758"></A>
+A debug link is a special section of the executable file named
+<CODE>.gnu_debuglink</CODE>.  The section must contain:
+</P><P>
+
+<UL>
+<LI>
+A filename, with any leading directory components removed, followed by
+a zero byte,
+<LI>
+zero to three bytes of padding, as needed to reach the next four-byte
+boundary within the section, and
+<LI>
+a four-byte CRC checksum, stored in the same endianness used for the
+executable file itself.  The checksum is computed on the debugging
+information file's full contents by the function given below, passing
+zero as the <VAR>crc</VAR> argument.
+</UL>
+<P>
+
+Any executable file format can carry a debug link, as long as it can
+contain a section named <CODE>.gnu_debuglink</CODE> with the contents
+described above.
+</P><P>
+
+<A NAME="IDX759"></A>
+<A NAME="IDX760"></A>
+The build ID is a special section in the executable file (and in other
+ELF binary files that GDB may consider).  This section is
+often named <CODE>.note.gnu.build-id</CODE>, but that name is not mandatory.
+It contains unique identification for the built files--the ID remains
+the same across multiple builds of the same build tree.  The default
+algorithm SHA1 produces 160 bits (40 hexadecimal characters) of the
+content for the build ID string.  The same section with an identical
+value is present in the original built binary with symbols, in its
+stripped variant, and in the separate debugging information file.
+</P><P>
+
+The debugging information file itself should be an ordinary
+executable, containing a full set of linker symbols, sections, and
+debugging information.  The sections of the debugging information file
+should have the same names, addresses, and sizes as the original file,
+but they need not contain any data--much like a <CODE>.bss</CODE> section
+in an ordinary executable.
+</P><P>
+
+The GNU binary utilities (Binutils) package includes the
+<SAMP>`objcopy'</SAMP> utility that can produce
+the separated executable / debugging information file pairs using the
+following commands:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><KBD>objcopy --only-keep-debug foo foo.debug</KBD>
+<KBD>strip -g foo</KBD>
+</FONT></pre></td></tr></table></P><P>
+
+These commands remove the debugging
+information from the executable file <TT>`foo'</TT> and place it in the file
+<TT>`foo.debug'</TT>.  You can use the first, second or both methods to link the
+two files:
+</P><P>
+
+<UL>
+<LI>
+The debug link method needs the following additional command to also leave
+behind a debug link in <TT>`foo'</TT>:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><KBD>objcopy --add-gnu-debuglink=foo.debug foo</KBD>
+</FONT></pre></td></tr></table></P><P>
+
+Ulrich Drepper's <TT>`elfutils'</TT> package, starting with version 0.53, contains
+a version of the <CODE>strip</CODE> command such that the command <KBD>strip foo -f
+foo.debug</KBD> has the same functionality as the two <CODE>objcopy</CODE> commands and
+the <CODE>ln -s</CODE> command above, together.
+</P><P>
+
+<LI>
+Build ID gets embedded into the main executable using <CODE>ld --build-id</CODE> or
+the GCC counterpart <CODE>gcc -Wl,--build-id</CODE>.  Build ID support plus
+compatibility fixes for debug files separation are present in GNU binary
+utilities (Binutils) package since version 2.18.
+</UL>
+<P>
+
+</P><P>
+
+Since there are many different ways to compute CRC's for the debug
+link (different polynomials, reversals, byte ordering, etc.), the
+simplest way to describe the CRC used in <CODE>.gnu_debuglink</CODE>
+sections is to give the complete code for a function that computes it:
+</P><P>
+
+<A NAME="IDX761"></A>
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>unsigned long
+gnu_debuglink_crc32 (unsigned long crc,
+                     unsigned char *buf, size_t len)
+{
+  static const unsigned long crc32_table[256] =
+    {
+      0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419,
+      0x706af48f, 0xe963a535, 0x9e6495a3, 0x0edb8832, 0x79dcb8a4,
+      0xe0d5e91e, 0x97d2d988, 0x09b64c2b, 0x7eb17cbd, 0xe7b82d07,
+      0x90bf1d91, 0x1db71064, 0x6ab020f2, 0xf3b97148, 0x84be41de,
+      0x1adad47d, 0x6ddde4eb, 0xf4d4b551, 0x83d385c7, 0x136c9856,
+      0x646ba8c0, 0xfd62f97a, 0x8a65c9ec, 0x14015c4f, 0x63066cd9,
+      0xfa0f3d63, 0x8d080df5, 0x3b6e20c8, 0x4c69105e, 0xd56041e4,
+      0xa2677172, 0x3c03e4d1, 0x4b04d447, 0xd20d85fd, 0xa50ab56b,
+      0x35b5a8fa, 0x42b2986c, 0xdbbbc9d6, 0xacbcf940, 0x32d86ce3,
+      0x45df5c75, 0xdcd60dcf, 0xabd13d59, 0x26d930ac, 0x51de003a,
+      0xc8d75180, 0xbfd06116, 0x21b4f4b5, 0x56b3c423, 0xcfba9599,
+      0xb8bda50f, 0x2802b89e, 0x5f058808, 0xc60cd9b2, 0xb10be924,
+      0x2f6f7c87, 0x58684c11, 0xc1611dab, 0xb6662d3d, 0x76dc4190,
+      0x01db7106, 0x98d220bc, 0xefd5102a, 0x71b18589, 0x06b6b51f,
+      0x9fbfe4a5, 0xe8b8d433, 0x7807c9a2, 0x0f00f934, 0x9609a88e,
+      0xe10e9818, 0x7f6a0dbb, 0x086d3d2d, 0x91646c97, 0xe6635c01,
+      0x6b6b51f4, 0x1c6c6162, 0x856530d8, 0xf262004e, 0x6c0695ed,
+      0x1b01a57b, 0x8208f4c1, 0xf50fc457, 0x65b0d9c6, 0x12b7e950,
+      0x8bbeb8ea, 0xfcb9887c, 0x62dd1ddf, 0x15da2d49, 0x8cd37cf3,
+      0xfbd44c65, 0x4db26158, 0x3ab551ce, 0xa3bc0074, 0xd4bb30e2,
+      0x4adfa541, 0x3dd895d7, 0xa4d1c46d, 0xd3d6f4fb, 0x4369e96a,
+      0x346ed9fc, 0xad678846, 0xda60b8d0, 0x44042d73, 0x33031de5,
+      0xaa0a4c5f, 0xdd0d7cc9, 0x5005713c, 0x270241aa, 0xbe0b1010,
+      0xc90c2086, 0x5768b525, 0x206f85b3, 0xb966d409, 0xce61e49f,
+      0x5edef90e, 0x29d9c998, 0xb0d09822, 0xc7d7a8b4, 0x59b33d17,
+      0x2eb40d81, 0xb7bd5c3b, 0xc0ba6cad, 0xedb88320, 0x9abfb3b6,
+      0x03b6e20c, 0x74b1d29a, 0xead54739, 0x9dd277af, 0x04db2615,
+      0x73dc1683, 0xe3630b12, 0x94643b84, 0x0d6d6a3e, 0x7a6a5aa8,
+      0xe40ecf0b, 0x9309ff9d, 0x0a00ae27, 0x7d079eb1, 0xf00f9344,
+      0x8708a3d2, 0x1e01f268, 0x6906c2fe, 0xf762575d, 0x806567cb,
+      0x196c3671, 0x6e6b06e7, 0xfed41b76, 0x89d32be0, 0x10da7a5a,
+      0x67dd4acc, 0xf9b9df6f, 0x8ebeeff9, 0x17b7be43, 0x60b08ed5,
+      0xd6d6a3e8, 0xa1d1937e, 0x38d8c2c4, 0x4fdff252, 0xd1bb67f1,
+      0xa6bc5767, 0x3fb506dd, 0x48b2364b, 0xd80d2bda, 0xaf0a1b4c,
+      0x36034af6, 0x41047a60, 0xdf60efc3, 0xa867df55, 0x316e8eef,
+      0x4669be79, 0xcb61b38c, 0xbc66831a, 0x256fd2a0, 0x5268e236,
+      0xcc0c7795, 0xbb0b4703, 0x220216b9, 0x5505262f, 0xc5ba3bbe,
+      0xb2bd0b28, 0x2bb45a92, 0x5cb36a04, 0xc2d7ffa7, 0xb5d0cf31,
+      0x2cd99e8b, 0x5bdeae1d, 0x9b64c2b0, 0xec63f226, 0x756aa39c,
+      0x026d930a, 0x9c0906a9, 0xeb0e363f, 0x72076785, 0x05005713,
+      0x95bf4a82, 0xe2b87a14, 0x7bb12bae, 0x0cb61b38, 0x92d28e9b,
+      0xe5d5be0d, 0x7cdcefb7, 0x0bdbdf21, 0x86d3d2d4, 0xf1d4e242,
+      0x68ddb3f8, 0x1fda836e, 0x81be16cd, 0xf6b9265b, 0x6fb077e1,
+      0x18b74777, 0x88085ae6, 0xff0f6a70, 0x66063bca, 0x11010b5c,
+      0x8f659eff, 0xf862ae69, 0x616bffd3, 0x166ccf45, 0xa00ae278,
+      0xd70dd2ee, 0x4e048354, 0x3903b3c2, 0xa7672661, 0xd06016f7,
+      0x4969474d, 0x3e6e77db, 0xaed16a4a, 0xd9d65adc, 0x40df0b66,
+      0x37d83bf0, 0xa9bcae53, 0xdebb9ec5, 0x47b2cf7f, 0x30b5ffe9,
+      0xbdbdf21c, 0xcabac28a, 0x53b39330, 0x24b4a3a6, 0xbad03605,
+      0xcdd70693, 0x54de5729, 0x23d967bf, 0xb3667a2e, 0xc4614ab8,
+      0x5d681b02, 0x2a6f2b94, 0xb40bbe37, 0xc30c8ea1, 0x5a05df1b,
+      0x2d02ef8d
+    };
+  unsigned char *end;
+
+  crc = ~crc &#38; 0xffffffff;
+  for (end = buf + len; buf &#60; end; ++buf)
+    crc = crc32_table[(crc ^ *buf) &#38; 0xff] ^ (crc &#62;&#62; 8);
+  return ~crc &#38; 0xffffffff;
+}
+</FONT></pre></td></tr></table></P><P>
+
+This computation does not apply to the "build ID" method.
+</P><P>
+
+<A NAME="Symbol Errors"></A>
+<HR SIZE="6">
+<A NAME="SEC157"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC156"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC158"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC158"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 15.3 Errors Reading Symbol Files </H2>
+<!--docid::SEC157::-->
+<P>
+
+While reading a symbol file, GDB occasionally encounters problems,
+such as symbol types it does not recognize, or known bugs in compiler
+output.  By default, GDB does not notify you of such problems, since
+they are relatively common and primarily of interest to people
+debugging compilers.  If you are interested in seeing information
+about ill-constructed symbol tables, you can either ask GDB to print
+only one message about each such type of problem, no matter how many
+times the problem occurs; or you can ask GDB to print more messages,
+to see how many times the problems occur, with the <CODE>set
+complaints</CODE> command (see section <A HREF="gdb_20.html#SEC227">Optional Warnings and Messages</A>).
+</P><P>
+
+The messages currently printed, and their meanings, include:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>inner block not inside outer block in <VAR>symbol</VAR></CODE>
+<DD><P>
+
+The symbol information shows where symbol scopes begin and end
+(such as at the start of a function or a block of statements).  This
+error indicates that an inner scope block is not fully contained
+in its outer scope blocks.
+</P><P>
+
+GDB circumvents the problem by treating the inner block as if it had
+the same scope as the outer block.  In the error message, <VAR>symbol</VAR>
+may be shown as "<CODE>(don't know)</CODE>" if the outer block is not a
+function.
+</P><P>
+
+<DT><CODE>block at <VAR>address</VAR> out of order</CODE>
+<DD><P>
+
+The symbol information for symbol scope blocks should occur in
+order of increasing addresses.  This error indicates that it does not
+do so.
+</P><P>
+
+GDB does not circumvent this problem, and has trouble
+locating symbols in the source file whose symbols it is reading.  (You
+can often determine what source file is affected by specifying
+<CODE>set verbose on</CODE>.  See section <A HREF="gdb_20.html#SEC227">Optional Warnings and Messages</A>.)
+</P><P>
+
+<DT><CODE>bad block start address patched</CODE>
+<DD><P>
+
+The symbol information for a symbol scope block has a start address
+smaller than the address of the preceding source line.  This is known
+to occur in the SunOS 4.1.1 (and earlier) C compiler.
+</P><P>
+
+GDB circumvents the problem by treating the symbol scope block as
+starting on the previous source line.
+</P><P>
+
+<DT><CODE>bad string table offset in symbol <VAR>n</VAR></CODE>
+<DD><P>
+
+<A NAME="IDX762"></A>
+Symbol number <VAR>n</VAR> contains a pointer into the string table which is
+larger than the size of the string table.
+</P><P>
+
+GDB circumvents the problem by considering the symbol to have the
+name <CODE>foo</CODE>, which may cause other problems if many symbols end up
+with this name.
+</P><P>
+
+<DT><CODE>unknown symbol type <CODE>0x<VAR>nn</VAR></CODE></CODE>
+<DD><P>
+
+The symbol information contains new data types that GDB does
+not yet know how to read.  <CODE>0x<VAR>nn</VAR></CODE> is the symbol type of the
+uncomprehended information, in hexadecimal.
+</P><P>
+
+GDB circumvents the error by ignoring this symbol information.
+This usually allows you to debug your program, though certain symbols
+are not accessible.  If you encounter such a problem and feel like
+debugging it, you can debug <CODE>gdb</CODE> with itself, breakpoint
+on <CODE>complain</CODE>, then go up to the function <CODE>read_dbx_symtab</CODE>
+and examine <CODE>*bufp</CODE> to see the symbol.
+</P><P>
+
+<DT><CODE>stub type has NULL name</CODE>
+<DD><P>
+
+GDB could not find the full definition for a struct or class.
+</P><P>
+
+<DT><CODE>const/volatile indicator missing (ok if using g++ v1.x), got<small>...</small></CODE>
+<DD>The symbol information for a C<TT>++</TT> member function is missing some
+information that recent versions of the compiler should have output for
+it.
+<P>
+
+<DT><CODE>info mismatch between compiler and debugger</CODE>
+<DD><P>
+
+GDB could not parse a type specification output by the compiler.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="Targets"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_16.html#SEC154"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC158"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

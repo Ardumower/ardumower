@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+<title>Selection Statements - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Statements.html#Statements" title="Statements">
+<link rel="prev" href="Loops.html#Loops" title="Loops">
+<link rel="next" href="Jumps.html#Jumps" title="Jumps">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Selection-Statements"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Jumps.html#Jumps">Jumps</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Loops.html#Loops">Loops</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Statements.html#Statements">Statements</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">10.2.4.5 Selection Statements</h5>
+
+<p><a name="index-Selection-Statements-2082"></a>
+A simple selection statement, such as the C <code>if</code> statement, is
+expressed in GIMPLE using a void <code>COND_EXPR</code>.  If only one branch is
+used, the other is filled with an empty statement.
+
+ <p>Normally, the condition expression is reduced to a simple comparison.  If
+it is a shortcut (<code>&amp;&amp;</code> or <code>||</code>) expression, however, we try to
+break up the <code>if</code> into multiple <code>if</code>s so that the implied shortcut
+is taken directly, much like the transformation done by <code>do_jump</code> in
+the RTL expander.
+
+ <p>A <code>SWITCH_EXPR</code> in GIMPLE contains the condition and a
+<code>TREE_VEC</code> of <code>CASE_LABEL_EXPR</code>s describing the case values
+and corresponding <code>LABEL_DECL</code>s to jump to.  The body of the
+<code>switch</code> is moved after the <code>SWITCH_EXPR</code>.
+
+ </body></html>
+

@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+<title>Invoking G++ - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Invoking-GCC.html#Invoking-GCC" title="Invoking GCC">
+<link rel="prev" href="Overall-Options.html#Overall-Options" title="Overall Options">
+<link rel="next" href="C-Dialect-Options.html#C-Dialect-Options" title="C Dialect Options">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Invoking-G_002b_002b"></a>Next:&nbsp;<a rel="next" accesskey="n" href="C-Dialect-Options.html#C-Dialect-Options">C Dialect Options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Overall-Options.html#Overall-Options">Overall Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GCC.html#Invoking-GCC">Invoking GCC</a>
+<hr><br>
+</div>
+
+<h3 class="section">3.3 Compiling C++ Programs</h3>
+
+<p><a name="index-suffixes-for-C_002b_002b-source-88"></a><a name="index-C_002b_002b-source-file-suffixes-89"></a>C++ source files conventionally use one of the suffixes <span class="samp">.C</span>,
+<span class="samp">.cc</span>, <span class="samp">.cpp</span>, <span class="samp">.CPP</span>, <span class="samp">.c++</span>, <span class="samp">.cp</span>, or
+<span class="samp">.cxx</span>; C++ header files often use <span class="samp">.hh</span>, <span class="samp">.hpp</span>,
+<span class="samp">.H</span>, or (for shared template code) <span class="samp">.tcc</span>; and
+preprocessed C++ files use the suffix <span class="samp">.ii</span>.  GCC recognizes
+files with these names and compiles them as C++ programs even if you
+call the compiler the same way as for compiling C programs (usually
+with the name <span class="command">gcc</span>).
+
+ <p><a name="index-g_002b_002b-90"></a><a name="index-c_002b_002b-91"></a>However, the use of <span class="command">gcc</span> does not add the C++ library. 
+<span class="command">g++</span> is a program that calls GCC and treats <span class="samp">.c</span>,
+<span class="samp">.h</span> and <span class="samp">.i</span> files as C++ source files instead of C source
+files unless <span class="option">-x</span> is used, and automatically specifies linking
+against the C++ library.  This program is also useful when
+precompiling a C header file with a <span class="samp">.h</span> extension for use in C++
+compilations.  On many systems, <span class="command">g++</span> is also installed with
+the name <span class="command">c++</span>.
+
+ <p><a name="index-invoking-_0040command_007bg_002b_002b_007d-92"></a>When you compile C++ programs, you may specify many of the same
+command-line options that you use for compiling programs in any
+language; or command-line options meaningful for C and related
+languages; or options that are meaningful only for C++ programs. 
+See <a href="C-Dialect-Options.html#C-Dialect-Options">Options Controlling C Dialect</a>, for
+explanations of options for languages related to C. 
+See <a href="C_002b_002b-Dialect-Options.html#C_002b_002b-Dialect-Options">Options Controlling C++ Dialect</a>, for
+explanations of options that are meaningful only for C++ programs.
+
+ </body></html>
+

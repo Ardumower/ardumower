@@ -1,0 +1,62 @@
+Index: configure.ac
+===================================================================
+RCS file: /sources/avr-libc/avr-libc/configure.ac,v
+retrieving revision 1.55.2.23
+diff -u -p -r1.55.2.23 configure.ac
+--- configure.ac	6 Nov 2008 22:13:27 -0000	1.55.2.23
++++ configure.ac	24 Nov 2008 17:09:18 -0000
+@@ -711,7 +711,6 @@ AC_CONFIG_FILES([
+ 	avr/lib/avr2/attiny11/Makefile
+ 	avr/lib/avr2/attiny12/Makefile
+ 	avr/lib/avr2/attiny13/Makefile
+-	avr/lib/avr2/attiny13a/Makefile
+ 	avr/lib/avr2/attiny15/Makefile
+ 	avr/lib/avr2/attiny22/Makefile
+ 	avr/lib/avr2/attiny24/Makefile
+@@ -734,6 +733,7 @@ AC_CONFIG_FILES([
+ 	avr/lib/avr25/Makefile
+ 	avr/lib/avr25/at86rf401/Makefile
+ 	avr/lib/avr25/attiny13/Makefile
++	avr/lib/avr25/attiny13a/Makefile
+ 	avr/lib/avr25/attiny2313/Makefile
+ 	avr/lib/avr25/attiny24/Makefile
+ 	avr/lib/avr25/attiny25/Makefile
+Index: devtools/gen-avr-lib-tree.sh
+===================================================================
+RCS file: /sources/avr-libc/avr-libc/devtools/gen-avr-lib-tree.sh,v
+retrieving revision 1.37.2.15
+diff -u -p -r1.37.2.15 gen-avr-lib-tree.sh
+--- devtools/gen-avr-lib-tree.sh	3 Nov 2008 21:11:29 -0000	1.37.2.15
++++ devtools/gen-avr-lib-tree.sh	24 Nov 2008 17:09:19 -0000
+@@ -129,7 +129,6 @@ at90s1200:crts1200.o:${DEV_DEFS}:${CFLAG
+ attiny11:crttn11.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny12:crttn12.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny13:crttn13.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+-attiny13a:crttn13a.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny15:crttn15.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny2313:crttn2313.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny28:crttn28.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+@@ -160,6 +159,7 @@ attiny861:crttn861.o:${DEV_DEFS}:${CFLAG
+ AVR25_DEV_INFO="\
+ at86rf401:crt86401.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny13:crttn13.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
++attiny13a:crttn13a.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny2313:crttn2313.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny24:crttn24.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+ attiny25:crttn25.o:${DEV_DEFS}:${CFLAGS_SPACE}:${DEV_ASFLAGS};\
+Index: include/avr/iotn13a.h
+===================================================================
+RCS file: /sources/avr-libc/avr-libc/include/avr/iotn13a.h,v
+retrieving revision 1.1.2.5
+diff -u -p -r1.1.2.5 iotn13a.h
+--- include/avr/iotn13a.h	6 Aug 2008 22:45:08 -0000	1.1.2.5
++++ include/avr/iotn13a.h	24 Nov 2008 17:09:20 -0000
+@@ -165,6 +165,8 @@
+ #define EEDR6 6
+ #define EEDR7 7
+ 
++#define EEARL _SFR_IO8(0x1E)
++
+ #define EEAR _SFR_IO8(0x1E)
+ #define EEAR0 0
+ #define EEAR1 1

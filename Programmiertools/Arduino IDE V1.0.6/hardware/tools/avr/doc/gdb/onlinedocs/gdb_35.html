@@ -1,0 +1,752 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Target Descriptions</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Target Descriptions">
+<META NAME="keywords" CONTENT="Debugging with GDB: Target Descriptions">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC745"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC744"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC746"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> F. Target Descriptions </H1>
+<!--docid::SEC745::-->
+<P>
+
+<STRONG>Warning:</STRONG> target descriptions are still under active development,
+and the contents and format may change between GDB releases.
+The format is expected to stabilize in the future.
+</P><P>
+
+One of the challenges of using GDB to debug embedded systems
+is that there are so many minor variants of each processor
+architecture in use.  It is common practice for vendors to start with
+a standard processor core -- ARM, PowerPC, or MIPS, for example ---
+and then make changes to adapt it to a particular market niche.  Some
+architectures have hundreds of variants, available from dozens of
+vendors.  This leads to a number of problems:
+</P><P>
+
+<UL>
+<LI>
+With so many different customized processors, it is difficult for
+the GDB maintainers to keep up with the changes.
+<LI>
+Since individual variants may have short lifetimes or limited
+audiences, it may not be worthwhile to carry information about every
+variant in the GDB source tree.
+<LI>
+When GDB does support the architecture of the embedded system
+at hand, the task of finding the correct architecture name to give the
+<CODE>set architecture</CODE> command can be error-prone.
+</UL>
+<P>
+
+To address these problems, the GDB remote protocol allows a
+target system to not only identify itself to GDB, but to
+actually describe its own features.  This lets GDB support
+processor variants it has never seen before -- to the extent that the
+descriptions are accurate, and that GDB understands them.
+</P><P>
+
+GDB must be linked with the Expat library to support XML
+target descriptions.  See  <A HREF="gdb_31.html#Expat">Expat</A>.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC746">F.1 Retrieving Descriptions</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">How descriptions are fetched from a target.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC747">F.2 Target Description Format</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">The contents of a target description.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC753">F.3 Predefined Target Types</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Standard types available for target
+                                    descriptions.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC754">F.4 Standard Target Features</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Features GDB knows about.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Retrieving Descriptions"></A>
+<HR SIZE="6">
+<A NAME="SEC746"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> F.1 Retrieving Descriptions </H2>
+<!--docid::SEC746::-->
+<P>
+
+Target descriptions can be read from the target automatically, or
+specified by the user manually.  The default behavior is to read the
+description from the target.  GDB retrieves it via the remote
+protocol using <SAMP>`qXfer'</SAMP> requests (see section <A HREF="gdb_33.html#SEC698">qXfer</A>).  The <VAR>annex</VAR> in the <SAMP>`qXfer'</SAMP> packet will be
+<SAMP>`target.xml'</SAMP>.  The contents of the <SAMP>`target.xml'</SAMP> annex are an
+XML document, of the form described in <A HREF="gdb_35.html#SEC747">F.2 Target Description Format</A>.
+</P><P>
+
+Alternatively, you can specify a file to read for the target description.
+If a file is set, the target will not be queried.  The commands to
+specify a file are:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1655"></A>
+<DT><CODE>set tdesc filename <VAR>path</VAR></CODE>
+<DD>Read the target description from <VAR>path</VAR>.
+<P>
+
+<A NAME="IDX1656"></A>
+<DT><CODE>unset tdesc filename</CODE>
+<DD>Do not read the XML target description from a file.  GDB
+will use the description supplied by the current target.
+<P>
+
+<A NAME="IDX1657"></A>
+<DT><CODE>show tdesc filename</CODE>
+<DD>Show the filename to read for a target description, if any.
+</DL>
+<P>
+
+<A NAME="Target Description Format"></A>
+<HR SIZE="6">
+<A NAME="SEC747"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC746"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC748"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> F.2 Target Description Format </H2>
+<!--docid::SEC747::-->
+<P>
+
+A target description annex is an <A HREF="http://www.w3.org/XML/">XML</A>
+document which complies with the Document Type Definition provided in
+the GDB sources in <TT>`gdb/features/gdb-target.dtd'</TT>.  This
+means you can use generally available tools like <CODE>xmllint</CODE> to
+check that your feature descriptions are well-formed and valid.
+However, to help people unfamiliar with XML write descriptions for
+their targets, we also describe the grammar here.
+</P><P>
+
+Target descriptions can identify the architecture of the remote target
+and (for some architectures) provide information about custom register
+sets.  GDB can use this information to autoconfigure for your
+target, or to warn you if you connect to an unsupported target.
+</P><P>
+
+Here is a simple target description:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;target version="1.0"&#62;
+  &#60;architecture&#62;i386:x86-64&#60;/architecture&#62;
+&#60;/target&#62;
+</FONT></pre></td></tr></table></P><P>
+
+This minimal description only says that the target uses
+the x86-64 architecture.
+</P><P>
+
+A target description has the following overall form, with [ ] marking
+optional elements and <small>...</small> marking repeatable elements.  The elements
+are explained further below.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;?xml version="1.0"?&#62;
+&#60;!DOCTYPE target SYSTEM "gdb-target.dtd"&#62;
+&#60;target version="1.0"&#62;
+  [<VAR>architecture</VAR>]
+  [<VAR>feature</VAR><small>...</small>]
+&#60;/target&#62;
+</FONT></pre></td></tr></table></P><P>
+
+The description is generally insensitive to whitespace and line
+breaks, under the usual common-sense rules.  The XML version
+declaration and document type declaration can generally be omitted
+(GDB does not require them), but specifying them may be
+useful for XML validation tools.  The <SAMP>`version'</SAMP> attribute for
+<SAMP>`&#60;target&#62;'</SAMP> may also be omitted, but we recommend
+including it; if future versions of GDB use an incompatible
+revision of <TT>`gdb-target.dtd'</TT>, they will detect and report
+the version mismatch.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC748"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC749"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.2.1 Inclusion </H3>
+<!--docid::SEC748::-->
+<P>
+
+It can sometimes be valuable to split a target description up into
+several different annexes, either for organizational purposes, or to
+share files between different possible target descriptions.  You can
+divide a description into multiple files by replacing any element of
+the target description with an inclusion directive of the form:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;xi:include href="<VAR>document</VAR>"/&#62;
+</FONT></pre></td></tr></table></P><P>
+
+When GDB encounters an element of this form, it will retrieve
+the named XML <VAR>document</VAR>, and replace the inclusion directive with
+the contents of that document.  If the current description was read
+using <SAMP>`qXfer'</SAMP>, then so will be the included document;
+<VAR>document</VAR> will be interpreted as the name of an annex.  If the
+current description was read from a file, GDB will look for
+<VAR>document</VAR> as a file in the same directory where it found the
+original description.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC749"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC748"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC750"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC750"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.2.2 Architecture </H3>
+<!--docid::SEC749::-->
+<P>
+
+An <SAMP>`&#60;architecture&#62;'</SAMP> element has this form:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>  &#60;architecture&#62;<VAR>arch</VAR>&#60;/architecture&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<VAR>arch</VAR> is an architecture name from the same selection
+accepted by <CODE>set architecture</CODE> (see section <A HREF="gdb_17.html#SEC158">Specifying a Debugging Target</A>).
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC750"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC749"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC751"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC751"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.2.3 Features </H3>
+<!--docid::SEC750::-->
+<P>
+
+Each <SAMP>`&#60;feature&#62;'</SAMP> describes some logical portion of the target
+system.  Features are currently used to describe available CPU
+registers and the types of their contents.  A <SAMP>`&#60;feature&#62;'</SAMP> element
+has this form:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;feature name="<VAR>name</VAR>"&#62;
+  [<VAR>type</VAR><small>...</small>]
+  <VAR>reg</VAR><small>...</small>
+&#60;/feature&#62;
+</FONT></pre></td></tr></table></P><P>
+
+Each feature's name should be unique within the description.  The name
+of a feature does not matter unless GDB has some special
+knowledge of the contents of that feature; if it does, the feature
+should have its standard name.  See section <A HREF="gdb_35.html#SEC754">F.4 Standard Target Features</A>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC751"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC750"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC752"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC752"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.2.4 Types </H3>
+<!--docid::SEC751::-->
+<P>
+
+Any register's value is a collection of bits which GDB must
+interpret.  The default interpretation is a two's complement integer,
+but other types can be requested by name in the register description.
+Some predefined types are provided by GDB (see section <A HREF="gdb_35.html#SEC753">F.3 Predefined Target Types</A>), and the description can define additional composite types.
+</P><P>
+
+Each type element must have an <SAMP>`id'</SAMP> attribute, which gives
+a unique (within the containing <SAMP>`&#60;feature&#62;'</SAMP>) name to the type.
+Types must be defined before they are used.
+</P><P>
+
+<A NAME="IDX1658"></A>
+Some targets offer vector registers, which can be treated as arrays
+of scalar elements.  These types are written as <SAMP>`&#60;vector&#62;'</SAMP> elements,
+specifying the array element type, <VAR>type</VAR>, and the number of elements,
+<VAR>count</VAR>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;vector id="<VAR>id</VAR>" type="<VAR>type</VAR>" count="<VAR>count</VAR>"/&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX1659"></A>
+If a register's value is usefully viewed in multiple ways, define it
+with a union type containing the useful representations.  The
+<SAMP>`&#60;union&#62;'</SAMP> element contains one or more <SAMP>`&#60;field&#62;'</SAMP> elements,
+each of which has a <VAR>name</VAR> and a <VAR>type</VAR>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;union id="<VAR>id</VAR>"&#62;
+  &#60;field name="<VAR>name</VAR>" type="<VAR>type</VAR>"/&#62;
+  <small>...</small>
+&#60;/union&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC752"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC751"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC747"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.2.5 Registers </H3>
+<!--docid::SEC752::-->
+<P>
+
+Each register is represented as an element with this form:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;reg name="<VAR>name</VAR>"
+     bitsize="<VAR>size</VAR>"
+     [regnum="<VAR>num</VAR>"]
+     [save-restore="<VAR>save-restore</VAR>"]
+     [type="<VAR>type</VAR>"]
+     [group="<VAR>group</VAR>"]/&#62;
+</FONT></pre></td></tr></table></P><P>
+
+The components are as follows:
+</P><P>
+
+<DL COMPACT>
+
+<DT><VAR>name</VAR>
+<DD>The register's name; it must be unique within the target description.
+<P>
+
+<DT><VAR>bitsize</VAR>
+<DD>The register's size, in bits.
+<P>
+
+<DT><VAR>regnum</VAR>
+<DD>The register's number.  If omitted, a register's number is one greater
+than that of the previous register (either in the current feature or in
+a preceeding feature); the first register in the target description
+defaults to zero.  This register number is used to read or write
+the register; e.g. it is used in the remote <CODE>p</CODE> and <CODE>P</CODE>
+packets, and registers appear in the <CODE>g</CODE> and <CODE>G</CODE> packets
+in order of increasing register number.
+<P>
+
+<DT><VAR>save-restore</VAR>
+<DD>Whether the register should be preserved across inferior function
+calls; this must be either <CODE>yes</CODE> or <CODE>no</CODE>.  The default is
+<CODE>yes</CODE>, which is appropriate for most registers except for
+some system control registers; this is not related to the target's
+ABI.
+<P>
+
+<DT><VAR>type</VAR>
+<DD>The type of the register.  <VAR>type</VAR> may be a predefined type, a type
+defined in the current feature, or one of the special types <CODE>int</CODE>
+and <CODE>float</CODE>.  <CODE>int</CODE> is an integer type of the correct size
+for <VAR>bitsize</VAR>, and <CODE>float</CODE> is a floating point type (in the
+architecture's normal floating point format) of the correct size for
+<VAR>bitsize</VAR>.  The default is <CODE>int</CODE>.
+<P>
+
+<DT><VAR>group</VAR>
+<DD>The register group to which this register belongs.  <VAR>group</VAR> must
+be either <CODE>general</CODE>, <CODE>float</CODE>, or <CODE>vector</CODE>.  If no
+<VAR>group</VAR> is specified, GDB will not display the register
+in <CODE>info registers</CODE>.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Predefined Target Types"></A>
+<HR SIZE="6">
+<A NAME="SEC753"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC752"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> F.3 Predefined Target Types </H2>
+<!--docid::SEC753::-->
+<P>
+
+Type definitions in the self-description can build up composite types
+from basic building blocks, but can not define fundamental types.  Instead,
+standard identifiers are provided by GDB for the fundamental
+types.  The currently supported types are:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>int8</CODE>
+<DD><DT><CODE>int16</CODE>
+<DD><DT><CODE>int32</CODE>
+<DD><DT><CODE>int64</CODE>
+<DD><DT><CODE>int128</CODE>
+<DD>Signed integer types holding the specified number of bits.
+<P>
+
+<DT><CODE>uint8</CODE>
+<DD><DT><CODE>uint16</CODE>
+<DD><DT><CODE>uint32</CODE>
+<DD><DT><CODE>uint64</CODE>
+<DD><DT><CODE>uint128</CODE>
+<DD>Unsigned integer types holding the specified number of bits.
+<P>
+
+<DT><CODE>code_ptr</CODE>
+<DD><DT><CODE>data_ptr</CODE>
+<DD>Pointers to unspecified code and data.  The program counter and
+any dedicated return address register may be marked as code
+pointers; printing a code pointer converts it into a symbolic
+address.  The stack pointer and any dedicated address registers
+may be marked as data pointers.
+<P>
+
+<DT><CODE>ieee_single</CODE>
+<DD>Single precision IEEE floating point.
+<P>
+
+<DT><CODE>ieee_double</CODE>
+<DD>Double precision IEEE floating point.
+<P>
+
+<DT><CODE>arm_fpa_ext</CODE>
+<DD>The 12-byte extended precision format used by ARM FPA registers.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Standard Target Features"></A>
+<HR SIZE="6">
+<A NAME="SEC754"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC753"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC755"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> F.4 Standard Target Features </H2>
+<!--docid::SEC754::-->
+<P>
+
+A target description must contain either no registers or all the
+target's registers.  If the description contains no registers, then
+GDB will assume a default register layout, selected based on
+the architecture.  If the description contains any registers, the
+default layout will not be used; the standard registers must be
+described in the target description, in such a way that GDB
+can recognize them.
+</P><P>
+
+This is accomplished by giving specific names to feature elements
+which contain standard registers.  GDB will look for features
+with those names and verify that they contain the expected registers;
+if any known feature is missing required registers, or if any required
+feature is missing, GDB will reject the target
+description.  You can add additional registers to any of the
+standard features -- GDB will display them just as if
+they were added to an unrecognized feature.
+</P><P>
+
+This section lists the known features and their expected contents.
+Sample XML documents for these features are included in the
+GDB source tree, in the directory <TT>`gdb/features'</TT>.
+</P><P>
+
+Names recognized by GDB should include the name of the
+company or organization which selected the name, and the overall
+architecture to which the feature applies; so e.g. the feature
+containing ARM core registers is named <SAMP>`org.gnu.gdb.arm.core'</SAMP>.
+</P><P>
+
+The names of registers are not case sensitive for the purpose
+of recognizing standard features, but GDB will only display
+registers using the capitalization used in the description.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC755">F.4.1 ARM Features</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC756">F.4.2 MIPS Features</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC757">F.4.3 M68K Features</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_35.html#SEC758">F.4.4 PowerPC Features</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="ARM Features"></A>
+<HR SIZE="6">
+<A NAME="SEC755"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC756"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.4.1 ARM Features </H3>
+<!--docid::SEC755::-->
+<P>
+
+The <SAMP>`org.gnu.gdb.arm.core'</SAMP> feature is required for ARM targets.
+It should contain registers <SAMP>`r0'</SAMP> through <SAMP>`r13'</SAMP>, <SAMP>`sp'</SAMP>,
+<SAMP>`lr'</SAMP>, <SAMP>`pc'</SAMP>, and <SAMP>`cpsr'</SAMP>.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.arm.fpa'</SAMP> feature is optional.  If present, it
+should contain registers <SAMP>`f0'</SAMP> through <SAMP>`f7'</SAMP> and <SAMP>`fps'</SAMP>.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.xscale.iwmmxt'</SAMP> feature is optional.  If present,
+it should contain at least registers <SAMP>`wR0'</SAMP> through <SAMP>`wR15'</SAMP> and
+<SAMP>`wCGR0'</SAMP> through <SAMP>`wCGR3'</SAMP>.  The <SAMP>`wCID'</SAMP>, <SAMP>`wCon'</SAMP>,
+<SAMP>`wCSSF'</SAMP>, and <SAMP>`wCASF'</SAMP> registers are optional.
+</P><P>
+
+<A NAME="MIPS Features"></A>
+<HR SIZE="6">
+<A NAME="SEC756"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC755"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC757"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC757"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.4.2 MIPS Features </H3>
+<!--docid::SEC756::-->
+<P>
+
+The <SAMP>`org.gnu.gdb.mips.cpu'</SAMP> feature is required for MIPS targets.
+It should contain registers <SAMP>`r0'</SAMP> through <SAMP>`r31'</SAMP>, <SAMP>`lo'</SAMP>,
+<SAMP>`hi'</SAMP>, and <SAMP>`pc'</SAMP>.  They may be 32-bit or 64-bit depending
+on the target.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.mips.cp0'</SAMP> feature is also required.  It should
+contain at least the <SAMP>`status'</SAMP>, <SAMP>`badvaddr'</SAMP>, and <SAMP>`cause'</SAMP>
+registers.  They may be 32-bit or 64-bit depending on the target.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.mips.fpu'</SAMP> feature is currently required, though
+it may be optional in a future version of GDB.  It should
+contain registers <SAMP>`f0'</SAMP> through <SAMP>`f31'</SAMP>, <SAMP>`fcsr'</SAMP>, and
+<SAMP>`fir'</SAMP>.  They may be 32-bit or 64-bit depending on the target.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.mips.linux'</SAMP> feature is optional.  It should
+contain a single register, <SAMP>`restart'</SAMP>, which is used by the
+Linux kernel to control restartable syscalls.
+</P><P>
+
+<A NAME="M68K Features"></A>
+<HR SIZE="6">
+<A NAME="SEC757"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC756"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC758"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC758"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.4.3 M68K Features </H3>
+<!--docid::SEC757::-->
+<P>
+
+<DL COMPACT>
+<DT><CODE><SAMP>`org.gnu.gdb.m68k.core'</SAMP></CODE>
+<DD><DT><CODE><SAMP>`org.gnu.gdb.coldfire.core'</SAMP></CODE>
+<DD><DT><CODE><SAMP>`org.gnu.gdb.fido.core'</SAMP></CODE>
+<DD>One of those features must be always present. 
+The feature that is present determines which flavor of m86k is
+used.  The feature that is present should contain registers
+<SAMP>`d0'</SAMP> through <SAMP>`d7'</SAMP>, <SAMP>`a0'</SAMP> through <SAMP>`a5'</SAMP>, <SAMP>`fp'</SAMP>,
+<SAMP>`sp'</SAMP>, <SAMP>`ps'</SAMP> and <SAMP>`pc'</SAMP>.
+<P>
+
+<DT><CODE><SAMP>`org.gnu.gdb.coldfire.fp'</SAMP></CODE>
+<DD>This feature is optional.  If present, it should contain registers
+<SAMP>`fp0'</SAMP> through <SAMP>`fp7'</SAMP>, <SAMP>`fpcontrol'</SAMP>, <SAMP>`fpstatus'</SAMP> and
+<SAMP>`fpiaddr'</SAMP>.
+</DL>
+<P>
+
+<A NAME="PowerPC Features"></A>
+<HR SIZE="6">
+<A NAME="SEC758"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC757"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC754"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> F.4.4 PowerPC Features </H3>
+<!--docid::SEC758::-->
+<P>
+
+The <SAMP>`org.gnu.gdb.power.core'</SAMP> feature is required for PowerPC
+targets.  It should contain registers <SAMP>`r0'</SAMP> through <SAMP>`r31'</SAMP>,
+<SAMP>`pc'</SAMP>, <SAMP>`msr'</SAMP>, <SAMP>`cr'</SAMP>, <SAMP>`lr'</SAMP>, <SAMP>`ctr'</SAMP>, and
+<SAMP>`xer'</SAMP>.  They may be 32-bit or 64-bit depending on the target.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.power.fpu'</SAMP> feature is optional.  It should
+contain registers <SAMP>`f0'</SAMP> through <SAMP>`f31'</SAMP> and <SAMP>`fpscr'</SAMP>.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.power.altivec'</SAMP> feature is optional.  It should
+contain registers <SAMP>`vr0'</SAMP> through <SAMP>`vr31'</SAMP>, <SAMP>`vscr'</SAMP>,
+and <SAMP>`vrsave'</SAMP>.
+</P><P>
+
+The <SAMP>`org.gnu.gdb.power.spe'</SAMP> feature is optional.  It should
+contain registers <SAMP>`ev0h'</SAMP> through <SAMP>`ev31h'</SAMP>, <SAMP>`acc'</SAMP>, and
+<SAMP>`spefscr'</SAMP>.  SPE targets should provide 32-bit registers in
+<SAMP>`org.gnu.gdb.power.core'</SAMP> and provide the upper halves in
+<SAMP>`ev0h'</SAMP> through <SAMP>`ev31h'</SAMP>.  GDB will combine
+these to present registers <SAMP>`ev0'</SAMP> through <SAMP>`ev31'</SAMP> to the
+user.
+</P><P>
+
+<A NAME="Copying"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_35.html#SEC745"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_36.html#SEC759"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

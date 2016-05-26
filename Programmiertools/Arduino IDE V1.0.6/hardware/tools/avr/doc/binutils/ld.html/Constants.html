@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+<title>Constants - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Expressions.html#Expressions" title="Expressions">
+<link rel="next" href="Symbols.html#Symbols" title="Symbols">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU linker LD
+(GNU Binutils)
+version 2.19.
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000,
+2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Constants"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Symbols.html#Symbols">Symbols</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Expressions.html#Expressions">Expressions</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.10.1 Constants</h4>
+
+<p><a name="index-integer-notation-456"></a><a name="index-constants-in-linker-scripts-457"></a>All constants are integers.
+
+   <p>As in C, the linker considers an integer beginning with <span class="samp">0</span> to be
+octal, and an integer beginning with <span class="samp">0x</span> or <span class="samp">0X</span> to be
+hexadecimal.  The linker considers other integers to be decimal.
+
+   <p><a name="index-scaled-integers-458"></a><a name="index-K-and-M-integer-suffixes-459"></a><a name="index-M-and-K-integer-suffixes-460"></a><a name="index-suffixes-for-integers-461"></a><a name="index-integer-suffixes-462"></a>In addition, you can use the suffixes <code>K</code> and <code>M</code> to scale a
+constant by
+<!-- TEXI2ROFF-KILL -->
+<!-- END TEXI2ROFF-KILL -->
+<code>1024</code> or <code>1024*1024</code>
+<!-- TEXI2ROFF-KILL -->
+<!-- END TEXI2ROFF-KILL -->
+respectively. For example, the following all refer to the same quantity:
+<pre class="smallexample">     _fourk_1 = 4K;
+     _fourk_2 = 4096;
+     _fourk_3 = 0x1000;
+</pre>
+   </body></html>
+

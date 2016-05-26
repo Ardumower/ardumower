@@ -1,0 +1,1137 @@
+<html lang="en">
+<head>
+<title>Misc - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Target-Macros.html#Target-Macros" title="Target Macros">
+<link rel="prev" href="C_002b_002b-ABI.html#C_002b_002b-ABI" title="C++ ABI">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Misc"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="C_002b_002b-ABI.html#C_002b_002b-ABI">C++ ABI</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Target-Macros.html#Target-Macros">Target Macros</a>
+<hr><br>
+</div>
+
+<h3 class="section">15.29 Miscellaneous Parameters</h3>
+
+<p><a name="index-parameters_002c-miscellaneous-4224"></a>
+<!-- prevent bad page break with this line -->
+Here are several miscellaneous parameters.
+
+<div class="defun">
+&mdash; Macro: <b>HAS_LONG_COND_BRANCH</b><var><a name="index-HAS_005fLONG_005fCOND_005fBRANCH-4225"></a></var><br>
+<blockquote><p>Define this boolean macro to indicate whether or not your architecture
+has conditional branches that can span all of memory.  It is used in
+conjunction with an optimization that partitions hot and cold basic
+blocks into separate sections of the executable.  If this macro is
+set to false, gcc will convert any conditional branches that attempt
+to cross between sections into unconditional branches or indirect jumps. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>HAS_LONG_UNCOND_BRANCH</b><var><a name="index-HAS_005fLONG_005fUNCOND_005fBRANCH-4226"></a></var><br>
+<blockquote><p>Define this boolean macro to indicate whether or not your architecture
+has unconditional branches that can span all of memory.  It is used in
+conjunction with an optimization that partitions hot and cold basic
+blocks into separate sections of the executable.  If this macro is
+set to false, gcc will convert any unconditional branches that attempt
+to cross between sections into indirect jumps. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CASE_VECTOR_MODE</b><var><a name="index-CASE_005fVECTOR_005fMODE-4227"></a></var><br>
+<blockquote><p>An alias for a machine mode name.  This is the machine mode that
+elements of a jump-table should have. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CASE_VECTOR_SHORTEN_MODE</b> (<var>min_offset, max_offset, body</var>)<var><a name="index-CASE_005fVECTOR_005fSHORTEN_005fMODE-4228"></a></var><br>
+<blockquote><p>Optional: return the preferred mode for an <code>addr_diff_vec</code>
+when the minimum and maximum offset are known.  If you define this,
+it enables extra code in branch shortening to deal with <code>addr_diff_vec</code>. 
+To make this work, you also have to define <code>INSN_ALIGN</code> and
+make the alignment for <code>addr_diff_vec</code> explicit. 
+The <var>body</var> argument is provided so that the offset_unsigned and scale
+flags can be updated. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CASE_VECTOR_PC_RELATIVE</b><var><a name="index-CASE_005fVECTOR_005fPC_005fRELATIVE-4229"></a></var><br>
+<blockquote><p>Define this macro to be a C expression to indicate when jump-tables
+should contain relative addresses.  You need not define this macro if
+jump-tables never contain relative addresses, or jump-tables should
+contain relative addresses only when <span class="option">-fPIC</span> or <span class="option">-fPIC</span>
+is in effect. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CASE_VALUES_THRESHOLD</b><var><a name="index-CASE_005fVALUES_005fTHRESHOLD-4230"></a></var><br>
+<blockquote><p>Define this to be the smallest number of different values for which it
+is best to use a jump-table instead of a tree of conditional branches. 
+The default is four for machines with a <code>casesi</code> instruction and
+five otherwise.  This is best for most machines. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CASE_USE_BIT_TESTS</b><var><a name="index-CASE_005fUSE_005fBIT_005fTESTS-4231"></a></var><br>
+<blockquote><p>Define this macro to be a C expression to indicate whether C switch
+statements may be implemented by a sequence of bit tests.  This is
+advantageous on processors that can efficiently implement left shift
+of 1 by the number of bits held in a register, but inappropriate on
+targets that would require a loop.  By default, this macro returns
+<code>true</code> if the target defines an <code>ashlsi3</code> pattern, and
+<code>false</code> otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>WORD_REGISTER_OPERATIONS</b><var><a name="index-WORD_005fREGISTER_005fOPERATIONS-4232"></a></var><br>
+<blockquote><p>Define this macro if operations between registers with integral mode
+smaller than a word are always performed on the entire register. 
+Most RISC machines have this property and most CISC machines do not. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>LOAD_EXTEND_OP</b> (<var>mem_mode</var>)<var><a name="index-LOAD_005fEXTEND_005fOP-4233"></a></var><br>
+<blockquote><p>Define this macro to be a C expression indicating when insns that read
+memory in <var>mem_mode</var>, an integral mode narrower than a word, set the
+bits outside of <var>mem_mode</var> to be either the sign-extension or the
+zero-extension of the data read.  Return <code>SIGN_EXTEND</code> for values
+of <var>mem_mode</var> for which the
+insn sign-extends, <code>ZERO_EXTEND</code> for which it zero-extends, and
+<code>UNKNOWN</code> for other modes.
+
+      <p>This macro is not called with <var>mem_mode</var> non-integral or with a width
+greater than or equal to <code>BITS_PER_WORD</code>, so you may return any
+value in this case.  Do not define this macro if it would always return
+<code>UNKNOWN</code>.  On machines where this macro is defined, you will normally
+define it as the constant <code>SIGN_EXTEND</code> or <code>ZERO_EXTEND</code>.
+
+      <p>You may return a non-<code>UNKNOWN</code> value even if for some hard registers
+the sign extension is not performed, if for the <code>REGNO_REG_CLASS</code>
+of these hard registers <code>CANNOT_CHANGE_MODE_CLASS</code> returns nonzero
+when the <var>from</var> mode is <var>mem_mode</var> and the <var>to</var> mode is any
+integral mode larger than this but not larger than <code>word_mode</code>.
+
+      <p>You must return <code>UNKNOWN</code> if for some hard registers that allow this
+mode, <code>CANNOT_CHANGE_MODE_CLASS</code> says that they cannot change to
+<code>word_mode</code>, but that they can change to another integral mode that
+is larger then <var>mem_mode</var> but still smaller than <code>word_mode</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>SHORT_IMMEDIATES_SIGN_EXTEND</b><var><a name="index-SHORT_005fIMMEDIATES_005fSIGN_005fEXTEND-4234"></a></var><br>
+<blockquote><p>Define this macro if loading short immediate values into registers sign
+extends. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>FIXUNS_TRUNC_LIKE_FIX_TRUNC</b><var><a name="index-FIXUNS_005fTRUNC_005fLIKE_005fFIX_005fTRUNC-4235"></a></var><br>
+<blockquote><p>Define this macro if the same instructions that convert a floating
+point number to a signed fixed point number also convert validly to an
+unsigned one. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: int <b>TARGET_MIN_DIVISIONS_FOR_RECIP_MUL</b> (<var>enum machine_mode mode</var>)<var><a name="index-TARGET_005fMIN_005fDIVISIONS_005fFOR_005fRECIP_005fMUL-4236"></a></var><br>
+<blockquote><p>When <span class="option">-ffast-math</span> is in effect, GCC tries to optimize
+divisions by the same divisor, by turning them into multiplications by
+the reciprocal.  This target hook specifies the minimum number of divisions
+that should be there for GCC to perform the optimization for a variable
+of mode <var>mode</var>.  The default implementation returns 3 if the machine
+has an instruction for the division, and 2 if it does not. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MOVE_MAX</b><var><a name="index-MOVE_005fMAX-4237"></a></var><br>
+<blockquote><p>The maximum number of bytes that a single instruction can move quickly
+between memory and registers or between two memory locations. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MAX_MOVE_MAX</b><var><a name="index-MAX_005fMOVE_005fMAX-4238"></a></var><br>
+<blockquote><p>The maximum number of bytes that a single instruction can move quickly
+between memory and registers or between two memory locations.  If this
+is undefined, the default is <code>MOVE_MAX</code>.  Otherwise, it is the
+constant value that is the largest value that <code>MOVE_MAX</code> can have
+at run-time. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>SHIFT_COUNT_TRUNCATED</b><var><a name="index-SHIFT_005fCOUNT_005fTRUNCATED-4239"></a></var><br>
+<blockquote><p>A C expression that is nonzero if on this machine the number of bits
+actually used for the count of a shift operation is equal to the number
+of bits needed to represent the size of the object being shifted.  When
+this macro is nonzero, the compiler will assume that it is safe to omit
+a sign-extend, zero-extend, and certain bitwise `and' instructions that
+truncates the count of a shift operation.  On machines that have
+instructions that act on bit-fields at variable positions, which may
+include `bit test' instructions, a nonzero <code>SHIFT_COUNT_TRUNCATED</code>
+also enables deletion of truncations of the values that serve as
+arguments to bit-field instructions.
+
+      <p>If both types of instructions truncate the count (for shifts) and
+position (for bit-field operations), or if no variable-position bit-field
+instructions exist, you should define this macro.
+
+      <p>However, on some machines, such as the 80386 and the 680x0, truncation
+only applies to shift operations and not the (real or pretended)
+bit-field operations.  Define <code>SHIFT_COUNT_TRUNCATED</code> to be zero on
+such machines.  Instead, add patterns to the <span class="file">md</span> file that include
+the implied truncation of the shift instructions.
+
+      <p>You need not define this macro if it would always have the value of zero. 
+</p></blockquote></div>
+
+ <p><a name="TARGET_005fSHIFT_005fTRUNCATION_005fMASK"></a>
+
+<div class="defun">
+&mdash; Target Hook: int <b>TARGET_SHIFT_TRUNCATION_MASK</b> (<var>enum machine_mode mode</var>)<var><a name="index-TARGET_005fSHIFT_005fTRUNCATION_005fMASK-4240"></a></var><br>
+<blockquote><p>This function describes how the standard shift patterns for <var>mode</var>
+deal with shifts by negative amounts or by more than the width of the mode. 
+See <a href="shift-patterns.html#shift-patterns">shift patterns</a>.
+
+      <p>On many machines, the shift patterns will apply a mask <var>m</var> to the
+shift count, meaning that a fixed-width shift of <var>x</var> by <var>y</var> is
+equivalent to an arbitrary-width shift of <var>x</var> by <var>y &amp; m</var>.  If
+this is true for mode <var>mode</var>, the function should return <var>m</var>,
+otherwise it should return 0.  A return value of 0 indicates that no
+particular behavior is guaranteed.
+
+      <p>Note that, unlike <code>SHIFT_COUNT_TRUNCATED</code>, this function does
+<em>not</em> apply to general shift rtxes; it applies only to instructions
+that are generated by the named shift patterns.
+
+      <p>The default implementation of this function returns
+<code>GET_MODE_BITSIZE (</code><var>mode</var><code>) - 1</code> if <code>SHIFT_COUNT_TRUNCATED</code>
+and 0 otherwise.  This definition is always safe, but if
+<code>SHIFT_COUNT_TRUNCATED</code> is false, and some shift patterns
+nevertheless truncate the shift count, you may get better code
+by overriding it. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TRULY_NOOP_TRUNCATION</b> (<var>outprec, inprec</var>)<var><a name="index-TRULY_005fNOOP_005fTRUNCATION-4241"></a></var><br>
+<blockquote><p>A C expression which is nonzero if on this machine it is safe to
+&ldquo;convert&rdquo; an integer of <var>inprec</var> bits to one of <var>outprec</var>
+bits (where <var>outprec</var> is smaller than <var>inprec</var>) by merely
+operating on it as if it had only <var>outprec</var> bits.
+
+      <p>On many machines, this expression can be 1.
+
+     <!-- rearranged this, removed the phrase "it is reported that".  this was -->
+<!-- to fix an overfull hbox.  -mew 10feb93 -->
+<p>When <code>TRULY_NOOP_TRUNCATION</code> returns 1 for a pair of sizes for
+modes for which <code>MODES_TIEABLE_P</code> is 0, suboptimal code can result. 
+If this is the case, making <code>TRULY_NOOP_TRUNCATION</code> return 0 in
+such cases may improve things. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: int <b>TARGET_MODE_REP_EXTENDED</b> (<var>enum machine_mode mode, enum machine_mode rep_mode</var>)<var><a name="index-TARGET_005fMODE_005fREP_005fEXTENDED-4242"></a></var><br>
+<blockquote><p>The representation of an integral mode can be such that the values
+are always extended to a wider integral mode.  Return
+<code>SIGN_EXTEND</code> if values of <var>mode</var> are represented in
+sign-extended form to <var>rep_mode</var>.  Return <code>UNKNOWN</code>
+otherwise.  (Currently, none of the targets use zero-extended
+representation this way so unlike <code>LOAD_EXTEND_OP</code>,
+<code>TARGET_MODE_REP_EXTENDED</code> is expected to return either
+<code>SIGN_EXTEND</code> or <code>UNKNOWN</code>.  Also no target extends
+<var>mode</var> to <var>mode_rep</var> so that <var>mode_rep</var> is not the next
+widest integral mode and currently we take advantage of this fact.)
+
+      <p>Similarly to <code>LOAD_EXTEND_OP</code> you may return a non-<code>UNKNOWN</code>
+value even if the extension is not performed on certain hard registers
+as long as for the <code>REGNO_REG_CLASS</code> of these hard registers
+<code>CANNOT_CHANGE_MODE_CLASS</code> returns nonzero.
+
+      <p>Note that <code>TARGET_MODE_REP_EXTENDED</code> and <code>LOAD_EXTEND_OP</code>
+describe two related properties.  If you define
+<code>TARGET_MODE_REP_EXTENDED (mode, word_mode)</code> you probably also want
+to define <code>LOAD_EXTEND_OP (mode)</code> to return the same type of
+extension.
+
+      <p>In order to enforce the representation of <code>mode</code>,
+<code>TRULY_NOOP_TRUNCATION</code> should return false when truncating to
+<code>mode</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>STORE_FLAG_VALUE</b><var><a name="index-STORE_005fFLAG_005fVALUE-4243"></a></var><br>
+<blockquote><p>A C expression describing the value returned by a comparison operator
+with an integral mode and stored by a store-flag instruction
+(<span class="samp">s</span><var>cond</var>) when the condition is true.  This description must
+apply to <em>all</em> the <span class="samp">s</span><var>cond</var> patterns and all the
+comparison operators whose results have a <code>MODE_INT</code> mode.
+
+      <p>A value of 1 or &minus;1 means that the instruction implementing the
+comparison operator returns exactly 1 or &minus;1 when the comparison is true
+and 0 when the comparison is false.  Otherwise, the value indicates
+which bits of the result are guaranteed to be 1 when the comparison is
+true.  This value is interpreted in the mode of the comparison
+operation, which is given by the mode of the first operand in the
+<span class="samp">s</span><var>cond</var> pattern.  Either the low bit or the sign bit of
+<code>STORE_FLAG_VALUE</code> be on.  Presently, only those bits are used by
+the compiler.
+
+      <p>If <code>STORE_FLAG_VALUE</code> is neither 1 or &minus;1, the compiler will
+generate code that depends only on the specified bits.  It can also
+replace comparison operators with equivalent operations if they cause
+the required bits to be set, even if the remaining bits are undefined. 
+For example, on a machine whose comparison operators return an
+<code>SImode</code> value and where <code>STORE_FLAG_VALUE</code> is defined as
+<span class="samp">0x80000000</span>, saying that just the sign bit is relevant, the
+expression
+
+     <pre class="smallexample">          (ne:SI (and:SI <var>x</var> (const_int <var>power-of-2</var>)) (const_int 0))
+     </pre>
+      <p class="noindent">can be converted to
+
+     <pre class="smallexample">          (ashift:SI <var>x</var> (const_int <var>n</var>))
+     </pre>
+      <p class="noindent">where <var>n</var> is the appropriate shift count to move the bit being
+tested into the sign bit.
+
+      <p>There is no way to describe a machine that always sets the low-order bit
+for a true value, but does not guarantee the value of any other bits,
+but we do not know of any machine that has such an instruction.  If you
+are trying to port GCC to such a machine, include an instruction to
+perform a logical-and of the result with 1 in the pattern for the
+comparison operators and let us know at <a href="mailto:gcc@gcc.gnu.org">gcc@gcc.gnu.org</a>.
+
+      <p>Often, a machine will have multiple instructions that obtain a value
+from a comparison (or the condition codes).  Here are rules to guide the
+choice of value for <code>STORE_FLAG_VALUE</code>, and hence the instructions
+to be used:
+
+          <ul>
+<li>Use the shortest sequence that yields a valid definition for
+<code>STORE_FLAG_VALUE</code>.  It is more efficient for the compiler to
+&ldquo;normalize&rdquo; the value (convert it to, e.g., 1 or 0) than for the
+comparison operators to do so because there may be opportunities to
+combine the normalization with other operations.
+
+          <li>For equal-length sequences, use a value of 1 or &minus;1, with &minus;1 being
+slightly preferred on machines with expensive jumps and 1 preferred on
+other machines.
+
+          <li>As a second choice, choose a value of <span class="samp">0x80000001</span> if instructions
+exist that set both the sign and low-order bits but do not define the
+others.
+
+          <li>Otherwise, use a value of <span class="samp">0x80000000</span>. 
+</ul>
+
+      <p>Many machines can produce both the value chosen for
+<code>STORE_FLAG_VALUE</code> and its negation in the same number of
+instructions.  On those machines, you should also define a pattern for
+those cases, e.g., one matching
+
+     <pre class="smallexample">          (set <var>A</var> (neg:<var>m</var> (ne:<var>m</var> <var>B</var> <var>C</var>)))
+     </pre>
+      <p>Some machines can also perform <code>and</code> or <code>plus</code> operations on
+condition code values with less instructions than the corresponding
+<span class="samp">s</span><var>cond</var> insn followed by <code>and</code> or <code>plus</code>.  On those
+machines, define the appropriate patterns.  Use the names <code>incscc</code>
+and <code>decscc</code>, respectively, for the patterns which perform
+<code>plus</code> or <code>minus</code> operations on condition code values.  See
+<span class="file">rs6000.md</span> for some examples.  The GNU Superoptizer can be used to
+find such instruction sequences on other machines.
+
+      <p>If this macro is not defined, the default value, 1, is used.  You need
+not define <code>STORE_FLAG_VALUE</code> if the machine has no store-flag
+instructions, or if the value generated by these instructions is 1. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>FLOAT_STORE_FLAG_VALUE</b> (<var>mode</var>)<var><a name="index-FLOAT_005fSTORE_005fFLAG_005fVALUE-4244"></a></var><br>
+<blockquote><p>A C expression that gives a nonzero <code>REAL_VALUE_TYPE</code> value that is
+returned when comparison operators with floating-point results are true. 
+Define this macro on machines that have comparison operations that return
+floating-point values.  If there are no such operations, do not define
+this macro. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>VECTOR_STORE_FLAG_VALUE</b> (<var>mode</var>)<var><a name="index-VECTOR_005fSTORE_005fFLAG_005fVALUE-4245"></a></var><br>
+<blockquote><p>A C expression that gives a rtx representing the nonzero true element
+for vector comparisons.  The returned rtx should be valid for the inner
+mode of <var>mode</var> which is guaranteed to be a vector mode.  Define
+this macro on machines that have vector comparison operations that
+return a vector result.  If there are no such operations, do not define
+this macro.  Typically, this macro is defined as <code>const1_rtx</code> or
+<code>constm1_rtx</code>.  This macro may return <code>NULL_RTX</code> to prevent
+the compiler optimizing such vector comparison operations for the
+given mode. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CLZ_DEFINED_VALUE_AT_ZERO</b> (<var>mode, value</var>)<var><a name="index-CLZ_005fDEFINED_005fVALUE_005fAT_005fZERO-4246"></a></var><br>
+&mdash; Macro: <b>CTZ_DEFINED_VALUE_AT_ZERO</b> (<var>mode, value</var>)<var><a name="index-CTZ_005fDEFINED_005fVALUE_005fAT_005fZERO-4247"></a></var><br>
+<blockquote><p>A C expression that indicates whether the architecture defines a value
+for <code>clz</code> or <code>ctz</code> with a zero operand. 
+A result of <code>0</code> indicates the value is undefined. 
+If the value is defined for only the RTL expression, the macro should
+evaluate to <code>1</code>; if the value applies also to the corresponding optab
+entry (which is normally the case if it expands directly into
+the corresponding RTL), then the macro should evaluate to <code>2</code>. 
+In the cases where the value is defined, <var>value</var> should be set to
+this value.
+
+      <p>If this macro is not defined, the value of <code>clz</code> or
+<code>ctz</code> at zero is assumed to be undefined.
+
+      <p>This macro must be defined if the target's expansion for <code>ffs</code>
+relies on a particular value to get correct results.  Otherwise it
+is not necessary, though it may be used to optimize some corner cases, and
+to provide a default expansion for the <code>ffs</code> optab.
+
+      <p>Note that regardless of this macro the &ldquo;definedness&rdquo; of <code>clz</code>
+and <code>ctz</code> at zero do <em>not</em> extend to the builtin functions
+visible to the user.  Thus one may be free to adjust the value at will
+to match the target expansion of these operations without fear of
+breaking the API. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>Pmode</b><var><a name="index-Pmode-4248"></a></var><br>
+<blockquote><p>An alias for the machine mode for pointers.  On most machines, define
+this to be the integer mode corresponding to the width of a hardware
+pointer; <code>SImode</code> on 32-bit machine or <code>DImode</code> on 64-bit machines. 
+On some machines you must define this to be one of the partial integer
+modes, such as <code>PSImode</code>.
+
+      <p>The width of <code>Pmode</code> must be at least as large as the value of
+<code>POINTER_SIZE</code>.  If it is not equal, you must define the macro
+<code>POINTERS_EXTEND_UNSIGNED</code> to specify how pointers are extended
+to <code>Pmode</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>FUNCTION_MODE</b><var><a name="index-FUNCTION_005fMODE-4249"></a></var><br>
+<blockquote><p>An alias for the machine mode used for memory references to functions
+being called, in <code>call</code> RTL expressions.  On most CISC machines,
+where an instruction can begin at any byte address, this should be
+<code>QImode</code>.  On most RISC machines, where all instructions have fixed
+size and alignment, this should be a mode with the same size and alignment
+as the machine instruction words - typically <code>SImode</code> or <code>HImode</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>STDC_0_IN_SYSTEM_HEADERS</b><var><a name="index-STDC_005f0_005fIN_005fSYSTEM_005fHEADERS-4250"></a></var><br>
+<blockquote><p>In normal operation, the preprocessor expands <code>__STDC__</code> to the
+constant 1, to signify that GCC conforms to ISO Standard C.  On some
+hosts, like Solaris, the system compiler uses a different convention,
+where <code>__STDC__</code> is normally 0, but is 1 if the user specifies
+strict conformance to the C Standard.
+
+      <p>Defining <code>STDC_0_IN_SYSTEM_HEADERS</code> makes GNU CPP follows the host
+convention when processing system header files, but when processing user
+files <code>__STDC__</code> will always expand to 1. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>NO_IMPLICIT_EXTERN_C</b><var><a name="index-NO_005fIMPLICIT_005fEXTERN_005fC-4251"></a></var><br>
+<blockquote><p>Define this macro if the system header files support C++ as well as C. 
+This macro inhibits the usual method of using system header files in
+C++, which is to pretend that the file's contents are enclosed in
+<span class="samp">extern "C" {...}</span>. 
+</p></blockquote></div>
+
+ <p><a name="index-_0023pragma-4252"></a><a name="index-pragma-4253"></a>
+
+<div class="defun">
+&mdash; Macro: <b>REGISTER_TARGET_PRAGMAS</b> ()<var><a name="index-REGISTER_005fTARGET_005fPRAGMAS-4254"></a></var><br>
+<blockquote><p>Define this macro if you want to implement any target-specific pragmas. 
+If defined, it is a C expression which makes a series of calls to
+<code>c_register_pragma</code> or <code>c_register_pragma_with_expansion</code>
+for each pragma.  The macro may also do any
+setup required for the pragmas.
+
+      <p>The primary reason to define this macro is to provide compatibility with
+other compilers for the same target.  In general, we discourage
+definition of target-specific pragmas for GCC.
+
+      <p>If the pragma can be implemented by attributes then you should consider
+defining the target hook <span class="samp">TARGET_INSERT_ATTRIBUTES</span> as well.
+
+      <p>Preprocessor macros that appear on pragma lines are not expanded.  All
+<span class="samp">#pragma</span> directives that do not match any registered pragma are
+silently ignored, unless the user specifies <span class="option">-Wunknown-pragmas</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>c_register_pragma</b> (<var>const char *space, const char *name, void </var>(<var>*callback</var>) (<var>struct cpp_reader *</var>))<var><a name="index-c_005fregister_005fpragma-4255"></a></var><br>
+&mdash; Function: void <b>c_register_pragma_with_expansion</b> (<var>const char *space, const char *name, void </var>(<var>*callback</var>) (<var>struct cpp_reader *</var>))<var><a name="index-c_005fregister_005fpragma_005fwith_005fexpansion-4256"></a></var><br>
+<blockquote>
+<p>Each call to <code>c_register_pragma</code> or
+<code>c_register_pragma_with_expansion</code> establishes one pragma.  The
+<var>callback</var> routine will be called when the preprocessor encounters a
+pragma of the form
+
+     <pre class="smallexample">          #pragma [<var>space</var>] <var>name</var> ...
+     </pre>
+      <p><var>space</var> is the case-sensitive namespace of the pragma, or
+<code>NULL</code> to put the pragma in the global namespace.  The callback
+routine receives <var>pfile</var> as its first argument, which can be passed
+on to cpplib's functions if necessary.  You can lex tokens after the
+<var>name</var> by calling <code>pragma_lex</code>.  Tokens that are not read by the
+callback will be silently ignored.  The end of the line is indicated by
+a token of type <code>CPP_EOF</code>.  Macro expansion occurs on the
+arguments of pragmas registered with
+<code>c_register_pragma_with_expansion</code> but not on the arguments of
+pragmas registered with <code>c_register_pragma</code>.
+
+      <p>Note that the use of <code>pragma_lex</code> is specific to the C and C++
+compilers.  It will not work in the Java or Fortran compilers, or any
+other language compilers for that matter.  Thus if <code>pragma_lex</code> is going
+to be called from target-specific code, it must only be done so when
+building the C and C++ compilers.  This can be done by defining the
+variables <code>c_target_objs</code> and <code>cxx_target_objs</code> in the
+target entry in the <span class="file">config.gcc</span> file.  These variables should name
+the target-specific, language-specific object file which contains the
+code that uses <code>pragma_lex</code>.  Note it will also be necessary to add a
+rule to the makefile fragment pointed to by <code>tmake_file</code> that shows
+how to build this object file. 
+</p></blockquote></div>
+
+ <p><a name="index-_0023pragma-4257"></a><a name="index-pragma-4258"></a>
+
+<div class="defun">
+&mdash; Macro: <b>HANDLE_SYSV_PRAGMA</b><var><a name="index-HANDLE_005fSYSV_005fPRAGMA-4259"></a></var><br>
+<blockquote><p>Define this macro (to a value of 1) if you want the System V style
+pragmas <span class="samp">#pragma pack(&lt;n&gt;)</span> and <span class="samp">#pragma weak &lt;name&gt;
+[=&lt;value&gt;]</span> to be supported by gcc.
+
+      <p>The pack pragma specifies the maximum alignment (in bytes) of fields
+within a structure, in much the same way as the <span class="samp">__aligned__</span> and
+<span class="samp">__packed__</span> <code>__attribute__</code>s do.  A pack value of zero resets
+the behavior to the default.
+
+      <p>A subtlety for Microsoft Visual C/C++ style bit-field packing
+(e.g. -mms-bitfields) for targets that support it:
+When a bit-field is inserted into a packed record, the whole size
+of the underlying type is used by one or more same-size adjacent
+bit-fields (that is, if its long:3, 32 bits is used in the record,
+and any additional adjacent long bit-fields are packed into the same
+chunk of 32 bits.  However, if the size changes, a new field of that
+size is allocated).
+
+      <p>If both MS bit-fields and <span class="samp">__attribute__((packed))</span> are used,
+the latter will take precedence.  If <span class="samp">__attribute__((packed))</span> is
+used on a single field when MS bit-fields are in use, it will take
+precedence for that field, but the alignment of the rest of the structure
+may affect its placement.
+
+      <p>The weak pragma only works if <code>SUPPORTS_WEAK</code> and
+<code>ASM_WEAKEN_LABEL</code> are defined.  If enabled it allows the creation
+of specifically named weak labels, optionally with a value. 
+</p></blockquote></div>
+
+ <p><a name="index-_0023pragma-4260"></a><a name="index-pragma-4261"></a>
+
+<div class="defun">
+&mdash; Macro: <b>HANDLE_PRAGMA_PACK_PUSH_POP</b><var><a name="index-HANDLE_005fPRAGMA_005fPACK_005fPUSH_005fPOP-4262"></a></var><br>
+<blockquote><p>Define this macro (to a value of 1) if you want to support the Win32
+style pragmas <span class="samp">#pragma pack(push[,</span><var>n</var><span class="samp">])</span> and <span class="samp">#pragma
+pack(pop)</span>.  The <span class="samp">pack(push,[</span><var>n</var><span class="samp">])</span> pragma specifies the maximum
+alignment (in bytes) of fields within a structure, in much the same way as
+the <span class="samp">__aligned__</span> and <span class="samp">__packed__</span> <code>__attribute__</code>s do.  A
+pack value of zero resets the behavior to the default.  Successive
+invocations of this pragma cause the previous values to be stacked, so
+that invocations of <span class="samp">#pragma pack(pop)</span> will return to the previous
+value. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>HANDLE_PRAGMA_PACK_WITH_EXPANSION</b><var><a name="index-HANDLE_005fPRAGMA_005fPACK_005fWITH_005fEXPANSION-4263"></a></var><br>
+<blockquote><p>Define this macro, as well as
+<code>HANDLE_SYSV_PRAGMA</code>, if macros should be expanded in the
+arguments of <span class="samp">#pragma pack</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_DEFAULT_PACK_STRUCT</b><var><a name="index-TARGET_005fDEFAULT_005fPACK_005fSTRUCT-4264"></a></var><br>
+<blockquote><p>If your target requires a structure packing default other than 0 (meaning
+the machine default), define this macro to the necessary value (in bytes). 
+This must be a value that would also be valid to use with
+<span class="samp">#pragma pack()</span> (that is, a small power of two). 
+</p></blockquote></div>
+
+ <p><a name="index-_0023pragma-4265"></a><a name="index-pragma-4266"></a>
+
+<div class="defun">
+&mdash; Macro: <b>HANDLE_PRAGMA_PUSH_POP_MACRO</b><var><a name="index-HANDLE_005fPRAGMA_005fPUSH_005fPOP_005fMACRO-4267"></a></var><br>
+<blockquote><p>Define this macro if you want to support the Win32 style pragmas
+<span class="samp">#pragma push_macro(macro-name-as-string)</span> and <span class="samp">#pragma
+pop_macro(macro-name-as-string)</span>.  The <span class="samp">#pragma push_macro(
+macro-name-as-string)</span> pragma saves the named macro and via
+<span class="samp">#pragma pop_macro(macro-name-as-string)</span> it will return to the
+previous value. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>DOLLARS_IN_IDENTIFIERS</b><var><a name="index-DOLLARS_005fIN_005fIDENTIFIERS-4268"></a></var><br>
+<blockquote><p>Define this macro to control use of the character <span class="samp">$</span> in
+identifier names for the C family of languages.  0 means <span class="samp">$</span> is
+not allowed by default; 1 means it is allowed.  1 is the default;
+there is no need to define this macro in that case. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>NO_DOLLAR_IN_LABEL</b><var><a name="index-NO_005fDOLLAR_005fIN_005fLABEL-4269"></a></var><br>
+<blockquote><p>Define this macro if the assembler does not accept the character
+<span class="samp">$</span> in label names.  By default constructors and destructors in
+G++ have <span class="samp">$</span> in the identifiers.  If this macro is defined,
+<span class="samp">.</span> is used instead. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>NO_DOT_IN_LABEL</b><var><a name="index-NO_005fDOT_005fIN_005fLABEL-4270"></a></var><br>
+<blockquote><p>Define this macro if the assembler does not accept the character
+<span class="samp">.</span> in label names.  By default constructors and destructors in G++
+have names that use <span class="samp">.</span>.  If this macro is defined, these names
+are rewritten to avoid <span class="samp">.</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>INSN_SETS_ARE_DELAYED</b> (<var>insn</var>)<var><a name="index-INSN_005fSETS_005fARE_005fDELAYED-4271"></a></var><br>
+<blockquote><p>Define this macro as a C expression that is nonzero if it is safe for the
+delay slot scheduler to place instructions in the delay slot of <var>insn</var>,
+even if they appear to use a resource set or clobbered in <var>insn</var>. 
+<var>insn</var> is always a <code>jump_insn</code> or an <code>insn</code>; GCC knows that
+every <code>call_insn</code> has this behavior.  On machines where some <code>insn</code>
+or <code>jump_insn</code> is really a function call and hence has this behavior,
+you should define this macro.
+
+      <p>You need not define this macro if it would always return zero. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>INSN_REFERENCES_ARE_DELAYED</b> (<var>insn</var>)<var><a name="index-INSN_005fREFERENCES_005fARE_005fDELAYED-4272"></a></var><br>
+<blockquote><p>Define this macro as a C expression that is nonzero if it is safe for the
+delay slot scheduler to place instructions in the delay slot of <var>insn</var>,
+even if they appear to set or clobber a resource referenced in <var>insn</var>. 
+<var>insn</var> is always a <code>jump_insn</code> or an <code>insn</code>.  On machines where
+some <code>insn</code> or <code>jump_insn</code> is really a function call and its operands
+are registers whose use is actually in the subroutine it calls, you should
+define this macro.  Doing so allows the delay slot scheduler to move
+instructions which copy arguments into the argument registers into the delay
+slot of <var>insn</var>.
+
+      <p>You need not define this macro if it would always return zero. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MULTIPLE_SYMBOL_SPACES</b><var><a name="index-MULTIPLE_005fSYMBOL_005fSPACES-4273"></a></var><br>
+<blockquote><p>Define this macro as a C expression that is nonzero if, in some cases,
+global symbols from one translation unit may not be bound to undefined
+symbols in another translation unit without user intervention.  For
+instance, under Microsoft Windows symbols must be explicitly imported
+from shared libraries (DLLs).
+
+      <p>You need not define this macro if it would always evaluate to zero. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: tree <b>TARGET_MD_ASM_CLOBBERS</b> (<var>tree outputs, tree inputs, tree clobbers</var>)<var><a name="index-TARGET_005fMD_005fASM_005fCLOBBERS-4274"></a></var><br>
+<blockquote><p>This target hook should add to <var>clobbers</var> <code>STRING_CST</code> trees for
+any hard regs the port wishes to automatically clobber for an asm. 
+It should return the result of the last <code>tree_cons</code> used to add a
+clobber.  The <var>outputs</var>, <var>inputs</var> and <var>clobber</var> lists are the
+corresponding parameters to the asm and may be inspected to avoid
+clobbering a register that is an input or output of the asm.  You can use
+<code>tree_overlaps_hard_reg_set</code>, declared in <span class="file">tree.h</span>, to test
+for overlap with regards to asm-declared registers. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MATH_LIBRARY</b><var><a name="index-MATH_005fLIBRARY-4275"></a></var><br>
+<blockquote><p>Define this macro as a C string constant for the linker argument to link
+in the system math library, or <span class="samp">""</span> if the target does not have a
+separate math library.
+
+      <p>You need only define this macro if the default of <span class="samp">"-lm"</span> is wrong. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>LIBRARY_PATH_ENV</b><var><a name="index-LIBRARY_005fPATH_005fENV-4276"></a></var><br>
+<blockquote><p>Define this macro as a C string constant for the environment variable that
+specifies where the linker should look for libraries.
+
+      <p>You need only define this macro if the default of <span class="samp">"LIBRARY_PATH"</span>
+is wrong. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_POSIX_IO</b><var><a name="index-TARGET_005fPOSIX_005fIO-4277"></a></var><br>
+<blockquote><p>Define this macro if the target supports the following POSIX file
+functions, access, mkdir and  file locking with fcntl / F_SETLKW. 
+Defining <code>TARGET_POSIX_IO</code> will enable the test coverage code
+to use file locking when exiting a program, which avoids race conditions
+if the program has forked. It will also create directories at run-time
+for cross-profiling. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MAX_CONDITIONAL_EXECUTE</b><var><a name="index-MAX_005fCONDITIONAL_005fEXECUTE-4278"></a></var><br>
+<blockquote>
+<p>A C expression for the maximum number of instructions to execute via
+conditional execution instructions instead of a branch.  A value of
+<code>BRANCH_COST</code>+1 is the default if the machine does not use cc0, and
+1 if it does use cc0. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_MODIFY_TESTS</b> (<var>ce_info, true_expr, false_expr</var>)<var><a name="index-IFCVT_005fMODIFY_005fTESTS-4279"></a></var><br>
+<blockquote><p>Used if the target needs to perform machine-dependent modifications on the
+conditionals used for turning basic blocks into conditionally executed code. 
+<var>ce_info</var> points to a data structure, <code>struct ce_if_block</code>, which
+contains information about the currently processed blocks.  <var>true_expr</var>
+and <var>false_expr</var> are the tests that are used for converting the
+then-block and the else-block, respectively.  Set either <var>true_expr</var> or
+<var>false_expr</var> to a null pointer if the tests cannot be converted. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_MODIFY_MULTIPLE_TESTS</b> (<var>ce_info, bb, true_expr, false_expr</var>)<var><a name="index-IFCVT_005fMODIFY_005fMULTIPLE_005fTESTS-4280"></a></var><br>
+<blockquote><p>Like <code>IFCVT_MODIFY_TESTS</code>, but used when converting more complicated
+if-statements into conditions combined by <code>and</code> and <code>or</code> operations. 
+<var>bb</var> contains the basic block that contains the test that is currently
+being processed and about to be turned into a condition. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_MODIFY_INSN</b> (<var>ce_info, pattern, insn</var>)<var><a name="index-IFCVT_005fMODIFY_005fINSN-4281"></a></var><br>
+<blockquote><p>A C expression to modify the <var>PATTERN</var> of an <var>INSN</var> that is to
+be converted to conditional execution format.  <var>ce_info</var> points to
+a data structure, <code>struct ce_if_block</code>, which contains information
+about the currently processed blocks. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_MODIFY_FINAL</b> (<var>ce_info</var>)<var><a name="index-IFCVT_005fMODIFY_005fFINAL-4282"></a></var><br>
+<blockquote><p>A C expression to perform any final machine dependent modifications in
+converting code to conditional execution.  The involved basic blocks
+can be found in the <code>struct ce_if_block</code> structure that is pointed
+to by <var>ce_info</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_MODIFY_CANCEL</b> (<var>ce_info</var>)<var><a name="index-IFCVT_005fMODIFY_005fCANCEL-4283"></a></var><br>
+<blockquote><p>A C expression to cancel any machine dependent modifications in
+converting code to conditional execution.  The involved basic blocks
+can be found in the <code>struct ce_if_block</code> structure that is pointed
+to by <var>ce_info</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_INIT_EXTRA_FIELDS</b> (<var>ce_info</var>)<var><a name="index-IFCVT_005fINIT_005fEXTRA_005fFIELDS-4284"></a></var><br>
+<blockquote><p>A C expression to initialize any extra fields in a <code>struct ce_if_block</code>
+structure, which are defined by the <code>IFCVT_EXTRA_FIELDS</code> macro. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>IFCVT_EXTRA_FIELDS</b><var><a name="index-IFCVT_005fEXTRA_005fFIELDS-4285"></a></var><br>
+<blockquote><p>If defined, it should expand to a set of field declarations that will be
+added to the <code>struct ce_if_block</code> structure.  These should be initialized
+by the <code>IFCVT_INIT_EXTRA_FIELDS</code> macro. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_MACHINE_DEPENDENT_REORG</b> ()<var><a name="index-TARGET_005fMACHINE_005fDEPENDENT_005fREORG-4286"></a></var><br>
+<blockquote><p>If non-null, this hook performs a target-specific pass over the
+instruction stream.  The compiler will run it at all optimization levels,
+just before the point at which it normally does delayed-branch scheduling.
+
+      <p>The exact purpose of the hook varies from target to target.  Some use
+it to do transformations that are necessary for correctness, such as
+laying out in-function constant pools or avoiding hardware hazards. 
+Others use it as an opportunity to do some machine-dependent optimizations.
+
+      <p>You need not implement the hook if it has nothing to do.  The default
+definition is null. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_INIT_BUILTINS</b> ()<var><a name="index-TARGET_005fINIT_005fBUILTINS-4287"></a></var><br>
+<blockquote><p>Define this hook if you have any machine-specific built-in functions
+that need to be defined.  It should be a function that performs the
+necessary setup.
+
+      <p>Machine specific built-in functions can be useful to expand special machine
+instructions that would otherwise not normally be generated because
+they have no equivalent in the source language (for example, SIMD vector
+instructions or prefetch instructions).
+
+      <p>To create a built-in function, call the function
+<code>lang_hooks.builtin_function</code>
+which is defined by the language front end.  You can use any type nodes set
+up by <code>build_common_tree_nodes</code> and <code>build_common_tree_nodes_2</code>;
+only language front ends that use those two functions will call
+<span class="samp">TARGET_INIT_BUILTINS</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: rtx <b>TARGET_EXPAND_BUILTIN</b> (<var>tree exp, rtx target, rtx subtarget, enum machine_mode mode, int ignore</var>)<var><a name="index-TARGET_005fEXPAND_005fBUILTIN-4288"></a></var><br>
+<blockquote>
+<p>Expand a call to a machine specific built-in function that was set up by
+<span class="samp">TARGET_INIT_BUILTINS</span>.  <var>exp</var> is the expression for the
+function call; the result should go to <var>target</var> if that is
+convenient, and have mode <var>mode</var> if that is convenient. 
+<var>subtarget</var> may be used as the target for computing one of
+<var>exp</var>'s operands.  <var>ignore</var> is nonzero if the value is to be
+ignored.  This function should return the result of the call to the
+built-in function. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: tree <b>TARGET_RESOLVE_OVERLOADED_BUILTIN</b> (<var>tree fndecl, tree arglist</var>)<var><a name="index-TARGET_005fRESOLVE_005fOVERLOADED_005fBUILTIN-4289"></a></var><br>
+<blockquote>
+<p>Select a replacement for a machine specific built-in function that
+was set up by <span class="samp">TARGET_INIT_BUILTINS</span>.  This is done
+<em>before</em> regular type checking, and so allows the target to
+implement a crude form of function overloading.  <var>fndecl</var> is the
+declaration of the built-in function.  <var>arglist</var> is the list of
+arguments passed to the built-in function.  The result is a
+complete expression that implements the operation, usually
+another <code>CALL_EXPR</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: tree <b>TARGET_FOLD_BUILTIN</b> (<var>tree fndecl, tree arglist, bool ignore</var>)<var><a name="index-TARGET_005fFOLD_005fBUILTIN-4290"></a></var><br>
+<blockquote>
+<p>Fold a call to a machine specific built-in function that was set up by
+<span class="samp">TARGET_INIT_BUILTINS</span>.  <var>fndecl</var> is the declaration of the
+built-in function.  <var>arglist</var> is the list of arguments passed to
+the built-in function.  The result is another tree containing a
+simplified expression for the call's result.  If <var>ignore</var> is true
+the value will be ignored. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: const <b>char</b><var> * TARGET_INVALID_WITHIN_DOLOOP </var>(<var>rtx insn</var>)<var><a name="index-char-4291"></a></var><br>
+<blockquote>
+<p>Take an instruction in <var>insn</var> and return NULL if it is valid within a
+low-overhead loop, otherwise return a string why doloop could not be applied.
+
+      <p>Many targets use special registers for low-overhead looping. For any
+instruction that clobbers these this function should return a string indicating
+the reason why the doloop could not be applied. 
+By default, the RTL loop optimizer does not use a present doloop pattern for
+loops containing function calls or branch on table instructions. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MD_CAN_REDIRECT_BRANCH</b> (<var>branch1, branch2</var>)<var><a name="index-MD_005fCAN_005fREDIRECT_005fBRANCH-4292"></a></var><br>
+<blockquote>
+<p>Take a branch insn in <var>branch1</var> and another in <var>branch2</var>. 
+Return true if redirecting <var>branch1</var> to the destination of
+<var>branch2</var> is possible.
+
+      <p>On some targets, branches may have a limited range.  Optimizing the
+filling of delay slots can result in branches being redirected, and this
+may in turn cause a branch offset to overflow. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_COMMUTATIVE_P</b> (<var>rtx x, outer_code</var>)<var><a name="index-TARGET_005fCOMMUTATIVE_005fP-4293"></a></var><br>
+<blockquote><p>This target hook returns <code>true</code> if <var>x</var> is considered to be commutative. 
+Usually, this is just COMMUTATIVE_P (<var>x</var>), but the HP PA doesn't consider
+PLUS to be commutative inside a MEM.  <var>outer_code</var> is the rtx code
+of the enclosing rtl, if known, otherwise it is UNKNOWN. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: rtx <b>TARGET_ALLOCATE_INITIAL_VALUE</b> (<var>rtx hard_reg</var>)<var><a name="index-TARGET_005fALLOCATE_005fINITIAL_005fVALUE-4294"></a></var><br>
+<blockquote>
+<p>When the initial value of a hard register has been copied in a pseudo
+register, it is often not necessary to actually allocate another register
+to this pseudo register, because the original hard register or a stack slot
+it has been saved into can be used.  <code>TARGET_ALLOCATE_INITIAL_VALUE</code>
+is called at the start of register allocation once for each hard register
+that had its initial value copied by using
+<code>get_func_hard_reg_initial_val</code> or <code>get_hard_reg_initial_val</code>. 
+Possible values are <code>NULL_RTX</code>, if you don't want
+to do any special allocation, a <code>REG</code> rtx&mdash;that would typically be
+the hard register itself, if it is known not to be clobbered&mdash;or a
+<code>MEM</code>. 
+If you are returning a <code>MEM</code>, this is only a hint for the allocator;
+it might decide to use another register anyways. 
+You may use <code>current_function_leaf_function</code> in the hook, functions
+that use <code>REG_N_SETS</code>, to determine if the hard
+register in question will not be clobbered. 
+The default value of this hook is <code>NULL</code>, which disables any special
+allocation. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: int <b>TARGET_UNSPEC_MAY_TRAP_P</b> (<var>const_rtx x, unsigned flags</var>)<var><a name="index-TARGET_005fUNSPEC_005fMAY_005fTRAP_005fP-4295"></a></var><br>
+<blockquote><p>This target hook returns nonzero if <var>x</var>, an <code>unspec</code> or
+<code>unspec_volatile</code> operation, might cause a trap.  Targets can use
+this hook to enhance precision of analysis for <code>unspec</code> and
+<code>unspec_volatile</code> operations.  You may call <code>may_trap_p_1</code>
+to analyze inner elements of <var>x</var> in which case <var>flags</var> should be
+passed along. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_SET_CURRENT_FUNCTION</b> (<var>tree decl</var>)<var><a name="index-TARGET_005fSET_005fCURRENT_005fFUNCTION-4296"></a></var><br>
+<blockquote><p>The compiler invokes this hook whenever it changes its current function
+context (<code>cfun</code>).  You can define this function if
+the back end needs to perform any initialization or reset actions on a
+per-function basis.  For example, it may be used to implement function
+attributes that affect register usage or code generation patterns. 
+The argument <var>decl</var> is the declaration for the new function context,
+and may be null to indicate that the compiler has left a function context
+and is returning to processing at the top level. 
+The default hook function does nothing.
+
+      <p>GCC sets <code>cfun</code> to a dummy function context during initialization of
+some parts of the back end.  The hook function is not invoked in this
+situation; you need not worry about the hook being invoked recursively,
+or when the back end is in a partially-initialized state. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_OBJECT_SUFFIX</b><var><a name="index-TARGET_005fOBJECT_005fSUFFIX-4297"></a></var><br>
+<blockquote><p>Define this macro to be a C string representing the suffix for object
+files on your target machine.  If you do not define this macro, GCC will
+use <span class="samp">.o</span> as the suffix for object files. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_EXECUTABLE_SUFFIX</b><var><a name="index-TARGET_005fEXECUTABLE_005fSUFFIX-4298"></a></var><br>
+<blockquote><p>Define this macro to be a C string representing the suffix to be
+automatically added to executable files on your target machine.  If you
+do not define this macro, GCC will use the null string as the suffix for
+executable files. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>COLLECT_EXPORT_LIST</b><var><a name="index-COLLECT_005fEXPORT_005fLIST-4299"></a></var><br>
+<blockquote><p>If defined, <code>collect2</code> will scan the individual object files
+specified on its command line and create an export list for the linker. 
+Define this macro for systems like AIX, where the linker discards
+object files that are not referenced from <code>main</code> and uses export
+lists. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>MODIFY_JNI_METHOD_CALL</b> (<var>mdecl</var>)<var><a name="index-MODIFY_005fJNI_005fMETHOD_005fCALL-4300"></a></var><br>
+<blockquote><p>Define this macro to a C expression representing a variant of the
+method call <var>mdecl</var>, if Java Native Interface (JNI) methods
+must be invoked differently from other methods on your target. 
+For example, on 32-bit Microsoft Windows, JNI methods must be invoked using
+the <code>stdcall</code> calling convention and this macro is then
+defined as this expression:
+
+     <pre class="smallexample">          build_type_attribute_variant (<var>mdecl</var>,
+                                        build_tree_list
+                                        (get_identifier ("stdcall"),
+                                         NULL))
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_CANNOT_MODIFY_JUMPS_P</b> (<var>void</var>)<var><a name="index-TARGET_005fCANNOT_005fMODIFY_005fJUMPS_005fP-4301"></a></var><br>
+<blockquote><p>This target hook returns <code>true</code> past the point in which new jump
+instructions could be created.  On machines that require a register for
+every jump such as the SHmedia ISA of SH5, this point would typically be
+reload, so this target hook should be defined to a function such as:
+
+     <pre class="smallexample">          static bool
+          cannot_modify_jumps_past_reload_p ()
+          {
+            return (reload_completed || reload_in_progress);
+          }
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: int <b>TARGET_BRANCH_TARGET_REGISTER_CLASS</b> (<var>void</var>)<var><a name="index-TARGET_005fBRANCH_005fTARGET_005fREGISTER_005fCLASS-4302"></a></var><br>
+<blockquote><p>This target hook returns a register class for which branch target register
+optimizations should be applied.  All registers in this class should be
+usable interchangeably.  After reload, registers in this class will be
+re-allocated and loads will be hoisted out of loops and be subjected
+to inter-block scheduling. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_BRANCH_TARGET_REGISTER_CALLEE_SAVED</b> (<var>bool after_prologue_epilogue_gen</var>)<var><a name="index-TARGET_005fBRANCH_005fTARGET_005fREGISTER_005fCALLEE_005fSAVED-4303"></a></var><br>
+<blockquote><p>Branch target register optimization will by default exclude callee-saved
+registers
+that are not already live during the current function; if this target hook
+returns true, they will be included.  The target code must than make sure
+that all target registers in the class returned by
+<span class="samp">TARGET_BRANCH_TARGET_REGISTER_CLASS</span> that might need saving are
+saved.  <var>after_prologue_epilogue_gen</var> indicates if prologues and
+epilogues have already been generated.  Note, even if you only return
+true when <var>after_prologue_epilogue_gen</var> is false, you still are likely
+to have to make special provisions in <code>INITIAL_ELIMINATION_OFFSET</code>
+to reserve space for caller-saved target registers. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>POWI_MAX_MULTS</b><var><a name="index-POWI_005fMAX_005fMULTS-4304"></a></var><br>
+<blockquote><p>If defined, this macro is interpreted as a signed integer C expression
+that specifies the maximum number of floating point multiplications
+that should be emitted when expanding exponentiation by an integer
+constant inline.  When this value is defined, exponentiation requiring
+more than this number of multiplications is implemented by calling the
+system library's <code>pow</code>, <code>powf</code> or <code>powl</code> routines. 
+The default value places no upper bound on the multiplication count. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: void <b>TARGET_EXTRA_INCLUDES</b> (<var>const char *sysroot, const char *iprefix, int stdinc</var>)<var><a name="index-TARGET_005fEXTRA_005fINCLUDES-4305"></a></var><br>
+<blockquote><p>This target hook should register any extra include files for the
+target.  The parameter <var>stdinc</var> indicates if normal include files
+are present.  The parameter <var>sysroot</var> is the system root directory. 
+The parameter <var>iprefix</var> is the prefix for the gcc directory. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: void <b>TARGET_EXTRA_PRE_INCLUDES</b> (<var>const char *sysroot, const char *iprefix, int stdinc</var>)<var><a name="index-TARGET_005fEXTRA_005fPRE_005fINCLUDES-4306"></a></var><br>
+<blockquote><p>This target hook should register any extra include files for the
+target before any standard headers.  The parameter <var>stdinc</var>
+indicates if normal include files are present.  The parameter
+<var>sysroot</var> is the system root directory.  The parameter
+<var>iprefix</var> is the prefix for the gcc directory. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: void <b>TARGET_OPTF</b> (<var>char *path</var>)<var><a name="index-TARGET_005fOPTF-4307"></a></var><br>
+<blockquote><p>This target hook should register special include paths for the target. 
+The parameter <var>path</var> is the include to register.  On Darwin
+systems, this is used for Framework includes, which have semantics
+that are different from <span class="option">-I</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_USE_LOCAL_THUNK_ALIAS_P</b> (<var>tree fndecl</var>)<var><a name="index-TARGET_005fUSE_005fLOCAL_005fTHUNK_005fALIAS_005fP-4308"></a></var><br>
+<blockquote><p>This target hook returns <code>true</code> if it is safe to use a local alias
+for a virtual function <var>fndecl</var> when constructing thunks,
+<code>false</code> otherwise.  By default, the hook returns <code>true</code> for all
+functions, if a target supports aliases (i.e. defines
+<code>ASM_OUTPUT_DEF</code>), <code>false</code> otherwise,
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_FORMAT_TYPES</b><var><a name="index-TARGET_005fFORMAT_005fTYPES-4309"></a></var><br>
+<blockquote><p>If defined, this macro is the name of a global variable containing
+target-specific format checking information for the <span class="option">-Wformat</span>
+option.  The default is to have no target-specific format checks. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_N_FORMAT_TYPES</b><var><a name="index-TARGET_005fN_005fFORMAT_005fTYPES-4310"></a></var><br>
+<blockquote><p>If defined, this macro is the number of entries in
+<code>TARGET_FORMAT_TYPES</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_RELAXED_ORDERING</b><var><a name="index-TARGET_005fRELAXED_005fORDERING-4311"></a></var><br>
+<blockquote><p>If set to <code>true</code>, means that the target's memory model does not
+guarantee that loads which do not depend on one another will access
+main memory in the order of the instruction stream; if ordering is
+important, an explicit memory barrier must be used.  This is true of
+many recent processors which implement a policy of &ldquo;relaxed,&rdquo;
+&ldquo;weak,&rdquo; or &ldquo;release&rdquo; memory consistency, such as Alpha, PowerPC,
+and ia64.  The default is <code>false</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: const <b>char</b><var> *TARGET_INVALID_ARG_FOR_UNPROTOTYPED_FN </var>(<var>tree typelist, tree funcdecl, tree val</var>)<var><a name="index-char-4312"></a></var><br>
+<blockquote><p>If defined, this macro returns the diagnostic message when it is
+illegal to pass argument <var>val</var> to function <var>funcdecl</var>
+with prototype <var>typelist</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: const char * <b>TARGET_INVALID_CONVERSION</b> (<var>tree fromtype, tree totype</var>)<var><a name="index-TARGET_005fINVALID_005fCONVERSION-4313"></a></var><br>
+<blockquote><p>If defined, this macro returns the diagnostic message when it is
+invalid to convert from <var>fromtype</var> to <var>totype</var>, or <code>NULL</code>
+if validity should be determined by the front end. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: const char * <b>TARGET_INVALID_UNARY_OP</b> (<var>int op, tree type</var>)<var><a name="index-TARGET_005fINVALID_005fUNARY_005fOP-4314"></a></var><br>
+<blockquote><p>If defined, this macro returns the diagnostic message when it is
+invalid to apply operation <var>op</var> (where unary plus is denoted by
+<code>CONVERT_EXPR</code>) to an operand of type <var>type</var>, or <code>NULL</code>
+if validity should be determined by the front end. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: const char * <b>TARGET_INVALID_BINARY_OP</b> (<var>int op, tree type1, tree type2</var>)<var><a name="index-TARGET_005fINVALID_005fBINARY_005fOP-4315"></a></var><br>
+<blockquote><p>If defined, this macro returns the diagnostic message when it is
+invalid to apply operation <var>op</var> to operands of types <var>type1</var>
+and <var>type2</var>, or <code>NULL</code> if validity should be determined by
+the front end. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_USE_JCR_SECTION</b><var><a name="index-TARGET_005fUSE_005fJCR_005fSECTION-4316"></a></var><br>
+<blockquote><p>This macro determines whether to use the JCR section to register Java
+classes. By default, TARGET_USE_JCR_SECTION is defined to 1 if both
+SUPPORTS_WEAK and TARGET_HAVE_NAMED_SECTIONS are true, else 0. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>OBJC_JBLEN</b><var><a name="index-OBJC_005fJBLEN-4317"></a></var><br>
+<blockquote><p>This macro determines the size of the objective C jump buffer for the
+NeXT runtime. By default, OBJC_JBLEN is defined to an innocuous value. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>LIBGCC2_UNWIND_ATTRIBUTE</b><var><a name="index-LIBGCC2_005fUNWIND_005fATTRIBUTE-4318"></a></var><br>
+<blockquote><p>Define this macro if any target-specific attributes need to be attached
+to the functions in <span class="file">libgcc</span> that provide low-level support for
+call stack unwinding.  It is used in declarations in <span class="file">unwind-generic.h</span>
+and the associated definitions of those functions. 
+</p></blockquote></div>
+
+<!-- Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, -->
+<!-- 2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc. -->
+<!-- This is part of the GCC manual. -->
+<!-- For copying conditions, see the file gccint.texi. -->
+</body></html>
+

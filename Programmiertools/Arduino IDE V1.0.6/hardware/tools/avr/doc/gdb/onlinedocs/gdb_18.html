@@ -1,0 +1,1346 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Remote Debugging</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Remote Debugging">
+<META NAME="keywords" CONTENT="Debugging with GDB: Remote Debugging">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC162"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_17.html#SEC161"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC163"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_3.html#SEC6"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 17. Debugging Remote Programs </H1>
+<!--docid::SEC162::-->
+<P>
+
+If you are trying to debug a program running on a machine that cannot run
+GDB in the usual way, it is often useful to use remote debugging.
+For example, you might use remote debugging on an operating system kernel,
+or on a small system which does not have a general purpose operating system
+powerful enough to run a full-featured debugger.
+</P><P>
+
+Some configurations of GDB have special serial or TCP/IP interfaces
+to make this work with particular debugging targets.  In addition,
+GDB comes with a generic serial protocol (specific to GDB,
+but not specific to any particular target system) which you can use if you
+write the remote stubs--the code that runs on the remote system to
+communicate with GDB.
+</P><P>
+
+Other remote targets may be available in your
+configuration of GDB; use <CODE>help target</CODE> to list them.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC163">17.1 Connecting to a Remote Target</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Connecting to a remote target</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC164">17.2 Sending files to a remote system</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC165">17.3 Using the <CODE>gdbserver</CODE> Program</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Using the gdbserver program</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC172">17.4 Remote Configuration</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Remote configuration</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC173">17.5 Implementing a Remote Stub</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Implementing a remote stub</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Connecting"></A>
+<HR SIZE="6">
+<A NAME="SEC163"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC164"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 17.1 Connecting to a Remote Target </H2>
+<!--docid::SEC163::-->
+<P>
+
+On the GDB host machine, you will need an unstripped copy of
+your program, since GDB needs symbol and debugging information.
+Start up GDB as usual, using the name of the local copy of your
+program as the first argument.
+</P><P>
+
+<A NAME="IDX792"></A>
+GDB can communicate with the target over a serial line, or
+over an <FONT SIZE="-1">IP</FONT> network using <FONT SIZE="-1">TCP</FONT> or <FONT SIZE="-1">UDP</FONT>.  In
+each case, GDB uses the same protocol for debugging your
+program; only the medium carrying the debugging packets varies.  The
+<CODE>target remote</CODE> command establishes a connection to the target.
+Its arguments indicate which medium to use:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>target remote <VAR>serial-device</VAR></CODE>
+<DD><A NAME="IDX793"></A>
+Use <VAR>serial-device</VAR> to communicate with the target.  For example,
+to use a serial line connected to the device named <TT>`/dev/ttyb'</TT>:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target remote /dev/ttyb
+</FONT></pre></td></tr></table></P><P>
+
+If you're using a serial line, you may want to give GDB the
+<SAMP>`--baud'</SAMP> option, or use the <CODE>set remotebaud</CODE> command
+(see section <A HREF="gdb_18.html#SEC172">set remotebaud</A>) before the
+<CODE>target</CODE> command.
+</P><P>
+
+<DT><CODE>target remote <CODE><VAR>host</VAR>:<VAR>port</VAR></CODE></CODE>
+<DD><DT><CODE>target remote <CODE>tcp:<VAR>host</VAR>:<VAR>port</VAR></CODE></CODE>
+<DD><A NAME="IDX794"></A>
+Debug using a <FONT SIZE="-1">TCP</FONT> connection to <VAR>port</VAR> on <VAR>host</VAR>.
+The <VAR>host</VAR> may be either a host name or a numeric <FONT SIZE="-1">IP</FONT>
+address; <VAR>port</VAR> must be a decimal number.  The <VAR>host</VAR> could be
+the target machine itself, if it is directly connected to the net, or
+it might be a terminal server which in turn has a serial line to the
+target.
+<P>
+
+For example, to connect to port 2828 on a terminal server named
+<CODE>manyfarms</CODE>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target remote manyfarms:2828
+</FONT></pre></td></tr></table></P><P>
+
+If your remote target is actually running on the same machine as your
+debugger session (e.g. a simulator for your target running on the
+same host), you can omit the hostname.  For example, to connect to
+port 1234 on your local machine:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target remote :1234
+</FONT></pre></td></tr></table></P><P>
+
+Note that the colon is still required here.
+</P><P>
+
+<DT><CODE>target remote <CODE>udp:<VAR>host</VAR>:<VAR>port</VAR></CODE></CODE>
+<DD><A NAME="IDX795"></A>
+Debug using <FONT SIZE="-1">UDP</FONT> packets to <VAR>port</VAR> on <VAR>host</VAR>.  For example, to
+connect to <FONT SIZE="-1">UDP</FONT> port 2828 on a terminal server named <CODE>manyfarms</CODE>:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target remote udp:manyfarms:2828
+</FONT></pre></td></tr></table></P><P>
+
+When using a <FONT SIZE="-1">UDP</FONT> connection for remote debugging, you should
+keep in mind that the `U' stands for "Unreliable".  <FONT SIZE="-1">UDP</FONT>
+can silently drop packets on busy or unreliable networks, which will
+cause havoc with your debugging session.
+</P><P>
+
+<DT><CODE>target remote | <VAR>command</VAR></CODE>
+<DD><A NAME="IDX796"></A>
+Run <VAR>command</VAR> in the background and communicate with it using a
+pipe.  The <VAR>command</VAR> is a shell command, to be parsed and expanded
+by the system's command shell, <CODE>/bin/sh</CODE>; it should expect remote
+protocol packets on its standard input, and send replies on its
+standard output.  You could use this to run a stand-alone simulator
+that speaks the remote debugging protocol, to make net connections
+using programs like <CODE>ssh</CODE>, or for other similar tricks.
+<P>
+
+If <VAR>command</VAR> closes its standard output (perhaps by exiting),
+GDB will try to send it a <CODE>SIGTERM</CODE> signal.  (If the
+program has already exited, this will have no effect.)
+</P><P>
+
+</DL>
+<P>
+
+Once the connection has been established, you can use all the usual
+commands to examine and change data and to step and continue the
+remote program.
+</P><P>
+
+<A NAME="IDX797"></A>
+<A NAME="IDX798"></A>
+Whenever GDB is waiting for the remote program, if you type the
+interrupt character (often <KBD>Ctrl-c</KBD>), GDB attempts to stop the
+program.  This may or may not succeed, depending in part on the hardware
+and the serial drivers the remote system uses.  If you type the
+interrupt character once again, GDB displays this prompt:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>Interrupted while waiting for the program.
+Give up (and stop debugging it)?  (y or n)
+</FONT></pre></td></tr></table></P><P>
+
+If you type <KBD>y</KBD>, GDB abandons the remote debugging session.
+(If you decide you want to try again later, you can use <SAMP>`target
+remote'</SAMP> again to connect once more.)  If you type <KBD>n</KBD>, GDB
+goes back to waiting.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX799"></A>
+<DT><CODE>detach</CODE>
+<DD>When you have finished debugging the remote program, you can use the
+<CODE>detach</CODE> command to release it from GDB control.
+Detaching from the target normally resumes its execution, but the results
+will depend on your particular remote stub.  After the <CODE>detach</CODE>
+command, GDB is free to connect to another target.
+<P>
+
+<A NAME="IDX800"></A>
+<DT><CODE>disconnect</CODE>
+<DD>The <CODE>disconnect</CODE> command behaves like <CODE>detach</CODE>, except that
+the target is generally not resumed.  It will wait for GDB
+(this instance or another one) to connect and continue debugging.  After
+the <CODE>disconnect</CODE> command, GDB is again free to connect to
+another target.
+<P>
+
+<A NAME="IDX801"></A>
+<A NAME="IDX802"></A>
+<A NAME="IDX803"></A>
+<A NAME="IDX804"></A>
+<DT><CODE>monitor <VAR>cmd</VAR></CODE>
+<DD>This command allows you to send arbitrary commands directly to the
+remote monitor.  Since GDB doesn't care about the commands it
+sends like this, this command is the way to extend GDB---you
+can add new commands that only the external monitor will understand
+and implement.
+</DL>
+<P>
+
+<A NAME="File Transfer"></A>
+<HR SIZE="6">
+<A NAME="SEC164"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC163"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC165"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC165"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 17.2 Sending files to a remote system </H2>
+<!--docid::SEC164::-->
+<P>
+
+Some remote targets offer the ability to transfer files over the same
+connection used to communicate with GDB.  This is convenient
+for targets accessible through other means, e.g. GNU/Linux systems
+running <CODE>gdbserver</CODE> over a network interface.  For other targets,
+e.g. embedded devices with only a single serial port, this may be
+the only way to upload or download files.
+</P><P>
+
+Not all remote targets support these commands.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX805"></A>
+<DT><CODE>remote put <VAR>hostfile</VAR> <VAR>targetfile</VAR></CODE>
+<DD>Copy file <VAR>hostfile</VAR> from the host system (the machine running
+GDB) to <VAR>targetfile</VAR> on the target system.
+<P>
+
+<A NAME="IDX806"></A>
+<DT><CODE>remote get <VAR>targetfile</VAR> <VAR>hostfile</VAR></CODE>
+<DD>Copy file <VAR>targetfile</VAR> from the target system to <VAR>hostfile</VAR>
+on the host system.
+<P>
+
+<A NAME="IDX807"></A>
+<DT><CODE>remote delete <VAR>targetfile</VAR></CODE>
+<DD>Delete <VAR>targetfile</VAR> from the target system.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Server"></A>
+<HR SIZE="6">
+<A NAME="SEC165"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC164"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC166"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 17.3 Using the <CODE>gdbserver</CODE> Program </H2>
+<!--docid::SEC165::-->
+<P>
+
+<A NAME="IDX808"></A>
+<A NAME="IDX809"></A>
+<CODE>gdbserver</CODE> is a control program for Unix-like systems, which
+allows you to connect your program with a remote GDB via
+<CODE>target remote</CODE>---but without linking in the usual debugging stub.
+</P><P>
+
+<CODE>gdbserver</CODE> is not a complete replacement for the debugging stubs,
+because it requires essentially the same operating-system facilities
+that GDB itself does.  In fact, a system that can run
+<CODE>gdbserver</CODE> to connect to a remote GDB could also run
+GDB locally!  <CODE>gdbserver</CODE> is sometimes useful nevertheless,
+because it is a much smaller program than GDB itself.  It is
+also easier to port than all of GDB, so you may be able to get
+started more quickly on a new system by using <CODE>gdbserver</CODE>.
+Finally, if you develop code for real-time systems, you may find that
+the tradeoffs involved in real-time operation make it more convenient to
+do as much development work as possible on another system, for example
+by cross-compiling.  You can use <CODE>gdbserver</CODE> to make a similar
+choice for debugging.
+</P><P>
+
+GDB and <CODE>gdbserver</CODE> communicate via either a serial line
+or a TCP connection, using the standard GDB remote serial
+protocol.
+</P><P>
+
+<BLOCKQUOTE>
+<EM>Warning:</EM> <CODE>gdbserver</CODE> does not have any built-in security.
+Do not run <CODE>gdbserver</CODE> connected to any public network; a
+GDB connection to <CODE>gdbserver</CODE> provides access to the
+target system with the same privileges as the user running
+<CODE>gdbserver</CODE>.
+</BLOCKQUOTE>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC166"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC165"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC167"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC165"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC170"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 17.3.1 Running <CODE>gdbserver</CODE> </H3>
+<!--docid::SEC166::-->
+<P>
+
+Run <CODE>gdbserver</CODE> on the target system.  You need a copy of the
+program you want to debug, including any libraries it requires.
+<CODE>gdbserver</CODE> does not need your program's symbol table, so you can
+strip the program if necessary to save space.  GDB on the host
+system does all the symbol handling.
+</P><P>
+
+To use the server, you must tell it how to communicate with GDB;
+the name of your program; and the arguments for your program.  The usual
+syntax is:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target&#62; gdbserver <VAR>comm</VAR> <VAR>program</VAR> [ <VAR>args</VAR> <small>...</small> ]
+</FONT></pre></td></tr></table></P><P>
+
+<VAR>comm</VAR> is either a device name (to use a serial line) or a TCP
+hostname and portnumber.  For example, to debug Emacs with the argument
+<SAMP>`foo.txt'</SAMP> and communicate with GDB over the serial port
+<TT>`/dev/com1'</TT>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target&#62; gdbserver /dev/com1 emacs foo.txt
+</FONT></pre></td></tr></table></P><P>
+
+<CODE>gdbserver</CODE> waits passively for the host GDB to communicate
+with it.
+</P><P>
+
+To use a TCP connection instead of a serial line:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target&#62; gdbserver host:2345 emacs foo.txt
+</FONT></pre></td></tr></table></P><P>
+
+The only difference from the previous example is the first argument,
+specifying that you are communicating with the host GDB via
+TCP.  The <SAMP>`host:2345'</SAMP> argument means that <CODE>gdbserver</CODE> is to
+expect a TCP connection from machine <SAMP>`host'</SAMP> to local TCP port 2345.
+(Currently, the <SAMP>`host'</SAMP> part is ignored.)  You can choose any number
+you want for the port number as long as it does not conflict with any
+TCP ports already in use on the target system (for example, <CODE>23</CODE> is
+reserved for <CODE>telnet</CODE>).<A NAME="DOCF7" HREF="gdb_fot.html#FOOT7">(7)</A>  You must use the same port number with the host GDB
+<CODE>target remote</CODE> command.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC167"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC166"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC168"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC166"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC170"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 17.3.1.1 Attaching to a Running Program </H4>
+<!--docid::SEC167::-->
+<P>
+
+On some targets, <CODE>gdbserver</CODE> can also attach to running programs.
+This is accomplished via the <CODE>--attach</CODE> argument.  The syntax is:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target&#62; gdbserver --attach <VAR>comm</VAR> <VAR>pid</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+<VAR>pid</VAR> is the process ID of a currently running process.  It isn't necessary
+to point <CODE>gdbserver</CODE> at a binary for the running process.
+</P><P>
+
+<A NAME="IDX810"></A>
+<A NAME="IDX811"></A>
+You can debug processes by name instead of process ID if your target has the
+<CODE>pidof</CODE> utility:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>target&#62; gdbserver --attach <VAR>comm</VAR> `pidof <VAR>program</VAR>`
+</FONT></pre></td></tr></table></P><P>
+
+In case more than one copy of <VAR>program</VAR> is running, or <VAR>program</VAR>
+has multiple threads, most versions of <CODE>pidof</CODE> support the
+<CODE>-s</CODE> option to only return the first process ID.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC168"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC167"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC169"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC169"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC166"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC170"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 17.3.1.2 Multi-Process Mode for <CODE>gdbserver</CODE> </H4>
+<!--docid::SEC168::-->
+<P>
+
+When you connect to <CODE>gdbserver</CODE> using <CODE>target remote</CODE>,
+<CODE>gdbserver</CODE> debugs the specified program only once.  When the
+program exits, or you detach from it, GDB closes the connection
+and <CODE>gdbserver</CODE> exits.
+</P><P>
+
+If you connect using <KBD>target extended-remote</KBD>, <CODE>gdbserver</CODE>
+enters multi-process mode.  When the debugged program exits, or you
+detach from it, GDB stays connected to <CODE>gdbserver</CODE> even
+though no program is running.  The <CODE>run</CODE> and <CODE>attach</CODE>
+commands instruct <CODE>gdbserver</CODE> to run or attach to a new program.
+The <CODE>run</CODE> command uses <CODE>set remote exec-file</CODE> (see  <A HREF="gdb_18.html#set remote exec-file">set remote exec-file</A>) to select the program to run.  Command line
+arguments are supported, except for wildcard expansion and I/O
+redirection (see section <A HREF="gdb_5.html#SEC21">4.3 Your Program's Arguments</A>).
+</P><P>
+
+To start <CODE>gdbserver</CODE> without supplying an initial command to run
+or process ID to attach, use the <SAMP>`--multi'</SAMP> command line option.
+Then you can connect using <KBD>target extended-remote</KBD> and start
+the program you want to debug.
+</P><P>
+
+<CODE>gdbserver</CODE> does not automatically exit in multi-process mode.
+You can terminate it by using <CODE>monitor exit</CODE>
+(see  <A HREF="gdb_18.html#Monitor Commands for gdbserver">Monitor Commands for gdbserver</A>).
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC169"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC168"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC170"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC166"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC170"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 17.3.1.3 Other Command-Line Arguments for <CODE>gdbserver</CODE> </H4>
+<!--docid::SEC169::-->
+<P>
+
+You can include <SAMP>`--debug'</SAMP> on the <CODE>gdbserver</CODE> command line.
+<CODE>gdbserver</CODE> will display extra status information about the debugging
+process.  This option is intended for <CODE>gdbserver</CODE> development and
+for bug reports to the developers.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC170"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC169"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC171"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC171"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC165"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 17.3.2 Connecting to <CODE>gdbserver</CODE> </H3>
+<!--docid::SEC170::-->
+<P>
+
+Run GDB on the host system.
+</P><P>
+
+First make sure you have the necessary symbol files.  Load symbols for
+your application using the <CODE>file</CODE> command before you connect.  Use
+<CODE>set sysroot</CODE> to locate target libraries (unless your GDB
+was compiled with the correct sysroot using <CODE>--with-sysroot</CODE>).
+</P><P>
+
+The symbol file and target libraries must exactly match the executable
+and libraries on the target, with one exception: the files on the host
+system should not be stripped, even if the files on the target system
+are.  Mismatched or missing files will lead to confusing results
+during debugging.  On GNU/Linux targets, mismatched or missing
+files may also prevent <CODE>gdbserver</CODE> from debugging multi-threaded
+programs.
+</P><P>
+
+Connect to your target (see section <A HREF="gdb_18.html#SEC163">Connecting to a Remote Target</A>).
+For TCP connections, you must start up <CODE>gdbserver</CODE> prior to using
+the <CODE>target remote</CODE> command.  Otherwise you may get an error whose
+text depends on the host system, but which usually looks something like
+<SAMP>`Connection refused'</SAMP>.  Don't use the <CODE>load</CODE>
+command in GDB when using <CODE>gdbserver</CODE>, since the program is
+already on the target.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC171"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC170"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC165"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 17.3.3 Monitor Commands for <CODE>gdbserver</CODE> </H3>
+<!--docid::SEC171::-->
+<A NAME="Monitor Commands for gdbserver"></A>
+<P>
+
+During a GDB session using <CODE>gdbserver</CODE>, you can use the
+<CODE>monitor</CODE> command to send special requests to <CODE>gdbserver</CODE>.
+Here are the available commands.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>monitor help</CODE>
+<DD>List the available monitor commands.
+<P>
+
+<DT><CODE>monitor set debug 0</CODE>
+<DD><DT><CODE>monitor set debug 1</CODE>
+<DD>Disable or enable general debugging messages.
+<P>
+
+<DT><CODE>monitor set remote-debug 0</CODE>
+<DD><DT><CODE>monitor set remote-debug 1</CODE>
+<DD>Disable or enable specific debugging messages associated with the remote
+protocol (see section <A HREF="gdb_33.html#SEC694">D. GDB Remote Serial Protocol</A>).
+<P>
+
+<DT><CODE>monitor exit</CODE>
+<DD>Tell gdbserver to exit immediately.  This command should be followed by
+<CODE>disconnect</CODE> to close the debugging session.  <CODE>gdbserver</CODE> will
+detach from any attached processes and kill any processes it created.
+Use <CODE>monitor exit</CODE> to terminate <CODE>gdbserver</CODE> at the end
+of a multi-process mode debug session.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Remote Configuration"></A>
+<HR SIZE="6">
+<A NAME="SEC172"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC171"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC173"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC173"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 17.4 Remote Configuration </H2>
+<!--docid::SEC172::-->
+<P>
+
+<A NAME="IDX812"></A>
+<A NAME="IDX813"></A>
+This section documents the configuration options available when
+debugging remote programs.  For the options related to the File I/O
+extensions of the remote protocol, see <A HREF="gdb_33.html#SEC722">system-call-allowed</A>.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set remoteaddresssize <VAR>bits</VAR></CODE>
+<DD><A NAME="IDX814"></A>
+<A NAME="IDX815"></A>
+Set the maximum size of address in a memory packet to the specified
+number of bits.  GDB will mask off the address bits above
+that number, when it passes addresses to the remote target.  The
+default value is the number of bits in the target's address.
+<P>
+
+<DT><CODE>show remoteaddresssize</CODE>
+<DD>Show the current value of remote address size in bits.
+<P>
+
+<DT><CODE>set remotebaud <VAR>n</VAR></CODE>
+<DD><A NAME="IDX816"></A>
+Set the baud rate for the remote serial I/O to <VAR>n</VAR> baud.  The
+value is used to set the speed of the serial port used for debugging
+remote targets.
+<P>
+
+<DT><CODE>show remotebaud</CODE>
+<DD>Show the current speed of the remote connection.
+<P>
+
+<DT><CODE>set remotebreak</CODE>
+<DD><A NAME="IDX817"></A>
+<A NAME="IDX818"></A>
+<A NAME="set remotebreak"></A>
+If set to on, GDB sends a <CODE>BREAK</CODE> signal to the remote
+when you type <KBD>Ctrl-c</KBD> to interrupt the program running
+on the remote.  If set to off, GDB sends the <SAMP>`Ctrl-C'</SAMP>
+character instead.  The default is off, since most remote systems
+expect to see <SAMP>`Ctrl-C'</SAMP> as the interrupt signal.
+<P>
+
+<DT><CODE>show remotebreak</CODE>
+<DD>Show whether GDB sends <CODE>BREAK</CODE> or <SAMP>`Ctrl-C'</SAMP> to
+interrupt the remote program.
+<P>
+
+<DT><CODE>set remoteflow on</CODE>
+<DD><DT><CODE>set remoteflow off</CODE>
+<DD><A NAME="IDX819"></A>
+Enable or disable hardware flow control (<CODE>RTS</CODE>/<CODE>CTS</CODE>)
+on the serial port used to communicate to the remote target.
+<P>
+
+<DT><CODE>show remoteflow</CODE>
+<DD><A NAME="IDX820"></A>
+Show the current setting of hardware flow control.
+<P>
+
+<DT><CODE>set remotelogbase <VAR>base</VAR></CODE>
+<DD>Set the base (a.k.a. radix) of logging serial protocol
+communications to <VAR>base</VAR>.  Supported values of <VAR>base</VAR> are:
+<CODE>ascii</CODE>, <CODE>octal</CODE>, and <CODE>hex</CODE>.  The default is
+<CODE>ascii</CODE>.
+<P>
+
+<DT><CODE>show remotelogbase</CODE>
+<DD>Show the current setting of the radix for logging remote serial
+protocol.
+<P>
+
+<DT><CODE>set remotelogfile <VAR>file</VAR></CODE>
+<DD><A NAME="IDX821"></A>
+Record remote serial communications on the named <VAR>file</VAR>.  The
+default is not to record at all.
+<P>
+
+<DT><CODE>show remotelogfile.</CODE>
+<DD>Show the current setting  of the file name on which to record the
+serial communications.
+<P>
+
+<DT><CODE>set remotetimeout <VAR>num</VAR></CODE>
+<DD><A NAME="IDX822"></A>
+<A NAME="IDX823"></A>
+Set the timeout limit to wait for the remote target to respond to
+<VAR>num</VAR> seconds.  The default is 2 seconds.
+<P>
+
+<DT><CODE>show remotetimeout</CODE>
+<DD>Show the current number of seconds to wait for the remote target
+responses.
+<P>
+
+<A NAME="IDX824"></A>
+<A NAME="IDX825"></A>
+<A NAME="set remote hardware-watchpoint-limit"></A>
+<A NAME="set remote hardware-breakpoint-limit"></A>
+<DT><CODE>set remote hardware-watchpoint-limit <VAR>limit</VAR></CODE>
+<DD><DT><CODE>set remote hardware-breakpoint-limit <VAR>limit</VAR></CODE>
+<DD>Restrict GDB to using <VAR>limit</VAR> remote hardware breakpoint or
+watchpoints.  A limit of -1, the default, is treated as unlimited.
+<P>
+
+<DT><CODE>set remote exec-file <VAR>filename</VAR></CODE>
+<DD><DT><CODE>show remote exec-file</CODE>
+<DD><A NAME="set remote exec-file"></A>
+<A NAME="IDX826"></A>
+Select the file used for <CODE>run</CODE> with <CODE>target
+extended-remote</CODE>.  This should be set to a filename valid on the
+target system.  If it is not set, the target will use a default
+filename (e.g. the last program run).
+</DL>
+<P>
+
+<A NAME="IDX827"></A>
+The GDB remote protocol autodetects the packets supported by
+your debugging stub.  If you need to override the autodetection, you
+can use these commands to enable or disable individual packets.  Each
+packet can be set to <SAMP>`on'</SAMP> (the remote target supports this
+packet), <SAMP>`off'</SAMP> (the remote target does not support this packet),
+or <SAMP>`auto'</SAMP> (detect remote target support for this packet).  They
+all default to <SAMP>`auto'</SAMP>.  For more information about each packet,
+see <A HREF="gdb_33.html#SEC694">D. GDB Remote Serial Protocol</A>.
+</P><P>
+
+During normal use, you should not have to use any of these commands.
+If you do, that may be a bug in your remote debugging stub, or a bug
+in GDB.  You may want to report the problem to the
+GDB developers.
+</P><P>
+
+For each packet <VAR>name</VAR>, the command to enable or disable the
+packet is <CODE>set remote <VAR>name</VAR>-packet</CODE>.  The available settings
+are:
+</P><P>
+
+<TABLE>
+<TR><TD>Command Name</TD>
+</TD><TD> Remote Packet
+</TD><TD> Related Features
+
+</TR>
+<TR><TD><CODE>fetch-register</CODE></TD>
+</TD><TD> <CODE>p</CODE>
+</TD><TD> <CODE>info registers</CODE>
+
+</TR>
+<TR><TD><CODE>set-register</CODE></TD>
+</TD><TD> <CODE>P</CODE>
+</TD><TD> <CODE>set</CODE>
+
+</TR>
+<TR><TD><CODE>binary-download</CODE></TD>
+</TD><TD> <CODE>X</CODE>
+</TD><TD> <CODE>load</CODE>, <CODE>set</CODE>
+
+</TR>
+<TR><TD><CODE>read-aux-vector</CODE></TD>
+</TD><TD> <CODE>qXfer:auxv:read</CODE>
+</TD><TD> <CODE>info auxv</CODE>
+
+</TR>
+<TR><TD><CODE>symbol-lookup</CODE></TD>
+</TD><TD> <CODE>qSymbol</CODE>
+</TD><TD> Detecting multiple threads
+
+</TR>
+<TR><TD><CODE>attach</CODE></TD>
+</TD><TD> <CODE>vAttach</CODE>
+</TD><TD> <CODE>attach</CODE>
+
+</TR>
+<TR><TD><CODE>verbose-resume</CODE></TD>
+</TD><TD> <CODE>vCont</CODE>
+</TD><TD> Stepping or resuming multiple threads
+
+</TR>
+<TR><TD><CODE>run</CODE></TD>
+</TD><TD> <CODE>vRun</CODE>
+</TD><TD> <CODE>run</CODE>
+
+</TR>
+<TR><TD><CODE>software-breakpoint</CODE></TD>
+</TD><TD> <CODE>Z0</CODE>
+</TD><TD> <CODE>break</CODE>
+
+</TR>
+<TR><TD><CODE>hardware-breakpoint</CODE></TD>
+</TD><TD> <CODE>Z1</CODE>
+</TD><TD> <CODE>hbreak</CODE>
+
+</TR>
+<TR><TD><CODE>write-watchpoint</CODE></TD>
+</TD><TD> <CODE>Z2</CODE>
+</TD><TD> <CODE>watch</CODE>
+
+</TR>
+<TR><TD><CODE>read-watchpoint</CODE></TD>
+</TD><TD> <CODE>Z3</CODE>
+</TD><TD> <CODE>rwatch</CODE>
+
+</TR>
+<TR><TD><CODE>access-watchpoint</CODE></TD>
+</TD><TD> <CODE>Z4</CODE>
+</TD><TD> <CODE>awatch</CODE>
+
+</TR>
+<TR><TD><CODE>target-features</CODE></TD>
+</TD><TD> <CODE>qXfer:features:read</CODE>
+</TD><TD> <CODE>set architecture</CODE>
+
+</TR>
+<TR><TD><CODE>library-info</CODE></TD>
+</TD><TD> <CODE>qXfer:libraries:read</CODE>
+</TD><TD> <CODE>info sharedlibrary</CODE>
+
+</TR>
+<TR><TD><CODE>memory-map</CODE></TD>
+</TD><TD> <CODE>qXfer:memory-map:read</CODE>
+</TD><TD> <CODE>info mem</CODE>
+
+</TR>
+<TR><TD><CODE>read-spu-object</CODE></TD>
+</TD><TD> <CODE>qXfer:spu:read</CODE>
+</TD><TD> <CODE>info spu</CODE>
+
+</TR>
+<TR><TD><CODE>write-spu-object</CODE></TD>
+</TD><TD> <CODE>qXfer:spu:write</CODE>
+</TD><TD> <CODE>info spu</CODE>
+
+</TR>
+<TR><TD><CODE>get-thread-local-<BR>storage-address</CODE></TD>
+</TD><TD> <CODE>qGetTLSAddr</CODE>
+</TD><TD> Displaying <CODE>__thread</CODE> variables
+
+</TR>
+<TR><TD><CODE>supported-packets</CODE></TD>
+</TD><TD> <CODE>qSupported</CODE>
+</TD><TD> Remote communications parameters
+
+</TR>
+<TR><TD><CODE>pass-signals</CODE></TD>
+</TD><TD> <CODE>QPassSignals</CODE>
+</TD><TD> <CODE>handle <VAR>signal</VAR></CODE>
+
+</TR>
+<TR><TD><CODE>hostio-close-packet</CODE></TD>
+</TD><TD> <CODE>vFile:close</CODE>
+</TD><TD> <CODE>remote get</CODE>, <CODE>remote put</CODE>
+
+</TR>
+<TR><TD><CODE>hostio-open-packet</CODE></TD>
+</TD><TD> <CODE>vFile:open</CODE>
+</TD><TD> <CODE>remote get</CODE>, <CODE>remote put</CODE>
+
+</TR>
+<TR><TD><CODE>hostio-pread-packet</CODE></TD>
+</TD><TD> <CODE>vFile:pread</CODE>
+</TD><TD> <CODE>remote get</CODE>, <CODE>remote put</CODE>
+
+</TR>
+<TR><TD><CODE>hostio-pwrite-packet</CODE></TD>
+</TD><TD> <CODE>vFile:pwrite</CODE>
+</TD><TD> <CODE>remote get</CODE>, <CODE>remote put</CODE>
+
+</TR>
+<TR><TD><CODE>hostio-unlink-packet</CODE></TD>
+</TD><TD> <CODE>vFile:unlink</CODE>
+</TD><TD> <CODE>remote delete</CODE>
+</TR></TABLE>
+<P>
+
+<A NAME="Remote Stub"></A>
+<HR SIZE="6">
+<A NAME="SEC173"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC172"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC174"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 17.5 Implementing a Remote Stub </H2>
+<!--docid::SEC173::-->
+<P>
+
+<A NAME="IDX828"></A>
+<A NAME="IDX829"></A>
+<A NAME="IDX830"></A>
+The stub files provided with GDB implement the target side of the
+communication protocol, and the GDB side is implemented in the
+GDB source file <TT>`remote.c'</TT>.  Normally, you can simply allow
+these subroutines to communicate, and ignore the details.  (If you're
+implementing your own stub file, you can still ignore the details: start
+with one of the existing stub files.  <TT>`sparc-stub.c'</TT> is the best
+organized, and therefore the easiest to read.)
+</P><P>
+
+<A NAME="IDX831"></A>
+To debug a program running on another machine (the debugging
+<EM>target</EM> machine), you must first arrange for all the usual
+prerequisites for the program to run by itself.  For example, for a C
+program, you need:
+</P><P>
+
+<OL>
+<LI>
+A startup routine to set up the C runtime environment; these usually
+have a name like <TT>`crt0'</TT>.  The startup routine may be supplied by
+your hardware supplier, or you may have to write your own.
+<P>
+
+<LI>
+A C subroutine library to support your program's
+subroutine calls, notably managing input and output.
+<P>
+
+<LI>
+A way of getting your program to the other machine--for example, a
+download program.  These are often supplied by the hardware
+manufacturer, but you may have to write your own from hardware
+documentation.
+</OL>
+<P>
+
+The next step is to arrange for your program to use a serial port to
+communicate with the machine where GDB is running (the <EM>host</EM>
+machine).  In general terms, the scheme looks like this:
+</P><P>
+
+<DL COMPACT>
+<DT><EM>On the host,</EM>
+<DD>GDB already understands how to use this protocol; when everything
+else is set up, you can simply use the <SAMP>`target remote'</SAMP> command
+(see section <A HREF="gdb_17.html#SEC158">Specifying a Debugging Target</A>).
+<P>
+
+<DT><EM>On the target,</EM>
+<DD>you must link with your program a few special-purpose subroutines that
+implement the GDB remote serial protocol.  The file containing these
+subroutines is called  a <EM>debugging stub</EM>.
+<P>
+
+On certain remote targets, you can use an auxiliary program
+<CODE>gdbserver</CODE> instead of linking a stub into your program.
+See section <A HREF="gdb_18.html#SEC165">Using the <CODE>gdbserver</CODE> Program</A>, for details.
+</DL>
+<P>
+
+The debugging stub is specific to the architecture of the remote
+machine; for example, use <TT>`sparc-stub.c'</TT> to debug programs on
+SPARC boards.
+</P><P>
+
+<A NAME="IDX832"></A>
+These working remote stubs are distributed with GDB:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>i386-stub.c</CODE>
+<DD><A NAME="IDX833"></A>
+<A NAME="IDX834"></A>
+<A NAME="IDX835"></A>
+For Intel 386 and compatible architectures.
+<P>
+
+<DT><CODE>m68k-stub.c</CODE>
+<DD><A NAME="IDX836"></A>
+<A NAME="IDX837"></A>
+<A NAME="IDX838"></A>
+For Motorola 680x0 architectures.
+<P>
+
+<DT><CODE>sh-stub.c</CODE>
+<DD><A NAME="IDX839"></A>
+<A NAME="IDX840"></A>
+<A NAME="IDX841"></A>
+For Renesas SH architectures.
+<P>
+
+<DT><CODE>sparc-stub.c</CODE>
+<DD><A NAME="IDX842"></A>
+<A NAME="IDX843"></A>
+For SPARC architectures.
+<P>
+
+<DT><CODE>sparcl-stub.c</CODE>
+<DD><A NAME="IDX844"></A>
+<A NAME="IDX845"></A>
+<A NAME="IDX846"></A>
+For Fujitsu SPARCLITE architectures.
+<P>
+
+</DL>
+<P>
+
+The <TT>`README'</TT> file in the GDB distribution may list other
+recently added stubs.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC174">17.5.1 What the Stub Can Do for You</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">What the stub can do for you</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC175">17.5.2 What You Must Do for the Stub</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">What you must do for the stub</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_18.html#SEC176">17.5.3 Putting it All Together</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Putting it all together</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Stub Contents"></A>
+<HR SIZE="6">
+<A NAME="SEC174"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC173"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC175"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC173"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 17.5.1 What the Stub Can Do for You </H3>
+<!--docid::SEC174::-->
+<P>
+
+<A NAME="IDX847"></A>
+The debugging stub for your architecture supplies these three
+subroutines:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set_debug_traps</CODE>
+<DD><A NAME="IDX848"></A>
+<A NAME="IDX849"></A>
+This routine arranges for <CODE>handle_exception</CODE> to run when your
+program stops.  You must call this subroutine explicitly near the
+beginning of your program.
+<P>
+
+<DT><CODE>handle_exception</CODE>
+<DD><A NAME="IDX850"></A>
+<A NAME="IDX851"></A>
+This is the central workhorse, but your program never calls it
+explicitly--the setup code arranges for <CODE>handle_exception</CODE> to
+run when a trap is triggered.
+<P>
+
+<CODE>handle_exception</CODE> takes control when your program stops during
+execution (for example, on a breakpoint), and mediates communications
+with GDB on the host machine.  This is where the communications
+protocol is implemented; <CODE>handle_exception</CODE> acts as the GDB
+representative on the target machine.  It begins by sending summary
+information on the state of your program, then continues to execute,
+retrieving and transmitting any information GDB needs, until you
+execute a GDB command that makes your program resume; at that point,
+<CODE>handle_exception</CODE> returns control to your own code on the target
+machine.
+</P><P>
+
+<DT><CODE>breakpoint</CODE>
+<DD><A NAME="IDX852"></A>
+Use this auxiliary subroutine to make your program contain a
+breakpoint.  Depending on the particular situation, this may be the only
+way for GDB to get control.  For instance, if your target
+machine has some sort of interrupt button, you won't need to call this;
+pressing the interrupt button transfers control to
+<CODE>handle_exception</CODE>---in effect, to GDB.  On some machines,
+simply receiving characters on the serial port may also trigger a trap;
+again, in that situation, you don't need to call <CODE>breakpoint</CODE> from
+your own program--simply running <SAMP>`target remote'</SAMP> from the host
+GDB session gets control.
+<P>
+
+Call <CODE>breakpoint</CODE> if none of these is true, or if you simply want
+to make certain your program stops at a predetermined point for the
+start of your debugging session.
+</DL>
+<P>
+
+<A NAME="Bootstrapping"></A>
+<HR SIZE="6">
+<A NAME="SEC175"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC174"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC176"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC176"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC173"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 17.5.2 What You Must Do for the Stub </H3>
+<!--docid::SEC175::-->
+<P>
+
+<A NAME="IDX853"></A>
+The debugging stubs that come with GDB are set up for a particular
+chip architecture, but they have no information about the rest of your
+debugging target machine.
+</P><P>
+
+First of all you need to tell the stub how to communicate with the
+serial port.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>int getDebugChar()</CODE>
+<DD><A NAME="IDX854"></A>
+Write this subroutine to read a single character from the serial port.
+It may be identical to <CODE>getchar</CODE> for your target system; a
+different name is used to allow you to distinguish the two if you wish.
+<P>
+
+<DT><CODE>void putDebugChar(int)</CODE>
+<DD><A NAME="IDX855"></A>
+Write this subroutine to write a single character to the serial port.
+It may be identical to <CODE>putchar</CODE> for your target system; a
+different name is used to allow you to distinguish the two if you wish.
+</DL>
+<P>
+
+<A NAME="IDX856"></A>
+<A NAME="IDX857"></A>
+If you want GDB to be able to stop your program while it is
+running, you need to use an interrupt-driven serial driver, and arrange
+for it to stop when it receives a <CODE>^C</CODE> (<SAMP>`\003'</SAMP>, the control-C
+character).  That is the character which GDB uses to tell the
+remote system to stop.
+</P><P>
+
+Getting the debugging target to return the proper status to GDB
+probably requires changes to the standard stub; one quick and dirty way
+is to just execute a breakpoint instruction (the "dirty" part is that
+GDB reports a <CODE>SIGTRAP</CODE> instead of a <CODE>SIGINT</CODE>).
+</P><P>
+
+Other routines you need to supply are:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>void exceptionHandler (int <VAR>exception_number</VAR>, void *<VAR>exception_address</VAR>)</CODE>
+<DD><A NAME="IDX858"></A>
+Write this function to install <VAR>exception_address</VAR> in the exception
+handling tables.  You need to do this because the stub does not have any
+way of knowing what the exception handling tables on your target system
+are like (for example, the processor's table might be in ROM,
+containing entries which point to a table in RAM).
+<VAR>exception_number</VAR> is the exception number which should be changed;
+its meaning is architecture-dependent (for example, different numbers
+might represent divide by zero, misaligned access, etc).  When this
+exception occurs, control should be transferred directly to
+<VAR>exception_address</VAR>, and the processor state (stack, registers,
+and so on) should be just as it is when a processor exception occurs.  So if
+you want to use a jump instruction to reach <VAR>exception_address</VAR>, it
+should be a simple jump, not a jump to subroutine.
+<P>
+
+For the 386, <VAR>exception_address</VAR> should be installed as an interrupt
+gate so that interrupts are masked while the handler runs.  The gate
+should be at privilege level 0 (the most privileged level).  The
+SPARC and 68k stubs are able to mask interrupts themselves without
+help from <CODE>exceptionHandler</CODE>.
+</P><P>
+
+<DT><CODE>void flush_i_cache()</CODE>
+<DD><A NAME="IDX859"></A>
+On SPARC and SPARCLITE only, write this subroutine to flush the
+instruction cache, if any, on your target machine.  If there is no
+instruction cache, this subroutine may be a no-op.
+<P>
+
+On target machines that have instruction caches, GDB requires this
+function to make certain that the state of your program is stable.
+</DL>
+<P>
+
+You must also make sure this library routine is available:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>void *memset(void *, int, int)</CODE>
+<DD><A NAME="IDX860"></A>
+This is the standard library function <CODE>memset</CODE> that sets an area of
+memory to a known value.  If you have one of the free versions of
+<CODE>libc.a</CODE>, <CODE>memset</CODE> can be found there; otherwise, you must
+either obtain it from your hardware manufacturer, or write your own.
+</DL>
+<P>
+
+If you do not use the GNU C compiler, you may need other standard
+library subroutines as well; this varies from one stub to another,
+but in general the stubs are likely to use any of the common library
+subroutines which <CODE>GCC</CODE> generates as inline code.
+</P><P>
+
+<A NAME="Debug Session"></A>
+<HR SIZE="6">
+<A NAME="SEC176"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC175"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC173"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 17.5.3 Putting it All Together </H3>
+<!--docid::SEC176::-->
+<P>
+
+<A NAME="IDX861"></A>
+In summary, when your program is ready to debug, you must follow these
+steps.
+</P><P>
+
+<OL>
+<LI>
+Make sure you have defined the supporting low-level routines
+(see section <A HREF="gdb_18.html#SEC175">What You Must Do for the Stub</A>):
+<TABLE><tr><td>&nbsp;</td><td class=display><pre style="font-family: serif"><CODE>getDebugChar</CODE>, <CODE>putDebugChar</CODE>,
+<CODE>flush_i_cache</CODE>, <CODE>memset</CODE>, <CODE>exceptionHandler</CODE>.
+</pre></td></tr></table><P>
+
+<LI>
+Insert these lines near the top of your program:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>set_debug_traps();
+breakpoint();
+</FONT></pre></td></tr></table></P><P>
+
+<LI>
+For the 680x0 stub only, you need to provide a variable called
+<CODE>exceptionHook</CODE>.  Normally you just use:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>void (*exceptionHook)() = 0;
+</FONT></pre></td></tr></table></P><P>
+
+but if before calling <CODE>set_debug_traps</CODE>, you set it to point to a
+function in your program, that function is called when
+<CODE>GDB</CODE> continues after stopping on a trap (for example, bus
+error).  The function indicated by <CODE>exceptionHook</CODE> is called with
+one parameter: an <CODE>int</CODE> which is the exception number.
+</P><P>
+
+<LI>
+Compile and link together: your program, the GDB debugging stub for
+your target architecture, and the supporting subroutines.
+<P>
+
+<LI>
+Make sure you have a serial connection between your target machine and
+the GDB host, and identify the serial port on the host.
+<P>
+
+<LI>
+Download your program to your target machine (or get it there by
+whatever means the manufacturer provides), and start it.
+<P>
+
+<LI>
+Start GDB on the host, and connect to the target
+(see section <A HREF="gdb_18.html#SEC163">Connecting to a Remote Target</A>).
+<P>
+
+</OL>
+<P>
+
+<A NAME="Configurations"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC162"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

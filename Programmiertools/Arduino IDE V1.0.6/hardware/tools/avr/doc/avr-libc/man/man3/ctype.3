@@ -1,0 +1,129 @@
+.TH "<ctype.h>: Character Operations" 3 "4 Dec 2008" "Version 1.6.4" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+<ctype.h>: Character Operations \- 
+.SH "Detailed Description"
+.PP 
+These functions perform various operations on characters.
+.PP
+.PP
+.nf
+ #include <ctype.h>
+.fi
+.PP
+ 
+.PP
+.SS "Character classification routines"
+These functions perform character classification. They return true or false status depending whether the character passed to the function falls into the function's classification (i.e. \fBisdigit()\fP returns true if its argument is any value '0' though '9', inclusive). If the input is not an unsigned char value, all of this function return false. 
+.in +1c
+.ti -1c
+.RI "int \fBisalnum\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisalpha\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisascii\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisblank\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBiscntrl\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisdigit\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisgraph\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBislower\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisprint\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBispunct\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisspace\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisupper\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBisxdigit\fP (int __c)"
+.br
+.in -1c
+.SS "Character convertion routines"
+This realization permits all possible values of integer argument. The \fBtoascii()\fP function clears all highest bits. The \fBtolower()\fP and \fBtoupper()\fP functions return an input argument as is, if it is not an unsigned char value. 
+.in +1c
+.ti -1c
+.RI "int \fBtoascii\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBtolower\fP (int __c)"
+.br
+.ti -1c
+.RI "int \fBtoupper\fP (int __c)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int isalnum (int __c)"
+.PP
+Checks for an alphanumeric character. It is equivalent to \fC(isalpha(c) || isdigit(c))\fP. 
+.SS "int isalpha (int __c)"
+.PP
+Checks for an alphabetic character. It is equivalent to \fC(isupper(c) || islower(c))\fP. 
+.SS "int isascii (int __c)"
+.PP
+Checks whether \fCc\fP is a 7-bit unsigned char value that fits into the ASCII character set. 
+.SS "int isblank (int __c)"
+.PP
+Checks for a blank character, that is, a space or a tab. 
+.SS "int iscntrl (int __c)"
+.PP
+Checks for a control character. 
+.SS "int isdigit (int __c)"
+.PP
+Checks for a digit (0 through 9). 
+.SS "int isgraph (int __c)"
+.PP
+Checks for any printable character except space. 
+.SS "int islower (int __c)"
+.PP
+Checks for a lower-case character. 
+.SS "int isprint (int __c)"
+.PP
+Checks for any printable character including space. 
+.SS "int ispunct (int __c)"
+.PP
+Checks for any printable character which is not a space or an alphanumeric character. 
+.SS "int isspace (int __c)"
+.PP
+Checks for white-space characters. For the avr-libc library, these are: space, form-feed ('\\f'), newline ('\\n'), carriage return ('\\r'), horizontal tab ('\\t'), and vertical tab ('\\v'). 
+.SS "int isupper (int __c)"
+.PP
+Checks for an uppercase letter. 
+.SS "int isxdigit (int __c)"
+.PP
+Checks for a hexadecimal digits, i.e. one of 0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F. 
+.SS "int toascii (int __c)"
+.PP
+Converts \fCc\fP to a 7-bit unsigned char value that fits into the ASCII character set, by clearing the high-order bits.
+.PP
+\fBWarning:\fP
+.RS 4
+Many people will be unhappy if you use this function. This function will convert accented letters into random characters. 
+.RE
+.PP
+
+.SS "int tolower (int __c)"
+.PP
+Converts the letter \fCc\fP to lower case, if possible. 
+.SS "int toupper (int __c)"
+.PP
+Converts the letter \fCc\fP to upper case, if possible. 

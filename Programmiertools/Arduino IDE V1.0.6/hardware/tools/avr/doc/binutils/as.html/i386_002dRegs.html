@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+<title>i386-Regs - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dMnemonics.html#i386_002dMnemonics" title="i386-Mnemonics">
+<link rel="next" href="i386_002dPrefixes.html#i386_002dPrefixes" title="i386-Prefixes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dRegs"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002dPrefixes.html#i386_002dPrefixes">i386-Prefixes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dMnemonics.html#i386_002dMnemonics">i386-Mnemonics</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.6 Register Naming</h4>
+
+<p><a name="index-i386-registers-901"></a><a name="index-registers_002c-i386-902"></a><a name="index-x86_002d64-registers-903"></a><a name="index-registers_002c-x86_002d64-904"></a>Register operands are always prefixed with <span class="samp">%</span>.  The 80386 registers
+consist of
+
+     <ul>
+<li>the 8 32-bit registers <span class="samp">%eax</span> (the accumulator), <span class="samp">%ebx</span>,
+<span class="samp">%ecx</span>, <span class="samp">%edx</span>, <span class="samp">%edi</span>, <span class="samp">%esi</span>, <span class="samp">%ebp</span> (the
+frame pointer), and <span class="samp">%esp</span> (the stack pointer).
+
+     <li>the 8 16-bit low-ends of these: <span class="samp">%ax</span>, <span class="samp">%bx</span>, <span class="samp">%cx</span>,
+<span class="samp">%dx</span>, <span class="samp">%di</span>, <span class="samp">%si</span>, <span class="samp">%bp</span>, and <span class="samp">%sp</span>.
+
+     <li>the 8 8-bit registers: <span class="samp">%ah</span>, <span class="samp">%al</span>, <span class="samp">%bh</span>,
+<span class="samp">%bl</span>, <span class="samp">%ch</span>, <span class="samp">%cl</span>, <span class="samp">%dh</span>, and <span class="samp">%dl</span> (These
+are the high-bytes and low-bytes of <span class="samp">%ax</span>, <span class="samp">%bx</span>,
+<span class="samp">%cx</span>, and <span class="samp">%dx</span>)
+
+     <li>the 6 section registers <span class="samp">%cs</span> (code section), <span class="samp">%ds</span>
+(data section), <span class="samp">%ss</span> (stack section), <span class="samp">%es</span>, <span class="samp">%fs</span>,
+and <span class="samp">%gs</span>.
+
+     <li>the 3 processor control registers <span class="samp">%cr0</span>, <span class="samp">%cr2</span>, and
+<span class="samp">%cr3</span>.
+
+     <li>the 6 debug registers <span class="samp">%db0</span>, <span class="samp">%db1</span>, <span class="samp">%db2</span>,
+<span class="samp">%db3</span>, <span class="samp">%db6</span>, and <span class="samp">%db7</span>.
+
+     <li>the 2 test registers <span class="samp">%tr6</span> and <span class="samp">%tr7</span>.
+
+     <li>the 8 floating point register stack <span class="samp">%st</span> or equivalently
+<span class="samp">%st(0)</span>, <span class="samp">%st(1)</span>, <span class="samp">%st(2)</span>, <span class="samp">%st(3)</span>,
+<span class="samp">%st(4)</span>, <span class="samp">%st(5)</span>, <span class="samp">%st(6)</span>, and <span class="samp">%st(7)</span>. 
+These registers are overloaded by 8 MMX registers <span class="samp">%mm0</span>,
+<span class="samp">%mm1</span>, <span class="samp">%mm2</span>, <span class="samp">%mm3</span>, <span class="samp">%mm4</span>, <span class="samp">%mm5</span>,
+<span class="samp">%mm6</span> and <span class="samp">%mm7</span>.
+
+     <li>the 8 SSE registers registers <span class="samp">%xmm0</span>, <span class="samp">%xmm1</span>, <span class="samp">%xmm2</span>,
+<span class="samp">%xmm3</span>, <span class="samp">%xmm4</span>, <span class="samp">%xmm5</span>, <span class="samp">%xmm6</span> and <span class="samp">%xmm7</span>. 
+</ul>
+
+   <p>The AMD x86-64 architecture extends the register set by:
+
+     <ul>
+<li>enhancing the 8 32-bit registers to 64-bit: <span class="samp">%rax</span> (the
+accumulator), <span class="samp">%rbx</span>, <span class="samp">%rcx</span>, <span class="samp">%rdx</span>, <span class="samp">%rdi</span>,
+<span class="samp">%rsi</span>, <span class="samp">%rbp</span> (the frame pointer), <span class="samp">%rsp</span> (the stack
+pointer)
+
+     <li>the 8 extended registers <span class="samp">%r8</span>&ndash;<span class="samp">%r15</span>.
+
+     <li>the 8 32-bit low ends of the extended registers: <span class="samp">%r8d</span>&ndash;<span class="samp">%r15d</span>
+
+     <li>the 8 16-bit low ends of the extended registers: <span class="samp">%r8w</span>&ndash;<span class="samp">%r15w</span>
+
+     <li>the 8 8-bit low ends of the extended registers: <span class="samp">%r8b</span>&ndash;<span class="samp">%r15b</span>
+
+     <li>the 4 8-bit registers: <span class="samp">%sil</span>, <span class="samp">%dil</span>, <span class="samp">%bpl</span>, <span class="samp">%spl</span>.
+
+     <li>the 8 debug registers: <span class="samp">%db8</span>&ndash;<span class="samp">%db15</span>.
+
+     <li>the 8 SSE registers: <span class="samp">%xmm8</span>&ndash;<span class="samp">%xmm15</span>. 
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+<title>Protoize Caveats - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Trouble.html#Trouble" title="Trouble">
+<link rel="prev" href="C_002b_002b-Misunderstandings.html#C_002b_002b-Misunderstandings" title="C++ Misunderstandings">
+<link rel="next" href="Non_002dbugs.html#Non_002dbugs" title="Non-bugs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Protoize-Caveats"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Non_002dbugs.html#Non_002dbugs">Non-bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="C_002b_002b-Misunderstandings.html#C_002b_002b-Misunderstandings">C++ Misunderstandings</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Trouble.html#Trouble">Trouble</a>
+<hr><br>
+</div>
+
+<h3 class="section">10.9 Caveats of using <span class="command">protoize</span></h3>
+
+<p>The conversion programs <span class="command">protoize</span> and <span class="command">unprotoize</span> can
+sometimes change a source file in a way that won't work unless you
+rearrange it.
+
+     <ul>
+<li><span class="command">protoize</span> can insert references to a type name or type tag before
+the definition, or in a file where they are not defined.
+
+     <p>If this happens, compiler error messages should show you where the new
+references are, so fixing the file by hand is straightforward.
+
+     <li>There are some C constructs which <span class="command">protoize</span> cannot figure out. 
+For example, it can't determine argument types for declaring a
+pointer-to-function variable; this you must do by hand.  <span class="command">protoize</span>
+inserts a comment containing <span class="samp">???</span> each time it finds such a
+variable; so you can find all such variables by searching for this
+string.  ISO C does not require declaring the argument types of
+pointer-to-function types.
+
+     <li>Using <span class="command">unprotoize</span> can easily introduce bugs.  If the program
+relied on prototypes to bring about conversion of arguments, these
+conversions will not take place in the program without prototypes. 
+One case in which you can be sure <span class="command">unprotoize</span> is safe is when
+you are removing prototypes that were made with <span class="command">protoize</span>; if
+the program worked before without any prototypes, it will work again
+without them.
+
+     <p><a name="index-Wtraditional_002dconversion-2912"></a>You can find all the places where this problem might occur by compiling
+the program with the <span class="option">-Wtraditional-conversion</span> option.  It
+prints a warning whenever an argument is converted.
+
+     <li>Both conversion programs can be confused if there are macro calls in and
+around the text to be converted.  In other words, the standard syntax
+for a declaration or definition must not result from expanding a macro. 
+This problem is inherent in the design of C and cannot be fixed.  If
+only a few functions have confusing macro calls, you can easily convert
+them manually.
+
+     <li><span class="command">protoize</span> cannot get the argument types for a function whose
+definition was not actually compiled due to preprocessing conditionals. 
+When this happens, <span class="command">protoize</span> changes nothing in regard to such
+a function.  <span class="command">protoize</span> tries to detect such instances and warn
+about them.
+
+     <p>You can generally work around this problem by using <span class="command">protoize</span> step
+by step, each time specifying a different set of <span class="option">-D</span> options for
+compilation, until all of the functions have been converted.  There is
+no automatic way to verify that you have got them all, however.
+
+     <li>Confusion may result if there is an occasion to convert a function
+declaration or definition in a region of source code where there is more
+than one formal parameter list present.  Thus, attempts to convert code
+containing multiple (conditionally compiled) versions of a single
+function header (in the same vicinity) may not produce the desired (or
+expected) results.
+
+     <p>If you plan on converting source files which contain such code, it is
+recommended that you first make sure that each conditionally compiled
+region of source code which contains an alternative function header also
+contains at least one additional follower token (past the final right
+parenthesis of the function header).  This should circumvent the
+problem.
+
+     <li><span class="command">unprotoize</span> can become confused when trying to convert a function
+definition or declaration which contains a declaration for a
+pointer-to-function formal argument which has the same name as the
+function being defined or declared.  We recommend you avoid such choices
+of formal parameter names.
+
+     <li>You might also want to correct some of the indentation by hand and break
+long lines.  (The conversion programs don't write lines longer than
+eighty characters in any case.) 
+</ul>
+
+ </body></html>
+

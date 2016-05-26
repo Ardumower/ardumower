@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>strings - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="size.html#size" title="size">
+<link rel="next" href="strip.html#strip" title="strip">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="strings"></a>Next:&nbsp;<a rel="next" accesskey="n" href="strip.html#strip">strip</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="size.html#size">size</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">7 strings</h2>
+
+<p><a name="index-strings-106"></a><a name="index-listings-strings-107"></a><a name="index-printing-strings-108"></a><a name="index-strings_002c-printing-109"></a>
+<!-- man title strings print the strings of printable characters in files. -->
+
+<pre class="smallexample">     <!-- man begin SYNOPSIS strings -->
+     strings [<span class="option">-afov</span>] [<span class="option">-</span><var>min-len</var>]
+             [<span class="option">-n</span> <var>min-len</var>] [<span class="option">--bytes=</span><var>min-len</var>]
+             [<span class="option">-t</span> <var>radix</var>] [<span class="option">--radix=</span><var>radix</var>]
+             [<span class="option">-e</span> <var>encoding</var>] [<span class="option">--encoding=</span><var>encoding</var>]
+             [<span class="option">-</span>] [<span class="option">--all</span>] [<span class="option">--print-file-name</span>]
+             [<span class="option">-T</span> <var>bfdname</var>] [<span class="option">--target=</span><var>bfdname</var>]
+             [<span class="option">--help</span>] [<span class="option">--version</span>] <var>file</var>...
+     <!-- man end -->
+</pre>
+   <!-- man begin DESCRIPTION strings -->
+<p>For each <var>file</var> given, <span class="sc">gnu</span> <span class="command">strings</span> prints the printable
+character sequences that are at least 4 characters long (or the number
+given with the options below) and are followed by an unprintable
+character.  By default, it only prints the strings from the initialized
+and loaded sections of object files; for other types of files, it prints
+the strings from the whole file.
+
+   <p><span class="command">strings</span> is mainly useful for determining the contents of non-text
+files.
+
+<!-- man end -->
+<!-- man begin OPTIONS strings -->
+<dl>
+<dt><span class="env">-a</span><dt><span class="env">--all</span><dt><span class="env">-</span><dd>Do not scan only the initialized and loaded sections of object files;
+scan the whole files.
+
+     <br><dt><span class="env">-f</span><dt><span class="env">--print-file-name</span><dd>Print the name of the file before each string.
+
+     <br><dt><span class="env">--help</span><dd>Print a summary of the program usage on the standard output and exit.
+
+     <br><dt><span class="env">-</span><var>min-len</var><dt><span class="env">-n </span><var>min-len</var><dt><span class="env">--bytes=</span><var>min-len</var><dd>Print sequences of characters that are at least <var>min-len</var> characters
+long, instead of the default 4.
+
+     <br><dt><span class="env">-o</span><dd>Like <span class="samp">-t o</span>.  Some other versions of <span class="command">strings</span> have <span class="option">-o</span>
+act like <span class="samp">-t d</span> instead.  Since we can not be compatible with both
+ways, we simply chose one.
+
+     <br><dt><span class="env">-t </span><var>radix</var><dt><span class="env">--radix=</span><var>radix</var><dd>Print the offset within the file before each string.  The single
+character argument specifies the radix of the offset&mdash;<span class="samp">o</span> for
+octal, <span class="samp">x</span> for hexadecimal, or <span class="samp">d</span> for decimal.
+
+     <br><dt><span class="env">-e </span><var>encoding</var><dt><span class="env">--encoding=</span><var>encoding</var><dd>Select the character encoding of the strings that are to be found. 
+Possible values for <var>encoding</var> are: <span class="samp">s</span> = single-7-bit-byte
+characters (ASCII, ISO 8859, etc., default), <span class="samp">S</span> =
+single-8-bit-byte characters, <span class="samp">b</span> = 16-bit bigendian, <span class="samp">l</span> =
+16-bit littleendian, <span class="samp">B</span> = 32-bit bigendian, <span class="samp">L</span> = 32-bit
+littleendian.  Useful for finding wide character strings. (<span class="samp">l</span>
+and <span class="samp">b</span> apply to, for example, Unicode UTF-16/UCS-2 encodings).
+
+     <br><dt><span class="env">-T </span><var>bfdname</var><dt><span class="env">--target=</span><var>bfdname</var><dd><a name="index-object-code-format-110"></a>Specify an object code format other than your system's default format. 
+See <a href="Target-Selection.html#Target-Selection">Target Selection</a>, for more information.
+
+     <br><dt><span class="env">-v</span><dt><span class="env">--version</span><dd>Print the program version number on the standard output and exit. 
+</dl>
+
+<!-- man end -->
+</body></html>
+

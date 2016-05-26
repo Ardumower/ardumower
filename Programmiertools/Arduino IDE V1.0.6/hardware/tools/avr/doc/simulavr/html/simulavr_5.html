@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on November, 7 2008 by texi2html 1.78 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+
+-->
+<head>
+<title>Simulavr: 3. Using with GDB</title>
+
+<meta name="description" content="Simulavr: 3. Using with GDB">
+<meta name="keywords" content="Simulavr: 3. Using with GDB">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.78">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Using-with-GDB"></a>
+<a name="SEC5"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_4.html#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_6.html#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_8.html#SEC8" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_11.html#SEC11" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter"> 3. Using with GDB </h1>
+
+<p>If you want to use gdb as a source-level debugger with
+simulavr running as a remote target, start simulavr with the
+&lsquo;<samp>--gdbserver</samp>&rsquo; or &lsquo;<samp>-g</samp>&rsquo; option. This will put simulavr
+into gdbserver mode. simulavr will then act as a TCP server
+program on the localhost listening for a connection from gdb.
+</p>
+<p>Once simulavr has accepted a connection from gdb, the two programs
+communicate via gdb's remote serial protocol (see <a href="../gdb/index.html#Top">GDB Remote Serial Protocol: (gdb)Top</a> section `Protocol' in <cite>Debugging with GDB</cite>).
+</p>
+<p>Here's how you would start up simulavr in gdbserver mode:
+</p>
+<table><tr><td>&nbsp;</td><td><table class="cartouche" border="1"><tr><td>
+<pre class="example">$ simulavr -d at90s8515 -g
+</pre></td></tr></table>
+</td></tr></table>
+
+<p>Here's a sample gdb session showing what to do on the gdb
+side to get gdb to talk to simulavr:
+</p>
+<table><tr><td>&nbsp;</td><td><table class="cartouche" border="1"><tr><td>
+<pre class="example">This GDB was configured as &quot;--host=i686-pc-linux-gnu --target=avr&quot;.
+(gdb) file demo_kr.elf
+Reading symbols from demo_kr.elf...done.
+(gdb) target remote localhost:1212
+Remote debugging using localhost:1212
+0x0 in .__start_of_init__ ()
+(gdb) load
+Loading section .text, size 0x76 lma 0x0
+Start address 0x0 , load size 118
+Transfer rate: 944 bits in &lt;1 sec, 29 bytes/write.
+(gdb) break main
+Breakpoint 1 at 0x6e: file demo_kr.c, line 17.
+(gdb) continue
+Continuing.
+
+Breakpoint 1, main () at demo_kr.c:17
+17          sbi(DDRC, (
+(gdb) quit
+The program is running.  Exit anyway? (y or n) y
+</pre></td></tr></table>
+</td></tr></table>
+
+<p>Notice that simulavr knew nothing about the program to debug when it
+was started. Gdb was told which file to debug with the &lsquo;<samp>file</samp>&rsquo;
+command. After gdb has read in the program and connected to simulavr,
+the program's instructions are downloaded into the simulator via the
+&lsquo;<samp>load</samp>&rsquo; command. The &lsquo;<samp>load</samp>&rsquo; command is not necessary if
+simulavr already has the program loaded into it's flash memory area. It
+is ok to issue multiple &lsquo;<samp>load</samp>&rsquo; commands.
+</p>
+<p>Also, notice that no &lsquo;<samp>run</samp>&rsquo; command was given to gdb. Gdb assumes
+that the simulator has started and is ready to continue. Giving gdb the
+&lsquo;<samp>run</samp>&rsquo; command, will cause it to stop the current debug session and
+start a new one, which is not likely to be what you want to do.
+</p>
+<p>When specifying the remote target to connect to, it is sufficient to
+write &ldquo;target remote :1212&rdquo; instead of &ldquo;target remote localhost:1212&rdquo;.
+</p>
+<p>Hitting <kbd>CTRL-c</kbd> in gdb can be used to interrupt the simulator while it is
+processing instructions and return control back to gdb. This is most
+useful when gdb is waiting for a response from the simulator and the
+program running in the simulator is in an infinite loop.
+</p>
+<p>Issuing a &lsquo;<samp>signal SIGxxx</samp>&rsquo; command from gdb will send the signal to
+the simulator via a <i>continue with signal</i> packet. The simulator will
+process and interpret the signal, but will not pass it on to the AVR
+program running in the simulator since it really makes no sense to do
+so. In some circumstances, it may make sense to use the gdb signal
+mechanism as a way to initiate some sort of external stimulus to be
+passed on to the virtual hardware system of the simulator. Signals from
+gdb which are processed have the following meanings:
+</p>
+<dl compact="compact">
+<dd><a name="IDX17"></a>
+</dd>
+<dt> <code>SIGHUP</code></dt>
+<dd><p>Initiate a reset of the simulator. (Simulates a hardware reset).
+</p>
+</dd>
+</dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="simulavr_6.html#SEC6">3.1 GDB Hints</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   
+</td></tr>
+<tr><td align="left" valign="top"><a href="simulavr_7.html#SEC7">3.2 Building GDB for AVR</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                
+</td></tr>
+</table>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="simulavr_4.html#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_6.html#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="simulavr_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="simulavr_8.html#SEC8" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>eweddington</em> on <em>November, 7 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.78</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

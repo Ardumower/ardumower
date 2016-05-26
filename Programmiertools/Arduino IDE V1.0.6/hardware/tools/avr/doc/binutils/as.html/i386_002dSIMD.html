@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+<title>i386-SIMD - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dFloat.html#i386_002dFloat" title="i386-Float">
+<link rel="next" href="i386_002d16bit.html#i386_002d16bit" title="i386-16bit">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dSIMD"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002d16bit.html#i386_002d16bit">i386-16bit</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dFloat.html#i386_002dFloat">i386-Float</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.11 Intel's MMX and AMD's 3DNow! SIMD Operations</h4>
+
+<p><a name="index-MMX_002c-i386-943"></a><a name="index-3DNow_0021_002c-i386-944"></a><a name="index-SIMD_002c-i386-945"></a><a name="index-MMX_002c-x86_002d64-946"></a><a name="index-3DNow_0021_002c-x86_002d64-947"></a><a name="index-SIMD_002c-x86_002d64-948"></a>
+<code>as</code> supports Intel's MMX instruction set (SIMD
+instructions for integer data), available on Intel's Pentium MMX
+processors and Pentium II processors, AMD's K6 and K6-2 processors,
+Cyrix' M2 processor, and probably others.  It also supports AMD's 3DNow! 
+instruction set (SIMD instructions for 32-bit floating point data)
+available on AMD's K6-2 processor and possibly others in the future.
+
+   <p>Currently, <code>as</code> does not support Intel's floating point
+SIMD, Katmai (KNI).
+
+   <p>The eight 64-bit MMX operands, also used by 3DNow!, are called <span class="samp">%mm0</span>,
+<span class="samp">%mm1</span>, ... <span class="samp">%mm7</span>.  They contain eight 8-bit integers, four
+16-bit integers, two 32-bit integers, one 64-bit integer, or two 32-bit
+floating point values.  The MMX registers cannot be used at the same time
+as the floating point stack.
+
+   <p>See Intel and AMD documentation, keeping in mind that the operand order in
+instructions is reversed from the Intel syntax.
+
+   </body></html>
+

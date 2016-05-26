@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+<title>Lambda - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Loop-Analysis-and-Representation.html#Loop-Analysis-and-Representation" title="Loop Analysis and Representation">
+<link rel="prev" href="Dependency-analysis.html#Dependency-analysis" title="Dependency analysis">
+<link rel="next" href="Omega.html#Omega" title="Omega">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Lambda"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Omega.html#Omega">Omega</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Dependency-analysis.html#Dependency-analysis">Dependency analysis</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Loop-Analysis-and-Representation.html#Loop-Analysis-and-Representation">Loop Analysis and Representation</a>
+<hr><br>
+</div>
+
+<h3 class="section">11.9 Linear loop transformations framework</h3>
+
+<p><a name="index-Linear-loop-transformations-framework-2126"></a>
+Lambda is a framework that allows transformations of loops using
+non-singular matrix based transformations of the iteration space and
+loop bounds. This allows compositions of skewing, scaling, interchange,
+and reversal transformations.  These transformations are often used to
+improve cache behavior or remove inner loop dependencies to allow
+parallelization and vectorization to take place.
+
+ <p>To perform these transformations, Lambda requires that the loopnest be
+converted into a internal form that can be matrix transformed easily. 
+To do this conversion, the function
+<code>gcc_loopnest_to_lambda_loopnest</code> is provided.  If the loop cannot
+be transformed using lambda, this function will return NULL.
+
+ <p>Once a <code>lambda_loopnest</code> is obtained from the conversion function,
+it can be transformed by using <code>lambda_loopnest_transform</code>, which
+takes a transformation matrix to apply.  Note that it is up to the
+caller to verify that the transformation matrix is legal to apply to the
+loop (dependence respecting, etc).  Lambda simply applies whatever
+matrix it is told to provide.  It can be extended to make legal matrices
+out of any non-singular matrix, but this is not currently implemented. 
+Legality of a matrix for a given loopnest can be verified using
+<code>lambda_transform_legal_p</code>.
+
+ <p>Given a transformed loopnest, conversion back into gcc IR is done by
+<code>lambda_loopnest_to_gcc_loopnest</code>.  This function will modify the
+loops so that they match the transformed loopnest.
+
+ </body></html>
+

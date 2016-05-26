@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+<title>GIMPLE - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Tree-SSA.html#Tree-SSA" title="Tree SSA">
+<link rel="prev" href="GENERIC.html#GENERIC" title="GENERIC">
+<link rel="next" href="Annotations.html#Annotations" title="Annotations">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="GIMPLE"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Annotations.html#Annotations">Annotations</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="GENERIC.html#GENERIC">GENERIC</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Tree-SSA.html#Tree-SSA">Tree SSA</a>
+<hr><br>
+</div>
+
+<h3 class="section">10.2 GIMPLE</h3>
+
+<p><a name="index-GIMPLE-2069"></a>
+GIMPLE is a simplified subset of GENERIC for use in optimization.  The
+particular subset chosen (and the name) was heavily influenced by the
+SIMPLE IL used by the McCAT compiler project at McGill University,
+though we have made some different choices.  For one thing, SIMPLE
+doesn't support <code>goto</code>; a production compiler can't afford that
+kind of restriction.
+
+ <p>GIMPLE retains much of the structure of the parse trees: lexical
+scopes are represented as containers, rather than markers.  However,
+expressions are broken down into a 3-address form, using temporary
+variables to hold intermediate values.  Also, control structures are
+lowered to gotos.
+
+ <p>In GIMPLE no container node is ever used for its value; if a
+<code>COND_EXPR</code> or <code>BIND_EXPR</code> has a value, it is stored into a
+temporary within the controlled blocks, and that temporary is used in
+place of the container.
+
+ <p>The compiler pass which lowers GENERIC to GIMPLE is referred to as the
+<span class="samp">gimplifier</span>.  The gimplifier works recursively, replacing complex
+statements with sequences of simple statements.
+
+<!-- Currently, the only way to -->
+<!-- tell whether or not an expression is in GIMPLE form is by recursively -->
+<!-- examining it; in the future there will probably be a flag to help avoid -->
+<!-- redundant work.  FIXME FIXME -->
+<ul class="menu">
+<li><a accesskey="1" href="Interfaces.html#Interfaces">Interfaces</a>
+<li><a accesskey="2" href="Temporaries.html#Temporaries">Temporaries</a>
+<li><a accesskey="3" href="GIMPLE-Expressions.html#GIMPLE-Expressions">GIMPLE Expressions</a>
+<li><a accesskey="4" href="Statements.html#Statements">Statements</a>
+<li><a accesskey="5" href="GIMPLE-Example.html#GIMPLE-Example">GIMPLE Example</a>
+<li><a accesskey="6" href="Rough-GIMPLE-Grammar.html#Rough-GIMPLE-Grammar">Rough GIMPLE Grammar</a>
+</ul>
+
+ </body></html>
+

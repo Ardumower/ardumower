@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+<title>Subdirectories - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="gcc-Directory.html#gcc-Directory" title="gcc Directory">
+<link rel="next" href="Configuration.html#Configuration" title="Configuration">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Subdirectories"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Configuration.html#Configuration">Configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="gcc-Directory.html#gcc-Directory">gcc Directory</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">6.3.1 Subdirectories of <span class="file">gcc</span></h4>
+
+<p>The <span class="file">gcc</span> directory contains the following subdirectories:
+
+     <dl>
+<dt><var>language</var><dd>Subdirectories for various languages.  Directories containing a file
+<span class="file">config-lang.in</span> are language subdirectories.  The contents of
+the subdirectories <span class="file">cp</span> (for C++), <span class="file">objc</span> (for Objective-C)
+and <span class="file">objcp</span> (for Objective-C++) are documented in this manual
+(see <a href="Passes.html#Passes">Passes and Files of the Compiler</a>); those for other
+languages are not.  See <a href="Front-End.html#Front-End">Anatomy of a Language Front End</a>,
+for details of the files in these directories.
+
+     <br><dt><span class="file">config</span><dd>Configuration files for supported architectures and operating
+systems.  See <a href="Back-End.html#Back-End">Anatomy of a Target Back End</a>, for
+details of the files in this directory.
+
+     <br><dt><span class="file">doc</span><dd>Texinfo documentation for GCC, together with automatically generated
+man pages and support for converting the installation manual to
+HTML.  See <a href="Documentation.html#Documentation">Documentation</a>.
+
+     <br><dt><span class="file">fixinc</span><dd>The support for fixing system headers to work with GCC.  See
+<span class="file">fixinc/README</span> for more information.  The headers fixed by this
+mechanism are installed in <var>libsubdir</var><span class="file">/include</span>.  Along with
+those headers, <span class="file">README-fixinc</span> is also installed, as
+<var>libsubdir</var><span class="file">/include/README</span>.
+
+     <br><dt><span class="file">ginclude</span><dd>System headers installed by GCC, mainly those required by the C
+standard of freestanding implementations.  See <a href="Headers.html#Headers">Headers Installed by GCC</a>, for details of when these and other headers are
+installed.
+
+     <br><dt><span class="file">intl</span><dd>GNU <code>libintl</code>, from GNU <code>gettext</code>, for systems which do not
+include it in libc.  Properly, this directory should be at top level,
+parallel to the <span class="file">gcc</span> directory.
+
+     <br><dt><span class="file">po</span><dd>Message catalogs with translations of messages produced by GCC into
+various languages, <var>language</var><span class="file">.po</span>.  This directory also
+contains <span class="file">gcc.pot</span>, the template for these message catalogues,
+<span class="file">exgettext</span>, a wrapper around <span class="command">gettext</span> to extract the
+messages from the GCC sources and create <span class="file">gcc.pot</span>, which is run
+by <span class="samp">make gcc.pot</span>, and <span class="file">EXCLUDES</span>, a list of files from
+which messages should not be extracted.
+
+     <br><dt><span class="file">testsuite</span><dd>The GCC testsuites (except for those for runtime libraries). 
+See <a href="Testsuites.html#Testsuites">Testsuites</a>. 
+</dl>
+
+ </body></html>
+

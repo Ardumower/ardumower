@@ -1,0 +1,43 @@
+Index: gcc/config/avr/avr.c
+===================================================================
+--- gcc/config/avr/avr.c        (revision 136946)
++++ gcc/config/avr/avr.c        (working copy)
+@@ -173,6 +174,7 @@
+     /* Classic + MOVW, <= 8K.  */
+   { "avr25",        ARCH_AVR25, NULL },
+   { "attiny13",     ARCH_AVR25, "__AVR_ATtiny13__" },
++  { "attiny13a",    ARCH_AVR25, "__AVR_ATtiny13A__" },
+   { "attiny2313",   ARCH_AVR25, "__AVR_ATtiny2313__" },
+   { "attiny24",     ARCH_AVR25, "__AVR_ATtiny24__" },
+   { "attiny44",     ARCH_AVR25, "__AVR_ATtiny44__" },
+--- gcc/config/avr/t-avr.orig	Wed Jun 25 18:36:00 2008
++++ gcc/config/avr/t-avr	Wed Jun 25 18:39:28 2008
+@@ -43,6 +43,7 @@ MULTILIB_DIRNAMES = avr2 avr25 avr3 avr3
+ # The many avr2 matches are not listed here - this is the default.
+ MULTILIB_MATCHES = \
+ 	mmcu?avr25=mmcu?attiny13 \
++	mmcu?avr25=mmcu?attiny13a \
+ 	mmcu?avr25=mmcu?attiny2313 \
+ 	mmcu?avr25=mmcu?attiny24 \
+ 	mmcu?avr25=mmcu?attiny44 \
+Index: gcc/config/avr/avr.h
+===================================================================
+--- gcc/config/avr/avr.h        (revision 136946)
++++ gcc/config/avr/avr.h        (working copy)
+@@ -817,7 +817,7 @@
+   mmcu=at90s8*|\
+   mmcu=at90c8*|\
+   mmcu=at86rf401|\
+-  mmcu=attiny13|\
++  mmcu=attiny13*|\
+   mmcu=attiny2313|\
+   mmcu=attiny24|\
+   mmcu=attiny25|\
+@@ -916,6 +916,7 @@
+ %{mmcu=at90s8535:crts8535.o%s} \
+ %{mmcu=at86rf401:crt86401.o%s} \
+ %{mmcu=attiny13:crttn13.o%s} \
++%{mmcu=attiny13a:crttn13a.o%s} \
+ %{mmcu=attiny2313|mmcu=avr25:crttn2313.o%s} \
+ %{mmcu=attiny24:crttn24.o%s} \
+ %{mmcu=attiny44:crttn44.o%s} \

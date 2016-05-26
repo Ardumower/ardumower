@@ -1,0 +1,77 @@
+# Variable tree class definition for Insight.
+# Copyright (C) 2002 Red Hat, Inc.
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+itcl::class VarTree {
+  inherit itk::Widget
+
+  public variable type "watch"
+
+  private {
+    # list of root variables in tree
+    variable rootlist {}
+
+    # mapping of varobj to canvas items
+    variable var_to_items
+    variable item_to_var
+
+    variable c		;#the canvas
+    variable pop	;#popup menu
+    variable _y 0
+    variable selection
+    variable selidx
+    variable closed
+
+    variable popup_temp
+
+    # when editing, these contain the entry widget and edited varobj
+    variable entry ""
+    variable entryobj
+    variable entrywin
+  }
+
+  common maskdata
+  common data
+  common openbm
+  common closedbm
+  common initialized 0
+  common colors 
+
+  private {
+    method _init_data {}
+    method build {}
+    method buildlayer {tlist n}
+    method drawselection {}
+    method clicked {w x y open}
+    method setselection {var}
+    method closed {name}
+    method open {name}
+    method close {name}
+    method edit {j}
+    method unedit {j}
+    method changeValue {j}
+    method update_var {var ena check}
+    method _but3 {x y X Y}
+    method _change_format {var}
+    method _do_default_menu {X Y}
+    method _sort {}
+    method _compare {a b}
+  }
+
+  public {
+    method constructor {args}
+    method destructor {}
+    method add {varobj}
+    method remove {varobj}
+    method update {{check 0}}
+  }
+}

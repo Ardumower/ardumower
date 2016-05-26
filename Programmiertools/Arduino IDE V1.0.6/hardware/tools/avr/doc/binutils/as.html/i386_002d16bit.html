@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+<title>i386-16bit - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dSIMD.html#i386_002dSIMD" title="i386-SIMD">
+<link rel="next" href="i386_002dArch.html#i386_002dArch" title="i386-Arch">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002d16bit"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002dArch.html#i386_002dArch">i386-Arch</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dSIMD.html#i386_002dSIMD">i386-SIMD</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.12 Writing 16-bit Code</h4>
+
+<p><a name="index-i386-16_002dbit-code-949"></a><a name="index-16_002dbit-code_002c-i386-950"></a><a name="index-real_002dmode-code_002c-i386-951"></a><a name="index-_0040code_007bcode16gcc_007d-directive_002c-i386-952"></a><a name="index-_0040code_007bcode16_007d-directive_002c-i386-953"></a><a name="index-_0040code_007bcode32_007d-directive_002c-i386-954"></a><a name="index-_0040code_007bcode64_007d-directive_002c-i386-955"></a><a name="index-_0040code_007bcode64_007d-directive_002c-x86_002d64-956"></a>While <code>as</code> normally writes only &ldquo;pure&rdquo; 32-bit i386 code
+or 64-bit x86-64 code depending on the default configuration,
+it also supports writing code to run in real mode or in 16-bit protected
+mode code segments.  To do this, put a <span class="samp">.code16</span> or
+<span class="samp">.code16gcc</span> directive before the assembly language instructions to
+be run in 16-bit mode.  You can switch <code>as</code> back to writing
+normal 32-bit code with the <span class="samp">.code32</span> directive.
+
+   <p><span class="samp">.code16gcc</span> provides experimental support for generating 16-bit
+code from gcc, and differs from <span class="samp">.code16</span> in that <span class="samp">call</span>,
+<span class="samp">ret</span>, <span class="samp">enter</span>, <span class="samp">leave</span>, <span class="samp">push</span>, <span class="samp">pop</span>,
+<span class="samp">pusha</span>, <span class="samp">popa</span>, <span class="samp">pushf</span>, and <span class="samp">popf</span> instructions
+default to 32-bit size.  This is so that the stack pointer is
+manipulated in the same way over function calls, allowing access to
+function parameters at the same stack offsets as in 32-bit mode. 
+<span class="samp">.code16gcc</span> also automatically adds address size prefixes where
+necessary to use the 32-bit addressing modes that gcc generates.
+
+   <p>The code which <code>as</code> generates in 16-bit mode will not
+necessarily run on a 16-bit pre-80386 processor.  To write code that
+runs on such a processor, you must refrain from using <em>any</em> 32-bit
+constructs which require <code>as</code> to output address or operand
+size prefixes.
+
+   <p>Note that writing 16-bit code instructions by explicitly specifying a
+prefix or an instruction mnemonic suffix within a 32-bit code section
+generates different machine instructions than those generated for a
+16-bit code segment.  In a 32-bit code section, the following code
+generates the machine opcode bytes <span class="samp">66 6a 04</span>, which pushes the
+value <span class="samp">4</span> onto the stack, decrementing <span class="samp">%esp</span> by 2.
+
+<pre class="smallexample">             pushw $4
+</pre>
+   <p>The same code in a 16-bit code section would generate the machine
+opcode bytes <span class="samp">6a 04</span> (i.e., without the operand size prefix), which
+is correct since the processor default operand size is assumed to be 16
+bits in a 16-bit code section.
+
+   </body></html>
+

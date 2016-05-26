@@ -1,0 +1,244 @@
+<html lang="en">
+<head>
+<title>Condition Code - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Target-Macros.html#Target-Macros" title="Target Macros">
+<link rel="prev" href="Anchored-Addresses.html#Anchored-Addresses" title="Anchored Addresses">
+<link rel="next" href="Costs.html#Costs" title="Costs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Condition-Code"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Costs.html#Costs">Costs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Anchored-Addresses.html#Anchored-Addresses">Anchored Addresses</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Target-Macros.html#Target-Macros">Target Macros</a>
+<hr><br>
+</div>
+
+<h3 class="section">15.16 Condition Code Status</h3>
+
+<p><a name="index-condition-code-status-3833"></a>
+<!-- prevent bad page break with this line -->
+This describes the condition code status.
+
+ <p><a name="index-cc_005fstatus-3834"></a>The file <span class="file">conditions.h</span> defines a variable <code>cc_status</code> to
+describe how the condition code was computed (in case the interpretation of
+the condition code depends on the instruction that it was set by).  This
+variable contains the RTL expressions on which the condition code is
+currently based, and several standard flags.
+
+ <p>Sometimes additional machine-specific flags must be defined in the machine
+description header file.  It can also add additional machine-specific
+information by defining <code>CC_STATUS_MDEP</code>.
+
+<div class="defun">
+&mdash; Macro: <b>CC_STATUS_MDEP</b><var><a name="index-CC_005fSTATUS_005fMDEP-3835"></a></var><br>
+<blockquote><p>C code for a data type which is used for declaring the <code>mdep</code>
+component of <code>cc_status</code>.  It defaults to <code>int</code>.
+
+      <p>This macro is not used on machines that do not use <code>cc0</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CC_STATUS_MDEP_INIT</b><var><a name="index-CC_005fSTATUS_005fMDEP_005fINIT-3836"></a></var><br>
+<blockquote><p>A C expression to initialize the <code>mdep</code> field to &ldquo;empty&rdquo;. 
+The default definition does nothing, since most machines don't use
+the field anyway.  If you want to use the field, you should probably
+define this macro to initialize it.
+
+      <p>This macro is not used on machines that do not use <code>cc0</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>NOTICE_UPDATE_CC</b> (<var>exp, insn</var>)<var><a name="index-NOTICE_005fUPDATE_005fCC-3837"></a></var><br>
+<blockquote><p>A C compound statement to set the components of <code>cc_status</code>
+appropriately for an insn <var>insn</var> whose body is <var>exp</var>.  It is
+this macro's responsibility to recognize insns that set the condition
+code as a byproduct of other activity as well as those that explicitly
+set <code>(cc0)</code>.
+
+      <p>This macro is not used on machines that do not use <code>cc0</code>.
+
+      <p>If there are insns that do not set the condition code but do alter
+other machine registers, this macro must check to see whether they
+invalidate the expressions that the condition code is recorded as
+reflecting.  For example, on the 68000, insns that store in address
+registers do not set the condition code, which means that usually
+<code>NOTICE_UPDATE_CC</code> can leave <code>cc_status</code> unaltered for such
+insns.  But suppose that the previous insn set the condition code
+based on location <span class="samp">a4@(102)</span> and the current insn stores a new
+value in <span class="samp">a4</span>.  Although the condition code is not changed by
+this, it will no longer be true that it reflects the contents of
+<span class="samp">a4@(102)</span>.  Therefore, <code>NOTICE_UPDATE_CC</code> must alter
+<code>cc_status</code> in this case to say that nothing is known about the
+condition code value.
+
+      <p>The definition of <code>NOTICE_UPDATE_CC</code> must be prepared to deal
+with the results of peephole optimization: insns whose patterns are
+<code>parallel</code> RTXs containing various <code>reg</code>, <code>mem</code> or
+constants which are just the operands.  The RTL structure of these
+insns is not sufficient to indicate what the insns actually do.  What
+<code>NOTICE_UPDATE_CC</code> should do when it sees one is just to run
+<code>CC_STATUS_INIT</code>.
+
+      <p>A possible definition of <code>NOTICE_UPDATE_CC</code> is to call a function
+that looks at an attribute (see <a href="Insn-Attributes.html#Insn-Attributes">Insn Attributes</a>) named, for example,
+<span class="samp">cc</span>.  This avoids having detailed information about patterns in
+two places, the <span class="file">md</span> file and in <code>NOTICE_UPDATE_CC</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>SELECT_CC_MODE</b> (<var>op, x, y</var>)<var><a name="index-SELECT_005fCC_005fMODE-3838"></a></var><br>
+<blockquote><p>Returns a mode from class <code>MODE_CC</code> to be used when comparison
+operation code <var>op</var> is applied to rtx <var>x</var> and <var>y</var>.  For
+example, on the SPARC, <code>SELECT_CC_MODE</code> is defined as (see
+see <a href="Jump-Patterns.html#Jump-Patterns">Jump Patterns</a> for a description of the reason for this
+definition)
+
+     <pre class="smallexample">          #define SELECT_CC_MODE(OP,X,Y) \
+            (GET_MODE_CLASS (GET_MODE (X)) == MODE_FLOAT          \
+             ? ((OP == EQ || OP == NE) ? CCFPmode : CCFPEmode)    \
+             : ((GET_CODE (X) == PLUS || GET_CODE (X) == MINUS    \
+                 || GET_CODE (X) == NEG) \
+                ? CC_NOOVmode : CCmode))
+     </pre>
+      <p>You should define this macro if and only if you define extra CC modes
+in <var>machine</var><span class="file">-modes.def</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>CANONICALIZE_COMPARISON</b> (<var>code, op0, op1</var>)<var><a name="index-CANONICALIZE_005fCOMPARISON-3839"></a></var><br>
+<blockquote><p>On some machines not all possible comparisons are defined, but you can
+convert an invalid comparison into a valid one.  For example, the Alpha
+does not have a <code>GT</code> comparison, but you can use an <code>LT</code>
+comparison instead and swap the order of the operands.
+
+      <p>On such machines, define this macro to be a C statement to do any
+required conversions.  <var>code</var> is the initial comparison code
+and <var>op0</var> and <var>op1</var> are the left and right operands of the
+comparison, respectively.  You should modify <var>code</var>, <var>op0</var>, and
+<var>op1</var> as required.
+
+      <p>GCC will not assume that the comparison resulting from this macro is
+valid but will see if the resulting insn matches a pattern in the
+<span class="file">md</span> file.
+
+      <p>You need not define this macro if it would never change the comparison
+code or operands. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>REVERSIBLE_CC_MODE</b> (<var>mode</var>)<var><a name="index-REVERSIBLE_005fCC_005fMODE-3840"></a></var><br>
+<blockquote><p>A C expression whose value is one if it is always safe to reverse a
+comparison whose mode is <var>mode</var>.  If <code>SELECT_CC_MODE</code>
+can ever return <var>mode</var> for a floating-point inequality comparison,
+then <code>REVERSIBLE_CC_MODE (</code><var>mode</var><code>)</code> must be zero.
+
+      <p>You need not define this macro if it would always returns zero or if the
+floating-point format is anything other than <code>IEEE_FLOAT_FORMAT</code>. 
+For example, here is the definition used on the SPARC, where floating-point
+inequality comparisons are always given <code>CCFPEmode</code>:
+
+     <pre class="smallexample">          #define REVERSIBLE_CC_MODE(MODE)  ((MODE) != CCFPEmode)
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>REVERSE_CONDITION</b> (<var>code, mode</var>)<var><a name="index-REVERSE_005fCONDITION-3841"></a></var><br>
+<blockquote><p>A C expression whose value is reversed condition code of the <var>code</var> for
+comparison done in CC_MODE <var>mode</var>.  The macro is used only in case
+<code>REVERSIBLE_CC_MODE (</code><var>mode</var><code>)</code> is nonzero.  Define this macro in case
+machine has some non-standard way how to reverse certain conditionals.  For
+instance in case all floating point conditions are non-trapping, compiler may
+freely convert unordered compares to ordered one.  Then definition may look
+like:
+
+     <pre class="smallexample">          #define REVERSE_CONDITION(CODE, MODE) \
+             ((MODE) != CCFPmode ? reverse_condition (CODE) \
+              : reverse_condition_maybe_unordered (CODE))
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>REVERSE_CONDEXEC_PREDICATES_P</b> (<var>op1, op2</var>)<var><a name="index-REVERSE_005fCONDEXEC_005fPREDICATES_005fP-3842"></a></var><br>
+<blockquote><p>A C expression that returns true if the conditional execution predicate
+<var>op1</var>, a comparison operation, is the inverse of <var>op2</var> and vice
+versa.  Define this to return 0 if the target has conditional execution
+predicates that cannot be reversed safely.  There is no need to validate
+that the arguments of op1 and op2 are the same, this is done separately. 
+If no expansion is specified, this macro is defined as follows:
+
+     <pre class="smallexample">          #define REVERSE_CONDEXEC_PREDICATES_P (x, y) \
+             (GET_CODE ((x)) == reversed_comparison_code ((y), NULL))
+     </pre>
+      </blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_FIXED_CONDITION_CODE_REGS</b> (<var>unsigned int *, unsigned int *</var>)<var><a name="index-TARGET_005fFIXED_005fCONDITION_005fCODE_005fREGS-3843"></a></var><br>
+<blockquote><p>On targets which do not use <code>(cc0)</code>, and which use a hard
+register rather than a pseudo-register to hold condition codes, the
+regular CSE passes are often not able to identify cases in which the
+hard register is set to a common value.  Use this hook to enable a
+small pass which optimizes such cases.  This hook should return true
+to enable this pass, and it should set the integers to which its
+arguments point to the hard register numbers used for condition codes. 
+When there is only one such register, as is true on most systems, the
+integer pointed to by the second argument should be set to
+<code>INVALID_REGNUM</code>.
+
+      <p>The default version of this hook returns false. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: enum <b>machine_mode</b><var> TARGET_CC_MODES_COMPATIBLE </var>(<var>enum machine_mode, enum machine_mode</var>)<var><a name="index-machine_005fmode-3844"></a></var><br>
+<blockquote><p>On targets which use multiple condition code modes in class
+<code>MODE_CC</code>, it is sometimes the case that a comparison can be
+validly done in more than one mode.  On such a system, define this
+target hook to take two mode arguments and to return a mode in which
+both comparisons may be validly done.  If there is no such mode,
+return <code>VOIDmode</code>.
+
+      <p>The default version of this hook checks whether the modes are the
+same.  If they are, it returns that mode.  If they are different, it
+returns <code>VOIDmode</code>. 
+</p></blockquote></div>
+
+ </body></html>
+

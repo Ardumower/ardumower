@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+<title>M68K-Directives - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="M68K_002dDependent.html#M68K_002dDependent" title="M68K-Dependent">
+<link rel="prev" href="M68K_002dFloat.html#M68K_002dFloat" title="M68K-Float">
+<link rel="next" href="M68K_002dopcodes.html#M68K_002dopcodes" title="M68K-opcodes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="M68K_002dDirectives"></a>Next:&nbsp;<a rel="next" accesskey="n" href="M68K_002dopcodes.html#M68K_002dopcodes">M68K-opcodes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="M68K_002dFloat.html#M68K_002dFloat">M68K-Float</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="M68K_002dDependent.html#M68K_002dDependent">M68K-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.20.5 680x0 Machine Directives</h4>
+
+<p><a name="index-M680x0-directives-1122"></a><a name="index-directives_002c-M680x0-1123"></a>In order to be compatible with the Sun assembler the 680x0 assembler
+understands the following directives.
+
+     
+<a name="index-_0040code_007bdata1_007d-directive_002c-M680x0-1124"></a>
+<dl><dt><code>.data1</code><dd>This directive is identical to a <code>.data 1</code> directive.
+
+     <p><a name="index-_0040code_007bdata2_007d-directive_002c-M680x0-1125"></a><br><dt><code>.data2</code><dd>This directive is identical to a <code>.data 2</code> directive.
+
+     <p><a name="index-_0040code_007beven_007d-directive_002c-M680x0-1126"></a><br><dt><code>.even</code><dd>This directive is a special case of the <code>.align</code> directive; it
+aligns the output to an even byte boundary.
+
+     <p><a name="index-_0040code_007bskip_007d-directive_002c-M680x0-1127"></a><br><dt><code>.skip</code><dd>This directive is identical to a <code>.space</code> directive.
+
+     <p><a name="index-_0040code_007barch_007d-directive_002c-M680x0-1128"></a><br><dt><code>.arch </code><var>name</var><dd>Select the target architecture and extension features.  Valid values
+for <var>name</var> are the same as for the <span class="option">-march</span> command line
+option.  This directive cannot be specified after
+any instructions have been assembled.  If it is given multiple times,
+or in conjunction with the <span class="option">-march</span> option, all uses must be for
+the same architecture and extension set.
+
+     <p><a name="index-_0040code_007bcpu_007d-directive_002c-M680x0-1129"></a><br><dt><code>.cpu </code><var>name</var><dd>Select the target cpu.  Valid valuse
+for <var>name</var> are the same as for the <span class="option">-mcpu</span> command line
+option.  This directive cannot be specified after
+any instructions have been assembled.  If it is given multiple times,
+or in conjunction with the <span class="option">-mopt</span> option, all uses must be for
+the same cpu.
+
+   </dl>
+
+   </body></html>
+

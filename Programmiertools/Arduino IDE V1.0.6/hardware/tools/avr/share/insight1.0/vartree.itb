@@ -1,0 +1,431 @@
+# Variable tree implementation for Insight.
+# Copyright (C) 2002 Red Hat, Inc.
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+itcl::body  VarTree::constructor {args} {
+  debug $args
+  if {!$initialized} {
+    _init_data
+  }
+  eval itk_initialize $args
+  
+  itk_component add canvas {
+    iwidgets::scrolledcanvas $itk_interior.c -autoresize 1 -hscrollmode dynamic -vscrollmode dynamic \
+      -background $::Colors(textbg) -borderwidth 0 -highlightthickness 0
+  }
+  set c [$itk_component(canvas) childsite]
+  pack $itk_component(canvas) -side top -fill both -expand 1
+  bind $c <1> "[code $this clicked %W %x %y 0]"
+
+  # Add popup menu - we populate it in _but3
+  itk_component add popup {
+    menu $itk_interior.pop -tearoff 0
+  } {}
+  set pop $itk_component(popup)
+  $pop configure -disabledforeground $::Colors(fg)
+  bind $c <3> [code $this _but3 %x %y %X %Y]
+
+  set selection {}
+  set selidx {}
+  after idle [code $this build]
+}
+
+itcl::body  VarTree::destructor {} {
+  debug
+}
+
+itcl::body  VarTree::build {} {
+  debug
+  $c delete all
+  catch {unset var_to_items}
+  catch {unset item_to_var}
+  set _y 30
+  buildlayer $rootlist 10
+  $c config -scrollregion [$c bbox all] -background $::Colors(textbg) -borderwidth 0 -highlightthickness 0
+  update 1
+  drawselection
+}
+
+itcl::body  VarTree::buildlayer {tlist in} {
+  set start [expr $_y - 10]
+
+  foreach var $tlist {
+    set y $_y
+    incr _y 17
+
+    if {$in > 10} {
+      $c create line $in $y [expr $in+10] $y -fill $colors(line) 
+    }
+    set x [expr $in + 12]
+
+    set j1 [$c create text $x $y -text "[$var name] = " -fill $colors(name) -anchor w -font global/fixed]
+    set x [expr [lindex [$c bbox $j1] 2] + 5]
+    set j2 [$c create text $x $y -text "([$var type])" -fill $colors(type) -anchor w -font global/fixed]
+    set x [expr [lindex [$c bbox $j2] 2] + 5]
+    if {[catch {$var value} val]} {
+      # error accessing memory, etc.
+      set j3 [$c create text $x $y -text $val -fill $colors(error) -anchor w -font global/fixed]      
+    } else {
+      set j3 [$c create text $x $y -text $val -fill $colors(value) -anchor w -font global/fixed]
+    }
+
+    set var_to_items($var) [list $j1 $j2 $j3]
+    set item_to_var($j1) $var
+    set item_to_var($j2) $var
+    set item_to_var($j3) $var
+
+    $c bind $j1 <Double-1> "[code $this clicked %W %x %y 1]"
+    $c bind $j2 <Double-1> "[code $this clicked %W %x %y 1]"
+    $c bind $j3 <Double-1> "[code $this edit $j3];break"
+
+    if {[$var numChildren]} {
+      if {[closed $var]} {
+	set j [$c create image $in $y -image closedbm]
+	$c bind $j <1> "[code $this open $var]"
+      } else {
+	set j [$c create image $in $y -image openbm]
+	$c bind $j <1> "[code $this close $var]"
+	buildlayer [$var children] [expr $in+18]
+      }
+    }
+  }
+  if {$in > 10} {
+    $c lower [$c create line $in $start $in [expr $y+1] -fill $colors(line) ]
+  }
+}
+
+# add: add a list of varobj to the tree
+itcl::body  VarTree::add {var} {
+  debug $var
+  if {$var == ""} {return}
+  set rootlist [concat $rootlist $var]
+  after idle [code $this build]
+}
+
+# remove: remove a varobj from the tree
+# if the name is "all" then remove all
+itcl::body  VarTree::remove {name} {
+  debug $name
+  if {$name == ""} {return}
+  if {$name == "all"} {
+    set rootlist {}
+  } else {
+    set rootlist [lremove $rootlist $name]
+  }
+  after idle [code $this build]
+}
+
+# update a var
+itcl::body  VarTree::update_var {var enabled check} {
+  if {$enabled && $check} {return}
+  lassign $var_to_items($var) nam typ val
+  if {$enabled} {
+    $c itemconfigure $nam -fill $colors(name)
+    $c itemconfigure $typ -fill $colors(type)
+
+    if {[catch {$var value} value]} {
+      set color $colors(error)      
+    } elseif {[$c itemcget $val -text] != $value} {
+      set color $colors(change)
+    } else {
+      set color $colors(value)
+    }
+    $c itemconfigure $val -text $value -fill $color
+  } else {
+    $c itemconfigure $nam -fill $colors(disabled)
+    $c itemconfigure $typ -fill $colors(disabled)
+    $c itemconfigure $val -fill $colors(disabled)
+  }
+  
+  if {![closed $var] && [$var numChildren]} {
+    foreach child [$var children] {
+      update_var $child $enabled $check
+    }
+  }
+}
+
+# update: update the values of the vars in the tree.
+# The "check" argument is a hack we have to do because
+# [$varobj value] does not return an error; only [$varobj update]
+# does.  So after changing the tree layout in build, we must then
+# do an update.  The "check" argument just optimizes things a bit over
+# a normal update by not fetching values, just calling update.
+itcl::body  VarTree::update {{check 0}} {
+  debug
+
+  # delete selection box if it is visible
+  if {$selidx != ""} {
+    $c delete $selidx
+  }
+
+  # update all the root variables
+  foreach var $rootlist {
+    if {[$var update] == "-1"} {
+      set enabled 0
+    } else {
+      set enabled 1
+    }
+    update_var $var $enabled $check
+  }
+}
+
+# Draw the selection highlight
+itcl::body  VarTree::drawselection {} {
+  #debug "selidx=$selidx selection=$selection"
+  if {$selidx != ""} {
+    $c delete $selidx
+  }
+  if {$selection == ""} return
+  if {![info exists var_to_items($selection)]} return
+  set bbox [eval "$c bbox $var_to_items($selection)"]
+  if {[llength $bbox] == 4} {
+    set selidx [eval $c create rectangle $bbox -fill $::Colors(sbg) -outline {{}}]
+    $c lower $selidx
+  } else {
+    set selidx {}
+  }
+}
+
+# button 1 callback
+itcl::body  VarTree::clicked {w x y open} {
+  #debug "clicked $w $x $y $open"
+  set x [$w canvasx $x]
+  set y [$w canvasy $y]
+  foreach m [$w find overlapping $x $y $x $y] {
+    if {[info exists item_to_var($m)]} {
+      if {$open} {
+	set var $item_to_var($m)
+	if {[closed $var]} {
+	  set closed($var) 0
+	} else {
+	  set closed($var) 1
+	}
+	after idle [code $this build]
+      } else {
+	setselection $item_to_var($m)
+      }
+      return
+    }
+  }
+  if {!$open} {
+    setselection ""
+  }
+}
+
+
+#
+# Change the selection to the indicated item
+#
+itcl::body  VarTree::setselection {var} {
+  #debug "setselection $var"
+  set selection $var
+  drawselection
+}
+
+# Check if a node is closed.
+# If it is a new node, set it to closed
+itcl::body  VarTree::closed {name} {
+  if {![info exists closed($name)]} {
+    set closed($name) 1
+  }
+  return $closed($name)
+}
+
+# mark a node open
+itcl::body  VarTree::open {name} {
+  set closed($name) 0
+  after idle [code $this build]
+}
+
+# mark a node closed
+itcl::body  VarTree::close {name} {
+  set closed($name) 1
+  after idle [code $this build]
+}
+
+# edit a varobj.  
+# creates an entry widget in place of the current value
+itcl::body  VarTree::edit {j} {
+  #debug "$j"
+
+  # if another edit is in progress, cancel it
+  if {$entry != ""} { unedit $j }
+
+  set entryobj $item_to_var($j)
+  set entry [entry $c.entry  -bg $::Colors(bg) -fg $::Colors(fg) -font global/fixed]
+  set entrywin [$c create window [$c coords $j] -window $entry -anchor w]
+  focus $entry
+  bind $entry <Return> [code $this changeValue $j]
+  bind $entry <Escape> [code $this unedit $j]
+}
+
+# cancel or clean up after an edit
+itcl::body  VarTree::unedit {j} {
+  #debug
+  # cancel the edit
+  $c delete $entrywin
+  destroy $entry
+  set entry ""
+  $c raise $j
+}
+
+# change the value of a varobj.
+itcl::body  VarTree::changeValue {j} {
+  #debug "value = [$entry get]"
+  set new [string trim [$entry get] \ \r\n]
+  if {$new == ""} {
+    unedit $j
+    return
+  }
+  if {[catch {$entryobj value $new} errTxt]} {
+    # gdbtk-varobj doesn't actually return meaningful error messages
+    # so use a generic one.
+    set errTxt "GDB could not evaluate that expression"
+    tk_messageBox -icon error -type ok -message $errTxt \
+      -title "Error in Expression" -parent [winfo toplevel $itk_interior]
+    focus $entry
+    $entry selection to end
+  } else {
+    unedit $j
+    
+    # We may have changed a register or something else that is 
+    # being displayed in another window
+    gdbtk_update
+  }
+}
+
+# change the format for a var
+itcl::body  VarTree::_change_format {var} {
+  #debug "$var $popup_temp"
+  catch {$var format $popup_temp}
+  after idle [code $this update]
+}
+
+# button 3 callback.  Pops up a menu.
+itcl::body  VarTree::_but3 {x y X Y} {
+  set x [$c canvasx $x]
+  set y [$c canvasy $y]
+  catch {destroy $pop.format}
+
+  set var ""
+  foreach item [$c find overlapping $x $y $x $y] {
+    if {![catch {set var $item_to_var($item)}]} {
+      break
+    }
+  }
+  setselection $var
+  if {$var == ""} {
+    _do_default_menu $X $Y
+    return
+  }
+  set popup_temp [$var format]
+  set j3 [lindex $var_to_items($var) 2]
+  #debug "var=$var [$var name] format=$popup_temp  this=$this"
+  $pop delete 0 end
+  $pop add command -label [$var name] -state disabled
+  $pop add separator
+  $pop add cascade -menu $pop.format -label "Format" -underline 0
+  set f [menu $pop.format -tearoff 0]
+  $f add radio -label "Natural" -variable [scope popup_temp] -value "natural" -command [code $this _change_format $var]
+  $f add radio -label "Decimal" -variable [scope popup_temp] -value "decimal" -command [code $this _change_format $var]
+  $f add radio -label "Hex" -variable [scope popup_temp] -value "hexadecimal" -command [code $this _change_format $var]
+  $f add radio -label "Octal" -variable [scope popup_temp] -value "octal" -command [code $this _change_format $var]
+  $f add radio -label "Binary" -variable [scope popup_temp] -value "binary" -command [code $this _change_format $var]
+  $pop add command -label "Edit" -command [code $this edit $j3]
+  $pop add command -label "Delete" -command [code $this remove $var]
+  if {![catch {$var value} value]} {
+    $pop add separator   
+    $pop add command -label "Dump Memory at [$var name]" -command [list ManagedWin::open MemWin -force -addr_exp [$var name]]
+  }
+  $pop add separator
+  if {$type == "local"} {
+    $pop add command -label "Help" -command "open_help watch.html"
+  } else {
+    $pop add command -label "Help" -command "open_help locals.html"
+  }
+  $pop add separator
+  $pop add command -label "Close" -command "destroy [winfo toplevel $itk_interior]"
+  tk_popup $pop $X $Y
+}
+
+# popup menu over empty space
+itcl::body  VarTree::_do_default_menu {X Y} {
+  #debug
+  $pop delete 0 end
+  if {$type == "local"} {
+    $pop add command -label "Local Variables" -state disabled
+  } else {
+    $pop add command -label "Watch Window" -state disabled
+  }
+  $pop add separator
+  $pop add command -label "Sort" -command [code $this _sort]
+  if {$type == "local"} {
+    $pop add command -label "Help" -command "open_help watch.html"
+  } else {
+    $pop add command -label "Help" -command "open_help locals.html"
+  }
+  $pop add separator
+  $pop add command -label "Close" -command "destroy [winfo toplevel $itk_interior]"
+  tk_popup $pop $X $Y
+}
+
+# alphabetize the variable names in the list
+itcl::body  VarTree::_sort {} {
+  #debug $rootlist
+  set rootlist [lsort -command [code $this _compare] $rootlist]
+  after idle [code $this build]
+}
+
+# comparison function for lsort.
+itcl::body  VarTree::_compare {a b} {
+  return [string compare [$a name] [$b name]]
+}
+
+# ititialize common data
+itcl::body  VarTree::_init_data {} {
+  set colors(name) "\#0000C0"
+  set colors(type) "red"
+  set colors(error) "red"
+  set colors(value) "black"
+  set colors(change) $::Colors(change)
+  set colors(disabled) "gray50"
+  set colors(line) "gray50"
+
+  set maskdata "#define solid_width 9\n#define solid_height 9"
+  append maskdata {
+    static unsigned char solid_bits[] = {
+      0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01,
+      0xff, 0x01, 0xff, 0x01, 0xff, 0x01
+    };
+  }
+  set data "#define open_width 9\n#define open_height 9"
+  append data {
+    static unsigned char open_bits[] = {
+      0xff, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x7d, 0x01, 0x01, 0x01,
+      0x01, 0x01, 0x01, 0x01, 0xff, 0x01
+    };
+  }
+  image create bitmap openbm -data $data -maskdata $maskdata \
+    -foreground black -background white
+  set data "#define closed_width 9\n#define closed_height 9"
+  append data {
+    static unsigned char closed_bits[] = {
+      0xff, 0x01, 0x01, 0x01, 0x11, 0x01, 0x11, 0x01, 0x7d, 0x01, 0x11, 0x01,
+      0x11, 0x01, 0x01, 0x01, 0xff, 0x01
+    };
+  }
+  image create bitmap closedbm -data $data -maskdata $maskdata \
+    -foreground black -background white
+
+  set initialized 1
+}
+

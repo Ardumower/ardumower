@@ -1,0 +1,63 @@
+--- gcc/ada/targparm.ads.orig	Wed Dec 19 16:22:26 2007
++++ gcc/ada/targparm.ads	Wed Feb 13 20:02:42 2008
+@@ -381,9 +381,11 @@
+    --  allows that standard format to be modified.
+ 
+    Duration_32_Bits_On_Target : Boolean := False;
++   --  Default_Duration_Delta_Microseconds : Pos := 1_000;
+    --  If True, then Duration is represented in 32 bits and the delta and
+-   --  small values are set to 20.0*(10**(-3)) (i.e. it is a count in units
+-   --  of 20 milliseconds.
++   --  and small values are set to Duration_Delta_Microseconds*(10**(-6))
++   --  (i.e. for Duration_Delta_Microseconds = 20000 it is a count in
++   --  units of 20 milliseconds.
+ 
+    ------------------------------------
+    -- Back-End Code Generation Flags --
+--- gcc/ada/switch-c.adb.orig	Thu Dec 13 10:20:52 2007
++++ gcc/ada/switch-c.adb	Wed Feb 13 20:08:37 2008
+@@ -345,6 +345,19 @@
+ 
+                      return;
+ 
++                  --  -gnated switch (Duration'Delta)
++
++                  when 'd' =>
++                     Ptr := Ptr + 1;
++
++                     --  Possible '=' sign between -gnated and the value
++                     if Ptr <= Max and then Switch_Chars (Ptr) = '=' then
++                        Ptr := Ptr + 1;
++                     end if;
++
++                     Scan_Pos (Switch_Chars, Max, Ptr,
++                               Opt.Duration_Delta_Microseconds, C);
++
+                   --  -gnateD switch (preprocessing symbol definition)
+ 
+                   when 'D' =>
+--- gcc/ada/opt.ads.orig	Thu Dec 13 10:22:25 2007
++++ gcc/ada/opt.ads	Wed Feb 13 20:14:03 2008
+@@ -360,6 +360,10 @@
+    --  Set to True (by -gnatL) to dump source text intermingled with generated
+    --  code. Effective only if either of Debug/Print_Generated_Code is true.
+ 
++   Duration_Delta_Microseconds : Pos := 1_000;
++   --  GNAT
++   --  set to the time tick on the target
++
+    Dynamic_Elaboration_Checks : Boolean := False;
+    --  GNAT
+    --  Set True for dynamic elaboration checking mode, as set by the -gnatE
+--- gcc/ada/cstand.adb.orig	Mon Sep 10 12:47:10 2007
++++ gcc/ada/cstand.adb	Wed Feb 13 20:02:42 2008
+@@ -1209,7 +1209,8 @@
+          if Duration_32_Bits_On_Target then
+             Dlo := Intval (Type_Low_Bound (Standard_Integer_32));
+             Dhi := Intval (Type_High_Bound (Standard_Integer_32));
+-            Delta_Val := UR_From_Components (UI_From_Int (20), Uint_3, 10);
++            Delta_Val := UR_From_Components
++              (UI_From_Int (Duration_Delta_Microseconds), Uint_6, 10);
+ 
+          --  In standard 64-bit mode, the size is 64-bits and the delta and
+          --  small values are set to nanoseconds (1.0**(10.0**(-9))

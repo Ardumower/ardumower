@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+<title>Elif - The C Preprocessor</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The C Preprocessor">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Conditional-Syntax.html#Conditional-Syntax" title="Conditional Syntax">
+<link rel="prev" href="Else.html#Else" title="Else">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1987, 1989, 1991, 1992, 1993, 1994, 1995, 1996,
+1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation.  A copy of
+the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+This manual contains no Invariant Sections.  The Front-Cover Texts are
+(a) (see below), and the Back-Cover Texts are (b) (see below).
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Elif"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Else.html#Else">Else</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Conditional-Syntax.html#Conditional-Syntax">Conditional Syntax</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">4.2.5 Elif</h4>
+
+<p><a name="index-_0023elif-90"></a>One common case of nested conditionals is used to check for more than two
+possible alternatives.  For example, you might have
+
+<pre class="smallexample">     #if X == 1
+     ...
+     #else /* X != 1 */
+     #if X == 2
+     ...
+     #else /* X != 2 */
+     ...
+     #endif /* X != 2 */
+     #endif /* X != 1 */
+</pre>
+   <p>Another conditional directive, <span class="samp">#elif</span>, allows this to be
+abbreviated as follows:
+
+<pre class="smallexample">     #if X == 1
+     ...
+     #elif X == 2
+     ...
+     #else /* X != 2 and X != 1*/
+     ...
+     #endif /* X != 2 and X != 1*/
+</pre>
+   <p><span class="samp">#elif</span> stands for &ldquo;else if&rdquo;.  Like <span class="samp">#else</span>, it goes in the
+middle of a conditional group and subdivides it; it does not require a
+matching <span class="samp">#endif</span> of its own.  Like <span class="samp">#if</span>, the <span class="samp">#elif</span>
+directive includes an expression to be tested.  The text following the
+<span class="samp">#elif</span> is processed only if the original <span class="samp">#if</span>-condition
+failed and the <span class="samp">#elif</span> condition succeeds.
+
+   <p>More than one <span class="samp">#elif</span> can go in the same conditional group.  Then
+the text after each <span class="samp">#elif</span> is processed only if the <span class="samp">#elif</span>
+condition succeeds after the original <span class="samp">#if</span> and all previous
+<span class="samp">#elif</span> directives within it have failed.
+
+   <p><span class="samp">#else</span> is allowed after any number of <span class="samp">#elif</span> directives, but
+<span class="samp">#elif</span> may not follow <span class="samp">#else</span>.
+
+   </body></html>
+

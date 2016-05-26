@@ -1,0 +1,276 @@
+<html lang="en">
+<head>
+<title>Alias analysis - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Tree-SSA.html#Tree-SSA" title="Tree SSA">
+<link rel="prev" href="SSA.html#SSA" title="SSA">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Alias-analysis"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="SSA.html#SSA">SSA</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Tree-SSA.html#Tree-SSA">Tree SSA</a>
+<hr><br>
+</div>
+
+<h3 class="section">10.6 Alias analysis</h3>
+
+<p><a name="index-alias-2112"></a><a name="index-flow_002dsensitive-alias-analysis-2113"></a><a name="index-flow_002dinsensitive-alias-analysis-2114"></a>
+Alias analysis proceeds in 4 main phases:
+
+     <ol type=1 start=1>
+<li>Structural alias analysis.
+
+     <p>This phase walks the types for structure variables, and determines which
+of the fields can overlap using offset and size of each field.  For each
+field, a &ldquo;subvariable&rdquo; called a &ldquo;Structure field tag&rdquo; (SFT) is
+created, which represents that field as a separate variable.  All
+accesses that could possibly overlap with a given field will have
+virtual operands for the SFT of that field.
+
+     <pre class="smallexample">          struct foo
+          {
+            int a;
+            int b;
+          }
+          struct foo temp;
+          int bar (void)
+          {
+            int tmp1, tmp2, tmp3;
+            SFT.0_2 = VDEF &lt;SFT.0_1&gt;
+            temp.a = 5;
+            SFT.1_4 = VDEF &lt;SFT.1_3&gt;
+            temp.b = 6;
+          
+            VUSE &lt;SFT.1_4&gt;
+            tmp1_5 = temp.b;
+            VUSE &lt;SFT.0_2&gt;
+            tmp2_6 = temp.a;
+          
+            tmp3_7 = tmp1_5 + tmp2_6;
+            return tmp3_7;
+          }
+     </pre>
+     <p>If you copy the symbol tag for a variable for some reason, you probably
+also want to copy the subvariables for that variable.
+
+     <li>Points-to and escape analysis.
+
+     <p>This phase walks the use-def chains in the SSA web looking for
+three things:
+
+     <p>	
+          <ul>
+	<li>Assignments of the form <code>P_i = &amp;VAR</code>
+	<li>Assignments of the form P_i = malloc()
+	<li>Pointers and ADDR_EXPR that escape the current function. 
+	</ul>
+
+     <p>The concept of `escaping' is the same one used in the Java world. 
+When a pointer or an ADDR_EXPR escapes, it means that it has been
+exposed outside of the current function.  So, assignment to
+global variables, function arguments and returning a pointer are
+all escape sites.
+
+     <p>This is where we are currently limited.  Since not everything is
+renamed into SSA, we lose track of escape properties when a
+pointer is stashed inside a field in a structure, for instance. 
+In those cases, we are assuming that the pointer does escape.
+
+     <p>We use escape analysis to determine whether a variable is
+call-clobbered.  Simply put, if an ADDR_EXPR escapes, then the
+variable is call-clobbered.  If a pointer P_i escapes, then all
+the variables pointed-to by P_i (and its memory tag) also escape.
+
+     <li>Compute flow-sensitive aliases
+
+     <p>We have two classes of memory tags.  Memory tags associated with
+the pointed-to data type of the pointers in the program.  These
+tags are called &ldquo;symbol memory tag&rdquo; (SMT).  The other class are
+those associated with SSA_NAMEs, called &ldquo;name memory tag&rdquo; (NMT). 
+The basic idea is that when adding operands for an INDIRECT_REF
+*P_i, we will first check whether P_i has a name tag, if it does
+we use it, because that will have more precise aliasing
+information.  Otherwise, we use the standard symbol tag.
+
+     <p>In this phase, we go through all the pointers we found in
+points-to analysis and create alias sets for the name memory tags
+associated with each pointer P_i.  If P_i escapes, we mark
+call-clobbered the variables it points to and its tag.
+
+     <li>Compute flow-insensitive aliases
+
+     <p>This pass will compare the alias set of every symbol memory tag and
+every addressable variable found in the program.  Given a symbol
+memory tag SMT and an addressable variable V.  If the alias sets
+of SMT and V conflict (as computed by may_alias_p), then V is
+marked as an alias tag and added to the alias set of SMT.
+
+     <p>Every language that wishes to perform language-specific alias analysis
+should define a function that computes, given a <code>tree</code>
+node, an alias set for the node.  Nodes in different alias sets are not
+allowed to alias.  For an example, see the C front-end function
+<code>c_get_alias_set</code>.
+      </ol>
+
+ <p>For instance, consider the following function:
+
+<pre class="smallexample">     foo (int i)
+     {
+       int *p, *q, a, b;
+     
+       if (i &gt; 10)
+         p = &amp;a;
+       else
+         q = &amp;b;
+     
+       *p = 3;
+       *q = 5;
+       a = b + 2;
+       return *p;
+     }
+</pre>
+ <p>After aliasing analysis has finished, the symbol memory tag for
+pointer <code>p</code> will have two aliases, namely variables <code>a</code> and
+<code>b</code>. 
+Every time pointer <code>p</code> is dereferenced, we want to mark the
+operation as a potential reference to <code>a</code> and <code>b</code>.
+
+<pre class="smallexample">     foo (int i)
+     {
+       int *p, a, b;
+     
+       if (i_2 &gt; 10)
+         p_4 = &amp;a;
+       else
+         p_6 = &amp;b;
+       # p_1 = PHI &lt;p_4(1), p_6(2)&gt;;
+     
+       # a_7 = VDEF &lt;a_3&gt;;
+       # b_8 = VDEF &lt;b_5&gt;;
+       *p_1 = 3;
+     
+       # a_9 = VDEF &lt;a_7&gt;
+       # VUSE &lt;b_8&gt;
+       a_9 = b_8 + 2;
+     
+       # VUSE &lt;a_9&gt;;
+       # VUSE &lt;b_8&gt;;
+       return *p_1;
+     }
+</pre>
+ <p>In certain cases, the list of may aliases for a pointer may grow
+too large.  This may cause an explosion in the number of virtual
+operands inserted in the code.  Resulting in increased memory
+consumption and compilation time.
+
+ <p>When the number of virtual operands needed to represent aliased
+loads and stores grows too large (configurable with <span class="option">--param
+max-aliased-vops</span>), alias sets are grouped to avoid severe
+compile-time slow downs and memory consumption.  The alias
+grouping heuristic proceeds as follows:
+
+     <ol type=1 start=1>
+<li>Sort the list of pointers in decreasing number of contributed
+virtual operands.
+
+     <li>Take the first pointer from the list and reverse the role
+of the memory tag and its aliases.  Usually, whenever an
+aliased variable Vi is found to alias with a memory tag
+T, we add Vi to the may-aliases set for T.  Meaning that
+after alias analysis, we will have:
+
+     <pre class="smallexample">          may-aliases(T) = { V1, V2, V3, ..., Vn }
+     </pre>
+     <p>This means that every statement that references T, will get
+<code>n</code> virtual operands for each of the Vi tags.  But, when
+alias grouping is enabled, we make T an alias tag and add it
+to the alias set of all the Vi variables:
+
+     <pre class="smallexample">          may-aliases(V1) = { T }
+          may-aliases(V2) = { T }
+          ...
+          may-aliases(Vn) = { T }
+     </pre>
+     <p>This has two effects: (a) statements referencing T will only get
+a single virtual operand, and, (b) all the variables Vi will now
+appear to alias each other.  So, we lose alias precision to
+improve compile time.  But, in theory, a program with such a high
+level of aliasing should not be very optimizable in the first
+place.
+
+     <li>Since variables may be in the alias set of more than one
+memory tag, the grouping done in step (2) needs to be extended
+to all the memory tags that have a non-empty intersection with
+the may-aliases set of tag T.  For instance, if we originally
+had these may-aliases sets:
+
+     <pre class="smallexample">          may-aliases(T) = { V1, V2, V3 }
+          may-aliases(R) = { V2, V4 }
+     </pre>
+     <p>In step (2) we would have reverted the aliases for T as:
+
+     <pre class="smallexample">          may-aliases(V1) = { T }
+          may-aliases(V2) = { T }
+          may-aliases(V3) = { T }
+     </pre>
+     <p>But note that now V2 is no longer aliased with R.  We could
+add R to may-aliases(V2), but we are in the process of
+grouping aliases to reduce virtual operands so what we do is
+add V4 to the grouping to obtain:
+
+     <pre class="smallexample">          may-aliases(V1) = { T }
+          may-aliases(V2) = { T }
+          may-aliases(V3) = { T }
+          may-aliases(V4) = { T }
+     </pre>
+     <li>If the total number of virtual operands due to aliasing is
+still above the threshold set by max-alias-vops, go back to (2).
+      </ol>
+
+<!-- Copyright (c) 2006, 2007, 2008 Free Software Foundation, Inc. -->
+<!-- Free Software Foundation, Inc. -->
+<!-- This is part of the GCC manual. -->
+<!-- For copying conditions, see the file gcc.texi. -->
+<!--  -->
+<!-- Loop Representation -->
+<!--  -->
+</body></html>
+

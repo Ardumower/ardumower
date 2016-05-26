@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+<title>Altmacro - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Pseudo-Ops.html#Pseudo-Ops" title="Pseudo Ops">
+<link rel="prev" href="Align.html#Align" title="Align">
+<link rel="next" href="Ascii.html#Ascii" title="Ascii">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Altmacro"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Ascii.html#Ascii">Ascii</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Align.html#Align">Align</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Pseudo-Ops.html#Pseudo-Ops">Pseudo Ops</a>
+<hr><br>
+</div>
+
+<h3 class="section">7.77 <code>.altmacro</code></h3>
+
+<p>Enable alternate macro mode, enabling:
+
+     <dl>
+<dt><code>LOCAL </code><var>name</var><code> [ , ... ]</code><a name="index-LOCAL-_0040var_007bname_007d-_005b-_002c-_0040dots_007b_007d-_005d-399"></a><dd>One additional directive, <code>LOCAL</code>, is available.  It is used to
+generate a string replacement for each of the <var>name</var> arguments, and
+replace any instances of <var>name</var> in each macro expansion.  The
+replacement string is unique in the assembly, and different for each
+separate macro expansion.  <code>LOCAL</code> allows you to write macros that
+define symbols, without fear of conflict between separate macro expansions.
+
+     <br><dt><code>String delimiters</code><a name="index-String-delimiters-400"></a><dd>You can write strings delimited in these other ways besides
+<code>"</code><var>string</var><code>"</code>:
+
+          <dl>
+<dt><code>'</code><var>string</var><code>'</code><dd>You can delimit strings with single-quote characters.
+
+          <br><dt><code>&lt;</code><var>string</var><code>&gt;</code><dd>You can delimit strings with matching angle brackets. 
+</dl>
+
+     <br><dt><code>single-character string escape</code><a name="index-single_002dcharacter-string-escape-401"></a><dd>To include any single character literally in a string (even if the
+character would otherwise have some special meaning), you can prefix the
+character with <span class="samp">!</span> (an exclamation mark).  For example, you can
+write <span class="samp">&lt;4.3 !&gt; 5.4!!&gt;</span> to get the literal text <span class="samp">4.3 &gt; 5.4!</span>.
+
+     <br><dt><code>Expression results as strings</code><a name="index-Expression-results-as-strings-402"></a><dd>You can write <span class="samp">%</span><var>expr</var> to evaluate the expression <var>expr</var>
+and use the result as a string. 
+</dl>
+
+   </body></html>
+

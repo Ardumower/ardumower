@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+<title>Tail Calls - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Stack-and-Calling.html#Stack-and-Calling" title="Stack and Calling">
+<link rel="prev" href="Profiling.html#Profiling" title="Profiling">
+<link rel="next" href="Stack-Smashing-Protection.html#Stack-Smashing-Protection" title="Stack Smashing Protection">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Tail-Calls"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Stack-Smashing-Protection.html#Stack-Smashing-Protection">Stack Smashing Protection</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Profiling.html#Profiling">Profiling</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Stack-and-Calling.html#Stack-and-Calling">Stack and Calling</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">15.10.13 Permitting tail calls</h4>
+
+<p><a name="index-tail-calls-3743"></a>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_FUNCTION_OK_FOR_SIBCALL</b> (<var>tree decl, tree exp</var>)<var><a name="index-TARGET_005fFUNCTION_005fOK_005fFOR_005fSIBCALL-3744"></a></var><br>
+<blockquote><p>True if it is ok to do sibling call optimization for the specified
+call expression <var>exp</var>.  <var>decl</var> will be the called function,
+or <code>NULL</code> if this is an indirect call.
+
+      <p>It is not uncommon for limitations of calling conventions to prevent
+tail calls to functions outside the current unit of translation, or
+during PIC compilation.  The hook is used to enforce these restrictions,
+as the <code>sibcall</code> md pattern can not fail, or fall over to a
+&ldquo;normal&rdquo; call.  The criteria for successful sibling call optimization
+may vary greatly between different architectures. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_EXTRA_LIVE_ON_ENTRY</b> (<var>bitmap *regs</var>)<var><a name="index-TARGET_005fEXTRA_005fLIVE_005fON_005fENTRY-3745"></a></var><br>
+<blockquote><p>Add any hard registers to <var>regs</var> that are live on entry to the
+function.  This hook only needs to be defined to provide registers that
+cannot be found by examination of FUNCTION_ARG_REGNO_P, the callee saved
+registers, STATIC_CHAIN_INCOMING_REGNUM, STATIC_CHAIN_REGNUM,
+TARGET_STRUCT_VALUE_RTX, FRAME_POINTER_REGNUM, EH_USES,
+FRAME_POINTER_REGNUM, ARG_POINTER_REGNUM, and the PIC_OFFSET_TABLE_REGNUM. 
+</p></blockquote></div>
+
+ </body></html>
+

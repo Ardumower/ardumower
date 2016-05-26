@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+<title>HPPA ELF32 - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Dependent.html#Machine-Dependent" title="Machine Dependent">
+<link rel="prev" href="ARM.html#ARM" title="ARM">
+<link rel="next" href="M68K.html#M68K" title="M68K">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU linker LD
+(GNU Binutils)
+version 2.19.
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000,
+2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="HPPA-ELF32"></a>Next:&nbsp;<a rel="next" accesskey="n" href="M68K.html#M68K">M68K</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="ARM.html#ARM">ARM</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Dependent.html#Machine-Dependent">Machine Dependent</a>
+<hr><br>
+</div>
+
+<h3 class="section">4.5 <span class="command">ld</span> and HPPA 32-bit ELF Support</h3>
+
+<p><a name="index-HPPA-multiple-sub_002dspace-stubs-560"></a><a name="index-_002d_002dmulti_002dsubspace-561"></a>When generating a shared library, <span class="command">ld</span> will by default generate
+import stubs suitable for use with a single sub-space application. 
+The <span class="samp">--multi-subspace</span> switch causes <span class="command">ld</span> to generate export
+stubs, and different (larger) import stubs suitable for use with
+multiple sub-spaces.
+
+   <p><a name="index-HPPA-stub-grouping-562"></a><a name="index-_002d_002dstub_002dgroup_002dsize_003d_0040var_007bN_007d-563"></a>Long branch stubs and import/export stubs are placed by <span class="command">ld</span> in
+stub sections located between groups of input sections. 
+<span class="samp">--stub-group-size</span> specifies the maximum size of a group of input
+sections handled by one stub section.  Since branch offsets are signed,
+a stub section may serve two groups of input sections, one group before
+the stub section, and one group after it.  However, when using
+conditional branches that require stubs, it may be better (for branch
+prediction) that stub sections only serve one group of input sections. 
+A negative value for <span class="samp">N</span> chooses this scheme, ensuring that
+branches to stubs always use a negative offset.  Two special values of
+<span class="samp">N</span> are recognized, <span class="samp">1</span> and <span class="samp">-1</span>.  These both instruct
+<span class="command">ld</span> to automatically size input section groups for the branch types
+detected, with the same behaviour regarding stub placement as other
+positive or negative values of <span class="samp">N</span> respectively.
+
+   <p>Note that <span class="samp">--stub-group-size</span> does not split input sections.  A
+single input section larger than the group size specified will of course
+create a larger group (of one section).  If input sections are too
+large, it may not be possible for a branch to reach its stub.
+
+   </body></html>
+

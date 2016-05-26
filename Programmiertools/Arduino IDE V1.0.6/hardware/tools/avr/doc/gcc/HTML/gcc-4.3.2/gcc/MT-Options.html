@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+<title>MT Options - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Submodel-Options.html#Submodel-Options" title="Submodel Options">
+<link rel="prev" href="MN10300-Options.html#MN10300-Options" title="MN10300 Options">
+<link rel="next" href="PDP_002d11-Options.html#PDP_002d11-Options" title="PDP-11 Options">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="MT-Options"></a>Next:&nbsp;<a rel="next" accesskey="n" href="PDP_002d11-Options.html#PDP_002d11-Options">PDP-11 Options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="MN10300-Options.html#MN10300-Options">MN10300 Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Submodel-Options.html#Submodel-Options">Submodel Options</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.17.24 MT Options</h4>
+
+<p><a name="index-MT-options-1539"></a>
+These <span class="option">-m</span> options are defined for Morpho MT architectures:
+
+     <dl>
+<dt><code>-march=</code><var>cpu-type</var><dd><a name="index-march-1540"></a>Generate code that will run on <var>cpu-type</var>, which is the name of a system
+representing a certain processor type.  Possible values for
+<var>cpu-type</var> are <span class="samp">ms1-64-001</span>, <span class="samp">ms1-16-002</span>,
+<span class="samp">ms1-16-003</span> and <span class="samp">ms2</span>.
+
+     <p>When this option is not used, the default is <span class="option">-march=ms1-16-002</span>.
+
+     <br><dt><code>-mbacc</code><dd><a name="index-mbacc-1541"></a>Use byte loads and stores when generating code.
+
+     <br><dt><code>-mno-bacc</code><dd><a name="index-mno_002dbacc-1542"></a>Do not use byte loads and stores when generating code.
+
+     <br><dt><code>-msim</code><dd><a name="index-msim-1543"></a>Use simulator runtime
+
+     <br><dt><code>-mno-crt0</code><dd><a name="index-mno_002dcrt0-1544"></a>Do not link in the C run-time initialization object file
+<span class="file">crti.o</span>.  Other run-time initialization and termination files
+such as <span class="file">startup.o</span> and <span class="file">exit.o</span> are still included on the
+linker command line.
+
+ </dl>
+
+ </body></html>
+

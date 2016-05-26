@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+<title>ranlib - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="objdump.html#objdump" title="objdump">
+<link rel="next" href="readelf.html#readelf" title="readelf">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="ranlib"></a>Next:&nbsp;<a rel="next" accesskey="n" href="readelf.html#readelf">readelf</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="objdump.html#objdump">objdump</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">5 ranlib</h2>
+
+<p><a name="index-ranlib-97"></a><a name="index-archive-contents-98"></a><a name="index-symbol-index-99"></a>
+<!-- man title ranlib generate index to archive. -->
+
+<pre class="smallexample">     <!-- man begin SYNOPSIS ranlib -->
+     ranlib [<span class="option">-vVt</span>] <var>archive</var>
+     <!-- man end -->
+</pre>
+   <!-- man begin DESCRIPTION ranlib -->
+<p><span class="command">ranlib</span> generates an index to the contents of an archive and
+stores it in the archive.  The index lists each symbol defined by a
+member of an archive that is a relocatable object file.
+
+   <p>You may use <span class="samp">nm -s</span> or <span class="samp">nm --print-armap</span> to list this index.
+
+   <p>An archive with such an index speeds up linking to the library and
+allows routines in the library to call each other without regard to
+their placement in the archive.
+
+   <p>The <span class="sc">gnu</span> <span class="command">ranlib</span> program is another form of <span class="sc">gnu</span> <span class="command">ar</span>; running
+<span class="command">ranlib</span> is completely equivalent to executing <span class="samp">ar -s</span>. 
+See <a href="ar.html#ar">ar</a>.
+
+<!-- man end -->
+<!-- man begin OPTIONS ranlib -->
+<dl>
+<dt><span class="env">-v</span><dt><span class="env">-V</span><dt><span class="env">--version</span><dd>Show the version number of <span class="command">ranlib</span>.
+
+     <br><dt><span class="env">-t</span><dd>Update the timestamp of the symbol map of an archive. 
+</dl>
+
+<!-- man end -->
+</body></html>
+

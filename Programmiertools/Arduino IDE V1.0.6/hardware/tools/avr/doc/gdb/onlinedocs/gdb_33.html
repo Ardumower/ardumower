@@ -1,0 +1,4270 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Remote Protocol</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Remote Protocol">
+<META NAME="keywords" CONTENT="Debugging with GDB: Remote Protocol">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC694"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC695"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> D. GDB Remote Serial Protocol </H1>
+<!--docid::SEC694::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC695">D.1 Overview</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC696">D.2 Packets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC698">D.4 General Query Packets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC699">D.5 Register Packet Format</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC700">D.6 Tracepoint Packets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC701">D.7 Host I/O Packets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC702">D.8 Interrupts</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC703">D.9 Examples</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC704">D.10 File-I/O Remote Protocol Extension</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC736">D.11 Library List Format</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC737">D.12 Memory Map Format</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Overview"></A>
+<HR SIZE="6">
+<A NAME="SEC695"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.1 Overview </H2>
+<!--docid::SEC695::-->
+<P>
+
+There may be occasions when you need to know something about the
+protocol--for example, if there is only one serial port to your target
+machine, you might want your program to do something special if it
+recognizes a packet meant for GDB.
+</P><P>
+
+In the examples below, <SAMP>`-&#62;'</SAMP> and <SAMP>`&#60;-'</SAMP> are used to indicate
+transmitted and received data, respectively.
+</P><P>
+
+<A NAME="IDX1561"></A>
+<A NAME="IDX1562"></A>
+<A NAME="IDX1563"></A>
+All GDB commands and responses (other than acknowledgments) are
+sent as a <VAR>packet</VAR>.  A <VAR>packet</VAR> is introduced with the character
+<SAMP>`$'</SAMP>, the actual <VAR>packet-data</VAR>, and the terminating character
+<SAMP>`#'</SAMP> followed by a two-digit <VAR>checksum</VAR>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>$</CODE><VAR>packet-data</VAR><CODE>#</CODE><VAR>checksum</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX1564"></A>
+The two-digit <VAR>checksum</VAR> is computed as the modulo 256 sum of all
+characters between the leading <SAMP>`$'</SAMP> and the trailing <SAMP>`#'</SAMP> (an
+eight bit unsigned checksum).
+</P><P>
+
+Implementors should note that prior to GDB 5.0 the protocol
+specification also included an optional two-digit <VAR>sequence-id</VAR>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>$</CODE><VAR>sequence-id</VAR><CODE>:</CODE><VAR>packet-data</VAR><CODE>#</CODE><VAR>checksum</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX1565"></A>
+That <VAR>sequence-id</VAR> was appended to the acknowledgment.  GDB
+has never output <VAR>sequence-id</VAR>s.  Stubs that handle packets added
+since GDB 5.0 must not accept <VAR>sequence-id</VAR>.
+</P><P>
+
+<A NAME="IDX1566"></A>
+When either the host or the target machine receives a packet, the first
+response expected is an acknowledgment: either <SAMP>`+'</SAMP> (to indicate
+the package was received correctly) or <SAMP>`-'</SAMP> (to request
+retransmission):
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>-&#62; <CODE>$</CODE><VAR>packet-data</VAR><CODE>#</CODE><VAR>checksum</VAR>
+&#60;- <CODE>+</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+The host (GDB) sends <VAR>command</VAR>s, and the target (the
+debugging stub incorporated in your program) sends a <VAR>response</VAR>.  In
+the case of step and continue <VAR>command</VAR>s, the response is only sent
+when the operation has completed (the target has again stopped).
+</P><P>
+
+<VAR>packet-data</VAR> consists of a sequence of characters with the
+exception of <SAMP>`#'</SAMP> and <SAMP>`$'</SAMP> (see <SAMP>`X'</SAMP> packet for additional
+exceptions).
+</P><P>
+
+<A NAME="IDX1567"></A>
+Fields within the packet should be separated using <SAMP>`,'</SAMP> <SAMP>`;'</SAMP> or
+<SAMP>`:'</SAMP>.  Except where otherwise noted all numbers are represented in
+HEX with leading zeros suppressed.
+</P><P>
+
+Implementors should note that prior to GDB 5.0, the character
+<SAMP>`:'</SAMP> could not appear as the third character in a packet (as it
+would potentially conflict with the <VAR>sequence-id</VAR>).
+</P><P>
+
+<A NAME="IDX1568"></A>
+<A NAME="Binary Data"></A>
+Binary data in most packets is encoded either as two hexadecimal
+digits per byte of binary data.  This allowed the traditional remote
+protocol to work over connections which were only seven-bit clean.
+Some packets designed more recently assume an eight-bit clean
+connection, and use a more efficient encoding to send and receive
+binary data.
+</P><P>
+
+The binary data representation uses <CODE>7d</CODE> (ASCII <SAMP>`}'</SAMP>)
+as an escape character.  Any escaped byte is transmitted as the escape
+character followed by the original character XORed with <CODE>0x20</CODE>.
+For example, the byte <CODE>0x7d</CODE> would be transmitted as the two
+bytes <CODE>0x7d 0x5d</CODE>.  The bytes <CODE>0x23</CODE> (ASCII <SAMP>`#'</SAMP>),
+<CODE>0x24</CODE> (ASCII <SAMP>`$'</SAMP>), and <CODE>0x7d</CODE> (ASCII
+<SAMP>`}'</SAMP>) must always be escaped.  Responses sent by the stub
+must also escape <CODE>0x2a</CODE> (ASCII <SAMP>`*'</SAMP>), so that it
+is not interpreted as the start of a run-length encoded sequence
+(described next).
+</P><P>
+
+Response <VAR>data</VAR> can be run-length encoded to save space.
+Run-length encoding replaces runs of identical characters with one
+instance of the repeated character, followed by a <SAMP>`*'</SAMP> and a
+repeat count.  The repeat count is itself sent encoded, to avoid
+binary characters in <VAR>data</VAR>: a value of <VAR>n</VAR> is sent as
+<CODE><VAR>n</VAR>+29</CODE>.  For a repeat count greater or equal to 3, this
+produces a printable ASCII character, e.g. a space (ASCII
+code 32) for a repeat count of 3.  (This is because run-length
+encoding starts to win for counts 3 or more.)  Thus, for example,
+<SAMP>`0* '</SAMP> is a run-length encoding of "0000": the space character
+after <SAMP>`*'</SAMP> means repeat the leading <CODE>0</CODE> <CODE>32 - 29 =
+3</CODE> more times.
+</P><P>
+
+The printable characters <SAMP>`#'</SAMP> and <SAMP>`$'</SAMP> or with a numeric value
+greater than 126 must not be used.  Runs of six repeats (<SAMP>`#'</SAMP>) or
+seven repeats (<SAMP>`$'</SAMP>) can be expanded using a repeat count of only
+five (<SAMP>`"'</SAMP>).  For example, <SAMP>`00000000'</SAMP> can be encoded as
+<SAMP>`0*"00'</SAMP>.
+</P><P>
+
+The error response returned for some packets includes a two character
+error number.  That number is not well defined.
+</P><P>
+
+<A NAME="IDX1569"></A>
+For any <VAR>command</VAR> not supported by the stub, an empty response
+(<SAMP>`$#00'</SAMP>) should be returned.  That way it is possible to extend the
+protocol.  A newer GDB can tell if a packet is supported based
+on that response.
+</P><P>
+
+A stub is required to support the <SAMP>`g'</SAMP>, <SAMP>`G'</SAMP>, <SAMP>`m'</SAMP>, <SAMP>`M'</SAMP>,
+<SAMP>`c'</SAMP>, and <SAMP>`s'</SAMP> <VAR>command</VAR>s.  All other <VAR>command</VAR>s are
+optional.
+</P><P>
+
+<A NAME="Packets"></A>
+<HR SIZE="6">
+<A NAME="SEC696"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC695"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC697"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC697"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.2 Packets </H2>
+<!--docid::SEC696::-->
+<P>
+
+The following table provides a complete list of all currently defined
+<VAR>command</VAR>s and their corresponding response <VAR>data</VAR>.
+See section <A HREF="gdb_33.html#SEC704">D.10 File-I/O Remote Protocol Extension</A>, for details about the File
+I/O extension of the remote protocol.
+</P><P>
+
+Each packet's description has a template showing the packet's overall
+syntax, followed by an explanation of the packet's meaning.  We
+include spaces in some of the templates for clarity; these are not
+part of the packet's syntax.  No GDB packet uses spaces to
+separate its components.  For example, a template like <SAMP>`foo
+<VAR>bar</VAR> <VAR>baz</VAR>'</SAMP> describes a packet beginning with the three ASCII
+bytes <SAMP>`foo'</SAMP>, followed by a <VAR>bar</VAR>, followed directly by a
+<VAR>baz</VAR>.  GDB does not transmit a space character between the
+<SAMP>`foo'</SAMP> and the <VAR>bar</VAR>, or between the <VAR>bar</VAR> and the
+<VAR>baz</VAR>.
+</P><P>
+
+Note that all packet forms beginning with an upper- or lower-case
+letter, other than those described here, are reserved for future use.
+</P><P>
+
+Here are the packet descriptions.
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`!'</SAMP>
+<DD><A NAME="IDX1570"></A>
+<A NAME="extended mode"></A>
+Enable extended mode.  In extended mode, the remote server is made
+persistent.  The <SAMP>`R'</SAMP> packet is used to restart the program being
+debugged.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The remote target both supports and has enabled extended mode.
+</DL>
+<P>
+
+<DT><SAMP>`?'</SAMP>
+<DD><A NAME="IDX1571"></A>
+Indicate the reason the target halted.  The reply is the same as for
+step and continue.
+<P>
+
+Reply:
+See section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>, for the reply specifications.
+</P><P>
+
+<DT><SAMP>`A <VAR>arglen</VAR>,<VAR>argnum</VAR>,<VAR>arg</VAR>,<small>...</small>'</SAMP>
+<DD><A NAME="IDX1572"></A>
+Initialized <CODE>argv[]</CODE> array passed into program. <VAR>arglen</VAR>
+specifies the number of bytes in the hex encoded byte stream
+<VAR>arg</VAR>.  See <CODE>gdbserver</CODE> for more details.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The arguments were set.
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>An error occurred.
+</DL>
+<P>
+
+<DT><SAMP>`b <VAR>baud</VAR>'</SAMP>
+<DD><A NAME="IDX1573"></A>
+(Don't use this packet; its behavior is not well-defined.)
+Change the serial line speed to <VAR>baud</VAR>.
+<P>
+
+JTC: <EM>When does the transport layer state change?  When it's
+received, or after the ACK is transmitted.  In either case, there are
+problems if the command or the acknowledgment packet is dropped.</EM>
+</P><P>
+
+Stan: <EM>If people really wanted to add something like this, and get
+it working for the first time, they ought to modify ser-unix.c to send
+some kind of out-of-band message to a specially-setup stub and have the
+switch happen "in between" packets, so that from remote protocol's point
+of view, nothing actually happened.</EM>
+</P><P>
+
+<DT><SAMP>`B <VAR>addr</VAR>,<VAR>mode</VAR>'</SAMP>
+<DD><A NAME="IDX1574"></A>
+Set (<VAR>mode</VAR> is <SAMP>`S'</SAMP>) or clear (<VAR>mode</VAR> is <SAMP>`C'</SAMP>) a
+breakpoint at <VAR>addr</VAR>.
+<P>
+
+Don't use this packet.  Use the <SAMP>`Z'</SAMP> and <SAMP>`z'</SAMP> packets instead
+(see  <A HREF="gdb_33.html#insert breakpoint or watchpoint packet">insert breakpoint or watchpoint packet</A>).
+</P><P>
+
+<DT><SAMP>`c [<VAR>addr</VAR>]'</SAMP>
+<DD><A NAME="IDX1575"></A>
+Continue.  <VAR>addr</VAR> is address to resume.  If <VAR>addr</VAR> is omitted,
+resume at current address.
+<P>
+
+Reply:
+See section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>, for the reply specifications.
+</P><P>
+
+<DT><SAMP>`C <VAR>sig</VAR>[;<VAR>addr</VAR>]'</SAMP>
+<DD><A NAME="IDX1576"></A>
+Continue with signal <VAR>sig</VAR> (hex signal number).  If
+<SAMP>`;<VAR>addr</VAR>'</SAMP> is omitted, resume at same address.
+<P>
+
+Reply:
+See section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>, for the reply specifications.
+</P><P>
+
+<DT><SAMP>`d'</SAMP>
+<DD><A NAME="IDX1577"></A>
+Toggle debug flag.
+<P>
+
+Don't use this packet; instead, define a general set packet
+(see section <A HREF="gdb_33.html#SEC698">D.4 General Query Packets</A>).
+</P><P>
+
+<DT><SAMP>`D'</SAMP>
+<DD><A NAME="IDX1578"></A>
+Detach GDB from the remote system.  Sent to the remote target
+before GDB disconnects via the <CODE>detach</CODE> command.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`F <VAR>RC</VAR>,<VAR>EE</VAR>,<VAR>CF</VAR>;<VAR>XX</VAR>'</SAMP>
+<DD><A NAME="IDX1579"></A>
+A reply from GDB to an <SAMP>`F'</SAMP> packet sent by the target.
+This is part of the File-I/O protocol extension.  See section <A HREF="gdb_33.html#SEC704">D.10 File-I/O Remote Protocol Extension</A>, for the specification.
+<P>
+
+<DT><SAMP>`g'</SAMP>
+<DD><A NAME="read registers packet"></A>
+<A NAME="IDX1580"></A>
+Read general registers.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>XX<small>...</small></VAR>'</SAMP>
+<DD>Each byte of register data is described by two hex digits.  The bytes
+with the register are transmitted in target byte order.  The size of
+each register and their position within the <SAMP>`g'</SAMP> packet are
+determined by the GDB internal gdbarch functions
+<CODE>DEPRECATED_REGISTER_RAW_SIZE</CODE> and <CODE>gdbarch_register_name</CODE>.  The
+specification of several standard <SAMP>`g'</SAMP> packets is specified below.
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error.
+</DL>
+<P>
+
+<DT><SAMP>`G <VAR>XX<small>...</small></VAR>'</SAMP>
+<DD><A NAME="IDX1581"></A>
+Write general registers.  See  <A HREF="gdb_33.html#read registers packet">read registers packet</A>, for a
+description of the <VAR>XX<small>...</small></VAR> data.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`H <VAR>c</VAR> <VAR>t</VAR>'</SAMP>
+<DD><A NAME="IDX1582"></A>
+Set thread for subsequent operations (<SAMP>`m'</SAMP>, <SAMP>`M'</SAMP>, <SAMP>`g'</SAMP>,
+<SAMP>`G'</SAMP>, et.al.).  <VAR>c</VAR> depends on the operation to be performed: it
+should be <SAMP>`c'</SAMP> for step and continue operations, <SAMP>`g'</SAMP> for other
+operations.  The thread designator <VAR>t</VAR> may be <SAMP>`-1'</SAMP>, meaning all
+the threads, a thread number, or <SAMP>`0'</SAMP> which means pick any thread.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`i [<VAR>addr</VAR>[,<VAR>nnn</VAR>]]'</SAMP>
+<DD><A NAME="cycle step packet"></A>
+<A NAME="IDX1583"></A>
+Step the remote target by a single clock cycle.  If <SAMP>`,<VAR>nnn</VAR>'</SAMP> is
+present, cycle step <VAR>nnn</VAR> cycles.  If <VAR>addr</VAR> is present, cycle
+step starting at that address.
+<P>
+
+<DT><SAMP>`I'</SAMP>
+<DD><A NAME="IDX1584"></A>
+Signal, then cycle step.  See  <A HREF="gdb_33.html#step with signal packet">step with signal packet</A>.  See  <A HREF="gdb_33.html#cycle step packet">cycle step packet</A>.
+<P>
+
+<DT><SAMP>`k'</SAMP>
+<DD><A NAME="IDX1585"></A>
+Kill request.
+<P>
+
+FIXME: <EM>There is no description of how to operate when a specific
+thread context has been selected (i.e. does 'k' kill only that
+thread?)</EM>.
+</P><P>
+
+<DT><SAMP>`m <VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1586"></A>
+Read <VAR>length</VAR> bytes of memory starting at address <VAR>addr</VAR>.
+Note that <VAR>addr</VAR> may not be aligned to any particular boundary.
+<P>
+
+The stub need not use any particular size or alignment when gathering
+data from memory for the response; even if <VAR>addr</VAR> is word-aligned
+and <VAR>length</VAR> is a multiple of the word size, the stub is free to
+use byte accesses, or not.  For this reason, this packet may not be
+suitable for accessing memory-mapped I/O devices.
+<A NAME="IDX1587"></A>
+<A NAME="IDX1588"></A>
+<A NAME="IDX1589"></A>
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>XX<small>...</small></VAR>'</SAMP>
+<DD>Memory contents; each byte is transmitted as a two-digit hexadecimal
+number.  The reply may contain fewer bytes than requested if the
+server was able to read only part of the region of memory.
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD><VAR>NN</VAR> is errno
+</DL>
+<P>
+
+<DT><SAMP>`M <VAR>addr</VAR>,<VAR>length</VAR>:<VAR>XX<small>...</small></VAR>'</SAMP>
+<DD><A NAME="IDX1590"></A>
+Write <VAR>length</VAR> bytes of memory starting at address <VAR>addr</VAR>.
+<VAR>XX<small>...</small></VAR> is the data; each byte is transmitted as a two-digit
+hexadecimal number.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error (this includes the case where only part of the data was
+written).
+</DL>
+<P>
+
+<DT><SAMP>`p <VAR>n</VAR>'</SAMP>
+<DD><A NAME="IDX1591"></A>
+Read the value of register <VAR>n</VAR>; <VAR>n</VAR> is in hex.
+See  <A HREF="gdb_33.html#read registers packet">read registers packet</A>, for a description of how the returned
+register value is encoded.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>XX<small>...</small></VAR>'</SAMP>
+<DD>the register's value
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+<DT><SAMP>`'</SAMP>
+<DD>Indicating an unrecognized <VAR>query</VAR>.
+</DL>
+<P>
+
+<DT><SAMP>`P <VAR>n<small>...</small></VAR>=<VAR>r<small>...</small></VAR>'</SAMP>
+<DD><A NAME="write register packet"></A>
+<A NAME="IDX1592"></A>
+Write register <VAR>n<small>...</small></VAR> with value <VAR>r<small>...</small></VAR>.  The register
+number <VAR>n</VAR> is in hexadecimal, and <VAR>r<small>...</small></VAR> contains two hex
+digits for each byte in the register (target byte order).
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`q <VAR>name</VAR> <VAR>params</VAR><small>...</small>'</SAMP>
+<DD><DT><SAMP>`Q <VAR>name</VAR> <VAR>params</VAR><small>...</small>'</SAMP>
+<DD><A NAME="IDX1593"></A>
+<A NAME="IDX1594"></A>
+General query (<SAMP>`q'</SAMP>) and set (<SAMP>`Q'</SAMP>).  These packets are
+described fully in <A HREF="gdb_33.html#SEC698">D.4 General Query Packets</A>.
+<P>
+
+<DT><SAMP>`r'</SAMP>
+<DD><A NAME="IDX1595"></A>
+Reset the entire system.
+<P>
+
+Don't use this packet; use the <SAMP>`R'</SAMP> packet instead.
+</P><P>
+
+<DT><SAMP>`R <VAR>XX</VAR>'</SAMP>
+<DD><A NAME="IDX1596"></A>
+Restart the program being debugged.  <VAR>XX</VAR>, while needed, is ignored.
+This packet is only available in extended mode (see  <A HREF="gdb_33.html#extended mode">extended mode</A>).
+<P>
+
+The <SAMP>`R'</SAMP> packet has no reply.
+</P><P>
+
+<DT><SAMP>`s [<VAR>addr</VAR>]'</SAMP>
+<DD><A NAME="IDX1597"></A>
+Single step.  <VAR>addr</VAR> is the address at which to resume.  If
+<VAR>addr</VAR> is omitted, resume at same address.
+<P>
+
+Reply:
+See section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>, for the reply specifications.
+</P><P>
+
+<DT><SAMP>`S <VAR>sig</VAR>[;<VAR>addr</VAR>]'</SAMP>
+<DD><A NAME="step with signal packet"></A>
+<A NAME="IDX1598"></A>
+Step with signal.  This is analogous to the <SAMP>`C'</SAMP> packet, but
+requests a single-step, rather than a normal resumption of execution.
+<P>
+
+Reply:
+See section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>, for the reply specifications.
+</P><P>
+
+<DT><SAMP>`t <VAR>addr</VAR>:<VAR>PP</VAR>,<VAR>MM</VAR>'</SAMP>
+<DD><A NAME="IDX1599"></A>
+Search backwards starting at address <VAR>addr</VAR> for a match with pattern
+<VAR>PP</VAR> and mask <VAR>MM</VAR>.  <VAR>PP</VAR> and <VAR>MM</VAR> are 4 bytes.
+<VAR>addr</VAR> must be at least 3 digits.
+<P>
+
+<DT><SAMP>`T <VAR>XX</VAR>'</SAMP>
+<DD><A NAME="IDX1600"></A>
+Find out if the thread XX is alive.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>thread is still alive
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>thread is dead
+</DL>
+<P>
+
+<DT><SAMP>`v'</SAMP>
+<DD>Packets starting with <SAMP>`v'</SAMP> are identified by a multi-letter name,
+up to the first <SAMP>`;'</SAMP> or <SAMP>`?'</SAMP> (or the end of the packet).
+<P>
+
+<DT><SAMP>`vAttach;<VAR>pid</VAR>'</SAMP>
+<DD><A NAME="IDX1601"></A>
+Attach to a new process with the specified process ID.  <VAR>pid</VAR> is a
+hexadecimal integer identifying the process.  The attached process is
+stopped.
+<P>
+
+This packet is only available in extended mode (see  <A HREF="gdb_33.html#extended mode">extended mode</A>).
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`E <VAR>nn</VAR>'</SAMP>
+<DD>for an error
+<DT><SAMP>`Any stop packet'</SAMP>
+<DD>for success (see section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>)
+</DL>
+<P>
+
+<DT><SAMP>`vCont[;<VAR>action</VAR>[:<VAR>tid</VAR>]]<small>...</small>'</SAMP>
+<DD><A NAME="IDX1602"></A>
+Resume the inferior, specifying different actions for each thread.
+If an action is specified with no <VAR>tid</VAR>, then it is applied to any
+threads that don't have a specific action specified; if no default action is
+specified then other threads should remain stopped.  Specifying multiple
+default actions is an error; specifying no actions is also an error.
+Thread IDs are specified in hexadecimal.  Currently supported actions are:
+<P>
+
+<DL COMPACT>
+<DT><SAMP>`c'</SAMP>
+<DD>Continue.
+<DT><SAMP>`C <VAR>sig</VAR>'</SAMP>
+<DD>Continue with signal <VAR>sig</VAR>.  <VAR>sig</VAR> should be two hex digits.
+<DT><SAMP>`s'</SAMP>
+<DD>Step.
+<DT><SAMP>`S <VAR>sig</VAR>'</SAMP>
+<DD>Step with signal <VAR>sig</VAR>.  <VAR>sig</VAR> should be two hex digits.
+</DL>
+<P>
+
+The optional <VAR>addr</VAR> argument normally associated with these packets is
+not supported in <SAMP>`vCont'</SAMP>.
+</P><P>
+
+Reply:
+See section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>, for the reply specifications.
+</P><P>
+
+<DT><SAMP>`vCont?'</SAMP>
+<DD><A NAME="IDX1603"></A>
+Request a list of actions supported by the <SAMP>`vCont'</SAMP> packet.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`vCont[;<VAR>action</VAR><small>...</small>]'</SAMP>
+<DD>The <SAMP>`vCont'</SAMP> packet is supported.  Each <VAR>action</VAR> is a supported
+command in the <SAMP>`vCont'</SAMP> packet.
+<DT><SAMP>`'</SAMP>
+<DD>The <SAMP>`vCont'</SAMP> packet is not supported.
+</DL>
+<P>
+
+<DT><SAMP>`vFile:<VAR>operation</VAR>:<VAR>parameter</VAR><small>...</small>'</SAMP>
+<DD><A NAME="IDX1604"></A>
+Perform a file operation on the target system.  For details,
+see <A HREF="gdb_33.html#SEC701">D.7 Host I/O Packets</A>.
+<P>
+
+<DT><SAMP>`vFlashErase:<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1605"></A>
+Direct the stub to erase <VAR>length</VAR> bytes of flash starting at
+<VAR>addr</VAR>.  The region may enclose any number of flash blocks, but
+its start and end must fall on block boundaries, as indicated by the
+flash block size appearing in the memory map (see section <A HREF="gdb_33.html#SEC737">D.12 Memory Map Format</A>).  GDB groups flash memory programming operations
+together, and sends a <SAMP>`vFlashDone'</SAMP> request after each group; the
+stub is allowed to delay erase operation until the <SAMP>`vFlashDone'</SAMP>
+packet is received.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`vFlashWrite:<VAR>addr</VAR>:<VAR>XX<small>...</small></VAR>'</SAMP>
+<DD><A NAME="IDX1606"></A>
+Direct the stub to write data to flash address <VAR>addr</VAR>.  The data
+is passed in binary form using the same encoding as for the <SAMP>`X'</SAMP>
+packet (see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>).  The memory ranges specified by
+<SAMP>`vFlashWrite'</SAMP> packets preceding a <SAMP>`vFlashDone'</SAMP> packet must
+not overlap, and must appear in order of increasing addresses
+(although <SAMP>`vFlashErase'</SAMP> packets for higher addresses may already
+have been received; the ordering is guaranteed only between
+<SAMP>`vFlashWrite'</SAMP> packets).  If a packet writes to an address that was
+neither erased by a preceding <SAMP>`vFlashErase'</SAMP> packet nor by some other
+target-specific method, the results are unpredictable.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E.memtype'</SAMP>
+<DD>for vFlashWrite addressing non-flash memory
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`vFlashDone'</SAMP>
+<DD><A NAME="IDX1607"></A>
+Indicate to the stub that flash programming operation is finished.
+The stub is permitted to delay or batch the effects of a group of
+<SAMP>`vFlashErase'</SAMP> and <SAMP>`vFlashWrite'</SAMP> packets until a
+<SAMP>`vFlashDone'</SAMP> packet is received.  The contents of the affected
+regions of flash memory are unpredictable until the <SAMP>`vFlashDone'</SAMP>
+request is completed.
+<P>
+
+<DT><SAMP>`vRun;<VAR>filename</VAR>[;<VAR>argument</VAR>]<small>...</small>'</SAMP>
+<DD><A NAME="IDX1608"></A>
+Run the program <VAR>filename</VAR>, passing it each <VAR>argument</VAR> on its
+command line.  The file and arguments are hex-encoded strings.  If
+<VAR>filename</VAR> is an empty string, the stub may use a default program
+(e.g. the last program run).  The program is created in the stopped
+state.
+<P>
+
+This packet is only available in extended mode (see  <A HREF="gdb_33.html#extended mode">extended mode</A>).
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`E <VAR>nn</VAR>'</SAMP>
+<DD>for an error
+<DT><SAMP>`Any stop packet'</SAMP>
+<DD>for success (see section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>)
+</DL>
+<P>
+
+<DT><SAMP>`X <VAR>addr</VAR>,<VAR>length</VAR>:<VAR>XX<small>...</small></VAR>'</SAMP>
+<DD><A NAME="X packet"></A>
+<A NAME="IDX1609"></A>
+Write data to memory, where the data is transmitted in binary.
+<VAR>addr</VAR> is address, <VAR>length</VAR> is number of bytes,
+<SAMP>`<VAR>XX</VAR><small>...</small>'</SAMP> is binary data (see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>).
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>for success
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`z <VAR>type</VAR>,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><DT><SAMP>`Z <VAR>type</VAR>,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="insert breakpoint or watchpoint packet"></A>
+<A NAME="IDX1610"></A>
+<A NAME="IDX1611"></A>
+Insert (<SAMP>`Z'</SAMP>) or remove (<SAMP>`z'</SAMP>) a <VAR>type</VAR> breakpoint or
+watchpoint starting at address <VAR>address</VAR> and covering the next
+<VAR>length</VAR> bytes.
+<P>
+
+Each breakpoint and watchpoint packet <VAR>type</VAR> is documented
+separately.
+</P><P>
+
+<EM>Implementation notes: A remote target shall return an empty string
+for an unrecognized breakpoint or watchpoint packet <VAR>type</VAR>.  A
+remote target shall support either both or neither of a given
+<SAMP>`Z<VAR>type</VAR><small>...</small>'</SAMP> and <SAMP>`z<VAR>type</VAR><small>...</small>'</SAMP> packet pair.  To
+avoid potential problems with duplicate packets, the operations should
+be implemented in an idempotent way.</EM>
+</P><P>
+
+<DT><SAMP>`z0,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><DT><SAMP>`Z0,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1612"></A>
+<A NAME="IDX1613"></A>
+Insert (<SAMP>`Z0'</SAMP>) or remove (<SAMP>`z0'</SAMP>) a memory breakpoint at address
+<VAR>addr</VAR> of size <VAR>length</VAR>.
+<P>
+
+A memory breakpoint is implemented by replacing the instruction at
+<VAR>addr</VAR> with a software breakpoint or trap instruction.  The
+<VAR>length</VAR> is used by targets that indicates the size of the
+breakpoint (in bytes) that should be inserted (e.g., the ARM and
+MIPS can insert either a 2 or 4 byte breakpoint).
+</P><P>
+
+<EM>Implementation note: It is possible for a target to copy or move
+code that contains memory breakpoints (e.g., when implementing
+overlays).  The behavior of this packet, in the presence of such a
+target, is not defined.</EM>
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>success
+<DT><SAMP>`'</SAMP>
+<DD>not supported
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`z1,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><DT><SAMP>`Z1,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1614"></A>
+<A NAME="IDX1615"></A>
+Insert (<SAMP>`Z1'</SAMP>) or remove (<SAMP>`z1'</SAMP>) a hardware breakpoint at
+address <VAR>addr</VAR> of size <VAR>length</VAR>.
+<P>
+
+A hardware breakpoint is implemented using a mechanism that is not
+dependant on being able to modify the target's memory.
+</P><P>
+
+<EM>Implementation note: A hardware breakpoint is not affected by code
+movement.</EM>
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>success
+<DT><SAMP>`'</SAMP>
+<DD>not supported
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`z2,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><DT><SAMP>`Z2,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1616"></A>
+<A NAME="IDX1617"></A>
+Insert (<SAMP>`Z2'</SAMP>) or remove (<SAMP>`z2'</SAMP>) a write watchpoint.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>success
+<DT><SAMP>`'</SAMP>
+<DD>not supported
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`z3,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><DT><SAMP>`Z3,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1618"></A>
+<A NAME="IDX1619"></A>
+Insert (<SAMP>`Z3'</SAMP>) or remove (<SAMP>`z3'</SAMP>) a read watchpoint.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>success
+<DT><SAMP>`'</SAMP>
+<DD>not supported
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+<DT><SAMP>`z4,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><DT><SAMP>`Z4,<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1620"></A>
+<A NAME="IDX1621"></A>
+Insert (<SAMP>`Z4'</SAMP>) or remove (<SAMP>`z4'</SAMP>) an access watchpoint.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>success
+<DT><SAMP>`'</SAMP>
+<DD>not supported
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>for an error
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="Stop Reply Packets"></A>
+<HR SIZE="6">
+<A NAME="SEC697"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC698"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC698"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.3 Stop Reply Packets </H2>
+<!--docid::SEC697::-->
+<P>
+
+The <SAMP>`C'</SAMP>, <SAMP>`c'</SAMP>, <SAMP>`S'</SAMP>, <SAMP>`s'</SAMP> and <SAMP>`?'</SAMP> packets can
+receive any of the below as a reply.  In the case of the <SAMP>`C'</SAMP>,
+<SAMP>`c'</SAMP>, <SAMP>`S'</SAMP> and <SAMP>`s'</SAMP> packets, that reply is only returned
+when the target halts.  In the below the exact meaning of <EM>signal
+number</EM> is defined by the header <TT>`include/gdb/signals.h'</TT> in the
+GDB source code.
+</P><P>
+
+As in the description of request packets, we include spaces in the
+reply templates for clarity; these are not part of the reply packet's
+syntax.  No GDB stop reply packet uses spaces to separate its
+components.
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`S <VAR>AA</VAR>'</SAMP>
+<DD>The program received signal number <VAR>AA</VAR> (a two-digit hexadecimal
+number).  This is equivalent to a <SAMP>`T'</SAMP> response with no
+<VAR>n</VAR>:<VAR>r</VAR> pairs.
+<P>
+
+<DT><SAMP>`T <VAR>AA</VAR> <VAR>n1</VAR>:<VAR>r1</VAR>;<VAR>n2</VAR>:<VAR>r2</VAR>;<small>...</small>'</SAMP>
+<DD><A NAME="IDX1622"></A>
+The program received signal number <VAR>AA</VAR> (a two-digit hexadecimal
+number).  This is equivalent to an <SAMP>`S'</SAMP> response, except that the
+<SAMP>`<VAR>n</VAR>:<VAR>r</VAR>'</SAMP> pairs can carry values of important registers
+and other information directly in the stop reply packet, reducing
+round-trip latency.  Single-step and breakpoint traps are reported
+this way.  Each <SAMP>`<VAR>n</VAR>:<VAR>r</VAR>'</SAMP> pair is interpreted as follows:
+<P>
+
+<UL>
+<LI>
+If <VAR>n</VAR> is a hexadecimal number, it is a register number, and the
+corresponding <VAR>r</VAR> gives that register's value.  <VAR>r</VAR> is a
+series of bytes in target byte order, with each byte given by a
+two-digit hex number.
+<P>
+
+<LI>
+If <VAR>n</VAR> is <SAMP>`thread'</SAMP>, then <VAR>r</VAR> is the thread process ID, in
+hex.
+<P>
+
+<LI>
+If <VAR>n</VAR> is a recognized <EM>stop reason</EM>, it describes a more
+specific event that stopped the target.  The currently defined stop
+reasons are listed below.  <VAR>aa</VAR> should be <SAMP>`05'</SAMP>, the trap
+signal.  At most one stop reason should be present.
+<P>
+
+<LI>
+Otherwise, GDB should ignore this <SAMP>`<VAR>n</VAR>:<VAR>r</VAR>'</SAMP> pair
+and go on to the next; this allows us to extend the protocol in the
+future.
+</UL>
+<P>
+
+The currently defined stop reasons are:
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`watch'</SAMP>
+<DD><DT><SAMP>`rwatch'</SAMP>
+<DD><DT><SAMP>`awatch'</SAMP>
+<DD>The packet indicates a watchpoint hit, and <VAR>r</VAR> is the data address, in
+hex.
+<P>
+
+<A NAME="IDX1623"></A>
+<DT><SAMP>`library'</SAMP>
+<DD>The packet indicates that the loaded libraries have changed.
+GDB should use <SAMP>`qXfer:libraries:read'</SAMP> to fetch a new
+list of loaded libraries.  <VAR>r</VAR> is ignored.
+</DL>
+<P>
+
+<DT><SAMP>`W <VAR>AA</VAR>'</SAMP>
+<DD>The process exited, and <VAR>AA</VAR> is the exit status.  This is only
+applicable to certain targets.
+<P>
+
+<DT><SAMP>`X <VAR>AA</VAR>'</SAMP>
+<DD>The process terminated with signal <VAR>AA</VAR>.
+<P>
+
+<DT><SAMP>`O <VAR>XX</VAR><small>...</small>'</SAMP>
+<DD><SAMP>`<VAR>XX</VAR><small>...</small>'</SAMP> is hex encoding of ASCII data, to be
+written as the program's console output.  This can happen at any time
+while the program is running and the debugger should continue to wait
+for <SAMP>`W'</SAMP>, <SAMP>`T'</SAMP>, etc.
+<P>
+
+<DT><SAMP>`F <VAR>call-id</VAR>,<VAR>parameter</VAR><small>...</small>'</SAMP>
+<DD><VAR>call-id</VAR> is the identifier which says which host system call should
+be called.  This is just the name of the function.  Translation into the
+correct system call is only applicable as it's defined in GDB.
+See section <A HREF="gdb_33.html#SEC704">D.10 File-I/O Remote Protocol Extension</A>, for a list of implemented
+system calls.
+<P>
+
+<SAMP>`<VAR>parameter</VAR><small>...</small>'</SAMP> is a list of parameters as defined for
+this very system call.
+</P><P>
+
+The target replies with this packet when it expects GDB to
+call a host system call on behalf of the target.  GDB replies
+with an appropriate <SAMP>`F'</SAMP> packet and keeps up waiting for the next
+reply packet from the target.  The latest <SAMP>`C'</SAMP>, <SAMP>`c'</SAMP>, <SAMP>`S'</SAMP>
+or <SAMP>`s'</SAMP> action is expected to be continued.  See section <A HREF="gdb_33.html#SEC704">D.10 File-I/O Remote Protocol Extension</A>, for more details.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="General Query Packets"></A>
+<HR SIZE="6">
+<A NAME="SEC698"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC697"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC699"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC699"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.4 General Query Packets </H2>
+<!--docid::SEC698::-->
+<P>
+
+Packets starting with <SAMP>`q'</SAMP> are <EM>general query packets</EM>;
+packets starting with <SAMP>`Q'</SAMP> are <EM>general set packets</EM>.  General
+query and set packets are a semi-unified form for retrieving and
+sending information to and from the stub.
+</P><P>
+
+The initial letter of a query or set packet is followed by a name
+indicating what sort of thing the packet applies to.  For example,
+GDB may use a <SAMP>`qSymbol'</SAMP> packet to exchange symbol
+definitions with the stub.  These packet names follow some
+conventions:
+</P><P>
+
+<UL>
+<LI>
+The name must not contain commas, colons or semicolons.
+<LI>
+Most GDB query and set packets have a leading upper case
+letter.
+<LI>
+The names of custom vendor packets should use a company prefix, in
+lower case, followed by a period.  For example, packets designed at
+the Acme Corporation might begin with <SAMP>`qacme.foo'</SAMP> (for querying
+foos) or <SAMP>`Qacme.bar'</SAMP> (for setting bars).
+</UL>
+<P>
+
+The name of a query or set packet should be separated from any
+parameters by a <SAMP>`:'</SAMP>; the parameters themselves should be
+separated by <SAMP>`,'</SAMP> or <SAMP>`;'</SAMP>.  Stubs must be careful to match the
+full packet name, and check for a separator or the end of the packet,
+in case two packet names share a common prefix.  New packets should not begin
+with <SAMP>`qC'</SAMP>, <SAMP>`qP'</SAMP>, or <SAMP>`qL'</SAMP><A NAME="DOCF9" HREF="gdb_fot.html#FOOT9">(9)</A>.
+</P><P>
+
+Like the descriptions of the other packets, each description here
+has a template showing the packet's overall syntax, followed by an
+explanation of the packet's meaning.  We include spaces in some of the
+templates for clarity; these are not part of the packet's syntax.  No
+GDB packet uses spaces to separate its components.
+</P><P>
+
+Here are the currently defined query and set packets:
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`qC'</SAMP>
+<DD><A NAME="IDX1624"></A>
+<A NAME="IDX1625"></A>
+Return the current thread id.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`QC <VAR>pid</VAR>'</SAMP>
+<DD>Where <VAR>pid</VAR> is an unsigned hexadecimal process id.
+<DT><SAMP>`(anything else)'</SAMP>
+<DD>Any other reply implies the old pid.
+</DL>
+<P>
+
+<DT><SAMP>`qCRC:<VAR>addr</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1626"></A>
+<A NAME="IDX1627"></A>
+Compute the CRC checksum of a block of memory.
+Reply:
+<DL COMPACT>
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>An error (such as memory fault)
+<DT><SAMP>`C <VAR>crc32</VAR>'</SAMP>
+<DD>The specified memory region's checksum is <VAR>crc32</VAR>.
+</DL>
+<P>
+
+<DT><SAMP>`qfThreadInfo'</SAMP>
+<DD><DT><SAMP>`qsThreadInfo'</SAMP>
+<DD><A NAME="IDX1628"></A>
+<A NAME="IDX1629"></A>
+<A NAME="IDX1630"></A>
+Obtain a list of all active thread ids from the target (OS).  Since there
+may be too many active threads to fit into one reply packet, this query
+works iteratively: it may require more than one query/reply sequence to
+obtain the entire list of threads.  The first query of the sequence will
+be the <SAMP>`qfThreadInfo'</SAMP> query; subsequent queries in the
+sequence will be the <SAMP>`qsThreadInfo'</SAMP> query.
+<P>
+
+NOTE: This packet replaces the <SAMP>`qL'</SAMP> query (see below).
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`m <VAR>id</VAR>'</SAMP>
+<DD>A single thread id
+<DT><SAMP>`m <VAR>id</VAR>,<VAR>id</VAR><small>...</small>'</SAMP>
+<DD>a comma-separated list of thread ids
+<DT><SAMP>`l'</SAMP>
+<DD>(lower case letter <SAMP>`L'</SAMP>) denotes end of list.
+</DL>
+<P>
+
+In response to each query, the target will reply with a list of one or
+more thread ids, in big-endian unsigned hex, separated by commas.
+GDB will respond to each reply with a request for more thread
+ids (using the <SAMP>`qs'</SAMP> form of the query), until the target responds
+with <SAMP>`l'</SAMP> (lower-case el, for <EM>last</EM>).
+</P><P>
+
+<DT><SAMP>`qGetTLSAddr:<VAR>thread-id</VAR>,<VAR>offset</VAR>,<VAR>lm</VAR>'</SAMP>
+<DD><A NAME="IDX1631"></A>
+<A NAME="IDX1632"></A>
+Fetch the address associated with thread local storage specified
+by <VAR>thread-id</VAR>, <VAR>offset</VAR>, and <VAR>lm</VAR>.
+<P>
+
+<VAR>thread-id</VAR> is the (big endian, hex encoded) thread id associated with the
+thread for which to fetch the TLS address.
+</P><P>
+
+<VAR>offset</VAR> is the (big endian, hex encoded) offset associated with the
+thread local variable.  (This offset is obtained from the debug
+information associated with the variable.)
+</P><P>
+
+<VAR>lm</VAR> is the (big endian, hex encoded) OS/ABI-specific encoding of the
+the load module associated with the thread local storage.  For example,
+a GNU/Linux system will pass the link map address of the shared
+object associated with the thread local storage under consideration. 
+Other operating environments may choose to represent the load module
+differently, so the precise meaning of this parameter will vary.
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>XX</VAR><small>...</small>'</SAMP>
+<DD>Hex encoded (big endian) bytes representing the address of the thread
+local storage requested.
+<P>
+
+<DT><SAMP>`E <VAR>nn</VAR>'</SAMP>
+<DD>An error occurred.  <VAR>nn</VAR> are hex digits.
+<P>
+
+<DT><SAMP>`'</SAMP>
+<DD>An empty reply indicates that <SAMP>`qGetTLSAddr'</SAMP> is not supported by the stub.
+</DL>
+<P>
+
+<DT><SAMP>`qL <VAR>startflag</VAR> <VAR>threadcount</VAR> <VAR>nextthread</VAR>'</SAMP>
+<DD>Obtain thread information from RTOS.  Where: <VAR>startflag</VAR> (one hex
+digit) is one to indicate the first query and zero to indicate a
+subsequent query; <VAR>threadcount</VAR> (two hex digits) is the maximum
+number of threads the response packet can contain; and <VAR>nextthread</VAR>
+(eight hex digits), for subsequent queries (<VAR>startflag</VAR> is zero), is
+returned in the response as <VAR>argthread</VAR>.
+<P>
+
+Don't use this packet; use the <SAMP>`qfThreadInfo'</SAMP> query instead (see above).
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`qM <VAR>count</VAR> <VAR>done</VAR> <VAR>argthread</VAR> <VAR>thread</VAR><small>...</small>'</SAMP>
+<DD>Where: <VAR>count</VAR> (two hex digits) is the number of threads being
+returned; <VAR>done</VAR> (one hex digit) is zero to indicate more threads
+and one indicates no further threads; <VAR>argthreadid</VAR> (eight hex
+digits) is <VAR>nextthread</VAR> from the request packet; <VAR>thread</VAR><small>...</small>
+is a sequence of thread IDs from the target.  <VAR>threadid</VAR> (eight hex
+digits).  See <CODE>remote.c:parse_threadlist_response()</CODE>.
+</DL>
+<P>
+
+<DT><SAMP>`qOffsets'</SAMP>
+<DD><A NAME="IDX1633"></A>
+<A NAME="IDX1634"></A>
+Get section offsets that the target used when relocating the downloaded
+image.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`Text=<VAR>xxx</VAR>;Data=<VAR>yyy</VAR>[;Bss=<VAR>zzz</VAR>]'</SAMP>
+<DD>Relocate the <CODE>Text</CODE> section by <VAR>xxx</VAR> from its original address.
+Relocate the <CODE>Data</CODE> section by <VAR>yyy</VAR> from its original address.
+If the object file format provides segment information (e.g. ELF
+<SAMP>`PT_LOAD'</SAMP> program headers), GDB will relocate entire
+segments by the supplied offsets.
+<P>
+
+<EM>Note: while a <CODE>Bss</CODE> offset may be included in the response,
+GDB ignores this and instead applies the <CODE>Data</CODE> offset
+to the <CODE>Bss</CODE> section.</EM>
+</P><P>
+
+<DT><SAMP>`TextSeg=<VAR>xxx</VAR>[;DataSeg=<VAR>yyy</VAR>]'</SAMP>
+<DD>Relocate the first segment of the object file, which conventionally
+contains program code, to a starting address of <VAR>xxx</VAR>.  If
+<SAMP>`DataSeg'</SAMP> is specified, relocate the second segment, which
+conventionally contains modifiable data, to a starting address of
+<VAR>yyy</VAR>.  GDB will report an error if the object file
+does not contain segment information, or does not contain at least
+as many segments as mentioned in the reply.  Extra segments are
+kept at fixed offsets relative to the last relocated segment.
+</DL>
+<P>
+
+<DT><SAMP>`qP <VAR>mode</VAR> <VAR>threadid</VAR>'</SAMP>
+<DD><A NAME="IDX1635"></A>
+<A NAME="IDX1636"></A>
+Returns information on <VAR>threadid</VAR>.  Where: <VAR>mode</VAR> is a hex
+encoded 32 bit mode; <VAR>threadid</VAR> is a hex encoded 64 bit thread ID.
+<P>
+
+Don't use this packet; use the <SAMP>`qThreadExtraInfo'</SAMP> query instead
+(see below).
+</P><P>
+
+Reply: see <CODE>remote.c:remote_unpack_thread_info_response()</CODE>.
+</P><P>
+
+<DT><SAMP>`QPassSignals: <VAR>signal</VAR> [;<VAR>signal</VAR>]<small>...</small>'</SAMP>
+<DD><A NAME="IDX1637"></A>
+<A NAME="IDX1638"></A>
+<A NAME="QPassSignals"></A>
+Each listed <VAR>signal</VAR> should be passed directly to the inferior process. 
+Signals are numbered identically to continue packets and stop replies
+(see section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>).  Each <VAR>signal</VAR> list item should be
+strictly greater than the previous item.  These signals do not need to stop
+the inferior, or be reported to GDB.  All other signals should be
+reported to GDB.  Multiple <SAMP>`QPassSignals'</SAMP> packets do not
+combine; any earlier <SAMP>`QPassSignals'</SAMP> list is completely replaced by the
+new list.  This packet improves performance when using <SAMP>`handle
+<VAR>signal</VAR> nostop noprint pass'</SAMP>.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The request succeeded.
+<P>
+
+<DT><SAMP>`E <VAR>nn</VAR>'</SAMP>
+<DD>An error occurred.  <VAR>nn</VAR> are hex digits.
+<P>
+
+<DT><SAMP>`'</SAMP>
+<DD>An empty reply indicates that <SAMP>`QPassSignals'</SAMP> is not supported by
+the stub.
+</DL>
+<P>
+
+Use of this packet is controlled by the <CODE>set remote pass-signals</CODE>
+command (see section <A HREF="gdb_18.html#SEC172">set remote pass-signals</A>).
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</P><P>
+
+<DT><SAMP>`qRcmd,<VAR>command</VAR>'</SAMP>
+<DD><A NAME="IDX1639"></A>
+<A NAME="IDX1640"></A>
+<VAR>command</VAR> (hex encoded) is passed to the local interpreter for
+execution.  Invalid commands should be reported using the output
+string.  Before the final result packet, the target may also respond
+with a number of intermediate <SAMP>`O<VAR>output</VAR>'</SAMP> console output
+packets.  <EM>Implementors should note that providing access to a
+stubs's interpreter may have security implications</EM>.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>A command response with no output.
+<DT><SAMP>`<VAR>OUTPUT</VAR>'</SAMP>
+<DD>A command response with the hex encoded output string <VAR>OUTPUT</VAR>.
+<DT><SAMP>`E <VAR>NN</VAR>'</SAMP>
+<DD>Indicate a badly formed request.
+<DT><SAMP>`'</SAMP>
+<DD>An empty reply indicates that <SAMP>`qRcmd'</SAMP> is not recognized.
+</DL>
+<P>
+
+(Note that the <CODE>qRcmd</CODE> packet's name is separated from the
+command by a <SAMP>`,'</SAMP>, not a <SAMP>`:'</SAMP>, contrary to the naming
+conventions above.  Please don't use this packet as a model for new
+packets.)
+</P><P>
+
+<DT><SAMP>`qSupported [:<VAR>gdbfeature</VAR> [;<VAR>gdbfeature</VAR>]<small>...</small> ]'</SAMP>
+<DD><A NAME="IDX1641"></A>
+<A NAME="IDX1642"></A>
+<A NAME="IDX1643"></A>
+<A NAME="qSupported"></A>
+Tell the remote stub about features supported by GDB, and
+query the stub for features it supports.  This packet allows
+GDB and the remote stub to take advantage of each others'
+features.  <SAMP>`qSupported'</SAMP> also consolidates multiple feature probes
+at startup, to improve GDB performance--a single larger
+packet performs better than multiple smaller probe packets on
+high-latency links.  Some features may enable behavior which must not
+be on by default, e.g. because it would confuse older clients or
+stubs.  Other features may describe packets which could be
+automatically probed for, but are not.  These features must be
+reported before GDB will use them.  This "default
+unsupported" behavior is not appropriate for all packets, but it
+helps to keep the initial connection time under control with new
+versions of GDB which support increasing numbers of packets.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>stubfeature</VAR> [;<VAR>stubfeature</VAR>]<small>...</small>'</SAMP>
+<DD>The stub supports or does not support each returned <VAR>stubfeature</VAR>,
+depending on the form of each <VAR>stubfeature</VAR> (see below for the
+possible forms).
+<DT><SAMP>`'</SAMP>
+<DD>An empty reply indicates that <SAMP>`qSupported'</SAMP> is not recognized,
+or that no features needed to be reported to GDB.
+</DL>
+<P>
+
+The allowed forms for each feature (either a <VAR>gdbfeature</VAR> in the
+<SAMP>`qSupported'</SAMP> packet, or a <VAR>stubfeature</VAR> in the response)
+are:
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`<VAR>name</VAR>=<VAR>value</VAR>'</SAMP>
+<DD>The remote protocol feature <VAR>name</VAR> is supported, and associated
+with the specified <VAR>value</VAR>.  The format of <VAR>value</VAR> depends
+on the feature, but it must not include a semicolon.
+<DT><SAMP>`<VAR>name</VAR>+'</SAMP>
+<DD>The remote protocol feature <VAR>name</VAR> is supported, and does not
+need an associated value.
+<DT><SAMP>`<VAR>name</VAR>-'</SAMP>
+<DD>The remote protocol feature <VAR>name</VAR> is not supported.
+<DT><SAMP>`<VAR>name</VAR>?'</SAMP>
+<DD>The remote protocol feature <VAR>name</VAR> may be supported, and
+GDB should auto-detect support in some other way when it is
+needed.  This form will not be used for <VAR>gdbfeature</VAR> notifications,
+but may be used for <VAR>stubfeature</VAR> responses.
+</DL>
+<P>
+
+Whenever the stub receives a <SAMP>`qSupported'</SAMP> request, the
+supplied set of GDB features should override any previous
+request.  This allows GDB to put the stub in a known
+state, even if the stub had previously been communicating with
+a different version of GDB.
+</P><P>
+
+No values of <VAR>gdbfeature</VAR> (for the packet sent by GDB)
+are defined yet.  Stubs should ignore any unknown values for
+<VAR>gdbfeature</VAR>.  Any GDB which sends a <SAMP>`qSupported'</SAMP>
+packet supports receiving packets of unlimited length (earlier
+versions of GDB may reject overly long responses).  Values
+for <VAR>gdbfeature</VAR> may be defined in the future to let the stub take
+advantage of new features in GDB, e.g. incompatible
+improvements in the remote protocol--support for unlimited length
+responses would be a <VAR>gdbfeature</VAR> example, if it were not implied by
+the <SAMP>`qSupported'</SAMP> query.  The stub's reply should be independent
+of the <VAR>gdbfeature</VAR> entries sent by GDB; first GDB
+describes all the features it supports, and then the stub replies with
+all the features it supports.
+</P><P>
+
+Similarly, GDB will silently ignore unrecognized stub feature
+responses, as long as each response uses one of the standard forms.
+</P><P>
+
+Some features are flags.  A stub which supports a flag feature
+should respond with a <SAMP>`+'</SAMP> form response.  Other features
+require values, and the stub should respond with an <SAMP>`='</SAMP>
+form response.
+</P><P>
+
+Each feature has a default value, which GDB will use if
+<SAMP>`qSupported'</SAMP> is not available or if the feature is not mentioned
+in the <SAMP>`qSupported'</SAMP> response.  The default values are fixed; a
+stub is free to omit any feature responses that match the defaults.
+</P><P>
+
+Not all features can be probed, but for those which can, the probing
+mechanism is useful: in some cases, a stub's internal
+architecture may not allow the protocol layer to know some information
+about the underlying target in advance.  This is especially common in
+stubs which may be configured for multiple targets.
+</P><P>
+
+These are the currently defined stub features and their properties:
+</P><P>
+
+<TABLE>
+<TR><TD>Feature Name</TD>
+</TD><TD> Value Required
+</TD><TD> Default
+</TD><TD> Probe Allowed
+
+</TR>
+<TR><TD><SAMP>`PacketSize'</SAMP></TD>
+</TD><TD> Yes
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> No
+
+</TR>
+<TR><TD><SAMP>`qXfer:auxv:read'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR>
+<TR><TD><SAMP>`qXfer:features:read'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR>
+<TR><TD><SAMP>`qXfer:libraries:read'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR>
+<TR><TD><SAMP>`qXfer:memory-map:read'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR>
+<TR><TD><SAMP>`qXfer:spu:read'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR>
+<TR><TD><SAMP>`qXfer:spu:write'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR>
+<TR><TD><SAMP>`QPassSignals'</SAMP></TD>
+</TD><TD> No
+</TD><TD> <SAMP>`-'</SAMP>
+</TD><TD> Yes
+
+</TR></TABLE>
+<P>
+
+These are the currently defined stub features, in more detail:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1644"></A>
+<DT><SAMP>`PacketSize=<VAR>bytes</VAR>'</SAMP>
+<DD>The remote stub can accept packets up to at least <VAR>bytes</VAR> in
+length.  GDB will send packets up to this size for bulk
+transfers, and will never send larger packets.  This is a limit on the
+data characters in the packet, including the frame and checksum.
+There is no trailing NUL byte in a remote protocol packet; if the stub
+stores packets in a NUL-terminated format, it should allow an extra
+byte in its buffer for the NUL.  If this stub feature is not supported,
+GDB guesses based on the size of the <SAMP>`g'</SAMP> packet response.
+<P>
+
+<DT><SAMP>`qXfer:auxv:read'</SAMP>
+<DD>The remote stub understands the <SAMP>`qXfer:auxv:read'</SAMP> packet
+(see  <A HREF="gdb_33.html#qXfer auxiliary vector read">qXfer auxiliary vector read</A>).
+<P>
+
+<DT><SAMP>`qXfer:features:read'</SAMP>
+<DD>The remote stub understands the <SAMP>`qXfer:features:read'</SAMP> packet
+(see  <A HREF="gdb_33.html#qXfer target description read">qXfer target description read</A>).
+<P>
+
+<DT><SAMP>`qXfer:libraries:read'</SAMP>
+<DD>The remote stub understands the <SAMP>`qXfer:libraries:read'</SAMP> packet
+(see  <A HREF="gdb_33.html#qXfer library list read">qXfer library list read</A>).
+<P>
+
+<DT><SAMP>`qXfer:memory-map:read'</SAMP>
+<DD>The remote stub understands the <SAMP>`qXfer:memory-map:read'</SAMP> packet
+(see  <A HREF="gdb_33.html#qXfer memory map read">qXfer memory map read</A>).
+<P>
+
+<DT><SAMP>`qXfer:spu:read'</SAMP>
+<DD>The remote stub understands the <SAMP>`qXfer:spu:read'</SAMP> packet
+(see  <A HREF="gdb_33.html#qXfer spu read">qXfer spu read</A>).
+<P>
+
+<DT><SAMP>`qXfer:spu:write'</SAMP>
+<DD>The remote stub understands the <SAMP>`qXfer:spu:write'</SAMP> packet
+(see  <A HREF="gdb_33.html#qXfer spu write">qXfer spu write</A>).
+<P>
+
+<DT><SAMP>`QPassSignals'</SAMP>
+<DD>The remote stub understands the <SAMP>`QPassSignals'</SAMP> packet
+(see  <A HREF="gdb_33.html#QPassSignals">QPassSignals</A>).
+<P>
+
+</DL>
+<P>
+
+<DT><SAMP>`qSymbol::'</SAMP>
+<DD><A NAME="IDX1645"></A>
+<A NAME="IDX1646"></A>
+Notify the target that GDB is prepared to serve symbol lookup
+requests.  Accept requests from the target for the values of symbols.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The target does not need to look up any (more) symbols.
+<DT><SAMP>`qSymbol:<VAR>sym_name</VAR>'</SAMP>
+<DD>The target requests the value of symbol <VAR>sym_name</VAR> (hex encoded).
+GDB may provide the value by using the
+<SAMP>`qSymbol:<VAR>sym_value</VAR>:<VAR>sym_name</VAR>'</SAMP> message, described
+below.
+</DL>
+<P>
+
+<DT><SAMP>`qSymbol:<VAR>sym_value</VAR>:<VAR>sym_name</VAR>'</SAMP>
+<DD>Set the value of <VAR>sym_name</VAR> to <VAR>sym_value</VAR>.
+<P>
+
+<VAR>sym_name</VAR> (hex encoded) is the name of a symbol whose value the
+target has previously requested.
+</P><P>
+
+<VAR>sym_value</VAR> (hex) is the value for symbol <VAR>sym_name</VAR>.  If
+GDB cannot supply a value for <VAR>sym_name</VAR>, then this field
+will be empty.
+</P><P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The target does not need to look up any (more) symbols.
+<DT><SAMP>`qSymbol:<VAR>sym_name</VAR>'</SAMP>
+<DD>The target requests the value of a new symbol <VAR>sym_name</VAR> (hex
+encoded).  GDB will continue to supply the values of symbols
+(if available), until the target ceases to request them.
+</DL>
+<P>
+
+<DT><SAMP>`QTDP'</SAMP>
+<DD><DT><SAMP>`QTFrame'</SAMP>
+<DD>See section <A HREF="gdb_33.html#SEC700">D.6 Tracepoint Packets</A>.
+<P>
+
+<DT><SAMP>`qThreadExtraInfo,<VAR>id</VAR>'</SAMP>
+<DD><A NAME="IDX1647"></A>
+<A NAME="IDX1648"></A>
+Obtain a printable string description of a thread's attributes from
+the target OS.  <VAR>id</VAR> is a thread-id in big-endian hex.  This
+string may contain anything that the target OS thinks is interesting
+for GDB to tell the user about the thread.  The string is
+displayed in GDB's <CODE>info threads</CODE> display.  Some
+examples of possible thread extra info strings are <SAMP>`Runnable'</SAMP>, or
+<SAMP>`Blocked on Mutex'</SAMP>.
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>XX</VAR><small>...</small>'</SAMP>
+<DD>Where <SAMP>`<VAR>XX</VAR><small>...</small>'</SAMP> is a hex encoding of ASCII data,
+comprising the printable string containing the extra information about
+the thread's attributes.
+</DL>
+<P>
+
+(Note that the <CODE>qThreadExtraInfo</CODE> packet's name is separated from
+the command by a <SAMP>`,'</SAMP>, not a <SAMP>`:'</SAMP>, contrary to the naming
+conventions above.  Please don't use this packet as a model for new
+packets.)
+</P><P>
+
+<DT><SAMP>`QTStart'</SAMP>
+<DD><DT><SAMP>`QTStop'</SAMP>
+<DD><DT><SAMP>`QTinit'</SAMP>
+<DD><DT><SAMP>`QTro'</SAMP>
+<DD><DT><SAMP>`qTStatus'</SAMP>
+<DD>See section <A HREF="gdb_33.html#SEC700">D.6 Tracepoint Packets</A>.
+<P>
+
+<DT><SAMP>`qXfer:<VAR>object</VAR>:read:<VAR>annex</VAR>:<VAR>offset</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="IDX1649"></A>
+<A NAME="IDX1650"></A>
+<A NAME="qXfer read"></A>
+Read uninterpreted bytes from the target's special data area
+identified by the keyword <VAR>object</VAR>.  Request <VAR>length</VAR> bytes
+starting at <VAR>offset</VAR> bytes into the data.  The content and
+encoding of <VAR>annex</VAR> is specific to <VAR>object</VAR>; it can supply
+additional details about what data to access.
+<P>
+
+Here are the specific requests of this form defined so far.  All
+<SAMP>`qXfer:<VAR>object</VAR>:read:<small>...</small>'</SAMP> requests use the same reply
+formats, listed below.
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`qXfer:auxv:read::<VAR>offset</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="qXfer auxiliary vector read"></A>
+Access the target's <EM>auxiliary vector</EM>.  See section <A HREF="gdb_9.html#SEC72">auxiliary vector</A>.  Note <VAR>annex</VAR> must be empty.
+<P>
+
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</P><P>
+
+<DT><SAMP>`qXfer:features:read:<VAR>annex</VAR>:<VAR>offset</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="qXfer target description read"></A>
+Access the <EM>target description</EM>.  See section <A HREF="gdb_35.html#SEC745">F. Target Descriptions</A>.  The
+annex specifies which XML document to access.  The main description is
+always loaded from the <SAMP>`target.xml'</SAMP> annex.
+<P>
+
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</P><P>
+
+<DT><SAMP>`qXfer:libraries:read:<VAR>annex</VAR>:<VAR>offset</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="qXfer library list read"></A>
+Access the target's list of loaded libraries.  See section <A HREF="gdb_33.html#SEC736">D.11 Library List Format</A>.
+The annex part of the generic <SAMP>`qXfer'</SAMP> packet must be empty
+(see  <A HREF="gdb_33.html#qXfer read">qXfer read</A>).
+<P>
+
+Targets which maintain a list of libraries in the program's memory do
+not need to implement this packet; it is designed for platforms where
+the operating system manages the list of loaded libraries.
+</P><P>
+
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</P><P>
+
+<DT><SAMP>`qXfer:memory-map:read::<VAR>offset</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="qXfer memory map read"></A>
+Access the target's <EM>memory-map</EM>.  See section <A HREF="gdb_33.html#SEC737">D.12 Memory Map Format</A>.  The
+annex part of the generic <SAMP>`qXfer'</SAMP> packet must be empty
+(see  <A HREF="gdb_33.html#qXfer read">qXfer read</A>).
+<P>
+
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</P><P>
+
+<DT><SAMP>`qXfer:spu:read:<VAR>annex</VAR>:<VAR>offset</VAR>,<VAR>length</VAR>'</SAMP>
+<DD><A NAME="qXfer spu read"></A>
+Read contents of an <CODE>spufs</CODE> file on the target system.  The
+annex specifies which file to read; it must be of the form 
+<TT>`<VAR>id</VAR>/<VAR>name</VAR>'</TT>, where <VAR>id</VAR> specifies an SPU context ID
+in the target process, and <VAR>name</VAR> identifes the <CODE>spufs</CODE> file
+in that context to be accessed.
+<P>
+
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</DL>
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`m <VAR>data</VAR>'</SAMP>
+<DD>Data <VAR>data</VAR> (see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>) has been read from the
+target.  There may be more data at a higher address (although
+it is permitted to return <SAMP>`m'</SAMP> even for the last valid
+block of data, as long as at least one byte of data was read).
+<VAR>data</VAR> may have fewer bytes than the <VAR>length</VAR> in the
+request.
+<P>
+
+<DT><SAMP>`l <VAR>data</VAR>'</SAMP>
+<DD>Data <VAR>data</VAR> (see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>) has been read from the target.
+There is no more data to be read.  <VAR>data</VAR> may have fewer bytes
+than the <VAR>length</VAR> in the request.
+<P>
+
+<DT><SAMP>`l'</SAMP>
+<DD>The <VAR>offset</VAR> in the request is at the end of the data.
+There is no more data to be read.
+<P>
+
+<DT><SAMP>`E00'</SAMP>
+<DD>The request was malformed, or <VAR>annex</VAR> was invalid.
+<P>
+
+<DT><SAMP>`E <VAR>nn</VAR>'</SAMP>
+<DD>The offset was invalid, or there was an error encountered reading the data.
+<VAR>nn</VAR> is a hex-encoded <CODE>errno</CODE> value.
+<P>
+
+<DT><SAMP>`'</SAMP>
+<DD>An empty reply indicates the <VAR>object</VAR> string was not recognized by
+the stub, or that the object does not support reading.
+</DL>
+<P>
+
+<DT><SAMP>`qXfer:<VAR>object</VAR>:write:<VAR>annex</VAR>:<VAR>offset</VAR>:<VAR>data</VAR><small>...</small>'</SAMP>
+<DD><A NAME="IDX1651"></A>
+Write uninterpreted bytes into the target's special data area
+identified by the keyword <VAR>object</VAR>, starting at <VAR>offset</VAR> bytes
+into the data.  <VAR>data</VAR><small>...</small> is the binary-encoded data
+(see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>) to be written.  The content and encoding of <VAR>annex</VAR>
+is specific to <VAR>object</VAR>; it can supply additional details about what data
+to access.
+<P>
+
+Here are the specific requests of this form defined so far.  All
+<SAMP>`qXfer:<VAR>object</VAR>:write:<small>...</small>'</SAMP> requests use the same reply
+formats, listed below.
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`qXfer:<VAR>spu</VAR>:write:<VAR>annex</VAR>:<VAR>offset</VAR>:<VAR>data</VAR><small>...</small>'</SAMP>
+<DD><A NAME="qXfer spu write"></A>
+Write <VAR>data</VAR> to an <CODE>spufs</CODE> file on the target system.  The
+annex specifies which file to write; it must be of the form
+<TT>`<VAR>id</VAR>/<VAR>name</VAR>'</TT>, where <VAR>id</VAR> specifies an SPU context ID
+in the target process, and <VAR>name</VAR> identifes the <CODE>spufs</CODE> file
+in that context to be accessed.
+<P>
+
+This packet is not probed by default; the remote stub must request it,
+by supplying an appropriate <SAMP>`qSupported'</SAMP> response (see  <A HREF="gdb_33.html#qSupported">qSupported</A>).
+</DL>
+<P>
+
+Reply:
+<DL COMPACT>
+<DT><SAMP>`<VAR>nn</VAR>'</SAMP>
+<DD><VAR>nn</VAR> (hex encoded) is the number of bytes written.
+This may be fewer bytes than supplied in the request.
+<P>
+
+<DT><SAMP>`E00'</SAMP>
+<DD>The request was malformed, or <VAR>annex</VAR> was invalid.
+<P>
+
+<DT><SAMP>`E <VAR>nn</VAR>'</SAMP>
+<DD>The offset was invalid, or there was an error encountered writing the data.
+<VAR>nn</VAR> is a hex-encoded <CODE>errno</CODE> value.
+<P>
+
+<DT><SAMP>`'</SAMP>
+<DD>An empty reply indicates the <VAR>object</VAR> string was not
+recognized by the stub, or that the object does not support writing.
+</DL>
+<P>
+
+<DT><SAMP>`qXfer:<VAR>object</VAR>:<VAR>operation</VAR>:<small>...</small>'</SAMP>
+<DD>Requests of this form may be added in the future.  When a stub does
+not recognize the <VAR>object</VAR> keyword, or its support for
+<VAR>object</VAR> does not recognize the <VAR>operation</VAR> keyword, the stub
+must respond with an empty packet.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Register Packet Format"></A>
+<HR SIZE="6">
+<A NAME="SEC699"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC698"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC700"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC700"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.5 Register Packet Format </H2>
+<!--docid::SEC699::-->
+<P>
+
+The following <CODE>g</CODE>/<CODE>G</CODE> packets have previously been defined.
+In the below, some thirty-two bit registers are transferred as
+sixty-four bits.  Those registers should be zero/sign extended (which?)
+to fill the space allocated.  Register bytes are transferred in target
+byte order.  The two nibbles within a register byte are transferred
+most-significant - least-significant.
+</P><P>
+
+<DL COMPACT>
+
+<DT>MIPS32
+<DD><P>
+
+All registers are transferred as thirty-two bit quantities in the order:
+32 general-purpose; sr; lo; hi; bad; cause; pc; 32 floating-point
+registers; fsr; fir; fp.
+</P><P>
+
+<DT>MIPS64
+<DD><P>
+
+All registers are transferred as sixty-four bit quantities (including
+thirty-two bit registers such as <CODE>sr</CODE>).  The ordering is the same
+as <CODE>MIPS32</CODE>.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="Tracepoint Packets"></A>
+<HR SIZE="6">
+<A NAME="SEC700"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC699"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC701"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC701"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.6 Tracepoint Packets </H2>
+<!--docid::SEC700::-->
+<P>
+
+Here we describe the packets GDB uses to implement
+tracepoints (see section <A HREF="gdb_11.html#SEC84">10. Tracepoints</A>).
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`QTDP:<VAR>n</VAR>:<VAR>addr</VAR>:<VAR>ena</VAR>:<VAR>step</VAR>:<VAR>pass</VAR>[-]'</SAMP>
+<DD>Create a new tracepoint, number <VAR>n</VAR>, at <VAR>addr</VAR>.  If <VAR>ena</VAR>
+is <SAMP>`E'</SAMP>, then the tracepoint is enabled; if it is <SAMP>`D'</SAMP>, then
+the tracepoint is disabled.  <VAR>step</VAR> is the tracepoint's step
+count, and <VAR>pass</VAR> is its pass count.  If the trailing <SAMP>`-'</SAMP> is
+present, further <SAMP>`QTDP'</SAMP> packets will follow to specify this
+tracepoint's actions.
+<P>
+
+Replies:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The packet was understood and carried out.
+<DT><SAMP>`'</SAMP>
+<DD>The packet was not recognized.
+</DL>
+<P>
+
+<DT><SAMP>`QTDP:-<VAR>n</VAR>:<VAR>addr</VAR>:[S]<VAR>action</VAR><small>...</small>[-]'</SAMP>
+<DD>Define actions to be taken when a tracepoint is hit.  <VAR>n</VAR> and
+<VAR>addr</VAR> must be the same as in the initial <SAMP>`QTDP'</SAMP> packet for
+this tracepoint.  This packet may only be sent immediately after
+another <SAMP>`QTDP'</SAMP> packet that ended with a <SAMP>`-'</SAMP>.  If the
+trailing <SAMP>`-'</SAMP> is present, further <SAMP>`QTDP'</SAMP> packets will follow,
+specifying more actions for this tracepoint.
+<P>
+
+In the series of action packets for a given tracepoint, at most one
+can have an <SAMP>`S'</SAMP> before its first <VAR>action</VAR>.  If such a packet
+is sent, it and the following packets define "while-stepping"
+actions.  Any prior packets define ordinary actions -- that is, those
+taken when the tracepoint is first hit.  If no action packet has an
+<SAMP>`S'</SAMP>, then all the packets in the series specify ordinary
+tracepoint actions.
+</P><P>
+
+The <SAMP>`<VAR>action</VAR><small>...</small>'</SAMP> portion of the packet is a series of
+actions, concatenated without separators.  Each action has one of the
+following forms:
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`R <VAR>mask</VAR>'</SAMP>
+<DD>Collect the registers whose bits are set in <VAR>mask</VAR>.  <VAR>mask</VAR> is
+a hexadecimal number whose <VAR>i</VAR>'th bit is set if register number
+<VAR>i</VAR> should be collected.  (The least significant bit is numbered
+zero.)  Note that <VAR>mask</VAR> may be any number of digits long; it may
+not fit in a 32-bit word.
+<P>
+
+<DT><SAMP>`M <VAR>basereg</VAR>,<VAR>offset</VAR>,<VAR>len</VAR>'</SAMP>
+<DD>Collect <VAR>len</VAR> bytes of memory starting at the address in register
+number <VAR>basereg</VAR>, plus <VAR>offset</VAR>.  If <VAR>basereg</VAR> is
+<SAMP>`-1'</SAMP>, then the range has a fixed address: <VAR>offset</VAR> is the
+address of the lowest byte to collect.  The <VAR>basereg</VAR>,
+<VAR>offset</VAR>, and <VAR>len</VAR> parameters are all unsigned hexadecimal
+values (the <SAMP>`-1'</SAMP> value for <VAR>basereg</VAR> is a special case).
+<P>
+
+<DT><SAMP>`X <VAR>len</VAR>,<VAR>expr</VAR>'</SAMP>
+<DD>Evaluate <VAR>expr</VAR>, whose length is <VAR>len</VAR>, and collect memory as
+it directs.  <VAR>expr</VAR> is an agent expression, as described in
+<A HREF="gdb_34.html#SEC738">E. The GDB Agent Expression Mechanism</A>.  Each byte of the expression is encoded as a
+two-digit hex number in the packet; <VAR>len</VAR> is the number of bytes
+in the expression (and thus one-half the number of hex digits in the
+packet).
+<P>
+
+</DL>
+<P>
+
+Any number of actions may be packed together in a single <SAMP>`QTDP'</SAMP>
+packet, as long as the packet does not exceed the maximum packet
+length (400 bytes, for many stubs).  There may be only one <SAMP>`R'</SAMP>
+action per tracepoint, and it must precede any <SAMP>`M'</SAMP> or <SAMP>`X'</SAMP>
+actions.  Any registers referred to by <SAMP>`M'</SAMP> and <SAMP>`X'</SAMP> actions
+must be collected by a preceding <SAMP>`R'</SAMP> action.  (The
+"while-stepping" actions are treated as if they were attached to a
+separate tracepoint, as far as these restrictions are concerned.)
+</P><P>
+
+Replies:
+<DL COMPACT>
+<DT><SAMP>`OK'</SAMP>
+<DD>The packet was understood and carried out.
+<DT><SAMP>`'</SAMP>
+<DD>The packet was not recognized.
+</DL>
+<P>
+
+<DT><SAMP>`QTFrame:<VAR>n</VAR>'</SAMP>
+<DD>Select the <VAR>n</VAR>'th tracepoint frame from the buffer, and use the
+register and memory contents recorded there to answer subsequent
+request packets from GDB.
+<P>
+
+A successful reply from the stub indicates that the stub has found the
+requested frame.  The response is a series of parts, concatenated
+without separators, describing the frame we selected.  Each part has
+one of the following forms:
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`F <VAR>f</VAR>'</SAMP>
+<DD>The selected frame is number <VAR>n</VAR> in the trace frame buffer;
+<VAR>f</VAR> is a hexadecimal number.  If <VAR>f</VAR> is <SAMP>`-1'</SAMP>, then there
+was no frame matching the criteria in the request packet.
+<P>
+
+<DT><SAMP>`T <VAR>t</VAR>'</SAMP>
+<DD>The selected trace frame records a hit of tracepoint number <VAR>t</VAR>;
+<VAR>t</VAR> is a hexadecimal number.
+<P>
+
+</DL>
+<P>
+
+<DT><SAMP>`QTFrame:pc:<VAR>addr</VAR>'</SAMP>
+<DD>Like <SAMP>`QTFrame:<VAR>n</VAR>'</SAMP>, but select the first tracepoint frame after the
+currently selected frame whose PC is <VAR>addr</VAR>;
+<VAR>addr</VAR> is a hexadecimal number.
+<P>
+
+<DT><SAMP>`QTFrame:tdp:<VAR>t</VAR>'</SAMP>
+<DD>Like <SAMP>`QTFrame:<VAR>n</VAR>'</SAMP>, but select the first tracepoint frame after the
+currently selected frame that is a hit of tracepoint <VAR>t</VAR>; <VAR>t</VAR>
+is a hexadecimal number.
+<P>
+
+<DT><SAMP>`QTFrame:range:<VAR>start</VAR>:<VAR>end</VAR>'</SAMP>
+<DD>Like <SAMP>`QTFrame:<VAR>n</VAR>'</SAMP>, but select the first tracepoint frame after the
+currently selected frame whose PC is between <VAR>start</VAR> (inclusive)
+and <VAR>end</VAR> (exclusive); <VAR>start</VAR> and <VAR>end</VAR> are hexadecimal
+numbers.
+<P>
+
+<DT><SAMP>`QTFrame:outside:<VAR>start</VAR>:<VAR>end</VAR>'</SAMP>
+<DD>Like <SAMP>`QTFrame:range:<VAR>start</VAR>:<VAR>end</VAR>'</SAMP>, but select the first
+frame <EM>outside</EM> the given range of addresses.
+<P>
+
+<DT><SAMP>`QTStart'</SAMP>
+<DD>Begin the tracepoint experiment.  Begin collecting data from tracepoint
+hits in the trace frame buffer.
+<P>
+
+<DT><SAMP>`QTStop'</SAMP>
+<DD>End the tracepoint experiment.  Stop collecting trace frames.
+<P>
+
+<DT><SAMP>`QTinit'</SAMP>
+<DD>Clear the table of tracepoints, and empty the trace frame buffer.
+<P>
+
+<DT><SAMP>`QTro:<VAR>start1</VAR>,<VAR>end1</VAR>:<VAR>start2</VAR>,<VAR>end2</VAR>:<small>...</small>'</SAMP>
+<DD>Establish the given ranges of memory as "transparent".  The stub
+will answer requests for these ranges from memory's current contents,
+if they were not collected as part of the tracepoint hit.
+<P>
+
+GDB uses this to mark read-only regions of memory, like those
+containing program code.  Since these areas never change, they should
+still have the same contents they did when the tracepoint was hit, so
+there's no reason for the stub to refuse to provide their contents.
+</P><P>
+
+<DT><SAMP>`qTStatus'</SAMP>
+<DD>Ask the stub if there is a trace experiment running right now.
+<P>
+
+Replies:
+<DL COMPACT>
+<DT><SAMP>`T0'</SAMP>
+<DD>There is no trace experiment running.
+<DT><SAMP>`T1'</SAMP>
+<DD>There is a trace experiment running.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="Host I/O Packets"></A>
+<HR SIZE="6">
+<A NAME="SEC701"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC700"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC702"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC702"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.7 Host I/O Packets </H2>
+<!--docid::SEC701::-->
+<P>
+
+The <EM>Host I/O</EM> packets allow GDB to perform I/O
+operations on the far side of a remote link.  For example, Host I/O is
+used to upload and download files to a remote target with its own
+filesystem.  Host I/O uses the same constant values and data structure
+layout as the target-initiated File-I/O protocol.  However, the
+Host I/O packets are structured differently.  The target-initiated
+protocol relies on target memory to store parameters and buffers.
+Host I/O requests are initiated by GDB, and the
+target's memory is not involved.  See section <A HREF="gdb_33.html#SEC704">D.10 File-I/O Remote Protocol Extension</A>, for more details on the target-initiated protocol.
+</P><P>
+
+The Host I/O request packets all encode a single operation along with
+its arguments.  They have this format:
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`vFile:<VAR>operation</VAR>: <VAR>parameter</VAR><small>...</small>'</SAMP>
+<DD><VAR>operation</VAR> is the name of the particular request; the target
+should compare the entire packet name up to the second colon when checking
+for a supported operation.  The format of <VAR>parameter</VAR> depends on
+the operation.  Numbers are always passed in hexadecimal.  Negative
+numbers have an explicit minus sign (i.e. two's complement is not
+used).  Strings (e.g. filenames) are encoded as a series of
+hexadecimal bytes.  The last argument to a system call may be a
+buffer of escaped binary data (see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>).
+<P>
+
+</DL>
+<P>
+
+The valid responses to Host I/O packets are:
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`F <VAR>result</VAR> [, <VAR>errno</VAR>] [; <VAR>attachment</VAR>]'</SAMP>
+<DD><VAR>result</VAR> is the integer value returned by this operation, usually
+non-negative for success and -1 for errors.  If an error has occured,
+<VAR>errno</VAR> will be included in the result.  <VAR>errno</VAR> will have a
+value defined by the File-I/O protocol (see section <A HREF="gdb_33.html#SEC732">Errno Values</A>).  For
+operations which return data, <VAR>attachment</VAR> supplies the data as a
+binary buffer.  Binary buffers in response packets are escaped in the
+normal way (see  <A HREF="gdb_33.html#Binary Data">Binary Data</A>).  See the individual packet
+documentation for the interpretation of <VAR>result</VAR> and
+<VAR>attachment</VAR>.
+<P>
+
+<DT><SAMP>`'</SAMP>
+<DD>An empty response indicates that this operation is not recognized.
+<P>
+
+</DL>
+<P>
+
+These are the supported Host I/O operations:
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`vFile:open: <VAR>pathname</VAR>, <VAR>flags</VAR>, <VAR>mode</VAR>'</SAMP>
+<DD>Open a file at <VAR>pathname</VAR> and return a file descriptor for it, or
+return -1 if an error occurs.  <VAR>pathname</VAR> is a string,
+<VAR>flags</VAR> is an integer indicating a mask of open flags
+(see section <A HREF="gdb_33.html#SEC730">Open Flags</A>), and <VAR>mode</VAR> is an integer indicating a mask
+of mode bits to use if the file is created (see section <A HREF="gdb_33.html#SEC731">mode_t Values</A>).
+See section <A HREF="gdb_33.html#SEC712">open</A>, for details of the open flags and mode values.
+<P>
+
+<DT><SAMP>`vFile:close: <VAR>fd</VAR>'</SAMP>
+<DD>Close the open file corresponding to <VAR>fd</VAR> and return 0, or
+-1 if an error occurs.
+<P>
+
+<DT><SAMP>`vFile:pread: <VAR>fd</VAR>, <VAR>count</VAR>, <VAR>offset</VAR>'</SAMP>
+<DD>Read data from the open file corresponding to <VAR>fd</VAR>.  Up to
+<VAR>count</VAR> bytes will be read from the file, starting at <VAR>offset</VAR>
+relative to the start of the file.  The target may read fewer bytes;
+common reasons include packet size limits and an end-of-file
+condition.  The number of bytes read is returned.  Zero should only be
+returned for a successful read at the end of the file, or if
+<VAR>count</VAR> was zero.
+<P>
+
+The data read should be returned as a binary attachment on success.
+If zero bytes were read, the response should include an empty binary
+attachment (i.e. a trailing semicolon).  The return value is the
+number of target bytes read; the binary attachment may be longer if
+some characters were escaped.
+</P><P>
+
+<DT><SAMP>`vFile:pwrite: <VAR>fd</VAR>, <VAR>offset</VAR>, <VAR>data</VAR>'</SAMP>
+<DD>Write <VAR>data</VAR> (a binary buffer) to the open file corresponding
+to <VAR>fd</VAR>.  Start the write at <VAR>offset</VAR> from the start of the
+file.  Unlike many <CODE>write</CODE> system calls, there is no
+separate <VAR>count</VAR> argument; the length of <VAR>data</VAR> in the
+packet is used.  <SAMP>`vFile:write'</SAMP> returns the number of bytes written,
+which may be shorter than the length of <VAR>data</VAR>, or -1 if an
+error occurred.
+<P>
+
+<DT><SAMP>`vFile:unlink: <VAR>pathname</VAR>'</SAMP>
+<DD>Delete the file at <VAR>pathname</VAR> on the target.  Return 0,
+or -1 if an error occurs.  <VAR>pathname</VAR> is a string.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Interrupts"></A>
+<HR SIZE="6">
+<A NAME="SEC702"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC701"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC703"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC703"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.8 Interrupts </H2>
+<!--docid::SEC702::-->
+<P>
+
+When a program on the remote target is running, GDB may
+attempt to interrupt it by sending a <SAMP>`Ctrl-C'</SAMP> or a <CODE>BREAK</CODE>,
+control of which is specified via GDB's <SAMP>`remotebreak'</SAMP>
+setting (see  <A HREF="gdb_18.html#set remotebreak">set remotebreak</A>).
+</P><P>
+
+The precise meaning of <CODE>BREAK</CODE> is defined by the transport
+mechanism and may, in fact, be undefined.  GDB does
+not currently define a <CODE>BREAK</CODE> mechanism for any of the network
+interfaces.
+</P><P>
+
+<SAMP>`Ctrl-C'</SAMP>, on the other hand, is defined and implemented for all
+transport mechanisms.  It is represented by sending the single byte
+<CODE>0x03</CODE> without any of the usual packet overhead described in
+the Overview section (see section <A HREF="gdb_33.html#SEC695">D.1 Overview</A>).  When a <CODE>0x03</CODE> byte is
+transmitted as part of a packet, it is considered to be packet data
+and does <EM>not</EM> represent an interrupt.  E.g., an <SAMP>`X'</SAMP> packet
+(see  <A HREF="gdb_33.html#X packet">X packet</A>), used for binary downloads, may include an unescaped
+<CODE>0x03</CODE> as part of its packet.
+</P><P>
+
+Stubs are not required to recognize these interrupt mechanisms and the
+precise meaning associated with receipt of the interrupt is
+implementation defined.  If the stub is successful at interrupting the
+running program, it is expected that it will send one of the Stop
+Reply Packets (see section <A HREF="gdb_33.html#SEC697">D.3 Stop Reply Packets</A>) to GDB as a result
+of successfully stopping the program.  Interrupts received while the
+program is stopped will be discarded.
+</P><P>
+
+<A NAME="Examples"></A>
+<HR SIZE="6">
+<A NAME="SEC703"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC702"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.9 Examples </H2>
+<!--docid::SEC703::-->
+<P>
+
+Example sequence of a target being re-started.  Notice how the restart
+does not get any direct output:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>-&#62; <CODE>R00</CODE>
+&#60;- <CODE>+</CODE>
+<EM>target restarts</EM>
+-&#62; <CODE>?</CODE>
+&#60;- <CODE>+</CODE>
+&#60;- <CODE>T001:1234123412341234</CODE>
+-&#62; <CODE>+</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+Example sequence of a target being stepped by a single instruction:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>-&#62; <CODE>G1445<small>...</small></CODE>
+&#60;- <CODE>+</CODE>
+-&#62; <CODE>s</CODE>
+&#60;- <CODE>+</CODE>
+<EM>time passes</EM>
+&#60;- <CODE>T001:1234123412341234</CODE>
+-&#62; <CODE>+</CODE>
+-&#62; <CODE>g</CODE>
+&#60;- <CODE>+</CODE>
+&#60;- <CODE>1455<small>...</small></CODE>
+-&#62; <CODE>+</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="File-I/O Remote Protocol Extension"></A>
+<HR SIZE="6">
+<A NAME="SEC704"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC703"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC705"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.10 File-I/O Remote Protocol Extension </H2>
+<!--docid::SEC704::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC705">D.10.1 File-I/O Overview</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC706">D.10.2 Protocol Basics</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC707">D.10.3 The <CODE>F</CODE> Request Packet</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC708">D.10.4 The <CODE>F</CODE> Reply Packet</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC709">D.10.5 The <SAMP>`Ctrl-C'</SAMP> Message</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC710">D.10.6 Console I/O</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC711">D.10.7 List of Supported Calls</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC723">D.10.8 Protocol-specific Representation of Datatypes</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC729">D.10.9 Constants</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC735">D.10.10 File-I/O Examples</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="File-I/O Overview"></A>
+<HR SIZE="6">
+<A NAME="SEC705"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC706"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.1 File-I/O Overview </H3>
+<!--docid::SEC705::-->
+<P>
+
+The <EM>File I/O remote protocol extension</EM> (short: File-I/O) allows the
+target to use the host's file system and console I/O to perform various
+system calls.  System calls on the target system are translated into a
+remote protocol packet to the host system, which then performs the needed
+actions and returns a response packet to the target system.
+This simulates file system operations even on targets that lack file systems.
+</P><P>
+
+The protocol is defined to be independent of both the host and target systems.
+It uses its own internal representation of datatypes and values.  Both
+GDB and the target's GDB stub are responsible for
+translating the system-dependent value representations into the internal
+protocol representations when data is transmitted.
+</P><P>
+
+The communication is synchronous.  A system call is possible only when 
+GDB is waiting for a response from the <SAMP>`C'</SAMP>, <SAMP>`c'</SAMP>, <SAMP>`S'</SAMP> 
+or <SAMP>`s'</SAMP> packets.  While GDB handles the request for a system call,
+the target is stopped to allow deterministic access to the target's
+memory.  Therefore File-I/O is not interruptible by target signals.  On
+the other hand, it is possible to interrupt File-I/O by a user interrupt 
+(<SAMP>`Ctrl-C'</SAMP>) within GDB.
+</P><P>
+
+The target's request to perform a host system call does not finish
+the latest <SAMP>`C'</SAMP>, <SAMP>`c'</SAMP>, <SAMP>`S'</SAMP> or <SAMP>`s'</SAMP> action.  That means,
+after finishing the system call, the target returns to continuing the
+previous activity (continue, step).  No additional continue or step
+request from GDB is required.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) continue
+  &#60;- target requests 'system call X'
+  target is stopped, GDB executes system call
+  -&#62; GDB returns result
+  ... target continues, GDB returns to wait for the target
+  &#60;- target hits breakpoint and sends a Txx packet
+</FONT></pre></td></tr></table></P><P>
+
+The protocol only supports I/O on the console and to regular files on 
+the host file system.  Character or block special devices, pipes,
+named pipes, sockets or any other communication method on the host
+system are not supported by this protocol.
+</P><P>
+
+<A NAME="Protocol Basics"></A>
+<HR SIZE="6">
+<A NAME="SEC706"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC705"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC707"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC707"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.2 Protocol Basics </H3>
+<!--docid::SEC706::-->
+<P>
+
+The File-I/O protocol uses the <CODE>F</CODE> packet as the request as well
+as reply packet.  Since a File-I/O system call can only occur when
+GDB is waiting for a response from the continuing or stepping target, 
+the File-I/O request is a reply that GDB has to expect as a result
+of a previous <SAMP>`C'</SAMP>, <SAMP>`c'</SAMP>, <SAMP>`S'</SAMP> or <SAMP>`s'</SAMP> packet.
+This <CODE>F</CODE> packet contains all information needed to allow GDB
+to call the appropriate host system call:
+</P><P>
+
+<UL>
+<LI>
+A unique identifier for the requested system call.
+<P>
+
+<LI>
+All parameters to the system call.  Pointers are given as addresses
+in the target memory address space.  Pointers to strings are given as
+pointer/length pair.  Numerical values are given as they are.
+Numerical control flags are given in a protocol-specific representation.
+<P>
+
+</UL>
+<P>
+
+At this point, GDB has to perform the following actions.
+</P><P>
+
+<UL>
+<LI>
+If the parameters include pointer values to data needed as input to a 
+system call, GDB requests this data from the target with a
+standard <CODE>m</CODE> packet request.  This additional communication has to be
+expected by the target implementation and is handled as any other <CODE>m</CODE>
+packet.
+<P>
+
+<LI>
+GDB translates all value from protocol representation to host
+representation as needed.  Datatypes are coerced into the host types.
+<P>
+
+<LI>
+GDB calls the system call.
+<P>
+
+<LI>
+It then coerces datatypes back to protocol representation.
+<P>
+
+<LI>
+If the system call is expected to return data in buffer space specified
+by pointer parameters to the call, the data is transmitted to the
+target using a <CODE>M</CODE> or <CODE>X</CODE> packet.  This packet has to be expected
+by the target implementation and is handled as any other <CODE>M</CODE> or <CODE>X</CODE>
+packet.
+<P>
+
+</UL>
+<P>
+
+Eventually GDB replies with another <CODE>F</CODE> packet which contains all
+necessary information for the target to continue.  This at least contains
+</P><P>
+
+<UL>
+<LI>
+Return value.
+<P>
+
+<LI>
+<CODE>errno</CODE>, if has been changed by the system call.
+<P>
+
+<LI>
+"Ctrl-C" flag.
+<P>
+
+</UL>
+<P>
+
+After having done the needed type and value coercion, the target continues
+the latest continue or step action.
+</P><P>
+
+<A NAME="The F Request Packet"></A>
+<HR SIZE="6">
+<A NAME="SEC707"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC706"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC708"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC708"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.3 The <CODE>F</CODE> Request Packet </H3>
+<!--docid::SEC707::-->
+<P>
+
+The <CODE>F</CODE> request packet has the following format:
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`F<VAR>call-id</VAR>,<VAR>parameter<small>...</small></VAR>'</SAMP>
+<DD><P>
+
+<VAR>call-id</VAR> is the identifier to indicate the host system call to be called.
+This is just the name of the function.
+</P><P>
+
+<VAR>parameter<small>...</small></VAR> are the parameters to the system call.  
+Parameters are hexadecimal integer values, either the actual values in case
+of scalar datatypes, pointers to target buffer space in case of compound
+datatypes and unspecified memory areas, or pointer/length pairs in case
+of string parameters.  These are appended to the <VAR>call-id</VAR> as a 
+comma-delimited list.  All values are transmitted in ASCII
+string representation, pointer/length pairs separated by a slash.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="The F Reply Packet"></A>
+<HR SIZE="6">
+<A NAME="SEC708"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC707"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC709"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC709"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.4 The <CODE>F</CODE> Reply Packet </H3>
+<!--docid::SEC708::-->
+<P>
+
+The <CODE>F</CODE> reply packet has the following format:
+</P><P>
+
+<DL COMPACT>
+
+<DT><SAMP>`F<VAR>retcode</VAR>,<VAR>errno</VAR>,<VAR>Ctrl-C flag</VAR>;<VAR>call-specific attachment</VAR>'</SAMP>
+<DD><P>
+
+<VAR>retcode</VAR> is the return code of the system call as hexadecimal value.
+</P><P>
+
+<VAR>errno</VAR> is the <CODE>errno</CODE> set by the call, in protocol-specific
+representation.
+This parameter can be omitted if the call was successful.
+</P><P>
+
+<VAR>Ctrl-C flag</VAR> is only sent if the user requested a break.  In this
+case, <VAR>errno</VAR> must be sent as well, even if the call was successful.
+The <VAR>Ctrl-C flag</VAR> itself consists of the character <SAMP>`C'</SAMP>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>F0,0,C
+</FONT></pre></td></tr></table></P><P>
+
+or, if the call was interrupted before the host call has been performed:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>F-1,4,C
+</FONT></pre></td></tr></table></P><P>
+
+assuming 4 is the protocol-specific representation of <CODE>EINTR</CODE>.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="The Ctrl-C Message"></A>
+<HR SIZE="6">
+<A NAME="SEC709"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC708"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC710"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC710"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.5 The <SAMP>`Ctrl-C'</SAMP> Message </H3>
+<!--docid::SEC709::-->
+<P>
+
+If the <SAMP>`Ctrl-C'</SAMP> flag is set in the GDB
+reply packet (see section <A HREF="gdb_33.html#SEC708">D.10.4 The <CODE>F</CODE> Reply Packet</A>),
+the target should behave as if it had
+gotten a break message.  The meaning for the target is "system call
+interrupted by <CODE>SIGINT</CODE>".  Consequentially, the target should actually stop
+(as with a break message) and return to GDB with a <CODE>T02</CODE>
+packet.
+</P><P>
+
+It's important for the target to know in which
+state the system call was interrupted.  There are two possible cases:
+</P><P>
+
+<UL>
+<LI>
+The system call hasn't been performed on the host yet.
+<P>
+
+<LI>
+The system call on the host has been finished.
+<P>
+
+</UL>
+<P>
+
+These two states can be distinguished by the target by the value of the
+returned <CODE>errno</CODE>.  If it's the protocol representation of <CODE>EINTR</CODE>, the system
+call hasn't been performed.  This is equivalent to the <CODE>EINTR</CODE> handling
+on POSIX systems.  In any other case, the target may presume that the
+system call has been finished -- successfully or not -- and should behave
+as if the break message arrived right after the system call.
+</P><P>
+
+GDB must behave reliably.  If the system call has not been called
+yet, GDB may send the <CODE>F</CODE> reply immediately, setting <CODE>EINTR</CODE> as
+<CODE>errno</CODE> in the packet.  If the system call on the host has been finished
+before the user requests a break, the full action must be finished by
+GDB.  This requires sending <CODE>M</CODE> or <CODE>X</CODE> packets as necessary.
+The <CODE>F</CODE> packet may only be sent when either nothing has happened
+or the full action has been completed.
+</P><P>
+
+<A NAME="Console I/O"></A>
+<HR SIZE="6">
+<A NAME="SEC710"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC709"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC711"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC711"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.6 Console I/O </H3>
+<!--docid::SEC710::-->
+<P>
+
+By default and if not explicitly closed by the target system, the file
+descriptors 0, 1 and 2 are connected to the GDB console.  Output
+on the GDB console is handled as any other file output operation
+(<CODE>write(1, <small>...</small>)</CODE> or <CODE>write(2, <small>...</small>)</CODE>).  Console input is handled
+by GDB so that after the target read request from file descriptor
+0 all following typing is buffered until either one of the following
+conditions is met:
+</P><P>
+
+<UL>
+<LI>
+The user types <KBD>Ctrl-c</KBD>.  The behaviour is as explained above, and the
+<CODE>read</CODE>
+system call is treated as finished.
+<P>
+
+<LI>
+The user presses <KBD>RET</KBD>.  This is treated as end of input with a trailing
+newline.
+<P>
+
+<LI>
+The user types <KBD>Ctrl-d</KBD>.  This is treated as end of input.  No trailing
+character (neither newline nor <SAMP>`Ctrl-D'</SAMP>) is appended to the input.
+<P>
+
+</UL>
+<P>
+
+If the user has typed more characters than fit in the buffer given to
+the <CODE>read</CODE> call, the trailing characters are buffered in GDB until
+either another <CODE>read(0, <small>...</small>)</CODE> is requested by the target, or debugging
+is stopped at the user's request.
+</P><P>
+
+<A NAME="List of Supported Calls"></A>
+<HR SIZE="6">
+<A NAME="SEC711"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC710"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC712"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC723"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC723"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.7 List of Supported Calls </H3>
+<!--docid::SEC711::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC712">open</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC713">close</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC714">read</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC715">write</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC716">lseek</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC717">rename</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC718">unlink</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC719">stat/fstat</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC720">gettimeofday</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC721">isatty</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC722">system</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="open"></A>
+<HR SIZE="6">
+<A NAME="SEC712"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC711"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC713"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> open </H4>
+<!--docid::SEC712::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int open(const char *pathname, int flags);
+int open(const char *pathname, int flags, mode_t mode);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fopen,<VAR>pathptr</VAR>/<VAR>len</VAR>,<VAR>flags</VAR>,<VAR>mode</VAR>'</SAMP>
+<P>
+
+<VAR>flags</VAR> is the bitwise <CODE>OR</CODE> of the following values:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>O_CREAT</CODE>
+<DD>If the file does not exist it will be created.  The host
+rules apply as far as file ownership and time stamps
+are concerned.
+<P>
+
+<DT><CODE>O_EXCL</CODE>
+<DD>When used with <CODE>O_CREAT</CODE>, if the file already exists it is
+an error and open() fails.
+<P>
+
+<DT><CODE>O_TRUNC</CODE>
+<DD>If the file already exists and the open mode allows
+writing (<CODE>O_RDWR</CODE> or <CODE>O_WRONLY</CODE> is given) it will be
+truncated to zero length.
+<P>
+
+<DT><CODE>O_APPEND</CODE>
+<DD>The file is opened in append mode.
+<P>
+
+<DT><CODE>O_RDONLY</CODE>
+<DD>The file is opened for reading only.
+<P>
+
+<DT><CODE>O_WRONLY</CODE>
+<DD>The file is opened for writing only.
+<P>
+
+<DT><CODE>O_RDWR</CODE>
+<DD>The file is opened for reading and writing.
+</DL>
+<P>
+
+Other bits are silently ignored.
+</P><P>
+
+<VAR>mode</VAR> is the bitwise <CODE>OR</CODE> of the following values:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>S_IRUSR</CODE>
+<DD>User has read permission.
+<P>
+
+<DT><CODE>S_IWUSR</CODE>
+<DD>User has write permission.
+<P>
+
+<DT><CODE>S_IRGRP</CODE>
+<DD>Group has read permission.
+<P>
+
+<DT><CODE>S_IWGRP</CODE>
+<DD>Group has write permission.
+<P>
+
+<DT><CODE>S_IROTH</CODE>
+<DD>Others have read permission.
+<P>
+
+<DT><CODE>S_IWOTH</CODE>
+<DD>Others have write permission.
+</DL>
+<P>
+
+Other bits are silently ignored.
+</P><P>
+
+<DT>Return value:
+<DD><CODE>open</CODE> returns the new file descriptor or -1 if an error
+occurred.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EEXIST</CODE>
+<DD><VAR>pathname</VAR> already exists and <CODE>O_CREAT</CODE> and <CODE>O_EXCL</CODE> were used.
+<P>
+
+<DT><CODE>EISDIR</CODE>
+<DD><VAR>pathname</VAR> refers to a directory.
+<P>
+
+<DT><CODE>EACCES</CODE>
+<DD>The requested access is not allowed.
+<P>
+
+<DT><CODE>ENAMETOOLONG</CODE>
+<DD><VAR>pathname</VAR> was too long.
+<P>
+
+<DT><CODE>ENOENT</CODE>
+<DD>A directory component in <VAR>pathname</VAR> does not exist.
+<P>
+
+<DT><CODE>ENODEV</CODE>
+<DD><VAR>pathname</VAR> refers to a device, pipe, named pipe or socket.
+<P>
+
+<DT><CODE>EROFS</CODE>
+<DD><VAR>pathname</VAR> refers to a file on a read-only filesystem and
+write access was requested.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>pathname</VAR> is an invalid pointer value.
+<P>
+
+<DT><CODE>ENOSPC</CODE>
+<DD>No space on device to create the file.
+<P>
+
+<DT><CODE>EMFILE</CODE>
+<DD>The process already has the maximum number of files open.
+<P>
+
+<DT><CODE>ENFILE</CODE>
+<DD>The limit on the total number of files open on the system
+has been reached.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="close"></A>
+<HR SIZE="6">
+<A NAME="SEC713"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC712"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC714"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> close </H4>
+<!--docid::SEC713::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int close(int fd);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fclose,<VAR>fd</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD><CODE>close</CODE> returns zero on success, or -1 if an error occurred.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EBADF</CODE>
+<DD><VAR>fd</VAR> isn't a valid open file descriptor.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="read"></A>
+<HR SIZE="6">
+<A NAME="SEC714"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC713"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC715"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> read </H4>
+<!--docid::SEC714::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int read(int fd, void *buf, unsigned int count);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fread,<VAR>fd</VAR>,<VAR>bufptr</VAR>,<VAR>count</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>On success, the number of bytes read is returned.
+Zero indicates end of file.  If count is zero, read
+returns zero as well.  On error, -1 is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EBADF</CODE>
+<DD><VAR>fd</VAR> is not a valid file descriptor or is not open for
+reading.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>bufptr</VAR> is an invalid pointer value.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="write"></A>
+<HR SIZE="6">
+<A NAME="SEC715"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC714"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC716"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> write </H4>
+<!--docid::SEC715::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int write(int fd, const void *buf, unsigned int count);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fwrite,<VAR>fd</VAR>,<VAR>bufptr</VAR>,<VAR>count</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>On success, the number of bytes written are returned.
+Zero indicates nothing was written.  On error, -1
+is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EBADF</CODE>
+<DD><VAR>fd</VAR> is not a valid file descriptor or is not open for
+writing.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>bufptr</VAR> is an invalid pointer value.
+<P>
+
+<DT><CODE>EFBIG</CODE>
+<DD>An attempt was made to write a file that exceeds the
+host-specific maximum file size allowed.
+<P>
+
+<DT><CODE>ENOSPC</CODE>
+<DD>No space on device to write the data.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="lseek"></A>
+<HR SIZE="6">
+<A NAME="SEC716"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC715"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC717"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> lseek </H4>
+<!--docid::SEC716::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>long lseek (int fd, long offset, int flag);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Flseek,<VAR>fd</VAR>,<VAR>offset</VAR>,<VAR>flag</VAR>'</SAMP>
+<P>
+
+<VAR>flag</VAR> is one of:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>SEEK_SET</CODE>
+<DD>The offset is set to <VAR>offset</VAR> bytes.
+<P>
+
+<DT><CODE>SEEK_CUR</CODE>
+<DD>The offset is set to its current location plus <VAR>offset</VAR>
+bytes.
+<P>
+
+<DT><CODE>SEEK_END</CODE>
+<DD>The offset is set to the size of the file plus <VAR>offset</VAR>
+bytes.
+</DL>
+<P>
+
+<DT>Return value:
+<DD>On success, the resulting unsigned offset in bytes from
+the beginning of the file is returned.  Otherwise, a
+value of -1 is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EBADF</CODE>
+<DD><VAR>fd</VAR> is not a valid open file descriptor.
+<P>
+
+<DT><CODE>ESPIPE</CODE>
+<DD><VAR>fd</VAR> is associated with the GDB console.
+<P>
+
+<DT><CODE>EINVAL</CODE>
+<DD><VAR>flag</VAR> is not a proper value.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="rename"></A>
+<HR SIZE="6">
+<A NAME="SEC717"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC716"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC718"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> rename </H4>
+<!--docid::SEC717::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int rename(const char *oldpath, const char *newpath);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Frename,<VAR>oldpathptr</VAR>/<VAR>len</VAR>,<VAR>newpathptr</VAR>/<VAR>len</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>On success, zero is returned.  On error, -1 is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EISDIR</CODE>
+<DD><VAR>newpath</VAR> is an existing directory, but <VAR>oldpath</VAR> is not a
+directory.
+<P>
+
+<DT><CODE>EEXIST</CODE>
+<DD><VAR>newpath</VAR> is a non-empty directory.
+<P>
+
+<DT><CODE>EBUSY</CODE>
+<DD><VAR>oldpath</VAR> or <VAR>newpath</VAR> is a directory that is in use by some
+process.
+<P>
+
+<DT><CODE>EINVAL</CODE>
+<DD>An attempt was made to make a directory a subdirectory
+of itself.
+<P>
+
+<DT><CODE>ENOTDIR</CODE>
+<DD>A  component used as a directory in <VAR>oldpath</VAR> or new
+path is not a directory.  Or <VAR>oldpath</VAR> is a directory
+and <VAR>newpath</VAR> exists but is not a directory.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>oldpathptr</VAR> or <VAR>newpathptr</VAR> are invalid pointer values.
+<P>
+
+<DT><CODE>EACCES</CODE>
+<DD>No access to the file or the path of the file.
+<P>
+
+<DT><CODE>ENAMETOOLONG</CODE>
+<DD><P>
+
+<VAR>oldpath</VAR> or <VAR>newpath</VAR> was too long.
+</P><P>
+
+<DT><CODE>ENOENT</CODE>
+<DD>A directory component in <VAR>oldpath</VAR> or <VAR>newpath</VAR> does not exist.
+<P>
+
+<DT><CODE>EROFS</CODE>
+<DD>The file is on a read-only filesystem.
+<P>
+
+<DT><CODE>ENOSPC</CODE>
+<DD>The device containing the file has no room for the new
+directory entry.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="unlink"></A>
+<HR SIZE="6">
+<A NAME="SEC718"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC717"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC719"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> unlink </H4>
+<!--docid::SEC718::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int unlink(const char *pathname);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Funlink,<VAR>pathnameptr</VAR>/<VAR>len</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>On success, zero is returned.  On error, -1 is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EACCES</CODE>
+<DD>No access to the file or the path of the file.
+<P>
+
+<DT><CODE>EPERM</CODE>
+<DD>The system does not allow unlinking of directories.
+<P>
+
+<DT><CODE>EBUSY</CODE>
+<DD>The file <VAR>pathname</VAR> cannot be unlinked because it's
+being used by another process.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>pathnameptr</VAR> is an invalid pointer value.
+<P>
+
+<DT><CODE>ENAMETOOLONG</CODE>
+<DD><VAR>pathname</VAR> was too long.
+<P>
+
+<DT><CODE>ENOENT</CODE>
+<DD>A directory component in <VAR>pathname</VAR> does not exist.
+<P>
+
+<DT><CODE>ENOTDIR</CODE>
+<DD>A component of the path is not a directory.
+<P>
+
+<DT><CODE>EROFS</CODE>
+<DD>The file is on a read-only filesystem.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="stat/fstat"></A>
+<HR SIZE="6">
+<A NAME="SEC719"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC718"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC720"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> stat/fstat </H4>
+<!--docid::SEC719::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int stat(const char *pathname, struct stat *buf);
+int fstat(int fd, struct stat *buf);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fstat,<VAR>pathnameptr</VAR>/<VAR>len</VAR>,<VAR>bufptr</VAR>'</SAMP><BR>
+<SAMP>`Ffstat,<VAR>fd</VAR>,<VAR>bufptr</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>On success, zero is returned.  On error, -1 is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EBADF</CODE>
+<DD><VAR>fd</VAR> is not a valid open file.
+<P>
+
+<DT><CODE>ENOENT</CODE>
+<DD>A directory component in <VAR>pathname</VAR> does not exist or the
+path is an empty string.
+<P>
+
+<DT><CODE>ENOTDIR</CODE>
+<DD>A component of the path is not a directory.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>pathnameptr</VAR> is an invalid pointer value.
+<P>
+
+<DT><CODE>EACCES</CODE>
+<DD>No access to the file or the path of the file.
+<P>
+
+<DT><CODE>ENAMETOOLONG</CODE>
+<DD><VAR>pathname</VAR> was too long.
+<P>
+
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="gettimeofday"></A>
+<HR SIZE="6">
+<A NAME="SEC720"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC719"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC721"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> gettimeofday </H4>
+<!--docid::SEC720::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int gettimeofday(struct timeval *tv, void *tz);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fgettimeofday,<VAR>tvptr</VAR>,<VAR>tzptr</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>On success, 0 is returned, -1 otherwise.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EINVAL</CODE>
+<DD><VAR>tz</VAR> is a non-NULL pointer.
+<P>
+
+<DT><CODE>EFAULT</CODE>
+<DD><VAR>tvptr</VAR> and/or <VAR>tzptr</VAR> is an invalid pointer value.
+</DL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="isatty"></A>
+<HR SIZE="6">
+<A NAME="SEC721"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC720"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC722"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> isatty </H4>
+<!--docid::SEC721::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int isatty(int fd);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fisatty,<VAR>fd</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>Returns 1 if <VAR>fd</VAR> refers to the GDB console, 0 otherwise.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+Note that the <CODE>isatty</CODE> call is treated as a special case: it returns
+1 to the target if the file descriptor is attached
+to the GDB console, 0 otherwise.  Implementing through system calls
+would require implementing <CODE>ioctl</CODE> and would be more complex than
+needed.
+</P><P>
+
+<A NAME="system"></A>
+<HR SIZE="6">
+<A NAME="SEC722"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC721"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC723"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> system </H4>
+<!--docid::SEC722::-->
+<P>
+
+<DL COMPACT>
+<DT>Synopsis:
+<DD><TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>int system(const char *command);
+</FONT></pre></td></tr></table><P>
+
+<DT>Request:
+<DD><SAMP>`Fsystem,<VAR>commandptr</VAR>/<VAR>len</VAR>'</SAMP>
+<P>
+
+<DT>Return value:
+<DD>If <VAR>len</VAR> is zero, the return value indicates whether a shell is
+available.  A zero return value indicates a shell is not available.
+For non-zero <VAR>len</VAR>, the value returned is -1 on error and the
+return status of the command otherwise.  Only the exit status of the
+command is returned, which is extracted from the host's <CODE>system</CODE>
+return value by calling <CODE>WEXITSTATUS(retval)</CODE>.  In case
+<TT>`/bin/sh'</TT> could not be executed, 127 is returned.
+<P>
+
+<DT>Errors:
+<DD><P>
+
+<DL COMPACT>
+<DT><CODE>EINTR</CODE>
+<DD>The call was interrupted by the user.
+</DL>
+<P>
+
+</DL>
+<P>
+
+GDB takes over the full task of calling the necessary host calls 
+to perform the <CODE>system</CODE> call.  The return value of <CODE>system</CODE> on 
+the host is simplified before it's returned
+to the target.  Any termination signal information from the child process 
+is discarded, and the return value consists
+entirely of the exit status of the called command.
+</P><P>
+
+Due to security concerns, the <CODE>system</CODE> call is by default refused
+by GDB.  The user has to allow this call explicitly with the
+<CODE>set remote system-call-allowed 1</CODE> command.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set remote system-call-allowed</CODE>
+<DD><A NAME="IDX1652"></A>
+Control whether to allow the <CODE>system</CODE> calls in the File I/O
+protocol for the remote target.  The default is zero (disabled).
+<P>
+
+<DT><CODE>show remote system-call-allowed</CODE>
+<DD><A NAME="IDX1653"></A>
+Show whether the <CODE>system</CODE> calls are allowed in the File I/O
+protocol.
+</DL>
+<P>
+
+<A NAME="Protocol-specific Representation of Datatypes"></A>
+<HR SIZE="6">
+<A NAME="SEC723"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC722"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC724"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC729"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC729"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.8 Protocol-specific Representation of Datatypes </H3>
+<!--docid::SEC723::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC724">Integral Datatypes</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC725">Pointer Values</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC726">Memory Transfer</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC727">struct stat</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC728">struct timeval</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Integral Datatypes"></A>
+<HR SIZE="6">
+<A NAME="SEC724"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC723"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC725"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Integral Datatypes </H4>
+<!--docid::SEC724::-->
+<P>
+
+The integral datatypes used in the system calls are <CODE>int</CODE>, 
+<CODE>unsigned int</CODE>, <CODE>long</CODE>, <CODE>unsigned long</CODE>,
+<CODE>mode_t</CODE>, and <CODE>time_t</CODE>.  
+</P><P>
+
+<CODE>int</CODE>, <CODE>unsigned int</CODE>, <CODE>mode_t</CODE> and <CODE>time_t</CODE> are
+implemented as 32 bit values in this protocol.
+</P><P>
+
+<CODE>long</CODE> and <CODE>unsigned long</CODE> are implemented as 64 bit types.
+</P><P>
+
+See section <A HREF="gdb_33.html#SEC734">Limits</A>, for corresponding MIN and MAX values (similar to those
+in <TT>`limits.h'</TT>) to allow range checking on host and target.
+</P><P>
+
+<CODE>time_t</CODE> datatypes are defined as seconds since the Epoch.
+</P><P>
+
+All integral datatypes transferred as part of a memory read or write of a
+structured datatype e.g. a <CODE>struct stat</CODE> have to be given in big endian
+byte order.
+</P><P>
+
+<A NAME="Pointer Values"></A>
+<HR SIZE="6">
+<A NAME="SEC725"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC724"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC726"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Pointer Values </H4>
+<!--docid::SEC725::-->
+<P>
+
+Pointers to target data are transmitted as they are.  An exception
+is made for pointers to buffers for which the length isn't
+transmitted as part of the function call, namely strings.  Strings
+are transmitted as a pointer/length pair, both as hex values, e.g.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>1aaf/12</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+which is a pointer to data of length 18 bytes at position 0x1aaf.
+The length is defined as the full string length in bytes, including
+the trailing null byte.  For example, the string <CODE>"hello world"</CODE>
+at address 0x123456 is transmitted as
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>123456/d</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Memory Transfer"></A>
+<HR SIZE="6">
+<A NAME="SEC726"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC725"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC727"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Memory Transfer </H4>
+<!--docid::SEC726::-->
+<P>
+
+Structured data which is transferred using a memory read or write (for
+example, a <CODE>struct stat</CODE>) is expected to be in a protocol-specific format 
+with all scalar multibyte datatypes being big endian.  Translation to
+this representation needs to be done both by the target before the <CODE>F</CODE> 
+packet is sent, and by GDB before 
+it transfers memory to the target.  Transferred pointers to structured
+data should point to the already-coerced data at any time.
+</P><P>
+
+<A NAME="struct stat"></A>
+<HR SIZE="6">
+<A NAME="SEC727"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC726"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC728"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> struct stat </H4>
+<!--docid::SEC727::-->
+<P>
+
+The buffer of type <CODE>struct stat</CODE> used by the target and GDB 
+is defined as follows:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>struct stat {
+    unsigned int  st_dev;      /* device */
+    unsigned int  st_ino;      /* inode */
+    mode_t        st_mode;     /* protection */
+    unsigned int  st_nlink;    /* number of hard links */
+    unsigned int  st_uid;      /* user ID of owner */
+    unsigned int  st_gid;      /* group ID of owner */
+    unsigned int  st_rdev;     /* device type (if inode device) */
+    unsigned long st_size;     /* total size, in bytes */
+    unsigned long st_blksize;  /* blocksize for filesystem I/O */
+    unsigned long st_blocks;   /* number of blocks allocated */
+    time_t        st_atime;    /* time of last access */
+    time_t        st_mtime;    /* time of last modification */
+    time_t        st_ctime;    /* time of last change */
+};
+</FONT></pre></td></tr></table></P><P>
+
+The integral datatypes conform to the definitions given in the
+appropriate section (see <A HREF="gdb_33.html#SEC724">Integral Datatypes</A>, for details) so this
+structure is of size 64 bytes.
+</P><P>
+
+The values of several fields have a restricted meaning and/or
+range of values.
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>st_dev</CODE>
+<DD>A value of 0 represents a file, 1 the console.
+<P>
+
+<DT><CODE>st_ino</CODE>
+<DD>No valid meaning for the target.  Transmitted unchanged.
+<P>
+
+<DT><CODE>st_mode</CODE>
+<DD>Valid mode bits are described in <A HREF="gdb_33.html#SEC729">D.10.9 Constants</A>.  Any other
+bits have currently no meaning for the target.
+<P>
+
+<DT><CODE>st_uid</CODE>
+<DD><DT><CODE>st_gid</CODE>
+<DD><DT><CODE>st_rdev</CODE>
+<DD>No valid meaning for the target.  Transmitted unchanged.
+<P>
+
+<DT><CODE>st_atime</CODE>
+<DD><DT><CODE>st_mtime</CODE>
+<DD><DT><CODE>st_ctime</CODE>
+<DD>These values have a host and file system dependent
+accuracy.  Especially on Windows hosts, the file system may not
+support exact timing values.
+</DL>
+<P>
+
+The target gets a <CODE>struct stat</CODE> of the above representation and is
+responsible for coercing it to the target representation before
+continuing.
+</P><P>
+
+Note that due to size differences between the host, target, and protocol
+representations of <CODE>struct stat</CODE> members, these members could eventually
+get truncated on the target.
+</P><P>
+
+<A NAME="struct timeval"></A>
+<HR SIZE="6">
+<A NAME="SEC728"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC727"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC729"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> struct timeval </H4>
+<!--docid::SEC728::-->
+<P>
+
+The buffer of type <CODE>struct timeval</CODE> used by the File-I/O protocol
+is defined as follows:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>struct timeval {
+    time_t tv_sec;  /* second */
+    long   tv_usec; /* microsecond */
+};
+</FONT></pre></td></tr></table></P><P>
+
+The integral datatypes conform to the definitions given in the
+appropriate section (see <A HREF="gdb_33.html#SEC724">Integral Datatypes</A>, for details) so this
+structure is of size 8 bytes.
+</P><P>
+
+<A NAME="Constants"></A>
+<HR SIZE="6">
+<A NAME="SEC729"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC728"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC730"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC735"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.9 Constants </H3>
+<!--docid::SEC729::-->
+<P>
+
+The following values are used for the constants inside of the
+protocol.  GDB and target are responsible for translating these
+values before and after the call as needed.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC730">Open Flags</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC731">mode_t Values</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC732">Errno Values</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC733">Lseek Flags</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_33.html#SEC734">Limits</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Open Flags"></A>
+<HR SIZE="6">
+<A NAME="SEC730"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC729"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC731"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Open Flags </H4>
+<!--docid::SEC730::-->
+<P>
+
+All values are given in hexadecimal representation.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>  O_RDONLY        0x0
+  O_WRONLY        0x1
+  O_RDWR          0x2
+  O_APPEND        0x8
+  O_CREAT       0x200
+  O_TRUNC       0x400
+  O_EXCL        0x800
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="mode_t Values"></A>
+<HR SIZE="6">
+<A NAME="SEC731"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC730"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC732"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> mode_t Values </H4>
+<!--docid::SEC731::-->
+<P>
+
+All values are given in octal representation.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>  S_IFREG       0100000
+  S_IFDIR        040000
+  S_IRUSR          0400
+  S_IWUSR          0200
+  S_IXUSR          0100
+  S_IRGRP           040
+  S_IWGRP           020
+  S_IXGRP           010
+  S_IROTH            04
+  S_IWOTH            02
+  S_IXOTH            01
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Errno Values"></A>
+<HR SIZE="6">
+<A NAME="SEC732"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC731"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC733"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Errno Values </H4>
+<!--docid::SEC732::-->
+<P>
+
+All values are given in decimal representation.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>  EPERM           1
+  ENOENT          2
+  EINTR           4
+  EBADF           9
+  EACCES         13
+  EFAULT         14
+  EBUSY          16
+  EEXIST         17
+  ENODEV         19
+  ENOTDIR        20
+  EISDIR         21
+  EINVAL         22
+  ENFILE         23
+  EMFILE         24
+  EFBIG          27
+  ENOSPC         28
+  ESPIPE         29
+  EROFS          30
+  ENAMETOOLONG   91
+  EUNKNOWN       9999
+</FONT></pre></td></tr></table></P><P>
+
+  <CODE>EUNKNOWN</CODE> is used as a fallback error value if a host system returns
+  any error value not in the list of supported error numbers.
+</P><P>
+
+<A NAME="Lseek Flags"></A>
+<HR SIZE="6">
+<A NAME="SEC733"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC732"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC734"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Lseek Flags </H4>
+<!--docid::SEC733::-->
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>  SEEK_SET      0
+  SEEK_CUR      1
+  SEEK_END      2
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Limits"></A>
+<HR SIZE="6">
+<A NAME="SEC734"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC733"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC735"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> Limits </H4>
+<!--docid::SEC734::-->
+<P>
+
+All values are given in decimal representation.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>  INT_MIN       -2147483648
+  INT_MAX        2147483647
+  UINT_MAX       4294967295
+  LONG_MIN      -9223372036854775808
+  LONG_MAX       9223372036854775807
+  ULONG_MAX      18446744073709551615
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="File-I/O Examples"></A>
+<HR SIZE="6">
+<A NAME="SEC735"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC734"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC706"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC704"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> D.10.10 File-I/O Examples </H3>
+<!--docid::SEC735::-->
+<P>
+
+Example sequence of a write call, file descriptor 3, buffer is at target
+address 0x1234, 6 bytes should be written:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;- <CODE>Fwrite,3,1234,6</CODE>
+<EM>request memory read from target</EM>
+-&#62; <CODE>m1234,6</CODE>
+&#60;- XXXXXX
+<EM>return "6 bytes written"</EM>
+-&#62; <CODE>F6</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+Example sequence of a read call, file descriptor 3, buffer is at target
+address 0x1234, 6 bytes should be read:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;- <CODE>Fread,3,1234,6</CODE>
+<EM>request memory write to target</EM>
+-&#62; <CODE>X1234,6:XXXXXX</CODE>
+<EM>return "6 bytes read"</EM>
+-&#62; <CODE>F6</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+Example sequence of a read call, call fails on the host due to invalid
+file descriptor (<CODE>EBADF</CODE>):
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;- <CODE>Fread,3,1234,6</CODE>
+-&#62; <CODE>F-1,9</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+Example sequence of a read call, user presses <KBD>Ctrl-c</KBD> before syscall on
+host is called:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;- <CODE>Fread,3,1234,6</CODE>
+-&#62; <CODE>F-1,4,C</CODE>
+&#60;- <CODE>T02</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+Example sequence of a read call, user presses <KBD>Ctrl-c</KBD> after syscall on
+host is called:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;- <CODE>Fread,3,1234,6</CODE>
+-&#62; <CODE>X1234,6:XXXXXX</CODE>
+&#60;- <CODE>T02</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Library List Format"></A>
+<HR SIZE="6">
+<A NAME="SEC736"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC735"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC737"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.11 Library List Format </H2>
+<!--docid::SEC736::-->
+<P>
+
+On some platforms, a dynamic loader (e.g. <TT>`ld.so'</TT>) runs in the
+same process as your application to manage libraries.  In this case,
+GDB can use the loader's symbol table and normal memory
+operations to maintain a list of shared libraries.  On other
+platforms, the operating system manages loaded libraries.
+GDB can not retrieve the list of currently loaded libraries
+through memory operations, so it uses the <SAMP>`qXfer:libraries:read'</SAMP>
+packet (see  <A HREF="gdb_33.html#qXfer library list read">qXfer library list read</A>) instead.  The remote stub
+queries the target's operating system and reports which libraries
+are loaded.
+</P><P>
+
+The <SAMP>`qXfer:libraries:read'</SAMP> packet returns an XML document which
+lists loaded libraries and their offsets.  Each library has an
+associated name and one or more segment base addresses, which report
+where the library was loaded in memory.  The segment bases are start
+addresses, not relocation offsets; they do not depend on the library's
+link-time base addresses.
+</P><P>
+
+GDB must be linked with the Expat library to support XML
+library lists.  See  <A HREF="gdb_31.html#Expat">Expat</A>.
+</P><P>
+
+A simple memory map, with one loaded library relocated by a single
+offset, looks like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;library-list&#62;
+  &#60;library name="/lib/libc.so.6"&#62;
+    &#60;segment address="0x10000000"/&#62;
+  &#60;/library&#62;
+&#60;/library-list&#62;
+</FONT></pre></td></tr></table></P><P>
+
+The format of a library list is described by this DTD:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;!-- library-list: Root element with versioning --&#62;
+&#60;!ELEMENT library-list  (library)*&#62;
+&#60;!ATTLIST library-list  version CDATA   #FIXED  "1.0"&#62;
+&#60;!ELEMENT library       (segment)*&#62;
+&#60;!ATTLIST library       name    CDATA   #REQUIRED&#62;
+&#60;!ELEMENT segment       EMPTY&#62;
+&#60;!ATTLIST segment       address CDATA   #REQUIRED&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Memory Map Format"></A>
+<HR SIZE="6">
+<A NAME="SEC737"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC736"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> D.12 Memory Map Format </H2>
+<!--docid::SEC737::-->
+<P>
+
+To be able to write into flash memory, GDB needs to obtain a
+memory map from the target.  This section describes the format of the
+memory map.
+</P><P>
+
+The memory map is obtained using the <SAMP>`qXfer:memory-map:read'</SAMP>
+(see  <A HREF="gdb_33.html#qXfer memory map read">qXfer memory map read</A>) packet and is an XML document that
+lists memory regions.
+</P><P>
+
+GDB must be linked with the Expat library to support XML
+memory maps.  See  <A HREF="gdb_31.html#Expat">Expat</A>.
+</P><P>
+
+The top-level structure of the document is shown below:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;?xml version="1.0"?&#62;
+&#60;!DOCTYPE memory-map
+          PUBLIC "+//IDN gnu.org//DTD GDB Memory Map V1.0//EN"
+                 "http://sourceware.org/gdb/gdb-memory-map.dtd"&#62;
+&#60;memory-map&#62;
+    region...
+&#60;/memory-map&#62;
+</FONT></pre></td></tr></table></P><P>
+
+Each region can be either:
+</P><P>
+
+<UL>
+
+<LI>
+A region of RAM starting at <VAR>addr</VAR> and extending for <VAR>length</VAR>
+bytes from there:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;memory type="ram" start="<VAR>addr</VAR>" length="<VAR>length</VAR>"/&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<LI>
+A region of read-only memory:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;memory type="rom" start="<VAR>addr</VAR>" length="<VAR>length</VAR>"/&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<LI>
+A region of flash memory, with erasure blocks <VAR>blocksize</VAR>
+bytes in length:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;memory type="flash" start="<VAR>addr</VAR>" length="<VAR>length</VAR>"&#62;
+  &#60;property name="blocksize"&#62;<VAR>blocksize</VAR>&#60;/property&#62;
+&#60;/memory&#62;
+</FONT></pre></td></tr></table></P><P>
+
+</UL>
+<P>
+
+Regions must not overlap.  GDB assumes that areas of memory not covered
+by the memory map are RAM, and uses the ordinary <SAMP>`M'</SAMP> and <SAMP>`X'</SAMP>
+packets to write to addresses in such ranges.
+</P><P>
+
+The formal DTD for memory map format is given below:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>&#60;!-- ................................................... --&#62;
+&#60;!-- Memory Map XML DTD ................................ --&#62;
+&#60;!-- File: memory-map.dtd .............................. --&#62;
+&#60;!-- .................................... .............. --&#62;
+&#60;!-- memory-map.dtd --&#62;
+&#60;!-- memory-map: Root element with versioning --&#62;
+&#60;!ELEMENT memory-map (memory | property)&#62;
+&#60;!ATTLIST memory-map    version CDATA   #FIXED  "1.0.0"&#62;
+&#60;!ELEMENT memory (property)&#62;
+&#60;!-- memory: Specifies a memory region,
+             and its type, or device. --&#62;
+&#60;!ATTLIST memory        type    CDATA   #REQUIRED
+                        start   CDATA   #REQUIRED
+                        length  CDATA   #REQUIRED
+                        device  CDATA   #IMPLIED&#62;
+&#60;!-- property: Generic attribute tag --&#62;
+&#60;!ELEMENT property (#PCDATA | property)*&#62;
+&#60;!ATTLIST property      name    CDATA   #REQUIRED&#62;
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Agent Expressions"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC696"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_34.html#SEC738"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

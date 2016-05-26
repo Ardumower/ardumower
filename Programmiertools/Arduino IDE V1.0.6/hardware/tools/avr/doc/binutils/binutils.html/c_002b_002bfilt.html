@@ -1,0 +1,180 @@
+<html lang="en">
+<head>
+<title>c++filt - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="strip.html#strip" title="strip">
+<link rel="next" href="addr2line.html#addr2line" title="addr2line">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="c_002b_002bfilt"></a>Next:&nbsp;<a rel="next" accesskey="n" href="addr2line.html#addr2line">addr2line</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="strip.html#strip">strip</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">9 c++filt</h2>
+
+<p><a name="index-c_002b_002bfilt-115"></a><a name="index-demangling-C_002b_002b-symbols-116"></a>
+<!-- man title cxxfilt Demangle C++ and Java symbols. -->
+
+<pre class="smallexample">     <!-- man begin SYNOPSIS cxxfilt -->
+     c++filt [<span class="option">-_</span>|<span class="option">--strip-underscores</span>]
+             [<span class="option">-n</span>|<span class="option">--no-strip-underscores</span>]
+             [<span class="option">-p</span>|<span class="option">--no-params</span>]
+             [<span class="option">-t</span>|<span class="option">--types</span>]
+             [<span class="option">-i</span>|<span class="option">--no-verbose</span>]
+             [<span class="option">-s</span> <var>format</var>|<span class="option">--format=</span><var>format</var>]
+             [<span class="option">--help</span>]  [<span class="option">--version</span>]  [<var>symbol</var>...]
+     <!-- man end -->
+</pre>
+   <!-- man begin DESCRIPTION cxxfilt -->
+<p><a name="index-cxxfilt-117"></a>The C++ and Java languages provide function overloading, which means
+that you can write many functions with the same name, providing that
+each function takes parameters of different types.  In order to be
+able to distinguish these similarly named functions C++ and Java
+encode them into a low-level assembler name which uniquely identifies
+each different version.  This process is known as <dfn>mangling</dfn>. The
+<span class="command">c++filt</span>
+<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>
+program does the inverse mapping: it decodes (<dfn>demangles</dfn>) low-level
+names into user-level names so that they can be read.
+
+   <p>Every alphanumeric word (consisting of letters, digits, underscores,
+dollars, or periods) seen in the input is a potential mangled name. 
+If the name decodes into a C++ name, the C++ name replaces the
+low-level name in the output, otherwise the original word is output. 
+In this way you can pass an entire assembler source file, containing
+mangled names, through <span class="command">c++filt</span> and see the same source file
+containing demangled names.
+
+   <p>You can also use <span class="command">c++filt</span> to decipher individual symbols by
+passing them on the command line:
+
+<pre class="example">     c++filt <var>symbol</var>
+</pre>
+   <p>If no <var>symbol</var> arguments are given, <span class="command">c++filt</span> reads symbol
+names from the standard input instead.  All the results are printed on
+the standard output.  The difference between reading names from the
+command line versus reading names from the standard input is that
+command line arguments are expected to be just mangled names and no
+checking is performed to separate them from surrounding text.  Thus
+for example:
+
+<pre class="smallexample">     c++filt -n _Z1fv
+</pre>
+   <p>will work and demangle the name to &ldquo;f()&rdquo; whereas:
+
+<pre class="smallexample">     c++filt -n _Z1fv,
+</pre>
+   <p>will not work.  (Note the extra comma at the end of the mangled
+name which makes it invalid).  This command however will work:
+
+<pre class="smallexample">     echo _Z1fv, | c++filt -n
+</pre>
+   <p>and will display &ldquo;f(),&rdquo;, i.e., the demangled name followed by a
+trailing comma.  This behaviour is because when the names are read
+from the standard input it is expected that they might be part of an
+assembler source file where there might be extra, extraneous
+characters trailing after a mangled name.  For example:
+
+<pre class="smallexample">         .type   _Z1fv, @function
+</pre>
+   <!-- man end -->
+<!-- man begin OPTIONS cxxfilt -->
+<dl>
+<dt><span class="env">-_</span><dt><span class="env">--strip-underscores</span><dd>On some systems, both the C and C++ compilers put an underscore in front
+of every name.  For example, the C name <code>foo</code> gets the low-level
+name <code>_foo</code>.  This option removes the initial underscore.  Whether
+<span class="command">c++filt</span> removes the underscore by default is target dependent.
+
+     <br><dt><span class="env">-j</span><dt><span class="env">--java</span><dd>Prints demangled names using Java syntax.  The default is to use C++
+syntax.
+
+     <br><dt><span class="env">-n</span><dt><span class="env">--no-strip-underscores</span><dd>Do not remove the initial underscore.
+
+     <br><dt><span class="env">-p</span><dt><span class="env">--no-params</span><dd>When demangling the name of a function, do not display the types of
+the function's parameters.
+
+     <br><dt><span class="env">-t</span><dt><span class="env">--types</span><dd>Attempt to demangle types as well as function names.  This is disabled
+by default since mangled types are normally only used internally in
+the compiler, and they can be confused with non-mangled names.  For example,
+a function called &ldquo;a&rdquo; treated as a mangled type name would be
+demangled to &ldquo;signed char&rdquo;.
+
+     <br><dt><span class="env">-i</span><dt><span class="env">--no-verbose</span><dd>Do not include implementation details (if any) in the demangled
+output.
+
+     <br><dt><span class="env">-s </span><var>format</var><dt><span class="env">--format=</span><var>format</var><dd><span class="command">c++filt</span> can decode various methods of mangling, used by
+different compilers.  The argument to this option selects which
+method it uses:
+
+          <dl>
+<dt><code>auto</code><dd>Automatic selection based on executable (the default method)
+<br><dt><code>gnu</code><dd>the one used by the <span class="sc">gnu</span> C++ compiler (g++)
+<br><dt><code>lucid</code><dd>the one used by the Lucid compiler (lcc)
+<br><dt><code>arm</code><dd>the one specified by the C++ Annotated Reference Manual
+<br><dt><code>hp</code><dd>the one used by the HP compiler (aCC)
+<br><dt><code>edg</code><dd>the one used by the EDG compiler
+<br><dt><code>gnu-v3</code><dd>the one used by the <span class="sc">gnu</span> C++ compiler (g++) with the V3 ABI. 
+<br><dt><code>java</code><dd>the one used by the <span class="sc">gnu</span> Java compiler (gcj)
+<br><dt><code>gnat</code><dd>the one used by the <span class="sc">gnu</span> Ada compiler (GNAT). 
+</dl>
+
+     <br><dt><span class="env">--help</span><dd>Print a summary of the options to <span class="command">c++filt</span> and exit.
+
+     <br><dt><span class="env">--version</span><dd>Print the version number of <span class="command">c++filt</span> and exit. 
+</dl>
+
+<!-- man end -->
+<blockquote>
+<em>Warning:</em> <span class="command">c++filt</span> is a new utility, and the details of its
+user interface are subject to change in future releases.  In particular,
+a command-line option may be required in the future to decode a name
+passed as an argument on the command line; in other words,
+
+     <pre class="example">          c++filt <var>symbol</var>
+     </pre>
+        <p class="noindent">may in a future release become
+
+     <pre class="example">          c++filt <var>option</var> <var>symbol</var>
+     </pre>
+   </blockquote>
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> MS-DOS does not allow <kbd>+</kbd> characters in file names, so on
+MS-DOS this program is named <span class="command">CXXFILT</span>.</p>
+
+   <p><hr></div>
+
+   </body></html>
+

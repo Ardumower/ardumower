@@ -1,0 +1,447 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Maintenance Commands</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Maintenance Commands">
+<META NAME="keywords" CONTENT="Debugging with GDB: Maintenance Commands">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC693"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC692"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> C. Maintenance Commands </H1>
+<!--docid::SEC693::-->
+<P>
+
+In addition to commands intended for GDB users, GDB
+includes a number of commands intended for GDB developers,
+that are not documented elsewhere in this manual.  These commands are
+provided here for reference.  (For commands that turn on debugging
+messages, see <A HREF="gdb_20.html#SEC228">19.8 Optional Messages about Internal Happenings</A>.)
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1514"></A>
+<DT><CODE>maint agent <VAR>expression</VAR></CODE>
+<DD>Translate the given <VAR>expression</VAR> into remote agent bytecodes.
+This command is useful for debugging the Agent Expression mechanism
+(see section <A HREF="gdb_34.html#SEC738">E. The GDB Agent Expression Mechanism</A>).
+<P>
+
+<A NAME="IDX1515"></A>
+<A NAME="maint info breakpoints"></A>
+<DT><CODE>maint info breakpoints</CODE>
+<DD>Using the same format as <SAMP>`info breakpoints'</SAMP>, display both the
+breakpoints you've set explicitly, and those GDB is using for
+internal purposes.  Internal breakpoints are shown with negative
+breakpoint numbers.  The type column identifies what kind of breakpoint
+is shown:
+<P>
+
+<DL COMPACT>
+<DT><CODE>breakpoint</CODE>
+<DD>Normal, explicitly set breakpoint.
+<P>
+
+<DT><CODE>watchpoint</CODE>
+<DD>Normal, explicitly set watchpoint.
+<P>
+
+<DT><CODE>longjmp</CODE>
+<DD>Internal breakpoint, used to handle correctly stepping through
+<CODE>longjmp</CODE> calls.
+<P>
+
+<DT><CODE>longjmp resume</CODE>
+<DD>Internal breakpoint at the target of a <CODE>longjmp</CODE>.
+<P>
+
+<DT><CODE>until</CODE>
+<DD>Temporary internal breakpoint used by the GDB <CODE>until</CODE> command.
+<P>
+
+<DT><CODE>finish</CODE>
+<DD>Temporary internal breakpoint used by the GDB <CODE>finish</CODE> command.
+<P>
+
+<DT><CODE>shlib events</CODE>
+<DD>Shared library events.
+<P>
+
+</DL>
+<P>
+
+<A NAME="IDX1516"></A>
+<DT><CODE>maint check-symtabs</CODE>
+<DD>Check the consistency of psymtabs and symtabs.
+<P>
+
+<A NAME="IDX1517"></A>
+<DT><CODE>maint cplus first_component <VAR>name</VAR></CODE>
+<DD>Print the first C<TT>++</TT> class/namespace component of <VAR>name</VAR>.
+<P>
+
+<A NAME="IDX1518"></A>
+<DT><CODE>maint cplus namespace</CODE>
+<DD>Print the list of possible C<TT>++</TT> namespaces.
+<P>
+
+<A NAME="IDX1519"></A>
+<DT><CODE>maint demangle <VAR>name</VAR></CODE>
+<DD>Demangle a C<TT>++</TT> or Objective-C mangled <VAR>name</VAR>.
+<P>
+
+<A NAME="IDX1520"></A>
+<A NAME="IDX1521"></A>
+<A NAME="IDX1522"></A>
+<DT><CODE>maint deprecate <VAR>command</VAR> [<VAR>replacement</VAR>]</CODE>
+<DD><DT><CODE>maint undeprecate <VAR>command</VAR></CODE>
+<DD>Deprecate or undeprecate the named <VAR>command</VAR>.  Deprecated commands
+cause GDB to issue a warning when you use them.  The optional
+argument <VAR>replacement</VAR> says which newer command should be used in
+favor of the deprecated one; if it is given, GDB will mention
+the replacement as part of the warning.
+<P>
+
+<A NAME="IDX1523"></A>
+<DT><CODE>maint dump-me</CODE>
+<DD><A NAME="IDX1524"></A>
+Cause a fatal signal in the debugger and force it to dump its core.
+This is supported only on systems which support aborting a program
+with the <CODE>SIGQUIT</CODE> signal.
+<P>
+
+<A NAME="IDX1525"></A>
+<A NAME="IDX1526"></A>
+<DT><CODE>maint internal-error [<VAR>message-text</VAR>]</CODE>
+<DD><DT><CODE>maint internal-warning [<VAR>message-text</VAR>]</CODE>
+<DD>Cause GDB to call the internal function <CODE>internal_error</CODE>
+or <CODE>internal_warning</CODE> and hence behave as though an internal error
+or internal warning has been detected.  In addition to reporting the
+internal problem, these functions give the user the opportunity to
+either quit GDB or create a core file of the current
+GDB session.
+<P>
+
+These commands take an optional parameter <VAR>message-text</VAR> that is
+used as the text of the error or warning message.
+</P><P>
+
+Here's an example of using <CODE>internal-error</CODE>:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) <KBD>maint internal-error testing, 1, 2</KBD>
+<small>...</small>/maint.c:121: internal-error: testing, 1, 2
+A problem internal to GDB has been detected.  Further
+debugging may prove unreliable.
+Quit this debugging session? (y or n) <KBD>n</KBD>
+Create a core file? (y or n) <KBD>n</KBD>
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX1527"></A>
+<DT><CODE>maint packet <VAR>text</VAR></CODE>
+<DD>If GDB is talking to an inferior via the serial protocol,
+then this command sends the string <VAR>text</VAR> to the inferior, and
+displays the response packet.  GDB supplies the initial
+<SAMP>`$'</SAMP> character, the terminating <SAMP>`#'</SAMP> character, and the
+checksum.
+<P>
+
+<A NAME="IDX1528"></A>
+<DT><CODE>maint print architecture [<VAR>file</VAR>]</CODE>
+<DD>Print the entire architecture configuration.  The optional argument
+<VAR>file</VAR> names the file where the output goes.
+<P>
+
+<A NAME="IDX1529"></A>
+<DT><CODE>maint print c-tdesc</CODE>
+<DD>Print the current target description (see section <A HREF="gdb_35.html#SEC745">F. Target Descriptions</A>) as
+a C source file.  The created source file can be used in GDB
+when an XML parser is not available to parse the description.
+<P>
+
+<A NAME="IDX1530"></A>
+<DT><CODE>maint print dummy-frames</CODE>
+<DD>Prints the contents of GDB's internal dummy-frame stack.
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) <KBD>b add</KBD>
+<small>...</small>
+(gdb) <KBD>print add(2,3)</KBD>
+Breakpoint 2, add (a=2, b=3) at <small>...</small>
+58	  return (a + b);
+The program being debugged stopped while in a function called from GDB.
+<small>...</small>
+(gdb) <KBD>maint print dummy-frames</KBD>
+0x1a57c80: pc=0x01014068 fp=0x0200bddc sp=0x0200bdd6
+ top=0x0200bdd4 id={stack=0x200bddc,code=0x101405c}
+ call_lo=0x01014000 call_hi=0x01014001
+(gdb)
+</FONT></pre></td></tr></table></P><P>
+
+Takes an optional file parameter.
+</P><P>
+
+<A NAME="IDX1531"></A>
+<A NAME="IDX1532"></A>
+<A NAME="IDX1533"></A>
+<A NAME="IDX1534"></A>
+<DT><CODE>maint print registers [<VAR>file</VAR>]</CODE>
+<DD><DT><CODE>maint print raw-registers [<VAR>file</VAR>]</CODE>
+<DD><DT><CODE>maint print cooked-registers [<VAR>file</VAR>]</CODE>
+<DD><DT><CODE>maint print register-groups [<VAR>file</VAR>]</CODE>
+<DD>Print GDB's internal register data structures.
+<P>
+
+The command <CODE>maint print raw-registers</CODE> includes the contents of
+the raw register cache; the command <CODE>maint print cooked-registers</CODE>
+includes the (cooked) value of all registers; and the command
+<CODE>maint print register-groups</CODE> includes the groups that each
+register is a member of.  See section `Registers' in <CITE>GDB Internals</CITE>.
+</P><P>
+
+These commands take an optional parameter, a file name to which to
+write the information.
+</P><P>
+
+<A NAME="IDX1535"></A>
+<DT><CODE>maint print reggroups [<VAR>file</VAR>]</CODE>
+<DD>Print GDB's internal register group data structures.  The
+optional argument <VAR>file</VAR> tells to what file to write the
+information.
+<P>
+
+The register groups info looks like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) <KBD>maint print reggroups</KBD>
+ Group      Type
+ general    user
+ float      user
+ all        user
+ vector     user
+ system     user
+ save       internal
+ restore    internal
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX1536"></A>
+<DT><CODE>flushregs</CODE>
+<DD>This command forces GDB to flush its internal register cache.
+<P>
+
+<A NAME="IDX1537"></A>
+<A NAME="IDX1538"></A>
+<DT><CODE>maint print objfiles</CODE>
+<DD>Print a dump of all known object files.  For each object file, this
+command prints its name, address in memory, and all of its psymtabs
+and symtabs.
+<P>
+
+<A NAME="IDX1539"></A>
+<A NAME="IDX1540"></A>
+<DT><CODE>maint print statistics</CODE>
+<DD>This command prints, for each object file in the program, various data
+about that object file followed by the byte cache (<EM>bcache</EM>)
+statistics for the object file.  The objfile data includes the number
+of minimal, partial, full, and stabs symbols, the number of types
+defined by the objfile, the number of as yet unexpanded psym tables,
+the number of line tables and string tables, and the amount of memory
+used by the various tables.  The bcache statistics include the counts,
+sizes, and counts of duplicates of all and unique objects, max,
+average, and median entry size, total memory used and its overhead and
+savings, and various measures of the hash table size and chain
+lengths.
+<P>
+
+<A NAME="IDX1541"></A>
+<A NAME="IDX1542"></A>
+<DT><CODE>maint print target-stack</CODE>
+<DD>A <EM>target</EM> is an interface between the debugger and a particular
+kind of file or process.  Targets can be stacked in <EM>strata</EM>,
+so that more than one target can potentially respond to a request.
+In particular, memory accesses will walk down the stack of targets
+until they find a target that is interested in handling that particular
+address.
+<P>
+
+This command prints a short description of each layer that was pushed on
+the <EM>target stack</EM>, starting from the top layer down to the bottom one.
+</P><P>
+
+<A NAME="IDX1543"></A>
+<A NAME="IDX1544"></A>
+<DT><CODE>maint print type <VAR>expr</VAR></CODE>
+<DD>Print the type chain for a type specified by <VAR>expr</VAR>.  The argument
+can be either a type name or a symbol.  If it is a symbol, the type of
+that symbol is described.  The type chain produced by this command is
+a recursive definition of the data type as stored in GDB's
+data structures, including its flags and contained types.
+<P>
+
+<A NAME="IDX1545"></A>
+<A NAME="IDX1546"></A>
+<DT><CODE>maint set dwarf2 max-cache-age</CODE>
+<DD><DT><CODE>maint show dwarf2 max-cache-age</CODE>
+<DD>Control the DWARF 2 compilation unit cache.
+<P>
+
+<A NAME="IDX1547"></A>
+In object files with inter-compilation-unit references, such as those
+produced by the GCC option <SAMP>`-feliminate-dwarf2-dups'</SAMP>, the DWARF 2
+reader needs to frequently refer to previously read compilation units.
+This setting controls how long a compilation unit will remain in the
+cache if it is not referenced.  A higher limit means that cached
+compilation units will be stored in memory longer, and more total
+memory will be used.  Setting it to zero disables caching, which will
+slow down GDB startup, but reduce memory consumption.
+</P><P>
+
+<A NAME="IDX1548"></A>
+<A NAME="IDX1549"></A>
+<A NAME="IDX1550"></A>
+<DT><CODE>maint set profile</CODE>
+<DD><DT><CODE>maint show profile</CODE>
+<DD>Control profiling of GDB.
+<P>
+
+Profiling will be disabled until you use the <SAMP>`maint set profile'</SAMP>
+command to enable it.  When you enable profiling, the system will begin
+collecting timing and execution count data; when you disable profiling or
+exit GDB, the results will be written to a log file.  Remember that
+if you use profiling, GDB will overwrite the profiling log file
+(often called <TT>`gmon.out'</TT>).  If you have a record of important profiling
+data in a <TT>`gmon.out'</TT> file, be sure to move it to a safe location.
+</P><P>
+
+Configuring with <SAMP>`--enable-profiling'</SAMP> arranges for GDB to be
+compiled with the <SAMP>`-pg'</SAMP> compiler option.
+</P><P>
+
+<A NAME="IDX1551"></A>
+<A NAME="IDX1552"></A>
+<DT><CODE>maint show-debug-regs</CODE>
+<DD>Control whether to show variables that mirror the x86 hardware debug
+registers.  Use <CODE>ON</CODE> to enable, <CODE>OFF</CODE> to disable.  If
+enabled, the debug registers values are shown when GDB inserts or
+removes a hardware breakpoint or watchpoint, and when the inferior
+triggers a hardware-assisted breakpoint or watchpoint.
+<P>
+
+<A NAME="IDX1553"></A>
+<A NAME="IDX1554"></A>
+<DT><CODE>maint space</CODE>
+<DD>Control whether to display memory usage for each command.  If set to a
+nonzero value, GDB will display how much memory each command
+took, following the command's own output.  This can also be requested
+by invoking GDB with the <SAMP>`--statistics'</SAMP> command-line
+switch (see section <A HREF="gdb_3.html#SEC9">2.1.2 Choosing Modes</A>).
+<P>
+
+<A NAME="IDX1555"></A>
+<A NAME="IDX1556"></A>
+<DT><CODE>maint time</CODE>
+<DD>Control whether to display the execution time for each command.  If
+set to a nonzero value, GDB will display how much time it
+took to execute each command, following the command's own output.
+This can also be requested by invoking GDB with the
+<SAMP>`--statistics'</SAMP> command-line switch (see section <A HREF="gdb_3.html#SEC9">2.1.2 Choosing Modes</A>).
+<P>
+
+<A NAME="IDX1557"></A>
+<DT><CODE>maint translate-address [<VAR>section</VAR>] <VAR>addr</VAR></CODE>
+<DD>Find the symbol stored at the location specified by the address
+<VAR>addr</VAR> and an optional section name <VAR>section</VAR>.  If found,
+GDB prints the name of the closest symbol and an offset from
+the symbol's location to the specified address.  This is similar to
+the <CODE>info address</CODE> command (see section <A HREF="gdb_14.html#SEC146">13. Examining the Symbol Table</A>), except that this
+command also allows to find symbols in other sections.
+<P>
+
+</DL>
+<P>
+
+The following command is useful for non-interactive invocations of
+GDB, such as in the test suite.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set watchdog <VAR>nsec</VAR></CODE>
+<DD><A NAME="IDX1558"></A>
+<A NAME="IDX1559"></A>
+<A NAME="IDX1560"></A>
+Set the maximum number of seconds GDB will wait for the
+target operation to finish.  If this time expires, GDB
+reports and error and the command is aborted.
+<P>
+
+<DT><CODE>show watchdog</CODE>
+<DD>Show the current setting of the target wait timeout.
+</DL>
+<P>
+
+<A NAME="Remote Protocol"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_33.html#SEC694"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,3053 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Configurations</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Configurations">
+<META NAME="keywords" CONTENT="Debugging with GDB: Configurations">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC177"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_18.html#SEC176"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_3.html#SEC6"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 18. Configuration-Specific Information </H1>
+<!--docid::SEC177::-->
+<P>
+
+While nearly all GDB commands are available for all native and
+cross versions of the debugger, there are some exceptions.  This chapter
+describes things that are only available in certain configurations.
+</P><P>
+
+There are three major categories of configurations: native
+configurations, where the host and target are the same, embedded
+operating system configurations, which are usually the same for several
+different processor architectures, and bare embedded processors, which
+are quite different from each other.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC178">18.1 Native</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC189">18.2 Embedded Operating Systems</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC194">18.3 Embedded Processors</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC212">18.4 Architectures</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Native"></A>
+<HR SIZE="6">
+<A NAME="SEC178"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC179"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 18.1 Native </H2>
+<!--docid::SEC178::-->
+<P>
+
+This section describes details specific to particular native
+configurations.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC179">18.1.1 HP-UX</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC180">18.1.2 BSD libkvm Interface</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Debugging BSD kernel memory images</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC181">18.1.3 SVR4 Process Information</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">SVR4 process information</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC182">18.1.4 Features for Debugging DJGPP Programs</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Features specific to the DJGPP port</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC183">18.1.5 Features for Debugging MS Windows PE Executables</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Features specific to the Cygwin port</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC187">18.1.6 Commands Specific to GNU Hurd Systems</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Features specific to GNU Hurd</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC188">18.1.7 QNX Neutrino</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Features specific to QNX Neutrino</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="HP-UX"></A>
+<HR SIZE="6">
+<A NAME="SEC179"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC180"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.1 HP-UX </H3>
+<!--docid::SEC179::-->
+<P>
+
+On HP-UX systems, if you refer to a function or variable name that
+begins with a dollar sign, GDB searches for a user or system
+name first, before it searches for a convenience variable.
+</P><P>
+
+<A NAME="BSD libkvm Interface"></A>
+<HR SIZE="6">
+<A NAME="SEC180"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC179"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC181"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC181"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.2 BSD libkvm Interface </H3>
+<!--docid::SEC180::-->
+<P>
+
+<A NAME="IDX862"></A>
+<A NAME="IDX863"></A>
+<A NAME="IDX864"></A>
+</P><P>
+
+BSD-derived systems (FreeBSD/NetBSD/OpenBSD) have a kernel memory
+interface that provides a uniform interface for accessing kernel virtual
+memory images, including live systems and crash dumps.  GDB
+uses this interface to allow you to debug live kernels and kernel crash
+dumps on many native BSD configurations.  This is implemented as a
+special <CODE>kvm</CODE> debugging target.  For debugging a live system, load
+the currently running kernel into GDB and connect to the
+<CODE>kvm</CODE> target:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) <B>target kvm</B>
+</FONT></pre></td></tr></table></P><P>
+
+For debugging crash dumps, provide the file name of the crash dump as an
+argument:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) <B>target kvm /var/crash/bsd.0</B>
+</FONT></pre></td></tr></table></P><P>
+
+Once connected to the <CODE>kvm</CODE> target, the following commands are
+available:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX865"></A>
+<DT><CODE>kvm pcb</CODE>
+<DD>Set current context from the <EM>Process Control Block</EM> (PCB) address.
+<P>
+
+<DT><CODE>kvm proc</CODE>
+<DD>Set current context from proc address.  This command isn't available on
+modern FreeBSD systems.
+</DL>
+<P>
+
+<A NAME="SVR4 Process Information"></A>
+<HR SIZE="6">
+<A NAME="SEC181"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC180"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC182"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC182"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.3 SVR4 Process Information </H3>
+<!--docid::SEC181::-->
+<P>
+
+Many versions of SVR4 and compatible systems provide a facility called
+<SAMP>`/proc'</SAMP> that can be used to examine the image of a running
+process using file-system subroutines.  If GDB is configured
+for an operating system with this facility, the command <CODE>info
+proc</CODE> is available to report information about the process running
+your program, or about any process running on your system.  <CODE>info
+proc</CODE> works only on SVR4 systems that include the <CODE>procfs</CODE> code.
+This includes, as of this writing, GNU/Linux, OSF/1 (Digital
+Unix), Solaris, Irix, and Unixware, but not HP-UX, for example.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX866"></A>
+<A NAME="IDX867"></A>
+<DT><CODE>info proc</CODE>
+<DD><DT><CODE>info proc <VAR>process-id</VAR></CODE>
+<DD>Summarize available information about any running process.  If a
+process ID is specified by <VAR>process-id</VAR>, display information about
+that process; otherwise display information about the program being
+debugged.  The summary includes the debugged process ID, the command
+line used to invoke it, its current working directory, and its
+executable file's absolute file name.
+<P>
+
+On some systems, <VAR>process-id</VAR> can be of the form
+<SAMP>`[<VAR>pid</VAR>]/<VAR>tid</VAR>'</SAMP> which specifies a certain thread ID
+within a process.  If the optional <VAR>pid</VAR> part is missing, it means
+a thread from the process being debugged (the leading <SAMP>`/'</SAMP> still
+needs to be present, or else GDB will interpret the number as
+a process ID rather than a thread ID).
+</P><P>
+
+<DT><CODE>info proc mappings</CODE>
+<DD><A NAME="IDX868"></A>
+Report the memory address space ranges accessible in the program, with
+information on whether the process has read, write, or execute access
+rights to each range.  On GNU/Linux systems, each memory range
+includes the object file which is mapped to that range, instead of the
+memory access rights to that range.
+<P>
+
+<DT><CODE>info proc stat</CODE>
+<DD><DT><CODE>info proc status</CODE>
+<DD><A NAME="IDX869"></A>
+These subcommands are specific to GNU/Linux systems.  They show
+the process-related information, including the user ID and group ID;
+how many threads are there in the process; its virtual memory usage;
+the signals that are pending, blocked, and ignored; its TTY; its
+consumption of system and user time; its stack size; its <SAMP>`nice'</SAMP>
+value; etc.  For more information, see the <SAMP>`proc'</SAMP> man page
+(type <KBD>man 5 proc</KBD> from your shell prompt).
+<P>
+
+<DT><CODE>info proc all</CODE>
+<DD>Show all the information about the process described under all of the
+above <CODE>info proc</CODE> subcommands.
+<P>
+
+<DT><CODE>set procfs-trace</CODE>
+<DD><A NAME="IDX870"></A>
+<A NAME="IDX871"></A>
+This command enables and disables tracing of <CODE>procfs</CODE> API calls.
+<P>
+
+<DT><CODE>show procfs-trace</CODE>
+<DD><A NAME="IDX872"></A>
+Show the current state of <CODE>procfs</CODE> API call tracing.
+<P>
+
+<DT><CODE>set procfs-file <VAR>file</VAR></CODE>
+<DD><A NAME="IDX873"></A>
+Tell GDB to write <CODE>procfs</CODE> API trace to the named
+<VAR>file</VAR>.  GDB appends the trace info to the previous
+contents of the file.  The default is to display the trace on the
+standard output.
+<P>
+
+<DT><CODE>show procfs-file</CODE>
+<DD><A NAME="IDX874"></A>
+Show the file to which <CODE>procfs</CODE> API trace is written.
+<P>
+
+<DT><CODE>proc-trace-entry</CODE>
+<DD><DT><CODE>proc-trace-exit</CODE>
+<DD><DT><CODE>proc-untrace-entry</CODE>
+<DD><DT><CODE>proc-untrace-exit</CODE>
+<DD><A NAME="IDX875"></A>
+<A NAME="IDX876"></A>
+<A NAME="IDX877"></A>
+<A NAME="IDX878"></A>
+These commands enable and disable tracing of entries into and exits
+from the <CODE>syscall</CODE> interface.
+<P>
+
+<DT><CODE>info pidlist</CODE>
+<DD><A NAME="IDX879"></A>
+<A NAME="IDX880"></A>
+For QNX Neutrino only, this command displays the list of all the
+processes and all the threads within each process.
+<P>
+
+<DT><CODE>info meminfo</CODE>
+<DD><A NAME="IDX881"></A>
+<A NAME="IDX882"></A>
+For QNX Neutrino only, this command displays the list of all mapinfos.
+</DL>
+<P>
+
+<A NAME="DJGPP Native"></A>
+<HR SIZE="6">
+<A NAME="SEC182"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC181"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC183"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC183"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.4 Features for Debugging DJGPP Programs </H3>
+<!--docid::SEC182::-->
+<P>
+
+<A NAME="IDX883"></A>
+DJGPP is a port of the GNU development tools to MS-DOS and
+MS-Windows.  DJGPP programs are 32-bit protected-mode programs
+that use the <EM>DPMI</EM> (DOS Protected-Mode Interface) API to run on
+top of real-mode DOS systems and their emulations.
+</P><P>
+
+GDB supports native debugging of DJGPP programs, and
+defines a few commands specific to the DJGPP port.  This
+subsection describes those commands.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX884"></A>
+<DT><CODE>info dos</CODE>
+<DD>This is a prefix of DJGPP-specific commands which print
+information about the target system and important OS structures.
+<P>
+
+<A NAME="IDX885"></A>
+<A NAME="IDX886"></A>
+<A NAME="IDX887"></A>
+<DT><CODE>info dos sysinfo</CODE>
+<DD>This command displays assorted information about the underlying
+platform: the CPU type and features, the OS version and flavor, the
+DPMI version, and the available conventional and DPMI memory.
+<P>
+
+<A NAME="IDX888"></A>
+<A NAME="IDX889"></A>
+<A NAME="IDX890"></A>
+<A NAME="IDX891"></A>
+<A NAME="IDX892"></A>
+<DT><CODE>info dos gdt</CODE>
+<DD><DT><CODE>info dos ldt</CODE>
+<DD><DT><CODE>info dos idt</CODE>
+<DD>These 3 commands display entries from, respectively, Global, Local,
+and Interrupt Descriptor Tables (GDT, LDT, and IDT).  The descriptor
+tables are data structures which store a descriptor for each segment
+that is currently in use.  The segment's selector is an index into a
+descriptor table; the table entry for that index holds the
+descriptor's base address and limit, and its attributes and access
+rights.
+<P>
+
+A typical DJGPP program uses 3 segments: a code segment, a data
+segment (used for both data and the stack), and a DOS segment (which
+allows access to DOS/BIOS data structures and absolute addresses in
+conventional memory).  However, the DPMI host will usually define
+additional segments in order to support the DPMI environment.
+</P><P>
+
+<A NAME="IDX893"></A>
+These commands allow to display entries from the descriptor tables.
+Without an argument, all entries from the specified table are
+displayed.  An argument, which should be an integer expression, means
+display a single entry whose index is given by the argument.  For
+example, here's a convenient way to display information about the
+debugged program's data segment:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>(gdb) info dos ldt $ds</CODE>
+<CODE>0x13f: base=0x11970000 limit=0x0009ffff 32-Bit Data (Read/Write, Exp-up)</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+This comes in handy when you want to see whether a pointer is outside
+the data segment's limit (i.e. <EM>garbled</EM>).
+</P><P>
+
+<A NAME="IDX894"></A>
+<DT><CODE>info dos pde</CODE>
+<DD><DT><CODE>info dos pte</CODE>
+<DD>These two commands display entries from, respectively, the Page
+Directory and the Page Tables.  Page Directories and Page Tables are
+data structures which control how virtual memory addresses are mapped
+into physical addresses.  A Page Table includes an entry for every
+page of memory that is mapped into the program's address space; there
+may be several Page Tables, each one holding up to 4096 entries.  A
+Page Directory has up to 4096 entries, one each for every Page Table
+that is currently in use.
+<P>
+
+Without an argument, <KBD>info dos pde</KBD> displays the entire Page
+Directory, and <KBD>info dos pte</KBD> displays all the entries in all of
+the Page Tables.  An argument, an integer expression, given to the
+<KBD>info dos pde</KBD> command means display only that entry from the Page
+Directory table.  An argument given to the <KBD>info dos pte</KBD> command
+means display entries from a single Page Table, the one pointed to by
+the specified entry in the Page Directory.
+</P><P>
+
+<A NAME="IDX895"></A>
+These commands are useful when your program uses <EM>DMA</EM> (Direct
+Memory Access), which needs physical addresses to program the DMA
+controller.
+</P><P>
+
+These commands are supported only with some DPMI servers.
+</P><P>
+
+<A NAME="IDX896"></A>
+<DT><CODE>info dos address-pte <VAR>addr</VAR></CODE>
+<DD>This command displays the Page Table entry for a specified linear
+address.  The argument <VAR>addr</VAR> is a linear address which should
+already have the appropriate segment's base address added to it,
+because this command accepts addresses which may belong to <EM>any</EM>
+segment.  For example, here's how to display the Page Table entry for
+the page where a variable <CODE>i</CODE> is stored:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>(gdb) info dos address-pte __djgpp_base_address + (char *)&#38;i</CODE>
+<CODE>Page Table entry for address 0x11a00d30:</CODE>
+<CODE>Base=0x02698000 Dirty Acc. Not-Cached Write-Back Usr Read-Write +0xd30</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+This says that <CODE>i</CODE> is stored at offset <CODE>0xd30</CODE> from the page
+whose physical base address is <CODE>0x02698000</CODE>, and shows all the
+attributes of that page.
+</P><P>
+
+Note that you must cast the addresses of variables to a <CODE>char *</CODE>,
+since otherwise the value of <CODE>__djgpp_base_address</CODE>, the base
+address of all variables and functions in a DJGPP program, will
+be added using the rules of C pointer arithmetics: if <CODE>i</CODE> is
+declared an <CODE>int</CODE>, GDB will add 4 times the value of
+<CODE>__djgpp_base_address</CODE> to the address of <CODE>i</CODE>.
+</P><P>
+
+Here's another example, it displays the Page Table entry for the
+transfer buffer:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><CODE>(gdb) info dos address-pte *((unsigned *)&#38;_go32_info_block + 3)</CODE>
+<CODE>Page Table entry for address 0x29110:</CODE>
+<CODE>Base=0x00029000 Dirty Acc. Not-Cached Write-Back Usr Read-Write +0x110</CODE>
+</FONT></pre></td></tr></table></P><P>
+
+(The <CODE>+ 3</CODE> offset is because the transfer buffer's address is the
+3rd member of the <CODE>_go32_info_block</CODE> structure.)  The output
+clearly shows that this DPMI server maps the addresses in conventional
+memory 1:1, i.e. the physical (<CODE>0x00029000</CODE> + <CODE>0x110</CODE>) and
+linear (<CODE>0x29110</CODE>) addresses are identical.
+</P><P>
+
+This command is supported only with some DPMI servers.
+</DL>
+<P>
+
+<A NAME="IDX897"></A>
+In addition to native debugging, the DJGPP port supports remote
+debugging via a serial data link.  The following commands are specific
+to remote serial debugging in the DJGPP port of GDB.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX898"></A>
+<A NAME="IDX899"></A>
+<A NAME="IDX900"></A>
+<A NAME="IDX901"></A>
+<A NAME="IDX902"></A>
+<A NAME="IDX903"></A>
+<A NAME="IDX904"></A>
+<A NAME="IDX905"></A>
+<DT><CODE>set com1base <VAR>addr</VAR></CODE>
+<DD>This command sets the base I/O port address of the <TT>`COM1'</TT> serial
+port.
+<P>
+
+<DT><CODE>set com1irq <VAR>irq</VAR></CODE>
+<DD>This command sets the <EM>Interrupt Request</EM> (<CODE>IRQ</CODE>) line to use
+for the <TT>`COM1'</TT> serial port.
+<P>
+
+There are similar commands <SAMP>`set com2base'</SAMP>, <SAMP>`set com3irq'</SAMP>,
+etc. for setting the port address and the <CODE>IRQ</CODE> lines for the
+other 3 COM ports.
+</P><P>
+
+<A NAME="IDX906"></A>
+<A NAME="IDX907"></A>
+<A NAME="IDX908"></A>
+<A NAME="IDX909"></A>
+<A NAME="IDX910"></A>
+<A NAME="IDX911"></A>
+<A NAME="IDX912"></A>
+<A NAME="IDX913"></A>
+The related commands <SAMP>`show com1base'</SAMP>, <SAMP>`show com1irq'</SAMP> etc.
+display the current settings of the base address and the <CODE>IRQ</CODE>
+lines used by the COM ports.
+</P><P>
+
+<DT><CODE>info serial</CODE>
+<DD><A NAME="IDX914"></A>
+<A NAME="IDX915"></A>
+This command prints the status of the 4 DOS serial ports.  For each
+port, it prints whether it's active or not, its I/O base address and
+IRQ number, whether it uses a 16550-style FIFO, its baudrate, and the
+counts of various errors encountered so far.
+</DL>
+<P>
+
+<A NAME="Cygwin Native"></A>
+<HR SIZE="6">
+<A NAME="SEC183"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC182"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC184"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.5 Features for Debugging MS Windows PE Executables </H3>
+<!--docid::SEC183::-->
+<P>
+
+GDB supports native debugging of MS Windows programs, including
+DLLs with and without symbolic debugging information.  There are various
+additional Cygwin-specific commands, described in this section.
+Working with DLLs that have no debugging symbols is described in
+<A HREF="gdb_19.html#SEC184">18.1.5.1 Support for DLLs without Debugging Symbols</A>.
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX916"></A>
+<DT><CODE>info w32</CODE>
+<DD>This is a prefix of MS Windows-specific commands which print
+information about the target system and important OS structures.
+<P>
+
+<DT><CODE>info w32 selector</CODE>
+<DD>This command displays information returned by
+the Win32 API <CODE>GetThreadSelectorEntry</CODE> function.
+It takes an optional argument that is evaluated to
+a long value to give the information about this given selector.
+Without argument, this command displays information
+about the six segment registers.
+<P>
+
+<A NAME="IDX917"></A>
+<DT><CODE>info dll</CODE>
+<DD>This is a Cygwin-specific alias of <CODE>info shared</CODE>.
+<P>
+
+<A NAME="IDX918"></A>
+<DT><CODE>dll-symbols</CODE>
+<DD>This command loads symbols from a dll similarly to
+add-sym command but without the need to specify a base address.
+<P>
+
+<A NAME="IDX919"></A>
+<A NAME="IDX920"></A>
+<A NAME="IDX921"></A>
+<DT><CODE>set cygwin-exceptions <VAR>mode</VAR></CODE>
+<DD>If <VAR>mode</VAR> is <CODE>on</CODE>, GDB will break on exceptions that
+happen inside the Cygwin DLL.  If <VAR>mode</VAR> is <CODE>off</CODE>,
+GDB will delay recognition of exceptions, and may ignore some
+exceptions which seem to be caused by internal Cygwin DLL
+"bookkeeping".  This option is meant primarily for debugging the
+Cygwin DLL itself; the default value is <CODE>off</CODE> to avoid annoying
+GDB users with false <CODE>SIGSEGV</CODE> signals.
+<P>
+
+<A NAME="IDX922"></A>
+<DT><CODE>show cygwin-exceptions</CODE>
+<DD>Displays whether GDB will break on exceptions that happen
+inside the Cygwin DLL itself.
+<P>
+
+<A NAME="IDX923"></A>
+<DT><CODE>set new-console <VAR>mode</VAR></CODE>
+<DD>If <VAR>mode</VAR> is <CODE>on</CODE> the debuggee will
+be started in a new console on next start.
+If <VAR>mode</VAR> is <CODE>off</CODE>i, the debuggee will
+be started in the same console as the debugger.
+<P>
+
+<A NAME="IDX924"></A>
+<DT><CODE>show new-console</CODE>
+<DD>Displays whether a new console is used
+when the debuggee is started.
+<P>
+
+<A NAME="IDX925"></A>
+<DT><CODE>set new-group <VAR>mode</VAR></CODE>
+<DD>This boolean value controls whether the debuggee should
+start a new group or stay in the same group as the debugger.
+This affects the way the Windows OS handles
+<SAMP>`Ctrl-C'</SAMP>.
+<P>
+
+<A NAME="IDX926"></A>
+<DT><CODE>show new-group</CODE>
+<DD>Displays current value of new-group boolean.
+<P>
+
+<A NAME="IDX927"></A>
+<DT><CODE>set debugevents</CODE>
+<DD>This boolean value adds debug output concerning kernel events related
+to the debuggee seen by the debugger.  This includes events that
+signal thread and process creation and exit, DLL loading and
+unloading, console interrupts, and debugging messages produced by the
+Windows <CODE>OutputDebugString</CODE> API call.
+<P>
+
+<A NAME="IDX928"></A>
+<DT><CODE>set debugexec</CODE>
+<DD>This boolean value adds debug output concerning execute events
+(such as resume thread) seen by the debugger.
+<P>
+
+<A NAME="IDX929"></A>
+<DT><CODE>set debugexceptions</CODE>
+<DD>This boolean value adds debug output concerning exceptions in the
+debuggee seen by the debugger.
+<P>
+
+<A NAME="IDX930"></A>
+<DT><CODE>set debugmemory</CODE>
+<DD>This boolean value adds debug output concerning debuggee memory reads
+and writes by the debugger.
+<P>
+
+<A NAME="IDX931"></A>
+<DT><CODE>set shell</CODE>
+<DD>This boolean values specifies whether the debuggee is called
+via a shell or directly (default value is on).
+<P>
+
+<A NAME="IDX932"></A>
+<DT><CODE>show shell</CODE>
+<DD>Displays if the debuggee will be started with a shell.
+<P>
+
+</DL>
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC184">18.1.5.1 Support for DLLs without Debugging Symbols</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Support for DLLs without debugging symbols</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Non-debug DLL Symbols"></A>
+<HR SIZE="6">
+<A NAME="SEC184"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC183"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC185"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC183"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.1.5.1 Support for DLLs without Debugging Symbols </H4>
+<!--docid::SEC184::-->
+<P>
+
+Very often on windows, some of the DLLs that your program relies on do
+not include symbolic debugging information (for example,
+<TT>`kernel32.dll'</TT>).  When GDB doesn't recognize any debugging
+symbols in a DLL, it relies on the minimal amount of symbolic
+information contained in the DLL's export table.  This section
+describes working with such symbols, known internally to GDB as
+"minimal symbols".
+</P><P>
+
+Note that before the debugged program has started execution, no DLLs
+will have been loaded.  The easiest way around this problem is simply to
+start the program -- either by setting a breakpoint or letting the
+program run once to completion.  It is also possible to force
+GDB to load a particular DLL before starting the executable ---
+see the shared library information in <A HREF="gdb_16.html#SEC155">15.1 Commands to Specify Files</A>, or the
+<CODE>dll-symbols</CODE> command in <A HREF="gdb_19.html#SEC183">18.1.5 Features for Debugging MS Windows PE Executables</A>.  Currently,
+explicitly loading symbols from a DLL with no debugging information will
+cause the symbol names to be duplicated in GDB's lookup table,
+which may adversely affect symbol lookup performance.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC185"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC184"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC186"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC186"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC183"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.1.5.2 DLL Name Prefixes </H4>
+<!--docid::SEC185::-->
+<P>
+
+In keeping with the naming conventions used by the Microsoft debugging
+tools, DLL export symbols are made available with a prefix based on the
+DLL name, for instance <CODE>KERNEL32!CreateFileA</CODE>.  The plain name is
+also entered into the symbol table, so <CODE>CreateFileA</CODE> is often
+sufficient. In some cases there will be name clashes within a program
+(particularly if the executable itself includes full debugging symbols)
+necessitating the use of the fully qualified name when referring to the
+contents of the DLL. Use single-quotes around the name to avoid the
+exclamation mark ("!")  being interpreted as a language operator.
+</P><P>
+
+Note that the internal name of the DLL may be all upper-case, even
+though the file name of the DLL is lower-case, or vice-versa. Since
+symbols within GDB are <EM>case-sensitive</EM> this may cause
+some confusion. If in doubt, try the <CODE>info functions</CODE> and
+<CODE>info variables</CODE> commands or even <CODE>maint print msymbols</CODE>
+(see section <A HREF="gdb_14.html#SEC146">13. Examining the Symbol Table</A>). Here's an example:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) info function CreateFileA
+All functions matching regular expression "CreateFileA":
+
+Non-debugging symbols:
+0x77e885f4  CreateFileA
+0x77e885f4  KERNEL32!CreateFileA
+</FONT></pre></td></tr></table></P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) info function !
+All functions matching regular expression "!":
+
+Non-debugging symbols:
+0x6100114c  cygwin1!__assert
+0x61004034  cygwin1!_dll_crt0@0
+0x61004240  cygwin1!dll_crt0(per_process *)
+[etc...]
+</FONT></pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC186"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC185"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC183"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.1.5.3 Working with Minimal Symbols </H4>
+<!--docid::SEC186::-->
+<P>
+
+Symbols extracted from a DLL's export table do not contain very much
+type information. All that GDB can do is guess whether a symbol
+refers to a function or variable depending on the linker section that
+contains the symbol. Also note that the actual contents of the memory
+contained in a DLL are not available unless the program is running. This
+means that you cannot examine the contents of a variable or disassemble
+a function within a DLL without a running program.
+</P><P>
+
+Variables are generally treated as pointers and dereferenced
+automatically. For this reason, it is often necessary to prefix a
+variable name with the address-of operator ("&#38;") and provide explicit
+type information in the command. Here's an example of the type of
+problem:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print 'cygwin1!__argv'
+$1 = 268572168
+</FONT></pre></td></tr></table></P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) x 'cygwin1!__argv'
+0x10021610:      "\230y\""
+</FONT></pre></td></tr></table></P><P>
+
+And two possible solutions:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) print ((char **)'cygwin1!__argv')[0]
+$2 = 0x22fd98 "/cygdrive/c/mydirectory/myprogram"
+</FONT></pre></td></tr></table></P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) x/2x &#38;'cygwin1!__argv'
+0x610c0aa8 &#60;cygwin1!__argv&#62;:    0x10021608      0x00000000
+(gdb) x/x 0x10021608
+0x10021608:     0x0022fd98
+(gdb) x/s 0x0022fd98
+0x22fd98:        "/cygdrive/c/mydirectory/myprogram"
+</FONT></pre></td></tr></table></P><P>
+
+Setting a break point within a DLL is possible even before the program
+starts execution. However, under these circumstances, GDB can't
+examine the initial instructions of the function in order to skip the
+function's frame set-up code. You can work around this by using "*&"
+to set the breakpoint at a raw memory address:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdb) break *&#38;'python22!PyOS_Readline'
+Breakpoint 1 at 0x1e04eff0
+</FONT></pre></td></tr></table></P><P>
+
+The author of these extensions is not entirely convinced that setting a
+break point within a shared DLL like <TT>`kernel32.dll'</TT> is completely
+safe.
+</P><P>
+
+<A NAME="Hurd Native"></A>
+<HR SIZE="6">
+<A NAME="SEC187"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC186"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC188"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC188"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.6 Commands Specific to GNU Hurd Systems </H3>
+<!--docid::SEC187::-->
+<P>
+
+This subsection describes GDB commands specific to the
+GNU Hurd native debugging.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set signals</CODE>
+<DD><DT><CODE>set sigs</CODE>
+<DD><A NAME="IDX933"></A>
+<A NAME="IDX934"></A>
+This command toggles the state of inferior signal interception by
+GDB.  Mach exceptions, such as breakpoint traps, are not
+affected by this command.  <CODE>sigs</CODE> is a shorthand alias for
+<CODE>signals</CODE>.
+<P>
+
+<DT><CODE>show signals</CODE>
+<DD><DT><CODE>show sigs</CODE>
+<DD><A NAME="IDX935"></A>
+<A NAME="IDX936"></A>
+Show the current state of intercepting inferior's signals.
+<P>
+
+<DT><CODE>set signal-thread</CODE>
+<DD><DT><CODE>set sigthread</CODE>
+<DD><A NAME="IDX937"></A>
+<A NAME="IDX938"></A>
+This command tells GDB which thread is the <CODE>libc</CODE> signal
+thread.  That thread is run when a signal is delivered to a running
+process.  <CODE>set sigthread</CODE> is the shorthand alias of <CODE>set
+signal-thread</CODE>.
+<P>
+
+<DT><CODE>show signal-thread</CODE>
+<DD><DT><CODE>show sigthread</CODE>
+<DD><A NAME="IDX939"></A>
+<A NAME="IDX940"></A>
+These two commands show which thread will run when the inferior is
+delivered a signal.
+<P>
+
+<DT><CODE>set stopped</CODE>
+<DD><A NAME="IDX941"></A>
+This commands tells GDB that the inferior process is stopped,
+as with the <CODE>SIGSTOP</CODE> signal.  The stopped process can be
+continued by delivering a signal to it.
+<P>
+
+<DT><CODE>show stopped</CODE>
+<DD><A NAME="IDX942"></A>
+This command shows whether GDB thinks the debuggee is
+stopped.
+<P>
+
+<DT><CODE>set exceptions</CODE>
+<DD><A NAME="IDX943"></A>
+Use this command to turn off trapping of exceptions in the inferior.
+When exception trapping is off, neither breakpoints nor
+single-stepping will work.  To restore the default, set exception
+trapping on.
+<P>
+
+<DT><CODE>show exceptions</CODE>
+<DD><A NAME="IDX944"></A>
+Show the current state of trapping exceptions in the inferior.
+<P>
+
+<DT><CODE>set task pause</CODE>
+<DD><A NAME="IDX945"></A>
+<A NAME="IDX946"></A>
+<A NAME="IDX947"></A>
+This command toggles task suspension when GDB has control.
+Setting it to on takes effect immediately, and the task is suspended
+whenever GDB gets control.  Setting it to off will take
+effect the next time the inferior is continued.  If this option is set
+to off, you can use <CODE>set thread default pause on</CODE> or <CODE>set
+thread pause on</CODE> (see below) to pause individual threads.
+<P>
+
+<DT><CODE>show task pause</CODE>
+<DD><A NAME="IDX948"></A>
+Show the current state of task suspension.
+<P>
+
+<DT><CODE>set task detach-suspend-count</CODE>
+<DD><A NAME="IDX949"></A>
+<A NAME="IDX950"></A>
+This command sets the suspend count the task will be left with when
+GDB detaches from it.
+<P>
+
+<DT><CODE>show task detach-suspend-count</CODE>
+<DD>Show the suspend count the task will be left with when detaching.
+<P>
+
+<DT><CODE>set task exception-port</CODE>
+<DD><DT><CODE>set task excp</CODE>
+<DD><A NAME="IDX951"></A>
+This command sets the task exception port to which GDB will
+forward exceptions.  The argument should be the value of the <EM>send
+rights</EM> of the task.  <CODE>set task excp</CODE> is a shorthand alias.
+<P>
+
+<DT><CODE>set noninvasive</CODE>
+<DD><A NAME="IDX952"></A>
+This command switches GDB to a mode that is the least
+invasive as far as interfering with the inferior is concerned.  This
+is the same as using <CODE>set task pause</CODE>, <CODE>set exceptions</CODE>, and
+<CODE>set signals</CODE> to values opposite to the defaults.
+<P>
+
+<DT><CODE>info send-rights</CODE>
+<DD><DT><CODE>info receive-rights</CODE>
+<DD><DT><CODE>info port-rights</CODE>
+<DD><DT><CODE>info port-sets</CODE>
+<DD><DT><CODE>info dead-names</CODE>
+<DD><DT><CODE>info ports</CODE>
+<DD><DT><CODE>info psets</CODE>
+<DD><A NAME="IDX953"></A>
+<A NAME="IDX954"></A>
+<A NAME="IDX955"></A>
+<A NAME="IDX956"></A>
+<A NAME="IDX957"></A>
+These commands display information about, respectively, send rights,
+receive rights, port rights, port sets, and dead names of a task.
+There are also shorthand aliases: <CODE>info ports</CODE> for <CODE>info
+port-rights</CODE> and <CODE>info psets</CODE> for <CODE>info port-sets</CODE>.
+<P>
+
+<DT><CODE>set thread pause</CODE>
+<DD><A NAME="IDX958"></A>
+<A NAME="IDX959"></A>
+<A NAME="IDX960"></A>
+This command toggles current thread suspension when GDB has
+control.  Setting it to on takes effect immediately, and the current
+thread is suspended whenever GDB gets control.  Setting it to
+off will take effect the next time the inferior is continued.
+Normally, this command has no effect, since when GDB has
+control, the whole task is suspended.  However, if you used <CODE>set
+task pause off</CODE> (see above), this command comes in handy to suspend
+only the current thread.
+<P>
+
+<DT><CODE>show thread pause</CODE>
+<DD><A NAME="IDX961"></A>
+This command shows the state of current thread suspension.
+<P>
+
+<DT><CODE>set thread run</CODE>
+<DD>This command sets whether the current thread is allowed to run.
+<P>
+
+<DT><CODE>show thread run</CODE>
+<DD>Show whether the current thread is allowed to run.
+<P>
+
+<DT><CODE>set thread detach-suspend-count</CODE>
+<DD><A NAME="IDX962"></A>
+<A NAME="IDX963"></A>
+This command sets the suspend count GDB will leave on a
+thread when detaching.  This number is relative to the suspend count
+found by GDB when it notices the thread; use <CODE>set thread
+takeover-suspend-count</CODE> to force it to an absolute value.
+<P>
+
+<DT><CODE>show thread detach-suspend-count</CODE>
+<DD>Show the suspend count GDB will leave on the thread when
+detaching.
+<P>
+
+<DT><CODE>set thread exception-port</CODE>
+<DD><DT><CODE>set thread excp</CODE>
+<DD>Set the thread exception port to which to forward exceptions.  This
+overrides the port set by <CODE>set task exception-port</CODE> (see above).
+<CODE>set thread excp</CODE> is the shorthand alias.
+<P>
+
+<DT><CODE>set thread takeover-suspend-count</CODE>
+<DD>Normally, GDB's thread suspend counts are relative to the
+value GDB finds when it notices each thread.  This command
+changes the suspend counts to be absolute instead.
+<P>
+
+<DT><CODE>set thread default</CODE>
+<DD><DT><CODE>show thread default</CODE>
+<DD><A NAME="IDX964"></A>
+Each of the above <CODE>set thread</CODE> commands has a <CODE>set thread
+default</CODE> counterpart (e.g., <CODE>set thread default pause</CODE>, <CODE>set
+thread default exception-port</CODE>, etc.).  The <CODE>thread default</CODE>
+variety of commands sets the default thread properties for all
+threads; you can then change the properties of individual threads with
+the non-default commands.
+</DL>
+<P>
+
+<A NAME="Neutrino"></A>
+<HR SIZE="6">
+<A NAME="SEC188"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC187"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC178"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.1.7 QNX Neutrino </H3>
+<!--docid::SEC188::-->
+<P>
+
+GDB provides the following commands specific to the QNX
+Neutrino target:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set debug nto-debug</CODE>
+<DD><A NAME="IDX965"></A>
+When set to on, enables debugging messages specific to the QNX
+Neutrino support.
+<P>
+
+<DT><CODE>show debug nto-debug</CODE>
+<DD><A NAME="IDX966"></A>
+Show the current state of QNX Neutrino messages.
+</DL>
+<P>
+
+<A NAME="Embedded OS"></A>
+<HR SIZE="6">
+<A NAME="SEC189"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC188"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC190"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 18.2 Embedded Operating Systems </H2>
+<!--docid::SEC189::-->
+<P>
+
+This section describes configurations involving the debugging of
+embedded operating systems that are available for several different
+architectures.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC190">18.2.1 Using GDB with VxWorks</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+GDB includes the ability to debug programs running on
+various real-time operating systems.
+</P><P>
+
+<A NAME="VxWorks"></A>
+<HR SIZE="6">
+<A NAME="SEC190"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC191"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC189"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.2.1 Using GDB with VxWorks </H3>
+<!--docid::SEC190::-->
+<P>
+
+<A NAME="IDX967"></A>
+</P><P>
+
+<DL COMPACT>
+
+<A NAME="IDX968"></A>
+<DT><CODE>target vxworks <VAR>machinename</VAR></CODE>
+<DD>A VxWorks system, attached via TCP/IP.  The argument <VAR>machinename</VAR>
+is the target system's machine name or IP address.
+<P>
+
+</DL>
+<P>
+
+On VxWorks, <CODE>load</CODE> links <VAR>filename</VAR> dynamically on the
+current target system as well as adding its symbols in GDB.
+</P><P>
+
+GDB enables developers to spawn and debug tasks running on networked
+VxWorks targets from a Unix host.  Already-running tasks spawned from
+the VxWorks shell can also be debugged.  GDB uses code that runs on
+both the Unix host and on the VxWorks target.  The program
+<CODE>gdb</CODE> is installed and executed on the Unix host.  (It may be
+installed with the name <CODE>vxgdb</CODE>, to distinguish it from a
+GDB for debugging programs on the host itself.)
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>VxWorks-timeout <VAR>args</VAR></CODE>
+<DD><A NAME="IDX969"></A>
+All VxWorks-based targets now support the option <CODE>vxworks-timeout</CODE>.
+This option is set by the user, and  <VAR>args</VAR> represents the number of
+seconds GDB waits for responses to rpc's.  You might use this if
+your VxWorks target is a slow software simulator or is on the far side
+of a thin network line.
+</DL>
+<P>
+
+The following information on connecting to VxWorks was current when
+this manual was produced; newer releases of VxWorks may use revised
+procedures.
+</P><P>
+
+<A NAME="IDX970"></A>
+To use GDB with VxWorks, you must rebuild your VxWorks kernel
+to include the remote debugging interface routines in the VxWorks
+library <TT>`rdb.a'</TT>.  To do this, define <CODE>INCLUDE_RDB</CODE> in the
+VxWorks configuration file <TT>`configAll.h'</TT> and rebuild your VxWorks
+kernel.  The resulting kernel contains <TT>`rdb.a'</TT>, and spawns the
+source debugging task <CODE>tRdbTask</CODE> when VxWorks is booted.  For more
+information on configuring and remaking VxWorks, see the manufacturer's
+manual.
+</P><P>
+
+Once you have included <TT>`rdb.a'</TT> in your VxWorks system image and set
+your Unix execution search path to find GDB, you are ready to
+run GDB.  From your Unix host, run <CODE>gdb</CODE> (or
+<CODE>vxgdb</CODE>, depending on your installation).
+</P><P>
+
+GDB comes up showing the prompt:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(vxgdb)
+</FONT></pre></td></tr></table></P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC191">18.2.1.1 Connecting to VxWorks</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC192">18.2.1.2 VxWorks Download</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">VxWorks download</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC193">18.2.1.3 Running Tasks</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Running tasks</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="VxWorks Connection"></A>
+<HR SIZE="6">
+<A NAME="SEC191"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC190"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC192"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC190"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.2.1.1 Connecting to VxWorks </H4>
+<!--docid::SEC191::-->
+<P>
+
+The GDB command <CODE>target</CODE> lets you connect to a VxWorks target on the
+network.  To connect to a target whose host name is "<CODE>tt</CODE>", type:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(vxgdb) target vxworks tt
+</FONT></pre></td></tr></table></P><P>
+
+GDB displays messages like these:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>Attaching remote machine across net...
+Connected to tt.
+</FONT></pre></td></tr></table></P><P>
+
+GDB then attempts to read the symbol tables of any object modules
+loaded into the VxWorks target since it was last booted.  GDB locates
+these files by searching the directories listed in the command search
+path (see section <A HREF="gdb_5.html#SEC22">Your Program's Environment</A>); if it fails
+to find an object file, it displays a message such as:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>prog.o: No such file or directory.
+</FONT></pre></td></tr></table></P><P>
+
+When this happens, add the appropriate directory to the search path with
+the GDB command <CODE>path</CODE>, and execute the <CODE>target</CODE>
+command again.
+</P><P>
+
+<A NAME="VxWorks Download"></A>
+<HR SIZE="6">
+<A NAME="SEC192"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC191"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC193"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC193"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC190"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.2.1.2 VxWorks Download </H4>
+<!--docid::SEC192::-->
+<P>
+
+<A NAME="IDX971"></A>
+If you have connected to the VxWorks target and you want to debug an
+object that has not yet been loaded, you can use the GDB
+<CODE>load</CODE> command to download a file from Unix to VxWorks
+incrementally.  The object file given as an argument to the <CODE>load</CODE>
+command is actually opened twice: first by the VxWorks target in order
+to download the code, then by GDB in order to read the symbol
+table.  This can lead to problems if the current working directories on
+the two systems differ.  If both systems have NFS mounted the same
+filesystems, you can avoid these problems by using absolute paths.
+Otherwise, it is simplest to set the working directory on both systems
+to the directory in which the object file resides, and then to reference
+the file by its name, without any path.  For instance, a program
+<TT>`prog.o'</TT> may reside in <TT>`<VAR>vxpath</VAR>/vw/demo/rdb'</TT> in VxWorks
+and in <TT>`<VAR>hostpath</VAR>/vw/demo/rdb'</TT> on the host.  To load this
+program, type this on VxWorks:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>-&#62; cd "<VAR>vxpath</VAR>/vw/demo/rdb"
+</FONT></pre></td></tr></table></P><P>
+
+Then, in GDB, type:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(vxgdb) cd <VAR>hostpath</VAR>/vw/demo/rdb
+(vxgdb) load prog.o
+</FONT></pre></td></tr></table></P><P>
+
+GDB displays a response similar to this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>Reading symbol data from wherever/vw/demo/rdb/prog.o... done.
+</FONT></pre></td></tr></table></P><P>
+
+You can also use the <CODE>load</CODE> command to reload an object module
+after editing and recompiling the corresponding source file.  Note that
+this makes GDB delete all currently-defined breakpoints,
+auto-displays, and convenience variables, and to clear the value
+history.  (This is necessary in order to preserve the integrity of
+debugger's data structures that reference the target system's symbol
+table.)
+</P><P>
+
+<A NAME="VxWorks Attach"></A>
+<HR SIZE="6">
+<A NAME="SEC193"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC192"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC190"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.2.1.3 Running Tasks </H4>
+<!--docid::SEC193::-->
+<P>
+
+<A NAME="IDX972"></A>
+You can also attach to an existing task using the <CODE>attach</CODE> command as
+follows:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(vxgdb) attach <VAR>task</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+where <VAR>task</VAR> is the VxWorks hexadecimal task ID.  The task can be running
+or suspended when you attach to it.  Running tasks are suspended at
+the time of attachment.
+</P><P>
+
+<A NAME="Embedded Processors"></A>
+<HR SIZE="6">
+<A NAME="SEC194"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC193"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC195"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 18.3 Embedded Processors </H2>
+<!--docid::SEC194::-->
+<P>
+
+This section goes into details specific to particular embedded
+configurations.
+</P><P>
+
+<A NAME="IDX973"></A>
+Whenever a specific embedded processor has a simulator, GDB
+allows to send an arbitrary command to the simulator.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>sim <VAR>command</VAR></CODE>
+<DD><A NAME="IDX974"></A>
+Send an arbitrary <VAR>command</VAR> string to the simulator.  Consult the
+documentation for the specific simulator in use for information about
+acceptable commands.
+</DL>
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC195">18.3.1 ARM</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">ARM RDI</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC196">18.3.2 Renesas M32R/D and M32R/SDI</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Renesas M32R/D</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC197">18.3.3 M68k</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Motorola M68K</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC198">18.3.4 MIPS Embedded</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC199">18.3.5 OpenRISC 1000</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">OpenRisc 1000</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC201">18.3.7 HP PA Embedded</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC200">18.3.6 PowerPC Embedded</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC202">18.3.8 Tsqware Sparclet</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC207">18.3.9 Fujitsu Sparclite</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC208">18.3.10 Zilog Z8000</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC209">18.3.11 Atmel AVR</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC210">18.3.12 CRIS</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC211">18.3.13 Renesas Super-H</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="ARM"></A>
+<HR SIZE="6">
+<A NAME="SEC195"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC196"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.1 ARM </H3>
+<!--docid::SEC195::-->
+<P>
+
+<DL COMPACT>
+<A NAME="IDX975"></A>
+<DT><CODE>target rdi <VAR>dev</VAR></CODE>
+<DD>ARM Angel monitor, via RDI library interface to ADP protocol.  You may
+use this target to communicate with both boards running the Angel
+monitor, or with the EmbeddedICE JTAG debug device.
+<P>
+
+<A NAME="IDX976"></A>
+<DT><CODE>target rdp <VAR>dev</VAR></CODE>
+<DD>ARM Demon monitor.
+<P>
+
+</DL>
+<P>
+
+GDB provides the following ARM-specific commands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set arm disassembler</CODE>
+<DD><A NAME="IDX977"></A>
+This commands selects from a list of disassembly styles.  The
+<CODE>"std"</CODE> style is the standard style.
+<P>
+
+<DT><CODE>show arm disassembler</CODE>
+<DD><A NAME="IDX978"></A>
+Show the current disassembly style.
+<P>
+
+<DT><CODE>set arm apcs32</CODE>
+<DD><A NAME="IDX979"></A>
+This command toggles ARM operation mode between 32-bit and 26-bit.
+<P>
+
+<DT><CODE>show arm apcs32</CODE>
+<DD>Display the current usage of the ARM 32-bit mode.
+<P>
+
+<DT><CODE>set arm fpu <VAR>fputype</VAR></CODE>
+<DD>This command sets the ARM floating-point unit (FPU) type.  The
+argument <VAR>fputype</VAR> can be one of these:
+<P>
+
+<DL COMPACT>
+<DT><CODE>auto</CODE>
+<DD>Determine the FPU type by querying the OS ABI.
+<DT><CODE>softfpa</CODE>
+<DD>Software FPU, with mixed-endian doubles on little-endian ARM
+processors.
+<DT><CODE>fpa</CODE>
+<DD>GCC-compiled FPA co-processor.
+<DT><CODE>softvfp</CODE>
+<DD>Software FPU with pure-endian doubles.
+<DT><CODE>vfp</CODE>
+<DD>VFP co-processor.
+</DL>
+<P>
+
+<DT><CODE>show arm fpu</CODE>
+<DD>Show the current type of the FPU.
+<P>
+
+<DT><CODE>set arm abi</CODE>
+<DD>This command forces GDB to use the specified ABI.
+<P>
+
+<DT><CODE>show arm abi</CODE>
+<DD>Show the currently used ABI.
+<P>
+
+<DT><CODE>set debug arm</CODE>
+<DD>Toggle whether to display ARM-specific debugging messages from the ARM
+target support subsystem.
+<P>
+
+<DT><CODE>show debug arm</CODE>
+<DD>Show whether ARM-specific debugging messages are enabled.
+</DL>
+<P>
+
+The following commands are available when an ARM target is debugged
+using the RDI interface:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>rdilogfile [<VAR>file</VAR>]</CODE>
+<DD><A NAME="IDX980"></A>
+<A NAME="IDX981"></A>
+Set the filename for the ADP (Angel Debugger Protocol) packet log.
+With an argument, sets the log file to the specified <VAR>file</VAR>.  With
+no argument, show the current log file name.  The default log file is
+<TT>`rdi.log'</TT>.
+<P>
+
+<DT><CODE>rdilogenable [<VAR>arg</VAR>]</CODE>
+<DD><A NAME="IDX982"></A>
+Control logging of ADP packets.  With an argument of 1 or <CODE>"yes"</CODE>
+enables logging, with an argument 0 or <CODE>"no"</CODE> disables it.  With
+no arguments displays the current setting.  When logging is enabled,
+ADP packets exchanged between GDB and the RDI target device
+are logged to a file.
+<P>
+
+<DT><CODE>set rdiromatzero</CODE>
+<DD><A NAME="IDX983"></A>
+<A NAME="IDX984"></A>
+Tell GDB whether the target has ROM at address 0.  If on,
+vector catching is disabled, so that zero address can be used.  If off
+(the default), vector catching is enabled.  For this command to take
+effect, it needs to be invoked prior to the <CODE>target rdi</CODE> command.
+<P>
+
+<DT><CODE>show rdiromatzero</CODE>
+<DD><A NAME="IDX985"></A>
+Show the current setting of ROM at zero address.
+<P>
+
+<DT><CODE>set rdiheartbeat</CODE>
+<DD><A NAME="IDX986"></A>
+<A NAME="IDX987"></A>
+Enable or disable RDI heartbeat packets.  It is not recommended to
+turn on this option, since it confuses ARM and EPI JTAG interface, as
+well as the Angel monitor.
+<P>
+
+<DT><CODE>show rdiheartbeat</CODE>
+<DD><A NAME="IDX988"></A>
+Show the setting of RDI heartbeat packets.
+</DL>
+<P>
+
+<A NAME="M32R/D"></A>
+<HR SIZE="6">
+<A NAME="SEC196"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC195"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC197"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC197"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.2 Renesas M32R/D and M32R/SDI </H3>
+<!--docid::SEC196::-->
+<P>
+
+<DL COMPACT>
+<A NAME="IDX989"></A>
+<DT><CODE>target m32r <VAR>dev</VAR></CODE>
+<DD>Renesas M32R/D ROM monitor.
+<P>
+
+<A NAME="IDX990"></A>
+<DT><CODE>target m32rsdi <VAR>dev</VAR></CODE>
+<DD>Renesas M32R SDI server, connected via parallel port to the board.
+</DL>
+<P>
+
+The following GDB commands are specific to the M32R monitor:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set download-path <VAR>path</VAR></CODE>
+<DD><A NAME="IDX991"></A>
+<A NAME="IDX992"></A>
+Set the default path for finding downloadable SREC files.
+<P>
+
+<DT><CODE>show download-path</CODE>
+<DD><A NAME="IDX993"></A>
+Show the default path for downloadable SREC files.
+<P>
+
+<DT><CODE>set board-address <VAR>addr</VAR></CODE>
+<DD><A NAME="IDX994"></A>
+<A NAME="IDX995"></A>
+Set the IP address for the M32R-EVA target board.
+<P>
+
+<DT><CODE>show board-address</CODE>
+<DD><A NAME="IDX996"></A>
+Show the current IP address of the target board.
+<P>
+
+<DT><CODE>set server-address <VAR>addr</VAR></CODE>
+<DD><A NAME="IDX997"></A>
+<A NAME="IDX998"></A>
+Set the IP address for the download server, which is the GDB's
+host machine.
+<P>
+
+<DT><CODE>show server-address</CODE>
+<DD><A NAME="IDX999"></A>
+Display the IP address of the download server.
+<P>
+
+<DT><CODE>upload [<VAR>file</VAR>]</CODE>
+<DD><A NAME="IDX1000"></A>
+Upload the specified SREC <VAR>file</VAR> via the monitor's Ethernet
+upload capability.  If no <VAR>file</VAR> argument is given, the current
+executable file is uploaded.
+<P>
+
+<DT><CODE>tload [<VAR>file</VAR>]</CODE>
+<DD><A NAME="IDX1001"></A>
+Test the <CODE>upload</CODE> command.
+</DL>
+<P>
+
+The following commands are available for M32R/SDI:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>sdireset</CODE>
+<DD><A NAME="IDX1002"></A>
+<A NAME="IDX1003"></A>
+This command resets the SDI connection.
+<P>
+
+<DT><CODE>sdistatus</CODE>
+<DD><A NAME="IDX1004"></A>
+This command shows the SDI connection status.
+<P>
+
+<DT><CODE>debug_chaos</CODE>
+<DD><A NAME="IDX1005"></A>
+<A NAME="IDX1006"></A>
+Instructs the remote that M32R/Chaos debugging is to be used.
+<P>
+
+<DT><CODE>use_debug_dma</CODE>
+<DD><A NAME="IDX1007"></A>
+Instructs the remote to use the DEBUG_DMA method of accessing memory.
+<P>
+
+<DT><CODE>use_mon_code</CODE>
+<DD><A NAME="IDX1008"></A>
+Instructs the remote to use the MON_CODE method of accessing memory.
+<P>
+
+<DT><CODE>use_ib_break</CODE>
+<DD><A NAME="IDX1009"></A>
+Instructs the remote to set breakpoints by IB break.
+<P>
+
+<DT><CODE>use_dbt_break</CODE>
+<DD><A NAME="IDX1010"></A>
+Instructs the remote to set breakpoints by DBT.
+</DL>
+<P>
+
+<A NAME="M68K"></A>
+<HR SIZE="6">
+<A NAME="SEC197"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC196"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC198"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC198"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.3 M68k </H3>
+<!--docid::SEC197::-->
+<P>
+
+The Motorola m68k configuration includes ColdFire support, and a
+target command for the following ROM monitor.
+</P><P>
+
+<DL COMPACT>
+
+<A NAME="IDX1011"></A>
+<DT><CODE>target dbug <VAR>dev</VAR></CODE>
+<DD>dBUG ROM monitor for Motorola ColdFire.
+<P>
+
+</DL>
+<P>
+
+<A NAME="MIPS Embedded"></A>
+<HR SIZE="6">
+<A NAME="SEC198"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC197"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC199"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC199"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.4 MIPS Embedded </H3>
+<!--docid::SEC198::-->
+<P>
+
+<A NAME="IDX1012"></A>
+GDB can use the MIPS remote debugging protocol to talk to a
+MIPS board attached to a serial line.  This is available when
+you configure GDB with <SAMP>`--target=mips-idt-ecoff'</SAMP>.
+</P><P>
+
+Use these GDB commands to specify the connection to your target board:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>target mips <VAR>port</VAR></CODE>
+<DD><A NAME="IDX1013"></A>
+To run a program on the board, start up <CODE>gdb</CODE> with the
+name of your program as the argument.  To connect to the board, use the
+command <SAMP>`target mips <VAR>port</VAR>'</SAMP>, where <VAR>port</VAR> is the name of
+the serial port connected to the board.  If the program has not already
+been downloaded to the board, you may use the <CODE>load</CODE> command to
+download it.  You can then use all the usual GDB commands.
+<P>
+
+For example, this sequence connects to the target board through a serial
+port, and loads and runs a program called <VAR>prog</VAR> through the
+debugger:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>host$ gdb <VAR>prog</VAR>
+GDB is free software and <small>...</small>
+(gdb) target mips /dev/ttyb
+(gdb) load <VAR>prog</VAR>
+(gdb) run
+</FONT></pre></td></tr></table></P><P>
+
+<DT><CODE>target mips <VAR>hostname</VAR>:<VAR>portnumber</VAR></CODE>
+<DD>On some GDB host configurations, you can specify a TCP
+connection (for instance, to a serial line managed by a terminal
+concentrator) instead of a serial port, using the syntax
+<SAMP>`<VAR>hostname</VAR>:<VAR>portnumber</VAR>'</SAMP>.
+<P>
+
+<DT><CODE>target pmon <VAR>port</VAR></CODE>
+<DD><A NAME="IDX1014"></A>
+PMON ROM monitor.
+<P>
+
+<DT><CODE>target ddb <VAR>port</VAR></CODE>
+<DD><A NAME="IDX1015"></A>
+NEC's DDB variant of PMON for Vr4300.
+<P>
+
+<DT><CODE>target lsi <VAR>port</VAR></CODE>
+<DD><A NAME="IDX1016"></A>
+LSI variant of PMON.
+<P>
+
+<A NAME="IDX1017"></A>
+<DT><CODE>target r3900 <VAR>dev</VAR></CODE>
+<DD>Densan DVE-R3900 ROM monitor for Toshiba R3900 Mips.
+<P>
+
+<A NAME="IDX1018"></A>
+<DT><CODE>target array <VAR>dev</VAR></CODE>
+<DD>Array Tech LSI33K RAID controller board.
+<P>
+
+</DL>
+<P>
+
+GDB also supports these special commands for MIPS targets:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set mipsfpu double</CODE>
+<DD><DT><CODE>set mipsfpu single</CODE>
+<DD><DT><CODE>set mipsfpu none</CODE>
+<DD><DT><CODE>set mipsfpu auto</CODE>
+<DD><DT><CODE>show mipsfpu</CODE>
+<DD><A NAME="IDX1019"></A>
+<A NAME="IDX1020"></A>
+<A NAME="IDX1021"></A>
+<A NAME="IDX1022"></A>
+If your target board does not support the MIPS floating point
+coprocessor, you should use the command <SAMP>`set mipsfpu none'</SAMP> (if you
+need this, you may wish to put the command in your GDB init
+file).  This tells GDB how to find the return value of
+functions which return floating point values.  It also allows
+GDB to avoid saving the floating point registers when calling
+functions on the board.  If you are using a floating point coprocessor
+with only single precision floating point support, as on the R4650
+processor, use the command <SAMP>`set mipsfpu single'</SAMP>.  The default
+double precision floating point coprocessor may be selected using
+<SAMP>`set mipsfpu double'</SAMP>.
+<P>
+
+In previous versions the only choices were double precision or no
+floating point, so <SAMP>`set mipsfpu on'</SAMP> will select double precision
+and <SAMP>`set mipsfpu off'</SAMP> will select no floating point.
+</P><P>
+
+As usual, you can inquire about the <CODE>mipsfpu</CODE> variable with
+<SAMP>`show mipsfpu'</SAMP>.
+</P><P>
+
+<DT><CODE>set timeout <VAR>seconds</VAR></CODE>
+<DD><DT><CODE>set retransmit-timeout <VAR>seconds</VAR></CODE>
+<DD><DT><CODE>show timeout</CODE>
+<DD><DT><CODE>show retransmit-timeout</CODE>
+<DD><A NAME="IDX1023"></A>
+<A NAME="IDX1024"></A>
+<A NAME="IDX1025"></A>
+<A NAME="IDX1026"></A>
+<A NAME="IDX1027"></A>
+<A NAME="IDX1028"></A>
+You can control the timeout used while waiting for a packet, in the MIPS
+remote protocol, with the <CODE>set timeout <VAR>seconds</VAR></CODE> command.  The
+default is 5 seconds.  Similarly, you can control the timeout used while
+waiting for an acknowledgement of a packet with the <CODE>set
+retransmit-timeout <VAR>seconds</VAR></CODE> command.  The default is 3 seconds.
+You can inspect both values with <CODE>show timeout</CODE> and <CODE>show
+retransmit-timeout</CODE>.  (These commands are <EM>only</EM> available when
+GDB is configured for <SAMP>`--target=mips-idt-ecoff'</SAMP>.)
+<P>
+
+The timeout set by <CODE>set timeout</CODE> does not apply when GDB
+is waiting for your program to stop.  In that case, GDB waits
+forever because it has no way of knowing how long the program is going
+to run before stopping.
+</P><P>
+
+<DT><CODE>set syn-garbage-limit <VAR>num</VAR></CODE>
+<DD><A NAME="IDX1029"></A>
+<A NAME="IDX1030"></A>
+Limit the maximum number of characters GDB should ignore when
+it tries to synchronize with the remote target.  The default is 10
+characters.  Setting the limit to -1 means there's no limit.
+<P>
+
+<DT><CODE>show syn-garbage-limit</CODE>
+<DD><A NAME="IDX1031"></A>
+Show the current limit on the number of characters to ignore when
+trying to synchronize with the remote system.
+<P>
+
+<DT><CODE>set monitor-prompt <VAR>prompt</VAR></CODE>
+<DD><A NAME="IDX1032"></A>
+<A NAME="IDX1033"></A>
+Tell GDB to expect the specified <VAR>prompt</VAR> string from the
+remote monitor.  The default depends on the target:
+<DL COMPACT>
+<DT>pmon target
+<DD><SAMP>`PMON'</SAMP>
+<DT>ddb target
+<DD><SAMP>`NEC010'</SAMP>
+<DT>lsi target
+<DD><SAMP>`PMON&#62;'</SAMP>
+</DL>
+<P>
+
+<DT><CODE>show monitor-prompt</CODE>
+<DD><A NAME="IDX1034"></A>
+Show the current strings GDB expects as the prompt from the
+remote monitor.
+<P>
+
+<DT><CODE>set monitor-warnings</CODE>
+<DD><A NAME="IDX1035"></A>
+Enable or disable monitor warnings about hardware breakpoints.  This
+has effect only for the <CODE>lsi</CODE> target.  When on, GDB will
+display warning messages whose codes are returned by the <CODE>lsi</CODE>
+PMON monitor for breakpoint commands.
+<P>
+
+<DT><CODE>show monitor-warnings</CODE>
+<DD><A NAME="IDX1036"></A>
+Show the current setting of printing monitor warnings.
+<P>
+
+<DT><CODE>pmon <VAR>command</VAR></CODE>
+<DD><A NAME="IDX1037"></A>
+<A NAME="IDX1038"></A>
+This command allows sending an arbitrary <VAR>command</VAR> string to the
+monitor.  The monitor must be in debug mode for this to work.
+</DL>
+<P>
+
+<A NAME="OpenRISC 1000"></A>
+<HR SIZE="6">
+<A NAME="SEC199"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC198"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC200"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC200"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.5 OpenRISC 1000 </H3>
+<!--docid::SEC199::-->
+<P>
+
+<A NAME="IDX1039"></A>
+See OR1k Architecture document (<A HREF="www.opencores.org">www.opencores.org</A>) for more information
+about platform and commands.
+</P><P>
+
+<DL COMPACT>
+
+<A NAME="IDX1040"></A>
+<DT><CODE>target jtag jtag://<VAR>host</VAR>:<VAR>port</VAR></CODE>
+<DD><P>
+
+Connects to remote JTAG server.
+JTAG remote server can be either an or1ksim or JTAG server,
+connected via parallel port to the board.
+</P><P>
+
+Example: <CODE>target jtag jtag://localhost:9999</CODE>
+</P><P>
+
+<A NAME="IDX1041"></A>
+<DT><CODE>or1ksim <VAR>command</VAR></CODE>
+<DD>If connected to <CODE>or1ksim</CODE> OpenRISC 1000 Architectural
+Simulator, proprietary commands can be executed.
+<P>
+
+<A NAME="IDX1042"></A>
+<DT><CODE>info or1k spr</CODE>
+<DD>Displays spr groups.
+<P>
+
+<DT><CODE>info or1k spr <VAR>group</VAR></CODE>
+<DD><DT><CODE>info or1k spr <VAR>groupno</VAR></CODE>
+<DD>Displays register names in selected group.
+<P>
+
+<DT><CODE>info or1k spr <VAR>group</VAR> <VAR>register</VAR></CODE>
+<DD><DT><CODE>info or1k spr <VAR>register</VAR></CODE>
+<DD><DT><CODE>info or1k spr <VAR>groupno</VAR> <VAR>registerno</VAR></CODE>
+<DD><DT><CODE>info or1k spr <VAR>registerno</VAR></CODE>
+<DD>Shows information about specified spr register.
+<P>
+
+<A NAME="IDX1043"></A>
+<DT><CODE>spr <VAR>group</VAR> <VAR>register</VAR> <VAR>value</VAR></CODE>
+<DD><DT><CODE>spr <VAR>register <VAR>value</VAR></VAR></CODE>
+<DD><DT><CODE>spr <VAR>groupno</VAR> <VAR>registerno <VAR>value</VAR></VAR></CODE>
+<DD><DT><CODE>spr <VAR>registerno <VAR>value</VAR></VAR></CODE>
+<DD>Writes <VAR>value</VAR> to specified spr register.
+</DL>
+<P>
+
+Some implementations of OpenRISC 1000 Architecture also have hardware trace.
+It is very similar to GDB trace, except it does not interfere with normal
+program execution and is thus much faster.  Hardware breakpoints/watchpoint
+triggers can be set using:
+<DL COMPACT>
+<DT><CODE>$LEA/$LDATA</CODE>
+<DD>Load effective address/data
+<DT><CODE>$SEA/$SDATA</CODE>
+<DD>Store effective address/data
+<DT><CODE>$AEA/$ADATA</CODE>
+<DD>Access effective address ($SEA or $LEA) or data ($SDATA/$LDATA)
+<DT><CODE>$FETCH</CODE>
+<DD>Fetch data
+</DL>
+<P>
+
+When triggered, it can capture low level data, like: <CODE>PC</CODE>, <CODE>LSEA</CODE>,
+<CODE>LDATA</CODE>, <CODE>SDATA</CODE>, <CODE>READSPR</CODE>, <CODE>WRITESPR</CODE>, <CODE>INSTR</CODE>.
+</P><P>
+
+<CODE>htrace</CODE> commands:
+<A NAME="IDX1044"></A>
+<DL COMPACT>
+<A NAME="IDX1045"></A>
+<DT><CODE>hwatch <VAR>conditional</VAR></CODE>
+<DD>Set hardware watchpoint on combination of Load/Store Effective Address(es)
+or Data.  For example:
+<P>
+
+<CODE>hwatch ($LEA == my_var) &#38;&#38; ($LDATA &#60; 50) || ($SEA == my_var) &#38;&#38; ($SDATA &#62;= 50)</CODE>
+</P><P>
+
+<CODE>hwatch ($LEA == my_var) &#38;&#38; ($LDATA &#60; 50) || ($SEA == my_var) &#38;&#38; ($SDATA &#62;= 50)</CODE>
+</P><P>
+
+<A NAME="IDX1046"></A>
+<DT><CODE>htrace info</CODE>
+<DD>Display information about current HW trace configuration.
+<P>
+
+<DT><CODE>htrace trigger <VAR>conditional</VAR></CODE>
+<DD>Set starting criteria for HW trace.
+<P>
+
+<DT><CODE>htrace qualifier <VAR>conditional</VAR></CODE>
+<DD>Set acquisition qualifier for HW trace.
+<P>
+
+<DT><CODE>htrace stop <VAR>conditional</VAR></CODE>
+<DD>Set HW trace stopping criteria.
+<P>
+
+<DT><CODE>htrace record [<VAR>data</VAR>]*</CODE>
+<DD>Selects the data to be recorded, when qualifier is met and HW trace was
+triggered.
+<P>
+
+<DT><CODE>htrace enable</CODE>
+<DD><DT><CODE>htrace disable</CODE>
+<DD>Enables/disables the HW trace.
+<P>
+
+<DT><CODE>htrace rewind [<VAR>filename</VAR>]</CODE>
+<DD>Clears currently recorded trace data.
+<P>
+
+If filename is specified, new trace file is made and any newly collected data
+will be written there.
+</P><P>
+
+<DT><CODE>htrace print [<VAR>start</VAR> [<VAR>len</VAR>]]</CODE>
+<DD>Prints trace buffer, using current record configuration.
+<P>
+
+<DT><CODE>htrace mode continuous</CODE>
+<DD>Set continuous trace mode.
+<P>
+
+<DT><CODE>htrace mode suspend</CODE>
+<DD>Set suspend trace mode.
+<P>
+
+</DL>
+<P>
+
+<A NAME="PowerPC Embedded"></A>
+<HR SIZE="6">
+<A NAME="SEC200"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC199"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC201"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC201"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.6 PowerPC Embedded </H3>
+<!--docid::SEC200::-->
+<P>
+
+GDB provides the following PowerPC-specific commands:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1047"></A>
+<DT><CODE>set powerpc soft-float</CODE>
+<DD><DT><CODE>show powerpc soft-float</CODE>
+<DD>Force GDB to use (or not use) a software floating point calling
+convention.  By default, GDB selects the calling convention based
+on the selected architecture and the provided executable file.
+<P>
+
+<DT><CODE>set powerpc vector-abi</CODE>
+<DD><DT><CODE>show powerpc vector-abi</CODE>
+<DD>Force GDB to use the specified calling convention for vector
+arguments and return values.  The valid options are <SAMP>`auto'</SAMP>;
+<SAMP>`generic'</SAMP>, to avoid vector registers even if they are present;
+<SAMP>`altivec'</SAMP>, to use AltiVec registers; and <SAMP>`spe'</SAMP> to use SPE
+registers.  By default, GDB selects the calling convention
+based on the selected architecture and the provided executable file.
+<P>
+
+<A NAME="IDX1048"></A>
+<DT><CODE>target dink32 <VAR>dev</VAR></CODE>
+<DD>DINK32 ROM monitor.
+<P>
+
+<A NAME="IDX1049"></A>
+<DT><CODE>target ppcbug <VAR>dev</VAR></CODE>
+<DD><A NAME="IDX1050"></A>
+<DT><CODE>target ppcbug1 <VAR>dev</VAR></CODE>
+<DD>PPCBUG ROM monitor for PowerPC.
+<P>
+
+<A NAME="IDX1051"></A>
+<DT><CODE>target sds <VAR>dev</VAR></CODE>
+<DD>SDS monitor, running on a PowerPC board (such as Motorola's ADS).
+</DL>
+<P>
+
+<A NAME="IDX1052"></A>
+The following commands specific to the SDS protocol are supported
+by GDB:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set sdstimeout <VAR>nsec</VAR></CODE>
+<DD><A NAME="IDX1053"></A>
+Set the timeout for SDS protocol reads to be <VAR>nsec</VAR> seconds.  The
+default is 2 seconds.
+<P>
+
+<DT><CODE>show sdstimeout</CODE>
+<DD><A NAME="IDX1054"></A>
+Show the current value of the SDS timeout.
+<P>
+
+<DT><CODE>sds <VAR>command</VAR></CODE>
+<DD><A NAME="IDX1055"></A>
+Send the specified <VAR>command</VAR> string to the SDS monitor.
+</DL>
+<P>
+
+<A NAME="PA"></A>
+<HR SIZE="6">
+<A NAME="SEC201"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC200"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.7 HP PA Embedded </H3>
+<!--docid::SEC201::-->
+<P>
+
+<DL COMPACT>
+
+<A NAME="IDX1056"></A>
+<DT><CODE>target op50n <VAR>dev</VAR></CODE>
+<DD>OP50N monitor, running on an OKI HPPA board.
+<P>
+
+<A NAME="IDX1057"></A>
+<DT><CODE>target w89k <VAR>dev</VAR></CODE>
+<DD>W89K monitor, running on a Winbond HPPA board.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Sparclet"></A>
+<HR SIZE="6">
+<A NAME="SEC202"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC201"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC203"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.8 Tsqware Sparclet </H3>
+<!--docid::SEC202::-->
+<P>
+
+<A NAME="IDX1058"></A>
+</P><P>
+
+GDB enables developers to debug tasks running on
+Sparclet targets from a Unix host.
+GDB uses code that runs on
+both the Unix host and on the Sparclet target.  The program
+<CODE>gdb</CODE> is installed and executed on the Unix host.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>remotetimeout <VAR>args</VAR></CODE>
+<DD><A NAME="IDX1059"></A>
+GDB supports the option <CODE>remotetimeout</CODE>.
+This option is set by the user, and  <VAR>args</VAR> represents the number of
+seconds GDB waits for responses.
+</DL>
+<P>
+
+<A NAME="IDX1060"></A>
+When compiling for debugging, include the options <SAMP>`-g'</SAMP> to get debug
+information and <SAMP>`-Ttext'</SAMP> to relocate the program to where you wish to
+load it on the target.  You may also want to add the options <SAMP>`-n'</SAMP> or
+<SAMP>`-N'</SAMP> in order to reduce the size of the sections.  Example:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>sparclet-aout-gcc prog.c -Ttext 0x12010000 -g -o prog -N
+</FONT></pre></td></tr></table></P><P>
+
+You can use <CODE>objdump</CODE> to verify that the addresses are what you intended:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>sparclet-aout-objdump --headers --syms prog
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="IDX1061"></A>
+Once you have set
+your Unix execution search path to find GDB, you are ready to
+run GDB.  From your Unix host, run <CODE>gdb</CODE>
+(or <CODE>sparclet-aout-gdb</CODE>, depending on your installation).
+</P><P>
+
+GDB comes up showing the prompt:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdbslet)
+</FONT></pre></td></tr></table></P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC203">18.3.8.1 Setting File to Debug</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Setting the file to debug</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC204">18.3.8.2 Connecting to Sparclet</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC205">18.3.8.3 Sparclet Download</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Sparclet download</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC206">18.3.8.4 Running and Debugging</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Running and debugging</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Sparclet File"></A>
+<HR SIZE="6">
+<A NAME="SEC203"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC204"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.3.8.1 Setting File to Debug </H4>
+<!--docid::SEC203::-->
+<P>
+
+The GDB command <CODE>file</CODE> lets you choose with program to debug.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdbslet) file prog
+</FONT></pre></td></tr></table></P><P>
+
+GDB then attempts to read the symbol table of <TT>`prog'</TT>.
+GDB locates
+the file by searching the directories listed in the command search
+path.
+If the file was compiled with debug information (option <SAMP>`-g'</SAMP>), source
+files will be searched as well.
+GDB locates
+the source files by searching the directories listed in the directory search
+path (see section <A HREF="gdb_5.html#SEC22">Your Program's Environment</A>).
+If it fails
+to find a file, it displays a message such as:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>prog: No such file or directory.
+</FONT></pre></td></tr></table></P><P>
+
+When this happens, add the appropriate directories to the search paths with
+the GDB commands <CODE>path</CODE> and <CODE>dir</CODE>, and execute the
+<CODE>target</CODE> command again.
+</P><P>
+
+<A NAME="Sparclet Connection"></A>
+<HR SIZE="6">
+<A NAME="SEC204"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC203"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC205"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC205"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.3.8.2 Connecting to Sparclet </H4>
+<!--docid::SEC204::-->
+<P>
+
+The GDB command <CODE>target</CODE> lets you connect to a Sparclet target.
+To connect to a target on serial port "<CODE>ttya</CODE>", type:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdbslet) target sparclet /dev/ttya
+Remote target sparclet connected to /dev/ttya
+main () at ../prog.c:3
+</FONT></pre></td></tr></table></P><P>
+
+GDB displays messages like these:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>Connected to ttya.
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Sparclet Download"></A>
+<HR SIZE="6">
+<A NAME="SEC205"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC204"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC206"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC206"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.3.8.3 Sparclet Download </H4>
+<!--docid::SEC205::-->
+<P>
+
+<A NAME="IDX1062"></A>
+Once connected to the Sparclet target,
+you can use the GDB
+<CODE>load</CODE> command to download the file from the host to the target.
+The file name and load offset should be given as arguments to the <CODE>load</CODE>
+command.
+Since the file format is aout, the program must be loaded to the starting
+address.  You can use <CODE>objdump</CODE> to find out what this value is.  The load
+offset is an offset which is added to the VMA (virtual memory address)
+of each of the file's sections.
+For instance, if the program
+<TT>`prog'</TT> was linked to text address 0x1201000, with data at 0x12010160
+and bss at 0x12010170, in GDB, type:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdbslet) load prog 0x12010000
+Loading section .text, size 0xdb0 vma 0x12010000
+</FONT></pre></td></tr></table></P><P>
+
+If the code is loaded at a different address then what the program was linked
+to, you may need to use the <CODE>section</CODE> and <CODE>add-symbol-file</CODE> commands
+to tell GDB where to map the symbol table.
+</P><P>
+
+<A NAME="Sparclet Execution"></A>
+<HR SIZE="6">
+<A NAME="SEC206"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC205"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC202"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 18.3.8.4 Running and Debugging </H4>
+<!--docid::SEC206::-->
+<P>
+
+<A NAME="IDX1063"></A>
+You can now begin debugging the task using GDB's execution control
+commands, <CODE>b</CODE>, <CODE>step</CODE>, <CODE>run</CODE>, etc.  See the GDB
+manual for the list of commands.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>(gdbslet) b main
+Breakpoint 1 at 0x12010000: file prog.c, line 3.
+(gdbslet) run
+Starting program: prog
+Breakpoint 1, main (argc=1, argv=0xeffff21c) at prog.c:3
+3        char *symarg = 0;
+(gdbslet) step
+4        char *execarg = "hello!";
+(gdbslet)
+</FONT></pre></td></tr></table></P><P>
+
+<A NAME="Sparclite"></A>
+<HR SIZE="6">
+<A NAME="SEC207"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC206"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC208"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.9 Fujitsu Sparclite </H3>
+<!--docid::SEC207::-->
+<P>
+
+<DL COMPACT>
+
+<A NAME="IDX1064"></A>
+<DT><CODE>target sparclite <VAR>dev</VAR></CODE>
+<DD>Fujitsu sparclite boards, used only for the purpose of loading.
+You must use an additional command to debug the program.
+For example: target remote <VAR>dev</VAR> using GDB standard
+remote protocol.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Z8000"></A>
+<HR SIZE="6">
+<A NAME="SEC208"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC207"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC209"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC196"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.10 Zilog Z8000 </H3>
+<!--docid::SEC208::-->
+<P>
+
+<A NAME="IDX1065"></A>
+<A NAME="IDX1066"></A>
+<A NAME="IDX1067"></A>
+</P><P>
+
+When configured for debugging Zilog Z8000 targets, GDB includes
+a Z8000 simulator.
+</P><P>
+
+For the Z8000 family, <SAMP>`target sim'</SAMP> simulates either the Z8002 (the
+unsegmented variant of the Z8000 architecture) or the Z8001 (the
+segmented variant).  The simulator recognizes which architecture is
+appropriate by inspecting the object code.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>target sim <VAR>args</VAR></CODE>
+<DD><A NAME="IDX1068"></A>
+<A NAME="IDX1069"></A>
+Debug programs on a simulated CPU.  If the simulator supports setup
+options, specify them via <VAR>args</VAR>.
+</DL>
+<P>
+
+After specifying this target, you can debug programs for the simulated
+CPU in the same style as programs for your host computer; use the
+<CODE>file</CODE> command to load a new program image, the <CODE>run</CODE> command
+to run your program, and so on.
+</P><P>
+
+As well as making available all the usual machine registers
+(see section <A HREF="gdb_9.html#SEC69">Registers</A>), the Z8000 simulator provides three
+additional items of information as specially named registers:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>cycles</CODE>
+<DD>Counts clock-ticks in the simulator.
+<P>
+
+<DT><CODE>insts</CODE>
+<DD>Counts instructions run in the simulator.
+<P>
+
+<DT><CODE>time</CODE>
+<DD>Execution time in 60ths of a second.
+<P>
+
+</DL>
+<P>
+
+You can refer to these values in GDB expressions with the usual
+conventions; for example, <SAMP>`b fputc if $cycles&#62;5000'</SAMP> sets a
+conditional breakpoint that suspends only after at least 5000
+simulated clock ticks.
+</P><P>
+
+<A NAME="AVR"></A>
+<HR SIZE="6">
+<A NAME="SEC209"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC208"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC210"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC196"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.11 Atmel AVR </H3>
+<!--docid::SEC209::-->
+<P>
+
+When configured for debugging the Atmel AVR, GDB supports the
+following AVR-specific commands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>info io_registers</CODE>
+<DD><A NAME="IDX1070"></A>
+<A NAME="IDX1071"></A>
+This command displays information about the AVR I/O registers.  For
+each register, GDB prints its number and value.
+</DL>
+<P>
+
+<A NAME="CRIS"></A>
+<HR SIZE="6">
+<A NAME="SEC210"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC209"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC211"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC196"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.12 CRIS </H3>
+<!--docid::SEC210::-->
+<P>
+
+When configured for debugging CRIS, GDB provides the
+following CRIS-specific commands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set cris-version <VAR>ver</VAR></CODE>
+<DD><A NAME="IDX1072"></A>
+Set the current CRIS version to <VAR>ver</VAR>, either <SAMP>`10'</SAMP> or <SAMP>`32'</SAMP>.
+The CRIS version affects register names and sizes.  This command is useful in
+case autodetection of the CRIS version fails.
+<P>
+
+<DT><CODE>show cris-version</CODE>
+<DD>Show the current CRIS version.
+<P>
+
+<DT><CODE>set cris-dwarf2-cfi</CODE>
+<DD><A NAME="IDX1073"></A>
+Set the usage of DWARF-2 CFI for CRIS debugging.  The default is <SAMP>`on'</SAMP>.
+Change to <SAMP>`off'</SAMP> when using <CODE>gcc-cris</CODE> whose version is below 
+<CODE>R59</CODE>.
+<P>
+
+<DT><CODE>show cris-dwarf2-cfi</CODE>
+<DD>Show the current state of using DWARF-2 CFI.
+<P>
+
+<DT><CODE>set cris-mode <VAR>mode</VAR></CODE>
+<DD><A NAME="IDX1074"></A>
+Set the current CRIS mode to <VAR>mode</VAR>.  It should only be changed when
+debugging in guru mode, in which case it should be set to 
+<SAMP>`guru'</SAMP> (the default is <SAMP>`normal'</SAMP>).
+<P>
+
+<DT><CODE>show cris-mode</CODE>
+<DD>Show the current CRIS mode.
+</DL>
+<P>
+
+<A NAME="Super-H"></A>
+<HR SIZE="6">
+<A NAME="SEC211"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC210"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC196"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC194"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.3.13 Renesas Super-H </H3>
+<!--docid::SEC211::-->
+<P>
+
+For the Renesas Super-H processor, GDB provides these
+commands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>regs</CODE>
+<DD><A NAME="IDX1075"></A>
+Show the values of all Super-H registers.
+</DL>
+<P>
+
+<A NAME="Architectures"></A>
+<HR SIZE="6">
+<A NAME="SEC212"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC211"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC213"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 18.4 Architectures </H2>
+<!--docid::SEC212::-->
+<P>
+
+This section describes characteristics of architectures that affect
+all uses of GDB with the architecture, both native and cross.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC213">18.4.1 x86 Architecture-specific Issues</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC214">18.4.2 A29K</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC215">18.4.3 Alpha</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC216">18.4.4 MIPS</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC217">18.4.5 HPPA</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">HP PA architecture</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC218">18.4.6 Cell Broadband Engine SPU architecture</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_19.html#SEC219">18.4.7 PowerPC</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="i386"></A>
+<HR SIZE="6">
+<A NAME="SEC213"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC214"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.1 x86 Architecture-specific Issues </H3>
+<!--docid::SEC213::-->
+<P>
+
+<DL COMPACT>
+<DT><CODE>set struct-convention <VAR>mode</VAR></CODE>
+<DD><A NAME="IDX1076"></A>
+<A NAME="IDX1077"></A>
+<A NAME="IDX1078"></A>
+Set the convention used by the inferior to return <CODE>struct</CODE>s and
+<CODE>union</CODE>s from functions to <VAR>mode</VAR>.  Possible values of
+<VAR>mode</VAR> are <CODE>"pcc"</CODE>, <CODE>"reg"</CODE>, and <CODE>"default"</CODE> (the
+default).  <CODE>"default"</CODE> or <CODE>"pcc"</CODE> means that <CODE>struct</CODE>s
+are returned on the stack, while <CODE>"reg"</CODE> means that a
+<CODE>struct</CODE> or a <CODE>union</CODE> whose size is 1, 2, 4, or 8 bytes will
+be returned in a register.
+<P>
+
+<DT><CODE>show struct-convention</CODE>
+<DD><A NAME="IDX1079"></A>
+Show the current setting of the convention to return <CODE>struct</CODE>s
+from functions.
+</DL>
+<P>
+
+<A NAME="A29K"></A>
+<HR SIZE="6">
+<A NAME="SEC214"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC213"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC215"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC215"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.2 A29K </H3>
+<!--docid::SEC214::-->
+<P>
+
+<DL COMPACT>
+
+<A NAME="IDX1080"></A>
+<A NAME="IDX1081"></A>
+<A NAME="IDX1082"></A>
+<DT><CODE>set rstack_high_address <VAR>address</VAR></CODE>
+<DD>On AMD 29000 family processors, registers are saved in a separate
+<EM>register stack</EM>.  There is no way for GDB to determine the
+extent of this stack.  Normally, GDB just assumes that the
+stack is "large enough".  This may result in GDB referencing
+memory locations that do not exist.  If necessary, you can get around
+this problem by specifying the ending address of the register stack with
+the <CODE>set rstack_high_address</CODE> command.  The argument should be an
+address, which you probably want to precede with <SAMP>`0x'</SAMP> to specify in
+hexadecimal.
+<P>
+
+<A NAME="IDX1083"></A>
+<DT><CODE>show rstack_high_address</CODE>
+<DD>Display the current limit of the register stack, on AMD 29000 family
+processors.
+<P>
+
+</DL>
+<P>
+
+<A NAME="Alpha"></A>
+<HR SIZE="6">
+<A NAME="SEC215"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC214"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC216"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC216"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.3 Alpha </H3>
+<!--docid::SEC215::-->
+<P>
+
+See the following section.
+</P><P>
+
+<A NAME="MIPS"></A>
+<HR SIZE="6">
+<A NAME="SEC216"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC215"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC217"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC217"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.4 MIPS </H3>
+<!--docid::SEC216::-->
+<P>
+
+<A NAME="IDX1084"></A>
+<A NAME="IDX1085"></A>
+<A NAME="IDX1086"></A>
+<A NAME="IDX1087"></A>
+Alpha- and MIPS-based computers use an unusual stack frame, which
+sometimes requires GDB to search backward in the object code to
+find the beginning of a function.
+</P><P>
+
+<A NAME="IDX1088"></A>
+To improve response time (especially for embedded applications, where
+GDB may be restricted to a slow serial line for this search)
+you may want to limit the size of this search, using one of these
+commands:
+</P><P>
+
+<DL COMPACT>
+<A NAME="IDX1089"></A>
+<DT><CODE>set heuristic-fence-post <VAR>limit</VAR></CODE>
+<DD>Restrict GDB to examining at most <VAR>limit</VAR> bytes in its
+search for the beginning of a function.  A value of <VAR>0</VAR> (the
+default) means there is no limit.  However, except for <VAR>0</VAR>, the
+larger the limit the more bytes <CODE>heuristic-fence-post</CODE> must search
+and therefore the longer it takes to run.  You should only need to use
+this command when debugging a stripped executable.
+<P>
+
+<DT><CODE>show heuristic-fence-post</CODE>
+<DD>Display the current limit.
+</DL>
+<P>
+
+These commands are available <EM>only</EM> when GDB is configured
+for debugging programs on Alpha or MIPS processors.
+</P><P>
+
+Several MIPS-specific commands are available when debugging MIPS
+programs:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set mips abi <VAR>arg</VAR></CODE>
+<DD><A NAME="IDX1090"></A>
+<A NAME="IDX1091"></A>
+Tell GDB which MIPS ABI is used by the inferior.  Possible
+values of <VAR>arg</VAR> are:
+<P>
+
+<DL COMPACT>
+<DT><SAMP>`auto'</SAMP>
+<DD>The default ABI associated with the current binary (this is the
+default).
+<DT><SAMP>`o32'</SAMP>
+<DD><DT><SAMP>`o64'</SAMP>
+<DD><DT><SAMP>`n32'</SAMP>
+<DD><DT><SAMP>`n64'</SAMP>
+<DD><DT><SAMP>`eabi32'</SAMP>
+<DD><DT><SAMP>`eabi64'</SAMP>
+<DD><DT><SAMP>`auto'</SAMP>
+<DD></DL>
+<P>
+
+<DT><CODE>show mips abi</CODE>
+<DD><A NAME="IDX1092"></A>
+Show the MIPS ABI used by GDB to debug the inferior.
+<P>
+
+<DT><CODE>set mipsfpu</CODE>
+<DD><DT><CODE>show mipsfpu</CODE>
+<DD>See section <A HREF="gdb_19.html#SEC198">set mipsfpu</A>.
+<P>
+
+<DT><CODE>set mips mask-address <VAR>arg</VAR></CODE>
+<DD><A NAME="IDX1093"></A>
+<A NAME="IDX1094"></A>
+This command determines whether the most-significant 32 bits of 64-bit
+MIPS addresses are masked off.  The argument <VAR>arg</VAR> can be
+<SAMP>`on'</SAMP>, <SAMP>`off'</SAMP>, or <SAMP>`auto'</SAMP>.  The latter is the default
+setting, which lets GDB determine the correct value.
+<P>
+
+<DT><CODE>show mips mask-address</CODE>
+<DD><A NAME="IDX1095"></A>
+Show whether the upper 32 bits of MIPS addresses are masked off or
+not.
+<P>
+
+<DT><CODE>set remote-mips64-transfers-32bit-regs</CODE>
+<DD><A NAME="IDX1096"></A>
+This command controls compatibility with 64-bit MIPS targets that
+transfer data in 32-bit quantities.  If you have an old MIPS 64 target
+that transfers 32 bits for some registers, like SR and FSR,
+and 64 bits for other registers, set this option to <SAMP>`on'</SAMP>.
+<P>
+
+<DT><CODE>show remote-mips64-transfers-32bit-regs</CODE>
+<DD><A NAME="IDX1097"></A>
+Show the current setting of compatibility with older MIPS 64 targets.
+<P>
+
+<DT><CODE>set debug mips</CODE>
+<DD><A NAME="IDX1098"></A>
+This command turns on and off debugging messages for the MIPS-specific
+target code in GDB.
+<P>
+
+<DT><CODE>show debug mips</CODE>
+<DD><A NAME="IDX1099"></A>
+Show the current setting of MIPS debugging messages.
+</DL>
+<P>
+
+<A NAME="HPPA"></A>
+<HR SIZE="6">
+<A NAME="SEC217"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC216"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC218"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC218"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.5 HPPA </H3>
+<!--docid::SEC217::-->
+<P>
+
+When GDB is debugging the HP PA architecture, it provides the
+following special commands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>set debug hppa</CODE>
+<DD><A NAME="IDX1100"></A>
+This command determines whether HPPA architecture-specific debugging
+messages are to be displayed.
+<P>
+
+<DT><CODE>show debug hppa</CODE>
+<DD>Show whether HPPA debugging messages are displayed.
+<P>
+
+<DT><CODE>maint print unwind <VAR>address</VAR></CODE>
+<DD><A NAME="IDX1101"></A>
+This command displays the contents of the unwind table entry at the
+given <VAR>address</VAR>.
+<P>
+
+</DL>
+<P>
+
+<A NAME="SPU"></A>
+<HR SIZE="6">
+<A NAME="SEC218"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC217"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC219"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC219"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.6 Cell Broadband Engine SPU architecture </H3>
+<!--docid::SEC218::-->
+<P>
+
+When GDB is debugging the Cell Broadband Engine SPU architecture,
+it provides the following special commands:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>info spu event</CODE>
+<DD><A NAME="IDX1102"></A>
+Display SPU event facility status.  Shows current event mask
+and pending event status.
+<P>
+
+<DT><CODE>info spu signal</CODE>
+<DD>Display SPU signal notification facility status.  Shows pending
+signal-control word and signal notification mode of both signal
+notification channels.
+<P>
+
+<DT><CODE>info spu mailbox</CODE>
+<DD>Display SPU mailbox facility status.  Shows all pending entries,
+in order of processing, in each of the SPU Write Outbound,
+SPU Write Outbound Interrupt, and SPU Read Inbound mailboxes.
+<P>
+
+<DT><CODE>info spu dma</CODE>
+<DD>Display MFC DMA status.  Shows all pending commands in the MFC
+DMA queue.  For each entry, opcode, tag, class IDs, effective
+and local store addresses and transfer size are shown.
+<P>
+
+<DT><CODE>info spu proxydma</CODE>
+<DD>Display MFC Proxy-DMA status.  Shows all pending commands in the MFC
+Proxy-DMA queue.  For each entry, opcode, tag, class IDs, effective
+and local store addresses and transfer size are shown.
+<P>
+
+</DL>
+ 
+<A NAME="PowerPC"></A>
+<HR SIZE="6">
+<A NAME="SEC219"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC218"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC212"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 18.4.7 PowerPC </H3>
+<!--docid::SEC219::-->
+<P>
+
+When GDB is debugging the PowerPC architecture, it provides a set of 
+pseudo-registers to enable inspection of 128-bit wide Decimal Floating Point
+numbers stored in the floating point registers. These values must be stored
+in two consecutive registers, always starting at an even register like
+<CODE>f0</CODE> or <CODE>f2</CODE>.
+</P><P>
+
+The pseudo-registers go from <CODE>$dl0</CODE> through <CODE>$dl15</CODE>, and are formed
+by joining the even/odd register pairs <CODE>f0</CODE> and <CODE>f1</CODE> for <CODE>$dl0</CODE>,
+<CODE>f2</CODE> and <CODE>f3</CODE> for <CODE>$dl1</CODE> and so on.
+</P><P>
+
+<A NAME="Controlling GDB"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_19.html#SEC177"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_20.html#SEC220"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

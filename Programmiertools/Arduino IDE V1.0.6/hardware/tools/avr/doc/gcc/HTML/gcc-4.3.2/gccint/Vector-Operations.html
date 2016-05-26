@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+<title>Vector Operations - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="RTL.html#RTL" title="RTL">
+<link rel="prev" href="Bit_002dFields.html#Bit_002dFields" title="Bit-Fields">
+<link rel="next" href="Conversions.html#Conversions" title="Conversions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Vector-Operations"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Conversions.html#Conversions">Conversions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Bit_002dFields.html#Bit_002dFields">Bit-Fields</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="RTL.html#RTL">RTL</a>
+<hr><br>
+</div>
+
+<h3 class="section">12.12 Vector Operations</h3>
+
+<p><a name="index-vector-operations-2579"></a>
+All normal RTL expressions can be used with vector modes; they are
+interpreted as operating on each part of the vector independently. 
+Additionally, there are a few new expressions to describe specific vector
+operations.
+
+     
+<a name="index-vec_005fmerge-2580"></a>
+<dl><dt><code>(vec_merge:</code><var>m</var> <var>vec1</var> <var>vec2</var> <var>items</var><code>)</code><dd>This describes a merge operation between two vectors.  The result is a vector
+of mode <var>m</var>; its elements are selected from either <var>vec1</var> or
+<var>vec2</var>.  Which elements are selected is described by <var>items</var>, which
+is a bit mask represented by a <code>const_int</code>; a zero bit indicates the
+corresponding element in the result vector is taken from <var>vec2</var> while
+a set bit indicates it is taken from <var>vec1</var>.
+
+     <p><a name="index-vec_005fselect-2581"></a><br><dt><code>(vec_select:</code><var>m</var> <var>vec1</var> <var>selection</var><code>)</code><dd>This describes an operation that selects parts of a vector.  <var>vec1</var> is
+the source vector, <var>selection</var> is a <code>parallel</code> that contains a
+<code>const_int</code> for each of the subparts of the result vector, giving the
+number of the source subpart that should be stored into it.
+
+     <p><a name="index-vec_005fconcat-2582"></a><br><dt><code>(vec_concat:</code><var>m</var> <var>vec1</var> <var>vec2</var><code>)</code><dd>Describes a vector concat operation.  The result is a concatenation of the
+vectors <var>vec1</var> and <var>vec2</var>; its length is the sum of the lengths of
+the two inputs.
+
+     <p><a name="index-vec_005fduplicate-2583"></a><br><dt><code>(vec_duplicate:</code><var>m</var> <var>vec</var><code>)</code><dd>This operation converts a small vector into a larger one by duplicating the
+input values.  The output vector mode must have the same submodes as the
+input vector mode, and the number of output parts must be an integer multiple
+of the number of input parts.
+
+ </dl>
+
+ </body></html>
+

@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+<title>PDP-11 Options - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Submodel-Options.html#Submodel-Options" title="Submodel Options">
+<link rel="prev" href="MT-Options.html#MT-Options" title="MT Options">
+<link rel="next" href="PowerPC-Options.html#PowerPC-Options" title="PowerPC Options">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="PDP_002d11-Options"></a>Next:&nbsp;<a rel="next" accesskey="n" href="PowerPC-Options.html#PowerPC-Options">PowerPC Options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="MT-Options.html#MT-Options">MT Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Submodel-Options.html#Submodel-Options">Submodel Options</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.17.25 PDP-11 Options</h4>
+
+<p><a name="index-PDP_002d11-Options-1545"></a>
+These options are defined for the PDP-11:
+
+     <dl>
+<dt><code>-mfpu</code><dd><a name="index-mfpu-1546"></a>Use hardware FPP floating point.  This is the default.  (FIS floating
+point on the PDP-11/40 is not supported.)
+
+     <br><dt><code>-msoft-float</code><dd><a name="index-msoft_002dfloat-1547"></a>Do not use hardware floating point.
+
+     <br><dt><code>-mac0</code><dd><a name="index-mac0-1548"></a>Return floating-point results in ac0 (fr0 in Unix assembler syntax).
+
+     <br><dt><code>-mno-ac0</code><dd><a name="index-mno_002dac0-1549"></a>Return floating-point results in memory.  This is the default.
+
+     <br><dt><code>-m40</code><dd><a name="index-m40-1550"></a>Generate code for a PDP-11/40.
+
+     <br><dt><code>-m45</code><dd><a name="index-m45-1551"></a>Generate code for a PDP-11/45.  This is the default.
+
+     <br><dt><code>-m10</code><dd><a name="index-m10-1552"></a>Generate code for a PDP-11/10.
+
+     <br><dt><code>-mbcopy-builtin</code><dd><a name="index-bcopy_002dbuiltin-1553"></a>Use inline <code>movmemhi</code> patterns for copying memory.  This is the
+default.
+
+     <br><dt><code>-mbcopy</code><dd><a name="index-mbcopy-1554"></a>Do not use inline <code>movmemhi</code> patterns for copying memory.
+
+     <br><dt><code>-mint16</code><dt><code>-mno-int32</code><dd><a name="index-mint16-1555"></a><a name="index-mno_002dint32-1556"></a>Use 16-bit <code>int</code>.  This is the default.
+
+     <br><dt><code>-mint32</code><dt><code>-mno-int16</code><dd><a name="index-mint32-1557"></a><a name="index-mno_002dint16-1558"></a>Use 32-bit <code>int</code>.
+
+     <br><dt><code>-mfloat64</code><dt><code>-mno-float32</code><dd><a name="index-mfloat64-1559"></a><a name="index-mno_002dfloat32-1560"></a>Use 64-bit <code>float</code>.  This is the default.
+
+     <br><dt><code>-mfloat32</code><dt><code>-mno-float64</code><dd><a name="index-mfloat32-1561"></a><a name="index-mno_002dfloat64-1562"></a>Use 32-bit <code>float</code>.
+
+     <br><dt><code>-mabshi</code><dd><a name="index-mabshi-1563"></a>Use <code>abshi2</code> pattern.  This is the default.
+
+     <br><dt><code>-mno-abshi</code><dd><a name="index-mno_002dabshi-1564"></a>Do not use <code>abshi2</code> pattern.
+
+     <br><dt><code>-mbranch-expensive</code><dd><a name="index-mbranch_002dexpensive-1565"></a>Pretend that branches are expensive.  This is for experimenting with
+code generation only.
+
+     <br><dt><code>-mbranch-cheap</code><dd><a name="index-mbranch_002dcheap-1566"></a>Do not pretend that branches are expensive.  This is the default.
+
+     <br><dt><code>-msplit</code><dd><a name="index-msplit-1567"></a>Generate code for a system with split I&amp;D.
+
+     <br><dt><code>-mno-split</code><dd><a name="index-mno_002dsplit-1568"></a>Generate code for a system without split I&amp;D.  This is the default.
+
+     <br><dt><code>-munix-asm</code><dd><a name="index-munix_002dasm-1569"></a>Use Unix assembler syntax.  This is the default when configured for
+<span class="samp">pdp11-*-bsd</span>.
+
+     <br><dt><code>-mdec-asm</code><dd><a name="index-mdec_002dasm-1570"></a>Use DEC assembler syntax.  This is the default when configured for any
+PDP-11 target other than <span class="samp">pdp11-*-bsd</span>. 
+</dl>
+
+ </body></html>
+

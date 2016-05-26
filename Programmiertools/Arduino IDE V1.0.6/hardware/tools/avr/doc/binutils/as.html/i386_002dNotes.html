@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+<title>i386-Notes - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dBugs.html#i386_002dBugs" title="i386-Bugs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dNotes"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dBugs.html#i386_002dBugs">i386-Bugs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.15 Notes</h4>
+
+<p><a name="index-i386-_0040code_007bmul_007d_002c-_0040code_007bimul_007d-instructions-961"></a><a name="index-_0040code_007bmul_007d-instruction_002c-i386-962"></a><a name="index-_0040code_007bimul_007d-instruction_002c-i386-963"></a><a name="index-_0040code_007bmul_007d-instruction_002c-x86_002d64-964"></a><a name="index-_0040code_007bimul_007d-instruction_002c-x86_002d64-965"></a>There is some trickery concerning the <span class="samp">mul</span> and <span class="samp">imul</span>
+instructions that deserves mention.  The 16-, 32-, 64- and 128-bit expanding
+multiplies (base opcode <span class="samp">0xf6</span>; extension 4 for <span class="samp">mul</span> and 5
+for <span class="samp">imul</span>) can be output only in the one operand form.  Thus,
+<span class="samp">imul %ebx, %eax</span> does <em>not</em> select the expanding multiply;
+the expanding multiply would clobber the <span class="samp">%edx</span> register, and this
+would confuse <code>gcc</code> output.  Use <span class="samp">imul %ebx</span> to get the
+64-bit product in <span class="samp">%edx:%eax</span>.
+
+   <p>We have added a two operand form of <span class="samp">imul</span> when the first operand
+is an immediate mode expression and the second operand is a register. 
+This is just a shorthand, so that, multiplying <span class="samp">%eax</span> by 69, for
+example, can be done with <span class="samp">imul $69, %eax</span> rather than <span class="samp">imul
+$69, %eax, %eax</span>.
+
+<!-- Copyright 2000, 2003 Free Software Foundation, Inc. -->
+<!-- This is part of the GAS manual. -->
+<!-- For copying conditions, see the file as.texinfo. -->
+</body></html>
+

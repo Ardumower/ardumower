@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+<title>PowerPC64 ELF64 - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Dependent.html#Machine-Dependent" title="Machine Dependent">
+<link rel="prev" href="PowerPC-ELF32.html#PowerPC-ELF32" title="PowerPC ELF32">
+<link rel="next" href="SPU-ELF.html#SPU-ELF" title="SPU ELF">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU linker LD
+(GNU Binutils)
+version 2.19.
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000,
+2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="PowerPC64-ELF64"></a>Next:&nbsp;<a rel="next" accesskey="n" href="SPU-ELF.html#SPU-ELF">SPU ELF</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="PowerPC-ELF32.html#PowerPC-ELF32">PowerPC ELF32</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Dependent.html#Machine-Dependent">Machine Dependent</a>
+<hr><br>
+</div>
+
+<h3 class="section">4.10 <span class="command">ld</span> and PowerPC64 64-bit ELF Support</h3>
+
+<p><a name="index-PowerPC64-ELF64-options-579"></a>
+     
+<a name="index-PowerPC64-stub-grouping-580"></a>
+<a name="index-_002d_002dstub_002dgroup_002dsize-581"></a>
+<dl><dt><span class="option">--stub-group-size</span><dd>Long branch stubs, PLT call stubs  and TOC adjusting stubs are placed
+by <span class="command">ld</span> in stub sections located between groups of input sections. 
+<span class="samp">--stub-group-size</span> specifies the maximum size of a group of input
+sections handled by one stub section.  Since branch offsets are signed,
+a stub section may serve two groups of input sections, one group before
+the stub section, and one group after it.  However, when using
+conditional branches that require stubs, it may be better (for branch
+prediction) that stub sections only serve one group of input sections. 
+A negative value for <span class="samp">N</span> chooses this scheme, ensuring that
+branches to stubs always use a negative offset.  Two special values of
+<span class="samp">N</span> are recognized, <span class="samp">1</span> and <span class="samp">-1</span>.  These both instruct
+<span class="command">ld</span> to automatically size input section groups for the branch types
+detected, with the same behaviour regarding stub placement as other
+positive or negative values of <span class="samp">N</span> respectively.
+
+     <p>Note that <span class="samp">--stub-group-size</span> does not split input sections.  A
+single input section larger than the group size specified will of course
+create a larger group (of one section).  If input sections are too
+large, it may not be possible for a branch to reach its stub.
+
+     <p><a name="index-PowerPC64-stub-symbols-582"></a><a name="index-_002d_002demit_002dstub_002dsyms-583"></a><br><dt><span class="option">--emit-stub-syms</span><dd>This option causes <span class="command">ld</span> to label linker stubs with a local
+symbol that encodes the stub type and destination.
+
+     <p><a name="index-PowerPC64-dot-symbols-584"></a><a name="index-_002d_002ddotsyms-585"></a><a name="index-_002d_002dno_002ddotsyms-586"></a><br><dt><span class="option">--dotsyms, --no-dotsyms</span><dd>These two options control how <span class="command">ld</span> interprets version patterns
+in a version script.  Older PowerPC64 compilers emitted both a
+function descriptor symbol with the same name as the function, and a
+code entry symbol with the name prefixed by a dot (<span class="samp">.</span>).  To
+properly version a function <span class="samp">foo</span>, the version script thus needs
+to control both <span class="samp">foo</span> and <span class="samp">.foo</span>.  The option
+<span class="samp">--dotsyms</span>, on by default, automatically adds the required
+dot-prefixed patterns.  Use <span class="samp">--no-dotsyms</span> to disable this
+feature.
+
+     <p><a name="index-PowerPC64-TLS-optimization-587"></a><a name="index-_002d_002dno_002dtls_002doptimize-588"></a><br><dt><span class="option">--no-tls-optimize</span><dd>PowerPC64 <span class="command">ld</span> normally performs some optimization of code
+sequences used to access Thread-Local Storage.  Use this option to
+disable the optimization.
+
+     <p><a name="index-PowerPC64-OPD-optimization-589"></a><a name="index-_002d_002dno_002dopd_002doptimize-590"></a><br><dt><span class="option">--no-opd-optimize</span><dd>PowerPC64 <span class="command">ld</span> normally removes <code>.opd</code> section entries
+corresponding to deleted link-once functions, or functions removed by
+the action of <span class="samp">--gc-sections</span> or linker script <code>/DISCARD/</code>. 
+Use this option to disable <code>.opd</code> optimization.
+
+     <p><a name="index-PowerPC64-OPD-spacing-591"></a><a name="index-_002d_002dnon_002doverlapping_002dopd-592"></a><br><dt><span class="option">--non-overlapping-opd</span><dd>Some PowerPC64 compilers have an option to generate compressed
+<code>.opd</code> entries spaced 16 bytes apart, overlapping the third word,
+the static chain pointer (unused in C) with the first word of the next
+entry.  This option expands such entries to the full 24 bytes.
+
+     <p><a name="index-PowerPC64-TOC-optimization-593"></a><a name="index-_002d_002dno_002dtoc_002doptimize-594"></a><br><dt><span class="option">--no-toc-optimize</span><dd>PowerPC64 <span class="command">ld</span> normally removes unused <code>.toc</code> section
+entries.  Such entries are detected by examining relocations that
+reference the TOC in code sections.  A reloc in a deleted code section
+marks a TOC word as unneeded, while a reloc in a kept code section
+marks a TOC word as needed.  Since the TOC may reference itself, TOC
+relocs are also examined.  TOC words marked as both needed and
+unneeded will of course be kept.  TOC words without any referencing
+reloc are assumed to be part of a multi-word entry, and are kept or
+discarded as per the nearest marked preceding word.  This works
+reliably for compiler generated code, but may be incorrect if assembly
+code is used to insert TOC entries.  Use this option to disable the
+optimization.
+
+     <p><a name="index-PowerPC64-multi_002dTOC-595"></a><a name="index-_002d_002dno_002dmulti_002dtoc-596"></a><br><dt><span class="option">--no-multi-toc</span><dd>By default, PowerPC64 GCC generates code for a TOC model where TOC
+entries are accessed with a 16-bit offset from r2.  This limits the
+total TOC size to 64K.  PowerPC64 <span class="command">ld</span> extends this limit by
+grouping code sections such that each group uses less than 64K for its
+TOC entries, then inserts r2 adjusting stubs between inter-group
+calls.  <span class="command">ld</span> does not split apart input sections, so cannot
+help if a single input file has a <code>.toc</code> section that exceeds
+64K, most likely from linking multiple files with <span class="command">ld -r</span>. 
+Use this option to turn off this feature. 
+</dl>
+
+   </body></html>
+

@@ -1,0 +1,38 @@
+WinAVR 
+------
+
+Sources for specific versions of these packages can be found at these locations.
+
+GNU Binutils
+<http://sources.redhat.com/binutils/>
+
+GCC
+<http://gcc.gnu.org/>
+
+avr-libc
+<http://savannah.nongnu.org/projects/avr-libc>
+
+avrdude
+<http://savannah.nongnu.org/projects/avrdude/>
+
+GDB
+<http://sources.redhat.com/gdb/>
+
+Insight
+<http://sources.redhat.com/insight/>
+
+AVaRICE
+<http://sourceforge.net/projects/avarice>
+
+SimulAVR
+<http://savannah.nongnu.org/projects/simulavr/>
+
+Tofrodos
+<http://www.thefreecountry.com/>
+
+Cygwin DLLs
+<http://www.cygwin.com/>
+
+Any patches against these sources can be found in the \source directory
+of your installation. These are organized into different subdirectories, one
+for each project. All patches have a .patch file extension.

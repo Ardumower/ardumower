@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Arduino Reference - Changes </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body>
+<div id="page">
+  <!--PageHeaderFmt-->
+  <div id="pageheader">
+    <div class="title"><a href='http://arduino.cc/en'>Arduino</a></div>
+  </div>
+  <!--/PageHeaderFmt-->
+
+  <!--PageLeftFmt-->
+  <div id="pagenav">
+    <div id="navbar">
+  	<p><a class='wikilink' href='http://arduino.cc/en/Main/Buy'>Buy</a>
+<a class='wikilink' href='http://arduino.cc/en/Main/Software'>Download</a>
+<a class='wikilink' href='Guide_index.html'>Getting Started</a>
+<a class='wikilink' href='http://arduino.cc/en/Tutorial/HomePage'>Learning</a>
+<a class='wikilink' href='index.html'>Reference</a>
+<a class='wikilink' href='http://arduino.cc/en/Main/Hardware'>Hardware</a>
+<a class='wikilink' href='FAQ.html'>FAQ</a>
+</p>
+<p class='vspace'></p>
+
+    </div>
+  </div>
+  <!--/PageLeftFmt-->
+
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>Reference</strong> &nbsp;  <a class='wikilink' href='index.html'>Language</a> | <a class='wikilink' href='Libraries.html'>Libraries</a> | <a class='wikilink' href='Comparison.html'>Comparison</a> | <a class='selflink' href='Changes.html'>Changes</a>
+</p>
+<p class='vspace'></p><h2>Changes</h2>
+<p>This page lists major changes to the Arduino core, libraries, and environment.  For details, see the <a class='wikilink' href='http://arduino.cc/en/Main/ReleaseNotes'>release notes</a>.
+</p>
+<p class='vspace'></p><h3>Changes in Arduino 1.0.1</h3>
+<p><strong>Environment (IDE)</strong>
+</p><ul><li>Internationalization of the IDE and translation into multiple languages (selected in preferences dialog).
+</li><li>New preference for skipping verification during upload (for increased speed).
+</li><li>Speeded up compilation by only compiling changed files.  (Except for the first compilation after selecting a new board, when all files are compiled.)
+</li></ul><p class='vspace'></p><p><strong>Language (API)</strong>
+</p><ul><li>Added support for the Arduino Leonardo.
+</li><li>Added Leonardo-specific <a class='wikilink' href='MouseKeyboard.html'>Mouse and Keyboard libraries</a>.
+</li><li>Added INPUT_PULLUP argument to <a class='wikilink' href='PinMode.html'>pinMode()</a> function.  The INPUT mode now explicitly disables the pullup resistors.
+</li><li>Added ability to generate repeated starts in the Wire library (in master mode).  Extra boolean parameters to <a class='wikilink' href='WireEndTransmission.html'>endTransmission()</a> and <a class='wikilink' href='WireRequestFrom.html'>requestFrom()</a> control whether or not to send a stop (or a repeated start instead)
+</li><li>Added <a class='wikilink' href='EthernetMaintain.html'>Ethernet.maintain()</a> function for renewing DHCP leases.
+</li><li>Added readString() and readStringUntil() functions to Stream, Serial, etc.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 1.0</h3>
+<p><strong>Environment (IDE)</strong>
+</p><ul><li>New file extension (.ino).
+</li><li>New toolbar icons: checkmark (verify) and arrow (upload).  (Nicholas Zambetti)
+</li><li>New color scheme, document icon, about image (!<span class='wikiword'>ToDo</span>).
+</li><li>Board name and serial port are shown in status line at the bottom of the editor. (from Wiring)
+</li><li><span class='wikiword'>URLs</span> in the sketch code are now clickable hyperlinks (issue 148) (Christian Maglie)
+</li><li>Progress bar shown during compilation and upload. (from Wiring)
+</li><li>Support for uploading sketches from within the IDE: hold shift while clicking upload or select "Upload Using Programmer" from the File menu.  Select programmer from the Tools menu of the IDE.
+</li><li>Verbose output (during compilation or uploading) now enabled from within the preferences dialog.
+</li></ul><p class='vspace'></p><p><strong>Language (API)</strong>
+</p><ul><li>Switching to non-blocking Serial writes with a transmit buffer.
+</li><li><a class='wikilink' href='Serial_Flush.html'>Serial.flush()</a> now waits for transmission of outgoing data rather than discarding received incoming data.
+</li><li>Reimplementation of the <a class='wikilink' href='SoftwareSerial.html'>SoftwareSerial library</a> to support multiple ports (!<span class='wikiword'>NewSoftSerial</span> by Mikal Hart).
+</li><li>Removed Matrix and Sprite libraries.
+</li><li><a class='wikilink' href='Serial_Print.html'>Serial.print(byte)</a> now prints the digits of the number as characters; use <a class='wikilink' href='Serial_Write.html'>write()</a> to send as a single byte.
+</li><li><a class='wikilink' href='Serial_Write.html'>write()</a>, <a class='wikilink' href='Serial_Print.html'>print()</a>, and <a class='wikilink' href='Serial_Println.html'>println()</a> now return size_t (unsigned int) instead of void (issue 551): number of bytes written.
+</li><li><a class='wikilink' href='Serial_Write.html'>write(str)</a> in Print is no longer virtual, so subclasses of Print or Stream can't (but also don't need to) override it.
+</li><li>Added getWriteError(), clearWriteError(), and protected setWriteError() methods to Print; use to check for, clear, and set a write error flag.
+</li><li>Removed the ability to say "client == NULL" or "client != NULL" from Ethernet library; use "if (client)" or "if (!client)" instead.
+</li><li>Reimplementation of <a class='wikilink' href='StringObject.html'>String class</a> (Paul Stoffregen + additional modifications).
+</li><li>Added support for Flash-based strings using the F("string") syntax.
+</li><li>Added DHCP and DNS support to the <a class='wikilink' href='Ethernet.html'>Ethernet library</a> (integration by Adrian !<span class='wikiword'>McEwen</span>).
+</li><li>Renamed Ethernet Client, Server, and UDP classes to <span class='wikiword'>EthernetClient</span>, <span class='wikiword'>EthernetServer</span>, and <span class='wikiword'>EthernetUDP</span> to allow for simultaneous use of other networking libraries.
+</li><li>Modified UDP API:
+<ul><li><a class='wikilink' href='EthernetUDPBeginPacket.html'>beginPacket()</a> / <a class='wikilink' href='EthernetUDPEndPacket.html'>endPacket()</a> for bracketing outgoing UDP packet construction
+</li><li>Inheriting from Stream, using write(), print(), and println() for UDP packet construction
+</li><li><a class='wikilink' href='EthernetUDPParsePacket.html'>parsePacket()</a> for parsing incoming packets (and checking if there is one)
+</li><li>available(), read(), peek() for reading bytes of incoming packet
+</li><li><a class='wikilink' href='EthernetUDPRemoteIP.html'>remoteIP()</a>, <a class='wikilink' href='EthernetUDPRemotePort.html'>remotePort()</a> for information about incoming packet
+</li></ul></li><li>Addition of <a class='wikilink' href='EthernetIPAddress.html'>IPAddress</a> class (Adrian !<span class='wikiword'>McEwen</span>).
+</li><li>Modified Wire library to inherit from Stream; i.e. to use read(), write(), print(), println(), etc.  Bracket calls to those functions with beginTransmission() and endTransmission().
+</li><li>Adding support for multiple open files and directory iteration in <a class='wikilink' href='SD.html'>SD card library</a> (Limor Fried).
+</li><li>Added <a class='wikilink' href='SerialEvent.html'>serialEvent()</a> function, called automatically on reception of serial data if it exists.  Also, serialEvent1(), serialEvent2(), and serialEvent3() on the Mega.
+</li><li>Added <a class='wikilink' href='StreamFind.html'>find()</a>, <a class='wikilink' href='StreamFindUntil.html'>findUntil()</a>, <a class='wikilink' href='StreamParseInt.html'>parseInt()</a>, <a class='wikilink' href='StreamParseFloat.html'>parseFloat()</a>, <a class='wikilink' href='StreamReadBytes.html'>readBytes()</a>, <a class='wikilink' href='StreamReadBytesUntil.html'>readBytesUntil()</a>, and <a class='wikilink' href='StreamSetTimeout.html'>setTimeout()</a> to Stream (issue 458 - Michael Margolis).
+</li><li>Updated Firmata to version 2.3 (r71): analog inputs now numbered from 14 (not 16) when used as digital pins.
+</li></ul><p class='vspace'></p><p><strong>Internals</strong>
+</p><ul><li>Renamed <span class='wikiword'>WProgram</span>.h to Arduino.h.
+</li><li>Pin definitions separated from the core and stored in new variants/ sub-directory.  Specified by the _BOARD_.build.variant preference in boards.txt.
+</li><li>Added macros / constants for getting information about the properties of the board (issue 490 and issue 495)
+</li></ul><p class='vspace'></p><p><strong>Tools</strong>
+</p><ul><li>Updated avrdude to 5.11 (and switched to arduino programmer type from stk500).
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0023</h3>
+<h3>Changes in Arduino 0022</h3>
+<h3>Changes in Arduino 0021</h3>
+<h3>Changes in Arduino 0020</h3>
+<h3>Changes in Arduino 0019</h3>
+<ul><li>Added <a class='wikilink' href='StringObject.html'>String</a> class.
+</li><li>Added <a class='wikilink' href='ShiftIn.html'>shiftIn()</a> function.
+</li><li>Added <a class='wikilink' href='Serial_Peek.html'>Serial.peek()</a> function.
+</li><li>Added aliases for the analog input pins: A0, A1, etc.
+</li><li>Added <a class='wikilink' href='SPI.html'>SPI</a> library.
+</li><li>Ethernet library now depends on the SPI library; add <code>#include &lt;SPI.h&gt;</code> to the top of sketches.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0018</h3>
+<ul><li>Added <a class='wikilink' href='Tone.html'>tone()</a> and <a class='wikilink' href='NoTone.html'>noTone()</a> functions.
+</li><li>Added <a class='wikilink' href='Serial_End.html'>Serial.end()</a> function.
+</li><li>Added support for <a class='urllink' href='http://code.google.com/p/arduino/wiki/Platforms' rel='nofollow'>third-party hardware</a> in the hardware sub-directory of the Arduino sketchbook.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0017</h3>
+<ul><li><strong>Environment</strong>: The code base for the Arduino development environment was largely re-written to bring it back into sync with Processing (1.0.3).  The main differences include support for multiple sketch windows open simultaneously and a dedicated window for the serial monitor.
+<p class='vspace'></p></li><li><strong>Icons</strong>: The icons and about images were updated.
+<p class='vspace'></p></li><li><strong>Arduino.app</strong>: The Mac OS X version of Arduino is now a .app file packaged in a .dmg.
+<p class='vspace'></p></li><li><strong>Libraries</strong>: Support was added for third-party libraries in the <em>SKETCHBOOK</em>/libraries directory.  This allows user-installed libraries to persist across upgrades of the Arduino software.
+<p class='vspace'></p></li><li><strong>Servo</strong>: The servo library was rewritten to allow support for up to 12 servos (on any pins) and up to 48 on the Mega.
+<p class='vspace'></p></li><li><strong><span class='wikiword'>LiquidCrystal</span></strong>: The begin(), cursor(), noCursor(), blink(), noBlink(), display(), noDisplay(), scrollDisplayLeft(), scrollDisplayRight(), autoscroll(), noAutoscroll(), leftToRight(), rightToLeft(), and createChar() functions were added.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0016</h3>
+<ul><li>New functions for writing a string, write(str), or buffer, write(buf, len), were added to the Print, Serial, and Ethernet library Client and Server classes.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0015</h3>
+<ul><li>Support for the Arduino Mega.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0013</h3>
+<ul><li>Support for printing floats was added to the Print, Serial, and Ethernet library Client and Server classes.
+<p class='vspace'></p></li><li>The word type and word(), bitRead(), bitWrite(), bitSet(), bitClear(), bit(), lowByte(), and highByte() functions were added.
+</li></ul><p class='vspace'></p><h3>Changes in Arduino 0012</h3>
+<ul><li>Added the Firmata library, which provides a standard protocol for serial communication.
+<p class='vspace'></p></li><li>Added Ethernet library.
+<p class='vspace'></p></li><li>Added Servo library.
+<p class='vspace'></p></li><li>Added <span class='wikiword'>LiquidCrystal</span> library.
+</li></ul><p><a class='wikilink' href='index.html'>Reference Home</a>
+</p>
+<p class='vspace'></p><p><em>Corrections, suggestions, and new documentation should be posted to the <a class='urllink' href='http://arduino.cc/forum/index.php/board,23.0.html' rel='nofollow'>Forum</a>.</em>
+</p>
+<p class='vspace'></p><p>The text of the Arduino reference is licensed under a
+<a class='urllink' href='http://creativecommons.org/licenses/by-sa/3.0/' rel='nofollow'>Creative Commons Attribution-ShareAlike 3.0 License</a>.  Code samples in the reference are released into the public domain.
+</p>
+</div>
+
+
+  </div>
+
+  <!--PageFooterFmt-->
+  <div id="pagefooter">
+&copy;Arduino | 
+  <a href='#'>Edit Page</a> | <a href='#'>Page History</a> | <a href='#' target='_blank'>Printable View</a> | <a href='http://arduino.cc/en/Site/AllRecentChanges'>All Recent Site Changes</a>
+  </div>
+  <!--/PageFooterFmt-->
+
+</div>
+</body>
+</html>

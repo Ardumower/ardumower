@@ -1,0 +1,324 @@
+<html lang="en">
+<head>
+<title>M680x0 Options - Using the GNU Compiler Collection (GCC)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using the GNU Compiler Collection (GCC)">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Submodel-Options.html#Submodel-Options" title="Submodel Options">
+<link rel="prev" href="M32R_002fD-Options.html#M32R_002fD-Options" title="M32R/D Options">
+<link rel="next" href="M68hc1x-Options.html#M68hc1x-Options" title="M68hc1x Options">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="M680x0-Options"></a>Next:&nbsp;<a rel="next" accesskey="n" href="M68hc1x-Options.html#M68hc1x-Options">M68hc1x Options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="M32R_002fD-Options.html#M32R_002fD-Options">M32R/D Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Submodel-Options.html#Submodel-Options">Submodel Options</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.17.18 M680x0 Options</h4>
+
+<p><a name="index-M680x0-options-1343"></a>
+These are the <span class="samp">-m</span> options defined for M680x0 and ColdFire processors. 
+The default settings depend on which architecture was selected when
+the compiler was configured; the defaults for the most common choices
+are given below.
+
+     <dl>
+<dt><code>-march=</code><var>arch</var><dd><a name="index-march-1344"></a>Generate code for a specific M680x0 or ColdFire instruction set
+architecture.  Permissible values of <var>arch</var> for M680x0
+architectures are: <span class="samp">68000</span>, <span class="samp">68010</span>, <span class="samp">68020</span>,
+<span class="samp">68030</span>, <span class="samp">68040</span>, <span class="samp">68060</span> and <span class="samp">cpu32</span>.  ColdFire
+architectures are selected according to Freescale's ISA classification
+and the permissible values are: <span class="samp">isaa</span>, <span class="samp">isaaplus</span>,
+<span class="samp">isab</span> and <span class="samp">isac</span>.
+
+     <p>gcc defines a macro <span class="samp">__mcf</span><var>arch</var><span class="samp">__</span> whenever it is generating
+code for a ColdFire target.  The <var>arch</var> in this macro is one of the
+<span class="option">-march</span> arguments given above.
+
+     <p>When used together, <span class="option">-march</span> and <span class="option">-mtune</span> select code
+that runs on a family of similar processors but that is optimized
+for a particular microarchitecture.
+
+     <br><dt><code>-mcpu=</code><var>cpu</var><dd><a name="index-mcpu-1345"></a>Generate code for a specific M680x0 or ColdFire processor. 
+The M680x0 <var>cpu</var>s are: <span class="samp">68000</span>, <span class="samp">68010</span>, <span class="samp">68020</span>,
+<span class="samp">68030</span>, <span class="samp">68040</span>, <span class="samp">68060</span>, <span class="samp">68302</span>, <span class="samp">68332</span>
+and <span class="samp">cpu32</span>.  The ColdFire <var>cpu</var>s are given by the table
+below, which also classifies the CPUs into families:
+
+     <p><table summary=""><tr align="left"><td valign="top" width="20%"><strong>Family</strong> </td><td valign="top" width="80%"><span class="samp">-mcpu</span><strong> arguments</strong>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">51qe</span> </td><td valign="top" width="80%"><span class="samp">51qe</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5206</span> </td><td valign="top" width="80%"><span class="samp">5202</span> <span class="samp">5204</span> <span class="samp">5206</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5206e</span> </td><td valign="top" width="80%"><span class="samp">5206e</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5208</span> </td><td valign="top" width="80%"><span class="samp">5207</span> <span class="samp">5208</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5211a</span> </td><td valign="top" width="80%"><span class="samp">5210a</span> <span class="samp">5211a</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5213</span> </td><td valign="top" width="80%"><span class="samp">5211</span> <span class="samp">5212</span> <span class="samp">5213</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5216</span> </td><td valign="top" width="80%"><span class="samp">5214</span> <span class="samp">5216</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">52235</span> </td><td valign="top" width="80%"><span class="samp">52230</span> <span class="samp">52231</span> <span class="samp">52232</span> <span class="samp">52233</span> <span class="samp">52234</span> <span class="samp">52235</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5225</span> </td><td valign="top" width="80%"><span class="samp">5224</span> <span class="samp">5225</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5235</span> </td><td valign="top" width="80%"><span class="samp">5232</span> <span class="samp">5233</span> <span class="samp">5234</span> <span class="samp">5235</span> <span class="samp">523x</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5249</span> </td><td valign="top" width="80%"><span class="samp">5249</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5250</span> </td><td valign="top" width="80%"><span class="samp">5250</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5271</span> </td><td valign="top" width="80%"><span class="samp">5270</span> <span class="samp">5271</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5272</span> </td><td valign="top" width="80%"><span class="samp">5272</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5275</span> </td><td valign="top" width="80%"><span class="samp">5274</span> <span class="samp">5275</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5282</span> </td><td valign="top" width="80%"><span class="samp">5280</span> <span class="samp">5281</span> <span class="samp">5282</span> <span class="samp">528x</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5307</span> </td><td valign="top" width="80%"><span class="samp">5307</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5329</span> </td><td valign="top" width="80%"><span class="samp">5327</span> <span class="samp">5328</span> <span class="samp">5329</span> <span class="samp">532x</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5373</span> </td><td valign="top" width="80%"><span class="samp">5372</span> <span class="samp">5373</span> <span class="samp">537x</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5407</span> </td><td valign="top" width="80%"><span class="samp">5407</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">5475</span> </td><td valign="top" width="80%"><span class="samp">5470</span> <span class="samp">5471</span> <span class="samp">5472</span> <span class="samp">5473</span> <span class="samp">5474</span> <span class="samp">5475</span> <span class="samp">547x</span> <span class="samp">5480</span> <span class="samp">5481</span> <span class="samp">5482</span> <span class="samp">5483</span> <span class="samp">5484</span> <span class="samp">5485</span>
+     <br></td></tr></table>
+
+     <p><span class="option">-mcpu=</span><var>cpu</var> overrides <span class="option">-march=</span><var>arch</var> if
+<var>arch</var> is compatible with <var>cpu</var>.  Other combinations of
+<span class="option">-mcpu</span> and <span class="option">-march</span> are rejected.
+
+     <p>gcc defines the macro <span class="samp">__mcf_cpu_</span><var>cpu</var> when ColdFire target
+<var>cpu</var> is selected.  It also defines <span class="samp">__mcf_family_</span><var>family</var>,
+where the value of <var>family</var> is given by the table above.
+
+     <br><dt><code>-mtune=</code><var>tune</var><dd><a name="index-mtune-1346"></a>Tune the code for a particular microarchitecture, within the
+constraints set by <span class="option">-march</span> and <span class="option">-mcpu</span>. 
+The M680x0 microarchitectures are: <span class="samp">68000</span>, <span class="samp">68010</span>,
+<span class="samp">68020</span>, <span class="samp">68030</span>, <span class="samp">68040</span>, <span class="samp">68060</span>
+and <span class="samp">cpu32</span>.  The ColdFire microarchitectures
+are: <span class="samp">cfv1</span>, <span class="samp">cfv2</span>, <span class="samp">cfv3</span>, <span class="samp">cfv4</span> and <span class="samp">cfv4e</span>.
+
+     <p>You can also use <span class="option">-mtune=68020-40</span> for code that needs
+to run relatively well on 68020, 68030 and 68040 targets. 
+<span class="option">-mtune=68020-60</span> is similar but includes 68060 targets
+as well.  These two options select the same tuning decisions as
+<span class="option">-m68020-40</span> and <span class="option">-m68020-60</span> respectively.
+
+     <p>gcc defines the macros <span class="samp">__mc</span><var>arch</var> and <span class="samp">__mc</span><var>arch</var><span class="samp">__</span>
+when tuning for 680x0 architecture <var>arch</var>.  It also defines
+<span class="samp">mc</span><var>arch</var> unless either <span class="option">-ansi</span> or a non-GNU <span class="option">-std</span>
+option is used.  If gcc is tuning for a range of architectures,
+as selected by <span class="option">-mtune=68020-40</span> or <span class="option">-mtune=68020-60</span>,
+it defines the macros for every architecture in the range.
+
+     <p>gcc also defines the macro <span class="samp">__m</span><var>uarch</var><span class="samp">__</span> when tuning for
+ColdFire microarchitecture <var>uarch</var>, where <var>uarch</var> is one
+of the arguments given above.
+
+     <br><dt><code>-m68000</code><dt><code>-mc68000</code><dd><a name="index-m68000-1347"></a><a name="index-mc68000-1348"></a>Generate output for a 68000.  This is the default
+when the compiler is configured for 68000-based systems. 
+It is equivalent to <span class="option">-march=68000</span>.
+
+     <p>Use this option for microcontrollers with a 68000 or EC000 core,
+including the 68008, 68302, 68306, 68307, 68322, 68328 and 68356.
+
+     <br><dt><code>-m68010</code><dd><a name="index-m68010-1349"></a>Generate output for a 68010.  This is the default
+when the compiler is configured for 68010-based systems. 
+It is equivalent to <span class="option">-march=68010</span>.
+
+     <br><dt><code>-m68020</code><dt><code>-mc68020</code><dd><a name="index-m68020-1350"></a><a name="index-mc68020-1351"></a>Generate output for a 68020.  This is the default
+when the compiler is configured for 68020-based systems. 
+It is equivalent to <span class="option">-march=68020</span>.
+
+     <br><dt><code>-m68030</code><dd><a name="index-m68030-1352"></a>Generate output for a 68030.  This is the default when the compiler is
+configured for 68030-based systems.  It is equivalent to
+<span class="option">-march=68030</span>.
+
+     <br><dt><code>-m68040</code><dd><a name="index-m68040-1353"></a>Generate output for a 68040.  This is the default when the compiler is
+configured for 68040-based systems.  It is equivalent to
+<span class="option">-march=68040</span>.
+
+     <p>This option inhibits the use of 68881/68882 instructions that have to be
+emulated by software on the 68040.  Use this option if your 68040 does not
+have code to emulate those instructions.
+
+     <br><dt><code>-m68060</code><dd><a name="index-m68060-1354"></a>Generate output for a 68060.  This is the default when the compiler is
+configured for 68060-based systems.  It is equivalent to
+<span class="option">-march=68060</span>.
+
+     <p>This option inhibits the use of 68020 and 68881/68882 instructions that
+have to be emulated by software on the 68060.  Use this option if your 68060
+does not have code to emulate those instructions.
+
+     <br><dt><code>-mcpu32</code><dd><a name="index-mcpu32-1355"></a>Generate output for a CPU32.  This is the default
+when the compiler is configured for CPU32-based systems. 
+It is equivalent to <span class="option">-march=cpu32</span>.
+
+     <p>Use this option for microcontrollers with a
+CPU32 or CPU32+ core, including the 68330, 68331, 68332, 68333, 68334,
+68336, 68340, 68341, 68349 and 68360.
+
+     <br><dt><code>-m5200</code><dd><a name="index-m5200-1356"></a>Generate output for a 520X ColdFire CPU.  This is the default
+when the compiler is configured for 520X-based systems. 
+It is equivalent to <span class="option">-mcpu=5206</span>, and is now deprecated
+in favor of that option.
+
+     <p>Use this option for microcontroller with a 5200 core, including
+the MCF5202, MCF5203, MCF5204 and MCF5206.
+
+     <br><dt><code>-m5206e</code><dd><a name="index-m5206e-1357"></a>Generate output for a 5206e ColdFire CPU.  The option is now
+deprecated in favor of the equivalent <span class="option">-mcpu=5206e</span>.
+
+     <br><dt><code>-m528x</code><dd><a name="index-m528x-1358"></a>Generate output for a member of the ColdFire 528X family. 
+The option is now deprecated in favor of the equivalent
+<span class="option">-mcpu=528x</span>.
+
+     <br><dt><code>-m5307</code><dd><a name="index-m5307-1359"></a>Generate output for a ColdFire 5307 CPU.  The option is now deprecated
+in favor of the equivalent <span class="option">-mcpu=5307</span>.
+
+     <br><dt><code>-m5407</code><dd><a name="index-m5407-1360"></a>Generate output for a ColdFire 5407 CPU.  The option is now deprecated
+in favor of the equivalent <span class="option">-mcpu=5407</span>.
+
+     <br><dt><code>-mcfv4e</code><dd><a name="index-mcfv4e-1361"></a>Generate output for a ColdFire V4e family CPU (e.g. 547x/548x). 
+This includes use of hardware floating point instructions. 
+The option is equivalent to <span class="option">-mcpu=547x</span>, and is now
+deprecated in favor of that option.
+
+     <br><dt><code>-m68020-40</code><dd><a name="index-m68020_002d40-1362"></a>Generate output for a 68040, without using any of the new instructions. 
+This results in code which can run relatively efficiently on either a
+68020/68881 or a 68030 or a 68040.  The generated code does use the
+68881 instructions that are emulated on the 68040.
+
+     <p>The option is equivalent to <span class="option">-march=68020</span> <span class="option">-mtune=68020-40</span>.
+
+     <br><dt><code>-m68020-60</code><dd><a name="index-m68020_002d60-1363"></a>Generate output for a 68060, without using any of the new instructions. 
+This results in code which can run relatively efficiently on either a
+68020/68881 or a 68030 or a 68040.  The generated code does use the
+68881 instructions that are emulated on the 68060.
+
+     <p>The option is equivalent to <span class="option">-march=68020</span> <span class="option">-mtune=68020-60</span>.
+
+     <br><dt><code>-mhard-float</code><dt><code>-m68881</code><dd><a name="index-mhard_002dfloat-1364"></a><a name="index-m68881-1365"></a>Generate floating-point instructions.  This is the default for 68020
+and above, and for ColdFire devices that have an FPU.  It defines the
+macro <span class="samp">__HAVE_68881__</span> on M680x0 targets and <span class="samp">__mcffpu__</span>
+on ColdFire targets.
+
+     <br><dt><code>-msoft-float</code><dd><a name="index-msoft_002dfloat-1366"></a>Do not generate floating-point instructions; use library calls instead. 
+This is the default for 68000, 68010, and 68832 targets.  It is also
+the default for ColdFire devices that have no FPU.
+
+     <br><dt><code>-mdiv</code><dt><code>-mno-div</code><dd><a name="index-mdiv-1367"></a><a name="index-mno_002ddiv-1368"></a>Generate (do not generate) ColdFire hardware divide and remainder
+instructions.  If <span class="option">-march</span> is used without <span class="option">-mcpu</span>,
+the default is &ldquo;on&rdquo; for ColdFire architectures and &ldquo;off&rdquo; for M680x0
+architectures.  Otherwise, the default is taken from the target CPU
+(either the default CPU, or the one specified by <span class="option">-mcpu</span>).  For
+example, the default is &ldquo;off&rdquo; for <span class="option">-mcpu=5206</span> and &ldquo;on&rdquo; for
+<span class="option">-mcpu=5206e</span>.
+
+     <p>gcc defines the macro <span class="samp">__mcfhwdiv__</span> when this option is enabled.
+
+     <br><dt><code>-mshort</code><dd><a name="index-mshort-1369"></a>Consider type <code>int</code> to be 16 bits wide, like <code>short int</code>. 
+Additionally, parameters passed on the stack are also aligned to a
+16-bit boundary even on targets whose API mandates promotion to 32-bit.
+
+     <br><dt><code>-mno-short</code><dd><a name="index-mno_002dshort-1370"></a>Do not consider type <code>int</code> to be 16 bits wide.  This is the default.
+
+     <br><dt><code>-mnobitfield</code><dt><code>-mno-bitfield</code><dd><a name="index-mnobitfield-1371"></a><a name="index-mno_002dbitfield-1372"></a>Do not use the bit-field instructions.  The <span class="option">-m68000</span>, <span class="option">-mcpu32</span>
+and <span class="option">-m5200</span> options imply <span class="option">-mnobitfield</span><!-- /@w -->.
+
+     <br><dt><code>-mbitfield</code><dd><a name="index-mbitfield-1373"></a>Do use the bit-field instructions.  The <span class="option">-m68020</span> option implies
+<span class="option">-mbitfield</span>.  This is the default if you use a configuration
+designed for a 68020.
+
+     <br><dt><code>-mrtd</code><dd><a name="index-mrtd-1374"></a>Use a different function-calling convention, in which functions
+that take a fixed number of arguments return with the <code>rtd</code>
+instruction, which pops their arguments while returning.  This
+saves one instruction in the caller since there is no need to pop
+the arguments there.
+
+     <p>This calling convention is incompatible with the one normally
+used on Unix, so you cannot use it if you need to call libraries
+compiled with the Unix compiler.
+
+     <p>Also, you must provide function prototypes for all functions that
+take variable numbers of arguments (including <code>printf</code>);
+otherwise incorrect code will be generated for calls to those
+functions.
+
+     <p>In addition, seriously incorrect code will result if you call a
+function with too many arguments.  (Normally, extra arguments are
+harmlessly ignored.)
+
+     <p>The <code>rtd</code> instruction is supported by the 68010, 68020, 68030,
+68040, 68060 and CPU32 processors, but not by the 68000 or 5200.
+
+     <br><dt><code>-mno-rtd</code><dd><a name="index-mno_002drtd-1375"></a>Do not use the calling conventions selected by <span class="option">-mrtd</span>. 
+This is the default.
+
+     <br><dt><code>-malign-int</code><dt><code>-mno-align-int</code><dd><a name="index-malign_002dint-1376"></a><a name="index-mno_002dalign_002dint-1377"></a>Control whether GCC aligns <code>int</code>, <code>long</code>, <code>long long</code>,
+<code>float</code>, <code>double</code>, and <code>long double</code> variables on a 32-bit
+boundary (<span class="option">-malign-int</span>) or a 16-bit boundary (<span class="option">-mno-align-int</span>). 
+Aligning variables on 32-bit boundaries produces code that runs somewhat
+faster on processors with 32-bit busses at the expense of more memory.
+
+     <p><strong>Warning:</strong> if you use the <span class="option">-malign-int</span> switch, GCC will
+align structures containing the above types  differently than
+most published application binary interface specifications for the m68k.
+
+     <br><dt><code>-mpcrel</code><dd><a name="index-mpcrel-1378"></a>Use the pc-relative addressing mode of the 68000 directly, instead of
+using a global offset table.  At present, this option implies <span class="option">-fpic</span>,
+allowing at most a 16-bit offset for pc-relative addressing.  <span class="option">-fPIC</span> is
+not presently supported with <span class="option">-mpcrel</span>, though this could be supported for
+68020 and higher processors.
+
+     <br><dt><code>-mno-strict-align</code><dt><code>-mstrict-align</code><dd><a name="index-mno_002dstrict_002dalign-1379"></a><a name="index-mstrict_002dalign-1380"></a>Do not (do) assume that unaligned memory references will be handled by
+the system.
+
+     <br><dt><code>-msep-data</code><dd>Generate code that allows the data segment to be located in a different
+area of memory from the text segment.  This allows for execute in place in
+an environment without virtual memory management.  This option implies
+<span class="option">-fPIC</span>.
+
+     <br><dt><code>-mno-sep-data</code><dd>Generate code that assumes that the data segment follows the text segment. 
+This is the default.
+
+     <br><dt><code>-mid-shared-library</code><dd>Generate code that supports shared libraries via the library ID method. 
+This allows for execute in place and shared libraries in an environment
+without virtual memory management.  This option implies <span class="option">-fPIC</span>.
+
+     <br><dt><code>-mno-id-shared-library</code><dd>Generate code that doesn't assume ID based shared libraries are being used. 
+This is the default.
+
+     <br><dt><code>-mshared-library-id=n</code><dd>Specified the identification number of the ID based shared library being
+compiled.  Specifying a value of 0 will generate more compact code, specifying
+other values will force the allocation of that number to the current
+library but is no more space or time efficient than omitting this option.
+
+ </dl>
+
+ </body></html>
+

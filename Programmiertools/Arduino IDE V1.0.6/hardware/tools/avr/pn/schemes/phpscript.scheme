@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme>
+	<keyword-classes>
+		<keyword-class name="php">
+			and argv as argc break case cfunction class continue declare default do
+			die echo else elseif empty enddeclare endfor endforeach endif endswitch
+			endwhile e_all e_parse e_error e_warning eval exit extends false for
+			foreach function global http_cookie_vars http_get_vars http_post_vars
+			http_post_files http_env_vars http_server_vars if include include_once
+			list new not null old_function or parent php_os php_self php_version
+			print require require_once return static switch stdclass this true var
+			xor virtual while __file__ __line__ __sleep __wakeup
+		</keyword-class>
+	</keyword-classes>
+	<language name="phpscript" title="PHP Script" folding="true" foldcomments="false" foldcompact="false">
+		<comments line="//" streamStart="/*" streamEnd="*/"/>
+		<lexer name="phpscript" stylebits="7" />
+		<property name="fold.html" value="1" />
+		<use-keywords>
+			<keyword key="4" name="PHP Keywords" class="php"/>
+		</use-keywords>
+		<use-styles>
+			<style name="Default" key="118" fore="000033" />
+			<style name="Double quoted String" key="119" fore="007F00"/>
+			<style name="Single quoted string" key="120" fore="009F00"/>
+			<style name="Keyword" key="121" fore="7F007F" italic="true"/>
+			<style name="Number" key="122" fore="CC9900"/>
+			<style name="Variable" key="123" fore="00007F" italic="true"/>
+			<style name="Comment" key="124" class="comment" fore="999999" />
+			<style name="Line comment" key="125" class="comment" fore="666666" italic="true" />
+			<style name="String variable" key="126" fore="00007F" italic="true"/>
+			<style name="Operator" key="127" fore="000000"/>
+			
+			<style name="Non-PHP" key="32" class="default"/>
+		</use-styles>
+	</language>
+</Scheme>

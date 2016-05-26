@@ -1,0 +1,163 @@
+<html lang="en">
+<head>
+<title>Jump Patterns - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Desc.html#Machine-Desc" title="Machine Desc">
+<link rel="prev" href="Dependent-Patterns.html#Dependent-Patterns" title="Dependent Patterns">
+<link rel="next" href="Looping-Patterns.html#Looping-Patterns" title="Looping Patterns">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Jump-Patterns"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Looping-Patterns.html#Looping-Patterns">Looping Patterns</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Dependent-Patterns.html#Dependent-Patterns">Dependent Patterns</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Desc.html#Machine-Desc">Machine Desc</a>
+<hr><br>
+</div>
+
+<h3 class="section">14.12 Defining Jump Instruction Patterns</h3>
+
+<p><a name="index-jump-instruction-patterns-3158"></a><a name="index-defining-jump-instruction-patterns-3159"></a>
+For most machines, GCC assumes that the machine has a condition code. 
+A comparison insn sets the condition code, recording the results of both
+signed and unsigned comparison of the given operands.  A separate branch
+insn tests the condition code and branches or not according its value. 
+The branch insns come in distinct signed and unsigned flavors.  Many
+common machines, such as the VAX, the 68000 and the 32000, work this
+way.
+
+ <p>Some machines have distinct signed and unsigned compare instructions, and
+only one set of conditional branch instructions.  The easiest way to handle
+these machines is to treat them just like the others until the final stage
+where assembly code is written.  At this time, when outputting code for the
+compare instruction, peek ahead at the following branch using
+<code>next_cc0_user (insn)</code>.  (The variable <code>insn</code> refers to the insn
+being output, in the output-writing code in an instruction pattern.)  If
+the RTL says that is an unsigned branch, output an unsigned compare;
+otherwise output a signed compare.  When the branch itself is output, you
+can treat signed and unsigned branches identically.
+
+ <p>The reason you can do this is that GCC always generates a pair of
+consecutive RTL insns, possibly separated by <code>note</code> insns, one to
+set the condition code and one to test it, and keeps the pair inviolate
+until the end.
+
+ <p>To go with this technique, you must define the machine-description macro
+<code>NOTICE_UPDATE_CC</code> to do <code>CC_STATUS_INIT</code>; in other words, no
+compare instruction is superfluous.
+
+ <p>Some machines have compare-and-branch instructions and no condition code. 
+A similar technique works for them.  When it is time to &ldquo;output&rdquo; a
+compare instruction, record its operands in two static variables.  When
+outputting the branch-on-condition-code instruction that follows, actually
+output a compare-and-branch instruction that uses the remembered operands.
+
+ <p>It also works to define patterns for compare-and-branch instructions. 
+In optimizing compilation, the pair of compare and branch instructions
+will be combined according to these patterns.  But this does not happen
+if optimization is not requested.  So you must use one of the solutions
+above in addition to any special patterns you define.
+
+ <p>In many RISC machines, most instructions do not affect the condition
+code and there may not even be a separate condition code register.  On
+these machines, the restriction that the definition and use of the
+condition code be adjacent insns is not necessary and can prevent
+important optimizations.  For example, on the IBM RS/6000, there is a
+delay for taken branches unless the condition code register is set three
+instructions earlier than the conditional branch.  The instruction
+scheduler cannot perform this optimization if it is not permitted to
+separate the definition and use of the condition code register.
+
+ <p>On these machines, do not use <code>(cc0)</code>, but instead use a register
+to represent the condition code.  If there is a specific condition code
+register in the machine, use a hard register.  If the condition code or
+comparison result can be placed in any general register, or if there are
+multiple condition registers, use a pseudo register.
+
+ <p><a name="index-prev_005fcc0_005fsetter-3160"></a><a name="index-next_005fcc0_005fuser-3161"></a>On some machines, the type of branch instruction generated may depend on
+the way the condition code was produced; for example, on the 68k and
+SPARC, setting the condition code directly from an add or subtract
+instruction does not clear the overflow bit the way that a test
+instruction does, so a different branch instruction must be used for
+some conditional branches.  For machines that use <code>(cc0)</code>, the set
+and use of the condition code must be adjacent (separated only by
+<code>note</code> insns) allowing flags in <code>cc_status</code> to be used. 
+(See <a href="Condition-Code.html#Condition-Code">Condition Code</a>.)  Also, the comparison and branch insns can be
+located from each other by using the functions <code>prev_cc0_setter</code>
+and <code>next_cc0_user</code>.
+
+ <p>However, this is not true on machines that do not use <code>(cc0)</code>.  On
+those machines, no assumptions can be made about the adjacency of the
+compare and branch insns and the above methods cannot be used.  Instead,
+we use the machine mode of the condition code register to record
+different formats of the condition code register.
+
+ <p>Registers used to store the condition code value should have a mode that
+is in class <code>MODE_CC</code>.  Normally, it will be <code>CCmode</code>.  If
+additional modes are required (as for the add example mentioned above in
+the SPARC), define them in <var>machine</var><span class="file">-modes.def</span>
+(see <a href="Condition-Code.html#Condition-Code">Condition Code</a>).  Also define <code>SELECT_CC_MODE</code> to choose
+a mode given an operand of a compare.
+
+ <p>If it is known during RTL generation that a different mode will be
+required (for example, if the machine has separate compare instructions
+for signed and unsigned quantities, like most IBM processors), they can
+be specified at that time.
+
+ <p>If the cases that require different modes would be made by instruction
+combination, the macro <code>SELECT_CC_MODE</code> determines which machine
+mode should be used for the comparison result.  The patterns should be
+written using that mode.  To support the case of the add on the SPARC
+discussed above, we have the pattern
+
+<pre class="smallexample">     (define_insn ""
+       [(set (reg:CC_NOOV 0)
+             (compare:CC_NOOV
+               (plus:SI (match_operand:SI 0 "register_operand" "%r")
+                        (match_operand:SI 1 "arith_operand" "rI"))
+               (const_int 0)))]
+       ""
+       "...")
+</pre>
+ <p>The <code>SELECT_CC_MODE</code> macro on the SPARC returns <code>CC_NOOVmode</code>
+for comparisons whose argument is a <code>plus</code>.
+
+ </body></html>
+

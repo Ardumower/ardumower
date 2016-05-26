@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<schemetools>
+	<global>
+        <tool name="[WinAVR] Make All" command="make.exe" folder="%d" params="all" shortcut="0" parsepattern="" flags="45" />
+        <tool name="[WinAVR] Make Clean" command="make.exe" folder="%d" params="clean" shortcut="0" parsepattern="" flags="41" />
+		<tool name="[WinAVR] Program" command="make.exe" folder="%d" params="program" shortcut="0" parsepattern="" flags="41" />
+	</global>
+</schemetools>

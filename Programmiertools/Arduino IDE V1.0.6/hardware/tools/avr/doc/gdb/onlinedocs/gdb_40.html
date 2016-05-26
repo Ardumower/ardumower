@@ -1,0 +1,382 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Index: C</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Index: C">
+<META NAME="keywords" CONTENT="Debugging with GDB: Index: C">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="gdb_40.html"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_39.html"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_41.html"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2 ALIGN="Left">Index: C</H2>
+<table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="gdb_38.html#cp_!" style="text-decoration:none"><b>!</b></A>
+ &nbsp; 
+<A HREF='gdb_38.html#cp_"' style="text-decoration:none"><b>"</b></A>
+ &nbsp; 
+<A HREF="gdb_38.html#cp_#" style="text-decoration:none"><b>#</b></A>
+ &nbsp; 
+<A HREF="gdb_38.html#cp_$" style="text-decoration:none"><b>$</b></A>
+ &nbsp; 
+<A HREF="gdb_38.html#cp_-" style="text-decoration:none"><b>-</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_." style="text-decoration:none"><b>.</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_/" style="text-decoration:none"><b>/</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_:" style="text-decoration:none"><b>:</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_<" style="text-decoration:none"><b><</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_?" style="text-decoration:none"><b>?</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_@" style="text-decoration:none"><b>@</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_^" style="text-decoration:none"><b>^</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp__" style="text-decoration:none"><b>_</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_{" style="text-decoration:none"><b>{</b></A>
+ &nbsp; 
+<BR>
+<A HREF="gdb_39.html#cp_A" style="text-decoration:none"><b>A</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_B" style="text-decoration:none"><b>B</b></A>
+ &nbsp; 
+<A HREF="gdb_40.html#cp_C" style="text-decoration:none"><b>C</b></A>
+ &nbsp; 
+<A HREF="gdb_41.html#cp_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="gdb_42.html#cp_E" style="text-decoration:none"><b>E</b></A>
+ &nbsp; 
+<A HREF="gdb_42.html#cp_F" style="text-decoration:none"><b>F</b></A>
+ &nbsp; 
+<A HREF="gdb_43.html#cp_G" style="text-decoration:none"><b>G</b></A>
+ &nbsp; 
+<A HREF="gdb_43.html#cp_H" style="text-decoration:none"><b>H</b></A>
+ &nbsp; 
+<A HREF="gdb_43.html#cp_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_J" style="text-decoration:none"><b>J</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_K" style="text-decoration:none"><b>K</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_L" style="text-decoration:none"><b>L</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_M" style="text-decoration:none"><b>M</b></A>
+ &nbsp; 
+<A HREF="gdb_45.html#cp_N" style="text-decoration:none"><b>N</b></A>
+ &nbsp; 
+<A HREF="gdb_45.html#cp_O" style="text-decoration:none"><b>O</b></A>
+ &nbsp; 
+<A HREF="gdb_45.html#cp_P" style="text-decoration:none"><b>P</b></A>
+ &nbsp; 
+<A HREF="gdb_46.html#cp_Q" style="text-decoration:none"><b>Q</b></A>
+ &nbsp; 
+<A HREF="gdb_46.html#cp_R" style="text-decoration:none"><b>R</b></A>
+ &nbsp; 
+<A HREF="gdb_47.html#cp_S" style="text-decoration:none"><b>S</b></A>
+ &nbsp; 
+<A HREF="gdb_48.html#cp_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_U" style="text-decoration:none"><b>U</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_V" style="text-decoration:none"><b>V</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_W" style="text-decoration:none"><b>W</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_X" style="text-decoration:none"><b>X</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_Y" style="text-decoration:none"><b>Y</b></A>
+ &nbsp; 
+<A HREF="gdb_50.html#cp_Z" style="text-decoration:none"><b>Z</b></A>
+ &nbsp; 
+</td></tr></table><br><P></P>
+<TABLE border=0>
+<TR><TD></TD><TH ALIGN=LEFT>Index Entry</TH><TH ALIGN=LEFT> Section</TH></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_C"></A>C</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX248"><CODE>c (<CODE>continue</CODE>)</CODE></A></TD><TD valign=top><A HREF="gdb_6.html#SEC43">5.2 Continuing and Stepping</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1235"><CODE>c (SingleKey TUI key)</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC238">22.3 TUI Single Key Mode</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX583">C and C<TT>++</TT></A></TD><TD valign=top><A HREF="gdb_13.html#SEC112">12.4.1 C and C<TT>++</TT></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX603">C and C<TT>++</TT> checks</A></TD><TD valign=top><A HREF="gdb_13.html#SEC117">12.4.1.5 C and C<TT>++</TT> Type and Range Checks</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX589">C and C<TT>++</TT> constants</A></TD><TD valign=top><A HREF="gdb_13.html#SEC114">12.4.1.2 C and C<TT>++</TT> Constants</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX602">C and C<TT>++</TT> defaults</A></TD><TD valign=top><A HREF="gdb_13.html#SEC116">12.4.1.4 C and C<TT>++</TT> Defaults</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX588">C and C<TT>++</TT> operators</A></TD><TD valign=top><A HREF="gdb_13.html#SEC113">12.4.1.1 C and C<TT>++</TT> Operators</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#IDX1576"><SAMP>`C'</SAMP> packet</A></TD><TD valign=top><A HREF="gdb_33.html#SEC696">D.2 Packets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#IDX1575"><SAMP>`c'</SAMP> packet</A></TD><TD valign=top><A HREF="gdb_33.html#SEC696">D.2 Packets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX585">C<TT>++</TT></A></TD><TD valign=top><A HREF="gdb_13.html#SEC112">12.4.1 C and C<TT>++</TT></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX592">C<TT>++</TT> compilers</A></TD><TD valign=top><A HREF="gdb_13.html#SEC115">12.4.1.3 C<TT>++</TT> Expressions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX607">C<TT>++</TT> exception handling</A></TD><TD valign=top><A HREF="gdb_13.html#SEC119">12.4.1.7 GDB Features for C<TT>++</TT></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_20.html#IDX1173">C<TT>++</TT> overload debugging info</A></TD><TD valign=top><A HREF="gdb_20.html#SEC228">19.8 Optional Messages about Internal Happenings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX382">C<TT>++</TT> scope resolution</A></TD><TD valign=top><A HREF="gdb_9.html#SEC61">8.2 Program Variables</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX436">C<TT>++</TT> symbol decoding style</A></TD><TD valign=top><A HREF="gdb_9.html#SEC66">8.7 Print Settings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX609">C<TT>++</TT> symbol display</A></TD><TD valign=top><A HREF="gdb_13.html#SEC119">12.4.1.7 GDB Features for C<TT>++</TT></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1234"><CODE>C-L</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1224"><CODE>C-x 1</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1225"><CODE>C-x 2</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1223"><CODE>C-x A</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1222"><CODE>C-x a</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1221"><CODE>C-x C-a</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1226"><CODE>C-x o</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_23.html#IDX1227"><CODE>C-x s</CODE></A></TD><TD valign=top><A HREF="gdb_23.html#SEC237">22.2 TUI Key Bindings</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#SEC82">caching data of remote targets</A></TD><TD valign=top><A HREF="gdb_9.html#SEC82">8.18 Caching Data of Remote Targets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_15.html#IDX691"><CODE>call</CODE></A></TD><TD valign=top><A HREF="gdb_15.html#SEC152">14.5 Calling Program Functions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_15.html#IDX694">call dummy stack unwinding</A></TD><TD valign=top><A HREF="gdb_15.html#SEC152">14.5 Calling Program Functions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX598">call overloaded functions</A></TD><TD valign=top><A HREF="gdb_13.html#SEC115">12.4.1.3 C<TT>++</TT> Expressions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_7.html#IDX283">call stack</A></TD><TD valign=top><A HREF="gdb_7.html#SEC46">6. Examining the Stack</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_7.html#IDX298">call stack traces</A></TD><TD valign=top><A HREF="gdb_7.html#SEC48">6.2 Backtraces</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1474"><CODE>call-last-kbd-macro (C-x e)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC676">27.4.7 Keyboard Macros</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1475"><CODE>call-last-kbd-macro (C-x e)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC676">27.4.7 Keyboard Macros</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_15.html#IDX689">calling functions</A></TD><TD valign=top><A HREF="gdb_15.html#SEC152">14.5 Calling Program Functions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_3.html#IDX59">calling make</A></TD><TD valign=top><A HREF="gdb_3.html#SEC12">2.3 Shell Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1422"><CODE>capitalize-word (M-c)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC672">27.4.3 Commands For Changing Text</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1423"><CODE>capitalize-word (M-c)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC672">27.4.3 Commands For Changing Text</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_14.html#IDX644">case sensitivity in symbol names</A></TD><TD valign=top><A HREF="gdb_14.html#SEC146">13. Examining the Symbol Table</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_14.html#IDX643">case-insensitive symbol names</A></TD><TD valign=top><A HREF="gdb_14.html#SEC146">13. Examining the Symbol Table</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX374">casts, in expressions</A></TD><TD valign=top><A HREF="gdb_9.html#SEC60">8.1 Expressions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX378">casts, to view memory</A></TD><TD valign=top><A HREF="gdb_9.html#SEC60">8.1 Expressions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX220"><CODE>catch</CODE></A></TD><TD valign=top><A HREF="gdb_6.html#SEC35">5.1.3 Setting Catchpoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX223">catch Ada exceptions</A></TD><TD valign=top><A HREF="gdb_6.html#SEC35">5.1.3 Setting Catchpoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_7.html#IDX324">catch exceptions, list active handlers</A></TD><TD valign=top><A HREF="gdb_7.html#SEC50">6.4 Information About a Frame</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX178">catchpoints</A></TD><TD valign=top><A HREF="gdb_6.html#SEC32">5.1 Breakpoints, Watchpoints, and Catchpoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#SEC35">catchpoints, setting</A></TD><TD valign=top><A HREF="gdb_6.html#SEC35">5.1.3 Setting Catchpoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_5.html#IDX107"><CODE>cd</CODE></A></TD><TD valign=top><A HREF="gdb_5.html#SEC23">4.5 Your Program's Working Directory</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_8.html#IDX340"><CODE>cdir</CODE></A></TD><TD valign=top><A HREF="gdb_8.html#SEC57">7.5 Specifying Source Directories</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#SEC218">Cell Broadband Engine</A></TD><TD valign=top><A HREF="gdb_19.html#SEC218">18.4.6 Cell Broadband Engine SPU architecture</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_5.html#IDX108">change working directory</A></TD><TD valign=top><A HREF="gdb_5.html#SEC23">4.5 Your Program's Working Directory</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#SEC81">character sets</A></TD><TD valign=top><A HREF="gdb_9.html#SEC81">8.17 Character Sets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1494"><CODE>character-search (C-])</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC677">27.4.8 Some Miscellaneous Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1495"><CODE>character-search (C-])</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC677">27.4.8 Some Miscellaneous Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1496"><CODE>character-search-backward (M-C-])</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC677">27.4.8 Some Miscellaneous Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1497"><CODE>character-search-backward (M-C-])</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC677">27.4.8 Some Miscellaneous Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#SEC81">charset</A></TD><TD valign=top><A HREF="gdb_9.html#SEC81">8.17 Character Sets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_5.html#IDX166"><CODE>checkpoint</CODE></A></TD><TD valign=top><A HREF="gdb_5.html#SEC29">4.11 Setting a <EM>Bookmark</EM> to Return to Later</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_5.html#IDX170">checkpoints and process id</A></TD><TD valign=top><A HREF="gdb_5.html#SEC29">4.11 Setting a <EM>Bookmark</EM> to Return to Later</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX580">checks, range</A></TD><TD valign=top><A HREF="gdb_13.html#SEC109">12.3.1 An Overview of Type Checking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX576">checks, type</A></TD><TD valign=top><A HREF="gdb_13.html#SEC108">12.3 Type and Range Checking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#IDX1564">checksum, for GDB remote</A></TD><TD valign=top><A HREF="gdb_33.html#SEC695">D.1 Overview</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_17.html#IDX789">choosing target byte order</A></TD><TD valign=top><A HREF="gdb_17.html#SEC161">16.3 Choosing Target Byte Order</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX229"><CODE>clear</CODE></A></TD><TD valign=top><A HREF="gdb_6.html#SEC36">5.1.4 Deleting Breakpoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX614"><CODE>clear, and Objective-C</CODE></A></TD><TD valign=top><A HREF="gdb_13.html#SEC122">12.4.2.1 Method Names in Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1372"><CODE>clear-screen (C-l)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC670">27.4.1 Commands For Moving</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1373"><CODE>clear-screen (C-l)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC670">27.4.1 Commands For Moving</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX227">clearing breakpoints, watchpoints, catchpoints</A></TD><TD valign=top><A HREF="gdb_6.html#SEC36">5.1.4 Deleting Breakpoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#SEC713">close, file-i/o system call</A></TD><TD valign=top><A HREF="gdb_33.html#SEC713">close</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_14.html#IDX651">closest symbol and offset for an address</A></TD><TD valign=top><A HREF="gdb_14.html#SEC146">13. Examining the Symbol Table</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_8.html#IDX354">code address and its source line</A></TD><TD valign=top><A HREF="gdb_8.html#SEC58">7.6 Source and Machine Code</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_11.html#IDX539"><CODE>collect (tracepoints)</CODE></A></TD><TD valign=top><A HREF="gdb_11.html#SEC89">10.1.4 Tracepoint Action Lists</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_11.html#IDX546">collected data discarded</A></TD><TD valign=top><A HREF="gdb_11.html#SEC91">10.1.6 Starting and Stopping Trace Experiments</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#SEC137">colon, doubled as scope operator</A></TD><TD valign=top><A HREF="gdb_13.html#SEC137">12.4.5.8 The Scope Operators <CODE>::</CODE> and <CODE>.</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX380">colon-colon, context for variables/functions</A></TD><TD valign=top><A HREF="gdb_9.html#SEC61">8.2 Program Variables</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#SEC137"><CODE>colon-colon, in Modula-2</CODE></A></TD><TD valign=top><A HREF="gdb_13.html#SEC137">12.4.5.8 The Scope Operators <CODE>::</CODE> and <CODE>.</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#SEC660">command editing</A></TD><TD valign=top><A HREF="gdb_28.html#SEC660">27.2.1 Readline Bare Essentials</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_21.html#IDX1201">command files</A></TD><TD valign=top><A HREF="gdb_21.html#SEC232">20.3 Command Files</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_20.html#SEC223">command history</A></TD><TD valign=top><A HREF="gdb_20.html#SEC223">19.3 Command History</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_21.html#SEC231">command hooks</A></TD><TD valign=top><A HREF="gdb_21.html#SEC231">20.2 User-defined Command Hooks</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_22.html#SEC234">command interpreters</A></TD><TD valign=top><A HREF="gdb_22.html#SEC234">21. Command Interpreters</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_20.html#SEC222">command line editing</A></TD><TD valign=top><A HREF="gdb_20.html#SEC222">19.2 Command Editing</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_20.html#IDX1158">command scripts, debugging</A></TD><TD valign=top><A HREF="gdb_20.html#SEC227">19.7 Optional Warnings and Messages</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_20.html#IDX1156">command tracing</A></TD><TD valign=top><A HREF="gdb_20.html#SEC227">19.7 Optional Warnings and Messages</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX241"><CODE>commands</CODE></A></TD><TD valign=top><A HREF="gdb_6.html#SEC39">5.1.7 Breakpoint Command Lists</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_26.html#IDX1297"><CODE>commands annotation</CODE></A></TD><TD valign=top><A HREF="gdb_26.html#SEC649">25.3 Annotation for GDB Input</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX604">commands for C<TT>++</TT></A></TD><TD valign=top><A HREF="gdb_13.html#SEC119">12.4.1.7 GDB Features for C<TT>++</TT></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_4.html#IDX67">comment</A></TD><TD valign=top><A HREF="gdb_4.html#SEC15">3.1 Command Syntax</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1339"><CODE>comment-begin</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC666">27.3.1 Readline Init File Syntax</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_13.html#IDX625"><CODE>COMMON</CODE> blocks, Fortran</A></TD><TD valign=top><A HREF="gdb_13.html#SEC127">12.4.3.3 Special Fortran Commands</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_17.html#IDX775">common targets</A></TD><TD valign=top><A HREF="gdb_17.html#SEC160">16.2 Commands for Managing Targets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX402"><CODE>compare-sections</CODE></A></TD><TD valign=top><A HREF="gdb_9.html#SEC64">8.5 Examining Memory</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_25.html#IDX1271">compatibility, GDB/MI and CLI</A></TD><TD valign=top><A HREF="gdb_25.html#SEC248">24.2 GDB/MI Compatibility with CLI</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_8.html#IDX344">compilation directory</A></TD><TD valign=top><A HREF="gdb_8.html#SEC57">7.5 Specifying Source Directories</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#IDX1060">compiling, on Sparclet</A></TD><TD valign=top><A HREF="gdb_19.html#SEC202">18.3.8 Tsqware Sparclet</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_4.html#IDX76"><CODE>complete</CODE></A></TD><TD valign=top><A HREF="gdb_4.html#SEC17">3.3 Getting Help</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1460"><CODE>complete (<KBD>TAB</KBD>)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC675">27.4.6 Letting Readline Type For You</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1461"><CODE>complete (<KBD>TAB</KBD>)</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC675">27.4.6 Letting Readline Type For You</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_4.html#IDX70">completion</A></TD><TD valign=top><A HREF="gdb_4.html#SEC16">3.2 Command Completion</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_4.html#IDX73">completion of quoted strings</A></TD><TD valign=top><A HREF="gdb_4.html#SEC16">3.2 Command Completion</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1340"><CODE>completion-query-items</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC666">27.3.1 Readline Init File Syntax</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX237"><CODE>condition</CODE></A></TD><TD valign=top><A HREF="gdb_6.html#SEC38">5.1.6 Break Conditions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#SEC38">conditional breakpoints</A></TD><TD valign=top><A HREF="gdb_6.html#SEC38">5.1.6 Break Conditions</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_31.html#SEC689">configuring GDB</A></TD><TD valign=top><A HREF="gdb_31.html#SEC689">B.2 Invoking the GDB <TT>`configure'</TT> Script</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_20.html#IDX1153">confirmation</A></TD><TD valign=top><A HREF="gdb_20.html#SEC227">19.7 Optional Warnings and Messages</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#SEC710">console i/o as part of file-i/o</A></TD><TD valign=top><A HREF="gdb_33.html#SEC710">D.10.6 Console I/O</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_22.html#IDX1214">console interpreter</A></TD><TD valign=top><A HREF="gdb_22.html#SEC234">21. Command Interpreters</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_25.html#IDX1267">console output in GDB/MI</A></TD><TD valign=top><A HREF="gdb_25.html#SEC247">24.1.2 GDB/MI Output Syntax</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#SEC729">constants, in file-i/o protocol</A></TD><TD valign=top><A HREF="gdb_33.html#SEC729">D.10.9 Constants</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX247"><CODE>continue</CODE></A></TD><TD valign=top><A HREF="gdb_6.html#SEC43">5.2 Continuing and Stepping</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX245">continuing</A></TD><TD valign=top><A HREF="gdb_6.html#SEC43">5.2 Continuing and Stepping</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_6.html#IDX279">continuing threads</A></TD><TD valign=top><A HREF="gdb_6.html#SEC45">5.4 Stopping and Starting Multi-thread Programs</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_18.html#IDX856">control C, and remote debugging</A></TD><TD valign=top><A HREF="gdb_18.html#SEC175">17.5.2 What You Must Do for the Stub</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_5.html#IDX115">controlling terminal</A></TD><TD valign=top><A HREF="gdb_5.html#SEC24">4.6 Your Program's Input and Output</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX453">convenience variables</A></TD><TD valign=top><A HREF="gdb_9.html#SEC68">8.9 Convenience Variables</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_11.html#SEC96">convenience variables for tracepoints</A></TD><TD valign=top><A HREF="gdb_11.html#SEC96">10.3 Convenience Variables for Tracepoints</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_9.html#IDX458">convenience variables, initializing</A></TD><TD valign=top><A HREF="gdb_9.html#SEC68">8.9 Convenience Variables</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1341"><CODE>convert-meta</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC666">27.3.1 Readline Init File Syntax</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1448"><CODE>copy-backward-word ()</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1449"><CODE>copy-backward-word ()</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1450"><CODE>copy-forward-word ()</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1451"><CODE>copy-forward-word ()</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1446"><CODE>copy-region-as-kill ()</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_28.html#IDX1447"><CODE>copy-region-as-kill ()</CODE></A></TD><TD valign=top><A HREF="gdb_28.html#SEC673">27.4.4 Killing And Yanking</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_16.html#IDX703">core dump file</A></TD><TD valign=top><A HREF="gdb_16.html#SEC155">15.1 Commands to Specify Files</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_17.html#IDX778">core dump file target</A></TD><TD valign=top><A HREF="gdb_17.html#SEC160">16.2 Commands for Managing Targets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_16.html#IDX713"><CODE>core-file</CODE></A></TD><TD valign=top><A HREF="gdb_16.html#SEC155">15.1 Commands to Specify Files</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_27.html#IDX1328">crash of debugger</A></TD><TD valign=top><A HREF="gdb_27.html#SEC655">26.1 Have You Found a Bug?</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#IDX1626">CRC of memory block, remote request</A></TD><TD valign=top><A HREF="gdb_33.html#SEC698">D.4 General Query Packets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#SEC210">CRIS</A></TD><TD valign=top><A HREF="gdb_19.html#SEC210">18.3.12 CRIS</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#IDX1074">CRIS mode</A></TD><TD valign=top><A HREF="gdb_19.html#SEC210">18.3.12 CRIS</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#IDX1072">CRIS version</A></TD><TD valign=top><A HREF="gdb_19.html#SEC210">18.3.12 CRIS</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#SEC709">ctrl-c message, in file-i/o protocol</A></TD><TD valign=top><A HREF="gdb_33.html#SEC709">D.10.5 The <SAMP>`Ctrl-C'</SAMP> Message</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_4.html#IDX69"><CODE>Ctrl-o (operate-and-get-next)</CODE></A></TD><TD valign=top><A HREF="gdb_4.html#SEC15">3.1 Command Syntax</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_8.html#IDX345">current directory</A></TD><TD valign=top><A HREF="gdb_8.html#SEC57">7.5 Specifying Source Directories</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_7.html#IDX294">current stack frame</A></TD><TD valign=top><A HREF="gdb_7.html#SEC47">6.1 Stack Frames</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_5.html#IDX126">current thread</A></TD><TD valign=top><A HREF="gdb_5.html#SEC27">4.9 Debugging Programs with Multiple Threads</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_33.html#IDX1624">current thread, remote request</A></TD><TD valign=top><A HREF="gdb_33.html#SEC698">D.4 General Query Packets</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_8.html#IDX341"><CODE>cwd</CODE></A></TD><TD valign=top><A HREF="gdb_8.html#SEC57">7.5 Specifying Source Directories</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#IDX921">Cygwin DLL, debugging</A></TD><TD valign=top><A HREF="gdb_19.html#SEC183">18.1.5 Features for Debugging MS Windows PE Executables</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="gdb_19.html#SEC183">Cygwin-specific commands</A></TD><TD valign=top><A HREF="gdb_19.html#SEC183">18.1.5 Features for Debugging MS Windows PE Executables</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+</TABLE><P></P><table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="gdb_38.html#cp_!" style="text-decoration:none"><b>!</b></A>
+ &nbsp; 
+<A HREF='gdb_38.html#cp_"' style="text-decoration:none"><b>"</b></A>
+ &nbsp; 
+<A HREF="gdb_38.html#cp_#" style="text-decoration:none"><b>#</b></A>
+ &nbsp; 
+<A HREF="gdb_38.html#cp_$" style="text-decoration:none"><b>$</b></A>
+ &nbsp; 
+<A HREF="gdb_38.html#cp_-" style="text-decoration:none"><b>-</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_." style="text-decoration:none"><b>.</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_/" style="text-decoration:none"><b>/</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_:" style="text-decoration:none"><b>:</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_<" style="text-decoration:none"><b><</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_?" style="text-decoration:none"><b>?</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_@" style="text-decoration:none"><b>@</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_^" style="text-decoration:none"><b>^</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp__" style="text-decoration:none"><b>_</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_{" style="text-decoration:none"><b>{</b></A>
+ &nbsp; 
+<BR>
+<A HREF="gdb_39.html#cp_A" style="text-decoration:none"><b>A</b></A>
+ &nbsp; 
+<A HREF="gdb_39.html#cp_B" style="text-decoration:none"><b>B</b></A>
+ &nbsp; 
+<A HREF="gdb_40.html#cp_C" style="text-decoration:none"><b>C</b></A>
+ &nbsp; 
+<A HREF="gdb_41.html#cp_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="gdb_42.html#cp_E" style="text-decoration:none"><b>E</b></A>
+ &nbsp; 
+<A HREF="gdb_42.html#cp_F" style="text-decoration:none"><b>F</b></A>
+ &nbsp; 
+<A HREF="gdb_43.html#cp_G" style="text-decoration:none"><b>G</b></A>
+ &nbsp; 
+<A HREF="gdb_43.html#cp_H" style="text-decoration:none"><b>H</b></A>
+ &nbsp; 
+<A HREF="gdb_43.html#cp_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_J" style="text-decoration:none"><b>J</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_K" style="text-decoration:none"><b>K</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_L" style="text-decoration:none"><b>L</b></A>
+ &nbsp; 
+<A HREF="gdb_44.html#cp_M" style="text-decoration:none"><b>M</b></A>
+ &nbsp; 
+<A HREF="gdb_45.html#cp_N" style="text-decoration:none"><b>N</b></A>
+ &nbsp; 
+<A HREF="gdb_45.html#cp_O" style="text-decoration:none"><b>O</b></A>
+ &nbsp; 
+<A HREF="gdb_45.html#cp_P" style="text-decoration:none"><b>P</b></A>
+ &nbsp; 
+<A HREF="gdb_46.html#cp_Q" style="text-decoration:none"><b>Q</b></A>
+ &nbsp; 
+<A HREF="gdb_46.html#cp_R" style="text-decoration:none"><b>R</b></A>
+ &nbsp; 
+<A HREF="gdb_47.html#cp_S" style="text-decoration:none"><b>S</b></A>
+ &nbsp; 
+<A HREF="gdb_48.html#cp_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_U" style="text-decoration:none"><b>U</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_V" style="text-decoration:none"><b>V</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_W" style="text-decoration:none"><b>W</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_X" style="text-decoration:none"><b>X</b></A>
+ &nbsp; 
+<A HREF="gdb_49.html#cp_Y" style="text-decoration:none"><b>Y</b></A>
+ &nbsp; 
+<A HREF="gdb_50.html#cp_Z" style="text-decoration:none"><b>Z</b></A>
+ &nbsp; 
+</td></tr></table><br><HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

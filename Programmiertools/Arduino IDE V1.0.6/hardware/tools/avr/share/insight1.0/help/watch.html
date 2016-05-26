@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Watch Window Help</TITLE>
+</HEAD>
+<BODY>
+<H1>The Watch Window</H1>
+<img src="images/watch.png" alt="Watch Window Image" width=545 height=308 border=0>
+<H2>Overview</H2>
+
+<P>The Watch Window may be used to inspect and edit any expression, including
+global variables, static variables, local variables, function arguments,
+and registers. All expressions in scope are displayed with the expression in
+blue, the expression type in red, and the expression value in black.  When an
+expression value changes, it is displayed in green. Expressions that are not
+in scope are all gray.</P>
+
+
+<H3>Adding Watch Expressions</H3>
+<p>To add an expression to the Watch Window, simply enter
+the expression into the entry at the bottom of the window and press return
+or click the "Add Watch" button. The expression is validated and added to the
+Watch Window Display.</p>
+
+<P>To add an expression to the Watch Window from the
+<A HREF="source.html">Source Window</A>, use the
+"<A HREF="source.html#add_to_watch">Add to Watch</A>" option of the
+<A HREF="source.html#display_popup">Source Window Pop-up Menu</A>.</P>
+
+<P>Any legal expression may be added to the Watch Window, which will
+evaluate each of its expressions everytime the program runs. Be cautious
+adding expressions which cause assignments, such as "<CODE>i++</CODE>".</P>
+
+<P>Adding a register to the Watch Window can be advantages when debugging
+via a slow serial line. In this case, keeping the entire Register Window open
+may be inefficient. Consider adding the register to the Watch Window. Simply
+enter the name of the register preceded with a dollar sign ($) into the
+Entry. For example, to watch the PC register, enter "<CODE>$pc</CODE>" into
+the Watch Window Entry. The program counter is added to the Display.</P>
+
+<P>To cast pointers, simply enter the cast into the
+Watch Window Entry at the bottom of the window. Use the same syntax for the
+cast that the source file uses. If the source file uses C, the a simple
+cast of "<CODE>ptr</CODE>" of type "<CODE>void *</CODE>" can be cast to type
+"<CODE>my_struct</CODE>" by entering "<CODE>(my_struct *) ptr</CODE>" into
+the Entry.</P>
+
+<H3>Watch Display</H3>
+<p>The Watch Window Display consists of a scrolled listbox which contains all
+watch expressions, one per line. To use any of the functions of the Watch
+Window, use the left mouse button to select any element from the Display.</p>
+
+<P>Pointers, structures, and classes appear in the display with a small
+exapansion box before their names. To dereference
+pointers or view the members of classes or
+structures, click the closed expansion box (which appears as a small
+plus sign, "+") to "expand" the listing. The expansion box changes to a
+minus sign, "-", indicating that the display is now open. Pointers,
+structures and classes may be expanded recursively to allow multiple pointer
+derefernces and embedded structure viewing.</P>
+
+<P>The Watch Display updates after every execution of the program and
+highlights in green those expressions whose values have changed.</P>
+
+<P>The Watch Window will, by default, display all pointers and registers in
+hexadecimal and all other expressions in decimal. To change the display
+format for an expression, select the Format option from the pop-up menu.</P>
+
+<H3>Editing an Expression</H3>
+<p>To edit an expression, either double-click the left mouse button on the expression
+in the Display or select the Edit option from the popup-menu. To abort editing 
+an expression's value, simply press
+the escape key on the keyboard. The expression's original value is restored.</p>
+
+<H3>Watch Pop-up Menu</H3>
+<p>The pop-up menu provides quick access to the functions of the Watch Window.
+To use the pop-up menu, click the right mouse button while over a variable.</p>
+<DL>
+    <dt>Format<dd>Change the display format of the variable.</dd></dt>
+    <dt>Edit<dd>Edit the variable's value.</dd></dt>
+    <dt>Delete<dd>Remove the variable from the display.</dd></dt>
+    <dt>Dump Memory<dd>Open a Memory Window with the variable's value as an aaddress.</dd></dt>
+    <dt>Help<dd>Open this help page.</dd></dt>
+    <dt>Close<dd>Close the Local Variables Window.</dd></dt>
+</DL>
+</BODY>
+</HTML>

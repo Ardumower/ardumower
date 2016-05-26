@@ -1,0 +1,40 @@
+--- gcc/config/avr/avr.c.old	2008-11-04 14:14:27.405669400 -0700
++++ gcc/config/avr/avr.c	2008-11-04 14:14:55.772086800 -0700
+@@ -283,6 +283,7 @@ static const struct mcu_type_s avr_mcu_t
+   { "atmega32m1",   ARCH_AVR5, "__AVR_ATmega32M1__" },
+   { "atmega32c1",   ARCH_AVR5, "__AVR_ATmega32C1__" },
+   { "atmega32u4",   ARCH_AVR5, "__AVR_ATmega32U4__" },
++  { "atmega32u6",   ARCH_AVR5, "__AVR_ATmega32U6__" },
+   { "at90usb646",   ARCH_AVR5, "__AVR_AT90USB646__" },
+   { "at90usb647",   ARCH_AVR5, "__AVR_AT90USB647__" },
+   { "at94k",        ARCH_AVR5, "__AVR_AT94K__" },
+--- gcc/config/avr/avr.h.old	2008-11-04 14:15:07.629280600 -0700
++++ gcc/config/avr/avr.h	2008-11-04 14:16:11.692586600 -0700
+@@ -871,7 +871,7 @@ mmcu=*:-mmcu=%*}"
+   mmcu=at90pwm316|\
+   mmcu=atmega32c1|\
+   mmcu=atmega32m1|\
+-  mmcu=atmega32u4|\
++  mmcu=atmega32u*|\
+   mmcu=at90usb64*|\
+   mmcu=at90usb128*|\
+   mmcu=at94k: -m avr5}\
+@@ -908,7 +908,7 @@ mmcu=*:-mmcu=%*}"
+   mmcu=at90pwm*|\
+   mmcu=atmega32c1|\
+   mmcu=atmega32m1|\
+-  mmcu=atmega32u4|\
++  mmcu=atmega32u*|\
+   mmcu=at90usb*: -Tdata 0x800100}\
+ %{mmcu=atmega640|\
+   mmcu=atmega1280|\
+--- gcc/config/avr/t-avr.old	2008-11-04 14:17:13.610006800 -0700
++++ gcc/config/avr/t-avr	2008-11-04 14:17:24.793674400 -0700
+@@ -118,6 +118,7 @@ MULTILIB_MATCHES = \
+ 	mmcu?avr5=mmcu?atmega32c1 \
+ 	mmcu?avr5=mmcu?atmega32m1 \
+ 	mmcu?avr5=mmcu?atmega32u4 \
++	mmcu?avr5=mmcu?atmega32u6 \
+ 	mmcu?avr5=mmcu?at90usb646 \
+ 	mmcu?avr5=mmcu?at90usb647 \
+ 	mmcu?avr5=mmcu?at94k \

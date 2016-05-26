@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>Option file format - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Options.html#Options" title="Options">
+<link rel="next" href="Option-properties.html#Option-properties" title="Option properties">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Option-file-format"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Option-properties.html#Option-properties">Option properties</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Options.html#Options">Options</a>
+<hr><br>
+</div>
+
+<h3 class="section">7.1 Option file format</h3>
+
+<p>Option files are a simple list of records in which each field occupies
+its own line and in which the records themselves are separated by
+blank lines.  Comments may appear on their own line anywhere within
+the file and are preceded by semicolons.  Whitespace is allowed before
+the semicolon.
+
+ <p>The files can contain the following types of record:
+
+     <ul>
+<li>A language definition record.  These records have two fields: the
+string <span class="samp">Language</span> and the name of the language.  Once a language
+has been declared in this way, it can be used as an option property. 
+See <a href="Option-properties.html#Option-properties">Option properties</a>.
+
+     <li>An option definition record.  These records have the following fields:
+
+          <ol type=1 start=1>
+<li>the name of the option, with the leading &ldquo;-&rdquo; removed
+<li>a space-separated list of option properties (see <a href="Option-properties.html#Option-properties">Option properties</a>)
+<li>the help text to use for <span class="option">--help</span> (omitted if the second field
+contains the <code>Undocumented</code> property).
+          </ol>
+
+     <p>By default, all options beginning with &ldquo;f&rdquo;, &ldquo;W&rdquo; or &ldquo;m&rdquo; are
+implicitly assumed to take a &ldquo;no-&rdquo; form.  This form should not be
+listed separately.  If an option beginning with one of these letters
+does not have a &ldquo;no-&rdquo; form, you can use the <code>RejectNegative</code>
+property to reject it.
+
+     <p>The help text is automatically line-wrapped before being displayed. 
+Normally the name of the option is printed on the left-hand side of
+the output and the help text is printed on the right.  However, if the
+help text contains a tab character, the text to the left of the tab is
+used instead of the option's name and the text to the right of the
+tab forms the help text.  This allows you to elaborate on what type
+of argument the option takes.
+
+     <li>A target mask record.  These records have one field of the form
+<span class="samp">Mask(</span><var>x</var><span class="samp">)</span>.  The options-processing script will automatically
+allocate a bit in <code>target_flags</code> (see <a href="Run_002dtime-Target.html#Run_002dtime-Target">Run-time Target</a>) for
+each mask name <var>x</var> and set the macro <code>MASK_</code><var>x</var> to the
+appropriate bitmask.  It will also declare a <code>TARGET_</code><var>x</var>
+macro that has the value 1 when bit <code>MASK_</code><var>x</var> is set and
+0 otherwise.
+
+     <p>They are primarily intended to declare target masks that are not
+associated with user options, either because these masks represent
+internal switches or because the options are not available on all
+configurations and yet the masks always need to be defined. 
+</ul>
+
+ </body></html>
+

@@ -1,0 +1,427 @@
+<html lang="en">
+<head>
+<title>objdump - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="objcopy.html#objcopy" title="objcopy">
+<link rel="next" href="ranlib.html#ranlib" title="ranlib">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="objdump"></a>Next:&nbsp;<a rel="next" accesskey="n" href="ranlib.html#ranlib">ranlib</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="objcopy.html#objcopy">objcopy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">4 objdump</h2>
+
+<p><a name="index-object-file-information-57"></a><a name="index-objdump-58"></a>
+<!-- man title objdump display information from object files. -->
+
+<pre class="smallexample">     <!-- man begin SYNOPSIS objdump -->
+     objdump [<span class="option">-a</span>|<span class="option">--archive-headers</span>]
+             [<span class="option">-b</span> <var>bfdname</var>|<span class="option">--target=</span><var>bfdname</var>]
+             [<span class="option">-C</span>|<span class="option">--demangle</span>[=<var>style</var>] ]
+             [<span class="option">-d</span>|<span class="option">--disassemble</span>]
+             [<span class="option">-D</span>|<span class="option">--disassemble-all</span>]
+             [<span class="option">-z</span>|<span class="option">--disassemble-zeroes</span>]
+             [<span class="option">-EB</span>|<span class="option">-EL</span>|<span class="option">--endian=</span>{big | little }]
+             [<span class="option">-f</span>|<span class="option">--file-headers</span>]
+             [<span class="option">-F</span>|<span class="option">--file-offsets</span>]
+             [<span class="option">--file-start-context</span>]
+             [<span class="option">-g</span>|<span class="option">--debugging</span>]
+             [<span class="option">-e</span>|<span class="option">--debugging-tags</span>]
+             [<span class="option">-h</span>|<span class="option">--section-headers</span>|<span class="option">--headers</span>]
+             [<span class="option">-i</span>|<span class="option">--info</span>]
+             [<span class="option">-j</span> <var>section</var>|<span class="option">--section=</span><var>section</var>]
+             [<span class="option">-l</span>|<span class="option">--line-numbers</span>]
+             [<span class="option">-S</span>|<span class="option">--source</span>]
+             [<span class="option">-m</span> <var>machine</var>|<span class="option">--architecture=</span><var>machine</var>]
+             [<span class="option">-M</span> <var>options</var>|<span class="option">--disassembler-options=</span><var>options</var>]
+             [<span class="option">-p</span>|<span class="option">--private-headers</span>]
+             [<span class="option">-r</span>|<span class="option">--reloc</span>]
+             [<span class="option">-R</span>|<span class="option">--dynamic-reloc</span>]
+             [<span class="option">-s</span>|<span class="option">--full-contents</span>]
+             [<span class="option">-W</span>|<span class="option">--dwarf</span>]
+             [<span class="option">-G</span>|<span class="option">--stabs</span>]
+             [<span class="option">-t</span>|<span class="option">--syms</span>]
+             [<span class="option">-T</span>|<span class="option">--dynamic-syms</span>]
+             [<span class="option">-x</span>|<span class="option">--all-headers</span>]
+             [<span class="option">-w</span>|<span class="option">--wide</span>]
+             [<span class="option">--start-address=</span><var>address</var>]
+             [<span class="option">--stop-address=</span><var>address</var>]
+             [<span class="option">--prefix-addresses</span>]
+             [<span class="option">--[no-]show-raw-insn</span>]
+             [<span class="option">--adjust-vma=</span><var>offset</var>]
+             [<span class="option">--special-syms</span>]
+             [<span class="option">-V</span>|<span class="option">--version</span>]
+             [<span class="option">-H</span>|<span class="option">--help</span>]
+             <var>objfile</var>...
+     <!-- man end -->
+</pre>
+   <!-- man begin DESCRIPTION objdump -->
+<p><span class="command">objdump</span> displays information about one or more object files. 
+The options control what particular information to display.  This
+information is mostly useful to programmers who are working on the
+compilation tools, as opposed to programmers who just want their
+program to compile and work.
+
+   <p><var>objfile</var><small class="dots">...</small> are the object files to be examined.  When you
+specify archives, <span class="command">objdump</span> shows information on each of the member
+object files.
+
+<!-- man end -->
+<!-- man begin OPTIONS objdump -->
+<p>The long and short forms of options, shown here as alternatives, are
+equivalent.  At least one option from the list
+<span class="option">-a,-d,-D,-e,-f,-g,-G,-h,-H,-p,-r,-R,-s,-S,-t,-T,-V,-x</span> must be given.
+
+     <dl>
+<dt><span class="env">-a</span><dt><span class="env">--archive-header</span><dd><a name="index-archive-headers-59"></a>If any of the <var>objfile</var> files are archives, display the archive
+header information (in a format similar to <span class="samp">ls -l</span>).  Besides the
+information you could list with <span class="samp">ar tv</span>, <span class="samp">objdump -a</span> shows
+the object file format of each archive member.
+
+     <br><dt><span class="env">--adjust-vma=</span><var>offset</var><dd><a name="index-section-addresses-in-objdump-60"></a><a name="index-VMA-in-objdump-61"></a>When dumping information, first add <var>offset</var> to all the section
+addresses.  This is useful if the section addresses do not correspond to
+the symbol table, which can happen when putting sections at particular
+addresses when using a format which can not represent section addresses,
+such as a.out.
+
+     <br><dt><span class="env">-b </span><var>bfdname</var><dt><span class="env">--target=</span><var>bfdname</var><dd><a name="index-object-code-format-62"></a>Specify that the object-code format for the object files is
+<var>bfdname</var>.  This option may not be necessary; <var>objdump</var> can
+automatically recognize many formats.
+
+     <p>For example,
+     <pre class="example">          objdump -b oasys -m vax -h fu.o
+     </pre>
+     <p class="noindent">displays summary information from the section headers (<span class="option">-h</span>) of
+<span class="file">fu.o</span>, which is explicitly identified (<span class="option">-m</span>) as a VAX object
+file in the format produced by Oasys compilers.  You can list the
+formats available with the <span class="option">-i</span> option. 
+See <a href="Target-Selection.html#Target-Selection">Target Selection</a>, for more information.
+
+     <br><dt><span class="env">-C</span><dt><span class="env">--demangle[=</span><var>style</var><span class="env">]</span><dd><a name="index-demangling-in-objdump-63"></a>Decode (<dfn>demangle</dfn>) low-level symbol names into user-level names. 
+Besides removing any initial underscore prepended by the system, this
+makes C++ function names readable.  Different compilers have different
+mangling styles. The optional demangling style argument can be used to
+choose an appropriate demangling style for your compiler. See <a href="c_002b_002bfilt.html#c_002b_002bfilt">c++filt</a>,
+for more information on demangling.
+
+     <br><dt><span class="env">-g</span><dt><span class="env">--debugging</span><dd>Display debugging information.  This attempts to parse STABS and IEEE
+debugging format information stored in the file and print it out using
+a C like syntax.  If neither of these formats are found this option
+falls back on the <span class="option">-W</span> option to print any DWARF information in
+the file.
+
+     <br><dt><span class="env">-e</span><dt><span class="env">--debugging-tags</span><dd>Like <span class="option">-g</span>, but the information is generated in a format compatible
+with ctags tool.
+
+     <br><dt><span class="env">-d</span><dt><span class="env">--disassemble</span><dd><a name="index-disassembling-object-code-64"></a><a name="index-machine-instructions-65"></a>Display the assembler mnemonics for the machine instructions from
+<var>objfile</var>.  This option only disassembles those sections which are
+expected to contain instructions.
+
+     <br><dt><span class="env">-D</span><dt><span class="env">--disassemble-all</span><dd>Like <span class="option">-d</span>, but disassemble the contents of all sections, not just
+those expected to contain instructions.
+
+     <br><dt><span class="env">--prefix-addresses</span><dd>When disassembling, print the complete address on each line.  This is
+the older disassembly format.
+
+     <br><dt><span class="env">-EB</span><dt><span class="env">-EL</span><dt><span class="env">--endian={big|little}</span><dd><a name="index-endianness-66"></a><a name="index-disassembly-endianness-67"></a>Specify the endianness of the object files.  This only affects
+disassembly.  This can be useful when disassembling a file format which
+does not describe endianness information, such as S-records.
+
+     <br><dt><span class="env">-f</span><dt><span class="env">--file-headers</span><dd><a name="index-object-file-header-68"></a>Display summary information from the overall header of
+each of the <var>objfile</var> files.
+
+     <br><dt><span class="env">-F</span><dt><span class="env">--file-offsets</span><dd><a name="index-object-file-offsets-69"></a>When disassembling sections, whenever a symbol is displayed, also
+display the file offset of the region of data that is about to be
+dumped.  If zeroes are being skipped, then when disassembly resumes,
+tell the user how many zeroes were skipped and the file offset of the
+location from where the disassembly resumes.  When dumping sections,
+display the file offset of the location from where the dump starts.
+
+     <br><dt><span class="env">--file-start-context</span><dd><a name="index-source-code-context-70"></a>Specify that when displaying interlisted source code/disassembly
+(assumes <span class="option">-S</span>) from a file that has not yet been displayed, extend the
+context to the start of the file.
+
+     <br><dt><span class="env">-h</span><dt><span class="env">--section-headers</span><dt><span class="env">--headers</span><dd><a name="index-section-headers-71"></a>Display summary information from the section headers of the
+object file.
+
+     <p>File segments may be relocated to nonstandard addresses, for example by
+using the <span class="option">-Ttext</span>, <span class="option">-Tdata</span>, or <span class="option">-Tbss</span> options to
+<span class="command">ld</span>.  However, some object file formats, such as a.out, do not
+store the starting address of the file segments.  In those situations,
+although <span class="command">ld</span> relocates the sections correctly, using <span class="samp">objdump
+-h</span> to list the file section headers cannot show the correct addresses. 
+Instead, it shows the usual addresses, which are implicit for the
+target.
+
+     <br><dt><span class="env">-H</span><dt><span class="env">--help</span><dd>Print a summary of the options to <span class="command">objdump</span> and exit.
+
+     <br><dt><span class="env">-i</span><dt><span class="env">--info</span><dd><a name="index-architectures-available-72"></a><a name="index-object-formats-available-73"></a>Display a list showing all architectures and object formats available
+for specification with <span class="option">-b</span> or <span class="option">-m</span>.
+
+     <br><dt><span class="env">-j </span><var>name</var><dt><span class="env">--section=</span><var>name</var><dd><a name="index-section-information-74"></a>Display information only for section <var>name</var>.
+
+     <br><dt><span class="env">-l</span><dt><span class="env">--line-numbers</span><dd><a name="index-source-filenames-for-object-files-75"></a>Label the display (using debugging information) with the filename and
+source line numbers corresponding to the object code or relocs shown. 
+Only useful with <span class="option">-d</span>, <span class="option">-D</span>, or <span class="option">-r</span>.
+
+     <br><dt><span class="env">-m </span><var>machine</var><dt><span class="env">--architecture=</span><var>machine</var><dd><a name="index-architecture-76"></a><a name="index-disassembly-architecture-77"></a>Specify the architecture to use when disassembling object files.  This
+can be useful when disassembling object files which do not describe
+architecture information, such as S-records.  You can list the available
+architectures with the <span class="option">-i</span> option.
+
+     <br><dt><span class="env">-M </span><var>options</var><dt><span class="env">--disassembler-options=</span><var>options</var><dd>Pass target specific information to the disassembler.  Only supported on
+some targets.  If it is necessary to specify more than one
+disassembler option then multiple <span class="option">-M</span> options can be used or
+can be placed together into a comma separated list.
+
+     <p>If the target is an ARM architecture then this switch can be used to
+select which register name set is used during disassembler.  Specifying
+<span class="option">-M reg-names-std</span> (the default) will select the register names as
+used in ARM's instruction set documentation, but with register 13 called
+'sp', register 14 called 'lr' and register 15 called 'pc'.  Specifying
+<span class="option">-M reg-names-apcs</span> will select the name set used by the ARM
+Procedure Call Standard, whilst specifying <span class="option">-M reg-names-raw</span> will
+just use <span class="samp">r</span> followed by the register number.
+
+     <p>There are also two variants on the APCS register naming scheme enabled
+by <span class="option">-M reg-names-atpcs</span> and <span class="option">-M reg-names-special-atpcs</span> which
+use the ARM/Thumb Procedure Call Standard naming conventions.  (Either
+with the normal register names or the special register names).
+
+     <p>This option can also be used for ARM architectures to force the
+disassembler to interpret all instructions as Thumb instructions by
+using the switch <span class="option">--disassembler-options=force-thumb</span>.  This can be
+useful when attempting to disassemble thumb code produced by other
+compilers.
+
+     <p>For the x86, some of the options duplicate functions of the <span class="option">-m</span>
+switch, but allow finer grained control.  Multiple selections from the
+following may be specified as a comma separated string. 
+<span class="option">x86-64</span>, <span class="option">i386</span> and <span class="option">i8086</span> select disassembly for
+the given architecture.  <span class="option">intel</span> and <span class="option">att</span> select between
+intel syntax mode and AT&amp;T syntax mode. 
+<span class="option">intel-mnemonic</span> and <span class="option">att-mnemonic</span> select between
+intel mnemonic mode and AT&amp;T mnemonic mode. <span class="option">intel-mnemonic</span>
+implies <span class="option">intel</span> and <span class="option">att-mnemonic</span> implies <span class="option">att</span>. 
+<span class="option">addr64</span>, <span class="option">addr32</span>,
+<span class="option">addr16</span>, <span class="option">data32</span> and <span class="option">data16</span> specify the default
+address size and operand size.  These four options will be overridden if
+<span class="option">x86-64</span>, <span class="option">i386</span> or <span class="option">i8086</span> appear later in the
+option string.  Lastly, <span class="option">suffix</span>, when in AT&amp;T mode,
+instructs the disassembler to print a mnemonic suffix even when the
+suffix could be inferred by the operands.
+
+     <p>For PPC, <span class="option">booke</span>, <span class="option">booke32</span> and <span class="option">booke64</span> select
+disassembly of BookE instructions.  <span class="option">32</span> and <span class="option">64</span> select
+PowerPC and PowerPC64 disassembly, respectively.  <span class="option">e300</span>
+selects disassembly for the e300 family.  <span class="option">440</span> selects
+disassembly for the PowerPC 440.  <span class="option">ppcps</span> selects disassembly
+for the paired single instructions of the PPC750CL.
+
+     <p>For MIPS, this option controls the printing of instruction mnemonic
+names and register names in disassembled instructions.  Multiple
+selections from the following may be specified as a comma separated
+string, and invalid options are ignored:
+
+          <dl>
+<dt><code>no-aliases</code><dd>Print the 'raw' instruction mnemonic instead of some pseudo
+instruction mnemonic.  I.e., print 'daddu' or 'or' instead of 'move',
+'sll' instead of 'nop', etc.
+
+          <br><dt><code>gpr-names=</code><var>ABI</var><dd>Print GPR (general-purpose register) names as appropriate
+for the specified ABI.  By default, GPR names are selected according to
+the ABI of the binary being disassembled.
+
+          <br><dt><code>fpr-names=</code><var>ABI</var><dd>Print FPR (floating-point register) names as
+appropriate for the specified ABI.  By default, FPR numbers are printed
+rather than names.
+
+          <br><dt><code>cp0-names=</code><var>ARCH</var><dd>Print CP0 (system control coprocessor; coprocessor 0) register names
+as appropriate for the CPU or architecture specified by
+<var>ARCH</var>.  By default, CP0 register names are selected according to
+the architecture and CPU of the binary being disassembled.
+
+          <br><dt><code>hwr-names=</code><var>ARCH</var><dd>Print HWR (hardware register, used by the <code>rdhwr</code> instruction) names
+as appropriate for the CPU or architecture specified by
+<var>ARCH</var>.  By default, HWR names are selected according to
+the architecture and CPU of the binary being disassembled.
+
+          <br><dt><code>reg-names=</code><var>ABI</var><dd>Print GPR and FPR names as appropriate for the selected ABI.
+
+          <br><dt><code>reg-names=</code><var>ARCH</var><dd>Print CPU-specific register names (CP0 register and HWR names)
+as appropriate for the selected CPU or architecture. 
+</dl>
+
+     <p>For any of the options listed above, <var>ABI</var> or
+<var>ARCH</var> may be specified as <span class="samp">numeric</span> to have numbers printed
+rather than names, for the selected types of registers. 
+You can list the available values of <var>ABI</var> and <var>ARCH</var> using
+the <span class="option">--help</span> option.
+
+     <p>For VAX, you can specify function entry addresses with <span class="option">-M
+entry:0xf00ba</span>.  You can use this multiple times to properly
+disassemble VAX binary files that don't contain symbol tables (like
+ROM dumps).  In these cases, the function entry mask would otherwise
+be decoded as VAX instructions, which would probably lead the rest
+of the function being wrongly disassembled.
+
+     <br><dt><span class="env">-p</span><dt><span class="env">--private-headers</span><dd>Print information that is specific to the object file format.  The exact
+information printed depends upon the object file format.  For some
+object file formats, no additional information is printed.
+
+     <br><dt><span class="env">-r</span><dt><span class="env">--reloc</span><dd><a name="index-relocation-entries_002c-in-object-file-78"></a>Print the relocation entries of the file.  If used with <span class="option">-d</span> or
+<span class="option">-D</span>, the relocations are printed interspersed with the
+disassembly.
+
+     <br><dt><span class="env">-R</span><dt><span class="env">--dynamic-reloc</span><dd><a name="index-dynamic-relocation-entries_002c-in-object-file-79"></a>Print the dynamic relocation entries of the file.  This is only
+meaningful for dynamic objects, such as certain types of shared
+libraries.
+
+     <br><dt><span class="env">-s</span><dt><span class="env">--full-contents</span><dd><a name="index-sections_002c-full-contents-80"></a><a name="index-object-file-sections-81"></a>Display the full contents of any sections requested.  By default all
+non-empty sections are displayed.
+
+     <br><dt><span class="env">-S</span><dt><span class="env">--source</span><dd><a name="index-source-disassembly-82"></a><a name="index-disassembly_002c-with-source-83"></a>Display source code intermixed with disassembly, if possible.  Implies
+<span class="option">-d</span>.
+
+     <br><dt><span class="env">--show-raw-insn</span><dd>When disassembling instructions, print the instruction in hex as well as
+in symbolic form.  This is the default except when
+<span class="option">--prefix-addresses</span> is used.
+
+     <br><dt><span class="env">--no-show-raw-insn</span><dd>When disassembling instructions, do not print the instruction bytes. 
+This is the default when <span class="option">--prefix-addresses</span> is used.
+
+     <br><dt><span class="env">-W</span><dt><span class="env">--dwarf</span><dd><a name="index-DWARF-84"></a><a name="index-debug-symbols-85"></a>Displays the contents of the DWARF debug sections in the file, if any
+are present.
+
+     <br><dt><span class="env">-G</span><dt><span class="env">--stabs</span><dd><a name="index-stab-86"></a><a name="index-_002estab-87"></a><a name="index-debug-symbols-88"></a><a name="index-ELF-object-file-format-89"></a>Display the full contents of any sections requested.  Display the
+contents of the .stab and .stab.index and .stab.excl sections from an
+ELF file.  This is only useful on systems (such as Solaris 2.0) in which
+<code>.stab</code> debugging symbol-table entries are carried in an ELF
+section.  In most other file formats, debugging symbol-table entries are
+interleaved with linkage symbols, and are visible in the <span class="option">--syms</span>
+output. 
+For more information on stabs symbols, see <a href="../stabs/index.html#Top">Stabs (The &ldquo;stabs&rdquo; debug format)</a>.
+
+     <br><dt><span class="env">--start-address=</span><var>address</var><dd><a name="index-start_002daddress-90"></a>Start displaying data at the specified address.  This affects the output
+of the <span class="option">-d</span>, <span class="option">-r</span> and <span class="option">-s</span> options.
+
+     <br><dt><span class="env">--stop-address=</span><var>address</var><dd><a name="index-stop_002daddress-91"></a>Stop displaying data at the specified address.  This affects the output
+of the <span class="option">-d</span>, <span class="option">-r</span> and <span class="option">-s</span> options.
+
+     <br><dt><span class="env">-t</span><dt><span class="env">--syms</span><dd><a name="index-symbol-table-entries_002c-printing-92"></a>Print the symbol table entries of the file. 
+This is similar to the information provided by the <span class="samp">nm</span> program,
+although the display format is different.  The format of the output
+depends upon the format of the file being dumped, but there are two main
+types.  One looks like this:
+
+     <pre class="smallexample">          [  4](sec  3)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x00000000 .bss
+          [  6](sec  1)(fl 0x00)(ty   0)(scl   2) (nx 0) 0x00000000 fred
+     </pre>
+     <p>where the number inside the square brackets is the number of the entry
+in the symbol table, the <var>sec</var> number is the section number, the
+<var>fl</var> value are the symbol's flag bits, the <var>ty</var> number is the
+symbol's type, the <var>scl</var> number is the symbol's storage class and
+the <var>nx</var> value is the number of auxilary entries associated with
+the symbol.  The last two fields are the symbol's value and its name.
+
+     <p>The other common output format, usually seen with ELF based files,
+looks like this:
+
+     <pre class="smallexample">          00000000 l    d  .bss   00000000 .bss
+          00000000 g       .text  00000000 fred
+     </pre>
+     <p>Here the first number is the symbol's value (sometimes refered to as
+its address).  The next field is actually a set of characters and
+spaces indicating the flag bits that are set on the symbol.  These
+characters are described below.  Next is the section with which the
+symbol is associated or <em>*ABS*</em> if the section is absolute (ie
+not connected with any section), or <em>*UND*</em> if the section is
+referenced in the file being dumped, but not defined there.
+
+     <p>After the section name comes another field, a number, which for common
+symbols is the alignment and for other symbol is the size.  Finally
+the symbol's name is displayed.
+
+     <p>The flag characters are divided into 7 groups as follows:
+          <dl>
+<dt><code>l</code><dt><code>g</code><dt><code>!</code><dd>The symbol is local (l), global (g), neither (a space) or both (!).  A
+symbol can be neither local or global for a variety of reasons, e.g.,
+because it is used for debugging, but it is probably an indication of
+a bug if it is ever both local and global.
+
+          <br><dt><code>w</code><dd>The symbol is weak (w) or strong (a space).
+
+          <br><dt><code>C</code><dd>The symbol denotes a constructor (C) or an ordinary symbol (a space).
+
+          <br><dt><code>W</code><dd>The symbol is a warning (W) or a normal symbol (a space).  A warning
+symbol's name is a message to be displayed if the symbol following the
+warning symbol is ever referenced.
+
+          <br><dt><code>I</code><dd>The symbol is an indirect reference to another symbol (I) or a normal
+symbol (a space).
+
+          <br><dt><code>d</code><dt><code>D</code><dd>The symbol is a debugging symbol (d) or a dynamic symbol (D) or a
+normal symbol (a space).
+
+          <br><dt><code>F</code><br><dt><code>f</code><br><dt><code>O</code><dd>The symbol is the name of a function (F) or a file (f) or an object
+(O) or just a normal symbol (a space). 
+</dl>
+
+     <br><dt><span class="env">-T</span><dt><span class="env">--dynamic-syms</span><dd><a name="index-dynamic-symbol-table-entries_002c-printing-93"></a>Print the dynamic symbol table entries of the file.  This is only
+meaningful for dynamic objects, such as certain types of shared
+libraries.  This is similar to the information provided by the <span class="samp">nm</span>
+program when given the <span class="option">-D</span> (<span class="option">--dynamic</span>) option.
+
+     <br><dt><span class="env">--special-syms</span><dd>When displaying symbols include those which the target considers to be
+special in some way and which would not normally be of interest to the
+user.
+
+     <br><dt><span class="env">-V</span><dt><span class="env">--version</span><dd>Print the version number of <span class="command">objdump</span> and exit.
+
+     <br><dt><span class="env">-x</span><dt><span class="env">--all-headers</span><dd><a name="index-all-header-information_002c-object-file-94"></a><a name="index-header-information_002c-all-95"></a>Display all available header information, including the symbol table and
+relocation entries.  Using <span class="option">-x</span> is equivalent to specifying all of
+<span class="option">-a -f -h -p -r -t</span>.
+
+     <br><dt><span class="env">-w</span><dt><span class="env">--wide</span><dd><a name="index-wide-output_002c-printing-96"></a>Format some lines for output devices that have more than 80 columns. 
+Also do not truncate symbol names when they are displayed.
+
+     <br><dt><span class="env">-z</span><dt><span class="env">--disassemble-zeroes</span><dd>Normally the disassembly output will skip blocks of zeroes.  This
+option directs the disassembler to disassemble those blocks, just like
+any other data. 
+</dl>
+
+<!-- man end -->
+</body></html>
+

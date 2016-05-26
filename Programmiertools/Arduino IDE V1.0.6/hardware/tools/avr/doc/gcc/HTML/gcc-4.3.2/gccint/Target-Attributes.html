@@ -1,0 +1,158 @@
+<html lang="en">
+<head>
+<title>Target Attributes - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Target-Macros.html#Target-Macros" title="Target Macros">
+<link rel="prev" href="Mode-Switching.html#Mode-Switching" title="Mode Switching">
+<link rel="next" href="MIPS-Coprocessors.html#MIPS-Coprocessors" title="MIPS Coprocessors">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Target-Attributes"></a>Next:&nbsp;<a rel="next" accesskey="n" href="MIPS-Coprocessors.html#MIPS-Coprocessors">MIPS Coprocessors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Mode-Switching.html#Mode-Switching">Mode Switching</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Target-Macros.html#Target-Macros">Target Macros</a>
+<hr><br>
+</div>
+
+<h3 class="section">15.25 Defining target-specific uses of <code>__attribute__</code></h3>
+
+<p><a name="index-target-attributes-4190"></a><a name="index-machine-attributes-4191"></a><a name="index-attributes_002c-target_002dspecific-4192"></a>
+Target-specific attributes may be defined for functions, data and types. 
+These are described using the following target hooks; they also need to
+be documented in <span class="file">extend.texi</span>.
+
+<div class="defun">
+&mdash; Target Hook: const struct attribute_spec * <b>TARGET_ATTRIBUTE_TABLE</b><var><a name="index-TARGET_005fATTRIBUTE_005fTABLE-4193"></a></var><br>
+<blockquote><p>If defined, this target hook points to an array of <span class="samp">struct
+attribute_spec</span> (defined in <span class="file">tree.h</span>) specifying the machine
+specific attributes for this target and some of the restrictions on the
+entities to which these attributes are applied and the arguments they
+take. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: int <b>TARGET_COMP_TYPE_ATTRIBUTES</b> (<var>tree type1, tree type2</var>)<var><a name="index-TARGET_005fCOMP_005fTYPE_005fATTRIBUTES-4194"></a></var><br>
+<blockquote><p>If defined, this target hook is a function which returns zero if the attributes on
+<var>type1</var> and <var>type2</var> are incompatible, one if they are compatible,
+and two if they are nearly compatible (which causes a warning to be
+generated).  If this is not defined, machine-specific attributes are
+supposed always to be compatible. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_SET_DEFAULT_TYPE_ATTRIBUTES</b> (<var>tree type</var>)<var><a name="index-TARGET_005fSET_005fDEFAULT_005fTYPE_005fATTRIBUTES-4195"></a></var><br>
+<blockquote><p>If defined, this target hook is a function which assigns default attributes to
+newly defined <var>type</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: tree <b>TARGET_MERGE_TYPE_ATTRIBUTES</b> (<var>tree type1, tree type2</var>)<var><a name="index-TARGET_005fMERGE_005fTYPE_005fATTRIBUTES-4196"></a></var><br>
+<blockquote><p>Define this target hook if the merging of type attributes needs special
+handling.  If defined, the result is a list of the combined
+<code>TYPE_ATTRIBUTES</code> of <var>type1</var> and <var>type2</var>.  It is assumed
+that <code>comptypes</code> has already been called and returned 1.  This
+function may call <code>merge_attributes</code> to handle machine-independent
+merging. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: tree <b>TARGET_MERGE_DECL_ATTRIBUTES</b> (<var>tree olddecl, tree newdecl</var>)<var><a name="index-TARGET_005fMERGE_005fDECL_005fATTRIBUTES-4197"></a></var><br>
+<blockquote><p>Define this target hook if the merging of decl attributes needs special
+handling.  If defined, the result is a list of the combined
+<code>DECL_ATTRIBUTES</code> of <var>olddecl</var> and <var>newdecl</var>. 
+<var>newdecl</var> is a duplicate declaration of <var>olddecl</var>.  Examples of
+when this is needed are when one attribute overrides another, or when an
+attribute is nullified by a subsequent definition.  This function may
+call <code>merge_attributes</code> to handle machine-independent merging.
+
+      <p><a name="index-TARGET_005fDLLIMPORT_005fDECL_005fATTRIBUTES-4198"></a>If the only target-specific handling you require is <span class="samp">dllimport</span>
+for Microsoft Windows targets, you should define the macro
+<code>TARGET_DLLIMPORT_DECL_ATTRIBUTES</code> to <code>1</code>.  The compiler
+will then define a function called
+<code>merge_dllimport_decl_attributes</code> which can then be defined as
+the expansion of <code>TARGET_MERGE_DECL_ATTRIBUTES</code>.  You can also
+add <code>handle_dll_attribute</code> in the attribute table for your port
+to perform initial processing of the <span class="samp">dllimport</span> and
+<span class="samp">dllexport</span> attributes.  This is done in <span class="file">i386/cygwin.h</span> and
+<span class="file">i386/i386.c</span>, for example. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_VALID_DLLIMPORT_ATTRIBUTE_P</b> (<var>tree decl</var>)<var><a name="index-TARGET_005fVALID_005fDLLIMPORT_005fATTRIBUTE_005fP-4199"></a></var><br>
+<blockquote><p><var>decl</var> is a variable or function with <code>__attribute__((dllimport))</code>
+specified. Use this hook if the target needs to add extra validation
+checks to <code>handle_dll_attribute</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>TARGET_DECLSPEC</b><var><a name="index-TARGET_005fDECLSPEC-4200"></a></var><br>
+<blockquote><p>Define this macro to a nonzero value if you want to treat
+<code>__declspec(X)</code> as equivalent to <code>__attribute((X))</code>.  By
+default, this behavior is enabled only for targets that define
+<code>TARGET_DLLIMPORT_DECL_ATTRIBUTES</code>.  The current implementation
+of <code>__declspec</code> is via a built-in macro, but you should not rely
+on this implementation detail. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: void <b>TARGET_INSERT_ATTRIBUTES</b> (<var>tree node, tree *attr_ptr</var>)<var><a name="index-TARGET_005fINSERT_005fATTRIBUTES-4201"></a></var><br>
+<blockquote><p>Define this target hook if you want to be able to add attributes to a decl
+when it is being created.  This is normally useful for back ends which
+wish to implement a pragma by using the attributes which correspond to
+the pragma's effect.  The <var>node</var> argument is the decl which is being
+created.  The <var>attr_ptr</var> argument is a pointer to the attribute list
+for this decl.  The list itself should not be modified, since it may be
+shared with other decls, but attributes may be chained on the head of
+the list and <code>*</code><var>attr_ptr</var> modified to point to the new
+attributes, or a copy of the list may be made if further changes are
+needed. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Target Hook: bool <b>TARGET_FUNCTION_ATTRIBUTE_INLINABLE_P</b> (<var>tree fndecl</var>)<var><a name="index-TARGET_005fFUNCTION_005fATTRIBUTE_005fINLINABLE_005fP-4202"></a></var><br>
+<blockquote><p><a name="index-inlining-4203"></a>This target hook returns <code>true</code> if it is ok to inline <var>fndecl</var>
+into the current function, despite its having target-specific
+attributes, <code>false</code> otherwise.  By default, if a function has a
+target specific attribute attached to it, it will not be inlined. 
+</p></blockquote></div>
+
+ </body></html>
+

@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+<title>Top Level - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Source-Tree.html#Source-Tree" title="Source Tree">
+<link rel="prev" href="Configure-Terms.html#Configure-Terms" title="Configure Terms">
+<link rel="next" href="gcc-Directory.html#gcc-Directory" title="gcc Directory">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Top-Level"></a>Next:&nbsp;<a rel="next" accesskey="n" href="gcc-Directory.html#gcc-Directory">gcc Directory</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Configure-Terms.html#Configure-Terms">Configure Terms</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Source-Tree.html#Source-Tree">Source Tree</a>
+<hr><br>
+</div>
+
+<h3 class="section">6.2 Top Level Source Directory</h3>
+
+<p>The top level source directory in a GCC distribution contains several
+files and directories that are shared with other software
+distributions such as that of GNU Binutils.  It also contains several
+subdirectories that contain parts of GCC and its runtime libraries:
+
+     <dl>
+<dt><span class="file">boehm-gc</span><dd>The Boehm conservative garbage collector, used as part of the Java
+runtime library.
+
+     <br><dt><span class="file">contrib</span><dd>Contributed scripts that may be found useful in conjunction with GCC. 
+One of these, <span class="file">contrib/texi2pod.pl</span>, is used to generate man
+pages from Texinfo manuals as part of the GCC build process.
+
+     <br><dt><span class="file">fastjar</span><dd>An implementation of the <span class="command">jar</span> command, used with the Java
+front end.
+
+     <br><dt><span class="file">gcc</span><dd>The main sources of GCC itself (except for runtime libraries),
+including optimizers, support for different target architectures,
+language front ends, and testsuites.  See <a href="gcc-Directory.html#gcc-Directory">The <span class="file">gcc</span> Subdirectory</a>, for details.
+
+     <br><dt><span class="file">include</span><dd>Headers for the <code>libiberty</code> library.
+
+     <br><dt><span class="file">libada</span><dd>The Ada runtime library.
+
+     <br><dt><span class="file">libcpp</span><dd>The C preprocessor library.
+
+     <br><dt><span class="file">libgfortran</span><dd>The Fortran runtime library.
+
+     <br><dt><span class="file">libffi</span><dd>The <code>libffi</code> library, used as part of the Java runtime library.
+
+     <br><dt><span class="file">libiberty</span><dd>The <code>libiberty</code> library, used for portability and for some
+generally useful data structures and algorithms.  See <a href="../libiberty/index.html#Top">Introduction (<span class="sc">gnu</span> libiberty)</a>, for more information
+about this library.
+
+     <br><dt><span class="file">libjava</span><dd>The Java runtime library.
+
+     <br><dt><span class="file">libmudflap</span><dd>The <code>libmudflap</code> library, used for instrumenting pointer and array
+dereferencing operations.
+
+     <br><dt><span class="file">libobjc</span><dd>The Objective-C and Objective-C++ runtime library.
+
+     <br><dt><span class="file">libstdc++-v3</span><dd>The C++ runtime library.
+
+     <br><dt><span class="file">maintainer-scripts</span><dd>Scripts used by the <code>gccadmin</code> account on <code>gcc.gnu.org</code>.
+
+     <br><dt><span class="file">zlib</span><dd>The <code>zlib</code> compression library, used by the Java front end and as
+part of the Java runtime library. 
+</dl>
+
+ <p>The build system in the top level directory, including how recursion
+into subdirectories works and how building runtime libraries for
+multilibs is handled, is documented in a separate manual, included
+with GNU Binutils.  See <a href="../configure/index.html#Top">GNU configure and build system (The GNU configure and build system)</a>, for details.
+
+ </body></html>
+

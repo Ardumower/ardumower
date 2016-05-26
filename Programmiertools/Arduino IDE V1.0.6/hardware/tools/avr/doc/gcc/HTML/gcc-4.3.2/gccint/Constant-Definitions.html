@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+<title>Constant Definitions - GNU Compiler Collection (GCC) Internals</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Compiler Collection (GCC) Internals">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Desc.html#Machine-Desc" title="Machine Desc">
+<link rel="prev" href="Conditional-Execution.html#Conditional-Execution" title="Conditional Execution">
+<link rel="next" href="Iterators.html#Iterators" title="Iterators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'' and ``Funding
+Free Software'', the Front-Cover texts being (a) (see below), and with
+the Back-Cover Texts being (b) (see below).  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+
+(a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+(b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+     funds for GNU development.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Constant-Definitions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Iterators.html#Iterators">Iterators</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Conditional-Execution.html#Conditional-Execution">Conditional Execution</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Desc.html#Machine-Desc">Machine Desc</a>
+<hr><br>
+</div>
+
+<h3 class="section">14.21 Constant Definitions</h3>
+
+<p><a name="index-constant-definitions-3304"></a><a name="index-define_005fconstants-3305"></a>
+Using literal constants inside instruction patterns reduces legibility and
+can be a maintenance problem.
+
+ <p>To overcome this problem, you may use the <code>define_constants</code>
+expression.  It contains a vector of name-value pairs.  From that
+point on, wherever any of the names appears in the MD file, it is as
+if the corresponding value had been written instead.  You may use
+<code>define_constants</code> multiple times; each appearance adds more
+constants to the table.  It is an error to redefine a constant with
+a different value.
+
+ <p>To come back to the a29k load multiple example, instead of
+
+<pre class="smallexample">     (define_insn ""
+       [(match_parallel 0 "load_multiple_operation"
+          [(set (match_operand:SI 1 "gpc_reg_operand" "=r")
+                (match_operand:SI 2 "memory_operand" "m"))
+           (use (reg:SI 179))
+           (clobber (reg:SI 179))])]
+       ""
+       "loadm 0,0,%1,%2")
+</pre>
+ <p>You could write:
+
+<pre class="smallexample">     (define_constants [
+         (R_BP 177)
+         (R_FC 178)
+         (R_CR 179)
+         (R_Q  180)
+     ])
+     
+     (define_insn ""
+       [(match_parallel 0 "load_multiple_operation"
+          [(set (match_operand:SI 1 "gpc_reg_operand" "=r")
+                (match_operand:SI 2 "memory_operand" "m"))
+           (use (reg:SI R_CR))
+           (clobber (reg:SI R_CR))])]
+       ""
+       "loadm 0,0,%1,%2")
+</pre>
+ <p>The constants that are defined with a define_constant are also output
+in the insn-codes.h header file as #defines.
+
+ </body></html>
+

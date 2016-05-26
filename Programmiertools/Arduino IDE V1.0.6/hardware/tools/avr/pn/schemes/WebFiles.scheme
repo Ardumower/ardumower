@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme>
+	<style-classes>
+		<style-class name="embeddedjs" back="fofoff"/>
+		<style-class name="aspjs" fore="000000" back="dfdf7f"/>
+		<style-class name="embeddedvbs" fore="000000" back="efefff" eolfilled="true"/>
+		<style-class name="aspvbs" fore="000000" back="cfcfef" eolfilled="true" />
+		<style-class name="embeddedpython" back="efffef" eolfilled="true"/>
+		<style-class name="asppython" back="cfefcf" eolfilled="true"/>
+		<style-class name="php" back="fff8f8" eolfilled="true"/>
+	</style-classes>
+	<keyword-classes>
+		<keyword-class name="hypertext.elements">
+			a abbr acronym address applet area b base basefont
+			bdo big blockquote body br button caption center
+			cite code col colgroup dd del dfn dir div dl dt em
+			fieldset font form frame frameset h1 h2 h3 h4 h5 h6
+			head hr html i iframe img input ins isindex kbd label
+			legend li link map menu meta noframes noscript
+			object ol optgroup option p param pre q s samp
+			script select small span strike strong style sub sup
+			table tbody td textarea tfoot th thead title tr tt u ul
+			var xml xmlns
+		</keyword-class>
+		<keyword-class name="hypertext.attributes">
+			abbr accept-charset accept accesskey action align alink
+			alt archive axis background bgcolor border
+			cellpadding cellspacing char charoff charset checked cite
+			class classid clear codebase codetype color cols colspan
+			compact content coords
+			data datafld dataformatas datapagesize datasrc datetime
+			declare defer dir disabled enctype event
+			face for frame frameborder
+			headers height href hreflang hspace http-equiv
+			id ismap label lang language leftmargin link longdesc
+			marginwidth marginheight maxlength media method multiple
+			name nohref noresize noshade nowrap
+			object onblur onchange onclick ondblclick onfocus
+			onkeydown onkeypress onkeyup onload onmousedown
+			onmousemove onmouseover onmouseout onmouseup
+			onreset onselect onsubmit onunload
+			profile prompt readonly rel rev rows rowspan rules
+			scheme scope selected shape size span src standby start style
+			summary tabindex target text title topmargin type usemap
+			valign value valuetype version vlink vspace width
+			text password checkbox radio submit reset
+			file hidden image
+		</keyword-class>
+		<keyword-class name="hypertext">
+			<include-class name="hypertext.elements"/>
+			<include-class name="hypertext.attributes"/>
+			public !doctype
+		</keyword-class>
+		<keyword-class name="htmldtd">
+			ELEMENT DOCTYPE ATTLIST ENTITY NOTATION
+		</keyword-class>
+		<keyword-class name="php">
+			and argv as argc break case cfunction class continue declare default do
+			die echo else elseif empty enddeclare endfor endforeach endif endswitch
+			endwhile e_all e_parse e_error e_warning eval exit extends false for
+			foreach function global http_cookie_vars http_get_vars http_post_vars
+			http_post_files http_env_vars http_server_vars if include include_once
+			list new not null old_function or parent php_os php_self php_version
+			print require require_once return static switch stdclass this true var
+			xor virtual while __file__ __line__ __sleep __wakeup
+		</keyword-class>
+		<keyword-class name="css">
+			font-family font-style font-variant font-weight font-size font
+			color background-color background-image background-repeat background-attachment background-position background
+			word-spacing letter-spacing text-decoration vertical-align text-transform text-align text-indent line-height
+			margin-top margin-right margin-bottom margin-left margin
+			padding-top padding-right padding-bottom padding-left padding
+			border-top-width border-right-width border-bottom-width border-left-width border-width
+			border-top border-right border-bottom border-left border
+			border-color border-style width height float clear
+			display white-space list-style-type list-style-image list-style-position list-style
+		</keyword-class>
+		<keyword-class name="css-values">
+			auto none normal italic oblique small-caps bold bolder lighter
+			xx-small x-small small medium large x-large xx-large larger smaller
+			transparent repeat repeat-x repeat-y no-repeat scroll fixed
+			top bottom left center right justify both
+			underline overline line-through blink
+			baseline sub super text-top middle text-bottom
+			capitalize uppercase lowercase thin medium thick
+			dotted dashed solid double groove ridge inset outset
+			block inline list-item pre no-wrap inside outside
+			disc circle square decimal lower-roman upper-roman lower-alpha upper-alpha
+			aqua black blue fuchsia gray green lime maroon navy olive purple red silver teal white yellow
+		</keyword-class>
+		<keyword-class name="css-pseudo">
+		first-letter first-line link active visited first-child focus hover lang before after left right first
+		</keyword-class>
+		<keyword-class name="css2">
+			border-top-color border-right-color border-bottom-color border-left-color border-color
+			border-top-style border-right-style border-bottom-style border-left-style border-style
+			top right bottom left position z-index direction unicode-bidi
+			min-width max-width min-height max-height overflow clip visibility content quotes
+			counter-reset counter-increment marker-offset
+			size marks page-break-before page-break-after page-break-inside page orphans widows
+			font-stretch font-size-adjust unicode-range units-per-em src
+			panose-1 stemv stemh slope cap-height x-height ascent descent widths bbox definition-src
+			baseline centerline mathline topline text-shadow
+			caption-side table-layout border-collapse border-spacing empty-cells speak-header
+			cursor outline outline-width outline-style outline-color
+			volume speak pause-before pause-after pause cue-before cue-after cue
+			play-during azimuth elevation speech-rate voice-family pitch pitch-range stress richness
+			speak-punctuation speak-numeral
+		</keyword-class>
+		<keyword-class name="css2-values">
+			inherit
+			run-in compact marker table inline-table table-row-group table-header-group table-footer-group
+			table-row table-column-group table-column table-cell table-caption
+			static relative absolute fixed ltr rtl embed bidi-override
+			visible hidden scroll collapse open-quote close-quote no-open-quote no-close-quote
+			decimal-leading-zero lower-greek lower-latin upper-latin hebrew armenian georgian
+			cjk-ideographic hiragana katakana hiragana-iroha katakana-iroha
+			landscape portrait crop cross always avoid
+			wider narrower ultra-condensed extra-condensed condensed semi-condensed
+			semi-expanded expanded extra-expanded ultra-expanded
+			caption icon menu message-box small-caption status-bar
+			separate show hide once crosshair default pointer move text wait help
+			e-resize ne-resize nw-resize n-resize se-resize sw-resize s-resize w-resize
+			ActiveBorder ActiveCaption AppWorkspace Background ButtonFace ButtonHighlight ButtonShadow
+			InactiveCaptionText ButtonText CaptionText GrayText Highlight HighlightText InactiveBorder
+			InactiveCaption InfoBackground InfoText Menu MenuText Scrollbar ThreeDDarkShadow
+			ThreeDFace ThreeDHighlight ThreeDLightShadow ThreeDShadow Window WindowFrame WindowText
+			silent x-soft soft medium loud x-loud spell-out mix
+			left-side far-left center-left center-right far-right right-side behind leftwards rightwards
+			below level above higher lower x-slow slow medium fast x-fast faster slower
+			male female child x-low low high x-high code digits continous
+		</keyword-class>
+	</keyword-classes>
+	
+	<language name="web" title="HTML" folding="true" foldcomments="false" foldcompact="false">
+		<comments streamStart="&lt;!-- " streamEnd=" --&gt;"/>
+		<lexer name="hypertext" stylebits="7" />
+		<property name="asp.default.language" value="2" />
+		<property name="fold.html" value="1" />
+		<use-keywords>
+			<keyword key="0" name="Hypertext" class="hypertext"/>
+			<keyword key="1" name="Javascript" class="javascript"/>
+			<keyword key="2" name="VBScript" class="vb"/>
+			<keyword key="3" name="Python" class="python"/>
+			<keyword key="4" name="PHP Keywords" class="php"/>
+			<keyword key="5" name="DTD Keywords" class="htmldtd"/>
+		</use-keywords>
+		<use-styles>
+			<style name="Default" key="32" class="default"/>
+			<style name="Text" key="0" class="default" />
+			<style name="Tags" key="1" class="tag"/>
+			<style name="Unknown Tags" key="2" class="unknowntag"/>
+			<style name="Attributes" key="3" class="attribute"/>
+			<style name="Unknown Attributes" key="4" class="unknownattribute"/>
+			<style name="Numbers" key="5" class="number"/>
+			<style name="Double Quoted Strings" key="6" class="string"/>
+			<style name="Single Quoted Strings" key="7" class="string"/>
+			<style name="Other inside tag" key="8" fore="800080"/>
+			<style name="Comment" key="9" class="comment"/>
+			<style name="Entity" key="10" fore="800080"/>
+			<style name="XML style tag ends /&gt;" key="11" class="tag"/>
+			<style name="XML Identifier start &lt; ?" key="12" class="tag"/>
+			<style name="XML Identifier end ?&gt;" key="13" class="tag"/>
+			<style name="Script" key="14" fore="000080"/>
+			<style name="ASP &lt;% ... %&gt;" key="15" back="ffff00"/>
+			<style name="ASP &lt;% ... %&gt;" key="16" back="ffdf00"/>
+			<style name="CDATA" key="17" back="ffdf00"/>
+			<style name="PHP" key="18" fore="0000ff" back="ffefbf"/>
+			<style name="Unquoted Values" key="19" fore="ff00ff" back="ffefff"/>
+			
+			<!-- SGML Tags -->
+			<group name="SGML" description="SGML Tags">
+				<style name="Tags &lt;!...&gt;" key="21" fore="000080" back="efefff"/>
+				<style name="Command" key="22" fore="000080" back="efefff" bold="true"/>
+				<style name="1st Param" key="23" fore="006600" back="efefff"/>
+				<style name="double string" key="24" fore="006600" back="efefff"/>
+				<style name="single string" key="25" fore="993300" back="efefff"/>
+				<style name="error" key="26" fore="800000" back="ff6666"/>
+				<style name="special (#xxxx type)" key="27" fore="3366ff" back="efefff"/>
+				<style name="entity" key="28" fore="333333" back="efefff"/>
+				<style name="comment" key="29" fore="808000" back="efefff"/>
+				<style name="block" key="31" fore="000066" back="cccce0"/>
+			</group>
+			
+			<!-- Embedded JavaScript -->			
+			<group name="JavaScript" description="Embedded JavaScript" class="embeddedjs">
+				<style name="Start" key="40" fore="7f7f00"/>
+				<style name="Default" key="41" fore="000000" bold="true" eolfilled="true"/>
+				<style name="Comment" key="42" class="comment" eolfilled="true"/>
+				<style name="Line Comment" key="43" class="comment"/>
+				<style name="Doc comment" key="44" class="comment" eolfilled="true"/>
+				<style name="Number" key="45" class="number" />
+				<style name="Word" key="46" fore="000000"/>
+				<style name="Keyword" key="47" class="keyword" bold="true"/>
+				<style name="Double quoted string" key="48" class="string"/>
+				<style name="Single quoted string" key="49" class="string"/>
+				<style name="Symbols " key="50" class="operator"/>
+				<style name="EOL" key="51" back="bfbbb0" eolfilled="true"/>
+				<style name="Regular Expression" key="52" back="ffbbb0"/>
+			</group>
+			
+			<!-- ASP JavaScript -->
+			<group name="ASP JavaScript" description="JavaScript embedded within an ASP file." class="aspjs" >
+				<style name="Start" key="55" fore="7F7F00" />
+				<style name="Default" key="56" eolfilled="true" bold="true"/>
+				<style name="Comment" key="57" fore="007F00" eolfilled="true"/>
+				<style name="Line Comment" key="58" fore="007F00"/>
+				<style name="Doc comment" key="59" fore="7F7F7F" bold="true" eolfilled="true"/>
+				<style name="Number" key="60" fore="007F7F"/>
+				<style name="Word" key="61" />
+				<style name="Keyword" key="62" fore="00007F" bold="true"/>
+				<style name="Double quoted string" key="63" fore="7F007F"/>
+				<style name="Single quoted string" key="64" fore="7F007F"/>
+				<style name="Symbols" key="65" bold="true"/>
+				<style name="EOL" key="66" back="BFBBB0" eolfilled="true"/>
+				<style name="Regular Expression" key="67" back="FFBBB0"/>
+			</group>
+			
+			<!-- Embedded VBS -->
+			<group name="VBScript" description="VBScript code in HTML documents" class="embeddedvbs">
+				<style name="Start" key="70" />
+				<style name="Default" key="71" fore="000000"/>
+				<style name="Comment" key="72" class="comment" fore="008000"/>
+				<style name="Number" key="73" fore="008080"/>
+				<style name="KeyWord" key="74" fore="000080" bold="true"/>
+				<style name="String" key="75" fore="800080"/>
+				<style name="Identifier" key="76" fore="000080"/>
+				<style name="Unterminated string" key="77" back="7F7FFF" fore="000080"/>
+			</group>
+			
+			<!-- ASP VBS -->
+			<group name="ASP VBScript" description="VBScript code embedded within an ASP file." class="aspvbs">
+				<style name="Start" key="80" />
+				<style name="Default" key="81" fore="000000"/>
+				<style name="Comment" key="82" class="comment" fore="008000"/>
+				<style name="Number" key="83" fore="008080"/>
+				<style name="KeyWord" key="84" fore="000080" bold="true"/>
+				<style name="String" key="85" fore="800080"/>
+				<style name="Identifier" key="86" fore="000080"/>
+				<style name="Unterminated string" key="87" back="7F7FBF" fore="000080"/>
+			</group>
+			
+			<!-- Embedded Python -->
+			<group name="Python" description="Python code in HTML documents" class="embeddedpython" >
+				<style name="Start" key="90" fore="808080"/>
+				<style name="Default" key="91" fore="808080"/>
+				<style name="Comment" key="92" class="comment" fore="007F00"/>
+				<style name="Number" key="93" fore="007F7F"/>
+				<style name="String" key="94" fore="7F007F" />
+				<style name="Single quoted string" key="95" fore="7F007F" />
+				<style name="Keyword" key="96" fore="00007F" bold="true"/>
+				<style name="Triple quotes" key="97" fore="7F0000"/>
+				<style name="Triple double quotes" key="98" fore="7F0000"/>
+				<style name="Class name definition" key="99" fore="0000FF" bold="true"/>
+				<style name="Function or method name definition" key="100" fore="007F7F" bold="true"/>
+				<style name="Operators" key="101" bold="true"/>
+				<style name="Identifiers" key="102" />
+			</group>
+			
+			<!-- ASP Python -->
+			<group name="ASP Python" description="Python code embedded within an ASP file." class="asppython" >
+				<style name="ASP Python" key="105" fore="808080"/>
+				<style name="ASP Python" key="106" fore="808080"/>
+				<style name="Comment" key="107" class="comment" fore="007F00" />
+				<style name="Number" key="108" fore="007F7F"/>
+				<style name="String" key="109" fore="7F007F" />
+				<style name="Single quoted string" key="110" fore="7F007F" />
+				<style name="Keyword" key="111" fore="00007F" bold="true"/>
+				<style name="Triple quotes" key="112" fore="7F0000"/>
+				<style name="Triple double quotes" key="113" fore="7F0000"/>
+				<style name="Class name definition" key="114" fore="0000FF" bold="true"/>
+				<style name="Function or method name definition" key="115" fore="007F7F" bold="true"/>
+				<style name="Operators" key="116" bold="true"/>
+				<style name="Identifiers" key="117" />
+			</group>
+			
+			<!-- PHP -->
+			<group name="PHP" description="PHP code" class="php">
+				<style name="Default" key="118" fore="000033" />
+				<style name="Double quoted String" key="119" fore="007F00"/>
+				<style name="Single quoted string" key="120" fore="009F00"/>
+				<style name="Keyword" key="121" fore="7F007F" italic="true"/>
+				<style name="Number" key="122" fore="CC9900"/>
+				<style name="Variable" key="123" fore="00007F" italic="true"/>
+				<style name="Comment" key="124" class="comment" fore="999999" />
+				<style name="Line comment" key="125" class="comment" fore="666666" italic="true" />
+				<style name="String variable" key="126" fore="00007F" italic="true"/>
+				<style name="Operator" key="127" fore="000000"/>
+			</group>
+		</use-styles>
+	</language>
+	<language name="css" title="CSS" folding="false" foldcomments="false" foldcompact="false">
+		<comments streamStart="/*" streamEnd="*/"/>
+		<lexer name="css"/>
+		<use-keywords>
+			<keyword key="0" name="CSS 1" class="css"/>
+			<keyword key="1" name="pseudo Classes" class="css-pseudo" />
+			<keyword key="2" name="CSS 2" class="css2"/>
+		</use-keywords>
+		<use-styles>
+			<style name="Default" key="32" class="default"/>
+			<style name="Text" key="0" class="default"/>
+			<style name="Selector (HTML tag)" key="1" class="keyword"/>
+			<style name="Class selector" key="2"/>
+			<style name="Pseudo class" key="3" fore="800000"/>
+			<style name="Unknown pseudo" key="4" fore="ff0000"/>
+			<style name="Operator" key="5" class="operator"/>
+			<style name="Property" key="6" fore="0000b0"/>
+			<style name="Unknown Property" key="7" fore="fa0000"/>
+			<style name="Value" key="8" class="string"/>
+			<style name="Comment" key="9" class="comment"/>
+			<style name="ID selector (#IdSel)" key="10" class="number"/>
+			<style name="Important" key="11" fore="ff8000" bold="true"/>
+			<style name="At-rule (@)" key="12" class="preprocessor" />
+			<style name="Double-Quoted Strings" key="13" class="string"/>
+			<style name="Single-Quoted Strings" key="14" class="string"/>
+			<style name="CSS 2 Property" key="15" fore="00a0e0"/>
+			<style name="Attribute Selection [att='val']" key="16" fore="800000"/>
+		</use-styles>
+	</language>
+	<language name="php" title="PHP" folding="true" foldcomments="false" foldcompact="false">
+		<comments line="//" streamStart="/*" streamEnd="*/"/>
+		<lexer name="hypertext" stylebits="7" />
+		<property name="fold.html" value="1" />
+		<use-keywords>
+			<keyword key="0" name="Hypertext" class="hypertext"/>
+			<keyword key="1" name="Javascript" class="javascript"/>
+			<keyword key="4" name="PHP Keywords" class="php"/>
+		</use-keywords>
+		<use-styles>
+			<style name="Default" key="32" class="default"/>
+			<style name="Text" key="0" class="default"/>
+		
+			<group name="PHP" description="PHP code" class="php">
+				<style name="Default" key="118" fore="000033" />
+				<style name="Double quoted String" key="119" fore="007F00"/>
+				<style name="Single quoted string" key="120" fore="009F00"/>
+				<style name="Keyword" key="121" fore="7F007F" italic="true"/>
+				<style name="Number" key="122" fore="CC9900"/>
+				<style name="Variable" key="123" fore="00007F" italic="true"/>
+				<style name="Comment" key="124" class="comment" fore="999999" />
+				<style name="Line comment" key="125" class="comment" fore="666666" italic="true" />
+				<style name="String variable" key="126" fore="00007F" italic="true"/>
+				<style name="Operator" key="127" fore="000000"/>
+			</group>
+			
+			<group name="HTML" description="HTML">
+				<style name="Tags" key="1" class="tag"/>
+				<style name="Unknown Tags" key="2" class="unknowntag"/>
+				<style name="Attributes" key="3" class="attribute"/>
+				<style name="Unknown Attributes" key="4" class="unknownattribute"/>
+				<style name="Numbers" key="5" class="number"/>
+				<style name="Double Quoted Strings" key="6" class="string"/>
+				<style name="Single Quoted Strings" key="7" class="string"/>
+				<style name="Other inside tag" key="8" fore="800080"/>
+				<style name="Comment" key="9" class="comment"/>
+				<style name="Entity" key="10" fore="800080"/>
+				<style name="XML style tag ends /&gt;" key="11" fore="000080"/>
+				<style name="XML Identifier start &lt; ?" key="12" fore="0000ff"/>
+				<style name="XML Identifier end ?&gt;" key="13" fore="0000ff"/>
+				<style name="Script" key="14" fore="000080"/>
+				<style name="CDATA" key="17" back="ffdf00"/>
+				<style name="PHP" key="18" fore="0000ff" back="ffefbf"/>
+				<style name="Unquoted Values" key="19" fore="ff00ff" back="ffefff"/>
+			</group>
+		</use-styles>
+	</language>
+</Scheme>

@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+<title>i386-Syntax - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002dDirectives.html#i386_002dDirectives" title="i386-Directives">
+<link rel="next" href="i386_002dMnemonics.html#i386_002dMnemonics" title="i386-Mnemonics">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dSyntax"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002dMnemonics.html#i386_002dMnemonics">i386-Mnemonics</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002dDirectives.html#i386_002dDirectives">i386-Directives</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.3 AT&amp;T Syntax versus Intel Syntax</h4>
+
+<p><a name="index-i386-intel_005fsyntax-pseudo-op-843"></a><a name="index-intel_005fsyntax-pseudo-op_002c-i386-844"></a><a name="index-i386-att_005fsyntax-pseudo-op-845"></a><a name="index-att_005fsyntax-pseudo-op_002c-i386-846"></a><a name="index-i386-syntax-compatibility-847"></a><a name="index-syntax-compatibility_002c-i386-848"></a><a name="index-x86_002d64-intel_005fsyntax-pseudo-op-849"></a><a name="index-intel_005fsyntax-pseudo-op_002c-x86_002d64-850"></a><a name="index-x86_002d64-att_005fsyntax-pseudo-op-851"></a><a name="index-att_005fsyntax-pseudo-op_002c-x86_002d64-852"></a><a name="index-x86_002d64-syntax-compatibility-853"></a><a name="index-syntax-compatibility_002c-x86_002d64-854"></a>
+<code>as</code> now supports assembly using Intel assembler syntax. 
+<code>.intel_syntax</code> selects Intel mode, and <code>.att_syntax</code> switches
+back to the usual AT&amp;T mode for compatibility with the output of
+<code>gcc</code>.  Either of these directives may have an optional
+argument, <code>prefix</code>, or <code>noprefix</code> specifying whether registers
+require a <span class="samp">%</span> prefix.  AT&amp;T System V/386 assembler syntax is quite
+different from Intel syntax.  We mention these differences because
+almost all 80386 documents use Intel syntax.  Notable differences
+between the two syntaxes are:
+
+   <p><a name="index-immediate-operands_002c-i386-855"></a><a name="index-i386-immediate-operands-856"></a><a name="index-register-operands_002c-i386-857"></a><a name="index-i386-register-operands-858"></a><a name="index-jump_002fcall-operands_002c-i386-859"></a><a name="index-i386-jump_002fcall-operands-860"></a><a name="index-operand-delimiters_002c-i386-861"></a>
+<a name="index-immediate-operands_002c-x86_002d64-862"></a><a name="index-x86_002d64-immediate-operands-863"></a><a name="index-register-operands_002c-x86_002d64-864"></a><a name="index-x86_002d64-register-operands-865"></a><a name="index-jump_002fcall-operands_002c-x86_002d64-866"></a><a name="index-x86_002d64-jump_002fcall-operands-867"></a><a name="index-operand-delimiters_002c-x86_002d64-868"></a>
+     <ul>
+<li>AT&amp;T immediate operands are preceded by <span class="samp">$</span>; Intel immediate
+operands are undelimited (Intel <span class="samp">push 4</span> is AT&amp;T <span class="samp">pushl $4</span>). 
+AT&amp;T register operands are preceded by <span class="samp">%</span>; Intel register operands
+are undelimited.  AT&amp;T absolute (as opposed to PC relative) jump/call
+operands are prefixed by <span class="samp">*</span>; they are undelimited in Intel syntax.
+
+     <p><a name="index-i386-source_002c-destination-operands-869"></a><a name="index-source_002c-destination-operands_003b-i386-870"></a><a name="index-x86_002d64-source_002c-destination-operands-871"></a><a name="index-source_002c-destination-operands_003b-x86_002d64-872"></a><li>AT&amp;T and Intel syntax use the opposite order for source and destination
+operands.  Intel <span class="samp">add eax, 4</span> is <span class="samp">addl $4, %eax</span>.  The
+<span class="samp">source, dest</span> convention is maintained for compatibility with
+previous Unix assemblers.  Note that <span class="samp">bound</span>, <span class="samp">invlpga</span>, and
+instructions with 2 immediate operands, such as the <span class="samp">enter</span>
+instruction, do <em>not</em> have reversed order.  <a href="i386_002dBugs.html#i386_002dBugs">i386-Bugs</a>.
+
+     <p><a name="index-mnemonic-suffixes_002c-i386-873"></a><a name="index-sizes-operands_002c-i386-874"></a><a name="index-i386-size-suffixes-875"></a><a name="index-mnemonic-suffixes_002c-x86_002d64-876"></a><a name="index-sizes-operands_002c-x86_002d64-877"></a><a name="index-x86_002d64-size-suffixes-878"></a><li>In AT&amp;T syntax the size of memory operands is determined from the last
+character of the instruction mnemonic.  Mnemonic suffixes of <span class="samp">b</span>,
+<span class="samp">w</span>, <span class="samp">l</span> and <span class="samp">q</span> specify byte (8-bit), word (16-bit), long
+(32-bit) and quadruple word (64-bit) memory references.  Intel syntax accomplishes
+this by prefixing memory operands (<em>not</em> the instruction mnemonics) with
+<span class="samp">byte ptr</span>, <span class="samp">word ptr</span>, <span class="samp">dword ptr</span> and <span class="samp">qword ptr</span>.  Thus,
+Intel <span class="samp">mov al, byte ptr </span><var>foo</var> is <span class="samp">movb </span><var>foo</var><span class="samp">, %al</span> in AT&amp;T
+syntax.
+
+     <p><a name="index-return-instructions_002c-i386-879"></a><a name="index-i386-jump_002c-call_002c-return-880"></a><a name="index-return-instructions_002c-x86_002d64-881"></a><a name="index-x86_002d64-jump_002c-call_002c-return-882"></a><li>Immediate form long jumps and calls are
+<span class="samp">lcall/ljmp $</span><var>section</var><span class="samp">, $</span><var>offset</var> in AT&amp;T syntax; the
+Intel syntax is
+<span class="samp">call/jmp far </span><var>section</var><span class="samp">:</span><var>offset</var>.  Also, the far return
+instruction
+is <span class="samp">lret $</span><var>stack-adjust</var> in AT&amp;T syntax; Intel syntax is
+<span class="samp">ret far </span><var>stack-adjust</var>.
+
+     <p><a name="index-sections_002c-i386-883"></a><a name="index-i386-sections-884"></a><a name="index-sections_002c-x86_002d64-885"></a><a name="index-x86_002d64-sections-886"></a><li>The AT&amp;T assembler does not provide support for multiple section
+programs.  Unix style systems expect all programs to be single sections. 
+</ul>
+
+   </body></html>
+

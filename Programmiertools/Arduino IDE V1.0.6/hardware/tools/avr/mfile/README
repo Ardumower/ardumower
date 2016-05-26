@@ -1,0 +1,115 @@
+# $Id: README,v 2.1 2007/04/12 18:10:13 arcanum Exp $
+
+Mfile -  a simple Makefile generator for AVR-GCC
+================================================
+
+[See below for installation instructions]
+
+General
+-------
+
+The main purpose of this small application is to provide people an
+easy way to setup their project's Makefiles for »relatively standard«
+projects, so one could start using AVR-GCC without first studying the
+AVR's datasheet, plus the avr-libc documentation (really
+recommended!), /plus/ the »GNU make« user manual.
+
+It cannot really release the potential programmer from eventually
+studying the »GNU make« manual, but it can help to delay this part a
+few months.
+
+This generator works by using a Makefile template (the one that
+currently ships with WinAVR), load it into an editor buffer so the
+user can view the file and the changes, and then use a menu-driven
+approach to customize that buffer.  Eventually, at the user's
+discretion, this editor buffer can be saved into a Makefile.
+(Optionally, the user can also edit the buffer directly, so it acts as
+a simple text editor.)
+
+While the Programmer's Notepad 2 (PN2) editor that ships with WinAVR
+intends to eventually implement this functionality some day, there are
+two reasons for this little project:
+
+. Act as a stop-gap measure so users will get something they can use
+  right now, without waiting any longer.
+
+. Since this tool is written in Tcl/Tk, it is also portable to Unix
+  systems, so Unix users (who'd never benefit from PN2) might use it.
+
+I do explicitly /not/ intend to make this tool the all-singing
+all-dancing scriptable Makefile generator that can emit any Makefile
+for any processor and compiler on earth.  I really do not want to
+spend that many more hours into it, it was intented to be a quick and
+(hopefully not so) dirty tool that gets finished within a couple of
+evenings, and won't cost me another dozen of hours per months for
+supporting it, adding new features etc.  If you feel this is worth
+porting somewhere else (like for the MSP430-GCC that is probably
+fairly close to AVR-GCC in terms of typical use), please pick it up,
+extend it, and maintain it separately.  As always, I appreciate
+feedback, but reserve the right to ignore anything that tries to
+extend this tool above the outlined original purpose.
+
+Note that the Makefile template as shipped requires GNU make for
+various things (automagic dependency generation, some inference rules
+are written in gmake syntax as well).  However, as Mfile only relies
+on a few macro names in the template, it should be relatively easy to
+modify the template for other »make« dialects.  The template (or input
+file upon »File -> Open«) will be parsed when reading it, and only
+those features actually present will be displayed in the »Makefile«
+menu.  So if e. g. people don't want to include AVRdude features, they
+can delete all related lines from the template.  Also if someone (like
+Unix users, in particular those not using GNU make) want to modify the
+way the dependencies are generated (e. g. by using the traditional
+»make depend« approach), this should be completely unrelated.
+
+
+Prerequisites
+-------------
+
+Requires the Tcl and Tk toolkits in recent versions (no exact version
+known, probably any 8.x version is OK).
+
+As an alternative to the standard Tk wish interpreter, the tix
+toolkit's tixwish interpreter can be used.  Under Unix systems, the
+look & feel is then closer to what Tk wish looks like under Windows.
+
+
+
+Installation on Unix
+--------------------
+
+Extract the archive into an arbitrary subdirectory, like
+
+/usr/local/share/mfile
+
+If a different directory is chosen, edit the setting of »prefix« on
+top of mfile.tcl to match the installation directory, or alternatively
+use the environment variable MFILE_HOME to override the default
+setting.
+
+If you prefer, create a symbolic link for convenience (so the
+application can be found along your default $PATH setting), like
+
+ln -s /usr/local/share/mfile/mfile.tcl /usr/local/bin/mfile
+
+Remember to edit the file makefile_template to suite your needs (e. g.
+default settings, adaptation to non-GNU make utilities).
+
+
+Upgrading an Mfile installation on WinAVR
+-----------------------------------------
+
+Starting with WinAVR 20040404, the WinAVR collection is shipping Mfile
+pre-installed.  (After all, the WinAVR users have once been the
+primary reason to develop Mfile at all.)
+
+In order to upgrade the Mfile files supplied with WinAVR, extract the
+archive into some directory, and copy all the files into
+
+<winavr directory>\mfile
+
+That ought to be all that is to be done.
+
+----------------------------------------------------------------------
+Dresden, F. R. Germany, $Date: 2007/04/12 18:10:13 $
+Joerg Wunsch <j.gnu@uriah.heep.sax.de>

@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+<title>nlmconv - GNU Binary Utilities</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Binary Utilities">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="addr2line.html#addr2line" title="addr2line">
+<link rel="next" href="windres.html#windres" title="windres">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="nlmconv"></a>Next:&nbsp;<a rel="next" accesskey="n" href="windres.html#windres">windres</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="addr2line.html#addr2line">addr2line</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">11 nlmconv</h2>
+
+<p><span class="command">nlmconv</span> converts a relocatable object file into a NetWare
+Loadable Module.
+
+   <blockquote>
+<em>Warning:</em> <span class="command">nlmconv</span> is not always built as part of the binary
+utilities, since it is only useful for NLM targets. 
+</blockquote>
+
+<!-- man title nlmconv converts object code into an NLM. -->
+<pre class="smallexample">     <!-- man begin SYNOPSIS nlmconv -->
+     nlmconv [<span class="option">-I</span> <var>bfdname</var>|<span class="option">--input-target=</span><var>bfdname</var>]
+             [<span class="option">-O</span> <var>bfdname</var>|<span class="option">--output-target=</span><var>bfdname</var>]
+             [<span class="option">-T</span> <var>headerfile</var>|<span class="option">--header-file=</span><var>headerfile</var>]
+             [<span class="option">-d</span>|<span class="option">--debug</span>] [<span class="option">-l</span> <var>linker</var>|<span class="option">--linker=</span><var>linker</var>]
+             [<span class="option">-h</span>|<span class="option">--help</span>] [<span class="option">-V</span>|<span class="option">--version</span>]
+             <var>infile</var> <var>outfile</var>
+     <!-- man end -->
+</pre>
+   <!-- man begin DESCRIPTION nlmconv -->
+<p><span class="command">nlmconv</span> converts the relocatable <span class="samp">i386</span> object file
+<var>infile</var> into the NetWare Loadable Module <var>outfile</var>, optionally
+reading <var>headerfile</var> for NLM header information.  For instructions
+on writing the NLM command file language used in header files, see the
+<span class="samp">linkers</span> section, <span class="samp">NLMLINK</span> in particular, of the <cite>NLM
+Development and Tools Overview</cite>, which is part of the NLM Software
+Developer's Kit (&ldquo;NLM SDK&rdquo;), available from Novell, Inc. 
+<span class="command">nlmconv</span> uses the <span class="sc">gnu</span> Binary File Descriptor library to read
+<var>infile</var>;
+see <a href="../ld/BFD.html#BFD">BFD (Using LD)</a>, for more information.
+
+   <p><span class="command">nlmconv</span> can perform a link step.  In other words, you can list
+more than one object file for input if you list them in the definitions
+file (rather than simply specifying one input file on the command line). 
+In this case, <span class="command">nlmconv</span> calls the linker for you.
+
+<!-- man end -->
+<!-- man begin OPTIONS nlmconv -->
+<dl>
+<dt><span class="env">-I </span><var>bfdname</var><dt><span class="env">--input-target=</span><var>bfdname</var><dd>Object format of the input file.  <span class="command">nlmconv</span> can usually determine
+the format of a given file (so no default is necessary). 
+See <a href="Target-Selection.html#Target-Selection">Target Selection</a>, for more information.
+
+     <br><dt><span class="env">-O </span><var>bfdname</var><dt><span class="env">--output-target=</span><var>bfdname</var><dd>Object format of the output file.  <span class="command">nlmconv</span> infers the output
+format based on the input format, e.g. for a <span class="samp">i386</span> input file the
+output format is <span class="samp">nlm32-i386</span>. 
+See <a href="Target-Selection.html#Target-Selection">Target Selection</a>, for more information.
+
+     <br><dt><span class="env">-T </span><var>headerfile</var><dt><span class="env">--header-file=</span><var>headerfile</var><dd>Reads <var>headerfile</var> for NLM header information.  For instructions on
+writing the NLM command file language used in header files, see see the
+<span class="samp">linkers</span> section, of the <cite>NLM Development and Tools
+Overview</cite>, which is part of the NLM Software Developer's Kit, available
+from Novell, Inc.
+
+     <br><dt><span class="env">-d</span><dt><span class="env">--debug</span><dd>Displays (on standard error) the linker command line used by <span class="command">nlmconv</span>.
+
+     <br><dt><span class="env">-l </span><var>linker</var><dt><span class="env">--linker=</span><var>linker</var><dd>Use <var>linker</var> for any linking.  <var>linker</var> can be an absolute or a
+relative pathname.
+
+     <br><dt><span class="env">-h</span><dt><span class="env">--help</span><dd>Prints a usage summary.
+
+     <br><dt><span class="env">-V</span><dt><span class="env">--version</span><dd>Prints the version number for <span class="command">nlmconv</span>. 
+</dl>
+
+<!-- man end -->
+</body></html>
+

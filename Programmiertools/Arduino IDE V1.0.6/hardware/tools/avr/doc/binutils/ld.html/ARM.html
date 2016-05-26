@@ -1,0 +1,192 @@
+<html lang="en">
+<head>
+<title>ARM - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Dependent.html#Machine-Dependent" title="Machine Dependent">
+<link rel="prev" href="i960.html#i960" title="i960">
+<link rel="next" href="HPPA-ELF32.html#HPPA-ELF32" title="HPPA ELF32">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU linker LD
+(GNU Binutils)
+version 2.19.
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000,
+2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="ARM"></a>Next:&nbsp;<a rel="next" accesskey="n" href="HPPA-ELF32.html#HPPA-ELF32">HPPA ELF32</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i960.html#i960">i960</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Dependent.html#Machine-Dependent">Machine Dependent</a>
+<hr><br>
+</div>
+
+<h3 class="section">4.4 <span class="command">ld</span> and the ARM family</h3>
+
+<p><a name="index-ARM-interworking-support-532"></a><a name="index-_002d_002dsupport_002dold_002dcode-533"></a>For the ARM, <span class="command">ld</span> will generate code stubs to allow functions calls
+between ARM and Thumb code.  These stubs only work with code that has
+been compiled and assembled with the <span class="samp">-mthumb-interwork</span> command
+line option.  If it is necessary to link with old ARM object files or
+libraries, which have not been compiled with the -mthumb-interwork
+option then the <span class="samp">--support-old-code</span> command line switch should be
+given to the linker.  This will make it generate larger stub functions
+which will work with non-interworking aware ARM code.  Note, however,
+the linker does not support generating stubs for function calls to
+non-interworking aware Thumb code.
+
+   <p><a name="index-thumb-entry-point-534"></a><a name="index-entry-point_002c-thumb-535"></a><a name="index-_002d_002dthumb_002dentry_003d_0040var_007bentry_007d-536"></a>The <span class="samp">--thumb-entry</span> switch is a duplicate of the generic
+<span class="samp">--entry</span> switch, in that it sets the program's starting address. 
+But it also sets the bottom bit of the address, so that it can be
+branched to using a BX instruction, and the program will start
+executing in Thumb mode straight away.
+
+   <p><a name="index-BE8-537"></a><a name="index-_002d_002dbe8-538"></a>The <span class="samp">--be8</span> switch instructs <span class="command">ld</span> to generate BE8 format
+executables.  This option is only valid when linking big-endian objects. 
+The resulting image will contain big-endian data and little-endian code.
+
+   <p><a name="index-TARGET1-539"></a><a name="index-_002d_002dtarget1_002drel-540"></a><a name="index-_002d_002dtarget1_002dabs-541"></a>The <span class="samp">R_ARM_TARGET1</span> relocation is typically used for entries in the
+<span class="samp">.init_array</span> section.  It is interpreted as either <span class="samp">R_ARM_REL32</span>
+or <span class="samp">R_ARM_ABS32</span>, depending on the target.  The <span class="samp">--target1-rel</span>
+and <span class="samp">--target1-abs</span> switches override the default.
+
+   <p><a name="index-TARGET2-542"></a><a name="index-_002d_002dtarget2_003d_0040var_007btype_007d-543"></a>The <span class="samp">--target2=type</span> switch overrides the default definition of the
+<span class="samp">R_ARM_TARGET2</span> relocation.  Valid values for <span class="samp">type</span>, their
+meanings, and target defaults are as follows:
+     <dl>
+<dt><span class="samp">rel</span><dd><span class="samp">R_ARM_REL32</span> (arm*-*-elf, arm*-*-eabi)
+<br><dt><span class="samp">abs</span><dd><span class="samp">R_ARM_ABS32</span> (arm*-*-symbianelf)
+<br><dt><span class="samp">got-rel</span><dd><span class="samp">R_ARM_GOT_PREL</span> (arm*-*-linux, arm*-*-*bsd)
+</dl>
+
+   <p><a name="index-FIX_005fV4BX-544"></a><a name="index-_002d_002dfix_002dv4bx-545"></a>The <span class="samp">R_ARM_V4BX</span> relocation (defined by the ARM AAELF
+specification) enables objects compiled for the ARMv4 architecture to be
+interworking-safe when linked with other objects compiled for ARMv4t, but
+also allows pure ARMv4 binaries to be built from the same ARMv4 objects.
+
+   <p>In the latter case, the switch <span class="option">--fix-v4bx</span> must be passed to the
+linker, which causes v4t <code>BX rM</code> instructions to be rewritten as
+<code>MOV PC,rM</code>, since v4 processors do not have a <code>BX</code> instruction.
+
+   <p>In the former case, the switch should not be used, and <span class="samp">R_ARM_V4BX</span>
+relocations are ignored.
+
+   <p><a name="index-FIX_005fV4BX_005fINTERWORKING-546"></a><a name="index-_002d_002dfix_002dv4bx_002dinterworking-547"></a>Replace <code>BX rM</code> instructions identified by <span class="samp">R_ARM_V4BX</span>
+relocations with a branch to the following veneer:
+
+<pre class="smallexample">     TST rM, #1
+     MOVEQ PC, rM
+     BX Rn
+</pre>
+   <p>This allows generation of libraries/applications that work on ARMv4 cores
+and are still interworking safe.  Note that the above veneer clobbers the
+condition flags, so may cause incorrect progrm behavior in rare cases.
+
+   <p><a name="index-USE_005fBLX-548"></a><a name="index-_002d_002duse_002dblx-549"></a>The <span class="samp">--use-blx</span> switch enables the linker to use ARM/Thumb
+BLX instructions (available on ARMv5t and above) in various
+situations. Currently it is used to perform calls via the PLT from Thumb
+code using BLX rather than using BX and a mode-switching stub before
+each PLT entry. This should lead to such calls executing slightly faster.
+
+   <p>This option is enabled implicitly for SymbianOS, so there is no need to
+specify it if you are using that target.
+
+   <p><a name="index-VFP11_005fDENORM_005fFIX-550"></a><a name="index-_002d_002dvfp11_002ddenorm_002dfix-551"></a>The <span class="samp">--vfp11-denorm-fix</span> switch enables a link-time workaround for a
+bug in certain VFP11 coprocessor hardware, which sometimes allows
+instructions with denorm operands (which must be handled by support code)
+to have those operands overwritten by subsequent instructions before
+the support code can read the intended values.
+
+   <p>The bug may be avoided in scalar mode if you allow at least one
+intervening instruction between a VFP11 instruction which uses a register
+and another instruction which writes to the same register, or at least two
+intervening instructions if vector mode is in use. The bug only affects
+full-compliance floating-point mode: you do not need this workaround if
+you are using "runfast" mode. Please contact ARM for further details.
+
+   <p>If you know you are using buggy VFP11 hardware, you can
+enable this workaround by specifying the linker option
+<span class="samp">--vfp-denorm-fix=scalar</span> if you are using the VFP11 scalar
+mode only, or <span class="samp">--vfp-denorm-fix=vector</span> if you are using
+vector mode (the latter also works for scalar code). The default is
+<span class="samp">--vfp-denorm-fix=none</span>.
+
+   <p>If the workaround is enabled, instructions are scanned for
+potentially-troublesome sequences, and a veneer is created for each
+such sequence which may trigger the erratum. The veneer consists of the
+first instruction of the sequence and a branch back to the subsequent
+instruction. The original instruction is then replaced with a branch to
+the veneer. The extra cycles required to call and return from the veneer
+are sufficient to avoid the erratum in both the scalar and vector cases.
+
+   <p><a name="index-NO_005fENUM_005fSIZE_005fWARNING-552"></a><a name="index-_002d_002dno_002denum_002dsize_002dwarning-553"></a>The <span class="option">--no-enum-size-warning</span> switch prevents the linker from
+warning when linking object files that specify incompatible EABI
+enumeration size attributes.  For example, with this switch enabled,
+linking of an object file using 32-bit enumeration values with another
+using enumeration values fitted into the smallest possible space will
+not be diagnosed.
+
+   <p><a name="index-NO_005fWCHAR_005fSIZE_005fWARNING-554"></a><a name="index-_002d_002dno_002dwchar_002dsize_002dwarning-555"></a>The <span class="option">--no-wchar-size-warning</span> switch prevents the linker from
+warning when linking object files that specify incompatible EABI
+<code>wchar_t</code> size attributes.  For example, with this switch enabled,
+linking of an object file using 32-bit <code>wchar_t</code> values with another
+using 16-bit <code>wchar_t</code> values will not be diagnosed.
+
+   <p><a name="index-PIC_005fVENEER-556"></a><a name="index-_002d_002dpic_002dveneer-557"></a>The <span class="samp">--pic-veneer</span> switch makes the linker use PIC sequences for
+ARM/Thumb interworking veneers, even if the rest of the binary
+is not PIC.  This avoids problems on uClinux targets where
+<span class="samp">--emit-relocs</span> is used to generate relocatable binaries.
+
+   <p><a name="index-STUB_005fGROUP_005fSIZE-558"></a><a name="index-_002d_002dstub_002dgroup_002dsize_003d_0040var_007bN_007d-559"></a>The linker will automatically generate and insert small sequences of
+code into a linked ARM ELF executable whenever an attempt is made to
+perform a function call to a symbol that is too far away.  The
+placement of these sequences of instructions - called stubs - is
+controlled by the command line option <span class="option">--stub-group-size=N</span>. 
+The placement is important because a poor choice can create a need for
+duplicate stubs, increasing the code sizw.  The linker will try to
+group stubs together in order to reduce interruptions to the flow of
+code, but it needs guidance as to how big these groups should be and
+where they should be placed.
+
+   <p>The value of <span class="samp">N</span>, the parameter to the
+<span class="option">--stub-group-size=</span> option controls where the stub groups are
+placed.  If it is negative then all stubs are placed before the first
+branch that needs them.  If it is positive then the stubs can be
+placed either before or after the branches that need them.  If the
+value of <span class="samp">N</span> is 1 (either +1 or -1) then the linker will choose
+exactly where to place groups of stubs, using its built in heuristics. 
+A value of <span class="samp">N</span> greater than 1 (or smaller than -1) tells the
+linker that a single group of stubs can service at most <span class="samp">N</span> bytes
+from the input sections.
+
+   <p>The default, if <span class="option">--stub-group-size=</span> is not specified, is
+<span class="samp">N = +1</span>.
+
+   <p>Farcalls stubs insertion is fully supported for the ARM-EABI target
+only, because it relies on object files properties not present
+otherwise.
+
+   </body></html>
+

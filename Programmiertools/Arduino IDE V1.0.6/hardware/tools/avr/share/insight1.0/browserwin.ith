@@ -1,0 +1,77 @@
+# Browser window class definition for Insight.
+# Copyright (C) 1998, 1999, 2003 Red Hat, Inc.
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+itcl::class BrowserWin {
+ inherit EmbeddedWin
+
+  public {
+    method constructor {args}
+    method destructor {}
+    method mode {w {mode ""} {go 1}}
+    method search {}
+    method test_get {var}
+    method do_all_bp {onp}
+
+  }
+
+  private {
+    method _build_win {}
+    method _file_hide_h {}
+    method _fill_file_box {}
+    method _fill_funcs_combo {name}
+    method _fill_source {f {funcp 1} {filename ""}}
+    method _filter_trace_proc {v1 v2 mode}
+    method _filter_trace_after {}
+    method _goto_func {w {val ""}}
+    method _process_file_selection {y}
+    method _process_func_selection {y}
+    method _search_src {direction}
+    method _select {highlight}
+    method _set_filter_mode {w mode}
+    method _toggle_bp {y}
+    method _build_filter_frame {parent}
+    method _build_file_frame {parent}
+    method _build_function_frame {parent}
+    method _build_view_frame {parent}
+    method _switch_layout
+
+    variable cur_filter_mode
+    variable Current;
+    variable labelUpdateCode ""
+    variable index_to_file
+    variable _mangled_func
+    variable filter_trace_after ""
+    variable _layout
+
+    common componentToRow
+    array set componentToRow {
+      filter      0
+      browser     1
+      view        2
+      view_hidden 3
+    }
+    
+    common filter_modes [list "starts with" \
+			   "contains" \
+			   "ends with" \
+			   "matches regexp"]
+    common filter_regexp
+    array set filter_regexp {
+      "starts with" ^%s
+      "contains" %s
+      "ends with" %s$
+      "matches regexp" %s
+    }
+  }
+}
+

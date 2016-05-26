@@ -1,0 +1,135 @@
+# IPC preferences dialog for Insight.
+# Copyright (C) 2004 Red Hat
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+
+# ------------------------------------------------------------------
+#  CONSTRUCTOR - create new IPC preferences window
+# ------------------------------------------------------------------
+itcl::body IPCPref::constructor {args} {
+  window_name "Insight IPC Preferences"
+  _init_var
+  _build_win
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  init_var - initialize preference variables
+# ------------------------------------------------------------------
+itcl::body IPCPref::_init_var {} {
+  set vlist [list gdb/ipc/enabled gdb/ipc/port gdb/ipc/step_button gdb/ipc/stop_button \
+	       gdb/ipc/cont_button gdb/ipc/exit gdb/ipc/run_button]
+  
+  foreach var $vlist {
+    set _saved($var) [pref get $var]
+    set _new($var) $_saved($var)
+  }
+}
+
+
+# ------------------------------------------------------------------
+#  METHOD:  build_win - build the dialog
+# ------------------------------------------------------------------
+itcl::body IPCPref::_build_win {} {
+  frame $itk_interior.f
+  frame $itk_interior.f.a
+  frame $itk_interior.f.b
+  set f $itk_interior.f.a
+
+  # Description frame
+  set d [labelframe $f.desc -text "Description"]
+  label $d.txt -justify left -wraplength 6i -background $::Colors(textbg) \
+    -text "Some multiprocessor systems use multiple instances of Insight \
+for debugging different CPUs.  In these cases it may be desirable to have \
+all the instances stop, start, or continue at the same time.  The IPC \
+feature can do that and more.\n\nThe IPC uses local TCP connections to the\
+port number specified below."
+
+  pack $d.txt -side top
+
+  checkbutton $f.enabled -text "Enable IPC" -variable [scope _new(gdb/ipc/enabled)]
+  frame $f.port
+  spinbox $f.port.box -from 0 -to 65535 -wrap 0\
+    -width 6 -textvariable [scope _new(gdb/ipc/port)] -validate key \
+    -vcmd {string is integer %P}
+  label $f.port.label -text "TCP Port Number"
+  pack $f.desc -expand yes -fill both
+  pack $f.enabled  -anchor w -pady 10
+  pack $f.port.box $f.port.label -side left -pady 10
+  pack $f.port -anchor w -pady 10
+
+  set w [labelframe $f.buttons -text "Enable IPC on these buttons"]
+  checkbutton $w.0 -text "Run" -variable [scope _new(gdb/ipc/run_button)]
+  checkbutton $w.1 -text "Stop" -variable [scope _new(gdb/ipc/stop_button)]
+  checkbutton $w.2 -text "Continue" -variable [scope _new(gdb/ipc/cont_button)]
+  checkbutton $w.3 -text "Step" -variable [scope _new(gdb/ipc/step_button)]
+  checkbutton $w.4 -text "Exit" -variable [scope _new(gdb/ipc/exit)]
+  grid $w.0 $w.1 -padx 10 -pady 10 -sticky w
+  grid $w.2 $w.3 -padx 10 -pady 10 -sticky w
+  grid $w.4  -padx 10 -pady 10 -sticky w
+  pack $w -fill both -expand yes
+  pack $f.buttons -fill both -expand yes
+
+  button $itk_interior.f.b.ok -text OK -width 7 -underline 0 -command [code $this _save]
+  button $itk_interior.f.b.quit -text Cancel -width 7 -underline 0 -command [code $this _cancel]
+  standard_button_box $itk_interior.f.b
+  pack $itk_interior.f.a $itk_interior.f.b $itk_interior.f -expand yes -fill both -padx 5 -pady 5
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  apply - apply changes
+# ------------------------------------------------------------------
+itcl::body IPCPref::_apply {} {
+  set enable_changed 0
+  if {[pref get gdb/ipc/enabled] != $_new(gdb/ipc/enabled)} {
+    set enable_changed 1
+  } 
+  if {$_new(gdb/ipc/enabled) && [pref get gdb/ipc/port] != $_new(gdb/ipc/port)} {
+    set enable_changed 1
+  }
+
+  foreach var [array names _new] {
+    if {$_new($var) != [pref get $var]} {
+      pref set $var $_new($var)
+    }
+  }
+
+  if {$enable_changed} {
+    if {$_new(gdb/ipc/enabled)} {
+      # must start up ipc
+      catch {delete object $::insight_ipc}
+      set ::insight_ipc [Iipc \#auto]
+    } else {
+      delete object $::insight_ipc
+    }
+  }
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  _cancel
+# ------------------------------------------------------------------
+itcl::body IPCPref::_cancel {} {
+  foreach elem [array names _saved] {
+    set cur_val [pref get $elem]
+    if {[string compare $cur_val $_saved($elem)] != 0} {
+      pref set $elem $_saved($elem)
+    }
+  }
+  unpost
+}
+
+# ------------------------------------------------------------------
+#  METHOD:  save - apply changes and quit
+# ------------------------------------------------------------------
+itcl::body IPCPref::_save {} {
+  _apply
+  unpost
+}

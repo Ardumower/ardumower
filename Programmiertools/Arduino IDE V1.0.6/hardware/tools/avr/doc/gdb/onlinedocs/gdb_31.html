@@ -1,0 +1,524 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on March, 27  2008 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Debugging with GDB: Installing GDB</TITLE>
+
+<META NAME="description" CONTENT="Debugging with GDB: Installing GDB">
+<META NAME="keywords" CONTENT="Debugging with GDB: Installing GDB">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC685"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_30.html#SEC684"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC686"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> B. Installing GDB </H1>
+<!--docid::SEC685::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_31.html#SEC686">B.1 Requirements for Building GDB</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Requirements for building GDB</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_31.html#SEC689">B.2 Invoking the GDB <TT>`configure'</TT> Script</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Invoking the GDB <TT>`configure'</TT> script</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_31.html#SEC690">B.3 Compiling GDB in Another Directory</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Compiling GDB in another directory</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_31.html#SEC691">B.4 Specifying Names for Hosts and Targets</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Specifying names for hosts and targets</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="gdb_31.html#SEC692">B.5 <TT>`configure'</TT> Options</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Summary of options for configure</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Requirements"></A>
+<HR SIZE="6">
+<A NAME="SEC686"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC689"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.1 Requirements for Building GDB </H2>
+<!--docid::SEC686::-->
+<P>
+
+Building GDB requires various tools and packages to be available.
+Other packages will be used only if they are found.
+</P><P>
+
+<A NAME="SEC687"></A>
+<H2> Tools/Packages Necessary for Building GDB </H2>
+<!--docid::SEC687::-->
+<DL COMPACT>
+<DT>ISO C90 compiler
+<DD>GDB is written in ISO C90.  It should be buildable with any
+working C90 compiler, e.g. GCC.
+<P>
+
+</DL>
+<P>
+
+<A NAME="SEC688"></A>
+<H2> Tools/Packages Optional for Building GDB </H2>
+<!--docid::SEC688::-->
+<DL COMPACT>
+<DT>Expat
+<DD><A NAME="Expat"></A>
+GDB can use the Expat XML parsing library.  This library may be
+included with your operating system distribution; if it is not, you
+can get the latest version from <A HREF="http://expat.sourceforge.net">http://expat.sourceforge.net</A>.
+The <TT>`configure'</TT> script will search for this library in several
+standard locations; if it is installed in an unusual path, you can
+use the <SAMP>`--with-libexpat-prefix'</SAMP> option to specify its location.
+<P>
+
+Expat is used for:
+</P><P>
+
+<UL>
+<LI>
+Remote protocol memory maps (see section <A HREF="gdb_33.html#SEC737">D.12 Memory Map Format</A>)
+<LI>
+Target descriptions (see section <A HREF="gdb_35.html#SEC745">F. Target Descriptions</A>)
+<LI>
+Remote shared library lists (see section <A HREF="gdb_33.html#SEC736">D.11 Library List Format</A>)
+<LI>
+MS-Windows shared libraries (see  <A HREF="gdb_16.html#Shared Libraries">Shared Libraries</A>)
+</UL>
+<P>
+
+</DL>
+<P>
+
+<A NAME="Running Configure"></A>
+<HR SIZE="6">
+<A NAME="SEC689"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC686"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC690"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC690"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.2 Invoking the GDB <TT>`configure'</TT> Script </H2>
+<!--docid::SEC689::-->
+GDB comes with a <TT>`configure'</TT> script that automates the process
+of preparing GDB for installation; you can then use <CODE>make</CODE> to
+build the <CODE>gdb</CODE> program.
+<P>
+
+The GDB distribution includes all the source code you need for
+GDB in a single directory, whose name is usually composed by
+appending the version number to <SAMP>`gdb'</SAMP>.
+</P><P>
+
+For example, the GDB version 6.8 distribution is in the
+<TT>`gdb-6.8'</TT> directory.  That directory contains:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>gdb-6.8/configure (and supporting files)</CODE>
+<DD>script for configuring GDB and all its supporting libraries
+<P>
+
+<DT><CODE>gdb-6.8/gdb</CODE>
+<DD>the source specific to GDB itself
+<P>
+
+<DT><CODE>gdb-6.8/bfd</CODE>
+<DD>source for the Binary File Descriptor library
+<P>
+
+<DT><CODE>gdb-6.8/include</CODE>
+<DD>GNU include files
+<P>
+
+<DT><CODE>gdb-6.8/libiberty</CODE>
+<DD>source for the <SAMP>`-liberty'</SAMP> free software library
+<P>
+
+<DT><CODE>gdb-6.8/opcodes</CODE>
+<DD>source for the library of opcode tables and disassemblers
+<P>
+
+<DT><CODE>gdb-6.8/readline</CODE>
+<DD>source for the GNU command-line interface
+<P>
+
+<DT><CODE>gdb-6.8/glob</CODE>
+<DD>source for the GNU filename pattern-matching subroutine
+<P>
+
+<DT><CODE>gdb-6.8/mmalloc</CODE>
+<DD>source for the GNU memory-mapped malloc package
+</DL>
+<P>
+
+The simplest way to configure and build GDB is to run <TT>`configure'</TT>
+from the <TT>`gdb-<VAR>version-number</VAR>'</TT> source directory, which in
+this example is the <TT>`gdb-6.8'</TT> directory.
+</P><P>
+
+First switch to the <TT>`gdb-<VAR>version-number</VAR>'</TT> source directory
+if you are not already in it; then run <TT>`configure'</TT>.  Pass the
+identifier for the platform on which GDB will run as an
+argument.
+</P><P>
+
+For example:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>cd gdb-6.8
+./configure <VAR>host</VAR>
+make
+</FONT></pre></td></tr></table></P><P>
+
+where <VAR>host</VAR> is an identifier such as <SAMP>`sun4'</SAMP> or
+<SAMP>`decstation'</SAMP>, that identifies the platform where GDB will run.
+(You can often leave off <VAR>host</VAR>; <TT>`configure'</TT> tries to guess the
+correct value by examining your system.)
+</P><P>
+
+Running <SAMP>`configure <VAR>host</VAR>'</SAMP> and then running <CODE>make</CODE> builds the
+<TT>`bfd'</TT>, <TT>`readline'</TT>, <TT>`mmalloc'</TT>, and <TT>`libiberty'</TT>
+libraries, then <CODE>gdb</CODE> itself.  The configured source files, and the
+binaries, are left in the corresponding source directories.
+</P><P>
+
+<TT>`configure'</TT> is a Bourne-shell (<CODE>/bin/sh</CODE>) script; if your
+system does not recognize this automatically when you run a different
+shell, you may need to run <CODE>sh</CODE> on it explicitly:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>sh configure <VAR>host</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+If you run <TT>`configure'</TT> from a directory that contains source
+directories for multiple libraries or programs, such as the
+<TT>`gdb-6.8'</TT> source directory for version 6.8,
+<TT>`configure'</TT>
+creates configuration files for every directory level underneath (unless
+you tell it not to, with the <SAMP>`--norecursion'</SAMP> option).
+</P><P>
+
+You should run the <TT>`configure'</TT> script from the top directory in the
+source tree, the <TT>`gdb-<VAR>version-number</VAR>'</TT> directory.  If you run
+<TT>`configure'</TT> from one of the subdirectories, you will configure only
+that subdirectory.  That is usually not what you want.  In particular,
+if you run the first <TT>`configure'</TT> from the <TT>`gdb'</TT> subdirectory
+of the <TT>`gdb-<VAR>version-number</VAR>'</TT> directory, you will omit the
+configuration of <TT>`bfd'</TT>, <TT>`readline'</TT>, and other sibling
+directories of the <TT>`gdb'</TT> subdirectory.  This leads to build errors
+about missing include files such as <TT>`bfd/bfd.h'</TT>.
+</P><P>
+
+You can install <CODE>gdb</CODE> anywhere; it has no hardwired paths.
+However, you should make sure that the shell on your path (named by
+the <SAMP>`SHELL'</SAMP> environment variable) is publicly readable.  Remember
+that GDB uses the shell to start your program--some systems refuse to
+let GDB debug child processes whose programs are not readable.
+</P><P>
+
+<A NAME="Separate Objdir"></A>
+<HR SIZE="6">
+<A NAME="SEC690"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC689"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC691"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC691"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.3 Compiling GDB in Another Directory </H2>
+<!--docid::SEC690::-->
+<P>
+
+If you want to run GDB versions for several host or target machines,
+you need a different <CODE>gdb</CODE> compiled for each combination of
+host and target.  <TT>`configure'</TT> is designed to make this easy by
+allowing you to generate each configuration in a separate subdirectory,
+rather than in the source directory.  If your <CODE>make</CODE> program
+handles the <SAMP>`VPATH'</SAMP> feature (GNU <CODE>make</CODE> does), running
+<CODE>make</CODE> in each of these directories builds the <CODE>gdb</CODE>
+program specified there.
+</P><P>
+
+To build <CODE>gdb</CODE> in a separate directory, run <TT>`configure'</TT>
+with the <SAMP>`--srcdir'</SAMP> option to specify where to find the source.
+(You also need to specify a path to find <TT>`configure'</TT>
+itself from your working directory.  If the path to <TT>`configure'</TT>
+would be the same as the argument to <SAMP>`--srcdir'</SAMP>, you can leave out
+the <SAMP>`--srcdir'</SAMP> option; it is assumed.)
+</P><P>
+
+For example, with version 6.8, you can build GDB in a
+separate directory for a Sun 4 like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>cd gdb-6.8
+mkdir ../gdb-sun4
+cd ../gdb-sun4
+../gdb-6.8/configure sun4
+make
+</FONT></pre></td></tr></table></P><P>
+
+When <TT>`configure'</TT> builds a configuration using a remote source
+directory, it creates a tree for the binaries with the same structure
+(and using the same names) as the tree under the source directory.  In
+the example, you'd find the Sun 4 library <TT>`libiberty.a'</TT> in the
+directory <TT>`gdb-sun4/libiberty'</TT>, and GDB itself in
+<TT>`gdb-sun4/gdb'</TT>.
+</P><P>
+
+Make sure that your path to the <TT>`configure'</TT> script has just one
+instance of <TT>`gdb'</TT> in it.  If your path to <TT>`configure'</TT> looks
+like <TT>`../gdb-6.8/gdb/configure'</TT>, you are configuring only
+one subdirectory of GDB, not the whole package.  This leads to
+build errors about missing include files such as <TT>`bfd/bfd.h'</TT>.
+</P><P>
+
+One popular reason to build several GDB configurations in separate
+directories is to configure GDB for cross-compiling (where
+GDB runs on one machine--the <EM>host</EM>---while debugging
+programs that run on another machine--the <EM>target</EM>).
+You specify a cross-debugging target by
+giving the <SAMP>`--target=<VAR>target</VAR>'</SAMP> option to <TT>`configure'</TT>.
+</P><P>
+
+When you run <CODE>make</CODE> to build a program or library, you must run
+it in a configured directory--whatever directory you were in when you
+called <TT>`configure'</TT> (or one of its subdirectories).
+</P><P>
+
+The <CODE>Makefile</CODE> that <TT>`configure'</TT> generates in each source
+directory also runs recursively.  If you type <CODE>make</CODE> in a source
+directory such as <TT>`gdb-6.8'</TT> (or in a separate configured
+directory configured with <SAMP>`--srcdir=<VAR>dirname</VAR>/gdb-6.8'</SAMP>), you
+will build all the required libraries, and then build GDB.
+</P><P>
+
+When you have multiple hosts or targets configured in separate
+directories, you can run <CODE>make</CODE> on them in parallel (for example,
+if they are NFS-mounted on each of the hosts); they will not interfere
+with each other.
+</P><P>
+
+<A NAME="Config Names"></A>
+<HR SIZE="6">
+<A NAME="SEC691"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC690"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC692"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC692"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.4 Specifying Names for Hosts and Targets </H2>
+<!--docid::SEC691::-->
+<P>
+
+The specifications used for hosts and targets in the <TT>`configure'</TT>
+script are based on a three-part naming scheme, but some short predefined
+aliases are also supported.  The full naming scheme encodes three pieces
+of information in the following pattern:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre><VAR>architecture</VAR>-<VAR>vendor</VAR>-<VAR>os</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+For example, you can use the alias <CODE>sun4</CODE> as a <VAR>host</VAR> argument,
+or as the value for <VAR>target</VAR> in a <CODE>--target=<VAR>target</VAR></CODE>
+option.  The equivalent full name is <SAMP>`sparc-sun-sunos4'</SAMP>.
+</P><P>
+
+The <TT>`configure'</TT> script accompanying GDB does not provide
+any query facility to list all supported host and target names or
+aliases.  <TT>`configure'</TT> calls the Bourne shell script
+<CODE>config.sub</CODE> to map abbreviations to full names; you can read the
+script, if you wish, or you can use it to test your guesses on
+abbreviations--for example:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>% sh config.sub i386-linux
+i386-pc-linux-gnu
+% sh config.sub alpha-linux
+alpha-unknown-linux-gnu
+% sh config.sub hp9k700
+hppa1.1-hp-hpux
+% sh config.sub sun4
+sparc-sun-sunos4.1.1
+% sh config.sub sun3
+m68k-sun-sunos4.1.1
+% sh config.sub i986v
+Invalid configuration `i986v': machine `i986v' not recognized
+</FONT></pre></td></tr></table></P><P>
+
+<CODE>config.sub</CODE> is also distributed in the GDB source
+directory (<TT>`gdb-6.8'</TT>, for version 6.8).
+</P><P>
+
+<A NAME="Configure Options"></A>
+<HR SIZE="6">
+<A NAME="SEC692"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC691"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.5 <TT>`configure'</TT> Options </H2>
+<!--docid::SEC692::-->
+<P>
+
+Here is a summary of the <TT>`configure'</TT> options and arguments that
+are most often useful for building GDB.  <TT>`configure'</TT> also has
+several other options not listed here.  See Info file `configure.info', node `What Configure Does', for a full explanation of <TT>`configure'</TT>.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>configure [--help]
+          [--prefix=<VAR>dir</VAR>]
+          [--exec-prefix=<VAR>dir</VAR>]
+          [--srcdir=<VAR>dirname</VAR>]
+          [--norecursion] [--rm]
+          [--target=<VAR>target</VAR>]
+          <VAR>host</VAR>
+</FONT></pre></td></tr></table></P><P>
+
+You may introduce options with a single <SAMP>`-'</SAMP> rather than
+<SAMP>`--'</SAMP> if you prefer; but you may abbreviate option names if you use
+<SAMP>`--'</SAMP>.
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>--help</CODE>
+<DD>Display a quick summary of how to invoke <TT>`configure'</TT>.
+<P>
+
+<DT><CODE>--prefix=<VAR>dir</VAR></CODE>
+<DD>Configure the source to install programs and files under directory
+<TT>`<VAR>dir</VAR>'</TT>.
+<P>
+
+<DT><CODE>--exec-prefix=<VAR>dir</VAR></CODE>
+<DD>Configure the source to install programs under directory
+<TT>`<VAR>dir</VAR>'</TT>.
+<P>
+
+<DT><CODE>--srcdir=<VAR>dirname</VAR></CODE>
+<DD><STRONG>Warning: using this option requires GNU <CODE>make</CODE>, or another
+<CODE>make</CODE> that implements the <CODE>VPATH</CODE> feature.</STRONG><BR>
+Use this option to make configurations in directories separate from the
+GDB source directories.  Among other things, you can use this to
+build (or maintain) several configurations simultaneously, in separate
+directories.  <TT>`configure'</TT> writes configuration-specific files in
+the current directory, but arranges for them to use the source in the
+directory <VAR>dirname</VAR>.  <TT>`configure'</TT> creates directories under
+the working directory in parallel to the source directories below
+<VAR>dirname</VAR>.
+<P>
+
+<DT><CODE>--norecursion</CODE>
+<DD>Configure only the directory level where <TT>`configure'</TT> is executed; do not
+propagate configuration to subdirectories.
+<P>
+
+<DT><CODE>--target=<VAR>target</VAR></CODE>
+<DD>Configure GDB for cross-debugging programs running on the specified
+<VAR>target</VAR>.  Without this option, GDB is configured to debug
+programs that run on the same machine (<VAR>host</VAR>) as GDB itself.
+<P>
+
+There is no convenient way to generate a list of all available targets.
+</P><P>
+
+<DT><CODE><VAR>host</VAR> <small>...</small></CODE>
+<DD>Configure GDB to run on the specified <VAR>host</VAR>.
+<P>
+
+There is no convenient way to generate a list of all available hosts.
+</DL>
+<P>
+
+There are many other options available as well, but they are generally
+needed for special purposes only.
+</P><P>
+
+<A NAME="Maintenance Commands"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_31.html#SEC685"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_32.html#SEC693"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_38.html#SEC764">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="gdb_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+
+<address>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="http://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>These pages are maintained by <a
+href="http://www.gnu.org/software/gdb/">the GDB developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 59 Temple Place - Suite
+330, Boston, MA 02111, USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+</address>
+
+This document was generated
+by <I>GDB Administrator</I> on <I>March, 27  2008</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

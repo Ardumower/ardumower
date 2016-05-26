@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+<title>i386-Arch - Using as</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Using as">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="i386_002dDependent.html#i386_002dDependent" title="i386-Dependent">
+<link rel="prev" href="i386_002d16bit.html#i386_002d16bit" title="i386-16bit">
+<link rel="next" href="i386_002dBugs.html#i386_002dBugs" title="i386-Bugs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This file documents the GNU Assembler "as".
+
+Copyright (C) 1991, 92, 93, 94, 95, 96, 97, 98, 99, 2000, 2001, 2002,
+2006, 2007 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License''.
+
+man end-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="i386_002dArch"></a>Next:&nbsp;<a rel="next" accesskey="n" href="i386_002dBugs.html#i386_002dBugs">i386-Bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="i386_002d16bit.html#i386_002d16bit">i386-16bit</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="i386_002dDependent.html#i386_002dDependent">i386-Dependent</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">9.13.14 Specifying CPU Architecture</h4>
+
+<p><a name="index-arch-directive_002c-i386-957"></a><a name="index-i386-arch-directive-958"></a><a name="index-arch-directive_002c-x86_002d64-959"></a><a name="index-x86_002d64-arch-directive-960"></a>
+<code>as</code> may be told to assemble for a particular CPU
+(sub-)architecture with the <code>.arch </code><var>cpu_type</var> directive.  This
+directive enables a warning when gas detects an instruction that is not
+supported on the CPU specified.  The choices for <var>cpu_type</var> are:
+
+   <p><table summary=""><tr align="left"><td valign="top" width="20%"><span class="samp">i8086</span> </td><td valign="top" width="20%"><span class="samp">i186</span> </td><td valign="top" width="20%"><span class="samp">i286</span> </td><td valign="top" width="20%"><span class="samp">i386</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">i486</span> </td><td valign="top" width="20%"><span class="samp">i586</span> </td><td valign="top" width="20%"><span class="samp">i686</span> </td><td valign="top" width="20%"><span class="samp">pentium</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">pentiumpro</span> </td><td valign="top" width="20%"><span class="samp">pentiumii</span> </td><td valign="top" width="20%"><span class="samp">pentiumiii</span> </td><td valign="top" width="20%"><span class="samp">pentium4</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">prescott</span> </td><td valign="top" width="20%"><span class="samp">nocona</span> </td><td valign="top" width="20%"><span class="samp">core</span> </td><td valign="top" width="20%"><span class="samp">core2</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">k6</span> </td><td valign="top" width="20%"><span class="samp">k6_2</span> </td><td valign="top" width="20%"><span class="samp">athlon</span> </td><td valign="top" width="20%"><span class="samp">k8</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">amdfam10</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">generic32</span> </td><td valign="top" width="20%"><span class="samp">generic64</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.mmx</span> </td><td valign="top" width="20%"><span class="samp">.sse</span> </td><td valign="top" width="20%"><span class="samp">.sse2</span> </td><td valign="top" width="20%"><span class="samp">.sse3</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.ssse3</span> </td><td valign="top" width="20%"><span class="samp">.sse4.1</span> </td><td valign="top" width="20%"><span class="samp">.sse4.2</span> </td><td valign="top" width="20%"><span class="samp">.sse4</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.avx</span> </td><td valign="top" width="20%"><span class="samp">.vmx</span> </td><td valign="top" width="20%"><span class="samp">.smx</span> </td><td valign="top" width="20%"><span class="samp">.xsave</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.aes</span> </td><td valign="top" width="20%"><span class="samp">.pclmul</span> </td><td valign="top" width="20%"><span class="samp">.fma</span> </td><td valign="top" width="20%"><span class="samp">.movbe</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.ept</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.3dnow</span> </td><td valign="top" width="20%"><span class="samp">.3dnowa</span> </td><td valign="top" width="20%"><span class="samp">.sse4a</span> </td><td valign="top" width="20%"><span class="samp">.sse5</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.svme</span> </td><td valign="top" width="20%"><span class="samp">.abm</span>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><span class="samp">.padlock</span>
+   <br></td></tr></table>
+
+   <p>Apart from the warning, there are only two other effects on
+<code>as</code> operation;  Firstly, if you specify a CPU other than
+<span class="samp">i486</span>, then shift by one instructions such as <span class="samp">sarl $1, %eax</span>
+will automatically use a two byte opcode sequence.  The larger three
+byte opcode sequence is used on the 486 (and when no architecture is
+specified) because it executes faster on the 486.  Note that you can
+explicitly request the two byte opcode by writing <span class="samp">sarl %eax</span>. 
+Secondly, if you specify <span class="samp">i8086</span>, <span class="samp">i186</span>, or <span class="samp">i286</span>,
+<em>and</em> <span class="samp">.code16</span> or <span class="samp">.code16gcc</span> then byte offset
+conditional jumps will be promoted when necessary to a two instruction
+sequence consisting of a conditional jump of the opposite sense around
+an unconditional jump to the target.
+
+   <p>Following the CPU architecture (but not a sub-architecture, which are those
+starting with a dot), you may specify <span class="samp">jumps</span> or <span class="samp">nojumps</span> to
+control automatic promotion of conditional jumps. <span class="samp">jumps</span> is the
+default, and enables jump promotion;  All external jumps will be of the long
+variety, and file-local jumps will be promoted as necessary. 
+(see <a href="i386_002dJumps.html#i386_002dJumps">i386-Jumps</a>)  <span class="samp">nojumps</span> leaves external conditional jumps as
+byte offset jumps, and warns about file-local conditional jumps that
+<code>as</code> promotes. 
+Unconditional jumps are treated as for <span class="samp">jumps</span>.
+
+   <p>For example
+
+<pre class="smallexample">      .arch i8086,nojumps
+</pre>
+   </body></html>
+

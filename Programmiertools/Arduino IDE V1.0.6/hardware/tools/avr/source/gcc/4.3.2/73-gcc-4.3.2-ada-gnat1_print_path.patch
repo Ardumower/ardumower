@@ -1,0 +1,45 @@
+--- gcc/ada/gnat1drv.adb.orig	Thu Dec 13 10:27:21 2007
++++ gcc/ada/gnat1drv.adb	Wed Feb 13 20:00:03 2008
+@@ -246,6 +246,42 @@
+            ("cannot generate representation information, no code generated");
+          Write_Eol;
+          Write_Eol;
++         Write_Eol;
++         Write_Str ("Source Search Path:");
++         Write_Eol;
++
++         for J in 1 .. Nb_Dir_In_Src_Search_Path loop
++            Write_Str ("   ");
++
++            if Dir_In_Src_Search_Path (J)'Length = 0 then
++               Write_Str ("<Current_Directory>");
++            else
++               Write_Str (To_Host_Dir_Spec
++                          (Dir_In_Src_Search_Path (J).all, True).all);
++            end if;
++
++            Write_Eol;
++         end loop;
++
++         Write_Eol;
++         Write_Eol;
++         Write_Str ("Object Search Path:");
++         Write_Eol;
++
++         for J in 1 .. Nb_Dir_In_Obj_Search_Path loop
++            Write_Str ("   ");
++
++            if Dir_In_Obj_Search_Path (J)'Length = 0 then
++               Write_Str ("<Current_Directory>");
++            else
++               Write_Str (To_Host_Dir_Spec
++                          (Dir_In_Obj_Search_Path (J).all, True).all);
++            end if;
++
++            Write_Eol;
++         end loop;
++
++         Write_Eol;
+       end if;
+    end Check_Rep_Info;
+ 
