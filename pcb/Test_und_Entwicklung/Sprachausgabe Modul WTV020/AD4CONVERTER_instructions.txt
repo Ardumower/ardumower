@@ -1,0 +1,17 @@
+- Double click AD4CONVERTER.exe to see the command set help.
+
+- Say you have a wav file at C:\WavFiles\Track1.wav
+
+- Open a Command window
+
+- Get to the root location where you copied AD4CONVERTER.exe
+
+- Write the command which can be in following format, 
+                   AD4CONVERTER –E4 C:\WavFiles\Track1.wav
+
+- A file Track1.AD4 will be created where you have the original Track1.wav file.
+
+
+
+
+Note: This utility does not work for mp3 files.

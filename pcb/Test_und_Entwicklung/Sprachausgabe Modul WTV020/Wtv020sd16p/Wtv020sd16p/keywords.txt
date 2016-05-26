@@ -1,0 +1,20 @@
+#######################################
+# Syntax Coloring Map For Wtv020sd16p
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Wtv020sd16p	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+reset	KEYWORD2
+playVoice	KEYWORD2
+asyncPlayVoice	KEYWORD2
+stopVoice	KEYWORD2
+pauseVoice	KEYWORD2
+mute	KEYWORD2
+unmute	KEYWORD2
+

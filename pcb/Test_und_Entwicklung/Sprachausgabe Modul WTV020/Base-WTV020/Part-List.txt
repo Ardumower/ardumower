@@ -1,0 +1,44 @@
+Partlist
+
+Exported from Base-WTV020.sch at 29.03.2016 22:23:30
+
+EAGLE Version 6.4.0 Copyright (c) 1988-2013 CadSoft
+
+Assembly variant: 
+
+Part       Value          Device            Package           Library      Sheet
+
+BUSY                      LED3MM 2mA        LED3MM            led          1
+C1         100nF          C-EUC0805         C0805             resistor     1
+C2         100nF          C-EUC0805         C0805             resistor     1
+C16        10µF           CPOL-EUE2.5-5     E2,5-5            resistor     1
+C17        22µF           CPOL-EUE2.5-5     E2,5-5            resistor     1
+D1         1N4004         1N4004            DO41-10           diode        1
+D2         3,3V           ZENER-DIODESOD80C SOD80C            diode        1
+D3         3,3V           ZENER-DIODESOD80C SOD80C            diode        1
+D4         3,3V           ZENER-DIODESOD80C SOD80C            diode        1
+D5         3,3V           ZENER-DIODESOD80C SOD80C            diode        1
+JP1                       PINHD-1X8         1X08              pinhead      1
+JP2                       PINHD-1X8         1X08              pinhead      1
+JP3                       PINHD-1X7         1X07              pinhead      1
+JP4                       PINHD-1X2         1X02              pinhead      1
+JP5                       PINHD-1X2         1X02              pinhead      1
+JP6                       PINHD-1X3         1X03              pinhead      1
+NEXT                      SMDTASTE          SMDTASTE          SMD-Taster   1
+NO-ICSP                   PINHD-2X3         2X03              SmartPrj     1
+PAUSE/PLAY                SMDTASTE          SMDTASTE          SMD-Taster   1
+PREV                      SMDTASTE          SMDTASTE          SMD-Taster   1
+PWR                       LED3MM 2mA        LED3MM            led          1
+R1         1K             R-EU_M1206        M1206             resistor     1
+R2         1K             R-EU_M1206        M1206             resistor     1
+R3         1K             R-EU_M1206        M1206             resistor     1
+R4         1K             R-EU_M1206        M1206             resistor     1
+R5         330            R-EU_M1206        M1206             resistor     1
+R6         330            R-EU_M1206        M1206             resistor     1
+SJ1                       SJ2W              SJ_2              jumper       1
+SJ2                       SJ2W              SJ_2              jumper       1
+SJ3                       SJ2W              SJ_2              jumper       1
+SJ4                       SJ2W              SJ_2              jumper       1
+SJ5                       SJ                SJ                jumper       1
+SJ6                       SJ                SJ                jumper       1
+U6         LM3940CS-3.3   LM2940CS-5.0      TO254P1435X464-4N LM2940CS-5.0 1
