@@ -268,7 +268,7 @@ boolean readDS1307(datetime_t &dt){
   datetime_t r;
   r.time.minute    = 10*((buf[1] >>4) & B00000111) + (buf[1] & B00001111);
   r.time.hour      = 10*((buf[2] >>4) & B00000111) + (buf[2] & B00001111);
-  r.date.dayOfWeek = (buf[3] & B00000111);
+  r.date.dayOfWeek = (buf[3] & B00000111) - 1;
   r.date.day       = 10*((buf[4] >>4) & B00000011) + (buf[4] & B00001111);
   r.date.month     = 10*((buf[5] >>4) & B00000001) + (buf[5] & B00001111);
   r.date.year      = 10*((buf[6] >>4) & B00001111) + (buf[6] & B00001111);
@@ -294,7 +294,7 @@ boolean setDS1307(datetime_t &dt){
   buf[0] = buf[0] & B01111111; // enable clock
   buf[1] = ((dt.time.minute / 10) << 4) | (dt.time.minute % 10);
   buf[2] = ((dt.time.hour   / 10) << 4) | (dt.time.hour   % 10);
-  buf[3] = dt.date.dayOfWeek;
+  buf[3] = dt.date.dayOfWeek + 1;
   buf[4] = ((dt.date.day    / 10) << 4) | (dt.date.day    % 10);
   buf[5] = ((dt.date.month  / 10) << 4) | (dt.date.month  % 10);
   buf[6] = ((dt.date.year % 100  / 10) << 4) | (dt.date.year % 10);
