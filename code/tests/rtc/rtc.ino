@@ -88,7 +88,7 @@ boolean readDS1307(){
   }
   minute    = 10*((buf[1] >>4) & B00000111) + (buf[1] & B00001111);
   hour      = 10*((buf[2] >>4) & B00000111) + (buf[2] & B00001111);
-  dayOfWeek = (buf[3] & B00000111);
+  dayOfWeek = (buf[3] & B00000111)-1;
   day       = 10*((buf[4] >>4) & B00000011) + (buf[4] & B00001111);
   month     = 10*((buf[5] >>4) & B00000001) + (buf[5] & B00001111);
   year      = 10*((buf[6] >>4) & B00001111) + (buf[6] & B00001111);
@@ -112,7 +112,7 @@ boolean setDS1307(){
   buf[0] = buf[0] & B01111111; // enable clock
   buf[1] = ((minute / 10) << 4) | (minute % 10);
   buf[2] = ((hour   / 10) << 4) | (hour   % 10);
-  buf[3] = dayOfWeek;
+  buf[3] = dayOfWeek+1;
   buf[4] = ((day    / 10) << 4) | (day    % 10);
   buf[5] = ((month  / 10) << 4) | (month  % 10);
   buf[6] = ((year % 100  / 10) << 4) | (year % 10);
@@ -127,6 +127,8 @@ void testRead(){
     Serial.print(hour);   
     Serial.print(":");
     Serial.print(minute);  
+    Serial.print("  dateOfWeek=");
+    Serial.print(dayOfWeek);
     Serial.print("  date=");
     Serial.print(day);
     Serial.print(".");
@@ -137,12 +139,25 @@ void testRead(){
   Serial.println();
 }
 
+void testWriteStatic(){
+  Serial.print("writing new (static) RTC time...");  
+  hour=23;
+  minute=59;
+  dayOfWeek=6;
+  day=28;
+  month=2;
+  year=2016;
+  setDS1307();
+  Serial.println();
+}
+
 void testWrite(){
   Serial.print("writing new (random) RTC time...");  
-  hour=random(0,23);
-  minute=random(0,59);
-  day=random(1,28);
-  month=random(1,12);
+  hour=random(0,24);
+  minute=random(0,60);
+  dayOfWeek=random(0,7);
+  day=random(1,29);
+  month=random(1,13);
   year=random(1990,2020);
   setDS1307();
   Serial.println();
@@ -157,12 +172,19 @@ void setup()  {
   if (findDS1307()){
     testRead();      
     Serial.println("press 'a' to set new random date+time");    
+    Serial.println("press 's' to set new static date+time");    
   }
 }
 
 void loop(){  
   if (Serial.available() > 0){
     char ch = (char)Serial.read();  
+    if (ch == 's') {
+      testWriteStatic();
+      testRead();  
+      Serial.println();
+      Serial.println("power-off RTC, and restart to verify!");      
+    }
     if (ch == 'a') {
       randomSeed(analogRead(A7)+analogRead(A0)+analogRead(A1));  
       testWrite();
