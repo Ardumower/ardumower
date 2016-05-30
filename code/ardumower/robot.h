@@ -1,5 +1,3 @@
-
-
 /*
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
@@ -56,7 +54,7 @@
 */
 
 // code version 
-#define VER "1.0a5-Azurit-dev"
+#define VER "1.0a5-Azurit"
  
 
 // sensors
