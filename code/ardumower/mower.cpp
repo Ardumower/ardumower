@@ -173,13 +173,13 @@ Mower::Mower(){
   // ------ rain ------------------------------------
   rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
-  sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
+  sonarUse          = 0;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarLeftUse      = 1;
   sonarRightUse     = 1;
   sonarCenterUse    = 0;
   sonarTriggerBelow = 1050;    // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
-  perimeterUse       = 1;      // use perimeter?    
+  perimeterUse       = 0;      // use perimeter?    
   perimeterTriggerTimeout = 0;      // perimeter trigger timeout when escaping from inside (ms)  
   perimeterOutRollTimeMax  = 2000;   // roll time max after perimeter out (ms)
   perimeterOutRollTimeMin = 750;    // roll time min after perimeter out (ms)
