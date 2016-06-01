@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP +17V
+K POWER, PWR
+$ENDCMP
+#
+$CMP Arduschnittstelle
+D Connector 02x06
+$ENDCMP
+#
+$CMP DS1307+
+D I2C Real-Time Clock
+K Time Clock
+F http://datasheets.maximintegrated.com/en/ds/DS1307.pdf
+$ENDCMP
+#
+$CMP ITEAD_HC-05
+D Itead HC-05 serial Bluetooth module
+$ENDCMP
+#
+#End Doc Library
