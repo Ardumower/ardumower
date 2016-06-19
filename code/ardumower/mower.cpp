@@ -420,40 +420,7 @@ void Mower::setup(){
     PWMC_ConfigureClocks(3900 * PWM_MAX_DUTY_CYCLE, 0, VARIANT_MCK);   // 3.9 Khz  
   #endif  
 
-  // enable interrupts
-  #ifdef __AVR__
-    // R/C
-    PCICR |= (1<<PCIE0);
-    PCMSK0 |= (1<<PCINT4);
-    PCMSK0 |= (1<<PCINT5);
-    PCMSK0 |= (1<<PCINT6);
-    PCMSK0 |= (1<<PCINT1);  
-    
-    // odometry
-    PCICR |= (1<<PCIE2);
-    PCMSK2 |= (1<<PCINT20);
-    PCMSK2 |= (1<<PCINT21);  
-    PCMSK2 |= (1<<PCINT22);
-    PCMSK2 |= (1<<PCINT23);          
-    
-    // mower motor speed sensor interrupt
-    //attachInterrupt(5, rpm_interrupt, CHANGE);
-    PCMSK2 |= (1<<PCINT19);  
-  #else
-    // Due interrupts
-    attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
-    attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
-    attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
-    attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
-    
-    attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
-    attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
-    attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
-    attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
-    
-    //attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
-    attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
-  #endif   
+  
     
   // ADC
   ADCMan.init();
@@ -483,6 +450,107 @@ void Mower::setup(){
   } else if (bluetoothUse) {
     rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
   }
+
+// enable interrupts
+  //-----------------------------------------------------------------------------------------------------------------UweZ geändert Anfang---------------------------------
+  #ifdef __AVR__
+    // R/C
+    PCICR |= (1<<PCIE0);
+      if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
+        bitWrite(PCMSK0, PCINT4, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register4  "XXX1XXXX" Interrupt PCINT4 Register4 entspricht den Pin 10 des Arduino Mega
+      }
+      else                               // und wenn nicht  
+      {
+      bitWrite(PCMSK0, PCINT4, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT4 Register4  "XXX0XXXX"                                           
+    }
+     //-----------------------------------------------------------------------------------------------------------------  
+    if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
+        bitWrite(PCMSK0, PCINT5, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register5  "XX1XXXXX" Interrupt PCINT5 Register5 entspricht den Pin 11 des Arduino Mega
+      }
+      else                               // und wenn nicht  
+      {
+      bitWrite(PCMSK0, PCINT5, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT5 Register5  "XX0XXXXX"                                           
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+    if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
+        bitWrite(PCMSK0, PCINT6, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register6  "X1XXXXXX" Interrupt PCINT6 Register6 entspricht den Pin 12 des Arduino Mega
+      }
+      else                               // und wenn nicht  
+      {
+      bitWrite(PCMSK0, PCINT6, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT6 Register6  "X0XXXXXX"                                           
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+   if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
+        bitWrite(PCMSK0, PCINT1, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register6  "XXXXXX1X" Interrupt PCINT1 Register6 entspricht den Pin 52 des Arduino Mega
+      }
+      else                               // und wenn nicht  
+      {
+      bitWrite(PCMSK0, PCINT1, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT1 Register6  "XXXXXX0X"                                           
+    } 
+    
+   // odometry
+    PCICR |= (1<<PCIE2);
+
+    if (odometryUse==1){                  // überprüfe ob die 1 fache Odemetrie aktiviert ist - Links
+        bitWrite(PCMSK2, PCINT20, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK2 register0  "XXX1XXXX" Interrupt PCINT20 Register4 entspricht den Pin A12 des Arduino Mega
+      }
+      else                               // und wenn nicht  
+      {
+      bitWrite(PCMSK2, PCINT20, LOW);    // dann schreibe eine 0 ins PCMSK2 Register4  "XXX0XXXX"                                           
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+    if (twoWayOdometrySensorUse==1){      // überprüfe ob die twoWayOdometry Odemetrie aktiviert ist - Links
+      bitWrite(PCMSK2, PCINT21, HIGH);    // und wenn ja schreibe eine 1 ins PCMSK2 register1  "XX1XXXXX" Interrupt PCINT21 Register5 entspricht den Pin A13 des Arduino Mega
+    }
+      else                               // und wenn nicht 
+      {
+      bitWrite(PCMSK2, PCINT21, LOW);     // dann schreibe eine 0 ins PCMSK2 register5  "XX0XXXXX"                                          
+    }
+    //-----------------------------------------------------------------------------------------------------------------   
+     if (odometryUse==1){                 // überprüfe ob die 1 fache Odemetrie aktiviert ist - Rechts
+        bitWrite(PCMSK2, PCINT22, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK2 register2  "X1XXXXXX" Interrupt PCINT22 Register6 entspricht den Pin A14 des Arduino Mega
+      }
+      else                               // und wenn nicht  
+      {
+      bitWrite(PCMSK2, PCINT22, LOW);     // dann schreibe eine 0 ins PCMSK2 Register6  "X0XXXXXX"                                           
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+    if (twoWayOdometrySensorUse==1){      // überprüfe ob die twoWayOdometry Odemetrie aktiviert ist - Rechts
+      bitWrite(PCMSK2, PCINT23, HIGH);    // und wenn ja schreibe eine 1 ins PCMSK2 Register7  "1XXXXXXX" Interrupt PCINT23 Register7 entspricht den Pin A15 des Arduino Mega
+    }
+      else                               // und wenn nicht 
+      {
+      bitWrite(PCMSK2, PCINT23, LOW);     // dann schreibe eine 0 ins PCMSK2 Register7  "0XXXXXXX"                                          
+    }
+    
+    // mower motor speed sensor interrupt
+    //attachInterrupt(5, rpm_interrupt, CHANGE);
+    //-----------------------------------------------------------------------------------------------------------------   Geändert von PCMSK2 |= (1<<PCINT19);
+     if (motorMowModulate==1){            // überprüfe ob die motorMowModulate aktiviert ist;
+        bitWrite(PCMSK2, PCINT19, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK2 Register3  "XXXX1XXX" Interrupt PCINT23 Register3 entspricht den Pin A11 des Arduino Mega
+      }
+      else                               // und wenn nicht 
+      {
+      bitWrite(PCMSK2, PCINT19, LOW);     // dann schreibe eine 0 ins PCMSK2 Register3  "XXXX0XXX"                                  
+    }
+    //-----------------------------------------------------------------------------------------------------------------UweZ geändert Ende-----------------------------------
+  #else
+    // Due interrupts
+    attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
+    attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
+    attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
+    attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
+    
+    attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
+    attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
+    attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
+    attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
+    
+    //attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
+    attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
+  #endif   
+  
 }
 
 void checkMotorFault(){

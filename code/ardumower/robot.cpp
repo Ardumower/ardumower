@@ -344,6 +344,7 @@ void Robot::loadUserSettings(){
 void Robot::printSettingSerial(){
  
   // ------- wheel motors -----------------------------
+  Console.println(F("---------- wheel motors ----------"));
   Console.print  (F("motorAccel  : "));
   Console.println(motorAccel);
   Console.print  (F("motorSpeedMaxRpm : "));
@@ -389,6 +390,7 @@ void Robot::printSettingSerial(){
   Console.println(motorLeftSwapDir);
   
   // ------ mower motor -------------------------------
+  Console.println(F("---------- mower motor ----------"));
   Console.print  (F("motorMowAccel : "));
   Console.println(motorMowAccel);
   Console.print  (F("motorMowSpeedMaxPwm : "));
@@ -409,10 +411,12 @@ void Robot::printSettingSerial(){
   Console.println(motorMowPID.Kd);
   
   // ------ bumper ------------------------------------
+  Console.println(F("---------- bumper ----------"));
   Console.print  (F("bumperUse : "));
   Console.println(bumperUse);
 
   // ------ drop ------------------------------------
+  Console.println(F("---------- drop ----------"));
   Console.print  (F("dropUse : "));
   Console.println(dropUse);
 
@@ -420,10 +424,12 @@ void Robot::printSettingSerial(){
   Console.println(dropcontact);
 
   // ------ rain ------------------------------------
+  Console.println(F("---------- rain ----------"));
   Console.print  (F("rainUse : "));
   Console.println(rainUse);
 
   // ------ sonar ------------------------------------
+  Console.println(F("---------- sonar ----------"));
   Console.print  (F("sonarUse : "));
   Console.println(sonarUse);
   Console.print  (F("sonarLeftUse : "));
@@ -436,6 +442,7 @@ void Robot::printSettingSerial(){
   Console.println(sonarTriggerBelow);
   
   // ------ perimeter ---------------------------------
+  Console.println(F("---------- perimeter ----------"));
   Console.print  (F("perimeterUse : "));
   Console.println(perimeterUse);
   Console.print  (F("perimeterTriggerTimeout : "));
@@ -464,11 +471,12 @@ void Robot::printSettingSerial(){
   Console.println(trackingBlockInnerWheelWhilePerimeterStruggling);
   
   // ------ lawn sensor --------------------------------
+  Console.println(F("---------- lawn sensor ----------"));
   Console.print  (F("lawnSensorUse : "));
   Console.println(lawnSensorUse);
 
   // ------  IMU (compass/accel/gyro) ----------------------
-  
+  Console.println(F("---------- IMU (compass/accel/gyro) ----------"));
   Console.print  (F("imuUse : "));
   Console.println( imuUse);
   Console.print  (F("imuCorrectDir : "));
@@ -487,11 +495,23 @@ void Robot::printSettingSerial(){
   Console.println(imuRollPID.Kd); 
 
   // ------ model R/C ------------------------------------
+  Console.println(F("---------- model R/C ----------"));
   Console.print  (F("remoteUse : "));
   Console.println(remoteUse); 
+
+// ------ model R/C Interrupt--------------------------
+ Console.println(F("---------- model R/C Interrupt ----------"));
+  Console.print  (F("Pin 10 pinRemoteSpeed : "));
+  Console.println bitRead(PCMSK0, PCINT4); // Pin 10
+  Console.print  (F("Pin 11 pinRemoteSteer : "));
+  Console.println bitRead(PCMSK0, PCINT5); // Pin 11
+  Console.print  (F("Pin 12 pinRemoteMow : "));
+  Console.println bitRead(PCMSK0, PCINT6); // Pin 12
+  Console.print  (F("Pin 52 pinRemoteSwitch : "));
+  Console.println bitRead(PCMSK0, PCINT1); // Pin 52
   
   // ------ battery -------------------------------------
-  
+  Console.println(F("---------- battery ----------"));
   Console.print  (F("batMonitor : "));
   Console.println( batMonitor);
   Console.print  (F("batGoHomeIfBelow : "));
@@ -526,8 +546,9 @@ void Robot::printSettingSerial(){
   Console.println(chgChange); 
   Console.print  (F("chgNull : "));
   Console.println(chgNull); 
-  // ------  charging station ---------------------------
   
+  // ------  charging station ---------------------------
+  Console.println(F("---------- charging station ----------"));
   Console.print  (F("stationRevTime : "));
   Console.println(stationRevTime); 
   Console.print  (F("stationRollTime : "));
@@ -536,8 +557,9 @@ void Robot::printSettingSerial(){
   Console.println( stationForwTime);
   Console.print  (F("stationCheckTime : "));
   Console.println(stationCheckTime); 
-  // ------ odometry ------------------------------------
   
+  // ------ odometry ------------------------------------
+  Console.println(F("---------- odometry ----------"));
   Console.print  (F("odometryUse : "));
   Console.println( odometryUse);
   Console.print  (F("twoWayOdometrySensorUse : "));
@@ -553,7 +575,19 @@ void Robot::printSettingSerial(){
   Console.print  (F("odometryLeftSwapDir : "));
   Console.println(odometryLeftSwapDir); 
 
+// ------ odometry Interrupt--------------------------
+ Console.println(F("---------- Odometry Interrupt ----------"));
+  Console.print  (F("oneway left : "));
+  Console.println bitRead(PCMSK2, PCINT20);
+  Console.print  (F("Oneway right : "));
+  Console.println bitRead(PCMSK2, PCINT22);
+  Console.print  (F("twoway left : "));
+  Console.println bitRead(PCMSK2, PCINT21);
+  Console.print  (F("twoway right : "));
+  Console.println bitRead(PCMSK2, PCINT23); 
+  
 // ----- GPS -------------------------------------------
+  Console.println(F("---------- GPS ----------"));
   Console.print  (F("gpsUse : "));
   Console.println(gpsUse); 
   Console.print  (F("stuckIfGpsSpeedBelow : "));
@@ -563,10 +597,12 @@ void Robot::printSettingSerial(){
   
 
 // ----- other -----------------------------------------
+  Console.println(F("---------- other ----------"));
   Console.print  (F("buttonUse : "));
   Console.println(buttonUse); 
 
 // ----- user-defined switch ---------------------------
+  Console.println(F("---------- user-defined switch ----------"));
   Console.print  (F("userSwitch1 : "));
   Console.println(userSwitch1); 
   Console.print  (F("userSwitch2 : "));
@@ -575,10 +611,12 @@ void Robot::printSettingSerial(){
   Console.println(userSwitch3); 
 
 // ----- timer -----------------------------------------
+  Console.println(F("---------- timer ----------"));
   Console.print  (F("timerUse : "));
   Console.println(timerUse); 
 
 // -------robot stats------------------------------------
+  Console.println(F("---------- robot stats ----------"));
   Console.print  (F("statsMowTimeMinutesTrip : "));
   Console.println(statsMowTimeMinutesTrip);
   Console.print  (F("statsMowTimeMinutesTotal : "));
