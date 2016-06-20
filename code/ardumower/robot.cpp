@@ -343,297 +343,307 @@ void Robot::loadUserSettings(){
 
 void Robot::printSettingSerial(){
  
-  // ------- wheel motors -----------------------------
-  Console.println(F("---------- wheel motors ----------"));
-  Console.print  (F("motorAccel  : "));
+  // ------- wheel motors ---------------------------------------------------------
+  Console.println(F("---------- wheel motors --------------------------------------"));
+  Console.print  (F("motorAccel                                 : "));
   Console.println(motorAccel);
-  Console.print  (F("motorSpeedMaxRpm : "));
+  Console.print  (F("motorSpeedMaxRpm                           : "));
   Console.println(motorSpeedMaxRpm);
-  Console.print  (F("motorSpeedMaxPwm : ")); 
+  Console.print  (F("motorSpeedMaxPwm                           : ")); 
   Console.println(motorSpeedMaxPwm);
-  Console.print  (F("motorPowerMax : "));    
+  Console.print  (F("motorPowerMax                              : "));    
   Console.println(motorPowerMax);
-  Console.print  (F("motorSenseRightScale : ")); 
+  Console.print  (F("motorSenseRightScale                       : ")); 
   Console.println(motorSenseRightScale);
-  Console.print  (F("motorSenseLeftScale : "));
+  Console.print  (F("motorSenseLeftScale                        : "));
   Console.println(motorSenseLeftScale);
-  Console.print  (F("motorPowerIgnoreTime : "));
+  Console.print  (F("motorPowerIgnoreTime                       : "));
   Console.println(motorPowerIgnoreTime);
-  Console.print  (F("motorZeroSettleTime : "));
+  Console.print  (F("motorZeroSettleTime                        : "));
   Console.println(motorZeroSettleTime);
-  Console.print  (F("motorRollTimeMax : "));
+  Console.print  (F("motorRollTimeMax                           : "));
   Console.println(motorRollTimeMax);
-  Console.print  (F("motorRollTimeMin : "));
+  Console.print  (F("motorRollTimeMin                           : "));
   Console.println(motorRollTimeMin);
-  Console.print  (F("motorReverseTime : "));
+  Console.print  (F("motorReverseTime                           : "));
   Console.println(motorReverseTime);
   
-  Console.print  (F("motorForwTimeMax : "));
+  Console.print  (F("motorForwTimeMax                           : "));
   Console.println(motorForwTimeMax);
   
-  Console.print  (F("motorBiDirSpeedRatio1 : "));
+  Console.print  (F("motorBiDirSpeedRatio1                      : "));
   Console.println(motorBiDirSpeedRatio1);
   
-  Console.print  (F("motorBiDirSpeedRatio2 : "));
+  Console.print  (F("motorBiDirSpeedRatio2                      : "));
   Console.println(motorBiDirSpeedRatio2);
 
-  Console.print  (F("motorLeftPID.Kp : "));
+  Console.print  (F("motorLeftPID.Kp                            : "));
   Console.println(motorLeftPID.Kp);
-  Console.print  (F("motorLeftPID.Ki : "));
+  Console.print  (F("motorLeftPID.Ki                            : "));
   Console.println(motorLeftPID.Ki);
-  Console.print  (F("motorLeftPID.Kd : "));
+  Console.print  (F("motorLeftPID.Kd                            : "));
   Console.println(motorLeftPID.Kd);
 
-  Console.print  (F("motorRightSwapDir : "));
+  Console.print  (F("motorRightSwapDir                          : "));
   Console.println(motorRightSwapDir);
-  Console.print  (F("motorLeftSwapDir : "));
+  Console.print  (F("motorLeftSwapDir                           : "));
   Console.println(motorLeftSwapDir);
   
-  // ------ mower motor -------------------------------
-  Console.println(F("---------- mower motor ----------"));
-  Console.print  (F("motorMowAccel : "));
+  // ------ mower motor -----------------------------------------------------------
+  Console.println(F("---------- mower motor ---------------------------------------"));
+  Console.print  (F("motorMowAccel                              : "));
   Console.println(motorMowAccel);
-  Console.print  (F("motorMowSpeedMaxPwm : "));
+  Console.print  (F("motorMowSpeedMaxPwm                        : "));
   Console.println(motorMowSpeedMaxPwm);
-  Console.print  (F("motorMowPowerMax : "));
+  Console.print  (F("motorMowPowerMax                           : "));
   Console.println(motorMowPowerMax);
-  Console.print  (F("motorMowModulate : "));
-  Console.println(motorMowModulate);
-  Console.print  (F("motorMowRPMSet : "));  
+  Console.print  (F("motorMowModulate                           : "));
+  Console.println(motorMowModulate,1);
+  Console.print  (F("motorMowRPMSet                             : "));  
   Console.println(motorMowRPMSet);
-  Console.print  (F("motorMowSenseScale : "));
+  Console.print  (F("motorMowSenseScale                         : "));
   Console.println(motorMowSenseScale); 
-  Console.print  (F("motorMowPID.Kp : "));
+  Console.print  (F("motorMowPID.Kp                             : "));
   Console.println(motorMowPID.Kp);
-  Console.print  (F("motorMowPID.Ki : "));
+  Console.print  (F("motorMowPID.Ki                             : "));
   Console.println(motorMowPID.Ki);
-  Console.print  (F("motorMowPID.Kd : "));
+  Console.print  (F("motorMowPID.Kd                             : "));
   Console.println(motorMowPID.Kd);
   
-  // ------ bumper ------------------------------------
-  Console.println(F("---------- bumper ----------"));
-  Console.print  (F("bumperUse : "));
-  Console.println(bumperUse);
+  // ------ bumper ----------------------------------------------------------------
+  Console.println(F("---------- bumper --------------------------------------------"));
+  Console.print  (F("bumperUse                                  : "));
+  Console.println(bumperUse,1);
 
-  // ------ drop ------------------------------------
-  Console.println(F("---------- drop ----------"));
-  Console.print  (F("dropUse : "));
-  Console.println(dropUse);
+  // ------ drop ------------------------------------------------------------------
+  Console.println(F("---------- drop ----------------------------------------------"));
+  Console.print  (F("dropUse                                    : "));
+  Console.println(dropUse,1);
 
-  Console.print  (F("dropContact : "));
-  Console.println(dropcontact);
+  Console.print  (F("dropContact                                : "));
+  Console.println(dropcontact,1);
 
-  // ------ rain ------------------------------------
-  Console.println(F("---------- rain ----------"));
-  Console.print  (F("rainUse : "));
-  Console.println(rainUse);
+  // ------ rain ------------------------------------------------------------------
+  Console.println(F("---------- rain ----------------------------------------------"));
+  Console.print  (F("rainUse                                    : "));
+  Console.println(rainUse,1);
 
-  // ------ sonar ------------------------------------
-  Console.println(F("---------- sonar ----------"));
-  Console.print  (F("sonarUse : "));
-  Console.println(sonarUse);
-  Console.print  (F("sonarLeftUse : "));
-  Console.println(sonarLeftUse);
-  Console.print  (F("sonarRightUse : "));
-  Console.println(sonarRightUse);
-  Console.print  (F("sonarCenterUse : "));
-  Console.println(sonarCenterUse);
-  Console.print  (F("sonarTriggerBelow : "));
+  // ------ sonar -----------------------------------------------------------------
+  Console.println(F("---------- sonar ---------------------------------------------"));
+  Console.print  (F("sonarUse                                   : "));
+  Console.println(sonarUse,1);
+  Console.print  (F("sonarLeftUse                               : "));
+  Console.println(sonarLeftUse,1);
+  Console.print  (F("sonarRightUse                              : "));
+  Console.println(sonarRightUse,1);
+  Console.print  (F("sonarCenterUse                             : "));
+  Console.println(sonarCenterUse,1);
+  Console.print  (F("sonarTriggerBelow                          : "));
   Console.println(sonarTriggerBelow);
-  
-  // ------ perimeter ---------------------------------
-  Console.println(F("---------- perimeter ----------"));
-  Console.print  (F("perimeterUse : "));
-  Console.println(perimeterUse);
-  Console.print  (F("perimeterTriggerTimeout : "));
+
+  // ------ perimeter -------------------------------------------------------------
+  Console.println(F("---------- perimeter -----------------------------------------"));
+  Console.print  (F("perimeterUse                               : "));
+  Console.println(perimeterUse,1);
+  Console.print  (F("perimeterTriggerTimeout                    : "));
   Console.println(perimeterTriggerTimeout);
-  Console.print  (F("perimeterOutRollTimeMax : "));
+  Console.print  (F("perimeterOutRollTimeMax                    : "));
   Console.println(perimeterOutRollTimeMax);
-  Console.print  (F("perimeterOutRollTimeMin : "));
+  Console.print  (F("perimeterOutRollTimeMin                    : "));
   Console.println(perimeterOutRollTimeMin);
-  Console.print  (F("perimeterOutRevTime : "));
+  Console.print  (F("perimeterOutRevTime                        : "));
   Console.println(perimeterOutRevTime);
-  Console.print  (F("perimeterTrackRollTime : "));
+  Console.print  (F("perimeterTrackRollTime                     : "));
   Console.println(perimeterTrackRollTime);
-  Console.print  (F("perimeterTrackRevTime : "));
-  Console.println(perimeterTrackRevTime);
-  Console.print  (F("perimeterPID.Kp : "));
+  Console.print  (F("perimeterTrackRevTime                      : "));
+  Console.println(perimeterTrackRevTime); 
+  Console.print  (F("perimeterPID.Kp                            : "));
   Console.println(perimeterPID.Kp);
-  Console.print  (F("perimeterPID.Ki : "));
+  Console.print  (F("perimeterPID.Ki                            : "));
   Console.println( perimeterPID.Ki);
-  Console.print  (F("perimeterPID.Kd : "));
+  Console.print  (F("perimeterPID.Kd                            : "));
   Console.println(perimeterPID.Kd);
-  Console.print  (F("trackingPerimeterTransitionTimeOut : "));
+  Console.print  (F("trackingPerimeterTransitionTimeOut         : "));
   Console.println(trackingPerimeterTransitionTimeOut);
-  Console.print  (F("trackingErrorTimeOut : "));
+  Console.print  (F("trackingErrorTimeOut                       : "));
   Console.println(trackingErrorTimeOut);
   Console.print  (F("trackingBlockInnerWheelWhilePerimeterStruggling : "));
-  Console.println(trackingBlockInnerWheelWhilePerimeterStruggling);
-  
-  // ------ lawn sensor --------------------------------
-  Console.println(F("---------- lawn sensor ----------"));
-  Console.print  (F("lawnSensorUse : "));
-  Console.println(lawnSensorUse);
+  Console.println(trackingBlockInnerWheelWhilePerimeterStruggling,1);
 
-  // ------  IMU (compass/accel/gyro) ----------------------
-  Console.println(F("---------- IMU (compass/accel/gyro) ----------"));
-  Console.print  (F("imuUse : "));
-  Console.println( imuUse);
-  Console.print  (F("imuCorrectDir : "));
-  Console.println(imuCorrectDir); 
-  Console.print  (F("imuDirPID.Kp : "));
+  // ------ lawn sensor -----------------------------------------------------------
+  Console.println(F("---------- lawn sensor ---------------------------------------"));
+  Console.print  (F("lawnSensorUse         : "));
+  Console.println(lawnSensorUse,1);
+
+  // ------  IMU (compass/accel/gyro) ---------------------------------------------
+  Console.println(F("---------- IMU (compass/accel/gyro) --------------------------"));
+  Console.print  (F("imuUse                                     : "));
+  Console.println( imuUse,1);
+  Console.print  (F("imuCorrectDir                              : "));
+  Console.println(imuCorrectDir,1); 
+  Console.print  (F("imuDirPID.Kp                               : "));
   Console.println(imuDirPID.Kp); 
-  Console.print  (F("imuDirPID.Ki : "));
+  Console.print  (F("imuDirPID.Ki                               : "));
   Console.println(imuDirPID.Ki); 
-  Console.print  (F("imuDirPID.Kd : "));
+  Console.print  (F("imuDirPID.Kd                               : "));
   Console.println( imuDirPID.Kd);
-  Console.print  (F("imuRollPID.Kp : "));
+  Console.print  (F("imuRollPID.Kp                              : "));
   Console.println(imuRollPID.Kp); 
-  Console.print  (F("imuRollPID.Ki : "));
+  Console.print  (F("imuRollPID.Ki                              : "));
   Console.println(imuRollPID.Ki); 
-  Console.print  (F("imuRollPID.Kd : "));
+  Console.print  (F("imuRollPID.Kd                              : "));
   Console.println(imuRollPID.Kd); 
 
-  // ------ model R/C ------------------------------------
-  Console.println(F("---------- model R/C ----------"));
-  Console.print  (F("remoteUse : "));
-  Console.println(remoteUse); 
+  // ------ model R/C -------------------------------------------------------------
+  Console.println(F("---------- model R/C -----------------------------------------"));
+  Console.print  (F("remoteUse                                  : "));
+  Console.println(remoteUse,1); 
 
-// ------ model R/C Interrupt--------------------------
- Console.println(F("---------- model R/C Interrupt ----------"));
-  Console.print  (F("Pin 10 pinRemoteSpeed : "));
+// ------ model R/C Interrupt------------------------------------------------------
+ Console.println(F("---------- model R/C Interrupt --------------------------------"));
+  Console.print  (F("Pin 10 pinRemoteSpeed                      : "));
   Console.println bitRead(PCMSK0, PCINT4); // Pin 10
-  Console.print  (F("Pin 11 pinRemoteSteer : "));
+  Console.print  (F("Pin 11 pinRemoteSteer                      : "));
   Console.println bitRead(PCMSK0, PCINT5); // Pin 11
-  Console.print  (F("Pin 12 pinRemoteMow : "));
+  Console.print  (F("Pin 12 pinRemoteMow                        : "));
   Console.println bitRead(PCMSK0, PCINT6); // Pin 12
-  Console.print  (F("Pin 52 pinRemoteSwitch : "));
+  Console.print  (F("Pin 52 pinRemoteSwitch                     : "));
   Console.println bitRead(PCMSK0, PCINT1); // Pin 52
   
-  // ------ battery -------------------------------------
-  Console.println(F("---------- battery ----------"));
-  Console.print  (F("batMonitor : "));
-  Console.println( batMonitor);
-  Console.print  (F("batGoHomeIfBelow : "));
+  // ------ battery ---------------------------------------------------------------
+  Console.println(F("---------- battery -------------------------------------------"));
+  Console.print  (F("batMonitor                                 : "));
+  Console.println( batMonitor,1);
+  Console.print  (F("batGoHomeIfBelow                           : "));
   Console.println(batGoHomeIfBelow); 
-  Console.print  (F("batSwitchOffIfBelow : "));
+  Console.print  (F("batSwitchOffIfBelow                        : "));
   Console.println(batSwitchOffIfBelow); 
-  Console.print  (F("batSwitchOffIfIdle : "));
+  Console.print  (F("batSwitchOffIfIdle                         : "));
   Console.println(batSwitchOffIfIdle); 
-  Console.print  (F("batFactor : "));
+  Console.print  (F("batFactor                                  : "));
   Console.println( batFactor);
-  Console.print  (F("batChgFactor : "));  
+  Console.print  (F("batChgFactor                               : "));  
   Console.println( batChgFactor);
-  Console.print  (F("batFull : "));
+  Console.print  (F("batFull                                    : "));
   Console.println( batFull);
-  Console.print  (F("batChargingCurrentMax : "));
+  Console.print  (F("batChargingCurrentMax                      : "));
   Console.println(batChargingCurrentMax); 
-  Console.print  (F("batFullCurrent : "));
+  Console.print  (F("batFullCurrent                             : "));
   Console.println(batFullCurrent); 
-  Console.print  (F("startChargingIfBelow : "));
+  Console.print  (F("startChargingIfBelow                       : "));
   Console.println(startChargingIfBelow); 
-  Console.print  (F("chargingTimeout : "));
+  Console.print  (F("chargingTimeout                            : "));
   Console.println(chargingTimeout); 
-  Console.print  (F("chgSelection : "));
+  Console.print  (F("chgSelection                               : "));
   Console.println(chgSelection); 
-  Console.print  (F("chgSenseZero : "));
+  Console.print  (F("chgSenseZero                               : "));
   Console.println(chgSenseZero); 
-  Console.print  (F("chgFactor : "));
+  Console.print  (F("chgFactor                                  : "));
   Console.println( chgFactor);
-  Console.print  (F("chgSense : "));
+  Console.print  (F("chgSense                                   : "));
   Console.println(chgSense); 
-  Console.print  (F("chgChange : "));
-  Console.println(chgChange); 
-  Console.print  (F("chgNull : "));
-  Console.println(chgNull); 
+  Console.print  (F("chgChange                                  : "));
+  Console.println(chgChange,1); 
+  Console.print  (F("chgNull                                    : "));
+  Console.println(chgNull,1); 
   
-  // ------  charging station ---------------------------
-  Console.println(F("---------- charging station ----------"));
-  Console.print  (F("stationRevTime : "));
+  // ------  charging station -----------------------------------------------------
+  Console.println(F("---------- charging station ----------------------------------"));
+  Console.print  (F("stationRevTime                             : "));
   Console.println(stationRevTime); 
-  Console.print  (F("stationRollTime : "));
+  Console.print  (F("stationRollTime                            : "));
   Console.println(stationRollTime); 
-  Console.print  (F("stationForwTime : "));
+  Console.print  (F("stationForwTime                            : "));
   Console.println( stationForwTime);
-  Console.print  (F("stationCheckTime : "));
+  Console.print  (F("stationCheckTime                           : "));
   Console.println(stationCheckTime); 
   
-  // ------ odometry ------------------------------------
-  Console.println(F("---------- odometry ----------"));
-  Console.print  (F("odometryUse : "));
-  Console.println( odometryUse);
-  Console.print  (F("twoWayOdometrySensorUse : "));
-  Console.println( twoWayOdometrySensorUse);
-  Console.print  (F("odometryTicksPerRevolution : "));
+  // ------ odometry --------------------------------------------------------------
+  Console.println(F("---------- odometry ------------------------------------------"));
+  Console.print  (F("odometryUse                                : "));
+  Console.println( odometryUse,1);
+  Console.print  (F("twoWayOdometrySensorUse                    : "));
+  Console.println( twoWayOdometrySensorUse,1);
+  Console.print  (F("odometryTicksPerRevolution                 : "));
   Console.println( odometryTicksPerRevolution);
-  Console.print  (F("odometryTicksPerCm : "));
+  Console.print  (F("odometryTicksPerCm                         : "));
   Console.println( odometryTicksPerCm);
-  Console.print  (F("odometryWheelBaseCm : "));
+  Console.print  (F("odometryWheelBaseCm                        : "));
   Console.println( odometryWheelBaseCm);
-  Console.print  (F("odometryRightSwapDir : "));
+  Console.print  (F("odometryRightSwapDir                       : "));
   Console.println(odometryRightSwapDir); 
-  Console.print  (F("odometryLeftSwapDir : "));
+  Console.print  (F("odometryLeftSwapDir                        : "));
   Console.println(odometryLeftSwapDir); 
 
-// ------ odometry Interrupt--------------------------
- Console.println(F("---------- Odometry Interrupt ----------"));
-  Console.print  (F("oneway left : "));
+// ------ odometry Interrupt-------------------------------------------------------
+ Console.println(F("---------- Odometry Interrupt ---------------------------------"));
+  Console.print  (F("oneway left                                : "));
   Console.println bitRead(PCMSK2, PCINT20);
-  Console.print  (F("Oneway right : "));
+  Console.print  (F("Oneway right                               : "));
   Console.println bitRead(PCMSK2, PCINT22);
-  Console.print  (F("twoway left : "));
+  Console.print  (F("twoway left                                : "));
   Console.println bitRead(PCMSK2, PCINT21);
-  Console.print  (F("twoway right : "));
+  Console.print  (F("twoway right                               : "));
   Console.println bitRead(PCMSK2, PCINT23); 
   
-// ----- GPS -------------------------------------------
-  Console.println(F("---------- GPS ----------"));
-  Console.print  (F("gpsUse : "));
-  Console.println(gpsUse); 
-  Console.print  (F("stuckIfGpsSpeedBelow : "));
+// ----- GPS ----------------------------------------------------------------------
+  Console.println(F("---------- GPS -----------------------------------------------"));
+  Console.print  (F("gpsUse                                     : "));
+  Console.println(gpsUse,1); 
+  Console.print  (F("stuckIfGpsSpeedBelow                       : "));
   Console.println(stuckIfGpsSpeedBelow); 
-  Console.print  (F("gpsSpeedIgnoreTime : "));
+  Console.print  (F("gpsSpeedIgnoreTime                         : "));
   Console.println(gpsSpeedIgnoreTime); 
   
 
-// ----- other -----------------------------------------
-  Console.println(F("---------- other ----------"));
-  Console.print  (F("buttonUse : "));
-  Console.println(buttonUse); 
+// ----- other --------------------------------------------------------------------
+  Console.println(F("---------- other ---------------------------------------------"));
+  Console.print  (F("buttonUse                                  : "));
+  Console.println(buttonUse,1); 
 
-// ----- user-defined switch ---------------------------
-  Console.println(F("---------- user-defined switch ----------"));
-  Console.print  (F("userSwitch1 : "));
-  Console.println(userSwitch1); 
-  Console.print  (F("userSwitch2 : "));
-  Console.println(userSwitch2); 
-  Console.print  (F("userSwitch3 : "));
-  Console.println(userSwitch3); 
+// ----- user-defined switch ------------------------------------------------------
+  Console.println(F("---------- user-defined switch -------------------------------"));
+  Console.print  (F("userSwitch1                                : "));
+  Console.println(userSwitch1,1); 
+  Console.print  (F("userSwitch2                                : "));
+  Console.println(userSwitch2,1); 
+  Console.print  (F("userSwitch3                                : "));
+  Console.println(userSwitch3,1); 
 
-// ----- timer -----------------------------------------
-  Console.println(F("---------- timer ----------"));
-  Console.print  (F("timerUse : "));
-  Console.println(timerUse); 
+// ----- timer --------------------------------------------------------------------
+  Console.println(F("---------- timer ---------------------------------------------"));
+  Console.print  (F("timerUse                                   : "));
+  Console.println(timerUse,1); 
 
-// -------robot stats------------------------------------
-  Console.println(F("---------- robot stats ----------"));
-  Console.print  (F("statsMowTimeMinutesTrip : "));
+// ----- bluetooth ---------------------------------------------------------------
+  Console.println(F("---------- bluetooth-----------------------------------------"));
+  Console.print  (F("bluetoothuse                               : "));
+  Console.println(bluetoothUse,1); 
+
+// ----- esp8266 -----------------------------------------------------------------
+  Console.println(F("---------- esp8266 ------------------------------------------"));
+  Console.print  (F("esp8266Use                                 : "));
+  Console.println(esp8266Use,1); 
+  Console.print  (F("esp8266ConfigString                        : "));
+  Console.println(esp8266ConfigString); 
+
+// -------robot stats--------------------------------------------------------------
+  Console.println(F("---------- robot stats ---------------------------------------"));
+  Console.print  (F("statsMowTimeMinutesTrip                    : "));
   Console.println(statsMowTimeMinutesTrip);
-  Console.print  (F("statsMowTimeMinutesTotal : "));
+  Console.print  (F("statsMowTimeMinutesTotal                   : "));
   Console.println(statsMowTimeMinutesTotal);
-  Console.print  (F("statsBatteryChargingCounterTotal : "));
+  Console.print  (F("statsBatteryChargingCounterTotal           : "));
   Console.println(statsBatteryChargingCounterTotal);
-  Console.print  (F("statsBatteryChargingCapacityTrip in mAh : "));
+  Console.print  (F("statsBatteryChargingCapacityTrip in mAh    : "));
   Console.println(statsBatteryChargingCapacityTrip);
-  Console.print  (F("statsBatteryChargingCapacityTotal in Ah : "));
+  Console.print  (F("statsBatteryChargingCapacityTotal in Ah    : "));
   Console.println(statsBatteryChargingCapacityTotal / 1000);
   Console.print  (F("statsBatteryChargingCapacityAverage in mAh : "));
   Console.println(statsBatteryChargingCapacityAverage);
   return;
 
 }
-
-
 
 void Robot::saveUserSettings(){
   Console.println(F("USER SETTINGS ARE SAVED"));

@@ -256,7 +256,7 @@ Mower::Mower(){
   bluetoothUse      = 1;       // use Bluetooth module?
   // ----- esp8266 ---------------------------------------
   esp8266Use        = 0;       // use ESP8266 Wifi module?
-  esp8266ConfigString = "";
+  esp8266ConfigString = "123test321";
   // ------ mower stats-------------------------------------------  
   statsOverride = false; // if set to true mower stats are overwritten - be careful
   statsMowTimeMinutesTotal = 300;
