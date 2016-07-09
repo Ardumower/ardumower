@@ -1769,8 +1769,8 @@ void Robot::readSensors(){
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
-    if (perimeterInside < 0) setActuator(ACT_LED, HIGH);
-      else setActuator(ACT_LED, LOW);      
+    if (perimeterInside < 0) setActuator(ACT_LED, HIGH);                     
+      else setActuator(ACT_LED, LOW);    
     if ((!perimeterInside) && (perimeterTriggerTime == 0)){
       // set perimeter trigger time      
       if (millis() > stateStartTime + 2000){ // far away from perimeter?
@@ -1816,11 +1816,11 @@ void Robot::readSensors(){
   }
 
 
-  if ((sonarUse) && (millis() >= nextTimeSonar)){
-    //static char senSonarTurn = SEN_SONAR_RIGHT;    
-    nextTimeSonar = millis() + 250;
+ if ((sonarUse) && (millis() >= nextTimeSonar)){
+    static char senSonarTurn = SEN_SONAR_RIGHT;    
+    nextTimeSonar = millis() + 80;
     
-    /*switch(senSonarTurn) {
+    switch(senSonarTurn) {
       case SEN_SONAR_RIGHT:
         if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);
         senSonarTurn = SEN_SONAR_LEFT;
@@ -1837,10 +1837,11 @@ void Robot::readSensors(){
         senSonarTurn = SEN_SONAR_RIGHT;
         break;
     }   
-    */
+/*
     if (sonarRightUse) sonarDistRight = readSensor(SEN_SONAR_RIGHT);    
     if (sonarLeftUse) sonarDistLeft = readSensor(SEN_SONAR_LEFT);    
-    if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER);    
+    if (sonarCenterUse) sonarDistCenter = readSensor(SEN_SONAR_CENTER); 
+*/         
   }
 
 

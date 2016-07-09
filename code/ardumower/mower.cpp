@@ -39,6 +39,8 @@
 #include "config.h"
 #ifdef USE_MOWER
 
+#include "NewPing.h"
+
 #include <Arduino.h>
 #include "mower.h"
 #include "due.h"
@@ -78,6 +80,8 @@
 #define pinPerimeterRight A4       // perimeter
 #define pinPerimeterLeft A5
 
+#define pinGreenLED 6              // DuoLED green
+#define pinRedLED 7                // DuoLED red
 #define pinLED 13                  // LED
 #define pinBuzzer 53               // Buzzer
 #define pinTilt 35                 // Tilt sensor (required for TC-G158 board)
@@ -301,7 +305,9 @@ ISR(PCINT2_vect){
 // mower motor speed sensor interrupt
 //void rpm_interrupt(){
 //}
-
+ NewPing NewSonarLeft(pinSonarLeftTrigger, pinSonarLeftEcho, 500);
+ NewPing NewSonarRight(pinSonarRightTrigger, pinSonarRightEcho, 500);
+ NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
 
 // WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
 // (required so we can use Arduino Due native port)
@@ -627,10 +633,13 @@ int Mower::readSensor(char type){
 
 // sonar---------------------------------------------------------------------------------------------------
     //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-    case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
-    case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
-    case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
-   // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
+    //case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
+    //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
+    //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
+    case SEN_SONAR_CENTER: return(NewSonarCenter.ping_cm()); break;
+    case SEN_SONAR_LEFT: return(NewSonarLeft.ping_cm()); break;
+    case SEN_SONAR_RIGHT: return(NewSonarRight.ping_cm()); break;
+    // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     
 // imu-------------------------------------------------------------------------------------------------------

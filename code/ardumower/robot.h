@@ -84,7 +84,7 @@ enum {
   SEN_MOTOR_MOW_RPM,
   SEN_RTC,
   SEN_RAIN,
-};
+} senSonarTurn;
 
 // actuators
 enum {
