@@ -39,7 +39,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "ArduMower RadarDuino"
-Date "2016-05-04"
+Date "2016-07-10"
 Rev "3.00.ARD"
 Comp "Schaltplan / Layout  JL & UZ"
 Comment1 ""
@@ -954,7 +954,7 @@ F 1 "10uF" H 6360 4270 50  0000 L CNN
 F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 6350 4350 60  0001 C CNN
 F 3 "" H 6350 4350 60  0000 C CNN
 	1    6350 4350
-	1    0    0    -1  
+	-1   0    0    1   
 $EndComp
 $Comp
 L C_Small C20
@@ -5635,7 +5635,7 @@ A9 B3 27 FD 41 01 94 0C 7D CE 01 00 00 50 E1 2C CB D2 5A 9B 66 8A 25 BB 45 44 92
 00 F0 0B DF 36 BA 18 86 E1 DB 73 07 30 42 90 7B 03 00 00 F8 85 6F 17 D9 62 81 31 00 65 47 EE 0D 
 00 00 80 0A 67 18 DC F4 02 28 33 BE 86 00 00 00 50 E1 68 F7 06 50 76 E4 DE 00 00 00 A8 7C 8C F7 
 06 50 5E E4 DE 00 00 00 A8 70 59 D6 F7 2E 41 B8 61 8B 05 E0 5A F1 FF 3D 02 7B 6A FA 68 F9 99 00 
-00 00 00 49 45 4E 44 AE 42 60 82 54 
+00 00 00 49 45 4E 44 AE 42 60 82 FA 
 EndData
 $EndBitmap
 $Comp
@@ -6443,15 +6443,11 @@ Wire Wire Line
 Wire Wire Line
 	7050 4000 7650 4000
 Wire Wire Line
-	6350 4250 6350 4200
-Wire Wire Line
 	6350 4200 7050 4200
 Wire Wire Line
 	6800 4200 6800 4250
 Connection ~ 7050 4200
 Connection ~ 6800 4200
-Wire Wire Line
-	6350 4550 6350 4450
 Wire Wire Line
 	6350 4500 6800 4500
 Wire Wire Line
@@ -6587,5 +6583,11 @@ F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?Ope
 	-1   0    0    1   
 $EndComp
 Text Notes 12640 4825 0    60   ~ 0
-26.05.2016\nTransistor Lib ausgetauscht\nDiode Pad Löcher vergrößert\nBeschriftung Reset Taster\nSchalter Symbol Start Stop hinzugefügt
+26.05.2016\nTransistor Lib ausgetauscht\nDiode Pad Löcher vergrößert\nBeschriftung Reset Taster\nSchalter Symbol Start Stop hinzugefügt\n\n10.07.2016\nKondensator C16 war verpolt
+Wire Wire Line
+	6350 4500 6350 4450
+Wire Wire Line
+	6350 4250 6350 4200
+Text Notes 7300 6850 0    118  ~ 24
+Ultraschall/IR Zonen Scanner Sensor
 $EndSCHEMATC

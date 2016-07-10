@@ -1,4 +1,4 @@
-update=04.05.2016 09:34:33
+update=10.07.2016 15:30:39
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,6 +23,19 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
+[general]
+version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
+ERC_TestSimilarLabels=1
 [eeschema]
 version=1
 LibDir=../../../../../kicad/kicad/share/modules;../../../../../kicad/kicad/share/modules/packages3d;../../../../../kicad/kicad/share/library
@@ -60,16 +73,3 @@ LibName30=MPX5010
 LibName31=OPA2340PA
 LibName32=LM2940CS-5.0
 LibName33=Zimprich
-[general]
-version=1
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
-ERC_TestSimilarLabels=1
