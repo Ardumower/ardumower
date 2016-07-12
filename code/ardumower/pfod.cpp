@@ -457,7 +457,7 @@ void RemoteControl::processDropMenu(String pfodCmd){
 
 
 void RemoteControl::sendSonarMenu(boolean update){
-  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Sonar`1000"));         
+  if (update) serialPort->print("{:"); else serialPort->print(F("{.Sonar`1000"));         
   serialPort->print(F("|d00~Use "));
   sendYesNo(robot->sonarUse);
   serialPort->print(F("|d04~Use left "));
