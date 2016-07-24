@@ -457,25 +457,25 @@ void RemoteControl::processDropMenu(String pfodCmd){
 
 
 void RemoteControl::sendSonarMenu(boolean update){
-  if (update) Bluetooth.print("{:"); else Bluetooth.print(F("{.Sonar`1000"));         
-  Bluetooth.print(F("|d00~Use "));
+  if (update) serialPort->print("{:"); else serialPort->print(F("{.Sonar`1000"));         
+  serialPort->print(F("|d00~Use "));
   sendYesNo(robot->sonarUse);
-  Bluetooth.print(F("|d04~Use left "));
+  serialPort->print(F("|d04~Use left "));
   sendYesNo(robot->sonarLeftUse);
-  Bluetooth.print(F("|d05~Use center "));
+  serialPort->print(F("|d05~Use center "));
   sendYesNo(robot->sonarCenterUse);
-  Bluetooth.print(F("|d06~Use right "));
+  serialPort->print(F("|d06~Use right "));
   sendYesNo(robot->sonarRightUse);
-  Bluetooth.print(F("|d01~Counter "));
-  Bluetooth.print(robot->sonarDistCounter);    
-  Bluetooth.println(F("|d02~Value l, c, r"));
-  Bluetooth.print(robot->sonarDistLeft);
-  Bluetooth.print(", ");
-  Bluetooth.print(robot->sonarDistCenter);
-  Bluetooth.print(", ");
-  Bluetooth.print(robot->sonarDistRight);  
+  serialPort->print(F("|d01~Counter "));
+  serialPort->print(robot->sonarDistCounter);    
+  serialPort->println(F("|d02~Value l, c, r"));
+  serialPort->print(robot->sonarDistLeft);
+  serialPort->print(", ");
+  serialPort->print(robot->sonarDistCenter);
+  serialPort->print(", ");
+  serialPort->print(robot->sonarDistRight);  
   sendSlider("d03", F("Trigger below"), robot->sonarTriggerBelow, "", 1, 80);       
-  Bluetooth.println("}"); 
+  serialPort->println("}"); 
 }
 
 void RemoteControl::processSonarMenu(String pfodCmd){      
@@ -1324,10 +1324,10 @@ void RemoteControl::run(){
       serialPort->print(robot->motorRightRpmCurr);
       serialPort->print(",");
       serialPort->print(robot->motorLeftSpeedRpmSet);
-      serialPort->print(robot->motorLeftPID.w);
+      //serialPort->print(robot->motorLeftPID.w);
       serialPort->print(",");
       serialPort->print(robot->motorRightSpeedRpmSet);
-      serialPort->print(robot->motorRightPID.w);
+      //serialPort->print(robot->motorRightPID.w);
       serialPort->print(",");
       serialPort->print(robot->motorLeftPWMCurr);
       serialPort->print(",");
