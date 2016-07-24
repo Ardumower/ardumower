@@ -106,6 +106,7 @@ public:
   int calibAccAxisCounter;
   // calibrate acceleration sensor  
   boolean calibAccNextAxis();  
+  boolean calibrationAvail;
   // --------- compass state --------------------------  
   point_float_t com; // compass sensor data (raw)
   point_float_t comLast;

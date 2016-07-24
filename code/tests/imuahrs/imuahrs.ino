@@ -48,8 +48,10 @@ void loop()  {
       else if (ch == 'c') imu.calibComStartStop();
     }              
     if (imu.state == IMU_RUN){
-      Console.print("calls=");  
+      Console.print("calls=");        
       Console.print(imu.getCallCounter());  
+      Console.print("\tcomMag=");
+      Console.print(sqrt(sq(imu.com.x)+sq(imu.com.y)+sq(imu.com.z)));
       Console.print("\tyaw=");  
       Console.print(imu.ypr.yaw/PI*180.0);  
       Console.print("\tpitch=");  

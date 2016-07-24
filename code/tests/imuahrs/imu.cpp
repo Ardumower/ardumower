@@ -33,7 +33,7 @@
 
 #define pinLED 13
 
-#define ADDR 256
+#define ADDR 600
 #define MAGIC 6
 
 
@@ -50,6 +50,7 @@ struct {
 
 IMU::IMU(){
   hardwareInitialized = false;
+  calibrationAvail = false;
   state = IMU_RUN;
   callCounter = 0;  
   errorCounter = 0;
@@ -72,7 +73,12 @@ IMU::IMU(){
   accOfs.x=accOfs.y=accOfs.z = 0;
   accScale.x=accScale.y=accScale.z = 2;  
   com.x=com.y=com.z=0;  
-  
+
+  //accOfs=7.90,0.85,-21.01
+  //accScale=527.87,524.25,513.01
+  //comOfs=-10.50,-87.00,-188.50
+  //comScale=1047.00,1160.00,981.00
+
   comScale.x=comScale.y=comScale.z=2;  
   comOfs.x=comOfs.y=comOfs.z=0;    
   useComCalibration = true;
@@ -155,6 +161,7 @@ void IMU::loadCalib(){
     Console.println(F("IMU error: no calib data"));
     return;  
   }
+  calibrationAvail = true;
   Console.println(F("IMU: found calib data"));
   loadSaveCalib(true);
 }
@@ -422,6 +429,7 @@ void IMU::calibComStartStop(){
   if (state == IMU_CAL_COM){
     // stop 
     Console.println(F("com calib completed"));    
+    calibrationAvail = true;
     float xrange = comMax.x - comMin.x;
     float yrange = comMax.y - comMin.y;
     float zrange = comMax.z - comMin.z;
