@@ -23,20 +23,8 @@
   
   Private-use only! (you need to ask for a commercial-use)
 
-  
- changes: see https://code.google.com/p/ardumower/source/list
 
-Operation modes (press button for x beeps):
-1 beeps : normal mowing                           OK, tested
-2 beeps : normal mowing (bidir)                   broken
-3 beeps : drive by remote control (RC)            should work, not tested
-4 beeps : normal without perimeter                OK, tested
-5 beeps : find perimeter and track it             OK, tested
-6 beeps : track perimeter (debug-feature)         OK, tested 
-7 beeps : normal mowing (lane-by-lane)            broken
-
-
-For additional circuits for button, buzzer etc. (DIY version), see www.ardumower.de  
+  Documentation:  http://wiki.ardumower.de
     
  */
 #include <Arduino.h>
