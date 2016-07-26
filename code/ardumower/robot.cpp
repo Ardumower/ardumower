@@ -2747,7 +2747,6 @@ void Robot::loop()  {
     case STATE_ERROR:
       // fatal-error
       if (millis() >= nextTimeErrorBeep){
-        nextTimeErrorBeep = millis() + 300;
         beep(1, true);
       }
       //delay(100);                        
