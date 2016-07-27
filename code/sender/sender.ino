@@ -32,11 +32,10 @@
 #include "EEPROM.h"
 #include "RunningMedian.h"
 
-// #define USE_DEVELOPER_TEST    1      // uncomment for new perimeter signal test (developers) 
 
 // --- MC33926 motor driver ---
-#define USE_DOUBLE_AMPLTIUDE    1         // uncomment to use +/- input voltage for amplitude (default), 
-                                         // comment to use only +input/GND voltage for amplitude
+#define USE_DOUBLE_AMPLTIUDE    1         // 1: use +/- input voltage for amplitude (default), 
+                                          // 0: use only +input/GND voltage for amplitude
                                          
 #define pinIN1       9  // M1_IN1         (if using old L298N driver, connect this pin to L298N-IN1)
 #define pinIN2       2  // M1_IN2         (if using old L298N driver, connect this pin to L298N-IN2)
@@ -68,8 +67,10 @@
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
 
 
+#define USE_DEVELOPER_TEST    0      // set to one for a perimeter test signal (developers-only)  
+
 // code version 
-#define VER "594"
+#define VER "595"
 
 // --------------------------------------
 
@@ -102,7 +103,7 @@ int robotOutOfStationTimeMins = 0;
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
 // "pseudonoise4_pw" signal (sender)
 
-#ifdef USE_DEVELOPER_TEST
+#if USE_DEVELOPER_TEST
   // a more motor driver friendly signal (sender)
   int8_t sigcode[] = {  1,0,0,0,0,
                         1,0,0,0,0,
@@ -135,7 +136,7 @@ void timerCallback(){
   if (enableSender){
     if (sigcode[step] == 1) {      
       digitalWrite(pinIN1, LOW);                           
-      #ifdef USE_DOUBLE_AMPLTIUDE      
+      #if USE_DOUBLE_AMPLTIUDE            
       digitalWrite(pinIN2, HIGH);                                 
       #endif             
       digitalWrite(pinEnable, HIGH);
@@ -207,7 +208,7 @@ void setup() {
   Serial.println("START");
   Serial.print("Ardumower Sender ");
   Serial.println(VER);
-  #ifdef USE_DEVELOPER_TEST
+  #if USE_DEVELOPER_TEST
     Serial.println("Warning: USE_DEVELOPER_TEST activated");
   #endif
   Serial.print("USE_PERI_FAULT=");
