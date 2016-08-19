@@ -2035,6 +2035,14 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + perimeterOutRevTime + motorZeroSettleTime; 
   }
   else if (stateNew == STATE_PERI_OUT_ROLL){
+      imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
+      if (imuRollDir == LEFT){
+        imuRollHeading = scalePI(imuDriveHeading - PI/20);
+        imuRollDir = RIGHT;
+      } else {
+        imuRollHeading = scalePI(imuDriveHeading + PI/20);
+        imuRollDir = LEFT;
+      }
     stateEndTime = millis() + random(perimeterOutRollTimeMin,perimeterOutRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
