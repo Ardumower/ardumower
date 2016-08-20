@@ -9,8 +9,8 @@
   
   
   Autor: Jürgen Lange
-  Stand: 05.08.2015
-  Version: 0.03 Testversion
+  Stand: 19.08.2015
+  Version: 0.04 Testversion
   
   Private-use only! (you need to ask for a commercial-use)
  
