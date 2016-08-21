@@ -232,8 +232,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM USERDATA: NO EEPROM USER DATA"));
-    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    Debug.println(F("EEPROM USERDATA: NO EEPROM USER DATA"));
+    Debug.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
     addErrorCounter(ERR_EEPROM_DATA);
     setNextState(STATE_ERROR, 0);
     return;
@@ -931,7 +931,7 @@ void Robot::motorControlPerimeter(){
     }
 
     if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut){      
-      Console.println("Error: tracking error");
+      Debug.println("Error: tracking error");
       addErrorCounter(ERR_TRACKING);
       //setNextState(STATE_ERROR,0);
       setNextState(STATE_PERI_FIND,0);
@@ -1026,18 +1026,18 @@ void Robot::checkOdometryFaults(){
     if ( ((motorRightPWMCurr > 100) && (motorRightRpmCurr < -3)) || ((motorRightPWMCurr < -100) && (motorRightRpmCurr > 3)) ) rightErr = true;
   }  
   if (leftErr){
-    Console.print("Left odometry error: PWM=");
-    Console.print(motorLeftPWMCurr);
-    Console.print("\tRPM=");
-    Console.println(motorLeftRpmCurr);
+    Debug.print("Left odometry error: PWM=");
+    Debug.print(motorLeftPWMCurr);
+    Debug.print("\tRPM=");
+    Debug.println(motorLeftRpmCurr);
     addErrorCounter(ERR_ODOMETRY_LEFT);
     setNextState(STATE_ERROR, 0);
   }
   if (rightErr){
-    Console.print("Right odometry error: PWM=");
-    Console.print(motorRightPWMCurr);
-    Console.print("\tRPM=");
-    Console.println(motorRightRpmCurr);
+    Debug.print("Right odometry error: PWM=");
+    Debug.print(motorRightPWMCurr);
+    Debug.print("\tRPM=");
+    Debug.println(motorRightRpmCurr);
     addErrorCounter(ERR_ODOMETRY_RIGHT);
     setNextState(STATE_ERROR, 0);
   }
@@ -1769,7 +1769,7 @@ void Robot::readSensors(){
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
-    if (perimeterInside < 0) setActuator(ACT_LED, HIGH);                     
+    if (perimeterInside) setActuator(ACT_LED, HIGH);                     
       else setActuator(ACT_LED, LOW);    
     if ((!perimeterInside) && (perimeterTriggerTime == 0)){
       // set perimeter trigger time      
@@ -1785,7 +1785,7 @@ void Robot::readSensors(){
       	&& (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
       	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_PERI_OUT_FORW)
         && (stateCurr != STATE_PERI_OUT_REV) && (stateCurr != STATE_PERI_OUT_ROLL)) {
-        Console.println("Error: perimeter too far away");
+        Debug.println("Error: perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
       }
@@ -1886,10 +1886,10 @@ void Robot::readSensors(){
     nextTimeIMU = millis() + 200;   // 5 hz    
     if (imu.getErrorCounter()>0) {
       addErrorCounter(ERR_IMU_COMM);
-      Console.println(F("IMU comm error"));    
+      Debug.println(F("IMU comm error"));    
     }    
     if (!imu.calibrationAvail) {
-      Console.println(F("Error: missing IMU calibration data"));
+      Debug.println(F("Error: missing IMU calibration data"));
       addErrorCounter(ERR_IMU_CALIB);
       setNextState(STATE_ERROR, 0);
     }
@@ -2035,6 +2035,15 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + perimeterOutRevTime + motorZeroSettleTime; 
   }
   else if (stateNew == STATE_PERI_OUT_ROLL){
+      //imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
+	  imuDriveHeading = scalePI(imuDriveHeading + random(PI / 4, PI * 3 / 2); // random toggle heading between 45 degree and 270 degrees (IMU)
+      if (imuRollDir == LEFT){
+        imuRollHeading = scalePI(imuDriveHeading - PI/20);
+        imuRollDir = RIGHT;
+      } else {
+        imuRollHeading = scalePI(imuDriveHeading + PI/20);
+        imuRollDir = LEFT;
+      }
     stateEndTime = millis() + random(perimeterOutRollTimeMin,perimeterOutRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
@@ -2131,7 +2140,7 @@ if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
     if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_ERROR) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
-      Console.println(F("triggered batSwitchOffIfBelow"));
+      Debug.println(F("triggered batSwitchOffIfBelow"));
       addErrorCounter(ERR_BATTERY);
       beep(2, true);      
       setNextState(STATE_OFF, 0);
@@ -2141,7 +2150,7 @@ if (millis() < nextTimeCheckBattery) return;
          && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE) 
          && (stateCurr != STATE_ERROR) && (stateCurr != STATE_PERI_TRACK)
          && (perimeterUse)) {    //UNTESTED please verify
-      Console.println(F("triggered batGoHomeIfBelow"));
+      Debug.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
     }
@@ -2151,12 +2160,12 @@ if (millis() < nextTimeCheckBattery) return;
     if (idleTimeSec != BATTERY_SW_OFF){ // battery already switched off?
       idleTimeSec ++; // add one second idle time
       if (idleTimeSec > batSwitchOffIfIdle * 60) {        
-        Console.println(F("triggered batSwitchOffIfIdle"));      
+        Debug.println(F("triggered batSwitchOffIfIdle"));      
         beep(1, true);      
         loadSaveErrorCounters(false); // saves error counters
         loadSaveRobotStats(false);    // saves robot stats
         idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
-        Console.println(F("BATTERY switching OFF"));
+        Debug.println(F("BATTERY switching OFF"));
         setActuator(ACT_BATTERY_SW, 0);  // switch off battery               
       }
     }
@@ -2174,7 +2183,7 @@ void Robot::receiveGPSTime(){
     gps.stats(&chars, &good_sentences, &failed_cs);    
     if (good_sentences == 0) {
       // no GPS sentences received so far
-      Console.println(F("GPS communication error!"));      
+      Debug.println(F("GPS communication error!"));      
       addErrorCounter(ERR_GPS_COMM);
       // next line commented out as GPS communication may not be available if GPS signal is poor
       //setNextState(STATE_ERROR, 0);
@@ -2271,7 +2280,7 @@ void Robot::checkTimer(){
             // start timer triggered
             stopTimerTriggered = false;
             if ((stateCurr == STATE_STATION) || (stateCurr == STATE_OFF)){
-              Console.println(F("timer start triggered"));
+              Debug.println(F("timer start triggered"));
               motorMowEnable = true;
               setNextState(STATE_FORWARD, 0);
             } 
@@ -2279,7 +2288,7 @@ void Robot::checkTimer(){
         }
       if ((stopTimerTriggered) && (timer[i].active)){
       if (stateCurr == STATE_FORWARD){
-        Console.println(F("timer stop triggered"));
+        Debug.println(F("timer stop triggered"));
         if (perimeterUse){
         setNextState(STATE_PERI_FIND, 0);
       }
@@ -2321,7 +2330,7 @@ void Robot::checkCurrent(){
 
   if (motorMowSenseCounter >= 30){ //ignore motorMowPower for 3 seconds
       motorMowEnable = false;
-      Console.println("Error: Motor mow current");
+      Debug.println("Error: Motor mow current");
       addErrorCounter(ERR_MOW_SENSE);
       lastTimeMotorMowStuck = millis();
      // if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
@@ -2481,7 +2490,7 @@ void Robot::checkLawn(){
 void Robot::checkRain(){
   if (!rainUse) return;
   if (rain){
-    Console.println(F("RAIN"));
+    Debug.println(F("RAIN"));
     if (perimeterUse) setNextState(STATE_PERI_FIND, 0);    
       else setNextState(STATE_OFF, 0);    
   }
@@ -2545,7 +2554,7 @@ void Robot::checkTilt(){
   int rollAngle  = (imu.ypr.roll/PI*180.0);
   if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_STATION) ){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
-      Console.println(F("Error: IMU tilt"));
+      Debug.println(F("Error: IMU tilt"));
       addErrorCounter(ERR_IMU_TILT);
       setNextState(STATE_ERROR,0);
     }
@@ -2589,7 +2598,7 @@ void Robot::checkIfStuck(){
   if (robotIsStuckCounter >= 5){    
     motorMowEnable = false;
     if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stuck and unable to move
-    Console.println(F("Error: Mower is stuck"));
+    Debug.println(F("Error: Mower is stuck"));
     addErrorCounter(ERR_STUCK);
     setNextState(STATE_ERROR,0);    //mower is switched into ERROR
     //robotIsStuckCounter = 0;
