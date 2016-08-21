@@ -35,6 +35,10 @@
   #define Console Serial
   #define ESP8266port Serial1
   #define Bluetooth Serial2
+  #define Debug Console
+//  #define Debug ESP8266port 
+//  #define Debug Bluetooth 
+  
 #else 
   // Arduino Due
   #include "due.h"
