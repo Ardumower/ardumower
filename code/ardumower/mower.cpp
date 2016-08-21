@@ -586,17 +586,17 @@ void Mower::resetMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
-    Debug.println(F("Reset motor left fault"));
+    Console.println(F("Reset motor left fault"));
 }
   if  (digitalRead(pinMotorRightFault)==LOW){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
-    Debug.println(F("Reset motor right fault"));
+    Console.println(F("Reset motor right fault"));
 }
   if (digitalRead(pinMotorMowFault)==LOW){  
     digitalWrite(pinMotorMowEnable, LOW);
     digitalWrite(pinMotorMowEnable, HIGH);
-    Debug.println(F("Reset motor mow fault"));
+    Console.println(F("Reset motor mow fault"));
 }
 }
 
@@ -646,7 +646,7 @@ int Mower::readSensor(char type){
 // rtc--------------------------------------------------------------------------------------------------------
     case SEN_RTC: 
       if (!readDS1307(datetime)) {
-        Debug.println("RTC data error!");        
+        Console.println("RTC data error!");        
         addErrorCounter(ERR_RTC_DATA);         
         setNextState(STATE_ERROR, 0);       
       }
@@ -670,7 +670,7 @@ void Mower::setActuator(char type, int value){
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
     case ACT_RTC:  
       if (!setDS1307(datetime)) {
-        Debug.println("RTC comm error!");
+        Console.println("RTC comm error!");
         addErrorCounter(ERR_RTC_COMM); 
         setNextState(STATE_ERROR, 0);       
       }
