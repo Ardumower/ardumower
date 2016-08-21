@@ -1769,7 +1769,7 @@ void Robot::readSensors(){
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
-    if (perimeterInside < 0) setActuator(ACT_LED, HIGH);                     
+    if (perimeterInside) setActuator(ACT_LED, HIGH);                     
       else setActuator(ACT_LED, LOW);    
     if ((!perimeterInside) && (perimeterTriggerTime == 0)){
       // set perimeter trigger time      
