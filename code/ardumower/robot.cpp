@@ -2038,13 +2038,21 @@ void Robot::setNextState(byte stateNew, byte dir){
       //imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
 	  
       if (imuRollDir == LEFT){
-		imuDriveHeading = scalePI(imuDriveHeading - random(PI / 4, PI)); // random toggle heading between 45 degree and 270 degrees (IMU)
-        imuRollHeading = scalePI(imuDriveHeading - PI/20);
-        imuRollDir = RIGHT;
+        imuDriveHeading = scalePI(imuDriveHeading - random((PI / 2), PI )); // random toggle heading between 90 degree and 180 degrees (IMU)
+        Debug.print("imuDriveHeading: ");
+        Debug.println(imuDriveHeading);
+        imuRollHeading = scalePI(imuDriveHeading);
+        Debug.print("imuRollHeading: ");
+        Debug.println(imuRollHeading);
+        imuRollDir = rollDir;
       } else {
-		imuDriveHeading = scalePI(imuDriveHeading + random(PI / 4, PI)); // random toggle heading between 45 degree and 270 degrees (IMU)
-        imuRollHeading = scalePI(imuDriveHeading + PI/20);
-        imuRollDir = LEFT;
+        imuDriveHeading = scalePI(imuDriveHeading + random((PI / 2), PI )); // random toggle heading between 90 degree and 180 degrees (IMU)
+        Debug.print("imuDriveHeading: ");
+        Debug.println(imuDriveHeading);
+        imuRollHeading = scalePI(imuDriveHeading);
+        Debug.print("imuRollHeading: ");
+        Debug.println(imuRollHeading);
+        imuRollDir = rollDir;
       }
     stateEndTime = millis() + random(perimeterOutRollTimeMin,perimeterOutRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
@@ -2916,9 +2924,14 @@ void Robot::loop()  {
       if (perimeterInside || (millis() >= stateEndTime)) setNextState (STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_ROLL: 
-      if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                
+	  if (mowPatternCurr == MOW_LANES) {
+          if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
+        } else {
+          if (millis() >= stateEndTime) {
+            setNextState(STATE_FORWARD,0);				          
+          }        
+        }
       break;
-
     case STATE_STATION_CHECK:
       // check for charging voltage disappearing before leaving charging station
       if (millis() >= stateEndTime){
@@ -2948,7 +2961,7 @@ void Robot::loop()  {
 
   
     // decide which motor control to use
-    if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) ) motorControlImuRoll();
+    if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) || (stateCurr ==STATE_PERI_OUT_ROLL) ) motorControlImuRoll();
       else if (stateCurr == STATE_PERI_TRACK) motorControlPerimeter();
       else if (  (stateCurr == STATE_FORWARD)
        //&&  (mowPatternCurr == MOW_RANDOM)
