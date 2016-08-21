@@ -2036,11 +2036,13 @@ void Robot::setNextState(byte stateNew, byte dir){
   }
   else if (stateNew == STATE_PERI_OUT_ROLL){
       //imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
-	  imuDriveHeading = scalePI(imuDriveHeading + random(PI / 4, PI * 3 / 2); // random toggle heading between 45 degree and 270 degrees (IMU)
+	  
       if (imuRollDir == LEFT){
+		imuDriveHeading = scalePI(imuDriveHeading - random(PI / 4, PI)); // random toggle heading between 45 degree and 270 degrees (IMU)
         imuRollHeading = scalePI(imuDriveHeading - PI/20);
         imuRollDir = RIGHT;
       } else {
+		imuDriveHeading = scalePI(imuDriveHeading + random(PI / 4, PI)); // random toggle heading between 45 degree and 270 degrees (IMU)
         imuRollHeading = scalePI(imuDriveHeading + PI/20);
         imuRollDir = LEFT;
       }
