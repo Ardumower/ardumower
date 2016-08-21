@@ -2961,7 +2961,7 @@ void Robot::loop()  {
 
   
     // decide which motor control to use
-    if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) || (stateCurr ==STATE_PERI_OUT_ROLL) ) motorControlImuRoll();
+    if ( ((mowPatternCurr == MOW_LANES) && (stateCurr == STATE_ROLL)) || (stateCurr == STATE_ROLL_WAIT) || ( (imuUse) && (imuCorrectDir) && (stateCurr == STATE_PERI_OUT_ROLL)) ) motorControlImuRoll();
       else if (stateCurr == STATE_PERI_TRACK) motorControlPerimeter();
       else if (  (stateCurr == STATE_FORWARD)
        //&&  (mowPatternCurr == MOW_RANDOM)
