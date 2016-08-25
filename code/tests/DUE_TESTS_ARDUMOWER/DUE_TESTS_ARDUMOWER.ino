@@ -1,3 +1,8 @@
+// ************************** DUE Testcode components ***************************************
+// ******************************************************************************************
+// TESTVERSION: 1
+// SD-Card, RTC1307, BT HC05 ZS-040, WTV020
+// ******************************************************************************************
 // Arduino Wire library is required if I2Cdev I2CDEV_ARDUINO_WIRE implementation
 // is used in I2Cdev.h
 #include <Wire.h> // Comes with Arduino IDE
