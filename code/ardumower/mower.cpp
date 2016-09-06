@@ -39,12 +39,13 @@
 #include "config.h"
 #ifdef USE_MOWER
 
-#include "NewPing.h"
+//#include "NewPing.h"
 
 #include <Arduino.h>
 #include "mower.h"
 #include "due.h"
 #include "drivers.h"
+#include "pinman.h"
 
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
@@ -305,9 +306,11 @@ ISR(PCINT2_vect){
 // mower motor speed sensor interrupt
 //void rpm_interrupt(){
 //}
- NewPing NewSonarLeft(pinSonarLeftTrigger, pinSonarLeftEcho, 500);
- NewPing NewSonarRight(pinSonarRightTrigger, pinSonarRightEcho, 500);
- NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
+
+ //NewPing NewSonarLeft(pinSonarLeftTrigger, pinSonarLeftEcho, 500);
+ //NewPing NewSonarRight(pinSonarRightTrigger, pinSonarRightEcho, 500);
+ //NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
+
 
 // WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
 // (required so we can use Arduino Due native port)
@@ -421,7 +424,7 @@ void Mower::setup(){
   #ifdef __AVR__  
     TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)     
   #else
-    analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
+    PinMan.analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
     pmc_enable_periph_clk(PWM_INTERFACE_ID);
     PWMC_ConfigureClocks(3900 * PWM_MAX_DUTY_CYCLE, 0, VARIANT_MCK);   // 3.9 Khz  
   #endif  
@@ -635,9 +638,11 @@ int Mower::readSensor(char type){
     //case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
     //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
     //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
-    case SEN_SONAR_CENTER: return(NewSonarCenter.ping_cm()); break;
-    case SEN_SONAR_LEFT: return(NewSonarLeft.ping_cm()); break;
-    case SEN_SONAR_RIGHT: return(NewSonarRight.ping_cm()); break;
+    
+    //case SEN_SONAR_CENTER: return(NewSonarCenter.ping_cm()); break;
+    //case SEN_SONAR_LEFT: return(NewSonarLeft.ping_cm()); break;
+    //case SEN_SONAR_RIGHT: return(NewSonarRight.ping_cm()); break;
+    
     // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     

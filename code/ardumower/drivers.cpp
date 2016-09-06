@@ -23,8 +23,10 @@
 */
 
 #include "drivers.h"
+#include "pinman.h"
 //#include "ardumower.h"
 #include <Wire.h>  
+
 
 char *dayOfWeek[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 
@@ -171,10 +173,10 @@ int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], in
 void setL298N(int pinDir, int pinPWM, int speed){
   if (speed < 0){
     digitalWrite(pinDir, HIGH) ;  
-    analogWrite(pinPWM, ((byte)speed));
+    PinMan.analogWrite(pinPWM, ((byte)speed));
   } else {
     digitalWrite(pinDir, LOW) ;  
-    analogWrite(pinPWM, ((byte)speed));
+    PinMan.analogWrite(pinPWM, ((byte)speed));
   }
 }
 
@@ -185,10 +187,10 @@ void setL298N(int pinDir, int pinPWM, int speed){
 void setRomeoMotor(int pinDir, int pinPWM, int speed){
   if (speed < 0){
     digitalWrite(pinDir, HIGH) ;  
-    analogWrite(pinPWM, abs(speed));
+    PinMan.analogWrite(pinPWM, abs(speed));
   } else {
     digitalWrite(pinDir, LOW) ;  
-    analogWrite(pinPWM, abs(speed));
+    PinMan.analogWrite(pinPWM, abs(speed));
   }
 }
 
@@ -199,10 +201,10 @@ void setRomeoMotor(int pinDir, int pinPWM, int speed){
 void setL9958(int pinDir, int pinPWM, int speed){
   if (speed > 0){
     digitalWrite(pinDir, HIGH) ;  
-    analogWrite(pinPWM, abs(speed));
+    PinMan.analogWrite(pinPWM, abs(speed));
   } else {
     digitalWrite(pinDir, LOW) ;  
-    analogWrite(pinPWM, abs(speed));
+    PinMan.analogWrite(pinPWM, abs(speed));
   }
 }
 
@@ -215,10 +217,10 @@ void setL9958(int pinDir, int pinPWM, int speed){
 void setMC33926(int pinDir, int pinPWM, int speed){
   if (speed < 0){
     digitalWrite(pinDir, HIGH) ;
-    analogWrite(pinPWM, 255-((byte)abs(speed)));
+    PinMan.analogWrite(pinPWM, 255-((byte)abs(speed)));
   } else {
     digitalWrite(pinDir, LOW) ;
-    analogWrite(pinPWM, ((byte)speed));
+    PinMan.analogWrite(pinPWM, ((byte)speed));
   }
 }
 
@@ -336,7 +338,7 @@ int getDayOfWeek(int month, int day, int year, int CalendarSystem)
             ) % 7;
 }
 
-
+/*
 // --- eereadwrite -------------------------------------------------
 int eereadwriteString(boolean readflag, int &ee, String& value)
 {
@@ -355,3 +357,4 @@ int eereadwriteString(boolean readflag, int &ee, String& value)
     EEPROM.write(ee++, 0);
   }
 }
+*/

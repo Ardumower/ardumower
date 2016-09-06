@@ -405,7 +405,7 @@ void Mower::setup(){
   #ifdef __AVR__  
     TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)     
   #else
-    analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
+    PinMan.analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
     pmc_enable_periph_clk(PWM_INTERFACE_ID);
     PWMC_ConfigureClocks(3900 * PWM_MAX_DUTY_CYCLE, 0, VARIANT_MCK);   // 3.9 Khz  
   #endif  

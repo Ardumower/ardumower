@@ -24,6 +24,7 @@
 */
 
 #include "robot.h"
+#include "flashmem.h"
 
 #define MAGIC 52
 
@@ -413,7 +414,7 @@ void Robot::printSettingSerial(){
   // ------ motorMowModulate Interrupt --------------------------------------------
   Console.println(F("---------- motorMowModulate Interrupt ------------------------"));
   Console.print  (F("motorMowModulate Interrupt                 : "));
-  Console.println (bitRead(PCMSK2, PCINT19));
+  //Console.println (bitRead(PCMSK2, PCINT19));
 
   // ------ bumper ----------------------------------------------------------------
   Console.println(F("---------- bumper --------------------------------------------"));
@@ -507,13 +508,13 @@ void Robot::printSettingSerial(){
 // ------ model R/C Interrupt -----------------------------------------------------
  Console.println(F("---------- model R/C Interrupt --------------------------------"));
   Console.print  (F("Pin 10 pinRemoteSpeed                      : "));
-  Console.println (bitRead(PCMSK0, PCINT4)); // Pin 10
+  //Console.println (bitRead(PCMSK0, PCINT4)); // Pin 10
   Console.print  (F("Pin 11 pinRemoteSteer                      : "));
-  Console.println (bitRead(PCMSK0, PCINT5)); // Pin 11
+  //Console.println (bitRead(PCMSK0, PCINT5)); // Pin 11
   Console.print  (F("Pin 12 pinRemoteMow                        : "));
-  Console.println (bitRead(PCMSK0, PCINT6)); // Pin 12
+  //Console.println (bitRead(PCMSK0, PCINT6)); // Pin 12
   Console.print  (F("Pin 52 pinRemoteSwitch                     : "));
-  Console.println (bitRead(PCMSK0, PCINT1)); // Pin 52
+  //Console.println (bitRead(PCMSK0, PCINT1)); // Pin 52
   
   // ------ battery ---------------------------------------------------------------
   Console.println(F("---------- battery -------------------------------------------"));
@@ -580,16 +581,18 @@ void Robot::printSettingSerial(){
   Console.print  (F("odometryLeftSwapDir                        : "));
   Console.println(odometryLeftSwapDir); 
 
+
 // ------ odometry Interrupt-------------------------------------------------------
  Console.println(F("---------- Odometry Interrupt ---------------------------------"));
   Console.print  (F("oneway left                                : "));
-  Console.println (bitRead(PCMSK2, PCINT20));
+//  Console.println (bitRead(PCMSK2, PCINT20));
   Console.print  (F("Oneway right                               : "));
-  Console.println (bitRead(PCMSK2, PCINT22));
+//  Console.println (bitRead(PCMSK2, PCINT22));
   Console.print  (F("twoway left                                : "));
-  Console.println (bitRead(PCMSK2, PCINT21));
+//  Console.println (bitRead(PCMSK2, PCINT21));
   Console.print  (F("twoway right                               : "));
-  Console.println (bitRead(PCMSK2, PCINT23)); 
+//  Console.println (bitRead(PCMSK2, PCINT23)); 
+
   
 // ----- GPS ----------------------------------------------------------------------
   Console.println(F("---------- GPS -----------------------------------------------"));

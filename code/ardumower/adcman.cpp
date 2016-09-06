@@ -29,6 +29,7 @@
 #include <limits.h>
 #include "adcman.h"
 #include "drivers.h"
+#include "flashmem.h"
 
 #define ADDR 500
 #define MAGIC 1

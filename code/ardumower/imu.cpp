@@ -25,6 +25,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "drivers.h"
+#include "flashmem.h"
 
 // -------------I2C addresses ------------------------
 #define ADXL345B (0x53)          // ADXL345B acceleration sensor (GY-80 PCB)
