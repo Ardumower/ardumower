@@ -1,5 +1,8 @@
 #include "pinman.h"
 
+#ifdef __AVR__
+  #define PINS_COUNT 0
+#endif
 
 #define PWM_FREQUENCY 3900
 #define TC_FREQUENCY 3900
@@ -53,7 +56,7 @@ static void TC_SetCMR_ChannelB(Tc *tc, uint32_t chan, uint32_t v)
 // to digital output.
 void PinManager::analogWrite(uint32_t ulPin, uint32_t ulValue) {
 #ifdef __AVR__
-  ::analogWritE(ulPin, ulValue);
+  ::analogWrite(ulPin, ulValue);
 #else  
 	uint32_t attr = g_APinDescription[ulPin].ulPinAttribute;
 

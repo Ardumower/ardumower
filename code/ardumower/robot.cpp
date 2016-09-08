@@ -414,7 +414,9 @@ void Robot::printSettingSerial(){
   // ------ motorMowModulate Interrupt --------------------------------------------
   Console.println(F("---------- motorMowModulate Interrupt ------------------------"));
   Console.print  (F("motorMowModulate Interrupt                 : "));
-  //Console.println (bitRead(PCMSK2, PCINT19));
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK2, PCINT19));
+  #endif
 
   // ------ bumper ----------------------------------------------------------------
   Console.println(F("---------- bumper --------------------------------------------"));
@@ -508,13 +510,21 @@ void Robot::printSettingSerial(){
 // ------ model R/C Interrupt -----------------------------------------------------
  Console.println(F("---------- model R/C Interrupt --------------------------------"));
   Console.print  (F("Pin 10 pinRemoteSpeed                      : "));
-  //Console.println (bitRead(PCMSK0, PCINT4)); // Pin 10
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK0, PCINT4)); // Pin 10
+  #endif
   Console.print  (F("Pin 11 pinRemoteSteer                      : "));
-  //Console.println (bitRead(PCMSK0, PCINT5)); // Pin 11
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK0, PCINT5)); // Pin 11
+  #endif
   Console.print  (F("Pin 12 pinRemoteMow                        : "));
-  //Console.println (bitRead(PCMSK0, PCINT6)); // Pin 12
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK0, PCINT6)); // Pin 12
+  #endif
   Console.print  (F("Pin 52 pinRemoteSwitch                     : "));
-  //Console.println (bitRead(PCMSK0, PCINT1)); // Pin 52
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK0, PCINT1)); // Pin 52
+  #endif
   
   // ------ battery ---------------------------------------------------------------
   Console.println(F("---------- battery -------------------------------------------"));
@@ -585,13 +595,21 @@ void Robot::printSettingSerial(){
 // ------ odometry Interrupt-------------------------------------------------------
  Console.println(F("---------- Odometry Interrupt ---------------------------------"));
   Console.print  (F("oneway left                                : "));
-//  Console.println (bitRead(PCMSK2, PCINT20));
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK2, PCINT20));
+  #endif
   Console.print  (F("Oneway right                               : "));
-//  Console.println (bitRead(PCMSK2, PCINT22));
-  Console.print  (F("twoway left                                : "));
-//  Console.println (bitRead(PCMSK2, PCINT21));
-  Console.print  (F("twoway right                               : "));
-//  Console.println (bitRead(PCMSK2, PCINT23)); 
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK2, PCINT22));
+  #endif
+    Console.print  (F("twoway left                                : "));
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK2, PCINT21));
+  #endif
+    Console.print  (F("twoway right                               : "));
+  #ifdef __AVR__
+    Console.println (bitRead(PCMSK2, PCINT23)); 
+  #endif
 
   
 // ----- GPS ----------------------------------------------------------------------
