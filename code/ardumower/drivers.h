@@ -37,7 +37,7 @@
   #define Bluetooth Serial2
   #define Debug Console
 //  #define Debug ESP8266port 
-//  #define Debug Bluetooth 
+  //#define Debug Bluetooth 
   
 #else 
   // Arduino Due
