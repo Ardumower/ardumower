@@ -1,9 +1,9 @@
-(kicad_pcb (version 4) (host pcbnew "(2015-03-09 BZR 5487)-product")
+(kicad_pcb (version 20160815) (host pcbnew "(2016-09-10 revision 7ad2f37)-makepkg")
 
   (general
     (links 553)
     (no_connects 0)
-    (area 8.764572 19.515 305.939 177.895)
+    (area 8.764572 19.59 305.939 177.895)
     (thickness 1.6)
     (drawings 190)
     (tracks 2379)
@@ -16,12 +16,13 @@
   (title_block
     (title "Ardumower VCN PCB ")
     (date "23 Dez 2014")
-    (rev 0,05)
+    (rev 1.2)
+    (company "SM & UZ")
   )
 
   (layers
-    (0 F.Cu signal hide)
-    (31 B.Cu signal hide)
+    (0 F.Cu signal)
+    (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -90,7 +91,6 @@
       (hpglpennumber 1)
       (hpglpenspeed 20)
       (hpglpendiameter 15)
-      (hpglpenoverlay 2)
       (psnegative false)
       (psa4output false)
       (plotreference true)
@@ -264,6 +264,8 @@
     (via_drill 0.635)
     (uvia_dia 0.508)
     (uvia_drill 0.127)
+    (diff_pair_gap 0.25)
+    (diff_pair_width 0.2)
     (add_net +3.3V)
     (add_net Charg_Pin)
     (add_net DropLeft)
@@ -421,6 +423,8 @@
     (via_drill 0.635)
     (uvia_dia 0.508)
     (uvia_drill 0.127)
+    (diff_pair_gap 0.25)
+    (diff_pair_width 0.2)
     (add_net +24V)
   )
 
@@ -431,6 +435,8 @@
     (via_drill 0.635)
     (uvia_dia 0.508)
     (uvia_drill 0.127)
+    (diff_pair_gap 0.25)
+    (diff_pair_width 0.2)
     (add_net pinBatteryVoltage)
   )
 
@@ -490,6 +496,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Housings_DIP.3dshapes/DIP-16_W7.62mm.wrl
+      (at (xyz -0.3543307086614174 -0.1574803149606299 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54C60FD4) (tstamp 54B7AAFC)
@@ -514,6 +525,11 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 61 Power))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -546,6 +562,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 551700C6) (tstamp 54CCB188)
@@ -556,7 +577,7 @@
     (fp_text reference JP5 (at 4.318 0 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value R-GND (at 10.287 0.127 450) (layer F.SilkS)
+    (fp_text value R-GND (at 10.287 0.127 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 0 -1.27) (end 0 1.27) (layer F.SilkS) (width 0.15))
@@ -570,6 +591,11 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 105 "Net-(D10-Pad1)"))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -598,6 +624,11 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 66 "Net-(JP6-Pad2)"))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -633,6 +664,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Housings_TO-92.3dshapes/TO-92_Molded_Narrow.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1.2 1.2 1.2))
+      (rotate (xyz 0 0 -135))
     )
   )
 
@@ -692,6 +728,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Housings_DIP.3dshapes/DIP-16_W7.62mm.wrl
+      (at (xyz -0.3543307086614174 -0.1574803149606299 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54D0B799) (tstamp 54B843CA)
@@ -702,7 +743,7 @@
     (fp_text reference JP2 (at 4.318 0 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value Key (at 7.62 0.254 450) (layer F.SilkS)
+    (fp_text value Key (at 7.62 0.254 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 0 -1.27) (end 0 1.27) (layer F.SilkS) (width 0.15))
@@ -720,6 +761,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54D0B815) (tstamp 54BCCF18)
@@ -727,10 +773,10 @@
     (descr "Through hole pin header")
     (tags "pin header")
     (path /54B7D8CC)
-    (fp_text reference JP8 (at 4.318 0 450) (layer F.SilkS)
+    (fp_text reference JP8 (at 4.318 0 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value Blue5.0V (at 9.652 0.254 450) (layer F.SilkS)
+    (fp_text value Blue5.0V (at 9.652 0.254 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 0 -1.27) (end 0 1.27) (layer F.SilkS) (width 0.15))
@@ -748,6 +794,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54D0B7B7) (tstamp 54BD372C)
@@ -758,7 +809,7 @@
     (fp_text reference JP9 (at 4.318 0 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value Blue3.3V (at 9.652 0 450) (layer F.SilkS)
+    (fp_text value Blue3.3V (at 9.652 0 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 0 -1.27) (end 0 1.27) (layer F.SilkS) (width 0.15))
@@ -772,6 +823,11 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 100 "Net-(JP8-Pad2)"))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -804,6 +860,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54C8D6CB) (tstamp 54B92347)
@@ -832,6 +893,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 55194946) (tstamp 54B9234D)
@@ -839,7 +905,7 @@
     (descr "Through hole pin header")
     (tags "pin header")
     (path /54B90ACC)
-    (fp_text reference JP12 (at 5.08 0 450) (layer F.SilkS)
+    (fp_text reference JP12 (at 5.08 0 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value pwrAA5.0V (at 11.176 0 270) (layer F.SilkS)
@@ -856,6 +922,11 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 84 "Net-(JP12-Pad2)"))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -888,6 +959,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 55194AC6) (tstamp 54D7D6E0)
@@ -895,7 +971,7 @@
     (descr "Through hole pin header")
     (tags "pin header")
     (path /54C10ED7)
-    (fp_text reference JP3 (at 4.572 0 450) (layer F.SilkS)
+    (fp_text reference JP3 (at 4.572 0 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value pwrAA3,3 (at 10.16 0 270) (layer F.SilkS)
@@ -912,6 +988,11 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 99 PowerA3,3))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -944,6 +1025,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Pin_Headers:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54C607C0) (tstamp 54C103B1)
@@ -968,6 +1054,11 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 129 "Voltage measurement"))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1000,6 +1091,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Diode_LED_5mm_round_vertical (layer F.Cu) (tedit 551948C3) (tstamp 54C4D992)
@@ -1007,10 +1103,10 @@
     (descr "Leuchtdiode, LED,  5mm, round, rund,  vertical,")
     (tags "Leuchtdiode, LED,  5mm, round, rund,  vertical,")
     (path /54BD3C36)
-    (fp_text reference D8 (at -3.429 1.651 360) (layer F.SilkS)
+    (fp_text reference D8 (at -3.429 1.651) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value BlueLED (at 4.953 0.127 360) (layer F.SilkS)
+    (fp_text value BlueLED (at 4.953 0.127) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text user A (at 3.683 1.778 270) (layer F.SilkS)
@@ -1075,6 +1171,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/LEDs.3dshapes/LED-5MM.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:MBR1045 (layer F.Cu) (tedit 54CFB633) (tstamp 54C4DEDE)
@@ -1116,6 +1217,11 @@
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_TO-220_Vertical.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Diode_ligend_RM10 (layer F.Cu) (tedit 54C60BD8) (tstamp 54CC06EE)
@@ -1150,6 +1256,11 @@
     (model Diodes_ThroughHole/Diode_DO-35_SOD27_Horizontal_RM10.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.381 0.381 0.381))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_DO-35_SOD27_Horizontal_RM10.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
   )
@@ -1188,6 +1299,11 @@
       (scale (xyz 0.381 0.381 0.381))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_DO-35_SOD27_Horizontal_RM10.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Diode_ligend_RM10 (layer F.Cu) (tedit 54CFB738) (tstamp 54C4EB50)
@@ -1222,6 +1338,11 @@
     (model Diodes_ThroughHole/Diode_DO-35_SOD27_Horizontal_RM10.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.381 0.381 0.381))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_DO-35_SOD27_Horizontal_RM10.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
   )
@@ -1265,6 +1386,11 @@
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_TO-220_Vertical.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Potentiometer_VishaySpectrol-Econtrim-Type36T_3D (layer F.Cu) (tedit 54CFFCB5) (tstamp 54C52AB8)
@@ -1272,10 +1398,10 @@
     (descr "Potentiometer, Trimmer, Spectrol Type 36T, Econtrim, Rev A, 02 Aug 2010,")
     (tags "Potentiometer, Trimmer, Spectrol Type 36T, Econtrim, Rev A, 02 Aug 2010,")
     (path /54B48EC0)
-    (fp_text reference RV1 (at 1.27 -8.636 540) (layer F.SilkS)
+    (fp_text reference RV1 (at 1.27 -8.636 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 5K (at 3.81 -8.636 540) (layer F.SilkS) hide
+    (fp_text value 5K (at 3.81 -8.636 180) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 1.6002 0.75184) (end 3.39852 0.75184) (layer F.SilkS) (width 0.15))
@@ -1293,6 +1419,11 @@
       (net 72 "Net-(R17-Pad2)"))
     (model Potentiometers/Potentiometer_Triwood_RM-065.wrl
       (at (xyz 0 0 0))
+      (scale (xyz 4 4 4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Potentiometers.3dshapes/Potentiometer_Triwood_RM-065.wrl
+      (at (xyz 0 0 -0.03937007874015748))
       (scale (xyz 4 4 4))
       (rotate (xyz 0 0 0))
     )
@@ -1333,6 +1464,11 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model Pin_Headers/Pin_Header_Straight_1x08.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1378,6 +1514,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x08 (layer F.Cu) (tedit 54E23F30) (tstamp 54C55C54)
@@ -1415,6 +1556,11 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model Pin_Headers/Pin_Header_Straight_1x08.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1462,6 +1608,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Array_SIP8.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Kondensatorenleiste_8er_9pin_3D (layer F.Cu) (tedit 552AB8F1) (tstamp 54C557D1)
@@ -1505,6 +1656,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Array_SIP8.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:LM350T_3D_muss_noch_auf_Masse_geprüft_werden (layer F.Cu) (tedit 54C66C23) (tstamp 54C67CC3)
@@ -1537,6 +1693,11 @@
     (model Transistors_TO-220/TO-220_Bipolar-BCE_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.25 0.25))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/TO_SOT_Packages_THT.3dshapes/TO-220_Neutral123_Vertical.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.37 0.37 0.37))
       (rotate (xyz 0 0 0))
     )
   )
@@ -1575,6 +1736,11 @@
       (scale (xyz 0.5 0.5 0.5))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_DO-35_SOD27_Horizontal_RM10.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Diode_ligend_RM10 (layer F.Cu) (tedit 5517136B) (tstamp 55171381)
@@ -1609,6 +1775,11 @@
     (model Diodes_ThroughHole/Diode_DO-35_SOD27_Horizontal_RM10.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_DO-35_SOD27_Horizontal_RM10.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
   )
@@ -1766,6 +1937,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/relay/relay_40.52.wrl
+      (at (xyz 0.4527559055118111 0.1535433070866142 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0 (layer F.Cu) (tedit 5533EFB5) (tstamp 54CA06D2)
@@ -1800,6 +1976,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0 (layer F.Cu) (tedit 54CFB8DC) (tstamp 54CA06D9)
@@ -1807,7 +1988,7 @@
     (descr "Electrolytic Capacitor, vertical, diameter 6,3mm, RM 2,5mm, radial,")
     (tags "Electrolytic Capacitor, vertical, diameter 6,3mm, RM 2,5mm, Elko, Electrolytkondensator, Kondensator gepolt, Durchmesser 6,3mm, radial,")
     (path /53866E3A)
-    (fp_text reference C2 (at 2.032 -1.778 450) (layer F.SilkS)
+    (fp_text reference C2 (at 2.032 -1.778 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 100uF (at -3.937 2.286 270) (layer F.SilkS) hide
@@ -1834,6 +2015,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0 (layer F.Cu) (tedit 54DFBBF7) (tstamp 54D0A55F)
@@ -1841,10 +2027,10 @@
     (descr "Electrolytic Capacitor, vertical, diameter 6,3mm, RM 2,5mm, radial,")
     (tags "Electrolytic Capacitor, vertical, diameter 6,3mm, RM 2,5mm, Elko, Electrolytkondensator, Kondensator gepolt, Durchmesser 6,3mm, radial,")
     (path /541DF105)
-    (fp_text reference C3 (at 1.905 -1.778 360) (layer F.SilkS)
+    (fp_text reference C3 (at 1.905 -1.778) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 1,0uF (at 5.842 -0.762 360) (layer F.SilkS)
+    (fp_text value 1,0uF (at 5.842 -0.762) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 0.26924 -2.19964) (end 0.26924 -1.19888) (layer F.SilkS) (width 0.15))
@@ -1867,6 +2053,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -1902,6 +2093,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0 (layer F.Cu) (tedit 54CFC2B3) (tstamp 54CA06F5)
@@ -1909,10 +2105,10 @@
     (descr "Electrolytic Capacitor, vertical, diameter 6,3mm, RM 2,5mm, radial,")
     (tags "Electrolytic Capacitor, vertical, diameter 6,3mm, RM 2,5mm, Elko, Electrolytkondensator, Kondensator gepolt, Durchmesser 6,3mm, radial,")
     (path /54B50F0D)
-    (fp_text reference C6 (at 1.778 -1.778 360) (layer F.SilkS)
+    (fp_text reference C6 (at 1.778 -1.778) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 1,0uF (at 1.524 -4.064 360) (layer F.SilkS)
+    (fp_text value 1,0uF (at 1.524 -4.064) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 0.26924 -2.19964) (end 0.26924 -1.19888) (layer F.SilkS) (width 0.15))
@@ -1935,6 +2131,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -1970,6 +2171,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Elko_vert_11.2x6.3mm_RM2.5_RM5.0 (layer F.Cu) (tedit 54CFB901) (tstamp 54DFEE55)
@@ -2004,6 +2210,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L25_P7.5.wrl
+      (at (xyz 0.05118110236220473 0 0))
+      (scale (xyz 0.5 0.5 0.5))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Buzzer_12x9.5RM7.6_RM5.0 (layer F.Cu) (tedit 54D86CB2) (tstamp 54CA0E3E)
@@ -2011,10 +2222,10 @@
     (descr "Generic Buzzer, D12mm height 9.5mm with RM7.6mm")
     (tags buzzer)
     (path /537FB76E)
-    (fp_text reference SP1 (at -0.254 -3.429 360) (layer F.SilkS)
+    (fp_text reference SP1 (at -0.254 -3.429) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value SPEAKER (at 7.366 0.381 360) (layer F.SilkS)
+    (fp_text value SPEAKER (at 7.366 0.381) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_circle (center 0 0) (end 1.00076 0) (layer F.SilkS) (width 0.15))
@@ -2031,6 +2242,11 @@
     (pad 2 thru_hole circle (at 2.54 0 270) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask F.SilkS)
       (net 56 pinBuzzer))
     (model Buzzers_Beepers/Buzzer_12x9.5RM7.6.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 4 4 4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Buzzers_Beepers.3dshapes/Buzzer_12x9.5RM7.6.wrl
       (at (xyz 0 0 0))
       (scale (xyz 4 4 4))
       (rotate (xyz 0 0 0))
@@ -2232,6 +2448,41 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+      (at (xyz 1.456692913385827 0.09842519685039371 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+      (at (xyz 2.362204724409449 0.09842519685039371 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+      (at (xyz 3.248031496062992 0.09842519685039371 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x10.wrl
+      (at (xyz 1.188976377952756 2.007874015748031 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+      (at (xyz 2.165354330708662 2.007874015748031 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+      (at (xyz 3.051181102362205 2.007874015748031 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_2x18.wrl
+      (at (xyz 3.740157480314961 1.165354330708662 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 90))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54C0358D) (tstamp 54CE524A)
@@ -2258,6 +2509,11 @@
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.03937007874015748))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2288,6 +2544,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54CFB9C1) (tstamp 54CE5263)
@@ -2314,6 +2575,11 @@
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2344,6 +2610,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54CFB9BC) (tstamp 54CE526D)
@@ -2370,6 +2641,11 @@
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2400,6 +2676,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.03937007874015748))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54CFB92B) (tstamp 54CE5286)
@@ -2428,6 +2709,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.03937007874015748))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54CFB9CD) (tstamp 54CE528B)
@@ -2453,7 +2739,7 @@
       (net 81 Power5))
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.4 0.4 0.4))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2484,9 +2770,14 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
-  (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54C0358D) (tstamp 54CE5295)
+  (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 57D541F3) (tstamp 54CE5295)
     (at 145.542 87.122 180)
     (descr "Resistor, Axial, RM 15mm,")
     (tags "Resistor, Axial, RM 15mm,")
@@ -2494,7 +2785,7 @@
     (fp_text reference R16 (at 3.048 0 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 1K (at 0.508 0 180) (layer F.SilkS) hide
+    (fp_text value 1K (at -2.032 0 180) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -5.08 -1.27) (end -5.08 1.27) (layer F.SilkS) (width 0.15))
@@ -2510,6 +2801,11 @@
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2540,6 +2836,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.03937007874015748))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54CFB790) (tstamp 54CE52A9)
@@ -2566,6 +2867,11 @@
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2596,6 +2902,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54D00327) (tstamp 54CE52B3)
@@ -2624,9 +2935,14 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.03937007874015748))
+      (scale (xyz 0.4 0.3 0.3))
+      (rotate (xyz 0 0 0))
+    )
   )
 
-  (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 54C0358D) (tstamp 54CE52B8)
+  (module ACS712:Resistor_Horizontal_RM15mm (layer F.Cu) (tedit 57D541E5) (tstamp 54CE52B8)
     (at 119.38 103.124 180)
     (descr "Resistor, Axial, RM 15mm,")
     (tags "Resistor, Axial, RM 15mm,")
@@ -2634,7 +2950,7 @@
     (fp_text reference R23 (at 3.048 0 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 100 (at 0.508 0 180) (layer F.SilkS) hide
+    (fp_text value 100 (at -3.048 0 180) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -5.08 -1.27) (end -5.08 1.27) (layer F.SilkS) (width 0.15))
@@ -2650,6 +2966,11 @@
     (model Resistors_ThroughHole/Resistor_Horizontal_RM15mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM15mm.wrl
+      (at (xyz 0 0 -0.05905511811023623))
+      (scale (xyz 0.4 0.3 0.3))
       (rotate (xyz 0 0 0))
     )
   )
@@ -3436,6 +3757,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 54CF4B43) (tstamp 54CF4B3B)
@@ -3460,6 +3786,11 @@
     (pad 2 thru_hole circle (at 5.08 0 180) (size 1.99898 1.99898) (drill 1.00076) (layers *.Cu *.SilkS *.Mask)
       (net 49 pinLawnFrontSend))
     (model Resistors_ThroughHole/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
@@ -3495,6 +3826,16 @@
       (net 112 "Net-(P45-Pad3)"))
     (pad 8 thru_hole circle (at 6.35 3.81) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x04.wrl
+      (at (xyz 0.2480314960629921 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x04.wrl
+      (at (xyz -0.2480314960629921 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Lötpad_1x02 (layer B.Cu) (tedit 54CE6324) (tstamp 54CF9E16)
@@ -3647,6 +3988,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/misc_comp/fuse_cq-200c.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Fuseholder_Reichelt_PL112000 (layer F.Cu) (tedit 54CFFC40) (tstamp 54CFA10A)
@@ -3688,6 +4034,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/walter/misc_comp/fuse_cq-200c.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -3734,6 +4085,11 @@
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/to/to220-2_horiz.wrl
+      (at (xyz 0 0.3937007874015748 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:MBR1045 (layer F.Cu) (tedit 54CFB67B) (tstamp 54CFB4C9)
@@ -3775,6 +4131,11 @@
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_TO-220_Vertical.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 54E0E7CA) (tstamp 54CFC288)
@@ -3803,6 +4164,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 54CFB5DD) (tstamp 54CFB92C)
@@ -3827,6 +4193,11 @@
     (pad 2 thru_hole circle (at 5.08 0) (size 1.99898 1.99898) (drill 1.00076) (layers *.Cu *.SilkS *.Mask)
       (net 29 LedPin-24v))
     (model Resistors_ThroughHole/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
@@ -3960,6 +4331,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x04 (layer F.Cu) (tedit 54D00148) (tstamp 54CFFA66)
@@ -3989,6 +4365,11 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 23 pinSonarRightEcho))
     (model Pin_Headers/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4026,6 +4407,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54CFFF87) (tstamp 54CFFA74)
@@ -4053,6 +4439,11 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 148 pinMotorMowRpm_neu))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4086,6 +4477,11 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 26 pinLawnBackRecv))
     (model Pin_Headers/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4131,6 +4527,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x04 (layer F.Cu) (tedit 54CFFF9D) (tstamp 54CFFA93)
@@ -4160,6 +4561,11 @@
     (pad 4 thru_hole oval (at 3.81 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 32 pinOdometryRight2))
     (model Pin_Headers/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4197,6 +4603,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x04 (layer F.Cu) (tedit 54D00121) (tstamp 54CFFAA8)
@@ -4230,6 +4641,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54CFFE6D) (tstamp 54CFFAAF)
@@ -4257,6 +4673,11 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 39 pinPerimeterLeft))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4298,6 +4719,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x06.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 551736CA) (tstamp 54D00953)
@@ -4329,6 +4755,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x02 (layer F.Cu) (tedit 54D00074) (tstamp 54CFFAC4)
@@ -4353,6 +4784,11 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model Pin_Headers/Pin_Header_Straight_1x02.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4388,6 +4824,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54CFFF83) (tstamp 54CFFACF)
@@ -4415,6 +4856,11 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 90 ReserveAD6))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4454,6 +4900,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x05 (layer F.Cu) (tedit 54CFFC28) (tstamp 54D00996)
@@ -4489,6 +4940,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54CFFB0B) (tstamp 54CFFAE5)
@@ -4516,6 +4972,11 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 85 ReservePin9))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4551,6 +5012,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54CFFBA6) (tstamp 54CFFAF1)
@@ -4578,6 +5044,11 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 87 ReservePin0))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4613,6 +5084,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54CFFB3B) (tstamp 54CFFAFD)
@@ -4640,6 +5116,11 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 89 ReservePin1))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4675,6 +5156,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54D000F2) (tstamp 54CFFB09)
@@ -4702,6 +5188,11 @@
     (pad 3 thru_hole oval (at 2.54 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 110 "Net-(D5-Pad2)"))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4741,6 +5232,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 55172E24) (tstamp 54CFFDA0)
@@ -4768,6 +5264,11 @@
     (pad 3 thru_hole oval (at 2.54 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 76 pinRain))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4807,6 +5308,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x05 (layer F.Cu) (tedit 54D00226) (tstamp 54D009B8)
@@ -4838,6 +5344,11 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model Pin_Headers/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4877,6 +5388,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 552EBB2B) (tstamp 54CFFFB7)
@@ -4904,6 +5420,11 @@
     (pad 3 thru_hole oval (at 2.54 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 150 ReservePin49))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4938,6 +5459,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D16_L30_P7.5.wrl
+      (at (xyz 0.1456692913385827 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x03 (layer F.Cu) (tedit 54D13F54) (tstamp 54D14130)
@@ -4965,6 +5491,11 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 129 "Voltage measurement"))
     (model Pin_Headers/Pin_Header_Straight_1x03.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4997,6 +5528,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 552ABC83) (tstamp 54D7DB8E)
@@ -5021,6 +5557,11 @@
     (pad 2 thru_hole circle (at 5.08 0 90) (size 1.99898 1.99898) (drill 1.00076) (layers *.Cu *.SilkS *.Mask)
       (net 1 GND))
     (model Resistors_ThroughHole/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
@@ -5106,6 +5647,56 @@
     (pad 31 thru_hole circle (at 43.18 -35.306 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
     (pad ~ thru_hole circle (at 6.2865 -13.3985 90) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
     (pad ~ thru_hole circle (at 47.0535 -13.3985 90) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18.wrl
+      (at (xyz 1.043307086614173 1.484251968503937 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 1.641732283464567 1.393700787401575 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.200787401574803 1.393700787401575 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.7480314960629921 1.393700787401575 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.6850393700787402 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.8149606299212598 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.9566929133858268 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 1.090551181102362 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 1.240157480314961 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 1.377952755905512 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:MC_33926_31polig_mit_Bohrloch_neue_Masse (layer F.Cu) (tedit 54DFBD95) (tstamp 54DFD5CC)
@@ -5187,15 +5778,65 @@
     (pad 31 thru_hole circle (at 43.18 -35.306 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
     (pad ~ thru_hole circle (at 6.2865 -13.3985 90) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
     (pad ~ thru_hole circle (at 47.0535 -13.3985 90) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18.wrl
+      (at (xyz 1.043307086614173 1.484251968503937 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 1.641732283464567 1.393700787401575 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.200787401574803 1.393700787401575 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.7480314960629921 1.393700787401575 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.6850393700787402 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.8149606299212598 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.9566929133858268 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 1.090551181102362 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 1.240157480314961 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 1.377952755905512 0.5708661417322834 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:INA169 (layer F.Cu) (tedit 550ABB2F) (tstamp 54E5DD27)
     (at 64.262 92.202 180)
     (path /5417150B)
-    (fp_text reference U3 (at 2.54 0 360) (layer F.SilkS)
+    (fp_text reference U3 (at 2.54 0) (layer F.SilkS)
       (effects (font (size 1.5 1.5) (thickness 0.15)))
     )
-    (fp_text value INA169 (at 2.1844 -2.5146 360) (layer F.SilkS)
+    (fp_text value INA169 (at 2.1844 -2.5146) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 11.43 10.16) (end -11.43 10.16) (layer F.SilkS) (width 0.15))
@@ -5227,6 +5868,21 @@
       (net 57 "Net-(C1-Pad1)"))
     (pad 4 thru_hole circle (at 2.54 5.08 180) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 143 "Net-(D1-Pad2)"))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0 0.2559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.04724409448818898 -0.1968503937007874 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05.wrl
+      (at (xyz 0 -0.2913385826771654 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:INA169 (layer F.Cu) (tedit 54E5BD4A) (tstamp 54E5DD37)
@@ -5267,6 +5923,21 @@
       (net 75 "Net-(U1-Pad3)"))
     (pad 4 thru_hole circle (at 2.54 5.08 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 62 "Net-(C5-Pad1)"))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05.wrl
+      (at (xyz 0 -0.2952755905511811 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.04724409448818898 -0.2007874015748032 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz -0.003937007874015749 0.2559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Anschlussklemme_2P_RM5,08 (layer F.Cu) (tedit 5506171A) (tstamp 5516E9C2)
@@ -5290,6 +5961,11 @@
     (pad 2 thru_hole circle (at 2.54 0 90) (size 2.54 2.54) (drill 1.524) (layers *.Cu *.Mask F.SilkS)
       (net 95 "Net-(Dual1-Pad20)"))
     (model conn_mkds/mkds_1,5-2.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/walter/conn_mkds/mkds_1,5-2.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5321,6 +5997,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/conn_mkds/mkds_1,5-2.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Anschlussklemme_2P_RM5,08 (layer F.Cu) (tedit 55061751) (tstamp 550613C9)
@@ -5344,6 +6025,11 @@
     (pad 2 thru_hole circle (at 2.54 0 90) (size 2.54 2.54) (drill 1.524) (layers *.Cu *.Mask F.SilkS)
       (net 47 +24V))
     (model conn_mkds/mkds_1,5-2.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/walter/conn_mkds/mkds_1,5-2.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5375,6 +6061,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/conn_mkds/mkds_1,5-2.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Anschlussklemme_2P_RM5,08 (layer F.Cu) (tedit 55061734) (tstamp 550613FB)
@@ -5398,6 +6089,11 @@
     (pad 2 thru_hole circle (at 2.54 0 90) (size 2.54 2.54) (drill 1.524) (layers *.Cu *.Mask F.SilkS)
       (net 47 +24V))
     (model conn_mkds/mkds_1,5-2.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/walter/conn_mkds/mkds_1,5-2.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5443,6 +6139,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/conn_gmkds/gmkds_3-2-7,62.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Anschlussklemme_RM5,08-RM7,62 (layer F.Cu) (tedit 5516E139) (tstamp 55115CA1)
@@ -5484,6 +6185,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/conn_gmkds/gmkds_3-2-7,62.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x08 (layer F.Cu) (tedit 55131B62) (tstamp 55115B74)
@@ -5521,6 +6227,11 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model Pin_Headers/Pin_Header_Straight_1x08.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5711,6 +6422,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/conn_gmkds/gmkds_3-2-7,62.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Anschlussklemme_2P_RM5,08 (layer F.Cu) (tedit 5516EAFD) (tstamp 5516EACE)
@@ -5738,9 +6454,14 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/walter/conn_mkds/mkds_1,5-2.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
-  (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 5516FEBB) (tstamp 55170128)
+  (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 57D541AF) (tstamp 55170128)
     (at 125.095 86.995 180)
     (descr "Resistor, Axial,  RM 10mm, 1/3W,")
     (tags "Resistor, Axial, RM 10mm, 1/3W,")
@@ -5748,7 +6469,7 @@
     (fp_text reference R18 (at 0 0 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 2k2 (at 3.81 3.81 180) (layer F.SilkS)
+    (fp_text value 2k2 (at 0 2.54 180) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -2.54 -1.27) (end 2.54 -1.27) (layer F.SilkS) (width 0.15))
@@ -5766,6 +6487,11 @@
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Bluetooth_Buchse_Platz (layer B.Cu) (tedit 55172A04) (tstamp 55172F23)
@@ -5773,10 +6499,10 @@
     (descr "Through hole socket strip")
     (tags "socket strip")
     (path /54BC29A1)
-    (fp_text reference U2 (at 1.27 27.94 540) (layer B.SilkS)
+    (fp_text reference U2 (at 1.27 27.94 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text value Bluetooth_CZ_HC_05 (at -3.81 27.94 540) (layer B.SilkS)
+    (fp_text value Bluetooth_CZ_HC_05 (at -3.81 27.94 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_line (start 5.08 15.24) (end 5.08 19.05) (layer B.SilkS) (width 0.15))
@@ -5785,7 +6511,7 @@
     (fp_line (start -2.54 15.24) (end -2.54 19.05) (layer B.SilkS) (width 0.15))
     (fp_line (start -5.08 15.24) (end -5.08 19.05) (layer B.SilkS) (width 0.15))
     (fp_line (start 7.62 19.05) (end -7.62 19.05) (layer B.SilkS) (width 0.15))
-    (fp_text user KEY (at 6.35 17.145 540) (layer B.SilkS)
+    (fp_text user KEY (at 6.35 17.145 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_line (start 5.08 10.16) (end 5.08 15.24) (layer B.SilkS) (width 0.15))
@@ -5801,22 +6527,22 @@
     (fp_line (start -7.62 1.27) (end -7.62 -5.715) (layer B.SilkS) (width 0.15))
     (fp_line (start -7.62 -5.715) (end 7.62 -5.715) (layer B.SilkS) (width 0.15))
     (fp_line (start 7.62 -5.715) (end 7.62 1.27) (layer B.SilkS) (width 0.15))
-    (fp_text user VCC (at 6.35 -3.81 540) (layer B.SilkS)
+    (fp_text user VCC (at 6.35 -3.81 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user GND (at 3.81 -3.81 540) (layer B.SilkS)
+    (fp_text user GND (at 3.81 -3.81 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user TXD (at 1.27 -3.81 540) (layer B.SilkS)
+    (fp_text user TXD (at 1.27 -3.81 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user RXD (at -1.27 -3.81 540) (layer B.SilkS)
+    (fp_text user RXD (at -1.27 -3.81 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user KEY (at -3.81 -3.81 540) (layer B.SilkS)
+    (fp_text user KEY (at -3.81 -3.81 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user LED (at -6.35 -3.81 540) (layer B.SilkS)
+    (fp_text user LED (at -6.35 -3.81 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_line (start 7.62 38.1) (end 7.62 43.18) (layer B.SilkS) (width 0.15))
@@ -5838,19 +6564,19 @@
     (fp_line (start 7.62 1.27) (end 5.08 1.27) (layer B.SilkS) (width 0.15))
     (fp_line (start 7.62 1.27) (end 7.62 10.1) (layer B.SilkS) (width 0.15))
     (fp_line (start 5.08 10.1) (end 5.08 1.27) (layer B.SilkS) (width 0.15))
-    (fp_text user LED (at -6.35 17.145 540) (layer B.SilkS)
+    (fp_text user LED (at -6.35 17.145 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user TXD (at -1.27 17.145 540) (layer B.SilkS)
+    (fp_text user TXD (at -1.27 17.145 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user GND (at 1.27 17.145 540) (layer B.SilkS)
+    (fp_text user GND (at 1.27 17.145 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user VCC (at 3.81 17.145 540) (layer B.SilkS)
+    (fp_text user VCC (at 3.81 17.145 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
-    (fp_text user RXD (at -3.81 17.145 540) (layer B.SilkS)
+    (fp_text user RXD (at -3.81 17.145 180) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (pad VCC thru_hole oval (at 6.35 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
@@ -5883,6 +6609,11 @@
       (net 132 "Net-(JP2-Pad2)"))
     (model Socket_Strips/Socket_Strip_Angled_1x06.wrl
       (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Angled_1x06.wrl
+      (at (xyz 0 0.1 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -5921,6 +6652,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Pin_Header_Straight_1x05 (layer F.Cu) (tedit 551736D3) (tstamp 551739F4)
@@ -5952,6 +6688,11 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model Pin_Headers/Pin_Header_Straight_1x05.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6053,6 +6794,16 @@
     (pad 10 thru_hole rect (at 11.43 -2.54 180) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
     (pad 11 thru_hole rect (at 11.43 -5.08 180) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
     (pad 12 thru_hole rect (at 11.43 -7.62 180) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05.wrl
+      (at (xyz 0.3937007874015748 0.09448818897637795 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x07.wrl
+      (at (xyz -0.4330708661417323 0.1574803149606299 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Lötpad0,508_CU (layer F.Cu) (tedit 551BA073) (tstamp 551BBD9D)
@@ -6301,6 +7052,31 @@
       (net 1 GND))
     (pad 4 thru_hole circle (at 1.27 -4.826 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.08661417322834647 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.1889763779527559 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.7559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.05905511811023623 0.7559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.05905511811023623 0.1377952755905512 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe (layer F.Cu) (tedit 55257F9A) (tstamp 55258CF8)
@@ -6354,6 +7130,31 @@
       (net 1 GND))
     (pad 4 thru_hole circle (at 1.27 -4.826 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.08661417322834647 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.1889763779527559 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.7598425196850395 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.05905511811023623 0.7559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.05905511811023623 0.1377952755905512 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe (layer F.Cu) (tedit 55257F9A) (tstamp 55258D11)
@@ -6407,6 +7208,31 @@
       (net 1 GND))
     (pad 4 thru_hole circle (at 1.27 -4.826 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.7559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.1889763779527559 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+      (at (xyz 1.547244094488189 0.08661417322834647 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
+      (at (xyz 0.05905511811023623 0.7559055118110236 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+      (at (xyz 0.05905511811023623 0.1377952755905512 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module ACS712:Bohrloch_3,2mm (layer F.Cu) (tedit 552B9D5E) (tstamp 552B9CE5)
@@ -6491,7 +7317,7 @@
     (fp_text user VCC (at 3.937 4.445 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text user TX (at -3.81 3.937 360) (layer F.SilkS)
+    (fp_text user TX (at -3.81 3.937) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -5.08 -5.08) (end -5.08 -25.4) (layer F.SilkS) (width 0.15))
@@ -6522,6 +7348,11 @@
     (pad GND thru_hole oval (at -3.81 -1.27 270) (size 1.7272 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model Socket_Strips/Socket_Strip_Straight_2x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_2x04.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6597,6 +7428,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_2x04.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module ACS712:Resistor_Horizontal_RM10mm (layer F.Cu) (tedit 552CE583) (tstamp 552CEABA)
@@ -6621,6 +7457,11 @@
     (pad 2 thru_hole circle (at 5.08 0 180) (size 1.99898 1.99898) (drill 1.00076) (layers *.Cu *.SilkS *.Mask)
       (net 106 "Net-(D10-Pad2)"))
     (model Resistors_ThroughHole/Resistor_Horizontal_RM10mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/Resistor_Horizontal_RM10mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 0))

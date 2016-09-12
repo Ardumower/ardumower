@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ardumower mega shield svn-rescue
 LIBS:power
 LIBS:Bluetooth_ZS_HC_05
 LIBS:Bluetooth_CZ_HC_05
@@ -12,8 +13,8 @@ encoding utf-8
 Sheet 1 1
 Title "Ardumower shield SVN Version"
 Date "29 Dez 2014"
-Rev "C"
-Comp " by StefanM"
+Rev "1.2"
+Comp "SM & UZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -937,7 +938,7 @@ F 3 "" H 5700 1950 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR035
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR035
 U 1 1 541E96E8
 P 13000 8500
 F 0 "#PWR035" H 13000 8460 30  0001 C CNN
@@ -1980,7 +1981,7 @@ F 3 "" H 15100 3200 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +3.3V #PWR073
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR073
 U 1 1 54B7868E
 P 15550 3200
 F 0 "#PWR073" H 15550 3160 30  0001 C CNN
@@ -2285,7 +2286,7 @@ $EndComp
 Text GLabel 4350 1975 2    60   Input ~ 0
 Power5
 $Comp
-L +3.3V #PWR087
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR087
 U 1 1 54B93CB3
 P 2225 2580
 F 0 "#PWR087" H 2225 2540 30  0001 C CNN
@@ -2296,7 +2297,7 @@ F 3 "" H 2225 2580 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR088
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR088
 U 1 1 54B944D0
 P 1850 3980
 F 0 "#PWR088" H 1850 3940 30  0001 C CNN
@@ -2742,7 +2743,7 @@ F 3 "DOCUMENTATION" H 2295 1600 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0111
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0111
 U 1 1 54BC27F4
 P 2745 1550
 F 0 "#PWR0111" H 2745 1640 20  0001 C CNN
@@ -2824,7 +2825,7 @@ $EndComp
 Text GLabel 4750 2800 2    60   Output ~ 0
 LedPin-3V
 $Comp
-L +3.3V #PWR0114
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0114
 U 1 1 54BD9CE1
 P 4150 2700
 F 0 "#PWR0114" H 4150 2660 30  0001 C CNN
@@ -2881,7 +2882,7 @@ F 3 "" H 9300 8050 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +3.3V #PWR0118
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0118
 U 1 1 54BE6166
 P 2700 7100
 F 0 "#PWR0118" H 2700 7060 30  0001 C CNN
@@ -2892,7 +2893,7 @@ F 3 "" H 2700 7100 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L +3.3V #PWR0119
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0119
 U 1 1 54BE632C
 P 1175 7100
 F 0 "#PWR0119" H 1175 7060 30  0001 C CNN
@@ -2971,7 +2972,7 @@ F 3 "" H 6550 1700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0124
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0124
 U 1 1 54C11BD9
 P 6250 1700
 F 0 "#PWR0124" H 6250 1660 30  0001 C CNN
@@ -2993,7 +2994,7 @@ F 3 "" H 945 10550 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L +3.3V #PWR0125
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0125
 U 1 1 54C156E7
 P 945 10200
 F 0 "#PWR0125" H 945 10160 30  0001 C CNN
@@ -3506,7 +3507,7 @@ F 3 "" H 3695 1400 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR0131
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0131
 U 1 1 54CFA73A
 P 3695 1800
 F 0 "#PWR0131" H 3695 1760 30  0001 C CNN
@@ -3598,7 +3599,7 @@ F 3 "" H 3205 10700 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0137
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0137
 U 1 1 54D081E7
 P 2905 10700
 F 0 "#PWR0137" H 2905 10660 30  0001 C CNN
@@ -3609,7 +3610,7 @@ F 3 "" H 2905 10700 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +3.3V #PWR0138
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0138
 U 1 1 54D086BA
 P 2680 10780
 F 0 "#PWR0138" H 2680 10740 30  0001 C CNN
@@ -3664,7 +3665,7 @@ F 3 "" H 3795 10700 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0142
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0142
 U 1 1 54D0F52B
 P 3495 10700
 F 0 "#PWR0142" H 3495 10660 30  0001 C CNN
@@ -3829,7 +3830,7 @@ NoConn ~ 15600 -1825
 NoConn ~ 15600 -1550
 NoConn ~ 15600 -1275
 $Comp
-L +3.3V #PWR0143
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0143
 U 1 1 54D2272E
 P 1320 1550
 F 0 "#PWR0143" H 1320 1640 20  0001 C CNN
@@ -3858,7 +3859,7 @@ Ladereglung
 Text Notes 5000 3100 0    60   ~ 0
 Lötpads, mit Brücke\nZur Einbindung des Due
 $Comp
-L +3.3V #PWR0145
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0145
 U 1 1 54E5E951
 P 2720 1350
 F 0 "#PWR0145" H 2720 1440 20  0001 C CNN
@@ -3869,7 +3870,7 @@ F 3 "" H 2720 1350 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR0146
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0146
 U 1 1 54E5EFBB
 P 1320 1350
 F 0 "#PWR0146" H 1320 1440 20  0001 C CNN
@@ -4103,7 +4104,7 @@ F 4 "Value" H 2850 5400 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0159
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0159
 U 1 1 551919E5
 P 3315 5600
 F 0 "#PWR0159" H 3315 5560 30  0001 C CNN
@@ -4126,7 +4127,7 @@ F 4 "Value" H 11685 6995 60  0001 C CNN "Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR0160
+L +3.3V-RESCUE-ardumower_mega_shield_svn #PWR0160
 U 1 1 55197170
 P 12185 7195
 F 0 "#PWR0160" H 12185 7155 30  0001 C CNN
