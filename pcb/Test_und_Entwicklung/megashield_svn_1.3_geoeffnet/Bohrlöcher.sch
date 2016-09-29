@@ -1,23 +1,20 @@
 EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-cache
-LIBS:Wlan_ESP8266
+LIBS:ardumower mega shield svn-rescue
 LIBS:power
-LIBS:conn
-LIBS:uln-udn
-LIBS:ina169_ic
-LIBS:DS1307_Dil8
 LIBS:device
-LIBS:supply
-LIBS:atmel
+LIBS:Zimprich
+LIBS:conn
+LIBS:transistors
+LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 25
-Title "Ardumower Shield - Bohrlöcher Platine"
-Date "Sonntag, 26. April 2015"
-Rev "V1.3"
-Comp "Layout & Plan von UweZ"
+Sheet 20 24
+Title "Ardumower shield SVN Version"
+Date "2016-09-25"
+Rev "1.21"
+Comp "ML AG JL UZ"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -25,263 +22,288 @@ Comment4 ""
 $EndDescr
 $Comp
 L Bohrloch_3,2mm B1
-U 1 1 553D2728
-P 945 1065
-F 0 "B1" H 1225 1225 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 1175 1145 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 945 1065 60  0001 C CNN
-F 3 "" H 945 1065 60  0000 C CNN
-	1    945  1065
+U 1 1 57E12EB0
+P 4055 3560
+F 0 "B1" H 4335 3720 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 4285 3640 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4055 3560 60  0001 C CNN
+F 3 "" H 4055 3560 60  0000 C CNN
+F 4 "Value" H 4055 3560 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4055 3560
 	1    0    0    -1  
 $EndComp
-NoConn ~ 945  1065
+NoConn ~ 4255 3560
 $Comp
 L Bohrloch_3,2mm B2
-U 1 1 553D2940
-P 945 1340
-F 0 "B2" H 1225 1500 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 1175 1420 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 945 1340 60  0001 C CNN
-F 3 "" H 945 1340 60  0000 C CNN
-	1    945  1340
+U 1 1 57E12EB1
+P 4055 3835
+F 0 "B2" H 4335 3995 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 4285 3915 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4055 3835 60  0001 C CNN
+F 3 "" H 4055 3835 60  0000 C CNN
+F 4 "Value" H 4055 3835 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4055 3835
 	1    0    0    -1  
 $EndComp
-NoConn ~ 945  1340
 $Comp
 L Bohrloch_3,2mm B3
-U 1 1 553D29B5
-P 945 1605
-F 0 "B3" H 1225 1765 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 1175 1685 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 945 1605 60  0001 C CNN
-F 3 "" H 945 1605 60  0000 C CNN
-	1    945  1605
+U 1 1 57E12EB2
+P 4055 4110
+F 0 "B3" H 4335 4270 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 4285 4190 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4055 4110 60  0001 C CNN
+F 3 "" H 4055 4110 60  0000 C CNN
+F 4 "Value" H 4055 4110 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4055 4110
 	1    0    0    -1  
 $EndComp
-NoConn ~ 945  1605
 $Comp
 L Bohrloch_3,2mm B4
-U 1 1 553D2A32
-P 945 1875
-F 0 "B4" H 1225 2035 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 1175 1955 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 945 1875 60  0001 C CNN
-F 3 "" H 945 1875 60  0000 C CNN
-	1    945  1875
+U 1 1 57E12EB3
+P 4055 4385
+F 0 "B4" H 4335 4545 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 4285 4465 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4055 4385 60  0001 C CNN
+F 3 "" H 4055 4385 60  0000 C CNN
+F 4 "Value" H 4055 4385 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4055 4385
 	1    0    0    -1  
 $EndComp
-NoConn ~ 945  1875
 $Comp
 L Bohrloch_3,2mm B5
-U 1 1 553D2EF2
-P 1820 1065
-F 0 "B5" H 2100 1225 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2050 1145 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 1820 1065 60  0001 C CNN
-F 3 "" H 1820 1065 60  0000 C CNN
-	1    1820 1065
+U 1 1 57E12EB4
+P 4880 3560
+F 0 "B5" H 5160 3720 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5110 3640 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4880 3560 60  0001 C CNN
+F 3 "" H 4880 3560 60  0000 C CNN
+F 4 "Value" H 4880 3560 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4880 3560
 	1    0    0    -1  
 $EndComp
-NoConn ~ 1820 1065
 $Comp
 L Bohrloch_3,2mm B6
-U 1 1 553D2EF9
-P 1820 1340
-F 0 "B6" H 2100 1500 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2050 1420 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 1820 1340 60  0001 C CNN
-F 3 "" H 1820 1340 60  0000 C CNN
-	1    1820 1340
+U 1 1 57E12EB5
+P 4880 3835
+F 0 "B6" H 5160 3995 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5110 3915 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4880 3835 60  0001 C CNN
+F 3 "" H 4880 3835 60  0000 C CNN
+F 4 "Value" H 4880 3835 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4880 3835
 	1    0    0    -1  
 $EndComp
-NoConn ~ 1820 1340
 $Comp
 L Bohrloch_3,2mm B7
-U 1 1 553D2F00
-P 1820 1605
-F 0 "B7" H 2100 1765 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2050 1685 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 1820 1605 60  0001 C CNN
-F 3 "" H 1820 1605 60  0000 C CNN
-	1    1820 1605
+U 1 1 57E12EB6
+P 4880 4110
+F 0 "B7" H 5160 4270 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5110 4190 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4880 4110 60  0001 C CNN
+F 3 "" H 4880 4110 60  0000 C CNN
+F 4 "Value" H 4880 4110 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4880 4110
 	1    0    0    -1  
 $EndComp
-NoConn ~ 1820 1605
 $Comp
 L Bohrloch_3,2mm B8
-U 1 1 553D2F07
-P 1820 1875
-F 0 "B8" H 2100 2035 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2050 1955 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 1820 1875 60  0001 C CNN
-F 3 "" H 1820 1875 60  0000 C CNN
-	1    1820 1875
+U 1 1 57E12EB7
+P 4880 4385
+F 0 "B8" H 5160 4545 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5110 4465 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 4880 4385 60  0001 C CNN
+F 3 "" H 4880 4385 60  0000 C CNN
+F 4 "Value" H 4880 4385 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    4880 4385
 	1    0    0    -1  
 $EndComp
-NoConn ~ 1820 1875
-$Comp
-L Bohrloch_3,2mm B15
-U 1 1 553D3232
-P 2755 1070
-F 0 "B15" H 3035 1230 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2985 1150 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 2755 1070 60  0001 C CNN
-F 3 "" H 2755 1070 60  0000 C CNN
-	1    2755 1070
-	1    0    0    -1  
-$EndComp
-NoConn ~ 2755 1070
-$Comp
-L Bohrloch_3,2mm B16
-U 1 1 553D3239
-P 2755 1345
-F 0 "B16" H 3035 1505 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2985 1425 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 2755 1345 60  0001 C CNN
-F 3 "" H 2755 1345 60  0000 C CNN
-	1    2755 1345
-	1    0    0    -1  
-$EndComp
-NoConn ~ 2755 1345
-$Comp
-L Bohrloch_3,2mm B17
-U 1 1 553D3240
-P 2755 1610
-F 0 "B17" H 3035 1770 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2985 1690 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 2755 1610 60  0001 C CNN
-F 3 "" H 2755 1610 60  0000 C CNN
-	1    2755 1610
-	1    0    0    -1  
-$EndComp
-NoConn ~ 2755 1610
-$Comp
-L Bohrloch_3,2mm B18
-U 1 1 553D3247
-P 2755 1880
-F 0 "B18" H 3035 2040 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 2985 1960 60  0000 C CNN
-F 2 "ACS712:Bohrloch_3,2mm" H 2755 1880 60  0001 C CNN
-F 3 "" H 2755 1880 60  0000 C CNN
-	1    2755 1880
-	1    0    0    -1  
-$EndComp
-NoConn ~ 2755 1880
-$Comp
-L Bohrloch_3,2mm B12
-U 1 1 553D418C
-P 3915 1070
-F 0 "B12" H 4195 1230 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 4145 1150 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 3915 1070 60  0001 C CNN
-F 3 "" H 3915 1070 60  0000 C CNN
-	1    3915 1070
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B13
-U 1 1 553D4193
-P 3915 1345
-F 0 "B13" H 4195 1505 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 4145 1425 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 3915 1345 60  0001 C CNN
-F 3 "" H 3915 1345 60  0000 C CNN
-	1    3915 1345
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B14
-U 1 1 553D419A
-P 3915 1610
-F 0 "B14" H 4195 1770 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 4145 1690 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 3915 1610 60  0001 C CNN
-F 3 "" H 3915 1610 60  0000 C CNN
-	1    3915 1610
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR0130
-U 1 1 553D45B9
-P 3820 1070
-F 0 "#PWR0130" H 3820 820 60  0001 C CNN
-F 1 "GND" V 3820 855 60  0000 C CNN
-F 2 "" H 3820 1070 60  0000 C CNN
-F 3 "" H 3820 1070 60  0000 C CNN
-	1    3820 1070
-	0    1    -1   0   
-$EndComp
-$Comp
-L GND #PWR0131
-U 1 1 553D46A2
-P 3820 1345
-F 0 "#PWR0131" H 3820 1095 60  0001 C CNN
-F 1 "GND" V 3820 1130 60  0000 C CNN
-F 2 "" H 3820 1345 60  0000 C CNN
-F 3 "" H 3820 1345 60  0000 C CNN
-	1    3820 1345
-	0    1    -1   0   
-$EndComp
-$Comp
-L GND #PWR0132
-U 1 1 553D46E4
-P 3820 1610
-F 0 "#PWR0132" H 3820 1360 60  0001 C CNN
-F 1 "GND" V 3820 1395 60  0000 C CNN
-F 2 "" H 3820 1610 60  0000 C CNN
-F 3 "" H 3820 1610 60  0000 C CNN
-	1    3820 1610
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	3915 1070 3820 1070
-Wire Wire Line
-	3820 1345 3915 1345
-Wire Wire Line
-	3820 1610 3915 1610
+NoConn ~ 4255 3835
+NoConn ~ 4255 4110
+NoConn ~ 4255 4385
+NoConn ~ 5080 3560
+NoConn ~ 5080 3835
+NoConn ~ 5080 4110
+NoConn ~ 5080 4385
 $Comp
 L Bohrloch_3,2mm B9
-U 1 1 553D4CF9
-P 5025 1065
-F 0 "B9" H 5305 1225 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 5255 1145 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 5025 1065 60  0001 C CNN
-F 3 "" H 5025 1065 60  0000 C CNN
-	1    5025 1065
+U 1 1 57E12EB9
+P 7555 2550
+F 0 "B9" H 7835 2710 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 7785 2630 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_6,5mm" H 7555 2550 60  0001 C CNN
+F 3 "" H 7555 2550 60  0000 C CNN
+F 4 "Value" H 7555 2550 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    7555 2550
 	1    0    0    -1  
 $EndComp
+NoConn ~ 7755 2550
 $Comp
 L Bohrloch_3,2mm B10
-U 1 1 553D4CFF
-P 5025 1340
-F 0 "B10" H 5305 1500 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 5255 1420 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 5025 1340 60  0001 C CNN
-F 3 "" H 5025 1340 60  0000 C CNN
-	1    5025 1340
+U 1 1 57E12EBA
+P 7555 2825
+F 0 "B10" H 7835 2985 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 7785 2905 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_6,5mm" H 7555 2825 60  0001 C CNN
+F 3 "" H 7555 2825 60  0000 C CNN
+F 4 "Value" H 7555 2825 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    7555 2825
 	1    0    0    -1  
 $EndComp
 $Comp
 L Bohrloch_3,2mm B11
-U 1 1 553D4D05
-P 5025 1605
-F 0 "B11" H 5305 1765 60  0000 C CNN
-F 1 "Bohrloch_6,5mm" H 5255 1685 60  0000 C CNN
-F 2 "ACS712:Bohrloch_6,5mm" H 5025 1605 60  0001 C CNN
-F 3 "" H 5025 1605 60  0000 C CNN
-	1    5025 1605
+U 1 1 57E12EBB
+P 7555 3100
+F 0 "B11" H 7835 3260 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 7785 3180 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_6,5mm" H 7555 3100 60  0001 C CNN
+F 3 "" H 7555 3100 60  0000 C CNN
+F 4 "Value" H 7555 3100 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 7555 3100 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    7555 3100
 	1    0    0    -1  
 $EndComp
+$Comp
+L Bohrloch_3,2mm B12
+U 1 1 57E12EBC
+P 7535 3555
+F 0 "B12" H 7815 3715 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 7765 3635 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_6,5mm" H 7535 3555 60  0001 C CNN
+F 3 "" H 7535 3555 60  0000 C CNN
+F 4 "Value" H 7535 3555 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 7535 3555 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    7535 3555
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B13
+U 1 1 57E12EBD
+P 7535 3830
+F 0 "B13" H 7815 3990 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 7765 3910 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_6,5mm" H 7535 3830 60  0001 C CNN
+F 3 "" H 7535 3830 60  0000 C CNN
+F 4 "Value" H 7535 3830 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    7535 3830
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B14
+U 1 1 57E12EBE
+P 7535 4105
+F 0 "B14" H 7815 4265 60  0000 C CNN
+F 1 "Bohrloch_6,5mm" H 7765 4185 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_6,5mm" H 7535 4105 60  0001 C CNN
+F 3 "" H 7535 4105 60  0000 C CNN
+F 4 "Value" H 7535 4105 60  0001 C CNN "Bestellnummer"
+F 5 "Value" H 7535 4105 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    7535 4105
+	1    0    0    -1  
+$EndComp
+NoConn ~ 7755 2825
+NoConn ~ 7735 3555
+NoConn ~ 7735 3830
+Text GLabel 7405 2550 0    60   Output ~ 0
+Charg_Pin_+
+Text GLabel 7405 2825 0    60   Output ~ 0
+Charg_Pin_+
+Text GLabel 7405 3100 0    60   Output ~ 0
+Charg_Pin_+
+$Comp
+L Bohrloch_3,2mm B15
+U 1 1 57E12EC2
+P 5685 3570
+F 0 "B15" H 5965 3730 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5915 3650 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 5685 3570 60  0001 C CNN
+F 3 "" H 5685 3570 60  0000 C CNN
+F 4 "Value" H 5685 3570 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    5685 3570
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B16
+U 1 1 57E12EC3
+P 5685 3845
+F 0 "B16" H 5965 4005 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5915 3925 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 5685 3845 60  0001 C CNN
+F 3 "" H 5685 3845 60  0000 C CNN
+F 4 "Value" H 5685 3845 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    5685 3845
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B17
+U 1 1 57E12EC4
+P 5685 4120
+F 0 "B17" H 5965 4280 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5915 4200 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 5685 4120 60  0001 C CNN
+F 3 "" H 5685 4120 60  0000 C CNN
+F 4 "Value" H 5685 4120 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    5685 4120
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B18
+U 1 1 57E12EC5
+P 5685 4395
+F 0 "B18" H 5965 4555 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 5915 4475 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 5685 4395 60  0001 C CNN
+F 3 "" H 5685 4395 60  0000 C CNN
+F 4 "Value" H 5685 4395 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    5685 4395
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5885 3570
+NoConn ~ 5885 3845
+NoConn ~ 5885 4120
+NoConn ~ 5885 4395
 Wire Wire Line
-	5025 1065 4930 1065
+	7390 4105 7535 4105
 Wire Wire Line
-	4930 1340 5025 1340
+	7390 3830 7535 3830
 Wire Wire Line
-	4930 1605 5025 1605
-Text GLabel 4930 1605 0    39   Output ~ 0
-Charg_Pin
-Text GLabel 4930 1340 0    39   Output ~ 0
-Charg_Pin
-Text GLabel 4930 1065 0    39   Output ~ 0
-Charg_Pin
+	7390 3555 7535 3555
+Wire Wire Line
+	7405 2550 7555 2550
+Wire Wire Line
+	7405 2825 7555 2825
+Wire Wire Line
+	7405 3100 7555 3100
+$Comp
+L GND #PWR135
+U 1 1 57E2B21B
+P 7390 4105
+F 0 "#PWR135" H 7390 3855 50  0001 C CNN
+F 1 "GND" V 7390 3915 50  0000 C CNN
+F 2 "" H 7390 4105 50  0000 C CNN
+F 3 "" H 7390 4105 50  0000 C CNN
+	1    7390 4105
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR134
+U 1 1 57E2B554
+P 7390 3830
+F 0 "#PWR134" H 7390 3580 50  0001 C CNN
+F 1 "GND" V 7390 3640 50  0000 C CNN
+F 2 "" H 7390 3830 50  0000 C CNN
+F 3 "" H 7390 3830 50  0000 C CNN
+	1    7390 3830
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR133
+U 1 1 57E2B6C2
+P 7390 3555
+F 0 "#PWR133" H 7390 3305 50  0001 C CNN
+F 1 "GND" V 7390 3365 50  0000 C CNN
+F 2 "" H 7390 3555 50  0000 C CNN
+F 3 "" H 7390 3555 50  0000 C CNN
+	1    7390 3555
+	0    1    -1   0   
+$EndComp
 $EndSCHEMATC

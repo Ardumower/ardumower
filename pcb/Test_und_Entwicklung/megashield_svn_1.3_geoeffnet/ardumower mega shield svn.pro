@@ -1,41 +1,27 @@
-update=02.11.2015 10:35:27
+update=28.09.2016 18:31:35
 last_client=kicad
-[general]
-version=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=
+LastNetListRead=ardumower mega shield svn.net
 UseCmpFile=1
 PadDrill=0.762
 PadDrillOvalY=0.762
 PadSizeH=1.524
 PadSizeV=1.524
-PcbTextSizeV=1.5
-PcbTextSizeH=1.5
+PcbTextSizeV=1
+PcbTextSizeH=1
 PcbTextThickness=0.3
 ModuleTextSizeV=1
 ModuleTextSizeH=1
 ModuleTextSizeThickness=0.15
-SolderMaskClearance=0.2
+SolderMaskClearance=0
 SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
-[eeschema]
+[general]
 version=1
-LibDir=acs712.pretty;C:/Users/Uwe/Downloads/ardumower/pcb/megashield_svn_1.3_geoeffnet/acs712.pretty;../../../../../../KiCad/share/modules
-[eeschema/libraries]
-LibName1=ardumower mega shield svn-cache
-LibName2=acs712.pretty/Wlan_ESP8266
-LibName3=power
-LibName4=conn
-LibName5=uln-udn
-LibName6=acs712.pretty/ina169_ic
-LibName7=DS1307_Dil8
-LibName8=device
-LibName9=supply
-LibName10=atmel
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -43,6 +29,16 @@ PlotDirectoryName=
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
+SpiceAjustPassiveValues=0
 LabSize=60
+ERC_TestSimilarLabels=1
+[eeschema]
+version=1
+LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
+[eeschema/libraries]
+LibName1=ardumower mega shield svn-rescue
+LibName2=power
+LibName3=device
+LibName4=Zimprich
+LibName5=conn
+LibName6=transistors
