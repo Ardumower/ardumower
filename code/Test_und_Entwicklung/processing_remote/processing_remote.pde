@@ -30,12 +30,17 @@
 import java.util.Stack;
 import java.util.regex.*;
 import processing.serial.*;
+import processing.net.*;
 import java.util.Iterator;
 
-String serialport = "COM14";
-int serialbaud = 19200; 
+// configuration
+String comPort = "COM14";
+int comBaud = 19200;
+boolean useTcp = true;
+String tcpHost = "raspberrypi";
+int tcpPort = 8083;
 boolean demo = false;
-boolean portSelection = true;
+
 
   static final int STATE_CONNECT   = 0;
   static final int STATE_MENU      = 1;
@@ -45,7 +50,8 @@ boolean portSelection = true;
 
   private int nextStartMenuRequest = 6000;
   private int state = STATE_CONNECT;
-  Serial port = null;
+  Serial mySerial;
+  Client myTcp;
   private int maxGraphValueCount;
   private int plotCmdCount = 0;
   int serialLinesReceived = 0;
@@ -92,15 +98,17 @@ boolean portSelection = true;
   public void stopSession(){        
     println("stopSession");
     stopTimer();
-    stopPort();
+    stopComm();
     state = STATE_CONNECT;    
   } 
   
-  public void stopPort(){      
+  public void stopComm(){      
     println("stopPort");
-    if (port == null) return;    
-    port.stop();
-    port  = null;    
+    if ((mySerial == null) && (myTcp == null)) return;    
+    if (useTcp) myTcp.stop();
+      else mySerial.stop();    
+    mySerial = null;
+    myTcp = null;
   }    
     
    
@@ -481,20 +489,20 @@ public void parsePlotData(final String resp){
 
   
   
-void sendSerial(String text, String data){
-  println("sendSerial: "+text + ":" + data);
-  if (!demo) {
-    for (int i=0; i < data.length(); i++) {
-      port.write( (int)data.charAt(i) );
+void sendData(String text, String data){
+  println("sendData: "+text + ":" + data);
+  if (demo) return;
+  for (int i=0; i < data.length(); i++) {
+    if (useTcp) myTcp.write( (int)data.charAt(i) );
+      else mySerial.write( (int)data.charAt(i) );
       //delay(20);
-    }
   }
 }
      
 
 void sendNavigation(View view){
   String s = "{"+view.key+"}";        
-  sendSerial("navigate", s);
+  sendData("navigate", s);
 }
 
 
@@ -556,25 +564,34 @@ void setup(){
          + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
          + "batFactor 0.07}");
   } else {          
-    chooseDevice();
+    if (useTcp) {
+      connectDevice();
+    } else {
+      chooseDevice();
+    }
   }
   mMainView.dump("");
 }
 
 public void connectDevice(){
-  println("connectDevice "+serialport + " " + serialbaud);
-  port = new Serial(this, serialport, serialbaud);  
+  if (useTcp){
+    println("connectDevice "+tcpHost + ":" + tcpPort);
+    myTcp =  new Client(this, tcpHost, tcpPort);
+  } else {
+    println("connectDevice "+comPort + " " + comBaud);
+    mySerial = new Serial(this, comPort, comBaud, 'N', 8, 1);
+    mySerial.buffer(1);
+  }
     //port.bufferUntil('}');  
     //delay(2000);      
-    //port.clear();
-  port.buffer(1);
+    //port.clear();  
   state = STATE_MENU;
   delay(6000);
   requestStartMenu();
 }
 
 public void chooseDevice(){
-  if (port != null) return;    
+  if ((mySerial != null) || (myTcp != null)) return;    
   state = STATE_CONNECT;
   updatePage();
 }
@@ -585,8 +602,8 @@ void requestStartMenu(){
    mChosenMenuItem = new ListViewItem(0,0);
    mChosenMenuItem.setId(".");
    mChosenMenuItem.setText("");
-   if (!demo) port.clear();
-   sendSerial("request main menu", s);
+   if ((!demo) && (!useTcp)) mySerial.clear();
+   sendData("request main menu", s);
 }
 
 void onListItemClick(ListViewItem item){
@@ -594,7 +611,7 @@ void onListItemClick(ListViewItem item){
   switch (state){
     case STATE_CONNECT:              
       if (item.idx < Serial.list().length){        
-        serialport = Serial.list()[item.idx];               
+        comPort = Serial.list()[item.idx];               
         frame.setTitle("Connecting...");
         connectDevice();       
       }
@@ -606,12 +623,12 @@ void onListItemClick(ListViewItem item){
       if (item.getScale() > 0) { // slider
         //if (!item.isUpdating()){ 
           resp = "{"+item.getId()+"`" + item.getValue()+ "}"; // slider request        
-          sendSerial("slider request", resp);                    
+          sendData("slider request", resp);                    
         //}          
       } else {                
         resp = "{"+item.getId()+"}";  // menu request        
         mChosenMenuItem = item.clone();              
-        sendSerial("menu request", resp);        
+        sendData("menu request", resp);        
       }            
       break;
     }       
@@ -639,7 +656,7 @@ void onBackPressed() {
       } else {                    
         mChosenMenuItem = mMenuStack.get(mMenuStack.size()-2).clone();
         String s = "{"+mChosenMenuItem.getId()+"}";               
-        sendSerial("back", s);
+        sendData("back", s);
         mBackButton = true;
       }        
       break;
@@ -647,7 +664,13 @@ void onBackPressed() {
 }
   
    
-void draw(){  
+void draw(){
+  if (myTcp != null){
+    while (myTcp.available() > 0) {           
+      char ch = myTcp.readChar();
+      processDataReceived(ch);      
+    }      
+  }  
   if (drawCounter == 0){
     frame.setLocation(40, 0);
     drawCounter++;
@@ -723,19 +746,22 @@ void mouseDragged(){
   mNeedsDraw = true;
 }
 
+void processDataReceived(char ch){
+  mResponse.append(ch);      
+  if (state == STATE_CONNECT) state = STATE_MENU;
+  String s = mResponse.toString(); 
+  //println(s);
+  if (parseResponse(s)) {       
+    while (mResponse.length() > 0) mResponse.deleteCharAt(0);        
+    mNeedsDraw = true;
+  }
+}
 
 void serialEvent(Serial port) {    
   try {
-    while (port.available() > 0){
+    while (port.available() > 0){      
       char ch = port.readChar();
-      mResponse.append(ch);      
-      if (state == STATE_CONNECT) state = STATE_MENU;
-      String s = mResponse.toString(); 
-      //println(s);
-      if (parseResponse(s)) {       
-        while (mResponse.length() > 0) mResponse.deleteCharAt(0);        
-        mNeedsDraw = true;
-      }
+      processDataReceived(ch);      
     }       
   } 
   catch (Exception e) {
