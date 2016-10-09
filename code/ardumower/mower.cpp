@@ -291,19 +291,43 @@ ISR(PCINT0_vect){
 // SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
 // http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
 #ifdef __AVR__
-ISR(PCINT2_vect, ISR_NOBLOCK){
+  // Neu Alex: 06.10.16
+  volatile byte oldOdoPins = 0;
+  ISR(PCINT2_vect, ISR_NOBLOCK)
+  {
+    const byte actPins = PINK;                				// read register PINK
+    const byte setPins = (oldOdoPins ^ actPins);
+    if (setPins & 0b00010000)                 				// pin left has changed 
+    {
+      if (robot.motorLeftPWMCurr >= 0)						// forward
+        robot.odometryLeft++;
+      else
+        robot.odometryLeft--;									// backward
+    }
+    if (setPins & 0b01000000)                  				// pin right has changed
+    {
+      if (robot.motorRightPWMCurr >= 0)
+        robot.odometryRight++;								// forward
+      else
+        robot.odometryRight--;								// backward
+    }  
+    oldOdoPins = actPins;
+  }
+
 #else
-ISR(PCINT2_vect){
+
+  ISR(PCINT2_vect)
+  {
+    unsigned long timeMicros = micros();
+    boolean odometryLeftState = digitalRead(pinOdometryLeft);
+    boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
+    boolean odometryRightState = digitalRead(pinOdometryRight);  
+    boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
+    boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
+    robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
+    robot.setMotorMowRPMState(motorMowRpmState);  
+  }
 #endif
-  unsigned long timeMicros = micros();
-  boolean odometryLeftState = digitalRead(pinOdometryLeft);
-  boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
-  boolean odometryRightState = digitalRead(pinOdometryRight);  
-  boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-  boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
-  robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
-  robot.setMotorMowRPMState(motorMowRpmState);  
-}
 
 // mower motor speed sensor interrupt
 //void rpm_interrupt(){
@@ -461,103 +485,74 @@ void Mower::setup(){
     rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
   }
 
+//-------------------------------------------------------------------------
 // enable interrupts
-  //-----------------------------------------------------------------------------------------------------------------UweZ geändert Anfang---------------------------------
-  #ifdef __AVR__
-    // R/C
+//-------------------------------------------------------------------------
+#ifdef __AVR__
+
+    //-------------------------------------------------------------------------
+    // Switch
+    //-------------------------------------------------------------------------
     PCICR |= (1<<PCIE0);
-      if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
-        bitWrite(PCMSK0, PCINT4, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register4  "XXX1XXXX" Interrupt PCINT4 Register4 entspricht den Pin 10 des Arduino Mega
-      }
-      else                               // und wenn nicht  
-      {
-      bitWrite(PCMSK0, PCINT4, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT4 Register4  "XXX0XXXX"                                           
-    }
-     //-----------------------------------------------------------------------------------------------------------------  
-    if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
-        bitWrite(PCMSK0, PCINT5, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register5  "XX1XXXXX" Interrupt PCINT5 Register5 entspricht den Pin 11 des Arduino Mega
-      }
-      else                               // und wenn nicht  
-      {
-      bitWrite(PCMSK0, PCINT5, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT5 Register5  "XX0XXXXX"                                           
-    }
-    //-----------------------------------------------------------------------------------------------------------------
-    if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
-        bitWrite(PCMSK0, PCINT6, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register6  "X1XXXXXX" Interrupt PCINT6 Register6 entspricht den Pin 12 des Arduino Mega
-      }
-      else                               // und wenn nicht  
-      {
-      bitWrite(PCMSK0, PCINT6, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT6 Register6  "X0XXXXXX"                                           
-    }
-    //-----------------------------------------------------------------------------------------------------------------
-   if (remoteUse==1){                   // überprüfe ob RemoteUse aktiviert ist;
-        bitWrite(PCMSK0, PCINT1, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK0 Register6  "XXXXXX1X" Interrupt PCINT1 Register6 entspricht den Pin 52 des Arduino Mega
-      }
-      else                               // und wenn nicht  
-      {
-      bitWrite(PCMSK0, PCINT1, LOW);     // dann schreibe eine 0 ins PCMSK0 PCINT1 Register6  "XXXXXX0X"                                           
-    } 
-    
-   // odometry
-    PCICR |= (1<<PCIE2);
+    PCMSK0 |= (1<<PCINT1);
 
-    if (odometryUse==1){                  // überprüfe ob die 1 fache Odemetrie aktiviert ist - Links
-        bitWrite(PCMSK2, PCINT20, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK2 register0  "XXX1XXXX" Interrupt PCINT20 Register4 entspricht den Pin A12 des Arduino Mega
+    //-------------------------------------------------------------------------
+    // R/C
+    //-------------------------------------------------------------------------
+    PCICR |= (1<<PCIE0);
+    if (remoteUse)
+	{
+	  PCMSK0 |= (1<<PCINT4);
+	  PCMSK0 |= (1<<PCINT5);
+	  PCMSK0 |= (1<<PCINT6);
+	}
+	 
+    //-------------------------------------------------------------------------    
+    // odometry
+    //-------------------------------------------------------------------------
+	// Wenn odometryUse == 1 dann:
+	// PCMSK2, PCINT20, HIGH			-> für links
+	// PCMSK2, PCINT22, HIGH			-> für rechts
+	//
+	// Wenn twoWayOdo == 1 dann:
+	// PCMSK2, PCINT21, HIGH
+	// PCMSK2, PCINT23, HIGH
+	if (odometryUse)
+	{ 
+	  PCICR |= (1<<PCIE2);
+	  PCMSK2 |= (1<<PCINT20);
+	  PCMSK2 |= (1<<PCINT22);
+	  if (twoWayOdometrySensorUse)
+	  {  
+		PCMSK2 |= (1<<PCINT21);  
+		PCMSK2 |= (1<<PCINT23);   
       }
-      else                               // und wenn nicht  
-      {
-      bitWrite(PCMSK2, PCINT20, LOW);    // dann schreibe eine 0 ins PCMSK2 Register4  "XXX0XXXX"                                           
-    }
-    //-----------------------------------------------------------------------------------------------------------------
-    if (twoWayOdometrySensorUse==1){      // überprüfe ob die twoWayOdometry Odemetrie aktiviert ist - Links
-      bitWrite(PCMSK2, PCINT21, HIGH);    // und wenn ja schreibe eine 1 ins PCMSK2 register1  "XX1XXXXX" Interrupt PCINT21 Register5 entspricht den Pin A13 des Arduino Mega
-    }
-      else                               // und wenn nicht 
-      {
-      bitWrite(PCMSK2, PCINT21, LOW);     // dann schreibe eine 0 ins PCMSK2 register5  "XX0XXXXX"                                          
-    }
-    //-----------------------------------------------------------------------------------------------------------------   
-     if (odometryUse==1){                 // überprüfe ob die 1 fache Odemetrie aktiviert ist - Rechts
-        bitWrite(PCMSK2, PCINT22, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK2 register2  "X1XXXXXX" Interrupt PCINT22 Register6 entspricht den Pin A14 des Arduino Mega
-      }
-      else                               // und wenn nicht  
-      {
-      bitWrite(PCMSK2, PCINT22, LOW);     // dann schreibe eine 0 ins PCMSK2 Register6  "X0XXXXXX"                                           
-    }
-    //-----------------------------------------------------------------------------------------------------------------
-
-    if (twoWayOdometrySensorUse==1){      // überprüfe ob die twoWayOdometry Odemetrie aktiviert ist - Rechts
-      bitWrite(PCMSK2, PCINT23, HIGH);    // und wenn ja schreibe eine 1 ins PCMSK2 Register7  "1XXXXXXX" Interrupt PCINT23 Register7 entspricht den Pin A15 des Arduino Mega
-    }
-      else                               // und wenn nicht 
-      {
-      bitWrite(PCMSK2, PCINT23, LOW);     // dann schreibe eine 0 ins PCMSK2 Register7  "0XXXXXXX"                                          
-    }
-    
+	}
+		
+    //-------------------------------------------------------------------------	
     // mower motor speed sensor interrupt
-    //attachInterrupt(5, rpm_interrupt, CHANGE);
-    //-----------------------------------------------------------------------------------------------------------------   Geändert von PCMSK2 |= (1<<PCINT19);
-     if (motorMowModulate==1){            // überprüfe ob die motorMowModulate aktiviert ist;
-        bitWrite(PCMSK2, PCINT19, HIGH);  // und wenn ja schreibe eine 1 ins PCMSK2 Register3  "XXXX1XXX" Interrupt PCINT23 Register3 entspricht den Pin A11 des Arduino Mega
-      }
-      else                               // und wenn nicht 
-      {
-      bitWrite(PCMSK2, PCINT19, LOW);     // dann schreibe eine 0 ins PCMSK2 Register3  "XXXX0XXX"                                  
-    }
-    //-----------------------------------------------------------------------------------------------------------------UweZ geändert Ende-----------------------------------
+	//-------------------------------------------------------------------------
+    if (motorMowModulate)
+	{
+	  PCICR |= (1<<PCIE2);
+	  PCMSK2 |= (1<<PCINT19);
+	}
   #else
     // Due interrupts
+	// ODO
     attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
     attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
     attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
     attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
     
+	// RC
     attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
     attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
     attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
+	//Switch
     attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
     
-    //attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
+	//Motor Mow RPM	
     attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
   #endif   
   

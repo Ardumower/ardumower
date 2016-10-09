@@ -473,9 +473,10 @@ class Robot
     // call this from R/C control interrupt
     virtual void setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState, boolean remoteSteerState, 
       boolean remoteMowState, boolean remoteSwitchState);    
+    //Ehl
     // call this from odometry interrupt
-    virtual void setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, 
-      boolean odometryLeftState2, boolean odometryRightState2);
+    //virtual void setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, 
+    //  boolean odometryLeftState2, boolean odometryRightState2);
     // call this from hall sensor interrupt
     virtual void setMotorMowRPMState(boolean motorMowRpmState);
 
