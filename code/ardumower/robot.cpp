@@ -1384,7 +1384,8 @@ void Robot::testOdometry(){
   while (true){ 
     resetIdleTime();
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
-      Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
+      //Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
+      Console.print(F("Press'f' forward, 'r' reverse, 'z' reset, 's' stop, 'o' one revolution  "));
       Console.print(F("left="));
       Console.print(odometryLeft);
       Console.print(F("  right="));
@@ -1407,6 +1408,42 @@ void Robot::testOdometry(){
       if (ch == 'z') {
           odometryLeft = 0; odometryRight = 0;
       }            
+      if (ch == 's') {
+          motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
+          setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false); 
+      }                  
+      if (ch == 'o') 
+      {
+          odometryLeft = 0; odometryRight = 0;
+          motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;  
+          setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
+          while (true)
+          {
+            if (Console.available() > 0)
+            {
+              ch = (char)Console.read();            
+              if (ch == '0') break;
+            }
+            
+            if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
+              //Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
+              Console.print(F("Press'f' forward, 'r' reverse, 'z' reset, 's' stop, 'o' one revolution  "));
+              Console.print(F("left="));
+              Console.print(odometryLeft);
+              Console.print(F("  right="));
+              Console.println(odometryRight);              
+              lastLeft = odometryLeft;
+              lastRight = odometryRight;
+            }
+            
+            if ((odometryLeft >= odometryTicksPerRevolution) || (odometryRight >= odometryTicksPerRevolution))
+            {
+              motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
+              setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
+              break;
+            }
+          }  
+      }
     }
   };
   motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
