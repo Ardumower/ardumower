@@ -1,5 +1,9 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP +17V
+K POWER, PWR
+$ENDCMP
+#
 $CMP Arduschnittstelle
 D Connector 02x06
 $ENDCMP

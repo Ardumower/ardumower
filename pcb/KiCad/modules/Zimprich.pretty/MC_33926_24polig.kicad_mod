@@ -45,4 +45,14 @@
   (pad 22 thru_hole circle (at 27.94 -14.986) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 23 thru_hole circle (at 30.48 -14.986) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 24 thru_hole circle (at 33.02 -14.986) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18.wrl
+    (at (xyz 1.05 1.49 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x06.wrl
+    (at (xyz 1.05 0.59 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

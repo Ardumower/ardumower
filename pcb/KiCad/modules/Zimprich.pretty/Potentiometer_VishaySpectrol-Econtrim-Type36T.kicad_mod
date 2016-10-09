@@ -1,4 +1,4 @@
-(module Potentiometers:Potentiometer_VishaySpectrol-Econtrim-Type36T (layer F.Cu) (tedit 5446FD75)
+(module Potentiometer_VishaySpectrol-Econtrim-Type36T (layer F.Cu) (tedit 5446FD75)
   (descr "Potentiometer, Trimmer, Spectrol Type 36T, Econtrim, Rev A, 02 Aug 2010,")
   (tags "Potentiometer, Trimmer, Spectrol Type 36T, Econtrim, Rev A, 02 Aug 2010,")
   (fp_text reference RV1 (at 6.30936 -6.30936) (layer F.SilkS)
@@ -17,4 +17,9 @@
   (pad 2 thru_hole circle (at 2.49936 -4.99872) (size 2.49936 2.49936) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
   (pad 3 thru_hole circle (at 4.99872 0) (size 2.49936 2.49936) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole circle (at 0 0) (size 2.49936 2.49936) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/Potentiometers.3dshapes/Potentiometer_Triwood_RM-065.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 4 4 4))
+    (rotate (xyz 0 0 0))
+  )
 )

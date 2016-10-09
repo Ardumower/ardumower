@@ -1,4 +1,4 @@
-(module ACS712:BladeFuse-Mini (layer F.Cu) (tedit 54C611B1)
+(module BladeFuse-Mini (layer F.Cu) (tedit 54C611B1)
   (fp_text reference EF2 (at 9.652 0.254) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -13,6 +13,11 @@
   (model Fuse_Holders_and_Fuses/BladeFuse-Mini.wrl
     (at (xyz 0 0 0))
     (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Fuse_Holders_and_Fuses.3dshapes/BladeFuse-CarType.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 0.32 0.27 0.27))
     (rotate (xyz 0 0 0))
   )
 )

@@ -17,7 +17,7 @@
   (pad 1 thru_hole rect (at -2.54 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole oval (at 0 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 3 thru_hole oval (at 2.54 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model F:/Arbeit/KICAD/walter.pretty/conn_kk100/22-23-2031.wrl
+  (model ${KISYS3DMOD}/walter/conn_kk100/22-23-2031.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

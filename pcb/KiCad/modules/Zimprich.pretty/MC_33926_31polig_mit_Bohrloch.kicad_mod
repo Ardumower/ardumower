@@ -1,4 +1,4 @@
-(module MC_33926_31polig_mit_Bohrloch (layer F.Cu) (tedit 54C61CC0)
+(module MC_33926_31polig_mit_Bohrloch (layer F.Cu) (tedit 54BE6CEF)
   (fp_text reference MC_33926_31polig (at 26.416 -31.877) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -52,6 +52,29 @@
   (pad 29 thru_hole circle (at 33.02 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 30 thru_hole circle (at 40.64 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 31 thru_hole circle (at 43.18 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
-  (pad ~ thru_hole circle (at 6.2865 -13.3985) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
-  (pad ~ thru_hole circle (at 47.0535 -13.3985) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18.wrl
+    (at (xyz 1.05 1.49 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x06.wrl
+    (at (xyz 1.05 0.6 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+    (at (xyz 0.75 1.39 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
+    (at (xyz 1.65 1.39 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
+    (at (xyz 1.2 1.39 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

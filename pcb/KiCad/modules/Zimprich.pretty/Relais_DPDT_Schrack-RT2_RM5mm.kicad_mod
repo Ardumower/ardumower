@@ -1,4 +1,4 @@
-(module ACS712:Relais_DPDT_Schrack-RT2_RM5mm (layer F.Cu) (tedit 54B8C25B)
+(module Relais_DPDT_Schrack-RT2_RM5mm (layer F.Cu) (tedit 54B8C25B)
   (descr "Relay, DPST, Schrack-RT2, RM5mm,")
   (tags "Relay, DPST,  Schrack-RT1, RM5mm, Reais, 2 x um,")
   (fp_text reference K3 (at 13.97 -11.43) (layer F.SilkS)
@@ -29,4 +29,9 @@
   (pad 16 thru_hole circle (at 15.24 -7.62) (size 2.99974 2.99974) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
   (pad 12 thru_hole circle (at 20.32 -7.62) (size 2.99974 2.99974) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
   (pad 14 thru_hole circle (at 25.4 -7.62) (size 2.99974 2.99974) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/walter/relay/relay_40.52.wrl
+    (at (xyz 0.46 0.15 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

@@ -1,4 +1,4 @@
-(module "Arduino Mega Shield:ARDUINO MEGA SHIELD" (layer F.Cu) (tedit 54BE4A2F)
+(module ARDUINO_MEGA_SHIELD (layer F.Cu) (tedit 54BE4A2F)
   (fp_text reference SHIELD1 (at 70.612 -24.892) (layer F.SilkS)
     (effects (font (thickness 0.3048)))
   )
@@ -100,4 +100,39 @@
   (pad 53 thru_hole circle (at 96.52 -10.16) (size 1.524 1.524) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
   (pad GND4 thru_hole circle (at 93.98 -7.62) (size 1.524 1.524) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
   (pad GND5 thru_hole circle (at 96.52 -7.62) (size 1.524 1.524) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x06.wrl
+    (at (xyz 1.55 0.1 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+    (at (xyz 2.35 0.1 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+    (at (xyz 3.25 0.1 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+    (at (xyz 1.29 2 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+    (at (xyz 2.15 2 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08.wrl
+    (at (xyz 3.05 2 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_2x18.wrl
+    (at (xyz 3.75 1.15 -0.07000000000000001))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 90))
+  )
 )

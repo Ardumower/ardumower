@@ -1,11 +1,11 @@
-(module Tiny_RTC_DS1307_geändert (layer F.Cu) (tedit 54BB9AB5)
-  (fp_text reference U8 (at 0 8.89) (layer F.SilkS)
+(module Tiny_RTC_DS1307_geändert (layer F.Cu) (tedit 5737AB48)
+  (fp_text reference U? (at 0 -4.318) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
-  (fp_text value DS1307+ (at -3.175 -1.905 90) (layer F.SilkS) hide
+  (fp_text value DS1307+ (at 0 -7.874) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
-  (fp_text user ROM (at -10.16 -13.97) (layer F.SilkS)
+  (fp_text user ROM (at 0 -10.922) (layer F.SilkS) hide
     (effects (font (size 1.5 1.5) (thickness 0.2)))
   )
   (fp_text user RTC (at 7.62 -10.16) (layer F.SilkS)
@@ -63,4 +63,14 @@
   (pad 11 thru_hole circle (at 10.16 -5.08) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
   (pad 9 thru_hole circle (at 10.16 0) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
   (pad 8 thru_hole circle (at 10.16 2.54) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05.wrl
+    (at (xyz 0.4 0.1 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x07.wrl
+    (at (xyz -0.45 0.15 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
 )

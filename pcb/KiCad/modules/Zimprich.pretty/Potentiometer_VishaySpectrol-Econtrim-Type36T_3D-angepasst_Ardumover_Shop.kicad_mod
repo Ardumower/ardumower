@@ -23,7 +23,12 @@
   (pad 1 thru_hole circle (at -2.54 0) (size 2.49936 2.49936) (drill 1.19888) (layers *.Cu *.Mask F.SilkS))
   (model Potentiometers/Potentiometer_Triwood_RM-065.wrl
     (at (xyz 0 0 0))
-    (scale (xyz 4 4 4))
+    (scale (xyz 4 8 4))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Potentiometers.3dshapes/Potentiometer_Triwood_RM-065.wrl
+    (at (xyz -0.1 0 0))
+    (scale (xyz 4 8 4))
     (rotate (xyz 0 0 0))
   )
 )

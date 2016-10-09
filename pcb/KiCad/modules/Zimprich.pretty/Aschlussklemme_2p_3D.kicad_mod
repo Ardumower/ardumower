@@ -13,7 +13,7 @@
   (fp_line (start 2.54 -3.175) (end 2.54 3.175) (layer F.SilkS) (width 0.15))
   (pad 1 thru_hole oval (at -1.27 0) (size 1.50622 3.01498) (drill 0.99822) (layers *.Cu *.Mask))
   (pad 2 thru_hole oval (at 1.27 0) (size 1.50622 3.01498) (drill 0.99822) (layers *.Cu *.Mask))
-  (model F:/Arbeit/KICAD/walter.pretty/conn_pt-1_5/pt_1,5-2-3,5-h.wrl
+  (model ${KISYS3DMOD}/walter/conn_pt-1_5/pt_1,5-2-3,5-h.wrl
     (at (xyz 0 -0.02 0))
     (scale (xyz 0.75 0.75 0.55))
     (rotate (xyz 0 0 0))

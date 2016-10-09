@@ -62,9 +62,9 @@
   (fp_line (start -1.778 2.667) (end -2.159 2.286) (layer F.SilkS) (width 0.15))
   (pad 1 thru_hole circle (at -1.27 0 90) (size 1.99898 1.99898) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole rect (at 1.27 0) (size 1.69926 1.69926) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
-  (model F:/Arbeit/KICAD/zimprich_footprints.pretty/led3_verticalVerte.wrl
+  (model ${KISYS3DMOD}/LEDs.3dshapes/LED-5MM.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
 )
