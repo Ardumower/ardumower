@@ -5,15 +5,18 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
+LIBS:cmos_ieee
+LIBS:cmos4000
+LIBS:switches
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 23 24
+Sheet 24 25
 Title "Ardumower shield SVN Version"
-Date "2016-09-25"
-Rev "1.21"
+Date "2016-09-30"
+Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Unterspannungsschutz von AlexanderG"
 Comment2 ""
@@ -68,10 +71,10 @@ Eingang
 Wire Wire Line
 	4480 2755 4655 2755
 $Comp
-L GND #PWR184
+L GND #PWR0219
 U 1 1 57E64EC6
 P 4905 3620
-F 0 "#PWR184" H 4905 3370 50  0001 C CNN
+F 0 "#PWR0219" H 4905 3370 50  0001 C CNN
 F 1 "GND" H 4910 3447 50  0000 C CNN
 F 2 "" H 4905 3620 50  0000 C CNN
 F 3 "" H 4905 3620 50  0000 C CNN

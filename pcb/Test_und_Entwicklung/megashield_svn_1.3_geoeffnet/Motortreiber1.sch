@@ -5,15 +5,18 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
+LIBS:cmos_ieee
+LIBS:cmos4000
+LIBS:switches
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 24
+Sheet 6 25
 Title "Ardumower shield SVN Version"
-Date "2016-09-25"
-Rev "1.21"
+Date "2016-09-30"
+Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Motordriverschutz von JürgenL"
 Comment2 ""

@@ -5,15 +5,18 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
+LIBS:cmos_ieee
+LIBS:cmos4000
+LIBS:switches
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 24
+Sheet 1 25
 Title "Ardumower shield SVN Version"
-Date "2016-09-25"
-Rev "1.21"
+Date "2016-09-30"
+Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Unterspannungsschutz von AlexanderG"
 Comment2 ""
@@ -78,17 +81,6 @@ F 3 "" H 7350 2085 60  0000 C CNN
 F 4 "R: PL 112000" H 7350 2085 60  0001 C CNN "Bestellnummer"
 	1    7350 2085
 	0    1    1    0   
-$EndComp
-$Comp
-L BC237 Q1
-U 1 1 54B46879
-P 5830 3920
-F 0 "Q1" H 6030 3820 50  0000 C CNN
-F 1 "BC547" H 6080 4070 50  0000 C CNN
-F 2 "Zimprich:TO92-EBC" H 6020 3920 30  0001 C CNN
-F 3 "" H 5830 3920 60  0000 C CNN
-	1    5830 3920
-	1    0    0    -1  
 $EndComp
 $Comp
 L R-RESCUE-ardumower_mega_shield_svn R18
@@ -157,21 +149,10 @@ F0 "Bohrlöcher" 60
 F1 "Bohrlöcher.sch" 60
 $EndSheet
 $Comp
-L +5V #PWR4
-U 1 1 57DC6567
-P 4920 3070
-F 0 "#PWR4" H 4920 2920 50  0001 C CNN
-F 1 "+5V" H 4935 3243 50  0000 C CNN
-F 2 "" H 4920 3070 50  0000 C CNN
-F 3 "" H 4920 3070 50  0000 C CNN
-	1    4920 3070
-	-1   0    0    1   
-$EndComp
-$Comp
-L GND #PWR6
+L GND #PWR01
 U 1 1 57DDC12E
 P 5930 4420
-F 0 "#PWR6" H 5930 4170 50  0001 C CNN
+F 0 "#PWR01" H 5930 4170 50  0001 C CNN
 F 1 "GND" H 5935 4247 50  0000 C CNN
 F 2 "" H 5930 4420 50  0000 C CNN
 F 3 "" H 5930 4420 50  0000 C CNN
@@ -179,10 +160,10 @@ F 3 "" H 5930 4420 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR2
+L GND #PWR02
 U 1 1 57DDCE0C
 P 4400 3230
-F 0 "#PWR2" H 4400 2980 50  0001 C CNN
+F 0 "#PWR02" H 4400 2980 50  0001 C CNN
 F 1 "GND" H 4405 3057 50  0000 C CNN
 F 2 "" H 4400 3230 50  0000 C CNN
 F 3 "" H 4400 3230 50  0000 C CNN
@@ -190,10 +171,10 @@ F 3 "" H 4400 3230 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR1
+L GND #PWR03
 U 1 1 57DDD4A8
 P 1565 2250
-F 0 "#PWR1" H 1565 2000 50  0001 C CNN
+F 0 "#PWR03" H 1565 2000 50  0001 C CNN
 F 1 "GND" H 1570 2077 50  0000 C CNN
 F 2 "" H 1565 2250 50  0000 C CNN
 F 3 "" H 1565 2250 50  0000 C CNN
@@ -201,10 +182,10 @@ F 3 "" H 1565 2250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR7
+L GND #PWR04
 U 1 1 57DE0396
 P 7250 1890
-F 0 "#PWR7" H 7250 1640 50  0001 C CNN
+F 0 "#PWR04" H 7250 1640 50  0001 C CNN
 F 1 "GND" H 7255 1717 50  0000 C CNN
 F 2 "" H 7250 1890 50  0000 C CNN
 F 3 "" H 7250 1890 50  0000 C CNN
@@ -212,10 +193,10 @@ F 3 "" H 7250 1890 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +24V #PWR10
+L +24V #PWR05
 U 1 1 57DE1118
 P 8845 2550
-F 0 "#PWR10" H 8845 2400 50  0001 C CNN
+F 0 "#PWR05" H 8845 2400 50  0001 C CNN
 F 1 "+24V" V 8845 2765 50  0000 C CNN
 F 2 "" H 8845 2550 50  0000 C CNN
 F 3 "" H 8845 2550 50  0000 C CNN
@@ -273,10 +254,10 @@ Text Notes 19790 5175 0    118  ~ 0
 Text GLabel 1775 2170 3    39   Input ~ 0
 Charg_Pin_+
 $Comp
-L GND #PWR5
+L GND #PWR06
 U 1 1 57E3DCAC
 P 5120 3070
-F 0 "#PWR5" H 5120 2820 50  0001 C CNN
+F 0 "#PWR06" H 5120 2820 50  0001 C CNN
 F 1 "GND" H 5150 2925 50  0000 C CNN
 F 2 "" H 5120 3070 50  0000 C CNN
 F 3 "" H 5120 3070 50  0000 C CNN
@@ -300,10 +281,10 @@ F 8 "Value" H 4735 3325 60  0001 C CNN "Bauform"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR3
+L GND #PWR07
 U 1 1 57E3F322
 P 4735 3475
-F 0 "#PWR3" H 4735 3225 50  0001 C CNN
+F 0 "#PWR07" H 4735 3225 50  0001 C CNN
 F 1 "GND" H 4765 3330 50  0000 C CNN
 F 2 "" H 4735 3475 50  0000 C CNN
 F 3 "" H 4735 3475 50  0000 C CNN
@@ -359,12 +340,9 @@ Wire Wire Line
 Wire Wire Line
 	5530 3920 5630 3920
 Wire Wire Line
-	5680 2620 5680 2935
-Wire Wire Line
 	5930 2890 5930 3720
 Wire Wire Line
 	4870 3920 5030 3920
-Connection ~ 5680 2790
 Wire Wire Line
 	5680 3235 5680 3415
 Wire Wire Line
@@ -382,7 +360,7 @@ Wire Wire Line
 Wire Wire Line
 	5120 2920 5120 3070
 Wire Wire Line
-	4920 2920 4920 3070
+	4920 2920 4920 3130
 Wire Wire Line
 	4735 3425 4735 3475
 Wire Wire Line
@@ -398,10 +376,7 @@ Wire Wire Line
 Wire Wire Line
 	5120 2040 5865 2040
 Wire Wire Line
-	5680 2040 5680 2320
-Wire Wire Line
 	4400 2040 4400 2360
-Connection ~ 5680 2040
 Connection ~ 4400 2040
 Wire Wire Line
 	3465 2270 3465 2040
@@ -418,10 +393,10 @@ Connection ~ 1775 2040
 Text GLabel 8215 3065 0    39   Output ~ 0
 pinBatteryVoltage
 $Comp
-L GND #PWR9
+L GND #PWR08
 U 1 1 57E498AE
 P 8375 3505
-F 0 "#PWR9" H 8375 3255 50  0001 C CNN
+F 0 "#PWR08" H 8375 3255 50  0001 C CNN
 F 1 "GND" H 8380 3332 50  0000 C CNN
 F 2 "" H 8375 3505 50  0000 C CNN
 F 3 "" H 8375 3505 50  0000 C CNN
@@ -522,10 +497,10 @@ F 8 "Value" H 7350 2865 60  0001 C CNN "Bauform"
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR8
+L GND #PWR09
 U 1 1 57E6CA33
 P 7350 3065
-F 0 "#PWR8" H 7350 2815 50  0001 C CNN
+F 0 "#PWR09" H 7350 2815 50  0001 C CNN
 F 1 "GND" H 7355 2892 50  0000 C CNN
 F 2 "" H 7350 3065 50  0000 C CNN
 F 3 "" H 7350 3065 50  0000 C CNN
@@ -568,20 +543,33 @@ F 8 "Mini Melf" H 5680 3085 60  0001 C CNN "Bauform"
 	1    5680 3085
 	0    1    1    0   
 $EndComp
+Wire Wire Line
+	5680 2040 5680 2935
+Connection ~ 5680 2040
+Connection ~ 5680 2790
+Wire Wire Line
+	6730 2690 6880 2690
+Wire Wire Line
+	6880 2690 6880 2390
+Connection ~ 6880 2390
+Text Notes 6055 4325 0    60   ~ 0
+BC 547 ersetzt mit BC847 SMD\n??\n
 $Comp
-L D D11
-U 1 1 57E949F2
-P 5680 2470
-F 0 "D11" V 5625 2345 39  0000 C CNN
-F 1 "1N4148 SMD" V 5685 2225 39  0000 C CNN
-F 2 "Diodes_SMD:MiniMELF_Standard" H 5680 2593 50  0001 C CNN
-F 3 "" H 5680 2470 50  0001 C CNN
-F 4 "Value" H 5680 2813 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 5680 2707 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 5680 2601 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 5680 2470 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 5680 2470 60  0001 C CNN "Bauform"
-	1    5680 2470
-	0    1    -1   0   
+L BC849 Q1
+U 1 1 57F1C5EE
+P 5830 3920
+F 0 "Q1" H 6021 4011 50  0000 L CNN
+F 1 "BC847" H 6021 3920 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 6021 3829 50  0000 L CIN
+F 3 "" H 5830 3920 50  0000 L CNN
+F 4 "Value" H 5830 3920 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 5830 3920 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 5830 3920 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 5830 3920 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 5830 3920 60  0001 C CNN "Bauform"
+	1    5830 3920
+	1    0    0    -1  
 $EndComp
+Text GLabel 4920 3130 3    39   Input ~ 0
+IOREF
 $EndSCHEMATC

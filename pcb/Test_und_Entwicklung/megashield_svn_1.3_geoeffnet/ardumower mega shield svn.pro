@@ -1,4 +1,4 @@
-update=28.09.2016 18:31:35
+update=04.10.2016 15:31:50
 last_client=kicad
 [pcbnew]
 version=1
@@ -30,7 +30,7 @@ SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
 SpiceAjustPassiveValues=0
-LabSize=60
+LabSize=79
 ERC_TestSimilarLabels=1
 [eeschema]
 version=1
@@ -42,3 +42,6 @@ LibName3=device
 LibName4=Zimprich
 LibName5=conn
 LibName6=transistors
+LibName7=cmos_ieee
+LibName8=cmos4000
+LibName9=switches

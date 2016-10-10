@@ -5,15 +5,18 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
+LIBS:cmos_ieee
+LIBS:cmos4000
+LIBS:switches
 LIBS:ardumower mega shield svn-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 20 24
+Sheet 21 25
 Title "Ardumower shield SVN Version"
-Date "2016-09-25"
-Rev "1.21"
+Date "2016-09-30"
+Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 ""
 Comment2 ""
@@ -210,30 +213,6 @@ Charg_Pin_+
 Text GLabel 7405 3100 0    60   Output ~ 0
 Charg_Pin_+
 $Comp
-L Bohrloch_3,2mm B15
-U 1 1 57E12EC2
-P 5685 3570
-F 0 "B15" H 5965 3730 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 5915 3650 60  0000 C CNN
-F 2 "Zimprich:Bohrloch_3,2mm" H 5685 3570 60  0001 C CNN
-F 3 "" H 5685 3570 60  0000 C CNN
-F 4 "Value" H 5685 3570 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    5685 3570
-	1    0    0    -1  
-$EndComp
-$Comp
-L Bohrloch_3,2mm B16
-U 1 1 57E12EC3
-P 5685 3845
-F 0 "B16" H 5965 4005 60  0000 C CNN
-F 1 "Bohrloch_3,2mm" H 5915 3925 60  0000 C CNN
-F 2 "Zimprich:Bohrloch_3,2mm" H 5685 3845 60  0001 C CNN
-F 3 "" H 5685 3845 60  0000 C CNN
-F 4 "Value" H 5685 3845 60  0001 C CNN "Reichelt-Bestellnummer"
-	1    5685 3845
-	1    0    0    -1  
-$EndComp
-$Comp
 L Bohrloch_3,2mm B17
 U 1 1 57E12EC4
 P 5685 4120
@@ -257,8 +236,6 @@ F 4 "Value" H 5685 4395 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    5685 4395
 	1    0    0    -1  
 $EndComp
-NoConn ~ 5885 3570
-NoConn ~ 5885 3845
 NoConn ~ 5885 4120
 NoConn ~ 5885 4395
 Wire Wire Line
@@ -274,10 +251,10 @@ Wire Wire Line
 Wire Wire Line
 	7405 3100 7555 3100
 $Comp
-L GND #PWR135
+L GND #PWR0168
 U 1 1 57E2B21B
 P 7390 4105
-F 0 "#PWR135" H 7390 3855 50  0001 C CNN
+F 0 "#PWR0168" H 7390 3855 50  0001 C CNN
 F 1 "GND" V 7390 3915 50  0000 C CNN
 F 2 "" H 7390 4105 50  0000 C CNN
 F 3 "" H 7390 4105 50  0000 C CNN
@@ -285,10 +262,10 @@ F 3 "" H 7390 4105 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR134
+L GND #PWR0169
 U 1 1 57E2B554
 P 7390 3830
-F 0 "#PWR134" H 7390 3580 50  0001 C CNN
+F 0 "#PWR0169" H 7390 3580 50  0001 C CNN
 F 1 "GND" V 7390 3640 50  0000 C CNN
 F 2 "" H 7390 3830 50  0000 C CNN
 F 3 "" H 7390 3830 50  0000 C CNN
@@ -296,10 +273,10 @@ F 3 "" H 7390 3830 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR133
+L GND #PWR0170
 U 1 1 57E2B6C2
 P 7390 3555
-F 0 "#PWR133" H 7390 3305 50  0001 C CNN
+F 0 "#PWR0170" H 7390 3305 50  0001 C CNN
 F 1 "GND" V 7390 3365 50  0000 C CNN
 F 2 "" H 7390 3555 50  0000 C CNN
 F 3 "" H 7390 3555 50  0000 C CNN
