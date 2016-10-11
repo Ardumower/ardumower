@@ -480,7 +480,7 @@ void Mower::setup(){
     ESP8266port.println(esp8266ConfigString);
     ESP8266port.flush();
     ESP8266port.end();
-    rc.initSerial(&Serial1, ESP8266_BAUDRATE);
+    rc.initSerial(&ESP8266port, ESP8266_BAUDRATE);
   } else if (bluetoothUse) {
     rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
   }
