@@ -106,7 +106,7 @@ LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dio
 Text Notes 12545 3845 0    157  ~ 0
 --------------- Änderungen am Board ---------------\n09.03.2016\nok - fehlende Lötbrücke geschlossen\nok - 4 Widerstände Odemetrie eingefügt\nok - 1 Widerstand Mähmotordrehzahl\nok - 1 Stiftleiste abgriff 9V\nok - 1 Aref Kondensator eingefügt\n1 Klemmanschluss für das Unterspannungsabschaltung Board hinzugefügt\n\nok DiodenD1-D10 umgeändert\nAnnode und Kathode waren vertauscht\nJetzt nach neuer Kicad Norm\n\nP45 P46 und U10 entfernt Platz wird benötigt für klemmanschluss Unterspannung\nR19 enfernt und mit Diode D11 ersetzt\nDiode D2 entfernt Mähteller\nZD1, ZD2, ZD3 und R24, R25, R26 bei DC Wandler entfernt\nIna U5 und C6 entfernt\nLAderegelung entfernt D7, C1, C4, U4, R17,RV1, D3\nR22 und D8 entfernt LED BT Modul\n\nJP4, JP5 JP6, JP7 entfernt\nD4 JP17 entfernt\nPufferKondensator C5 entfernt
 $Sheet
-S 3235 6930 1240 170 
+S 9205 3380 1240 170 
 U 57D95AF0
 F0 "Motortreiber" 60
 F1 "Motortreiber.sch" 60
@@ -533,7 +533,7 @@ U 1 1 57E925D4
 P 5680 3085
 F 0 "D10" V 5625 2960 39  0000 C CNN
 F 1 "1N4148 SMD" V 5685 2840 39  0000 C CNN
-F 2 "Diodes_SMD:MiniMELF_Standard" H 5680 3208 50  0001 C CNN
+F 2 "Zimprich:D_0603" H 5680 3208 50  0001 C CNN
 F 3 "" H 5680 3085 50  0001 C CNN
 F 4 "Value" H 5680 3428 60  0001 C CNN "Gehäuseart"
 F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 5680 3322 60  0001 C CNN "Bestelllink"
@@ -572,4 +572,13 @@ F 8 "Value" H 5830 3920 60  0001 C CNN "Bauform"
 $EndComp
 Text GLabel 4920 3130 3    39   Input ~ 0
 IOREF
+Wire Notes Line
+	9205 3460 8930 3460
+Wire Notes Line
+	8930 3460 8930 2550
+Text GLabel 3810 2270 3    39   Input ~ 0
+StationLed
+Wire Wire Line
+	3810 2270 3810 2040
+Connection ~ 3810 2040
 $EndSCHEMATC

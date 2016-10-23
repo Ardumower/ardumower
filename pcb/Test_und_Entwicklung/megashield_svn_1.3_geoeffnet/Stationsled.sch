@@ -3403,10 +3403,10 @@ Connection ~ 3770 1380
 Wire Wire Line
 	4290 1380 4455 1380
 $Comp
-L GND #PWR0220
+L GND #PWR0269
 U 1 1 57E82DC0
 P 3770 3345
-F 0 "#PWR0220" H 3770 3095 50  0001 C CNN
+F 0 "#PWR0269" H 3770 3095 50  0001 C CNN
 F 1 "GND" H 3775 3172 50  0000 C CNN
 F 2 "" H 3770 3345 50  0000 C CNN
 F 3 "" H 3770 3345 50  0000 C CNN
@@ -3416,8 +3416,6 @@ $EndComp
 Connection ~ 3770 3215
 Text HLabel 4455 1380 2    60   Input ~ 0
 LED+
-Text GLabel 5095 2140 0    60   Output ~ 0
-StationLed
 Text Notes 4050 2500 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
 $Comp

@@ -3,24 +3,6 @@
 
 ** Found 0 DRC errors **
 
-** Found 6 unconnected pads **
-ErrType(2): Nicht verbundene Pads
-    @ (99,441 mm,156,746 mm): Pad 2 auf F.Cu, Keine Kupferfläche von D24 net GND
-    @ (98,298 mm,137,160 mm): Pad 2 auf F.Cu, B.Cu, Intern, Keine Kupferfläche von C8
-ErrType(2): Nicht verbundene Pads
-    @ (39,258 mm,116,652 mm): Pad 1 auf F.Cu, Keine Kupferfläche von Q10 net IOREF
-    @ (47,498 mm,116,652 mm): Pad 1 auf F.Cu, Keine Kupferfläche von R64
-ErrType(2): Nicht verbundene Pads
-    @ (227,584 mm,72,390 mm): Pad 3 auf F.Cu, B.Cu, Intern, Keine Kupferfläche von Dual2 net IOREF
-    @ (227,584 mm,64,770 mm): Pad 6 auf F.Cu, B.Cu, Intern, Keine Kupferfläche von Dual2
-ErrType(2): Nicht verbundene Pads
-    @ (87,884 mm,157,000 mm): Pad 1 auf F.Cu, Keine Kupferfläche von D11 net IOREF
-    @ (60,467 mm,115,890 mm): Pad 1 auf F.Cu, Keine Kupferfläche von Q11
-ErrType(2): Nicht verbundene Pads
-    @ (73,586 mm,158,750 mm): Pad 2 auf F.Cu, Keine Kupferfläche von R3 net Net-(D11-Pad2)
-    @ (87,884 mm,160,500 mm): Pad 2 auf F.Cu, Keine Kupferfläche von D11
-ErrType(2): Nicht verbundene Pads
-    @ (99,441 mm,160,246 mm): Pad 1 auf F.Cu, Keine Kupferfläche von D24 net Net-(D11-Pad2)
-    @ (87,884 mm,160,500 mm): Pad 2 auf F.Cu, Keine Kupferfläche von D11
+** Found 0 unconnected pads **
 
 ** End of Report **
