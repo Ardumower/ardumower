@@ -370,9 +370,9 @@ boolean ADCManager::loadCalib(){
 }
 
 void ADCManager::saveCalib(){
-#ifdef __AVR__
+//#ifdef __AVR__
   loadSaveCalib(false);
-#endif
+//#endif
 }
 
 

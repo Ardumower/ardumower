@@ -291,7 +291,7 @@ ISR(PCINT0_vect){
 // SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
 // http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
 #ifdef __AVR__
-  // Neu Alex: 06.10.16
+
   volatile byte oldOdoPins = 0;
   ISR(PCINT2_vect, ISR_NOBLOCK)
   {
@@ -316,6 +316,35 @@ ISR(PCINT0_vect){
 
 #else
 
+  volatile long oldOdoPins_A = 0;
+  volatile long oldOdoPins_B = 0;
+  ISR(PCINT2_vect)
+  {
+    const long actPins_A = REG_PIOA_PDSR;       			// read PIO A
+    const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
+    const long setPins_A = (oldOdoPins_A ^ actPins_A);
+    const long setPins_B = (oldOdoPins_B ^ actPins_B);
+    if (setPins_A & 0b00000000000000000000000000000010)			// pin left has changed 
+    {
+      if (robot.motorLeftPWMCurr >= 0)					// forward
+        robot.odometryLeft++;
+      else
+        robot.odometryLeft--;	
+        								// backward
+      oldOdoPins_A = actPins_A;
+    }
+    
+    if (setPins_B & 0b00000000000000001000000000000000)         	// pin right has changed
+    {
+      if (robot.motorRightPWMCurr >= 0)
+        robot.odometryRight++;						// forward
+      else
+        robot.odometryRight--;						// backward
+
+      oldOdoPins_B = actPins_B;
+    }  
+  }
+/*
   ISR(PCINT2_vect)
   {
     unsigned long timeMicros = micros();
@@ -327,6 +356,8 @@ ISR(PCINT0_vect){
     robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
     robot.setMotorMowRPMState(motorMowRpmState);  
   }
+*/
+
 #endif
 
 // mower motor speed sensor interrupt
