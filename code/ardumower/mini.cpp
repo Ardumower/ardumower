@@ -38,6 +38,8 @@
 #include <Arduino.h>
 #include "mini.h"
 #include "due.h"
+#include "drivers.h"
+#include "pinman.h"
 
 // ------ pins---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
@@ -112,9 +114,10 @@
 // GPS: Serial3 (TX3, RX3) 
 
 // ------- baudrates---------------------------------
-#define BAUDRATE 19200            // serial output baud rate
-#define PFOD_BAUDRATE 19200       // pfod app serial output baud rate
-#define PFOD_PIN 1234             // Bluetooth pin
+#define BAUDRATE 19200              // serial output baud rate
+#define ESP8266_BAUDRATE    115200  // baudrate used for communication with esp8266 Wifi module
+#define BLUETOOTH_BAUDRATE  19200   // baudrate used for communication with Bluetooth module
+#define BLUETOOTH_PIN 1234          // Bluetooth pin
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
 
@@ -231,20 +234,85 @@ ISR(PCINT0_vect){
 }
 
 // odometry signal change interrupt
-ISR(PCINT2_vect){   
-  unsigned long timeMicros = micros();
-  boolean odometryLeftState = digitalRead(pinOdometryLeft);
-  boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
-  boolean odometryRightState = digitalRead(pinOdometryRight);  
-  boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-  robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);
-}
+// mower motor speed sensor interrupt
+// NOTE: when choosing a higher perimeter sample rate (38 kHz) and using odometry interrupts, 
+// the Arduino Mega cannot handle all ADC interrupts anymore - the result will be a 'noisy'
+// perimeter filter output (mag value) which disappears when disabling odometry interrupts.
+// SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
+// http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
+#ifdef __AVR__
+
+  volatile byte oldOdoPins = 0;
+  ISR(PCINT2_vect, ISR_NOBLOCK)
+  {
+    const byte actPins = PINK;                				// read register PINK
+    const byte setPins = (oldOdoPins ^ actPins);
+    if (setPins & 0b00010000)                 				// pin left has changed 
+    {
+      if (robot.motorLeftPWMCurr >= 0)						// forward
+        robot.odometryLeft++;
+      else
+        robot.odometryLeft--;									// backward
+    }
+    if (setPins & 0b01000000)                  				// pin right has changed
+    {
+      if (robot.motorRightPWMCurr >= 0)
+        robot.odometryRight++;								// forward
+      else
+        robot.odometryRight--;								// backward
+    }  
+    oldOdoPins = actPins;
+  }
+
+#else
+
+  volatile long oldOdoPins_A = 0;
+  volatile long oldOdoPins_B = 0;
+  ISR(PCINT2_vect)
+  {
+    const long actPins_A = REG_PIOA_PDSR;       			// read PIO A
+    const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
+    const long setPins_A = (oldOdoPins_A ^ actPins_A);
+    const long setPins_B = (oldOdoPins_B ^ actPins_B);
+    if (setPins_A & 0b00000000000000000000000000000010)			// pin left has changed 
+    {
+      if (robot.motorLeftPWMCurr >= 0)					// forward
+        robot.odometryLeft++;
+      else
+        robot.odometryLeft--;	
+        								// backward
+      oldOdoPins_A = actPins_A;
+    }
+    
+    if (setPins_B & 0b00000000000000001000000000000000)         	// pin right has changed
+    {
+      if (robot.motorRightPWMCurr >= 0)
+        robot.odometryRight++;						// forward
+      else
+        robot.odometryRight--;						// backward
+
+      oldOdoPins_B = actPins_B;
+    }  
+  }
+/*
+  ISR(PCINT2_vect)
+  {
+    unsigned long timeMicros = micros();
+    boolean odometryLeftState = digitalRead(pinOdometryLeft);
+    boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
+    boolean odometryRightState = digitalRead(pinOdometryRight);  
+    boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
+    boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
+    robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
+    robot.setMotorMowRPMState(motorMowRpmState);  
+  }
+*/
+
+#endif
 
 // mower motor speed sensor interrupt
-void rpm_interrupt(){
-  boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
-  robot.setMotorMowRPMState(motorMowRpmState);
-}
+//void rpm_interrupt(){
+//}
 
 
 // WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
@@ -255,7 +323,21 @@ void Mini::setup(){
   Console.begin(BAUDRATE);   
   //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
-  rc.initSerial(PFOD_BAUDRATE);   
+  //rc.initSerial(BLUETOOTH_BAUDRATE);   
+  if (esp8266Use)
+  {
+    Console.println(F("Sending ESP8266 Config"));
+    ESP8266port.begin(ESP8266_BAUDRATE);
+    ESP8266port.println(esp8266ConfigString);
+    ESP8266port.flush();
+    ESP8266port.end();
+    rc.initSerial(&ESP8266port, ESP8266_BAUDRATE);
+  }
+  else if (bluetoothUse)
+  {
+    rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
+  }  
+    
     
   // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
   #ifdef __AVR__
@@ -358,33 +440,59 @@ void Mini::setup(){
   #ifdef __AVR__
     // R/C
     PCICR |= (1<<PCIE0);
-    PCMSK0 |= (1<<PCINT4);
-    PCMSK0 |= (1<<PCINT5);
-    PCMSK0 |= (1<<PCINT6);
-    PCMSK0 |= (1<<PCINT1);  
-    
+    if (remoteUse)
+	{
+	  PCMSK0 |= (1<<PCINT4);
+	  PCMSK0 |= (1<<PCINT5);
+	  PCMSK0 |= (1<<PCINT6);
+	}
+	 
+    //-------------------------------------------------------------------------    
     // odometry
-    PCICR |= (1<<PCIE2);
-    PCMSK2 |= (1<<PCINT20);
-    PCMSK2 |= (1<<PCINT21);  
-    PCMSK2 |= (1<<PCINT22);
-    PCMSK2 |= (1<<PCINT23);          
-    
+    //-------------------------------------------------------------------------
+	// Wenn odometryUse == 1 dann:
+	// PCMSK2, PCINT20, HIGH			-> für links
+	// PCMSK2, PCINT22, HIGH			-> für rechts
+	//
+	// Wenn twoWayOdo == 1 dann:
+	// PCMSK2, PCINT21, HIGH
+	// PCMSK2, PCINT23, HIGH
+	if (odometryUse)
+	{ 
+	  PCICR |= (1<<PCIE2);
+	  PCMSK2 |= (1<<PCINT20);
+	  PCMSK2 |= (1<<PCINT22);
+	  if (twoWayOdometrySensorUse)
+	  {  
+		PCMSK2 |= (1<<PCINT21);  
+		PCMSK2 |= (1<<PCINT23);   
+      }
+	}
+		
+    //-------------------------------------------------------------------------	
     // mower motor speed sensor interrupt
-    attachInterrupt(5, rpm_interrupt, CHANGE);  
+    //-------------------------------------------------------------------------	
+    
+    //attachInterrupt(5, rpm_interrupt, CHANGE);  
+    
+    
   #else
     // Due interrupts
+	// ODO
     attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
     attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
     attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
     attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
     
+	// RC
     attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
     attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
     attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
+	//Switch
     attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
     
-    attachInterrupt(pinMotorMowRpm, rpm_interrupt, CHANGE);
+	//Motor Mow RPM	
+    attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
   #endif   
     
   // ADC
@@ -481,7 +589,7 @@ void Mini::setActuator(char type, int value){
 
 void Mini::configureBluetooth(boolean quick){
   BluetoothConfig bt;
-  bt.setParams(name, PFOD_PIN, PFOD_BAUDRATE, quick);  
+  bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);  
 }
 
 #endif
