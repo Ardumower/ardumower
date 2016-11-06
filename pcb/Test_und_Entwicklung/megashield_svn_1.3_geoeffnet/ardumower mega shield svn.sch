@@ -15,7 +15,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 25
 Title "Ardumower shield SVN Version"
-Date "2016-09-30"
+Date "2016-10-28"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Unterspannungsschutz von AlexanderG"
@@ -110,12 +110,13 @@ S 9205 3380 1240 170
 U 57D95AF0
 F0 "Motortreiber" 60
 F1 "Motortreiber.sch" 60
+F2 "+24V" I L 9205 3460 60 
 $EndSheet
 $Sheet
 S 1920 6920 850  170 
 U 57DA6878
-F0 "Wlan_BT_Uhr_IMU" 60
-F1 "Wlan_BT_Uhr_IMU.sch" 60
+F0 "Wlan_BT_GPS" 60
+F1 "Wlan_BT_GPS.sch" 60
 $EndSheet
 $Sheet
 S 890  6920 855  170 
@@ -323,6 +324,151 @@ F 8 "Value" H 4459 2731 60  0001 L CNN "Bauform"
 	1    4400 3080
 	-1   0    0    -1  
 $EndComp
+Text GLabel 8215 3065 0    39   Output ~ 0
+pinBatteryVoltage
+$Comp
+L GND #PWR08
+U 1 1 57E498AE
+P 8375 3505
+F 0 "#PWR08" H 8375 3255 50  0001 C CNN
+F 1 "GND" H 8380 3332 50  0000 C CNN
+F 2 "" H 8375 3505 50  0000 C CNN
+F 3 "" H 8375 3505 50  0000 C CNN
+	1    8375 3505
+	1    0    0    -1  
+$EndComp
+$Comp
+L R_Small R12
+U 1 1 57E498B9
+P 8375 2735
+F 0 "R12" H 8434 2781 50  0000 L CNN
+F 1 "47K 0,1%" H 8434 2690 50  0000 L CNN
+F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 8434 2909 50  0001 L CNN
+F 3 "" H 8375 2735 50  0001 C CNN
+F 4 "Value" H 8434 2810 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 8434 2704 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 8434 2598 60  0001 L CNN "Technische Daten"
+F 7 "R: MPR 47,0K" H 8434 2492 60  0001 L CNN "Bestellnummer"
+F 8 "Value" H 8434 2386 60  0001 L CNN "Bauform"
+	1    8375 2735
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R_Small R13
+U 1 1 57E498C4
+P 8375 3355
+F 0 "R13" H 8433 3401 50  0000 L CNN
+F 1 "5,10K 0,1%" H 8433 3310 50  0000 L CNN
+F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 8434 3529 50  0001 L CNN
+F 3 "" H 8375 3355 50  0001 C CNN
+F 4 "Value" H 8434 3430 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 8434 3324 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 8434 3218 60  0001 L CNN "Technische Daten"
+F 7 "R: MPR 5,10K" H 8434 3112 60  0001 L CNN "Bestellnummer"
+F 8 "Value" H 8434 3006 60  0001 L CNN "Bauform"
+	1    8375 3355
+	-1   0    0    -1  
+$EndComp
+$Comp
+L D D9
+U 1 1 57E4C8A2
+P 7815 2390
+F 0 "D9" H 7815 2235 39  0000 C CNN
+F 1 "MBR 1045" H 7815 2295 39  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_TO-220_Vertical" H 7815 2513 50  0001 C CNN
+F 3 "Value" H 7815 2390 50  0001 C CNN
+F 4 "Value" H 7815 2521 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7815 2521 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7815 2390 60  0001 C CNN "Technische Daten"
+F 7 "R: MBR 1045" H 7815 2390 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7815 2390 60  0001 C CNN "Bauform"
+	1    7815 2390
+	-1   0    0    1   
+$EndComp
+Text Notes 1085 1810 0    99   ~ 0
+Akku\n
+$Sheet
+S 2325 1960 915  165 
+U 57E646FF
+F0 "VerpolungsschutzLade." 39
+F1 "VerpolungsschutzLade.sch" 39
+F2 "Ausgang" O R 3240 2040 39 
+F3 "Eingang" I L 2325 2040 39 
+$EndSheet
+$Comp
+L D D1
+U 1 1 57E6BA60
+P 7350 2865
+F 0 "D1" V 7290 3110 39  0000 C CNN
+F 1 "MBR 1045" V 7350 3125 39  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_TO-220_Vertical" H 7350 2988 50  0001 C CNN
+F 3 "Value" H 7350 2865 50  0001 C CNN
+F 4 "Value" H 7350 2996 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7350 2996 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7350 2865 60  0001 C CNN "Technische Daten"
+F 7 "R: MBR 1045" H 7350 2865 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7350 2865 60  0001 C CNN "Bauform"
+	1    7350 2865
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR09
+U 1 1 57E6CA33
+P 7350 3065
+F 0 "#PWR09" H 7350 2815 50  0001 C CNN
+F 1 "GND" H 7355 2892 50  0000 C CNN
+F 2 "" H 7350 3065 50  0000 C CNN
+F 3 "" H 7350 3065 50  0000 C CNN
+	1    7350 3065
+	1    0    0    -1  
+$EndComp
+Text Notes 7090 3485 0    60   ~ 0
+Verpolschutz\nBatterie
+$Sheet
+S 3390 2270 150  500 
+U 57E81EBA
+F0 "Stationsled" 39
+F1 "Stationsled.sch" 39
+F2 "LED+" I T 3465 2270 39 
+$EndSheet
+$Comp
+L D D10
+U 1 1 57E925D4
+P 5680 3085
+F 0 "D10" V 5625 2960 39  0000 C CNN
+F 1 "1N4148 SMD" V 5685 2840 39  0000 C CNN
+F 2 "Zimprich:D_0603" H 5680 3208 50  0001 C CNN
+F 3 "" H 5680 3085 50  0001 C CNN
+F 4 "Value" H 5680 3428 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 5680 3322 60  0001 C CNN "Bestelllink"
+F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 5680 3216 60  0001 C CNN "Technische Daten"
+F 7 "R: 1N 4148 SMD" H 5680 3085 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 5680 3085 60  0001 C CNN "Bauform"
+	1    5680 3085
+	0    1    1    0   
+$EndComp
+Text Notes 6055 4325 0    60   ~ 0
+BC 547 ersetzt mit BC847 SMD\n??\n
+$Comp
+L BC849 Q1
+U 1 1 57F1C5EE
+P 5830 3920
+F 0 "Q1" H 6021 4011 50  0000 L CNN
+F 1 "BC847" H 6021 3920 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 6021 3829 50  0000 L CIN
+F 3 "" H 5830 3920 50  0000 L CNN
+F 4 "Value" H 5830 3920 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 5830 3920 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 5830 3920 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 5830 3920 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 5830 3920 60  0001 C CNN "Bauform"
+	1    5830 3920
+	1    0    0    -1  
+$EndComp
+Text GLabel 4920 3130 3    39   Input ~ 0
+IOREF
+Text GLabel 3810 2270 3    39   Input ~ 0
+StationLed
 Wire Wire Line
 	4400 2560 4400 2980
 Wire Wire Line
@@ -390,51 +536,6 @@ Wire Wire Line
 Wire Wire Line
 	1775 2170 1775 2040
 Connection ~ 1775 2040
-Text GLabel 8215 3065 0    39   Output ~ 0
-pinBatteryVoltage
-$Comp
-L GND #PWR08
-U 1 1 57E498AE
-P 8375 3505
-F 0 "#PWR08" H 8375 3255 50  0001 C CNN
-F 1 "GND" H 8380 3332 50  0000 C CNN
-F 2 "" H 8375 3505 50  0000 C CNN
-F 3 "" H 8375 3505 50  0000 C CNN
-	1    8375 3505
-	1    0    0    -1  
-$EndComp
-$Comp
-L R_Small R12
-U 1 1 57E498B9
-P 8375 2735
-F 0 "R12" H 8434 2781 50  0000 L CNN
-F 1 "47K 0,1%" H 8434 2690 50  0000 L CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 8434 2909 50  0001 L CNN
-F 3 "" H 8375 2735 50  0001 C CNN
-F 4 "Value" H 8434 2810 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8434 2704 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8434 2598 60  0001 L CNN "Technische Daten"
-F 7 "R: MPR 47,0K" H 8434 2492 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 8434 2386 60  0001 L CNN "Bauform"
-	1    8375 2735
-	-1   0    0    -1  
-$EndComp
-$Comp
-L R_Small R13
-U 1 1 57E498C4
-P 8375 3355
-F 0 "R13" H 8433 3401 50  0000 L CNN
-F 1 "5,10K 0,1%" H 8433 3310 50  0000 L CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 8434 3529 50  0001 L CNN
-F 3 "" H 8375 3355 50  0001 C CNN
-F 4 "Value" H 8434 3430 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8434 3324 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8434 3218 60  0001 L CNN "Technische Daten"
-F 7 "R: MPR 5,10K" H 8434 3112 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 8434 3006 60  0001 L CNN "Bauform"
-	1    8375 3355
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	8375 2835 8375 3255
 Wire Wire Line
@@ -443,83 +544,17 @@ Wire Wire Line
 	8215 3065 8375 3065
 Connection ~ 8375 3065
 Connection ~ 7350 2390
-$Comp
-L D D9
-U 1 1 57E4C8A2
-P 7815 2390
-F 0 "D9" H 7815 2235 39  0000 C CNN
-F 1 "MBR 1045" H 7815 2295 39  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_TO-220_Vertical" H 7815 2513 50  0001 C CNN
-F 3 "Value" H 7815 2390 50  0001 C CNN
-F 4 "Value" H 7815 2521 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7815 2521 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7815 2390 60  0001 C CNN "Technische Daten"
-F 7 "R: MBR 1045" H 7815 2390 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7815 2390 60  0001 C CNN "Bauform"
-	1    7815 2390
-	-1   0    0    1   
-$EndComp
-Text Notes 1085 1810 0    99   ~ 0
-Akku\n
 Wire Wire Line
 	7965 2390 9210 2390
 Wire Wire Line
 	8845 2550 9210 2550
 Connection ~ 9010 2550
-$Sheet
-S 2325 1960 915  165 
-U 57E646FF
-F0 "VerpolungsschutzLade." 39
-F1 "VerpolungsschutzLade.sch" 39
-F2 "Ausgang" O R 3240 2040 39 
-F3 "Eingang" I L 2325 2040 39 
-$EndSheet
 Wire Wire Line
 	2255 2040 2325 2040
 Wire Wire Line
-	9010 2550 9010 3010
-Wire Wire Line
 	9010 3010 9200 3010
-$Comp
-L D D1
-U 1 1 57E6BA60
-P 7350 2865
-F 0 "D1" V 7290 3110 39  0000 C CNN
-F 1 "MBR 1045" V 7350 3125 39  0000 C CNN
-F 2 "Diodes_ThroughHole:Diode_TO-220_Vertical" H 7350 2988 50  0001 C CNN
-F 3 "Value" H 7350 2865 50  0001 C CNN
-F 4 "Value" H 7350 2996 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7350 2996 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7350 2865 60  0001 C CNN "Technische Daten"
-F 7 "R: MBR 1045" H 7350 2865 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7350 2865 60  0001 C CNN "Bauform"
-	1    7350 2865
-	0    1    1    0   
-$EndComp
-$Comp
-L GND #PWR09
-U 1 1 57E6CA33
-P 7350 3065
-F 0 "#PWR09" H 7350 2815 50  0001 C CNN
-F 1 "GND" H 7355 2892 50  0000 C CNN
-F 2 "" H 7350 3065 50  0000 C CNN
-F 3 "" H 7350 3065 50  0000 C CNN
-	1    7350 3065
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7350 3015 7350 3065
-Wire Wire Line
-	7350 2285 7350 2715
-Text Notes 7090 3485 0    60   ~ 0
-Verpolschutz\nBatterie
-$Sheet
-S 3390 2270 150  500 
-U 57E81EBA
-F0 "Stationsled" 39
-F1 "Stationsled.sch" 39
-F2 "LED+" I T 3465 2270 39 
-$EndSheet
 Wire Wire Line
 	5120 2120 5120 2040
 Wire Wire Line
@@ -527,22 +562,6 @@ Wire Wire Line
 Wire Wire Line
 	8375 2635 8375 2390
 Connection ~ 8375 2390
-$Comp
-L D D10
-U 1 1 57E925D4
-P 5680 3085
-F 0 "D10" V 5625 2960 39  0000 C CNN
-F 1 "1N4148 SMD" V 5685 2840 39  0000 C CNN
-F 2 "Zimprich:D_0603" H 5680 3208 50  0001 C CNN
-F 3 "" H 5680 3085 50  0001 C CNN
-F 4 "Value" H 5680 3428 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 5680 3322 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 5680 3216 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 5680 3085 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 5680 3085 60  0001 C CNN "Bauform"
-	1    5680 3085
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	5680 2040 5680 2935
 Connection ~ 5680 2040
@@ -552,33 +571,40 @@ Wire Wire Line
 Wire Wire Line
 	6880 2690 6880 2390
 Connection ~ 6880 2390
-Text Notes 6055 4325 0    60   ~ 0
-BC 547 ersetzt mit BC847 SMD\n??\n
-$Comp
-L BC849 Q1
-U 1 1 57F1C5EE
-P 5830 3920
-F 0 "Q1" H 6021 4011 50  0000 L CNN
-F 1 "BC847" H 6021 3920 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 6021 3829 50  0000 L CIN
-F 3 "" H 5830 3920 50  0000 L CNN
-F 4 "Value" H 5830 3920 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 5830 3920 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 5830 3920 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 5830 3920 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 5830 3920 60  0001 C CNN "Bauform"
-	1    5830 3920
-	1    0    0    -1  
-$EndComp
-Text GLabel 4920 3130 3    39   Input ~ 0
-IOREF
-Wire Notes Line
-	9205 3460 8930 3460
-Wire Notes Line
-	8930 3460 8930 2550
-Text GLabel 3810 2270 3    39   Input ~ 0
-StationLed
 Wire Wire Line
 	3810 2270 3810 2040
 Connection ~ 3810 2040
+Wire Wire Line
+	7350 2285 7350 2715
+NoConn ~ 6730 2490
+NoConn ~ 6730 2190
+Wire Wire Line
+	9010 3460 9205 3460
+Connection ~ 9010 3010
+$Comp
+L CONN_01X02 P49
+U 1 1 5818E3A7
+P 8775 3265
+F 0 "P49" H 8855 3205 50  0000 L CNN
+F 1 "Break" H 8855 3265 50  0000 L CNN
+F 2 "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" V 8603 3393 50  0001 L CNN
+F 3 "" H 8775 3265 50  0000 C CNN
+F 4 "Value" V 8663 3393 60  0001 L CNN "Gehäuseart"
+F 5 "Value" V 8610 3393 60  0001 L CNN "Bestelllink"
+F 6 "Value" V 8557 3393 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 8775 3265 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8775 3265 60  0001 C CNN "Bauform"
+	1    8775 3265
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	9010 2550 9010 3460
+Wire Wire Line
+	9010 3215 8975 3215
+Wire Wire Line
+	9010 3315 8975 3315
+Connection ~ 9010 3315
+Connection ~ 9010 3215
+Text Notes 8595 3825 0    39   ~ 0
+Unterbrechung der Motortreiber\nbei Benutzung muss Leiterbahn unterbrochen werden\nevl noch ändern und Klemme gleich vorsehen mit Drahtbrücke?
 $EndSCHEMATC

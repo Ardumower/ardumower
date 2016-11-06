@@ -15,7 +15,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 24 25
 Title "Ardumower shield SVN Version"
-Date "2016-09-30"
+Date "2016-10-28"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Unterspannungsschutz von AlexanderG"
@@ -71,10 +71,10 @@ Eingang
 Wire Wire Line
 	4480 2755 4655 2755
 $Comp
-L GND #PWR0268
+L GND #PWR0251
 U 1 1 57E64EC6
 P 4905 3620
-F 0 "#PWR0268" H 4905 3370 50  0001 C CNN
+F 0 "#PWR0251" H 4905 3370 50  0001 C CNN
 F 1 "GND" H 4910 3447 50  0000 C CNN
 F 2 "" H 4905 3620 50  0000 C CNN
 F 3 "" H 4905 3620 50  0000 C CNN
