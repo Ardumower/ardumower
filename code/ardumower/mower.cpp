@@ -216,7 +216,7 @@ Mower::Mower(){
   batMonitor = 1;              // monitor battery and charge voltage?
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   batSwitchOffIfBelow = 21.7;  // switch off battery if below voltage (Volt)
-  batSwitchOffIfIdle = 1;      // switch off battery if idle (minutes)
+  batSwitchOffIfIdle = 0;      // switch off battery if idle (minutes, 0=off) 
   batFactor       = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batChgFactor    = 0.495;      // battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
   batFull          =29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
@@ -592,21 +592,21 @@ void Mower::setup(){
 void checkMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_LEFT);
-    Console.println(F("Error: motor left fault"));
+    //Console.println(F("Error: motor left fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorEnable, LOW);
     //digitalWrite(pinMotorEnable, HIGH);
   }
   if  (digitalRead(pinMotorRightFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_RIGHT);
-    Console.println(F("Error: motor right fault"));
+    //Console.println(F("Error: motor right fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorEnable, LOW);
     //digitalWrite(pinMotorEnable, HIGH);
   }
   if (digitalRead(pinMotorMowFault)==LOW){  
     robot.addErrorCounter(ERR_MOTOR_MOW);
-    Console.println(F("Error: motor mow fault"));
+    //Console.println(F("Error: motor mow fault"));
     robot.setNextState(STATE_ERROR, 0);
     //digitalWrite(pinMotorMowEnable, LOW);
     //digitalWrite(pinMotorMowEnable, HIGH);
@@ -617,17 +617,17 @@ void Mower::resetMotorFault(){
   if (digitalRead(pinMotorLeftFault)==LOW){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
-    Console.println(F("Reset motor left fault"));
+    //Console.println(F("Reset motor left fault"));
 }
   if  (digitalRead(pinMotorRightFault)==LOW){
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
-    Console.println(F("Reset motor right fault"));
+    //Console.println(F("Reset motor right fault"));
 }
   if (digitalRead(pinMotorMowFault)==LOW){  
     digitalWrite(pinMotorMowEnable, LOW);
     digitalWrite(pinMotorMowEnable, HIGH);
-    Console.println(F("Reset motor mow fault"));
+    //Console.println(F("Reset motor mow fault"));
 }
 }
 
@@ -681,7 +681,7 @@ int Mower::readSensor(char type){
 // rtc--------------------------------------------------------------------------------------------------------
     case SEN_RTC: 
       if (!readDS1307(datetime)) {
-        Console.println("RTC data error!");        
+        //Console.println("RTC data error!");        
         addErrorCounter(ERR_RTC_DATA);         
         setNextState(STATE_ERROR, 0);       
       }
@@ -705,7 +705,7 @@ void Mower::setActuator(char type, int value){
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
     case ACT_RTC:  
       if (!setDS1307(datetime)) {
-        Console.println("RTC comm error!");
+        //Console.println("RTC comm error!");
         addErrorCounter(ERR_RTC_COMM); 
         setNextState(STATE_ERROR, 0);       
       }

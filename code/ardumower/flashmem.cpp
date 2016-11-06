@@ -46,7 +46,7 @@ int eereadwriteString(boolean readflag, int &ee, String& value)
 }
 
 FlashClass::FlashClass() {
-  verboseOutput = true;
+  verboseOutput = false;
 #ifdef __AVR__  
 #else
   uint32_t retCode;

@@ -157,6 +157,7 @@ Robot::Robot(){
   nextTimePerimeter = 0;
   nextTimeLawnSensor = 0;
   nextTimeLawnSensorCheck = 0;
+  nextTimePrintErrors = 0;
   nextTimeTimer = millis() + 60000;
   nextTimeRTC = 0;
   nextTimeGPS = 0;
@@ -704,6 +705,37 @@ void Robot::resetErrorCounters(){
   resetMotorFault();
 }
 
+void Robot::printErrors(){
+  if (millis() >= nextTimePrintErrors){
+    nextTimePrintErrors = millis() + 5000;
+    for (int i=0; i < ERR_ENUM_COUNT; i++){
+      if (errorCounter[i] > 0) {       
+        switch (i){
+           case ERR_MOTOR_LEFT: Console.println(F("ERR_MOTOR_LEFT")); break;
+           case ERR_MOTOR_RIGHT: Console.println(F("ERR_MOTOR_RIGHT")); break;
+           case ERR_MOTOR_MOW: Console.println(F("ERR_MOW_SENSE")); break;
+           case ERR_IMU_COMM: Console.println(F("ERR_IMU_COMM")); break;
+           case ERR_IMU_TILT: Console.println(F("ERR_IMU_TILT")); break;
+           case ERR_RTC_COMM:Console.println(F("ERR_RTC_COMM")); break;
+           case ERR_RTC_DATA: Console.println(F("ERR_RTC_DATA")); break;
+           case ERR_PERIMETER_TIMEOUT:Console.println(F("ERR_PERIMETER_TIMEOUT")); break;
+           case ERR_TRACKING:Console.println(F("ERR_TRACKING")); break;
+           case ERR_ODOMETRY_LEFT:Console.println(F("ERR_ODOMETRY_LEFT")); break;
+           case ERR_ODOMETRY_RIGHT:Console.println(F("ERR_ODOMETRY_RIGHT")); break;
+           case ERR_BATTERY:Console.println(F("ERR_BATTERY")); break;
+           case ERR_CHARGER:Console.println(F("ERR_CHARGER")); break;
+           case ERR_GPS_COMM:Console.println(F("ERR_GPS_COMM")); break;
+           case ERR_GPS_DATA:Console.println(F("ERR_GPS_DATA")); break;
+           case ERR_ADC_CALIB:Console.println(F("ERR_ADC_CALIB")); break;
+           case ERR_IMU_CALIB:Console.println(F("ERR_IMU_CALIB")); break;
+           case ERR_EEPROM_DATA:Console.println(F("ERR_EEPROM_DATA")); break;
+           case ERR_STUCK:Console.println(F("ERR_STUCK")); break;
+        }
+      }
+    }
+  }
+}
+
 void Robot::checkErrorCounter(){
   if (millis() >= nextTimeErrorCounterReset){
     // reset all temporary error counters after 30 seconds (maximum error counters still continue to count) 
@@ -713,9 +745,11 @@ void Robot::checkErrorCounter(){
   if (stateCurr != STATE_OFF) {
    for (int i=0; i < ERR_ENUM_COUNT; i++){
      // set to fatal error if any temporary error counter reaches 10
-     if (errorCounter[i] > 10) setNextState(STATE_ERROR, 0);
+     if (errorCounter[i] > 10) {       
+       setNextState(STATE_ERROR, 0);
+     }
     }
-  }
+  }  
 }
 
 
@@ -1526,6 +1560,7 @@ void Robot::menu(){
           break;
         case '8':
           ADCMan.calibrate();
+          printMenu();
           break;
         case '9':
           saveUserSettings();
@@ -1547,12 +1582,12 @@ void Robot::menu(){
           printMenu();
           break;          
         case 'e':
-        resetErrorCounters();
-        setNextState(STATE_OFF, 0);
-        Console.println(F("ALL ERRORS ARE DELETED"));
-        printMenu();
-        break;          
-      }      
+          resetErrorCounters();
+          setNextState(STATE_OFF, 0);
+          Console.println(F("ALL ERRORS ARE DELETED"));          
+          printMenu();
+          break;          
+      }            
     }
     delay(10);
   }  
@@ -1813,7 +1848,7 @@ void Robot::readSensors(){
       }       
       lastMotorMowRpmTime = millis();     
       if (!ADCMan.calibrationDataAvail()) {
-        Console.println(F("Error: missing ADC calibration data"));
+        //Console.println(F("Error: missing ADC calibration data"));
         addErrorCounter(ERR_ADC_CALIB);
         setNextState(STATE_ERROR, 0);
       }
@@ -2228,7 +2263,7 @@ if (millis() < nextTimeCheckBattery) return;
   if ( (stateCurr == STATE_OFF) || (stateCurr == STATE_ERROR) ) {      
     if (idleTimeSec != BATTERY_SW_OFF){ // battery already switched off?
       idleTimeSec ++; // add one second idle time
-      if (idleTimeSec > batSwitchOffIfIdle * 60) {        
+      if ((batSwitchOffIfIdle != 0) && (idleTimeSec > batSwitchOffIfIdle * 60)) {        
         Console.println(F("triggered batSwitchOffIfIdle"));      
         beep(1, true);      
         loadSaveErrorCounters(false); // saves error counters
@@ -2806,6 +2841,7 @@ void Robot::loop()  {
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
     printInfo(Console);    
+    printErrors();
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */

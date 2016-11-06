@@ -452,6 +452,7 @@ class Robot
     byte rollDir;
     unsigned long nextTimeButton ;
     unsigned long nextTimeErrorCounterReset;    
+    unsigned long nextTimePrintErrors;
     unsigned long nextTimeErrorBeep ;  
     // ------------robot stats---------------------------
     boolean statsOverride ;
@@ -561,6 +562,7 @@ protected:
     virtual void printRemote();
     virtual void printOdometry();
     virtual void printMenu();    
+    virtual void printErrors();
     virtual void delayInfo(int ms);    
     virtual void testOdometry();
     virtual void testMotors();
