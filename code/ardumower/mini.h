@@ -41,6 +41,7 @@ class Mini : public Robot
   public:
     Mini();  
     virtual void setup(void);
+    virtual void resetMotorFault();
     virtual int readSensor(char type);
     virtual void setActuator(char type, int value);
     virtual void configureBluetooth(boolean quick);

@@ -35,6 +35,10 @@
 #include "config.h"
 #ifdef USE_MINI
 
+#ifdef __AVR__
+  #include "NewPing.h"
+#endif
+
 #include <Arduino.h>
 #include "mini.h"
 #include "due.h"
@@ -66,6 +70,8 @@
 #define pinDropLeft 45           // drop pins                                                                                          Dropsensor - Absturzsensor
 #define pinDropRight 23          // drop pins                                                                                          Dropsensor - Absturzsensor
 
+#define pinVoltageMeasurement A7   // test pin for your own voltage measurements
+
 #define pinSonarCenterTrigger 24   // ultrasonic sensor pins
 #define pinSonarCenterEcho 22
 #define pinSonarRightTrigger 30    
@@ -80,6 +86,7 @@
 #define pinTilt 35                 // Tilt sensor (required for TC-G158 board)
 #define pinButton 51               // digital ON/OFF button
 #define pinBatteryVoltage A2       // battery voltage sensor
+#define pinBatterySwitch 4         // battery-OFF switch   
 #define pinChargeVoltage A9        // charging voltage sensor
 #define pinChargeCurrent A8        // charge current sensor
 #define pinChargeRelay 49        // charge current sensor  
@@ -114,9 +121,9 @@
 // GPS: Serial3 (TX3, RX3) 
 
 // ------- baudrates---------------------------------
-#define BAUDRATE 19200              // serial output baud rate
+#define CONSOLE_BAUDRATE    19200       // baudrate used for console
+#define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module
 #define ESP8266_BAUDRATE    115200  // baudrate used for communication with esp8266 Wifi module
-#define BLUETOOTH_BAUDRATE  19200   // baudrate used for communication with Bluetooth module
 #define BLUETOOTH_PIN 1234          // Bluetooth pin
 
 //#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
@@ -124,13 +131,14 @@
 Mini robot;
 
 
-Mini::Mini(){
+Mini::Mini()
+{
   name = "Mini";
   // ------- wheel motors -----------------------------
   motorAccel       = 0.03;  // motor wheel acceleration (warning: do not set too high)
   motorSpeedMaxRpm    = 120;   // motor wheel max RPM
   motorSpeedMaxPwm    = 127;  // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-//  motorPowerMax     = 30;    // motor wheel max power (Watt)
+  //  motorPowerMax     = 30;    // motor wheel max power (Watt)
   motorPowerMax     = 30000;    // motor wheel max power (Watt)
   motorSenseRightScale = 15.3; // motor right sense scale (mA=(ADC-zero)/scale)
   motorSenseLeftScale = 15.3; // motor left sense scale  (mA=(ADC-zero)/scale)
@@ -147,7 +155,7 @@ Mini::Mini(){
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMaxPwm = 255;    // motor mower max PWM
-//  motorMowPowerMax = 50.0;     // motor mower max power (Watt)
+  //  motorMowPowerMax = 50.0;     // motor mower max power (Watt)
   motorMowPowerMax = 50000.0;     // motor mower max power (Watt)
   motorMowModulate  = 0;      // motor mower cutter modulation?
   motorMowRPMSet     = 3300;   // motor mower RPM (only for cutter modulation)
@@ -163,20 +171,26 @@ Mini::Mini(){
   // ------ rain ------------------------------------
   rainUse          = 0;      // use rain sensor?
   // ------ sonar ------------------------------------
-  sonarUse          = 1;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
+  sonarUse          = 0;      // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarTriggerBelow = 300;     // ultrasonic sensor trigger distance
   // ------ perimeter ---------------------------------
   perimeterUse       = 0;      // use perimeter?    
   perimeterTriggerTimeout = 0; // perimeter trigger timeout (ms)  
+  perimeterOutRollTimeMax  = 2000;   // roll time max after perimeter out (ms)
+  perimeterOutRollTimeMin = 750;    // roll time min after perimeter out (ms)
+  perimeterOutRevTime   = 2200;   // reverse time after perimeter out (ms)
   perimeterTrackRollTime  = 2000;   // perimter tracking roll time (ms)
-  perimeterTrackRevTime   = 2000;   // perimter tracking reverse time (ms)
+  perimeterTrackRevTime = 2200;  // reverse time during perimeter tracking
   perimeterPID.Kp    = 60.0;  // perimeter PID controller
   perimeterPID.Ki    = 6.0;
   perimeterPID.Kd    = 5.0;
+  trackingPerimeterTransitionTimeOut = 2000;
+  trackingErrorTimeOut = 10000;
+  trackingBlockInnerWheelWhilePerimeterStruggling = 1;
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;       // use capacitive Sensor
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse            = 1;       // use IMU?
+  imuUse            = 0;       // use IMU?
   imuCorrectDir     = 0;       // correct direction by compass?
   imuDirPID.Kp      = 0.6;     // direction PID controller
   imuDirPID.Ki      = 1.2;
@@ -191,16 +205,26 @@ Mini::Mini(){
   batGoHomeIfBelow = 23.7;     // drive home voltage (Volt)
   //batSwitchOffIfBelow = 21.7;  // switch off if below voltage (Volt)
   batSwitchOffIfBelow = 0.0;  // switch off if below voltage (Volt)
+  batSwitchOffIfIdle = 1;      // switch off battery if idle (minutes)
   batFactor       = 0.0658;     // battery conversion factor
   batChgFactor    = 0.0658;     // battery conversion factor
   //batSenseZero       =77;        // battery volt sense zero point                                                                              
   batFull          =29.4;      // battery reference Voltage (fully charged)
+  batChargingCurrentMax =1.6;  // maximum current your charger can devliver
+  batFullCurrent  = 0.3;      // current flowing when battery is fully charged
+  startChargingIfBelow = 27.0; // start charging if battery Voltage is below
+  chargingTimeout = 12600000; // safety timer for charging (ms) 12600000 = 3.5hrs
+  chgSelection    = 2;
   chgSenseZero      = 0;       // charge current sense zero point
   chgFactor       = 2.7;     // charge current conversion factor
+  chgSense        = 185.0;      // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
+  chgChange       = 0;          // Messwertumkehr von - nach +         1 oder 0
+  chgNull         = 2;          // Nullduchgang abziehen (1 oder 2)
   // ------  charging station ---------------------------
   stationRevTime     = 4000;    // charge station reverse time (ms)
   stationRollTime    = 2000;    // charge station roll time (ms)
   stationForwTime    = 2000;    // charge station forward time (ms)
+  stationCheckTime   = 1700;    // charge station reverse check time (ms)
   // ------ odometry ------------------------------------
   odometryUse       = 1;       // use odometry?
   twoWayOdometrySensorUse = 0; // use optional two-wire odometry sensor?
@@ -211,6 +235,8 @@ Mini::Mini(){
   odometryLeftSwapDir  = 0;       // inverse left encoder direction?  
   // ----- GPS -------------------------------------------
   gpsUse            = 0;       // use GPS?
+  stuckIfGpsSpeedBelow = 0.2; // if Gps speed is below given value the mower is stuck
+  gpsSpeedIgnoreTime = 5000; // how long gpsSpeed is ignored when robot switches into a new STATE (in ms)
   // ----- other -----------------------------------------
   buttonUse         = 1;       // has digital ON/OFF button?
   // ----- user-defined switch ---------------------------
@@ -219,6 +245,16 @@ Mini::Mini(){
   userSwitch3       = 0;       // user-defined switch 3 (default value)
   // ----- timer -----------------------------------------
   timerUse          = 0;       // use timer?
+  // ----- bluetooth -------------------------------------
+  bluetoothUse      = 1;       // use Bluetooth module?
+  // ----- esp8266 ---------------------------------------
+  esp8266Use        = 0;       // use ESP8266 Wifi module?
+  esp8266ConfigString = "123test321";
+  // ------ mower stats-------------------------------------------  
+  statsOverride = false; // if set to true mower stats are overwritten - be careful
+  statsMowTimeMinutesTotal = 300;
+  statsBatteryChargingCounterTotal = 11;
+  statsBatteryChargingCapacityTotal = 30000;
   // ------ configuration end -------------------------------------------   
 }
 
@@ -274,80 +310,56 @@ ISR(PCINT0_vect){
     const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
     const long setPins_A = (oldOdoPins_A ^ actPins_A);
     const long setPins_B = (oldOdoPins_B ^ actPins_B);
-    if (setPins_A & 0b00000000000000000000000000000010)			// pin left has changed 
+    
+    //Right
+    if (setPins_A & 0b00000000000000000000000000000010)			// pin right has changed 
     {
-      if (robot.motorLeftPWMCurr >= 0)					// forward
-        robot.odometryLeft++;
+      if (robot.motorRightPWMCurr >= 0)					// forward
+        robot.odometryRight++;
       else
-        robot.odometryLeft--;	
+        robot.odometryRight--;	
         								// backward
       oldOdoPins_A = actPins_A;
     }
     
-    if (setPins_B & 0b00000000000000001000000000000000)         	// pin right has changed
+    //Left
+    if (setPins_B & 0b00000000000000001000000000000000)         	// pin left has changed
     {
-      if (robot.motorRightPWMCurr >= 0)
-        robot.odometryRight++;						// forward
+      if (robot.motorLeftPWMCurr >= 0)
+        robot.odometryLeft++;						// forward
       else
-        robot.odometryRight--;						// backward
+        robot.odometryLeft--;						// backward
 
       oldOdoPins_B = actPins_B;
     }  
   }
-/*
-  ISR(PCINT2_vect)
-  {
-    unsigned long timeMicros = micros();
-    boolean odometryLeftState = digitalRead(pinOdometryLeft);
-    boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
-    boolean odometryRightState = digitalRead(pinOdometryRight);  
-    boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-    boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
-    robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
-    robot.setMotorMowRPMState(motorMowRpmState);  
-  }
-*/
 
 #endif
 
 // mower motor speed sensor interrupt
 //void rpm_interrupt(){
 //}
-
+#ifdef __AVR__
+   NewPing NewSonarLeft(pinSonarLeftTrigger, pinSonarLeftEcho, 500);
+   NewPing NewSonarRight(pinSonarRightTrigger, pinSonarRightEcho, 500);
+   NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
+#endif
 
 // WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
 // (required so we can use Arduino Due native port)
 
-void Mini::setup(){
+void Mini::setup()
+{
   Wire.begin();            
-  Console.begin(BAUDRATE);   
+  Console.begin(CONSOLE_BAUDRATE);   
   //while (!Console) ; // required if using Due native port
   Console.println("SETUP");
-  //rc.initSerial(BLUETOOTH_BAUDRATE);   
-  if (esp8266Use)
-  {
-    Console.println(F("Sending ESP8266 Config"));
-    ESP8266port.begin(ESP8266_BAUDRATE);
-    ESP8266port.println(esp8266ConfigString);
-    ESP8266port.flush();
-    ESP8266port.end();
-    rc.initSerial(&ESP8266port, ESP8266_BAUDRATE);
-  }
-  else if (bluetoothUse)
-  {
-    rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
-  }  
-    
-    
-  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
-  #ifdef __AVR__
-  // might be better to use default PWM freq (as perimeter v2 otherwise uses the same freq band) 
-  //  TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5) 
-  #endif
   
-  // i2c -- turn off internal pull-ups (and use external pull-ups)
-  //digitalWrite(SDA, 0);  
-  //digitalWrite(SCL, 0);
+  // keep battery switched ON
+  pinMode(pinBatterySwitch, OUTPUT);
+  digitalWrite(pinBatterySwitch, HIGH);
+    
+    
   
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    
@@ -435,39 +447,96 @@ void Mini::setup(){
   pinMode(pinUserSwitch1, OUTPUT);
   pinMode(pinUserSwitch2, OUTPUT);
   pinMode(pinUserSwitch3, OUTPUT);   
+  // other
+  pinMode(pinVoltageMeasurement, INPUT);
 
+  // PWM frequency setup  
+  // For obstacle detection, motor torque should be detectable - torque can be computed by motor current.
+  // To get consistent current values, PWM frequency should be 3.9 Khz
+  // http://wiki.ardumower.de/index.php?title=Motor_driver  
+  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
+  // http://www.atmel.com/images/doc2549.pdf
+  #ifdef __AVR__  
+    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)     
+  #else
+    PinMan.analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
+    pmc_enable_periph_clk(PWM_INTERFACE_ID);
+    PWMC_ConfigureClocks(3900 * PWM_MAX_DUTY_CYCLE, 0, VARIANT_MCK);   // 3.9 Khz  
+  #endif  
+
+  // ADC
+  ADCMan.init();
+  ADCMan.setCapture(pinChargeCurrent, 1, true);//Aktivierung des LaddeStrom Pins beim ADC-Managers      
+  ADCMan.setCapture(pinMotorMowSense, 1, true);
+  ADCMan.setCapture(pinMotorLeftSense, 1, true);
+  ADCMan.setCapture(pinMotorRightSense, 1, true);
+  ADCMan.setCapture(pinBatteryVoltage, 1, false);
+  ADCMan.setCapture(pinChargeVoltage, 1, false);  
+  ADCMan.setCapture(pinVoltageMeasurement, 1, false);    
+  perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
+    
+  imu.init(pinBuzzer);
+	  
+  gps.init();
+
+  Robot::setup();  
+
+  if (esp8266Use)
+  {
+    Console.println(F("Sending ESP8266 Config"));
+    ESP8266port.begin(ESP8266_BAUDRATE);
+    ESP8266port.println(esp8266ConfigString);
+    ESP8266port.flush();
+    ESP8266port.end();
+    rc.initSerial(&ESP8266port, ESP8266_BAUDRATE);
+  }
+  else if (bluetoothUse)
+  {
+    rc.initSerial(&Bluetooth, BLUETOOTH_BAUDRATE);
+  }
+ 
+  //-------------------------------------------------------------------------
   // enable interrupts
+  //-------------------------------------------------------------------------
   #ifdef __AVR__
+ 
+    //-------------------------------------------------------------------------
+    // Switch
+    //-------------------------------------------------------------------------
+    PCICR |= (1<<PCIE0);
+    PCMSK0 |= (1<<PCINT1);
+    //-------------------------------------------------------------------------
     // R/C
+    //-------------------------------------------------------------------------
     PCICR |= (1<<PCIE0);
     if (remoteUse)
-	{
-	  PCMSK0 |= (1<<PCINT4);
-	  PCMSK0 |= (1<<PCINT5);
-	  PCMSK0 |= (1<<PCINT6);
-	}
+    {
+      PCMSK0 |= (1<<PCINT4);
+      PCMSK0 |= (1<<PCINT5);
+      PCMSK0 |= (1<<PCINT6);
+    }
 	 
     //-------------------------------------------------------------------------    
     // odometry
     //-------------------------------------------------------------------------
-	// Wenn odometryUse == 1 dann:
-	// PCMSK2, PCINT20, HIGH			-> für links
-	// PCMSK2, PCINT22, HIGH			-> für rechts
-	//
-	// Wenn twoWayOdo == 1 dann:
-	// PCMSK2, PCINT21, HIGH
-	// PCMSK2, PCINT23, HIGH
-	if (odometryUse)
-	{ 
-	  PCICR |= (1<<PCIE2);
-	  PCMSK2 |= (1<<PCINT20);
-	  PCMSK2 |= (1<<PCINT22);
-	  if (twoWayOdometrySensorUse)
-	  {  
-		PCMSK2 |= (1<<PCINT21);  
-		PCMSK2 |= (1<<PCINT23);   
+    // Wenn odometryUse == 1 dann:
+    // PCMSK2, PCINT20, HIGH			-> für links
+    // PCMSK2, PCINT22, HIGH			-> für rechts
+    //
+    // Wenn twoWayOdo == 1 dann:
+    // PCMSK2, PCINT21, HIGH
+    // PCMSK2, PCINT23, HIGH
+    if (odometryUse)
+    { 
+      PCICR |= (1<<PCIE2);
+      PCMSK2 |= (1<<PCINT20);
+      PCMSK2 |= (1<<PCINT22);
+      if (twoWayOdometrySensorUse)
+      {  
+        PCMSK2 |= (1<<PCINT21);  
+	PCMSK2 |= (1<<PCINT23);   
       }
-	}
+    }
 		
     //-------------------------------------------------------------------------	
     // mower motor speed sensor interrupt
@@ -477,47 +546,77 @@ void Mini::setup(){
     
     
   #else
+    
     // Due interrupts
-	// ODO
+    // ODO
     attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
     attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
     attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
     attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
     
-	// RC
+    // RC
     attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
     attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
     attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
-	//Switch
+    
+    //Switch
     attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
     
-	//Motor Mow RPM	
+    //Motor Mow RPM	
     attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
-  #endif   
-    
-  // ADC
-  ADCMan.init();
-  ADCMan.setCapture(pinMotorMowSense, 1, true);
-  ADCMan.setCapture(pinMotorLeftSense, 1, true);
-  ADCMan.setCapture(pinMotorRightSense, 1, true);
-  ADCMan.setCapture(pinBatteryVoltage, 1, false);
-  ADCMan.setCapture(pinChargeVoltage, 1, false);  
-  perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
-    
-  imu.init(pinBuzzer);
-  gps.init();
 
-  Robot::setup();  
+  #endif   
+
+}
+    
+void checkMotorFault()
+{
+  if (digitalRead(pinMotorLeftFault)==LOW)
+  {
+    robot.addErrorCounter(ERR_MOTOR_LEFT);
+    //Console.println(F("Error: motor left fault"));
+    robot.setNextState(STATE_ERROR, 0);
+    //digitalWrite(pinMotorEnable, LOW);
+    //digitalWrite(pinMotorEnable, HIGH);
+  }
+  if  (digitalRead(pinMotorRightFault)==LOW)
+  {
+    robot.addErrorCounter(ERR_MOTOR_RIGHT);
+    //Console.println(F("Error: motor right fault"));
+    robot.setNextState(STATE_ERROR, 0);
+    //digitalWrite(pinMotorEnable, LOW);
+    //digitalWrite(pinMotorEnable, HIGH);
+  }
+  if (digitalRead(pinMotorMowFault)==LOW)
+  {  
+    robot.addErrorCounter(ERR_MOTOR_MOW);
+    //Console.println(F("Error: motor mow fault"));
+    robot.setNextState(STATE_ERROR, 0);
+    //digitalWrite(pinMotorMowEnable, LOW);
+    //digitalWrite(pinMotorMowEnable, HIGH);
+  }
 }
 
-void checkMotorFault(){
-  if ( (digitalRead(pinMotorLeftFault)==LOW) || (digitalRead(pinMotorRightFault)==LOW) ){
+
+void Mini::resetMotorFault()
+{
+  if (digitalRead(pinMotorLeftFault)==LOW)
+  {
     digitalWrite(pinMotorEnable, LOW);
     digitalWrite(pinMotorEnable, HIGH);
+    Console.println(F("Reset motor left fault"));
   }
-  if (digitalRead(pinMotorMowFault)==LOW){  
+  if  (digitalRead(pinMotorRightFault)==LOW)
+  {
+    digitalWrite(pinMotorEnable, LOW);
+    digitalWrite(pinMotorEnable, HIGH);
+    Console.println(F("Reset motor right fault"));
+  }
+  if (digitalRead(pinMotorMowFault)==LOW)
+  {  
     digitalWrite(pinMotorMowEnable, LOW);
     digitalWrite(pinMotorMowEnable, HIGH);
+    Console.println(F("Reset motor mow fault"));
   }
 }
 
@@ -535,7 +634,7 @@ int Mini::readSensor(char type){
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;
     
 // battery------------------------------------------------------------------------------------------------
-    case SEN_BAT_VOLTAGE: return ADCMan.read(pinBatteryVoltage); break;
+    case SEN_BAT_VOLTAGE: ADCMan.read(pinVoltageMeasurement);  return ADCMan.read(pinBatteryVoltage); break;
     case SEN_CHG_VOLTAGE: return ADCMan.read(pinChargeVoltage); break;
     //case SEN_CHG_VOLTAGE: return((int)(((double)analogRead(pinChargeVoltage)) * batFactor)); break;
     case SEN_CHG_CURRENT: return ADCMan.read(pinChargeCurrent); break;
@@ -553,16 +652,27 @@ int Mini::readSensor(char type){
 
 // sonar---------------------------------------------------------------------------------------------------
     //case SEN_SONAR_CENTER: return(readURM37(pinSonarCenterTrigger, pinSonarCenterEcho)); break;  
-   case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
+    //case SEN_SONAR_CENTER: return(readHCSR04(pinSonarCenterTrigger, pinSonarCenterEcho)); break;
     //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
     //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
+    #ifdef __AVR__
+      case SEN_SONAR_CENTER: return(NewSonarCenter.ping_cm()); break;
+      case SEN_SONAR_LEFT: return(NewSonarLeft.ping_cm()); break;
+      case SEN_SONAR_RIGHT: return(NewSonarRight.ping_cm()); break;
+    #endif
    // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
     
 // imu-------------------------------------------------------------------------------------------------------
     //case SEN_IMU: imuYaw=imu.ypr.yaw; imuPitch=imu.ypr.pitch; imuRoll=imu.ypr.roll; break;    
 // rtc--------------------------------------------------------------------------------------------------------
-    case SEN_RTC: readDS1307(datetime); break;
+    case SEN_RTC: 
+      if (!readDS1307(datetime)) {
+        Console.println("RTC data error!");        
+        addErrorCounter(ERR_RTC_DATA);         
+        setNextState(STATE_ERROR, 0);       
+      }
+      break;
 // rain--------------------------------------------------------------------------------------------------------
     case SEN_RAIN: if (digitalRead(pinRain)==LOW) return 1; break;
  
@@ -580,10 +690,16 @@ void Mini::setActuator(char type, int value){
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     
     case ACT_USER_SW3: digitalWrite(pinUserSwitch3, value); break;         
-    case ACT_RTC: setDS1307(datetime); break;
+    case ACT_RTC:  
+      if (!setDS1307(datetime)) {
+        Console.println("RTC comm error!");
+        addErrorCounter(ERR_RTC_COMM); 
+        setNextState(STATE_ERROR, 0);       
+      }
+      break;
     case ACT_CHGRELAY: digitalWrite(pinChargeRelay, value); break;
     //case ACT_CHGRELAY: digitalWrite(pinChargeRelay, !value); break;
-
+    case ACT_BATTERY_SW: digitalWrite(pinBatterySwitch, value); break;
   }
 }
 

@@ -324,39 +324,29 @@ ISR(PCINT0_vect){
     const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
     const long setPins_A = (oldOdoPins_A ^ actPins_A);
     const long setPins_B = (oldOdoPins_B ^ actPins_B);
+    
+    //Right
     if (setPins_A & 0b00000000000000000000000000000010)			// pin left has changed 
     {
-      if (robot.motorLeftPWMCurr >= 0)					// forward
-        robot.odometryLeft++;
+      if (robot.motorRightPWMCurr >= 0)					// forward
+        robot.odometryRight++;
       else
-        robot.odometryLeft--;	
+        robot.odometryRight--;	
         								// backward
       oldOdoPins_A = actPins_A;
     }
     
+    //Left
     if (setPins_B & 0b00000000000000001000000000000000)         	// pin right has changed
     {
-      if (robot.motorRightPWMCurr >= 0)
-        robot.odometryRight++;						// forward
+      if (robot.motorLeftPWMCurr >= 0)
+        robot.odometryLeft++;						// forward
       else
-        robot.odometryRight--;						// backward
+        robot.odometryLeft--;						// backward
 
       oldOdoPins_B = actPins_B;
     }  
   }
-/*
-  ISR(PCINT2_vect)
-  {
-    unsigned long timeMicros = micros();
-    boolean odometryLeftState = digitalRead(pinOdometryLeft);
-    boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
-    boolean odometryRightState = digitalRead(pinOdometryRight);  
-    boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-    boolean motorMowRpmState = digitalRead(pinMotorMowRpm);
-    robot.setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
-    robot.setMotorMowRPMState(motorMowRpmState);  
-  }
-*/
 
 #endif
 
