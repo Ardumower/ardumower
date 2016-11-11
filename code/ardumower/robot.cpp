@@ -1110,11 +1110,15 @@ void Robot::motorControl(){
     motorLeftPID.w = motorLeftSpeedRpmSet;               // SOLL 
     motorRightPID.w = motorRightSpeedRpmSet;             // SOLL    
     float RLdiff = motorLeftRpmCurr - motorRightRpmCurr;
-    if (motorLeftSpeedRpmSet == motorRightSpeedRpmSet){
+    
+    //Geradeaus fahren (Soll-Drehzahl ist links und rechts gleich)
+    if (motorLeftSpeedRpmSet == motorRightSpeedRpmSet)
+    {
       // line motion
       motorLeftPID.w = motorLeftSpeedRpmSet - RLdiff/2;
       motorRightPID.w = motorRightSpeedRpmSet + RLdiff/2;      
     }
+    
     motorLeftPID.x = motorLeftRpmCurr;                 // IST     
     if (millis() < stateStartTime + motorZeroSettleTime) motorLeftPID.w = 0; // get zero speed first after state change
     motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
