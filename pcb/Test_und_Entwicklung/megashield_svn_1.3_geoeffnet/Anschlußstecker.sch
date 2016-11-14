@@ -13,7 +13,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 25
+Sheet 10 28
 Title "Ardumower shield SVN Version"
 Date "2016-10-28"
 Rev "1.3"
@@ -96,7 +96,7 @@ Text GLabel 10510 1335 2    39   Output ~ 0
 ReserveAD6
 Text GLabel 8340 2120 2    39   Output ~ 0
 ReserveAD7
-Text GLabel 6925 1705 2    39   Output ~ 0
+Text GLabel 7755 1765 2    39   Output ~ 0
 pinMotorMowRpm_neu
 $Comp
 L R R31
@@ -248,7 +248,7 @@ F 5 "Value" V 4488 1055 60  0001 C CNN "Bestelllink"
 	1    4365 1055
 	0    -1   -1   0   
 $EndComp
-Text GLabel 6925 1255 2    39   Output ~ 0
+Text GLabel 7850 1190 2    39   Output ~ 0
 pinOdometryRight
 Text GLabel 8495 2650 2    39   Output ~ 0
 pinOdometryRight2
@@ -11224,11 +11224,11 @@ U 57F2FF53
 F0 "OdoTeiler" 60
 F1 "OdoTeiler.sch" 60
 F2 "Eingang1" I L 5270 1255 79 
-F3 "Ausgang1" O R 6720 1255 79 
+F3 "Ausgang1" O R 6720 1190 79 
 F4 "Eingang2" I L 5270 1500 79 
-F5 "Ausgang2" O R 6720 1500 79 
+F5 "Ausgang2" O R 6720 1485 79 
 F6 "Eingang3" I L 5270 1705 79 
-F7 "Ausgang3" O R 6720 1705 79 
+F7 "Ausgang3" O R 6720 1765 79 
 $EndSheet
 $Comp
 L +5VP #PWR085
@@ -11349,7 +11349,7 @@ F 5 "Value" V 4488 1625 60  0001 C CNN "Bestelllink"
 	1    4365 1625
 	0    -1   -1   0   
 $EndComp
-Text GLabel 6925 1500 2    39   Output ~ 0
+Text GLabel 7850 1485 2    39   Output ~ 0
 pinOdometryLeft
 $Comp
 L GND #PWR092
@@ -11462,11 +11462,11 @@ Wire Wire Line
 Wire Wire Line
 	5020 1255 5020 930 
 Wire Wire Line
-	6720 1255 6925 1255
+	7645 1190 7850 1190
 Wire Wire Line
-	6720 1500 6925 1500
+	7645 1485 7850 1485
 Wire Wire Line
-	6720 1705 6925 1705
+	6720 1765 6925 1765
 Wire Wire Line
 	5025 2220 5025 1705
 Wire Wire Line
@@ -11475,4 +11475,34 @@ Text Notes 12665 4305 0    79   ~ 0
 also im grunde ist es bei der schaltung völlig pups...... \nes ist genau das gleiche problem wie mit dem LsF010x \nnicht der shifter ist das problem sondern das was dahinter kommt.\n Fraaage...... was macht ein pin wenn es als ausgang programmiert ist\nund wird aktiv mit einem andern ausgang verbunden? \nRichtiiiig es macht puff und so ist das auch mit dem shifter \ndu kannst dir aber die regel merken der gate widerstand zeigt zum MPU pin
 Text Notes 12400 5510 0    79   ~ 0
 achso um mein geschreibsel für den level shifter \nnoch mal zu verdeutlichen die low-side darf immer kleiner \noder gleichgroß der high-side sein \naber niemals größer als die high-side \nich hoffe das ist jetzt etwas verständlicher
+$Sheet
+S 6925 1690 730  155 
+U 582A0806
+F0 "LShifter8" 39
+F1 "LShifter8.sch" 39
+F2 "5V_IN" I L 6925 1765 39 
+F3 "3,3_/_5V_OUT" O R 7655 1765 39 
+$EndSheet
+Wire Wire Line
+	7655 1765 7755 1765
+$Sheet
+S 6920 1410 725  155 
+U 582A4F4E
+F0 "LShifter9" 39
+F1 "LShifter9.sch" 39
+F2 "5V_IN" I L 6920 1485 39 
+F3 "3,3_/_5V_OUT" O R 7645 1485 39 
+$EndSheet
+Wire Wire Line
+	6720 1485 6920 1485
+$Sheet
+S 6920 1115 725  155 
+U 582A9E9C
+F0 "LShifter10" 39
+F1 "LShifter10.sch" 39
+F2 "5V_IN" I L 6920 1190 39 
+F3 "3,3_/_5V_OUT" O R 7645 1190 39 
+$EndSheet
+Wire Wire Line
+	6720 1190 6920 1190
 $EndSCHEMATC

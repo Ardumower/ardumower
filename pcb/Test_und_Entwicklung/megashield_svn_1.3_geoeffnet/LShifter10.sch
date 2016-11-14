@@ -13,11 +13,11 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 12 28
-Title "Ardumower shield SVN Version"
-Date "2016-10-28"
-Rev "1.3"
-Comp "ML AG JL UZ"
+Sheet 21 28
+Title ""
+Date ""
+Rev ""
+Comp ""
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -1269,10 +1269,10 @@ Wire Wire Line
 Wire Wire Line
 	5210 3735 5605 3735
 $Comp
-L R R61
-U 1 1 57E6FCAF
+L R R102
+U 1 1 582AB580
 P 6110 3250
-F 0 "R61" H 6198 3296 50  0000 L CNN
+F 0 "R102" H 6198 3296 50  0000 L CNN
 F 1 "10K" H 6198 3205 50  0000 L CNN
 F 2 "Resistors_SMD:R_0805" V 6040 3250 50  0001 C CNN
 F 3 "Value" H 6110 3250 50  0001 C CNN
@@ -1285,10 +1285,10 @@ F 8 "Value" H 6198 2947 60  0001 L CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R60
-U 1 1 57E6FCB5
+L R R101
+U 1 1 582AB581
 P 5435 3250
-F 0 "R60" H 5523 3296 50  0000 L CNN
+F 0 "R101" H 5523 3296 50  0000 L CNN
 F 1 "10K" H 5523 3205 50  0000 L CNN
 F 2 "Resistors_SMD:R_0805" V 5365 3250 50  0001 C CNN
 F 3 "Value" H 5435 3250 50  0001 C CNN
@@ -1308,12 +1308,23 @@ Wire Wire Line
 Connection ~ 5435 3735
 Wire Wire Line
 	6110 3100 6110 2900
+$Comp
+L +5V #PWR0124
+U 1 1 582AB582
+P 6110 2900
+F 0 "#PWR0124" H 6110 2750 50  0001 C CNN
+F 1 "+5V" H 6125 3073 50  0000 C CNN
+F 2 "" H 6110 2900 50  0000 C CNN
+F 3 "" H 6110 2900 50  0000 C CNN
+	1    6110 2900
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	5435 2900 5435 3100
+	5435 3100 5435 2900
 Wire Wire Line
-	5755 3435 5755 3005
+	5805 3435 5805 3005
 Wire Wire Line
-	5755 3005 5435 3005
+	5805 3005 5435 3005
 Connection ~ 5435 3005
 $Bitmap
 Pos -6080 2610
@@ -2747,35 +2758,24 @@ A6 D7 5D FE 4B 80 D3 5B 16 CC CD C1 0A 5B 22 6F F3 CB 6D B6 D4 57 2E 7F F5 8B 56
 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
+$Comp
+L Q_NMOS_GSD Q32
+U 1 1 582AB583
+P 5805 3635
+F 0 "Q32" V 6041 3635 50  0000 C CNN
+F 1 "BBS138" V 6132 3635 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" V 6223 3635 50  0001 C CNN
+F 3 "Value" H 5805 3635 50  0001 C CNN
+F 4 "Value" V 6322 3635 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 6428 3635 60  0001 C CNN "Bestelllink"
+F 6 "Value" V 6534 3635 60  0001 C CNN "Technische Daten"
+F 7 "Value" V 6640 3635 60  0001 C CNN "Bestellnummer"
+F 8 "Value" V 6746 3635 60  0001 C CNN "Bauform"
+	1    5805 3635
+	0    1    1    0   
+$EndComp
 Text Notes 5030 4230 0    60   ~ 0
 Konntrolieren ob Footprint und Lib passt
 Text GLabel 5435 2900 1    39   Input ~ 0
 IOREF
-$Comp
-L BSS138 Q6
-U 1 1 57EB0618
-P 5805 3635
-F 0 "Q6" V 6041 3635 50  0000 C CNN
-F 1 "BSS138" V 6132 3635 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 6005 3560 50  0001 L CIN
-F 3 "" H 5805 3635 50  0000 L CNN
-F 4 "Value" H 5805 3635 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 5805 3635 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 5805 3635 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 5805 3635 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 5805 3635 60  0001 C CNN "Bauform"
-	1    5805 3635
-	0    1    1    0   
-$EndComp
-$Comp
-L +5VP #PWR096
-U 1 1 57FA81D9
-P 6110 2900
-F 0 "#PWR096" H 6110 2750 50  0001 C CNN
-F 1 "+5VP" H 6125 3073 50  0000 C CNN
-F 2 "" H 6110 2900 50  0000 C CNN
-F 3 "" H 6110 2900 50  0000 C CNN
-	1    6110 2900
-	1    0    0    -1  
-$EndComp
 $EndSCHEMATC

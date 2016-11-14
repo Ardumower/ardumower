@@ -13,7 +13,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 25
+Sheet 24 28
 Title "Ardumower shield SVN Version"
 Date "2016-10-28"
 Rev "1.3"
@@ -67,10 +67,10 @@ Eingang
 Wire Wire Line
 	4480 2755 4655 2755
 $Comp
-L GND #PWR0251
+L GND #PWR0254
 U 1 1 57E64EC6
 P 4905 3620
-F 0 "#PWR0251" H 4905 3370 50  0001 C CNN
+F 0 "#PWR0254" H 4905 3370 50  0001 C CNN
 F 1 "GND" H 4910 3447 50  0000 C CNN
 F 2 "" H 4905 3620 50  0000 C CNN
 F 3 "" H 4905 3620 50  0000 C CNN
@@ -278,4 +278,6 @@ C2 AC 8F 63 79 FA C6 72 5F 5D 92 C4 E5 04 8E C5 B8 3E 4E 89 12 1D 38 7D BE 28 D7
 20 E6 39 FF 0F 96 A1 64 8B 2F 17 6C 4C 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
+Text Notes 115  -1235 0    79   ~ 0
+der verpolungsschutz von der Batterie ist nicht richtig die zehner diode hat die anode zwischen widerstand und gate.
 $EndSCHEMATC
