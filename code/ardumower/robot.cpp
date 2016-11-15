@@ -2419,6 +2419,27 @@ void Robot::checkCurrent(){
   if (millis() < nextTimeCheckCurrent) return;
   nextTimeCheckCurrent = millis() + 100;
 
+  //bb add test MotorCurrent in manual mode and stop immediatly If >Powermax
+  if (stateCurr == STATE_MANUAL)
+  {
+    if (motorLeftSense >= motorPowerMax)
+    {
+       motorLeftSenseCounter++;
+       setMotorPWM( 0, 0, false );
+       addErrorCounter(ERR_MOTOR_LEFT);
+       setNextState(STATE_ERROR, 0);
+       Console.println("Error: Motor Left current");
+    }
+    if (motorRightSense >= motorPowerMax)
+    {
+       motorRightSenseCounter++;
+       setMotorPWM( 0, 0, false );
+       addErrorCounter(ERR_MOTOR_RIGHT);
+       setNextState(STATE_ERROR, 0);
+       Console.println("Error: Motor Right current");
+    }
+  }
+
   if (motorMowSense >= motorMowPowerMax){
       motorMowSenseCounter++;
   }
@@ -2889,6 +2910,11 @@ void Robot::loop()  {
       motorMowSpeedPWMSet = ((double)motorMowSpeedMaxPwm) * (((double)remoteMow)/100.0);      
       break;
     case STATE_MANUAL:
+      //bb add  
+      checkCurrent();
+      checkBumpers();
+      checkDrop();
+      //bb add end
       break;
     case STATE_FORWARD:
       // driving forward            

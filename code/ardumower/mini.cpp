@@ -152,6 +152,7 @@ Mini::Mini()
   motorLeftPID.Kd       = 0.0;  
   motorRightSwapDir     = 0;    // inverse right motor direction? 
   motorLeftSwapDir      = 0;    // inverse left motor direction?  
+  motorErrorSense       = 0;    // motor error sense on/off
   // ------ mower motor -------------------------------
   motorMowAccel       = 0.1;  // motor mower acceleration (warning: do not set too high)
   motorMowSpeedMaxPwm = 255;    // motor mower max PWM
@@ -571,29 +572,32 @@ void Mini::setup()
     
 void checkMotorFault()
 {
-  if (digitalRead(pinMotorLeftFault)==LOW)
+  if (robot.motorErrorSense == 1) 
   {
-    robot.addErrorCounter(ERR_MOTOR_LEFT);
-    //Console.println(F("Error: motor left fault"));
-    robot.setNextState(STATE_ERROR, 0);
-    //digitalWrite(pinMotorEnable, LOW);
-    //digitalWrite(pinMotorEnable, HIGH);
-  }
-  if  (digitalRead(pinMotorRightFault)==LOW)
-  {
-    robot.addErrorCounter(ERR_MOTOR_RIGHT);
-    //Console.println(F("Error: motor right fault"));
-    robot.setNextState(STATE_ERROR, 0);
-    //digitalWrite(pinMotorEnable, LOW);
-    //digitalWrite(pinMotorEnable, HIGH);
-  }
-  if (digitalRead(pinMotorMowFault)==LOW)
-  {  
-    robot.addErrorCounter(ERR_MOTOR_MOW);
-    //Console.println(F("Error: motor mow fault"));
-    robot.setNextState(STATE_ERROR, 0);
-    //digitalWrite(pinMotorMowEnable, LOW);
-    //digitalWrite(pinMotorMowEnable, HIGH);
+    if (digitalRead(pinMotorLeftFault)==LOW)
+    {
+      robot.addErrorCounter(ERR_MOTOR_LEFT);
+      //Console.println(F("Error: motor left fault"));
+      robot.setNextState(STATE_ERROR, 0);
+      //digitalWrite(pinMotorEnable, LOW);
+      //digitalWrite(pinMotorEnable, HIGH);
+    }
+    if  (digitalRead(pinMotorRightFault)==LOW)
+    {
+      robot.addErrorCounter(ERR_MOTOR_RIGHT);
+      //Console.println(F("Error: motor right fault"));
+      robot.setNextState(STATE_ERROR, 0);
+      //digitalWrite(pinMotorEnable, LOW);
+      //digitalWrite(pinMotorEnable, HIGH);
+    }
+    if (digitalRead(pinMotorMowFault)==LOW)
+    {  
+      robot.addErrorCounter(ERR_MOTOR_MOW);
+      //Console.println(F("Error: motor mow fault"));
+      robot.setNextState(STATE_ERROR, 0);
+      //digitalWrite(pinMotorMowEnable, LOW);
+      //digitalWrite(pinMotorMowEnable, HIGH);
+    }
   }
 }
 

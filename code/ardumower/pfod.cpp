@@ -312,6 +312,15 @@ void RemoteControl::sendMotorMenu(boolean update){
     case 1: serialPort->print(F("Left motor forw")); break;
     case 2: serialPort->print(F("Right motor forw")); break;
   }
+  
+  //bb add
+  if (robot->developerActive)
+  {
+    sendSlider("a20", F("MotorSenseLeftScale"), robot->motorSenseLeftScale, "", 0.01, 30.0);
+    sendSlider("a21", F("MotorSenseRightScale"), robot->motorSenseRightScale, "", 0.01, 30.0);
+  }
+  //end add
+  
   serialPort->print(F("|a14~for config file:"));
   serialPort->print(F("motorSenseScale l, r"));
   serialPort->print(robot->motorSenseLeftScale);
@@ -325,19 +334,37 @@ void RemoteControl::sendMotorMenu(boolean update){
 }
 
 void RemoteControl::processMotorMenu(String pfodCmd){      
-  if (pfodCmd.startsWith("a02")) { processSlider(pfodCmd, robot->motorPowerMax, 0.1);
+  
+  //bb add
+  if (robot->developerActive)
+  {
+    if (pfodCmd.startsWith("a20")) processSlider(pfodCmd, robot->motorSenseLeftScale, 0.01);
+    if (pfodCmd.startsWith("a21")) processSlider(pfodCmd, robot->motorSenseRightScale, 0.01);
+  }
+  //end add
+    
+  if (pfodCmd.startsWith("a02")) 
+  {
+    processSlider(pfodCmd, robot->motorPowerMax, 0.1);
     //Console.print("motorpowermax=");
     //Console.println(robot->motorPowerMax);
   }
 
-    else if (pfodCmd.startsWith("a03")){
+  else if (pfodCmd.startsWith("a03"))
+  {
       processSlider(pfodCmd, robot->motorLeftSenseCurrent, 1);
-      robot->motorSenseLeftScale = robot->motorLeftSenseCurrent / max(0,(float)robot->motorLeftSenseADC);                  
-}
-    else if (pfodCmd.startsWith("a04")){
+      //bb change: warning! possible DIV by zero so 1.0 instead of 0
+      //robot->motorSenseLeftScale = robot->motorLeftSenseCurrent / max(0,(float)robot->motorLeftSenseADC);
+      robot->motorSenseLeftScale = robot->motorLeftSenseCurrent / max(1.0, (float)robot->motorLeftSenseADC);
+  }
+  else if (pfodCmd.startsWith("a04"))
+  {
       processSlider(pfodCmd, robot->motorRightSenseCurrent, 1);
-      robot->motorSenseRightScale = robot->motorRightSenseCurrent / max(0,(float)robot->motorRightSenseADC); 
-}      
+      //bb change: warning! possible DIV by zero so 1.0 instead of 0     
+      //robot->motorSenseRightScale = robot->motorRightSenseCurrent / max(0,(float)robot->motorRightSenseADC);
+      robot->motorSenseRightScale = robot->motorRightSenseCurrent / max(1.0, (float)robot->motorRightSenseADC); 
+  
+  }      
     else if (pfodCmd.startsWith("a06")) processSlider(pfodCmd, robot->motorSpeedMaxRpm, 1);
     else if (pfodCmd.startsWith("a15")) processSlider(pfodCmd, robot->motorSpeedMaxPwm, 1);
     else if (pfodCmd.startsWith("a07")) processSlider(pfodCmd, robot->motorRollTimeMax, 1); 
@@ -639,9 +666,20 @@ void RemoteControl::sendBatteryMenu(boolean update){
   serialPort->print(" V");
   serialPort->print(F("|j01~Monitor "));
   sendYesNo(robot->batMonitor);
-  if (robot->developerActive) sendSlider("j05", F("Calibrate batFactor "), robot->batFactor, "", 0.01, 1.0);   
+  
+  //bb remove
+  //if (robot->developerActive) sendSlider("j05", F("Calibrate batFactor "), robot->batFactor, "", 0.01, 1.0);   
+  //bb remove end
+  //bb add
+  if (robot->developerActive)
+  {
+    sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.001, 0.30, 0.55);
+    sendSlider("j05", F("Calibrate batFactor "), robot->batFactor, "", 0.001, 0.30, 0.55);
+  }
+  //end add
+  
   //Console.print("batFactor=");
-  //Console.println(robot->batFactor);  
+  //Console.println(robot->batFactor);   
   sendSlider("j02", F("Go home if below Volt"), robot->batGoHomeIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  // for Sony Konion cells 4.2V * 0,72= 3.024V which is pretty safe to use 
   sendSlider("j12", F("Switch off if idle minutes"), robot->batSwitchOffIfIdle, "", 1, 300, 1);  
   sendSlider("j03", F("Switch off if below Volt"), robot->batSwitchOffIfBelow, "", 0.1, robot->batFull, (robot->batFull*0.72));  
@@ -650,7 +688,9 @@ void RemoteControl::sendBatteryMenu(boolean update){
   serialPort->print("V ");
   serialPort->print(robot->chgCurrent);
   serialPort->print("A");
-  sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
+  //bb remove
+  //sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
+  //bb remove end
   sendSlider("j06", F("Charge sense zero"), robot->chgSenseZero, "", 1, 600, 400);       
   sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);       
   sendSlider("j10", F("charging starts if Voltage is below"), robot->startChargingIfBelow, "", 0.1, robot->batFull);       
@@ -666,10 +706,14 @@ void RemoteControl::processBatteryMenu(String pfodCmd){
       //Console.println(robot->batGoHomeIfBelow);
     }
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, robot->batSwitchOffIfBelow, 0.1); 
-    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.01);
+    //bb change
+    //else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.01);
+    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.001);
     else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, robot->chgSenseZero, 1);   
     else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, robot->chgFactor, 0.01);    
-    else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
+    //bb change
+    //else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
+    else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.001);
     else if (pfodCmd.startsWith("j10")) processSlider(pfodCmd, robot->startChargingIfBelow, 0.1);
     else if (pfodCmd.startsWith("j11")) processSlider(pfodCmd, robot->batFullCurrent, 0.1);
     else if (pfodCmd.startsWith("j12")) processSlider(pfodCmd, robot->batSwitchOffIfIdle, 1);
