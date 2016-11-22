@@ -9,7 +9,7 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:ardumower mega shield svn-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -607,4 +607,8 @@ Connection ~ 9010 3315
 Connection ~ 9010 3215
 Text Notes 8595 3825 0    39   ~ 0
 Unterbrechung der Motortreiber\nbei Benutzung muss Leiterbahn unterbrochen werden\nevl noch ändern und Klemme gleich vorsehen mit Drahtbrücke?
+Text Notes -5870 1415 0    79   ~ 0
+Kontrolle Funktion Ultraschall\nKontrolle RC Fernbedienung\nKontrolle Unterspannunsabschaltung ob sie mit 3V an bleibt\nRelais schaltung ändern damit nur noch 1 Relais notwendig ist\nUDN 2981 ersetzen durch SMD Bauteil evl TD 62783 AFWG :: Treiber-IC, SO-18W\nOdemetrie kontrollieren\nIC2 Bus Kontrollieren\nSpannungsaufbereitung evl ändern mit anderen DC wandlern bis 30V\n\nBauteile siehe Links
+Text Notes -5910 -130 0    59   ~ 0
+https://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP33/3/index.html?ACTION=3&LA=5700&ARTICLE=115975&GROUPID=5480&artnr=TS+2940+CP33\n\nhttps://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP50/3/index.html?ACTION=3&LA=5700&ARTICLE=115976&GROUPID=5480&artnr=TS+2940+CP50\n\nhttps://www.reichelt.de/ICs-TA-TL-/TD-62783-AFWG/3/index.html?ACTION=3&LA=446&ARTICLE=188954&GROUPID=5479&artnr=TD+62783+AFWG&SEARCH=TD62783
 $EndSCHEMATC

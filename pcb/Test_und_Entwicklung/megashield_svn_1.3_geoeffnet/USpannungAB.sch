@@ -9,11 +9,11 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:ardumower mega shield svn-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 22 28
+Sheet 25 28
 Title "Ardumower shield SVN Version"
 Date "2016-10-28"
 Rev "1.3"
@@ -134,7 +134,7 @@ Text Notes 7810 2735 0    60   ~ 0
 Taster Eingang gegen GND geschaltet
 Text Notes 7760 1985 0    60   ~ 0
 Arduino Mega auf Pin 51 ????
-Text Notes 8320 4355 0    60   ~ 0
+Text Notes 8690 3855 0    60   ~ 0
 Arduino Mega B auf Pin 4
 Wire Wire Line
 	4555 3650 4555 3070
@@ -1338,7 +1338,7 @@ Wire Wire Line
 	3680 3500 3680 2470
 Wire Wire Line
 	3680 3900 3680 5150
-Text GLabel 8330 4195 2    60   Input ~ 0
+Text GLabel 8745 3935 2    60   Input ~ 0
 RelaisAbschaltung
 Text GLabel 7040 1945 2    60   Output ~ 0
 pinButton
@@ -1402,8 +1402,8 @@ F 8 "Mini Melf" H 5905 4790 60  0001 C CNN "Bauform"
 	1    5905 4790
 	0    1    1    0   
 $EndComp
-Text Notes 7280 4060 0    60   ~ 0
-Q3\nBC337 ersetzt mit BC817 smd
+Text Notes 7080 4025 0    60   ~ 0
+Q3\nBC337 ersetzt\nmit BC817 smd
 $Comp
 L BC817-40 Q3
 U 1 1 57E98AAA
@@ -1436,4 +1436,27 @@ F 8 "Value" H 3780 3700 60  0001 C CNN "Bauform"
 	1    3780 3700
 	-1   0    0    1   
 $EndComp
+$Comp
+L Jumper_NC_Dual JP8
+U 1 1 5834DE11
+P 8430 4195
+F 0 "JP8" H 8430 4434 50  0000 C CNN
+F 1 "Low V." H 8430 4343 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 8430 4195 50  0001 C CNN
+F 3 "" H 8430 4195 50  0000 C CNN
+	1    8430 4195
+	0    1    1    0   
+$EndComp
+Text Notes 8255 4910 0    79   ~ 0
+Relaisabschaltung muss geprüft werden \nob sie auch mit 3V funktioniert\nEvl Levelschifter für Funktion beim Due ?
+Text GLabel 8750 4480 2    60   Input ~ 0
+IOREF
+Wire Wire Line
+	8750 4480 8430 4480
+Wire Wire Line
+	8430 4480 8430 4445
+Wire Wire Line
+	8745 3935 8430 3935
+Wire Wire Line
+	8430 3935 8430 3945
 $EndSCHEMATC

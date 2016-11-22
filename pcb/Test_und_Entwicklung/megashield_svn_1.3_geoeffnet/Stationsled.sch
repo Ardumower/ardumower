@@ -9,7 +9,7 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:ardumower mega shield svn-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -3362,7 +3362,7 @@ F 8 "Value" H 3770 2980 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED D3
+L LED-RESCUE-ardumower_mega_shield_svn D3
 U 1 1 57E82977
 P 4090 1380
 F 0 "D3" H 4090 1595 50  0000 C CNN
@@ -3403,10 +3403,10 @@ Connection ~ 3770 1380
 Wire Wire Line
 	4290 1380 4455 1380
 $Comp
-L GND #PWR0255
+L GND #PWR0254
 U 1 1 57E82DC0
 P 3770 3345
-F 0 "#PWR0255" H 3770 3095 50  0001 C CNN
+F 0 "#PWR0254" H 3770 3095 50  0001 C CNN
 F 1 "GND" H 3775 3172 50  0000 C CNN
 F 2 "" H 3770 3345 50  0000 C CNN
 F 3 "" H 3770 3345 50  0000 C CNN
