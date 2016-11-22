@@ -37,8 +37,8 @@ import java.util.Iterator;
 String comPort = "COM14";
 int comBaud = 19200;
 boolean useTcp = true;
-//String tcpHost = "raspberrypi";
-String tcpHost = "localhost";
+String tcpHost = "raspberrypi.local";
+//String tcpHost = "localhost";
 int tcpPort = 8083;
 boolean demo = false;
 
