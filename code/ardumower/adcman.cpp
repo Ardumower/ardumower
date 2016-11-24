@@ -51,7 +51,7 @@ uint8_t captureSize[CHANNELS]; // ADC sample buffer size (ADC0-ADC7)
 int16_t ofs[CHANNELS]; // ADC zero offset (ADC0-ADC7)
 int16_t ADCMin[CHANNELS]; // ADC min sample value (ADC-ADC7)
 int16_t ADCMax[CHANNELS]; // ADC max sample value (ADC-ADC7)
-boolean captureComplete[CHANNELS]; // ADC buffer filled?
+volatile boolean captureComplete[CHANNELS]; // ADC buffer filled?
 boolean autoCalibrate[CHANNELS]; // do auto-calibrate? (ADC0-ADC7)
 int16_t *sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
 ADCManager ADCMan;
