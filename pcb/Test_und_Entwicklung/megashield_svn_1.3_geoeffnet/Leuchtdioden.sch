@@ -1394,9 +1394,14 @@ L UDN2981A IC1
 U 1 1 57E08A3F
 P 2280 4395
 F 0 "IC1" H 1980 4925 50  0000 L BNN
-F 1 "UDN2981A" H 1980 3795 50  0000 L BNN
-F 2 "40xx:40xx-DIL18" H 2280 4545 50  0001 C CNN
-F 3 "" H 2280 4395 60  0000 C CNN
+F 1 "TD 62783 AFWG" H 1980 3795 50  0000 L BNN
+F 2 "Housings_SOIC:SOIC-18W_7.5x11.6mm_Pitch1.27mm" H 2280 4545 50  0001 C CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/A200/TD62783-TOS.pdf" H 2280 4395 60  0001 C CNN
+F 4 "SO-18W" H 2280 4395 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/ICs-TA-TL-/TD-62783-AFWG/3/index.html?ACTION=3&LA=5700&ARTICLE=188954&GROUPID=5479&artnr=TD+62783+AFWG" H 2280 4395 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2280 4395 60  0001 C CNN "Technische Daten"
+F 7 "R: TD 62783 AFWG" H 2280 4395 60  0001 C CNN "Bestellnummer"
+F 8 "SO-18W" H 2280 4395 60  0001 C CNN "Bauform"
 	1    2280 4395
 	1    0    0    -1  
 $EndComp
@@ -5689,4 +5694,6 @@ Wire Notes Line
 	5770 5090 5355 5090
 Text GLabel 1505 4595 0    39   Input ~ 0
 GPS-LED
+Text Notes 2160 6000 0    79   ~ 0
+UDN2981 getauscht für\nTD62783 AFWG\nevl anderes IC\nin SMD\nJürgen???
 $EndSCHEMATC
