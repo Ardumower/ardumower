@@ -1,4 +1,4 @@
-update=01.12.2016 20:25:03
+update=12.12.2016 15:33:37
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,6 +25,16 @@ version=1
 NetIExt=net
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceAjustPassiveValues=0
+LabSize=60
+ERC_TestSimilarLabels=1
 [eeschema]
 version=1
 LibDir=
@@ -60,3 +70,5 @@ LibName28=contrib
 LibName29=valves
 LibName30=Zimprich
 LibName31=dc-dc
+LibName32=C:/Users/uwezi/Downloads/++++++++ arduino/Librairie_kicad_arduino/Library_schematic_shield_arduino/shield_arduino
+LibName33=C:/Users/uwezi/Downloads/+++++ esp master/kicad-ESP8266-master/kicad-ESP8266-master/ESP8266
