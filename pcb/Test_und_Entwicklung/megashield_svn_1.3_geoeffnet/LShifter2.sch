@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
+LIBS:rfcom
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -2768,10 +2769,10 @@ F 8 "Value" H 5805 3635 60  0001 C CNN "Bauform"
 	0    1    1    0   
 $EndComp
 $Comp
-L +5VP #PWR096
+L +5VP #PWR097
 U 1 1 57FA81D9
 P 6110 2900
-F 0 "#PWR096" H 6110 2750 50  0001 C CNN
+F 0 "#PWR097" H 6110 2750 50  0001 C CNN
 F 1 "+5VP" H 6125 3073 50  0000 C CNN
 F 2 "" H 6110 2900 50  0000 C CNN
 F 3 "" H 6110 2900 50  0000 C CNN

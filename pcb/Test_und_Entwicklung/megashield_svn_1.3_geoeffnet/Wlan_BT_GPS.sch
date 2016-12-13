@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
+LIBS:rfcom
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -27,7 +28,6 @@ Text GLabel 4335 4575 2    39   Input ~ 0
 TX2
 Text GLabel 4340 4765 2    39   Input ~ 0
 RX2
-NoConn ~ 1900 1435
 $Comp
 L GND #PWR028
 U 1 1 57DCCA39
@@ -7515,4 +7515,35 @@ Text GLabel 2945 1785 0    39   Output ~ 0
 Led-Wlan
 Wire Wire Line
 	2945 1785 3065 1785
+$Comp
+L Jumper_NC_Small JP9
+U 1 1 58508C2D
+P 2025 1435
+F 0 "JP9" H 2200 1385 39  0000 C CNN
+F 1 "WlanRst" H 2025 1385 39  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 2025 2086 50  0001 C CNN
+F 3 "" H 2025 1435 50  0001 C CNN
+F 4 "Value" H 2025 1987 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2025 1881 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2025 1775 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2025 1669 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2025 1563 60  0001 C CNN "Bauform"
+	1    2025 1435
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR040
+U 1 1 58508C33
+P 2165 1435
+F 0 "#PWR040" H 2165 1185 50  0001 C CNN
+F 1 "GND" V 2165 1235 50  0000 C CNN
+F 2 "" H 2165 1435 50  0000 C CNN
+F 3 "" H 2165 1435 50  0000 C CNN
+	1    2165 1435
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1900 1435 1925 1435
+Wire Wire Line
+	2125 1435 2165 1435
 $EndSCHEMATC

@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
+LIBS:rfcom
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -120,10 +121,10 @@ F 8 "6,3x11mm, RM 2,5mm" H 6255 5440 60  0001 C CNN "Bauform"
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR0212
+L GND #PWR0213
 U 1 1 57DD94ED
 P 7030 6010
-F 0 "#PWR0212" H 7030 5760 60  0001 C CNN
+F 0 "#PWR0213" H 7030 5760 60  0001 C CNN
 F 1 "GND" H 7030 5860 60  0000 C CNN
 F 2 "" H 7030 6010 60  0000 C CNN
 F 3 "" H 7030 6010 60  0000 C CNN
