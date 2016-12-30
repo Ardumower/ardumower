@@ -95,4 +95,8 @@ $CMP ITEAD_HC-05
 D Itead HC-05 serial Bluetooth module
 $ENDCMP
 #
+$CMP Tact_Switch_12x12mm_with_integrated_LED
+D Tact_Switch_12x12mm_with_integrated_LED
+$ENDCMP
+#
 #End Doc Library

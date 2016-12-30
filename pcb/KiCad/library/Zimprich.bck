@@ -86,8 +86,17 @@ K MODULE ESP8266 ESP-8266
 F http://l0l.org.uk/2014/12/esp8266-modules-hardware-guide-gotta-catch-em-all/
 $ENDCMP
 #
+$CMP ESP8266EX
+D ESP8266EX Espressif Wi-Fi SoC, 32pin, 0.5mm pitch, 5x5mm qfn32
+K Espressif Wi-Fi SoC IoT
+$ENDCMP
+#
 $CMP ITEAD_HC-05
 D Itead HC-05 serial Bluetooth module
+$ENDCMP
+#
+$CMP Tact_Switch_12x12mm_with_integrated_LED
+D Tact_Switch_12x12mm_with_integrated_LED
 $ENDCMP
 #
 #End Doc Library

@@ -1,0 +1,14 @@
+(module MOUNT-PAD-ROUND3.3 (layer F.Cu) (tedit 5863B699)
+  (descr "MOUNTING PAD 3.3 MM, ROUND")
+  (tags "MOUNTING PAD 3.3 MM, ROUND")
+  (attr virtual)
+  (fp_text reference H4 (at 0 0) (layer F.SilkS) hide
+    (effects (font (thickness 0.15)))
+  )
+  (fp_text value MOUNT-PAD-ROUND3.3 (at 0 0) (layer F.SilkS) hide
+    (effects (font (thickness 0.15)))
+  )
+  (fp_line (start -1 0) (end 1 0) (layer F.SilkS) (width 0.15))
+  (fp_line (start 0 -1) (end 0 1) (layer F.SilkS) (width 0.15))
+  (pad "" np_thru_hole circle (at 0 0) (size 5.842 5.842) (drill 3.29946) (layers *.Cu *.Mask))
+)
