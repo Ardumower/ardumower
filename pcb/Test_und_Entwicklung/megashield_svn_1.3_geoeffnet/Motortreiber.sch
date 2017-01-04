@@ -9,7 +9,6 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
-LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -87,12 +86,12 @@ pinMotorMowFault
 Text GLabel 2425 4975 0    39   Input ~ 0
 ReserveAD6
 $Comp
-L JUMPER JP3
+L Jumper JP3
 U 1 1 57D96C22
 P 2795 4975
 F 0 "JP3" H 2790 4815 60  0000 C CNN
 F 1 "M1FB" H 2795 4895 40  0000 C CNN
-F 2 "Zimprich:Lötpad0,508_CU" H 2795 4975 60  0001 C CNN
+F 2 "Zimprich:SJ" H 2795 4975 60  0001 C CNN
 F 3 "" H 2795 4975 60  0001 C CNN
 F 4 "Value" H 2795 4975 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 2795 4975 60  0001 C CNN "Bestelllink"

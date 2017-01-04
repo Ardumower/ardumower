@@ -9,7 +9,6 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
-LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -4110,7 +4109,7 @@ U 1 1 57EA144E
 P 3230 5600
 F 0 "JP4" H 3230 5746 50  0000 C CNN
 F 1 "Blue5V/3.3V" H 3230 5837 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 3230 5600 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 3230 5600 50  0001 C CNN
 F 3 "" H 3230 5600 50  0001 C CNN
 F 4 "Value" H 3230 5936 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 3230 6042 60  0001 C CNN "Bestelllink"
@@ -4159,7 +4158,7 @@ U 1 1 57EA37AC
 P 2705 4475
 F 0 "JP2" H 2705 4545 39  0000 C CNN
 F 1 "Key" H 2705 4425 39  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 2705 5126 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 2705 5126 50  0001 C CNN
 F 3 "" H 2705 4475 50  0001 C CNN
 F 4 "Value" H 2705 5027 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 2705 4921 60  0001 C CNN "Bestelllink"
@@ -6954,7 +6953,7 @@ U 1 1 580EE162
 P 3840 2445
 F 0 "JP6" H 3840 2591 50  0000 C CNN
 F 1 "Wlan 5V/3.3V" H 3840 2682 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 3840 2445 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 3840 2445 50  0001 C CNN
 F 3 "" H 3840 2445 50  0001 C CNN
 F 4 "Value" H 3840 2781 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 3840 2887 60  0001 C CNN "Bestelllink"
@@ -7092,7 +7091,7 @@ U 1 1 580F42E7
 P 2025 1835
 F 0 "JP5" H 2135 1785 39  0000 C CNN
 F 1 "Key" H 2025 1785 39  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 2025 2486 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 2025 2486 50  0001 C CNN
 F 3 "" H 2025 1835 50  0001 C CNN
 F 4 "Value" H 2025 2387 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 2025 2281 60  0001 C CNN "Bestelllink"
@@ -7125,7 +7124,7 @@ U 1 1 581268EB
 P 8710 2480
 F 0 "JP7" H 8710 2626 50  0000 C CNN
 F 1 "GPS 5V/3.3V" H 8710 2717 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 8710 2480 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 8710 2480 50  0001 C CNN
 F 3 "" H 8710 2480 50  0001 C CNN
 F 4 "Value" H 8710 2816 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 8710 2922 60  0001 C CNN "Bestelllink"
@@ -7521,7 +7520,7 @@ U 1 1 58508C2D
 P 2025 1435
 F 0 "JP9" H 2200 1385 39  0000 C CNN
 F 1 "WlanRst" H 2025 1385 39  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 2025 2086 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 2025 2086 50  0001 C CNN
 F 3 "" H 2025 1435 50  0001 C CNN
 F 4 "Value" H 2025 1987 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 2025 1881 60  0001 C CNN "Bestelllink"

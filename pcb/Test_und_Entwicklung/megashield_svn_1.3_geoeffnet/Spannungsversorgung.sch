@@ -9,7 +9,6 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
-LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -43,7 +42,7 @@ U 1 1 57DF683D
 P 10135 4410
 F 0 "P33" H 10135 4860 50  0000 C CNN
 F 1 "5V" V 10235 4410 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 10135 4410 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 10135 4410 60  0001 C CNN
 F 3 "" H 10135 4410 60  0000 C CNN
 	1    10135 4410
 	1    0    0    -1  
@@ -54,7 +53,7 @@ U 1 1 57DF683E
 P 9635 4410
 F 0 "P32" H 9635 4860 50  0000 C CNN
 F 1 "GND" V 9735 4410 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 9635 4410 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9635 4410 60  0001 C CNN
 F 3 "" H 9635 4410 60  0000 C CNN
 	1    9635 4410
 	1    0    0    -1  
@@ -65,7 +64,7 @@ U 1 1 57DF683F
 P 10595 4400
 F 0 "P34" H 10595 4850 50  0000 C CNN
 F 1 "3,3V" V 10695 4400 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 10595 4400 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 10595 4400 60  0001 C CNN
 F 3 "" H 10595 4400 60  0000 C CNN
 	1    10595 4400
 	1    0    0    -1  
@@ -89,7 +88,7 @@ U 1 1 57DF689F
 P 10605 5490
 F 0 "P47" H 10605 5940 50  0000 C CNN
 F 1 "9V" V 10705 5490 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 10605 5490 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 10605 5490 60  0001 C CNN
 F 3 "" H 10605 5490 60  0000 C CNN
 	1    10605 5490
 	1    0    0    -1  
@@ -372,7 +371,7 @@ U 1 1 57E5D727
 P 3100 1240
 F 0 "JP1" H 3100 1452 50  0000 C CNN
 F 1 "pwr 9V" H 3100 1361 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 3100 1240 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 3100 1240 50  0001 C CNN
 F 3 "Value" H 3100 1240 50  0001 C CNN
 F 4 "Value" H 3100 1240 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 3100 1240 60  0001 C CNN "Bestelllink"
@@ -416,7 +415,7 @@ U 1 1 57EFA6BF
 P 9645 1365
 F 0 "P38" H 9722 1406 50  0000 L CNN
 F 1 "+5VP" H 9722 1315 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 9645 1365 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9645 1365 50  0001 C CNN
 F 3 "" H 9645 1365 50  0000 C CNN
 	1    9645 1365
 	1    0    0    -1  
@@ -427,7 +426,7 @@ U 1 1 57EFB361
 P 9095 2685
 F 0 "P24" H 9172 2726 50  0000 L CNN
 F 1 "+3.3VP" H 9172 2635 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 9095 2685 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9095 2685 50  0001 C CNN
 F 3 "" H 9095 2685 50  0000 C CNN
 	1    9095 2685
 	1    0    0    -1  
@@ -627,7 +626,7 @@ U 1 1 57EFCC69
 P 9650 5525
 F 0 "P45" H 9650 5975 50  0000 C CNN
 F 1 "GND" V 9750 5525 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 9650 5525 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9650 5525 60  0001 C CNN
 F 3 "" H 9650 5525 60  0000 C CNN
 	1    9650 5525
 	1    0    0    -1  

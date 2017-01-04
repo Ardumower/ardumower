@@ -9,7 +9,6 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
-LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -65,7 +64,7 @@ U 1 1 54A79B5A
 P 2055 2040
 F 0 "EF1" H 2055 2105 40  0000 C CNN
 F 1 "F_5A" H 2055 1980 40  0000 C CNN
-F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_vert_closed_Bulgin_FX0456" H 2055 2040 60  0001 C CNN
+F 2 "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456" H 2055 2040 60  0001 C CNN
 F 3 "" H 2055 2040 60  0000 C CNN
 F 4 "R: PL 112000" H 2055 2040 60  0001 C CNN "Bestellnummer"
 	1    2055 2040
@@ -77,7 +76,7 @@ U 1 1 54A7AB0D
 P 7350 2085
 F 0 "EF2" V 7280 2195 40  0000 C CNN
 F 1 "F_10A" V 7350 2230 40  0000 C CNN
-F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_vert_closed_Bulgin_FX0456" H 7350 2085 60  0001 C CNN
+F 2 "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456" H 7350 2085 60  0001 C CNN
 F 3 "" H 7350 2085 60  0000 C CNN
 F 4 "R: PL 112000" H 7350 2085 60  0001 C CNN "Bestellnummer"
 	1    7350 2085

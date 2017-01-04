@@ -9,7 +9,6 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
-LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -1443,7 +1442,7 @@ U 1 1 5834DE11
 P 8430 4195
 F 0 "JP8" H 8430 4434 50  0000 C CNN
 F 1 "Low V." H 8430 4343 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 8430 4195 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 8430 4195 50  0001 C CNN
 F 3 "" H 8430 4195 50  0000 C CNN
 	1    8430 4195
 	0    1    1    0   

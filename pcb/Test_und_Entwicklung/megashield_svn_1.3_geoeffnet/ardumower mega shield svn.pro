@@ -1,4 +1,4 @@
-update=30.11.2016 22:46:08
+update=04.01.2017 20:02:47
 last_client=kicad
 [pcbnew]
 version=1
@@ -22,6 +22,16 @@ BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceAjustPassiveValues=0
+LabSize=79
+ERC_TestSimilarLabels=1
 [eeschema]
 version=1
 LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
@@ -36,13 +46,3 @@ LibName7=cmos_ieee
 LibName8=cmos4000
 LibName9=switches
 LibName10=rfcom
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceAjustPassiveValues=0
-LabSize=79
-ERC_TestSimilarLabels=1

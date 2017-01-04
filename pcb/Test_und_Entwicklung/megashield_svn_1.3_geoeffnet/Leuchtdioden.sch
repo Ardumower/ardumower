@@ -9,7 +9,6 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
-LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -1600,7 +1599,7 @@ U 1 1 57EC6312
 P 4860 4245
 F 0 "P10" H 4785 4880 50  0000 L CNN
 F 1 "Status LEDs GND" H 4440 4800 50  0000 L CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x10" H 4937 4149 50  0001 L CNN
+F 2 "Zimprich:Socket_Strip_Straight_1x10_Led_Bargraph_Anzeige" H 4937 4149 50  0001 L CNN
 F 3 "" H 4860 4245 50  0000 C CNN
 F 4 "Value" H 4860 4245 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 4860 4245 60  0001 C CNN "Bestelllink"
@@ -1611,7 +1610,7 @@ F 8 "Value" H 4860 4245 60  0001 C CNN "Bauform"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Led_Small D21
+L LED_Small D21
 U 1 1 57EC80DC
 P 10335 1265
 F 0 "D21" H 10425 1295 39  0000 C CNN
@@ -1622,7 +1621,7 @@ F 3 "" V 10335 1265 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Led_Small D19
+L LED_Small D19
 U 1 1 57EC8426
 P 10335 1165
 F 0 "D19" H 10425 1195 39  0000 C CNN
@@ -1633,7 +1632,7 @@ F 3 "" V 10335 1165 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Led_Small D18
+L LED_Small D18
 U 1 1 57EC881C
 P 10335 1065
 F 0 "D18" H 10425 1095 39  0000 C CNN
@@ -1644,7 +1643,7 @@ F 3 "" V 10335 1065 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Led_Small D17
+L LED_Small D17
 U 1 1 57EC89E3
 P 10335 960
 F 0 "D17" H 10425 990 39  0000 C CNN
@@ -5220,7 +5219,7 @@ F 8 "Value" H 1338 836 60  0001 L CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Led_Small D23
+L LED_Small D23
 U 1 1 57EC7AA8
 P 2030 945
 F 0 "D23" H 2120 975 39  0000 C CNN
@@ -5326,7 +5325,7 @@ F 8 "Value" H 3993 856 60  0001 L CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Led_Small D22
+L LED_Small D22
 U 1 1 5803BF97
 P 4685 965
 F 0 "D22" H 4775 995 39  0000 C CNN
@@ -5432,7 +5431,7 @@ F 8 "Value" H 6788 876 60  0001 L CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Led_Small D20
+L LED_Small D20
 U 1 1 5803D315
 P 7480 985
 F 0 "D20" H 7570 1015 39  0000 C CNN
