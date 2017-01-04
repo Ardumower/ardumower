@@ -1,4 +1,4 @@
-(module Tact_Switch_12x12mm_with_integrated_LED (layer F.Cu) (tedit 5862AF15)
+(module Tact_Switch_12x12mm_with_integrated_LED (layer F.Cu) (tedit 586D3C5F)
   (descr "WS-TLT 12x12mm Tact Switch with integrated LED, THT version, 6 pins")
   (fp_text reference SW1 (at -1.5 -4) (layer F.SilkS)
     (effects (font (size 1.2065 1.2065) (thickness 0.09652)) (justify left bottom))
@@ -70,7 +70,7 @@
   (pad "" thru_hole circle (at 2.54 2.54) (size 1 1) (drill 1) (layers *.Cu *.Mask))
   (model ${KISYS3DMOD}/Zimprich.3dshapes/STEP-TATL_12X12_THT-rev1.wrl
     (at (xyz 0 0 0))
-    (scale (xyz 0.39 0.39 0.39))
+    (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
   )
 )

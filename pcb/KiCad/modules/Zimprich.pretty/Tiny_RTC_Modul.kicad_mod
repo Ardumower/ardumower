@@ -1,4 +1,4 @@
-(module Tiny_RTC_Modul (layer F.Cu) (tedit 5866B839)
+(module Tiny_RTC_Modul (layer F.Cu) (tedit 586A19FF)
   (fp_text reference MD1 (at -1.27 -1.27) (layer F.SilkS)
     (effects (font (size 1.2065 1.2065) (thickness 0.1016)) (justify left bottom))
   )
@@ -88,8 +88,8 @@
     (rotate (xyz 0 0 90))
   )
   (model ${KISYS3DMOD}/Zimprich.3dshapes/Tiny_RTC_Modul.wrl
-    (at (xyz 0 0.09842519685039371 0.2755905511811024))
-    (scale (xyz 0.35 0.4 0.45))
+    (at (xyz 0 0 0.2755905511811024))
+    (scale (xyz 0.35 0.45 0.42))
     (rotate (xyz -90 0 90))
   )
 )

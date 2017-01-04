@@ -1,4 +1,4 @@
-(module Raspberry_Pi_B_Bohrschablone_Rueckseite (layer F.Cu) (tedit 5865484E)
+(module Raspberry_Pi_B_Bohrschablone_Rueckseite (layer F.Cu) (tedit 586A38FB)
   (fp_text reference REF** (at 0 -28) (layer Cmts.User)
     (effects (font (size 0.2 0.2) (thickness 0.02)))
   )
@@ -98,4 +98,9 @@
     (solder_paste_margin 0.001))
   (pad "" np_thru_hole circle (at 29 24.5) (size 2.75 2.75) (drill 2.75) (layers *.Cu *.Mask)
     (solder_paste_margin 0.001))
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/Raspberry_PI.wrl
+    (at (xyz 0.6299212598425197 -0.1 -0.7086614173228347))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 90 0 0))
+  )
 )

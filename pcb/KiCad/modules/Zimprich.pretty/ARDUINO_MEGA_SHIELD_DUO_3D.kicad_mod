@@ -1,4 +1,4 @@
-(module ARDUINO_MEGA_SHIELD_DUO_3D (layer F.Cu) (tedit 54CA83C9)
+(module ARDUINO_MEGA_SHIELD_DUO_3D (layer F.Cu) (tedit 586A8D58)
   (fp_text reference SHIELD1 (at 70.612 -24.892) (layer F.SilkS)
     (effects (font (thickness 0.3048)))
   )
@@ -108,5 +108,40 @@
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+    (at (xyz 1.456692913385827 0.09251968503937008 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+    (at (xyz 2.346456692913386 0.09251968503937008 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+    (at (xyz 3.248031496062992 0.09251968503937008 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_2x18.wrl
+    (at (xyz 3.751968503937008 1.153543307086614 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 90))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+    (at (xyz 3.051181102362205 2.007874015748031 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x08.wrl
+    (at (xyz 2.153543307086614 2.007874015748031 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x10.wrl
+    (at (xyz 1.188976377952756 2.007874015748031 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 180 0))
   )
 )

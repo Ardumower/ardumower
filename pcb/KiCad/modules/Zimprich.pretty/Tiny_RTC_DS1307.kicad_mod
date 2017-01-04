@@ -1,4 +1,4 @@
-(module Tiny_RTC_DS1307 (layer F.Cu) (tedit 5737AC42)
+(module Tiny_RTC_DS1307 (layer F.Cu) (tedit 586A1927)
   (fp_text reference "Tiny RTC DS1307" (at 0 -12.7) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -72,5 +72,10 @@
     (at (xyz 0.45 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/Tiny_RTC_Modul.wrl
+    (at (xyz 0 0 0.3149606299212598))
+    (scale (xyz 0.3937 0.4537 0.4537))
+    (rotate (xyz -90 0 -90))
   )
 )
