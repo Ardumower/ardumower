@@ -1,4 +1,4 @@
-(module MC_33926_31polig (layer F.Cu) (tedit 54BE6CEF)
+(module MC_33926_31polig (layer F.Cu) (tedit 586E577F)
   (fp_text reference MC_33926_31polig (at 26.416 -31.877) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -75,6 +75,11 @@
   (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
     (at (xyz 1.2 1.39 0))
     (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrl
+    (at (xyz 1.244094488188977 0.984251968503937 0.4094488188976378))
+    (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
   )
 )

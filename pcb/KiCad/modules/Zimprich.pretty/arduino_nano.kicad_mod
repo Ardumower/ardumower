@@ -1,7 +1,7 @@
-(module arduino_nano (layer F.Cu) (tedit 57DDC410)
+(module arduino_nano (layer F.Cu) (tedit 586D5946)
   (descr "30 pins DIL package, elliptical pads, width 600mil (arduino mini)")
   (tags "DIL arduino mini")
-  (fp_text reference U4 (at 0 -11 -180) (layer F.SilkS)
+  (fp_text reference U4 (at 0 1.27 -180) (layer F.SilkS)
     (effects (font (size 1.778 1.778) (thickness 0.3048)))
   )
   (fp_text value ARDUINO_NANO (at 0 0) (layer F.Fab)
@@ -58,6 +58,16 @@
   (model ${KISYS3DMOD}/Zimprich.3dshapes/arduino_nano.wrl
     (at (xyz -0.978 -0.385 0))
     (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x15.wrl
+    (at (xyz -0.04724409448818898 -0.3031496062992126 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x15.wrl
+    (at (xyz -0.04724409448818898 0.3031496062992126 0))
+    (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
 )

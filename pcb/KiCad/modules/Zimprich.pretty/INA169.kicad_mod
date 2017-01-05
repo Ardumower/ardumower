@@ -1,4 +1,4 @@
-(module INA169 (layer F.Cu) (tedit 57322366)
+(module INA169 (layer F.Cu) (tedit 586E4513)
   (fp_text reference U3 (at 0 0 180) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -43,6 +43,11 @@
   (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
     (at (xyz 0.06 0.25 0))
     (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/ina169.wrl
+    (at (xyz -0.3307086614173229 0.1968503937007874 0.4094488188976378))
+    (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
   )
 )

@@ -1,4 +1,4 @@
-(module MC_33926_31polig_mit_Bohrloch_neue_Masse_mit_dritte_Lochreihe (layer F.Cu) (tedit 574DF1E1)
+(module MC_33926_31polig_mit_Bohrloch_neue_Masse_mit_dritte_Lochreihe (layer F.Cu) (tedit 586E58A3)
   (fp_text reference MC_33926_31polig (at 22.606 10.668) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -278,5 +278,10 @@
     (at (xyz 1.23 -0.97 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrl
+    (at (xyz 1.086614173228347 -0.5511811023622047 0.4094488188976378))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
   )
 )
