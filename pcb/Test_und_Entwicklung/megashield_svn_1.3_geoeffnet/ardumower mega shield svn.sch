@@ -9,6 +9,7 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
+LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -103,8 +104,6 @@ Text Notes 9055 -450 0    60   ~ 0
 LED Anzeigen - Hardware:\n\nLed 3V grün -   Betriebsanzeige Versorgungsspannung\nLED 24V grün - Betriebsanzeige Versorgungsspannung R2 für 12 V anpassen\nLED 5V grün -   Betriebsanzeige Versorgungsspannung\nLED Station - gelb - Statusanzeige ob Mover in Ladestation\n\n----------------------------------------------------------\n\nLED Anzeigen - Software:\n\nDual LED z.B:\nDual LED grün. Dauerlicht - Mover innerhalb Perimeter\nDual LED grün+rot = Orange - Dauerlicht Mover außerhalb Perimeter\nDual LED grün+rot = Orange - Blinkt Mover findet  Perimeter nicht oder sucht danach\nDual LED rot =  Blinkt Fehler kurzseitig Überlast Antriebmotor Treibe oder Mähmotor. \nDual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken \nvon Button zurückgesetzt werden\n----------------------------------------------------------\n\nLED Status - grün Dauerlicht - warte auf Eingabe\n\nLED Status - grün blinken 1 bis 5 mal hintereinander\nmit länger Pause dazwischen für Anzeige in welchen\nBetriebsmodi sich der Mover befindet
 Text Notes 2880 -350 0    60   ~ 0
 LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
-Text Notes 12545 3845 0    157  ~ 0
---------------- Änderungen am Board ---------------\n09.03.2016\nok - fehlende Lötbrücke geschlossen\nok - 4 Widerstände Odemetrie eingefügt\nok - 1 Widerstand Mähmotordrehzahl\nok - 1 Stiftleiste abgriff 9V\nok - 1 Aref Kondensator eingefügt\n1 Klemmanschluss für das Unterspannungsabschaltung Board hinzugefügt\n\nok DiodenD1-D10 umgeändert\nAnnode und Kathode waren vertauscht\nJetzt nach neuer Kicad Norm\n\nP45 P46 und U10 entfernt Platz wird benötigt für klemmanschluss Unterspannung\nR19 enfernt und mit Diode D11 ersetzt\nDiode D2 entfernt Mähteller\nZD1, ZD2, ZD3 und R24, R25, R26 bei DC Wandler entfernt\nIna U5 und C6 entfernt\nLAderegelung entfernt D7, C1, C4, U4, R17,RV1, D3\nR22 und D8 entfernt LED BT Modul\n\nJP4, JP5 JP6, JP7 entfernt\nD4 JP17 entfernt\nPufferKondensator C5 entfernt
 $Sheet
 S 9205 3380 1240 170 
 U 57D95AF0
@@ -150,10 +149,10 @@ F0 "Bohrlöcher" 60
 F1 "Bohrlöcher.sch" 60
 $EndSheet
 $Comp
-L GND #PWR01
+L GND #PWR5
 U 1 1 57DDC12E
 P 5930 4420
-F 0 "#PWR01" H 5930 4170 50  0001 C CNN
+F 0 "#PWR5" H 5930 4170 50  0001 C CNN
 F 1 "GND" H 5935 4247 50  0000 C CNN
 F 2 "" H 5930 4420 50  0000 C CNN
 F 3 "" H 5930 4420 50  0000 C CNN
@@ -161,10 +160,10 @@ F 3 "" H 5930 4420 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR02
+L GND #PWR2
 U 1 1 57DDCE0C
 P 4400 3230
-F 0 "#PWR02" H 4400 2980 50  0001 C CNN
+F 0 "#PWR2" H 4400 2980 50  0001 C CNN
 F 1 "GND" H 4405 3057 50  0000 C CNN
 F 2 "" H 4400 3230 50  0000 C CNN
 F 3 "" H 4400 3230 50  0000 C CNN
@@ -172,10 +171,10 @@ F 3 "" H 4400 3230 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR03
+L GND #PWR1
 U 1 1 57DDD4A8
 P 1565 2250
-F 0 "#PWR03" H 1565 2000 50  0001 C CNN
+F 0 "#PWR1" H 1565 2000 50  0001 C CNN
 F 1 "GND" H 1570 2077 50  0000 C CNN
 F 2 "" H 1565 2250 50  0000 C CNN
 F 3 "" H 1565 2250 50  0000 C CNN
@@ -183,10 +182,10 @@ F 3 "" H 1565 2250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR04
+L GND #PWR6
 U 1 1 57DE0396
 P 7250 1890
-F 0 "#PWR04" H 7250 1640 50  0001 C CNN
+F 0 "#PWR6" H 7250 1640 50  0001 C CNN
 F 1 "GND" H 7255 1717 50  0000 C CNN
 F 2 "" H 7250 1890 50  0000 C CNN
 F 3 "" H 7250 1890 50  0000 C CNN
@@ -194,10 +193,10 @@ F 3 "" H 7250 1890 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +24V #PWR05
+L +24V #PWR9
 U 1 1 57DE1118
 P 8845 2550
-F 0 "#PWR05" H 8845 2400 50  0001 C CNN
+F 0 "#PWR9" H 8845 2400 50  0001 C CNN
 F 1 "+24V" V 8845 2765 50  0000 C CNN
 F 2 "" H 8845 2550 50  0000 C CNN
 F 3 "" H 8845 2550 50  0000 C CNN
@@ -250,15 +249,15 @@ U 57E1969E
 F0 "I2C" 60
 F1 "I2C.sch" 60
 $EndSheet
-Text Notes 19790 5175 0    118  ~ 0
+Text Notes 13820 2790 0    118  ~ 0
 [20:50:34 | Bearbeitet 20:51:30] Jürgen Lange: setze für den dcdc einen 78s05 ein oder die die ich auf der BumperDuino nehme LM2940CS-5.0 um das bt zuversorgen für die Versorgung vom wlan einen 3,3v low drop\n[20:51:20] Kurzschuss - Uwe: also die 5V nicht vom Mega holen bzw die 3,3V\n[20:51:44] Jürgen Lange: für bt und wlan nicht\n[20:51:54] Jürgen Lange: für den rest okay\n[20:52:01] Kurzschuss - Uwe: okay\n[20:53:21] Jürgen Lange: setze bei allen Wandlern ob dcdc oder 78xx revers Dioden und rückführ Dioden die 78xx oder ähnlich kommen gleich vom 9v dcdc\n[20:54:26] Kurzschuss - Uwe: Ich übernehme die Schaltung vom Bumberduino\n\n\n\n[11:55:48] Jürgen Lange: im Klartext die Spannungen vom längsregler nur für Versorgung von bt etc nehmen gaaaaanz wichtig sonst haust du den due weg wenn jemand den usb stecker steckt\n[11:56:29] Jürgen Lange: der mega könnte auch aufgeben aber das habe ich noch nicht geprüft
 Text GLabel 1775 2170 3    39   Input ~ 0
 Charg_Pin_+
 $Comp
-L GND #PWR06
+L GND #PWR4
 U 1 1 57E3DCAC
 P 5120 3070
-F 0 "#PWR06" H 5120 2820 50  0001 C CNN
+F 0 "#PWR4" H 5120 2820 50  0001 C CNN
 F 1 "GND" H 5150 2925 50  0000 C CNN
 F 2 "" H 5120 3070 50  0000 C CNN
 F 3 "" H 5120 3070 50  0000 C CNN
@@ -282,10 +281,10 @@ F 8 "Value" H 4735 3325 60  0001 C CNN "Bauform"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L GND #PWR3
 U 1 1 57E3F322
 P 4735 3475
-F 0 "#PWR07" H 4735 3225 50  0001 C CNN
+F 0 "#PWR3" H 4735 3225 50  0001 C CNN
 F 1 "GND" H 4765 3330 50  0000 C CNN
 F 2 "" H 4735 3475 50  0000 C CNN
 F 3 "" H 4735 3475 50  0000 C CNN
@@ -327,10 +326,10 @@ $EndComp
 Text GLabel 8215 3065 0    39   Output ~ 0
 pinBatteryVoltage
 $Comp
-L GND #PWR08
+L GND #PWR8
 U 1 1 57E498AE
 P 8375 3505
-F 0 "#PWR08" H 8375 3255 50  0001 C CNN
+F 0 "#PWR8" H 8375 3255 50  0001 C CNN
 F 1 "GND" H 8380 3332 50  0000 C CNN
 F 2 "" H 8375 3505 50  0000 C CNN
 F 3 "" H 8375 3505 50  0000 C CNN
@@ -412,10 +411,10 @@ F 8 "Value" H 7350 2865 60  0001 C CNN "Bauform"
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR09
+L GND #PWR7
 U 1 1 57E6CA33
 P 7350 3065
-F 0 "#PWR09" H 7350 2815 50  0001 C CNN
+F 0 "#PWR7" H 7350 2815 50  0001 C CNN
 F 1 "GND" H 7355 2892 50  0000 C CNN
 F 2 "" H 7350 3065 50  0000 C CNN
 F 3 "" H 7350 3065 50  0000 C CNN

@@ -9,11 +9,12 @@ LIBS:cmos_ieee
 LIBS:cmos4000
 LIBS:switches
 LIBS:rfcom
+LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 21 28
+Sheet 24 28
 Title "Ardumower shield SVN Version"
 Date "2016-10-28"
 Rev "1.3"
@@ -251,10 +252,10 @@ Wire Wire Line
 Wire Wire Line
 	7405 3100 7555 3100
 $Comp
-L GND #PWR0210
+L GND #PWR212
 U 1 1 57E2B21B
 P 7390 4105
-F 0 "#PWR0210" H 7390 3855 50  0001 C CNN
+F 0 "#PWR212" H 7390 3855 50  0001 C CNN
 F 1 "GND" V 7390 3915 50  0000 C CNN
 F 2 "" H 7390 4105 50  0000 C CNN
 F 3 "" H 7390 4105 50  0000 C CNN
@@ -262,10 +263,10 @@ F 3 "" H 7390 4105 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0211
+L GND #PWR211
 U 1 1 57E2B554
 P 7390 3830
-F 0 "#PWR0211" H 7390 3580 50  0001 C CNN
+F 0 "#PWR211" H 7390 3580 50  0001 C CNN
 F 1 "GND" V 7390 3640 50  0000 C CNN
 F 2 "" H 7390 3830 50  0000 C CNN
 F 3 "" H 7390 3830 50  0000 C CNN
@@ -273,14 +274,70 @@ F 3 "" H 7390 3830 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0212
+L GND #PWR210
 U 1 1 57E2B6C2
 P 7390 3555
-F 0 "#PWR0212" H 7390 3305 50  0001 C CNN
+F 0 "#PWR210" H 7390 3305 50  0001 C CNN
 F 1 "GND" V 7390 3365 50  0000 C CNN
 F 2 "" H 7390 3555 50  0000 C CNN
 F 3 "" H 7390 3555 50  0000 C CNN
 	1    7390 3555
 	0    1    -1   0   
 $EndComp
+$Comp
+L Bohrloch_3,2mm_ohne_Kupferfläche B15
+U 1 1 58701F26
+P 4015 4680
+F 0 "B15" H 4119 4733 60  0000 L CNN
+F 1 "BumperDuino_Bohrschablone" H 4119 4627 60  0000 L CNN
+F 2 "Zimprich:BumperDuino_Bohrschablone" H 4015 4680 60  0001 C CNN
+F 3 "" H 4015 4680 60  0000 C CNN
+	1    4015 4680
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm_ohne_Kupferfläche B16
+U 1 1 58717023
+P 4025 4980
+F 0 "B16" H 4129 5033 60  0000 L CNN
+F 1 "Raspberry_Pi_B_Bohrschablone" H 4129 4927 60  0000 L CNN
+F 2 "Zimprich:Raspberry_Pi_B_Bohrschablone_Rueckseite" H 4025 4980 60  0001 C CNN
+F 3 "" H 4025 4980 60  0000 C CNN
+F 4 "Value" H 4025 4980 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 4025 4980 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4025 4980 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4025 4980 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4025 4980 60  0001 C CNN "Bauform"
+F 9 "Value" H 4025 4980 60  0001 C CNN "Funktion"
+F 10 "Value" H 4025 4980 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4025 4980 60  0001 C CNN "Hersteller Bestellnummer"
+	1    4025 4980
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B19
+U 1 1 58723A33
+P 5875 4865
+F 0 "B19" H 6155 5025 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 6105 4945 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 5875 4865 60  0001 C CNN
+F 3 "" H 5875 4865 60  0000 C CNN
+F 4 "Value" H 5875 4865 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    5875 4865
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm B20
+U 1 1 58723A3A
+P 5875 5140
+F 0 "B20" H 6155 5300 60  0000 C CNN
+F 1 "Bohrloch_3,2mm" H 6105 5220 60  0000 C CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 5875 5140 60  0001 C CNN
+F 3 "" H 5875 5140 60  0000 C CNN
+F 4 "Value" H 5875 5140 60  0001 C CNN "Reichelt-Bestellnummer"
+	1    5875 5140
+	1    0    0    -1  
+$EndComp
+NoConn ~ 6075 4865
+NoConn ~ 6075 5140
 $EndSCHEMATC
