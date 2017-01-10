@@ -1,9 +1,9 @@
-(kicad_pcb (version 4) (host pcbnew "(2016-04-26 BZR 6712, Git b92ad6f)-product")
+(kicad_pcb (version 20160815) (host pcbnew "(2017-01-09 revision c2fb336)-makepkg")
 
   (general
     (links 141)
     (no_connects 0)
-    (area 73.35 45.063 196.276429 107.385001)
+    (area 89.924999 64.924999 190.075001 100.075001)
     (thickness 1.6)
     (drawings 89)
     (tracks 726)
@@ -583,7 +583,7 @@
       (net 10 "Net-(D4-Pad2)"))
     (pad 9 thru_hole oval (at 0 -20.32 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 12 "Net-(D5-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x09.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x09_Pitch2.54mm.wrl
       (at (xyz 0 -0.4 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -638,7 +638,7 @@
       (net 16 "Net-(D7-Pad2)"))
     (pad 13 thru_hole oval (at 0 -30.48 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 18 "Net-(D8-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x13.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x13_Pitch2.54mm.wrl
       (at (xyz 0 -0.6 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -722,7 +722,7 @@
       (net 37 "Net-(P19-Pad4)"))
     (pad 5 thru_hole oval (at 0 -10.16 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 38 "Net-(P19-Pad5)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x05.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x05_Pitch2.54mm.wrl
       (at (xyz 0 -0.2 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -795,7 +795,7 @@
       (net 36 "Net-(P19-Pad3)"))
     (pad 4 thru_hole oval (at 0 -7.62 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 37 "Net-(P19-Pad4)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x04.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x04_Pitch2.54mm.wrl
       (at (xyz 0 -0.15 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1500,7 +1500,7 @@
       (net 27 "Net-(P3-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1533,7 +1533,7 @@
       (net 28 "Net-(P4-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1566,7 +1566,7 @@
       (net 29 "Net-(P5-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1599,7 +1599,7 @@
       (net 30 "Net-(P6-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1632,7 +1632,7 @@
       (net 31 "Net-(P7-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1665,7 +1665,7 @@
       (net 32 "Net-(P8-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1698,7 +1698,7 @@
       (net 33 "Net-(P9-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1731,7 +1731,7 @@
       (net 34 "Net-(P10-Pad1)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1782,7 +1782,7 @@
       (net 4 "Net-(D1-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1833,7 +1833,7 @@
       (net 6 "Net-(D2-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1884,7 +1884,7 @@
       (net 8 "Net-(D3-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1935,7 +1935,7 @@
       (net 10 "Net-(D4-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1986,7 +1986,7 @@
       (net 12 "Net-(D5-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -2037,7 +2037,7 @@
       (net 14 "Net-(D6-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -2088,7 +2088,7 @@
       (net 16 "Net-(D7-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -2139,7 +2139,7 @@
       (net 18 "Net-(D8-Pad2)"))
     (pad 2 thru_hole oval (at 0 -2.54 270) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 26 "Net-(P11-Pad2)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Angled_1x02.wrl
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_1x02_Pitch2.54mm.wrl
       (at (xyz 0 -0.05 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -2642,7 +2642,7 @@
     (effects (font (size 0.7 0.7) (thickness 0.175)) (justify left mirror))
   )
   (dimension 40 (width 0.3) (layer Cmts.User)
-    (gr_text "40,000 mm" (at 170 50) (layer Cmts.User)
+    (gr_text "40,000 mm" (at 170 50) (layer Cmts.User) (tstamp 58754385)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 150 55) (xy 150 50)))
@@ -2796,7 +2796,7 @@
   (gr_line (start 90 100) (end 190 100) (angle 90) (layer Edge.Cuts) (width 0.15))
   (gr_line (start 90 65) (end 90 100) (angle 90) (layer Edge.Cuts) (width 0.15))
   (dimension 35 (width 0.3) (layer Cmts.User)
-    (gr_text "35,000 mm" (at 80 82.5 270) (layer Cmts.User)
+    (gr_text "35,000 mm" (at 80 82.5 270) (layer Cmts.User) (tstamp 58754386)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 85 100) (xy 80 100)))
@@ -2808,7 +2808,7 @@
     (arrow2b (pts (xy 80 65) (xy 80.586421 66.126504)))
   )
   (dimension 100 (width 0.3) (layer Cmts.User)
-    (gr_text "100,000 mm" (at 140 55) (layer Cmts.User)
+    (gr_text "100,000 mm" (at 140 55) (layer Cmts.User) (tstamp 58754387)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 190 60) (xy 190 55)))
