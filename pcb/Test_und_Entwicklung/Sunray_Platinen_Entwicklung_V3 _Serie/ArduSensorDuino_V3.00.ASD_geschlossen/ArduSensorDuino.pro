@@ -1,4 +1,4 @@
-update=12.12.2016 14:36:58
+update=10.01.2017 22:05:36
 version=1
 last_client=kicad
 [pcbnew]
@@ -70,7 +70,4 @@ LibName27=opto
 LibName28=atmel
 LibName29=contrib
 LibName30=valves
-LibName31=MPX5010
-LibName32=OPA2340PA
-LibName33=LM2940CS-5.0
-LibName34=Zimprich
+LibName31=Zimprich
