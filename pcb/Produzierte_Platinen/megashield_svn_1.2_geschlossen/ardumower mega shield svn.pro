@@ -1,4 +1,4 @@
-update=02.08.2016 20:43:04
+update=10.01.2017 23:31:20
 last_client=kicad
 [pcbnew]
 version=1
@@ -37,11 +37,8 @@ RptLab=1
 LabSize=60
 [eeschema]
 version=1
-LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
+LibDir=
 [eeschema/libraries]
 LibName1=ardumower mega shield svn-rescue
-LibName2=C:/Users/Uwe/Documents/KICAD/BibliothekenUwe.pretty/power
-LibName3=acs712.pretty/Bluetooth_ZS_HC_05
-LibName4=acs712.pretty/Bluetooth_CZ_HC_05
-LibName5=acs712.pretty/ds1307
-LibName6=acs712.pretty/Wlan_ESP8266
+LibName2=power
+LibName3=Zimprich
