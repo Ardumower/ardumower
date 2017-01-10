@@ -1,4 +1,4 @@
-update=08.04.2015 14:44:13
+update=10.01.2017 17:46:52
 version=1
 last_client=kicad
 [pcbnew]
@@ -46,47 +46,6 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[eeschema]
-version=1
-LibDir=sender_v2.pretty;../sender_v2;../megashield_svn_0.5;../megashield_svn_0.5/acs712.pretty;sender_v2.pretty;../../../../Program Files (x86)/KiCAD/share/library;F:/Arbeit/KICAD/zimprich.pretty
-[eeschema/libraries]
-LibName1=arduino_shieldsNCL
-LibName2=power
-LibName3=device
-LibName4=transistors
-LibName5=conn
-LibName6=linear
-LibName7=regul
-LibName8=74xx
-LibName9=cmos4000
-LibName10=adc-dac
-LibName11=memory
-LibName12=xilinx
-LibName13=special
-LibName14=w_microcontrollers
-LibName15=microcontrollers
-LibName16=dsp
-LibName17=microchip
-LibName18=analog_switches
-LibName19=motorola
-LibName20=texas
-LibName21=intel
-LibName22=audio
-LibName23=interface
-LibName24=digital-audio
-LibName25=philips
-LibName26=display
-LibName27=cypress
-LibName28=siliconi
-LibName29=opto
-LibName30=atmel
-LibName31=contrib
-LibName32=valves
-LibName33=MC33926
-LibName34=Perimeter sender v2-cache
-LibName35=C:/Users/Uwe/Downloads/megashield_svn_0.5/ardumower mega shield svn-cache
-LibName36=C:/Users/Uwe/Downloads/footprints eigene/Arduino
-LibName37=Ina169
 [general]
 version=1
 [schematic_editor]
@@ -102,3 +61,40 @@ RptD_X=0
 RptD_Y=100
 RptLab=1
 LabSize=60
+[eeschema]
+version=1
+LibDir=sender_v2.pretty
+[eeschema/libraries]
+LibName1=Perimeter sender v2-rescue
+LibName2=arduino_shieldsNCL
+LibName3=power
+LibName4=device
+LibName5=transistors
+LibName6=conn
+LibName7=linear
+LibName8=regul
+LibName9=74xx
+LibName10=cmos4000
+LibName11=adc-dac
+LibName12=memory
+LibName13=xilinx
+LibName14=microcontrollers
+LibName15=dsp
+LibName16=microchip
+LibName17=analog_switches
+LibName18=motorola
+LibName19=texas
+LibName20=intel
+LibName21=audio
+LibName22=interface
+LibName23=digital-audio
+LibName24=philips
+LibName25=display
+LibName26=cypress
+LibName27=siliconi
+LibName28=opto
+LibName29=atmel
+LibName30=contrib
+LibName31=valves
+LibName32=Perimeter sender v2-cache
+LibName33=Zimprich

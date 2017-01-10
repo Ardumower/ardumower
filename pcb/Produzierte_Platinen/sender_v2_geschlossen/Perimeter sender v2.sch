@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Perimeter sender v2-rescue
 LIBS:arduino_shieldsNCL
 LIBS:power
 LIBS:device
@@ -11,7 +12,6 @@ LIBS:cmos4000
 LIBS:adc-dac
 LIBS:memory
 LIBS:xilinx
-LIBS:special
 LIBS:microcontrollers
 LIBS:dsp
 LIBS:microchip
@@ -34,7 +34,7 @@ LIBS:MC33926
 LIBS:Perimeter sender v2-cache
 LIBS:ardumower mega shield svn-cache
 LIBS:Ina169
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -60,7 +60,7 @@ F 3 "~" H 9805 2345 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR01
+L GND-RESCUE-Perimeter_sender_v2 #PWR01
 U 1 1 53A981F2
 P 10480 2170
 F 0 "#PWR01" H 10480 2170 30  0001 C CNN
@@ -71,7 +71,7 @@ F 3 "" H 10480 2170 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR02
+L GND-RESCUE-Perimeter_sender_v2 #PWR02
 U 1 1 53A98276
 P 8605 2945
 F 0 "#PWR02" H 8605 2945 30  0001 C CNN
@@ -127,7 +127,7 @@ M1IN2
 Text GLabel 2775 5650 0    60   Output ~ 0
 M1_DuoLED_Schleife1_Rot
 $Comp
-L R R7
+L R-RESCUE-Perimeter_sender_v2 R7
 U 1 1 53A992CD
 P 6790 4750
 F 0 "R7" V 6870 4750 40  0000 C CNN
@@ -138,7 +138,7 @@ F 3 "~" H 6790 4750 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R5
+L R-RESCUE-Perimeter_sender_v2 R5
 U 1 1 53A992DC
 P 3550 5650
 F 0 "R5" V 3630 5650 40  0000 C CNN
@@ -211,7 +211,7 @@ F 3 "" H 1750 4325 60  0000 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L GND #PWR05
+L GND-RESCUE-Perimeter_sender_v2 #PWR05
 U 1 1 54D5004F
 P 1800 2275
 F 0 "#PWR05" H 1800 2275 30  0001 C CNN
@@ -222,7 +222,7 @@ F 3 "" H 1800 2275 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR06
+L GND-RESCUE-Perimeter_sender_v2 #PWR06
 U 1 1 54D500D0
 P 3150 3050
 F 0 "#PWR06" H 3150 3050 30  0001 C CNN
@@ -233,7 +233,7 @@ F 3 "" H 3150 3050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L GND-RESCUE-Perimeter_sender_v2 #PWR07
 U 1 1 54D50107
 P 2300 3050
 F 0 "#PWR07" H 2300 3050 30  0001 C CNN
@@ -268,7 +268,7 @@ F 4 "Value" H 3475 6250 60  0001 C CNN "Bestellnummer"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR010
+L GND-RESCUE-Perimeter_sender_v2 #PWR010
 U 1 1 54D50837
 P 3675 6150
 F 0 "#PWR010" H 3675 6150 30  0001 C CNN
@@ -291,7 +291,7 @@ F 4 "Value" H 2100 3700 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR011
+L GND-RESCUE-Perimeter_sender_v2 #PWR011
 U 1 1 54D518BB
 P 2000 4125
 F 0 "#PWR011" H 2000 3875 60  0001 C CNN
@@ -303,7 +303,7 @@ F 4 "Value" H 2000 4125 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR012
+L GND-RESCUE-Perimeter_sender_v2 #PWR012
 U 1 1 54D51A61
 P 2600 3925
 F 0 "#PWR012" H 2600 3675 60  0001 C CNN
@@ -319,7 +319,7 @@ INA169
 Text GLabel 2650 3700 2    60   Output ~ 0
 INA169
 $Comp
-L POT RV1
+L POT-RESCUE-Perimeter_sender_v2 RV1
 U 1 1 54D524A0
 P 1025 1025
 F 0 "RV1" H 1025 925 50  0000 C CNN
@@ -341,7 +341,7 @@ F 3 "" H 2600 3500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR014
+L GND-RESCUE-Perimeter_sender_v2 #PWR014
 U 1 1 54D527F0
 P 1125 1275
 F 0 "#PWR014" H 1125 1275 30  0001 C CNN
@@ -378,7 +378,7 @@ F 3 "~" H 3750 2750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R6
+L R-RESCUE-Perimeter_sender_v2 R6
 U 1 1 54D53F97
 P 3150 5550
 F 0 "R6" V 3230 5550 40  0000 C CNN
@@ -389,7 +389,7 @@ F 3 "~" H 3150 5550 30  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R4
+L R-RESCUE-Perimeter_sender_v2 R4
 U 1 1 54D5424D
 P 3550 5450
 F 0 "R4" V 3630 5450 40  0000 C CNN
@@ -400,7 +400,7 @@ F 3 "~" H 3550 5450 30  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R3
+L R-RESCUE-Perimeter_sender_v2 R3
 U 1 1 54D5428C
 P 3450 4750
 F 0 "R3" V 3530 4750 40  0000 C CNN
@@ -423,7 +423,7 @@ F 4 "R: PL112000" H 1600 2300 60  0000 C CNN "Bestellnummer"
 	0    1    1    0   
 $EndComp
 $Comp
-L CP1 C2
+L CP1-RESCUE-Perimeter_sender_v2 C2
 U 1 1 54D55373
 P 2625 1675
 F 0 "C2" H 2675 1775 50  0000 L CNN
@@ -434,7 +434,7 @@ F 3 "" H 2625 1675 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CP1 C1
+L CP1-RESCUE-Perimeter_sender_v2 C1
 U 1 1 54D555BA
 P 2250 1675
 F 0 "C1" H 2300 1775 50  0000 L CNN
@@ -445,7 +445,7 @@ F 3 "" H 2250 1675 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR016
+L GND-RESCUE-Perimeter_sender_v2 #PWR016
 U 1 1 54D55677
 P 2625 1975
 F 0 "#PWR016" H 2625 1975 30  0001 C CNN
@@ -456,7 +456,7 @@ F 3 "" H 2625 1975 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR017
+L GND-RESCUE-Perimeter_sender_v2 #PWR017
 U 1 1 54D55697
 P 2250 1975
 F 0 "#PWR017" H 2250 1975 30  0001 C CNN
@@ -502,7 +502,7 @@ F 3 "" H 2000 2750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR020
+L GND-RESCUE-Perimeter_sender_v2 #PWR020
 U 1 1 54D55FF9
 P 8655 1545
 F 0 "#PWR020" H 8655 1545 30  0001 C CNN
@@ -537,7 +537,7 @@ M1_DuoLED_Schleife1_Rot
 Text GLabel 6610 1280 0    60   Input ~ 0
 M2_DuoLED_Schleife2_Rot
 $Comp
-L R R1
+L R-RESCUE-Perimeter_sender_v2 R1
 U 1 1 54D586F5
 P 3150 1675
 F 0 "R1" V 3230 1675 40  0000 C CNN
@@ -572,7 +572,7 @@ F 4 "Value" H 3350 1300 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R2
+L R-RESCUE-Perimeter_sender_v2 R2
 U 1 1 54D588A5
 P 3350 1675
 F 0 "R2" V 3430 1675 40  0000 C CNN
@@ -592,7 +592,7 @@ LED_12V
 Text GLabel 3350 2025 3    60   Output ~ 0
 LED_12V
 $Comp
-L GND #PWR024
+L GND-RESCUE-Perimeter_sender_v2 #PWR024
 U 1 1 54D58D55
 P 6575 2270
 F 0 "#PWR024" H 6575 2270 30  0001 C CNN
@@ -697,7 +697,7 @@ F 3 "" H 7080 1230 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR025
+L GND-RESCUE-Perimeter_sender_v2 #PWR025
 U 1 1 54F4DA22
 P 6755 980
 F 0 "#PWR025" H 6755 980 30  0001 C CNN
@@ -708,7 +708,7 @@ F 3 "" H 6755 980 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR026
+L GND-RESCUE-Perimeter_sender_v2 #PWR026
 U 1 1 54F4DB09
 P 6755 1180
 F 0 "#PWR026" H 6755 1180 30  0001 C CNN
@@ -719,7 +719,7 @@ F 3 "" H 6755 1180 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR027
+L GND-RESCUE-Perimeter_sender_v2 #PWR027
 U 1 1 54F4DB80
 P 6755 1480
 F 0 "#PWR027" H 6755 1480 30  0001 C CNN
@@ -742,7 +742,7 @@ F 4 "Value" H 7050 2120 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR028
+L GND-RESCUE-Perimeter_sender_v2 #PWR028
 U 1 1 54F4EA91
 P 6575 2070
 F 0 "#PWR028" H 6575 2070 30  0001 C CNN
@@ -753,7 +753,7 @@ F 3 "" H 6575 2070 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR029
+L GND-RESCUE-Perimeter_sender_v2 #PWR029
 U 1 1 54F74294
 P 8655 2445
 F 0 "#PWR029" H 8655 2445 30  0001 C CNN
@@ -950,7 +950,7 @@ Wire Wire Line
 	8805 1645 8250 1645
 NoConn ~ 5780 4950
 $Comp
-L POT RV2
+L POT-RESCUE-Perimeter_sender_v2 RV2
 U 1 1 54FCCD61
 P 1025 1695
 F 0 "RV2" H 1025 1595 50  0000 C CNN
@@ -961,7 +961,7 @@ F 3 "" H 1025 1695 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR030
+L GND-RESCUE-Perimeter_sender_v2 #PWR030
 U 1 1 54FCCD67
 P 1125 1945
 F 0 "#PWR030" H 1125 1945 30  0001 C CNN
