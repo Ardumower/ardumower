@@ -1,11 +1,11 @@
-(kicad_pcb (version 4) (host pcbnew "(2015-01-13 BZR 5369)-product")
+(kicad_pcb (version 20160815) (host pcbnew "(2017-01-09 revision c2fb336)-makepkg")
 
   (general
     (links 19)
     (no_connects 0)
-    (area 136.995699 93.465179 160.070001 115.218681)
+    (area 137.029999 93.529999 160.070001 115.220001)
     (thickness 1.6)
-    (drawings 37)
+    (drawings 38)
     (tracks 57)
     (zones 0)
     (modules 6)
@@ -82,7 +82,6 @@
       (hpglpennumber 1)
       (hpglpenspeed 20)
       (hpglpendiameter 15)
-      (hpglpenoverlay 2)
       (psnegative false)
       (psa4output false)
       (plotreference true)
@@ -135,7 +134,7 @@
     (fp_text reference J1 (at -6.000371 -8.000092) (layer F.SilkS) hide
       (effects (font (size 1.5 1.5) (thickness 0.15)))
     )
-    (fp_text value "INA169 Breakout 2.5A / 5A (short pad)" (at -0.137145 -10.35925) (layer F.SilkS)
+    (fp_text value INA169_Breakout_Conn (at -0.137145 -10.35925) (layer F.SilkS)
       (effects (font (size 0.6 0.6) (thickness 0.1)))
     )
     (fp_line (start 11.43 10.16) (end -11.43 10.16) (layer F.SilkS) (width 0.15))
@@ -198,10 +197,10 @@
       (net 5 "Net-(J1-Pad4)"))
     (pad 2 smd rect (at 3.1 0 180) (size 1 3.2) (layers F.Cu F.Paste F.Mask)
       (net 3 "Net-(J1-Pad3)"))
-    (model Resistors_SMD/R_2512.wrl
+    (model ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_2512.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -237,6 +236,11 @@
       (net 3 "Net-(J1-Pad3)"))
     (pad 5 smd rect (at -0.95 -1.3001) (size 0.55 1.2) (layers F.Cu F.Paste F.Mask)
       (net 1 "Net-(C1-Pad1)"))
+    (model ${KISYS3DMOD}/TO_SOT_Packages_SMD.3dshapes/SOT-23-5.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module Capacitors_SMD:C_1206 (layer F.Cu) (tedit 54E70FA5) (tstamp 54E35945)
@@ -261,7 +265,7 @@
       (net 1 "Net-(C1-Pad1)"))
     (pad 2 smd rect (at 1.5 0) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 2 GND))
-    (model Capacitors_SMD/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitors_SMD.3dshapes/C_1206.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -290,7 +294,7 @@
       (net 4 "Net-(J1-Pad5)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 6 "Net-(R2-Pad2)"))
-    (model Resistors_SMD/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -319,18 +323,19 @@
       (net 6 "Net-(R2-Pad2)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 2 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model Resistors_SMD/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
 
+  (gr_line (start 160.02 115.17) (end 137.08 115.17) (angle 90) (layer Edge.Cuts) (width 0.1))
+  (gr_line (start 160.02 93.58) (end 160.02 115.17) (angle 90) (layer Edge.Cuts) (width 0.1))
+  (gr_line (start 137.08 93.58) (end 160.02 93.58) (angle 90) (layer Edge.Cuts) (width 0.1))
+  (gr_line (start 136.87 93.57) (end 136.74 93.57) (angle 90) (layer F.SilkS) (width 0.2))
+  (gr_line (start 137.08 115.16) (end 137.08 93.58) (angle 90) (layer Edge.Cuts) (width 0.1))
+  (gr_line (start 137.08 115.17) (end 137.08 115.16) (angle 90) (layer Edge.Cuts) (width 0.1))
   (gr_text 5A (at 158.86684 104.99852) (layer F.SilkS)
     (effects (font (size 0.5 0.5) (thickness 0.1)))
   )
@@ -364,13 +369,8 @@
   (gr_text Vin- (at 146.858678 97.513786 90) (layer F.SilkS)
     (effects (font (size 0.7 0.7) (thickness 0.1)))
   )
-  (gr_line (start 137.07364 93.51518) (end 137.07364 115.16868) (angle 90) (layer Edge.Cuts) (width 0.1))
-  (gr_line (start 160.02 93.57106) (end 160.02 115.16868) (angle 90) (layer Edge.Cuts) (width 0.1))
-  (gr_line (start 137.16 93.54312) (end 137.0457 93.54312) (angle 90) (layer Edge.Cuts) (width 0.1))
-  (gr_line (start 160.02 115.16868) (end 137.16 115.16868) (angle 90) (layer Edge.Cuts) (width 0.1))
-  (gr_line (start 137.07364 93.57106) (end 160.02 93.57106) (angle 90) (layer Edge.Cuts) (width 0.1))
-  (dimension 22.931388 (width 0.3) (layer B.Fab)
-    (gr_text "22,931 mm" (at 148.484532 119.46) (layer B.Fab)
+  (dimension 22.931388 (width 0.3) (layer Dwgs.User)
+    (gr_text "22,931 mm" (at 148.484532 119.46) (layer Dwgs.User) (tstamp 587A7D9F)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 159.950226 115.112529) (xy 159.950226 120.81)))
@@ -381,8 +381,8 @@
     (arrow2a (pts (xy 137.018838 118.11) (xy 138.145342 118.696421)))
     (arrow2b (pts (xy 137.018838 118.11) (xy 138.145342 117.523579)))
   )
-  (dimension 21.564616 (width 0.3) (layer B.Fab) (tstamp 54E3B59A)
-    (gr_text "21,565 mm" (at 162.56 104.14 270) (layer B.Fab) (tstamp 54E3B59B)
+  (dimension 21.564616 (width 0.3) (layer Dwgs.User) (tstamp 54E3B59A)
+    (gr_text "21,565 mm" (at 162.56 104.14 270) (layer Dwgs.User) (tstamp 587A7DA0)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 159.988192 115.112529) (xy 167.799999 115.112529)))

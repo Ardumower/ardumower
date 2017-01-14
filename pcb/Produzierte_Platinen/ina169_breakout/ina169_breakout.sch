@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ina169_breakout-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -10,7 +11,6 @@ LIBS:cmos4000
 LIBS:adc-dac
 LIBS:memory
 LIBS:xilinx
-LIBS:special
 LIBS:microcontrollers
 LIBS:dsp
 LIBS:microchip
@@ -32,7 +32,7 @@ LIBS:valves
 LIBS:ina169_ic
 LIBS:ina169_breakout_conn
 LIBS:ina169_breakout-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -58,7 +58,7 @@ F 3 "" H 3000 4300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R2
+L R-RESCUE-ina169_breakout R2
 U 1 1 54E30D69
 P 4200 2900
 F 0 "R2" V 4110 2890 50  0000 C CNN
@@ -69,7 +69,7 @@ F 3 "" H 4200 2900 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R1
+L R-RESCUE-ina169_breakout R1
 U 1 1 54E30DE5
 P 5450 3250
 F 0 "R1" V 5530 3250 50  0000 C CNN
@@ -91,7 +91,7 @@ F 3 "" H 4000 4500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C1
+L C-RESCUE-ina169_breakout C1
 U 1 1 54E30F8E
 P 6250 3400
 F 0 "C1" H 6300 3500 50  0000 L CNN
@@ -136,7 +136,7 @@ SOT23-5
 Text Notes 6550 2850 0    60   ~ 0
 http://de.wikipedia.org/wiki/Chip-Bauform
 $Comp
-L R R3
+L R-RESCUE-ina169_breakout R3
 U 1 1 550174AC
 P 4200 3700
 F 0 "R3" V 4110 3690 50  0000 C CNN

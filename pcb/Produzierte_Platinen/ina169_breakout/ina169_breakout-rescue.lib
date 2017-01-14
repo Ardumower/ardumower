@@ -1,0 +1,45 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# C-RESCUE-ina169_breakout
+#
+DEF C-RESCUE-ina169_breakout C 0 10 N Y 1 F N
+F0 "C" 50 100 50 H V L CNN
+F1 "C-RESCUE-ina169_breakout" 50 -100 50 H V L CNN
+F2 "" 38 -150 30 H V C CNN
+F3 "" 0 0 60 H V C CNN
+$FPLIST
+ SM*
+ C?
+ C1-1
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 -30 80 -30 N
+P 2 0 1 20 -80 30 80 30 N
+X ~ 1 0 200 170 D 40 40 1 1 P
+X ~ 2 0 -200 170 U 40 40 1 1 P
+ENDDRAW
+ENDDEF
+#
+# R-RESCUE-ina169_breakout
+#
+DEF R-RESCUE-ina169_breakout R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "R-RESCUE-ina169_breakout" 7 1 50 V V C CNN
+F2 "" -70 0 30 V V C CNN
+F3 "" 0 0 30 H V C CNN
+$FPLIST
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$ENDFPLIST
+DRAW
+S -40 150 40 -150 0 1 12 N
+X ~ 1 0 250 100 D 60 60 1 1 P
+X ~ 2 0 -250 100 U 60 60 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library
