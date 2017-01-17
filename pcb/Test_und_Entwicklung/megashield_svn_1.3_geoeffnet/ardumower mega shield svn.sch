@@ -83,17 +83,6 @@ F 4 "R: PL 112000" H 7350 2085 60  0001 C CNN "Bestellnummer"
 	1    7350 2085
 	0    1    1    0   
 $EndComp
-$Comp
-L R-RESCUE-ardumower_mega_shield_svn R18
-U 1 1 54B46970
-P 5280 3920
-F 0 "R18" V 5360 3920 40  0000 C CNN
-F 1 "2k2" V 5287 3921 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 5210 3920 30  0001 C CNN
-F 3 "" H 5280 3920 30  0000 C CNN
-	1    5280 3920
-	0    -1   -1   0   
-$EndComp
 Text GLabel 4870 3920 0    60   Output ~ 0
 pinChargingEnable
 Text Notes 5980 3490 0    39   ~ 0
@@ -320,6 +309,9 @@ F 5 "Value" H 4459 3049 60  0001 L CNN "Bestelllink"
 F 6 "Value" H 4459 2943 60  0001 L CNN "Technische Daten"
 F 7 "R: MPR 5,10K" H 4459 2837 60  0001 L CNN "Bestellnummer"
 F 8 "Value" H 4459 2731 60  0001 L CNN "Bauform"
+F 9 "Value" H 4400 3080 60  0001 C CNN "Funktion"
+F 10 "Value" H 4400 3080 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4400 3080 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4400 3080
 	-1   0    0    -1  
 $EndComp
@@ -483,11 +475,11 @@ Wire Wire Line
 Wire Wire Line
 	5680 2790 5930 2790
 Wire Wire Line
-	5530 3920 5630 3920
+	5370 3920 5630 3920
 Wire Wire Line
 	5930 2890 5930 3720
 Wire Wire Line
-	4870 3920 5030 3920
+	4870 3920 5170 3920
 Wire Wire Line
 	5680 3235 5680 3415
 Wire Wire Line
@@ -610,4 +602,23 @@ Text Notes -5870 1415 0    79   ~ 0
 Kontrolle Funktion Ultraschall\nKontrolle RC Fernbedienung\nKontrolle Unterspannunsabschaltung ob sie mit 3V an bleibt\nRelais schaltung ändern damit nur noch 1 Relais notwendig ist\nUDN 2981 ersetzen durch SMD Bauteil evl TD 62783 AFWG :: Treiber-IC, SO-18W\nOdemetrie kontrollieren\nIC2 Bus Kontrollieren\nSpannungsaufbereitung evl ändern mit anderen DC wandlern bis 30V\n\nBauteile siehe Links
 Text Notes -5910 -130 0    59   ~ 0
 https://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP33/3/index.html?ACTION=3&LA=5700&ARTICLE=115975&GROUPID=5480&artnr=TS+2940+CP33\n\nhttps://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP50/3/index.html?ACTION=3&LA=5700&ARTICLE=115976&GROUPID=5480&artnr=TS+2940+CP50\n\nhttps://www.reichelt.de/ICs-TA-TL-/TD-62783-AFWG/3/index.html?ACTION=3&LA=446&ARTICLE=188954&GROUPID=5479&artnr=TD+62783+AFWG&SEARCH=TD62783
+$Comp
+L R_Small R18
+U 1 1 587CC623
+P 5270 3920
+F 0 "R18" V 5350 3860 50  0000 L CNN
+F 1 "2k2" V 5430 3860 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 5329 4094 50  0001 L CNN
+F 3 "" H 5270 3920 50  0001 C CNN
+F 4 "Value" H 5329 3995 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 5329 3889 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 5329 3783 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 5329 3677 60  0001 L CNN "Bestellnummer"
+F 8 "Value" H 5329 3571 60  0001 L CNN "Bauform"
+F 9 "Value" H 5270 3920 60  0001 C CNN "Funktion"
+F 10 "Value" H 5270 3920 60  0001 C CNN "Hersteller"
+F 11 "Value" H 5270 3920 60  0001 C CNN "Hersteller Bestellnummer"
+	1    5270 3920
+	0    -1   1    0   
+$EndComp
 $EndSCHEMATC
