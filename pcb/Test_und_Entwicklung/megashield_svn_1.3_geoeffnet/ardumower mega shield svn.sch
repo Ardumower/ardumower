@@ -83,7 +83,7 @@ F 4 "R: PL 112000" H 7350 2085 60  0001 C CNN "Bestellnummer"
 	1    7350 2085
 	0    1    1    0   
 $EndComp
-Text GLabel 4870 3920 0    60   Output ~ 0
+Text GLabel 4870 3920 0    60   Input ~ 0
 pinChargingEnable
 Text Notes 5980 3490 0    39   ~ 0
 Laderelais Spulenspannung 5V\noder Variabel\nEingang Spulenspannung\nkann über Vorwiderspannung\nangepasst werden\ndurch Ladespannung
@@ -446,7 +446,7 @@ U 1 1 57F1C5EE
 P 5830 3920
 F 0 "Q1" H 6021 4011 50  0000 L CNN
 F 1 "BC847" H 6021 3920 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 6021 3829 50  0000 L CIN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 6021 3829 50  0001 L CIN
 F 3 "" H 5830 3920 50  0000 L CNN
 F 4 "Value" H 5830 3920 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 5830 3920 60  0001 C CNN "Bestelllink"

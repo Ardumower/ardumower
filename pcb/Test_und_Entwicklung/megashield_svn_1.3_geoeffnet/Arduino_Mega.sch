@@ -14,7 +14,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 20 28
+Sheet 23 28
 Title "Ardumower shield SVN Version"
 Date "2016-10-28"
 Rev "1.3"
@@ -180,7 +180,7 @@ F 3 "" H 3440 2090 50  0000 C CNN
 	1    3440 2090
 	0    1    -1   0   
 $EndComp
-Text GLabel 3470 1645 0    39   Input ~ 0
+Text GLabel 3470 1645 0    39   Output ~ 0
 IOREF
 NoConn ~ 3620 1345
 NoConn ~ 3620 1445
