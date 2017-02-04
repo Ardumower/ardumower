@@ -1,4 +1,4 @@
-(module Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop (layer F.Cu) (tedit 54F4CA21)
+(module Potentiometer_VishaySpectrol-Econtrim-Type36T_3D-angepasst_Ardumover_Shop (layer F.Cu) (tedit 58750E86)
   (descr "Potentiometer, Trimmer, Spectrol Type 36T, Econtrim, Rev A, 02 Aug 2010,")
   (tags "Potentiometer, Trimmer, Spectrol Type 36T, Econtrim, Rev A, 02 Aug 2010,")
   (fp_text reference Potentiometer_VishaySpectrol-Econtrim-Type36T (at 3.76936 -6.30936) (layer F.SilkS)
@@ -26,9 +26,9 @@
     (scale (xyz 4 8 4))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Potentiometers.3dshapes/Potentiometer_Triwood_RM-065.wrl
-    (at (xyz -0.1 0 0))
-    (scale (xyz 4 8 4))
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/PT10MV.wrl
+    (at (xyz 0 0.1968503937007874 0.07874015748031496))
+    (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
 )

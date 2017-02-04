@@ -95,6 +95,12 @@ $CMP ITEAD_HC-05
 D Itead HC-05 serial Bluetooth module
 $ENDCMP
 #
+$CMP SONGLE_Relay_SRU-12VDC-SL-C
+D OMRON G5G-1, Miniature Single Pole Relay, SPDT, 10A
+K Miniature Single Pole Relay
+F https://www.omron.com/ecb/products/pdf/en-g5q.pdf
+$ENDCMP
+#
 $CMP Tact_Switch_12x12mm_with_integrated_LED
 D Tact_Switch_12x12mm_with_integrated_LED
 $ENDCMP
