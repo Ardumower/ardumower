@@ -5,10 +5,9 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
-LIBS:cmos_ieee
-LIBS:cmos4000
 LIBS:switches
-LIBS:rfcom
+LIBS:linear
+LIBS:texas
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -94,11 +93,11 @@ LED Anzeigen - Hardware:\n\nLed 3V grün -   Betriebsanzeige Versorgungsspannung
 Text Notes 2880 -350 0    60   ~ 0
 LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm
 $Sheet
-S 9205 3380 1240 170 
+S 9205 4040 1240 170 
 U 57D95AF0
 F0 "Motortreiber" 60
 F1 "Motortreiber.sch" 60
-F2 "+24V" I L 9205 3460 60 
+F2 "+24V" I L 9205 4120 60 
 $EndSheet
 $Sheet
 S 1920 6920 850  170 
@@ -119,11 +118,11 @@ F0 "Anschlußstecker" 60
 F1 "Anschlußstecker.sch" 60
 $EndSheet
 $Sheet
-S 9200 2925 1240 170 
+S 9200 3620 1240 170 
 U 57DF5E8A
 F0 "Spannungsversorgung" 60
 F1 "Spannungsversorgung.sch" 60
-F2 "Spannungsaufbereitung" I L 9200 3010 60 
+F2 "Spannungsaufbereitung" I L 9200 3705 60 
 $EndSheet
 $Sheet
 S 3235 7280 1240 170 
@@ -379,12 +378,12 @@ $EndComp
 Text Notes 1085 1810 0    99   ~ 0
 Akku\n
 $Sheet
-S 2325 1960 915  165 
+S 2405 1960 915  165 
 U 57E646FF
 F0 "VerpolungsschutzLade." 39
 F1 "VerpolungsschutzLade.sch" 39
-F2 "Ausgang" O R 3240 2040 39 
-F3 "Eingang" I L 2325 2040 39 
+F2 "Ausgang" O R 3320 2040 39 
+F3 "Eingang" I L 2405 2040 39 
 $EndSheet
 $Comp
 L D D1
@@ -427,13 +426,13 @@ L D D10
 U 1 1 57E925D4
 P 5680 3085
 F 0 "D10" V 5625 2960 39  0000 C CNN
-F 1 "1N4148 SMD" V 5685 2840 39  0000 C CNN
+F 1 "TMMBAT48" V 5685 2840 39  0000 C CNN
 F 2 "Zimprich:D_0603" H 5680 3208 50  0001 C CNN
 F 3 "" H 5680 3085 50  0001 C CNN
 F 4 "Value" H 5680 3428 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 5680 3322 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 5680 3216 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 5680 3085 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 5680 3322 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 5680 3216 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 5680 3085 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 5680 3085 60  0001 C CNN "Bauform"
 	1    5680 3085
 	0    1    1    0   
@@ -471,7 +470,7 @@ Wire Wire Line
 Wire Wire Line
 	5930 4120 5930 4420
 Wire Wire Line
-	7350 1885 7350 1805
+	7350 1805 7350 1885
 Wire Wire Line
 	5680 2790 5930 2790
 Wire Wire Line
@@ -509,11 +508,11 @@ Wire Wire Line
 	4240 2790 4400 2790
 Connection ~ 4400 2790
 Wire Wire Line
-	3240 2040 4920 2040
+	3320 2040 4920 2040
 Wire Wire Line
 	5120 2040 5865 2040
 Wire Wire Line
-	4400 2040 4400 2360
+	4400 1940 4400 2360
 Connection ~ 4400 2040
 Wire Wire Line
 	3465 2270 3465 2040
@@ -541,9 +540,9 @@ Wire Wire Line
 	8845 2550 9210 2550
 Connection ~ 9010 2550
 Wire Wire Line
-	2255 2040 2325 2040
+	2255 2040 2405 2040
 Wire Wire Line
-	9010 3010 9200 3010
+	9010 3705 9200 3705
 Wire Wire Line
 	7350 3015 7350 3065
 Wire Wire Line
@@ -551,11 +550,8 @@ Wire Wire Line
 Wire Wire Line
 	4920 2040 4920 2120
 Wire Wire Line
-	8375 2635 8375 2390
+	8375 730  8375 2635
 Connection ~ 8375 2390
-Wire Wire Line
-	5680 2040 5680 2935
-Connection ~ 5680 2040
 Connection ~ 5680 2790
 Wire Wire Line
 	6730 2690 6880 2690
@@ -570,33 +566,25 @@ Wire Wire Line
 NoConn ~ 6730 2490
 NoConn ~ 6730 2190
 Wire Wire Line
-	9010 3460 9205 3460
-Connection ~ 9010 3010
+	9010 4120 9205 4120
+Connection ~ 9010 3705
 $Comp
 L CONN_01X02 P49
 U 1 1 5818E3A7
-P 8775 3265
-F 0 "P49" H 8855 3205 50  0000 L CNN
-F 1 "Break" H 8855 3265 50  0000 L CNN
-F 2 "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" V 8603 3393 50  0001 L CNN
-F 3 "" H 8775 3265 50  0000 C CNN
-F 4 "Value" V 8663 3393 60  0001 L CNN "Gehäuseart"
-F 5 "Value" V 8610 3393 60  0001 L CNN "Bestelllink"
-F 6 "Value" V 8557 3393 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 8775 3265 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 8775 3265 60  0001 C CNN "Bauform"
-	1    8775 3265
+P 8775 3925
+F 0 "P49" H 8855 3865 50  0000 L CNN
+F 1 "Not Aus" H 8855 3925 50  0000 L CNN
+F 2 "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" V 8603 4053 50  0001 L CNN
+F 3 "" H 8775 3925 50  0000 C CNN
+F 4 "Value" V 8663 4053 60  0001 L CNN "Gehäuseart"
+F 5 "Value" V 8610 4053 60  0001 L CNN "Bestelllink"
+F 6 "Value" V 8557 4053 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 8775 3925 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8775 3925 60  0001 C CNN "Bauform"
+	1    8775 3925
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	9010 2550 9010 3460
-Wire Wire Line
-	9010 3215 8975 3215
-Wire Wire Line
-	9010 3315 8975 3315
-Connection ~ 9010 3315
-Connection ~ 9010 3215
-Text Notes 8595 3825 0    39   ~ 0
+Text Notes 8595 4485 0    39   ~ 0
 Unterbrechung der Motortreiber\nbei Benutzung muss Leiterbahn unterbrochen werden\nevl noch ändern und Klemme gleich vorsehen mit Drahtbrücke?
 Text Notes -5870 1415 0    79   ~ 0
 Kontrolle Funktion Ultraschall\nKontrolle RC Fernbedienung\nKontrolle Unterspannunsabschaltung ob sie mit 3V an bleibt\nRelais schaltung ändern damit nur noch 1 Relais notwendig ist\nUDN 2981 ersetzen durch SMD Bauteil evl TD 62783 AFWG :: Treiber-IC, SO-18W\nOdemetrie kontrollieren\nIC2 Bus Kontrollieren\nSpannungsaufbereitung evl ändern mit anderen DC wandlern bis 30V\n\nBauteile siehe Links
@@ -621,4 +609,141 @@ F 11 "Value" H 5270 3920 60  0001 C CNN "Hersteller Bestellnummer"
 	1    5270 3920
 	0    -1   1    0   
 $EndComp
+$Comp
+L F_10A EF3
+U 1 1 5891084A
+P 7945 1540
+F 0 "EF3" V 7865 1715 40  0000 C CNN
+F 1 "1A" V 7945 1710 40  0000 C CNN
+F 2 "Zimprich:Sicherungs_Sockel_für_TR5_TE5" H 7945 1540 60  0001 C CNN
+F 3 "" H 7945 1540 60  0000 C CNN
+F 4 "Value" H 7945 1540 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7945 1540 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7945 1540 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7945 1540 60  0001 C CNN "Bestellnummer"
+F 8 "Pico Fuse 1A" H 7950 1610 60  0000 C CNN "Bauform"
+F 9 "Value" H 7945 1540 60  0001 C CNN "Funktion"
+F 10 "Value" H 7945 1540 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7945 1540 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7945 1540
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR010
+U 1 1 58910850
+P 7845 1345
+F 0 "#PWR010" H 7845 1095 50  0001 C CNN
+F 1 "GND" H 7850 1172 50  0000 C CNN
+F 2 "" H 7845 1345 50  0000 C CNN
+F 3 "" H 7845 1345 50  0000 C CNN
+	1    7845 1345
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X02 P16
+U 1 1 5891085B
+P 7895 1060
+F 0 "P16" V 8085 1060 50  0000 C CNN
+F 1 "RPI Backup P." V 7995 1060 50  0000 C CNN
+F 2 "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" H 7814 877 50  0001 C CNN
+F 3 "" H 7895 1060 50  0000 C CNN
+F 4 "Value" H 7814 870 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7814 870 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7814 870 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7895 1060 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7895 1060 60  0001 C CNN "Bauform"
+F 9 "Value" H 7895 1060 60  0001 C CNN "Funktion"
+F 10 "Value" H 7895 1060 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7895 1060 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7895 1060
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7845 1345 7845 1260
+Wire Wire Line
+	7945 1340 7945 1260
+Wire Wire Line
+	7350 1850 7945 1850
+Wire Wire Line
+	7945 1850 7945 1740
+Connection ~ 7350 1850
+$Comp
+L GND #PWR011
+U 1 1 589113FA
+P 9305 3175
+F 0 "#PWR011" H 9305 2925 50  0001 C CNN
+F 1 "GND" H 9310 3002 50  0000 C CNN
+F 2 "" H 9305 3175 50  0000 C CNN
+F 3 "" H 9305 3175 50  0000 C CNN
+	1    9305 3175
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X02 P17
+U 1 1 58911405
+P 9590 3065
+F 0 "P17" H 9725 3005 50  0000 C CNN
+F 1 "RPI Main P." H 9975 3120 50  0000 C CNN
+F 2 "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" H 9509 2882 50  0001 C CNN
+F 3 "" H 9590 3065 50  0000 C CNN
+F 4 "Value" H 9509 2875 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9509 2875 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9509 2875 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9590 3065 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9590 3065 60  0001 C CNN "Bauform"
+F 9 "Value" H 9590 3065 60  0001 C CNN "Funktion"
+F 10 "Value" H 9590 3065 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9590 3065 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9590 3065
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	9305 3115 9390 3115
+Wire Wire Line
+	9010 3015 9390 3015
+Wire Wire Line
+	9305 3175 9305 3115
+Connection ~ 9010 3015
+Wire Wire Line
+	5680 1940 5680 2935
+Wire Wire Line
+	4400 1940 5680 1940
+$Comp
+L D D145
+U 1 1 58915405
+P 7640 730
+F 0 "D145" H 7640 575 39  0000 C CNN
+F 1 "MBR 1045" H 7640 635 39  0000 C CNN
+F 2 "Zimprich:MBR1045" H 7640 853 50  0001 C CNN
+F 3 "Value" H 7640 730 50  0001 C CNN
+F 4 "Value" H 7640 861 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7640 861 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7640 730 60  0001 C CNN "Technische Daten"
+F 7 "R: MBR 1045" H 7640 730 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7640 730 60  0001 C CNN "Bauform"
+F 9 "Value" H 7640 730 60  0001 C CNN "Funktion"
+F 10 "Value" H 7640 730 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7640 730 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7640 730 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7790 730  8375 730 
+Wire Wire Line
+	7490 730  2330 730 
+Wire Wire Line
+	2330 730  2330 2040
+Connection ~ 2330 2040
+Wire Wire Line
+	9010 2550 9010 3875
+Wire Wire Line
+	9010 3875 8975 3875
+Wire Wire Line
+	8975 3975 9010 3975
+Wire Wire Line
+	9010 3975 9010 4120
+Text Notes 3655 5550 0    118  ~ 0
+scl1 sda 1 nach ausen führen mit iorf\n\n1n4148 in TMMBAT48
+Text Notes 890  4135 0    79   ~ 0
+Änderungen 01.01.2017
 $EndSCHEMATC

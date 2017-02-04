@@ -5,10 +5,9 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
-LIBS:cmos_ieee
-LIBS:cmos4000
 LIBS:switches
-LIBS:rfcom
+LIBS:linear
+LIBS:texas
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -3404,10 +3403,10 @@ Connection ~ 3770 1380
 Wire Wire Line
 	4290 1380 4455 1380
 $Comp
-L GND #PWR0273
+L GND #PWR0274
 U 1 1 57E82DC0
 P 3770 3345
-F 0 "#PWR0273" H 3770 3095 50  0001 C CNN
+F 0 "#PWR0274" H 3770 3095 50  0001 C CNN
 F 1 "GND" H 3775 3172 50  0000 C CNN
 F 2 "" H 3770 3345 50  0000 C CNN
 F 3 "" H 3770 3345 50  0000 C CNN

@@ -5,10 +5,9 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
-LIBS:cmos_ieee
-LIBS:cmos4000
 LIBS:switches
-LIBS:rfcom
+LIBS:linear
+LIBS:texas
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -24,9 +23,9 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text GLabel 5630 3845 2    39   Output ~ 0
+Text GLabel 5620 3845 2    39   BiDi ~ 0
 SCL
-Text GLabel 5605 3745 2    39   BiDi ~ 0
+Text GLabel 5620 3745 2    39   BiDi ~ 0
 SDA
 Text GLabel 1825 2315 0    24   Input ~ 0
 pinPerimeterLeft
@@ -182,8 +181,6 @@ F 3 "" H 3440 2090 50  0000 C CNN
 $EndComp
 Text GLabel 3470 1645 0    39   Output ~ 0
 IOREF
-NoConn ~ 3620 1345
-NoConn ~ 3620 1445
 Text GLabel 3470 1745 0    39   Input ~ 0
 Reset
 $Bitmap
@@ -10275,13 +10272,13 @@ L D_Small D11
 U 1 1 57F0A002
 P 2300 2255
 F 0 "D11" H 2185 2235 24  0000 C CNN
-F 1 "1N4148 SMD" H 2195 2310 24  0000 C CNN
+F 1 "TMMBAT48" H 2195 2310 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2300 2255 50  0001 C CNN
 F 3 "" V 2300 2255 50  0001 C CNN
 F 4 "Value" H 2300 2255 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2300 2255 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2300 2255 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2300 2255 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2300 2255 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2300 2255 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2300 2255 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2300 2255 60  0001 C CNN "Bauform"
 	1    2300 2255
 	-1   0    0    -1  
@@ -10304,13 +10301,13 @@ L D_Small D24
 U 1 1 57F0A004
 P 2300 2375
 F 0 "D24" H 2420 2400 24  0000 C CNN
-F 1 "1N4148 SMD" H 2400 2310 24  0000 C CNN
+F 1 "TMMBAT48" H 2400 2310 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2300 2375 50  0001 C CNN
 F 3 "" V 2300 2375 50  0001 C CNN
 F 4 "Value" H 2300 2375 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2300 2375 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2300 2375 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2300 2375 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2300 2375 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2300 2375 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2300 2375 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2300 2375 60  0001 C CNN "Bauform"
 	1    2300 2375
 	1    0    0    -1  
@@ -10322,13 +10319,13 @@ L D_Small D25
 U 1 1 57F0A00B
 P 6225 665
 F 0 "D25" H 5950 600 39  0000 C CNN
-F 1 "1N4148 SMD" H 6225 600 39  0000 C CNN
+F 1 "TMMBAT48" H 6225 600 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 6225 665 50  0001 C CNN
 F 3 "" V 6225 665 50  0001 C CNN
 F 4 "Value" H 6225 665 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6225 665 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6225 665 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6225 665 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6225 665 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6225 665 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6225 665 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6225 665 60  0001 C CNN "Bauform"
 	1    6225 665 
 	-1   0    0    1   
@@ -10351,13 +10348,13 @@ L D_Small D26
 U 1 1 57F0A00D
 P 6240 895
 F 0 "D26" H 6515 965 39  0000 C CNN
-F 1 "1N4148 SMD" H 6240 960 39  0000 C CNN
+F 1 "TMMBAT48" H 6240 960 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 6240 895 50  0001 C CNN
 F 3 "" V 6240 895 50  0001 C CNN
 F 4 "Value" H 6240 895 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6240 895 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6240 895 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6240 895 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6240 895 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6240 895 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6240 895 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6240 895 60  0001 C CNN "Bauform"
 	1    6240 895 
 	1    0    0    -1  
@@ -10367,13 +10364,13 @@ L D_Small D27
 U 1 1 57F0C92E
 P 6270 1080
 F 0 "D27" H 5995 1015 39  0000 C CNN
-F 1 "1N4148 SMD" H 6270 1015 39  0000 C CNN
+F 1 "TMMBAT48" H 6270 1015 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 6270 1080 50  0001 C CNN
 F 3 "" V 6270 1080 50  0001 C CNN
 F 4 "Value" H 6270 1080 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6270 1080 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6270 1080 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6270 1080 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6270 1080 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6270 1080 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6270 1080 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6270 1080 60  0001 C CNN "Bauform"
 	1    6270 1080
 	-1   0    0    1   
@@ -10396,13 +10393,13 @@ L D_Small D29
 U 1 1 57F0C944
 P 6285 1310
 F 0 "D29" H 6560 1380 39  0000 C CNN
-F 1 "1N4148 SMD" H 6285 1375 39  0000 C CNN
+F 1 "TMMBAT48" H 6285 1375 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 6285 1310 50  0001 C CNN
 F 3 "" V 6285 1310 50  0001 C CNN
 F 4 "Value" H 6285 1310 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6285 1310 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6285 1310 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6285 1310 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6285 1310 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6285 1310 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6285 1310 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6285 1310 60  0001 C CNN "Bauform"
 	1    6285 1310
 	1    0    0    -1  
@@ -10412,13 +10409,13 @@ L D_Small D28
 U 1 1 57F0CDB6
 P 6335 1485
 F 0 "D28" H 6060 1420 39  0000 C CNN
-F 1 "1N4148 SMD" H 6335 1420 39  0000 C CNN
+F 1 "TMMBAT48" H 6335 1420 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 6335 1485 50  0001 C CNN
 F 3 "" V 6335 1485 50  0001 C CNN
 F 4 "Value" H 6335 1485 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6335 1485 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6335 1485 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6335 1485 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6335 1485 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6335 1485 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6335 1485 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6335 1485 60  0001 C CNN "Bauform"
 	1    6335 1485
 	-1   0    0    1   
@@ -10441,13 +10438,13 @@ L D_Small D30
 U 1 1 57F0CDCC
 P 6350 1715
 F 0 "D30" H 6625 1785 39  0000 C CNN
-F 1 "1N4148 SMD" H 6350 1780 39  0000 C CNN
+F 1 "TMMBAT48" H 6350 1780 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 6350 1715 50  0001 C CNN
 F 3 "" V 6350 1715 50  0001 C CNN
 F 4 "Value" H 6350 1715 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6350 1715 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6350 1715 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6350 1715 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6350 1715 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6350 1715 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6350 1715 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6350 1715 60  0001 C CNN "Bauform"
 	1    6350 1715
 	1    0    0    -1  
@@ -10457,13 +10454,13 @@ L D_Small D31
 U 1 1 57F0CEE7
 P 7505 655
 F 0 "D31" H 7230 590 39  0000 C CNN
-F 1 "1N4148 SMD" H 7505 590 39  0000 C CNN
+F 1 "TMMBAT48" H 7505 590 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 7505 655 50  0001 C CNN
 F 3 "" V 7505 655 50  0001 C CNN
 F 4 "Value" H 7505 655 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7505 655 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7505 655 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7505 655 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7505 655 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7505 655 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7505 655 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7505 655 60  0001 C CNN "Bauform"
 	1    7505 655 
 	-1   0    0    1   
@@ -10486,13 +10483,13 @@ L D_Small D34
 U 1 1 57F0CEFD
 P 7520 885
 F 0 "D34" H 7795 955 39  0000 C CNN
-F 1 "1N4148 SMD" H 7520 950 39  0000 C CNN
+F 1 "TMMBAT48" H 7520 950 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 7520 885 50  0001 C CNN
 F 3 "" V 7520 885 50  0001 C CNN
 F 4 "Value" H 7520 885 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7520 885 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7520 885 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7520 885 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7520 885 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7520 885 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7520 885 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7520 885 60  0001 C CNN "Bauform"
 	1    7520 885 
 	1    0    0    -1  
@@ -10502,13 +10499,13 @@ L D_Small D32
 U 1 1 57F0D4D4
 P 7510 1070
 F 0 "D32" H 7235 1005 39  0000 C CNN
-F 1 "1N4148 SMD" H 7510 1005 39  0000 C CNN
+F 1 "TMMBAT48" H 7510 1005 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 7510 1070 50  0001 C CNN
 F 3 "" V 7510 1070 50  0001 C CNN
 F 4 "Value" H 7510 1070 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7510 1070 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7510 1070 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7510 1070 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7510 1070 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7510 1070 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7510 1070 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7510 1070 60  0001 C CNN "Bauform"
 	1    7510 1070
 	-1   0    0    1   
@@ -10531,13 +10528,13 @@ L D_Small D35
 U 1 1 57F0D4EA
 P 7525 1300
 F 0 "D35" H 7800 1370 39  0000 C CNN
-F 1 "1N4148 SMD" H 7525 1365 39  0000 C CNN
+F 1 "TMMBAT48" H 7525 1365 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 7525 1300 50  0001 C CNN
 F 3 "" V 7525 1300 50  0001 C CNN
 F 4 "Value" H 7525 1300 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7525 1300 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7525 1300 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7525 1300 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7525 1300 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7525 1300 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7525 1300 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7525 1300 60  0001 C CNN "Bauform"
 	1    7525 1300
 	1    0    0    -1  
@@ -10547,13 +10544,13 @@ L D_Small D33
 U 1 1 57F0DB33
 P 7515 1485
 F 0 "D33" H 7240 1420 39  0000 C CNN
-F 1 "1N4148 SMD" H 7515 1420 39  0000 C CNN
+F 1 "TMMBAT48" H 7515 1420 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 7515 1485 50  0001 C CNN
 F 3 "" V 7515 1485 50  0001 C CNN
 F 4 "Value" H 7515 1485 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7515 1485 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7515 1485 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7515 1485 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7515 1485 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7515 1485 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7515 1485 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7515 1485 60  0001 C CNN "Bauform"
 	1    7515 1485
 	-1   0    0    1   
@@ -10576,13 +10573,13 @@ L D_Small D36
 U 1 1 57F0DB49
 P 7530 1715
 F 0 "D36" H 7805 1785 39  0000 C CNN
-F 1 "1N4148 SMD" H 7530 1780 39  0000 C CNN
+F 1 "TMMBAT48" H 7530 1780 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 7530 1715 50  0001 C CNN
 F 3 "" V 7530 1715 50  0001 C CNN
 F 4 "Value" H 7530 1715 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7530 1715 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7530 1715 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7530 1715 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7530 1715 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7530 1715 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7530 1715 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7530 1715 60  0001 C CNN "Bauform"
 	1    7530 1715
 	1    0    0    -1  
@@ -10592,13 +10589,13 @@ L D_Small D37
 U 1 1 57F11020
 P 8705 660
 F 0 "D37" H 8430 595 39  0000 C CNN
-F 1 "1N4148 SMD" H 8705 595 39  0000 C CNN
+F 1 "TMMBAT48" H 8705 595 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8705 660 50  0001 C CNN
 F 3 "" V 8705 660 50  0001 C CNN
 F 4 "Value" H 8705 660 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8705 660 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8705 660 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8705 660 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8705 660 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8705 660 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8705 660 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8705 660 60  0001 C CNN "Bauform"
 	1    8705 660 
 	-1   0    0    1   
@@ -10621,13 +10618,13 @@ L D_Small D38
 U 1 1 57F11037
 P 8720 890
 F 0 "D38" H 8995 960 39  0000 C CNN
-F 1 "1N4148 SMD" H 8720 955 39  0000 C CNN
+F 1 "TMMBAT48" H 8720 955 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8720 890 50  0001 C CNN
 F 3 "" V 8720 890 50  0001 C CNN
 F 4 "Value" H 8720 890 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8720 890 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8720 890 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8720 890 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8720 890 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8720 890 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8720 890 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8720 890 60  0001 C CNN "Bauform"
 	1    8720 890 
 	1    0    0    -1  
@@ -10637,13 +10634,13 @@ L D_Small D39
 U 1 1 57F11047
 P 8720 1075
 F 0 "D39" H 8445 1010 39  0000 C CNN
-F 1 "1N4148 SMD" H 8720 1010 39  0000 C CNN
+F 1 "TMMBAT48" H 8720 1010 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8720 1075 50  0001 C CNN
 F 3 "" V 8720 1075 50  0001 C CNN
 F 4 "Value" H 8720 1075 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8720 1075 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8720 1075 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8720 1075 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8720 1075 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8720 1075 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8720 1075 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8720 1075 60  0001 C CNN "Bauform"
 	1    8720 1075
 	-1   0    0    1   
@@ -10666,13 +10663,13 @@ L D_Small D42
 U 1 1 57F1105E
 P 8735 1305
 F 0 "D42" H 9010 1375 39  0000 C CNN
-F 1 "1N4148 SMD" H 8735 1370 39  0000 C CNN
+F 1 "TMMBAT48" H 8735 1370 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8735 1305 50  0001 C CNN
 F 3 "" V 8735 1305 50  0001 C CNN
 F 4 "Value" H 8735 1305 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8735 1305 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8735 1305 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8735 1305 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8735 1305 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8735 1305 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8735 1305 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8735 1305 60  0001 C CNN "Bauform"
 	1    8735 1305
 	1    0    0    -1  
@@ -10682,13 +10679,13 @@ L D_Small D40
 U 1 1 57F1106D
 P 8730 1480
 F 0 "D40" H 8455 1415 39  0000 C CNN
-F 1 "1N4148 SMD" H 8730 1415 39  0000 C CNN
+F 1 "TMMBAT48" H 8730 1415 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8730 1480 50  0001 C CNN
 F 3 "" V 8730 1480 50  0001 C CNN
 F 4 "Value" H 8730 1480 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8730 1480 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8730 1480 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8730 1480 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8730 1480 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8730 1480 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8730 1480 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8730 1480 60  0001 C CNN "Bauform"
 	1    8730 1480
 	-1   0    0    1   
@@ -10711,13 +10708,13 @@ L D_Small D43
 U 1 1 57F11084
 P 8745 1710
 F 0 "D43" H 9020 1780 39  0000 C CNN
-F 1 "1N4148 SMD" H 8745 1775 39  0000 C CNN
+F 1 "TMMBAT48" H 8745 1775 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8745 1710 50  0001 C CNN
 F 3 "" V 8745 1710 50  0001 C CNN
 F 4 "Value" H 8745 1710 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8745 1710 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8745 1710 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8745 1710 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8745 1710 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8745 1710 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8745 1710 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8745 1710 60  0001 C CNN "Bauform"
 	1    8745 1710
 	1    0    0    -1  
@@ -10727,13 +10724,13 @@ L D_Small D45
 U 1 1 57F11093
 P 10075 660
 F 0 "D45" H 9800 595 39  0000 C CNN
-F 1 "1N4148 SMD" H 10075 595 39  0000 C CNN
+F 1 "TMMBAT48" H 10075 595 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10075 660 50  0001 C CNN
 F 3 "" V 10075 660 50  0001 C CNN
 F 4 "Value" H 10075 660 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10075 660 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10075 660 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10075 660 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10075 660 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10075 660 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10075 660 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10075 660 60  0001 C CNN "Bauform"
 	1    10075 660 
 	-1   0    0    1   
@@ -10756,13 +10753,13 @@ L D_Small D49
 U 1 1 57F110AA
 P 10090 890
 F 0 "D49" H 10365 960 39  0000 C CNN
-F 1 "1N4148 SMD" H 10090 955 39  0000 C CNN
+F 1 "TMMBAT48" H 10090 955 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10090 890 50  0001 C CNN
 F 3 "" V 10090 890 50  0001 C CNN
 F 4 "Value" H 10090 890 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10090 890 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10090 890 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10090 890 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10090 890 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10090 890 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10090 890 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10090 890 60  0001 C CNN "Bauform"
 	1    10090 890 
 	1    0    0    -1  
@@ -10772,13 +10769,13 @@ L D_Small D46
 U 1 1 57F110BB
 P 10080 1075
 F 0 "D46" H 9805 1010 39  0000 C CNN
-F 1 "1N4148 SMD" H 10080 1010 39  0000 C CNN
+F 1 "TMMBAT48" H 10080 1010 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10080 1075 50  0001 C CNN
 F 3 "" V 10080 1075 50  0001 C CNN
 F 4 "Value" H 10080 1075 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10080 1075 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10080 1075 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10080 1075 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10080 1075 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10080 1075 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10080 1075 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10080 1075 60  0001 C CNN "Bauform"
 	1    10080 1075
 	-1   0    0    1   
@@ -10801,13 +10798,13 @@ L D_Small D50
 U 1 1 57F110D2
 P 10095 1305
 F 0 "D50" H 10370 1375 39  0000 C CNN
-F 1 "1N4148 SMD" H 10095 1370 39  0000 C CNN
+F 1 "TMMBAT48" H 10095 1370 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10095 1305 50  0001 C CNN
 F 3 "" V 10095 1305 50  0001 C CNN
 F 4 "Value" H 10095 1305 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10095 1305 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10095 1305 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10095 1305 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10095 1305 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10095 1305 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10095 1305 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10095 1305 60  0001 C CNN "Bauform"
 	1    10095 1305
 	1    0    0    -1  
@@ -10817,13 +10814,13 @@ L D_Small D47
 U 1 1 57F110E2
 P 10085 1490
 F 0 "D47" H 9810 1425 39  0000 C CNN
-F 1 "1N4148 SMD" H 10085 1425 39  0000 C CNN
+F 1 "TMMBAT48" H 10085 1425 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10085 1490 50  0001 C CNN
 F 3 "" V 10085 1490 50  0001 C CNN
 F 4 "Value" H 10085 1490 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10085 1490 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10085 1490 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10085 1490 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10085 1490 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10085 1490 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10085 1490 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10085 1490 60  0001 C CNN "Bauform"
 	1    10085 1490
 	-1   0    0    1   
@@ -10846,13 +10843,13 @@ L D_Small D51
 U 1 1 57F110F9
 P 10100 1720
 F 0 "D51" H 10375 1790 39  0000 C CNN
-F 1 "1N4148 SMD" H 10100 1785 39  0000 C CNN
+F 1 "TMMBAT48" H 10100 1785 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10100 1720 50  0001 C CNN
 F 3 "" V 10100 1720 50  0001 C CNN
 F 4 "Value" H 10100 1720 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10100 1720 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10100 1720 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10100 1720 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10100 1720 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10100 1720 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10100 1720 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10100 1720 60  0001 C CNN "Bauform"
 	1    10100 1720
 	1    0    0    -1  
@@ -10862,13 +10859,13 @@ L D_Small D41
 U 1 1 57F13086
 P 8730 1925
 F 0 "D41" H 8455 1860 39  0000 C CNN
-F 1 "1N4148 SMD" H 8730 1860 39  0000 C CNN
+F 1 "TMMBAT48" H 8730 1860 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8730 1925 50  0001 C CNN
 F 3 "" V 8730 1925 50  0001 C CNN
 F 4 "Value" H 8730 1925 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8730 1925 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8730 1925 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8730 1925 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8730 1925 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8730 1925 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8730 1925 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8730 1925 60  0001 C CNN "Bauform"
 	1    8730 1925
 	-1   0    0    1   
@@ -10891,13 +10888,13 @@ L D_Small D44
 U 1 1 57F1309A
 P 8745 2155
 F 0 "D44" H 9020 2225 39  0000 C CNN
-F 1 "1N4148 SMD" H 8745 2220 39  0000 C CNN
+F 1 "TMMBAT48" H 8745 2220 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8745 2155 50  0001 C CNN
 F 3 "" V 8745 2155 50  0001 C CNN
 F 4 "Value" H 8745 2155 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8745 2155 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8745 2155 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8745 2155 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8745 2155 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8745 2155 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8745 2155 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8745 2155 60  0001 C CNN "Bauform"
 	1    8745 2155
 	1    0    0    -1  
@@ -10907,13 +10904,13 @@ L D_Small D48
 U 1 1 57F130A8
 P 10085 1935
 F 0 "D48" H 9810 1870 39  0000 C CNN
-F 1 "1N4148 SMD" H 10085 1870 39  0000 C CNN
+F 1 "TMMBAT48" H 10085 1870 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10085 1935 50  0001 C CNN
 F 3 "" V 10085 1935 50  0001 C CNN
 F 4 "Value" H 10085 1935 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10085 1935 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10085 1935 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10085 1935 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10085 1935 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10085 1935 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10085 1935 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10085 1935 60  0001 C CNN "Bauform"
 	1    10085 1935
 	-1   0    0    1   
@@ -10936,13 +10933,13 @@ L D_Small D52
 U 1 1 57F130BE
 P 10100 2165
 F 0 "D52" H 10375 2235 39  0000 C CNN
-F 1 "1N4148 SMD" H 10100 2230 39  0000 C CNN
+F 1 "TMMBAT48" H 10100 2230 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 10100 2165 50  0001 C CNN
 F 3 "" V 10100 2165 50  0001 C CNN
 F 4 "Value" H 10100 2165 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10100 2165 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10100 2165 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10100 2165 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10100 2165 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10100 2165 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10100 2165 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10100 2165 60  0001 C CNN "Bauform"
 	1    10100 2165
 	1    0    0    -1  
@@ -10968,13 +10965,13 @@ L D_Small D8
 U 1 1 57FA204B
 P 2310 1940
 F 0 "D8" H 2195 1920 24  0000 C CNN
-F 1 "1N4148 SMD" H 2205 1995 24  0000 C CNN
+F 1 "TMMBAT48" H 2205 1995 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2310 1940 50  0001 C CNN
 F 3 "" V 2310 1940 50  0001 C CNN
 F 4 "Value" H 2310 1940 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2310 1940 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2310 1940 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2310 1940 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2310 1940 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2310 1940 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2310 1940 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2310 1940 60  0001 C CNN "Bauform"
 	1    2310 1940
 	-1   0    0    -1  
@@ -10997,13 +10994,13 @@ L D_Small D16
 U 1 1 57FA2064
 P 2310 2060
 F 0 "D16" H 2430 2085 24  0000 C CNN
-F 1 "1N4148 SMD" H 2410 1995 24  0000 C CNN
+F 1 "TMMBAT48" H 2410 1995 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2310 2060 50  0001 C CNN
 F 3 "" V 2310 2060 50  0001 C CNN
 F 4 "Value" H 2310 2060 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2310 2060 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2310 2060 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2310 2060 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2310 2060 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2310 2060 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2310 2060 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2310 2060 60  0001 C CNN "Bauform"
 	1    2310 2060
 	1    0    0    -1  
@@ -11031,13 +11028,13 @@ L D_Small D63
 U 1 1 57FA6D53
 P 2375 745
 F 0 "D63" H 2260 725 24  0000 C CNN
-F 1 "1N4148 SMD" H 2270 800 24  0000 C CNN
+F 1 "TMMBAT48" H 2270 800 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2375 745 50  0001 C CNN
 F 3 "" V 2375 745 50  0001 C CNN
 F 4 "Value" H 2375 745 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2375 745 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2375 745 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2375 745 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 745 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 745 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2375 745 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2375 745 60  0001 C CNN "Bauform"
 	1    2375 745 
 	-1   0    0    -1  
@@ -11060,13 +11057,13 @@ L D_Small D64
 U 1 1 57FA6D65
 P 2375 865
 F 0 "D64" H 2495 890 24  0000 C CNN
-F 1 "1N4148 SMD" H 2475 800 24  0000 C CNN
+F 1 "TMMBAT48" H 2475 800 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2375 865 50  0001 C CNN
 F 3 "" V 2375 865 50  0001 C CNN
 F 4 "Value" H 2375 865 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2375 865 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2375 865 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2375 865 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 865 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 865 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2375 865 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2375 865 60  0001 C CNN "Bauform"
 	1    2375 865 
 	1    0    0    -1  
@@ -11094,13 +11091,13 @@ L D_Small D61
 U 1 1 57FA790A
 P 2365 1055
 F 0 "D61" H 2250 1035 24  0000 C CNN
-F 1 "1N4148 SMD" H 2260 1110 24  0000 C CNN
+F 1 "TMMBAT48" H 2260 1110 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2365 1055 50  0001 C CNN
 F 3 "" V 2365 1055 50  0001 C CNN
 F 4 "Value" H 2365 1055 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2365 1055 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2365 1055 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2365 1055 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 1055 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 1055 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2365 1055 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2365 1055 60  0001 C CNN "Bauform"
 	1    2365 1055
 	-1   0    0    -1  
@@ -11123,13 +11120,13 @@ L D_Small D62
 U 1 1 57FA791C
 P 2365 1175
 F 0 "D62" H 2485 1200 24  0000 C CNN
-F 1 "1N4148 SMD" H 2465 1110 24  0000 C CNN
+F 1 "TMMBAT48" H 2465 1110 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2365 1175 50  0001 C CNN
 F 3 "" V 2365 1175 50  0001 C CNN
 F 4 "Value" H 2365 1175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2365 1175 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2365 1175 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2365 1175 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 1175 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 1175 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2365 1175 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2365 1175 60  0001 C CNN "Bauform"
 	1    2365 1175
 	1    0    0    -1  
@@ -11157,13 +11154,13 @@ L D_Small D59
 U 1 1 57FA8BF8
 P 2360 1355
 F 0 "D59" H 2245 1335 24  0000 C CNN
-F 1 "1N4148 SMD" H 2255 1410 24  0000 C CNN
+F 1 "TMMBAT48" H 2255 1410 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2360 1355 50  0001 C CNN
 F 3 "" V 2360 1355 50  0001 C CNN
 F 4 "Value" H 2360 1355 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2360 1355 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2360 1355 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2360 1355 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2360 1355 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2360 1355 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2360 1355 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2360 1355 60  0001 C CNN "Bauform"
 	1    2360 1355
 	-1   0    0    -1  
@@ -11186,13 +11183,13 @@ L D_Small D60
 U 1 1 57FA8C0A
 P 2360 1475
 F 0 "D60" H 2480 1500 24  0000 C CNN
-F 1 "1N4148 SMD" H 2460 1410 24  0000 C CNN
+F 1 "TMMBAT48" H 2460 1410 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2360 1475 50  0001 C CNN
 F 3 "" V 2360 1475 50  0001 C CNN
 F 4 "Value" H 2360 1475 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2360 1475 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2360 1475 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2360 1475 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2360 1475 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2360 1475 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2360 1475 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2360 1475 60  0001 C CNN "Bauform"
 	1    2360 1475
 	1    0    0    -1  
@@ -11220,13 +11217,13 @@ L D_Small D57
 U 1 1 57FA9E04
 P 2355 1640
 F 0 "D57" H 2240 1620 24  0000 C CNN
-F 1 "1N4148 SMD" H 2250 1695 24  0000 C CNN
+F 1 "TMMBAT48" H 2250 1695 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2355 1640 50  0001 C CNN
 F 3 "" V 2355 1640 50  0001 C CNN
 F 4 "Value" H 2355 1640 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2355 1640 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2355 1640 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2355 1640 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2355 1640 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2355 1640 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2355 1640 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2355 1640 60  0001 C CNN "Bauform"
 	1    2355 1640
 	-1   0    0    -1  
@@ -11249,13 +11246,13 @@ L D_Small D58
 U 1 1 57FA9E16
 P 2355 1760
 F 0 "D58" H 2475 1785 24  0000 C CNN
-F 1 "1N4148 SMD" H 2455 1695 24  0000 C CNN
+F 1 "TMMBAT48" H 2455 1695 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2355 1760 50  0001 C CNN
 F 3 "" V 2355 1760 50  0001 C CNN
 F 4 "Value" H 2355 1760 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2355 1760 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2355 1760 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2355 1760 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2355 1760 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2355 1760 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2355 1760 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2355 1760 60  0001 C CNN "Bauform"
 	1    2355 1760
 	1    0    0    -1  
@@ -11283,13 +11280,13 @@ L D_Small D55
 U 1 1 57FAC6FC
 P 2295 2550
 F 0 "D55" H 2180 2530 24  0000 C CNN
-F 1 "1N4148 SMD" H 2190 2605 24  0000 C CNN
+F 1 "TMMBAT48" H 2190 2605 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2295 2550 50  0001 C CNN
 F 3 "" V 2295 2550 50  0001 C CNN
 F 4 "Value" H 2295 2550 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2295 2550 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2295 2550 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2295 2550 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2295 2550 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2295 2550 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2295 2550 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2295 2550 60  0001 C CNN "Bauform"
 	1    2295 2550
 	-1   0    0    -1  
@@ -11312,13 +11309,13 @@ L D_Small D56
 U 1 1 57FAC70E
 P 2295 2670
 F 0 "D56" H 2415 2695 24  0000 C CNN
-F 1 "1N4148 SMD" H 2395 2605 24  0000 C CNN
+F 1 "TMMBAT48" H 2395 2605 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2295 2670 50  0001 C CNN
 F 3 "" V 2295 2670 50  0001 C CNN
 F 4 "Value" H 2295 2670 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2295 2670 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2295 2670 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2295 2670 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2295 2670 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2295 2670 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2295 2670 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2295 2670 60  0001 C CNN "Bauform"
 	1    2295 2670
 	1    0    0    -1  
@@ -11346,13 +11343,13 @@ L D_Small D53
 U 1 1 57FADD73
 P 2285 2835
 F 0 "D53" H 2170 2815 24  0000 C CNN
-F 1 "1N4148 SMD" H 2180 2890 24  0000 C CNN
+F 1 "TMMBAT48" H 2180 2890 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2285 2835 50  0001 C CNN
 F 3 "" V 2285 2835 50  0001 C CNN
 F 4 "Value" H 2285 2835 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2285 2835 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2285 2835 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2285 2835 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2285 2835 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2285 2835 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2285 2835 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2285 2835 60  0001 C CNN "Bauform"
 	1    2285 2835
 	-1   0    0    -1  
@@ -11375,13 +11372,13 @@ L D_Small D54
 U 1 1 57FADD85
 P 2285 2955
 F 0 "D54" H 2405 2980 24  0000 C CNN
-F 1 "1N4148 SMD" H 2385 2890 24  0000 C CNN
+F 1 "TMMBAT48" H 2385 2890 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2285 2955 50  0001 C CNN
 F 3 "" V 2285 2955 50  0001 C CNN
 F 4 "Value" H 2285 2955 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2285 2955 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2285 2955 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2285 2955 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2285 2955 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2285 2955 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2285 2955 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2285 2955 60  0001 C CNN "Bauform"
 	1    2285 2955
 	1    0    0    -1  
@@ -11411,13 +11408,13 @@ L D_Small D69
 U 1 1 57FC332D
 P 1400 4760
 F 0 "D69" H 1285 4740 24  0000 C CNN
-F 1 "1N4148 SMD" H 1295 4815 24  0000 C CNN
+F 1 "TMMBAT48" H 1295 4815 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1400 4760 50  0001 C CNN
 F 3 "" V 1400 4760 50  0001 C CNN
 F 4 "Value" H 1400 4760 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1400 4760 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1400 4760 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1400 4760 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1400 4760 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1400 4760 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1400 4760 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1400 4760 60  0001 C CNN "Bauform"
 	1    1400 4760
 	-1   0    0    -1  
@@ -11440,13 +11437,13 @@ L D_Small D70
 U 1 1 57FC333F
 P 1400 4880
 F 0 "D70" H 1520 4905 24  0000 C CNN
-F 1 "1N4148 SMD" H 1500 4815 24  0000 C CNN
+F 1 "TMMBAT48" H 1500 4815 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1400 4880 50  0001 C CNN
 F 3 "" V 1400 4880 50  0001 C CNN
 F 4 "Value" H 1400 4880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1400 4880 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1400 4880 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1400 4880 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1400 4880 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1400 4880 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1400 4880 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1400 4880 60  0001 C CNN "Bauform"
 	1    1400 4880
 	1    0    0    -1  
@@ -11474,13 +11471,13 @@ L D_Small D71
 U 1 1 57FC3356
 P 1410 4445
 F 0 "D71" H 1295 4425 24  0000 C CNN
-F 1 "1N4148 SMD" H 1305 4500 24  0000 C CNN
+F 1 "TMMBAT48" H 1305 4500 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1410 4445 50  0001 C CNN
 F 3 "" V 1410 4445 50  0001 C CNN
 F 4 "Value" H 1410 4445 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1410 4445 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1410 4445 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1410 4445 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1410 4445 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1410 4445 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1410 4445 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1410 4445 60  0001 C CNN "Bauform"
 	1    1410 4445
 	-1   0    0    -1  
@@ -11503,13 +11500,13 @@ L D_Small D72
 U 1 1 57FC3368
 P 1410 4565
 F 0 "D72" H 1530 4590 24  0000 C CNN
-F 1 "1N4148 SMD" H 1510 4500 24  0000 C CNN
+F 1 "TMMBAT48" H 1510 4500 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1410 4565 50  0001 C CNN
 F 3 "" V 1410 4565 50  0001 C CNN
 F 4 "Value" H 1410 4565 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1410 4565 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1410 4565 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1410 4565 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1410 4565 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1410 4565 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1410 4565 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1410 4565 60  0001 C CNN "Bauform"
 	1    1410 4565
 	1    0    0    -1  
@@ -11537,13 +11534,13 @@ L D_Small D79
 U 1 1 57FC337F
 P 1475 3250
 F 0 "D79" H 1360 3230 24  0000 C CNN
-F 1 "1N4148 SMD" H 1370 3305 24  0000 C CNN
+F 1 "TMMBAT48" H 1370 3305 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1475 3250 50  0001 C CNN
 F 3 "" V 1475 3250 50  0001 C CNN
 F 4 "Value" H 1475 3250 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1475 3250 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1475 3250 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1475 3250 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1475 3250 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1475 3250 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1475 3250 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1475 3250 60  0001 C CNN "Bauform"
 	1    1475 3250
 	-1   0    0    -1  
@@ -11566,13 +11563,13 @@ L D_Small D80
 U 1 1 57FC3391
 P 1475 3370
 F 0 "D80" H 1595 3395 24  0000 C CNN
-F 1 "1N4148 SMD" H 1575 3305 24  0000 C CNN
+F 1 "TMMBAT48" H 1575 3305 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1475 3370 50  0001 C CNN
 F 3 "" V 1475 3370 50  0001 C CNN
 F 4 "Value" H 1475 3370 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1475 3370 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1475 3370 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1475 3370 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1475 3370 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1475 3370 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1475 3370 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1475 3370 60  0001 C CNN "Bauform"
 	1    1475 3370
 	1    0    0    -1  
@@ -11600,13 +11597,13 @@ L D_Small D77
 U 1 1 57FC33A8
 P 1465 3560
 F 0 "D77" H 1350 3540 24  0000 C CNN
-F 1 "1N4148 SMD" H 1360 3615 24  0000 C CNN
+F 1 "TMMBAT48" H 1360 3615 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1465 3560 50  0001 C CNN
 F 3 "" V 1465 3560 50  0001 C CNN
 F 4 "Value" H 1465 3560 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1465 3560 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1465 3560 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1465 3560 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1465 3560 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1465 3560 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1465 3560 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1465 3560 60  0001 C CNN "Bauform"
 	1    1465 3560
 	-1   0    0    -1  
@@ -11629,13 +11626,13 @@ L D_Small D78
 U 1 1 57FC33BA
 P 1465 3680
 F 0 "D78" H 1585 3705 24  0000 C CNN
-F 1 "1N4148 SMD" H 1565 3615 24  0000 C CNN
+F 1 "TMMBAT48" H 1565 3615 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1465 3680 50  0001 C CNN
 F 3 "" V 1465 3680 50  0001 C CNN
 F 4 "Value" H 1465 3680 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1465 3680 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1465 3680 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1465 3680 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1465 3680 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1465 3680 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1465 3680 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1465 3680 60  0001 C CNN "Bauform"
 	1    1465 3680
 	1    0    0    -1  
@@ -11663,13 +11660,13 @@ L D_Small D75
 U 1 1 57FC33D1
 P 1460 3860
 F 0 "D75" H 1345 3840 24  0000 C CNN
-F 1 "1N4148 SMD" H 1355 3915 24  0000 C CNN
+F 1 "TMMBAT48" H 1355 3915 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1460 3860 50  0001 C CNN
 F 3 "" V 1460 3860 50  0001 C CNN
 F 4 "Value" H 1460 3860 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1460 3860 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1460 3860 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1460 3860 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1460 3860 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1460 3860 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1460 3860 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1460 3860 60  0001 C CNN "Bauform"
 	1    1460 3860
 	-1   0    0    -1  
@@ -11692,13 +11689,13 @@ L D_Small D76
 U 1 1 57FC33E3
 P 1460 3980
 F 0 "D76" H 1580 4005 24  0000 C CNN
-F 1 "1N4148 SMD" H 1560 3915 24  0000 C CNN
+F 1 "TMMBAT48" H 1560 3915 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1460 3980 50  0001 C CNN
 F 3 "" V 1460 3980 50  0001 C CNN
 F 4 "Value" H 1460 3980 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1460 3980 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1460 3980 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1460 3980 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1460 3980 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1460 3980 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1460 3980 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1460 3980 60  0001 C CNN "Bauform"
 	1    1460 3980
 	1    0    0    -1  
@@ -11726,13 +11723,13 @@ L D_Small D73
 U 1 1 57FC33FA
 P 1455 4145
 F 0 "D73" H 1340 4125 24  0000 C CNN
-F 1 "1N4148 SMD" H 1350 4200 24  0000 C CNN
+F 1 "TMMBAT48" H 1350 4200 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1455 4145 50  0001 C CNN
 F 3 "" V 1455 4145 50  0001 C CNN
 F 4 "Value" H 1455 4145 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1455 4145 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1455 4145 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1455 4145 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1455 4145 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1455 4145 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1455 4145 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1455 4145 60  0001 C CNN "Bauform"
 	1    1455 4145
 	-1   0    0    -1  
@@ -11755,13 +11752,13 @@ L D_Small D74
 U 1 1 57FC340C
 P 1455 4265
 F 0 "D74" H 1575 4290 24  0000 C CNN
-F 1 "1N4148 SMD" H 1555 4200 24  0000 C CNN
+F 1 "TMMBAT48" H 1555 4200 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1455 4265 50  0001 C CNN
 F 3 "" V 1455 4265 50  0001 C CNN
 F 4 "Value" H 1455 4265 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1455 4265 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1455 4265 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1455 4265 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1455 4265 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1455 4265 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1455 4265 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1455 4265 60  0001 C CNN "Bauform"
 	1    1455 4265
 	1    0    0    -1  
@@ -11789,13 +11786,13 @@ L D_Small D67
 U 1 1 57FC3423
 P 1395 5055
 F 0 "D67" H 1280 5035 24  0000 C CNN
-F 1 "1N4148 SMD" H 1290 5110 24  0000 C CNN
+F 1 "TMMBAT48" H 1290 5110 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1395 5055 50  0001 C CNN
 F 3 "" V 1395 5055 50  0001 C CNN
 F 4 "Value" H 1395 5055 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1395 5055 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1395 5055 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1395 5055 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1395 5055 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1395 5055 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1395 5055 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1395 5055 60  0001 C CNN "Bauform"
 	1    1395 5055
 	-1   0    0    -1  
@@ -11818,13 +11815,13 @@ L D_Small D68
 U 1 1 57FC3435
 P 1395 5175
 F 0 "D68" H 1515 5200 24  0000 C CNN
-F 1 "1N4148 SMD" H 1495 5110 24  0000 C CNN
+F 1 "TMMBAT48" H 1495 5110 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1395 5175 50  0001 C CNN
 F 3 "" V 1395 5175 50  0001 C CNN
 F 4 "Value" H 1395 5175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1395 5175 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1395 5175 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1395 5175 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1395 5175 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1395 5175 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1395 5175 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1395 5175 60  0001 C CNN "Bauform"
 	1    1395 5175
 	1    0    0    -1  
@@ -11852,13 +11849,13 @@ L D_Small D65
 U 1 1 57FC344C
 P 1385 5340
 F 0 "D65" H 1270 5320 24  0000 C CNN
-F 1 "1N4148 SMD" H 1280 5395 24  0000 C CNN
+F 1 "TMMBAT48" H 1280 5395 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1385 5340 50  0001 C CNN
 F 3 "" V 1385 5340 50  0001 C CNN
 F 4 "Value" H 1385 5340 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1385 5340 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1385 5340 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1385 5340 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1385 5340 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1385 5340 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1385 5340 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1385 5340 60  0001 C CNN "Bauform"
 	1    1385 5340
 	-1   0    0    -1  
@@ -11881,13 +11878,13 @@ L D_Small D66
 U 1 1 57FC345E
 P 1385 5460
 F 0 "D66" H 1505 5485 24  0000 C CNN
-F 1 "1N4148 SMD" H 1485 5395 24  0000 C CNN
+F 1 "TMMBAT48" H 1485 5395 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1385 5460 50  0001 C CNN
 F 3 "" V 1385 5460 50  0001 C CNN
 F 4 "Value" H 1385 5460 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1385 5460 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1385 5460 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1385 5460 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1385 5460 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1385 5460 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1385 5460 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1385 5460 60  0001 C CNN "Bauform"
 	1    1385 5460
 	1    0    0    -1  
@@ -11897,13 +11894,13 @@ L D_Small D89
 U 1 1 57FED3CA
 P 2895 4170
 F 0 "D89" H 2780 4150 24  0000 C CNN
-F 1 "1N4148 SMD" H 2790 4225 24  0000 C CNN
+F 1 "TMMBAT48" H 2790 4225 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2895 4170 50  0001 C CNN
 F 3 "" V 2895 4170 50  0001 C CNN
 F 4 "Value" H 2895 4170 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2895 4170 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2895 4170 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2895 4170 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2895 4170 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2895 4170 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2895 4170 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2895 4170 60  0001 C CNN "Bauform"
 	1    2895 4170
 	-1   0    0    -1  
@@ -11926,13 +11923,13 @@ L D_Small D90
 U 1 1 57FED3DC
 P 2895 4290
 F 0 "D90" H 3015 4315 24  0000 C CNN
-F 1 "1N4148 SMD" H 2995 4225 24  0000 C CNN
+F 1 "TMMBAT48" H 2995 4225 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2895 4290 50  0001 C CNN
 F 3 "" V 2895 4290 50  0001 C CNN
 F 4 "Value" H 2895 4290 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2895 4290 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2895 4290 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2895 4290 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2895 4290 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2895 4290 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2895 4290 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2895 4290 60  0001 C CNN "Bauform"
 	1    2895 4290
 	1    0    0    -1  
@@ -11944,13 +11941,13 @@ L D_Small D81
 U 1 1 57FEE55B
 P 2380 4340
 F 0 "D81" H 2265 4320 24  0000 C CNN
-F 1 "1N4148 SMD" H 2275 4395 24  0000 C CNN
+F 1 "TMMBAT48" H 2275 4395 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2380 4340 50  0001 C CNN
 F 3 "" V 2380 4340 50  0001 C CNN
 F 4 "Value" H 2380 4340 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2380 4340 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2380 4340 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2380 4340 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2380 4340 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2380 4340 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2380 4340 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2380 4340 60  0001 C CNN "Bauform"
 	1    2380 4340
 	-1   0    0    -1  
@@ -11973,13 +11970,13 @@ L D_Small D82
 U 1 1 57FEE56D
 P 2380 4460
 F 0 "D82" H 2500 4485 24  0000 C CNN
-F 1 "1N4148 SMD" H 2480 4395 24  0000 C CNN
+F 1 "TMMBAT48" H 2480 4395 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2380 4460 50  0001 C CNN
 F 3 "" V 2380 4460 50  0001 C CNN
 F 4 "Value" H 2380 4460 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2380 4460 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2380 4460 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2380 4460 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2380 4460 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2380 4460 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2380 4460 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2380 4460 60  0001 C CNN "Bauform"
 	1    2380 4460
 	1    0    0    -1  
@@ -11991,13 +11988,13 @@ L D_Small D85
 U 1 1 57FEF9FE
 P 2835 4520
 F 0 "D85" H 2720 4500 24  0000 C CNN
-F 1 "1N4148 SMD" H 2730 4575 24  0000 C CNN
+F 1 "TMMBAT48" H 2730 4575 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2835 4520 50  0001 C CNN
 F 3 "" V 2835 4520 50  0001 C CNN
 F 4 "Value" H 2835 4520 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2835 4520 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2835 4520 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2835 4520 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2835 4520 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2835 4520 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2835 4520 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2835 4520 60  0001 C CNN "Bauform"
 	1    2835 4520
 	-1   0    0    -1  
@@ -12020,13 +12017,13 @@ L D_Small D86
 U 1 1 57FEFA10
 P 2835 4640
 F 0 "D86" H 2955 4665 24  0000 C CNN
-F 1 "1N4148 SMD" H 2935 4575 24  0000 C CNN
+F 1 "TMMBAT48" H 2935 4575 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2835 4640 50  0001 C CNN
 F 3 "" V 2835 4640 50  0001 C CNN
 F 4 "Value" H 2835 4640 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2835 4640 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2835 4640 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2835 4640 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2835 4640 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2835 4640 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2835 4640 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2835 4640 60  0001 C CNN "Bauform"
 	1    2835 4640
 	1    0    0    -1  
@@ -12038,13 +12035,13 @@ L D_Small D83
 U 1 1 57FF076B
 P 2385 4690
 F 0 "D83" H 2270 4670 24  0000 C CNN
-F 1 "1N4148 SMD" H 2280 4745 24  0000 C CNN
+F 1 "TMMBAT48" H 2280 4745 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2385 4690 50  0001 C CNN
 F 3 "" V 2385 4690 50  0001 C CNN
 F 4 "Value" H 2385 4690 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2385 4690 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2385 4690 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2385 4690 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2385 4690 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2385 4690 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2385 4690 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2385 4690 60  0001 C CNN "Bauform"
 	1    2385 4690
 	-1   0    0    -1  
@@ -12067,13 +12064,13 @@ L D_Small D84
 U 1 1 57FF077D
 P 2385 4810
 F 0 "D84" H 2505 4835 24  0000 C CNN
-F 1 "1N4148 SMD" H 2485 4745 24  0000 C CNN
+F 1 "TMMBAT48" H 2485 4745 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2385 4810 50  0001 C CNN
 F 3 "" V 2385 4810 50  0001 C CNN
 F 4 "Value" H 2385 4810 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2385 4810 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2385 4810 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2385 4810 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2385 4810 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2385 4810 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2385 4810 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2385 4810 60  0001 C CNN "Bauform"
 	1    2385 4810
 	1    0    0    -1  
@@ -12085,13 +12082,13 @@ L D_Small D87
 U 1 1 57FF275D
 P 2845 4880
 F 0 "D87" H 2730 4860 24  0000 C CNN
-F 1 "1N4148 SMD" H 2740 4935 24  0000 C CNN
+F 1 "TMMBAT48" H 2740 4935 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2845 4880 50  0001 C CNN
 F 3 "" V 2845 4880 50  0001 C CNN
 F 4 "Value" H 2845 4880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2845 4880 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2845 4880 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2845 4880 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2845 4880 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2845 4880 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2845 4880 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2845 4880 60  0001 C CNN "Bauform"
 	1    2845 4880
 	-1   0    0    -1  
@@ -12114,13 +12111,13 @@ L D_Small D88
 U 1 1 57FF276F
 P 2845 5000
 F 0 "D88" H 2965 5025 24  0000 C CNN
-F 1 "1N4148 SMD" H 2945 4935 24  0000 C CNN
+F 1 "TMMBAT48" H 2945 4935 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2845 5000 50  0001 C CNN
 F 3 "" V 2845 5000 50  0001 C CNN
 F 4 "Value" H 2845 5000 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2845 5000 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2845 5000 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2845 5000 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2845 5000 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2845 5000 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2845 5000 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2845 5000 60  0001 C CNN "Bauform"
 	1    2845 5000
 	1    0    0    -1  
@@ -12132,13 +12129,13 @@ L D_Small D111
 U 1 1 57FF62D5
 P 2375 5065
 F 0 "D111" H 2260 5045 24  0000 C CNN
-F 1 "1N4148 SMD" H 2270 5120 24  0000 C CNN
+F 1 "TMMBAT48" H 2270 5120 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2375 5065 50  0001 C CNN
 F 3 "" V 2375 5065 50  0001 C CNN
 F 4 "Value" H 2375 5065 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2375 5065 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2375 5065 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2375 5065 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 5065 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 5065 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2375 5065 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2375 5065 60  0001 C CNN "Bauform"
 	1    2375 5065
 	-1   0    0    -1  
@@ -12161,13 +12158,13 @@ L D_Small D112
 U 1 1 57FF62E7
 P 2375 5185
 F 0 "D112" H 2495 5210 24  0000 C CNN
-F 1 "1N4148 SMD" H 2475 5120 24  0000 C CNN
+F 1 "TMMBAT48" H 2475 5120 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2375 5185 50  0001 C CNN
 F 3 "" V 2375 5185 50  0001 C CNN
 F 4 "Value" H 2375 5185 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2375 5185 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2375 5185 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2375 5185 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 5185 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 5185 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2375 5185 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2375 5185 60  0001 C CNN "Bauform"
 	1    2375 5185
 	1    0    0    -1  
@@ -12179,13 +12176,13 @@ L D_Small D109
 U 1 1 57FF75F7
 P 2365 5350
 F 0 "D109" H 2250 5330 24  0000 C CNN
-F 1 "1N4148 SMD" H 2260 5405 24  0000 C CNN
+F 1 "TMMBAT48" H 2260 5405 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2365 5350 50  0001 C CNN
 F 3 "" V 2365 5350 50  0001 C CNN
 F 4 "Value" H 2365 5350 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2365 5350 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2365 5350 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2365 5350 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 5350 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 5350 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2365 5350 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2365 5350 60  0001 C CNN "Bauform"
 	1    2365 5350
 	-1   0    0    -1  
@@ -12208,13 +12205,13 @@ L D_Small D110
 U 1 1 57FF7609
 P 2365 5470
 F 0 "D110" H 2485 5495 24  0000 C CNN
-F 1 "1N4148 SMD" H 2465 5405 24  0000 C CNN
+F 1 "TMMBAT48" H 2465 5405 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2365 5470 50  0001 C CNN
 F 3 "" V 2365 5470 50  0001 C CNN
 F 4 "Value" H 2365 5470 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 2365 5470 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 2365 5470 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 2365 5470 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 5470 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 5470 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2365 5470 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2365 5470 60  0001 C CNN "Bauform"
 	1    2365 5470
 	1    0    0    -1  
@@ -12226,13 +12223,13 @@ L D_Small D97
 U 1 1 57FF94E5
 P 970 5620
 F 0 "D97" H 855 5600 24  0000 C CNN
-F 1 "1N4148 SMD" H 865 5675 24  0000 C CNN
+F 1 "TMMBAT48" H 865 5675 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 970 5620 50  0001 C CNN
 F 3 "" V 970 5620 50  0001 C CNN
 F 4 "Value" H 970 5620 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 970 5620 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 970 5620 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 970 5620 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 5620 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 5620 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 970 5620 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 970 5620 60  0001 C CNN "Bauform"
 	1    970  5620
 	-1   0    0    -1  
@@ -12255,13 +12252,13 @@ L D_Small D98
 U 1 1 57FF94F7
 P 970 5740
 F 0 "D98" H 1090 5765 24  0000 C CNN
-F 1 "1N4148 SMD" H 1070 5675 24  0000 C CNN
+F 1 "TMMBAT48" H 1070 5675 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 970 5740 50  0001 C CNN
 F 3 "" V 970 5740 50  0001 C CNN
 F 4 "Value" H 970 5740 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 970 5740 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 970 5740 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 970 5740 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 5740 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 5740 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 970 5740 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 970 5740 60  0001 C CNN "Bauform"
 	1    970  5740
 	1    0    0    -1  
@@ -12273,13 +12270,13 @@ L D_Small D93
 U 1 1 57FFA77D
 P 965 5910
 F 0 "D93" H 850 5890 24  0000 C CNN
-F 1 "1N4148 SMD" H 860 5965 24  0000 C CNN
+F 1 "TMMBAT48" H 860 5965 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 965 5910 50  0001 C CNN
 F 3 "" V 965 5910 50  0001 C CNN
 F 4 "Value" H 965 5910 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 965 5910 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 965 5910 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 965 5910 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 5910 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 5910 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 965 5910 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 965 5910 60  0001 C CNN "Bauform"
 	1    965  5910
 	-1   0    0    -1  
@@ -12302,13 +12299,13 @@ L D_Small D94
 U 1 1 57FFA78F
 P 965 6030
 F 0 "D94" H 1085 6055 24  0000 C CNN
-F 1 "1N4148 SMD" H 1065 5965 24  0000 C CNN
+F 1 "TMMBAT48" H 1065 5965 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 965 6030 50  0001 C CNN
 F 3 "" V 965 6030 50  0001 C CNN
 F 4 "Value" H 965 6030 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 965 6030 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 965 6030 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 965 6030 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 6030 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 6030 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 965 6030 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 965 6030 60  0001 C CNN "Bauform"
 	1    965  6030
 	1    0    0    -1  
@@ -12320,13 +12317,13 @@ L D_Small D91
 U 1 1 57FFBE92
 P 960 6195
 F 0 "D91" H 845 6175 24  0000 C CNN
-F 1 "1N4148 SMD" H 855 6250 24  0000 C CNN
+F 1 "TMMBAT48" H 855 6250 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 960 6195 50  0001 C CNN
 F 3 "" V 960 6195 50  0001 C CNN
 F 4 "Value" H 960 6195 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 960 6195 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 960 6195 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 960 6195 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 960 6195 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 960 6195 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 960 6195 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 960 6195 60  0001 C CNN "Bauform"
 	1    960  6195
 	-1   0    0    -1  
@@ -12349,13 +12346,13 @@ L D_Small D92
 U 1 1 57FFBEA4
 P 960 6315
 F 0 "D92" H 1080 6340 24  0000 C CNN
-F 1 "1N4148 SMD" H 1060 6250 24  0000 C CNN
+F 1 "TMMBAT48" H 1060 6250 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 960 6315 50  0001 C CNN
 F 3 "" V 960 6315 50  0001 C CNN
 F 4 "Value" H 960 6315 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 960 6315 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 960 6315 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 960 6315 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 960 6315 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 960 6315 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 960 6315 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 960 6315 60  0001 C CNN "Bauform"
 	1    960  6315
 	1    0    0    -1  
@@ -12367,13 +12364,13 @@ L D_Small D99
 U 1 1 57FFD738
 P 970 6490
 F 0 "D99" H 855 6470 24  0000 C CNN
-F 1 "1N4148 SMD" H 865 6545 24  0000 C CNN
+F 1 "TMMBAT48" H 865 6545 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 970 6490 50  0001 C CNN
 F 3 "" V 970 6490 50  0001 C CNN
 F 4 "Value" H 970 6490 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 970 6490 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 970 6490 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 970 6490 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 6490 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 6490 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 970 6490 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 970 6490 60  0001 C CNN "Bauform"
 	1    970  6490
 	-1   0    0    -1  
@@ -12396,13 +12393,13 @@ L D_Small D100
 U 1 1 57FFD74A
 P 970 6610
 F 0 "D100" H 1090 6635 24  0000 C CNN
-F 1 "1N4148 SMD" H 1070 6545 24  0000 C CNN
+F 1 "TMMBAT48" H 1070 6545 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 970 6610 50  0001 C CNN
 F 3 "" V 970 6610 50  0001 C CNN
 F 4 "Value" H 970 6610 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 970 6610 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 970 6610 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 970 6610 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 6610 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 6610 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 970 6610 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 970 6610 60  0001 C CNN "Bauform"
 	1    970  6610
 	1    0    0    -1  
@@ -12414,13 +12411,13 @@ L D_Small D95
 U 1 1 58000317
 P 965 6775
 F 0 "D95" H 850 6755 24  0000 C CNN
-F 1 "1N4148 SMD" H 860 6830 24  0000 C CNN
+F 1 "TMMBAT48" H 860 6830 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 965 6775 50  0001 C CNN
 F 3 "" V 965 6775 50  0001 C CNN
 F 4 "Value" H 965 6775 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 965 6775 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 965 6775 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 965 6775 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 6775 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 6775 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 965 6775 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 965 6775 60  0001 C CNN "Bauform"
 	1    965  6775
 	-1   0    0    -1  
@@ -12443,13 +12440,13 @@ L D_Small D96
 U 1 1 58000329
 P 965 6895
 F 0 "D96" H 1085 6920 24  0000 C CNN
-F 1 "1N4148 SMD" H 1065 6830 24  0000 C CNN
+F 1 "TMMBAT48" H 1065 6830 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 965 6895 50  0001 C CNN
 F 3 "" V 965 6895 50  0001 C CNN
 F 4 "Value" H 965 6895 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 965 6895 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 965 6895 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 965 6895 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 6895 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 6895 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 965 6895 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 965 6895 60  0001 C CNN "Bauform"
 	1    965  6895
 	1    0    0    -1  
@@ -12461,13 +12458,13 @@ L D_Small D107
 U 1 1 58002CAA
 P 1950 5850
 F 0 "D107" H 1835 5830 24  0000 C CNN
-F 1 "1N4148 SMD" H 1845 5905 24  0000 C CNN
+F 1 "TMMBAT48" H 1845 5905 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1950 5850 50  0001 C CNN
 F 3 "" V 1950 5850 50  0001 C CNN
 F 4 "Value" H 1950 5850 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1950 5850 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1950 5850 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1950 5850 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1950 5850 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1950 5850 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1950 5850 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1950 5850 60  0001 C CNN "Bauform"
 	1    1950 5850
 	-1   0    0    -1  
@@ -12490,13 +12487,13 @@ L D_Small D108
 U 1 1 58002CBC
 P 1950 5970
 F 0 "D108" H 2070 5995 24  0000 C CNN
-F 1 "1N4148 SMD" H 2050 5905 24  0000 C CNN
+F 1 "TMMBAT48" H 2050 5905 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1950 5970 50  0001 C CNN
 F 3 "" V 1950 5970 50  0001 C CNN
 F 4 "Value" H 1950 5970 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1950 5970 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1950 5970 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1950 5970 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1950 5970 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1950 5970 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1950 5970 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1950 5970 60  0001 C CNN "Bauform"
 	1    1950 5970
 	1    0    0    -1  
@@ -12508,13 +12505,13 @@ L D_Small D105
 U 1 1 5800454D
 P 1945 6130
 F 0 "D105" H 1830 6110 24  0000 C CNN
-F 1 "1N4148 SMD" H 1840 6185 24  0000 C CNN
+F 1 "TMMBAT48" H 1840 6185 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1945 6130 50  0001 C CNN
 F 3 "" V 1945 6130 50  0001 C CNN
 F 4 "Value" H 1945 6130 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1945 6130 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1945 6130 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1945 6130 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1945 6130 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1945 6130 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1945 6130 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1945 6130 60  0001 C CNN "Bauform"
 	1    1945 6130
 	-1   0    0    -1  
@@ -12537,13 +12534,13 @@ L D_Small D106
 U 1 1 5800455F
 P 1945 6250
 F 0 "D106" H 2065 6275 24  0000 C CNN
-F 1 "1N4148 SMD" H 2045 6185 24  0000 C CNN
+F 1 "TMMBAT48" H 2045 6185 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1945 6250 50  0001 C CNN
 F 3 "" V 1945 6250 50  0001 C CNN
 F 4 "Value" H 1945 6250 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1945 6250 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1945 6250 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1945 6250 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1945 6250 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1945 6250 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1945 6250 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1945 6250 60  0001 C CNN "Bauform"
 	1    1945 6250
 	1    0    0    -1  
@@ -12555,13 +12552,13 @@ L D_Small D103
 U 1 1 58005B85
 P 1940 6415
 F 0 "D103" H 1825 6395 24  0000 C CNN
-F 1 "1N4148 SMD" H 1835 6470 24  0000 C CNN
+F 1 "TMMBAT48" H 1835 6470 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1940 6415 50  0001 C CNN
 F 3 "" V 1940 6415 50  0001 C CNN
 F 4 "Value" H 1940 6415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1940 6415 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1940 6415 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1940 6415 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1940 6415 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1940 6415 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1940 6415 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1940 6415 60  0001 C CNN "Bauform"
 	1    1940 6415
 	-1   0    0    -1  
@@ -12584,13 +12581,13 @@ L D_Small D104
 U 1 1 58005B97
 P 1940 6535
 F 0 "D104" H 2060 6560 24  0000 C CNN
-F 1 "1N4148 SMD" H 2040 6470 24  0000 C CNN
+F 1 "TMMBAT48" H 2040 6470 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1940 6535 50  0001 C CNN
 F 3 "" V 1940 6535 50  0001 C CNN
 F 4 "Value" H 1940 6535 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1940 6535 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1940 6535 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1940 6535 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1940 6535 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1940 6535 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1940 6535 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1940 6535 60  0001 C CNN "Bauform"
 	1    1940 6535
 	1    0    0    -1  
@@ -12602,13 +12599,13 @@ L D_Small D101
 U 1 1 580072EC
 P 1935 6695
 F 0 "D101" H 1820 6675 24  0000 C CNN
-F 1 "1N4148 SMD" H 1830 6750 24  0000 C CNN
+F 1 "TMMBAT48" H 1830 6750 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1935 6695 50  0001 C CNN
 F 3 "" V 1935 6695 50  0001 C CNN
 F 4 "Value" H 1935 6695 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1935 6695 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1935 6695 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1935 6695 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1935 6695 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1935 6695 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1935 6695 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1935 6695 60  0001 C CNN "Bauform"
 	1    1935 6695
 	-1   0    0    -1  
@@ -12631,13 +12628,13 @@ L D_Small D102
 U 1 1 580072FE
 P 1935 6815
 F 0 "D102" H 2055 6840 24  0000 C CNN
-F 1 "1N4148 SMD" H 2035 6750 24  0000 C CNN
+F 1 "TMMBAT48" H 2035 6750 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1935 6815 50  0001 C CNN
 F 3 "" V 1935 6815 50  0001 C CNN
 F 4 "Value" H 1935 6815 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 1935 6815 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 1935 6815 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 1935 6815 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1935 6815 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1935 6815 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1935 6815 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 1935 6815 60  0001 C CNN "Bauform"
 	1    1935 6815
 	1    0    0    -1  
@@ -12649,13 +12646,13 @@ L D_Small D115
 U 1 1 580018C9
 P 6125 6175
 F 0 "D115" H 6010 6155 24  0000 C CNN
-F 1 "1N4148 SMD" H 6020 6230 24  0000 C CNN
+F 1 "TMMBAT48" H 6020 6230 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 6125 6175 50  0001 C CNN
 F 3 "" V 6125 6175 50  0001 C CNN
 F 4 "Value" H 6125 6175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6125 6175 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6125 6175 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6125 6175 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6125 6175 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6125 6175 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6125 6175 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6125 6175 60  0001 C CNN "Bauform"
 	1    6125 6175
 	1    0    0    -1  
@@ -12678,13 +12675,13 @@ L D_Small D116
 U 1 1 580018DB
 P 6125 6295
 F 0 "D116" H 6245 6320 24  0000 C CNN
-F 1 "1N4148 SMD" H 6225 6230 24  0000 C CNN
+F 1 "TMMBAT48" H 6225 6230 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 6125 6295 50  0001 C CNN
 F 3 "" V 6125 6295 50  0001 C CNN
 F 4 "Value" H 6125 6295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6125 6295 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6125 6295 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6125 6295 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6125 6295 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6125 6295 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6125 6295 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6125 6295 60  0001 C CNN "Bauform"
 	1    6125 6295
 	-1   0    0    -1  
@@ -12696,13 +12693,13 @@ L D_Small D113
 U 1 1 580031B6
 P 6120 5880
 F 0 "D113" H 6005 5860 24  0000 C CNN
-F 1 "1N4148 SMD" H 6015 5935 24  0000 C CNN
+F 1 "TMMBAT48" H 6015 5935 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 6120 5880 50  0001 C CNN
 F 3 "" V 6120 5880 50  0001 C CNN
 F 4 "Value" H 6120 5880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6120 5880 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6120 5880 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6120 5880 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6120 5880 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6120 5880 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6120 5880 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6120 5880 60  0001 C CNN "Bauform"
 	1    6120 5880
 	1    0    0    -1  
@@ -12725,13 +12722,13 @@ L D_Small D114
 U 1 1 580031C8
 P 6120 6000
 F 0 "D114" H 6240 6025 24  0000 C CNN
-F 1 "1N4148 SMD" H 6220 5935 24  0000 C CNN
+F 1 "TMMBAT48" H 6220 5935 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 6120 6000 50  0001 C CNN
 F 3 "" V 6120 6000 50  0001 C CNN
 F 4 "Value" H 6120 6000 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 6120 6000 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 6120 6000 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 6120 6000 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6120 6000 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6120 6000 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 6120 6000 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 6120 6000 60  0001 C CNN "Bauform"
 	1    6120 6000
 	-1   0    0    -1  
@@ -12743,13 +12740,13 @@ L D_Small D127
 U 1 1 58004B36
 P 9105 6160
 F 0 "D127" H 8990 6140 24  0000 C CNN
-F 1 "1N4148 SMD" H 9000 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 9000 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9105 6160 50  0001 C CNN
 F 3 "" V 9105 6160 50  0001 C CNN
 F 4 "Value" H 9105 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9105 6160 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9105 6160 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9105 6160 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9105 6160 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9105 6160 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9105 6160 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9105 6160 60  0001 C CNN "Bauform"
 	1    9105 6160
 	1    0    0    -1  
@@ -12772,13 +12769,13 @@ L D_Small D128
 U 1 1 58004B48
 P 9105 6280
 F 0 "D128" H 9225 6305 24  0000 C CNN
-F 1 "1N4148 SMD" H 9205 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 9205 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9105 6280 50  0001 C CNN
 F 3 "" V 9105 6280 50  0001 C CNN
 F 4 "Value" H 9105 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9105 6280 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9105 6280 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9105 6280 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9105 6280 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9105 6280 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9105 6280 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9105 6280 60  0001 C CNN "Bauform"
 	1    9105 6280
 	-1   0    0    -1  
@@ -12790,13 +12787,13 @@ L D_Small D125
 U 1 1 58004C71
 P 9100 5875
 F 0 "D125" H 8985 5855 24  0000 C CNN
-F 1 "1N4148 SMD" H 8995 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 8995 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9100 5875 50  0001 C CNN
 F 3 "" V 9100 5875 50  0001 C CNN
 F 4 "Value" H 9100 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9100 5875 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9100 5875 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9100 5875 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9100 5875 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9100 5875 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9100 5875 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9100 5875 60  0001 C CNN "Bauform"
 	1    9100 5875
 	1    0    0    -1  
@@ -12819,13 +12816,13 @@ L D_Small D126
 U 1 1 58004C83
 P 9100 5995
 F 0 "D126" H 9220 6020 24  0000 C CNN
-F 1 "1N4148 SMD" H 9200 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 9200 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9100 5995 50  0001 C CNN
 F 3 "" V 9100 5995 50  0001 C CNN
 F 4 "Value" H 9100 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9100 5995 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9100 5995 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9100 5995 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9100 5995 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9100 5995 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9100 5995 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9100 5995 60  0001 C CNN "Bauform"
 	1    9100 5995
 	-1   0    0    -1  
@@ -12837,13 +12834,13 @@ L D_Small D119
 U 1 1 58007C16
 P 7065 6160
 F 0 "D119" H 6950 6140 24  0000 C CNN
-F 1 "1N4148 SMD" H 6960 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 6960 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7065 6160 50  0001 C CNN
 F 3 "" V 7065 6160 50  0001 C CNN
 F 4 "Value" H 7065 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7065 6160 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7065 6160 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7065 6160 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7065 6160 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7065 6160 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7065 6160 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7065 6160 60  0001 C CNN "Bauform"
 	1    7065 6160
 	1    0    0    -1  
@@ -12866,13 +12863,13 @@ L D_Small D120
 U 1 1 58007C28
 P 7065 6280
 F 0 "D120" H 7185 6305 24  0000 C CNN
-F 1 "1N4148 SMD" H 7165 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 7165 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7065 6280 50  0001 C CNN
 F 3 "" V 7065 6280 50  0001 C CNN
 F 4 "Value" H 7065 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7065 6280 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7065 6280 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7065 6280 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7065 6280 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7065 6280 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7065 6280 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7065 6280 60  0001 C CNN "Bauform"
 	1    7065 6280
 	-1   0    0    -1  
@@ -12884,13 +12881,13 @@ L D_Small D117
 U 1 1 58007C3A
 P 7060 5875
 F 0 "D117" H 6945 5855 24  0000 C CNN
-F 1 "1N4148 SMD" H 6955 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 6955 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7060 5875 50  0001 C CNN
 F 3 "" V 7060 5875 50  0001 C CNN
 F 4 "Value" H 7060 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7060 5875 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7060 5875 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7060 5875 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7060 5875 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7060 5875 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7060 5875 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7060 5875 60  0001 C CNN "Bauform"
 	1    7060 5875
 	1    0    0    -1  
@@ -12913,13 +12910,13 @@ L D_Small D118
 U 1 1 58007C4C
 P 7060 5995
 F 0 "D118" H 7180 6020 24  0000 C CNN
-F 1 "1N4148 SMD" H 7160 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 7160 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7060 5995 50  0001 C CNN
 F 3 "" V 7060 5995 50  0001 C CNN
 F 4 "Value" H 7060 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 7060 5995 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 7060 5995 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 7060 5995 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7060 5995 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7060 5995 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7060 5995 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 7060 5995 60  0001 C CNN "Bauform"
 	1    7060 5995
 	-1   0    0    -1  
@@ -12931,13 +12928,13 @@ L D_Small D123
 U 1 1 5800C79B
 P 8090 6160
 F 0 "D123" H 7975 6140 24  0000 C CNN
-F 1 "1N4148 SMD" H 7985 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 7985 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 8090 6160 50  0001 C CNN
 F 3 "" V 8090 6160 50  0001 C CNN
 F 4 "Value" H 8090 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8090 6160 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8090 6160 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8090 6160 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8090 6160 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8090 6160 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8090 6160 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8090 6160 60  0001 C CNN "Bauform"
 	1    8090 6160
 	1    0    0    -1  
@@ -12960,13 +12957,13 @@ L D_Small D124
 U 1 1 5800C7AD
 P 8090 6280
 F 0 "D124" H 8210 6305 24  0000 C CNN
-F 1 "1N4148 SMD" H 8190 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 8190 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 8090 6280 50  0001 C CNN
 F 3 "" V 8090 6280 50  0001 C CNN
 F 4 "Value" H 8090 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8090 6280 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8090 6280 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8090 6280 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8090 6280 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8090 6280 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8090 6280 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8090 6280 60  0001 C CNN "Bauform"
 	1    8090 6280
 	-1   0    0    -1  
@@ -12978,13 +12975,13 @@ L D_Small D121
 U 1 1 5800C7BE
 P 8085 5875
 F 0 "D121" H 7970 5855 24  0000 C CNN
-F 1 "1N4148 SMD" H 7980 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 7980 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 8085 5875 50  0001 C CNN
 F 3 "" V 8085 5875 50  0001 C CNN
 F 4 "Value" H 8085 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8085 5875 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8085 5875 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8085 5875 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8085 5875 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8085 5875 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8085 5875 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8085 5875 60  0001 C CNN "Bauform"
 	1    8085 5875
 	1    0    0    -1  
@@ -13007,13 +13004,13 @@ L D_Small D122
 U 1 1 5800C7D0
 P 8085 5995
 F 0 "D122" H 8205 6020 24  0000 C CNN
-F 1 "1N4148 SMD" H 8185 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 8185 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 8085 5995 50  0001 C CNN
 F 3 "" V 8085 5995 50  0001 C CNN
 F 4 "Value" H 8085 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 8085 5995 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 8085 5995 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 8085 5995 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8085 5995 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8085 5995 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8085 5995 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 8085 5995 60  0001 C CNN "Bauform"
 	1    8085 5995
 	-1   0    0    -1  
@@ -13025,13 +13022,13 @@ L D_Small D131
 U 1 1 5801B3B1
 P 9095 5580
 F 0 "D131" H 8980 5560 24  0000 C CNN
-F 1 "1N4148 SMD" H 8990 5635 24  0000 C CNN
+F 1 "TMMBAT48" H 8990 5635 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9095 5580 50  0001 C CNN
 F 3 "" V 9095 5580 50  0001 C CNN
 F 4 "Value" H 9095 5580 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9095 5580 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9095 5580 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9095 5580 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9095 5580 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9095 5580 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9095 5580 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9095 5580 60  0001 C CNN "Bauform"
 	1    9095 5580
 	1    0    0    -1  
@@ -13054,13 +13051,13 @@ L D_Small D132
 U 1 1 5801B3C3
 P 9095 5700
 F 0 "D132" H 9215 5725 24  0000 C CNN
-F 1 "1N4148 SMD" H 9195 5635 24  0000 C CNN
+F 1 "TMMBAT48" H 9195 5635 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9095 5700 50  0001 C CNN
 F 3 "" V 9095 5700 50  0001 C CNN
 F 4 "Value" H 9095 5700 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9095 5700 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9095 5700 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9095 5700 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9095 5700 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9095 5700 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9095 5700 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9095 5700 60  0001 C CNN "Bauform"
 	1    9095 5700
 	-1   0    0    -1  
@@ -13072,13 +13069,13 @@ L D_Small D129
 U 1 1 5801B3D4
 P 9090 5295
 F 0 "D129" H 8975 5275 24  0000 C CNN
-F 1 "1N4148 SMD" H 8985 5350 24  0000 C CNN
+F 1 "TMMBAT48" H 8985 5350 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9090 5295 50  0001 C CNN
 F 3 "" V 9090 5295 50  0001 C CNN
 F 4 "Value" H 9090 5295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9090 5295 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9090 5295 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9090 5295 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9090 5295 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9090 5295 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9090 5295 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9090 5295 60  0001 C CNN "Bauform"
 	1    9090 5295
 	1    0    0    -1  
@@ -13101,13 +13098,13 @@ L D_Small D130
 U 1 1 5801B3E6
 P 9090 5415
 F 0 "D130" H 9210 5440 24  0000 C CNN
-F 1 "1N4148 SMD" H 9190 5350 24  0000 C CNN
+F 1 "TMMBAT48" H 9190 5350 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 9090 5415 50  0001 C CNN
 F 3 "" V 9090 5415 50  0001 C CNN
 F 4 "Value" H 9090 5415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 9090 5415 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 9090 5415 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 9090 5415 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9090 5415 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9090 5415 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 9090 5415 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 9090 5415 60  0001 C CNN "Bauform"
 	1    9090 5415
 	-1   0    0    -1  
@@ -13119,13 +13116,13 @@ L D_Small D139
 U 1 1 58023921
 P 10190 6160
 F 0 "D139" H 10075 6140 24  0000 C CNN
-F 1 "1N4148 SMD" H 10085 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 10085 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10190 6160 50  0001 C CNN
 F 3 "" V 10190 6160 50  0001 C CNN
 F 4 "Value" H 10190 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10190 6160 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10190 6160 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10190 6160 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10190 6160 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10190 6160 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10190 6160 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10190 6160 60  0001 C CNN "Bauform"
 	1    10190 6160
 	1    0    0    -1  
@@ -13148,13 +13145,13 @@ L D_Small D140
 U 1 1 58023933
 P 10190 6280
 F 0 "D140" H 10310 6305 24  0000 C CNN
-F 1 "1N4148 SMD" H 10290 6215 24  0000 C CNN
+F 1 "TMMBAT48" H 10290 6215 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10190 6280 50  0001 C CNN
 F 3 "" V 10190 6280 50  0001 C CNN
 F 4 "Value" H 10190 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10190 6280 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10190 6280 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10190 6280 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10190 6280 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10190 6280 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10190 6280 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10190 6280 60  0001 C CNN "Bauform"
 	1    10190 6280
 	-1   0    0    -1  
@@ -13166,13 +13163,13 @@ L D_Small D137
 U 1 1 58023944
 P 10185 5875
 F 0 "D137" H 10070 5855 24  0000 C CNN
-F 1 "1N4148 SMD" H 10080 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 10080 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10185 5875 50  0001 C CNN
 F 3 "" V 10185 5875 50  0001 C CNN
 F 4 "Value" H 10185 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10185 5875 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10185 5875 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10185 5875 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10185 5875 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10185 5875 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10185 5875 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10185 5875 60  0001 C CNN "Bauform"
 	1    10185 5875
 	1    0    0    -1  
@@ -13195,13 +13192,13 @@ L D_Small D138
 U 1 1 58023956
 P 10185 5995
 F 0 "D138" H 10305 6020 24  0000 C CNN
-F 1 "1N4148 SMD" H 10285 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 10285 5930 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10185 5995 50  0001 C CNN
 F 3 "" V 10185 5995 50  0001 C CNN
 F 4 "Value" H 10185 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10185 5995 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10185 5995 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10185 5995 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10185 5995 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10185 5995 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10185 5995 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10185 5995 60  0001 C CNN "Bauform"
 	1    10185 5995
 	-1   0    0    -1  
@@ -13213,13 +13210,13 @@ L D_Small D135
 U 1 1 58023967
 P 10180 5580
 F 0 "D135" H 10065 5560 24  0000 C CNN
-F 1 "1N4148 SMD" H 10075 5635 24  0000 C CNN
+F 1 "TMMBAT48" H 10075 5635 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10180 5580 50  0001 C CNN
 F 3 "" V 10180 5580 50  0001 C CNN
 F 4 "Value" H 10180 5580 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10180 5580 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10180 5580 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10180 5580 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10180 5580 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10180 5580 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10180 5580 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10180 5580 60  0001 C CNN "Bauform"
 	1    10180 5580
 	1    0    0    -1  
@@ -13242,13 +13239,13 @@ L D_Small D136
 U 1 1 58023979
 P 10180 5700
 F 0 "D136" H 10300 5725 24  0000 C CNN
-F 1 "1N4148 SMD" H 10280 5635 24  0000 C CNN
+F 1 "TMMBAT48" H 10280 5635 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10180 5700 50  0001 C CNN
 F 3 "" V 10180 5700 50  0001 C CNN
 F 4 "Value" H 10180 5700 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10180 5700 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10180 5700 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10180 5700 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10180 5700 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10180 5700 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10180 5700 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10180 5700 60  0001 C CNN "Bauform"
 	1    10180 5700
 	-1   0    0    -1  
@@ -13260,13 +13257,13 @@ L D_Small D133
 U 1 1 58023989
 P 10175 5295
 F 0 "D133" H 10060 5275 24  0000 C CNN
-F 1 "1N4148 SMD" H 10070 5350 24  0000 C CNN
+F 1 "TMMBAT48" H 10070 5350 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10175 5295 50  0001 C CNN
 F 3 "" V 10175 5295 50  0001 C CNN
 F 4 "Value" H 10175 5295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10175 5295 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10175 5295 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10175 5295 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10175 5295 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10175 5295 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10175 5295 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10175 5295 60  0001 C CNN "Bauform"
 	1    10175 5295
 	1    0    0    -1  
@@ -13289,13 +13286,13 @@ L D_Small D134
 U 1 1 5802399B
 P 10175 5415
 F 0 "D134" H 10295 5440 24  0000 C CNN
-F 1 "1N4148 SMD" H 10275 5350 24  0000 C CNN
+F 1 "TMMBAT48" H 10275 5350 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10175 5415 50  0001 C CNN
 F 3 "" V 10175 5415 50  0001 C CNN
 F 4 "Value" H 10175 5415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10175 5415 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10175 5415 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10175 5415 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10175 5415 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10175 5415 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10175 5415 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10175 5415 60  0001 C CNN "Bauform"
 	1    10175 5415
 	-1   0    0    -1  
@@ -13351,7 +13348,7 @@ Wire Wire Line
 Wire Wire Line
 	9505 2645 5420 2645
 Wire Wire Line
-	5420 3845 5630 3845
+	5420 3845 5620 3845
 Wire Wire Line
 	2740 5395 3520 5395
 Wire Wire Line
@@ -13451,7 +13448,7 @@ Wire Wire Line
 	3440 2090 3470 2090
 Connection ~ 3470 2090
 Wire Wire Line
-	5420 3745 5605 3745
+	5420 3745 5620 3745
 Wire Wire Line
 	5420 3645 5620 3645
 Wire Wire Line
@@ -14245,13 +14242,13 @@ L D_Small D143
 U 1 1 58031082
 P 10295 5005
 F 0 "D143" H 10180 4985 24  0000 C CNN
-F 1 "1N4148 SMD" H 10190 5060 24  0000 C CNN
+F 1 "TMMBAT48" H 10190 5060 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10295 5005 50  0001 C CNN
 F 3 "" V 10295 5005 50  0001 C CNN
 F 4 "Value" H 10295 5005 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10295 5005 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10295 5005 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10295 5005 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10295 5005 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10295 5005 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10295 5005 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10295 5005 60  0001 C CNN "Bauform"
 	1    10295 5005
 	1    0    0    -1  
@@ -14274,13 +14271,13 @@ L D_Small D144
 U 1 1 58031094
 P 10295 5125
 F 0 "D144" H 10415 5150 24  0000 C CNN
-F 1 "1N4148 SMD" H 10395 5060 24  0000 C CNN
+F 1 "TMMBAT48" H 10395 5060 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10295 5125 50  0001 C CNN
 F 3 "" V 10295 5125 50  0001 C CNN
 F 4 "Value" H 10295 5125 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10295 5125 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10295 5125 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10295 5125 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10295 5125 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10295 5125 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10295 5125 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10295 5125 60  0001 C CNN "Bauform"
 	1    10295 5125
 	-1   0    0    -1  
@@ -14292,13 +14289,13 @@ L D_Small D141
 U 1 1 580310A0
 P 10290 4720
 F 0 "D141" H 10175 4700 24  0000 C CNN
-F 1 "1N4148 SMD" H 10185 4775 24  0000 C CNN
+F 1 "TMMBAT48" H 10185 4775 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10290 4720 50  0001 C CNN
 F 3 "" V 10290 4720 50  0001 C CNN
 F 4 "Value" H 10290 4720 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10290 4720 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10290 4720 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10290 4720 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10290 4720 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10290 4720 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10290 4720 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10290 4720 60  0001 C CNN "Bauform"
 	1    10290 4720
 	1    0    0    -1  
@@ -14321,13 +14318,13 @@ L D_Small D142
 U 1 1 580310B2
 P 10290 4840
 F 0 "D142" H 10410 4865 24  0000 C CNN
-F 1 "1N4148 SMD" H 10390 4775 24  0000 C CNN
+F 1 "TMMBAT48" H 10390 4775 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 10290 4840 50  0001 C CNN
 F 3 "" V 10290 4840 50  0001 C CNN
 F 4 "Value" H 10290 4840 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 10290 4840 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 10290 4840 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 10290 4840 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10290 4840 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10290 4840 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 10290 4840 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 10290 4840 60  0001 C CNN "Bauform"
 	1    10290 4840
 	-1   0    0    -1  
@@ -14358,4 +14355,12 @@ Text Notes 12860 3040 0    79   ~ 0
 also im grunde ist es bei der schaltung völlig pups...... \nes ist genau das gleiche problem wie mit dem LsF010x \nnicht der shifter ist das problem sondern das was dahinter kommt.\n Fraaage...... was macht ein pin wenn es als ausgang programmiert ist\nund wird aktiv mit einem andern ausgang verbunden? \nRichtiiiig es macht puff und so ist das auch mit dem shifter \ndu kannst dir aber die regel merken der gate widerstand zeigt zum MPU pin
 Text Notes 12900 4180 0    79   ~ 0
 achso um mein geschreibsel für den level shifter \nnoch mal zu verdeutlichen die low-side darf immer kleiner \noder gleichgroß der high-side sein \naber niemals größer als die high-side \nich hoffe das ist jetzt etwas verständlicher
+Text GLabel 3490 1445 0    39   BiDi ~ 0
+SCL22
+Text GLabel 3490 1345 0    39   BiDi ~ 0
+SDA22
+Wire Wire Line
+	3620 1345 3490 1345
+Wire Wire Line
+	3620 1445 3490 1445
 $EndSCHEMATC

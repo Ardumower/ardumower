@@ -5,10 +5,9 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
-LIBS:cmos_ieee
-LIBS:cmos4000
 LIBS:switches
-LIBS:rfcom
+LIBS:linear
+LIBS:texas
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -11098,11 +11097,11 @@ L D_Small D6
 U 1 1 57E93808
 P 3305 4795
 F 0 "D6" H 3305 4880 39  0000 C CNN
-F 1 "1N4148 SMD" H 3305 4940 39  0000 C CNN
+F 1 "TMMBAT48" H 3305 4940 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 3305 4795 50  0001 C CNN
 F 3 "" V 3305 4795 50  0001 C CNN
 F 4 "Value" H 3305 4795 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 3305 4795 60  0001 C CNN "Bestelllink"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3305 4795 60  0001 C CNN "Bestelllink"
 F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 3305 4795 60  0001 C CNN "Technische Daten"
 F 7 "R: 1N 4148 SMD" H 3305 4795 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 3305 4795 60  0001 C CNN "Bauform"
@@ -11118,10 +11117,13 @@ F 1 "1N4148 SMD" H 3305 4135 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 3305 3990 50  0001 C CNN
 F 3 "" V 3305 3990 50  0001 C CNN
 F 4 "Value" H 3305 3990 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/1N-4148-SMD/3/index.html?&ACTION=3&LA=446&ARTICLE=18403&artnr=1N+4148+SMD&SEARCH=1n4148" H 3305 3990 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, Mini Melf , 100V, 0,15A" H 3305 3990 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4148 SMD" H 3305 3990 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3305 3990 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3305 3990 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3305 3990 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 3305 3990 60  0001 C CNN "Bauform"
+F 9 "Value" H 3305 3990 60  0001 C CNN "Funktion"
+F 10 "Value" H 3305 3990 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3305 3990 60  0001 C CNN "Hersteller Bestellnummer"
 	1    3305 3990
 	1    0    0    1   
 $EndComp

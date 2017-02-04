@@ -1,4 +1,4 @@
-update=04.01.2017 20:02:47
+update=03.02.2017 13:35:22
 last_client=kicad
 [pcbnew]
 version=1
@@ -42,7 +42,6 @@ LibName3=device
 LibName4=Zimprich
 LibName5=conn
 LibName6=transistors
-LibName7=cmos_ieee
-LibName8=cmos4000
-LibName9=switches
-LibName10=rfcom
+LibName7=switches
+LibName8=linear
+LibName9=texas

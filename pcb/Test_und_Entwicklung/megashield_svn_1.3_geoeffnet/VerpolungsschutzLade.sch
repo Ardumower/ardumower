@@ -5,10 +5,9 @@ LIBS:device
 LIBS:Zimprich
 LIBS:conn
 LIBS:transistors
-LIBS:cmos_ieee
-LIBS:cmos4000
 LIBS:switches
-LIBS:rfcom
+LIBS:linear
+LIBS:texas
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -68,10 +67,10 @@ Eingang
 Wire Wire Line
 	4480 2755 4655 2755
 $Comp
-L GND #PWR0272
+L GND #PWR0273
 U 1 1 57E64EC6
 P 4905 3620
-F 0 "#PWR0272" H 4905 3370 50  0001 C CNN
+F 0 "#PWR0273" H 4905 3370 50  0001 C CNN
 F 1 "GND" H 4910 3447 50  0000 C CNN
 F 2 "" H 4905 3620 50  0000 C CNN
 F 3 "" H 4905 3620 50  0000 C CNN
