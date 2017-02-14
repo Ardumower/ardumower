@@ -746,4 +746,6 @@ Text Notes 3655 5550 0    118  ~ 0
 scl1 sda 1 nach ausen führen mit iorf\n\n1n4148 in TMMBAT48
 Text Notes 890  4135 0    79   ~ 0
 Änderungen 01.01.2017
+Text Notes 400  9710 0    79   ~ 0
+[21:36:55] Kurzschuss - Uwe: gut dan warte ich nochmal mit den widerständen bis du soweit bist\n[21:38:22] Kurzschuss - Uwe: Dann mache ich nur die andern Änderungen mit dem DHT22 dropsensoren usw und warte dann erst mal ab. wenn ich es habe lade ich dann hoch\n[21:38:26] Jürgen Lange: überall wo level shifter dran sind kannst du die Dioden und den widerstand wegmachen\n[21:39:37] Kurzschuss - Uwe: da warte ich erst mal wo dann noch ein widerstand dazukommt. das wird dann ein Aufwasch\n\n\n\nwenn du da gerade dran bist die ganzen reserve dinger AD7, pinOdometriyRight2 etc hast du auf iOREF versorgt da solltest du 5V dran machen da bleiben dann auch die Dioden und der widerstand\nich sehe gerade das bei den Odemetrie pin der Spannungsanschluss auf iorf liegt. Dazwischen ist dann noch der ODoteiler und der Levelshifter.\nIch vermute mal das die odemetriepins auch auf 5V müssen damit der Odoteiler richtig arbeitetein klaaaaaaares ja
 $EndSCHEMATC

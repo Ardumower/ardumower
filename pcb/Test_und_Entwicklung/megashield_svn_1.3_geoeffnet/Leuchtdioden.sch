@@ -8286,6 +8286,39 @@ F 3 "" H 1265 5395 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	1265 5395 1380 5395
-NoConn ~ 1380 4195
 NoConn ~ 1380 4295
+$Comp
+L R R43
+U 1 1 58A302BB
+P 1160 4195
+F 0 "R43" V 1130 4410 40  0000 C CNN
+F 1 "2k2" V 1167 4196 40  0000 C CNN
+F 2 "Zimprich:R_0603" V 1090 4195 30  0001 C CNN
+F 3 "" H 1160 4195 30  0001 C CNN
+F 4 "Value" H 1160 4195 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1160 4195 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1160 4195 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1160 4195 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1160 4195 60  0001 C CNN "Bauform"
+F 9 "Value" H 1160 4195 60  0001 C CNN "Funktion"
+F 10 "Value" H 1160 4195 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1160 4195 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1160 4195
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	1010 4195 880  4195
+$Comp
+L +5VP #PWR063
+U 1 1 58A30A79
+P 880 4195
+F 0 "#PWR063" H 880 4045 50  0001 C CNN
+F 1 "+5VP" V 880 4415 50  0000 C CNN
+F 2 "" H 880 4195 50  0000 C CNN
+F 3 "" H 880 4195 50  0000 C CNN
+	1    880  4195
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1310 4195 1380 4195
 $EndSCHEMATC
