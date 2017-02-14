@@ -290,10 +290,10 @@ Mower::Mower(){
   timerUse                   = 0;          // use RTC and timer?
 
   // ----- bluetooth -------------------------------------
-  bluetoothUse               = 1;          // use Bluetooth module?
+  bluetoothUse               = 1;          // use Bluetooth module?  (WARNING: if enabled, you cannot use ESP8266)
 
   // ----- esp8266 ---------------------------------------
-  esp8266Use                 = 0;          // use ESP8266 Wifi module?
+  esp8266Use                 = 0;          // use ESP8266 Wifi module? (WARNING: if enabled, you cannot use Bluetooth)
   esp8266ConfigString        = "123test321";
 
   // ------ mower stats-------------------------------------------  
