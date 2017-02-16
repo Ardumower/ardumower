@@ -2469,7 +2469,7 @@ F 1 "BC817" H 3280 7085 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:SOT-23" H 3761 6879 50  0001 L CIN
 F 3 "" H 3570 6970 50  0000 L CNN
 F 4 "Value" H 3570 6970 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3570 6970 60  0001 C CNN "Bestelllink"
+F 5 "https://www.reichelt.de/index.html?ACTION=446&LA=3" H 3570 6970 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 3570 6970 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 3570 6970 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 3570 6970 60  0001 C CNN "Bauform"
@@ -4810,4 +4810,39 @@ Wire Notes Line
 	1960 6825 635  6825
 Text Notes 1060 6770 0    60   ~ 0
 Hinzugefügt
+$Comp
+L R R37
+U 1 1 58A6DCA1
+P 7260 5560
+F 0 "R37" H 7340 5575 50  0000 L CNN
+F 1 "2K2" H 7340 5490 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 7348 5469 50  0001 L CNN
+F 3 "" H 7260 5560 50  0000 C CNN
+F 4 "Value" H 7260 5560 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7260 5560 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7260 5560 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7260 5560 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7260 5560 60  0001 C CNN "Bauform"
+F 9 "Value" H 7348 5423 60  0001 L CNN "Funktion"
+F 10 "Value" H 7260 5560 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7260 5560 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7260 5560
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7260 5710 7260 5870
+$Comp
+L GND #PWR066
+U 1 1 58A6ED16
+P 7260 5870
+F 0 "#PWR066" H 7260 5620 50  0001 C CNN
+F 1 "GND" H 7265 5697 50  0000 C CNN
+F 2 "" H 7260 5870 50  0000 C CNN
+F 3 "" H 7260 5870 50  0000 C CNN
+	1    7260 5870
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7260 5410 7260 5270
+Connection ~ 7260 5270
 $EndSCHEMATC
