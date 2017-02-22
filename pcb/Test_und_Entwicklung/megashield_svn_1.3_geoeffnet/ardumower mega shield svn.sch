@@ -13,9 +13,9 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 28
+Sheet 1 31
 Title "Ardumower shield SVN Version"
-Date "2016-10-28"
+Date "2017-02-17"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Unterspannungsschutz von AlexanderG"
@@ -279,41 +279,6 @@ F 3 "" H 4735 3475 50  0000 C CNN
 	1    4735 3475
 	1    0    0    -1  
 $EndComp
-$Comp
-L R_Small R9
-U 1 1 57E42699
-P 4400 2460
-F 0 "R9" H 4459 2506 50  0000 L CNN
-F 1 "47K 0,1%" H 4459 2415 50  0000 L CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 4459 2634 50  0001 L CNN
-F 3 "" H 4400 2460 50  0001 C CNN
-F 4 "Value" H 4459 2535 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 4459 2429 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 4459 2323 60  0001 L CNN "Technische Daten"
-F 7 "R: MPR 47,0K" H 4459 2217 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 4459 2111 60  0001 L CNN "Bauform"
-	1    4400 2460
-	-1   0    0    -1  
-$EndComp
-$Comp
-L R_Small R10
-U 1 1 57E43622
-P 4400 3080
-F 0 "R10" H 4458 3126 50  0000 L CNN
-F 1 "5,10K 0,1%" H 4458 3035 50  0000 L CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 4459 3254 50  0001 L CNN
-F 3 "" H 4400 3080 50  0001 C CNN
-F 4 "Value" H 4459 3155 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 4459 3049 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 4459 2943 60  0001 L CNN "Technische Daten"
-F 7 "R: MPR 5,10K" H 4459 2837 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 4459 2731 60  0001 L CNN "Bauform"
-F 9 "Value" H 4400 3080 60  0001 C CNN "Funktion"
-F 10 "Value" H 4400 3080 60  0001 C CNN "Hersteller"
-F 11 "Value" H 4400 3080 60  0001 C CNN "Hersteller Bestellnummer"
-	1    4400 3080
-	-1   0    0    -1  
-$EndComp
 Text GLabel 8215 3065 0    39   Output ~ 0
 pinBatteryVoltage
 $Comp
@@ -332,14 +297,17 @@ L R_Small R12
 U 1 1 57E498B9
 P 8375 2735
 F 0 "R12" H 8434 2781 50  0000 L CNN
-F 1 "47K 0,1%" H 8434 2690 50  0000 L CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 8434 2909 50  0001 L CNN
-F 3 "" H 8375 2735 50  0001 C CNN
-F 4 "Value" H 8434 2810 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8434 2704 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8434 2598 60  0001 L CNN "Technische Daten"
-F 7 "R: MPR 47,0K" H 8434 2492 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 8434 2386 60  0001 L CNN "Bauform"
+F 1 "100K 0,1%" H 8434 2690 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8434 2909 50  0001 L CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" H 8375 2735 50  0001 C CNN
+F 4 "1206" H 8434 2810 60  0001 L CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-100K/3/index.html?ACTION=3&LA=446&ARTICLE=123458&GROUPID=7974&artnr=SPR-1206+100K&SEARCH=spr-1206%2B100k" H 8434 2704 60  0001 L CNN "Bestelllink"
+F 6 "SMD-Chipwiderstand 1206, 100 kOhm, 0,1%" H 8434 2598 60  0001 L CNN "Technische Daten"
+F 7 "R: SPR-1206 100K" H 8434 2492 60  0001 L CNN "Bestellnummer"
+F 8 "1206" H 8434 2386 60  0001 L CNN "Bauform"
+F 9 "Value" H 8375 2735 60  0001 C CNN "Funktion"
+F 10 "Value" H 8375 2735 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8375 2735 60  0001 C CNN "Hersteller Bestellnummer"
 	1    8375 2735
 	-1   0    0    -1  
 $EndComp
@@ -348,14 +316,17 @@ L R_Small R13
 U 1 1 57E498C4
 P 8375 3355
 F 0 "R13" H 8433 3401 50  0000 L CNN
-F 1 "5,10K 0,1%" H 8433 3310 50  0000 L CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_0805to1206_RM10_HandSoldering" H 8434 3529 50  0001 L CNN
-F 3 "" H 8375 3355 50  0001 C CNN
-F 4 "Value" H 8434 3430 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8434 3324 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8434 3218 60  0001 L CNN "Technische Daten"
-F 7 "R: MPR 5,10K" H 8434 3112 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 8434 3006 60  0001 L CNN "Bauform"
+F 1 "10K 0,1%" H 8433 3310 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 8434 3529 50  0001 L CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" H 8375 3355 50  0001 C CNN
+F 4 "1206" H 8434 3430 60  0001 L CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-10-0K/3/index.html?ACTION=3&LA=446&ARTICLE=123435&GROUPID=7974&artnr=SPR-1206+10%2C0K&SEARCH=spr-1206%2B10%252C0k" H 8434 3324 60  0001 L CNN "Bestelllink"
+F 6 "SMD-Chipwiderstand 1206, 10,0 kOhm, 0,1%" H 8434 3218 60  0001 L CNN "Technische Daten"
+F 7 "R: SPR-1206 10,0K" H 8434 3112 60  0001 L CNN "Bestellnummer"
+F 8 "1206" H 8434 3006 60  0001 L CNN "Bauform"
+F 9 "Value" H 8375 3355 60  0001 C CNN "Funktion"
+F 10 "Value" H 8375 3355 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8375 3355 60  0001 C CNN "Hersteller Bestellnummer"
 	1    8375 3355
 	-1   0    0    -1  
 $EndComp
@@ -485,12 +456,7 @@ Wire Wire Line
 	5680 3415 5930 3415
 Connection ~ 5930 3415
 Wire Wire Line
-	5865 2590 5930 2590
-Wire Wire Line
-	5865 2040 5865 2590
-Wire Wire Line
 	5930 2290 5865 2290
-Connection ~ 5865 2290
 Wire Wire Line
 	6730 2390 7665 2390
 Wire Wire Line
@@ -554,16 +520,10 @@ Wire Wire Line
 Connection ~ 8375 2390
 Connection ~ 5680 2790
 Wire Wire Line
-	6730 2690 6880 2690
-Wire Wire Line
-	6880 2690 6880 2390
-Connection ~ 6880 2390
-Wire Wire Line
 	3810 2270 3810 2040
 Connection ~ 3810 2040
 Wire Wire Line
 	7350 2285 7350 2715
-NoConn ~ 6730 2490
 NoConn ~ 6730 2190
 Wire Wire Line
 	9010 4120 9205 4120
@@ -596,7 +556,7 @@ U 1 1 587CC623
 P 5270 3920
 F 0 "R18" V 5350 3860 50  0000 L CNN
 F 1 "2k2" V 5430 3860 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206" H 5329 4094 50  0001 L CNN
+F 2 "Zimprich:R_0603" H 5329 4094 50  0001 L CNN
 F 3 "" H 5270 3920 50  0001 C CNN
 F 4 "Value" H 5329 3995 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 5329 3889 60  0001 L CNN "Bestelllink"
@@ -748,4 +708,61 @@ Text Notes 890  4135 0    79   ~ 0
 Änderungen 01.01.2017
 Text Notes 400  9710 0    79   ~ 0
 [21:36:55] Kurzschuss - Uwe: gut dan warte ich nochmal mit den widerständen bis du soweit bist\n[21:38:22] Kurzschuss - Uwe: Dann mache ich nur die andern Änderungen mit dem DHT22 dropsensoren usw und warte dann erst mal ab. wenn ich es habe lade ich dann hoch\n[21:38:26] Jürgen Lange: überall wo level shifter dran sind kannst du die Dioden und den widerstand wegmachen\n[21:39:37] Kurzschuss - Uwe: da warte ich erst mal wo dann noch ein widerstand dazukommt. das wird dann ein Aufwasch\n\n\n\nwenn du da gerade dran bist die ganzen reserve dinger AD7, pinOdometriyRight2 etc hast du auf iOREF versorgt da solltest du 5V dran machen da bleiben dann auch die Dioden und der widerstand\nich sehe gerade das bei den Odemetrie pin der Spannungsanschluss auf iorf liegt. Dazwischen ist dann noch der ODoteiler und der Levelshifter.\nIch vermute mal das die odemetriepins auch auf 5V müssen damit der Odoteiler richtig arbeitetein klaaaaaaares ja
+$Comp
+L R_Small R10
+U 1 1 58AB2083
+P 4400 3080
+F 0 "R10" H 4458 3126 50  0000 L CNN
+F 1 "10K 0,1%" H 4458 3035 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 4459 3254 50  0001 L CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" H 4400 3080 50  0001 C CNN
+F 4 "1206" H 4459 3155 60  0001 L CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-10-0K/3/index.html?ACTION=3&LA=446&ARTICLE=123435&GROUPID=7974&artnr=SPR-1206+10%2C0K&SEARCH=spr-1206%2B10%252C0k" H 4459 3049 60  0001 L CNN "Bestelllink"
+F 6 "SMD-Chipwiderstand 1206, 10,0 kOhm, 0,1%" H 4459 2943 60  0001 L CNN "Technische Daten"
+F 7 "R: SPR-1206 10,0K" H 4459 2837 60  0001 L CNN "Bestellnummer"
+F 8 "1206" H 4459 2731 60  0001 L CNN "Bauform"
+F 9 "Value" H 4400 3080 60  0001 C CNN "Funktion"
+F 10 "Value" H 4400 3080 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4400 3080 60  0001 C CNN "Hersteller Bestellnummer"
+	1    4400 3080
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R_Small R9
+U 1 1 58AB29D6
+P 4400 2460
+F 0 "R9" H 4459 2506 50  0000 L CNN
+F 1 "100K 0,1%" H 4459 2415 50  0000 L CNN
+F 2 "Resistors_SMD:R_1206" H 4459 2634 50  0001 L CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" H 4400 2460 50  0001 C CNN
+F 4 "1206" H 4459 2535 60  0001 L CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-100K/3/index.html?ACTION=3&LA=446&ARTICLE=123458&GROUPID=7974&artnr=SPR-1206+100K&SEARCH=spr-1206%2B100k" H 4459 2429 60  0001 L CNN "Bestelllink"
+F 6 "SMD-Chipwiderstand 1206, 100 kOhm, 0,1%" H 4459 2323 60  0001 L CNN "Technische Daten"
+F 7 "R: SPR-1206 100K" H 4459 2217 60  0001 L CNN "Bestellnummer"
+F 8 "1206" H 4459 2111 60  0001 L CNN "Bauform"
+F 9 "Value" H 4400 2460 60  0001 C CNN "Funktion"
+F 10 "Value" H 4400 2460 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4400 2460 60  0001 C CNN "Hersteller Bestellnummer"
+	1    4400 2460
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5865 2040 5865 2290
+$Comp
+L +9V #PWR012
+U 1 1 58AB809A
+P 5850 2590
+F 0 "#PWR012" H -50 -55 50  0001 C CNN
+F 1 "+9V" H 5865 2763 50  0000 C CNN
+F 2 "" H -50 95  50  0001 C CNN
+F 3 "" H -50 95  50  0001 C CNN
+	1    5850 2590
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5930 2590 5850 2590
+Text GLabel 6850 2490 2    39   Input ~ 0
+9Vgeschaltet
+Wire Wire Line
+	6730 2490 6850 2490
 $EndSCHEMATC

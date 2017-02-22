@@ -13,9 +13,9 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 23 28
+Sheet 23 31
 Title "Ardumower shield SVN Version"
-Date "2016-10-28"
+Date "2017-02-17"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 ""
@@ -23,165 +23,165 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text GLabel 5620 3845 2    39   BiDi ~ 0
+Text GLabel 6225 3890 2    39   BiDi ~ 0
 SCL
-Text GLabel 5620 3745 2    39   BiDi ~ 0
+Text GLabel 6225 3790 2    39   BiDi ~ 0
 SDA
-Text GLabel 1825 2315 0    24   Input ~ 0
+Text GLabel 2430 2360 0    24   Input ~ 0
 pinPerimeterLeft
-Text GLabel 10255 760  2    39   Output ~ 0
+Text GLabel 6355 2690 2    39   Output ~ 0
 pinMotorRightPWM
-Text GLabel 8910 1580 2    39   Output ~ 0
+Text GLabel 6355 2490 2    39   Output ~ 0
 pinMotorLeftPWM
-Text GLabel 2685 4230 0    24   Output ~ 0
+Text GLabel 3290 4275 0    24   Output ~ 0
 pinBuzzer
-Text GLabel 10260 1175 2    39   Output ~ 0
+Text GLabel 6355 2790 2    39   Output ~ 0
 pinMotorMowPWM
-NoConn ~ 5420 4095
-NoConn ~ 5420 4195
-Text GLabel 5630 3145 2    39   Input ~ 0
+NoConn ~ 6025 4140
+NoConn ~ 6025 4240
+Text GLabel 6235 3190 2    39   Input ~ 0
 GPS_RX
-Text GLabel 5630 3245 2    39   Output ~ 0
+Text GLabel 6235 3290 2    39   Output ~ 0
 GPS_TX
-Text GLabel 5630 3345 2    39   Output ~ 0
+Text GLabel 6235 3390 2    39   Output ~ 0
 TX2
-Text GLabel 5620 3445 2    39   Input ~ 0
+Text GLabel 6225 3490 2    39   Input ~ 0
 RX2
-Text GLabel 6450 1180 2    39   Input ~ 0
+Text GLabel 6620 1690 2    39   Input ~ 0
 pinRemoteMow
-Text GLabel 6515 1585 2    39   Input ~ 0
+Text GLabel 6620 1790 2    39   Input ~ 0
 pinRemoteSteer
-Text GLabel 7450 755  2    39   Input ~ 0
+Text GLabel 6620 1890 2    39   Input ~ 0
 pinRemoteSpeed
-Text GLabel 6405 765  2    39   Output ~ 0
+Text GLabel 6485 1590 2    39   Output ~ 0
 Led-Status
-Text GLabel 5630 3545 2    39   Input ~ 0
+Text GLabel 6235 3590 2    39   Input ~ 0
 TX1
-Text GLabel 5620 3645 2    39   Input ~ 0
+Text GLabel 6225 3690 2    39   Input ~ 0
 RX1
-Text GLabel 8885 760  2    39   Output ~ 0
+Text GLabel 6355 2290 2    39   Output ~ 0
 DuoLED-Rot
-Text GLabel 8900 1175 2    39   Output ~ 0
+Text GLabel 6355 2390 2    39   Output ~ 0
 DuoLED_Grün
-Text GLabel 1860 2000 0    24   Input ~ 0
+Text GLabel 2465 2045 0    24   Input ~ 0
 pinPerimeterRight
-Text GLabel 10265 2035 2    39   Input ~ 0
+Text GLabel 6355 2990 2    39   Input ~ 0
 RX0
-Text GLabel 10265 1590 2    39   Input ~ 0
+Text GLabel 6355 2890 2    39   Input ~ 0
 TX0
-Text GLabel 8910 2025 2    39   Input ~ 0
+Text GLabel 7180 2590 2    39   Input ~ 0
 RelaisAbschaltung
-Text GLabel 7695 1585 2    39   Input ~ 0
+Text GLabel 8815 2090 2    39   Input ~ 0
 ReservePin8
-Text GLabel 7690 1170 2    39   Input ~ 0
+Text GLabel 8805 1555 2    39   Input ~ 0
 ReservePin9
-NoConn ~ 3620 1545
+NoConn ~ 4225 1590
 $Comp
 L C_Small C9
 U 1 1 57DFEDC9
-P 5460 1175
-F 0 "C9" H 5552 1221 50  0000 L CNN
-F 1 "100nF" H 5552 1130 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 5460 1175 50  0001 C CNN
-F 3 "" H 5460 1175 50  0000 C CNN
-	1    5460 1175
+P 6065 1220
+F 0 "C9" H 6157 1266 50  0000 L CNN
+F 1 "100nF" H 6157 1175 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 6065 1220 50  0001 C CNN
+F 3 "" H 6065 1220 50  0000 C CNN
+	1    6065 1220
 	1    0    0    -1  
 $EndComp
 $Comp
 L ARDUINO_MEGA_SHIELD SHIELD1
 U 1 1 57DFED57
-P 4520 3695
-F 0 "SHIELD1" H 4570 3745 60  0001 C CNN
-F 1 "ARDUINO_MEGA_SHIELD" H 4520 3695 60  0001 C CNN
-F 2 "Zimprich:ARDUINO_MEGA_SHIELD_DUO_3D" H 4520 3695 60  0001 C CNN
-F 3 "" H 4520 3695 60  0001 C CNN
-F 4 "Value" H 4520 3695 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 4520 3695 60  0001 C CNN "Bestelllink"
-F 6 "SHIELD" H 4120 6195 60  0001 C CNN "Reference"
-F 7 "ARDUINO_MEGA_SHIELD" H 4420 995 60  0001 C CNN "Value"
-	1    4520 3695
+P 5125 3740
+F 0 "SHIELD1" H 5175 3790 60  0001 C CNN
+F 1 "ARDUINO_MEGA_SHIELD" H 5125 3740 60  0001 C CNN
+F 2 "Zimprich:ARDUINO_MEGA_SHIELD_DUO_3D" H 5125 3740 60  0001 C CNN
+F 3 "" H 5125 3740 60  0001 C CNN
+F 4 "Value" H 5125 3740 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 5125 3740 60  0001 C CNN "Bestelllink"
+F 6 "SHIELD" H 4725 6240 60  0001 C CNN "Reference"
+F 7 "ARDUINO_MEGA_SHIELD" H 5025 1040 60  0001 C CNN "Value"
+	1    5125 3740
 	1    0    0    -1  
 $EndComp
 $Comp
-L +9V #PWR0158
+L +9V #PWR0162
 U 1 1 57DB02C7
-P 3450 2245
-F 0 "#PWR0158" H 3450 2095 50  0001 C CNN
-F 1 "+9V" V 3450 2435 50  0000 C CNN
-F 2 "" H 3450 2245 50  0000 C CNN
-F 3 "" H 3450 2245 50  0000 C CNN
-	1    3450 2245
+P 4055 2290
+F 0 "#PWR0162" H 4055 2140 50  0001 C CNN
+F 1 "+9V" V 4055 2480 50  0000 C CNN
+F 2 "" H 4055 2290 50  0000 C CNN
+F 3 "" H 4055 2290 50  0000 C CNN
+	1    4055 2290
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR0159
+L +3.3V #PWR0163
 U 1 1 57DB1AC1
-P 3495 1845
-F 0 "#PWR0159" H 3495 1695 50  0001 C CNN
-F 1 "+3.3V" V 3495 2075 50  0000 C CNN
-F 2 "" H 3495 1845 50  0000 C CNN
-F 3 "" H 3495 1845 50  0000 C CNN
-	1    3495 1845
+P 4100 1890
+F 0 "#PWR0163" H 4100 1740 50  0001 C CNN
+F 1 "+3.3V" V 4100 2120 50  0000 C CNN
+F 2 "" H 4100 1890 50  0000 C CNN
+F 3 "" H 4100 1890 50  0000 C CNN
+	1    4100 1890
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR0160
+L +5V #PWR0164
 U 1 1 57DC5ACC
-P 3440 1945
-F 0 "#PWR0160" H 3440 1795 50  0001 C CNN
-F 1 "+5V" V 3440 2130 50  0000 C CNN
-F 2 "" H 3440 1945 50  0000 C CNN
-F 3 "" H 3440 1945 50  0000 C CNN
-	1    3440 1945
+P 4045 1990
+F 0 "#PWR0164" H 4045 1840 50  0001 C CNN
+F 1 "+5V" V 4045 2175 50  0000 C CNN
+F 2 "" H 4045 1990 50  0000 C CNN
+F 3 "" H 4045 1990 50  0000 C CNN
+	1    4045 1990
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR0161
+L GND #PWR0165
 U 1 1 57DC997D
-P 3365 4395
-F 0 "#PWR0161" H 3365 4145 50  0001 C CNN
-F 1 "GND" V 3405 4395 24  0000 C CNN
-F 2 "" H 3365 4395 50  0000 C CNN
-F 3 "" H 3365 4395 50  0000 C CNN
-	1    3365 4395
+P 3970 4440
+F 0 "#PWR0165" H 3970 4190 50  0001 C CNN
+F 1 "GND" V 4010 4440 24  0000 C CNN
+F 2 "" H 3970 4440 50  0000 C CNN
+F 3 "" H 3970 4440 50  0000 C CNN
+	1    3970 4440
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0162
+L GND #PWR0166
 U 1 1 57DCA6F9
-P 5460 1025
-F 0 "#PWR0162" H 5460 775 50  0001 C CNN
-F 1 "GND" H 5465 852 50  0000 C CNN
-F 2 "" H 5460 1025 50  0000 C CNN
-F 3 "" H 5460 1025 50  0000 C CNN
-	1    5460 1025
+P 6065 1070
+F 0 "#PWR0166" H 6065 820 50  0001 C CNN
+F 1 "GND" H 6070 897 50  0000 C CNN
+F 2 "" H 6065 1070 50  0000 C CNN
+F 3 "" H 6065 1070 50  0000 C CNN
+	1    6065 1070
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR0163
+L GND #PWR0167
 U 1 1 57DCA959
-P 5500 1445
-F 0 "#PWR0163" H 5500 1195 50  0001 C CNN
-F 1 "GND" V 5505 1272 50  0000 C CNN
-F 2 "" H 5500 1445 50  0000 C CNN
-F 3 "" H 5500 1445 50  0000 C CNN
-	1    5500 1445
+P 6105 1490
+F 0 "#PWR0167" H 6105 1240 50  0001 C CNN
+F 1 "GND" V 6110 1317 50  0000 C CNN
+F 2 "" H 6105 1490 50  0000 C CNN
+F 3 "" H 6105 1490 50  0000 C CNN
+	1    6105 1490
 	0    -1   1    0   
 $EndComp
 $Comp
-L GND #PWR0164
+L GND #PWR0168
 U 1 1 57DD92E3
-P 3440 2090
-F 0 "#PWR0164" H 3440 1840 50  0001 C CNN
-F 1 "GND" V 3440 1900 50  0000 C CNN
-F 2 "" H 3440 2090 50  0000 C CNN
-F 3 "" H 3440 2090 50  0000 C CNN
-	1    3440 2090
+P 4045 2135
+F 0 "#PWR0168" H 4045 1885 50  0001 C CNN
+F 1 "GND" V 4045 1945 50  0000 C CNN
+F 2 "" H 4045 2135 50  0000 C CNN
+F 3 "" H 4045 2135 50  0000 C CNN
+	1    4045 2135
 	0    1    -1   0   
 $EndComp
-Text GLabel 3470 1645 0    39   Output ~ 0
+Text GLabel 4075 1690 0    39   Output ~ 0
 IOREF
-Text GLabel 3470 1745 0    39   Input ~ 0
+Text GLabel 4075 1790 0    39   Input ~ 0
 Reset
 $Bitmap
 Pos -1620 2965
@@ -10254,4113 +10254,2485 @@ $EndBitmap
 $Comp
 L R_Small R3
 U 1 1 57F0A001
-P 1990 2315
-F 0 "R3" V 2045 2315 24  0000 C CNN
-F 1 "300R" V 1990 2315 24  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 1990 2315 50  0001 C CNN
-F 3 "" H 1990 2315 50  0001 C CNN
-F 4 "Value" H 1990 2315 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1990 2315 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1990 2315 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1990 2315 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1990 2315 60  0001 C CNN "Bauform"
-	1    1990 2315
+P 2595 2360
+F 0 "R3" V 2650 2360 24  0000 C CNN
+F 1 "300R" V 2595 2360 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 2595 2360 50  0001 C CNN
+F 3 "" H 2595 2360 50  0001 C CNN
+F 4 "Value" H 2595 2360 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2595 2360 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2595 2360 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2595 2360 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2595 2360 60  0001 C CNN "Bauform"
+	1    2595 2360
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D11
 U 1 1 57F0A002
-P 2300 2255
-F 0 "D11" H 2185 2235 24  0000 C CNN
-F 1 "TMMBAT48" H 2195 2310 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2300 2255 50  0001 C CNN
-F 3 "" V 2300 2255 50  0001 C CNN
-F 4 "Value" H 2300 2255 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2300 2255 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2300 2255 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2300 2255 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2300 2255 60  0001 C CNN "Bauform"
-	1    2300 2255
+P 2905 2300
+F 0 "D11" H 2790 2280 24  0000 C CNN
+F 1 "TMMBAT48" H 2800 2355 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2905 2300 50  0001 C CNN
+F 3 "" V 2905 2300 50  0001 C CNN
+F 4 "Value" H 2905 2300 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2905 2300 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2905 2300 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2905 2300 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2905 2300 60  0001 C CNN "Bauform"
+	1    2905 2300
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2460 2255 2    24   Input ~ 0
+Text GLabel 3065 2300 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0165
+L GND #PWR0169
 U 1 1 57F0A003
-P 2445 2375
-F 0 "#PWR0165" H 2445 2125 50  0001 C CNN
-F 1 "GND" H 2450 2202 24  0000 C CNN
-F 2 "" H 2445 2375 50  0000 C CNN
-F 3 "" H 2445 2375 50  0000 C CNN
-	1    2445 2375
+P 3050 2420
+F 0 "#PWR0169" H 3050 2170 50  0001 C CNN
+F 1 "GND" H 3055 2247 24  0000 C CNN
+F 2 "" H 3050 2420 50  0000 C CNN
+F 3 "" H 3050 2420 50  0000 C CNN
+	1    3050 2420
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D24
 U 1 1 57F0A004
-P 2300 2375
-F 0 "D24" H 2420 2400 24  0000 C CNN
-F 1 "TMMBAT48" H 2400 2310 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2300 2375 50  0001 C CNN
-F 3 "" V 2300 2375 50  0001 C CNN
-F 4 "Value" H 2300 2375 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2300 2375 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2300 2375 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2300 2375 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2300 2375 60  0001 C CNN "Bauform"
-	1    2300 2375
-	1    0    0    -1  
-$EndComp
-Text Notes 1530 575  0    60   ~ 0
-Pinschutzschaltung
-$Comp
-L D_Small D25
-U 1 1 57F0A00B
-P 6225 665
-F 0 "D25" H 5950 600 39  0000 C CNN
-F 1 "TMMBAT48" H 6225 600 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 6225 665 50  0001 C CNN
-F 3 "" V 6225 665 50  0001 C CNN
-F 4 "Value" H 6225 665 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6225 665 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6225 665 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6225 665 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6225 665 60  0001 C CNN "Bauform"
-	1    6225 665 
-	-1   0    0    1   
-$EndComp
-Text GLabel 6385 665  2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0166
-U 1 1 57F0A00C
-P 6385 895
-F 0 "#PWR0166" H 6385 645 50  0001 C CNN
-F 1 "GND" V 6385 710 50  0000 C CNN
-F 2 "" H 6385 895 50  0000 C CNN
-F 3 "" H 6385 895 50  0000 C CNN
-	1    6385 895 
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D26
-U 1 1 57F0A00D
-P 6240 895
-F 0 "D26" H 6515 965 39  0000 C CNN
-F 1 "TMMBAT48" H 6240 960 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 6240 895 50  0001 C CNN
-F 3 "" V 6240 895 50  0001 C CNN
-F 4 "Value" H 6240 895 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6240 895 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6240 895 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6240 895 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6240 895 60  0001 C CNN "Bauform"
-	1    6240 895 
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D27
-U 1 1 57F0C92E
-P 6270 1080
-F 0 "D27" H 5995 1015 39  0000 C CNN
-F 1 "TMMBAT48" H 6270 1015 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 6270 1080 50  0001 C CNN
-F 3 "" V 6270 1080 50  0001 C CNN
-F 4 "Value" H 6270 1080 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6270 1080 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6270 1080 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6270 1080 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6270 1080 60  0001 C CNN "Bauform"
-	1    6270 1080
-	-1   0    0    1   
-$EndComp
-Text GLabel 6430 1080 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0167
-U 1 1 57F0C938
-P 6430 1310
-F 0 "#PWR0167" H 6430 1060 50  0001 C CNN
-F 1 "GND" V 6430 1125 50  0000 C CNN
-F 2 "" H 6430 1310 50  0000 C CNN
-F 3 "" H 6430 1310 50  0000 C CNN
-	1    6430 1310
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D29
-U 1 1 57F0C944
-P 6285 1310
-F 0 "D29" H 6560 1380 39  0000 C CNN
-F 1 "TMMBAT48" H 6285 1375 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 6285 1310 50  0001 C CNN
-F 3 "" V 6285 1310 50  0001 C CNN
-F 4 "Value" H 6285 1310 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6285 1310 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6285 1310 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6285 1310 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6285 1310 60  0001 C CNN "Bauform"
-	1    6285 1310
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D28
-U 1 1 57F0CDB6
-P 6335 1485
-F 0 "D28" H 6060 1420 39  0000 C CNN
-F 1 "TMMBAT48" H 6335 1420 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 6335 1485 50  0001 C CNN
-F 3 "" V 6335 1485 50  0001 C CNN
-F 4 "Value" H 6335 1485 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6335 1485 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6335 1485 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6335 1485 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6335 1485 60  0001 C CNN "Bauform"
-	1    6335 1485
-	-1   0    0    1   
-$EndComp
-Text GLabel 6495 1485 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0168
-U 1 1 57F0CDC0
-P 6495 1715
-F 0 "#PWR0168" H 6495 1465 50  0001 C CNN
-F 1 "GND" V 6495 1530 50  0000 C CNN
-F 2 "" H 6495 1715 50  0000 C CNN
-F 3 "" H 6495 1715 50  0000 C CNN
-	1    6495 1715
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D30
-U 1 1 57F0CDCC
-P 6350 1715
-F 0 "D30" H 6625 1785 39  0000 C CNN
-F 1 "TMMBAT48" H 6350 1780 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 6350 1715 50  0001 C CNN
-F 3 "" V 6350 1715 50  0001 C CNN
-F 4 "Value" H 6350 1715 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6350 1715 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6350 1715 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6350 1715 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6350 1715 60  0001 C CNN "Bauform"
-	1    6350 1715
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D31
-U 1 1 57F0CEE7
-P 7505 655
-F 0 "D31" H 7230 590 39  0000 C CNN
-F 1 "TMMBAT48" H 7505 590 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 7505 655 50  0001 C CNN
-F 3 "" V 7505 655 50  0001 C CNN
-F 4 "Value" H 7505 655 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7505 655 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7505 655 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7505 655 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7505 655 60  0001 C CNN "Bauform"
-	1    7505 655 
-	-1   0    0    1   
-$EndComp
-Text GLabel 7665 655  2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0169
-U 1 1 57F0CEF1
-P 7665 885
-F 0 "#PWR0169" H 7665 635 50  0001 C CNN
-F 1 "GND" V 7665 700 50  0000 C CNN
-F 2 "" H 7665 885 50  0000 C CNN
-F 3 "" H 7665 885 50  0000 C CNN
-	1    7665 885 
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D34
-U 1 1 57F0CEFD
-P 7520 885
-F 0 "D34" H 7795 955 39  0000 C CNN
-F 1 "TMMBAT48" H 7520 950 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 7520 885 50  0001 C CNN
-F 3 "" V 7520 885 50  0001 C CNN
-F 4 "Value" H 7520 885 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7520 885 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7520 885 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7520 885 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7520 885 60  0001 C CNN "Bauform"
-	1    7520 885 
+P 2905 2420
+F 0 "D24" H 3025 2445 24  0000 C CNN
+F 1 "TMMBAT48" H 3005 2355 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2905 2420 50  0001 C CNN
+F 3 "" V 2905 2420 50  0001 C CNN
+F 4 "Value" H 2905 2420 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2905 2420 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2905 2420 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2905 2420 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2905 2420 60  0001 C CNN "Bauform"
+	1    2905 2420
 	1    0    0    -1  
 $EndComp
 $Comp
 L D_Small D32
 U 1 1 57F0D4D4
-P 7510 1070
-F 0 "D32" H 7235 1005 39  0000 C CNN
-F 1 "TMMBAT48" H 7510 1005 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 7510 1070 50  0001 C CNN
-F 3 "" V 7510 1070 50  0001 C CNN
-F 4 "Value" H 7510 1070 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7510 1070 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7510 1070 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7510 1070 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7510 1070 60  0001 C CNN "Bauform"
-	1    7510 1070
+P 8115 1455
+F 0 "D32" H 7840 1390 39  0000 C CNN
+F 1 "TMMBAT48" H 8115 1390 39  0000 C CNN
+F 2 "Zimprich:D_0603" V 8115 1455 50  0001 C CNN
+F 3 "" V 8115 1455 50  0001 C CNN
+F 4 "Value" H 8115 1455 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8115 1455 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8115 1455 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8115 1455 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 8115 1455 60  0001 C CNN "Bauform"
+	1    8115 1455
 	-1   0    0    1   
 $EndComp
-Text GLabel 7670 1070 2    39   Input ~ 0
+Text GLabel 8275 1455 2    39   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0170
 U 1 1 57F0D4DE
-P 7670 1300
-F 0 "#PWR0170" H 7670 1050 50  0001 C CNN
-F 1 "GND" V 7670 1115 50  0000 C CNN
-F 2 "" H 7670 1300 50  0000 C CNN
-F 3 "" H 7670 1300 50  0000 C CNN
-	1    7670 1300
+P 8275 1685
+F 0 "#PWR0170" H 8275 1435 50  0001 C CNN
+F 1 "GND" V 8275 1500 50  0000 C CNN
+F 2 "" H 8275 1685 50  0000 C CNN
+F 3 "" H 8275 1685 50  0000 C CNN
+	1    8275 1685
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D35
 U 1 1 57F0D4EA
-P 7525 1300
-F 0 "D35" H 7800 1370 39  0000 C CNN
-F 1 "TMMBAT48" H 7525 1365 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 7525 1300 50  0001 C CNN
-F 3 "" V 7525 1300 50  0001 C CNN
-F 4 "Value" H 7525 1300 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7525 1300 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7525 1300 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7525 1300 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7525 1300 60  0001 C CNN "Bauform"
-	1    7525 1300
+P 8130 1685
+F 0 "D35" H 8405 1755 39  0000 C CNN
+F 1 "TMMBAT48" H 8130 1750 39  0000 C CNN
+F 2 "Zimprich:D_0603" V 8130 1685 50  0001 C CNN
+F 3 "" V 8130 1685 50  0001 C CNN
+F 4 "Value" H 8130 1685 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8130 1685 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8130 1685 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8130 1685 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 8130 1685 60  0001 C CNN "Bauform"
+	1    8130 1685
 	1    0    0    -1  
 $EndComp
 $Comp
 L D_Small D33
 U 1 1 57F0DB33
-P 7515 1485
-F 0 "D33" H 7240 1420 39  0000 C CNN
-F 1 "TMMBAT48" H 7515 1420 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 7515 1485 50  0001 C CNN
-F 3 "" V 7515 1485 50  0001 C CNN
-F 4 "Value" H 7515 1485 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7515 1485 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7515 1485 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7515 1485 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7515 1485 60  0001 C CNN "Bauform"
-	1    7515 1485
+P 8120 1990
+F 0 "D33" H 7845 1925 39  0000 C CNN
+F 1 "TMMBAT48" H 8120 1925 39  0000 C CNN
+F 2 "Zimprich:D_0603" V 8120 1990 50  0001 C CNN
+F 3 "" V 8120 1990 50  0001 C CNN
+F 4 "Value" H 8120 1990 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8120 1990 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8120 1990 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8120 1990 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 8120 1990 60  0001 C CNN "Bauform"
+	1    8120 1990
 	-1   0    0    1   
 $EndComp
-Text GLabel 7675 1485 2    39   Input ~ 0
+Text GLabel 8280 1990 2    39   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0171
 U 1 1 57F0DB3D
-P 7675 1715
-F 0 "#PWR0171" H 7675 1465 50  0001 C CNN
-F 1 "GND" V 7675 1530 50  0000 C CNN
-F 2 "" H 7675 1715 50  0000 C CNN
-F 3 "" H 7675 1715 50  0000 C CNN
-	1    7675 1715
+P 8280 2220
+F 0 "#PWR0171" H 8280 1970 50  0001 C CNN
+F 1 "GND" V 8280 2035 50  0000 C CNN
+F 2 "" H 8280 2220 50  0000 C CNN
+F 3 "" H 8280 2220 50  0000 C CNN
+	1    8280 2220
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D36
 U 1 1 57F0DB49
-P 7530 1715
-F 0 "D36" H 7805 1785 39  0000 C CNN
-F 1 "TMMBAT48" H 7530 1780 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 7530 1715 50  0001 C CNN
-F 3 "" V 7530 1715 50  0001 C CNN
-F 4 "Value" H 7530 1715 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7530 1715 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7530 1715 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7530 1715 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7530 1715 60  0001 C CNN "Bauform"
-	1    7530 1715
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D37
-U 1 1 57F11020
-P 8705 660
-F 0 "D37" H 8430 595 39  0000 C CNN
-F 1 "TMMBAT48" H 8705 595 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8705 660 50  0001 C CNN
-F 3 "" V 8705 660 50  0001 C CNN
-F 4 "Value" H 8705 660 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8705 660 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8705 660 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8705 660 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8705 660 60  0001 C CNN "Bauform"
-	1    8705 660 
-	-1   0    0    1   
-$EndComp
-Text GLabel 8865 660  2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0172
-U 1 1 57F1102B
-P 8865 890
-F 0 "#PWR0172" H 8865 640 50  0001 C CNN
-F 1 "GND" V 8865 705 50  0000 C CNN
-F 2 "" H 8865 890 50  0000 C CNN
-F 3 "" H 8865 890 50  0000 C CNN
-	1    8865 890 
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D38
-U 1 1 57F11037
-P 8720 890
-F 0 "D38" H 8995 960 39  0000 C CNN
-F 1 "TMMBAT48" H 8720 955 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8720 890 50  0001 C CNN
-F 3 "" V 8720 890 50  0001 C CNN
-F 4 "Value" H 8720 890 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8720 890 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8720 890 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8720 890 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8720 890 60  0001 C CNN "Bauform"
-	1    8720 890 
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D39
-U 1 1 57F11047
-P 8720 1075
-F 0 "D39" H 8445 1010 39  0000 C CNN
-F 1 "TMMBAT48" H 8720 1010 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8720 1075 50  0001 C CNN
-F 3 "" V 8720 1075 50  0001 C CNN
-F 4 "Value" H 8720 1075 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8720 1075 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8720 1075 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8720 1075 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8720 1075 60  0001 C CNN "Bauform"
-	1    8720 1075
-	-1   0    0    1   
-$EndComp
-Text GLabel 8880 1075 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0173
-U 1 1 57F11052
-P 8880 1305
-F 0 "#PWR0173" H 8880 1055 50  0001 C CNN
-F 1 "GND" V 8880 1120 50  0000 C CNN
-F 2 "" H 8880 1305 50  0000 C CNN
-F 3 "" H 8880 1305 50  0000 C CNN
-	1    8880 1305
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D42
-U 1 1 57F1105E
-P 8735 1305
-F 0 "D42" H 9010 1375 39  0000 C CNN
-F 1 "TMMBAT48" H 8735 1370 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8735 1305 50  0001 C CNN
-F 3 "" V 8735 1305 50  0001 C CNN
-F 4 "Value" H 8735 1305 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8735 1305 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8735 1305 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8735 1305 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8735 1305 60  0001 C CNN "Bauform"
-	1    8735 1305
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D40
-U 1 1 57F1106D
-P 8730 1480
-F 0 "D40" H 8455 1415 39  0000 C CNN
-F 1 "TMMBAT48" H 8730 1415 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8730 1480 50  0001 C CNN
-F 3 "" V 8730 1480 50  0001 C CNN
-F 4 "Value" H 8730 1480 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8730 1480 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8730 1480 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8730 1480 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8730 1480 60  0001 C CNN "Bauform"
-	1    8730 1480
-	-1   0    0    1   
-$EndComp
-Text GLabel 8890 1480 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0174
-U 1 1 57F11078
-P 8890 1710
-F 0 "#PWR0174" H 8890 1460 50  0001 C CNN
-F 1 "GND" V 8890 1525 50  0000 C CNN
-F 2 "" H 8890 1710 50  0000 C CNN
-F 3 "" H 8890 1710 50  0000 C CNN
-	1    8890 1710
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D43
-U 1 1 57F11084
-P 8745 1710
-F 0 "D43" H 9020 1780 39  0000 C CNN
-F 1 "TMMBAT48" H 8745 1775 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8745 1710 50  0001 C CNN
-F 3 "" V 8745 1710 50  0001 C CNN
-F 4 "Value" H 8745 1710 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8745 1710 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8745 1710 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8745 1710 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8745 1710 60  0001 C CNN "Bauform"
-	1    8745 1710
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D45
-U 1 1 57F11093
-P 10075 660
-F 0 "D45" H 9800 595 39  0000 C CNN
-F 1 "TMMBAT48" H 10075 595 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10075 660 50  0001 C CNN
-F 3 "" V 10075 660 50  0001 C CNN
-F 4 "Value" H 10075 660 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10075 660 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10075 660 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10075 660 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10075 660 60  0001 C CNN "Bauform"
-	1    10075 660 
-	-1   0    0    1   
-$EndComp
-Text GLabel 10235 660  2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0175
-U 1 1 57F1109E
-P 10235 890
-F 0 "#PWR0175" H 10235 640 50  0001 C CNN
-F 1 "GND" V 10235 705 50  0000 C CNN
-F 2 "" H 10235 890 50  0000 C CNN
-F 3 "" H 10235 890 50  0000 C CNN
-	1    10235 890 
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D49
-U 1 1 57F110AA
-P 10090 890
-F 0 "D49" H 10365 960 39  0000 C CNN
-F 1 "TMMBAT48" H 10090 955 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10090 890 50  0001 C CNN
-F 3 "" V 10090 890 50  0001 C CNN
-F 4 "Value" H 10090 890 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10090 890 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10090 890 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10090 890 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10090 890 60  0001 C CNN "Bauform"
-	1    10090 890 
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D46
-U 1 1 57F110BB
-P 10080 1075
-F 0 "D46" H 9805 1010 39  0000 C CNN
-F 1 "TMMBAT48" H 10080 1010 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10080 1075 50  0001 C CNN
-F 3 "" V 10080 1075 50  0001 C CNN
-F 4 "Value" H 10080 1075 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10080 1075 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10080 1075 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10080 1075 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10080 1075 60  0001 C CNN "Bauform"
-	1    10080 1075
-	-1   0    0    1   
-$EndComp
-Text GLabel 10240 1075 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0176
-U 1 1 57F110C6
-P 10240 1305
-F 0 "#PWR0176" H 10240 1055 50  0001 C CNN
-F 1 "GND" V 10240 1120 50  0000 C CNN
-F 2 "" H 10240 1305 50  0000 C CNN
-F 3 "" H 10240 1305 50  0000 C CNN
-	1    10240 1305
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D50
-U 1 1 57F110D2
-P 10095 1305
-F 0 "D50" H 10370 1375 39  0000 C CNN
-F 1 "TMMBAT48" H 10095 1370 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10095 1305 50  0001 C CNN
-F 3 "" V 10095 1305 50  0001 C CNN
-F 4 "Value" H 10095 1305 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10095 1305 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10095 1305 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10095 1305 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10095 1305 60  0001 C CNN "Bauform"
-	1    10095 1305
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D47
-U 1 1 57F110E2
-P 10085 1490
-F 0 "D47" H 9810 1425 39  0000 C CNN
-F 1 "TMMBAT48" H 10085 1425 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10085 1490 50  0001 C CNN
-F 3 "" V 10085 1490 50  0001 C CNN
-F 4 "Value" H 10085 1490 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10085 1490 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10085 1490 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10085 1490 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10085 1490 60  0001 C CNN "Bauform"
-	1    10085 1490
-	-1   0    0    1   
-$EndComp
-Text GLabel 10245 1490 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0177
-U 1 1 57F110ED
-P 10245 1720
-F 0 "#PWR0177" H 10245 1470 50  0001 C CNN
-F 1 "GND" V 10245 1535 50  0000 C CNN
-F 2 "" H 10245 1720 50  0000 C CNN
-F 3 "" H 10245 1720 50  0000 C CNN
-	1    10245 1720
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D51
-U 1 1 57F110F9
-P 10100 1720
-F 0 "D51" H 10375 1790 39  0000 C CNN
-F 1 "TMMBAT48" H 10100 1785 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10100 1720 50  0001 C CNN
-F 3 "" V 10100 1720 50  0001 C CNN
-F 4 "Value" H 10100 1720 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10100 1720 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10100 1720 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10100 1720 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10100 1720 60  0001 C CNN "Bauform"
-	1    10100 1720
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D41
-U 1 1 57F13086
-P 8730 1925
-F 0 "D41" H 8455 1860 39  0000 C CNN
-F 1 "TMMBAT48" H 8730 1860 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8730 1925 50  0001 C CNN
-F 3 "" V 8730 1925 50  0001 C CNN
-F 4 "Value" H 8730 1925 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8730 1925 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8730 1925 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8730 1925 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8730 1925 60  0001 C CNN "Bauform"
-	1    8730 1925
-	-1   0    0    1   
-$EndComp
-Text GLabel 8890 1925 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0178
-U 1 1 57F1308E
-P 8890 2155
-F 0 "#PWR0178" H 8890 1905 50  0001 C CNN
-F 1 "GND" V 8890 1970 50  0000 C CNN
-F 2 "" H 8890 2155 50  0000 C CNN
-F 3 "" H 8890 2155 50  0000 C CNN
-	1    8890 2155
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D44
-U 1 1 57F1309A
-P 8745 2155
-F 0 "D44" H 9020 2225 39  0000 C CNN
-F 1 "TMMBAT48" H 8745 2220 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 8745 2155 50  0001 C CNN
-F 3 "" V 8745 2155 50  0001 C CNN
-F 4 "Value" H 8745 2155 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8745 2155 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8745 2155 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8745 2155 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8745 2155 60  0001 C CNN "Bauform"
-	1    8745 2155
-	1    0    0    -1  
-$EndComp
-$Comp
-L D_Small D48
-U 1 1 57F130A8
-P 10085 1935
-F 0 "D48" H 9810 1870 39  0000 C CNN
-F 1 "TMMBAT48" H 10085 1870 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10085 1935 50  0001 C CNN
-F 3 "" V 10085 1935 50  0001 C CNN
-F 4 "Value" H 10085 1935 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10085 1935 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10085 1935 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10085 1935 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10085 1935 60  0001 C CNN "Bauform"
-	1    10085 1935
-	-1   0    0    1   
-$EndComp
-Text GLabel 10245 1935 2    39   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0179
-U 1 1 57F130B2
-P 10245 2165
-F 0 "#PWR0179" H 10245 1915 50  0001 C CNN
-F 1 "GND" V 10245 1980 50  0000 C CNN
-F 2 "" H 10245 2165 50  0000 C CNN
-F 3 "" H 10245 2165 50  0000 C CNN
-	1    10245 2165
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D52
-U 1 1 57F130BE
-P 10100 2165
-F 0 "D52" H 10375 2235 39  0000 C CNN
-F 1 "TMMBAT48" H 10100 2230 39  0000 C CNN
-F 2 "Zimprich:D_0603" V 10100 2165 50  0001 C CNN
-F 3 "" V 10100 2165 50  0001 C CNN
-F 4 "Value" H 10100 2165 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10100 2165 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10100 2165 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10100 2165 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10100 2165 60  0001 C CNN "Bauform"
-	1    10100 2165
+P 8135 2220
+F 0 "D36" H 8410 2290 39  0000 C CNN
+F 1 "TMMBAT48" H 8135 2285 39  0000 C CNN
+F 2 "Zimprich:D_0603" V 8135 2220 50  0001 C CNN
+F 3 "" V 8135 2220 50  0001 C CNN
+F 4 "Value" H 8135 2220 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8135 2220 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8135 2220 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 8135 2220 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 8135 2220 60  0001 C CNN "Bauform"
+	1    8135 2220
 	1    0    0    -1  
 $EndComp
 $Comp
 L R_Small R4
 U 1 1 57FA2040
-P 2000 2000
-F 0 "R4" V 2055 2000 24  0000 C CNN
-F 1 "300R" V 2000 2000 24  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 2000 2000 50  0001 C CNN
-F 3 "" H 2000 2000 50  0001 C CNN
-F 4 "Value" H 2000 2000 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2000 2000 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2000 2000 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2000 2000 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2000 2000 60  0001 C CNN "Bauform"
-	1    2000 2000
+P 2605 2045
+F 0 "R4" V 2660 2045 24  0000 C CNN
+F 1 "300R" V 2605 2045 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 2605 2045 50  0001 C CNN
+F 3 "" H 2605 2045 50  0001 C CNN
+F 4 "Value" H 2605 2045 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2605 2045 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2605 2045 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2605 2045 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2605 2045 60  0001 C CNN "Bauform"
+	1    2605 2045
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D8
 U 1 1 57FA204B
-P 2310 1940
-F 0 "D8" H 2195 1920 24  0000 C CNN
-F 1 "TMMBAT48" H 2205 1995 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2310 1940 50  0001 C CNN
-F 3 "" V 2310 1940 50  0001 C CNN
-F 4 "Value" H 2310 1940 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2310 1940 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2310 1940 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2310 1940 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2310 1940 60  0001 C CNN "Bauform"
-	1    2310 1940
+P 2915 1985
+F 0 "D8" H 2800 1965 24  0000 C CNN
+F 1 "TMMBAT48" H 2810 2040 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2915 1985 50  0001 C CNN
+F 3 "" V 2915 1985 50  0001 C CNN
+F 4 "Value" H 2915 1985 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2915 1985 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2915 1985 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2915 1985 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2915 1985 60  0001 C CNN "Bauform"
+	1    2915 1985
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2470 1940 2    24   Input ~ 0
+Text GLabel 3075 1985 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0180
+L GND #PWR0172
 U 1 1 57FA2058
-P 2455 2060
-F 0 "#PWR0180" H 2455 1810 50  0001 C CNN
-F 1 "GND" H 2460 1887 24  0000 C CNN
-F 2 "" H 2455 2060 50  0000 C CNN
-F 3 "" H 2455 2060 50  0000 C CNN
-	1    2455 2060
+P 3060 2105
+F 0 "#PWR0172" H 3060 1855 50  0001 C CNN
+F 1 "GND" H 3065 1932 24  0000 C CNN
+F 2 "" H 3060 2105 50  0000 C CNN
+F 3 "" H 3060 2105 50  0000 C CNN
+	1    3060 2105
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D16
 U 1 1 57FA2064
-P 2310 2060
-F 0 "D16" H 2430 2085 24  0000 C CNN
-F 1 "TMMBAT48" H 2410 1995 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2310 2060 50  0001 C CNN
-F 3 "" V 2310 2060 50  0001 C CNN
-F 4 "Value" H 2310 2060 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2310 2060 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2310 2060 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2310 2060 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2310 2060 60  0001 C CNN "Bauform"
-	1    2310 2060
+P 2915 2105
+F 0 "D16" H 3035 2130 24  0000 C CNN
+F 1 "TMMBAT48" H 3015 2040 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2915 2105 50  0001 C CNN
+F 3 "" V 2915 2105 50  0001 C CNN
+F 4 "Value" H 2915 2105 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2915 2105 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2915 2105 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2915 2105 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2915 2105 60  0001 C CNN "Bauform"
+	1    2915 2105
 	1    0    0    -1  
 $EndComp
-Text GLabel 1925 805  0    24   Input ~ 0
+Text GLabel 2530 1430 0    24   Input ~ 0
 pinMotorRightSense
-$Comp
-L R_Small R86
-U 1 1 57FA6D48
-P 2065 805
-F 0 "R86" V 2120 805 24  0000 C CNN
-F 1 "300R" V 2065 805 24  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 2065 805 50  0001 C CNN
-F 3 "" H 2065 805 50  0001 C CNN
-F 4 "Value" H 2065 805 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2065 805 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2065 805 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2065 805 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2065 805 60  0001 C CNN "Bauform"
-	1    2065 805 
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D63
-U 1 1 57FA6D53
-P 2375 745
-F 0 "D63" H 2260 725 24  0000 C CNN
-F 1 "TMMBAT48" H 2270 800 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2375 745 50  0001 C CNN
-F 3 "" V 2375 745 50  0001 C CNN
-F 4 "Value" H 2375 745 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 745 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 745 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2375 745 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2375 745 60  0001 C CNN "Bauform"
-	1    2375 745 
-	-1   0    0    -1  
-$EndComp
-Text GLabel 2535 745  2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0181
-U 1 1 57FA6D5A
-P 2520 865
-F 0 "#PWR0181" H 2520 615 50  0001 C CNN
-F 1 "GND" H 2525 692 24  0000 C CNN
-F 2 "" H 2520 865 50  0000 C CNN
-F 3 "" H 2520 865 50  0000 C CNN
-	1    2520 865 
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D64
-U 1 1 57FA6D65
-P 2375 865
-F 0 "D64" H 2495 890 24  0000 C CNN
-F 1 "TMMBAT48" H 2475 800 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2375 865 50  0001 C CNN
-F 3 "" V 2375 865 50  0001 C CNN
-F 4 "Value" H 2375 865 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 865 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 865 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2375 865 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2375 865 60  0001 C CNN "Bauform"
-	1    2375 865 
-	1    0    0    -1  
-$EndComp
-Text GLabel 1915 1115 0    24   Input ~ 0
+Text GLabel 2520 1510 0    24   Input ~ 0
 pinMotorLeftSense
-$Comp
-L R_Small R85
-U 1 1 57FA78FF
-P 2055 1115
-F 0 "R85" V 2110 1115 24  0000 C CNN
-F 1 "300R" V 2055 1115 24  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 2055 1115 50  0001 C CNN
-F 3 "" H 2055 1115 50  0001 C CNN
-F 4 "Value" H 2055 1115 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2055 1115 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2055 1115 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2055 1115 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2055 1115 60  0001 C CNN "Bauform"
-	1    2055 1115
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D61
-U 1 1 57FA790A
-P 2365 1055
-F 0 "D61" H 2250 1035 24  0000 C CNN
-F 1 "TMMBAT48" H 2260 1110 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2365 1055 50  0001 C CNN
-F 3 "" V 2365 1055 50  0001 C CNN
-F 4 "Value" H 2365 1055 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 1055 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 1055 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2365 1055 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2365 1055 60  0001 C CNN "Bauform"
-	1    2365 1055
-	-1   0    0    -1  
-$EndComp
-Text GLabel 2525 1055 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0182
-U 1 1 57FA7911
-P 2510 1175
-F 0 "#PWR0182" H 2510 925 50  0001 C CNN
-F 1 "GND" H 2515 1002 24  0000 C CNN
-F 2 "" H 2510 1175 50  0000 C CNN
-F 3 "" H 2510 1175 50  0000 C CNN
-	1    2510 1175
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D62
-U 1 1 57FA791C
-P 2365 1175
-F 0 "D62" H 2485 1200 24  0000 C CNN
-F 1 "TMMBAT48" H 2465 1110 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2365 1175 50  0001 C CNN
-F 3 "" V 2365 1175 50  0001 C CNN
-F 4 "Value" H 2365 1175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 1175 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 1175 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2365 1175 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2365 1175 60  0001 C CNN "Bauform"
-	1    2365 1175
-	1    0    0    -1  
-$EndComp
-Text GLabel 1910 1415 0    24   Input ~ 0
+Text GLabel 2515 1705 0    24   Input ~ 0
 pinBatteryVoltage
 $Comp
 L R_Small R84
 U 1 1 57FA8BED
-P 2050 1415
-F 0 "R84" V 2105 1415 24  0000 C CNN
-F 1 "300R" V 2050 1415 24  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 2050 1415 50  0001 C CNN
-F 3 "" H 2050 1415 50  0001 C CNN
-F 4 "Value" H 2050 1415 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2050 1415 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2050 1415 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2050 1415 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2050 1415 60  0001 C CNN "Bauform"
-	1    2050 1415
+P 2655 1705
+F 0 "R84" V 2710 1705 24  0000 C CNN
+F 1 "300R" V 2655 1705 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 2655 1705 50  0001 C CNN
+F 3 "" H 2655 1705 50  0001 C CNN
+F 4 "Value" H 2655 1705 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2655 1705 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2655 1705 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2655 1705 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2655 1705 60  0001 C CNN "Bauform"
+	1    2655 1705
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D59
 U 1 1 57FA8BF8
-P 2360 1355
-F 0 "D59" H 2245 1335 24  0000 C CNN
-F 1 "TMMBAT48" H 2255 1410 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2360 1355 50  0001 C CNN
-F 3 "" V 2360 1355 50  0001 C CNN
-F 4 "Value" H 2360 1355 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2360 1355 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2360 1355 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2360 1355 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2360 1355 60  0001 C CNN "Bauform"
-	1    2360 1355
+P 2965 1645
+F 0 "D59" H 2850 1625 24  0000 C CNN
+F 1 "TMMBAT48" H 2860 1700 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2965 1645 50  0001 C CNN
+F 3 "" V 2965 1645 50  0001 C CNN
+F 4 "Value" H 2965 1645 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2965 1645 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2965 1645 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2965 1645 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2965 1645 60  0001 C CNN "Bauform"
+	1    2965 1645
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2520 1355 2    24   Input ~ 0
+Text GLabel 3125 1645 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0183
+L GND #PWR0173
 U 1 1 57FA8BFF
-P 2505 1475
-F 0 "#PWR0183" H 2505 1225 50  0001 C CNN
-F 1 "GND" H 2510 1302 24  0000 C CNN
-F 2 "" H 2505 1475 50  0000 C CNN
-F 3 "" H 2505 1475 50  0000 C CNN
-	1    2505 1475
+P 3110 1765
+F 0 "#PWR0173" H 3110 1515 50  0001 C CNN
+F 1 "GND" H 3115 1592 24  0000 C CNN
+F 2 "" H 3110 1765 50  0000 C CNN
+F 3 "" H 3110 1765 50  0000 C CNN
+	1    3110 1765
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D60
 U 1 1 57FA8C0A
-P 2360 1475
-F 0 "D60" H 2480 1500 24  0000 C CNN
-F 1 "TMMBAT48" H 2460 1410 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2360 1475 50  0001 C CNN
-F 3 "" V 2360 1475 50  0001 C CNN
-F 4 "Value" H 2360 1475 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2360 1475 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2360 1475 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2360 1475 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2360 1475 60  0001 C CNN "Bauform"
-	1    2360 1475
+P 2965 1765
+F 0 "D60" H 3085 1790 24  0000 C CNN
+F 1 "TMMBAT48" H 3065 1700 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2965 1765 50  0001 C CNN
+F 3 "" V 2965 1765 50  0001 C CNN
+F 4 "Value" H 2965 1765 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2965 1765 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2965 1765 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2965 1765 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2965 1765 60  0001 C CNN "Bauform"
+	1    2965 1765
 	1    0    0    -1  
 $EndComp
-Text GLabel 1905 1700 0    24   Input ~ 0
+Text GLabel 2510 1880 0    24   Input ~ 0
 pinMotorMowSense
-$Comp
-L R_Small R83
-U 1 1 57FA9DF9
-P 2045 1700
-F 0 "R83" V 2100 1700 24  0000 C CNN
-F 1 "300R" V 2045 1700 24  0000 C CNN
-F 2 "Resistors_SMD:R_0805" H 2045 1700 50  0001 C CNN
-F 3 "" H 2045 1700 50  0001 C CNN
-F 4 "Value" H 2045 1700 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2045 1700 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2045 1700 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2045 1700 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2045 1700 60  0001 C CNN "Bauform"
-	1    2045 1700
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D57
-U 1 1 57FA9E04
-P 2355 1640
-F 0 "D57" H 2240 1620 24  0000 C CNN
-F 1 "TMMBAT48" H 2250 1695 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2355 1640 50  0001 C CNN
-F 3 "" V 2355 1640 50  0001 C CNN
-F 4 "Value" H 2355 1640 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2355 1640 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2355 1640 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2355 1640 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2355 1640 60  0001 C CNN "Bauform"
-	1    2355 1640
-	-1   0    0    -1  
-$EndComp
-Text GLabel 2515 1640 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0184
-U 1 1 57FA9E0B
-P 2500 1760
-F 0 "#PWR0184" H 2500 1510 50  0001 C CNN
-F 1 "GND" H 2505 1587 24  0000 C CNN
-F 2 "" H 2500 1760 50  0000 C CNN
-F 3 "" H 2500 1760 50  0000 C CNN
-	1    2500 1760
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D58
-U 1 1 57FA9E16
-P 2355 1760
-F 0 "D58" H 2475 1785 24  0000 C CNN
-F 1 "TMMBAT48" H 2455 1695 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2355 1760 50  0001 C CNN
-F 3 "" V 2355 1760 50  0001 C CNN
-F 4 "Value" H 2355 1760 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2355 1760 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2355 1760 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2355 1760 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2355 1760 60  0001 C CNN "Bauform"
-	1    2355 1760
-	1    0    0    -1  
-$EndComp
-Text GLabel 1820 2610 0    24   Input ~ 0
+Text GLabel 2425 2655 0    24   Input ~ 0
 ReserveAD6
 $Comp
 L R_Small R82
 U 1 1 57FAC6F1
-P 1985 2610
-F 0 "R82" V 2040 2610 24  0000 C CNN
-F 1 "300R" V 1985 2610 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1985 2610 50  0001 C CNN
-F 3 "" H 1985 2610 50  0001 C CNN
-F 4 "Value" H 1985 2610 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1985 2610 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1985 2610 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1985 2610 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1985 2610 60  0001 C CNN "Bauform"
-	1    1985 2610
+P 2590 2655
+F 0 "R82" V 2645 2655 24  0000 C CNN
+F 1 "300R" V 2590 2655 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 2590 2655 50  0001 C CNN
+F 3 "" H 2590 2655 50  0001 C CNN
+F 4 "Value" H 2590 2655 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2590 2655 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2590 2655 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2590 2655 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2590 2655 60  0001 C CNN "Bauform"
+	1    2590 2655
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D55
 U 1 1 57FAC6FC
-P 2295 2550
-F 0 "D55" H 2180 2530 24  0000 C CNN
-F 1 "TMMBAT48" H 2190 2605 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2295 2550 50  0001 C CNN
-F 3 "" V 2295 2550 50  0001 C CNN
-F 4 "Value" H 2295 2550 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2295 2550 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2295 2550 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2295 2550 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2295 2550 60  0001 C CNN "Bauform"
-	1    2295 2550
+P 2900 2595
+F 0 "D55" H 2785 2575 24  0000 C CNN
+F 1 "TMMBAT48" H 2795 2650 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2900 2595 50  0001 C CNN
+F 3 "" V 2900 2595 50  0001 C CNN
+F 4 "Value" H 2900 2595 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2900 2595 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2900 2595 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2900 2595 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2900 2595 60  0001 C CNN "Bauform"
+	1    2900 2595
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2455 2550 2    24   Input ~ 0
+Text GLabel 3060 2595 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0185
+L GND #PWR0174
 U 1 1 57FAC703
-P 2440 2670
-F 0 "#PWR0185" H 2440 2420 50  0001 C CNN
-F 1 "GND" H 2445 2497 24  0000 C CNN
-F 2 "" H 2440 2670 50  0000 C CNN
-F 3 "" H 2440 2670 50  0000 C CNN
-	1    2440 2670
+P 3045 2715
+F 0 "#PWR0174" H 3045 2465 50  0001 C CNN
+F 1 "GND" H 3050 2542 24  0000 C CNN
+F 2 "" H 3045 2715 50  0000 C CNN
+F 3 "" H 3045 2715 50  0000 C CNN
+	1    3045 2715
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D56
 U 1 1 57FAC70E
-P 2295 2670
-F 0 "D56" H 2415 2695 24  0000 C CNN
-F 1 "TMMBAT48" H 2395 2605 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2295 2670 50  0001 C CNN
-F 3 "" V 2295 2670 50  0001 C CNN
-F 4 "Value" H 2295 2670 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2295 2670 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2295 2670 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2295 2670 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2295 2670 60  0001 C CNN "Bauform"
-	1    2295 2670
+P 2900 2715
+F 0 "D56" H 3020 2740 24  0000 C CNN
+F 1 "TMMBAT48" H 3000 2650 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2900 2715 50  0001 C CNN
+F 3 "" V 2900 2715 50  0001 C CNN
+F 4 "Value" H 2900 2715 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2900 2715 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2900 2715 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2900 2715 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2900 2715 60  0001 C CNN "Bauform"
+	1    2900 2715
 	1    0    0    -1  
 $EndComp
-Text GLabel 1810 2895 0    24   Input ~ 0
+Text GLabel 2415 2940 0    24   Input ~ 0
 ReserveAD7
 $Comp
 L R_Small R26
 U 1 1 57FADD68
-P 1975 2895
-F 0 "R26" V 2030 2895 24  0000 C CNN
-F 1 "300R" V 1975 2895 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1975 2895 50  0001 C CNN
-F 3 "" H 1975 2895 50  0001 C CNN
-F 4 "Value" H 1975 2895 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1975 2895 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1975 2895 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1975 2895 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1975 2895 60  0001 C CNN "Bauform"
-	1    1975 2895
+P 2580 2940
+F 0 "R26" V 2635 2940 24  0000 C CNN
+F 1 "300R" V 2580 2940 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 2580 2940 50  0001 C CNN
+F 3 "" H 2580 2940 50  0001 C CNN
+F 4 "Value" H 2580 2940 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2580 2940 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2580 2940 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2580 2940 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2580 2940 60  0001 C CNN "Bauform"
+	1    2580 2940
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D53
 U 1 1 57FADD73
-P 2285 2835
-F 0 "D53" H 2170 2815 24  0000 C CNN
-F 1 "TMMBAT48" H 2180 2890 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2285 2835 50  0001 C CNN
-F 3 "" V 2285 2835 50  0001 C CNN
-F 4 "Value" H 2285 2835 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2285 2835 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2285 2835 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2285 2835 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2285 2835 60  0001 C CNN "Bauform"
-	1    2285 2835
+P 2890 2880
+F 0 "D53" H 2775 2860 24  0000 C CNN
+F 1 "TMMBAT48" H 2785 2935 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2890 2880 50  0001 C CNN
+F 3 "" V 2890 2880 50  0001 C CNN
+F 4 "Value" H 2890 2880 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2890 2880 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2890 2880 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2890 2880 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2890 2880 60  0001 C CNN "Bauform"
+	1    2890 2880
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2445 2835 2    24   Input ~ 0
+Text GLabel 3050 2880 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0186
+L GND #PWR0175
 U 1 1 57FADD7A
-P 2430 2955
-F 0 "#PWR0186" H 2430 2705 50  0001 C CNN
-F 1 "GND" H 2435 2782 24  0000 C CNN
-F 2 "" H 2430 2955 50  0000 C CNN
-F 3 "" H 2430 2955 50  0000 C CNN
-	1    2430 2955
+P 3035 3000
+F 0 "#PWR0175" H 3035 2750 50  0001 C CNN
+F 1 "GND" H 3040 2827 24  0000 C CNN
+F 2 "" H 3035 3000 50  0000 C CNN
+F 3 "" H 3035 3000 50  0000 C CNN
+	1    3035 3000
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D54
 U 1 1 57FADD85
-P 2285 2955
-F 0 "D54" H 2405 2980 24  0000 C CNN
-F 1 "TMMBAT48" H 2385 2890 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2285 2955 50  0001 C CNN
-F 3 "" V 2285 2955 50  0001 C CNN
-F 4 "Value" H 2285 2955 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2285 2955 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2285 2955 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2285 2955 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2285 2955 60  0001 C CNN "Bauform"
-	1    2285 2955
+P 2890 3000
+F 0 "D54" H 3010 3025 24  0000 C CNN
+F 1 "TMMBAT48" H 2990 2935 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2890 3000 50  0001 C CNN
+F 3 "" V 2890 3000 50  0001 C CNN
+F 4 "Value" H 2890 3000 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2890 3000 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2890 3000 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2890 3000 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2890 3000 60  0001 C CNN "Bauform"
+	1    2890 3000
 	1    0    0    -1  
 $EndComp
-Text GLabel 925  4820 0    24   Input ~ 0
-pinOdometryLeft2
-Text GLabel 960  4505 0    24   Input ~ 0
+Text GLabel 1530 4310 0    24   Input ~ 0
+Resv.PinAD13
+Text GLabel 3900 3790 0    24   Input ~ 0
 pinOdometryLeft
 $Comp
 L R_Small R50
 U 1 1 57FC3322
-P 1090 4820
-F 0 "R50" V 1145 4820 24  0000 C CNN
-F 1 "300R" V 1090 4820 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1090 4820 50  0001 C CNN
-F 3 "" H 1090 4820 50  0001 C CNN
-F 4 "Value" H 1090 4820 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1090 4820 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1090 4820 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1090 4820 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1090 4820 60  0001 C CNN "Bauform"
-	1    1090 4820
+P 1695 4310
+F 0 "R50" V 1750 4310 24  0000 C CNN
+F 1 "300R" V 1695 4310 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 1695 4310 50  0001 C CNN
+F 3 "" H 1695 4310 50  0001 C CNN
+F 4 "Value" H 1695 4310 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1695 4310 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1695 4310 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1695 4310 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1695 4310 60  0001 C CNN "Bauform"
+	1    1695 4310
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D69
 U 1 1 57FC332D
-P 1400 4760
-F 0 "D69" H 1285 4740 24  0000 C CNN
-F 1 "TMMBAT48" H 1295 4815 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1400 4760 50  0001 C CNN
-F 3 "" V 1400 4760 50  0001 C CNN
-F 4 "Value" H 1400 4760 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1400 4760 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1400 4760 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1400 4760 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1400 4760 60  0001 C CNN "Bauform"
-	1    1400 4760
+P 2005 4250
+F 0 "D69" H 1890 4230 24  0000 C CNN
+F 1 "TMMBAT48" H 1900 4305 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2005 4250 50  0001 C CNN
+F 3 "" V 2005 4250 50  0001 C CNN
+F 4 "Value" H 2005 4250 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2005 4250 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2005 4250 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2005 4250 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2005 4250 60  0001 C CNN "Bauform"
+	1    2005 4250
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1560 4760 2    24   Input ~ 0
+Text GLabel 2165 4250 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0187
+L GND #PWR0176
 U 1 1 57FC3334
-P 1545 4880
-F 0 "#PWR0187" H 1545 4630 50  0001 C CNN
-F 1 "GND" H 1550 4707 24  0000 C CNN
-F 2 "" H 1545 4880 50  0000 C CNN
-F 3 "" H 1545 4880 50  0000 C CNN
-	1    1545 4880
+P 2150 4370
+F 0 "#PWR0176" H 2150 4120 50  0001 C CNN
+F 1 "GND" H 2155 4197 24  0000 C CNN
+F 2 "" H 2150 4370 50  0000 C CNN
+F 3 "" H 2150 4370 50  0000 C CNN
+	1    2150 4370
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D70
 U 1 1 57FC333F
-P 1400 4880
-F 0 "D70" H 1520 4905 24  0000 C CNN
-F 1 "TMMBAT48" H 1500 4815 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1400 4880 50  0001 C CNN
-F 3 "" V 1400 4880 50  0001 C CNN
-F 4 "Value" H 1400 4880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1400 4880 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1400 4880 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1400 4880 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1400 4880 60  0001 C CNN "Bauform"
-	1    1400 4880
+P 2005 4370
+F 0 "D70" H 2125 4395 24  0000 C CNN
+F 1 "TMMBAT48" H 2105 4305 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2005 4370 50  0001 C CNN
+F 3 "" V 2005 4370 50  0001 C CNN
+F 4 "Value" H 2005 4370 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2005 4370 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2005 4370 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2005 4370 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2005 4370 60  0001 C CNN "Bauform"
+	1    2005 4370
 	1    0    0    -1  
 $EndComp
-Text Notes 845  3060 0    60   ~ 0
+Text Notes 1450 3105 0    60   ~ 0
 Pinschutzschaltung
-$Comp
-L R_Small R54
-U 1 1 57FC334B
-P 1100 4505
-F 0 "R54" V 1155 4505 24  0000 C CNN
-F 1 "300R" V 1100 4505 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1100 4505 50  0001 C CNN
-F 3 "" H 1100 4505 50  0001 C CNN
-F 4 "Value" H 1100 4505 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1100 4505 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1100 4505 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1100 4505 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1100 4505 60  0001 C CNN "Bauform"
-	1    1100 4505
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D71
-U 1 1 57FC3356
-P 1410 4445
-F 0 "D71" H 1295 4425 24  0000 C CNN
-F 1 "TMMBAT48" H 1305 4500 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1410 4445 50  0001 C CNN
-F 3 "" V 1410 4445 50  0001 C CNN
-F 4 "Value" H 1410 4445 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1410 4445 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1410 4445 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1410 4445 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1410 4445 60  0001 C CNN "Bauform"
-	1    1410 4445
-	-1   0    0    -1  
-$EndComp
-Text GLabel 1570 4445 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0188
-U 1 1 57FC335D
-P 1555 4565
-F 0 "#PWR0188" H 1555 4315 50  0001 C CNN
-F 1 "GND" H 1560 4392 24  0000 C CNN
-F 2 "" H 1555 4565 50  0000 C CNN
-F 3 "" H 1555 4565 50  0000 C CNN
-	1    1555 4565
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D72
-U 1 1 57FC3368
-P 1410 4565
-F 0 "D72" H 1530 4590 24  0000 C CNN
-F 1 "TMMBAT48" H 1510 4500 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1410 4565 50  0001 C CNN
-F 3 "" V 1410 4565 50  0001 C CNN
-F 4 "Value" H 1410 4565 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1410 4565 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1410 4565 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1410 4565 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1410 4565 60  0001 C CNN "Bauform"
-	1    1410 4565
-	1    0    0    -1  
-$EndComp
-Text GLabel 1025 3310 0    24   Input ~ 0
+Text GLabel 1630 3355 0    24   Input ~ 0
 pinChargeCurrent
 $Comp
 L R_Small R90
 U 1 1 57FC3374
-P 1165 3310
-F 0 "R90" V 1220 3310 24  0000 C CNN
-F 1 "300R" V 1165 3310 24  0000 C CNN
-F 2 "Zimprich:D_0603" H 1165 3310 50  0001 C CNN
-F 3 "" H 1165 3310 50  0001 C CNN
-F 4 "Value" H 1165 3310 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1165 3310 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1165 3310 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1165 3310 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1165 3310 60  0001 C CNN "Bauform"
-	1    1165 3310
+P 1770 3355
+F 0 "R90" V 1825 3355 24  0000 C CNN
+F 1 "300R" V 1770 3355 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 1770 3355 50  0001 C CNN
+F 3 "" H 1770 3355 50  0001 C CNN
+F 4 "Value" H 1770 3355 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1770 3355 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1770 3355 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1770 3355 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1770 3355 60  0001 C CNN "Bauform"
+	1    1770 3355
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D79
+L D_Small D63
 U 1 1 57FC337F
-P 1475 3250
-F 0 "D79" H 1360 3230 24  0000 C CNN
-F 1 "TMMBAT48" H 1370 3305 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1475 3250 50  0001 C CNN
-F 3 "" V 1475 3250 50  0001 C CNN
-F 4 "Value" H 1475 3250 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1475 3250 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1475 3250 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1475 3250 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1475 3250 60  0001 C CNN "Bauform"
-	1    1475 3250
+P 2080 3295
+F 0 "D63" H 1965 3275 24  0000 C CNN
+F 1 "TMMBAT48" H 1975 3350 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2080 3295 50  0001 C CNN
+F 3 "" V 2080 3295 50  0001 C CNN
+F 4 "Value" H 2080 3295 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2080 3295 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2080 3295 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2080 3295 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2080 3295 60  0001 C CNN "Bauform"
+F 9 "Value" H 2080 3295 60  0001 C CNN "Funktion"
+F 10 "Value" H 2080 3295 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2080 3295 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2080 3295
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1635 3250 2    24   Input ~ 0
+Text GLabel 2240 3295 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0189
+L GND #PWR0177
 U 1 1 57FC3386
-P 1620 3370
-F 0 "#PWR0189" H 1620 3120 50  0001 C CNN
-F 1 "GND" H 1625 3197 24  0000 C CNN
-F 2 "" H 1620 3370 50  0000 C CNN
-F 3 "" H 1620 3370 50  0000 C CNN
-	1    1620 3370
+P 2225 3415
+F 0 "#PWR0177" H 2225 3165 50  0001 C CNN
+F 1 "GND" H 2230 3242 24  0000 C CNN
+F 2 "" H 2225 3415 50  0000 C CNN
+F 3 "" H 2225 3415 50  0000 C CNN
+	1    2225 3415
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D80
+L D_Small D64
 U 1 1 57FC3391
-P 1475 3370
-F 0 "D80" H 1595 3395 24  0000 C CNN
-F 1 "TMMBAT48" H 1575 3305 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1475 3370 50  0001 C CNN
-F 3 "" V 1475 3370 50  0001 C CNN
-F 4 "Value" H 1475 3370 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1475 3370 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1475 3370 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1475 3370 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1475 3370 60  0001 C CNN "Bauform"
-	1    1475 3370
+P 2080 3415
+F 0 "D64" H 2200 3440 24  0000 C CNN
+F 1 "TMMBAT48" H 2180 3350 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2080 3415 50  0001 C CNN
+F 3 "" V 2080 3415 50  0001 C CNN
+F 4 "Value" H 2080 3415 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2080 3415 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2080 3415 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2080 3415 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2080 3415 60  0001 C CNN "Bauform"
+F 9 "Value" H 2080 3415 60  0001 C CNN "Funktion"
+F 10 "Value" H 2080 3415 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2080 3415 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2080 3415
 	1    0    0    -1  
 $EndComp
-Text GLabel 1015 3620 0    24   Input ~ 0
+Text GLabel 1620 3665 0    24   Input ~ 0
 pinChargeVoltage
 $Comp
 L R_Small R89
 U 1 1 57FC339D
-P 1155 3620
-F 0 "R89" V 1210 3620 24  0000 C CNN
-F 1 "300R" V 1155 3620 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1155 3620 50  0001 C CNN
-F 3 "" H 1155 3620 50  0001 C CNN
-F 4 "Value" H 1155 3620 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1155 3620 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1155 3620 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1155 3620 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1155 3620 60  0001 C CNN "Bauform"
-	1    1155 3620
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D77
-U 1 1 57FC33A8
-P 1465 3560
-F 0 "D77" H 1350 3540 24  0000 C CNN
-F 1 "TMMBAT48" H 1360 3615 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1465 3560 50  0001 C CNN
-F 3 "" V 1465 3560 50  0001 C CNN
-F 4 "Value" H 1465 3560 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1465 3560 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1465 3560 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1465 3560 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1465 3560 60  0001 C CNN "Bauform"
-	1    1465 3560
-	-1   0    0    -1  
-$EndComp
-Text GLabel 1625 3560 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0190
-U 1 1 57FC33AF
-P 1610 3680
-F 0 "#PWR0190" H 1610 3430 50  0001 C CNN
-F 1 "GND" H 1615 3507 24  0000 C CNN
-F 2 "" H 1610 3680 50  0000 C CNN
-F 3 "" H 1610 3680 50  0000 C CNN
-	1    1610 3680
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D78
-U 1 1 57FC33BA
-P 1465 3680
-F 0 "D78" H 1585 3705 24  0000 C CNN
-F 1 "TMMBAT48" H 1565 3615 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1465 3680 50  0001 C CNN
-F 3 "" V 1465 3680 50  0001 C CNN
-F 4 "Value" H 1465 3680 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1465 3680 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1465 3680 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1465 3680 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1465 3680 60  0001 C CNN "Bauform"
-	1    1465 3680
-	1    0    0    -1  
-$EndComp
-Text GLabel 1010 3920 0    24   Input ~ 0
-ReserveAD10
-$Comp
-L R_Small R88
-U 1 1 57FC33C6
-P 1150 3920
-F 0 "R88" V 1205 3920 24  0000 C CNN
-F 1 "300R" V 1150 3920 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1150 3920 50  0001 C CNN
-F 3 "" H 1150 3920 50  0001 C CNN
-F 4 "Value" H 1150 3920 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1150 3920 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1150 3920 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1150 3920 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1150 3920 60  0001 C CNN "Bauform"
-	1    1150 3920
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D75
-U 1 1 57FC33D1
-P 1460 3860
-F 0 "D75" H 1345 3840 24  0000 C CNN
-F 1 "TMMBAT48" H 1355 3915 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1460 3860 50  0001 C CNN
-F 3 "" V 1460 3860 50  0001 C CNN
-F 4 "Value" H 1460 3860 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1460 3860 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1460 3860 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1460 3860 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1460 3860 60  0001 C CNN "Bauform"
-	1    1460 3860
-	-1   0    0    -1  
-$EndComp
-Text GLabel 1620 3860 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0191
-U 1 1 57FC33D8
-P 1605 3980
-F 0 "#PWR0191" H 1605 3730 50  0001 C CNN
-F 1 "GND" H 1610 3807 24  0000 C CNN
-F 2 "" H 1605 3980 50  0000 C CNN
-F 3 "" H 1605 3980 50  0000 C CNN
-	1    1605 3980
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D76
-U 1 1 57FC33E3
-P 1460 3980
-F 0 "D76" H 1580 4005 24  0000 C CNN
-F 1 "TMMBAT48" H 1560 3915 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1460 3980 50  0001 C CNN
-F 3 "" V 1460 3980 50  0001 C CNN
-F 4 "Value" H 1460 3980 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1460 3980 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1460 3980 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1460 3980 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1460 3980 60  0001 C CNN "Bauform"
-	1    1460 3980
-	1    0    0    -1  
-$EndComp
-Text GLabel 1005 4205 0    24   Input ~ 0
-pinMotorMowRpm_neu
-$Comp
-L R_Small R87
-U 1 1 57FC33EF
-P 1145 4205
-F 0 "R87" V 1200 4205 24  0000 C CNN
-F 1 "300R" V 1145 4205 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1145 4205 50  0001 C CNN
-F 3 "" H 1145 4205 50  0001 C CNN
-F 4 "Value" H 1145 4205 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1145 4205 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1145 4205 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1145 4205 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1145 4205 60  0001 C CNN "Bauform"
-	1    1145 4205
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D73
-U 1 1 57FC33FA
-P 1455 4145
-F 0 "D73" H 1340 4125 24  0000 C CNN
-F 1 "TMMBAT48" H 1350 4200 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1455 4145 50  0001 C CNN
-F 3 "" V 1455 4145 50  0001 C CNN
-F 4 "Value" H 1455 4145 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1455 4145 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1455 4145 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1455 4145 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1455 4145 60  0001 C CNN "Bauform"
-	1    1455 4145
-	-1   0    0    -1  
-$EndComp
-Text GLabel 1615 4145 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0192
-U 1 1 57FC3401
-P 1600 4265
-F 0 "#PWR0192" H 1600 4015 50  0001 C CNN
-F 1 "GND" H 1605 4092 24  0000 C CNN
-F 2 "" H 1600 4265 50  0000 C CNN
-F 3 "" H 1600 4265 50  0000 C CNN
-	1    1600 4265
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D74
-U 1 1 57FC340C
-P 1455 4265
-F 0 "D74" H 1575 4290 24  0000 C CNN
-F 1 "TMMBAT48" H 1555 4200 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1455 4265 50  0001 C CNN
-F 3 "" V 1455 4265 50  0001 C CNN
-F 4 "Value" H 1455 4265 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1455 4265 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1455 4265 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1455 4265 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1455 4265 60  0001 C CNN "Bauform"
-	1    1455 4265
-	1    0    0    -1  
-$EndComp
-Text GLabel 920  5115 0    24   Input ~ 0
-pinOdometryRight
-$Comp
-L R_Small R29
-U 1 1 57FC3418
-P 1085 5115
-F 0 "R29" V 1140 5115 24  0000 C CNN
-F 1 "300R" V 1085 5115 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1085 5115 50  0001 C CNN
-F 3 "" H 1085 5115 50  0001 C CNN
-F 4 "Value" H 1085 5115 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1085 5115 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1085 5115 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1085 5115 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1085 5115 60  0001 C CNN "Bauform"
-	1    1085 5115
+P 1760 3665
+F 0 "R89" V 1815 3665 24  0000 C CNN
+F 1 "300R" V 1760 3665 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 1760 3665 50  0001 C CNN
+F 3 "" H 1760 3665 50  0001 C CNN
+F 4 "Value" H 1760 3665 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1760 3665 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1760 3665 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1760 3665 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1760 3665 60  0001 C CNN "Bauform"
+	1    1760 3665
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D67
-U 1 1 57FC3423
-P 1395 5055
-F 0 "D67" H 1280 5035 24  0000 C CNN
-F 1 "TMMBAT48" H 1290 5110 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1395 5055 50  0001 C CNN
-F 3 "" V 1395 5055 50  0001 C CNN
-F 4 "Value" H 1395 5055 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1395 5055 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1395 5055 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1395 5055 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1395 5055 60  0001 C CNN "Bauform"
-	1    1395 5055
+U 1 1 57FC33A8
+P 2070 3605
+F 0 "D67" H 1955 3585 24  0000 C CNN
+F 1 "TMMBAT48" H 1965 3660 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2070 3605 50  0001 C CNN
+F 3 "" V 2070 3605 50  0001 C CNN
+F 4 "Value" H 2070 3605 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2070 3605 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2070 3605 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2070 3605 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2070 3605 60  0001 C CNN "Bauform"
+F 9 "Value" H 2070 3605 60  0001 C CNN "Funktion"
+F 10 "Value" H 2070 3605 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2070 3605 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2070 3605
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1555 5055 2    24   Input ~ 0
+Text GLabel 2230 3605 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0193
-U 1 1 57FC342A
-P 1540 5175
-F 0 "#PWR0193" H 1540 4925 50  0001 C CNN
-F 1 "GND" H 1545 5002 24  0000 C CNN
-F 2 "" H 1540 5175 50  0000 C CNN
-F 3 "" H 1540 5175 50  0000 C CNN
-	1    1540 5175
+L GND #PWR0178
+U 1 1 57FC33AF
+P 2215 3725
+F 0 "#PWR0178" H 2215 3475 50  0001 C CNN
+F 1 "GND" H 2220 3552 24  0000 C CNN
+F 2 "" H 2215 3725 50  0000 C CNN
+F 3 "" H 2215 3725 50  0000 C CNN
+	1    2215 3725
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D68
-U 1 1 57FC3435
-P 1395 5175
-F 0 "D68" H 1515 5200 24  0000 C CNN
-F 1 "TMMBAT48" H 1495 5110 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1395 5175 50  0001 C CNN
-F 3 "" V 1395 5175 50  0001 C CNN
-F 4 "Value" H 1395 5175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1395 5175 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1395 5175 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1395 5175 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1395 5175 60  0001 C CNN "Bauform"
-	1    1395 5175
+U 1 1 57FC33BA
+P 2070 3725
+F 0 "D68" H 2190 3750 24  0000 C CNN
+F 1 "TMMBAT48" H 2170 3660 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2070 3725 50  0001 C CNN
+F 3 "" V 2070 3725 50  0001 C CNN
+F 4 "Value" H 2070 3725 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2070 3725 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2070 3725 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2070 3725 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2070 3725 60  0001 C CNN "Bauform"
+F 9 "Value" H 2070 3725 60  0001 C CNN "Funktion"
+F 10 "Value" H 2070 3725 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2070 3725 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2070 3725
 	1    0    0    -1  
 $EndComp
-Text GLabel 910  5400 0    24   Input ~ 0
-pinOdometryRight2
+Text GLabel 1615 3965 0    24   Input ~ 0
+ReserveAD10
+$Comp
+L R_Small R88
+U 1 1 57FC33C6
+P 1755 3965
+F 0 "R88" V 1810 3965 24  0000 C CNN
+F 1 "300R" V 1755 3965 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 1755 3965 50  0001 C CNN
+F 3 "" H 1755 3965 50  0001 C CNN
+F 4 "Value" H 1755 3965 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1755 3965 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1755 3965 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1755 3965 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1755 3965 60  0001 C CNN "Bauform"
+	1    1755 3965
+	0    -1   -1   0   
+$EndComp
+$Comp
+L D_Small D71
+U 1 1 57FC33D1
+P 2065 3905
+F 0 "D71" H 1950 3885 24  0000 C CNN
+F 1 "TMMBAT48" H 1960 3960 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2065 3905 50  0001 C CNN
+F 3 "" V 2065 3905 50  0001 C CNN
+F 4 "Value" H 2065 3905 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2065 3905 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2065 3905 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2065 3905 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2065 3905 60  0001 C CNN "Bauform"
+F 9 "Value" H 2065 3905 60  0001 C CNN "Funktion"
+F 10 "Value" H 2065 3905 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2065 3905 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2065 3905
+	-1   0    0    -1  
+$EndComp
+Text GLabel 2225 3905 2    24   Input ~ 0
+IOREF
+$Comp
+L GND #PWR0179
+U 1 1 57FC33D8
+P 2210 4025
+F 0 "#PWR0179" H 2210 3775 50  0001 C CNN
+F 1 "GND" H 2215 3852 24  0000 C CNN
+F 2 "" H 2210 4025 50  0000 C CNN
+F 3 "" H 2210 4025 50  0000 C CNN
+	1    2210 4025
+	0    -1   -1   0   
+$EndComp
+$Comp
+L D_Small D72
+U 1 1 57FC33E3
+P 2065 4025
+F 0 "D72" H 2185 4050 24  0000 C CNN
+F 1 "TMMBAT48" H 2165 3960 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2065 4025 50  0001 C CNN
+F 3 "" V 2065 4025 50  0001 C CNN
+F 4 "Value" H 2065 4025 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2065 4025 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2065 4025 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2065 4025 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2065 4025 60  0001 C CNN "Bauform"
+F 9 "Value" H 2065 4025 60  0001 C CNN "Funktion"
+F 10 "Value" H 2065 4025 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2065 4025 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2065 4025
+	1    0    0    -1  
+$EndComp
+Text GLabel 4000 3690 0    24   Input ~ 0
+pinMotorMowRpm_neu
+Text GLabel 3925 3990 0    24   Input ~ 0
+pinOdometryRight
+Text GLabel 1515 4655 0    24   Input ~ 0
+Resv.PinAD15
 $Comp
 L R_Small R27
 U 1 1 57FC3441
-P 1075 5400
-F 0 "R27" V 1130 5400 24  0000 C CNN
-F 1 "300R" V 1075 5400 24  0000 C CNN
-F 2 "Zimprich:R_0603" H 1075 5400 50  0001 C CNN
-F 3 "" H 1075 5400 50  0001 C CNN
-F 4 "Value" H 1075 5400 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1075 5400 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1075 5400 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1075 5400 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1075 5400 60  0001 C CNN "Bauform"
-	1    1075 5400
+P 1680 4655
+F 0 "R27" V 1735 4655 24  0000 C CNN
+F 1 "300R" V 1680 4655 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 1680 4655 50  0001 C CNN
+F 3 "" H 1680 4655 50  0001 C CNN
+F 4 "Value" H 1680 4655 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1680 4655 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1680 4655 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1680 4655 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1680 4655 60  0001 C CNN "Bauform"
+	1    1680 4655
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D65
 U 1 1 57FC344C
-P 1385 5340
-F 0 "D65" H 1270 5320 24  0000 C CNN
-F 1 "TMMBAT48" H 1280 5395 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1385 5340 50  0001 C CNN
-F 3 "" V 1385 5340 50  0001 C CNN
-F 4 "Value" H 1385 5340 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1385 5340 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1385 5340 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1385 5340 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1385 5340 60  0001 C CNN "Bauform"
-	1    1385 5340
+P 1990 4595
+F 0 "D65" H 1875 4575 24  0000 C CNN
+F 1 "TMMBAT48" H 1885 4650 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1990 4595 50  0001 C CNN
+F 3 "" V 1990 4595 50  0001 C CNN
+F 4 "Value" H 1990 4595 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1990 4595 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1990 4595 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1990 4595 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 1990 4595 60  0001 C CNN "Bauform"
+	1    1990 4595
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1545 5340 2    24   Input ~ 0
+Text GLabel 2150 4595 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0194
+L GND #PWR0180
 U 1 1 57FC3453
-P 1530 5460
-F 0 "#PWR0194" H 1530 5210 50  0001 C CNN
-F 1 "GND" H 1535 5287 24  0000 C CNN
-F 2 "" H 1530 5460 50  0000 C CNN
-F 3 "" H 1530 5460 50  0000 C CNN
-	1    1530 5460
+P 2135 4715
+F 0 "#PWR0180" H 2135 4465 50  0001 C CNN
+F 1 "GND" H 2140 4542 24  0000 C CNN
+F 2 "" H 2135 4715 50  0000 C CNN
+F 3 "" H 2135 4715 50  0000 C CNN
+	1    2135 4715
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D66
 U 1 1 57FC345E
-P 1385 5460
-F 0 "D66" H 1505 5485 24  0000 C CNN
-F 1 "TMMBAT48" H 1485 5395 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1385 5460 50  0001 C CNN
-F 3 "" V 1385 5460 50  0001 C CNN
-F 4 "Value" H 1385 5460 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1385 5460 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1385 5460 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1385 5460 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1385 5460 60  0001 C CNN "Bauform"
-	1    1385 5460
+P 1990 4715
+F 0 "D66" H 2110 4740 24  0000 C CNN
+F 1 "TMMBAT48" H 2090 4650 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1990 4715 50  0001 C CNN
+F 3 "" V 1990 4715 50  0001 C CNN
+F 4 "Value" H 1990 4715 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1990 4715 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1990 4715 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1990 4715 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 1990 4715 60  0001 C CNN "Bauform"
+	1    1990 4715
 	1    0    0    -1  
 $EndComp
-$Comp
-L D_Small D89
-U 1 1 57FED3CA
-P 2895 4170
-F 0 "D89" H 2780 4150 24  0000 C CNN
-F 1 "TMMBAT48" H 2790 4225 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2895 4170 50  0001 C CNN
-F 3 "" V 2895 4170 50  0001 C CNN
-F 4 "Value" H 2895 4170 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2895 4170 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2895 4170 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2895 4170 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2895 4170 60  0001 C CNN "Bauform"
-	1    2895 4170
-	-1   0    0    -1  
-$EndComp
-Text GLabel 3055 4170 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0195
-U 1 1 57FED3D1
-P 3040 4290
-F 0 "#PWR0195" H 3040 4040 50  0001 C CNN
-F 1 "GND" V 3045 4135 24  0000 C CNN
-F 2 "" H 3040 4290 50  0000 C CNN
-F 3 "" H 3040 4290 50  0000 C CNN
-	1    3040 4290
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D90
-U 1 1 57FED3DC
-P 2895 4290
-F 0 "D90" H 3015 4315 24  0000 C CNN
-F 1 "TMMBAT48" H 2995 4225 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2895 4290 50  0001 C CNN
-F 3 "" V 2895 4290 50  0001 C CNN
-F 4 "Value" H 2895 4290 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2895 4290 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2895 4290 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2895 4290 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2895 4290 60  0001 C CNN "Bauform"
-	1    2895 4290
-	1    0    0    -1  
-$EndComp
-Text GLabel 2235 4400 0    24   Output ~ 0
+Text GLabel 3290 4445 0    24   Output ~ 0
 pinRemoteSwitch
-$Comp
-L D_Small D81
-U 1 1 57FEE55B
-P 2380 4340
-F 0 "D81" H 2265 4320 24  0000 C CNN
-F 1 "TMMBAT48" H 2275 4395 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2380 4340 50  0001 C CNN
-F 3 "" V 2380 4340 50  0001 C CNN
-F 4 "Value" H 2380 4340 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2380 4340 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2380 4340 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2380 4340 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2380 4340 60  0001 C CNN "Bauform"
-	1    2380 4340
-	-1   0    0    -1  
-$EndComp
-Text GLabel 2540 4340 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0196
-U 1 1 57FEE562
-P 2525 4460
-F 0 "#PWR0196" H 2525 4210 50  0001 C CNN
-F 1 "GND" V 2530 4305 24  0000 C CNN
-F 2 "" H 2525 4460 50  0000 C CNN
-F 3 "" H 2525 4460 50  0000 C CNN
-	1    2525 4460
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D82
-U 1 1 57FEE56D
-P 2380 4460
-F 0 "D82" H 2500 4485 24  0000 C CNN
-F 1 "TMMBAT48" H 2480 4395 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2380 4460 50  0001 C CNN
-F 3 "" V 2380 4460 50  0001 C CNN
-F 4 "Value" H 2380 4460 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2380 4460 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2380 4460 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2380 4460 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2380 4460 60  0001 C CNN "Bauform"
-	1    2380 4460
-	1    0    0    -1  
-$EndComp
-Text GLabel 2690 4580 0    24   Output ~ 0
+Text GLabel 3295 4625 0    24   Output ~ 0
 pinButton
-$Comp
-L D_Small D85
-U 1 1 57FEF9FE
-P 2835 4520
-F 0 "D85" H 2720 4500 24  0000 C CNN
-F 1 "TMMBAT48" H 2730 4575 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2835 4520 50  0001 C CNN
-F 3 "" V 2835 4520 50  0001 C CNN
-F 4 "Value" H 2835 4520 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2835 4520 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2835 4520 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2835 4520 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2835 4520 60  0001 C CNN "Bauform"
-	1    2835 4520
-	-1   0    0    -1  
-$EndComp
-Text GLabel 2995 4520 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0197
-U 1 1 57FEFA05
-P 2980 4640
-F 0 "#PWR0197" H 2980 4390 50  0001 C CNN
-F 1 "GND" V 2985 4485 24  0000 C CNN
-F 2 "" H 2980 4640 50  0000 C CNN
-F 3 "" H 2980 4640 50  0000 C CNN
-	1    2980 4640
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D86
-U 1 1 57FEFA10
-P 2835 4640
-F 0 "D86" H 2955 4665 24  0000 C CNN
-F 1 "TMMBAT48" H 2935 4575 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2835 4640 50  0001 C CNN
-F 3 "" V 2835 4640 50  0001 C CNN
-F 4 "Value" H 2835 4640 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2835 4640 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2835 4640 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2835 4640 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2835 4640 60  0001 C CNN "Bauform"
-	1    2835 4640
-	1    0    0    -1  
-$EndComp
-Text GLabel 2240 4750 0    24   Output ~ 0
+Text GLabel 3415 4795 0    24   Output ~ 0
 pinChargingEnable
-$Comp
-L D_Small D83
-U 1 1 57FF076B
-P 2385 4690
-F 0 "D83" H 2270 4670 24  0000 C CNN
-F 1 "TMMBAT48" H 2280 4745 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2385 4690 50  0001 C CNN
-F 3 "" V 2385 4690 50  0001 C CNN
-F 4 "Value" H 2385 4690 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2385 4690 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2385 4690 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2385 4690 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2385 4690 60  0001 C CNN "Bauform"
-	1    2385 4690
-	-1   0    0    -1  
-$EndComp
-Text GLabel 2545 4690 2    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0198
-U 1 1 57FF0772
-P 2530 4810
-F 0 "#PWR0198" H 2530 4560 50  0001 C CNN
-F 1 "GND" V 2535 4655 24  0000 C CNN
-F 2 "" H 2530 4810 50  0000 C CNN
-F 3 "" H 2530 4810 50  0000 C CNN
-	1    2530 4810
-	0    -1   -1   0   
-$EndComp
-$Comp
-L D_Small D84
-U 1 1 57FF077D
-P 2385 4810
-F 0 "D84" H 2505 4835 24  0000 C CNN
-F 1 "TMMBAT48" H 2485 4745 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2385 4810 50  0001 C CNN
-F 3 "" V 2385 4810 50  0001 C CNN
-F 4 "Value" H 2385 4810 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2385 4810 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2385 4810 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2385 4810 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2385 4810 60  0001 C CNN "Bauform"
-	1    2385 4810
-	1    0    0    -1  
-$EndComp
-Text GLabel 2700 4940 0    24   Output ~ 0
+Text GLabel 3055 4985 0    24   Output ~ 0
 DHT22
 $Comp
-L D_Small D87
+L D_Small D57
 U 1 1 57FF275D
-P 2845 4880
-F 0 "D87" H 2730 4860 24  0000 C CNN
-F 1 "TMMBAT48" H 2740 4935 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2845 4880 50  0001 C CNN
-F 3 "" V 2845 4880 50  0001 C CNN
-F 4 "Value" H 2845 4880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2845 4880 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2845 4880 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2845 4880 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2845 4880 60  0001 C CNN "Bauform"
-	1    2845 4880
+P 3450 4925
+F 0 "D57" H 3335 4905 24  0000 C CNN
+F 1 "TMMBAT48" H 3345 4980 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3450 4925 50  0001 C CNN
+F 3 "" V 3450 4925 50  0001 C CNN
+F 4 "Value" H 3450 4925 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3450 4925 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3450 4925 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3450 4925 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3450 4925 60  0001 C CNN "Bauform"
+F 9 "Value" H 3450 4925 60  0001 C CNN "Funktion"
+F 10 "Value" H 3450 4925 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3450 4925 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3450 4925
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3005 4880 2    24   Input ~ 0
+Text GLabel 3610 4925 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0199
+L GND #PWR0181
 U 1 1 57FF2764
-P 2990 5000
-F 0 "#PWR0199" H 2990 4750 50  0001 C CNN
-F 1 "GND" V 2995 4845 24  0000 C CNN
-F 2 "" H 2990 5000 50  0000 C CNN
-F 3 "" H 2990 5000 50  0000 C CNN
-	1    2990 5000
+P 3595 5045
+F 0 "#PWR0181" H 3595 4795 50  0001 C CNN
+F 1 "GND" V 3600 4890 24  0000 C CNN
+F 2 "" H 3595 5045 50  0000 C CNN
+F 3 "" H 3595 5045 50  0000 C CNN
+	1    3595 5045
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D88
+L D_Small D58
 U 1 1 57FF276F
-P 2845 5000
-F 0 "D88" H 2965 5025 24  0000 C CNN
-F 1 "TMMBAT48" H 2945 4935 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2845 5000 50  0001 C CNN
-F 3 "" V 2845 5000 50  0001 C CNN
-F 4 "Value" H 2845 5000 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2845 5000 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2845 5000 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2845 5000 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2845 5000 60  0001 C CNN "Bauform"
-	1    2845 5000
+P 3450 5045
+F 0 "D58" H 3570 5070 24  0000 C CNN
+F 1 "TMMBAT48" H 3550 4980 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3450 5045 50  0001 C CNN
+F 3 "" V 3450 5045 50  0001 C CNN
+F 4 "Value" H 3450 5045 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3450 5045 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3450 5045 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3450 5045 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3450 5045 60  0001 C CNN "Bauform"
+F 9 "Value" H 3450 5045 60  0001 C CNN "Funktion"
+F 10 "Value" H 3450 5045 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3450 5045 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3450 5045
 	1    0    0    -1  
 $EndComp
-Text GLabel 2230 5125 0    24   Output ~ 0
+Text GLabel 2595 5170 0    24   Output ~ 0
 pinUserSwitch3
 $Comp
-L D_Small D111
+L D_Small D61
 U 1 1 57FF62D5
-P 2375 5065
-F 0 "D111" H 2260 5045 24  0000 C CNN
-F 1 "TMMBAT48" H 2270 5120 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2375 5065 50  0001 C CNN
-F 3 "" V 2375 5065 50  0001 C CNN
-F 4 "Value" H 2375 5065 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 5065 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 5065 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2375 5065 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2375 5065 60  0001 C CNN "Bauform"
-	1    2375 5065
+P 2980 5110
+F 0 "D61" H 2865 5090 24  0000 C CNN
+F 1 "TMMBAT48" H 2875 5165 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2980 5110 50  0001 C CNN
+F 3 "" V 2980 5110 50  0001 C CNN
+F 4 "Value" H 2980 5110 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2980 5110 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2980 5110 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2980 5110 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2980 5110 60  0001 C CNN "Bauform"
+F 9 "Value" H 2980 5110 60  0001 C CNN "Funktion"
+F 10 "Value" H 2980 5110 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2980 5110 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2980 5110
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2535 5065 2    24   Input ~ 0
+Text GLabel 3140 5110 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0200
+L GND #PWR0182
 U 1 1 57FF62DC
-P 2520 5185
-F 0 "#PWR0200" H 2520 4935 50  0001 C CNN
-F 1 "GND" V 2525 5030 24  0000 C CNN
-F 2 "" H 2520 5185 50  0000 C CNN
-F 3 "" H 2520 5185 50  0000 C CNN
-	1    2520 5185
+P 3125 5230
+F 0 "#PWR0182" H 3125 4980 50  0001 C CNN
+F 1 "GND" V 3130 5075 24  0000 C CNN
+F 2 "" H 3125 5230 50  0000 C CNN
+F 3 "" H 3125 5230 50  0000 C CNN
+	1    3125 5230
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D112
+L D_Small D62
 U 1 1 57FF62E7
-P 2375 5185
-F 0 "D112" H 2495 5210 24  0000 C CNN
-F 1 "TMMBAT48" H 2475 5120 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2375 5185 50  0001 C CNN
-F 3 "" V 2375 5185 50  0001 C CNN
-F 4 "Value" H 2375 5185 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2375 5185 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2375 5185 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2375 5185 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2375 5185 60  0001 C CNN "Bauform"
-	1    2375 5185
+P 2980 5230
+F 0 "D62" H 3100 5255 24  0000 C CNN
+F 1 "TMMBAT48" H 3080 5165 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2980 5230 50  0001 C CNN
+F 3 "" V 2980 5230 50  0001 C CNN
+F 4 "Value" H 2980 5230 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2980 5230 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2980 5230 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2980 5230 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2980 5230 60  0001 C CNN "Bauform"
+F 9 "Value" H 2980 5230 60  0001 C CNN "Funktion"
+F 10 "Value" H 2980 5230 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2980 5230 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2980 5230
 	1    0    0    -1  
 $EndComp
-Text GLabel 2220 5410 0    24   Output ~ 0
+Text GLabel 2595 5455 0    24   Output ~ 0
 pinUserSwitch2
 $Comp
-L D_Small D109
+L D_Small D49
 U 1 1 57FF75F7
-P 2365 5350
-F 0 "D109" H 2250 5330 24  0000 C CNN
-F 1 "TMMBAT48" H 2260 5405 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2365 5350 50  0001 C CNN
-F 3 "" V 2365 5350 50  0001 C CNN
-F 4 "Value" H 2365 5350 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 5350 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 5350 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2365 5350 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2365 5350 60  0001 C CNN "Bauform"
-	1    2365 5350
+P 2970 5395
+F 0 "D49" H 2855 5375 24  0000 C CNN
+F 1 "TMMBAT48" H 2865 5450 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2970 5395 50  0001 C CNN
+F 3 "" V 2970 5395 50  0001 C CNN
+F 4 "Value" H 2970 5395 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2970 5395 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2970 5395 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2970 5395 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2970 5395 60  0001 C CNN "Bauform"
+F 9 "Value" H 2970 5395 60  0001 C CNN "Funktion"
+F 10 "Value" H 2970 5395 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2970 5395 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2970 5395
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2525 5350 2    24   Input ~ 0
+Text GLabel 3130 5395 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0201
+L GND #PWR0183
 U 1 1 57FF75FE
-P 2510 5470
-F 0 "#PWR0201" H 2510 5220 50  0001 C CNN
-F 1 "GND" V 2515 5315 24  0000 C CNN
-F 2 "" H 2510 5470 50  0000 C CNN
-F 3 "" H 2510 5470 50  0000 C CNN
-	1    2510 5470
+P 3115 5515
+F 0 "#PWR0183" H 3115 5265 50  0001 C CNN
+F 1 "GND" V 3120 5360 24  0000 C CNN
+F 2 "" H 3115 5515 50  0000 C CNN
+F 3 "" H 3115 5515 50  0000 C CNN
+	1    3115 5515
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D110
+L D_Small D50
 U 1 1 57FF7609
-P 2365 5470
-F 0 "D110" H 2485 5495 24  0000 C CNN
-F 1 "TMMBAT48" H 2465 5405 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2365 5470 50  0001 C CNN
-F 3 "" V 2365 5470 50  0001 C CNN
-F 4 "Value" H 2365 5470 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2365 5470 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2365 5470 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2365 5470 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2365 5470 60  0001 C CNN "Bauform"
-	1    2365 5470
+P 2970 5515
+F 0 "D50" H 3090 5540 24  0000 C CNN
+F 1 "TMMBAT48" H 3070 5450 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2970 5515 50  0001 C CNN
+F 3 "" V 2970 5515 50  0001 C CNN
+F 4 "Value" H 2970 5515 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2970 5515 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2970 5515 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2970 5515 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2970 5515 60  0001 C CNN "Bauform"
+F 9 "Value" H 2970 5515 60  0001 C CNN "Funktion"
+F 10 "Value" H 2970 5515 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2970 5515 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2970 5515
 	1    0    0    -1  
 $EndComp
-Text GLabel 825  5680 0    24   Output ~ 0
+Text GLabel 1665 5610 0    24   Output ~ 0
 pinUserSwitch1
 $Comp
-L D_Small D97
+L D_Small D51
 U 1 1 57FF94E5
-P 970 5620
-F 0 "D97" H 855 5600 24  0000 C CNN
-F 1 "TMMBAT48" H 865 5675 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 970 5620 50  0001 C CNN
-F 3 "" V 970 5620 50  0001 C CNN
-F 4 "Value" H 970 5620 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 5620 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 5620 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 970 5620 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 970 5620 60  0001 C CNN "Bauform"
-	1    970  5620
+P 2040 5550
+F 0 "D51" H 1925 5530 24  0000 C CNN
+F 1 "TMMBAT48" H 1935 5605 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2040 5550 50  0001 C CNN
+F 3 "" V 2040 5550 50  0001 C CNN
+F 4 "Value" H 2040 5550 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 5550 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 5550 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2040 5550 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2040 5550 60  0001 C CNN "Bauform"
+F 9 "Value" H 2040 5550 60  0001 C CNN "Funktion"
+F 10 "Value" H 2040 5550 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2040 5550 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2040 5550
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1130 5620 2    24   Input ~ 0
+Text GLabel 2200 5550 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0202
+L GND #PWR0184
 U 1 1 57FF94EC
-P 1115 5740
-F 0 "#PWR0202" H 1115 5490 50  0001 C CNN
-F 1 "GND" V 1120 5585 24  0000 C CNN
-F 2 "" H 1115 5740 50  0000 C CNN
-F 3 "" H 1115 5740 50  0000 C CNN
-	1    1115 5740
+P 2185 5670
+F 0 "#PWR0184" H 2185 5420 50  0001 C CNN
+F 1 "GND" V 2190 5515 24  0000 C CNN
+F 2 "" H 2185 5670 50  0000 C CNN
+F 3 "" H 2185 5670 50  0000 C CNN
+	1    2185 5670
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D98
+L D_Small D52
 U 1 1 57FF94F7
-P 970 5740
-F 0 "D98" H 1090 5765 24  0000 C CNN
-F 1 "TMMBAT48" H 1070 5675 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 970 5740 50  0001 C CNN
-F 3 "" V 970 5740 50  0001 C CNN
-F 4 "Value" H 970 5740 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 5740 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 5740 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 970 5740 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 970 5740 60  0001 C CNN "Bauform"
-	1    970  5740
+P 2040 5670
+F 0 "D52" H 2160 5695 24  0000 C CNN
+F 1 "TMMBAT48" H 2140 5605 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2040 5670 50  0001 C CNN
+F 3 "" V 2040 5670 50  0001 C CNN
+F 4 "Value" H 2040 5670 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 5670 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 5670 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2040 5670 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2040 5670 60  0001 C CNN "Bauform"
+F 9 "Value" H 2040 5670 60  0001 C CNN "Funktion"
+F 10 "Value" H 2040 5670 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2040 5670 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2040 5670
 	1    0    0    -1  
 $EndComp
-Text GLabel 820  5970 0    24   Output ~ 0
+Text GLabel 1405 6015 0    24   Output ~ 0
 DropLeft
 $Comp
-L D_Small D93
+L D_Small D47
 U 1 1 57FFA77D
-P 965 5910
-F 0 "D93" H 850 5890 24  0000 C CNN
-F 1 "TMMBAT48" H 860 5965 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 965 5910 50  0001 C CNN
-F 3 "" V 965 5910 50  0001 C CNN
-F 4 "Value" H 965 5910 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 5910 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 5910 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 965 5910 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 965 5910 60  0001 C CNN "Bauform"
-	1    965  5910
+P 2045 5955
+F 0 "D47" H 1970 5930 24  0000 C CNN
+F 1 "TMMBAT48" H 2030 6015 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2045 5955 50  0001 C CNN
+F 3 "" V 2045 5955 50  0001 C CNN
+F 4 "Value" H 2045 5955 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 5955 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 5955 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2045 5955 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2045 5955 60  0001 C CNN "Bauform"
+	1    2045 5955
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1125 5910 2    24   Input ~ 0
+Text GLabel 2205 5955 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0203
+L GND #PWR0185
 U 1 1 57FFA784
-P 1110 6030
-F 0 "#PWR0203" H 1110 5780 50  0001 C CNN
-F 1 "GND" V 1115 5875 24  0000 C CNN
-F 2 "" H 1110 6030 50  0000 C CNN
-F 3 "" H 1110 6030 50  0000 C CNN
-	1    1110 6030
+P 2190 6075
+F 0 "#PWR0185" H 2190 5825 50  0001 C CNN
+F 1 "GND" V 2195 5920 24  0000 C CNN
+F 2 "" H 2190 6075 50  0000 C CNN
+F 3 "" H 2190 6075 50  0000 C CNN
+	1    2190 6075
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D94
+L D_Small D48
 U 1 1 57FFA78F
-P 965 6030
-F 0 "D94" H 1085 6055 24  0000 C CNN
-F 1 "TMMBAT48" H 1065 5965 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 965 6030 50  0001 C CNN
-F 3 "" V 965 6030 50  0001 C CNN
-F 4 "Value" H 965 6030 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 6030 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 6030 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 965 6030 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 965 6030 60  0001 C CNN "Bauform"
-	1    965  6030
+P 2045 6075
+F 0 "D48" H 2165 6100 24  0000 C CNN
+F 1 "TMMBAT48" H 2145 6010 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2045 6075 50  0001 C CNN
+F 3 "" V 2045 6075 50  0001 C CNN
+F 4 "Value" H 2045 6075 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 6075 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 6075 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2045 6075 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2045 6075 60  0001 C CNN "Bauform"
+F 9 "Value" H 2045 6075 60  0001 C CNN "Funktion"
+F 10 "Value" H 2045 6075 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2045 6075 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2045 6075
 	1    0    0    -1  
 $EndComp
-Text GLabel 815  6255 0    24   Output ~ 0
+Text GLabel 1655 6300 0    24   Output ~ 0
 pinRain
 $Comp
-L D_Small D91
+L D_Small D45
 U 1 1 57FFBE92
-P 960 6195
-F 0 "D91" H 845 6175 24  0000 C CNN
-F 1 "TMMBAT48" H 855 6250 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 960 6195 50  0001 C CNN
-F 3 "" V 960 6195 50  0001 C CNN
-F 4 "Value" H 960 6195 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 960 6195 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 960 6195 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 960 6195 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 960 6195 60  0001 C CNN "Bauform"
-	1    960  6195
+P 2040 6240
+F 0 "D45" H 1925 6220 24  0000 C CNN
+F 1 "TMMBAT48" H 1935 6295 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2040 6240 50  0001 C CNN
+F 3 "" V 2040 6240 50  0001 C CNN
+F 4 "Value" H 2040 6240 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 6240 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 6240 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2040 6240 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2040 6240 60  0001 C CNN "Bauform"
+F 9 "Value" H 2040 6240 60  0001 C CNN "Funktion"
+F 10 "Value" H 2040 6240 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2040 6240 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2040 6240
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1120 6195 2    24   Input ~ 0
+Text GLabel 2200 6240 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0204
+L GND #PWR0186
 U 1 1 57FFBE99
-P 1105 6315
-F 0 "#PWR0204" H 1105 6065 50  0001 C CNN
-F 1 "GND" V 1110 6160 24  0000 C CNN
-F 2 "" H 1105 6315 50  0000 C CNN
-F 3 "" H 1105 6315 50  0000 C CNN
-	1    1105 6315
+P 2185 6360
+F 0 "#PWR0186" H 2185 6110 50  0001 C CNN
+F 1 "GND" V 2190 6205 24  0000 C CNN
+F 2 "" H 2185 6360 50  0000 C CNN
+F 3 "" H 2185 6360 50  0000 C CNN
+	1    2185 6360
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D92
+L D_Small D46
 U 1 1 57FFBEA4
-P 960 6315
-F 0 "D92" H 1080 6340 24  0000 C CNN
-F 1 "TMMBAT48" H 1060 6250 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 960 6315 50  0001 C CNN
-F 3 "" V 960 6315 50  0001 C CNN
-F 4 "Value" H 960 6315 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 960 6315 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 960 6315 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 960 6315 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 960 6315 60  0001 C CNN "Bauform"
-	1    960  6315
+P 2040 6360
+F 0 "D46" H 2160 6385 24  0000 C CNN
+F 1 "TMMBAT48" H 2140 6295 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2040 6360 50  0001 C CNN
+F 3 "" V 2040 6360 50  0001 C CNN
+F 4 "Value" H 2040 6360 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 6360 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 6360 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2040 6360 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2040 6360 60  0001 C CNN "Bauform"
+F 9 "Value" H 2040 6360 60  0001 C CNN "Funktion"
+F 10 "Value" H 2040 6360 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2040 6360 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2040 6360
 	1    0    0    -1  
 $EndComp
-Text GLabel 825  6550 0    24   Output ~ 0
+Text GLabel 1665 6595 0    24   Output ~ 0
 pinLawnBackSend
 $Comp
-L D_Small D99
+L D_Small D43
 U 1 1 57FFD738
-P 970 6490
-F 0 "D99" H 855 6470 24  0000 C CNN
-F 1 "TMMBAT48" H 865 6545 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 970 6490 50  0001 C CNN
-F 3 "" V 970 6490 50  0001 C CNN
-F 4 "Value" H 970 6490 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 6490 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 6490 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 970 6490 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 970 6490 60  0001 C CNN "Bauform"
-	1    970  6490
+P 2050 6535
+F 0 "D43" H 1935 6515 24  0000 C CNN
+F 1 "TMMBAT48" H 1945 6590 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2050 6535 50  0001 C CNN
+F 3 "" V 2050 6535 50  0001 C CNN
+F 4 "Value" H 2050 6535 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2050 6535 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2050 6535 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2050 6535 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2050 6535 60  0001 C CNN "Bauform"
+F 9 "Value" H 2050 6535 60  0001 C CNN "Funktion"
+F 10 "Value" H 2050 6535 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2050 6535 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2050 6535
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1130 6490 2    24   Input ~ 0
+Text GLabel 2210 6535 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0205
+L GND #PWR0187
 U 1 1 57FFD73F
-P 1115 6610
-F 0 "#PWR0205" H 1115 6360 50  0001 C CNN
-F 1 "GND" V 1120 6455 24  0000 C CNN
-F 2 "" H 1115 6610 50  0000 C CNN
-F 3 "" H 1115 6610 50  0000 C CNN
-	1    1115 6610
+P 2195 6655
+F 0 "#PWR0187" H 2195 6405 50  0001 C CNN
+F 1 "GND" V 2200 6500 24  0000 C CNN
+F 2 "" H 2195 6655 50  0000 C CNN
+F 3 "" H 2195 6655 50  0000 C CNN
+	1    2195 6655
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D100
+L D_Small D44
 U 1 1 57FFD74A
-P 970 6610
-F 0 "D100" H 1090 6635 24  0000 C CNN
-F 1 "TMMBAT48" H 1070 6545 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 970 6610 50  0001 C CNN
-F 3 "" V 970 6610 50  0001 C CNN
-F 4 "Value" H 970 6610 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 970 6610 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 970 6610 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 970 6610 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 970 6610 60  0001 C CNN "Bauform"
-	1    970  6610
+P 2050 6655
+F 0 "D44" H 2170 6680 24  0000 C CNN
+F 1 "TMMBAT48" H 2150 6590 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2050 6655 50  0001 C CNN
+F 3 "" V 2050 6655 50  0001 C CNN
+F 4 "Value" H 2050 6655 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2050 6655 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2050 6655 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2050 6655 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2050 6655 60  0001 C CNN "Bauform"
+F 9 "Value" H 2050 6655 60  0001 C CNN "Funktion"
+F 10 "Value" H 2050 6655 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2050 6655 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2050 6655
 	1    0    0    -1  
 $EndComp
-Text GLabel 820  6835 0    24   Output ~ 0
+Text GLabel 1665 6880 0    24   Output ~ 0
 pinLawnBackRecv
 $Comp
-L D_Small D95
+L D_Small D41
 U 1 1 58000317
-P 965 6775
-F 0 "D95" H 850 6755 24  0000 C CNN
-F 1 "TMMBAT48" H 860 6830 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 965 6775 50  0001 C CNN
-F 3 "" V 965 6775 50  0001 C CNN
-F 4 "Value" H 965 6775 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 6775 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 6775 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 965 6775 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 965 6775 60  0001 C CNN "Bauform"
-	1    965  6775
+P 2045 6820
+F 0 "D41" H 1930 6800 24  0000 C CNN
+F 1 "TMMBAT48" H 1940 6875 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2045 6820 50  0001 C CNN
+F 3 "" V 2045 6820 50  0001 C CNN
+F 4 "Value" H 2045 6820 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 6820 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 6820 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2045 6820 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2045 6820 60  0001 C CNN "Bauform"
+F 9 "Value" H 2045 6820 60  0001 C CNN "Funktion"
+F 10 "Value" H 2045 6820 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2045 6820 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2045 6820
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1125 6775 2    24   Input ~ 0
+Text GLabel 2205 6820 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0206
+L GND #PWR0188
 U 1 1 5800031E
-P 1110 6895
-F 0 "#PWR0206" H 1110 6645 50  0001 C CNN
-F 1 "GND" V 1115 6740 24  0000 C CNN
-F 2 "" H 1110 6895 50  0000 C CNN
-F 3 "" H 1110 6895 50  0000 C CNN
-	1    1110 6895
+P 2190 6940
+F 0 "#PWR0188" H 2190 6690 50  0001 C CNN
+F 1 "GND" V 2195 6785 24  0000 C CNN
+F 2 "" H 2190 6940 50  0000 C CNN
+F 3 "" H 2190 6940 50  0000 C CNN
+	1    2190 6940
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D96
+L D_Small D42
 U 1 1 58000329
-P 965 6895
-F 0 "D96" H 1085 6920 24  0000 C CNN
-F 1 "TMMBAT48" H 1065 6830 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 965 6895 50  0001 C CNN
-F 3 "" V 965 6895 50  0001 C CNN
-F 4 "Value" H 965 6895 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 965 6895 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 965 6895 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 965 6895 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 965 6895 60  0001 C CNN "Bauform"
-	1    965  6895
+P 2045 6940
+F 0 "D42" H 2165 6965 24  0000 C CNN
+F 1 "TMMBAT48" H 2145 6875 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 2045 6940 50  0001 C CNN
+F 3 "" V 2045 6940 50  0001 C CNN
+F 4 "Value" H 2045 6940 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 6940 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 6940 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 2045 6940 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 2045 6940 60  0001 C CNN "Bauform"
+F 9 "Value" H 2045 6940 60  0001 C CNN "Funktion"
+F 10 "Value" H 2045 6940 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2045 6940 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2045 6940
 	1    0    0    -1  
 $EndComp
-Text GLabel 1805 5910 0    24   Output ~ 0
+Text GLabel 3135 5955 0    24   Output ~ 0
 pinLawnFrontSend
 $Comp
-L D_Small D107
+L D_Small D39
 U 1 1 58002CAA
-P 1950 5850
-F 0 "D107" H 1835 5830 24  0000 C CNN
-F 1 "TMMBAT48" H 1845 5905 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1950 5850 50  0001 C CNN
-F 3 "" V 1950 5850 50  0001 C CNN
-F 4 "Value" H 1950 5850 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1950 5850 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1950 5850 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1950 5850 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1950 5850 60  0001 C CNN "Bauform"
-	1    1950 5850
+P 3510 5895
+F 0 "D39" H 3395 5875 24  0000 C CNN
+F 1 "TMMBAT48" H 3405 5950 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3510 5895 50  0001 C CNN
+F 3 "" V 3510 5895 50  0001 C CNN
+F 4 "Value" H 3510 5895 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3510 5895 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3510 5895 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3510 5895 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3510 5895 60  0001 C CNN "Bauform"
+F 9 "Value" H 3510 5895 60  0001 C CNN "Funktion"
+F 10 "Value" H 3510 5895 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3510 5895 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3510 5895
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2110 5850 2    24   Input ~ 0
+Text GLabel 3670 5895 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0207
+L GND #PWR0189
 U 1 1 58002CB1
-P 2095 5970
-F 0 "#PWR0207" H 2095 5720 50  0001 C CNN
-F 1 "GND" V 2100 5815 24  0000 C CNN
-F 2 "" H 2095 5970 50  0000 C CNN
-F 3 "" H 2095 5970 50  0000 C CNN
-	1    2095 5970
+P 3655 6015
+F 0 "#PWR0189" H 3655 5765 50  0001 C CNN
+F 1 "GND" V 3660 5860 24  0000 C CNN
+F 2 "" H 3655 6015 50  0000 C CNN
+F 3 "" H 3655 6015 50  0000 C CNN
+	1    3655 6015
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D108
+L D_Small D40
 U 1 1 58002CBC
-P 1950 5970
-F 0 "D108" H 2070 5995 24  0000 C CNN
-F 1 "TMMBAT48" H 2050 5905 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1950 5970 50  0001 C CNN
-F 3 "" V 1950 5970 50  0001 C CNN
-F 4 "Value" H 1950 5970 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1950 5970 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1950 5970 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1950 5970 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1950 5970 60  0001 C CNN "Bauform"
-	1    1950 5970
+P 3510 6015
+F 0 "D40" H 3630 6040 24  0000 C CNN
+F 1 "TMMBAT48" H 3610 5950 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3510 6015 50  0001 C CNN
+F 3 "" V 3510 6015 50  0001 C CNN
+F 4 "Value" H 3510 6015 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3510 6015 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3510 6015 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3510 6015 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3510 6015 60  0001 C CNN "Bauform"
+F 9 "Value" H 3510 6015 60  0001 C CNN "Funktion"
+F 10 "Value" H 3510 6015 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3510 6015 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3510 6015
 	1    0    0    -1  
 $EndComp
-Text GLabel 1800 6190 0    24   Output ~ 0
+Text GLabel 3135 6235 0    24   Output ~ 0
 pinLawnFrontRecv
 $Comp
-L D_Small D105
+L D_Small D37
 U 1 1 5800454D
-P 1945 6130
-F 0 "D105" H 1830 6110 24  0000 C CNN
-F 1 "TMMBAT48" H 1840 6185 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1945 6130 50  0001 C CNN
-F 3 "" V 1945 6130 50  0001 C CNN
-F 4 "Value" H 1945 6130 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1945 6130 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1945 6130 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1945 6130 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1945 6130 60  0001 C CNN "Bauform"
-	1    1945 6130
+P 3505 6175
+F 0 "D37" H 3390 6155 24  0000 C CNN
+F 1 "TMMBAT48" H 3400 6230 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3505 6175 50  0001 C CNN
+F 3 "" V 3505 6175 50  0001 C CNN
+F 4 "Value" H 3505 6175 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3505 6175 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3505 6175 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3505 6175 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3505 6175 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6175 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6175 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6175 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6175
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2105 6130 2    24   Input ~ 0
+Text GLabel 3665 6175 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0208
+L GND #PWR0190
 U 1 1 58004554
-P 2090 6250
-F 0 "#PWR0208" H 2090 6000 50  0001 C CNN
-F 1 "GND" V 2095 6095 24  0000 C CNN
-F 2 "" H 2090 6250 50  0000 C CNN
-F 3 "" H 2090 6250 50  0000 C CNN
-	1    2090 6250
+P 3650 6295
+F 0 "#PWR0190" H 3650 6045 50  0001 C CNN
+F 1 "GND" V 3655 6140 24  0000 C CNN
+F 2 "" H 3650 6295 50  0000 C CNN
+F 3 "" H 3650 6295 50  0000 C CNN
+	1    3650 6295
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D106
+L D_Small D38
 U 1 1 5800455F
-P 1945 6250
-F 0 "D106" H 2065 6275 24  0000 C CNN
-F 1 "TMMBAT48" H 2045 6185 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1945 6250 50  0001 C CNN
-F 3 "" V 1945 6250 50  0001 C CNN
-F 4 "Value" H 1945 6250 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1945 6250 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1945 6250 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1945 6250 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1945 6250 60  0001 C CNN "Bauform"
-	1    1945 6250
+P 3505 6295
+F 0 "D38" H 3625 6320 24  0000 C CNN
+F 1 "TMMBAT48" H 3605 6230 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3505 6295 50  0001 C CNN
+F 3 "" V 3505 6295 50  0001 C CNN
+F 4 "Value" H 3505 6295 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3505 6295 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3505 6295 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3505 6295 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3505 6295 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6295 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6295 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6295 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6295
 	1    0    0    -1  
 $EndComp
-Text GLabel 1795 6475 0    24   Output ~ 0
+Text GLabel 3115 6520 0    24   Output ~ 0
 pinBumperLeft
 $Comp
-L D_Small D103
+L D_Small D31
 U 1 1 58005B85
-P 1940 6415
-F 0 "D103" H 1825 6395 24  0000 C CNN
-F 1 "TMMBAT48" H 1835 6470 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1940 6415 50  0001 C CNN
-F 3 "" V 1940 6415 50  0001 C CNN
-F 4 "Value" H 1940 6415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1940 6415 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1940 6415 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1940 6415 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1940 6415 60  0001 C CNN "Bauform"
-	1    1940 6415
+P 3500 6460
+F 0 "D31" H 3385 6440 24  0000 C CNN
+F 1 "TMMBAT48" H 3395 6515 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3500 6460 50  0001 C CNN
+F 3 "" V 3500 6460 50  0001 C CNN
+F 4 "Value" H 3500 6460 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3500 6460 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3500 6460 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3500 6460 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3500 6460 60  0001 C CNN "Bauform"
+F 9 "Value" H 3500 6460 60  0001 C CNN "Funktion"
+F 10 "Value" H 3500 6460 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3500 6460 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3500 6460
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2100 6415 2    24   Input ~ 0
+Text GLabel 3660 6460 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0209
+L GND #PWR0191
 U 1 1 58005B8C
-P 2085 6535
-F 0 "#PWR0209" H 2085 6285 50  0001 C CNN
-F 1 "GND" V 2090 6380 24  0000 C CNN
-F 2 "" H 2085 6535 50  0000 C CNN
-F 3 "" H 2085 6535 50  0000 C CNN
-	1    2085 6535
+P 3645 6580
+F 0 "#PWR0191" H 3645 6330 50  0001 C CNN
+F 1 "GND" V 3650 6425 24  0000 C CNN
+F 2 "" H 3645 6580 50  0000 C CNN
+F 3 "" H 3645 6580 50  0000 C CNN
+	1    3645 6580
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D104
+L D_Small D34
 U 1 1 58005B97
-P 1940 6535
-F 0 "D104" H 2060 6560 24  0000 C CNN
-F 1 "TMMBAT48" H 2040 6470 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1940 6535 50  0001 C CNN
-F 3 "" V 1940 6535 50  0001 C CNN
-F 4 "Value" H 1940 6535 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1940 6535 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1940 6535 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1940 6535 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1940 6535 60  0001 C CNN "Bauform"
-	1    1940 6535
+P 3500 6580
+F 0 "D34" H 3620 6605 24  0000 C CNN
+F 1 "TMMBAT48" H 3600 6515 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3500 6580 50  0001 C CNN
+F 3 "" V 3500 6580 50  0001 C CNN
+F 4 "Value" H 3500 6580 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3500 6580 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3500 6580 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3500 6580 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3500 6580 60  0001 C CNN "Bauform"
+F 9 "Value" H 3500 6580 60  0001 C CNN "Funktion"
+F 10 "Value" H 3500 6580 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3500 6580 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3500 6580
 	1    0    0    -1  
 $EndComp
-Text GLabel 1790 6755 0    24   Output ~ 0
+Text GLabel 3105 6800 0    24   Output ~ 0
 pinBumperRight
 $Comp
-L D_Small D101
+L D_Small D29
 U 1 1 580072EC
-P 1935 6695
-F 0 "D101" H 1820 6675 24  0000 C CNN
-F 1 "TMMBAT48" H 1830 6750 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1935 6695 50  0001 C CNN
-F 3 "" V 1935 6695 50  0001 C CNN
-F 4 "Value" H 1935 6695 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1935 6695 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1935 6695 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1935 6695 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1935 6695 60  0001 C CNN "Bauform"
-	1    1935 6695
+P 3495 6740
+F 0 "D29" H 3380 6720 24  0000 C CNN
+F 1 "TMMBAT48" H 3390 6795 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3495 6740 50  0001 C CNN
+F 3 "" V 3495 6740 50  0001 C CNN
+F 4 "Value" H 3495 6740 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3495 6740 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3495 6740 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3495 6740 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3495 6740 60  0001 C CNN "Bauform"
+F 9 "Value" H 3495 6740 60  0001 C CNN "Funktion"
+F 10 "Value" H 3495 6740 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3495 6740 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3495 6740
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2095 6695 2    24   Input ~ 0
+Text GLabel 3655 6740 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0210
+L GND #PWR0192
 U 1 1 580072F3
-P 2080 6815
-F 0 "#PWR0210" H 2080 6565 50  0001 C CNN
-F 1 "GND" V 2085 6660 24  0000 C CNN
-F 2 "" H 2080 6815 50  0000 C CNN
-F 3 "" H 2080 6815 50  0000 C CNN
-	1    2080 6815
+P 3640 6860
+F 0 "#PWR0192" H 3640 6610 50  0001 C CNN
+F 1 "GND" V 3645 6705 24  0000 C CNN
+F 2 "" H 3640 6860 50  0000 C CNN
+F 3 "" H 3640 6860 50  0000 C CNN
+	1    3640 6860
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D102
+L D_Small D30
 U 1 1 580072FE
-P 1935 6815
-F 0 "D102" H 2055 6840 24  0000 C CNN
-F 1 "TMMBAT48" H 2035 6750 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1935 6815 50  0001 C CNN
-F 3 "" V 1935 6815 50  0001 C CNN
-F 4 "Value" H 1935 6815 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1935 6815 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1935 6815 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1935 6815 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1935 6815 60  0001 C CNN "Bauform"
-	1    1935 6815
+P 3495 6860
+F 0 "D30" H 3615 6885 24  0000 C CNN
+F 1 "TMMBAT48" H 3595 6795 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3495 6860 50  0001 C CNN
+F 3 "" V 3495 6860 50  0001 C CNN
+F 4 "Value" H 3495 6860 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3495 6860 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3495 6860 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 3495 6860 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 3495 6860 60  0001 C CNN "Bauform"
+F 9 "Value" H 3495 6860 60  0001 C CNN "Funktion"
+F 10 "Value" H 3495 6860 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3495 6860 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3495 6860
 	1    0    0    -1  
 $EndComp
-Text GLabel 6270 6235 2    24   Output ~ 0
+Text GLabel 6180 5940 2    24   Output ~ 0
 pinMotorEnable
-$Comp
-L D_Small D115
-U 1 1 580018C9
-P 6125 6175
-F 0 "D115" H 6010 6155 24  0000 C CNN
-F 1 "TMMBAT48" H 6020 6230 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 6125 6175 50  0001 C CNN
-F 3 "" V 6125 6175 50  0001 C CNN
-F 4 "Value" H 6125 6175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6125 6175 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6125 6175 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6125 6175 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6125 6175 60  0001 C CNN "Bauform"
-	1    6125 6175
-	1    0    0    -1  
-$EndComp
-Text GLabel 5965 6175 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0211
-U 1 1 580018D0
-P 5980 6295
-F 0 "#PWR0211" H 5980 6045 50  0001 C CNN
-F 1 "GND" V 5985 6140 24  0000 C CNN
-F 2 "" H 5980 6295 50  0000 C CNN
-F 3 "" H 5980 6295 50  0000 C CNN
-	1    5980 6295
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D116
-U 1 1 580018DB
-P 6125 6295
-F 0 "D116" H 6245 6320 24  0000 C CNN
-F 1 "TMMBAT48" H 6225 6230 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 6125 6295 50  0001 C CNN
-F 3 "" V 6125 6295 50  0001 C CNN
-F 4 "Value" H 6125 6295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6125 6295 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6125 6295 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6125 6295 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6125 6295 60  0001 C CNN "Bauform"
-	1    6125 6295
-	-1   0    0    -1  
-$EndComp
-Text GLabel 6265 5940 2    24   Output ~ 0
+Text GLabel 6180 5840 2    24   Output ~ 0
 pinSonarLeftEcho
-$Comp
-L D_Small D113
-U 1 1 580031B6
-P 6120 5880
-F 0 "D113" H 6005 5860 24  0000 C CNN
-F 1 "TMMBAT48" H 6015 5935 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 6120 5880 50  0001 C CNN
-F 3 "" V 6120 5880 50  0001 C CNN
-F 4 "Value" H 6120 5880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6120 5880 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6120 5880 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6120 5880 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6120 5880 60  0001 C CNN "Bauform"
-	1    6120 5880
-	1    0    0    -1  
-$EndComp
-Text GLabel 5960 5880 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0212
-U 1 1 580031BD
-P 5975 6000
-F 0 "#PWR0212" H 5975 5750 50  0001 C CNN
-F 1 "GND" V 5980 5845 24  0000 C CNN
-F 2 "" H 5975 6000 50  0000 C CNN
-F 3 "" H 5975 6000 50  0000 C CNN
-	1    5975 6000
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D114
-U 1 1 580031C8
-P 6120 6000
-F 0 "D114" H 6240 6025 24  0000 C CNN
-F 1 "TMMBAT48" H 6220 5935 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 6120 6000 50  0001 C CNN
-F 3 "" V 6120 6000 50  0001 C CNN
-F 4 "Value" H 6120 6000 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 6120 6000 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 6120 6000 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 6120 6000 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 6120 6000 60  0001 C CNN "Bauform"
-	1    6120 6000
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9250 6220 2    24   Output ~ 0
+Text GLabel 6180 5340 2    24   Output ~ 0
 pinMotorLeftDir
-$Comp
-L D_Small D127
-U 1 1 58004B36
-P 9105 6160
-F 0 "D127" H 8990 6140 24  0000 C CNN
-F 1 "TMMBAT48" H 9000 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9105 6160 50  0001 C CNN
-F 3 "" V 9105 6160 50  0001 C CNN
-F 4 "Value" H 9105 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9105 6160 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9105 6160 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9105 6160 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9105 6160 60  0001 C CNN "Bauform"
-	1    9105 6160
-	1    0    0    -1  
-$EndComp
-Text GLabel 8945 6160 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0213
-U 1 1 58004B3D
-P 8960 6280
-F 0 "#PWR0213" H 8960 6030 50  0001 C CNN
-F 1 "GND" V 8965 6125 24  0000 C CNN
-F 2 "" H 8960 6280 50  0000 C CNN
-F 3 "" H 8960 6280 50  0000 C CNN
-	1    8960 6280
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D128
-U 1 1 58004B48
-P 9105 6280
-F 0 "D128" H 9225 6305 24  0000 C CNN
-F 1 "TMMBAT48" H 9205 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9105 6280 50  0001 C CNN
-F 3 "" V 9105 6280 50  0001 C CNN
-F 4 "Value" H 9105 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9105 6280 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9105 6280 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9105 6280 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9105 6280 60  0001 C CNN "Bauform"
-	1    9105 6280
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9245 5935 2    24   Output ~ 0
+Text GLabel 6180 5240 2    24   Output ~ 0
 pinSonarRightTrigger
-$Comp
-L D_Small D125
-U 1 1 58004C71
-P 9100 5875
-F 0 "D125" H 8985 5855 24  0000 C CNN
-F 1 "TMMBAT48" H 8995 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9100 5875 50  0001 C CNN
-F 3 "" V 9100 5875 50  0001 C CNN
-F 4 "Value" H 9100 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9100 5875 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9100 5875 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9100 5875 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9100 5875 60  0001 C CNN "Bauform"
-	1    9100 5875
-	1    0    0    -1  
-$EndComp
-Text GLabel 8940 5875 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0214
-U 1 1 58004C78
-P 8955 5995
-F 0 "#PWR0214" H 8955 5745 50  0001 C CNN
-F 1 "GND" V 8960 5840 24  0000 C CNN
-F 2 "" H 8955 5995 50  0000 C CNN
-F 3 "" H 8955 5995 50  0000 C CNN
-	1    8955 5995
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D126
-U 1 1 58004C83
-P 9100 5995
-F 0 "D126" H 9220 6020 24  0000 C CNN
-F 1 "TMMBAT48" H 9200 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9100 5995 50  0001 C CNN
-F 3 "" V 9100 5995 50  0001 C CNN
-F 4 "Value" H 9100 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9100 5995 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9100 5995 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9100 5995 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9100 5995 60  0001 C CNN "Bauform"
-	1    9100 5995
-	-1   0    0    -1  
-$EndComp
-Text GLabel 7210 6220 2    24   Output ~ 0
+Text GLabel 7520 5740 2    24   Output ~ 0
 pinTilt
 $Comp
-L D_Small D119
+L D_Small D28
 U 1 1 58007C16
-P 7065 6160
-F 0 "D119" H 6950 6140 24  0000 C CNN
-F 1 "TMMBAT48" H 6960 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 7065 6160 50  0001 C CNN
-F 3 "" V 7065 6160 50  0001 C CNN
-F 4 "Value" H 7065 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7065 6160 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7065 6160 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7065 6160 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7065 6160 60  0001 C CNN "Bauform"
-	1    7065 6160
+P 7135 5680
+F 0 "D28" H 7020 5660 24  0000 C CNN
+F 1 "TMMBAT48" H 7030 5735 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 7135 5680 50  0001 C CNN
+F 3 "" V 7135 5680 50  0001 C CNN
+F 4 "Value" H 7135 5680 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7135 5680 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7135 5680 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7135 5680 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 7135 5680 60  0001 C CNN "Bauform"
+F 9 "Value" H 7135 5680 60  0001 C CNN "Funktion"
+F 10 "Value" H 7135 5680 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7135 5680 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7135 5680
 	1    0    0    -1  
 $EndComp
-Text GLabel 6905 6160 0    24   Input ~ 0
+Text GLabel 6975 5680 0    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0215
+L GND #PWR0193
 U 1 1 58007C1D
-P 6920 6280
-F 0 "#PWR0215" H 6920 6030 50  0001 C CNN
-F 1 "GND" V 6925 6125 24  0000 C CNN
-F 2 "" H 6920 6280 50  0000 C CNN
-F 3 "" H 6920 6280 50  0000 C CNN
-	1    6920 6280
+P 6990 5800
+F 0 "#PWR0193" H 6990 5550 50  0001 C CNN
+F 1 "GND" V 6995 5645 24  0000 C CNN
+F 2 "" H 6990 5800 50  0000 C CNN
+F 3 "" H 6990 5800 50  0000 C CNN
+	1    6990 5800
 	0    1    -1   0   
 $EndComp
 $Comp
-L D_Small D120
+L D_Small D27
 U 1 1 58007C28
-P 7065 6280
-F 0 "D120" H 7185 6305 24  0000 C CNN
-F 1 "TMMBAT48" H 7165 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 7065 6280 50  0001 C CNN
-F 3 "" V 7065 6280 50  0001 C CNN
-F 4 "Value" H 7065 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7065 6280 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7065 6280 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7065 6280 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7065 6280 60  0001 C CNN "Bauform"
-	1    7065 6280
+P 7135 5800
+F 0 "D27" H 7255 5825 24  0000 C CNN
+F 1 "TMMBAT48" H 7235 5735 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 7135 5800 50  0001 C CNN
+F 3 "" V 7135 5800 50  0001 C CNN
+F 4 "Value" H 7135 5800 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7135 5800 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7135 5800 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7135 5800 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 7135 5800 60  0001 C CNN "Bauform"
+F 9 "Value" H 7135 5800 60  0001 C CNN "Funktion"
+F 10 "Value" H 7135 5800 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7135 5800 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7135 5800
 	-1   0    0    -1  
 $EndComp
-Text GLabel 7205 5935 2    24   Output ~ 0
+Text GLabel 6180 5640 2    24   Output ~ 0
 pinSonarLeftTrigger
-$Comp
-L D_Small D117
-U 1 1 58007C3A
-P 7060 5875
-F 0 "D117" H 6945 5855 24  0000 C CNN
-F 1 "TMMBAT48" H 6955 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 7060 5875 50  0001 C CNN
-F 3 "" V 7060 5875 50  0001 C CNN
-F 4 "Value" H 7060 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7060 5875 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7060 5875 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7060 5875 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7060 5875 60  0001 C CNN "Bauform"
-	1    7060 5875
-	1    0    0    -1  
-$EndComp
-Text GLabel 6900 5875 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0216
-U 1 1 58007C41
-P 6915 5995
-F 0 "#PWR0216" H 6915 5745 50  0001 C CNN
-F 1 "GND" V 6920 5840 24  0000 C CNN
-F 2 "" H 6915 5995 50  0000 C CNN
-F 3 "" H 6915 5995 50  0000 C CNN
-	1    6915 5995
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D118
-U 1 1 58007C4C
-P 7060 5995
-F 0 "D118" H 7180 6020 24  0000 C CNN
-F 1 "TMMBAT48" H 7160 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 7060 5995 50  0001 C CNN
-F 3 "" V 7060 5995 50  0001 C CNN
-F 4 "Value" H 7060 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7060 5995 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7060 5995 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7060 5995 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7060 5995 60  0001 C CNN "Bauform"
-	1    7060 5995
-	-1   0    0    -1  
-$EndComp
-Text GLabel 8235 6220 2    24   Output ~ 0
+Text GLabel 6180 5540 2    24   Output ~ 0
 pinMotorRightDir
-$Comp
-L D_Small D123
-U 1 1 5800C79B
-P 8090 6160
-F 0 "D123" H 7975 6140 24  0000 C CNN
-F 1 "TMMBAT48" H 7985 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 8090 6160 50  0001 C CNN
-F 3 "" V 8090 6160 50  0001 C CNN
-F 4 "Value" H 8090 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8090 6160 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8090 6160 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8090 6160 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8090 6160 60  0001 C CNN "Bauform"
-	1    8090 6160
-	1    0    0    -1  
-$EndComp
-Text GLabel 7930 6160 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0217
-U 1 1 5800C7A2
-P 7945 6280
-F 0 "#PWR0217" H 7945 6030 50  0001 C CNN
-F 1 "GND" V 7950 6125 24  0000 C CNN
-F 2 "" H 7945 6280 50  0000 C CNN
-F 3 "" H 7945 6280 50  0000 C CNN
-	1    7945 6280
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D124
-U 1 1 5800C7AD
-P 8090 6280
-F 0 "D124" H 8210 6305 24  0000 C CNN
-F 1 "TMMBAT48" H 8190 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 8090 6280 50  0001 C CNN
-F 3 "" V 8090 6280 50  0001 C CNN
-F 4 "Value" H 8090 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8090 6280 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8090 6280 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8090 6280 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8090 6280 60  0001 C CNN "Bauform"
-	1    8090 6280
-	-1   0    0    -1  
-$EndComp
-Text GLabel 8230 5935 2    24   Output ~ 0
+Text GLabel 6180 5440 2    24   Output ~ 0
 pinSonarRightEcho
-$Comp
-L D_Small D121
-U 1 1 5800C7BE
-P 8085 5875
-F 0 "D121" H 7970 5855 24  0000 C CNN
-F 1 "TMMBAT48" H 7980 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 8085 5875 50  0001 C CNN
-F 3 "" V 8085 5875 50  0001 C CNN
-F 4 "Value" H 8085 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8085 5875 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8085 5875 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8085 5875 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8085 5875 60  0001 C CNN "Bauform"
-	1    8085 5875
-	1    0    0    -1  
-$EndComp
-Text GLabel 7925 5875 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0218
-U 1 1 5800C7C5
-P 7940 5995
-F 0 "#PWR0218" H 7940 5745 50  0001 C CNN
-F 1 "GND" V 7945 5840 24  0000 C CNN
-F 2 "" H 7940 5995 50  0000 C CNN
-F 3 "" H 7940 5995 50  0000 C CNN
-	1    7940 5995
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D122
-U 1 1 5800C7D0
-P 8085 5995
-F 0 "D122" H 8205 6020 24  0000 C CNN
-F 1 "TMMBAT48" H 8185 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 8085 5995 50  0001 C CNN
-F 3 "" V 8085 5995 50  0001 C CNN
-F 4 "Value" H 8085 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8085 5995 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8085 5995 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8085 5995 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8085 5995 60  0001 C CNN "Bauform"
-	1    8085 5995
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9240 5640 2    24   Output ~ 0
+Text GLabel 6180 5090 2    24   Output ~ 0
 pinMotorMowDir
-$Comp
-L D_Small D131
-U 1 1 5801B3B1
-P 9095 5580
-F 0 "D131" H 8980 5560 24  0000 C CNN
-F 1 "TMMBAT48" H 8990 5635 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9095 5580 50  0001 C CNN
-F 3 "" V 9095 5580 50  0001 C CNN
-F 4 "Value" H 9095 5580 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9095 5580 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9095 5580 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9095 5580 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9095 5580 60  0001 C CNN "Bauform"
-	1    9095 5580
-	1    0    0    -1  
-$EndComp
-Text GLabel 8935 5580 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0219
-U 1 1 5801B3B8
-P 8950 5700
-F 0 "#PWR0219" H 8950 5450 50  0001 C CNN
-F 1 "GND" V 8955 5545 24  0000 C CNN
-F 2 "" H 8950 5700 50  0000 C CNN
-F 3 "" H 8950 5700 50  0000 C CNN
-	1    8950 5700
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D132
-U 1 1 5801B3C3
-P 9095 5700
-F 0 "D132" H 9215 5725 24  0000 C CNN
-F 1 "TMMBAT48" H 9195 5635 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9095 5700 50  0001 C CNN
-F 3 "" V 9095 5700 50  0001 C CNN
-F 4 "Value" H 9095 5700 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9095 5700 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9095 5700 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9095 5700 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9095 5700 60  0001 C CNN "Bauform"
-	1    9095 5700
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9235 5355 2    24   Output ~ 0
+Text GLabel 6180 4990 2    24   Output ~ 0
 pinMotorMowEnable
-$Comp
-L D_Small D129
-U 1 1 5801B3D4
-P 9090 5295
-F 0 "D129" H 8975 5275 24  0000 C CNN
-F 1 "TMMBAT48" H 8985 5350 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9090 5295 50  0001 C CNN
-F 3 "" V 9090 5295 50  0001 C CNN
-F 4 "Value" H 9090 5295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9090 5295 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9090 5295 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9090 5295 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9090 5295 60  0001 C CNN "Bauform"
-	1    9090 5295
-	1    0    0    -1  
-$EndComp
-Text GLabel 8930 5295 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0220
-U 1 1 5801B3DB
-P 8945 5415
-F 0 "#PWR0220" H 8945 5165 50  0001 C CNN
-F 1 "GND" V 8950 5260 24  0000 C CNN
-F 2 "" H 8945 5415 50  0000 C CNN
-F 3 "" H 8945 5415 50  0000 C CNN
-	1    8945 5415
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D130
-U 1 1 5801B3E6
-P 9090 5415
-F 0 "D130" H 9210 5440 24  0000 C CNN
-F 1 "TMMBAT48" H 9190 5350 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 9090 5415 50  0001 C CNN
-F 3 "" V 9090 5415 50  0001 C CNN
-F 4 "Value" H 9090 5415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 9090 5415 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 9090 5415 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 9090 5415 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 9090 5415 60  0001 C CNN "Bauform"
-	1    9090 5415
-	-1   0    0    -1  
-$EndComp
-Text GLabel 10335 6220 2    24   Output ~ 0
+Text GLabel 6180 4890 2    24   Output ~ 0
 pinMotorRightFault
-$Comp
-L D_Small D139
-U 1 1 58023921
-P 10190 6160
-F 0 "D139" H 10075 6140 24  0000 C CNN
-F 1 "TMMBAT48" H 10085 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10190 6160 50  0001 C CNN
-F 3 "" V 10190 6160 50  0001 C CNN
-F 4 "Value" H 10190 6160 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10190 6160 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10190 6160 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10190 6160 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10190 6160 60  0001 C CNN "Bauform"
-	1    10190 6160
-	1    0    0    -1  
-$EndComp
-Text GLabel 10030 6160 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0221
-U 1 1 58023928
-P 10045 6280
-F 0 "#PWR0221" H 10045 6030 50  0001 C CNN
-F 1 "GND" V 10050 6125 24  0000 C CNN
-F 2 "" H 10045 6280 50  0000 C CNN
-F 3 "" H 10045 6280 50  0000 C CNN
-	1    10045 6280
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D140
-U 1 1 58023933
-P 10190 6280
-F 0 "D140" H 10310 6305 24  0000 C CNN
-F 1 "TMMBAT48" H 10290 6215 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10190 6280 50  0001 C CNN
-F 3 "" V 10190 6280 50  0001 C CNN
-F 4 "Value" H 10190 6280 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10190 6280 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10190 6280 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10190 6280 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10190 6280 60  0001 C CNN "Bauform"
-	1    10190 6280
-	-1   0    0    -1  
-$EndComp
-Text GLabel 10330 5935 2    24   Output ~ 0
+Text GLabel 6180 4790 2    24   Output ~ 0
 pinMotorMowFault
-$Comp
-L D_Small D137
-U 1 1 58023944
-P 10185 5875
-F 0 "D137" H 10070 5855 24  0000 C CNN
-F 1 "TMMBAT48" H 10080 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10185 5875 50  0001 C CNN
-F 3 "" V 10185 5875 50  0001 C CNN
-F 4 "Value" H 10185 5875 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10185 5875 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10185 5875 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10185 5875 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10185 5875 60  0001 C CNN "Bauform"
-	1    10185 5875
-	1    0    0    -1  
-$EndComp
-Text GLabel 10025 5875 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0222
-U 1 1 5802394B
-P 10040 5995
-F 0 "#PWR0222" H 10040 5745 50  0001 C CNN
-F 1 "GND" V 10045 5840 24  0000 C CNN
-F 2 "" H 10040 5995 50  0000 C CNN
-F 3 "" H 10040 5995 50  0000 C CNN
-	1    10040 5995
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D138
-U 1 1 58023956
-P 10185 5995
-F 0 "D138" H 10305 6020 24  0000 C CNN
-F 1 "TMMBAT48" H 10285 5930 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10185 5995 50  0001 C CNN
-F 3 "" V 10185 5995 50  0001 C CNN
-F 4 "Value" H 10185 5995 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10185 5995 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10185 5995 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10185 5995 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10185 5995 60  0001 C CNN "Bauform"
-	1    10185 5995
-	-1   0    0    -1  
-$EndComp
-Text GLabel 10325 5640 2    24   Output ~ 0
+Text GLabel 6180 4690 2    24   Output ~ 0
 pinMotorLeftFault
-$Comp
-L D_Small D135
-U 1 1 58023967
-P 10180 5580
-F 0 "D135" H 10065 5560 24  0000 C CNN
-F 1 "TMMBAT48" H 10075 5635 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10180 5580 50  0001 C CNN
-F 3 "" V 10180 5580 50  0001 C CNN
-F 4 "Value" H 10180 5580 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10180 5580 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10180 5580 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10180 5580 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10180 5580 60  0001 C CNN "Bauform"
-	1    10180 5580
-	1    0    0    -1  
-$EndComp
-Text GLabel 10020 5580 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0223
-U 1 1 5802396E
-P 10035 5700
-F 0 "#PWR0223" H 10035 5450 50  0001 C CNN
-F 1 "GND" V 10040 5545 24  0000 C CNN
-F 2 "" H 10035 5700 50  0000 C CNN
-F 3 "" H 10035 5700 50  0000 C CNN
-	1    10035 5700
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D136
-U 1 1 58023979
-P 10180 5700
-F 0 "D136" H 10300 5725 24  0000 C CNN
-F 1 "TMMBAT48" H 10280 5635 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10180 5700 50  0001 C CNN
-F 3 "" V 10180 5700 50  0001 C CNN
-F 4 "Value" H 10180 5700 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10180 5700 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10180 5700 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10180 5700 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10180 5700 60  0001 C CNN "Bauform"
-	1    10180 5700
-	-1   0    0    -1  
-$EndComp
-Text GLabel 10320 5355 2    24   Output ~ 0
+Text GLabel 6180 4590 2    24   Output ~ 0
 pinSonarCenterTrigger
-$Comp
-L D_Small D133
-U 1 1 58023989
-P 10175 5295
-F 0 "D133" H 10060 5275 24  0000 C CNN
-F 1 "TMMBAT48" H 10070 5350 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10175 5295 50  0001 C CNN
-F 3 "" V 10175 5295 50  0001 C CNN
-F 4 "Value" H 10175 5295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10175 5295 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10175 5295 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10175 5295 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10175 5295 60  0001 C CNN "Bauform"
-	1    10175 5295
-	1    0    0    -1  
-$EndComp
-Text GLabel 10015 5295 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0224
-U 1 1 58023990
-P 10030 5415
-F 0 "#PWR0224" H 10030 5165 50  0001 C CNN
-F 1 "GND" V 10035 5260 24  0000 C CNN
-F 2 "" H 10030 5415 50  0000 C CNN
-F 3 "" H 10030 5415 50  0000 C CNN
-	1    10030 5415
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D134
-U 1 1 5802399B
-P 10175 5415
-F 0 "D134" H 10295 5440 24  0000 C CNN
-F 1 "TMMBAT48" H 10275 5350 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10175 5415 50  0001 C CNN
-F 3 "" V 10175 5415 50  0001 C CNN
-F 4 "Value" H 10175 5415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10175 5415 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10175 5415 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10175 5415 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10175 5415 60  0001 C CNN "Bauform"
-	1    10175 5415
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
-	5420 1445 5500 1445
+	6025 1490 6105 1490
 Wire Wire Line
-	5420 5495 7630 5495
+	6025 5540 6180 5540
 Wire Wire Line
-	5420 5295 8630 5295
+	6025 5340 6180 5340
 Wire Wire Line
-	2380 6045 3520 6045
+	4015 6090 4125 6090
 Wire Wire Line
-	5420 5895 5570 5895
+	6025 5940 6180 5940
 Wire Wire Line
-	5420 5195 8685 5195
+	6025 5240 6180 5240
 Wire Wire Line
-	5420 4845 9715 4845
+	6025 4890 6180 4890
 Wire Wire Line
-	2780 5595 3520 5595
+	4055 5640 4125 5640
 Wire Wire Line
-	5420 3245 5630 3245
+	6025 3290 6235 3290
 Wire Wire Line
-	5420 3445 5620 3445
+	6025 3490 6225 3490
 Wire Wire Line
-	5420 5695 6630 5695
+	6025 5740 7280 5740
 Wire Wire Line
-	1380 5695 3520 5695
+	2645 5740 4125 5740
 Wire Wire Line
-	2365 5845 3520 5845
+	3880 5890 4125 5890
 Wire Wire Line
-	2700 5195 3520 5195
+	3820 5240 4125 5240
 Wire Wire Line
-	5420 4545 9850 4545
+	6025 4590 6180 4590
 Wire Wire Line
-	2710 5095 3520 5095
+	4055 5140 4125 5140
 Wire Wire Line
-	5420 5595 6675 5595
+	6025 5640 6180 5640
 Wire Wire Line
-	2760 5495 3520 5495
+	4000 5540 4125 5540
 Wire Wire Line
-	5420 2745 9550 2745
+	6025 2790 6355 2790
 Wire Wire Line
-	8255 2445 5420 2445
+	6355 2490 6025 2490
 Wire Wire Line
-	5420 5045 8725 5045
+	6025 5090 6180 5090
 Wire Wire Line
-	5420 4745 9770 4745
+	6025 4790 6180 4790
 Wire Wire Line
-	5420 4945 8765 4945
+	6025 4990 6180 4990
 Wire Wire Line
-	9505 2645 5420 2645
+	6355 2690 6025 2690
 Wire Wire Line
-	5420 3845 5620 3845
+	6025 3890 6225 3890
 Wire Wire Line
-	2740 5395 3520 5395
+	3940 5440 4125 5440
 Wire Wire Line
-	8200 2345 5420 2345
+	6355 2390 6025 2390
 Wire Wire Line
-	3150 2445 3520 2445
+	3755 2490 4125 2490
 Wire Wire Line
-	3100 2545 3520 2545
+	3705 2590 4125 2590
 Wire Wire Line
-	3045 2645 3520 2645
+	3650 2690 4125 2690
 Wire Wire Line
-	2940 2845 3520 2845
+	3545 2890 4125 2890
 Wire Wire Line
-	2825 3045 3520 3045
+	3430 3090 4125 3090
 Wire Wire Line
-	2775 3145 3520 3145
+	3380 3190 4125 3190
 Wire Wire Line
-	3150 4845 3520 4845
+	3755 4890 4125 4890
 Wire Wire Line
-	3185 4745 3520 4745
+	3790 4790 4125 4790
 Wire Wire Line
-	3220 4645 3520 4645
+	3825 4690 4125 4690
 Wire Wire Line
-	5420 2945 9670 2945
+	6025 2590 7180 2590
 Wire Wire Line
-	5420 2845 9610 2845
+	6025 2090 8515 2090
 Wire Wire Line
-	8325 2545 5420 2545
+	6025 1790 6620 1790
 Wire Wire Line
-	7145 2045 5420 2045
+	6620 1890 6025 1890
 Wire Wire Line
-	5420 1745 6015 1745
+	7705 1990 6025 1990
 Wire Wire Line
-	7055 1845 5420 1845
+	6025 3390 6235 3390
 Wire Wire Line
-	7100 1945 5420 1945
+	6235 3190 6025 3190
 Wire Wire Line
-	5420 3345 5630 3345
+	6025 4690 6180 4690
 Wire Wire Line
-	5630 3145 5420 3145
+	6025 4490 7220 4490
 Wire Wire Line
-	5420 4645 9810 4645
+	3940 5990 4125 5990
 Wire Wire Line
-	5420 4445 9925 4445
+	4090 6190 4125 6190
 Wire Wire Line
-	2360 5945 3520 5945
+	3880 5340 4125 5340
 Wire Wire Line
-	2400 6145 3520 6145
+	3855 4590 4125 4590
 Wire Wire Line
-	2720 5295 3520 5295
+	3970 4440 4125 4440
 Wire Wire Line
-	3250 4545 3520 4545
+	3925 3990 4125 3990
 Wire Wire Line
-	3365 4395 3520 4395
+	2470 3890 4125 3890
 Wire Wire Line
-	1885 3945 3520 3945
+	3900 3790 4125 3790
 Wire Wire Line
-	1865 3845 3520 3845
+	2410 3590 4125 3590
 Wire Wire Line
-	1845 3745 3520 3745
+	2380 3490 4125 3490
 Wire Wire Line
-	1805 3545 3520 3545
+	4055 2290 4125 2290
 Wire Wire Line
-	1775 3445 3520 3445
+	4045 1990 4125 1990
 Wire Wire Line
-	3450 2245 3520 2245
+	4100 1890 4125 1890
 Wire Wire Line
-	3440 1945 3520 1945
+	4075 1790 4125 1790
 Wire Wire Line
-	3495 1845 3520 1845
+	6025 4390 6180 4390
 Wire Wire Line
-	3470 1745 3520 1745
+	6025 5440 6180 5440
 Wire Wire Line
-	5420 4345 9965 4345
+	6025 5840 6180 5840
 Wire Wire Line
-	5420 5395 7695 5395
+	3595 2790 4125 2790
 Wire Wire Line
-	5420 5795 5615 5795
+	6065 1120 6065 1070
 Wire Wire Line
-	2990 2745 3520 2745
+	6065 1320 6065 1390
 Wire Wire Line
-	5460 1075 5460 1025
+	4055 4440 4055 4340
 Wire Wire Line
-	5460 1275 5460 1345
+	4055 4340 4125 4340
+Connection ~ 4055 4440
 Wire Wire Line
-	3450 4395 3450 4295
+	4075 2090 4125 2090
 Wire Wire Line
-	3450 4295 3520 4295
-Connection ~ 3450 4395
+	4075 2190 4125 2190
 Wire Wire Line
-	3470 2045 3520 2045
+	4075 2090 4075 2190
 Wire Wire Line
-	3470 2145 3520 2145
+	4045 2135 4075 2135
+Connection ~ 4075 2135
 Wire Wire Line
-	3470 2045 3470 2145
+	6025 3790 6225 3790
 Wire Wire Line
-	3440 2090 3470 2090
-Connection ~ 3470 2090
+	6025 3690 6225 3690
 Wire Wire Line
-	5420 3745 5620 3745
+	6025 3590 6235 3590
 Wire Wire Line
-	5420 3645 5620 3645
+	6355 2290 6025 2290
 Wire Wire Line
-	5420 3545 5630 3545
+	4225 1690 4075 1690
 Wire Wire Line
-	8145 2245 5420 2245
+	6065 1390 6025 1390
 Wire Wire Line
-	3620 1645 3470 1645
+	4000 3690 4125 3690
 Wire Wire Line
-	5460 1345 5420 1345
+	2510 4090 4125 4090
 Wire Wire Line
-	1825 3645 3520 3645
+	3005 2300 3065 2300
 Wire Wire Line
-	1905 4045 3520 4045
+	2805 2300 2805 2420
+Connection ~ 2805 2360
 Wire Wire Line
-	2400 2255 2460 2255
+	3050 2420 3005 2420
 Wire Wire Line
-	2200 2255 2200 2375
-Connection ~ 2200 2315
+	6485 1590 6025 1590
 Wire Wire Line
-	2445 2375 2400 2375
+	8215 1455 8275 1455
 Wire Wire Line
-	6325 665  6385 665 
+	7845 1455 7845 1685
+Connection ~ 7845 1555
 Wire Wire Line
-	5955 665  5955 895 
-Connection ~ 5955 765 
+	8275 1685 8230 1685
 Wire Wire Line
-	6385 895  6340 895 
+	7845 1455 8015 1455
 Wire Wire Line
-	5955 665  6125 665 
+	7845 1685 8030 1685
 Wire Wire Line
-	5955 895  6140 895 
+	7705 1555 8470 1555
 Wire Wire Line
-	5880 765  5880 1545
+	7705 1555 7705 1990
 Wire Wire Line
-	6370 1080 6430 1080
+	8220 1990 8280 1990
 Wire Wire Line
-	6000 1080 6000 1310
-Connection ~ 6000 1180
+	7850 1990 7850 2220
+Connection ~ 7850 2090
 Wire Wire Line
-	6430 1310 6385 1310
+	8280 2220 8235 2220
 Wire Wire Line
-	6000 1080 6170 1080
+	7850 1990 8020 1990
 Wire Wire Line
-	6000 1310 6185 1310
+	7850 2220 8035 2220
 Wire Wire Line
-	5930 1645 5930 1180
+	6025 2890 6355 2890
 Wire Wire Line
-	5880 1545 5420 1545
+	3015 1985 3075 1985
 Wire Wire Line
-	6435 1485 6495 1485
+	2705 2045 3545 2045
 Wire Wire Line
-	6065 1485 6065 1715
-Connection ~ 6065 1585
+	2815 1985 2815 2105
+Connection ~ 2815 2045
 Wire Wire Line
-	6495 1715 6450 1715
+	3060 2105 3015 2105
 Wire Wire Line
-	6065 1485 6235 1485
+	2465 2045 2505 2045
 Wire Wire Line
-	6065 1715 6250 1715
+	3545 2045 3545 2890
 Wire Wire Line
-	7605 655  7665 655 
+	2495 2360 2430 2360
 Wire Wire Line
-	7235 655  7235 885 
-Connection ~ 7235 755 
+	2530 1430 3755 1430
 Wire Wire Line
-	7665 885  7620 885 
+	3755 1430 3755 2490
 Wire Wire Line
-	7235 655  7405 655 
+	2520 1510 3705 1510
 Wire Wire Line
-	7235 885  7420 885 
+	3705 1510 3705 2590
 Wire Wire Line
-	7055 755  7450 755 
+	3065 1645 3125 1645
 Wire Wire Line
-	6015 1745 6015 1585
+	2865 1645 2865 1765
+Connection ~ 2865 1705
 Wire Wire Line
-	7055 755  7055 1845
+	3110 1765 3065 1765
 Wire Wire Line
-	7610 1070 7670 1070
+	2515 1705 2555 1705
 Wire Wire Line
-	7240 1070 7240 1300
-Connection ~ 7240 1170
+	2755 1705 3650 1705
 Wire Wire Line
-	7670 1300 7625 1300
+	3650 1705 3650 2690
 Wire Wire Line
-	7240 1070 7410 1070
+	2510 1880 3595 1880
 Wire Wire Line
-	7240 1300 7425 1300
+	3595 1880 3595 2790
 Wire Wire Line
-	7100 1170 7690 1170
+	4125 2990 3485 2990
 Wire Wire Line
-	7100 1170 7100 1945
+	3485 2990 3485 2360
 Wire Wire Line
-	7615 1485 7675 1485
+	3485 2360 2695 2360
 Wire Wire Line
-	7245 1485 7245 1715
-Connection ~ 7245 1585
+	3000 2595 3060 2595
 Wire Wire Line
-	7675 1715 7630 1715
+	2800 2595 2800 2715
+Connection ~ 2800 2655
 Wire Wire Line
-	7245 1485 7415 1485
+	3045 2715 3000 2715
 Wire Wire Line
-	7245 1715 7430 1715
+	2490 2655 2425 2655
 Wire Wire Line
-	7145 1585 7695 1585
+	3430 2655 3430 3090
 Wire Wire Line
-	7145 1585 7145 2045
+	2690 2655 3430 2655
 Wire Wire Line
-	8145 760  8885 760 
+	2990 2880 3050 2880
 Wire Wire Line
-	8805 660  8865 660 
+	2790 2880 2790 3000
+Connection ~ 2790 2940
 Wire Wire Line
-	8435 660  8435 890 
-Connection ~ 8435 760 
+	3035 3000 2990 3000
 Wire Wire Line
-	8865 890  8820 890 
+	2480 2940 2415 2940
 Wire Wire Line
-	8435 660  8605 660 
+	3380 2940 3380 3190
 Wire Wire Line
-	8435 890  8620 890 
+	2680 2940 3380 2940
 Wire Wire Line
-	8200 1175 8900 1175
+	2105 4250 2165 4250
 Wire Wire Line
-	8820 1075 8880 1075
+	1905 4250 1905 4370
+Connection ~ 1905 4310
 Wire Wire Line
-	8450 1075 8450 1305
-Connection ~ 8450 1175
+	2150 4370 2105 4370
 Wire Wire Line
-	8880 1305 8835 1305
+	1595 4310 1530 4310
 Wire Wire Line
-	8450 1075 8620 1075
+	2180 3295 2240 3295
 Wire Wire Line
-	8450 1305 8635 1305
+	1870 3355 2430 3355
 Wire Wire Line
-	8830 1480 8890 1480
+	1980 3295 1980 3415
+Connection ~ 1980 3355
 Wire Wire Line
-	8460 1480 8460 1710
-Connection ~ 8460 1580
+	2225 3415 2180 3415
 Wire Wire Line
-	8890 1710 8845 1710
+	1630 3355 1670 3355
 Wire Wire Line
-	8460 1480 8630 1480
+	2170 3605 2230 3605
 Wire Wire Line
-	8460 1710 8645 1710
+	1860 3665 2380 3665
 Wire Wire Line
-	8255 1580 8910 1580
+	1970 3605 1970 3725
+Connection ~ 1970 3665
 Wire Wire Line
-	10175 660  10235 660 
+	2215 3725 2170 3725
 Wire Wire Line
-	9805 660  9805 890 
-Connection ~ 9805 760 
+	1620 3665 1660 3665
 Wire Wire Line
-	10235 890  10190 890 
+	2165 3905 2225 3905
 Wire Wire Line
-	9805 660  9975 660 
+	1965 3905 1965 4025
+Connection ~ 1965 3965
 Wire Wire Line
-	9805 890  9990 890 
+	2210 4025 2165 4025
 Wire Wire Line
-	10180 1075 10240 1075
+	1615 3965 1655 3965
 Wire Wire Line
-	9810 1075 9810 1305
-Connection ~ 9810 1175
+	1855 3965 2410 3965
 Wire Wire Line
-	10240 1305 10195 1305
+	1795 4310 2470 4310
 Wire Wire Line
-	9810 1075 9980 1075
+	2090 4595 2150 4595
 Wire Wire Line
-	9810 1305 9995 1305
+	1890 4595 1890 4715
+Connection ~ 1890 4655
 Wire Wire Line
-	10185 1490 10245 1490
+	2135 4715 2090 4715
 Wire Wire Line
-	9815 1490 9815 1720
-Connection ~ 9815 1590
+	1580 4655 1515 4655
 Wire Wire Line
-	10245 1720 10200 1720
+	1780 4655 2510 4655
 Wire Wire Line
-	9815 1490 9985 1490
+	2430 3390 4125 3390
 Wire Wire Line
-	9815 1720 10000 1720
+	2430 3355 2430 3390
 Wire Wire Line
-	8145 760  8145 2245
+	2380 3665 2380 3490
 Wire Wire Line
-	8200 1175 8200 2345
+	2410 3965 2410 3590
 Wire Wire Line
-	8255 1580 8255 2445
+	2470 4310 2470 3890
 Wire Wire Line
-	8830 1925 8890 1925
+	2510 4655 2510 4090
 Wire Wire Line
-	8890 2155 8845 2155
+	3290 4275 3855 4275
 Wire Wire Line
-	8460 1925 8630 1925
+	3855 4275 3855 4590
 Wire Wire Line
-	8460 2155 8645 2155
+	3290 4445 3825 4445
 Wire Wire Line
-	10185 1935 10245 1935
+	3825 4445 3825 4690
 Wire Wire Line
-	9815 1935 9815 2165
-Connection ~ 9815 2035
+	3295 4625 3790 4625
 Wire Wire Line
-	10245 2165 10200 2165
+	3790 4625 3790 4790
 Wire Wire Line
-	9815 1935 9985 1935
+	3415 4795 3755 4795
 Wire Wire Line
-	9815 2165 10000 2165
+	3755 4795 3755 4890
 Wire Wire Line
-	8460 1925 8460 2155
+	3350 4925 3350 5045
+Connection ~ 3350 4985
 Wire Wire Line
-	8325 2025 8910 2025
-Connection ~ 8460 2025
+	3305 4985 4085 4985
 Wire Wire Line
-	8325 2025 8325 2545
+	3595 5045 3550 5045
 Wire Wire Line
-	9505 760  9505 2645
+	3550 4925 3610 4925
 Wire Wire Line
-	9505 760  10255 760 
+	4085 4985 4085 5040
 Wire Wire Line
-	9550 1175 10260 1175
+	4085 5040 4125 5040
 Wire Wire Line
-	9550 2745 9550 1175
+	3080 5110 3140 5110
 Wire Wire Line
-	9610 1590 10265 1590
+	2880 5110 2880 5230
+Connection ~ 2880 5170
 Wire Wire Line
-	9670 2035 10265 2035
+	3125 5230 3080 5230
 Wire Wire Line
-	9610 2845 9610 1590
+	2835 5170 4055 5170
 Wire Wire Line
-	9670 2945 9670 2035
+	4055 5170 4055 5140
 Wire Wire Line
-	2410 1940 2470 1940
+	3070 5395 3130 5395
 Wire Wire Line
-	2100 2000 2940 2000
+	2870 5395 2870 5515
+Connection ~ 2870 5455
 Wire Wire Line
-	2210 1940 2210 2060
-Connection ~ 2210 2000
+	2835 5455 3820 5455
 Wire Wire Line
-	2455 2060 2410 2060
+	3820 5455 3820 5240
 Wire Wire Line
-	1860 2000 1900 2000
+	3115 5515 3070 5515
 Wire Wire Line
-	2940 2000 2940 2845
+	2140 5550 2200 5550
+Connection ~ 1940 5610
 Wire Wire Line
-	1890 2315 1825 2315
+	1895 5610 3880 5610
 Wire Wire Line
-	2475 745  2535 745 
+	2185 5670 2140 5670
 Wire Wire Line
-	2165 805  3150 805 
+	3880 5610 3880 5340
 Wire Wire Line
-	2275 745  2275 865 
-Connection ~ 2275 805 
+	2145 5955 2205 5955
 Wire Wire Line
-	2520 865  2475 865 
+	1945 5840 1945 6075
+Connection ~ 1945 6015
 Wire Wire Line
-	1925 805  1965 805 
+	1880 6015 2415 6015
 Wire Wire Line
-	3150 805  3150 2445
+	2190 6075 2145 6075
 Wire Wire Line
-	2465 1055 2525 1055
+	3940 5440 3940 5630
 Wire Wire Line
-	2155 1115 3100 1115
+	3940 5630 2415 5630
 Wire Wire Line
-	2265 1055 2265 1175
-Connection ~ 2265 1115
+	2415 5630 2415 6015
 Wire Wire Line
-	2510 1175 2465 1175
+	1940 6240 1940 6360
+Connection ~ 1940 6300
 Wire Wire Line
-	1915 1115 1955 1115
+	1895 6300 2490 6300
 Wire Wire Line
-	3100 1115 3100 2545
+	2185 6360 2140 6360
 Wire Wire Line
-	2460 1355 2520 1355
+	4000 5650 4000 5540
 Wire Wire Line
-	2260 1355 2260 1475
-Connection ~ 2260 1415
+	2490 5650 4000 5650
 Wire Wire Line
-	2505 1475 2460 1475
+	2490 6300 2490 5650
 Wire Wire Line
-	1910 1415 1950 1415
+	2150 6535 2210 6535
 Wire Wire Line
-	2150 1415 3045 1415
+	1950 6535 1950 6655
+Connection ~ 1950 6595
 Wire Wire Line
-	3045 1415 3045 2645
+	1905 6595 2565 6595
 Wire Wire Line
-	2455 1640 2515 1640
+	2195 6655 2150 6655
 Wire Wire Line
-	2255 1640 2255 1760
-Connection ~ 2255 1700
+	4055 5640 4055 5670
 Wire Wire Line
-	2500 1760 2455 1760
+	4055 5670 2565 5670
 Wire Wire Line
-	1905 1700 1945 1700
+	2565 5670 2565 6595
 Wire Wire Line
-	2145 1700 2990 1700
+	2145 6820 2205 6820
 Wire Wire Line
-	2990 1700 2990 2745
+	1945 6820 1945 6940
+Connection ~ 1945 6880
 Wire Wire Line
-	3520 2945 2880 2945
+	1900 6880 2645 6880
 Wire Wire Line
-	2880 2945 2880 2315
+	2190 6940 2145 6940
 Wire Wire Line
-	2880 2315 2090 2315
+	2645 6880 2645 5740
 Wire Wire Line
-	2395 2550 2455 2550
+	3610 5895 3670 5895
 Wire Wire Line
-	2195 2550 2195 2670
-Connection ~ 2195 2610
+	3410 5895 3410 6015
+Connection ~ 3410 5955
 Wire Wire Line
-	2440 2670 2395 2670
+	3365 5955 3880 5955
 Wire Wire Line
-	1885 2610 1820 2610
+	3655 6015 3610 6015
 Wire Wire Line
-	2825 2610 2825 3045
+	3880 5955 3880 5890
 Wire Wire Line
-	2085 2610 2825 2610
+	3605 6175 3665 6175
 Wire Wire Line
-	2385 2835 2445 2835
+	3405 6175 3405 6295
+Connection ~ 3405 6235
 Wire Wire Line
-	2185 2835 2185 2955
-Connection ~ 2185 2895
+	3360 6235 3940 6235
 Wire Wire Line
-	2430 2955 2385 2955
+	3650 6295 3605 6295
 Wire Wire Line
-	1875 2895 1810 2895
+	3940 6235 3940 5990
 Wire Wire Line
-	2775 2895 2775 3145
+	3600 6460 3660 6460
 Wire Wire Line
-	2075 2895 2775 2895
+	3400 6460 3400 6580
+Connection ~ 3400 6520
 Wire Wire Line
-	1500 4760 1560 4760
+	3355 6520 4015 6520
 Wire Wire Line
-	1300 4760 1300 4880
-Connection ~ 1300 4820
+	3645 6580 3600 6580
 Wire Wire Line
-	1545 4880 1500 4880
+	4015 6520 4015 6090
 Wire Wire Line
-	1510 4445 1570 4445
+	3595 6740 3655 6740
 Wire Wire Line
-	1200 4505 1845 4505
+	3395 6740 3395 6860
+Connection ~ 3395 6800
 Wire Wire Line
-	1310 4445 1310 4565
-Connection ~ 1310 4505
+	3350 6800 4090 6800
 Wire Wire Line
-	1555 4565 1510 4565
+	3640 6860 3595 6860
 Wire Wire Line
-	960  4505 1000 4505
+	4090 6800 4090 6190
 Wire Wire Line
-	990  4820 925  4820
+	7035 5680 6975 5680
 Wire Wire Line
-	1575 3250 1635 3250
+	7235 5680 7235 5800
+Connection ~ 7235 5740
 Wire Wire Line
-	1265 3310 1825 3310
-Wire Wire Line
-	1375 3250 1375 3370
-Connection ~ 1375 3310
-Wire Wire Line
-	1620 3370 1575 3370
-Wire Wire Line
-	1025 3310 1065 3310
-Wire Wire Line
-	1565 3560 1625 3560
-Wire Wire Line
-	1255 3620 1775 3620
-Wire Wire Line
-	1365 3560 1365 3680
-Connection ~ 1365 3620
-Wire Wire Line
-	1610 3680 1565 3680
-Wire Wire Line
-	1015 3620 1055 3620
-Wire Wire Line
-	1560 3860 1620 3860
-Wire Wire Line
-	1360 3860 1360 3980
-Connection ~ 1360 3920
-Wire Wire Line
-	1605 3980 1560 3980
-Wire Wire Line
-	1010 3920 1050 3920
-Wire Wire Line
-	1250 3920 1805 3920
-Wire Wire Line
-	1555 4145 1615 4145
-Wire Wire Line
-	1355 4145 1355 4265
-Connection ~ 1355 4205
-Wire Wire Line
-	1600 4265 1555 4265
-Wire Wire Line
-	1005 4205 1045 4205
-Wire Wire Line
-	1245 4205 1825 4205
-Wire Wire Line
-	1190 4820 1865 4820
-Wire Wire Line
-	1495 5055 1555 5055
-Wire Wire Line
-	1295 5055 1295 5175
-Connection ~ 1295 5115
-Wire Wire Line
-	1540 5175 1495 5175
-Wire Wire Line
-	985  5115 920  5115
-Wire Wire Line
-	1185 5115 1885 5115
-Wire Wire Line
-	1485 5340 1545 5340
-Wire Wire Line
-	1285 5340 1285 5460
-Connection ~ 1285 5400
-Wire Wire Line
-	1530 5460 1485 5460
-Wire Wire Line
-	975  5400 910  5400
-Wire Wire Line
-	1175 5400 1905 5400
-Wire Wire Line
-	1825 3345 3520 3345
-Wire Wire Line
-	1825 3310 1825 3345
-Wire Wire Line
-	1775 3620 1775 3445
-Wire Wire Line
-	1805 3920 1805 3545
-Wire Wire Line
-	1825 4205 1825 3645
-Wire Wire Line
-	1845 4505 1845 3745
-Wire Wire Line
-	1865 4820 1865 3845
-Wire Wire Line
-	1885 5115 1885 3945
-Wire Wire Line
-	1905 5400 1905 4045
-Wire Wire Line
-	2995 4170 3055 4170
-Wire Wire Line
-	2685 4230 3250 4230
-Wire Wire Line
-	2795 4170 2795 4290
-Connection ~ 2795 4230
-Wire Wire Line
-	3040 4290 2995 4290
-Wire Wire Line
-	3250 4230 3250 4545
-Wire Wire Line
-	2480 4340 2540 4340
-Wire Wire Line
-	2235 4400 3220 4400
-Wire Wire Line
-	2280 4340 2280 4460
-Connection ~ 2280 4400
-Wire Wire Line
-	2525 4460 2480 4460
-Wire Wire Line
-	3220 4400 3220 4645
-Wire Wire Line
-	2935 4520 2995 4520
-Wire Wire Line
-	2735 4520 2735 4640
-Connection ~ 2735 4580
-Wire Wire Line
-	2980 4640 2935 4640
-Wire Wire Line
-	2690 4580 3185 4580
-Wire Wire Line
-	3185 4580 3185 4745
-Wire Wire Line
-	2485 4690 2545 4690
-Wire Wire Line
-	2285 4690 2285 4810
-Connection ~ 2285 4750
-Wire Wire Line
-	2240 4750 3150 4750
-Wire Wire Line
-	2530 4810 2485 4810
-Wire Wire Line
-	3150 4750 3150 4845
-Wire Wire Line
-	2745 4880 2745 5000
-Connection ~ 2745 4940
-Wire Wire Line
-	2700 4940 3480 4940
-Wire Wire Line
-	2990 5000 2945 5000
-Wire Wire Line
-	2945 4880 3005 4880
-Wire Wire Line
-	3480 4940 3480 4995
-Wire Wire Line
-	3480 4995 3520 4995
-Wire Wire Line
-	2475 5065 2535 5065
-Wire Wire Line
-	2275 5065 2275 5185
-Connection ~ 2275 5125
-Wire Wire Line
-	2520 5185 2475 5185
-Wire Wire Line
-	2230 5125 2710 5125
-Wire Wire Line
-	2710 5125 2710 5095
-Wire Wire Line
-	2465 5350 2525 5350
-Wire Wire Line
-	2265 5350 2265 5470
-Connection ~ 2265 5410
-Wire Wire Line
-	2220 5410 2700 5410
-Wire Wire Line
-	2700 5410 2700 5195
-Wire Wire Line
-	2510 5470 2465 5470
-Wire Wire Line
-	1070 5620 1130 5620
-Wire Wire Line
-	870  5620 870  5740
-Connection ~ 870  5680
-Wire Wire Line
-	825  5680 1305 5680
-Wire Wire Line
-	1115 5740 1070 5740
-Wire Wire Line
-	2720 5295 2720 5565
-Wire Wire Line
-	2720 5565 1305 5565
-Wire Wire Line
-	1305 5565 1305 5680
-Wire Wire Line
-	1065 5910 1125 5910
-Wire Wire Line
-	865  5910 865  6030
-Connection ~ 865  5970
-Wire Wire Line
-	820  5970 1325 5970
-Wire Wire Line
-	1110 6030 1065 6030
-Wire Wire Line
-	2740 5395 2740 5585
-Wire Wire Line
-	2740 5585 1325 5585
-Wire Wire Line
-	1325 5585 1325 5970
-Wire Wire Line
-	1060 6195 1120 6195
-Wire Wire Line
-	860  6195 860  6315
-Connection ~ 860  6255
-Wire Wire Line
-	815  6255 1345 6255
-Wire Wire Line
-	1105 6315 1060 6315
-Wire Wire Line
-	2760 5605 2760 5495
-Wire Wire Line
-	1345 5605 2760 5605
-Wire Wire Line
-	1345 6255 1345 5605
-Wire Wire Line
-	1070 6490 1130 6490
-Wire Wire Line
-	870  6490 870  6610
-Connection ~ 870  6550
-Wire Wire Line
-	825  6550 1365 6550
-Wire Wire Line
-	1115 6610 1070 6610
-Wire Wire Line
-	2780 5595 2780 5625
-Wire Wire Line
-	2780 5625 1365 5625
-Wire Wire Line
-	1365 5625 1365 6550
-Wire Wire Line
-	1065 6775 1125 6775
-Wire Wire Line
-	865  6775 865  6895
-Connection ~ 865  6835
-Wire Wire Line
-	820  6835 1380 6835
-Wire Wire Line
-	1110 6895 1065 6895
-Wire Wire Line
-	1380 6835 1380 5695
-Wire Wire Line
-	2050 5850 2110 5850
-Wire Wire Line
-	1850 5850 1850 5970
-Connection ~ 1850 5910
-Wire Wire Line
-	1805 5910 2365 5910
-Wire Wire Line
-	2095 5970 2050 5970
-Wire Wire Line
-	2365 5910 2365 5845
-Wire Wire Line
-	2045 6130 2105 6130
-Wire Wire Line
-	1845 6130 1845 6250
-Connection ~ 1845 6190
-Wire Wire Line
-	1800 6190 2360 6190
-Wire Wire Line
-	2090 6250 2045 6250
-Wire Wire Line
-	2360 6190 2360 5945
-Wire Wire Line
-	2040 6415 2100 6415
-Wire Wire Line
-	1840 6415 1840 6535
-Connection ~ 1840 6475
-Wire Wire Line
-	1795 6475 2380 6475
-Wire Wire Line
-	2085 6535 2040 6535
-Wire Wire Line
-	2380 6475 2380 6045
-Wire Wire Line
-	2035 6695 2095 6695
-Wire Wire Line
-	1835 6695 1835 6815
-Connection ~ 1835 6755
-Wire Wire Line
-	1790 6755 2400 6755
-Wire Wire Line
-	2080 6815 2035 6815
-Wire Wire Line
-	2400 6755 2400 6145
-Wire Wire Line
-	6025 6175 5965 6175
-Wire Wire Line
-	6225 6175 6225 6295
-Connection ~ 6225 6235
-Wire Wire Line
-	5570 6235 6270 6235
-Wire Wire Line
-	5980 6295 6025 6295
-Wire Wire Line
-	5570 5895 5570 6235
-Wire Wire Line
-	6020 5880 5960 5880
-Wire Wire Line
-	6220 5880 6220 6000
-Connection ~ 6220 5940
-Wire Wire Line
-	5975 6000 6020 6000
-Wire Wire Line
-	5615 5940 6265 5940
-Wire Wire Line
-	9005 6160 8945 6160
-Wire Wire Line
-	9205 6160 9205 6280
-Connection ~ 9205 6220
-Wire Wire Line
-	8960 6280 9005 6280
-Wire Wire Line
-	8630 6220 9250 6220
-Wire Wire Line
-	9000 5875 8940 5875
-Wire Wire Line
-	9200 5875 9200 5995
-Connection ~ 9200 5935
-Wire Wire Line
-	8955 5995 9000 5995
-Wire Wire Line
-	8685 5935 9245 5935
-Wire Wire Line
-	5615 5795 5615 5940
-Wire Wire Line
-	6965 6160 6905 6160
-Wire Wire Line
-	7165 6160 7165 6280
-Connection ~ 7165 6220
-Wire Wire Line
-	6920 6280 6965 6280
-Wire Wire Line
-	6630 6220 7210 6220
-Wire Wire Line
-	7160 5875 7160 5995
-Connection ~ 7160 5935
-Wire Wire Line
-	6915 5995 6960 5995
-Wire Wire Line
-	6675 5935 7205 5935
-Wire Wire Line
-	6960 5875 6900 5875
-Wire Wire Line
-	6630 5695 6630 6220
-Wire Wire Line
-	6675 5595 6675 5935
-Wire Wire Line
-	7990 6160 7930 6160
-Wire Wire Line
-	8190 6160 8190 6280
-Connection ~ 8190 6220
-Wire Wire Line
-	7945 6280 7990 6280
-Wire Wire Line
-	7630 6220 8235 6220
-Wire Wire Line
-	7985 5875 7925 5875
-Wire Wire Line
-	8185 5875 8185 5995
-Connection ~ 8185 5935
-Wire Wire Line
-	7940 5995 7985 5995
-Wire Wire Line
-	7695 5935 8230 5935
-Wire Wire Line
-	7630 5495 7630 6220
-Wire Wire Line
-	7695 5395 7695 5935
-Wire Wire Line
-	8630 5295 8630 6220
-Wire Wire Line
-	8685 5195 8685 5935
-Wire Wire Line
-	8995 5580 8935 5580
-Wire Wire Line
-	9195 5580 9195 5700
-Connection ~ 9195 5640
-Wire Wire Line
-	8950 5700 8995 5700
-Wire Wire Line
-	9190 5295 9190 5415
-Connection ~ 9190 5355
-Wire Wire Line
-	8945 5415 8990 5415
-Wire Wire Line
-	8990 5295 8930 5295
-Wire Wire Line
-	8725 5640 9240 5640
-Wire Wire Line
-	8765 5355 9235 5355
-Wire Wire Line
-	8725 5045 8725 5640
-Wire Wire Line
-	8765 4945 8765 5355
-Wire Wire Line
-	10090 6160 10030 6160
-Wire Wire Line
-	10290 6160 10290 6280
-Connection ~ 10290 6220
-Wire Wire Line
-	10045 6280 10090 6280
-Wire Wire Line
-	9715 6220 10335 6220
-Wire Wire Line
-	10085 5875 10025 5875
-Wire Wire Line
-	10285 5875 10285 5995
-Connection ~ 10285 5935
-Wire Wire Line
-	10040 5995 10085 5995
-Wire Wire Line
-	9770 5935 10330 5935
-Wire Wire Line
-	10080 5580 10020 5580
-Wire Wire Line
-	10280 5580 10280 5700
-Connection ~ 10280 5640
-Wire Wire Line
-	10035 5700 10080 5700
-Wire Wire Line
-	10275 5295 10275 5415
-Connection ~ 10275 5355
-Wire Wire Line
-	10030 5415 10075 5415
-Wire Wire Line
-	10075 5295 10015 5295
-Wire Wire Line
-	9810 5640 10325 5640
-Wire Wire Line
-	9850 5355 10320 5355
-Wire Wire Line
-	9715 4845 9715 6220
-Wire Wire Line
-	9770 4745 9770 5935
-Wire Wire Line
-	9810 4645 9810 5640
-Wire Wire Line
-	9850 4545 9850 5355
-Text GLabel 10440 5065 2    24   Output ~ 0
+	6990 5800 7035 5800
+Text GLabel 7695 4490 2    24   Output ~ 0
 DropRight
 $Comp
-L D_Small D143
+L D_Small D26
 U 1 1 58031082
-P 10295 5005
-F 0 "D143" H 10180 4985 24  0000 C CNN
-F 1 "TMMBAT48" H 10190 5060 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10295 5005 50  0001 C CNN
-F 3 "" V 10295 5005 50  0001 C CNN
-F 4 "Value" H 10295 5005 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10295 5005 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10295 5005 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10295 5005 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10295 5005 60  0001 C CNN "Bauform"
-	1    10295 5005
+P 7030 4430
+F 0 "D26" H 7030 4515 24  0000 C CNN
+F 1 "TMMBAT48" H 7035 4485 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 7030 4430 50  0001 C CNN
+F 3 "" V 7030 4430 50  0001 C CNN
+F 4 "Value" H 7030 4430 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7030 4430 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7030 4430 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7030 4430 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 7030 4430 60  0001 C CNN "Bauform"
+	1    7030 4430
 	1    0    0    -1  
 $EndComp
-Text GLabel 10135 5005 0    24   Input ~ 0
+Text GLabel 6870 4430 0    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0225
+L GND #PWR0194
 U 1 1 58031089
-P 10150 5125
-F 0 "#PWR0225" H 10150 4875 50  0001 C CNN
-F 1 "GND" V 10155 4970 24  0000 C CNN
-F 2 "" H 10150 5125 50  0000 C CNN
-F 3 "" H 10150 5125 50  0000 C CNN
-	1    10150 5125
+P 6915 4550
+F 0 "#PWR0194" H 6915 4300 50  0001 C CNN
+F 1 "GND" V 6920 4395 24  0000 C CNN
+F 2 "" H 6915 4550 50  0000 C CNN
+F 3 "" H 6915 4550 50  0000 C CNN
+	1    6915 4550
 	0    1    -1   0   
 $EndComp
 $Comp
-L D_Small D144
+L D_Small D25
 U 1 1 58031094
-P 10295 5125
-F 0 "D144" H 10415 5150 24  0000 C CNN
-F 1 "TMMBAT48" H 10395 5060 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10295 5125 50  0001 C CNN
-F 3 "" V 10295 5125 50  0001 C CNN
-F 4 "Value" H 10295 5125 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10295 5125 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10295 5125 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10295 5125 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10295 5125 60  0001 C CNN "Bauform"
-	1    10295 5125
+P 7060 4550
+F 0 "D25" H 7180 4575 24  0000 C CNN
+F 1 "TMMBAT48" H 7160 4485 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 7060 4550 50  0001 C CNN
+F 3 "" V 7060 4550 50  0001 C CNN
+F 4 "Value" H 7060 4550 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7060 4550 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7060 4550 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7060 4550 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 7060 4550 60  0001 C CNN "Bauform"
+F 9 "Value" H 7060 4550 60  0001 C CNN "Funktion"
+F 10 "Value" H 7060 4550 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7060 4550 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7060 4550
 	-1   0    0    -1  
 $EndComp
-Text GLabel 10435 4780 2    24   Output ~ 0
+Text GLabel 6180 4390 2    24   Output ~ 0
 pinSonarCenterEcho
-$Comp
-L D_Small D141
-U 1 1 580310A0
-P 10290 4720
-F 0 "D141" H 10175 4700 24  0000 C CNN
-F 1 "TMMBAT48" H 10185 4775 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10290 4720 50  0001 C CNN
-F 3 "" V 10290 4720 50  0001 C CNN
-F 4 "Value" H 10290 4720 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10290 4720 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10290 4720 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10290 4720 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10290 4720 60  0001 C CNN "Bauform"
-	1    10290 4720
-	1    0    0    -1  
-$EndComp
-Text GLabel 10130 4720 0    24   Input ~ 0
-IOREF
-$Comp
-L GND #PWR0226
-U 1 1 580310A7
-P 10145 4840
-F 0 "#PWR0226" H 10145 4590 50  0001 C CNN
-F 1 "GND" V 10150 4685 24  0000 C CNN
-F 2 "" H 10145 4840 50  0000 C CNN
-F 3 "" H 10145 4840 50  0000 C CNN
-	1    10145 4840
-	0    1    -1   0   
-$EndComp
-$Comp
-L D_Small D142
-U 1 1 580310B2
-P 10290 4840
-F 0 "D142" H 10410 4865 24  0000 C CNN
-F 1 "TMMBAT48" H 10390 4775 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 10290 4840 50  0001 C CNN
-F 3 "" V 10290 4840 50  0001 C CNN
-F 4 "Value" H 10290 4840 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 10290 4840 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 10290 4840 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 10290 4840 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 10290 4840 60  0001 C CNN "Bauform"
-	1    10290 4840
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
-	10195 5005 10135 5005
+	6870 4430 6930 4430
 Wire Wire Line
-	10395 5005 10395 5125
-Connection ~ 10395 5065
+	7160 4285 7160 4550
+Connection ~ 7160 4490
 Wire Wire Line
-	10150 5125 10195 5125
-Wire Wire Line
-	10390 4720 10390 4840
-Connection ~ 10390 4780
-Wire Wire Line
-	10145 4840 10190 4840
-Wire Wire Line
-	10190 4720 10130 4720
-Wire Wire Line
-	9925 5065 10440 5065
-Wire Wire Line
-	9965 4780 10435 4780
-Wire Wire Line
-	9925 4445 9925 5065
-Wire Wire Line
-	9965 4345 9965 4780
+	6915 4550 6960 4550
 Text Notes 12860 3040 0    79   ~ 0
 also im grunde ist es bei der schaltung völlig pups...... \nes ist genau das gleiche problem wie mit dem LsF010x \nnicht der shifter ist das problem sondern das was dahinter kommt.\n Fraaage...... was macht ein pin wenn es als ausgang programmiert ist\nund wird aktiv mit einem andern ausgang verbunden? \nRichtiiiig es macht puff und so ist das auch mit dem shifter \ndu kannst dir aber die regel merken der gate widerstand zeigt zum MPU pin
 Text Notes 12900 4180 0    79   ~ 0
 achso um mein geschreibsel für den level shifter \nnoch mal zu verdeutlichen die low-side darf immer kleiner \noder gleichgroß der high-side sein \naber niemals größer als die high-side \nich hoffe das ist jetzt etwas verständlicher
-Text GLabel 3490 1445 0    39   BiDi ~ 0
+Text GLabel 4095 1490 0    39   BiDi ~ 0
 SCL22
-Text GLabel 3490 1345 0    39   BiDi ~ 0
+Text GLabel 4095 1390 0    39   BiDi ~ 0
 SDA22
 Wire Wire Line
-	3620 1345 3490 1345
+	4225 1390 4095 1390
 Wire Wire Line
-	3620 1445 3490 1445
+	4225 1490 4095 1490
 Wire Wire Line
-	5880 765  6405 765 
+	6025 1690 6620 1690
 Wire Wire Line
-	5930 1180 6450 1180
+	6355 2990 6025 2990
+Text Notes 2700 4690 0    28   ~ 0
+Pinbutton\ndurch Diode D14\ngeschützt ??
+$Comp
+L D_Small D6
+U 1 1 58A629D6
+P 7555 4490
+F 0 "D6" H 7555 4555 24  0000 C CNN
+F 1 "TMMBAT48" H 7555 4420 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 7555 4490 50  0001 C CNN
+F 3 "" V 7555 4490 50  0001 C CNN
+F 4 "Value" H 7555 4490 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7555 4490 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7555 4490 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 7555 4490 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 7555 4490 60  0001 C CNN "Bauform"
+F 9 "Value" H 7555 4490 60  0001 C CNN "Funktion"
+F 10 "Value" H 7555 4490 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7555 4490 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7555 4490
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R_Small R103
+U 1 1 58A63E2B
+P 7320 4490
+F 0 "R103" V 7375 4490 24  0000 C CNN
+F 1 "300R" V 7320 4490 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -310 230 50  0001 C CNN
+F 3 "" H -310 230 50  0001 C CNN
+F 4 "Value" H 7320 4490 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7320 4490 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7320 4490 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7320 4490 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7320 4490 60  0001 C CNN "Bauform"
+F 9 "Value" H 7320 4490 60  0001 C CNN "Funktion"
+F 10 "Value" H 7320 4490 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7320 4490 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7320 4490
+	0    1    -1   0   
+$EndComp
 Wire Wire Line
-	6015 1585 6515 1585
+	7420 4490 7455 4490
 Wire Wire Line
-	5420 1645 5930 1645
+	7655 4490 7695 4490
+Text Notes 7480 3735 0    24   ~ 0
+[21:03:44] Jürgen Lange: zu d143 dropright parallel einen 4k7 widerstand bei left genauso\n[21:05:27] Kurzschuss - Uwe: Ich verstehe nicht so ganz warum die Diode D6 lässt doch nur GND von außen zu oder habe ich da ein Denkfehler\n[21:05:45] Kurzschuss - Uwe: damit müsste der Pin doch geschützt sein oder?\n[21:07:55] Jürgen Lange: genau das ist das problem die diode lässt nur gnd durch aber min0,3v höher als gnd selbst das finde ich nicht so gut \naber wenn du di drinhast geht das noch wenn der sensor aber nicht geschaltet hat hängt der port in der luft nur die internen pullups wirken \ndie nimmt man aber normal nicht wenn es nicht zwingend sein muss\n[21:08:41] Jürgen Lange: der dropsensor hat intern auch eine nicht ganz klare pullup Schaltung damit da nichts schief geht sichern\n[21:09:16] Kurzschuss - Uwe: gut also d6 lassen und r103 auch\n[21:09:52] Jürgen Lange: mach d6 noch vor r103 dann hast du es perfekt\n[21:10:13] Kurzschuss - Uwe: okay\n[21:10:32] Jürgen Lange: und den pullup parallel zu d143 nicht vergessen 4k7\n[21:10:38] Kurzschuss - Uwe: ja
+Wire Wire Line
+	7160 4430 7130 4430
+$Comp
+L R_Small R54
+U 1 1 58A6469A
+P 3265 5955
+F 0 "R54" V 3320 5955 24  0000 C CNN
+F 1 "300R" V 3265 5955 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4365 1695 50  0001 C CNN
+F 3 "" H -4365 1695 50  0001 C CNN
+F 4 "Value" H 3265 5955 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3265 5955 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3265 5955 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3265 5955 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3265 5955 60  0001 C CNN "Bauform"
+F 9 "Value" H 3265 5955 60  0001 C CNN "Funktion"
+F 10 "Value" H 3265 5955 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3265 5955 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3265 5955
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3165 5955 3135 5955
+$Comp
+L R_Small R29
+U 1 1 58A65591
+P 3260 6235
+F 0 "R29" V 3315 6235 24  0000 C CNN
+F 1 "300R" V 3260 6235 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4370 1975 50  0001 C CNN
+F 3 "" H -4370 1975 50  0001 C CNN
+F 4 "Value" H 3260 6235 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3260 6235 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3260 6235 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3260 6235 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3260 6235 60  0001 C CNN "Bauform"
+F 9 "Value" H 3260 6235 60  0001 C CNN "Funktion"
+F 10 "Value" H 3260 6235 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3260 6235 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3260 6235
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2140 6240 2200 6240
+Wire Wire Line
+	3160 6235 3135 6235
+$Comp
+L R_Small R85
+U 1 1 58A78080
+P 1805 6595
+F 0 "R85" V 1860 6595 24  0000 C CNN
+F 1 "300R" V 1805 6595 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -5825 2335 50  0001 C CNN
+F 3 "" H -5825 2335 50  0001 C CNN
+F 4 "Value" H 1805 6595 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1805 6595 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1805 6595 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1805 6595 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1805 6595 60  0001 C CNN "Bauform"
+F 9 "Value" H 1805 6595 60  0001 C CNN "Funktion"
+F 10 "Value" H 1805 6595 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1805 6595 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1805 6595
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_Small R83
+U 1 1 58A787D8
+P 1800 6880
+F 0 "R83" V 1855 6880 24  0000 C CNN
+F 1 "300R" V 1800 6880 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -5830 2620 50  0001 C CNN
+F 3 "" H -5830 2620 50  0001 C CNN
+F 4 "Value" H 1800 6880 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1800 6880 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1800 6880 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1800 6880 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1800 6880 60  0001 C CNN "Bauform"
+F 9 "Value" H 1800 6880 60  0001 C CNN "Funktion"
+F 10 "Value" H 1800 6880 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1800 6880 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1800 6880
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1705 6595 1665 6595
+Wire Wire Line
+	1700 6880 1665 6880
+$Comp
+L R_Small R86
+U 1 1 58A7A83A
+P 1795 6300
+F 0 "R86" V 1850 6300 24  0000 C CNN
+F 1 "300R" V 1795 6300 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -5835 2040 50  0001 C CNN
+F 3 "" H -5835 2040 50  0001 C CNN
+F 4 "Value" H 1795 6300 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1795 6300 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1795 6300 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1795 6300 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1795 6300 60  0001 C CNN "Bauform"
+F 9 "Value" H 1795 6300 60  0001 C CNN "Funktion"
+F 10 "Value" H 1795 6300 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1795 6300 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1795 6300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1695 6300 1655 6300
+$Comp
+L R_Small R105
+U 1 1 58A7BF75
+P 3255 6520
+F 0 "R105" V 3310 6520 24  0000 C CNN
+F 1 "300R" V 3255 6520 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4375 2260 50  0001 C CNN
+F 3 "" H -4375 2260 50  0001 C CNN
+F 4 "Value" H 3255 6520 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3255 6520 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3255 6520 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3255 6520 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3255 6520 60  0001 C CNN "Bauform"
+F 9 "Value" H 3255 6520 60  0001 C CNN "Funktion"
+F 10 "Value" H 3255 6520 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3255 6520 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3255 6520
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_Small R87
+U 1 1 58A7C052
+P 3250 6800
+F 0 "R87" V 3305 6800 24  0000 C CNN
+F 1 "300R" V 3250 6800 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4380 2540 50  0001 C CNN
+F 3 "" H -4380 2540 50  0001 C CNN
+F 4 "Value" H 3250 6800 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3250 6800 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3250 6800 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3250 6800 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3250 6800 60  0001 C CNN "Bauform"
+F 9 "Value" H 3250 6800 60  0001 C CNN "Funktion"
+F 10 "Value" H 3250 6800 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3250 6800 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3250 6800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3155 6520 3115 6520
+Wire Wire Line
+	3150 6800 3105 6800
+$Comp
+L R_Small R106
+U 1 1 58A7D74D
+P 1795 5610
+F 0 "R106" V 1850 5610 24  0000 C CNN
+F 1 "300R" V 1795 5610 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -5835 1350 50  0001 C CNN
+F 3 "" H -5835 1350 50  0001 C CNN
+F 4 "Value" H 1795 5610 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1795 5610 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1795 5610 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1795 5610 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1795 5610 60  0001 C CNN "Bauform"
+F 9 "Value" H 1795 5610 60  0001 C CNN "Funktion"
+F 10 "Value" H 1795 5610 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1795 5610 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1795 5610
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1695 5610 1665 5610
+$Comp
+L R_Small R108
+U 1 1 58A7E859
+P 2735 5455
+F 0 "R108" V 2790 5455 24  0000 C CNN
+F 1 "300R" V 2735 5455 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4895 1195 50  0001 C CNN
+F 3 "" H -4895 1195 50  0001 C CNN
+F 4 "Value" H 2735 5455 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2735 5455 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2735 5455 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2735 5455 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2735 5455 60  0001 C CNN "Bauform"
+F 9 "Value" H 2735 5455 60  0001 C CNN "Funktion"
+F 10 "Value" H 2735 5455 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2735 5455 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2735 5455
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2635 5455 2595 5455
+$Comp
+L R_Small R107
+U 1 1 58A7F07D
+P 2735 5170
+F 0 "R107" V 2790 5170 24  0000 C CNN
+F 1 "300R" V 2735 5170 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4895 910 50  0001 C CNN
+F 3 "" H -4895 910 50  0001 C CNN
+F 4 "Value" H 2735 5170 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2735 5170 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2735 5170 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2735 5170 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2735 5170 60  0001 C CNN "Bauform"
+F 9 "Value" H 2735 5170 60  0001 C CNN "Funktion"
+F 10 "Value" H 2735 5170 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2735 5170 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2735 5170
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2635 5170 2595 5170
+$Comp
+L R_Small R109
+U 1 1 58A80A5D
+P 3205 4985
+F 0 "R109" V 3260 4985 24  0000 C CNN
+F 1 "300R" V 3205 4985 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4425 725 50  0001 C CNN
+F 3 "" H -4425 725 50  0001 C CNN
+F 4 "Value" H 3205 4985 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3205 4985 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3205 4985 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3205 4985 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3205 4985 60  0001 C CNN "Bauform"
+F 9 "Value" H 3205 4985 60  0001 C CNN "Funktion"
+F 10 "Value" H 3205 4985 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3205 4985 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3205 4985
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3105 4985 3055 4985
+$Comp
+L R_Small R110
+U 1 1 58A83019
+P 7380 5740
+F 0 "R110" V 7435 5740 24  0000 C CNN
+F 1 "300R" V 7380 5740 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -250 1480 50  0001 C CNN
+F 3 "" H -250 1480 50  0001 C CNN
+F 4 "Value" H 7380 5740 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7380 5740 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7380 5740 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7380 5740 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7380 5740 60  0001 C CNN "Bauform"
+F 9 "Value" H 7380 5740 60  0001 C CNN "Funktion"
+F 10 "Value" H 7380 5740 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7380 5740 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7380 5740
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	7480 5740 7520 5740
+$Comp
+L R_Small R112
+U 1 1 58A88518
+P 8615 2090
+F 0 "R112" V 8670 2090 24  0000 C CNN
+F 1 "300R" V 8615 2090 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 985 -2170 50  0001 C CNN
+F 3 "" H 985 -2170 50  0001 C CNN
+F 4 "Value" H 8615 2090 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 8615 2090 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8615 2090 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8615 2090 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8615 2090 60  0001 C CNN "Bauform"
+F 9 "Value" H 8615 2090 60  0001 C CNN "Funktion"
+F 10 "Value" H 8615 2090 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8615 2090 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8615 2090
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	8715 2090 8815 2090
+$Comp
+L R_Small R111
+U 1 1 58A89DD4
+P 8570 1555
+F 0 "R111" V 8625 1555 24  0000 C CNN
+F 1 "300R" V 8570 1555 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 940 -2705 50  0001 C CNN
+F 3 "" H 940 -2705 50  0001 C CNN
+F 4 "Value" H 8570 1555 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 8570 1555 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8570 1555 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8570 1555 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8570 1555 60  0001 C CNN "Bauform"
+F 9 "Value" H 8570 1555 60  0001 C CNN "Funktion"
+F 10 "Value" H 8570 1555 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8570 1555 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8570 1555
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	8670 1555 8805 1555
+$Comp
+L R_Small R114
+U 1 1 58A87246
+P 7035 4285
+F 0 "R114" V 7090 4285 24  0000 C CNN
+F 1 "4K7" V 7035 4285 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -595 25  50  0001 C CNN
+F 3 "" H -595 25  50  0001 C CNN
+F 4 "Value" H 7035 4285 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7035 4285 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7035 4285 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7035 4285 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7035 4285 60  0001 C CNN "Bauform"
+F 9 "Value" H 7035 4285 60  0001 C CNN "Funktion"
+F 10 "Value" H 7035 4285 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7035 4285 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7035 4285
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	7160 4285 7135 4285
+Connection ~ 7160 4430
+Wire Wire Line
+	6935 4285 6900 4285
+Wire Wire Line
+	6900 4285 6900 4430
+Connection ~ 6900 4430
+$Comp
+L D_Small D5
+U 1 1 58A89512
+P 1545 6015
+F 0 "D5" H 1545 6080 24  0000 C CNN
+F 1 "TMMBAT48" H 1545 5945 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1545 6015 50  0001 C CNN
+F 3 "" V 1545 6015 50  0001 C CNN
+F 4 "Value" H 1545 6015 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1545 6015 60  0001 C CNN "Bestelllink"
+F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1545 6015 60  0001 C CNN "Technische Daten"
+F 7 "R:BAT 48 SMD" H 1545 6015 60  0001 C CNN "Bestellnummer"
+F 8 "Mini Melf" H 1545 6015 60  0001 C CNN "Bauform"
+F 9 "Value" H 1545 6015 60  0001 C CNN "Funktion"
+F 10 "Value" H 1545 6015 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1545 6015 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1545 6015
+	1    0    0    -1  
+$EndComp
+$Comp
+L R_Small R104
+U 1 1 58A89520
+P 1780 6015
+F 0 "R104" V 1835 6015 24  0000 C CNN
+F 1 "300R" V 1780 6015 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -5850 1755 50  0001 C CNN
+F 3 "" H -5850 1755 50  0001 C CNN
+F 4 "Value" H 1780 6015 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1780 6015 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1780 6015 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1780 6015 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1780 6015 60  0001 C CNN "Bauform"
+F 9 "Value" H 1780 6015 60  0001 C CNN "Funktion"
+F 10 "Value" H 1780 6015 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1780 6015 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1780 6015
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1680 6015 1645 6015
+Wire Wire Line
+	1445 6015 1405 6015
+Wire Wire Line
+	1940 5550 1940 5670
+$Comp
+L R_Small R113
+U 1 1 58A89531
+P 2060 5840
+F 0 "R113" V 2115 5840 24  0000 C CNN
+F 1 "4K7" V 2060 5840 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -5570 1580 50  0001 C CNN
+F 3 "" H -5570 1580 50  0001 C CNN
+F 4 "Value" H 2060 5840 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 2060 5840 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2060 5840 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2060 5840 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2060 5840 60  0001 C CNN "Bauform"
+F 9 "Value" H 2060 5840 60  0001 C CNN "Funktion"
+F 10 "Value" H 2060 5840 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2060 5840 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2060 5840
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1945 5840 1960 5840
+Connection ~ 1945 5955
+Wire Wire Line
+	2175 5955 2175 5840
+Wire Wire Line
+	2175 5840 2160 5840
+Connection ~ 2175 5955
 $EndSCHEMATC

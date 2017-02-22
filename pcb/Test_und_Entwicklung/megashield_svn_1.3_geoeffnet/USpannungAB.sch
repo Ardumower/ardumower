@@ -13,9 +13,9 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 25 28
+Sheet 28 31
 Title "Ardumower shield SVN Version"
-Date "2016-10-28"
+Date "2017-02-17"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Unterspannungsschutz von AlexanderG"
@@ -29,13 +29,16 @@ U 1 1 57DD94E3
 P 4180 2820
 F 0 "R37" V 4260 2820 40  0000 C CNN
 F 1 "100K" V 4187 2821 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 4110 2820 30  0001 C CNN
+F 2 "Zimprich:R_1206" V 4110 2820 30  0001 C CNN
 F 3 "" H 4180 2820 30  0001 C CNN
 F 4 "Value" H 4180 2820 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 4180 2820 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 4180 2820 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 4180 2820 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 4180 2820 60  0001 C CNN "Bauform"
+F 9 "Value" H 4180 2820 60  0001 C CNN "Funktion"
+F 10 "Value" H 4180 2820 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4180 2820 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4180 2820
 	1    0    0    -1  
 $EndComp
@@ -45,13 +48,16 @@ U 1 1 57DD94E5
 P 5750 3650
 F 0 "R32" V 5830 3650 40  0000 C CNN
 F 1 "1K" V 5757 3651 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 5680 3650 30  0001 C CNN
+F 2 "Zimprich:R_1206" V 5680 3650 30  0001 C CNN
 F 3 "" H 5750 3650 30  0001 C CNN
 F 4 "Value" H 5750 3650 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 5750 3650 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 5750 3650 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 5750 3650 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 5750 3650 60  0001 C CNN "Bauform"
+F 9 "Value" H 5750 3650 60  0001 C CNN "Funktion"
+F 10 "Value" H 5750 3650 60  0001 C CNN "Hersteller"
+F 11 "Value" H 5750 3650 60  0001 C CNN "Hersteller Bestellnummer"
 	1    5750 3650
 	0    1    1    0   
 $EndComp
@@ -61,13 +67,16 @@ U 1 1 57DD94E7
 P 6255 4155
 F 0 "R33" V 6335 4155 40  0000 C CNN
 F 1 "100R" V 6262 4156 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 6185 4155 30  0001 C CNN
+F 2 "Zimprich:R_1206" V 6185 4155 30  0001 C CNN
 F 3 "" H 6255 4155 30  0001 C CNN
 F 4 "Value" H 6255 4155 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 6255 4155 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 6255 4155 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 6255 4155 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 6255 4155 60  0001 C CNN "Bauform"
+F 9 "Value" H 6255 4155 60  0001 C CNN "Funktion"
+F 10 "Value" H 6255 4155 60  0001 C CNN "Hersteller"
+F 11 "Value" H 6255 4155 60  0001 C CNN "Hersteller Bestellnummer"
 	1    6255 4155
 	-1   0    0    1   
 $EndComp
@@ -77,13 +86,16 @@ U 1 1 57DD94E9
 P 7485 4980
 F 0 "R35" V 7565 4980 40  0000 C CNN
 F 1 "10K" V 7492 4981 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 7415 4980 30  0001 C CNN
+F 2 "Zimprich:R_1206" V 7415 4980 30  0001 C CNN
 F 3 "" H 7485 4980 30  0001 C CNN
 F 4 "Value" H 7485 4980 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 7485 4980 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 7485 4980 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 7485 4980 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 7485 4980 60  0001 C CNN "Bauform"
+F 9 "Value" H 7485 4980 60  0001 C CNN "Funktion"
+F 10 "Value" H 7485 4980 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7485 4980 60  0001 C CNN "Hersteller Bestellnummer"
 	1    7485 4980
 	1    0    0    -1  
 $EndComp
@@ -93,13 +105,16 @@ U 1 1 57DD94EA
 P 6255 4795
 F 0 "R34" V 6335 4795 40  0000 C CNN
 F 1 "10K" V 6262 4796 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 6185 4795 30  0001 C CNN
+F 2 "Zimprich:R_1206" V 6185 4795 30  0001 C CNN
 F 3 "" H 6255 4795 30  0001 C CNN
 F 4 "Value" H 6255 4795 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 6255 4795 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 6255 4795 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 6255 4795 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 6255 4795 60  0001 C CNN "Bauform"
+F 9 "Value" H 6255 4795 60  0001 C CNN "Funktion"
+F 10 "Value" H 6255 4795 60  0001 C CNN "Hersteller"
+F 11 "Value" H 6255 4795 60  0001 C CNN "Hersteller Bestellnummer"
 	1    6255 4795
 	-1   0    0    1   
 $EndComp
@@ -120,10 +135,10 @@ F 8 "6,3x11mm, RM 2,5mm" H 6255 5440 60  0001 C CNN "Bauform"
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR0230
+L GND #PWR0198
 U 1 1 57DD94ED
 P 7030 6010
-F 0 "#PWR0230" H 7030 5760 60  0001 C CNN
+F 0 "#PWR0198" H 7030 5760 60  0001 C CNN
 F 1 "GND" H 7030 5860 60  0000 C CNN
 F 2 "" H 7030 6010 60  0000 C CNN
 F 3 "" H 7030 6010 60  0000 C CNN
@@ -211,13 +226,16 @@ U 1 1 57DD94F0
 P 8025 4195
 F 0 "R36" V 8105 4195 40  0000 C CNN
 F 1 "30K" V 8032 4196 40  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 7955 4195 30  0001 C CNN
+F 2 "Zimprich:R_1206" V 7955 4195 30  0001 C CNN
 F 3 "" H 8025 4195 30  0001 C CNN
 F 4 "Value" H 8025 4195 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 8025 4195 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 8025 4195 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 8025 4195 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 8025 4195 60  0001 C CNN "Bauform"
+F 9 "Value" H 8025 4195 60  0001 C CNN "Funktion"
+F 10 "Value" H 8025 4195 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8025 4195 60  0001 C CNN "Hersteller Bestellnummer"
 	1    8025 4195
 	0    -1   -1   0   
 $EndComp

@@ -13,9 +13,9 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 8 28
+Sheet 8 31
 Title "Ardumower shield SVN Version"
-Date "2016-10-28"
+Date "2017-02-17"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 ""
@@ -28,10 +28,10 @@ TX2
 Text GLabel 4340 4765 2    39   Input ~ 0
 RX2
 $Comp
-L GND #PWR028
+L GND #PWR029
 U 1 1 57DCCA39
 P 2120 1635
-F 0 "#PWR028" H 2120 1385 50  0001 C CNN
+F 0 "#PWR029" H 2120 1385 50  0001 C CNN
 F 1 "GND" V 2120 1435 50  0000 C CNN
 F 2 "" H 2120 1635 50  0000 C CNN
 F 3 "" H 2120 1635 50  0000 C CNN
@@ -39,10 +39,10 @@ F 3 "" H 2120 1635 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR029
+L GND #PWR030
 U 1 1 57DCD73B
 P 3005 1485
-F 0 "#PWR029" H 3005 1235 50  0001 C CNN
+F 0 "#PWR030" H 3005 1235 50  0001 C CNN
 F 1 "GND" V 3005 1285 50  0000 C CNN
 F 2 "" H 3005 1485 50  0000 C CNN
 F 3 "" H 3005 1485 50  0000 C CNN
@@ -50,10 +50,10 @@ F 3 "" H 3005 1485 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR030
+L GND #PWR031
 U 1 1 57DE0935
 P 2705 4775
-F 0 "#PWR030" H 2705 4525 50  0001 C CNN
+F 0 "#PWR031" H 2705 4525 50  0001 C CNN
 F 1 "GND" V 2705 4575 50  0000 C CNN
 F 2 "" H 2705 4775 50  0000 C CNN
 F 3 "" H 2705 4775 50  0000 C CNN
@@ -4120,10 +4120,10 @@ F 8 "Value" H 3230 6360 60  0001 C CNN "Bauform"
 	1    0    0    1   
 $EndComp
 $Comp
-L +5VP #PWR031
+L +5VP #PWR032
 U 1 1 57EA1F8B
 P 2980 5555
-F 0 "#PWR031" H 2980 5405 50  0001 C CNN
+F 0 "#PWR032" H 2980 5405 50  0001 C CNN
 F 1 "+5VP" H 2980 5715 50  0000 C CNN
 F 2 "" H 2980 5555 50  0000 C CNN
 F 3 "" H 2980 5555 50  0000 C CNN
@@ -4131,10 +4131,10 @@ F 3 "" H 2980 5555 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3VP #PWR032
+L +3.3VP #PWR033
 U 1 1 57EA255C
 P 3480 5530
-F 0 "#PWR032" H 3630 5480 50  0001 C CNN
+F 0 "#PWR033" H 3630 5480 50  0001 C CNN
 F 1 "+3.3VP" H 3350 5660 50  0000 L CNN
 F 2 "" H 3480 5530 50  0000 C CNN
 F 3 "" H 3480 5530 50  0000 C CNN
@@ -4142,10 +4142,10 @@ F 3 "" H 3480 5530 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3VP #PWR033
+L +3.3VP #PWR034
 U 1 1 57EA2CC1
 P 2830 4475
-F 0 "#PWR033" H 2980 4425 50  0001 C CNN
+F 0 "#PWR034" H 2980 4425 50  0001 C CNN
 F 1 "+3.3VP" V 2830 4550 50  0000 L CNN
 F 2 "" H 2830 4475 50  0000 C CNN
 F 3 "" H 2830 4475 50  0000 C CNN
@@ -5415,7 +5415,7 @@ U 1 1 580E6F0B
 P 3435 4260
 F 0 "R6" H 3523 4306 50  0000 L CNN
 F 1 "10K" H 3490 4215 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 3365 4260 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 3365 4260 50  0001 C CNN
 F 3 "Value" H 3435 4260 50  0001 C CNN
 F 4 "Value" H 3523 4381 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 3523 4275 60  0001 L CNN "Bestelllink"
@@ -5431,7 +5431,7 @@ U 1 1 580E6F0C
 P 4110 4265
 F 0 "R15" H 4198 4311 50  0000 L CNN
 F 1 "10K" H 4198 4220 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 4040 4265 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 4040 4265 50  0001 C CNN
 F 3 "Value" H 4110 4265 50  0001 C CNN
 F 4 "Value" H 4198 4386 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 4198 4280 60  0001 L CNN "Bestelllink"
@@ -6897,7 +6897,7 @@ U 1 1 580E885D
 P 3440 5045
 F 0 "R7" H 3528 5091 50  0000 L CNN
 F 1 "10K" H 3495 5000 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 3370 5045 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 3370 5045 50  0001 C CNN
 F 3 "Value" H 3440 5045 50  0001 C CNN
 F 4 "Value" H 3528 5166 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 3528 5060 60  0001 L CNN "Bestelllink"
@@ -6913,7 +6913,7 @@ U 1 1 580E8868
 P 4115 5045
 F 0 "R16" H 4203 5091 50  0000 L CNN
 F 1 "10K" H 4203 5000 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 4045 5045 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 4045 5045 50  0001 C CNN
 F 3 "Value" H 4115 5045 50  0001 C CNN
 F 4 "Value" H 4203 5166 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 4203 5060 60  0001 L CNN "Bestelllink"
@@ -6964,10 +6964,10 @@ F 8 "Value" H 3840 3205 60  0001 C CNN "Bauform"
 	1    0    0    1   
 $EndComp
 $Comp
-L +5VP #PWR034
+L +5VP #PWR035
 U 1 1 580EE168
 P 3590 2400
-F 0 "#PWR034" H 3590 2250 50  0001 C CNN
+F 0 "#PWR035" H 3590 2250 50  0001 C CNN
 F 1 "+5VP" H 3590 2560 50  0000 C CNN
 F 2 "" H 3590 2400 50  0000 C CNN
 F 3 "" H 3590 2400 50  0000 C CNN
@@ -6975,10 +6975,10 @@ F 3 "" H 3590 2400 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3VP #PWR035
+L +3.3VP #PWR036
 U 1 1 580EE16E
 P 4090 2375
-F 0 "#PWR035" H 4240 2325 50  0001 C CNN
+F 0 "#PWR036" H 4240 2325 50  0001 C CNN
 F 1 "+3.3VP" H 3960 2505 50  0000 L CNN
 F 2 "" H 4090 2375 50  0000 C CNN
 F 3 "" H 4090 2375 50  0000 C CNN
@@ -6991,7 +6991,7 @@ U 1 1 580EE192
 P 4045 1105
 F 0 "R8" H 4133 1151 50  0000 L CNN
 F 1 "10K" H 4100 1060 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 3975 1105 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 3975 1105 50  0001 C CNN
 F 3 "Value" H 4045 1105 50  0001 C CNN
 F 4 "Value" H 4133 1226 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 4133 1120 60  0001 L CNN "Bestelllink"
@@ -7007,7 +7007,7 @@ U 1 1 580EE19D
 P 4720 1110
 F 0 "R91" H 4808 1156 50  0000 L CNN
 F 1 "10K" H 4808 1065 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 4650 1110 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 4650 1110 50  0001 C CNN
 F 3 "Value" H 4720 1110 50  0001 C CNN
 F 4 "Value" H 4808 1231 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 4808 1125 60  0001 L CNN "Bestelllink"
@@ -7039,7 +7039,7 @@ U 1 1 580EE1BC
 P 4050 1890
 F 0 "R14" H 4138 1936 50  0000 L CNN
 F 1 "10K" H 4105 1845 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 3980 1890 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 3980 1890 50  0001 C CNN
 F 3 "Value" H 4050 1890 50  0001 C CNN
 F 4 "Value" H 4138 2011 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 4138 1905 60  0001 L CNN "Bestelllink"
@@ -7055,7 +7055,7 @@ U 1 1 580EE1C7
 P 4725 1890
 F 0 "R92" H 4813 1936 50  0000 L CNN
 F 1 "10K" H 4813 1845 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 4655 1890 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 4655 1890 50  0001 C CNN
 F 3 "Value" H 4725 1890 50  0001 C CNN
 F 4 "Value" H 4813 2011 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 4813 1905 60  0001 L CNN "Bestelllink"
@@ -7102,10 +7102,10 @@ F 8 "Value" H 2025 1963 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR036
+L GND #PWR037
 U 1 1 580F52D4
 P 2165 1835
-F 0 "#PWR036" H 2165 1585 50  0001 C CNN
+F 0 "#PWR037" H 2165 1585 50  0001 C CNN
 F 1 "GND" V 2165 1635 50  0000 C CNN
 F 2 "" H 2165 1835 50  0000 C CNN
 F 3 "" H 2165 1835 50  0000 C CNN
@@ -7135,10 +7135,10 @@ F 8 "Value" H 8710 3240 60  0001 C CNN "Bauform"
 	1    0    0    1   
 $EndComp
 $Comp
-L +5VP #PWR037
+L +5VP #PWR038
 U 1 1 581268F1
 P 8460 2435
-F 0 "#PWR037" H 8460 2285 50  0001 C CNN
+F 0 "#PWR038" H 8460 2285 50  0001 C CNN
 F 1 "+5VP" H 8460 2595 50  0000 C CNN
 F 2 "" H 8460 2435 50  0000 C CNN
 F 3 "" H 8460 2435 50  0000 C CNN
@@ -7146,10 +7146,10 @@ F 3 "" H 8460 2435 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +3.3VP #PWR038
+L +3.3VP #PWR039
 U 1 1 581268F7
 P 8960 2410
-F 0 "#PWR038" H 9110 2360 50  0001 C CNN
+F 0 "#PWR039" H 9110 2360 50  0001 C CNN
 F 1 "+3.3VP" H 8830 2540 50  0000 L CNN
 F 2 "" H 8960 2410 50  0000 C CNN
 F 3 "" H 8960 2410 50  0000 C CNN
@@ -7162,7 +7162,7 @@ U 1 1 58126906
 P 8915 1140
 F 0 "R93" H 9003 1186 50  0000 L CNN
 F 1 "10K" H 8970 1095 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 8845 1140 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 8845 1140 50  0001 C CNN
 F 3 "Value" H 8915 1140 50  0001 C CNN
 F 4 "Value" H 9003 1261 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 9003 1155 60  0001 L CNN "Bestelllink"
@@ -7178,7 +7178,7 @@ U 1 1 58126911
 P 9590 1145
 F 0 "R95" H 9678 1191 50  0000 L CNN
 F 1 "10K" H 9678 1100 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 9520 1145 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 9520 1145 50  0001 C CNN
 F 3 "Value" H 9590 1145 50  0001 C CNN
 F 4 "Value" H 9678 1266 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 9678 1160 60  0001 L CNN "Bestelllink"
@@ -7210,7 +7210,7 @@ U 1 1 58126930
 P 8920 1925
 F 0 "R94" H 9008 1971 50  0000 L CNN
 F 1 "10K" H 8975 1880 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 8850 1925 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 8850 1925 50  0001 C CNN
 F 3 "Value" H 8920 1925 50  0001 C CNN
 F 4 "Value" H 9008 2046 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 9008 1940 60  0001 L CNN "Bestelllink"
@@ -7226,7 +7226,7 @@ U 1 1 5812693B
 P 9595 1925
 F 0 "R96" H 9683 1971 50  0000 L CNN
 F 1 "10K" H 9683 1880 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805" V 9525 1925 50  0001 C CNN
+F 2 "Zimprich:R_0603" V 9525 1925 50  0001 C CNN
 F 3 "Value" H 9595 1925 50  0001 C CNN
 F 4 "Value" H 9683 2046 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 9683 1940 60  0001 L CNN "Bestelllink"
@@ -7455,10 +7455,10 @@ Wire Wire Line
 Wire Wire Line
 	8710 2160 9175 2160
 $Comp
-L GND #PWR039
+L GND #PWR040
 U 1 1 581285E2
 P 8375 1445
-F 0 "#PWR039" H 8375 1195 50  0001 C CNN
+F 0 "#PWR040" H 8375 1195 50  0001 C CNN
 F 1 "GND" V 8375 1245 50  0000 C CNN
 F 2 "" H 8375 1445 50  0000 C CNN
 F 3 "" H 8375 1445 50  0000 C CNN
@@ -7531,10 +7531,10 @@ F 8 "Value" H 2025 1563 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR040
+L GND #PWR041
 U 1 1 58508C33
 P 2165 1435
-F 0 "#PWR040" H 2165 1185 50  0001 C CNN
+F 0 "#PWR041" H 2165 1185 50  0001 C CNN
 F 1 "GND" V 2165 1235 50  0000 C CNN
 F 2 "" H 2165 1435 50  0000 C CNN
 F 3 "" H 2165 1435 50  0000 C CNN
@@ -7557,10 +7557,10 @@ F 3 "" H 2940 2380 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR041
+L GND #PWR042
 U 1 1 58744DBF
 P 2940 2585
-F 0 "#PWR041" H 2940 2335 50  0001 C CNN
+F 0 "#PWR042" H 2940 2335 50  0001 C CNN
 F 1 "GND" H 2945 2412 50  0000 C CNN
 F 2 "" H 2940 2585 50  0000 C CNN
 F 3 "" H 2940 2585 50  0000 C CNN
@@ -7584,10 +7584,10 @@ F 3 "" H 2695 5135 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR042
+L GND #PWR043
 U 1 1 58745514
 P 2695 5340
-F 0 "#PWR042" H 2695 5090 50  0001 C CNN
+F 0 "#PWR043" H 2695 5090 50  0001 C CNN
 F 1 "GND" H 2700 5167 50  0000 C CNN
 F 2 "" H 2695 5340 50  0000 C CNN
 F 3 "" H 2695 5340 50  0000 C CNN
@@ -7611,10 +7611,10 @@ F 3 "" H 9175 2395 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR043
+L GND #PWR044
 U 1 1 5874697E
 P 9175 2600
-F 0 "#PWR043" H 9175 2350 50  0001 C CNN
+F 0 "#PWR044" H 9175 2350 50  0001 C CNN
 F 1 "GND" H 9180 2427 50  0000 C CNN
 F 2 "" H 9175 2600 50  0000 C CNN
 F 3 "" H 9175 2600 50  0000 C CNN
@@ -7626,4 +7626,6 @@ Wire Wire Line
 Wire Wire Line
 	9175 2160 9175 2295
 Connection ~ 8920 2160
+Text Notes 895  -1925 0    39   ~ 0
+[12:48:29] Jürgen Lange: @Uwe das Gate vom FET muss immer zur niedrigsten Seite zeigen. Wie sieht es aus wenn wir statt einen DUE einen Mega im System hätten wird diese Bedingung dann noch erfüllt? Hier haben wir noch ein kleines Ei Henne Problem\n[12:49:04] Alexander Grau: hmmm... gute frage, nein\n[12:50:04 | Bearbeitet 12:50:32] Kurzschuss - Uwe: was hat den das BT Modul für ein Signal Pegel 3V auch wenn es mit 5V betrieben wird\n[12:50:07] Kurzschuss - Uwe: ?\n[12:53:31] Jürgen Lange: jo\n[12:54:22] Kurzschuss - Uwe: Dann haben wir das Problem auch bei den Wlan Modul oder?\n[12:54:37] Jürgen Lange: jo und beim gps\n[12:55:02] Kurzschuss - Uwe: wenn wir dort ein IC nehmen?\n[12:55:19] Jürgen Lange: so sehr gut\n[12:55:32] Kurzschuss - Uwe: Ich möchte es ja nicht aussprechen .. nach StefanM\n[12:55:54] Jürgen Lange: bitte die Versorgung und die pullups unabhängig voneinande machen\n[12:56:15 | Bearbeitet 12:56:35] Alexander Grau: kann man nicht die schaltung etwas anders machen dass nur masse geschaltet wird - ansonsten liegt pegel auf HIGH (3.3v / 5v)\n[12:56:53 | Bearbeitet 12:59:46] Jürgen Lange: nim den den du schon hast pca xxxx steht ja nirgends das man da nur i2c shiften kann\n[12:58:22] Jürgen Lange: kann man nicht die schaltung etwas anders machen dass nur masse geschaltet wird - ansonsten liegt pegel auf HIGH (3.3v / 5v)das ginge bei BT und WLAN allerdings hätte man einen Phasendreher bei GPS den wir später für den BUS nehmen geht das nicht\n[12:58:42 | Entfernt 12:58:46] Alexander Grau: Diese Nachricht wurde entfernt\n[12:58:45] Alexander Grau: ok\n[13:00:13 | Bearbeitet 13:00:29] Kurzschuss - Uwe: Die Pullup hatte ich auch über den Jumper gemacht weil ich nicht wusste ob wir evl mal ein anderes Wlan Modul nehmen. Das was wir jetzt haben läuft ja nur mit 3,3V\n[13:01:47 | Bearbeitet 13:01:58] Kurzschuss - Uwe: und dann auch die pullup auf 3,3V\n[13:02:10] Jürgen Lange: die pullups müssen von der Modulversorgung unabhängig sein. BT wird versorgt mit 3,3V oder 5v hat aber auf rx und tx immer 3,3 volt wobei hier der rx aus sicht des Moduls das kritische ist\n[13:03:08 | Bearbeitet 13:03:30] Jürgen Lange: das bedeutet du kannst die Versorgung der einen Seite vom PCA an die Pullups binden aber nie die Modulspannung\n[13:03:33 | Bearbeitet 13:04:06] Kurzschuss - Uwe: Verstehe ich das richtig das alle Module auf RX und TX eine 3,3V Pegel benutzen?\nauch beim Mega\n[13:03:41] Jürgen Lange: jo\n[13:04:42 | Bearbeitet 13:04:57] Kurzschuss - Uwe: brauchen wir denn dann da ein Levelshifter überhaupt?\n[13:04:55] Jürgen Lange: über den pca bleibst du ach im spiel wenn es mal nicht so ist zb. wenn am gps der Duino-Bus hängt der ist ja 5V\n[13:06:01] Jürgen Lange: brauchen wir denn dann da ein Levelshifter überhaupt?ja wenn der Mega an den start geht schon beim DUE nicht wobei das dann nur auf bt u. wlan zutrifft\n[13:07:28] Kurzschuss - Uwe: Ich mache erst mal die Widerstände fertig und speichere eine Sicherheitscopie bevor ich mit den Änderungen anfange.\n[13:08:09] Jürgen Lange: jo mach das ich schau in meiner pause mal weiter
 $EndSCHEMATC

@@ -13,9 +13,9 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 25 28
+Sheet 25 31
 Title "Ardumower shield SVN Version"
-Date "2016-10-28"
+Date "2017-02-17"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 ""
@@ -3335,13 +3335,16 @@ U 1 1 57E82249
 P 3310 1620
 F 0 "R72" H 3398 1666 50  0000 L CNN
 F 1 "8K2" H 3398 1575 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206" H 3398 1794 50  0001 L CNN
+F 2 "Zimprich:R_1206" H 3398 1794 50  0001 L CNN
 F 3 "" H 3310 1620 50  0001 C CNN
 F 4 "Value" H 3398 1695 60  0001 L CNN "Gehäuseart"
 F 5 "Value" H 3398 1589 60  0001 L CNN "Bestelllink"
 F 6 "Value" H 3398 1483 60  0001 L CNN "Technische Daten"
 F 7 "Value" H 3398 1377 60  0001 L CNN "Bestellnummer"
 F 8 "Value" H 3398 1271 60  0001 L CNN "Bauform"
+F 9 "Value" H 3310 1620 60  0001 C CNN "Funktion"
+F 10 "Value" H 3310 1620 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3310 1620 60  0001 C CNN "Hersteller Bestellnummer"
 	1    3310 1620
 	1    0    0    -1  
 $EndComp
@@ -3351,13 +3354,16 @@ U 1 1 57E82512
 P 3770 2980
 F 0 "R73" H 3858 3026 50  0000 L CNN
 F 1 "68R" H 3858 2935 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206" V 3700 2980 50  0001 C CNN
+F 2 "Zimprich:R_1206" V 3700 2980 50  0001 C CNN
 F 3 "" H 3770 2980 50  0001 C CNN
 F 4 "Value" H 3770 2980 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 3770 2980 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 3770 2980 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 3770 2980 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 3770 2980 60  0001 C CNN "Bauform"
+F 9 "Value" H 3770 2980 60  0001 C CNN "Funktion"
+F 10 "Value" H 3770 2980 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3770 2980 60  0001 C CNN "Hersteller Bestellnummer"
 	1    3770 2980
 	1    0    0    -1  
 $EndComp
@@ -3403,10 +3409,10 @@ Connection ~ 3770 1380
 Wire Wire Line
 	4290 1380 4455 1380
 $Comp
-L GND #PWR0288
+L GND #PWR0256
 U 1 1 57E82DC0
 P 3770 3345
-F 0 "#PWR0288" H 3770 3095 50  0001 C CNN
+F 0 "#PWR0256" H 3770 3095 50  0001 C CNN
 F 1 "GND" H 3775 3172 50  0000 C CNN
 F 2 "" H 3770 3345 50  0000 C CNN
 F 3 "" H 3770 3345 50  0000 C CNN

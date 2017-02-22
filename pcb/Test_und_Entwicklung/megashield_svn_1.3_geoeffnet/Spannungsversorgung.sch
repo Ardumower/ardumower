@@ -13,9 +13,9 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 19 28
+Sheet 25 31
 Title "Ardumower shield SVN Version"
-Date "2016-10-28"
+Date "2017-02-17"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 ""
@@ -70,10 +70,10 @@ F 3 "" H 10595 4400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0143
+L GND #PWR0147
 U 1 1 57DF6841
 P 9435 4810
-F 0 "#PWR0143" H 9435 4810 30  0001 C CNN
+F 0 "#PWR0147" H 9435 4810 30  0001 C CNN
 F 1 "GND" H 9435 4740 30  0001 C CNN
 F 2 "" H 9435 4810 60  0000 C CNN
 F 3 "" H 9435 4810 60  0000 C CNN
@@ -96,10 +96,10 @@ $EndComp
 Text HLabel 1895 1240 0    60   Input ~ 0
 Spannungsaufbereitung
 $Comp
-L +9V #PWR0144
+L +9V #PWR0148
 U 1 1 57DB0947
 P 10440 5975
-F 0 "#PWR0144" H 10440 5825 50  0001 C CNN
+F 0 "#PWR0148" H 10440 5825 50  0001 C CNN
 F 1 "+9V" V 10440 6170 50  0000 C CNN
 F 2 "" H 10440 5975 50  0000 C CNN
 F 3 "" H 10440 5975 50  0000 C CNN
@@ -107,10 +107,10 @@ F 3 "" H 10440 5975 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +9V #PWR0145
+L +9V #PWR0149
 U 1 1 57DB0B58
 P 3340 1445
-F 0 "#PWR0145" H 3340 1295 50  0001 C CNN
+F 0 "#PWR0149" H 3340 1295 50  0001 C CNN
 F 1 "+9V" H 3340 1615 50  0000 C CNN
 F 2 "" H 3340 1445 50  0000 C CNN
 F 3 "" H 3340 1445 50  0000 C CNN
@@ -118,10 +118,10 @@ F 3 "" H 3340 1445 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +5V #PWR0146
+L +5V #PWR0150
 U 1 1 57DC5072
 P 10045 4865
-F 0 "#PWR0146" H 10045 4715 50  0001 C CNN
+F 0 "#PWR0150" H 10045 4715 50  0001 C CNN
 F 1 "+5V" V 10045 5065 50  0000 C CNN
 F 2 "" H 10045 4865 50  0000 C CNN
 F 3 "" H 10045 4865 50  0000 C CNN
@@ -129,10 +129,10 @@ F 3 "" H 10045 4865 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR0147
+L +3.3V #PWR0151
 U 1 1 57DC50AC
 P 10490 4865
-F 0 "#PWR0147" H 10490 4715 50  0001 C CNN
+F 0 "#PWR0151" H 10490 4715 50  0001 C CNN
 F 1 "+3.3V" V 10490 5100 50  0000 C CNN
 F 2 "" H 10490 4865 50  0000 C CNN
 F 3 "" H 10490 4865 50  0000 C CNN
@@ -140,10 +140,10 @@ F 3 "" H 10490 4865 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0148
+L GND #PWR0152
 U 1 1 57DD7C0B
 P 3790 1570
-F 0 "#PWR0148" H 3790 1320 50  0001 C CNN
+F 0 "#PWR0152" H 3790 1320 50  0001 C CNN
 F 1 "GND" H 3795 1397 50  0000 C CNN
 F 2 "" H 3790 1570 50  0000 C CNN
 F 3 "" H 3790 1570 50  0000 C CNN
@@ -151,10 +151,10 @@ F 3 "" H 3790 1570 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0149
+L GND #PWR0153
 U 1 1 57DD8587
 P 2820 990
-F 0 "#PWR0149" H 2820 740 50  0001 C CNN
+F 0 "#PWR0153" H 2820 740 50  0001 C CNN
 F 1 "GND" H 2825 817 50  0000 C CNN
 F 2 "" H 2820 990 50  0000 C CNN
 F 3 "" H 2820 990 50  0000 C CNN
@@ -162,10 +162,10 @@ F 3 "" H 2820 990 50  0000 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR0150
+L GND #PWR0154
 U 1 1 57DD8631
 P 2120 990
-F 0 "#PWR0150" H 2120 740 50  0001 C CNN
+F 0 "#PWR0154" H 2120 740 50  0001 C CNN
 F 1 "GND" H 2125 817 50  0000 C CNN
 F 2 "" H 2120 990 50  0000 C CNN
 F 3 "" H 2120 990 50  0000 C CNN
@@ -233,10 +233,10 @@ F 3 "" H 5085 1440 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0151
+L GND #PWR0155
 U 1 1 57E52B70
 P 7185 2915
-F 0 "#PWR0151" H 7185 2665 50  0001 C CNN
+F 0 "#PWR0155" H 7185 2665 50  0001 C CNN
 F 1 "GND" H 7185 2765 50  0000 C CNN
 F 2 "" H 7185 2915 60  0000 C CNN
 F 3 "" H 7185 2915 60  0000 C CNN
@@ -266,10 +266,10 @@ F 3 "" H 7235 1440 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0152
+L GND #PWR0156
 U 1 1 57E52B73
 P 7235 1665
-F 0 "#PWR0152" H 7235 1415 50  0001 C CNN
+F 0 "#PWR0156" H 7235 1415 50  0001 C CNN
 F 1 "GND" H 7235 1515 50  0000 C CNN
 F 2 "" H 7235 1665 60  0000 C CNN
 F 3 "" H 7235 1665 60  0000 C CNN
@@ -315,10 +315,10 @@ F 3 "" H 7185 2565 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0153
+L GND #PWR0157
 U 1 1 57E52BA9
 P 5535 2915
-F 0 "#PWR0153" H 5535 2665 50  0001 C CNN
+F 0 "#PWR0157" H 5535 2665 50  0001 C CNN
 F 1 "GND" H 5535 2765 50  0000 C CNN
 F 2 "" H 5535 2915 60  0000 C CNN
 F 3 "" H 5535 2915 60  0000 C CNN
@@ -326,10 +326,10 @@ F 3 "" H 5535 2915 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0154
+L GND #PWR0158
 U 1 1 57E52BBF
 P 5485 1750
-F 0 "#PWR0154" H 5485 1500 50  0001 C CNN
+F 0 "#PWR0158" H 5485 1500 50  0001 C CNN
 F 1 "GND" H 5485 1600 50  0000 C CNN
 F 2 "" H 5485 1750 60  0000 C CNN
 F 3 "" H 5485 1750 60  0000 C CNN
@@ -386,10 +386,10 @@ Bezeichnung\nWert und\nFootprint richtig ?
 Text Notes 3880 2205 0    60   ~ 0
 Eingang vom 5V Ausgang ?
 $Comp
-L +5VP #PWR0155
+L +5VP #PWR0159
 U 1 1 57E9669C
 P 8060 1240
-F 0 "#PWR0155" H 8060 1090 50  0001 C CNN
+F 0 "#PWR0159" H 8060 1090 50  0001 C CNN
 F 1 "+5VP" V 8060 1460 50  0000 C CNN
 F 2 "" H 8060 1240 50  0000 C CNN
 F 3 "" H 8060 1240 50  0000 C CNN
@@ -397,10 +397,10 @@ F 3 "" H 8060 1240 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +3.3VP #PWR0156
+L +3.3VP #PWR0160
 U 1 1 57E966D4
 P 8065 2365
-F 0 "#PWR0156" H 8215 2315 50  0001 C CNN
+F 0 "#PWR0160" H 8215 2315 50  0001 C CNN
 F 1 "+3.3VP" V 8065 2615 50  0000 C CNN
 F 2 "" H 8065 2365 50  0000 C CNN
 F 3 "" H 8065 2365 50  0000 C CNN
@@ -623,34 +623,34 @@ Connection ~ 8025 2365
 $Comp
 L CONN_01X08 P45
 U 1 1 57EFCC69
-P 9650 5525
-F 0 "P45" H 9650 5975 50  0000 C CNN
-F 1 "GND" V 9750 5525 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9650 5525 60  0001 C CNN
-F 3 "" H 9650 5525 60  0000 C CNN
-	1    9650 5525
+P 10155 5485
+F 0 "P45" H 10155 5935 50  0000 C CNN
+F 1 "GND" V 10255 5485 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 10155 5485 60  0001 C CNN
+F 3 "" H 10155 5485 60  0000 C CNN
+	1    10155 5485
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0157
+L GND #PWR0161
 U 1 1 57EFCC6F
-P 9450 5925
-F 0 "#PWR0157" H 9450 5925 30  0001 C CNN
-F 1 "GND" H 9450 5855 30  0001 C CNN
-F 2 "" H 9450 5925 60  0000 C CNN
-F 3 "" H 9450 5925 60  0000 C CNN
-	1    9450 5925
+P 9955 5885
+F 0 "#PWR0161" H 9955 5885 30  0001 C CNN
+F 1 "GND" H 9955 5815 30  0001 C CNN
+F 2 "" H 9955 5885 60  0000 C CNN
+F 3 "" H 9955 5885 60  0000 C CNN
+	1    9955 5885
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9450 5175 9450 5925
-Connection ~ 9450 5275
-Connection ~ 9450 5375
-Connection ~ 9450 5475
-Connection ~ 9450 5575
-Connection ~ 9450 5675
-Connection ~ 9450 5775
-Connection ~ 9450 5875
+	9955 5135 9955 5885
+Connection ~ 9955 5235
+Connection ~ 9955 5335
+Connection ~ 9955 5435
+Connection ~ 9955 5535
+Connection ~ 9955 5635
+Connection ~ 9955 5735
+Connection ~ 9955 5835
 Text Notes -1265 -1415 0    79   ~ 0
 [00:10:17] Jürgen Lange: dahinter sitzen die regler 5v und an dem hängt der regler 3,3v so alles was du an externen versorgungen hast die immer gleich bleiben egal ob 5 oder 3,3v kommen da her. alles was mal mit 3,3 oder 5v laufen muss kommt vom ioref\n[00:11:04] Kurzschuss - Uwe: okay das ist eine klare ansage\n[00:11:24] Jürgen Lange: Beispiel: die pca selber kommen von ioref die module dahinter sind festgelegt wie uhr etc die kommen vom längsregler\n[00:12:15] Kurzschuss - Uwe: die Jumper für die widerstände dann beim I2C bus dann auch von den Längsreglern\n[00:13:01] Jürgen Lange: wichtig ist nur das alles von einem dcdc wandler versorgt wird arduino und die module damit diese immer gemeinsam abgeschaltet werden\n[00:14:09] Kurzschuss - Uwe: müsste so eigentlich stimmen\n[00:14:20] Jürgen Lange: die pullups da kommt es darauf an auf welecher seite die sitzen wenn die zwei die auf der mega/due seite sitzen kommen über ioref der rest von der versorgung des jeweiligen moduls
 Text Notes -1215 -680 0    79   ~ 0
@@ -658,4 +658,36 @@ im plan spannungsversorgung c2 bitte nach der ptc Sicherung f1. \nich würde an 
 Wire Wire Line
 	3790 1320 3790 1240
 Connection ~ 3790 1240
+Text GLabel 9270 5960 0    39   Input ~ 0
+9Vgeschaltet
+$Comp
+L CONN_01X08 P29
+U 1 1 58ACC03E
+P 9630 5485
+F 0 "P29" H 9630 5935 50  0000 C CNN
+F 1 "9V S." V 9730 5485 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9630 5485 60  0001 C CNN
+F 3 "" H 9630 5485 60  0000 C CNN
+F 4 "Value" H 9630 5485 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9630 5485 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9630 5485 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9630 5485 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9630 5485 60  0001 C CNN "Bauform"
+F 9 "Value" H 9630 5485 60  0001 C CNN "Funktion"
+F 10 "Value" H 9630 5485 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9630 5485 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9630 5485
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9430 5135 9430 5960
+Connection ~ 9430 5235
+Connection ~ 9430 5335
+Connection ~ 9430 5435
+Connection ~ 9430 5535
+Connection ~ 9430 5635
+Connection ~ 9430 5735
+Connection ~ 9430 5835
+Wire Wire Line
+	9430 5960 9270 5960
 $EndSCHEMATC
