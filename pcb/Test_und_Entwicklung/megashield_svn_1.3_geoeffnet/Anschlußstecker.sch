@@ -13,7 +13,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 31
+Sheet 10 33
 Title "Ardumower shield SVN Version"
 Date "2017-02-17"
 Rev "1.3"
@@ -35,66 +35,66 @@ Text GLabel 2520 2985 2    39   Input ~ 0
 pinSonarLeftTrigger
 Text GLabel 2530 3285 2    39   Output ~ 0
 pinSonarLeftEcho
-Text GLabel 1845 5010 2    39   Output ~ 0
+Text GLabel 2980 4485 2    39   Output ~ 0
 pinTilt
-Text Notes 1140 5870 0    60   ~ 0
+Text Notes 1330 5565 0    60   ~ 0
 Perimeter coil
-Text GLabel 8495 3070 2    39   Output ~ 0
+Text GLabel 8290 3705 2    39   Output ~ 0
 Resv.PinAD13
-Text GLabel 3425 5655 2    39   Output ~ 0
+Text GLabel 4515 4380 2    39   Output ~ 0
 pinBumperRight
-Text GLabel 3425 5755 2    39   Output ~ 0
+Text GLabel 4515 4480 2    39   Output ~ 0
 pinBumperLeft
-Text GLabel 7800 3885 2    39   Output ~ 0
+Text GLabel 5580 6100 2    39   Output ~ 0
 pinRemoteSteer
-Text GLabel 7800 4170 2    39   Output ~ 0
+Text GLabel 5580 6385 2    39   Output ~ 0
 pinRemoteSpeed
-Text GLabel 7795 4465 2    39   Output ~ 0
+Text GLabel 5575 6680 2    39   Output ~ 0
 pinRemoteSwitch
-Text GLabel 8570 5140 2    39   Output ~ 0
+Text GLabel 6080 2880 2    39   Output ~ 0
 Taster
-Text GLabel 1825 3975 2    39   Output ~ 0
+Text GLabel 2945 3975 2    39   Output ~ 0
 pinRain
 $Comp
 L CONN_01X02 P20
 U 1 1 57DC8B9F
-P 8220 5090
-F 0 "P20" H 8220 5240 50  0000 C CNN
-F 1 "Button" V 8320 5090 50  0000 C CNN
-F 2 "Zimprich:JST_EH_B02B-EH-A_02x2.50mm_Straight" H 8220 5090 60  0001 C CNN
-F 3 "" H 8220 5090 60  0001 C CNN
-F 4 "Value" H 8220 5090 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 8220 5090 60  0001 C CNN "Bestelllink"
-	1    8220 5090
+P 5730 2830
+F 0 "P20" H 5910 2815 50  0000 C CNN
+F 1 "Button" H 5910 2890 50  0000 C CNN
+F 2 "Zimprich:JST_EH_B02B-EH-A_02x2.50mm_Straight" H 5730 2830 60  0001 C CNN
+F 3 "" H 5730 2830 60  0001 C CNN
+F 4 "Value" H 5730 2830 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 5730 2830 60  0001 C CNN "Bestelllink"
+	1    5730 2830
 	-1   0    0    1   
 $EndComp
-Text GLabel 3605 4795 2    39   Output ~ 0
+Text GLabel 4665 3520 2    39   Output ~ 0
 DropRight
-Text GLabel 3605 3990 2    39   Output ~ 0
+Text GLabel 4665 3060 2    39   Output ~ 0
 DropLeft
-Text GLabel 1640 5565 2    39   Output ~ 0
+Text GLabel 1640 5910 2    39   Output ~ 0
 pinPerimeterRight
 Text GLabel 1860 6325 2    39   Output ~ 0
 pinPerimeterLeft
-Text GLabel 2375 4475 2    39   Output ~ 0
+Text GLabel 2375 5110 2    39   Output ~ 0
 DHT22
-Text GLabel 6545 5630 2    39   Output ~ 0
+Text GLabel 4465 5230 2    39   Output ~ 0
 pinUserSwitch1
-Text GLabel 6545 5530 2    39   Output ~ 0
+Text GLabel 4465 5130 2    39   Output ~ 0
 pinUserSwitch2
-Text GLabel 6545 5430 2    39   Output ~ 0
+Text GLabel 4465 5030 2    39   Output ~ 0
 pinUserSwitch3
-Text GLabel 10510 2140 2    39   Output ~ 0
+Text GLabel 10410 1180 2    39   Output ~ 0
 RX0
-Text GLabel 10510 2240 2    39   Output ~ 0
+Text GLabel 10410 1280 2    39   Output ~ 0
 TX0
-Text GLabel 10510 4565 2    39   Output ~ 0
+Text GLabel 8245 5025 2    39   Output ~ 0
 ReservePin8
-Text GLabel 10510 5240 2    39   Output ~ 0
+Text GLabel 8245 5700 2    39   Output ~ 0
 ReservePin9
-Text GLabel 10510 1335 2    39   Output ~ 0
+Text GLabel 8245 2530 2    39   Output ~ 0
 ReserveAD6
-Text GLabel 8340 2120 2    39   Output ~ 0
+Text GLabel 8240 2940 2    39   Output ~ 0
 ReserveAD7
 Text GLabel 7755 1765 2    39   Output ~ 0
 pinMotorMowRpm_neu
@@ -111,120 +111,6 @@ F 5 "Value" V 4538 2330 60  0001 C CNN "Bestelllink"
 	1    4415 2330
 	0    1    -1   0   
 $EndComp
-Wire Wire Line
-	2360 1430 2460 1430
-Wire Wire Line
-	2355 1140 2445 1140
-Wire Wire Line
-	2420 2415 2555 2415
-Wire Wire Line
-	2420 2110 2550 2110
-Wire Wire Line
-	2415 3285 2530 3285
-Wire Wire Line
-	2415 2985 2520 2985
-Wire Wire Line
-	1545 4910 1695 4910
-Wire Wire Line
-	1845 5010 1545 5010
-Wire Wire Line
-	2975 5655 3425 5655
-Wire Wire Line
-	3425 5755 2975 5755
-Wire Wire Line
-	8420 5140 8570 5140
-Wire Wire Line
-	2975 5455 3175 5455
-Wire Wire Line
-	1540 5465 1690 5465
-Wire Wire Line
-	1640 5565 1540 5565
-Wire Wire Line
-	1610 6225 1510 6225
-Wire Wire Line
-	1510 6125 1660 6125
-Wire Wire Line
-	1570 930  1775 930 
-Wire Wire Line
-	1635 1895 1835 1895
-Wire Wire Line
-	1615 2765 1825 2765
-Wire Wire Line
-	1860 6325 1510 6325
-Wire Wire Line
-	1535 4375 1685 4375
-Wire Wire Line
-	1535 4475 2375 4475
-Wire Wire Line
-	1525 3875 1675 3875
-Wire Wire Line
-	1825 3975 1525 3975
-Wire Wire Line
-	1525 3775 1675 3775
-Wire Wire Line
-	6145 5230 6495 5230
-Wire Wire Line
-	6145 5530 6545 5530
-Wire Wire Line
-	6145 5630 6545 5630
-Wire Wire Line
-	6145 5430 6545 5430
-Wire Wire Line
-	6145 5330 6495 5330
-Wire Wire Line
-	2975 5555 3075 5555
-Wire Wire Line
-	3075 5555 3075 5455
-Connection ~ 3075 5455
-Wire Wire Line
-	10360 2040 10260 2040
-Wire Wire Line
-	10510 2140 10260 2140
-Wire Wire Line
-	10510 2240 10260 2240
-Wire Wire Line
-	10360 4465 10260 4465
-Wire Wire Line
-	10510 4565 10260 4565
-Wire Wire Line
-	10360 5140 10260 5140
-Wire Wire Line
-	10260 5040 10360 5040
-Wire Wire Line
-	10510 5240 10260 5240
-Wire Wire Line
-	10360 1235 10260 1235
-Wire Wire Line
-	10510 1335 10260 1335
-Wire Wire Line
-	8190 2020 8090 2020
-Wire Wire Line
-	8340 2120 8090 2120
-Wire Wire Line
-	4170 2120 4070 2120
-Wire Wire Line
-	4070 2220 5025 2220
-Wire Wire Line
-	8420 5040 8520 5040
-Wire Wire Line
-	7735 4170 7800 4170
-Wire Wire Line
-	7740 4465 7795 4465
-Wire Wire Line
-	7720 3885 7800 3885
-Wire Wire Line
-	4195 2330 4195 2220
-Connection ~ 4195 2220
-Wire Wire Line
-	4070 2020 4170 2020
-Wire Wire Line
-	4585 1055 4515 1055
-Wire Wire Line
-	4065 730  4260 730 
-Wire Wire Line
-	4065 830  4260 830 
-Wire Wire Line
-	4065 930  5020 930 
 $Comp
 L R R28
 U 1 1 57DC8C57
@@ -240,17 +126,13 @@ F 5 "Value" V 4488 1055 60  0001 C CNN "Bestelllink"
 $EndComp
 Text GLabel 7850 1190 2    39   Output ~ 0
 pinOdometryRight
-Text GLabel 8495 2650 2    39   Output ~ 0
+Text GLabel 8290 4085 2    39   Output ~ 0
 Resv.PinAD15
-Wire Wire Line
-	4195 2330 4265 2330
-Wire Wire Line
-	4565 2330 4615 2330
 $Comp
-L GND #PWR065
+L GND #PWR077
 U 1 1 57DCE982
 P 1775 930
-F 0 "#PWR065" H 1775 680 50  0001 C CNN
+F 0 "#PWR077" H 1775 680 50  0001 C CNN
 F 1 "GND" V 1775 740 50  0000 C CNN
 F 2 "" H 1775 930 50  0000 C CNN
 F 3 "" H 1775 930 50  0000 C CNN
@@ -258,10 +140,10 @@ F 3 "" H 1775 930 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR066
+L GND #PWR078
 U 1 1 57DCF086
 P 1835 1895
-F 0 "#PWR066" H 1835 1645 50  0001 C CNN
+F 0 "#PWR078" H 1835 1645 50  0001 C CNN
 F 1 "GND" V 1835 1705 50  0000 C CNN
 F 2 "" H 1835 1895 50  0000 C CNN
 F 3 "" H 1835 1895 50  0000 C CNN
@@ -269,10 +151,10 @@ F 3 "" H 1835 1895 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR067
+L GND #PWR079
 U 1 1 57DCF4BF
 P 1825 2765
-F 0 "#PWR067" H 1825 2515 50  0001 C CNN
+F 0 "#PWR079" H 1825 2515 50  0001 C CNN
 F 1 "GND" V 1825 2575 50  0000 C CNN
 F 2 "" H 1825 2765 50  0000 C CNN
 F 3 "" H 1825 2765 50  0000 C CNN
@@ -280,10 +162,10 @@ F 3 "" H 1825 2765 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR068
+L GND #PWR080
 U 1 1 57DCF979
 P 1675 3875
-F 0 "#PWR068" H 1675 3625 50  0001 C CNN
+F 0 "#PWR080" H 1675 3625 50  0001 C CNN
 F 1 "GND" V 1675 3685 50  0000 C CNN
 F 2 "" H 1675 3875 50  0000 C CNN
 F 3 "" H 1675 3875 50  0000 C CNN
@@ -291,43 +173,43 @@ F 3 "" H 1675 3875 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR069
+L GND #PWR081
 U 1 1 57DCFDDD
-P 1685 4375
-F 0 "#PWR069" H 1685 4125 50  0001 C CNN
-F 1 "GND" V 1685 4185 50  0000 C CNN
-F 2 "" H 1685 4375 50  0000 C CNN
-F 3 "" H 1685 4375 50  0000 C CNN
-	1    1685 4375
+P 1685 5010
+F 0 "#PWR081" H 1685 4760 50  0001 C CNN
+F 1 "GND" V 1685 4820 50  0000 C CNN
+F 2 "" H 1685 5010 50  0000 C CNN
+F 3 "" H 1685 5010 50  0000 C CNN
+	1    1685 5010
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR070
+L GND #PWR082
 U 1 1 57DD036E
-P 1695 4910
-F 0 "#PWR070" H 1695 4660 50  0001 C CNN
-F 1 "GND" V 1695 4720 50  0000 C CNN
-F 2 "" H 1695 4910 50  0000 C CNN
-F 3 "" H 1695 4910 50  0000 C CNN
-	1    1695 4910
+P 1695 4385
+F 0 "#PWR082" H 1695 4135 50  0001 C CNN
+F 1 "GND" V 1695 4195 50  0000 C CNN
+F 2 "" H 1695 4385 50  0000 C CNN
+F 3 "" H 1695 4385 50  0000 C CNN
+	1    1695 4385
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR071
+L GND #PWR083
 U 1 1 57DD09D6
-P 8520 5040
-F 0 "#PWR071" H 8520 4790 50  0001 C CNN
-F 1 "GND" V 8520 4850 50  0000 C CNN
-F 2 "" H 8520 5040 50  0000 C CNN
-F 3 "" H 8520 5040 50  0000 C CNN
-	1    8520 5040
+P 6030 2780
+F 0 "#PWR083" H 6030 2530 50  0001 C CNN
+F 1 "GND" V 6030 2590 50  0000 C CNN
+F 2 "" H 6030 2780 50  0000 C CNN
+F 3 "" H 6030 2780 50  0000 C CNN
+	1    6030 2780
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR072
+L GND #PWR084
 U 1 1 57DD0D63
 P 1610 6225
-F 0 "#PWR072" H 1610 5975 50  0001 C CNN
+F 0 "#PWR084" H 1610 5975 50  0001 C CNN
 F 1 "GND" V 1610 6035 50  0000 C CNN
 F 2 "" H 1610 6225 50  0000 C CNN
 F 3 "" H 1610 6225 50  0000 C CNN
@@ -335,21 +217,21 @@ F 3 "" H 1610 6225 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR073
+L GND #PWR085
 U 1 1 57DD106F
-P 1690 5465
-F 0 "#PWR073" H 1690 5215 50  0001 C CNN
-F 1 "GND" V 1690 5275 50  0000 C CNN
-F 2 "" H 1690 5465 50  0000 C CNN
-F 3 "" H 1690 5465 50  0000 C CNN
-	1    1690 5465
+P 1690 5810
+F 0 "#PWR085" H 1690 5560 50  0001 C CNN
+F 1 "GND" V 1690 5620 50  0000 C CNN
+F 2 "" H 1690 5810 50  0000 C CNN
+F 3 "" H 1690 5810 50  0000 C CNN
+	1    1690 5810
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR074
+L GND #PWR086
 U 1 1 57DD1B41
 P 4260 830
-F 0 "#PWR074" H 4260 580 50  0001 C CNN
+F 0 "#PWR086" H 4260 580 50  0001 C CNN
 F 1 "GND" V 4260 640 50  0000 C CNN
 F 2 "" H 4260 830 50  0000 C CNN
 F 3 "" H 4260 830 50  0000 C CNN
@@ -357,54 +239,54 @@ F 3 "" H 4260 830 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR075
+L GND #PWR087
 U 1 1 57DD2CAE
-P 3175 5455
-F 0 "#PWR075" H 3175 5205 50  0001 C CNN
-F 1 "GND" V 3175 5265 50  0000 C CNN
-F 2 "" H 3175 5455 50  0000 C CNN
-F 3 "" H 3175 5455 50  0000 C CNN
-	1    3175 5455
+P 4265 4180
+F 0 "#PWR087" H 4265 3930 50  0001 C CNN
+F 1 "GND" V 4265 3990 50  0000 C CNN
+F 2 "" H 4265 4180 50  0000 C CNN
+F 3 "" H 4265 4180 50  0000 C CNN
+	1    4265 4180
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR076
+L GND #PWR088
 U 1 1 57DD2F39
-P 6330 3490
-F 0 "#PWR076" H 6330 3240 50  0001 C CNN
-F 1 "GND" V 6330 3300 50  0000 C CNN
-F 2 "" H 6330 3490 50  0000 C CNN
-F 3 "" H 6330 3490 50  0000 C CNN
-	1    6330 3490
+P 4110 5705
+F 0 "#PWR088" H 4110 5455 50  0001 C CNN
+F 1 "GND" V 4110 5515 50  0000 C CNN
+F 2 "" H 4110 5705 50  0000 C CNN
+F 3 "" H 4110 5705 50  0000 C CNN
+	1    4110 5705
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR077
+L GND #PWR089
 U 1 1 57DD339D
-P 6495 5330
-F 0 "#PWR077" H 6495 5080 50  0001 C CNN
-F 1 "GND" V 6495 5145 50  0000 C CNN
-F 2 "" H 6495 5330 50  0000 C CNN
-F 3 "" H 6495 5330 50  0000 C CNN
-	1    6495 5330
+P 4415 4930
+F 0 "#PWR089" H 4415 4680 50  0001 C CNN
+F 1 "GND" V 4415 4745 50  0000 C CNN
+F 2 "" H 4415 4930 50  0000 C CNN
+F 3 "" H 4415 4930 50  0000 C CNN
+	1    4415 4930
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR078
+L GND #PWR090
 U 1 1 57DD3F0F
-P 8190 2020
-F 0 "#PWR078" H 8190 1770 50  0001 C CNN
-F 1 "GND" V 8190 1830 50  0000 C CNN
-F 2 "" H 8190 2020 50  0000 C CNN
-F 3 "" H 8190 2020 50  0000 C CNN
-	1    8190 2020
+P 8090 2840
+F 0 "#PWR090" H 8090 2590 50  0001 C CNN
+F 1 "GND" V 8090 2650 50  0000 C CNN
+F 2 "" H 8090 2840 50  0000 C CNN
+F 3 "" H 8090 2840 50  0000 C CNN
+	1    8090 2840
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR079
+L GND #PWR091
 U 1 1 57DD441F
 P 4170 2120
-F 0 "#PWR079" H 4170 1870 50  0001 C CNN
+F 0 "#PWR091" H 4170 1870 50  0001 C CNN
 F 1 "GND" V 4170 1930 50  0000 C CNN
 F 2 "" H 4170 2120 50  0000 C CNN
 F 3 "" H 4170 2120 50  0000 C CNN
@@ -412,200 +294,162 @@ F 3 "" H 4170 2120 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR080
+L GND #PWR092
 U 1 1 57DD492F
-P 10360 1235
-F 0 "#PWR080" H 10360 985 50  0001 C CNN
-F 1 "GND" V 10360 1045 50  0000 C CNN
-F 2 "" H 10360 1235 50  0000 C CNN
-F 3 "" H 10360 1235 50  0000 C CNN
-	1    10360 1235
+P 8095 2430
+F 0 "#PWR092" H 8095 2180 50  0001 C CNN
+F 1 "GND" V 8095 2240 50  0000 C CNN
+F 2 "" H 8095 2430 50  0000 C CNN
+F 3 "" H 8095 2430 50  0000 C CNN
+	1    8095 2430
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR081
+L GND #PWR093
 U 1 1 57DD4F41
-P 10360 2040
-F 0 "#PWR081" H 10360 1790 50  0001 C CNN
-F 1 "GND" V 10360 1850 50  0000 C CNN
-F 2 "" H 10360 2040 50  0000 C CNN
-F 3 "" H 10360 2040 50  0000 C CNN
-	1    10360 2040
+P 10260 1080
+F 0 "#PWR093" H 10260 830 50  0001 C CNN
+F 1 "GND" V 10260 890 50  0000 C CNN
+F 2 "" H 10260 1080 50  0000 C CNN
+F 3 "" H 10260 1080 50  0000 C CNN
+	1    10260 1080
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR082
+L GND #PWR094
 U 1 1 57DD5FC9
-P 10360 4465
-F 0 "#PWR082" H 10360 4215 50  0001 C CNN
-F 1 "GND" V 10360 4275 50  0000 C CNN
-F 2 "" H 10360 4465 50  0000 C CNN
-F 3 "" H 10360 4465 50  0000 C CNN
-	1    10360 4465
+P 8095 4925
+F 0 "#PWR094" H 8095 4675 50  0001 C CNN
+F 1 "GND" V 8095 4735 50  0000 C CNN
+F 2 "" H 8095 4925 50  0000 C CNN
+F 3 "" H 8095 4925 50  0000 C CNN
+	1    8095 4925
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR083
+L GND #PWR095
 U 1 1 57DD6356
-P 10360 5140
-F 0 "#PWR083" H 10360 4890 50  0001 C CNN
-F 1 "GND" V 10360 4950 50  0000 C CNN
-F 2 "" H 10360 5140 50  0000 C CNN
-F 3 "" H 10360 5140 50  0000 C CNN
-	1    10360 5140
+P 8095 5600
+F 0 "#PWR095" H 8095 5350 50  0001 C CNN
+F 1 "GND" V 8095 5410 50  0000 C CNN
+F 2 "" H 8095 5600 50  0000 C CNN
+F 3 "" H 8095 5600 50  0000 C CNN
+	1    8095 5600
 	0    -1   -1   0   
 $EndComp
-Text GLabel 10510 5870 2    39   Output ~ 0
+Text GLabel 8240 3310 2    39   Output ~ 0
 ReserveAD10
-Wire Wire Line
-	10360 5770 10260 5770
-Wire Wire Line
-	10510 5870 10260 5870
 $Comp
-L GND #PWR084
+L GND #PWR096
 U 1 1 57DEA72F
-P 10360 5770
-F 0 "#PWR084" H 10360 5520 50  0001 C CNN
-F 1 "GND" V 10360 5580 50  0000 C CNN
-F 2 "" H 10360 5770 50  0000 C CNN
-F 3 "" H 10360 5770 50  0000 C CNN
-	1    10360 5770
+P 8090 3210
+F 0 "#PWR096" H 8090 2960 50  0001 C CNN
+F 1 "GND" V 8090 3020 50  0000 C CNN
+F 2 "" H 8090 3210 50  0000 C CNN
+F 3 "" H 8090 3210 50  0000 C CNN
+	1    8090 3210
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	6280 3390 6325 3390
-Wire Wire Line
-	6330 3490 6280 3490
-Wire Wire Line
-	1530 830  1775 830 
-Wire Wire Line
-	1575 1795 1835 1795
-Wire Wire Line
-	1565 2665 1825 2665
-Wire Wire Line
-	1535 4275 2385 4275
-Wire Wire Line
-	1545 4810 1695 4810
-Wire Wire Line
-	1540 5365 1690 5365
-Wire Wire Line
-	8090 1920 8190 1920
-Wire Wire Line
-	10260 1135 10360 1135
-Wire Wire Line
-	10260 1940 10360 1940
-Wire Wire Line
-	10260 4365 10360 4365
-Wire Wire Line
-	10260 5670 10360 5670
-Wire Wire Line
-	3005 4695 3555 4695
 $Comp
-L GND #PWR085
+L GND #PWR097
 U 1 1 57DFA6DB
-P 3555 4695
-F 0 "#PWR085" H 3555 4445 50  0001 C CNN
-F 1 "GND" V 3555 4505 50  0000 C CNN
-F 2 "" H 3555 4695 50  0000 C CNN
-F 3 "" H 3555 4695 50  0000 C CNN
-	1    3555 4695
+P 4615 3420
+F 0 "#PWR097" H 4615 3170 50  0001 C CNN
+F 1 "GND" V 4615 3230 50  0000 C CNN
+F 2 "" H 4615 3420 50  0000 C CNN
+F 3 "" H 4615 3420 50  0000 C CNN
+	1    4615 3420
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	3005 4595 3555 4595
-Wire Wire Line
-	3005 3890 3555 3890
 $Comp
-L GND #PWR086
+L GND #PWR098
 U 1 1 57DFB063
-P 3555 3890
-F 0 "#PWR086" H 3555 3640 50  0001 C CNN
-F 1 "GND" V 3555 3700 50  0000 C CNN
-F 2 "" H 3555 3890 50  0000 C CNN
-F 3 "" H 3555 3890 50  0000 C CNN
-	1    3555 3890
+P 4615 2960
+F 0 "#PWR098" H 4615 2710 50  0001 C CNN
+F 1 "GND" V 4615 2770 50  0000 C CNN
+F 2 "" H 4615 2960 50  0000 C CNN
+F 3 "" H 4615 2960 50  0000 C CNN
+	1    4615 2960
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	3005 3790 3555 3790
 $Comp
 L CONN_01X03 P26
 U 1 1 57DF0E70
-P 10060 5770
-F 0 "P26" H 10138 5811 50  0000 L CNN
-F 1 "Res.Pin10" H 10138 5720 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 10138 5674 50  0001 L CNN
-F 3 "" H 10060 5770 50  0001 C CNN
-F 4 "Value" H 10138 5780 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 10138 5674 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 10138 5568 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 10060 5770 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 10060 5770 60  0001 C CNN "Bauform"
-	1    10060 5770
+P 7790 3210
+F 0 "P26" H 7868 3251 50  0000 L CNN
+F 1 "Res.AD10" H 7868 3160 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7868 3114 50  0001 L CNN
+F 3 "" H 7790 3210 50  0001 C CNN
+F 4 "Value" H 7868 3220 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7868 3114 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7868 3008 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7790 3210 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7790 3210 60  0001 C CNN "Bauform"
+	1    7790 3210
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P25
 U 1 1 57DF18CC
-P 10060 5140
-F 0 "P25" H 10138 5181 50  0000 L CNN
-F 1 "Res.Pin9" H 10138 5090 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 10138 5044 50  0001 L CNN
-F 3 "" H 10060 5140 50  0001 C CNN
-F 4 "Value" H 10138 5150 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 10138 5044 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 10138 4938 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 10060 5140 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 10060 5140 60  0001 C CNN "Bauform"
-	1    10060 5140
+P 7795 5600
+F 0 "P25" H 7873 5641 50  0000 L CNN
+F 1 "Res.Pin9" H 7873 5550 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7873 5504 50  0001 L CNN
+F 3 "" H 7795 5600 50  0001 C CNN
+F 4 "Value" H 7873 5610 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7873 5504 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7873 5398 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7795 5600 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7795 5600 60  0001 C CNN "Bauform"
+	1    7795 5600
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P28
 U 1 1 57DF273F
-P 10060 4465
-F 0 "P28" H 10138 4506 50  0000 L CNN
-F 1 "Res.Pin8" H 10138 4415 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 10138 4369 50  0001 L CNN
-F 3 "" H 10060 4465 50  0001 C CNN
-F 4 "Value" H 10138 4475 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 10138 4369 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 10138 4263 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 10060 4465 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 10060 4465 60  0001 C CNN "Bauform"
-	1    10060 4465
+P 7795 4925
+F 0 "P28" H 7873 4966 50  0000 L CNN
+F 1 "Res.Pin8" H 7873 4875 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7873 4829 50  0001 L CNN
+F 3 "" H 7795 4925 50  0001 C CNN
+F 4 "Value" H 7873 4935 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7873 4829 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7873 4723 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7795 4925 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7795 4925 60  0001 C CNN "Bauform"
+	1    7795 4925
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P22
 U 1 1 57DF4802
-P 10060 1235
-F 0 "P22" H 10138 1276 50  0000 L CNN
-F 1 "Res.AD6" H 10138 1185 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 10138 1139 50  0001 L CNN
-F 3 "" H 10060 1235 50  0001 C CNN
-F 4 "Value" H 10138 1245 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 10138 1139 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 10138 1033 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 10060 1235 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 10060 1235 60  0001 C CNN "Bauform"
-	1    10060 1235
+P 7795 2430
+F 0 "P22" H 7873 2471 50  0000 L CNN
+F 1 "Res.AD6" H 7873 2380 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7873 2334 50  0001 L CNN
+F 3 "" H 7795 2430 50  0001 C CNN
+F 4 "Value" H 7873 2440 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7873 2334 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7873 2228 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7795 2430 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7795 2430 60  0001 C CNN "Bauform"
+	1    7795 2430
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P14
 U 1 1 57DF4E12
-P 7890 2020
-F 0 "P14" H 7968 2061 50  0000 L CNN
-F 1 "Res.AD7" H 7968 1970 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7968 1924 50  0001 L CNN
-F 3 "" H 7890 2020 50  0001 C CNN
-F 4 "Value" H 7968 2030 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 7968 1924 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 7968 1818 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 7890 2020 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7890 2020 60  0001 C CNN "Bauform"
-	1    7890 2020
+P 7790 2840
+F 0 "P14" H 7868 2881 50  0000 L CNN
+F 1 "Res.AD7" H 7868 2790 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7868 2744 50  0001 L CNN
+F 3 "" H 7790 2840 50  0001 C CNN
+F 4 "Value" H 7868 2850 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7868 2744 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7868 2638 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7790 2840 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7790 2840 60  0001 C CNN "Bauform"
+	1    7790 2840
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -627,129 +471,129 @@ $EndComp
 $Comp
 L CONN_01X03 P31
 U 1 1 57DF63C0
-P 2805 3890
-F 0 "P31" H 2883 3931 50  0000 L CNN
-F 1 "DropLeft" H 2883 3840 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 2883 3794 50  0001 L CNN
-F 3 "" H 2805 3890 50  0001 C CNN
-F 4 "Value" H 2883 3900 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 2883 3794 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 2883 3688 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 2805 3890 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2805 3890 60  0001 C CNN "Bauform"
-	1    2805 3890
+P 3865 2960
+F 0 "P31" H 3943 3001 50  0000 L CNN
+F 1 "DropLeft" H 3943 2910 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 3943 2864 50  0001 L CNN
+F 3 "" H 3865 2960 50  0001 C CNN
+F 4 "Value" H 3943 2970 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 3943 2864 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 3943 2758 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 3865 2960 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3865 2960 60  0001 C CNN "Bauform"
+	1    3865 2960
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P21
 U 1 1 57DF6DD3
-P 2805 4695
-F 0 "P21" H 2883 4736 50  0000 L CNN
-F 1 "DropRight" H 2883 4645 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 2883 4599 50  0001 L CNN
-F 3 "" H 2805 4695 50  0001 C CNN
-F 4 "Value" H 2883 4705 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 2883 4599 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 2883 4493 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 2805 4695 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2805 4695 60  0001 C CNN "Bauform"
-	1    2805 4695
+P 3865 3420
+F 0 "P21" H 3943 3461 50  0000 L CNN
+F 1 "DropRight" H 3943 3370 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 3943 3324 50  0001 L CNN
+F 3 "" H 3865 3420 50  0001 C CNN
+F 4 "Value" H 3943 3430 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 3943 3324 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 3943 3218 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 3865 3420 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3865 3420 60  0001 C CNN "Bauform"
+	1    3865 3420
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P12
 U 1 1 57DF79D9
-P 1310 6225
-F 0 "P12" H 1388 6266 50  0000 L CNN
-F 1 "P.Left" H 1388 6175 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1388 6129 50  0001 L CNN
-F 3 "" H 1310 6225 50  0001 C CNN
-F 4 "Value" H 1388 6235 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 1388 6129 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 1388 6023 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 1310 6225 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1310 6225 60  0001 C CNN "Bauform"
-	1    1310 6225
+P 1280 6225
+F 0 "P12" H 1358 6266 50  0000 L CNN
+F 1 "P.Left" H 1358 6175 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1358 6129 50  0001 L CNN
+F 3 "" H 1280 6225 50  0001 C CNN
+F 4 "Value" H 1358 6235 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 1358 6129 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 1358 6023 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 1280 6225 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1280 6225 60  0001 C CNN "Bauform"
+	1    1280 6225
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P30
 U 1 1 57DF8200
-P 1340 5465
-F 0 "P30" H 1418 5506 50  0000 L CNN
-F 1 "P.Right" H 1418 5415 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1418 5369 50  0001 L CNN
-F 3 "" H 1340 5465 50  0001 C CNN
-F 4 "Value" H 1418 5475 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 1418 5369 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 1418 5263 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 1340 5465 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1340 5465 60  0001 C CNN "Bauform"
-	1    1340 5465
+P 1280 5810
+F 0 "P30" H 1358 5851 50  0000 L CNN
+F 1 "P.Right" H 1358 5760 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1358 5714 50  0001 L CNN
+F 3 "" H 1280 5810 50  0001 C CNN
+F 4 "Value" H 1358 5820 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 1358 5714 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 1358 5608 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 1280 5810 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1280 5810 60  0001 C CNN "Bauform"
+	1    1280 5810
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P19
 U 1 1 57DF8ADC
-P 1345 4910
-F 0 "P19" H 1423 4951 50  0000 L CNN
-F 1 "Tilt" H 1423 4860 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1423 4814 50  0001 L CNN
-F 3 "" H 1345 4910 50  0001 C CNN
-F 4 "Value" H 1423 4920 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 1423 4814 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 1423 4708 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 1345 4910 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1345 4910 60  0001 C CNN "Bauform"
-	1    1345 4910
+P 1280 4385
+F 0 "P19" H 1358 4426 50  0000 L CNN
+F 1 "Tilt" H 1358 4335 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1358 4289 50  0001 L CNN
+F 3 "" H 1280 4385 50  0001 C CNN
+F 4 "Value" H 1358 4395 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 1358 4289 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 1358 4183 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 1280 4385 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1280 4385 60  0001 C CNN "Bauform"
+	1    1280 4385
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P35
 U 1 1 57DF9188
-P 1335 4375
-F 0 "P35" H 1413 4416 50  0000 L CNN
-F 1 "DHT22" H 1413 4325 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1413 4279 50  0001 L CNN
-F 3 "" H 1335 4375 50  0001 C CNN
-F 4 "Value" H 1413 4385 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 1413 4279 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 1413 4173 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 1335 4375 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1335 4375 60  0001 C CNN "Bauform"
-	1    1335 4375
+P 1280 5010
+F 0 "P35" H 1358 5051 50  0000 L CNN
+F 1 "DHT22" H 1358 4960 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1358 4914 50  0001 L CNN
+F 3 "" H 1280 5010 50  0001 C CNN
+F 4 "Value" H 1358 5020 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 1358 4914 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 1358 4808 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 1280 5010 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1280 5010 60  0001 C CNN "Bauform"
+	1    1280 5010
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X03 P41
 U 1 1 57DF9D1A
-P 1325 3875
-F 0 "P41" H 1403 3916 50  0000 L CNN
-F 1 "Rain" H 1403 3825 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1403 3779 50  0001 L CNN
-F 3 "" H 1325 3875 50  0001 C CNN
-F 4 "Value" H 1403 3885 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 1403 3779 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 1403 3673 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 1325 3875 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1325 3875 60  0001 C CNN "Bauform"
-	1    1325 3875
+P 1280 3875
+F 0 "P41" H 1358 3916 50  0000 L CNN
+F 1 "Rain" H 1358 3825 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 1358 3779 50  0001 L CNN
+F 3 "" H 1280 3875 50  0001 C CNN
+F 4 "Value" H 1358 3885 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 1358 3779 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 1358 3673 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 1280 3875 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1280 3875 60  0001 C CNN "Bauform"
+	1    1280 3875
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X04 P3
 U 1 1 57DFA388
-P 1295 2935
-F 0 "P3" H 1373 2976 50  0000 L CNN
-F 1 "Sonar L" H 1373 2885 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight" H 1295 2935 50  0001 C CNN
-F 3 "" H 1295 2935 50  0000 C CNN
-F 4 "Value" H 1373 2945 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 1373 2892 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 1373 2839 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 1295 2935 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1295 2935 60  0001 C CNN "Bauform"
-	1    1295 2935
+P 1280 2935
+F 0 "P3" H 1358 2976 50  0000 L CNN
+F 1 "Sonar L" H 1358 2885 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight" H 1280 2935 50  0001 C CNN
+F 3 "" H 1280 2935 50  0000 C CNN
+F 4 "Value" H 1358 2945 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 1358 2892 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 1358 2839 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 1280 2935 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1280 2935 60  0001 C CNN "Bauform"
+	1    1280 2935
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -787,49 +631,49 @@ $EndComp
 $Comp
 L CONN_01X04 P11
 U 1 1 57DFE6EE
-P 2775 5605
-F 0 "P11" H 2853 5646 50  0000 L CNN
-F 1 "Bumper" H 2853 5555 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight" H 2853 5509 50  0001 L CNN
-F 3 "" H 2775 5605 50  0000 C CNN
-F 4 "Value" H 2853 5615 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 2853 5562 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 2853 5509 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 2775 5605 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2775 5605 60  0001 C CNN "Bauform"
-	1    2775 5605
+P 3865 4330
+F 0 "P11" H 3943 4371 50  0000 L CNN
+F 1 "Bumper" H 3943 4280 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight" H 3943 4234 50  0001 L CNN
+F 3 "" H 3865 4330 50  0000 C CNN
+F 4 "Value" H 3943 4340 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 3943 4287 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 3943 4234 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 3865 4330 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3865 4330 60  0001 C CNN "Bauform"
+	1    3865 4330
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X05 P40
 U 1 1 57DFF4AC
-P 5945 5430
-F 0 "P40" H 6023 5471 50  0000 L CNN
-F 1 "UserSwitsch" H 6023 5380 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B05B-EH-A_05x2.50mm_Straight" H 6023 5334 50  0001 L CNN
-F 3 "" H 5945 5430 50  0000 C CNN
-F 4 "Value" H 6023 5440 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 6023 5387 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 6023 5334 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 5945 5430 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 5945 5430 60  0001 C CNN "Bauform"
-	1    5945 5430
+P 3865 5030
+F 0 "P40" H 3943 5071 50  0000 L CNN
+F 1 "UserSwitsch" H 3943 4980 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B05B-EH-A_05x2.50mm_Straight" H 3943 4934 50  0001 L CNN
+F 3 "" H 3865 5030 50  0000 C CNN
+F 4 "Value" H 3943 5040 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 3943 4987 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 3943 4934 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 3865 5030 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3865 5030 60  0001 C CNN "Bauform"
+	1    3865 5030
 	-1   0    0    -1  
 $EndComp
 $Comp
 L CONN_01X06 P13
 U 1 1 57E00067
-P 6080 3640
-F 0 "P13" H 6158 3681 50  0000 L CNN
-F 1 "RC Remote" H 6158 3590 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B06B-EH-A_06x2.50mm_Straight" H 6080 3640 50  0001 C CNN
-F 3 "" H 6080 3640 50  0001 C CNN
-F 4 "Value" H 6158 3650 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 6158 3544 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 6158 3438 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 6080 3640 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 6080 3640 60  0001 C CNN "Bauform"
-	1    6080 3640
+P 3860 5855
+F 0 "P13" H 3938 5896 50  0000 L CNN
+F 1 "RC Remote" H 3938 5805 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B06B-EH-A_06x2.50mm_Straight" H 3860 5855 50  0001 C CNN
+F 3 "" H 3860 5855 50  0001 C CNN
+F 4 "Value" H 3938 5865 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 3938 5759 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 3938 5653 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 3860 5855 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3860 5855 60  0001 C CNN "Bauform"
+	1    3860 5855
 	-1   0    0    -1  
 $EndComp
 $Sheet
@@ -857,69 +701,37 @@ F2 "5V_IN" I L 1680 3285 39
 F3 "3,3_/_5V_OUT" O R 2415 3285 39 
 $EndSheet
 $Sheet
-S 6985 3505 735  155 
+S 4765 5720 735  155 
 U 57E712F8
 F0 "LShifter4" 39
 F1 "LShifter4.sch" 39
-F2 "5V_IN" I L 6985 3590 39 
-F3 "3,3_/_5V_OUT" O R 7720 3590 39 
+F2 "5V_IN" I L 4765 5805 39 
+F3 "3,3_/_5V_OUT" O R 5500 5805 39 
 $EndSheet
 $Sheet
-S 6985 3800 735  155 
+S 4765 6015 735  155 
 U 57E71CBC
 F0 "LShifter5" 39
 F1 "LShifter5.sch" 39
-F2 "5V_IN" I L 6985 3885 39 
-F3 "3,3_/_5V_OUT" O R 7720 3885 39 
+F2 "5V_IN" I L 4765 6100 39 
+F3 "3,3_/_5V_OUT" O R 5500 6100 39 
 $EndSheet
 $Sheet
-S 7000 4085 735  155 
+S 4780 6300 735  155 
 U 57E71CC0
 F0 "LShifter6" 39
 F1 "LShifter6.sch" 39
-F2 "5V_IN" I L 7000 4170 39 
-F3 "3,3_/_5V_OUT" O R 7735 4170 39 
+F2 "5V_IN" I L 4780 6385 39 
+F3 "3,3_/_5V_OUT" O R 5515 6385 39 
 $EndSheet
 $Sheet
-S 7005 4380 735  155 
+S 4785 6595 735  155 
 U 57E71CC4
 F0 "LShifter7" 39
 F1 "LShifter7.sch" 39
-F2 "5V_IN" I L 7005 4465 39 
-F3 "3,3_/_5V_OUT" O R 7740 4465 39 
+F2 "5V_IN" I L 4785 6680 39 
+F3 "3,3_/_5V_OUT" O R 5520 6680 39 
 $EndSheet
-Wire Wire Line
-	1685 2415 1590 2415
-Wire Wire Line
-	1590 2415 1590 2210
-Wire Wire Line
-	1590 2210 1485 2210
-Wire Wire Line
-	1680 3285 1605 3285
-Wire Wire Line
-	1605 3285 1605 3085
-Wire Wire Line
-	1605 3085 1495 3085
-Wire Wire Line
-	6280 3590 6985 3590
-Wire Wire Line
-	6985 3885 6860 3885
-Wire Wire Line
-	6860 3885 6860 3690
-Wire Wire Line
-	6860 3690 6280 3690
-Wire Wire Line
-	7000 4170 6775 4170
-Wire Wire Line
-	6775 4170 6775 3790
-Wire Wire Line
-	6775 3790 6280 3790
-Wire Wire Line
-	7005 4465 6690 4465
-Wire Wire Line
-	6690 4465 6690 3890
-Wire Wire Line
-	6690 3890 6280 3890
 $Bitmap
 Pos -1790 3865
 Scale 1,000000
@@ -10988,104 +10800,70 @@ F5 C6 F7 57 F5 B7 70 FC FC 00 0F E5 00 59 77 3D 14 A9 49 99 6D 1F B6 2D F9 7F C1
 AB 2E 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
-Text GLabel 1695 4810 2    39   Input ~ 0
+Text GLabel 2385 4910 2    39   Input ~ 0
 IOREF
-Text GLabel 2385 4275 2    39   Input ~ 0
+Text GLabel 10260 980  2    39   Input ~ 0
 IOREF
-Text GLabel 1675 3775 2    39   Input ~ 0
-IOREF
-Text GLabel 10360 1940 2    39   Input ~ 0
-IOREF
-Text GLabel 3625 7015 2    39   Input ~ 0
+Text GLabel 2700 7430 2    39   Input ~ 0
 pinLawnBackSend
-Text GLabel 3020 7115 2    39   Output ~ 0
+Text GLabel 2140 7530 2    39   Output ~ 0
 pinLawnBackRecv
-Text GLabel 3625 6815 2    39   Input ~ 0
+Text GLabel 2695 7230 2    39   Input ~ 0
 pinLawnFrontSend
-Text GLabel 3025 6915 2    39   Output ~ 0
+Text GLabel 2140 7330 2    39   Output ~ 0
 pinLawnFrontRecv
-Wire Wire Line
-	2925 6815 3625 6815
-Wire Wire Line
-	2925 7015 3625 7015
-Wire Wire Line
-	2925 6915 3025 6915
 $Comp
 L CONN_01X06 P6
 U 1 1 57EC2951
-P 2725 6865
-F 0 "P6" H 2803 6906 50  0000 L CNN
-F 1 "Lawn sens" H 2803 6815 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B06B-EH-A_06x2.50mm_Straight" H 2725 6865 50  0001 C CNN
-F 3 "" H 2725 6865 50  0000 C CNN
-	1    2725 6865
+P 975 7280
+F 0 "P6" H 1053 7321 50  0000 L CNN
+F 1 "Lawn sens" H 1053 7230 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B06B-EH-A_06x2.50mm_Straight" H 975 7280 50  0001 C CNN
+F 3 "" H 975 7280 50  0000 C CNN
+	1    975  7280
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	2925 6615 3075 6615
-Text GLabel 3075 6615 2    39   Input ~ 0
-IOREF
-Text GLabel 8560 5520 2    39   Output ~ 0
+Text GLabel 6080 2455 2    39   Output ~ 0
 Reset
 $Comp
 L CONN_01X02 P23
 U 1 1 57ED41B1
-P 8210 5470
-F 0 "P23" H 8210 5620 50  0000 C CNN
-F 1 "Reset" V 8310 5470 50  0000 C CNN
-F 2 "Zimprich:JST_EH_B02B-EH-A_02x2.50mm_Straight" H 8210 5470 60  0001 C CNN
-F 3 "" H 8210 5470 60  0001 C CNN
-F 4 "Value" H 8210 5470 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 8210 5470 60  0001 C CNN "Bestelllink"
-	1    8210 5470
+P 5730 2405
+F 0 "P23" H 5900 2395 50  0000 C CNN
+F 1 "Reset" H 5895 2480 50  0000 C CNN
+F 2 "Zimprich:JST_EH_B02B-EH-A_02x2.50mm_Straight" H 5730 2405 60  0001 C CNN
+F 3 "" H 5730 2405 60  0001 C CNN
+F 4 "Value" H 5730 2405 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 5730 2405 60  0001 C CNN "Bestelllink"
+	1    5730 2405
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	8410 5520 8560 5520
-Wire Wire Line
-	8410 5420 8510 5420
 $Comp
-L GND #PWR087
+L GND #PWR099
 U 1 1 57ED41B9
-P 8510 5420
-F 0 "#PWR087" H 8510 5170 50  0001 C CNN
-F 1 "GND" V 8510 5230 50  0000 C CNN
-F 2 "" H 8510 5420 50  0000 C CNN
-F 3 "" H 8510 5420 50  0000 C CNN
-	1    8510 5420
+P 6030 2355
+F 0 "#PWR099" H 6030 2105 50  0001 C CNN
+F 1 "GND" V 6030 2165 50  0000 C CNN
+F 2 "" H 6030 2355 50  0000 C CNN
+F 3 "" H 6030 2355 50  0000 C CNN
+	1    6030 2355
 	0    -1   -1   0   
 $EndComp
-Text Notes 4425 7295 0    60   ~ 0
+Text Notes 3345 7705 0    60   ~ 0
 Bei der Verwendunung\nals Rasensensor muss \nan den Pins 3 und 5 \njeweils ein 2,2MOhm \nWiderstand geschaltet werden\nund die Schutzschaltung\nmit den Dioden  muss \nentfernt werden
-Wire Notes Line
-	3790 6645 4220 6645
-Wire Notes Line
-	4220 6645 4220 7100
-Wire Notes Line
-	4220 7100 3790 7100
-Wire Notes Line
-	3790 7100 3790 6650
-Wire Notes Line
-	4220 6875 4395 6875
 $Comp
-L GND #PWR088
+L GND #PWR0100
 U 1 1 57EC39F3
-P 3075 6715
-F 0 "#PWR088" H 3075 6465 50  0001 C CNN
-F 1 "GND" V 3075 6525 50  0000 C CNN
-F 2 "" H 3075 6715 50  0000 C CNN
-F 3 "" H 3075 6715 50  0000 C CNN
-	1    3075 6715
+P 1235 7130
+F 0 "#PWR0100" H 1235 6880 50  0001 C CNN
+F 1 "GND" V 1235 6940 50  0000 C CNN
+F 2 "" H 1235 7130 50  0000 C CNN
+F 3 "" H 1235 7130 50  0000 C CNN
+	1    1235 7130
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	2925 6715 3075 6715
-Wire Wire Line
-	2925 7115 3020 7115
-Text GLabel 7815 3590 2    39   Output ~ 0
+Text GLabel 5595 5805 2    39   Output ~ 0
 pinRemoteMow
-Wire Wire Line
-	7720 3590 7815 3590
 Text Notes -1150 2310 0    60   ~ 0
 Spannungsteiler\n30V auf 10V\nR1 27000 R2 15000\n\n12V auf 4,28V
 $Sheet
@@ -11101,10 +10879,10 @@ F6 "Eingang3" I L 5270 1705 79
 F7 "Ausgang3" O R 6720 1765 79 
 $EndSheet
 $Comp
-L +5VP #PWR089
+L +5VP #PWR0101
 U 1 1 57FA4E2D
 P 1660 6125
-F 0 "#PWR089" H 1660 5975 50  0001 C CNN
+F 0 "#PWR0101" H 1660 5975 50  0001 C CNN
 F 1 "+5VP" V 1660 6340 50  0000 C CNN
 F 2 "" H 1660 6125 50  0000 C CNN
 F 3 "" H 1660 6125 50  0000 C CNN
@@ -11112,21 +10890,21 @@ F 3 "" H 1660 6125 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR090
+L +5VP #PWR0102
 U 1 1 57FA6207
-P 1690 5365
-F 0 "#PWR090" H 1690 5215 50  0001 C CNN
-F 1 "+5VP" V 1690 5580 50  0000 C CNN
-F 2 "" H 1690 5365 50  0000 C CNN
-F 3 "" H 1690 5365 50  0000 C CNN
-	1    1690 5365
+P 1690 5710
+F 0 "#PWR0102" H 1690 5560 50  0001 C CNN
+F 1 "+5VP" V 1690 5925 50  0000 C CNN
+F 2 "" H 1690 5710 50  0000 C CNN
+F 3 "" H 1690 5710 50  0000 C CNN
+	1    1690 5710
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR091
+L +5VP #PWR0103
 U 1 1 57FA70B3
 P 1825 2665
-F 0 "#PWR091" H 1825 2515 50  0001 C CNN
+F 0 "#PWR0103" H 1825 2515 50  0001 C CNN
 F 1 "+5VP" V 1825 2880 50  0000 C CNN
 F 2 "" H 1825 2665 50  0000 C CNN
 F 3 "" H 1825 2665 50  0000 C CNN
@@ -11134,10 +10912,10 @@ F 3 "" H 1825 2665 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR092
+L +5VP #PWR0104
 U 1 1 57FA764A
 P 1835 1795
-F 0 "#PWR092" H 1835 1645 50  0001 C CNN
+F 0 "#PWR0104" H 1835 1645 50  0001 C CNN
 F 1 "+5VP" V 1835 2010 50  0000 C CNN
 F 2 "" H 1835 1795 50  0000 C CNN
 F 3 "" H 1835 1795 50  0000 C CNN
@@ -11145,10 +10923,10 @@ F 3 "" H 1835 1795 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR093
+L +5VP #PWR0105
 U 1 1 57FA78A8
 P 1775 830
-F 0 "#PWR093" H 1775 680 50  0001 C CNN
+F 0 "#PWR0105" H 1775 680 50  0001 C CNN
 F 1 "+5VP" V 1775 1045 50  0000 C CNN
 F 2 "" H 1775 830 50  0000 C CNN
 F 3 "" H 1775 830 50  0000 C CNN
@@ -11156,25 +10934,25 @@ F 3 "" H 1775 830 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR094
+L +5VP #PWR0106
 U 1 1 57FA9F8F
-P 3555 3790
-F 0 "#PWR094" H 3555 3640 50  0001 C CNN
-F 1 "+5VP" V 3555 4005 50  0000 C CNN
-F 2 "" H 3555 3790 50  0000 C CNN
-F 3 "" H 3555 3790 50  0000 C CNN
-	1    3555 3790
+P 4615 2860
+F 0 "#PWR0106" H 4615 2710 50  0001 C CNN
+F 1 "+5VP" V 4615 3075 50  0000 C CNN
+F 2 "" H 4615 2860 50  0000 C CNN
+F 3 "" H 4615 2860 50  0000 C CNN
+	1    4615 2860
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR095
+L +5VP #PWR0107
 U 1 1 57FAAA42
-P 3555 4595
-F 0 "#PWR095" H 3555 4445 50  0001 C CNN
-F 1 "+5VP" V 3555 4810 50  0000 C CNN
-F 2 "" H 3555 4595 50  0000 C CNN
-F 3 "" H 3555 4595 50  0000 C CNN
-	1    3555 4595
+P 4615 3320
+F 0 "#PWR0107" H 4615 3170 50  0001 C CNN
+F 1 "+5VP" V 4615 3535 50  0000 C CNN
+F 2 "" H 4615 3320 50  0000 C CNN
+F 3 "" H 4615 3320 50  0000 C CNN
+	1    4615 3320
 	0    1    -1   0   
 $EndComp
 $Comp
@@ -11193,19 +10971,6 @@ F 8 "Value" H 3865 830 60  0001 C CNN "Bauform"
 	1    3865 830 
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	4215 1055 4155 1055
-Wire Wire Line
-	4155 1055 4155 930 
-Connection ~ 4155 930 
-Wire Wire Line
-	4585 1625 4515 1625
-Wire Wire Line
-	4065 1300 4260 1300
-Wire Wire Line
-	4065 1400 4260 1400
-Wire Wire Line
-	4065 1500 5270 1500
 $Comp
 L R R30
 U 1 1 57FAF9C4
@@ -11222,10 +10987,10 @@ $EndComp
 Text GLabel 7850 1485 2    39   Output ~ 0
 pinOdometryLeft
 $Comp
-L GND #PWR096
+L GND #PWR0108
 U 1 1 57FAF9CB
 P 4260 1400
-F 0 "#PWR096" H 4260 1150 50  0001 C CNN
+F 0 "#PWR0108" H 4260 1150 50  0001 C CNN
 F 1 "GND" V 4260 1210 50  0000 C CNN
 F 2 "" H 4260 1400 50  0000 C CNN
 F 3 "" H 4260 1400 50  0000 C CNN
@@ -11248,91 +11013,60 @@ F 8 "Value" H 3865 1400 60  0001 C CNN "Bauform"
 	1    3865 1400
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	4215 1625 4155 1625
-Wire Wire Line
-	4155 1625 4155 1500
-Connection ~ 4155 1500
-Wire Wire Line
-	8195 2550 8345 2550
-Wire Wire Line
-	8495 2650 8195 2650
 $Comp
-L GND #PWR097
+L GND #PWR0109
 U 1 1 57FB0582
-P 8345 2550
-F 0 "#PWR097" H 8345 2300 50  0001 C CNN
-F 1 "GND" V 8345 2360 50  0000 C CNN
-F 2 "" H 8345 2550 50  0000 C CNN
-F 3 "" H 8345 2550 50  0000 C CNN
-	1    8345 2550
+P 8140 3985
+F 0 "#PWR0109" H 8140 3735 50  0001 C CNN
+F 1 "GND" V 8140 3795 50  0000 C CNN
+F 2 "" H 8140 3985 50  0000 C CNN
+F 3 "" H 8140 3985 50  0000 C CNN
+	1    8140 3985
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	8195 2450 8345 2450
 $Comp
 L CONN_01X03 P46
 U 1 1 57FB058E
-P 7995 2550
-F 0 "P46" H 8073 2591 50  0000 L CNN
-F 1 "Resv.PinAD15" H 8073 2500 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 8073 2454 50  0001 L CNN
-F 3 "" H 7995 2550 50  0001 C CNN
-F 4 "Value" H 8073 2560 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8073 2454 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8073 2348 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 7995 2550 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7995 2550 60  0001 C CNN "Bauform"
-	1    7995 2550
+P 7790 3985
+F 0 "P46" H 7868 4026 50  0000 L CNN
+F 1 "Res.AD15" H 7868 3935 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7868 3889 50  0001 L CNN
+F 3 "" H 7790 3985 50  0001 C CNN
+F 4 "Value" H 7868 3995 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7868 3889 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7868 3783 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7790 3985 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7790 3985 60  0001 C CNN "Bauform"
+	1    7790 3985
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	8195 2970 8345 2970
-Wire Wire Line
-	8495 3070 8195 3070
 $Comp
-L GND #PWR098
+L GND #PWR0110
 U 1 1 57FB1146
-P 8345 2970
-F 0 "#PWR098" H 8345 2720 50  0001 C CNN
-F 1 "GND" V 8345 2780 50  0000 C CNN
-F 2 "" H 8345 2970 50  0000 C CNN
-F 3 "" H 8345 2970 50  0000 C CNN
-	1    8345 2970
+P 8140 3605
+F 0 "#PWR0110" H 8140 3355 50  0001 C CNN
+F 1 "GND" V 8140 3415 50  0000 C CNN
+F 2 "" H 8140 3605 50  0000 C CNN
+F 3 "" H 8140 3605 50  0000 C CNN
+	1    8140 3605
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	8195 2870 8345 2870
 $Comp
 L CONN_01X03 P48
 U 1 1 57FB1152
-P 7995 2970
-F 0 "P48" H 8073 3011 50  0000 L CNN
-F 1 "Resv.PinAD13" H 8073 2920 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 8073 2874 50  0001 L CNN
-F 3 "" H 7995 2970 50  0001 C CNN
-F 4 "Value" H 8073 2980 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8073 2874 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8073 2768 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 7995 2970 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7995 2970 60  0001 C CNN "Bauform"
-	1    7995 2970
+P 7790 3605
+F 0 "P48" H 7868 3646 50  0000 L CNN
+F 1 "Res.AD13" H 7868 3555 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight" H 7868 3509 50  0001 L CNN
+F 3 "" H 7790 3605 50  0001 C CNN
+F 4 "Value" H 7868 3615 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 7868 3509 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 7868 3403 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 7790 3605 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7790 3605 60  0001 C CNN "Bauform"
+	1    7790 3605
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	5270 1255 5020 1255
-Wire Wire Line
-	5020 1255 5020 930 
-Wire Wire Line
-	7645 1190 7850 1190
-Wire Wire Line
-	7645 1485 7850 1485
-Wire Wire Line
-	6720 1765 6925 1765
-Wire Wire Line
-	5025 2220 5025 1705
-Wire Wire Line
-	5025 1705 5270 1705
 Text Notes 12665 4305 0    79   ~ 0
 also im grunde ist es bei der schaltung völlig pups...... \nes ist genau das gleiche problem wie mit dem LsF010x \nnicht der shifter ist das problem sondern das was dahinter kommt.\n Fraaage...... was macht ein pin wenn es als ausgang programmiert ist\nund wird aktiv mit einem andern ausgang verbunden? \nRichtiiiig es macht puff und so ist das auch mit dem shifter \ndu kannst dir aber die regel merken der gate widerstand zeigt zum MPU pin
 Text Notes 12400 5510 0    79   ~ 0
@@ -11345,8 +11079,6 @@ F1 "LShifter8.sch" 39
 F2 "5V_IN" I L 6925 1765 39 
 F3 "3,3_/_5V_OUT" O R 7655 1765 39 
 $EndSheet
-Wire Wire Line
-	7655 1765 7755 1765
 $Sheet
 S 6920 1410 725  155 
 U 582A4F4E
@@ -11355,8 +11087,6 @@ F1 "LShifter9.sch" 39
 F2 "5V_IN" I L 6920 1485 39 
 F3 "3,3_/_5V_OUT" O R 7645 1485 39 
 $EndSheet
-Wire Wire Line
-	6720 1485 6920 1485
 $Sheet
 S 6920 1115 725  155 
 U 582A9E9C
@@ -11365,8 +11095,6 @@ F1 "LShifter10.sch" 39
 F2 "5V_IN" I L 6920 1190 39 
 F3 "3,3_/_5V_OUT" O R 7645 1190 39 
 $EndSheet
-Wire Wire Line
-	6720 1190 6920 1190
 $Bitmap
 Pos -1565 5995
 Scale 1,000000
@@ -12651,33 +12379,27 @@ $EndBitmap
 $Comp
 L R R39
 U 1 1 58A2BDA5
-P 2165 4375
-F 0 "R39" V 2065 4375 50  0000 C CNN
-F 1 "10K" V 2160 4375 50  0000 C CNN
-F 2 "Zimprich:R_0603" V 2095 4375 50  0001 C CNN
-F 3 "" H 2165 4375 50  0000 C CNN
-F 4 "Value" V 2288 4375 60  0001 C CNN "Gehäuseart"
-F 5 "Value" V 2288 4375 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2165 4375 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2165 4375 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2165 4375 60  0001 C CNN "Bauform"
-F 9 "Value" H 2165 4375 60  0001 C CNN "Funktion"
-F 10 "Value" H 2165 4375 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2165 4375 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2165 4375
+P 2165 5010
+F 0 "R39" V 2065 5010 50  0000 C CNN
+F 1 "10K" V 2160 5010 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 2095 5010 50  0001 C CNN
+F 3 "" H 2165 5010 50  0000 C CNN
+F 4 "Value" V 2288 5010 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 2288 5010 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2165 5010 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2165 5010 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2165 5010 60  0001 C CNN "Bauform"
+F 9 "Value" H 2165 5010 60  0001 C CNN "Funktion"
+F 10 "Value" H 2165 5010 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2165 5010 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2165 5010
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	2015 4375 2015 4275
-Connection ~ 2015 4275
-Wire Wire Line
-	2315 4375 2315 4475
-Connection ~ 2315 4475
 $Comp
-L +5VP #PWR099
+L +5VP #PWR0111
 U 1 1 58A3D33D
 P 4585 1055
-F 0 "#PWR099" H 4585 905 50  0001 C CNN
+F 0 "#PWR0111" H 4585 905 50  0001 C CNN
 F 1 "+5VP" V 4585 1270 50  0000 C CNN
 F 2 "" H 4585 1055 50  0000 C CNN
 F 3 "" H 4585 1055 50  0000 C CNN
@@ -12685,10 +12407,10 @@ F 3 "" H 4585 1055 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0100
+L +5VP #PWR0112
 U 1 1 58A3DF49
 P 4260 1300
-F 0 "#PWR0100" H 4260 1150 50  0001 C CNN
+F 0 "#PWR0112" H 4260 1150 50  0001 C CNN
 F 1 "+5VP" V 4260 1515 50  0000 C CNN
 F 2 "" H 4260 1300 50  0000 C CNN
 F 3 "" H 4260 1300 50  0000 C CNN
@@ -12696,10 +12418,10 @@ F 3 "" H 4260 1300 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0101
+L +5VP #PWR0113
 U 1 1 58A3EB55
 P 4585 1625
-F 0 "#PWR0101" H 4585 1475 50  0001 C CNN
+F 0 "#PWR0113" H 4585 1475 50  0001 C CNN
 F 1 "+5VP" V 4585 1840 50  0000 C CNN
 F 2 "" H 4585 1625 50  0000 C CNN
 F 3 "" H 4585 1625 50  0000 C CNN
@@ -12707,10 +12429,10 @@ F 3 "" H 4585 1625 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0102
+L +5VP #PWR0114
 U 1 1 58A3F7D3
 P 4170 2020
-F 0 "#PWR0102" H 4170 1870 50  0001 C CNN
+F 0 "#PWR0114" H 4170 1870 50  0001 C CNN
 F 1 "+5VP" V 4170 2235 50  0000 C CNN
 F 2 "" H 4170 2020 50  0000 C CNN
 F 3 "" H 4170 2020 50  0000 C CNN
@@ -12718,10 +12440,10 @@ F 3 "" H 4170 2020 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0103
+L +5VP #PWR0115
 U 1 1 58A406FD
 P 4615 2330
-F 0 "#PWR0103" H 4615 2180 50  0001 C CNN
+F 0 "#PWR0115" H 4615 2180 50  0001 C CNN
 F 1 "+5VP" V 4615 2545 50  0000 C CNN
 F 2 "" H 4615 2330 50  0000 C CNN
 F 3 "" H 4615 2330 50  0000 C CNN
@@ -12729,21 +12451,21 @@ F 3 "" H 4615 2330 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0104
+L +5VP #PWR0116
 U 1 1 58A43BCB
-P 10360 1135
-F 0 "#PWR0104" H 10360 985 50  0001 C CNN
-F 1 "+5VP" V 10360 1350 50  0000 C CNN
-F 2 "" H 10360 1135 50  0000 C CNN
-F 3 "" H 10360 1135 50  0000 C CNN
-	1    10360 1135
+P 8095 2330
+F 0 "#PWR0116" H 8095 2180 50  0001 C CNN
+F 1 "+5VP" V 8095 2545 50  0000 C CNN
+F 2 "" H 8095 2330 50  0000 C CNN
+F 3 "" H 8095 2330 50  0000 C CNN
+	1    8095 2330
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0105
+L +5VP #PWR0117
 U 1 1 58A3C011
 P 4260 730
-F 0 "#PWR0105" H 4260 580 50  0001 C CNN
+F 0 "#PWR0117" H 4260 580 50  0001 C CNN
 F 1 "+5VP" V 4260 945 50  0000 C CNN
 F 2 "" H 4260 730 50  0000 C CNN
 F 3 "" H 4260 730 50  0000 C CNN
@@ -12751,115 +12473,111 @@ F 3 "" H 4260 730 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0106
+L +5VP #PWR0118
 U 1 1 58A45B81
-P 8190 1920
-F 0 "#PWR0106" H 8190 1770 50  0001 C CNN
-F 1 "+5VP" V 8190 2135 50  0000 C CNN
-F 2 "" H 8190 1920 50  0000 C CNN
-F 3 "" H 8190 1920 50  0000 C CNN
-	1    8190 1920
+P 8090 2740
+F 0 "#PWR0118" H 8090 2590 50  0001 C CNN
+F 1 "+5VP" V 8090 2955 50  0000 C CNN
+F 2 "" H 8090 2740 50  0000 C CNN
+F 3 "" H 8090 2740 50  0000 C CNN
+	1    8090 2740
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0107
+L +5VP #PWR0119
 U 1 1 58A47405
-P 10360 5670
-F 0 "#PWR0107" H 10360 5520 50  0001 C CNN
-F 1 "+5VP" V 10360 5885 50  0000 C CNN
-F 2 "" H 10360 5670 50  0000 C CNN
-F 3 "" H 10360 5670 50  0000 C CNN
-	1    10360 5670
+P 8090 3110
+F 0 "#PWR0119" H 8090 2960 50  0001 C CNN
+F 1 "+5VP" V 8090 3325 50  0000 C CNN
+F 2 "" H 8090 3110 50  0000 C CNN
+F 3 "" H 8090 3110 50  0000 C CNN
+	1    8090 3110
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0108
+L +5VP #PWR0120
 U 1 1 58A493A9
-P 8345 2870
-F 0 "#PWR0108" H 8345 2720 50  0001 C CNN
-F 1 "+5VP" V 8345 3085 50  0000 C CNN
-F 2 "" H 8345 2870 50  0000 C CNN
-F 3 "" H 8345 2870 50  0000 C CNN
-	1    8345 2870
+P 8140 3505
+F 0 "#PWR0120" H 8140 3355 50  0001 C CNN
+F 1 "+5VP" V 8140 3720 50  0000 C CNN
+F 2 "" H 8140 3505 50  0000 C CNN
+F 3 "" H 8140 3505 50  0000 C CNN
+	1    8140 3505
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0109
+L +5VP #PWR0121
 U 1 1 58A49DED
-P 8345 2450
-F 0 "#PWR0109" H 8345 2300 50  0001 C CNN
-F 1 "+5VP" V 8345 2665 50  0000 C CNN
-F 2 "" H 8345 2450 50  0000 C CNN
-F 3 "" H 8345 2450 50  0000 C CNN
-	1    8345 2450
+P 8140 3885
+F 0 "#PWR0121" H 8140 3735 50  0001 C CNN
+F 1 "+5VP" V 8140 4100 50  0000 C CNN
+F 2 "" H 8140 3885 50  0000 C CNN
+F 3 "" H 8140 3885 50  0000 C CNN
+	1    8140 3885
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0110
+L +5VP #PWR0122
 U 1 1 58A4CE11
-P 10360 5040
-F 0 "#PWR0110" H 10360 4890 50  0001 C CNN
-F 1 "+5VP" V 10360 5255 50  0000 C CNN
-F 2 "" H 10360 5040 50  0000 C CNN
-F 3 "" H 10360 5040 50  0000 C CNN
-	1    10360 5040
+P 8095 5500
+F 0 "#PWR0122" H 8095 5350 50  0001 C CNN
+F 1 "+5VP" V 8095 5715 50  0000 C CNN
+F 2 "" H 8095 5500 50  0000 C CNN
+F 3 "" H 8095 5500 50  0000 C CNN
+	1    8095 5500
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0111
+L +5VP #PWR0123
 U 1 1 58A4D61B
-P 10360 4365
-F 0 "#PWR0111" H 10360 4215 50  0001 C CNN
-F 1 "+5VP" V 10360 4580 50  0000 C CNN
-F 2 "" H 10360 4365 50  0000 C CNN
-F 3 "" H 10360 4365 50  0000 C CNN
-	1    10360 4365
+P 8095 4825
+F 0 "#PWR0123" H 8095 4675 50  0001 C CNN
+F 1 "+5VP" V 8095 5040 50  0000 C CNN
+F 2 "" H 8095 4825 50  0000 C CNN
+F 3 "" H 8095 4825 50  0000 C CNN
+	1    8095 4825
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0112
+L +5VP #PWR0124
 U 1 1 58A4F3DF
-P 6325 3390
-F 0 "#PWR0112" H 6325 3240 50  0001 C CNN
-F 1 "+5VP" V 6325 3605 50  0000 C CNN
-F 2 "" H 6325 3390 50  0000 C CNN
-F 3 "" H 6325 3390 50  0000 C CNN
-	1    6325 3390
+P 4105 5605
+F 0 "#PWR0124" H 4105 5455 50  0001 C CNN
+F 1 "+5VP" V 4105 5820 50  0000 C CNN
+F 2 "" H 4105 5605 50  0000 C CNN
+F 3 "" H 4105 5605 50  0000 C CNN
+	1    4105 5605
 	0    1    -1   0   
 $EndComp
 $Comp
-L +5VP #PWR0113
+L +5VP #PWR0125
 U 1 1 58A5005D
-P 6495 5230
-F 0 "#PWR0113" H 6495 5080 50  0001 C CNN
-F 1 "+5VP" V 6495 5445 50  0000 C CNN
-F 2 "" H 6495 5230 50  0000 C CNN
-F 3 "" H 6495 5230 50  0000 C CNN
-	1    6495 5230
+P 4415 4830
+F 0 "#PWR0125" H 4415 4680 50  0001 C CNN
+F 1 "+5VP" V 4415 5045 50  0000 C CNN
+F 2 "" H 4415 4830 50  0000 C CNN
+F 3 "" H 4415 4830 50  0000 C CNN
+	1    4415 4830
 	0    1    -1   0   
 $EndComp
 $Comp
 L CONN_01X04 P27
 U 1 1 58A54FF6
-P 10060 2090
-F 0 "P27" H 10138 2131 50  0000 L CNN
-F 1 "RX0/TX0" H 10138 2040 50  0000 L CNN
-F 2 "Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight" H 10138 1994 50  0001 L CNN
-F 3 "" H 10060 2090 50  0000 C CNN
-F 4 "Value" H 10138 2100 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 10138 2047 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 10138 1994 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 10060 2090 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 10060 2090 60  0001 C CNN "Bauform"
-	1    10060 2090
+P 9960 1130
+F 0 "P27" H 10038 1171 50  0000 L CNN
+F 1 "RX0/TX0" H 10038 1080 50  0000 L CNN
+F 2 "Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight" H 10038 1034 50  0001 L CNN
+F 3 "" H 9960 1130 50  0000 C CNN
+F 4 "Value" H 10038 1140 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 10038 1087 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 10038 1034 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 9960 1130 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9960 1130 60  0001 C CNN "Bauform"
+	1    9960 1130
 	-1   0    0    -1  
 $EndComp
-Text Notes 8165 4925 0    39   ~ 0
+Text Notes 5800 3190 0    39   ~ 0
 Button Taster wid\nvon den Dioden D13 und D14 \ngeschützt
-Wire Wire Line
-	3605 4795 3005 4795
-Wire Wire Line
-	3605 3990 3005 3990
 $Sheet
 S 1680 2900 735  155 
 U 58A8FEE2
@@ -12868,16 +12586,6 @@ F1 "LShifter11.sch" 39
 F2 "5V_IN" I L 1680 2985 39 
 F3 "3,3_/_5V_OUT" O R 2415 2985 39 
 $EndSheet
-Wire Wire Line
-	1495 2985 1680 2985
-Wire Wire Line
-	1495 2885 1615 2885
-Wire Wire Line
-	1615 2885 1615 2765
-Wire Wire Line
-	1495 2785 1565 2785
-Wire Wire Line
-	1565 2785 1565 2665
 $Sheet
 S 1685 2025 735  155 
 U 58A93BFE
@@ -12886,6 +12594,427 @@ F1 "LShifter12.sch" 39
 F2 "5V_IN" I L 1685 2110 39 
 F3 "3,3_/_5V_OUT" O R 2420 2110 39 
 $EndSheet
+$Sheet
+S 1620 1055 735  155 
+U 58A980A6
+F0 "LShifter13" 39
+F1 "LShifter13.sch" 39
+F2 "5V_IN" I L 1620 1140 39 
+F3 "3,3_/_5V_OUT" O R 2355 1140 39 
+$EndSheet
+Text Notes 300  -600 0    79   ~ 16
+[18:52:00 | Bearbeitet 18:56:46] Jürgen Lange: Hi Uwe wie versprochen : \nich habe die Stromsenke für die LED's im Labor aufgebaut nochmal nachgerechnet und gemessen. \nDie Schaltung läuft ohne Probleme von 3,3V bis 33V Messungen habe ich alle mit 3,3V 5V 9V 12V 29,5V gemacht LED-Strom bleibt konstant die Transistoren bleiben kalt. \nDauermessung mache ich mit 30,5V. Ich habe BC337 verwendet. Die Baugröße der Widerstände würde mit 603 gehen wir legen die auf 1206 aus damit sind wir dann völlig save.\n[19:00:28 | Bearbeitet 19:03:58] Jürgen Lange: Am Anschluss Tilt und Rain währe es schön wenn du noch Shifter hinbekommst. \ndas würde die Möglichkeiten extrem verbessern. \nBitte vergesse auch nicht diese Stecker mit +5VP zu versorgen und nicht mit IOREF\n[19:18:45] Kurzschuss - Uwe: okay\n[20:12:58] Jürgen Lange: Wenn Du noch an den Reserve Pins wie bei den Drop-Sensoren einen 4K7 Pullup setzt könntest wäre klasse. \nSetze da aber den Wert auf XXX für nicht bestücken ....... natürlich an den Analog Eingängen die Reserve sind nicht.
+$Sheet
+S 2055 3890 735  155 
+U 58B1EFAC
+F0 "LShifter14" 39
+F1 "LShifter14.sch" 39
+F2 "5V_IN" I L 2055 3975 39 
+F3 "3,3_/_5V_OUT" O R 2790 3975 39 
+$EndSheet
+$Comp
+L +5VP #PWR0126
+U 1 1 58B20A87
+P 1675 3775
+F 0 "#PWR0126" H 1675 3625 50  0001 C CNN
+F 1 "+5VP" V 1675 3990 50  0000 C CNN
+F 2 "" H 1675 3775 50  0000 C CNN
+F 3 "" H 1675 3775 50  0000 C CNN
+	1    1675 3775
+	0    1    -1   0   
+$EndComp
+$Comp
+L +5VP #PWR0127
+U 1 1 58B23559
+P 1695 4285
+F 0 "#PWR0127" H 1695 4135 50  0001 C CNN
+F 1 "+5VP" V 1695 4500 50  0000 C CNN
+F 2 "" H 1695 4285 50  0000 C CNN
+F 3 "" H 1695 4285 50  0000 C CNN
+	1    1695 4285
+	0    1    -1   0   
+$EndComp
+$Sheet
+S 2030 4400 735  155 
+U 58B25236
+F0 "LShifter15" 39
+F1 "LShifter15.sch" 39
+F2 "5V_IN" I L 2030 4485 39 
+F3 "3,3_/_5V_OUT" O R 2765 4485 39 
+$EndSheet
+$Comp
+L +5VP #PWR0128
+U 1 1 58B36ABA
+P 1235 7030
+F 0 "#PWR0128" H 1235 6880 50  0001 C CNN
+F 1 "+5VP" V 1235 7245 50  0000 C CNN
+F 2 "" H 1235 7030 50  0000 C CNN
+F 3 "" H 1235 7030 50  0000 C CNN
+	1    1235 7030
+	0    1    -1   0   
+$EndComp
+$Comp
+L R R128
+U 1 1 58B3B730
+P 2070 6915
+F 0 "R128" H 2075 6525 50  0000 C CNN
+F 1 "XXXX" V 2065 6915 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 2000 6915 50  0001 C CNN
+F 3 "" H 2070 6915 50  0000 C CNN
+F 4 "Value" V 2193 6915 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 2193 6915 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2070 6915 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2070 6915 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2070 6915 60  0001 C CNN "Bauform"
+F 9 "Value" H 2070 6915 60  0001 C CNN "Funktion"
+F 10 "Value" H 2070 6915 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2070 6915 60  0001 C CNN "Hersteller Bestellnummer"
+	1    2070 6915
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R127
+U 1 1 58B3C7B7
+P 1935 6915
+F 0 "R127" H 1935 6610 50  0000 C CNN
+F 1 "XXXX" V 1930 6915 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 1865 6915 50  0001 C CNN
+F 3 "" H 1935 6915 50  0000 C CNN
+F 4 "Value" V 2058 6915 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 2058 6915 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1935 6915 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1935 6915 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1935 6915 60  0001 C CNN "Bauform"
+F 9 "Value" H 1935 6915 60  0001 C CNN "Funktion"
+F 10 "Value" H 1935 6915 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1935 6915 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1935 6915
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R126
+U 1 1 58B3C873
+P 1790 6915
+F 0 "R126" H 1790 6525 50  0000 C CNN
+F 1 "XXXX" V 1785 6915 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 1720 6915 50  0001 C CNN
+F 3 "" H 1790 6915 50  0000 C CNN
+F 4 "Value" V 1913 6915 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 1913 6915 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1790 6915 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1790 6915 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1790 6915 60  0001 C CNN "Bauform"
+F 9 "Value" H 1790 6915 60  0001 C CNN "Funktion"
+F 10 "Value" H 1790 6915 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1790 6915 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1790 6915
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R125
+U 1 1 58B3CEB2
+P 1645 6915
+F 0 "R125" H 1645 6610 50  0000 C CNN
+F 1 "XXXX" V 1640 6915 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 1575 6915 50  0001 C CNN
+F 3 "" H 1645 6915 50  0000 C CNN
+F 4 "Value" V 1768 6915 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 1768 6915 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1645 6915 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1645 6915 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1645 6915 60  0001 C CNN "Bauform"
+F 9 "Value" H 1645 6915 60  0001 C CNN "Funktion"
+F 10 "Value" H 1645 6915 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1645 6915 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1645 6915
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2360 1430 2460 1430
+Wire Wire Line
+	2355 1140 2445 1140
+Wire Wire Line
+	2420 2415 2555 2415
+Wire Wire Line
+	2420 2110 2550 2110
+Wire Wire Line
+	2415 3285 2530 3285
+Wire Wire Line
+	2415 2985 2520 2985
+Wire Wire Line
+	1480 4385 1695 4385
+Wire Wire Line
+	1480 4485 2030 4485
+Wire Wire Line
+	4065 4380 4515 4380
+Wire Wire Line
+	4515 4480 4065 4480
+Wire Wire Line
+	5930 2880 6080 2880
+Wire Wire Line
+	4065 4180 4265 4180
+Wire Wire Line
+	1480 5810 1690 5810
+Wire Wire Line
+	1640 5910 1480 5910
+Wire Wire Line
+	1610 6225 1480 6225
+Wire Wire Line
+	1480 6125 1660 6125
+Wire Wire Line
+	1570 930  1775 930 
+Wire Wire Line
+	1635 1895 1835 1895
+Wire Wire Line
+	1615 2765 1825 2765
+Wire Wire Line
+	1860 6325 1480 6325
+Wire Wire Line
+	1480 5010 1685 5010
+Wire Wire Line
+	1480 5110 2375 5110
+Wire Wire Line
+	1480 3875 1675 3875
+Wire Wire Line
+	2055 3975 1480 3975
+Wire Wire Line
+	1480 3775 1675 3775
+Wire Wire Line
+	4065 4830 4415 4830
+Wire Wire Line
+	4065 5130 4465 5130
+Wire Wire Line
+	4065 5230 4465 5230
+Wire Wire Line
+	4065 5030 4465 5030
+Wire Wire Line
+	4065 4930 4415 4930
+Wire Wire Line
+	4065 4280 4165 4280
+Wire Wire Line
+	4165 4280 4165 4180
+Connection ~ 4165 4180
+Wire Wire Line
+	10260 1080 10160 1080
+Wire Wire Line
+	10410 1180 10160 1180
+Wire Wire Line
+	10410 1280 10160 1280
+Wire Wire Line
+	8095 4925 7995 4925
+Wire Wire Line
+	8245 5025 7995 5025
+Wire Wire Line
+	8095 5600 7995 5600
+Wire Wire Line
+	7995 5500 8095 5500
+Wire Wire Line
+	8245 5700 7995 5700
+Wire Wire Line
+	8095 2430 7995 2430
+Wire Wire Line
+	8245 2530 7995 2530
+Wire Wire Line
+	8090 2840 7990 2840
+Wire Wire Line
+	8240 2940 7990 2940
+Wire Wire Line
+	4170 2120 4070 2120
+Wire Wire Line
+	4070 2220 5025 2220
+Wire Wire Line
+	5930 2780 6030 2780
+Wire Wire Line
+	5515 6385 5580 6385
+Wire Wire Line
+	5520 6680 5575 6680
+Wire Wire Line
+	5500 6100 5580 6100
+Wire Wire Line
+	4195 2330 4195 2220
+Connection ~ 4195 2220
+Wire Wire Line
+	4070 2020 4170 2020
+Wire Wire Line
+	4585 1055 4515 1055
+Wire Wire Line
+	4065 730  4260 730 
+Wire Wire Line
+	4065 830  4260 830 
+Wire Wire Line
+	4065 930  5020 930 
+Wire Wire Line
+	4195 2330 4265 2330
+Wire Wire Line
+	4565 2330 4615 2330
+Wire Wire Line
+	8090 3210 7990 3210
+Wire Wire Line
+	8240 3310 7990 3310
+Wire Wire Line
+	4060 5605 4105 5605
+Wire Wire Line
+	4110 5705 4060 5705
+Wire Wire Line
+	1530 830  1775 830 
+Wire Wire Line
+	1575 1795 1835 1795
+Wire Wire Line
+	1565 2665 1825 2665
+Wire Wire Line
+	1480 4910 2385 4910
+Wire Wire Line
+	1480 4285 1695 4285
+Wire Wire Line
+	1480 5710 1690 5710
+Wire Wire Line
+	7990 2740 8090 2740
+Wire Wire Line
+	7995 2330 8095 2330
+Wire Wire Line
+	10160 980  10260 980 
+Wire Wire Line
+	7995 4825 8095 4825
+Wire Wire Line
+	7990 3110 8090 3110
+Wire Wire Line
+	4065 3420 4615 3420
+Wire Wire Line
+	4065 3320 4615 3320
+Wire Wire Line
+	4065 2960 4615 2960
+Wire Wire Line
+	4065 2860 4615 2860
+Wire Wire Line
+	1685 2415 1590 2415
+Wire Wire Line
+	1590 2415 1590 2210
+Wire Wire Line
+	1590 2210 1485 2210
+Wire Wire Line
+	1680 3285 1605 3285
+Wire Wire Line
+	1605 3285 1605 3085
+Wire Wire Line
+	1605 3085 1480 3085
+Wire Wire Line
+	4060 5805 4765 5805
+Wire Wire Line
+	4765 6100 4640 6100
+Wire Wire Line
+	4640 6100 4640 5905
+Wire Wire Line
+	4640 5905 4060 5905
+Wire Wire Line
+	4780 6385 4555 6385
+Wire Wire Line
+	4555 6385 4555 6005
+Wire Wire Line
+	4555 6005 4060 6005
+Wire Wire Line
+	4785 6680 4470 6680
+Wire Wire Line
+	4470 6680 4470 6105
+Wire Wire Line
+	4470 6105 4060 6105
+Wire Wire Line
+	1175 7230 2695 7230
+Wire Wire Line
+	1175 7430 2700 7430
+Wire Wire Line
+	1175 7330 2140 7330
+Wire Wire Line
+	1175 7030 1235 7030
+Wire Wire Line
+	5930 2455 6080 2455
+Wire Wire Line
+	5930 2355 6030 2355
+Wire Notes Line
+	2710 7055 3140 7055
+Wire Notes Line
+	3140 7055 3140 7510
+Wire Notes Line
+	3140 7510 2710 7510
+Wire Notes Line
+	2710 7510 2710 7060
+Wire Notes Line
+	3140 7285 3315 7285
+Wire Wire Line
+	1175 7130 1235 7130
+Wire Wire Line
+	1175 7530 2140 7530
+Wire Wire Line
+	5500 5805 5595 5805
+Wire Wire Line
+	4215 1055 4155 1055
+Wire Wire Line
+	4155 1055 4155 930 
+Connection ~ 4155 930 
+Wire Wire Line
+	4585 1625 4515 1625
+Wire Wire Line
+	4065 1300 4260 1300
+Wire Wire Line
+	4065 1400 4260 1400
+Wire Wire Line
+	4065 1500 5270 1500
+Wire Wire Line
+	4215 1625 4155 1625
+Wire Wire Line
+	4155 1625 4155 1500
+Connection ~ 4155 1500
+Wire Wire Line
+	7990 3985 8140 3985
+Wire Wire Line
+	8290 4085 7990 4085
+Wire Wire Line
+	7990 3885 8140 3885
+Wire Wire Line
+	7990 3605 8140 3605
+Wire Wire Line
+	8290 3705 7990 3705
+Wire Wire Line
+	7990 3505 8140 3505
+Wire Wire Line
+	5270 1255 5020 1255
+Wire Wire Line
+	5020 1255 5020 930 
+Wire Wire Line
+	7645 1190 7850 1190
+Wire Wire Line
+	7645 1485 7850 1485
+Wire Wire Line
+	6720 1765 6925 1765
+Wire Wire Line
+	5025 2220 5025 1705
+Wire Wire Line
+	5025 1705 5270 1705
+Wire Wire Line
+	7655 1765 7755 1765
+Wire Wire Line
+	6720 1485 6920 1485
+Wire Wire Line
+	6720 1190 6920 1190
+Wire Wire Line
+	2015 5010 2015 4910
+Connection ~ 2015 4910
+Wire Wire Line
+	2315 5010 2315 5110
+Connection ~ 2315 5110
+Wire Wire Line
+	4665 3520 4065 3520
+Wire Wire Line
+	4665 3060 4065 3060
+Wire Wire Line
+	1480 2985 1680 2985
+Wire Wire Line
+	1480 2885 1615 2885
+Wire Wire Line
+	1615 2885 1615 2765
+Wire Wire Line
+	1480 2785 1565 2785
+Wire Wire Line
+	1565 2785 1565 2665
 Wire Wire Line
 	1485 2110 1685 2110
 Wire Wire Line
@@ -12896,14 +13025,6 @@ Wire Wire Line
 	1485 1910 1575 1910
 Wire Wire Line
 	1575 1910 1575 1795
-$Sheet
-S 1620 1055 735  155 
-U 58A980A6
-F0 "LShifter13" 39
-F1 "LShifter13.sch" 39
-F2 "5V_IN" I L 1620 1140 39 
-F3 "3,3_/_5V_OUT" O R 2355 1140 39 
-$EndSheet
 Wire Wire Line
 	1480 1140 1620 1140
 Wire Wire Line
@@ -12920,4 +13041,95 @@ Wire Wire Line
 	1480 940  1530 940 
 Wire Wire Line
 	1530 940  1530 830 
+Wire Wire Line
+	2790 3975 2945 3975
+Wire Wire Line
+	2765 4485 2980 4485
+Wire Notes Line
+	1230 9095 1265 9095
+Wire Notes Line
+	3815 8270 3835 8270
+Wire Wire Line
+	1645 7065 1645 7230
+Connection ~ 1645 7230
+Wire Wire Line
+	1790 7065 1790 7330
+Connection ~ 1790 7330
+Wire Wire Line
+	1935 7065 1935 7430
+Connection ~ 1935 7430
+Wire Wire Line
+	2070 7065 2070 7530
+Connection ~ 2070 7530
+Wire Wire Line
+	1645 6765 1645 6655
+Wire Wire Line
+	1645 6655 2355 6655
+Wire Wire Line
+	1790 6765 1790 6655
+Connection ~ 1790 6655
+Wire Wire Line
+	1935 6765 1935 6655
+Connection ~ 1935 6655
+Wire Wire Line
+	2070 6765 2070 6655
+Connection ~ 2070 6655
+Text GLabel 2355 6655 2    39   Input ~ 0
+IOREF
+$Comp
+L R R129
+U 1 1 58B39F20
+P 8255 5880
+F 0 "R129" V 8330 5880 50  0000 C CNN
+F 1 "XXXX" V 8250 5880 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 8185 5880 50  0001 C CNN
+F 3 "" H 8255 5880 50  0000 C CNN
+F 4 "Value" V 8378 5880 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 8378 5880 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8255 5880 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8255 5880 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8255 5880 60  0001 C CNN "Bauform"
+F 9 "Value" H 8255 5880 60  0001 C CNN "Funktion"
+F 10 "Value" H 8255 5880 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8255 5880 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8255 5880
+	0    -1   -1   0   
+$EndComp
+Text GLabel 8470 5880 2    39   Input ~ 0
+IOREF
+Wire Wire Line
+	8105 5880 8050 5880
+Wire Wire Line
+	8050 5880 8050 5700
+Connection ~ 8050 5700
+Wire Wire Line
+	8405 5880 8470 5880
+$Comp
+L R R130
+U 1 1 58B3DC5B
+P 8275 5205
+F 0 "R130" V 8350 5205 50  0000 C CNN
+F 1 "XXXX" V 8270 5205 50  0000 C CNN
+F 2 "Zimprich:R_0603" V 8205 5205 50  0001 C CNN
+F 3 "" H 8275 5205 50  0000 C CNN
+F 4 "Value" V 8398 5205 60  0001 C CNN "Gehäuseart"
+F 5 "Value" V 8398 5205 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8275 5205 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8275 5205 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8275 5205 60  0001 C CNN "Bauform"
+F 9 "Value" H 8275 5205 60  0001 C CNN "Funktion"
+F 10 "Value" H 8275 5205 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8275 5205 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8275 5205
+	0    -1   -1   0   
+$EndComp
+Text GLabel 8490 5205 2    39   Input ~ 0
+IOREF
+Wire Wire Line
+	8125 5205 8070 5205
+Wire Wire Line
+	8425 5205 8490 5205
+Wire Wire Line
+	8070 5205 8070 5025
+Connection ~ 8070 5025
 $EndSCHEMATC
