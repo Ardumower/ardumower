@@ -2,8 +2,8 @@
 <export version="D">
   <design>
     <source>C:\Users\uwezi\Documents\KICAD\megashield_svn_1.3_geoeffnet\ardumower mega shield svn.sch</source>
-    <date>27.02.2017 13:59:20</date>
-    <tool>Eeschema (2017-02-20 revision ca7f1d5a0)-makepkg</tool>
+    <date>28.02.2017 20:05:43</date>
+    <tool>Eeschema (2017-02-26 revision d6097cf1a)-makepkg</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Ardumower shield SVN Version</title>
@@ -1213,7 +1213,7 @@
     </comp>
     <comp ref="U2">
       <value>Bluetooth_CZ_HC_05</value>
-      <footprint>Zimprich:Bluetooth_Buchse_Platz_mit_Beschriftung</footprint>
+      <footprint>Zimprich:Bluetooth_Buchse_Platz_mit_Beschriftung_4_fach</footprint>
       <datasheet>DOCUMENTATION</datasheet>
       <fields>
         <field name="Gehäuseart">Value</field>
@@ -1313,7 +1313,7 @@
       <tstamp>580F42E7</tstamp>
     </comp>
     <comp ref="JP7">
-      <value>GPSV 5V/3.3V</value>
+      <value>GpsV 5V/3.3V</value>
       <footprint>Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm</footprint>
       <fields>
         <field name="Gehäuseart">Value</field>
@@ -1628,7 +1628,7 @@
       <tstamp>58AF929F</tstamp>
     </comp>
     <comp ref="JP12">
-      <value>WlanS. 5V/3.3V</value>
+      <value>GpsS. 5V/3.3V</value>
       <footprint>Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm</footprint>
       <fields>
         <field name="Gehäuseart">Value</field>
@@ -1949,14 +1949,14 @@
     <comp ref="Q14">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>580379CA</tstamp>
     </comp>
     <comp ref="Q15">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>580379C9</tstamp>
     </comp>
@@ -2004,14 +2004,14 @@
     <comp ref="Q16">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>5803BF5F</tstamp>
     </comp>
     <comp ref="Q17">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>5803BF65</tstamp>
     </comp>
@@ -2059,14 +2059,14 @@
     <comp ref="Q18">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>5803D2DD</tstamp>
     </comp>
     <comp ref="Q19">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>5803D2E3</tstamp>
     </comp>
@@ -2128,14 +2128,14 @@
     <comp ref="Q21">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>5803F35D</tstamp>
     </comp>
     <comp ref="Q20">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>5803F363</tstamp>
     </comp>
@@ -2176,14 +2176,14 @@
     <comp ref="Q23">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>58046110</tstamp>
     </comp>
     <comp ref="Q22">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Leuchtdioden/" tstamps="/57DBE57B/"/>
       <tstamp>58046116</tstamp>
     </comp>
@@ -2818,7 +2818,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter1/" tstamps="/57DC7E7B/57E6FB3B/"/>
       <tstamp>57EB0392</tstamp>
     </comp>
@@ -2862,7 +2862,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter2/" tstamps="/57DC7E7B/57E71100/"/>
       <tstamp>57EB0618</tstamp>
     </comp>
@@ -2906,7 +2906,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter3/" tstamps="/57DC7E7B/57E712F4/"/>
       <tstamp>57EB00C5</tstamp>
     </comp>
@@ -2950,7 +2950,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter4/" tstamps="/57DC7E7B/57E712F8/"/>
       <tstamp>57EB0805</tstamp>
     </comp>
@@ -2987,7 +2987,7 @@
     <comp ref="Q9">
       <value>BSS138</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter5/" tstamps="/57DC7E7B/57E71CBC/"/>
       <tstamp>57EB0A33</tstamp>
     </comp>
@@ -3024,7 +3024,7 @@
     <comp ref="Q10">
       <value>BSS138</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter6/" tstamps="/57DC7E7B/57E71CC0/"/>
       <tstamp>57EB0BC7</tstamp>
     </comp>
@@ -3068,7 +3068,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter7/" tstamps="/57DC7E7B/57E71CC4/"/>
       <tstamp>57EB0DEB</tstamp>
     </comp>
@@ -3217,7 +3217,7 @@
     <comp ref="Q30">
       <value>BSS138</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter8/" tstamps="/57DC7E7B/582A0806/"/>
       <tstamp>58AB0AE8</tstamp>
     </comp>
@@ -3254,7 +3254,7 @@
     <comp ref="Q31">
       <value>BSS138</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter9/" tstamps="/57DC7E7B/582A4F4E/"/>
       <tstamp>58AB0F52</tstamp>
     </comp>
@@ -3291,7 +3291,7 @@
     <comp ref="Q32">
       <value>BSS138</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter10/" tstamps="/57DC7E7B/582A9E9C/"/>
       <tstamp>58AB1303</tstamp>
     </comp>
@@ -3335,7 +3335,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter11/" tstamps="/57DC7E7B/58A8FEE2/"/>
       <tstamp>58AB0866</tstamp>
     </comp>
@@ -3379,7 +3379,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter12/" tstamps="/57DC7E7B/58A93BFE/"/>
       <tstamp>58AB0867</tstamp>
     </comp>
@@ -3423,7 +3423,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter13/" tstamps="/57DC7E7B/58A980A6/"/>
       <tstamp>58B21F52</tstamp>
     </comp>
@@ -3473,7 +3473,7 @@
         <field name="Hersteller">Value</field>
         <field name="Hersteller Bestellnummer">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter14/" tstamps="/57DC7E7B/58B1EFAC/"/>
       <tstamp>58AB0868</tstamp>
     </comp>
@@ -3523,7 +3523,7 @@
         <field name="Hersteller">Value</field>
         <field name="Hersteller Bestellnummer">Value</field>
       </fields>
-      <libsource lib="transistors" part="BSS138"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Anschlußstecker/LShifter15/" tstamps="/57DC7E7B/58B25236/"/>
       <tstamp>58B439D5</tstamp>
     </comp>
@@ -5066,7 +5066,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB0</tstamp>
     </comp>
@@ -5076,7 +5076,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB1</tstamp>
     </comp>
@@ -5086,7 +5086,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB2</tstamp>
     </comp>
@@ -5096,7 +5096,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB3</tstamp>
     </comp>
@@ -5106,7 +5106,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB4</tstamp>
     </comp>
@@ -5116,7 +5116,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB5</tstamp>
     </comp>
@@ -5126,7 +5126,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB6</tstamp>
     </comp>
@@ -5136,7 +5136,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB7</tstamp>
     </comp>
@@ -5146,7 +5146,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EB9</tstamp>
     </comp>
@@ -5156,7 +5156,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EBA</tstamp>
     </comp>
@@ -5167,7 +5167,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EBB</tstamp>
     </comp>
@@ -5178,7 +5178,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EBC</tstamp>
     </comp>
@@ -5188,7 +5188,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EBD</tstamp>
     </comp>
@@ -5199,7 +5199,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EBE</tstamp>
     </comp>
@@ -5209,7 +5209,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EC4</tstamp>
     </comp>
@@ -5219,7 +5219,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>57E12EC5</tstamp>
     </comp>
@@ -5253,7 +5253,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>58723A33</tstamp>
     </comp>
@@ -5263,7 +5263,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>58723A3A</tstamp>
     </comp>
@@ -5273,7 +5273,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>587511A7</tstamp>
     </comp>
@@ -5283,7 +5283,7 @@
       <fields>
         <field name="Reichelt-Bestellnummer">Value</field>
       </fields>
-      <libsource lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
+      <libsource lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/Bohrlöcher/" tstamps="/57E12859/"/>
       <tstamp>587511AE</tstamp>
     </comp>
@@ -5486,7 +5486,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/USpannungAB/" tstamps="/57DD8E0C/"/>
       <tstamp>57E98AAA</tstamp>
     </comp>
@@ -5500,7 +5500,7 @@
         <field name="Bestellnummer">Value</field>
         <field name="Bauform">Value</field>
       </fields>
-      <libsource lib="transistors" part="IRF9540N"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="IRF9540N-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/USpannungAB/" tstamps="/57DD8E0C/"/>
       <tstamp>57E9B1CB</tstamp>
     </comp>
@@ -6249,7 +6249,7 @@
     <comp ref="Q4">
       <value>IRF9530</value>
       <footprint>Power_Integrations:TO-220</footprint>
-      <libsource lib="transistors" part="IRF9540N"/>
+      <libsource lib="ardumower mega shield svn-rescue" part="IRF9540N-RESCUE-ardumower_mega_shield_svn"/>
       <sheetpath names="/VerpolungsschutzLade./" tstamps="/57E646FF/"/>
       <tstamp>57E9A340</tstamp>
     </comp>
@@ -6304,14 +6304,14 @@
     <comp ref="Q13">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Stationsled/" tstamps="/57E81EBA/"/>
       <tstamp>57F1A714</tstamp>
     </comp>
     <comp ref="Q12">
       <value>BC817</value>
       <footprint>TO_SOT_Packages_SMD:SOT-23</footprint>
-      <libsource lib="transistors" part="BC817-40"/>
+      <libsource lib="ardumower mega shield svn-cache" part="BC817-40"/>
       <sheetpath names="/Stationsled/" tstamps="/57E81EBA/"/>
       <tstamp>57F1A898</tstamp>
     </comp>
@@ -6470,19 +6470,42 @@
         <pin num="V_IN" name="V_IN" type="power_in"/>
       </pins>
     </libpart>
-    <libpart lib="transistors" part="BC817-40">
+    <libpart lib="transistors" part="BC817">
       <aliases>
-        <alias>BC818-40</alias>
+        <alias>BC818</alias>
+        <alias>BC847</alias>
+        <alias>BC848</alias>
+        <alias>BC849</alias>
+        <alias>BC850</alias>
+        <alias>MMBT3904</alias>
       </aliases>
       <description>45V Vce, 0.8A Ic, NPN, SOT-23</description>
       <docs>http://www.fairchildsemi.com/ds/BC/BC817.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BC817</field>
+        <field name="Footprint">TO_SOT_Packages_SMD:SOT-23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ardumower mega shield svn-cache" part="BC817-40">
+      <aliases>
+        <alias>BC818-40</alias>
+      </aliases>
       <footprints>
         <fp>SOT-23*</fp>
       </footprints>
       <fields>
         <field name="Reference">Q</field>
         <field name="Value">BC817-40</field>
-        <field name="Footprint">TO_SOT_Packages_SMD:SOT-23</field>
+        <field name="Footprint">SOT-23</field>
       </fields>
       <pins>
         <pin num="1" name="B" type="input"/>
@@ -6490,38 +6513,13 @@
         <pin num="3" name="C" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="transistors" part="BC850">
-      <aliases>
-        <alias>BC849</alias>
-      </aliases>
-      <description>45V Vce, 0.1A Ic, Low noise, NPN, SOT-23</description>
-      <docs>http://www.fairchildsemi.com/ds/BC/BC850.pdf</docs>
+    <libpart lib="ardumower mega shield svn-rescue" part="BSS138-RESCUE-ardumower_mega_shield_svn">
       <footprints>
         <fp>SOT-23*</fp>
       </footprints>
       <fields>
         <field name="Reference">Q</field>
-        <field name="Value">BC850</field>
-        <field name="Footprint">TO_SOT_Packages_SMD:SOT-23</field>
-      </fields>
-      <pins>
-        <pin num="1" name="B" type="input"/>
-        <pin num="2" name="E" type="passive"/>
-        <pin num="3" name="C" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="transistors" part="BSS138">
-      <aliases>
-        <alias>2N7002</alias>
-      </aliases>
-      <description>50V Vds, 0.22A Id, N-Channel MOSFET, SOT-23</description>
-      <docs>http://www.fairchildsemi.com/ds/BS/BSS138.pdf</docs>
-      <footprints>
-        <fp>SOT-23*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">Q</field>
-        <field name="Value">BSS138</field>
+        <field name="Value">BSS138-RESCUE-ardumower_mega_shield_svn</field>
         <field name="Footprint">TO_SOT_Packages_SMD:SOT-23</field>
       </fields>
       <pins>
@@ -6546,7 +6544,7 @@
         <pin num="VCC" name="VCC" type="power_in"/>
       </pins>
     </libpart>
-    <libpart lib="ardumower mega shield svn-rescue" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn">
+    <libpart lib="ardumower mega shield svn-cache" part="Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn">
       <fields>
         <field name="Reference">B</field>
         <field name="Value">Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn</field>
@@ -6885,16 +6883,14 @@
         <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="transistors" part="IRF9540N">
-      <description>-100V Vds, -23A Id, HEXFET P-Channel MOSFET, TO-220</description>
-      <docs>http://www.irf.com/product-info/datasheets/data/irf9540n.pdf</docs>
+    <libpart lib="ardumower mega shield svn-rescue" part="IRF9540N-RESCUE-ardumower_mega_shield_svn">
       <footprints>
         <fp>TO-220*</fp>
       </footprints>
       <fields>
         <field name="Reference">Q</field>
-        <field name="Value">IRF9540N</field>
-        <field name="Footprint">TO_SOT_Packages_THT:TO-220_Vertical</field>
+        <field name="Value">IRF9540N-RESCUE-ardumower_mega_shield_svn</field>
+        <field name="Footprint">TO-220</field>
       </fields>
       <pins>
         <pin num="1" name="G" type="input"/>
@@ -7194,11 +7190,11 @@
     </libpart>
   </libparts>
   <libraries>
-    <library logical="ardumower mega shield svn-cache">
-      <uri>C:\Users\uwezi\Documents\KICAD\megashield_svn_1.3_geoeffnet\ardumower mega shield svn-cache.lib</uri>
-    </library>
     <library logical="device">
       <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
+    </library>
+    <library logical="transistors">
+      <uri>C:\Program Files\KiCad\share\kicad\library\transistors.lib</uri>
     </library>
     <library logical="ardumower mega shield svn-rescue">
       <uri>C:\Users\uwezi\Documents\KICAD\megashield_svn_1.3_geoeffnet\ardumower mega shield svn-rescue.lib</uri>
@@ -7206,11 +7202,11 @@
     <library logical="Zimprich">
       <uri>C:\Program Files\KiCad\share\kicad\library\Zimprich.lib</uri>
     </library>
-    <library logical="transistors">
-      <uri>C:\Program Files\KiCad\share\kicad\library\transistors.lib</uri>
-    </library>
     <library logical="conn">
       <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
+    </library>
+    <library logical="ardumower mega shield svn-cache">
+      <uri>C:\Users\uwezi\Documents\KICAD\megashield_svn_1.3_geoeffnet\ardumower mega shield svn-cache.lib</uri>
     </library>
   </libraries>
   <nets>

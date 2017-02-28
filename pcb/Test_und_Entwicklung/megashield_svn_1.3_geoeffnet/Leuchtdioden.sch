@@ -103,12 +103,12 @@ $EndComp
 $Comp
 L GND #PWR058
 U 1 1 57E08A3B
-P 3095 5155
-F 0 "#PWR058" H 3095 4905 60  0001 C CNN
-F 1 "GND" V 3095 4930 60  0000 C CNN
-F 2 "" H 3095 5155 60  0000 C CNN
-F 3 "" H 3095 5155 60  0000 C CNN
-	1    3095 5155
+P 2990 5155
+F 0 "#PWR058" H 2990 4905 60  0001 C CNN
+F 1 "GND" V 2990 4930 60  0000 C CNN
+F 2 "" H 2990 5155 60  0000 C CNN
+F 3 "" H 2990 5155 60  0000 C CNN
+	1    2990 5155
 	0    1    1    0   
 $EndComp
 Text GLabel 1265 5195 0    39   Input ~ 0
@@ -449,7 +449,7 @@ Wire Wire Line
 Wire Wire Line
 	3235 4495 4290 4495
 Wire Wire Line
-	3230 5155 3095 5155
+	3230 5155 2990 5155
 Wire Wire Line
 	3230 4955 3095 4955
 Wire Wire Line
@@ -481,7 +481,7 @@ Wire Wire Line
 Wire Wire Line
 	1265 5195 1380 5195
 Wire Wire Line
-	3095 4955 3095 4695
+	3095 4695 3095 5680
 Wire Wire Line
 	2780 4695 4290 4695
 Wire Wire Line
@@ -8384,4 +8384,38 @@ F 3 "" H 880 4195 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	1310 4195 1380 4195
+$Comp
+L SPEAKER SP2
+U 1 1 58B6246B
+P 3540 5780
+F 0 "SP2" H 3440 6030 70  0000 C CNN
+F 1 "SPEAKER" H 3440 5530 70  0000 C CNN
+F 2 "Zimprich:Buzzer_12x9.5RM7.6_RM5.0" H 3540 5780 60  0001 C CNN
+F 3 "" H 3540 5780 60  0001 C CNN
+F 4 "Value" H 3540 5780 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3540 5780 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3540 5780 60  0001 C CNN "Technische Daten"
+F 7 "R: SUMMER TDB 05" H 3540 5780 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3540 5780 60  0001 C CNN "Bauform"
+	1    3540 5780
+	1    0    0    1   
+$EndComp
+Text Notes 3895 5890 0    59   ~ 0
+altanativer Platz um den Summer zu montieren\nes darf nur 1 Summer verwendet werden\n
+$Comp
+L GND #PWR077
+U 1 1 58B62A70
+P 3105 5880
+F 0 "#PWR077" H 3105 5630 60  0001 C CNN
+F 1 "GND" V 3105 5655 60  0000 C CNN
+F 2 "" H 3105 5880 60  0000 C CNN
+F 3 "" H 3105 5880 60  0000 C CNN
+	1    3105 5880
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3240 5880 3105 5880
+Wire Wire Line
+	3095 5680 3240 5680
+Connection ~ 3095 4955
 $EndSCHEMATC
