@@ -4228,22 +4228,6 @@ F 3 "" V 7480 985 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X13 P7
-U 1 1 5803E11C
-P 4490 4195
-F 0 "P7" H 4455 4965 50  0000 L CNN
-F 1 "Status LEDs" H 4250 4890 50  0000 L CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x13" H 4490 4195 50  0001 C CNN
-F 3 "" H 4490 4195 50  0000 C CNN
-F 4 "Value" H 4490 4195 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 4490 4195 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 4490 4195 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 4490 4195 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 4490 4195 60  0001 C CNN "Bauform"
-	1    4490 4195
-	1    0    0    -1  
-$EndComp
-$Comp
 L BC817-40 Q21
 U 1 1 5803F35D
 P 6865 5095
@@ -8418,4 +8402,27 @@ Wire Wire Line
 Wire Wire Line
 	3095 5680 3240 5680
 Connection ~ 3095 4955
+$Comp
+L CONN_01X14 P7
+U 1 1 58B75CB0
+P 4490 4145
+F 0 "P7" H 4150 5045 50  0000 L CNN
+F 1 "Status LEDs" H 4285 5045 50  0000 L CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x14_Pitch2.54mm" H -4640 735 50  0001 C CNN
+F 3 "" H -4640 735 50  0001 C CNN
+F 4 "Value" H 4490 4145 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 4490 4145 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4490 4145 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4490 4145 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4490 4145 60  0001 C CNN "Bauform"
+F 9 "Value" H 4490 4145 60  0001 C CNN "Funktion"
+F 10 "Value" H 4490 4145 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4490 4145 60  0001 C CNN "Hersteller Bestellnummer"
+	1    4490 4145
+	1    0    0    -1  
+$EndComp
+Text GLabel 3795 3495 0    39   Input ~ 0
+Taster
+Wire Wire Line
+	4290 3495 3795 3495
 $EndSCHEMATC
