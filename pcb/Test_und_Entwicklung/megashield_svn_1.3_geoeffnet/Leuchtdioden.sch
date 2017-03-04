@@ -355,28 +355,28 @@ $EndComp
 $Comp
 L GND #PWR065
 U 1 1 57EC58A0
-P 4250 4795
-F 0 "#PWR065" H 4250 4545 60  0001 C CNN
-F 1 "GND" V 4250 4590 60  0000 C CNN
-F 2 "" H 4250 4795 60  0000 C CNN
-F 3 "" H 4250 4795 60  0000 C CNN
-	1    4250 4795
-	0    1    1    0   
+P 5715 4895
+F 0 "#PWR065" H 5715 4645 60  0001 C CNN
+F 1 "GND" H 5715 4745 60  0000 C CNN
+F 2 "" H 5715 4895 60  0000 C CNN
+F 3 "" H 5715 4895 60  0000 C CNN
+	1    5715 4895
+	1    0    0    -1  
 $EndComp
 $Comp
 L CONN_01X10 P10
 U 1 1 57EC6312
-P 4860 4245
-F 0 "P10" H 4785 4880 50  0000 L CNN
-F 1 "Status LEDs GND" H 4440 4800 50  0000 L CNN
-F 2 "Zimprich:Socket_Strip_Straight_1x10_Led_Bargraph_Anzeige" H 4937 4149 50  0001 L CNN
-F 3 "" H 4860 4245 50  0000 C CNN
-F 4 "Value" H 4860 4245 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 4860 4245 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 4860 4245 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 4860 4245 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 4860 4245 60  0001 C CNN "Bauform"
-	1    4860 4245
+P 6965 4245
+F 0 "P10" H 6890 4880 50  0000 L CNN
+F 1 "Status LEDs GND" H 6545 4800 50  0000 L CNN
+F 2 "Zimprich:Socket_Strip_Straight_1x10_Led_Bargraph_Anzeige" H 7042 4149 50  0001 L CNN
+F 3 "" H 6965 4245 50  0000 C CNN
+F 4 "Value" H 6965 4245 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 6965 4245 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 6965 4245 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 6965 4245 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 6965 4245 60  0001 C CNN "Bauform"
+	1    6965 4245
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -423,117 +423,6 @@ F 3 "" V 10335 960 50  0000 C CNN
 	1    10335 960 
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	5110 4395 5060 4395
-Wire Wire Line
-	5110 4495 5060 4495
-Connection ~ 5110 4495
-Wire Wire Line
-	5110 4595 5060 4595
-Connection ~ 5110 4595
-Wire Wire Line
-	5060 4695 5165 4695
-Connection ~ 5110 4695
-Wire Wire Line
-	3705 3995 4290 3995
-Wire Wire Line
-	3235 4095 4290 4095
-Wire Wire Line
-	3705 4195 4290 4195
-Wire Wire Line
-	9175 1165 9355 1165
-Wire Wire Line
-	3235 4295 4290 4295
-Wire Wire Line
-	3705 4395 4290 4395
-Wire Wire Line
-	3235 4495 4290 4495
-Wire Wire Line
-	3230 5155 2990 5155
-Wire Wire Line
-	3230 4955 3095 4955
-Wire Wire Line
-	1270 4495 1380 4495
-Wire Wire Line
-	1270 4595 1380 4595
-Wire Wire Line
-	1265 4695 1380 4695
-Wire Wire Line
-	2780 3995 3405 3995
-Wire Wire Line
-	2780 4095 2935 4095
-Wire Wire Line
-	2780 4195 3405 4195
-Wire Wire Line
-	2780 4295 2935 4295
-Wire Wire Line
-	1265 4795 1380 4795
-Wire Wire Line
-	1265 4895 1380 4895
-Wire Wire Line
-	2780 4395 3405 4395
-Wire Wire Line
-	1380 4995 1265 4995
-Wire Wire Line
-	2780 4495 2935 4495
-Wire Wire Line
-	1380 3995 1250 3995
-Wire Wire Line
-	1265 5195 1380 5195
-Wire Wire Line
-	3095 4695 3095 5680
-Wire Wire Line
-	2780 4695 4290 4695
-Wire Wire Line
-	10235 1265 9655 1265
-Wire Wire Line
-	9655 1165 10235 1165
-Wire Wire Line
-	9170 1265 9355 1265
-Wire Wire Line
-	3705 4595 4290 4595
-Wire Wire Line
-	2780 4595 3405 4595
-Wire Wire Line
-	5110 4295 5060 4295
-Connection ~ 5110 4395
-Wire Wire Line
-	5110 4195 5060 4195
-Connection ~ 5110 4295
-Wire Wire Line
-	5110 4095 5060 4095
-Connection ~ 5110 4195
-Wire Wire Line
-	5110 3995 5060 3995
-Connection ~ 5110 4095
-Wire Wire Line
-	4290 3795 3845 3795
-Connection ~ 3095 4695
-Wire Wire Line
-	1380 5095 1105 5095
-Wire Wire Line
-	9175 1065 9355 1065
-Wire Wire Line
-	9170 960  9355 960 
-Wire Wire Line
-	4250 4795 4290 4795
-Wire Wire Line
-	9655 1065 10235 1065
-Wire Wire Line
-	9655 960  10235 960 
-Wire Wire Line
-	10725 960  10725 1310
-Wire Wire Line
-	10725 960  10435 960 
-Wire Wire Line
-	10435 1065 10725 1065
-Connection ~ 10725 1065
-Wire Wire Line
-	10435 1165 10725 1165
-Connection ~ 10725 1165
-Wire Wire Line
-	10435 1265 10725 1265
-Connection ~ 10725 1265
 $Comp
 L C_Small C18
 U 1 1 58030E40
@@ -572,10 +461,6 @@ F 3 "" H 3960 7125 50  0000 C CNN
 	1    3960 7125
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3960 7125 3960 7065
-Wire Wire Line
-	3960 6865 3960 6800
 $Comp
 L +5VP #PWR068
 U 1 1 58031908
@@ -3917,7 +3802,6 @@ F 3 "" H 1610 1580 50  0000 L CNN
 $EndComp
 Text Notes 1990 2065 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
-Connection ~ 1710 2780
 $Comp
 L GND #PWR069
 U 1 1 580379C8
@@ -3929,31 +3813,6 @@ F 3 "" H 1710 2910 50  0000 C CNN
 	1    1710 2910
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2130 945  2395 945 
-Connection ~ 1710 945 
-Wire Wire Line
-	1710 945  1710 1380
-Wire Wire Line
-	1250 945  1930 945 
-Wire Wire Line
-	1250 1035 1250 945 
-Wire Wire Line
-	1250 2780 1250 2320
-Wire Wire Line
-	1710 2780 1250 2780
-Wire Wire Line
-	1710 2695 1710 2910
-Connection ~ 1710 2120
-Wire Wire Line
-	1710 1780 1710 2395
-Wire Wire Line
-	1550 2120 1710 2120
-Connection ~ 1250 1580
-Wire Wire Line
-	1250 1335 1250 1920
-Wire Wire Line
-	1410 1580 1250 1580
 $Comp
 L R R24
 U 1 1 580379C6
@@ -4029,7 +3888,6 @@ F 3 "" H 4265 1600 50  0000 L CNN
 $EndComp
 Text Notes 4645 2085 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
-Connection ~ 4365 2800
 $Comp
 L GND #PWR070
 U 1 1 5803BF6D
@@ -4041,31 +3899,6 @@ F 3 "" H 4365 2930 50  0000 C CNN
 	1    4365 2930
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4785 965  5050 965 
-Connection ~ 4365 965 
-Wire Wire Line
-	4365 965  4365 1400
-Wire Wire Line
-	3905 965  4585 965 
-Wire Wire Line
-	3905 1055 3905 965 
-Wire Wire Line
-	3905 2800 3905 2340
-Wire Wire Line
-	4365 2800 3905 2800
-Wire Wire Line
-	4365 2715 4365 2930
-Connection ~ 4365 2140
-Wire Wire Line
-	4365 1800 4365 2415
-Wire Wire Line
-	4205 2140 4365 2140
-Connection ~ 3905 1600
-Wire Wire Line
-	3905 1355 3905 1940
-Wire Wire Line
-	4065 1600 3905 1600
 $Comp
 L R R75
 U 1 1 5803BF86
@@ -4141,7 +3974,6 @@ F 3 "" H 7060 1620 50  0000 L CNN
 $EndComp
 Text Notes 7440 2105 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
-Connection ~ 7160 2820
 $Comp
 L GND #PWR071
 U 1 1 5803D2EB
@@ -4153,31 +3985,6 @@ F 3 "" H 7160 2950 50  0000 C CNN
 	1    7160 2950
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7580 985  7845 985 
-Connection ~ 7160 985 
-Wire Wire Line
-	7160 985  7160 1420
-Wire Wire Line
-	6700 985  7380 985 
-Wire Wire Line
-	6700 1075 6700 985 
-Wire Wire Line
-	6700 2820 6700 2360
-Wire Wire Line
-	7160 2820 6700 2820
-Wire Wire Line
-	7160 2735 7160 2950
-Connection ~ 7160 2160
-Wire Wire Line
-	7160 1820 7160 2435
-Wire Wire Line
-	7000 2160 7160 2160
-Connection ~ 6700 1620
-Wire Wire Line
-	6700 1375 6700 1960
-Wire Wire Line
-	6860 1620 6700 1620
 $Comp
 L R R80
 U 1 1 5803D304
@@ -4230,250 +4037,158 @@ $EndComp
 $Comp
 L BC817-40 Q21
 U 1 1 5803F35D
-P 6865 5095
-F 0 "Q21" H 7056 5186 50  0000 L CNN
-F 1 "BC817" H 7056 5095 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 7056 5004 50  0001 L CIN
-F 3 "" H 6865 5095 50  0000 L CNN
-	1    6865 5095
+P 8970 5095
+F 0 "Q21" H 9161 5186 50  0000 L CNN
+F 1 "BC817" H 9161 5095 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 9161 5004 50  0001 L CIN
+F 3 "" H 8970 5095 50  0000 L CNN
+	1    8970 5095
 	1    0    0    -1  
 $EndComp
 $Comp
 L BC817-40 Q20
 U 1 1 5803F363
-P 6605 4555
-F 0 "Q20" H 6796 4646 50  0000 L CNN
-F 1 "BC817" H 6796 4555 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 6796 4464 50  0001 L CIN
-F 3 "" H 6605 4555 50  0000 L CNN
-	1    6605 4555
+P 8710 4555
+F 0 "Q20" H 8901 4646 50  0000 L CNN
+F 1 "BC817" H 8901 4555 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 8901 4464 50  0001 L CIN
+F 3 "" H 8710 4555 50  0000 L CNN
+	1    8710 4555
 	-1   0    0    -1  
 $EndComp
-Connection ~ 6505 5755
 $Comp
 L GND #PWR072
 U 1 1 5803F36B
-P 6505 5885
-F 0 "#PWR072" H 6505 5635 50  0001 C CNN
-F 1 "GND" H 6510 5712 50  0000 C CNN
-F 2 "" H 6505 5885 50  0000 C CNN
-F 3 "" H 6505 5885 50  0000 C CNN
-	1    6505 5885
+P 8610 5885
+F 0 "#PWR072" H 8610 5635 50  0001 C CNN
+F 1 "GND" H 8615 5712 50  0000 C CNN
+F 2 "" H 8610 5885 50  0000 C CNN
+F 3 "" H 8610 5885 50  0000 C CNN
+	1    8610 5885
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	6965 3895 6965 4010
-Wire Wire Line
-	6965 5755 6965 5295
-Wire Wire Line
-	6505 5755 6965 5755
-Wire Wire Line
-	6505 5670 6505 5885
-Connection ~ 6505 5095
-Wire Wire Line
-	6505 4755 6505 5370
-Wire Wire Line
-	6665 5095 6505 5095
-Connection ~ 6965 4555
-Wire Wire Line
-	6965 4310 6965 4895
-Wire Wire Line
-	6805 4555 6965 4555
 $Comp
 L R R11
 U 1 1 5803F388
-P 6505 5520
-F 0 "R11" H 6593 5566 50  0000 L CNN
-F 1 "68R" H 6593 5475 50  0000 L CNN
-F 2 "Zimprich:R_1206" V 6435 5520 50  0001 C CNN
-F 3 "" H 6505 5520 50  0001 C CNN
-F 4 "Value" H 6505 5520 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 6505 5520 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 6505 5520 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 6505 5520 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 6505 5520 60  0001 C CNN "Bauform"
-F 9 "Value" H 6505 5520 60  0001 C CNN "Funktion"
-F 10 "Value" H 6505 5520 60  0001 C CNN "Hersteller"
-F 11 "Value" H 6505 5520 60  0001 C CNN "Hersteller Bestellnummer"
-	1    6505 5520
+P 8610 5520
+F 0 "R11" H 8698 5566 50  0000 L CNN
+F 1 "68R" H 8698 5475 50  0000 L CNN
+F 2 "Zimprich:R_1206" V 8540 5520 50  0001 C CNN
+F 3 "" H 8610 5520 50  0001 C CNN
+F 4 "Value" H 8610 5520 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 8610 5520 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8610 5520 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8610 5520 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8610 5520 60  0001 C CNN "Bauform"
+F 9 "Value" H 8610 5520 60  0001 C CNN "Funktion"
+F 10 "Value" H 8610 5520 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8610 5520 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8610 5520
 	-1   0    0    -1  
 $EndComp
 $Comp
 L R R74
 U 1 1 5803F393
-P 6965 4160
-F 0 "R74" H 7053 4206 50  0000 L CNN
-F 1 "8K2" H 7053 4115 50  0000 L CNN
-F 2 "Zimprich:R_1206" H 7053 4334 50  0001 L CNN
-F 3 "" H 6965 4160 50  0001 C CNN
-F 4 "Value" H 7053 4235 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 7053 4129 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 7053 4023 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 7053 3917 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 7053 3811 60  0001 L CNN "Bauform"
-F 9 "Value" H 6965 4160 60  0001 C CNN "Funktion"
-F 10 "Value" H 6965 4160 60  0001 C CNN "Hersteller"
-F 11 "Value" H 6965 4160 60  0001 C CNN "Hersteller Bestellnummer"
-	1    6965 4160
+P 9070 4160
+F 0 "R74" H 9158 4206 50  0000 L CNN
+F 1 "8K2" H 9158 4115 50  0000 L CNN
+F 2 "Zimprich:R_1206" H 9158 4334 50  0001 L CNN
+F 3 "" H 9070 4160 50  0001 C CNN
+F 4 "Value" H 9158 4235 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 9158 4129 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 9158 4023 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 9158 3917 60  0001 L CNN "Bestellnummer"
+F 8 "Value" H 9158 3811 60  0001 L CNN "Bauform"
+F 9 "Value" H 9070 4160 60  0001 C CNN "Funktion"
+F 10 "Value" H 9070 4160 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9070 4160 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9070 4160
 	-1   0    0    -1  
 $EndComp
-Wire Notes Line
-	4260 4730 4945 4730
-Wire Notes Line
-	4945 4730 4945 3750
-Wire Notes Line
-	4945 3750 4260 3750
-Wire Notes Line
-	4260 3750 4260 4730
-Wire Wire Line
-	5110 3995 5110 4695
 $Comp
 L BC817-40 Q23
 U 1 1 58046110
-P 8255 5110
-F 0 "Q23" H 8446 5201 50  0000 L CNN
-F 1 "BC817" H 8446 5110 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 8446 5019 50  0001 L CIN
-F 3 "" H 8255 5110 50  0000 L CNN
-	1    8255 5110
+P 10360 5110
+F 0 "Q23" H 10551 5201 50  0000 L CNN
+F 1 "BC817" H 10551 5110 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 10551 5019 50  0001 L CIN
+F 3 "" H 10360 5110 50  0000 L CNN
+	1    10360 5110
 	1    0    0    -1  
 $EndComp
 $Comp
 L BC817-40 Q22
 U 1 1 58046116
-P 7995 4570
-F 0 "Q22" H 8186 4661 50  0000 L CNN
-F 1 "BC817" H 8186 4570 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 8186 4479 50  0001 L CIN
-F 3 "" H 7995 4570 50  0000 L CNN
-	1    7995 4570
+P 10100 4570
+F 0 "Q22" H 10291 4661 50  0000 L CNN
+F 1 "BC817" H 10291 4570 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 10291 4479 50  0001 L CIN
+F 3 "" H 10100 4570 50  0000 L CNN
+	1    10100 4570
 	-1   0    0    -1  
 $EndComp
-Connection ~ 7895 5770
 $Comp
 L GND #PWR073
 U 1 1 5804611D
-P 7895 5900
-F 0 "#PWR073" H 7895 5650 50  0001 C CNN
-F 1 "GND" H 7900 5727 50  0000 C CNN
-F 2 "" H 7895 5900 50  0000 C CNN
-F 3 "" H 7895 5900 50  0000 C CNN
-	1    7895 5900
+P 10000 5900
+F 0 "#PWR073" H 10000 5650 50  0001 C CNN
+F 1 "GND" H 10005 5727 50  0000 C CNN
+F 2 "" H 10000 5900 50  0000 C CNN
+F 3 "" H 10000 5900 50  0000 C CNN
+	1    10000 5900
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	7895 3795 7895 4370
-Wire Wire Line
-	8355 3795 8355 4025
-Wire Wire Line
-	8355 5770 8355 5310
-Wire Wire Line
-	7895 5770 8355 5770
-Wire Wire Line
-	7895 5685 7895 5900
-Connection ~ 7895 5110
-Wire Wire Line
-	7895 4770 7895 5385
-Wire Wire Line
-	8055 5110 7895 5110
-Connection ~ 8355 4570
-Wire Wire Line
-	8355 4325 8355 4910
-Wire Wire Line
-	8195 4570 8355 4570
 $Comp
 L R R79
 U 1 1 5804613A
-P 7895 5535
-F 0 "R79" H 7983 5581 50  0000 L CNN
-F 1 "68R" H 7983 5490 50  0000 L CNN
-F 2 "Zimprich:R_1206" V 7825 5535 50  0001 C CNN
-F 3 "" H 7895 5535 50  0001 C CNN
-F 4 "Value" H 7895 5535 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7895 5535 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7895 5535 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 7895 5535 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7895 5535 60  0001 C CNN "Bauform"
-F 9 "Value" H 7895 5535 60  0001 C CNN "Funktion"
-F 10 "Value" H 7895 5535 60  0001 C CNN "Hersteller"
-F 11 "Value" H 7895 5535 60  0001 C CNN "Hersteller Bestellnummer"
-	1    7895 5535
+P 10000 5535
+F 0 "R79" H 10088 5581 50  0000 L CNN
+F 1 "68R" H 10088 5490 50  0000 L CNN
+F 2 "Zimprich:R_1206" V 9930 5535 50  0001 C CNN
+F 3 "" H 10000 5535 50  0001 C CNN
+F 4 "Value" H 10000 5535 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 10000 5535 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 10000 5535 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 10000 5535 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 10000 5535 60  0001 C CNN "Bauform"
+F 9 "Value" H 10000 5535 60  0001 C CNN "Funktion"
+F 10 "Value" H 10000 5535 60  0001 C CNN "Hersteller"
+F 11 "Value" H 10000 5535 60  0001 C CNN "Hersteller Bestellnummer"
+	1    10000 5535
 	-1   0    0    -1  
 $EndComp
 $Comp
 L R R81
 U 1 1 58046145
-P 8355 4175
-F 0 "R81" H 8443 4221 50  0000 L CNN
-F 1 "8K2" H 8443 4130 50  0000 L CNN
-F 2 "Zimprich:R_1206" H 8443 4349 50  0001 L CNN
-F 3 "" H 8355 4175 50  0001 C CNN
-F 4 "Value" H 8443 4250 60  0001 L CNN "Gehäuseart"
-F 5 "Value" H 8443 4144 60  0001 L CNN "Bestelllink"
-F 6 "Value" H 8443 4038 60  0001 L CNN "Technische Daten"
-F 7 "Value" H 8443 3932 60  0001 L CNN "Bestellnummer"
-F 8 "Value" H 8443 3826 60  0001 L CNN "Bauform"
-F 9 "Value" H 8355 4175 60  0001 C CNN "Funktion"
-F 10 "Value" H 8355 4175 60  0001 C CNN "Hersteller"
-F 11 "Value" H 8355 4175 60  0001 C CNN "Hersteller Bestellnummer"
-	1    8355 4175
+P 10460 4175
+F 0 "R81" H 10548 4221 50  0000 L CNN
+F 1 "8K2" H 10548 4130 50  0000 L CNN
+F 2 "Zimprich:R_1206" H 10548 4349 50  0001 L CNN
+F 3 "" H 10460 4175 50  0001 C CNN
+F 4 "Value" H 10548 4250 60  0001 L CNN "Gehäuseart"
+F 5 "Value" H 10548 4144 60  0001 L CNN "Bestelllink"
+F 6 "Value" H 10548 4038 60  0001 L CNN "Technische Daten"
+F 7 "Value" H 10548 3932 60  0001 L CNN "Bestellnummer"
+F 8 "Value" H 10548 3826 60  0001 L CNN "Bauform"
+F 9 "Value" H 10460 4175 60  0001 C CNN "Funktion"
+F 10 "Value" H 10460 4175 60  0001 C CNN "Hersteller"
+F 11 "Value" H 10460 4175 60  0001 C CNN "Hersteller Bestellnummer"
+	1    10460 4175
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	4290 3895 3850 3895
-Wire Wire Line
-	5060 3895 6965 3895
-Wire Wire Line
-	6505 3895 6505 4355
-Connection ~ 6505 3895
-Wire Wire Line
-	5060 3795 8355 3795
-Connection ~ 7895 3795
-Wire Wire Line
-	4290 3595 4140 3595
-Wire Wire Line
-	4140 3595 4140 3355
-Wire Wire Line
-	4140 3355 5475 3355
-Wire Wire Line
-	5475 3355 5475 3795
-Connection ~ 5475 3795
-Wire Wire Line
-	4290 3695 4050 3695
-Wire Wire Line
-	4050 3695 4050 3290
-Wire Wire Line
-	4050 3290 5565 3290
-Wire Wire Line
-	5565 3290 5565 3895
-Connection ~ 5565 3895
 $Comp
 L GND #PWR074
 U 1 1 5804349C
-P 5165 4695
-F 0 "#PWR074" H 5165 4445 60  0001 C CNN
-F 1 "GND" V 5165 4490 60  0000 C CNN
-F 2 "" H 5165 4695 60  0000 C CNN
-F 3 "" H 5165 4695 60  0000 C CNN
-	1    5165 4695
+P 7270 4695
+F 0 "#PWR074" H 7270 4445 60  0001 C CNN
+F 1 "GND" V 7270 4490 60  0000 C CNN
+F 2 "" H 7270 4695 60  0000 C CNN
+F 3 "" H 7270 4695 60  0000 C CNN
+	1    7270 4695
 	0    -1   1    0   
 $EndComp
-Text Notes 4595 5320 0    79   ~ 0
+Text Notes 6700 5320 0    79   ~ 0
 Bargraph-Anzeige,\n10 Elemente
-Wire Notes Line
-	4720 4735 4720 5090
-Wire Notes Line
-	4720 5090 5360 5090
-Wire Notes Line
-	4730 5090 4565 5090
-Wire Notes Line
-	4565 5090 4565 5375
-Wire Notes Line
-	4565 5375 5770 5375
-Wire Notes Line
-	5770 5375 5770 5090
-Wire Notes Line
-	5770 5090 5355 5090
 Text GLabel 1105 5095 0    39   Input ~ 0
 GPS-LED
 Text Notes 5000 7315 0    79   ~ 0
@@ -8331,8 +8046,6 @@ F 3 "" H 1265 5395 60  0000 C CNN
 	1    1265 5395
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	1265 5395 1380 5395
 NoConn ~ 1380 4295
 $Comp
 L R R43
@@ -8353,8 +8066,6 @@ F 11 "Value" H 1160 4195 60  0001 C CNN "Hersteller Bestellnummer"
 	1    1160 4195
 	0    -1   1    0   
 $EndComp
-Wire Wire Line
-	1010 4195 880  4195
 $Comp
 L +5VP #PWR076
 U 1 1 58A30A79
@@ -8366,8 +8077,6 @@ F 3 "" H 880 4195 50  0000 C CNN
 	1    880  4195
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	1310 4195 1380 4195
 $Comp
 L SPEAKER SP2
 U 1 1 58B6246B
@@ -8384,7 +8093,7 @@ F 8 "Value" H 3540 5780 60  0001 C CNN "Bauform"
 	1    3540 5780
 	1    0    0    1   
 $EndComp
-Text Notes 3895 5890 0    59   ~ 0
+Text Notes 6000 5890 0    59   ~ 0
 altanativer Platz um den Summer zu montieren\nes darf nur 1 Summer verwendet werden\n
 $Comp
 L GND #PWR077
@@ -8397,32 +8106,412 @@ F 3 "" H 3105 5880 60  0000 C CNN
 	1    3105 5880
 	0    1    1    0   
 $EndComp
+$Comp
+L CONN_01X14 P7
+U 1 1 58B75CB0
+P 6595 4145
+F 0 "P7" H 6255 5045 50  0000 L CNN
+F 1 "Status LEDs" H 6390 5045 50  0000 L CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x14_Pitch2.54mm" H -2535 735 50  0001 C CNN
+F 3 "" H -2535 735 50  0001 C CNN
+F 4 "Value" H 6595 4145 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 6595 4145 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 6595 4145 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 6595 4145 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 6595 4145 60  0001 C CNN "Bauform"
+F 9 "Value" H 6595 4145 60  0001 C CNN "Funktion"
+F 10 "Value" H 6595 4145 60  0001 C CNN "Hersteller"
+F 11 "Value" H 6595 4145 60  0001 C CNN "Hersteller Bestellnummer"
+	1    6595 4145
+	1    0    0    -1  
+$EndComp
+Text GLabel 3795 3495 0    39   Input ~ 0
+Taster
+$Comp
+L CONN_02X07 P50
+U 1 1 58BAEDC5
+P 5200 3080
+F 0 "P50" H 5200 3595 50  0000 C CNN
+F 1 "Led Panel" H 5200 3504 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x07_Pitch2.54mm" H -3335 -2265 50  0001 C CNN
+F 3 "" H -3335 -2265 50  0001 C CNN
+F 4 "Value" H 5200 3080 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 5200 3080 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 5200 3080 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 5200 3080 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 5200 3080 60  0001 C CNN "Bauform"
+F 9 "Value" H 5200 3080 60  0001 C CNN "Funktion"
+F 10 "Value" H 5200 3080 60  0001 C CNN "Hersteller"
+F 11 "Value" H 5200 3080 60  0001 C CNN "Hersteller Bestellnummer"
+	1    5200 3080
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7215 4395 7165 4395
+Wire Wire Line
+	7215 4495 7165 4495
+Connection ~ 7215 4495
+Wire Wire Line
+	7215 4595 7165 4595
+Connection ~ 7215 4595
+Wire Wire Line
+	7165 4695 7270 4695
+Connection ~ 7215 4695
+Wire Wire Line
+	3705 3995 6395 3995
+Wire Wire Line
+	3235 4095 6395 4095
+Wire Wire Line
+	3705 4195 6395 4195
+Wire Wire Line
+	9175 1165 9355 1165
+Wire Wire Line
+	3235 4295 6395 4295
+Wire Wire Line
+	3705 4395 6395 4395
+Wire Wire Line
+	3235 4495 6395 4495
+Wire Wire Line
+	3230 5155 2990 5155
+Wire Wire Line
+	3230 4955 3095 4955
+Wire Wire Line
+	1270 4495 1380 4495
+Wire Wire Line
+	1270 4595 1380 4595
+Wire Wire Line
+	1265 4695 1380 4695
+Wire Wire Line
+	2780 3995 3405 3995
+Wire Wire Line
+	2780 4095 2935 4095
+Wire Wire Line
+	2780 4195 3405 4195
+Wire Wire Line
+	2780 4295 2935 4295
+Wire Wire Line
+	1265 4795 1380 4795
+Wire Wire Line
+	1265 4895 1380 4895
+Wire Wire Line
+	2780 4395 3405 4395
+Wire Wire Line
+	1380 4995 1265 4995
+Wire Wire Line
+	2780 4495 2935 4495
+Wire Wire Line
+	1380 3995 1250 3995
+Wire Wire Line
+	1265 5195 1380 5195
+Wire Wire Line
+	3095 4695 3095 5680
+Wire Wire Line
+	2780 4695 6395 4695
+Wire Wire Line
+	10235 1265 9655 1265
+Wire Wire Line
+	9655 1165 10235 1165
+Wire Wire Line
+	9170 1265 9355 1265
+Wire Wire Line
+	3705 4595 6395 4595
+Wire Wire Line
+	2780 4595 3405 4595
+Wire Wire Line
+	7215 4295 7165 4295
+Connection ~ 7215 4395
+Wire Wire Line
+	7215 4195 7165 4195
+Connection ~ 7215 4295
+Wire Wire Line
+	7215 4095 7165 4095
+Connection ~ 7215 4195
+Wire Wire Line
+	7215 3995 7165 3995
+Connection ~ 7215 4095
+Wire Wire Line
+	3845 3795 6395 3795
+Connection ~ 3095 4695
+Wire Wire Line
+	1380 5095 1105 5095
+Wire Wire Line
+	9175 1065 9355 1065
+Wire Wire Line
+	9170 960  9355 960 
+Wire Wire Line
+	9655 1065 10235 1065
+Wire Wire Line
+	9655 960  10235 960 
+Wire Wire Line
+	10725 960  10725 1310
+Wire Wire Line
+	10725 960  10435 960 
+Wire Wire Line
+	10435 1065 10725 1065
+Connection ~ 10725 1065
+Wire Wire Line
+	10435 1165 10725 1165
+Connection ~ 10725 1165
+Wire Wire Line
+	10435 1265 10725 1265
+Connection ~ 10725 1265
+Wire Wire Line
+	3960 7125 3960 7065
+Wire Wire Line
+	3960 6865 3960 6800
+Connection ~ 1710 2780
+Wire Wire Line
+	2130 945  2395 945 
+Connection ~ 1710 945 
+Wire Wire Line
+	1710 945  1710 1380
+Wire Wire Line
+	1250 945  1930 945 
+Wire Wire Line
+	1250 1035 1250 945 
+Wire Wire Line
+	1250 2780 1250 2320
+Wire Wire Line
+	1710 2780 1250 2780
+Wire Wire Line
+	1710 2695 1710 2910
+Connection ~ 1710 2120
+Wire Wire Line
+	1710 1780 1710 2395
+Wire Wire Line
+	1550 2120 1710 2120
+Connection ~ 1250 1580
+Wire Wire Line
+	1250 1335 1250 1920
+Wire Wire Line
+	1410 1580 1250 1580
+Connection ~ 4365 2800
+Wire Wire Line
+	4785 965  5050 965 
+Connection ~ 4365 965 
+Wire Wire Line
+	4365 965  4365 1400
+Wire Wire Line
+	3905 965  4585 965 
+Wire Wire Line
+	3905 1055 3905 965 
+Wire Wire Line
+	3905 2800 3905 2340
+Wire Wire Line
+	4365 2800 3905 2800
+Wire Wire Line
+	4365 2715 4365 2930
+Connection ~ 4365 2140
+Wire Wire Line
+	4365 1800 4365 2415
+Wire Wire Line
+	4205 2140 4365 2140
+Connection ~ 3905 1600
+Wire Wire Line
+	3905 1355 3905 1940
+Wire Wire Line
+	4065 1600 3905 1600
+Connection ~ 7160 2820
+Wire Wire Line
+	7580 985  7845 985 
+Connection ~ 7160 985 
+Wire Wire Line
+	7160 985  7160 1420
+Wire Wire Line
+	6700 985  7380 985 
+Wire Wire Line
+	6700 1075 6700 985 
+Wire Wire Line
+	6700 2820 6700 2360
+Wire Wire Line
+	7160 2820 6700 2820
+Wire Wire Line
+	7160 2735 7160 2950
+Connection ~ 7160 2160
+Wire Wire Line
+	7160 1820 7160 2435
+Wire Wire Line
+	7000 2160 7160 2160
+Connection ~ 6700 1620
+Wire Wire Line
+	6700 1375 6700 1960
+Wire Wire Line
+	6860 1620 6700 1620
+Connection ~ 8610 5755
+Wire Wire Line
+	9070 3895 9070 4010
+Wire Wire Line
+	9070 5755 9070 5295
+Wire Wire Line
+	8610 5755 9070 5755
+Wire Wire Line
+	8610 5670 8610 5885
+Connection ~ 8610 5095
+Wire Wire Line
+	8610 4755 8610 5370
+Wire Wire Line
+	8770 5095 8610 5095
+Connection ~ 9070 4555
+Wire Wire Line
+	9070 4310 9070 4895
+Wire Wire Line
+	8910 4555 9070 4555
+Wire Notes Line
+	6365 4730 7050 4730
+Wire Notes Line
+	7050 4730 7050 3750
+Wire Notes Line
+	7050 3750 6365 3750
+Wire Notes Line
+	6365 3750 6365 4730
+Wire Wire Line
+	7215 3995 7215 4695
+Connection ~ 10000 5770
+Wire Wire Line
+	10000 3795 10000 4370
+Wire Wire Line
+	10460 3795 10460 4025
+Wire Wire Line
+	10460 5770 10460 5310
+Wire Wire Line
+	10000 5770 10460 5770
+Wire Wire Line
+	10000 5685 10000 5900
+Connection ~ 10000 5110
+Wire Wire Line
+	10000 4770 10000 5385
+Wire Wire Line
+	10160 5110 10000 5110
+Connection ~ 10460 4570
+Wire Wire Line
+	10460 4325 10460 4910
+Wire Wire Line
+	10300 4570 10460 4570
+Wire Wire Line
+	3850 3895 6395 3895
+Wire Wire Line
+	7165 3895 9070 3895
+Wire Wire Line
+	8610 3895 8610 4355
+Connection ~ 8610 3895
+Wire Wire Line
+	7165 3795 10460 3795
+Connection ~ 10000 3795
+Wire Wire Line
+	6245 3595 6395 3595
+Wire Wire Line
+	6245 2780 6245 3595
+Wire Wire Line
+	6245 3355 7580 3355
+Wire Wire Line
+	7580 3355 7580 3795
+Connection ~ 7580 3795
+Wire Wire Line
+	6155 3695 6395 3695
+Wire Wire Line
+	6155 2800 6155 3695
+Wire Wire Line
+	6155 3290 7670 3290
+Wire Wire Line
+	7670 3290 7670 3895
+Connection ~ 7670 3895
+Wire Notes Line
+	6825 4735 6825 5090
+Wire Notes Line
+	6825 5090 7465 5090
+Wire Notes Line
+	6835 5090 6670 5090
+Wire Notes Line
+	6670 5090 6670 5375
+Wire Notes Line
+	6670 5375 7875 5375
+Wire Notes Line
+	7875 5375 7875 5090
+Wire Notes Line
+	7875 5090 7460 5090
+Wire Wire Line
+	1265 5395 1380 5395
+Wire Wire Line
+	1010 4195 880  4195
+Wire Wire Line
+	1310 4195 1380 4195
 Wire Wire Line
 	3240 5880 3105 5880
 Wire Wire Line
 	3095 5680 3240 5680
 Connection ~ 3095 4955
-$Comp
-L CONN_01X14 P7
-U 1 1 58B75CB0
-P 4490 4145
-F 0 "P7" H 4150 5045 50  0000 L CNN
-F 1 "Status LEDs" H 4285 5045 50  0000 L CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x14_Pitch2.54mm" H -4640 735 50  0001 C CNN
-F 3 "" H -4640 735 50  0001 C CNN
-F 4 "Value" H 4490 4145 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 4490 4145 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 4490 4145 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 4490 4145 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 4490 4145 60  0001 C CNN "Bauform"
-F 9 "Value" H 4490 4145 60  0001 C CNN "Funktion"
-F 10 "Value" H 4490 4145 60  0001 C CNN "Hersteller"
-F 11 "Value" H 4490 4145 60  0001 C CNN "Hersteller Bestellnummer"
-	1    4490 4145
-	1    0    0    -1  
-$EndComp
-Text GLabel 3795 3495 0    39   Input ~ 0
-Taster
 Wire Wire Line
-	4290 3495 3795 3495
+	3795 3495 6395 3495
+Wire Wire Line
+	4950 2780 4460 2780
+Wire Wire Line
+	4460 2780 4460 3495
+Connection ~ 4460 3495
+Wire Wire Line
+	5450 2780 6245 2780
+Connection ~ 6245 3355
+Wire Wire Line
+	4950 2880 4920 2880
+Wire Wire Line
+	4920 2880 4920 2800
+Wire Wire Line
+	4920 2800 6155 2800
+Connection ~ 6155 3290
+Wire Wire Line
+	5450 2880 6100 2880
+Wire Wire Line
+	6100 2880 6100 3795
+Connection ~ 6100 3795
+Wire Wire Line
+	4950 2980 4535 2980
+Wire Wire Line
+	4535 2980 4535 3895
+Connection ~ 4535 3895
+Wire Wire Line
+	5450 2980 6030 2980
+Wire Wire Line
+	6030 2980 6030 3995
+Connection ~ 6030 3995
+Wire Wire Line
+	4950 3080 4620 3080
+Wire Wire Line
+	4620 3080 4620 4095
+Connection ~ 4620 4095
+Wire Wire Line
+	5450 3080 5940 3080
+Wire Wire Line
+	5940 3080 5940 4195
+Connection ~ 5940 4195
+Wire Wire Line
+	5450 3180 5855 3180
+Wire Wire Line
+	5855 3180 5855 4395
+Connection ~ 5855 4395
+Wire Wire Line
+	4950 3180 4685 3180
+Wire Wire Line
+	4685 3180 4685 4295
+Connection ~ 4685 4295
+Wire Wire Line
+	4950 3280 4750 3280
+Wire Wire Line
+	4750 3280 4750 4495
+Connection ~ 4750 4495
+Wire Wire Line
+	5450 3280 5780 3280
+Wire Wire Line
+	5780 3280 5780 4595
+Connection ~ 5780 4595
+Wire Wire Line
+	4950 3380 4810 3380
+Wire Wire Line
+	4810 3380 4810 4695
+Connection ~ 4810 4695
+Wire Wire Line
+	5450 3380 5715 3380
+Wire Wire Line
+	5715 3380 5715 4895
+Connection ~ 5715 4795
+Wire Wire Line
+	5715 4795 6395 4795
 $EndSCHEMATC
