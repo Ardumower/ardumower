@@ -67,9 +67,9 @@ F 1 "F_5A" H 2055 1980 40  0000 C CNN
 F 2 "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456_und_TR15_Halter" H 2055 2040 60  0001 C CNN
 F 3 "" H 2055 2040 60  0000 C CNN
 F 4 "Value" H 2055 2040 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2055 2040 60  0001 C CNN "Bestelllink"
+F 5 "https://www.reichelt.de/Sicherungshalter/RND-170-00006/3/index.html?ACTION=3&LA=5700&ARTICLE=170726&GROUPID=7659&artnr=RND+170-00006" H 2055 2040 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 2055 2040 60  0001 C CNN "Technische Daten"
-F 7 "R: PL 112000" H 2055 2040 60  0001 C CNN "Bestellnummer"
+F 7 "R: RND 170-00006" H 2055 2040 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 2055 2040 60  0001 C CNN "Bauform"
 F 9 "Value" H 2055 2040 60  0001 C CNN "Funktion"
 F 10 "Value" H 2055 2040 60  0001 C CNN "Hersteller"
@@ -86,9 +86,9 @@ F 1 "F_10A" V 7350 2230 40  0000 C CNN
 F 2 "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456_und_TR15_Halter" H 7350 2085 60  0001 C CNN
 F 3 "" H 7350 2085 60  0000 C CNN
 F 4 "Value" H 7350 2085 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7350 2085 60  0001 C CNN "Bestelllink"
+F 5 "https://www.reichelt.de/Sicherungshalter/RND-170-00006/3/index.html?ACTION=3&LA=5700&ARTICLE=170726&GROUPID=7659&artnr=RND+170-00006" H 7350 2085 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 7350 2085 60  0001 C CNN "Technische Daten"
-F 7 "R: PL 112000" H 7350 2085 60  0001 C CNN "Bestellnummer"
+F 7 "R: RND 170-00006" H 7350 2085 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 7350 2085 60  0001 C CNN "Bauform"
 F 9 "Value" H 7350 2085 60  0001 C CNN "Funktion"
 F 10 "Value" H 7350 2085 60  0001 C CNN "Hersteller"

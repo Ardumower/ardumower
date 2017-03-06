@@ -80,10 +80,13 @@ F 1 "15KE33CA" V 4415 3927 50  0000 R CNN
 F 2 "Zimprich:Diode_liegend_BY500_1000_RM15" V 4461 3927 50  0001 R CNN
 F 3 "-" V 4506 3927 50  0001 R CNN
 F 4 "DO-214AA" V 4552 3927 60  0001 R CNN "Gehäuseart"
-F 5 "http://www.reichelt.de/SMD-ZF-15/3/index.html?ACTION=3;ARTICLE=42032;SEARCH=P6SMB%2033CA%20SMD" V 4605 3927 60  0001 R CNN "Bestelllink"
+F 5 "https://www.reichelt.de/Ueberspannungs-schutzdioden/1-5KE-33CA/3/index.html?ACTION=3&LA=446&ARTICLE=41873&GROUPID=3000&artnr=1%2C5KE+33CA&SEARCH=15KE33CA" V 4605 3927 60  0001 R CNN "Bestelllink"
 F 6 "Value" H 4370 4136 60  0001 C CNN "Technische Daten"
-F 7 "R: P6SMB 33CA SMD" H 4370 4005 60  0001 C CNN "Bestellnummer"
-F 8 "DO-214AA" H 4370 4005 60  0001 C CNN "Bauform"
+F 7 "R:1,5KE 33CA" H 4370 4005 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4370 4005 60  0001 C CNN "Bauform"
+F 9 "Value" H 4370 4005 60  0001 C CNN "Funktion"
+F 10 "Value" H 4370 4005 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4370 4005 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4370 4005
 	0    1    1    0   
 $EndComp

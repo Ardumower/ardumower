@@ -39,6 +39,14 @@ F 0 "U4" H 2465 1385 50  0000 C CNN
 F 1 "4017" H 2440 1310 50  0000 C CNN
 F 2 "40xx:40xx-SO16" H 2260 2070 60  0001 C CNN
 F 3 "" H 2260 2070 60  0001 C CNN
+F 4 "Value" H 2260 2070 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/ICs-C-MOS-SMD/SMD-4017/3/index.html?ACTION=3&LA=446&ARTICLE=18434&GROUPID=2925&artnr=SMD+4017&SEARCH=4017" H 2260 2070 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 2260 2070 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 2260 2070 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 2260 2070 60  0001 C CNN "Bauform"
+F 9 "Value" H 2260 2070 60  0001 C CNN "Funktion"
+F 10 "Value" H 2260 2070 60  0001 C CNN "Hersteller"
+F 11 "Value" H 2260 2070 60  0001 C CNN "Hersteller Bestellnummer"
 	1    2260 2070
 	1    0    0    -1  
 $EndComp
@@ -4632,10 +4640,13 @@ F 1 "4081" H 4341 4268 50  0000 L CNN
 F 2 "40xx:40xx-SO14" H 3800 4300 60  0001 C CNN
 F 3 "" H 3800 4300 60  0001 C CNN
 F 4 "Value" H 3800 4300 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3800 4300 60  0001 C CNN "Bestelllink"
+F 5 "https://www.reichelt.de/ICs-C-MOS-SMD/SMD-4081/3/index.html?ACTION=3&LA=446&ARTICLE=18495&GROUPID=2925&artnr=SMD+4081&SEARCH=4081" H 3800 4300 60  0001 C CNN "Bestelllink"
 F 6 "Value" H 3800 4300 60  0001 C CNN "Technische Daten"
 F 7 "Value" H 3800 4300 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 3800 4300 60  0001 C CNN "Bauform"
+F 9 "Value" H 3800 4300 60  0001 C CNN "Funktion"
+F 10 "Value" H 3800 4300 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3800 4300 60  0001 C CNN "Hersteller Bestellnummer"
 	2    3800 4300
 	1    0    0    -1  
 $EndComp

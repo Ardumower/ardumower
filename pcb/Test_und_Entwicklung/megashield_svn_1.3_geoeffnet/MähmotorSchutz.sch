@@ -127,6 +127,9 @@ F 5 "https://www.reichelt.de/BY-500-1000/3/index.html?&ACTION=3&LA=446&ARTICLE=6
 F 6 "Fast-Recovery-Gleichr.-Diode, DO201, 1000V, 5A" V 5183 3663 60  0001 L CNN "Technische Daten"
 F 7 "R: BY 500/1000" H 4895 3585 60  0001 C CNN "Bestellnummer"
 F 8 "DO-201" H 4895 3585 60  0001 C CNN "Bauform"
+F 9 "Value" H 4895 3585 60  0001 C CNN "Funktion"
+F 10 "Value" H 4895 3585 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4895 3585 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4895 3585
 	0    1    1    0   
 $EndComp
