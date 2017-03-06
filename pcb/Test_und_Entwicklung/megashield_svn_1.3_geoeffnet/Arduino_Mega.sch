@@ -10278,14 +10278,14 @@ L D_Small D11
 U 1 1 57F0A002
 P 2905 2300
 F 0 "D11" H 2790 2280 24  0000 C CNN
-F 1 "TMMBAT48" H 2800 2355 24  0000 C CNN
+F 1 "TSS0230LU" H 2800 2355 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2905 2300 50  0001 C CNN
 F 3 "" V 2905 2300 50  0001 C CNN
 F 4 "Value" H 2905 2300 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2905 2300 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2905 2300 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2905 2300 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2905 2300 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2905 2300 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2905 2300 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2905 2300 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2905 2300 60  0001 C CNN "Bauform"
 	1    2905 2300
 	-1   0    0    -1  
 $EndComp
@@ -10307,13 +10307,13 @@ L D_Small D24
 U 1 1 57F0A004
 P 2905 2420
 F 0 "D24" H 3025 2445 24  0000 C CNN
-F 1 "TMMBAT48" H 3005 2355 24  0000 C CNN
+F 1 "TSS0230LU" H 3005 2355 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2905 2420 50  0001 C CNN
 F 3 "" V 2905 2420 50  0001 C CNN
 F 4 "Value" H 2905 2420 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2905 2420 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2905 2420 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2905 2420 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2905 2420 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2905 2420 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2905 2420 60  0001 C CNN "Bestellnummer"
 F 8 "Mini Melf" H 2905 2420 60  0001 C CNN "Bauform"
 	1    2905 2420
 	1    0    0    -1  
@@ -10323,14 +10323,14 @@ L D_Small D32
 U 1 1 57F0D4D4
 P 8115 1455
 F 0 "D32" H 7840 1390 39  0000 C CNN
-F 1 "TMMBAT48" H 8115 1390 39  0000 C CNN
+F 1 "TSS0230LU" H 8115 1390 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8115 1455 50  0001 C CNN
 F 3 "" V 8115 1455 50  0001 C CNN
 F 4 "Value" H 8115 1455 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8115 1455 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8115 1455 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8115 1455 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8115 1455 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 8115 1455 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 8115 1455 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 8115 1455 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 8115 1455 60  0001 C CNN "Bauform"
 	1    8115 1455
 	-1   0    0    1   
 $EndComp
@@ -10352,14 +10352,14 @@ L D_Small D35
 U 1 1 57F0D4EA
 P 8130 1685
 F 0 "D35" H 8405 1755 39  0000 C CNN
-F 1 "TMMBAT48" H 8130 1750 39  0000 C CNN
+F 1 "TSS0230LU" H 8130 1750 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8130 1685 50  0001 C CNN
 F 3 "" V 8130 1685 50  0001 C CNN
 F 4 "Value" H 8130 1685 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8130 1685 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8130 1685 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8130 1685 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8130 1685 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 8130 1685 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 8130 1685 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 8130 1685 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 8130 1685 60  0001 C CNN "Bauform"
 	1    8130 1685
 	1    0    0    -1  
 $EndComp
@@ -10368,14 +10368,14 @@ L D_Small D33
 U 1 1 57F0DB33
 P 8120 1990
 F 0 "D33" H 7845 1925 39  0000 C CNN
-F 1 "TMMBAT48" H 8120 1925 39  0000 C CNN
+F 1 "TSS0230LU" H 8120 1925 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8120 1990 50  0001 C CNN
 F 3 "" V 8120 1990 50  0001 C CNN
 F 4 "Value" H 8120 1990 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8120 1990 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8120 1990 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8120 1990 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8120 1990 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 8120 1990 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 8120 1990 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 8120 1990 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 8120 1990 60  0001 C CNN "Bauform"
 	1    8120 1990
 	-1   0    0    1   
 $EndComp
@@ -10397,14 +10397,14 @@ L D_Small D36
 U 1 1 57F0DB49
 P 8135 2220
 F 0 "D36" H 8410 2290 39  0000 C CNN
-F 1 "TMMBAT48" H 8135 2285 39  0000 C CNN
+F 1 "TSS0230LU" H 8135 2285 39  0000 C CNN
 F 2 "Zimprich:D_0603" V 8135 2220 50  0001 C CNN
 F 3 "" V 8135 2220 50  0001 C CNN
 F 4 "Value" H 8135 2220 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 8135 2220 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 8135 2220 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 8135 2220 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 8135 2220 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 8135 2220 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 8135 2220 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 8135 2220 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 8135 2220 60  0001 C CNN "Bauform"
 	1    8135 2220
 	1    0    0    -1  
 $EndComp
@@ -10429,14 +10429,14 @@ L D_Small D8
 U 1 1 57FA204B
 P 2915 1985
 F 0 "D8" H 2800 1965 24  0000 C CNN
-F 1 "TMMBAT48" H 2810 2040 24  0000 C CNN
+F 1 "TSS0230LU" H 2810 2040 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2915 1985 50  0001 C CNN
 F 3 "" V 2915 1985 50  0001 C CNN
 F 4 "Value" H 2915 1985 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2915 1985 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2915 1985 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2915 1985 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2915 1985 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2915 1985 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2915 1985 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2915 1985 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2915 1985 60  0001 C CNN "Bauform"
 	1    2915 1985
 	-1   0    0    -1  
 $EndComp
@@ -10458,14 +10458,14 @@ L D_Small D16
 U 1 1 57FA2064
 P 2915 2105
 F 0 "D16" H 3035 2130 24  0000 C CNN
-F 1 "TMMBAT48" H 3015 2040 24  0000 C CNN
+F 1 "TSS0230LU" H 3015 2040 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2915 2105 50  0001 C CNN
 F 3 "" V 2915 2105 50  0001 C CNN
 F 4 "Value" H 2915 2105 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2915 2105 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2915 2105 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2915 2105 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2915 2105 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2915 2105 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2915 2105 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2915 2105 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2915 2105 60  0001 C CNN "Bauform"
 	1    2915 2105
 	1    0    0    -1  
 $EndComp
@@ -10496,14 +10496,14 @@ L D_Small D59
 U 1 1 57FA8BF8
 P 2965 1645
 F 0 "D59" H 2850 1625 24  0000 C CNN
-F 1 "TMMBAT48" H 2860 1700 24  0000 C CNN
+F 1 "TSS0230LU" H 2860 1700 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2965 1645 50  0001 C CNN
 F 3 "" V 2965 1645 50  0001 C CNN
 F 4 "Value" H 2965 1645 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2965 1645 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2965 1645 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2965 1645 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2965 1645 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2965 1645 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2965 1645 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2965 1645 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2965 1645 60  0001 C CNN "Bauform"
 	1    2965 1645
 	-1   0    0    -1  
 $EndComp
@@ -10525,14 +10525,14 @@ L D_Small D60
 U 1 1 57FA8C0A
 P 2965 1765
 F 0 "D60" H 3085 1790 24  0000 C CNN
-F 1 "TMMBAT48" H 3065 1700 24  0000 C CNN
+F 1 "TSS0230LU" H 3065 1700 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2965 1765 50  0001 C CNN
 F 3 "" V 2965 1765 50  0001 C CNN
 F 4 "Value" H 2965 1765 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2965 1765 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2965 1765 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2965 1765 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2965 1765 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2965 1765 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2965 1765 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2965 1765 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2965 1765 60  0001 C CNN "Bauform"
 	1    2965 1765
 	1    0    0    -1  
 $EndComp
@@ -10561,14 +10561,14 @@ L D_Small D55
 U 1 1 57FAC6FC
 P 2900 2595
 F 0 "D55" H 2785 2575 24  0000 C CNN
-F 1 "TMMBAT48" H 2795 2650 24  0000 C CNN
+F 1 "TSS0230LU" H 2795 2650 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2900 2595 50  0001 C CNN
 F 3 "" V 2900 2595 50  0001 C CNN
 F 4 "Value" H 2900 2595 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2900 2595 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2900 2595 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2900 2595 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2900 2595 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2900 2595 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2900 2595 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2900 2595 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2900 2595 60  0001 C CNN "Bauform"
 	1    2900 2595
 	-1   0    0    -1  
 $EndComp
@@ -10590,14 +10590,14 @@ L D_Small D56
 U 1 1 57FAC70E
 P 2900 2715
 F 0 "D56" H 3020 2740 24  0000 C CNN
-F 1 "TMMBAT48" H 3000 2650 24  0000 C CNN
+F 1 "TSS0230LU" H 3000 2650 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2900 2715 50  0001 C CNN
 F 3 "" V 2900 2715 50  0001 C CNN
 F 4 "Value" H 2900 2715 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2900 2715 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2900 2715 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2900 2715 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2900 2715 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2900 2715 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2900 2715 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2900 2715 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2900 2715 60  0001 C CNN "Bauform"
 	1    2900 2715
 	1    0    0    -1  
 $EndComp
@@ -10624,14 +10624,14 @@ L D_Small D53
 U 1 1 57FADD73
 P 2890 2880
 F 0 "D53" H 2775 2860 24  0000 C CNN
-F 1 "TMMBAT48" H 2785 2935 24  0000 C CNN
+F 1 "TSS0230LU" H 2785 2935 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2890 2880 50  0001 C CNN
 F 3 "" V 2890 2880 50  0001 C CNN
 F 4 "Value" H 2890 2880 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2890 2880 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2890 2880 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2890 2880 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2890 2880 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2890 2880 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2890 2880 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2890 2880 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2890 2880 60  0001 C CNN "Bauform"
 	1    2890 2880
 	-1   0    0    -1  
 $EndComp
@@ -10653,14 +10653,14 @@ L D_Small D54
 U 1 1 57FADD85
 P 2890 3000
 F 0 "D54" H 3010 3025 24  0000 C CNN
-F 1 "TMMBAT48" H 2990 2935 24  0000 C CNN
+F 1 "TSS0230LU" H 2990 2935 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2890 3000 50  0001 C CNN
 F 3 "" V 2890 3000 50  0001 C CNN
 F 4 "Value" H 2890 3000 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2890 3000 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2890 3000 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2890 3000 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2890 3000 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2890 3000 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2890 3000 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2890 3000 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2890 3000 60  0001 C CNN "Bauform"
 	1    2890 3000
 	1    0    0    -1  
 $EndComp
@@ -10689,14 +10689,14 @@ L D_Small D69
 U 1 1 57FC332D
 P 2005 4250
 F 0 "D69" H 1890 4230 24  0000 C CNN
-F 1 "TMMBAT48" H 1900 4305 24  0000 C CNN
+F 1 "TSS0230LU" H 1900 4305 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2005 4250 50  0001 C CNN
 F 3 "" V 2005 4250 50  0001 C CNN
 F 4 "Value" H 2005 4250 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2005 4250 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2005 4250 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2005 4250 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2005 4250 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2005 4250 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2005 4250 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2005 4250 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2005 4250 60  0001 C CNN "Bauform"
 	1    2005 4250
 	-1   0    0    -1  
 $EndComp
@@ -10718,14 +10718,14 @@ L D_Small D70
 U 1 1 57FC333F
 P 2005 4370
 F 0 "D70" H 2125 4395 24  0000 C CNN
-F 1 "TMMBAT48" H 2105 4305 24  0000 C CNN
+F 1 "TSS0230LU" H 2105 4305 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2005 4370 50  0001 C CNN
 F 3 "" V 2005 4370 50  0001 C CNN
 F 4 "Value" H 2005 4370 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2005 4370 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2005 4370 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2005 4370 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2005 4370 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2005 4370 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2005 4370 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2005 4370 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2005 4370 60  0001 C CNN "Bauform"
 	1    2005 4370
 	1    0    0    -1  
 $EndComp
@@ -10754,14 +10754,14 @@ L D_Small D63
 U 1 1 57FC337F
 P 2080 3295
 F 0 "D63" H 1965 3275 24  0000 C CNN
-F 1 "TMMBAT48" H 1975 3350 24  0000 C CNN
+F 1 "TSS0230LU" H 1975 3350 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2080 3295 50  0001 C CNN
 F 3 "" V 2080 3295 50  0001 C CNN
 F 4 "Value" H 2080 3295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2080 3295 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2080 3295 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2080 3295 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2080 3295 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2080 3295 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2080 3295 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2080 3295 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2080 3295 60  0001 C CNN "Bauform"
 F 9 "Value" H 2080 3295 60  0001 C CNN "Funktion"
 F 10 "Value" H 2080 3295 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2080 3295 60  0001 C CNN "Hersteller Bestellnummer"
@@ -10786,14 +10786,14 @@ L D_Small D64
 U 1 1 57FC3391
 P 2080 3415
 F 0 "D64" H 2200 3440 24  0000 C CNN
-F 1 "TMMBAT48" H 2180 3350 24  0000 C CNN
+F 1 "TSS0230LU" H 2180 3350 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2080 3415 50  0001 C CNN
 F 3 "" V 2080 3415 50  0001 C CNN
 F 4 "Value" H 2080 3415 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2080 3415 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2080 3415 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2080 3415 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2080 3415 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2080 3415 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2080 3415 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2080 3415 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2080 3415 60  0001 C CNN "Bauform"
 F 9 "Value" H 2080 3415 60  0001 C CNN "Funktion"
 F 10 "Value" H 2080 3415 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2080 3415 60  0001 C CNN "Hersteller Bestellnummer"
@@ -10823,14 +10823,14 @@ L D_Small D67
 U 1 1 57FC33A8
 P 2070 3605
 F 0 "D67" H 1955 3585 24  0000 C CNN
-F 1 "TMMBAT48" H 1965 3660 24  0000 C CNN
+F 1 "TSS0230LU" H 1965 3660 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2070 3605 50  0001 C CNN
 F 3 "" V 2070 3605 50  0001 C CNN
 F 4 "Value" H 2070 3605 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2070 3605 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2070 3605 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2070 3605 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2070 3605 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2070 3605 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2070 3605 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2070 3605 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2070 3605 60  0001 C CNN "Bauform"
 F 9 "Value" H 2070 3605 60  0001 C CNN "Funktion"
 F 10 "Value" H 2070 3605 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2070 3605 60  0001 C CNN "Hersteller Bestellnummer"
@@ -10855,14 +10855,14 @@ L D_Small D68
 U 1 1 57FC33BA
 P 2070 3725
 F 0 "D68" H 2190 3750 24  0000 C CNN
-F 1 "TMMBAT48" H 2170 3660 24  0000 C CNN
+F 1 "TSS0230LU" H 2170 3660 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2070 3725 50  0001 C CNN
 F 3 "" V 2070 3725 50  0001 C CNN
 F 4 "Value" H 2070 3725 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2070 3725 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2070 3725 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2070 3725 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2070 3725 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2070 3725 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2070 3725 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2070 3725 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2070 3725 60  0001 C CNN "Bauform"
 F 9 "Value" H 2070 3725 60  0001 C CNN "Funktion"
 F 10 "Value" H 2070 3725 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2070 3725 60  0001 C CNN "Hersteller Bestellnummer"
@@ -10892,14 +10892,14 @@ L D_Small D71
 U 1 1 57FC33D1
 P 2065 3905
 F 0 "D71" H 1950 3885 24  0000 C CNN
-F 1 "TMMBAT48" H 1960 3960 24  0000 C CNN
+F 1 "TSS0230LU" H 1960 3960 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2065 3905 50  0001 C CNN
 F 3 "" V 2065 3905 50  0001 C CNN
 F 4 "Value" H 2065 3905 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2065 3905 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2065 3905 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2065 3905 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2065 3905 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2065 3905 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2065 3905 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2065 3905 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2065 3905 60  0001 C CNN "Bauform"
 F 9 "Value" H 2065 3905 60  0001 C CNN "Funktion"
 F 10 "Value" H 2065 3905 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2065 3905 60  0001 C CNN "Hersteller Bestellnummer"
@@ -10924,14 +10924,14 @@ L D_Small D72
 U 1 1 57FC33E3
 P 2065 4025
 F 0 "D72" H 2185 4050 24  0000 C CNN
-F 1 "TMMBAT48" H 2165 3960 24  0000 C CNN
+F 1 "TSS0230LU" H 2165 3960 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2065 4025 50  0001 C CNN
 F 3 "" V 2065 4025 50  0001 C CNN
 F 4 "Value" H 2065 4025 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2065 4025 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2065 4025 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2065 4025 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2065 4025 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2065 4025 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2065 4025 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2065 4025 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2065 4025 60  0001 C CNN "Bauform"
 F 9 "Value" H 2065 4025 60  0001 C CNN "Funktion"
 F 10 "Value" H 2065 4025 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2065 4025 60  0001 C CNN "Hersteller Bestellnummer"
@@ -10965,14 +10965,14 @@ L D_Small D65
 U 1 1 57FC344C
 P 1990 4595
 F 0 "D65" H 1875 4575 24  0000 C CNN
-F 1 "TMMBAT48" H 1885 4650 24  0000 C CNN
+F 1 "TSS0230LU" H 1885 4650 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1990 4595 50  0001 C CNN
 F 3 "" V 1990 4595 50  0001 C CNN
 F 4 "Value" H 1990 4595 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1990 4595 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1990 4595 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1990 4595 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1990 4595 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1990 4595 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1990 4595 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1990 4595 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1990 4595 60  0001 C CNN "Bauform"
 	1    1990 4595
 	-1   0    0    -1  
 $EndComp
@@ -10994,14 +10994,14 @@ L D_Small D66
 U 1 1 57FC345E
 P 1990 4715
 F 0 "D66" H 2110 4740 24  0000 C CNN
-F 1 "TMMBAT48" H 2090 4650 24  0000 C CNN
+F 1 "TSS0230LU" H 2090 4650 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1990 4715 50  0001 C CNN
 F 3 "" V 1990 4715 50  0001 C CNN
 F 4 "Value" H 1990 4715 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1990 4715 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1990 4715 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1990 4715 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1990 4715 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1990 4715 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1990 4715 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1990 4715 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1990 4715 60  0001 C CNN "Bauform"
 	1    1990 4715
 	1    0    0    -1  
 $EndComp
@@ -11018,14 +11018,14 @@ L D_Small D57
 U 1 1 57FF275D
 P 3450 4925
 F 0 "D57" H 3335 4905 24  0000 C CNN
-F 1 "TMMBAT48" H 3345 4980 24  0000 C CNN
+F 1 "TSS0230LU" H 3345 4980 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3450 4925 50  0001 C CNN
 F 3 "" V 3450 4925 50  0001 C CNN
 F 4 "Value" H 3450 4925 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3450 4925 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3450 4925 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3450 4925 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3450 4925 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3450 4925 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3450 4925 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3450 4925 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3450 4925 60  0001 C CNN "Bauform"
 F 9 "Value" H 3450 4925 60  0001 C CNN "Funktion"
 F 10 "Value" H 3450 4925 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3450 4925 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11050,14 +11050,14 @@ L D_Small D58
 U 1 1 57FF276F
 P 3450 5045
 F 0 "D58" H 3570 5070 24  0000 C CNN
-F 1 "TMMBAT48" H 3550 4980 24  0000 C CNN
+F 1 "TSS0230LU" H 3550 4980 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3450 5045 50  0001 C CNN
 F 3 "" V 3450 5045 50  0001 C CNN
 F 4 "Value" H 3450 5045 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3450 5045 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3450 5045 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3450 5045 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3450 5045 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3450 5045 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3450 5045 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3450 5045 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3450 5045 60  0001 C CNN "Bauform"
 F 9 "Value" H 3450 5045 60  0001 C CNN "Funktion"
 F 10 "Value" H 3450 5045 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3450 5045 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11071,14 +11071,14 @@ L D_Small D61
 U 1 1 57FF62D5
 P 2980 5110
 F 0 "D61" H 2865 5090 24  0000 C CNN
-F 1 "TMMBAT48" H 2875 5165 24  0000 C CNN
+F 1 "TSS0230LU" H 2875 5165 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2980 5110 50  0001 C CNN
 F 3 "" V 2980 5110 50  0001 C CNN
 F 4 "Value" H 2980 5110 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2980 5110 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2980 5110 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2980 5110 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2980 5110 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2980 5110 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2980 5110 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2980 5110 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2980 5110 60  0001 C CNN "Bauform"
 F 9 "Value" H 2980 5110 60  0001 C CNN "Funktion"
 F 10 "Value" H 2980 5110 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2980 5110 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11103,14 +11103,14 @@ L D_Small D62
 U 1 1 57FF62E7
 P 2980 5230
 F 0 "D62" H 3100 5255 24  0000 C CNN
-F 1 "TMMBAT48" H 3080 5165 24  0000 C CNN
+F 1 "TSS0230LU" H 3080 5165 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2980 5230 50  0001 C CNN
 F 3 "" V 2980 5230 50  0001 C CNN
 F 4 "Value" H 2980 5230 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2980 5230 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2980 5230 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2980 5230 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2980 5230 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2980 5230 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2980 5230 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2980 5230 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2980 5230 60  0001 C CNN "Bauform"
 F 9 "Value" H 2980 5230 60  0001 C CNN "Funktion"
 F 10 "Value" H 2980 5230 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2980 5230 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11124,14 +11124,14 @@ L D_Small D49
 U 1 1 57FF75F7
 P 2970 5395
 F 0 "D49" H 2855 5375 24  0000 C CNN
-F 1 "TMMBAT48" H 2865 5450 24  0000 C CNN
+F 1 "TSS0230LU" H 2865 5450 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2970 5395 50  0001 C CNN
 F 3 "" V 2970 5395 50  0001 C CNN
 F 4 "Value" H 2970 5395 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2970 5395 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2970 5395 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2970 5395 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2970 5395 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2970 5395 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2970 5395 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2970 5395 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2970 5395 60  0001 C CNN "Bauform"
 F 9 "Value" H 2970 5395 60  0001 C CNN "Funktion"
 F 10 "Value" H 2970 5395 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2970 5395 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11156,14 +11156,14 @@ L D_Small D50
 U 1 1 57FF7609
 P 2970 5515
 F 0 "D50" H 3090 5540 24  0000 C CNN
-F 1 "TMMBAT48" H 3070 5450 24  0000 C CNN
+F 1 "TSS0230LU" H 3070 5450 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2970 5515 50  0001 C CNN
 F 3 "" V 2970 5515 50  0001 C CNN
 F 4 "Value" H 2970 5515 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2970 5515 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2970 5515 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2970 5515 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2970 5515 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2970 5515 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2970 5515 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2970 5515 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2970 5515 60  0001 C CNN "Bauform"
 F 9 "Value" H 2970 5515 60  0001 C CNN "Funktion"
 F 10 "Value" H 2970 5515 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2970 5515 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11177,14 +11177,14 @@ L D_Small D51
 U 1 1 57FF94E5
 P 2040 5550
 F 0 "D51" H 1925 5530 24  0000 C CNN
-F 1 "TMMBAT48" H 1935 5605 24  0000 C CNN
+F 1 "TSS0230LU" H 1935 5605 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2040 5550 50  0001 C CNN
 F 3 "" V 2040 5550 50  0001 C CNN
 F 4 "Value" H 2040 5550 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 5550 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 5550 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2040 5550 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2040 5550 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 5550 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 5550 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2040 5550 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2040 5550 60  0001 C CNN "Bauform"
 F 9 "Value" H 2040 5550 60  0001 C CNN "Funktion"
 F 10 "Value" H 2040 5550 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2040 5550 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11209,14 +11209,14 @@ L D_Small D52
 U 1 1 57FF94F7
 P 2040 5670
 F 0 "D52" H 2160 5695 24  0000 C CNN
-F 1 "TMMBAT48" H 2140 5605 24  0000 C CNN
+F 1 "TSS0230LU" H 2140 5605 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2040 5670 50  0001 C CNN
 F 3 "" V 2040 5670 50  0001 C CNN
 F 4 "Value" H 2040 5670 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 5670 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 5670 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2040 5670 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2040 5670 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 5670 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 5670 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2040 5670 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2040 5670 60  0001 C CNN "Bauform"
 F 9 "Value" H 2040 5670 60  0001 C CNN "Funktion"
 F 10 "Value" H 2040 5670 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2040 5670 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11230,14 +11230,14 @@ L D_Small D47
 U 1 1 57FFA77D
 P 2045 5955
 F 0 "D47" H 1970 5930 24  0000 C CNN
-F 1 "TMMBAT48" H 2030 6015 24  0000 C CNN
+F 1 "TSS0230LU" H 2030 6015 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2045 5955 50  0001 C CNN
 F 3 "" V 2045 5955 50  0001 C CNN
 F 4 "Value" H 2045 5955 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 5955 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 5955 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2045 5955 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2045 5955 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 5955 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 5955 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2045 5955 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2045 5955 60  0001 C CNN "Bauform"
 	1    2045 5955
 	-1   0    0    -1  
 $EndComp
@@ -11259,14 +11259,14 @@ L D_Small D48
 U 1 1 57FFA78F
 P 2045 6075
 F 0 "D48" H 2165 6100 24  0000 C CNN
-F 1 "TMMBAT48" H 2145 6010 24  0000 C CNN
+F 1 "TSS0230LU" H 2145 6010 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2045 6075 50  0001 C CNN
 F 3 "" V 2045 6075 50  0001 C CNN
 F 4 "Value" H 2045 6075 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 6075 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 6075 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2045 6075 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2045 6075 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 6075 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 6075 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2045 6075 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2045 6075 60  0001 C CNN "Bauform"
 F 9 "Value" H 2045 6075 60  0001 C CNN "Funktion"
 F 10 "Value" H 2045 6075 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2045 6075 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11280,14 +11280,14 @@ L D_Small D45
 U 1 1 57FFBE92
 P 2040 6240
 F 0 "D45" H 1925 6220 24  0000 C CNN
-F 1 "TMMBAT48" H 1935 6295 24  0000 C CNN
+F 1 "TSS0230LU" H 1935 6295 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2040 6240 50  0001 C CNN
 F 3 "" V 2040 6240 50  0001 C CNN
 F 4 "Value" H 2040 6240 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 6240 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 6240 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2040 6240 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2040 6240 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 6240 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 6240 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2040 6240 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2040 6240 60  0001 C CNN "Bauform"
 F 9 "Value" H 2040 6240 60  0001 C CNN "Funktion"
 F 10 "Value" H 2040 6240 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2040 6240 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11312,14 +11312,14 @@ L D_Small D46
 U 1 1 57FFBEA4
 P 2040 6360
 F 0 "D46" H 2160 6385 24  0000 C CNN
-F 1 "TMMBAT48" H 2140 6295 24  0000 C CNN
+F 1 "TSS0230LU" H 2140 6295 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2040 6360 50  0001 C CNN
 F 3 "" V 2040 6360 50  0001 C CNN
 F 4 "Value" H 2040 6360 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2040 6360 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2040 6360 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2040 6360 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2040 6360 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 6360 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 6360 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2040 6360 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2040 6360 60  0001 C CNN "Bauform"
 F 9 "Value" H 2040 6360 60  0001 C CNN "Funktion"
 F 10 "Value" H 2040 6360 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2040 6360 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11333,14 +11333,14 @@ L D_Small D43
 U 1 1 57FFD738
 P 2050 6535
 F 0 "D43" H 1935 6515 24  0000 C CNN
-F 1 "TMMBAT48" H 1945 6590 24  0000 C CNN
+F 1 "TSS0230LU" H 1945 6590 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2050 6535 50  0001 C CNN
 F 3 "" V 2050 6535 50  0001 C CNN
 F 4 "Value" H 2050 6535 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2050 6535 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2050 6535 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2050 6535 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2050 6535 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2050 6535 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2050 6535 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2050 6535 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2050 6535 60  0001 C CNN "Bauform"
 F 9 "Value" H 2050 6535 60  0001 C CNN "Funktion"
 F 10 "Value" H 2050 6535 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2050 6535 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11365,14 +11365,14 @@ L D_Small D44
 U 1 1 57FFD74A
 P 2050 6655
 F 0 "D44" H 2170 6680 24  0000 C CNN
-F 1 "TMMBAT48" H 2150 6590 24  0000 C CNN
+F 1 "TSS0230LU" H 2150 6590 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2050 6655 50  0001 C CNN
 F 3 "" V 2050 6655 50  0001 C CNN
 F 4 "Value" H 2050 6655 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2050 6655 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2050 6655 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2050 6655 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2050 6655 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2050 6655 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2050 6655 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2050 6655 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2050 6655 60  0001 C CNN "Bauform"
 F 9 "Value" H 2050 6655 60  0001 C CNN "Funktion"
 F 10 "Value" H 2050 6655 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2050 6655 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11386,14 +11386,14 @@ L D_Small D41
 U 1 1 58000317
 P 2045 6820
 F 0 "D41" H 1930 6800 24  0000 C CNN
-F 1 "TMMBAT48" H 1940 6875 24  0000 C CNN
+F 1 "TSS0230LU" H 1940 6875 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2045 6820 50  0001 C CNN
 F 3 "" V 2045 6820 50  0001 C CNN
 F 4 "Value" H 2045 6820 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 6820 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 6820 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2045 6820 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2045 6820 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 6820 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 6820 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2045 6820 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2045 6820 60  0001 C CNN "Bauform"
 F 9 "Value" H 2045 6820 60  0001 C CNN "Funktion"
 F 10 "Value" H 2045 6820 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2045 6820 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11418,14 +11418,14 @@ L D_Small D42
 U 1 1 58000329
 P 2045 6940
 F 0 "D42" H 2165 6965 24  0000 C CNN
-F 1 "TMMBAT48" H 2145 6875 24  0000 C CNN
+F 1 "TSS0230LU" H 2145 6875 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 2045 6940 50  0001 C CNN
 F 3 "" V 2045 6940 50  0001 C CNN
 F 4 "Value" H 2045 6940 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 2045 6940 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 2045 6940 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 2045 6940 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 2045 6940 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 6940 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 6940 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 2045 6940 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 2045 6940 60  0001 C CNN "Bauform"
 F 9 "Value" H 2045 6940 60  0001 C CNN "Funktion"
 F 10 "Value" H 2045 6940 60  0001 C CNN "Hersteller"
 F 11 "Value" H 2045 6940 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11439,14 +11439,14 @@ L D_Small D39
 U 1 1 58002CAA
 P 3510 5895
 F 0 "D39" H 3395 5875 24  0000 C CNN
-F 1 "TMMBAT48" H 3405 5950 24  0000 C CNN
+F 1 "TSS0230LU" H 3405 5950 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3510 5895 50  0001 C CNN
 F 3 "" V 3510 5895 50  0001 C CNN
 F 4 "Value" H 3510 5895 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3510 5895 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3510 5895 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3510 5895 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3510 5895 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3510 5895 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3510 5895 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3510 5895 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3510 5895 60  0001 C CNN "Bauform"
 F 9 "Value" H 3510 5895 60  0001 C CNN "Funktion"
 F 10 "Value" H 3510 5895 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3510 5895 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11471,14 +11471,14 @@ L D_Small D40
 U 1 1 58002CBC
 P 3510 6015
 F 0 "D40" H 3630 6040 24  0000 C CNN
-F 1 "TMMBAT48" H 3610 5950 24  0000 C CNN
+F 1 "TSS0230LU" H 3610 5950 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3510 6015 50  0001 C CNN
 F 3 "" V 3510 6015 50  0001 C CNN
 F 4 "Value" H 3510 6015 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3510 6015 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3510 6015 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3510 6015 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3510 6015 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3510 6015 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3510 6015 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3510 6015 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3510 6015 60  0001 C CNN "Bauform"
 F 9 "Value" H 3510 6015 60  0001 C CNN "Funktion"
 F 10 "Value" H 3510 6015 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3510 6015 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11492,14 +11492,14 @@ L D_Small D37
 U 1 1 5800454D
 P 3505 6175
 F 0 "D37" H 3390 6155 24  0000 C CNN
-F 1 "TMMBAT48" H 3400 6230 24  0000 C CNN
+F 1 "TSS0230LU" H 3400 6230 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3505 6175 50  0001 C CNN
 F 3 "" V 3505 6175 50  0001 C CNN
 F 4 "Value" H 3505 6175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3505 6175 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3505 6175 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3505 6175 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3505 6175 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6175 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6175 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3505 6175 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3505 6175 60  0001 C CNN "Bauform"
 F 9 "Value" H 3505 6175 60  0001 C CNN "Funktion"
 F 10 "Value" H 3505 6175 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3505 6175 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11524,14 +11524,14 @@ L D_Small D38
 U 1 1 5800455F
 P 3505 6295
 F 0 "D38" H 3625 6320 24  0000 C CNN
-F 1 "TMMBAT48" H 3605 6230 24  0000 C CNN
+F 1 "TSS0230LU" H 3605 6230 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3505 6295 50  0001 C CNN
 F 3 "" V 3505 6295 50  0001 C CNN
 F 4 "Value" H 3505 6295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3505 6295 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3505 6295 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3505 6295 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3505 6295 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6295 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6295 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3505 6295 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3505 6295 60  0001 C CNN "Bauform"
 F 9 "Value" H 3505 6295 60  0001 C CNN "Funktion"
 F 10 "Value" H 3505 6295 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3505 6295 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11545,14 +11545,14 @@ L D_Small D31
 U 1 1 58005B85
 P 3500 6460
 F 0 "D31" H 3385 6440 24  0000 C CNN
-F 1 "TMMBAT48" H 3395 6515 24  0000 C CNN
+F 1 "TSS0230LU" H 3395 6515 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3500 6460 50  0001 C CNN
 F 3 "" V 3500 6460 50  0001 C CNN
 F 4 "Value" H 3500 6460 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3500 6460 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3500 6460 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3500 6460 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3500 6460 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3500 6460 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3500 6460 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3500 6460 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3500 6460 60  0001 C CNN "Bauform"
 F 9 "Value" H 3500 6460 60  0001 C CNN "Funktion"
 F 10 "Value" H 3500 6460 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3500 6460 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11577,14 +11577,14 @@ L D_Small D34
 U 1 1 58005B97
 P 3500 6580
 F 0 "D34" H 3620 6605 24  0000 C CNN
-F 1 "TMMBAT48" H 3600 6515 24  0000 C CNN
+F 1 "TSS0230LU" H 3600 6515 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3500 6580 50  0001 C CNN
 F 3 "" V 3500 6580 50  0001 C CNN
 F 4 "Value" H 3500 6580 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3500 6580 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3500 6580 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3500 6580 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3500 6580 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3500 6580 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3500 6580 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3500 6580 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3500 6580 60  0001 C CNN "Bauform"
 F 9 "Value" H 3500 6580 60  0001 C CNN "Funktion"
 F 10 "Value" H 3500 6580 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3500 6580 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11598,14 +11598,14 @@ L D_Small D29
 U 1 1 580072EC
 P 3495 6740
 F 0 "D29" H 3380 6720 24  0000 C CNN
-F 1 "TMMBAT48" H 3390 6795 24  0000 C CNN
+F 1 "TSS0230LU" H 3390 6795 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3495 6740 50  0001 C CNN
 F 3 "" V 3495 6740 50  0001 C CNN
 F 4 "Value" H 3495 6740 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3495 6740 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3495 6740 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3495 6740 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3495 6740 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3495 6740 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3495 6740 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3495 6740 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3495 6740 60  0001 C CNN "Bauform"
 F 9 "Value" H 3495 6740 60  0001 C CNN "Funktion"
 F 10 "Value" H 3495 6740 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3495 6740 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11630,14 +11630,14 @@ L D_Small D30
 U 1 1 580072FE
 P 3495 6860
 F 0 "D30" H 3615 6885 24  0000 C CNN
-F 1 "TMMBAT48" H 3595 6795 24  0000 C CNN
+F 1 "TSS0230LU" H 3595 6795 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 3495 6860 50  0001 C CNN
 F 3 "" V 3495 6860 50  0001 C CNN
 F 4 "Value" H 3495 6860 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 3495 6860 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 3495 6860 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 3495 6860 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 3495 6860 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3495 6860 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3495 6860 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3495 6860 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3495 6860 60  0001 C CNN "Bauform"
 F 9 "Value" H 3495 6860 60  0001 C CNN "Funktion"
 F 10 "Value" H 3495 6860 60  0001 C CNN "Hersteller"
 F 11 "Value" H 3495 6860 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11659,14 +11659,14 @@ L D_Small D28
 U 1 1 58007C16
 P 7135 5680
 F 0 "D28" H 7020 5660 24  0000 C CNN
-F 1 "TMMBAT48" H 7030 5735 24  0000 C CNN
+F 1 "TSS0230LU" H 7030 5735 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7135 5680 50  0001 C CNN
 F 3 "" V 7135 5680 50  0001 C CNN
 F 4 "Value" H 7135 5680 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7135 5680 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7135 5680 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7135 5680 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7135 5680 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 7135 5680 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 7135 5680 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 7135 5680 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 7135 5680 60  0001 C CNN "Bauform"
 F 9 "Value" H 7135 5680 60  0001 C CNN "Funktion"
 F 10 "Value" H 7135 5680 60  0001 C CNN "Hersteller"
 F 11 "Value" H 7135 5680 60  0001 C CNN "Hersteller Bestellnummer"
@@ -11691,14 +11691,14 @@ L D_Small D27
 U 1 1 58007C28
 P 7135 5800
 F 0 "D27" H 7255 5825 24  0000 C CNN
-F 1 "TMMBAT48" H 7235 5735 24  0000 C CNN
+F 1 "TSS0230LU" H 7235 5735 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7135 5800 50  0001 C CNN
 F 3 "" V 7135 5800 50  0001 C CNN
 F 4 "Value" H 7135 5800 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7135 5800 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7135 5800 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7135 5800 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7135 5800 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 7135 5800 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 7135 5800 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 7135 5800 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 7135 5800 60  0001 C CNN "Bauform"
 F 9 "Value" H 7135 5800 60  0001 C CNN "Funktion"
 F 10 "Value" H 7135 5800 60  0001 C CNN "Hersteller"
 F 11 "Value" H 7135 5800 60  0001 C CNN "Hersteller Bestellnummer"
@@ -12231,14 +12231,14 @@ L D_Small D26
 U 1 1 58031082
 P 7030 4430
 F 0 "D26" H 7030 4515 24  0000 C CNN
-F 1 "TMMBAT48" H 7035 4485 24  0000 C CNN
+F 1 "TSS0230LU" H 7035 4485 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7030 4430 50  0001 C CNN
 F 3 "" V 7030 4430 50  0001 C CNN
 F 4 "Value" H 7030 4430 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7030 4430 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7030 4430 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7030 4430 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7030 4430 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 7030 4430 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 7030 4430 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 7030 4430 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 7030 4430 60  0001 C CNN "Bauform"
 	1    7030 4430
 	1    0    0    -1  
 $EndComp
@@ -12260,14 +12260,14 @@ L D_Small D25
 U 1 1 58031094
 P 7060 4550
 F 0 "D25" H 7180 4575 24  0000 C CNN
-F 1 "TMMBAT48" H 7160 4485 24  0000 C CNN
+F 1 "TSS0230LU" H 7160 4485 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7060 4550 50  0001 C CNN
 F 3 "" V 7060 4550 50  0001 C CNN
 F 4 "Value" H 7060 4550 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7060 4550 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7060 4550 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7060 4550 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7060 4550 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 7060 4550 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 7060 4550 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 7060 4550 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 7060 4550 60  0001 C CNN "Bauform"
 F 9 "Value" H 7060 4550 60  0001 C CNN "Funktion"
 F 10 "Value" H 7060 4550 60  0001 C CNN "Hersteller"
 F 11 "Value" H 7060 4550 60  0001 C CNN "Hersteller Bestellnummer"
@@ -12306,14 +12306,14 @@ L D_Small D6
 U 1 1 58A629D6
 P 7555 4490
 F 0 "D6" H 7555 4555 24  0000 C CNN
-F 1 "TMMBAT48" H 7555 4420 24  0000 C CNN
+F 1 "TSS0230LU" H 7555 4420 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 7555 4490 50  0001 C CNN
 F 3 "" V 7555 4490 50  0001 C CNN
 F 4 "Value" H 7555 4490 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 7555 4490 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 7555 4490 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 7555 4490 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 7555 4490 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 7555 4490 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 7555 4490 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 7555 4490 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 7555 4490 60  0001 C CNN "Bauform"
 F 9 "Value" H 7555 4490 60  0001 C CNN "Funktion"
 F 10 "Value" H 7555 4490 60  0001 C CNN "Hersteller"
 F 11 "Value" H 7555 4490 60  0001 C CNN "Hersteller Bestellnummer"
@@ -12675,14 +12675,14 @@ L D_Small D5
 U 1 1 58A89512
 P 1545 6015
 F 0 "D5" H 1545 6080 24  0000 C CNN
-F 1 "TMMBAT48" H 1545 5945 24  0000 C CNN
+F 1 "TSS0230LU" H 1545 5945 24  0000 C CNN
 F 2 "Zimprich:D_0603" V 1545 6015 50  0001 C CNN
 F 3 "" V 1545 6015 50  0001 C CNN
 F 4 "Value" H 1545 6015 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/BA-BAY-BB-Dioden/BAT-48-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=41901&GROUPID=2988&artnr=BAT+48+SMD&SEARCH=BAT48" H 1545 6015 60  0001 C CNN "Bestelllink"
-F 6 "Schottky Diode SMD, Mini Melf, 40V, 0,35A" H 1545 6015 60  0001 C CNN "Technische Daten"
-F 7 "R:BAT 48 SMD" H 1545 6015 60  0001 C CNN "Bestellnummer"
-F 8 "Mini Melf" H 1545 6015 60  0001 C CNN "Bauform"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1545 6015 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1545 6015 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1545 6015 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1545 6015 60  0001 C CNN "Bauform"
 F 9 "Value" H 1545 6015 60  0001 C CNN "Funktion"
 F 10 "Value" H 1545 6015 60  0001 C CNN "Hersteller"
 F 11 "Value" H 1545 6015 60  0001 C CNN "Hersteller Bestellnummer"
