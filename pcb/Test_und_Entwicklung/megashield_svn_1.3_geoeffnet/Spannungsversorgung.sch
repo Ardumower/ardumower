@@ -93,7 +93,7 @@ F 3 "" H 10605 5490 60  0000 C CNN
 	1    10605 5490
 	1    0    0    -1  
 $EndComp
-Text HLabel 1895 1240 0    60   Input ~ 0
+Text HLabel 1890 1240 0    60   Input ~ 0
 Spannungsaufbereitung
 $Comp
 L +9V #PWR0166
@@ -180,6 +180,14 @@ F 0 "F1" H 3400 1300 50  0000 L CNN
 F 1 "PTC" H 3320 1180 50  0000 L CNN
 F 2 "SMD_Packages:Fuse_SMD" H 3440 1240 60  0001 C CNN
 F 3 "" H 3440 1240 60  0000 C CNN
+F 4 "Value" H 3440 1240 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.reichelt.de/SMD-Sicherungen/OMT-125-3-5A/3/index.html?ACTION=3&LA=446&ARTICLE=52972&GROUPID=7660&artnr=OMT+125+3%2C5A&SEARCH=smd%2Bsicherung%2B125" H 3440 1240 60  0001 C CNN "Bestelllink"
+F 6 "https://www.reichelt.de/SMD-Sicherungen/OMH-125-HALTER/3/index.html?ACTION=3&LA=446&ARTICLE=77866&GROUPID=7660&artnr=OMH+125+HALTER&SEARCH=smd%2Bsicherung%2B125" H 3440 1240 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3440 1240 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3440 1240 60  0001 C CNN "Bauform"
+F 9 "Value" H 3440 1240 60  0001 C CNN "Funktion"
+F 10 "Value" H 3440 1240 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3440 1240 60  0001 C CNN "Hersteller Bestellnummer"
 	1    3440 1240
 	1    0    0    -1  
 $EndComp

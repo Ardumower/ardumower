@@ -103,11 +103,17 @@ L R R31
 U 1 1 57DC8C59
 P 4415 2330
 F 0 "R31" V 4325 2330 50  0000 C CNN
-F 1 "4,7K" V 4410 2330 50  0000 C CNN
+F 1 "4K7" V 4410 2330 50  0000 C CNN
 F 2 "Zimprich:R_0603" V 4345 2330 50  0001 C CNN
 F 3 "" H 4415 2330 50  0000 C CNN
 F 4 "Value" V 4538 2330 60  0001 C CNN "Gehäuseart"
 F 5 "Value" V 4538 2330 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4415 2330 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4415 2330 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4415 2330 60  0001 C CNN "Bauform"
+F 9 "Value" H 4415 2330 60  0001 C CNN "Funktion"
+F 10 "Value" H 4415 2330 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4415 2330 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4415 2330
 	0    1    -1   0   
 $EndComp
@@ -116,11 +122,17 @@ L R R28
 U 1 1 57DC8C57
 P 4365 1055
 F 0 "R28" V 4265 1055 50  0000 C CNN
-F 1 "4,7K" V 4360 1055 50  0000 C CNN
+F 1 "4K7" V 4360 1055 50  0000 C CNN
 F 2 "Zimprich:R_0603" V 4295 1055 50  0001 C CNN
 F 3 "" H 4365 1055 50  0000 C CNN
 F 4 "Value" V 4488 1055 60  0001 C CNN "Gehäuseart"
 F 5 "Value" V 4488 1055 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4365 1055 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4365 1055 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4365 1055 60  0001 C CNN "Bauform"
+F 9 "Value" H 4365 1055 60  0001 C CNN "Funktion"
+F 10 "Value" H 4365 1055 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4365 1055 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4365 1055
 	0    -1   -1   0   
 $EndComp
@@ -10976,11 +10988,17 @@ L R R30
 U 1 1 57FAF9C4
 P 4365 1625
 F 0 "R30" V 4265 1625 50  0000 C CNN
-F 1 "4,7K" V 4360 1625 50  0000 C CNN
+F 1 "4K7" V 4360 1625 50  0000 C CNN
 F 2 "Zimprich:R_0603" V 4295 1625 50  0001 C CNN
 F 3 "" H 4365 1625 50  0000 C CNN
 F 4 "Value" V 4488 1625 60  0001 C CNN "Gehäuseart"
 F 5 "Value" V 4488 1625 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4365 1625 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4365 1625 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4365 1625 60  0001 C CNN "Bauform"
+F 9 "Value" H 4365 1625 60  0001 C CNN "Funktion"
+F 10 "Value" H 4365 1625 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4365 1625 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4365 1625
 	0    -1   -1   0   
 $EndComp
