@@ -27,13 +27,13 @@ http://wiki.ardumower.de
 
 ## License
 Ardumower (www.ardumower.de)
-<br>Copyright (c) 2015 by Uwe Zimprich
+<br>Copyright (c) 2015-2017 by Uwe Zimprich
 <br>Copyright (c) 2014-2015 by Stefan Manteuffel
 <br>Copyright (c) 2014 by Walter Crauwels
 <br>Copyright (c) 2013-2015 by Sven Gennat
-<br>Copyright (c) 2013-2014 by Alexander Grau
+<br>Copyright (c) 2013-2017 by Alexander Grau
 <br>Copyright (c) 2014 by Maxime Carpentieri
-<br>Copyright (c) 2015 by Juergen Lange    
+<br>Copyright (c) 2015-2017 by Juergen Lange    
 
 Private-use only! (you need to ask for a commercial-use)
  
