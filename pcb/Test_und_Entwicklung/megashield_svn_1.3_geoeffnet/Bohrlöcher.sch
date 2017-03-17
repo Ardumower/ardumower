@@ -13,7 +13,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 33
+Sheet 29 33
 Title "Ardumower shield SVN Version"
 Date "2017-02-17"
 Rev "1.3"
@@ -365,4 +365,42 @@ F 4 "Value" H 6735 5145 60  0001 C CNN "Reichelt-Bestellnummer"
 $EndComp
 NoConn ~ 6935 4870
 NoConn ~ 6935 5145
+$Comp
+L Bohrloch_3,2mm_ohne_Kupferfläche B23
+U 1 1 58CBD1E5
+P 4000 5415
+F 0 "B23" H 4104 5468 60  0000 L CNN
+F 1 "Mülleimer" H 4104 5362 60  0000 L CNN
+F 2 "Symbols:WEEE-Logo_8.4x12mm_SilkScreen" H 4000 5415 60  0001 C CNN
+F 3 "" H 4000 5415 60  0000 C CNN
+F 4 "Value" H 4000 5415 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 4000 5415 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4000 5415 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4000 5415 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4000 5415 60  0001 C CNN "Bauform"
+F 9 "Value" H 4000 5415 60  0001 C CNN "Funktion"
+F 10 "Value" H 4000 5415 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4000 5415 60  0001 C CNN "Hersteller Bestellnummer"
+	1    4000 5415
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm_ohne_Kupferfläche B24
+U 1 1 58CBD2A4
+P 4000 5705
+F 0 "B24" H 4104 5758 60  0000 L CNN
+F 1 "Rohos" H 4104 5652 60  0000 L CNN
+F 2 "Symbols:RoHS-Logo_6mm_SilkScreen" H 4000 5705 60  0001 C CNN
+F 3 "" H 4000 5705 60  0000 C CNN
+F 4 "Value" H 4000 5705 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 4000 5705 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4000 5705 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4000 5705 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4000 5705 60  0001 C CNN "Bauform"
+F 9 "Value" H 4000 5705 60  0001 C CNN "Funktion"
+F 10 "Value" H 4000 5705 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4000 5705 60  0001 C CNN "Hersteller Bestellnummer"
+	1    4000 5705
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
