@@ -84,6 +84,7 @@ enum {
   SEN_MOTOR_MOW_RPM,
   SEN_RTC,
   SEN_RAIN,
+  SEN_TILT,
 };
 
 // actuators
@@ -152,6 +153,7 @@ enum {
   STATE_PERI_OUT_FORW, // outside perimeter forward driving without checkPerimeterBoundary()
   STATE_PERI_OUT_REV,   // outside perimeter reverse driving without checkPerimeterBoundary()
   STATE_PERI_OUT_ROLL,   // outside perimeter rolling driving without checkPerimeterBoundary()
+  STATE_TILT_STOP,    // tilt sensor activated, stop motors, wait for un-tilt
 };
 
 // roll types
@@ -314,9 +316,11 @@ class Robot
     unsigned long lastSetMotorMowSpeedTime;
     unsigned long nextTimeCheckCurrent;
     unsigned long lastTimeMotorMowStuck;
-    // --------- bumper state ---------------------------
-    // bumper state (true = pressed)
+    // --------- BumperDuino state ---------------------------
+    // bumper state (true = pressed)    
     char bumperUse       ;      // has bumpers?     
+    char tiltUse       ;      // has tilt sensor?      
+    boolean tilt;
     int bumperLeftCounter ;
     boolean bumperLeft ;          
     int bumperRightCounter ;

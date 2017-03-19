@@ -34,7 +34,7 @@
 #define ADDR_ROBOT_STATS 800
 
 char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
-  "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL"};
+  "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL", "TILT"};
 
 char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
@@ -333,6 +333,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, bluetoothUse);
   eereadwrite(readflag, addr, esp8266Use);
   eereadwriteString(readflag, addr, esp8266ConfigString);
+  eereadwrite(readflag, addr, tiltUse);
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -1942,6 +1943,8 @@ void Robot::readSensors(){
 
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
     nextTimeBumper = millis() + 100;               
+    tilt = (readSensor(SEN_TILT) == 0);
+        
     if (readSensor(SEN_BUMPER_LEFT) == 0) {
       bumperLeftCounter++;
       bumperLeft=true;
@@ -2111,11 +2114,11 @@ void Robot::setNextState(byte stateNew, byte dir){
   } else if (stateNew == STATE_PERI_ROLL) {    
     stateEndTime = millis() + perimeterTrackRollTime + motorZeroSettleTime;                     
     if (dir == RIGHT){
-	motorLeftSpeedRpmSet = motorSpeedMaxRpm/2;
-	motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
+	    motorLeftSpeedRpmSet = motorSpeedMaxRpm/2;
+	    motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
       } else {
-	motorRightSpeedRpmSet = motorSpeedMaxRpm/2;
-	motorLeftSpeedRpmSet = -motorRightSpeedRpmSet;	
+	    motorRightSpeedRpmSet = motorSpeedMaxRpm/2;
+	    motorLeftSpeedRpmSet = -motorRightSpeedRpmSet;	
       }
   } if (stateNew == STATE_PERI_REV) {
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/2;                    
@@ -2178,11 +2181,11 @@ void Robot::setNextState(byte stateNew, byte dir){
       }      
       stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
       if (dir == RIGHT){
-	motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
-	motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
+	     motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
+	     motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
       } else {
-	motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
-	motorLeftSpeedRpmSet = -motorRightSpeedRpmSet;	
+	     motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
+	     motorLeftSpeedRpmSet = -motorRightSpeedRpmSet;	
       }      
   }  
   if (stateNew == STATE_REMOTE){
@@ -2206,7 +2209,11 @@ void Robot::setNextState(byte stateNew, byte dir){
     setDefaults();   
     statsMowTimeTotalStart = false; // stop stats mowTime counter
     loadSaveRobotStats(false);      //save robot stats
-  }  
+  } 
+  if (stateNew == STATE_TILT_STOP){
+     motorMowEnable = false;    
+     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0; 
+  }
   if (stateNew == STATE_ERROR){
     motorMowEnable = false;    
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = 0; 
@@ -2669,12 +2676,19 @@ void Robot::checkSonar(){
 }
 
 
-// check IMU (tilt)
+// check BumperDuino tilt, IMU tilt
 void Robot::checkTilt(){
-  if(!imuUse) return;
   if (millis() < nextTimeCheckTilt) return;
   nextTimeCheckTilt = millis() + 200; // 5Hz same as nextTimeImu
-
+  
+  if (tiltUse){
+    if ((tilt) && (stateCurr != STATE_TILT_STOP)){
+      Console.println(F("BumperDuino tilt"));      
+      setNextState(STATE_TILT_STOP,0);
+    }
+  }
+  
+  if(!imuUse) return;    
   int pitchAngle = (imu.ypr.pitch/PI*180.0);
   int rollAngle  = (imu.ypr.roll/PI*180.0);
   if ( (stateCurr != STATE_OFF) && (stateCurr != STATE_ERROR) && (stateCurr != STATE_STATION) ){
@@ -2879,6 +2893,10 @@ void Robot::loop()  {
    // robot state machine
    // http://wiki.ardumower.de/images/f/ff/Ardumower_states.png
   switch (stateCurr) {
+    case STATE_TILT_STOP:
+      // tilt      
+      if (!tilt) setNextState(stateLast, 0);
+      break;
     case STATE_ERROR:
       // fatal-error
       if (millis() >= nextTimeErrorBeep){
@@ -3095,8 +3113,8 @@ void Robot::loop()  {
   dropRight = false;                                                                                                                             // Dropsensor - Absturzsensor
   dropLeft = false;                                                                                                                              // Dropsensor - Absturzsensor
                              
- loopsPerSecCounter++;
-  }
+  loopsPerSecCounter++;  
+}
 
 
 

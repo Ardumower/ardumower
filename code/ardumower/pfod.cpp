@@ -213,7 +213,7 @@ void RemoteControl::sendPlotMenu(boolean update){
 
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.Settings"));
-  serialPort->print(F("|sz~Save settings|s1~Motor|s2~Mow|s3~Bumper|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
+  serialPort->print(F("|sz~Save settings|s1~Motor|s2~Mow|s3~BumperDuino|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
   serialPort->println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings}"));
 }  
 
@@ -442,17 +442,21 @@ void RemoteControl::processMowMenu(String pfodCmd){
 }
 
 void RemoteControl::sendBumperMenu(boolean update){
-  if (update) serialPort->print("{:"); else serialPort->print(F("{.Bumper`1000"));
-  serialPort->print(F("|b00~Use "));
+  if (update) serialPort->print("{:"); else serialPort->print(F("{.BumperDuino`1000"));  
+  serialPort->print(F("|b00~Use bumper"));
   sendYesNo(robot->bumperUse);    
-  serialPort->println(F("|b01~Counter l, r "));
+  serialPort->println(F("|b01~Bumper counter l, r "));
   serialPort->print(robot->bumperLeftCounter);
   serialPort->print(", ");
   serialPort->print(robot->bumperRightCounter);
-  serialPort->println(F("|b02~Value l, r "));
+  serialPort->println(F("|b02~Bumper value l, r "));
   serialPort->print(robot->bumperLeft);
   serialPort->print(", ");
   serialPort->print(robot->bumperRight);
+  serialPort->print(F("|b03~Use tilt"));
+  sendYesNo(robot->tiltUse);    
+  serialPort->println(F("|b04~Tilt value "));
+  serialPort->print(robot->tilt);
   serialPort->println("}");
 }
 
@@ -474,6 +478,7 @@ void RemoteControl::sendDropMenu(boolean update){
 
 void RemoteControl::processBumperMenu(String pfodCmd){      
   if (pfodCmd == "b00") robot->bumperUse = !robot->bumperUse;    
+  else if (pfodCmd == "b03") robot->tiltUse = !robot->tiltUse;    
   sendBumperMenu(true);
 }
 

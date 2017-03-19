@@ -87,7 +87,7 @@
 #define pinRedLED 7                // DuoLED red
 #define pinLED 13                  // LED
 #define pinBuzzer 53               // Buzzer
-#define pinTilt 35                 // Tilt sensor (required for TC-G158 board)
+#define pinTilt 35                 // Tilt sensor (BumperDuino)
 #define pinButton 51               // digital ON/OFF button
 #define pinBatteryVoltage A2       // battery voltage sensor
 #define pinBatterySwitch 4         // battery-OFF switch   
@@ -179,8 +179,9 @@ Mower::Mower(){
   motorMowPID.Ki             = 0.01;
   motorMowPID.Kd             = 0.01;
   
-  //  ------ bumper -----------------------------------
+  //  ------ bumper (BumperDuino)-------------------------------
   bumperUse                  = 0;          // has bumpers?
+  tiltUse                    = 0;          // use tilt-sensor?
   
   //  ------ drop -----------------------------------
   dropUse                    = 0;          // has drops?                                                                                              Dropsensor - Absturzsensor vorhanden ?
@@ -451,11 +452,13 @@ void Mower::setup(){
   pinMode(pinButton, INPUT);
   pinMode(pinButton, INPUT_PULLUP);
 
-  // bumpers
+  // BumperDuino
   pinMode(pinBumperLeft, INPUT);
   pinMode(pinBumperLeft, INPUT_PULLUP);
   pinMode(pinBumperRight, INPUT);
   pinMode(pinBumperRight, INPUT_PULLUP);
+  pinMode(pinTilt, INPUT);
+  pinMode(pinTilt, INPUT_PULLUP);
  
  // drops
   pinMode(pinDropLeft, INPUT);                                                                                                         // Dropsensor - Absturzsensor - Deklariert als Eingang
@@ -678,6 +681,9 @@ int Mower::readSensor(char type){
 //bumper----------------------------------------------------------------------------------------------------
     case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
     case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
+
+//tilt----------------------------------------------------------------------------------------------------
+    case SEN_TILT: return(digitalRead(pinTilt)); break;      
     
 //drop----------------------------------------------------------------------------------------------------
     case SEN_DROP_RIGHT: return(digitalRead(pinDropRight)); break;                                                                                      // Dropsensor - Absturzsensor
