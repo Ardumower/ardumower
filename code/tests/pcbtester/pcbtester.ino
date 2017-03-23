@@ -1,8 +1,12 @@
+/* PCB-Tester  - Read/write to digital/analog pins via serial user interface
+ * 23.03.2017
+ */
+
 #include <Arduino.h>
 
 
 void setup(){
-  Serial.begin(115200);         
+  Serial.begin(115200);           // Baudrate 115200
   printMenu();
 }
 
