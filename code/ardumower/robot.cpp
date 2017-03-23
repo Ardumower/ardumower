@@ -1280,9 +1280,15 @@ void Robot::setup()  {
   beep(1);  
   Console.println(F("START"));  
   Console.print(F("Ardumower "));
-  Console.println(VER);
+  Console.print(VER);
+  Console.print("  ");
+  #ifdef PCB_1_2
+     Console.println("PCB 1.2");
+  #elif PCB_1_3
+     Console.println("PCB 1.3");
+  #endif
   #ifdef USE_DEVELOPER_TEST
-    Console.println("Warning: USE_DEVELOPER_TEST activated");
+    Console.println(F("Warning: USE_DEVELOPER_TEST activated"));
   #endif
   Console.print(F("Config: "));
   Console.println(name);  
