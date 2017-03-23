@@ -1281,11 +1281,11 @@ void Robot::setup()  {
   Console.println(F("START"));  
   Console.print(F("Ardumower "));
   Console.print(VER);
-  Console.print("  ");
+  Console.print(F("  "));
   #ifdef PCB_1_2
-     Console.println("PCB 1.2");
+     Console.println(F("PCB 1.2"));
   #elif PCB_1_3
-     Console.println("PCB 1.3");
+     Console.println(F("PCB 1.3"));
   #endif
   #ifdef USE_DEVELOPER_TEST
     Console.println(F("Warning: USE_DEVELOPER_TEST activated"));
