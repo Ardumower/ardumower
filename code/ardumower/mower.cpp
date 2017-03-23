@@ -39,6 +39,12 @@
 #include "config.h"
 #ifdef USE_MOWER
 
+
+// ------- NOTE: Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
+#define PCB_1_2
+//#define PCB_1_3
+// -----------------------------------------------------------------------------------
+
 #ifdef __AVR__
   #include "NewPing.h"
 #endif
@@ -235,13 +241,23 @@ Mower::Mower(){
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
   batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 
 
-  #ifdef __AVR__
-    batFactor                = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-    batChgFactor             = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-  #else
-    batFactor                = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-    batChgFactor             = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-  #endif  
+  #ifdef PCB_1_2
+    #ifdef __AVR__
+      batFactor                = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batChgFactor             = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+    #else
+      batFactor                = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batChgFactor             = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+    #endif  
+  #elif PCB_1_3  
+    #ifdef __AVR__
+      batFactor                = 0.44;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batChgFactor             = 0.44;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+    #else
+      batFactor                = 0.29;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batChgFactor             = 0.29;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+    #endif  
+  #endif
   
   batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
   batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver

@@ -915,6 +915,11 @@ void RemoteControl::sendInfoMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.Info"));
   serialPort->print(F("|v00~Ardumower "));
   serialPort->print(VER);
+  #ifdef PCB_1_2
+    serialPort->print(F(" PCB1.2"));
+  #elif PCB_1_3
+    serialPort->print(F(" PCB1.3"));
+  #endif
   serialPort->print(F("|v01~Developer "));
   sendYesNo(robot->developerActive); 
   serialPort->print(F("|v04~Stats override "));  
