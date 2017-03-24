@@ -138,7 +138,11 @@ Mower::Mower(){
   batMonitor                 = 1;          // monitor battery and charge voltage?
   batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
-  batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 
+  #ifdef PCB_1_2
+		batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 
+	#elif PCB_1_3
+	  batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
+	#endif
 
   #ifdef PCB_1_2
     #ifdef __AVR__
