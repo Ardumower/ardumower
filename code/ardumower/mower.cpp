@@ -290,7 +290,7 @@ Mower::Mower(){
   #elif PCB_1_3
     odometryTicksPerRevolution = 530;        // encoder ticks per one full resolution (NOTE: set DIV/2 on PCB)  
   #endif
-  odometryTicksPerCm         = odometryTicksPerRevolution / (wheelDiameter/10.0) / 3.1415;    // computes encoder ticks per cm (do not change)
+  odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / 3.1415;    // computes encoder ticks per cm (do not change)
   odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
   odometryRightSwapDir       = 0;          // inverse right encoder direction?
   odometryLeftSwapDir        = 1;          // inverse left encoder direction?
