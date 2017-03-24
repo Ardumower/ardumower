@@ -1007,30 +1007,6 @@ void Robot::checkTimeout(){
 }
 
 
-void Robot::purgeConsole() {
-  while (Console.available())
-    Console.read();
-}
-
-char Robot::waitCharConsole() {
-  while (Console.available() == 0);
-  return (char)Console.read();
-}
-
-String Robot::waitStringConsole() {
-  String s = "";
-  char ch;
-  while (true) {
-    ch = waitCharConsole();
-    if (ch=='\n' || ch=='\r')
-      break;
-    else
-      s += ch;
-  };
-  return s;
-}
-
-
 char* Robot::stateName(){
   return stateNames[stateCurr];
 }
