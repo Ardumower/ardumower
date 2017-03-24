@@ -211,6 +211,7 @@ class Robot
     int robotIsStuckCounter ;
     // -------- odometry state --------------------------
     char odometryUse       ;       // use odometry?
+    int wheelDiameter     ;        // wheel diameter (mm)
     char twoWayOdometrySensorUse;  // use optional two-wire odometry sensor?
     int odometryTicksPerRevolution ;   // encoder ticks per one full resolution
     float odometryTicksPerCm ;  // encoder ticks per cm

@@ -284,8 +284,13 @@ Mower::Mower(){
   // ------ odometry ------------------------------------
   odometryUse                = 1;          // use odometry?
   twoWayOdometrySensorUse    = 0;          // use optional two-wire odometry sensor?
-  odometryTicksPerRevolution = 1060;       // encoder ticks per one full resolution
-  odometryTicksPerCm         = 13.49;      // encoder ticks per cm
+  wheelDiameter              = 250;        // wheel diameter (mm)
+  #ifdef PCB_1_2  
+    odometryTicksPerRevolution = 1060;       // encoder ticks per one full resolution    
+  #elif PCB_1_3
+    odometryTicksPerRevolution = 530;        // encoder ticks per one full resolution (NOTE: set DIV/2 on PCB)  
+  #endif
+  odometryTicksPerCm         = odometryTicksPerRevolution / (wheelDiameter/10.0) / 3.1415;    // computes encoder ticks per cm (do not change)
   odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
   odometryRightSwapDir       = 0;          // inverse right encoder direction?
   odometryLeftSwapDir        = 1;          // inverse left encoder direction?
