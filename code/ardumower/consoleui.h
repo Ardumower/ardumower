@@ -1,3 +1,5 @@
+// serial console menu etc.
+
 void Robot::purgeConsole() {
   while (Console.available())
     Console.read();
