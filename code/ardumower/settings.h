@@ -1,3 +1,4 @@
+// user settings (EEPROM), statistics, error counters
 
 void Robot::loadSaveRobotStats(boolean readflag){
   if (readflag) Console.println(F("loadSaveRobotStats: read"));

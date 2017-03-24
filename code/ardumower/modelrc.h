@@ -1,3 +1,5 @@
+// model R/C
+
 // ---- RC (interrupt) --------------------------------------------------------------
 // RC remote control helper
 // convert ppm time (us) to percent (-100..+100)

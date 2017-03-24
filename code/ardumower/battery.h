@@ -1,3 +1,5 @@
+// battery code
+
 // check battery voltage and decide what to do
 void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
