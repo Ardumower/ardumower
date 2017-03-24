@@ -1,4 +1,4 @@
-// timer specific mowing
+// timer-based mowing
 
 void Robot::setDefaultTime(){
   datetime.time.hour = 12;
