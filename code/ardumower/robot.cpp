@@ -41,7 +41,7 @@ char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter", "off"}; 
 
 
-// --- splitted robot class ----
+// --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
 #include "motor.h"
