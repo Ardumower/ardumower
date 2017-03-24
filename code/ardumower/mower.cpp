@@ -251,11 +251,11 @@ Mower::Mower(){
     #endif  
   #elif PCB_1_3  
     #ifdef __AVR__
-      batFactor                = 0.44;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-      batChgFactor             = 0.44;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batFactor                = 0.495;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batChgFactor             = 0.495;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
     #else
-      batFactor                = 0.29;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-      batChgFactor             = 0.29;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batFactor                = 0.3587;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+      batChgFactor             = 0.3587;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
     #endif  
   #endif
   
