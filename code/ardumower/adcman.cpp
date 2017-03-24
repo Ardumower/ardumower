@@ -28,6 +28,7 @@
 #include <Arduino.h>
 #include <limits.h>
 #include "adcman.h"
+#include "config.h"
 #include "drivers.h"
 #include "flashmem.h"
 

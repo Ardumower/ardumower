@@ -23,6 +23,7 @@
 
 #include "bt.h"
 #include "drivers.h"
+#include "config.h"
 
 enum {
   BT_UNKNOWN,

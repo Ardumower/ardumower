@@ -29,6 +29,7 @@
 #include "buzzer.h"
 #include "due.h"
 #include "drivers.h"
+#include "config.h"
 
 #include "flash_efc.h"
 #include <chip.h>

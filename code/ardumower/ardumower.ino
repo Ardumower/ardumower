@@ -37,7 +37,7 @@
   // Arduino Due
   #include "due.h"
 #endif
-#include "config.h"
+#include "mower.h"
 
 
 // requires: Arduino Mega or Arduino Due

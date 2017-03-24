@@ -32,27 +32,10 @@
 #ifdef __AVR__
   // Arduino Mega
   #include <EEPROM.h>  
-  #define Console Serial
-  #define ESP8266port Serial1
-  #define Bluetooth Serial2
 #else 
   // Arduino Due
-  #include "due.h"
-   // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
-  #define Console SerialUSB
-  #define ESP8266port Serial1
-  #define Bluetooth Serial2
+  #include "due.h"  
 #endif
-
-
-// ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
-#define MAX_ECHO_TIME 3000     
-#define MIN_ECHO_TIME 300    
-#define NO_ECHO 0
-
-// I2C addresses
-#define STEPPER_ADDRESS 0xBB
-#define DS1307_ADDRESS B1101000
 
 
 // ---------- date time --------------------------------------

@@ -48,6 +48,8 @@
 //#include <limits.h>
 
 
+// choose PCB
+
 /*
   Generic robot class - subclass to implement concrete hardware!
 

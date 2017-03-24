@@ -1,4 +1,5 @@
 #include "flashmem.h"
+#include "drivers.h"
 #include "config.h"
 
 #ifdef __AVR__

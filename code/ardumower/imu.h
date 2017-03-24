@@ -147,7 +147,7 @@ private:
   void readADXL345B();
   void readHMC5883L();
   boolean foundNewMinMax;
-  int pinBuzzer;
+  int _pinBuzzer;
 };
 
 

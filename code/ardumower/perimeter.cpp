@@ -27,6 +27,7 @@
 #include <limits.h>
 #include "adcman.h"
 #include "drivers.h"
+#include "config.h"
 
 //#define pinLED 13                  
 

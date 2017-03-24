@@ -25,6 +25,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "drivers.h"
+#include "config.h"
 #include "flashmem.h"
 
 // -------------I2C addresses ------------------------
@@ -440,13 +441,13 @@ void IMU::calibComStartStop(){
     useComCalibration = true; 
     state = IMU_RUN;    
     // completed sound
-    tone(pinBuzzer, 600);
+    tone(_pinBuzzer, 600);
     delay(200); 
-    tone(pinBuzzer, 880);
+    tone(_pinBuzzer, 880);
     delay(200); 
-    tone(pinBuzzer, 1320);              
+    tone(_pinBuzzer, 1320);              
     delay(200); 
-    noTone(pinBuzzer);    
+    noTone(_pinBuzzer);    
     delay(500);
   } else {
     // start
@@ -498,7 +499,7 @@ void IMU::calibComUpdate(){
     }    
     if (newfound) {      
       foundNewMinMax = true;
-      tone(pinBuzzer, 440);
+      tone(_pinBuzzer, 440);
       Console.print("x:");
       Console.print(comMin.x);
       Console.print(",");
@@ -512,14 +513,14 @@ void IMU::calibComUpdate(){
       Console.print(",");
       Console.print(comMax.z);    
       Console.println("\t");
-    } else noTone(pinBuzzer);   
+    } else noTone(_pinBuzzer);   
   }    
 }
 
 // calculate acceleration sensor offsets
 boolean IMU::calibAccNextAxis(){  
   boolean complete = false;
-  tone(pinBuzzer, 440);
+  tone(_pinBuzzer, 440);
   while (Console.available()) Console.read();  
   useAccCalibration = false;  
   if (calibAccAxisCounter >= 6) calibAccAxisCounter = 0;
@@ -569,14 +570,14 @@ boolean IMU::calibAccNextAxis(){
     Console.println("acc calibration completed");    
     complete = true;
     // completed sound
-    tone(pinBuzzer, 600);
+    tone(_pinBuzzer, 600);
     delay(200); 
-    tone(pinBuzzer, 880);
+    tone(_pinBuzzer, 880);
     delay(200); 
-    tone(pinBuzzer, 1320);              
+    tone(_pinBuzzer, 1320);              
     delay(200); 
   };
-  noTone(pinBuzzer);
+  noTone(_pinBuzzer);
   delay(500);
   return complete;
 }      
@@ -697,7 +698,7 @@ void IMU::update(){
 }  
 
 boolean IMU::init(int aPinBuzzer){    
-  pinBuzzer = aPinBuzzer;
+  _pinBuzzer = aPinBuzzer;
   loadCalib();
   printCalib();    
   if (!initL3G4200D()) return false;

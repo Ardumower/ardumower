@@ -24,6 +24,7 @@
 */
 
 #include "robot.h"
+#include "mower.h"
 #include "flashmem.h"
 
 #define MAGIC 52
@@ -244,8 +245,8 @@ void Robot::setup()  {
   Console.print(F("Ardumower "));
   Console.print(VER);
   Console.print(F("  "));
-  #ifdef PCB_1_2
-     Console.println(F("PCB 1.2"));
+  #ifdef PCB_1_2     
+		 Console.println(F("PCB 1.2"));
   #elif PCB_1_3
      Console.println(F("PCB 1.3"));
   #endif
