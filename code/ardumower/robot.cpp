@@ -245,9 +245,9 @@ void Robot::setup()  {
   Console.print(F("Ardumower "));
   Console.print(VER);
   Console.print(F("  "));
-  #ifdef PCB_1_2     
+  #if defined (PCB_1_2)
 		 Console.println(F("PCB 1.2"));
-  #elif PCB_1_3
+  #elif defined (PCB_1_3)
      Console.println(F("PCB 1.3"));
   #endif
   #ifdef USE_DEVELOPER_TEST
@@ -1020,6 +1020,9 @@ void Robot::setNextState(byte stateNew, byte dir){
   unsigned long stateTime = millis() - stateStartTime;
   if (stateNew == stateCurr) return;
   // state correction  
+	if ((stateNew == STATE_ERROR) && (stateCurr == STATE_STATION_CHARGING)) {
+		stateNew = STATE_STATION_CHARGING; // do not enter ERROR state when charging
+	}
   if ((stateCurr == STATE_PERI_FIND) || (stateCurr == STATE_PERI_TRACK)) {
     if (stateNew == STATE_ROLL) stateNew = STATE_PERI_ROLL;
     if (stateNew == STATE_REVERSE) stateNew = STATE_PERI_REV;    
@@ -1027,9 +1030,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   if (stateNew == STATE_FORWARD) {    
     if ((stateCurr == STATE_STATION_REV) ||(stateCurr == STATE_STATION_ROLL) || (stateCurr == STATE_STATION_CHECK) ) return;  
     if ((stateCurr == STATE_STATION) || (stateCurr == STATE_STATION_CHARGING)) {
-      stateNew = STATE_STATION_CHECK;   
-      setActuator(ACT_CHGRELAY, 0);         
-      motorMowEnable = false;
+      stateNew = STATE_STATION_CHECK;         
     } 
   }  
   // evaluate new state
@@ -1038,6 +1039,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   if (stateNew == STATE_STATION_REV){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm;                    
     stateEndTime = millis() + stationRevTime + motorZeroSettleTime;                     
+		setActuator(ACT_CHGRELAY, 0);         
   } else if (stateNew == STATE_STATION_ROLL){
     motorLeftSpeedRpmSet = motorSpeedMaxRpm;
     motorRightSpeedRpmSet = -motorSpeedMaxRpm;						      
@@ -1049,6 +1051,8 @@ void Robot::setNextState(byte stateNew, byte dir){
   } else if (stateNew == STATE_STATION_CHECK){
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/2; 
     stateEndTime = millis() + stationCheckTime + motorZeroSettleTime; 
+		setActuator(ACT_CHGRELAY, 0);         
+    motorMowEnable = false;
   
   } else if (stateNew == STATE_PERI_ROLL) {    
     stateEndTime = millis() + perimeterTrackRollTime + motorZeroSettleTime;                     
@@ -1104,6 +1108,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   else if (stateNew == STATE_FORWARD){      
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;  
     statsMowTimeTotalStart = true;            
+		setActuator(ACT_CHGRELAY, 0);         
   } 
   else if (stateNew == STATE_REVERSE)  {
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = -motorSpeedMaxRpm/1.25;                    
@@ -1127,6 +1132,10 @@ void Robot::setNextState(byte stateNew, byte dir){
 	     motorLeftSpeedRpmSet = -motorRightSpeedRpmSet;	
       }      
   }  
+  if (stateCurr = STATE_STATION_CHARGING) {
+		// always switch off charging relay if leaving state STATE_STATION_CHARGING
+		setActuator(ACT_CHGRELAY, 0); 
+	}
   if (stateNew == STATE_REMOTE){
     motorMowEnable = true;
     //motorMowModulate = false;              
@@ -1240,14 +1249,13 @@ void Robot::loop()  {
       if (millis() >= nextTimeErrorBeep){
         nextTimeErrorBeep = millis() + 5000;
         beep(1, true);
-      }
-      //delay(100);                        
+      }			      
       break;
     case STATE_OFF:
       // robot is turned off      
       //checkTimer();   // deactivated due to safety issues. when mower is off it should stay off. timer is only active when mower is n STATE_STATION.
       if (batMonitor && (millis()-stateStartTime>2000)){
-        if ((chgVoltage > 5.0)  && (batVoltage > 8)){
+        if (chgVoltage > 5.0) {
           beep(2, true);      
           setNextState(STATE_STATION, 0);
         }
@@ -1373,7 +1381,7 @@ void Robot::loop()  {
     case STATE_STATION:
       // waiting until auto-start by user or timer triggered
       if (batMonitor){
-        if ((chgVoltage > 5.0) && (batVoltage > 8)){
+        if (chgVoltage > 5.0) {
           if (batVoltage < startChargingIfBelow && (millis()-stateStartTime>2000)){
             setNextState(STATE_STATION_CHARGING,0);
           } else checkTimer();  
@@ -1406,11 +1414,14 @@ void Robot::loop()  {
 
     case STATE_STATION_CHECK:
       // check for charging voltage disappearing before leaving charging station
-      if (millis() >= stateEndTime){
-        if (chgVoltage > 5) {
-          addErrorCounter(ERR_CHARGER);
-          setNextState(STATE_ERROR, 0);
-        } else setNextState(STATE_STATION_REV, 0);
+      if (millis() >= stateEndTime-500){
+        //setActuator(ACT_CHGRELAY, 1);  // do we need this?
+				if (millis() >= stateEndTime){
+					if (chgVoltage > 5) {
+						addErrorCounter(ERR_CHARGER);
+						setNextState(STATE_ERROR, 0);
+					} else setNextState(STATE_STATION_REV, 0);
+				}
       }      
       break;
     case STATE_STATION_REV:

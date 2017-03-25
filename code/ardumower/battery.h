@@ -5,17 +5,18 @@ void Robot::checkBattery(){
 if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
-    if ((batVoltage < batSwitchOffIfBelow) && (stateCurr !=STATE_ERROR) && (stateCurr !=STATE_OFF) && (stateCurr !=STATE_STATION) && (stateCurr !=STATE_STATION_CHARGING))  {
-      Console.println(F("triggered batSwitchOffIfBelow"));
+    if ((batVoltage < batSwitchOffIfBelow) && (idleTimeSec != BATTERY_SW_OFF)) {      
+			Console.println(F("triggered batSwitchOffIfBelow"));
       addErrorCounter(ERR_BATTERY);
       beep(2, true);      
-      setNextState(STATE_OFF, 0);
+			loadSaveErrorCounters(false); // saves error counters
+      loadSaveRobotStats(false);    // saves robot stats
+      idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
+      Console.println(F("BATTERY switching OFF"));
+      setActuator(ACT_BATTERY_SW, 0);  // switch off battery                     
     }
-    else if ((batVoltage < batGoHomeIfBelow) && (stateCurr != STATE_OFF) 
-         && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
-         && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_REMOTE) 
-         && (stateCurr != STATE_ERROR) && (stateCurr != STATE_PERI_TRACK)
-         && (perimeterUse)) {    //UNTESTED please verify
+    else if ((batVoltage < batGoHomeIfBelow) && (stateCurr == STATE_FORWARD) 
+			&& (perimeterUse)) {    //UNTESTED please verify
       Console.println(F("triggered batGoHomeIfBelow"));
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);

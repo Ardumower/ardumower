@@ -25,12 +25,12 @@
 
 */
 
+#include "mower.h"
 #ifdef __AVR__
   #include "NewPing.h"
 #endif
 
 #include <Arduino.h>
-#include "mower.h"
 #include "due.h"
 #include "drivers.h"
 #include "pinman.h"
@@ -138,13 +138,13 @@ Mower::Mower(){
   batMonitor                 = 1;          // monitor battery and charge voltage?
   batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
-  #ifdef PCB_1_2
+  #if defined (PCB_1_2)		
 		batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 
-	#elif PCB_1_3
-	  batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
+	#elif defined (PCB_1_3)	  
+		batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
 	#endif
 
-  #ifdef PCB_1_2
+  #if defined (PCB_1_2)
     #ifdef __AVR__
       batFactor                = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
       batChgFactor             = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
@@ -152,7 +152,7 @@ Mower::Mower(){
       batFactor                = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
       batChgFactor             = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
     #endif  
-  #elif PCB_1_3  
+  #elif defined (PCB_1_3)
     #ifdef __AVR__
       batFactor                = 0.495;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
       batChgFactor             = 0.495;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
@@ -163,10 +163,16 @@ Mower::Mower(){
   #endif
   
   batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
-  batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver
-  batFullCurrent             = 0.3;       // current flowing when battery is fully charged
-  startChargingIfBelow       = 27.0;      // start charging if battery Voltage is below
-  chargingTimeout            = 12600000;  // safety timer for charging (ms) 12600000 = 3.5hrs
+  batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver  
+  #if defined (PCB_1_2)
+	  startChargingIfBelow       = 27.0;      // start charging if battery Voltage is below
+		chargingTimeout            = 12600000;  // safety timer for charging (ms) 12600000 = 3.5hrs
+		batFullCurrent             = 0.3;       // current flowing when battery is fully charged
+	#elif defined (PCB_1_3)
+		startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below	
+		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
+		batFullCurrent             = -99999.0;       // current flowing when battery is fully charged
+	#endif  
 
   // Sensorausgabe Konsole      (chgSelection =0)
   // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
@@ -188,9 +194,9 @@ Mower::Mower(){
   odometryUse                = 1;          // use odometry?
   twoWayOdometrySensorUse    = 0;          // use optional two-wire odometry sensor?
   wheelDiameter              = 250;        // wheel diameter (mm)
-  #ifdef PCB_1_2  
+  #if defined (PCB_1_2)
     odometryTicksPerRevolution = 1060;       // encoder ticks per one full resolution    
-  #elif PCB_1_3
+  #elif defined (PCB_1_3)
     odometryTicksPerRevolution = 530;        // encoder ticks per one full resolution (NOTE: set DIV/2 on PCB)  
   #endif
   odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / 3.1415;    // computes encoder ticks per cm (do not change)
