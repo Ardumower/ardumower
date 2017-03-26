@@ -26,9 +26,7 @@
 */
 
 #include "mower.h"
-#ifdef __AVR__
-  #include "NewPing.h"
-#endif
+#include "NewPing.h"
 
 #include <Arduino.h>
 #include "due.h"
@@ -315,11 +313,11 @@ ISR(PCINT0_vect){
 // mower motor speed sensor interrupt
 //void rpm_interrupt(){
 //}
- #ifdef __AVR__
-   NewPing NewSonarLeft(pinSonarLeftTrigger, pinSonarLeftEcho, 500);
-   NewPing NewSonarRight(pinSonarRightTrigger, pinSonarRightEcho, 500);
-   NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
-#endif
+
+NewPing NewSonarLeft(pinSonarLeftTrigger, pinSonarLeftEcho, 500);
+NewPing NewSonarRight(pinSonarRightTrigger, pinSonarRightEcho, 500);
+NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
+
 
 // WARNING: never use 'Serial' in the Ardumower code - use 'Console' instead
 // (required so we can use Arduino Due native port)
@@ -617,11 +615,9 @@ int Mower::readSensor(char type){
     //case SEN_SONAR_LEFT: return(readHCSR04(pinSonarLeftTrigger, pinSonarLeftEcho)); break;
     //case SEN_SONAR_RIGHT: return(readHCSR04(pinSonarRightTrigger, pinSonarRightEcho)); break;
     
-    #ifdef __AVR__
-      case SEN_SONAR_CENTER: return(NewSonarCenter.ping_cm()); break;
-      case SEN_SONAR_LEFT: return(NewSonarLeft.ping_cm()); break;
-      case SEN_SONAR_RIGHT: return(NewSonarRight.ping_cm()); break;
-    #endif
+    case SEN_SONAR_CENTER: return(NewSonarCenter.ping_cm()); break;
+    case SEN_SONAR_LEFT: return(NewSonarLeft.ping_cm()); break;
+    case SEN_SONAR_RIGHT: return(NewSonarRight.ping_cm()); break;    
     
     // case SEN_LAWN_FRONT: return(measureLawnCapacity(pinLawnFrontSend, pinLawnFrontRecv)); break;    
     //case SEN_LAWN_BACK: return(measureLawnCapacity(pinLawnBackSend, pinLawnBackRecv)); break;    
