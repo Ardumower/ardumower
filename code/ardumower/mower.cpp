@@ -191,8 +191,7 @@ Mower::Mower(){
   stationCheckTime           = 1700;       // charge station reverse check time (ms)
 
   // ------ odometry ------------------------------------
-  odometryUse                = 1;          // use odometry?
-  twoWayOdometrySensorUse    = 0;          // use optional two-wire odometry sensor?
+  odometryUse                = 1;          // use odometry?  
   wheelDiameter              = 250;        // wheel diameter (mm)
   #if defined (PCB_1_2)
     odometryTicksPerRevolution = 1060*2;       // encoder ticks per one full resolution    
@@ -507,12 +506,7 @@ void Mower::setup(){
 	{ 
 	  PCICR |= (1<<PCIE2);
 	  PCMSK2 |= (1<<PCINT20);
-	  PCMSK2 |= (1<<PCINT22);
-	  if (twoWayOdometrySensorUse)
-	  {  
-		PCMSK2 |= (1<<PCINT21);  
-		PCMSK2 |= (1<<PCINT23);   
-      }
+	  PCMSK2 |= (1<<PCINT22);	  
 	}
 		
     //-------------------------------------------------------------------------	
@@ -526,10 +520,8 @@ void Mower::setup(){
   #else
     // Due interrupts
 	// ODO
-    attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);
-    attachInterrupt(pinOdometryLeft2, PCINT2_vect, CHANGE);
-    attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);    
-    attachInterrupt(pinOdometryRight2, PCINT2_vect, CHANGE);            
+    attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);    
+    attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);        
     
 	// RC
     attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
