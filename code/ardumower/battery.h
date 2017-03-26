@@ -7,8 +7,9 @@ if (millis() < nextTimeCheckBattery) return;
   if (batMonitor){
     if ((batVoltage < batSwitchOffIfBelow) && (idleTimeSec != BATTERY_SW_OFF)) {      
 			Console.println(F("triggered batSwitchOffIfBelow"));
-      addErrorCounter(ERR_BATTERY);
-      beep(2, true);      
+      addErrorCounter(ERR_BATTERY);      
+			delay(2000); // avois corrupting EEPROM while this is also called when power is turned OFF
+			beep(2, true);      
 			loadSaveErrorCounters(false); // saves error counters
       loadSaveRobotStats(false);    // saves robot stats
       idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
