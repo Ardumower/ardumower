@@ -245,11 +245,17 @@ void Robot::setup()  {
   Console.print(F("Ardumower "));
   Console.print(VER);
   Console.print(F("  "));
-  #if defined (PCB_1_2)
-		 Console.println(F("PCB 1.2"));
+    #if defined (PCB_1_2)
+		 Console.print(F("PCB 1.2"));
   #elif defined (PCB_1_3)
-     Console.println(F("PCB 1.3"));
+     Console.print(F("PCB 1.3"));  
+	#endif
+	#ifdef __AVR__
+		Console.println(F("  Arduino Mega (5v)"));
+	#else
+		Console.println(F("  Arduino Due (3.3v)"));
   #endif
+
   #ifdef USE_DEVELOPER_TEST
     Console.println(F("Warning: USE_DEVELOPER_TEST activated"));
   #endif

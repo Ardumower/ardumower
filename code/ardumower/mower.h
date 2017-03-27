@@ -32,10 +32,10 @@
 #include "bt.h"
 
 
-/* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics, Arduino Mega) 
+/* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics, Arduino Mega/Due) 
    http://wiki.ardumower.de/index.php?title=Ardumower_chassis
    
-   Requires: Ardumower PCB v0.5  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
+   Requires: Ardumower PCB v0.5/1.2/1.3  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
    
 */
    
@@ -44,6 +44,13 @@
 #define PCB_1_2    
 //#define PCB_1_3    
 // -----------------------------------------------------------------------------------
+
+
+#ifdef __AVR__
+  #define IOREF 5.0  // I/O reference voltage 
+#else 
+	#define IOREF 3.3   // I/O reference voltage 
+#endif
 
 
 // ------ pins---------------------------------------

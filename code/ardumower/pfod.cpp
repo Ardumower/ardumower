@@ -921,6 +921,11 @@ void RemoteControl::sendInfoMenu(boolean update){
   #elif defined (PCB_1_3)
     serialPort->print(F(" PCB1.3"));
   #endif
+	#ifdef __AVR__
+		serialPort->print(F(" Mega"));
+	#else
+		serialPort->print(F(" Due"));
+  #endif
   serialPort->print(F("|v01~Developer "));
   sendYesNo(robot->developerActive); 
   serialPort->print(F("|v04~Stats override "));  
