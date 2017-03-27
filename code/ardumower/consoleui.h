@@ -130,7 +130,7 @@ void Robot::testOdometry(){
     resetIdleTime();
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
       //Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
-      Console.print(F("Press'f' forward, 'r' reverse, 'z' reset, 's' stop, 'o' one revolution  "));
+      Console.print(F("Press'f' forward, 'r' reverse, 'z' reset, 's' stop, 'o' one revolution, '0' exit  "));
       Console.print(F("left="));
       Console.print(odometryLeft);
       Console.print(F("  right="));
