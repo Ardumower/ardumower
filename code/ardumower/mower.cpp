@@ -142,13 +142,13 @@ Mower::Mower(){
 		startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below
 		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
 		batFullCurrent             = -99999.0;       // current flowing when battery is fully charged	 (amp)
-		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	
-		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor 
-		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor 
+		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	*10
+		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor *10
     #ifdef __AVR__         // Mega
 			//batFactor                = 0.495;      // voltage = ADC * batFactor / 10     
       //batChgFactor             = 0.495;      // voltage = ADC * batFactor / 10  
-			//chgFactor                = 0.045;         // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10
+			//chgFactor                = 0.045;         // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10
     #else                  // Due
       //batFactor                = 0.3267;      // voltage = ADC * batFactor / 10   
       //batChgFactor             = 0.3267;      // voltage = ADC * batFactor / 10
@@ -159,8 +159,8 @@ Mower::Mower(){
   	startChargingIfBelow       = 99999.0;     // start charging if battery Voltage is below	
 		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
 		batFullCurrent             = -99999.0;    // current flowing when battery is fully charged (amp)
-		batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor (see mower.h for macros)					
-		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor (see mower.h for macros)										
+		batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
 		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)							
 	  #ifdef __AVR__         // Mega  
       //batFactor                = 0.543;      // voltage = ADC * batFactor / 10 
