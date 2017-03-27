@@ -1,0 +1,27 @@
+BS-Kunststoffe
+Benötigte Teile für einen Ardumower
+
+Bitte beachten, Die matte Seite bitte nach unten. Ausfräsungen etc. bitte immer auf der glänzenden Seite.
+Die Löcher bei "front_3_us" bitte nicht durchgängig. (siehe Plan)
+Bitte Hinweis für den Deckel.dxf beachten.
+
+Nummer.............................Bezeichnung..........................Stückzahlen
+---------------------------------------------------------------------------------------
+1..................................bodenplatte.dxf...........................1
+2..................................bumper_front.dxf..........................1
+3..................................deckel.dxf................................1
+
+HINWEIS:   Bei dem "Deckel" gibt es ein Loch mit 16mm Durchmesser.
+Dieses müsste ab jetzt 24mm Durchmesser haben.
+
+4..................................elektrotraeger.dxf........................1    (vorher 2) 
+5..................................front_3_us.dxf............................1
+6..................................heck.dxf..................................1
+7..................................maehteller.dxf............................1
+8..................................rad250.dxf................................2
+9..................................seite_links.dxf...........................1
+10.................................seite_rechts.dxf..........................1
+-
+12.................................unterfahrschutz_heck.dxf..................1
+
+-unterfahrschutz_front.dxf- entfällt jetzt

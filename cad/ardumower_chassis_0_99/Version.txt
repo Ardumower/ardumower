@@ -1,0 +1,28 @@
+ Arduino robot mower Chassis
+ Copyright (c) 2013 by S.Gennat
+ www.ardumower.de
+ www.ardmumower.com
+ 
+ 
+ * private-use only (please ask for a commercial-use); 
+ * you can redistribute it and/or modify it under the terms of GNU General Public License. 
+ * These plans are distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * license for more details. 
+  
+ changes:
+  v0.95		11.09.2013	first prototype
+  v0.96		25.09.2013	defined new dimensions	
+  v0.97		30.09.2013	bearing fits for 628/8 (removed,not necessary)
+  v0.98.1   16.11.2013  - added boreholes for Nema 17 stepper motor (removed not functional)
+                        - change custom swivel castor to industrial standard swivel castor
+ 
+  
+  v0.98.2	10.02.2014	now correct dimensions of Nema 17 stepper, corrected boreholes for Nema 17 stepper motor (removed)
+                        new wheelhub, corrected boreholes in wheels for new wheelhub, added 8mm groove in side panel	  
+				
+  v0.99     12.06.2014  everything is slightly modified for a better automated production, new dimensions overall, Chassis is
+                        plug and play for the following motors (https://www.marotronics.de/index.php/5/dc-planeten-getriebemotor-24-volt-mit-hallic-detail)
+                        and (https://www.marotronics.de/index.php/5/bci-63.25-detail), new front bumper 
+                        BOM is coming soon
