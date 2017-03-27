@@ -44,10 +44,10 @@ Mower::Mower(){
   motorAccel                 = 1000;      // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
   motorSpeedMaxRpm           = 25;        // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
   motorSpeedMaxPwm           = 255;       // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
-  motorPowerMax              = 75;        // motor wheel max power (Watt)
-  motorSenseRightScale       = 15.3;      // motor right sense scale (mA=(ADC-zero)/scale)
-  motorSenseLeftScale        = 15.3;      // motor left sense scale  (mA=(ADC-zero)/scale)
-  motorPowerIgnoreTime       = 2000;      // time to ignore motor power (ms)
+  motorPowerMax              = 75;        // motor wheel max power (Watt)	
+  motorSenseRightScale       = ADC2voltage(1)*1905;   // ADC to right motor sense milliamp 
+	motorSenseLeftScale        = ADC2voltage(1)*1905;   // ADC to left motor sense milliamp 
+	motorPowerIgnoreTime       = 2000;      // time to ignore motor power (ms)
   motorZeroSettleTime        = 3000 ;     // how long (ms) to wait for motors to settle at zero speed
   motorRollTimeMax           = 1500;      // max. roll time (ms)
   motorRollTimeMin           = 750;       // min. roll time (ms) should be smaller than motorRollTimeMax
@@ -77,7 +77,7 @@ Mower::Mower(){
   motorMowPowerMax           = 75.0;       // motor mower max power (Watt)
   motorMowModulate           = 0;          // motor mower cutter modulation?
   motorMowRPMSet             = 3300;       // motor mower RPM (only for cutter modulation)
-  motorMowSenseScale         = 15.3;       // motor mower sense scale (mA=(ADC-zero)/scale)
+  motorMowSenseScale         = ADC2voltage(1)*1905;    // ADC to mower motor sense milliamp 
   motorMowPID.Kp             = 0.005;      // motor mower RPM PID controller
   motorMowPID.Ki             = 0.01;
   motorMowPID.Kd             = 0.01;
@@ -136,52 +136,46 @@ Mower::Mower(){
   batMonitor                 = 1;          // monitor battery and charge voltage?
   batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
-  #if defined (PCB_1_2)		
-		batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 
-	#elif defined (PCB_1_3)	  
-		batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
-	#endif
-
-  #if defined (PCB_1_2)
-    #ifdef __AVR__
-      batFactor                = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-      batChgFactor             = 0.495;      // MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-    #else
-      batFactor                = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-      batChgFactor             = 0.3267;      // DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+		
+  #if defined (PCB_1_2)     // PCB 1.2	  
+	  batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 	
+		startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below
+		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
+		batFullCurrent             = -99999.0;       // current flowing when battery is fully charged	 (amp)
+		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	
+		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor 
+		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor 
+    #ifdef __AVR__         // Mega
+			//batFactor                = 0.495;      // voltage = ADC * batFactor / 10     
+      //batChgFactor             = 0.495;      // voltage = ADC * batFactor / 10  
+			//chgFactor                = 0.045;         // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10
+    #else                  // Due
+      //batFactor                = 0.3267;      // voltage = ADC * batFactor / 10   
+      //batChgFactor             = 0.3267;      // voltage = ADC * batFactor / 10
+			//chgFactor                  = 0.03;        // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10			
     #endif  
-  #elif defined (PCB_1_3)
-    #ifdef __AVR__
-      batFactor                = 0.495;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-      batChgFactor             = 0.495;      // Please verify - MEGA battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-    #else
-      batFactor                = 0.3587;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
-      batChgFactor             = 0.3587;      // Please verify - DUE battery conversion factor  / 10 due to arduremote bug, can be removed after fixing (look in robot.cpp)
+  #elif defined (PCB_1_3)   // PCB 1.3
+		batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
+  	startChargingIfBelow       = 99999.0;     // start charging if battery Voltage is below	
+		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
+		batFullCurrent             = -99999.0;    // current flowing when battery is fully charged (amp)
+		batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor (see mower.h for macros)					
+		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor (see mower.h for macros)										
+		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)							
+	  #ifdef __AVR__         // Mega  
+      //batFactor                = 0.543;      // voltage = ADC * batFactor / 10 
+      //batChgFactor             = 0.543;      // voltage = ADC * batFactor / 10 
+			//chgFactor                  = 0.045;       // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10			
+    #else                  // Due
+      //batFactor                = 0.3587;      // voltage = ADC * batFactor / 10
+      //batChgFactor             = 0.3587;      // voltage = ADC * batFactor / 10
+			//chgFactor                  = 0.03;        // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10
     #endif  
   #endif
   
   batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
   batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver  
-  #if defined (PCB_1_2)
-	  startChargingIfBelow       = 27.0;      // start charging if battery Voltage is below
-		chargingTimeout            = 12600000;  // safety timer for charging (ms) 12600000 = 3.5hrs
-		batFullCurrent             = 0.3;       // current flowing when battery is fully charged
-	#elif defined (PCB_1_3)
-		startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below	
-		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
-		batFullCurrent             = -99999.0;       // current flowing when battery is fully charged
-	#endif  
-
-  // Sensorausgabe Konsole      (chgSelection =0)
-  // Einstellungen ACS712 5A    (chgSelection =1   /   chgSenseZero ~ 511    /    chgFactor = 39    /    chgSense =185.0    /    chgChange = 0 oder 1    (je nach  Stromrichtung)   /   chgNull  = 2)
-  // Einstellungen INA169 board (chgSelection =2)
-  chgSelection               = 2;
-  chgSenseZero               = 511;        // charge current sense zero point
-  chgFactor                  = 39;         // charge current conversion factor   - Empfindlichkeit nimmt mit ca. 39/V Vcc ab
-  chgSense                   = 185.0;      // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
-  chgChange                  = 0;          // Messwertumkehr von - nach +         1 oder 0
-  chgNull                    = 2;          // Nullduchgang abziehen (1 oder 2)
-
+  
   // ------  charging station ---------------------------
   stationRevTime             = 1800;       // charge station reverse time (ms)
   stationRollTime            = 1000;       // charge station roll time (ms)
@@ -198,9 +192,7 @@ Mower::Mower(){
   #endif
   odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / 3.1415;    // computes encoder ticks per cm (do not change)
   odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
-  odometryRightSwapDir       = 0;          // inverse right encoder direction?
-  odometryLeftSwapDir        = 1;          // inverse left encoder direction?
-
+  
   // ----- GPS -------------------------------------------
   gpsUse                     = 0;          // use GPS?
   stuckIfGpsSpeedBelow       = 0.2;        // if Gps speed is below given value the mower is stuck

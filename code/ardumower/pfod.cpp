@@ -696,8 +696,7 @@ void RemoteControl::sendBatteryMenu(boolean update){
   serialPort->print("A");
   //bb remove
   //sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
-  //bb remove end
-  sendSlider("j06", F("Charge sense zero"), robot->chgSenseZero, "", 1, 600, 400);       
+  //bb remove end  
   sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);       
   sendSlider("j10", F("charging starts if Voltage is below"), robot->startChargingIfBelow, "", 0.1, robot->batFull);       
   sendSlider("j11", F("Battery is fully charged if current is below"), robot->batFullCurrent, "", 0.1, robot->batChargingCurrentMax);       
@@ -714,8 +713,7 @@ void RemoteControl::processBatteryMenu(String pfodCmd){
     else if (pfodCmd.startsWith("j03")) processSlider(pfodCmd, robot->batSwitchOffIfBelow, 0.1); 
     //bb change
     //else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.01);
-    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.001);
-    else if (pfodCmd.startsWith("j06")) processSlider(pfodCmd, robot->chgSenseZero, 1);   
+    else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.001);    
     else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, robot->chgFactor, 0.01);    
     //bb change
     //else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
@@ -757,13 +755,7 @@ void RemoteControl::sendOdometryMenu(boolean update){
   serialPort->println(robot->motorRightRpmCurr);
   sendSlider("l04", F("Ticks per one full revolution"), robot->odometryTicksPerRevolution, "", 1, 2120);       
   sendSlider("l01", F("Ticks per cm"), robot->odometryTicksPerCm, "", 0.1, 35);       
-  sendSlider("l02", F("Wheel base cm"), robot->odometryWheelBaseCm, "", 0.1, 50);  
-  //serialPort->print(F("|l08~Use two-way encoder "));
-  //sendYesNo(robot->twoWayOdometrySensorUse);
-  serialPort->print(F("|l05~Swap left direction "));
-  sendYesNo(robot->odometryLeftSwapDir);
-  serialPort->print(F("|l06~Swap right direction "));
-  sendYesNo(robot->odometryRightSwapDir);
+  sendSlider("l02", F("Wheel base cm"), robot->odometryWheelBaseCm, "", 0.1, 50);    
   serialPort->println("}");
 }
 
@@ -772,9 +764,7 @@ void RemoteControl::processOdometryMenu(String pfodCmd){
   if (pfodCmd == "l00") robot->odometryUse = !robot->odometryUse;
     else if (pfodCmd.startsWith("l01")) processSlider(pfodCmd, robot->odometryTicksPerCm, 0.1);
     else if (pfodCmd.startsWith("l02")) processSlider(pfodCmd, robot->odometryWheelBaseCm, 0.1); 
-    else if (pfodCmd.startsWith("l04")) processSlider(pfodCmd, robot->odometryTicksPerRevolution, 1);
-    else if (pfodCmd.startsWith("l05")) robot->odometryLeftSwapDir = !robot->odometryLeftSwapDir;     
-    else if (pfodCmd.startsWith("l06")) robot->odometryRightSwapDir = !robot->odometryRightSwapDir;
+    else if (pfodCmd.startsWith("l04")) processSlider(pfodCmd, robot->odometryTicksPerRevolution, 1);    
     //else if (pfodCmd.startsWith("l08")) robot->twoWayOdometrySensorUse = !robot->twoWayOdometrySensorUse;    
   sendOdometryMenu(true);
 }

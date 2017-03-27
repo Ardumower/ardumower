@@ -305,7 +305,7 @@ class Robot
     int motorMowSpeedPWMSet;
     float motorMowPWMCurr ;         // current speed
     int motorMowSenseADC ; 
-    float motorMowSenseCurrent ;
+    float motorMowSenseCurrent ;  // mA
     float motorMowSense ;       // motor power (range 0..MAX_MOW_POWER)
     int motorMowSenseCounter ;
     int motorMowSenseErrorCounter ;
@@ -587,6 +587,12 @@ protected:
     virtual void purgeConsole();
     virtual char waitCharConsole();
     virtual String waitStringConsole();
+
+		// Spannungsteiler Gesamtspannung ermitteln (Reihenschaltung R1-R2, U2 bekannt, U_GES zu ermitteln)
+		virtual float voltageDividerUges(float R1, float R2, float U2);	
+		// ADC-value to voltage
+		virtual float ADC2voltage(float ADCvalue);
+
 };    
 
 

@@ -52,6 +52,18 @@ char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter", "off"};
 // -----------------------------
 
 
+// Spannungsteiler Gesamtspannung ermitteln (Reihenschaltung R1-R2, U2 bekannt, U_GES zu ermitteln)
+float Robot::voltageDividerUges(float R1, float R2, float U2){
+	return (U2/R2 * (R1+R2));  // Uges 
+}
+
+// ADC-value to voltage
+float Robot::ADC2voltage(float ADCvalue){
+  return (ADCvalue /1023.0 * IOREF);   // ADCman works @ 10 bit
+}  
+
+
+
 Robot::Robot(){
   name = "Generic";
   developerActive = false;
@@ -190,8 +202,6 @@ Robot::Robot(){
   statsBatteryChargingCounter = 0;
 }
 
-  
-
 char *Robot::mowPatternName(){
   return mowPatternNames[mowPatternCurr];
 }
@@ -251,10 +261,12 @@ void Robot::setup()  {
      Console.print(F("PCB 1.3"));  
 	#endif
 	#ifdef __AVR__
-		Console.println(F("  Arduino Mega (5v)"));
+		Console.print(F("  Arduino Mega"));
 	#else
-		Console.println(F("  Arduino Due (3.3v)"));
+		Console.print(F("  Arduino Due"));
   #endif
+	Console.print(F("  IOREF="));	
+	Console.println(IOREF);
 
   #ifdef USE_DEVELOPER_TEST
     Console.println(F("Warning: USE_DEVELOPER_TEST activated"));
@@ -523,53 +535,15 @@ void Robot::readSensors(){
     int chgADC = readSensor(SEN_CHG_VOLTAGE);
     //Console.println(chgADC);
     double chgvolt = (double)chgADC * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    double current = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
+    double currentADC = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
     // low-pass filter
     double accel = 0.01;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
     // if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  //Deaktiviert für Ladestromsensor berechnung 
 
-    // Anfang Ladestromsensor zur Glättung und Mittelwertbildung
-    // ********************************************************************
-    //  Variabeln
-    double currentmitte = current;    
-    // ********************************************************************
-    // Ende Ladestromsensor zur Glättung und Mittelwertbildung
-
-
-   //  Anfang Ladestromsensor berechnen
-   // ********************************************************************
-   //  Variabeln 
-    float vcc, asensor, amp;     
-    float chgAMP;                                               //Sensorwert des Ladestrompin
-
-    //Sensor Wert Ausgabe auf Seriellen Monitor oder HandyApp   wenn chgSelection =0
-    if (chgSelection==0) chgCurrent = current;
-
-    // Berechnung für Ladestromsensor ACS712 5A                 wenn chgSelection =1
-    if (chgSelection==1) {  
-      chgAMP = currentmitte;                                     //Sensorwert übergabe vom Ladestrompin
-      vcc = (float) 3.30 / chgSenseZero * 1023.0;                // Versorgungsspannung ermitteln!  chgSenseZero=511  ->Die Genauigkeit kann erhöt werden wenn der 3.3V Pin an ein Analogen Pin eingelesen wird. Dann ist vcc = (float) 3.30 / analogRead(X) * 1023.0;
-      asensor = (float) chgAMP * vcc / 1023.0;                   // Messwert auslesen
-      asensor = (float) asensor - (vcc/chgNull);                 // Nulldurchgang (vcc/2) abziehen
-      chgSense = (float) chgSense - ((5.00-vcc)*chgFactor);      // Korrekturfactor für Vcc!  chgFactor=39
-      amp = (float) asensor /chgSense *1000 ;                    // Ampere berechnen
-      if (chgChange ==1) amp = amp / -1;                         //Lade Strom Messwertumkehr von - nach +
-      if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;        // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 anssonsten messwertau8sgabe in Ampere)
-    }
-    
-    // Berechnung für Ladestromsensor INA169 board              wenn chgSelection =2
-    if (chgSelection==2) {
-      chgAMP = currentmitte;
-      asensor = (chgAMP * 5) / 1023;                          // umrechnen von messwert in Spannung (5V Reference)
-      amp = asensor / (10 * 0.1);                               // Ampere berechnen RL = 10k    Is = (Vout x 1k) / (RS x RL)
-      if (amp<0.0) chgCurrent = 0; else chgCurrent = amp;       // Messwertrückgabe in chgCurrent   (Wenn Messwert kleiner als 0 dann Messwert =0 ansonsten Messwertaußsgabe in Ampere)
-    }      
-    
-    //  Ladestromsensor berechnen ********** Ende
-    // ********************************************************************
-
+    chgCurrent = (double)currentADC * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
+        
     //batVoltage = batVolt
     //chgVoltage = chgvolt;
     //chgCurrent = current;        

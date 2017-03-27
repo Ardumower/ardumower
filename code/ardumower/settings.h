@@ -229,8 +229,9 @@ void Robot::printSettingSerial(){
   Console.println(F("---------- motorMowModulate Interrupt ------------------------"));
   Console.print  (F("motorMowModulate Interrupt                 : "));
   #ifdef __AVR__
-    Console.println (bitRead(PCMSK2, PCINT19));
+    Console.print(bitRead(PCMSK2, PCINT19));
   #endif
+	Console.println();
 
   // ------ bumper ----------------------------------------------------------------
   Console.println(F("---------- bumper --------------------------------------------"));
@@ -325,20 +326,24 @@ void Robot::printSettingSerial(){
  Console.println(F("---------- model R/C Interrupt --------------------------------"));
   Console.print  (F("Pin 10 pinRemoteSpeed                      : "));
   #ifdef __AVR__
-    Console.println (bitRead(PCMSK0, PCINT4)); // Pin 10
+    Console.print(bitRead(PCMSK0, PCINT4)); // Pin 10
   #endif
+	Console.println();
   Console.print  (F("Pin 11 pinRemoteSteer                      : "));
   #ifdef __AVR__
-    Console.println (bitRead(PCMSK0, PCINT5)); // Pin 11
+    Console.print(bitRead(PCMSK0, PCINT5)); // Pin 11
   #endif
-  Console.print  (F("Pin 12 pinRemoteMow                        : "));
+	Console.println();
+  Console.print(F("Pin 12 pinRemoteMow                        : "));
   #ifdef __AVR__
-    Console.println (bitRead(PCMSK0, PCINT6)); // Pin 12
+    Console.print(bitRead(PCMSK0, PCINT6)); // Pin 12
   #endif
+	Console.println();
   Console.print  (F("Pin 52 pinRemoteSwitch                     : "));
   #ifdef __AVR__
-    Console.println (bitRead(PCMSK0, PCINT1)); // Pin 52
+    Console.print(bitRead(PCMSK0, PCINT1)); // Pin 52
   #endif
+	Console.println();
   
   // ------ battery ---------------------------------------------------------------
   Console.println(F("---------- battery -------------------------------------------"));
@@ -363,19 +368,9 @@ void Robot::printSettingSerial(){
   Console.print  (F("startChargingIfBelow                       : "));
   Console.println(startChargingIfBelow); 
   Console.print  (F("chargingTimeout                            : "));
-  Console.println(chargingTimeout); 
-  Console.print  (F("chgSelection                               : "));
-  Console.println(chgSelection); 
-  Console.print  (F("chgSenseZero                               : "));
-  Console.println(chgSenseZero); 
+  Console.println(chargingTimeout); 	
   Console.print  (F("chgFactor                                  : "));
   Console.println( chgFactor);
-  Console.print  (F("chgSense                                   : "));
-  Console.println(chgSense); 
-  Console.print  (F("chgChange                                  : "));
-  Console.println(chgChange,1); 
-  Console.print  (F("chgNull                                    : "));
-  Console.println(chgNull,1); 
   
   // ------  charging station -----------------------------------------------------
   Console.println(F("---------- charging station ----------------------------------"));
@@ -399,11 +394,7 @@ void Robot::printSettingSerial(){
   Console.print  (F("odometryTicksPerCm                         : "));
   Console.println( odometryTicksPerCm);
   Console.print  (F("odometryWheelBaseCm                        : "));
-  Console.println( odometryWheelBaseCm);
-  Console.print  (F("odometryRightSwapDir                       : "));
-  Console.println(odometryRightSwapDir); 
-  Console.print  (F("odometryLeftSwapDir                        : "));
-  Console.println(odometryLeftSwapDir); 
+  Console.println( odometryWheelBaseCm);  
 
 
 // ------ odometry Interrupt-------------------------------------------------------

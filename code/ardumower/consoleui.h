@@ -103,7 +103,7 @@ void Robot::printMenu(){
   Console.println(F("9=save user settings"));  
   Console.println(F("l=load factory settings"));  
   Console.println(F("r=delete robot stats"));  
-  Console.println(F("x=read settings"));  
+  Console.println(F("x=print settings"));  
   Console.println(F("e=delete all errors"));  
   Console.println(F("0=exit"));  
   Console.println();
