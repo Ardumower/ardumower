@@ -129,7 +129,6 @@
 
 // ------- baudrates---------------------------------
 #define CONSOLE_BAUDRATE    19200       // baudrate used for console
-#define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module
 #define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
 #define BLUETOOTH_PIN       1234
 
@@ -145,9 +144,8 @@
 #else 
   // Arduino Due  
    // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
-  #define Console SerialUSB
+  #define Console SerialUSB	
   #define ESP8266port Serial1
-  #define Bluetooth Serial2
 #endif
 
 // ------- ultrasonic config ---------------------------------------------------------

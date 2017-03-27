@@ -694,10 +694,7 @@ void RemoteControl::sendBatteryMenu(boolean update){
   serialPort->print("V ");
   serialPort->print(robot->chgCurrent);
   serialPort->print("A");
-  //bb remove
-  //sendSlider("j09", F("Calibrate batChgFactor"), robot->batChgFactor, "", 0.01, 1.0);       
-  //bb remove end  
-  sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.01, 80);       
+  sendSlider("j08", F("Charge factor"), robot->chgFactor, "", 0.001, 0.01, 0.06);       
   sendSlider("j10", F("charging starts if Voltage is below"), robot->startChargingIfBelow, "", 0.1, robot->batFull);       
   sendSlider("j11", F("Battery is fully charged if current is below"), robot->batFullCurrent, "", 0.1, robot->batChargingCurrentMax);       
   serialPort->println("}");
@@ -714,7 +711,7 @@ void RemoteControl::processBatteryMenu(String pfodCmd){
     //bb change
     //else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.01);
     else if (pfodCmd.startsWith("j05")) processSlider(pfodCmd, robot->batFactor, 0.001);    
-    else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, robot->chgFactor, 0.01);    
+    else if (pfodCmd.startsWith("j08")) processSlider(pfodCmd, robot->chgFactor, 0.001);    
     //bb change
     //else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.01);
     else if (pfodCmd.startsWith("j09")) processSlider(pfodCmd, robot->batChgFactor, 0.001);
