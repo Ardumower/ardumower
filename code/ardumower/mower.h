@@ -129,8 +129,8 @@
 
 // ------- baudrates---------------------------------
 #define CONSOLE_BAUDRATE    19200       // baudrate used for console
-#define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module (Ardumower default)
-//#define BLUETOOTH_BAUDRATE  115200       // baudrate used for communication with Bluetooth module 
+//#define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module (Ardumower default)
+#define BLUETOOTH_BAUDRATE  115200       // baudrate used for communication with Bluetooth module 
 #define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
 #define BLUETOOTH_PIN       1234
 
@@ -148,8 +148,8 @@
    // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
   #define Console SerialUSB	
   #define ESP8266port Serial1
-  #define Bluetooth Serial2  // Ardumower default
-	//#define Bluetooth Serial3 
+//  #define Bluetooth Serial2  // Ardumower default
+	#define Bluetooth Serial3 
 #endif
 
 // ------- ultrasonic config ---------------------------------------------------------

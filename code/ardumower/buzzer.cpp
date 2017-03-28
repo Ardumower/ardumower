@@ -5,7 +5,6 @@
   #include "DueTimer.h"
 #endif
 
-#define pinBuzzer 53 //Ehl
 
 BuzzerClass Buzzer;
 

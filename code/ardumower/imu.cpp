@@ -27,13 +27,13 @@
 #include "drivers.h"
 #include "config.h"
 #include "flashmem.h"
+#include "buzzer.h"
 
 // -------------I2C addresses ------------------------
 #define ADXL345B (0x53)          // ADXL345B acceleration sensor (GY-80 PCB)
 #define HMC5883L (0x1E)          // HMC5883L compass sensor (GY-80 PCB)
 #define L3G4200D (0xD2 >> 1)     // L3G4200D gyro sensor (GY-80 PCB)
 
-#define pinLED 13
 
 #define ADDR 600
 #define MAGIC 6
@@ -441,13 +441,13 @@ void IMU::calibComStartStop(){
     useComCalibration = true; 
     state = IMU_RUN;    
     // completed sound
-    tone(_pinBuzzer, 600);
+    Buzzer.tone(600);
     delay(200); 
-    tone(_pinBuzzer, 880);
+    Buzzer.tone(880);
     delay(200); 
-    tone(_pinBuzzer, 1320);              
+    Buzzer.tone(1320);              
     delay(200); 
-    noTone(_pinBuzzer);    
+    Buzzer.noTone();    
     delay(500);
   } else {
     // start
@@ -499,7 +499,7 @@ void IMU::calibComUpdate(){
     }    
     if (newfound) {      
       foundNewMinMax = true;
-      tone(_pinBuzzer, 440);
+      Buzzer.tone(440);
       Console.print("x:");
       Console.print(comMin.x);
       Console.print(",");
@@ -513,14 +513,14 @@ void IMU::calibComUpdate(){
       Console.print(",");
       Console.print(comMax.z);    
       Console.println("\t");
-    } else noTone(_pinBuzzer);   
+    } else Buzzer.noTone();   
   }    
 }
 
 // calculate acceleration sensor offsets
 boolean IMU::calibAccNextAxis(){  
   boolean complete = false;
-  tone(_pinBuzzer, 440);
+  Buzzer.tone(440);
   while (Console.available()) Console.read();  
   useAccCalibration = false;  
   if (calibAccAxisCounter >= 6) calibAccAxisCounter = 0;
@@ -570,14 +570,14 @@ boolean IMU::calibAccNextAxis(){
     Console.println("acc calibration completed");    
     complete = true;
     // completed sound
-    tone(_pinBuzzer, 600);
+    Buzzer.tone(600);
     delay(200); 
-    tone(_pinBuzzer, 880);
+    Buzzer.tone(880);
     delay(200); 
-    tone(_pinBuzzer, 1320);              
+    Buzzer.tone(1320);              
     delay(200); 
   };
-  noTone(_pinBuzzer);
+  Buzzer.noTone();
   delay(500);
   return complete;
 }      
@@ -697,8 +697,7 @@ void IMU::update(){
   }
 }  
 
-boolean IMU::init(int aPinBuzzer){    
-  _pinBuzzer = aPinBuzzer;
+boolean IMU::init(){    
   loadCalib();
   printCalib();    
   if (!initL3G4200D()) return false;

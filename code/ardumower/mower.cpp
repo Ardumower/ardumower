@@ -32,6 +32,7 @@
 #include "due.h"
 #include "drivers.h"
 #include "pinman.h"
+#include "buzzer.h"
 
 
 Mower robot;
@@ -315,9 +316,10 @@ NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
 // (required so we can use Arduino Due native port)
 
 void Mower::setup(){
+  Buzzer.begin();
   Wire.begin();            
-  Console.begin(CONSOLE_BAUDRATE);
-  //while (!Console) ; // required if using Due native port
+	PinMan.begin();  
+  Console.begin(CONSOLE_BAUDRATE);  
   Console.println("SETUP");
 
   // keep battery switched ON
@@ -414,22 +416,7 @@ void Mower::setup(){
   pinMode(pinUserSwitch3, OUTPUT);   
   
   // other
-  pinMode(pinVoltageMeasurement, INPUT);
-
-  // PWM frequency setup  
-  // For obstacle detection, motor torque should be detectable - torque can be computed by motor current.
-  // To get consistent current values, PWM frequency should be 3.9 Khz
-  // http://wiki.ardumower.de/index.php?title=Motor_driver  
-  // http://sobisource.com/arduino-mega-pwm-pin-and-frequency-timer-control/
-  // http://www.atmel.com/images/doc2549.pdf
-  #ifdef __AVR__  
-    TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)     
-  #else
-    PinMan.analogWrite(pinMotorMowPWM, 0); // sets PWMEnabled=true in Arduino library
-    pmc_enable_periph_clk(PWM_INTERFACE_ID);
-    PWMC_ConfigureClocks(3900 * PWM_MAX_DUTY_CYCLE, 0, VARIANT_MCK);   // 3.9 Khz  
-  #endif  
-
+  pinMode(pinVoltageMeasurement, INPUT);  
   
     
   // ADC
@@ -443,7 +430,7 @@ void Mower::setup(){
   ADCMan.setCapture(pinVoltageMeasurement, 1, false);    
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
     
-  imu.init(pinBuzzer);
+  imu.init();
 	  
   gps.init();
 
@@ -636,7 +623,7 @@ void Mower::setActuator(char type, int value){
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    case ACT_BUZZER: if (value == 0) noTone(pinBuzzer); else tone(pinBuzzer, value); break;
+    case ACT_BUZZER: if (value == 0) Buzzer.noTone(); else Buzzer.tone(value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     

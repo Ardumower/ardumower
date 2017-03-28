@@ -444,7 +444,7 @@ void RemoteControl::processMowMenu(String pfodCmd){
 
 void RemoteControl::sendBumperMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.BumperDuino`1000"));  
-  serialPort->print(F("|b00~Use bumper"));
+  serialPort->print(F("|b00~Use bumper "));
   sendYesNo(robot->bumperUse);    
   serialPort->println(F("|b01~Bumper counter l, r "));
   serialPort->print(robot->bumperLeftCounter);
@@ -454,7 +454,7 @@ void RemoteControl::sendBumperMenu(boolean update){
   serialPort->print(robot->bumperLeft);
   serialPort->print(", ");
   serialPort->print(robot->bumperRight);
-  serialPort->print(F("|b03~Use tilt"));
+  serialPort->print(F("|b03~Use tilt "));
   sendYesNo(robot->tiltUse);    
   serialPort->println(F("|b04~Tilt value "));
   serialPort->print(robot->tilt);

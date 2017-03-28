@@ -73,7 +73,7 @@ class IMU
 {
 public:
   IMU();    
-  boolean init(int aPinBuzzer);   
+  boolean init();   
   void update();  
   int getCallCounter();
   int getErrorCounter();
@@ -147,7 +147,6 @@ private:
   void readADXL345B();
   void readHMC5883L();
   boolean foundNewMinMax;
-  int _pinBuzzer;
 };
 
 
