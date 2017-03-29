@@ -140,17 +140,6 @@ F 3 "" H 10490 4865 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0170
-U 1 1 57DD7C0B
-P 3790 1570
-F 0 "#PWR0170" H 3790 1320 50  0001 C CNN
-F 1 "GND" H 3795 1397 50  0000 C CNN
-F 2 "" H 3790 1570 50  0000 C CNN
-F 3 "" H 3790 1570 50  0000 C CNN
-	1    3790 1570
-	1    0    0    -1  
-$EndComp
-$Comp
 L GND #PWR0171
 U 1 1 57DD8587
 P 2820 990
@@ -358,22 +347,6 @@ F 5 "Value" H 7605 2565 60  0001 C CNN "Bestelllink"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CP_Small C2
-U 1 1 57E5C376
-P 3790 1420
-F 0 "C2" H 3878 1466 50  0000 L CNN
-F 1 "100uF" H 3878 1375 50  0000 L CNN
-F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 3790 1420 50  0001 C CNN
-F 3 "Value" H 3790 1420 50  0001 C CNN
-F 4 "Value" H 3790 1420 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3790 1420 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3790 1420 60  0001 C CNN "Technische Daten"
-F 7 "R: RAD FC 100/50" H 3790 1420 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3790 1420 60  0001 C CNN "Bauform"
-	1    3790 1420
-	1    0    0    -1  
-$EndComp
-$Comp
 L Jumper_NC_Small JP1
 U 1 1 57E5D727
 P 3100 1240
@@ -488,8 +461,6 @@ F 11 "Value" H 9630 5485 60  0001 C CNN "Hersteller Bestellnummer"
 $EndComp
 Wire Wire Line
 	2120 990  2120 1040
-Wire Wire Line
-	3790 1520 3790 1570
 Wire Wire Line
 	3200 1240 3340 1240
 Wire Wire Line
@@ -683,9 +654,6 @@ Connection ~ 9955 5535
 Connection ~ 9955 5635
 Connection ~ 9955 5735
 Connection ~ 9955 5835
-Wire Wire Line
-	3790 1320 3790 1240
-Connection ~ 3790 1240
 Wire Wire Line
 	9430 5135 9430 5960
 Connection ~ 9430 5235
