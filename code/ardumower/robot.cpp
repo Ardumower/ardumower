@@ -882,7 +882,7 @@ void Robot::checkTilt(){
   nextTimeCheckTilt = millis() + 200; // 5Hz same as nextTimeImu
   
   if (tiltUse){
-    if ((tilt) && (stateCurr != STATE_TILT_STOP)){
+    if ((tilt) && (stateCurr != STATE_TILT_STOP) && (stateCurr != STATE_OFF) && (stateCurr != STATE_STATION_CHARGING)){
       Console.println(F("BumperDuino tilt"));      
       setNextState(STATE_TILT_STOP,0);
     }
@@ -1112,7 +1112,7 @@ void Robot::setNextState(byte stateNew, byte dir){
 	     motorLeftSpeedRpmSet = -motorRightSpeedRpmSet;	
       }      
   }  
-  if (stateCurr = STATE_STATION_CHARGING) {
+  if (stateCurr == STATE_STATION_CHARGING) {
 		// always switch off charging relay if leaving state STATE_STATION_CHARGING
 		setActuator(ACT_CHGRELAY, 0); 
 	}
@@ -1222,7 +1222,12 @@ void Robot::loop()  {
   switch (stateCurr) {
     case STATE_TILT_STOP:
       // tilt      
-      if (!tilt) setNextState(stateLast, 0);
+      if (millis() >= nextTimeErrorBeep){
+        nextTimeErrorBeep = millis() + 1000;
+        beep(1, true);
+      }	
+		  if (millis() >= stateStartTime + 10000)  setNextState(STATE_OFF, 0);
+			if (!tilt) setNextState(stateLast, 0);
       break;
     case STATE_ERROR:
       // fatal-error
