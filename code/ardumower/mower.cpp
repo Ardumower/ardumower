@@ -31,6 +31,7 @@
 #include <Arduino.h>
 #include "due.h"
 #include "drivers.h"
+#include "i2c.h"
 #include "pinman.h"
 #include "buzzer.h"
 
@@ -317,9 +318,11 @@ NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
 
 void Mower::setup(){
   Buzzer.begin();
+	Console.begin(CONSOLE_BAUDRATE);  
+	I2Creset();	
   Wire.begin();            
-	PinMan.begin();  
-  Console.begin(CONSOLE_BAUDRATE);  
+	PinMan.begin();    
+	ADCMan.init();
   Console.println("SETUP");
 
   // keep battery switched ON
@@ -419,8 +422,7 @@ void Mower::setup(){
   pinMode(pinVoltageMeasurement, INPUT);  
   
     
-  // ADC
-  ADCMan.init();
+  // ADC  
   ADCMan.setCapture(pinChargeCurrent, 1, true);//Aktivierung des LaddeStrom Pins beim ADC-Managers      
   ADCMan.setCapture(pinMotorMowSense, 1, true);
   ADCMan.setCapture(pinMotorLeftSense, 1, true);

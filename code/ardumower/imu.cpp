@@ -25,6 +25,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "drivers.h"
+#include "i2c.h"
 #include "config.h"
 #include "flashmem.h"
 #include "buzzer.h"

@@ -25,6 +25,7 @@
 #include "drivers.h"
 #include "config.h"
 #include "pinman.h"
+#include "i2c.h"
 //#include "ardumower.h"
 #include <Wire.h>  
 
@@ -127,45 +128,6 @@ String date2str(date_t date){
   return s;
 }   
             
-// ---- I2C helpers --------------------------------------------------------------
-void I2CwriteTo(uint8_t device, uint8_t address, uint8_t val) {
-   Wire.beginTransmission(device); //start transmission to device 
-   Wire.write(address);        // send register address
-   Wire.write(val);        // send value to write
-   Wire.endTransmission(); //end transmission
-}
-
-void I2CwriteTo(uint8_t device, uint8_t address, int num, uint8_t buff[]) {
-   Wire.beginTransmission(device); //start transmission to device 
-   Wire.write(address);        // send register address
-   for (int i=0; i < num; i++){
-     Wire.write(buff[i]);        // send value to write
-   }
-   Wire.endTransmission(); //end transmission
-}
-
-int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], int retryCount) {
-  int i = 0;
-  for (int j=0; j < retryCount+1; j++){
-    i=0;
-    Wire.beginTransmission(device); //start transmission to device 
-    Wire.write(address);        //sends address to read from
-    Wire.endTransmission(); //end transmission
-  
-    //Wire.beginTransmission(device); //start transmission to device (initiate again)
-    Wire.requestFrom(device, num);    // request 6 bytes from device
-  
-    while(Wire.available())    //device may send less than requested (abnormal)
-    {  
-      buff[i] = Wire.read(); // receive a byte
-      i++;
-    }
-    //Wire.endTransmission(); //end transmission
-    if (num == i) return i;
-    if (j != retryCount) delay(3);
-  }
-  return i;
-}
 
 // L298N motor driver
 // IN2/C(10)/PinPWM   IN1/D(12)/PinDir
@@ -301,7 +263,7 @@ boolean setDS1307(datetime_t &dt){
   buf[4] = ((dt.date.day    / 10) << 4) | (dt.date.day    % 10);
   buf[5] = ((dt.date.month  / 10) << 4) | (dt.date.month  % 10);
   buf[6] = ((dt.date.year % 100  / 10) << 4) | (dt.date.year % 10);
-  I2CwriteTo(DS1307_ADDRESS, 0x00, 7, buf);
+  I2CwriteToBuf(DS1307_ADDRESS, 0x00, 7, buf);
   return true;
 }
 
