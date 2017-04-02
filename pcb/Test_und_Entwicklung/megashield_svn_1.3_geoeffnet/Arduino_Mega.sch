@@ -11170,478 +11170,478 @@ F 11 "Value" H 2970 5515 60  0001 C CNN "Hersteller Bestellnummer"
 	1    2970 5515
 	1    0    0    -1  
 $EndComp
-Text GLabel 1665 5610 0    24   Output ~ 0
+Text GLabel 825  5610 0    24   Output ~ 0
 pinUserSwitch1
 $Comp
 L D_Small D51
 U 1 1 57FF94E5
-P 2040 5550
-F 0 "D51" H 1925 5530 24  0000 C CNN
-F 1 "TSS0230LU" H 1935 5605 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2040 5550 50  0001 C CNN
-F 3 "" V 2040 5550 50  0001 C CNN
-F 4 "Value" H 2040 5550 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 5550 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 5550 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2040 5550 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2040 5550 60  0001 C CNN "Bauform"
-F 9 "Value" H 2040 5550 60  0001 C CNN "Funktion"
-F 10 "Value" H 2040 5550 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2040 5550 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2040 5550
+P 1200 5550
+F 0 "D51" H 1085 5530 24  0000 C CNN
+F 1 "TSS0230LU" H 1095 5605 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1200 5550 50  0001 C CNN
+F 3 "" V 1200 5550 50  0001 C CNN
+F 4 "Value" H 1200 5550 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1200 5550 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1200 5550 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1200 5550 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1200 5550 60  0001 C CNN "Bauform"
+F 9 "Value" H 1200 5550 60  0001 C CNN "Funktion"
+F 10 "Value" H 1200 5550 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1200 5550 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1200 5550
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2200 5550 2    24   Input ~ 0
+Text GLabel 1360 5550 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0201
 U 1 1 57FF94EC
-P 2185 5670
-F 0 "#PWR0201" H 2185 5420 50  0001 C CNN
-F 1 "GND" V 2190 5515 24  0000 C CNN
-F 2 "" H 2185 5670 50  0000 C CNN
-F 3 "" H 2185 5670 50  0000 C CNN
-	1    2185 5670
+P 1345 5670
+F 0 "#PWR0201" H 1345 5420 50  0001 C CNN
+F 1 "GND" V 1350 5515 24  0000 C CNN
+F 2 "" H 1345 5670 50  0000 C CNN
+F 3 "" H 1345 5670 50  0000 C CNN
+	1    1345 5670
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D52
 U 1 1 57FF94F7
-P 2040 5670
-F 0 "D52" H 2160 5695 24  0000 C CNN
-F 1 "TSS0230LU" H 2140 5605 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2040 5670 50  0001 C CNN
-F 3 "" V 2040 5670 50  0001 C CNN
-F 4 "Value" H 2040 5670 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 5670 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 5670 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2040 5670 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2040 5670 60  0001 C CNN "Bauform"
-F 9 "Value" H 2040 5670 60  0001 C CNN "Funktion"
-F 10 "Value" H 2040 5670 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2040 5670 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2040 5670
+P 1200 5670
+F 0 "D52" H 1320 5695 24  0000 C CNN
+F 1 "TSS0230LU" H 1300 5605 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1200 5670 50  0001 C CNN
+F 3 "" V 1200 5670 50  0001 C CNN
+F 4 "Value" H 1200 5670 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1200 5670 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1200 5670 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1200 5670 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1200 5670 60  0001 C CNN "Bauform"
+F 9 "Value" H 1200 5670 60  0001 C CNN "Funktion"
+F 10 "Value" H 1200 5670 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1200 5670 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1200 5670
 	1    0    0    -1  
 $EndComp
-Text GLabel 1405 6015 0    24   Output ~ 0
+Text GLabel 725  6015 0    24   Output ~ 0
 DropLeft
 $Comp
 L D_Small D47
 U 1 1 57FFA77D
-P 2045 5955
-F 0 "D47" H 1970 5930 24  0000 C CNN
-F 1 "TSS0230LU" H 2030 6015 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2045 5955 50  0001 C CNN
-F 3 "" V 2045 5955 50  0001 C CNN
-F 4 "Value" H 2045 5955 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 5955 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 5955 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2045 5955 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2045 5955 60  0001 C CNN "Bauform"
-	1    2045 5955
+P 1365 5955
+F 0 "D47" H 1290 5930 24  0000 C CNN
+F 1 "TSS0230LU" H 1350 6015 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1365 5955 50  0001 C CNN
+F 3 "" V 1365 5955 50  0001 C CNN
+F 4 "Value" H 1365 5955 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1365 5955 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1365 5955 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1365 5955 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1365 5955 60  0001 C CNN "Bauform"
+	1    1365 5955
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2205 5955 2    24   Input ~ 0
+Text GLabel 1525 5955 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0202
 U 1 1 57FFA784
-P 2190 6075
-F 0 "#PWR0202" H 2190 5825 50  0001 C CNN
-F 1 "GND" V 2195 5920 24  0000 C CNN
-F 2 "" H 2190 6075 50  0000 C CNN
-F 3 "" H 2190 6075 50  0000 C CNN
-	1    2190 6075
+P 1510 6075
+F 0 "#PWR0202" H 1510 5825 50  0001 C CNN
+F 1 "GND" V 1515 5920 24  0000 C CNN
+F 2 "" H 1510 6075 50  0000 C CNN
+F 3 "" H 1510 6075 50  0000 C CNN
+	1    1510 6075
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D48
 U 1 1 57FFA78F
-P 2045 6075
-F 0 "D48" H 2165 6100 24  0000 C CNN
-F 1 "TSS0230LU" H 2145 6010 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2045 6075 50  0001 C CNN
-F 3 "" V 2045 6075 50  0001 C CNN
-F 4 "Value" H 2045 6075 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 6075 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 6075 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2045 6075 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2045 6075 60  0001 C CNN "Bauform"
-F 9 "Value" H 2045 6075 60  0001 C CNN "Funktion"
-F 10 "Value" H 2045 6075 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2045 6075 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2045 6075
+P 1365 6075
+F 0 "D48" H 1485 6100 24  0000 C CNN
+F 1 "TSS0230LU" H 1465 6010 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1365 6075 50  0001 C CNN
+F 3 "" V 1365 6075 50  0001 C CNN
+F 4 "Value" H 1365 6075 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1365 6075 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1365 6075 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1365 6075 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1365 6075 60  0001 C CNN "Bauform"
+F 9 "Value" H 1365 6075 60  0001 C CNN "Funktion"
+F 10 "Value" H 1365 6075 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1365 6075 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1365 6075
 	1    0    0    -1  
 $EndComp
-Text GLabel 1655 6300 0    24   Output ~ 0
+Text GLabel 720  6300 0    24   Output ~ 0
 pinRain
 $Comp
 L D_Small D45
 U 1 1 57FFBE92
-P 2040 6240
-F 0 "D45" H 1925 6220 24  0000 C CNN
-F 1 "TSS0230LU" H 1935 6295 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2040 6240 50  0001 C CNN
-F 3 "" V 2040 6240 50  0001 C CNN
-F 4 "Value" H 2040 6240 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 6240 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 6240 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2040 6240 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2040 6240 60  0001 C CNN "Bauform"
-F 9 "Value" H 2040 6240 60  0001 C CNN "Funktion"
-F 10 "Value" H 2040 6240 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2040 6240 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2040 6240
+P 1105 6240
+F 0 "D45" H 990 6220 24  0000 C CNN
+F 1 "TSS0230LU" H 1000 6295 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1105 6240 50  0001 C CNN
+F 3 "" V 1105 6240 50  0001 C CNN
+F 4 "Value" H 1105 6240 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1105 6240 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1105 6240 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1105 6240 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1105 6240 60  0001 C CNN "Bauform"
+F 9 "Value" H 1105 6240 60  0001 C CNN "Funktion"
+F 10 "Value" H 1105 6240 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1105 6240 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1105 6240
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2200 6240 2    24   Input ~ 0
+Text GLabel 1265 6240 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0203
 U 1 1 57FFBE99
-P 2185 6360
-F 0 "#PWR0203" H 2185 6110 50  0001 C CNN
-F 1 "GND" V 2190 6205 24  0000 C CNN
-F 2 "" H 2185 6360 50  0000 C CNN
-F 3 "" H 2185 6360 50  0000 C CNN
-	1    2185 6360
+P 1250 6360
+F 0 "#PWR0203" H 1250 6110 50  0001 C CNN
+F 1 "GND" V 1255 6205 24  0000 C CNN
+F 2 "" H 1250 6360 50  0000 C CNN
+F 3 "" H 1250 6360 50  0000 C CNN
+	1    1250 6360
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D46
 U 1 1 57FFBEA4
-P 2040 6360
-F 0 "D46" H 2160 6385 24  0000 C CNN
-F 1 "TSS0230LU" H 2140 6295 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2040 6360 50  0001 C CNN
-F 3 "" V 2040 6360 50  0001 C CNN
-F 4 "Value" H 2040 6360 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2040 6360 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2040 6360 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2040 6360 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2040 6360 60  0001 C CNN "Bauform"
-F 9 "Value" H 2040 6360 60  0001 C CNN "Funktion"
-F 10 "Value" H 2040 6360 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2040 6360 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2040 6360
+P 1105 6360
+F 0 "D46" H 1225 6385 24  0000 C CNN
+F 1 "TSS0230LU" H 1205 6295 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1105 6360 50  0001 C CNN
+F 3 "" V 1105 6360 50  0001 C CNN
+F 4 "Value" H 1105 6360 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1105 6360 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1105 6360 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1105 6360 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1105 6360 60  0001 C CNN "Bauform"
+F 9 "Value" H 1105 6360 60  0001 C CNN "Funktion"
+F 10 "Value" H 1105 6360 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1105 6360 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1105 6360
 	1    0    0    -1  
 $EndComp
-Text GLabel 1665 6595 0    24   Output ~ 0
+Text GLabel 930  6915 0    24   Output ~ 0
 pinLawnBackSend
 $Comp
 L D_Small D43
 U 1 1 57FFD738
-P 2050 6535
-F 0 "D43" H 1935 6515 24  0000 C CNN
-F 1 "TSS0230LU" H 1945 6590 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2050 6535 50  0001 C CNN
-F 3 "" V 2050 6535 50  0001 C CNN
-F 4 "Value" H 2050 6535 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2050 6535 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2050 6535 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2050 6535 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2050 6535 60  0001 C CNN "Bauform"
-F 9 "Value" H 2050 6535 60  0001 C CNN "Funktion"
-F 10 "Value" H 2050 6535 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2050 6535 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2050 6535
+P 1315 6855
+F 0 "D43" H 1200 6835 24  0000 C CNN
+F 1 "TSS0230LU" H 1210 6910 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1315 6855 50  0001 C CNN
+F 3 "" V 1315 6855 50  0001 C CNN
+F 4 "Value" H 1315 6855 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1315 6855 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1315 6855 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1315 6855 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1315 6855 60  0001 C CNN "Bauform"
+F 9 "Value" H 1315 6855 60  0001 C CNN "Funktion"
+F 10 "Value" H 1315 6855 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1315 6855 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1315 6855
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2210 6535 2    24   Input ~ 0
+Text GLabel 1475 6855 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0204
 U 1 1 57FFD73F
-P 2195 6655
-F 0 "#PWR0204" H 2195 6405 50  0001 C CNN
-F 1 "GND" V 2200 6500 24  0000 C CNN
-F 2 "" H 2195 6655 50  0000 C CNN
-F 3 "" H 2195 6655 50  0000 C CNN
-	1    2195 6655
+P 1460 6975
+F 0 "#PWR0204" H 1460 6725 50  0001 C CNN
+F 1 "GND" V 1465 6820 24  0000 C CNN
+F 2 "" H 1460 6975 50  0000 C CNN
+F 3 "" H 1460 6975 50  0000 C CNN
+	1    1460 6975
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D44
 U 1 1 57FFD74A
-P 2050 6655
-F 0 "D44" H 2170 6680 24  0000 C CNN
-F 1 "TSS0230LU" H 2150 6590 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2050 6655 50  0001 C CNN
-F 3 "" V 2050 6655 50  0001 C CNN
-F 4 "Value" H 2050 6655 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2050 6655 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2050 6655 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2050 6655 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2050 6655 60  0001 C CNN "Bauform"
-F 9 "Value" H 2050 6655 60  0001 C CNN "Funktion"
-F 10 "Value" H 2050 6655 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2050 6655 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2050 6655
+P 1315 6975
+F 0 "D44" H 1435 7000 24  0000 C CNN
+F 1 "TSS0230LU" H 1415 6910 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1315 6975 50  0001 C CNN
+F 3 "" V 1315 6975 50  0001 C CNN
+F 4 "Value" H 1315 6975 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1315 6975 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1315 6975 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1315 6975 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1315 6975 60  0001 C CNN "Bauform"
+F 9 "Value" H 1315 6975 60  0001 C CNN "Funktion"
+F 10 "Value" H 1315 6975 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1315 6975 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1315 6975
 	1    0    0    -1  
 $EndComp
-Text GLabel 1665 6880 0    24   Output ~ 0
+Text GLabel 940  7435 0    24   Output ~ 0
 pinLawnBackRecv
 $Comp
 L D_Small D41
 U 1 1 58000317
-P 2045 6820
-F 0 "D41" H 1930 6800 24  0000 C CNN
-F 1 "TSS0230LU" H 1940 6875 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2045 6820 50  0001 C CNN
-F 3 "" V 2045 6820 50  0001 C CNN
-F 4 "Value" H 2045 6820 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 6820 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 6820 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2045 6820 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2045 6820 60  0001 C CNN "Bauform"
-F 9 "Value" H 2045 6820 60  0001 C CNN "Funktion"
-F 10 "Value" H 2045 6820 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2045 6820 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2045 6820
+P 1320 7375
+F 0 "D41" H 1205 7355 24  0000 C CNN
+F 1 "TSS0230LU" H 1215 7430 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1320 7375 50  0001 C CNN
+F 3 "" V 1320 7375 50  0001 C CNN
+F 4 "Value" H 1320 7375 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1320 7375 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1320 7375 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1320 7375 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1320 7375 60  0001 C CNN "Bauform"
+F 9 "Value" H 1320 7375 60  0001 C CNN "Funktion"
+F 10 "Value" H 1320 7375 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1320 7375 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1320 7375
 	-1   0    0    -1  
 $EndComp
-Text GLabel 2205 6820 2    24   Input ~ 0
+Text GLabel 1480 7375 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0205
 U 1 1 5800031E
-P 2190 6940
-F 0 "#PWR0205" H 2190 6690 50  0001 C CNN
-F 1 "GND" V 2195 6785 24  0000 C CNN
-F 2 "" H 2190 6940 50  0000 C CNN
-F 3 "" H 2190 6940 50  0000 C CNN
-	1    2190 6940
+P 1465 7495
+F 0 "#PWR0205" H 1465 7245 50  0001 C CNN
+F 1 "GND" V 1470 7340 24  0000 C CNN
+F 2 "" H 1465 7495 50  0000 C CNN
+F 3 "" H 1465 7495 50  0000 C CNN
+	1    1465 7495
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D42
 U 1 1 58000329
-P 2045 6940
-F 0 "D42" H 2165 6965 24  0000 C CNN
-F 1 "TSS0230LU" H 2145 6875 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 2045 6940 50  0001 C CNN
-F 3 "" V 2045 6940 50  0001 C CNN
-F 4 "Value" H 2045 6940 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 2045 6940 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 2045 6940 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 2045 6940 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 2045 6940 60  0001 C CNN "Bauform"
-F 9 "Value" H 2045 6940 60  0001 C CNN "Funktion"
-F 10 "Value" H 2045 6940 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2045 6940 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2045 6940
+P 1320 7495
+F 0 "D42" H 1440 7520 24  0000 C CNN
+F 1 "TSS0230LU" H 1420 7430 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 1320 7495 50  0001 C CNN
+F 3 "" V 1320 7495 50  0001 C CNN
+F 4 "Value" H 1320 7495 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1320 7495 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 1320 7495 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 1320 7495 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 1320 7495 60  0001 C CNN "Bauform"
+F 9 "Value" H 1320 7495 60  0001 C CNN "Funktion"
+F 10 "Value" H 1320 7495 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1320 7495 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1320 7495
 	1    0    0    -1  
 $EndComp
-Text GLabel 3135 5955 0    24   Output ~ 0
+Text GLabel 3130 6085 0    24   Output ~ 0
 pinLawnFrontSend
 $Comp
 L D_Small D39
 U 1 1 58002CAA
-P 3510 5895
-F 0 "D39" H 3395 5875 24  0000 C CNN
-F 1 "TSS0230LU" H 3405 5950 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3510 5895 50  0001 C CNN
-F 3 "" V 3510 5895 50  0001 C CNN
-F 4 "Value" H 3510 5895 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3510 5895 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3510 5895 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3510 5895 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3510 5895 60  0001 C CNN "Bauform"
-F 9 "Value" H 3510 5895 60  0001 C CNN "Funktion"
-F 10 "Value" H 3510 5895 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3510 5895 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3510 5895
+P 3505 6025
+F 0 "D39" H 3390 6005 24  0000 C CNN
+F 1 "TSS0230LU" H 3400 6080 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3505 6025 50  0001 C CNN
+F 3 "" V 3505 6025 50  0001 C CNN
+F 4 "Value" H 3505 6025 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6025 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6025 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3505 6025 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3505 6025 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6025 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6025 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6025 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6025
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3670 5895 2    24   Input ~ 0
+Text GLabel 3665 6025 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0206
 U 1 1 58002CB1
-P 3655 6015
-F 0 "#PWR0206" H 3655 5765 50  0001 C CNN
-F 1 "GND" V 3660 5860 24  0000 C CNN
-F 2 "" H 3655 6015 50  0000 C CNN
-F 3 "" H 3655 6015 50  0000 C CNN
-	1    3655 6015
+P 3650 6145
+F 0 "#PWR0206" H 3650 5895 50  0001 C CNN
+F 1 "GND" V 3655 5990 24  0000 C CNN
+F 2 "" H 3650 6145 50  0000 C CNN
+F 3 "" H 3650 6145 50  0000 C CNN
+	1    3650 6145
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D40
 U 1 1 58002CBC
-P 3510 6015
-F 0 "D40" H 3630 6040 24  0000 C CNN
-F 1 "TSS0230LU" H 3610 5950 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3510 6015 50  0001 C CNN
-F 3 "" V 3510 6015 50  0001 C CNN
-F 4 "Value" H 3510 6015 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3510 6015 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3510 6015 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3510 6015 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3510 6015 60  0001 C CNN "Bauform"
-F 9 "Value" H 3510 6015 60  0001 C CNN "Funktion"
-F 10 "Value" H 3510 6015 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3510 6015 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3510 6015
+P 3505 6145
+F 0 "D40" H 3625 6170 24  0000 C CNN
+F 1 "TSS0230LU" H 3605 6080 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3505 6145 50  0001 C CNN
+F 3 "" V 3505 6145 50  0001 C CNN
+F 4 "Value" H 3505 6145 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6145 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6145 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3505 6145 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3505 6145 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6145 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6145 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6145 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6145
 	1    0    0    -1  
 $EndComp
-Text GLabel 3135 6235 0    24   Output ~ 0
+Text GLabel 3135 6495 0    24   Output ~ 0
 pinLawnFrontRecv
 $Comp
 L D_Small D37
 U 1 1 5800454D
-P 3505 6175
-F 0 "D37" H 3390 6155 24  0000 C CNN
-F 1 "TSS0230LU" H 3400 6230 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3505 6175 50  0001 C CNN
-F 3 "" V 3505 6175 50  0001 C CNN
-F 4 "Value" H 3505 6175 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6175 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6175 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3505 6175 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3505 6175 60  0001 C CNN "Bauform"
-F 9 "Value" H 3505 6175 60  0001 C CNN "Funktion"
-F 10 "Value" H 3505 6175 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3505 6175 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3505 6175
+P 3505 6435
+F 0 "D37" H 3390 6415 24  0000 C CNN
+F 1 "TSS0230LU" H 3400 6490 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3505 6435 50  0001 C CNN
+F 3 "" V 3505 6435 50  0001 C CNN
+F 4 "Value" H 3505 6435 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6435 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6435 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3505 6435 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3505 6435 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6435 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6435 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6435 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6435
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3665 6175 2    24   Input ~ 0
+Text GLabel 3665 6435 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0207
 U 1 1 58004554
-P 3650 6295
-F 0 "#PWR0207" H 3650 6045 50  0001 C CNN
-F 1 "GND" V 3655 6140 24  0000 C CNN
-F 2 "" H 3650 6295 50  0000 C CNN
-F 3 "" H 3650 6295 50  0000 C CNN
-	1    3650 6295
+P 3650 6555
+F 0 "#PWR0207" H 3650 6305 50  0001 C CNN
+F 1 "GND" V 3655 6400 24  0000 C CNN
+F 2 "" H 3650 6555 50  0000 C CNN
+F 3 "" H 3650 6555 50  0000 C CNN
+	1    3650 6555
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D38
 U 1 1 5800455F
-P 3505 6295
-F 0 "D38" H 3625 6320 24  0000 C CNN
-F 1 "TSS0230LU" H 3605 6230 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3505 6295 50  0001 C CNN
-F 3 "" V 3505 6295 50  0001 C CNN
-F 4 "Value" H 3505 6295 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6295 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6295 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3505 6295 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3505 6295 60  0001 C CNN "Bauform"
-F 9 "Value" H 3505 6295 60  0001 C CNN "Funktion"
-F 10 "Value" H 3505 6295 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3505 6295 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3505 6295
+P 3505 6555
+F 0 "D38" H 3625 6580 24  0000 C CNN
+F 1 "TSS0230LU" H 3605 6490 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3505 6555 50  0001 C CNN
+F 3 "" V 3505 6555 50  0001 C CNN
+F 4 "Value" H 3505 6555 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3505 6555 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3505 6555 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3505 6555 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3505 6555 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6555 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6555 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6555 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6555
 	1    0    0    -1  
 $EndComp
-Text GLabel 3115 6520 0    24   Output ~ 0
+Text GLabel 3115 6930 0    24   Output ~ 0
 pinBumperLeft
 $Comp
 L D_Small D31
 U 1 1 58005B85
-P 3500 6460
-F 0 "D31" H 3385 6440 24  0000 C CNN
-F 1 "TSS0230LU" H 3395 6515 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3500 6460 50  0001 C CNN
-F 3 "" V 3500 6460 50  0001 C CNN
-F 4 "Value" H 3500 6460 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3500 6460 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3500 6460 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3500 6460 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3500 6460 60  0001 C CNN "Bauform"
-F 9 "Value" H 3500 6460 60  0001 C CNN "Funktion"
-F 10 "Value" H 3500 6460 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3500 6460 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3500 6460
+P 3500 6870
+F 0 "D31" H 3385 6850 24  0000 C CNN
+F 1 "TSS0230LU" H 3395 6925 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3500 6870 50  0001 C CNN
+F 3 "" V 3500 6870 50  0001 C CNN
+F 4 "Value" H 3500 6870 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3500 6870 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3500 6870 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3500 6870 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3500 6870 60  0001 C CNN "Bauform"
+F 9 "Value" H 3500 6870 60  0001 C CNN "Funktion"
+F 10 "Value" H 3500 6870 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3500 6870 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3500 6870
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3660 6460 2    24   Input ~ 0
+Text GLabel 3755 6870 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0208
 U 1 1 58005B8C
-P 3645 6580
-F 0 "#PWR0208" H 3645 6330 50  0001 C CNN
-F 1 "GND" V 3650 6425 24  0000 C CNN
-F 2 "" H 3645 6580 50  0000 C CNN
-F 3 "" H 3645 6580 50  0000 C CNN
-	1    3645 6580
+P 3645 6990
+F 0 "#PWR0208" H 3645 6740 50  0001 C CNN
+F 1 "GND" V 3650 6835 24  0000 C CNN
+F 2 "" H 3645 6990 50  0000 C CNN
+F 3 "" H 3645 6990 50  0000 C CNN
+	1    3645 6990
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D34
 U 1 1 58005B97
-P 3500 6580
-F 0 "D34" H 3620 6605 24  0000 C CNN
-F 1 "TSS0230LU" H 3600 6515 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3500 6580 50  0001 C CNN
-F 3 "" V 3500 6580 50  0001 C CNN
-F 4 "Value" H 3500 6580 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3500 6580 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3500 6580 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3500 6580 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3500 6580 60  0001 C CNN "Bauform"
-F 9 "Value" H 3500 6580 60  0001 C CNN "Funktion"
-F 10 "Value" H 3500 6580 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3500 6580 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3500 6580
+P 3500 6990
+F 0 "D34" H 3620 7015 24  0000 C CNN
+F 1 "TSS0230LU" H 3600 6925 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3500 6990 50  0001 C CNN
+F 3 "" V 3500 6990 50  0001 C CNN
+F 4 "Value" H 3500 6990 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3500 6990 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3500 6990 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3500 6990 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3500 6990 60  0001 C CNN "Bauform"
+F 9 "Value" H 3500 6990 60  0001 C CNN "Funktion"
+F 10 "Value" H 3500 6990 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3500 6990 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3500 6990
 	1    0    0    -1  
 $EndComp
-Text GLabel 3105 6800 0    24   Output ~ 0
+Text GLabel 3105 7430 0    24   Output ~ 0
 pinBumperRight
 $Comp
 L D_Small D29
 U 1 1 580072EC
-P 3495 6740
-F 0 "D29" H 3380 6720 24  0000 C CNN
-F 1 "TSS0230LU" H 3390 6795 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3495 6740 50  0001 C CNN
-F 3 "" V 3495 6740 50  0001 C CNN
-F 4 "Value" H 3495 6740 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3495 6740 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3495 6740 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3495 6740 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3495 6740 60  0001 C CNN "Bauform"
-F 9 "Value" H 3495 6740 60  0001 C CNN "Funktion"
-F 10 "Value" H 3495 6740 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3495 6740 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3495 6740
+P 3495 7370
+F 0 "D29" H 3380 7350 24  0000 C CNN
+F 1 "TSS0230LU" H 3390 7425 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3495 7370 50  0001 C CNN
+F 3 "" V 3495 7370 50  0001 C CNN
+F 4 "Value" H 3495 7370 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3495 7370 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3495 7370 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3495 7370 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3495 7370 60  0001 C CNN "Bauform"
+F 9 "Value" H 3495 7370 60  0001 C CNN "Funktion"
+F 10 "Value" H 3495 7370 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3495 7370 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3495 7370
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3655 6740 2    24   Input ~ 0
+Text GLabel 3770 7370 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0209
 U 1 1 580072F3
-P 3640 6860
-F 0 "#PWR0209" H 3640 6610 50  0001 C CNN
-F 1 "GND" V 3645 6705 24  0000 C CNN
-F 2 "" H 3640 6860 50  0000 C CNN
-F 3 "" H 3640 6860 50  0000 C CNN
-	1    3640 6860
+P 3640 7490
+F 0 "#PWR0209" H 3640 7240 50  0001 C CNN
+F 1 "GND" V 3645 7335 24  0000 C CNN
+F 2 "" H 3640 7490 50  0000 C CNN
+F 3 "" H 3640 7490 50  0000 C CNN
+	1    3640 7490
 	0    -1   -1   0   
 $EndComp
 $Comp
 L D_Small D30
 U 1 1 580072FE
-P 3495 6860
-F 0 "D30" H 3615 6885 24  0000 C CNN
-F 1 "TSS0230LU" H 3595 6795 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 3495 6860 50  0001 C CNN
-F 3 "" V 3495 6860 50  0001 C CNN
-F 4 "Value" H 3495 6860 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3495 6860 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 3495 6860 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 3495 6860 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 3495 6860 60  0001 C CNN "Bauform"
-F 9 "Value" H 3495 6860 60  0001 C CNN "Funktion"
-F 10 "Value" H 3495 6860 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3495 6860 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3495 6860
+P 3495 7490
+F 0 "D30" H 3615 7515 24  0000 C CNN
+F 1 "TSS0230LU" H 3595 7425 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 3495 7490 50  0001 C CNN
+F 3 "" V 3495 7490 50  0001 C CNN
+F 4 "Value" H 3495 7490 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 3495 7490 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 3495 7490 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 3495 7490 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 3495 7490 60  0001 C CNN "Bauform"
+F 9 "Value" H 3495 7490 60  0001 C CNN "Funktion"
+F 10 "Value" H 3495 7490 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3495 7490 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3495 7490
 	1    0    0    -1  
 $EndComp
 Text GLabel 6180 5940 2    24   Output ~ 0
@@ -11745,8 +11745,6 @@ Wire Wire Line
 	6025 3490 6225 3490
 Wire Wire Line
 	6025 5740 7280 5740
-Wire Wire Line
-	2645 5740 4125 5740
 Wire Wire Line
 	3880 5890 4125 5890
 Wire Wire Line
@@ -12111,112 +12109,98 @@ Wire Wire Line
 Wire Wire Line
 	3115 5515 3070 5515
 Wire Wire Line
-	2140 5550 2200 5550
-Connection ~ 1940 5610
+	1300 5550 1360 5550
+Connection ~ 1100 5610
 Wire Wire Line
-	1895 5610 3880 5610
+	1055 5610 3880 5610
 Wire Wire Line
-	2185 5670 2140 5670
+	1345 5670 1300 5670
 Wire Wire Line
 	3880 5610 3880 5340
 Wire Wire Line
-	2145 5955 2205 5955
+	1465 5955 1525 5955
 Wire Wire Line
-	1945 5840 1945 6075
-Connection ~ 1945 6015
+	1265 5840 1265 6075
+Connection ~ 1265 6015
 Wire Wire Line
-	1880 6015 2415 6015
+	1200 6015 1715 6015
 Wire Wire Line
-	2190 6075 2145 6075
+	1510 6075 1465 6075
 Wire Wire Line
 	3940 5440 3940 5630
 Wire Wire Line
-	3940 5630 2415 5630
+	3940 5630 1715 5630
 Wire Wire Line
-	2415 5630 2415 6015
+	1715 5630 1715 6015
 Wire Wire Line
-	1940 6240 1940 6360
-Connection ~ 1940 6300
+	1005 6240 1005 6360
+Connection ~ 1005 6300
 Wire Wire Line
-	1895 6300 2490 6300
+	960  6300 1755 6300
 Wire Wire Line
-	2185 6360 2140 6360
+	1250 6360 1205 6360
 Wire Wire Line
 	4000 5650 4000 5540
 Wire Wire Line
-	2490 5650 4000 5650
+	1755 5650 4000 5650
 Wire Wire Line
-	2490 6300 2490 5650
+	1755 6300 1755 5650
 Wire Wire Line
-	2150 6535 2210 6535
+	1415 6855 1475 6855
 Wire Wire Line
-	1950 6535 1950 6655
-Connection ~ 1950 6595
+	1215 6855 1215 6975
+Connection ~ 1215 6915
 Wire Wire Line
-	1905 6595 2565 6595
+	1170 6915 1805 6915
 Wire Wire Line
-	2195 6655 2150 6655
+	1460 6975 1415 6975
 Wire Wire Line
 	4055 5640 4055 5670
 Wire Wire Line
-	4055 5670 2565 5670
+	4055 5670 1805 5670
 Wire Wire Line
-	2565 5670 2565 6595
+	1805 5670 1805 6915
 Wire Wire Line
-	2145 6820 2205 6820
+	1420 7375 1480 7375
 Wire Wire Line
-	1945 6820 1945 6940
-Connection ~ 1945 6880
+	1220 7375 1220 7495
+Connection ~ 1220 7435
 Wire Wire Line
-	1900 6880 2645 6880
+	1175 7435 1870 7435
 Wire Wire Line
-	2190 6940 2145 6940
+	1465 7495 1420 7495
 Wire Wire Line
-	2645 6880 2645 5740
+	3605 6025 3665 6025
 Wire Wire Line
-	3610 5895 3670 5895
+	3360 6085 3880 6085
 Wire Wire Line
-	3410 5895 3410 6015
-Connection ~ 3410 5955
+	3650 6145 3605 6145
 Wire Wire Line
-	3365 5955 3880 5955
+	3880 6085 3880 5890
 Wire Wire Line
-	3655 6015 3610 6015
+	3605 6435 3665 6435
 Wire Wire Line
-	3880 5955 3880 5890
+	3360 6495 3940 6495
 Wire Wire Line
-	3605 6175 3665 6175
+	3650 6555 3605 6555
 Wire Wire Line
-	3405 6175 3405 6295
-Connection ~ 3405 6235
+	3940 6495 3940 5990
 Wire Wire Line
-	3360 6235 3940 6235
+	3600 6870 3755 6870
 Wire Wire Line
-	3650 6295 3605 6295
+	3355 6930 4015 6930
 Wire Wire Line
-	3940 6235 3940 5990
+	3645 6990 3600 6990
 Wire Wire Line
-	3600 6460 3660 6460
+	4015 6930 4015 6090
 Wire Wire Line
-	3400 6460 3400 6580
-Connection ~ 3400 6520
+	3595 7370 3770 7370
 Wire Wire Line
-	3355 6520 4015 6520
+	3350 7430 4090 7430
 Wire Wire Line
-	3645 6580 3600 6580
+	3640 7490 3595 7490
 Wire Wire Line
-	4015 6520 4015 6090
-Wire Wire Line
-	3595 6740 3655 6740
-Wire Wire Line
-	3395 6740 3395 6860
-Connection ~ 3395 6800
-Wire Wire Line
-	3350 6800 4090 6800
-Wire Wire Line
-	3640 6860 3595 6860
-Wire Wire Line
-	4090 6800 4090 6190
+	4090 7430 4090 6190
 Wire Wire Line
 	7035 5680 6975 5680
 Wire Wire Line
@@ -12350,173 +12334,173 @@ Wire Wire Line
 $Comp
 L R_Small R54
 U 1 1 58A6469A
-P 3265 5955
-F 0 "R54" V 3320 5955 24  0000 C CNN
-F 1 "300R" V 3265 5955 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -4365 1695 50  0001 C CNN
-F 3 "" H -4365 1695 50  0001 C CNN
-F 4 "Value" H 3265 5955 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3265 5955 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3265 5955 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 3265 5955 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3265 5955 60  0001 C CNN "Bauform"
-F 9 "Value" H 3265 5955 60  0001 C CNN "Funktion"
-F 10 "Value" H 3265 5955 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3265 5955 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3265 5955
+P 3260 6085
+F 0 "R54" V 3315 6085 24  0000 C CNN
+F 1 "300R" V 3260 6085 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4370 1825 50  0001 C CNN
+F 3 "" H -4370 1825 50  0001 C CNN
+F 4 "Value" H 3260 6085 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3260 6085 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3260 6085 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3260 6085 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3260 6085 60  0001 C CNN "Bauform"
+F 9 "Value" H 3260 6085 60  0001 C CNN "Funktion"
+F 10 "Value" H 3260 6085 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3260 6085 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3260 6085
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	3165 5955 3135 5955
+	3160 6085 3130 6085
 $Comp
 L R_Small R29
 U 1 1 58A65591
-P 3260 6235
-F 0 "R29" V 3315 6235 24  0000 C CNN
-F 1 "300R" V 3260 6235 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -4370 1975 50  0001 C CNN
-F 3 "" H -4370 1975 50  0001 C CNN
-F 4 "Value" H 3260 6235 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3260 6235 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3260 6235 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 3260 6235 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3260 6235 60  0001 C CNN "Bauform"
-F 9 "Value" H 3260 6235 60  0001 C CNN "Funktion"
-F 10 "Value" H 3260 6235 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3260 6235 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3260 6235
+P 3260 6495
+F 0 "R29" V 3315 6495 24  0000 C CNN
+F 1 "300R" V 3260 6495 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4370 2235 50  0001 C CNN
+F 3 "" H -4370 2235 50  0001 C CNN
+F 4 "Value" H 3260 6495 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3260 6495 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3260 6495 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3260 6495 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3260 6495 60  0001 C CNN "Bauform"
+F 9 "Value" H 3260 6495 60  0001 C CNN "Funktion"
+F 10 "Value" H 3260 6495 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3260 6495 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3260 6495
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	2140 6240 2200 6240
+	1205 6240 1265 6240
 Wire Wire Line
-	3160 6235 3135 6235
+	3160 6495 3135 6495
 $Comp
 L R_Small R85
 U 1 1 58A78080
-P 1805 6595
-F 0 "R85" V 1860 6595 24  0000 C CNN
-F 1 "300R" V 1805 6595 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -5825 2335 50  0001 C CNN
-F 3 "" H -5825 2335 50  0001 C CNN
-F 4 "Value" H 1805 6595 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1805 6595 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1805 6595 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1805 6595 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1805 6595 60  0001 C CNN "Bauform"
-F 9 "Value" H 1805 6595 60  0001 C CNN "Funktion"
-F 10 "Value" H 1805 6595 60  0001 C CNN "Hersteller"
-F 11 "Value" H 1805 6595 60  0001 C CNN "Hersteller Bestellnummer"
-	1    1805 6595
+P 1070 6915
+F 0 "R85" V 1125 6915 24  0000 C CNN
+F 1 "300R" V 1070 6915 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6560 2655 50  0001 C CNN
+F 3 "" H -6560 2655 50  0001 C CNN
+F 4 "Value" H 1070 6915 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1070 6915 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1070 6915 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1070 6915 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1070 6915 60  0001 C CNN "Bauform"
+F 9 "Value" H 1070 6915 60  0001 C CNN "Funktion"
+F 10 "Value" H 1070 6915 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1070 6915 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1070 6915
 	0    -1   -1   0   
 $EndComp
 $Comp
 L R_Small R83
 U 1 1 58A787D8
-P 1800 6880
-F 0 "R83" V 1855 6880 24  0000 C CNN
-F 1 "300R" V 1800 6880 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -5830 2620 50  0001 C CNN
-F 3 "" H -5830 2620 50  0001 C CNN
-F 4 "Value" H 1800 6880 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1800 6880 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1800 6880 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1800 6880 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1800 6880 60  0001 C CNN "Bauform"
-F 9 "Value" H 1800 6880 60  0001 C CNN "Funktion"
-F 10 "Value" H 1800 6880 60  0001 C CNN "Hersteller"
-F 11 "Value" H 1800 6880 60  0001 C CNN "Hersteller Bestellnummer"
-	1    1800 6880
+P 1075 7435
+F 0 "R83" V 1130 7435 24  0000 C CNN
+F 1 "300R" V 1075 7435 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6555 3175 50  0001 C CNN
+F 3 "" H -6555 3175 50  0001 C CNN
+F 4 "Value" H 1075 7435 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1075 7435 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1075 7435 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1075 7435 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1075 7435 60  0001 C CNN "Bauform"
+F 9 "Value" H 1075 7435 60  0001 C CNN "Funktion"
+F 10 "Value" H 1075 7435 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1075 7435 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1075 7435
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1705 6595 1665 6595
+	970  6915 930  6915
 Wire Wire Line
-	1700 6880 1665 6880
+	975  7435 940  7435
 $Comp
 L R_Small R86
 U 1 1 58A7A83A
-P 1795 6300
-F 0 "R86" V 1850 6300 24  0000 C CNN
-F 1 "300R" V 1795 6300 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -5835 2040 50  0001 C CNN
-F 3 "" H -5835 2040 50  0001 C CNN
-F 4 "Value" H 1795 6300 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1795 6300 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1795 6300 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1795 6300 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1795 6300 60  0001 C CNN "Bauform"
-F 9 "Value" H 1795 6300 60  0001 C CNN "Funktion"
-F 10 "Value" H 1795 6300 60  0001 C CNN "Hersteller"
-F 11 "Value" H 1795 6300 60  0001 C CNN "Hersteller Bestellnummer"
-	1    1795 6300
+P 860 6300
+F 0 "R86" V 915 6300 24  0000 C CNN
+F 1 "300R" V 860 6300 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6770 2040 50  0001 C CNN
+F 3 "" H -6770 2040 50  0001 C CNN
+F 4 "Value" H 860 6300 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 860 6300 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 860 6300 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 860 6300 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 860 6300 60  0001 C CNN "Bauform"
+F 9 "Value" H 860 6300 60  0001 C CNN "Funktion"
+F 10 "Value" H 860 6300 60  0001 C CNN "Hersteller"
+F 11 "Value" H 860 6300 60  0001 C CNN "Hersteller Bestellnummer"
+	1    860  6300
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1695 6300 1655 6300
+	760  6300 720  6300
 $Comp
 L R_Small R105
 U 1 1 58A7BF75
-P 3255 6520
-F 0 "R105" V 3310 6520 24  0000 C CNN
-F 1 "300R" V 3255 6520 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -4375 2260 50  0001 C CNN
-F 3 "" H -4375 2260 50  0001 C CNN
-F 4 "Value" H 3255 6520 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3255 6520 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3255 6520 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 3255 6520 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3255 6520 60  0001 C CNN "Bauform"
-F 9 "Value" H 3255 6520 60  0001 C CNN "Funktion"
-F 10 "Value" H 3255 6520 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3255 6520 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3255 6520
+P 3255 6930
+F 0 "R105" V 3310 6930 24  0000 C CNN
+F 1 "300R" V 3255 6930 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4375 2670 50  0001 C CNN
+F 3 "" H -4375 2670 50  0001 C CNN
+F 4 "Value" H 3255 6930 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3255 6930 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3255 6930 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3255 6930 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3255 6930 60  0001 C CNN "Bauform"
+F 9 "Value" H 3255 6930 60  0001 C CNN "Funktion"
+F 10 "Value" H 3255 6930 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3255 6930 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3255 6930
 	0    -1   -1   0   
 $EndComp
 $Comp
 L R_Small R87
 U 1 1 58A7C052
-P 3250 6800
-F 0 "R87" V 3305 6800 24  0000 C CNN
-F 1 "300R" V 3250 6800 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -4380 2540 50  0001 C CNN
-F 3 "" H -4380 2540 50  0001 C CNN
-F 4 "Value" H 3250 6800 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3250 6800 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3250 6800 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 3250 6800 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3250 6800 60  0001 C CNN "Bauform"
-F 9 "Value" H 3250 6800 60  0001 C CNN "Funktion"
-F 10 "Value" H 3250 6800 60  0001 C CNN "Hersteller"
-F 11 "Value" H 3250 6800 60  0001 C CNN "Hersteller Bestellnummer"
-	1    3250 6800
+P 3250 7430
+F 0 "R87" V 3305 7430 24  0000 C CNN
+F 1 "300R" V 3250 7430 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4380 3170 50  0001 C CNN
+F 3 "" H -4380 3170 50  0001 C CNN
+F 4 "Value" H 3250 7430 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3250 7430 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3250 7430 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3250 7430 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3250 7430 60  0001 C CNN "Bauform"
+F 9 "Value" H 3250 7430 60  0001 C CNN "Funktion"
+F 10 "Value" H 3250 7430 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3250 7430 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3250 7430
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	3155 6520 3115 6520
+	3155 6930 3115 6930
 Wire Wire Line
-	3150 6800 3105 6800
+	3150 7430 3105 7430
 $Comp
 L R_Small R106
 U 1 1 58A7D74D
-P 1795 5610
-F 0 "R106" V 1850 5610 24  0000 C CNN
-F 1 "300R" V 1795 5610 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -5835 1350 50  0001 C CNN
-F 3 "" H -5835 1350 50  0001 C CNN
-F 4 "Value" H 1795 5610 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1795 5610 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1795 5610 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1795 5610 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1795 5610 60  0001 C CNN "Bauform"
-F 9 "Value" H 1795 5610 60  0001 C CNN "Funktion"
-F 10 "Value" H 1795 5610 60  0001 C CNN "Hersteller"
-F 11 "Value" H 1795 5610 60  0001 C CNN "Hersteller Bestellnummer"
-	1    1795 5610
+P 955 5610
+F 0 "R106" V 1010 5610 24  0000 C CNN
+F 1 "300R" V 955 5610 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6675 1350 50  0001 C CNN
+F 3 "" H -6675 1350 50  0001 C CNN
+F 4 "Value" H 955 5610 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 955 5610 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 955 5610 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 955 5610 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 955 5610 60  0001 C CNN "Bauform"
+F 9 "Value" H 955 5610 60  0001 C CNN "Funktion"
+F 10 "Value" H 955 5610 60  0001 C CNN "Hersteller"
+F 11 "Value" H 955 5610 60  0001 C CNN "Hersteller Bestellnummer"
+	1    955  5610
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1695 5610 1665 5610
+	855  5610 825  5610
 $Comp
 L R_Small R108
 U 1 1 58A7E859
@@ -12673,74 +12657,74 @@ Connection ~ 6900 4430
 $Comp
 L D_Small D5
 U 1 1 58A89512
-P 1545 6015
-F 0 "D5" H 1545 6080 24  0000 C CNN
-F 1 "TSS0230LU" H 1545 5945 24  0000 C CNN
-F 2 "Zimprich:D_0603" V 1545 6015 50  0001 C CNN
-F 3 "" V 1545 6015 50  0001 C CNN
-F 4 "Value" H 1545 6015 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 1545 6015 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 1545 6015 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 1545 6015 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 1545 6015 60  0001 C CNN "Bauform"
-F 9 "Value" H 1545 6015 60  0001 C CNN "Funktion"
-F 10 "Value" H 1545 6015 60  0001 C CNN "Hersteller"
-F 11 "Value" H 1545 6015 60  0001 C CNN "Hersteller Bestellnummer"
-	1    1545 6015
+P 865 6015
+F 0 "D5" H 865 6080 24  0000 C CNN
+F 1 "TSS0230LU" H 865 5945 24  0000 C CNN
+F 2 "Zimprich:D_0603" V 865 6015 50  0001 C CNN
+F 3 "" V 865 6015 50  0001 C CNN
+F 4 "Value" H 865 6015 60  0001 C CNN "Gehäuseart"
+F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 865 6015 60  0001 C CNN "Bestelllink"
+F 6 "SMD-Schottky 35V 0,2A 0603" H 865 6015 60  0001 C CNN "Technische Daten"
+F 7 "S: TSS0230LU" H 865 6015 60  0001 C CNN "Bestellnummer"
+F 8 "0603" H 865 6015 60  0001 C CNN "Bauform"
+F 9 "Value" H 865 6015 60  0001 C CNN "Funktion"
+F 10 "Value" H 865 6015 60  0001 C CNN "Hersteller"
+F 11 "Value" H 865 6015 60  0001 C CNN "Hersteller Bestellnummer"
+	1    865  6015
 	1    0    0    -1  
 $EndComp
 $Comp
 L R_Small R104
 U 1 1 58A89520
-P 1780 6015
-F 0 "R104" V 1835 6015 24  0000 C CNN
-F 1 "300R" V 1780 6015 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -5850 1755 50  0001 C CNN
-F 3 "" H -5850 1755 50  0001 C CNN
-F 4 "Value" H 1780 6015 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 1780 6015 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 1780 6015 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 1780 6015 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 1780 6015 60  0001 C CNN "Bauform"
-F 9 "Value" H 1780 6015 60  0001 C CNN "Funktion"
-F 10 "Value" H 1780 6015 60  0001 C CNN "Hersteller"
-F 11 "Value" H 1780 6015 60  0001 C CNN "Hersteller Bestellnummer"
-	1    1780 6015
+P 1100 6015
+F 0 "R104" V 1155 6015 24  0000 C CNN
+F 1 "300R" V 1100 6015 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6530 1755 50  0001 C CNN
+F 3 "" H -6530 1755 50  0001 C CNN
+F 4 "Value" H 1100 6015 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1100 6015 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1100 6015 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1100 6015 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1100 6015 60  0001 C CNN "Bauform"
+F 9 "Value" H 1100 6015 60  0001 C CNN "Funktion"
+F 10 "Value" H 1100 6015 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1100 6015 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1100 6015
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1680 6015 1645 6015
+	1000 6015 965  6015
 Wire Wire Line
-	1445 6015 1405 6015
+	765  6015 725  6015
 Wire Wire Line
-	1940 5550 1940 5670
+	1100 5550 1100 5670
 $Comp
 L R_Small R113
 U 1 1 58A89531
-P 2060 5840
-F 0 "R113" V 2115 5840 24  0000 C CNN
-F 1 "4K7" V 2060 5840 24  0000 C CNN
-F 2 "Zimprich:R_0603" H -5570 1580 50  0001 C CNN
-F 3 "" H -5570 1580 50  0001 C CNN
-F 4 "Value" H 2060 5840 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 2060 5840 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 2060 5840 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 2060 5840 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 2060 5840 60  0001 C CNN "Bauform"
-F 9 "Value" H 2060 5840 60  0001 C CNN "Funktion"
-F 10 "Value" H 2060 5840 60  0001 C CNN "Hersteller"
-F 11 "Value" H 2060 5840 60  0001 C CNN "Hersteller Bestellnummer"
-	1    2060 5840
+P 1380 5840
+F 0 "R113" V 1435 5840 24  0000 C CNN
+F 1 "4K7" V 1380 5840 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6250 1580 50  0001 C CNN
+F 3 "" H -6250 1580 50  0001 C CNN
+F 4 "Value" H 1380 5840 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1380 5840 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1380 5840 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1380 5840 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1380 5840 60  0001 C CNN "Bauform"
+F 9 "Value" H 1380 5840 60  0001 C CNN "Funktion"
+F 10 "Value" H 1380 5840 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1380 5840 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1380 5840
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1945 5840 1960 5840
-Connection ~ 1945 5955
+	1265 5840 1280 5840
+Connection ~ 1265 5955
 Wire Wire Line
-	2175 5955 2175 5840
+	1495 5955 1495 5840
 Wire Wire Line
-	2175 5840 2160 5840
-Connection ~ 2175 5955
+	1495 5840 1480 5840
+Connection ~ 1495 5955
 $Comp
 L D D74
 U 1 1 58DD7FAF
@@ -12762,4 +12746,90 @@ F 11 "Value" H 3905 2290 60  0001 C CNN "Hersteller Bestellnummer"
 $EndComp
 Wire Wire Line
 	3755 2290 3680 2290
+Wire Wire Line
+	4125 5740 1870 5740
+Wire Wire Line
+	1870 5740 1870 7435
+$Comp
+L R_Small R132
+U 1 1 58E29233
+P 3505 7250
+F 0 "R132" V 3560 7250 24  0000 C CNN
+F 1 "10K" V 3505 7250 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4125 2990 50  0001 C CNN
+F 3 "" H -4125 2990 50  0001 C CNN
+F 4 "Value" H 3505 7250 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3505 7250 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3505 7250 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3505 7250 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3505 7250 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 7250 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 7250 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 7250 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 7250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3375 7250 3405 7250
+Wire Wire Line
+	3605 7250 3735 7250
+Wire Wire Line
+	3735 7250 3735 7370
+Connection ~ 3735 7370
+Wire Wire Line
+	3375 7490 3395 7490
+Wire Wire Line
+	3375 7250 3375 7490
+Connection ~ 3375 7430
+Wire Wire Line
+	3375 7370 3395 7370
+Connection ~ 3375 7370
+Wire Wire Line
+	3375 6990 3400 6990
+Wire Wire Line
+	3375 6750 3375 6990
+Connection ~ 3375 6930
+Wire Wire Line
+	3375 6870 3400 6870
+Wire Wire Line
+	3380 6555 3405 6555
+Wire Wire Line
+	3380 6435 3380 6555
+Connection ~ 3380 6495
+Wire Wire Line
+	3380 6435 3405 6435
+Wire Wire Line
+	3380 6145 3405 6145
+Wire Wire Line
+	3380 6025 3380 6145
+Connection ~ 3380 6085
+Wire Wire Line
+	3380 6025 3405 6025
+$Comp
+L R_Small R131
+U 1 1 58E2EE48
+P 3505 6750
+F 0 "R131" V 3560 6750 24  0000 C CNN
+F 1 "10K" V 3505 6750 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4125 2490 50  0001 C CNN
+F 3 "" H -4125 2490 50  0001 C CNN
+F 4 "Value" H 3505 6750 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3505 6750 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3505 6750 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3505 6750 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3505 6750 60  0001 C CNN "Bauform"
+F 9 "Value" H 3505 6750 60  0001 C CNN "Funktion"
+F 10 "Value" H 3505 6750 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3505 6750 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3505 6750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3375 6750 3405 6750
+Connection ~ 3375 6870
+Wire Wire Line
+	3605 6750 3715 6750
+Wire Wire Line
+	3715 6750 3715 6870
+Connection ~ 3715 6870
 $EndSCHEMATC
