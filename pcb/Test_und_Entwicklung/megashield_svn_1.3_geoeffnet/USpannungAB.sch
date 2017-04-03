@@ -13,7 +13,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 28 33
+Sheet 30 33
 Title "Ardumower shield SVN Version"
 Date "2017-02-17"
 Rev "1.3"

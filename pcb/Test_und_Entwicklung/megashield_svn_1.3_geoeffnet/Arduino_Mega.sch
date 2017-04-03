@@ -11007,7 +11007,7 @@ F 8 "0603" H 1990 4715 60  0001 C CNN "Bauform"
 $EndComp
 Text GLabel 3290 4445 0    24   Output ~ 0
 pinRemoteSwitch
-Text GLabel 3295 4625 0    24   Output ~ 0
+Text GLabel 3110 4625 0    24   Output ~ 0
 pinButton
 Text GLabel 3415 4795 0    24   Output ~ 0
 pinChargingEnable
@@ -12066,7 +12066,7 @@ Wire Wire Line
 Wire Wire Line
 	3825 4445 3825 4690
 Wire Wire Line
-	3295 4625 3790 4625
+	3110 4625 3790 4625
 Wire Wire Line
 	3790 4625 3790 4790
 Wire Wire Line
@@ -12277,7 +12277,7 @@ Wire Wire Line
 	6025 1690 6620 1690
 Wire Wire Line
 	6355 2990 6025 2990
-Text Notes 2700 4690 0    28   ~ 0
+Text Notes 2525 4690 0    28   ~ 0
 Pinbutton\ndurch Diode D14\ngeschützt ??
 $Comp
 L D_Small D6
@@ -13002,4 +13002,32 @@ Wire Wire Line
 Wire Wire Line
 	8555 1290 8555 1455
 Connection ~ 8555 1455
+$Comp
+L R_Small R133
+U 1 1 58E350CD
+P 3320 4560
+F 0 "R133" V 3375 4560 24  0000 C CNN
+F 1 "10K" V 3320 4560 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4310 300 50  0001 C CNN
+F 3 "" H -4310 300 50  0001 C CNN
+F 4 "Value" H 3320 4560 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3320 4560 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3320 4560 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3320 4560 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3320 4560 60  0001 C CNN "Bauform"
+F 9 "Value" H 3320 4560 60  0001 C CNN "Funktion"
+F 10 "Value" H 3320 4560 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3320 4560 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3320 4560
+	0    -1   -1   0   
+$EndComp
+Text GLabel 3480 4560 2    24   Input ~ 0
+IOREF
+Wire Wire Line
+	3420 4560 3480 4560
+Wire Wire Line
+	3220 4560 3175 4560
+Wire Wire Line
+	3175 4560 3175 4625
+Connection ~ 3175 4625
 $EndSCHEMATC
