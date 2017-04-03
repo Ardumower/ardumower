@@ -10334,7 +10334,7 @@ F 8 "0603" H 8115 1455 60  0001 C CNN "Bauform"
 	1    8115 1455
 	-1   0    0    1   
 $EndComp
-Text GLabel 8275 1455 2    39   Input ~ 0
+Text GLabel 8805 1455 2    39   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0187
@@ -10379,7 +10379,7 @@ F 8 "0603" H 8120 1990 60  0001 C CNN "Bauform"
 	1    8120 1990
 	-1   0    0    1   
 $EndComp
-Text GLabel 8280 1990 2    39   Input ~ 0
+Text GLabel 8815 1990 2    39   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0188
@@ -11347,7 +11347,7 @@ F 11 "Value" H 1315 6855 60  0001 C CNN "Hersteller Bestellnummer"
 	1    1315 6855
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1475 6855 2    24   Input ~ 0
+Text GLabel 1635 6855 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0204
@@ -11400,7 +11400,7 @@ F 11 "Value" H 1320 7375 60  0001 C CNN "Hersteller Bestellnummer"
 	1    1320 7375
 	-1   0    0    -1  
 $EndComp
-Text GLabel 1480 7375 2    24   Input ~ 0
+Text GLabel 1705 7375 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0205
@@ -11453,7 +11453,7 @@ F 11 "Value" H 3505 6025 60  0001 C CNN "Hersteller Bestellnummer"
 	1    3505 6025
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3665 6025 2    24   Input ~ 0
+Text GLabel 3735 6025 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0206
@@ -11506,7 +11506,7 @@ F 11 "Value" H 3505 6435 60  0001 C CNN "Hersteller Bestellnummer"
 	1    3505 6435
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3665 6435 2    24   Input ~ 0
+Text GLabel 3775 6435 2    24   Input ~ 0
 IOREF
 $Comp
 L GND #PWR0207
@@ -11891,9 +11891,9 @@ Wire Wire Line
 Wire Wire Line
 	6485 1590 6025 1590
 Wire Wire Line
-	8215 1455 8275 1455
+	8215 1455 8805 1455
 Wire Wire Line
-	7845 1455 7845 1685
+	7845 1290 7845 1685
 Connection ~ 7845 1555
 Wire Wire Line
 	8275 1685 8230 1685
@@ -11906,9 +11906,9 @@ Wire Wire Line
 Wire Wire Line
 	7705 1555 7705 1990
 Wire Wire Line
-	8220 1990 8280 1990
+	8220 1990 8815 1990
 Wire Wire Line
-	7850 1990 7850 2220
+	7850 1835 7850 2220
 Connection ~ 7850 2090
 Wire Wire Line
 	8280 2220 8235 2220
@@ -12146,10 +12146,7 @@ Wire Wire Line
 Wire Wire Line
 	1755 6300 1755 5650
 Wire Wire Line
-	1415 6855 1475 6855
-Wire Wire Line
-	1215 6855 1215 6975
-Connection ~ 1215 6915
+	1415 6855 1635 6855
 Wire Wire Line
 	1170 6915 1805 6915
 Wire Wire Line
@@ -12161,16 +12158,13 @@ Wire Wire Line
 Wire Wire Line
 	1805 5670 1805 6915
 Wire Wire Line
-	1420 7375 1480 7375
-Wire Wire Line
-	1220 7375 1220 7495
-Connection ~ 1220 7435
+	1420 7375 1705 7375
 Wire Wire Line
 	1175 7435 1870 7435
 Wire Wire Line
 	1465 7495 1420 7495
 Wire Wire Line
-	3605 6025 3665 6025
+	3605 6025 3735 6025
 Wire Wire Line
 	3360 6085 3880 6085
 Wire Wire Line
@@ -12178,7 +12172,7 @@ Wire Wire Line
 Wire Wire Line
 	3880 6085 3880 5890
 Wire Wire Line
-	3605 6435 3665 6435
+	3605 6435 3775 6435
 Wire Wire Line
 	3360 6495 3940 6495
 Wire Wire Line
@@ -12794,14 +12788,14 @@ Wire Wire Line
 Wire Wire Line
 	3380 6555 3405 6555
 Wire Wire Line
-	3380 6435 3380 6555
+	3380 6315 3380 6555
 Connection ~ 3380 6495
 Wire Wire Line
 	3380 6435 3405 6435
 Wire Wire Line
 	3380 6145 3405 6145
 Wire Wire Line
-	3380 6025 3380 6145
+	3380 5890 3380 6145
 Connection ~ 3380 6085
 Wire Wire Line
 	3380 6025 3405 6025
@@ -12832,4 +12826,180 @@ Wire Wire Line
 Wire Wire Line
 	3715 6750 3715 6870
 Connection ~ 3715 6870
+$Comp
+L R_Small R125
+U 1 1 58E1D162
+P 3500 5890
+F 0 "R125" V 3555 5890 24  0000 C CNN
+F 1 "XXXX" V 3500 5890 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4130 1630 50  0001 C CNN
+F 3 "" H -4130 1630 50  0001 C CNN
+F 4 "Value" H 3500 5890 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3500 5890 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3500 5890 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3500 5890 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3500 5890 60  0001 C CNN "Bauform"
+F 9 "Value" H 3500 5890 60  0001 C CNN "Funktion"
+F 10 "Value" H 3500 5890 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3500 5890 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3500 5890
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3380 5890 3400 5890
+Connection ~ 3380 6025
+Wire Wire Line
+	3600 5890 3710 5890
+Wire Wire Line
+	3710 5890 3710 6025
+Connection ~ 3710 6025
+$Comp
+L R_Small R126
+U 1 1 58E1F2DD
+P 3510 6315
+F 0 "R126" V 3565 6315 24  0000 C CNN
+F 1 "XXXX" V 3510 6315 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -4120 2055 50  0001 C CNN
+F 3 "" H -4120 2055 50  0001 C CNN
+F 4 "Value" H 3510 6315 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3510 6315 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3510 6315 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 3510 6315 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3510 6315 60  0001 C CNN "Bauform"
+F 9 "Value" H 3510 6315 60  0001 C CNN "Funktion"
+F 10 "Value" H 3510 6315 60  0001 C CNN "Hersteller"
+F 11 "Value" H 3510 6315 60  0001 C CNN "Hersteller Bestellnummer"
+	1    3510 6315
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3380 6315 3410 6315
+Connection ~ 3380 6435
+Wire Wire Line
+	3610 6315 3730 6315
+Wire Wire Line
+	3730 6315 3730 6435
+Connection ~ 3730 6435
+$Comp
+L R_Small R127
+U 1 1 58E20962
+P 1345 6735
+F 0 "R127" V 1400 6735 24  0000 C CNN
+F 1 "XXXX" V 1345 6735 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6285 2475 50  0001 C CNN
+F 3 "" H -6285 2475 50  0001 C CNN
+F 4 "Value" H 1345 6735 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1345 6735 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1345 6735 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1345 6735 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1345 6735 60  0001 C CNN "Bauform"
+F 9 "Value" H 1345 6735 60  0001 C CNN "Funktion"
+F 10 "Value" H 1345 6735 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1345 6735 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1345 6735
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1190 6975 1215 6975
+Wire Wire Line
+	1190 6735 1190 6975
+Connection ~ 1190 6915
+Wire Wire Line
+	1190 6855 1215 6855
+Wire Wire Line
+	1190 6735 1245 6735
+Connection ~ 1190 6855
+Wire Wire Line
+	1445 6735 1575 6735
+Wire Wire Line
+	1575 6735 1575 6855
+Connection ~ 1575 6855
+$Comp
+L R_Small R128
+U 1 1 58E2325B
+P 1360 7255
+F 0 "R128" V 1415 7255 24  0000 C CNN
+F 1 "XXXX" V 1360 7255 24  0000 C CNN
+F 2 "Zimprich:R_0603" H -6270 2995 50  0001 C CNN
+F 3 "" H -6270 2995 50  0001 C CNN
+F 4 "Value" H 1360 7255 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 1360 7255 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 1360 7255 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 1360 7255 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 1360 7255 60  0001 C CNN "Bauform"
+F 9 "Value" H 1360 7255 60  0001 C CNN "Funktion"
+F 10 "Value" H 1360 7255 60  0001 C CNN "Hersteller"
+F 11 "Value" H 1360 7255 60  0001 C CNN "Hersteller Bestellnummer"
+	1    1360 7255
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1195 7495 1220 7495
+Wire Wire Line
+	1195 7255 1195 7495
+Connection ~ 1195 7435
+Wire Wire Line
+	1195 7375 1220 7375
+Wire Wire Line
+	1195 7255 1260 7255
+Connection ~ 1195 7375
+Wire Wire Line
+	1460 7255 1620 7255
+Wire Wire Line
+	1620 7255 1620 7375
+Connection ~ 1620 7375
+$Comp
+L R_Small R130
+U 1 1 58E2A3CB
+P 8135 1835
+F 0 "R130" V 8190 1835 24  0000 C CNN
+F 1 "XXXX" V 8135 1835 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 505 -2425 50  0001 C CNN
+F 3 "" H 505 -2425 50  0001 C CNN
+F 4 "Value" H 8135 1835 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 8135 1835 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8135 1835 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8135 1835 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8135 1835 60  0001 C CNN "Bauform"
+F 9 "Value" H 8135 1835 60  0001 C CNN "Funktion"
+F 10 "Value" H 8135 1835 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8135 1835 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8135 1835
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8235 1835 8585 1835
+Wire Wire Line
+	8585 1835 8585 1990
+Connection ~ 8585 1990
+Wire Wire Line
+	8035 1835 7850 1835
+Connection ~ 7850 1990
+$Comp
+L R_Small R129
+U 1 1 58E3014A
+P 8120 1290
+F 0 "R129" V 8175 1290 24  0000 C CNN
+F 1 "XXXX" V 8120 1290 24  0000 C CNN
+F 2 "Zimprich:R_0603" H 490 -2970 50  0001 C CNN
+F 3 "" H 490 -2970 50  0001 C CNN
+F 4 "Value" H 8120 1290 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 8120 1290 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 8120 1290 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 8120 1290 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 8120 1290 60  0001 C CNN "Bauform"
+F 9 "Value" H 8120 1290 60  0001 C CNN "Funktion"
+F 10 "Value" H 8120 1290 60  0001 C CNN "Hersteller"
+F 11 "Value" H 8120 1290 60  0001 C CNN "Hersteller Bestellnummer"
+	1    8120 1290
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7845 1290 8020 1290
+Connection ~ 7845 1455
+Wire Wire Line
+	8220 1290 8555 1290
+Wire Wire Line
+	8555 1290 8555 1455
+Connection ~ 8555 1455
 $EndSCHEMATC
