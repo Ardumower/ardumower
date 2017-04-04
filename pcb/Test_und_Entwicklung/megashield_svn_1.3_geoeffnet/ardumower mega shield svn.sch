@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:switches
 LIBS:linear
 LIBS:texas
+LIBS:diode
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -98,8 +99,6 @@ F 11 "Value" H 7350 2085 60  0001 C CNN "Hersteller Bestellnummer"
 $EndComp
 Text GLabel 4870 3920 0    60   Input ~ 0
 pinChargingEnable
-Text Notes 5980 3490 0    39   ~ 0
-Laderelais Spulenspannung 5V\noder Variabel\nEingang Spulenspannung\nkann über Vorwiderspannung\nangepasst werden\ndurch Ladespannung
 Text Notes 3495 1995 0    39   ~ 0
 Station LED\nbzw:\nGrundlast\nPerimetersender
 Text Notes 9055 -450 0    60   ~ 0
@@ -407,27 +406,6 @@ F1 "Stationsled.sch" 39
 F2 "LED+" I T 3465 2270 39 
 $EndSheet
 $Comp
-L D D10
-U 1 1 57E925D4
-P 5680 3085
-F 0 "D10" V 5625 2960 39  0000 C CNN
-F 1 "TSS0230LU" V 5685 2840 39  0000 C CNN
-F 2 "Zimprich:D_0603" H 5680 3208 50  0001 C CNN
-F 3 "" H 5680 3085 50  0001 C CNN
-F 4 "Value" H 5680 3428 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.schukat.com/schukat/schukat_cms_de.nsf/index/suchergebnisse?OpenDocument&query=TSS0230LU&news=true&katalog=true" H 5680 3322 60  0001 C CNN "Bestelllink"
-F 6 "SMD-Schottky 35V 0,2A 0603" H 5680 3216 60  0001 C CNN "Technische Daten"
-F 7 "S: TSS0230LU" H 5680 3085 60  0001 C CNN "Bestellnummer"
-F 8 "0603" H 5680 3085 60  0001 C CNN "Bauform"
-F 9 "Value" H 5680 3085 60  0001 C CNN "Funktion"
-F 10 "Value" H 5680 3085 60  0001 C CNN "Hersteller"
-F 11 "Value" H 5680 3085 60  0001 C CNN "Hersteller Bestellnummer"
-	1    5680 3085
-	0    1    1    0   
-$EndComp
-Text Notes 6055 4325 0    60   ~ 0
-BC 547 ersetzt mit BC847 SMD\n??\n
-$Comp
 L BC849 Q1
 U 1 1 57F1C5EE
 P 5830 3920
@@ -719,10 +697,6 @@ Wire Wire Line
 	8975 3975 9010 3975
 Wire Wire Line
 	9010 3975 9010 4120
-Text Notes 3655 5550 0    118  ~ 0
-scl1 sda 1 nach ausen führen mit iorf\n\n1n4148 in TMMBAT48
-Text Notes 890  4135 0    79   ~ 0
-Änderungen 01.01.2017
 Text Notes 400  9710 0    79   ~ 0
 [21:36:55] Kurzschuss - Uwe: gut dan warte ich nochmal mit den widerständen bis du soweit bist\n[21:38:22] Kurzschuss - Uwe: Dann mache ich nur die andern Änderungen mit dem DHT22 dropsensoren usw und warte dann erst mal ab. wenn ich es habe lade ich dann hoch\n[21:38:26] Jürgen Lange: überall wo level shifter dran sind kannst du die Dioden und den widerstand wegmachen\n[21:39:37] Kurzschuss - Uwe: da warte ich erst mal wo dann noch ein widerstand dazukommt. das wird dann ein Aufwasch\n\n\n\nwenn du da gerade dran bist die ganzen reserve dinger AD7, pinOdometriyRight2 etc hast du auf iOREF versorgt da solltest du 5V dran machen da bleiben dann auch die Dioden und der widerstand\nich sehe gerade das bei den Odemetrie pin der Spannungsanschluss auf iorf liegt. Dazwischen ist dann noch der ODoteiler und der Levelshifter.\nIch vermute mal das die odemetriepins auch auf 5V müssen damit der Odoteiler richtig arbeitetein klaaaaaaares ja
 $Comp
@@ -782,4 +756,15 @@ Text GLabel 6850 2490 2    39   Input ~ 0
 9Vgeschaltet
 Wire Wire Line
 	6730 2490 6850 2490
+$Comp
+L 1N4148 D10
+U 1 1 58E41856
+P 5680 3085
+F 0 "D10" V 5634 3006 50  0000 R CNN
+F 1 "1N4148" V 5725 3006 50  0000 R CNN
+F 2 "Diodes_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5680 2910 50  0001 C CNN
+F 3 "" H 5680 3085 50  0001 C CNN
+	1    5680 3085
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
