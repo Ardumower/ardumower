@@ -576,4 +576,6 @@ Wire Wire Line
 	7175 4385 7310 4385
 Text HLabel 7310 4385 2    50   Input ~ 0
 +24V
+Text Notes 995  -470 0    79   ~ 0
+Unsere Motoren haben:\nEncoder 5 Impulse pro Umdrehung\n31 Umdrehungen nach dem Getriebe\nmit einer Übersetzung 1:212\nDas entspricht etwa 6572 Umdrehungen des Motors vor dem Getriebe.\nDas heißt der Motor vor dem Getriebe dreht sich 212mal damit der Motor nach dem Getriebe sich 1 mal dreht.\nImpulse pro Umdrehung wäre demnach : 6572 /31 = 212\nDa der Encoder aber vor dem Getriebe sitzt haben wir bei einer Radumdrehung 212*5 Impulse.\nAlso 1060 pro Radumdrehung
 $EndSCHEMATC
