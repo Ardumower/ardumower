@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:switches
 LIBS:linear
 LIBS:texas
+LIBS:diode
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -70,10 +71,10 @@ F 3 "" H 10595 4400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0165
+L GND #PWR0166
 U 1 1 57DF6841
 P 9435 4810
-F 0 "#PWR0165" H 9435 4810 30  0001 C CNN
+F 0 "#PWR0166" H 9435 4810 30  0001 C CNN
 F 1 "GND" H 9435 4740 30  0001 C CNN
 F 2 "" H 9435 4810 60  0000 C CNN
 F 3 "" H 9435 4810 60  0000 C CNN
@@ -96,10 +97,10 @@ $EndComp
 Text HLabel 1890 1240 0    60   Input ~ 0
 Spannungsaufbereitung
 $Comp
-L +9V #PWR0166
+L +9V #PWR0167
 U 1 1 57DB0947
 P 10440 5975
-F 0 "#PWR0166" H 10440 5825 50  0001 C CNN
+F 0 "#PWR0167" H 10440 5825 50  0001 C CNN
 F 1 "+9V" V 10440 6170 50  0000 C CNN
 F 2 "" H 10440 5975 50  0000 C CNN
 F 3 "" H 10440 5975 50  0000 C CNN
@@ -107,10 +108,10 @@ F 3 "" H 10440 5975 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +9V #PWR0167
+L +9V #PWR0168
 U 1 1 57DB0B58
 P 3620 1575
-F 0 "#PWR0167" H 3620 1425 50  0001 C CNN
+F 0 "#PWR0168" H 3620 1425 50  0001 C CNN
 F 1 "+9V" H 3620 1745 50  0000 C CNN
 F 2 "" H 3620 1575 50  0000 C CNN
 F 3 "" H 3620 1575 50  0000 C CNN
@@ -118,10 +119,10 @@ F 3 "" H 3620 1575 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +5V #PWR0168
+L +5V #PWR0169
 U 1 1 57DC5072
 P 10045 4865
-F 0 "#PWR0168" H 10045 4715 50  0001 C CNN
+F 0 "#PWR0169" H 10045 4715 50  0001 C CNN
 F 1 "+5V" V 10045 5065 50  0000 C CNN
 F 2 "" H 10045 4865 50  0000 C CNN
 F 3 "" H 10045 4865 50  0000 C CNN
@@ -129,10 +130,10 @@ F 3 "" H 10045 4865 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR0169
+L +3.3V #PWR0170
 U 1 1 57DC50AC
 P 10490 4865
-F 0 "#PWR0169" H 10490 4715 50  0001 C CNN
+F 0 "#PWR0170" H 10490 4715 50  0001 C CNN
 F 1 "+3.3V" V 10490 5100 50  0000 C CNN
 F 2 "" H 10490 4865 50  0000 C CNN
 F 3 "" H 10490 4865 50  0000 C CNN
@@ -185,14 +186,17 @@ L D D4
 U 1 1 57E52B65
 P 4285 1240
 F 0 "D4" H 4285 1340 50  0000 C CNN
-F 1 "1N 4004 SMD" H 4285 1140 50  0000 C CNN
-F 2 "Diodes_SMD:DO-214AB" H 4285 1240 60  0001 C CNN
+F 1 "S 1G SMD" H 4285 1140 50  0000 C CNN
+F 2 "Diodes_SMD:D_SMA_Standard" H 4285 1240 60  0001 C CNN
 F 3 "" H 4285 1240 60  0001 C CNN
 F 4 "Value" H 4285 1240 60  0001 C CNN "Gehäuseart"
-F 5 "https://www.reichelt.de/index.html?ACTION=3;ARTICLE=18399;SEARCH=1N%204004%20SMD" H 4285 1240 60  0001 C CNN "Bestelllink"
-F 6 "Gleichrichterdiode SMD, DO213AB, 400V, 1A" H 4285 1240 60  0001 C CNN "Technische Daten"
-F 7 "R: 1N 4004 SMD" H 4285 1240 60  0001 C CNN "Bestellnummer"
+F 5 "https://www.reichelt.de/SB-SKE-4F-Dioden/S-1G-SMD/3/index.html?ACTION=3&LA=446&ARTICLE=95354&GROUPID=2991&artnr=S+1G+SMD&SEARCH=1N%2B4004%2BSMD" H 4285 1240 60  0001 C CNN "Bestelllink"
+F 6 "Si-Gleichrichterdiode, DO214AC, 400V, 1A" H 4285 1240 60  0001 C CNN "Technische Daten"
+F 7 "R: S 1G SMD" H 4285 1240 60  0001 C CNN "Bestellnummer"
 F 8 "Value" H 4285 1240 60  0001 C CNN "Bauform"
+F 9 "Value" H 4285 1240 60  0001 C CNN "Funktion"
+F 10 "Value" H 4285 1240 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4285 1240 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4285 1240
 	-1   0    0    -1  
 $EndComp
@@ -213,8 +217,16 @@ U 1 1 57E52B68
 P 4735 1440
 F 0 "C1" H 4745 1510 50  0000 L CNN
 F 1 "22uF" H 4745 1360 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 4735 1440 60  0001 C CNN
+F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 4735 1440 60  0001 C CNN
 F 3 "" H 4735 1440 60  0000 C CNN
+F 4 "Value" H 4735 1440 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 4735 1440 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 4735 1440 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 4735 1440 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 4735 1440 60  0001 C CNN "Bauform"
+F 9 "Value" H 4735 1440 60  0001 C CNN "Funktion"
+F 10 "Value" H 4735 1440 60  0001 C CNN "Hersteller"
+F 11 "Value" H 4735 1440 60  0001 C CNN "Hersteller Bestellnummer"
 	1    4735 1440
 	1    0    0    -1  
 $EndComp
@@ -246,8 +258,16 @@ U 1 1 57E52B71
 P 7595 1440
 F 0 "C8" H 7605 1510 50  0000 L CNN
 F 1 "22uF" H 7605 1360 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 7595 1440 60  0001 C CNN
+F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 7595 1440 60  0001 C CNN
 F 3 "" H 7595 1440 60  0000 C CNN
+F 4 "Value" H 7595 1440 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7595 1440 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7595 1440 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7595 1440 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7595 1440 60  0001 C CNN "Bauform"
+F 9 "Value" H 7595 1440 60  0001 C CNN "Funktion"
+F 10 "Value" H 7595 1440 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7595 1440 60  0001 C CNN "Hersteller Bestellnummer"
 	1    7595 1440
 	1    0    0    -1  
 $EndComp
@@ -339,10 +359,16 @@ U 1 1 57E52BC0
 P 7605 2565
 F 0 "C13" H 7615 2635 50  0000 L CNN
 F 1 "22uF" H 7615 2485 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 7605 2565 60  0001 C CNN
+F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 7605 2565 60  0001 C CNN
 F 3 "" H 7605 2565 60  0000 C CNN
 F 4 "Value" H 7605 2565 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 7605 2565 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7605 2565 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7605 2565 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7605 2565 60  0001 C CNN "Bauform"
+F 9 "Value" H 7605 2565 60  0001 C CNN "Funktion"
+F 10 "Value" H 7605 2565 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7605 2565 60  0001 C CNN "Hersteller Bestellnummer"
 	1    7605 2565
 	1    0    0    -1  
 $EndComp
@@ -388,8 +414,6 @@ F 3 "" H 8065 2365 50  0000 C CNN
 	1    8065 2365
 	0    1    -1   0   
 $EndComp
-Text Notes 4150 950  0    60   ~ 0
-d4 geändert auf SMD
 $Comp
 L CONN_01X08 P38
 U 1 1 57EFA6BF

@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:switches
 LIBS:linear
 LIBS:texas
+LIBS:diode
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -2763,10 +2764,10 @@ F 3 "" H 5805 3635 50  0000 L CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L +5VP #PWR0134
+L +5VP #PWR0135
 U 1 1 57FA86A1
 P 6110 2900
-F 0 "#PWR0134" H 6110 2750 50  0001 C CNN
+F 0 "#PWR0135" H 6110 2750 50  0001 C CNN
 F 1 "+5VP" H 6125 3073 50  0000 C CNN
 F 2 "" H 6110 2900 50  0000 C CNN
 F 3 "" H 6110 2900 50  0000 C CNN

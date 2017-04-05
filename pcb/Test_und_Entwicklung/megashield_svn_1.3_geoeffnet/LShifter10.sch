@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:switches
 LIBS:linear
 LIBS:texas
+LIBS:diode
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -2763,10 +2764,10 @@ Wire Wire Line
 	5755 3005 5435 3005
 Connection ~ 5435 3005
 $Comp
-L +5VP #PWR0159
+L +5VP #PWR0160
 U 1 1 58AB192F
 P 6110 2900
-F 0 "#PWR0159" H -645 130 50  0001 C CNN
+F 0 "#PWR0160" H -645 130 50  0001 C CNN
 F 1 "+5VP" H 6125 3073 50  0000 C CNN
 F 2 "" H -645 280 50  0001 C CNN
 F 3 "" H -645 280 50  0001 C CNN

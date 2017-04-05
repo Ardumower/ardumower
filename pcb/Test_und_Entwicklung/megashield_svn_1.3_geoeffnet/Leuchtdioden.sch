@@ -8,6 +8,7 @@ LIBS:transistors
 LIBS:switches
 LIBS:linear
 LIBS:texas
+LIBS:diode
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -87,28 +88,28 @@ pinChargingEnable
 $Comp
 L SPEAKER SP1
 U 1 1 57E08A3A
-P 3530 5055
-F 0 "SP1" H 3430 5305 70  0000 C CNN
-F 1 "SPEAKER" H 3430 4805 70  0000 C CNN
-F 2 "Zimprich:Buzzer_12x9.5RM7.6_RM5.0" H 3530 5055 60  0001 C CNN
-F 3 "" H 3530 5055 60  0001 C CNN
-F 4 "Value" H 3530 5055 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3530 5055 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3530 5055 60  0001 C CNN "Technische Daten"
-F 7 "R: SUMMER TDB 05" H 3530 5055 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3530 5055 60  0001 C CNN "Bauform"
-	1    3530 5055
+P 3910 5055
+F 0 "SP1" H 3810 5305 70  0000 C CNN
+F 1 "SPEAKER" H 3810 4805 70  0000 C CNN
+F 2 "Zimprich:Buzzer_12x9.5RM7.6_RM5.0" H 3910 5055 60  0001 C CNN
+F 3 "" H 3910 5055 60  0001 C CNN
+F 4 "Value" H 3910 5055 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3910 5055 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3910 5055 60  0001 C CNN "Technische Daten"
+F 7 "R: SUMMER TDB 05" H 3910 5055 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3910 5055 60  0001 C CNN "Bauform"
+	1    3910 5055
 	1    0    0    1   
 $EndComp
 $Comp
 L GND #PWR058
 U 1 1 57E08A3B
-P 2990 5155
-F 0 "#PWR058" H 2990 4905 60  0001 C CNN
-F 1 "GND" V 2990 4930 60  0000 C CNN
-F 2 "" H 2990 5155 60  0000 C CNN
-F 3 "" H 2990 5155 60  0000 C CNN
-	1    2990 5155
+P 3505 5155
+F 0 "#PWR058" H 3505 4905 60  0001 C CNN
+F 1 "GND" V 3505 4930 60  0000 C CNN
+F 2 "" H 3505 5155 60  0000 C CNN
+F 3 "" H 3505 5155 60  0000 C CNN
+	1    3505 5155
 	0    1    1    0   
 $EndComp
 Text GLabel 1265 5195 0    39   Input ~ 0
@@ -4179,20 +4180,18 @@ $EndComp
 $Comp
 L GND #PWR074
 U 1 1 5804349C
-P 7270 4695
-F 0 "#PWR074" H 7270 4445 60  0001 C CNN
-F 1 "GND" V 7270 4490 60  0000 C CNN
-F 2 "" H 7270 4695 60  0000 C CNN
-F 3 "" H 7270 4695 60  0000 C CNN
-	1    7270 4695
+P 7590 4695
+F 0 "#PWR074" H 7590 4445 60  0001 C CNN
+F 1 "GND" V 7590 4490 60  0000 C CNN
+F 2 "" H 7590 4695 60  0000 C CNN
+F 3 "" H 7590 4695 60  0000 C CNN
+	1    7590 4695
 	0    -1   1    0   
 $EndComp
 Text Notes 6700 5320 0    79   ~ 0
 Bargraph-Anzeige,\n10 Elemente
 Text GLabel 1105 5095 0    39   Input ~ 0
 GPS-LED
-Text Notes 5000 7315 0    79   ~ 0
-UDN2981 getauscht für\nUDN2987\nanderes IC\nin SMD\nVorsclafg von Jürgen???
 $Bitmap
 Pos 2155 6630
 Scale 1,000000
@@ -8080,17 +8079,17 @@ $EndComp
 $Comp
 L SPEAKER SP2
 U 1 1 58B6246B
-P 3540 5780
-F 0 "SP2" H 3440 6030 70  0000 C CNN
-F 1 "SPEAKER" H 3440 5530 70  0000 C CNN
-F 2 "Zimprich:Buzzer_12x9.5RM7.6_RM5.0" H 3540 5780 60  0001 C CNN
-F 3 "" H 3540 5780 60  0001 C CNN
-F 4 "Value" H 3540 5780 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 3540 5780 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 3540 5780 60  0001 C CNN "Technische Daten"
-F 7 "R: SUMMER TDB 05" H 3540 5780 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 3540 5780 60  0001 C CNN "Bauform"
-	1    3540 5780
+P 3920 5780
+F 0 "SP2" H 3820 6030 70  0000 C CNN
+F 1 "SPEAKER" H 3820 5530 70  0000 C CNN
+F 2 "Zimprich:Buzzer_12x9.5RM7.6_RM5.0" H 3920 5780 60  0001 C CNN
+F 3 "" H 3920 5780 60  0001 C CNN
+F 4 "Value" H 3920 5780 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 3920 5780 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 3920 5780 60  0001 C CNN "Technische Daten"
+F 7 "R: SUMMER TDB 05" H 3920 5780 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 3920 5780 60  0001 C CNN "Bauform"
+	1    3920 5780
 	1    0    0    1   
 $EndComp
 Text Notes 6000 5890 0    59   ~ 0
@@ -8098,12 +8097,12 @@ altanativer Platz um den Summer zu montieren\nes darf nur 1 Summer verwendet wer
 $Comp
 L GND #PWR077
 U 1 1 58B62A70
-P 3105 5880
-F 0 "#PWR077" H 3105 5630 60  0001 C CNN
-F 1 "GND" V 3105 5655 60  0000 C CNN
-F 2 "" H 3105 5880 60  0000 C CNN
-F 3 "" H 3105 5880 60  0000 C CNN
-	1    3105 5880
+P 3490 5880
+F 0 "#PWR077" H 3490 5630 60  0001 C CNN
+F 1 "GND" V 3490 5655 60  0000 C CNN
+F 2 "" H 3490 5880 60  0000 C CNN
+F 3 "" H 3490 5880 60  0000 C CNN
+	1    3490 5880
 	0    1    1    0   
 $EndComp
 $Comp
@@ -8147,16 +8146,15 @@ F 11 "Value" H 5200 3080 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7215 4395 7165 4395
+	7535 4395 7165 4395
 Wire Wire Line
-	7215 4495 7165 4495
-Connection ~ 7215 4495
+	7535 4495 7165 4495
+Connection ~ 7535 4495
 Wire Wire Line
-	7215 4595 7165 4595
-Connection ~ 7215 4595
+	7535 4595 7165 4595
+Connection ~ 7535 4595
 Wire Wire Line
-	7165 4695 7270 4695
-Connection ~ 7215 4695
+	7495 4695 7590 4695
 Wire Wire Line
 	3705 3995 6395 3995
 Wire Wire Line
@@ -8172,9 +8170,9 @@ Wire Wire Line
 Wire Wire Line
 	3235 4495 6395 4495
 Wire Wire Line
-	3230 5155 2990 5155
+	3610 5155 3505 5155
 Wire Wire Line
-	3230 4955 3095 4955
+	3610 4955 3095 4955
 Wire Wire Line
 	1270 4495 1380 4495
 Wire Wire Line
@@ -8218,17 +8216,15 @@ Wire Wire Line
 Wire Wire Line
 	2780 4595 3405 4595
 Wire Wire Line
-	7215 4295 7165 4295
-Connection ~ 7215 4395
+	7535 4295 7165 4295
+Connection ~ 7535 4395
 Wire Wire Line
-	7215 4195 7165 4195
-Connection ~ 7215 4295
+	7535 4195 7165 4195
+Connection ~ 7535 4295
 Wire Wire Line
-	7215 4095 7165 4095
-Connection ~ 7215 4195
-Wire Wire Line
-	7215 3995 7165 3995
-Connection ~ 7215 4095
+	7535 4095 7165 4095
+Connection ~ 7535 4195
+Connection ~ 7535 4095
 Wire Wire Line
 	3845 3795 6395 3795
 Connection ~ 3095 4695
@@ -8365,7 +8361,7 @@ Wire Notes Line
 Wire Notes Line
 	6365 3750 6365 4730
 Wire Wire Line
-	7215 3995 7215 4695
+	7535 3995 7535 4695
 Connection ~ 10000 5770
 Wire Wire Line
 	10000 3795 10000 4370
@@ -8436,9 +8432,9 @@ Wire Wire Line
 Wire Wire Line
 	1310 4195 1380 4195
 Wire Wire Line
-	3240 5880 3105 5880
+	3620 5880 3490 5880
 Wire Wire Line
-	3095 5680 3240 5680
+	3095 5680 3620 5680
 Connection ~ 3095 4955
 Wire Wire Line
 	3795 3495 6395 3495
@@ -8514,4 +8510,28 @@ Wire Wire Line
 Connection ~ 5715 4795
 Wire Wire Line
 	5715 4795 6395 4795
+Wire Wire Line
+	7165 3995 7535 3995
+Connection ~ 7535 4695
+$Comp
+L R R134
+U 1 1 58E45242
+P 7345 4695
+F 0 "R134" V 7435 4695 40  0000 C CNN
+F 1 "220R" V 7352 4696 40  0000 C CNN
+F 2 "Zimprich:R_1206" V 7275 4695 30  0001 C CNN
+F 3 "" H 7345 4695 30  0001 C CNN
+F 4 "Value" H 7345 4695 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7345 4695 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7345 4695 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7345 4695 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7345 4695 60  0001 C CNN "Bauform"
+F 9 "Value" H 7345 4695 60  0001 C CNN "Funktion"
+F 10 "Value" H 7345 4695 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7345 4695 60  0001 C CNN "Hersteller Bestellnummer"
+	1    7345 4695
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7165 4695 7195 4695
 $EndSCHEMATC

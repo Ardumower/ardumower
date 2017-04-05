@@ -1,4 +1,4 @@
-update=06.03.2017 14:25:33
+update=04.04.2017 20:38:20
 last_client=kicad
 [pcbnew]
 version=1
@@ -22,6 +22,16 @@ BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceAjustPassiveValues=0
+LabSize=79
+ERC_TestSimilarLabels=1
 [eeschema]
 version=1
 LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
@@ -35,13 +45,4 @@ LibName6=transistors
 LibName7=switches
 LibName8=linear
 LibName9=texas
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceAjustPassiveValues=0
-LabSize=79
-ERC_TestSimilarLabels=1
+LibName10=diode
