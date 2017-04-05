@@ -217,7 +217,7 @@ U 1 1 57E52B68
 P 4735 1440
 F 0 "C1" H 4745 1510 50  0000 L CNN
 F 1 "22uF" H 4745 1360 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 4735 1440 60  0001 C CNN
+F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 4735 1440 60  0001 C CNN
 F 3 "" H 4735 1440 60  0000 C CNN
 F 4 "Value" H 4735 1440 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 4735 1440 60  0001 C CNN "Bestelllink"
@@ -258,8 +258,16 @@ U 1 1 57E52B71
 P 7595 1440
 F 0 "C8" H 7605 1510 50  0000 L CNN
 F 1 "22uF" H 7605 1360 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 7595 1440 60  0001 C CNN
+F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 7595 1440 60  0001 C CNN
 F 3 "" H 7595 1440 60  0000 C CNN
+F 4 "Value" H 7595 1440 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7595 1440 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7595 1440 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7595 1440 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7595 1440 60  0001 C CNN "Bauform"
+F 9 "Value" H 7595 1440 60  0001 C CNN "Funktion"
+F 10 "Value" H 7595 1440 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7595 1440 60  0001 C CNN "Hersteller Bestellnummer"
 	1    7595 1440
 	1    0    0    -1  
 $EndComp
@@ -351,10 +359,16 @@ U 1 1 57E52BC0
 P 7605 2565
 F 0 "C13" H 7615 2635 50  0000 L CNN
 F 1 "22uF" H 7615 2485 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11x5mm_RM2.5" H 7605 2565 60  0001 C CNN
+F 2 "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" H 7605 2565 60  0001 C CNN
 F 3 "" H 7605 2565 60  0000 C CNN
 F 4 "Value" H 7605 2565 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 7605 2565 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7605 2565 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7605 2565 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7605 2565 60  0001 C CNN "Bauform"
+F 9 "Value" H 7605 2565 60  0001 C CNN "Funktion"
+F 10 "Value" H 7605 2565 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7605 2565 60  0001 C CNN "Hersteller Bestellnummer"
 	1    7605 2565
 	1    0    0    -1  
 $EndComp
@@ -400,8 +414,6 @@ F 3 "" H 8065 2365 50  0000 C CNN
 	1    8065 2365
 	0    1    -1   0   
 $EndComp
-Text Notes 4150 950  0    60   ~ 0
-d4 geändert auf SMD
 $Comp
 L CONN_01X08 P38
 U 1 1 57EFA6BF
