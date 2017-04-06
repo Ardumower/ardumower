@@ -80,14 +80,14 @@ F 3 "" H 4905 3620 50  0000 C CNN
 $EndComp
 Text Notes 4195 2960 0    39   ~ 0
 Eingang\n10-80V
-Text Notes 5950 3325 0    60   ~ 0
+Text Notes -1230 1410 0    60   ~ 0
 d7 geändert\nvon ZPD15 auf\nSMD ZF 15
 $Comp
 L IRF9540N-RESCUE-ardumower_mega_shield_svn Q4
 U 1 1 57E9A340
 P 4855 2855
 F 0 "Q4" V 5317 2855 50  0000 C CNN
-F 1 "IRF9530" V 5226 2855 50  0000 C CNN
+F 1 "IRF9540N" V 5226 2855 50  0000 C CNN
 F 2 "Power_Integrations:TO-220" V 5135 2855 50  0000 C CIN
 F 3 "" H 4855 2855 50  0000 L CNN
 	1    4855 2855
@@ -95,8 +95,6 @@ F 3 "" H 4855 2855 50  0000 L CNN
 $EndComp
 Wire Wire Line
 	4905 3055 4905 3310
-Text Notes 2955 3905 0    60   ~ 0
-evl ersetzen durch IRF9540N\nkann mehr strom und ist\nschon in der Unterspannungsabschaltung\nvorhanden\n\nals smd ersatz evl  IRF 9540NS
 Wire Wire Line
 	4905 3620 4905 3510
 Wire Wire Line
@@ -281,4 +279,6 @@ EndData
 $EndBitmap
 Text Notes 115  -1235 0    79   ~ 0
 der verpolungsschutz von der Batterie ist nicht richtig die zehner diode hat die anode zwischen widerstand und gate.
+Text Notes -3255 1225 0    60   ~ 0
+evl ersetzen durch IRF9540N\nkann mehr strom und ist\nschon in der Unterspannungsabschaltung\nvorhanden\n\nals smd ersatz evl  IRF 9540NS
 $EndSCHEMATC
