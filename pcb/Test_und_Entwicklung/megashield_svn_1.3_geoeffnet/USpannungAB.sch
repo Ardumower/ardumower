@@ -1385,8 +1385,6 @@ F 8 "0603" H 6255 3020 60  0001 C CNN "Bauform"
 	1    6255 3020
 	0    -1   1    0   
 $EndComp
-Text Notes 6930 3605 0    60   ~ 0
-D15\ngeändert von 1N5819 auf 1N4148\nJürgen muss kontrollieren ob es geht
 $Comp
 L D D15
 U 1 1 57E86A66
@@ -1403,8 +1401,6 @@ F 8 "0603" H 6650 3650 60  0001 C CNN "Bauform"
 	1    6650 3650
 	-1   0    0    -1  
 $EndComp
-Text Notes 3845 4735 0    60   ~ 0
-D12\ngeändert von 1N5819 auf 1N4148\nJürgen muss kontrollieren ob es geht
 $Comp
 L D D12
 U 1 1 57E89203
@@ -1426,8 +1422,6 @@ F 11 "Value" H 5905 4790 60  0001 C CNN "Hersteller Bestellnummer"
 	1    5905 4790
 	0    1    1    0   
 $EndComp
-Text Notes 7080 4025 0    60   ~ 0
-Q3\nBC337 ersetzt\nmit BC817 smd
 $Comp
 L BC817-40 Q3
 U 1 1 57E98AAA
@@ -1471,8 +1465,6 @@ F 3 "" H 8430 4195 50  0000 C CNN
 	1    8430 4195
 	0    1    1    0   
 $EndComp
-Text Notes 8255 4910 0    79   ~ 0
-Relaisabschaltung muss geprüft werden \nob sie auch mit 3V funktioniert\nEvl Levelschifter für Funktion beim Due ?
 Text GLabel 8750 4480 2    60   Input ~ 0
 IOREF
 Wire Wire Line
