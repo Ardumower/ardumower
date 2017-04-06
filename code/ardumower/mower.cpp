@@ -649,5 +649,3 @@ void Mower::configureBluetooth(boolean quick){
   bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);
 }
 
-
-
