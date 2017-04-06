@@ -189,9 +189,8 @@ Mower::Mower(){
   wheelDiameter              = 250;        // wheel diameter (mm)
   #if defined (PCB_1_2)
     odometryTicksPerRevolution = 1060*2;       // encoder ticks per one full resolution    
-  #elif defined (PCB_1_3)    
-		#define DIVIDER_DIP_SWITCH  2             //  NOTE: set DIV/2 on PCB
-		odometryTicksPerRevolution = 1060/DIVIDER_DIP_SWITCH*2;        // encoder ticks per one full resolution 
+  #elif defined (PCB_1_3)
+    odometryTicksPerRevolution = 530*2;        // encoder ticks per one full resolution (NOTE: set DIV/2 on PCB)  
   #endif
   odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / 3.1415;    // computes encoder ticks per cm (do not change)
   odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
