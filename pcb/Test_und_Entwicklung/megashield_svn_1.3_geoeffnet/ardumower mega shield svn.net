@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:\\Users\\uwezi\\Documents\\KICAD\\megashield_svn_1.3_geoeffnet\\ardumower mega shield svn.sch")
-    (date "13.04.2017 10:53:18")
+    (date "13.04.2017 11:56:40")
     (tool "Eeschema (2017-04-04 revision 5dbfc0233)-makepkg")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -1692,7 +1692,7 @@
       (sheetpath (names /Leuchtdioden/) (tstamps /57DBE57B/))
       (tstamp 580379C9))
     (comp (ref R24)
-      (value 68R)
+      (value 180R)
       (footprint Zimprich:R_1206)
       (fields
         (field (name Gehäuseart) Value)
@@ -1740,7 +1740,7 @@
       (sheetpath (names /Leuchtdioden/) (tstamps /57DBE57B/))
       (tstamp 5803BF65))
     (comp (ref R75)
-      (value 68R)
+      (value 180R)
       (footprint Zimprich:R_1206)
       (fields
         (field (name Gehäuseart) Value)
@@ -1788,7 +1788,7 @@
       (sheetpath (names /Leuchtdioden/) (tstamps /57DBE57B/))
       (tstamp 5803D2E3))
     (comp (ref R80)
-      (value 68R)
+      (value 180R)
       (footprint Zimprich:R_1206)
       (fields
         (field (name Gehäuseart) Value)
@@ -6546,16 +6546,16 @@
         (pin (num 1) (name K) (type passive))
         (pin (num 2) (name A) (type passive)))))
   (libraries
-    (library (logical device)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical conn)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
-    (library (logical "ardumower mega shield svn-rescue")
-      (uri "C:\\Users\\uwezi\\Documents\\KICAD\\megashield_svn_1.3_geoeffnet\\ardumower mega shield svn-rescue.lib"))
-    (library (logical Zimprich)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\Zimprich.lib"))
     (library (logical transistors)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\transistors.lib"))
+    (library (logical Zimprich)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\Zimprich.lib"))
+    (library (logical "ardumower mega shield svn-rescue")
+      (uri "C:\\Users\\uwezi\\Documents\\KICAD\\megashield_svn_1.3_geoeffnet\\ardumower mega shield svn-rescue.lib"))
+    (library (logical device)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical "ardumower mega shield svn-cache")
       (uri "C:\\Users\\uwezi\\Documents\\KICAD\\megashield_svn_1.3_geoeffnet\\ardumower mega shield svn-cache.lib"))
     (library (logical diode)
