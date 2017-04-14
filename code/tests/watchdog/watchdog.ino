@@ -37,16 +37,15 @@ int counter = 0;
 
 
 void setup() 
-{
-  pinMode(pinBuzzer, OUTPUT);
-  delay(3000);  
+{   
   #ifdef __AVR__
     WatchDog_Setup();
   #else
     watchdogEnable(8000);
-  #endif
-  Serial.begin(115200); 
-  
+  #endif  
+  pinMode(pinBuzzer, OUTPUT);  
+  delay(3000);  
+  Serial.begin(115200);   
   
   if (nvr.val.magic != 0x1234){    
     Serial.println("this was a normal reset");  
@@ -100,11 +99,13 @@ void loop()
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 void WatchDog_Setup(void)
 {
   cli();                       // disable all interrupts
   wdt_reset();                 // reset the WDT timer
 
+  MCUSR   =   0;
   // Enter Watchdog Configuration mode:
   WDTCSR |= (1 << WDCE) | (1 << WDE);
   // Set Watchdog settings:
@@ -121,20 +122,22 @@ void WatchDog_Setup(void)
    reset on time-out.
 
 */
+/*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ISR(WDT_vect) // Watchdog timer interrupt.
 {
   // Chance to express a last dying wish for the program
   // Include your code here - be careful not to use functions they may cause the interrupt to hang and
   // prevent a reset.
+  wdt_disable();
 }
-
+*/
 
 #else
 
 // function required for watchdog to work for Arduino Due
 void watchdogSetup(void) {
-  // do what you want here
+  // do what you want here  
 }
 #endif
 
