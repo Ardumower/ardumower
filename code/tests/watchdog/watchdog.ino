@@ -14,7 +14,10 @@
         _enoinit = . ;
     } > ram    
 */  
- 
+
+#ifdef __AVR__
+  #include <avr/wdt.h>
+#endif 
 
 #define pinBuzzer 53               // Buzzer
 
@@ -61,8 +64,11 @@ void setup()
 
 void loop() 
 {
+  //Reset watchdog to prevent reset
   #ifdef __AVR__         // Mega  
-    wdt_reset();                                                         //Reset watchdog to prevent reset
+    wdt_reset();                                                         
+  #else
+    watchdogReset();     // Due
   #endif
   delay(1000);
   Serial.print("normal loop ");
