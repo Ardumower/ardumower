@@ -574,6 +574,7 @@ protected:
     virtual void delayInfo(int ms);    
     virtual void testOdometry();
     virtual void testMotors();
+		virtual void testRTC();
     virtual void setDefaults();    
     virtual void receiveGPSTime();
     virtual void calcOdometry();
