@@ -4,9 +4,12 @@
 
 #include <Arduino.h>
 
+#define pinBuzzer 53               // Buzzer
+
 
 void setup(){
   Serial.begin(115200);           // Baudrate 115200
+  pinMode(pinBuzzer, OUTPUT);
   printMenu();
 }
 

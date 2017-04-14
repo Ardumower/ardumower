@@ -6,6 +6,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 
+#define pinBuzzer 53               // Buzzer
 
 // default:  B1101000
 byte DS1307_ADDRESS = B1101000;
@@ -165,7 +166,9 @@ void testWrite(){
 
 void setup()  {
   Wire.begin();
-  Serial.begin(19200);  
+  Serial.begin(115200);  
+  pinMode(pinBuzzer, OUTPUT);
+  
   Serial.println("START");   
   Serial.print("RTC default address=");
   Serial.println(DS1307_ADDRESS);
