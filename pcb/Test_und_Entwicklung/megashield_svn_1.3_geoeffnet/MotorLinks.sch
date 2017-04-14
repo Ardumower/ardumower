@@ -16,7 +16,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 33
 Title "Ardumower shield SVN Version"
-Date "2017-04-11"
+Date "2017-04-13"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 "Motordriverschutz von JürgenL"
