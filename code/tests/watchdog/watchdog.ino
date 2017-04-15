@@ -16,7 +16,8 @@
 */  
 
 #ifdef __AVR__
-  #include <avr/wdt.h>
+  #include <avr/wdt.h>  
+   void(* resetFunc) (void) = 0; //declare reset function @ address 0
 #endif 
 
 #define pinBuzzer 53               // Buzzer
@@ -26,7 +27,7 @@
 union configUnion{
   uint8_t    byte[6]; // match the below struct...
   struct {
-    uint16_t magic;
+    uint16_t wdflag;
     uint8_t state;    
   } val ;
 } nvr  __attribute__ ((section (".noinit"))); 
@@ -47,13 +48,15 @@ void setup()
   delay(3000);  
   Serial.begin(115200);   
   
-  if (nvr.val.magic != 0x1234){    
+  if (nvr.val.wdflag != 0x1234){    
     Serial.println("this was a normal reset");  
-    nvr.val.state = 0;
-    nvr.val.magic = 0x1234;
+    nvr.val.state = 0;    
   } else {
     Serial.println("this was reset by watchdog");  
-  }  
+    #ifdef __AVR__
+      nvr.val.wdflag = 0; 
+    #endif
+  }   
   Serial.print("state is ");  
   Serial.println(nvr.val.state);   
   nvr.val.state = 1;  
@@ -122,7 +125,8 @@ void WatchDog_Setup(void)
    reset on time-out.
 
 */
-/*
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ISR(WDT_vect) // Watchdog timer interrupt.
 {
@@ -130,14 +134,17 @@ ISR(WDT_vect) // Watchdog timer interrupt.
   // Include your code here - be careful not to use functions they may cause the interrupt to hang and
   // prevent a reset.
   wdt_disable();
+  wdt_reset();  
+  nvr.val.wdflag = 0x1234;
+  resetFunc();  //call reset  
 }
-*/
+
 
 #else
 
 // function required for watchdog to work for Arduino Due
 void watchdogSetup(void) {
-  // do what you want here  
+  // do what you want here     
 }
 #endif
 
