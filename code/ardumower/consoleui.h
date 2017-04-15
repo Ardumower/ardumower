@@ -197,6 +197,11 @@ void Robot::testOdometry(){
 }
 
 void Robot::testRTC(){
+  Console.println("reading RTC time...");
+	if (readDS1307(datetime)){    
+    Console.print(F("RTC date received: "));
+    Console.println(date2str(datetime.date));  
+  }    
 	Console.println("writing new RTC time 28-02-2016 23:59...");  
   datetime.time.hour=23;
   datetime.time.minute=59;
