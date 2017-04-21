@@ -41,8 +41,8 @@
    
 
 // ------- NOTE: Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
-#define PCB_1_2    
-//#define PCB_1_3    
+//#define PCB_1_2    
+#define PCB_1_3    
 // -----------------------------------------------------------------------------------
 
 
@@ -145,7 +145,7 @@
 #else 
   // Arduino Due  
    // Due has two serial ports: Native (SerialUSB) and Programming (Serial) - we want to use 'SerialUSB' for 'Console'
-  #define Console SerialUSB	
+  #define Console Serial
   #define ESP8266port Serial1
   #define Bluetooth Serial2  // Ardumower default
 #endif
