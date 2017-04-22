@@ -17,11 +17,7 @@
 #define pinTrigger3 44
 #define pinEcho3    42
 
-
-// ultrasonic sensor max echo time (WARNING: do not set too high, it consumes CPU time!)
-#define MAX_ECHO_TIME 3000     
-#define MIN_ECHO_TIME 150    
-#define NO_ECHO 0
+#define MAX_DURATION 4000
 
 
 RunningMedian<unsigned int,20> sonar1Measurements;
@@ -31,17 +27,17 @@ volatile byte echoPin = pinEcho1;
 volatile unsigned long startTime = 0;
 volatile unsigned long echoTime = 0;
 volatile unsigned long echoDuration = 0;
+volatile byte idx = 0;
 unsigned long timeoutTime = 0;
 unsigned long nextSonarTime = 0;
-int idx = 0;
+unsigned long nextPrintTime = 0;
+
 
 
 // HC-SR04 ultrasonic sensor driver (2cm - 400cm)
 void startHCSR04(int triggerPin, int aechoPin){
   echoPin = aechoPin;
-  unsigned int uS;          
-  digitalWrite(triggerPin, LOW); 
-  delayMicroseconds(2); 
+  unsigned int uS;            
   digitalWrite(triggerPin, HIGH);
   delayMicroseconds(10);   
   digitalWrite(triggerPin, LOW);      
@@ -53,8 +49,9 @@ void startHCSR04(int triggerPin, int aechoPin){
   
 }
 
-void echoSignal(){
-  if (digitalRead(echoPin) == HIGH) {    
+void echoSignal1(){
+  if (idx != 0) return;
+  if (digitalRead(pinEcho1) == HIGH) {    
     echoTime = 0;
     startTime = micros();           
   } else {    
@@ -63,6 +60,26 @@ void echoSignal(){
   }
 }
 
+void echoSignal2(){
+  if (idx != 1) return;
+  if (digitalRead(pinEcho2) == HIGH) {    
+    echoTime = 0;
+    startTime = micros();           
+  } else {    
+    echoTime = micros();            
+    echoDuration = echoTime - startTime;          
+  }
+}
+void echoSignal3(){
+  if (idx != 2) return;
+  if (digitalRead(pinEcho3) == HIGH) {    
+    echoTime = 0;
+    startTime = micros();           
+  } else {    
+    echoTime = micros();            
+    echoDuration = echoTime - startTime;          
+  }
+}
 
 void setup()  {
   pinMode(pinTrigger1 , OUTPUT);
@@ -72,37 +89,40 @@ void setup()  {
   pinMode(pinEcho2 , INPUT);  
   pinMode(pinEcho3 , INPUT);  
 
-  attachInterrupt(pinEcho1, echoSignal, CHANGE);
-  attachInterrupt(pinEcho2, echoSignal, CHANGE);
-  attachInterrupt(pinEcho3, echoSignal, CHANGE);
+  attachInterrupt(pinEcho1, echoSignal1, CHANGE);
+  attachInterrupt(pinEcho2, echoSignal2, CHANGE);
+  attachInterrupt(pinEcho3, echoSignal3, CHANGE);
 
   Serial.begin(115200);     
   Serial.println("START");
 }
 
 void loop()  {
-  int triggered = 0;
   float avg;
   unsigned int median1 = 0;
   unsigned int median2 = 0;
   unsigned int median3 = 0;
   unsigned long raw;  
-  if (millis() > timeoutTime){            
-    if (millis() > nextSonarTime){        
+  if (millis() > timeoutTime){                    
+    //if (millis() > nextSonarTime){        
       idx = (idx + 1) % 3;
-      nextSonarTime = millis() + 100;
-    }
+      //nextSonarTime = millis() + 100;
+    //}
     if (idx == 0) startHCSR04(pinTrigger1, pinEcho1);        
       else if (idx == 1) startHCSR04(pinTrigger2, pinEcho2);        
       else startHCSR04(pinTrigger3, pinEcho3);        
-    timeoutTime = millis() + 3;    
+    timeoutTime = millis() + 10;    
   }
   if (echoDuration != 0) {            
     raw = echoDuration;    
-    if (raw > 4000) raw = 4000;
+    if (raw > MAX_DURATION) raw = MAX_DURATION;
     if (idx == 0) sonar1Measurements.add(raw);        
       else if (idx == 1) sonar2Measurements.add(raw);        
       else sonar3Measurements.add(raw);        
+    echoDuration = 0;
+  }
+  if (millis() > nextPrintTime){
+    nextPrintTime = millis() + 100;        
     sonar1Measurements.getAverage(avg);      
     sonar1Measurements.getMedian(median1);   
     sonar2Measurements.getMedian(median2);   
@@ -120,8 +140,7 @@ void loop()  {
     Serial.print(5000);    
     Serial.print(",");                             
     Serial.print(0);    
-    Serial.println();          
-    echoDuration = 0;
+    Serial.println();              
   }    
   
   
