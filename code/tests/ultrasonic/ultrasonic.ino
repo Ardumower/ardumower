@@ -1,5 +1,7 @@
 
 /* ultrasonic test - Arduino Due
+ * HC-SR04 ultrasonic sensor (2cm - 400cm)
+ * use Arduino IDE serial plott (CTRL+SHIFT+L) for visualization
  */
 
 #include <Arduino.h>
@@ -23,7 +25,7 @@ volatile unsigned long echoDuration = 0;
 unsigned long timeoutTime = 0;
 
 
-// HC-SR04 ultrasonic sensor driver
+// HC-SR04 ultrasonic sensor driver (2cm - 400cm)
 void startHCSR04(int triggerPin, int echoPin){
   unsigned int uS;          
   digitalWrite(triggerPin, LOW); 
@@ -80,6 +82,10 @@ void loop()  {
     Serial.print(median); 
     Serial.print(",");                             
     Serial.print(raw);    
+    Serial.print(",");                             
+    Serial.print(5000);    
+    Serial.print(",");                             
+    Serial.print(0);    
     Serial.println();          
     echoDuration = 0;
   }    
