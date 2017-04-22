@@ -1,5 +1,5 @@
 
-/* ultrasonic test
+/* ultrasonic test - Arduino Due
  */
 
 #include <Arduino.h>
@@ -16,22 +16,37 @@
 #define NO_ECHO 0
 
 
-RunningMedian<unsigned int,4> sonarMeasurements;
+RunningMedian<unsigned int,50> sonarMeasurements;
+volatile unsigned long startTime = 0;
+volatile unsigned long echoTime = 0;
+volatile unsigned long echoDuration = 0;
+unsigned long timeoutTime = 0;
 
 
 // HC-SR04 ultrasonic sensor driver
-unsigned int readHCSR04(int triggerPin, int echoPin){
-  unsigned int uS;  
+void startHCSR04(int triggerPin, int echoPin){
+  unsigned int uS;          
   digitalWrite(triggerPin, LOW); 
   delayMicroseconds(2); 
   digitalWrite(triggerPin, HIGH);
-  delayMicroseconds(10); 
-  digitalWrite(triggerPin, LOW);
-  // if there is no reflection, we will get 0  (NO_ECHO)
+  delayMicroseconds(10);   
+  digitalWrite(triggerPin, LOW);      
+  /*// if there is no reflection, we will get 0  (NO_ECHO)
   uS = pulseIn(echoPin, HIGH, MAX_ECHO_TIME);  
   //if (uS == MAX_ECHO_TIME) uS = NO_ECHO;
   //if (uS < MIN_ECHO_TIME) uS = NO_ECHO;
-  return uS;
+  return uS;*/  
+  
+}
+
+void echoSignal(){
+  if (digitalRead(pinEcho) == HIGH) {    
+    echoTime = 0;
+    startTime = micros();           
+  } else {    
+    echoTime = micros();            
+    echoDuration = echoTime - startTime;          
+  }
 }
 
 
@@ -39,7 +54,9 @@ void setup()  {
   pinMode(pinTrigger , OUTPUT);
   pinMode(pinEcho , INPUT);  
 
-  Serial.begin(19200);  
+  attachInterrupt(pinEcho, echoSignal, CHANGE);
+
+  Serial.begin(115200);  
   Serial.println("START");  
   Serial.println("raw,avg,median,triggered");      
 }
@@ -48,29 +65,26 @@ void loop()  {
   int triggered = 0;
   float avg;
   unsigned int median;
-  int raw;
-  raw = readHCSR04(pinTrigger, pinEcho);
-  //if (x != NO_ECHO){
-    sonarMeasurements.add(raw);
-  //}
-  sonarMeasurements.getAverage(avg);  
-  //if (sonarMeasurements.getStatus() == sonarMeasurements.OK) {
-    sonarMeasurements.getMedian(median); 
-  //}
-  
-  if ( (median != NO_ECHO) && (median < 800) ) triggered = 1;
-  
-  for (int i=0; i < 10; i++){
-    Serial.print(raw);    
-    Serial.print(",");    
+  unsigned long raw;
+  if (millis() > timeoutTime){    
+    startHCSR04(pinTrigger, pinEcho);        
+    timeoutTime = millis() + 10;
+  }
+  if (echoDuration != 0) {            
+    raw = echoDuration;
+    sonarMeasurements.add(raw);        
+    sonarMeasurements.getAverage(avg);      
+    sonarMeasurements.getMedian(median);   
     Serial.print(avg);    
     Serial.print(",");    
-    Serial.print(median);        
-    Serial.print(",");
-    Serial.print(triggered);
-    Serial.println();    
-  }
-  delay(250);
+    Serial.print(median); 
+    Serial.print(",");                             
+    Serial.print(raw);    
+    Serial.println();          
+    echoDuration = 0;
+  }    
+  
+  
 }
 
 
