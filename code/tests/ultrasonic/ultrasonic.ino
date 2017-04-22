@@ -90,12 +90,12 @@ void loop()  {
   if (millis() > timeoutTime){            
     if (millis() > nextSonarTime){        
       idx = (idx + 1) % 3;
-      nextSonarTime = millis() + 200;
+      nextSonarTime = millis() + 100;
     }
     if (idx == 0) startHCSR04(pinTrigger1, pinEcho1);        
       else if (idx == 1) startHCSR04(pinTrigger2, pinEcho2);        
       else startHCSR04(pinTrigger3, pinEcho3);        
-    timeoutTime = millis() + 5;    
+    timeoutTime = millis() + 3;    
   }
   if (echoDuration != 0) {            
     raw = echoDuration;    
