@@ -1,10 +1,10 @@
-%TF.GenerationSoftware,KiCad,Pcbnew,(2017-02-19 revision a416f3a4e)-master*%
-%TF.CreationDate,2017-04-25T15:40:45+02:00*%
-%TF.ProjectId,ardumower mega shield svn,617264756D6F776572206D6567612073,1.3*%
-%TF.FileFunction,Profile,NP*%
+G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,(2017-02-19 revision a416f3a4e)-master*
+G04 #@! TF.CreationDate,2017-04-26T11:10:12+02:00*
+G04 #@! TF.ProjectId,ardumower mega shield svn,617264756D6F776572206D6567612073,1.3*
+G04 #@! TF.FileFunction,Profile,NP*
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW (2017-02-19 revision a416f3a4e)-master) date 04/25/17 15:40:45*
+G04 Created by KiCad (PCBNEW (2017-02-19 revision a416f3a4e)-master) date 04/26/17 11:10:12*
 %MOMM*%
 %LPD*%
 G01*
