@@ -28,6 +28,7 @@ volatile unsigned long startTime = 0;
 volatile unsigned long echoTime = 0;
 volatile unsigned long echoDuration = 0;
 volatile byte idx = 0;
+bool added = false;
 unsigned long timeoutTime = 0;
 unsigned long nextSonarTime = 0;
 unsigned long nextPrintTime = 0;
@@ -104,8 +105,14 @@ void loop()  {
   unsigned int median3 = 0;
   unsigned long raw;  
   if (millis() > timeoutTime){                    
+    if (!added) {                      
+      if (idx == 0) sonar1Measurements.add(MAX_DURATION);        
+        else if (idx == 1) sonar2Measurements.add(MAX_DURATION);        
+        else sonar3Measurements.add(MAX_DURATION);             
+    }
+    added = false;
     //if (millis() > nextSonarTime){        
-      idx = (idx + 1) % 3;
+    idx = (idx + 1) % 3;
       //nextSonarTime = millis() + 100;
     //}
     if (idx == 0) startHCSR04(pinTrigger1, pinEcho1);        
@@ -114,6 +121,7 @@ void loop()  {
     timeoutTime = millis() + 10;    
   }
   if (echoDuration != 0) {            
+    added = true;
     raw = echoDuration;    
     if (raw > MAX_DURATION) raw = MAX_DURATION;
     if (idx == 0) sonar1Measurements.add(raw);        
@@ -124,9 +132,9 @@ void loop()  {
   if (millis() > nextPrintTime){
     nextPrintTime = millis() + 100;        
     sonar1Measurements.getAverage(avg);      
-    sonar1Measurements.getMedian(median1);   
-    sonar2Measurements.getMedian(median2);   
-    sonar3Measurements.getMedian(median3);   
+    sonar1Measurements.getLowest(median1);   
+    sonar2Measurements.getLowest(median2);   
+    sonar3Measurements.getLowest(median3);   
     /*Serial.print(avg);    
     Serial.print(",");    */
     Serial.print(median1); 
