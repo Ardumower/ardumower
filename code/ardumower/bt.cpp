@@ -241,8 +241,8 @@ boolean BluetoothConfig::detectBaudrate(boolean quickBaudScan){
 void BluetoothConfig::detectModuleType(){
   Console.println();
   Console.println(F("detecting BT type..."));
-  writeReadBT("AT+VERSION");  
-  if (btResult.startsWith("OKlinvor")){
+  writeReadBT("AT+VERSION");    
+  if ( (btResult.startsWith("OKlinvor")) || (btResult.startsWith("hc01")) ){
     Console.println(F("=>it's a linvor/HC06"));
     btType = BT_LINVOR_HC06;
     return;
