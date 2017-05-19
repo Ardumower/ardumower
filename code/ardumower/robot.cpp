@@ -27,7 +27,7 @@
 #include "mower.h"
 #include "flashmem.h"
 
-#define MAGIC 53
+#define MAGIC 52
 
 
 #define ADDR_USER_SETTINGS 0

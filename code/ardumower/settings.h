@@ -84,7 +84,6 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, sonarLeftUse);
   eereadwrite(readflag, addr, sonarRightUse);  
   eereadwrite(readflag, addr, sonarTriggerBelow);
-	eereadwrite(readflag, addr, sonarSlowBelow);
   eereadwrite(readflag, addr, perimeterUse);
   eereadwrite(readflag, addr, perimeter.timedOutIfBelowSmag);        
   eereadwrite(readflag, addr, perimeterTriggerTimeout);
@@ -147,6 +146,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, esp8266Use);
   eereadwriteString(readflag, addr, esp8266ConfigString);
   eereadwrite(readflag, addr, tiltUse);
+  eereadwrite(readflag, addr, sonarSlowBelow);
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
