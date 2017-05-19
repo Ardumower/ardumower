@@ -392,6 +392,7 @@ class Robot
     char sonarRightUse;
     char sonarCenterUse;
     int sonarTriggerBelow ;    // ultrasonic sensor trigger distance
+		int sonarSlowBelow ;    
     unsigned int sonarDistCenter ;
     unsigned int sonarDistRight ;
     unsigned int sonarDistLeft ; 

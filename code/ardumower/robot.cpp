@@ -27,7 +27,7 @@
 #include "mower.h"
 #include "flashmem.h"
 
-#define MAGIC 52
+#define MAGIC 53
 
 
 #define ADDR_USER_SETTINGS 0
@@ -840,9 +840,9 @@ void Robot::checkSonar(){
           || (  (mowPatternCurr == MOW_BIDIR) && ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_REVERSE))  )  
      ){
         if (sonarObstacleTimeout == 0) {
-          if (     ((NO_ECHO != sonarDistCenter) && (sonarDistCenter < sonarTriggerBelow*2)) 
-               ||  ((NO_ECHO != sonarDistRight) && (sonarDistRight < sonarTriggerBelow*2)) 
-               ||  ((NO_ECHO != sonarDistLeft) && (sonarDistLeft < sonarTriggerBelow*2))  ) {    
+          if (     ((NO_ECHO != sonarDistCenter) && (sonarDistCenter < sonarSlowBelow)) 
+               ||  ((NO_ECHO != sonarDistRight) && (sonarDistRight < sonarSlowBelow)) 
+               ||  ((NO_ECHO != sonarDistLeft) && (sonarDistLeft < sonarSlowBelow))  ) {    
               tempSonarDistCounter++;
             if (tempSonarDistCounter >= 5){
              // Console.println("sonar slow down");
@@ -858,21 +858,23 @@ void Robot::checkSonar(){
           motorLeftSpeedRpmSet *= 1.5;
           motorRightSpeedRpmSet *= 1.5;
         }
-    }  
+   }  
   
-  if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)) {
-    sonarDistCounter++;   
-    if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
-      else reverseOrBidir(RIGHT);    
-  }
-  if ((sonarDistRight != NO_ECHO) && (sonarDistRight < sonarTriggerBelow)){
-    sonarDistCounter++;
-    reverseOrBidir(LEFT);
-  }
-  if ((sonarDistLeft != NO_ECHO) && (sonarDistLeft < sonarTriggerBelow)){
-    sonarDistCounter++; 
-    reverseOrBidir(RIGHT);
-  }
+	 if (sonarTriggerBelow != 0){
+		if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)) {
+			sonarDistCounter++;   
+			if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
+				else reverseOrBidir(RIGHT);    
+		}
+		if ((sonarDistRight != NO_ECHO) && (sonarDistRight < sonarTriggerBelow)){
+			sonarDistCounter++;
+			reverseOrBidir(LEFT);
+		}
+		if ((sonarDistLeft != NO_ECHO) && (sonarDistLeft < sonarTriggerBelow)){
+			sonarDistCounter++; 
+			reverseOrBidir(RIGHT);
+		}
+	}
 }
 
 

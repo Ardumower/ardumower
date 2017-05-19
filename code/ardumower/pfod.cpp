@@ -507,13 +507,15 @@ void RemoteControl::sendSonarMenu(boolean update){
   serialPort->print(robot->sonarDistCenter);
   serialPort->print(", ");
   serialPort->print(robot->sonarDistRight);  
-  sendSlider("d03", F("Trigger below"), robot->sonarTriggerBelow, "", 1, 80);       
+  sendSlider("d03", F("Trigger below (0=off)"), robot->sonarTriggerBelow, "", 1, 80);       
+	sendSlider("d07", F("Slow below"), robot->sonarSlowBelow, "", 1, 80);       
   serialPort->println("}"); 
 }
 
 void RemoteControl::processSonarMenu(String pfodCmd){      
   if (pfodCmd == "d00") robot->sonarUse = !robot->sonarUse;
-    else if (pfodCmd.startsWith("d03")) processSlider(pfodCmd, robot->sonarTriggerBelow, 1);
+    else if (pfodCmd.startsWith("d07")) processSlider(pfodCmd, robot->sonarSlowBelow, 1);
+		else if (pfodCmd.startsWith("d03")) processSlider(pfodCmd, robot->sonarTriggerBelow, 1);
     else if (pfodCmd == "d04") robot->sonarLeftUse = !robot->sonarLeftUse;
     else if (pfodCmd == "d05") robot->sonarCenterUse = !robot->sonarCenterUse;
     else if (pfodCmd == "d06") robot->sonarRightUse = !robot->sonarRightUse;

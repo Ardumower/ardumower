@@ -84,6 +84,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, sonarLeftUse);
   eereadwrite(readflag, addr, sonarRightUse);  
   eereadwrite(readflag, addr, sonarTriggerBelow);
+	eereadwrite(readflag, addr, sonarSlowBelow);
   eereadwrite(readflag, addr, perimeterUse);
   eereadwrite(readflag, addr, perimeter.timedOutIfBelowSmag);        
   eereadwrite(readflag, addr, perimeterTriggerTimeout);
