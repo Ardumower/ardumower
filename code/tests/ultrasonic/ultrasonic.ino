@@ -8,16 +8,20 @@
 #include "RunningMedian.h"
 
 
-#define pinTrigger1 24
-#define pinEcho1    22
+#define pinTrigger1 34
+#define pinEcho1    36
 
-#define pinTrigger2 36
-#define pinEcho2    34
+#define pinTrigger2 24
+#define pinEcho2    22
 
-#define pinTrigger3 44
-#define pinEcho3    42
+#define pinTrigger3 30
+#define pinEcho3    32
+
+#define pinBuzzer 53               // Buzzer
 
 #define MAX_DURATION 4000
+
+#define Serial SerialUSB
 
 
 RunningMedian<unsigned int,20> sonar1Measurements;
@@ -83,7 +87,8 @@ void echoSignal3(){
 }
 
 void setup()  {
-  pinMode(pinTrigger1 , OUTPUT);
+  pinMode(pinBuzzer, OUTPUT);
+	pinMode(pinTrigger1 , OUTPUT);
   pinMode(pinTrigger2 , OUTPUT);
   pinMode(pinTrigger3 , OUTPUT);
   pinMode(pinEcho1 , INPUT);  
