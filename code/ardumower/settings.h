@@ -264,6 +264,8 @@ void Robot::printSettingSerial(){
   Console.println(sonarCenterUse,1);
   Console.print  (F("sonarTriggerBelow                          : "));
   Console.println(sonarTriggerBelow);
+  Console.print  (F("sonarSlowBelow                             : "));
+  Console.println(sonarSlowBelow);
 
   // ------ perimeter -------------------------------------------------------------
   Console.println(F("---------- perimeter -----------------------------------------"));
