@@ -59,10 +59,9 @@ class Perimeter
     int16_t getSignalAvg(byte idx);
     float getFilterQuality(byte idx); 
     void speedTest();
+		byte signalCodeNo; // not used yet
     int16_t timedOutIfBelowSmag;
-    int16_t timeOutSecIfNotInside;
-    // use differential perimeter signal as input for the matched filter? 
-    bool useDifferentialPerimeterSignal;
+    int16_t timeOutSecIfNotInside;    
     // swap coil polarity?
     bool swapCoilPolarity;  
     char subSample;

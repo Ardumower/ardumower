@@ -24,7 +24,7 @@
 */
 
 #include "robot.h"
-#include "mower.h"
+#include "config.h"
 #include "flashmem.h"
 
 #define MAGIC 52

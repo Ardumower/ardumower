@@ -33,6 +33,12 @@
 #include "RunningMedian.h"
 
 
+// ---- choose only one perimeter signal code ----
+#define SIGCODE_1  // Ardumower default perimeter signal
+//#define SIGCODE_2  // Ardumower alternative perimeter signal
+//#define SIGCODE_3  // Ardumower alternative perimeter signal
+
+
 // --- MC33926 motor driver ---
 #define USE_DOUBLE_AMPLTIUDE    1         // 1: use +/- input voltage for amplitude (default), 
                                           // 0: use only +input/GND voltage for amplitude
@@ -67,10 +73,9 @@
 #define  pinLED 13  // ON: perimeter closed, OFF: perimeter open, BLINK: robot is charging
 
 
-#define USE_DEVELOPER_TEST    0      // set to one for a perimeter test signal (developers-only)  
 
 // code version 
-#define VER "595"
+#define VER "596"
 
 // --------------------------------------
 
@@ -103,14 +108,12 @@ int robotOutOfStationTimeMins = 0;
 // http://grauonline.de/alexwww/ardumower/filter/filter.html    
 // "pseudonoise4_pw" signal (sender)
 
-#if USE_DEVELOPER_TEST
-  // a more motor driver friendly signal (sender)
-  int8_t sigcode[] = {  1,0,0,0,0,
-                        1,0,0,0,0,
-                       -1,0,0,0,0,
-                        1,0,0,0,0   };
-#else
-  int8_t sigcode[] = { 1,1,-1,-1,1,-1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,-1,1,-1,-1,1,1,-1 };
+#if defined (SIGCODE_1)	
+  int8_t sigcode[] = { 1, 1,-1,-1, 1,-1, 1,-1,-1,1, -1, 1, 1,-1,-1, 1,-1,-1, 1,-1,-1, 1, 1,-1 };
+#elif defined (SIGCODE_2)   
+  int8_t sigcode[] = { 1,-1, 1, 1,-1,-1, 1, 1,-1,-1, 1,-1, 1, 1,-1,-1, 1, 1,-1,-1, 1,-1, 1,-1 };
+#elif defined (SIGCODE_3)   
+  int8_t sigcode[] = { 1, 1,-1,-1, 1,-1, 1, 1,-1, 1, 1,-1,-1, 1, 1,-1, 1,-1,-1, 1,-1,-1, 1,-1 };
 #endif
 
 
@@ -208,9 +211,14 @@ void setup() {
   Serial.println("START");
   Serial.print("Ardumower Sender ");
   Serial.println(VER);
-  #if USE_DEVELOPER_TEST
-    Serial.println("Warning: USE_DEVELOPER_TEST activated");
-  #endif
+  #if defined (SIGCODE_1)	
+		Serial.println("SIGCODE_1");
+	#elif defined (SIGCODE_2)   
+		Serial.println("SIGCODE_2");
+	#elif defined (SIGCODE_3)   
+		Serial.println("SIGCODE_3");
+	#endif
+  
   Serial.print("USE_PERI_FAULT=");
   Serial.println(USE_PERI_FAULT);
   Serial.print("USE_PERI_CURRENT=");

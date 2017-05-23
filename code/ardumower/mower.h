@@ -134,8 +134,6 @@
 #define BLUETOOTH_PIN       1234
 
 
-//#define USE_DEVELOPER_TEST     1      // uncomment for new perimeter signal test (developers)
-
 // ------ used serial ports for console, Bluetooth, ESP8266 -----------------------------
 #ifdef __AVR__
   // Arduino Mega
@@ -159,7 +157,10 @@
 // ------- I2C addresses --------------------------------------------------------------
 #define DS1307_ADDRESS B1101000
 
-
+// ---- choose only one perimeter signal code ----
+#define SIGCODE_1  // Ardumower default perimeter signal
+//#define SIGCODE_2  // Ardumower alternative perimeter signal
+//#define SIGCODE_3  // Ardumower alternative perimeter signal
 
 
 /*
