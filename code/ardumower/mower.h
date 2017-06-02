@@ -41,8 +41,8 @@
    
 
 // ------- NOTE: Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
-//#define PCB_1_2    
-#define PCB_1_3    
+#define PCB_1_2    
+//#define PCB_1_3    
 // -----------------------------------------------------------------------------------
 
 
