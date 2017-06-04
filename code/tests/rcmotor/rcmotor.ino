@@ -1,36 +1,41 @@
 
-/* Arduino Mega:   
-   -steer robot by model R/C ( Motortreiber ansteuern mit Funke)
-   -read lawn sensors, plot them via SerialChart
+/* steer robot by model R/C ( Motortreiber ansteuern mit Funke)
+ * requires: Arduino Due, PCB 1.3
  */
 
 #include <Arduino.h>
+#include "pinman.h"
 
-// model R/C  (ppm signal)
-#define pinRemoteSpeed 10          // remote control speed 
-#define pinRemoteSteer 11          // remote control steering 
-#define pinRemoteMow   12          // remote control mower motor
-
-// wheel motors (PWM, Dir)
+// ------ pins---------------------------------------
+#define pinMotorEnable  37         // EN motors enable
 #define pinMotorLeftPWM 5          // M1_IN1 left motor PWM pin
 #define pinMotorLeftDir 31         // M1_IN2 left motor Dir pin
+#define pinMotorLeftSense A1       // M1_FB  left motor current sense
+#define pinMotorLeftFault 25       // M1_SF  left motor fault
+                                                             
 #define pinMotorRightPWM  3        // M2_IN1 right motor PWM pin
 #define pinMotorRightDir 33        // M2_IN2 right motor Dir pin
+#define pinMotorRightSense A0      // M2_FB  right motor current sense
+#define pinMotorRightFault 27      // M2_SF  right motor fault
+                                    
+#define pinMotorMowPWM 2           // M1_IN1 mower motor PWM pin (if using MOSFET, use this pin)
+#define pinMotorMowDir 29          // M1_IN2 mower motor Dir pin (if using MOSFET, keep unconnected)
+#define pinMotorMowSense A3        // M1_FB  mower motor current sense  
+#define pinMotorMowFault 26        // M1_SF  mower motor fault   (if using MOSFET/L298N, keep unconnected)
+#define pinMotorMowEnable 28       // EN mower motor enable      (if using MOSFET/L298N, keep unconnected)
+#define pinMotorMowRpm A11
 
-// mower motor (PWM)
-#define pinMotorMowPWM 2           // M1_IN1 mower motor PWM pin
+#define pinRemoteMow 12            // remote control mower motor
+#define pinRemoteSteer 11          // remote control steering 
+#define pinRemoteSpeed 10          // remote control speed
+#define pinRemoteSwitch 52         // remote control switch
 
-// lawn sensor (digital)
-#define CHANNELS 6                 // number sensor channels
-int pinLawn[CHANNELS] = {A8,A9,A10,A11,A12,A13};     // lawn sensor pins
+#define pinBuzzer 53               // Buzzer
                                                              
 // motor speed
 #define motorSpeedMax 255
 #define motorMowSpeedMax 255
 
-// lawn sensor measurement
-int lawnFreq[CHANNELS];
-int lawnState[CHANNELS];
 
 // R/C measurement
 int remoteSteer ;  // range -100..100
@@ -49,17 +54,19 @@ boolean plot = false;
 unsigned long nextInfoTime = 0;
 
 
-// L298N motor driver
-// IN2/C(10)/PinPWM   IN1/D(12)/PinDir
-// H                  L     Forward
-// L                  H     Reverse    
-void setL298N(int pinDir, int pinPWM, int speed){
+// MC33926 motor driver
+// Check http://forum.pololu.com/viewtopic.php?f=15&t=5272#p25031 for explanations.
+//(8-bit PWM=255, 10-bit PWM=1023)
+// IN1 PinPWM         IN2 PinDir
+// PWM                L     Forward
+// nPWM               H     Reverse
+void setMC33926(int pinDir, int pinPWM, int speed){
   if (speed < 0){
-    digitalWrite(pinDir, HIGH) ;  
-    analogWrite(pinPWM, speed);
+    digitalWrite(pinDir, HIGH) ;
+    PinMan.analogWrite(pinPWM, 255-((byte)abs(speed)));
   } else {
-    digitalWrite(pinDir, LOW) ;  
-    analogWrite(pinPWM, speed);
+    digitalWrite(pinDir, LOW) ;
+    PinMan.analogWrite(pinPWM, ((byte)speed));
   }
 }
 
@@ -96,21 +103,16 @@ ISR(PCINT0_vect){
   setRemotePPMState(timeMicros, remoteSpeedState, remoteSteerState, remoteMowState);    
 }
 
-// lawn sensor signal change interrupt
-ISR(PCINT2_vect){   
-  for (int i=0; i < CHANNELS; i++){
-    int state = digitalRead(pinLawn[i]);
-    if (lawnState[i] != state){
-      lawnState[i] = state;
-      lawnFreq[i]++;
-    }
-  }  
-}
-
 void setup(){
+  pinMode(pinBuzzer, OUTPUT);
+  Serial.begin(115200); // setup baud rate 
+  PinMan.begin();    
+  
   // left wheel motor
   pinMode(pinMotorLeftPWM, OUTPUT);
   pinMode(pinMotorLeftDir, OUTPUT);   
+  pinMode(pinMotorEnable, OUTPUT);  
+  digitalWrite(pinMotorEnable, HIGH);  
   
   // right wheel motor
   pinMode(pinMotorRightPWM, OUTPUT);
@@ -122,25 +124,19 @@ void setup(){
   // R/C  (enable interrupts)
   pinMode(pinRemoteMow, INPUT);
   pinMode(pinRemoteSteer, INPUT);
-  pinMode(pinRemoteSpeed, INPUT);   
-  PCICR |= (1<<PCIE0);
-  PCMSK0 |= (1<<PCINT4);
-  PCMSK0 |= (1<<PCINT5);
-  PCMSK0 |= (1<<PCINT6);
-  
-  // lawn sensors (enable interrupts)
-  for (int i=0; i < CHANNELS; i++){
-    pinMode(pinLawn[i], INPUT);
+  pinMode(pinRemoteSpeed, INPUT);        
+
+  attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
+  attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
+  attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);     
+  attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);         
+
+  unsigned long endTime = millis() + 3000;
+  while (millis() < endTime){
+    setMC33926(pinMotorLeftDir, pinMotorLeftPWM, -127);
+    setMC33926(pinMotorRightDir, pinMotorRightPWM, 127);
+    delay(100);
   }
-  PCICR |= (1<<PCIE2);
-  PCMSK2 |= (1<<PCINT16);
-  PCMSK2 |= (1<<PCINT17);
-  PCMSK2 |= (1<<PCINT18);
-  PCMSK2 |= (1<<PCINT19);  
-  PCMSK2 |= (1<<PCINT20);
-  PCMSK2 |= (1<<PCINT21); 
-  
-  Serial.begin(19200); // setup baud rate to 19200 baud
 }
 
 void loop(){
@@ -153,8 +149,8 @@ void loop(){
   motorRightSpeed = max(-motorSpeedMax, min(motorSpeedMax, motorRightSpeed));
   int motorMowSpeed = ((double)motorMowSpeedMax) * (((double)remoteMow)/100.0);        
 
-  // for L298N motor driver (or similar)
-  setL298N(pinMotorLeftDir, pinMotorLeftPWM, motorLeftSpeed);
+  setMC33926(pinMotorLeftDir, pinMotorLeftPWM, motorLeftSpeed);
+  setMC33926(pinMotorRightDir, pinMotorRightPWM, motorRightSpeed);
 
   // mower motor  
   analogWrite(pinMotorMowPWM, motorMowSpeed);
@@ -164,15 +160,7 @@ void loop(){
     if (ch == 'p') plot = !plot;
   }
   if (millis() >= nextInfoTime){
-    nextInfoTime = millis() + 300; // choose time interval here
-    if (plot){ 
-      // serial output for serial chart
-      for (int i=0; i < CHANNELS; i++){ 
-        Serial.print(lawnFreq[i]);
-        Serial.print(",");      
-      }
-      Serial.println();
-    } else {
+      nextInfoTime = millis() + 300; // choose time interval here
       // serial console output
       Serial.print("steer=");
       Serial.print(remoteSteer);
@@ -181,18 +169,8 @@ void loop(){
       Serial.print("  mleft=");
       Serial.print(motorLeftSpeed);
       Serial.print("  mright=");
-      Serial.print(motorRightSpeed);
-      Serial.print("  freq=");    
-      for (int i=0; i < CHANNELS; i++){
-        Serial.print(lawnFreq[i]);
-        Serial.print(",");      
-      }
-      Serial.println();
-    }
-    // reset measurements to zero
-    for (int i=0; i < CHANNELS; i++){
-      lawnFreq[i]=0;
-    }
+      Serial.print(motorRightSpeed);      
+      Serial.println();    
   }
   
   delay(15);
