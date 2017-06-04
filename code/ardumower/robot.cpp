@@ -128,7 +128,9 @@ Robot::Robot(){
   imuRollHeading = 0;
   imuRollDir = LEFT;  
   
-  perimeterMag = 0;
+  perimeterMag = 1;
+  perimeterMagMedian.add(perimeterMag);
+  lastPerimeterTrackInside = 1;
   perimeterInside = true;
   perimeterCounter = 0;  
   perimeterLastTransitionTime = 0;
@@ -385,15 +387,23 @@ void Robot::readSensors(){
 
 
   if ((perimeterUse) && (millis() >= nextTimePerimeter)){    
-    nextTimePerimeter = millis() +  50; // 50    
+    nextTimePerimeter = millis() +  30; // 50    
     perimeterMag = readSensor(SEN_PERIM_LEFT);
+    perimeterMagMedian.add(abs(perimeterMag));
     if ((perimeter.isInside(0) != perimeterInside)){      
       perimeterCounter++;
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
-    if (perimeterInside < 0) setActuator(ACT_LED, HIGH);                     
-      else setActuator(ACT_LED, LOW);    
+    static boolean LEDstate = false;
+    if (perimeterInside && !LEDstate) {
+      setActuator(ACT_LED, HIGH);
+      LEDstate = true;
+	}
+    if (!perimeterInside && LEDstate) {
+      setActuator(ACT_LED, LOW);
+      LEDstate = false;
+	  }
     if ((!perimeterInside) && (perimeterTriggerTime == 0)){
       // set perimeter trigger time      
       if (millis() > stateStartTime + 2000){ // far away from perimeter?
@@ -407,7 +417,7 @@ void Robot::readSensors(){
       	&& (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
       	&& (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
       	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_PERI_OUT_FORW)
-        && (stateCurr != STATE_PERI_OUT_REV) && (stateCurr != STATE_PERI_OUT_ROLL)) {
+        && (stateCurr != STATE_PERI_OUT_REV) && (stateCurr != STATE_PERI_OUT_ROLL) && (stateCurr != STATE_PERI_TRACK)) {
         Console.println("Error: perimeter too far away");
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
