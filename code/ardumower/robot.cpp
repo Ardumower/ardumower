@@ -130,7 +130,6 @@ Robot::Robot(){
   
   perimeterMag = 1;
   perimeterMagMedian.add(perimeterMag);
-  lastPerimeterTrackInside = 1;
   perimeterInside = true;
   perimeterCounter = 0;  
   perimeterLastTransitionTime = 0;
