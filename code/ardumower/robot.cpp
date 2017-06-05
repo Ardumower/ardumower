@@ -387,9 +387,10 @@ void Robot::readSensors(){
 
 
   if ((perimeterUse) && (millis() >= nextTimePerimeter)){    
-    nextTimePerimeter = millis() +  30; // 50    
+    if (stateCurr == STATE_PERI_TRACK) nextTimePerimeter = millis() +  30; // 50  
+    else nextTimePerimeter = millis() +  50;
     perimeterMag = readSensor(SEN_PERIM_LEFT);
-    perimeterMagMedian.add(abs(perimeterMag));
+    if (stateCurr == STATE_PERI_FIND)perimeterMagMedian.add(abs(perimeterMag));
     if ((perimeter.isInside(0) != perimeterInside)){      
       perimeterCounter++;
       perimeterLastTransitionTime = millis();
@@ -1168,6 +1169,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   }
   if (stateNew == STATE_PERI_TRACK){        
     //motorMowEnable = false;     // FIXME: should be an option?
+    perimeterMagMax = perimeterMagMedian.getHighest()*1.1;
     setActuator(ACT_CHGRELAY, 0);
     perimeterPID.reset();
     //beep(6);

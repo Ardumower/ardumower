@@ -68,6 +68,7 @@ enum {
   SEN_PERIM_RIGHT_EXTRA, // 0..MAX_PERIMETER
   SEN_LAWN_FRONT,        
   SEN_LAWN_BACK,         
+
   SEN_BAT_VOLTAGE,       // Volt * 100
   SEN_CHG_CURRENT,       // Ampere * 100
   SEN_CHG_VOLTAGE,       // Volt * 100
@@ -269,6 +270,8 @@ class Robot
     int motorRollTimeMin  ; // min. roll time (ms)
     int motorReverseTime ;  // max. reverse time (ms)
     long motorForwTimeMax; // max. forward time (ms) / timeout
+
+
     float motorBiDirSpeedRatio1 ;   // bidir mow pattern speed ratio 1
     float motorBiDirSpeedRatio2 ;   // bidir mow pattern speed ratio 2
     bool motorRightSwapDir     ;    // inverse right motor direction? 
@@ -289,6 +292,7 @@ class Robot
     int motorRightSenseCounter ;
     unsigned long nextTimeMotorSense ;
     unsigned long lastSetMotorSpeedTime;
+
     unsigned long motorLeftZeroTimeout;
     unsigned long motorRightZeroTimeout;
     boolean rotateLeft;
@@ -299,6 +303,7 @@ class Robot
     float motorMowAccel       ;  // motor mower acceleration (warning: do not set too high)
     int motorMowSpeedMaxPwm ;    // motor mower max PWM
     float motorMowPowerMax ;     // motor mower max power (Watt)
+
     char motorMowModulate  ;      // motor mower cutter modulation?
     int motorMowRPMSet        ;   // motor mower RPM (only for cutter modulation)
     float motorMowSenseScale ; // motor mower sense scale (mA=(ADC-zero)/scale)
@@ -363,6 +368,7 @@ class Robot
     PID perimeterPID ;             // perimeter PID controller
     int perimeterMag ;             // perimeter magnitude
     RunningMedian perimeterMagMedian = RunningMedian(300);
+    int perimeterMagMax; //maximum perimeter magnitude detected while perimeter find
     boolean lastPerimeterTrackInside; // was inside or outside
     boolean perimeterInside ;      // is inside perimeter?
     unsigned long perimeterTriggerTime; // time to trigger perimeter transition (timeout)
@@ -399,6 +405,9 @@ class Robot
     unsigned int sonarDistCenter ;
     unsigned int sonarDistRight ;
     unsigned int sonarDistLeft ; 
+
+
+
     unsigned int sonarDistCounter ;
     unsigned int tempSonarDistCounter ;
     unsigned long sonarObstacleTimeout ;
@@ -426,11 +435,13 @@ class Robot
     float startChargingIfBelow; // start charging if battery Voltage is below
     unsigned long chargingTimeout; // safety timer for charging
     int batADC;
+
     float chgSenseZero    ;       // charge current sense zero point
     float chgFactor       ;     // charge current conversion factor
     float chgSense        ;       // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
     char chgChange        ;       // messwertumkehr von - nach +         1oder 0
     float batVoltage ;  // battery voltage (Volt)
+
     byte chgSelection     ;       // Senor Auswahl
     float batRefFactor ;
     float batCapacity ; // battery capacity (mAh)
