@@ -218,8 +218,6 @@ void Robot::motorControlImuRoll(){
 
 }
 
-
-
 // PID controller: track perimeter 
 void Robot::motorControlPerimeter(){    
   if (millis() < nextTimeMotorPerimeterControl) return;
@@ -250,7 +248,6 @@ void Robot::motorControlPerimeter(){
       if (!lastPerimeterTrackInside) perimeterPID.reset();
       lastPerimeterTrackInside = 1;
   }
-
     else{
       perimeterPID.w = 1;
       if (lastPerimeterTrackInside) perimeterPID.reset();
@@ -258,18 +255,14 @@ void Robot::motorControlPerimeter(){
     }
   //if (perimeterPID.x > 1) perimeterPID.x = 1;
   //else if (perimeterPID.x < -1) perimeterPID.x = -1;
-
-
-
-
-  perimeterPID.y_min = -motorSpeedMaxPwm/1.5;
-  perimeterPID.y_max = motorSpeedMaxPwm/1.5;		
-  perimeterPID.max_output = motorSpeedMaxPwm/1.5;
+  perimeterPID.y_min = -motorSpeedMaxPwm;
+  perimeterPID.y_max = motorSpeedMaxPwm;		
+  perimeterPID.max_output = motorSpeedMaxPwm;
   perimeterPID.compute();
   //setMotorPWM( motorLeftPWMCurr  +perimeterPID.y, 
   //               motorRightPWMCurr -perimeterPID.y, false);      
-  setMotorPWM( max(-motorSpeedMaxPwm/1.5, min(motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/2.3 - perimeterPID.y)), 
-                 max(-motorSpeedMaxPwm/1.5, min(motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/2.3 + perimeterPID.y)), false);      
+  setMotorPWM( max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/1.7 - perimeterPID.y)), 
+                 max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/1.7 + perimeterPID.y)), false);      
   /*Console.print(perimeterPID.x);
   Console.print("\t");          
   Console.println(perimeterPID.y);  */
