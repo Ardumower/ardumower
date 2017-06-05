@@ -118,7 +118,7 @@ Mower::Mower(){
   trackingPerimeterTransitionTimeOut              = 2000;
   trackingErrorTimeOut                            = 10000;
   trackingBlockInnerWheelWhilePerimeterStruggling = 1;
-  
+  MaxSpeedperiPwm = 160; // speed max in PWM while perimeter tracking
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;                   // use capacitive lawn Sensor
   
