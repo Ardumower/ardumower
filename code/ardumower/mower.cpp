@@ -191,7 +191,7 @@ Mower::Mower(){
   #if defined (PCB_1_2)
     odometryTicksPerRevolution = 1060*2;       // encoder ticks per one full resolution    
   #elif defined (PCB_1_3)    
-		#define DIVIDER_DIP_SWITCH  2             //  NOTE: set DIV/2 on PCB
+		#define DIVIDER_DIP_SWITCH  2             //  sets used PCB odometry divider (2=DIV/2, 4=DIV/4, 8=DIV/8, etc.) 
 		odometryTicksPerRevolution = 1060/DIVIDER_DIP_SWITCH*2;        // encoder ticks per one full resolution 
   #endif
   odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / (2*3.1415);    // computes encoder ticks per cm (do not change)
