@@ -292,7 +292,7 @@ void RemoteControl::sendMotorMenu(boolean update){
   sendSlider("a02", F("Power max"), robot->motorPowerMax, "", 0.1, 100);  
   sendSlider("a03", F("calibrate left motor "), robot->motorLeftSenseCurrent, "", 1, 1000, 0);       
   sendSlider("a04", F("calibrate right motor"), robot->motorRightSenseCurrent, "", 1, 1000, 0);      
-  serialPort->print(F("|a05~Speed l, r"));
+  serialPort->print(F("|a05~Speed l, r pwm"));
   serialPort->print(robot->motorLeftPWMCurr);
   serialPort->print(", ");
   serialPort->print(robot->motorRightPWMCurr);

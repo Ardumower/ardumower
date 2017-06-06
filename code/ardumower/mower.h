@@ -32,24 +32,27 @@
 #include "bt.h"
 
 
-/* Ardumower Chassis Kit 1.0 - robot configuration (Ardumower electronics, Arduino Mega/Due) 
-   http://wiki.ardumower.de/index.php?title=Ardumower_chassis
-   
-   Requires: Ardumower PCB v0.5/1.2/1.3  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
-   
+/*  Requires: 
+		  * Ardumower PCB v0.5/1.2/1.3  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
+		  * Arduino Mega or Arduino Due (requires PCB1.3)
+			* Ardumower Chassis Kit 1.0  ( http://wiki.ardumower.de/index.php?title=Ardumower_chassis ) or Ardumower Mini
 */
    
 
-// ------- NOTE: Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
+// ------- Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
 //#define PCB_1_2    
 #define PCB_1_3    
-// -----------------------------------------------------------------------------------
+
+// ------- Choose robot model (Ardumower or Ardumower Mini) -------------------
+//#define ROBOT_ARDUMOWER
+#define ROBOT_MINI
 
 
+// Due or Mega is detected automatically (based on Arduino IDE settings)
 #ifdef __AVR__
-  #define IOREF 5.0  // I/O reference voltage 
+  #define IOREF 5.0  // I/O reference voltage for Mega 2560
 #else 
-	#define IOREF 3.3   // I/O reference voltage 
+	#define IOREF 3.3   // I/O reference voltage for Due
 #endif
 		
 

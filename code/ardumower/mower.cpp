@@ -40,11 +40,25 @@ Mower robot;
 
 
 Mower::Mower(){
-  name = "Ardumower";
+  #if defined (ROBOT_ARDUMOWER)
+    name = "Ardumower";
+  #else
+    name = "Mini";
+  #endif
   
   // ------- wheel motors -----------------------------
   motorAccel                 = 1000;      // motor wheel acceleration - only functional when odometry is not in use (warning: do not set too low)
-  motorSpeedMaxRpm           = 25;        // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
+  #if defined (ROBOT_ARDUMOWER)
+	  motorSpeedMaxRpm           = 25;        // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)
+		motorLeftPID.Kp            = 1.5;       // motor wheel PID controller
+    motorLeftPID.Ki            = 0.29;
+    motorLeftPID.Kd            = 0.25;
+  #else // ROBOT_MINI		
+	  motorSpeedMaxRpm           = 120;        // motor wheel max RPM (WARNING: do not set too high, so there's still speed control when battery is low!)		
+		motorLeftPID.Kp        		 = 0.2;    // motor wheel PID controller
+    motorLeftPID.Ki            = 0.0;
+    motorLeftPID.Kd            = 0.0;  
+  #endif		
   motorSpeedMaxPwm           = 255;       // motor wheel max Pwm  (8-bit PWM=255, 10-bit PWM=1023)
   motorPowerMax              = 75;        // motor wheel max power (Watt)	
   motorSenseRightScale       = ADC2voltage(1)*1905;   // ADC to right motor sense milliamp 
@@ -57,19 +71,7 @@ Mower::Mower(){
   motorForwTimeMax           = 80000;     // max. forward time (ms) / timeout
   motorBiDirSpeedRatio1      = 0.3;       // bidir mow pattern speed ratio 1
   motorBiDirSpeedRatio2      = 0.92;      // bidir mow pattern speed ratio 2
-  
-  // ---- normal control ---
-  motorLeftPID.Kp            = 1.5;       // motor wheel PID controller
-  motorLeftPID.Ki            = 0.29;
-  motorLeftPID.Kd            = 0.25;
-  
-  /*
-  // ---- fast control ---
-  motorLeftPID.Kp            = 1.76;       // motor wheel PID controller
-  motorLeftPID.Ki            = 0.87;
-  motorLeftPID.Kd            = 0.4;
-  */
-  
+    
   motorRightSwapDir          = 0;          // inverse right motor direction? 
   motorLeftSwapDir           = 0;          // inverse left motor direction?
   
@@ -111,9 +113,15 @@ Mower::Mower(){
   perimeterOutRevTime        = 2200;       // reverse time after perimeter out (ms)
   perimeterTrackRollTime     = 1500;       // roll time during perimeter tracking
   perimeterTrackRevTime      = 2200;       // reverse time during perimeter tracking
-  perimeterPID.Kp            = 51.0;       // perimeter PID controller
-  perimeterPID.Ki            = 12.5;
-  perimeterPID.Kd            = 0.8;  
+  #if defined (ROBOT_ARDUMOWER)
+	  perimeterPID.Kp            = 51.0;       // perimeter PID controller
+    perimeterPID.Ki            = 12.5;
+    perimeterPID.Kd            = 0.8;  
+	#else // ROBOT_MINI
+		perimeterPID.Kp    = 60.0;  // perimeter PID controller
+    perimeterPID.Ki    = 6.0;
+    perimeterPID.Kd    = 5.0;
+	#endif  
   
   trackingPerimeterTransitionTimeOut              = 2000;
   trackingErrorTimeOut                            = 10000;
@@ -136,44 +144,26 @@ Mower::Mower(){
   remoteUse                  = 1;          // use model remote control (R/C)?
   
   // ------ battery -------------------------------------
-  batMonitor                 = 1;          // monitor battery and charge voltage?
+  #if defined (ROBOT_ARDUMOWER)
+    batMonitor                 = 1;          // monitor battery and charge voltage?
+	#else
+		batMonitor                 = 0;          // monitor battery and charge voltage?
+	#endif 
   batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
-		
+	startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below
+	chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
+	batFullCurrent             = -99999.0;       // current flowing when battery is fully charged	 (amp)
+	chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
+	
   #if defined (PCB_1_2)     // PCB 1.2	  
 	  batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 	
-		startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below
-		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
-		batFullCurrent             = -99999.0;       // current flowing when battery is fully charged	 (amp)
 		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	*10
-		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
-		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor *10
-    #ifdef __AVR__         // Mega
-			//batFactor                = 0.495;      // voltage = ADC * batFactor / 10     
-      //batChgFactor             = 0.495;      // voltage = ADC * batFactor / 10  
-			//chgFactor                = 0.045;         // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10
-    #else                  // Due
-      //batFactor                = 0.3267;      // voltage = ADC * batFactor / 10   
-      //batChgFactor             = 0.3267;      // voltage = ADC * batFactor / 10
-			//chgFactor                  = 0.03;        // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10			
-    #endif  
+		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10	
   #elif defined (PCB_1_3)   // PCB 1.3
 		batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
-  	startChargingIfBelow       = 99999.0;     // start charging if battery Voltage is below	
-		chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
-		batFullCurrent             = -99999.0;    // current flowing when battery is fully charged (amp)
-		batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+  	batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
 		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
-		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)							
-	  #ifdef __AVR__         // Mega  
-      //batFactor                = 0.543;      // voltage = ADC * batFactor / 10 
-      //batChgFactor             = 0.543;      // voltage = ADC * batFactor / 10 
-			//chgFactor                  = 0.045;       // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10			
-    #else                  // Due
-      //batFactor                = 0.3587;      // voltage = ADC * batFactor / 10
-      //batChgFactor             = 0.3587;      // voltage = ADC * batFactor / 10
-			//chgFactor                  = 0.03;        // INA169 charge current conversion factor  Ampere = ADC * chgFactor / 10
-    #endif  
   #endif
   
   batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
@@ -186,16 +176,23 @@ Mower::Mower(){
   stationCheckTime           = 1700;       // charge station reverse check time (ms)
 
   // ------ odometry ------------------------------------
-  odometryUse                = 1;          // use odometry?  
-  wheelDiameter              = 250;        // wheel diameter (mm)
-  #if defined (PCB_1_2)
-    odometryTicksPerRevolution = 1060*2;       // encoder ticks per one full resolution    
-  #elif defined (PCB_1_3)    
-		#define DIVIDER_DIP_SWITCH  2             //  sets used PCB odometry divider (2=DIV/2, 4=DIV/4, 8=DIV/8, etc.) 
-		odometryTicksPerRevolution = 1060/DIVIDER_DIP_SWITCH*2;        // encoder ticks per one full resolution 
+  odometryUse                = 1;          // use odometry?    
+  
+	#if defined (ROBOT_ARDUMOWER)
+	  odometryTicksPerRevolution = 1060*2;       // encoder ticks per one full resolution (without any divider)
+		wheelDiameter              = 250;        // wheel diameter (mm)
+		odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
+  #else  // ROBOT_MINI		
+		odometryTicksPerRevolution = 20;      // encoder ticks per one full resolution
+		wheelDiameter              = 70;        // wheel diameter (mm)
+		odometryWheelBaseCm        = 14;         // wheel-to-wheel distance (cm)
+	#endif
+		
+  #if defined (PCB_1_3)    
+		#define DIVIDER_DIP_SWITCH  1             //  sets used PCB odometry divider (1=no divider, 2=DIV/2, 4=DIV/4, 8=DIV/8, etc.) 
+		odometryTicksPerRevolution /= DIVIDER_DIP_SWITCH;        // encoder ticks per one full resolution 
   #endif
   odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / (2*3.1415);    // computes encoder ticks per cm (do not change)
-  odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
   
   // ----- GPS -------------------------------------------
   gpsUse                     = 0;          // use GPS?
@@ -250,19 +247,24 @@ ISR(PCINT0_vect){
 
   volatile byte oldOdoPins = 0;
   ISR(PCINT2_vect, ISR_NOBLOCK)
-  {
-    const byte actPins = PINK;                				// read register PINK
+  {		
+		const byte actPins = PINK;                				// read register PINK
     const byte setPins = (oldOdoPins ^ actPins);
+		unsigned long time = millis();    
     if (setPins & 0b00010000)                 				// pin left has changed 
     {
-      if (robot.motorLeftPWMCurr >= 0)						// forward
+			if (time > robot.lastOdoTriggerTimeLeft) robot.odoTriggerTimeLeft = time - robot.lastOdoTriggerTimeLeft;
+			robot.lastOdoTriggerTimeLeft = time;    						
+			if (robot.motorLeftPWMCurr >= 0)						// forward
         robot.odometryLeft++;
       else
         robot.odometryLeft--;									// backward
     }
     if (setPins & 0b01000000)                  				// pin right has changed
     {
-      if (robot.motorRightPWMCurr >= 0)
+			if (time > robot.lastOdoTriggerTimeRight) robot.odoTriggerTimeRight = time - robot.lastOdoTriggerTimeRight;
+			robot.lastOdoTriggerTimeRight = time;    			
+			if (robot.motorRightPWMCurr >= 0)
         robot.odometryRight++;								// forward
       else
         robot.odometryRight--;								// backward
@@ -274,32 +276,36 @@ ISR(PCINT0_vect){
 
   volatile long oldOdoPins_A = 0;
   volatile long oldOdoPins_B = 0;
+  
   ISR(PCINT2_vect)
-  {
+    {
     const long actPins_A = REG_PIOA_PDSR;       			// read PIO A
     const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
     const long setPins_A = (oldOdoPins_A ^ actPins_A);
     const long setPins_B = (oldOdoPins_B ^ actPins_B);
+		unsigned long time = millis();    
     
     //Right
-    if (setPins_A & 0b00000000000000000000000000000010)			// pin left has changed 
+    if (setPins_A & 0b00000000000000000000000000000010)			// pin right has changed 
     {
-      if (robot.motorRightPWMCurr >= 0)					// forward
+			if (time > robot.lastOdoTriggerTimeRight) robot.odoTriggerTimeRight = time - robot.lastOdoTriggerTimeRight;
+			robot.lastOdoTriggerTimeRight = time;    			
+			if (robot.motorRightPWMCurr >= 0)					// forward
         robot.odometryRight++;
       else
-        robot.odometryRight--;	
-        								// backward
+        robot.odometryRight--;	 // backward
       oldOdoPins_A = actPins_A;
     }
     
     //Left
-    if (setPins_B & 0b00000000000000001000000000000000)         	// pin right has changed
+    if (setPins_B & 0b00000000000000001000000000000000)         	// pin left has changed
     {
-      if (robot.motorLeftPWMCurr >= 0)
+			if (time > robot.lastOdoTriggerTimeLeft) robot.odoTriggerTimeLeft = time - robot.lastOdoTriggerTimeLeft;
+			robot.lastOdoTriggerTimeLeft = time;    						
+			if (robot.motorLeftPWMCurr >= 0)
         robot.odometryLeft++;						// forward
       else
         robot.odometryLeft--;						// backward
-
       oldOdoPins_B = actPins_B;
     }  
   }
@@ -456,26 +462,26 @@ void Mower::setup(){
 //-------------------------------------------------------------------------
 #ifdef __AVR__
 
-    //-------------------------------------------------------------------------
-    // Switch
-    //-------------------------------------------------------------------------
-    PCICR |= (1<<PCIE0);
-    PCMSK0 |= (1<<PCINT1);
+	//-------------------------------------------------------------------------
+	// Switch
+	//-------------------------------------------------------------------------
+	PCICR |= (1<<PCIE0);
+	PCMSK0 |= (1<<PCINT1);
 
-    //-------------------------------------------------------------------------
-    // R/C
-    //-------------------------------------------------------------------------
-    PCICR |= (1<<PCIE0);
-    if (remoteUse)
+	//-------------------------------------------------------------------------
+	// R/C
+	//-------------------------------------------------------------------------
+	PCICR |= (1<<PCIE0);
+	if (remoteUse)
 	{
-	  PCMSK0 |= (1<<PCINT4);
-	  PCMSK0 |= (1<<PCINT5);
-	  PCMSK0 |= (1<<PCINT6);
+		PCMSK0 |= (1<<PCINT4);
+		PCMSK0 |= (1<<PCINT5);
+		PCMSK0 |= (1<<PCINT6);
 	}
-	 
-    //-------------------------------------------------------------------------    
-    // odometry
-    //-------------------------------------------------------------------------
+ 
+	//-------------------------------------------------------------------------    
+	// odometry
+	//-------------------------------------------------------------------------
 	// Wenn odometryUse == 1 dann:
 	// PCMSK2, PCINT20, HIGH			-> für links
 	// PCMSK2, PCINT22, HIGH			-> für rechts
@@ -490,30 +496,32 @@ void Mower::setup(){
 	  PCMSK2 |= (1<<PCINT22);	  
 	}
 		
-    //-------------------------------------------------------------------------	
-    // mower motor speed sensor interrupt
+  //-------------------------------------------------------------------------	
+  // mower motor speed sensor interrupt
 	//-------------------------------------------------------------------------
-    if (motorMowModulate)
+  if (motorMowModulate)
 	{
-	  PCICR |= (1<<PCIE2);
-	  PCMSK2 |= (1<<PCINT19);
+	  //PCICR |= (1<<PCIE2);
+	  //PCMSK2 |= (1<<PCINT19);
 	}
-  #else
-    // Due interrupts
-	// ODO
-    attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);    
-    attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);        
+#else
+  // Due interrupts
+  // ODO
+  attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);    
+  attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);  
+	//PinMan.setDebounce(pinOdometryLeft, 100);  // reject spikes shorter than usecs on pin
+	//PinMan.setDebounce(pinOdometryRight, 100);  // reject spikes shorter than usecs on pin	      
     
 	// RC
-    attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
-    attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
-    attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
+  attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
+	attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
+	attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);   
 	//Switch
-    attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
-    
+	attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);       
+	
 	//Motor Mow RPM	
-    attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
-  #endif   
+	//attachInterrupt(pinMotorMowRpm, PCINT2_vect, CHANGE);    
+#endif   
   
 }
 

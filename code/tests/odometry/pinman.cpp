@@ -70,7 +70,7 @@ static void TC_SetCMR_ChannelB(Tc *tc, uint32_t chan, uint32_t v)
 // to digital output.
 void PinManager::analogWrite(uint32_t ulPin, uint32_t ulValue) {
 #ifdef __AVR__
-  ::analogWrite(ulPin, ulValue);
+  ::analogWritE(ulPin, ulValue);
 #else  
 	uint32_t attr = g_APinDescription[ulPin].ulPinAttribute;
 

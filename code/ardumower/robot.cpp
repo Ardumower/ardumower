@@ -76,6 +76,8 @@ Robot::Robot(){
   mowPatternCurr = MOW_RANDOM;
   
   odometryLeft = odometryRight = 0;
+	odoTriggerTimeLeft = odoTriggerTimeRight = 0;
+	lastOdoTriggerTimeLeft = lastOdoTriggerTimeRight = 0;
   odometryLeftLastState = odometryLeftLastState2 = odometryRightLastState = odometryRightLastState2 = LOW;
   odometryTheta = odometryX = odometryY = 0;
 
