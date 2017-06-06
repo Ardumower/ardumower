@@ -1,57 +1,5 @@
 // motor controller (normal & perimeter tracking), odometry
 
-/*
-Hier rausgenommen -> siehe ODO-ISR in der mower.cpp
-
-// ---- odometry (interrupt) --------------------------------------------------------
-// Determines the rotation count and direction of the odometry encoders. Called in the odometry pins interrupt.
-// encoder signal/Ardumower pinout etc. at http://wiki.ardumower.de/index.php?title=Odometry
-// Logic is: 
-//    If the pin1 change transition (odometryLeftState) is LOW -> HIGH... 
-//      If the pin2 current state is HIGH :  step count forward   (odometryLeft++)
-//        Otherwise :  step count reverse   (odometryLeft--)   
-// odometryState:  1st left and right odometry signal
-// odometryState2: 2nd left and right odometry signal (optional two-wire encoders)
-void Robot::setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, boolean odometryLeftState2, boolean odometryRightState2){
-  int leftStep = 1;
-  int rightStep = 1;
-  if (odometryLeftSwapDir) leftStep = -1;
-  if (odometryRightSwapDir) rightStep = -1;
-  if (odometryLeftState != odometryLeftLastState){    
-    if (odometryLeftState){ // pin1 makes LOW->HIGH transition
-      if (twoWayOdometrySensorUse) { 
-        // pin2 = HIGH? => forward 
-        if (odometryLeftState2) odometryLeft += leftStep; else odometryLeft -= leftStep;
-      } 
-      else { 
-         if (motorLeftPWMCurr >=0) odometryLeft ++; else odometryLeft --;
-      }
-    }
-    odometryLeftLastState = odometryLeftState;
-  } 
-
-  if (odometryRightState != odometryRightLastState){
-    if (odometryRightState){ // pin1 makes LOW->HIGH transition
-      if (twoWayOdometrySensorUse) {
-        // pin2 = HIGH? => forward
-        if (odometryRightState2) odometryRight += rightStep; else odometryRight -= rightStep;
-      }     
-      else {
-         if (motorRightPWMCurr >=0) odometryRight ++; else odometryRight --;    
-      }
-    }
-    odometryRightLastState = odometryRightState;
-  }  
-  if (twoWayOdometrySensorUse) {
-    if (odometryRightState2 != odometryRightLastState2){
-      odometryRightLastState2 = odometryRightState2;    
-    }  
-    if (odometryLeftState2 != odometryLeftLastState2){
-      odometryLeftLastState2 = odometryLeftState2;    
-    }
-  }    
-}
-*/
 
 
 // ---- motor RPM (interrupt) --------------------------------------------------------------
@@ -68,7 +16,7 @@ void Robot::setMotorMowRPMState(boolean motorMowRpmState){
 // calculate map position by odometry sensors
 void Robot::calcOdometry(){
   if ((!odometryUse) || (millis() < nextTimeOdometry)) return;    
-    nextTimeOdometry = millis() + 300;
+  nextTimeOdometry = millis() + 200;
 
   static int lastOdoLeft = 0;
   static int lastOdoRight = 0;
@@ -84,8 +32,17 @@ void Robot::calcOdometry(){
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
   odometryTheta += wheel_theta; 
   
-  motorLeftRpmCurr  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
-  motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
+  if (odometryTicksPerRevolution < 500){
+    // calculate RPM via tick counters per time frame (precise if many ticks)
+    motorLeftRpmCurr  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
+    motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
+  } else {  
+    // calculate RPM via time per tick  (if not many ticks - not precise)
+    motorLeftRpmCurr = 60.0 / ((float)odometryTicksPerRevolution) / (((float)odoTriggerTimeLeft)/1000.0);
+    if (motorLeftPWMCurr<0) motorLeftRpmCurr*=-1;
+    motorRightRpmCurr = 60.0 / ((float)odometryTicksPerRevolution) / (((float)odoTriggerTimeRight)/1000.0);
+    if (motorRightPWMCurr<0) motorRightRpmCurr*=-1;
+  }  
   lastMotorRpmTime = millis();
                
   if (imuUse){
@@ -171,6 +128,7 @@ void Robot::setMotorMowPWM(int pwm, boolean useAccel){
   }
   setActuator(ACT_MOTOR_MOW, min(motorMowSpeedMaxPwm, max(0, motorMowPWMCurr)));
 }
+
 
 // PID controller: roll robot to heading (requires IMU)
 void Robot::motorControlImuRoll(){

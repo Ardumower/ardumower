@@ -1,115 +1,67 @@
 
-/* odometry test  (Arduino Mega)
+/* odometry test  (Arduino Due, PCB1.3)
  */
 
 #include <Arduino.h>
+#include "pinman.h"
 
 
-#define pinOdometryLeft A12      // left odometry sensor
-#define pinOdometryLeft2 A13     // left odometry sensor (optional two-wire)
-#define pinOdometryRight A14     // right odometry sensor 
-#define pinOdometryRight2 A15    // right odometry sensor (optional two-wire)  
+#define pinBuzzer 53               // Buzzer
 
-bool twoWayOdometrySensorUse = 0;
-bool odometryRightSwapDir = 0;       // inverse right encoder direction?
-bool odometryLeftSwapDir = 0;       // inverse left encoder direction?        
+#define pinOdometryLeft DAC0     // left odometry sensor
+#define pinOdometryRight CANRX   // right odometry sensor  
+
 
 int odometryLeft ;   // left wheel counter
 int odometryRight ;  // right wheel counter
 
-int motorLeftPWMCurr = 255;
-int motorRightPWMCurr = 255;
 
-boolean odometryLeftLastState;
-boolean odometryLeftLastState2;
-boolean odometryRightLastState;
-boolean odometryRightLastState2;
+volatile long oldOdoPins_A = 0;
+volatile long oldOdoPins_B = 0;
+  
+ISR(PCINT2_vect)
+{
+    const long actPins_A = REG_PIOA_PDSR;             // read PIO A
+    const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
+    const long setPins_A = (oldOdoPins_A ^ actPins_A);
+    const long setPins_B = (oldOdoPins_B ^ actPins_B);
+        
+    //Right
+    if (setPins_A & 0b00000000000000000000000000000010)     // pin right has changed 
+    {      
+      odometryRight++;      
+      oldOdoPins_A = actPins_A;
+    }
     
-
-
-// Determines the rotation count and direction of the odometry encoders. Called in the odometry pins interrupt.
-// encoder signal/Ardumower pinout etc. at http://wiki.ardumower.de/index.php?title=Odometry
-// Logic is: 
-//    If the pin1 change transition (odometryLeftState) is LOW -> HIGH... 
-//      If the pin2 current state is HIGH :  step count forward   (odometryLeft++)
-//        Otherwise :  step count reverse   (odometryLeft--)   
-// odometryState:  1st left and right odometry signal
-// odometryState2: 2nd left and right odometry signal (optional two-wire encoders)
-void setOdometryState(unsigned long timeMicros, boolean odometryLeftState, boolean odometryRightState, boolean odometryLeftState2, boolean odometryRightState2){
-  int leftStep = 1;
-  int rightStep = 1;
-  if (odometryLeftSwapDir) leftStep = -1;
-  if (odometryRightSwapDir) rightStep = -1;
-  if (odometryLeftState != odometryLeftLastState){    
-    if (odometryLeftState){ // pin1 makes LOW->HIGH transition
-      if (twoWayOdometrySensorUse) { 
-        // pin2 = HIGH? => forward 
-        if (odometryLeftState2) odometryLeft += leftStep; else odometryLeft -= leftStep;
-      } 
-      else { 
-         if (motorLeftPWMCurr >=0) odometryLeft ++; else odometryLeft --;
-      }
-    }
-    odometryLeftLastState = odometryLeftState;
-  } 
-
-  if (odometryRightState != odometryRightLastState){
-    if (odometryRightState){ // pin1 makes LOW->HIGH transition
-      if (twoWayOdometrySensorUse) {
-        // pin2 = HIGH? => forward
-        if (odometryRightState2) odometryRight += rightStep; else odometryRight -= rightStep;
-      }     
-      else {
-         if (motorRightPWMCurr >=0) odometryRight ++; else odometryRight --;    
-      }
-    }
-    odometryRightLastState = odometryRightState;
-  }  
-  if (twoWayOdometrySensorUse) {
-    if (odometryRightState2 != odometryRightLastState2){
-      odometryRightLastState2 = odometryRightState2;    
-    }  
-    if (odometryLeftState2 != odometryLeftLastState2){
-      odometryLeftLastState2 = odometryLeftState2;    
-    }
-  }    
+    //Left
+    if (setPins_B & 0b00000000000000001000000000000000)           // pin left has changed
+    {            
+      odometryLeft++;                 
+      oldOdoPins_B = actPins_B;
+    }     
 }
 
-
-
-// odometry signal change interrupt
-ISR(PCINT2_vect, ISR_NOBLOCK){
-  unsigned long timeMicros = micros();
-  boolean odometryLeftState = digitalRead(pinOdometryLeft);
-  boolean odometryLeftState2 = digitalRead(pinOdometryLeft2);
-  boolean odometryRightState = digitalRead(pinOdometryRight);  
-  boolean odometryRightState2 = digitalRead(pinOdometryRight2);  
-  setOdometryState(timeMicros, odometryLeftState, odometryRightState, odometryLeftState2, odometryRightState2);   
-}
 
 
 void setup()  {
-  Serial.begin(19200);  
+  PinMan.begin();
+  pinMode(pinBuzzer, OUTPUT);
+  Serial.begin(19200);    
   Serial.println("START");  
   
   // odometry
-  pinMode(pinOdometryLeft, INPUT_PULLUP);  
-  pinMode(pinOdometryLeft2, INPUT_PULLUP);    
-  pinMode(pinOdometryRight, INPUT_PULLUP);
-  pinMode(pinOdometryRight2, INPUT_PULLUP);    
+  //pinMode(pinOdometryLeft, INPUT_PULLUP);  
+  //pinMode(pinOdometryRight, INPUT_PULLUP);
+  pinMode(pinOdometryLeft, INPUT);  
+  pinMode(pinOdometryRight, INPUT);  
   
-  
-  // enable odometry interrupts
-  PCICR |= (1<<PCIE2);
-  PCMSK2 |= (1<<PCINT20);
-  PCMSK2 |= (1<<PCINT21);  
-  PCMSK2 |= (1<<PCINT22);
-  PCMSK2 |= (1<<PCINT23);                
+  attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);    
+  attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);  
+  //PinMan.setDebounce(pinOdometryLeft, 100);  // reject spikes shorter than usecs on pin
+  //PinMan.setDebounce(pinOdometryRight, 100);  // reject spikes shorter than usecs on pin         
 }
 
-
-void loop()  {
-  
+void loop()  {  
   Serial.print(odometryLeft);    
   Serial.print(",");    
   Serial.print(odometryRight);    

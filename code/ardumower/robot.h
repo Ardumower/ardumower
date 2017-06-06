@@ -222,6 +222,10 @@ class Robot
     bool odometryLeftSwapDir;       // inverse left encoder direction?        
     int odometryLeft ;   // left wheel counter
     int odometryRight ;  // right wheel counter
+		unsigned long lastOdoTriggerTimeRight;
+		unsigned long lastOdoTriggerTimeLeft;
+		unsigned long odoTriggerTimeLeft;
+		unsigned long odoTriggerTimeRight;
     boolean odometryLeftLastState;
     boolean odometryLeftLastState2;
     boolean odometryRightLastState;
