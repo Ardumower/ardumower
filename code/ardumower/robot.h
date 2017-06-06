@@ -367,6 +367,7 @@ class Robot
     PID perimeterPID ;             // perimeter PID controller
     int perimeterMag ;             // perimeter magnitude
     RunningMedian perimeterMagMedian = RunningMedian(300);
+    float PeriCoeffAccel;
     int leftSpeedperi;
     int rightSpeedperi;
     unsigned long lastTimeForgetWire;

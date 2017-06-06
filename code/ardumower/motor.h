@@ -1,7 +1,5 @@
 // motor controller (normal & perimeter tracking), odometry
 
-
-
 // ---- motor RPM (interrupt) --------------------------------------------------------------
 // mower motor RPM driver
 void Robot::setMotorMowRPMState(boolean motorMowRpmState){
@@ -255,10 +253,13 @@ void Robot::motorControlPerimeter() {
 
   
 
- // here we have just found again the wire we need a slow return to let the pid temp react by decreasing its action (perimeterPID.y / 2)
-  if ((millis() - lastTimeForgetWire ) < trackingPerimeterTransitionTimeOut / 1.5 ) {
-    rightSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 2 +  perimeterPID.y / 2));
-    leftSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 2 -  perimeterPID.y / 2));
+ // here we have just found again the wire we need a slow return to let the pid temp react by decreasing its action (perimeterPID.y / PeriCoeffAccel)
+if ((millis() - lastTimeForgetWire ) < trackingPerimeterTransitionTimeOut) {
+    //PeriCoeffAccel move gently from 3 to 1 and so perimeterPID.y/PeriCoeffAccel increase during 3 secondes
+    PeriCoeffAccel = (3000.00 - (millis() - lastTimeForgetWire))/1000.00 ;
+    if (PeriCoeffAccel < 1.00) PeriCoeffAccel = 1.00;
+    rightSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 1.5 +  perimeterPID.y / PeriCoeffAccel));
+    leftSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 1.5 -  perimeterPID.y / PeriCoeffAccel));
  }
   else
 //we are in straight line the pid is total and not/2
