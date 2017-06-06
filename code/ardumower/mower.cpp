@@ -179,7 +179,7 @@ Mower::Mower(){
   odometryUse                = 1;          // use odometry?    
   
 	#if defined (ROBOT_ARDUMOWER)
-	  odometryTicksPerRevolution = 1060*2;       // encoder ticks per one full resolution (without any divider)
+	  odometryTicksPerRevolution = 1060;       // encoder ticks per one full resolution (without any divider)
 		wheelDiameter              = 250;        // wheel diameter (mm)
 		odometryWheelBaseCm        = 36;         // wheel-to-wheel distance (cm)
   #else  // ROBOT_MINI		
@@ -189,7 +189,7 @@ Mower::Mower(){
 	#endif
 		
   #if defined (PCB_1_3)    
-		#define DIVIDER_DIP_SWITCH  1             //  sets used PCB odometry divider (1=no divider, 2=DIV/2, 4=DIV/4, 8=DIV/8, etc.) 
+		#define DIVIDER_DIP_SWITCH  2             //  sets used PCB odometry divider (2=DIV/2, 4=DIV/4, 8=DIV/8, etc.) 
 		odometryTicksPerRevolution /= DIVIDER_DIP_SWITCH;        // encoder ticks per one full resolution 
   #endif
   odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / (2*3.1415);    // computes encoder ticks per cm (do not change)
@@ -244,14 +244,15 @@ ISR(PCINT0_vect){
 // SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
 // http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
 #ifdef __AVR__
-
-  volatile byte oldOdoPins = 0;
+  
+	volatile byte oldOdoPins = 0;
+  // Arduino Mega odometry interrupts
   ISR(PCINT2_vect, ISR_NOBLOCK)
-  {		
+  {				
 		const byte actPins = PINK;                				// read register PINK
-    const byte setPins = (oldOdoPins ^ actPins);
+		const byte setPins = (oldOdoPins ^ actPins);
 		unsigned long time = millis();    
-    if (setPins & 0b00010000)                 				// pin left has changed 
+    if ((setPins & 0b00010000) && (actPins & 0b00010000))               				// pin left is RISING
     {
 			if (time > robot.lastOdoTriggerTimeLeft) robot.odoTriggerTimeLeft = time - robot.lastOdoTriggerTimeLeft;
 			robot.lastOdoTriggerTimeLeft = time;    						
@@ -260,7 +261,7 @@ ISR(PCINT0_vect){
       else
         robot.odometryLeft--;									// backward
     }
-    if (setPins & 0b01000000)                  				// pin right has changed
+    if ((setPins & 0b01000000) && (actPins & 0b01000000))                  				// pin right is RISING
     {
 			if (time > robot.lastOdoTriggerTimeRight) robot.odoTriggerTimeRight = time - robot.lastOdoTriggerTimeRight;
 			robot.lastOdoTriggerTimeRight = time;    			
@@ -268,47 +269,32 @@ ISR(PCINT0_vect){
         robot.odometryRight++;								// forward
       else
         robot.odometryRight--;								// backward
-    }  
-    oldOdoPins = actPins;
+    }      
+		oldOdoPins = actPins;
   }
 
 #else
-
-  volatile long oldOdoPins_A = 0;
-  volatile long oldOdoPins_B = 0;
   
-  ISR(PCINT2_vect)
-    {
-    const long actPins_A = REG_PIOA_PDSR;       			// read PIO A
-    const long actPins_B = REG_PIOB_PDSR;                               // read PIO B
-    const long setPins_A = (oldOdoPins_A ^ actPins_A);
-    const long setPins_B = (oldOdoPins_B ^ actPins_B);
-		unsigned long time = millis();    
-    
-    //Right
-    if (setPins_A & 0b00000000000000000000000000000010)			// pin right has changed 
-    {
+  // Arduino Due odometry interrupts
+  void OdometryRightInt(){
+			unsigned long time = millis();    
 			if (time > robot.lastOdoTriggerTimeRight) robot.odoTriggerTimeRight = time - robot.lastOdoTriggerTimeRight;
 			robot.lastOdoTriggerTimeRight = time;    			
-			if (robot.motorRightPWMCurr >= 0)					// forward
-        robot.odometryRight++;
+			if (robot.motorRightPWMCurr >= 0)
+        robot.odometryRight++;								// forward
       else
-        robot.odometryRight--;	 // backward
-      oldOdoPins_A = actPins_A;
-    }
-    
-    //Left
-    if (setPins_B & 0b00000000000000001000000000000000)         	// pin left has changed
-    {
+        robot.odometryRight--;								// backward
+  }   
+
+	void OdometryLeftInt(){
+			unsigned long time = millis();    
 			if (time > robot.lastOdoTriggerTimeLeft) robot.odoTriggerTimeLeft = time - robot.lastOdoTriggerTimeLeft;
 			robot.lastOdoTriggerTimeLeft = time;    						
-			if (robot.motorLeftPWMCurr >= 0)
-        robot.odometryLeft++;						// forward
+			if (robot.motorLeftPWMCurr >= 0)						// forward
+        robot.odometryLeft++;
       else
-        robot.odometryLeft--;						// backward
-      oldOdoPins_B = actPins_B;
-    }  
-  }
+        robot.odometryLeft--;									// backward
+  }	
 
 #endif
 
@@ -507,10 +493,10 @@ void Mower::setup(){
 #else
   // Due interrupts
   // ODO
-  attachInterrupt(pinOdometryLeft, PCINT2_vect, CHANGE);    
-  attachInterrupt(pinOdometryRight, PCINT2_vect, CHANGE);  
-	//PinMan.setDebounce(pinOdometryLeft, 100);  // reject spikes shorter than usecs on pin
-	//PinMan.setDebounce(pinOdometryRight, 100);  // reject spikes shorter than usecs on pin	      
+  attachInterrupt(pinOdometryLeft, OdometryLeftInt, RISING);    
+  attachInterrupt(pinOdometryRight, OdometryRightInt, RISING);  
+	PinMan.setDebounce(pinOdometryLeft, 100);  // reject spikes shorter than usecs on pin
+	PinMan.setDebounce(pinOdometryRight, 100);  // reject spikes shorter than usecs on pin	      
     
 	// RC
   attachInterrupt(pinRemoteSpeed, PCINT0_vect, CHANGE);            
