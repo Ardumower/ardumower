@@ -157,9 +157,9 @@ Mower::Mower(){
 	#endif 
   batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
-	startChargingIfBelow       = 99999.0;      // start charging if battery Voltage is below
-	chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs
-	batFullCurrent             = -99999.0;       // current flowing when battery is fully charged	 (amp)
+	startChargingIfBelow       = 29.2;      // start charging if battery Voltage is below (99999=disabled)
+	chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs  (2147483647=disabled)
+	batFullCurrent             = 0.2;       // current flowing when battery is fully charged	(amp), (-99999=disabled)
 	chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
 	
   #if defined (PCB_1_2)     // PCB 1.2	  
@@ -167,7 +167,7 @@ Mower::Mower(){
 		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	*10
 		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10	
   #elif defined (PCB_1_3)   // PCB 1.3
-		batSwitchOffIfIdle         = 1;          // switch off battery if idle (minutes, 0=off) 
+		batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
   	batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
 		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
   #endif
