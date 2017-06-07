@@ -124,13 +124,13 @@ Mower::Mower(){
     perimeterPID.Ki            = 12.5;
     perimeterPID.Kd            = 0.8;  
 	#else // ROBOT_MINI
-		perimeterPID.Kp    = 60.0;  // perimeter PID controller
-    perimeterPID.Ki    = 6.0;
-    perimeterPID.Kd    = 5.0;
+		perimeterPID.Kp    = 24.0;  // perimeter PID controller
+    perimeterPID.Ki    = 7.0;
+    perimeterPID.Kd    = 9.0;
 	#endif  
   
-  trackingPerimeterTransitionTimeOut              = 2000;
-  trackingErrorTimeOut                            = 10000;
+  trackingPerimeterTransitionTimeOut              = 2000;   // 0=disable
+  trackingErrorTimeOut                            = 10000;  // 0=disable
   trackingBlockInnerWheelWhilePerimeterStruggling = 1;
   
   // ------ lawn sensor --------------------------------

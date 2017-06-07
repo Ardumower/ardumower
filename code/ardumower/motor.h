@@ -149,7 +149,7 @@ void Robot::motorControlPerimeter(){
   if (millis() < nextTimeMotorPerimeterControl) return;
     nextTimeMotorPerimeterControl = millis() + 100;
 
-  if ((millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + trackingPerimeterTransitionTimeOut)){
+  if ( (trackingPerimeterTransitionTimeOut != 0) && (millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + trackingPerimeterTransitionTimeOut) ) {
     // robot is wheel-spinning while tracking => roll to get ground again
     if (trackingBlockInnerWheelWhilePerimeterStruggling == 0){
     if (perimeterInside) setMotorPWM( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
@@ -160,7 +160,7 @@ void Robot::motorControlPerimeter(){
         else setMotorPWM( motorSpeedMaxPwm/1.5, 0, false);
     }
 
-    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut){      
+    if ((trackingErrorTimeOut != 0) && (millis() > perimeterLastTransitionTime + trackingErrorTimeOut)){      
       Console.println("Error: tracking error");
       addErrorCounter(ERR_TRACKING);
       //setNextState(STATE_ERROR,0);
