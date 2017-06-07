@@ -31,8 +31,8 @@ void Robot::loadSaveErrorCounters(boolean readflag){
   if ((readflag) && (magic != MAGIC)) {
     Console.println(F("EEPROM ERR COUNTERS: NO EEPROM ERROR DATA"));
     Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
-    addErrorCounter(ERR_EEPROM_DATA);
-    setNextState(STATE_ERROR, 0);
+    //addErrorCounter(ERR_EEPROM_DATA);
+    //setNextState(STATE_ERROR, 0);
     return;
   }
   eereadwrite(readflag, addr, errorCounterMax);  
@@ -48,8 +48,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   if ((readflag) && (magic != MAGIC)) {
     Console.println(F("EEPROM USERDATA: NO EEPROM USER DATA"));
     Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
-    addErrorCounter(ERR_EEPROM_DATA);
-    setNextState(STATE_ERROR, 0);
+    //addErrorCounter(ERR_EEPROM_DATA);
+    //setNextState(STATE_ERROR, 0);
     return;
   }
   eereadwrite(readflag, addr, developerActive);          

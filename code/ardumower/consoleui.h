@@ -39,9 +39,9 @@ void Robot::printInfo(Stream &s){
   if (consoleMode == CONSOLE_OFF) {
   } else {
   Streamprint(s, "t%6u ", (millis()-stateStartTime)/1000);  
-  Streamprint(s, "l%3u ", loopsPerSec);  
+  Streamprint(s, "L%3u ", loopsPerSec);  
   //Streamprint(s, "r%4u ", freeRam());  
-  Streamprint(s, "v%1d ", consoleMode);			    
+  Streamprint(s, "m%1d ", consoleMode);			    
   Streamprint(s, "%4s ", stateNames[stateCurr]);			    
   if (consoleMode == CONSOLE_PERIMETER){
     Streamprint(s, "sig min %4d max %4d avg %4d mag %5d qty %3d",
@@ -50,8 +50,8 @@ void Robot::printInfo(Stream &s){
     Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",  
       (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut(0)) );      
   } else {  
-    if (odometryUse) Streamprint(s, "odo %4d %4d ", (int)odometryLeft, (int)odometryRight);   
-    Streamprint(s, "spd %4d %4d %4d ", (int)motorLeftSpeedRpmSet, (int)motorRightSpeedRpmSet, (int)motorMowRpmCurr);
+    if (odometryUse) Streamprint(s, "rpm %4d %4d ", (int)motorLeftRpmCurr, (int)motorRightRpmCurr);   
+    Streamprint(s, "set %4d %4d ", (int)motorLeftSpeedRpmSet, (int)motorRightSpeedRpmSet);
     if (consoleMode == CONSOLE_SENSOR_VALUES){
       // sensor values
       Streamprint(s, "sen %4d %4d %4d ", (int)motorLeftSense, (int)motorRightSense, (int)motorMowSense);

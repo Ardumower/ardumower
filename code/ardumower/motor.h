@@ -16,7 +16,7 @@ void Robot::setMotorMowRPMState(boolean motorMowRpmState){
 // calculate map position by odometry sensors
 void Robot::calcOdometry(){
   if ((!odometryUse) || (millis() < nextTimeOdometry)) return;    
-  nextTimeOdometry = millis() + 200;
+  nextTimeOdometry = millis() + 100;
 
   static int lastOdoLeft = 0;
   static int lastOdoRight = 0;
@@ -32,17 +32,9 @@ void Robot::calcOdometry(){
   double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
   odometryTheta += wheel_theta; 
   
-  if (odometryTicksPerRevolution < 500){
-    // calculate RPM via tick counters per time frame (precise if many ticks)
-    motorLeftRpmCurr  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
-    motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                
-  } else {  
-    // calculate RPM via time per tick  (if not many ticks - not precise)
-    motorLeftRpmCurr = 60.0 / ((float)odometryTicksPerRevolution) / (((float)odoTriggerTimeLeft)/1000.0);
-    if (motorLeftPWMCurr<0) motorLeftRpmCurr*=-1;
-    motorRightRpmCurr = 60.0 / ((float)odometryTicksPerRevolution) / (((float)odoTriggerTimeRight)/1000.0);
-    if (motorRightPWMCurr<0) motorRightRpmCurr*=-1;
-  }  
+	// calculate RPM 
+  motorLeftRpmCurr  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
+  motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                      
   lastMotorRpmTime = millis();
                
   if (imuUse){
@@ -57,8 +49,6 @@ void Robot::calcOdometry(){
 
 
 // sets wheel motor actuators
-// - driver protection: delays polarity change until motor speed (EMV) is zero
-//   http://wiki.ardumower.de/images/a/a5/Motor_polarity_switch_protection.png 
 // - optional: ensures that the motors (and gears) are not switched to 0% (or 100%) too fast (motorAccel)
 void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
   unsigned long TaC = millis() - lastSetMotorSpeedTime;    // sampling time in millis
@@ -72,32 +62,8 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
     motorRightPWMCurr += TaC * (pwmRight - motorRightPWMCurr) / motorAccel;   
   }
 
-  // ----- driver protection (avoids driver explosion) ----------
-  if ( ((pwmLeft < 0) && (motorLeftPWMCurr >= 0)) ||
-       ((pwmLeft > 0) && (motorLeftPWMCurr <= 0)) ) { // changing direction should take place?
-    if (motorLeftZeroTimeout != 0)
-      pwmLeft = motorLeftPWMCurr - motorLeftPWMCurr *  ((float)TaC)/200.0; // reduce speed
-  }
-  if ( ((pwmRight < 0) && (motorRightPWMCurr >= 0)) ||
-       ((pwmRight > 0) && (motorRightPWMCurr <= 0)) ) { // changing direction should take place?    
-    if (motorRightZeroTimeout != 0) // reduce motor rotation? (will reduce EMF)      
-      pwmRight = motorRightPWMCurr - motorRightPWMCurr *   ((float)TaC)/200.0;  // reduce speed
-  }
-
   motorLeftPWMCurr = pwmLeft;
   motorRightPWMCurr = pwmRight;
-
-  if (odometryUse){
-    if (abs(motorLeftRpmCurr) <1) motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
-      else motorLeftZeroTimeout = 500;
-    if (abs(motorRightRpmCurr) <1) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
-      else motorRightZeroTimeout = 500;
-  } else {
-    if (pwmLeft == 0)  motorLeftZeroTimeout = max(0, ((int)(motorLeftZeroTimeout - TaC)) );
-      else motorLeftZeroTimeout = 700;  
-    if (pwmRight == 0) motorRightZeroTimeout = max(0, ((int)(motorRightZeroTimeout - TaC)) );      
-      else motorRightZeroTimeout = 700;  
-  }
 
   // ---------------------------------
   if (motorLeftSwapDir)  // swap pin polarity?
@@ -319,8 +285,10 @@ void Robot::motorControl(){
     float RLdiff = motorLeftRpmCurr - motorRightRpmCurr;
     if (motorLeftSpeedRpmSet == motorRightSpeedRpmSet){
       // line motion
-      motorLeftPID.w = motorLeftSpeedRpmSet - RLdiff/2;
-      motorRightPID.w = motorRightSpeedRpmSet + RLdiff/2;      
+      if (odoLeftRightCorrection){
+			  motorLeftPID.w = motorLeftSpeedRpmSet - RLdiff/2;
+        motorRightPID.w = motorRightSpeedRpmSet + RLdiff/2;      
+      }
     }
     motorLeftPID.x = motorLeftRpmCurr;                 // IST     
     if (millis() < stateStartTime + motorZeroSettleTime) motorLeftPID.w = 0; // get zero speed first after state change
@@ -328,10 +296,9 @@ void Robot::motorControl(){
     motorLeftPID.y_max = motorSpeedMaxPwm;     // Regel-MAX
     motorLeftPID.max_output = motorSpeedMaxPwm;    // Begrenzung
     motorLeftPID.compute();
-    int leftSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorLeftPWMCurr + motorLeftPID.y));
-    // Sven reported the next two lines do make the PID controlling worse
-    //if((motorLeftSpeedRpmSet >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
-    //if((motorLeftSpeedRpmSet <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
+		int leftSpeed = motorLeftPWMCurr + motorLeftPID.y;
+		if (motorLeftSpeedRpmSet >= 0) leftSpeed = min( max(0, leftSpeed), motorSpeedMaxPwm);
+    if (motorLeftSpeedRpmSet < 0) leftSpeed = max(-motorSpeedMaxPwm, min(0, leftSpeed)); 		
 
     // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorRightPID.Kp = motorLeftPID.Kp;
@@ -343,10 +310,9 @@ void Robot::motorControl(){
     motorRightPID.y_max = motorSpeedMaxPwm;        // Regel-MAX
     motorRightPID.max_output = motorSpeedMaxPwm;   // Begrenzung
     motorRightPID.compute();            
-    int rightSpeed = max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorRightPWMCurr + motorRightPID.y));
-    // Sven reported the next two lines do make the PID controlling worse
-    //if((motorRightSpeedRpmSet >= 0 ) && (rightSpeed <0 )) rightSpeed = 0;
-    //if((motorRightSpeedRpmSet <= 0 ) && (rightSpeed >0 )) rightSpeed = 0;         
+		int rightSpeed = motorRightPWMCurr + motorRightPID.y;
+		if (motorRightSpeedRpmSet >= 0) rightSpeed = min( max(0, rightSpeed), motorSpeedMaxPwm);
+    if (motorRightSpeedRpmSet < 0) rightSpeed = max(-motorSpeedMaxPwm, min(0, rightSpeed)); 		   
 
     if ( (abs(motorLeftPID.x) < 2) && (abs(motorLeftPID.w) < 0.1) ) leftSpeed = 0; // ensures PWM is really zero 
     if ( (abs(motorRightPID.x)  < 2) && (abs(motorRightPID.w) < 0.1) ) rightSpeed = 0; // ensures PWM is really zero     

@@ -221,11 +221,7 @@ class Robot
     bool odometryRightSwapDir;       // inverse right encoder direction?
     bool odometryLeftSwapDir;       // inverse left encoder direction?        
     int odometryLeft ;   // left wheel counter
-    int odometryRight ;  // right wheel counter
-		unsigned long lastOdoTriggerTimeRight;
-		unsigned long lastOdoTriggerTimeLeft;
-		unsigned long odoTriggerTimeLeft;
-		unsigned long odoTriggerTimeRight;
+    int odometryRight ;  // right wheel counter		
     boolean odometryLeftLastState;
     boolean odometryLeftLastState2;
     boolean odometryRightLastState;
@@ -238,6 +234,7 @@ class Robot
     unsigned long lastMotorRpmTime ;     
     unsigned long nextTimeOdometry ;
     unsigned long nextTimeOdometryInfo ; 
+		boolean odoLeftRightCorrection;
     // -------- RC remote control state -----------------    
     char remoteUse      ;       // use model remote control (R/C)?
     int remoteSteer ;  // range -100..100

@@ -75,9 +75,7 @@ Robot::Robot(){
   statsMowTimeTotalStart = false;            
   mowPatternCurr = MOW_RANDOM;
   
-  odometryLeft = odometryRight = 0;
-	odoTriggerTimeLeft = odoTriggerTimeRight = 0;
-	lastOdoTriggerTimeLeft = lastOdoTriggerTimeRight = 0;
+  odometryLeft = odometryRight = 0;	
   odometryLeftLastState = odometryLeftLastState2 = odometryRightLastState = odometryRightLastState2 = LOW;
   odometryTheta = odometryX = odometryY = 0;
 
@@ -243,8 +241,10 @@ void Robot::setup()  {
   loadUserSettings();
   if (!statsOverride) loadSaveRobotStats(true);
   else loadSaveRobotStats(false);
-  setUserSwitches();
-
+  setUserSwitches();	
+	if (!ADCMan.calibrationDataAvail()) {
+    ADCMan.calibrate();
+  }
   
   if (!buttonUse){
     // robot has no ON/OFF button => start immediately
@@ -270,11 +270,9 @@ void Robot::setup()  {
 	Console.print(F("  IOREF="));	
 	Console.println(IOREF);
 
-  #ifdef USE_DEVELOPER_TEST
-    Console.println(F("Warning: USE_DEVELOPER_TEST activated"));
-  #endif
-  Console.print(F("Config: "));
+  Console.print(F("Robot: "));
   Console.println(name);  
+      
   Console.println(F("press..."));
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
@@ -379,8 +377,8 @@ void Robot::readSensors(){
       lastMotorMowRpmTime = millis();     
       if (!ADCMan.calibrationDataAvail()) {
         //Console.println(F("Error: missing ADC calibration data"));
-        addErrorCounter(ERR_ADC_CALIB);
-        setNextState(STATE_ERROR, 0);
+        //addErrorCounter(ERR_ADC_CALIB);
+        //setNextState(STATE_ERROR, 0);
       }
     }
   }  
