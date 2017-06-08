@@ -76,8 +76,7 @@ enum {
   SEN_BUMPER_LEFT,       // LOW = pressed
   SEN_BUMPER_RIGHT,      // LOW = pressed
   SEN_DROP_LEFT,       // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor
-  SEN_DROP_RIGHT,      // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor
-  
+  SEN_DROP_RIGHT,      // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor  
   SEN_SONAR_CENTER,      // 0..SONAR_TRIGGER_DISTANCE
   SEN_SONAR_LEFT,        // 0..SONAR_TRIGGER_DISTANCE
   SEN_SONAR_RIGHT,       // 0..SONAR_TRIGGER_DISTANCE
@@ -182,7 +181,7 @@ class Robot
     byte stateLast;
     byte stateNext;    
     unsigned long stateTime;
-    char* stateName();
+    const char* stateName();
     unsigned long stateStartTime;
     unsigned long stateEndTime;
     int idleTimeSec;
@@ -198,7 +197,7 @@ class Robot
     String esp8266ConfigString = "";
     // -------- mow pattern -----------------------------    
     byte mowPatternCurr;
-    char *mowPatternName();
+    const char *mowPatternName();
     // -------- gps state -------------------------------
     GPS gps;
     char gpsUse            ;       // use GPS?        
@@ -406,7 +405,9 @@ class Robot
     RemoteControl rc; // pfodApp
     unsigned long nextTimePfodLoop ;    
     // ----- other -----------------------------------------
-    char buttonUse         ;       // has digital ON/OFF button?
+    char lastSensorTriggered;          // last triggered sensor
+		unsigned long lastSensorTriggeredTime;
+		char buttonUse         ;       // has digital ON/OFF button?
     // ----- user-defined switch ---------------------------
     char userSwitch1       ;       // user-defined switch 1 (default value)
     char userSwitch2       ;       // user-defined switch 2 (default value)
@@ -519,6 +520,7 @@ class Robot
     virtual void addErrorCounter(byte errType);    
     virtual void resetErrorCounters();
     virtual void resetMotorFault(){}
+		virtual const char *lastSensorTriggeredName();
 
 protected:
     // convert ppm time to RC slider value
@@ -568,7 +570,8 @@ protected:
     // set reverse
     virtual void reverseOrBidir(byte aRollDir);    
     
-    // other
+    // other		
+	  virtual void setSensorTriggered(char type);
     virtual void printRemote();
     virtual void printOdometry();
     virtual void printMenu();    

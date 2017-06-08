@@ -34,12 +34,17 @@
 #define ADDR_ERR_COUNTERS 400
 #define ADDR_ROBOT_STATS 800
 
-char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
+const char* stateNames[] ={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL", "TILT"};
 
-char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
+const char* sensorNames[] ={"SEN_PERIM_LEFT", "SEN_PERIM_RIGHT", "SEN_PERIM_LEFT_EXTRA", "SEN_PERIM_RIGHT_EXTRA", "SEN_LAWN_FRONT", "SEN_LAWN_BACK", 
+	"SEN_BAT_VOLTAGE", "SEN_CHG_CURRENT", "SEN_CHG_VOLTAGE", "SEN_MOTOR_LEFT", "SEN_MOTOR_RIGHT", "SEN_MOTOR_MOW", "SEN_BUMPER_LEFT", "SEN_BUMPER_RIGHT", 
+	"SEN_DROP_LEFT", "SEN_DROP_RIGHT", "SEN_SONAR_CENTER", "SEN_SONAR_LEFT", "SEN_SONAR_RIGHT", "SEN_BUTTON", "SEN_IMU", "SEN_MOTOR_MOW_RPM", "SEN_RTC",
+  "SEN_RAIN", "SEN_TILT"};
 
-char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter", "off"}; 
+const char* mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
+
+const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off"}; 
 
 
 // --- split robot class ----
@@ -69,7 +74,8 @@ Robot::Robot(){
   developerActive = false;
   rc.setRobot(this);
   
-  stateLast = stateCurr = stateNext = STATE_OFF; 
+  lastSensorTriggeredTime =0;
+	stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
   idleTimeSec = 0;
   statsMowTimeTotalStart = false;            
@@ -202,11 +208,26 @@ Robot::Robot(){
   statsBatteryChargingCounter = 0;
 }
 
-char *Robot::mowPatternName(){
+const char *Robot::mowPatternName(){
   return mowPatternNames[mowPatternCurr];
 }
 
+void Robot::setSensorTriggered(char type){
+  lastSensorTriggered = type;
+  lastSensorTriggeredTime = millis();
+  Console.println( sensorNames[lastSensorTriggered] );
+}
 
+const char *Robot::lastSensorTriggeredName(){
+  String s = "";
+  if (lastSensorTriggeredTime != 0) {
+    s = sensorNames[lastSensorTriggered];
+    s += " (";
+    s += String( (millis()-lastSensorTriggeredTime) /1000);
+    s += " s ago)";
+  }
+  return s.c_str();
+}
 
 void Robot::resetIdleTime(){
   if (idleTimeSec == BATTERY_SW_OFF){ // battery switched off?
@@ -293,6 +314,7 @@ void Robot::checkButton(){
       // ON/OFF button pressed                                                
       beep(1);
       buttonCounter++;
+			setSensorTriggered(SEN_BUTTON);
       resetIdleTime();
     } 
     else { 
@@ -389,6 +411,7 @@ void Robot::readSensors(){
     perimeterMag = readSensor(SEN_PERIM_LEFT);
     if ((perimeter.isInside(0) != perimeterInside)){      
       perimeterCounter++;
+			setSensorTriggered(SEN_PERIM_LEFT);
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
@@ -432,6 +455,7 @@ void Robot::readSensors(){
       Console.print(",");
       Console.println(deltaBack);
       lawnSensorCounter++;
+			setSensorTriggered(SEN_LAWN_FRONT);
       lawnSensor=true;
     }
     lawnSensorFrontOld = lawnSensorFront;
@@ -474,11 +498,13 @@ void Robot::readSensors(){
         
     if (readSensor(SEN_BUMPER_LEFT) == 0) {
       bumperLeftCounter++;
+			setSensorTriggered(SEN_BUMPER_LEFT);
       bumperLeft=true;
     }
 
     if (readSensor(SEN_BUMPER_RIGHT) == 0) {
       bumperRightCounter++;
+			setSensorTriggered(SEN_BUMPER_RIGHT);
       bumperRight=true;
     } 
   }
@@ -488,12 +514,14 @@ void Robot::readSensors(){
     nextTimeDrop = millis() + 100;                                                                                          // Dropsensor - Absturzsensor
     if (readSensor(SEN_DROP_LEFT) == dropcontact) {                                                                         // Dropsensor - Absturzsensor
       dropLeftCounter++;                                                                                                    // Dropsensor - Absturzsensor
-      dropLeft=true;                                                                                                        // Dropsensor - Absturzsensor
+			setSensorTriggered(SEN_DROP_LEFT);	
+			dropLeft=true;                                                                                                        // Dropsensor - Absturzsensor
     }                                                                                                                       // Dropsensor - Absturzsensor
  
     if (readSensor(SEN_DROP_RIGHT) == dropcontact) {                                                                          // Dropsensor - Absturzsensor
       dropRightCounter++;                                                                                                   // Dropsensor - Absturzsensor
-      dropRight=true;                                                                                                       // Dropsensor - Absturzsensor
+      setSensorTriggered(SEN_DROP_RIGHT);
+			dropRight=true;                                                                                                       // Dropsensor - Absturzsensor
     } 
   }    
   
@@ -553,7 +581,10 @@ void Robot::readSensors(){
     // read rain sensor
     nextTimeRain = millis() + 5000;
     rain = (readSensor(SEN_RAIN) != 0);  
-    if (rain) rainCounter++;
+    if (rain) {
+		  rainCounter++;	
+		  setSensorTriggered(SEN_RAIN);
+    }
   }  
 }
 
@@ -632,6 +663,7 @@ void Robot::checkCurrent(){
     if (motorLeftSense >= motorPowerMax)
     {
        motorLeftSenseCounter++;
+			 setSensorTriggered(SEN_MOTOR_LEFT);
        setMotorPWM( 0, 0, false );
        addErrorCounter(ERR_MOTOR_LEFT);
        setNextState(STATE_ERROR, 0);
@@ -640,7 +672,8 @@ void Robot::checkCurrent(){
     if (motorRightSense >= motorPowerMax)
     {
        motorRightSenseCounter++;
-       setMotorPWM( 0, 0, false );
+			 setSensorTriggered(SEN_MOTOR_RIGHT);
+			 setMotorPWM( 0, 0, false );
        addErrorCounter(ERR_MOTOR_RIGHT);
        setNextState(STATE_ERROR, 0);
        Console.println("Error: Motor Right current");
@@ -648,7 +681,8 @@ void Robot::checkCurrent(){
   }
 
   if (motorMowSense >= motorMowPowerMax){
-      motorMowSenseCounter++;
+    motorMowSenseCounter++;
+		setSensorTriggered(SEN_MOTOR_MOW);
   }
   else{ 
       errorCounterMax[ERR_MOW_SENSE] = 0;
@@ -676,15 +710,18 @@ void Robot::checkCurrent(){
           && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
       //beep(1);
       motorLeftSenseCounter++;
+			setSensorTriggered(SEN_MOTOR_LEFT);
       setMotorPWM( 0, 0, false );  
       reverseOrBidir(RIGHT);
     } else if    ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
+			setSensorTriggered(SEN_MOTOR_LEFT);
       setMotorPWM( 0, 0, false );  
       //   reverseOrBidir(RIGHT);
       setNextState(STATE_ROLL,RIGHT);				          
     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
+			setSensorTriggered(SEN_MOTOR_LEFT);
       setMotorPWM( 0, 0, false );  
       setNextState(STATE_FORWARD, 0);
     }    
@@ -694,14 +731,17 @@ void Robot::checkCurrent(){
      if ( ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_PERI_FIND)) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
        //beep(1);
        motorRightSenseCounter++;
+			 setSensorTriggered(SEN_MOTOR_RIGHT);
        setMotorPWM( 0, 0, false );  
        reverseOrBidir(RIGHT);
      } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
        motorRightSenseCounter++;
+				setSensorTriggered(SEN_MOTOR_RIGHT);
        setMotorPWM( 0, 0, false );  
        setNextState(STATE_ROLL,LEFT);				          
      } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorPowerIgnoreTime)){
        motorRightSenseCounter++;
+			 setSensorTriggered(SEN_MOTOR_RIGHT);
        setMotorPWM( 0, 0, false );  
        setNextState(STATE_FORWARD, 0);
     }
@@ -863,15 +903,18 @@ void Robot::checkSonar(){
 	 if (sonarTriggerBelow != 0){
 		if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)) {
 			sonarDistCounter++;   
+			setSensorTriggered(SEN_SONAR_CENTER);
 			if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
 				else reverseOrBidir(RIGHT);    
 		}
 		if ((sonarDistRight != NO_ECHO) && (sonarDistRight < sonarTriggerBelow)){
 			sonarDistCounter++;
+			setSensorTriggered(SEN_SONAR_RIGHT);
 			reverseOrBidir(LEFT);
 		}
 		if ((sonarDistLeft != NO_ECHO) && (sonarDistLeft < sonarTriggerBelow)){
 			sonarDistCounter++; 
+			setSensorTriggered(SEN_SONAR_LEFT);
 			reverseOrBidir(RIGHT);
 		}
 	}
@@ -886,6 +929,7 @@ void Robot::checkTilt(){
   if (tiltUse){
     if ((tilt) && (stateCurr != STATE_TILT_STOP) && (stateCurr != STATE_OFF) && (stateCurr != STATE_STATION_CHARGING)){
       Console.println(F("BumperDuino tilt"));      
+			setSensorTriggered(SEN_TILT);
       setNextState(STATE_TILT_STOP,0);
     }
   }
@@ -897,6 +941,7 @@ void Robot::checkTilt(){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
       Console.println(F("Error: IMU tilt"));
       addErrorCounter(ERR_IMU_TILT);
+			setSensorTriggered(SEN_TILT);
       setNextState(STATE_ERROR,0);
     }
   }
@@ -990,7 +1035,7 @@ void Robot::checkTimeout(){
 }
 
 
-char* Robot::stateName(){
+const char* Robot::stateName(){
   return stateNames[stateCurr];
 }
 

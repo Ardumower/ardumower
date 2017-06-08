@@ -112,7 +112,7 @@ Mower::Mower(){
 	sonarSlowBelow             = 1050*2;     // ultrasonic sensor slow down distance
   
   // ------ perimeter ---------------------------------
-  perimeterUse               = 1;          // use perimeter?    
+  perimeterUse               = 0;          // use perimeter?    
   perimeterTriggerTimeout    = 0;          // perimeter trigger timeout when escaping from inside (ms)  
   perimeterOutRollTimeMax    = 2000;       // roll time max after perimeter out (ms)
   perimeterOutRollTimeMin    = 750;        // roll time min after perimeter out (ms)

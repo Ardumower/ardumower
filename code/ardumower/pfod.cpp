@@ -547,8 +547,10 @@ void RemoteControl::sendPerimeterMenu(boolean update){
   sendYesNo(robot->perimeter.swapCoilPolarity);
   serialPort->print(F("|e13~Block inner wheel  "));
   sendYesNo(robot->trackingBlockInnerWheelWhilePerimeterStruggling);
-	serialPort->print(F("|e18~State is "));  
+	serialPort->print(F("|e18~State "));  
 	serialPort->print(robot->stateName());
+	serialPort->print(F("|e18~Last trigger "));
+	serialPort->print(robot->lastSensorTriggeredName());
 	serialPort->print(F("|e19~OFF|e20~Home|e21~Track"));
   serialPort->println("}");
 }
@@ -978,8 +980,10 @@ void RemoteControl::sendCommandMenu(boolean update){
   sendOnOff(robot->motorMowEnable);  
   serialPort->print(F("|rp~Pattern is "));
   serialPort->print(robot->mowPatternName());
-  serialPort->print(F("|rh~Home|rk~Track|rs~State is "));
+  serialPort->print(F("|rh~Home|rk~Track|rs~State "));
   serialPort->print(robot->stateName());
+	serialPort->print(F("|rs~Last trigger "));
+	serialPort->print(robot->lastSensorTriggeredName());
   serialPort->print(F("|rr~Auto rotate is "));
   serialPort->print(robot->motorLeftPWMCurr);
   serialPort->print(F("|r1~User switch 1 is "));
