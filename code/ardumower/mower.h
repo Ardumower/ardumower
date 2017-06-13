@@ -44,8 +44,8 @@
 #define PCB_1_3    
 
 // ------- Choose robot model (Ardumower or Ardumower Mini) -------------------
-//#define ROBOT_ARDUMOWER
-#define ROBOT_MINI
+#define ROBOT_ARDUMOWER
+//#define ROBOT_MINI
 
 
 // Due or Mega is detected automatically (based on Arduino IDE settings)

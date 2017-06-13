@@ -159,17 +159,18 @@ Mower::Mower(){
   batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
 	startChargingIfBelow       = 29.2;      // start charging if battery Voltage is below (99999=disabled)
 	chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs  (2147483647=disabled)
-	batFullCurrent             = 0.2;       // current flowing when battery is fully charged	(amp), (-99999=disabled)
-	chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
+	batFullCurrent             = 0.2;       // current flowing when battery is fully charged	(amp), (-99999=disabled)	
 	
   #if defined (PCB_1_2)     // PCB 1.2	  
 	  batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 	
 		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	*10
 		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10	
+		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
   #elif defined (PCB_1_3)   // PCB 1.3
 		batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
   	batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
 		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+		chgFactor                  = ADC2voltage(1)*5;        // ADC to charging current ampere factor  (see mower.h for macros)								  
   #endif
   
   batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
