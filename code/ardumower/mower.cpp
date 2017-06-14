@@ -310,17 +310,17 @@ NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
 // (required so we can use Arduino Due native port)
 
 void Mower::setup(){
+	PinMan.begin();    
+  // keep battery switched ON (keep this at system start!)
+  pinMode(pinBatterySwitch, OUTPUT);
+  digitalWrite(pinBatterySwitch, HIGH);
+
   Buzzer.begin();
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
-  Wire.begin();            
-	PinMan.begin();    
+  Wire.begin();            	
 	ADCMan.init();
   Console.println("SETUP");
-
-  // keep battery switched ON
-  pinMode(pinBatterySwitch, OUTPUT);
-  digitalWrite(pinBatterySwitch, HIGH);
   
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    
