@@ -558,23 +558,18 @@ void Robot::readSensors(){
     }
     // convert to double  
     batADC = readSensor(SEN_BAT_VOLTAGE);
-    double batvolt = (double)batADC * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    //double chgvolt = ((double)((int)(readSensor(SEN_CHG_VOLTAGE) / 10))) / 10.0;  
-    int chgADC = readSensor(SEN_CHG_VOLTAGE);
-    //Console.println(chgADC);
-    double chgvolt = (double)chgADC * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    double currentADC = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
+		int currentADC = readSensor(SEN_CHG_CURRENT);
+		int chgADC = readSensor(SEN_CHG_VOLTAGE);    
+		//Console.println(currentADC);
+    double batvolt = ((double)batADC) * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
+    double chgvolt = ((double)chgADC) * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
+		double curramp = ((double)currentADC) * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing		
     // low-pass filter
     double accel = 0.01;
+		//double accel = 1.0;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
-    // if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  //Deaktiviert für Ladestromsensor berechnung 
-
-    chgCurrent = (double)currentADC * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-        
-    //batVoltage = batVolt
-    //chgVoltage = chgvolt;
-    //chgCurrent = current;        
+		if (abs(chgCurrent-curramp)>0.5) chgCurrent = curramp; else chgCurrent = (1.0-accel) * chgCurrent + accel * curramp;       
   } 
 
   if ((rainUse) && (millis() >= nextTimeRain)) {
