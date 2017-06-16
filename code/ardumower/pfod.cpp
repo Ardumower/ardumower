@@ -388,7 +388,9 @@ void RemoteControl::processMotorMenu(String pfodCmd){
   
 void RemoteControl::sendMowMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.Mow`1000"));
-  serialPort->print(F("|o00~Overload Counter "));
+  serialPort->print(F("|o12~Force mowing off: "));
+  sendYesNo(robot->motorMowForceOff);	
+	serialPort->print(F("|o00~Overload Counter "));
   serialPort->print(robot->motorMowSenseCounter);
   serialPort->print(F("|o01~Power in Watt "));
   serialPort->print(robot->motorMowSense);
@@ -420,7 +422,8 @@ void RemoteControl::sendMowMenu(boolean update){
 
 void RemoteControl::processMowMenu(String pfodCmd){      
   if (pfodCmd.startsWith("o02")) processSlider(pfodCmd, robot->motorMowPowerMax, 0.1);
-    else if (pfodCmd.startsWith("o03")){
+    else if (pfodCmd.startsWith("o12")) robot->motorMowForceOff = !robot->motorMowForceOff;
+		else if (pfodCmd.startsWith("o03")){
             processSlider(pfodCmd, robot->motorMowSenseCurrent, 1);
             robot->motorMowSenseScale = robot->motorMowSenseCurrent / max(0,(float)robot->motorMowSenseADC);
          } 
@@ -1025,9 +1028,7 @@ void RemoteControl::processCommandMenu(String pfodCmd){
     robot->setNextState(STATE_REMOTE, 0);    
     sendCommandMenu(true);
   } else if (pfodCmd == "rm"){
-    // cmd: mower motor on/off
-    if (robot->stateCurr == STATE_OFF || robot->stateCurr == STATE_MANUAL) robot->motorMowEnableOverride = false;
-    else robot->motorMowEnableOverride = !robot->motorMowEnableOverride;     
+    // cmd: mower motor on/off    
     robot->motorMowEnable = !robot->motorMowEnable;      
     sendCommandMenu(true);
   } else if (pfodCmd == "rs"){

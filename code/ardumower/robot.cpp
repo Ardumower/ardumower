@@ -107,7 +107,7 @@ Robot::Robot(){
   motorMowRpmCounter = 0;
   motorMowRpmLastState = LOW;
   motorMowEnable = false;
-  motorMowEnableOverride = false;
+  motorMowForceOff = false;
   motorMowSpeedPWMSet = motorSpeedMaxRpm;
   motorMowPWMCurr = 0;
   motorMowSenseADC = 0;

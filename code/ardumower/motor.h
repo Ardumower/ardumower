@@ -350,7 +350,7 @@ void Robot::motorMowControl(){
   if (millis() < nextTimeMotorMowControl) return;
 
     nextTimeMotorMowControl = millis() + 100;
-    if (motorMowEnableOverride) motorMowEnable = false;
+    if (motorMowForceOff) motorMowEnable = false;
   double mowSpeed ;
   if (!motorMowEnable) {
     mowSpeed = 0;         
