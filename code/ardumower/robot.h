@@ -252,7 +252,7 @@ class Robot
     // -------- mower motor state -----------------------
     int motorMowRpmCounter ;  // mower motor speed state
     boolean motorMowRpmLastState ;
-    boolean motorMowEnable ;
+    boolean motorMowEnable ;  // motor can be temporary disabled if stucked etc. with this
     boolean motorMowForceOff ; // user switch for mower motor on/off has highest priority
     // --------- wheel motor state ----------------------------
     // wheel motor speed ( <0 backward, >0 forward); range -motorSpeedMaxRpm..motorSpeedMaxRpm
@@ -449,8 +449,8 @@ class Robot
     float statsBatteryChargingCapacityAverage;
     float lastTimeBatCapacity;
     // --------- error counters --------------------------
-    byte errorCounterMax[ERR_ENUM_COUNT];
-    byte errorCounter[ERR_ENUM_COUNT];    
+    byte errorCounterMax[ERR_ENUM_COUNT]; // maximum error counts seen
+    byte errorCounter[ERR_ENUM_COUNT];    // temporary error counts (will be resetted periodically)
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
     float loopsTa ;   // main loop-time factor (milliseconds)

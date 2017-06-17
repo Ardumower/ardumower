@@ -6,7 +6,7 @@ if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
     if ((batVoltage < batSwitchOffIfBelow) && (idleTimeSec != BATTERY_SW_OFF)) {      
-			Console.println(F("triggered batSwitchOffIfBelow"));
+			Console.println(F("Battery warning: triggered batSwitchOffIfBelow"));
       addErrorCounter(ERR_BATTERY);      
 			delay(2000); // avois corrupting EEPROM while this is also called when power is turned OFF
 			beep(2, true);      
