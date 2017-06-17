@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "1.0a7-Azurit-dev"
+#define VER "1.0a7-Azurit"
  
 
 // sensors
