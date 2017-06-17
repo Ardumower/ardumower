@@ -985,6 +985,9 @@ void RemoteControl::sendCommandMenu(boolean update){
   serialPort->print(robot->mowPatternName());
   serialPort->print(F("|rh~Home|rk~Track|rs~State "));
   serialPort->print(robot->stateName());
+	serialPort->print(F("|rb~Battery "));
+  serialPort->print(robot->batVoltage);	
+	serialPort->print(" V");
 	serialPort->print(F("|rs~Last trigger "));
 	serialPort->print(robot->lastSensorTriggeredName());
   serialPort->print(F("|rr~Auto rotate is "));
