@@ -1,24 +1,6 @@
 /*
-  Ardumower (www.ardumower.de)
-  Copyright (c) 2013-2014 by Alexander Grau
-  Copyright (c) 2013-2014 by Sven Gennat
-  
-  Private-use only! (you need to ask for a commercial-use)
- 
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  
-  Private-use only! (you need to ask for a commercial-use)
+choose your robot type, PCB version, baud rates, pin definitions etc.
 
 */
 
@@ -32,9 +14,9 @@
 #include "bt.h"
 
 
-/*  Requires: 
+/*  This software requires: 
 		  * Ardumower PCB v0.5/1.2/1.3  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
-		  * Arduino Mega or Arduino Due (requires PCB1.3)
+		  * Arduino Mega or Arduino Due (Due requires PCB1.3)
 			* Ardumower Chassis Kit 1.0  ( http://wiki.ardumower.de/index.php?title=Ardumower_chassis ) or Ardumower Mini
 */
    
@@ -48,7 +30,7 @@
 #define ROBOT_MINI
 
 
-// Due or Mega is detected automatically (based on Arduino IDE settings)
+// DO NOT CHANGE - Due or Mega is detected automatically (based on Arduino IDE settings)
 #ifdef __AVR__
   #define IOREF 5.0  // I/O reference voltage for Mega 2560
 #else 
@@ -56,8 +38,7 @@
 #endif
 		
 
-
-// ------ pins---------------------------------------
+// ------ pins definitions   (DO NOT CHANGE) ---------------------------------------
 #define pinMotorEnable  37         // EN motors enable
 #define pinMotorLeftPWM 5          // M1_IN1 left motor PWM pin
 #define pinMotorLeftDir 31         // M1_IN2 left motor Dir pin
