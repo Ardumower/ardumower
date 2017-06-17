@@ -161,8 +161,8 @@ Mower::Mower(){
 		batMonitor                 = 1;          // monitor battery and charge voltage?
 		batSwitchOffIfBelow        = 5.0;       // switch off battery if below voltage (Volt)
 		batGoHomeIfBelow           = 5.5;       // drive home voltage (Volt)  	
-		startChargingIfBelow       = 14.0;      // start charging if battery Voltage is below (99999=disabled)
-		batFull                    = 12.6;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V		
+		startChargingIfBelow       = 8.0;      // start charging if battery Voltage is below (99999=disabled)
+		batFull                    = 8.0;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V		
 		batFullCurrent             = -99999;       // current flowing when battery is fully charged	(amp), (-99999=disabled)	
 	#endif   
 	
