@@ -26,8 +26,8 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 #define PCB_1_3    
 
 // ------- Choose robot model (Ardumower or Ardumower Mini) -------------------
-//#define ROBOT_ARDUMOWER
-#define ROBOT_MINI
+#define ROBOT_ARDUMOWER
+//#define ROBOT_MINI
 
 
 // DO NOT CHANGE - Due or Mega is detected automatically (based on Arduino IDE settings)
@@ -113,7 +113,7 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 
 // ------- baudrates---------------------------------
 #define CONSOLE_BAUDRATE    19200       // baudrate used for console
-#define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module (Ardumower default)
+#define BLUETOOTH_BAUDRATE  19200      // baudrate used for communication with Bluetooth module (Ardumower default: 19200)
 #define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
 #define BLUETOOTH_PIN       1234
 
