@@ -92,8 +92,8 @@ Mower::Mower(){
   sonarLeftUse               = 1;
   sonarRightUse              = 1;
   sonarCenterUse             = 0;
-  sonarTriggerBelow          = 1050;       // ultrasonic sensor trigger distance (0=off)
-	sonarSlowBelow             = 1050*2;     // ultrasonic sensor slow down distance
+  sonarTriggerBelow          = 0;       // ultrasonic sensor trigger distance (0=off)
+	sonarSlowBelow             = 100;     // ultrasonic sensor slow down distance
   
   // ------ perimeter ---------------------------------
   perimeterUse               = 0;          // use perimeter?    
