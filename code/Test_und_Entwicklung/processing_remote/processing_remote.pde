@@ -34,9 +34,9 @@ import processing.net.*;
 import java.util.Iterator;
 
 // configuration
-String comPort = "COM14";
+String comPort = "COM9";
 int comBaud = 19200;
-boolean useTcp = true;
+boolean useTcp = false;
 String tcpHost = "raspberrypi.local";
 //String tcpHost = "localhost";
 int tcpPort = 8083;
@@ -53,11 +53,13 @@ boolean demo = false;
   private int state = STATE_CONNECT;
   Serial mySerial;
   Client myTcp;
+  private boolean started = false;
   private int maxGraphValueCount;
   private int plotCmdCount = 0;
   int serialLinesReceived = 0;
-  //private Timer mTimer = null;
+  private String mReloadCmd = "";
   private int mTimerInterval = 0;
+  private int mNextReloadCmdTime=0;
   private boolean mBackButton = false;
   private ListViewItem mChosenMenuItem = null;  
   private MainView mMainView = null;
@@ -244,32 +246,20 @@ public void parsePlotData(final String resp){
   }  
   
   public void runTimer(){
-      println("runTimer");      
+      println("runTimer" + mTimerInterval);      
       //if (mTimer != null) return;      
       if (mTimerInterval == 0) return;
       if (mBackButton) return;
       ListViewItem item = null;
       if (!mMenuStack.empty()) item = mMenuStack.peek();
       if (item == null) return;
-      final String reloadCmd = item.getId();          
-      /*
-      mTimer = new Timer();              
-      mTimer.scheduleAtFixedRate(new TimerTask() {        
-        @Override
-        public void run() {                                       
-          //sendBluetooth("timer", "{"+reloadCmd+"}");        
-        }
-        }, mTimerInterval, mTimerInterval);
-      */      
+      mReloadCmd = item.getId();
+      mNextReloadCmdTime = millis() + mTimerInterval;           
   }
   
   public void stopTimer(){
       println("stopTimer");
-      /*
-        if (mTimer == null) return;
-        mTimer.cancel();
-        mTimer = null;
-      */
+      mNextReloadCmdTime = 0;      
   }
   
   // add new menu to menu stack, setup timer if interval found
@@ -292,7 +282,7 @@ public void parsePlotData(final String resp){
           //toast("chosen=" + triggerId + " title=" + title + " topTitle="+ menuStackTopTitle, true);
           println("triggerId " + triggerId);          
           if ( menuStackTopId.equals(triggerId) ){
-          println("trigger was timer");
+            println("trigger was timer "+millis());
           } else if (mBackButton){
             println("trigger was back button");
             if (!mMenuStack.isEmpty()) mMenuStack.pop();
@@ -508,70 +498,77 @@ void sendNavigation(View view){
 
 
 void setup(){
-  size(640, 700);  
-   
-  pf = createFont("Arial Bold",14,true);
-  textFont(pf,20);  
-  
-  mMainView = new MainView(600, 700);
-  mListView = mMainView.getListView();
-  mNavigationView = mMainView.getNavigationView();
-  mMainView.setLeft(20);
-  
-  mNavigationView.getUpButton().setEventHandler( new EventHandler() {
-      public void mousePressedEvent(View view){
-        sendNavigation(view);
-      }
-  });
-  mNavigationView.getDownButton().setEventHandler( new EventHandler() {
-      public void mousePressedEvent(View view){
-        sendNavigation(view);
-      }
-  });              
-  mNavigationView.getLeftButton().setEventHandler( new EventHandler() {
-      public void mousePressedEvent(View view){
-        sendNavigation(view);
-      }
-  });              
-  mNavigationView.getRightButton().setEventHandler( new EventHandler() {
-      public void mousePressedEvent(View view){
-        sendNavigation(view);
-      }
-  });
-  mNavigationView.getCenterButton().setEventHandler( new EventHandler() {
-      public void mousePressedEvent(View view){
-        sendNavigation(view);
-      }
-  });
-  
+  try{       
+    pf = createFont("Arial Bold",14,true);
+    textFont(pf,20);  
     
-  if (demo){
-    state = STATE_MENU;
-    //parseResponse("{=logging}");  
-    //parseResponse("{=plot|time min`0|battery V`1|charge V`1|charge A`2|capacity Ah`3|capacity Ah`4|capacity Ah`5|capacity Ah`6|capacity Ah`7|capacity Ah`8|capacity Ah`9}");   
-    parseResponse("{.menu|j00~Battery 35.40 V|j01~Monitor YES\nbla bla|j05~Calibrate battery V  `3540`3000`0~ ~0.01|"
-         + "j02~Day `3`6`0~ ~1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j02~Scale-10..10/1 `5`10`-10~ ~1.0|j03~Scale-1000..1000/0.1 `500`1000`-1000~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j02~Scale-10..10/0.1 `5`10`-10~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
-         + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file:" 
-         + "batSenseZero 77.00|"         
-         + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
-         + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
-         + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
-         + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
-         + "batFactor 0.07}");
-  } else {          
-    if (useTcp) {
-      connectDevice();
-    } else {
-      chooseDevice();
+    mMainView = new MainView(600, 700);
+    mListView = mMainView.getListView();
+    mNavigationView = mMainView.getNavigationView();
+    mMainView.setLeft(20);
+    
+    mNavigationView.getUpButton().setEventHandler( new EventHandler() {
+        public void mousePressedEvent(View view){
+          sendNavigation(view);
+        }
+    });
+    mNavigationView.getDownButton().setEventHandler( new EventHandler() {
+        public void mousePressedEvent(View view){
+          sendNavigation(view);
+        }
+    });              
+    mNavigationView.getLeftButton().setEventHandler( new EventHandler() {
+        public void mousePressedEvent(View view){
+          sendNavigation(view);
+        }
+    });              
+    mNavigationView.getRightButton().setEventHandler( new EventHandler() {
+        public void mousePressedEvent(View view){
+          sendNavigation(view);
+        }
+    });
+    mNavigationView.getCenterButton().setEventHandler( new EventHandler() {
+        public void mousePressedEvent(View view){
+          sendNavigation(view);
+        }
+    });
+    
+      
+    if (demo){
+      state = STATE_MENU;
+      //parseResponse("{=logging}");  
+      //parseResponse("{=plot|time min`0|battery V`1|charge V`1|charge A`2|capacity Ah`3|capacity Ah`4|capacity Ah`5|capacity Ah`6|capacity Ah`7|capacity Ah`8|capacity Ah`9}");   
+      parseResponse("{.menu|j00~Battery 35.40 V|j01~Monitor YES\nbla bla|j05~Calibrate battery V  `3540`3000`0~ ~0.01|"
+           + "j02~Day `3`6`0~ ~1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j02~Scale-10..10/1 `5`10`-10~ ~1.0|j03~Scale-1000..1000/0.1 `500`1000`-1000~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j02~Scale-10..10/0.1 `5`10`-10~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j02~Go home if below `237`293`211~ ~0.1|j03~Switch off if below `217`293`211~ ~0.1|j04~Charge 0.00V 0.00A|"
+           + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file:" 
+           + "batSenseZero 77.00|"         
+           + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
+           + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
+           + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
+           + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
+           + "batFactor 0.07}");
+    } else {          
+      if (useTcp) {
+        connectDevice();
+      } else {
+        chooseDevice();
+      }
     }
-  }
-  mMainView.dump("");
+    mMainView.dump("");    
+  } 
+  catch (Exception e){
+    javax.swing.JOptionPane.showMessageDialog(null, "Error: "+e);
+    print("EX: "+e);
+  }  
+  
+  size(640, 700);     
+  started = true;
 }
 
 public void connectDevice(){
@@ -587,7 +584,7 @@ public void connectDevice(){
     //delay(2000);      
     //port.clear();  
   state = STATE_MENU;
-  delay(6000);
+  //delay(6000);    // wait 6s for connection to establish
   requestStartMenu();
 }
 
@@ -613,7 +610,7 @@ void onListItemClick(ListViewItem item){
     case STATE_CONNECT:              
       if (item.idx < Serial.list().length){        
         comPort = Serial.list()[item.idx];               
-        frame.setTitle("Connecting...");
+        surface.setTitle("Connecting...");
         connectDevice();       
       }
       break;
@@ -666,6 +663,8 @@ void onBackPressed() {
   
    
 void draw(){
+  if (!started) return;
+  
   if (myTcp != null){
     while (myTcp.available() > 0) {           
       char ch = myTcp.readChar();
@@ -681,11 +680,6 @@ void draw(){
     mMainView.draw();
     mNeedsDraw = false;
   }
-  
-  /*if ( (millis() > nextStartMenuRequest) && (state == STATE_CONNECT) ){
-    nextStartMenuRequest = millis() + 5000;    
-    requestStartMenu();
-  */
   
   View view = (mMainView.getMousePressRecursive());
   if (view != lastPressedView){
@@ -708,19 +702,12 @@ void draw(){
     mResponse.append( s );
     delay(50);
   }
-
-  /*if (mResponse.length() > 0){
-      //println(mResponse.toString());
-      if (state == STATE_CONNECT) state = STATE_MENU;
-      String s = mResponse.toString(); 
-      //println(s);
-      if (parseResponse(s)) {       
-        //while ((mResponse.length() > 0) && (mResponse.charAt(0) != '}')) mResponse.deleteCharAt(0);
-        //while ((mResponse.length() > 0) && (mResponse.charAt(0) != '{')) mResponse.deleteCharAt(0);
-        mNeedsDraw = true;
-      }
-  }*/
-       
+  
+  // timer
+  if ((mNextReloadCmdTime != 0) && (millis() >= mNextReloadCmdTime)){
+    mNextReloadCmdTime = millis() + mTimerInterval;   
+    sendData("timer", "{"+mReloadCmd+"}");        
+  }
 }
 
 
@@ -775,16 +762,21 @@ public void updatePage(){
   println("updatePage");   
   switch (state){
      case STATE_CONNECT:
-                printArray(Serial.list());
-                mMainView.showListView();
-                frame.setTitle("Choose serial device");
-                mListView.contentView.removeChildren();                               
-                for (int i=0; i < Serial.list().length; i++){                  
-                  mListView.setListItem(i, Serial.list()[i], Serial.list()[i], 2);                                                    
+                try{
+                    printArray(Serial.list());
+                    mMainView.showListView();
+                    surface.setTitle("Choose serial device");
+                    mListView.contentView.removeChildren();                                                               
+                    for (int i=0; i < Serial.list().length; i++){                  
+                      mListView.setListItem(i, Serial.list()[i], Serial.list()[i], 2);                                                    
+                    }
+                } catch (Exception e){
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error: "+e);
+                    print("EX: "+e);  
                 }
                 break;
      case STATE_MENU:
-                frame.setTitle(getMenuPath(false));
+                surface.setTitle(getMenuPath(false));
                 mMainView.showListView();                
                 break;
      case STATE_PLOT:
