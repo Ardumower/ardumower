@@ -1,6 +1,7 @@
 # Ardumower
 
 ## Download
+WARNING: Do not use a master version, it may be unstable - use one release version:
 https://github.com/Ardumower/ardumower/releases
 
 ##Changelog
