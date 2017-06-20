@@ -1,27 +1,6 @@
 /*
-  Ardumower (www.ardumower.de)
-  Copyright (c) 2013-2015 by Alexander Grau
-  Copyright (c) 2013-2015 by Sven Gennat
-  Copyright (c) 2014 by Maxime Carpentieri    
-  Copyright (c) 2014-2015 by Stefan Manteuffel
-  Copyright (c) 2015 by Uwe Zimprich
-  
-  Private-use only! (you need to ask for a commercial-use)
- 
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  
-  Private-use only! (you need to ask for a commercial-use)
+default settings for motor, perimeter, bumper, odometry etc.
 
 */
 
@@ -37,6 +16,11 @@
 
 
 Mower robot;
+
+
+// ----------------------------------------------------------------------
+// IMPORTANT:  choose your robot type and PCB version in 'mower.h' !
+// ----------------------------------------------------------------------
 
 
 Mower::Mower(){
@@ -108,8 +92,8 @@ Mower::Mower(){
   sonarLeftUse               = 1;
   sonarRightUse              = 1;
   sonarCenterUse             = 0;
-  sonarTriggerBelow          = 1050;       // ultrasonic sensor trigger distance (0=off)
-	sonarSlowBelow             = 1050*2;     // ultrasonic sensor slow down distance
+  sonarTriggerBelow          = 0;       // ultrasonic sensor trigger distance (0=off)
+	sonarSlowBelow             = 100;     // ultrasonic sensor slow down distance
   
   // ------ perimeter ---------------------------------
   perimeterUse               = 0;          // use perimeter?    
@@ -129,7 +113,7 @@ Mower::Mower(){
     perimeterPID.Kd    = 9.0;
 	#endif  
   
-  trackingPerimeterTransitionTimeOut              = 2000;   // 0=disable
+  trackingPerimeterTransitionTimeOut              = 0;   // 0=disable
   trackingErrorTimeOut                            = 10000;  // 0=disable
   trackingBlockInnerWheelWhilePerimeterStruggling = 1;
   
@@ -152,28 +136,35 @@ Mower::Mower(){
   // ------ battery -------------------------------------
   #if defined (ROBOT_ARDUMOWER)
     batMonitor                 = 1;          // monitor battery and charge voltage?
-	#else
-		batMonitor                 = 0;          // monitor battery and charge voltage?
-	#endif 
-  batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)
-  batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
-	startChargingIfBelow       = 29.2;      // start charging if battery Voltage is below (99999=disabled)
-	chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs  (2147483647=disabled)
-	batFullCurrent             = 0.2;       // current flowing when battery is fully charged	(amp), (-99999=disabled)
-	chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
+		batSwitchOffIfBelow        = 21.7;       // switch off battery if below voltage (Volt)
+		batGoHomeIfBelow           = 23.7;       // drive home voltage (Volt)  	
+		startChargingIfBelow       = 32.0;      // start charging if battery Voltage is below (99999=disabled)
+		batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V		
+		batFullCurrent             = 0.1;       // current flowing when battery is fully charged	(amp), (-99999=disabled)	
+	#else  // ROBOT_MINI
+		batMonitor                 = 1;          // monitor battery and charge voltage?
+		batSwitchOffIfBelow        = 5.0;       // switch off battery if below voltage (Volt)
+		batGoHomeIfBelow           = 5.5;       // drive home voltage (Volt)  	
+		startChargingIfBelow       = 8.0;      // start charging if battery Voltage is below (99999=disabled)
+		batFull                    = 8.0;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V		
+		batFullCurrent             = -99999;       // current flowing when battery is fully charged	(amp), (-99999=disabled)	
+	#endif   
+	
+	chargingTimeout            = 2147483647;  // safety timer for charging (ms) 12600000 = 3.5hrs  (2147483647=disabled)	
 	
   #if defined (PCB_1_2)     // PCB 1.2	  
 	  batSwitchOffIfIdle         = 0;          // switch off battery if idle (minutes, 0=off) 	
 		batFactor                  = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor	*10
 		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10	
+		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
   #elif defined (PCB_1_3)   // PCB 1.3
 		batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
   	batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
 		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+		chgFactor                  = ADC2voltage(1)*5;        // ADC to charging current ampere factor  (see mower.h for macros)								  
   #endif
   
-  batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V
-  batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver  
+	batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver  
   
   // ------  charging station ---------------------------
   stationRevTime             = 1800;       // charge station reverse time (ms)
@@ -232,6 +223,9 @@ Mower::Mower(){
   statsBatteryChargingCapacityTotal = 30000;
   // -----------configuration end-------------------------------------
 }
+
+
+// ------ code section (do not change) --------------------------------
 
 
 // remote control (RC) ppm signal change interrupt
@@ -309,17 +303,17 @@ NewPing NewSonarCenter(pinSonarCenterTrigger, pinSonarCenterEcho, 500);
 // (required so we can use Arduino Due native port)
 
 void Mower::setup(){
+	PinMan.begin();    
+  // keep battery switched ON (keep this at system start!)
+  pinMode(pinBatterySwitch, OUTPUT);
+  digitalWrite(pinBatterySwitch, HIGH);
+
   Buzzer.begin();
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
-  Wire.begin();            
-	PinMan.begin();    
+  Wire.begin();            	
 	ADCMan.init();
   Console.println("SETUP");
-
-  // keep battery switched ON
-  pinMode(pinBatterySwitch, OUTPUT);
-  digitalWrite(pinBatterySwitch, HIGH);
   
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    

@@ -60,11 +60,11 @@ void Robot::setMotorPWM(int pwmLeft, int pwmRight, boolean useAccel){
     // smoothed += elapsedTime * ( newValue - smoothed ) / smoothing;          
     motorLeftPWMCurr += TaC * (pwmLeft - motorLeftPWMCurr) / motorAccel;
     motorRightPWMCurr += TaC * (pwmRight - motorRightPWMCurr) / motorAccel;   
-  }
-
-  motorLeftPWMCurr = pwmLeft;
-  motorRightPWMCurr = pwmRight;
-
+  } else {		
+		motorLeftPWMCurr = pwmLeft;
+    motorRightPWMCurr = pwmRight;
+	}
+		 
   // ---------------------------------
   if (motorLeftSwapDir)  // swap pin polarity?
     setActuator(ACT_MOTOR_LEFT, -motorLeftPWMCurr);
@@ -350,7 +350,7 @@ void Robot::motorMowControl(){
   if (millis() < nextTimeMotorMowControl) return;
 
     nextTimeMotorMowControl = millis() + 100;
-    if (motorMowEnableOverride) motorMowEnable = false;
+    if (motorMowForceOff) motorMowEnable = false;
   double mowSpeed ;
   if (!motorMowEnable) {
     mowSpeed = 0;         

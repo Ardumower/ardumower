@@ -107,7 +107,7 @@ Robot::Robot(){
   motorMowRpmCounter = 0;
   motorMowRpmLastState = LOW;
   motorMowEnable = false;
-  motorMowEnableOverride = false;
+  motorMowForceOff = false;
   motorMowSpeedPWMSet = motorSpeedMaxRpm;
   motorMowPWMCurr = 0;
   motorMowSenseADC = 0;
@@ -558,23 +558,18 @@ void Robot::readSensors(){
     }
     // convert to double  
     batADC = readSensor(SEN_BAT_VOLTAGE);
-    double batvolt = (double)batADC * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    //double chgvolt = ((double)((int)(readSensor(SEN_CHG_VOLTAGE) / 10))) / 10.0;  
-    int chgADC = readSensor(SEN_CHG_VOLTAGE);
-    //Console.println(chgADC);
-    double chgvolt = (double)chgADC * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    double currentADC = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
+		int currentADC = readSensor(SEN_CHG_CURRENT);
+		int chgADC = readSensor(SEN_CHG_VOLTAGE);    
+		//Console.println(currentADC);
+    double batvolt = ((double)batADC) * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
+    double chgvolt = ((double)chgADC) * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
+		double curramp = ((double)currentADC) * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing		
     // low-pass filter
     double accel = 0.01;
+		//double accel = 1.0;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
-    // if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  //Deaktiviert für Ladestromsensor berechnung 
-
-    chgCurrent = (double)currentADC * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-        
-    //batVoltage = batVolt
-    //chgVoltage = chgvolt;
-    //chgCurrent = current;        
+		if (abs(chgCurrent-curramp)>0.5) chgCurrent = curramp; else chgCurrent = (1.0-accel) * chgCurrent + accel * curramp;       
   } 
 
   if ((rainUse) && (millis() >= nextTimeRain)) {
@@ -687,9 +682,10 @@ void Robot::checkCurrent(){
   else{ 
       errorCounterMax[ERR_MOW_SENSE] = 0;
       motorMowSenseCounter = 0;
-      if (millis() >= lastTimeMotorMowStuck + 30000){ // wait 30 seconds before switching on again
+      if ( (lastTimeMotorMowStuck != 0) && (millis() >= lastTimeMotorMowStuck + 30000) ) { // wait 30 seconds before switching on again
         errorCounter[ERR_MOW_SENSE] = 0;
         motorMowEnable = true;
+				lastTimeMotorMowStuck = 0;
       }
   }
 
@@ -955,57 +951,57 @@ void Robot::checkIfStuck(){
   if (millis() < nextTimeCheckIfStuck) return;
   nextTimeCheckIfStuck = millis() + 300;
   if ((gpsUse) && (gps.hdop() < 500))  {
-  //float gpsSpeedRead = gps.f_speed_kmph();
-  float gpsSpeed = gps.f_speed_kmph();
-  if (gpsSpeedIgnoreTime >= motorReverseTime) gpsSpeedIgnoreTime = motorReverseTime - 500;
-  // low-pass filter
-   // double accel = 0.1;
-   // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
-   // Console.println(gpsSpeed);
-     // Console.println(robotIsStuckCounter);
-     // Console.println(errorCounter[ERR_STUCK]);
-  if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckIfGpsSpeedBelow)    // checks if mower is stuck and counts up
+    //float gpsSpeedRead = gps.f_speed_kmph();
+    float gpsSpeed = gps.f_speed_kmph();
+    if (gpsSpeedIgnoreTime >= motorReverseTime) gpsSpeedIgnoreTime = motorReverseTime - 500;
+    // low-pass filter
+    // double accel = 0.1;
+    // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
+    // Console.println(gpsSpeed);
+    // Console.println(robotIsStuckCounter);
+    // Console.println(errorCounter[ERR_STUCK]);
+    if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckIfGpsSpeedBelow)    // checks if mower is stuck and counts up
       && ((motorLeftRpmCurr && motorRightRpmCurr) != 0) && (millis() > stateStartTime + gpsSpeedIgnoreTime) ){
       robotIsStuckCounter++;
-  }
+    }
 
     else {                         // if mower gets unstuck it resets errorCounterMax to zero and reenabling motorMow
         robotIsStuckCounter = 0;    // resets temporary counter to zero
-    if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
+      if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
         && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
         && (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
         && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_ERROR)) {
         motorMowEnable = true;
         errorCounterMax[ERR_STUCK] = 0;
-  }
-    return;
-  }
-
-  if (robotIsStuckCounter >= 5){    
-    motorMowEnable = false;
-    if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stuck and unable to move
-    Console.println(F("Error: Mower is stuck"));
-    addErrorCounter(ERR_STUCK);
-    setNextState(STATE_ERROR,0);    //mower is switched into ERROR
-    //robotIsStuckCounter = 0;
+      }
+      return;
     }
+
+    if (robotIsStuckCounter >= 5){    
+      motorMowEnable = false;
+      if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stuck and unable to move
+        Console.println(F("Error: Mower is stuck"));
+        addErrorCounter(ERR_STUCK);
+        setNextState(STATE_ERROR,0);    //mower is switched into ERROR
+        //robotIsStuckCounter = 0;
+      }
       else if (errorCounter[ERR_STUCK] < 3) {   // mower tries 3 times to get unstuck
         if (stateCurr == STATE_FORWARD){
-      motorMowEnable = false;
-      addErrorCounter(ERR_STUCK);             
-      setMotorPWM( 0, 0, false );  
-      reverseOrBidir(RIGHT);
-    }
-    else if (stateCurr == STATE_ROLL){
-      motorMowEnable = false;
-      addErrorCounter(ERR_STUCK);             
-      setMotorPWM( 0, 0, false );  
-      setNextState (STATE_FORWARD,0);
-    }
+          motorMowEnable = false;
+					addErrorCounter(ERR_STUCK);             
+					setMotorPWM( 0, 0, false );  
+					reverseOrBidir(RIGHT);
+				}
+				else if (stateCurr == STATE_ROLL){
+					motorMowEnable = false;
+					addErrorCounter(ERR_STUCK);             
+					setMotorPWM( 0, 0, false );  
+					setNextState (STATE_FORWARD,0);
+				}
+      }
     }
   }
 }
-  }
 
 
 void Robot::processGPSData()
@@ -1424,8 +1420,9 @@ void Robot::loop()  {
       // waiting until charging completed    
       if (batMonitor){
         if ((chgCurrent < batFullCurrent) && (millis()-stateStartTime>2000)) setNextState(STATE_STATION,0); 
-          else if (millis()-stateStartTime > chargingTimeout) {
-            addErrorCounter(ERR_BATTERY);
+          else if (millis()-stateStartTime > chargingTimeout) {            
+						Console.println(F("Battery chargingTimeout"));
+						addErrorCounter(ERR_BATTERY);
             setNextState(STATE_ERROR, 0);
           }
       } 

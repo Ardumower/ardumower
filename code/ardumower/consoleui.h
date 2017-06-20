@@ -450,9 +450,7 @@ void Robot::readSerial() {
          lawnSensor = true; // press 's' to simulate lawn sensor
          lawnSensorCounter++;
          break; 
-       case 'm':
-         if (stateCurr == STATE_OFF || stateCurr == STATE_MANUAL) motorMowEnableOverride = false; 
-         else motorMowEnableOverride = !motorMowEnableOverride;
+       case 'm':                  
          motorMowEnable = !motorMowEnable; // press 'm' to toggle mower motor
          break;
        case 'c':

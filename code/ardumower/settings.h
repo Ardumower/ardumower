@@ -147,6 +147,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwriteString(readflag, addr, esp8266ConfigString);
   eereadwrite(readflag, addr, tiltUse);
   eereadwrite(readflag, addr, sonarSlowBelow);
+	eereadwrite(readflag, addr, motorMowForceOff);	
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -207,7 +208,9 @@ void Robot::printSettingSerial(){
   
   // ------ mower motor -----------------------------------------------------------
   Console.println(F("---------- mower motor ---------------------------------------"));
-  Console.print  (F("motorMowAccel                              : "));
+  Console.print  (F("motorMowForceOff                           : "));
+	Console.println(motorMowForceOff);
+	Console.print  (F("motorMowAccel                              : "));
   Console.println(motorMowAccel);
   Console.print  (F("motorMowSpeedMaxPwm                        : "));
   Console.println(motorMowSpeedMaxPwm);
