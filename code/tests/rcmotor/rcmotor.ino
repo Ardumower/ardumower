@@ -105,7 +105,7 @@ ISR(PCINT0_vect){
 
 void setup(){
   pinMode(pinBuzzer, OUTPUT);
-  Serial.begin(115200); // setup baud rate 
+  Serial.begin(19200); // setup baud rate 
   PinMan.begin();    
   
   // left wheel motor
@@ -119,7 +119,7 @@ void setup(){
   pinMode(pinMotorRightDir, OUTPUT); 
   
   // mower motor
-  pinMode(pinMotorMowPWM, OUTPUT);       
+  //pinMode(pinMotorMowPWM, OUTPUT);       
   
   // R/C  (enable interrupts)
   pinMode(pinRemoteMow, INPUT);
@@ -130,8 +130,27 @@ void setup(){
   attachInterrupt(pinRemoteSteer, PCINT0_vect, CHANGE);            
   attachInterrupt(pinRemoteMow, PCINT0_vect, CHANGE);     
   attachInterrupt(pinRemoteSwitch, PCINT0_vect, CHANGE);         
+	
+	
+#ifdef __AVR__
+  //-------------------------------------------------------------------------
+	// Switch
+	//-------------------------------------------------------------------------
+	PCICR |= (1<<PCIE0);
+	PCMSK0 |= (1<<PCINT1);
 
-  unsigned long endTime = millis() + 3000;
+	//-------------------------------------------------------------------------
+	// R/C
+	//-------------------------------------------------------------------------
+	PCICR |= (1<<PCIE0);
+	
+	PCMSK0 |= (1<<PCINT4);
+	PCMSK0 |= (1<<PCINT5);
+	PCMSK0 |= (1<<PCINT6);	
+#endif
+ 	
+
+  unsigned long endTime = millis() + 2000;
   while (millis() < endTime){
     setMC33926(pinMotorLeftDir, pinMotorLeftPWM, -127);
     setMC33926(pinMotorRightDir, pinMotorRightPWM, 127);

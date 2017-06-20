@@ -57,7 +57,7 @@
 */
 
 // code version 
-#define VER "1.0a7-Azurit-dev"
+#define VER "1.0a8-Azurit-dev"
  
 
 // sensors
@@ -77,8 +77,7 @@ enum {
   SEN_BUMPER_LEFT,       // LOW = pressed
   SEN_BUMPER_RIGHT,      // LOW = pressed
   SEN_DROP_LEFT,       // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor
-  SEN_DROP_RIGHT,      // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor
-  
+  SEN_DROP_RIGHT,      // LOW = pressed                                                                                                  // Dropsensor - Absturzsensor  
   SEN_SONAR_CENTER,      // 0..SONAR_TRIGGER_DISTANCE
   SEN_SONAR_LEFT,        // 0..SONAR_TRIGGER_DISTANCE
   SEN_SONAR_RIGHT,       // 0..SONAR_TRIGGER_DISTANCE
@@ -183,7 +182,7 @@ class Robot
     byte stateLast;
     byte stateNext;    
     unsigned long stateTime;
-    char* stateName();
+    const char* stateName();
     unsigned long stateStartTime;
     unsigned long stateEndTime;
     int idleTimeSec;
@@ -199,7 +198,7 @@ class Robot
     String esp8266ConfigString = "";
     // -------- mow pattern -----------------------------    
     byte mowPatternCurr;
-    char *mowPatternName();
+    const char *mowPatternName();
     // -------- gps state -------------------------------
     GPS gps;
     char gpsUse            ;       // use GPS?        
@@ -222,11 +221,7 @@ class Robot
     bool odometryRightSwapDir;       // inverse right encoder direction?
     bool odometryLeftSwapDir;       // inverse left encoder direction?        
     int odometryLeft ;   // left wheel counter
-    int odometryRight ;  // right wheel counter
-		unsigned long lastOdoTriggerTimeRight;
-		unsigned long lastOdoTriggerTimeLeft;
-		unsigned long odoTriggerTimeLeft;
-		unsigned long odoTriggerTimeRight;
+    int odometryRight ;  // right wheel counter		
     boolean odometryLeftLastState;
     boolean odometryLeftLastState2;
     boolean odometryRightLastState;
@@ -239,6 +234,7 @@ class Robot
     unsigned long lastMotorRpmTime ;     
     unsigned long nextTimeOdometry ;
     unsigned long nextTimeOdometryInfo ; 
+		boolean odoLeftRightCorrection;
     // -------- RC remote control state -----------------    
     char remoteUse      ;       // use model remote control (R/C)?
     int remoteSteer ;  // range -100..100
@@ -257,8 +253,8 @@ class Robot
     // -------- mower motor state -----------------------
     int motorMowRpmCounter ;  // mower motor speed state
     boolean motorMowRpmLastState ;
-    boolean motorMowEnable ;
-    boolean motorMowEnableOverride ; // user switch for mower motor on/off has highest priority
+    boolean motorMowEnable ;  // motor can be temporary disabled if stucked etc. with this
+    boolean motorMowForceOff ; // user switch for mower motor on/off has highest priority
     // --------- wheel motor state ----------------------------
     // wheel motor speed ( <0 backward, >0 forward); range -motorSpeedMaxRpm..motorSpeedMaxRpm
     float motorAccel  ;  // motor wheel acceleration (warning: do not set too high)
@@ -417,7 +413,9 @@ class Robot
     RemoteControl rc; // pfodApp
     unsigned long nextTimePfodLoop ;    
     // ----- other -----------------------------------------
-    char buttonUse         ;       // has digital ON/OFF button?
+    char lastSensorTriggered;          // last triggered sensor
+		unsigned long lastSensorTriggeredTime;
+		char buttonUse         ;       // has digital ON/OFF button?
     // ----- user-defined switch ---------------------------
     char userSwitch1       ;       // user-defined switch 1 (default value)
     char userSwitch2       ;       // user-defined switch 2 (default value)
@@ -459,8 +457,8 @@ class Robot
     float statsBatteryChargingCapacityAverage;
     float lastTimeBatCapacity;
     // --------- error counters --------------------------
-    byte errorCounterMax[ERR_ENUM_COUNT];
-    byte errorCounter[ERR_ENUM_COUNT];    
+    byte errorCounterMax[ERR_ENUM_COUNT]; // maximum error counts seen
+    byte errorCounter[ERR_ENUM_COUNT];    // temporary error counts (will be resetted periodically)
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
     float loopsTa ;   // main loop-time factor (milliseconds)
@@ -530,6 +528,7 @@ class Robot
     virtual void addErrorCounter(byte errType);    
     virtual void resetErrorCounters();
     virtual void resetMotorFault(){}
+		virtual const char *lastSensorTriggeredName();
 
 protected:
     // convert ppm time to RC slider value
@@ -579,7 +578,8 @@ protected:
     // set reverse
     virtual void reverseOrBidir(byte aRollDir);    
     
-    // other
+    // other		
+	  virtual void setSensorTriggered(char type);
     virtual void printRemote();
     virtual void printOdometry();
     virtual void printMenu();    

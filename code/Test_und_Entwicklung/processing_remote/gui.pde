@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class MainView extends View {
   protected ListView listView = new ListView(getWidth(), getHeight()-40);
   protected NavigationView navigationView = new NavigationView(getWidth(), getHeight()-40);
-  protected ImageButton backButton = new ImageButton(getWidth()/2, 40, "back.png");  
+  protected ImageButton backButton = new ImageButton(getWidth()/2, 40, "img/back.png");  
   
   public ListView getListView(){
     return listView;
@@ -69,10 +69,10 @@ public class MainView extends View {
 
 // ----------------------------------------------------------------------------------------------------
 public class NavigationView extends View {
-  protected ImageButton upButton = new ImageButton(100, 100, "up.png");
-  protected ImageButton downButton = new ImageButton(100, 100, "down.png");
-  protected ImageButton leftButton = new ImageButton(100, 100, "left.png");
-  protected ImageButton rightButton = new ImageButton(100, 100, "right.png");
+  protected ImageButton upButton = new ImageButton(100, 100, "img/up.png");
+  protected ImageButton downButton = new ImageButton(100, 100, "img/down.png");
+  protected ImageButton leftButton = new ImageButton(100, 100, "img/left.png");
+  protected ImageButton rightButton = new ImageButton(100, 100, "img/right.png");
   protected Button centerButton = new Button(150, 100, "");
   
   public ImageButton getUpButton(){
@@ -123,9 +123,9 @@ public class ListView extends View  {
   protected int itemWidth = getWidth() - buttonWidth;  
   protected int nextScrollTime = 0;
   public View contentView = new View(itemWidth, getHeight());  
-  public ImageButton scrollUpButton = new ImageButton(buttonWidth, getHeight()/2, "up.png");
+  public ImageButton scrollUpButton = new ImageButton(buttonWidth, getHeight()/2, "img/up.png");
   //public Button scrollUpButton = new Button(buttonWidth, getHeight()/2, "up");
-  public ImageButton scrollDownButton = new ImageButton(buttonWidth, getHeight()/2, "down.png");  
+  public ImageButton scrollDownButton = new ImageButton(buttonWidth, getHeight()/2, "img/down.png");  
   
   public ListView(int aWidth, int aHeight){
     super(aWidth, aHeight);

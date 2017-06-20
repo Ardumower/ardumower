@@ -34,12 +34,17 @@
 #define ADDR_ERR_COUNTERS 400
 #define ADDR_ROBOT_STATS 800
 
-char* stateNames[]={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
+const char* stateNames[] ={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL", "TILT"};
 
-char *mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
+const char* sensorNames[] ={"SEN_PERIM_LEFT", "SEN_PERIM_RIGHT", "SEN_PERIM_LEFT_EXTRA", "SEN_PERIM_RIGHT_EXTRA", "SEN_LAWN_FRONT", "SEN_LAWN_BACK", 
+	"SEN_BAT_VOLTAGE", "SEN_CHG_CURRENT", "SEN_CHG_VOLTAGE", "SEN_MOTOR_LEFT", "SEN_MOTOR_RIGHT", "SEN_MOTOR_MOW", "SEN_BUMPER_LEFT", "SEN_BUMPER_RIGHT", 
+	"SEN_DROP_LEFT", "SEN_DROP_RIGHT", "SEN_SONAR_CENTER", "SEN_SONAR_LEFT", "SEN_SONAR_RIGHT", "SEN_BUTTON", "SEN_IMU", "SEN_MOTOR_MOW_RPM", "SEN_RTC",
+  "SEN_RAIN", "SEN_TILT"};
 
-char* consoleModeNames[]={"sen_counters", "sen_values", "perimeter", "off"}; 
+const char* mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
+
+const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off"}; 
 
 
 // --- split robot class ----
@@ -69,15 +74,14 @@ Robot::Robot(){
   developerActive = false;
   rc.setRobot(this);
   
-  stateLast = stateCurr = stateNext = STATE_OFF; 
+  lastSensorTriggeredTime =0;
+	stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
   idleTimeSec = 0;
   statsMowTimeTotalStart = false;            
   mowPatternCurr = MOW_RANDOM;
   
-  odometryLeft = odometryRight = 0;
-	odoTriggerTimeLeft = odoTriggerTimeRight = 0;
-	lastOdoTriggerTimeLeft = lastOdoTriggerTimeRight = 0;
+  odometryLeft = odometryRight = 0;	
   odometryLeftLastState = odometryLeftLastState2 = odometryRightLastState = odometryRightLastState2 = LOW;
   odometryTheta = odometryX = odometryY = 0;
 
@@ -103,7 +107,7 @@ Robot::Robot(){
   motorMowRpmCounter = 0;
   motorMowRpmLastState = LOW;
   motorMowEnable = false;
-  motorMowEnableOverride = false;
+  motorMowForceOff = false;
   motorMowSpeedPWMSet = motorSpeedMaxRpm;
   motorMowPWMCurr = 0;
   motorMowSenseADC = 0;
@@ -205,11 +209,26 @@ Robot::Robot(){
   statsBatteryChargingCounter = 0;
 }
 
-char *Robot::mowPatternName(){
+const char *Robot::mowPatternName(){
   return mowPatternNames[mowPatternCurr];
 }
 
+void Robot::setSensorTriggered(char type){
+  lastSensorTriggered = type;
+  lastSensorTriggeredTime = millis();
+  Console.println( sensorNames[lastSensorTriggered] );
+}
 
+const char *Robot::lastSensorTriggeredName(){
+  String s = "";
+  if (lastSensorTriggeredTime != 0) {
+    s = sensorNames[lastSensorTriggered];
+    s += " (";
+    s += String( (millis()-lastSensorTriggeredTime) /1000);
+    s += " s ago)";
+  }
+  return s.c_str();
+}
 
 void Robot::resetIdleTime(){
   if (idleTimeSec == BATTERY_SW_OFF){ // battery switched off?
@@ -244,8 +263,10 @@ void Robot::setup()  {
   loadUserSettings();
   if (!statsOverride) loadSaveRobotStats(true);
   else loadSaveRobotStats(false);
-  setUserSwitches();
-
+  setUserSwitches();	
+	if (!ADCMan.calibrationDataAvail()) {
+    ADCMan.calibrate();
+  }
   
   if (!buttonUse){
     // robot has no ON/OFF button => start immediately
@@ -271,11 +292,9 @@ void Robot::setup()  {
 	Console.print(F("  IOREF="));	
 	Console.println(IOREF);
 
-  #ifdef USE_DEVELOPER_TEST
-    Console.println(F("Warning: USE_DEVELOPER_TEST activated"));
-  #endif
-  Console.print(F("Config: "));
+  Console.print(F("Robot: "));
   Console.println(name);  
+      
   Console.println(F("press..."));
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
@@ -296,6 +315,7 @@ void Robot::checkButton(){
       // ON/OFF button pressed                                                
       beep(1);
       buttonCounter++;
+			setSensorTriggered(SEN_BUTTON);
       resetIdleTime();
     } 
     else { 
@@ -380,8 +400,8 @@ void Robot::readSensors(){
       lastMotorMowRpmTime = millis();     
       if (!ADCMan.calibrationDataAvail()) {
         //Console.println(F("Error: missing ADC calibration data"));
-        addErrorCounter(ERR_ADC_CALIB);
-        setNextState(STATE_ERROR, 0);
+        //addErrorCounter(ERR_ADC_CALIB);
+        //setNextState(STATE_ERROR, 0);
       }
     }
   }  
@@ -394,6 +414,7 @@ void Robot::readSensors(){
     if (stateCurr == STATE_PERI_FIND)perimeterMagMedian.add(abs(perimeterMag));
     if ((perimeter.isInside(0) != perimeterInside)){      
       perimeterCounter++;
+			setSensorTriggered(SEN_PERIM_LEFT);
       perimeterLastTransitionTime = millis();
       perimeterInside = perimeter.isInside(0);
     }    
@@ -444,6 +465,7 @@ void Robot::readSensors(){
       Console.print(",");
       Console.println(deltaBack);
       lawnSensorCounter++;
+			setSensorTriggered(SEN_LAWN_FRONT);
       lawnSensor=true;
     }
     lawnSensorFrontOld = lawnSensorFront;
@@ -486,11 +508,13 @@ void Robot::readSensors(){
         
     if (readSensor(SEN_BUMPER_LEFT) == 0) {
       bumperLeftCounter++;
+			setSensorTriggered(SEN_BUMPER_LEFT);
       bumperLeft=true;
     }
 
     if (readSensor(SEN_BUMPER_RIGHT) == 0) {
       bumperRightCounter++;
+			setSensorTriggered(SEN_BUMPER_RIGHT);
       bumperRight=true;
     } 
   }
@@ -500,12 +524,14 @@ void Robot::readSensors(){
     nextTimeDrop = millis() + 100;                                                                                          // Dropsensor - Absturzsensor
     if (readSensor(SEN_DROP_LEFT) == dropcontact) {                                                                         // Dropsensor - Absturzsensor
       dropLeftCounter++;                                                                                                    // Dropsensor - Absturzsensor
-      dropLeft=true;                                                                                                        // Dropsensor - Absturzsensor
+			setSensorTriggered(SEN_DROP_LEFT);	
+			dropLeft=true;                                                                                                        // Dropsensor - Absturzsensor
     }                                                                                                                       // Dropsensor - Absturzsensor
  
     if (readSensor(SEN_DROP_RIGHT) == dropcontact) {                                                                          // Dropsensor - Absturzsensor
       dropRightCounter++;                                                                                                   // Dropsensor - Absturzsensor
-      dropRight=true;                                                                                                       // Dropsensor - Absturzsensor
+      setSensorTriggered(SEN_DROP_RIGHT);
+			dropRight=true;                                                                                                       // Dropsensor - Absturzsensor
     } 
   }    
   
@@ -542,30 +568,28 @@ void Robot::readSensors(){
     }
     // convert to double  
     batADC = readSensor(SEN_BAT_VOLTAGE);
-    double batvolt = (double)batADC * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    //double chgvolt = ((double)((int)(readSensor(SEN_CHG_VOLTAGE) / 10))) / 10.0;  
-    int chgADC = readSensor(SEN_CHG_VOLTAGE);
-    //Console.println(chgADC);
-    double chgvolt = (double)chgADC * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-    double currentADC = ((double)((int)(readSensor(SEN_CHG_CURRENT))));  
+		int currentADC = readSensor(SEN_CHG_CURRENT);
+		int chgADC = readSensor(SEN_CHG_VOLTAGE);    
+		//Console.println(currentADC);
+    double batvolt = ((double)batADC) * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
+    double chgvolt = ((double)chgADC) * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
+		double curramp = ((double)currentADC) * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing		
     // low-pass filter
     double accel = 0.01;
+		//double accel = 1.0;
     if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
-    // if (abs(chgCurrent-current)>0.4) chgCurrent = current; else chgCurrent = (1.0-accel) * chgCurrent + accel * current;  //Deaktiviert für Ladestromsensor berechnung 
-
-    chgCurrent = (double)currentADC * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing
-        
-    //batVoltage = batVolt
-    //chgVoltage = chgvolt;
-    //chgCurrent = current;        
+		if (abs(chgCurrent-curramp)>0.5) chgCurrent = curramp; else chgCurrent = (1.0-accel) * chgCurrent + accel * curramp;       
   } 
 
   if ((rainUse) && (millis() >= nextTimeRain)) {
     // read rain sensor
     nextTimeRain = millis() + 5000;
     rain = (readSensor(SEN_RAIN) != 0);  
-    if (rain) rainCounter++;
+    if (rain) {
+		  rainCounter++;	
+		  setSensorTriggered(SEN_RAIN);
+    }
   }  
 }
 
@@ -644,6 +668,7 @@ void Robot::checkCurrent(){
     if (motorLeftSense >= motorPowerMax)
     {
        motorLeftSenseCounter++;
+			 setSensorTriggered(SEN_MOTOR_LEFT);
        setMotorPWM( 0, 0, false );
        addErrorCounter(ERR_MOTOR_LEFT);
        setNextState(STATE_ERROR, 0);
@@ -652,7 +677,8 @@ void Robot::checkCurrent(){
     if (motorRightSense >= motorPowerMax)
     {
        motorRightSenseCounter++;
-       setMotorPWM( 0, 0, false );
+			 setSensorTriggered(SEN_MOTOR_RIGHT);
+			 setMotorPWM( 0, 0, false );
        addErrorCounter(ERR_MOTOR_RIGHT);
        setNextState(STATE_ERROR, 0);
        Console.println("Error: Motor Right current");
@@ -660,14 +686,16 @@ void Robot::checkCurrent(){
   }
 
   if (motorMowSense >= motorMowPowerMax){
-      motorMowSenseCounter++;
+    motorMowSenseCounter++;
+		setSensorTriggered(SEN_MOTOR_MOW);
   }
   else{ 
       errorCounterMax[ERR_MOW_SENSE] = 0;
       motorMowSenseCounter = 0;
-      if (millis() >= lastTimeMotorMowStuck + 30000){ // wait 30 seconds before switching on again
+      if ( (lastTimeMotorMowStuck != 0) && (millis() >= lastTimeMotorMowStuck + 30000) ) { // wait 30 seconds before switching on again
         errorCounter[ERR_MOW_SENSE] = 0;
         motorMowEnable = true;
+				lastTimeMotorMowStuck = 0;
       }
   }
 
@@ -688,15 +716,18 @@ void Robot::checkCurrent(){
           && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
       //beep(1);
       motorLeftSenseCounter++;
+			setSensorTriggered(SEN_MOTOR_LEFT);
       setMotorPWM( 0, 0, false );  
       reverseOrBidir(RIGHT);
     } else if    ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
+			setSensorTriggered(SEN_MOTOR_LEFT);
       setMotorPWM( 0, 0, false );  
       //   reverseOrBidir(RIGHT);
       setNextState(STATE_ROLL,RIGHT);				          
     } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorPowerIgnoreTime)){
       motorLeftSenseCounter++;
+			setSensorTriggered(SEN_MOTOR_LEFT);
       setMotorPWM( 0, 0, false );  
       setNextState(STATE_FORWARD, 0);
     }    
@@ -706,14 +737,17 @@ void Robot::checkCurrent(){
      if ( ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_PERI_FIND)) && (millis() > stateStartTime + motorPowerIgnoreTime)){    				  
        //beep(1);
        motorRightSenseCounter++;
+			 setSensorTriggered(SEN_MOTOR_RIGHT);
        setMotorPWM( 0, 0, false );  
        reverseOrBidir(RIGHT);
      } else if ((stateCurr == STATE_REVERSE) && (millis() > stateStartTime + motorPowerIgnoreTime)){
        motorRightSenseCounter++;
+				setSensorTriggered(SEN_MOTOR_RIGHT);
        setMotorPWM( 0, 0, false );  
        setNextState(STATE_ROLL,LEFT);				          
      } else if ((stateCurr == STATE_ROLL) && (millis() > stateStartTime + motorPowerIgnoreTime)){
        motorRightSenseCounter++;
+			 setSensorTriggered(SEN_MOTOR_RIGHT);
        setMotorPWM( 0, 0, false );  
        setNextState(STATE_FORWARD, 0);
     }
@@ -875,15 +909,18 @@ void Robot::checkSonar(){
 	 if (sonarTriggerBelow != 0){
 		if ((sonarDistCenter != NO_ECHO) && (sonarDistCenter < sonarTriggerBelow)) {
 			sonarDistCounter++;   
+			setSensorTriggered(SEN_SONAR_CENTER);
 			if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir
 				else reverseOrBidir(RIGHT);    
 		}
 		if ((sonarDistRight != NO_ECHO) && (sonarDistRight < sonarTriggerBelow)){
 			sonarDistCounter++;
+			setSensorTriggered(SEN_SONAR_RIGHT);
 			reverseOrBidir(LEFT);
 		}
 		if ((sonarDistLeft != NO_ECHO) && (sonarDistLeft < sonarTriggerBelow)){
 			sonarDistCounter++; 
+			setSensorTriggered(SEN_SONAR_LEFT);
 			reverseOrBidir(RIGHT);
 		}
 	}
@@ -898,6 +935,7 @@ void Robot::checkTilt(){
   if (tiltUse){
     if ((tilt) && (stateCurr != STATE_TILT_STOP) && (stateCurr != STATE_OFF) && (stateCurr != STATE_STATION_CHARGING)){
       Console.println(F("BumperDuino tilt"));      
+			setSensorTriggered(SEN_TILT);
       setNextState(STATE_TILT_STOP,0);
     }
   }
@@ -909,6 +947,7 @@ void Robot::checkTilt(){
     if ( (abs(pitchAngle) > 40) || (abs(rollAngle) > 40) ){
       Console.println(F("Error: IMU tilt"));
       addErrorCounter(ERR_IMU_TILT);
+			setSensorTriggered(SEN_TILT);
       setNextState(STATE_ERROR,0);
     }
   }
@@ -922,57 +961,57 @@ void Robot::checkIfStuck(){
   if (millis() < nextTimeCheckIfStuck) return;
   nextTimeCheckIfStuck = millis() + 300;
   if ((gpsUse) && (gps.hdop() < 500))  {
-  //float gpsSpeedRead = gps.f_speed_kmph();
-  float gpsSpeed = gps.f_speed_kmph();
-  if (gpsSpeedIgnoreTime >= motorReverseTime) gpsSpeedIgnoreTime = motorReverseTime - 500;
-  // low-pass filter
-   // double accel = 0.1;
-   // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
-   // Console.println(gpsSpeed);
-     // Console.println(robotIsStuckCounter);
-     // Console.println(errorCounter[ERR_STUCK]);
-  if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckIfGpsSpeedBelow)    // checks if mower is stuck and counts up
+    //float gpsSpeedRead = gps.f_speed_kmph();
+    float gpsSpeed = gps.f_speed_kmph();
+    if (gpsSpeedIgnoreTime >= motorReverseTime) gpsSpeedIgnoreTime = motorReverseTime - 500;
+    // low-pass filter
+    // double accel = 0.1;
+    // float gpsSpeed = (1.0-accel) * gpsSpeed + accel * gpsSpeedRead;
+    // Console.println(gpsSpeed);
+    // Console.println(robotIsStuckCounter);
+    // Console.println(errorCounter[ERR_STUCK]);
+    if ((stateCurr != STATE_MANUAL) && (stateCurr != STATE_REMOTE) && (gpsSpeed <= stuckIfGpsSpeedBelow)    // checks if mower is stuck and counts up
       && ((motorLeftRpmCurr && motorRightRpmCurr) != 0) && (millis() > stateStartTime + gpsSpeedIgnoreTime) ){
       robotIsStuckCounter++;
-  }
+    }
 
     else {                         // if mower gets unstuck it resets errorCounterMax to zero and reenabling motorMow
         robotIsStuckCounter = 0;    // resets temporary counter to zero
-    if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
+      if ( (errorCounter[ERR_STUCK] == 0) && (stateCurr != STATE_OFF) && (stateCurr != STATE_MANUAL) && (stateCurr != STATE_STATION) 
         && (stateCurr != STATE_STATION_CHARGING) && (stateCurr != STATE_STATION_CHECK) 
         && (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
         && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_ERROR)) {
         motorMowEnable = true;
         errorCounterMax[ERR_STUCK] = 0;
-  }
-    return;
-  }
-
-  if (robotIsStuckCounter >= 5){    
-    motorMowEnable = false;
-    if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stuck and unable to move
-    Console.println(F("Error: Mower is stuck"));
-    addErrorCounter(ERR_STUCK);
-    setNextState(STATE_ERROR,0);    //mower is switched into ERROR
-    //robotIsStuckCounter = 0;
+      }
+      return;
     }
+
+    if (robotIsStuckCounter >= 5){    
+      motorMowEnable = false;
+      if (errorCounterMax[ERR_STUCK] >= 3){   // robot is definately stuck and unable to move
+        Console.println(F("Error: Mower is stuck"));
+        addErrorCounter(ERR_STUCK);
+        setNextState(STATE_ERROR,0);    //mower is switched into ERROR
+        //robotIsStuckCounter = 0;
+      }
       else if (errorCounter[ERR_STUCK] < 3) {   // mower tries 3 times to get unstuck
         if (stateCurr == STATE_FORWARD){
-      motorMowEnable = false;
-      addErrorCounter(ERR_STUCK);             
-      setMotorPWM( 0, 0, false );  
-      reverseOrBidir(RIGHT);
-    }
-    else if (stateCurr == STATE_ROLL){
-      motorMowEnable = false;
-      addErrorCounter(ERR_STUCK);             
-      setMotorPWM( 0, 0, false );  
-      setNextState (STATE_FORWARD,0);
-    }
+          motorMowEnable = false;
+					addErrorCounter(ERR_STUCK);             
+					setMotorPWM( 0, 0, false );  
+					reverseOrBidir(RIGHT);
+				}
+				else if (stateCurr == STATE_ROLL){
+					motorMowEnable = false;
+					addErrorCounter(ERR_STUCK);             
+					setMotorPWM( 0, 0, false );  
+					setNextState (STATE_FORWARD,0);
+				}
+      }
     }
   }
 }
-  }
 
 
 void Robot::processGPSData()
@@ -1002,7 +1041,7 @@ void Robot::checkTimeout(){
 }
 
 
-char* Robot::stateName(){
+const char* Robot::stateName(){
   return stateNames[stateCurr];
 }
 
@@ -1392,8 +1431,9 @@ void Robot::loop()  {
       // waiting until charging completed    
       if (batMonitor){
         if ((chgCurrent < batFullCurrent) && (millis()-stateStartTime>2000)) setNextState(STATE_STATION,0); 
-          else if (millis()-stateStartTime > chargingTimeout) {
-            addErrorCounter(ERR_BATTERY);
+          else if (millis()-stateStartTime > chargingTimeout) {            
+						Console.println(F("Battery chargingTimeout"));
+						addErrorCounter(ERR_BATTERY);
             setNextState(STATE_ERROR, 0);
           }
       } 

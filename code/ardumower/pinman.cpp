@@ -1,14 +1,17 @@
 #include "pinman.h"
 
 
-#define PWM_FREQUENCY 3900
-#define TC_FREQUENCY 3900
+#ifndef __AVR__
+  #define PWM_FREQUENCY 3900
+  #define TC_FREQUENCY 3900
 
-static int _writeResolution = 8;
+  static int _writeResolution = 8;
 
-static uint8_t PWMEnabled = 0;
-static uint8_t pinEnabled[PINS_COUNT];
-static uint8_t TCChanEnabled[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+  static uint8_t PWMEnabled = 0;
+  static uint8_t pinEnabled[PINS_COUNT];
+  static uint8_t TCChanEnabled[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+#endif
+
 
 PinManager PinMan;
 
@@ -34,11 +37,11 @@ void PinManager::begin() {
 // PWM frequency
 #ifdef __AVR__
   TCCR3B = (TCCR3B & 0xF8) | 0x02;    // set PWM frequency 3.9 Khz (pin2,3,5)  
-#endif
-  
+#else 
 	uint8_t i;
 	for (i=0; i<PINS_COUNT; i++)
 		pinEnabled[i] = 0;
+#endif  
 }
 
 
