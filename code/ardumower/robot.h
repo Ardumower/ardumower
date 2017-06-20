@@ -43,6 +43,7 @@
 #include "perimeter.h"
 #include "gps.h"
 #include "pfod.h"
+#include "RunningMedian.h"
 
 //#include "QueueList.h"
 //#include <limits.h>
@@ -361,6 +362,13 @@ class Robot
     int perimeterTrackRevTime ; // perimeter tracking reverse time (ms)
     PID perimeterPID ;             // perimeter PID controller
     int perimeterMag ;             // perimeter magnitude
+    RunningMedian perimeterMagMedian = RunningMedian(300);
+    float PeriCoeffAccel;
+    int leftSpeedperi;
+    int rightSpeedperi;
+    unsigned long lastTimeForgetWire;
+    int MaxSpeedperiPwm;
+    int perimeterMagMaxValue;
     boolean perimeterInside ;      // is inside perimeter?
     unsigned long perimeterTriggerTime; // time to trigger perimeter transition (timeout)
     int perimeterTriggerTimeout;   // perimeter trigger timeout (ms)

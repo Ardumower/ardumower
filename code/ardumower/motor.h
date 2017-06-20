@@ -1,7 +1,5 @@
 // motor controller (normal & perimeter tracking), odometry
 
-
-
 // ---- motor RPM (interrupt) --------------------------------------------------------------
 // mower motor RPM driver
 void Robot::setMotorMowRPMState(boolean motorMowRpmState){
@@ -110,7 +108,7 @@ void Robot::motorControlImuRoll(){
   imuRollPID.max_output = motorSpeedMaxRpm/1.25;    //
   imuRollPID.compute();                 
 
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
   motorLeftPID.x = motorLeftRpmCurr;                 // IST 
   motorLeftPID.w = -imuRollPID.y;                // SOLL 
   motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
@@ -121,7 +119,7 @@ void Robot::motorControlImuRoll(){
   //if((motorLeftSpeedRpmSet >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
   //if((motorLeftSpeedRpmSet <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
 
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
   motorRightPID.Kp = motorLeftPID.Kp;
   motorRightPID.Ki = motorLeftPID.Ki;
   motorRightPID.Kd = motorLeftPID.Kd;
@@ -143,48 +141,109 @@ void Robot::motorControlImuRoll(){
 }
 
 
+//PID controller: track perimeter
+void Robot::motorControlPerimeter() {
 
-// PID controller: track perimeter 
-void Robot::motorControlPerimeter(){    
+//3 states
+//wire is lost
+//On the wire staright line pid fast action
+//Back slowly to the wire pid soft action
+
+
+//Control the perimeter motor only each 30ms
   if (millis() < nextTimeMotorPerimeterControl) return;
-    nextTimeMotorPerimeterControl = millis() + 100;
+  nextTimeMotorPerimeterControl = millis() + 30; //possible 15ms with the DUE
+  //tell to the pid where is the mower   (Pid.x)
+  perimeterPID.x = 5 * (double(perimeterMag) / perimeterMagMaxValue);
+  //tell to the Pid where to go (Pid.w)
+  if (perimeterInside) {
+  perimeterPID.w = -0.5;
+  }
+  else {
+    perimeterPID.w = 0.5;
+  }
+  //parameter the PID 
+  perimeterPID.y_min = -motorSpeedMaxPwm ;
+  perimeterPID.y_max = motorSpeedMaxPwm ;
+  perimeterPID.max_output = motorSpeedMaxPwm ;
+//and compute
+  perimeterPID.compute();
 
-  if ( (trackingPerimeterTransitionTimeOut != 0) && (millis() > stateStartTime + 5000) && (millis() > perimeterLastTransitionTime + trackingPerimeterTransitionTimeOut) ) {
-    // robot is wheel-spinning while tracking => roll to get ground again
-    if (trackingBlockInnerWheelWhilePerimeterStruggling == 0){
-    if (perimeterInside) setMotorPWM( -motorSpeedMaxPwm/1.5, motorSpeedMaxPwm/1.5, false);
-        else setMotorPWM( motorSpeedMaxPwm/1.5, -motorSpeedMaxPwm/1.5, false);}
+//First state wire is lost
+//important to understand TrackingPerimeterTransitionTimeOut It's if during this maximum duration the robot does not make a transition in and  out then it is supposed to have lost the wire, the PID is stopped to go into blocking mode of one of the two wheels. 
+// If the trackingPerimeterTransitionTimeOut is too large the robot goes too far out of the wire and goes round in a circle outside the wire without finding it
 
-    else if (trackingBlockInnerWheelWhilePerimeterStruggling == 1){
-      if (perimeterInside) setMotorPWM( 0, motorSpeedMaxPwm/1.5, false);
-        else setMotorPWM( motorSpeedMaxPwm/1.5, 0, false);
+// If the second condition is true the robot has lost the wire since more trackingPerimeterTransitionTimeOut (2500ms) for example it is then necessary to stop one of the 2 wheels to make a half turn and find again the wire
+  if ((millis() > stateStartTime + 10000) && (millis() > perimeterLastTransitionTime + trackingPerimeterTransitionTimeOut)) {
+     
+	//If this condition is true one of the 2 wheels makes backward the other continues with the result of the PID (not advised)
+	if (trackingBlockInnerWheelWhilePerimeterStruggling == 0) { //
+      if (perimeterInside) {
+        rightSpeedperi = max(-MaxSpeedperiPwm, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 2  + perimeterPID.y));
+        leftSpeedperi = -MaxSpeedperiPwm / 2;
+      }
+      else {
+        rightSpeedperi = -MaxSpeedperiPwm / 2;
+        leftSpeedperi = max(-MaxSpeedperiPwm, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 2 - perimeterPID.y));
+      }
     }
+	//If this condition is true one of the 2 wheels stop rotate the other continues with the result of the PID (advised)
+    if (trackingBlockInnerWheelWhilePerimeterStruggling == 1) {
+      if (perimeterInside) {
+        rightSpeedperi = max(-MaxSpeedperiPwm, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 2  + perimeterPID.y));
+        leftSpeedperi = 0;
+      }
+      else {
+        rightSpeedperi = 0;
+        leftSpeedperi = max(-MaxSpeedperiPwm, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 2 - perimeterPID.y));
+      }
+    }
+	
+	//send to motor
+    setMotorPWM( leftSpeedperi, rightSpeedperi, false);
+    // we record The time at which the last wire loss occurred
+    lastTimeForgetWire = millis();
+// if we have lost the wire from too long time (the robot is running in a circle outside the wire we stop everything)
+    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut) {
 
     if ((trackingErrorTimeOut != 0) && (millis() > perimeterLastTransitionTime + trackingErrorTimeOut)){      
       Console.println("Error: tracking error");
       addErrorCounter(ERR_TRACKING);
       //setNextState(STATE_ERROR,0);
-      setNextState(STATE_PERI_FIND,0);
+      setNextState(STATE_PERI_FIND, 0);
     }
+	// out of the fonction until the next loop  
     return;
-  }   
-  if (perimeterInside)
-      perimeterPID.x = -1;
-    else
-      perimeterPID.x = 1;
+  }
 
-  perimeterPID.w = 0;
-  perimeterPID.y_min = -motorSpeedMaxPwm;
-  perimeterPID.y_max = motorSpeedMaxPwm;		
-  perimeterPID.max_output = motorSpeedMaxPwm;
-  perimeterPID.compute();
-  //setMotorPWM( motorLeftPWMCurr  +perimeterPID.y, 
-  //               motorRightPWMCurr -perimeterPID.y, false);      
-  setMotorPWM( max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/2 - perimeterPID.y)), 
-                 max(-motorSpeedMaxPwm, min(motorSpeedMaxPwm, motorSpeedMaxPwm/2 + perimeterPID.y)), false);      
-  /*Console.print(perimeterPID.x);
-  Console.print("\t");          
-  Console.println(perimeterPID.y);  */
+  
+
+ // here we have just found again the wire we need a slow return to let the pid temp react by decreasing its action (perimeterPID.y / PeriCoeffAccel)
+if ((millis() - lastTimeForgetWire ) < trackingPerimeterTransitionTimeOut) {
+    //PeriCoeffAccel move gently from 3 to 1 and so perimeterPID.y/PeriCoeffAccel increase during 3 secondes
+    PeriCoeffAccel = (3000.00 - (millis() - lastTimeForgetWire))/1000.00 ;
+    if (PeriCoeffAccel < 1.00) PeriCoeffAccel = 1.00;
+    rightSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 1.5 +  perimeterPID.y / PeriCoeffAccel));
+    leftSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 1.5 -  perimeterPID.y / PeriCoeffAccel));
+ }
+  else
+//we are in straight line the pid is total and not/2
+  {
+    rightSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm/1.5   + perimeterPID.y));
+    leftSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm/1.5  - perimeterPID.y));
+    
+  }
+
+  setMotorPWM( leftSpeedperi, rightSpeedperi, false);
+
+
+  //if the mower move in perfect straight line the transition between in and out is longuer so you need to reset the perimeterLastTransitionTime
+    
+if (abs(perimeterMag ) < perimeterMagMaxValue/4) { 
+    perimeterLastTransitionTime = millis(); //initialise perimeterLastTransitionTime in perfect sthraith line
+  }
+
+  
 }
 
 // PID controller: correct direction during normal driving (requires IMU)
@@ -206,8 +265,8 @@ void Robot::motorControlImuDir(){
   if (imuDirPID.y < 0) correctRight = abs(imuDirPID.y);
   if (imuDirPID.y > 0) correctLeft  = abs(imuDirPID.y);
                  
-  // Korrektur erfolgt über Abbremsen des linken Antriebsrades, falls Kursabweichung nach rechts
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  // Korrektur erfolgt Ã¼ber Abbremsen des linken Antriebsrades, falls Kursabweichung nach rechts
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
   motorLeftPID.x = motorLeftRpmCurr;                     // IST 
   motorLeftPID.w = motorLeftSpeedRpmSet - correctLeft;     // SOLL 
   motorLeftPID.y_min = -motorSpeedMaxPwm;            // Regel-MIN
@@ -218,8 +277,8 @@ void Robot::motorControlImuDir(){
   if((motorLeftSpeedRpmSet >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
   if((motorLeftSpeedRpmSet <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;    
 
-  // Korrektur erfolgt über Abbremsen des rechten Antriebsrades, falls Kursabweichung nach links 
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+  // Korrektur erfolgt Ã¼ber Abbremsen des rechten Antriebsrades, falls Kursabweichung nach links 
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
   motorRightPID.Kp = motorLeftPID.Kp;
   motorRightPID.Ki = motorLeftPID.Ki;
   motorRightPID.Kd = motorLeftPID.Kd;
@@ -279,7 +338,7 @@ void Robot::motorControl(){
     nextTimeMotorControl = millis() + 100;
     static unsigned long nextMotorControlOutputTime = 0;
   if (odometryUse){
-    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
     motorLeftPID.w = motorLeftSpeedRpmSet;               // SOLL 
     motorRightPID.w = motorRightSpeedRpmSet;             // SOLL    
     float RLdiff = motorLeftRpmCurr - motorRightRpmCurr;
@@ -300,7 +359,7 @@ void Robot::motorControl(){
 		if (motorLeftSpeedRpmSet >= 0) leftSpeed = min( max(0, leftSpeed), motorSpeedMaxPwm);
     if (motorLeftSpeedRpmSet < 0) leftSpeed = max(-motorSpeedMaxPwm, min(0, leftSpeed)); 		
 
-    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
+    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
     motorRightPID.Kp = motorLeftPID.Kp;
     motorRightPID.Ki = motorLeftPID.Ki;
     motorRightPID.Kd = motorLeftPID.Kd;          
