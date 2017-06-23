@@ -104,7 +104,7 @@ Mower::Mower(){
   perimeterTrackRollTime     = 1500;       // roll time during perimeter tracking
   perimeterTrackRevTime      = 2200;       // reverse time during perimeter tracking
   #if defined (ROBOT_ARDUMOWER)
-	  perimeterPID.Kp            = 20;       // perimeter PID controller
+	  perimeterPID.Kp            = 16;       // perimeter PID controller
     perimeterPID.Ki            = 8;
     perimeterPID.Kd            = 0.8;  
 	#else // ROBOT_MINI
