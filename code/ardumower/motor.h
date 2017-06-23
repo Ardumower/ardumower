@@ -151,6 +151,7 @@ void Robot::motorControlPerimeter() {
   //Control the perimeter motor only each 30ms
   if (millis() < nextTimeMotorPerimeterControl) return;
   nextTimeMotorPerimeterControl = millis() + 30; //possible 15ms with the DUE
+  //PerimeterMagMaxValue=2000;  //need to change in the future 	
   //tell to the pid where is the mower   (Pid.x)
   perimeterPID.x = 5 * (double(perimeterMag) / perimeterMagMaxValue);
   //tell to the Pid where to go (Pid.w)
@@ -161,9 +162,9 @@ void Robot::motorControlPerimeter() {
     perimeterPID.w = 0.5;
   }
   //parameter the PID 
-  perimeterPID.y_min = -motorSpeedMaxPwm ;
-  perimeterPID.y_max = motorSpeedMaxPwm ;
-  perimeterPID.max_output = motorSpeedMaxPwm ;
+  perimeterPID.y_min = -MaxSpeedperiPwm ;
+  perimeterPID.y_max = MaxSpeedperiPwm ;
+  perimeterPID.max_output = MaxSpeedperiPwm ;
   //and compute
   perimeterPID.compute();
 
@@ -202,8 +203,7 @@ void Robot::motorControlPerimeter() {
     // we record The time at which the last wire loss occurred
     lastTimeForgetWire = millis();
     // if we have lost the wire from too long time (the robot is running in a circle outside the wire we stop everything)
-    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut) {
-			if ((trackingErrorTimeOut != 0) && (millis() > perimeterLastTransitionTime + trackingErrorTimeOut)){      
+    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut) {     
 				Console.println(F("Error: tracking error"));
 				addErrorCounter(ERR_TRACKING);
 				//setNextState(STATE_ERROR,0);
@@ -235,7 +235,6 @@ void Robot::motorControlPerimeter() {
 		if (abs(perimeterMag ) < perimeterMagMaxValue/4) { 
 			perimeterLastTransitionTime = millis(); //initialise perimeterLastTransitionTime in perfect sthraith line
 		}  
-	}
 }
 
 
