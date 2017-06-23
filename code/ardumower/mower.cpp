@@ -104,8 +104,8 @@ Mower::Mower(){
   perimeterTrackRollTime     = 1500;       // roll time during perimeter tracking
   perimeterTrackRevTime      = 2200;       // reverse time during perimeter tracking
   #if defined (ROBOT_ARDUMOWER)
-	  perimeterPID.Kp            = 51.0;       // perimeter PID controller
-    perimeterPID.Ki            = 12.5;
+	  perimeterPID.Kp            = 20;       // perimeter PID controller
+    perimeterPID.Ki            = 8;
     perimeterPID.Kd            = 0.8;  
 	#else // ROBOT_MINI
 		perimeterPID.Kp    = 24.0;  // perimeter PID controller
@@ -113,7 +113,7 @@ Mower::Mower(){
     perimeterPID.Kd    = 9.0;
 	#endif  
   
-  trackingPerimeterTransitionTimeOut              = 0;   // 0=disable
+  trackingPerimeterTransitionTimeOut              = 2500;   // never<500 ms
   trackingErrorTimeOut                            = 10000;  // 0=disable
   trackingBlockInnerWheelWhilePerimeterStruggling = 1;
   MaxSpeedperiPwm = 200; // speed max in PWM while perimeter tracking
