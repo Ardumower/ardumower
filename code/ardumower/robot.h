@@ -156,6 +156,8 @@ enum {
   STATE_PERI_OUT_REV,   // outside perimeter reverse driving without checkPerimeterBoundary()
   STATE_PERI_OUT_ROLL,   // outside perimeter rolling driving without checkPerimeterBoundary()
   STATE_TILT_STOP,    // tilt sensor activated, stop motors, wait for un-tilt
+  STATE_BUMPER_REVERSE,      // drive reverse
+  STATE_BUMPER_FORWARD,      // drive forward	
 };
 
 // roll types
@@ -577,6 +579,7 @@ protected:
     
     // set reverse
     virtual void reverseOrBidir(byte aRollDir);    
+		virtual void reverseOrBidirBumper(byte aRollDir);
     
     // other		
 	  virtual void setSensorTriggered(char type);
