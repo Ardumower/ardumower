@@ -162,9 +162,9 @@ void Robot::motorControlPerimeter() {
     perimeterPID.w = 0.5;
   }
   //parameter the PID 
-  perimeterPID.y_min = -motorSpeedMaxPwm ;
-  perimeterPID.y_max = motorSpeedMaxPwm ;
-  perimeterPID.max_output = motorSpeedMaxPwm ;
+  perimeterPID.y_min = -MaxSpeedperiPwm ;
+  perimeterPID.y_max = MaxSpeedperiPwm ;
+  perimeterPID.max_output = MaxSpeedperiPwm ;
   //and compute
   perimeterPID.compute();
 
@@ -202,37 +202,8 @@ void Robot::motorControlPerimeter() {
     setMotorPWM( leftSpeedperi, rightSpeedperi, false);
     // we record The time at which the last wire loss occurred
     lastTimeForgetWire = millis();
-<<<<<<< HEAD
-// if we have lost the wire from too long time (the robot is running in a circle outside the wire we stop everything)
-    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut) {    
-      Console.println("Error: tracking error");
-      addErrorCounter(ERR_TRACKING);
-      //setNextState(STATE_ERROR,0);
-      setNextState(STATE_PERI_FIND, 0);
-    }
-	// out of the fonction until the next loop  
-    return;
-  }
-
-  
-
- // here we have just found again the wire we need a slow return to let the pid temp react by decreasing its action (perimeterPID.y / PeriCoeffAccel)
-if ((millis() - lastTimeForgetWire ) < trackingPerimeterTransitionTimeOut) {
-    //PeriCoeffAccel move gently from 3 to 1 and so perimeterPID.y/PeriCoeffAccel increase during 3 secondes
-    PeriCoeffAccel = (3000.00 - (millis() - lastTimeForgetWire))/1000.00 ;
-    if (PeriCoeffAccel < 1.00) PeriCoeffAccel = 1.00;
-    rightSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 1.5 +  perimeterPID.y / PeriCoeffAccel));
-    leftSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm / 1.5 -  perimeterPID.y / PeriCoeffAccel));
- }
-  else
-//we are in straight line the pid is total and not/2
-  {
-    rightSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm/1.5   + perimeterPID.y));
-    leftSpeedperi = max(0, min(MaxSpeedperiPwm, MaxSpeedperiPwm/1.5  - perimeterPID.y));
-=======
     // if we have lost the wire from too long time (the robot is running in a circle outside the wire we stop everything)
-    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut) {
-			if ((trackingErrorTimeOut != 0) && (millis() > perimeterLastTransitionTime + trackingErrorTimeOut)){      
+    if (millis() > perimeterLastTransitionTime + trackingErrorTimeOut) {     
 				Console.println(F("Error: tracking error"));
 				addErrorCounter(ERR_TRACKING);
 				//setNextState(STATE_ERROR,0);
@@ -260,12 +231,10 @@ if ((millis() - lastTimeForgetWire ) < trackingPerimeterTransitionTimeOut) {
 		setMotorPWM( leftSpeedperi, rightSpeedperi, false);
 
 		//if the mower move in perfect straight line the transition between in and out is longuer so you need to reset the perimeterLastTransitionTime
->>>>>>> refs/remotes/Ardumower/master
     
 		if (abs(perimeterMag ) < perimeterMagMaxValue/4) { 
 			perimeterLastTransitionTime = millis(); //initialise perimeterLastTransitionTime in perfect sthraith line
 		}  
-	}
 }
 
 
