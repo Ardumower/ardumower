@@ -30,12 +30,14 @@
 #include <Arduino.h>
 #include <Wire.h>
 //#include <Servo.h>
-#ifdef __AVR__
+#ifdef __AVR_ATmega2560__
   // Arduino Mega
   #include <EEPROM.h>
-#else 
-  // Arduino Due
+#elif __SAM3X8E__
+	// Arduino Due
   #include "due.h"
+#else
+  #error "Wrong Arduino board - Choose Arduino Mega or Arduino Due in Arduino IDE"
 #endif
 #include "config.h"
 
