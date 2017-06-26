@@ -782,9 +782,9 @@ void Robot::checkBumpers(){
 
   if ((bumperLeft || bumperRight)) {    
       if (bumperLeft) {
-        reverseOrBidir(RIGHT);          
+        reverseOrBidirBumper(RIGHT);          
       } else {
-        reverseOrBidir(LEFT);
+        reverseOrBidirBumper(LEFT);
       }    
   }  
 }
