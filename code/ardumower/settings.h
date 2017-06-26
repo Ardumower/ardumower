@@ -157,8 +157,30 @@ void Robot::loadUserSettings(){
   loadSaveUserSettings(true);
 }
 
-
+// Serielle Augabe der Einstellungen UZ
+//**********-----------------------------------------------------------------------
 void Robot::printSettingSerial(){
+
+ Console.println(F("START"));  
+  Console.print(F("Ardumower "));
+  Console.print(VER);
+  Console.print(F("  "));
+    #if defined (PCB_1_2)
+     Console.print(F("PCB 1.2"));
+  #elif defined (PCB_1_3)
+     Console.print(F("PCB 1.3"));  
+  #endif
+  #ifdef __AVR__
+    Console.print(F("  Arduino Mega"));
+  #else
+    Console.print(F("  Arduino Due"));
+  #endif
+  Console.print(F("  IOREF=")); 
+  Console.println(IOREF);
+
+  Console.print(F("Robot: "));
+  Console.println(name);  
+      
  
   // ------- wheel motors ---------------------------------------------------------
   Console.println(F("---------- wheel motors --------------------------------------"));
