@@ -34,9 +34,10 @@ import processing.net.*;
 import java.util.Iterator;
 
 // -------- configuration ---------
-String comPort = "COM9"; // do not use - you will be prompted to choose a serial device
-int comBaud = 19200;   // do not use - you will be prompted to choose a serial device
 boolean useTcp = false;  // use TCP (true) or serial (false)
+boolean useChooseDevice = true; // you will be prompted to choose a serial device
+String comPort = "COM9"; 
+int comBaud = 19200;   
 String tcpHost = "raspberrypi.local"; // TCP host
 //String tcpHost = "localhost";  // TCP host
 int tcpPort = 8083;   // TCP port
@@ -555,7 +556,7 @@ void setup(){
            + "j06~Charge sense zero `0`600`400~ ~1|j08~Charge factor `270`1000`0~ ~0.01|j09~for config file|"
            + "batFactor 0.07}");
     } else {          
-      if (useTcp) {
+      if ( (useTcp) || ((!useTcp) && (!useChooseDevice)) ) {
         connectDevice();
       } else {
         chooseDevice();
