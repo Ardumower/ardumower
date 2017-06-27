@@ -33,14 +33,15 @@ import processing.serial.*;
 import processing.net.*;
 import java.util.Iterator;
 
-// configuration
-String comPort = "COM9";
-int comBaud = 19200;
-boolean useTcp = false;
-String tcpHost = "raspberrypi.local";
-//String tcpHost = "localhost";
-int tcpPort = 8083;
-boolean demo = false;
+// -------- configuration ---------
+String comPort = "COM9"; // do not use - you will be prompted to choose a serial device
+int comBaud = 19200;   // do not use - you will be prompted to choose a serial device
+boolean useTcp = false;  // use TCP (true) or serial (false)
+String tcpHost = "raspberrypi.local"; // TCP host
+//String tcpHost = "localhost";  // TCP host
+int tcpPort = 8083;   // TCP port
+boolean demo = false; // demo mode
+// ---------------------------------
 
 
   static final int STATE_CONNECT   = 0;
