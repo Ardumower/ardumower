@@ -506,8 +506,8 @@ void RemoteControl::sendSonarMenu(boolean update){
   serialPort->print(robot->sonarDistCenter);
   serialPort->print(", ");
   serialPort->print(robot->sonarDistRight);  
-  sendSlider("d03", F("Trigger below (0=off)"), robot->sonarTriggerBelow, "", 1, 3000);       
-	sendSlider("d07", F("Slow below"), robot->sonarSlowBelow, "", 1, 3000);       
+  sendSlider("d03", F("Trigger below (cm)(0=off)"), robot->sonarTriggerBelow, "", 1, 100);       
+	sendSlider("d07", F("Slow below (cm)"), robot->sonarSlowBelow, "", 1, 100);       
   serialPort->println("}"); 
 }
 

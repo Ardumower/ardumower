@@ -474,8 +474,8 @@ void Robot::readSensors(){
 
 
  if ((sonarUse) && (millis() >= nextTimeSonar)){
-    static char senSonarTurn = SEN_SONAR_RIGHT;    
-    nextTimeSonar = millis() + 80;
+    static char senSonarTurn = SEN_SONAR_CENTER;    
+    nextTimeSonar = millis() + 250;
     
     switch(senSonarTurn) {
       case SEN_SONAR_RIGHT:
@@ -491,7 +491,7 @@ void Robot::readSensors(){
         senSonarTurn = SEN_SONAR_RIGHT;
         break;
       default:
-        senSonarTurn = SEN_SONAR_RIGHT;
+        senSonarTurn = SEN_SONAR_CENTER;
         break;
     }   
 /*
@@ -900,9 +900,11 @@ void Robot::checkRain(){
 void Robot::checkSonar(){
   if(!sonarUse) return;
   if (millis() < nextTimeCheckSonar) return;
-  nextTimeCheckSonar = millis() + 200;
+  nextTimeCheckSonar = millis() + 500;
   if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;
-
+  if (sonarDistCenter < 11 || sonarDistCenter > 100) sonarDistCenter = NO_ECHO; // Objekt ist zu nah am Sensor Wert ist unbrauchbar
+  if (sonarDistRight < 11 || sonarDistRight > 100) sonarDistRight = NO_ECHO; // Object is too close to the sensor. Sensor value is useless
+  if (sonarDistLeft < 11 || sonarDistLeft  > 100) sonarDistLeft = NO_ECHO; // Filters spiks under the possible detection limit
   // slow down motor wheel speed near obstacles   
   if (     (stateCurr == STATE_FORWARD) 
           || (  (mowPatternCurr == MOW_BIDIR) && ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_REVERSE))  )  
