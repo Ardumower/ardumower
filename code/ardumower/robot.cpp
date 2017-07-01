@@ -1301,7 +1301,7 @@ void Robot::loop()  {
     loopsPerSec = loopsPerSecCounter;	
 		loopsPerSecSmooth = 0.5 * loopsPerSecSmooth + 0.5 * ((float)loopsPerSec);		
 		if (stateCurr != STATE_ERROR){		
-			if (loopsPerSecSmooth < 100){ // too long I2C cables can be a reason for this
+			if (loopsPerSecSmooth < 20){ // too long I2C cables can be a reason for this
 				Console.println(F("Error: loopsPerSec too low (check I2C cables)"));
 				addErrorCounter(ERR_CPU_SPEED);
 				setNextState(STATE_ERROR,0);    //mower is switched into ERROR
