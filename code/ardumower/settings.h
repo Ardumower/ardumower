@@ -543,7 +543,8 @@ void Robot::printErrors(){
     for (int i=0; i < ERR_ENUM_COUNT; i++){
       if (errorCounter[i] > 0) {       
         switch (i){
-           case ERR_MOTOR_LEFT: Console.println(F("ERR_MOTOR_LEFT")); break;
+           case ERR_CPU_SPEED: Console.println(F("ERR_CPU_SPEED")); break;
+					 case ERR_MOTOR_LEFT: Console.println(F("ERR_MOTOR_LEFT")); break;
            case ERR_MOTOR_RIGHT: Console.println(F("ERR_MOTOR_RIGHT")); break;
            case ERR_MOTOR_MOW: Console.println(F("ERR_MOW_SENSE")); break;
            case ERR_IMU_COMM: Console.println(F("ERR_IMU_COMM")); break;

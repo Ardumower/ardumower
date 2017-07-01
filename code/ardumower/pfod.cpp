@@ -261,6 +261,8 @@ void RemoteControl::sendErrorMenu(boolean update){
   serialPort->print(robot->errorCounterMax[ERR_STUCK]);
   serialPort->print(F("|zz~EEPROM data "));
   serialPort->print(robot->errorCounterMax[ERR_EEPROM_DATA]);
+	serialPort->print(F("|zz~CPU speed "));
+  serialPort->print(robot->errorCounterMax[ERR_CPU_SPEED]);
   serialPort->println("}");
 }  
 

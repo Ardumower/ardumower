@@ -126,6 +126,7 @@ enum {
   ERR_IMU_CALIB,
   ERR_EEPROM_DATA,
   ERR_STUCK,
+	ERR_CPU_SPEED,
   // <---- add new error types here (NOTE: increase MAGIC to avoid corrupt EEPROM error data!)
   ERR_ENUM_COUNT,  
 };  
@@ -463,6 +464,7 @@ class Robot
     byte errorCounter[ERR_ENUM_COUNT];    // temporary error counts (will be resetted periodically)
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
+		float loopsPerSecSmooth ;  // main loops per second (smoothed)
     float loopsTa ;   // main loop-time factor (milliseconds)
     int loopsPerSecCounter ;
     byte buttonCounter ;
