@@ -464,7 +464,7 @@ class Robot
     byte errorCounter[ERR_ENUM_COUNT];    // temporary error counts (will be resetted periodically)
     // --------- other ----------------------------------
     int loopsPerSec ;  // main loops per second
-		float loopsPerSecSmooth ;  // main loops per second (smoothed)
+		byte loopsPerSecLowCounter ;  
     float loopsTa ;   // main loop-time factor (milliseconds)
     int loopsPerSecCounter ;
     byte buttonCounter ;
