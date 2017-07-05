@@ -504,7 +504,8 @@ void Mower::setup(){
 }
 
 void checkMotorFault(){
-  if (digitalRead(pinMotorLeftFault)==LOW){
+#if defined (DRIVER_MC33926)
+	if (digitalRead(pinMotorLeftFault)==LOW){
     robot.addErrorCounter(ERR_MOTOR_LEFT);
     //Console.println(F("Error: motor left fault"));
     robot.setNextState(STATE_ERROR, 0);
@@ -525,6 +526,7 @@ void checkMotorFault(){
     //digitalWrite(pinMotorMowEnable, LOW);
     //digitalWrite(pinMotorMowEnable, HIGH);
   }
+#endif
 }
 
 void Mower::resetMotorFault(){
@@ -549,11 +551,12 @@ void Mower::resetMotorFault(){
 int Mower::readSensor(char type){
   switch (type) {
 // motors------------------------------------------------------------------------------------------------
+#if defined (DRIVER_MC33926)
     case SEN_MOTOR_MOW: return ADCMan.read(pinMotorMowSense); break;
     case SEN_MOTOR_RIGHT: checkMotorFault(); return ADCMan.read(pinMotorRightSense); break;
     case SEN_MOTOR_LEFT:  checkMotorFault(); return ADCMan.read(pinMotorLeftSense); break;
     //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
-
+#endif
 // perimeter----------------------------------------------------------------------------------------------
     case SEN_PERIM_LEFT: return perimeter.getMagnitude(0); break;
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;

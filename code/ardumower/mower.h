@@ -29,6 +29,10 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 #define ROBOT_ARDUMOWER
 //#define ROBOT_MINI
 
+// ------- Choose motor driver (MC33926 is recommended) -----------------------
+#define DRIVER_MC33926
+//#define DRIVER_L298N
+
 
 // DO NOT CHANGE - Due or Mega is detected automatically (based on Arduino IDE settings)
 #ifdef __AVR__
