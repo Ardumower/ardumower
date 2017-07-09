@@ -1,0 +1,11 @@
+<ViewFlipper
+xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/viewFlipper">
+        
+    <include android:id="@+id/listView" layout="@layout/view_list" />
+    <include android:id="@+id/navigateView" layout="@layout/view_navigate" />    
+    <include android:id="@+id/textView" layout="@layout/view_text" />
+
+</ViewFlipper>

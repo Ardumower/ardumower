@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_height">24sp</dimen>
+    <dimen name="item_height">50dp</dimen>
+    
+    <dimen name="graph_height">90dp</dimen>
+    <dimen name="label_height">12dp</dimen>
+    <dimen name="point_radius">3dp</dimen>
+</resources>

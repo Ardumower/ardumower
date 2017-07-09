@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ArduRemote</string>
+    <string name="thermo_unplugged">Thermo sensor is unplugged. Plug it in to start measuring.</string>
+
+</resources>

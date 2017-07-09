@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_below="@+id/buttonUp"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/buttonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_below="@+id/textViewLeft"
+        android:background="#333"
+        android:minHeight="70dp"
+        android:minWidth="70dp"
+        android:text="&lt;"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/buttonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonCenter"
+        android:layout_alignBottom="@+id/buttonCenter"
+        android:layout_alignParentRight="true"
+        android:background="#333"
+        android:minHeight="70dp"
+        android:minWidth="70dp"
+        android:text=">"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/textViewRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonRight"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonDown"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/buttonUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textViewUp"
+        android:background="#333"
+        android:minHeight="70dp"
+        android:minWidth="70dp"
+        android:text="^"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/buttonDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textViewRight"
+        android:background="#333"
+        android:minHeight="70dp"
+        android:minWidth="70dp"
+        android:text="v"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/buttonCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttonLeft"
+        android:layout_centerHorizontal="true"
+        android:background="#333"
+        android:minHeight="70dp"
+        android:minWidth="120dp"
+        android:text="Button"
+        android:textColor="#fff" />
+
+</RelativeLayout>
