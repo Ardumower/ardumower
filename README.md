@@ -2,7 +2,7 @@ I forked this to enhance the fabulous ardumower code with some additional featur
 
 - better manual control
 	- immediate stop
-	- half speed froward/reverse
+	- half speed forward/reverse
 	- immediate stop when bumper triggers
 		- reverse, when bumper is triggered, needed to release bumper (no rotate)
 
