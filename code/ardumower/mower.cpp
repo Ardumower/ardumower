@@ -131,7 +131,7 @@ Mower::Mower(){
   imuRollPID.Kd              = 0;  
   
   // ------ model R/C ------------------------------------
-  remoteUse                  = 1;          // use model remote control (R/C)?
+  remoteUse                  = 0;          // use model remote control (R/C)?
   
   // ------ battery -------------------------------------
   #if defined (ROBOT_ARDUMOWER)
@@ -551,12 +551,22 @@ void Mower::resetMotorFault(){
 int Mower::readSensor(char type){
   switch (type) {
 // motors------------------------------------------------------------------------------------------------
+
+
 #if defined (DRIVER_MC33926)
     case SEN_MOTOR_MOW: return ADCMan.read(pinMotorMowSense); break;
     case SEN_MOTOR_RIGHT: checkMotorFault(); return ADCMan.read(pinMotorRightSense); break;
     case SEN_MOTOR_LEFT:  checkMotorFault(); return ADCMan.read(pinMotorLeftSense); break;
     //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
 #endif
+
+#if defined (DRIVER_L298N)
+    case SEN_MOTOR_MOW: return ADCMan.read(pinMotorMowSense); break;
+    case SEN_MOTOR_RIGHT: return ADCMan.read(pinMotorRightSense); break;
+    case SEN_MOTOR_LEFT:  return ADCMan.read(pinMotorLeftSense); break;
+    //case SEN_MOTOR_MOW_RPM: break; // not used - rpm is upated via interrupt
+#endif
+
 // perimeter----------------------------------------------------------------------------------------------
     case SEN_PERIM_LEFT: return perimeter.getMagnitude(0); break;
     //case SEN_PERIM_RIGHT: return Perimeter.getMagnitude(1); break;
@@ -613,9 +623,19 @@ int Mower::readSensor(char type){
 
 void Mower::setActuator(char type, int value){
   switch (type){
+  
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+#ifdef DRIVER_MC33926
+  case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+  case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+#endif 
+  
+#ifdef DRIVER_L298N
+  case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+  case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+
+#endif
+   
     case ACT_BUZZER: if (value == 0) Buzzer.noTone(); else Buzzer.tone(value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
