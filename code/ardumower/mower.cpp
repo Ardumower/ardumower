@@ -625,15 +625,13 @@ void Mower::setActuator(char type, int value){
   switch (type){
   
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-#ifdef DRIVER_MC33926
+#if defined (DRIVER_MC33926)
   case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
   case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
 #endif 
-  
-#ifdef DRIVER_L298N
+#if defined (DRIVER_L298N)
   case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
   case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-
 #endif
    
     case ACT_BUZZER: if (value == 0) Buzzer.noTone(); else Buzzer.tone(value); break;
