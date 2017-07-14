@@ -1,4 +1,4 @@
-(kicad_pcb (version 20170123) (host pcbnew "(2017-06-28 revision 2237de015)-makepkg")
+(kicad_pcb (version 20170123) (host pcbnew "(2017-07-10 revision 2a301d588)-makepkg")
 
   (general
     (thickness 1.6)
@@ -11,7 +11,7 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal)
+    (0 F.Cu signal hide)
     (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
@@ -34,7 +34,7 @@
   )
 
   (setup
-    (last_trace_width 0.75)
+    (last_trace_width 0.25)
     (user_trace_width 0.25)
     (user_trace_width 0.4)
     (user_trace_width 0.5)
@@ -722,8 +722,13 @@
       (net 13 /StationLed_GND))
     (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 14 /Taster))
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_2x07_Pitch2.54mm.wrl
-      (at (xyz 0.05 -0.3 0))
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Angled_2x07_Pitch2.54mm.wrll
+      (at (xyz 0.05 -0.2913385826771654 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/walter/conn_strip/vasch_strip_7x2_90.wrl
+      (at (xyz 0.25 -0.3031496062992126 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
     )
@@ -1432,7 +1437,7 @@
   (gr_line (start 156.21 94.615) (end 160.02 98.425) (angle 90) (layer F.SilkS) (width 0.2))
   (gr_line (start 144.145 94.615) (end 156.21 94.615) (angle 90) (layer F.SilkS) (width 0.2))
   (dimension 100 (width 0.3) (layer Eco1.User)
-    (gr_text "100,000 mm" (at 136 126.35) (layer Eco1.User) (tstamp 5962679E)
+    (gr_text "100,000 mm" (at 136 126.35) (layer Eco1.User) (tstamp 59674D97)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 186 118) (xy 186 127.7)))
@@ -1444,7 +1449,7 @@
     (arrow2b (pts (xy 86 125) (xy 87.126504 124.413579)))
   )
   (dimension 35 (width 0.3) (layer Eco1.User)
-    (gr_text "35,000 mm" (at 199.35 100.5 270) (layer Eco1.User) (tstamp 5962679F)
+    (gr_text "35,000 mm" (at 199.35 100.5 270) (layer Eco1.User) (tstamp 59674D98)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 186 118) (xy 200.7 118)))
@@ -1456,7 +1461,7 @@
     (arrow2b (pts (xy 198 83) (xy 198.586421 84.126504)))
   )
   (dimension 4 (width 0.175) (layer Eco1.User)
-    (gr_text "4,000 mm" (at 191 80 270) (layer Eco1.User) (tstamp 596267A0)
+    (gr_text "4,000 mm" (at 191 80 270) (layer Eco1.User) (tstamp 59674D99)
       (effects (font (size 0.7 0.7) (thickness 0.175)))
     )
     (feature1 (pts (xy 182 87) (xy 193.7 87)))
@@ -1468,7 +1473,7 @@
     (arrow2b (pts (xy 191 83) (xy 191.586421 84.126504)))
   )
   (dimension 4 (width 0.175) (layer Eco1.User)
-    (gr_text "4,000 mm" (at 179 79) (layer Eco1.User) (tstamp 596267A1)
+    (gr_text "4,000 mm" (at 179 79) (layer Eco1.User) (tstamp 59674D9A)
       (effects (font (size 0.7 0.7) (thickness 0.175)))
     )
     (feature1 (pts (xy 186 87) (xy 186 76.3)))
@@ -1480,7 +1485,7 @@
     (arrow2b (pts (xy 182 79) (xy 183.126504 78.413579)))
   )
   (dimension 10.16 (width 0.175) (layer Eco1.User)
-    (gr_text "10,160 mm" (at 142.24 77.136) (layer Eco1.User) (tstamp 596267A2)
+    (gr_text "10,160 mm" (at 142.24 77.136) (layer Eco1.User) (tstamp 59674D9B)
       (effects (font (size 0.7 0.7) (thickness 0.175)))
     )
     (feature1 (pts (xy 137.16 81.28) (xy 137.16 75.786)))
@@ -1492,7 +1497,7 @@
     (arrow2b (pts (xy 147.32 78.486) (xy 146.193496 79.072421)))
   )
   (dimension 10.16 (width 0.175) (layer Eco1.User)
-    (gr_text "10,160 mm" (at 152.4 77.136001) (layer Eco1.User) (tstamp 596267A3)
+    (gr_text "10,160 mm" (at 152.4 77.136001) (layer Eco1.User) (tstamp 59674D9C)
       (effects (font (size 0.7 0.7) (thickness 0.175)))
     )
     (feature1 (pts (xy 147.32 81.28) (xy 147.32 75.786001)))
@@ -1504,7 +1509,7 @@
     (arrow2b (pts (xy 157.48 78.486001) (xy 156.353496 79.072422)))
   )
   (dimension 12.446 (width 0.175) (layer Eco1.User)
-    (gr_text "12,446 mm" (at 163.703 77.136) (layer Eco1.User) (tstamp 596267A4)
+    (gr_text "12,446 mm" (at 163.703 77.136) (layer Eco1.User) (tstamp 59674D9D)
       (effects (font (size 0.7 0.7) (thickness 0.175)))
     )
     (feature1 (pts (xy 169.926 81.28) (xy 169.926 75.786)))

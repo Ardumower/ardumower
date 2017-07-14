@@ -37,7 +37,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Ardumower _LED_Panel_V1.3"
-Date "2017-07-01"
+Date "2017-07-14"
 Rev "1.3"
 Comp "ML AG JL UZ"
 Comment1 ""
@@ -403,77 +403,77 @@ $EndComp
 $Comp
 L Bohrloch_3,2mm_ohne_Kupferfläche B4
 U 1 1 595E76B5
-P 7255 6170
-F 0 "B4" H 7359 6223 60  0000 L CNN
-F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 7359 6117 60  0000 L CNN
-F 2 "Zimprich:Bohrloch_3,2mm" H 7359 6064 60  0001 L CNN
-F 3 "" H 7255 6170 60  0000 C CNN
-F 4 "Value" H 7255 6170 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7255 6170 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7255 6170 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 7255 6170 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7255 6170 60  0001 C CNN "Bauform"
-F 9 "Value" H 7255 6170 60  0001 C CNN "Funktion"
-F 10 "Value" H 7255 6170 60  0001 C CNN "Hersteller"
-F 11 "Value" H 7255 6170 60  0001 C CNN "Hersteller Bestellnummer"
-	1    7255 6170
+P 9040 5375
+F 0 "B4" H 9144 5428 60  0000 L CNN
+F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 9144 5322 60  0000 L CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 9144 5269 60  0001 L CNN
+F 3 "" H 9040 5375 60  0000 C CNN
+F 4 "Value" H 9040 5375 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9040 5375 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9040 5375 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9040 5375 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9040 5375 60  0001 C CNN "Bauform"
+F 9 "Value" H 9040 5375 60  0001 C CNN "Funktion"
+F 10 "Value" H 9040 5375 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9040 5375 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9040 5375
 	1    0    0    -1  
 $EndComp
 $Comp
 L Bohrloch_3,2mm_ohne_Kupferfläche B3
 U 1 1 595E7943
-P 7255 5935
-F 0 "B3" H 7359 5988 60  0000 L CNN
-F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 7359 5882 60  0000 L CNN
-F 2 "Zimprich:Bohrloch_3,2mm" H 7359 5829 60  0001 L CNN
-F 3 "" H 7255 5935 60  0000 C CNN
-F 4 "Value" H 7255 5935 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7255 5935 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7255 5935 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 7255 5935 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7255 5935 60  0001 C CNN "Bauform"
-F 9 "Value" H 7255 5935 60  0001 C CNN "Funktion"
-F 10 "Value" H 7255 5935 60  0001 C CNN "Hersteller"
-F 11 "Value" H 7255 5935 60  0001 C CNN "Hersteller Bestellnummer"
-	1    7255 5935
+P 9040 5140
+F 0 "B3" H 9144 5193 60  0000 L CNN
+F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 9144 5087 60  0000 L CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 9144 5034 60  0001 L CNN
+F 3 "" H 9040 5140 60  0000 C CNN
+F 4 "Value" H 9040 5140 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9040 5140 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9040 5140 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9040 5140 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9040 5140 60  0001 C CNN "Bauform"
+F 9 "Value" H 9040 5140 60  0001 C CNN "Funktion"
+F 10 "Value" H 9040 5140 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9040 5140 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9040 5140
 	1    0    0    -1  
 $EndComp
 $Comp
 L Bohrloch_3,2mm_ohne_Kupferfläche B2
 U 1 1 595E79AE
-P 7250 5695
-F 0 "B2" H 7354 5748 60  0000 L CNN
-F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 7354 5642 60  0000 L CNN
-F 2 "Zimprich:Bohrloch_3,2mm" H 7354 5589 60  0001 L CNN
-F 3 "" H 7250 5695 60  0000 C CNN
-F 4 "Value" H 7250 5695 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7250 5695 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7250 5695 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 7250 5695 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7250 5695 60  0001 C CNN "Bauform"
-F 9 "Value" H 7250 5695 60  0001 C CNN "Funktion"
-F 10 "Value" H 7250 5695 60  0001 C CNN "Hersteller"
-F 11 "Value" H 7250 5695 60  0001 C CNN "Hersteller Bestellnummer"
-	1    7250 5695
+P 9035 4900
+F 0 "B2" H 9139 4953 60  0000 L CNN
+F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 9139 4847 60  0000 L CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 9139 4794 60  0001 L CNN
+F 3 "" H 9035 4900 60  0000 C CNN
+F 4 "Value" H 9035 4900 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9035 4900 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9035 4900 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9035 4900 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9035 4900 60  0001 C CNN "Bauform"
+F 9 "Value" H 9035 4900 60  0001 C CNN "Funktion"
+F 10 "Value" H 9035 4900 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9035 4900 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9035 4900
 	1    0    0    -1  
 $EndComp
 $Comp
 L Bohrloch_3,2mm_ohne_Kupferfläche B1
 U 1 1 595E7A32
-P 7245 5450
-F 0 "B1" H 7349 5503 60  0000 L CNN
-F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 7349 5397 60  0000 L CNN
-F 2 "Zimprich:Bohrloch_3,2mm" H 7349 5344 60  0001 L CNN
-F 3 "" H 7245 5450 60  0000 C CNN
-F 4 "Value" H 7245 5450 60  0001 C CNN "Gehäuseart"
-F 5 "Value" H 7245 5450 60  0001 C CNN "Bestelllink"
-F 6 "Value" H 7245 5450 60  0001 C CNN "Technische Daten"
-F 7 "Value" H 7245 5450 60  0001 C CNN "Bestellnummer"
-F 8 "Value" H 7245 5450 60  0001 C CNN "Bauform"
-F 9 "Value" H 7245 5450 60  0001 C CNN "Funktion"
-F 10 "Value" H 7245 5450 60  0001 C CNN "Hersteller"
-F 11 "Value" H 7245 5450 60  0001 C CNN "Hersteller Bestellnummer"
-	1    7245 5450
+P 9030 4655
+F 0 "B1" H 9134 4708 60  0000 L CNN
+F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 9134 4602 60  0000 L CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 9134 4549 60  0001 L CNN
+F 3 "" H 9030 4655 60  0000 C CNN
+F 4 "Value" H 9030 4655 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9030 4655 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9030 4655 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9030 4655 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9030 4655 60  0001 C CNN "Bauform"
+F 9 "Value" H 9030 4655 60  0001 C CNN "Funktion"
+F 10 "Value" H 9030 4655 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9030 4655 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9030 4655
 	1    0    0    -1  
 $EndComp
 Text Notes 3315 4865 0    60   ~ 0
@@ -724,4 +724,42 @@ Wire Wire Line
 	6085 4725 5495 4725
 Wire Wire Line
 	5495 4725 5495 5430
+$Comp
+L Bohrloch_3,2mm_ohne_Kupferfläche B6
+U 1 1 59692452
+P 9040 5870
+F 0 "B6" H 9144 5923 60  0000 L CNN
+F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 9144 5817 60  0000 L CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 9144 5764 60  0001 L CNN
+F 3 "" H 9040 5870 60  0000 C CNN
+F 4 "Value" H 9040 5870 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9040 5870 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9040 5870 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9040 5870 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9040 5870 60  0001 C CNN "Bauform"
+F 9 "Value" H 9040 5870 60  0001 C CNN "Funktion"
+F 10 "Value" H 9040 5870 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9040 5870 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9040 5870
+	1    0    0    -1  
+$EndComp
+$Comp
+L Bohrloch_3,2mm_ohne_Kupferfläche B5
+U 1 1 59692460
+P 9040 5635
+F 0 "B5" H 9144 5688 60  0000 L CNN
+F 1 "Bohrloch_3,2mm_ohne_Kupferfläche" H 9144 5582 60  0000 L CNN
+F 2 "Zimprich:Bohrloch_3,2mm" H 9144 5529 60  0001 L CNN
+F 3 "" H 9040 5635 60  0000 C CNN
+F 4 "Value" H 9040 5635 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 9040 5635 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 9040 5635 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 9040 5635 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 9040 5635 60  0001 C CNN "Bauform"
+F 9 "Value" H 9040 5635 60  0001 C CNN "Funktion"
+F 10 "Value" H 9040 5635 60  0001 C CNN "Hersteller"
+F 11 "Value" H 9040 5635 60  0001 C CNN "Hersteller Bestellnummer"
+	1    9040 5635
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
