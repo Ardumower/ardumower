@@ -30,23 +30,6 @@
   Private-use only! (you need to ask for a commercial-use)
  */
 
-#include <Wtv020sd16p.h>
-// Created by Diego J. Arevalo, August 6th, 2012.
-// Released into the public domain.
-int resetPin = 13;  // The pin number of the reset pin.
-int clockPin = 11;  // The pin number of the clock pin.
-int dataPin = 13;  // The pin number of the data pin.
-int busyPin = 12;  // The pin number of the busy pin.
-
-/*
-Create an instance of the Wtv020sd16p class.
- 1st parameter: Reset pin number.
- 2nd parameter: Clock pin number.
- 3rd parameter: Data pin number.
- 4th parameter: Busy pin number.
- */
-Wtv020sd16p wtv020sd16p(resetPin,clockPin,dataPin,busyPin);
-
 // These constants won't change.  They're used to give names
 // to the pins used:
 const int sensor1InPin = A0;  // Analog input pin that the MPX5010 is attached to
@@ -91,9 +74,6 @@ const long interval = 25;           // interval at which ADC was read (milliseco
 const long intervalLedActive = 250; // interval at which LED was blink (milliseconds)
 unsigned long previousMillisLedActive = 0;
 
-unsigned long playJokeSoundMillis = 0;
-unsigned long playNextJokeSound = 60000;
-int jokeSound1 = 3;
 //====================================================================================
 //================================== SETUP ==========================================
 void setup() 
@@ -250,7 +230,6 @@ void loop()
   {
     digitalWrite(LEDCollision1,HIGH);
     digitalWrite(Bumper1OutPin,HIGH);
-    wtv020sd16p.asyncPlayVoice(soundBumper1); //Plays asynchronously an audio file  Nr.0
     trigger1Counter++;
     Serial.print("counter 1 = " );
     Serial.print(trigger1Counter);
@@ -273,7 +252,6 @@ void loop()
   {
     digitalWrite(LEDCollision2,HIGH);
     digitalWrite(Bumper2OutPin,HIGH);
-    wtv020sd16p.asyncPlayVoice(soundBumper2); //Plays asynchronously an audio file Nr.1
     trigger2Counter++;
     Serial.print("counter 2 = " );
     Serial.print(trigger2Counter);
@@ -290,12 +268,6 @@ void loop()
     digitalWrite(Bumper2OutPin,LOW);
   }
   
-  if(millis() >= playJokeSoundMillis)
-  {
-    playJokeSoundMillis = millis() + playNextJokeSound;
-    if(sensor1State < 3 && sensor2State < 3)
-      wtv020sd16p.asyncPlayVoice(jokeSound1); //Plays asynchronously an audio file Nr.3
-  }
 }// end void loop()
 //==================================== END MAIN ======================================
 //====================================================================================
