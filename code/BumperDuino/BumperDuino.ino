@@ -49,7 +49,7 @@ int sensor1Diff = 0;  // = sensor1DiffSecond - sensor1DiffFirst
 int sensor1DiffFirst = 0;        // value for zero Point
 int sensor1DiffSecond = 0;        // value for touch Point
 int sensor1MAP = 0;        // value output to the PWM (analog out)
-int sensor1Trigger = 3;  // Sensor-Trigger-Level Sensor 1
+int sensor1Trigger = 9;  // Sensor-Trigger-Level Sensor 1 +++++++ Adjust sensitivity here +++++++++
 int trigger1Counter = 0; // Trigger-Counter Sensor 1
 byte sensor1State = 0; // Sensor-State Sensor 1 zero point or touch point
 byte count1FirstRead = 0; // Read-Counter for zero point Sensor 1
@@ -61,7 +61,7 @@ int sensor2Diff = 0;  // = sensor2DiffSecond - sensor2DiffFirst
 int sensor2DiffFirst = 0;        // value for zero Point
 int sensor2DiffSecond = 0;       // value for touch Point
 int sensor2MAP = 0;        // value output to the PWM (analog out)
-int sensor2Trigger = 3;  // Sensor-Trigger-Level Sensor 2
+int sensor2Trigger = 9;  // Sensor-Trigger-Level Sensor 2 +++++++ Adjust sensitivity here +++++++++
 int trigger2Counter = 0;  // Trigger-Counter Sensor 2
 byte sensor2State = 0;  // Sensor-State Sensor 2 zero point or touch point
 byte count2FirstRead = 0;  // Read-Counter for zero point Sensor 2
