@@ -184,7 +184,7 @@ Robot::Robot(){
   nextTimeDrop = 0;                                                                                                                    // Dropsensor - Absturzsensor
   nextTimeSonar = 0;
   nextTimeBattery = 0;
-  nextTimeCheckBattery = 0;
+  nextTimeCheckBattery = millis() + 10000;
   nextTimePerimeter = 0;
   nextTimeLawnSensor = 0;
   nextTimeLawnSensorCheck = 0;
