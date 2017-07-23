@@ -33,7 +33,6 @@
   #include <EEPROM.h>
 #else
   // Arduino Due
-  #include "due.h"
 #endif
 //#include <Servo.h>  // for RC brushless contoller
 #include "drivers.h"

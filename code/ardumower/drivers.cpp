@@ -268,6 +268,42 @@ boolean setDS1307(datetime_t &dt){
 }
 
 
+//bb add to read byte into the Tiny RTC memory
+byte readAT24C32(unsigned int address) {
+  byte b = 0;
+  int r = 0;
+  //unsigned int address = 1021;
+  Wire.beginTransmission(AT24C32_ADDRESS);
+  if (Wire.endTransmission() == 0) {
+    Wire.beginTransmission(AT24C32_ADDRESS);
+    Wire.write(address >> 8);
+    Wire.write(address & 0xFF);
+    if (Wire.endTransmission() == 0) {
+      Wire.requestFrom(AT24C32_ADDRESS, 1);
+      while (Wire.available() > 0 && r < 1) {
+        b = (byte)Wire.read();
+        r++;
+      }
+    }
+  }
+  return b;
+}
+//bb add to write byte into the Tiny RTC memory
+//bb1
+byte writeAT24C32(unsigned int address,byte data) {
+   //unsigned int address = 1021;
+  Wire.beginTransmission(AT24C32_ADDRESS);
+  if (Wire.endTransmission() == 0) {
+    Wire.beginTransmission(AT24C32_ADDRESS);
+    Wire.write(address >> 8);
+    Wire.write(address & 0xFF);
+    Wire.write(data);
+    Wire.endTransmission();
+    delay(20);
+  }
+}
+ 
+
 // measure lawn sensor capacity 
 int measureLawnCapacity(int pinSend, int pinReceive){
   int t=0;    
@@ -300,24 +336,3 @@ int getDayOfWeek(int month, int day, int year, int CalendarSystem)
              + CalendarSystem
             ) % 7;
 }
-
-/*
-// --- eereadwrite -------------------------------------------------
-int eereadwriteString(boolean readflag, int &ee, String& value)
-{
-  unsigned int i;
-  if (readflag) {
-    value = "";
-    char ch = EEPROM.read(ee++);
-    while (ch) {
-      value += ch;
-      ch = EEPROM.read(ee++);
-    }
-  } else {
-    for(i=0; i<value.length(); i++) {
-      EEPROM.write(ee++, value.charAt(i));
-    }
-    EEPROM.write(ee++, 0);
-  }
-}
-*/

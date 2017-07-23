@@ -144,6 +144,7 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 
 // ------- I2C addresses --------------------------------------------------------------
 #define DS1307_ADDRESS B1101000
+#define AT24C32_ADDRESS B1010000
 
 // ---- choose only one perimeter signal code ----
 #define SIGCODE_1  // Ardumower default perimeter signal

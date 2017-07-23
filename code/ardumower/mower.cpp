@@ -8,11 +8,11 @@ default settings for motor, perimeter, bumper, odometry etc.
 #include "NewPing.h"
 
 #include <Arduino.h>
-#include "due.h"
 #include "drivers.h"
 #include "i2c.h"
 #include "pinman.h"
 #include "buzzer.h"
+#include "flashmem.h"
 
 
 Mower robot;
@@ -312,6 +312,7 @@ void Mower::setup(){
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
   Wire.begin();            	
+	Flash.test();
 	ADCMan.init();
   Console.println("SETUP");
   
