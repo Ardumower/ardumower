@@ -267,6 +267,25 @@ boolean setDS1307(datetime_t &dt){
   return true;
 }
 
+bool checkAT24C32() {
+	byte b = 0;
+	int r = 0;
+	unsigned int address = 0;
+	Wire.beginTransmission(AT24C32_ADDRESS);
+  if (Wire.endTransmission() == 0) {
+    Wire.beginTransmission(AT24C32_ADDRESS);
+    Wire.write(address >> 8);
+    Wire.write(address & 0xFF);
+    if (Wire.endTransmission() == 0) {
+      Wire.requestFrom(AT24C32_ADDRESS, 1);
+      while (Wire.available() > 0 && r < 1) {        
+        b = (byte)Wire.read();        
+				r++;
+      }
+    }
+  }
+	return (r == 1);
+}
 
 //bb add to read byte into the Tiny RTC memory
 byte readAT24C32(unsigned int address) {
@@ -299,8 +318,9 @@ byte writeAT24C32(unsigned int address,byte data) {
     Wire.write(address & 0xFF);
     Wire.write(data);
     Wire.endTransmission();
-    delay(20);
+    delay(5);
   }
+	return true;
 }
  
 

@@ -311,8 +311,11 @@ void Mower::setup(){
   Buzzer.begin();
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
-  Wire.begin();            	
-	Flash.test();
+  Wire.begin();            			
+	while (!checkAT24C32()){
+	  Console.println("RTC module missing!");
+		delay(1000);
+	}
 	ADCMan.init();
   Console.println("SETUP");
   

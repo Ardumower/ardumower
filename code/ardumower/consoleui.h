@@ -102,6 +102,7 @@ void Robot::printMenu(){
   Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
   Console.println(F("9=save user settings"));  
 	Console.println(F("c=test RTC"));  
+	Console.println(F("p=test EEPROM"));  
   Console.println(F("l=load factory settings"));  
   Console.println(F("r=delete robot stats"));  
   Console.println(F("x=print settings"));  
@@ -301,6 +302,9 @@ void Robot::menu(){
           saveUserSettings();
           printMenu();
           break;
+				case 'p':
+				  Flash.test();
+				  break;
 				case 'c':
 				  testRTC();
 					printMenu();

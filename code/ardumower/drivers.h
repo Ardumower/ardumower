@@ -124,6 +124,7 @@ int measureLawnCapacity(int pinSend, int pinReceive);
 // real time drivers
 boolean readDS1307(datetime_t &dt);
 boolean setDS1307(datetime_t &dt);
+bool checkAT24C32();
 byte readAT24C32(unsigned int address);
 byte writeAT24C32(unsigned int address,byte data);
 
