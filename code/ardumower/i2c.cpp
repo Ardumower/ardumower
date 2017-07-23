@@ -91,7 +91,7 @@ void I2Creset(){
   while (true){
     int rtn = I2CclearBus(); // clear the I2C bus first before calling Wire.begin()
     if (rtn == 0) return;
-    Console.println(F("I2C bus error. Could not clear"));
+    Console.println(F("I2C bus error. Could not clear (RTC module missing?)"));
     if (rtn == 1) {
       Console.println(F("SCL clock line held low"));
     } else if (rtn == 2) {
