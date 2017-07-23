@@ -2,11 +2,14 @@
 
 // check battery voltage and decide what to do
 void Robot::checkBattery(){
-if (millis() < nextTimeCheckBattery) return;
+  if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
   if (batMonitor){
     if ((batVoltage < batSwitchOffIfBelow) && (idleTimeSec != BATTERY_SW_OFF)) {      
-			Console.println(F("Battery warning: triggered batSwitchOffIfBelow"));
+			Console.print(F("Battery warning: triggered batSwitchOffIfBelow "));
+			Console.print(batVoltage);
+			Console.print(F("<"));
+			Console.println(batSwitchOffIfBelow);
       addErrorCounter(ERR_BATTERY);      
 			delay(2000); // avois corrupting EEPROM while this is also called when power is turned OFF
 			beep(2, true);      
@@ -18,7 +21,10 @@ if (millis() < nextTimeCheckBattery) return;
     }
     else if ((batVoltage < batGoHomeIfBelow) && (stateCurr == STATE_FORWARD) 
 			&& (perimeterUse)) {    //UNTESTED please verify
-      Console.println(F("triggered batGoHomeIfBelow"));
+      Console.print(F("triggered batGoHomeIfBelow "));
+			Console.print(batVoltage);
+			Console.print(F("<"));
+			Console.println(batGoHomeIfBelow);
       beep(2, true);      
       setNextState(STATE_PERI_FIND, 0);
     }
