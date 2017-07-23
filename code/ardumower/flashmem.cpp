@@ -39,20 +39,20 @@ FlashClass::FlashClass() {
 
 
 void FlashClass::test(){	  
-	Console.println("EEPROM test...");
+	Console.println(F("EEPROM test - Please wait..."));
 	bool success = true;
-	for (int i=0; i < 32; i++){ // test 32 addresses
+	for (int i=0; i < 1024; i++){ // test 1024 addresses
 	  byte temp = read(i);	// read original value
-    write(i, i);  // write test value
+    write(i, ((byte)i));  // write test value
 	  byte v = read(i); // get test value
   	write(i, temp); // write back original value
-	  if (v != i){ // incorrect read or write or both
-	    Console.println("EEPROM error - RTC module missing?");
+	  if (v != ((byte)i)){ // incorrect read or write or both
+	    Console.println(F("EEPROM error - RTC module missing?"));
 			success = false;
 			break;
 		}		
 	}
-	if (success) Console.println("success!");	
+	if (success) Console.println(F("success!"));	
 }
 
 byte FlashClass::read(uint32_t address) {
