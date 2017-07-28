@@ -575,6 +575,11 @@ void Robot::readSensors(){
     double batvolt = ((double)batADC) * batFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
     double chgvolt = ((double)chgADC) * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
 		double curramp = ((double)currentADC) * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing		
+
+    #if defined (PCB_1_3)         // Prüfe ob das V1.3 Board verwendet wird - und wenn ja **UZ**
+    batvolt = batvolt + DiodeD9;  // dann rechnet zur Batteriespannung den Spannungsabfall der Diode D9 hinzu. (Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**
+    #endif                        // **UZ**
+    
     // low-pass filter
     double accel = 0.01;
 		//double accel = 1.0;
