@@ -51,6 +51,7 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 #include "battery.h"
 #include "consoleui.h"
 #include "motor.h"
+#include "buzzer.h"
 #include "modelrc.h"
 #include "settings.h"
 #include "timer.h"
@@ -539,8 +540,10 @@ void Robot::readSensors(){
   if ((timerUse) && (millis() >= nextTimeRTC)) {
     nextTimeRTC = millis() + 60000;    
     readSensor(SEN_RTC);       // read RTC             
-    Console.print(F("RTC date received: "));
-    Console.println(date2str(datetime.date));  
+    Console.print(F("RTC datetime received: "));
+    Console.print(date2str(datetime.date));  
+		Console.print(F("  "));  
+		Console.println(time2str(datetime.time));  
   }
 
   
@@ -1602,6 +1605,7 @@ void Robot::loop()  {
                              
   loopsPerSecCounter++;  
 }
+
 
 
 
