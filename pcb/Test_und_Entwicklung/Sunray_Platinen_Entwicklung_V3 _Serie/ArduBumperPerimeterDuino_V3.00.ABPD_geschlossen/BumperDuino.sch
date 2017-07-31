@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:BumperDuino-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -9,7 +10,6 @@ LIBS:74xx
 LIBS:cmos4000
 LIBS:adc-dac
 LIBS:memory
-LIBS:xilinx
 LIBS:microcontrollers
 LIBS:dsp
 LIBS:microchip
@@ -28,12 +28,9 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:MPX5010
-LIBS:OPA2340PA
-LIBS:LM2940CS-5.0
 LIBS:Zimprich
 LIBS:BumperDuino-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -732,7 +729,7 @@ F 3 "" H 2100 1150 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED ACTIVE1
+L LED-RESCUE-BumperDuino ACTIVE1
 U 1 1 55CBC631
 P 2900 1850
 F 0 "ACTIVE1" H 2900 1950 50  0000 C CNN
@@ -743,7 +740,7 @@ F 3 "" H 2900 1850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED Sensor2
+L LED-RESCUE-BumperDuino Sensor2
 U 1 1 55CBC7ED
 P 2900 2200
 F 0 "Sensor2" H 2900 2300 50  0000 C CNN
@@ -754,7 +751,7 @@ F 3 "" H 2900 2200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED Sensor1
+L LED-RESCUE-BumperDuino Sensor1
 U 1 1 55CBC954
 P 2900 2600
 F 0 "Sensor1" H 2900 2700 50  0000 C CNN
@@ -872,7 +869,7 @@ F 3 "" H 4250 1500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED PowerOK1
+L LED-RESCUE-BumperDuino PowerOK1
 U 1 1 55CE3F68
 P 4700 1750
 F 0 "PowerOK1" V 4700 1400 50  0000 C CNN
@@ -1002,6 +999,14 @@ F 0 "U2" H 6950 2850 50  0000 L CNN
 F 1 "MPX5010" H 6950 3800 50  0000 L CNN
 F 2 "MPX5010:867C-H" H 7050 3350 60  0001 C CNN
 F 3 "" H 7050 3350 60  0000 C CNN
+F 4 "Value" H 7050 3350 60  0001 C CNN "Gehäuseart"
+F 5 "Value" H 7050 3350 60  0001 C CNN "Bestelllink"
+F 6 "Value" H 7050 3350 60  0001 C CNN "Technische Daten"
+F 7 "Value" H 7050 3350 60  0001 C CNN "Bestellnummer"
+F 8 "Value" H 7050 3350 60  0001 C CNN "Bauform"
+F 9 "Value" H 7050 3350 60  0001 C CNN "Funktion"
+F 10 "Value" H 7050 3350 60  0001 C CNN "Hersteller"
+F 11 "Value" H 7050 3350 60  0001 C CNN "Hersteller Bestellnummer"
 	1    7050 3350
 	1    0    0    -1  
 $EndComp
@@ -11154,7 +11159,7 @@ B2 76 FB 70 E4 04 9C 08 F9 0E 00 00 00 00 00 C0 F9 46 D1 17 00 00 00 00 00 C0 F9
 C0 F9 46 BE 03 00 00 00 00 00 70 BE 91 EF 00 00 00 00 00 00 9C 6F E4 3B 00 00 00 00 00 00 E7 1B 
 F9 0E 00 00 00 00 00 C0 F9 46 BE 03 00 00 00 00 00 70 BE 91 EF 00 00 00 00 00 00 9C 6F E4 3B 00 
 00 00 00 00 00 E7 1B F9 0E 00 00 00 00 00 C0 F9 F6 FF 01 5A 01 1C DD 8D 3A 8E 97 00 00 00 00 49 
-45 4E 44 AE 42 60 82 FF 
+45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
 $Comp
@@ -11680,7 +11685,7 @@ LED-CRASH
 Text GLabel 4400 6100 2    39   Input ~ 0
 LED-INIT-OK
 $Comp
-L LED Fault1
+L LED-RESCUE-BumperDuino Fault1
 U 1 1 5725DA8E
 P 2900 3050
 F 0 "Fault1" H 2900 3150 50  0000 C CNN
@@ -11702,7 +11707,7 @@ F 3 "" H 3400 3050 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L LED OK1
+L LED-RESCUE-BumperDuino OK1
 U 1 1 5725DC67
 P 2900 3450
 F 0 "OK1" H 2900 3550 50  0000 C CNN
@@ -11758,7 +11763,7 @@ F 3 "" H 8850 5700 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	8850 5700 8850 6000
-Text Notes 11770 4905 0    60   ~ 0
+Text Notes 8755 1110 0    60   ~ 0
 21.05.2016\nDiode D1 pad von 0,7 auf 1,016 vergrößert\nvon T1 und T2 lib ausgetauscht
 $Comp
 L BC849 T1
