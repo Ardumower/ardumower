@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 27.864999 30.404999 269.315001 144.855001)
     (thickness 1.6)
-    (drawings 76)
+    (drawings 75)
     (tracks 2198)
     (zones 0)
     (modules 167)
@@ -20,8 +20,8 @@
   )
 
   (layers
-    (0 F.Cu signal hide)
-    (31 B.Cu signal hide)
+    (0 F.Cu signal)
+    (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -2266,10 +2266,10 @@
       (net 98 "Net-(D8-Pad1)"))
     (pad 2 thru_hole rect (at 1.27 0 90) (size 1.69926 1.69926) (drill 1.00076) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
-    (model F:/Arbeit/KICAD/zimprich_footprints.pretty/led3_verticalVerte.wrl
+    (model ${KISYS3DMOD}/LEDs.3dshapes/LED-5MM.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -6289,7 +6289,6 @@
     )
   )
 
-  (gr_line (start 243.586 117.094) (end 243.586 117.221) (angle 90) (layer Dwgs.User) (width 0.2))
   (gr_line (start 27.94 30.48) (end 269.24 30.48) (angle 90) (layer Edge.Cuts) (width 0.15))
   (gr_line (start 27.94 144.78) (end 27.94 30.48) (angle 90) (layer Edge.Cuts) (width 0.15))
   (gr_line (start 269.24 144.78) (end 27.94 144.78) (angle 90) (layer Edge.Cuts) (width 0.15))
