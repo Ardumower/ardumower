@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ArduMower_RaspberryPi_Power_Switch-rescue
 LIBS:diode
 LIBS:transistors
 LIBS:conn
@@ -778,7 +779,7 @@ SDAPI
 Text GLabel 14305 8905 0    39   Input ~ 0
 SCLPI
 $Comp
-L IRF9540N Q2
+L IRF9540N-RESCUE-ArduMower_RaspberryPi_Power_Switch Q2
 U 1 1 585F12A5
 P 3520 8470
 F 0 "Q2" V 3800 8470 50  0000 C CNN
@@ -797,7 +798,7 @@ F 11 "Value" H 3520 8470 60  0001 C CNN "Hersteller Bestellnummer"
 	0    1    1    0   
 $EndComp
 $Comp
-L IRF9540N Q1
+L IRF9540N-RESCUE-ArduMower_RaspberryPi_Power_Switch Q1
 U 1 1 585F4557
 P 7720 8820
 F 0 "Q1" V 8000 8820 50  0000 C CNN

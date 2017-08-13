@@ -1,4 +1,4 @@
-update=29.12.2016 15:57:10
+update=08.03.2017 20:08:52
 version=1
 last_client=kicad
 [pcbnew]
@@ -29,13 +29,14 @@ version=1
 version=1
 LibDir=
 [eeschema/libraries]
-LibName1=diode
-LibName2=transistors
-LibName3=conn
-LibName4=device
-LibName5=relays
-LibName6=switches
-LibName7=analog_switches
-LibName8=power
-LibName9=Zimprich
-LibName10=raspberrypi-gpio/raspberrypi-gpio-cache
+LibName1=ArduMower_RaspberryPi_Power_Switch-rescue
+LibName2=diode
+LibName3=transistors
+LibName4=conn
+LibName5=device
+LibName6=relays
+LibName7=switches
+LibName8=analog_switches
+LibName9=power
+LibName10=Zimprich
+LibName11=raspberrypi-gpio/raspberrypi-gpio-cache
