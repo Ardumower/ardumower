@@ -1,17 +1,15 @@
 EESchema-LIBRARY Version 2.3
 #encoding utf-8
 #
-# +3.3V-RESCUE-ardumower_mega_shield_svn
+# Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn
 #
-DEF +3.3V-RESCUE-ardumower_mega_shield_svn #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -40 30 H I C CNN
-F1 "+3.3V-RESCUE-ardumower_mega_shield_svn" 0 110 30 H V C CNN
+DEF Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B 0 40 Y Y 1 F N
+F0 "B" 280 160 60 H V C CNN
+F1 "Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn" 230 80 60 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
-X +3.3V 1 0 0 0 U 30 30 0 0 W N
-C 0 60 20 0 1 0 N
-P 3 0 1 0 0 0 0 40 0 40 N
+X B3,2 1 0 0 200 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #

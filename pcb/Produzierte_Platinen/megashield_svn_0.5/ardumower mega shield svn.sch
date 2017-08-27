@@ -3786,7 +3786,7 @@ NoConn ~ 7225 1950
 NoConn ~ 7300 2550
 NoConn ~ 7300 2450
 $Comp
-L Bohrloch_3,2mm B1
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B1
 U 1 1 54CFDBE9
 P 14575 -2100
 F 0 "B1" H 14855 -1940 60  0000 C CNN
@@ -3799,7 +3799,7 @@ F 4 "Value" H 14575 -2100 60  0000 C CNN "Reichelt-Bestellnummer"
 $EndComp
 NoConn ~ 14775 -2100
 $Comp
-L Bohrloch_3,2mm B2
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B2
 U 1 1 54CFF2EA
 P 14575 -1825
 F 0 "B2" H 14855 -1665 60  0000 C CNN
@@ -3811,7 +3811,7 @@ F 4 "Value" H 14575 -1825 60  0000 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B3
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B3
 U 1 1 54CFF454
 P 14575 -1550
 F 0 "B3" H 14855 -1390 60  0000 C CNN
@@ -3823,7 +3823,7 @@ F 4 "Value" H 14575 -1550 60  0000 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B4
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B4
 U 1 1 54CFF702
 P 14575 -1275
 F 0 "B4" H 14855 -1115 60  0000 C CNN
@@ -3835,7 +3835,7 @@ F 4 "Value" H 14575 -1275 60  0000 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B5
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B5
 U 1 1 54CFF910
 P 15400 -2100
 F 0 "B5" H 15680 -1940 60  0000 C CNN
@@ -3847,7 +3847,7 @@ F 4 "Value" H 15400 -2100 60  0000 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B6
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B6
 U 1 1 54CFFB2F
 P 15400 -1825
 F 0 "B6" H 15680 -1665 60  0000 C CNN
@@ -3859,7 +3859,7 @@ F 4 "Value" H 15400 -1825 60  0000 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B7
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B7
 U 1 1 54CFFBFB
 P 15400 -1550
 F 0 "B7" H 15680 -1390 60  0000 C CNN
@@ -3871,7 +3871,7 @@ F 4 "Value" H 15400 -1550 60  0000 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B8
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B8
 U 1 1 54CFFE10
 P 15400 -1275
 F 0 "B8" H 15680 -1115 60  0000 C CNN

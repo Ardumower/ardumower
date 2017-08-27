@@ -800,4 +800,6 @@ F 11 "Value" H 9055 6110 60  0001 C CNN "Hersteller Bestellnummer"
 	1    9055 6110
 	1    0    0    -1  
 $EndComp
+Text Notes 12310 3505 0    60   ~ 0
+ich habe den zweiten OC Ausgang auf den TILT eingang der 1.3 geschaltet\n ist aber in dem Plan eingezeichnet den ich veröffentlicht habe
 $EndSCHEMATC
