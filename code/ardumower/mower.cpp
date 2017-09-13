@@ -39,7 +39,7 @@ Mower::Mower(){
 		motorLeftPID.Kp            = 1.5;       // motor wheel PID controller
     motorLeftPID.Ki            = 0.29;
     motorLeftPID.Kd            = 0.25;
-    motorZeroSettleTime        = 3000 ;     // how long (ms) to wait for motors to settle at zero speed
+    motorZeroSettleTime        = 1000 ;     // how long (ms) to wait for motors to settle at zero speed
 		motorReverseTime           = 1200;      // max. reverse time (ms)
 		motorRollTimeMax           = 1500;      // max. roll time (ms)
 		motorRollTimeMin           = 750;       // min. roll time (ms) should be smaller than motorRollTimeMax  
@@ -386,6 +386,7 @@ void Mower::setup(){
   
   // rain
   pinMode(pinRain, INPUT);
+  pinMode(pinRain, INPUT_PULLUP);
         
   // R/C
   pinMode(pinRemoteMow, INPUT);
@@ -623,16 +624,18 @@ int Mower::readSensor(char type){
 
 void Mower::setActuator(char type, int value){
   switch (type){
+
+  //case ACT_MOTOR_MOW: setMOSFET(pinMotorMowPWM, value); //break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
   
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-#if defined (DRIVER_MC33926)
+//#if defined (DRIVER_MC33926)
   case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
   case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-#endif 
-#if defined (DRIVER_L298N)
-  case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-  case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-#endif
+//#endif 
+//#if defined (DRIVER_L298N)
+//  case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+//  case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+//#endif
    
     case ACT_BUZZER: if (value == 0) Buzzer.noTone(); else Buzzer.tone(value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    

@@ -1507,12 +1507,12 @@ void Robot::loop()  {
       checkTimeout();                    
       break;
     case STATE_PERI_TRACK:
-	 if (batMonitor){
-        if (chgVoltage > 5.0){ 
-          setNextState(STATE_STATION, 0);
-		  break;
+	     if (batMonitor){
+          if (chgVoltage > 5.0){ 
+            setNextState(STATE_STATION, 0);
+		        break;
+           }
         }
-      }
       // track perimeter
       checkCurrent();                  
       checkBumpersPerimeter();
