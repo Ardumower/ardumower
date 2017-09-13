@@ -805,6 +805,13 @@ void Robot::checkDrop(){                                                        
 
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
+
+	 if (batMonitor){
+        if (chgVoltage > 5.0){ 
+          setNextState(STATE_STATION, 0);
+		  return;
+        }
+      }
   if ((bumperLeft || bumperRight)) {    
     if ((bumperLeft) || (stateCurr == STATE_PERI_TRACK)) {
       setNextState(STATE_PERI_REV, RIGHT);          
