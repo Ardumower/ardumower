@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name ina169_breakout-rescue)(type Legacy)(uri ${KIPRJMOD}/ina169_breakout-rescue.lib)(options "")(descr ""))
+  (lib (name ina169_ic)(type Legacy)(uri ${KIPRJMOD}/ina169_ic.lib)(options "")(descr ""))
+  (lib (name ina169_breakout_conn)(type Legacy)(uri ${KIPRJMOD}/ina169_breakout_conn.lib)(options "")(descr ""))
+)
