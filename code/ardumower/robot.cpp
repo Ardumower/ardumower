@@ -49,7 +49,12 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 
 // --- split robot class ----
 #include "battery.h"
-#include "consoleui.h"
+
+
+ //#include "consoleui.h"
+// Use Robot Mower Communication Standard instead of odd Serial Communication
+#include "rmcs.h"
+
 #include "motor.h"
 #include "modelrc.h"
 #include "settings.h"
