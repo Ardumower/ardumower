@@ -14,6 +14,7 @@ class FlashClass
     boolean write(uint32_t address, byte value);
     boolean write(uint32_t address, byte *data, uint32_t dataLength);    
     void dump();
+		void test();
 };
 
 

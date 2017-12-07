@@ -8,11 +8,11 @@ default settings for motor, perimeter, bumper, odometry etc.
 #include "NewPing.h"
 
 #include <Arduino.h>
-#include "due.h"
 #include "drivers.h"
 #include "i2c.h"
 #include "pinman.h"
 #include "buzzer.h"
+#include "flashmem.h"
 
 
 Mower robot;
@@ -161,10 +161,11 @@ Mower::Mower(){
 		batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
   	batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
 		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
-		chgFactor                  = ADC2voltage(1)*5;        // ADC to charging current ampere factor  (see mower.h for macros)								  
+		chgFactor                  = ADC2voltage(1)*5;        // ADC to charging current ampere factor  (see mower.h for macros)	
+    DiodeD9                    = 0.36;       // Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**							  
   #endif
   
-	batChargingCurrentMax      = 1.6;       // maximum current your charger can devliver  
+	 batChargingCurrentMax       = 1.6;       // maximum current your charger can devliver  
   
   // ------  charging station ---------------------------
   stationRevTime             = 1800;       // charge station reverse time (ms)
@@ -311,7 +312,11 @@ void Mower::setup(){
   Buzzer.begin();
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
-  Wire.begin();            	
+  Wire.begin();            			
+	while (!checkAT24C32()){
+	  Console.println("PCB not powered ON or RTC module missing");
+		delay(1000);
+	}
 	ADCMan.init();
   Console.println("SETUP");
   

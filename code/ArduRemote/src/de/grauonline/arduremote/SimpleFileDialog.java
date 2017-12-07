@@ -1,28 +1,27 @@
-// SimpleFileDialog.java
+/*
+License
+Copyright (c) 2013-2017 by Alexander Grau
+
+Private-use only! (you need to ask for a commercial-use)
+ 
+The code is open: you can modify it under the terms of the 
+GNU General Public License as published by the Free Software Foundation, 
+either version 3 of the License, or (at your option) any later version.
+
+The code is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Private-use only! (you need to ask for a commercial-use)
+  
+ */
+
 package de.grauonline.arduremote;
 
-/*
-* 
-* This file is licensed under The Code Project Open License (CPOL) 1.02 
-* http://www.codeproject.com/info/cpol10.aspx
-* http://www.codeproject.com/info/CPOL.zip
-* 
-* License Preamble:
-* This License governs Your use of the Work. This License is intended to allow developers to use the Source
-* Code and Executable Files provided as part of the Work in any application in any form.
-* 
-* The main points subject to the terms of the License are:
-*    Source Code and Executable Files can be used in commercial applications;
-*    Source Code and Executable Files can be redistributed; and
-*    Source Code can be modified to create derivative works.
-*    No claim of suitability, guarantee, or any warranty whatsoever is provided. The software is provided "as-is".
-*    The Article(s) accompanying the Work may not be distributed or republished without the Author's consent
-* 
-* This License is entered between You, the individual or other entity reading or otherwise making use of
-* the Work licensed pursuant to this License and the individual or other entity which offers the Work
-* under the terms of this License ("Author").
-*  (See Links above for full license text)
-*/
 
 import java.io.File;
 import java.io.IOException;

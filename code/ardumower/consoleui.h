@@ -102,6 +102,7 @@ void Robot::printMenu(){
   Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
   Console.println(F("9=save user settings"));  
 	Console.println(F("c=test RTC"));  
+	Console.println(F("p=test EEPROM"));  
   Console.println(F("l=load factory settings"));  
   Console.println(F("r=delete robot stats"));  
   Console.println(F("x=print settings"));  
@@ -202,18 +203,20 @@ void Robot::testRTC(){
     Console.print(F("RTC date received: "));
     Console.println(date2str(datetime.date));  
   }    
-	Console.println("writing new RTC time 28-02-2016 23:59...");  
+	Console.println("writing new RTC datetime Sun 28-02-2016 23:59...");  
   datetime.time.hour=23;
   datetime.time.minute=59;
-  datetime.date.dayOfWeek=6;
+  datetime.date.dayOfWeek=0;
   datetime.date.day=28;
   datetime.date.month=2;
   datetime.date.year=2016;
   setDS1307(datetime);	
-	Console.println("reading RTC time...");
+	Console.println("reading RTC datetime...");
 	if (readDS1307(datetime)){    
-    Console.print(F("RTC date received: "));
-    Console.println(date2str(datetime.date));  
+    Console.print(F("RTC datetime received: "));
+    Console.print(date2str(datetime.date));  
+		Console.print(F("  "));  
+		Console.println(time2str(datetime.time));  
   }    
 }
 
@@ -299,6 +302,9 @@ void Robot::menu(){
           saveUserSettings();
           printMenu();
           break;
+				case 'p':
+				  Flash.test();
+				  break;
 				case 'c':
 				  testRTC();
 					printMenu();

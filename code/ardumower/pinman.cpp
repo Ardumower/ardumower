@@ -1,3 +1,17 @@
+/*
+
+1) Why using 3900 Hz PWM frequency? 
+   At 3900 Hz, our MC33926 motor drivers give linear motor current results for all speeds (PWM/odometry values)
+	 http://wiki.ardumower.de/images/f/f9/Pwm_3khz.png
+	 At 490 Hz or 20 kHz, the reported values are not so good:
+	 http://wiki.ardumower.de/images/e/e0/Pwm_490hz.png
+	 http://wiki.ardumower.de/images/8/84/Pwm_20khz.png
+	 
+2) Why Pin Manager for Arduino Due?  Arduino Due library does not support analogWrite() for all pins -
+   this library solves this
+
+*/
+
 #include "pinman.h"
 
 

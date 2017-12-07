@@ -1,12 +1,9 @@
 EESchema Schematic File Version 2
 LIBS:ardumower mega shield svn-rescue
 LIBS:power
-LIBS:Bluetooth_ZS_HC_05
-LIBS:Bluetooth_CZ_HC_05
-LIBS:ds1307
-LIBS:Wlan_ESP8266
+LIBS:Zimprich
 LIBS:ardumower mega shield svn-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1226,7 +1223,7 @@ Text GLabel 9650 4800 2    60   Output ~ 0
 SCL1
 Text Label 3350 5500 2    60   ~ 0
 SCL
-Text Label 3350 5350 2    60   ~ 0
+Text Label 3350 5400 2    60   ~ 0
 SDA
 Text Label 9350 4550 0    60   ~ 0
 SDA
@@ -3726,7 +3723,7 @@ NoConn ~ 7225 1950
 NoConn ~ 7300 2550
 NoConn ~ 7300 2450
 $Comp
-L Bohrloch_3,2mm B1
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B1
 U 1 1 54CFDBE9
 P 14575 -2100
 F 0 "B1" H 14855 -1940 60  0000 C CNN
@@ -3739,7 +3736,7 @@ F 4 "Value" H 14575 -2100 60  0001 C CNN "Reichelt-Bestellnummer"
 $EndComp
 NoConn ~ 14775 -2100
 $Comp
-L Bohrloch_3,2mm B2
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B2
 U 1 1 54CFF2EA
 P 14575 -1825
 F 0 "B2" H 14855 -1665 60  0000 C CNN
@@ -3751,7 +3748,7 @@ F 4 "Value" H 14575 -1825 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B3
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B3
 U 1 1 54CFF454
 P 14575 -1550
 F 0 "B3" H 14855 -1390 60  0000 C CNN
@@ -3763,7 +3760,7 @@ F 4 "Value" H 14575 -1550 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B4
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B4
 U 1 1 54CFF702
 P 14575 -1275
 F 0 "B4" H 14855 -1115 60  0000 C CNN
@@ -3775,7 +3772,7 @@ F 4 "Value" H 14575 -1275 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B5
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B5
 U 1 1 54CFF910
 P 15400 -2100
 F 0 "B5" H 15680 -1940 60  0000 C CNN
@@ -3787,7 +3784,7 @@ F 4 "Value" H 15400 -2100 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B6
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B6
 U 1 1 54CFFB2F
 P 15400 -1825
 F 0 "B6" H 15680 -1665 60  0000 C CNN
@@ -3799,7 +3796,7 @@ F 4 "Value" H 15400 -1825 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B7
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B7
 U 1 1 54CFFBFB
 P 15400 -1550
 F 0 "B7" H 15680 -1390 60  0000 C CNN
@@ -3811,7 +3808,7 @@ F 4 "Value" H 15400 -1550 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B8
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B8
 U 1 1 54CFFE10
 P 15400 -1275
 F 0 "B8" H 15680 -1115 60  0000 C CNN
@@ -4194,7 +4191,7 @@ F 4 "Value" H 8050 8985 60  0001 C CNN "Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B9
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B9
 U 1 1 551DD39D
 P 18075 -3110
 F 0 "B9" H 18355 -2950 60  0000 C CNN
@@ -4207,7 +4204,7 @@ F 4 "Value" H 18075 -3110 60  0001 C CNN "Reichelt-Bestellnummer"
 $EndComp
 NoConn ~ 18275 -3110
 $Comp
-L Bohrloch_3,2mm B10
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B10
 U 1 1 551DD3A5
 P 18075 -2835
 F 0 "B10" H 18355 -2675 60  0000 C CNN
@@ -4219,7 +4216,7 @@ F 4 "Value" H 18075 -2835 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B11
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B11
 U 1 1 551DD3AC
 P 18075 -2560
 F 0 "B11" H 18355 -2400 60  0000 C CNN
@@ -4232,7 +4229,7 @@ F 5 "Value" H 18075 -2560 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B12
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B12
 U 1 1 551DD3B3
 P 18055 -2105
 F 0 "B12" H 18335 -1945 60  0000 C CNN
@@ -4245,7 +4242,7 @@ F 5 "Value" H 18055 -2105 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B13
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B13
 U 1 1 551DD3BA
 P 18055 -1830
 F 0 "B13" H 18335 -1670 60  0000 C CNN
@@ -4257,7 +4254,7 @@ F 4 "Value" H 18055 -1830 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B14
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B14
 U 1 1 551DD3C1
 P 18055 -1555
 F 0 "B14" H 18335 -1395 60  0000 C CNN
@@ -4314,7 +4311,7 @@ Charg_Pin
 Text GLabel 17925 -2560 0    60   Output ~ 0
 Charg_Pin
 $Comp
-L Bohrloch_3,2mm B15
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B15
 U 1 1 552BAD35
 P 16205 -2090
 F 0 "B15" H 16485 -1930 60  0000 C CNN
@@ -4326,7 +4323,7 @@ F 4 "Value" H 16205 -2090 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B16
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B16
 U 1 1 552BAD3C
 P 16205 -1815
 F 0 "B16" H 16485 -1655 60  0000 C CNN
@@ -4338,7 +4335,7 @@ F 4 "Value" H 16205 -1815 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B17
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B17
 U 1 1 552BAD43
 P 16205 -1540
 F 0 "B17" H 16485 -1380 60  0000 C CNN
@@ -4350,7 +4347,7 @@ F 4 "Value" H 16205 -1540 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm B18
+L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B18
 U 1 1 552BAD4A
 P 16205 -1265
 F 0 "B18" H 16485 -1105 60  0000 C CNN
@@ -5028,8 +5025,6 @@ Connection ~ 14600 3150
 Wire Wire Line
 	1500 3880 1500 3980
 Wire Wire Line
-	1500 3280 1850 3280
-Wire Wire Line
 	1850 3280 1850 2980
 Wire Wire Line
 	1050 4250 1150 4250
@@ -5293,8 +5288,6 @@ Wire Wire Line
 	6900 5100 7000 5100
 Wire Wire Line
 	2695 1650 2745 1650
-Wire Wire Line
-	2695 1950 2895 1950
 Wire Wire Line
 	2845 1750 2845 2155
 Connection ~ 2845 1950
@@ -5634,16 +5627,11 @@ Wire Wire Line
 Wire Wire Line
 	1320 1550 1270 1550
 Wire Wire Line
-	2770 1950 2720 1950
-Wire Wire Line
-	2720 1950 2720 2200
-Wire Wire Line
-	2720 2200 1345 2200
+	1345 2200 2770 2200
 Wire Wire Line
 	1345 2200 1345 1950
 Wire Wire Line
 	1345 1950 1270 1950
-Connection ~ 2770 1950
 Wire Wire Line
 	2720 1250 2720 1000
 Wire Wire Line
@@ -5944,4 +5932,14 @@ Wire Wire Line
 Connection ~ 6400 4550
 Connection ~ 6025 4550
 Connection ~ 5625 4550
+Wire Wire Line
+	1500 3280 1500 3155
+Wire Wire Line
+	1500 3155 1850 3155
+Connection ~ 1850 3155
+Wire Wire Line
+	2695 1950 2895 1950
+Connection ~ 2770 1950
+Wire Wire Line
+	2770 2200 2770 1950
 $EndSCHEMATC

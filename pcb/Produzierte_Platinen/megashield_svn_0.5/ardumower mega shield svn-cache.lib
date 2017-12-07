@@ -204,11 +204,11 @@ X Key Key -400 150 150 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Bohrloch_3,2mm
+# Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn
 #
-DEF Bohrloch_3,2mm B 0 40 Y Y 1 F N
+DEF Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B 0 40 Y Y 1 F N
 F0 "B" 280 160 60 H V C CNN
-F1 "Bohrloch_3,2mm" 230 80 60 H V C CNN
+F1 "Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn" 230 80 60 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW

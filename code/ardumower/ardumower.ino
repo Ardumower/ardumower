@@ -36,7 +36,6 @@
   #include <EEPROM.h>
 #elif __SAM3X8E__
 	// Arduino Due
-  #include "due.h"
 #else
   #error "Wrong Arduino board - Choose Arduino Mega or Arduino Due in Arduino IDE"
 #endif

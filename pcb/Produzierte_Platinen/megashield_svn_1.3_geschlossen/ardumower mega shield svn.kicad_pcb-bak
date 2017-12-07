@@ -1,9 +1,6 @@
-(kicad_pcb (version 20170123) (host pcbnew "(2017-05-10 revision 747583606)-makepkg")
+(kicad_pcb (version 20170123) (host pcbnew "(2017-07-30 revision e10f0c729)-makepkg")
 
   (general
-    (links 1117)
-    (no_connects 0)
-    (area 8.764572 15.907 304.384524 165.195001)
     (thickness 1.6)
     (drawings 741)
     (tracks 6450)
@@ -1621,39 +1618,39 @@
       (rotate (xyz 0 0 0))
     )
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 1.456692913385827 0.09251968503937008 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
-    )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 2.346456692913386 0.09251968503937008 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
-    )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 3.248031496062992 0.09251968503937008 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
-    )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_2x18_Pitch2.54mm.wrl
-      (at (xyz 3.751968503937008 1.153543307086614 0))
+      (at (xyz 1.791338582677166 0.1003937007874016 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 3.051181102362205 2.007874015748031 0))
+      (at (xyz 2.700787401574803 0.1003937007874016 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 90))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+      (at (xyz 3.582677165354331 0.1003937007874016 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 90))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_2x18_Pitch2.54mm.wrl
+      (at (xyz 3.779527559055119 2 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 0))
     )
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 2.153543307086614 2.007874015748031 0))
+      (at (xyz 3.389763779527559 1.996062992125984 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
+    )
+    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+      (at (xyz 2.5 1.996062992125984 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 90))
     )
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x10_Pitch2.54mm.wrl
-      (at (xyz 1.188976377952756 2.007874015748031 0))
+      (at (xyz 1.661417322834646 1.996062992125984 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -1689,9 +1686,9 @@
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1727,9 +1724,9 @@
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1765,9 +1762,9 @@
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1803,9 +1800,9 @@
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1841,9 +1838,9 @@
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1879,9 +1876,9 @@
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1917,9 +1914,9 @@
     (pad 3 thru_hole oval (at 0 5.08 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1955,9 +1952,9 @@
     (pad 3 thru_hole oval (at 0 5.08 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1993,9 +1990,9 @@
     (pad 3 thru_hole oval (at 0 5.08 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2029,9 +2026,9 @@
     (pad 2 thru_hole oval (at 0 2.54 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2065,9 +2062,9 @@
     (pad 2 thru_hole oval (at 0 2.54 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2101,9 +2098,9 @@
     (pad 2 thru_hole oval (at 0 2.54 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2149,9 +2146,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2197,9 +2194,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 125 +5VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2245,9 +2242,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2293,9 +2290,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 64 +9V))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2341,9 +2338,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2389,9 +2386,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 63 +5V))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2437,9 +2434,9 @@
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 65 +3V3))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -3000,7 +2997,7 @@
       (net 75 "Net-(C12-Pad2)"))
     (model ${KISYS3DMOD}/Capacitors_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -3787,7 +3784,7 @@
       (net 88 GND))
     (model ${KISYS3DMOD}/Capacitors_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -5422,11 +5419,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight (layer F.Cu) (tedit 5878E012) (tstamp 57F199FD)
@@ -5473,11 +5465,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0410.wrl
-      (at (xyz 0.1535433070866142 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight (layer F.Cu) (tedit 5878DFFF) (tstamp 57F19A04)
@@ -5522,11 +5509,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0410.wrl
-      (at (xyz 0.1535433070866142 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -5577,11 +5559,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B05B-EH-A_05x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F1A3FB)
@@ -5628,11 +5605,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -5683,11 +5655,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B05B-EH-A_05x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F1A40B)
@@ -5734,11 +5701,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -5789,11 +5751,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B05B-EH-A_05x2.50mm_Straight (layer F.Cu) (tedit 58B5F1F6) (tstamp 57F1A41B)
@@ -5842,11 +5799,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B04B-EH-A_04x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F1A42B)
@@ -5891,11 +5843,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0410.wrl
-      (at (xyz 0.1535433070866142 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -5944,11 +5891,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0410.wrl
-      (at (xyz 0.1535433070866142 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 58714B5F) (tstamp 57F1AAB6)
@@ -5991,11 +5933,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -6042,11 +5979,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F1B0C2)
@@ -6089,11 +6021,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -6140,11 +6067,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C7E3C) (tstamp 57F1B0CE)
@@ -6187,11 +6109,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -6238,11 +6155,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F1B0DA)
@@ -6285,11 +6197,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -6336,11 +6243,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F15D5C)
@@ -6383,11 +6285,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -6434,11 +6331,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B02B-EH-A_02x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F16335)
@@ -6481,11 +6373,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0210.wrl
-      (at (xyz 0.04724409448818898 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B02B-EH-A_02x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F167B8)
@@ -6524,14 +6411,9 @@
     (pad 1 thru_hole oval (at 0 0 90) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 138 Reset))
     (model Connectors_JST.3dshapes/JST_EH_B02B-EH-A_02x2.50mm_Straight.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.09842519685039371 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0210.wrl
-      (at (xyz 0.04724409448818898 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -6579,11 +6461,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -6636,11 +6513,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0610.wrl
-      (at (xyz 0.2480314960629921 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B06B-EH-A_06x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F28C7C)
@@ -6691,11 +6563,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0610.wrl
-      (at (xyz 0.2480314960629921 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57F2A517)
@@ -6740,11 +6607,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 58B21CF0) (tstamp 57F31A2C)
@@ -6787,11 +6649,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -7332,11 +7189,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57FABBCE)
@@ -7379,11 +7231,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -7430,11 +7277,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Zimprich:JST_EH_B03B-EH-A_03x2.50mm_Straight (layer F.Cu) (tedit 580C73BD) (tstamp 57FABBE1)
@@ -7477,11 +7319,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0310.wrl
-      (at (xyz 0.09842519685039371 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -8796,11 +8633,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol (layer B.Cu) (tedit 58E561A5) (tstamp 5818C811)
@@ -8882,11 +8714,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0510.wrl
-      (at (xyz 0.1968503937007874 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -9398,9 +9225,9 @@
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 205 "Net-(JP1-Pad1)"))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -9436,9 +9263,9 @@
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 82 RelaisAbschaltung))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -10233,11 +10060,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0410.wrl
-      (at (xyz 0.1535433070866142 0 0))
-      (scale (xyz 2 1.3 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module Housings_SOIC:SOIC-20W_7.5x12.8mm_Pitch1.27mm (layer F.Cu) (tedit 58D55944) (tstamp 58960322)
@@ -10356,11 +10178,6 @@
     (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Connectors_Molex.3dshapes/Molex_PicoBlade_53047-0410.wrl
-      (at (xyz 0.1535433070866142 0 0))
-      (scale (xyz 2 1.3 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -15380,9 +15197,9 @@
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 257 9Vgeschaltet))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 -0.35 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -16346,9 +16163,9 @@
     (pad 1 thru_hole rect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 125 +5VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -16384,9 +16201,9 @@
     (pad 3 thru_hole oval (at 0 5.08 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -16422,9 +16239,9 @@
     (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 125 +5VP))
     (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 -0.1 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -17374,7 +17191,7 @@
       (net 193 "Net-(P10-Pad1)"))
     (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 80 Taster))
-    (model ${KISYS3DMOD}/walter/conn_strip/vasch_strip_7x2.wrl
+    (model ${KISYS3DMOD}/walter/conn_strip/vasch_strip_7x2.wrll
       (at (xyz 0.05 -0.3 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -17922,9 +17739,9 @@
     (pad 1 thru_hole rect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 283 "Net-(D76-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -18774,7 +18591,7 @@
   (gr_line (start 255.651 134.747) (end 255.651 131.826) (angle 90) (layer Dwgs.User) (width 0.2))
   (gr_line (start 255.27 133.223) (end 262.255 133.223) (angle 90) (layer Dwgs.User) (width 0.2))
   (dimension 0.762 (width 0.075) (layer Dwgs.User)
-    (gr_text "0,762 mm" (at 204.962 90.932 90) (layer Dwgs.User) (tstamp 59147440)
+    (gr_text "0,762 mm" (at 204.962 90.932 90) (layer Dwgs.User) (tstamp 5980AF6A)
       (effects (font (size 0.3 0.3) (thickness 0.075)))
     )
     (feature1 (pts (xy 203.708 90.551) (xy 205.962 90.551)))
@@ -18842,7 +18659,7 @@
   (gr_line (start 52.705 90.424) (end 54.229 88.9) (angle 90) (layer F.SilkS) (width 0.5))
   (gr_circle (center 50.8 91.44) (end 52.324 92.964) (layer F.SilkS) (width 0.5))
   (dimension 260.35 (width 0.25) (layer Dwgs.User)
-    (gr_text "260,350 mm" (at 148.59 164.195) (layer Dwgs.User) (tstamp 59147441)
+    (gr_text "260,350 mm" (at 148.59 164.195) (layer Dwgs.User) (tstamp 5980AF6B)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 144.78) (xy 278.765 165.195)))
@@ -18854,7 +18671,7 @@
     (arrow2b (pts (xy 18.415 163.195) (xy 19.541504 162.608579)))
   )
   (dimension 130.175 (width 0.25) (layer Dwgs.User)
-    (gr_text "130,175 mm" (at 213.6775 155.94) (layer Dwgs.User) (tstamp 59147442)
+    (gr_text "130,175 mm" (at 213.6775 155.94) (layer Dwgs.User) (tstamp 5980AF6C)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 144.78) (xy 278.765 156.94)))
@@ -18866,7 +18683,7 @@
     (arrow2b (pts (xy 148.59 154.94) (xy 149.716504 154.353579)))
   )
   (dimension 130.175 (width 0.25) (layer Dwgs.User)
-    (gr_text "130,175 mm" (at 83.5025 155.94) (layer Dwgs.User) (tstamp 59147443)
+    (gr_text "130,175 mm" (at 83.5025 155.94) (layer Dwgs.User) (tstamp 5980AF6D)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 18.415 144.78) (xy 18.415 156.94)))
@@ -18878,7 +18695,7 @@
     (arrow2b (pts (xy 148.59 154.94) (xy 147.463496 155.526421)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 207.645 150.86) (layer Dwgs.User) (tstamp 59147444)
+    (gr_text "118,110 mm" (at 207.645 150.86) (layer Dwgs.User) (tstamp 5980AF6E)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 144.78) (xy 148.59 151.86)))
@@ -18890,7 +18707,7 @@
     (arrow2b (pts (xy 266.7 149.86) (xy 265.573496 150.446421)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 89.535 150.86) (layer Dwgs.User) (tstamp 59147445)
+    (gr_text "118,110 mm" (at 89.535 150.86) (layer Dwgs.User) (tstamp 5980AF6F)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 142.24) (xy 148.59 151.86)))
@@ -18929,7 +18746,7 @@
   (gr_line (start 72.39 36.83) (end 81.28 36.83) (angle 90) (layer F.SilkS) (width 0.5))
   (gr_line (start 108.077 46.863) (end 106.299 46.863) (angle 90) (layer F.SilkS) (width 0.5))
   (dimension 7.62 (width 0.25) (layer Dwgs.User)
-    (gr_text "7,620 mm" (at 291.576 140.97 90) (layer Dwgs.User) (tstamp 59147446)
+    (gr_text "7,620 mm" (at 291.576 140.97 90) (layer Dwgs.User) (tstamp 5980AF70)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.988 137.16) (xy 292.576 137.16)))
@@ -18941,7 +18758,7 @@
     (arrow2b (pts (xy 290.576 144.78) (xy 289.989579 143.653496)))
   )
   (dimension 15.748 (width 0.25) (layer Dwgs.User)
-    (gr_text "15,748 mm" (at 277.114 149.844) (layer Dwgs.User) (tstamp 59147447)
+    (gr_text "15,748 mm" (at 277.114 149.844) (layer Dwgs.User) (tstamp 5980AF71)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.988 144.78) (xy 284.988 150.844)))
@@ -19205,7 +19022,7 @@
   (gr_line (start 94.488 86.36) (end 94.488 99.06) (angle 90) (layer Edge.Cuts) (width 0.15))
   (gr_line (start 91.948 86.36) (end 94.488 86.36) (angle 90) (layer Edge.Cuts) (width 0.15))
   (dimension 135.89 (width 0.25) (layer Dwgs.User)
-    (gr_text "135,890 mm" (at 80.645 27.448) (layer Dwgs.User) (tstamp 59147448)
+    (gr_text "135,890 mm" (at 80.645 27.448) (layer Dwgs.User) (tstamp 5980AF72)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 30.48) (xy 148.59 26.448)))
@@ -19217,7 +19034,7 @@
     (arrow2b (pts (xy 12.7 28.448) (xy 13.826504 27.861579)))
   )
   (dimension 271.78 (width 0.25) (layer Dwgs.User)
-    (gr_text "271,780 mm" (at 148.59 23.892) (layer Dwgs.User) (tstamp 59147449)
+    (gr_text "271,780 mm" (at 148.59 23.892) (layer Dwgs.User) (tstamp 5980AF73)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 12.7 30.48) (xy 12.7 22.892)))
@@ -19480,7 +19297,7 @@
   )
   (gr_line (start 107.95 36.83) (end 161.29 36.83) (angle 90) (layer F.SilkS) (width 0.5))
   (dimension 20.066 (width 0.25) (layer Dwgs.User)
-    (gr_text "20,066 mm" (at 268.732 16.907) (layer Dwgs.User) (tstamp 5914744A)
+    (gr_text "20,066 mm" (at 268.732 16.907) (layer Dwgs.User) (tstamp 5980AF74)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 258.699 40.64) (xy 258.699 15.907)))
@@ -19492,7 +19309,7 @@
     (arrow2b (pts (xy 278.765 17.907) (xy 277.638496 18.493421)))
   )
   (dimension 20.066 (width 0.25) (layer Dwgs.User)
-    (gr_text "20,066 mm" (at 268.732 159.115) (layer Dwgs.User) (tstamp 5914744B)
+    (gr_text "20,066 mm" (at 268.732 159.115) (layer Dwgs.User) (tstamp 5980AF75)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 258.699 124.46) (xy 258.699 160.115)))
@@ -19504,7 +19321,7 @@
     (arrow2b (pts (xy 278.765 158.115) (xy 277.638496 158.701421)))
   )
   (dimension 20.066 (width 0.25) (layer Dwgs.User)
-    (gr_text "20,066 mm" (at 28.448 159.496) (layer Dwgs.User) (tstamp 5914744C)
+    (gr_text "20,066 mm" (at 28.448 159.496) (layer Dwgs.User) (tstamp 5980AF76)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 38.481 124.46) (xy 38.481 160.496)))
@@ -19556,7 +19373,7 @@
     (effects (font (size 1.7 1.7) (thickness 0.4)) (justify left mirror))
   )
   (dimension 114.3 (width 0.25) (layer Dwgs.User)
-    (gr_text "114,300 mm" (at 299.449999 87.63 270) (layer Dwgs.User) (tstamp 5914744D)
+    (gr_text "114,300 mm" (at 299.449999 87.63 270) (layer Dwgs.User) (tstamp 5980AF77)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.48 144.78) (xy 300.449999 144.78)))
@@ -19568,7 +19385,7 @@
     (arrow2b (pts (xy 298.449999 30.48) (xy 299.03642 31.606504)))
   )
   (dimension 54.61 (width 0.25) (layer Dwgs.User)
-    (gr_text "54,610 mm" (at 295.64 60.325 270) (layer Dwgs.User) (tstamp 5914744E)
+    (gr_text "54,610 mm" (at 295.64 60.325 270) (layer Dwgs.User) (tstamp 5980AF78)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 87.63) (xy 296.64 87.63)))
@@ -19580,7 +19397,7 @@
     (arrow2b (pts (xy 294.64 33.02) (xy 295.226421 34.146504)))
   )
   (dimension 54.61 (width 0.25) (layer Dwgs.User)
-    (gr_text "54,610 mm" (at 295.64 114.935 270) (layer Dwgs.User) (tstamp 5914744F)
+    (gr_text "54,610 mm" (at 295.64 114.935 270) (layer Dwgs.User) (tstamp 5980AF79)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 142.24) (xy 296.64 142.24)))
@@ -19592,7 +19409,7 @@
     (arrow2b (pts (xy 294.64 87.63) (xy 295.226421 88.756504)))
   )
   (dimension 46.99 (width 0.25) (layer Dwgs.User)
-    (gr_text "46,990 mm" (at 291.83 64.135 270) (layer Dwgs.User) (tstamp 59147450)
+    (gr_text "46,990 mm" (at 291.83 64.135 270) (layer Dwgs.User) (tstamp 5980AF7A)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 87.63) (xy 292.83 87.63)))
@@ -19604,7 +19421,7 @@
     (arrow2b (pts (xy 290.83 40.64) (xy 291.416421 41.766504)))
   )
   (dimension 36.83 (width 0.25) (layer Dwgs.User)
-    (gr_text "36,830 mm" (at 291.83 106.045 270) (layer Dwgs.User) (tstamp 59147451)
+    (gr_text "36,830 mm" (at 291.83 106.045 270) (layer Dwgs.User) (tstamp 5980AF7B)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 124.46) (xy 292.83 124.46)))
@@ -19616,7 +19433,7 @@
     (arrow2b (pts (xy 290.83 87.63) (xy 291.416421 88.756504)))
   )
   (dimension 271.78 (width 0.25) (layer Dwgs.User)
-    (gr_text "271,780 mm" (at 148.59 20.59) (layer Dwgs.User) (tstamp 59147452)
+    (gr_text "271,780 mm" (at 148.59 20.59) (layer Dwgs.User) (tstamp 5980AF7C)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.48 30.48) (xy 284.48 19.59)))
@@ -19628,7 +19445,7 @@
     (arrow2b (pts (xy 12.7 21.59) (xy 13.826504 21.003579)))
   )
   (dimension 260.35 (width 0.25) (layer Dwgs.User)
-    (gr_text "260,350 mm" (at 148.59 23.13) (layer Dwgs.User) (tstamp 59147453)
+    (gr_text "260,350 mm" (at 148.59 23.13) (layer Dwgs.User) (tstamp 5980AF7D)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 40.64) (xy 278.765 22.13)))
@@ -19640,7 +19457,7 @@
     (arrow2b (pts (xy 18.415 24.13) (xy 19.541504 23.543579)))
   )
   (dimension 241.3 (width 0.25) (layer Dwgs.User)
-    (gr_text "241,300 mm" (at 148.59 25.67) (layer Dwgs.User) (tstamp 59147454)
+    (gr_text "241,300 mm" (at 148.59 25.67) (layer Dwgs.User) (tstamp 5980AF7E)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 269.24 30.48) (xy 269.24 24.67)))
@@ -19652,7 +19469,7 @@
     (arrow2b (pts (xy 27.94 26.67) (xy 29.066504 26.083579)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 207.645 28.21) (layer Dwgs.User) (tstamp 59147455)
+    (gr_text "118,110 mm" (at 207.645 28.21) (layer Dwgs.User) (tstamp 5980AF7F)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 33.02) (xy 266.7 27.21)))
@@ -19664,7 +19481,7 @@
     (arrow2b (pts (xy 148.59 29.21) (xy 149.716504 28.623579)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 89.535 28.21) (layer Dwgs.User) (tstamp 59147456)
+    (gr_text "118,110 mm" (at 89.535 28.21) (layer Dwgs.User) (tstamp 5980AF80)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 33.02) (xy 148.59 27.21)))

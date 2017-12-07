@@ -176,6 +176,7 @@ void setup()  {
     testRead();      
     Serial.println("press 'a' to set new random date+time");    
     Serial.println("press 's' to set new static date+time");    
+		Serial.println("press 'r' to read date+time");
   }
 }
 
@@ -195,6 +196,11 @@ void loop(){
       Serial.println();
       Serial.println("power-off RTC, and restart to verify!");      
     }    
+		if (ch == 'r') {
+      testRead();  
+      Serial.println();
+      Serial.println("Data Read");      
+    }   
   }
 }
 

@@ -12,7 +12,7 @@ $ENDCMP
 #
 $CMP ARDUINO_MEGA
 D schématic for build a shield or clone an "arduino MEGA 2560 " based on revision 3
-K arduino 
+K arduino
 F http://arduino.cc/en/Main/ArduinoBoardMega2560
 $ENDCMP
 #

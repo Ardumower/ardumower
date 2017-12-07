@@ -87,7 +87,7 @@ byte flagAdc1Read = 0;  // Flag its Time to read ADC Sensor 2
 int soundBumper2 = 2;
 
 unsigned long previousMillis = 0;        // will store last time Timer was updated
-const long interval = 15;           // interval at which ADC was read (milliseconds)
+const long interval = 25;           // interval at which ADC was read (milliseconds)
 const long intervalLedActive = 250; // interval at which LED was blink (milliseconds)
 unsigned long previousMillisLedActive = 0;
 

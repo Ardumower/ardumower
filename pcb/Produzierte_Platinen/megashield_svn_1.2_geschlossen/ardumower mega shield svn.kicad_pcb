@@ -1,9 +1,6 @@
-(kicad_pcb (version 20160815) (host pcbnew "(2017-01-09 revision c2fb336)-makepkg")
+(kicad_pcb (version 20170123) (host pcbnew "(2017-08-10 revision 9485a4d38)-makepkg")
 
   (general
-    (links 553)
-    (no_connects 0)
-    (area 12.624999 30.404999 284.555001 144.855001)
     (thickness 1.6)
     (drawings 190)
     (tracks 2379)
@@ -519,9 +516,9 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 61 Power))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -547,9 +544,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 65 "Net-(JP4-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -575,9 +572,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 105 "Net-(D10-Pad1)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -603,9 +600,9 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 66 "Net-(JP6-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -726,9 +723,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 132 "Net-(JP2-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -754,9 +751,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 100 "Net-(JP8-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -782,9 +779,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 100 "Net-(JP8-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -810,9 +807,9 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -838,9 +835,9 @@
     (pad 2 thru_hole circle (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 81 Power5))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -866,9 +863,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 84 "Net-(JP12-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -894,9 +891,9 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 47 +24V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -922,9 +919,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 99 PowerA3,3))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -950,9 +947,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 129 "Voltage measurement"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -978,9 +975,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 129 "Voltage measurement"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -1006,9 +1003,9 @@
     (pad 2 thru_hole oval (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 129 "Voltage measurement"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -1343,9 +1340,9 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.3543307086614174 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -1384,9 +1381,9 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 81 Power5))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.3543307086614174 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -1425,9 +1422,9 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.3543307086614174 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -3303,9 +3300,9 @@
     (pad 2 thru_hole rect (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 99 PowerA3,3))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -3331,9 +3328,9 @@
     (pad 2 thru_hole rect (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 61 Power))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -3359,9 +3356,9 @@
     (pad 2 thru_hole rect (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 84 "Net-(JP12-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -3387,9 +3384,9 @@
     (pad 2 thru_hole rect (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 1 GND))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -3415,9 +3412,9 @@
     (pad 2 thru_hole rect (at 1.27 0 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 126 "Net-(LP21-Pad1)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -4061,9 +4058,9 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 21 pinSonarCenterEcho))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4094,9 +4091,9 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 23 pinSonarRightEcho))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4127,9 +4124,9 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 25 pinSonarLeftEcho))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4158,9 +4155,9 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 148 pinMotorMowRpm_neu))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4191,9 +4188,9 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 26 pinLawnBackRecv))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4232,9 +4229,9 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 30 Led-Status))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.35 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4265,9 +4262,9 @@
     (pad 4 thru_hole oval (at 3.81 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 32 pinOdometryRight2))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4298,9 +4295,9 @@
     (pad 4 thru_hole oval (at 3.81 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 34 pinOdometryLeft2))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4331,9 +4328,9 @@
     (pad 4 thru_hole oval (at 3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 38 pinBumperLeft))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.15 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4362,9 +4359,9 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 39 pinPerimeterLeft))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4399,9 +4396,9 @@
     (pad 6 thru_hole oval (at 6.35 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 43 pinRemoteSwitch))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x06_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2496062992125984 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4430,9 +4427,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 18 pinTilt))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4458,9 +4455,9 @@
     (pad 2 thru_hole oval (at 1.27 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.05 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4489,9 +4486,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 111 "Net-(D6-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4520,9 +4517,9 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 90 ReserveAD6))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4555,9 +4552,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4590,9 +4587,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4621,9 +4618,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 85 ReservePin9))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4652,9 +4649,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 86 ReservePin4))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4683,9 +4680,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 87 ReservePin0))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4714,9 +4711,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 88 ReservePin8))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4745,9 +4742,9 @@
     (pad 3 thru_hole oval (at 2.54 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 89 ReservePin1))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4776,9 +4773,9 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 69 pinPerimeterRight))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4807,9 +4804,9 @@
     (pad 3 thru_hole oval (at 2.54 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 110 "Net-(D5-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4842,9 +4839,9 @@
     (pad 5 thru_hole oval (at 5.08 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 46 pinUserSwitch3))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4873,9 +4870,9 @@
     (pad 3 thru_hole oval (at 2.54 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 76 pinRain))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4908,9 +4905,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4943,9 +4940,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -4978,9 +4975,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -5009,9 +5006,9 @@
     (pad 3 thru_hole oval (at 2.54 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 150 ReservePin49))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -5070,9 +5067,9 @@
     (pad 3 thru_hole oval (at 2.54 0 270) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 129 "Voltage measurement"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.1 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -5776,9 +5773,9 @@
     (pad 8 thru_hole oval (at 8.89 0) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 1 GND))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.35 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -5921,9 +5918,9 @@
     (pad 2 thru_hole oval (at 0 2.54 90) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 130 "Net-(Dual2-Pad9)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -6177,9 +6174,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -6212,9 +6209,9 @@
     (pad 5 thru_hole oval (at 5.08 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 17 +3.3V))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.2 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -6441,9 +6438,9 @@
     (pad 2 thru_hole oval (at 0 2.54 270) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 102 "Net-(D4-Pad2)"))
     (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0 -0.05 0))
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -7140,7 +7137,7 @@
   (gr_circle (center 185.674 76.2) (end 184.912 77.978) (layer F.SilkS) (width 0.8) (tstamp 552AB8A7))
   (gr_circle (center 139.7 76.2) (end 138.938 77.978) (layer F.SilkS) (width 0.8))
   (dimension 114.3 (width 0.25) (layer B.Fab)
-    (gr_text "114,300 mm" (at 299.449999 87.63 270) (layer B.Fab) (tstamp 58756E47)
+    (gr_text "114,300 mm" (at 299.449999 87.63 270) (layer B.Fab) (tstamp 598E0E71)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.48 144.78) (xy 300.449999 144.78)))
@@ -7152,7 +7149,7 @@
     (arrow2b (pts (xy 298.449999 30.48) (xy 299.03642 31.606504)))
   )
   (dimension 54.61 (width 0.25) (layer B.Fab)
-    (gr_text "54,610 mm" (at 295.64 60.325 270) (layer B.Fab) (tstamp 58756E48)
+    (gr_text "54,610 mm" (at 295.64 60.325 270) (layer B.Fab) (tstamp 598E0E72)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 87.63) (xy 296.64 87.63)))
@@ -7164,7 +7161,7 @@
     (arrow2b (pts (xy 294.64 33.02) (xy 295.226421 34.146504)))
   )
   (dimension 54.61 (width 0.25) (layer B.Fab)
-    (gr_text "54,610 mm" (at 295.64 114.935 270) (layer B.Fab) (tstamp 58756E49)
+    (gr_text "54,610 mm" (at 295.64 114.935 270) (layer B.Fab) (tstamp 598E0E73)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 142.24) (xy 296.64 142.24)))
@@ -7176,7 +7173,7 @@
     (arrow2b (pts (xy 294.64 87.63) (xy 295.226421 88.756504)))
   )
   (dimension 46.99 (width 0.25) (layer B.Fab)
-    (gr_text "46,990 mm" (at 291.83 64.135 270) (layer B.Fab) (tstamp 58756E4A)
+    (gr_text "46,990 mm" (at 291.83 64.135 270) (layer B.Fab) (tstamp 598E0E74)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 87.63) (xy 292.83 87.63)))
@@ -7188,7 +7185,7 @@
     (arrow2b (pts (xy 290.83 40.64) (xy 291.416421 41.766504)))
   )
   (dimension 36.83 (width 0.25) (layer B.Fab)
-    (gr_text "36,830 mm" (at 291.83 106.045 270) (layer B.Fab) (tstamp 58756E4B)
+    (gr_text "36,830 mm" (at 291.83 106.045 270) (layer B.Fab) (tstamp 598E0E75)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 124.46) (xy 292.83 124.46)))
@@ -7200,7 +7197,7 @@
     (arrow2b (pts (xy 290.83 87.63) (xy 291.416421 88.756504)))
   )
   (dimension 271.78 (width 0.25) (layer B.Fab)
-    (gr_text "271,780 mm" (at 148.59 20.59) (layer B.Fab) (tstamp 58756E4C)
+    (gr_text "271,780 mm" (at 148.59 20.59) (layer B.Fab) (tstamp 598E0E76)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.48 30.48) (xy 284.48 19.59)))
@@ -7212,7 +7209,7 @@
     (arrow2b (pts (xy 12.7 21.59) (xy 13.826504 21.003579)))
   )
   (dimension 260.35 (width 0.25) (layer B.Fab)
-    (gr_text "260,350 mm" (at 148.59 23.13) (layer B.Fab) (tstamp 58756E4D)
+    (gr_text "260,350 mm" (at 148.59 23.13) (layer B.Fab) (tstamp 598E0E77)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 40.64) (xy 278.765 22.13)))
@@ -7224,7 +7221,7 @@
     (arrow2b (pts (xy 18.415 24.13) (xy 19.541504 23.543579)))
   )
   (dimension 241.3 (width 0.25) (layer B.Fab)
-    (gr_text "241,300 mm" (at 148.59 25.67) (layer B.Fab) (tstamp 58756E4E)
+    (gr_text "241,300 mm" (at 148.59 25.67) (layer B.Fab) (tstamp 598E0E78)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 269.24 30.48) (xy 269.24 24.67)))
@@ -7236,7 +7233,7 @@
     (arrow2b (pts (xy 27.94 26.67) (xy 29.066504 26.083579)))
   )
   (dimension 118.11 (width 0.25) (layer B.Fab)
-    (gr_text "118,110 mm" (at 207.645 28.21) (layer B.Fab) (tstamp 58756E4F)
+    (gr_text "118,110 mm" (at 207.645 28.21) (layer B.Fab) (tstamp 598E0E79)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 33.02) (xy 266.7 27.21)))
@@ -7248,7 +7245,7 @@
     (arrow2b (pts (xy 148.59 29.21) (xy 149.716504 28.623579)))
   )
   (dimension 118.11 (width 0.25) (layer B.Fab)
-    (gr_text "118,110 mm" (at 89.535 28.21) (layer B.Fab) (tstamp 58756E50)
+    (gr_text "118,110 mm" (at 89.535 28.21) (layer B.Fab) (tstamp 598E0E7A)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 33.02) (xy 148.59 27.21)))
@@ -7266,7 +7263,7 @@
     (effects (font (size 5 5) (thickness 1)))
   )
   (dimension 130.175 (width 0.25) (layer B.Fab)
-    (gr_text "130,175 mm" (at 83.5025 176.894999) (layer B.Fab) (tstamp 58756E51)
+    (gr_text "130,175 mm" (at 83.5025 176.894999) (layer B.Fab) (tstamp 598E0E7B)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 18.415 144.78) (xy 18.415 177.894999)))
@@ -7278,7 +7275,7 @@
     (arrow2b (pts (xy 148.59 175.894999) (xy 147.463496 176.48142)))
   )
   (dimension 130.175 (width 0.25) (layer B.Fab)
-    (gr_text "130,175 mm" (at 213.6775 176.894999) (layer B.Fab) (tstamp 58756E52)
+    (gr_text "130,175 mm" (at 213.6775 176.894999) (layer B.Fab) (tstamp 598E0E7C)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 145.415) (xy 278.765 177.894999)))
@@ -7520,7 +7517,7 @@
     (effects (font (size 1 1) (thickness 0.25)) (justify left))
   )
   (dimension 241.3 (width 0.25) (layer B.Fab)
-    (gr_text "241,300 mm" (at 148.59 155.939999) (layer B.Fab) (tstamp 58756E53)
+    (gr_text "241,300 mm" (at 148.59 155.939999) (layer B.Fab) (tstamp 598E0E7D)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 269.24 144.78) (xy 269.24 156.939999)))
@@ -7532,7 +7529,7 @@
     (arrow2b (pts (xy 27.94 154.939999) (xy 29.066504 154.353578)))
   )
   (dimension 118.11 (width 0.25) (layer B.Fab)
-    (gr_text "118,110 mm" (at 207.645 150.86) (layer B.Fab) (tstamp 58756E54)
+    (gr_text "118,110 mm" (at 207.645 150.86) (layer B.Fab) (tstamp 598E0E7E)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 142.24) (xy 266.7 151.86)))
@@ -7544,7 +7541,7 @@
     (arrow2b (pts (xy 148.59 149.86) (xy 149.716504 149.273579)))
   )
   (dimension 118.11 (width 0.25) (layer B.Fab)
-    (gr_text "118,110 mm" (at 89.535 150.86) (layer B.Fab) (tstamp 58756E55)
+    (gr_text "118,110 mm" (at 89.535 150.86) (layer B.Fab) (tstamp 598E0E7F)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 142.24) (xy 148.59 151.86)))
@@ -9957,32 +9954,32 @@
     )
     (filled_polygon
       (pts
-        (xy 283.718 130.683) (xy 282.624532 130.683) (xy 282.624532 128.499137) (xy 278.765 124.639605) (xy 278.585395 124.81921)
-        (xy 278.585395 124.46) (xy 274.725863 120.600468) (xy 274.043364 121.186511) (xy 273.150067 123.242583) (xy 273.111593 125.483995)
-        (xy 273.933798 127.569513) (xy 274.043364 127.733489) (xy 274.725863 128.319532) (xy 278.585395 124.46) (xy 278.585395 124.81921)
-        (xy 274.905468 128.499137) (xy 275.491511 129.181636) (xy 277.547583 130.074933) (xy 279.788995 130.113407) (xy 281.874513 129.291202)
-        (xy 282.038489 129.181636) (xy 282.624532 128.499137) (xy 282.624532 130.683) (xy 270.637 130.683) (xy 270.637 31.877)
-        (xy 283.718 31.877) (xy 283.718 37.839426) (xy 283.596202 37.530487) (xy 283.486636 37.366511) (xy 282.804137 36.780468)
-        (xy 282.624532 36.960073) (xy 282.624532 36.600863) (xy 282.038489 35.918364) (xy 279.982417 35.025067) (xy 277.741005 34.986593)
-        (xy 275.655487 35.808798) (xy 275.491511 35.918364) (xy 274.905468 36.600863) (xy 278.765 40.460395) (xy 282.624532 36.600863)
-        (xy 282.624532 36.960073) (xy 278.944605 40.64) (xy 282.804137 44.499532) (xy 283.486636 43.913489) (xy 283.718 43.380966)
-        (xy 283.718 84.829426) (xy 283.596202 84.520487) (xy 283.486636 84.356511) (xy 282.804137 83.770468) (xy 282.624532 83.950073)
-        (xy 282.624532 83.590863) (xy 282.624532 44.679137) (xy 278.765 40.819605) (xy 278.585395 40.99921) (xy 278.585395 40.64)
-        (xy 274.725863 36.780468) (xy 274.043364 37.366511) (xy 273.150067 39.422583) (xy 273.111593 41.663995) (xy 273.933798 43.749513)
-        (xy 274.043364 43.913489) (xy 274.725863 44.499532) (xy 278.585395 40.64) (xy 278.585395 40.99921) (xy 274.905468 44.679137)
-        (xy 275.491511 45.361636) (xy 277.547583 46.254933) (xy 279.788995 46.293407) (xy 281.874513 45.471202) (xy 282.038489 45.361636)
-        (xy 282.624532 44.679137) (xy 282.624532 83.590863) (xy 282.038489 82.908364) (xy 279.982417 82.015067) (xy 277.741005 81.976593)
-        (xy 275.655487 82.798798) (xy 275.491511 82.908364) (xy 274.905468 83.590863) (xy 278.765 87.450395) (xy 282.624532 83.590863)
-        (xy 282.624532 83.950073) (xy 278.944605 87.63) (xy 282.804137 91.489532) (xy 283.486636 90.903489) (xy 283.718 90.370966)
-        (xy 283.718 121.659426) (xy 283.596202 121.350487) (xy 283.486636 121.186511) (xy 282.804137 120.600468) (xy 282.624532 120.780073)
-        (xy 282.624532 120.420863) (xy 282.624532 91.669137) (xy 278.765 87.809605) (xy 278.585395 87.98921) (xy 278.585395 87.63)
-        (xy 274.725863 83.770468) (xy 274.043364 84.356511) (xy 273.150067 86.412583) (xy 273.111593 88.653995) (xy 273.933798 90.739513)
-        (xy 274.043364 90.903489) (xy 274.725863 91.489532) (xy 278.585395 87.63) (xy 278.585395 87.98921) (xy 274.905468 91.669137)
-        (xy 275.491511 92.351636) (xy 277.547583 93.244933) (xy 279.788995 93.283407) (xy 281.874513 92.461202) (xy 282.038489 92.351636)
-        (xy 282.624532 91.669137) (xy 282.624532 120.420863) (xy 282.038489 119.738364) (xy 279.982417 118.845067) (xy 277.741005 118.806593)
-        (xy 275.655487 119.628798) (xy 275.491511 119.738364) (xy 274.905468 120.420863) (xy 278.765 124.280395) (xy 282.624532 120.420863)
-        (xy 282.624532 120.780073) (xy 278.944605 124.46) (xy 282.804137 128.319532) (xy 283.486636 127.733489) (xy 283.718 127.200966)
-        (xy 283.718 130.683)
+        (xy 283.718 37.839427) (xy 283.596202 37.530487) (xy 283.486636 37.366511) (xy 282.804137 36.780468) (xy 278.944605 40.64)
+        (xy 282.804137 44.499532) (xy 283.486636 43.913489) (xy 283.718 43.380967) (xy 283.718 84.829427) (xy 283.596202 84.520487)
+        (xy 283.486636 84.356511) (xy 282.804137 83.770468) (xy 278.944605 87.63) (xy 282.804137 91.489532) (xy 283.486636 90.903489)
+        (xy 283.718 90.370967) (xy 283.718 121.659427) (xy 283.596202 121.350487) (xy 283.486636 121.186511) (xy 282.804137 120.600468)
+        (xy 278.944605 124.46) (xy 282.804137 128.319532) (xy 283.486636 127.733489) (xy 283.718 127.200967) (xy 283.718 130.683)
+        (xy 270.637 130.683) (xy 270.637 128.499137) (xy 274.905468 128.499137) (xy 275.491511 129.181636) (xy 277.547583 130.074933)
+        (xy 279.788995 130.113407) (xy 281.874513 129.291202) (xy 282.038489 129.181636) (xy 282.624532 128.499137) (xy 278.765 124.639605)
+        (xy 274.905468 128.499137) (xy 270.637 128.499137) (xy 270.637 125.483995) (xy 273.111593 125.483995) (xy 273.933798 127.569513)
+        (xy 274.043364 127.733489) (xy 274.725863 128.319532) (xy 278.585395 124.46) (xy 274.725863 120.600468) (xy 274.043364 121.186511)
+        (xy 273.150067 123.242583) (xy 273.111593 125.483995) (xy 270.637 125.483995) (xy 270.637 120.420863) (xy 274.905468 120.420863)
+        (xy 278.765 124.280395) (xy 282.624532 120.420863) (xy 282.038489 119.738364) (xy 279.982417 118.845067) (xy 277.741005 118.806593)
+        (xy 275.655487 119.628798) (xy 275.491511 119.738364) (xy 274.905468 120.420863) (xy 270.637 120.420863) (xy 270.637 91.669137)
+        (xy 274.905468 91.669137) (xy 275.491511 92.351636) (xy 277.547583 93.244933) (xy 279.788995 93.283407) (xy 281.874513 92.461202)
+        (xy 282.038489 92.351636) (xy 282.624532 91.669137) (xy 278.765 87.809605) (xy 274.905468 91.669137) (xy 270.637 91.669137)
+        (xy 270.637 88.653995) (xy 273.111593 88.653995) (xy 273.933798 90.739513) (xy 274.043364 90.903489) (xy 274.725863 91.489532)
+        (xy 278.585395 87.63) (xy 274.725863 83.770468) (xy 274.043364 84.356511) (xy 273.150067 86.412583) (xy 273.111593 88.653995)
+        (xy 270.637 88.653995) (xy 270.637 83.590863) (xy 274.905468 83.590863) (xy 278.765 87.450395) (xy 282.624532 83.590863)
+        (xy 282.038489 82.908364) (xy 279.982417 82.015067) (xy 277.741005 81.976593) (xy 275.655487 82.798798) (xy 275.491511 82.908364)
+        (xy 274.905468 83.590863) (xy 270.637 83.590863) (xy 270.637 44.679137) (xy 274.905468 44.679137) (xy 275.491511 45.361636)
+        (xy 277.547583 46.254933) (xy 279.788995 46.293407) (xy 281.874513 45.471202) (xy 282.038489 45.361636) (xy 282.624532 44.679137)
+        (xy 278.765 40.819605) (xy 274.905468 44.679137) (xy 270.637 44.679137) (xy 270.637 41.663995) (xy 273.111593 41.663995)
+        (xy 273.933798 43.749513) (xy 274.043364 43.913489) (xy 274.725863 44.499532) (xy 278.585395 40.64) (xy 274.725863 36.780468)
+        (xy 274.043364 37.366511) (xy 273.150067 39.422583) (xy 273.111593 41.663995) (xy 270.637 41.663995) (xy 270.637 36.600863)
+        (xy 274.905468 36.600863) (xy 278.765 40.460395) (xy 282.624532 36.600863) (xy 282.038489 35.918364) (xy 279.982417 35.025067)
+        (xy 277.741005 34.986593) (xy 275.655487 35.808798) (xy 275.491511 35.918364) (xy 274.905468 36.600863) (xy 270.637 36.600863)
+        (xy 270.637 31.877) (xy 283.718 31.877)
       )
     )
   )
@@ -9997,31 +9994,31 @@
     )
     (filled_polygon
       (pts
-        (xy 26.543 143.383) (xy 24.068407 143.383) (xy 24.068407 123.436005) (xy 24.068407 86.606005) (xy 24.068407 39.616005)
-        (xy 23.246202 37.530487) (xy 23.136636 37.366511) (xy 22.454137 36.780468) (xy 22.274532 36.960073) (xy 22.274532 36.600863)
-        (xy 21.688489 35.918364) (xy 19.632417 35.025067) (xy 17.391005 34.986593) (xy 15.305487 35.808798) (xy 15.141511 35.918364)
-        (xy 14.555468 36.600863) (xy 18.415 40.460395) (xy 22.274532 36.600863) (xy 22.274532 36.960073) (xy 18.594605 40.64)
-        (xy 22.454137 44.499532) (xy 23.136636 43.913489) (xy 24.029933 41.857417) (xy 24.068407 39.616005) (xy 24.068407 86.606005)
-        (xy 23.246202 84.520487) (xy 23.136636 84.356511) (xy 22.454137 83.770468) (xy 22.274532 83.950073) (xy 22.274532 83.590863)
-        (xy 22.274532 44.679137) (xy 18.415 40.819605) (xy 14.555468 44.679137) (xy 15.141511 45.361636) (xy 17.197583 46.254933)
-        (xy 19.438995 46.293407) (xy 21.524513 45.471202) (xy 21.688489 45.361636) (xy 22.274532 44.679137) (xy 22.274532 83.590863)
-        (xy 21.688489 82.908364) (xy 19.632417 82.015067) (xy 17.391005 81.976593) (xy 15.305487 82.798798) (xy 15.141511 82.908364)
-        (xy 14.555468 83.590863) (xy 18.415 87.450395) (xy 22.274532 83.590863) (xy 22.274532 83.950073) (xy 18.594605 87.63)
-        (xy 22.454137 91.489532) (xy 23.136636 90.903489) (xy 24.029933 88.847417) (xy 24.068407 86.606005) (xy 24.068407 123.436005)
-        (xy 23.246202 121.350487) (xy 23.136636 121.186511) (xy 22.454137 120.600468) (xy 22.274532 120.780073) (xy 22.274532 120.420863)
-        (xy 22.274532 91.669137) (xy 18.415 87.809605) (xy 14.555468 91.669137) (xy 15.141511 92.351636) (xy 17.197583 93.244933)
-        (xy 19.438995 93.283407) (xy 21.524513 92.461202) (xy 21.688489 92.351636) (xy 22.274532 91.669137) (xy 22.274532 120.420863)
-        (xy 21.688489 119.738364) (xy 19.632417 118.845067) (xy 17.391005 118.806593) (xy 15.305487 119.628798) (xy 15.141511 119.738364)
-        (xy 14.555468 120.420863) (xy 18.415 124.280395) (xy 22.274532 120.420863) (xy 22.274532 120.780073) (xy 18.594605 124.46)
-        (xy 22.454137 128.319532) (xy 23.136636 127.733489) (xy 24.029933 125.677417) (xy 24.068407 123.436005) (xy 24.068407 143.383)
-        (xy 22.274532 143.383) (xy 22.274532 128.499137) (xy 18.415 124.639605) (xy 14.555468 128.499137) (xy 15.141511 129.181636)
+        (xy 26.543 143.383) (xy 13.462 143.383) (xy 13.462 128.499137) (xy 14.555468 128.499137) (xy 15.141511 129.181636)
         (xy 17.197583 130.074933) (xy 19.438995 130.113407) (xy 21.524513 129.291202) (xy 21.688489 129.181636) (xy 22.274532 128.499137)
-        (xy 22.274532 143.383) (xy 13.462 143.383) (xy 13.462 127.260573) (xy 13.583798 127.569513) (xy 13.693364 127.733489)
-        (xy 14.375863 128.319532) (xy 18.235395 124.46) (xy 14.375863 120.600468) (xy 13.693364 121.186511) (xy 13.462 121.719033)
-        (xy 13.462 90.430573) (xy 13.583798 90.739513) (xy 13.693364 90.903489) (xy 14.375863 91.489532) (xy 18.235395 87.63)
-        (xy 14.375863 83.770468) (xy 13.693364 84.356511) (xy 13.462 84.889033) (xy 13.462 43.440573) (xy 13.583798 43.749513)
-        (xy 13.693364 43.913489) (xy 14.375863 44.499532) (xy 18.235395 40.64) (xy 14.375863 36.780468) (xy 13.693364 37.366511)
-        (xy 13.462 37.899033) (xy 13.462 31.877) (xy 26.543 31.877) (xy 26.543 143.383)
+        (xy 18.415 124.639605) (xy 14.555468 128.499137) (xy 13.462 128.499137) (xy 13.462 127.260573) (xy 13.583798 127.569513)
+        (xy 13.693364 127.733489) (xy 14.375863 128.319532) (xy 18.235395 124.46) (xy 18.594605 124.46) (xy 22.454137 128.319532)
+        (xy 23.136636 127.733489) (xy 24.029933 125.677417) (xy 24.068407 123.436005) (xy 23.246202 121.350487) (xy 23.136636 121.186511)
+        (xy 22.454137 120.600468) (xy 18.594605 124.46) (xy 18.235395 124.46) (xy 14.375863 120.600468) (xy 13.693364 121.186511)
+        (xy 13.462 121.719033) (xy 13.462 120.420863) (xy 14.555468 120.420863) (xy 18.415 124.280395) (xy 22.274532 120.420863)
+        (xy 21.688489 119.738364) (xy 19.632417 118.845067) (xy 17.391005 118.806593) (xy 15.305487 119.628798) (xy 15.141511 119.738364)
+        (xy 14.555468 120.420863) (xy 13.462 120.420863) (xy 13.462 91.669137) (xy 14.555468 91.669137) (xy 15.141511 92.351636)
+        (xy 17.197583 93.244933) (xy 19.438995 93.283407) (xy 21.524513 92.461202) (xy 21.688489 92.351636) (xy 22.274532 91.669137)
+        (xy 18.415 87.809605) (xy 14.555468 91.669137) (xy 13.462 91.669137) (xy 13.462 90.430573) (xy 13.583798 90.739513)
+        (xy 13.693364 90.903489) (xy 14.375863 91.489532) (xy 18.235395 87.63) (xy 18.594605 87.63) (xy 22.454137 91.489532)
+        (xy 23.136636 90.903489) (xy 24.029933 88.847417) (xy 24.068407 86.606005) (xy 23.246202 84.520487) (xy 23.136636 84.356511)
+        (xy 22.454137 83.770468) (xy 18.594605 87.63) (xy 18.235395 87.63) (xy 14.375863 83.770468) (xy 13.693364 84.356511)
+        (xy 13.462 84.889033) (xy 13.462 83.590863) (xy 14.555468 83.590863) (xy 18.415 87.450395) (xy 22.274532 83.590863)
+        (xy 21.688489 82.908364) (xy 19.632417 82.015067) (xy 17.391005 81.976593) (xy 15.305487 82.798798) (xy 15.141511 82.908364)
+        (xy 14.555468 83.590863) (xy 13.462 83.590863) (xy 13.462 44.679137) (xy 14.555468 44.679137) (xy 15.141511 45.361636)
+        (xy 17.197583 46.254933) (xy 19.438995 46.293407) (xy 21.524513 45.471202) (xy 21.688489 45.361636) (xy 22.274532 44.679137)
+        (xy 18.415 40.819605) (xy 14.555468 44.679137) (xy 13.462 44.679137) (xy 13.462 43.440573) (xy 13.583798 43.749513)
+        (xy 13.693364 43.913489) (xy 14.375863 44.499532) (xy 18.235395 40.64) (xy 18.594605 40.64) (xy 22.454137 44.499532)
+        (xy 23.136636 43.913489) (xy 24.029933 41.857417) (xy 24.068407 39.616005) (xy 23.246202 37.530487) (xy 23.136636 37.366511)
+        (xy 22.454137 36.780468) (xy 18.594605 40.64) (xy 18.235395 40.64) (xy 14.375863 36.780468) (xy 13.693364 37.366511)
+        (xy 13.462 37.899033) (xy 13.462 36.600863) (xy 14.555468 36.600863) (xy 18.415 40.460395) (xy 22.274532 36.600863)
+        (xy 21.688489 35.918364) (xy 19.632417 35.025067) (xy 17.391005 34.986593) (xy 15.305487 35.808798) (xy 15.141511 35.918364)
+        (xy 14.555468 36.600863) (xy 13.462 36.600863) (xy 13.462 31.877) (xy 26.543 31.877)
       )
     )
   )
