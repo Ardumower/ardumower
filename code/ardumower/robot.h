@@ -485,6 +485,16 @@ class Robot
     float statsMowTimeHoursTotal ;
     int statsMowTimeMinutesTrip ;
     unsigned long nextTimeRobotStats ;
+    // ------------robot mower communication standard---
+	boolean rmcsUse;
+	unsigned long RMCS_interval_state;
+	unsigned long RMCS_interval_motor_current;
+	unsigned long RMCS_interval_sonar;
+	unsigned long RMCS_interval_bumper;
+	unsigned long RMCS_interval_odometry;
+	unsigned long RMCS_interval_perimeter;
+	unsigned long nextTimeRMCSInfo;
+	
     // --------------------------------------------------
     Robot();
     // robot setup

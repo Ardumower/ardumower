@@ -222,6 +222,15 @@ Mower::Mower(){
   statsMowTimeMinutesTotal   = 300;
   statsBatteryChargingCounterTotal  = 11;
   statsBatteryChargingCapacityTotal = 30000;
+  
+  // ------------robot mower communication standard---
+  rmcsUse					= false;   // if set robot mower communication standard (NMEA) is used.
+  RMCS_interval_state	  	= 1000;
+  RMCS_interval_motor_current = 1000;
+  RMCS_interval_sonar 		= 1000;
+  RMCS_interval_bumper		= 1000;
+  RMCS_interval_odometry	= 1000;
+  RMCS_interval_perimeter	= 1000;
   // -----------configuration end-------------------------------------
 }
 

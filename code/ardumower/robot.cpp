@@ -49,11 +49,8 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 
 // --- split robot class ----
 #include "battery.h"
-
-
- //#include "consoleui.h"
-// Use Robot Mower Communication Standard instead of odd Serial Communication
-#include "rmcs.h"
+#include "consoleui.h"
+#include "rmcs.h" // Use Robot Mower Communication Standard 
 
 #include "motor.h"
 #include "buzzer.h"
@@ -214,6 +211,8 @@ Robot::Robot(){
   nextTimeRobotStats = 0;
   statsMowTimeMinutesTripCounter = 0;
   statsBatteryChargingCounter = 0;
+  
+  nextTimeRMCSInfo			= 0;  
 }
 
 const char *Robot::mowPatternName(){
@@ -1277,7 +1276,13 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateLast = stateCurr;
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
-  printInfo(Console);          
+  
+  if (rmcsUse == false) {  
+    printInfo(Console);          
+  }
+  else{
+    rmcsPrintInfo(Console);
+  }
 }
 
 
@@ -1309,8 +1314,15 @@ void Robot::loop()  {
     rc.run();        
   }
    
+  if (rmcsUse == true and millis() >= nextTimeRMCSInfo ) { 
+	nextTimeRMCSInfo = millis() + 100;
+	printInfo(Console); 
+  }
+	
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
+	if (rmcsUse == false) { printInfo(Console); }
+  
     printInfo(Console);    
     printErrors();
     ledState = ~ledState;    
