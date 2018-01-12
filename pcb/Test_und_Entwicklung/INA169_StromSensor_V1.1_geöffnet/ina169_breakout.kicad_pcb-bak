@@ -14,6 +14,7 @@
     (title INA169_StromSensor)
     (date 2017-11-30)
     (rev V1.1)
+    (company "Uwe Zimprich")
   )
 
   (layers
@@ -40,7 +41,7 @@
   )
 
   (setup
-    (last_trace_width 0.4)
+    (last_trace_width 0.254)
     (user_trace_width 0.254)
     (user_trace_width 0.4)
     (user_trace_width 0.508)
@@ -556,7 +557,7 @@
     (effects (font (size 0.7 0.7) (thickness 0.1)))
   )
   (dimension 22.931388 (width 0.3) (layer Dwgs.User)
-    (gr_text "22,931 mm" (at 147.976532 117.682) (layer Dwgs.User) (tstamp 5A20FB3A)
+    (gr_text "22,931 mm" (at 147.976532 117.682) (layer Dwgs.User) (tstamp 5A21BD93)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 159.442226 113.334529) (xy 159.442226 119.032)))
@@ -568,7 +569,7 @@
     (arrow2b (pts (xy 136.510838 116.332) (xy 137.637342 115.745579)))
   )
   (dimension 21.564616 (width 0.3) (layer Dwgs.User) (tstamp 54E3B59A)
-    (gr_text "21,565 mm" (at 162.052 102.362 270) (layer Dwgs.User) (tstamp 5A20FB3B)
+    (gr_text "21,565 mm" (at 162.052 102.362 270) (layer Dwgs.User) (tstamp 5A21BD94)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
     )
     (feature1 (pts (xy 159.480192 113.334529) (xy 167.291999 113.334529)))
