@@ -21,25 +21,25 @@ INA169 DC Current Sensor \nVCC/Vin: 2.7-60V\nMax Current: 5.0A (1V/Amp)\nVout=RL
 Text Notes 6550 2850 0    60   ~ 0
 http://de.wikipedia.org/wiki/Chip-Bauform
 Wire Wire Line
-	4000 2400 4000 5035
+	4000 2400 4000 4535
 Wire Wire Line
 	4890 2400 4000 2400
 Connection ~ 4000 4535
 Wire Wire Line
 	5940 2300 6250 2300
 Wire Wire Line
-	6250 2050 6250 3245
+	6250 2050 6250 2300
 Wire Wire Line
 	6250 3545 6250 5035
 Wire Wire Line
-	3200 4535 5030 4535
+	3200 4535 4000 4535
 Wire Wire Line
-	4100 2500 4890 2500
+	4100 2500 4270 2500
 Wire Wire Line
 	5940 2500 5950 2500
 Connection ~ 5950 3250
 Wire Wire Line
-	3900 2300 4890 2300
+	3900 2300 4200 2300
 Wire Wire Line
 	6250 2050 3800 2050
 Wire Wire Line
@@ -54,7 +54,7 @@ Wire Wire Line
 Wire Wire Line
 	5950 4635 3200 4635
 Wire Wire Line
-	5950 2500 5950 4635
+	5950 2500 5950 3250
 Wire Wire Line
 	3900 2300 3900 4835
 Wire Wire Line
@@ -67,7 +67,7 @@ Wire Wire Line
 	4270 2500 4270 3250
 Connection ~ 4270 2500
 Wire Wire Line
-	4200 3070 4200 4075
+	4200 3070 4200 3825
 Wire Wire Line
 	4200 4375 4200 4535
 Wire Wire Line
@@ -208,7 +208,7 @@ U 1 1 587A8695
 P 3000 4635
 F 0 "J1" H 3078 4676 50  0000 L CNN
 F 1 "INA169 Breakout 2,5 / 5A (short pad JP1)" H 3078 4585 50  0000 L CNN
-F 2 "ina169_breakout:ina169_breakout_footprint" H 3000 4635 50  0001 C CNN
+F 2 "Zimprich:ina169_breakout_footprint_mit_unterem_Lötpad" H 3000 4635 50  0001 C CNN
 F 3 "" H 3000 4635 50  0000 C CNN
 F 4 "Value" H 3000 4635 60  0001 C CNN "Gehäuseart"
 F 5 "Value" H 3000 4635 60  0001 C CNN "Bestelllink"
@@ -251,4 +251,20 @@ F 3 "" H 6350 7530 60  0001 C CNN
 	1    6350 7530
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4000 4535 4000 5035
+Wire Wire Line
+	4000 4535 4200 4535
+Wire Wire Line
+	5950 3250 5950 4635
+Wire Wire Line
+	6250 2300 6250 3245
+Wire Wire Line
+	4270 2500 4890 2500
+Wire Wire Line
+	4200 2300 4890 2300
+Wire Wire Line
+	4200 4535 5030 4535
+Wire Wire Line
+	4200 3825 4200 4075
 $EndSCHEMATC
