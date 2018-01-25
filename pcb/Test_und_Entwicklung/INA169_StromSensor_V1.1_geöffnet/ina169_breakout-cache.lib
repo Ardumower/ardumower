@@ -1,11 +1,27 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# C-RESCUE-ina169_breakout
+# device:Jumper
 #
-DEF C-RESCUE-ina169_breakout C 0 10 N Y 1 F N
+DEF device:Jumper JP 0 30 Y N 1 F N
+F0 "JP" 0 150 50 H V C CNN
+F1 "device:Jumper" 0 -80 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+A 0 -26 125 1426 373 0 1 0 N -98 50 99 50
+C -100 0 35 0 1 0 N
+C 100 0 35 0 1 0 N
+X 1 1 -300 0 165 R 50 50 0 1 P
+X 2 2 300 0 165 L 50 50 0 1 P
+ENDDRAW
+ENDDEF
+#
+# ina169_breakout-rescue:C-RESCUE-ina169_breakout
+#
+DEF ina169_breakout-rescue:C-RESCUE-ina169_breakout C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C-RESCUE-ina169_breakout" 25 -100 50 H V L CNN
+F1 "ina169_breakout-rescue:C-RESCUE-ina169_breakout" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -23,11 +39,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X05-RESCUE-ina169_breakout
+# ina169_breakout-rescue:CONN_01X05-RESCUE-ina169_breakout
 #
-DEF CONN_01X05-RESCUE-ina169_breakout P 0 40 Y N 1 F N
+DEF ina169_breakout-rescue:CONN_01X05-RESCUE-ina169_breakout P 0 40 Y N 1 F N
 F0 "P" 0 300 50 H V C CNN
-F1 "CONN_01X05-RESCUE-ina169_breakout" 100 0 50 V V C CNN
+F1 "ina169_breakout-rescue:CONN_01X05-RESCUE-ina169_breakout" 100 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -51,11 +67,11 @@ X P5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# GND-RESCUE-ina169_breakout
+# ina169_breakout-rescue:GND-RESCUE-ina169_breakout
 #
-DEF GND-RESCUE-ina169_breakout #PWR 0 0 Y Y 1 F P
+DEF ina169_breakout-rescue:GND-RESCUE-ina169_breakout #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "GND-RESCUE-ina169_breakout" 0 -150 50 H V C CNN
+F1 "ina169_breakout-rescue:GND-RESCUE-ina169_breakout" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 DRAW
@@ -64,11 +80,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# INA169_IC-RESCUE-ina169_breakout
+# ina169_breakout-rescue:INA169_IC-RESCUE-ina169_breakout
 #
-DEF INA169_IC-RESCUE-ina169_breakout U 0 40 Y Y 1 F N
+DEF ina169_breakout-rescue:INA169_IC-RESCUE-ina169_breakout U 0 40 Y Y 1 F N
 F0 "U" 0 300 60 H V C CNN
-F1 "INA169_IC-RESCUE-ina169_breakout" 0 -300 60 H V C CNN
+F1 "ina169_breakout-rescue:INA169_IC-RESCUE-ina169_breakout" 0 -300 60 H V C CNN
 F2 "" 0 -300 60 H V C CNN
 F3 "" 0 -300 60 H V C CNN
 DRAW
@@ -81,27 +97,11 @@ X V+ 5 500 150 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Jumper
+# ina169_breakout-rescue:R-RESCUE-ina169_breakout
 #
-DEF Jumper JP 0 30 Y N 1 F N
-F0 "JP" 0 150 50 H V C CNN
-F1 "Jumper" 0 -80 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-A 0 -26 125 1426 373 0 1 0 N -98 50 99 50
-C -100 0 35 0 1 0 N
-C 100 0 35 0 1 0 N
-X 1 1 -300 0 165 R 50 50 0 1 P
-X 2 2 300 0 165 L 50 50 0 1 P
-ENDDRAW
-ENDDEF
-#
-# R-RESCUE-ina169_breakout
-#
-DEF R-RESCUE-ina169_breakout R 0 0 Y Y 1 F N
+DEF ina169_breakout-rescue:R-RESCUE-ina169_breakout R 0 0 Y Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R-RESCUE-ina169_breakout" 0 0 50 V V C CNN
+F1 "ina169_breakout-rescue:R-RESCUE-ina169_breakout" 0 0 50 V V C CNN
 F2 "" -70 0 50 V V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -115,11 +115,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Symbol_leer
+# zimprich:Symbol_leer
 #
-DEF Symbol_leer H 0 40 N N 1 L N
+DEF zimprich:Symbol_leer H 0 40 N N 1 L N
 F0 "H" 110 23 45 H V L BNN
-F1 "Symbol_leer" 110 -97 45 H V L BNN
+F1 "zimprich:Symbol_leer" 110 -97 45 H V L BNN
 F2 "Symbol_leer" 30 150 20 H I C CNN
 F3 "" 0 0 60 H I C CNN
 $FPLIST
