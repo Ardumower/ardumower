@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -33,7 +23,7 @@ Ausgang1
 Text Notes 12595 3125 0    60   ~ 0
 [22:56:35 | Bearbeitet 22:58:38] Jürgen Lange: @uwe hier der teiler kann noch verfeinert werden und du brauchst die mimik 2x also den 4017 x2 und ein und gatter vom 4081 zusätzlich damit sind dann noch zwei übrig die arbeiten dann als or durch die negative logik timing-probleme werden so vermieden und die signale sin im sync \n[22:59:19] Kurzschuss - Uwe: sekunde diese Schaltung also mal 4\n[23:00:01] Kurzschuss - Uwe: wir haben ja 4 Odemetrie Pins\n[23:00:34] Jürgen Lange: natürlich wie immer die 100nF block nicht vergessen und beachten hinten hast du 5v pegel da muss man also noch was machen............................. ne die schaltung eigentlich nur 2x oder 3 mal wenn du den mäh-motor auch so machen möchtest\n[23:01:44 | Bearbeitet 23:05:06] Jürgen Lange: wir brauchen nur einen pro motor oneway die richtung kann uns wurst sein und vergesse die pullup nicht am eingang die werden trotzdem gebraucht\n[23:01:52 | Bearbeitet 23:02:17] Kurzschuss - Uwe: Also werten wir bei der Odemetrie nicht mehr two way aus sondern nur noch One way?\n[23:02:43] Kurzschuss - Uwe: wir haben ja bei unseren Motoren vor und Rückwärsts\n[23:03:20] Jürgen Lange: das ist ein dekadenzähler schau dir das datenblatt an dann kommst du sicher drauf\n[23:03:47] Kurzschuss - Uwe: okay\n[23:04:16] Jürgen Lange: die richtung kommt von der software wozu sollen wir das auswerten alexander weiß doch wo er hinfährt sind nur unnötige ints\n[23:05:40] Kurzschuss - Uwe: Dann hätten wir wider 2Pins mehr frei :)\n[23:08:58] Kurzschuss - Uwe: braucht der 4017 keine ´5V
 $Comp
-L 4017 U4
+L ardumower-mega-shield-svn-rescue:4017-RESCUE-ardumower_mega_shield_svn U4
 U 1 1 57F328FB
 P 2260 2070
 F 0 "U4" H 2465 1385 50  0000 C CNN
@@ -52,7 +42,7 @@ F 11 "Value" H 2260 2070 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L 4081 U5
+L ardumower-mega-shield-svn-rescue:4081-RESCUE-ardumower_mega_shield_svn U5
 U 1 1 57F32953
 P 4015 1145
 F 0 "U5" H 4556 1204 50  0000 L CNN
@@ -68,7 +58,7 @@ F 8 "Value" H 4015 1145 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L 4081 U5
+L ardumower-mega-shield-svn-rescue:4081-RESCUE-ardumower_mega_shield_svn U5
 U 4 1 57F32B77
 P 8275 1170
 F 0 "U5" H 8816 1229 50  0000 L CNN
@@ -4512,7 +4502,7 @@ Connection ~ 1630 1520
 NoConn ~ 2810 1520
 NoConn ~ 2810 2570
 $Comp
-L GND #PWR0138
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0138
 U 1 1 57F36BEA
 P 1645 1865
 F 0 "#PWR0138" H 1645 1615 50  0001 C CNN
@@ -4527,7 +4517,7 @@ Wire Wire Line
 Wire Wire Line
 	1645 1770 1710 1770
 $Comp
-L GND #PWR0139
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0139
 U 1 1 57F37705
 P 2260 2790
 F 0 "#PWR0139" H 2260 2540 50  0001 C CNN
@@ -4552,7 +4542,7 @@ Wire Wire Line
 Text Notes 1580 3340 0    39   ~ 0
 5V an pin 16 richtig?\npin 16 richtig?\noder 5VP an pin 16
 $Comp
-L GND #PWR0140
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0140
 U 1 1 57F39A30
 P 7635 1465
 F 0 "#PWR0140" H 7635 1215 50  0001 C CNN
@@ -4570,7 +4560,7 @@ Wire Wire Line
 	7775 1270 7635 1270
 Connection ~ 7635 1270
 $Comp
-L GND #PWR0141
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0141
 U 1 1 57F3A684
 P 4015 1465
 F 0 "#PWR0141" H 4015 1215 50  0001 C CNN
@@ -4587,7 +4577,7 @@ Wire Wire Line
 Text Notes 4290 870  0    39   ~ 0
 5V an pin 14 richtig?\npin 16 richtig?\noder 5VP an pin 16
 $Comp
-L SW_DIP_x8 S1
+L ardumower-mega-shield-svn-rescue:SW_DIP_x8-RESCUE-ardumower_mega_shield_svn S1
 U 1 1 57F3CE2A
 P 3240 2070
 F 0 "S1" H 3240 2645 50  0000 C CNN
@@ -4622,7 +4612,7 @@ Wire Wire Line
 Text HLabel 4630 4300 2    60   Output ~ 0
 Ausgang2
 $Comp
-L 4017 U9
+L ardumower-mega-shield-svn-rescue:4017-RESCUE-ardumower_mega_shield_svn U9
 U 1 1 57F7E24A
 P 2045 5225
 F 0 "U9" H 2250 4540 50  0000 C CNN
@@ -4633,7 +4623,7 @@ F 3 "" H 2045 5225 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 4081 U5
+L ardumower-mega-shield-svn-rescue:4081-RESCUE-ardumower_mega_shield_svn U5
 U 2 1 57F7E250
 P 3800 4300
 F 0 "U5" H 4341 4359 50  0000 L CNN
@@ -4669,7 +4659,7 @@ Connection ~ 1415 4675
 NoConn ~ 2595 4675
 NoConn ~ 2595 5725
 $Comp
-L GND #PWR0142
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0142
 U 1 1 57F7E260
 P 1430 5020
 F 0 "#PWR0142" H 1430 4770 50  0001 C CNN
@@ -4684,7 +4674,7 @@ Wire Wire Line
 Wire Wire Line
 	1430 4925 1495 4925
 $Comp
-L GND #PWR0143
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0143
 U 1 1 57F7E268
 P 2045 5945
 F 0 "#PWR0143" H 2045 5695 50  0001 C CNN
@@ -4711,7 +4701,7 @@ Text Notes 1365 6495 0    39   ~ 0
 Text Notes 4075 4025 0    39   ~ 0
 5V an pin 14 richtig?\npin 16 richtig?\noder 5VP an pin 16
 $Comp
-L SW_DIP_x8 S2
+L ardumower-mega-shield-svn-rescue:SW_DIP_x8-RESCUE-ardumower_mega_shield_svn S2
 U 1 1 57F7E28A
 P 3025 5225
 F 0 "S2" H 3025 5800 50  0000 C CNN
@@ -4769,7 +4759,7 @@ Wire Wire Line
 Text HLabel 10215 4160 2    60   Output ~ 0
 Ausgang3
 $Comp
-L 4017 U12
+L ardumower-mega-shield-svn-rescue:4017-RESCUE-ardumower_mega_shield_svn U12
 U 1 1 57F7E516
 P 7630 5085
 F 0 "U12" H 7835 4400 50  0000 C CNN
@@ -4780,7 +4770,7 @@ F 3 "" H 7630 5085 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 4081 U5
+L ardumower-mega-shield-svn-rescue:4081-RESCUE-ardumower_mega_shield_svn U5
 U 3 1 57F7E521
 P 9385 4160
 F 0 "U5" H 9926 4219 50  0000 L CNN
@@ -4813,7 +4803,7 @@ Connection ~ 7000 4535
 NoConn ~ 8180 4535
 NoConn ~ 8180 5585
 $Comp
-L GND #PWR0144
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0144
 U 1 1 57F7E531
 P 7015 4880
 F 0 "#PWR0144" H 7015 4630 50  0001 C CNN
@@ -4828,7 +4818,7 @@ Wire Wire Line
 Wire Wire Line
 	7015 4785 7080 4785
 $Comp
-L GND #PWR0145
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0145
 U 1 1 57F7E539
 P 7630 5805
 F 0 "#PWR0145" H 7630 5555 50  0001 C CNN
@@ -4853,7 +4843,7 @@ Wire Wire Line
 Text Notes 6950 6355 0    39   ~ 0
 5V an pin 16 richtig?\npin 16 richtig?\noder 5VP an pin 16
 $Comp
-L SW_DIP_x8 S3
+L ardumower-mega-shield-svn-rescue:SW_DIP_x8-RESCUE-ardumower_mega_shield_svn S3
 U 1 1 57F7E55B
 P 8610 5085
 F 0 "S3" H 8610 5660 50  0000 C CNN
@@ -4928,7 +4918,7 @@ Connection ~ 3680 2020
 Wire Wire Line
 	3680 1720 3540 1720
 $Comp
-L +5VP #PWR0146
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0146
 U 1 1 57F9F288
 P 4015 850
 F 0 "#PWR0146" H 4015 700 50  0001 C CNN
@@ -4939,7 +4929,7 @@ F 3 "" H 4015 850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0147
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0147
 U 1 1 57F9F31C
 P 2260 1375
 F 0 "#PWR0147" H 2260 1225 50  0001 C CNN
@@ -4950,7 +4940,7 @@ F 3 "" H 2260 1375 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0148
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0148
 U 1 1 57F9F52A
 P 2045 4530
 F 0 "#PWR0148" H 2045 4380 50  0001 C CNN
@@ -4961,7 +4951,7 @@ F 3 "" H 2045 4530 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0149
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0149
 U 1 1 57F9F7C4
 P 7630 4390
 F 0 "#PWR0149" H 7630 4240 50  0001 C CNN
@@ -4972,7 +4962,7 @@ F 3 "" H 7630 4390 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C_Small C15
+L ardumower-mega-shield-svn-rescue:C_Small-RESCUE-ardumower_mega_shield_svn C15
 U 1 1 57FBF162
 P 7055 2585
 F 0 "C15" H 7147 2631 50  0000 L CNN
@@ -4988,7 +4978,7 @@ F 8 "Value" H 7055 2585 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0150
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0150
 U 1 1 57FBF2AC
 P 7055 2455
 F 0 "#PWR0150" H 7055 2305 50  0001 C CNN
@@ -5001,7 +4991,7 @@ $EndComp
 Wire Wire Line
 	7055 2485 7055 2455
 $Comp
-L GND #PWR0151
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0151
 U 1 1 57FBF786
 P 7055 2735
 F 0 "#PWR0151" H 7055 2485 50  0001 C CNN
@@ -5014,7 +5004,7 @@ $EndComp
 Wire Wire Line
 	7055 2735 7055 2685
 $Comp
-L C_Small C16
+L ardumower-mega-shield-svn-rescue:C_Small-RESCUE-ardumower_mega_shield_svn C16
 U 1 1 57FBFD57
 P 7515 2580
 F 0 "C16" H 7607 2626 50  0000 L CNN
@@ -5030,7 +5020,7 @@ F 8 "Value" H 7515 2580 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0152
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0152
 U 1 1 57FBFD5D
 P 7515 2450
 F 0 "#PWR0152" H 7515 2300 50  0001 C CNN
@@ -5043,7 +5033,7 @@ $EndComp
 Wire Wire Line
 	7515 2480 7515 2450
 $Comp
-L GND #PWR0153
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0153
 U 1 1 57FBFD64
 P 7515 2730
 F 0 "#PWR0153" H 7515 2480 50  0001 C CNN
@@ -5056,7 +5046,7 @@ $EndComp
 Wire Wire Line
 	7515 2730 7515 2680
 $Comp
-L C_Small C14
+L ardumower-mega-shield-svn-rescue:C_Small-RESCUE-ardumower_mega_shield_svn C14
 U 1 1 57FBFDB1
 P 6610 2595
 F 0 "C14" H 6702 2641 50  0000 L CNN
@@ -5072,7 +5062,7 @@ F 8 "Value" H 6610 2595 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0154
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0154
 U 1 1 57FBFDB7
 P 6610 2465
 F 0 "#PWR0154" H 6610 2315 50  0001 C CNN
@@ -5085,7 +5075,7 @@ $EndComp
 Wire Wire Line
 	6610 2495 6610 2465
 $Comp
-L GND #PWR0155
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0155
 U 1 1 57FBFDBE
 P 6610 2745
 F 0 "#PWR0155" H 6610 2495 50  0001 C CNN
@@ -5098,7 +5088,7 @@ $EndComp
 Wire Wire Line
 	6610 2745 6610 2695
 $Comp
-L C_Small C17
+L ardumower-mega-shield-svn-rescue:C_Small-RESCUE-ardumower_mega_shield_svn C17
 U 1 1 57FBFF07
 P 8010 2595
 F 0 "C17" H 8102 2641 50  0000 L CNN
@@ -5114,7 +5104,7 @@ F 8 "Value" H 8010 2595 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR0156
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0156
 U 1 1 57FBFF0D
 P 8010 2465
 F 0 "#PWR0156" H 8010 2315 50  0001 C CNN
@@ -5127,7 +5117,7 @@ $EndComp
 Wire Wire Line
 	8010 2495 8010 2465
 $Comp
-L GND #PWR0157
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0157
 U 1 1 57FBFF14
 P 8010 2745
 F 0 "#PWR0157" H 8010 2495 50  0001 C CNN

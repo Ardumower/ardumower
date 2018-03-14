@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -3331,7 +3321,7 @@ Text Notes -8270 4645 0    118  ~ 0
 Text Notes -2810 5450 0    60   ~ 0
 BC817; BC817W; BC337: 45 V, 500 mA NPN \n\nsot323
 $Comp
-L R R72
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R72
 U 1 1 57E82249
 P 3310 1620
 F 0 "R72" H 3398 1666 50  0000 L CNN
@@ -3350,7 +3340,7 @@ F 11 "Value" H 3310 1620 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R73
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R73
 U 1 1 57E82512
 P 3770 2980
 F 0 "R73" H 3858 3026 50  0000 L CNN
@@ -3369,7 +3359,7 @@ F 11 "Value" H 3770 2980 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED-RESCUE-ardumower_mega_shield_svn D3
+L ardumower-mega-shield-svn-rescue:LED-RESCUE-ardumower_mega_shield_svn D3
 U 1 1 57E82977
 P 4090 1380
 F 0 "D3" H 4090 1595 50  0000 C CNN
@@ -3410,7 +3400,7 @@ Connection ~ 3770 1380
 Wire Wire Line
 	4290 1380 4455 1380
 $Comp
-L GND #PWR0274
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0274
 U 1 1 57E82DC0
 P 3770 3345
 F 0 "#PWR0274" H 3770 3095 50  0001 C CNN
@@ -3426,7 +3416,7 @@ LED+
 Text Notes 4050 2500 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
 $Comp
-L BC817-40 Q13
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q13
 U 1 1 57F1A714
 P 3670 2015
 F 0 "Q13" H 3861 2106 50  0000 L CNN
@@ -3437,7 +3427,7 @@ F 3 "" H 3670 2015 50  0000 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q12
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q12
 U 1 1 57F1A898
 P 3410 2555
 F 0 "Q12" H 3601 2646 50  0000 L CNN

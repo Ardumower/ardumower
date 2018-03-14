@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -47,7 +37,7 @@ Wire Wire Line
 	2940 3870 3470 3870
 Connection ~ 3170 3870
 $Comp
-L R RL3
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn RL3
 U 1 1 57DB6B7C
 P 4350 3870
 F 0 "RL3" V 4430 3870 40  0000 C CNN
@@ -72,7 +62,7 @@ Wire Wire Line
 	3325 4165 3325 3870
 Connection ~ 3325 3870
 $Comp
-L C CC3
+L ardumower-mega-shield-svn-rescue:C-RESCUE-ardumower_mega_shield_svn CC3
 U 1 1 57DB6B7D
 P 3620 3870
 F 0 "CC3" V 3872 3870 50  0000 C CNN
@@ -90,7 +80,7 @@ MotorOUT1
 Text HLabel 4150 4270 3    60   Input ~ 0
 MotorOUT2
 $Comp
-L GND #PWR027
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR027
 U 1 1 57DB6B80
 P 4895 4445
 F 0 "#PWR027" H 4895 4195 50  0001 C CNN
@@ -101,7 +91,7 @@ F 3 "" H 4895 4445 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR028
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR028
 U 1 1 57DB6B81
 P 3170 4445
 F 0 "#PWR028" H 3170 4195 50  0001 C CNN
@@ -116,7 +106,7 @@ Wire Wire Line
 Wire Wire Line
 	4150 4165 4150 4270
 $Comp
-L D BY11
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn BY11
 U 1 1 57E127F7
 P 4895 3575
 F 0 "BY11" V 4849 3653 50  0000 L CNN
@@ -132,7 +122,7 @@ F 8 "DO-201" H 4895 3575 60  0001 C CNN "Bauform"
 	0    1    1    0   
 $EndComp
 $Comp
-L D BY12
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn BY12
 U 1 1 57E2CAC7
 P 4895 4135
 F 0 "BY12" V 4849 4213 50  0000 L CNN
@@ -148,7 +138,7 @@ F 8 "DO-201" H 4895 4135 60  0001 C CNN "Bauform"
 	0    1    1    0   
 $EndComp
 $Comp
-L D BY10
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn BY10
 U 1 1 57E13213
 P 3170 4130
 F 0 "BY10" V 3124 4208 50  0000 L CNN
@@ -164,7 +154,7 @@ F 8 "DO-201" H 3170 4130 60  0001 C CNN "Bauform"
 	0    -1   1    0   
 $EndComp
 $Comp
-L D BY9
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn BY9
 U 1 1 57E134A5
 P 3170 3575
 F 0 "BY9" V 3124 3487 50  0000 R CNN

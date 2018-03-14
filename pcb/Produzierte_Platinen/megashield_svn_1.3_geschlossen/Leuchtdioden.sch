@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -25,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L GND #PWR057
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR057
 U 1 1 57E08A33
 P 10725 1310
 F 0 "#PWR057" H 10725 1060 60  0001 C CNN
@@ -42,7 +32,7 @@ DuoLED-Rot
 Text GLabel 1265 4695 0    39   Input ~ 0
 Led-Status
 $Comp
-L R R1
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R1
 U 1 1 57E08A34
 P 9505 1265
 F 0 "R1" V 9480 1495 40  0000 C CNN
@@ -61,7 +51,7 @@ F 11 "Value" H 9505 1265 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R23
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R23
 U 1 1 57E08A36
 P 9505 1165
 F 0 "R23" V 9475 1375 40  0000 C CNN
@@ -86,7 +76,7 @@ Led-Wlan
 Text GLabel 1265 4995 0    39   Input ~ 0
 pinChargingEnable
 $Comp
-L SPEAKER SP1
+L ardumower-mega-shield-svn-rescue:SPEAKER-RESCUE-ardumower_mega_shield_svn SP1
 U 1 1 57E08A3A
 P 3910 5055
 F 0 "SP1" H 3810 5305 70  0000 C CNN
@@ -102,7 +92,7 @@ F 8 "Value" H 3910 5055 60  0001 C CNN "Bauform"
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR058
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR058
 U 1 1 57E08A3B
 P 3505 5155
 F 0 "#PWR058" H 3505 4905 60  0001 C CNN
@@ -115,7 +105,7 @@ $EndComp
 Text GLabel 1265 5195 0    39   Input ~ 0
 pinBuzzer
 $Comp
-L R R5
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R5
 U 1 1 57E08A3C
 P 3555 4195
 F 0 "R5" V 3525 4425 40  0000 C CNN
@@ -134,7 +124,7 @@ F 11 "Value" H 3555 4195 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R20
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R20
 U 1 1 57E08A3D
 P 3085 4095
 F 0 "R20" V 3055 4310 40  0000 C CNN
@@ -153,7 +143,7 @@ F 11 "Value" H 3085 4095 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R21
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R21
 U 1 1 57E08A3E
 P 3555 3995
 F 0 "R21" V 3525 4210 40  0000 C CNN
@@ -172,7 +162,7 @@ F 11 "Value" H 3555 3995 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R2
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R2
 U 1 1 57E08A42
 P 3085 4295
 F 0 "R2" V 3055 4510 40  0000 C CNN
@@ -191,7 +181,7 @@ F 11 "Value" H 3085 4295 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R22
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R22
 U 1 1 57E08A43
 P 3555 4395
 F 0 "R22" V 3525 4625 40  0000 C CNN
@@ -210,7 +200,7 @@ F 11 "Value" H 3555 4395 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R17
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R17
 U 1 1 57E08A44
 P 3085 4495
 F 0 "R17" V 3055 4710 40  0000 C CNN
@@ -229,7 +219,7 @@ F 11 "Value" H 3085 4495 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L +3.3V #PWR059
+L ardumower-mega-shield-svn-rescue:+3.3V-RESCUE-ardumower_mega_shield_svn #PWR059
 U 1 1 57E15FF8
 P 9175 1165
 F 0 "#PWR059" H 9175 1015 50  0001 C CNN
@@ -240,7 +230,7 @@ F 3 "" H 9175 1165 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR060
+L ardumower-mega-shield-svn-rescue:+5V-RESCUE-ardumower_mega_shield_svn #PWR060
 U 1 1 57E16A9D
 P 9170 1265
 F 0 "#PWR060" H 9170 1115 50  0001 C CNN
@@ -251,9 +241,11 @@ F 3 "" H 9170 1265 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +24V #PWR061
+L ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn #PWR061
 U 1 1 57E16AA3
 P 7845 985
+AR Path="/57E16AA3" Ref="#PWR061"  Part="1" 
+AR Path="/57DBE57B/57E16AA3" Ref="#PWR061"  Part="1" 
 F 0 "#PWR061" H 7845 835 50  0001 C CNN
 F 1 "+24V" V 7845 1215 50  0000 C CNN
 F 2 "" H 7845 985 50  0000 C CNN
@@ -264,7 +256,7 @@ $EndComp
 Text GLabel 3845 3795 0    39   Input ~ 0
 StationLed
 $Comp
-L R R25
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R25
 U 1 1 57E18A65
 P 3555 4595
 F 0 "R25" V 3525 4825 40  0000 C CNN
@@ -283,7 +275,7 @@ F 11 "Value" H 3555 4595 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R78
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R78
 U 1 1 57EC351A
 P 9505 1065
 F 0 "R78" V 9475 1275 40  0000 C CNN
@@ -302,7 +294,7 @@ F 11 "Value" H 9505 1065 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L R R77
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R77
 U 1 1 57EC35A7
 P 9505 960
 F 0 "R77" V 9480 1190 40  0000 C CNN
@@ -321,7 +313,7 @@ F 11 "Value" H 9505 960 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L +3.3VP #PWR062
+L ardumower-mega-shield-svn-rescue:+3.3VP-RESCUE-ardumower_mega_shield_svn #PWR062
 U 1 1 57EC3A2E
 P 9175 1065
 F 0 "#PWR062" H 9325 1015 50  0001 C CNN
@@ -332,7 +324,7 @@ F 3 "" H 9175 1065 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5VP #PWR063
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR063
 U 1 1 57EC3A70
 P 9170 960
 F 0 "#PWR063" H 9170 810 50  0001 C CNN
@@ -343,9 +335,11 @@ F 3 "" H 9170 960 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +24V #PWR064
+L ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn #PWR064
 U 1 1 57EC5666
 P 3850 3895
+AR Path="/57EC5666" Ref="#PWR064"  Part="1" 
+AR Path="/57DBE57B/57EC5666" Ref="#PWR064"  Part="1" 
 F 0 "#PWR064" H 3850 3745 50  0001 C CNN
 F 1 "+24V" V 3850 4125 50  0000 C CNN
 F 2 "" H 3850 3895 50  0000 C CNN
@@ -354,7 +348,7 @@ F 3 "" H 3850 3895 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR065
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR065
 U 1 1 57EC58A0
 P 5715 4895
 F 0 "#PWR065" H 5715 4645 60  0001 C CNN
@@ -365,7 +359,7 @@ F 3 "" H 5715 4895 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X10 P10
+L ardumower-mega-shield-svn-rescue:CONN_01X10-RESCUE-ardumower_mega_shield_svn P10
 U 1 1 57EC6312
 P 6965 4245
 F 0 "P10" H 6890 4880 50  0000 L CNN
@@ -381,7 +375,7 @@ F 8 "Value" H 6965 4245 60  0001 C CNN "Bauform"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LED_Small D21
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D21
 U 1 1 57EC80DC
 P 10335 1265
 F 0 "D21" H 10425 1295 39  0000 C CNN
@@ -392,7 +386,7 @@ F 3 "" V 10335 1265 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LED_Small D19
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D19
 U 1 1 57EC8426
 P 10335 1165
 F 0 "D19" H 10425 1195 39  0000 C CNN
@@ -403,7 +397,7 @@ F 3 "" V 10335 1165 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LED_Small D18
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D18
 U 1 1 57EC881C
 P 10335 1065
 F 0 "D18" H 10425 1095 39  0000 C CNN
@@ -414,7 +408,7 @@ F 3 "" V 10335 1065 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LED_Small D17
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D17
 U 1 1 57EC89E3
 P 10335 960
 F 0 "D17" H 10425 990 39  0000 C CNN
@@ -425,7 +419,7 @@ F 3 "" V 10335 960 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L C_Small C18
+L ardumower-mega-shield-svn-rescue:C_Small-RESCUE-ardumower_mega_shield_svn C18
 U 1 1 58030E40
 P 3960 6965
 F 0 "C18" H 4052 7011 50  0000 L CNN
@@ -441,7 +435,7 @@ F 8 "Value" H 3960 6965 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR066
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR066
 U 1 1 58030FD0
 P 3960 6800
 F 0 "#PWR066" H 3960 6650 50  0001 C CNN
@@ -452,7 +446,7 @@ F 3 "" H 3960 6800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR067
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR067
 U 1 1 58031026
 P 3960 7125
 F 0 "#PWR067" H 3960 6875 50  0001 C CNN
@@ -463,7 +457,7 @@ F 3 "" H 3960 7125 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VP #PWR068
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR068
 U 1 1 58031908
 P 1250 3995
 F 0 "#PWR068" H 1250 3845 50  0001 C CNN
@@ -3780,7 +3774,7 @@ Text Notes 13410 5490 0    118  ~ 0
 Text Notes 18870 6295 0    60   ~ 0
 BC817; BC817W; BC337: 45 V, 500 mA NPN \n\nsot323
 $Comp
-L BC817-40 Q14
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q14
 U 1 1 580379CA
 P 1350 2120
 F 0 "Q14" H 1541 2211 50  0000 L CNN
@@ -3791,7 +3785,7 @@ F 3 "" H 1350 2120 50  0000 L CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q15
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q15
 U 1 1 580379C9
 P 1610 1580
 F 0 "Q15" H 1801 1671 50  0000 L CNN
@@ -3804,7 +3798,7 @@ $EndComp
 Text Notes 1990 2065 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
 $Comp
-L GND #PWR069
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR069
 U 1 1 580379C8
 P 1710 2910
 F 0 "#PWR069" H 1710 2660 50  0001 C CNN
@@ -3815,7 +3809,7 @@ F 3 "" H 1710 2910 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R24
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R24
 U 1 1 580379C6
 P 1710 2545
 F 0 "R24" H 1798 2591 50  0000 L CNN
@@ -3834,7 +3828,7 @@ F 11 "Value" H 1710 2545 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R19
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R19
 U 1 1 580379C5
 P 1250 1185
 F 0 "R19" H 1338 1231 50  0000 L CNN
@@ -3853,7 +3847,7 @@ F 11 "Value" H 1250 1185 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_Small D23
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D23
 U 1 1 57EC7AA8
 P 2030 945
 F 0 "D23" H 2120 975 39  0000 C CNN
@@ -3866,7 +3860,7 @@ $EndComp
 Text GLabel 2395 945  2    39   Input ~ 0
 Dual2
 $Comp
-L BC817-40 Q16
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q16
 U 1 1 5803BF5F
 P 4005 2140
 F 0 "Q16" H 4196 2231 50  0000 L CNN
@@ -3877,7 +3871,7 @@ F 3 "" H 4005 2140 50  0000 L CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q17
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q17
 U 1 1 5803BF65
 P 4265 1600
 F 0 "Q17" H 4456 1691 50  0000 L CNN
@@ -3890,7 +3884,7 @@ $EndComp
 Text Notes 4645 2085 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
 $Comp
-L GND #PWR070
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR070
 U 1 1 5803BF6D
 P 4365 2930
 F 0 "#PWR070" H 4365 2680 50  0001 C CNN
@@ -3901,7 +3895,7 @@ F 3 "" H 4365 2930 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R75
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R75
 U 1 1 5803BF86
 P 4365 2565
 F 0 "R75" H 4453 2611 50  0000 L CNN
@@ -3920,7 +3914,7 @@ F 11 "Value" H 4365 2565 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R38
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R38
 U 1 1 5803BF91
 P 3905 1205
 F 0 "R38" H 3993 1251 50  0000 L CNN
@@ -3939,7 +3933,7 @@ F 11 "Value" H 3905 1205 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_Small D22
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D22
 U 1 1 5803BF97
 P 4685 965
 F 0 "D22" H 4775 995 39  0000 C CNN
@@ -3952,7 +3946,7 @@ $EndComp
 Text GLabel 5050 965  2    39   Input ~ 0
 Dual1
 $Comp
-L BC817-40 Q18
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q18
 U 1 1 5803D2DD
 P 6800 2160
 F 0 "Q18" H 6991 2251 50  0000 L CNN
@@ -3963,7 +3957,7 @@ F 3 "" H 6800 2160 50  0000 L CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q19
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q19
 U 1 1 5803D2E3
 P 7060 1620
 F 0 "Q19" H 7251 1711 50  0000 L CNN
@@ -3976,7 +3970,7 @@ $EndComp
 Text Notes 7440 2105 0    60   ~ 0
 BC337 mit BC817 smd ersetzt
 $Comp
-L GND #PWR071
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR071
 U 1 1 5803D2EB
 P 7160 2950
 F 0 "#PWR071" H 7160 2700 50  0001 C CNN
@@ -3987,7 +3981,7 @@ F 3 "" H 7160 2950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R80
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R80
 U 1 1 5803D304
 P 7160 2585
 F 0 "R80" H 7248 2631 50  0000 L CNN
@@ -4006,7 +4000,7 @@ F 11 "Value" H 7160 2585 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R76
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R76
 U 1 1 5803D30F
 P 6700 1225
 F 0 "R76" H 6788 1271 50  0000 L CNN
@@ -4025,7 +4019,7 @@ F 11 "Value" H 6700 1225 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LED_Small D20
+L ardumower-mega-shield-svn-rescue:LED_Small-RESCUE-ardumower_mega_shield_svn D20
 U 1 1 5803D315
 P 7480 985
 F 0 "D20" H 7570 1015 39  0000 C CNN
@@ -4036,7 +4030,7 @@ F 3 "" V 7480 985 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q21
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q21
 U 1 1 5803F35D
 P 8970 5095
 F 0 "Q21" H 9161 5186 50  0000 L CNN
@@ -4047,7 +4041,7 @@ F 3 "" H 8970 5095 50  0000 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q20
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q20
 U 1 1 5803F363
 P 8710 4555
 F 0 "Q20" H 8901 4646 50  0000 L CNN
@@ -4058,7 +4052,7 @@ F 3 "" H 8710 4555 50  0000 L CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR072
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR072
 U 1 1 5803F36B
 P 8610 5885
 F 0 "#PWR072" H 8610 5635 50  0001 C CNN
@@ -4069,7 +4063,7 @@ F 3 "" H 8610 5885 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R R11
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R11
 U 1 1 5803F388
 P 8610 5520
 F 0 "R11" H 8698 5566 50  0000 L CNN
@@ -4088,7 +4082,7 @@ F 11 "Value" H 8610 5520 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R R74
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R74
 U 1 1 5803F393
 P 9070 4160
 F 0 "R74" H 9158 4206 50  0000 L CNN
@@ -4107,7 +4101,7 @@ F 11 "Value" H 9070 4160 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q23
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q23
 U 1 1 58046110
 P 10360 5110
 F 0 "Q23" H 10551 5201 50  0000 L CNN
@@ -4118,7 +4112,7 @@ F 3 "" H 10360 5110 50  0000 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L BC817-40 Q22
+L ardumower-mega-shield-svn-rescue:BC817-40-RESCUE-ardumower_mega_shield_svn Q22
 U 1 1 58046116
 P 10100 4570
 F 0 "Q22" H 10291 4661 50  0000 L CNN
@@ -4129,7 +4123,7 @@ F 3 "" H 10100 4570 50  0000 L CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR073
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR073
 U 1 1 5804611D
 P 10000 5900
 F 0 "#PWR073" H 10000 5650 50  0001 C CNN
@@ -4140,7 +4134,7 @@ F 3 "" H 10000 5900 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R R79
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R79
 U 1 1 5804613A
 P 10000 5535
 F 0 "R79" H 10088 5581 50  0000 L CNN
@@ -4159,7 +4153,7 @@ F 11 "Value" H 10000 5535 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R R81
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R81
 U 1 1 58046145
 P 10460 4175
 F 0 "R81" H 10548 4221 50  0000 L CNN
@@ -4178,7 +4172,7 @@ F 11 "Value" H 10460 4175 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR074
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR074
 U 1 1 5804349C
 P 7590 4695
 F 0 "#PWR074" H 7590 4445 60  0001 C CNN
@@ -8011,7 +8005,7 @@ C8 96 E9 01 00 E0 64 CD DB DC B2 69 FC 6F C2 3A 14 62 2E 38 C4 32 8A 6F 57 93 36
 EndData
 $EndBitmap
 $Comp
-L UDN2987A-6-T IC1
+L ardumower-mega-shield-svn-rescue:UDN2987A-6-T-RESCUE-ardumower_mega_shield_svn IC1
 U 1 1 5895D97B
 P 2080 4595
 F 0 "IC1" H 2080 5565 50  0000 C CNN
@@ -8035,7 +8029,7 @@ F 16 "UDN2987A-6-T" H 60  -2225 50  0001 L CNN "MP"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR075
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR075
 U 1 1 589621EF
 P 1265 5395
 F 0 "#PWR075" H 1265 5145 60  0001 C CNN
@@ -8047,7 +8041,7 @@ F 3 "" H 1265 5395 60  0000 C CNN
 $EndComp
 NoConn ~ 1380 4295
 $Comp
-L R R43
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R43
 U 1 1 58A302BB
 P 1160 4195
 F 0 "R43" V 1130 4410 40  0000 C CNN
@@ -8066,7 +8060,7 @@ F 11 "Value" H 1160 4195 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L +5VP #PWR076
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR076
 U 1 1 58A30A79
 P 880 4195
 F 0 "#PWR076" H 880 4045 50  0001 C CNN
@@ -8077,7 +8071,7 @@ F 3 "" H 880 4195 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SPEAKER SP2
+L ardumower-mega-shield-svn-rescue:SPEAKER-RESCUE-ardumower_mega_shield_svn SP2
 U 1 1 58B6246B
 P 3920 5780
 F 0 "SP2" H 3820 6030 70  0000 C CNN
@@ -8095,7 +8089,7 @@ $EndComp
 Text Notes 6000 5890 0    59   ~ 0
 altanativer Platz um den Summer zu montieren\nes darf nur 1 Summer verwendet werden\n
 $Comp
-L GND #PWR077
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR077
 U 1 1 58B62A70
 P 3490 5880
 F 0 "#PWR077" H 3490 5630 60  0001 C CNN
@@ -8106,7 +8100,7 @@ F 3 "" H 3490 5880 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CONN_01X14 P7
+L ardumower-mega-shield-svn-rescue:CONN_01X14-RESCUE-ardumower_mega_shield_svn P7
 U 1 1 58B75CB0
 P 6595 4145
 F 0 "P7" H 6255 5045 50  0000 L CNN
@@ -8127,7 +8121,7 @@ $EndComp
 Text GLabel 3795 3495 0    39   Input ~ 0
 Taster
 $Comp
-L CONN_02X07 P50
+L ardumower-mega-shield-svn-rescue:CONN_02X07-RESCUE-ardumower_mega_shield_svn P50
 U 1 1 58BAEDC5
 P 5200 3080
 F 0 "P50" H 5200 3595 50  0000 C CNN
@@ -8514,7 +8508,7 @@ Wire Wire Line
 	7165 3995 7535 3995
 Connection ~ 7535 4695
 $Comp
-L R R134
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R134
 U 1 1 58E45242
 P 7345 4695
 F 0 "R134" V 7435 4695 40  0000 C CNN
