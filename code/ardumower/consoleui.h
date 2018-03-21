@@ -490,7 +490,12 @@ void Robot::readSerial() {
          //motorMowModulate = false;                                           
          setNextState(STATE_FORWARD,0);          
          break; 
+      // New commands for RMCS protocol
+      case '$':
+         processRMCSCommand(waitStringConsole()); 
+         break;
      }
   }    
 }
+
 

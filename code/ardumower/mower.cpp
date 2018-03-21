@@ -82,7 +82,7 @@ Mower::Mower(){
   
   //  ------ drop -----------------------------------
   dropUse                    = 0;          // has drops?                                                                                              Dropsensor - Absturzsensor vorhanden ?
-  dropcontact                = 1;          // contact 0-openers 1-closers                                                                              Dropsensor - Kontakt 0-Öffner - 1-Schließer betätigt gegen GND
+  dropcontact                = 1;          // contact 0-openers 1-closers                                                                              Dropsensor - Kontakt 0-Ã–ffner - 1-SchlieÃŸer betÃ¤tigt gegen GND
   
   // ------ rain ------------------------------------
   rainUse                    = 0;          // use rain sensor?
@@ -174,7 +174,7 @@ Mower::Mower(){
   stationCheckTime           = 1700;       // charge station reverse check time (ms)
 
   // ------ odometry ------------------------------------
-  odometryUse                = 1;          // use odometry?    
+  odometryUse                = 0;          // use odometry?    
   
 	#if defined (ROBOT_ARDUMOWER)
 	  odometryTicksPerRevolution = 1060;       // encoder ticks per one full resolution (without any divider)
@@ -208,7 +208,7 @@ Mower::Mower(){
   userSwitch3                = 0;          // user-defined switch 3 (default value)
 
   // ----- timer -----------------------------------------
-  timerUse                   = 0;          // use RTC and timer?
+  timerUse                   = 1;          // use RTC and timer?
 
   // ----- bluetooth -------------------------------------
   bluetoothUse               = 1;          // use Bluetooth module?  (WARNING: if enabled, you cannot use ESP8266)
@@ -322,10 +322,10 @@ void Mower::setup(){
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
   Wire.begin();            			
-	while (!checkAT24C32()){
-	  Console.println("PCB not powered ON or RTC module missing");
-		delay(1000);
-	}
+	//while (!checkAT24C32()){
+	//  Console.println("PCB not powered ON or RTC module missing");
+	//	delay(1000);
+	//}
 	ADCMan.init();
   Console.println("SETUP");
   
@@ -386,9 +386,9 @@ void Mower::setup(){
  
  // drops
   pinMode(pinDropLeft, INPUT);                                                                                                         // Dropsensor - Absturzsensor - Deklariert als Eingang
-  pinMode(pinDropLeft, INPUT_PULLUP);                                                                                                  // Dropsensor - Absturzsensor - Intern Pullab Widerstand aktiviert (Auslösung erfolgt gegen GND)
+  pinMode(pinDropLeft, INPUT_PULLUP);                                                                                                  // Dropsensor - Absturzsensor - Intern Pullab Widerstand aktiviert (AuslÃ¶sung erfolgt gegen GND)
   pinMode(pinDropRight, INPUT);                                                                                                        // Dropsensor - Absturzsensor - Deklariert als Eingang 
-  pinMode(pinDropRight, INPUT_PULLUP);                                                                                                 // Dropsensor - Absturzsensor - Intern Pullab Widerstand aktiviert (Auslösung erfolgt gegen GND)
+  pinMode(pinDropRight, INPUT_PULLUP);                                                                                                 // Dropsensor - Absturzsensor - Intern Pullab Widerstand aktiviert (AuslÃ¶sung erfolgt gegen GND)
   
   // sonar
   pinMode(pinSonarCenterTrigger, OUTPUT); 
@@ -476,8 +476,8 @@ void Mower::setup(){
 	// odometry
 	//-------------------------------------------------------------------------
 	// Wenn odometryUse == 1 dann:
-	// PCMSK2, PCINT20, HIGH			-> für links
-	// PCMSK2, PCINT22, HIGH			-> für rechts
+	// PCMSK2, PCINT20, HIGH			-> fÃ¼r links
+	// PCMSK2, PCINT22, HIGH			-> fÃ¼r rechts
 	//
 	// Wenn twoWayOdo == 1 dann:
 	// PCMSK2, PCINT21, HIGH
@@ -594,10 +594,12 @@ int Mower::readSensor(char type){
     
 // buttons------------------------------------------------------------------------------------------------
     case SEN_BUTTON: return(digitalRead(pinButton)); break; 
-    
 //bumper----------------------------------------------------------------------------------------------------
-    case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
-    case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
+    case SEN_BUMPER_RIGHT: return(!digitalRead(pinBumperRight)); break; // CHANGE FOR CLEANER
+    case SEN_BUMPER_LEFT: return(!digitalRead(pinBumperLeft)); break;    
+//bumper----------------------------------------------------------------------------------------------------
+ //   case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
+  //  case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      
 
 //tilt----------------------------------------------------------------------------------------------------
     case SEN_TILT: return(digitalRead(pinTilt)); break;      
@@ -639,16 +641,16 @@ int Mower::readSensor(char type){
 void Mower::setActuator(char type, int value){
   switch (type){
 
-  //case ACT_MOTOR_MOW: setMOSFET(pinMotorMowPWM, value); //break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+  //case ACT_MOTOR_MOW: setMOSFET(pinMotorMowPWM, value); //break;// Motortreiber einstellung - bei Bedarf Ã¤ndern z.B setL298N auf setMC33926
   
-    case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+    case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf Ã¤ndern z.B setL298N auf setMC33926
 //#if defined (DRIVER_MC33926)
-  case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-  case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+  case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf Ã¤ndern z.B setL298N auf setMC33926
+  case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf Ã¤ndern z.B setL298N auf setMC33926
 //#endif 
 //#if defined (DRIVER_L298N)
-//  case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-//  case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
+//  case ACT_MOTOR_LEFT: setL298N(pinMotorLeftDir, pinMotorLeftPWM, value); break;//  Motortreiber einstellung - bei Bedarf Ã¤ndern z.B setL298N auf setMC33926
+//  case ACT_MOTOR_RIGHT: setL298N(pinMotorRightDir, pinMotorRightPWM, value); break; // Motortreiber einstellung - bei Bedarf Ã¤ndern z.B setL298N auf setMC33926
 //#endif
    
     case ACT_BUZZER: if (value == 0) Buzzer.noTone(); else Buzzer.tone(value); break;
@@ -673,5 +675,6 @@ void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
   bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);
 }
+
 
 

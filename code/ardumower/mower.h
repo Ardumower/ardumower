@@ -22,16 +22,16 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
    
 
 // ------- Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
-#define PCB_1_2    
-//#define PCB_1_3    
+//#define PCB_1_2    
+#define PCB_1_3    
 
 // ------- Choose robot model (Ardumower or Ardumower Mini) -------------------
 #define ROBOT_ARDUMOWER
 //#define ROBOT_MINI
 
 // ------- Choose motor driver (MC33926 is recommended) -----------------------
-//#define DRIVER_MC33926
-#define DRIVER_L298N
+#define DRIVER_MC33926
+//#define DRIVER_L298N
 
 
 // DO NOT CHANGE - Due or Mega is detected automatically (based on Arduino IDE settings)
@@ -171,4 +171,5 @@ class Mower : public Robot
 extern Mower robot;
 
 #endif
+
 
