@@ -149,6 +149,8 @@ Robot::Robot(){
   rain = false;
   rainCounter = 0;
 
+  freeWheelIsMoving = false;
+
   sonarLeftUse = sonarRightUse = sonarCenterUse = false;
   sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
   sonarDistCounter = 0;
@@ -184,6 +186,7 @@ Robot::Robot(){
   nextTimeBumper = 0;
   nextTimeDrop = 0;                                                                                                                    // Dropsensor - Absturzsensor
   nextTimeSonar = 0;
+  nextTimeFreeWheel = 0;
   nextTimeBattery = 0;
   nextTimeCheckBattery = millis() + 10000;
   nextTimePerimeter = 0;
@@ -503,6 +506,10 @@ void Robot::readSensors(){
 */         
   }
 
+  if ((freeWheelUse) && (millis() >= nextTimeFreeWheel)){    
+    nextTimeFreeWheel = millis() + 100;               
+    freeWheelIsMoving = (readSensor(SEN_FREE_WHEEL) == 0);
+  }
 
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
     nextTimeBumper = millis() + 100;               
@@ -791,6 +798,19 @@ void Robot::checkBumpers(){
 
   if ((bumperLeft || bumperRight)) {    
       if (bumperLeft) {
+        reverseOrBidirBumper(RIGHT);          
+      } else {
+        reverseOrBidirBumper(LEFT);
+      }    
+  }  
+}
+
+// check free wheel
+void Robot::checkFreeWheel(){
+  if (millis() < stateStartTime + 2000) return;
+
+  if (!freeWheelIsMoving) {    
+      if (random(2) == 0){
         reverseOrBidirBumper(RIGHT);          
       } else {
         reverseOrBidirBumper(LEFT);
@@ -1381,8 +1401,9 @@ void Robot::loop()  {
       checkErrorCounter();    
       checkTimer();
       checkRain();
-      checkCurrent();            
-      checkBumpers();
+      checkCurrent();
+      checkFreeWheel();            
+      checkBumpers();      
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
       checkPerimeterBoundary(); 
@@ -1391,6 +1412,7 @@ void Robot::loop()  {
       break;
     case STATE_ROLL:
       checkCurrent();            
+      checkFreeWheel();
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       //checkSonar();             
@@ -1417,6 +1439,7 @@ void Robot::loop()  {
         checkErrorCounter();    
         checkTimer();
         checkCurrent();            
+        checkFreeWheel();
         checkBumpers();
         checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
         //checkSonar();             
@@ -1455,6 +1478,7 @@ void Robot::loop()  {
       checkTimer();
       checkRain();
       checkCurrent();
+      checkFreeWheel();
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();
@@ -1467,6 +1491,7 @@ void Robot::loop()  {
       checkErrorCounter();
       checkTimer();
       checkCurrent();
+      checkFreeWheel();
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       //checkSonar();

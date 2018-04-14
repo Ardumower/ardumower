@@ -148,6 +148,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, tiltUse);
   eereadwrite(readflag, addr, sonarSlowBelow);
 	eereadwrite(readflag, addr, motorMowForceOff);	
+  eereadwrite(readflag, addr, freeWheelUse);  
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }

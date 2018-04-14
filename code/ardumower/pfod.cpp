@@ -214,7 +214,7 @@ void RemoteControl::sendPlotMenu(boolean update){
 
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.Settings"));
-  serialPort->print(F("|sz~Save settings|s1~Motor|s2~Mow|s3~BumperDuino|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
+  serialPort->print(F("|sz~Save settings|s1~Motor|s2~Mow|s16~Free wheel|s3~BumperDuino|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
   serialPort->println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings}"));
 }  
 
@@ -462,6 +462,15 @@ void RemoteControl::sendBumperMenu(boolean update){
   serialPort->println("}");
 }
 
+void RemoteControl::sendFreeWheelMenu(boolean update){
+  if (update) serialPort->print("{:"); else serialPort->print(F("{.Free wheel`1000"));  
+  serialPort->print(F("|w00~Use Free wheel "));
+  sendYesNo(robot->freeWheelUse);      
+  serialPort->println(F("|w01~Is moving "));
+  sendYesNo(robot->freeWheelIsMoving);      
+  serialPort->println("}");
+}
+
 void RemoteControl::sendDropMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.Drop`1000"));
   serialPort->print(F("|u00~Use "));
@@ -477,6 +486,10 @@ void RemoteControl::sendDropMenu(boolean update){
   serialPort->println("}");
 }
 
+void RemoteControl::processFreeWheelMenu(String pfodCmd){      
+  if (pfodCmd == "w00") robot->freeWheelUse = !robot->freeWheelUse;      
+  sendFreeWheelMenu(true);
+}
 
 void RemoteControl::processBumperMenu(String pfodCmd){      
   if (pfodCmd == "b00") robot->bumperUse = !robot->bumperUse;    
@@ -1161,6 +1174,7 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
       else if (pfodCmd == "s13") sendRainMenu(false);            
       else if (pfodCmd == "s15") sendDropMenu(false);
       else if (pfodCmd == "s14") sendGPSMenu(false);
+      else if (pfodCmd == "s16") sendFreeWheelMenu(false);
       else if (pfodCmd == "sx") sendFactorySettingsMenu(false);
       else if (pfodCmd == "sz") { robot->saveUserSettings(); sendSettingsMenu(true); }
       else sendSettingsMenu(true);  
@@ -1532,6 +1546,7 @@ bool RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("a")) processMotorMenu(pfodCmd);       
         else if (pfodCmd.startsWith("o")) processMowMenu(pfodCmd);       
         else if (pfodCmd.startsWith("b")) processBumperMenu(pfodCmd);       
+        else if (pfodCmd.startsWith("w")) processFreeWheelMenu(pfodCmd);       
         else if (pfodCmd.startsWith("d")) processSonarMenu(pfodCmd);       
         else if (pfodCmd.startsWith("e")) processPerimeterMenu(pfodCmd);       
         else if (pfodCmd.startsWith("f")) processLawnSensorMenu(pfodCmd);       

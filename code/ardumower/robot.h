@@ -86,6 +86,7 @@ enum {
   SEN_RTC,
   SEN_RAIN,
   SEN_TILT,
+  SEN_FREE_WHEEL,    
 };
 
 // actuators
@@ -332,6 +333,10 @@ class Robot
     int bumperRightCounter ;
     boolean bumperRight ;
     unsigned long nextTimeBumper ;
+    // --------- free wheel state ---------------------
+    boolean freeWheelUse; // has free wheel sensor?
+    boolean freeWheelIsMoving;
+    unsigned long nextTimeFreeWheel;
     // --------- drop state ---------------------------
     // bumper state (true = pressed)                                                                                                  // Dropsensor - Absturzsensor vorhanden ?
     char dropUse       ;      // has drops?                                                                                           // Dropsensor - Absturzsensor Zähler links
@@ -556,6 +561,7 @@ protected:
     virtual void checkTimer();
     virtual void checkCurrent();
     virtual void checkBumpers();
+    virtual void checkFreeWheel();
     virtual void checkDrop();                                                                                                             // Dropsensor - Absturzsensor
     virtual void checkBumpersPerimeter();
     virtual void checkPerimeterBoundary();

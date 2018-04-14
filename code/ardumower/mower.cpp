@@ -75,6 +75,9 @@ Mower::Mower(){
   motorMowPID.Kp             = 0.005;      // motor mower RPM PID controller
   motorMowPID.Ki             = 0.01;
   motorMowPID.Kd             = 0.01;
+
+  //  ------ free wheel sensor-------------------------------
+  freeWheelUse               = 0;          // has free wheel sensor?  
   
   //  ------ bumper (BumperDuino)-------------------------------
   bumperUse                  = 0;          // has bumpers?
@@ -374,6 +377,10 @@ void Mower::setup(){
   pinMode(pinBumperRight, INPUT_PULLUP);
   pinMode(pinTilt, INPUT);
   pinMode(pinTilt, INPUT_PULLUP);
+
+  // free wheel
+  pinMode(pinFreeWheel, INPUT);
+  pinMode(pinFreeWheel, INPUT_PULLUP);
  
  // drops
   pinMode(pinDropLeft, INPUT);                                                                                                         // Dropsensor - Absturzsensor - Deklariert als Eingang
@@ -574,6 +581,9 @@ int Mower::readSensor(char type){
     
 // buttons------------------------------------------------------------------------------------------------
     case SEN_BUTTON: return(digitalRead(pinButton)); break; 
+
+//free wheel----------------------------------------------------------------------------------------------------
+    case SEN_FREE_WHEEL: return(digitalRead(pinFreeWheel)); break;      
     
 //bumper----------------------------------------------------------------------------------------------------
     case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;

@@ -76,6 +76,7 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 #define pinPerimeterRight A4       // perimeter
 #define pinPerimeterLeft A5
 
+#define pinFreeWheel 8             // front/rear free wheel
 #define pinGreenLED 6              // DuoLED green
 #define pinRedLED 7                // DuoLED red
 #define pinLED 13                  // LED
