@@ -1286,7 +1286,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
   printInfo(Console);          
-}
+}// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
 
 
 void Robot::loop()  {

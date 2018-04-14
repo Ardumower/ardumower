@@ -25,7 +25,7 @@ Mower robot;
 
 Mower::Mower(){
   #if defined (ROBOT_ARDUMOWER)
-    name = "Ardumower";
+    name = "Ardumower"; //Set the Name of BT
   #else
     name = "Mini";
   #endif
