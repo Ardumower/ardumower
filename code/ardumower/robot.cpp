@@ -508,7 +508,7 @@ void Robot::readSensors(){
 
   if ((freeWheelUse) && (millis() >= nextTimeFreeWheel)){    
     nextTimeFreeWheel = millis() + 100;               
-    freeWheelIsMoving = (readSensor(SEN_FREE_WHEEL) == 0);
+    freeWheelIsMoving = (readSensor(SEN_FREE_WHEEL) != 0);
   }
 
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
@@ -807,7 +807,7 @@ void Robot::checkBumpers(){
 
 // check free wheel
 void Robot::checkFreeWheel(){
-  if (millis() < stateStartTime + 2000) return;
+  if (millis() < stateStartTime + 4000) return;
 
   if (!freeWheelIsMoving) {    
       if (random(2) == 0){
