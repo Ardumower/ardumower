@@ -1353,7 +1353,10 @@ void RemoteControl::run(){
       serialPort->print(",");
       serialPort->print(robot->dropLeft);
       serialPort->print(",");
-      serialPort->println(robot->dropRight);
+      serialPort->print(robot->dropRight);
+      serialPort->print(",");
+      serialPort->print(robot->freeWheelIsMoving);      
+      serialPort->println();
     }
   } else if (pfodState == PFOD_PLOT_PERIMETER){    
     if (millis() >= nextPlotTime){
@@ -1502,7 +1505,7 @@ bool RemoteControl::readSerial(){
         else if (pfodCmd == "y7") {
           // plot sensor values
           serialPort->print(F("{=Sensors`300|time s`0|state`1|motL`2|motR`3|motM`4|sonL`5|sonC`6"));
-          serialPort->println(F("|sonR`7|peri`8|lawn`9|rain`10|dropL`11|dropR`12}"));
+          serialPort->println(F("|sonR`7|peri`8|lawn`9|rain`10|dropL`11|dropR`12|freeW`13}"));
           nextPlotTime = 0;
           pfodState = PFOD_PLOT_SENSORS;          
         }
