@@ -516,7 +516,7 @@ void Robot::saveUserSettings(){
 void Robot::deleteUserSettings(){
   loadSaveRobotStats(true);
   int addr = 0;
-  Console.println(F("ALL USER SETTINGS ARE DELETED"));
+  Console.println(F("ALL USER SETTINGS ARE DELETED - PLEASE RE-POWER SYSTEM!"));
   eewrite(addr, (short)0); // magic  
   loadSaveRobotStats(false);
 }
