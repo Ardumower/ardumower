@@ -280,7 +280,7 @@ void Robot::setup()  {
     
   stateStartTime = millis();  
   beep(1);  
-  Console.println(F("START"));  
+  Console.println(F("-------------------START-------------------"));  
   Console.print(F("Ardumower "));
   Console.print(VER);
   Console.print(F("  "));
@@ -304,6 +304,7 @@ void Robot::setup()  {
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
   Console.println(consoleModeNames[consoleMode]);
+  Console.println(F("-------------------------------------------"));  
 } 
 
 
