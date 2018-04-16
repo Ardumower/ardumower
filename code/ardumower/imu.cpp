@@ -202,11 +202,10 @@ void IMU::printCalib(){
 
 
 // calculate gyro offsets
-// FIXME: this often hangs on the Mega2560 - works perfectly on the Due however
 void IMU::calibGyro(){
   Console.println(F("---calibGyro---"));  
   #ifdef __AVR_ATmega2560__
-    Console.println(F("WARNING Mega2560: it is recommended to upgrade to the Due as the Mega often hangs with this gyro!"));  
+    Console.println(F("WARNING Mega2560: you may have to add 4k7 resistors (pull-ups) between SDA, SCL and IOREF for proper I2C bus"));  
   #endif 
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
