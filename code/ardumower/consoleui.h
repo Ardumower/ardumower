@@ -92,16 +92,17 @@ void Robot::printInfo(Stream &s){
 
 void Robot::printMenu(){  
   Console.println();
-  Console.println(F(" MAIN MENU:"));
-  Console.println(F("r=delete robot statistics"));  
-  Console.println(F("l=load factory settings (reset EEPROM data)"));  
-  Console.println(F("e=delete all errors (reset error counters)"));  
-  Console.println(F("9=save user settings (save changes to EEPROM)"));  	  
-  Console.println(F("x=print current settings"));    
-  Console.println(F("p=test EEPROM (Mega & Due on RTC module)"));    
+  Console.println(F("-----------MAIN MENU----------"));  
+  Console.println(F("f=delete all USER settings (reset all user settings in EEPROM)"));  
+  Console.println(F("e=delete all ERRORS (reset error counters in EEPROM)"));      
+  Console.println(F("r=delete all STATISTICS (reset statistics in EEPROM)"));  
+  Console.println(F("s=save USER settings (save user settings to EEPROM)"));  	  
+  Console.println(F("x=print USER settings"));    
+  Console.println(F("p=test EEPROM module"));   
   Console.println(F("c=test RTC module"));  	
+  Console.println(F("i=scan for I2C devices"));         
   Console.println(F("1=test motors"));
-  Console.println(F("2=test odometry"));
+  Console.println(F("2=test odometry"));  
   Console.println(F("3=communications menu (setup Bluetooth & WIFI)"));
   Console.println(F("8=ADC calibration (perimeter sender & charger must be off)"));    
   Console.println(F("6=calibrate IMU compass start/stop"));  
@@ -309,11 +310,14 @@ void Robot::menu(){
 				  testRTC();
 					printMenu();
 				  break;
-        case 'l':
+        case 'f':
           //printSettingSerial();
           deleteUserSettings();
           printMenu();
           break;    
+        case 'i':
+          I2CScanner();          
+          break;
         case 'r':
           //printSettingSerial();
           deleteRobotStats();

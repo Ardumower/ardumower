@@ -25,6 +25,7 @@
 
 #include "robot.h"
 #include "config.h"
+#include "i2c.h"
 #include "flashmem.h"
 
 #define MAGIC 52

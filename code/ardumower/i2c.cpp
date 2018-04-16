@@ -142,3 +142,52 @@ int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], in
 }
 
 
+void I2CScanner(){
+  byte error, address;
+  int nDevices = 0;
+ 
+  Console.println("Scanning for I2C devices...");
+  for(address = 1; address < 127; address++ )
+  {
+      // The i2c_scanner uses the return value of
+      // the Write.endTransmisstion to see if
+      // a device did acknowledge to the address.
+      Wire.beginTransmission(address);
+      error = Wire.endTransmission();
+   
+      if (error == 0)
+      {
+        Console.print("I2C device found at address 0x");
+        if (address<16)
+          Console.print("0");
+        Console.print(address,HEX);
+        Console.print(" (");
+        nDevices++;
+        switch (address){          
+          case 0x1E: Console.print("probably HMC5883L"); break;          
+          case 0x50: Console.print("probably AT24C32"); break;
+          case 0x53: Console.print("probably ADXL345B"); break;
+          case 0x60: Console.print("probably CMPS11"); break;          
+          case 0x68: Console.print("probably DS1307"); break;
+          case 0x69: Console.print("probably MPU6050/9150 or L3G4200D"); break;          
+          case 0x77: Console.print("probably BMP180"); break;                    
+          default: Console.print("unknown module");
+        }
+        Console.println(")");
+      }
+      else if (error==4)
+      {
+        Console.print("Unknown error at address 0x");
+        if (address<16)
+          Console.print("0");
+        Console.println(address,HEX);
+      }    
+  }
+  if (nDevices == 0)
+    Console.println("No I2C devices found\n");
+  else
+    Console.println("done\n");   
+}
+
+
+  
