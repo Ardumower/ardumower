@@ -206,6 +206,7 @@ void IMU::printCalib(){
 void IMU::calibGyro(){
   Console.println(F("---calibGyro---"));  
   #ifdef __AVR_ATmega2560__
+    Console.println(F("WARNING Mega2560: it is recommended to upgrade to the Due as the Mega often hangs with this gyro!"));  
   #endif 
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
