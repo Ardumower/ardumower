@@ -202,8 +202,11 @@ void IMU::printCalib(){
 
 
 // calculate gyro offsets
+// FIXME: this often hangs on the Mega2560 - works perfectly on the Due however
 void IMU::calibGyro(){
   Console.println(F("---calibGyro---"));  
+  #ifdef __AVR_ATmega2560__
+  #endif 
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
   point_float_t ofs;
