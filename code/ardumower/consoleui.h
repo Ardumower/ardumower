@@ -310,12 +310,12 @@ void Robot::menu(){
 					printMenu();
 				  break;
         case 'l':
-          printSettingSerial();
+          //printSettingSerial();
           deleteUserSettings();
           printMenu();
           break;    
         case 'r':
-          printSettingSerial();
+          //printSettingSerial();
           deleteRobotStats();
           printMenu();
           break;              
