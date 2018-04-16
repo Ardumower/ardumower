@@ -16,7 +16,7 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 
 /*  This software requires: 
 		  * Ardumower PCB v0.5/1.2/1.3  ( https://www.marotronics.de/Ardumower-Board-Prototyp ) 
-		  * Arduino Mega or Arduino Due (Due requires PCB1.3)
+		  * Arduino Mega or Arduino Due (Due is recommended and requires PCB1.3)
 			* Ardumower Chassis Kit 1.0  ( http://wiki.ardumower.de/index.php?title=Ardumower_chassis ) or Ardumower Mini
 */
    
