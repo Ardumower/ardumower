@@ -88,6 +88,9 @@ int I2CclearBus() {
 }
 
 void I2Creset(){
+  #ifdef __AVR_ATmega2560__
+    Console.println(F("WARNING Mega2560: you may have to add 4k7 resistors (pull-ups) between SDA, SCL and IOREF for proper I2C bus"));  
+  #endif 
   while (true){
     int rtn = I2CclearBus(); // clear the I2C bus first before calling Wire.begin()
     if (rtn == 0) return;

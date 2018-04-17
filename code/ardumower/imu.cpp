@@ -203,10 +203,7 @@ void IMU::printCalib(){
 
 // calculate gyro offsets
 void IMU::calibGyro(){
-  Console.println(F("---calibGyro---"));  
-  #ifdef __AVR_ATmega2560__
-    Console.println(F("WARNING Mega2560: you may have to add 4k7 resistors (pull-ups) between SDA, SCL and IOREF for proper I2C bus"));  
-  #endif 
+  Console.println(F("---calibGyro---"));    
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
   point_float_t ofs;
