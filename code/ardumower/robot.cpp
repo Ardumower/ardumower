@@ -796,8 +796,9 @@ void Robot::checkCurrent(){
 
 // check bumpers
 void Robot::checkBumpers(){
+  if (!bumperUse) return;
   if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;
-
+  
   if ((bumperLeft || bumperRight)) {    
       if (bumperLeft) {
         reverseOrBidirBumper(RIGHT);          
@@ -809,6 +810,7 @@ void Robot::checkBumpers(){
 
 // check free wheel
 void Robot::checkFreeWheel(){
+  if (!freeWheelUse) return;
   if (millis() < stateStartTime + 4000) return;
 
   if (!freeWheelIsMoving) {    
@@ -822,6 +824,7 @@ void Robot::checkFreeWheel(){
 
 // check drop                                                                                                                       // Dropsensor - Absturzsensor
 void Robot::checkDrop(){                                                                                                            // Dropsensor - Absturzsensor
+  if (!dropUse) return;
   if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;                                                  // Dropsensor - Absturzsensor
 
   if ((dropLeft || dropRight)) {                                                                                                    // Dropsensor - Absturzsensor  
@@ -835,6 +838,7 @@ void Robot::checkDrop(){                                                        
 
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
+  if (!bumperUse) return;
   if ((bumperLeft || bumperRight)) {    
     if ((bumperLeft) || (stateCurr == STATE_PERI_TRACK)) {
       setNextState(STATE_PERI_REV, RIGHT);          
@@ -846,6 +850,7 @@ void Robot::checkBumpersPerimeter(){
 
 // check perimeter as a boundary
 void Robot::checkPerimeterBoundary(){
+  if (!perimeterUse) return;
   if (millis() >= nextTimeRotationChange){
       nextTimeRotationChange = millis() + 60000;
       rotateLeft = !rotateLeft;
@@ -893,6 +898,7 @@ void Robot::checkPerimeterBoundary(){
 
 // check perimeter while finding it
 void Robot::checkPerimeterFind(){
+  if (!perimeterUse) return;
   if (stateCurr == STATE_PERI_FIND){
     if (perimeterInside) {
       // inside
