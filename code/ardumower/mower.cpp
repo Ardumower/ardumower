@@ -319,12 +319,12 @@ void Mower::setup(){
   unsigned long timeout = millis() + 10000;
 	while (millis() < timeout){
     if (!checkAT24C32()){
-      Console.println("PCB not powered ON or RTC module missing");
+      Console.println(F("PCB not powered ON or RTC module missing"));
       delay(1000);
     } else break;
 	}
 	ADCMan.init();
-  Console.println("SETUP");
+  Console.println(F("SETUP"));
   
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    
