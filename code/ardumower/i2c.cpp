@@ -91,7 +91,8 @@ void I2Creset(){
   #ifdef __AVR_ATmega2560__
     Console.println(F("WARNING Mega2560: you may have to add 4k7 resistors (pull-ups) between SDA, SCL and IOREF for proper I2C bus"));  
   #endif 
-  while (true){
+  unsigned long timeout = millis() + 10000;
+  while (millis() < timeout){
     int rtn = I2CclearBus(); // clear the I2C bus first before calling Wire.begin()
     if (rtn == 0) return;
     Console.println(F("I2C bus error. Could not clear (PCB not powered ON or RTC module missing or JCx jumper set for missing I2C module)"));
