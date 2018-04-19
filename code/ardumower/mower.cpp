@@ -316,9 +316,12 @@ void Mower::setup(){
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
   Wire.begin();            			
-	while (!checkAT24C32()){
-	  Console.println("PCB not powered ON or RTC module missing");
-		delay(1000);
+  unsigned long timeout = millis() + 10000;
+	while (millis() < timeout){
+    if (!checkAT24C32()){
+      Console.println("PCB not powered ON or RTC module missing");
+      delay(1000);
+    } else break;
 	}
 	ADCMan.init();
   Console.println("SETUP");
