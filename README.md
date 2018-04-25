@@ -1,7 +1,7 @@
 # Ardumower
 
 ## Download
-__WARNING__: Do not use the master version (via download button), that is 'code we work on' and it may be unstable - use one release version instead!
+__WARNING__: Do not use the master version (via download button), that is 'code we work on' and it may be unstable - use one release version instead (click on 'Releases' above)!
 
 https://github.com/Ardumower/ardumower/releases
 
