@@ -23,6 +23,15 @@ Mower robot;
 // ----------------------------------------------------------------------
 
 
+// ----------------------------------------------------------------------
+// Ardumower factory settings - the values below define the factory settings of your Ardumower
+//
+// IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
+//
+// After changing any value below, you have to set your robot 
+// to 'factory settings' via the serial console menu or ArduRemote/pfodApp!
+// ----------------------------------------------------------------------
+
 Mower::Mower(){
   #if defined (ROBOT_ARDUMOWER)
     name = "Ardumower"; //Set the Name of BT
