@@ -134,6 +134,7 @@ enum {
 // finate state machine states
 enum { 
   STATE_OFF,          // off
+  STATE_ROS,          // Linux ROS control
   STATE_REMOTE,       // model remote control (R/C)
   STATE_FORWARD,      // drive forward
   STATE_ROLL,         // drive roll right/left  
@@ -189,6 +190,7 @@ class Robot
     unsigned long stateStartTime;
     unsigned long stateEndTime;
     int idleTimeSec;
+    unsigned long rosTimeout;
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
@@ -477,6 +479,7 @@ class Robot
     byte consoleMode ;
     unsigned long nextTimeButtonCheck ;    
     unsigned long nextTimeInfo ;                    
+    unsigned long nextTimeROS ;                    
     byte rollDir;
     unsigned long nextTimeButton ;
     unsigned long nextTimeErrorCounterReset;    
@@ -554,6 +557,9 @@ protected:
     
     // read serial
     virtual void readSerial();    
+    
+    // Linux ROS
+    virtual void rosSerial();    
     
     // check sensor
     virtual void checkButton();

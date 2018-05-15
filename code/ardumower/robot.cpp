@@ -35,7 +35,7 @@
 #define ADDR_ERR_COUNTERS 400
 #define ADDR_ROBOT_STATS 800
 
-const char* stateNames[] ={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
+const char* stateNames[] ={"OFF ", "ROS", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL", "TILT", "BUMPREV", "BUMPFORW"};
 
 const char* sensorNames[] ={"SEN_PERIM_LEFT", "SEN_PERIM_RIGHT", "SEN_PERIM_LEFT_EXTRA", "SEN_PERIM_RIGHT_EXTRA", "SEN_LAWN_FRONT", "SEN_LAWN_BACK", 
@@ -51,6 +51,7 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 // --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
+#include "ros.h"
 #include "motor.h"
 #include "buzzer.h"
 #include "modelrc.h"
@@ -80,6 +81,7 @@ Robot::Robot(){
 	stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
   idleTimeSec = 0;
+  rosTimeout = 0;
   statsMowTimeTotalStart = false;            
   mowPatternCurr = MOW_RANDOM;
   
@@ -179,6 +181,7 @@ Robot::Robot(){
   consoleMode = CONSOLE_SENSOR_COUNTERS; 
   nextTimeButtonCheck = 0;
   nextTimeInfo = 0;
+  nextTimeROS = 0;
   nextTimeMotorSense = 0;
   nextTimeIMU = 0;
   nextTimeCheckTilt = 0;
@@ -1301,7 +1304,7 @@ void Robot::loop()  {
   stateTime = millis() - stateStartTime;
   int steer;
   ADCMan.run();
-  readSerial();   
+  if (stateCurr != STATE_ROS) readSerial();   
   if (rc.readSerial()) resetIdleTime();
   readSensors(); 
   checkBattery(); 
@@ -1327,8 +1330,10 @@ void Robot::loop()  {
    
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
-    printInfo(Console);    
-    printErrors();
+    if (stateCurr != STATE_ROS) {
+      printInfo(Console);    
+      printErrors();
+    }    
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
@@ -1379,6 +1384,10 @@ void Robot::loop()  {
         }
       }
       imuDriveHeading = imu.ypr.yaw;
+      break;
+    case STATE_ROS:
+      // Linux ROS mode
+      rosSerial();   
       break;
     case STATE_REMOTE:
       // remote control mode (RC)

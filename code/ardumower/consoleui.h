@@ -432,9 +432,14 @@ void Robot::commsMenuSelect(void) {
 }
 
 void Robot::readSerial() {
-  // serial input
+  // serial input  
   if (Console.available() > 0) {     
-     char ch = (char)Console.read();
+     String cmd = Console.readString();
+     if (cmd.startsWith("$ROS")) {
+       setNextState(STATE_ROS, 0);
+       return;
+     }
+     char ch = cmd[0];
      resetIdleTime();
      switch (ch){
        case 'd': 
