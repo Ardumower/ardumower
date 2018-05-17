@@ -89,6 +89,12 @@ void Robot::rosSerial() {
     Console.print(imu.ypr.pitch);    
     Console.print(",");
     Console.print(imu.ypr.roll);    
+    Console.print(",");
+    Console.print(odometryX/100.0);    
+    Console.print(",");  
+    Console.print(odometryY/100.0);        
+    Console.print(",");  
+    Console.print(odometryTheta);        
     Console.println();
   }
   if (millis() >= rosTimeout){
