@@ -1,19 +1,27 @@
 // Linux ROS interface
 
+static byte rosIdx = 0;
 static String rosString;
+static String rosProt;
 static String rosCmd;
+static String rosPar1;
+static String rosPar2;
+static String rosPar3;
+static String rosPar4;
+static String rosPar5;
+static String rosPar6;
 
 void Robot::rosSerial() {
   // serial input    
-  if (Console.available() > 32){    
-      String prot = Console.readStringUntil(',');
-      if (prot.endsWith("$ROS")) {
-        String cmd = Console.readStringUntil(',');       
-        if (cmd == "M1"){
+  while (Console.available() > 0){    
+    char ch = Console.read();
+    if ((ch == '\r') || (ch == '\n')){                  
+      if (rosProt == "$ROS") {        
+        if (rosCmd == "M1"){
           // motors  
-          int left = Console.parseInt();
-          int right = Console.parseInt();
-          int mow = Console.parseInt();
+          int left = rosPar1.toInt();
+          int right = rosPar2.toInt();
+          int mow = rosPar3.toInt();
           //Console.print("motors: ");
           //Console.print(left);
           //Console.print(",");
@@ -23,19 +31,43 @@ void Robot::rosSerial() {
           motorLeftSpeedRpmSet  = left;
           motorRightSpeedRpmSet = right;    
           motorMowSpeedPWMSet = mow;
-          rosTimeout = millis() + 5000;
-        } else if (cmd == "P1"){
-          motorLeftPID.Kp = Console.parseFloat();
-          motorLeftPID.Ki = Console.parseFloat();
-          motorLeftPID.Kd = Console.parseFloat();
+          rosTimeout = millis() + 3000;
+        } else if (rosCmd == "P1"){
+          motorLeftPID.Kp = rosPar1.toFloat();
+          motorLeftPID.Ki = rosPar2.toFloat();
+          motorLeftPID.Kd = rosPar3.toFloat();
         }
       }
-      //Console.readStringUntil('\n');                    
+      rosIdx = 0;
+      rosProt = "";
+      rosCmd = "";
+      rosPar1 = "";
+      rosPar2 = "";
+      rosPar3 = "";
+      rosPar4 = "";
+      rosPar5 = "";
+      rosPar6 = "";
+    } else if (ch == ','){
+       rosIdx++;
+    } else {
+       switch (rosIdx){
+         case 0: rosProt += ch; break;
+         case 1: rosCmd += ch; break;
+         case 2: rosPar1 += ch; break;
+         case 3: rosPar2 += ch; break;
+         case 4: rosPar3 += ch; break;
+         case 5: rosPar4 += ch; break;
+         case 6: rosPar5 += ch; break;
+         case 7: rosPar6 += ch; break;
+       }
+    }
   }
-     
+          
   if (millis () >= nextTimeROS){
     nextTimeROS = millis() + 1000;
     Console.print("$ROS,I1,");
+    Console.print(loopsPerSec);    
+    Console.print(",");
     Console.print(batVoltage);    
     Console.print(",");
     Console.print(chgVoltage);
