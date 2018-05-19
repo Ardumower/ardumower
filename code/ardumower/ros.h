@@ -18,18 +18,20 @@ void Robot::rosSerial() {
     if ((ch == '\r') || (ch == '\n')){                  
       if (rosProt == "$ROS") {        
         if (rosCmd == "M1"){
-          // motors  
-          int left = rosPar1.toInt();
-          int right = rosPar2.toInt();
+          // motor speed: linear (m/s), angular (rad/s)
+          float linear = rosPar1.toFloat();
+          float angular = rosPar2.toFloat();
           int mow = rosPar3.toInt();
           //Console.print("motors: ");
           //Console.print(left);
           //Console.print(",");
           //Console.print(right);                 
           //Console.print(",");
-          //Console.println(mow);                 
-          motorLeftSpeedRpmSet  = left;
-          motorRightSpeedRpmSet = right;    
+          //Console.println(mow);  
+          float rspeed = linear + angular * (odometryWheelBaseCm/100.0 /2);          
+          float lspeed = linear * 2.0 - rspeed;          
+          motorRightSpeedRpmSet =  rspeed / (PI*(wheelDiameter/1000.0)) * 60.0;
+          motorLeftSpeedRpmSet = lspeed / (PI*(wheelDiameter/1000.0)) * 60.0;
           motorMowSpeedPWMSet = mow;
           rosTimeout = millis() + 3000;
         } else if (rosCmd == "P1"){
@@ -64,7 +66,7 @@ void Robot::rosSerial() {
   }
           
   if (millis () >= nextTimeROS){
-    nextTimeROS = millis() + 1000;
+    nextTimeROS = millis() + 200;
     Console.print("$ROS,I1,");
     Console.print(loopsPerSec);    
     Console.print(",");
