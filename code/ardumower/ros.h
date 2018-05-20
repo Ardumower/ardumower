@@ -96,7 +96,17 @@ void Robot::rosSerial() {
     Console.print(",");  
     Console.print(odometryY/100.0);        
     Console.print(",");  
-    Console.print(odometryTheta);        
+    Console.print(odometryTheta);
+    Console.print(",");  
+    Console.print(bumperLeft);
+    Console.print(",");  
+    Console.print(bumperRight);
+    Console.print(",");  
+    Console.print(freeWheelIsMoving);    
+    Console.print(",");  
+    Console.print(perimeterInside);      
+    Console.print(",");  
+    Console.print(perimeterMag);          
     Console.println();
   }
   if (millis() >= rosTimeout){
