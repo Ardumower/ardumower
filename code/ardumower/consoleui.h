@@ -104,9 +104,9 @@ void Robot::printMenu(){
   Console.println(F("1=test motors"));
   Console.println(F("2=test odometry"));  
   Console.println(F("3=communications menu (setup Bluetooth & WIFI)"));
-  Console.println(F("4=ADC calibration (perimeter sender & charger must be off)"));    
-  Console.println(F("5=calibrate IMU compass start/stop"));  
-  Console.println(F("6=calibrate IMU acceleration next side"));  
+  Console.println(F("4=ADC calibration (perimeter sender & charger must be off)"));      
+  Console.println(F("5=calibrate IMU acceleration next side"));  
+  Console.println(F("6=calibrate IMU compass start/stop"));  
   Console.println(F("7=delete IMU calibration"));  
   Console.println(F("8=show EEPROM data (for backup)"));  
   Console.println(F("9=enter EEPROM data (for restore)"));  
