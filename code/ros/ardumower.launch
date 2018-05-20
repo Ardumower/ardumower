@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- Ardumower -->
+  <param name="robot_description" textfile="robot.urdf" />
+  <!-- <node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
+     <rosparam param="rate">8.0</rosparam>
+     <rosparam param="base_width">0.245</rosparam>
+  </node> -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> 
+  
+  <node pkg="sim" name="ardumower" type="ardumower.py" output="screen">
+    <param name="base_link" value="base_link" />
+    <param name="nav" value="cmd_vel_mux/input/navi" />
+    <param name="odom_topic" value="odom" />
+    <param name="odom_frame" value="odom" />
+    <param name="device" value="/dev/ttyACM0" />
+    <param name="cmd_vel" value="cmd_vel_mux/input/teleop" />
+  </node>
+  
+
+</launch>
+  
+  
