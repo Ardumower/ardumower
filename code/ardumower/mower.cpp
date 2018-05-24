@@ -23,9 +23,18 @@ Mower robot;
 // ----------------------------------------------------------------------
 
 
+// ----------------------------------------------------------------------
+// Ardumower factory settings - the values below define the factory settings of your Ardumower
+//
+// IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
+//
+// After changing any value below, you have to set your robot 
+// to 'factory settings' via the serial console menu or ArduRemote/pfodApp!
+// ----------------------------------------------------------------------
+
 Mower::Mower(){
   #if defined (ROBOT_ARDUMOWER)
-    name = "Ardumower";
+    name = "Ardumower"; //Set the Name of BT
   #else
     name = "Mini";
   #endif
@@ -75,6 +84,9 @@ Mower::Mower(){
   motorMowPID.Kp             = 0.005;      // motor mower RPM PID controller
   motorMowPID.Ki             = 0.01;
   motorMowPID.Kd             = 0.01;
+
+  //  ------ free wheel sensor-------------------------------
+  freeWheelUse               = 0;          // has free wheel sensor?  
   
   //  ------ bumper (BumperDuino)-------------------------------
   bumperUse                  = 0;          // has bumpers?
@@ -142,7 +154,7 @@ Mower::Mower(){
 		batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V		
 		batFullCurrent             = 0.1;       // current flowing when battery is fully charged	(amp), (-99999=disabled)	
 	#else  // ROBOT_MINI
-		batMonitor                 = 1;          // monitor battery and charge voltage?
+		batMonitor                 = 0;          // monitor battery and charge voltage?
 		batSwitchOffIfBelow        = 5.0;       // switch off battery if below voltage (Volt)
 		batGoHomeIfBelow           = 5.5;       // drive home voltage (Volt)  	
 		startChargingIfBelow       = 8.0;      // start charging if battery Voltage is below (99999=disabled)
@@ -322,12 +334,22 @@ void Mower::setup(){
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
   Wire.begin();            			
+<<<<<<< HEAD
 	//while (!checkAT24C32()){
 	//  Console.println("PCB not powered ON or RTC module missing");
 	//	delay(1000);
 	//}
+=======
+  unsigned long timeout = millis() + 10000;
+	while (millis() < timeout){
+    if (!checkAT24C32()){
+      Console.println(F("PCB not powered ON or RTC module missing"));
+      delay(1000);
+    } else break;
+	}
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
 	ADCMan.init();
-  Console.println("SETUP");
+  Console.println(F("SETUP"));
   
   // LED, buzzer, battery
   pinMode(pinLED, OUTPUT);    
@@ -383,6 +405,10 @@ void Mower::setup(){
   pinMode(pinBumperRight, INPUT_PULLUP);
   pinMode(pinTilt, INPUT);
   pinMode(pinTilt, INPUT_PULLUP);
+
+  // free wheel
+  pinMode(pinFreeWheel, INPUT);
+  pinMode(pinFreeWheel, INPUT_PULLUP);
  
  // drops
   pinMode(pinDropLeft, INPUT);                                                                                                         // Dropsensor - Absturzsensor - Deklariert als Eingang
@@ -594,6 +620,13 @@ int Mower::readSensor(char type){
     
 // buttons------------------------------------------------------------------------------------------------
     case SEN_BUTTON: return(digitalRead(pinButton)); break; 
+<<<<<<< HEAD
+=======
+
+//free wheel----------------------------------------------------------------------------------------------------
+    case SEN_FREE_WHEEL: return(digitalRead(pinFreeWheel)); break;      
+    
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
 //bumper----------------------------------------------------------------------------------------------------
     case SEN_BUMPER_RIGHT: return(!digitalRead(pinBumperRight)); break; // CHANGE FOR CLEANER
     case SEN_BUMPER_LEFT: return(!digitalRead(pinBumperLeft)); break;    

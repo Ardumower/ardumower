@@ -1,4 +1,4 @@
-update=04.04.2017 20:38:20
+update=31.01.2018 12:09:07
 last_client=kicad
 [pcbnew]
 version=1
@@ -34,15 +34,4 @@ LabSize=79
 ERC_TestSimilarLabels=1
 [eeschema]
 version=1
-LibDir=../../../../kicad/kicad/share/library;../../../../kicad/kicad/share/modules;acs712.pretty
-[eeschema/libraries]
-LibName1=ardumower mega shield svn-rescue
-LibName2=power
-LibName3=device
-LibName4=Zimprich
-LibName5=conn
-LibName6=transistors
-LibName7=switches
-LibName8=linear
-LibName9=texas
-LibName10=diode
+LibDir=

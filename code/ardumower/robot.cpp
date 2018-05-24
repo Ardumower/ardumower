@@ -25,6 +25,7 @@
 
 #include "robot.h"
 #include "config.h"
+#include "i2c.h"
 #include "flashmem.h"
 
 #define MAGIC 52
@@ -34,13 +35,13 @@
 #define ADDR_ERR_COUNTERS 400
 #define ADDR_ROBOT_STATS 800
 
-const char* stateNames[] ={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
+const char* stateNames[] ={"OFF ", "ROS", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL", "TILT", "BUMPREV", "BUMPFORW"};
 
 const char* sensorNames[] ={"SEN_PERIM_LEFT", "SEN_PERIM_RIGHT", "SEN_PERIM_LEFT_EXTRA", "SEN_PERIM_RIGHT_EXTRA", "SEN_LAWN_FRONT", "SEN_LAWN_BACK", 
 	"SEN_BAT_VOLTAGE", "SEN_CHG_CURRENT", "SEN_CHG_VOLTAGE", "SEN_MOTOR_LEFT", "SEN_MOTOR_RIGHT", "SEN_MOTOR_MOW", "SEN_BUMPER_LEFT", "SEN_BUMPER_RIGHT", 
 	"SEN_DROP_LEFT", "SEN_DROP_RIGHT", "SEN_SONAR_CENTER", "SEN_SONAR_LEFT", "SEN_SONAR_RIGHT", "SEN_BUTTON", "SEN_IMU", "SEN_MOTOR_MOW_RPM", "SEN_RTC",
-  "SEN_RAIN", "SEN_TILT"};
+  "SEN_RAIN", "SEN_TILT", "SEN_FREE_WHEEL"};
 
 const char* mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
@@ -50,8 +51,12 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 // --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
+<<<<<<< HEAD
 #include "rmcs.h" // Use Robot Mower Communication Standard 
 
+=======
+#include "ros.h"
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
 #include "motor.h"
 #include "buzzer.h"
 #include "modelrc.h"
@@ -81,6 +86,7 @@ Robot::Robot(){
 	stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
   idleTimeSec = 0;
+  rosTimeout = 0;
   statsMowTimeTotalStart = false;            
   mowPatternCurr = MOW_RANDOM;
   
@@ -151,6 +157,8 @@ Robot::Robot(){
   rain = false;
   rainCounter = 0;
 
+  freeWheelIsMoving = false;
+
   sonarLeftUse = sonarRightUse = sonarCenterUse = false;
   sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
   sonarDistCounter = 0;
@@ -178,6 +186,7 @@ Robot::Robot(){
   consoleMode = CONSOLE_SENSOR_COUNTERS; 
   nextTimeButtonCheck = 0;
   nextTimeInfo = 0;
+  nextTimeROS = 0;
   nextTimeMotorSense = 0;
   nextTimeIMU = 0;
   nextTimeCheckTilt = 0;
@@ -186,6 +195,7 @@ Robot::Robot(){
   nextTimeBumper = 0;
   nextTimeDrop = 0;                                                                                                                    // Dropsensor - Absturzsensor
   nextTimeSonar = 0;
+  nextTimeFreeWheel = 0;
   nextTimeBattery = 0;
   nextTimeCheckBattery = millis() + 10000;
   nextTimePerimeter = 0;
@@ -287,7 +297,7 @@ void Robot::setup()  {
     
   stateStartTime = millis();  
   beep(1);  
-  Console.println(F("START"));  
+  Console.println(F("-------------------START-------------------"));  
   Console.print(F("Ardumower "));
   Console.print(VER);
   Console.print(F("  "));
@@ -311,6 +321,7 @@ void Robot::setup()  {
   Console.println(F("  d for menu"));    
   Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
   Console.println(consoleModeNames[consoleMode]);
+  Console.println(F("-------------------------------------------"));  
 } 
 
 
@@ -513,6 +524,11 @@ void Robot::readSensors(){
 */         
   }
 
+  if ((freeWheelUse) && (millis() >= nextTimeFreeWheel)){    
+    nextTimeFreeWheel = millis() + 100;               
+    freeWheelIsMoving = (readSensor(SEN_FREE_WHEEL) == 0);
+    if (!freeWheelIsMoving) setSensorTriggered(SEN_FREE_WHEEL);
+  }
 
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
     nextTimeBumper = millis() + 100;               
@@ -797,8 +813,9 @@ void Robot::checkCurrent(){
 
 // check bumpers
 void Robot::checkBumpers(){
+  if (!bumperUse) return;
   if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;
-
+  
   if ((bumperLeft || bumperRight)) {    
       if (bumperLeft) {
         reverseOrBidirBumper(RIGHT);          
@@ -808,8 +825,23 @@ void Robot::checkBumpers(){
   }  
 }
 
+// check free wheel
+void Robot::checkFreeWheel(){
+  if (!freeWheelUse) return;
+  if (millis() < stateStartTime + 4000) return;
+
+  if (!freeWheelIsMoving) {    
+      if (random(2) == 0){
+        reverseOrBidirBumper(RIGHT);          
+      } else {
+        reverseOrBidirBumper(LEFT);
+      }    
+  }  
+}
+
 // check drop                                                                                                                       // Dropsensor - Absturzsensor
 void Robot::checkDrop(){                                                                                                            // Dropsensor - Absturzsensor
+  if (!dropUse) return;
   if ((mowPatternCurr == MOW_BIDIR) && (millis() < stateStartTime + 4000)) return;                                                  // Dropsensor - Absturzsensor
 
   if ((dropLeft || dropRight)) {                                                                                                    // Dropsensor - Absturzsensor  
@@ -823,6 +855,7 @@ void Robot::checkDrop(){                                                        
 
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
+<<<<<<< HEAD
 
 	 if (batMonitor){
         if (chgVoltage > 5.0){ 
@@ -830,6 +863,9 @@ void Robot::checkBumpersPerimeter(){
 		  return;
         }
       }
+=======
+  if (!bumperUse) return;
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
   if ((bumperLeft || bumperRight)) {    
     if ((bumperLeft) || (stateCurr == STATE_PERI_TRACK)) {
       setNextState(STATE_PERI_REV, RIGHT);          
@@ -841,6 +877,7 @@ void Robot::checkBumpersPerimeter(){
 
 // check perimeter as a boundary
 void Robot::checkPerimeterBoundary(){
+  if (!perimeterUse) return;
   if (millis() >= nextTimeRotationChange){
       nextTimeRotationChange = millis() + 60000;
       rotateLeft = !rotateLeft;
@@ -888,6 +925,7 @@ void Robot::checkPerimeterBoundary(){
 
 // check perimeter while finding it
 void Robot::checkPerimeterFind(){
+  if (!perimeterUse) return;
   if (stateCurr == STATE_PERI_FIND){
     if (perimeterInside) {
       // inside
@@ -1282,6 +1320,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateLast = stateCurr;
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
+<<<<<<< HEAD
   
   if (rmcsUse == false) {  
     printInfo(Console);          
@@ -1290,13 +1329,17 @@ void Robot::setNextState(byte stateNew, byte dir){
     rmcsPrintInfo(Console);
   }
 }
+=======
+  printInfo(Console);          
+}// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
 
 
 void Robot::loop()  {
   stateTime = millis() - stateStartTime;
   int steer;
   ADCMan.run();
-  readSerial();   
+  if (stateCurr != STATE_ROS) readSerial();   
   if (rc.readSerial()) resetIdleTime();
   readSensors(); 
   checkBattery(); 
@@ -1327,10 +1370,17 @@ void Robot::loop()  {
 	
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
+<<<<<<< HEAD
 	if (rmcsUse == false) { 
 	  printInfo(Console); 
    
     printErrors();
+=======
+    if (stateCurr != STATE_ROS) {
+      printInfo(Console);    
+      printErrors();
+    }    
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
@@ -1383,6 +1433,10 @@ void Robot::loop()  {
       }
       imuDriveHeading = imu.ypr.yaw;
       break;
+    case STATE_ROS:
+      // Linux ROS mode
+      rosSerial();   
+      break;
     case STATE_REMOTE:
       // remote control mode (RC)
       //if (remoteSwitch > 50) setNextState(STATE_FORWARD, 0);
@@ -1412,8 +1466,9 @@ void Robot::loop()  {
       checkErrorCounter();    
       checkTimer();
       checkRain();
-      checkCurrent();            
-      checkBumpers();
+      checkCurrent();
+      checkFreeWheel();            
+      checkBumpers();      
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();             
       checkPerimeterBoundary(); 
@@ -1422,6 +1477,7 @@ void Robot::loop()  {
       break;
     case STATE_ROLL:
       checkCurrent();            
+      checkFreeWheel();
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       //checkSonar();             
@@ -1448,6 +1504,7 @@ void Robot::loop()  {
         checkErrorCounter();    
         checkTimer();
         checkCurrent();            
+        checkFreeWheel();
         checkBumpers();
         checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
         //checkSonar();             
@@ -1486,6 +1543,7 @@ void Robot::loop()  {
       checkTimer();
       checkRain();
       checkCurrent();
+      checkFreeWheel();
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       checkSonar();
@@ -1498,6 +1556,7 @@ void Robot::loop()  {
       checkErrorCounter();
       checkTimer();
       checkCurrent();
+      checkFreeWheel();
       checkBumpers();
       checkDrop();                                                                                                                            // Dropsensor - Absturzsensor
       //checkSonar();

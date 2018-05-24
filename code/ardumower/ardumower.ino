@@ -37,12 +37,12 @@
 #elif __SAM3X8E__
 	// Arduino Due
 #else
-  #error "Wrong Arduino board - Choose Arduino Mega or Arduino Due in Arduino IDE"
+  #error "Wrong Arduino board - Choose Arduino Mega or Arduino Due (recommended) in Arduino IDE"
 #endif
 #include "config.h"
 
 
-// requires: Arduino Mega or Arduino Due
+// requires: Arduino Mega or Arduino Due (recommended)
 // NOTE for Arduino Due:  use native USB port for programming and console!
 
 

@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -25,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B1
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B1
 U 1 1 57E12EB0
 P 4055 3560
 F 0 "B1" H 4335 3720 60  0000 C CNN
@@ -38,7 +28,7 @@ F 4 "Value" H 4055 3560 60  0001 C CNN "Reichelt-Bestellnummer"
 $EndComp
 NoConn ~ 4255 3560
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B2
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B2
 U 1 1 57E12EB1
 P 4055 3835
 F 0 "B2" H 4335 3995 60  0000 C CNN
@@ -50,7 +40,7 @@ F 4 "Value" H 4055 3835 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B3
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B3
 U 1 1 57E12EB2
 P 4055 4110
 F 0 "B3" H 4335 4270 60  0000 C CNN
@@ -62,7 +52,7 @@ F 4 "Value" H 4055 4110 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B4
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B4
 U 1 1 57E12EB3
 P 4055 4385
 F 0 "B4" H 4335 4545 60  0000 C CNN
@@ -74,7 +64,7 @@ F 4 "Value" H 4055 4385 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B5
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B5
 U 1 1 57E12EB4
 P 4880 3560
 F 0 "B5" H 5160 3720 60  0000 C CNN
@@ -86,7 +76,7 @@ F 4 "Value" H 4880 3560 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B6
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B6
 U 1 1 57E12EB5
 P 4880 3835
 F 0 "B6" H 5160 3995 60  0000 C CNN
@@ -98,7 +88,7 @@ F 4 "Value" H 4880 3835 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B7
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B7
 U 1 1 57E12EB6
 P 4880 4110
 F 0 "B7" H 5160 4270 60  0000 C CNN
@@ -110,7 +100,7 @@ F 4 "Value" H 4880 4110 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B8
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B8
 U 1 1 57E12EB7
 P 4880 4385
 F 0 "B8" H 5160 4545 60  0000 C CNN
@@ -129,7 +119,7 @@ NoConn ~ 5080 3835
 NoConn ~ 5080 4110
 NoConn ~ 5080 4385
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B9
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B9
 U 1 1 57E12EB9
 P 7555 2550
 F 0 "B9" H 7835 2710 60  0000 C CNN
@@ -142,7 +132,7 @@ F 4 "Value" H 7555 2550 60  0001 C CNN "Reichelt-Bestellnummer"
 $EndComp
 NoConn ~ 7755 2550
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B10
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B10
 U 1 1 57E12EBA
 P 7555 2825
 F 0 "B10" H 7835 2985 60  0000 C CNN
@@ -154,7 +144,7 @@ F 4 "Value" H 7555 2825 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B11
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B11
 U 1 1 57E12EBB
 P 7555 3100
 F 0 "B11" H 7835 3260 60  0000 C CNN
@@ -167,7 +157,7 @@ F 5 "Value" H 7555 3100 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B12
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B12
 U 1 1 57E12EBC
 P 7535 3555
 F 0 "B12" H 7815 3715 60  0000 C CNN
@@ -180,7 +170,7 @@ F 5 "Value" H 7535 3555 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B13
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B13
 U 1 1 57E12EBD
 P 7535 3830
 F 0 "B13" H 7815 3990 60  0000 C CNN
@@ -192,7 +182,7 @@ F 4 "Value" H 7535 3830 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B14
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B14
 U 1 1 57E12EBE
 P 7535 4105
 F 0 "B14" H 7815 4265 60  0000 C CNN
@@ -214,7 +204,7 @@ Charg_Pin_+
 Text GLabel 7405 3100 0    60   Output ~ 0
 Charg_Pin_+
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B17
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B17
 U 1 1 57E12EC4
 P 5685 4120
 F 0 "B17" H 5965 4280 60  0000 C CNN
@@ -226,7 +216,7 @@ F 4 "Value" H 5685 4120 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B18
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B18
 U 1 1 57E12EC5
 P 5685 4395
 F 0 "B18" H 5965 4555 60  0000 C CNN
@@ -252,7 +242,7 @@ Wire Wire Line
 Wire Wire Line
 	7405 3100 7555 3100
 $Comp
-L GND #PWR0213
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0213
 U 1 1 57E2B21B
 P 7390 4105
 F 0 "#PWR0213" H 7390 3855 50  0001 C CNN
@@ -263,7 +253,7 @@ F 3 "" H 7390 4105 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0214
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0214
 U 1 1 57E2B554
 P 7390 3830
 F 0 "#PWR0214" H 7390 3580 50  0001 C CNN
@@ -274,7 +264,7 @@ F 3 "" H 7390 3830 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0215
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0215
 U 1 1 57E2B6C2
 P 7390 3555
 F 0 "#PWR0215" H 7390 3305 50  0001 C CNN
@@ -285,7 +275,7 @@ F 3 "" H 7390 3555 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L Bohrloch_3,2mm_ohne_Kupferfläche B15
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm_ohne_Kupferfl_che-RESCUE-ardumower_mega_shield_svn B15
 U 1 1 58701F26
 P 4015 4680
 F 0 "B15" H 4119 4733 60  0000 L CNN
@@ -296,7 +286,7 @@ F 3 "" H 4015 4680 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm_ohne_Kupferfläche B16
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm_ohne_Kupferfl_che-RESCUE-ardumower_mega_shield_svn B16
 U 1 1 58717023
 P 4025 4980
 F 0 "B16" H 4129 5033 60  0000 L CNN
@@ -315,7 +305,7 @@ F 11 "Value" H 4025 4980 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B19
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B19
 U 1 1 58723A33
 P 5875 4865
 F 0 "B19" H 6155 5025 60  0000 C CNN
@@ -327,7 +317,7 @@ F 4 "Value" H 5875 4865 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B20
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B20
 U 1 1 58723A3A
 P 5875 5140
 F 0 "B20" H 6155 5300 60  0000 C CNN
@@ -341,7 +331,7 @@ $EndComp
 NoConn ~ 6075 4865
 NoConn ~ 6075 5140
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B21
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B21
 U 1 1 587511A7
 P 6735 4870
 F 0 "B21" H 7015 5030 60  0000 C CNN
@@ -353,7 +343,7 @@ F 4 "Value" H 6735 4870 60  0001 C CNN "Reichelt-Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B22
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm-RESCUE-ardumower_mega_shield_svn B22
 U 1 1 587511AE
 P 6735 5145
 F 0 "B22" H 7015 5305 60  0000 C CNN
@@ -367,7 +357,7 @@ $EndComp
 NoConn ~ 6935 4870
 NoConn ~ 6935 5145
 $Comp
-L Bohrloch_3,2mm_ohne_Kupferfläche B23
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm_ohne_Kupferfl_che-RESCUE-ardumower_mega_shield_svn B23
 U 1 1 58CBD1E5
 P 4000 5415
 F 0 "B23" H 4104 5468 60  0000 L CNN
@@ -386,7 +376,7 @@ F 11 "Value" H 4000 5415 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Bohrloch_3,2mm_ohne_Kupferfläche B24
+L ardumower-mega-shield-svn-rescue:Bohrloch_3,2mm_ohne_Kupferfl_che-RESCUE-ardumower_mega_shield_svn B24
 U 1 1 58CBD2A4
 P 4000 5705
 F 0 "B24" H 4104 5758 60  0000 L CNN

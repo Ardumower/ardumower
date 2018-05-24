@@ -4,6 +4,10 @@
 void Robot::checkBattery(){
   if (millis() < nextTimeCheckBattery) return;
 	nextTimeCheckBattery = millis() + 1000;  
+  if (batVoltage < 4.0){      
+    Console.println(F("BATTERY NOT FOUND - PLEASE SWITCH ON BATTERY!")); 
+  }
+    
   if (batMonitor){
     if ((batVoltage < batSwitchOffIfBelow) && (idleTimeSec != BATTERY_SW_OFF)) {      
 			Console.print(F("Battery warning: triggered batSwitchOffIfBelow "));

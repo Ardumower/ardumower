@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -29,7 +19,7 @@ Dual1_IN_+
 Text HLabel 3180 4290 0    60   Input ~ 0
 Dual1_IN_GND
 $Comp
-L F_10A PRFA1
+L ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn PRFA1
 U 1 1 57DB8844
 P 2990 3700
 F 0 "PRFA1" H 2990 3645 40  0000 C CNN
@@ -54,7 +44,7 @@ Wire Wire Line
 Wire Wire Line
 	4640 4120 4640 4290
 $Comp
-L CP1 C10
+L ardumower-mega-shield-svn-rescue:CP1-RESCUE-ardumower_mega_shield_svn C10
 U 1 1 57DB8845
 P 3325 3990
 F 0 "C10" H 3030 4070 50  0000 L CNN
@@ -73,7 +63,7 @@ Wire Wire Line
 	3325 4140 3325 4290
 Connection ~ 3325 4290
 $Comp
-L D DKE1
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn DKE1
 U 1 1 57DB8937
 P 4370 4005
 F 0 "DKE1" V 4324 3927 50  0000 R CNN

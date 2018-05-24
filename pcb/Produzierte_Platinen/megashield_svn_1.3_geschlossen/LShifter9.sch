@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -1270,7 +1260,7 @@ Wire Wire Line
 Wire Wire Line
 	5210 3735 5605 3735
 $Comp
-L R R100
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R100
 U 1 1 582A54B0
 P 6110 3250
 F 0 "R100" H 6198 3296 50  0000 L CNN
@@ -1286,7 +1276,7 @@ F 8 "Value" H 6198 2947 60  0001 L CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R99
+L ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn R99
 U 1 1 582A54B1
 P 5435 3250
 F 0 "R99" H 5523 3296 50  0000 L CNN
@@ -2748,7 +2738,7 @@ Konntrolieren ob Footprint und Lib passt
 Text GLabel 5435 2900 1    39   Input ~ 0
 IOREF
 $Comp
-L BSS138-RESCUE-ardumower_mega_shield_svn Q31
+L ardumower-mega-shield-svn-rescue:BSS138-RESCUE-ardumower_mega_shield_svn Q31
 U 1 1 58AB0F52
 P 5805 3635
 F 0 "Q31" V 6041 3635 50  0000 C CNN
@@ -2764,7 +2754,7 @@ Wire Wire Line
 	5755 3005 5435 3005
 Connection ~ 5435 3005
 $Comp
-L +5VP #PWR0159
+L ardumower-mega-shield-svn-rescue:+5VP-RESCUE-ardumower_mega_shield_svn #PWR0159
 U 1 1 58AB10D8
 P 6110 2900
 F 0 "#PWR0159" H -315 -120 50  0001 C CNN

@@ -92,21 +92,24 @@ void Robot::printInfo(Stream &s){
 
 void Robot::printMenu(){  
   Console.println();
-  Console.println(F(" MAIN MENU:"));
+  Console.println(F("-----------MAIN MENU----------"));  
+  Console.println(F("f=delete all USER settings (reset all user settings in EEPROM)"));  
+  Console.println(F("e=delete all ERRORS (reset error counters in EEPROM)"));      
+  Console.println(F("r=delete all STATISTICS (reset statistics in EEPROM)"));  
+  Console.println(F("s=save USER settings (save user settings to EEPROM)"));  	  
+  Console.println(F("x=print USER settings"));    
+  Console.println(F("p=test EEPROM module"));   
+  Console.println(F("c=test RTC module"));  	
+  Console.println(F("i=scan for I2C devices"));         
   Console.println(F("1=test motors"));
-  Console.println(F("2=test odometry"));
-  Console.println(F("3=communications menu"));
-  Console.println(F("5=calibrate IMU acc next side"));
-  Console.println(F("6=calibrate IMU com start/stop"));  
-  Console.println(F("7=delete IMU calib"));
-  Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
-  Console.println(F("9=save user settings"));  
-	Console.println(F("c=test RTC"));  
-	Console.println(F("p=test EEPROM"));  
-  Console.println(F("l=load factory settings"));  
-  Console.println(F("r=delete robot stats"));  
-  Console.println(F("x=print settings"));  
-  Console.println(F("e=delete all errors"));  
+  Console.println(F("2=test odometry"));  
+  Console.println(F("3=communications menu (setup Bluetooth & WIFI)"));
+  Console.println(F("4=ADC calibration (perimeter sender & charger must be off)"));      
+  Console.println(F("5=calibrate IMU acceleration next side"));  
+  Console.println(F("6=calibrate IMU compass start/stop"));  
+  Console.println(F("7=delete IMU calibration"));  
+  Console.println(F("8=show EEPROM data (for backup)"));  
+  Console.println(F("9=enter EEPROM data (for restore)"));  
   Console.println(F("0=exit"));  
   Console.println();
 }
@@ -295,10 +298,18 @@ void Robot::menu(){
           printMenu();
           break;
         case '8':
-          ADCMan.calibrate();
+          Flash.dump();
           printMenu();
           break;
         case '9':
+          Flash.restore();
+          printMenu();
+          break;
+        case '4':
+          ADCMan.calibrate();
+          printMenu();
+          break;
+        case 's':
           saveUserSettings();
           printMenu();
           break;
@@ -309,13 +320,16 @@ void Robot::menu(){
 				  testRTC();
 					printMenu();
 				  break;
-        case 'l':
-          printSettingSerial();
+        case 'f':
+          //printSettingSerial();
           deleteUserSettings();
           printMenu();
           break;    
+        case 'i':
+          I2CScanner();          
+          break;
         case 'r':
-          printSettingSerial();
+          //printSettingSerial();
           deleteRobotStats();
           printMenu();
           break;              
@@ -418,9 +432,14 @@ void Robot::commsMenuSelect(void) {
 }
 
 void Robot::readSerial() {
-  // serial input
+  // serial input  
   if (Console.available() > 0) {     
-     char ch = (char)Console.read();
+     String cmd = Console.readString();
+     if (cmd.startsWith("$ROS")) {
+       setNextState(STATE_ROS, 0);
+       return;
+     }
+     char ch = cmd[0];
      resetIdleTime();
      switch (ch){
        case 'd': 

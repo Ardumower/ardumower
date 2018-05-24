@@ -56,7 +56,7 @@
 */
 
 // code version 
-#define VER "1.0a8-Azurit-dev"
+#define VER "1.0a10-dev Azurit"
  
 
 // sensors
@@ -86,6 +86,7 @@ enum {
   SEN_RTC,
   SEN_RAIN,
   SEN_TILT,
+  SEN_FREE_WHEEL,    
 };
 
 // actuators
@@ -133,6 +134,7 @@ enum {
 // finate state machine states
 enum { 
   STATE_OFF,          // off
+  STATE_ROS,          // Linux ROS control
   STATE_REMOTE,       // model remote control (R/C)
   STATE_FORWARD,      // drive forward
   STATE_ROLL,         // drive roll right/left  
@@ -188,6 +190,7 @@ class Robot
     unsigned long stateStartTime;
     unsigned long stateEndTime;
     int idleTimeSec;
+    unsigned long rosTimeout;
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
@@ -332,6 +335,10 @@ class Robot
     int bumperRightCounter ;
     boolean bumperRight ;
     unsigned long nextTimeBumper ;
+    // --------- free wheel state ---------------------
+    boolean freeWheelUse; // has free wheel sensor?
+    boolean freeWheelIsMoving;
+    unsigned long nextTimeFreeWheel;
     // --------- drop state ---------------------------
     // bumper state (true = pressed)                                                                                                  // Dropsensor - Absturzsensor vorhanden ?
     char dropUse       ;      // has drops?                                                                                           // Dropsensor - Absturzsensor ZÃ¤hler links
@@ -472,6 +479,7 @@ class Robot
     byte consoleMode ;
     unsigned long nextTimeButtonCheck ;    
     unsigned long nextTimeInfo ;                    
+    unsigned long nextTimeROS ;                    
     byte rollDir;
     unsigned long nextTimeButton ;
     unsigned long nextTimeErrorCounterReset;    
@@ -571,12 +579,16 @@ protected:
     // read serial
     virtual void readSerial();    
     
+    // Linux ROS
+    virtual void rosSerial();    
+    
     // check sensor
     virtual void checkButton();
     virtual void checkBattery();
     virtual void checkTimer();
     virtual void checkCurrent();
     virtual void checkBumpers();
+    virtual void checkFreeWheel();
     virtual void checkDrop();                                                                                                             // Dropsensor - Absturzsensor
     virtual void checkBumpersPerimeter();
     virtual void checkPerimeterBoundary();

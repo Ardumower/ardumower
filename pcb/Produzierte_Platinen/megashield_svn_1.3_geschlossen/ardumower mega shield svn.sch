@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -29,7 +19,7 @@ pinChargeVoltage
 Text GLabel 5020 3170 3    39   Output ~ 0
 pinChargeCurrent
 $Comp
-L ACS712 U3
+L ardumower-mega-shield-svn-rescue:ACS712-RESCUE-ardumower_mega_shield_svn U3
 U 1 1 5417150B
 P 5020 2520
 F 0 "U3" H 5020 2770 50  0000 C CNN
@@ -43,7 +33,7 @@ $EndComp
 Text Notes 7035 1290 0    99   ~ 0
 Batterie\n
 $Comp
-L RELAY_2RT K3
+L ardumower-mega-shield-svn-rescue:RELAY_2RT-RESCUE-ardumower_mega_shield_svn K3
 U 1 1 54A679F2
 P 6330 2540
 F 0 "K3" H 6280 2940 70  0000 C CNN
@@ -60,7 +50,7 @@ F 9 "R: FIN 95.15.2" H 6330 2540 60  0001 C CNN "Printfassung für Relais"
 	1    0    0    -1  
 $EndComp
 $Comp
-L F_10A EF1
+L ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn EF1
 U 1 1 54A79B5A
 P 2055 2040
 F 0 "EF1" H 2055 2105 40  0000 C CNN
@@ -79,7 +69,7 @@ F 11 "Value" H 2055 2040 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    1   
 $EndComp
 $Comp
-L F_10A EF2
+L ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn EF2
 U 1 1 54A7AB0D
 P 7350 2085
 F 0 "EF2" V 7280 2195 40  0000 C CNN
@@ -150,7 +140,7 @@ F0 "Bohrlöcher" 60
 F1 "Bohrlöcher.sch" 60
 $EndSheet
 $Comp
-L GND #PWR01
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR01
 U 1 1 57DDC12E
 P 5930 4420
 F 0 "#PWR01" H 5930 4170 50  0001 C CNN
@@ -161,7 +151,7 @@ F 3 "" H 5930 4420 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR02
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR02
 U 1 1 57DDCE0C
 P 4400 3230
 F 0 "#PWR02" H 4400 2980 50  0001 C CNN
@@ -172,7 +162,7 @@ F 3 "" H 4400 3230 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR03
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR03
 U 1 1 57DDD4A8
 P 1565 2250
 F 0 "#PWR03" H 1565 2000 50  0001 C CNN
@@ -183,7 +173,7 @@ F 3 "" H 1565 2250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR04
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR04
 U 1 1 57DE0396
 P 7250 1890
 F 0 "#PWR04" H 7250 1640 50  0001 C CNN
@@ -194,7 +184,7 @@ F 3 "" H 7250 1890 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +24V #PWR05
+L ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn #PWR05
 U 1 1 57DE1118
 P 8845 2550
 F 0 "#PWR05" H 8845 2400 50  0001 C CNN
@@ -213,7 +203,7 @@ F2 "Batterieeingang 24V" I L 9210 2390 60
 F3 "Batterieausgang 24V" O L 9210 2550 60 
 $EndSheet
 $Comp
-L CONN_01X02 P43
+L ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn P43
 U 1 1 57DEE5A7
 P 7300 1605
 F 0 "P43" V 7490 1605 50  0000 C CNN
@@ -229,7 +219,7 @@ F 8 "Value" H 7300 1605 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L CONN_01X02 P42
+L ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn P42
 U 1 1 57DEF264
 P 1345 2090
 F 0 "P42" H 1425 2030 50  0000 L CNN
@@ -255,7 +245,7 @@ Text Notes 13820 2790 0    118  ~ 0
 Text GLabel 1775 2170 3    39   Input ~ 0
 Charg_Pin_+
 $Comp
-L GND #PWR06
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR06
 U 1 1 57E3DCAC
 P 5120 3070
 F 0 "#PWR06" H 5120 2820 50  0001 C CNN
@@ -266,7 +256,7 @@ F 3 "" H 5120 3070 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CP_Small C3
+L ardumower-mega-shield-svn-rescue:CP_Small-RESCUE-ardumower_mega_shield_svn C3
 U 1 1 57E3E9D5
 P 4735 3325
 F 0 "C3" H 4823 3371 50  0000 L CNN
@@ -282,7 +272,7 @@ F 8 "Value" H 4735 3325 60  0001 C CNN "Bauform"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR07
 U 1 1 57E3F322
 P 4735 3475
 F 0 "#PWR07" H 4735 3225 50  0001 C CNN
@@ -295,7 +285,7 @@ $EndComp
 Text GLabel 8215 3065 0    39   Output ~ 0
 pinBatteryVoltage
 $Comp
-L GND #PWR08
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR08
 U 1 1 57E498AE
 P 8375 3505
 F 0 "#PWR08" H 8375 3255 50  0001 C CNN
@@ -306,7 +296,7 @@ F 3 "" H 8375 3505 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_Small R12
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R12
 U 1 1 57E498B9
 P 8375 2735
 F 0 "R12" H 8434 2781 50  0000 L CNN
@@ -325,7 +315,7 @@ F 11 "Value" H 8375 2735 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R_Small R13
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R13
 U 1 1 57E498C4
 P 8375 3355
 F 0 "R13" H 8433 3401 50  0000 L CNN
@@ -344,7 +334,7 @@ F 11 "Value" H 8375 3355 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L D D9
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn D9
 U 1 1 57E4C8A2
 P 7815 2390
 F 0 "D9" H 7815 2235 39  0000 C CNN
@@ -370,7 +360,7 @@ F2 "Ausgang" O R 3320 2040 39
 F3 "Eingang" I L 2405 2040 39 
 $EndSheet
 $Comp
-L D D1
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn D1
 U 1 1 57E6BA60
 P 7350 2865
 F 0 "D1" V 7290 3110 39  0000 C CNN
@@ -386,7 +376,7 @@ F 8 "Value" H 7350 2865 60  0001 C CNN "Bauform"
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR09
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR09
 U 1 1 57E6CA33
 P 7350 3065
 F 0 "#PWR09" H 7350 2815 50  0001 C CNN
@@ -406,7 +396,7 @@ F1 "Stationsled.sch" 39
 F2 "LED+" I T 3465 2270 39 
 $EndSheet
 $Comp
-L BC849 Q1
+L ardumower-mega-shield-svn-rescue:BC849-RESCUE-ardumower_mega_shield_svn Q1
 U 1 1 57F1C5EE
 P 5830 3920
 F 0 "Q1" H 6021 4011 50  0000 L CNN
@@ -426,7 +416,7 @@ IOREF
 Text GLabel 3810 2270 3    39   Input ~ 0
 StationLed
 Wire Wire Line
-	4400 2560 4400 2980
+	4400 2560 4400 2790
 Wire Wire Line
 	7250 1890 7250 1805
 Wire Wire Line
@@ -436,13 +426,13 @@ Wire Wire Line
 Wire Wire Line
 	5930 4120 5930 4420
 Wire Wire Line
-	7350 1805 7350 1885
+	7350 1805 7350 1850
 Wire Wire Line
 	5680 2790 5930 2790
 Wire Wire Line
 	5370 3920 5630 3920
 Wire Wire Line
-	5930 2890 5930 3720
+	5930 2890 5930 3415
 Wire Wire Line
 	4870 3920 5170 3920
 Wire Wire Line
@@ -453,11 +443,11 @@ Connection ~ 5930 3415
 Wire Wire Line
 	5930 2290 5865 2290
 Wire Wire Line
-	6730 2390 7665 2390
+	6730 2390 7350 2390
 Wire Wire Line
 	5120 2920 5120 3070
 Wire Wire Line
-	4920 2920 4920 3130
+	4920 2920 4920 2995
 Wire Wire Line
 	4735 3425 4735 3475
 Wire Wire Line
@@ -469,17 +459,17 @@ Wire Wire Line
 	4240 2790 4400 2790
 Connection ~ 4400 2790
 Wire Wire Line
-	3320 2040 4920 2040
+	3320 2040 3465 2040
 Wire Wire Line
 	5120 2040 5865 2040
 Wire Wire Line
-	4400 1940 4400 2360
+	4400 1940 4400 2040
 Connection ~ 4400 2040
 Wire Wire Line
 	3465 2270 3465 2040
 Connection ~ 3465 2040
 Wire Wire Line
-	1545 2040 1855 2040
+	1545 2040 1775 2040
 Wire Wire Line
 	1565 2250 1565 2140
 Wire Wire Line
@@ -488,7 +478,7 @@ Wire Wire Line
 	1775 2170 1775 2040
 Connection ~ 1775 2040
 Wire Wire Line
-	8375 2835 8375 3255
+	8375 2835 8375 3065
 Wire Wire Line
 	8375 3455 8375 3505
 Wire Wire Line
@@ -496,12 +486,12 @@ Wire Wire Line
 Connection ~ 8375 3065
 Connection ~ 7350 2390
 Wire Wire Line
-	7965 2390 9210 2390
+	7965 2390 8375 2390
 Wire Wire Line
-	8845 2550 9210 2550
+	8845 2550 9010 2550
 Connection ~ 9010 2550
 Wire Wire Line
-	2255 2040 2405 2040
+	2255 2040 2330 2040
 Wire Wire Line
 	9010 3705 9200 3705
 Wire Wire Line
@@ -511,20 +501,20 @@ Wire Wire Line
 Wire Wire Line
 	4920 2040 4920 2120
 Wire Wire Line
-	8375 730  8375 2635
+	8375 730  8375 2390
 Connection ~ 8375 2390
 Connection ~ 5680 2790
 Wire Wire Line
 	3810 2270 3810 2040
 Connection ~ 3810 2040
 Wire Wire Line
-	7350 2285 7350 2715
+	7350 2285 7350 2390
 NoConn ~ 6730 2190
 Wire Wire Line
 	9010 4120 9205 4120
 Connection ~ 9010 3705
 $Comp
-L CONN_01X02 P49
+L ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn P49
 U 1 1 5818E3A7
 P 8775 3925
 F 0 "P49" H 8855 3865 50  0000 L CNN
@@ -546,7 +536,7 @@ Kontrolle Funktion Ultraschall\nKontrolle RC Fernbedienung\nKontrolle Unterspann
 Text Notes -5910 -130 0    59   ~ 0
 https://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP33/3/index.html?ACTION=3&LA=5700&ARTICLE=115975&GROUPID=5480&artnr=TS+2940+CP33\n\nhttps://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP50/3/index.html?ACTION=3&LA=5700&ARTICLE=115976&GROUPID=5480&artnr=TS+2940+CP50\n\nhttps://www.reichelt.de/ICs-TA-TL-/TD-62783-AFWG/3/index.html?ACTION=3&LA=446&ARTICLE=188954&GROUPID=5479&artnr=TD+62783+AFWG&SEARCH=TD62783
 $Comp
-L R_Small R18
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R18
 U 1 1 587CC623
 P 5270 3920
 F 0 "R18" V 5350 3860 50  0000 L CNN
@@ -565,7 +555,7 @@ F 11 "Value" H 5270 3920 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   1    0   
 $EndComp
 $Comp
-L F_10A EF3
+L ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn EF3
 U 1 1 5891084A
 P 7945 1540
 F 0 "EF3" V 7865 1715 40  0000 C CNN
@@ -584,7 +574,7 @@ F 11 "Value" H 7945 1540 60  0001 C CNN "Hersteller Bestellnummer"
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR010
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR010
 U 1 1 58910850
 P 7845 1345
 F 0 "#PWR010" H 7845 1095 50  0001 C CNN
@@ -595,7 +585,7 @@ F 3 "" H 7845 1345 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X02 P16
+L ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn P16
 U 1 1 5891085B
 P 7895 1060
 F 0 "P16" V 8085 1060 50  0000 C CNN
@@ -623,7 +613,7 @@ Wire Wire Line
 	7945 1850 7945 1740
 Connection ~ 7350 1850
 $Comp
-L GND #PWR011
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR011
 U 1 1 589113FA
 P 9305 3175
 F 0 "#PWR011" H 9305 2925 50  0001 C CNN
@@ -634,7 +624,7 @@ F 3 "" H 9305 3175 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L CONN_01X02 P17
+L ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn P17
 U 1 1 58911405
 P 9590 3065
 F 0 "P17" H 9725 3005 50  0000 C CNN
@@ -660,11 +650,11 @@ Wire Wire Line
 	9305 3175 9305 3115
 Connection ~ 9010 3015
 Wire Wire Line
-	5680 1940 5680 2935
+	5680 1940 5680 2790
 Wire Wire Line
 	4400 1940 5680 1940
 $Comp
-L D D73
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn D73
 U 1 1 58915405
 P 7640 730
 F 0 "D73" H 7640 575 39  0000 C CNN
@@ -690,7 +680,7 @@ Wire Wire Line
 	2330 730  2330 2040
 Connection ~ 2330 2040
 Wire Wire Line
-	9010 2550 9010 3875
+	9010 2550 9010 3015
 Wire Wire Line
 	9010 3875 8975 3875
 Wire Wire Line
@@ -700,7 +690,7 @@ Wire Wire Line
 Text Notes 400  9710 0    79   ~ 0
 [21:36:55] Kurzschuss - Uwe: gut dan warte ich nochmal mit den widerständen bis du soweit bist\n[21:38:22] Kurzschuss - Uwe: Dann mache ich nur die andern Änderungen mit dem DHT22 dropsensoren usw und warte dann erst mal ab. wenn ich es habe lade ich dann hoch\n[21:38:26] Jürgen Lange: überall wo level shifter dran sind kannst du die Dioden und den widerstand wegmachen\n[21:39:37] Kurzschuss - Uwe: da warte ich erst mal wo dann noch ein widerstand dazukommt. das wird dann ein Aufwasch\n\n\n\nwenn du da gerade dran bist die ganzen reserve dinger AD7, pinOdometriyRight2 etc hast du auf iOREF versorgt da solltest du 5V dran machen da bleiben dann auch die Dioden und der widerstand\nich sehe gerade das bei den Odemetrie pin der Spannungsanschluss auf iorf liegt. Dazwischen ist dann noch der ODoteiler und der Levelshifter.\nIch vermute mal das die odemetriepins auch auf 5V müssen damit der Odoteiler richtig arbeitetein klaaaaaaares ja
 $Comp
-L R_Small R10
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R10
 U 1 1 58AB2083
 P 4400 3080
 F 0 "R10" H 4458 3126 50  0000 L CNN
@@ -719,7 +709,7 @@ F 11 "Value" H 4400 3080 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R_Small R9
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R9
 U 1 1 58AB29D6
 P 4400 2460
 F 0 "R9" H 4459 2506 50  0000 L CNN
@@ -740,7 +730,7 @@ $EndComp
 Wire Wire Line
 	5865 2040 5865 2290
 $Comp
-L +9V #PWR012
+L ardumower-mega-shield-svn-rescue:+9V-RESCUE-ardumower_mega_shield_svn #PWR012
 U 1 1 58AB809A
 P 5850 2590
 F 0 "#PWR012" H -50 -55 50  0001 C CNN
@@ -757,7 +747,7 @@ Text GLabel 6850 2490 2    39   Input ~ 0
 Wire Wire Line
 	6730 2490 6850 2490
 $Comp
-L 1N4148 D10
+L ardumower-mega-shield-svn-rescue:1N4148-RESCUE-ardumower_mega_shield_svn D10
 U 1 1 58E41856
 P 5680 3085
 F 0 "D10" V 5634 3006 50  0000 R CNN
@@ -767,4 +757,42 @@ F 3 "" H 5680 3085 50  0001 C CNN
 	1    5680 3085
 	0    1    1    0   
 $EndComp
+Wire Wire Line
+	5930 3415 5930 3720
+Wire Wire Line
+	4920 2995 4920 3130
+Wire Wire Line
+	4400 2790 4400 2980
+Wire Wire Line
+	4400 2040 4920 2040
+Wire Wire Line
+	4400 2040 4400 2360
+Wire Wire Line
+	3465 2040 3810 2040
+Wire Wire Line
+	1775 2040 1855 2040
+Wire Wire Line
+	8375 3065 8375 3255
+Wire Wire Line
+	7350 2390 7665 2390
+Wire Wire Line
+	7350 2390 7350 2715
+Wire Wire Line
+	9010 2550 9210 2550
+Wire Wire Line
+	8375 2390 9210 2390
+Wire Wire Line
+	8375 2390 8375 2635
+Wire Wire Line
+	5680 2790 5680 2935
+Wire Wire Line
+	3810 2040 4400 2040
+Wire Wire Line
+	9010 3705 9010 3875
+Wire Wire Line
+	7350 1850 7350 1885
+Wire Wire Line
+	9010 3015 9010 3705
+Wire Wire Line
+	2330 2040 2405 2040
 $EndSCHEMATC

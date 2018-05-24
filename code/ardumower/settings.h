@@ -8,7 +8,7 @@ void Robot::loadSaveRobotStats(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("PLEASE CHECK IF YOUR ROBOT STATS ARE CORRECT"));
+    Console.println(F("EEPROM STATISTICS: NO STATISTICS FOUND"));
   }
   eereadwrite(readflag, addr, statsMowTimeMinutesTrip); 
   eereadwrite(readflag, addr, statsMowTimeMinutesTotal);
@@ -29,8 +29,7 @@ void Robot::loadSaveErrorCounters(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM ERR COUNTERS: NO EEPROM ERROR DATA"));
-    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    Console.println(F("EEPROM ERROR DATA: NO ERROR COUNTERS FOUND"));    
     //addErrorCounter(ERR_EEPROM_DATA);
     //setNextState(STATE_ERROR, 0);
     return;
@@ -46,8 +45,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   if (!readflag) magic = MAGIC;  
   eereadwrite(readflag, addr, magic); // magic
   if ((readflag) && (magic != MAGIC)) {
-    Console.println(F("EEPROM USERDATA: NO EEPROM USER DATA"));
-    Console.println(F("PLEASE CHECK AND SAVE YOUR SETTINGS"));
+    Console.println(F("EEPROM USER SETTINGS: NO EEPROM USER SETTINGS FOUND"));    
     //addErrorCounter(ERR_EEPROM_DATA);
     //setNextState(STATE_ERROR, 0);
     return;
@@ -148,6 +146,7 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, tiltUse);
   eereadwrite(readflag, addr, sonarSlowBelow);
 	eereadwrite(readflag, addr, motorMowForceOff);	
+  eereadwrite(readflag, addr, freeWheelUse);  
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -508,23 +507,29 @@ void Robot::saveUserSettings(){
   Console.println(F("please wait..."));
 	Buzzer.tone(1400);
   loadSaveUserSettings(false);
-	Console.println(F("USER SETTINGS ARE SAVED"));		
+	Console.println(F("USER SETTINGS SAVED!"));		
 	Buzzer.noTone();
 }
 
 void Robot::deleteUserSettings(){
   loadSaveRobotStats(true);
   int addr = 0;
-  Console.println(F("ALL USER SETTINGS ARE DELETED"));
+  Console.println(F("ALL USER SETTINGS DELETED - PLEASE RE-POWER SYSTEM!"));
   eewrite(addr, (short)0); // magic  
   loadSaveRobotStats(false);
+  Console.println(F("system will reboot now..."));
+  Console.println();
+  Console.println();
+  Console.println();
+  delay(1000);
+  softwareReset();
 }
 
 void Robot::deleteRobotStats(){
   statsMowTimeMinutesTrip = statsMowTimeMinutesTotal = statsBatteryChargingCounterTotal =
   statsBatteryChargingCapacityTotal = statsBatteryChargingCapacityTrip = 0;
   loadSaveRobotStats(false);
-  Console.println(F("ALL ROBOT STATS ARE DELETED")); 
+  Console.println(F("ALL STATISTICS DELETED!")); 
 }
 
 void Robot::addErrorCounter(byte errType){   

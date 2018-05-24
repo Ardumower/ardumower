@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -25,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R_Small R57
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R57
 U 1 1 57E64A6C
 P 4905 3410
 F 0 "R57" H 4964 3456 50  0000 L CNN
@@ -41,7 +31,7 @@ F 8 "Value" H 4964 3107 60  0001 L CNN "Bauform"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L ZENER D7
+L ardumower-mega-shield-svn-rescue:ZENER-RESCUE-ardumower_mega_shield_svn D7
 U 1 1 57E64BD0
 P 5290 3010
 F 0 "D7" V 5244 3089 50  0000 L CNN
@@ -68,7 +58,7 @@ Eingang
 Wire Wire Line
 	4480 2755 4655 2755
 $Comp
-L GND #PWR0273
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0273
 U 1 1 57E64EC6
 P 4905 3620
 F 0 "#PWR0273" H 4905 3370 50  0001 C CNN
@@ -83,7 +73,7 @@ Eingang\n10-80V
 Text Notes -1230 1410 0    60   ~ 0
 d7 geändert\nvon ZPD15 auf\nSMD ZF 15
 $Comp
-L IRF9540N-RESCUE-ardumower_mega_shield_svn Q4
+L ardumower-mega-shield-svn-rescue:IRF9540N-RESCUE-ardumower_mega_shield_svn Q4
 U 1 1 57E9A340
 P 4855 2855
 F 0 "Q4" V 5317 2855 50  0000 C CNN

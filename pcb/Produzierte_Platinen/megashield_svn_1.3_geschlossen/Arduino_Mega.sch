@@ -1,14 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:ardumower mega shield svn-rescue
-LIBS:power
-LIBS:device
-LIBS:Zimprich
-LIBS:conn
-LIBS:transistors
-LIBS:switches
-LIBS:linear
-LIBS:texas
-LIBS:diode
+EESchema Schematic File Version 4
 LIBS:ardumower mega shield svn-cache
 EELAYER 26 0
 EELAYER END
@@ -78,7 +68,7 @@ Text GLabel 8805 1555 2    39   Input ~ 0
 ReservePin9
 NoConn ~ 4225 1590
 $Comp
-L C_Small C9
+L ardumower-mega-shield-svn-rescue:C_Small-RESCUE-ardumower_mega_shield_svn C9
 U 1 1 57DFEDC9
 P 6065 1220
 F 0 "C9" H 6157 1266 50  0000 L CNN
@@ -89,7 +79,7 @@ F 3 "" H 6065 1220 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ARDUINO_MEGA_SHIELD SHIELD1
+L ardumower-mega-shield-svn-rescue:ARDUINO_MEGA_SHIELD-RESCUE-ardumower_mega_shield_svn SHIELD1
 U 1 1 57DFED57
 P 5125 3740
 F 0 "SHIELD1" H 5175 3790 60  0001 C CNN
@@ -110,7 +100,7 @@ F 13 "ARDUINO_MEGA_SHIELD" H 5025 1040 60  0001 C CNN "Value"
 	1    0    0    -1  
 $EndComp
 $Comp
-L +9V #PWR0180
+L ardumower-mega-shield-svn-rescue:+9V-RESCUE-ardumower_mega_shield_svn #PWR0180
 U 1 1 57DB02C7
 P 3680 2290
 F 0 "#PWR0180" H 3680 2140 50  0001 C CNN
@@ -121,7 +111,7 @@ F 3 "" H 3680 2290 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +3.3V #PWR0181
+L ardumower-mega-shield-svn-rescue:+3.3V-RESCUE-ardumower_mega_shield_svn #PWR0181
 U 1 1 57DB1AC1
 P 4100 1890
 F 0 "#PWR0181" H 4100 1740 50  0001 C CNN
@@ -132,7 +122,7 @@ F 3 "" H 4100 1890 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR0182
+L ardumower-mega-shield-svn-rescue:+5V-RESCUE-ardumower_mega_shield_svn #PWR0182
 U 1 1 57DC5ACC
 P 4045 1990
 F 0 "#PWR0182" H 4045 1840 50  0001 C CNN
@@ -143,7 +133,7 @@ F 3 "" H 4045 1990 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR0183
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0183
 U 1 1 57DC997D
 P 3970 4440
 F 0 "#PWR0183" H 3970 4190 50  0001 C CNN
@@ -154,7 +144,7 @@ F 3 "" H 3970 4440 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR0184
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0184
 U 1 1 57DCA6F9
 P 6065 1070
 F 0 "#PWR0184" H 6065 820 50  0001 C CNN
@@ -165,7 +155,7 @@ F 3 "" H 6065 1070 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR0185
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0185
 U 1 1 57DCA959
 P 6105 1490
 F 0 "#PWR0185" H 6105 1240 50  0001 C CNN
@@ -176,7 +166,7 @@ F 3 "" H 6105 1490 50  0000 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L GND #PWR0186
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0186
 U 1 1 57DD92E3
 P 4045 2135
 F 0 "#PWR0186" H 4045 1885 50  0001 C CNN
@@ -10259,7 +10249,7 @@ AB 2E 00 00 00 00 49 45 4E 44 AE 42 60 82
 EndData
 $EndBitmap
 $Comp
-L R_Small R3
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R3
 U 1 1 57F0A001
 P 1680 2360
 F 0 "R3" V 1735 2360 24  0000 C CNN
@@ -10275,7 +10265,7 @@ F 8 "Value" H 1680 2360 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D11
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D11
 U 1 1 57F0A002
 P 1990 2300
 F 0 "D11" H 1875 2280 24  0000 C CNN
@@ -10293,7 +10283,7 @@ $EndComp
 Text GLabel 2150 2300 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0187
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0187
 U 1 1 57F0A003
 P 2135 2420
 F 0 "#PWR0187" H 2135 2170 50  0001 C CNN
@@ -10304,7 +10294,7 @@ F 3 "" H 2135 2420 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D24
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D24
 U 1 1 57F0A004
 P 1990 2420
 F 0 "D24" H 2110 2445 24  0000 C CNN
@@ -10320,7 +10310,7 @@ F 8 "Mini Melf" H 1990 2420 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L D_Small D32
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D32
 U 1 1 57F0D4D4
 P 8115 1455
 F 0 "D32" H 7840 1390 39  0000 C CNN
@@ -10338,7 +10328,7 @@ $EndComp
 Text GLabel 8805 1455 2    39   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0188
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0188
 U 1 1 57F0D4DE
 P 8275 1685
 F 0 "#PWR0188" H 8275 1435 50  0001 C CNN
@@ -10349,7 +10339,7 @@ F 3 "" H 8275 1685 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D35
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D35
 U 1 1 57F0D4EA
 P 8130 1685
 F 0 "D35" H 8405 1755 39  0000 C CNN
@@ -10365,7 +10355,7 @@ F 8 "0603" H 8130 1685 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L D_Small D33
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D33
 U 1 1 57F0DB33
 P 8120 1990
 F 0 "D33" H 7845 1925 39  0000 C CNN
@@ -10383,7 +10373,7 @@ $EndComp
 Text GLabel 8815 1990 2    39   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0189
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0189
 U 1 1 57F0DB3D
 P 8280 2220
 F 0 "#PWR0189" H 8280 1970 50  0001 C CNN
@@ -10394,7 +10384,7 @@ F 3 "" H 8280 2220 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D36
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D36
 U 1 1 57F0DB49
 P 8135 2220
 F 0 "D36" H 8410 2290 39  0000 C CNN
@@ -10410,7 +10400,7 @@ F 8 "0603" H 8135 2220 60  0001 C CNN "Bauform"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_Small R4
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R4
 U 1 1 57FA2040
 P 1690 2045
 F 0 "R4" V 1745 2045 24  0000 C CNN
@@ -10426,7 +10416,7 @@ F 8 "Value" H 1690 2045 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D8
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D8
 U 1 1 57FA204B
 P 2000 1985
 F 0 "D8" H 1885 1965 24  0000 C CNN
@@ -10444,7 +10434,7 @@ $EndComp
 Text GLabel 2160 1985 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0190
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0190
 U 1 1 57FA2058
 P 2145 2105
 F 0 "#PWR0190" H 2145 1855 50  0001 C CNN
@@ -10455,7 +10445,7 @@ F 3 "" H 2145 2105 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D16
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D16
 U 1 1 57FA2064
 P 2000 2105
 F 0 "D16" H 2120 2130 24  0000 C CNN
@@ -10477,7 +10467,7 @@ pinMotorLeftSense
 Text GLabel 1600 1705 0    24   Input ~ 0
 pinBatteryVoltage
 $Comp
-L R_Small R84
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R84
 U 1 1 57FA8BED
 P 1740 1705
 F 0 "R84" V 1795 1705 24  0000 C CNN
@@ -10493,7 +10483,7 @@ F 8 "Value" H 1740 1705 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D59
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D59
 U 1 1 57FA8BF8
 P 2050 1645
 F 0 "D59" H 1935 1625 24  0000 C CNN
@@ -10511,7 +10501,7 @@ $EndComp
 Text GLabel 2210 1645 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0191
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0191
 U 1 1 57FA8BFF
 P 2195 1765
 F 0 "#PWR0191" H 2195 1515 50  0001 C CNN
@@ -10522,7 +10512,7 @@ F 3 "" H 2195 1765 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D60
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D60
 U 1 1 57FA8C0A
 P 2050 1765
 F 0 "D60" H 2170 1790 24  0000 C CNN
@@ -10542,7 +10532,7 @@ pinMotorMowSense
 Text GLabel 1510 2655 0    24   Input ~ 0
 ReserveAD6
 $Comp
-L R_Small R82
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R82
 U 1 1 57FAC6F1
 P 1675 2655
 F 0 "R82" V 1730 2655 24  0000 C CNN
@@ -10558,7 +10548,7 @@ F 8 "Value" H 1675 2655 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D55
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D55
 U 1 1 57FAC6FC
 P 1985 2595
 F 0 "D55" H 1870 2575 24  0000 C CNN
@@ -10576,7 +10566,7 @@ $EndComp
 Text GLabel 2145 2595 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0192
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0192
 U 1 1 57FAC703
 P 2130 2715
 F 0 "#PWR0192" H 2130 2465 50  0001 C CNN
@@ -10587,7 +10577,7 @@ F 3 "" H 2130 2715 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D56
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D56
 U 1 1 57FAC70E
 P 1985 2715
 F 0 "D56" H 2105 2740 24  0000 C CNN
@@ -10605,7 +10595,7 @@ $EndComp
 Text GLabel 1500 2940 0    24   Input ~ 0
 ReserveAD7
 $Comp
-L R_Small R26
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R26
 U 1 1 57FADD68
 P 1665 2940
 F 0 "R26" V 1720 2940 24  0000 C CNN
@@ -10621,7 +10611,7 @@ F 8 "Value" H 1665 2940 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D53
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D53
 U 1 1 57FADD73
 P 1975 2880
 F 0 "D53" H 1860 2860 24  0000 C CNN
@@ -10639,7 +10629,7 @@ $EndComp
 Text GLabel 2135 2880 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0193
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0193
 U 1 1 57FADD7A
 P 2120 3000
 F 0 "#PWR0193" H 2120 2750 50  0001 C CNN
@@ -10650,7 +10640,7 @@ F 3 "" H 2120 3000 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D54
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D54
 U 1 1 57FADD85
 P 1975 3000
 F 0 "D54" H 2095 3025 24  0000 C CNN
@@ -10670,7 +10660,7 @@ Resv.PinAD13
 Text GLabel 3900 3790 0    24   Input ~ 0
 pinOdometryLeft
 $Comp
-L R_Small R50
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R50
 U 1 1 57FC3322
 P 1695 4310
 F 0 "R50" V 1750 4310 24  0000 C CNN
@@ -10686,7 +10676,7 @@ F 8 "Value" H 1695 4310 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D69
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D69
 U 1 1 57FC332D
 P 2005 4250
 F 0 "D69" H 1890 4230 24  0000 C CNN
@@ -10704,7 +10694,7 @@ $EndComp
 Text GLabel 2165 4250 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0194
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0194
 U 1 1 57FC3334
 P 2150 4370
 F 0 "#PWR0194" H 2150 4120 50  0001 C CNN
@@ -10715,7 +10705,7 @@ F 3 "" H 2150 4370 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D70
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D70
 U 1 1 57FC333F
 P 2005 4370
 F 0 "D70" H 2125 4395 24  0000 C CNN
@@ -10735,7 +10725,7 @@ Pinschutzschaltung
 Text GLabel 1630 3355 0    24   Input ~ 0
 pinChargeCurrent
 $Comp
-L R_Small R90
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R90
 U 1 1 57FC3374
 P 1770 3355
 F 0 "R90" V 1825 3355 24  0000 C CNN
@@ -10751,7 +10741,7 @@ F 8 "Value" H 1770 3355 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D63
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D63
 U 1 1 57FC337F
 P 2080 3295
 F 0 "D63" H 1965 3275 24  0000 C CNN
@@ -10772,7 +10762,7 @@ $EndComp
 Text GLabel 2240 3295 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0195
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0195
 U 1 1 57FC3386
 P 2225 3415
 F 0 "#PWR0195" H 2225 3165 50  0001 C CNN
@@ -10783,7 +10773,7 @@ F 3 "" H 2225 3415 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D64
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D64
 U 1 1 57FC3391
 P 2080 3415
 F 0 "D64" H 2200 3440 24  0000 C CNN
@@ -10804,7 +10794,7 @@ $EndComp
 Text GLabel 1620 3665 0    24   Input ~ 0
 pinChargeVoltage
 $Comp
-L R_Small R89
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R89
 U 1 1 57FC339D
 P 1760 3665
 F 0 "R89" V 1815 3665 24  0000 C CNN
@@ -10820,7 +10810,7 @@ F 8 "Value" H 1760 3665 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D67
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D67
 U 1 1 57FC33A8
 P 2070 3605
 F 0 "D67" H 1955 3585 24  0000 C CNN
@@ -10841,7 +10831,7 @@ $EndComp
 Text GLabel 2230 3605 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0196
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0196
 U 1 1 57FC33AF
 P 2215 3725
 F 0 "#PWR0196" H 2215 3475 50  0001 C CNN
@@ -10852,7 +10842,7 @@ F 3 "" H 2215 3725 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D68
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D68
 U 1 1 57FC33BA
 P 2070 3725
 F 0 "D68" H 2190 3750 24  0000 C CNN
@@ -10873,7 +10863,7 @@ $EndComp
 Text GLabel 1615 3965 0    24   Input ~ 0
 ReserveAD10
 $Comp
-L R_Small R88
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R88
 U 1 1 57FC33C6
 P 1755 3965
 F 0 "R88" V 1810 3965 24  0000 C CNN
@@ -10889,7 +10879,7 @@ F 8 "Value" H 1755 3965 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D71
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D71
 U 1 1 57FC33D1
 P 2065 3905
 F 0 "D71" H 1950 3885 24  0000 C CNN
@@ -10910,7 +10900,7 @@ $EndComp
 Text GLabel 2225 3905 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0197
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0197
 U 1 1 57FC33D8
 P 2210 4025
 F 0 "#PWR0197" H 2210 3775 50  0001 C CNN
@@ -10921,7 +10911,7 @@ F 3 "" H 2210 4025 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D72
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D72
 U 1 1 57FC33E3
 P 2065 4025
 F 0 "D72" H 2185 4050 24  0000 C CNN
@@ -10946,7 +10936,7 @@ pinOdometryRight
 Text GLabel 1515 4655 0    24   Input ~ 0
 Resv.PinAD15
 $Comp
-L R_Small R27
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R27
 U 1 1 57FC3441
 P 1680 4655
 F 0 "R27" V 1735 4655 24  0000 C CNN
@@ -10962,7 +10952,7 @@ F 8 "Value" H 1680 4655 60  0001 C CNN "Bauform"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D65
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D65
 U 1 1 57FC344C
 P 1990 4595
 F 0 "D65" H 1875 4575 24  0000 C CNN
@@ -10980,7 +10970,7 @@ $EndComp
 Text GLabel 2150 4595 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0198
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0198
 U 1 1 57FC3453
 P 2135 4715
 F 0 "#PWR0198" H 2135 4465 50  0001 C CNN
@@ -10991,7 +10981,7 @@ F 3 "" H 2135 4715 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D66
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D66
 U 1 1 57FC345E
 P 1990 4715
 F 0 "D66" H 2110 4740 24  0000 C CNN
@@ -11006,7 +10996,7 @@ F 8 "0603" H 1990 4715 60  0001 C CNN "Bauform"
 	1    1990 4715
 	1    0    0    -1  
 $EndComp
-Text GLabel 3290 4445 0    24   Output ~ 0
+Text GLabel 3290 4445 0    24   Input ~ 0
 pinRemoteSwitch
 Text GLabel 3110 4625 0    24   Output ~ 0
 pinButton
@@ -11015,7 +11005,7 @@ pinChargingEnable
 Text GLabel 3055 4985 0    24   Output ~ 0
 DHT22
 $Comp
-L D_Small D57
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D57
 U 1 1 57FF275D
 P 3450 4925
 F 0 "D57" H 3335 4905 24  0000 C CNN
@@ -11036,7 +11026,7 @@ $EndComp
 Text GLabel 3610 4925 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0199
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0199
 U 1 1 57FF2764
 P 3595 5045
 F 0 "#PWR0199" H 3595 4795 50  0001 C CNN
@@ -11047,7 +11037,7 @@ F 3 "" H 3595 5045 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D58
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D58
 U 1 1 57FF276F
 P 3450 5045
 F 0 "D58" H 3570 5070 24  0000 C CNN
@@ -11068,7 +11058,7 @@ $EndComp
 Text GLabel 2595 5170 0    24   Output ~ 0
 pinUserSwitch3
 $Comp
-L D_Small D61
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D61
 U 1 1 57FF62D5
 P 2980 5110
 F 0 "D61" H 2865 5090 24  0000 C CNN
@@ -11089,7 +11079,7 @@ $EndComp
 Text GLabel 3140 5110 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0200
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0200
 U 1 1 57FF62DC
 P 3125 5230
 F 0 "#PWR0200" H 3125 4980 50  0001 C CNN
@@ -11100,7 +11090,7 @@ F 3 "" H 3125 5230 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D62
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D62
 U 1 1 57FF62E7
 P 2980 5230
 F 0 "D62" H 3100 5255 24  0000 C CNN
@@ -11121,7 +11111,7 @@ $EndComp
 Text GLabel 2595 5455 0    24   Output ~ 0
 pinUserSwitch2
 $Comp
-L D_Small D49
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D49
 U 1 1 57FF75F7
 P 2970 5395
 F 0 "D49" H 2855 5375 24  0000 C CNN
@@ -11142,7 +11132,7 @@ $EndComp
 Text GLabel 3130 5395 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0201
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0201
 U 1 1 57FF75FE
 P 3115 5515
 F 0 "#PWR0201" H 3115 5265 50  0001 C CNN
@@ -11153,7 +11143,7 @@ F 3 "" H 3115 5515 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D50
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D50
 U 1 1 57FF7609
 P 2970 5515
 F 0 "D50" H 3090 5540 24  0000 C CNN
@@ -11174,7 +11164,7 @@ $EndComp
 Text GLabel 825  5610 0    24   Output ~ 0
 pinUserSwitch1
 $Comp
-L D_Small D51
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D51
 U 1 1 57FF94E5
 P 1200 5550
 F 0 "D51" H 1085 5530 24  0000 C CNN
@@ -11195,7 +11185,7 @@ $EndComp
 Text GLabel 1360 5550 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0202
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0202
 U 1 1 57FF94EC
 P 1345 5670
 F 0 "#PWR0202" H 1345 5420 50  0001 C CNN
@@ -11206,7 +11196,7 @@ F 3 "" H 1345 5670 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D52
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D52
 U 1 1 57FF94F7
 P 1200 5670
 F 0 "D52" H 1320 5695 24  0000 C CNN
@@ -11227,7 +11217,7 @@ $EndComp
 Text GLabel 725  6015 0    24   Output ~ 0
 DropLeft
 $Comp
-L D_Small D47
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D47
 U 1 1 57FFA77D
 P 1365 5955
 F 0 "D47" H 1290 5930 24  0000 C CNN
@@ -11245,7 +11235,7 @@ $EndComp
 Text GLabel 1525 5955 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0203
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0203
 U 1 1 57FFA784
 P 1510 6075
 F 0 "#PWR0203" H 1510 5825 50  0001 C CNN
@@ -11256,7 +11246,7 @@ F 3 "" H 1510 6075 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D48
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D48
 U 1 1 57FFA78F
 P 1365 6075
 F 0 "D48" H 1485 6100 24  0000 C CNN
@@ -11277,7 +11267,7 @@ $EndComp
 Text GLabel 720  6300 0    24   Output ~ 0
 pinRain
 $Comp
-L D_Small D45
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D45
 U 1 1 57FFBE92
 P 1105 6240
 F 0 "D45" H 990 6220 24  0000 C CNN
@@ -11298,7 +11288,7 @@ $EndComp
 Text GLabel 1265 6240 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0204
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0204
 U 1 1 57FFBE99
 P 1250 6360
 F 0 "#PWR0204" H 1250 6110 50  0001 C CNN
@@ -11309,7 +11299,7 @@ F 3 "" H 1250 6360 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D46
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D46
 U 1 1 57FFBEA4
 P 1105 6360
 F 0 "D46" H 1225 6385 24  0000 C CNN
@@ -11330,7 +11320,7 @@ $EndComp
 Text GLabel 930  6915 0    24   Output ~ 0
 pinLawnBackSend
 $Comp
-L D_Small D43
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D43
 U 1 1 57FFD738
 P 1315 6855
 F 0 "D43" H 1200 6835 24  0000 C CNN
@@ -11351,7 +11341,7 @@ $EndComp
 Text GLabel 1635 6855 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0205
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0205
 U 1 1 57FFD73F
 P 1460 6975
 F 0 "#PWR0205" H 1460 6725 50  0001 C CNN
@@ -11362,7 +11352,7 @@ F 3 "" H 1460 6975 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D44
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D44
 U 1 1 57FFD74A
 P 1315 6975
 F 0 "D44" H 1435 7000 24  0000 C CNN
@@ -11383,7 +11373,7 @@ $EndComp
 Text GLabel 940  7435 0    24   Output ~ 0
 pinLawnBackRecv
 $Comp
-L D_Small D41
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D41
 U 1 1 58000317
 P 1320 7375
 F 0 "D41" H 1205 7355 24  0000 C CNN
@@ -11404,7 +11394,7 @@ $EndComp
 Text GLabel 1705 7375 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0206
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0206
 U 1 1 5800031E
 P 1465 7495
 F 0 "#PWR0206" H 1465 7245 50  0001 C CNN
@@ -11415,7 +11405,7 @@ F 3 "" H 1465 7495 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D42
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D42
 U 1 1 58000329
 P 1320 7495
 F 0 "D42" H 1440 7520 24  0000 C CNN
@@ -11436,7 +11426,7 @@ $EndComp
 Text GLabel 3130 6085 0    24   Output ~ 0
 pinLawnFrontSend
 $Comp
-L D_Small D39
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D39
 U 1 1 58002CAA
 P 3505 6025
 F 0 "D39" H 3390 6005 24  0000 C CNN
@@ -11457,7 +11447,7 @@ $EndComp
 Text GLabel 3735 6025 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0207
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0207
 U 1 1 58002CB1
 P 3650 6145
 F 0 "#PWR0207" H 3650 5895 50  0001 C CNN
@@ -11468,7 +11458,7 @@ F 3 "" H 3650 6145 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D40
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D40
 U 1 1 58002CBC
 P 3505 6145
 F 0 "D40" H 3625 6170 24  0000 C CNN
@@ -11489,7 +11479,7 @@ $EndComp
 Text GLabel 3135 6495 0    24   Output ~ 0
 pinLawnFrontRecv
 $Comp
-L D_Small D37
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D37
 U 1 1 5800454D
 P 3505 6435
 F 0 "D37" H 3390 6415 24  0000 C CNN
@@ -11510,7 +11500,7 @@ $EndComp
 Text GLabel 3775 6435 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0208
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0208
 U 1 1 58004554
 P 3650 6555
 F 0 "#PWR0208" H 3650 6305 50  0001 C CNN
@@ -11521,7 +11511,7 @@ F 3 "" H 3650 6555 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D38
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D38
 U 1 1 5800455F
 P 3505 6555
 F 0 "D38" H 3625 6580 24  0000 C CNN
@@ -11542,7 +11532,7 @@ $EndComp
 Text GLabel 3115 6930 0    24   Output ~ 0
 pinBumperLeft
 $Comp
-L D_Small D31
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D31
 U 1 1 58005B85
 P 3500 6870
 F 0 "D31" H 3385 6850 24  0000 C CNN
@@ -11563,7 +11553,7 @@ $EndComp
 Text GLabel 3755 6870 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0209
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0209
 U 1 1 58005B8C
 P 3645 6990
 F 0 "#PWR0209" H 3645 6740 50  0001 C CNN
@@ -11574,7 +11564,7 @@ F 3 "" H 3645 6990 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D34
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D34
 U 1 1 58005B97
 P 3500 6990
 F 0 "D34" H 3620 7015 24  0000 C CNN
@@ -11595,7 +11585,7 @@ $EndComp
 Text GLabel 3105 7430 0    24   Output ~ 0
 pinBumperRight
 $Comp
-L D_Small D29
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D29
 U 1 1 580072EC
 P 3495 7370
 F 0 "D29" H 3380 7350 24  0000 C CNN
@@ -11616,7 +11606,7 @@ $EndComp
 Text GLabel 3770 7370 2    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0210
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0210
 U 1 1 580072F3
 P 3640 7490
 F 0 "#PWR0210" H 3640 7240 50  0001 C CNN
@@ -11627,7 +11617,7 @@ F 3 "" H 3640 7490 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L D_Small D30
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D30
 U 1 1 580072FE
 P 3495 7490
 F 0 "D30" H 3615 7515 24  0000 C CNN
@@ -11656,7 +11646,7 @@ pinSonarRightTrigger
 Text GLabel 7520 5740 2    24   Output ~ 0
 pinTilt
 $Comp
-L D_Small D28
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D28
 U 1 1 58007C16
 P 7135 5680
 F 0 "D28" H 7020 5660 24  0000 C CNN
@@ -11677,7 +11667,7 @@ $EndComp
 Text GLabel 6975 5680 0    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0211
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0211
 U 1 1 58007C1D
 P 6990 5800
 F 0 "#PWR0211" H 6990 5550 50  0001 C CNN
@@ -11688,7 +11678,7 @@ F 3 "" H 6990 5800 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L D_Small D27
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D27
 U 1 1 58007C28
 P 7135 5800
 F 0 "D27" H 7255 5825 24  0000 C CNN
@@ -11745,7 +11735,7 @@ Wire Wire Line
 Wire Wire Line
 	6025 3490 6225 3490
 Wire Wire Line
-	6025 5740 7280 5740
+	6025 5740 7235 5740
 Wire Wire Line
 	3880 5890 4125 5890
 Wire Wire Line
@@ -11797,7 +11787,7 @@ Wire Wire Line
 Wire Wire Line
 	6025 2590 7180 2590
 Wire Wire Line
-	6025 2090 8515 2090
+	6025 2090 7850 2090
 Wire Wire Line
 	6025 1790 6620 1790
 Wire Wire Line
@@ -11811,7 +11801,7 @@ Wire Wire Line
 Wire Wire Line
 	6025 4690 6180 4690
 Wire Wire Line
-	6025 4490 7220 4490
+	6025 4490 7160 4490
 Wire Wire Line
 	3940 5990 4125 5990
 Wire Wire Line
@@ -11821,7 +11811,7 @@ Wire Wire Line
 Wire Wire Line
 	3855 4590 4125 4590
 Wire Wire Line
-	3970 4440 4125 4440
+	3970 4440 4055 4440
 Wire Wire Line
 	3925 3990 4125 3990
 Wire Wire Line
@@ -11862,7 +11852,7 @@ Wire Wire Line
 Wire Wire Line
 	4075 2190 4125 2190
 Wire Wire Line
-	4075 2090 4075 2190
+	4075 2090 4075 2135
 Wire Wire Line
 	4045 2135 4075 2135
 Connection ~ 4075 2135
@@ -11885,16 +11875,16 @@ Wire Wire Line
 Wire Wire Line
 	2090 2300 2150 2300
 Wire Wire Line
-	1890 2300 1890 2420
+	1890 2300 1890 2360
 Connection ~ 1890 2360
 Wire Wire Line
 	2135 2420 2090 2420
 Wire Wire Line
 	6485 1590 6025 1590
 Wire Wire Line
-	8215 1455 8805 1455
+	8215 1455 8555 1455
 Wire Wire Line
-	7845 1290 7845 1685
+	7845 1290 7845 1455
 Connection ~ 7845 1555
 Wire Wire Line
 	8275 1685 8230 1685
@@ -11903,13 +11893,13 @@ Wire Wire Line
 Wire Wire Line
 	7845 1685 8030 1685
 Wire Wire Line
-	7705 1555 8470 1555
+	7705 1555 7845 1555
 Wire Wire Line
 	7705 1555 7705 1990
 Wire Wire Line
-	8220 1990 8815 1990
+	8220 1990 8585 1990
 Wire Wire Line
-	7850 1835 7850 2220
+	7850 1835 7850 1990
 Connection ~ 7850 2090
 Wire Wire Line
 	8280 2220 8235 2220
@@ -11922,9 +11912,9 @@ Wire Wire Line
 Wire Wire Line
 	2100 1985 2160 1985
 Wire Wire Line
-	1790 2045 2630 2045
+	1790 2045 1900 2045
 Wire Wire Line
-	1900 1985 1900 2105
+	1900 1985 1900 2045
 Connection ~ 1900 2045
 Wire Wire Line
 	2145 2105 2100 2105
@@ -11945,14 +11935,14 @@ Wire Wire Line
 Wire Wire Line
 	2150 1645 2210 1645
 Wire Wire Line
-	1950 1645 1950 1765
+	1950 1645 1950 1705
 Connection ~ 1950 1705
 Wire Wire Line
 	2195 1765 2150 1765
 Wire Wire Line
 	1600 1705 1640 1705
 Wire Wire Line
-	1840 1705 2735 1705
+	1840 1705 1950 1705
 Wire Wire Line
 	2735 1705 2735 2690
 Wire Wire Line
@@ -11964,11 +11954,11 @@ Wire Wire Line
 Wire Wire Line
 	2570 2990 2570 2360
 Wire Wire Line
-	2570 2360 1780 2360
+	2570 2360 1890 2360
 Wire Wire Line
 	2085 2595 2145 2595
 Wire Wire Line
-	1885 2595 1885 2715
+	1885 2595 1885 2655
 Connection ~ 1885 2655
 Wire Wire Line
 	2130 2715 2085 2715
@@ -11977,11 +11967,11 @@ Wire Wire Line
 Wire Wire Line
 	2515 2655 2515 3090
 Wire Wire Line
-	1775 2655 2515 2655
+	1775 2655 1885 2655
 Wire Wire Line
 	2075 2880 2135 2880
 Wire Wire Line
-	1875 2880 1875 3000
+	1875 2880 1875 2940
 Connection ~ 1875 2940
 Wire Wire Line
 	2120 3000 2075 3000
@@ -11990,11 +11980,11 @@ Wire Wire Line
 Wire Wire Line
 	2465 2940 2465 3190
 Wire Wire Line
-	1765 2940 2465 2940
+	1765 2940 1875 2940
 Wire Wire Line
 	2105 4250 2165 4250
 Wire Wire Line
-	1905 4250 1905 4370
+	1905 4250 1905 4310
 Connection ~ 1905 4310
 Wire Wire Line
 	2150 4370 2105 4370
@@ -12003,9 +11993,9 @@ Wire Wire Line
 Wire Wire Line
 	2180 3295 2240 3295
 Wire Wire Line
-	1870 3355 2430 3355
+	1870 3355 1980 3355
 Wire Wire Line
-	1980 3295 1980 3415
+	1980 3295 1980 3355
 Connection ~ 1980 3355
 Wire Wire Line
 	2225 3415 2180 3415
@@ -12014,9 +12004,9 @@ Wire Wire Line
 Wire Wire Line
 	2170 3605 2230 3605
 Wire Wire Line
-	1860 3665 2380 3665
+	1860 3665 1970 3665
 Wire Wire Line
-	1970 3605 1970 3725
+	1970 3605 1970 3665
 Connection ~ 1970 3665
 Wire Wire Line
 	2215 3725 2170 3725
@@ -12025,27 +12015,27 @@ Wire Wire Line
 Wire Wire Line
 	2165 3905 2225 3905
 Wire Wire Line
-	1965 3905 1965 4025
+	1965 3905 1965 3965
 Connection ~ 1965 3965
 Wire Wire Line
 	2210 4025 2165 4025
 Wire Wire Line
 	1615 3965 1655 3965
 Wire Wire Line
-	1855 3965 2410 3965
+	1855 3965 1965 3965
 Wire Wire Line
-	1795 4310 2470 4310
+	1795 4310 1905 4310
 Wire Wire Line
 	2090 4595 2150 4595
 Wire Wire Line
-	1890 4595 1890 4715
+	1890 4595 1890 4655
 Connection ~ 1890 4655
 Wire Wire Line
 	2135 4715 2090 4715
 Wire Wire Line
 	1580 4655 1515 4655
 Wire Wire Line
-	1780 4655 2510 4655
+	1780 4655 1890 4655
 Wire Wire Line
 	2430 3390 4125 3390
 Wire Wire Line
@@ -12067,7 +12057,7 @@ Wire Wire Line
 Wire Wire Line
 	3825 4445 3825 4690
 Wire Wire Line
-	3110 4625 3790 4625
+	3110 4625 3175 4625
 Wire Wire Line
 	3790 4625 3790 4790
 Wire Wire Line
@@ -12075,10 +12065,10 @@ Wire Wire Line
 Wire Wire Line
 	3755 4795 3755 4890
 Wire Wire Line
-	3350 4925 3350 5045
+	3350 4925 3350 4985
 Connection ~ 3350 4985
 Wire Wire Line
-	3305 4985 4085 4985
+	3305 4985 3350 4985
 Wire Wire Line
 	3595 5045 3550 5045
 Wire Wire Line
@@ -12090,21 +12080,21 @@ Wire Wire Line
 Wire Wire Line
 	3080 5110 3140 5110
 Wire Wire Line
-	2880 5110 2880 5230
+	2880 5110 2880 5170
 Connection ~ 2880 5170
 Wire Wire Line
 	3125 5230 3080 5230
 Wire Wire Line
-	2835 5170 4055 5170
+	2835 5170 2880 5170
 Wire Wire Line
 	4055 5170 4055 5140
 Wire Wire Line
 	3070 5395 3130 5395
 Wire Wire Line
-	2870 5395 2870 5515
+	2870 5395 2870 5455
 Connection ~ 2870 5455
 Wire Wire Line
-	2835 5455 3820 5455
+	2835 5455 2870 5455
 Wire Wire Line
 	3820 5455 3820 5240
 Wire Wire Line
@@ -12113,18 +12103,18 @@ Wire Wire Line
 	1300 5550 1360 5550
 Connection ~ 1100 5610
 Wire Wire Line
-	1055 5610 3880 5610
+	1055 5610 1100 5610
 Wire Wire Line
 	1345 5670 1300 5670
 Wire Wire Line
 	3880 5610 3880 5340
 Wire Wire Line
-	1465 5955 1525 5955
+	1465 5955 1495 5955
 Wire Wire Line
-	1265 5840 1265 6075
+	1265 5840 1265 5955
 Connection ~ 1265 6015
 Wire Wire Line
-	1200 6015 1715 6015
+	1200 6015 1265 6015
 Wire Wire Line
 	1510 6075 1465 6075
 Wire Wire Line
@@ -12134,10 +12124,10 @@ Wire Wire Line
 Wire Wire Line
 	1715 5630 1715 6015
 Wire Wire Line
-	1005 6240 1005 6360
+	1005 6240 1005 6300
 Connection ~ 1005 6300
 Wire Wire Line
-	960  6300 1755 6300
+	960  6300 1005 6300
 Wire Wire Line
 	1250 6360 1205 6360
 Wire Wire Line
@@ -12147,9 +12137,9 @@ Wire Wire Line
 Wire Wire Line
 	1755 6300 1755 5650
 Wire Wire Line
-	1415 6855 1635 6855
+	1415 6855 1575 6855
 Wire Wire Line
-	1170 6915 1805 6915
+	1170 6915 1190 6915
 Wire Wire Line
 	1460 6975 1415 6975
 Wire Wire Line
@@ -12159,39 +12149,39 @@ Wire Wire Line
 Wire Wire Line
 	1805 5670 1805 6915
 Wire Wire Line
-	1420 7375 1705 7375
+	1420 7375 1620 7375
 Wire Wire Line
-	1175 7435 1870 7435
+	1175 7435 1195 7435
 Wire Wire Line
 	1465 7495 1420 7495
 Wire Wire Line
-	3605 6025 3735 6025
+	3605 6025 3710 6025
 Wire Wire Line
-	3360 6085 3880 6085
+	3360 6085 3380 6085
 Wire Wire Line
 	3650 6145 3605 6145
 Wire Wire Line
 	3880 6085 3880 5890
 Wire Wire Line
-	3605 6435 3775 6435
+	3605 6435 3730 6435
 Wire Wire Line
-	3360 6495 3940 6495
+	3360 6495 3380 6495
 Wire Wire Line
 	3650 6555 3605 6555
 Wire Wire Line
 	3940 6495 3940 5990
 Wire Wire Line
-	3600 6870 3755 6870
+	3600 6870 3715 6870
 Wire Wire Line
-	3355 6930 4015 6930
+	3355 6930 3375 6930
 Wire Wire Line
 	3645 6990 3600 6990
 Wire Wire Line
 	4015 6930 4015 6090
 Wire Wire Line
-	3595 7370 3770 7370
+	3595 7370 3735 7370
 Wire Wire Line
-	3350 7430 4090 7430
+	3350 7430 3375 7430
 Wire Wire Line
 	3640 7490 3595 7490
 Wire Wire Line
@@ -12199,14 +12189,14 @@ Wire Wire Line
 Wire Wire Line
 	7035 5680 6975 5680
 Wire Wire Line
-	7235 5680 7235 5800
+	7235 5680 7235 5740
 Connection ~ 7235 5740
 Wire Wire Line
 	6990 5800 7035 5800
 Text GLabel 7695 4490 2    24   Output ~ 0
 DropRight
 $Comp
-L D_Small D26
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D26
 U 1 1 58031082
 P 7030 4430
 F 0 "D26" H 7030 4515 24  0000 C CNN
@@ -12224,7 +12214,7 @@ $EndComp
 Text GLabel 6870 4430 0    24   Input ~ 0
 IOREF
 $Comp
-L GND #PWR0212
+L ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn #PWR0212
 U 1 1 58031089
 P 6915 4550
 F 0 "#PWR0212" H 6915 4300 50  0001 C CNN
@@ -12235,7 +12225,7 @@ F 3 "" H 6915 4550 50  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L D_Small D25
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D25
 U 1 1 58031094
 P 7060 4550
 F 0 "D25" H 7180 4575 24  0000 C CNN
@@ -12256,9 +12246,9 @@ $EndComp
 Text GLabel 6180 4390 2    24   Output ~ 0
 pinSonarCenterEcho
 Wire Wire Line
-	6870 4430 6930 4430
+	6870 4430 6900 4430
 Wire Wire Line
-	7160 4285 7160 4550
+	7160 4285 7160 4430
 Connection ~ 7160 4490
 Wire Wire Line
 	6915 4550 6960 4550
@@ -12281,7 +12271,7 @@ Wire Wire Line
 Text Notes 2525 4690 0    28   ~ 0
 Pinbutton\ndurch Diode D14\ngeschützt ??
 $Comp
-L D_Small D6
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D6
 U 1 1 58A629D6
 P 7555 4490
 F 0 "D6" H 7555 4555 24  0000 C CNN
@@ -12300,7 +12290,7 @@ F 11 "Value" H 7555 4490 60  0001 C CNN "Hersteller Bestellnummer"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R_Small R103
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R103
 U 1 1 58A63E2B
 P 7320 4490
 F 0 "R103" V 7375 4490 24  0000 C CNN
@@ -12327,7 +12317,7 @@ Text Notes 7480 3735 0    24   ~ 0
 Wire Wire Line
 	7160 4430 7130 4430
 $Comp
-L R_Small R54
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R54
 U 1 1 58A6469A
 P 3260 6085
 F 0 "R54" V 3315 6085 24  0000 C CNN
@@ -12348,7 +12338,7 @@ $EndComp
 Wire Wire Line
 	3160 6085 3130 6085
 $Comp
-L R_Small R29
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R29
 U 1 1 58A65591
 P 3260 6495
 F 0 "R29" V 3315 6495 24  0000 C CNN
@@ -12371,7 +12361,7 @@ Wire Wire Line
 Wire Wire Line
 	3160 6495 3135 6495
 $Comp
-L R_Small R85
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R85
 U 1 1 58A78080
 P 1070 6915
 F 0 "R85" V 1125 6915 24  0000 C CNN
@@ -12390,7 +12380,7 @@ F 11 "Value" H 1070 6915 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R_Small R83
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R83
 U 1 1 58A787D8
 P 1075 7435
 F 0 "R83" V 1130 7435 24  0000 C CNN
@@ -12413,7 +12403,7 @@ Wire Wire Line
 Wire Wire Line
 	975  7435 940  7435
 $Comp
-L R_Small R86
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R86
 U 1 1 58A7A83A
 P 860 6300
 F 0 "R86" V 915 6300 24  0000 C CNN
@@ -12434,7 +12424,7 @@ $EndComp
 Wire Wire Line
 	760  6300 720  6300
 $Comp
-L R_Small R105
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R105
 U 1 1 58A7BF75
 P 3255 6930
 F 0 "R105" V 3310 6930 24  0000 C CNN
@@ -12453,7 +12443,7 @@ F 11 "Value" H 3255 6930 60  0001 C CNN "Hersteller Bestellnummer"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R_Small R87
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R87
 U 1 1 58A7C052
 P 3250 7430
 F 0 "R87" V 3305 7430 24  0000 C CNN
@@ -12476,7 +12466,7 @@ Wire Wire Line
 Wire Wire Line
 	3150 7430 3105 7430
 $Comp
-L R_Small R106
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R106
 U 1 1 58A7D74D
 P 955 5610
 F 0 "R106" V 1010 5610 24  0000 C CNN
@@ -12497,7 +12487,7 @@ $EndComp
 Wire Wire Line
 	855  5610 825  5610
 $Comp
-L R_Small R108
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R108
 U 1 1 58A7E859
 P 2735 5455
 F 0 "R108" V 2790 5455 24  0000 C CNN
@@ -12518,7 +12508,7 @@ $EndComp
 Wire Wire Line
 	2635 5455 2595 5455
 $Comp
-L R_Small R107
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R107
 U 1 1 58A7F07D
 P 2735 5170
 F 0 "R107" V 2790 5170 24  0000 C CNN
@@ -12539,7 +12529,7 @@ $EndComp
 Wire Wire Line
 	2635 5170 2595 5170
 $Comp
-L R_Small R109
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R109
 U 1 1 58A80A5D
 P 3205 4985
 F 0 "R109" V 3260 4985 24  0000 C CNN
@@ -12560,7 +12550,7 @@ $EndComp
 Wire Wire Line
 	3105 4985 3055 4985
 $Comp
-L R_Small R110
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R110
 U 1 1 58A83019
 P 7380 5740
 F 0 "R110" V 7435 5740 24  0000 C CNN
@@ -12581,7 +12571,7 @@ $EndComp
 Wire Wire Line
 	7480 5740 7520 5740
 $Comp
-L R_Small R112
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R112
 U 1 1 58A88518
 P 8615 2090
 F 0 "R112" V 8670 2090 24  0000 C CNN
@@ -12602,7 +12592,7 @@ $EndComp
 Wire Wire Line
 	8715 2090 8815 2090
 $Comp
-L R_Small R111
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R111
 U 1 1 58A89DD4
 P 8570 1555
 F 0 "R111" V 8625 1555 24  0000 C CNN
@@ -12623,7 +12613,7 @@ $EndComp
 Wire Wire Line
 	8670 1555 8805 1555
 $Comp
-L R_Small R114
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R114
 U 1 1 58A87246
 P 7035 4285
 F 0 "R114" V 7090 4285 24  0000 C CNN
@@ -12650,7 +12640,7 @@ Wire Wire Line
 	6900 4285 6900 4430
 Connection ~ 6900 4430
 $Comp
-L D_Small D5
+L ardumower-mega-shield-svn-rescue:D_Small-RESCUE-ardumower_mega_shield_svn D5
 U 1 1 58A89512
 P 865 6015
 F 0 "D5" H 865 6080 24  0000 C CNN
@@ -12669,7 +12659,7 @@ F 11 "Value" H 865 6015 60  0001 C CNN "Hersteller Bestellnummer"
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_Small R104
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R104
 U 1 1 58A89520
 P 1100 6015
 F 0 "R104" V 1155 6015 24  0000 C CNN
@@ -12692,9 +12682,9 @@ Wire Wire Line
 Wire Wire Line
 	765  6015 725  6015
 Wire Wire Line
-	1100 5550 1100 5670
+	1100 5550 1100 5610
 $Comp
-L R_Small R113
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R113
 U 1 1 58A89531
 P 1380 5840
 F 0 "R113" V 1435 5840 24  0000 C CNN
@@ -12721,7 +12711,7 @@ Wire Wire Line
 	1495 5840 1480 5840
 Connection ~ 1495 5955
 $Comp
-L D D74
+L ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn D74
 U 1 1 58DD7FAF
 P 3905 2290
 F 0 "D74" H 4045 2340 50  0000 C CNN
@@ -12746,7 +12736,7 @@ Wire Wire Line
 Wire Wire Line
 	1870 5740 1870 7435
 $Comp
-L R_Small R132
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R132
 U 1 1 58E29233
 P 3505 7250
 F 0 "R132" V 3560 7250 24  0000 C CNN
@@ -12774,7 +12764,7 @@ Connection ~ 3735 7370
 Wire Wire Line
 	3375 7490 3395 7490
 Wire Wire Line
-	3375 7250 3375 7490
+	3375 7250 3375 7370
 Connection ~ 3375 7430
 Wire Wire Line
 	3375 7370 3395 7370
@@ -12782,26 +12772,26 @@ Connection ~ 3375 7370
 Wire Wire Line
 	3375 6990 3400 6990
 Wire Wire Line
-	3375 6750 3375 6990
+	3375 6750 3375 6870
 Connection ~ 3375 6930
 Wire Wire Line
 	3375 6870 3400 6870
 Wire Wire Line
 	3380 6555 3405 6555
 Wire Wire Line
-	3380 6315 3380 6555
+	3380 6315 3380 6435
 Connection ~ 3380 6495
 Wire Wire Line
 	3380 6435 3405 6435
 Wire Wire Line
 	3380 6145 3405 6145
 Wire Wire Line
-	3380 5890 3380 6145
+	3380 5890 3380 6025
 Connection ~ 3380 6085
 Wire Wire Line
 	3380 6025 3405 6025
 $Comp
-L R_Small R131
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R131
 U 1 1 58E2EE48
 P 3505 6750
 F 0 "R131" V 3560 6750 24  0000 C CNN
@@ -12828,7 +12818,7 @@ Wire Wire Line
 	3715 6750 3715 6870
 Connection ~ 3715 6870
 $Comp
-L R_Small R125
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R125
 U 1 1 58E1D162
 P 3500 5890
 F 0 "R125" V 3555 5890 24  0000 C CNN
@@ -12855,7 +12845,7 @@ Wire Wire Line
 	3710 5890 3710 6025
 Connection ~ 3710 6025
 $Comp
-L R_Small R126
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R126
 U 1 1 58E1F2DD
 P 3510 6315
 F 0 "R126" V 3565 6315 24  0000 C CNN
@@ -12882,7 +12872,7 @@ Wire Wire Line
 	3730 6315 3730 6435
 Connection ~ 3730 6435
 $Comp
-L R_Small R127
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R127
 U 1 1 58E20962
 P 1345 6735
 F 0 "R127" V 1400 6735 24  0000 C CNN
@@ -12903,7 +12893,7 @@ $EndComp
 Wire Wire Line
 	1190 6975 1215 6975
 Wire Wire Line
-	1190 6735 1190 6975
+	1190 6735 1190 6855
 Connection ~ 1190 6915
 Wire Wire Line
 	1190 6855 1215 6855
@@ -12916,7 +12906,7 @@ Wire Wire Line
 	1575 6735 1575 6855
 Connection ~ 1575 6855
 $Comp
-L R_Small R128
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R128
 U 1 1 58E2325B
 P 1360 7255
 F 0 "R128" V 1415 7255 24  0000 C CNN
@@ -12937,7 +12927,7 @@ $EndComp
 Wire Wire Line
 	1195 7495 1220 7495
 Wire Wire Line
-	1195 7255 1195 7495
+	1195 7255 1195 7375
 Connection ~ 1195 7435
 Wire Wire Line
 	1195 7375 1220 7375
@@ -12950,7 +12940,7 @@ Wire Wire Line
 	1620 7255 1620 7375
 Connection ~ 1620 7375
 $Comp
-L R_Small R130
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R130
 U 1 1 58E2A3CB
 P 8135 1835
 F 0 "R130" V 8190 1835 24  0000 C CNN
@@ -12977,7 +12967,7 @@ Wire Wire Line
 	8035 1835 7850 1835
 Connection ~ 7850 1990
 $Comp
-L R_Small R129
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R129
 U 1 1 58E3014A
 P 8120 1290
 F 0 "R129" V 8175 1290 24  0000 C CNN
@@ -13004,7 +12994,7 @@ Wire Wire Line
 	8555 1290 8555 1455
 Connection ~ 8555 1455
 $Comp
-L R_Small R133
+L ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn R133
 U 1 1 58E350CD
 P 3320 4560
 F 0 "R133" V 3375 4560 24  0000 C CNN
@@ -13031,4 +13021,154 @@ Wire Wire Line
 Wire Wire Line
 	3175 4560 3175 4625
 Connection ~ 3175 4625
+Wire Wire Line
+	4055 4440 4125 4440
+Wire Wire Line
+	4075 2135 4075 2190
+Wire Wire Line
+	1890 2360 1890 2420
+Wire Wire Line
+	1890 2360 1780 2360
+Wire Wire Line
+	7845 1555 7845 1685
+Wire Wire Line
+	7845 1555 8470 1555
+Wire Wire Line
+	7850 2090 8515 2090
+Wire Wire Line
+	7850 2090 7850 2220
+Wire Wire Line
+	1900 2045 2630 2045
+Wire Wire Line
+	1900 2045 1900 2105
+Wire Wire Line
+	1950 1705 1950 1765
+Wire Wire Line
+	1950 1705 2735 1705
+Wire Wire Line
+	1885 2655 1885 2715
+Wire Wire Line
+	1885 2655 2515 2655
+Wire Wire Line
+	1875 2940 1875 3000
+Wire Wire Line
+	1875 2940 2465 2940
+Wire Wire Line
+	1905 4310 1905 4370
+Wire Wire Line
+	1905 4310 2470 4310
+Wire Wire Line
+	1980 3355 2430 3355
+Wire Wire Line
+	1980 3355 1980 3415
+Wire Wire Line
+	1970 3665 2380 3665
+Wire Wire Line
+	1970 3665 1970 3725
+Wire Wire Line
+	1965 3965 1965 4025
+Wire Wire Line
+	1965 3965 2410 3965
+Wire Wire Line
+	1890 4655 1890 4715
+Wire Wire Line
+	1890 4655 2510 4655
+Wire Wire Line
+	3350 4985 3350 5045
+Wire Wire Line
+	3350 4985 4085 4985
+Wire Wire Line
+	2880 5170 2880 5230
+Wire Wire Line
+	2880 5170 4055 5170
+Wire Wire Line
+	2870 5455 2870 5515
+Wire Wire Line
+	2870 5455 3820 5455
+Wire Wire Line
+	1100 5610 3880 5610
+Wire Wire Line
+	1100 5610 1100 5670
+Wire Wire Line
+	1265 6015 1265 6075
+Wire Wire Line
+	1265 6015 1715 6015
+Wire Wire Line
+	1005 6300 1005 6360
+Wire Wire Line
+	1005 6300 1755 6300
+Wire Wire Line
+	7235 5740 7280 5740
+Wire Wire Line
+	7235 5740 7235 5800
+Wire Wire Line
+	7160 4490 7220 4490
+Wire Wire Line
+	7160 4490 7160 4550
+Wire Wire Line
+	7160 4430 7160 4490
+Wire Wire Line
+	6900 4430 6930 4430
+Wire Wire Line
+	1265 5955 1265 6015
+Wire Wire Line
+	1495 5955 1525 5955
+Wire Wire Line
+	3735 7370 3770 7370
+Wire Wire Line
+	3375 7430 4090 7430
+Wire Wire Line
+	3375 7430 3375 7490
+Wire Wire Line
+	3375 7370 3375 7430
+Wire Wire Line
+	3375 6930 4015 6930
+Wire Wire Line
+	3375 6930 3375 6990
+Wire Wire Line
+	3380 6495 3940 6495
+Wire Wire Line
+	3380 6495 3380 6555
+Wire Wire Line
+	3380 6085 3880 6085
+Wire Wire Line
+	3380 6085 3380 6145
+Wire Wire Line
+	3375 6870 3375 6930
+Wire Wire Line
+	3715 6870 3755 6870
+Wire Wire Line
+	3380 6025 3380 6085
+Wire Wire Line
+	3710 6025 3735 6025
+Wire Wire Line
+	3380 6435 3380 6495
+Wire Wire Line
+	3730 6435 3775 6435
+Wire Wire Line
+	1190 6915 1805 6915
+Wire Wire Line
+	1190 6915 1190 6975
+Wire Wire Line
+	1190 6855 1190 6915
+Wire Wire Line
+	1575 6855 1635 6855
+Wire Wire Line
+	1195 7435 1870 7435
+Wire Wire Line
+	1195 7435 1195 7495
+Wire Wire Line
+	1195 7375 1195 7435
+Wire Wire Line
+	1620 7375 1705 7375
+Wire Wire Line
+	8585 1990 8815 1990
+Wire Wire Line
+	7850 1990 7850 2090
+Wire Wire Line
+	7845 1455 7845 1555
+Wire Wire Line
+	8555 1455 8805 1455
+Wire Wire Line
+	3175 4625 3790 4625
 $EndSCHEMATC

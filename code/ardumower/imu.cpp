@@ -203,7 +203,7 @@ void IMU::printCalib(){
 
 // calculate gyro offsets
 void IMU::calibGyro(){
-  Console.println(F("---calibGyro---"));  
+  Console.println(F("---calibGyro---"));    
   useGyroCalibration = false;
   gyroOfs.x = gyroOfs.y = gyroOfs.z = 0;
   point_float_t ofs;
