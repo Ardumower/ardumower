@@ -51,7 +51,16 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 // --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
+<<<<<<< HEAD
 #include "ros.h"
+=======
+<<<<<<< HEAD
+#include "rmcs.h" // Use Robot Mower Communication Standard 
+
+=======
+#include "ros.h"
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+>>>>>>> master
 #include "motor.h"
 #include "buzzer.h"
 #include "modelrc.h"
@@ -216,6 +225,14 @@ Robot::Robot(){
   nextTimeRobotStats = 0;
   statsMowTimeMinutesTripCounter = 0;
   statsBatteryChargingCounter = 0;
+  
+  nextTimeRMCSInfo			= 0;  
+  rmcsInfoLastSendState = 0;
+  rmcsInfoLastSendMotorCurrent = 0;
+  rmcsInfoLastSendSonar = 0;
+  rmcsInfoLastSendBumper = 0;
+  rmcsInfoLastSendOdometry = 0;
+  rmcsInfoLastSendPeri = 0;
 }
 
 const char *Robot::mowPatternName(){
@@ -592,7 +609,7 @@ void Robot::readSensors(){
     double chgvolt = ((double)chgADC) * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
 		double curramp = ((double)currentADC) * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing		
 
-    #if defined (PCB_1_3)         // Prüfe ob das V1.3 Board verwendet wird - und wenn ja **UZ**
+    #if defined (PCB_1_3)         // PrÃ¼fe ob das V1.3 Board verwendet wird - und wenn ja **UZ**
     batvolt = batvolt + DiodeD9;  // dann rechnet zur Batteriespannung den Spannungsabfall der Diode D9 hinzu. (Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**
     #endif                        // **UZ**
     
@@ -842,7 +859,21 @@ void Robot::checkDrop(){                                                        
 
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
+<<<<<<< HEAD
   if (!bumperUse) return;
+=======
+<<<<<<< HEAD
+
+	 if (batMonitor){
+        if (chgVoltage > 5.0){ 
+          setNextState(STATE_STATION, 0);
+		  return;
+        }
+      }
+=======
+  if (!bumperUse) return;
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+>>>>>>> master
   if ((bumperLeft || bumperRight)) {    
     if ((bumperLeft) || (stateCurr == STATE_PERI_TRACK)) {
       setNextState(STATE_PERI_REV, RIGHT);          
@@ -1297,8 +1328,24 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateLast = stateCurr;
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
+<<<<<<< HEAD
   printInfo(Console);          
 }// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
+=======
+<<<<<<< HEAD
+  
+  if (rmcsUse == false) {  
+    printInfo(Console);          
+  }
+  else{
+    rmcsPrintInfo(Console);
+  }
+}
+=======
+  printInfo(Console);          
+}// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+>>>>>>> master
 
 
 void Robot::loop()  {
@@ -1329,12 +1376,30 @@ void Robot::loop()  {
     rc.run();        
   }
    
+  if (rmcsUse == true and millis() >= nextTimeRMCSInfo ) { 
+	   nextTimeRMCSInfo = millis() + 100;
+     rmcsPrintInfo(Console);
+  }
+	
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	if (rmcsUse == false) { 
+	  printInfo(Console); 
+   
+    printErrors();
+=======
+>>>>>>> master
     if (stateCurr != STATE_ROS) {
       printInfo(Console);    
       printErrors();
     }    
+<<<<<<< HEAD
+=======
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+>>>>>>> master
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
@@ -1353,6 +1418,7 @@ void Robot::loop()  {
 		} else loopsPerSecLowCounter = 0; // reset counter to zero
     if (loopsPerSec > 0) loopsTa = 1000.0 / ((double)loopsPerSec);    
     loopsPerSecCounter = 0;    
+	   }
   }   
      
    // state machine - things to do *PERMANENTLY* for current state
@@ -1551,15 +1617,16 @@ void Robot::loop()  {
       checkTimeout();                    
       break;
     case STATE_PERI_TRACK:
+	     if (batMonitor){
+          if (chgVoltage > 5.0){ 
+            setNextState(STATE_STATION, 0);
+		        break;
+           }
+        }
       // track perimeter
       checkCurrent();                  
       checkBumpersPerimeter();
       //checkSonar();                   
-      if (batMonitor){
-        if (chgVoltage > 5.0){ 
-          setNextState(STATE_STATION, 0);
-        }
-      }
       break;
     case STATE_STATION:
       // waiting until auto-start by user or timer triggered
@@ -1648,6 +1715,7 @@ void Robot::loop()  {
                              
   loopsPerSecCounter++;  
 }
+
 
 
 

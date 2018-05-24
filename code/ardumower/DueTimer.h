@@ -107,3 +107,4 @@ extern DueTimer Timer8;
 #else
 	#error Oops! Trying to include DueTimer on another device?
 #endif
+

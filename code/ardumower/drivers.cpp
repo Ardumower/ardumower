@@ -359,6 +359,11 @@ int getDayOfWeek(int month, int day, int year, int CalendarSystem)
             ) % 7;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> master
 
 // software reset
 void softwareReset(){
@@ -377,3 +382,7 @@ void softwareReset(){
 
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+>>>>>>> master
