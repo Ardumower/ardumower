@@ -41,7 +41,7 @@ const char* stateNames[] ={"OFF ", "ROS", "RC  ", "FORW", "ROLL", "REV ", "CIRC"
 const char* sensorNames[] ={"SEN_PERIM_LEFT", "SEN_PERIM_RIGHT", "SEN_PERIM_LEFT_EXTRA", "SEN_PERIM_RIGHT_EXTRA", "SEN_LAWN_FRONT", "SEN_LAWN_BACK", 
 	"SEN_BAT_VOLTAGE", "SEN_CHG_CURRENT", "SEN_CHG_VOLTAGE", "SEN_MOTOR_LEFT", "SEN_MOTOR_RIGHT", "SEN_MOTOR_MOW", "SEN_BUMPER_LEFT", "SEN_BUMPER_RIGHT", 
 	"SEN_DROP_LEFT", "SEN_DROP_RIGHT", "SEN_SONAR_CENTER", "SEN_SONAR_LEFT", "SEN_SONAR_RIGHT", "SEN_BUTTON", "SEN_IMU", "SEN_MOTOR_MOW_RPM", "SEN_RTC",
-  "SEN_RAIN", "SEN_TILT"};
+  "SEN_RAIN", "SEN_TILT", "SEN_FREE_WHEEL"};
 
 const char* mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
@@ -514,6 +514,7 @@ void Robot::readSensors(){
   if ((freeWheelUse) && (millis() >= nextTimeFreeWheel)){    
     nextTimeFreeWheel = millis() + 100;               
     freeWheelIsMoving = (readSensor(SEN_FREE_WHEEL) == 0);
+    if (!freeWheelIsMoving) setSensorTriggered(SEN_FREE_WHEEL);
   }
 
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
