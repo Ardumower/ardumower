@@ -4,10 +4,6 @@
 
   <!-- Ardumower -->
   <param name="robot_description" textfile="robot.urdf" />
-  <!-- <node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
-     <rosparam param="rate">8.0</rosparam>
-     <rosparam param="base_width">0.245</rosparam>
-  </node> -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> 
   
   <node pkg="sim" name="ardumower" type="ardumower.py" output="screen">

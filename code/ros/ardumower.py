@@ -142,9 +142,9 @@ class ArdumowerNode:
             # wait, then do it again
             r.sleep()            
 
-            # shut down
-            self.port.close()
-            print "Ardumower node shutting down"
+        # shut down
+        self.port.close()
+        print "Ardumower node shutting down"
 	
 
     def cmdVelCb(self,req):
