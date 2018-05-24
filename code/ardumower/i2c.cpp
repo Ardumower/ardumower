@@ -146,12 +146,7 @@ int I2CreadFrom(uint8_t device, uint8_t address, uint8_t num, uint8_t buff[], in
 }
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 void I2CScanner(){
   byte error, address;
   int nDevices = 0;
@@ -200,8 +195,3 @@ void I2CScanner(){
 }
 
 
-  
-<<<<<<< HEAD
-=======
->>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
->>>>>>> master

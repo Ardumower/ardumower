@@ -334,15 +334,12 @@ void Mower::setup(){
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
   Wire.begin();            			
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 	//while (!checkAT24C32()){
 	//  Console.println("PCB not powered ON or RTC module missing");
 	//	delay(1000);
 	//}
-=======
->>>>>>> master
+
   unsigned long timeout = millis() + 10000;
 	while (millis() < timeout){
     if (!checkAT24C32()){
@@ -350,7 +347,7 @@ void Mower::setup(){
       delay(1000);
     } else break;
 	}
->>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+
 	ADCMan.init();
   Console.println(F("SETUP"));
   
@@ -623,16 +620,11 @@ int Mower::readSensor(char type){
     
 // buttons------------------------------------------------------------------------------------------------
     case SEN_BUTTON: return(digitalRead(pinButton)); break; 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> master
+
 
 //free wheel----------------------------------------------------------------------------------------------------
     case SEN_FREE_WHEEL: return(digitalRead(pinFreeWheel)); break;      
-    
->>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
+
 //bumper----------------------------------------------------------------------------------------------------
     case SEN_BUMPER_RIGHT: return(!digitalRead(pinBumperRight)); break; // CHANGE FOR CLEANER
     case SEN_BUMPER_LEFT: return(!digitalRead(pinBumperLeft)); break;    

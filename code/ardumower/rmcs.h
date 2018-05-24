@@ -194,7 +194,7 @@ void Robot::processRMCSCommand(String command){
            break;
 
          case '1':
-            setNextState(STATE_STATE_FORWARD, 0);
+            setNextState(STATE_FORWARD, 0);
             break;
 
          case '2':
