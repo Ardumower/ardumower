@@ -35,15 +35,10 @@ void Robot::calcOdometry(){
   motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                      
   lastMotorRpmTime = millis();
   
-  // ROS coordinate system (X+ forward, Y+ left, Z+ up)
-  if (imuUse){
-    odometryY += avg_cm * sin(imu.ypr.yaw); 
-    odometryX += avg_cm * cos(imu.ypr.yaw); 
-  } else {
-    // FIXME: theta should be old theta, not new theta?
-    odometryY += avg_cm * sin(odometryTheta); 
-    odometryX += avg_cm * cos(odometryTheta); 
- }
+  // ROS coordinate system (X+ forward, Y+ left, Z+ up)  
+  // FIXME: theta should be old theta, not new theta?
+  odometryY += avg_cm * sin(odometryTheta); 
+  odometryX += avg_cm * cos(odometryTheta); 
 }
 
 
