@@ -27,7 +27,7 @@ void Robot::calcOdometry(){
   double left_cm = ((double)ticksLeft) / ((double)odometryTicksPerCm);
   double right_cm = ((double)ticksRight) / ((double)odometryTicksPerCm);  
   double avg_cm  = (left_cm + right_cm) / 2.0;
-  double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm) / 2.0;    
+  double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);    
   odometryTheta = scalePI(odometryTheta - wheel_theta); 
   
 	// calculate RPM 
