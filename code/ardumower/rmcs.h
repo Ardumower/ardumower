@@ -179,10 +179,13 @@ void Robot::processRMCSCommand(String command){
 
     // Request or configure event
     if (commandType == "RMREQ") {
+      // get the type of event
+      String eventType = command.substring(6 + command.indexOf(','), 3);
     }
 
     // Configure sensor trigger
     if (commandType == "RMTRG" ){
+      
     }
     
     // Set mowing state

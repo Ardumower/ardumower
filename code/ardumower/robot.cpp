@@ -51,7 +51,6 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 // --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
-#include "ros.h"
 #include "rmcs.h" // Use Robot Mower Communication Standard 
 #include "ros.h"
 #include "motor.h"
@@ -852,10 +851,7 @@ void Robot::checkDrop(){                                                        
 
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
-<<<<<<< HEAD
   if (!bumperUse) return;
-=======
-<<<<<<< HEAD
 
 	 if (batMonitor){
         if (chgVoltage > 5.0){ 
@@ -863,10 +859,6 @@ void Robot::checkBumpersPerimeter(){
 		  return;
         }
       }
-=======
-  if (!bumperUse) return;
->>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
->>>>>>> master
   if ((bumperLeft || bumperRight)) {    
     if ((bumperLeft) || (stateCurr == STATE_PERI_TRACK)) {
       setNextState(STATE_PERI_REV, RIGHT);          
@@ -1321,24 +1313,15 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateLast = stateCurr;
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
-<<<<<<< HEAD
-  printInfo(Console);          
-}// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
-=======
-<<<<<<< HEAD
-  
   if (rmcsUse == false) {  
     printInfo(Console);          
   }
   else{
     rmcsPrintInfo(Console);
   }
-}
-=======
-  printInfo(Console);          
+      
 }// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
->>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
->>>>>>> master
+
 
 
 void Robot::loop()  {
@@ -1376,23 +1359,16 @@ void Robot::loop()  {
 	
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	if (rmcsUse == false) { 
 	  printInfo(Console); 
-   
     printErrors();
-=======
->>>>>>> master
+	}
+ 
     if (stateCurr != STATE_ROS) {
       printInfo(Console);    
       printErrors();
     }    
-<<<<<<< HEAD
-=======
->>>>>>> 58b08b4deb203e30be8d038929c198a4839ff5c8
->>>>>>> master
+
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
@@ -1412,7 +1388,7 @@ void Robot::loop()  {
     if (loopsPerSec > 0) loopsTa = 1000.0 / ((double)loopsPerSec);    
     loopsPerSecCounter = 0;    
 	   }
-  }   
+     
      
    // state machine - things to do *PERMANENTLY* for current state
    // robot state machine
