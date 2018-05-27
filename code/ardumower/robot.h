@@ -189,8 +189,7 @@ class Robot
     const char* stateName();
     unsigned long stateStartTime;
     unsigned long stateEndTime;
-    int idleTimeSec;
-    unsigned long rosTimeout;
+    int idleTimeSec;    
     // --------- timer ----------------------------------
     ttimer_t timer[MAX_TIMERS];
     datetime_t datetime;
@@ -421,6 +420,18 @@ class Robot
     // --------- pfodApp ----------------------------------
     RemoteControl rc; // pfodApp
     unsigned long nextTimePfodLoop ;    
+    // ----- ROS -------------------------------------------
+    unsigned long rosTimeout;
+    byte rosIdx = 0;
+    String rosString;
+    String rosProt;
+    String rosCmd;
+    String rosPar1;
+    String rosPar2;
+    String rosPar3;
+    String rosPar4;
+    String rosPar5;
+    String rosPar6;
     // ----- other -----------------------------------------
     char lastSensorTriggered;          // last triggered sensor
 		unsigned long lastSensorTriggeredTime;

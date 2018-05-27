@@ -31,9 +31,9 @@ class ArdumowerNode:
         rospy.init_node('ardumower')
         # disable reset after hangup
         #with open(rospy.get_param('~device')) as f:
-        # attrs = termios.tcgetattr(f)
-        # attrs[2] = attrs[2] & ~termios.HUPCL
-        # termios.tcsetattr(f, termios.TCSAFLUSH, attrs)   
+        #	attrs = termios.tcgetattr(f)
+        #	attrs[2] = attrs[2] & ~termios.HUPCL
+        #	termios.tcsetattr(f, termios.TCSAFLUSH, attrs)	 
         # open serial port 
         self.port = serial.Serial(port=rospy.get_param('~device'), baudrate=115200, timeout=0)
         self.port.flush()
@@ -71,9 +71,9 @@ class ArdumowerNode:
                 self.odoX = float(items[14])
                 self.odoY = float(items[15])
                 self.odoTh = float(items[16])
-          if rospy.get_time() > self.printTime:
-            self.printTime = rospy.get_time() + 10     
-            print "lps=",self.loopsPerSec, " bat=",self.batVoltage, " ypr=",self.yaw, self.pitch, self.roll, "odoXYT=",self.odoX, self.odoY, self.odoTh
+                if rospy.get_time() > self.printTime:
+                  self.printTime = rospy.get_time() + 10     
+                  print "lps=",self.loopsPerSec, " bat=",self.batVoltage, " ypr=",self.yaw, self.pitch, self.roll, "odoXYT=",self.odoX, self.odoY, self.odoTh
 
     def spin(self):        
         odo = [0,0,0]
@@ -101,8 +101,7 @@ class ArdumowerNode:
                 counter=1
               else:
                 self.sendMotorSpeed(self.cmd_vel[0], self.cmd_vel[1], 0)
-                start = rospy.get_time() + 0.2
-            # max(abs(self.cmd_vel[0]),abs(self.cmd_vel[1])))                        
+                start = rospy.get_time() + 0.2                
 
             # now update position information
             dt = (stamp - then).to_sec()
@@ -146,7 +145,7 @@ class ArdumowerNode:
         # shut down
         self.port.close()
         print "Ardumower node shutting down"
-  
+	
 
     def cmdVelCb(self,req):
         # linear speed is meter/sec, angular speed is radian/sec 

@@ -1,15 +1,5 @@
 // Linux ROS interface
-
-static byte rosIdx = 0;
-static String rosString;
-static String rosProt;
-static String rosCmd;
-static String rosPar1;
-static String rosPar2;
-static String rosPar3;
-static String rosPar4;
-static String rosPar5;
-static String rosPar6;
+// NOTE: use high baud rates for this serial interface (in mower.h, configure CONSOLE_BAUDRATE to 115200 baud)
 
 void Robot::rosSerial() {
   // serial input    
