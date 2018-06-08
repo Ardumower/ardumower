@@ -1364,7 +1364,7 @@ void Robot::loop()  {
     printErrors();
 	}
  
-    if (stateCurr != STATE_ROS) {
+    if (stateCurr != STATE_ROS && rmcsUse == false) {
       printInfo(Console);    
       printErrors();
     }    

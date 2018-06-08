@@ -525,6 +525,16 @@ class Robot
   unsigned long rmcsInfoLastSendDrop;
   unsigned long rmcsInfoLastSendGPS;
   unsigned long rmcsInfoLastSendIMU;	
+  boolean rmcsTriggerMotor;
+  boolean rmcsTriggerBumper;
+  boolean rmcsTriggerSonar;
+  boolean rmcsTriggerOdometry;
+  boolean rmcsTriggerGPS;
+  boolean rmcsTriggerPerimeter;
+  boolean rmcsTriggerDrop;
+  boolean rmcsTriggerIMU;
+  boolean rmcsTriggerFreeWheel;
+  boolean rmcsTriggerRain;
     // --------------------------------------------------
     Robot();
     // robot setup
@@ -662,7 +672,9 @@ protected:
     virtual void rmcsSendDrop(Stream &s);
     virtual void rmcsSendIMU(Stream &s);
     virtual void rmcsSendMotorCurrent(Stream &s);
-    virtual void rmcsSendOdometry(Stream &s);    
+    virtual void rmcsSendOdometry(Stream &s); 
+    virtual void rmcsSendOFF(Stream &s);   
+    virtual void rmcsSendConfig(Stream &s);
     
 		// Spannungsteiler Gesamtspannung ermitteln (Reihenschaltung R1-R2, U2 bekannt, U_GES zu ermitteln)
 		virtual float voltageDividerUges(float R1, float R2, float U2);	

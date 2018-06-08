@@ -183,7 +183,7 @@ Mower::Mower(){
   stationRevTime             = 1800;       // charge station reverse time (ms)
   stationRollTime            = 1000;       // charge station roll time (ms)
   stationForwTime            = 1500;       // charge station forward time (ms)
-  stationCheckTime           = 1700;       // charge station reverse check time (ms)
+stationCheckTime           = 1700;       // charge station reverse check time (ms)
 
   // ------ odometry ------------------------------------
   odometryUse                = 0;          // use odometry?    
@@ -236,13 +236,27 @@ Mower::Mower(){
   statsBatteryChargingCapacityTotal = 30000;
   
   // ------------robot mower communication standard---
-  rmcsUse					= false;   // if set robot mower communication standard (NMEA) is used.
-  RMCS_interval_state	  	= 1000;
+  rmcsUse					= true;   // if set robot mower communication standard (NMEA) is used.
+  RMCS_interval_state	  	= 1000;  // default update interval in ms
   RMCS_interval_motor_current = 1000;
   RMCS_interval_sonar 		= 1000;
   RMCS_interval_bumper		= 1000;
   RMCS_interval_odometry	= 1000;
   RMCS_interval_perimeter	= 1000;
+  RMCS_interval_gps = 1000;  
+  RMCS_interval_drop = 1000;
+  RMCS_interval_imu = 1000;
+ 
+  rmcsTriggerMotor = true; // default activated trigger events
+  rmcsTriggerBumper  = true;
+  rmcsTriggerSonar  = true;
+  rmcsTriggerOdometry = true;
+  rmcsTriggerGPS = true;
+  rmcsTriggerPerimeter = true;
+  rmcsTriggerDrop = true;
+  rmcsTriggerIMU = true;
+  rmcsTriggerFreeWheel = true;
+  rmcsTriggerRain = true;
   // -----------configuration end-------------------------------------
 }
 
@@ -619,7 +633,7 @@ int Mower::readSensor(char type){
     case SEN_CHG_CURRENT: return ADCMan.read(pinChargeCurrent); break;
     
 // buttons------------------------------------------------------------------------------------------------
-    case SEN_BUTTON: return(digitalRead(pinButton)); break; 
+    case SEN_BUTTON: return(!digitalRead(pinButton)); break; 
 
 
 //free wheel----------------------------------------------------------------------------------------------------

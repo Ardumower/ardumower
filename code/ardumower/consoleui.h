@@ -511,7 +511,7 @@ void Robot::readSerial() {
          break; 
       // New commands for RMCS protocol
       case '$':
-         processRMCSCommand(waitStringConsole()); 
+        processRMCSCommand(cmd); 
          break;
      }
   }    
