@@ -51,8 +51,8 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 // --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
-#include "rmcs.h" // Use Robot Mower Communication Standard 
 #include "ros.h"
+#include "rmcs.h" // Use Robot Mower Communication Standard 
 #include "motor.h"
 #include "buzzer.h"
 #include "modelrc.h"
@@ -234,7 +234,12 @@ const char *Robot::mowPatternName(){
 void Robot::setSensorTriggered(char type){
   lastSensorTriggered = type;
   lastSensorTriggeredTime = millis();
+  
+  if (!rmcsUse){
   Console.println( sensorNames[lastSensorTriggered] );
+  }else{
+    rmcsSendSensorTriggered(type);
+  }
 }
 
 const char *Robot::lastSensorTriggeredName(){

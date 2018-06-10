@@ -673,8 +673,9 @@ protected:
     virtual void rmcsSendIMU(Stream &s);
     virtual void rmcsSendMotorCurrent(Stream &s);
     virtual void rmcsSendOdometry(Stream &s); 
-    virtual void rmcsSendOFF(Stream &s);   
+    virtual void rmcsSendOff(Stream &s);   
     virtual void rmcsSendConfig(Stream &s);
+    virtual void rmcsSendSensorTriggered(char type);
     
 		// Spannungsteiler Gesamtspannung ermitteln (Reihenschaltung R1-R2, U2 bekannt, U_GES zu ermitteln)
 		virtual float voltageDividerUges(float R1, float R2, float U2);	
