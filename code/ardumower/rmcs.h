@@ -33,7 +33,7 @@ void Robot::rmcsPrintInfo(Stream &s){
 	}	
   if (durationSinceLastSendBumper > RMCS_interval_bumper and bumperUse && RMCS_interval_bumper != 0){
     rmcsInfoLastSendBumper = now;
-    rmcsSendBumper(s);
+    rmcsSendBumper(s,0,0,0);
 	}	
 
   if (durationSinceLastSendOdometry > RMCS_interval_odometry and odometryUse && RMCS_interval_bumper != 0){
@@ -105,16 +105,16 @@ void Robot::rmcsSendSonar(Stream &s){
     Streamprint(s, "\r\n"); 
 }
 
-void Robot::rmcsSendBumper(Stream &s){
+void Robot::rmcsSendBumper(Stream &s, char triggerleft, char triggerright, char triggercenter){
   
     // ROBOT bumper data, Timestamp, bumper left value, bumper right value, bumper center value, bumper left trigger, bumper right trigger, bumper center trigger
     Streamprint(s, "$RMBUM,%6u,", (millis()-stateStartTime)/1000);                      
     Streamprint(s, "%4d ,",bumperLeftCounter);                   
     Streamprint(s, "%4d ,",bumperRightCounter);
     Streamprint(s, "%4d ,",0);                
-    Streamprint(s, "%4d ,",bumperLeft);           
-    Streamprint(s, "%4d ,",bumperRight); 
-    Streamprint(s, "%4d ",0);
+    Streamprint(s, "%4d ,",triggerleft);           
+    Streamprint(s, "%4d ,",triggerright); 
+    Streamprint(s, "%4d ",triggercenter);
     Streamprint(s, "\r\n"); 
 }
 
@@ -336,7 +336,7 @@ void Robot::processRMCSCommand(String command){
         // trigger once
         if (frequency == -1)
         {
-           rmcsSendBumper(Console);
+           rmcsSendBumper(Console,0,0,0);
         }
         else{
           if (frequency > 0)
@@ -472,7 +472,6 @@ void Robot::processRMCSCommand(String command){
       
     // Move robot
     if (commandType == "RMMOV") {
-      Console.println(commandParts[1].toInt());
           setNextState(STATE_MANUAL, 0); 
           // enable mow motor?
           if (commandParts[0] == "1")
@@ -511,119 +510,105 @@ void Robot::processRMCSCommand(String command){
  { 
        switch(type)
        {
-        case 'SEN_MOTOR_LEFT':
+        case SEN_MOTOR_LEFT:
         if (rmcsTriggerMotor)
         {
           rmcsSendMotorCurrent(Console);
         }
         break;
 
-        case 'SEN_MOTOR_RIGHT':
+        case SEN_MOTOR_RIGHT:
         if (rmcsTriggerMotor)
         {
           rmcsSendMotorCurrent(Console);
         }
         break;   
 
-        case 'SEN_MOTOR_MOW':
+        case SEN_MOTOR_MOW:
         if (rmcsTriggerMotor)
         {
           rmcsSendMotorCurrent(Console);
         }
         break; 
 
-        case 'SEN_BUMPER_LEFT':
+        case SEN_BUMPER_LEFT:
         if (rmcsTriggerBumper)
         {
-          rmcsSendBumper(Console);
+          rmcsSendBumper(Console,1,0,0);
         }
         break; 
 
-        case 'SEN_BUMPRER_RIGHT':
+        case SEN_BUMPER_RIGHT:
         if (rmcsTriggerBumper)
         {
-          rmcsSendBumper(Console);
+          rmcsSendBumper(Console,0,1,0);
         }
         break; 
       
-        case 'SEN_SONAR_LEFT':
+        case SEN_SONAR_LEFT:
         if (rmcsTriggerSonar)
         {
           rmcsSendSonar(Console);
         }
         break; 
 
-        case 'SEN_SONAR_RIGHT':
+        case SEN_SONAR_RIGHT:
         if (rmcsTriggerSonar)
         {
           rmcsSendSonar(Console);
         }
         break; 
          
-        case 'SEN_SONAR_CENTER':
+        case SEN_SONAR_CENTER:
         if (rmcsTriggerSonar)
         {
           rmcsSendSonar(Console);
         }
         break; 
 
-        case 'SEN_BUMPRER_RIGHT':
-        if (rmcsTriggerBumper)
-        {
-          rmcsSendBumper(Console);
-        }
-        break; 
-          
-        case 'SEN_BUMPER_LEFT':
-        if (rmcsTriggerBumper)
-        {
-          rmcsSendBumper(Console);
-        }
-        break; 
-
-        case 'SEN_PERI_LEFT':
+        case SEN_PERIM_LEFT:
         if (rmcsTriggerPerimeter)
         {
           rmcsSendPerimeter(Console);
         }
         break; 
 
-        case 'SEN_PERI_RIGHT':
+        case SEN_PERIM_RIGHT:
         if (rmcsTriggerPerimeter)
         {
           rmcsSendPerimeter(Console);
         }
         break; 
              
-        case 'SEN_DROP_RIGHT':
+        case SEN_DROP_RIGHT:
         if (rmcsTriggerDrop)
         {
           rmcsSendDrop(Console);
         }
         break; 
         
-        case 'SEN_DROP_LEFT':
+        case SEN_DROP_LEFT:
         if (rmcsTriggerDrop)
         {
           rmcsSendDrop(Console);
         }
         break; 
 
-  /*      case 'SEN_RAIN':
+  /*      case SEN_RAIN:
         if (rmcsTriggerRain)
         {
           rmcsSendRain(Console);
         }
         break;   */
        
-        case 'SEN_IMU':
+        case SEN_IMU:
         if (rmcsTriggerIMU)
         {
           rmcsSendIMU(Console);
         }
         break;       
 
-   /*     case 'SEN_FREE_WHEEL':
+   /*     case SEN_FREE_WHEEL:
         if (rmcsTriggerFreeWheel)
         {
           rmcsSendFreeWheel(Console);

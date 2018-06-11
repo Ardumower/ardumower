@@ -234,7 +234,6 @@ const char *Robot::mowPatternName(){
 void Robot::setSensorTriggered(char type){
   lastSensorTriggered = type;
   lastSensorTriggeredTime = millis();
-  
   if (!rmcsUse){
   Console.println( sensorNames[lastSensorTriggered] );
   }else{

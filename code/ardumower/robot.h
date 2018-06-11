@@ -665,7 +665,7 @@ protected:
     virtual void processRMCSCommand(String command);
     virtual void rmcsPrintInfo(Stream &s); 
     virtual void rmcsSendState(Stream &s);
-    virtual void rmcsSendBumper(Stream &s);
+    virtual void rmcsSendBumper(Stream &s, char triggerleft, char triggerright, char triggercenter);
     virtual void rmcsSendSonar(Stream &s);
     virtual void rmcsSendPerimeter(Stream &s);
     virtual void rmcsSendGPS(Stream &s);
