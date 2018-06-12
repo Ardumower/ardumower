@@ -24,12 +24,12 @@ void Robot::rmcsPrintInfo(Stream &s){
 
   if (durationSinceLastSendMotorCurrent > RMCS_interval_motor_current && RMCS_interval_motor_current != 0){
     rmcsInfoLastSendMotorCurrent = now;
-    rmcsSendMotorCurrent(s);	
+    rmcsSendMotorCurrent(s,0,0,0);	
 	}
 
   if (durationSinceLastSendSonar > RMCS_interval_sonar and sonarUse && RMCS_interval_sonar != 0){
     rmcsInfoLastSendSonar = now;
-    rmcsSendSonar(s);
+    rmcsSendSonar(s,0,0,0);
 	}	
   if (durationSinceLastSendBumper > RMCS_interval_bumper and bumperUse && RMCS_interval_bumper != 0){
     rmcsInfoLastSendBumper = now;
@@ -55,13 +55,13 @@ void Robot::rmcsPrintInfo(Stream &s){
  
   if (durationSinceLastSendDrop > RMCS_interval_drop and dropUse && RMCS_interval_drop != 0){
      rmcsInfoLastSendDrop = now;
-     rmcsSendDrop(s);
+     rmcsSendDrop(s,0,0);
    }  
 
  
   if (durationSinceLastSendIMU > RMCS_interval_imu and imuUse && RMCS_interval_imu != 0){
      rmcsInfoLastSendIMU = now;
-     rmcsSendIMU(s);
+     rmcsSendIMU(s,0);
    }  
  }
 }
@@ -79,29 +79,29 @@ void Robot::rmcsSendState(Stream &s){
     Streamprint(s, "\r\n"); 
 }
 
-void Robot::rmcsSendMotorCurrent(Stream &s){
+void Robot::rmcsSendMotorCurrent(Stream &s, char motormowtrigger, char motorlefttrigger, char motorrighttrigger){
   
     // ROBOT motor current, Timestamp, Motor left A, Motor right A, Motor Mow A, Motor left trigger, motor right trigger, motor mow trigger
     Streamprint(s, "$RMMOT,%6u,", (millis()-stateStartTime)/1000);
     Streamprint(s, "%4d ,",(int)motorLeftSense);                         
     Streamprint(s, "%4d ,",(int)motorRightSense);                   
     Streamprint(s, "%4d ,",(int)motorMowSense);
-    Streamprint(s, "%4d ,",motorLeftSenseCounter);                
-    Streamprint(s, "%4d ,",motorRightSenseCounter);           
-    Streamprint(s, "%4d ",motorMowSenseCounter);  
+    Streamprint(s, "%4d ,",motorlefttrigger);                
+    Streamprint(s, "%4d ,",motorrighttrigger);           
+    Streamprint(s, "%4d ",motormowtrigger);  
     Streamprint(s, "\r\n");   
 }
 
-void Robot::rmcsSendSonar(Stream &s){
+void Robot::rmcsSendSonar(Stream &s, char triggerleft, char triggerright, char triggercenter){
   
     // ROBOT sonar sensor data, Timestamp, sonar left dist, sonar right dist, sonar center dist, sonar left trigger, sonar right trigger, sonar center trigger
     Streamprint(s, "$RMSON,%6u,", (millis()-stateStartTime)/1000);
     Streamprint(s, "%4d ,",sonarDistLeft);                         
     Streamprint(s, "%4d ,",sonarDistRight);                   
     Streamprint(s, "%4d ,",sonarDistCenter);
-    Streamprint(s, "%4d ,",sonarDistCounter);                
-    Streamprint(s, "%4d ,",sonarDistCounter);           
-    Streamprint(s, "%4d ",sonarDistCounter); 
+    Streamprint(s, "%4d ,",triggerleft);                
+    Streamprint(s, "%4d ,",triggerright);           
+    Streamprint(s, "%4d ",triggercenter); 
     Streamprint(s, "\r\n"); 
 }
 
@@ -147,18 +147,18 @@ void Robot::rmcsSendPerimeter(Stream &s){
 }
 
 
-void Robot::rmcsSendDrop(Stream &s){
+void Robot::rmcsSendDrop(Stream &s, char triggerleft, char triggerright){
   
     // ROBOT Drop sensor, Timestamp, drop left counter, drop right counter, drop left triggered, drop right triggered
     Streamprint(s, "$RMDRP,%6u,", (millis()-stateStartTime)/1000);
     Streamprint(s, "%4d ,",dropLeftCounter);                         
     Streamprint(s, "%4d ,",dropRightCounter);
-    Streamprint(s, "%4d ,",dropLeft);
-    Streamprint(s, "%4d ,",dropRight);                    
+    Streamprint(s, "%4d ,",triggerleft);
+    Streamprint(s, "%4d ,",triggerright);                    
     Streamprint(s, "\r\n");
 }
 
-void Robot::rmcsSendIMU(Stream &s){
+void Robot::rmcsSendIMU(Stream &s, char triggertilt){
   
     // ROBOT IMU sensor, Timestamp, compass heading, pitch degree, roll degree, triggered 
     Streamprint(s, "$RMIMU,%6u,", (millis()-stateStartTime)/1000);
@@ -297,7 +297,7 @@ void Robot::processRMCSCommand(String command){
         // trigger once
         if (frequency == -1)
         {
-           rmcsSendMotorCurrent(Console);
+           rmcsSendMotorCurrent(Console,0,0,0);
         }
         else{
           if (frequency > 0)
@@ -316,7 +316,7 @@ void Robot::processRMCSCommand(String command){
         // trigger once
         if (frequency == -1)
         {
-           rmcsSendSonar(Console);
+           rmcsSendSonar(Console,0,0,0);
         }
         else{
           if (frequency > 0)
@@ -416,7 +416,7 @@ void Robot::processRMCSCommand(String command){
         // trigger once
         if (frequency == -1)
         {
-           rmcsSendDrop(Console);
+           rmcsSendDrop(Console,0,0);
         }
         else{
           if (frequency > 0)
@@ -436,7 +436,7 @@ void Robot::processRMCSCommand(String command){
         // trigger once
         if (frequency == -1)
         {
-           rmcsSendIMU(Console);
+           rmcsSendIMU(Console,0);
         }
         else{
           if (frequency > 0)
@@ -513,21 +513,21 @@ void Robot::processRMCSCommand(String command){
         case SEN_MOTOR_LEFT:
         if (rmcsTriggerMotor)
         {
-          rmcsSendMotorCurrent(Console);
+          rmcsSendMotorCurrent(Console,0,1,0);
         }
         break;
 
         case SEN_MOTOR_RIGHT:
         if (rmcsTriggerMotor)
         {
-          rmcsSendMotorCurrent(Console);
+          rmcsSendMotorCurrent(Console,0,0,1);
         }
         break;   
 
         case SEN_MOTOR_MOW:
         if (rmcsTriggerMotor)
         {
-          rmcsSendMotorCurrent(Console);
+          rmcsSendMotorCurrent(Console,1,0,0);
         }
         break; 
 
@@ -548,21 +548,21 @@ void Robot::processRMCSCommand(String command){
         case SEN_SONAR_LEFT:
         if (rmcsTriggerSonar)
         {
-          rmcsSendSonar(Console);
+          rmcsSendSonar(Console,1,0,0);
         }
         break; 
 
         case SEN_SONAR_RIGHT:
         if (rmcsTriggerSonar)
         {
-          rmcsSendSonar(Console);
+          rmcsSendSonar(Console,0,1,0);
         }
         break; 
          
         case SEN_SONAR_CENTER:
         if (rmcsTriggerSonar)
         {
-          rmcsSendSonar(Console);
+          rmcsSendSonar(Console,0,0,1);
         }
         break; 
 
@@ -583,14 +583,14 @@ void Robot::processRMCSCommand(String command){
         case SEN_DROP_RIGHT:
         if (rmcsTriggerDrop)
         {
-          rmcsSendDrop(Console);
+          rmcsSendDrop(Console,0,1);
         }
         break; 
         
         case SEN_DROP_LEFT:
         if (rmcsTriggerDrop)
         {
-          rmcsSendDrop(Console);
+          rmcsSendDrop(Console,0,1);
         }
         break; 
 
@@ -604,7 +604,7 @@ void Robot::processRMCSCommand(String command){
         case SEN_IMU:
         if (rmcsTriggerIMU)
         {
-          rmcsSendIMU(Console);
+          rmcsSendIMU(Console,1);
         }
         break;       
 

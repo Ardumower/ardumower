@@ -666,12 +666,12 @@ protected:
     virtual void rmcsPrintInfo(Stream &s); 
     virtual void rmcsSendState(Stream &s);
     virtual void rmcsSendBumper(Stream &s, char triggerleft, char triggerright, char triggercenter);
-    virtual void rmcsSendSonar(Stream &s);
+    virtual void rmcsSendSonar(Stream &s, char triggerleft, char triggerright, char triggercenter );
     virtual void rmcsSendPerimeter(Stream &s);
     virtual void rmcsSendGPS(Stream &s);
-    virtual void rmcsSendDrop(Stream &s);
-    virtual void rmcsSendIMU(Stream &s);
-    virtual void rmcsSendMotorCurrent(Stream &s);
+    virtual void rmcsSendDrop(Stream &s, char triggerleft, char triggerright);
+    virtual void rmcsSendIMU(Stream &s, char triggertilt);
+    virtual void rmcsSendMotorCurrent(Stream &s, char motormowtrigger, char motorlefttrigger, char motorrighttrigger);
     virtual void rmcsSendOdometry(Stream &s); 
     virtual void rmcsSendOff(Stream &s);   
     virtual void rmcsSendConfig(Stream &s);
