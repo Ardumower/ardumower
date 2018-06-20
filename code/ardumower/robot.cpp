@@ -339,7 +339,9 @@ void Robot::checkButton(){
       beep(1);
       buttonCounter++;
 			setSensorTriggered(SEN_BUTTON);
+     if (!rmcsUse){
       resetIdleTime();
+     }
     } 
     else { 
       // ON/OFF button released          
@@ -1333,7 +1335,11 @@ void Robot::loop()  {
   int steer;
   ADCMan.run();
   if (stateCurr != STATE_ROS) readSerial();   
+  if (!rmcsUse){
   if (rc.readSerial()) resetIdleTime();
+  } else {
+    rc.readSerial();
+  }
   readSensors(); 
   checkBattery(); 
   checkIfStuck();

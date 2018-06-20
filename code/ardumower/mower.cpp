@@ -128,7 +128,7 @@ Mower::Mower(){
   trackingPerimeterTransitionTimeOut              = 2500;   // never<500 ms
   trackingErrorTimeOut                            = 10000;  // 0=disable
   trackingBlockInnerWheelWhilePerimeterStruggling = 1;
-  MaxSpeedperiPwm = 200; // speed max in PWM while perimeter tracking
+  MaxSpeedperiPwm = 130; // speed max in PWM while perimeter tracking
   // ------ lawn sensor --------------------------------
   lawnSensorUse     = 0;                   // use capacitive lawn Sensor
   
@@ -449,10 +449,10 @@ void Mower::setup(){
   pinMode(pinRemoteSwitch, INPUT);       
 
   // odometry
-  pinMode(pinOdometryLeft, INPUT_PULLUP);  
-  pinMode(pinOdometryLeft2, INPUT_PULLUP);    
-  pinMode(pinOdometryRight, INPUT_PULLUP);
-  pinMode(pinOdometryRight2, INPUT_PULLUP);  
+  pinMode(pinOdometryLeft, INPUT);  
+  pinMode(pinOdometryLeft2, INPUT);    
+  pinMode(pinOdometryRight, INPUT);
+  pinMode(pinOdometryRight2, INPUT);  
   
   // user switches
   pinMode(pinUserSwitch1, OUTPUT);
@@ -633,15 +633,15 @@ int Mower::readSensor(char type){
     case SEN_CHG_CURRENT: return ADCMan.read(pinChargeCurrent); break;
     
 // buttons------------------------------------------------------------------------------------------------
-    case SEN_BUTTON: return(!digitalRead(pinButton)); break; 
+    case SEN_BUTTON: return(digitalRead(pinButton)); break; 
 
 
 //free wheel----------------------------------------------------------------------------------------------------
     case SEN_FREE_WHEEL: return(digitalRead(pinFreeWheel)); break;      
 
 //bumper----------------------------------------------------------------------------------------------------
-    case SEN_BUMPER_RIGHT: return(!digitalRead(pinBumperRight)); break; // CHANGE FOR CLEANER
-    case SEN_BUMPER_LEFT: return(!digitalRead(pinBumperLeft)); break;    
+    case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break; // CHANGE FOR CLEANER
+    case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;    
 //bumper----------------------------------------------------------------------------------------------------
  //   case SEN_BUMPER_RIGHT: return(digitalRead(pinBumperRight)); break;
   //  case SEN_BUMPER_LEFT: return(digitalRead(pinBumperLeft)); break;      

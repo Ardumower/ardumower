@@ -467,6 +467,10 @@ void Robot::processRMCSCommand(String command){
          case '2':
             setNextState(STATE_PERI_FIND, 0);
             break;
+
+         case '3':
+            setNextState(STATE_REMOTE, 0);
+            break;
       }     
     }
       
