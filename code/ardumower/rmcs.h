@@ -36,7 +36,7 @@ void Robot::rmcsPrintInfo(Stream &s){
     rmcsSendBumper(s,0,0,0);
 	}	
 
-  if (durationSinceLastSendOdometry > RMCS_interval_odometry and odometryUse && RMCS_interval_bumper != 0){
+  if (durationSinceLastSendOdometry > RMCS_interval_odometry and odometryUse && RMCS_interval_odometry != 0){
     rmcsInfoLastSendOdometry = now;
     rmcsSendOdometry(s);
 	}	
