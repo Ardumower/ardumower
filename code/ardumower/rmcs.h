@@ -132,7 +132,7 @@ void Robot::rmcsSendGPS(Stream &s){
     // ROBOT GPS data, Timestamp, latitude, longitude
     Streamprint(s, "$RMGPS,%6u,", (millis()-stateStartTime)/1000);
     Streamprint(s, "%4d ,",(int)gpsLat);                         
-    Streamprint(s, "%4d ,",(int)gpsLon);                    
+    Streamprint(s, "%4d ",(int)gpsLon);                    
     Streamprint(s, "\r\n");
 }
 
@@ -154,7 +154,7 @@ void Robot::rmcsSendDrop(Stream &s, char triggerleft, char triggerright){
     Streamprint(s, "%4d ,",dropLeftCounter);                         
     Streamprint(s, "%4d ,",dropRightCounter);
     Streamprint(s, "%4d ,",triggerleft);
-    Streamprint(s, "%4d ,",triggerright);                    
+    Streamprint(s, "%4d ",triggerright);                    
     Streamprint(s, "\r\n");
 }
 
@@ -162,10 +162,10 @@ void Robot::rmcsSendIMU(Stream &s, char triggertilt){
   
     // ROBOT IMU sensor, Timestamp, compass heading, pitch degree, roll degree, triggered 
     Streamprint(s, "$RMIMU,%6u,", (millis()-stateStartTime)/1000);
-    Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));        
-    Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
-    Streamprint(s, "rol %3d ", (int)(imu.ypr.roll/PI*180.0));
-    Streamprint(s, "%4d ,",tilt);                    
+    Streamprint(s, "%3d ,", (int)(imu.ypr.yaw/PI*180.0));        
+    Streamprint(s, "%3d ,", (int)(imu.ypr.pitch/PI*180.0));
+    Streamprint(s, "%3d ,", (int)(imu.ypr.roll/PI*180.0));
+    Streamprint(s, "%4d ",tilt);                    
     Streamprint(s, "\r\n");
 }
 
@@ -210,7 +210,7 @@ void Robot::rmcsSendConfig(Stream &s){
   Streamprint(s, "%2d, ", bumperUse); // bumper available 
   Streamprint(s, "%2d, ", lawnSensorUse); // lawn sensor available
   Streamprint(s, "%2d, ", freeWheelUse); // free Wheel available 
-  Streamprint(s, "%2d, ", rainUse); // rain sensor available  
+  Streamprint(s, "%2d ", rainUse); // rain sensor available  
   Streamprint(s, "\r\n");
 }
 
