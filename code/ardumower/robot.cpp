@@ -305,8 +305,18 @@ void Robot::setup()  {
   Console.println(name);  
       
   Console.println(F("press..."));
-  Console.println(F("  d for menu"));    
-  Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
+  Console.println(F("  d main menu"));    
+  Console.println(F("  v change console mode (sensor counters, values, perimeter etc.)"));    
+  Console.println(F("  1 start automatic mowing"));    
+  Console.println(F("  0 stop"));      
+  Console.println(F("  h drive home"));        
+  Console.println(F("  3 activate model R/C mode"));     
+  Console.println(F("  m toggle mow motor"));        
+  Console.println(F("  p track perimeter"));    
+  Console.println(F("  l simulate left bumper"));    
+  Console.println(F("  r simulate right bumper"));          
+  Console.println();        
+  Console.print(F("current console mode: "));
   Console.println(consoleModeNames[consoleMode]);
   Console.println(F("-------------------------------------------"));  
 } 
