@@ -375,5 +375,3 @@ void softwareReset(){
 #endif
 }
 
-
-

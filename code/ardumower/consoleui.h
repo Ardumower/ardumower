@@ -263,8 +263,10 @@ void Robot::testMotors(){
 void Robot::menu(){  
   char ch;  
   printMenu();  
-  while(true){    
+  while(true){
+    if (!rmcsUse){    
     resetIdleTime();
+    }
     imu.update();
     if (Console.available() > 0) {
       ch = (char)Console.read();            
@@ -440,7 +442,9 @@ void Robot::readSerial() {
        return;
      }
      char ch = cmd[0];
+     if (!rmcsUse){
      resetIdleTime();
+     }
      switch (ch){
        case 'd': 
          menu(); // menu
@@ -509,7 +513,12 @@ void Robot::readSerial() {
          //motorMowModulate = false;                                           
          setNextState(STATE_FORWARD,0);          
          break; 
+      // New commands for RMCS protocol
+      case '$':
+        processRMCSCommand(cmd); 
+         break;
      }
   }    
 }
+
 
