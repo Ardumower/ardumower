@@ -234,6 +234,29 @@ Mower::Mower(){
   statsMowTimeMinutesTotal   = 300;
   statsBatteryChargingCounterTotal  = 11;
   statsBatteryChargingCapacityTotal = 30000;
+  
+  // ------------robot mower communication standard---
+  rmcsUse					= false;   // if set robot mower communication standard (NMEA) is used.
+  RMCS_interval_state	  	= 1000;  // default update interval in ms
+  RMCS_interval_motor_current = 1000;
+  RMCS_interval_sonar 		= 1000;
+  RMCS_interval_bumper		= 1000;
+  RMCS_interval_odometry	= 1000;
+  RMCS_interval_perimeter	= 1000;
+  RMCS_interval_gps = 1000;  
+  RMCS_interval_drop = 1000;
+  RMCS_interval_imu = 1000;
+ 
+  rmcsTriggerMotor = true; // default activated trigger events
+  rmcsTriggerBumper  = true;
+  rmcsTriggerSonar  = true;
+  rmcsTriggerOdometry = true;
+  rmcsTriggerGPS = true;
+  rmcsTriggerPerimeter = true;
+  rmcsTriggerDrop = true;
+  rmcsTriggerIMU = true;
+  rmcsTriggerFreeWheel = true;
+  rmcsTriggerRain = true;
   // -----------configuration end-------------------------------------
 }
 

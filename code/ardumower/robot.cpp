@@ -52,6 +52,7 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 #include "battery.h"
 #include "consoleui.h"
 #include "ros.h"
+#include "rmcs.h" // Use Robot Mower Communication Standard 
 #include "motor.h"
 #include "buzzer.h"
 #include "modelrc.h"
@@ -216,6 +217,14 @@ Robot::Robot(){
   nextTimeRobotStats = 0;
   statsMowTimeMinutesTripCounter = 0;
   statsBatteryChargingCounter = 0;
+  
+  nextTimeRMCSInfo			= 0;  
+  rmcsInfoLastSendState = 0;
+  rmcsInfoLastSendMotorCurrent = 0;
+  rmcsInfoLastSendSonar = 0;
+  rmcsInfoLastSendBumper = 0;
+  rmcsInfoLastSendOdometry = 0;
+  rmcsInfoLastSendPeri = 0;
 }
 
 const char *Robot::mowPatternName(){
@@ -225,7 +234,11 @@ const char *Robot::mowPatternName(){
 void Robot::setSensorTriggered(char type){
   lastSensorTriggered = type;
   lastSensorTriggeredTime = millis();
+  if (!rmcsUse){
   Console.println( sensorNames[lastSensorTriggered] );
+  }else{
+    rmcsSendSensorTriggered(type);
+  }
 }
 
 const char *Robot::lastSensorTriggeredName(){
@@ -336,7 +349,9 @@ void Robot::checkButton(){
       beep(1);
       buttonCounter++;
 			setSensorTriggered(SEN_BUTTON);
+     if (!rmcsUse){
       resetIdleTime();
+     }
     } 
     else { 
       // ON/OFF button released          
@@ -1307,7 +1322,12 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateLast = stateCurr;
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
-  printInfo(Console);          
+  if (rmcsUse == false) {  
+     printInfo(Console);          
+  }
+  else{
+    rmcsPrintInfo(Console);
+  }
 }// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
 
 
@@ -1316,7 +1336,11 @@ void Robot::loop()  {
   int steer;
   ADCMan.run();
   if (stateCurr != STATE_ROS) readSerial();   
-  if (rc.readSerial()) resetIdleTime();
+  if (!rmcsUse){
+     if (rc.readSerial()) resetIdleTime();
+  } else {
+    rc.readSerial();
+  }
   readSensors(); 
   checkBattery(); 
   checkIfStuck();
@@ -1339,9 +1363,18 @@ void Robot::loop()  {
     rc.run();        
   }
    
+  if (rmcsUse == true and millis() >= nextTimeRMCSInfo ) { 
+	   nextTimeRMCSInfo = millis() + 100;
+     rmcsPrintInfo(Console);
+  }
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
-    if (stateCurr != STATE_ROS) {
+	if (rmcsUse == false) { 
+	  printInfo(Console); 
+    printErrors();
+	}
+ 
+    if (stateCurr != STATE_ROS && rmcsUse == false) {
       printInfo(Console);    
       printErrors();
     }    

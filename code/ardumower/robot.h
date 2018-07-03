@@ -504,6 +504,37 @@ class Robot
     float statsMowTimeHoursTotal ;
     int statsMowTimeMinutesTrip ;
     unsigned long nextTimeRobotStats ;
+    // ------------robot mower communication standard---
+	boolean rmcsUse;
+	unsigned long RMCS_interval_state;
+	unsigned long RMCS_interval_motor_current;
+	unsigned long RMCS_interval_sonar;
+	unsigned long RMCS_interval_bumper;
+	unsigned long RMCS_interval_odometry;
+	unsigned long RMCS_interval_perimeter;
+    unsigned long RMCS_interval_gps;  
+    unsigned long RMCS_interval_drop;
+    unsigned long RMCS_interval_imu;
+	unsigned long nextTimeRMCSInfo;
+    unsigned long rmcsInfoLastSendState;
+    unsigned long rmcsInfoLastSendMotorCurrent;
+    unsigned long rmcsInfoLastSendSonar;
+    unsigned long rmcsInfoLastSendBumper;
+    unsigned long rmcsInfoLastSendOdometry;
+    unsigned long rmcsInfoLastSendPeri;
+    unsigned long rmcsInfoLastSendDrop;
+    unsigned long rmcsInfoLastSendGPS;
+    unsigned long rmcsInfoLastSendIMU;	
+    boolean rmcsTriggerMotor;
+    boolean rmcsTriggerBumper;
+    boolean rmcsTriggerSonar;
+    boolean rmcsTriggerOdometry;
+    boolean rmcsTriggerGPS;
+    boolean rmcsTriggerPerimeter;
+    boolean rmcsTriggerDrop;
+    boolean rmcsTriggerIMU;
+    boolean rmcsTriggerFreeWheel;
+    boolean rmcsTriggerRain;
     // --------------------------------------------------
     Robot();
     // robot setup
@@ -630,6 +661,21 @@ protected:
     virtual char waitCharConsole();
     virtual String waitStringConsole();
 
+    // RMCS
+    virtual void processRMCSCommand(String command);
+    virtual void rmcsPrintInfo(Stream &s); 
+    virtual void rmcsSendState(Stream &s);
+    virtual void rmcsSendBumper(Stream &s, char triggerleft, char triggerright, char triggercenter);
+    virtual void rmcsSendSonar(Stream &s, char triggerleft, char triggerright, char triggercenter );
+    virtual void rmcsSendPerimeter(Stream &s);
+    virtual void rmcsSendGPS(Stream &s);
+    virtual void rmcsSendDrop(Stream &s, char triggerleft, char triggerright);
+    virtual void rmcsSendIMU(Stream &s, char triggertilt);
+    virtual void rmcsSendMotorCurrent(Stream &s, char motormowtrigger, char motorlefttrigger, char motorrighttrigger);
+    virtual void rmcsSendOdometry(Stream &s); 
+    virtual void rmcsSendOff(Stream &s);   
+    virtual void rmcsSendConfig(Stream &s);
+    virtual void rmcsSendSensorTriggered(char type);
 		// Spannungsteiler Gesamtspannung ermitteln (Reihenschaltung R1-R2, U2 bekannt, U_GES zu ermitteln)
 		virtual float voltageDividerUges(float R1, float R2, float U2);	
 		// ADC-value to voltage
