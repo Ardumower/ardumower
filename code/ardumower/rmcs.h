@@ -128,11 +128,14 @@ void Robot::rmcsSendOdometry(Stream &s){
 }
 
 void Robot::rmcsSendGPS(Stream &s){
-  
-    // ROBOT GPS data, Timestamp, latitude, longitude
+
+// ROBOT GPS data, Timestamp, latitude, longitude
+    long lat, lon;
+    unsigned long age;
+    gps.get_position(&lat, &lon, &age);  
     Streamprint(s, "$RMGPS,%6u,", (millis()-stateStartTime)/1000);
-    Streamprint(s, "%4d ,",(int)gpsLat);                         
-    Streamprint(s, "%4d ",(int)gpsLon);                    
+    Streamprint(s, "%10d ,",lat);                         
+    Streamprint(s, "%10d ",lon);                      
     Streamprint(s, "\r\n");
 }
 
