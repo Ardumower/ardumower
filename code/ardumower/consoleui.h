@@ -13,7 +13,7 @@ char Robot::waitCharConsole() {
 String Robot::waitStringConsole() {
   String s = "";
   char ch;
-  while (true) {
+  while (Console.available()) {
     ch = waitCharConsole();
     if (ch=='\n' || ch=='\r')
       break;
@@ -435,8 +435,10 @@ void Robot::commsMenuSelect(void) {
 
 void Robot::readSerial() {
   // serial input  
-  if (Console.available() > 0) {     
-     String cmd = Console.readString();
+  if (Console.available() > 0) {   
+    // Console.setTimeout(20); 
+    // String cmd = Console.readString();
+     String cmd = waitStringConsole();
      if (cmd.startsWith("$ROS")) {
        setNextState(STATE_ROS, 0);
        return;

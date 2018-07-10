@@ -117,7 +117,7 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 // GPS: Serial3 (TX3, RX3) 
 
 // ------- baudrates---------------------------------
-#define CONSOLE_BAUDRATE    19200       // baudrate used for console
+#define CONSOLE_BAUDRATE    115200       // baudrate used for console
 #define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module (Ardumower default: 19200)
 #define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
 #define BLUETOOTH_PIN       1234
