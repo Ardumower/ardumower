@@ -13,7 +13,7 @@ char Robot::waitCharConsole() {
 String Robot::waitStringConsole() {
   String s = "";
   char ch;
-  while (Console.available()) {
+  while (true) {
     ch = waitCharConsole();
     if (ch=='\n' || ch=='\r')
       break;
