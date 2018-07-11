@@ -437,7 +437,8 @@ void Robot::commsMenuSelect(void) {
 void Robot::readSerial() {
   // serial input  
   if (Console.available() > 0) {     
-     String cmd = Console.readString();
+    // String cmd = Console.readString();
+     String cmd = waitStringConsole();
      if (cmd.startsWith("$ROS")) {
        setNextState(STATE_ROS, 0);
        return;

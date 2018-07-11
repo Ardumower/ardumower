@@ -260,7 +260,8 @@ void Robot::processRMCSCommand(String command){
       // determine type of event
       event = commandParts[0];
       frequency = commandParts[1].toInt();
-      enableTrigger = commandParts[2];
+      if (commandParts[2] == "0")
+      enableTrigger = false;
 
       // heck frequency allowed
       if (frequency < -1 || frequency > 10)
