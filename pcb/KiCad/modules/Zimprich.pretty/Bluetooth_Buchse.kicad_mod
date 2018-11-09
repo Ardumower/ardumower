@@ -1,4 +1,4 @@
-(module Bluetooth_Buchse (layer F.Cu) (tedit 54C50893)
+(module Bluetooth_Buchse (layer F.Cu) (tedit 5B967BC2)
   (descr "Through hole socket strip")
   (tags "socket strip")
   (fp_text reference U2 (at 2.54 -26.67 270) (layer F.SilkS)
@@ -39,9 +39,9 @@
   (pad 4 thru_hole oval (at -1.27 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 5 thru_hole oval (at -3.81 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 6 thru_hole oval (at -6.35 0 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Angled_1x06.wrl
-    (at (xyz 0 0 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Horizontal.wrl
+    (offset (xyz 6.5 0 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
 )

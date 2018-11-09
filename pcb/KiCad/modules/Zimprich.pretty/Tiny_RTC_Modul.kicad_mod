@@ -1,4 +1,4 @@
-(module Tiny_RTC_Modul (layer F.Cu) (tedit 586A19FF)
+(module Tiny_RTC_Modul (layer F.Cu) (tedit 5B969650)
   (fp_text reference MD1 (at -1.27 -1.27) (layer F.SilkS)
     (effects (font (size 1.2065 1.2065) (thickness 0.1016)) (justify left bottom))
   )
@@ -77,18 +77,18 @@
   (pad 4_0 thru_hole circle (at -10.795 2.6035) (size 1.408 1.408) (drill 0.9) (layers *.Cu *.Mask))
   (pad 5_0 thru_hole circle (at -10.795 5.1435) (size 1.408 1.408) (drill 0.9) (layers *.Cu *.Mask))
   (pad 3_1 thru_hole circle (at 10.795 -1.2065) (size 1.408 1.408) (drill 0.9) (layers *.Cu *.Mask))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05.wrl
-    (at (xyz -0.4724409448818898 0 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x05_P2.54mm_Vertical.wrl
+    (offset (xyz -12 5 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
+    (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x07.wrl
-    (at (xyz 0.4724409448818898 -0.04724409448818898 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x07_P2.54mm_Vertical.wrl
+    (offset (xyz 12 6.3 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
+    (rotate (xyz 0 0 0))
   )
   (model ${KISYS3DMOD}/Zimprich.3dshapes/Tiny_RTC_Modul.wrl
-    (at (xyz 0 0 0.2755905511811024))
+    (offset (xyz 0 0 6.999999894870548))
     (scale (xyz 0.35 0.45 0.42))
     (rotate (xyz -90 0 90))
   )

@@ -1,4 +1,4 @@
-(module Jumper4 (layer F.Cu) (tedit 57501191)
+(module Jumper4 (layer F.Cu) (tedit 5B895D66)
   (fp_text reference REF** (at 0 5.08) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -14,14 +14,14 @@
   (pad 2 thru_hole circle (at 0 1.27) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 3 thru_hole circle (at 2.54 1.27) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad 4 thru_hole oval (at 0 -1.27) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x03.wrl
-    (at (xyz 0 -0.05 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz 2.5 -1.27 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x01.wrl
-    (at (xyz 0 0.05 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 0 1.27 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
 )

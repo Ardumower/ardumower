@@ -1,4 +1,4 @@
-(module MC_33926_31polig_mit_Bohrloch_neue_Masse (layer F.Cu) (tedit 586E57E9)
+(module MC_33926_31polig_mit_Bohrloch_neue_Masse (layer F.Cu) (tedit 5B968FE9)
   (fp_text reference MC_33926_31polig (at 26.416 -31.877) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -54,58 +54,58 @@
   (pad 31 thru_hole circle (at 43.18 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad ~ thru_hole circle (at 6.2865 -13.3985) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
   (pad ~ thru_hole circle (at 47.0535 -13.3985) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18.wrl
-    (at (xyz 1.05 1.49 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x18_P2.54mm_Vertical.wrl
+    (offset (xyz 48.17 37.846 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+    (offset (xyz 20.55 35.306 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz 32.98 35.306 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+    (offset (xyz 43 35.306 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 17.27199974060059 14.47799978256226 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
-    (at (xyz 0.75 1.39 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 20.82799968719482 14.47799978256226 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
-    (at (xyz 1.2 1.39 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 24.38399963378906 14.47799978256226 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
-    (at (xyz 1.65 1.39 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 27.9399995803833 14.47799978256226 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 0.68 0.57 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 31.49599952697754 14.47799978256226 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 0.82 0.57 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 0.96 0.57 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 1.1 0.57 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 1.24 0.57 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 1.38 0.57 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 35.05199947357178 14.47799978256226 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
   (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrl
-    (at (xyz 1.244094488188977 0.984251968503937 0.4094488188976378))
+    (offset (xyz 31.59999952541563 24.99999962453767 10.39999984380767))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
   )

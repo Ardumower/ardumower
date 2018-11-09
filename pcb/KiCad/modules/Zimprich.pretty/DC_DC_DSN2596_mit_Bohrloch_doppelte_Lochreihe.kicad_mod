@@ -1,4 +1,4 @@
-(module DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe (layer F.Cu) (tedit 586A26C1)
+(module DC_DC_DSN2596_mit_Bohrloch_doppelte_Lochreihe (layer F.Cu) (tedit 5B9684B9)
   (fp_text reference U6 (at 22.86 -15.24) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -35,34 +35,34 @@
   (pad 1 thru_hole circle (at 41.91 -4.826) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole circle (at 36.83 -4.826) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 4 thru_hole circle (at 1.27 -4.826) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01.wrl
-    (at (xyz 0.05 0.76 0))
+  (model ${KISYS3DMOD}/Zimprich.3dshapes/DC-DC_MODULE_LM2596s.wrl
+    (offset (xyz 21.19999968160795 10.99999983479658 8.999999864833564))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 180))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 1.254 19.254 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
-    (at (xyz 0.05 0.15 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+    (offset (xyz 1.254 4.754 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz 41.745 2 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
-    (at (xyz 1.55 0.76 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz 41.745 4.5 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
-    (at (xyz 1.55 0.2 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz 41.745 19 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
-    (at (xyz 1.55 0.1 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
-  (model ${KISYS3DMOD}/Zimprich.3dshapes/DC-DC_MODULE_LM2596s.wrl
-    (at (xyz 0.8346456692913387 0.4330708661417323 0.3543307086614174))
-    (scale (xyz 0.3937 0.3937 0.3937))
-    (rotate (xyz 0 0 180))
+    (rotate (xyz 0 0 90))
   )
 )

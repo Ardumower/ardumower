@@ -1,4 +1,4 @@
-(module GY_80 (layer F.Cu) (tedit 58720B57)
+(module GY_80 (layer F.Cu) (tedit 5B96887C)
   (fp_text reference REF** (at 13.61 -8.23) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -23,4 +23,9 @@
   (pad 3 thru_hole circle (at 6.985 -1.651) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
   (pad 2 thru_hole circle (at 4.445 -1.651) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
   (pad 1 thru_hole circle (at 1.905 -1.651) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x10_P2.54mm_Vertical.wrl
+    (offset (xyz 24.754 1.764 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
 )

@@ -1,4 +1,4 @@
-(module Buzzer_12x9.5RM7.6 (layer F.Cu) (tedit 57DDC392)
+(module Buzzer_12x9.5RM7.6 (layer F.Cu) (tedit 5B9680C9)
   (descr "Generic Buzzer, D12mm height 9.5mm with RM7.6mm")
   (tags buzzer)
   (fp_text reference SP1 (at 0 -7 180) (layer F.SilkS)

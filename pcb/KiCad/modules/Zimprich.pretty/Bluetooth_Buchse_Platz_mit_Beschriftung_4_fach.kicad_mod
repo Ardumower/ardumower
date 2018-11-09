@@ -1,4 +1,4 @@
-(module Bluetooth_Buchse_Platz_mit_Beschriftung_4_fach locked (layer F.Cu) (tedit 58B43C21)
+(module Bluetooth_Buchse_Platz_mit_Beschriftung_4_fach locked (layer F.Cu) (tedit 5B967CAF)
   (descr "Through hole socket strip")
   (tags "socket strip")
   (fp_text reference U2 (at -6.35 3.048 180) (layer F.SilkS)
@@ -153,14 +153,14 @@
   (pad TXD thru_hole oval (at 1.27 -9.525 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad RXD thru_hole oval (at 3.81 -9.525 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
   (pad BRK thru_hole oval (at 6.35 -9.525 180) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS))
-  (model Socket_Strips.3dshapes/Socket_Strip_Angled_1x06.wrl
-    (at (xyz 0 0.1181102362204725 0.07874015748031496))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
   (model ${KISYS3DMOD}/Zimprich.3dshapes/Wireless_Bluetooth_Modul.wrl
-    (at (xyz 0 1.240157480314961 0))
+    (offset (xyz 0 31.49999952691748 0))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz -90 0 90))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Horizontal.wrl
+    (offset (xyz 6.5 3 2.5))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
   )
 )

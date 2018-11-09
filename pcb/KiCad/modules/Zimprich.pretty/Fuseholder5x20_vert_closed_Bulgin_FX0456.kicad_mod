@@ -1,4 +1,4 @@
-(module Fuseholder5x20_vert_closed_Bulgin_FX0456 (layer F.Cu) (tedit 58961E5C)
+(module Fuseholder5x20_vert_closed_Bulgin_FX0456 (layer F.Cu) (tedit 5B9687F2)
   (descr "Fuseholder, 5x20, closed, vertical, Bulgin, FX0456")
   (tags "Fuseholder, 5x20, closed, vertical, Bulgin, FX0456, Sicherungshalter,")
   (fp_text reference EF2 (at -0.254 8.9535) (layer F.SilkS)
@@ -63,7 +63,7 @@
   (pad 1 thru_hole circle (at -5.08 0) (size 2.99974 2.99974) (drill 1.34874) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole circle (at 5.08 0) (size 2.99974 2.99974) (drill 1.34874) (layers *.Cu *.Mask F.SilkS))
   (model ${KISYS3DMOD}/Zimprich.3dshapes/Fuse_Holders_and_FusesFuseholder5x20_vert_closed_Bulgin_FX0456.wrl
-    (at (xyz -0.03149606299212599 0 0))
+    (offset (xyz -0.8 0 0))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 90))
   )

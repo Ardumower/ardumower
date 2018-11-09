@@ -1,4 +1,4 @@
-(module Bluetooth_CZ_HC_05 (layer F.Cu) (tedit 54BC251E)
+(module Bluetooth_CZ_HC_05 (layer F.Cu) (tedit 5B967CFE)
   (fp_text reference Bluetooth_CZ_HC_05 (at 26.67 -11.176) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -21,9 +21,9 @@
   (pad 3 thru_hole circle (at 1.27 -9.271) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole circle (at 1.27 -11.811) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole circle (at 1.27 -14.351) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Angled_1x06.wrl
-    (at (xyz 0.05 0.31 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Horizontal.wrl
+    (offset (xyz 1.5 1.5 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
+    (rotate (xyz 0 0 180))
   )
 )

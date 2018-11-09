@@ -1,4 +1,4 @@
-(module MC33926_Singel (layer F.Cu) (tedit 5A357992)
+(module MC33926_Singel (layer F.Cu) (tedit 5B895CEF)
   (fp_text reference REF** (at -0.635 -10.16) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -80,4 +80,39 @@
   (pad 16 thru_hole circle (at 8.98 8.25) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
   (pad "" thru_hole circle (at 10.16 12.7) (size 2.9 2.9) (drill 2.5) (layers *.Cu *.Mask))
   (pad "" thru_hole circle (at -8.89 8.89) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+    (offset (xyz -8.853999999999999 1.254 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz -8.853999999999999 -9 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x12_P2.54mm_Vertical.wrl
+    (offset (xyz -11.5 14 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 9 2.254 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 9 -1.254 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 9 -4.754 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+    (offset (xyz 9 -8.254 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )
