@@ -1,4 +1,4 @@
-(kicad_pcb (version 20170123) (host pcbnew "(2017-07-30 revision e10f0c729)-makepkg")
+(kicad_pcb (version 20171130) (host pcbnew "(6.0.0-rc1-dev-856-g9b027628e)")
 
   (general
     (thickness 1.6)
@@ -18,8 +18,8 @@
   )
 
   (layers
-    (0 F.Cu signal)
-    (31 B.Cu signal)
+    (0 F.Cu signal hide)
+    (31 B.Cu signal hide)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -54,8 +54,6 @@
     (zone_clearance 0.3048)
     (zone_45_only yes)
     (trace_min 0.254)
-    (segment_width 0.5)
-    (edge_width 0.15)
     (via_size 0.889)
     (via_drill 0.635)
     (via_min_size 0.889)
@@ -70,6 +68,8 @@
     (uvias_allowed no)
     (uvia_min_size 0.508)
     (uvia_min_drill 0.127)
+    (edge_width 0.15)
+    (segment_width 0.5)
     (pcb_text_width 0.3)
     (pcb_text_size 1 1)
     (mod_edge_width 0.15)
@@ -78,11 +78,15 @@
     (pad_size 2.032 1.7272)
     (pad_drill 1.016)
     (pad_to_mask_clearance 0)
+    (solder_mask_min_width 0.25)
     (aux_axis_origin 27.94 144.78)
     (visible_elements 7FFFFF7F)
     (pcbplotparams
       (layerselection 0x00030_80000001)
       (usegerberextensions false)
+      (usegerberattributes false)
+      (usegerberadvancedattributes false)
+      (creategerberjobfile false)
       (excludeedgelayer true)
       (linewidth 0.100000)
       (plotframeref false)
@@ -91,7 +95,7 @@
       (useauxorigin false)
       (hpglpennumber 1)
       (hpglpenspeed 20)
-      (hpglpendiameter 15)
+      (hpglpendiameter 15.000000)
       (psnegative false)
       (psa4output false)
       (plotreference true)
@@ -399,8 +403,8 @@
     (via_drill 0.635)
     (uvia_dia 0.508)
     (uvia_drill 0.127)
-    (diff_pair_gap 0.254)
     (diff_pair_width 0.254)
+    (diff_pair_gap 0.254)
     (add_net +3.3VP)
     (add_net +3V3)
     (add_net +5V)
@@ -692,8 +696,8 @@
     (via_drill 0.635)
     (uvia_dia 0.508)
     (uvia_drill 0.127)
-    (diff_pair_gap 0.254)
     (diff_pair_width 0.254)
+    (diff_pair_gap 0.254)
     (add_net +24V)
   )
 
@@ -704,8 +708,8 @@
     (via_drill 0.635)
     (uvia_dia 0.508)
     (uvia_drill 0.127)
-    (diff_pair_gap 0.254)
     (diff_pair_width 0.254)
+    (diff_pair_gap 0.254)
     (add_net pinBatteryVoltage)
   )
 
@@ -742,7 +746,7 @@
       (net 280 "Net-(D74-Pad1)"))
     (pad 2 smd rect (at 2 0 180) (size 2.5 1.8) (layers F.Cu F.Paste F.Mask)
       (net 64 +9V))
-    (model Diodes_SMD.3dshapes/D_SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -782,7 +786,7 @@
       (net 89 "Net-(C1-Pad1)"))
     (pad 2 smd rect (at 2 0) (size 2.5 1.8) (layers F.Cu F.Paste F.Mask)
       (net 64 +9V))
-    (model Diodes_SMD.3dshapes/D_SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -971,13 +975,13 @@
       (net 217 "Net-(C34-Pad1)"))
     (pad Key thru_hole oval (at 6.35 3.175) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask B.SilkS)
       (net 128 "Net-(JP2-Pad1)"))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Angled_1x06_Pitch2.54mm.wrl
-      (at (xyz 0 0.1181102362204725 0.07874015748031496))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Horizontal.wrl
+      (offset (xyz 6.5 3 2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 90))
     )
     (model ${KISYS3DMOD}/Zimprich.3dshapes/Wireless_Bluetooth_Modul.wrl
-      (at (xyz 0 1.240157480314961 0))
+      (offset (xyz 0 31.5 0))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz -90 0 90))
     )
@@ -1086,7 +1090,7 @@
     (pad "" thru_hole circle (at -29 24.5 270) (size 2.75 2.75) (drill 2.75) (layers *.Cu *.Mask)
       (solder_paste_margin 0.001))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/Raspberry_PI.wrl
-      (at (xyz 0.6299212598425197 -0.1 -0.9055118110236221))
+      (offset (xyz 15.99999975970411 -2.539999961853027 -22.99999965457466))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 90 0 0))
     )
@@ -1183,58 +1187,58 @@
       (net 66 /Motortreiber/MähmotorSchutz/MotorIN1))
     (pad 24 thru_hole circle (at 35.052 -11.938 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 67 /Motortreiber/MähmotorSchutz/MotorIN2))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18_Pitch2.54mm.wrl
-      (at (xyz 1.05 1.49 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x18_P2.54mm_Vertical.wrl
+      (offset (xyz 48.2092 37.7952 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 24.2824 14.478 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.75 1.39 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+      (offset (xyz 32.9946 35.2806 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 27.686 14.478 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 1.2 1.39 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 20.8026 14.4018 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.65 1.39 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 17.272 14.3764 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.68 0.52 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 31.3436 14.4018 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 34.8742 14.4018 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 43.1038 35.35679999999999 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.82 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.965 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.1 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.24 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.38 0.52 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 20.2184 35.3822 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
     )
     (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrlll
-      (at (xyz 1.244094488188977 0.984251968503937 0.4133858267716536))
+      (offset (xyz 31.59999952541563 24.99999962453767 10.49999984230582))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
@@ -1331,58 +1335,58 @@
     (pad 31 thru_hole circle (at 43.18 -35.306 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
     (pad ~ thru_hole circle (at 6.2865 -13.3985 90) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
     (pad ~ thru_hole circle (at 47.0535 -13.3985 90) (size 2 2) (drill 2) (layers *.Cu *.Mask F.SilkS))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18_Pitch2.54mm.wrl
-      (at (xyz 1.05 1.49 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x18_P2.54mm_Vertical.wrl
+      (offset (xyz 48.17 37.846 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 20.05 35.306 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+      (offset (xyz 32.98 35.306 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 43.41 35.306 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 17.272 14.708 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.75 1.39 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 20.828 14.708 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 1.2 1.39 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 24.511 14.708 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.65 1.39 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 27.94 14.708 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.68 0.52 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 31.496 14.708 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.82 0.52 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 35.052 14.708 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.965 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.1 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.24 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 1.38 0.52 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrllll
-      (at (xyz 1.244094488188977 0.984251968503937 0.4133858267716536))
+    (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrll
+      (offset (xyz 31.6 25 10.5))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
@@ -1425,10 +1429,10 @@
     (at 96.52 66.04)
     (path /57DFE528/57DFED57)
     (fp_text reference SHIELD1 (at 70.612 24.892) (layer B.SilkS)
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_text value ARDUINO_MEGA_SHIELD (at 69.596 21.082) (layer B.SilkS) hide
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_line (start 99.06 2.54) (end 99.06 0) (layer B.SilkS) (width 0.381))
     (fp_line (start 101.6 5.08) (end 99.06 2.54) (layer B.SilkS) (width 0.381))
@@ -1617,38 +1621,38 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 1.791338582677166 0.1003937007874016 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
+      (offset (xyz 45.49999931665857 2.549999961702843 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 2.700787401574803 0.1003937007874016 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
+      (offset (xyz 68.59999896973136 2.549999961702843 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 3.582677165354331 0.1003937007874016 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
+      (offset (xyz 90.99999863331713 2.549999961702843 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_2x18_Pitch2.54mm.wrl
-      (at (xyz 3.779527559055119 2 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x18_P2.54mm_Vertical.wrl
+      (offset (xyz 96.5 50.8 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 0))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 3.389763779527559 1.996062992125984 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
+      (offset (xyz 86.09999870690773 50.69999923856239 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
-      (at (xyz 2.5 1.996062992125984 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
+      (offset (xyz 63.49999904632568 50.69999923856239 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x10_Pitch2.54mm.wrl
-      (at (xyz 1.661417322834646 1.996062992125984 0))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x10_P2.54mm_Vertical.wrl
+      (offset (xyz 42.1999993662196 50.69999923856239 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 90))
     )
@@ -1685,7 +1689,7 @@
       (net 216 "Net-(C25-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1723,7 +1727,7 @@
       (net 215 "Net-(C24-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1761,7 +1765,7 @@
       (net 214 "Net-(C23-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1799,7 +1803,7 @@
       (net 213 "Net-(C21-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1837,7 +1841,7 @@
       (net 212 "Net-(C20-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1875,7 +1879,7 @@
       (net 211 "Net-(C19-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1913,7 +1917,7 @@
       (net 218 "Net-(C35-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1951,7 +1955,7 @@
       (net 217 "Net-(C34-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1989,7 +1993,7 @@
       (net 219 "Net-(C36-Pad1)"))
     (pad 3 thru_hole oval (at 0 5.08 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2025,7 +2029,7 @@
       (net 128 "Net-(JP2-Pad1)"))
     (pad 2 thru_hole oval (at 0 2.54 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2061,7 +2065,7 @@
       (net 199 "Net-(JP5-Pad1)"))
     (pad 2 thru_hole oval (at 0 2.54 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2097,7 +2101,7 @@
       (net 210 "Net-(JP9-Pad1)"))
     (pad 2 thru_hole oval (at 0 2.54 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2145,7 +2149,7 @@
       (net 88 GND))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2193,7 +2197,7 @@
       (net 125 +5VP))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 125 +5VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2241,7 +2245,7 @@
       (net 126 +3.3VP))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2289,7 +2293,7 @@
       (net 64 +9V))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 64 +9V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2337,7 +2341,7 @@
       (net 88 GND))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 88 GND))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2385,7 +2389,7 @@
       (net 63 +5V))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 63 +5V))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2433,7 +2437,7 @@
       (net 65 +3V3))
     (pad 8 thru_hole oval (at 0 17.78 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 65 +3V3))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2467,10 +2471,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 129 "Net-(Q3-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -2508,9 +2512,9 @@
       (net 92 "Net-(D1-Pad1)"))
     (pad 2 thru_hole oval (at 5.08 0) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/TO_SOT_Packages_THT.3dshapes/TO-220-2_Vertical.wrl
-      (at (xyz 0.1 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+    (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-2_Vertical.wrl
+      (offset (xyz 0.04 0 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2536,14 +2540,9 @@
       (net 88 GND))
     (pad 2 thru_hole circle (at 2.5 0 180) (size 1.3 1.3) (drill 0.8001) (layers *.Cu *.Mask F.SilkS)
       (net 61 "Net-(C9-Pad2)"))
-    (model Capacitors_ThroughHole.3dshapes/C_Disc_D3_P2.5.wrl
-      (at (xyz 0.0492126 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Capacitors_THT.3dshapes/C_Disc_D3.0mm_W1.6mm_P2.50mm.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/C_Disc_D3.0mm_W2.0mm_P2.50mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2582,9 +2581,9 @@
       (net 92 "Net-(D1-Pad1)"))
     (pad 1 thru_hole rect (at 0 0) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS)
       (net 76 "/USpannungAB/Batterieeingang 24V"))
-    (model ${KISYS3DMOD}/TO_SOT_Packages_THT.3dshapes/TO-220-2_Vertical.wrl
-      (at (xyz 0.1 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+    (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-2_Vertical.wrl
+      (offset (xyz 0.04 0 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2686,9 +2685,9 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 90) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask B.SilkS)
       (net 90 Dual1))
-    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/CP_Radial_D18.0mm_P7.50mm.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D18.0mm_P7.50mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2790,9 +2789,9 @@
       (net 91 Dual2))
     (pad 2 thru_hole circle (at 7.5 0 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask B.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/CP_Radial_D18.0mm_P7.50mm.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D18.0mm_P7.50mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2802,10 +2801,10 @@
     (descr "Capacitor non pol, 18x5mm")
     (path /57D95AF0/57DAEC1D/57DAFE10)
     (fp_text reference CC1 (at 0 4.318 90) (layer B.SilkS)
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_text value "MP3-Y2 10N" (at 0 -3.81 90) (layer B.SilkS) hide
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_line (start 9.017 2.54) (end -9.017 2.54) (layer B.SilkS) (width 0.24892))
     (fp_line (start 9.017 -2.54) (end 9.017 2.54) (layer B.SilkS) (width 0.24892))
@@ -2815,8 +2814,8 @@
       (net 72 "Net-(CC1-Pad2)"))
     (pad 1 thru_hole circle (at -7.62 0 90) (size 1.99898 1.99898) (drill 0.84836) (layers *.Cu *.Mask B.SilkS)
       (net 66 /Motortreiber/MähmotorSchutz/MotorIN1))
-    (model walter/capacitors/cnp_18x5mm.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/C_Rect_L18.0mm_W5.0mm_P15.00mm_FKS3_FKP3.wrl
+      (offset (xyz -7.5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -2827,10 +2826,10 @@
     (descr "Capacitor non pol, 18x5mm")
     (path /57D95AF0/57DB3A39/57DB3DA3)
     (fp_text reference CC2 (at 6.9215 -4.445 270) (layer B.SilkS)
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_text value "MP3-Y2 10N" (at 0 -3.81 270) (layer B.SilkS) hide
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_line (start -9.017 2.54) (end -9.017 -2.54) (layer B.SilkS) (width 0.24892))
     (fp_line (start -9.017 -2.54) (end 9.017 -2.54) (layer B.SilkS) (width 0.24892))
@@ -2840,8 +2839,8 @@
       (net 68 /Motortreiber/MotorLinks/MotorIN1))
     (pad 2 thru_hole circle (at 7.62 0 270) (size 1.99898 1.99898) (drill 0.84836) (layers *.Cu *.Mask B.SilkS)
       (net 73 "Net-(CC2-Pad2)"))
-    (model walter/capacitors/cnp_18x5mm.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/C_Rect_L18.0mm_W5.0mm_P15.00mm_FKS3_FKP3.wrl
+      (offset (xyz -7.5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -2852,10 +2851,10 @@
     (descr "Capacitor non pol, 18x5mm")
     (path /57D95AF0/57DB6176/57DB6B7D)
     (fp_text reference CC3 (at 1.27 -4.0005 270) (layer B.SilkS)
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_text value "MP3-Y2 10N" (at 0 -3.81 270) (layer B.SilkS) hide
-      (effects (font (thickness 0.3048)) (justify mirror))
+      (effects (font (size 1.524 1.524) (thickness 0.3048)) (justify mirror))
     )
     (fp_line (start -9.017 2.54) (end -9.017 -2.54) (layer B.SilkS) (width 0.24892))
     (fp_line (start -9.017 -2.54) (end 9.017 -2.54) (layer B.SilkS) (width 0.24892))
@@ -2865,8 +2864,8 @@
       (net 70 /Motortreiber/MotorRechts/MotorIN1))
     (pad 2 thru_hole circle (at 7.62 0 270) (size 1.99898 1.99898) (drill 0.84836) (layers *.Cu *.Mask B.SilkS)
       (net 74 "Net-(CC3-Pad2)"))
-    (model walter/capacitors/cnp_18x5mm.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/C_Rect_L18.0mm_W5.0mm_P15.00mm_FKS3_FKP3.wrl
+      (offset (xyz -7.5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -2897,9 +2896,9 @@
       (net 72 "Net-(CC1-Pad2)"))
     (pad 2 thru_hole circle (at 24.99868 0 90) (size 2.30124 2.30124) (drill 1.19888) (layers *.Cu *.SilkS *.Mask)
       (net 67 /Motortreiber/MähmotorSchutz/MotorIN2))
-    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/R_Axial_Power_L20.0mm_W6.4mm_P25.40mm.wrl
+    (model ${KISYS3DMOD}/Resistor_THT.3dshapes/R_Axial_DIN0922_L20.0mm_D9.0mm_P25.40mm_Horizontal.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2929,9 +2928,9 @@
       (net 73 "Net-(CC2-Pad2)"))
     (pad 2 thru_hole circle (at 24.99868 0 90) (size 2.30124 2.30124) (drill 1.19888) (layers *.Cu *.SilkS *.Mask)
       (net 69 /Motortreiber/MotorLinks/MotorIN2))
-    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/R_Axial_Power_L20.0mm_W6.4mm_P25.40mm.wrl
+    (model ${KISYS3DMOD}/Resistor_THT.3dshapes/R_Axial_DIN0922_L20.0mm_D9.0mm_P25.40mm_Horizontal.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3397 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2961,9 +2960,9 @@
       (net 71 /Motortreiber/MotorRechts/MotorIN2))
     (pad 1 thru_hole circle (at 0 0 90) (size 2.30124 2.30124) (drill 1.00076) (layers *.Cu *.SilkS *.Mask)
       (net 74 "Net-(CC3-Pad2)"))
-    (model ${KISYS3DMOD}/Resistors_ThroughHole.3dshapes/R_Axial_Power_L20.0mm_W6.4mm_P25.40mm.wrl
+    (model ${KISYS3DMOD}/Resistor_THT.3dshapes/R_Axial_DIN0922_L20.0mm_D9.0mm_P25.40mm_Horizontal.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -2995,7 +2994,7 @@
       (net 76 "/USpannungAB/Batterieeingang 24V"))
     (pad 2 thru_hole circle (at 3.81 0 270) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 75 "Net-(C12-Pad2)"))
-    (model ${KISYS3DMOD}/Capacitors_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3225,10 +3224,10 @@
       (net 69 /Motortreiber/MotorLinks/MotorIN2))
     (pad 1 thru_hole rect (at 0 0 90) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 68 /Motortreiber/MotorLinks/MotorIN1))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3260,10 +3259,10 @@
       (net 88 GND))
     (pad 2 thru_hole circle (at 5 0 90) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 221 "Net-(EF3-Pad2)"))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3295,10 +3294,10 @@
       (net 71 /Motortreiber/MotorRechts/MotorIN2))
     (pad 1 thru_hole rect (at 0 0 90) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 70 /Motortreiber/MotorRechts/MotorIN1))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3330,10 +3329,10 @@
       (net 38 +24V))
     (pad 1 thru_hole rect (at 0 0 90) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3365,10 +3364,10 @@
       (net 220 /Motortreiber/+24V))
     (pad 1 thru_hole rect (at 0 0 90) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3400,10 +3399,10 @@
       (net 220 /Motortreiber/+24V))
     (pad 1 thru_hole rect (at 0 0 90) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3476,29 +3475,29 @@
       (net 222 "Net-(K3-Pad12)"))
     (pad 4 thru_hole circle (at 2.54 5.08) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 183 StationLed))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0 -0.3 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.05 -0.2 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01_Pitch2.54mm.wrl
-      (at (xyz -0.07000000000000001 0.25 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01_Pitch2.54mm.wrl
-      (at (xyz 0.06 0.25 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Zimprich.3dshapes/ina169.wrllll
-      (at (xyz -0.3385826771653543 0.1968503937007874 0.4133858267716536))
+    (model ${KISYS3DMOD}/Zimprich.3dshapes/ina169.wrlll
+      (offset (xyz -8.6 5 9))
       (scale (xyz 0.3937 0.3937 0.3937))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+      (offset (xyz 2.5 -5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x05_P2.54mm_Vertical.wrl
+      (offset (xyz 5 -7.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+      (offset (xyz 1.5 6.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x01_P2.54mm_Vertical.wrl
+      (offset (xyz -1.5 6.5 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -3537,10 +3536,10 @@
       (net 57 "Net-(EF2-Pad2)"))
     (pad 1 thru_hole rect (at -3.81 0 90) (size 2.6 2.6) (drill oval 1.9 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/walter/conn_gmkds/gmkds_3-2-7,62.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 4 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3578,10 +3577,10 @@
       (net 62 Charg_Pin_+))
     (pad 1 thru_hole rect (at -3.81 0) (size 2.6 2.6) (drill oval 1.9 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/walter/conn_gmkds/gmkds_3-2-7,62.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 4 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3619,10 +3618,10 @@
       (net 67 /Motortreiber/MähmotorSchutz/MotorIN2))
     (pad 1 thru_hole rect (at -3.81 0 90) (size 2.6 2.6) (drill oval 1.9 1.3) (layers *.Cu *.Mask F.SilkS)
       (net 66 /Motortreiber/MähmotorSchutz/MotorIN1))
-    (model ${KISYS3DMOD}/walter/conn_gmkds/gmkds_3-2-7,62.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 4 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -3678,32 +3677,32 @@
     (pad 2 thru_hole circle (at 41.91 -19.304 180) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 205 "Net-(JP1-Pad1)"))
     (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x01_Pitch2.54mm.wrl
-      (at (xyz 0.05 0.76 0))
+      (offset (xyz 1.269999980926514 19.30399971008301 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
     (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02_Pitch2.54mm.wrl
-      (at (xyz 0.05 0.15 0))
+      (offset (xyz 1.269999980926514 3.809999942779541 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
     )
     (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 1.55 0.76 0))
+      (offset (xyz 39.36999940872192 19.30399971008301 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
     (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 1.55 0.2 0))
+      (offset (xyz 39.36999940872192 5.079999923706055 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
     (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03_Pitch2.54mm.wrl
-      (at (xyz 1.55 0.1 0))
+      (offset (xyz 39.36999940872192 2.539999961853027 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
     (model ${KISYS3DMOD}/Zimprich.3dshapes/DC-DC_MODULE_LM2596s.wrlll
-      (at (xyz 0.8267716535433072 0.4251968503937009 0.3543307086614174))
+      (offset (xyz 20.99999968461164 10.79999983780028 8.999999864833564))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
@@ -3749,7 +3748,7 @@
     (pad 8 thru_hole circle (at 0 -7.62 270) (size 2.99974 2.99974) (drill 1.19888) (layers *.Cu *.Mask F.SilkS)
       (net 183 StationLed))
     (model ${KISYS3DMOD}/walter/relay/relay_40.51_socket.wrl
-      (at (xyz 0.46 0.15 0))
+      (offset (xyz 11.68399982452393 3.809999942779541 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -3782,7 +3781,7 @@
       (net 115 IOREF))
     (pad 2 thru_hole circle (at 3.81 0 90) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Capacitors_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3840,7 +3839,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3869,7 +3868,7 @@
       (net 126 +3.3VP))
     (pad 2 smd rect (at 1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3898,7 +3897,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3945,10 +3944,10 @@
       (net 127 "Net-(D3-Pad1)"))
     (pad 2 smd rect (at 1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 183 StationLed))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 180))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -3996,12 +3995,12 @@
     (fp_text value PCA9517D (at 0.127 3.81) (layer F.Fab)
       (effects (font (size 0.25 0.25) (thickness 0.05)))
     )
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
@@ -4056,7 +4055,7 @@
       (net 85 SCL) (solder_mask_margin 0.2))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4074,12 +4073,12 @@
     (fp_text value PCA9517D (at 0.127 3.81) (layer F.Fab)
       (effects (font (size 0.25 0.25) (thickness 0.05)))
     )
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
@@ -4134,7 +4133,7 @@
       (net 85 SCL) (solder_mask_margin 0.2))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4152,12 +4151,12 @@
     (fp_text value PCA9517D (at 0.127 3.81) (layer F.Fab)
       (effects (font (size 0.25 0.25) (thickness 0.05)))
     )
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
@@ -4212,7 +4211,7 @@
       (net 85 SCL) (solder_mask_margin 0.2))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4268,12 +4267,12 @@
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
     (pad 2 smd rect (at -2.4638 -0.635) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
@@ -4290,7 +4289,7 @@
       (net 99 SCL4) (solder_mask_margin 0.2))
     (pad 8 smd rect (at 2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 213 "Net-(C21-Pad1)") (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4308,12 +4307,12 @@
     (fp_text value PCA9517D (at 0.127 3.81) (layer F.Fab)
       (effects (font (size 0.25 0.25) (thickness 0.05)))
     )
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
@@ -4368,7 +4367,7 @@
       (net 85 SCL) (solder_mask_margin 0.2))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4424,12 +4423,12 @@
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
     (pad 2 smd rect (at -2.4638 -0.635) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
@@ -4446,7 +4445,7 @@
       (net 103 SCL6) (solder_mask_margin 0.2))
     (pad 8 smd rect (at 2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 215 "Net-(C24-Pad1)") (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4502,12 +4501,12 @@
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -2.0066 -2.4892) (layer Dwgs.User) (width 0.1524))
     (fp_line (start -2.0066 -2.4892) (end -2.0066 2.4892) (layer Dwgs.User) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer Dwgs.User) (width 0.1))
     (fp_line (start -1.3716 2.4892) (end 1.3716 2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 1.3716 -2.4892) (end 0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start 0.3048 -2.4892) (end -0.3048 -2.4892) (layer F.SilkS) (width 0.1524))
     (fp_line (start -0.3048 -2.4892) (end -1.3716 -2.4892) (layer F.SilkS) (width 0.1524))
-    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0))
+    (fp_arc (start 0 -2.4892) (end -0.3048 -2.4892) (angle -180) (layer F.SilkS) (width 0.1))
     (pad 1 smd rect (at -2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF) (solder_mask_margin 0.2))
     (pad 2 smd rect (at -2.4638 -0.635) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
@@ -4524,7 +4523,7 @@
       (net 104 SCL7) (solder_mask_margin 0.2))
     (pad 8 smd rect (at 2.4638 -1.905) (size 1.9812 0.5588) (layers F.Cu F.Paste F.Mask)
       (net 216 "Net-(C25-Pad1)") (solder_mask_margin 0.2))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-8_3.9x4.9mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4558,10 +4557,10 @@
       (net 18 pinSonarCenterEcho))
     (pad 3 smd rect (at 0 -0.99822 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 118 /Anschlußstecker/LShifter1/5V_IN))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4592,10 +4591,10 @@
       (net 20 pinSonarRightEcho))
     (pad 1 smd rect (at -0.95 1.00076 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4626,10 +4625,10 @@
       (net 22 pinSonarLeftEcho))
     (pad 3 smd rect (at 0 -0.99822 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 120 /Anschlußstecker/LShifter3/5V_IN))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4660,10 +4659,10 @@
       (net 31 pinRemoteMow))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4694,10 +4693,10 @@
       (net 32 pinRemoteSteer))
     (pad 3 smd rect (at 0 -0.99822 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 123 /Anschlußstecker/LShifter5/5V_IN))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4728,10 +4727,10 @@
       (net 33 pinRemoteSpeed))
     (pad 1 smd rect (at -0.95 1.00076 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4762,10 +4761,10 @@
       (net 34 pinRemoteSwitch))
     (pad 3 smd rect (at 0 -0.99822 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 121 /Anschlußstecker/LShifter7/5V_IN))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -4801,7 +4800,7 @@
       (net 76 "/USpannungAB/Batterieeingang 24V"))
     (pad 2 smd rect (at 1.75006 0 270) (size 1.30048 1.69926) (layers F.Cu F.Paste F.Mask)
       (net 77 "Net-(D2-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/D_MiniMELF_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_MiniMELF.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4836,10 +4835,10 @@
       (net 125 +5VP))
     (pad 1 smd rect (at 0 -2.54 180) (size 4.6 1.39) (layers F.Cu F.Paste F.Mask)
       (net 89 "Net-(C1-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/TO-263-3Lead.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/TO-263-3_TabPin2.wrl
+      (offset (xyz 6 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -4871,10 +4870,10 @@
       (net 88 GND))
     (pad 2 smd rect (at 0 0 180) (size 4.6 1.39) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model TO_SOT_Packages_SMD.3dshapes/TO-263-3Lead.wrl
-      (at (xyz 0 0 0))
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/TO-263-3_TabPin2.wrl
+      (offset (xyz 5.999999909889041 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -4905,9 +4904,9 @@
       (net 183 StationLed))
     (pad 1 thru_hole oval (at -2.54 0) (size 2.032 2.54) (drill 1.143) (layers *.Cu *.Mask F.SilkS)
       (net 204 "Net-(D7-Pad2)"))
-    (model ${KISYS3DMOD}/TO_SOT_Packages_THT.3dshapes/TO-220_Vertical.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+    (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.wrl
+      (offset (xyz -2.5 0 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -4939,9 +4938,9 @@
       (net 76 "/USpannungAB/Batterieeingang 24V"))
     (pad 2 thru_hole oval (at 0 0 90) (size 2.032 2.54) (drill 1.143) (layers *.Cu *.Mask F.SilkS)
       (net 38 +24V))
-    (model ${KISYS3DMOD}/TO_SOT_Packages_THT.3dshapes/TO-220_Vertical.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 0.3997 0.3997 0.3997))
+    (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.wrl
+      (offset (xyz -2.5 0 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -4986,7 +4985,7 @@
       (net 134 "Net-(D17-Pad2)"))
     (pad 1 smd rect (at -1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -5033,7 +5032,7 @@
       (net 88 GND))
     (pad 2 smd rect (at 1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 135 "Net-(D18-Pad2)"))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -5080,7 +5079,7 @@
       (net 136 "Net-(D19-Pad2)"))
     (pad 1 smd rect (at -1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -5127,10 +5126,10 @@
       (net 184 "Net-(D20-Pad1)"))
     (pad 2 smd rect (at 1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 38 +24V))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 180))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -5174,7 +5173,7 @@
       (net 137 "Net-(D21-Pad2)"))
     (pad 1 smd rect (at -1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -5221,7 +5220,7 @@
       (net 185 "Net-(D22-Pad1)"))
     (pad 2 smd rect (at 1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 90 Dual1))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -5268,7 +5267,7 @@
       (net 91 Dual2))
     (pad 1 smd rect (at -1.41986 0 180) (size 1.59766 1.80086) (layers F.Cu F.Paste F.Mask)
       (net 186 "Net-(D23-Pad1)"))
-    (model LEDs.3dshapes/LED_1206.wrl
+    (model ${KISYS3DMOD}/LED_SMD.3dshapes/LED_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -5302,10 +5301,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.95 1.00076 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 140 "Net-(Q12-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -5336,10 +5335,10 @@
       (net 140 "Net-(Q12-Pad1)"))
     (pad 3 smd rect (at 0 -0.99822 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 127 "Net-(D3-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -5370,10 +5369,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 142 "Net-(Q1-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -5414,7 +5413,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7272 2.032) (drill 0.9) (layers *.Cu *.Mask F.SilkS)
       (net 115 IOREF))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5460,7 +5459,7 @@
       (net 254 /Anschlußstecker/LShifter11/5V_IN))
     (pad 4 thru_hole oval (at 7.5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 120 /Anschlußstecker/LShifter3/5V_IN))
-    (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5506,7 +5505,7 @@
       (net 28 pinBumperRight))
     (pad 4 thru_hole oval (at 7.5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 29 pinBumperLeft))
-    (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5554,7 +5553,7 @@
       (net 94 SCL2))
     (pad 5 thru_hole oval (at 10 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 126 +3.3VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5602,7 +5601,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5650,7 +5649,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5698,7 +5697,7 @@
       (net 100 SCL5))
     (pad 5 thru_hole oval (at 10 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 126 +3.3VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5746,7 +5745,7 @@
       (net 103 SCL6))
     (pad 5 thru_hole oval (at 10 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 126 +3.3VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5794,7 +5793,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5840,7 +5839,7 @@
       (net 256 /Anschlußstecker/LShifter13/5V_IN))
     (pad 4 thru_hole oval (at 7.5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 118 /Anschlußstecker/LShifter1/5V_IN))
-    (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5886,7 +5885,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 1.72) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5930,7 +5929,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 53 ReservePin9))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5974,7 +5973,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6018,7 +6017,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6062,7 +6061,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 30 pinPerimeterLeft))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6106,7 +6105,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6150,7 +6149,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 55 ReserveAD6))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6194,7 +6193,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6238,7 +6237,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6282,7 +6281,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 46 DropRight))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6326,7 +6325,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 45 DropLeft))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6368,7 +6367,7 @@
       (net 88 GND))
     (pad 1 thru_hole oval (at 0 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 80 Taster))
-    (model Connectors_JST.3dshapes/JST_EH_B02B-EH-A_02x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B02B-EH-A_1x02_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6410,8 +6409,8 @@
       (net 88 GND))
     (pad 1 thru_hole oval (at 0 0 90) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 138 Reset))
-    (model Connectors_JST.3dshapes/JST_EH_B02B-EH-A_02x2.50mm_Straight.wrl
-      (at (xyz 0.09842519685039371 0 0))
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B02B-EH-A_1x02_P2.50mm_Vertical.wrl
+      (offset (xyz 2.5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
@@ -6458,7 +6457,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6508,7 +6507,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B06B-EH-A_06x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B06B-EH-A_1x06_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6558,7 +6557,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B06B-EH-A_06x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B06B-EH-A_1x06_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6602,7 +6601,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 271 /Anschlußstecker/LShifter15/5V_IN))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6646,7 +6645,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 270 /Anschlußstecker/LShifter14/5V_IN))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6771,10 +6770,10 @@
       (net 88 GND))
     (pad 14 smd rect (at -3.81 -3.0734) (size 0.6604 2.032) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model ${KISYS3DMOD}/SMD_Packages.3dshapes/SOIC-14_N.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-14_3.9x8.7mm_P1.27mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.5 0.5 0.5))
-      (rotate (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -6894,10 +6893,10 @@
       (net 153 "Net-(S1-Pad10)"))
     (pad 16 smd rect (at -4.445 -3.0734 180) (size 0.6604 2.032) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model ${KISYS3DMOD}/SMD_Packages.3dshapes/SO-16-N.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-16_3.9x9.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.5 0.5 0.5))
-      (rotate (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7017,10 +7016,10 @@
       (net 173 "Net-(U5-Pad6)"))
     (pad 1 smd rect (at -4.445 3.0734 180) (size 0.6604 2.032) (layers F.Cu F.Paste F.Mask)
       (net 157 "Net-(S2-Pad4)"))
-    (model ${KISYS3DMOD}/SMD_Packages.3dshapes/SO-16-N.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-16_3.9x9.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.5 0.5 0.5))
-      (rotate (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7140,10 +7139,10 @@
       (net 163 "Net-(S3-Pad10)"))
     (pad 16 smd rect (at -4.445 -3.0734 180) (size 0.6604 2.032) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model ${KISYS3DMOD}/SMD_Packages.3dshapes/SO-16-N.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-16_3.9x9.9mm_P1.27mm.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.5 0.5 0.5))
-      (rotate (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7184,7 +7183,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7228,7 +7227,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7272,7 +7271,7 @@
       (net 88 GND))
     (pad 3 thru_hole oval (at 5 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 231 Resv.PinAD15))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7316,7 +7315,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.71 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 125 +5VP))
-    (model Connectors_JST.3dshapes/JST_EH_B03B-EH-A_03x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B03B-EH-A_1x03_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7349,7 +7348,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7382,7 +7381,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7415,7 +7414,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7448,7 +7447,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7487,7 +7486,7 @@
       (net 204 "Net-(D7-Pad2)"))
     (pad 1 smd rect (at -1.75006 0 180) (size 1.30048 1.69926) (layers F.Cu F.Paste F.Mask)
       (net 183 StationLed))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/D_MiniMELF_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_MiniMELF.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7520,7 +7519,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_0805.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7690,10 +7689,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 192 "Net-(Q18-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7758,10 +7757,10 @@
       (net 196 "Net-(Q20-Pad2)"))
     (pad 3 smd rect (at 0 -0.99822) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 194 "Net-(P10-Pad2)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7792,10 +7791,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 196 "Net-(Q20-Pad2)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7826,10 +7825,10 @@
       (net 198 "Net-(Q22-Pad2)"))
     (pad 3 smd rect (at 0 -0.99822) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 193 "Net-(P10-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -7860,10 +7859,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 198 "Net-(Q22-Pad2)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8410,10 +8409,10 @@
       (net 56 RX2))
     (pad 3 smd rect (at 0 -0.99822) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8444,10 +8443,10 @@
       (net 48 RX1))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 262 "Net-(Q25-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8478,10 +8477,10 @@
       (net 264 "Net-(Q26-Pad2)"))
     (pad 3 smd rect (at 0 -0.99822 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 258 "Net-(JP10-Pad2)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8512,10 +8511,10 @@
       (net 87 "Net-(P44-Pad4)"))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 265 "Net-(Q27-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8546,10 +8545,10 @@
       (net 26 GPS_RX))
     (pad 3 smd rect (at 0 -0.99822) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8580,10 +8579,10 @@
       (net 201 "Net-(P5-Pad4)"))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 267 "Net-(Q29-Pad1)"))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -8628,7 +8627,7 @@
       (net 201 "Net-(P5-Pad4)"))
     (pad 5 thru_hole oval (at 10 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 203 GPS-LED))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8663,10 +8662,10 @@
       (net 220 /Motortreiber/+24V))
     (pad 1 thru_hole rect (at 0 0 180) (size 2.5 2.5) (drill 1.3) (layers *.Cu *.Mask B.SilkS)
       (net 38 +24V))
-    (model Terminal_Blocks.3dshapes/TerminalBlock_Pheonix_MKDS1.5-2pol.wrl
-      (at (xyz 0.0984 0 0))
+    (model ${KISYS3DMOD}/Connector_Phoenix_MSTB.3dshapes/PhoenixContact_MSTBVA_2,5_2-G_1x02_P5.00mm_Vertical.wrl
+      (offset (xyz 5 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -8711,7 +8710,7 @@
       (net 87 "Net-(P44-Pad4)"))
     (pad 5 thru_hole oval (at 10 0 270) (size 1.72 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 106 Led-Wlan))
-    (model Connectors_JST.3dshapes/JST_EH_B05B-EH-A_05x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B05B-EH-A_1x05_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8837,7 +8836,7 @@
     (pad 1 smd rect (at -4.445 -2.413 180) (size 0.6604 4) (layers B.Cu B.Paste B.Mask)
       (net 145 "Net-(S1-Pad1)"))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/dip_sw_smd.wrl
-      (at (xyz 0 0.01181102362204724 0))
+      (offset (xyz 0 0.2999999954944519 0))
       (scale (xyz 0.2 0.2 0.2))
       (rotate (xyz 0 0 0))
     )
@@ -8962,7 +8961,7 @@
     (pad 16 smd rect (at -4.445 2.413 180) (size 0.6604 4) (layers B.Cu B.Paste B.Mask)
       (net 162 "Net-(S2-Pad10)"))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/dip_sw_smd.wrl
-      (at (xyz 0 0.01181102362204724 0))
+      (offset (xyz 0 0.2999999954944519 0))
       (scale (xyz 0.2 0.2 0.2))
       (rotate (xyz 0 0 0))
     )
@@ -9087,7 +9086,7 @@
     (pad 1 smd rect (at -4.445 -2.413 180) (size 0.6604 4) (layers B.Cu B.Paste B.Mask)
       (net 171 "Net-(S3-Pad1)"))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/dip_sw_smd.wrl
-      (at (xyz 0 0.01181102362204724 0))
+      (offset (xyz 0 0.2999999954944519 0))
       (scale (xyz 0.2 0.2 0.2))
       (rotate (xyz 0 0 0))
     )
@@ -9120,10 +9119,10 @@
       (net 60 pinMotorMowRpm_neu))
     (pad 1 smd rect (at -0.95 1.00076 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -9154,10 +9153,10 @@
       (net 25 pinOdometryLeft))
     (pad 1 smd rect (at -0.95 1.00076) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -9188,10 +9187,10 @@
       (net 24 pinOdometryRight))
     (pad 1 smd rect (at -0.95 1.00076 270) (size 0.8001 0.8001) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -9224,7 +9223,7 @@
       (net 272 "Net-(F1-Pad1)"))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 205 "Net-(JP1-Pad1)"))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9262,7 +9261,7 @@
       (net 209 "Net-(JP8-Pad2)"))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 82 RelaisAbschaltung))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9311,15 +9310,15 @@
       (net 194 "Net-(P10-Pad2)"))
     (pad 1 thru_hole rect (at 0 0 90) (size 1.7272 2.032) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 193 "Net-(P10-Pad1)"))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x10_Pitch2.54mm.wrl
-      (at (xyz 0.45 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 180))
-    )
     (model ${KISYS3DMOD}/Zimprich.3dshapes/Led_Bargraph_Anzeige_10_fach_rot.wrl
-      (at (xyz 0.4527559055118111 -0.1496062992125984 0.3425196850393701))
+      (offset (xyz 11.49999982728733 -3.799999942929726 8.699999869339109))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 180 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x10_P2.54mm_Vertical.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -9349,7 +9348,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 211 "Net-(C19-Pad1)"))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9382,7 +9381,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 212 "Net-(C20-Pad1)"))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9415,7 +9414,7 @@
       (net 213 "Net-(C21-Pad1)"))
     (pad 2 smd rect (at 1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9448,7 +9447,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9481,7 +9480,7 @@
       (net 214 "Net-(C23-Pad1)"))
     (pad 2 smd rect (at 1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9514,7 +9513,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 215 "Net-(C24-Pad1)"))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9547,7 +9546,7 @@
       (net 216 "Net-(C25-Pad1)"))
     (pad 2 smd rect (at 1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9580,7 +9579,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9613,7 +9612,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9646,7 +9645,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9679,7 +9678,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9712,7 +9711,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9745,7 +9744,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9778,7 +9777,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9837,7 +9836,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9870,7 +9869,7 @@
       (net 217 "Net-(C34-Pad1)"))
     (pad 2 smd rect (at 1.5 0 270) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9936,7 +9935,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.5 0) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 219 "Net-(C36-Pad1)"))
-    (model Capacitors_SMD.3dshapes/C_1206.wrl
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10010,7 +10009,7 @@
     (pad 1 thru_hole circle (at 0 -2.600001 225) (size 2.5 2.5) (drill 0.82) (layers *.Cu *.Mask)
       (net 57 "Net-(EF2-Pad2)"))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/Sicherungs_Sockel_TR5_TE5.wrl
-      (at (xyz 0 0 -0.155))
+      (offset (xyz 0 0 -3.936999940872192))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
@@ -10055,7 +10054,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 1.72) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 115 IOREF))
-    (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10129,7 +10128,7 @@
       (net 47 DuoLED-Rot))
     (pad 1 smd rect (at -4.7 -5.715 180) (size 1.95 0.6) (layers F.Cu F.Paste F.Mask)
       (net 52 DuoLED_Grün))
-    (model ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-20W_7.5x12.8mm_Pitch1.27mm.wrl
+    (model ${KISYS3DMOD}/Package_SO.3dshapes/SOIC-20W_7.5x12.8mm_P1.27mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10175,7 +10174,7 @@
       (net 88 GND))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.72 1.72) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 115 IOREF))
-    (model Connectors_JST.3dshapes/JST_EH_B04B-EH-A_04x2.50mm_Straight.wrl
+    (model ${KISYS3DMOD}/Connector_JST.3dshapes/JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10204,7 +10203,7 @@
       (net 178 "Net-(D55-Pad2)"))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 55 ReserveAD6))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10233,7 +10232,7 @@
       (net 243 "Net-(D41-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 131 pinLawnBackRecv))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10262,7 +10261,7 @@
       (net 42 pinBatteryVoltage))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 179 "Net-(D59-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10291,7 +10290,7 @@
       (net 244 "Net-(D43-Pad2)"))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 133 pinLawnBackSend))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10320,7 +10319,7 @@
       (net 51 pinRain))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 245 "Net-(D45-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10349,7 +10348,7 @@
       (net 239 "Net-(D29-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 28 pinBumperRight))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10378,7 +10377,7 @@
       (net 253 "Net-(D71-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 83 ReserveAD10))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10407,7 +10406,7 @@
       (net 40 pinChargeVoltage))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 252 "Net-(D67-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10436,7 +10435,7 @@
       (net 43 pinChargeCurrent))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 251 "Net-(D63-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10465,7 +10464,7 @@
       (net 237 "Net-(D25-Pad1)"))
     (pad 1 smd rect (at -0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 234 "Net-(D6-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10494,7 +10493,7 @@
       (net 233 "Net-(D5-Pad2)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 246 "Net-(D47-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10523,7 +10522,7 @@
       (net 240 "Net-(D31-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 29 pinBumperLeft))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10552,7 +10551,7 @@
       (net 248 "Net-(D51-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 35 pinUserSwitch1))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10581,7 +10580,7 @@
       (net 37 pinUserSwitch3))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 250 "Net-(D61-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10610,7 +10609,7 @@
       (net 247 "Net-(D49-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 36 pinUserSwitch2))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10639,7 +10638,7 @@
       (net 249 "Net-(D57-Pad2)"))
     (pad 1 smd rect (at -0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 227 DHT22))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10668,7 +10667,7 @@
       (net 15 pinTilt))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 238 "Net-(D27-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10697,7 +10696,7 @@
       (net 53 ReservePin9))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 235 "Net-(D32-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10726,7 +10725,7 @@
       (net 236 "Net-(D33-Pad2)"))
     (pad 1 smd rect (at -0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 54 ReservePin8))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10755,7 +10754,7 @@
       (net 30 pinPerimeterLeft))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 139 "Net-(D11-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10784,7 +10783,7 @@
       (net 176 "Net-(D16-Pad1)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 49 pinPerimeterRight))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10813,7 +10812,7 @@
       (net 180 ReserveAD7))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 177 "Net-(D53-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10842,7 +10841,7 @@
       (net 231 Resv.PinAD15))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 181 "Net-(D65-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10871,7 +10870,7 @@
       (net 130 pinLawnFrontRecv))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 241 "Net-(D37-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10900,7 +10899,7 @@
       (net 227 DHT22))
     (pad 1 smd rect (at -0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10929,7 +10928,7 @@
       (net 228 "Net-(IC1-Pad10)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10958,7 +10957,7 @@
       (net 182 "Net-(D69-Pad2)"))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 232 Resv.PinAD13))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10987,7 +10986,7 @@
       (net 242 "Net-(D39-Pad2)"))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 132 pinLawnFrontSend))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11016,7 +11015,7 @@
       (net 24 pinOdometryRight))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11045,7 +11044,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 208 /Anschlußstecker/LShifter10/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11074,7 +11073,7 @@
       (net 60 pinMotorMowRpm_neu))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11103,7 +11102,7 @@
       (net 206 /Anschlußstecker/LShifter8/5V_IN))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11132,7 +11131,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 25 pinOdometryLeft))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11161,7 +11160,7 @@
       (net 207 /Anschlußstecker/LShifter9/5V_IN))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11190,7 +11189,7 @@
       (net 18 pinSonarCenterEcho))
     (pad 1 smd rect (at -0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11219,7 +11218,7 @@
       (net 118 /Anschlußstecker/LShifter1/5V_IN))
     (pad 1 smd rect (at -0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11248,7 +11247,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 20 pinSonarRightEcho))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11277,7 +11276,7 @@
       (net 214 "Net-(C23-Pad1)"))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 100 SCL5))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11306,7 +11305,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 119 /Anschlußstecker/LShifter2/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11335,7 +11334,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 22 pinSonarLeftEcho))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11364,7 +11363,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 120 /Anschlußstecker/LShifter3/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11393,7 +11392,7 @@
       (net 204 "Net-(D7-Pad2)"))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11422,7 +11421,7 @@
       (net 266 "Net-(Q28-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 202 "Net-(P5-Pad3)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11451,7 +11450,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 201 "Net-(P5-Pad4)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11480,7 +11479,7 @@
       (net 27 GPS_TX))
     (pad 1 smd rect (at -0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 267 "Net-(Q29-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11509,7 +11508,7 @@
       (net 87 "Net-(P44-Pad4)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11538,7 +11537,7 @@
       (net 56 RX2))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11567,7 +11566,7 @@
       (net 48 RX1))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11596,7 +11595,7 @@
       (net 262 "Net-(Q25-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 200 "Net-(P44-Pad3)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11625,7 +11624,7 @@
       (net 263 "Net-(Q26-Pad1)"))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 39 TX2))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11654,7 +11653,7 @@
       (net 261 "Net-(Q24-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 268 "Net-(R6-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11683,7 +11682,7 @@
       (net 264 "Net-(Q26-Pad2)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11712,7 +11711,7 @@
       (net 265 "Net-(Q27-Pad1)"))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 50 TX1))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11741,7 +11740,7 @@
       (net 31 pinRemoteMow))
     (pad 1 smd rect (at -0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11770,7 +11769,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 124 /Anschlußstecker/LShifter4/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11799,7 +11798,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 32 pinRemoteSteer))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11828,7 +11827,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 33 pinRemoteSpeed))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11857,7 +11856,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 34 pinRemoteSwitch))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11886,7 +11885,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 123 /Anschlußstecker/LShifter5/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11915,7 +11914,7 @@
       (net 122 /Anschlußstecker/LShifter6/5V_IN))
     (pad 1 smd rect (at -0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11944,7 +11943,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 121 /Anschlußstecker/LShifter7/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11973,7 +11972,7 @@
       (net 41 pinChargingEnable))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 142 "Net-(Q1-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -12002,7 +12001,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 84 SDA))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -12031,7 +12030,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 85 SCL))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -12060,7 +12059,7 @@
       (net 115 IOREF))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 246 "Net-(D47-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -12089,7 +12088,7 @@
       (net 237 "Net-(D25-Pad1)"))
     (pad 2 smd rect (at 0.75 0) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -12127,10 +12126,10 @@
       (net 45 DropLeft))
     (pad 2 smd rect (at 0.85 0 180) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 233 "Net-(D5-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12165,10 +12164,10 @@
       (net 234 "Net-(D6-Pad2)"))
     (pad 1 smd rect (at -0.85 0 180) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 46 DropRight))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12203,10 +12202,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 176 "Net-(D16-Pad1)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12241,10 +12240,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 139 "Net-(D11-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12279,10 +12278,10 @@
       (net 78 "Net-(D12-Pad1)"))
     (pad 2 smd rect (at 0.85 0 180) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 75 "Net-(C12-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12317,10 +12316,10 @@
       (net 80 Taster))
     (pad 2 smd rect (at 0.85 0 180) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 79 "Net-(D13-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12355,10 +12354,10 @@
       (net 16 pinButton))
     (pad 1 smd rect (at -0.85 0) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 80 Taster))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12393,10 +12392,10 @@
       (net 79 "Net-(D13-Pad2)"))
     (pad 1 smd rect (at -0.85 0) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 81 "Net-(D15-Pad1)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12431,10 +12430,10 @@
       (net 176 "Net-(D16-Pad1)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12469,10 +12468,10 @@
       (net 139 "Net-(D11-Pad2)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12507,10 +12506,10 @@
       (net 237 "Net-(D25-Pad1)"))
     (pad 2 smd rect (at 0.85 0) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12545,10 +12544,10 @@
       (net 237 "Net-(D25-Pad1)"))
     (pad 1 smd rect (at -0.85 0 180) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12583,10 +12582,10 @@
       (net 238 "Net-(D27-Pad1)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12621,10 +12620,10 @@
       (net 238 "Net-(D27-Pad1)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12659,10 +12658,10 @@
       (net 239 "Net-(D29-Pad2)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12697,10 +12696,10 @@
       (net 239 "Net-(D29-Pad2)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12735,10 +12734,10 @@
       (net 240 "Net-(D31-Pad2)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12773,10 +12772,10 @@
       (net 235 "Net-(D32-Pad2)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12811,10 +12810,10 @@
       (net 236 "Net-(D33-Pad2)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12849,10 +12848,10 @@
       (net 240 "Net-(D31-Pad2)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12887,10 +12886,10 @@
       (net 235 "Net-(D32-Pad2)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12925,10 +12924,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 236 "Net-(D33-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -12963,10 +12962,10 @@
       (net 241 "Net-(D37-Pad2)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13001,10 +13000,10 @@
       (net 241 "Net-(D37-Pad2)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13039,10 +13038,10 @@
       (net 242 "Net-(D39-Pad2)"))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13077,10 +13076,10 @@
       (net 242 "Net-(D39-Pad2)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13115,10 +13114,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 243 "Net-(D41-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13153,10 +13152,10 @@
       (net 243 "Net-(D41-Pad2)"))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13191,10 +13190,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 244 "Net-(D43-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13229,10 +13228,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 244 "Net-(D43-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13267,9 +13266,9 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 245 "Net-(D45-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
+      (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 180))
     )
   )
@@ -13305,10 +13304,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 245 "Net-(D45-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13343,10 +13342,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 246 "Net-(D47-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13381,10 +13380,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 246 "Net-(D47-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13419,10 +13418,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 247 "Net-(D49-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13457,10 +13456,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 247 "Net-(D49-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13495,9 +13494,9 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 248 "Net-(D51-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
+      (scale (xyz 0.4 0.4 0.4))
       (rotate (xyz 0 0 180))
     )
   )
@@ -13533,10 +13532,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 248 "Net-(D51-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13571,10 +13570,10 @@
       (net 177 "Net-(D53-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13609,10 +13608,10 @@
       (net 177 "Net-(D53-Pad2)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13647,10 +13646,10 @@
       (net 178 "Net-(D55-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13685,10 +13684,10 @@
       (net 178 "Net-(D55-Pad2)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13723,10 +13722,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 249 "Net-(D57-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13761,10 +13760,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 249 "Net-(D57-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13799,10 +13798,10 @@
       (net 179 "Net-(D59-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13837,10 +13836,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 179 "Net-(D59-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13875,10 +13874,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 250 "Net-(D61-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13913,10 +13912,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 250 "Net-(D61-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13951,10 +13950,10 @@
       (net 251 "Net-(D63-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -13989,10 +13988,10 @@
       (net 251 "Net-(D63-Pad2)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14027,10 +14026,10 @@
       (net 181 "Net-(D65-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14065,10 +14064,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 181 "Net-(D65-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14103,10 +14102,10 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 252 "Net-(D67-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14141,10 +14140,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 252 "Net-(D67-Pad2)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14179,10 +14178,10 @@
       (net 182 "Net-(D69-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14217,10 +14216,10 @@
       (net 182 "Net-(D69-Pad2)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14255,10 +14254,10 @@
       (net 253 "Net-(D71-Pad2)"))
     (pad 1 smd rect (at -0.85 0 90) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14293,10 +14292,10 @@
       (net 253 "Net-(D71-Pad2)"))
     (pad 2 smd rect (at 0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14322,7 +14321,7 @@
       (net 26 GPS_RX))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14351,7 +14350,7 @@
       (net 212 "Net-(C20-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 97 SDA3))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14380,7 +14379,7 @@
       (net 96 SCL3))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 212 "Net-(C20-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14409,7 +14408,7 @@
       (net 213 "Net-(C21-Pad1)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 98 SDA4))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14438,7 +14437,7 @@
       (net 213 "Net-(C21-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 99 SCL4))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14467,7 +14466,7 @@
       (net 103 SCL6))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 215 "Net-(C24-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14496,7 +14495,7 @@
       (net 214 "Net-(C23-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 101 SDA5))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14525,7 +14524,7 @@
       (net 215 "Net-(C24-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 102 SDA6))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14554,7 +14553,7 @@
       (net 216 "Net-(C25-Pad1)"))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 104 SCL7))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14583,7 +14582,7 @@
       (net 105 SDA7))
     (pad 1 smd rect (at -0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 216 "Net-(C25-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14612,7 +14611,7 @@
       (net 125 +5VP))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 144 /Anschlußstecker/OdoTeiler/Eingang1))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14641,7 +14640,7 @@
       (net 172 /Anschlußstecker/OdoTeiler/Eingang2))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14670,7 +14669,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 174 /Anschlußstecker/OdoTeiler/Eingang3))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14699,7 +14698,7 @@
       (net 211 "Net-(C19-Pad1)"))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 95 SDA2))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14728,7 +14727,7 @@
       (net 94 SCL2))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 211 "Net-(C19-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14766,10 +14765,10 @@
       (net 21 pinSonarLeftTrigger))
     (pad 1 smd rect (at -1 -0.95 90) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14795,7 +14794,7 @@
       (net 21 pinSonarLeftTrigger))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14824,7 +14823,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 254 /Anschlußstecker/LShifter11/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14862,10 +14861,10 @@
       (net 19 pinSonarRightTrigger))
     (pad 1 smd rect (at -1 -0.95 90) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14891,7 +14890,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 19 pinSonarRightTrigger))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14920,7 +14919,7 @@
       (net 255 /Anschlußstecker/LShifter12/5V_IN))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -14958,10 +14957,10 @@
       (net 17 pinSonarCenterTrigger))
     (pad 1 smd rect (at -1 -0.95 90) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -14987,7 +14986,7 @@
       (net 17 pinSonarCenterTrigger))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15016,7 +15015,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 256 /Anschlußstecker/LShifter13/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15049,7 +15048,7 @@
       (net 76 "/USpannungAB/Batterieeingang 24V"))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 42 pinBatteryVoltage))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15082,7 +15081,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 42 pinBatteryVoltage))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15115,7 +15114,7 @@
       (net 40 pinChargeVoltage))
     (pad 1 smd rect (at -1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 183 StationLed))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15148,7 +15147,7 @@
       (net 40 pinChargeVoltage))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15196,7 +15195,7 @@
       (net 257 9Vgeschaltet))
     (pad 1 thru_hole rect (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 257 9Vgeschaltet))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x08_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15228,7 +15227,7 @@
       (net 276 "Net-(P50-Pad9)"))
     (pad 1 smd rect (at -1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 111 "Net-(IC1-Pad17)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15260,7 +15259,7 @@
       (net 277 "Net-(P50-Pad8)"))
     (pad 1 smd rect (at -1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 112 "Net-(IC1-Pad18)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15292,7 +15291,7 @@
       (net 274 "Net-(P50-Pad11)"))
     (pad 1 smd rect (at -1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 109 "Net-(IC1-Pad15)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15324,7 +15323,7 @@
       (net 278 "Net-(P50-Pad7)"))
     (pad 1 smd rect (at -1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 226 "Net-(IC1-Pad19)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15356,7 +15355,7 @@
       (net 225 "Net-(IC1-Pad20)"))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 279 "Net-(P50-Pad6)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15388,7 +15387,7 @@
       (net 110 "Net-(IC1-Pad16)"))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 275 "Net-(P50-Pad10)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15420,7 +15419,7 @@
       (net 108 "Net-(IC1-Pad14)"))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 273 "Net-(P50-Pad12)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15452,7 +15451,7 @@
       (net 63 +5V))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 137 "Net-(D21-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15484,7 +15483,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 196 "Net-(Q20-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15516,7 +15515,7 @@
       (net 187 "Net-(Q14-Pad3)"))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 186 "Net-(D23-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15548,7 +15547,7 @@
       (net 136 "Net-(D19-Pad2)"))
     (pad 1 smd rect (at -1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 65 +3V3))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15580,7 +15579,7 @@
       (net 188 "Net-(Q14-Pad1)"))
     (pad 2 smd rect (at 1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15612,7 +15611,7 @@
       (net 189 "Net-(Q16-Pad3)"))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 185 "Net-(D22-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15644,7 +15643,7 @@
       (net 194 "Net-(P10-Pad2)"))
     (pad 2 smd rect (at 1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 195 "Net-(Q20-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15676,7 +15675,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 190 "Net-(Q16-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15708,7 +15707,7 @@
       (net 191 "Net-(Q18-Pad3)"))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 184 "Net-(D20-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15740,7 +15739,7 @@
       (net 134 "Net-(D17-Pad2)"))
     (pad 1 smd rect (at -1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 125 +5VP))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15772,7 +15771,7 @@
       (net 126 +3.3VP))
     (pad 2 smd rect (at 1.45 0 180) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 135 "Net-(D18-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15804,7 +15803,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.45 0 90) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 198 "Net-(Q22-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15836,7 +15835,7 @@
       (net 192 "Net-(Q18-Pad1)"))
     (pad 2 smd rect (at 1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15868,7 +15867,7 @@
       (net 193 "Net-(P10-Pad1)"))
     (pad 2 smd rect (at 1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 197 "Net-(Q22-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15900,7 +15899,7 @@
       (net 141 "Net-(Q12-Pad3)"))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 127 "Net-(D3-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15932,7 +15931,7 @@
       (net 140 "Net-(Q12-Pad1)"))
     (pad 2 smd rect (at 1.45 0 90) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15964,7 +15963,7 @@
       (net 79 "Net-(D13-Pad2)"))
     (pad 2 smd rect (at 1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 77 "Net-(D2-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -15996,7 +15995,7 @@
       (net 78 "Net-(D12-Pad1)"))
     (pad 2 smd rect (at 1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 79 "Net-(D13-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16028,7 +16027,7 @@
       (net 78 "Net-(D12-Pad1)"))
     (pad 1 smd rect (at -1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 75 "Net-(C12-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16060,7 +16059,7 @@
       (net 129 "Net-(Q3-Pad1)"))
     (pad 2 smd rect (at 1.45 0) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16092,7 +16091,7 @@
       (net 129 "Net-(Q3-Pad1)"))
     (pad 2 smd rect (at 1.45 0 90) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 209 "Net-(JP8-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16124,7 +16123,7 @@
       (net 77 "Net-(D2-Pad2)"))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 76 "/USpannungAB/Batterieeingang 24V"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16162,7 +16161,7 @@
       (net 258 "Net-(JP10-Pad2)"))
     (pad 1 thru_hole rect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 125 +5VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16200,7 +16199,7 @@
       (net 259 "Net-(JP11-Pad2)"))
     (pad 3 thru_hole oval (at 0 5.08 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 126 +3.3VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16238,7 +16237,7 @@
       (net 260 "Net-(JP12-Pad2)"))
     (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 125 +5VP))
-    (model Pin_Headers.3dshapes/Pin_Header_Straight_1x03_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16339,20 +16338,20 @@
     (pad 10 thru_hole rect (at 11.43 -2.54 180) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
     (pad 11 thru_hole rect (at 11.43 -5.08 180) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
     (pad 12 thru_hole rect (at 11.43 -7.62 180) (size 1.524 1.524) (drill 1) (layers *.Cu *.Mask F.SilkS))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x05_Pitch2.54mm.wrl
-      (at (xyz 0.45 0.1 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x07_Pitch2.54mm.wrl
-      (at (xyz -0.5 0.15 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
-    (model ${KISYS3DMOD}/Zimprich.3dshapes/Tiny_RTC_Modul.wrllll
-      (at (xyz -0.01968503937007874 0.09842519685039371 0.3149606299212598))
+    (model ${KISYS3DMOD}/Zimprich.3dshapes/Tiny_RTC_Modul.wrll
+      (offset (xyz -0.4999999924907534 2.499999962453767 7.999999879852053))
       (scale (xyz 0.465 0.465 0.465))
       (rotate (xyz -90 0 -90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x05_P2.54mm_Vertical.wrl
+      (offset (xyz 11.43 7.54 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x07_P2.54mm_Vertical.wrl
+      (offset (xyz -12.7 11.31 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -16423,15 +16422,15 @@
       (net 87 "Net-(P44-Pad4)"))
     (pad VCC thru_hole circle (at 3.81 1.27 180) (size 1.7272 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 218 "Net-(C35-Pad1)"))
-    (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_2x04_Pitch2.54mm.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Zimprich.3dshapes/Wlan_ESP8266.wrl
-      (at (xyz -0.2795275590551181 -0.1023622047244095 0.3425196850393701))
+    (model ${KISYS3DMOD}/Zimprich.3dshapes/Wlan_ESP8266.wrll
+      (offset (xyz -7.099999893368699 -2.599999960951919 8.699999869339109))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz -90 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_2x04_P2.54mm_Vertical.wrl
+      (offset (xyz 3.75 -1.25 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -16466,10 +16465,10 @@
       (net 51 pinRain))
     (pad 1 smd rect (at -1 -0.95 90) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -16495,7 +16494,7 @@
       (net 51 pinRain))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16524,7 +16523,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 270 /Anschlußstecker/LShifter14/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16562,10 +16561,10 @@
       (net 15 pinTilt))
     (pad 1 smd rect (at -1 -0.95 90) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -16591,7 +16590,7 @@
       (net 15 pinTilt))
     (pad 1 smd rect (at -0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16620,7 +16619,7 @@
       (net 125 +5VP))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 271 /Anschlußstecker/LShifter15/5V_IN))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16666,7 +16665,7 @@
     (pad "" np_thru_hole circle (at 43.815 -29.21) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
     (pad "" np_thru_hole circle (at 43.815 29.21) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/BumperDuino_Bohrschablone.wrlll
-      (at (xyz 0 0.1968503937007874 0.5905511811023623))
+      (offset (xyz 0 4.999999924907534 14.9999997747226))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -16694,7 +16693,7 @@
       (net 115 IOREF))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 242 "Net-(D39-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16723,7 +16722,7 @@
       (net 241 "Net-(D37-Pad2)"))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16752,7 +16751,7 @@
       (net 115 IOREF))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 244 "Net-(D43-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16781,7 +16780,7 @@
       (net 243 "Net-(D41-Pad2)"))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16861,7 +16860,7 @@
     (pad 3 thru_hole circle (at -5.0038 5.0038) (size 2.19964 2.19964) (drill 2.19964) (layers *.Cu F.SilkS Dwgs.User))
     (pad 3 thru_hole circle (at 5.0038 5.0038) (size 2.19964 2.19964) (drill 2.19964) (layers *.Cu F.SilkS Dwgs.User))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/Fuse_Holders_and_FusesFuseholder5x20_vert_closed_Bulgin_FX0456.wrl
-      (at (xyz 0.03149606299212599 0 0))
+      (offset (xyz 0.8 0 0))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 -90))
     )
@@ -16940,7 +16939,7 @@
     (pad 1 thru_hole circle (at -2.54 0) (size 2.99974 2.99974) (drill 1.34874) (layers *.Cu *.Mask F.SilkS)
       (net 92 "Net-(D1-Pad1)"))
     (model ${KISYS3DMOD}/Zimprich.3dshapes/Fuse_Holders_and_FusesFuseholder5x20_vert_closed_Bulgin_FX0456.wrl
-      (at (xyz 0.03149606299212599 0 0))
+      (offset (xyz 0.8 0 0))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 -90))
     )
@@ -16968,7 +16967,7 @@
       (net 235 "Net-(D32-Pad2)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -16997,7 +16996,7 @@
       (net 115 IOREF))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 236 "Net-(D33-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17038,9 +17037,9 @@
       (net 76 "/USpannungAB/Batterieeingang 24V"))
     (pad 2 thru_hole oval (at 2.54 0 270) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS)
       (net 93 /VerpolungsschutzLade./Eingang))
-    (model ${KISYS3DMOD}/TO_SOT_Packages_THT.3dshapes/TO-220-2_Vertical.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+    (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-2_Vertical.wrl
+      (offset (xyz -2.5 0 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -17069,9 +17068,9 @@
       (net 107 "Net-(IC1-Pad13)"))
     (pad 1 thru_hole circle (at -3.79984 0 180) (size 2 2) (drill 1.00076) (layers *.Cu *.Mask B.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Buzzers_Beepers.3dshapes/Buzzer_12x9.5RM7.6.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 4 4 4))
+    (model ${KISYS3DMOD}/Buzzer_Beeper.3dshapes/Buzzer_TDK_PS1240P02BT_D12.2mm_H6.5mm.wrl
+      (offset (xyz -2.413 0 0))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -17129,10 +17128,10 @@
       (net 193 "Net-(P10-Pad1)"))
     (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 80 Taster))
-    (model Socket_Strips.3dshapes/Socket_Strip_Straight_1x14_Pitch2.54mm.wrl
-      (at (xyz 0 -0.65 0))
+    (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x14_P2.54mm_Vertical.wrl
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 270))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -17192,7 +17191,7 @@
     (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 80 Taster))
     (model ${KISYS3DMOD}/walter/conn_strip/vasch_strip_7x2.wrll
-      (at (xyz 0.05 -0.3 0))
+      (offset (xyz 1.269999980926514 -7.619999885559082 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
     )
@@ -17492,7 +17491,7 @@
       (net 115 IOREF))
     (pad 1 smd rect (at -0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 240 "Net-(D31-Pad2)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17521,7 +17520,7 @@
       (net 239 "Net-(D29-Pad2)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17550,7 +17549,7 @@
       (net 16 pinButton))
     (pad 2 smd rect (at 0.75 0 180) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17590,14 +17589,9 @@
       (net 183 StationLed))
     (pad 2 thru_hole oval (at 7.62 0 180) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask)
       (net 58 "Net-(D10-Pad2)"))
-    (model Diodes_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.wrl
+    (model ${KISYS3DMOD}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.393701 0.393701 0.393701))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.wrl
-      (at (xyz 0 0 0))
-      (scale (xyz 0.3937 0.3937 0.3937))
+      (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
@@ -17627,7 +17621,7 @@
       (net 88 GND))
     (pad 1 smd rect (at -1.45 0 90) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask)
       (net 281 "Net-(P10-Pad10)"))
-    (model Resistors_SMD.3dshapes/R_1206.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17661,7 +17655,7 @@
       (net 282 "Net-(C2-Pad1)"))
     (pad 2 thru_hole circle (at 2.54 0 270) (size 1.50114 1.50114) (drill 0.8001) (layers *.Cu *.Mask B.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D6.3_L11.2_P2.5.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17699,10 +17693,10 @@
       (net 88 GND))
     (pad 1 smd rect (at -0.85 0 270) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 282 "Net-(C2-Pad1)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -17738,7 +17732,7 @@
       (net 138 Reset))
     (pad 1 thru_hole rect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 283 "Net-(D76-Pad2)"))
-    (model ${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17779,7 +17773,7 @@
       (net 284 "Net-(D76-Pad1)"))
     (pad 1 smd rect (at -1 -0.95 90) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 282 "Net-(C2-Pad1)"))
-    (model ${KISYS3DMOD}/TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+    (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17808,7 +17802,7 @@
       (net 115 IOREF))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 282 "Net-(C2-Pad1)"))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17837,7 +17831,7 @@
       (net 284 "Net-(D76-Pad1)"))
     (pad 2 smd rect (at 0.75 0 270) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 88 GND))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17871,7 +17865,7 @@
       (net 89 "Net-(C1-Pad1)"))
     (pad 2 thru_hole circle (at 2.54 0) (size 1.50114 1.50114) (drill 0.8001) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D6.3_L11.2_P2.5.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17905,7 +17899,7 @@
       (net 125 +5VP))
     (pad 2 thru_hole circle (at 3.81 0 270) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D6.3_L11.2_P2.5.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -17939,7 +17933,7 @@
       (net 126 +3.3VP))
     (pad 2 thru_hole circle (at 3.81 0 270) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS)
       (net 88 GND))
-    (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Radial_D6.3_L11.2_P2.5.wrl
+    (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -18011,10 +18005,10 @@
       (net 283 "Net-(D76-Pad2)"))
     (pad 1 smd rect (at -0.85 0 180) (size 0.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 284 "Net-(D76-Pad1)"))
-    (model ${KISYS3DMOD}/Diodes_SMD.3dshapes/SMA_Standard.wrl
+    (model ${KISYS3DMOD}/Diode_SMD.3dshapes/D_SMA.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 0.14 0.14 0.14))
-      (rotate (xyz 0 0 180))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -18040,7 +18034,7 @@
       (net 283 "Net-(D76-Pad2)"))
     (pad 2 smd rect (at 0.75 0 90) (size 0.5 0.9) (layers F.Cu F.Paste F.Mask)
       (net 115 IOREF))
-    (model Resistors_SMD.3dshapes/R_0603.wrl
+    (model ${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -18591,7 +18585,7 @@
   (gr_line (start 255.651 134.747) (end 255.651 131.826) (angle 90) (layer Dwgs.User) (width 0.2))
   (gr_line (start 255.27 133.223) (end 262.255 133.223) (angle 90) (layer Dwgs.User) (width 0.2))
   (dimension 0.762 (width 0.075) (layer Dwgs.User)
-    (gr_text "0,762 mm" (at 204.962 90.932 90) (layer Dwgs.User) (tstamp 5980AF6A)
+    (gr_text "0,762 mm" (at 204.962 90.932 90) (layer Dwgs.User)
       (effects (font (size 0.3 0.3) (thickness 0.075)))
     )
     (feature1 (pts (xy 203.708 90.551) (xy 205.962 90.551)))
@@ -18659,7 +18653,7 @@
   (gr_line (start 52.705 90.424) (end 54.229 88.9) (angle 90) (layer F.SilkS) (width 0.5))
   (gr_circle (center 50.8 91.44) (end 52.324 92.964) (layer F.SilkS) (width 0.5))
   (dimension 260.35 (width 0.25) (layer Dwgs.User)
-    (gr_text "260,350 mm" (at 148.59 164.195) (layer Dwgs.User) (tstamp 5980AF6B)
+    (gr_text "260,350 mm" (at 148.59 164.195) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 144.78) (xy 278.765 165.195)))
@@ -18671,7 +18665,7 @@
     (arrow2b (pts (xy 18.415 163.195) (xy 19.541504 162.608579)))
   )
   (dimension 130.175 (width 0.25) (layer Dwgs.User)
-    (gr_text "130,175 mm" (at 213.6775 155.94) (layer Dwgs.User) (tstamp 5980AF6C)
+    (gr_text "130,175 mm" (at 213.6775 155.94) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 144.78) (xy 278.765 156.94)))
@@ -18683,7 +18677,7 @@
     (arrow2b (pts (xy 148.59 154.94) (xy 149.716504 154.353579)))
   )
   (dimension 130.175 (width 0.25) (layer Dwgs.User)
-    (gr_text "130,175 mm" (at 83.5025 155.94) (layer Dwgs.User) (tstamp 5980AF6D)
+    (gr_text "130,175 mm" (at 83.5025 155.94) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 18.415 144.78) (xy 18.415 156.94)))
@@ -18695,7 +18689,7 @@
     (arrow2b (pts (xy 148.59 154.94) (xy 147.463496 155.526421)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 207.645 150.86) (layer Dwgs.User) (tstamp 5980AF6E)
+    (gr_text "118,110 mm" (at 207.645 150.86) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 144.78) (xy 148.59 151.86)))
@@ -18707,7 +18701,7 @@
     (arrow2b (pts (xy 266.7 149.86) (xy 265.573496 150.446421)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 89.535 150.86) (layer Dwgs.User) (tstamp 5980AF6F)
+    (gr_text "118,110 mm" (at 89.535 150.86) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 142.24) (xy 148.59 151.86)))
@@ -18746,7 +18740,7 @@
   (gr_line (start 72.39 36.83) (end 81.28 36.83) (angle 90) (layer F.SilkS) (width 0.5))
   (gr_line (start 108.077 46.863) (end 106.299 46.863) (angle 90) (layer F.SilkS) (width 0.5))
   (dimension 7.62 (width 0.25) (layer Dwgs.User)
-    (gr_text "7,620 mm" (at 291.576 140.97 90) (layer Dwgs.User) (tstamp 5980AF70)
+    (gr_text "7,620 mm" (at 291.576 140.97 90) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.988 137.16) (xy 292.576 137.16)))
@@ -18758,7 +18752,7 @@
     (arrow2b (pts (xy 290.576 144.78) (xy 289.989579 143.653496)))
   )
   (dimension 15.748 (width 0.25) (layer Dwgs.User)
-    (gr_text "15,748 mm" (at 277.114 149.844) (layer Dwgs.User) (tstamp 5980AF71)
+    (gr_text "15,748 mm" (at 277.114 149.844) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.988 144.78) (xy 284.988 150.844)))
@@ -19022,7 +19016,7 @@
   (gr_line (start 94.488 86.36) (end 94.488 99.06) (angle 90) (layer Edge.Cuts) (width 0.15))
   (gr_line (start 91.948 86.36) (end 94.488 86.36) (angle 90) (layer Edge.Cuts) (width 0.15))
   (dimension 135.89 (width 0.25) (layer Dwgs.User)
-    (gr_text "135,890 mm" (at 80.645 27.448) (layer Dwgs.User) (tstamp 5980AF72)
+    (gr_text "135,890 mm" (at 80.645 27.448) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 30.48) (xy 148.59 26.448)))
@@ -19034,7 +19028,7 @@
     (arrow2b (pts (xy 12.7 28.448) (xy 13.826504 27.861579)))
   )
   (dimension 271.78 (width 0.25) (layer Dwgs.User)
-    (gr_text "271,780 mm" (at 148.59 23.892) (layer Dwgs.User) (tstamp 5980AF73)
+    (gr_text "271,780 mm" (at 148.59 23.892) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 12.7 30.48) (xy 12.7 22.892)))
@@ -19297,7 +19291,7 @@
   )
   (gr_line (start 107.95 36.83) (end 161.29 36.83) (angle 90) (layer F.SilkS) (width 0.5))
   (dimension 20.066 (width 0.25) (layer Dwgs.User)
-    (gr_text "20,066 mm" (at 268.732 16.907) (layer Dwgs.User) (tstamp 5980AF74)
+    (gr_text "20,066 mm" (at 268.732 16.907) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 258.699 40.64) (xy 258.699 15.907)))
@@ -19309,7 +19303,7 @@
     (arrow2b (pts (xy 278.765 17.907) (xy 277.638496 18.493421)))
   )
   (dimension 20.066 (width 0.25) (layer Dwgs.User)
-    (gr_text "20,066 mm" (at 268.732 159.115) (layer Dwgs.User) (tstamp 5980AF75)
+    (gr_text "20,066 mm" (at 268.732 159.115) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 258.699 124.46) (xy 258.699 160.115)))
@@ -19321,7 +19315,7 @@
     (arrow2b (pts (xy 278.765 158.115) (xy 277.638496 158.701421)))
   )
   (dimension 20.066 (width 0.25) (layer Dwgs.User)
-    (gr_text "20,066 mm" (at 28.448 159.496) (layer Dwgs.User) (tstamp 5980AF76)
+    (gr_text "20,066 mm" (at 28.448 159.496) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 38.481 124.46) (xy 38.481 160.496)))
@@ -19373,7 +19367,7 @@
     (effects (font (size 1.7 1.7) (thickness 0.4)) (justify left mirror))
   )
   (dimension 114.3 (width 0.25) (layer Dwgs.User)
-    (gr_text "114,300 mm" (at 299.449999 87.63 270) (layer Dwgs.User) (tstamp 5980AF77)
+    (gr_text "114,300 mm" (at 299.449999 87.63 270) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.48 144.78) (xy 300.449999 144.78)))
@@ -19385,7 +19379,7 @@
     (arrow2b (pts (xy 298.449999 30.48) (xy 299.03642 31.606504)))
   )
   (dimension 54.61 (width 0.25) (layer Dwgs.User)
-    (gr_text "54,610 mm" (at 295.64 60.325 270) (layer Dwgs.User) (tstamp 5980AF78)
+    (gr_text "54,610 mm" (at 295.64 60.325 270) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 87.63) (xy 296.64 87.63)))
@@ -19397,7 +19391,7 @@
     (arrow2b (pts (xy 294.64 33.02) (xy 295.226421 34.146504)))
   )
   (dimension 54.61 (width 0.25) (layer Dwgs.User)
-    (gr_text "54,610 mm" (at 295.64 114.935 270) (layer Dwgs.User) (tstamp 5980AF79)
+    (gr_text "54,610 mm" (at 295.64 114.935 270) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 142.24) (xy 296.64 142.24)))
@@ -19409,7 +19403,7 @@
     (arrow2b (pts (xy 294.64 87.63) (xy 295.226421 88.756504)))
   )
   (dimension 46.99 (width 0.25) (layer Dwgs.User)
-    (gr_text "46,990 mm" (at 291.83 64.135 270) (layer Dwgs.User) (tstamp 5980AF7A)
+    (gr_text "46,990 mm" (at 291.83 64.135 270) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 87.63) (xy 292.83 87.63)))
@@ -19421,7 +19415,7 @@
     (arrow2b (pts (xy 290.83 40.64) (xy 291.416421 41.766504)))
   )
   (dimension 36.83 (width 0.25) (layer Dwgs.User)
-    (gr_text "36,830 mm" (at 291.83 106.045 270) (layer Dwgs.User) (tstamp 5980AF7B)
+    (gr_text "36,830 mm" (at 291.83 106.045 270) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 124.46) (xy 292.83 124.46)))
@@ -19433,7 +19427,7 @@
     (arrow2b (pts (xy 290.83 87.63) (xy 291.416421 88.756504)))
   )
   (dimension 271.78 (width 0.25) (layer Dwgs.User)
-    (gr_text "271,780 mm" (at 148.59 20.59) (layer Dwgs.User) (tstamp 5980AF7C)
+    (gr_text "271,780 mm" (at 148.59 20.59) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 284.48 30.48) (xy 284.48 19.59)))
@@ -19445,7 +19439,7 @@
     (arrow2b (pts (xy 12.7 21.59) (xy 13.826504 21.003579)))
   )
   (dimension 260.35 (width 0.25) (layer Dwgs.User)
-    (gr_text "260,350 mm" (at 148.59 23.13) (layer Dwgs.User) (tstamp 5980AF7D)
+    (gr_text "260,350 mm" (at 148.59 23.13) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 278.765 40.64) (xy 278.765 22.13)))
@@ -19457,7 +19451,7 @@
     (arrow2b (pts (xy 18.415 24.13) (xy 19.541504 23.543579)))
   )
   (dimension 241.3 (width 0.25) (layer Dwgs.User)
-    (gr_text "241,300 mm" (at 148.59 25.67) (layer Dwgs.User) (tstamp 5980AF7E)
+    (gr_text "241,300 mm" (at 148.59 25.67) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 269.24 30.48) (xy 269.24 24.67)))
@@ -19469,7 +19463,7 @@
     (arrow2b (pts (xy 27.94 26.67) (xy 29.066504 26.083579)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 207.645 28.21) (layer Dwgs.User) (tstamp 5980AF7F)
+    (gr_text "118,110 mm" (at 207.645 28.21) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 266.7 33.02) (xy 266.7 27.21)))
@@ -19481,7 +19475,7 @@
     (arrow2b (pts (xy 148.59 29.21) (xy 149.716504 28.623579)))
   )
   (dimension 118.11 (width 0.25) (layer Dwgs.User)
-    (gr_text "118,110 mm" (at 89.535 28.21) (layer Dwgs.User) (tstamp 5980AF80)
+    (gr_text "118,110 mm" (at 89.535 28.21) (layer Dwgs.User)
       (effects (font (size 1 1) (thickness 0.25)))
     )
     (feature1 (pts (xy 148.59 33.02) (xy 148.59 27.21)))
