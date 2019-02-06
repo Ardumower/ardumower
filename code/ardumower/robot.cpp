@@ -412,7 +412,8 @@ void Robot::readSensors(){
     
     motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
     motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
-    motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel;
+    // NOTE for motor mower current : we double motor current as two drivers are connected in parallel
+    motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel * 2; 
    
     if (batVoltage > 8){
       motorRightSense = motorRightSenseCurrent * batVoltage /1000;   // conversion to power in Watt
