@@ -74,7 +74,9 @@ void Robot::rosSerial() {
     Console.print(",");
     Console.print(motorRightSense);
     Console.print(",");
-    Console.print(motorMowSense);        
+    Console.print(motor1MowSense);        
+    Console.print(",");
+    Console.print(motor2MowSense);        
     Console.print(",");
     Console.print(imu.ypr.yaw);    
     Console.print(",");
@@ -105,4 +107,3 @@ void Robot::rosSerial() {
     motorMowSpeedPWMSet = 0;
   }
 }
-

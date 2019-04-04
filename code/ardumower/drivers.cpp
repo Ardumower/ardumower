@@ -374,6 +374,3 @@ void softwareReset(){
   RSTC->RSTC_CR = 0xA5000013; // Reset processor, internal peripherals, and pull external RST pin low.
 #endif
 }
-
-
-

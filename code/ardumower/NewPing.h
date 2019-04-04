@@ -88,7 +88,7 @@
 //   Optimized for smaller compiled size (even smaller than sketches that
 //   don't use a library).
 //
-// 07/14/2012 v1.4 - Added support for the Parallax PING)))� sensor. Interface
+// 07/14/2012 v1.4 - Added support for the Parallax PING)))ï¿½ sensor. Interface
 //   with all but the SRF06 sensor using only one Arduino pin. You can also
 //   interface with the SRF06 using one pin if you install a 0.1uf capacitor
 //   on the trigger and echo pins of the sensor then tie the trigger pin to

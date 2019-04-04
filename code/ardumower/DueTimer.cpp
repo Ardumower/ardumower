@@ -183,7 +183,7 @@ DueTimer& DueTimer::setFrequency(double frequency){
 	// Prevent negative frequencies
 	if(frequency <= 0) { frequency = 1; }
 
-	// Remember the frequency — see below how the exact frequency is reported instead
+	// Remember the frequency â€” see below how the exact frequency is reported instead
 	//_frequency[timer] = frequency;
 
 	// Get current timer configuration

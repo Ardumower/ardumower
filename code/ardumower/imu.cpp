@@ -732,5 +732,3 @@ void IMU::read(){
   readHMC5883L();  
   //calcComCal();
 }
-
-

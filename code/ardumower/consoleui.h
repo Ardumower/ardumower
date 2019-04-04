@@ -54,9 +54,9 @@ void Robot::printInfo(Stream &s){
     Streamprint(s, "set %4d %4d ", (int)motorLeftSpeedRpmSet, (int)motorRightSpeedRpmSet);
     if (consoleMode == CONSOLE_SENSOR_VALUES){
       // sensor values
-      Streamprint(s, "sen %4d %4d %4d ", (int)motorLeftSense, (int)motorRightSense, (int)motorMowSense);
+      Streamprint(s, "sen %4d %4d %4d %4d ", (int)motorLeftSense, (int)motorRightSense, (int)motor1MowSense, (int)motor2MowSense);
       Streamprint(s, "bum %4d %4d ", bumperLeft, bumperRight);
-      Streamprint(s, "dro %4d %4d ", dropLeft, dropRight);                                                                                      // Dropsensor - Absturzsensor
+      Streamprint(s, "dro %4d %4d ", dropLeft, dropRight);                           // Dropsensor - Absturzsensor
       Streamprint(s, "son %4d %4d %4d ", sonarDistLeft, sonarDistCenter, sonarDistRight);
       Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));  
       Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
@@ -65,9 +65,9 @@ void Robot::printInfo(Stream &s){
       if (lawnSensorUse) Streamprint(s, "lawn %3d %3d ", (int)lawnSensorFront, (int)lawnSensorBack);
     } else {
       // sensor counters
-      Streamprint(s, "sen %4d %4d %4d ", motorLeftSenseCounter, motorRightSenseCounter, motorMowSenseCounter);
+      Streamprint(s, "sen %4d %4d %4d %4d ", motorLeftSenseCounter, motorRightSenseCounter, motor1MowSenseCounter, motor2MowSenseCounter);
       Streamprint(s, "bum %4d %4d ", bumperLeftCounter, bumperRightCounter);
-      Streamprint(s, "dro %4d %4d ", dropLeftCounter, dropRightCounter);                                                                      // Dropsensor - Absturzsensor
+      Streamprint(s, "dro %4d %4d ", dropLeftCounter, dropRightCounter);           // Dropsensor - Absturzsensor
       Streamprint(s, "son %3d ", sonarDistCounter);
       Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));        
       Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
@@ -522,4 +522,3 @@ void Robot::readSerial() {
 	 }
   }    
 }
-

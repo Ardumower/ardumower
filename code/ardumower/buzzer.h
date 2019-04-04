@@ -24,4 +24,3 @@ class BuzzerClass {
 extern BuzzerClass Buzzer;
 
 #endif
-

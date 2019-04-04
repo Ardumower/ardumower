@@ -56,7 +56,8 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
                                     
 #define pinMotorMowPWM 2           // M1_IN1 mower motor PWM pin (if using MOSFET, use this pin)
 #define pinMotorMowDir 29          // M1_IN2 mower motor Dir pin (if using MOSFET, keep unconnected)
-#define pinMotorMowSense A3        // M1_FB  mower motor current sense  
+#define pinMotor1MowSense A3       // M1_FB  mower motor1 current sense  
+#define pinMotor2MowSense A6       // M2_FB  mower motor2 current sense  
 #define pinMotorMowFault 26        // M1_SF  mower motor fault   (if using MOSFET/L298N, keep unconnected)
 #define pinMotorMowEnable 28       // EN mower motor enable      (if using MOSFET/L298N, keep unconnected)
 #define pinMotorMowRpm A11
@@ -173,4 +174,3 @@ class Mower : public Robot
 extern Mower robot;
 
 #endif
-

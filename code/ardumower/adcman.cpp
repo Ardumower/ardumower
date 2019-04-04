@@ -375,7 +375,3 @@ void ADCManager::saveCalib(){
   loadSaveCalib(false);
 //#endif
 }
-
-
-
-
