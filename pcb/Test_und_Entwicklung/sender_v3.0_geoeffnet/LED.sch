@@ -396,8 +396,6 @@ Wire Wire Line
 	4225 3830 4380 3830
 Wire Wire Line
 	4680 3830 5735 3830
-Wire Wire Line
-	5150 3930 5735 3930
 $Comp
 L sender_v3.0_geoeffnet-rescue:R-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue R8
 U 1 1 5C82874A
@@ -411,7 +409,7 @@ F 4 "220" H 4530 3830 60  0001 C CNN "Bestellnummer"
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	4225 3930 4850 3930
+	4225 3930 4375 3930
 $Comp
 L sender_v3.0_geoeffnet-rescue:R-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue R7
 U 1 1 5C82626E
@@ -647,4 +645,39 @@ Wire Notes Line
 	4880 3990 4880 3870
 Wire Notes Line
 	5110 3995 5110 4180
+$Comp
+L Connector_Generic:Conn_01x02 P13
+U 1 1 5C909760
+P 5950 4675
+F 0 "P13" H 6030 4667 50  0000 L CNN
+F 1 "Vent." H 6030 4576 50  0000 L CNN
+F 2 "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical" H 5950 4675 50  0001 C CNN
+F 3 "~" H 5950 4675 50  0001 C CNN
+	1    5950 4675
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0109
+U 1 1 5C90CD11
+P 5685 4845
+F 0 "#PWR0109" H 5685 4595 60  0001 C CNN
+F 1 "GND" H 5685 4680 60  0000 C CNN
+F 2 "" H 5685 4845 60  0000 C CNN
+F 3 "" H 5685 4845 60  0000 C CNN
+	1    5685 4845
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5685 4845 5685 4775
+Wire Wire Line
+	5685 4775 5750 4775
+Wire Wire Line
+	5150 3930 5735 3930
+Wire Wire Line
+	4375 4675 4375 3930
+Wire Wire Line
+	4375 4675 5750 4675
+Connection ~ 4375 3930
+Wire Wire Line
+	4375 3930 4850 3930
 $EndSCHEMATC
