@@ -46,6 +46,7 @@ class ArdumowerNode:
         self.cmd_vel = [0,0] 
 
     def sendMotorSpeed(self, l, r, m):
+        # motor speed: linear (m/s), angular (rad/s)
         s = "$ROS,M1,"+str(l)+","+str(r)+","+str(int(m))
         #print "sending: ", s
         self.port.write(s + "\r\n")

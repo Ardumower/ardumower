@@ -31,6 +31,8 @@
 #define pinRemoteSwitch 52         // remote control switch
 
 #define pinBuzzer 53               // Buzzer
+
+#define pinChargeRelay 50          // charge relay
                                                              
 // motor speed
 #define motorSpeedMax 255
@@ -107,6 +109,10 @@ void setup(){
   pinMode(pinBuzzer, OUTPUT);
   Serial.begin(19200); // setup baud rate 
   PinMan.begin();    
+
+  // charging
+  pinMode(pinChargeRelay, OUTPUT);
+  digitalWrite(pinChargeRelay, HIGH);
   
   // left wheel motor
   pinMode(pinMotorLeftPWM, OUTPUT);
