@@ -109,4 +109,16 @@ $CMP Tact_Switch_12x12mm_with_integrated_LED
 D Tact_Switch_12x12mm_with_integrated_LED
 $ENDCMP
 #
+$CMP WeMos_mini
+D WeMos D1 mini
+K esp8266, wemos
+F http://www.wemos.cc/Products/d1_mini.html
+$ENDCMP
+#
+$CMP Wemos_LoLin32
+D WeMos D1 mini
+K esp8266, wemos
+F http://www.wemos.cc/Products/d1_mini.html
+$ENDCMP
+#
 #End Doc Library

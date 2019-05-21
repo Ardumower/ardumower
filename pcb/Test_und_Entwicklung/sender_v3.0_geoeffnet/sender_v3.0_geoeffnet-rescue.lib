@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# +24V-RESCUE-sender_v3.0_neu_geoeffnet
+# +24V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF +24V-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
+DEF +24V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+24V-RESCUE-sender_v3.0_neu_geoeffnet" 0 140 50 H V C CNN
+F1 "+24V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -16,25 +16,11 @@ X +24V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# +3.3V-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet
+# +3.3V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF +3.3V-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -40 30 H I C CNN
-F1 "+3.3V-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet" 0 110 30 H V C CNN
-F2 "" 0 0 60 H V C CNN
-F3 "" 0 0 60 H V C CNN
-DRAW
-C 0 60 20 0 1 0 N
-P 3 0 1 0 0 0 0 40 0 40 N
-X +3.3V 1 0 0 0 U 30 30 0 0 W N
-ENDDRAW
-ENDDEF
-#
-# +3.3V-RESCUE-sender_v3.0_neu_geoeffnet
-#
-DEF +3.3V-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
+DEF +3.3V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+3.3V-RESCUE-sender_v3.0_neu_geoeffnet" 0 140 50 H V C CNN
+F1 "+3.3V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -45,11 +31,11 @@ X +3V3 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# +3.3VP-RESCUE-sender_v3.0_neu_geoeffnet
+# +3.3VP-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF +3.3VP-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
+DEF +3.3VP-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 150 -50 50 H I C CNN
-F1 "+3.3VP-RESCUE-sender_v3.0_neu_geoeffnet" 0 100 50 H V C CNN
+F1 "+3.3VP-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -59,11 +45,11 @@ X +3.3VP 1 0 0 0 U 50 50 0 0 W N
 ENDDRAW
 ENDDEF
 #
-# +5V-RESCUE-sender_v3.0_neu_geoeffnet
+# +5V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF +5V-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
+DEF +5V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+5V-RESCUE-sender_v3.0_neu_geoeffnet" 0 140 50 H V C CNN
+F1 "+5V-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -74,11 +60,11 @@ X +5V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# +5VP-RESCUE-sender_v3.0_neu_geoeffnet
+# +5VP-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF +5VP-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
+DEF +5VP-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+5VP-RESCUE-sender_v3.0_neu_geoeffnet" 0 140 50 H V C CNN
+F1 "+5VP-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -89,26 +75,11 @@ X +5VP 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# +9V-RESCUE-sender_v3.0_neu_geoeffnet
+# ACS712-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF +9V-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+9V-RESCUE-sender_v3.0_neu_geoeffnet" 0 140 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 0 1 0 -30 50 0 100 N
-P 2 0 1 0 0 0 0 100 N
-P 2 0 1 0 0 100 30 50 N
-X +9V 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# ACS712-RESCUE-sender_v3.0_neu_geoeffnet
-#
-DEF ACS712-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 F N
+DEF ACS712-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 250 50 H V C CNN
-F1 "ACS712-RESCUE-sender_v3.0_neu_geoeffnet" 0 -250 50 H V C CNN
+F1 "ACS712-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 -250 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -121,11 +92,11 @@ X IP- 5 -400 -100 150 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# ARDUINO_NANO-RESCUE-sender_v3.0_neu_geoeffnet
+# ARDUINO_NANO-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF ARDUINO_NANO-RESCUE-sender_v3.0_neu_geoeffnet SHIELD 0 40 Y Y 1 F N
+DEF ARDUINO_NANO-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue SHIELD 0 40 Y Y 1 F N
 F0 "SHIELD" 0 10 60 H V C CNN
-F1 "ARDUINO_NANO-RESCUE-sender_v3.0_neu_geoeffnet" 10 -220 60 H V C CNN
+F1 "ARDUINO_NANO-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 10 -220 60 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -166,11 +137,34 @@ X VIN VIN -950 -800 300 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# BC849-RESCUE-sender_v3.0_neu_geoeffnet
+# BC817-40-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF BC849-RESCUE-sender_v3.0_neu_geoeffnet Q 0 0 Y N 1 F N
+DEF BC817-40-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue Q 0 0 Y Y 1 F N
 F0 "Q" 200 75 50 H V L CNN
-F1 "BC849-RESCUE-sender_v3.0_neu_geoeffnet" 200 0 50 H V L CNN
+F1 "BC817-40-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 200 0 50 H V L CNN
+F2 "SOT-23" 200 -75 50 H I L CIN
+F3 "" 0 0 50 H I L CNN
+$FPLIST
+ SOT-23*
+$ENDFPLIST
+DRAW
+C 50 0 111 0 1 10 N
+P 2 0 1 0 0 0 25 0 N
+P 2 0 1 0 100 100 25 25 N
+P 3 0 1 0 25 -25 100 -100 100 -100 N
+P 3 0 1 20 25 75 25 -75 25 -75 N
+P 5 0 1 0 50 -70 70 -50 90 -90 50 -70 50 -70 F
+X B 1 -200 0 200 R 50 50 1 1 I
+X E 2 100 -200 100 U 50 50 1 1 P
+X C 3 100 200 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# BC817-Transistor
+#
+DEF BC817-Transistor Q 0 0 Y N 1 F N
+F0 "Q" 200 75 50 H V L CNN
+F1 "BC817-Transistor" 200 0 50 H V L CNN
 F2 "TO_SOT_Packages_SMD:SOT-23" 200 -75 50 H I L CIN
 F3 "" 0 0 50 H I L CNN
 $FPLIST
@@ -188,11 +182,66 @@ X C 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Bluetooth_CZ_HC_05_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet
+# BC849-Transistor
 #
-DEF Bluetooth_CZ_HC_05_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 F N
+DEF BC849-Transistor Q 0 0 Y N 1 F N
+F0 "Q" 200 75 50 H V L CNN
+F1 "BC849-Transistor" 200 0 50 H V L CNN
+F2 "TO_SOT_Packages_SMD:SOT-23" 200 -75 50 H I L CIN
+F3 "" 0 0 50 H I L CNN
+$FPLIST
+ SOT?23*
+$ENDFPLIST
+DRAW
+C 50 0 111 0 1 10 N
+P 2 0 1 0 25 25 100 100 N
+P 3 0 1 0 25 -25 100 -100 100 -100 N
+P 3 0 1 20 25 75 25 -75 25 -75 N
+P 5 0 1 0 50 -70 70 -50 90 -90 50 -70 50 -70 F
+X B 1 -200 0 225 R 50 50 1 1 I
+X E 2 100 -200 100 U 50 50 1 1 P
+X C 3 100 200 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# BSS138-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
+#
+DEF BSS138-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue Q 0 0 Y Y 1 F N
+F0 "Q" 200 75 50 H V L CNN
+F1 "BSS138-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 200 0 50 H V L CNN
+F2 "TO_SOT_Packages_SMD:SOT-23" 200 -75 50 H I L CIN
+F3 "" 0 0 50 H I L CNN
+$FPLIST
+ SOT-23*
+$ENDFPLIST
+DRAW
+C 50 0 111 0 1 10 N
+C 100 -50 5 0 1 0 N
+C 100 50 5 0 1 0 N
+P 2 0 1 20 25 -40 25 -65 N
+P 2 0 1 20 25 15 25 -15 N
+P 2 0 1 20 25 65 25 40 N
+P 2 0 1 0 120 15 115 10 N
+P 2 0 1 0 120 15 140 15 N
+P 2 0 1 0 140 15 145 20 N
+P 3 0 1 10 0 60 0 -60 0 -60 N
+P 4 0 1 0 30 -50 100 -50 100 -100 100 -100 N
+P 4 0 1 0 30 50 100 50 100 100 100 100 N
+P 4 0 1 0 100 50 130 50 130 -50 100 -50 N
+P 4 0 1 0 130 15 120 -10 140 -10 130 15 F
+P 5 0 1 0 30 0 50 0 100 0 100 -50 100 -50 N
+P 6 0 1 0 35 0 75 15 75 -15 35 0 40 0 40 0 F
+X G 1 -200 -50 200 R 50 50 1 1 P
+X S 2 100 -200 100 U 50 50 1 1 P
+X D 3 100 200 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Bluetooth_CZ_HC_05_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
+#
+DEF Bluetooth_CZ_HC_05_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 -100 50 H V C CNN
-F1 "Bluetooth_CZ_HC_05_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet" 106 8 50 V V C CNN
+F1 "Bluetooth_CZ_HC_05_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 106 8 50 V V C CNN
 F2 "Zimprich:Bluetooth_Buchse_Platz_mit_Beschriftung" 0 0 50 H I C CNN
 F3 "DOCUMENTATION" 0 0 50 H I C CNN
 DRAW
@@ -206,11 +255,11 @@ X VCC VCC -400 -250 150 R 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# Bohrloch_3,2mm-RESCUE-sender_v3.0_neu_geoeffnet
+# Bohrloch_3,2mm-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF Bohrloch_3,2mm-RESCUE-sender_v3.0_neu_geoeffnet B 0 40 Y Y 1 F N
+DEF Bohrloch_3,2mm-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue B 0 40 Y Y 1 F N
 F0 "B" 280 160 60 H V C CNN
-F1 "Bohrloch_3,2mm-RESCUE-sender_v3.0_neu_geoeffnet" 230 80 60 H V C CNN
+F1 "Bohrloch_3,2mm-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 230 80 60 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -221,11 +270,11 @@ X B3,2 1 0 0 200 R 50 50 1 1 N
 ENDDRAW
 ENDDEF
 #
-# C-RESCUE-sender_v3.0_neu_geoeffnet
+# C-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF C-RESCUE-sender_v3.0_neu_geoeffnet C 0 10 N Y 1 F N
+DEF C-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C-RESCUE-sender_v3.0_neu_geoeffnet" 25 -100 50 H V L CNN
+F1 "C-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -239,11 +288,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X02-RESCUE-sender_v3.0_neu_geoeffnet
+# CONN_01X02-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF CONN_01X02-RESCUE-sender_v3.0_neu_geoeffnet P 0 40 Y N 1 F N
+DEF CONN_01X02-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue P 0 40 Y N 1 F N
 F0 "P" 0 150 50 H V C CNN
-F1 "CONN_01X02-RESCUE-sender_v3.0_neu_geoeffnet" 100 0 50 V V C CNN
+F1 "CONN_01X02-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 100 0 50 V V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -261,37 +310,39 @@ X P2 2 -200 -50 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_01X04-RESCUE-sender_v3.0_neu_geoeffnet
+# CONN_01X05-Belichtungstimer_Uwe_V1.0-rescue
 #
-DEF CONN_01X04-RESCUE-sender_v3.0_neu_geoeffnet P 0 40 Y N 1 F N
-F0 "P" 0 250 50 H V C CNN
-F1 "CONN_01X04-RESCUE-sender_v3.0_neu_geoeffnet" 100 0 50 V V C CNN
-F2 "" 0 0 50 H V C CNN
-F3 "" 0 0 50 H V C CNN
+DEF CONN_01X05-Belichtungstimer_Uwe_V1.0-rescue P 0 40 Y N 1 F N
+F0 "P" 0 300 50 H V C CNN
+F1 "CONN_01X05-Belichtungstimer_Uwe_V1.0-rescue" 100 0 50 V V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
 $FPLIST
- Pin_Header_Straight_1X04
- Pin_Header_Angled_1X04
- Socket_Strip_Straight_1X04
- Socket_Strip_Angled_1X04
+ Pin_Header_Straight_1X05
+ Pin_Header_Angled_1X05
+ Socket_Strip_Straight_1X05
+ Socket_Strip_Angled_1X05
 $ENDFPLIST
 DRAW
-S -50 -145 10 -155 0 1 0 N
-S -50 -45 10 -55 0 1 0 N
-S -50 55 10 45 0 1 0 N
-S -50 155 10 145 0 1 0 N
-S -50 200 50 -200 0 1 0 N
-X P1 1 -200 150 150 R 50 50 1 1 P
-X P2 2 -200 50 150 R 50 50 1 1 P
-X P3 3 -200 -50 150 R 50 50 1 1 P
-X P4 4 -200 -150 150 R 50 50 1 1 P
+S -50 -195 10 -205 0 1 0 N
+S -50 -95 10 -105 0 1 0 N
+S -50 5 10 -5 0 1 0 N
+S -50 105 10 95 0 1 0 N
+S -50 205 10 195 0 1 0 N
+S -50 250 50 -250 0 1 0 N
+X P1 1 -200 200 150 R 50 50 1 1 P
+X P2 2 -200 100 150 R 50 50 1 1 P
+X P3 3 -200 0 150 R 50 50 1 1 P
+X P4 4 -200 -100 150 R 50 50 1 1 P
+X P5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CP-RESCUE-sender_v3.0_neu_geoeffnet
+# CP-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF CP-RESCUE-sender_v3.0_neu_geoeffnet C 0 10 N Y 1 F N
+DEF CP-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "CP-RESCUE-sender_v3.0_neu_geoeffnet" 25 -100 50 H V L CNN
+F1 "CP-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -310,11 +361,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CP1_Small-RESCUE-sender_v3.0_neu_geoeffnet
+# CP1_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF CP1_Small-RESCUE-sender_v3.0_neu_geoeffnet C 0 10 N N 1 F N
+DEF CP1_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue C 0 10 N N 1 F N
 F0 "C" 10 70 50 H V L CNN
-F1 "CP1_Small-RESCUE-sender_v3.0_neu_geoeffnet" 10 -80 50 H V L CNN
+F1 "CP1_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 10 -80 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -330,11 +381,11 @@ X ~ 2 0 -100 80 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CP_Small-RESCUE-sender_v3.0_neu_geoeffnet
+# CP_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF CP_Small-RESCUE-sender_v3.0_neu_geoeffnet C 0 10 N N 1 F N
+DEF CP_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue C 0 10 N N 1 F N
 F0 "C" 10 70 50 H V L CNN
-F1 "CP_Small-RESCUE-sender_v3.0_neu_geoeffnet" 10 -80 50 H V L CNN
+F1 "CP_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 10 -80 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -350,11 +401,11 @@ X ~ 2 0 -100 73 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_Small-RESCUE-sender_v3.0_neu_geoeffnet
+# C_Small-Belichtungstimer_Uwe_V1.0-rescue
 #
-DEF C_Small-RESCUE-sender_v3.0_neu_geoeffnet C 0 10 N N 1 F N
+DEF C_Small-Belichtungstimer_Uwe_V1.0-rescue C 0 10 N N 1 F N
 F0 "C" 10 70 50 H V L CNN
-F1 "C_Small-RESCUE-sender_v3.0_neu_geoeffnet" 10 -80 50 H V L CNN
+F1 "C_Small-Belichtungstimer_Uwe_V1.0-rescue" 10 -80 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -368,11 +419,29 @@ X ~ 2 0 -100 80 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Conn_01x01-RESCUE-sender_v3.0_neu_geoeffnet
+# C_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF Conn_01x01-RESCUE-sender_v3.0_neu_geoeffnet J 0 40 Y N 1 F N
+DEF C_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue C 0 10 N N 1 F N
+F0 "C" 10 70 50 H V L CNN
+F1 "C_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 10 -80 50 H V L CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ C_*
+$ENDFPLIST
+DRAW
+P 2 0 1 13 -60 -20 60 -20 N
+P 2 0 1 12 -60 20 60 20 N
+X ~ 1 0 100 80 D 50 50 1 1 P
+X ~ 2 0 -100 80 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Conn_01x01-Connector
+#
+DEF Conn_01x01-Connector J 0 40 Y N 1 F N
 F0 "J" 0 100 50 H V C CNN
-F1 "Conn_01x01-RESCUE-sender_v3.0_neu_geoeffnet" 0 -100 50 H V C CNN
+F1 "Conn_01x01-Connector" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -390,11 +459,11 @@ X Pin_1 1 -200 0 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Conn_01x05-RESCUE-sender_v3.0_neu_geoeffnet
+# Conn_01x05-Connector
 #
-DEF Conn_01x05-RESCUE-sender_v3.0_neu_geoeffnet J 0 40 Y N 1 F N
+DEF Conn_01x05-Connector J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "Conn_01x05-RESCUE-sender_v3.0_neu_geoeffnet" 0 -300 50 H V C CNN
+F1 "Conn_01x05-Connector" 0 -300 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -420,11 +489,11 @@ X Pin_5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Conn_01x09-RESCUE-sender_v3.0_neu_geoeffnet
+# Conn_01x09-Connector
 #
-DEF Conn_01x09-RESCUE-sender_v3.0_neu_geoeffnet J 0 40 Y N 1 F N
+DEF Conn_01x09-Connector J 0 40 Y N 1 F N
 F0 "J" 0 500 50 H V C CNN
-F1 "Conn_01x09-RESCUE-sender_v3.0_neu_geoeffnet" 0 -500 50 H V C CNN
+F1 "Conn_01x09-Connector" 0 -500 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -458,11 +527,11 @@ X Pin_9 9 -200 -400 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# D-RESCUE-sender_v3.0_neu_geoeffnet
+# D-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF D-RESCUE-sender_v3.0_neu_geoeffnet D 0 40 N N 1 F N
+DEF D-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "D-RESCUE-sender_v3.0_neu_geoeffnet" 0 -100 50 H V C CNN
+F1 "D-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -481,11 +550,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# DC-DC_Stepdown-RESCUE-sender_v3.0_neu_geoeffnet
+# DC-DC_Stepdown-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF DC-DC_Stepdown-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 F N
+DEF DC-DC_Stepdown-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 0 60 H V C CNN
-F1 "DC-DC_Stepdown-RESCUE-sender_v3.0_neu_geoeffnet" -50 0 24 H V C CNN
+F1 "DC-DC_Stepdown-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -50 0 24 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -497,11 +566,11 @@ X GND 4 -350 100 200 R 50 24 1 1 I
 ENDDRAW
 ENDDEF
 #
-# DS1307+-RESCUE-sender_v3.0_neu_geoeffnet
+# DS1307+-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF DS1307+-RESCUE-sender_v3.0_neu_geoeffnet U 0 30 Y Y 1 F N
+DEF DS1307+-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 30 Y Y 1 F N
 F0 "U" 270 550 60 H V C CNN
-F1 "DS1307+-RESCUE-sender_v3.0_neu_geoeffnet" 300 -550 60 H V C CNN
+F1 "DS1307+-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 300 -550 60 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -520,11 +589,11 @@ X SQ 7 600 300 100 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# F_10A-RESCUE-sender_v3.0_neu_geoeffnet
+# F_10A-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF F_10A-RESCUE-sender_v3.0_neu_geoeffnet EF 0 10 N Y 1 F N
+DEF F_10A-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue EF 0 10 N Y 1 F N
 F0 "EF" -180 80 40 H V C CNN
-F1 "F_10A-RESCUE-sender_v3.0_neu_geoeffnet" -100 -80 40 H V C CNN
+F1 "F_10A-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -100 -80 40 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -535,11 +604,11 @@ X ~ 2 -200 0 100 R 10 40 1 1 w
 ENDDRAW
 ENDDEF
 #
-# F_Small-RESCUE-sender_v3.0_neu_geoeffnet
+# F_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF F_Small-RESCUE-sender_v3.0_neu_geoeffnet F 0 10 N N 1 F N
+DEF F_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue F 0 10 N N 1 F N
 F0 "F" -40 60 50 H V L CNN
-F1 "F_Small-RESCUE-sender_v3.0_neu_geoeffnet" -120 -60 50 H V L CNN
+F1 "F_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -120 -60 50 H V L CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -554,24 +623,11 @@ X ~ 2 100 0 50 L 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# GND-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet
+# GND-Belichtungstimer_Uwe_V1.0-rescue
 #
-DEF ~GND-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 0 30 H I C CNN
-F1 "GND-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet" 0 -70 30 H I C CNN
-F2 "" 0 0 60 H V C CNN
-F3 "" 0 0 60 H V C CNN
-DRAW
-P 4 0 1 0 -50 0 0 -50 50 0 -50 0 N
-X GND 1 0 0 0 U 30 30 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# GND-RESCUE-sender_v3.0_neu_geoeffnet
-#
-DEF GND-RESCUE-sender_v3.0_neu_geoeffnet #PWR 0 0 Y Y 1 F P
+DEF GND-Belichtungstimer_Uwe_V1.0-rescue #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "GND-RESCUE-sender_v3.0_neu_geoeffnet" 0 -150 50 H V C CNN
+F1 "GND-Belichtungstimer_Uwe_V1.0-rescue" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -580,11 +636,37 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# Jumper_NC_Dual-RESCUE-sender_v3.0_neu_geoeffnet
+# GND-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF Jumper_NC_Dual-RESCUE-sender_v3.0_neu_geoeffnet JP 0 30 Y N 1 F N
+DEF ~GND-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 0 30 H I C CNN
+F1 "GND-RESCUE-Perimeter_sender_v3-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 -70 30 H I C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+P 4 0 1 0 -50 0 0 -50 50 0 -50 0 N
+X GND 1 0 0 0 U 30 30 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# GND-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
+#
+DEF GND-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "GND-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# Jumper_NC_Dual-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
+#
+DEF Jumper_NC_Dual-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue JP 0 30 Y N 1 F N
 F0 "JP" 50 -100 50 H V L CNN
-F1 "Jumper_NC_Dual-RESCUE-sender_v3.0_neu_geoeffnet" 0 100 50 H V C BNN
+F1 "Jumper_NC_Dual-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 100 50 H V C BNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -599,11 +681,11 @@ X 3 3 250 0 95 L 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# Jumper_NC_Small-RESCUE-sender_v3.0_neu_geoeffnet
+# Jumper_NC_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF Jumper_NC_Small-RESCUE-sender_v3.0_neu_geoeffnet JP 0 30 N N 1 F N
+DEF Jumper_NC_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue JP 0 30 N N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "Jumper_NC_Small-RESCUE-sender_v3.0_neu_geoeffnet" 10 -60 50 H V C CNN
+F1 "Jumper_NC_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 10 -60 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -615,11 +697,33 @@ X 2 2 100 0 40 L 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# LM2940CS-5.0-RESCUE-sender_v3.0_neu_geoeffnet
+# LED_Small-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF LM2940CS-5.0-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 L N
+DEF LED_Small-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue D 0 10 N N 1 F N
+F0 "D" -50 125 50 H V L CNN
+F1 "LED_Small-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" -175 -100 50 H V L CNN
+F2 "" 0 0 50 V I C CNN
+F3 "" 0 0 50 V I C CNN
+$FPLIST
+ LED-*
+ LED_*
+$ENDFPLIST
+DRAW
+P 2 0 1 0 -30 -40 -30 40 N
+P 2 0 1 0 40 0 -30 0 N
+P 4 0 1 0 30 -40 -30 0 30 40 30 -40 N
+P 5 0 1 0 0 30 -20 50 -10 50 -20 50 -20 40 N
+P 5 0 1 0 20 50 0 70 10 70 0 70 0 60 N
+X K 1 -100 0 70 R 50 50 1 1 P
+X A 2 100 0 70 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# LM2940CS-5.0-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
+#
+DEF LM2940CS-5.0-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 40 Y Y 1 L N
 F0 "U" -230 251 50 H V L CNN
-F1 "LM2940CS-5.0-RESCUE-sender_v3.0_neu_geoeffnet" -173 -609 50 H V L CNN
+F1 "LM2940CS-5.0-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -173 -609 50 H V L CNN
 F2 "TO254P1435X464-4N" 0 0 50 H I L CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -634,41 +738,44 @@ X GND 4 -700 -300 200 R 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #
-# MC33926_Singel-RESCUE-sender_v3.0_neu_geoeffnet
+# MC33926_Singel-zimprich
 #
-DEF MC33926_Singel-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 F N
-F0 "U" 0 -700 60 H V C CNN
-F1 "MC33926_Singel-RESCUE-sender_v3.0_neu_geoeffnet" 100 600 50 H V C CNN
-F2 "" 200 300 60 H V C CNN
-F3 "" 200 300 60 H V C CNN
+DEF MC33926_Singel-zimprich U 0 40 Y Y 1 F N
+F0 "U" 0 750 60 H V C CNN
+F1 "MC33926_Singel-zimprich" 100 -550 50 H V C CNN
+F2 "" 200 -250 60 H V C CNN
+F3 "" 200 -250 60 H V C CNN
+$FPLIST
+ Zimprich:MC33926_Singel
+$ENDFPLIST
 DRAW
-T 0 100 500 50 0 0 0 MC33926_Singel Normal 0 C C
-T 0 100 -500 60 0 0 0 www.pololu.com Normal 0 C C
-S 500 -600 -500 700 0 0 0 N
-X D1 D1 -800 100 300 R 50 50 1 1 I
-X D2 D2 -800 0 300 R 50 50 1 1 I
-X EN EN -800 400 300 R 50 50 1 1 I
-X FB FB -800 300 300 R 50 50 1 1 I
-X GND GND -800 -400 300 R 50 50 1 1 I
-X GND GND- 800 100 300 L 50 50 1 1 I
-X IN1 IN1 -800 -100 300 R 50 50 1 1 I
-X IN2 IN2 -800 -200 300 R 50 50 1 1 I
-X INV INV -800 600 300 R 50 50 1 1 I
-X OUT1 OUT1 800 -200 300 L 50 50 1 1 I
-X OUT2 OUT2 800 -100 300 L 50 50 1 1 I
-X SF SF -800 200 300 R 50 50 1 1 I
-X SLEW SLEW -800 500 300 R 50 50 1 1 I
-X VDD VDD -800 -300 300 R 50 50 1 1 I
-X VIN VIN -800 -500 300 R 50 50 1 1 I
-X VIN VIN- 800 200 300 L 50 50 1 1 I
+T 0 100 -450 50 0 0 0 MC33926_Singel Normal 0 C C
+T 0 100 550 60 0 0 0 www.pololu.com Normal 0 C C
+S 500 650 -500 -650 0 0 0 N
+X VIN 1 -800 550 300 R 50 50 1 1 I
+X EN 10 -800 -350 300 R 50 50 1 1 I
+X SLEW 11 -800 -450 300 R 50 50 1 1 I
+X INV 12 -800 -550 300 R 50 50 1 1 I
+X VIN 13 800 250 300 L 50 50 1 1 I
+X GND 14 800 150 300 L 50 50 1 1 I
+X OUT2 15 800 -150 300 L 50 50 1 1 I
+X OUT1 16 800 -250 300 L 50 50 1 1 I
+X GND 2 -800 450 300 R 50 50 1 1 I
+X VDD 3 -800 350 300 R 50 50 1 1 I
+X IN2 4 -800 250 300 R 50 50 1 1 I
+X IN1 5 -800 150 300 R 50 50 1 1 I
+X D2 6 -800 50 300 R 50 50 1 1 I
+X D1 7 -800 -50 300 R 50 50 1 1 I
+X SF 8 -800 -150 300 R 50 50 1 1 I
+X FB 9 -800 -250 300 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# OP275-RESCUE-Perimeter_sender_v2-RESCUE-sender_v3.0_neu_geoeffnet
+# OP275-RESCUE-Perimeter_sender_v2-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF OP275-RESCUE-Perimeter_sender_v2-RESCUE-sender_v3.0_neu_geoeffnet U 0 10 Y Y 2 F N
+DEF OP275-RESCUE-Perimeter_sender_v2-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 10 Y Y 2 F N
 F0 "U" 0 150 60 H V L CNN
-F1 "OP275-RESCUE-Perimeter_sender_v2-RESCUE-sender_v3.0_neu_geoeffnet" 0 -150 60 H V L CNN
+F1 "OP275-RESCUE-Perimeter_sender_v2-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 -150 60 H V L CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -684,11 +791,11 @@ X ~ 7 350 0 150 L 40 40 2 1 O
 ENDDRAW
 ENDDEF
 #
-# PCA9517D-RESCUE-sender_v3.0_neu_geoeffnet
+# PCA9517D-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF PCA9517D-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 L N
+DEF PCA9517D-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 40 Y Y 1 L N
 F0 "U" -40 580 50 H V L CNN
-F1 "PCA9517D-RESCUE-sender_v3.0_neu_geoeffnet" -150 -870 50 H V L CNN
+F1 "PCA9517D-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -150 -870 50 H V L CNN
 F2 "SOIC127P600X175-8N" -240 270 28 H I L CNN
 F3 "Texas Instruments" -180 200 28 H I L CNN
 F4 "PCA9517D" -80 390 28 H I L CNN "MP"
@@ -710,11 +817,11 @@ X VCCB 8 -700 200 200 R 40 40 0 0 I
 ENDDRAW
 ENDDEF
 #
-# R-RESCUE-sender_v3.0_neu_geoeffnet
+# R-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF R-RESCUE-sender_v3.0_neu_geoeffnet R 0 0 N Y 1 F N
+DEF R-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue R 0 0 Y Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R-RESCUE-sender_v3.0_neu_geoeffnet" 0 0 50 V V C CNN
+F1 "R-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -728,11 +835,29 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# RELAY_2RT-RESCUE-sender_v3.0_neu_geoeffnet
+# R-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF RELAY_2RT-RESCUE-sender_v3.0_neu_geoeffnet K 0 40 Y N 1 F N
+DEF R-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "R-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# RELAY_2RT-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
+#
+DEF RELAY_2RT-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue K 0 40 Y N 1 F N
 F0 "K" -50 400 70 H V C CNN
-F1 "RELAY_2RT-RESCUE-sender_v3.0_neu_geoeffnet" 150 -500 70 H V C CNN
+F1 "RELAY_2RT-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 150 -500 70 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -802,11 +927,11 @@ X 9 9 -400 -350 300 R 60 60 1 1 I
 ENDDRAW
 ENDDEF
 #
-# R_Small-RESCUE-sender_v3.0_neu_geoeffnet
+# R_Small-Belichtungstimer_Uwe_V1.0-rescue
 #
-DEF R_Small-RESCUE-sender_v3.0_neu_geoeffnet R 0 10 N N 1 F N
+DEF R_Small-Belichtungstimer_Uwe_V1.0-rescue R 0 10 N N 1 F N
 F0 "R" 30 20 50 H V L CNN
-F1 "R_Small-RESCUE-sender_v3.0_neu_geoeffnet" 30 -40 50 H V L CNN
+F1 "R_Small-Belichtungstimer_Uwe_V1.0-rescue" 30 -40 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -819,11 +944,28 @@ X ~ 2 0 -100 30 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# SPEAKER-RESCUE-sender_v3.0_neu_geoeffnet
+# R_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF SPEAKER-RESCUE-sender_v3.0_neu_geoeffnet SP 0 0 N Y 1 F N
+DEF R_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue R 0 10 N N 1 F N
+F0 "R" 30 20 50 H V L CNN
+F1 "R_Small-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 30 -40 50 H V L CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+S -30 70 30 -70 0 1 8 N
+X ~ 1 0 100 30 D 50 50 1 1 P
+X ~ 2 0 -100 30 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# SPEAKER-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
+#
+DEF SPEAKER-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue SP 0 0 N Y 1 F N
 F0 "SP" -100 250 70 H V C CNN
-F1 "SPEAKER-RESCUE-sender_v3.0_neu_geoeffnet" -100 -250 70 H V C CNN
+F1 "SPEAKER-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -100 -250 70 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -834,11 +976,11 @@ X 2 2 -300 -100 200 R 40 40 1 1 I
 ENDDRAW
 ENDDEF
 #
-# UDN2981A-RESCUE-sender_v3.0_neu_geoeffnet
+# UDN2981A-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF UDN2981A-RESCUE-sender_v3.0_neu_geoeffnet IC 0 40 Y Y 1 L N
+DEF UDN2981A-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue IC 0 40 Y Y 1 L N
 F0 "IC" -300 530 50 H V L BNN
-F1 "UDN2981A-RESCUE-sender_v3.0_neu_geoeffnet" -300 -600 50 H V L BNN
+F1 "UDN2981A-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" -300 -600 50 H V L BNN
 F2 "uln-udn-DIL18" 0 150 50 H I C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -867,11 +1009,51 @@ X VS 9 -500 -400 200 R 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# VR-RESCUE-sender_v3.0_neu_geoeffnet
+# UDN2987A-6-T-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue
 #
-DEF VR-RESCUE-sender_v3.0_neu_geoeffnet VR 0 0 N Y 1 F N
+DEF UDN2987A-6-T-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue U 0 40 Y Y 1 L N
+F0 "U" -211 885 50 H V L CNN
+F1 "UDN2987A-6-T-RESCUE-ardumower_mega_shield_svn-ardumower-mega-shield-svn-rescue" -199 -1119 50 H V L CNN
+F2 "DIP254P762X533-20" 0 0 50 H I L CNN
+F3 "DABIC-5 8-Channel Source Driver with Overcurrent Protection" 0 0 50 H I L CNN
+F4 "Allegro MicroSystems LLC" 0 0 50 H I L CNN "MF"
+F5 "Unavailable" 0 0 50 H I L CNN "Availability"
+F6 "DIP-20 Allegro MicroSystems LLC" 0 0 50 H I L CNN "Package"
+F7 "1.94 USD" 0 0 50 H I L CNN "Price"
+F8 "UDN2987A-6-T" 0 0 50 H I L CNN "MP"
+DRAW
+P 2 0 0 16 -500 -1000 500 -1000 N
+P 2 0 0 16 -500 800 -500 -1000 N
+P 2 0 0 16 500 -1000 500 800 N
+P 2 0 0 16 500 800 -500 800 N
+X IN1 1 -700 100 200 R 40 40 0 0 I
+X OE/~R 10 -700 400 200 R 40 40 0 0 I
+X VS 11 -700 600 200 R 40 40 0 0 I
+X GND 12 -700 -800 200 R 40 40 0 0 P
+X OUT8 13 700 -100 200 L 40 40 0 0 O
+X OUT7 14 700 0 200 L 40 40 0 0 O
+X OUT6 15 700 100 200 L 40 40 0 0 O
+X OUT5 16 700 200 200 L 40 40 0 0 O
+X OUT4 17 700 300 200 L 40 40 0 0 O
+X OUT3 18 700 400 200 L 40 40 0 0 O
+X OUT2 19 700 500 200 L 40 40 0 0 O
+X IN2 2 -700 0 200 R 40 40 0 0 I
+X OUT1 20 700 600 200 L 40 40 0 0 O
+X IN3 3 -700 -100 200 R 40 40 0 0 I
+X IN4 4 -700 -200 200 R 40 40 0 0 I
+X IN5 5 -700 -300 200 R 40 40 0 0 I
+X IN6 6 -700 -400 200 R 40 40 0 0 I
+X IN7 7 -700 -500 200 R 40 40 0 0 I
+X IN8 8 -700 -600 200 R 40 40 0 0 I
+X FAULT 9 -700 300 200 R 40 40 0 0 I
+ENDDRAW
+ENDDEF
+#
+# VR-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
+#
+DEF VR-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue VR 0 0 N Y 1 F N
 F0 "VR" 60 -46 50 V V C TNN
-F1 "VR-RESCUE-sender_v3.0_neu_geoeffnet" 0 0 50 V V C CNN
+F1 "VR-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 0 50 V V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 DRAW
@@ -882,11 +1064,11 @@ X ~ 2 0 -250 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Wlan_ESP8266_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet
+# Wlan_ESP8266_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF Wlan_ESP8266_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet U 0 40 Y Y 1 F N
+DEF Wlan_ESP8266_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 -100 50 H V C CNN
-F1 "Wlan_ESP8266_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet" 162 34 50 V V C CNN
+F1 "Wlan_ESP8266_mit_Beschriftung-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 162 34 50 V V C CNN
 F2 "Zimprich:Wlan_ESP8266_3D_mit_Pin_Beschreibung" 0 0 50 H I C CNN
 F3 "DOCUMENTATION" 0 0 50 H I C CNN
 DRAW
@@ -902,11 +1084,11 @@ X VCC VCC -400 50 150 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# ZENER-RESCUE-sender_v3.0_neu_geoeffnet
+# ZENER-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue
 #
-DEF ZENER-RESCUE-sender_v3.0_neu_geoeffnet D 0 40 N N 1 F N
+DEF ZENER-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "ZENER-RESCUE-sender_v3.0_neu_geoeffnet" 0 -100 50 H V C CNN
+F1 "ZENER-RESCUE-sender_v3.0_neu_geoeffnet-sender_v3.0_neu_geoeffnet-rescue" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
