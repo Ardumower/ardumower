@@ -53,7 +53,7 @@ int16_t ADCMax[CHANNELS]; // ADC max sample value (ADC-ADC7)
 int16_t ADCAvg[CHANNELS]; // ADC avg sample value (ADC-ADC7)
 volatile boolean captureComplete[CHANNELS]; // ADC buffer filled?
 boolean autoCalibrate[CHANNELS]; // do auto-calibrate? (ADC0-ADC7)
-  
+int16_t *sample[CHANNELS];   // ADC one sample (ADC0-ADC7) - 10 bit unsigned
 ADCManager ADCMan;
 
 
@@ -70,6 +70,10 @@ ADCManager::ADCManager(){
     ADCAvg[i] = 0;    
   }
   capturedChannels = 0;  
+  // NOTE: when choosing a higher perimeter sample rate (38 kHz) and using odometry interrupts, 
+  // the Arduino Mega cannot handle all ADC interrupts anymore - the result will be a 'noisy'
+  // perimeter filter output (mag value) which disappears when disabling odometry interrupts.
+  // SOLUTION: allow odometry interrupt handler nesting (see odometry interrupt function)
   //sampleRate = SRATE_19231;
   sampleRate = SRATE_38462;
   //sampleRate = SRATE_9615;
@@ -98,6 +102,7 @@ void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs
   int ch = pin-A0;
   captureSize[ch] = samplecount;
   capture[ch] = new int8_t[samplecount];    
+  sample[ch]  = new int16_t[samplecount];
   autoCalibrate[ch] = autoCalibrateOfs;
 }
 
@@ -221,7 +226,8 @@ void ADC_Handler(void){
     return;
   } 
   value -= ofs[channel];                   
-  capture[channel][position] =  min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)  
+  capture[channel][position] = min(SCHAR_MAX,  max(SCHAR_MIN, value / 4));   // convert to signed (zero = ADC/2)  
+  sample[channel][position] = value; 
   position++;      
 }
 
@@ -291,7 +297,7 @@ int ADCManager::read(byte pin){
   int ch = pin-A0;
   captureComplete[ch]=false;    
   if (captureSize[ch] == 0) return 0;  
-    else return capture[ch][0];
+    else return sample[ch][(captureSize[ch]-1)];    
 }
 
 
