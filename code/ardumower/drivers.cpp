@@ -371,7 +371,7 @@ void softwareReset(){
 #elif __SAM3X8E__
   // Arduino Due  
   RSTC->RSTC_MR = 0xA5000801; // Set RST pin to go low for 256 clock cycles on reset
-  RSTC->RSTC_CR = 0xA5000013; // Reset processor, internal peripherals, and pull external RST pin low.
+  RSTC->RSTC_CR = 0xA500000D; // Reset processor, internal peripherals, and pull external RST pin low.
 #endif
 }
 
