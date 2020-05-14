@@ -74,160 +74,21 @@ float Robot::ADC2voltage(float ADCvalue){
 
 
 Robot::Robot(){
-  name = "Generic";
-  developerActive = false;
   rc.setRobot(this);
   
-  lastSensorTriggeredTime =0;
-	stateLast = stateCurr = stateNext = STATE_OFF; 
-  stateTime = 0;
-  idleTimeSec = 0;
-  rosTimeout = 0;
-  statsMowTimeTotalStart = false;            
-  mowPatternCurr = MOW_RANDOM;
-  
-  odometryLeft = odometryRight = 0;	
-  odometryLeftLastState = odometryLeftLastState2 = odometryRightLastState = odometryRightLastState2 = LOW;
-  odometryTheta = odometryX = odometryY = 0;
-
-    
-  motorRightRpmCurr = motorLeftRpmCurr = 0;
-  lastMotorRpmTime = 0;
-  lastSetMotorSpeedTime = 0;
-  motorLeftSpeedRpmSet =  motorRightSpeedRpmSet = 0; 
-  motorLeftPWMCurr = motorRightPWMCurr = 0;
-  motorRightSenseADC = motorLeftSenseADC = 0;
-  motorLeftSenseCurrent = motorRightSenseCurrent = 0;     
-  motorLeftSense = motorRightSense = 0;
-  motorLeftSenseCounter = motorRightSenseCounter = 0;  
-  motorZeroSettleTime = 0;  
-  motorLeftZeroTimeout = 0;
-  motorRightZeroTimeout = 0;  
-  rotateLeft = true;
-  
-  remoteSteer = remoteSpeed = remoteMow = remoteSwitch = 0;  
-  remoteSteerLastTime = remoteSpeedLastTime =remoteMowLastTime =remoteSwitchLastTime = 0;
-  remoteSteerLastState = remoteSpeedLastState = remoteMowLastState = remoteSwitchLastState = LOW;
-
-  motorMowRpmCounter = 0;
-  motorMowRpmLastState = LOW;
-  motorMowEnable = false;
-  motorMowForceOff = false;
   motorMowSpeedPWMSet = motorSpeedMaxRpm;
-  motorMowPWMCurr = 0;
-  motorMowSenseADC = 0;
-  motorMowSenseCurrent  = 0;
-  motorMowSense = 0;
-  motorMowSenseCounter = 0;
-  motorMowSenseErrorCounter = 0;
-  motorMowRpmCurr = 0;
-  lastMowSpeedPWM = 0;
-  lastSetMotorMowSpeedTime = 0;
-  nextTimeCheckCurrent = 0;
-  lastTimeMotorMowStuck = 0;
 
-  bumperLeftCounter = bumperRightCounter = 0;
-  bumperLeft = bumperRight = false;          
-   
-   dropLeftCounter = dropRightCounter = 0;                                                                                              // Dropsensor - Absturzsensor
-   dropLeft = dropRight = false;                                                                                                        // Dropsensor - Absturzsensor
-  
-  gpsLat = gpsLon = gpsX = gpsY = 0;
-  robotIsStuckCounter = 0;
-
-  imuDriveHeading = 0;
-  imuRollHeading = 0;
-  imuRollDir = LEFT;  
-  
-  perimeterMag = 1;
   perimeterMagMedian.add(perimeterMag);
-  perimeterInside = true;
-  perimeterCounter = 0;  
-  perimeterLastTransitionTime = 0;
-  perimeterTriggerTime = 0;
   
-  lawnSensorCounter = 0;
-  lawnSensor = false;
-  lawnSensorFront = lawnSensorFrontOld = lawnSensorBack = lawnSensorBackOld = 0;  
-  
-  rain = false;
-  rainCounter = 0;
-
-  freeWheelIsMoving = false;
-
-  sonarLeftUse = sonarRightUse = sonarCenterUse = false;
-  sonarDistCenter = sonarDistRight = sonarDistLeft = 0;
-  sonarDistCounter = 0;
-  tempSonarDistCounter = 0;
-  sonarObstacleTimeout = 0;  
-
-  batADC = 0;
-  batVoltage = 0;
-  batRefFactor = 0;
-  batCapacity = 0;
-  lastTimeBatCapacity = 0;
-  chgVoltage = 0;
-  chgCurrent = 0;
-    
   memset(errorCounterMax, 0, sizeof errorCounterMax);
   memset(errorCounter, 0, sizeof errorCounterMax);
     
-  loopsPerSec = 0;
-	loopsPerSecLowCounter = 0;
-  loopsTa = 5.0;
-  loopsPerSecCounter = 0;
-  buttonCounter = 0;
-  ledState = 0;
-
-  consoleMode = CONSOLE_SENSOR_COUNTERS; 
-  nextTimeButtonCheck = 0;
-  nextTimeInfo = 0;
-  nextTimeROS = 0;
-  nextTimeMotorSense = 0;
-  nextTimeIMU = 0;
-  nextTimeCheckTilt = 0;
-  nextTimeOdometry = 0;
-  nextTimeOdometryInfo = 0;
-  nextTimeBumper = 0;
-  nextTimeDrop = 0;                                                                                                                    // Dropsensor - Absturzsensor
-  nextTimeSonar = 0;
-  nextTimeFreeWheel = 0;
-  nextTimeBattery = 0;
   nextTimeCheckBattery = millis() + 10000;
-  nextTimePerimeter = 0;
-  nextTimeLawnSensor = 0;
-  nextTimeLawnSensorCheck = 0;
-  nextTimePrintErrors = 0;
   nextTimeTimer = millis() + 60000;
-  nextTimeRTC = 0;
-  nextTimeGPS = 0;
-  nextTimeCheckIfStuck = 0;
-  nextTimePfodLoop = 0;
-  nextTimeRain = 0;
   lastMotorMowRpmTime = millis();
-  nextTimeButton = 0;
-  nextTimeErrorCounterReset = 0;    
-  nextTimeErrorBeep = 0;
-  nextTimeMotorControl = 0;  
-  nextTimeMotorImuControl = 0;
-  nextTimeMotorPerimeterControl = 0;
-  nextTimeMotorMowControl = 0;
-  nextTimeRotationChange = 0;
-
-  nextTimeRobotStats = 0;
-  statsMowTimeMinutesTripCounter = 0;
-  statsBatteryChargingCounter = 0;
-  
-  nextTimeRMCSInfo			= 0;  
-  rmcsInfoLastSendState = 0;
-  rmcsInfoLastSendMotorCurrent = 0;
-  rmcsInfoLastSendSonar = 0;
-  rmcsInfoLastSendBumper = 0;
-  rmcsInfoLastSendOdometry = 0;
-  rmcsInfoLastSendPeri = 0;
 }
 
-const char *Robot::mowPatternName(){
+const char *Robot::mowPatternName() const{
   return mowPatternNames[mowPatternCurr];
 }
 
