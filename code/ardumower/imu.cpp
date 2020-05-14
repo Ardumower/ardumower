@@ -442,13 +442,13 @@ void IMU::calibComStartStop(){
     useComCalibration = true; 
     state = IMU_RUN;    
     // completed sound
-    Buzzer.tone(600);
+    buzzer.tone(600);
     delay(200); 
-    Buzzer.tone(880);
+    buzzer.tone(880);
     delay(200); 
-    Buzzer.tone(1320);              
+    buzzer.tone(1320);
     delay(200); 
-    Buzzer.noTone();    
+    buzzer.noTone();
     delay(500);
   } else {
     // start
@@ -500,7 +500,7 @@ void IMU::calibComUpdate(){
     }    
     if (newfound) {      
       foundNewMinMax = true;
-      Buzzer.tone(440);
+      buzzer.tone(440);
       Console.print("x:");
       Console.print(comMin.x);
       Console.print(",");
@@ -514,14 +514,14 @@ void IMU::calibComUpdate(){
       Console.print(",");
       Console.print(comMax.z);    
       Console.println("\t");
-    } else Buzzer.noTone();   
+    } else buzzer.noTone();
   }    
 }
 
 // calculate acceleration sensor offsets
 boolean IMU::calibAccNextAxis(){  
   boolean complete = false;
-  Buzzer.tone(440);
+  buzzer.tone(440);
   while (Console.available()) Console.read();  
   useAccCalibration = false;  
   if (calibAccAxisCounter >= 6) calibAccAxisCounter = 0;
@@ -571,14 +571,14 @@ boolean IMU::calibAccNextAxis(){
     Console.println("acc calibration completed");    
     complete = true;
     // completed sound
-    Buzzer.tone(600);
+    buzzer.tone(600);
     delay(200); 
-    Buzzer.tone(880);
+    buzzer.tone(880);
     delay(200); 
-    Buzzer.tone(1320);              
+    buzzer.tone(1320);
     delay(200); 
   };
-  Buzzer.noTone();
+  buzzer.noTone();
   delay(500);
   return complete;
 }      
@@ -732,5 +732,3 @@ void IMU::read(){
   readHMC5883L();  
   //calcComCal();
 }
-
-

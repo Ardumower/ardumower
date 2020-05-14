@@ -505,10 +505,10 @@ void Robot::printSettingSerial(){
 
 void Robot::saveUserSettings(){
   Console.println(F("please wait..."));
-	Buzzer.tone(1400);
+	buzzer.tone(1400);
   loadSaveUserSettings(false);
 	Console.println(F("USER SETTINGS SAVED!"));		
-	Buzzer.noTone();
+	buzzer.noTone();
 }
 
 void Robot::deleteUserSettings(){
@@ -633,4 +633,3 @@ void Robot::checkRobotStats(){
 
 //----------------new stats goes here------------------------------------------------------
 }
-

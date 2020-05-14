@@ -344,7 +344,7 @@ void Mower::setup(){
   pinMode(pinBatterySwitch, OUTPUT);
   digitalWrite(pinBatterySwitch, HIGH);
 
-  Buzzer.begin();
+  buzzer.begin();
 	Console.begin(CONSOLE_BAUDRATE);  
 	I2Creset();	
   Wire.begin();            			
@@ -666,7 +666,7 @@ void Mower::setActuator(char type, int value){
     case ACT_MOTOR_MOW: setMC33926(pinMotorMowDir, pinMotorMowPWM, value); break;// Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_LEFT: setMC33926(pinMotorLeftDir, pinMotorLeftPWM, value); break;//                                                                  Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
     case ACT_MOTOR_RIGHT: setMC33926(pinMotorRightDir, pinMotorRightPWM, value); break; //                                                              Motortreiber einstellung - bei Bedarf ändern z.B setL298N auf setMC33926
-    case ACT_BUZZER: if (value == 0) Buzzer.noTone(); else Buzzer.tone(value); break;
+    case ACT_BUZZER: if (value == 0) buzzer.noTone(); else buzzer.tone(value); break;
     case ACT_LED: digitalWrite(pinLED, value); break;    
     case ACT_USER_SW1: digitalWrite(pinUserSwitch1, value); break;     
     case ACT_USER_SW2: digitalWrite(pinUserSwitch2, value); break;     
