@@ -535,7 +535,7 @@ void Robot::receiveGPSTime(){
     byte month, day, hour, minute, second, hundredths;
     unsigned long age; 
     gps.crack_datetime(&year, &month, &day, &hour, &minute, &second, &hundredths, &age);
-    if (age != GPS::GPS_INVALID_AGE)
+    if (age != GPS_INVALID_AGE)
     {
       Console.print(F("GPS date received: "));
       Console.println(date2str(datetime.date));  
@@ -973,7 +973,7 @@ void Robot::processGPSData()
   float nlat, nlon;
   unsigned long age;
   gps.f_get_position(&nlat, &nlon, &age);
-  if (nlat == GPS::GPS_INVALID_F_ANGLE ) return;
+  if (nlat == GPS_INVALID_F_ANGLE ) return;
   if (gpsLon == 0){
     gpsLon = nlon;  // this is xy (0,0)
     gpsLat = nlat;
