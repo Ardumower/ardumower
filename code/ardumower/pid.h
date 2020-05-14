@@ -2,9 +2,9 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
-  
+
   Private-use only! (you need to ask for a commercial-use)
- 
+
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -17,7 +17,7 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  
+
   Private-use only! (you need to ask for a commercial-use)
 
 */
@@ -27,19 +27,20 @@
 
 #include <Arduino.h>
 
-
 /*
   digital PID controller
 */
 
 class PID
 {
-  public:
+public:
     PID();
     PID(float Kp, float Ki, float Kd);
+
     void reset(void);
     float compute();
-    double Ta; // sampling time	
+
+    double Ta; // sampling time
     float w; // set value
     float x; // current value
     float esum; // error sum
@@ -47,37 +48,35 @@ class PID
     float y;   // control output
     float y_min; // minimum control output
     float y_max; // maximum control output
-    float max_output; // maximum output 
+    float max_output; // maximum output
     float Kp;   // proportional control
     float Ki;   // integral control
     float Kd;   // differential control
     unsigned long lastControlTime;
 };
-
 
 class VelocityPID
 {
-  public:
+public:
     VelocityPID();
     VelocityPID(float Kp, float Ki, float Kd);
+
     float compute();
-    double Ta; // sampling time 
+
+    double Ta; // sampling time
     float w; // set value
     float x; // current value
     float eold1; // last error
-    float eold2; // error n-2   
+    float eold2; // error n-2
     int y;   // control output
-    int yold;   // last control output    
+    int yold;   // last control output
     int y_min; // minimum control output
     int y_max; // maximum control output
-    int max_output; // maximum output 
+    int max_output; // maximum output
     float Kp;   // proportional control
     float Ki;   // integral control
     float Kd;   // differential control
     unsigned long lastControlTime;
 };
 
-
-
 #endif
-
