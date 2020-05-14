@@ -41,25 +41,45 @@
 class RunningMedian
 {
 public:
-    explicit RunningMedian(const uint8_t size);  // # elements in the internal buffer
-    ~RunningMedian();                            // destructor
+    explicit RunningMedian(const uint8_t size); // # elements in the internal buffer
+    ~RunningMedian();
 
-    void clear();                        // resets internal buffer and var
-    void add(const double value);        // adds a new value to internal buffer, optionally replacing the oldest element.
-    double getMedian();                  // returns the median == middle element
+    /** resets internal buffer and var */
+    void clear();
+
+    /** adds a new value to internal buffer, optionally replacing the oldest element. */
+    void add(const double value);
+
+    /** returns the median == middle element */
+    double getMedian();
 
 #ifdef RUNNING_MEDIAN_ALL
-    double getAverage();                 // returns average of the values in the internal buffer
-    double getAverage(uint8_t nMedian);  // returns average of the middle nMedian values, removes noise from outliers
-    double getHighest();                 // returns highest element
-    double getLowest();                  // return lowest element
+    /** returns average of the values in the internal buffer */
+    double getAverage() const;
 
-    double getElement(const uint8_t n);        // get n'th element from the values in time order
-    double getSortedElement(const uint8_t n);  // get n'th element from the values in size order
-    double predict(const uint8_t n);           // predict the max change of median after n additions
+    /** returns average of the middle nMedian values, removes noise from outliers */
+    double getAverage(uint8_t nMedian);
 
-    uint8_t getSize() { return _size; };  // returns size of internal buffer
-    uint8_t getCount() { return _cnt; };  // returns current used elements, getCount() <= getSize()
+    /** returns highest element */
+    double getHighest();
+
+    /** return lowest element */
+    double getLowest();
+
+    /** get n'th element from the values in time order */
+    double getElement(const uint8_t n) const;
+
+    /** get n'th element from the values in size order */
+    double getSortedElement(const uint8_t n);
+
+    /** predict the max change of median after n additions */
+    double predict(const uint8_t n);
+
+    /** returns size of internal buffer */
+    uint8_t getSize() const;
+
+    /** returns current used elements, getCount() <= getSize() */
+    uint8_t getCount() const;
 #endif
 
 protected:
@@ -79,4 +99,3 @@ protected:
 };
 
 #endif
-// END OF FILE
