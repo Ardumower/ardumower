@@ -517,6 +517,12 @@ void Robot::deleteUserSettings(){
   Console.println(F("ALL USER SETTINGS DELETED - PLEASE RE-POWER SYSTEM!"));
   eewrite(addr, (short)0); // magic  
   loadSaveRobotStats(false);
+  Console.println(F("system will reboot now..."));
+  Console.println();
+  Console.println();
+  Console.println();
+  delay(1000);
+  softwareReset();
 }
 
 void Robot::deleteRobotStats(){

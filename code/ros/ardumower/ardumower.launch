@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- Ardumower -->
+  <param name="robot_description" textfile="$(find ardumower)/robot/robot.urdf" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> 
+  
+  <node pkg="ardumower" name="ardumower" type="ardumower.py" output="screen">
+    <param name="base_link" value="base_link" />
+    <param name="nav" value="cmd_vel_mux/input/navi" />
+    <param name="odom_topic" value="odom" />
+    <param name="odom_frame" value="odom" />
+    <param name="device" value="/dev/ttyACM0" />
+    <param name="cmd_vel" value="cmd_vel_mux/input/teleop" />
+  </node>
+  
+  <!--
+  <node pkg="rviz" type="rviz" name="rviz"
+		args="$(find sim)/rviz/sim_vis.vcg" />
+  -->
+
+</launch>
+  
+  

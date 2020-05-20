@@ -35,13 +35,13 @@
 #define ADDR_ERR_COUNTERS 400
 #define ADDR_ROBOT_STATS 800
 
-const char* stateNames[] ={"OFF ", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
+const char* stateNames[] ={"OFF ", "ROS", "RC  ", "FORW", "ROLL", "REV ", "CIRC", "ERR ", "PFND", "PTRK", "PROL", "PREV", "STAT", "CHARG", "STCHK",
   "STREV", "STROL", "STFOR", "MANU", "ROLW", "POUTFOR", "POUTREV", "POUTROLL", "TILT", "BUMPREV", "BUMPFORW"};
 
 const char* sensorNames[] ={"SEN_PERIM_LEFT", "SEN_PERIM_RIGHT", "SEN_PERIM_LEFT_EXTRA", "SEN_PERIM_RIGHT_EXTRA", "SEN_LAWN_FRONT", "SEN_LAWN_BACK", 
 	"SEN_BAT_VOLTAGE", "SEN_CHG_CURRENT", "SEN_CHG_VOLTAGE", "SEN_MOTOR_LEFT", "SEN_MOTOR_RIGHT", "SEN_MOTOR_MOW", "SEN_BUMPER_LEFT", "SEN_BUMPER_RIGHT", 
 	"SEN_DROP_LEFT", "SEN_DROP_RIGHT", "SEN_SONAR_CENTER", "SEN_SONAR_LEFT", "SEN_SONAR_RIGHT", "SEN_BUTTON", "SEN_IMU", "SEN_MOTOR_MOW_RPM", "SEN_RTC",
-  "SEN_RAIN", "SEN_TILT"};
+  "SEN_RAIN", "SEN_TILT", "SEN_FREE_WHEEL"};
 
 const char* mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
@@ -51,6 +51,8 @@ const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off
 // --- split robot class ----
 #include "battery.h"
 #include "consoleui.h"
+#include "ros.h"
+#include "rmcs.h" // Use Robot Mower Communication Standard 
 #include "motor.h"
 #include "buzzer.h"
 #include "modelrc.h"
@@ -80,6 +82,7 @@ Robot::Robot(){
 	stateLast = stateCurr = stateNext = STATE_OFF; 
   stateTime = 0;
   idleTimeSec = 0;
+  rosTimeout = 0;
   statsMowTimeTotalStart = false;            
   mowPatternCurr = MOW_RANDOM;
   
@@ -179,6 +182,7 @@ Robot::Robot(){
   consoleMode = CONSOLE_SENSOR_COUNTERS; 
   nextTimeButtonCheck = 0;
   nextTimeInfo = 0;
+  nextTimeROS = 0;
   nextTimeMotorSense = 0;
   nextTimeIMU = 0;
   nextTimeCheckTilt = 0;
@@ -213,6 +217,14 @@ Robot::Robot(){
   nextTimeRobotStats = 0;
   statsMowTimeMinutesTripCounter = 0;
   statsBatteryChargingCounter = 0;
+  
+  nextTimeRMCSInfo			= 0;  
+  rmcsInfoLastSendState = 0;
+  rmcsInfoLastSendMotorCurrent = 0;
+  rmcsInfoLastSendSonar = 0;
+  rmcsInfoLastSendBumper = 0;
+  rmcsInfoLastSendOdometry = 0;
+  rmcsInfoLastSendPeri = 0;
 }
 
 const char *Robot::mowPatternName(){
@@ -222,7 +234,11 @@ const char *Robot::mowPatternName(){
 void Robot::setSensorTriggered(char type){
   lastSensorTriggered = type;
   lastSensorTriggeredTime = millis();
+  if (!rmcsUse){
   Console.println( sensorNames[lastSensorTriggered] );
+  }else{
+    rmcsSendSensorTriggered(type);
+  }
 }
 
 const char *Robot::lastSensorTriggeredName(){
@@ -302,8 +318,18 @@ void Robot::setup()  {
   Console.println(name);  
       
   Console.println(F("press..."));
-  Console.println(F("  d for menu"));    
-  Console.println(F("  v to change console output (sensor counters, values, perimeter etc.)"));    
+  Console.println(F("  d main menu"));    
+  Console.println(F("  v change console mode (sensor counters, values, perimeter etc.)"));    
+  Console.println(F("  1 start automatic mowing"));    
+  Console.println(F("  0 stop"));      
+  Console.println(F("  h drive home"));        
+  Console.println(F("  3 activate model R/C mode"));     
+  Console.println(F("  m toggle mow motor"));        
+  Console.println(F("  p track perimeter"));    
+  Console.println(F("  l simulate left bumper"));    
+  Console.println(F("  r simulate right bumper"));          
+  Console.println();        
+  Console.print(F("current console mode: "));
   Console.println(consoleModeNames[consoleMode]);
   Console.println(F("-------------------------------------------"));  
 } 
@@ -323,7 +349,9 @@ void Robot::checkButton(){
       beep(1);
       buttonCounter++;
 			setSensorTriggered(SEN_BUTTON);
+     if (!rmcsUse){
       resetIdleTime();
+     }
     } 
     else { 
       // ON/OFF button released          
@@ -384,7 +412,8 @@ void Robot::readSensors(){
     
     motorRightSenseCurrent = motorRightSenseCurrent * (1.0-accel) + ((double)motorRightSenseADC) * motorSenseRightScale * accel;
     motorLeftSenseCurrent = motorLeftSenseCurrent * (1.0-accel) + ((double)motorLeftSenseADC) * motorSenseLeftScale * accel;
-    motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel;
+    // NOTE for motor mower current : we double motor current as two drivers are connected in parallel
+    motorMowSenseCurrent = motorMowSenseCurrent * (1.0-accel) + ((double)motorMowSenseADC) * motorMowSenseScale * accel * 2; 
    
     if (batVoltage > 8){
       motorRightSense = motorRightSenseCurrent * batVoltage /1000;   // conversion to power in Watt
@@ -511,6 +540,7 @@ void Robot::readSensors(){
   if ((freeWheelUse) && (millis() >= nextTimeFreeWheel)){    
     nextTimeFreeWheel = millis() + 100;               
     freeWheelIsMoving = (readSensor(SEN_FREE_WHEEL) == 0);
+    if (!freeWheelIsMoving) setSensorTriggered(SEN_FREE_WHEEL);
   }
 
   if ((bumperUse) && (millis() >= nextTimeBumper)){    
@@ -1293,7 +1323,12 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateLast = stateCurr;
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
-  printInfo(Console);          
+  if (rmcsUse == false) {  
+     printInfo(Console);          
+  }
+  else{
+    rmcsPrintInfo(Console);
+  }
 }// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
 
 
@@ -1301,8 +1336,12 @@ void Robot::loop()  {
   stateTime = millis() - stateStartTime;
   int steer;
   ADCMan.run();
-  readSerial();   
-  if (rc.readSerial()) resetIdleTime();
+  if (stateCurr != STATE_ROS) readSerial();   
+  if (!rmcsUse){
+     if (rc.readSerial()) resetIdleTime();
+  } else {
+    rc.readSerial();
+  }
   readSensors(); 
   checkBattery(); 
   checkIfStuck();
@@ -1325,10 +1364,21 @@ void Robot::loop()  {
     rc.run();        
   }
    
+  if (rmcsUse == true and millis() >= nextTimeRMCSInfo ) { 
+	   nextTimeRMCSInfo = millis() + 100;
+     rmcsPrintInfo(Console);
+  }
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
-    printInfo(Console);    
+	if (rmcsUse == false) { 
+	  printInfo(Console); 
     printErrors();
+	}
+ 
+    if (stateCurr != STATE_ROS && rmcsUse == false) {
+      printInfo(Console);    
+      printErrors();
+    }    
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
@@ -1379,6 +1429,10 @@ void Robot::loop()  {
         }
       }
       imuDriveHeading = imu.ypr.yaw;
+      break;
+    case STATE_ROS:
+      // Linux ROS mode
+      rosSerial();   
       break;
     case STATE_REMOTE:
       // remote control mode (RC)
@@ -1574,13 +1628,15 @@ void Robot::loop()  {
       break;  
     case STATE_PERI_OUT_FORW:  
       checkPerimeterBoundary();                 
-      //if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);  
-      if (perimeterInside || (millis() >= stateEndTime)) setNextState(STATE_PERI_OUT_ROLL, rollDir); 
+      // https://forum.ardumower.de/threads/perimeteroutreversetime.23723/
+      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);  
+      //if (perimeterInside || (millis() >= stateEndTime)) setNextState(STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_REV: 
       checkPerimeterBoundary();      
-     // if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);   
-      if (perimeterInside || (millis() >= stateEndTime)) setNextState (STATE_PERI_OUT_ROLL, rollDir); 
+      // https://forum.ardumower.de/threads/perimeteroutreversetime.23723/
+      if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);   
+      //if (perimeterInside || (millis() >= stateEndTime)) setNextState (STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_ROLL: 
       if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                

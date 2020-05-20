@@ -104,9 +104,9 @@ void Robot::printMenu(){
   Console.println(F("1=test motors"));
   Console.println(F("2=test odometry"));  
   Console.println(F("3=communications menu (setup Bluetooth & WIFI)"));
-  Console.println(F("4=ADC calibration (perimeter sender & charger must be off)"));    
-  Console.println(F("5=calibrate IMU compass start/stop"));  
-  Console.println(F("6=calibrate IMU acceleration next side"));  
+  Console.println(F("4=ADC calibration (perimeter sender & charger must be off)"));      
+  Console.println(F("5=calibrate IMU acceleration next side"));  
+  Console.println(F("6=calibrate IMU compass start/stop"));  
   Console.println(F("7=delete IMU calibration"));  
   Console.println(F("8=show EEPROM data (for backup)"));  
   Console.println(F("9=enter EEPROM data (for restore)"));  
@@ -263,8 +263,11 @@ void Robot::testMotors(){
 void Robot::menu(){  
   char ch;  
   printMenu();  
-  while(true){    
-    resetIdleTime();
+  while(true){
+    if (!rmcsUse){    
+   
+       resetIdleTime();
+    }
     imu.update();
     if (Console.available() > 0) {
       ch = (char)Console.read();            
@@ -432,10 +435,18 @@ void Robot::commsMenuSelect(void) {
 }
 
 void Robot::readSerial() {
-  // serial input
+  // serial input  
   if (Console.available() > 0) {     
-     char ch = (char)Console.read();
-     resetIdleTime();
+    // String cmd = Console.readString();
+     String cmd = waitStringConsole();
+     if (cmd.startsWith("$ROS")) {
+       setNextState(STATE_ROS, 0);
+       return;
+     }
+     char ch = cmd[0];
+     if (!rmcsUse){
+        resetIdleTime();
+     }
      switch (ch){
        case 'd': 
          menu(); // menu
@@ -504,7 +515,11 @@ void Robot::readSerial() {
          //motorMowModulate = false;                                           
          setNextState(STATE_FORWARD,0);          
          break; 
-     }
+      // New commands for RMCS protocol
+      case '$':
+        processRMCSCommand(cmd); 
+         break;
+	 }
   }    
 }
 

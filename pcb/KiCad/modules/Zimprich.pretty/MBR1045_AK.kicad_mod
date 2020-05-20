@@ -1,4 +1,4 @@
-(module MBR1045_AK (layer F.Cu) (tedit 55AFB4F2)
+(module MBR1045_AK (layer F.Cu) (tedit 5B968BD2)
   (descr "TO-220, Diode, Vertical,")
   (tags "TO-220, Diode, Vertical,")
   (fp_text reference MBR_1045 (at 0 -5.08) (layer F.SilkS)
@@ -28,9 +28,9 @@
   (fp_line (start 0 -3.048) (end 5.334 -3.048) (layer F.SilkS) (width 0.15))
   (pad K thru_hole rect (at -2.54 0 90) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
   (pad A thru_hole oval (at 2.54 0 90) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_TO-220_Vertical.wrl
-    (at (xyz 0 0 0))
-    (scale (xyz 0.3937 0.3937 0.3937))
+  (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-2_Vertical.wrl
+    (offset (xyz -2.5 0 0))
+    (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
 )

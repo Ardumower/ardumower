@@ -1,4 +1,4 @@
-(module MC_33926_31polig (layer F.Cu) (tedit 586E577F)
+(module MC_33926_31polig (layer F.Cu) (tedit 5B968EAF)
   (fp_text reference MC_33926_31polig (at 26.416 -31.877) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.15)))
   )
@@ -52,33 +52,33 @@
   (pad 29 thru_hole circle (at 33.02 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 30 thru_hole circle (at 40.64 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 31 thru_hole circle (at 43.18 -35.306) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x18.wrl
-    (at (xyz 1.05 1.49 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x18_P2.54mm_Vertical.wrl
+    (offset (xyz 48.17 37.846 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x06.wrl
-    (at (xyz 1.05 0.6 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Vertical.wrl
+    (offset (xyz 33.17 15 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
-    (at (xyz 0.75 1.39 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+    (offset (xyz 20.5 35.306 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x02.wrl
-    (at (xyz 1.65 1.39 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x02_P2.54mm_Vertical.wrl
+    (offset (xyz 42.91 35.306 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x03.wrl
-    (at (xyz 1.2 1.39 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl
+    (offset (xyz 32.98 35.306 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
   (model ${KISYS3DMOD}/Zimprich.3dshapes/mc33926.wrl
-    (at (xyz 1.244094488188977 0.984251968503937 0.4094488188976378))
+    (offset (xyz 31.59999952541563 24.99999962453767 10.39999984380767))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
   )

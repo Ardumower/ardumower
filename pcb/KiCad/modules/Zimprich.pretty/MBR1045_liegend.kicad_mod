@@ -1,4 +1,4 @@
-(module MBR1045_liegend (layer F.Cu) (tedit 57DDC63D)
+(module MBR1045_liegend (layer F.Cu) (tedit 5B968CC2)
   (descr "TO-220, Bipolar-BCE, Horizontal,")
   (tags "TO-220, Bipolar-BCE, Horizontal,")
   (fp_text reference Diode_TO-220_Horizontal (at 0 -21) (layer F.SilkS)
@@ -32,9 +32,9 @@
   (pad 3 thru_hole circle (at 0 -16.764 90) (size 3.79984 3.79984) (drill 3.79984) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole oval (at 2.54 0 90) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
   (pad 1 thru_hole rect (at -2.54 0 90) (size 2.49936 1.50114) (drill 1.00076) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Diodes_ThroughHole.3dshapes/Diode_TO-220_Horizontal.wrl
-    (at (xyz 0 0 0))
-    (scale (xyz 0.3937 0.3937 0.3937))
+  (model ${KISYS3DMOD}/Package_TO_SOT_THT.3dshapes/TO-220-2_Horizontal_TabDown.wrl
+    (offset (xyz -2.5 0 0))
+    (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
 )

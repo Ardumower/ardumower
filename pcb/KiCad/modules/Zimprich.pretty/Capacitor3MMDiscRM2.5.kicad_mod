@@ -1,4 +1,4 @@
-(module Capacitor3MMDiscRM2.5 (layer F.Cu) (tedit 54B78A48)
+(module Capacitor3MMDiscRM2.5 (layer F.Cu) (tedit 5B96814B)
   (descr Capacitor3MMDiscRM2.5)
   (tags C)
   (fp_text reference C6 (at 0 -3.81) (layer F.SilkS)
@@ -16,6 +16,11 @@
   (pad 2 thru_hole circle (at 1.27 0) (size 1.50114 1.50114) (drill 0.8001) (layers *.Cu *.Mask F.SilkS))
   (model ${KISYS3DMOD}/Capacitors_ThroughHole.3dshapes/C_Disc_D3_P2.5.wrl
     (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Capacitor_THT.3dshapes/C_Disc_D3.0mm_W2.0mm_P2.50mm.wrl
+    (offset (xyz -1.254 0 0.5))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )

@@ -1,4 +1,4 @@
-(module LM2940CS-5.0 (layer F.Cu) (tedit 57DDC25B)
+(module LM2940CS-5.0 (layer F.Cu) (tedit 5B895FB7)
   (solder_mask_margin 0.1)
   (attr smd)
   (fp_text reference U6 (at 0 -6 180) (layer F.SilkS)
@@ -37,9 +37,9 @@
     (solder_mask_margin 0.2))
   (pad 1 smd rect (at -2.54 8.2804) (size 1.016 2.6924) (layers F.Cu F.Paste F.Mask)
     (solder_mask_margin 0.2))
-  (model Transistors_SMD.3dshapes/sot404.wrl
-    (at (xyz 0 -0.1 0))
+  (model ${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/TO-263-3_TabPin4.wrl
+    (offset (xyz 0 -2 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 -90))
   )
 )

@@ -1,4 +1,4 @@
-(module arduino_nano (layer F.Cu) (tedit 586D5946)
+(module arduino_nano (layer F.Cu) (tedit 5B967ABD)
   (descr "30 pins DIL package, elliptical pads, width 600mil (arduino mini)")
   (tags "DIL arduino mini")
   (fp_text reference U4 (at 0 1.27 -180) (layer F.SilkS)
@@ -50,24 +50,19 @@
   (pad REF thru_hole oval (at -13.97 7.62) (size 1.8 2.5) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
   (pad 3V3 thru_hole oval (at -16.51 7.62) (size 1.8 2.5) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
   (pad D13 thru_hole rect (at -19.05 7.62) (size 1.5748 2.286) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
-  (model arduino_nano.wrl
-    (at (xyz -0.978 -0.385 0))
-    (scale (xyz 0.3937 0.3937 0.3937))
-    (rotate (xyz 0 0 0))
-  )
   (model ${KISYS3DMOD}/Zimprich.3dshapes/arduino_nano.wrl
-    (at (xyz -0.978 -0.385 0))
+    (offset (xyz -24.84119962692261 -9.778999853134156 0))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x15.wrl
-    (at (xyz -0.04724409448818898 -0.3031496062992126 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x15_P2.54mm_Vertical.wrl
+    (offset (xyz 16.5 7.5 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x15.wrl
-    (at (xyz -0.04724409448818898 0.3031496062992126 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x15_P2.54mm_Vertical.wrl
+    (offset (xyz 16.5 -7.5 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 90))
   )
 )

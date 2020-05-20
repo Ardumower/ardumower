@@ -1,4 +1,4 @@
-(module I2C_5-3V (layer F.Cu) (tedit 54CF85C1)
+(module I2C_5-3V (layer F.Cu) (tedit 5B968915)
   (fp_text reference I2C_5-3V (at 0 1.27) (layer F.SilkS)
     (effects (font (size 0.5 0.5) (thickness 0.125)))
   )
@@ -17,14 +17,14 @@
   (pad 6 thru_hole circle (at 6.35 -1.27) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 7 thru_hole circle (at 6.35 1.27) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 8 thru_hole circle (at 6.35 3.81) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x04.wrl
-    (at (xyz -0.25 0 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x04_P2.54mm_Vertical.wrl
+    (offset (xyz -6.35 3.754 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
+    (rotate (xyz 0 0 0))
   )
-  (model ${KISYS3DMOD}/Socket_Strips.3dshapes/Socket_Strip_Straight_1x04.wrl
-    (at (xyz 0.25 0 0))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x04_P2.54mm_Vertical.wrl
+    (offset (xyz 6.35 4 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
+    (rotate (xyz 0 0 0))
   )
 )

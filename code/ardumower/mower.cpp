@@ -23,6 +23,15 @@ Mower robot;
 // ----------------------------------------------------------------------
 
 
+// ----------------------------------------------------------------------
+// Ardumower factory settings - the values below define the factory settings of your Ardumower
+//
+// IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
+//
+// After changing any value below, you have to set your robot 
+// to 'factory settings' via the serial console menu or ArduRemote/pfodApp!
+// ----------------------------------------------------------------------
+
 Mower::Mower(){
   #if defined (ROBOT_ARDUMOWER)
     name = "Ardumower"; //Set the Name of BT
@@ -124,7 +133,7 @@ Mower::Mower(){
   lawnSensorUse     = 0;                   // use capacitive lawn Sensor
   
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse                     = 0;          // use IMU?
+  imuUse                     = 1;          // use IMU?
   imuCorrectDir              = 0;          // correct direction by compass?
   imuDirPID.Kp               = 5.0;        // direction PID controller
   imuDirPID.Ki               = 1.0;
@@ -145,7 +154,7 @@ Mower::Mower(){
 		batFull                    = 29.4;      // battery reference Voltage (fully charged) PLEASE ADJUST IF USING A DIFFERENT BATTERY VOLTAGE! FOR a 12V SYSTEM TO 14.4V		
 		batFullCurrent             = 0.1;       // current flowing when battery is fully charged	(amp), (-99999=disabled)	
 	#else  // ROBOT_MINI
-		batMonitor                 = 1;          // monitor battery and charge voltage?
+		batMonitor                 = 0;          // monitor battery and charge voltage?
 		batSwitchOffIfBelow        = 5.0;       // switch off battery if below voltage (Volt)
 		batGoHomeIfBelow           = 5.5;       // drive home voltage (Volt)  	
 		startChargingIfBelow       = 8.0;      // start charging if battery Voltage is below (99999=disabled)
@@ -195,7 +204,7 @@ Mower::Mower(){
 		#define DIVIDER_DIP_SWITCH  2             //  sets used PCB odometry divider (2=DIV/2, 4=DIV/4, 8=DIV/8, etc.) 
 		odometryTicksPerRevolution /= DIVIDER_DIP_SWITCH;        // encoder ticks per one full resolution 
   #endif
-  odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / (2*3.1415);    // computes encoder ticks per cm (do not change)
+  odometryTicksPerCm         = ((float)odometryTicksPerRevolution) / (((float)wheelDiameter)/10.0) / (3.1415);    // computes encoder ticks per cm (do not change)
   
   // ----- GPS -------------------------------------------
   gpsUse                     = 0;          // use GPS?
@@ -225,6 +234,29 @@ Mower::Mower(){
   statsMowTimeMinutesTotal   = 300;
   statsBatteryChargingCounterTotal  = 11;
   statsBatteryChargingCapacityTotal = 30000;
+  
+  // ------------robot mower communication standard---
+  rmcsUse					= false;   // if set robot mower communication standard (NMEA) is used.
+  RMCS_interval_state	  	= 1000;  // default update interval in ms
+  RMCS_interval_motor_current = 1000;
+  RMCS_interval_sonar 		= 1000;
+  RMCS_interval_bumper		= 1000;
+  RMCS_interval_odometry	= 1000;
+  RMCS_interval_perimeter	= 1000;
+  RMCS_interval_gps = 1000;  
+  RMCS_interval_drop = 1000;
+  RMCS_interval_imu = 1000;
+ 
+  rmcsTriggerMotor = true; // default activated trigger events
+  rmcsTriggerBumper  = true;
+  rmcsTriggerSonar  = true;
+  rmcsTriggerOdometry = true;
+  rmcsTriggerGPS = true;
+  rmcsTriggerPerimeter = true;
+  rmcsTriggerDrop = true;
+  rmcsTriggerIMU = true;
+  rmcsTriggerFreeWheel = true;
+  rmcsTriggerRain = true;
   // -----------configuration end-------------------------------------
 }
 

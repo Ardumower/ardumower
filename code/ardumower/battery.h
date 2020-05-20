@@ -21,6 +21,11 @@ void Robot::checkBattery(){
       loadSaveRobotStats(false);    // saves robot stats
       idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
       Console.println(F("BATTERY switching OFF"));
+
+      if (rmcsUse)  // tell Raspberry PI to shutdown
+      {
+        rmcsSendOff(Console);
+      }
       setActuator(ACT_BATTERY_SW, 0);  // switch off battery                     
     }
     else if ((batVoltage < batGoHomeIfBelow) && (stateCurr == STATE_FORWARD) 
@@ -44,6 +49,11 @@ void Robot::checkBattery(){
 					loadSaveRobotStats(false);    // saves robot stats
 					idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
 					Console.println(F("BATTERY switching OFF"));
+
+                    if(rmcsUse)  // Tell Raspberry PI to shutdown
+                    {
+                       rmcsSendOff(Console);
+                    }
 					setActuator(ACT_BATTERY_SW, 0);  // switch off battery               
 				}
 			}

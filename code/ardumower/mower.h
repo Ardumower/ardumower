@@ -118,6 +118,7 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 
 // ------- baudrates---------------------------------
 #define CONSOLE_BAUDRATE    19200       // baudrate used for console
+//#define CONSOLE_BAUDRATE    115200      // baudrate if using Ardumower Control Center and DUE (RMCS messages)
 #define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module (Ardumower default: 19200)
 #define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
 #define BLUETOOTH_PIN       1234

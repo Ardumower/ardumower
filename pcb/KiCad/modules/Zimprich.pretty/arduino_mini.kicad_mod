@@ -1,4 +1,4 @@
-(module arduino_mini (layer F.Cu) (tedit 507C2E55)
+(module arduino_mini (layer F.Cu) (tedit 5B9679D8)
   (descr "30 pins DIL package, elliptical pads, width 600mil (arduino mini)")
   (tags "DIL arduino mini")
   (fp_text reference U*** (at -13.97 -3.81) (layer F.SilkS)
@@ -44,4 +44,14 @@
   (pad 28 thru_hole oval (at -13.97 -7.62) (size 1.5748 2.286) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
   (pad 29 thru_hole oval (at -16.51 -7.62) (size 1.5748 2.286) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
   (pad 30 thru_hole oval (at -19.05 -7.62) (size 1.5748 2.286) (drill 0.8128) (layers *.Cu *.Mask F.SilkS))
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x15_P2.54mm_Vertical.wrl
+    (offset (xyz 16.5 7.5 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x15_P2.54mm_Vertical.wrl
+    (offset (xyz 16.5 -7.5 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
 )

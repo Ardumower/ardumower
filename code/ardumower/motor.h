@@ -27,22 +27,18 @@ void Robot::calcOdometry(){
   double left_cm = ((double)ticksLeft) / ((double)odometryTicksPerCm);
   double right_cm = ((double)ticksRight) / ((double)odometryTicksPerCm);  
   double avg_cm  = (left_cm + right_cm) / 2.0;
-  double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);
-  odometryTheta += wheel_theta; 
+  double wheel_theta = (left_cm - right_cm) / ((double)odometryWheelBaseCm);    
+  odometryTheta = scalePI(odometryTheta - wheel_theta); 
   
 	// calculate RPM 
   motorLeftRpmCurr  = double ((( ((double)ticksLeft) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0); 
   motorRightRpmCurr = double ((( ((double)ticksRight) / ((double)odometryTicksPerRevolution)) / ((double)(millis() - lastMotorRpmTime))) * 60000.0);                      
   lastMotorRpmTime = millis();
-               
-  if (imuUse){
-    odometryX += avg_cm * sin(imu.ypr.yaw); 
-    odometryY += avg_cm * cos(imu.ypr.yaw); 
-  } else {
-    // FIXME: theta should be old theta, not new theta?
-    odometryX += avg_cm * sin(odometryTheta); 
-    odometryY += avg_cm * cos(odometryTheta); 
- }
+  
+  // ROS coordinate system (X+ forward, Y+ left, Z+ up)  
+  // FIXME: theta should be old theta, not new theta?
+  odometryY += avg_cm * sin(odometryTheta); 
+  odometryX += avg_cm * cos(odometryTheta); 
 }
 
 

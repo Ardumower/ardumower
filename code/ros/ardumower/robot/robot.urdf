@@ -1,0 +1,124 @@
+<robot name="ardumower_robot">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.5 0.32 0.25"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.1 0 0.2"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="imu_link">
+      <visual>
+            <geometry>
+                <box size=".03 .015 .01" />
+            </geometry>
+            <origin xyz="0 0 0.3" rpy="0 0 0" />
+            <material name="orange" />
+      </visual>
+  </link>
+
+  <joint name="base_to_imu" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0.105 0 0.17" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="lwheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.008" radius="0.13"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="base_to_lwheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="lwheel"/>
+    <origin xyz="0 0.22 0.13" rpy="1.5708 0 0"/>
+  </joint>
+  
+  <link name="rwheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.008" radius="0.13"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="base_to_rwheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="rwheel"/>
+    <origin xyz="0 -0.22 0.13" rpy="-1.5708 0 0"/>
+  </joint>
+  
+  <link name="fwheel_attach">
+    <visual>
+      <geometry>
+        <cylinder length="0.060" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.4 0 0.08"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="base_to_fattach" type="fixed">
+    <parent link="base_link"/>
+    <child link="fwheel_attach"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <link name="fwheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.005" radius="0.020"/>
+      </geometry>
+      <origin rpy="1.578 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="base_to_fwheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="fwheel"/>
+    <origin xyz="0.5 0 0.02" rpy="0 0 0"/>
+  </joint>
+  
+  <link name="scanner">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.015"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="base_to_scanner" type="fixed">
+    <parent link="base_link"/>
+    <child link="scanner"/>
+    <origin xyz="0.26 0 0.46" rpy="0 0 1.57"/>
+  </joint>
+  
+</robot>
+
+

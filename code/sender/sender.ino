@@ -66,7 +66,8 @@
 // sender detects robot via a charging current through the charging pins
 #define USE_CHG_CURRENT       1     // use charging current sensor for robot detection? (set to '0' if not connected!)
 #define pinChargeCurrent     A2     // ACS712-05 current sensor OUT
-#define CHG_CURRENT_MIN   0.008      // minimum Ampere for charging detection
+#define CHG_CURRENT_MIN   0.3
+// minimum Ampere for charging detection
 #define ROBOT_OUT_OF_STATION_TIMEOUT_MINS 360  // timeout for perimeter switch-off if robot not in station (minutes)
 
 // ---- sender status LED ----
