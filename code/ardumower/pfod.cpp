@@ -1226,6 +1226,8 @@ void RemoteControl::run(){
       serialPort->print(",");
       serialPort->print(robot->imu.gyro.z/PI*180);
       serialPort->print(",");
+      serialPort->print(robot->imu.imuResetSuccessCounter);
+      serialPort->print(",");
       serialPort->print(robot->imu.acc.x);
       serialPort->print(",");
       serialPort->print(robot->imu.acc.y);
@@ -1470,7 +1472,7 @@ bool RemoteControl::readSerial(){
           serialPort->println(F("{=Log sensors}"));
           serialPort->print(F("time,leftsen,rightsen,mowsen,sonleft,soncenter,sonright,"));
           serialPort->print(F("perinside,permag,odoleft,odoright,yaw,pitch,roll,gyrox,gyroy,"));
-          serialPort->print(F("gyroz,accx,accy,accz,comx,comy,comz,hdop,sats,gspeed,gcourse,"));
+          serialPort->print(F("gyroz,accx,accy,accz,comx,comy,comz,rst,hdop,sats,gspeed,gcourse,"));
           serialPort->println(F("galt,lat,lon"));
           pfodState = PFOD_LOG_SENSORS;
         }  

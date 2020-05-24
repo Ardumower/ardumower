@@ -214,7 +214,7 @@ void IMU::calibGyro(){
     ofs.x = ofs.y = ofs.z = 0;      
     for (int i=0; i < 50; i++){
       delay(10);
-      readL3G4200D(true);      
+      readL3G4200D();      
       zmin = min(zmin, gyro.z);
       zmax = max(zmax, gyro.z);
       ofs.x += ((float)gyro.x)/ 50.0;
@@ -248,11 +248,11 @@ void  IMU::initADXL345B(){
   I2CwriteTo(ADXL345B, 0x2D, 8);         
 }
 
-void IMU::readADXL345B(){  
+bool IMU::readADXL345B(){  
   uint8_t buf[6];
   if (I2CreadFrom(ADXL345B, 0x32, 6, (uint8_t*)buf) != 6){
-    errorCounter++;
-    return;
+    Console.println(F("Failed to readADXL345B"));
+    return false;
   }
   // Convert the accelerometer value to G's. 
   // With 10 bits measuring over a +/-4g range we can find how to convert by using the equation:
@@ -286,6 +286,7 @@ void IMU::readADXL345B(){
   //Ya /= amag;
   //Za /= amag;  
   accelCounter++;
+  return true;
 }
 
 // L3G4200D gyro sensor driver
@@ -322,18 +323,19 @@ boolean IMU::initL3G4200D(){
   return true;
 }
 
-void IMU::readL3G4200D(boolean useTa){  
-  now = micros();
-  float Ta = 1;
-  //if (useTa) {
-    Ta = ((now - lastGyroTime) / 1000000.0);    
-    //float Ta = ((float)(millis() - lastGyroTime)) / 1000.0; 			    
-    lastGyroTime = now;
-    if (Ta > 0.5) Ta = 0;   // should only happen for the very first call
-    //lastGyroTime = millis();    
-  //}  
+boolean IMU::readL3G4200D(){  
+  now = millis();
   uint8_t fifoSrcReg = 0;  
+
   I2CreadFrom(L3G4200D, 0x2F, sizeof(fifoSrcReg), &fifoSrcReg);         // read the FIFO_SRC_REG
+
+  unsigned long duration = millis() - now;
+
+  if (duration > 10) {
+    // That's insane, shouldn't happen
+    return false;
+  }
+
    // FIFO_SRC_REG
    // 7: Watermark status. (0: FIFO filling is lower than WTM level; 1: FIFO filling is equal or higher than WTM level)
    // 6: Overrun bit status. (0: FIFO is not completely filled; 1:FIFO is completely filled)
@@ -367,6 +369,7 @@ void IMU::readL3G4200D(boolean useTa){
     gyro.z *= 0.07 * PI/180.0;      
   }
   gyroCounter++;
+  return true;
 }
 
 
@@ -378,11 +381,11 @@ void  IMU::initHMC5883L(){
   I2CwriteTo(HMC5883L, 0x02, 00);    // mode         
 }
 
-void IMU::readHMC5883L(){    
+bool IMU::readHMC5883L(){    
   uint8_t buf[6];  
   if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
-    errorCounter++;
-    return;
+    Console.println(F("Failed to readHMC5883L"));
+    return false;
   }
   // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
   float x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
@@ -404,6 +407,7 @@ void IMU::readHMC5883L(){
     com.y = y;
     com.z = z;
   }  
+  return true;
 }
 
 float IMU::sermin(float oldvalue, float newvalue){
@@ -656,7 +660,8 @@ float scalePIangles(float setAngle, float currAngle){
 }
 
 void IMU::update(){
-  read();  
+  if (!read())
+    ;  
   now = millis();
   int looptime = (now - lastAHRSTime);
   lastAHRSTime = now;
@@ -700,12 +705,17 @@ void IMU::update(){
 
 boolean IMU::init(){    
   loadCalib();
-  printCalib();    
-  if (!initL3G4200D()) return false;
-  initADXL345B();
-  initHMC5883L();    
+  printCalib();
+  if (!hwInit()) return false;
   now = 0;  
   hardwareInitialized = true;
+  return true;
+}
+
+bool IMU::hwInit(){
+  if (!initL3G4200D()) return false;
+  initADXL345B();
+  initHMC5883L();
   return true;
 }
 
@@ -721,16 +731,33 @@ int IMU::getErrorCounter(){
   return res;
 }
 
-void IMU::read(){  
+bool IMU::read(){  
   if (!hardwareInitialized) {
     errorCounter++;
-    return;
+    return false;
   }
   callCounter++;    
-  readL3G4200D(true);
-  readADXL345B();
-  readHMC5883L();  
-  //calcComCal();
+  if (readL3G4200D()
+      && readADXL345B()
+      && readHMC5883L()) {
+    if (resetTryCount > 0) {
+      // reset was successful
+      imuResetSuccessCounter++;
+      resetTryCount = 0;
+    }
+    errorCounter = 0;
+    return true;
+  } else {
+    if (resetTryCount < 3) {
+      // Try reseting without erroring out
+      I2Creset();
+      hwInit();
+      resetTryCount++;
+      return false;
+    }
+    errorCounter++;
+    return false;
+  }
 }
 
 
