@@ -661,7 +661,7 @@ float scalePIangles(float setAngle, float currAngle){
 
 void IMU::update(){
   if (!read())
-    ;  
+    return;  
   now = millis();
   int looptime = (now - lastAHRSTime);
   lastAHRSTime = now;
