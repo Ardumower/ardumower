@@ -57,6 +57,8 @@ IMU::IMU(){
   state = IMU_RUN;
   callCounter = 0;  
   errorCounter = 0;
+  resetTryCount = 0;
+  imuResetSuccessCounter = 0;
   
   gyroOfs.x=gyroOfs.y=gyroOfs.z=0;  
   gyroNoise = 0;      
