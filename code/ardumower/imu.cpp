@@ -751,7 +751,7 @@ bool IMU::read(){
     if (resetTryCount < 3) {
       // Try reseting without erroring out
       I2Creset();
-      hwInit();
+      Wire.begin();
       resetTryCount++;
       return false;
     }
