@@ -1238,6 +1238,8 @@ void RemoteControl::run(){
       serialPort->print(",");
       serialPort->print(robot->imu.com.z);
       serialPort->print(",");
+      serialPort->print(robot->imu.imuResetSuccessCounter);
+      serialPort->print(",");
       float lat, lon;
       unsigned long age;
       robot->gps.f_get_position(&lat, &lon, &age);
@@ -1470,7 +1472,7 @@ bool RemoteControl::readSerial(){
           serialPort->println(F("{=Log sensors}"));
           serialPort->print(F("time,leftsen,rightsen,mowsen,sonleft,soncenter,sonright,"));
           serialPort->print(F("perinside,permag,odoleft,odoright,yaw,pitch,roll,gyrox,gyroy,"));
-          serialPort->print(F("gyroz,accx,accy,accz,comx,comy,comz,hdop,sats,gspeed,gcourse,"));
+          serialPort->print(F("gyroz,accx,accy,accz,comx,comy,comz,rst,hdop,sats,gspeed,gcourse,"));
           serialPort->println(F("galt,lat,lon"));
           pfodState = PFOD_LOG_SENSORS;
         }  
