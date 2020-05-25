@@ -80,6 +80,7 @@ public:
   void deleteCalib();  
   int callCounter;
   int errorCounter;
+  int imuResetSuccessCounter;
   boolean hardwareInitialized;  
   byte state;
   unsigned long lastAHRSTime;
@@ -129,7 +130,7 @@ public:
   float distance180(float x, float w);
   float fusionPI(float w, float a, float b);    
 private:  
-  void read();
+  bool read();
   void loadSaveCalib(boolean readflag);  
   void calibGyro();
   void loadCalib();  
@@ -143,10 +144,12 @@ private:
   void initADXL345B();
   boolean initL3G4200D();
   void initHMC5883L();
-  void readL3G4200D(boolean useTa);
-  void readADXL345B();
-  void readHMC5883L();
-  boolean foundNewMinMax;
+  bool hwInit();
+  bool readL3G4200D();
+  bool readADXL345B();
+  bool readHMC5883L();
+  int resetTryCount;
+  boolean foundNewMinMax; 
 };
 
 
