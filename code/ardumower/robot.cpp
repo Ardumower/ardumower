@@ -1248,7 +1248,7 @@ void Robot::setNextState(byte stateNew, byte dir){
         imuDriveHeading = scalePI(imuDriveHeading - PI/2.0); // toggle heading 180 degree (IMU)
         imuRollHeading = scalePI(imuDriveHeading - PI/2.0);        
       } else {
-        imuDriveHeading = scalePI(imuDriveHeading - PI/2.0); // toggle heading 180 degree (IMU)
+        imuDriveHeading = scalePI(imuDriveHeading + PI/2.0); // toggle heading 180 degree (IMU)
         imuRollHeading = scalePI(imuDriveHeading + PI/2.0);
       }      
       stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
