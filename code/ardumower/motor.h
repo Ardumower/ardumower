@@ -362,11 +362,7 @@ void Robot::motorControl(){
     if (motorRightSpeedRpmSet < 0) rightSpeed = max(-motorSpeedMaxPwm, min(0, rightSpeed)); 		   
 
     if ( (abs(motorLeftPID.x) < 2) && (abs(motorLeftPID.w) < 0.1) ) leftSpeed = 0; // ensures PWM is really zero 
-    if ( (abs(motorRightPID.x)  < 2) && (abs(motorRightPID.w) < 0.1) ) rightSpeed = 0; // ensures PWM is really zero  
-
-    if (millis() < stateStartTime + motorZeroSettleTime) {
-      if (mowPatternCurr != MOW_LANES) imuDriveHeading = imu.ypr.yaw; // set drive heading
-    }   
+    if ( (abs(motorRightPID.x)  < 2) && (abs(motorRightPID.w) < 0.1) ) rightSpeed = 0; // ensures PWM is really zero     
 
     /*if (millis() >= nextMotorControlOutputTime){
       nextMotorControlOutputTime = millis() + 3000; 
