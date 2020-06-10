@@ -656,8 +656,8 @@ float Kalman(float newAngle, float newRate,int looptime, float x_angle)
 
 // scale setangle, so that both PI angles have the same sign    
 float scalePIangles(float setAngle, float currAngle){
-  if ((setAngle >= PI/2.0) && (currAngle <= -PI/2.0)) return (setAngle-2*PI);
-    else if ((setAngle <= -PI/2.0) && (currAngle >= PI/2.0)) return (setAngle+2*PI);
+  if ((setAngle >= PI/2.0) && (currAngle <= -PI/2.0)) return (setAngle-2.0*PI);
+    else if ((setAngle <= -PI/2.0) && (currAngle >= PI/2.0)) return (setAngle+2.0*PI);
     else return setAngle;
 }
 
