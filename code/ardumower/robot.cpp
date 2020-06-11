@@ -1240,10 +1240,10 @@ void Robot::setNextState(byte stateNew, byte dir){
   }  
 	else if (stateNew == STATE_ROLL) {                  
       if (rollDir == LEFT){
-        imuDriveHeading = scalePI(imuDriveHeading - PI/2.0); // toggle heading 180 degree (IMU)
+        imuDriveHeading = scalePI(imuDriveHeading - PI/2); // toggle heading 180 degree (IMU)
         imuRollHeading = scalePI(imuDriveHeading);        
       } else {
-        imuDriveHeading = scalePI(imuDriveHeading + PI/2.0); // toggle heading 180 degree (IMU)
+        imuDriveHeading = scalePI(imuDriveHeading + PI/2); // toggle heading 180 degree (IMU)
         imuRollHeading = scalePI(imuDriveHeading);
       }      
       stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
@@ -1473,7 +1473,7 @@ void Robot::loop()  {
       checkLawn();
       // making a roll (left/right)            
       if (mowPatternCurr == MOW_LANES){
-        if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36.0) setNextState(STATE_FORWARD,0);				        
+        if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
       } else {
         if (millis() >= stateEndTime) {
           setNextState(STATE_FORWARD,0);				          

@@ -135,9 +135,9 @@ float IMU::distance180(float x, float w)
 float IMU::fusionPI(float w, float a, float b)
 { 
   float c;
-  if ((b >= PI/2.0) && (a <= -PI/2.0)){
+  if ((b >= PI/2) && (a <= -PI/2)){
     c = w * a + (1.0-w) * (b-2*PI);
-  } else if ((b <= -PI/2.0) && (a >= PI/2.0)){
+  } else if ((b <= -PI/2) && (a >= PI/2)){
     c = w * (a-2*PI) + (1.0-w) * b;
   } else c = w * a + (1.0-w) * b;
   return scalePI(c);
@@ -366,9 +366,9 @@ boolean IMU::readL3G4200D(){
       }
   }
   if (useGyroCalibration){
-    gyro.x *= 0.07 * PI/180.0;  // convert to radiant per second
-    gyro.y *= 0.07 * PI/180.0; 
-    gyro.z *= 0.07 * PI/180.0;      
+    gyro.x *= 0.07 * PI/180;  // convert to radiant per second
+    gyro.y *= 0.07 * PI/180; 
+    gyro.z *= 0.07 * PI/180;      
   }
   gyroCounter++;
   return true;
@@ -656,8 +656,8 @@ float Kalman(float newAngle, float newRate,int looptime, float x_angle)
 
 // scale setangle, so that both PI angles have the same sign    
 float scalePIangles(float setAngle, float currAngle){
-  if ((setAngle >= PI/2.0) && (currAngle <= -PI/2.0)) return (setAngle-2.0*PI);
-    else if ((setAngle <= -PI/2.0) && (currAngle >= PI/2.0)) return (setAngle+2.0*PI);
+  if ((setAngle >= PI/2) && (currAngle <= -PI/2)) return (setAngle-2*PI);
+    else if ((setAngle <= -PI/2) && (currAngle >= PI/2)) return (setAngle+2*PI);
     else return setAngle;
 }
 
