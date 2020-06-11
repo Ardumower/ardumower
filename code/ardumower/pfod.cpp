@@ -1112,11 +1112,11 @@ void RemoteControl::processCompassMenu(String pfodCmd){
     robot->setNextState(STATE_ROLL_WAIT, 0);            
     sendCompassMenu(true);
   } else if (pfodCmd == "cw"){
-    robot->imuRollHeading = -PI/2;
+    robot->imuRollHeading = -PI/2.0;
     robot->setNextState(STATE_ROLL_WAIT, 0);            
     sendCompassMenu(true);
   } else if (pfodCmd == "ce"){
-    robot->imuRollHeading = PI/2;
+    robot->imuRollHeading = PI/2.0;
     robot->setNextState(STATE_ROLL_WAIT, 0);            
     sendCompassMenu(true);
   }

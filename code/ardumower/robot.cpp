@@ -1473,7 +1473,7 @@ void Robot::loop()  {
       checkLawn();
       // making a roll (left/right)            
       if (mowPatternCurr == MOW_LANES){
-        if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36) setNextState(STATE_FORWARD,0);				        
+        if (abs(distancePI(imu.ypr.yaw, imuRollHeading)) < PI/36.0) setNextState(STATE_FORWARD,0);				        
       } else {
         if (millis() >= stateEndTime) {
           setNextState(STATE_FORWARD,0);				          
@@ -1482,7 +1482,6 @@ void Robot::loop()  {
       break;
     case STATE_ROLL_WAIT:
       // making a roll (left/right)            
-      //if (abs(distancePI(imuYaw, imuRollHeading)) < PI/36) setNextState(STATE_OFF,0);				
       break;
     case STATE_CIRCLE:
       // driving circles

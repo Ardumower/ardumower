@@ -492,11 +492,11 @@ void Robot::readSerial() {
          break;
        case '+':
          setNextState(STATE_ROLL_WAIT, 0); // press '+' to rotate 90 degrees (IMU)
-         imuRollHeading = scalePI(imuRollHeading + PI/2);
+         imuRollHeading = scalePI(imuRollHeading + PI/2.0);
          break;
        case '-':
          setNextState(STATE_ROLL_WAIT, 0); // press '+' to rotate 90 degrees (IMU)
-         imuRollHeading = scalePI(imuRollHeading - PI/2);
+         imuRollHeading = scalePI(imuRollHeading - PI/2.0);
          break;
        case 'i':
          // press 'i' to toggle imuUse
