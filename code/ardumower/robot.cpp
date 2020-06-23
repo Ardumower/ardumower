@@ -881,9 +881,17 @@ void Robot::checkBumpersPerimeter(){
 void Robot::checkPerimeterBoundary(){
   if (!perimeterUse) return;
   if (millis() >= nextTimeRotationChange){
-      nextTimeRotationChange = millis() + 60000;
-      rotateLeft = !rotateLeft;
-    }
+      nextTimeRotationChange = millis() + 30000;
+      // We choose random direction if MOW_RANDOM
+      if (mowPatternCurr == MOW_RANDOM) {
+        rotateLeft = random(0, 2) == 0;
+      } else
+      {
+        // Otherwise, just switch the direction
+        // Useful for MOW_LANES
+        rotateLeft = !rotateLeft;  
+      }
+  }
 
   if (mowPatternCurr == MOW_BIDIR){
     if ((millis() < stateStartTime + 3000)) return;    
@@ -899,7 +907,6 @@ void Robot::checkPerimeterBoundary(){
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
-          //if ((rand() % 2) == 0){  
           if(rotateLeft){  
           setNextState(STATE_PERI_OUT_REV, LEFT);
           } else {
