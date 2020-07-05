@@ -1,13 +1,13 @@
-(kicad_sch (version 20200608) (host eeschema "(5.99.0-1946-g60915fbc7)")
+(kicad_sch (version 20200618) (host eeschema "(5.99.0-2139-g9e669db5b)")
 
-  (page 2 33)
+  (page 1 33)
 
   (paper "A4")
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2017-04-13")
-    (rev "1.3")
+    (date "2020-07-06")
+    (rev "1.4")
     (company "ML AG JL UZ")
   )
 
@@ -234,17 +234,17 @@
     )
   )
 
-  (junction (at 89.154 116.205))
-  (junction (at 90.17 113.665))
-  (junction (at 91.186 106.045))
-  (junction (at 138.43 103.505))
-  (junction (at 141.351 108.585))
+  (junction (at 89.154 116.205) (diameter 0) (color 0 0 0 0))
+  (junction (at 90.17 113.665) (diameter 0) (color 0 0 0 0))
+  (junction (at 91.186 106.045) (diameter 0) (color 0 0 0 0))
+  (junction (at 138.43 103.505) (diameter 0) (color 0 0 0 0))
+  (junction (at 141.351 108.585) (diameter 0) (color 0 0 0 0))
 
   (no_connect (at 92.964 79.375))
-  (no_connect (at 92.964 146.685))
   (no_connect (at 92.964 53.975))
-  (no_connect (at 92.964 51.435))
   (no_connect (at 92.964 121.285))
+  (no_connect (at 92.964 146.685))
+  (no_connect (at 92.964 51.435))
   (no_connect (at 92.964 118.745))
 
   (wire (pts (xy 63.373 126.365) (xy 61.595 126.365))

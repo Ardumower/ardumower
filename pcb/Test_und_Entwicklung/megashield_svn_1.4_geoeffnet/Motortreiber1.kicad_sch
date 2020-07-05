@@ -1,15 +1,14 @@
-(kicad_sch (version 20200608) (host eeschema "(5.99.0-1946-g60915fbc7)")
+(kicad_sch (version 20200618) (host eeschema "(5.99.0-2139-g9e669db5b)")
 
-  (page 6 33)
+  (page 1 33)
 
   (paper "A4")
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2017-04-13")
-    (rev "1.3")
+    (date "2020-07-06")
+    (rev "1.4")
     (company "ML AG JL UZ")
-    (comment 1 "Motordriverschutz von JürgenL")
   )
 
   (lib_symbols
@@ -136,11 +135,11 @@
     )
   )
 
-  (junction (at 84.455 93.98))
-  (junction (at 84.455 108.966))
-  (junction (at 110.998 93.98))
-  (junction (at 110.998 108.966))
-  (junction (at 117.856 93.98))
+  (junction (at 84.455 93.98) (diameter 0) (color 0 0 0 0))
+  (junction (at 84.455 108.966) (diameter 0) (color 0 0 0 0))
+  (junction (at 110.998 93.98) (diameter 0) (color 0 0 0 0))
+  (junction (at 110.998 108.966) (diameter 0) (color 0 0 0 0))
+  (junction (at 117.856 93.98) (diameter 0) (color 0 0 0 0))
 
   (wire (pts (xy 80.772 108.966) (xy 84.455 108.966))
     (stroke (width 0) (type solid) (color 0 0 0 0))

@@ -1,4 +1,4 @@
-(kicad_sch (version 20200608) (host eeschema "(5.99.0-1946-g60915fbc7)")
+(kicad_sch (version 20200618) (host eeschema "(5.99.0-2139-g9e669db5b)")
 
   (page 1 33)
 
@@ -6,10 +6,9 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2017-04-13")
-    (rev "1.3")
+    (date "2020-07-06")
+    (rev "1.4")
     (company "ML AG JL UZ")
-    (comment 1 "Unterspannungsschutz von AlexanderG")
   )
 
   (lib_symbols
@@ -705,22 +704,22 @@
     )
   )
 
-  (junction (at 45.085 51.816))
-  (junction (at 59.182 51.816))
-  (junction (at 88.011 51.816))
-  (junction (at 96.774 51.816))
-  (junction (at 111.76 51.816))
-  (junction (at 111.76 70.866))
-  (junction (at 124.968 76.073))
-  (junction (at 144.272 70.866))
-  (junction (at 150.622 86.741))
-  (junction (at 186.69 46.99))
-  (junction (at 186.69 60.706))
-  (junction (at 212.725 60.706))
-  (junction (at 212.725 77.851))
-  (junction (at 228.854 64.77))
-  (junction (at 228.854 76.581))
-  (junction (at 228.854 94.107))
+  (junction (at 45.085 51.816) (diameter 0) (color 0 0 0 0))
+  (junction (at 59.182 51.816) (diameter 0) (color 0 0 0 0))
+  (junction (at 88.011 51.816) (diameter 0) (color 0 0 0 0))
+  (junction (at 96.774 51.816) (diameter 0) (color 0 0 0 0))
+  (junction (at 111.76 51.816) (diameter 0) (color 0 0 0 0))
+  (junction (at 111.76 70.866) (diameter 0) (color 0 0 0 0))
+  (junction (at 124.968 76.073) (diameter 0) (color 0 0 0 0))
+  (junction (at 144.272 70.866) (diameter 0) (color 0 0 0 0))
+  (junction (at 150.622 86.741) (diameter 0) (color 0 0 0 0))
+  (junction (at 186.69 46.99) (diameter 0) (color 0 0 0 0))
+  (junction (at 186.69 60.706) (diameter 0) (color 0 0 0 0))
+  (junction (at 212.725 60.706) (diameter 0) (color 0 0 0 0))
+  (junction (at 212.725 77.851) (diameter 0) (color 0 0 0 0))
+  (junction (at 228.854 64.77) (diameter 0) (color 0 0 0 0))
+  (junction (at 228.854 76.581) (diameter 0) (color 0 0 0 0))
+  (junction (at 228.854 94.107) (diameter 0) (color 0 0 0 0))
 
   (no_connect (at 170.942 55.626))
 
@@ -965,6 +964,10 @@
     (stroke (width 0) (type solid) (color 0 0 0 0))
   )
 
+  (text "Fehlerbehebung\n05.07.2020 uz \nAn den Arduino Mega die verdratung von pin 14 und 15 getauscht damit RX un TX vom GPS Anschluss stimmt\n_____________________________________________________________________________________________________________________"
+    (at -193.9544 65.278 0)
+    (effects (font (size 2.007 2.007)) (justify left bottom))
+  )
   (text "https://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP33/3/index.html?ACTION=3&LA=5700&ARTICLE=115975&GROUPID=5480&artnr=TS+2940+CP33\n\nhttps://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP50/3/index.html?ACTION=3&LA=5700&ARTICLE=115976&GROUPID=5480&artnr=TS+2940+CP50\n\nhttps://www.reichelt.de/ICs-TA-TL-/TD-62783-AFWG/3/index.html?ACTION=3&LA=446&ARTICLE=188954&GROUPID=5479&artnr=TD+62783+AFWG&SEARCH=TD62783"
     (at -150.114 -3.302 0)
     (effects (font (size 1.4986 1.4986)) (justify left bottom))
@@ -1031,7 +1034,7 @@
     (effects (font (size 0.9906 0.9906)) (justify right))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:+9V-RESCUE-ardumower_mega_shield_svn") (at 148.59 65.786 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:+9V-RESCUE-ardumower_mega_shield_svn") (at 148.59 65.786 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058ab809a")
     (property "Referenz" "#PWR012" (id 0) (at -1.27 132.969 0)
@@ -1046,7 +1049,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn") (at 224.663 64.77 90) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn") (at 224.663 64.77 90)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057de1118")
     (property "Referenz" "#PWR05" (id 0) (at 228.473 64.77 0)
@@ -1057,7 +1060,7 @@
     (property "Datenblatt" "" (id 3) (at 224.663 64.77 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 39.751 57.15 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 39.751 57.15 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057ddd4a8")
     (property "Referenz" "#PWR03" (id 0) (at 39.751 63.5 0)
@@ -1068,7 +1071,7 @@
     (property "Datenblatt" "" (id 3) (at 39.751 57.15 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 111.76 82.042 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 111.76 82.042 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057ddce0c")
     (property "Referenz" "#PWR02" (id 0) (at 111.76 88.392 0)
@@ -1079,7 +1082,7 @@
     (property "Datenblatt" "" (id 3) (at 111.76 82.042 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 120.269 88.265 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 120.269 88.265 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e3f322")
     (property "Referenz" "#PWR07" (id 0) (at 120.269 94.615 0)
@@ -1090,7 +1093,7 @@
     (property "Datenblatt" "" (id 3) (at 120.269 88.265 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 130.048 77.978 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 130.048 77.978 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e3dcac")
     (property "Referenz" "#PWR06" (id 0) (at 130.048 84.328 0)
@@ -1101,7 +1104,7 @@
     (property "Datenblatt" "" (id 3) (at 130.048 77.978 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 150.622 112.268 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 150.622 112.268 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057ddc12e")
     (property "Referenz" "#PWR01" (id 0) (at 150.622 118.618 0)
@@ -1112,7 +1115,7 @@
     (property "Datenblatt" "" (id 3) (at 150.622 112.268 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 184.15 48.006 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 184.15 48.006 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057de0396")
     (property "Referenz" "#PWR04" (id 0) (at 184.15 54.356 0)
@@ -1123,7 +1126,7 @@
     (property "Datenblatt" "" (id 3) (at 184.15 48.006 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 186.69 77.851 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 186.69 77.851 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e6ca33")
     (property "Referenz" "#PWR09" (id 0) (at 186.69 84.201 0)
@@ -1134,7 +1137,7 @@
     (property "Datenblatt" "" (id 3) (at 186.69 77.851 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 199.263 34.163 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 199.263 34.163 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058910850")
     (property "Referenz" "#PWR010" (id 0) (at 199.263 40.513 0)
@@ -1145,7 +1148,7 @@
     (property "Datenblatt" "" (id 3) (at 199.263 34.163 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 212.725 89.027 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 212.725 89.027 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e498ae")
     (property "Referenz" "#PWR08" (id 0) (at 212.725 95.377 0)
@@ -1156,7 +1159,7 @@
     (property "Datenblatt" "" (id 3) (at 212.725 89.027 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 236.347 80.645 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 236.347 80.645 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-0000589113fa")
     (property "Referenz" "#PWR011" (id 0) (at 236.347 86.995 0)
@@ -1167,7 +1170,7 @@
     (property "Datenblatt" "" (id 3) (at 236.347 80.645 0))
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 62.484 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 62.484 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058ab29d6")
     (property "Referenz" "R9" (id 0) (at 110.2614 61.3156 0)
@@ -1208,7 +1211,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 78.232 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 78.232 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058ab2083")
     (property "Referenz" "R10" (id 0) (at 110.2868 77.0636 0)
@@ -1249,7 +1252,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 133.858 99.568 90) (mirror x) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 133.858 99.568 90) (mirror x)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-0000587cc623")
     (property "Referenz" "R18" (id 0) (at 135.382 101.6 90)
@@ -1290,7 +1293,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 69.469 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 69.469 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e498b9")
     (property "Referenz" "R12" (id 0) (at 211.2264 68.3006 0)
@@ -1331,7 +1334,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 85.217 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 85.217 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e498c4")
     (property "Referenz" "R13" (id 0) (at 211.2518 84.0486 0)
@@ -1372,7 +1375,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 52.197 51.816 180) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 52.197 51.816 180)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000054a79b5a")
     (property "Referenz" "EF1" (id 0) (at 52.197 53.467 0)
@@ -1413,7 +1416,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 186.69 52.959 270) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 186.69 52.959 270)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000054a7ab0d")
     (property "Referenz" "EF2" (id 0) (at 189.484 51.181 90)
@@ -1454,7 +1457,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 201.803 39.116 270) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 201.803 39.116 270)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-00005891084a")
     (property "Referenz" "EF3" (id 0) (at 206.248 37.084 90)
@@ -1495,7 +1498,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CP_Small-RESCUE-ardumower_mega_shield_svn") (at 120.269 84.455 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CP_Small-RESCUE-ardumower_mega_shield_svn") (at 120.269 84.455 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e3e9d5")
     (property "Referenz" "C3" (id 0) (at 118.0338 83.2866 0)
@@ -1527,7 +1530,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:1N4148-RESCUE-ardumower_mega_shield_svn") (at 144.272 78.359 270) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:1N4148-RESCUE-ardumower_mega_shield_svn") (at 144.272 78.359 270)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058e41856")
     (property "Referenz" "D10" (id 0) (at 142.2654 77.1906 90)
@@ -1544,7 +1547,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 186.69 72.771 270) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 186.69 72.771 270)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e6ba60")
     (property "Referenz" "D1" (id 0) (at 192.913 71.247 90)
@@ -1576,7 +1579,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 194.056 18.542 180) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 194.056 18.542 180)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058915405")
     (property "Referenz" "D73" (id 0) (at 194.056 14.605 0)
@@ -1617,7 +1620,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 198.501 60.706 180) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 198.501 60.706 180)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057e4c8a2")
     (property "Referenz" "D9" (id 0) (at 198.501 56.769 0)
@@ -1649,7 +1652,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 34.163 53.086 180) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 34.163 53.086 180)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057def264")
     (property "Referenz" "P42" (id 0) (at 32.131 51.562 0)
@@ -1679,7 +1682,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 185.42 40.767 90) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 185.42 40.767 90)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057dee5a7")
     (property "Referenz" "P43" (id 0) (at 185.42 35.941 90))
@@ -1705,7 +1708,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 200.533 26.924 90) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 200.533 26.924 90)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-00005891085b")
     (property "Referenz" "P16" (id 0) (at 200.533 22.098 90))
@@ -1740,7 +1743,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 222.885 99.695 0) (mirror y) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 222.885 99.695 0) (mirror y)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-00005818e3a7")
     (property "Referenz" "P49" (id 0) (at 220.853 101.219 0)
@@ -1770,7 +1773,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 243.586 77.851 0) (mirror x) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 243.586 77.851 0) (mirror x)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058911405")
     (property "Referenz" "P17" (id 0) (at 247.015 76.327 0))
@@ -1805,7 +1808,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:BC849-RESCUE-ardumower_mega_shield_svn") (at 148.082 99.568 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:BC849-RESCUE-ardumower_mega_shield_svn") (at 148.082 99.568 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000057f1c5ee")
     (property "Referenz" "Q1" (id 0) (at 152.9334 97.2566 0)
@@ -1837,7 +1840,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:ACS712-RESCUE-ardumower_mega_shield_svn") (at 127.508 64.008 90) (mirror x) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:ACS712-RESCUE-ardumower_mega_shield_svn") (at 127.508 64.008 90) (mirror x)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-00005417150b")
     (property "Referenz" "U3" (id 0) (at 121.158 64.008 0))
@@ -1853,7 +1856,7 @@
     )
   )
 
-  (symbol (lib_id "ardumower-mega-shield-svn-rescue:RELAY_2RT-RESCUE-ardumower_mega_shield_svn") (at 160.782 64.516 0) (unit 1)
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:RELAY_2RT-RESCUE-ardumower_mega_shield_svn") (at 160.782 64.516 0)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000054a679f2")
     (property "Referenz" "K3" (id 0) (at 159.512 54.356 0)
