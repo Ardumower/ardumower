@@ -1,0 +1,4192 @@
+(kicad_sch (version 20200608) (host eeschema "(5.99.0-1946-g60915fbc7)")
+
+  (page 1 33)
+
+  (paper "A4")
+
+  (title_block
+    (title "Ardumower shield SVN Version")
+    (date "2017-04-13")
+    (rev "1.3")
+    (company "ML AG JL UZ")
+    (comment 1 "Unterspannungsschutz von AlexanderG")
+  )
+
+  (lib_symbols
+    (symbol "ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn" (power) (pin_names (offset 0))
+      (property "Referenz" "#PWR" (id 0) (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Wert" "+24V-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 3.556 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "+24V-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy -0.762 1.27) (xy 0 2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 0) (xy 0 2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 2.54) (xy 0.762 1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "+24V-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin power_in line (at 0 0 90) (length 0) hide
+          (name "+24V" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:+9V-RESCUE-ardumower_mega_shield_svn" (power) (pin_names (offset 0))
+      (property "Referenz" "#PWR" (id 0) (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Wert" "+9V-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 3.556 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "+9V-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy -0.762 1.27) (xy 0 2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 0) (xy 0 2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 2.54) (xy 0.762 1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "+9V-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin power_in line (at 0 0 90) (length 0) hide
+          (name "+9V" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:1N4148-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names hide)
+      (property "Referenz" "D" (id 0) (at 0 2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Wert" "1N4148-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 -2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Diodes_THT:D_DO-35_SOD27_Horizontal_RM10" (id 2) (at 0 -4.445 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "D*DO?35*\nD*SOD27*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "1N4148-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy -1.27 1.27) (xy -1.27 -1.27))
+          (stroke (width 0.2032)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 0) (xy -1.27 0))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27))
+          (stroke (width 0.2032)) (fill (type none))
+        )
+      )
+      (symbol "1N4148-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at -3.81 0 0) (length 2.54)
+          (name "K" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 3.81 0 180) (length 2.54)
+          (name "A" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:ACS712-RESCUE-ardumower_mega_shield_svn"
+      (property "Referenz" "U" (id 0) (at 0 6.35 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Wert" "ACS712-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 -6.35 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.524 1.524)))
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.524 1.524)))
+      )
+      (symbol "ACS712-RESCUE-ardumower_mega_shield_svn_0_1"
+        (rectangle (start -6.35 5.08) (end 6.35 -5.08)
+          (stroke (width 0)) (fill (type background))
+        )
+      )
+      (symbol "ACS712-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin power_in line (at 10.16 2.54 180) (length 3.81)
+          (name "VCC" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin power_in line (at 10.16 -2.54 180) (length 3.81)
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin output line (at 10.16 0 180) (length 3.81)
+          (name "OUT" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+        (pin input line (at -10.16 2.54 0) (length 3.81)
+          (name "IP+" (effects (font (size 1.27 1.27))))
+          (number "4" (effects (font (size 1.27 1.27))))
+        )
+        (pin input line (at -10.16 -2.54 0) (length 3.81)
+          (name "IP-" (effects (font (size 1.27 1.27))))
+          (number "5" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:BC849-RESCUE-ardumower_mega_shield_svn" (pin_names (offset 0) hide)
+      (property "Referenz" "Q" (id 0) (at 5.08 1.905 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Wert" "BC849-RESCUE-ardumower_mega_shield_svn" (id 1) (at 5.08 0 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "TO_SOT_Packages_SMD:SOT-23" (id 2) (at 5.08 -1.905 0)
+        (effects (font (size 1.27 1.27) italic) (justify left) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "ki_fp_filters" "SOT?23*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "BC849-RESCUE-ardumower_mega_shield_svn_0_1"
+        (circle (center 1.27 0) (radius 2.8194) (stroke (width 0.254)) (fill (type none)))
+        (polyline
+          (pts (xy 0.635 0.635) (xy 2.54 2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905))
+          (stroke (width 0.508)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
+               (xy 1.27 -1.778)
+          )
+          (stroke (width 0)) (fill (type outline))
+        )
+      )
+      (symbol "BC849-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin input line (at -5.08 0 0) (length 5.715)
+          (name "B" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 -5.08 90) (length 2.54)
+          (name "E" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 5.08 270) (length 2.54)
+          (name "C" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn" (pin_names hide)
+      (property "Referenz" "J" (id 0) (at 0 3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Wert" "CONN_01X02-RESCUE-ardumower_mega_shield_svn" (id 1) (at 2.54 0 90)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "Pin_Header_Straight_1X*\nPin_Header_Angled_1X*\nSocket_Strip_Straight_1X*\nSocket_Strip_Angled_1X*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "CONN_01X02-RESCUE-ardumower_mega_shield_svn_0_1"
+        (rectangle (start -1.27 -1.143) (end 0.254 -1.397)
+          (stroke (width 0)) (fill (type none))
+        )
+        (rectangle (start -1.27 1.397) (end 0.254 1.143)
+          (stroke (width 0)) (fill (type none))
+        )
+        (rectangle (start -1.27 2.54) (end 1.27 -2.54)
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "CONN_01X02-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at -5.08 1.27 0) (length 3.81)
+          (name "P1" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at -5.08 -1.27 0) (length 3.81)
+          (name "P2" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:CP_Small-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names (offset 0.254) hide)
+      (property "Referenz" "C" (id 0) (at 0.254 1.778 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Wert" "CP_Small-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0.254 -2.032 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "CP_*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "CP_Small-RESCUE-ardumower_mega_shield_svn_0_1"
+        (rectangle (start -1.524 -0.3048) (end 1.524 -0.6858)
+          (stroke (width 0)) (fill (type outline))
+        )
+        (rectangle (start -1.524 0.6858) (end 1.524 0.3048)
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 1.524) (xy -0.762 1.524))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.016 1.27) (xy -1.016 1.778))
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "CP_Small-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at 0 2.54 270) (length 1.8542)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 0 -2.54 90) (length 1.8542)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names hide)
+      (property "Referenz" "D" (id 0) (at 0 2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Wert" "D-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 -2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "TO-???*\n*SingleDiode\n*_Diode_*\n*SingleDiode*\nD_*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "D-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy -1.27 1.27) (xy -1.27 -1.27))
+          (stroke (width 0.2032)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 0) (xy -1.27 0))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27))
+          (stroke (width 0.2032)) (fill (type none))
+        )
+      )
+      (symbol "D-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at -3.81 0 0) (length 2.54)
+          (name "K" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 3.81 0 180) (length 2.54)
+          (name "A" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names (offset 0.254))
+      (property "Referenz" "EF" (id 0) (at -4.572 2.032 0)
+        (effects (font (size 1.016 1.016)))
+      )
+      (property "Wert" "F_10A-RESCUE-ardumower_mega_shield_svn" (id 1) (at -2.54 -2.032 0)
+        (effects (font (size 1.016 1.016)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.524 1.524)))
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.524 1.524)))
+      )
+      (symbol "F_10A-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy 2.032 0) (xy -2.54 0) (xy -2.54 0) (xy -2.54 0))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.54 0.508) (xy -2.54 -0.508) (xy 2.032 -0.508) (xy 2.032 0.508)
+               (xy -2.54 0.508) (xy -2.54 0.508)
+          )
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "F_10A-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin power_in line (at 5.08 0 180) (length 3.048)
+          (name "~" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 0.254 0.254))))
+        )
+        (pin power_out line (at -5.08 0 0) (length 2.54)
+          (name "~" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 0.254 0.254))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn" (power) (pin_names (offset 0))
+      (property "Referenz" "#PWR" (id 0) (at 0 -6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Wert" "GND-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "GND-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54)
+               (xy -1.27 -1.27) (xy 0 -1.27)
+          )
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "GND-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:RELAY_2RT-RESCUE-ardumower_mega_shield_svn" (pin_names hide)
+      (property "Referenz" "K" (id 0) (at -1.27 10.16 0)
+        (effects (font (size 1.778 1.778)))
+      )
+      (property "Wert" "RELAY_2RT-RESCUE-ardumower_mega_shield_svn" (id 1) (at 3.81 -12.7 0)
+        (effects (font (size 1.778 1.778)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.524 1.524)))
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.524 1.524)))
+      )
+      (symbol "RELAY_2RT-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy -2.54 -8.89) (xy -2.286 -8.89))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.54 -6.35) (xy -1.27 -6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.54 -1.27) (xy 1.27 -1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.286 -8.89) (xy -1.778 -9.3726))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.286 -8.1026) (xy -2.286 -7.62))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.032 -8.382) (xy -2.286 -8.1026))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -2.032 -7.366) (xy -2.286 -7.62))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.778 -9.3726) (xy -1.27 -9.3726))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 -10.414) (xy -1.27 -5.3086))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 -8.382) (xy -2.032 -8.382))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 -8.382) (xy 0 -8.382))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 -7.366) (xy -2.032 -7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 -6.35) (xy 0 -6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 -5.3086) (xy 0 -5.3086))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -10.414) (xy -1.27 -10.414))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -9.3726) (xy -1.27 -9.3726))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -9.3726) (xy 0.7366 -9.3726))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -8.382) (xy 0.7366 -8.382))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -7.366) (xy -1.27 -7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -7.366) (xy 0.7366 -7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -6.35) (xy 0.7366 -6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 -5.3086) (xy 0 -10.414))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.254 -3.0226) (xy 2.2606 -3.0226))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.254 -0.2286) (xy 2.2606 -0.2286))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.254 4.572) (xy 1.27 5.6134))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.254 7.366) (xy 0.9906 7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.7366 -9.3726) (xy 0.9906 -9.144))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.7366 -8.382) (xy 0.9906 -8.636))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.7366 -7.366) (xy 0.9906 -7.112))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.7366 -6.35) (xy 0.9906 -6.5786))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.9906 -9.144) (xy 0.9906 -8.636))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.9906 -6.5786) (xy 0.9906 -7.112))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.9906 6.6294) (xy 0.254 7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.9906 6.6294) (xy 1.27 6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.9906 7.366) (xy 2.2606 7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 -3.81) (xy 1.27 -3.302))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 -3.302) (xy 1.27 -3.0226))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 -2.032) (xy 0.254 -3.0226))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 -1.27) (xy 0.254 -0.2286))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 -1.27) (xy 2.54 -1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 1.27) (xy 1.27 -0.2286))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 1.27) (xy 2.54 1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 3.81) (xy 1.27 4.572))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 3.81) (xy 2.54 3.81))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 5.6134) (xy 2.2606 4.572))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 6.35) (xy -2.54 6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 6.35) (xy 1.524 6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 8.89) (xy 1.27 7.366))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.27 8.89) (xy 2.54 8.89))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.524 6.35) (xy 2.54 6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 2.2606 -3.0226) (xy 1.27 -2.032))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 2.2606 -0.2286) (xy 1.27 -1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 2.2606 4.572) (xy 0.254 4.572))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 2.2606 7.366) (xy 1.27 6.35))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 2.54 -3.81) (xy 1.27 -3.81))
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "RELAY_2RT-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at 10.16 -3.81 180) (length 7.62)
+          (name "T1" (effects (font (size 1.524 1.524))))
+          (number "1" (effects (font (size 1.524 1.524))))
+        )
+        (pin passive line (at -10.16 6.35 0) (length 7.62)
+          (name "C2" (effects (font (size 1.524 1.524))))
+          (number "12" (effects (font (size 1.524 1.524))))
+        )
+        (pin passive line (at 10.16 8.89 180) (length 7.62)
+          (name "R2" (effects (font (size 1.524 1.524))))
+          (number "14" (effects (font (size 1.524 1.524))))
+        )
+        (pin passive line (at 10.16 3.81 180) (length 7.62)
+          (name "T2" (effects (font (size 1.524 1.524))))
+          (number "16" (effects (font (size 1.524 1.524))))
+        )
+        (pin passive line (at 10.16 1.27 180) (length 7.62)
+          (name "R1" (effects (font (size 1.524 1.524))))
+          (number "3" (effects (font (size 1.524 1.524))))
+        )
+        (pin passive line (at -10.16 -1.27 0) (length 7.62)
+          (name "C1" (effects (font (size 1.524 1.524))))
+          (number "5" (effects (font (size 1.524 1.524))))
+        )
+        (pin input line (at -10.16 -6.35 0) (length 7.62)
+          (name "8" (effects (font (size 1.524 1.524))))
+          (number "8" (effects (font (size 1.524 1.524))))
+        )
+        (pin input line (at -10.16 -8.89 0) (length 7.62)
+          (name "9" (effects (font (size 1.524 1.524))))
+          (number "9" (effects (font (size 1.524 1.524))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names (offset 0.254) hide)
+      (property "Referenz" "R" (id 0) (at 0.762 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Wert" "R_Small-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0.762 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "R_*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "R_Small-RESCUE-ardumower_mega_shield_svn_0_1"
+        (rectangle (start -0.762 1.778) (end 0.762 -1.778)
+          (stroke (width 0.2032)) (fill (type none))
+        )
+      )
+      (symbol "R_Small-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at 0 2.54 270) (length 0.762)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 0 -2.54 90) (length 0.762)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+  )
+
+  (junction (at 45.085 51.816))
+  (junction (at 59.182 51.816))
+  (junction (at 88.011 51.816))
+  (junction (at 96.774 51.816))
+  (junction (at 111.76 51.816))
+  (junction (at 111.76 70.866))
+  (junction (at 124.968 76.073))
+  (junction (at 144.272 70.866))
+  (junction (at 150.622 86.741))
+  (junction (at 186.69 46.99))
+  (junction (at 186.69 60.706))
+  (junction (at 212.725 60.706))
+  (junction (at 212.725 77.851))
+  (junction (at 228.854 64.77))
+  (junction (at 228.854 76.581))
+  (junction (at 228.854 94.107))
+
+  (no_connect (at 170.942 55.626))
+
+  (wire (pts (xy 39.243 51.816) (xy 45.085 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 39.751 54.356) (xy 39.243 54.356))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 39.751 57.15) (xy 39.751 54.356))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 45.085 51.816) (xy 47.117 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 45.085 55.118) (xy 45.085 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 57.277 51.816) (xy 59.182 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 59.182 18.542) (xy 59.182 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 59.182 51.816) (xy 61.087 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 84.328 51.816) (xy 88.011 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 88.011 51.816) (xy 96.774 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 88.011 57.658) (xy 88.011 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 96.774 51.816) (xy 111.76 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 96.774 57.658) (xy 96.774 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 107.696 70.866) (xy 111.76 70.866))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 49.276) (xy 111.76 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 49.276) (xy 144.272 49.276))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 51.816) (xy 111.76 59.944))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 51.816) (xy 124.968 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 65.024) (xy 111.76 70.866))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 70.866) (xy 111.76 75.692))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 111.76 80.772) (xy 111.76 82.042))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 120.269 76.073) (xy 124.968 76.073))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 120.269 81.915) (xy 120.269 76.073))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 120.269 86.995) (xy 120.269 88.265))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 123.698 99.568) (xy 131.318 99.568))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 124.968 51.816) (xy 124.968 53.848))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 124.968 74.168) (xy 124.968 76.073))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 124.968 76.073) (xy 124.968 79.502))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 127.508 74.168) (xy 127.508 80.518))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 130.048 51.816) (xy 148.971 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 130.048 53.848) (xy 130.048 51.816))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 130.048 74.168) (xy 130.048 77.978))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 136.398 99.568) (xy 143.002 99.568))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 144.272 49.276) (xy 144.272 70.866))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 144.272 70.866) (xy 144.272 74.549))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 144.272 70.866) (xy 150.622 70.866))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 144.272 82.169) (xy 144.272 86.741))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 144.272 86.741) (xy 150.622 86.741))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 148.971 51.816) (xy 148.971 58.166))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 150.622 58.166) (xy 148.971 58.166))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 150.622 65.786) (xy 148.59 65.786))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 150.622 73.406) (xy 150.622 86.741))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 150.622 86.741) (xy 150.622 94.488))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 150.622 104.648) (xy 150.622 112.268))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 170.942 60.706) (xy 186.69 60.706))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 170.942 63.246) (xy 173.99 63.246))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 184.15 48.006) (xy 184.15 45.847))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 45.847) (xy 186.69 46.99))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 46.99) (xy 186.69 47.879))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 46.99) (xy 201.803 46.99))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 58.039) (xy 186.69 60.706))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 60.706) (xy 186.69 68.961))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 60.706) (xy 194.691 60.706))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 186.69 76.581) (xy 186.69 77.851))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 190.246 18.542) (xy 59.182 18.542))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 197.866 18.542) (xy 212.725 18.542))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 199.263 34.163) (xy 199.263 32.004))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 201.803 34.036) (xy 201.803 32.004))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 201.803 46.99) (xy 201.803 44.196))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 202.311 60.706) (xy 212.725 60.706))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 208.661 77.851) (xy 212.725 77.851))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 212.725 18.542) (xy 212.725 60.706))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 212.725 60.706) (xy 212.725 66.929))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 212.725 60.706) (xy 233.934 60.706))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 212.725 72.009) (xy 212.725 77.851))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 212.725 77.851) (xy 212.725 82.677))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 212.725 87.757) (xy 212.725 89.027))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 224.663 64.77) (xy 228.854 64.77))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 227.965 100.965) (xy 228.854 100.965))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 64.77) (xy 228.854 76.581))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 64.77) (xy 233.934 64.77))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 76.581) (xy 228.854 94.107))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 76.581) (xy 238.506 76.581))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 94.107) (xy 228.854 98.425))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 94.107) (xy 233.68 94.107))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 98.425) (xy 227.965 98.425))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 100.965) (xy 228.854 104.648))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 228.854 104.648) (xy 233.807 104.648))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 236.347 79.121) (xy 238.506 79.121))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 236.347 80.645) (xy 236.347 79.121))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+
+  (text "https://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP33/3/index.html?ACTION=3&LA=5700&ARTICLE=115975&GROUPID=5480&artnr=TS+2940+CP33\n\nhttps://www.reichelt.de/ICs-TLC-TSA-/TS-2940-CP50/3/index.html?ACTION=3&LA=5700&ARTICLE=115976&GROUPID=5480&artnr=TS+2940+CP50\n\nhttps://www.reichelt.de/ICs-TA-TL-/TD-62783-AFWG/3/index.html?ACTION=3&LA=446&ARTICLE=188954&GROUPID=5479&artnr=TD+62783+AFWG&SEARCH=TD62783"
+    (at -150.114 -3.302 0)
+    (effects (font (size 1.4986 1.4986)) (justify left bottom))
+  )
+  (text "Kontrolle Funktion Ultraschall\nKontrolle RC Fernbedienung\nKontrolle Unterspannunsabschaltung ob sie mit 3V an bleibt\nRelais schaltung ändern damit nur noch 1 Relais notwendig ist\nUDN 2981 ersetzen durch SMD Bauteil evl TD 62783 AFWG :: Treiber-IC, SO-18W\nOdemetrie kontrollieren\nIC2 Bus Kontrollieren\nSpannungsaufbereitung evl ändern mit anderen DC wandlern bis 30V\n\nBauteile siehe Links"
+    (at -149.098 35.941 0)
+    (effects (font (size 2.0066 2.0066)) (justify left bottom))
+  )
+  (text "[21:36:55] Kurzschuss - Uwe: gut dan warte ich nochmal mit den widerständen bis du soweit bist\n[21:38:22] Kurzschuss - Uwe: Dann mache ich nur die andern Änderungen mit dem DHT22 dropsensoren usw und warte dann erst mal ab. wenn ich es habe lade ich dann hoch\n[21:38:26] Jürgen Lange: überall wo level shifter dran sind kannst du die Dioden und den widerstand wegmachen\n[21:39:37] Kurzschuss - Uwe: da warte ich erst mal wo dann noch ein widerstand dazukommt. das wird dann ein Aufwasch\n\n\n\nwenn du da gerade dran bist die ganzen reserve dinger AD7, pinOdometriyRight2 etc hast du auf iOREF versorgt da solltest du 5V dran machen da bleiben dann auch die Dioden und der widerstand\nich sehe gerade das bei den Odemetrie pin der Spannungsanschluss auf iorf liegt. Dazwischen ist dann noch der ODoteiler und der Levelshifter.\nIch vermute mal das die odemetriepins auch auf 5V müssen damit der Odoteiler richtig arbeitetein klaaaaaaares ja"
+    (at 10.16 246.634 0)
+    (effects (font (size 2.0066 2.0066)) (justify left bottom))
+  )
+  (text "Akku\n" (at 27.559 45.974 0)
+    (effects (font (size 2.5146 2.5146)) (justify left bottom))
+  )
+  (text "LED Rechner:\nhttp://www.elektronik-kompendium.de/sites/bau/1109111.htm\n\nZ-Dioden Rechner:\nhttp://www.dieelektronikerseite.de/Tools/Zenerdiode.htm"
+    (at 73.152 -8.89 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom))
+  )
+  (text "Station LED\nbzw:\nGrundlast\nPerimetersender" (at 88.773 50.673 0)
+    (effects (font (size 0.9906 0.9906)) (justify left bottom))
+  )
+  (text "Batterie\n" (at 178.689 32.766 0)
+    (effects (font (size 2.5146 2.5146)) (justify left bottom))
+  )
+  (text "Verpolschutz\nBatterie" (at 180.086 88.519 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom))
+  )
+  (text "Unterbrechung der Motortreiber\nbei Benutzung muss Leiterbahn unterbrochen werden\nevl noch ändern und Klemme gleich vorsehen mit Drahtbrücke?"
+    (at 218.313 113.919 0)
+    (effects (font (size 0.9906 0.9906)) (justify left bottom))
+  )
+  (text "LED Anzeigen - Hardware:\n\nLed 3V grün -   Betriebsanzeige Versorgungsspannung\nLED 24V grün - Betriebsanzeige Versorgungsspannung R2 für 12 V anpassen\nLED 5V grün -   Betriebsanzeige Versorgungsspannung\nLED Station - gelb - Statusanzeige ob Mover in Ladestation\n\n----------------------------------------------------------\n\nLED Anzeigen - Software:\n\nDual LED z.B:\nDual LED grün. Dauerlicht - Mover innerhalb Perimeter\nDual LED grün+rot = Orange - Dauerlicht Mover außerhalb Perimeter\nDual LED grün+rot = Orange - Blinkt Mover findet  Perimeter nicht oder sucht danach\nDual LED rot =  Blinkt Fehler kurzseitig Überlast Antriebmotor Treibe oder Mähmotor. \nDual LED rot - Dauerlicht - Fehler muß für weiterfahren durch drücken \nvon Button zurückgesetzt werden\n----------------------------------------------------------\n\nLED Status - grün Dauerlicht - warte auf Eingabe\n\nLED Status - grün blinken 1 bis 5 mal hintereinander\nmit länger Pause dazwischen für Anzeige in welchen\nBetriebsmodi sich der Mover befindet"
+    (at 229.997 -11.43 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom))
+  )
+  (text "[20:50:34 | Bearbeitet 20:51:30] Jürgen Lange: setze für den dcdc einen 78s05 ein oder die die ich auf der BumperDuino nehme LM2940CS-5.0 um das bt zuversorgen für die Versorgung vom wlan einen 3,3v low drop\n[20:51:20] Kurzschuss - Uwe: also die 5V nicht vom Mega holen bzw die 3,3V\n[20:51:44] Jürgen Lange: für bt und wlan nicht\n[20:51:54] Jürgen Lange: für den rest okay\n[20:52:01] Kurzschuss - Uwe: okay\n[20:53:21] Jürgen Lange: setze bei allen Wandlern ob dcdc oder 78xx revers Dioden und rückführ Dioden die 78xx oder ähnlich kommen gleich vom 9v dcdc\n[20:54:26] Kurzschuss - Uwe: Ich übernehme die Schaltung vom Bumberduino\n\n\n\n[11:55:48] Jürgen Lange: im Klartext die Spannungen vom längsregler nur für Versorgung von bt etc nehmen gaaaaanz wichtig sonst haust du den due weg wenn jemand den usb stecker steckt\n[11:56:29] Jürgen Lange: der mega könnte auch aufgeben aber das habe ich noch nicht geprüft"
+    (at 351.028 70.866 0)
+    (effects (font (size 2.9972 2.9972)) (justify left bottom))
+  )
+
+  (global_label "Charg_Pin_+" (shape input) (at 45.085 55.118 270)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+  (global_label "StationLed" (shape input) (at 96.774 57.658 270)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+  (global_label "pinChargeVoltage" (shape output) (at 107.696 70.866 180)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+  (global_label "pinChargingEnable" (shape input) (at 123.698 99.568 180)
+    (effects (font (size 1.524 1.524)) (justify right))
+  )
+  (global_label "IOREF" (shape input) (at 124.968 79.502 270)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+  (global_label "pinChargeCurrent" (shape output) (at 127.508 80.518 270)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+  (global_label "9Vgeschaltet" (shape input) (at 173.99 63.246 0)
+    (effects (font (size 0.9906 0.9906)) (justify left))
+  )
+  (global_label "pinBatteryVoltage" (shape output) (at 208.661 77.851 180)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:+9V-RESCUE-ardumower_mega_shield_svn") (at 148.59 65.786 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058ab809a")
+    (property "Referenz" "#PWR012" (id 0) (at -1.27 132.969 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "+9V" (id 1) (at 148.971 61.3918 0))
+    (property "Footprint" "" (id 2) (at -1.27 129.159 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at -1.27 129.159 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:+24V-RESCUE-ardumower_mega_shield_svn") (at 224.663 64.77 90) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057de1118")
+    (property "Referenz" "#PWR05" (id 0) (at 228.473 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "+24V" (id 1) (at 219.202 64.77 90))
+    (property "Footprint" "" (id 2) (at 224.663 64.77 0))
+    (property "Datenblatt" "" (id 3) (at 224.663 64.77 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 39.751 57.15 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057ddd4a8")
+    (property "Referenz" "#PWR03" (id 0) (at 39.751 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 39.878 61.5442 0))
+    (property "Footprint" "" (id 2) (at 39.751 57.15 0))
+    (property "Datenblatt" "" (id 3) (at 39.751 57.15 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 111.76 82.042 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057ddce0c")
+    (property "Referenz" "#PWR02" (id 0) (at 111.76 88.392 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 111.887 86.4362 0))
+    (property "Footprint" "" (id 2) (at 111.76 82.042 0))
+    (property "Datenblatt" "" (id 3) (at 111.76 82.042 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 120.269 88.265 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e3f322")
+    (property "Referenz" "#PWR07" (id 0) (at 120.269 94.615 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 121.031 91.948 0))
+    (property "Footprint" "" (id 2) (at 120.269 88.265 0))
+    (property "Datenblatt" "" (id 3) (at 120.269 88.265 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 130.048 77.978 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e3dcac")
+    (property "Referenz" "#PWR06" (id 0) (at 130.048 84.328 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 130.81 81.661 0))
+    (property "Footprint" "" (id 2) (at 130.048 77.978 0))
+    (property "Datenblatt" "" (id 3) (at 130.048 77.978 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 150.622 112.268 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057ddc12e")
+    (property "Referenz" "#PWR01" (id 0) (at 150.622 118.618 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 150.749 116.6622 0))
+    (property "Footprint" "" (id 2) (at 150.622 112.268 0))
+    (property "Datenblatt" "" (id 3) (at 150.622 112.268 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 184.15 48.006 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057de0396")
+    (property "Referenz" "#PWR04" (id 0) (at 184.15 54.356 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 184.277 52.4002 0))
+    (property "Footprint" "" (id 2) (at 184.15 48.006 0))
+    (property "Datenblatt" "" (id 3) (at 184.15 48.006 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 186.69 77.851 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e6ca33")
+    (property "Referenz" "#PWR09" (id 0) (at 186.69 84.201 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 186.817 82.2452 0))
+    (property "Footprint" "" (id 2) (at 186.69 77.851 0))
+    (property "Datenblatt" "" (id 3) (at 186.69 77.851 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 199.263 34.163 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058910850")
+    (property "Referenz" "#PWR010" (id 0) (at 199.263 40.513 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 199.39 38.5572 0))
+    (property "Footprint" "" (id 2) (at 199.263 34.163 0))
+    (property "Datenblatt" "" (id 3) (at 199.263 34.163 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 212.725 89.027 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e498ae")
+    (property "Referenz" "#PWR08" (id 0) (at 212.725 95.377 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 212.852 93.4212 0))
+    (property "Footprint" "" (id 2) (at 212.725 89.027 0))
+    (property "Datenblatt" "" (id 3) (at 212.725 89.027 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 236.347 80.645 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-0000589113fa")
+    (property "Referenz" "#PWR011" (id 0) (at 236.347 86.995 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 236.22 85.0392 0))
+    (property "Footprint" "" (id 2) (at 236.347 80.645 0))
+    (property "Datenblatt" "" (id 3) (at 236.347 80.645 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 62.484 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058ab29d6")
+    (property "Referenz" "R9" (id 0) (at 110.2614 61.3156 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "100K 0,1%" (id 1) (at 110.2614 63.627 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Resistors_SMD:R_1206" (id 2) (at 110.2614 58.0644 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" (id 3) (at 111.76 62.484 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "1206" (id 4) (at 110.2614 60.579 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-100K/3/index.html?ACTION=3&LA=446&ARTICLE=123458&GROUPID=7974&artnr=SPR-1206+100K&SEARCH=spr-1206%2B100k" (id 5) (at 110.2614 63.2714 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "SMD-Chipwiderstand 1206, 100 kOhm, 0,1%" (id 6) (at 110.2614 65.9638 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "R: SPR-1206 100K" (id 7) (at 110.2614 68.6562 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "1206" (id 8) (at 110.2614 71.3486 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 111.76 62.484 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 111.76 62.484 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 111.76 62.484 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 78.232 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058ab2083")
+    (property "Referenz" "R10" (id 0) (at 110.2868 77.0636 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "10K 0,1%" (id 1) (at 110.2868 79.375 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Resistors_SMD:R_1206" (id 2) (at 110.2614 73.8124 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" (id 3) (at 111.76 78.232 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "1206" (id 4) (at 110.2614 76.327 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-10-0K/3/index.html?ACTION=3&LA=446&ARTICLE=123435&GROUPID=7974&artnr=SPR-1206+10%2C0K&SEARCH=spr-1206%2B10%252C0k" (id 5) (at 110.2614 79.0194 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "SMD-Chipwiderstand 1206, 10,0 kOhm, 0,1%" (id 6) (at 110.2614 81.7118 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "R: SPR-1206 10,0K" (id 7) (at 110.2614 84.4042 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "1206" (id 8) (at 110.2614 87.0966 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 111.76 78.232 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 111.76 78.232 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 111.76 78.232 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 133.858 99.568 90) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-0000587cc623")
+    (property "Referenz" "R18" (id 0) (at 135.382 101.6 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "2k2" (id 1) (at 135.382 103.632 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Zimprich:R_0603" (id 2) (at 129.4384 101.0666 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 133.858 99.568 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 131.953 101.0666 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 134.6454 101.0666 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 137.3378 101.0666 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 140.0302 101.0666 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 142.7226 101.0666 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 133.858 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 133.858 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 133.858 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 69.469 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e498b9")
+    (property "Referenz" "R12" (id 0) (at 211.2264 68.3006 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "100K 0,1%" (id 1) (at 211.2264 70.612 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Resistors_SMD:R_1206" (id 2) (at 211.2264 65.0494 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" (id 3) (at 212.725 69.469 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "1206" (id 4) (at 211.2264 67.564 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-100K/3/index.html?ACTION=3&LA=446&ARTICLE=123458&GROUPID=7974&artnr=SPR-1206+100K&SEARCH=spr-1206%2B100k" (id 5) (at 211.2264 70.2564 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "SMD-Chipwiderstand 1206, 100 kOhm, 0,1%" (id 6) (at 211.2264 72.9488 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "R: SPR-1206 100K" (id 7) (at 211.2264 75.6412 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "1206" (id 8) (at 211.2264 78.3336 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 212.725 69.469 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 212.725 69.469 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 212.725 69.469 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 85.217 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e498c4")
+    (property "Referenz" "R13" (id 0) (at 211.2518 84.0486 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "10K 0,1%" (id 1) (at 211.2518 86.36 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Resistors_SMD:R_1206" (id 2) (at 211.2264 80.7974 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "http://cdn-reichelt.de/documents/datenblatt/B400/DS_NICC_SERIE_NTR.pdf" (id 3) (at 212.725 85.217 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "1206" (id 4) (at 211.2264 83.312 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "https://www.reichelt.de/SMD-1206-von-1-bis-910-kOhm/SPR-1206-10-0K/3/index.html?ACTION=3&LA=446&ARTICLE=123435&GROUPID=7974&artnr=SPR-1206+10%2C0K&SEARCH=spr-1206%2B10%252C0k" (id 5) (at 211.2264 86.0044 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "SMD-Chipwiderstand 1206, 10,0 kOhm, 0,1%" (id 6) (at 211.2264 88.6968 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "R: SPR-1206 10,0K" (id 7) (at 211.2264 91.3892 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "1206" (id 8) (at 211.2264 94.0816 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 212.725 85.217 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 212.725 85.217 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 212.725 85.217 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 52.197 51.816 180) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000054a79b5a")
+    (property "Referenz" "EF1" (id 0) (at 52.197 53.467 0)
+      (effects (font (size 1.016 1.016)))
+    )
+    (property "Wert" "F_5A" (id 1) (at 52.197 50.292 0)
+      (effects (font (size 1.016 1.016)))
+    )
+    (property "Footprint" "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456_und_TR15_Halter" (id 2) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "https://www.reichelt.de/Sicherungshalter/RND-170-00006/3/index.html?ACTION=3&LA=5700&ARTICLE=170726&GROUPID=7659&artnr=RND+170-00006" (id 5) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "R: RND 170-00006" (id 7) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 52.197 51.816 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 186.69 52.959 270) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000054a7ab0d")
+    (property "Referenz" "EF2" (id 0) (at 189.484 51.181 90)
+      (effects (font (size 1.016 1.016)))
+    )
+    (property "Wert" "F_10A" (id 1) (at 190.373 52.959 90)
+      (effects (font (size 1.016 1.016)))
+    )
+    (property "Footprint" "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456_und_TR15_Halter" (id 2) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "https://www.reichelt.de/Sicherungshalter/RND-170-00006/3/index.html?ACTION=3&LA=5700&ARTICLE=170726&GROUPID=7659&artnr=RND+170-00006" (id 5) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "R: RND 170-00006" (id 7) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 186.69 52.959 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:F_10A-RESCUE-ardumower_mega_shield_svn") (at 201.803 39.116 270) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-00005891084a")
+    (property "Referenz" "EF3" (id 0) (at 206.248 37.084 90)
+      (effects (font (size 1.016 1.016)))
+    )
+    (property "Wert" "1A" (id 1) (at 206.121 39.116 90)
+      (effects (font (size 1.016 1.016)))
+    )
+    (property "Footprint" "Zimprich:Sicherungs_Sockel_für_TR5_TE5" (id 2) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Pico Fuse 1A" (id 8) (at 203.581 39.243 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (property "Funktion" "Value" (id 9) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 201.803 39.116 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CP_Small-RESCUE-ardumower_mega_shield_svn") (at 120.269 84.455 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e3e9d5")
+    (property "Referenz" "C3" (id 0) (at 118.0338 83.2866 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "10uF" (id 1) (at 118.0338 85.598 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0" (id 2) (at 120.269 84.455 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 120.269 84.455 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 120.269 84.455 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 120.269 84.455 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 120.269 84.455 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 120.269 84.455 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 120.269 84.455 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:1N4148-RESCUE-ardumower_mega_shield_svn") (at 144.272 78.359 270) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058e41856")
+    (property "Referenz" "D10" (id 0) (at 142.2654 77.1906 90)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Wert" "1N4148" (id 1) (at 142.2654 79.502 90)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Footprint" "Diodes_THT:D_DO-35_SOD27_P7.62mm_Horizontal" (id 2) (at 139.827 78.359 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 144.272 78.359 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 186.69 72.771 270) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e6ba60")
+    (property "Referenz" "D1" (id 0) (at 192.913 71.247 90)
+      (effects (font (size 0.9906 0.9906)))
+    )
+    (property "Wert" "MBR 1045" (id 1) (at 193.294 72.771 90)
+      (effects (font (size 0.9906 0.9906)))
+    )
+    (property "Footprint" "Diodes_ThroughHole:Diode_TO-220_Vertical" (id 2) (at 189.8142 72.771 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "Value" (id 3) (at 186.69 72.771 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 190.0174 72.771 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 190.0174 72.771 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 186.69 72.771 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "R: MBR 1045" (id 7) (at 186.69 72.771 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 186.69 72.771 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 194.056 18.542 180) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058915405")
+    (property "Referenz" "D73" (id 0) (at 194.056 14.605 0)
+      (effects (font (size 0.9906 0.9906)))
+    )
+    (property "Wert" "MBR 1045" (id 1) (at 194.056 16.129 0)
+      (effects (font (size 0.9906 0.9906)))
+    )
+    (property "Footprint" "Zimprich:MBR1045" (id 2) (at 194.056 21.6662 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "Value" (id 3) (at 194.056 18.542 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 194.056 21.8694 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 194.056 21.8694 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 194.056 18.542 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "R: MBR 1045" (id 7) (at 194.056 18.542 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 194.056 18.542 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 194.056 18.542 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 194.056 18.542 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 194.056 18.542 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 198.501 60.706 180) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e4c8a2")
+    (property "Referenz" "D9" (id 0) (at 198.501 56.769 0)
+      (effects (font (size 0.9906 0.9906)))
+    )
+    (property "Wert" "MBR 1045" (id 1) (at 198.501 58.293 0)
+      (effects (font (size 0.9906 0.9906)))
+    )
+    (property "Footprint" "Diodes_ThroughHole:Diode_TO-220_Vertical" (id 2) (at 198.501 63.8302 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "Value" (id 3) (at 198.501 60.706 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 198.501 64.0334 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 198.501 64.0334 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 198.501 60.706 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "R: MBR 1045" (id 7) (at 198.501 60.706 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 198.501 60.706 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 34.163 53.086 180) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057def264")
+    (property "Referenz" "P42" (id 0) (at 32.131 51.562 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "Charger" (id 1) (at 32.131 53.086 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Zimprich:Anschlussklemme_RM5,08-RM7,62" (id 2) (at 38.5318 56.3372 90)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 34.163 53.086 0))
+    (property "Gehäuseart" "Value" (id 4) (at 37.0078 56.3372 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 38.354 56.3372 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 39.7002 56.3372 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 34.163 53.086 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 34.163 53.086 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 185.42 40.767 90) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057dee5a7")
+    (property "Referenz" "P43" (id 0) (at 185.42 35.941 90))
+    (property "Wert" "Battery" (id 1) (at 185.42 38.227 90))
+    (property "Footprint" "Zimprich:Anschlussklemme_RM5,08-RM7,62" (id 2) (at 190.0682 42.8244 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 185.42 40.767 0))
+    (property "Gehäuseart" "Value" (id 4) (at 190.246 42.8244 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 190.246 42.8244 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 190.246 42.8244 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 185.42 40.767 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 185.42 40.767 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 200.533 26.924 90) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-00005891085b")
+    (property "Referenz" "P16" (id 0) (at 200.533 22.098 90))
+    (property "Wert" "RPI Backup P." (id 1) (at 200.533 24.384 90))
+    (property "Footprint" "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" (id 2) (at 205.1812 28.9814 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 200.533 26.924 0))
+    (property "Gehäuseart" "Value" (id 4) (at 205.359 28.9814 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 205.359 28.9814 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 205.359 28.9814 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 200.533 26.924 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 200.533 26.924 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 200.533 26.924 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 200.533 26.924 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 200.533 26.924 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 222.885 99.695 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-00005818e3a7")
+    (property "Referenz" "P49" (id 0) (at 220.853 101.219 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "Not Aus" (id 1) (at 220.853 99.695 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" (id 2) (at 227.2538 96.4438 90)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 222.885 99.695 0))
+    (property "Gehäuseart" "Value" (id 4) (at 225.7298 96.4438 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 227.076 96.4438 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 228.4222 96.4438 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 222.885 99.695 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 222.885 99.695 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:CONN_01X02-RESCUE-ardumower_mega_shield_svn") (at 243.586 77.851 0) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000058911405")
+    (property "Referenz" "P17" (id 0) (at 247.015 76.327 0))
+    (property "Wert" "RPI Main P." (id 1) (at 253.365 79.248 0))
+    (property "Footprint" "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" (id 2) (at 241.5286 73.2028 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 243.586 77.851 0))
+    (property "Gehäuseart" "Value" (id 4) (at 241.5286 73.025 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 241.5286 73.025 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 241.5286 73.025 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 243.586 77.851 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 243.586 77.851 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Funktion" "Value" (id 9) (at 243.586 77.851 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller" "Value" (id 10) (at 243.586 77.851 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Hersteller Bestellnummer" "Value" (id 11) (at 243.586 77.851 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:BC849-RESCUE-ardumower_mega_shield_svn") (at 148.082 99.568 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057f1c5ee")
+    (property "Referenz" "Q1" (id 0) (at 152.9334 97.2566 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "BC847B" (id 1) (at 152.9334 99.568 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "TO_SOT_Packages_SMD:SOT-23" (id 2) (at 152.9334 101.8794 0)
+      (effects (font (size 1.27 1.27) italic) (justify left) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 148.082 99.568 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 148.082 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 148.082 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 148.082 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 148.082 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 148.082 99.568 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:ACS712-RESCUE-ardumower_mega_shield_svn") (at 127.508 64.008 90) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-00005417150b")
+    (property "Referenz" "U3" (id 0) (at 121.158 64.008 0))
+    (property "Wert" "INA169" (id 1) (at 133.858 64.008 0))
+    (property "Footprint" "Zimprich:INA169" (id 2) (at 127.508 64.008 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 127.508 64.008 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (property "Bestellnummer" "Value" (id 4) (at 127.508 64.008 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:RELAY_2RT-RESCUE-ardumower_mega_shield_svn") (at 160.782 64.516 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000054a679f2")
+    (property "Referenz" "K3" (id 0) (at 159.512 54.356 0)
+      (effects (font (size 1.778 1.778)))
+    )
+    (property "Wert" "RELAY_2RT" (id 1) (at 164.592 77.216 0)
+      (effects (font (size 1.778 1.778)))
+    )
+    (property "Footprint" "Zimprich:Relais_DPDT_Schrack-RT2_RM5mm_3D_Kontaktbelegung_geändert_FIN40.52.9_6V" (id 2) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (property "Bestellnummer" "Siehe Bauteileigenschaften" (id 4) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Quelle" "http://www.reichelt.de/Print-Steckrelais/FIN-40-52-9-6V/3/index.html?&ACTION=3&LA=2&ARTICLE=8108&GROUPID=3293&artnr=FIN+40.52.9+6V" (id 5) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer 24V" "R: FIN 40.52.9 24V" (id 6) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer 12V" "R: FIN 40.52.9 12V" (id 7) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Bestellnummer 6V" "R: FIN 40.52.9 6V" (id 8) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "Printfassung für Relais" "R: FIN 95.15.2" (id 9) (at 160.782 64.516 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+  )
+
+  (sheet (at 48.768 184.785) (size 21.59 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057dc7e7b)
+    (property "Schaltplanname" "Anschlußstecker" (id 0) (at 48.768 184.0225 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Anschlußstecker.kicad_sch" (id 1) (at 48.768 189.7131 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+  )
+
+  (sheet (at 82.169 184.912) (size 31.496 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057dfe528)
+    (property "Schaltplanname" "Arduino_Mega" (id 0) (at 82.169 184.1495 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Arduino_Mega.kicad_sch" (id 1) (at 82.169 189.8401 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+  )
+
+  (sheet (at 22.606 184.912) (size 21.59 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057e12859)
+    (property "Schaltplanname" "Bohrlöcher" (id 0) (at 22.606 184.1495 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Bohrlöcher.kicad_sch" (id 1) (at 22.606 189.8401 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+  )
+
+  (sheet (at 117.475 176.149) (size 24.511 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057e1969e)
+    (property "Schaltplanname" "I2C" (id 0) (at 117.475 175.3865 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "I2C.kicad_sch" (id 1) (at 117.475 181.0771 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+  )
+
+  (sheet (at 22.606 175.768) (size 21.717 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057dbe57b)
+    (property "Schaltplanname" "Leuchtdioden" (id 0) (at 22.606 175.0055 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Leuchtdioden.kicad_sch" (id 1) (at 22.606 180.6961 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+  )
+
+  (sheet (at 233.807 102.616) (size 31.496 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057d95af0)
+    (property "Schaltplanname" "Motortreiber" (id 0) (at 233.807 101.8535 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Motortreiber.kicad_sch" (id 1) (at 233.807 107.5441 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+    (pin "+24V" input (at 233.807 104.648 180)
+      (effects (font (size 1.524 1.524)) (justify left))
+    )
+  )
+
+  (sheet (at 233.68 91.948) (size 31.496 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057df5e8a)
+    (property "Schaltplanname" "Spannungsversorgung" (id 0) (at 233.68 91.1855 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Spannungsversorgung.kicad_sch" (id 1) (at 233.68 96.8761 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+    (pin "Spannungsaufbereitung" input (at 233.68 94.107 180)
+      (effects (font (size 1.524 1.524)) (justify left))
+    )
+  )
+
+  (sheet (at 86.106 57.658) (size 3.81 12.7)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057e81eba)
+    (property "Schaltplanname" "Stationsled" (id 0) (at 85.6102 70.358 90)
+      (effects (font (size 0.9906 0.9906)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Stationsled.kicad_sch" (id 1) (at 90.3127 70.358 90)
+      (effects (font (size 0.9906 0.9906)) (justify left top))
+    )
+    (pin "LED+" input (at 88.011 57.658 90)
+      (effects (font (size 0.9906 0.9906)) (justify right))
+    )
+  )
+
+  (sheet (at 233.934 57.785) (size 28.575 10.16)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057dd8e0c)
+    (property "Schaltplanname" "USpannungAB" (id 0) (at 233.934 57.0225 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "USpannungAB.kicad_sch" (id 1) (at 233.934 68.5551 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+    (pin "Batterieeingang 24V" input (at 233.934 60.706 180)
+      (effects (font (size 1.524 1.524)) (justify left))
+    )
+    (pin "Batterieausgang 24V" output (at 233.934 64.77 180)
+      (effects (font (size 1.524 1.524)) (justify left))
+    )
+  )
+
+  (sheet (at 61.087 49.784) (size 23.241 4.191)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057e646ff)
+    (property "Schaltplanname" "VerpolungsschutzLade." (id 0) (at 61.087 49.2882 0)
+      (effects (font (size 0.9906 0.9906)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "VerpolungsschutzLade.kicad_sch" (id 1) (at 61.087 54.3717 0)
+      (effects (font (size 0.9906 0.9906)) (justify left top))
+    )
+    (pin "Ausgang" output (at 84.328 51.816 0)
+      (effects (font (size 0.9906 0.9906)) (justify right))
+    )
+    (pin "Eingang" input (at 61.087 51.816 180)
+      (effects (font (size 0.9906 0.9906)) (justify left))
+    )
+  )
+
+  (sheet (at 48.768 175.768) (size 21.59 4.318)
+    (stroke (width 0) (type solid) (color 132 0 132 1))
+    (fill (color 255 255 255 0.0000))    (uuid 00000000-0000-0000-0000-000057da6878)
+    (property "Schaltplanname" "Wlan_BT_GPS" (id 0) (at 48.768 175.0055 0)
+      (effects (font (size 1.524 1.524)) (justify left bottom))
+    )
+    (property "Dateiname Blatt" "Wlan_BT_GPS.kicad_sch" (id 1) (at 48.768 180.6961 0)
+      (effects (font (size 1.524 1.524)) (justify left top))
+    )
+  )
+
+  (symbol_instances
+    (path "/00000000-0000-0000-0000-000057ddc12e"
+      (reference "#PWR01") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057ddce0c"
+      (reference "#PWR02") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057ddd4a8"
+      (reference "#PWR03") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057de0396"
+      (reference "#PWR04") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057de1118"
+      (reference "#PWR05") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e3dcac"
+      (reference "#PWR06") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e3f322"
+      (reference "#PWR07") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e498ae"
+      (reference "#PWR08") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e6ca33"
+      (reference "#PWR09") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058910850"
+      (reference "#PWR010") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-0000589113fa"
+      (reference "#PWR011") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058ab809a"
+      (reference "#PWR012") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e3e9d5"
+      (reference "C3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e6ba60"
+      (reference "D1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e4c8a2"
+      (reference "D9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058e41856"
+      (reference "D10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058915405"
+      (reference "D73") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000054a79b5a"
+      (reference "EF1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000054a7ab0d"
+      (reference "EF2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-00005891084a"
+      (reference "EF3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000054a679f2"
+      (reference "K3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-00005891085b"
+      (reference "P16") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058911405"
+      (reference "P17") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057def264"
+      (reference "P42") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dee5a7"
+      (reference "P43") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-00005818e3a7"
+      (reference "P49") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057f1c5ee"
+      (reference "Q1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058ab29d6"
+      (reference "R9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000058ab2083"
+      (reference "R10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e498b9"
+      (reference "R12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e498c4"
+      (reference "R13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-0000587cc623"
+      (reference "R18") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-00005417150b"
+      (reference "U3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a33"
+      (reference "#PWR057") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3b"
+      (reference "#PWR058") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e15ff8"
+      (reference "#PWR059") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e16a9d"
+      (reference "#PWR060") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e16aa3"
+      (reference "#PWR061") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec3a2e"
+      (reference "#PWR062") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec3a70"
+      (reference "#PWR063") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec5666"
+      (reference "#PWR064") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec58a0"
+      (reference "#PWR065") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058030fd0"
+      (reference "#PWR066") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058031026"
+      (reference "#PWR067") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058031908"
+      (reference "#PWR068") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000580379c8"
+      (reference "#PWR069") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf6d"
+      (reference "#PWR070") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d2eb"
+      (reference "#PWR071") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f36b"
+      (reference "#PWR072") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005804611d"
+      (reference "#PWR073") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005804349c"
+      (reference "#PWR074") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000589621ef"
+      (reference "#PWR075") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058a30a79"
+      (reference "#PWR076") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058b62a70"
+      (reference "#PWR077") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058030e40"
+      (reference "C18") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec89e3"
+      (reference "D17") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec881c"
+      (reference "D18") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec8426"
+      (reference "D19") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d315"
+      (reference "D20") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec80dc"
+      (reference "D21") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf97"
+      (reference "D22") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec7aa8"
+      (reference "D23") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005895d97b"
+      (reference "IC1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058b75cb0"
+      (reference "P7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec6312"
+      (reference "P10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058baedc5"
+      (reference "P50") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000580379ca"
+      (reference "Q14") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000580379c9"
+      (reference "Q15") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf5f"
+      (reference "Q16") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf65"
+      (reference "Q17") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d2dd"
+      (reference "Q18") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d2e3"
+      (reference "Q19") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f363"
+      (reference "Q20") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f35d"
+      (reference "Q21") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058046116"
+      (reference "Q22") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058046110"
+      (reference "Q23") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a34"
+      (reference "R1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a42"
+      (reference "R2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3c"
+      (reference "R5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f388"
+      (reference "R11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a44"
+      (reference "R17") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000580379c5"
+      (reference "R19") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3d"
+      (reference "R20") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3e"
+      (reference "R21") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a43"
+      (reference "R22") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a36"
+      (reference "R23") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000580379c6"
+      (reference "R24") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e18a65"
+      (reference "R25") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf91"
+      (reference "R38") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058a302bb"
+      (reference "R43") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f393"
+      (reference "R74") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf86"
+      (reference "R75") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d30f"
+      (reference "R76") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec35a7"
+      (reference "R77") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec351a"
+      (reference "R78") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005804613a"
+      (reference "R79") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d304"
+      (reference "R80") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058046145"
+      (reference "R81") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058e45242"
+      (reference "R134") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3a"
+      (reference "SP1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058b6246b"
+      (reference "SP2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e2b21b"
+      (reference "#PWR0213") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e2b554"
+      (reference "#PWR0214") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e2b6c2"
+      (reference "#PWR0215") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb0"
+      (reference "B1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb1"
+      (reference "B2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb2"
+      (reference "B3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb3"
+      (reference "B4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb4"
+      (reference "B5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb5"
+      (reference "B6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb6"
+      (reference "B7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb7"
+      (reference "B8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eb9"
+      (reference "B9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12eba"
+      (reference "B10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12ebb"
+      (reference "B11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12ebc"
+      (reference "B12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12ebd"
+      (reference "B13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12ebe"
+      (reference "B14") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058701f26"
+      (reference "B15") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058717023"
+      (reference "B16") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12ec4"
+      (reference "B17") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000057e12ec5"
+      (reference "B18") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058723a33"
+      (reference "B19") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058723a3a"
+      (reference "B20") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-0000587511a7"
+      (reference "B21") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-0000587511ae"
+      (reference "B22") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058cbd1e5"
+      (reference "B23") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058cbd2a4"
+      (reference "B24") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057dcca39"
+      (reference "#PWR029") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057dcd73b"
+      (reference "#PWR030") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057de0935"
+      (reference "#PWR031") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea1f8b"
+      (reference "#PWR032") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea255c"
+      (reference "#PWR033") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea2cc1"
+      (reference "#PWR034") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee168"
+      (reference "#PWR035") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee16e"
+      (reference "#PWR036") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580f52d4"
+      (reference "#PWR037") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000581268f1"
+      (reference "#PWR038") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000581268f7"
+      (reference "#PWR039") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000581285e2"
+      (reference "#PWR040") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058508c33"
+      (reference "#PWR041") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058744dbf"
+      (reference "#PWR042") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058745514"
+      (reference "#PWR043") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005874697e"
+      (reference "#PWR044") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058aefded"
+      (reference "#PWR045") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af09e0"
+      (reference "#PWR046") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af09e6"
+      (reference "#PWR047") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7dfa"
+      (reference "#PWR048") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5b8"
+      (reference "#PWR049") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5c9"
+      (reference "#PWR050") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5cf"
+      (reference "#PWR051") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd601"
+      (reference "#PWR052") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af92a6"
+      (reference "#PWR053") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af92b7"
+      (reference "#PWR054") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af92bd"
+      (reference "#PWR055") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af97b7"
+      (reference "#PWR056") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005874550e"
+      (reference "C34") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058744d4b"
+      (reference "C35") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058746978"
+      (reference "C36") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea37ac"
+      (reference "JP2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea144e"
+      (reference "JP4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580f42e7"
+      (reference "JP5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee162"
+      (reference "JP6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000581268eb"
+      (reference "JP7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058508c2d"
+      (reference "JP9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5c3"
+      (reference "JP10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af09da"
+      (reference "JP11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af92b1"
+      (reference "JP12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005813ed1e"
+      (reference "P5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000581a37ad"
+      (reference "P44") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5fa"
+      (reference "Q24") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7df3"
+      (reference "Q25") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5b1"
+      (reference "Q26") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058aee7b4"
+      (reference "Q27") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af97b0"
+      (reference "Q28") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af929f"
+      (reference "Q29") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5ec"
+      (reference "R6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7de5"
+      (reference "R7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5e1"
+      (reference "R8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7dda"
+      (reference "R14") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd596"
+      (reference "R15") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5a1"
+      (reference "R16") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee19d"
+      (reference "R91") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee1c7"
+      (reference "R92") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af97a2"
+      (reference "R93") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af9797"
+      (reference "R94") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af9285"
+      (reference "R95") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af9290"
+      (reference "R96") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057e169d4"
+      (reference "U2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057e15ffb"
+      (reference "U11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dce982"
+      (reference "#PWR078") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dcf086"
+      (reference "#PWR079") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dcf4bf"
+      (reference "#PWR080") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dcf979"
+      (reference "#PWR081") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dcfddd"
+      (reference "#PWR082") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd036e"
+      (reference "#PWR083") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd09d6"
+      (reference "#PWR084") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd0d63"
+      (reference "#PWR085") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd106f"
+      (reference "#PWR086") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd1b41"
+      (reference "#PWR087") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd2cae"
+      (reference "#PWR088") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd2f39"
+      (reference "#PWR089") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd339d"
+      (reference "#PWR090") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd3f0f"
+      (reference "#PWR091") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd441f"
+      (reference "#PWR092") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd492f"
+      (reference "#PWR093") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd4f41"
+      (reference "#PWR094") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd5fc9"
+      (reference "#PWR095") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dd6356"
+      (reference "#PWR096") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dea72f"
+      (reference "#PWR097") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dfa6db"
+      (reference "#PWR098") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dfb063"
+      (reference "#PWR099") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057ed41b9"
+      (reference "#PWR0100") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057ec39f3"
+      (reference "#PWR0101") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fa4e2d"
+      (reference "#PWR0102") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fa6207"
+      (reference "#PWR0103") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fa70b3"
+      (reference "#PWR0104") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fa764a"
+      (reference "#PWR0105") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fa78a8"
+      (reference "#PWR0106") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fa9f8f"
+      (reference "#PWR0107") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057faaa42"
+      (reference "#PWR0108") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057faf9cb"
+      (reference "#PWR0109") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fb0582"
+      (reference "#PWR0110") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fb1146"
+      (reference "#PWR0111") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a3d33d"
+      (reference "#PWR0112") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a3df49"
+      (reference "#PWR0113") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a3eb55"
+      (reference "#PWR0114") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a3f7d3"
+      (reference "#PWR0115") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a406fd"
+      (reference "#PWR0116") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a43bcb"
+      (reference "#PWR0117") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a3c011"
+      (reference "#PWR0118") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a45b81"
+      (reference "#PWR0119") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a47405"
+      (reference "#PWR0120") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a493a9"
+      (reference "#PWR0121") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a49ded"
+      (reference "#PWR0122") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a4ce11"
+      (reference "#PWR0123") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a4d61b"
+      (reference "#PWR0124") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a4f3df"
+      (reference "#PWR0125") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a5005d"
+      (reference "#PWR0126") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b20a87"
+      (reference "#PWR0127") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b23559"
+      (reference "#PWR0128") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b36aba"
+      (reference "#PWR0129") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e5457d"
+      (reference "#PWR0130") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4dde7"
+      (reference "C2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e502be"
+      (reference "D75") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058ef784d"
+      (reference "D76") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4e1eb"
+      (reference "JP13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dfb555"
+      (reference "P1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dfadb7"
+      (reference "P2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dfa388"
+      (reference "P3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df59b2"
+      (reference "P4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057ec2951"
+      (reference "P6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fad98b"
+      (reference "P8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057faf9d8"
+      (reference "P9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dfe6ee"
+      (reference "P11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df79d9"
+      (reference "P12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e00067"
+      (reference "P13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df4e12"
+      (reference "P14") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df8adc"
+      (reference "P19") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dc8b9f"
+      (reference "P20") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df6dd3"
+      (reference "P21") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df4802"
+      (reference "P22") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057ed41b1"
+      (reference "P23") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df18cc"
+      (reference "P25") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df0e70"
+      (reference "P26") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a54ff6"
+      (reference "P27") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df273f"
+      (reference "P28") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df8200"
+      (reference "P30") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df63c0"
+      (reference "P31") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df9188"
+      (reference "P35") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dff4ac"
+      (reference "P40") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057df9d1a"
+      (reference "P41") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fb058e"
+      (reference "P46") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057fb1152"
+      (reference "P48") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058ea9d53"
+      (reference "P51") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4d795"
+      (reference "Q38") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dc8c57"
+      (reference "R28") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057faf9c4"
+      (reference "R30") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dc8c59"
+      (reference "R31") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a2bda5"
+      (reference "R39") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4daad"
+      (reference "R135") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4d93d"
+      (reference "R136") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058ef6bc6"
+      (reference "R137") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a980a6/00000000-0000-0000-0000-000058b21f53"
+      (reference "#PWR0163") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a980a6/00000000-0000-0000-0000-000058b21f52"
+      (reference "Q35") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a980a6/00000000-0000-0000-0000-000058ab0863"
+      (reference "R119") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a980a6/00000000-0000-0000-0000-000058b21f50"
+      (reference "R120") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e6fb3b/00000000-0000-0000-0000-000057fa7dcf"
+      (reference "#PWR0131") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e6fb3b/00000000-0000-0000-0000-000057eb0392"
+      (reference "Q5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e6fb3b/00000000-0000-0000-0000-000057e6fcb7"
+      (reference "R58") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e6fb3b/00000000-0000-0000-0000-000057e6fcae"
+      (reference "R59") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a8fee2/00000000-0000-0000-0000-000058ab0869"
+      (reference "#PWR0161") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a8fee2/00000000-0000-0000-0000-000058ab0866"
+      (reference "Q33") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a8fee2/00000000-0000-0000-0000-000058ab0865"
+      (reference "R115") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a8fee2/00000000-0000-0000-0000-000058ab0861"
+      (reference "R116") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f4/00000000-0000-0000-0000-000057fa8598"
+      (reference "#PWR0133") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f4/00000000-0000-0000-0000-000057eb00c5"
+      (reference "Q7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f4/00000000-0000-0000-0000-000057e6fcb4"
+      (reference "R62") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f4/00000000-0000-0000-0000-000058ab0860"
+      (reference "R63") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a93bfe/00000000-0000-0000-0000-000058ab086a"
+      (reference "#PWR0162") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a93bfe/00000000-0000-0000-0000-000058ab0867"
+      (reference "Q34") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a93bfe/00000000-0000-0000-0000-000058ab0864"
+      (reference "R117") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a93bfe/00000000-0000-0000-0000-000058ab0862"
+      (reference "R118") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71100/00000000-0000-0000-0000-000057fa81d9"
+      (reference "#PWR0132") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71100/00000000-0000-0000-0000-000057eb0618"
+      (reference "Q6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71100/00000000-0000-0000-0000-000057e6fcb5"
+      (reference "R60") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71100/00000000-0000-0000-0000-000057e6fcaf"
+      (reference "R61") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b25236/00000000-0000-0000-0000-000058ab086b"
+      (reference "#PWR0165") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b25236/00000000-0000-0000-0000-000058b439d5"
+      (reference "Q37") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b25236/00000000-0000-0000-0000-000058b21f51"
+      (reference "R123") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b25236/00000000-0000-0000-0000-000057e6fcb0"
+      (reference "R124") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b1efac/00000000-0000-0000-0000-000058b439d6"
+      (reference "#PWR0164") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b1efac/00000000-0000-0000-0000-000058ab0868"
+      (reference "Q36") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b1efac/00000000-0000-0000-0000-000058b439d7"
+      (reference "R121") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b1efac/00000000-0000-0000-0000-000058b439d4"
+      (reference "R122") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f8/00000000-0000-0000-0000-000057fa8612"
+      (reference "#PWR0134") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f8/00000000-0000-0000-0000-000057eb0805"
+      (reference "Q8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f8/00000000-0000-0000-0000-000057e6fcb6"
+      (reference "R64") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f8/00000000-0000-0000-0000-000057e6fcad"
+      (reference "R65") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cbc/00000000-0000-0000-0000-000057fa86a1"
+      (reference "#PWR0135") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cbc/00000000-0000-0000-0000-000057eb0a33"
+      (reference "Q9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cbc/00000000-0000-0000-0000-0000582a3c4f"
+      (reference "R66") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cbc/00000000-0000-0000-0000-0000582a3c4e"
+      (reference "R67") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc0/00000000-0000-0000-0000-000057fa86f1"
+      (reference "#PWR0136") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc0/00000000-0000-0000-0000-000057eb0bc7"
+      (reference "Q10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc0/00000000-0000-0000-0000-000057e6fcb8"
+      (reference "R68") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc0/00000000-0000-0000-0000-000057e6fcb1"
+      (reference "R69") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc4/00000000-0000-0000-0000-000057fa878c"
+      (reference "#PWR0137") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc4/00000000-0000-0000-0000-000057eb0deb"
+      (reference "Q11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc4/00000000-0000-0000-0000-000057e6fcb3"
+      (reference "R70") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc4/00000000-0000-0000-0000-000057e6fcb2"
+      (reference "R71") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f36bea"
+      (reference "#PWR0138") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f37705"
+      (reference "#PWR0139") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f39a30"
+      (reference "#PWR0140") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f3a684"
+      (reference "#PWR0141") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e260"
+      (reference "#PWR0142") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e268"
+      (reference "#PWR0143") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e531"
+      (reference "#PWR0144") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e539"
+      (reference "#PWR0145") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f9f288"
+      (reference "#PWR0146") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f9f31c"
+      (reference "#PWR0147") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f9f52a"
+      (reference "#PWR0148") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f9f7c4"
+      (reference "#PWR0149") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbf2ac"
+      (reference "#PWR0150") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbf786"
+      (reference "#PWR0151") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbfd5d"
+      (reference "#PWR0152") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbfd64"
+      (reference "#PWR0153") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbfdb7"
+      (reference "#PWR0154") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbfdbe"
+      (reference "#PWR0155") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbff0d"
+      (reference "#PWR0156") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbff14"
+      (reference "#PWR0157") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbfdb1"
+      (reference "C14") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbf162"
+      (reference "C15") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbfd57"
+      (reference "C16") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057fbff07"
+      (reference "C17") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f3ce2a"
+      (reference "S1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e28a"
+      (reference "S2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e55b"
+      (reference "S3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f328fb"
+      (reference "U4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f32953"
+      (reference "U5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e250"
+      (reference "U5") (unit 2)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e521"
+      (reference "U5") (unit 3)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f32b77"
+      (reference "U5") (unit 4)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e24a"
+      (reference "U9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057f2ff53/00000000-0000-0000-0000-000057f7e516"
+      (reference "U12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a9e9c/00000000-0000-0000-0000-000058ab192f"
+      (reference "#PWR0160") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a9e9c/00000000-0000-0000-0000-000058ab1303"
+      (reference "Q32") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a9e9c/00000000-0000-0000-0000-0000582ab581"
+      (reference "R101") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a9e9c/00000000-0000-0000-0000-0000582ab580"
+      (reference "R102") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a4f4e/00000000-0000-0000-0000-000058ab10d8"
+      (reference "#PWR0159") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a4f4e/00000000-0000-0000-0000-000058ab0f52"
+      (reference "Q31") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a4f4e/00000000-0000-0000-0000-0000582a54b1"
+      (reference "R99") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a4f4e/00000000-0000-0000-0000-0000582a54b0"
+      (reference "R100") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a0806/00000000-0000-0000-0000-000058ab0e19"
+      (reference "#PWR0158") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a0806/00000000-0000-0000-0000-000058ab0ae8"
+      (reference "Q30") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a0806/00000000-0000-0000-0000-000057e6fff8"
+      (reference "R97") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a0806/00000000-0000-0000-0000-000057e6fff7"
+      (reference "R98") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e646ff/00000000-0000-0000-0000-000057e64ec6"
+      (reference "#PWR0273") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e646ff/00000000-0000-0000-0000-000057e64bd0"
+      (reference "D7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e646ff/00000000-0000-0000-0000-000057e9a340"
+      (reference "Q4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e646ff/00000000-0000-0000-0000-000057e64a6c"
+      (reference "R57") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057db02c7"
+      (reference "#PWR0180") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057db1ac1"
+      (reference "#PWR0181") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dc5acc"
+      (reference "#PWR0182") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dc997d"
+      (reference "#PWR0183") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dca6f9"
+      (reference "#PWR0184") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dca959"
+      (reference "#PWR0185") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dd92e3"
+      (reference "#PWR0186") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a003"
+      (reference "#PWR0187") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0d4de"
+      (reference "#PWR0188") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0db3d"
+      (reference "#PWR0189") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa2058"
+      (reference "#PWR0190") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8bff"
+      (reference "#PWR0191") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac703"
+      (reference "#PWR0192") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd7a"
+      (reference "#PWR0193") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3334"
+      (reference "#PWR0194") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3386"
+      (reference "#PWR0195") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33af"
+      (reference "#PWR0196") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33d8"
+      (reference "#PWR0197") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3453"
+      (reference "#PWR0198") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff2764"
+      (reference "#PWR0199") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff62dc"
+      (reference "#PWR0200") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff75fe"
+      (reference "#PWR0201") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff94ec"
+      (reference "#PWR0202") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffa784"
+      (reference "#PWR0203") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffbe99"
+      (reference "#PWR0204") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffd73f"
+      (reference "#PWR0205") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-00005800031e"
+      (reference "#PWR0206") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058002cb1"
+      (reference "#PWR0207") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058004554"
+      (reference "#PWR0208") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058005b8c"
+      (reference "#PWR0209") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-0000580072f3"
+      (reference "#PWR0210") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058007c1d"
+      (reference "#PWR0211") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058031089"
+      (reference "#PWR0212") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dfedc9"
+      (reference "C9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a89512"
+      (reference "D5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a629d6"
+      (reference "D6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa204b"
+      (reference "D8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a002"
+      (reference "D11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa2064"
+      (reference "D16") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a004"
+      (reference "D24") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058031094"
+      (reference "D25") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058031082"
+      (reference "D26") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058007c28"
+      (reference "D27") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058007c16"
+      (reference "D28") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-0000580072ec"
+      (reference "D29") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-0000580072fe"
+      (reference "D30") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058005b85"
+      (reference "D31") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0d4d4"
+      (reference "D32") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0db33"
+      (reference "D33") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058005b97"
+      (reference "D34") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0d4ea"
+      (reference "D35") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0db49"
+      (reference "D36") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-00005800454d"
+      (reference "D37") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-00005800455f"
+      (reference "D38") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058002caa"
+      (reference "D39") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058002cbc"
+      (reference "D40") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058000317"
+      (reference "D41") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058000329"
+      (reference "D42") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffd738"
+      (reference "D43") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffd74a"
+      (reference "D44") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffbe92"
+      (reference "D45") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffbea4"
+      (reference "D46") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffa77d"
+      (reference "D47") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffa78f"
+      (reference "D48") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff75f7"
+      (reference "D49") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff7609"
+      (reference "D50") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff94e5"
+      (reference "D51") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff94f7"
+      (reference "D52") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd73"
+      (reference "D53") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd85"
+      (reference "D54") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac6fc"
+      (reference "D55") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac70e"
+      (reference "D56") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff275d"
+      (reference "D57") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff276f"
+      (reference "D58") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8bf8"
+      (reference "D59") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8c0a"
+      (reference "D60") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff62d5"
+      (reference "D61") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff62e7"
+      (reference "D62") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc337f"
+      (reference "D63") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3391"
+      (reference "D64") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc344c"
+      (reference "D65") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc345e"
+      (reference "D66") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33a8"
+      (reference "D67") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33ba"
+      (reference "D68") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc332d"
+      (reference "D69") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc333f"
+      (reference "D70") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33d1"
+      (reference "D71") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33e3"
+      (reference "D72") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058dd7faf"
+      (reference "D74") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a001"
+      (reference "R3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa2040"
+      (reference "R4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd68"
+      (reference "R26") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3441"
+      (reference "R27") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a65591"
+      (reference "R29") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3322"
+      (reference "R50") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a6469a"
+      (reference "R54") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac6f1"
+      (reference "R82") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a787d8"
+      (reference "R83") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8bed"
+      (reference "R84") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a78080"
+      (reference "R85") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a7a83a"
+      (reference "R86") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a7c052"
+      (reference "R87") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33c6"
+      (reference "R88") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc339d"
+      (reference "R89") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3374"
+      (reference "R90") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a63e2b"
+      (reference "R103") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a89520"
+      (reference "R104") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a7bf75"
+      (reference "R105") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a7d74d"
+      (reference "R106") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a7f07d"
+      (reference "R107") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a7e859"
+      (reference "R108") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a80a5d"
+      (reference "R109") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a83019"
+      (reference "R110") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a89dd4"
+      (reference "R111") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a88518"
+      (reference "R112") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a89531"
+      (reference "R113") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a87246"
+      (reference "R114") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e1d162"
+      (reference "R125") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e1f2dd"
+      (reference "R126") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e20962"
+      (reference "R127") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e2325b"
+      (reference "R128") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e3014a"
+      (reference "R129") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e2a3cb"
+      (reference "R130") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e2ee48"
+      (reference "R131") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e29233"
+      (reference "R132") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058e350cd"
+      (reference "R133") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dfed57"
+      (reference "SHIELD1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057e82dc0"
+      (reference "#PWR0274") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057e82977"
+      (reference "D3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057f1a898"
+      (reference "Q12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057f1a714"
+      (reference "Q13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057e82249"
+      (reference "R72") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057e82512"
+      (reference "R73") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e19c6c"
+      (reference "#PWR0217") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e3b550"
+      (reference "#PWR0218") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59aaf"
+      (reference "#PWR0219") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59eaa"
+      (reference "#PWR0220") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59eff"
+      (reference "#PWR0221") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f3e"
+      (reference "#PWR0222") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61fad"
+      (reference "#PWR0223") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61ffd"
+      (reference "#PWR0224") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e70570"
+      (reference "#PWR0225") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4be4e"
+      (reference "#PWR0226") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4c308"
+      (reference "#PWR0227") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4c7a8"
+      (reference "#PWR0228") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4c7cc"
+      (reference "#PWR0229") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4d148"
+      (reference "#PWR0230") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9a011"
+      (reference "#PWR0231") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9a1f9"
+      (reference "#PWR0232") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9ad20"
+      (reference "#PWR0233") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9b116"
+      (reference "#PWR0234") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9b686"
+      (reference "#PWR0235") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9bba2"
+      (reference "#PWR0236") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9c310"
+      (reference "#PWR0237") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9c36a"
+      (reference "#PWR0238") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9c7b4"
+      (reference "#PWR0239") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9c80e"
+      (reference "#PWR0240") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9cbb0"
+      (reference "#PWR0241") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e9cd5a"
+      (reference "#PWR0242") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f95a65"
+      (reference "#PWR0243") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f961d9"
+      (reference "#PWR0244") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f963af"
+      (reference "#PWR0245") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f96b4d"
+      (reference "#PWR0246") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f970e7"
+      (reference "#PWR0247") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f97a47"
+      (reference "#PWR0248") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f98281"
+      (reference "#PWR0249") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9a77d"
+      (reference "#PWR0250") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9b2ff"
+      (reference "#PWR0251") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9c14b"
+      (reference "#PWR0252") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9cbd1"
+      (reference "#PWR0253") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9d38d"
+      (reference "#PWR0254") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9d8fd"
+      (reference "#PWR0255") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057f9e0b9"
+      (reference "#PWR0256") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058712451"
+      (reference "#PWR0257") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058713ee0"
+      (reference "#PWR0258") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058714811"
+      (reference "#PWR0259") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587161ba"
+      (reference "#PWR0260") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058716f2e"
+      (reference "#PWR0261") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058713277"
+      (reference "#PWR0262") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715059"
+      (reference "#PWR0263") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715255"
+      (reference "#PWR0264") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715305"
+      (reference "#PWR0265") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715525"
+      (reference "#PWR0266") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587155e5"
+      (reference "#PWR0267") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587169dd"
+      (reference "#PWR0268") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058714d20"
+      (reference "#PWR0269") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587441cc"
+      (reference "#PWR0270") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-00005895731c"
+      (reference "#PWR0271") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587141a4"
+      (reference "#PWR0272") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-00005871249f"
+      (reference "C19") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587141aa"
+      (reference "C20") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058714817"
+      (reference "C21") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058714d26"
+      (reference "C22") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587161c0"
+      (reference "C23") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058716f34"
+      (reference "C24") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058713ee6"
+      (reference "C25") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058713285"
+      (reference "C26") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715067"
+      (reference "C27") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715263"
+      (reference "C28") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715313"
+      (reference "C29") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000058715533"
+      (reference "C30") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587155f3"
+      (reference "C31") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587169eb"
+      (reference "C32") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-0000587441c6"
+      (reference "C33") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-00005895812e"
+      (reference "I2C1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e19c7d"
+      (reference "I2C2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4be59"
+      (reference "I2C3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4c313"
+      (reference "I2C4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4c7b3"
+      (reference "I2C5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4c7d7"
+      (reference "I2C6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e4d153"
+      (reference "I2C7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59a9b"
+      (reference "JC2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59e96"
+      (reference "JC3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59eeb"
+      (reference "JC4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f2a"
+      (reference "JC5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f9b"
+      (reference "JC6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61feb"
+      (reference "JC7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e33555"
+      (reference "PC1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59a7d"
+      (reference "PC2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59e78"
+      (reference "PC3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59ecd"
+      (reference "PC4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f0c"
+      (reference "PC5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f7d"
+      (reference "PC6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61fcd"
+      (reference "PC7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59a8a"
+      (reference "R40") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59e85"
+      (reference "R41") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59eda"
+      (reference "R42") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59a95"
+      (reference "R44") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59e90"
+      (reference "R45") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59ee5"
+      (reference "R46") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e3d4d7"
+      (reference "R47") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e3d4e2"
+      (reference "R48") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61fe5"
+      (reference "R49") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f24"
+      (reference "R51") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f95"
+      (reference "R52") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61fda"
+      (reference "R53") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f19"
+      (reference "R55") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f8a"
+      (reference "R56") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e70556"
+      (reference "U8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df6841"
+      (reference "#PWR0166") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057db0947"
+      (reference "#PWR0167") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057db0b58"
+      (reference "#PWR0168") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057dc5072"
+      (reference "#PWR0169") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057dc50ac"
+      (reference "#PWR0170") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057dd8587"
+      (reference "#PWR0171") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057dd8631"
+      (reference "#PWR0172") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b70"
+      (reference "#PWR0173") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b73"
+      (reference "#PWR0174") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52ba9"
+      (reference "#PWR0175") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52bbf"
+      (reference "#PWR0176") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e9669c"
+      (reference "#PWR0177") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e966d4"
+      (reference "#PWR0178") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057efcc6f"
+      (reference "#PWR0179") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b68"
+      (reference "C1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b69"
+      (reference "C4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52ba7"
+      (reference "C5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52ba8"
+      (reference "C6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b72"
+      (reference "C7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b71"
+      (reference "C8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52bc0"
+      (reference "C13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b65"
+      (reference "D4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b64"
+      (reference "F1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e5d727"
+      (reference "JP1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057efb361"
+      (reference "P24") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000058acc03e"
+      (reference "P29") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df683e"
+      (reference "P32") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df683d"
+      (reference "P33") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df683f"
+      (reference "P34") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057efa6bf"
+      (reference "P38") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057efcc69"
+      (reference "P45") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df689f"
+      (reference "P47") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df681d"
+      (reference "U1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b67"
+      (reference "U6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52ba6"
+      (reference "U7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcb31a"
+      (reference "#PWR013") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcb496"
+      (reference "#PWR014") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcb679"
+      (reference "#PWR015") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcb703"
+      (reference "#PWR016") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcb93a"
+      (reference "#PWR017") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcbaed"
+      (reference "#PWR018") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dcbba3"
+      (reference "#PWR019") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dc2092"
+      (reference "#PWR020") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dc50b6"
+      (reference "#PWR021") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dc5b70"
+      (reference "#PWR022") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057d96b1d"
+      (reference "Dual1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057d96b33"
+      (reference "Dual2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057d96c22"
+      (reference "JP3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057e0ca53"
+      (reference "P15") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057e0df43"
+      (reference "P18") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057e067ec"
+      (reference "P36") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057e0afde"
+      (reference "P37") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057e0418f"
+      (reference "P39") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057db3da6"
+      (reference "#PWR025") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057db3da7"
+      (reference "#PWR026") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057e11ffa"
+      (reference "BY5") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057e1223e"
+      (reference "BY6") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057e115fe"
+      (reference "BY7") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057e11d57"
+      (reference "BY8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057db3da3"
+      (reference "CC2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057db3da2"
+      (reference "RL2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8845"
+      (reference "C10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8937"
+      (reference "DKE1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8844"
+      (reference "PRFA1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b80"
+      (reference "#PWR027") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b81"
+      (reference "#PWR028") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057e134a5"
+      (reference "BY9") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057e13213"
+      (reference "BY10") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057e127f7"
+      (reference "BY11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057e2cac7"
+      (reference "BY12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b7d"
+      (reference "CC3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b7c"
+      (reference "RL3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d7"
+      (reference "C11") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d8"
+      (reference "DKE2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d6"
+      (reference "PRFA2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057db0c47"
+      (reference "#PWR023") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057db0d49"
+      (reference "#PWR024") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057e10f58"
+      (reference "BY1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057e10ca0"
+      (reference "BY2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057e0fcef"
+      (reference "BY3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057e10963"
+      (reference "BY4") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057dafe10"
+      (reference "CC1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057dafd0d"
+      (reference "RL1") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94ed"
+      (reference "#PWR0216") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94ec"
+      (reference "C12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dda0d5"
+      (reference "D2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e89203"
+      (reference "D12") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e85f65"
+      (reference "D13") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057ddcd22"
+      (reference "D14") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e86a66"
+      (reference "D15") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-00005834de11"
+      (reference "JP8") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e9b1cb"
+      (reference "Q2") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e98aaa"
+      (reference "Q3") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94e5"
+      (reference "R32") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94e7"
+      (reference "R33") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94ea"
+      (reference "R34") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94e9"
+      (reference "R35") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94f0"
+      (reference "R36") (unit 1)
+    )
+    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94e3"
+      (reference "R37") (unit 1)
+    )
+  )
+)

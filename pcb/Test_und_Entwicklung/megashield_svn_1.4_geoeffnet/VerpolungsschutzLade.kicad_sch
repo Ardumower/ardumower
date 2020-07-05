@@ -1,0 +1,466 @@
+(kicad_sch (version 20200608) (host eeschema "(5.99.0-1946-g60915fbc7)")
+
+  (page 32 33)
+
+  (paper "A4")
+
+  (title_block
+    (title "Ardumower shield SVN Version")
+    (date "2017-04-13")
+    (rev "1.3")
+    (company "ML AG JL UZ")
+    (comment 1 "Unterspannungsschutz von AlexanderG")
+  )
+
+  (lib_symbols
+    (symbol "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn" (power) (pin_names (offset 0))
+      (property "Referenz" "#PWR" (id 0) (at 0 -6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Wert" "GND-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "GND-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54)
+               (xy -1.27 -1.27) (xy 0 -1.27)
+          )
+          (stroke (width 0)) (fill (type none))
+        )
+      )
+      (symbol "GND-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:IRF9540N-RESCUE-ardumower_mega_shield_svn" (pin_names (offset 0))
+      (property "Referenz" "Q" (id 0) (at 6.35 1.905 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Wert" "IRF9540N-RESCUE-ardumower_mega_shield_svn" (id 1) (at 6.35 0 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "TO-220" (id 2) (at 6.35 -1.905 0)
+        (effects (font (size 1.27 1.27) italic) (justify left) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "ki_fp_filters" "TO-220*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "IRF9540N-RESCUE-ardumower_mega_shield_svn_0_1"
+        (circle (center 1.27 0) (radius 2.8194) (stroke (width 0.3556)) (fill (type none)))
+        (circle (center 1.27 0) (radius 3.175) (stroke (width 0)) (fill (type none)))
+        (circle (center 2.54 -1.27) (radius 0.127) (stroke (width 0)) (fill (type none)))
+        (circle (center 2.54 1.27) (radius 0.127) (stroke (width 0)) (fill (type none)))
+        (polyline
+          (pts (xy 0.635 -1.016) (xy 0.635 -1.651))
+          (stroke (width 0.508)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.635 0.381) (xy 0.635 -0.381))
+          (stroke (width 0.508)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.635 1.651) (xy 0.635 1.016))
+          (stroke (width 0.508)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 3.048 -0.254) (xy 2.921 -0.381))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 3.175 2.667) (xy 3.556 3.175))
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 3.302 -2.54) (xy 3.683 -3.048))
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 3.556 -0.254) (xy 3.048 -0.254))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 3.556 -0.254) (xy 3.683 -0.127))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 4.191 -1.524) (xy 4.699 -1.778))
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 4.191 1.524) (xy 4.699 1.905))
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 4.445 0) (xy 5.207 0))
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0 1.524) (xy 0 -1.524) (xy 0 -1.524))
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.762 -1.27) (xy 2.54 -1.27) (xy 2.54 -2.54) (xy 2.54 -2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.762 0) (xy 2.54 0) (xy 2.54 -1.27) (xy 2.54 -1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 0.762 1.27) (xy 2.54 1.27) (xy 2.54 2.54) (xy 2.54 2.54))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 1.397 0.381) (xy 1.397 -0.381) (xy 2.413 0) (xy 1.397 0.381))
+          (stroke (width 0)) (fill (type outline))
+        )
+        (polyline
+          (pts (xy 2.54 1.27) (xy 3.302 1.27) (xy 3.302 -1.27) (xy 2.54 -1.27))
+          (stroke (width 0)) (fill (type none))
+        )
+        (polyline
+          (pts (xy 3.302 -0.254) (xy 3.556 0.381) (xy 3.048 0.381) (xy 3.302 -0.254))
+          (stroke (width 0)) (fill (type outline))
+        )
+      )
+      (symbol "IRF9540N-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin input line (at -5.08 -1.27 0) (length 5.08)
+          (name "G" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 5.08 270) (length 2.54)
+          (name "D" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 -5.08 90) (length 2.54)
+          (name "S" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names (offset 0.254) hide)
+      (property "Referenz" "R" (id 0) (at 0.762 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Wert" "R_Small-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0.762 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "R_*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "R_Small-RESCUE-ardumower_mega_shield_svn_0_1"
+        (rectangle (start -0.762 1.778) (end 0.762 -1.778)
+          (stroke (width 0.2032)) (fill (type none))
+        )
+      )
+      (symbol "R_Small-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at 0 2.54 270) (length 0.762)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 0 -2.54 90) (length 0.762)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "ardumower-mega-shield-svn-rescue:ZENER-RESCUE-ardumower_mega_shield_svn" (pin_numbers hide) (pin_names hide)
+      (property "Referenz" "D" (id 0) (at 0 2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Wert" "ZENER-RESCUE-ardumower_mega_shield_svn" (id 1) (at 0 -2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 0 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Datenblatt" "" (id 3) (at 0 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "ki_fp_filters" "D?\nSO*\nSM*" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "ZENER-RESCUE-ardumower_mega_shield_svn_0_1"
+        (polyline
+          (pts (xy -1.778 1.27) (xy -1.27 0.762) (xy -1.27 -0.762) (xy -0.762 -1.27)
+               (xy -0.762 -1.27)
+          )
+          (stroke (width 0.2032)) (fill (type none))
+        )
+        (polyline
+          (pts (xy -1.27 0) (xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0)
+               (xy -1.27 0)
+          )
+          (stroke (width 0)) (fill (type outline))
+        )
+      )
+      (symbol "ZENER-RESCUE-ardumower_mega_shield_svn_1_1"
+        (pin passive line (at -5.08 0 0) (length 3.81)
+          (name "K" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 5.08 0 180) (length 3.81)
+          (name "A" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+  )
+
+  (junction (at 124.587 81.534))
+  (junction (at 134.366 69.977))
+
+  (wire (pts (xy 113.792 69.977) (xy 118.237 69.977))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 124.587 77.597) (xy 124.587 81.534))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 124.587 81.534) (xy 124.587 84.074))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 124.587 91.948) (xy 124.587 89.154))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 128.397 69.977) (xy 134.366 69.977))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 134.366 69.977) (xy 139.192 69.977))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 134.366 71.374) (xy 134.366 69.977))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+  (wire (pts (xy 134.366 81.534) (xy 124.587 81.534))
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+  )
+
+  (image (at -61.087 70.485) (scale 3)
+    (data
+      iVBORw0KGgoAAAANSUhEUgAAAY8AAADjCAMAAABKBWhAAAAAA3NCSVQICAjb4U/gAAADAFBMVEX/
+      ///a2trl5eXPz8/m5ubS0tKAgICbm5uYmJjr6+vAwMCHh4eUlJSNjY2urq6RkZGGhoaDg4Ompqbg
+      4ODHx8fZ2dmenp75+fmFhYW5ubmEhISTk5Py8vLW1takpKS4uLiioqKBgYHs7Oyvr6+WlpaIiIjn
+      5+fU1NSnp6eKioqCgoKrq6u0tLSSkpLb29uZmZmwsLCgoKDExMSysrLIyMiampqMjIyQkJCOjo7L
+      y8ucnJzMzMy8vLze3t6VlZX59vaZWlq1jo7y7e3PubmEISGAAACkcHCaXV2HLCzSvb3r4+OCFBSw
+      hoapenqFJCTAoaGvg4O8mpq4k5OvhYWTTU2EHh6xiYnIra3l2dmbX1+RSEiILi6DGhqIMDCPRESU
+      UFCKNjaMOzuBEBCDGBj2+fbZ5dmibW3t8u3j6+NQlFAYghi5z7nWxMQphikcgxzP3s8AgACtyK2h
+      aWmmc3OtgICmdHS9nZ2yy7JknmRwpHBMkkwUghSDroPZyMiJsYnE1sRsomysxqxheEF7LhmKRD+J
+      MjLEqKiOPz+DHByNPj6EIiKMRUFjdD4agxoehB6OtY4khSQuiC42ijZRXQCeZGSrfX1YVgCTuJOB
+      EhLez8+cYGCSSkrEp6fKsLCABgbLsrLg09Pg0dF2p3ahwKE4izgQgRCBDQ0mhiaQRkYzcgDHrKyA
+      AgKKNDSACgqBDg6NPT2oqKi4lJTGqqqUuJQ+jT7I2ciZu5mFr4U9jT290r1Ej0SMtIyoxKjK2sqn
+      xKeFsIWGsIaavJp+q37J2slVl1UFgAUKgAo0ijRKkkoshyxYmFgSghJOlE4IgAjB1MFamVoMgQxg
+      nGDT4NNWl1ZcmlxjnmPc5tzR4NF0pnRHkEedvZ1CjkJuOQBwNgBjnWOwyrB6qXoxiDEGgAZFkEWv
+      yK8ghCC0zLSnw6dTllPl7eVzpnNvpG+ArYB8qnw7jDt/rH+JsolBjkEDgAMXghdwo3ASgRIjhSOE
+      HR2QtpDaysqCFhafn5/VwcGHKyt9FAB+EgABXHKVAAASBUlEQVR4nO2df2Ab1X3AnyT7JYoVY+PE
+      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
+    )
+  )
+
+  (text "evl ersetzen durch IRF9540N\nkann mehr strom und ist\nschon in der Unterspannungsabschaltung\nvorhanden\n\nals smd ersatz evl  IRF 9540NS"
+    (at -82.677 31.115 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom))
+  )
+  (text "d7 geändert\nvon ZPD15 auf\nSMD ZF 15" (at -31.242 35.814 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom))
+  )
+  (text "der verpolungsschutz von der Batterie ist nicht richtig die zehner diode hat die anode zwischen widerstand und gate."
+    (at 2.921 -31.369 0)
+    (effects (font (size 2.0066 2.0066)) (justify left bottom))
+  )
+  (text "Eingang\n10-80V" (at 106.553 75.184 0)
+    (effects (font (size 0.9906 0.9906)) (justify left bottom))
+  )
+
+  (hierarchical_label "Eingang" (shape input) (at 113.792 69.977 180)
+    (effects (font (size 0.9906 0.9906)) (justify right))
+  )
+  (hierarchical_label "Ausgang" (shape output) (at 139.192 69.977 0)
+    (effects (font (size 0.9906 0.9906)) (justify left))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:GND-RESCUE-ardumower_mega_shield_svn") (at 124.587 91.948 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e64ec6")
+    (property "Referenz" "#PWR0273" (id 0) (at 124.587 98.298 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Wert" "GND" (id 1) (at 124.714 96.3422 0))
+    (property "Footprint" "" (id 2) (at 124.587 91.948 0))
+    (property "Datenblatt" "" (id 3) (at 124.587 91.948 0))
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 124.587 86.614 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e64a6c")
+    (property "Referenz" "R57" (id 0) (at 123.0884 85.4456 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "100K" (id 1) (at 123.0884 87.757 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Zimprich:R_0603" (id 2) (at 124.587 86.614 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 124.587 86.614 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 123.0884 83.5406 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "Value" (id 5) (at 123.0884 86.233 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "Value" (id 6) (at 123.0884 88.9254 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "Value" (id 7) (at 123.0884 91.6178 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 123.0884 94.3102 0)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:ZENER-RESCUE-ardumower_mega_shield_svn") (at 134.366 76.454 270) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e64bd0")
+    (property "Referenz" "D7" (id 0) (at 136.3726 75.2856 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Wert" "SMD ZF 15" (id 1) (at 136.3726 77.597 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Diodes_SMD:MiniMELF_Standard" (id 2) (at 134.366 76.454 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datenblatt" "" (id 3) (at 134.366 76.454 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Gehäuseart" "Value" (id 4) (at 136.3726 73.3806 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestelllink" "http://www.reichelt.de/SMD-ZF-15/3/index.html?&ACTION=3&LA=446&ARTICLE=18932&artnr=SMD+ZF+15&SEARCH=SMD+ZF+15" (id 5) (at 136.3726 76.073 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Technische Daten" "Chip-Zener-Diode 0,5W 15V" (id 6) (at 136.3726 78.7654 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bestellnummer" "R: ZD 15" (id 7) (at 136.3726 81.4578 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+    (property "Bauform" "Value" (id 8) (at 136.3726 84.1502 90)
+      (effects (font (size 1.524 1.524)) (justify left) hide)
+    )
+  )
+
+  (symbol (lib_id "ardumower-mega-shield-svn-rescue:IRF9540N-RESCUE-ardumower_mega_shield_svn") (at 123.317 72.517 90) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "00000000-0000-0000-0000-000057e9a340")
+    (property "Referenz" "Q4" (id 0) (at 123.317 60.7822 90))
+    (property "Wert" "IRF9540N" (id 1) (at 123.317 63.0936 90))
+    (property "Footprint" "Power_Integrations:TO-220" (id 2) (at 123.317 65.405 90)
+      (effects (font (size 1.27 1.27) italic))
+    )
+    (property "Datenblatt" "" (id 3) (at 123.317 72.517 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+  )
+)
