@@ -1,0 +1,801 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.15,
+        "copper_line_width": 0.19999999999999998,
+        "copper_text_italic": false,
+        "copper_text_size_h": 1.0,
+        "copper_text_size_v": 1.0,
+        "copper_text_thickness": 0.3,
+        "copper_text_upright": false,
+        "courtyard_line_width": 0.049999999999999996,
+        "dimension_precision": 1,
+        "dimension_units": 0,
+        "fab_line_width": 0.09999999999999999,
+        "fab_text_italic": false,
+        "fab_text_size_h": 1.0,
+        "fab_text_size_v": 1.0,
+        "fab_text_thickness": 0.15,
+        "fab_text_upright": false,
+        "other_line_width": 0.15,
+        "other_text_italic": false,
+        "other_text_size_h": 1.0,
+        "other_text_size_v": 1.0,
+        "other_text_thickness": 0.15,
+        "other_text_upright": false,
+        "pads": {
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
+        },
+        "silk_line_width": 0.15,
+        "silk_text_italic": false,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15,
+        "silk_text_upright": false,
+        "zones": {
+          "45_degree_only": false,
+          "min_clearance": 0.508
+        }
+      },
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.254,
+          "via_gap": 0.25,
+          "width": 0.254
+        }
+      ],
+      "drc_exclusions": [],
+      "meta": {
+        "version": 0
+      },
+      "rule_severities": {
+        "clearance": "error",
+        "copper_edge_clearance": "error",
+        "courtyards_overlap": "error",
+        "drill_too_small": "error",
+        "duplicate_footprints": "warning",
+        "extra_footprint": "warning",
+        "hole_near_hole": "error",
+        "invalid_outline": "error",
+        "item_on_disabled_layer": "error",
+        "items_not_allowed": "error",
+        "keepout": "error",
+        "malformed_courtyard": "error",
+        "microvia_drill_too_small": "error",
+        "microvia_too_small": "error",
+        "missing_courtyard": "ignore",
+        "missing_footprint": "warning",
+        "npth_inside_courtyard": "ignore",
+        "padstack": "error",
+        "pth_inside_courtyard": "ignore",
+        "track_dangling": "warning",
+        "track_width": "error",
+        "tracks_crossing": "error",
+        "unconnected_items": "error",
+        "unresolved_variable": "error",
+        "via_annulus": "error",
+        "via_dangling": "warning",
+        "via_hole_larger_than_pad": "error",
+        "via_too_small": "error",
+        "zone_has_empty_net": "error",
+        "zones_intersect": "error"
+      },
+      "rules": {
+        "allow_blind_buried_vias": false,
+        "allow_microvias": false,
+        "max_error": 0.005,
+        "min_clearance": 0.0,
+        "min_copper_edge_clearance": 0.01,
+        "min_hole_to_hole": 0.25,
+        "min_microvia_diameter": 0.19999999999999998,
+        "min_microvia_drill": 0.09999999999999999,
+        "min_through_hole_diameter": 0.3,
+        "min_track_width": 0.19999999999999998,
+        "min_via_annulus": 0.049999999999999996,
+        "min_via_diameter": 0.39999999999999997,
+        "solder_mask_clearance": 0.0,
+        "solder_mask_min_width": 0.0,
+        "solder_paste_clearance": 0.0,
+        "solder_paste_margin_ratio": 0.0
+      },
+      "track_widths": [
+        0.254
+      ],
+      "via_dimensions": [
+        {
+          "diameter": 0.889,
+          "drill": 0.635
+        }
+      ],
+      "zones_use_no_outline": false
+    }
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "erc": {
+    "meta": {
+      "version": 0
+    },
+    "pin_map": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    ],
+    "rule_severities": {
+      "bus_definition_conflict": "error",
+      "bus_label_syntax": "error",
+      "bus_to_bus_conflict": "error",
+      "bus_to_net_conflict": "error",
+      "different_unit_footprint": "error",
+      "different_unit_net": "error",
+      "duplicate_sheet_names": "error",
+      "global_label_dangling": "error",
+      "hier_label_mismatch": "error",
+      "label_dangling": "error",
+      "multiple_net_names": "error",
+      "net_not_bus_member": "error",
+      "no_connect_connected": "error",
+      "no_connect_dangling": "error",
+      "pin_not_connected": "error",
+      "pin_not_driven": "error",
+      "pin_to_pin": "warning",
+      "similar_labels": "error",
+      "unresolved_variable": "error"
+    }
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "ardumower mega shield svn.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "clearance": 0.254,
+        "diff_pair_gap": 0.254,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.254,
+        "microvia_diameter": 0.508,
+        "microvia_drill": 0.127,
+        "name": "Default",
+        "nets": [
+          "+3.3VP",
+          "+3V3",
+          "+5V",
+          "+5VP",
+          "+9V",
+          "/Anschlußstecker/LShifter1/5V_IN",
+          "/Anschlußstecker/LShifter10/5V_IN",
+          "/Anschlußstecker/LShifter11/5V_IN",
+          "/Anschlußstecker/LShifter12/5V_IN",
+          "/Anschlußstecker/LShifter13/5V_IN",
+          "/Anschlußstecker/LShifter14/5V_IN",
+          "/Anschlußstecker/LShifter15/5V_IN",
+          "/Anschlußstecker/LShifter2/5V_IN",
+          "/Anschlußstecker/LShifter3/5V_IN",
+          "/Anschlußstecker/LShifter4/5V_IN",
+          "/Anschlußstecker/LShifter5/5V_IN",
+          "/Anschlußstecker/LShifter6/5V_IN",
+          "/Anschlußstecker/LShifter7/5V_IN",
+          "/Anschlußstecker/LShifter8/5V_IN",
+          "/Anschlußstecker/LShifter9/5V_IN",
+          "/Anschlußstecker/OdoTeiler/Eingang1",
+          "/Anschlußstecker/OdoTeiler/Eingang2",
+          "/Anschlußstecker/OdoTeiler/Eingang3",
+          "/Motortreiber/+24V",
+          "/Motortreiber/MotorLinks/MotorIN1",
+          "/Motortreiber/MotorLinks/MotorIN2",
+          "/Motortreiber/MotorRechts/MotorIN1",
+          "/Motortreiber/MotorRechts/MotorIN2",
+          "/Motortreiber/MähmotorSchutz/MotorIN1",
+          "/Motortreiber/MähmotorSchutz/MotorIN2",
+          "/USpannungAB/Batterieeingang 24V",
+          "/VerpolungsschutzLade./Eingang",
+          "9Vgeschaltet",
+          "Charg_Pin_+",
+          "DHT22",
+          "DropLeft",
+          "DropRight",
+          "Dual1",
+          "Dual2",
+          "DuoLED-Rot",
+          "DuoLED_Grün",
+          "GND",
+          "GPS-LED",
+          "GPS_RX",
+          "GPS_TX",
+          "IOREF",
+          "Led-BT",
+          "Led-Status",
+          "Led-Wlan",
+          "Net-(C1-Pad1)",
+          "Net-(C12-Pad2)",
+          "Net-(C19-Pad1)",
+          "Net-(C2-Pad1)",
+          "Net-(C20-Pad1)",
+          "Net-(C21-Pad1)",
+          "Net-(C23-Pad1)",
+          "Net-(C24-Pad1)",
+          "Net-(C25-Pad1)",
+          "Net-(C34-Pad1)",
+          "Net-(C35-Pad1)",
+          "Net-(C36-Pad1)",
+          "Net-(C9-Pad2)",
+          "Net-(CC1-Pad2)",
+          "Net-(CC2-Pad2)",
+          "Net-(CC3-Pad2)",
+          "Net-(D1-Pad1)",
+          "Net-(D10-Pad2)",
+          "Net-(D11-Pad2)",
+          "Net-(D12-Pad1)",
+          "Net-(D13-Pad2)",
+          "Net-(D15-Pad1)",
+          "Net-(D16-Pad1)",
+          "Net-(D17-Pad2)",
+          "Net-(D18-Pad2)",
+          "Net-(D19-Pad2)",
+          "Net-(D2-Pad2)",
+          "Net-(D20-Pad1)",
+          "Net-(D21-Pad2)",
+          "Net-(D22-Pad1)",
+          "Net-(D23-Pad1)",
+          "Net-(D25-Pad1)",
+          "Net-(D27-Pad1)",
+          "Net-(D29-Pad2)",
+          "Net-(D3-Pad1)",
+          "Net-(D31-Pad2)",
+          "Net-(D32-Pad2)",
+          "Net-(D33-Pad2)",
+          "Net-(D37-Pad2)",
+          "Net-(D39-Pad2)",
+          "Net-(D41-Pad2)",
+          "Net-(D43-Pad2)",
+          "Net-(D45-Pad2)",
+          "Net-(D47-Pad2)",
+          "Net-(D49-Pad2)",
+          "Net-(D5-Pad2)",
+          "Net-(D51-Pad2)",
+          "Net-(D53-Pad2)",
+          "Net-(D55-Pad2)",
+          "Net-(D57-Pad2)",
+          "Net-(D59-Pad2)",
+          "Net-(D6-Pad2)",
+          "Net-(D61-Pad2)",
+          "Net-(D63-Pad2)",
+          "Net-(D65-Pad2)",
+          "Net-(D67-Pad2)",
+          "Net-(D69-Pad2)",
+          "Net-(D7-Pad2)",
+          "Net-(D71-Pad2)",
+          "Net-(D74-Pad1)",
+          "Net-(D76-Pad1)",
+          "Net-(D76-Pad2)",
+          "Net-(Dual2-Pad9)",
+          "Net-(EF2-Pad2)",
+          "Net-(EF3-Pad2)",
+          "Net-(F1-Pad1)",
+          "Net-(IC1-Pad10)",
+          "Net-(IC1-Pad13)",
+          "Net-(IC1-Pad14)",
+          "Net-(IC1-Pad15)",
+          "Net-(IC1-Pad16)",
+          "Net-(IC1-Pad17)",
+          "Net-(IC1-Pad18)",
+          "Net-(IC1-Pad19)",
+          "Net-(IC1-Pad20)",
+          "Net-(JP1-Pad1)",
+          "Net-(JP10-Pad2)",
+          "Net-(JP11-Pad2)",
+          "Net-(JP12-Pad2)",
+          "Net-(JP2-Pad1)",
+          "Net-(JP5-Pad1)",
+          "Net-(JP8-Pad2)",
+          "Net-(JP9-Pad1)",
+          "Net-(K3-Pad12)",
+          "Net-(P10-Pad1)",
+          "Net-(P10-Pad10)",
+          "Net-(P10-Pad2)",
+          "Net-(P44-Pad3)",
+          "Net-(P44-Pad4)",
+          "Net-(P5-Pad3)",
+          "Net-(P5-Pad4)",
+          "Net-(P50-Pad10)",
+          "Net-(P50-Pad11)",
+          "Net-(P50-Pad12)",
+          "Net-(P50-Pad6)",
+          "Net-(P50-Pad7)",
+          "Net-(P50-Pad8)",
+          "Net-(P50-Pad9)",
+          "Net-(Q1-Pad1)",
+          "Net-(Q12-Pad1)",
+          "Net-(Q12-Pad3)",
+          "Net-(Q14-Pad1)",
+          "Net-(Q14-Pad3)",
+          "Net-(Q16-Pad1)",
+          "Net-(Q16-Pad3)",
+          "Net-(Q18-Pad1)",
+          "Net-(Q18-Pad3)",
+          "Net-(Q20-Pad1)",
+          "Net-(Q20-Pad2)",
+          "Net-(Q22-Pad1)",
+          "Net-(Q22-Pad2)",
+          "Net-(Q24-Pad1)",
+          "Net-(Q25-Pad1)",
+          "Net-(Q26-Pad1)",
+          "Net-(Q26-Pad2)",
+          "Net-(Q27-Pad1)",
+          "Net-(Q28-Pad1)",
+          "Net-(Q29-Pad1)",
+          "Net-(Q3-Pad1)",
+          "Net-(R6-Pad2)",
+          "Net-(S1-Pad1)",
+          "Net-(S1-Pad10)",
+          "Net-(S1-Pad2)",
+          "Net-(S1-Pad3)",
+          "Net-(S1-Pad4)",
+          "Net-(S1-Pad5)",
+          "Net-(S1-Pad6)",
+          "Net-(S1-Pad7)",
+          "Net-(S1-Pad8)",
+          "Net-(S2-Pad1)",
+          "Net-(S2-Pad10)",
+          "Net-(S2-Pad2)",
+          "Net-(S2-Pad3)",
+          "Net-(S2-Pad4)",
+          "Net-(S2-Pad5)",
+          "Net-(S2-Pad6)",
+          "Net-(S2-Pad7)",
+          "Net-(S2-Pad8)",
+          "Net-(S3-Pad1)",
+          "Net-(S3-Pad10)",
+          "Net-(S3-Pad2)",
+          "Net-(S3-Pad3)",
+          "Net-(S3-Pad4)",
+          "Net-(S3-Pad5)",
+          "Net-(S3-Pad6)",
+          "Net-(S3-Pad7)",
+          "Net-(S3-Pad8)",
+          "Net-(U12-Pad2)",
+          "Net-(U4-Pad2)",
+          "Net-(U5-Pad6)",
+          "Net-(U8-Pad1)",
+          "Net-(U8-Pad6)",
+          "Net-(U8-Pad7)",
+          "RX0",
+          "RX1",
+          "RX2",
+          "RelaisAbschaltung",
+          "ReserveAD10",
+          "ReserveAD6",
+          "ReserveAD7",
+          "ReservePin8",
+          "ReservePin9",
+          "Reset",
+          "Resv.PinAD13",
+          "Resv.PinAD15",
+          "SCL",
+          "SCL1",
+          "SCL2",
+          "SCL22",
+          "SCL3",
+          "SCL4",
+          "SCL5",
+          "SCL6",
+          "SCL7",
+          "SDA",
+          "SDA1",
+          "SDA2",
+          "SDA22",
+          "SDA3",
+          "SDA4",
+          "SDA5",
+          "SDA6",
+          "SDA7",
+          "StationLed",
+          "TX0",
+          "TX1",
+          "TX2",
+          "Taster",
+          "pinBumperLeft",
+          "pinBumperRight",
+          "pinButton",
+          "pinBuzzer",
+          "pinChargeCurrent",
+          "pinChargeVoltage",
+          "pinChargingEnable",
+          "pinLawnBackRecv",
+          "pinLawnBackSend",
+          "pinLawnFrontRecv",
+          "pinLawnFrontSend",
+          "pinMotorEnable",
+          "pinMotorLeftDir",
+          "pinMotorLeftFault",
+          "pinMotorLeftPWM",
+          "pinMotorLeftSense",
+          "pinMotorMowDir",
+          "pinMotorMowEnable",
+          "pinMotorMowFault",
+          "pinMotorMowPWM",
+          "pinMotorMowRpm_neu",
+          "pinMotorMowSense",
+          "pinMotorRightDir",
+          "pinMotorRightFault",
+          "pinMotorRightPWM",
+          "pinMotorRightSense",
+          "pinOdometryLeft",
+          "pinOdometryRight",
+          "pinPerimeterLeft",
+          "pinPerimeterRight",
+          "pinRain",
+          "pinRemoteMow",
+          "pinRemoteSpeed",
+          "pinRemoteSteer",
+          "pinRemoteSwitch",
+          "pinSonarCenterEcho",
+          "pinSonarCenterTrigger",
+          "pinSonarLeftEcho",
+          "pinSonarLeftTrigger",
+          "pinSonarRightEcho",
+          "pinSonarRightTrigger",
+          "pinTilt",
+          "pinUserSwitch1",
+          "pinUserSwitch2",
+          "pinUserSwitch3"
+        ],
+        "track_width": 0.254,
+        "via_diameter": 0.889,
+        "via_drill": 0.635
+      },
+      {
+        "clearance": 0.254,
+        "diff_pair_gap": 0.254,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.254,
+        "microvia_diameter": 0.508,
+        "microvia_drill": 0.127,
+        "name": "24v",
+        "nets": [
+          "+24V"
+        ],
+        "track_width": 0.5,
+        "via_diameter": 0.889,
+        "via_drill": 0.635
+      },
+      {
+        "clearance": 0.254,
+        "diff_pair_gap": 0.254,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.254,
+        "microvia_diameter": 0.508,
+        "microvia_drill": 0.127,
+        "name": "Power",
+        "nets": [
+          "pinBatteryVoltage"
+        ],
+        "track_width": 0.762,
+        "via_diameter": 0.889,
+        "via_drill": 0.635
+      }
+    ],
+    "meta": {
+      "version": 0
+    }
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "ardumower mega shield svn.net",
+      "specctra_dsn": "",
+      "step": "",
+      "vmrl": ""
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "drawing": {
+      "default_bus_thickness": 12.0,
+      "default_junction_size": 12.0,
+      "default_line_thickness": 6.0,
+      "default_text_size": 79.0,
+      "default_wire_thickness": 6.0,
+      "field_names": [],
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.3
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 0
+    },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_adjust_passive_values": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [
+    [
+      "8cfa203f-edae-4228-9559-f96fcf442f06",
+      ""
+    ],
+    [
+      "00000000-0000-0000-0000-000057dbe57b",
+      "Leuchtdioden"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e12859",
+      "Bohrlöcher"
+    ],
+    [
+      "00000000-0000-0000-0000-000057da6878",
+      "Wlan_BT_GPS"
+    ],
+    [
+      "00000000-0000-0000-0000-000057dc7e7b",
+      "Anschlußstecker"
+    ],
+    [
+      "00000000-0000-0000-0000-000058a980a6",
+      "LShifter13"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e6fb3b",
+      "LShifter1"
+    ],
+    [
+      "00000000-0000-0000-0000-000058a8fee2",
+      "LShifter11"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e712f4",
+      "LShifter3"
+    ],
+    [
+      "00000000-0000-0000-0000-000058a93bfe",
+      "LShifter12"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e71100",
+      "LShifter2"
+    ],
+    [
+      "00000000-0000-0000-0000-000058b25236",
+      "LShifter15"
+    ],
+    [
+      "00000000-0000-0000-0000-000058b1efac",
+      "LShifter14"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e712f8",
+      "LShifter4"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e71cbc",
+      "LShifter5"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e71cc0",
+      "LShifter6"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e71cc4",
+      "LShifter7"
+    ],
+    [
+      "00000000-0000-0000-0000-000057f2ff53",
+      "OdoTeiler"
+    ],
+    [
+      "00000000-0000-0000-0000-0000582a9e9c",
+      "LShifter10"
+    ],
+    [
+      "00000000-0000-0000-0000-0000582a4f4e",
+      "LShifter9"
+    ],
+    [
+      "00000000-0000-0000-0000-0000582a0806",
+      "LShifter8"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e646ff",
+      "VerpolungsschutzLade."
+    ],
+    [
+      "00000000-0000-0000-0000-000057dfe528",
+      "Arduino_Mega"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e81eba",
+      "Stationsled"
+    ],
+    [
+      "00000000-0000-0000-0000-000057e1969e",
+      "I2C"
+    ],
+    [
+      "00000000-0000-0000-0000-000057df5e8a",
+      "Spannungsversorgung"
+    ],
+    [
+      "00000000-0000-0000-0000-000057d95af0",
+      "Motortreiber"
+    ],
+    [
+      "00000000-0000-0000-0000-000057db3a39",
+      "MotorLinks"
+    ],
+    [
+      "00000000-0000-0000-0000-000057db84d9",
+      "Motortreiber1"
+    ],
+    [
+      "00000000-0000-0000-0000-000057db6176",
+      "MotorRechts"
+    ],
+    [
+      "00000000-0000-0000-0000-000057dbd284",
+      "Motortreiber2"
+    ],
+    [
+      "00000000-0000-0000-0000-000057daec1d",
+      "MähmotorSchutz"
+    ],
+    [
+      "00000000-0000-0000-0000-000057dd8e0c",
+      "USpannungAB"
+    ]
+  ],
+  "text_variables": {}
+}
