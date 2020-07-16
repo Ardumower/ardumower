@@ -107,6 +107,9 @@ double scalePI(double v);
 // computes minimum distance between x radiant (current-value) and w radiant (set-value)
 double distancePI(double x, double w);
 
+// converts degrees to radians
+double degreesToRadians(int degrees);
+
 // ultrasonic sensor
 unsigned int readHCSR04(int triggerPin, int echoPin);
 unsigned int readURM37(int triggerPin, int echoPin);

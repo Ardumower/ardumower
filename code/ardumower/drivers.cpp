@@ -99,6 +99,10 @@ double distancePI(double x, double w)
   return d;
 }
 
+double degreesToRadians(int degrees) {
+  return ((double)degrees * PI) / 180.0;
+}
+
 int time2minutes(timehm_t time){
   return (time.hour * 60 + time.minute);
 }

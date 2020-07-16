@@ -137,7 +137,6 @@ Robot::Robot(){
 
   imuDriveHeading = 0;
   imuRollHeading = 0;
-  imuRollDir = LEFT;  
   
   perimeterMag = 1;
   perimeterMagMedian.add(perimeterMag);
@@ -169,8 +168,8 @@ Robot::Robot(){
   chgVoltage = 0;
   chgCurrent = 0;
     
-  memset(errorCounterMax, 0, sizeof errorCounterMax);
-  memset(errorCounter, 0, sizeof errorCounterMax);
+  memset(errorCounterMax, 0, sizeof(errorCounterMax));
+  memset(errorCounter, 0, sizeof(errorCounterMax));
     
   loopsPerSec = 0;
 	loopsPerSecLowCounter = 0;
@@ -882,9 +881,17 @@ void Robot::checkBumpersPerimeter(){
 void Robot::checkPerimeterBoundary(){
   if (!perimeterUse) return;
   if (millis() >= nextTimeRotationChange){
-      nextTimeRotationChange = millis() + 60000;
-      rotateLeft = !rotateLeft;
-    }
+      nextTimeRotationChange = millis() + 30000;
+      // We choose random direction if MOW_RANDOM
+      if (mowPatternCurr == MOW_RANDOM) {
+        rotateLeft = random(0, 2) == 0;
+      } else
+      {
+        // Otherwise, just switch the direction
+        // Useful for MOW_LANES
+        rotateLeft = !rotateLeft;  
+      }
+  }
 
   if (mowPatternCurr == MOW_BIDIR){
     if ((millis() < stateStartTime + 3000)) return;    
@@ -900,7 +907,6 @@ void Robot::checkPerimeterBoundary(){
       if (perimeterTriggerTime != 0) {
         if (millis() >= perimeterTriggerTime){        
           perimeterTriggerTime = 0;
-          //if ((rand() % 2) == 0){  
           if(rotateLeft){  
           setNextState(STATE_PERI_OUT_REV, LEFT);
           } else {
@@ -1180,7 +1186,7 @@ void Robot::setNextState(byte stateNew, byte dir){
   
   } else if (stateNew == STATE_PERI_ROLL) {    
     stateEndTime = millis() + perimeterTrackRollTime + motorZeroSettleTime;                     
-    if (dir == RIGHT){
+    if (rollDir == RIGHT){
 	    motorLeftSpeedRpmSet = motorSpeedMaxRpm/2;
 	    motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
       } else {
@@ -1200,34 +1206,27 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + perimeterOutRevTime + motorZeroSettleTime; 
   }
   else if (stateNew == STATE_PERI_OUT_ROLL){
-  
-  
-  
-  	//Ehl
-	//imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
-	if (imuRollDir == LEFT)
-	{
-		imuDriveHeading = scalePI(imuDriveHeading - random((PI / 2), PI )); // random toggle heading between 90 degree and 180 degrees (IMU)
-		imuRollHeading = scalePI(imuDriveHeading);
-		imuRollDir = rollDir;
-	}
-	else
-	{
-		imuDriveHeading = scalePI(imuDriveHeading + random((PI / 2), PI )); // random toggle heading between 90 degree and 180 degrees (IMU)
-		imuRollHeading = scalePI(imuDriveHeading);
-		imuRollDir = rollDir;
-	}
-	stateEndTime = millis() + random(perimeterOutRollTimeMin,perimeterOutRollTimeMax) + motorZeroSettleTime;
-	if (dir == RIGHT)
-	{
-		motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
-		motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;           
-	}
-	else
-	{
-		motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
-		motorLeftSpeedRpmSet = -motorRightSpeedRpmSet; 
-	}
+    if (rollDir == LEFT)
+    {
+      imuDriveHeading = scalePI(imuDriveHeading - degreesToRadians(random(90, 180 ))); // random toggle heading between 90 degree and 180 degrees (IMU)
+      imuRollHeading = scalePI(imuDriveHeading);
+    }
+    else
+    {
+      imuDriveHeading = scalePI(imuDriveHeading + degreesToRadians(random(90, 180 ))); // random toggle heading between 90 degree and 180 degrees (IMU)
+      imuRollHeading = scalePI(imuDriveHeading);
+    }
+    stateEndTime = millis() + random(perimeterOutRollTimeMin,perimeterOutRollTimeMax) + motorZeroSettleTime;
+    if (rollDir == RIGHT)
+    {
+      motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
+      motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;           
+    }
+    else
+    {
+      motorRightSpeedRpmSet = motorSpeedMaxRpm/1.25;
+      motorLeftSpeedRpmSet = -motorRightSpeedRpmSet; 
+    }
   }
   else if (stateNew == STATE_FORWARD){      
     motorLeftSpeedRpmSet = motorRightSpeedRpmSet = motorSpeedMaxRpm;  
@@ -1247,16 +1246,15 @@ void Robot::setNextState(byte stateNew, byte dir){
     stateEndTime = millis() + motorReverseTime + motorZeroSettleTime;
   }  
 	else if (stateNew == STATE_ROLL) {                  
-      imuDriveHeading = scalePI(imuDriveHeading + PI); // toggle heading 180 degree (IMU)
-      if (imuRollDir == LEFT){
-        imuRollHeading = scalePI(imuDriveHeading - PI/20);        
-        imuRollDir = RIGHT;
+      if (rollDir == LEFT){
+        imuDriveHeading = scalePI(imuDriveHeading - PI/2); // toggle heading 90 degree (IMU)
+        imuRollHeading = scalePI(imuDriveHeading);        
       } else {
-        imuRollHeading = scalePI(imuDriveHeading + PI/20);        
-        imuRollDir = LEFT;
+        imuDriveHeading = scalePI(imuDriveHeading + PI/2); // toggle heading 90 degree (IMU)
+        imuRollHeading = scalePI(imuDriveHeading);
       }      
       stateEndTime = millis() + random(motorRollTimeMin,motorRollTimeMax) + motorZeroSettleTime;
-      if (dir == RIGHT){
+      if (rollDir == RIGHT){
 	     motorLeftSpeedRpmSet = motorSpeedMaxRpm/1.25;
 	     motorRightSpeedRpmSet = -motorLeftSpeedRpmSet;						
       } else {
@@ -1364,7 +1362,7 @@ void Robot::loop()  {
     rc.run();        
   }
    
-  if (rmcsUse == true and millis() >= nextTimeRMCSInfo ) { 
+  if (rmcsUse == true && millis() >= nextTimeRMCSInfo ) { 
 	   nextTimeRMCSInfo = millis() + 100;
      rmcsPrintInfo(Console);
   }
@@ -1491,7 +1489,6 @@ void Robot::loop()  {
       break;
     case STATE_ROLL_WAIT:
       // making a roll (left/right)            
-      //if (abs(distancePI(imuYaw, imuRollHeading)) < PI/36) setNextState(STATE_OFF,0);				
       break;
     case STATE_CIRCLE:
       // driving circles
@@ -1630,13 +1627,11 @@ void Robot::loop()  {
       checkPerimeterBoundary();                 
       // https://forum.ardumower.de/threads/perimeteroutreversetime.23723/
       if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);  
-      //if (perimeterInside || (millis() >= stateEndTime)) setNextState(STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_REV: 
       checkPerimeterBoundary();      
       // https://forum.ardumower.de/threads/perimeteroutreversetime.23723/
       if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);   
-      //if (perimeterInside || (millis() >= stateEndTime)) setNextState (STATE_PERI_OUT_ROLL, rollDir); 
       break;
     case STATE_PERI_OUT_ROLL: 
       if (millis() >= stateEndTime) setNextState(STATE_FORWARD,0);                

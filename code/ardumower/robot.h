@@ -355,7 +355,6 @@ class Robot
     PID imuRollPID ;    // roll PID controller        
     float imuDriveHeading ;       // drive heading (IMU)
     float imuRollHeading ;      // roll heading  (IMU)
-    byte   imuRollDir;
     //point_float_t accMin;
     //point_float_t accMax;
     unsigned long nextTimeIMU ; //read IMU data

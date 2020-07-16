@@ -366,9 +366,9 @@ boolean IMU::readL3G4200D(){
       }
   }
   if (useGyroCalibration){
-    gyro.x *= 0.07 * PI/180.0;  // convert to radiant per second
-    gyro.y *= 0.07 * PI/180.0; 
-    gyro.z *= 0.07 * PI/180.0;      
+    gyro.x *= 0.07 * PI/180;  // convert to radiant per second
+    gyro.y *= 0.07 * PI/180; 
+    gyro.z *= 0.07 * PI/180;      
   }
   gyroCounter++;
   return true;
