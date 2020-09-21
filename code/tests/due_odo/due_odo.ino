@@ -135,6 +135,9 @@ void setup(){
   pinMode(pinMotorMowFault, INPUT);
 
   // odometry
+  pinMode(pinOdometryLeft, INPUT);
+  pinMode(pinOdometryRight, INPUT);
+  
   //pinMode(pinOdometryLeft, INPUT_PULLUP);
   //pinMode(pinOdometryLeft2, INPUT_PULLUP);
   //pinMode(pinOdometryRight, INPUT_PULLUP);
