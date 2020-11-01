@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name ACS712)(type KiCad)(uri ${KIPRJMOD}/acs712.pretty)(options "")(descr ""))
-)

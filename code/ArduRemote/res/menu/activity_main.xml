@@ -1,4 +1,0 @@
-
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/menu_log" android:title="Enable logging"></item>
-</menu>

@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name Zimprich)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/zimprich.lib)(options "")(descr ""))
-  (lib (name sender_v3.0_geoeffnet-rescue)(type Legacy)(uri ${KIPRJMOD}/sender_v3.0_geoeffnet-rescue.lib)(options "")(descr ""))
-)

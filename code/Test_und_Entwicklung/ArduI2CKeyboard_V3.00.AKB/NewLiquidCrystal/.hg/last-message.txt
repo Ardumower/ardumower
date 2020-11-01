@@ -1,1 +1,0 @@
-Aligned to 8 bit I2C addresses.
