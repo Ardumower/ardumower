@@ -588,16 +588,20 @@ void Robot::readSensors(){
   if ((imuUse) && (millis() >= nextTimeIMU)) {
     // IMU
     readSensor(SEN_IMU);
-    nextTimeIMU = millis() + 200;   // 5 hz    
+    nextTimeIMU = millis() + 200;   // 5 hz 
+    //bber10 
+    /*  
     if (imu.getErrorCounter()>0) {
       addErrorCounter(ERR_IMU_COMM);
       Console.println(F("IMU comm error"));    
-    }    
+    } 
+     */ 
     if (!imu.calibrationAvail) {
       Console.println(F("Error: missing IMU calibration data"));
       addErrorCounter(ERR_IMU_CALIB);
       setNextState(STATE_ERROR, 0);
     }
+    
   }
 
 
@@ -1350,7 +1354,7 @@ void Robot::loop()  {
   motorMowControl(); 
   checkTilt(); 
   
-  if (imuUse) imu.update();  
+  if (imuUse) imu.run();  
 
   if (gpsUse) { 
     gps.feed();
@@ -1689,11 +1693,3 @@ void Robot::loop()  {
                              
   loopsPerSecCounter++;  
 }
-
-
-
-
-
-
-
-

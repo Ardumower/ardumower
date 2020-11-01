@@ -133,6 +133,8 @@ Mower::Mower(){
   lawnSensorUse     = 0;                   // use capacitive lawn Sensor
   
   // ------  IMU (compass/accel/gyro) ----------------------
+  //bber10
+  CompassUse = 0;                          // activate compass?
   imuUse                     = 1;          // use IMU?
   imuCorrectDir              = 0;          // correct direction by compass?
   imuDirPID.Kp               = 5.0;        // direction PID controller
@@ -464,8 +466,8 @@ void Mower::setup(){
   ADCMan.setCapture(pinChargeVoltage, 1, false);  
   ADCMan.setCapture(pinVoltageMeasurement, 1, false);    
   perimeter.setPins(pinPerimeterLeft, pinPerimeterRight);      
-    
-  imu.init();
+  //bber10 
+  imu.begin();
 	  
   gps.init();
 
@@ -688,5 +690,3 @@ void Mower::configureBluetooth(boolean quick){
   BluetoothConfig bt;
   bt.setParams(name, BLUETOOTH_PIN, BLUETOOTH_BAUDRATE, quick);
 }
-
-

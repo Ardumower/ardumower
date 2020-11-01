@@ -79,6 +79,8 @@ MPU9250_DMP imu;
 
 void IMUClass::begin() {
   if (!robot.imuUse) return;
+  calibrationAvail = false;
+  now=0;
   loadCalib();
   printCalib();
   Console.println(F("--------------------------------------------------------------------------"));
@@ -179,6 +181,10 @@ void IMUClass::begin() {
 
 void IMUClass::run() {
   if (!robot.imuUse)  return;
+  now = millis();
+  int looptime = (now - lastAHRSTime);
+  lastAHRSTime = now;
+  
   if (state == IMU_CAL_COM) {
     calibComUpdate();
     return;
@@ -244,13 +250,14 @@ void IMUClass::run() {
 
   if (robot.CompassUse) {
     readCompass();
+    ypr.yaw = Complementary2(comYaw, -gyro.z, looptime, ypr.yaw);
+    ypr.yaw = scalePI(ypr.yaw);
   }
   else
   {
-    comYaw = 0;
-    CompassGyroOffset = 0;
+    ypr.yaw = scalePI(-1 * gyroAccYaw);
   }
-  ypr.yaw = scalePI(-1 * gyroAccYaw + CompassGyroOffset) ;
+  
 
 
 /*
@@ -266,6 +273,21 @@ void IMUClass::run() {
 
 
 }
+
+// first-order complementary filter
+// newAngle = angle measured with atan2 using the accelerometer
+// newRate = angle measured using the gyro
+// looptime = loop time in millis()
+float IMUClass::Complementary2(float newAngle, float newRate,int looptime, float angle) {
+  float k=10;
+  float dtc2=float(looptime)/1000.0;
+  float x1 = (newAngle -   angle)*k*k;
+  float y1 = dtc2*x1 + y1;
+  float x2 = y1 + (newAngle -   angle)*2*k + newRate;
+  angle = dtc2*x2 + angle;
+  return angle;
+}
+
 
 void IMUClass::readCompass() {
 
@@ -402,7 +424,7 @@ void IMUClass::loadCalib() {
 
     return;
   }
-  //calibrationAvail = true;
+  calibrationAvail = true;
   useComCalibration = true;
   Console.println(F("IMU: found calib data"));
   loadSaveCalib(true);
@@ -498,13 +520,13 @@ void IMUClass::calibGyro() {
 
 void IMUClass::calibComStartStop() {
 
-  while ((!robot.RaspberryPIUse) && (Console.available())) Console.read(); //use to start and stop the calibration
+  while (Console.available()) Console.read(); //use to start and stop the calibration
 
   
   if (state == IMU_CAL_COM) {
     // stop
     Console.println(F("com calib completed"));
-    //calibrationAvail = true;
+    calibrationAvail = true;
 
     // ----- Calculate hard-iron offsets
     comOfs.x = (comMax.x + comMin.x) / 2;                     // Get average magnetic bias in counts

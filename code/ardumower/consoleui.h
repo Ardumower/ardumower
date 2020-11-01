@@ -81,8 +81,9 @@ void Robot::printInfo(Stream &s){
     Streamprint(s, "chg %2d.%01d %2d.%01d ", 
         (int)chgVoltage, (int)((chgVoltage *10) - ((int)chgVoltage*10)),
         (int)chgCurrent, (int)((abs(chgCurrent) *10) - ((int)abs(chgCurrent)*10))    
-      );    
-    Streamprint(s, "imu%3d ", imu.getCallCounter());  
+      );
+      //bber10    
+    //Streamprint(s, "imu%3d ", imu.getCallCounter());  
     Streamprint(s, "adc%3d ", ADCMan.getCapturedChannels());  
     Streamprint(s, "%s\r\n", name.c_str());                  
   }
@@ -268,7 +269,8 @@ void Robot::menu(){
    
        resetIdleTime();
     }
-    imu.update();
+    //bber10
+    imu.run();
     if (Console.available() > 0) {
       ch = (char)Console.read();            
       switch (ch){
@@ -290,14 +292,16 @@ void Robot::menu(){
           printMenu();
           break;
         case '5':
-          imu.calibAccNextAxis();
+        //bber10
+         // imu.calibAccNextAxis();
           printMenu();
           break;
         case '6':
           imu.calibComStartStop();          
           break;          
         case '7':
-          imu.deleteCalib();
+        //bber10
+          //imu.deleteCalib();
           printMenu();
           break;
         case '8':
@@ -522,4 +526,3 @@ void Robot::readSerial() {
 	 }
   }    
 }
-

@@ -348,8 +348,11 @@ class Robot
     unsigned long nextTimeDrop ;                                                                                                      // Dropsensor - Absturzsensor
     char dropcontact ; // contact 0-openers 1-closers                                                                                 // Dropsensor Kontakt 0 für Öffner - 1 Schließer
     // ------- IMU state --------------------------------
-    IMU imu;
+    //bber10
+    IMUClass imu;
     char imuUse            ;       // use IMU? 
+    boolean CompassUse;       // Deactivate the compass and use only gyro accel from IMU
+
     char imuCorrectDir     ;       // correct direction by compass?
     PID imuDirPID  ;    // direction PID controller
     PID imuRollPID ;    // roll PID controller        
@@ -685,5 +688,3 @@ protected:
 
 
 #endif
-
-

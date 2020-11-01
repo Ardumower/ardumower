@@ -676,7 +676,8 @@ void RemoteControl::processImuMenu(String pfodCmd){
     else if (pfodCmd == "g04" ) robot->imuCorrectDir = !robot->imuCorrectDir;
     else if (pfodCmd.startsWith("g05")) processPIDSlider(pfodCmd, "g05", robot->imuDirPID, 0.1, 20);    
     else if (pfodCmd.startsWith("g06")) processPIDSlider(pfodCmd, "g06", robot->imuRollPID, 0.1, 30);    
-    else if (pfodCmd == "g07") robot->imu.calibAccNextAxis();
+    //bber10
+    //else if (pfodCmd == "g07") robot->imu.calibAccNextAxis();
     else if (pfodCmd == "g08") robot->imu.calibComStartStop();
   sendImuMenu(true);
 }
@@ -1238,8 +1239,9 @@ void RemoteControl::run(){
       serialPort->print(",");
       serialPort->print(robot->imu.com.z);
       serialPort->print(",");
-      serialPort->print(robot->imu.imuResetSuccessCounter);
-      serialPort->print(",");
+      //bber10
+      //serialPort->print(robot->imu.imuResetSuccessCounter);
+      //serialPort->print(",");
       float lat, lon;
       unsigned long age;
       robot->gps.f_get_position(&lat, &lon, &age);
@@ -1587,6 +1589,3 @@ bool RemoteControl::readSerial(){
   }  
   return res;
 }
-
-
-
