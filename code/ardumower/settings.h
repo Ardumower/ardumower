@@ -147,6 +147,8 @@ void Robot::loadSaveUserSettings(boolean readflag){
   eereadwrite(readflag, addr, sonarSlowBelow);
 	eereadwrite(readflag, addr, motorMowForceOff);	
   eereadwrite(readflag, addr, freeWheelUse);  
+  eereadwrite(readflag, addr, DHT22Use);
+  eereadwrite(readflag, addr, maxTemperature);
   Console.print(F("loadSaveUserSettings addrstop="));
   Console.println(addr);
 }
@@ -275,6 +277,13 @@ void Robot::printSettingSerial(){
   Console.println(F("---------- rain ----------------------------------------------"));
   Console.print  (F("rainUse                                    : "));
   Console.println(rainUse,1);
+
+  // ------ Temperature -----------------------------------------------------------
+  Console.println(F("---------- Temperature ---------------------------------------"));
+  Console.print  (F("DHT22Use                                   : "));
+  Console.println(DHT22Use,1);
+  Console.print  (F("maxTemperature                             : "));
+  Console.println(maxTemperature,1);
 
   // ------ sonar -----------------------------------------------------------------
   Console.println(F("---------- sonar ---------------------------------------------"));
@@ -565,6 +574,7 @@ void Robot::printErrors(){
            case ERR_ODOMETRY_RIGHT:Console.println(F("ERR_ODOMETRY_RIGHT")); break;
            case ERR_BATTERY:Console.println(F("ERR_BATTERY")); break;
            case ERR_CHARGER:Console.println(F("ERR_CHARGER")); break;
+           case ERR_TEMPERATURE:Console.println(F("ERR_TEMPERATURE")); break;
            case ERR_GPS_COMM:Console.println(F("ERR_GPS_COMM")); break;
            case ERR_GPS_DATA:Console.println(F("ERR_GPS_DATA")); break;
            case ERR_ADC_CALIB:Console.println(F("ERR_ADC_CALIB")); break;

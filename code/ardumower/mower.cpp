@@ -99,6 +99,10 @@ Mower::Mower(){
   // ------ rain ------------------------------------
   rainUse                    = 0;          // use rain sensor?
   
+  // ------ DHT22Use ---------------------------------
+  DHT22Use                   = 0;          // use DHT22 sensor?
+  maxTemperature             = 55;         // max temp before switch off
+
   // ------ sonar ------------------------------------
   sonarUse                   = 0;          // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
   sonarLeftUse               = 1;

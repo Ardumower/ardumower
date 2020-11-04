@@ -120,6 +120,7 @@ enum {
   ERR_ODOMETRY_RIGHT,
   ERR_BATTERY,
   ERR_CHARGER,
+  ERR_TEMPERATURE,
   ERR_GPS_COMM,
   ERR_GPS_DATA,
   ERR_ADC_CALIB,
@@ -435,6 +436,12 @@ class Robot
     char lastSensorTriggered;          // last triggered sensor
 		unsigned long lastSensorTriggeredTime;
 		char buttonUse         ;       // has digital ON/OFF button?
+    //-------- DHT22 Temperature humidity ------------------
+    boolean DHT22Use;                  //for the DHT22
+    unsigned long  nextTimeReadDHT22;
+    float humidityDht;
+    float temperatureDht;
+    float maxTemperature;              //switch to OFF when reach this temp
     // ----- user-defined switch ---------------------------
     char userSwitch1       ;       // user-defined switch 1 (default value)
     char userSwitch2       ;       // user-defined switch 2 (default value)
@@ -628,7 +635,10 @@ protected:
     virtual void motorControlPerimeter();
     virtual void motorControlImuDir();
     virtual void motorMowControl();
-    
+
+    // DHT22    
+    virtual void readDHT22();
+
     // date & time
     virtual void setDefaultTime();
     

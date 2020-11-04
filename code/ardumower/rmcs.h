@@ -214,6 +214,7 @@ void Robot::rmcsSendConfig(Stream &s){
   Streamprint(s, "%2d, ", lawnSensorUse); // lawn sensor available
   Streamprint(s, "%2d, ", freeWheelUse); // free Wheel available 
   Streamprint(s, "%2d ", rainUse); // rain sensor available  
+  Streamprint(s, "%2d ", DHT22Use); // Temperature sensor available  
   Streamprint(s, "\r\n");
 }
 

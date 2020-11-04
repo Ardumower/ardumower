@@ -215,7 +215,7 @@ void RemoteControl::sendPlotMenu(boolean update){
 void RemoteControl::sendSettingsMenu(boolean update){
   if (update) serialPort->print("{:"); else serialPort->print(F("{.Settings"));
   serialPort->print(F("|sz~Save settings|s1~Motor|s2~Mow|s16~Free wheel|s3~BumperDuino|s4~Sonar|s5~Perimeter|s6~Lawn sensor|s7~IMU|s8~R/C"));
-  serialPort->println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings}"));
+  serialPort->println(F("|s9~Battery|s10~Station|s11~Odometry|s13~Rain|s17~Temperature|s15~Drop sensor|s14~GPS|i~Timer|s12~Date/time|sx~Factory settings}"));
 }  
 
 void RemoteControl::sendErrorMenu(boolean update){
@@ -227,6 +227,8 @@ void RemoteControl::sendErrorMenu(boolean update){
   serialPort->print(robot->errorCounterMax[ERR_CHARGER]);
   serialPort->print(F("|zz~Battery "));
   serialPort->print(robot->errorCounterMax[ERR_BATTERY]);
+  serialPort->print(F("|zz~Temperature "));
+  serialPort->print(robot->errorCounterMax[ERR_TEMPERATURE]);
   serialPort->print(F("|zz~Motor left "));
   serialPort->print(robot->errorCounterMax[ERR_MOTOR_LEFT]);
   serialPort->print(F("|zz~Motor right "));
@@ -627,6 +629,24 @@ void RemoteControl::sendRainMenu(boolean update){
 void RemoteControl::processRainMenu(String pfodCmd){      
   if (pfodCmd == "m00") robot->rainUse = !robot->rainUse;
   sendRainMenu(true);
+}
+
+void RemoteControl::sendTemperatureMenu(boolean update){
+  if (update) serialPort->print("{:"); else serialPort->print(F("{.Temperature`1000"));
+  serialPort->print(F("|m200~Use "));
+  sendYesNo(robot->DHT22Use);
+  serialPort->println(F("|m201~Temperature "));
+  serialPort->print(robot->temperatureDht);
+  serialPort->println(F("|m202~Humidity "));
+  serialPort->print(robot->humidityDht);
+  sendSlider("m203", F("Maximum Temperature"), robot->maxTemperature, "", 1 , 80, 1);
+  serialPort->println("}");
+}
+
+void RemoteControl::processTemperatureMenu(String pfodCmd){
+  if (pfodCmd == "m200") robot->DHT22Use = !robot->DHT22Use;
+  else if (pfodCmd.startsWith("m203")) processSlider(pfodCmd, robot->maxTemperature, 1);
+  sendTemperatureMenu(true);
 }
 
 void RemoteControl::sendGPSMenu(boolean update){
@@ -1179,6 +1199,7 @@ void RemoteControl::processSettingsMenu(String pfodCmd){
       else if (pfodCmd == "s11") sendOdometryMenu(false);
       else if (pfodCmd == "s12") sendDateTimeMenu(false);      
       else if (pfodCmd == "s13") sendRainMenu(false);            
+      else if (pfodCmd == "s17") sendTemperatureMenu(false);
       else if (pfodCmd == "s15") sendDropMenu(false);
       else if (pfodCmd == "s14") sendGPSMenu(false);
       else if (pfodCmd == "s16") sendFreeWheelMenu(false);
@@ -1567,7 +1588,8 @@ bool RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("j")) processBatteryMenu(pfodCmd);       
         else if (pfodCmd.startsWith("k")) processStationMenu(pfodCmd);       
         else if (pfodCmd.startsWith("l")) processOdometryMenu(pfodCmd);  
-        else if (pfodCmd.startsWith("m")) processRainMenu(pfodCmd);               
+        else if (pfodCmd.startsWith("m0")) processRainMenu(pfodCmd);               
+        else if (pfodCmd.startsWith("m2")) processTemperatureMenu(pfodCmd);        
         else if (pfodCmd.startsWith("q")) processGPSMenu(pfodCmd);                       
         else if (pfodCmd.startsWith("t")) processDateTimeMenu(pfodCmd);  
         else if (pfodCmd.startsWith("i")) processTimerMenu(pfodCmd);      

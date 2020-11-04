@@ -27,6 +27,7 @@
 #include "config.h"
 #include "i2c.h"
 #include "flashmem.h"
+#include "DHT.h"
 
 #define MAGIC 52
 
@@ -47,6 +48,9 @@ const char* mowPatternNames[] = {"RAND", "LANE", "BIDIR"};
 
 const char* consoleModeNames[] ={"sen_counters", "sen_values", "perimeter", "off"}; 
 
+// Setting for DHT22------------------------------------
+#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
+DHT dht(DHTPIN, DHTTYPE);
 
 // --- split robot class ----
 #include "battery.h"
@@ -293,6 +297,9 @@ void Robot::setup()  {
     // robot has no ON/OFF button => start immediately
     setNextState(STATE_FORWARD,0);
   }  
+
+  dht.begin();
+  nextTimeReadDHT22 = millis() + 15000; //read only after all the setting of the mower are OK
     
   stateStartTime = millis();  
   beep(1);  
@@ -969,6 +976,41 @@ void Robot::checkRain(){
   }
 }
 
+void Robot::readDHT22() {
+  // read only the temperature when no motor control.
+  // Reading temperature or humidity takes about 250 milliseconds!
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  if ((DHT22Use) && (millis() > nextTimeReadDHT22)) { //read only each 60 Secondes
+    nextTimeReadDHT22 = nextTimeReadDHT22 + 60000;
+    humidityDht = dht.readHumidity();
+    temperatureDht = dht.readTemperature();
+    if (temperatureDht >= maxTemperature) {
+      //Console.println("Temperature too high *************** Need to stop all the PCB in the next 2 minutes");
+      //Console.print("Max Temperature Setting = ");
+      //Console.print(maxTemperature);
+      //Console.print(" Actual Temperature = ");
+      //Console.println(temperatureDht);
+
+      nextTimeReadDHT22 = nextTimeReadDHT22 + 180000; // do not read again the temp for the next 3 minute and set the mower state to error
+      addErrorCounter(ERR_TEMPERATURE);
+      setNextState(STATE_ERROR, 0);
+      return;
+    }
+      //to check if the 8 minutes overload can be caused by dht
+      //if (developerActive) {
+      //Console.print(" Read DHT22 temperature : ");
+      //Console.print(temperatureDht);
+      //Console.print("   Humidity : ");
+      //Console.println(humidityDht);
+      //}
+    if (isnan(humidityDht) || isnan(temperatureDht) ) {
+      //Console.println("Failed to read from DHT sensor!");
+      humidityDht = 0.00;
+      temperatureDht = 0.00;
+    }
+  }
+}
+
 // check sonar
 void Robot::checkSonar(){
   if(!sonarUse) return;
@@ -1427,6 +1469,7 @@ void Robot::loop()  {
         }
       }
       imuDriveHeading = imu.ypr.yaw;
+      readDHT22();
       break;
     case STATE_ROS:
       // Linux ROS mode
@@ -1611,6 +1654,7 @@ void Robot::loop()  {
           } else checkTimer();  
         } else setNextState(STATE_OFF,0);
       }  else checkTimer();
+      readDHT22();
       break;     
     case STATE_STATION_CHARGING:
       // waiting until charging completed    
@@ -1622,6 +1666,7 @@ void Robot::loop()  {
             setNextState(STATE_ERROR, 0);
           }
       } 
+      readDHT22();
       break;  
     case STATE_PERI_OUT_FORW:  
       checkPerimeterBoundary();                 
@@ -1629,6 +1674,7 @@ void Robot::loop()  {
       if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);  
       break;
     case STATE_PERI_OUT_REV: 
+      readDHT22();         // here is time to read the DHT22 Sensor
       checkPerimeterBoundary();      
       // https://forum.ardumower.de/threads/perimeteroutreversetime.23723/
       if (millis() >= stateEndTime) setNextState(STATE_PERI_OUT_ROLL, rollDir);   
