@@ -1,0 +1,9 @@
+### Module positions - created on 05/05/17 22:19:25 ###
+### Printed by Pcbnew version kicad (2017-02-19 revision a416f3a4e)-master
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val        Package                PosX       PosY       Rot  Side
+S1        ODO Right  SW_DIP_x8_SMD      129.5400    50.8000  180.0000  bottom
+S2        ODO Left   SW_DIP_x8_SMD      102.8700    50.8000  180.0000  bottom
+S3        MowRpm     SW_DIP_x8_SMD      116.8400    50.8000  180.0000  bottom
+## End
