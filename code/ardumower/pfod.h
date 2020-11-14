@@ -121,6 +121,7 @@ class RemoteControl
     void sendStationMenu(boolean update);
     void sendOdometryMenu(boolean update);
     void sendRainMenu(boolean update);    
+    void sendTemperatureMenu(boolean update);
     void sendGPSMenu(boolean update);        
     void sendDateTimeMenu(boolean update);
     void sendFactorySettingsMenu(boolean update);    
@@ -135,6 +136,7 @@ class RemoteControl
     void processPerimeterMenu(String pfodCmd); 
     void processLawnSensorMenu(String pfodCmd);   
     void processRainMenu(String pfodCmd);       
+    void processTemperatureMenu(String pfodCmd);
     void processDropMenu(String pfodCmd);    
     void processGPSMenu(String pfodCmd);           
     void processImuMenu(String pfodCmd);         
