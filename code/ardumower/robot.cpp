@@ -1022,7 +1022,7 @@ void Robot::checkSonar(){
   if (sonarDistLeft < 11 || sonarDistLeft  > 100) sonarDistLeft = NO_ECHO; // Filters spiks under the possible detection limit
   // slow down motor wheel speed near obstacles   
   if (     (stateCurr == STATE_FORWARD) 
-          || (  (mowPatternCurr == MOW_BIDIR) && ((stateCurr == STATE_FORWARD) || (stateCurr == STATE_REVERSE))  )  
+          || (  (mowPatternCurr == MOW_BIDIR) && (stateCurr == STATE_FORWARD)  )  
      ){
         if (sonarObstacleTimeout == 0) {
           if (     ((NO_ECHO != sonarDistCenter) && (sonarDistCenter < sonarSlowBelow)) 
