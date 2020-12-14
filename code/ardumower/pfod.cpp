@@ -848,7 +848,7 @@ void RemoteControl::sendDateTimeMenu(boolean update){
   sendSlider("t01", dayOfWeek[robot->datetime.date.dayOfWeek], robot->datetime.date.dayOfWeek, "", 1, 6, 0);       
   sendSlider("t02", "Day ", robot->datetime.date.day, "", 1, 31, 1);       
   sendSlider("t03", "Month ", robot->datetime.date.month, "", 1, 12, 1);       
-  sendSlider("t04", "Year ", robot->datetime.date.year, "", 1, 2020, 2013);       
+  sendSlider("t04", "Year ", robot->datetime.date.year, "", 1, 2027, 2020);       
   sendSlider("t05", "Hour ", robot->datetime.time.hour, "", 1, 23, 0);       
   sendSlider("t06", "Minute ", robot->datetime.time.minute, "", 1, 59, 0);           
   serialPort->println("}");
