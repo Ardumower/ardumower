@@ -30,11 +30,15 @@
 #include "flashmem.h"
 #include "buzzer.h"
 
-// -------------I2C addresses ------------------------
-#define ADXL345B (0x53)          // ADXL345B acceleration sensor (GY-80 PCB)
-#define HMC5883L (0x1E)          // HMC5883L compass sensor (GY-80 PCB)
-#define L3G4200D (0xD2 >> 1)     // L3G4200D gyro sensor (GY-80 PCB)
-
+#if defined (IMU_GY801)
+  // -------------I2C addresses ------------------------
+  #define ADXL345B (0x53)          // ADXL345B acceleration sensor (GY-80 PCB)
+  #define HMC5883L (0x1E)          // HMC5883L compass sensor (GY-80 PCB)
+  #define L3G4200D (0xD2 >> 1)     // L3G4200D gyro sensor (GY-80 PCB)
+#else if defined (IMU_MPU9250)
+  MPU9250 MPU(MPU9250_ADDRESS_AD0_HIGH);
+  int status;
+#endif
 
 #define ADDR 600
 #define MAGIC 6
@@ -216,7 +220,7 @@ void IMU::calibGyro(){
     ofs.x = ofs.y = ofs.z = 0;      
     for (int i=0; i < 50; i++){
       delay(10);
-      readL3G4200D();      
+      readGyro();      
       zmin = min(zmin, gyro.z);
       zmax = max(zmax, gyro.z);
       ofs.x += ((float)gyro.x)/ 50.0;
@@ -243,26 +247,41 @@ void IMU::calibGyro(){
   Console.println(F("------------"));  
 }      
 
-// ADXL345B acceleration sensor driver
-void  IMU::initADXL345B(){
-  I2CwriteTo(ADXL345B, 0x2D, 0);
-  I2CwriteTo(ADXL345B, 0x2D, 16);
-  I2CwriteTo(ADXL345B, 0x2D, 8);         
+// Acceleration sensor driver
+void  IMU::initAccel(){
+  Console.println(F("initAccel"));
+  #if defined (IMU_GY801)
+    I2CwriteTo(ADXL345B, 0x2D, 0);
+    I2CwriteTo(ADXL345B, 0x2D, 16);
+    I2CwriteTo(ADXL345B, 0x2D, 8);         
+  #else if defined (IMU_MPU9250)
+    MPU.beginAccel(ACC_FULL_SCALE_8_G);
+  #endif
 }
 
-bool IMU::readADXL345B(){  
-  uint8_t buf[6];
-  if (I2CreadFrom(ADXL345B, 0x32, 6, (uint8_t*)buf) != 6){
-    Console.println(F("Failed to readADXL345B"));
-    return false;
-  }
+bool IMU::readAccel(){  
+  #if defined (IMU_GY801)
+    uint8_t buf[6];
+    if (I2CreadFrom(ADXL345B, 0x32, 6, (uint8_t*)buf) != 6){
+      Console.println(F("Failed to readADXL345B"));
+      return false;
+    }
+  #else if defined (IMU_MPU9250)
+    MPU.accelUpdate();
+  #endif
   // Convert the accelerometer value to G's. 
   // With 10 bits measuring over a +/-4g range we can find how to convert by using the equation:
   // Gs = Measurement Value * (G-range/(2^10)) or Gs = Measurement Value * (8/1024)
   // ( *0.0078 )
-  float x=(int16_t) (((uint16_t)buf[1]) << 8 | buf[0]); 
-  float y=(int16_t) (((uint16_t)buf[3]) << 8 | buf[2]); 
-  float z=(int16_t) (((uint16_t)buf[5]) << 8 | buf[4]); 
+  #if defined (IMU_GY801)
+    float x = (int16_t) (((uint16_t)buf[1]) << 8 | buf[0]); 
+    float y = (int16_t) (((uint16_t)buf[3]) << 8 | buf[2]); 
+    float z = (int16_t) (((uint16_t)buf[5]) << 8 | buf[4]);
+  #else if defined (IMU_MPU9250)
+    float x = MPU.accelX();
+    float y = MPU.accelY();
+    float z = -MPU.accelZ();
+  #endif
   //Console.println(z);
   if (useAccCalibration){
     x -= accOfs.x;
@@ -291,74 +310,89 @@ bool IMU::readADXL345B(){
   return true;
 }
 
-// L3G4200D gyro sensor driver
-boolean IMU::initL3G4200D(){
-  Console.println(F("initL3G4200D"));
+// Gyro sensor driver
+boolean IMU::initGyro(){
+  Console.println(F("initGyro"));
   uint8_t buf[6];    
   int retry = 0;
-  while (true){
-    I2CreadFrom(L3G4200D, 0x0F, 1, (uint8_t*)buf);
-    if (buf[0] != 0xD3) {        
-      Console.println(F("gyro read error"));
-      retry++;
-      if (retry > 2){
-        errorCounter++;
-        return false;
-      }
-      delay(1000);            
-    } else break;
-  }
-  // Normal power mode, all axes enabled, 100 Hz
-  I2CwriteTo(L3G4200D, 0x20, 0b00001100);    
-  // 2000 dps (degree per second)
-  I2CwriteTo(L3G4200D, 0x23, 0b00100000);      
-  I2CreadFrom(L3G4200D, 0x23, 1, (uint8_t*)buf);
-  if (buf[0] != 0b00100000){
-      Console.println(F("gyro write error")); 
-      while(true);
-  }  
-  // fifo mode 
- // I2CwriteTo(L3G4200D, 0x24, 0b01000000);        
- // I2CwriteTo(L3G4200D, 0x2e, 0b01000000);          
+  #if defined (IMU_GY801)
+    while (true){
+      I2CreadFrom(L3G4200D, 0x0F, 1, (uint8_t*)buf);
+      if (buf[0] != 0xD3) {        
+        Console.println(F("gyro read error"));
+        retry++;
+        if (retry > 2){
+          errorCounter++;
+          return false;
+        }
+        delay(1000);            
+      } else break;
+    }
+    // Normal power mode, all axes enabled, 100 Hz
+    I2CwriteTo(L3G4200D, 0x20, 0b00001100);    
+    // 2000 dps (degree per second)
+    I2CwriteTo(L3G4200D, 0x23, 0b00100000);      
+    I2CreadFrom(L3G4200D, 0x23, 1, (uint8_t*)buf);
+    if (buf[0] != 0b00100000){
+        Console.println(F("gyro write error")); 
+        while(true);
+    }  
+    // fifo mode 
+   // I2CwriteTo(L3G4200D, 0x24, 0b01000000);        
+   // I2CwriteTo(L3G4200D, 0x2e, 0b01000000);          
+  #else if defined (IMU_MPU9250)
+    // 2000 dps (degree per second)
+    MPU.beginGyro(GYRO_FULL_SCALE_2000_DPS);
+  #endif
   delay(250);
   calibGyro();    
   return true;
 }
 
-boolean IMU::readL3G4200D(){  
-  now = millis();
-  uint8_t fifoSrcReg = 0;  
+boolean IMU::readGyro(){  
+  #if defined (IMU_GY801)
+    now = millis();
+    uint8_t fifoSrcReg = 0;  
 
-  I2CreadFrom(L3G4200D, 0x2F, sizeof(fifoSrcReg), &fifoSrcReg);         // read the FIFO_SRC_REG
+    I2CreadFrom(L3G4200D, 0x2F, sizeof(fifoSrcReg), &fifoSrcReg);         // read the FIFO_SRC_REG
 
-  unsigned long duration = millis() - now;
+    unsigned long duration = millis() - now;
 
-  if (duration > 10) {
-    // That's insane, shouldn't happen
-    return false;
-  }
+    if (duration > 10) {
+      // That's insane, shouldn't happen
+      return false;
+    }
 
-   // FIFO_SRC_REG
-   // 7: Watermark status. (0: FIFO filling is lower than WTM level; 1: FIFO filling is equal or higher than WTM level)
-   // 6: Overrun bit status. (0: FIFO is not completely filled; 1:FIFO is completely filled)
-   // 5: FIFO empty bit. (0: FIFO not empty; 1: FIFO empty)
-   // 4..0: FIFO stored data level
-   //Console.print("FIFO_SRC_REG: "); Console.println(fifoSrcReg, HEX);
-  uint8_t countOfData = (fifoSrcReg & 0x1F) + 1;   
-  //  if (bitRead(fifoSrcReg, 6)==1) Console.println(F("IMU error: FIFO overrun"));
+     // FIFO_SRC_REG
+     // 7: Watermark status. (0: FIFO filling is lower than WTM level; 1: FIFO filling is equal or higher than WTM level)
+     // 6: Overrun bit status. (0: FIFO is not completely filled; 1:FIFO is completely filled)
+     // 5: FIFO empty bit. (0: FIFO not empty; 1: FIFO empty)
+     // 4..0: FIFO stored data level
+     //Console.print("FIFO_SRC_REG: "); Console.println(fifoSrcReg, HEX);
+    uint8_t countOfData = (fifoSrcReg & 0x1F) + 1;   
+    //  if (bitRead(fifoSrcReg, 6)==1) Console.println(F("IMU error: FIFO overrun"));
 
-  memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
-  I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
-  //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
-
+    memset(gyroFifo, 0, sizeof(gyroFifo[0])*32);
+    I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
+    //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
+  #else if defined (IMU_MPU9250)
+    MPU.gyroUpdate();
+    uint8_t countOfData = 1;
+  #endif
   gyro.x = gyro.y = gyro.z = 0;
   //Console.print("fifo:");
   //Console.println(countOfData);
   if (!useGyroCalibration) countOfData = 1;
   for (uint8_t i=0; i<countOfData; i++){
-      gyro.x += (int16_t) (((uint16_t)gyroFifo[i].xh) << 8 | gyroFifo[i].xl);
-      gyro.y += (int16_t) (((uint16_t)gyroFifo[i].yh) << 8 | gyroFifo[i].yl);
-      gyro.z += (int16_t) (((uint16_t)gyroFifo[i].zh) << 8 | gyroFifo[i].zl);
+      #if defined (IMU_GY801)
+        gyro.x += (int16_t) (((uint16_t)gyroFifo[i].xh) << 8 | gyroFifo[i].xl);
+        gyro.y += (int16_t) (((uint16_t)gyroFifo[i].yh) << 8 | gyroFifo[i].yl);
+        gyro.z += (int16_t) (((uint16_t)gyroFifo[i].zh) << 8 | gyroFifo[i].zl);
+      #else if defined (IMU_MPU9250)
+        gyro.x += MPU.gyroX();
+        gyro.y += MPU.gyroY();
+        gyro.z += -MPU.gyroZ();
+      #endif
       if (useGyroCalibration){
         gyro.x -= gyroOfs.x;
         gyro.y -= gyroOfs.y;
@@ -375,24 +409,37 @@ boolean IMU::readL3G4200D(){
 }
 
 
-// HMC5883L compass sensor driver
-void  IMU::initHMC5883L(){
-  I2CwriteTo(HMC5883L, 0x00, 0x70);  // 8 samples averaged, 75Hz frequency, no artificial bias.       
-  //I2CwriteTo(HMC5883L, 0x01, 0xA0);      // gain
-  I2CwriteTo(HMC5883L, 0x01, 0x20);   // gain
-  I2CwriteTo(HMC5883L, 0x02, 00);    // mode         
+// Compass sensor driver
+void  IMU::initCom(){
+  Console.println(F("initCom"));
+  #if defined (IMU_GY801)
+    I2CwriteTo(HMC5883L, 0x00, 0x70);  // 8 samples averaged, 75Hz frequency, no artificial bias.       
+    //I2CwriteTo(HMC5883L, 0x01, 0xA0);      // gain
+    I2CwriteTo(HMC5883L, 0x01, 0x20);   // gain
+    I2CwriteTo(HMC5883L, 0x02, 00);    // mode         
+  #else if defined (IMU_MPU9250)
+    MPU.beginMag(MAG_MODE_CONTINUOUS_100HZ);
+  #endif
 }
 
-bool IMU::readHMC5883L(){    
+bool IMU::readCom(){    
   uint8_t buf[6];  
-  if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
-    Console.println(F("Failed to readHMC5883L"));
-    return false;
-  }
-  // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
-  float x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
-  float y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
-  float z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);  
+  #if defined (IMU_GY801)
+    if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
+      Console.println(F("Failed to readHMC5883L"));
+      return false;
+    }
+    // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
+    float x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
+    float y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
+    float z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);  
+  #else if defined (IMU_MPU9250)
+    MPU.magUpdate();
+    // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
+    float x = (int16_t) MPU.magX();
+    float y = (int16_t) MPU.magY();
+    float z = (int16_t) MPU.magZ();
+  #endif
   if (useComCalibration){
     x -= comOfs.x;
     y -= comOfs.y;
@@ -477,7 +524,7 @@ boolean IMU::newMinMaxFound(){
 void IMU::calibComUpdate(){
   comLast = com;
   delay(20);
-  readHMC5883L();  
+  readCom();  
   boolean newfound = false;
   if ( (abs(com.x-comLast.x)<10) &&  (abs(com.y-comLast.y)<10) &&  (abs(com.z-comLast.z)<10) ){
     if (com.x < comMin.x) { 
@@ -539,7 +586,7 @@ boolean IMU::calibAccNextAxis(){
   }
   point_float_t pt = {0,0,0};
   for (int i=0; i < 100; i++){        
-    readADXL345B();            
+    readAccel();            
     pt.x += acc.x / 100.0;
     pt.y += acc.y / 100.0;
     pt.z += acc.z / 100.0;                  
@@ -715,9 +762,13 @@ boolean IMU::init(){
 }
 
 bool IMU::hwInit(){
-  if (!initL3G4200D()) return false;
-  initADXL345B();
-  initHMC5883L();
+  #if defined (IMU_MPU9250)
+    Wire.begin();
+    MPU.setWire(&Wire);
+  #endif
+    initAccel();
+    initGyro();
+    initCom();
   return true;
 }
 
@@ -739,9 +790,9 @@ bool IMU::read(){
     return false;
   }
   callCounter++;    
-  if (readL3G4200D()
-      && readADXL345B()
-      && readHMC5883L()) {
+  if (readAccel()
+      && readGyro()
+      && readCom()) {
     if (resetTryCount > 0) {
       // reset was successful
       imuResetSuccessCounter++;

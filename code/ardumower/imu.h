@@ -24,6 +24,7 @@
 
 /* pitch/roll and heading estimation (IMU sensor fusion)  
    requires: GY-80 module (L3G4200D, ADXL345B, HMC5883L) 
+          or MPU9250 module()
    
 How to use it (example):     
   1. initialize IMU:                 IMU imu;  imu.init(); 
@@ -35,6 +36,7 @@ How to use it (example):
 #define IMU_H
 
 #include <Arduino.h>
+#include "MPU9250.h"
 
 // IMU state
 enum { IMU_RUN, IMU_CAL_COM };
@@ -141,13 +143,13 @@ private:
   float sermin(float oldvalue, float newvalue);
   float sermax(float oldvalue, float newvalue);
   // hardware
-  void initADXL345B();
-  boolean initL3G4200D();
-  void initHMC5883L();
+  void initAccel();
+  boolean initGyro();
+  void initCom();
   bool hwInit();
-  bool readL3G4200D();
-  bool readADXL345B();
-  bool readHMC5883L();
+  bool readGyro();
+  bool readAccel();
+  bool readCom();
   int resetTryCount;
   boolean foundNewMinMax; 
 };
