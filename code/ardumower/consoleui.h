@@ -206,13 +206,13 @@ void Robot::testRTC(){
     Console.print(F("RTC date received: "));
     Console.println(date2str(datetime.date));  
   }    
-	Console.println("writing new RTC datetime Sun 28-02-2016 23:59...");  
+	Console.println("writing new RTC datetime Sun 28-02-2020 23:59...");  
   datetime.time.hour=23;
   datetime.time.minute=59;
   datetime.date.dayOfWeek=0;
   datetime.date.day=28;
   datetime.date.month=2;
-  datetime.date.year=2016;
+  datetime.date.year=2020;
   setDS1307(datetime);	
 	Console.println("reading RTC datetime...");
 	if (readDS1307(datetime)){    
