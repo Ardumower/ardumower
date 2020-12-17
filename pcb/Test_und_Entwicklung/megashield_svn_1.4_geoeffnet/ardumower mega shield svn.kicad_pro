@@ -379,7 +379,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 12.0,
+        "bus_width": 12.007874015748031,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -396,7 +396,7 @@
         "wire_width": 5.0
       },
       {
-        "bus_width": 12.0,
+        "bus_width": 12.007874015748031,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -416,7 +416,7 @@
         "wire_width": 5.0
       },
       {
-        "bus_width": 12.0,
+        "bus_width": 12.007874015748031,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -460,7 +460,58 @@
       "default_line_thickness": 6.0,
       "default_text_size": 79.0,
       "default_wire_thickness": 6.0,
-      "field_names": [],
+      "field_names": [
+        {
+          "name": "Hersteller",
+          "url": true,
+          "visible": false
+        },
+        {
+          "name": "Hersteller Nummer",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Mouser Nummer",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Mouser Datenblatt",
+          "url": true,
+          "visible": false
+        },
+        {
+          "name": "Bauform",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Bestelllink",
+          "url": true,
+          "visible": false
+        },
+        {
+          "name": "Technische Daten",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Bestellnummer",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Funktion",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Preis",
+          "url": false,
+          "visible": false
+        }
+      ],
       "intersheets_ref_prefix": "",
       "intersheets_ref_short": false,
       "intersheets_ref_show": false,
@@ -484,7 +535,7 @@
   },
   "sheets": [
     [
-      "452cc1e3-61ef-45ed-a5cb-f412a87a4fc2",
+      "07db47f9-9f03-4720-8ff7-483614396acd",
       ""
     ],
     [

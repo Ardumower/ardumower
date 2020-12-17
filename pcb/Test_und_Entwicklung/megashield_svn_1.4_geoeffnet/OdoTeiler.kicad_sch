@@ -639,9 +639,9 @@
   (junction (at 229.87 138.049) (diameter 0.3048) (color 0 0 0 0))
 
   (no_connect (at 65.913 145.415))
-  (no_connect (at 65.913 118.745))
   (no_connect (at 207.772 115.189))
   (no_connect (at 71.374 38.608))
+  (no_connect (at 65.913 118.745))
   (no_connect (at 207.772 141.859))
   (no_connect (at 71.374 65.278))
 

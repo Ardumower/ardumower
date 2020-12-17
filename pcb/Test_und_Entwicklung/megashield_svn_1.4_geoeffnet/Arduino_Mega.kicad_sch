@@ -787,8 +787,8 @@
   (junction (at 217.297 36.957) (diameter 0.3048) (color 0 0 0 0))
   (junction (at 218.059 50.546) (diameter 0.3048) (color 0 0 0 0))
 
-  (no_connect (at 153.035 105.156))
   (no_connect (at 153.035 107.696))
+  (no_connect (at 153.035 105.156))
   (no_connect (at 107.315 40.386))
 
   (wire (pts (xy 19.304 160.02) (xy 18.288 160.02))
