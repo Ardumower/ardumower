@@ -79,18 +79,6 @@
     (property "ki_description" "Acceleration Sensor Development Tools ADXL335 Triple-Axis Accelerometer 5V" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "163_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 22.86 2.54)
-          (xy 22.86 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "163_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -119,6 +107,18 @@
       (pin bidirectional line (at 27.94 -5.08 180) (length 5.08)
         (name "TEST" (effects (font (size 1.27 1.27))))
         (number "7" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "163_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 22.86 2.54)
+          (xy 22.86 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -155,18 +155,6 @@
     )
     (property "ki_description" "Optical Sensor Development Tools Digital UV Index/IR/ Visible Light Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "1777_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "1777_0_0"
       (pin unspecified line (at 0 0 0) (length 5.08)
@@ -206,6 +194,18 @@
         (number "MH2" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "1777_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:1980" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 24.13 7.62 0)
@@ -241,18 +241,6 @@
     (property "ki_description" "Optical Sensor Development Tools TSL2591 High Dynamic Digital Light Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "1980_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 22.86 2.54)
-          (xy 22.86 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "1980_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -285,6 +273,18 @@
       (pin bidirectional line (at 27.94 -7.62 180) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "1980_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 22.86 2.54)
+          (xy 22.86 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -322,18 +322,6 @@
     (property "ki_description" "Pressure Sensor Development Tools Barometric Pressure & Altitude Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "2651_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "2651_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -370,6 +358,18 @@
       (pin bidirectional line (at 25.4 -7.62 180) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "2651_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -410,18 +410,6 @@
     (property "ki_description" "Temperature Sensor Development Tools Thermocouple Amp MAX31855 Breakout" (id 11) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "269_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 22.86 2.54)
-          (xy 22.86 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "269_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "GND" (effects (font (size 1.27 1.27))))
@@ -454,6 +442,18 @@
       (pin bidirectional line (at 27.94 -7.62 180) (length 5.08)
         (name "DATA" (effects (font (size 1.27 1.27))))
         (number "8" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "269_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 22.86 2.54)
+          (xy 22.86 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -490,18 +490,6 @@
     )
     (property "ki_description" "Switch IC Development Tools TCA9548A I2C Multiplexer" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "2717_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -33.02)
-          (xy 5.08 -33.02)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "2717_0_0"
       (pin unspecified line (at 0 0 0) (length 5.08)
@@ -609,6 +597,18 @@
         (number "9" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "2717_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -33.02)
+          (xy 5.08 -33.02)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:3328" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 24.13 7.62 0)
@@ -649,18 +649,6 @@
     )
     (property "ki_description" "Temperature Sensor Development Tools Adafruit PT100 RTD Temp SNSR Amp" (id 12) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "3328_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 22.86 2.54)
-          (xy 22.86 -17.78)
-          (xy 5.08 -17.78)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "3328_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
@@ -720,6 +708,18 @@
         (number "MH2" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "3328_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 22.86 2.54)
+          (xy 22.86 -17.78)
+          (xy 5.08 -17.78)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:3566" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 24.13 7.62 0)
@@ -760,18 +760,6 @@
     )
     (property "ki_description" "Multiple Function Sensor Development Tools Adafruit CCS811 Air Quality Sen Breakout" (id 12) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "3566_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 22.86 2.54)
-          (xy 22.86 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "3566_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
@@ -815,6 +803,18 @@
         (number "MH2" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "3566_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 22.86 2.54)
+          (xy 22.86 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:3660" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 21.59 7.62 0)
@@ -850,18 +850,6 @@
     (property "ki_description" "Multiple Function Sensor Development Tools Adafruit BME680 - T, H, P & G Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "3660_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "3660_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -890,6 +878,18 @@
       (pin bidirectional line (at 25.4 -5.08 180) (length 5.08)
         (name "CS" (effects (font (size 1.27 1.27))))
         (number "7" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "3660_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -927,18 +927,6 @@
     (property "ki_description" "Optical Sensor Development Tools Adafruit VEML7700 Lux Sensor - I2C Light Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "4162_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "4162_0_0"
       (pin unspecified line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -967,6 +955,18 @@
       (pin unspecified line (at 25.4 -5.08 180) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "4162_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -1094,130 +1094,7 @@
     (property "ki_fp_filters" "*SO14* *DIL14*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "7405D_7_0"
-      (text "GND" (at 1.397 -4.3942 900)
-        (effects (font (size 1.016 1.016)))
-      )
-      (text "VCC" (at 1.397 3.9878 900)
-        (effects (font (size 1.016 1.016)))
-      )
-    )
     (symbol "7405D_1_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405D_2_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405D_3_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405D_4_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405D_5_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405D_6_0"
       (polyline
         (pts
           (xy -5.08 -5.08)
@@ -1250,6 +1127,29 @@
         (number "2" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405D_2_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405D_2_1"
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
@@ -1258,6 +1158,29 @@
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
         (number "4" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405D_3_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "7405D_3_1"
@@ -1270,6 +1193,29 @@
         (number "6" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405D_4_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405D_4_1"
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
@@ -1278,6 +1224,29 @@
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
         (number "9" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405D_5_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "7405D_5_1"
@@ -1290,6 +1259,29 @@
         (number "11" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405D_6_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405D_6_1"
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
@@ -1298,6 +1290,14 @@
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
         (number "13" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405D_7_0"
+      (text "GND" (at 1.397 -4.3942 900)
+        (effects (font (size 1.016 1.016)))
+      )
+      (text "VCC" (at 1.397 3.9878 900)
+        (effects (font (size 1.016 1.016)))
       )
     )
     (symbol "7405D_7_1"
@@ -1324,6 +1324,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*SO14* *DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:74HCT05D" (extends "7405D")
     (property "Reference" "IC" (id 0) (at 2.54 3.175 0)
@@ -1337,6 +1340,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*SO14* *DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:74LS05D" (extends "7405D")
@@ -1352,6 +1358,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*SO14* *DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:74S05D" (extends "7405D")
     (property "Reference" "IC" (id 0) (at 2.54 3.175 0)
@@ -1365,6 +1374,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*SO14* *DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:7405FK" (pin_numbers hide) (in_bom yes) (on_board yes)
@@ -1386,130 +1398,7 @@
     (property "ki_fp_filters" "*LCC20*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "7405FK_7_0"
-      (text "GND" (at 1.397 -4.3942 900)
-        (effects (font (size 1.016 1.016)))
-      )
-      (text "VCC" (at 1.397 3.9878 900)
-        (effects (font (size 1.016 1.016)))
-      )
-    )
     (symbol "7405FK_1_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405FK_2_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405FK_3_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405FK_4_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405FK_5_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405FK_6_0"
       (polyline
         (pts
           (xy -5.08 -5.08)
@@ -1542,6 +1431,29 @@
         (number "3" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405FK_2_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405FK_2_1"
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
@@ -1550,6 +1462,29 @@
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
         (number "6" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405FK_3_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "7405FK_3_1"
@@ -1562,6 +1497,29 @@
         (number "9" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405FK_4_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405FK_4_1"
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
@@ -1570,6 +1528,29 @@
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
         (number "13" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405FK_5_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "7405FK_5_1"
@@ -1582,6 +1563,29 @@
         (number "16" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405FK_6_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405FK_6_1"
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
@@ -1590,6 +1594,14 @@
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
         (number "19" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405FK_7_0"
+      (text "GND" (at 1.397 -4.3942 900)
+        (effects (font (size 1.016 1.016)))
+      )
+      (text "VCC" (at 1.397 3.9878 900)
+        (effects (font (size 1.016 1.016)))
       )
     )
     (symbol "7405FK_7_1"
@@ -1616,6 +1628,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*LCC20*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:74HCT05FK" (extends "7405FK")
     (property "Reference" "IC" (id 0) (at 2.54 3.175 0)
@@ -1629,6 +1644,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*LCC20*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:74LS05FK" (extends "7405FK")
@@ -1644,6 +1662,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*LCC20*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:74S05FK" (extends "7405FK")
     (property "Reference" "IC" (id 0) (at 2.54 3.175 0)
@@ -1657,6 +1678,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*LCC20*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:7405N" (in_bom yes) (on_board yes)
@@ -1678,130 +1702,7 @@
     (property "ki_fp_filters" "*DIL14*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "7405N_7_0"
-      (text "GND" (at 1.397 -4.3942 900)
-        (effects (font (size 1.016 1.016)))
-      )
-      (text "VCC" (at 1.397 3.9878 900)
-        (effects (font (size 1.016 1.016)))
-      )
-    )
     (symbol "7405N_1_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405N_2_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405N_3_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405N_4_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405N_5_0"
-      (polyline
-        (pts
-          (xy -5.08 -5.08)
-          (xy -5.08 5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -5.08 5.08)
-          (xy 5.08 0)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 5.08 0)
-          (xy -5.08 -5.08)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7405N_6_0"
       (polyline
         (pts
           (xy -5.08 -5.08)
@@ -1834,6 +1735,29 @@
         (number "2" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405N_2_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405N_2_1"
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
@@ -1842,6 +1766,29 @@
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
         (number "4" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405N_3_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "7405N_3_1"
@@ -1854,6 +1801,29 @@
         (number "6" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405N_4_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405N_4_1"
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
@@ -1862,6 +1832,29 @@
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
         (number "9" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405N_5_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "7405N_5_1"
@@ -1874,6 +1867,29 @@
         (number "11" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7405N_6_0"
+      (polyline
+        (pts
+          (xy -5.08 -5.08)
+          (xy -5.08 5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -5.08 5.08)
+          (xy 5.08 0)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy -5.08 -5.08)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7405N_6_1"
       (pin open_collector inverted (at 10.16 0 180) (length 5.08)
         (name "O" (effects (font (size 1.016 1.016))))
@@ -1882,6 +1898,14 @@
       (pin input line (at -10.16 0 0) (length 5.08)
         (name "I" (effects (font (size 1.016 1.016))))
         (number "13" (effects (font (size 1.016 1.016))))
+      )
+    )
+    (symbol "7405N_7_0"
+      (text "GND" (at 1.397 -4.3942 900)
+        (effects (font (size 1.016 1.016)))
+      )
+      (text "VCC" (at 1.397 3.9878 900)
+        (effects (font (size 1.016 1.016)))
       )
     )
     (symbol "7405N_7_1"
@@ -1908,6 +1932,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:74HCT05N" (extends "7405N")
     (property "Reference" "IC" (id 0) (at 2.54 3.175 0)
@@ -1921,6 +1948,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:74LS05N" (extends "7405N")
@@ -1936,6 +1966,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:74S05N" (extends "7405N")
     (property "Reference" "IC" (id 0) (at 2.54 3.175 0)
@@ -1949,6 +1982,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:7473D" (in_bom yes) (on_board yes)
@@ -1970,45 +2006,7 @@
     (property "ki_fp_filters" "*SO14* *DIL14*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "7473D_3_0"
-      (text "GND" (at 1.397 -4.3942 900)
-        (effects (font (size 1.016 1.016)))
-      )
-      (text "VCC" (at 1.397 3.9878 900)
-        (effects (font (size 1.016 1.016)))
-      )
-    )
     (symbol "7473D_1_0"
-      (polyline
-        (pts
-          (xy -7.62 -7.62)
-          (xy 7.62 -7.62)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -7.62 10.16)
-          (xy -7.62 -7.62)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 7.62 -7.62)
-          (xy 7.62 10.16)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 7.62 10.16)
-          (xy -7.62 10.16)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7473D_2_0"
       (polyline
         (pts
           (xy -7.62 -7.62)
@@ -2064,6 +2062,36 @@
         (number "3" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7473D_2_0"
+      (polyline
+        (pts
+          (xy -7.62 -7.62)
+          (xy 7.62 -7.62)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -7.62 10.16)
+          (xy -7.62 -7.62)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 7.62 -7.62)
+          (xy 7.62 10.16)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 7.62 10.16)
+          (xy -7.62 10.16)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7473D_2_1"
       (pin input line (at -12.7 -2.54 0) (length 5.08)
         (name "K" (effects (font (size 1.016 1.016))))
@@ -2090,6 +2118,14 @@
         (number "9" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7473D_3_0"
+      (text "GND" (at 1.397 -4.3942 900)
+        (effects (font (size 1.016 1.016)))
+      )
+      (text "VCC" (at 1.397 3.9878 900)
+        (effects (font (size 1.016 1.016)))
+      )
+    )
     (symbol "7473D_3_1"
       (pin power_in line (at 0 -7.62 90) (length 5.08)
         (name "GND" (effects (font (size 1.016 1.016))))
@@ -2114,6 +2150,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*SO14* *DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:7473N" (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at -7.62 10.795 0)
@@ -2134,45 +2173,7 @@
     (property "ki_fp_filters" "*DIL14*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "7473N_3_0"
-      (text "GND" (at 1.397 -4.3942 900)
-        (effects (font (size 1.016 1.016)))
-      )
-      (text "VCC" (at 1.397 3.9878 900)
-        (effects (font (size 1.016 1.016)))
-      )
-    )
     (symbol "7473N_1_0"
-      (polyline
-        (pts
-          (xy -7.62 -7.62)
-          (xy 7.62 -7.62)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy -7.62 10.16)
-          (xy -7.62 -7.62)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 7.62 -7.62)
-          (xy 7.62 10.16)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 7.62 10.16)
-          (xy -7.62 10.16)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-    )
-    (symbol "7473N_2_0"
       (polyline
         (pts
           (xy -7.62 -7.62)
@@ -2228,6 +2229,36 @@
         (number "3" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7473N_2_0"
+      (polyline
+        (pts
+          (xy -7.62 -7.62)
+          (xy 7.62 -7.62)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy -7.62 10.16)
+          (xy -7.62 -7.62)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 7.62 -7.62)
+          (xy 7.62 10.16)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 7.62 10.16)
+          (xy -7.62 10.16)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+    )
     (symbol "7473N_2_1"
       (pin input line (at -12.7 -2.54 0) (length 5.08)
         (name "K" (effects (font (size 1.016 1.016))))
@@ -2254,6 +2285,14 @@
         (number "9" (effects (font (size 1.016 1.016))))
       )
     )
+    (symbol "7473N_3_0"
+      (text "GND" (at 1.397 -4.3942 900)
+        (effects (font (size 1.016 1.016)))
+      )
+      (text "VCC" (at 1.397 3.9878 900)
+        (effects (font (size 1.016 1.016)))
+      )
+    )
     (symbol "7473N_3_1"
       (pin power_in line (at 0 -7.62 90) (length 5.08)
         (name "GND" (effects (font (size 1.016 1.016))))
@@ -2277,6 +2316,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*DIL14*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:74HC4051D" (in_bom yes) (on_board yes)
@@ -2617,21 +2659,6 @@
     (property "ki_fp_filters" "*APF30212C*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "APF30212C_2_1"
-      (circle (center 0 1.27) (radius 0.127) (stroke (width 0)) (fill (type outline)))
-      (pin passive line (at 0 -2.54 90) (length 2.54)
-        (name "P" (effects (font (size 1.016 1.016))))
-        (number "11" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at 5.08 5.08 180) (length 2.54)
-        (name "O" (effects (font (size 1.016 1.016))))
-        (number "12" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at -5.08 5.08 0) (length 2.54)
-        (name "S" (effects (font (size 1.016 1.016))))
-        (number "14" (effects (font (size 1.016 1.016))))
-      )
-    )
     (symbol "APF30212C_1_0"
       (text ">PART" (at 4.6736 5.7912 0)
         (effects (font (size 1.4224 1.4224)))
@@ -2714,6 +2741,16 @@
         (stroke (width 0)) (fill (type none))
       )
     )
+    (symbol "APF30212C_1_1"
+      (pin passive line (at 0 5.08 270) (length 2.54)
+        (name "1" (effects (font (size 1.016 1.016))))
+        (number "1" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at 0 -5.08 90) (length 2.54)
+        (name "2" (effects (font (size 1.016 1.016))))
+        (number "2" (effects (font (size 1.016 1.016))))
+      )
+    )
     (symbol "APF30212C_2_0"
       (text ">PART" (at 5.9436 0.7112 0)
         (effects (font (size 1.4224 1.4224)))
@@ -2747,14 +2784,19 @@
         (stroke (width 0)) (fill (type none))
       )
     )
-    (symbol "APF30212C_1_1"
-      (pin passive line (at 0 5.08 270) (length 2.54)
-        (name "1" (effects (font (size 1.016 1.016))))
-        (number "1" (effects (font (size 1.016 1.016))))
+    (symbol "APF30212C_2_1"
+      (circle (center 0 1.27) (radius 0.127) (stroke (width 0)) (fill (type outline)))
+      (pin passive line (at 0 -2.54 90) (length 2.54)
+        (name "P" (effects (font (size 1.016 1.016))))
+        (number "11" (effects (font (size 1.016 1.016))))
       )
-      (pin passive line (at 0 -5.08 90) (length 2.54)
-        (name "2" (effects (font (size 1.016 1.016))))
-        (number "2" (effects (font (size 1.016 1.016))))
+      (pin passive line (at 5.08 5.08 180) (length 2.54)
+        (name "O" (effects (font (size 1.016 1.016))))
+        (number "12" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at -5.08 5.08 0) (length 2.54)
+        (name "S" (effects (font (size 1.016 1.016))))
+        (number "14" (effects (font (size 1.016 1.016))))
       )
     )
   )
@@ -4864,6 +4906,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
     )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:ATMEGA328-P" (extends "ATMEGA168A-P")
     (property "Reference" "IC" (id 0) (at -19.05 31.75 0)
@@ -4877,6 +4922,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
+    )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:ATMEGA328P-P" (extends "ATMEGA168A-P")
@@ -4892,6 +4940,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
     )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:ATMEGA48A-P" (extends "ATMEGA168A-P")
     (property "Reference" "IC" (id 0) (at -19.05 31.75 0)
@@ -4905,6 +4956,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
+    )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:ATMEGA48PA-P" (extends "ATMEGA168A-P")
@@ -4920,6 +4974,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
     )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:ATMEGA88A-P" (extends "ATMEGA168A-P")
     (property "Reference" "IC" (id 0) (at -19.05 31.75 0)
@@ -4934,6 +4991,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
     )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:ATMEGA88PA-P" (extends "ATMEGA168A-P")
     (property "Reference" "IC" (id 0) (at -19.05 31.75 0)
@@ -4947,6 +5007,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
+    )
+    (property "ki_fp_filters" "28DIP-ELL600 28dip600" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:Adafruit_BMP280" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
@@ -4982,18 +5045,6 @@
     )
     (property "ki_description" "Pressure Sensor Development Tools Barometric Pressure & Altitude Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "Adafruit_BMP280_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "Adafruit_BMP280_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
@@ -5033,6 +5084,18 @@
         (number "MH2" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "Adafruit_BMP280_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:Adafruit_BMP388" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 21.59 7.62 0)
@@ -5067,18 +5130,6 @@
     )
     (property "ki_description" "Multiple Function Sensor Development Tools Adafruit BMP388 - Precision Barometric Pressure and Altimeter" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "Adafruit_BMP388_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "Adafruit_BMP388_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
@@ -5120,6 +5171,18 @@
       (pin bidirectional line (at 25.4 -10.16 180) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "Adafruit_BMP388_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -5216,18 +5279,6 @@
     )
     (property "ki_description" "ADAFRUIT - 2772 - Adafruit Feather Basic Pro ATSAMD21 Cortex M0 98Y0176" (id 13) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "Adafruit_Feather_ATSAMD21_Cortex_M0_0_1"
-      (polyline
-        (pts
-          (xy -2.54 -5.08)
-          (xy 40.64 -5.08)
-          (xy 40.64 -27.94)
-          (xy -2.54 -27.94)
-          (xy -2.54 -5.08)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "Adafruit_Feather_ATSAMD21_Cortex_M0_0_0"
       (pin bidirectional line (at 38.1 -33.02 90) (length 5.08)
@@ -5343,6 +5394,18 @@
         (number "9" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "Adafruit_Feather_ATSAMD21_Cortex_M0_0_1"
+      (polyline
+        (pts
+          (xy -2.54 -5.08)
+          (xy 40.64 -5.08)
+          (xy 40.64 -27.94)
+          (xy -2.54 -27.94)
+          (xy -2.54 -5.08)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:Adafruit_Sensirion_SHT31_D" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 21.59 7.62 0)
@@ -5384,18 +5447,6 @@
     (property "ki_description" "Temperature Sensor Development Tools Adafruit Sensiron SHT31-D Temperature & Humidity Sensor Breakout" (id 12) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "Adafruit_Sensirion_SHT31_D_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "Adafruit_Sensirion_SHT31_D_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -5434,6 +5485,18 @@
         (number "MH2" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "Adafruit_Sensirion_SHT31_D_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:Adafruit_TSL2561" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "IC" (id 0) (at 24.13 7.62 0)
@@ -5468,18 +5531,6 @@
     )
     (property "ki_description" "Optical Sensor Development Tools TSL2561 Digital Luminosity Sensor" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "Adafruit_TSL2561_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 22.86 2.54)
-          (xy 22.86 -12.7)
-          (xy 5.08 -12.7)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
     )
     (symbol "Adafruit_TSL2561_0_0"
       (pin unspecified line (at 0 0 0) (length 5.08)
@@ -5519,6 +5570,18 @@
         (number "MH2" (effects (font (size 1.27 1.27))))
       )
     )
+    (symbol "Adafruit_TSL2561_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 22.86 2.54)
+          (xy 22.86 -12.7)
+          (xy 5.08 -12.7)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
+    )
   )
   (symbol "Zimprich_neu:Adafruit_VEML6070" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
     (property "Reference" "J" (id 0) (at 21.59 7.62 0)
@@ -5554,18 +5617,6 @@
     (property "ki_description" "Optical Sensor Development Tools VEML6070 UV Index Sensor Breakout" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "Adafruit_VEML6070_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "Adafruit_VEML6070_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -5594,6 +5645,18 @@
       (pin bidirectional line (at 0 -7.62 0) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "Adafruit_VEML6070_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -5631,18 +5694,6 @@
     (property "ki_description" "Multiple Function Sensor Development Tools Adafruit VEML6075 UVA UVB and UV Index Sensor Breakout" (id 10) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "Adafruit_VEML6075_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "Adafruit_VEML6075_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -5671,6 +5722,18 @@
       (pin bidirectional line (at 0 -7.62 0) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "Adafruit_VEML6075_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -5711,18 +5774,6 @@
     (property "ki_description" "Optical Sensor Development Tools Adafruit VEML7700 Lux Sensor - I2C Light Sensor" (id 11) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "Adafruit_VEML7700_Lux_Sensor_0_1"
-      (polyline
-        (pts
-          (xy 5.08 2.54)
-          (xy 20.32 2.54)
-          (xy 20.32 -10.16)
-          (xy 5.08 -10.16)
-          (xy 5.08 2.54)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "Adafruit_VEML7700_Lux_Sensor_0_0"
       (pin bidirectional line (at 0 0 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -5751,6 +5802,18 @@
       (pin bidirectional line (at 25.4 -5.08 180) (length 5.08)
         (name "MH2" (effects (font (size 1.27 1.27))))
         (number "MH2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "Adafruit_VEML7700_Lux_Sensor_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 20.32 2.54)
+          (xy 20.32 -10.16)
+          (xy 5.08 -10.16)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -6065,6 +6128,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
+    (property "ki_fp_filters" "TO-92*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:BC548" (extends "BC547")
     (property "Reference" "Q" (id 0) (at 5.08 1.905 0)
@@ -6078,6 +6144,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "ki_fp_filters" "TO-92*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:BC549" (extends "BC547")
@@ -6093,6 +6162,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
+    (property "ki_fp_filters" "TO-92*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:BC550" (extends "BC547")
     (property "Reference" "Q" (id 0) (at 5.08 1.905 0)
@@ -6106,6 +6178,72 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "ki_fp_filters" "TO-92*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+  (symbol "Zimprich_neu:BHC-CR123A" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
+    (property "Reference" "U" (id 0) (at 16.51 7.62 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "BHC-CR123A" (id 1) (at 16.51 5.08 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "BHC-CR123A" (id 2) (at 16.51 2.54 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datasheet" "http://www.farnell.com/cad/1868607.pdf" (id 3) (at 16.51 0 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Description" "PRO POWER - BHC-CR123A - BATTERY HOLDER, CR123A, PCB" (id 4) (at 16.51 -2.54 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Height" "" (id 5) (at 16.51 -5.08 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Manufacturer_Name" "PRO POWER" (id 6) (at 16.51 -7.62 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Manufacturer_Part_Number" "BHC-CR123A" (id 7) (at 16.51 -10.16 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Arrow Part Number" "" (id 8) (at 16.51 -12.7 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Arrow Price/Stock" "" (id 9) (at 16.51 -15.24 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Mouser Part Number" "" (id 10) (at 16.51 -17.78 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Mouser Price/Stock" "" (id 11) (at 16.51 -20.32 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "ki_description" "PRO POWER - BHC-CR123A - BATTERY HOLDER, CR123A, PCB" (id 12) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (symbol "BHC-CR123A_0_0"
+      (pin passive line (at 0 0 0) (length 5.08)
+        (name "+" (effects (font (size 1.27 1.27))))
+        (number "1" (effects (font (size 1.27 1.27))))
+      )
+      (pin passive line (at 20.32 0 180) (length 5.08)
+        (name "-" (effects (font (size 1.27 1.27))))
+        (number "2" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "BHC-CR123A_0_1"
+      (polyline
+        (pts
+          (xy 5.08 2.54)
+          (xy 15.24 2.54)
+          (xy 15.24 -2.54)
+          (xy 5.08 -2.54)
+          (xy 5.08 2.54)
+        )
+        (stroke (width 0.1524)) (fill (type none))
+      )
     )
   )
   (symbol "Zimprich_neu:Bluetooth_CZ_HC_05" (in_bom yes) (on_board yes)
@@ -7003,6 +7141,15 @@
     (property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS1307.pdf" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
     )
+    (property "ki_keywords" "Time Clock" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "ki_description" "I2C Real-Time Clock" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "ki_fp_filters" "SO8E DIP-8_300_ELL" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:DS1307Z+" (extends "DS1307+")
     (property "Reference" "U" (id 0) (at 6.858 13.97 0)
@@ -7016,6 +7163,15 @@
     )
     (property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS1307.pdf" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
+    )
+    (property "ki_keywords" "Time Clock" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "ki_description" "I2C Real-Time Clock" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "ki_fp_filters" "SO8E DIP-8_300_ELL" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:DWM1000" (in_bom yes) (on_board yes)
@@ -8547,15 +8703,15 @@
         (number "26" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 -11.43 180) (length 5.08)
-        (name "IO16" (effects (font (size 1.27 1.27))))
+        (name "IO16/NC" (effects (font (size 1.27 1.27))))
         (number "27" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 -8.89 180) (length 5.08)
-        (name "IO17" (effects (font (size 1.27 1.27))))
+        (name "IO17/NC" (effects (font (size 1.27 1.27))))
         (number "28" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 -6.35 180) (length 5.08)
-        (name "IO5/VSP/CS" (effects (font (size 1.27 1.27))))
+        (name "VSP/CS/IO5" (effects (font (size 1.27 1.27))))
         (number "29" (effects (font (size 1.27 1.27))))
       )
       (pin input line (at -24.13 12.7 0) (length 5.08)
@@ -8563,11 +8719,11 @@
         (number "3" (effects (font (size 1.27 1.27))))
       )
       (pin input line (at 22.86 -3.81 180) (length 5.08)
-        (name "IO18/VSP/CLK" (effects (font (size 1.27 1.27))))
+        (name "VSP/CLK/IO18" (effects (font (size 1.27 1.27))))
         (number "30" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 -1.27 180) (length 5.08)
-        (name "IO19/VSP/MISO" (effects (font (size 1.27 1.27))))
+        (name "VSP/MISO/IO19" (effects (font (size 1.27 1.27))))
         (number "31" (effects (font (size 1.27 1.27))))
       )
       (pin unconnected line (at 22.86 1.27 180) (length 5.08)
@@ -8575,19 +8731,19 @@
         (number "32" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 3.81 180) (length 5.08)
-        (name "IO21/SDA" (effects (font (size 1.27 1.27))))
+        (name "SDA/IO21" (effects (font (size 1.27 1.27))))
         (number "33" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 6.35 180) (length 5.08)
-        (name "RXD0" (effects (font (size 1.27 1.27))))
+        (name "RXD0/IO3" (effects (font (size 1.27 1.27))))
         (number "34" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 8.89 180) (length 5.08)
-        (name "TXD0" (effects (font (size 1.27 1.27))))
+        (name "TXD0/IO1" (effects (font (size 1.27 1.27))))
         (number "35" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 11.43 180) (length 5.08)
-        (name "IO22/SCL" (effects (font (size 1.27 1.27))))
+        (name "SCL/IO22" (effects (font (size 1.27 1.27))))
         (number "36" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at 22.86 13.97 180) (length 5.08)
@@ -12429,21 +12585,6 @@
     (property "ki_description" "Single Precision Timer" (id 12) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "NE555DR_0_1"
-      (text "555" (at 15.24 -2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (polyline
-        (pts
-          (xy 5.08 10.16)
-          (xy 25.4 10.16)
-          (xy 25.4 -15.24)
-          (xy 5.08 -15.24)
-          (xy 5.08 10.16)
-        )
-        (stroke (width 0.1524)) (fill (type none))
-      )
-    )
     (symbol "NE555DR_0_0"
       (pin bidirectional line (at 15.24 -20.32 90) (length 5.08)
         (name "GND" (effects (font (size 1.27 1.27))))
@@ -12476,6 +12617,21 @@
       (pin bidirectional line (at 17.78 15.24 270) (length 5.08)
         (name "VCC" (effects (font (size 1.27 1.27))))
         (number "8" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "NE555DR_0_1"
+      (text "555" (at 15.24 -2.54 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (polyline
+        (pts
+          (xy 5.08 10.16)
+          (xy 25.4 10.16)
+          (xy 25.4 -15.24)
+          (xy 5.08 -15.24)
+          (xy 5.08 10.16)
+        )
+        (stroke (width 0.1524)) (fill (type none))
       )
     )
   )
@@ -13394,77 +13550,6 @@
     (property "ki_fp_filters" "*RELAY_S102T0X* *Zimprich:RELAY_S102T0X*" (id 4) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "RELAY_S102T_1_1"
-      (rectangle (start -6.35 -1.016) (end -3.81 -0.762)
-        (stroke (width 0)) (fill (type outline))
-      )
-      (rectangle (start 3.556 -1.016) (end 7.112 -0.762)
-        (stroke (width 0)) (fill (type outline))
-      )
-      (rectangle (start 3.556 0.508) (end 7.112 0.762)
-        (stroke (width 0)) (fill (type outline))
-      )
-      (polyline
-        (pts
-          (xy -6.35 1.016)
-          (xy -3.81 1.016)
-          (xy -3.81 1.016)
-          (xy -5.08 -0.762)
-          (xy -5.08 -0.762)
-          (xy -6.35 1.016)
-        )
-        (stroke (width 0)) (fill (type outline))
-      )
-      (polyline
-        (pts
-          (xy 1.778 0.508)
-          (xy 1.27 -0.254)
-          (xy 1.27 -0.254)
-          (xy 2.794 -0.762)
-          (xy 2.794 -0.762)
-          (xy 1.778 0.508)
-        )
-        (stroke (width 0)) (fill (type outline))
-      )
-      (polyline
-        (pts
-          (xy 4.572 -0.762)
-          (xy 5.334 0.508)
-          (xy 5.334 0.508)
-          (xy 3.81 0.508)
-          (xy 3.81 0.508)
-          (xy 4.572 -0.762)
-        )
-        (stroke (width 0)) (fill (type outline))
-      )
-      (polyline
-        (pts
-          (xy 6.096 0.508)
-          (xy 5.334 -0.762)
-          (xy 5.334 -0.762)
-          (xy 6.858 -0.762)
-          (xy 6.858 -0.762)
-          (xy 6.096 0.508)
-        )
-        (stroke (width 0)) (fill (type outline))
-      )
-      (pin passive line (at 10.16 2.54 180) (length 2.54)
-        (name "DS1" (effects (font (size 1.016 1.016))))
-        (number "1" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at 10.16 -2.54 180) (length 2.54)
-        (name "DS2" (effects (font (size 1.016 1.016))))
-        (number "2" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at -10.16 2.54 0) (length 2.54)
-        (name "A" (effects (font (size 1.016 1.016))))
-        (number "3" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at -10.16 -2.54 0) (length 2.54)
-        (name "K" (effects (font (size 1.016 1.016))))
-        (number "4" (effects (font (size 1.016 1.016))))
-      )
-    )
     (symbol "RELAY_S102T_1_0"
       (polyline
         (pts
@@ -13579,6 +13664,77 @@
         (stroke (width 0)) (fill (type none))
       )
     )
+    (symbol "RELAY_S102T_1_1"
+      (rectangle (start -6.35 -1.016) (end -3.81 -0.762)
+        (stroke (width 0)) (fill (type outline))
+      )
+      (rectangle (start 3.556 -1.016) (end 7.112 -0.762)
+        (stroke (width 0)) (fill (type outline))
+      )
+      (rectangle (start 3.556 0.508) (end 7.112 0.762)
+        (stroke (width 0)) (fill (type outline))
+      )
+      (polyline
+        (pts
+          (xy -6.35 1.016)
+          (xy -3.81 1.016)
+          (xy -3.81 1.016)
+          (xy -5.08 -0.762)
+          (xy -5.08 -0.762)
+          (xy -6.35 1.016)
+        )
+        (stroke (width 0)) (fill (type outline))
+      )
+      (polyline
+        (pts
+          (xy 1.778 0.508)
+          (xy 1.27 -0.254)
+          (xy 1.27 -0.254)
+          (xy 2.794 -0.762)
+          (xy 2.794 -0.762)
+          (xy 1.778 0.508)
+        )
+        (stroke (width 0)) (fill (type outline))
+      )
+      (polyline
+        (pts
+          (xy 4.572 -0.762)
+          (xy 5.334 0.508)
+          (xy 5.334 0.508)
+          (xy 3.81 0.508)
+          (xy 3.81 0.508)
+          (xy 4.572 -0.762)
+        )
+        (stroke (width 0)) (fill (type outline))
+      )
+      (polyline
+        (pts
+          (xy 6.096 0.508)
+          (xy 5.334 -0.762)
+          (xy 5.334 -0.762)
+          (xy 6.858 -0.762)
+          (xy 6.858 -0.762)
+          (xy 6.096 0.508)
+        )
+        (stroke (width 0)) (fill (type outline))
+      )
+      (pin passive line (at 10.16 2.54 180) (length 2.54)
+        (name "DS1" (effects (font (size 1.016 1.016))))
+        (number "1" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at 10.16 -2.54 180) (length 2.54)
+        (name "DS2" (effects (font (size 1.016 1.016))))
+        (number "2" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at -10.16 2.54 0) (length 2.54)
+        (name "A" (effects (font (size 1.016 1.016))))
+        (number "3" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at -10.16 -2.54 0) (length 2.54)
+        (name "K" (effects (font (size 1.016 1.016))))
+        (number "4" (effects (font (size 1.016 1.016))))
+      )
+    )
   )
   (symbol "Zimprich_neu:RELAY_S102T01" (extends "RELAY_S102T")
     (property "Reference" "K" (id 0) (at -7.62 6.35 0)
@@ -13592,6 +13748,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*RELAY_S102T0X* *Zimprich:RELAY_S102T0X*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:RELAY_S102T02" (extends "RELAY_S102T")
@@ -13607,6 +13766,9 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (property "ki_fp_filters" "*RELAY_S102T0X* *Zimprich:RELAY_S102T0X*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
   (symbol "Zimprich_neu:Relay_Sharp_S202S01" (extends "RELAY_S102T")
     (property "Reference" "K" (id 0) (at -7.62 6.35 0)
@@ -13620,6 +13782,9 @@
     )
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*RELAY_S102T0X* *Zimprich:RELAY_S102T0X*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
   )
   (symbol "Zimprich_neu:RR8" (pin_names hide) (in_bom yes) (on_board yes)
@@ -13916,22 +14081,6 @@
     (property "ki_fp_filters" "*SJ* *SJW*" (id 4) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "SJ_1_1"
-      (arc (start -0.381 0.635) (end -0.381 -0.635) (radius (at -0.381 0) (length 0.635) (angles 90.1 -90.1))
-        (stroke (width 0)) (fill (type none))
-      )
-      (arc (start 0.381 -0.635) (end 0.381 0.635) (radius (at 0.381 0) (length 0.635) (angles -89.9 89.9))
-        (stroke (width 0)) (fill (type none))
-      )
-      (pin passive line (at -5.08 0 0) (length 2.54)
-        (name "1" (effects (font (size 1.016 1.016))))
-        (number "1" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at 5.08 0 180) (length 2.54)
-        (name "2" (effects (font (size 1.016 1.016))))
-        (number "2" (effects (font (size 1.016 1.016))))
-      )
-    )
     (symbol "SJ_1_0"
       (polyline
         (pts
@@ -13946,6 +14095,22 @@
           (xy 1.651 0)
         )
         (stroke (width 0)) (fill (type none))
+      )
+    )
+    (symbol "SJ_1_1"
+      (arc (start -0.381 0.635) (end -0.381 -0.635) (radius (at -0.381 0) (length 0.635) (angles 90.1 -90.1))
+        (stroke (width 0)) (fill (type none))
+      )
+      (arc (start 0.381 -0.635) (end 0.381 0.635) (radius (at 0.381 0) (length 0.635) (angles -89.9 89.9))
+        (stroke (width 0)) (fill (type none))
+      )
+      (pin passive line (at -5.08 0 0) (length 2.54)
+        (name "1" (effects (font (size 1.016 1.016))))
+        (number "1" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at 5.08 0 180) (length 2.54)
+        (name "2" (effects (font (size 1.016 1.016))))
+        (number "2" (effects (font (size 1.016 1.016))))
       )
     )
   )
@@ -13967,29 +14132,6 @@
     )
     (property "ki_fp_filters" "*SJ_2* *SJ_2W*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "SJ2W_1_1"
-      (arc (start -0.635 -1.397) (end 0.635 -1.397) (radius (at 0 -1.397) (length 0.635) (angles -179.9 -0.1))
-        (stroke (width 0)) (fill (type none))
-      )
-      (arc (start 0.635 1.397) (end -0.635 1.397) (radius (at 0 1.397) (length 0.635) (angles 0.1 179.9))
-        (stroke (width 0)) (fill (type none))
-      )
-      (rectangle (start -1.27 -0.635) (end 1.27 0.635)
-        (stroke (width 0)) (fill (type outline))
-      )
-      (pin passive line (at 0 5.08 270) (length 2.54)
-        (name "1" (effects (font (size 1.016 1.016))))
-        (number "1" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at -5.08 0 0) (length 2.54)
-        (name "2" (effects (font (size 1.016 1.016))))
-        (number "2" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at 0 -5.08 90) (length 2.54)
-        (name "3" (effects (font (size 1.016 1.016))))
-        (number "3" (effects (font (size 1.016 1.016))))
-      )
     )
     (symbol "SJ2W_1_0"
       (polyline
@@ -14035,24 +14177,7 @@
         (stroke (width 0)) (fill (type none))
       )
     )
-  )
-  (symbol "Zimprich_neu:SJ2WW" (in_bom yes) (on_board yes)
-    (property "Reference" "SJ" (id 0) (at 2.54 0.381 0)
-      (effects (font (size 1.143 1.143)) (justify left bottom))
-    )
-    (property "Value" "SJ2WW" (id 1) (at 2.54 -1.905 0)
-      (effects (font (size 1.143 1.143)) (justify left bottom))
-    )
-    (property "Footprint" "SJ_2W" (id 2) (at 0.762 3.81 0)
-      (effects (font (size 0.508 0.508)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 0 0 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "ki_fp_filters" "*SJ_2W*" (id 4) (at 0 0 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (symbol "SJ2WW_1_1"
+    (symbol "SJ2W_1_1"
       (arc (start -0.635 -1.397) (end 0.635 -1.397) (radius (at 0 -1.397) (length 0.635) (angles -179.9 -0.1))
         (stroke (width 0)) (fill (type none))
       )
@@ -14074,6 +14199,23 @@
         (name "3" (effects (font (size 1.016 1.016))))
         (number "3" (effects (font (size 1.016 1.016))))
       )
+    )
+  )
+  (symbol "Zimprich_neu:SJ2WW" (in_bom yes) (on_board yes)
+    (property "Reference" "SJ" (id 0) (at 2.54 0.381 0)
+      (effects (font (size 1.143 1.143)) (justify left bottom))
+    )
+    (property "Value" "SJ2WW" (id 1) (at 2.54 -1.905 0)
+      (effects (font (size 1.143 1.143)) (justify left bottom))
+    )
+    (property "Footprint" "SJ_2W" (id 2) (at 0.762 3.81 0)
+      (effects (font (size 0.508 0.508)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 0 0 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "ki_fp_filters" "*SJ_2W*" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "SJ2WW_1_0"
       (polyline
@@ -14119,6 +14261,29 @@
         (stroke (width 0)) (fill (type none))
       )
     )
+    (symbol "SJ2WW_1_1"
+      (arc (start -0.635 -1.397) (end 0.635 -1.397) (radius (at 0 -1.397) (length 0.635) (angles -179.9 -0.1))
+        (stroke (width 0)) (fill (type none))
+      )
+      (arc (start 0.635 1.397) (end -0.635 1.397) (radius (at 0 1.397) (length 0.635) (angles 0.1 179.9))
+        (stroke (width 0)) (fill (type none))
+      )
+      (rectangle (start -1.27 -0.635) (end 1.27 0.635)
+        (stroke (width 0)) (fill (type outline))
+      )
+      (pin passive line (at 0 5.08 270) (length 2.54)
+        (name "1" (effects (font (size 1.016 1.016))))
+        (number "1" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at -5.08 0 0) (length 2.54)
+        (name "2" (effects (font (size 1.016 1.016))))
+        (number "2" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at 0 -5.08 90) (length 2.54)
+        (name "3" (effects (font (size 1.016 1.016))))
+        (number "3" (effects (font (size 1.016 1.016))))
+      )
+    )
   )
   (symbol "Zimprich_neu:SJW" (pin_numbers hide) (in_bom yes) (on_board yes)
     (property "Reference" "SJ" (id 0) (at -2.54 2.54 0)
@@ -14139,22 +14304,6 @@
     (property "ki_fp_filters" "*SJW*" (id 5) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "SJW_1_1"
-      (arc (start -0.381 0.635) (end -0.381 -0.635) (radius (at -0.381 0) (length 0.635) (angles 90.1 -90.1))
-        (stroke (width 0)) (fill (type none))
-      )
-      (arc (start 0.381 -0.635) (end 0.381 0.635) (radius (at 0.381 0) (length 0.635) (angles -89.9 89.9))
-        (stroke (width 0)) (fill (type none))
-      )
-      (pin passive line (at -5.08 0 0) (length 2.54)
-        (name "1" (effects (font (size 1.016 1.016))))
-        (number "1" (effects (font (size 1.016 1.016))))
-      )
-      (pin passive line (at 5.08 0 180) (length 2.54)
-        (name "2" (effects (font (size 1.016 1.016))))
-        (number "2" (effects (font (size 1.016 1.016))))
-      )
-    )
     (symbol "SJW_1_0"
       (polyline
         (pts
@@ -14169,6 +14318,22 @@
           (xy 1.651 0)
         )
         (stroke (width 0)) (fill (type none))
+      )
+    )
+    (symbol "SJW_1_1"
+      (arc (start -0.381 0.635) (end -0.381 -0.635) (radius (at -0.381 0) (length 0.635) (angles 90.1 -90.1))
+        (stroke (width 0)) (fill (type none))
+      )
+      (arc (start 0.381 -0.635) (end 0.381 0.635) (radius (at 0.381 0) (length 0.635) (angles -89.9 89.9))
+        (stroke (width 0)) (fill (type none))
+      )
+      (pin passive line (at -5.08 0 0) (length 2.54)
+        (name "1" (effects (font (size 1.016 1.016))))
+        (number "1" (effects (font (size 1.016 1.016))))
+      )
+      (pin passive line (at 5.08 0 180) (length 2.54)
+        (name "2" (effects (font (size 1.016 1.016))))
+        (number "2" (effects (font (size 1.016 1.016))))
       )
     )
   )
@@ -14193,6 +14358,31 @@
     )
     (property "ki_fp_filters" "Relay?SPDT?OMRON?G5Q*" (id 6) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
+    )
+    (symbol "SONGLE_Relay_SRU-12VDC-SL-C_0_0"
+      (polyline
+        (pts
+          (xy 7.62 8.89)
+          (xy 7.62 10.16)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 12.7 8.89)
+          (xy 12.7 10.16)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
+      (polyline
+        (pts
+          (xy 12.7 8.89)
+          (xy 12.7 7.62)
+          (xy 12.065 8.255)
+          (xy 12.7 8.89)
+        )
+        (stroke (width 0)) (fill (type none))
+      )
     )
     (symbol "SONGLE_Relay_SRU-12VDC-SL-C_0_1"
       (rectangle (start -5.08 10.16) (end 15.24 0)
@@ -14285,31 +14475,6 @@
           (xy 7.62 8.89)
         )
         (stroke (width 0)) (fill (type outline))
-      )
-    )
-    (symbol "SONGLE_Relay_SRU-12VDC-SL-C_0_0"
-      (polyline
-        (pts
-          (xy 7.62 8.89)
-          (xy 7.62 10.16)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 12.7 8.89)
-          (xy 12.7 10.16)
-        )
-        (stroke (width 0)) (fill (type none))
-      )
-      (polyline
-        (pts
-          (xy 12.7 8.89)
-          (xy 12.7 7.62)
-          (xy 12.065 8.255)
-          (xy 12.7 8.89)
-        )
-        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "SONGLE_Relay_SRU-12VDC-SL-C_1_1"
@@ -14488,11 +14653,6 @@
     (property "ki_fp_filters" "TCA9548A_I2C_Multiplexer" (id 11) (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (symbol "TCA9548A_I2C_Multiplexer_0_1"
-      (rectangle (start -7.62 16.51) (end 7.62 -16.51)
-        (stroke (width 0)) (fill (type none))
-      )
-    )
     (symbol "TCA9548A_I2C_Multiplexer_0_0"
       (pin bidirectional line (at -12.7 13.97 0) (length 5.08)
         (name "VIN" (effects (font (size 1.27 1.27))))
@@ -14589,6 +14749,11 @@
       (pin bidirectional line (at -12.7 -6.35 0) (length 5.08)
         (name "SD0" (effects (font (size 1.27 1.27))))
         (number "9" (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "TCA9548A_I2C_Multiplexer_0_1"
+      (rectangle (start -7.62 16.51) (end 7.62 -16.51)
+        (stroke (width 0)) (fill (type none))
       )
     )
   )
@@ -17056,11 +17221,6 @@
     (property "Datasheet" "" (id 3) (at 0 0 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (symbol "arduino_mini_0_1"
-      (rectangle (start -10.16 24.13) (end 10.16 -34.29)
-        (stroke (width 0)) (fill (type none))
-      )
-    )
     (symbol "arduino_mini_0_0"
       (pin power_in line (at 0 -39.37 90) (length 5.08)
         (name "GND" (effects (font (size 1.524 1.524))))
@@ -17069,6 +17229,11 @@
       (pin power_in line (at -3.81 29.21 270) (length 5.08)
         (name "Vin" (effects (font (size 1.524 1.524))))
         (number "15" (effects (font (size 1.524 1.524))))
+      )
+    )
+    (symbol "arduino_mini_0_1"
+      (rectangle (start -10.16 24.13) (end 10.16 -34.29)
+        (stroke (width 0)) (fill (type none))
       )
     )
     (symbol "arduino_mini_1_1"
