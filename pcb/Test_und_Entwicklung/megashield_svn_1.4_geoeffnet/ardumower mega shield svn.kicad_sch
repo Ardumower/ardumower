@@ -4137,6 +4137,12 @@
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61feb"
       (reference "JC7") (unit 1) (value "JUMPER3") (footprint "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm")
     )
+    (path "/00000000-0000-0000-0000-000057e1969e/39bba4a7-5d02-4878-a595-ae8366dd8d58"
+      (reference "JP14") (unit 1) (value "Jumper_NC_Small") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
+    )
+    (path "/00000000-0000-0000-0000-000057e1969e/27835cfb-763d-41a4-aa0c-377fcb8bfcf2"
+      (reference "JP15") (unit 1) (value "Jumper_NC_Small") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
+    )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e33555"
       (reference "PC1") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
     )
