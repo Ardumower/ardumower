@@ -2271,7 +2271,7 @@
     (property "Funktion" "Yellow SMD LED with dome lens, 300 mcd" (id 5) (at 103.886 35.052 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Reichelt-Bestellnummer" "R: SMD-LED 1206K GE" (id 4) (at 103.886 35.052 0)
+    (property "Reichelt-Bestellnummer" "R: SMD-LED 1206K GE" (id 6) (at 103.886 35.052 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )

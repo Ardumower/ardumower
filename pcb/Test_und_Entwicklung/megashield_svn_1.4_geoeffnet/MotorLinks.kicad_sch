@@ -404,6 +404,9 @@
     (property "Bauform" "SMC" (id 6) (at 80.518 105.029 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "Hersteller Nummer" "S5MC-13-F " (id 7) (at 80.518 105.029 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 124.333 90.805 270) (unit 1)
