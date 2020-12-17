@@ -1201,7 +1201,7 @@
     (property "Value" "PTC" (id 1) (at 84.328 33.02 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "SMD_Packages:Fuse_SMD" (id 2) (at 87.376 31.496 0)
+    (property "Footprint" "Zimprich:Fuse_SMD" (id 2) (at 87.376 31.496 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Datasheet" "" (id 3) (at 87.376 31.496 0)

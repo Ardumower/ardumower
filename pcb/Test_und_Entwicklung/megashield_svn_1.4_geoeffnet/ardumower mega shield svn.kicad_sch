@@ -1728,7 +1728,7 @@
     (property "Value" "1A" (id 1) (at 206.121 39.116 90)
       (effects (font (size 1.016 1.016)))
     )
-    (property "Footprint" "Zimprich:Sicherungs_Sockel_für_TR5_TE5" (id 2) (at 201.803 39.116 0)
+    (property "Footprint" "Zimprich:Fuse_SMD" (id 2) (at 201.803 39.116 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Datasheet" "" (id 3) (at 201.803 39.116 0)
@@ -2401,7 +2401,7 @@
       (reference "EF2") (unit 1) (value "F_10A") (footprint "Zimprich:Fuseholder5x20_vert_closed_Bulgin_FX0456_und_TR15_Halter")
     )
     (path "/00000000-0000-0000-0000-00005891084a"
-      (reference "EF3") (unit 1) (value "1A") (footprint "Zimprich:Sicherungs_Sockel_für_TR5_TE5")
+      (reference "EF3") (unit 1) (value "1A") (footprint "Zimprich:Fuse_SMD")
     )
     (path "/00000000-0000-0000-0000-000054a679f2"
       (reference "K3") (unit 1) (value "RELAY_2RT") (footprint "Zimprich:Relais_DPDT_Schrack-RT2_RM5mm_3D_Kontaktbelegung_geändert_FIN40.52.9_6V")
@@ -4276,7 +4276,7 @@
       (reference "D4") (unit 1) (value "S 1G SMD") (footprint "Diodes_SMD:D_SMA_Standard")
     )
     (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e52b64"
-      (reference "F1") (unit 1) (value "PTC") (footprint "SMD_Packages:Fuse_SMD")
+      (reference "F1") (unit 1) (value "PTC") (footprint "Zimprich:Fuse_SMD")
     )
     (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057e5d727"
       (reference "JP1") (unit 1) (value "pwr 9V") (footprint "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm")
