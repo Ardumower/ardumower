@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name "ardumower-mega-shield-svn-rescue")(type "Legacy")(uri "${KIPRJMOD}/ardumower mega shield svn-rescue.lib")(options "")(descr ""))
-  (lib (name "ina169_breakout-rescue")(type "Legacy")(uri "C:/Users/uwezi/Documents/KICAD/ina169_breakout/ina169_breakout-rescue.lib")(options "")(descr ""))
-)
