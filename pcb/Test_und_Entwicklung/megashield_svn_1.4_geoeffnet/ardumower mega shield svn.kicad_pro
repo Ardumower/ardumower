@@ -144,6 +144,7 @@
         0.508,
         0.635,
         0.762,
+        1.016,
         1.27,
         1.524,
         1.778,
@@ -379,7 +380,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 12.007874015748031,
+        "bus_width": 12.0,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -396,7 +397,7 @@
         "wire_width": 5.0
       },
       {
-        "bus_width": 12.007874015748031,
+        "bus_width": 12.0,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -416,7 +417,7 @@
         "wire_width": 5.0
       },
       {
-        "bus_width": 12.007874015748031,
+        "bus_width": 12.0,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -535,7 +536,7 @@
   },
   "sheets": [
     [
-      "07db47f9-9f03-4720-8ff7-483614396acd",
+      "56bb69b5-a097-455d-9457-09d7a6f8b339",
       ""
     ],
     [
