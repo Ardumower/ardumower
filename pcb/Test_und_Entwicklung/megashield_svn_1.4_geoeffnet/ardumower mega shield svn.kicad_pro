@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.9,
+          "height": 2.0,
+          "width": 2.0
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -55,7 +55,25 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "courtyards_overlap|235785481|56121814|00000000-0000-0000-0000-000057db2231|00000000-0000-0000-0000-000057db2261",
+        "courtyards_overlap|235785481|81521814|00000000-0000-0000-0000-000057db222b|00000000-0000-0000-0000-000057db226d",
+        "courtyards_overlap|235785481|96278186|00000000-0000-0000-0000-000057db222b|00000000-0000-0000-0000-000057db2267",
+        "courtyards_overlap|238178036|68150000|00000000-0000-0000-0000-000057db2231|00000000-0000-0000-0000-000057db226d",
+        "courtyards_overlap|242857000|123828000|00000000-0000-0000-0000-000057db2267|00000000-0000-0000-0000-00005818c811",
+        "courtyards_overlap|265531000|100490000|00000000-0000-0000-0000-000057df38b3|00000000-0000-0000-0000-000057df38b8",
+        "courtyards_overlap|265531000|42070000|00000000-0000-0000-0000-000057df41b8|00000000-0000-0000-0000-000057df449c",
+        "courtyards_overlap|265531000|52230000|00000000-0000-0000-0000-000057df3ecb|00000000-0000-0000-0000-000057df41b8",
+        "courtyards_overlap|265531000|90330000|00000000-0000-0000-0000-000057df38b8|00000000-0000-0000-0000-000057df3bb7",
+        "courtyards_overlap|87960000|63830000|00000000-0000-0000-0000-000057df1e16|00000000-0000-0000-0000-000057df1e21",
+        "courtyards_overlap|87960000|66370000|00000000-0000-0000-0000-000057df1e0b|00000000-0000-0000-0000-000057df1e16",
+        "courtyards_overlap|87960000|68910000|00000000-0000-0000-0000-000057d70eba|00000000-0000-0000-0000-000057df1e0b",
+        "courtyards_overlap|87960000|71450000|00000000-0000-0000-0000-000057d70eba|00000000-0000-0000-0000-000058acbcde",
+        "courtyards_overlap|87960000|73990000|00000000-0000-0000-0000-000057ef92b2|00000000-0000-0000-0000-000058acbcde",
+        "courtyards_overlap|87960000|76530000|00000000-0000-0000-0000-000057ef92b2|00000000-0000-0000-0000-000057ef92be",
+        "courtyards_overlap|87960000|79070000|00000000-0000-0000-0000-000057ef92be|00000000-0000-0000-0000-000057ef98e7",
+        "hole_clearance|247475000|78994000|43e9d54d-a863-44ba-bb33-2acc194855bc|68a90ca5-57f0-4449-a76c-34c2a2ac5a85"
+      ],
       "meta": {
         "version": 1
       },
@@ -85,8 +103,8 @@
         "padstack": "error",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_over_copper": "error",
-        "silk_overlap": "error",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "too_many_vias": "error",
         "track_dangling": "warning",
@@ -105,6 +123,7 @@
         "max_error": 0.005,
         "min_clearance": 0.0,
         "min_copper_edge_clearance": 0.01,
+        "min_hole_clearance": 0.0,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
         "min_microvia_drill": 0.09999999999999999,
@@ -465,7 +484,7 @@
   },
   "sheets": [
     [
-      "e9fbfe09-86de-4edc-99f0-01881c9534ef",
+      "452cc1e3-61ef-45ed-a5cb-f412a87a4fc2",
       ""
     ],
     [
@@ -565,10 +584,6 @@
       "I2C"
     ],
     [
-      "882f13dd-ef74-41f9-a374-92f084b19f4e",
-      "Stromsensor_INA"
-    ],
-    [
       "00000000-0000-0000-0000-000057df5e8a",
       "Spannungsversorgung"
     ],
@@ -599,6 +614,10 @@
     [
       "00000000-0000-0000-0000-000057dd8e0c",
       "USpannungAB"
+    ],
+    [
+      "882f13dd-ef74-41f9-a374-92f084b19f4e",
+      "Stromsensor_INA"
     ]
   ],
   "text_variables": {}

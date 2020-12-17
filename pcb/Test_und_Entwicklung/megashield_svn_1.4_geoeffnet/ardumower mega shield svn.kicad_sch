@@ -2302,7 +2302,6 @@
     (path "/00000000-0000-0000-0000-000057dfe528/" (page "23"))
     (path "/00000000-0000-0000-0000-000057e81eba/" (page "24"))
     (path "/00000000-0000-0000-0000-000057e1969e/" (page "25"))
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/" (page "34"))
     (path "/00000000-0000-0000-0000-000057df5e8a/" (page "26"))
     (path "/00000000-0000-0000-0000-000057d95af0/" (page "27"))
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/" (page "28"))
@@ -2311,6 +2310,7 @@
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/" (page "31"))
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/" (page "32"))
     (path "/00000000-0000-0000-0000-000057dd8e0c/" (page "33"))
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/" (page "34"))
   )
 
   (symbol_instances
@@ -2779,6 +2779,9 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af97b7"
       (reference "#PWR056") (unit 1) (value "GND") (footprint "")
     )
+    (path "/00000000-0000-0000-0000-000057da6878/00dadba9-1f00-43a8-b1d1-23a3f8f43aa7"
+      (reference "#PWR0275") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005874550e"
       (reference "C34") (unit 1) (value "100nF") (footprint "Capacitors_SMD:C_1206")
     )
@@ -2833,12 +2836,6 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058aee7b4"
       (reference "Q27") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af97b0"
-      (reference "Q28") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af929f"
-      (reference "Q29") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
-    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5ec"
       (reference "R6") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
     )
@@ -2863,20 +2860,14 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee1c7"
       (reference "R92") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
     )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af97a2"
-      (reference "R93") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af9797"
-      (reference "R94") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af9285"
-      (reference "R95") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af9290"
-      (reference "R96") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
-    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057e169d4"
       (reference "U2") (unit 1) (value "Bluetooth_CZ_HC_05") (footprint "Zimprich:Bluetooth_Buchse_Platz_mit_Beschriftung_4_fach")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/c4a0a22f-b92d-485b-9c62-7a5f8c6af4cd"
+      (reference "U3") (unit 1) (value "SN74LVC1T45DBV") (footprint "Package_TO_SOT_SMD:SOT-23-6")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/6b3684d7-5bb2-480a-9f56-10df310cfc4d"
+      (reference "U10") (unit 1) (value "SN74LVC1T45DBV") (footprint "Package_TO_SOT_SMD:SOT-23-6")
     )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057e15ffb"
       (reference "U11") (unit 1) (value "Wlan_ESP8266") (footprint "Zimprich:Wlan_ESP8266_3D_mit_Pin_Beschreibung_ohne_Rahmen")
@@ -4177,24 +4168,6 @@
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e70556"
       (reference "U8") (unit 1) (value "DS1307+") (footprint "Zimprich:Tiny_RTC_DS1307_geändert_mit_Bohrloch_4Lochreihen")
     )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a6051"
-      (reference "C37") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_1206_3216Metric")
-    )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/a97e9df3-efde-4f93-9f2f-08bd4b685787"
-      (reference "I1") (unit 1) (value "INA169") (footprint "Package_TO_SOT_SMD:SOT-23-5")
-    )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-00005a20683e"
-      (reference "JP16") (unit 1) (value "5A") (footprint "Zimprich:SJ")
-    )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a79b6"
-      (reference "R138") (unit 1) (value "10K 1%") (footprint "Zimprich:R_0603")
-    )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a6b3f"
-      (reference "R139") (unit 1) (value "10K 1%") (footprint "Zimprich:R_0603")
-    )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a7cc4"
-      (reference "R140") (unit 1) (value "0.1 1% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
-    )
     (path "/00000000-0000-0000-0000-000057df5e8a/00000000-0000-0000-0000-000057df6841"
       (reference "#PWR0166") (unit 1) (value "GND") (footprint "")
     )
@@ -4491,6 +4464,24 @@
     )
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94e3"
       (reference "R37") (unit 1) (value "100K") (footprint "Zimprich:R_1206")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a6051"
+      (reference "C37") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_1206_3216Metric")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/a97e9df3-efde-4f93-9f2f-08bd4b685787"
+      (reference "I1") (unit 1) (value "INA169") (footprint "Package_TO_SOT_SMD:SOT-23-5")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-00005a20683e"
+      (reference "JP16") (unit 1) (value "5A") (footprint "Zimprich:SJ")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a79b6"
+      (reference "R138") (unit 1) (value "10K 1%") (footprint "Zimprich:R_0603")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a6b3f"
+      (reference "R139") (unit 1) (value "10K 1%") (footprint "Zimprich:R_0603")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a7cc4"
+      (reference "R140") (unit 1) (value "0.1 1% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
     )
   )
 )
