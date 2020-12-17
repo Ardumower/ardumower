@@ -1868,7 +1868,7 @@
     (property "Bestücken (Assemble)" "NEIN (NO)" (id 4) (at 120.269 84.455 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Funktion" "Value" (id 4) (at 120.269 84.455 0)
+    (property "Funktion" "Value" (id 5) (at 120.269 84.455 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
@@ -4586,6 +4586,9 @@
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8844"
       (reference "PRFA1") (unit 1) (value "PFRA 500") (footprint "Zimprich:PRFA_500")
     )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/0be2e759-6bfe-4885-aa7e-329d66536a6b"
+      (reference "PRFA11") (unit 1) (value "2920L500/24SLDR ") (footprint "Fuse:Fuse_2920_7451Metric_Pad2.10x5.45mm_HandSolder")
+    )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b80"
       (reference "#PWR027") (unit 1) (value "GND") (footprint "")
     )
@@ -4618,6 +4621,9 @@
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d6"
       (reference "PRFA2") (unit 1) (value "PFRA 500") (footprint "Zimprich:PRFA_500")
+    )
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/88fbf497-6e2d-49c7-8951-540242b6d579"
+      (reference "PRFA12") (unit 1) (value "2920L500/24SLDR ") (footprint "Fuse:Fuse_2920_7451Metric_Pad2.10x5.45mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057db0c47"
       (reference "#PWR023") (unit 1) (value "GND") (footprint "")

@@ -34,8 +34,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.9,
-          "height": 2.6,
-          "width": 2.6
+          "height": 2.4,
+          "width": 2.4
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -337,7 +337,6 @@
       ]
     ],
     "rule_severities": {
-      "": "error",
       "bus_definition_conflict": "error",
       "bus_label_syntax": "error",
       "bus_to_bus_conflict": "error",
@@ -539,7 +538,7 @@
   },
   "sheets": [
     [
-      "4c0401b7-b716-4afe-886a-2d4c554cf308",
+      "95de146d-7dce-4e64-bfc3-2ca00db52e04",
       ""
     ],
     [
