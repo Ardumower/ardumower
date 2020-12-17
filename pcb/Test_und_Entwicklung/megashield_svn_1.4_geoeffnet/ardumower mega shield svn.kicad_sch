@@ -2860,7 +2860,7 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005874697e"
       (reference "#PWR044") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058aefded"
+    (path "/00000000-0000-0000-0000-000057da6878/5c55a893-0079-44b3-b371-3e8b9337bc99"
       (reference "#PWR045") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af09e0"
@@ -2872,7 +2872,7 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7dfa"
       (reference "#PWR048") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5b8"
+    (path "/00000000-0000-0000-0000-000057da6878/40755a3e-74fd-4a95-b30d-c7158ff9d3a8"
       (reference "#PWR049") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5c9"
@@ -2898,6 +2898,12 @@
     )
     (path "/00000000-0000-0000-0000-000057da6878/00dadba9-1f00-43a8-b1d1-23a3f8f43aa7"
       (reference "#PWR0275") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/b7592d2c-93a2-4f72-85e1-2e1050c8e1ba"
+      (reference "#PWR0276") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/54c87ef0-2e53-4819-b92a-772091e4ca4a"
+      (reference "#PWR0277") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005874550e"
       (reference "C34") (unit 1) (value "100nF") (footprint "Capacitors_SMD:C_1206")
@@ -2941,42 +2947,6 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000581a37ad"
       (reference "P44") (unit 1) (value "Wlan") (footprint "Zimprich:JST_EH_B05B-EH-A_05x2.50mm_Straight")
     )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5fa"
-      (reference "Q24") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7df3"
-      (reference "Q25") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5b1"
-      (reference "Q26") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058aee7b4"
-      (reference "Q27") (unit 1) (value "BC847B") (footprint "TO_SOT_Packages_SMD:SOT-23")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5ec"
-      (reference "R6") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7de5"
-      (reference "R7") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5e1"
-      (reference "R8") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058af7dda"
-      (reference "R14") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd596"
-      (reference "R15") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058afd5a1"
-      (reference "R16") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee19d"
-      (reference "R91") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-0000580ee1c7"
-      (reference "R92") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
-    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057e169d4"
       (reference "U2") (unit 1) (value "Bluetooth_CZ_HC_05") (footprint "Zimprich:Bluetooth_Buchse_Platz_mit_Beschriftung_4_fach")
     )
@@ -2988,6 +2958,18 @@
     )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057e15ffb"
       (reference "U11") (unit 1) (value "Wlan_ESP8266") (footprint "Zimprich:Wlan_ESP8266_3D_mit_Pin_Beschreibung_ohne_Rahmen")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/2837ca72-e2e3-453e-9ad4-57e6bf00de2e"
+      (reference "U13") (unit 1) (value "SN74LVC1T45DBV") (footprint "Package_TO_SOT_SMD:SOT-23-6")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/bdea8457-587a-43f3-b784-ed2ab692b0d6"
+      (reference "U14") (unit 1) (value "SN74LVC1T45DBV") (footprint "Package_TO_SOT_SMD:SOT-23-6")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/7b27078b-5683-4dc1-bd7c-358ab55f24bc"
+      (reference "U15") (unit 1) (value "SN74LVC1T45DBV") (footprint "Package_TO_SOT_SMD:SOT-23-6")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/7b9b288a-2359-4930-979f-41b91c64bfd8"
+      (reference "U16") (unit 1) (value "SN74LVC1T45DBV") (footprint "Package_TO_SOT_SMD:SOT-23-6")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dce982"
       (reference "#PWR078") (unit 1) (value "GND") (footprint "")
