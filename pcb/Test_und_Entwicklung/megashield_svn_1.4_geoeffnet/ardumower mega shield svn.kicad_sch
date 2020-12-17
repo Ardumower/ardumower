@@ -4183,10 +4183,10 @@
       (reference "R46") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e3d4d7"
-      (reference "R47") (unit 1) (value "XXXX") (footprint "Zimprich:R_0603")
+      (reference "R47") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e3d4e2"
-      (reference "R48") (unit 1) (value "XXXX") (footprint "Zimprich:R_0603")
+      (reference "R48") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61fe5"
       (reference "R49") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
