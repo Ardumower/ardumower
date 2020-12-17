@@ -34,8 +34,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.9,
-          "height": 2.0,
-          "width": 2.0
+          "height": 2.6,
+          "width": 2.6
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -56,11 +56,6 @@
         }
       ],
       "drc_exclusions": [
-        "courtyards_overlap|235785481|56121814|00000000-0000-0000-0000-000057db2231|00000000-0000-0000-0000-000057db2261",
-        "courtyards_overlap|235785481|81521814|00000000-0000-0000-0000-000057db222b|00000000-0000-0000-0000-000057db226d",
-        "courtyards_overlap|235785481|96278186|00000000-0000-0000-0000-000057db222b|00000000-0000-0000-0000-000057db2267",
-        "courtyards_overlap|238178036|68150000|00000000-0000-0000-0000-000057db2231|00000000-0000-0000-0000-000057db226d",
-        "courtyards_overlap|242857000|123828000|00000000-0000-0000-0000-000057db2267|00000000-0000-0000-0000-00005818c811",
         "courtyards_overlap|265531000|100490000|00000000-0000-0000-0000-000057df38b3|00000000-0000-0000-0000-000057df38b8",
         "courtyards_overlap|265531000|42070000|00000000-0000-0000-0000-000057df41b8|00000000-0000-0000-0000-000057df449c",
         "courtyards_overlap|265531000|52230000|00000000-0000-0000-0000-000057df3ecb|00000000-0000-0000-0000-000057df41b8",
@@ -71,8 +66,7 @@
         "courtyards_overlap|87960000|71450000|00000000-0000-0000-0000-000057d70eba|00000000-0000-0000-0000-000058acbcde",
         "courtyards_overlap|87960000|73990000|00000000-0000-0000-0000-000057ef92b2|00000000-0000-0000-0000-000058acbcde",
         "courtyards_overlap|87960000|76530000|00000000-0000-0000-0000-000057ef92b2|00000000-0000-0000-0000-000057ef92be",
-        "courtyards_overlap|87960000|79070000|00000000-0000-0000-0000-000057ef92be|00000000-0000-0000-0000-000057ef98e7",
-        "hole_clearance|247475000|78994000|43e9d54d-a863-44ba-bb33-2acc194855bc|68a90ca5-57f0-4449-a76c-34c2a2ac5a85"
+        "courtyards_overlap|87960000|79070000|00000000-0000-0000-0000-000057ef92be|00000000-0000-0000-0000-000057ef98e7"
       ],
       "meta": {
         "version": 1
@@ -92,7 +86,6 @@
         "invalid_outline": "error",
         "item_on_disabled_layer": "error",
         "items_not_allowed": "error",
-        "keepout": "error",
         "length_out_of_range": "error",
         "malformed_courtyard": "error",
         "microvia_drill_too_small": "error",
@@ -113,7 +106,6 @@
         "unconnected_items": "error",
         "unresolved_variable": "error",
         "via_dangling": "warning",
-        "via_hole_larger_than_pad": "error",
         "zone_has_empty_net": "error",
         "zones_intersect": "error"
       },
@@ -345,6 +337,7 @@
       ]
     ],
     "rule_severities": {
+      "": "error",
       "bus_definition_conflict": "error",
       "bus_label_syntax": "error",
       "bus_to_bus_conflict": "error",
@@ -380,7 +373,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 12.0,
+        "bus_width": 12.007874015748031,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -397,7 +390,7 @@
         "wire_width": 5.0
       },
       {
-        "bus_width": 12.0,
+        "bus_width": 12.007874015748031,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -417,7 +410,7 @@
         "wire_width": 5.0
       },
       {
-        "bus_width": 12.0,
+        "bus_width": 12.007874015748031,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -511,6 +504,16 @@
           "name": "Preis",
           "url": false,
           "visible": false
+        },
+        {
+          "name": "Bestücken (Assemble)",
+          "url": false,
+          "visible": false
+        },
+        {
+          "name": "Bestelllink2",
+          "url": true,
+          "visible": false
         }
       ],
       "intersheets_ref_prefix": "",
@@ -536,7 +539,7 @@
   },
   "sheets": [
     [
-      "9ca4aa55-97eb-48fc-87a3-d23f166849c9",
+      "32e05004-3061-45d2-850e-4ab53cbb2a77",
       ""
     ],
     [
