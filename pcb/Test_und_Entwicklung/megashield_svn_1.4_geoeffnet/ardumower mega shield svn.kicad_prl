@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 31,
     "active_layer_preset": "",
     "hidden_nets": [],
     "high_contrast_mode": 0,
@@ -59,7 +59,7 @@
       37,
       38
     ],
-    "visible_layers": "007ffef_ffffffff"
+    "visible_layers": "005ffef_ffffffff"
   },
   "meta": {
     "filename": "ardumower mega shield svn.kicad_prl",

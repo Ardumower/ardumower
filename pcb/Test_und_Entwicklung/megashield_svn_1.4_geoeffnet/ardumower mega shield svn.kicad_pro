@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.9,
-          "height": 2.6,
-          "width": 2.6
+          "drill": 1.0,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -124,6 +124,7 @@
         0.254,
         0.508,
         0.635,
+        0.762,
         1.27,
         1.524,
         1.778,
@@ -464,7 +465,7 @@
   },
   "sheets": [
     [
-      "35166909-ec76-4448-a613-05b673e9925e",
+      "e9fbfe09-86de-4edc-99f0-01881c9534ef",
       ""
     ],
     [
@@ -562,6 +563,10 @@
     [
       "00000000-0000-0000-0000-000057e1969e",
       "I2C"
+    ],
+    [
+      "882f13dd-ef74-41f9-a374-92f084b19f4e",
+      "Stromsensor_INA"
     ],
     [
       "00000000-0000-0000-0000-000057df5e8a",
