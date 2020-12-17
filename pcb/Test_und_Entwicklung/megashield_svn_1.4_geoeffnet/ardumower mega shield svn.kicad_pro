@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.9,
+          "height": 2.6,
+          "width": 2.6
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -359,7 +359,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 12.007874015748031,
+        "bus_width": 12.0,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -373,10 +373,10 @@
         "track_width": 0.254,
         "via_diameter": 0.889,
         "via_drill": 0.635,
-        "wire_width": 5.984251968503937
+        "wire_width": 5.0
       },
       {
-        "bus_width": 12.007874015748031,
+        "bus_width": 12.0,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -393,10 +393,10 @@
         "track_width": 0.5,
         "via_diameter": 0.889,
         "via_drill": 0.635,
-        "wire_width": 5.984251968503937
+        "wire_width": 5.0
       },
       {
-        "bus_width": 12.007874015748031,
+        "bus_width": 12.0,
         "clearance": 0.254,
         "diff_pair_gap": 0.254,
         "diff_pair_via_gap": 0.25,
@@ -413,7 +413,7 @@
         "track_width": 0.762,
         "via_diameter": 0.889,
         "via_drill": 0.635,
-        "wire_width": 5.984251968503937
+        "wire_width": 5.0
       }
     ],
     "meta": {
