@@ -3041,6 +3041,9 @@
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000058746978"
       (reference "C36") (unit 1) (value "100nF") (footprint "Capacitors_SMD:C_1206")
     )
+    (path "/00000000-0000-0000-0000-000057da6878/34249326-0e4d-4cd3-90f4-17ed96a6d20c"
+      (reference "C38") (unit 1) (value "22uF / 63V") (footprint "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0")
+    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea37ac"
       (reference "JP2") (unit 1) (value "Key") (footprint "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm")
     )
