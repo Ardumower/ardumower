@@ -250,7 +250,7 @@
     (stroke (width 0) (type dash) (color 0 0 0 0))
   )
 
-  (text "Änderungen an der Version V1.4\nPolyfuse alternative hinzugegfügt.\nEs darf nur die SMD oder die Drahtlversion verwendet werden\nnicht alle 2 gleichzeitig"
+  (text "Änderungen an der Version V1.4\nPolyfuse alternative hinzugegfügt.\nEs darf nur die SMD oder die Drahtversion verwendet werden\nnicht alle 2 gleichzeitig"
     (at 59.69 75.438 0)
     (effects (font (size 1 1) italic) (justify left bottom))
   )

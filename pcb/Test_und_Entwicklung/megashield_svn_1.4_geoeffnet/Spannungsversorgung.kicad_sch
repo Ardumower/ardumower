@@ -1232,7 +1232,7 @@
     (property "Bestücken (Assemble)" "JA (YES)" (id 4) (at 87.376 31.496 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Reichelt-Bestellnummer" "R: OMH 125 HALTER" (id 4) (at 87.376 31.496 0)
+    (property "Reichelt-Bestellnummer" "R: OMH 125 HALTER" (id 5) (at 87.376 31.496 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )

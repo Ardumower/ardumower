@@ -1864,7 +1864,7 @@
     (property "Bestücken (Assemble)" "JA (YES)" (id 4) (at 201.803 39.116 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Reichelt-Bestellnummer" "R: OMH 125 HALTER" (id 4) (at 201.803 39.116 0)
+    (property "Reichelt-Bestellnummer" "R: OMH 125 HALTER" (id 5) (at 201.803 39.116 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
@@ -3066,6 +3066,15 @@
     (path "/00000000-0000-0000-0000-000057da6878/54c87ef0-2e53-4819-b92a-772091e4ca4a"
       (reference "#PWR0277") (unit 1) (value "GND") (footprint "")
     )
+    (path "/00000000-0000-0000-0000-000057da6878/30ddaf6e-51e0-40df-9301-3fced6e7f74b"
+      (reference "#PWR0278") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/3c371503-049e-45f5-80e5-807cc15beb53"
+      (reference "#PWR0279") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/c646066f-3e0b-4d8e-8610-7de12167b26e"
+      (reference "#PWR0280") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-00005874550e"
       (reference "C34") (unit 1) (value "100nF") (footprint "Capacitors_SMD:C_1206")
     )
@@ -3077,6 +3086,15 @@
     )
     (path "/00000000-0000-0000-0000-000057da6878/34249326-0e4d-4cd3-90f4-17ed96a6d20c"
       (reference "C38") (unit 1) (value "22uF / 63V") (footprint "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/22284a09-ab45-4bad-a98b-f81b0c1eeb4c"
+      (reference "C39") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0805_2012Metric")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/5f1321b5-ac84-4437-878f-ff77ec64438d"
+      (reference "C40") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0805_2012Metric")
+    )
+    (path "/00000000-0000-0000-0000-000057da6878/d4387619-c806-44dd-9219-2823600ad667"
+      (reference "C41") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057ea37ac"
       (reference "JP2") (unit 1) (value "Key") (footprint "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm")
