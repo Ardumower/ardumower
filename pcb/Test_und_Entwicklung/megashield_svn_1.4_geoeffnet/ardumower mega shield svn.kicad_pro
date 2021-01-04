@@ -513,6 +513,11 @@
           "name": "Bestelllink2",
           "url": true,
           "visible": false
+        },
+        {
+          "name": "JLCPCB LCSC Part",
+          "url": false,
+          "visible": false
         }
       ],
       "intersheets_ref_prefix": "",

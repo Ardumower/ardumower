@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2020-12-30")
+    (date "2021-01-04")
     (rev "1.4")
     (company "ML AG JL UZ")
     (comment 1 "Unterspannungsschutz von AlexanderG")
@@ -1538,6 +1538,9 @@
     (property "Reichelt-Bestellnummer" "R: SPR-1206 100K" (id 5) (at 111.76 62.484 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "JLCPCB LCSC Part" "C95527" (id 6) (at 111.76 62.484 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 111.76 78.232 0) (mirror y) (unit 1)
@@ -1583,6 +1586,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Reichelt-Bestellnummer" "R: SPR-1206 10,0K" (id 5) (at 111.76 78.232 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "JLCPCB LCSC Part" "C95519" (id 6) (at 111.76 78.232 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
@@ -1632,6 +1638,9 @@
     (property "Reichelt-Bestellnummer" "R: RND 0603 1 2,2K" (id 5) (at 133.858 99.568 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "JLCPCB LCSC Part" "C4190" (id 6) (at 133.858 99.568 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 69.469 0) (mirror y) (unit 1)
@@ -1679,6 +1688,9 @@
     (property "Reichelt-Bestellnummer" "R: SPR-1206 100K" (id 5) (at 212.725 69.469 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "JLCPCB LCSC Part" "C95527" (id 6) (at 212.725 69.469 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:R_Small-RESCUE-ardumower_mega_shield_svn") (at 212.725 85.217 0) (mirror y) (unit 1)
@@ -1724,6 +1736,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Reichelt-Bestellnummer" "R: SPR-1206 10,0K" (id 5) (at 212.725 85.217 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "JLCPCB LCSC Part" "C95519" (id 6) (at 212.725 85.217 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
@@ -4761,14 +4776,14 @@
     (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-00005a20683e"
       (reference "JP16") (unit 1) (value "5A") (footprint "Zimprich:SJ")
     )
-    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a79b6"
-      (reference "R138") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
-    )
     (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a6b3f"
-      (reference "R139") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
+      (reference "R138") (unit 1) (value "6,80K") (footprint "Zimprich:R_0603")
+    )
+    (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a79b6"
+      (reference "R139") (unit 1) (value "3,30K") (footprint "Zimprich:R_0603")
     )
     (path "/882f13dd-ef74-41f9-a374-92f084b19f4e/00000000-0000-0000-0000-0000587a7cc4"
-      (reference "R140") (unit 1) (value "0.1 1% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
+      (reference "R140") (unit 1) (value "0.05 1% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
     )
   )
 )

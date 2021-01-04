@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2020-12-30")
+    (date "2021-01-04")
     (rev "1.4")
     (company "ML AG JL UZ")
     (comment 1 "Unterspannungsschutz von AlexanderG")
@@ -2190,6 +2190,9 @@
     (property "Reichelt-Bestellnummer" "R: RND 1206 1 8,2K" (id 5) (at 84.074 41.148 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "JLCPCB LCSC Part" "C18027" (id 6) (at 84.074 41.148 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:R-RESCUE-ardumower_mega_shield_svn") (at 95.758 75.692 0) (unit 1)
@@ -2235,6 +2238,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Reichelt-Bestellnummer" "R: RND 1206 1 68" (id 5) (at 95.758 75.692 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "JLCPCB LCSC Part" "C17976" (id 6) (at 95.758 75.692 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
@@ -2310,6 +2316,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Technische Daten" "Transistor SMD NPN SOT-23 45 V 0.5 A 0.25 W" (id 6) (at 86.614 64.897 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "JLCPCB LCSC Part" "C426569" (id 7) (at 86.614 64.897 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
