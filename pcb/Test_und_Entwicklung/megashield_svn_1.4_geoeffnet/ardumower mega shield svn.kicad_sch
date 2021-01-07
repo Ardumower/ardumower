@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-06")
+    (date "2021-01-07")
     (rev "1.4")
     (company "ML AG JL UZ")
     (comment 1 "Unterspannungsschutz von AlexanderG")
@@ -4650,7 +4650,7 @@
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8845"
       (reference "C10") (unit 1) (value "2200uF 63V") (footprint "Capacitors_ThroughHole:C_Radial_D18_L36_P7.5")
     )
-    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8937"
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/78ad7db8-0fe7-46ba-974c-58b70d6f9807"
       (reference "DKE1") (unit 1) (value "SMCJ28CA VIS") (footprint "Diode_SMD:D_SMC")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db84d9/00000000-0000-0000-0000-000057db8844"
@@ -4686,7 +4686,7 @@
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d7"
       (reference "C11") (unit 1) (value "2200uF 63V") (footprint "Capacitors_ThroughHole:C_Radial_D18_L36_P7.5")
     )
-    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d8"
+    (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/8dfdce25-4223-410b-9dc1-6ada00902014"
       (reference "DKE2") (unit 1) (value "SMCJ28CA VIS") (footprint "Diode_SMD:D_SMC")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057dbd284/00000000-0000-0000-0000-000057dbd5d6"

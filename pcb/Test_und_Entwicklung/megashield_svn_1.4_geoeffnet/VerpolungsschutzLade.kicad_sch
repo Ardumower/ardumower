@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-06")
+    (date "2021-01-07")
     (rev "1.4")
     (company "ML AG JL UZ")
     (comment 1 "Unterspannungsschutz von AlexanderG")

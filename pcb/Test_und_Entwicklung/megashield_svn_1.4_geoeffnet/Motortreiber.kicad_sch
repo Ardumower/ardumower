@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-06")
+    (date "2021-01-07")
     (rev "1.4")
     (company "ML AG JL UZ")
     (comment 1 "Unterspannungsschutz von AlexanderG")
@@ -244,12 +244,12 @@
   (junction (at 138.43 103.505) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 141.351 108.585) (diameter 0.9144) (color 0 0 0 0))
 
+  (no_connect (at 92.964 121.285))
+  (no_connect (at 92.964 51.435))
+  (no_connect (at 92.964 118.745))
+  (no_connect (at 92.964 79.375))
   (no_connect (at 92.964 146.685))
   (no_connect (at 92.964 53.975))
-  (no_connect (at 92.964 79.375))
-  (no_connect (at 92.964 121.285))
-  (no_connect (at 92.964 118.745))
-  (no_connect (at 92.964 51.435))
 
   (wire (pts (xy 63.373 126.365) (xy 61.595 126.365))
     (stroke (width 0) (type solid) (color 0 0 0 0))
