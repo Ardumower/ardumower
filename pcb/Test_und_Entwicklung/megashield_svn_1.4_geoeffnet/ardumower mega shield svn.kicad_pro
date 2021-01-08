@@ -475,11 +475,6 @@
           "visible": false
         },
         {
-          "name": "Bauform",
-          "url": false,
-          "visible": false
-        },
-        {
           "name": "Bestelllink",
           "url": true,
           "visible": false
@@ -491,16 +486,6 @@
         },
         {
           "name": "Bestellnummer",
-          "url": false,
-          "visible": false
-        },
-        {
-          "name": "Funktion",
-          "url": false,
-          "visible": false
-        },
-        {
-          "name": "Preis",
           "url": false,
           "visible": false
         },
