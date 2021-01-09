@@ -2268,7 +2268,7 @@
     (property "Bestellnummer" "R: RND 135-00185" (id 7) (at 103.886 29.0576 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (property "Bauform" "0805" (id 8) (at 103.886 31.75 0)
+    (property "Bauform" "" (id 8) (at 103.886 31.75 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Bestücken (Assemble)" "JA (YES)" (id 4) (at 103.886 35.052 0)

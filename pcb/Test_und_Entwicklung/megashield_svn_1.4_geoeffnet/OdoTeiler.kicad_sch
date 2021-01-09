@@ -642,12 +642,12 @@
   (junction (at 228.6 138.684) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 228.6 141.224) (diameter 0.9144) (color 0 0 0 0))
 
+  (no_connect (at 66.802 145.288))
+  (no_connect (at 67.056 41.148))
   (no_connect (at 66.802 118.618))
   (no_connect (at 67.056 67.818))
-  (no_connect (at 206.502 118.364))
-  (no_connect (at 67.056 41.148))
-  (no_connect (at 66.802 145.288))
   (no_connect (at 206.502 145.034))
+  (no_connect (at 206.502 118.364))
 
   (wire (pts (xy 32.131 145.288) (xy 38.862 145.288))
     (stroke (width 0) (type solid) (color 0 0 0 0))

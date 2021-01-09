@@ -355,7 +355,7 @@
     (property "Footprint" "Zimprich:PRFA_500" (id 2) (at 75.946 93.98 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (property "Datasheet" "" (id 3) (at 75.946 93.98 0)
+    (property "Datasheet" "https://cdn-reichelt.de/documents/datenblatt/C400/DS_PTC_30.pdf" (id 3) (at 75.946 93.98 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Bestelllink" "https://www.reichelt.de/de/en/resettable-fuses-max-40-a-30-v-14-5-s-pfra-500-p35215.html?GROUP=C48&GROUPID=7658&START=0&SORT=-rank&OFFSET=16&&r=1" (id 4) (at 75.946 93.98 0)

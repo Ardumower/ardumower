@@ -2785,25 +2785,25 @@
       (reference "C18") (unit 1) (value "100nF") (footprint "Capacitors_SMD:C_0805")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec89e3"
-      (reference "D17") (unit 1) (value "+5VP") (footprint "LEDs:LED_1206")
+      (reference "D17") (unit 1) (value "+5VP") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec881c"
-      (reference "D18") (unit 1) (value "+3,3VP") (footprint "LEDs:LED_1206")
+      (reference "D18") (unit 1) (value "+3,3VP") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec8426"
-      (reference "D19") (unit 1) (value "+3,3V") (footprint "LEDs:LED_1206")
+      (reference "D19") (unit 1) (value "+3,3V") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d315"
-      (reference "D20") (unit 1) (value "+24V") (footprint "LEDs:LED_1206")
+      (reference "D20") (unit 1) (value "+24V") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec80dc"
-      (reference "D21") (unit 1) (value "+5V") (footprint "LEDs:LED_1206")
+      (reference "D21") (unit 1) (value "+5V") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf97"
-      (reference "D22") (unit 1) (value "Dual1") (footprint "LEDs:LED_1206")
+      (reference "D22") (unit 1) (value "Dual1") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec7aa8"
-      (reference "D23") (unit 1) (value "Dual2") (footprint "LEDs:LED_1206")
+      (reference "D23") (unit 1) (value "Dual2") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005895d97b"
       (reference "IC1") (unit 1) (value "UDN 2987 LWTR-6T") (footprint "Housings_SOIC:SOIC-20W_7.5x12.8mm_Pitch1.27mm")
