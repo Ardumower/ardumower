@@ -4657,7 +4657,7 @@
       (reference "BY8") (unit 1) (value "S5MC-13-F") (footprint "Diode_SMD:D_SMC")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057db3da3"
-      (reference "CC2") (unit 1) (value "SMDIF02100QA00JQ00 ") (footprint "Capacitor_SMD:C_2220_5650Metric")
+      (reference "CC2") (unit 1) (value "SMDIF02100QA00JQ00 ") (footprint "Capacitor_SMD:C_1206_3216Metric")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db3a39/00000000-0000-0000-0000-000057db3da2"
       (reference "RL2") (unit 1) (value "WF25P-1R8-5% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
@@ -4693,7 +4693,7 @@
       (reference "BY12") (unit 1) (value "S5MC-13-F") (footprint "Diode_SMD:D_SMC")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b7d"
-      (reference "CC3") (unit 1) (value "SMDIF02100QA00JQ00 ") (footprint "Capacitor_SMD:C_2220_5650Metric")
+      (reference "CC3") (unit 1) (value "SMDIF02100QA00JQ00 ") (footprint "Capacitor_SMD:C_1206_3216Metric")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057db6176/00000000-0000-0000-0000-000057db6b7c"
       (reference "RL3") (unit 1) (value "WF25P-1R8-5% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
@@ -4729,7 +4729,7 @@
       (reference "BY4") (unit 1) (value "S5MC-13-F") (footprint "Diode_SMD:D_SMC")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057dafe10"
-      (reference "CC1") (unit 1) (value "SMDIF02100QA00JQ00 ") (footprint "Capacitor_SMD:C_2220_5650Metric")
+      (reference "CC1") (unit 1) (value "SMDIF02100QA00JQ00 ") (footprint "Capacitor_SMD:C_1206_3216Metric")
     )
     (path "/00000000-0000-0000-0000-000057d95af0/00000000-0000-0000-0000-000057daec1d/00000000-0000-0000-0000-000057dafd0d"
       (reference "RL1") (unit 1) (value "WF25P-1R8-5% 2W") (footprint "Resistor_SMD:R_2512_6332Metric")
