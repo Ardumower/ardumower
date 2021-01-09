@@ -3748,7 +3748,7 @@
       (reference "#PWR0273") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057e646ff/00000000-0000-0000-0000-000057e64bd0"
-      (reference "D7") (unit 1) (value "MM1Z15") (footprint "Diode_SMD:D_SOD-123")
+      (reference "D7") (unit 1) (value "Z1SMA15 DIO") (footprint "Diode_SMD:D_SMA")
     )
     (path "/00000000-0000-0000-0000-000057e646ff/00000000-0000-0000-0000-000057e9a340"
       (reference "Q4") (unit 1) (value "IRF9540N") (footprint "Power_Integrations:TO-220")
@@ -4741,7 +4741,7 @@
       (reference "C12") (unit 1) (value "22uF / 63V") (footprint "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0")
     )
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dda0d5"
-      (reference "D2") (unit 1) (value "MM1Z15") (footprint "Diode_SMD:D_SOD-123")
+      (reference "D2") (unit 1) (value "Z1SMA15 DIO") (footprint "Diode_SMD:D_SMA")
     )
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e89203"
       (reference "D12") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
