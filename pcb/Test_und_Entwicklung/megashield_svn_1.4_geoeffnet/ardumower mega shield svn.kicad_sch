@@ -4141,7 +4141,7 @@
       (reference "#PWR0274") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057e82977"
-      (reference "D3") (unit 1) (value "StationLed") (footprint "LEDs:LED_1206")
+      (reference "D3") (unit 1) (value "StationLed") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057f1a898"
       (reference "Q12") (unit 1) (value "BC817") (footprint "TO_SOT_Packages_SMD:SOT-23")

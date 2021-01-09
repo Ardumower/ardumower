@@ -571,5 +571,8 @@
     (property "Bestellnummer" "Value" (id 5) (at 91.948 98.298 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "Bestücken (Assemble)" "JA (YES)" (id 6) (at 91.948 98.298 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 )
