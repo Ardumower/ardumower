@@ -425,6 +425,12 @@
     (property "Value" "SMCJ28CA VIS" (id 15) (at 110.998 101.854 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "JLCPCB Basic / Extern" "1" (id 4) (at 110.998 101.854 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "JLCPCB LCSC Part" "C10245" (id 5) (at 110.998 101.854 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:CP1-RESCUE-ardumower_mega_shield_svn") (at 84.582 101.092 0) (unit 1)

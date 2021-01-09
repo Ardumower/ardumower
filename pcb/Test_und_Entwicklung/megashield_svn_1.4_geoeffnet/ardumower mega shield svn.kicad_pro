@@ -502,7 +502,12 @@
         {
           "name": "JLCPCB LCSC Part",
           "url": false,
-          "visible": false
+          "visible": true
+        },
+        {
+          "name": "JLCPCB Basic / Extern",
+          "url": false,
+          "visible": true
         }
       ],
       "intersheets_ref_prefix": "",
