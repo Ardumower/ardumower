@@ -3439,7 +3439,7 @@
       (reference "P51") (unit 1) (value "IOREF") (footprint "Socket_Strips:Socket_Strip_Straight_1x02_Pitch2.54mm")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4d795"
-      (reference "Q38") (unit 1) (value "BC817") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q38") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057dc8c57"
       (reference "R28") (unit 1) (value "4K7") (footprint "Zimprich:R_0603")
@@ -3466,7 +3466,7 @@
       (reference "#PWR0163") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a980a6/00000000-0000-0000-0000-000058b21f52"
-      (reference "Q35") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q35") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a980a6/00000000-0000-0000-0000-000058ab0863"
       (reference "R119") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3478,7 +3478,7 @@
       (reference "#PWR0131") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e6fb3b/00000000-0000-0000-0000-000057eb0392"
-      (reference "Q5") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q5") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e6fb3b/00000000-0000-0000-0000-000057e6fcb7"
       (reference "R58") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3490,7 +3490,7 @@
       (reference "#PWR0161") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a8fee2/00000000-0000-0000-0000-000058ab0866"
-      (reference "Q33") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q33") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a8fee2/00000000-0000-0000-0000-000058ab0865"
       (reference "R115") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3502,7 +3502,7 @@
       (reference "#PWR0133") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f4/00000000-0000-0000-0000-000057eb00c5"
-      (reference "Q7") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q7") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f4/00000000-0000-0000-0000-000057e6fcb4"
       (reference "R62") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3514,7 +3514,7 @@
       (reference "#PWR0162") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a93bfe/00000000-0000-0000-0000-000058ab0867"
-      (reference "Q34") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q34") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058a93bfe/00000000-0000-0000-0000-000058ab0864"
       (reference "R117") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3526,7 +3526,7 @@
       (reference "#PWR0132") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71100/00000000-0000-0000-0000-000057eb0618"
-      (reference "Q6") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q6") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71100/00000000-0000-0000-0000-000057e6fcb5"
       (reference "R60") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3538,7 +3538,7 @@
       (reference "#PWR0165") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b25236/00000000-0000-0000-0000-000058b439d5"
-      (reference "Q37") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q37") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b25236/00000000-0000-0000-0000-000058b21f51"
       (reference "R123") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3550,7 +3550,7 @@
       (reference "#PWR0164") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b1efac/00000000-0000-0000-0000-000058ab0868"
-      (reference "Q36") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q36") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058b1efac/00000000-0000-0000-0000-000058b439d7"
       (reference "R121") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3562,7 +3562,7 @@
       (reference "#PWR0134") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f8/00000000-0000-0000-0000-000057eb0805"
-      (reference "Q8") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q8") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e712f8/00000000-0000-0000-0000-000057e6fcb6"
       (reference "R64") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3574,7 +3574,7 @@
       (reference "#PWR0135") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cbc/00000000-0000-0000-0000-000057eb0a33"
-      (reference "Q9") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q9") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cbc/00000000-0000-0000-0000-0000582a3c4f"
       (reference "R66") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3586,7 +3586,7 @@
       (reference "#PWR0136") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc0/00000000-0000-0000-0000-000057eb0bc7"
-      (reference "Q10") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q10") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc0/00000000-0000-0000-0000-000057e6fcb8"
       (reference "R68") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3598,7 +3598,7 @@
       (reference "#PWR0137") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc4/00000000-0000-0000-0000-000057eb0deb"
-      (reference "Q11") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q11") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000057e71cc4/00000000-0000-0000-0000-000057e6fcb3"
       (reference "R70") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3712,7 +3712,7 @@
       (reference "#PWR0160") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a9e9c/00000000-0000-0000-0000-000058ab1303"
-      (reference "Q32") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q32") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a9e9c/00000000-0000-0000-0000-0000582ab581"
       (reference "R101") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3724,7 +3724,7 @@
       (reference "#PWR0159") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a4f4e/00000000-0000-0000-0000-000058ab0f52"
-      (reference "Q31") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q31") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a4f4e/00000000-0000-0000-0000-0000582a54b1"
       (reference "R99") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
@@ -3736,7 +3736,7 @@
       (reference "#PWR0158") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a0806/00000000-0000-0000-0000-000058ab0ae8"
-      (reference "Q30") (unit 1) (value "BSS138") (footprint "TO_SOT_Packages_SMD:SOT-23")
+      (reference "Q30") (unit 1) (value "BSS138 (2n7002)") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-0000582a0806/00000000-0000-0000-0000-000057e6fff8"
       (reference "R97") (unit 1) (value "10K") (footprint "Zimprich:R_0603")
