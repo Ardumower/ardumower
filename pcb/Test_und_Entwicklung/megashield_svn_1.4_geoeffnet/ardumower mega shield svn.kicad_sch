@@ -4,10 +4,11 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-07")
+    (date "2021-01-11")
     (rev "1.4")
-    (company "ML AG JL UZ")
-    (comment 1 "Unterspannungsschutz von AlexanderG")
+    (company "ML AG JL BS UZ")
+    (comment 1 "Schaltplan und Layout UweZ")
+    (comment 2 "Unterspannungsschutz von AlexanderG")
   )
 
   (lib_symbols
@@ -2721,8 +2722,8 @@
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a33"
       (reference "#PWR057") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3b"
-      (reference "#PWR058") (unit 1) (value "GND") (footprint "")
+    (path "/00000000-0000-0000-0000-000057dbe57b/05db6939-c536-4873-b891-b1ebe64688b4"
+      (reference "#PWR058") (unit 1) (value "+5VP") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e15ff8"
       (reference "#PWR059") (unit 1) (value "+3.3V") (footprint "")
@@ -2847,6 +2848,9 @@
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058046110"
       (reference "Q23") (unit 1) (value "BC817") (footprint "TO_SOT_Packages_SMD:SOT-23")
     )
+    (path "/00000000-0000-0000-0000-000057dbe57b/0faa67b1-55df-4c3d-959a-22fb2af59941"
+      (reference "Q24") (unit 1) (value "BC817") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a34"
       (reference "R1") (unit 1) (value "220R") (footprint "Zimprich:R_1206")
     )
@@ -2855,6 +2859,9 @@
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3c"
       (reference "R5") (unit 1) (value "220R") (footprint "Zimprich:R_1206")
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/8bd5b669-abc5-4e36-a20d-a4c328b8681b"
+      (reference "R6") (unit 1) (value "1,2K") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f388"
       (reference "R11") (unit 1) (value "68R") (footprint "Zimprich:R_1206")
