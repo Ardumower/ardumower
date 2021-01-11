@@ -578,10 +578,10 @@
   (junction (at 246.126 27.051) (diameter 0.3048) (color 0 0 0 0))
 
   (no_connect (at 49.276 53.848))
-  (no_connect (at 160.401 135.89))
-  (no_connect (at 160.655 94.615))
-  (no_connect (at 160.655 53.848))
   (no_connect (at 49.276 94.615))
+  (no_connect (at 160.401 135.89))
+  (no_connect (at 160.655 53.848))
+  (no_connect (at 160.655 94.615))
   (no_connect (at 230.886 48.006))
   (no_connect (at 49.53 135.89))
   (no_connect (at 49.53 176.657))
