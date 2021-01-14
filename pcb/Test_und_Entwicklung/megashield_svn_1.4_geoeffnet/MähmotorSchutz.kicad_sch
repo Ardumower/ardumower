@@ -577,7 +577,7 @@
     (property "JLCPCB Basic / Extern" "1" (id 6) (at 91.948 98.298 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "JLCPCB LCSC Part" "C53737" (id 7) (at 91.948 98.298 0)
+    (property "JLCPCB LCSC Part" "C1944" (id 7) (at 91.948 98.298 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )

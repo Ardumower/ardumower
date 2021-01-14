@@ -1993,7 +1993,7 @@
     (property "JLCPCB Basic / Extern" "1" (id 4) (at 159.639 31.496 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "JLCPCB LCSC Part" "C133781" (id 5) (at 159.639 31.496 0)
+    (property "JLCPCB LCSC Part" "C13980" (id 5) (at 159.639 31.496 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )

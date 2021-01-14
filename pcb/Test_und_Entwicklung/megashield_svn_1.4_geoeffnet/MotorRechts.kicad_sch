@@ -562,7 +562,7 @@
     (property "JLCPCB Basic / Extern" "1" (id 8) (at 91.948 98.298 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "JLCPCB LCSC Part" "C53737" (id 9) (at 91.948 98.298 0)
+    (property "JLCPCB LCSC Part" "C1944" (id 9) (at 91.948 98.298 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Bauform" "" (id 4) (at 91.948 98.298 0)
