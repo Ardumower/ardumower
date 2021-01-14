@@ -551,6 +551,9 @@
     (property "Bestücken (Assemble)" "JA (YES)" (id 6) (at 134.366 76.454 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "JLCPCB LCSC Part" "C32357" (id 7) (at 134.366 76.454 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
   )
 
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:IRF9540N-RESCUE-ardumower_mega_shield_svn") (at 123.317 72.517 90) (unit 1)
