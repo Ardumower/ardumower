@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-14")
+    (date "2021-01-15")
     (rev "1.4")
     (company "ML AG JL BS UZ")
     (comment 1 "Schaltplan und Layout UweZ")
@@ -2864,7 +2864,7 @@
       (reference "R6") (unit 1) (value "1,2K") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803f388"
-      (reference "R11") (unit 1) (value "68R") (footprint "Zimprich:R_1206")
+      (reference "R11") (unit 1) (value "68R") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a44"
       (reference "R17") (unit 1) (value "220R") (footprint "Resistor_SMD:R_0805_2012Metric")
@@ -2912,7 +2912,7 @@
       (reference "R78") (unit 1) (value "100R") (footprint "Zimprich:R_1206")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005804613a"
-      (reference "R79") (unit 1) (value "68R") (footprint "Zimprich:R_1206")
+      (reference "R79") (unit 1) (value "68R") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d304"
       (reference "R80") (unit 1) (value "180R") (footprint "Zimprich:R_1206")
@@ -4160,7 +4160,7 @@
       (reference "R72") (unit 1) (value "8K2") (footprint "Zimprich:R_1206")
     )
     (path "/00000000-0000-0000-0000-000057e81eba/00000000-0000-0000-0000-000057e82512"
-      (reference "R73") (unit 1) (value "68R") (footprint "Zimprich:R_1206")
+      (reference "R73") (unit 1) (value "68R") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e19c6c"
       (reference "#PWR0217") (unit 1) (value "GND") (footprint "")
@@ -4784,7 +4784,7 @@
       (reference "R35") (unit 1) (value "10K") (footprint "Zimprich:R_1206")
     )
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94f0"
-      (reference "R36") (unit 1) (value "30K") (footprint "Zimprich:R_1206")
+      (reference "R36") (unit 1) (value "30K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dd94e3"
       (reference "R37") (unit 1) (value "100K") (footprint "Zimprich:R_1206")

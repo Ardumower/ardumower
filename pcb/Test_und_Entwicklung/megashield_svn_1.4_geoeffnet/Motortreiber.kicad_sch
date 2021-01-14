@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-14")
+    (date "2021-01-15")
     (rev "1.4")
     (company "ML AG JL BS UZ")
     (comment 1 "Schaltplan und Layout UweZ")
@@ -246,10 +246,10 @@
 
   (no_connect (at 92.964 118.745))
   (no_connect (at 92.964 51.435))
-  (no_connect (at 92.964 53.975))
-  (no_connect (at 92.964 79.375))
   (no_connect (at 92.964 146.685))
   (no_connect (at 92.964 121.285))
+  (no_connect (at 92.964 79.375))
+  (no_connect (at 92.964 53.975))
 
   (wire (pts (xy 63.373 126.365) (xy 61.595 126.365))
     (stroke (width 0) (type solid) (color 0 0 0 0))
