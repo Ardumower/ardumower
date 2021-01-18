@@ -571,10 +571,10 @@
   (junction (at 178.308 146.685) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 189.738 105.664) (diameter 0.9144) (color 0 0 0 0))
 
-  (no_connect (at 158.496 64.516))
-  (no_connect (at 149.606 105.41))
-  (no_connect (at 185.928 91.948))
   (no_connect (at 159.258 48.514))
+  (no_connect (at 185.928 91.948))
+  (no_connect (at 149.606 105.41))
+  (no_connect (at 158.496 64.516))
 
   (wire (pts (xy 68.199 61.976) (xy 78.105 61.976))
     (stroke (width 0) (type solid) (color 0 0 0 0))
