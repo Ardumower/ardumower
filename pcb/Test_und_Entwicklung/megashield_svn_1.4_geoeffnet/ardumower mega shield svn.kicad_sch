@@ -2866,7 +2866,7 @@
       (reference "R17") (unit 1) (value "220R") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-0000580379c5"
-      (reference "R19") (unit 1) (value "8K2") (footprint "Zimprich:R_1206")
+      (reference "R19") (unit 1) (value "8K2") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057e08a3d"
       (reference "R20") (unit 1) (value "220R") (footprint "Resistor_SMD:R_0805_2012Metric")
@@ -2887,7 +2887,7 @@
       (reference "R25") (unit 1) (value "220R") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf91"
-      (reference "R38") (unit 1) (value "8K2") (footprint "Zimprich:R_1206")
+      (reference "R38") (unit 1) (value "8K2") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058a302bb"
       (reference "R43") (unit 1) (value "2k2") (footprint "Zimprich:R_0603")
@@ -4345,25 +4345,25 @@
       (reference "JP15") (unit 1) (value "Jumper_NC_Small") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e33555"
-      (reference "PC1") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC1") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59a7d"
-      (reference "PC2") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC2") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59e78"
-      (reference "PC3") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC3") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59ecd"
-      (reference "PC4") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC4") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f0c"
-      (reference "PC5") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC5") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61f7d"
-      (reference "PC6") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC6") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e61fcd"
-      (reference "PC7") (unit 1) (value "PCA9517D") (footprint "Zimprich:SOIC127P600X175-8N")
+      (reference "PC7") (unit 1) (value "PCA9517ADP,118") (footprint "Package_SO:TSSOP-8_3x3mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000057e1969e/00000000-0000-0000-0000-000057e59a8a"
       (reference "R40") (unit 1) (value "XXXX") (footprint "Zimprich:R_0603")
