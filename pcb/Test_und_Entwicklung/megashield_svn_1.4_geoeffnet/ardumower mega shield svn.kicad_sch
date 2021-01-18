@@ -915,7 +915,6 @@
   (junction (at 150.622 86.741) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 186.69 46.99) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 186.69 60.706) (diameter 0.9144) (color 0 0 0 0))
-  (junction (at 186.69 68.961) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 191.262 60.706) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 212.725 60.706) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 212.725 77.851) (diameter 0.9144) (color 0 0 0 0))
@@ -1084,9 +1083,6 @@
     (stroke (width 0) (type solid) (color 0 0 0 0))
   )
   (wire (pts (xy 186.69 60.706) (xy 191.262 60.706))
-    (stroke (width 0) (type solid) (color 0 0 0 0))
-  )
-  (wire (pts (xy 186.69 68.961) (xy 186.69 69.088))
     (stroke (width 0) (type solid) (color 0 0 0 0))
   )
   (wire (pts (xy 186.69 76.581) (xy 186.69 77.851))
@@ -2026,7 +2022,7 @@
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:D-RESCUE-ardumower_mega_shield_svn") (at 194.056 18.542 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid "00000000-0000-0000-0000-000058915405")
-    (property "Reference" "D73" (id 0) (at 194.056 14.605 0)
+    (property "Reference" "D8" (id 0) (at 194.056 14.605 0)
       (effects (font (size 0.9906 0.9906)))
     )
     (property "Value" "MBR 1045" (id 1) (at 194.056 16.129 0)
@@ -2073,7 +2069,7 @@
   (symbol (lib_id "ardumower-mega-shield-svn-rescue:1N4148-RESCUE-ardumower_mega_shield_svn") (at 198.374 64.262 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid "2f64b30b-7eec-418a-8d46-9147da41342b")
-    (property "Reference" "D77" (id 0) (at 193.446 65.557 0)
+    (property "Reference" "D11" (id 0) (at 193.446 65.557 0)
       (effects (font (size 0.991 0.991)) (justify right))
     )
     (property "Value" "1N4148W" (id 1) (at 190.627 67.081 0)
@@ -2662,17 +2658,17 @@
     (path "/00000000-0000-0000-0000-000057e6ba60"
       (reference "D1") (unit 1) (value "MBR 1045") (footprint "Diodes_ThroughHole:Diode_TO-220_Vertical")
     )
+    (path "/00000000-0000-0000-0000-000058915405"
+      (reference "D8") (unit 1) (value "MBR 1045") (footprint "Zimprich:MBR1045")
+    )
     (path "/00000000-0000-0000-0000-000057e4c8a2"
       (reference "D9") (unit 1) (value "MBR 1045") (footprint "Diodes_ThroughHole:Diode_TO-220_Vertical")
     )
     (path "/00000000-0000-0000-0000-000058e41856"
       (reference "D10") (unit 1) (value "1N4148W") (footprint "Diode_SMD:D_SOD-123")
     )
-    (path "/00000000-0000-0000-0000-000058915405"
-      (reference "D73") (unit 1) (value "MBR 1045") (footprint "Zimprich:MBR1045")
-    )
     (path "/2f64b30b-7eec-418a-8d46-9147da41342b"
-      (reference "D77") (unit 1) (value "1N4148W") (footprint "Diode_SMD:D_SOD-123")
+      (reference "D11") (unit 1) (value "1N4148W") (footprint "Diode_SMD:D_SOD-123")
     )
     (path "/00000000-0000-0000-0000-000054a79b5a"
       (reference "EF1") (unit 1) (value "F_2A") (footprint "Zimprich:Fuse_SMD")
@@ -2785,26 +2781,26 @@
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000058030e40"
       (reference "C18") (unit 1) (value "100nF") (footprint "Capacitors_SMD:C_0805")
     )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec7aa8"
+      (reference "D12") (unit 1) (value "Dual2") (footprint "LED_SMD:LED_0805_2012Metric")
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf97"
+      (reference "D13") (unit 1) (value "Dual1") (footprint "LED_SMD:LED_0805_2012Metric")
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d315"
+      (reference "D14") (unit 1) (value "+24V") (footprint "LED_SMD:LED_0805_2012Metric")
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec80dc"
+      (reference "D15") (unit 1) (value "+5V") (footprint "LED_SMD:LED_0805_2012Metric")
+    )
+    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec8426"
+      (reference "D16") (unit 1) (value "+3,3V") (footprint "LED_SMD:LED_0805_2012Metric")
+    )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec89e3"
       (reference "D17") (unit 1) (value "+5VP") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec881c"
       (reference "D18") (unit 1) (value "+3,3VP") (footprint "LED_SMD:LED_0805_2012Metric")
-    )
-    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec8426"
-      (reference "D19") (unit 1) (value "+3,3V") (footprint "LED_SMD:LED_0805_2012Metric")
-    )
-    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803d315"
-      (reference "D20") (unit 1) (value "+24V") (footprint "LED_SMD:LED_0805_2012Metric")
-    )
-    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec80dc"
-      (reference "D21") (unit 1) (value "+5V") (footprint "LED_SMD:LED_0805_2012Metric")
-    )
-    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005803bf97"
-      (reference "D22") (unit 1) (value "Dual1") (footprint "LED_SMD:LED_0805_2012Metric")
-    )
-    (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-000057ec7aa8"
-      (reference "D23") (unit 1) (value "Dual2") (footprint "LED_SMD:LED_0805_2012Metric")
     )
     (path "/00000000-0000-0000-0000-000057dbe57b/00000000-0000-0000-0000-00005895d97b"
       (reference "IC1") (unit 1) (value "UDN 2987 LWTR-6T") (footprint "Housings_SOIC:SOIC-20W_7.5x12.8mm_Pitch1.27mm")
@@ -3869,7 +3865,7 @@
       (reference "C9") (unit 1) (value "100nF") (footprint "Capacitors_ThroughHole:C_Disc_D3_P2.5")
     )
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058dd7faf"
-      (reference "D74") (unit 1) (value "S 1G SMD") (footprint "Diodes_SMD:D_SMA_Standard")
+      (reference "D5") (unit 1) (value "S 1G SMD") (footprint "Diodes_SMD:D_SMA_Standard")
     )
     (path "/00000000-0000-0000-0000-000057dfe528/fe0ad39a-5d2d-4ea9-aca5-10d424148ff1"
       (reference "DB1") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
