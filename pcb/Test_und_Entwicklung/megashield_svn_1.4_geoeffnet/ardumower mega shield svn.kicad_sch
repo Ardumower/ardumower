@@ -4,7 +4,7 @@
 
   (title_block
     (title "Ardumower shield SVN Version")
-    (date "2021-01-15")
+    (date "2021-01-18")
     (rev "1.4")
     (company "ML AG JL BS UZ")
     (comment 1 "Schaltplan und Layout UweZ")
@@ -3010,6 +3010,9 @@
     (path "/00000000-0000-0000-0000-000057e12859/00000000-0000-0000-0000-000058cbd2a4"
       (reference "B24") (unit 1) (value "Rohos") (footprint "Symbols:RoHS-Logo_6mm_SilkScreen")
     )
+    (path "/00000000-0000-0000-0000-000057e12859/4894f356-733a-4e95-a594-0860010b0444"
+      (reference "B25") (unit 1) (value "ESD-Logo") (footprint "Symbol:ESD-Logo_22x20mm_SilkScreen")
+    )
     (path "/00000000-0000-0000-0000-000057da6878/00000000-0000-0000-0000-000057dcca39"
       (reference "#PWR029") (unit 1) (value "GND") (footprint "")
     )
@@ -3352,11 +3355,11 @@
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4dde7"
       (reference "C2") (unit 1) (value "47uF") (footprint "Zimprich:Elko_vert_11.2x6.3mm_RM2.5_RM5.0")
     )
-    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e502be"
-      (reference "D75") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
+    (path "/00000000-0000-0000-0000-000057dc7e7b/52dfa845-95e7-434a-a689-667163219e9c"
+      (reference "DB33") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
-    (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058ef784d"
-      (reference "D76") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
+    (path "/00000000-0000-0000-0000-000057dc7e7b/330a893c-ee3a-485a-938d-05db6859ef3e"
+      (reference "DB34") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dc7e7b/00000000-0000-0000-0000-000058e4e1eb"
       (reference "JP13") (unit 1) (value "DueR.") (footprint "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm")
@@ -3784,257 +3787,182 @@
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dd92e3"
       (reference "#PWR0186") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a003"
+    (path "/00000000-0000-0000-0000-000057dfe528/dec18331-ba41-432c-bc4e-2e7f7d3cdfb2"
       (reference "#PWR0187") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0d4de"
+    (path "/00000000-0000-0000-0000-000057dfe528/3b03fe54-c242-405c-b626-36d0bc6885b0"
       (reference "#PWR0188") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0db3d"
+    (path "/00000000-0000-0000-0000-000057dfe528/c879a93c-8c94-49e7-a8c6-9545f38a5c8e"
       (reference "#PWR0189") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa2058"
+    (path "/00000000-0000-0000-0000-000057dfe528/c9bbba0c-7287-4864-b1e2-12a735cda66f"
       (reference "#PWR0190") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8bff"
+    (path "/00000000-0000-0000-0000-000057dfe528/ba3e11d0-6f73-4048-8a66-8f8a8070d80a"
       (reference "#PWR0191") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac703"
+    (path "/00000000-0000-0000-0000-000057dfe528/6dad5565-0a34-46d6-9728-e01c16f969f2"
       (reference "#PWR0192") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd7a"
+    (path "/00000000-0000-0000-0000-000057dfe528/3f8f4120-83ea-4dd5-ab97-c3ed178a911c"
       (reference "#PWR0193") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3334"
+    (path "/00000000-0000-0000-0000-000057dfe528/e7553a9c-1e74-4a85-8ea6-5ad802535b29"
       (reference "#PWR0194") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3386"
+    (path "/00000000-0000-0000-0000-000057dfe528/679dfa7b-e532-4365-91f1-af6eff4758d6"
       (reference "#PWR0195") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33af"
+    (path "/00000000-0000-0000-0000-000057dfe528/85592063-8f92-47ac-9ec7-b05cb7fce72a"
       (reference "#PWR0196") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33d8"
+    (path "/00000000-0000-0000-0000-000057dfe528/3ad726ba-f10e-4843-b5c5-5407d54de12a"
       (reference "#PWR0197") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3453"
+    (path "/00000000-0000-0000-0000-000057dfe528/aa3ef067-2910-499a-9576-d93d694110f8"
       (reference "#PWR0198") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff2764"
+    (path "/00000000-0000-0000-0000-000057dfe528/3ab81d4b-bd38-4230-b510-2a4391f3d44e"
       (reference "#PWR0199") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff62dc"
+    (path "/00000000-0000-0000-0000-000057dfe528/f5869c0d-9cbc-4b02-8f25-06fa281806f2"
       (reference "#PWR0200") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff75fe"
+    (path "/00000000-0000-0000-0000-000057dfe528/0dd02c43-c2fa-4edb-ae68-4b20b4ce5b40"
       (reference "#PWR0201") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff94ec"
+    (path "/00000000-0000-0000-0000-000057dfe528/43a7d52c-32bf-40ca-880e-896f9f96fa02"
       (reference "#PWR0202") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffa784"
+    (path "/00000000-0000-0000-0000-000057dfe528/358c2d1c-9636-4f07-bd2a-a675726a69b9"
       (reference "#PWR0203") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffbe99"
+    (path "/00000000-0000-0000-0000-000057dfe528/4b01ed42-0efe-4932-94f6-3cfcfe38d218"
       (reference "#PWR0204") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffd73f"
+    (path "/00000000-0000-0000-0000-000057dfe528/17c15ed0-1338-4d6f-b88c-ecdb6b7af325"
       (reference "#PWR0205") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-00005800031e"
+    (path "/00000000-0000-0000-0000-000057dfe528/fc836a9f-eff5-4457-a504-9e9c0473cb75"
       (reference "#PWR0206") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058002cb1"
+    (path "/00000000-0000-0000-0000-000057dfe528/2ad67f76-b097-4176-a1f5-d1950b1f3f96"
       (reference "#PWR0207") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058004554"
+    (path "/00000000-0000-0000-0000-000057dfe528/87fdcfa3-c1c3-4c26-83ec-3b70232d9908"
       (reference "#PWR0208") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058005b8c"
+    (path "/00000000-0000-0000-0000-000057dfe528/8181b4c5-4e23-41cc-9c85-564740bf2056"
       (reference "#PWR0209") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-0000580072f3"
+    (path "/00000000-0000-0000-0000-000057dfe528/be5c1728-ce80-4421-b694-69e92c7bda4f"
       (reference "#PWR0210") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058007c1d"
+    (path "/00000000-0000-0000-0000-000057dfe528/b1971a0c-5ab4-47d7-9548-59a4428000d2"
       (reference "#PWR0211") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058031089"
+    (path "/00000000-0000-0000-0000-000057dfe528/00508af1-bcd0-4fa1-b628-f68e607acd30"
       (reference "#PWR0212") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057dfedc9"
       (reference "C9") (unit 1) (value "100nF") (footprint "Capacitors_ThroughHole:C_Disc_D3_P2.5")
     )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a89512"
-      (reference "D5") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058a629d6"
-      (reference "D6") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa204b"
-      (reference "D8") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a002"
-      (reference "D11") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa2064"
-      (reference "D16") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a004"
-      (reference "D24") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058031094"
-      (reference "D25") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058031082"
-      (reference "D26") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058007c28"
-      (reference "D27") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058007c16"
-      (reference "D28") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-0000580072ec"
-      (reference "D29") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-0000580072fe"
-      (reference "D30") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058005b85"
-      (reference "D31") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0d4d4"
-      (reference "D32") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0db33"
-      (reference "D33") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058005b97"
-      (reference "D34") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0d4ea"
-      (reference "D35") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0db49"
-      (reference "D36") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-00005800454d"
-      (reference "D37") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-00005800455f"
-      (reference "D38") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058002caa"
-      (reference "D39") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058002cbc"
-      (reference "D40") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058000317"
-      (reference "D41") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058000329"
-      (reference "D42") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffd738"
-      (reference "D43") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffd74a"
-      (reference "D44") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffbe92"
-      (reference "D45") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffbea4"
-      (reference "D46") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffa77d"
-      (reference "D47") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ffa78f"
-      (reference "D48") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff75f7"
-      (reference "D49") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff7609"
-      (reference "D50") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff94e5"
-      (reference "D51") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff94f7"
-      (reference "D52") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd73"
-      (reference "D53") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd85"
-      (reference "D54") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac6fc"
-      (reference "D55") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fac70e"
-      (reference "D56") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff275d"
-      (reference "D57") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff276f"
-      (reference "D58") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8bf8"
-      (reference "D59") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa8c0a"
-      (reference "D60") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff62d5"
-      (reference "D61") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057ff62e7"
-      (reference "D62") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc337f"
-      (reference "D63") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc3391"
-      (reference "D64") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc344c"
-      (reference "D65") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc345e"
-      (reference "D66") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33a8"
-      (reference "D67") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33ba"
-      (reference "D68") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc332d"
-      (reference "D69") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc333f"
-      (reference "D70") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33d1"
-      (reference "D71") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
-    (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fc33e3"
-      (reference "D72") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
-    )
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000058dd7faf"
       (reference "D74") (unit 1) (value "S 1G SMD") (footprint "Diodes_SMD:D_SMA_Standard")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/fe0ad39a-5d2d-4ea9-aca5-10d424148ff1"
+      (reference "DB1") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/499fe03f-b873-46fc-a107-7f0992b9315d"
+      (reference "DB2") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/184d64e0-6117-4e50-b400-078ecc25f387"
+      (reference "DB3") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/99a2cfd6-bef0-4fc1-98d3-c9a9beafd6ce"
+      (reference "DB4") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/c46a6b6f-3440-4a47-99d1-56ee2810a5d6"
+      (reference "DB5") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/781e40a2-abc4-43c5-9d35-19f2fc76daaa"
+      (reference "DB6") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/efb08d10-1e5d-48fa-96bf-a0b63bfcb764"
+      (reference "DB7") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/191cada7-6283-4dae-9141-094019ae1617"
+      (reference "DB8") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/f9098838-d242-4b46-addf-7debb08b6684"
+      (reference "DB9") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/b624bc22-e8de-4c33-86ac-57c4b69924ed"
+      (reference "DB10") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/8a359d01-b27e-4b9c-b27c-a51cd885318a"
+      (reference "DB11") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/7d6fb8b3-f178-4610-b8f5-ead457b28a3b"
+      (reference "DB12") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/134b9483-b558-4a7a-99b5-2efb55eb35df"
+      (reference "DB13") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/76c8bf51-bbf8-4ce6-ab9a-2fe8d91a8e0c"
+      (reference "DB14") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/cc773310-922c-4415-8411-8b239e1b8cbf"
+      (reference "DB15") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/e1851bc0-c2e8-4946-8c18-a742adaff795"
+      (reference "DB16") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/15aa3042-d7a0-45d9-b938-c29ce3b8439d"
+      (reference "DB17") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/710f8d52-91f6-4de0-b85c-4e6c5114981e"
+      (reference "DB18") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/2fb616b8-8da3-44cb-b2df-440d98858cd4"
+      (reference "DB19") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/7b07da0b-c22d-4531-8058-6f51319a7a95"
+      (reference "DB20") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/73415f8f-d8f9-4a23-b17a-def4d1d78c7c"
+      (reference "DB21") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/e8a4ea95-9b3a-416b-9c73-26f3708f7e3d"
+      (reference "DB22") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/3a176211-ecca-4d2c-abeb-0bb8ffe6f99a"
+      (reference "DB23") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/c73783c7-d38c-4882-b510-dd2400f98da7"
+      (reference "DB24") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/3df9378a-fbb4-4403-bf8c-f8af28720bd6"
+      (reference "DB25") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/f2887673-1911-4bb6-b73f-84ddb10abd08"
+      (reference "DB26") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/6c3dec5f-8821-4ef7-8053-33ee4d2a09e6"
+      (reference "DB27") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/00cb24ed-ec35-49e7-b660-e32dd9586a18"
+      (reference "DB28") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057f0a001"
       (reference "R3") (unit 1) (value "300R") (footprint "Zimprich:R_0603")
     )
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fa2040"
       (reference "R4") (unit 1) (value "300R") (footprint "Zimprich:R_0603")
+    )
+    (path "/00000000-0000-0000-0000-000057dfe528/948e4fc9-9e5b-4d86-a578-4f0dd67b8ce2"
+      (reference "R7") (unit 1) (value "XXXX") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000057dfe528/00000000-0000-0000-0000-000057fadd68"
       (reference "R26") (unit 1) (value "300R") (footprint "Zimprich:R_0603")
@@ -4750,17 +4678,17 @@
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057dda0d5"
       (reference "D2") (unit 1) (value "Z1SMA15 DIO") (footprint "Diode_SMD:D_SMA")
     )
-    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e89203"
-      (reference "D12") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
+    (path "/00000000-0000-0000-0000-000057dd8e0c/c441f35e-68b7-43c3-9dfc-fe0fa72514ac"
+      (reference "DB29") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
-    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e85f65"
-      (reference "D13") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
+    (path "/00000000-0000-0000-0000-000057dd8e0c/d25a3d0e-490f-4f83-b49c-f24f0f524aa2"
+      (reference "DB30") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
-    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057ddcd22"
-      (reference "D14") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
+    (path "/00000000-0000-0000-0000-000057dd8e0c/45d9ecac-6abb-4023-9eca-e1e315992661"
+      (reference "DB31") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
-    (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-000057e86a66"
-      (reference "D15") (unit 1) (value "TSS0230LU") (footprint "Zimprich:D_0603")
+    (path "/00000000-0000-0000-0000-000057dd8e0c/4f0128aa-663e-4da6-a92e-38cf59664e56"
+      (reference "DB32") (unit 1) (value "BAV99") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/00000000-0000-0000-0000-000057dd8e0c/00000000-0000-0000-0000-00005834de11"
       (reference "JP8") (unit 1) (value "UV.Abschaltung") (footprint "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm")
