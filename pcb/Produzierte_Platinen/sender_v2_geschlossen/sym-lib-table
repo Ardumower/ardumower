@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "Perimeter-sender-v2-rescue")(type "Legacy")(uri "${KIPRJMOD}/Perimeter sender v2-rescue.lib")(options "")(descr ""))
+  (lib (name "arduino_shieldsNCL")(type "Legacy")(uri "${KIPRJMOD}/arduino_shieldsNCL.lib")(options "")(descr ""))
+  (lib (name "Zimprich1")(type "Legacy")(uri "${KICAD6_SYMBOL_DIR}/Zimprich.lib")(options "")(descr ""))
+)
