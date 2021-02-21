@@ -36,7 +36,7 @@
   #define HMC5883L (0x1E)          // HMC5883L compass sensor (GY-80 PCB)
   #define L3G4200D (0xD2 >> 1)     // L3G4200D gyro sensor (GY-80 PCB)
 #else if defined (IMU_MPU9250)
-  MPU9250 MPU(MPU9250_ADDRESS_AD0_HIGH);
+  MPU9250 MPU92xx(MPU9250_ADDRESS_AD0_HIGH);
   int status;
 #endif
 
@@ -255,7 +255,7 @@ void  IMU::initAccel(){
     I2CwriteTo(ADXL345B, 0x2D, 16);
     I2CwriteTo(ADXL345B, 0x2D, 8);         
   #else if defined (IMU_MPU9250)
-    MPU.beginAccel(ACC_FULL_SCALE_8_G);
+    MPU92xx.beginAccel(ACC_FULL_SCALE_8_G);
   #endif
 }
 
@@ -267,7 +267,7 @@ bool IMU::readAccel(){
       return false;
     }
   #else if defined (IMU_MPU9250)
-    MPU.accelUpdate();
+    MPU92xx.accelUpdate();
   #endif
   // Convert the accelerometer value to G's. 
   // With 10 bits measuring over a +/-4g range we can find how to convert by using the equation:
@@ -278,9 +278,9 @@ bool IMU::readAccel(){
     float y = (int16_t) (((uint16_t)buf[3]) << 8 | buf[2]); 
     float z = (int16_t) (((uint16_t)buf[5]) << 8 | buf[4]);
   #else if defined (IMU_MPU9250)
-    float x = MPU.accelX();
-    float y = MPU.accelY();
-    float z = -MPU.accelZ();
+    float x = MPU92xx.accelX();
+    float y = MPU92xx.accelY();
+    float z = -MPU92xx.accelZ();
   #endif
   //Console.println(z);
   if (useAccCalibration){
@@ -342,7 +342,7 @@ boolean IMU::initGyro(){
    // I2CwriteTo(L3G4200D, 0x2e, 0b01000000);          
   #else if defined (IMU_MPU9250)
     // 2000 dps (degree per second)
-    MPU.beginGyro(GYRO_FULL_SCALE_2000_DPS);
+    MPU92xx.beginGyro(GYRO_FULL_SCALE_2000_DPS);
   #endif
   delay(250);
   calibGyro();    
@@ -376,7 +376,7 @@ boolean IMU::readGyro(){
     I2CreadFrom(L3G4200D, 0xA8, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
     //I2CreadFrom(L3G4200D, 0x28, sizeof(gyroFifo[0])*countOfData, (uint8_t *)gyroFifo);         // the first bit of the register address specifies we want automatic address increment
   #else if defined (IMU_MPU9250)
-    MPU.gyroUpdate();
+    MPU92xx.gyroUpdate();
     uint8_t countOfData = 1;
   #endif
   gyro.x = gyro.y = gyro.z = 0;
@@ -389,9 +389,9 @@ boolean IMU::readGyro(){
         gyro.y += (int16_t) (((uint16_t)gyroFifo[i].yh) << 8 | gyroFifo[i].yl);
         gyro.z += (int16_t) (((uint16_t)gyroFifo[i].zh) << 8 | gyroFifo[i].zl);
       #else if defined (IMU_MPU9250)
-        gyro.x += MPU.gyroX();
-        gyro.y += MPU.gyroY();
-        gyro.z += -MPU.gyroZ();
+        gyro.x += MPU92xx.gyroX();
+        gyro.y += MPU92xx.gyroY();
+        gyro.z += -MPU92xx.gyroZ();
       #endif
       if (useGyroCalibration){
         gyro.x -= gyroOfs.x;
@@ -418,7 +418,7 @@ void  IMU::initCom(){
     I2CwriteTo(HMC5883L, 0x01, 0x20);   // gain
     I2CwriteTo(HMC5883L, 0x02, 00);    // mode         
   #else if defined (IMU_MPU9250)
-    MPU.beginMag(MAG_MODE_CONTINUOUS_100HZ);
+    MPU92xx.beginMag(MAG_MODE_CONTINUOUS_100HZ);
   #endif
 }
 
@@ -434,11 +434,11 @@ bool IMU::readCom(){
     float y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
     float z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);  
   #else if defined (IMU_MPU9250)
-    MPU.magUpdate();
+    MPU92xx.magUpdate();
     // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
-    float x = (int16_t) MPU.magX();
-    float y = (int16_t) MPU.magY();
-    float z = (int16_t) MPU.magZ();
+    float x = (int16_t) MPU92xx.magX();
+    float y = (int16_t) MPU92xx.magY();
+    float z = (int16_t) MPU92xx.magZ();
   #endif
   if (useComCalibration){
     x -= comOfs.x;
@@ -764,7 +764,7 @@ boolean IMU::init(){
 bool IMU::hwInit(){
   #if defined (IMU_MPU9250)
     Wire.begin();
-    MPU.setWire(&Wire);
+    MPU92xx.setWire(&Wire);
   #endif
     initAccel();
     initGyro();
