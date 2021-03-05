@@ -42,8 +42,9 @@ void Robot::checkBattery(){
 		if ( (stateCurr == STATE_OFF) || (stateCurr == STATE_ERROR) ) {      
 			if (idleTimeSec != BATTERY_SW_OFF){ // battery already switched off?
 				idleTimeSec ++; // add one second idle time
-				if ((batSwitchOffIfIdle != 0) && (idleTimeSec > batSwitchOffIfIdle * 60)) {        
-					Console.println(F("triggered batSwitchOffIfIdle"));      
+				if (((batSwitchOffIfIdle != 0) && (idleTimeSec > batSwitchOffIfIdle * 60)) || (batSwitchOffNow == 1)) {        
+					Console.println(F("triggered batSwitchOff Idle or Now"));      
+					batSwitchOffNow = 0;
 					beep(1, true);      
 					loadSaveErrorCounters(false); // saves error counters
 					loadSaveRobotStats(false);    // saves robot stats

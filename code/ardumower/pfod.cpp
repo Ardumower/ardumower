@@ -1034,6 +1034,7 @@ void RemoteControl::sendCommandMenu(boolean update){
 	serialPort->print(robot->lastSensorTriggeredName());
   serialPort->print(F("|rr~Auto rotate is "));
   serialPort->print(robot->motorLeftPWMCurr);
+  serialPort->print(F("|rt~Power OFF Mower"));
   serialPort->print(F("|r1~User switch 1 is "));
   sendOnOff(robot->userSwitch1);  
   serialPort->print(F("|r2~User switch 2 is "));
@@ -1084,6 +1085,8 @@ void RemoteControl::processCommandMenu(String pfodCmd){
     robot->mowPatternCurr = (robot->mowPatternCurr + 1 ) % 3;      
     robot->setNextState(STATE_OFF, 0);            
     sendCommandMenu(true);
+  } else if (pfodCmd == "rt") {
+    robot->batSwitchOffNow = 1; // to power off the PCB now
   } else if (pfodCmd == "r1"){
     robot->userSwitch1 = !robot->userSwitch1;
     robot->setUserSwitches();
