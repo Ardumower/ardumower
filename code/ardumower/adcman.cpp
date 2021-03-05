@@ -206,6 +206,7 @@ void ADCManager::startADC(int sampleCount){
 void ADCManager::startCapture(int sampleCount){
   //Console.print("starting capture ch");
   //Console.println(channel);
+  Console.print(F(""));
   position = 0;
   busy=true;
   startADC(sampleCount);  
