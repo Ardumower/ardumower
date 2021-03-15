@@ -34,6 +34,7 @@
   // -------------I2C addresses ------------------------
   #define ADXL345B (0x53)          // ADXL345B acceleration sensor (GY-80 PCB)
   #define HMC5883L (0x1E)          // HMC5883L compass sensor (GY-80 PCB)
+  #define MMC5883MA (0x30)         // MMC5883MA compass sensor (GY-801 PCB)
   #define L3G4200D (0xD2 >> 1)     // L3G4200D gyro sensor (GY-80 PCB)
 #elif defined (IMU_MPU9250)
   MPU9250 MPU92xx(MPU9250_ADDRESS_AD0_HIGH);
@@ -86,6 +87,7 @@ IMU::IMU(){
   comScale.x=comScale.y=comScale.z=2;  
   comOfs.x=comOfs.y=comOfs.z=0;    
   useComCalibration = true;
+  type5588 = -1;
 }
 
 // rescale to -PI..+PI
@@ -413,10 +415,59 @@ boolean IMU::readGyro(){
 void  IMU::initCom(){
   Console.println(F("initCom"));
   #if defined (IMU_GY801)
-    I2CwriteTo(HMC5883L, 0x00, 0x70);  // 8 samples averaged, 75Hz frequency, no artificial bias.       
-    //I2CwriteTo(HMC5883L, 0x01, 0xA0);      // gain
-    I2CwriteTo(HMC5883L, 0x01, 0x20);   // gain
-    I2CwriteTo(HMC5883L, 0x02, 00);    // mode         
+    // test the compass sensor HMC588L or MMC5883MA
+    Wire.beginTransmission(HMC5883L);
+    int error = Wire.endTransmission();
+
+    if (!error && type5588 == -1) {
+       type5588 = HMC5883L;
+       Console.println(F("Found HMC5883L"));
+    }
+    
+    Wire.beginTransmission(MMC5883MA);
+    error = Wire.endTransmission();
+
+    if (!error && type5588 == -1) {
+       type5588 = MMC5883MA;
+       Console.println(F("Found MMC5883MA"));
+    }
+    
+    if (type5588 == HMC5883L) {
+       I2CwriteTo(HMC5883L, 0x00, 0x70);  // 8 samples averaged, 75Hz frequency, no artificial bias.       
+       //I2CwriteTo(HMC5883L, 0x01, 0xA0);      // gain
+       I2CwriteTo(HMC5883L, 0x01, 0x20);   // gain
+       I2CwriteTo(HMC5883L, 0x02, 00);    // mode         
+    }
+    else if (type5588 == MMC5883MA) {
+       uint8_t buf[6];
+       I2CwriteTo(MMC5883MA, 0x08, 0x0);  // 
+       I2CwriteTo(MMC5883MA, 0x09, 0x00);   // 16bit / 1.6ms / no inbihit
+       I2CwriteTo(MMC5883MA, 0x0A, 0x01);  // 14/28/54/84Hz frequency         
+       // Calibrate sensor
+       // Set SET
+       I2CwriteTo(MMC5883MA,0x8,0x08);
+       I2CreadFrom(MMC5883MA, 0x00, 6, (uint8_t*)buf);
+       float x = (int16_t) ((((uint16_t)buf[1]) << 8) | buf[0]);
+       float y = (int16_t) ((((uint16_t)buf[3]) << 8) | buf[2]);
+       float z = (int16_t) ((((uint16_t)buf[5]) << 8) | buf[4]);  
+       // Set RESET
+       I2CwriteTo(MMC5883MA,0x8,0x10);
+       I2CreadFrom(MMC5883MA, 0x00, 6, (uint8_t*)buf);
+       x -= (int16_t) ((((uint16_t)buf[1]) << 8) | buf[0]);
+       y -= (int16_t) ((((uint16_t)buf[3]) << 8) | buf[2]);
+       z -= (int16_t) ((((uint16_t)buf[5]) << 8) | buf[4]);  
+       x /= 2; y /= 2; z /= 2;
+       // Clr RESET
+       I2CwriteTo(MMC5883MA,0x8,0x0);
+       // Now x,y,z are the correction factor, save them
+       MMCOffset[0] = x;
+       MMCOffset[1] = y;
+       MMCOffset[2] = z;
+       if (I2CreadFrom(MMC5883MA, 0x00, 6, (uint8_t*)buf) != 6){
+          errorCounter++;
+          return;
+       }
+    }
   #elif defined (IMU_MPU9250)
     MPU92xx.beginMag(MAG_MODE_CONTINUOUS_100HZ);
   #endif
@@ -424,21 +475,39 @@ void  IMU::initCom(){
 
 bool IMU::readCom(){    
   uint8_t buf[6];  
+  float x;
+  float y;
+  float z;
+
   #if defined (IMU_GY801)
-    if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
-      Console.println(F("Failed to readHMC5883L"));
-      return false;
+    if (type5588 == HMC5883L) {
+       if (I2CreadFrom(HMC5883L, 0x03, 6, (uint8_t*)buf) != 6){
+         Console.println(F("Failed to readHMC5883L"));
+         return false;
+       }
+       // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
+       x = (int16_t) ((((uint16_t)buf[0]) << 8) | buf[1]);
+       y = (int16_t) ((((uint16_t)buf[4]) << 8) | buf[5]);
+       z = (int16_t) ((((uint16_t)buf[2]) << 8) | buf[3]);  
     }
-    // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
-    float x = (int16_t) (((uint16_t)buf[0]) << 8 | buf[1]);
-    float y = (int16_t) (((uint16_t)buf[4]) << 8 | buf[5]);
-    float z = (int16_t) (((uint16_t)buf[2]) << 8 | buf[3]);  
+    else if (type5588 == MMC5883MA) {
+       if (I2CreadFrom(MMC5883MA, 0x00, 6, (uint8_t*)buf) != 6){
+         Console.println(F("Failed to readMMC5883MA"));
+         return false;
+       }
+       x = (int16_t) ((((uint16_t)buf[1]) << 8) | buf[0]);
+       y = (int16_t) ((((uint16_t)buf[3]) << 8) | buf[2]);
+       z = (int16_t) ((((uint16_t)buf[5]) << 8) | buf[4]);  
+       x -= MMCOffset[0];
+       y -= MMCOffset[1];
+       z -= MMCOffset[2];
+    }
   #elif defined (IMU_MPU9250)
     MPU92xx.magUpdate();
     // scale +1.3Gauss..-1.3Gauss  (*0.00092)  
-    float x = (int16_t) MPU92xx.magX();
-    float y = (int16_t) MPU92xx.magY();
-    float z = (int16_t) MPU92xx.magZ();
+    x = (int16_t) MPU92xx.magX();
+    y = (int16_t) MPU92xx.magY();
+    z = (int16_t) MPU92xx.magZ();
   #endif
   if (useComCalibration){
     x -= comOfs.x;

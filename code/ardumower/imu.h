@@ -151,6 +151,8 @@ private:
   bool readAccel();
   bool readCom();
   int resetTryCount;
+  float MMCOffset[3];
+  int type5588;
   boolean foundNewMinMax; 
 };
 

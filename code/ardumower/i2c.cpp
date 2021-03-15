@@ -169,6 +169,7 @@ void I2CScanner(){
         nDevices++;
         switch (address){          
           case 0x1E: Console.print("probably HMC5883L"); break;          
+          case 0x30: Console.print("probably MMC5883MA"); break;
           case 0x50: Console.print("probably AT24C32"); break;
           case 0x53: Console.print("probably ADXL345B"); break;
           case 0x60: Console.print("probably CMPS11"); break;          
