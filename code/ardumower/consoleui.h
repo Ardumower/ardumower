@@ -92,6 +92,10 @@ void Robot::printInfo(Stream &s){
 
 void Robot::printMenu(){  
   Console.println();
+  Console.print(F("---Ardumower "));
+  Console.print(VER); 
+  Console.println(F("---"));
+  Console.println();
   Console.println(F("-----------MAIN MENU----------"));  
   Console.println(F("f=delete all USER settings (reset all user settings in EEPROM)"));  
   Console.println(F("e=delete all ERRORS (reset error counters in EEPROM)"));      
