@@ -451,6 +451,7 @@ class Robot
     float batGoHomeIfBelow ;     // drive home voltage (Volt)
     float batSwitchOffIfBelow ;  // switch off if below voltage (Volt)
     int batSwitchOffIfIdle;      // switch off battery if idle for minutes
+    int batSwitchOffNow;      // switch off battery now, when user it says
     float batFactor       ;     // battery conversion factor
     float batChgFactor       ;     // battery conversion factor    
     float batFull         ;      // battery reference Voltage (fully charged)
@@ -695,5 +696,3 @@ protected:
 
 
 #endif
-
-
