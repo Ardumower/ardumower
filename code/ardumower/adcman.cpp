@@ -107,7 +107,7 @@ void ADCManager::setCapture(byte pin, byte samplecount, boolean autoCalibrateOfs
 }
 
 void ADCManager::calibrate(){
-  Console.println("ADC calibration...");
+  Console.println(F("ADC calibration..."));
   for (int ch=0; ch < CHANNELS; ch++){    
     ADCMax[ch] = -9999;
     ADCMin[ch] = 9999;    

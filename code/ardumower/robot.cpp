@@ -483,7 +483,7 @@ void Robot::readSensors(){
       	&& (stateCurr != STATE_STATION_REV) && (stateCurr != STATE_STATION_ROLL) 
       	&& (stateCurr != STATE_STATION_FORW) && (stateCurr != STATE_REMOTE) && (stateCurr != STATE_PERI_OUT_FORW)
         && (stateCurr != STATE_PERI_OUT_REV) && (stateCurr != STATE_PERI_OUT_ROLL) && (stateCurr != STATE_PERI_TRACK)) {
-        Console.println("Error: perimeter too far away");
+        Console.println(F("Error: perimeter too far away"));
         addErrorCounter(ERR_PERIMETER_TIMEOUT);
         setNextState(STATE_ERROR,0);
       }
@@ -504,7 +504,7 @@ void Robot::readSensors(){
     if ((deltaFront <= 95) || (deltaBack <= 95)){
       Console.print(F("LAWN "));
       Console.print(deltaFront);
-      Console.print(",");
+      Console.print(F(","));
       Console.println(deltaBack);
       lawnSensorCounter++;
 			setSensorTriggered(SEN_LAWN_FRONT);
@@ -748,7 +748,7 @@ void Robot::checkCurrent(){
        setMotorPWM( 0, 0, false );
        addErrorCounter(ERR_MOTOR_LEFT);
        setNextState(STATE_ERROR, 0);
-       Console.println("Error: Motor Left current");
+       Console.println(F("Error: Motor Left current"));
     }
     if (motorRightSense >= motorPowerMax)
     {
@@ -757,7 +757,7 @@ void Robot::checkCurrent(){
 			 setMotorPWM( 0, 0, false );
        addErrorCounter(ERR_MOTOR_RIGHT);
        setNextState(STATE_ERROR, 0);
-       Console.println("Error: Motor Right current");
+       Console.println(F("Error: Motor Right current"));
     }
   }
 
@@ -778,7 +778,7 @@ void Robot::checkCurrent(){
 
   if (motorMowSenseCounter >= 30){ //ignore motorMowPower for 3 seconds
       motorMowEnable = false;
-      Console.println("Error: Motor mow current");
+      Console.println(F("Error: Motor mow current"));
       addErrorCounter(ERR_MOW_SENSE);
       lastTimeMotorMowStuck = millis();
      // if (rollDir == RIGHT) reverseOrBidir(LEFT); // toggle roll dir

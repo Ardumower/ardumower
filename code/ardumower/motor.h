@@ -303,17 +303,17 @@ void Robot::checkOdometryFaults(){
     if ( ((motorRightPWMCurr > 100) && (motorRightRpmCurr < -3)) || ((motorRightPWMCurr < -100) && (motorRightRpmCurr > 3)) ) rightErr = true;
   }  
   if (leftErr){
-    Console.print("Left odometry error: PWM=");
+    Console.print(F("Left odometry error: PWM="));
     Console.print(motorLeftPWMCurr);
-    Console.print("\tRPM=");
+    Console.print(F("\tRPM="));
     Console.println(motorLeftRpmCurr);
     addErrorCounter(ERR_ODOMETRY_LEFT);
     setNextState(STATE_ERROR, 0);
   }
   if (rightErr){
-    Console.print("Right odometry error: PWM=");
+    Console.print(F("Right odometry error: PWM="));
     Console.print(motorRightPWMCurr);
-    Console.print("\tRPM=");
+    Console.print(F("\tRPM="));
     Console.println(motorRightRpmCurr);
     addErrorCounter(ERR_ODOMETRY_RIGHT);
     setNextState(STATE_ERROR, 0);
@@ -446,11 +446,11 @@ void Robot::motorMowControl(){
 void Robot::printOdometry(){
   Console.print(F("ODO,"));
   Console.print(odometryX);
-  Console.print(",");
+  Console.print(F(","));
   Console.println(odometryY);  
   Console.print(F("ODO,"));
   Console.print(odometryX);
-  Console.print(",");
+  Console.print(F(","));
   Console.println(odometryY);  
 }
 

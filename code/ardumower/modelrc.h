@@ -39,11 +39,11 @@ void Robot::setRemotePPMState(unsigned long timeMicros, boolean remoteSpeedState
 void Robot::printRemote(){
   Console.print(F("RC "));    
   Console.print(remoteSwitch);  
-  Console.print(",");      
+  Console.print(F(","));      
   Console.print(remoteSteer);
-  Console.print(",");    
+  Console.print(F(","));    
   Console.print(remoteSpeed);    
-  Console.print(",");        
+  Console.print(F(","));        
   Console.println(remoteMow);            
 }
 

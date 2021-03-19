@@ -226,13 +226,13 @@ unsigned int readURM37(int triggerPin, int echoPin){
 boolean readDS1307(datetime_t &dt){
   byte buf[8];  
   if (I2CreadFrom(DS1307_ADDRESS, 0x00, 8, buf, 3) != 8) {
-    Console.println("DS1307 comm error");    
+    Console.println(F("DS1307 comm error"));    
     //addErrorCounter(ERR_RTC_COMM);
     return false;
   }      
   if (   ((buf[0] >> 7) != 0) || ((buf[1] >> 7) != 0) || ((buf[2] >> 7) != 0) || ((buf[3] >> 3) != 0) 
       || ((buf[4] >> 6) != 0) || ((buf[5] >> 5) != 0) || ((buf[7] & B01101100) != 0) ) {    
-    Console.println("DS1307 data1 error");    
+    Console.println(F("DS1307 data1 error"));    
     //addErrorCounter(ERR_RTC_DATA);
     return false;
   }
@@ -246,7 +246,7 @@ boolean readDS1307(datetime_t &dt){
   if (    (r.time.minute > 59) || (r.time.hour > 23) || (r.date.dayOfWeek > 6)  
        || (r.date.month > 12)  || (r.date.day > 31)  || (r.date.day < 1)         
        || (r.date.month < 1)   || (r.date.year > 99) ){
-    Console.println("DS1307 data2 error");    
+    Console.println(F("DS1307 data2 error"));    
     //addErrorCounter(ERR_RTC_DATA);
     return false;
   }  
@@ -258,7 +258,7 @@ boolean readDS1307(datetime_t &dt){
 boolean setDS1307(datetime_t &dt){
   byte buf[7];
   if (I2CreadFrom(DS1307_ADDRESS, 0x00, 7, buf, 3) != 7){
-    Console.println("DS1307 comm error");    
+    Console.println(F("DS1307 comm error"));    
     //addErrorCounter(ERR_RTC_COMM);
     return false;
   }

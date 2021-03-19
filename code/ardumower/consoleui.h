@@ -205,12 +205,12 @@ void Robot::testOdometry(){
 }
 
 void Robot::testRTC(){
-  Console.println("reading RTC time...");
+  Console.println(F("reading RTC time..."));
 	if (readDS1307(datetime)){    
     Console.print(F("RTC date received: "));
     Console.println(date2str(datetime.date));  
   }    
-	Console.println("writing new RTC datetime Sun 28-02-2020 23:59...");  
+	Console.println(F("writing new RTC datetime Sun 28-02-2020 23:59..."));  
   datetime.time.hour=23;
   datetime.time.minute=59;
   datetime.date.dayOfWeek=0;
@@ -218,7 +218,7 @@ void Robot::testRTC(){
   datetime.date.month=2;
   datetime.date.year=2020;
   setDS1307(datetime);	
-	Console.println("reading RTC datetime...");
+	Console.println(F("reading RTC datetime..."));
 	if (readDS1307(datetime)){    
     Console.print(F("RTC datetime received: "));
     Console.print(date2str(datetime.date));  
