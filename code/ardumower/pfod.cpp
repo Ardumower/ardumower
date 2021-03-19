@@ -994,6 +994,8 @@ void RemoteControl::sendInfoMenu(boolean update){
   serialPort->print(robot->statsMowTimeMinutesTrip);    
   serialPort->print(F("|v03~Mowing time total (hrs) "));
   serialPort->print(robot->statsMowTimeHoursTotal);
+  serialPort->print(F("|v10~Blade time total (hrs) "));
+  serialPort->print(robot->statsBladeTimeHoursTotal);
   serialPort->print(F("|v05~Battery charging cycles "));
   serialPort->print(robot->statsBatteryChargingCounterTotal);    
   serialPort->print(F("|v06~Battery recharged capacity trip (mAh)"));
@@ -1012,10 +1014,20 @@ void RemoteControl::sendInfoMenu(boolean update){
 }
 
 void RemoteControl::processInfoMenu(String pfodCmd){      
-  if (pfodCmd == "v01") robot->developerActive = !robot->developerActive;
-  if (pfodCmd == "v04") robot->statsOverride = !robot->statsOverride; robot->saveUserSettings();
+  if (pfodCmd == "v01") {robot->developerActive = !robot->developerActive; sendInfoMenu(true);}
+  else if (pfodCmd == "v04") {robot->statsOverride = !robot->statsOverride; robot->saveUserSettings(); sendInfoMenu(true);}
+  else if (pfodCmd == "v10") {sendResetBladeMenu(false);}
+}
 
-  sendInfoMenu(true);
+void RemoteControl::sendResetBladeMenu(boolean update){
+  if (update) serialPort->print("{:"); else serialPort->println(F("{.Reset Blade Stats"));
+  serialPort->print(F("|x1~Set Reset Blade Stats"));
+  serialPort->println("}");
+}
+
+void RemoteControl::processResetBladeMenu(String pfodCmd){      
+  if (pfodCmd == "x1") robot->deleteBladeStats();
+  sendResetBladeMenu(true);
 }
 
 void RemoteControl::sendCommandMenu(boolean update){  
@@ -1594,7 +1606,8 @@ bool RemoteControl::readSerial(){
         else if (pfodCmd.startsWith("t")) processDateTimeMenu(pfodCmd);  
         else if (pfodCmd.startsWith("i")) processTimerMenu(pfodCmd);      
         else if (pfodCmd.startsWith("p")) processTimerDetailMenu(pfodCmd);      
-        else if (pfodCmd.startsWith("x")) processFactorySettingsMenu(pfodCmd);
+        else if (pfodCmd.startsWith("x0")) processFactorySettingsMenu(pfodCmd);
+        else if (pfodCmd.startsWith("x1")) processResetBladeMenu(pfodCmd);
         else if (pfodCmd.startsWith("u")) processDropMenu(pfodCmd);            
         else if (pfodCmd.startsWith("v")) processInfoMenu(pfodCmd);                    
         else if (pfodCmd.startsWith("z")) processErrorMenu(pfodCmd);                    

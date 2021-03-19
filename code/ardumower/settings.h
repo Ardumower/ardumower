@@ -16,6 +16,7 @@ void Robot::loadSaveRobotStats(boolean readflag){
   eereadwrite(readflag, addr, statsBatteryChargingCapacityTrip);
   eereadwrite(readflag, addr, statsBatteryChargingCapacityTotal);
   eereadwrite(readflag, addr, statsBatteryChargingCapacityAverage);
+  eereadwrite(readflag, addr, statsBladeTimeMinutesTotal);
    // <----------------------------new robot stats to save goes here!----------------
   Console.print(F("loadSaveRobotStats addrstop="));
   Console.println(addr);
@@ -500,6 +501,8 @@ void Robot::printSettingSerial(){
   Console.println(statsMowTimeMinutesTrip);
   Console.print  (F("statsMowTimeMinutesTotal                   : "));
   Console.println(statsMowTimeMinutesTotal);
+  Console.print  (F("statsBladeTimeMinutesTotal                   : "));
+  Console.println(statsBladeTimeMinutesTotal);
   Console.print  (F("statsBatteryChargingCounterTotal           : "));
   Console.println(statsBatteryChargingCounterTotal);
   Console.print  (F("statsBatteryChargingCapacityTrip in mAh    : "));
@@ -536,9 +539,19 @@ void Robot::deleteUserSettings(){
 
 void Robot::deleteRobotStats(){
   statsMowTimeMinutesTrip = statsMowTimeMinutesTotal = statsBatteryChargingCounterTotal =
-  statsBatteryChargingCapacityTotal = statsBatteryChargingCapacityTrip = 0;
+  statsBatteryChargingCapacityTotal = statsBatteryChargingCapacityTrip = statsBladeTimeMinutesTotal = 0;
   loadSaveRobotStats(false);
   Console.println(F("ALL STATISTICS DELETED!")); 
+}
+
+void Robot::deleteBladeStats(){
+  Console.println(F("please wait..."));
+	Buzzer.tone(1400);
+        statsBladeTimeMinutesTotal = 0;
+  loadSaveRobotStats(false);
+        delay(1000);
+        Console.println(F("BLADE STATISTIC DELETED!")); 
+        Buzzer.noTone();
 }
 
 void Robot::addErrorCounter(byte errType){   
@@ -610,10 +623,12 @@ void Robot::checkRobotStats(){
 
 //----------------stats mow time------------------------------------------------------
   statsMowTimeHoursTotal = double(statsMowTimeMinutesTotal)/60; 
+  statsBladeTimeHoursTotal = double(statsBladeTimeMinutesTotal)/60; 
   if (statsMowTimeTotalStart) {
         statsMowTimeMinutesTripCounter++;
         statsMowTimeMinutesTrip = statsMowTimeMinutesTripCounter;
         statsMowTimeMinutesTotal++;
+        statsBladeTimeMinutesTotal++;
   } 
   else 
     if (statsMowTimeMinutesTripCounter != 0){

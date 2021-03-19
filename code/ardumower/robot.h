@@ -509,6 +509,8 @@ class Robot
     unsigned long statsMowTimeMinutesTotal ;
     float statsMowTimeHoursTotal ;
     int statsMowTimeMinutesTrip ;
+    unsigned long statsBladeTimeMinutesTotal ;
+    float statsBladeTimeHoursTotal ;
     unsigned long nextTimeRobotStats ;
     // ------------robot mower communication standard---
 	boolean rmcsUse;
@@ -580,6 +582,7 @@ class Robot
     virtual void deleteUserSettings();        
     virtual void saveUserSettings();
     virtual void deleteRobotStats();
+    virtual void deleteBladeStats();
     
     // other
     virtual void beep(int numberOfBeeps, boolean shortbeep);    

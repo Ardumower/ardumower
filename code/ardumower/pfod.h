@@ -100,7 +100,8 @@ class RemoteControl
     void sendCompassMenu(boolean update);
     void processCompassMenu(String pfodCmd);
     void processManualMenu(String pfodCmd);
-    void processSettingsMenu(String pfodCmd);      
+    void processSettingsMenu(String pfodCmd); 
+    void sendResetBladeMenu(boolean update);     
     
     // plotting
     void sendPlotMenu(boolean update);
@@ -147,6 +148,7 @@ class RemoteControl
     void processDateTimeMenu(String pfodCmd);
     void processFactorySettingsMenu(String pfodCmd); 
     void processInfoMenu(String pfodCmd);
+    void processResetBladeMenu(String pfodCmd); 
 
     // timer
     void sendTimerDetailMenu(int timerIdx, boolean update);
