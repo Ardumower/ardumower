@@ -41,7 +41,7 @@
 class RunningMedian
 {
 public:
-    explicit RunningMedian(const uint8_t size);  // # elements in the internal buffer
+    explicit RunningMedian(const uint16_t size);  // # elements in the internal buffer
     ~RunningMedian();                            // destructor
 
     void clear();                        // resets internal buffer and var

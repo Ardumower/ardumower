@@ -25,7 +25,7 @@
 
 #include "RunningMedian.h"
 
-RunningMedian::RunningMedian(const uint8_t size)
+RunningMedian::RunningMedian(const uint16_t size)
 {
     _size = constrain(size, MEDIAN_MIN_SIZE, MEDIAN_MAX_SIZE);
 
