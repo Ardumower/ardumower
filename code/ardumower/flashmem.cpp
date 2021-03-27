@@ -65,13 +65,13 @@ byte FlashClass::read(uint32_t address) {
 #endif
 }
 
-byte* FlashClass::readAddress(uint32_t address) {
+byte* FlashClass::readAddress(uint32_t address, byte* d) {
 #ifdef __AVR__  
-  byte d = EEPROM.read(address);
-  return &d;
+  *d = EEPROM.read(address);
+  return *&d;
 #else
-	byte d = readAT24C32(address);
-  return &d;
+	*d = readAT24C32(address);
+  return *&d;
 #endif
 }
 

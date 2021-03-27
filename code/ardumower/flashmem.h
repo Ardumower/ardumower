@@ -10,7 +10,7 @@ class FlashClass
     boolean verboseOutput;
     FlashClass();
     byte read(uint32_t address);
-    byte* readAddress(uint32_t address);
+    byte* readAddress(uint32_t address, byte* d);
     boolean write(uint32_t address, byte value);
     boolean write(uint32_t address, byte *data, uint32_t dataLength);    
     void dump();
