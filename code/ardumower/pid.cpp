@@ -99,7 +99,7 @@ float VelocityPID::compute()
   if (Ta > 1.0) Ta = 1.0;   // should only happen for the very first call
 
   // compute error
-  int16_t e = (w - x);
+  float e = (w - x);
 
   // compute max/min output
   if (w < 0) { y_min = -max_output; y_max = 0; }
