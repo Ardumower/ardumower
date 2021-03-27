@@ -32,7 +32,7 @@
   #include <avr/wdt.h>
 #endif  
 
-char *dayOfWeek[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+const char *dayOfWeek[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 
 // ---- print helpers ------------------------------------------------------------
 
