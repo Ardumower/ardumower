@@ -1,0 +1,8 @@
+Comment,Designator,Footprint,LCSC
+"100nF","C1","Capacitors_SMD:C_1206","C24497"
+"Mülleimer","H1","Symbol:WEEE-Logo_4.2x6mm_SilkScreen",""
+"INA169 Breakout 2,5 / 5A (short pad JP1)","J1","Zimprich:ina169_breakout_footprint_mit_unterem_Lötpad",""
+"5A","JP1","Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm",""
+"0.1 1% 2W","R1","Resistors_SMD:R_2512","C880989"
+"10K 1%","R2,R3","Resistors_SMD:R_0603","C25804"
+"INA169_IC","U1","TO_SOT_Packages_SMD:SOT-23-5","C44322"
