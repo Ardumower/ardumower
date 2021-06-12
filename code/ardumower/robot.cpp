@@ -311,6 +311,8 @@ void Robot::setup()  {
 		 Console.print(F("PCB 1.2"));
   #elif defined (PCB_1_3)
      Console.print(F("PCB 1.3"));  
+  #elif defined (PCB_1_4)
+     Console.print(F("PCB 1.4"));  
 	#endif
 	#ifdef __AVR__
 		Console.print(F("  Arduino Mega"));
@@ -626,8 +628,10 @@ void Robot::readSensors(){
 
     #if defined (PCB_1_3)         // Prüfe ob das V1.3 Board verwendet wird - und wenn ja **UZ**
     batvolt = batvolt + DiodeD9;  // dann rechnet zur Batteriespannung den Spannungsabfall der Diode D9 hinzu. (Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**
+    #elif defined (PCB_1_4)         // Prüfe ob das V1.4 Board verwendet wird - und wenn ja **UZ**
+    batvolt = batvolt + DiodeD9;  // dann rechnet zur Batteriespannung den Spannungsabfall der Diode D9 hinzu. (Spannungsabfall an der Diode D9 auf den 1.4 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**
     #endif                        // **UZ**
-    
+
     // low-pass filter
     double accel = 0.01;
 		//double accel = 1.0;

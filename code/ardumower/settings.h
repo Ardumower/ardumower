@@ -167,10 +167,12 @@ void Robot::printSettingSerial(){
   Console.print(F("Ardumower "));
   Console.print(VER);
   Console.print(F("  "));
-    #if defined (PCB_1_2)
+  #if defined (PCB_1_2)
      Console.print(F("PCB 1.2"));
   #elif defined (PCB_1_3)
      Console.print(F("PCB 1.3"));  
+  #elif defined (PCB_1_4)
+     Console.print(F("PCB 1.4"));  
   #endif
   #ifdef __AVR__
     Console.print(F("  Arduino Mega"));

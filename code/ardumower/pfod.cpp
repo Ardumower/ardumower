@@ -980,6 +980,8 @@ void RemoteControl::sendInfoMenu(boolean update){
     serialPort->print(F(" PCB1.2"));
   #elif defined (PCB_1_3)
     serialPort->print(F(" PCB1.3"));
+  #elif defined (PCB_1_4)
+    serialPort->print(F(" PCB1.4"));
   #endif
 	#ifdef __AVR__
 		serialPort->print(F(" Mega"));

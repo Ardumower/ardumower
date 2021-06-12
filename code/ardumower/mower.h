@@ -21,9 +21,10 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 */
    
 
-// ------- Choose one Ardumower PCB revision (1.2, 1.3 etc.) ------------------
+// ------- Choose one Ardumower PCB revision (1.2, 1.3, 1.4 etc.) ------------------
 //#define PCB_1_2    
 #define PCB_1_3    
+//#define PCB_1_4
 
 // ------- Choose robot model (Ardumower or Ardumower Mini) -------------------
 #define ROBOT_ARDUMOWER
