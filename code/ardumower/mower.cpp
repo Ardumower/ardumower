@@ -174,11 +174,17 @@ Mower::Mower(){
 		batChgFactor               = voltageDividerUges(47, 5.1, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10	
 		chgFactor                  = ADC2voltage(1)*10;        // ADC to charging current ampere factor  (see mower.h for macros)								  
   #elif defined (PCB_1_3)   // PCB 1.3
-		batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
-  	batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
-		batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
-		chgFactor                  = ADC2voltage(1)*5;        // ADC to charging current ampere factor  (see mower.h for macros)	
-    DiodeD9                    = 0.36;       // Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**							  
+    batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
+    batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+    batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+    chgFactor                  = ADC2voltage(1)*5;        // ADC to charging current ampere factor  (see mower.h for macros)  
+    DiodeD9                    = 0.36;       // Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**                
+  #elif defined (PCB_1_4)   // PCB 1.4
+    batSwitchOffIfIdle         = 8;          // switch off battery if idle (minutes, 0=off) 
+    batFactor                  = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+    batChgFactor               = voltageDividerUges(100, 10, 1.0)*ADC2voltage(1)*10;   // ADC to battery voltage factor *10
+    chgFactor                  = ADC2voltage(1)*15;        // ADC to charging current ampere factor  (see mower.h for macros)  
+    DiodeD9                    = 0.36;       // Spannungsabfall an der Diode D9 auf den 1.4 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**                
   #endif
   
 	 batChargingCurrentMax       = 1.6;       // maximum current your charger can devliver  
