@@ -93,8 +93,8 @@ int faults = 0;
 boolean isCharging = false;
 boolean stateLED = false;
 unsigned int chargeADCZero = 0;
-RunningMedian<unsigned int,16> periCurrentMeasurements;
-RunningMedian<unsigned int,96> chargeCurrentMeasurements;
+RunningMedian<unsigned int,16> *periCurrentMeasurements;
+RunningMedian<unsigned int,96> *chargeCurrentMeasurements;
 
 int timeSeconds = 0;
 
@@ -191,7 +191,10 @@ void calibrateChargeCurrentSensor(){
 
 
   
-void setup() {  
+void setup() {
+  periCurrentMeasurements = new RunningMedian<unsigned int,16>;
+  chargeCurrentMeasurements = new RunningMedian<unsigned int,96>;
+
   pinMode(pinIN1, OUTPUT);    
   pinMode(pinIN2, OUTPUT);  
   pinMode(pinEnable, OUTPUT);
@@ -321,7 +324,7 @@ void loop(){
     float v = 0;
     // determine charging current (Ampere)        
     if (USE_CHG_CURRENT) {                
-      chargeCurrentMeasurements.getAverage(v);        
+      chargeCurrentMeasurements->getAverage(v);        
       chargeCurrent = ((double)(((int)v)  - ((int)chargeADCZero))) / 1023.0 * 1.1;  
       isCharging = (abs(chargeCurrent) >= CHG_CURRENT_MIN); 
       if (isCharging) robotOutOfStationTimeMins = 0; // reset timeout
@@ -329,10 +332,10 @@ void loop(){
     
     if (USE_PERI_CURRENT) {
       // determine perimeter current (Ampere)
-      periCurrentMeasurements.getAverage(v);    
+      periCurrentMeasurements->getAverage(v);    
       periCurrentAvg = ((double)v) / 1023.0 * 1.1 / 0.525;   // 525 mV per amp    
       unsigned int h;
-      periCurrentMeasurements.getHighest(h);    
+      periCurrentMeasurements->getHighest(h);    
       periCurrentMax = ((double)h) / 1023.0 * 1.1 / 0.525;   // 525 mV per amp    
     }
         
@@ -342,7 +345,7 @@ void loop(){
     Serial.print(chargeCurrent, 3);
     Serial.print("\tchgCurrentADC=");
     v=0;
-    chargeCurrentMeasurements.getAverage(v);        
+    chargeCurrentMeasurements->getAverage(v);        
     Serial.print( v );       
     Serial.print("\tisCharging=");
     Serial.print(isCharging);    
@@ -367,12 +370,12 @@ void loop(){
   }
   
   if (USE_PERI_CURRENT) {
-    periCurrentMeasurements.add( analogRead(pinFeedback) );    
+    periCurrentMeasurements->add( analogRead(pinFeedback) );    
   }
 
   if (USE_CHG_CURRENT){
     // determine charging current (Ampere)         
-    chargeCurrentMeasurements.add( analogRead( pinChargeCurrent) );
+    chargeCurrentMeasurements->add( analogRead( pinChargeCurrent) );
   }
    
   // LED status 
