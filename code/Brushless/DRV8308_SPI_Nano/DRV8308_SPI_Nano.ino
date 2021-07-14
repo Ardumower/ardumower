@@ -21,7 +21,7 @@
 //Ardumower BL  Motorparameter                  
 
 
-#define Reg00 0b1001001101100101   
+#define Reg00 0b1001001101010101   
 //                  ^^^   ^^
 //                 EN BRK SPI-MODE: 01=PWM , 10=RegisterPWM
 //                   Dir
@@ -52,7 +52,7 @@
 
 #define PWMsteps 4
 
-#define Burn_Enl false //true // evaluation the right parameter, let Burn_Enl false / if you will burn OTP change Burn_Enl true
+#define Burn_Enl true // evaluation the right parameter, let Burn_Enl false / if you will burn OTP change Burn_Enl true
 
 int i,dir, PWMspeed, CTRL_DRV8308;
 char  inByte, cmd;
