@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-pcb/megashield_svn_0.5/Dokumentation/Thumbs.db
-pcb/megashield_svn_1.2/Platinenbilder/Thumbs.db
-=======
-*.sublime-workspace
-*.db
->>>>>>> origin/master
+Thumbs.db
 *.bak
-code/tests/DUE_TESTS_ARDUMOWER/desktop.ini
-code/tests/DUE_TESTS_ARDUMOWER/desktop.ini
+desktop.ini
+.vscode
