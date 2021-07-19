@@ -1,3 +1,5 @@
+*.sublime-workspace
+*.db
 Thumbs.db
 *.bak
 desktop.ini
