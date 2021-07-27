@@ -341,13 +341,13 @@ class Robot
     unsigned long nextTimeFreeWheel;
     // --------- drop state ---------------------------
     // bumper state (true = pressed)                                                                                                  // Dropsensor - Absturzsensor vorhanden ?
-    char dropUse       ;      // has drops?                                                                                           // Dropsensor - Absturzsensor Zähler links
+    char dropUse       ;      // has drops?                                                                                           // Dropsensor - Absturzsensor ZÃ¤hler links
     int dropLeftCounter ;                                                                                                             // Dropsensor - Absturzsensor
-    boolean dropLeft ;                                                                                                                // Dropsensor - Absturzsensor links betätigt ?
+    boolean dropLeft ;                                                                                                                // Dropsensor - Absturzsensor links betÃ¤tigt ?
     int dropRightCounter ;                                                                                                            // Dropsensor - Absturzsensor
-    boolean dropRight ;                                                                                                               // Dropsensor - Absturzsensor rechts betätigt ?
+    boolean dropRight ;                                                                                                               // Dropsensor - Absturzsensor rechts betÃ¤tigt ?
     unsigned long nextTimeDrop ;                                                                                                      // Dropsensor - Absturzsensor
-    char dropcontact ; // contact 0-openers 1-closers                                                                                 // Dropsensor Kontakt 0 für Öffner - 1 Schließer
+    char dropcontact ; // contact 0-openers 1-closers                                                                                 // Dropsensor Kontakt 0 fÃ¼r Ã–ffner - 1 SchlieÃŸer
     // ------- IMU state --------------------------------
     IMU imu;
     char imuUse            ;       // use IMU? 
@@ -461,7 +461,7 @@ class Robot
     int batADC;
     float chgSenseZero    ;       // charge current sense zero point
     float chgFactor       ;     // charge current conversion factor
-    float chgSense        ;       // mV/A empfindlichkeit des Ladestromsensors in mV/A (Für ACS712 5A = 185)
+    float chgSense        ;       // mV/A empfindlichkeit des Ladestromsensors in mV/A (FÃ¼r ACS712 5A = 185)
     char chgChange        ;       // messwertumkehr von - nach +         1oder 0
     float batVoltage ;  // battery voltage (Volt)
     float DiodeD9         ;       // Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9 **UZ**
@@ -520,29 +520,31 @@ class Robot
 	unsigned long RMCS_interval_bumper;
 	unsigned long RMCS_interval_odometry;
 	unsigned long RMCS_interval_perimeter;
-    unsigned long RMCS_interval_gps;  
-    unsigned long RMCS_interval_drop;
-    unsigned long RMCS_interval_imu;
+
+  unsigned long RMCS_interval_gps;  
+  unsigned long RMCS_interval_drop;
+  unsigned long RMCS_interval_imu;
 	unsigned long nextTimeRMCSInfo;
-    unsigned long rmcsInfoLastSendState;
-    unsigned long rmcsInfoLastSendMotorCurrent;
-    unsigned long rmcsInfoLastSendSonar;
-    unsigned long rmcsInfoLastSendBumper;
-    unsigned long rmcsInfoLastSendOdometry;
-    unsigned long rmcsInfoLastSendPeri;
-    unsigned long rmcsInfoLastSendDrop;
-    unsigned long rmcsInfoLastSendGPS;
-    unsigned long rmcsInfoLastSendIMU;	
-    boolean rmcsTriggerMotor;
-    boolean rmcsTriggerBumper;
-    boolean rmcsTriggerSonar;
-    boolean rmcsTriggerOdometry;
-    boolean rmcsTriggerGPS;
-    boolean rmcsTriggerPerimeter;
-    boolean rmcsTriggerDrop;
-    boolean rmcsTriggerIMU;
-    boolean rmcsTriggerFreeWheel;
-    boolean rmcsTriggerRain;
+  unsigned long rmcsInfoLastSendState;
+  unsigned long rmcsInfoLastSendMotorCurrent;
+  unsigned long rmcsInfoLastSendSonar;
+  unsigned long rmcsInfoLastSendBumper;
+  unsigned long rmcsInfoLastSendOdometry;
+  unsigned long rmcsInfoLastSendPeri;
+  unsigned long rmcsInfoLastSendDrop;
+  unsigned long rmcsInfoLastSendGPS;
+  unsigned long rmcsInfoLastSendIMU;	
+  boolean rmcsTriggerMotor;
+  boolean rmcsTriggerBumper;
+  boolean rmcsTriggerSonar;
+  boolean rmcsTriggerOdometry;
+  boolean rmcsTriggerGPS;
+  boolean rmcsTriggerPerimeter;
+  boolean rmcsTriggerDrop;
+  boolean rmcsTriggerIMU;
+  boolean rmcsTriggerFreeWheel;
+  boolean rmcsTriggerRain;
+
     // --------------------------------------------------
     Robot();
     // robot setup
@@ -586,7 +588,7 @@ class Robot
     
     // other
     virtual void beep(int numberOfBeeps, boolean shortbeep);    
-    virtual void printInfo(Stream &s);        
+    virtual void printInfo(Stream &s);         
     virtual void setUserSwitches(); 
     virtual void addErrorCounter(byte errType);    
     virtual void resetErrorCounters();
@@ -688,6 +690,7 @@ protected:
     virtual void rmcsSendOff(Stream &s);   
     virtual void rmcsSendConfig(Stream &s);
     virtual void rmcsSendSensorTriggered(char type);
+
 		// Spannungsteiler Gesamtspannung ermitteln (Reihenschaltung R1-R2, U2 bekannt, U_GES zu ermitteln)
 		virtual float voltageDividerUges(float R1, float R2, float U2);	
 		// ADC-value to voltage
@@ -698,5 +701,6 @@ protected:
 
 
 #endif
+
 
 

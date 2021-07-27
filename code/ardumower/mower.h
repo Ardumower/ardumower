@@ -31,8 +31,8 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 //#define ROBOT_MINI
 
 // ------- Choose motor driver (MC33926 is recommended) -----------------------
-#define DRIVER_MC33926
-//#define DRIVER_L298N
+//#define DRIVER_MC33926
+#define DRIVER_L298N
 
 // ------- Choose IMU BOARD (GY801 is recommended) ---------------------------
 #define IMU_GY801
@@ -122,8 +122,9 @@ choose your robot type, PCB version, baud rates, pin definitions etc.
 // GPS: Serial3 (TX3, RX3) 
 
 // ------- baudrates---------------------------------
-#define CONSOLE_BAUDRATE    19200       // baudrate used for console
-//#define CONSOLE_BAUDRATE    115200      // baudrate if using Ardumower Control Center and DUE (RMCS messages)
+
+//#define CONSOLE_BAUDRATE    19200       // baudrate used for console
+#define CONSOLE_BAUDRATE    115200      // baudrate if using Ardumower Control Center (RMCS messages)
 #define BLUETOOTH_BAUDRATE  19200       // baudrate used for communication with Bluetooth module (Ardumower default: 19200)
 #define ESP8266_BAUDRATE    115200      // baudrate used for communication with esp8266 Wifi module
 #define BLUETOOTH_PIN       1234

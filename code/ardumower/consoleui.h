@@ -269,10 +269,10 @@ void Robot::menu(){
   printMenu();  
   while(true){
     if (!rmcsUse){    
-   
        resetIdleTime();
     }
     if (imuUse) imu.update();
+
     if (Console.available() > 0) {
       ch = (char)Console.read();            
       switch (ch){
@@ -441,6 +441,7 @@ void Robot::commsMenuSelect(void) {
 void Robot::readSerial() {
   // serial input  
   if (Console.available() > 0) {     
+
     // String cmd = Console.readString();
      String cmd = waitStringConsole();
      if (cmd.startsWith("$ROS")) {
@@ -523,7 +524,10 @@ void Robot::readSerial() {
       case '$':
         processRMCSCommand(cmd); 
          break;
-	 }
+
+     }
+
   }    
 }
+
 

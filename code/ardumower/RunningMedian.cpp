@@ -179,4 +179,4 @@ void RunningMedian::sort()
     _sorted = true;
 }
 
-// END OF FILE
+
