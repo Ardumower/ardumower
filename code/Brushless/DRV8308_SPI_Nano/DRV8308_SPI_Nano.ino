@@ -11,19 +11,19 @@
  * ATTENTION motor can start turning unexpected!!
  * This is only for testing, take care of the turning motor!! Don't tuch the motor!
  * 
- * Version 1.0.0  /  last change 13.03.2021
+ * Version 1.0.1  /  last change 28.07.2021
+ * change 28.07.2021 : #define Reg00 0b1001001101010101 to #define Reg00 0b1101001101010101  
+ * 
  * 
  * Use an Arduino Nano
  * Setup Baud to 115200
 */
 #include <SPI.h>
 
-//Ardumower BL  Motorparameter                  
-
-
-#define Reg00 0b1001001101010101   
+//Ardumower BL  Motorparameter                 
+#define Reg00 0b1101001101010101   
 //                  ^^^   ^^
-//                 EN BRK SPI-MODE: 01=PWM , 10=RegisterPWM
+//                 EN BRK Control-MODE: 01=PWM , 10=SPI Register 0B PWM
 //                   Dir
 #define Reg01 30                   
 #define Reg02 0b0000001110110100    
@@ -52,7 +52,7 @@
 
 #define PWMsteps 4
 
-#define Burn_Enl true // evaluation the right parameter, let Burn_Enl false / if you will burn OTP change Burn_Enl true
+#define Burn_Enl false // evaluation the right parameter, let Burn_Enl false / if you will burn OTP change Burn_Enl true
 
 int i,dir, PWMspeed, CTRL_DRV8308;
 char  inByte, cmd;
