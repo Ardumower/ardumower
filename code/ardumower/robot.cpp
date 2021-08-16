@@ -612,7 +612,7 @@ void Robot::readSensors(){
 
   if (millis() >= nextTimeBattery){
     // read battery
-    nextTimeBattery = millis() + 100;       
+    nextTimeBattery = millis() + 500;       
     if ((abs(chgCurrent) > 0.04) && (chgVoltage > 5)){
       // charging
       batCapacity += (chgCurrent / 36.0);
@@ -633,9 +633,9 @@ void Robot::readSensors(){
     #endif                        // **UZ**
 
     // low-pass filter
-    double accel = 0.01;
+    double accel = 0.05;
 		//double accel = 1.0;
-    if (abs(batVoltage-batvolt)>5)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
+    if (abs(batVoltage-batvolt)>8)   batVoltage = batvolt; else batVoltage = (1.0-accel) * batVoltage + accel * batvolt;
     if (abs(chgVoltage-chgvolt)>5)   chgVoltage = chgvolt; else chgVoltage = (1.0-accel) * chgVoltage + accel * chgvolt;
 		if (abs(chgCurrent-curramp)>0.5) chgCurrent = curramp; else chgCurrent = (1.0-accel) * chgCurrent + accel * curramp;       
   } 
@@ -1324,6 +1324,7 @@ void Robot::setNextState(byte stateNew, byte dir){
     //motorMowModulate = false;              
   } 
   if (stateNew == STATE_STATION){
+	nextTimeBattery = millis(); //read immediatly the battery
     setMotorPWM(0,0,false);
     setActuator(ACT_CHGRELAY, 0); 
     setDefaults(); 
