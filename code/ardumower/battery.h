@@ -50,10 +50,10 @@ void Robot::checkBattery(){
 					idleTimeSec = BATTERY_SW_OFF; // flag to remember that battery is switched off
 					Console.println(F("BATTERY switching OFF"));
 
-          if(rmcsUse)  // Tell Raspberry PI to shutdown
-          {
-            rmcsSendOff(Console);
-          }
+                    if(rmcsUse)  // Tell Raspberry PI to shutdown
+                    {
+                       rmcsSendOff(Console);
+                    }
 					setActuator(ACT_BATTERY_SW, 0);  // switch off battery               
 				}
 			}
@@ -62,6 +62,5 @@ void Robot::checkBattery(){
 		}
 	}
 }
-
 
 

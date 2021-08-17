@@ -154,7 +154,7 @@ unsigned long GPS::parse_decimal()
   return isneg ? -ret : ret; // negate result if isneg is set
 }
 
-unsigned long GPS::parse_degrees()  // term=5000.0095 (50Â° 00' 0.0095*60'')
+unsigned long GPS::parse_degrees()  // term=5000.0095 (50° 00' 0.0095*60'')
 {                                        // (D)DDMM.MMMM is the format
   char *p;
   unsigned long left = gpsatol(_term); // get (D)DDMM in left 
@@ -169,14 +169,14 @@ unsigned long GPS::parse_degrees()  // term=5000.0095 (50Â° 00' 0.0095*60'')
       mult /= 10;
     }
   }    
-  return (left / 100) * 100000 + tenk_minutes / 6; // DDD * 100000 + tenk_minutes/6=Â°*10*10000 
+  return (left / 100) * 100000 + tenk_minutes / 6; // DDD * 100000 + tenk_minutes/6=°*10*10000 
 }
 
 // Sample sentences:
 // $GPRMC,HHMMSS,A,BBBB.BBBB,b,LLLLL.LLLL,l,GG.G,RR.R,DDMMYY,M.M,m,F*PP
 // $GPGGA,HHMMSS.ss,BBBB.BBBB,b,LLLLL.LLLL,l,Q,NN,D.D,H.H,h,G.G,g,A.A,RRRR*PP
 // BBBB.BBBB 	= Breitengrad in Grad und Minuten (ddmm.mmmmmm)
-// LLLLL.LLLL 	LÃ¤ngengrad in Grad und Minuten (dddmm.mmmmmm)
+// LLLLL.LLLL 	Längengrad in Grad und Minuten (dddmm.mmmmmm)
 
 #define COMBINE(sentence_type, term_number) (((unsigned)(sentence_type) << 5) | term_number)
 
@@ -455,6 +455,5 @@ float GPS::f_speed_kmph()
 const float GPS::GPS_INVALID_F_ANGLE = 1000.0;
 const float GPS::GPS_INVALID_F_ALTITUDE = 1000000.0;
 const float GPS::GPS_INVALID_F_SPEED = -1.0;
-
 
 

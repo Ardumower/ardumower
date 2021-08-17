@@ -360,4 +360,3 @@ unsigned int NewPing::convert_in(unsigned int echoTime) {
 	return NewPingConvert(echoTime, US_ROUNDTRIP_IN); // Convert uS to inches.
 #endif
 }
-

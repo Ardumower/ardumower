@@ -626,7 +626,7 @@ void Robot::readSensors(){
     double chgvolt = ((double)chgADC) * batChgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing    
 		double curramp = ((double)currentADC) * chgFactor / 10;  // / 10 due to arduremote bug, can be removed after fixing		
 
-    #if defined (PCB_1_3)         // PrÃ¼fe ob das V1.3 Board verwendet wird - und wenn ja **UZ**
+    #if defined (PCB_1_3)         // Prüfe ob das V1.3 Board verwendet wird - und wenn ja **UZ**
     batvolt = batvolt + DiodeD9;  // dann rechnet zur Batteriespannung den Spannungsabfall der Diode D9 hinzu. (Spannungsabfall an der Diode D9 auf den 1.3 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**
     #elif defined (PCB_1_4)         // Prüfe ob das V1.4 Board verwendet wird - und wenn ja **UZ**
     batvolt = batvolt + DiodeD9;  // dann rechnet zur Batteriespannung den Spannungsabfall der Diode D9 hinzu. (Spannungsabfall an der Diode D9 auf den 1.4 Board (Die Spannungsanzeige ist zu niedrig verursacht durch die Diode D9) **UZ**
@@ -879,13 +879,6 @@ void Robot::checkDrop(){                                                        
 // check bumpers while tracking perimeter
 void Robot::checkBumpersPerimeter(){
   if (!bumperUse) return;
-
-	 if (batMonitor){
-        if (chgVoltage > 5.0){ 
-          setNextState(STATE_STATION, 0);
-		  return;
-        }
-      }
   if ((bumperLeft || bumperRight)) {    
     if ((bumperLeft) || (stateCurr == STATE_PERI_TRACK)) {
       setNextState(STATE_PERI_REV, RIGHT);          
@@ -1376,16 +1369,12 @@ void Robot::setNextState(byte stateNew, byte dir){
   stateCurr = stateNext;    
   perimeterTriggerTime=0;
   if (rmcsUse == false) {  
-
-    printInfo(Console);          
-
+     printInfo(Console);          
   }
   else{
     rmcsPrintInfo(Console);
   }
-
 }// -------------------------- ENDE void Robot::setNextState(byte stateNew, byte dir)
-
 
 
 void Robot::loop()  {
@@ -1394,7 +1383,6 @@ void Robot::loop()  {
   ADCMan.run();
   if (stateCurr != STATE_ROS) readSerial();   
   if (!rmcsUse){
-
      if (rc.readSerial()) resetIdleTime();
   } else {
     rc.readSerial();
@@ -1421,12 +1409,10 @@ void Robot::loop()  {
     rc.run();        
   }
    
-
   if (rmcsUse == true && millis() >= nextTimeRMCSInfo ) { 
 	   nextTimeRMCSInfo = millis() + 100;
      rmcsPrintInfo(Console);
   }
-
   if (millis() >= nextTimeInfo) {        
     nextTimeInfo = millis() + 1000; 
 	if (rmcsUse == false) { 
@@ -1438,7 +1424,6 @@ void Robot::loop()  {
       printInfo(Console);    
       printErrors();
     }    
-
     ledState = ~ledState;    
     /*if (ledState) setActuator(ACT_LED, HIGH);
       else setActuator(ACT_LED, LOW);        */
@@ -1457,8 +1442,7 @@ void Robot::loop()  {
 		} else loopsPerSecLowCounter = 0; // reset counter to zero
     if (loopsPerSec > 0) loopsTa = 1000.0 / ((double)loopsPerSec);    
     loopsPerSecCounter = 0;    
-	   }
-     
+  }   
      
    // state machine - things to do *PERMANENTLY* for current state
    // robot state machine
@@ -1656,16 +1640,15 @@ void Robot::loop()  {
       checkTimeout();                    
       break;
     case STATE_PERI_TRACK:
-	     if (batMonitor){
-          if (chgVoltage > 5.0){ 
-            setNextState(STATE_STATION, 0);
-		        break;
-           }
-        }
       // track perimeter
       checkCurrent();                  
       checkBumpersPerimeter();
       //checkSonar();                   
+      if (batMonitor){
+        if (chgVoltage > 5.0){ 
+          setNextState(STATE_STATION, 0);
+        }
+      }
       break;
     case STATE_STATION:
       // waiting until auto-start by user or timer triggered
@@ -1757,5 +1740,11 @@ void Robot::loop()  {
                              
   loopsPerSecCounter++;  
 }
+
+
+
+
+
+
 
 

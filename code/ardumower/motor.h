@@ -104,7 +104,7 @@ void Robot::motorControlImuRoll(){
   imuRollPID.max_output = motorSpeedMaxRpm/1.25;    //
   imuRollPID.compute();                 
 
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
   motorLeftPID.x = motorLeftRpmCurr;                 // IST 
   motorLeftPID.w = -imuRollPID.y;                // SOLL 
   motorLeftPID.y_min = -motorSpeedMaxPwm;        // Regel-MIN
@@ -115,7 +115,7 @@ void Robot::motorControlImuRoll(){
   //if((motorLeftSpeedRpmSet >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
   //if((motorLeftSpeedRpmSet <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;     
 
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
   motorRightPID.Kp = motorLeftPID.Kp;
   motorRightPID.Ki = motorLeftPID.Ki;
   motorRightPID.Kd = motorLeftPID.Kd;
@@ -253,8 +253,8 @@ void Robot::motorControlImuDir(){
   if (imuDirPID.y < 0) correctRight = abs(imuDirPID.y);
   if (imuDirPID.y > 0) correctLeft  = abs(imuDirPID.y);
                  
-  // Korrektur erfolgt Ã¼ber Abbremsen des linken Antriebsrades, falls Kursabweichung nach rechts
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
+  // Korrektur erfolgt über Abbremsen des linken Antriebsrades, falls Kursabweichung nach rechts
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
   motorLeftPID.x = motorLeftRpmCurr;                     // IST 
   motorLeftPID.w = motorLeftSpeedRpmSet - correctLeft;     // SOLL 
   motorLeftPID.y_min = -motorSpeedMaxPwm;            // Regel-MIN
@@ -265,8 +265,8 @@ void Robot::motorControlImuDir(){
   if((motorLeftSpeedRpmSet >= 0 ) && (leftSpeed <0 )) leftSpeed = 0;
   if((motorLeftSpeedRpmSet <= 0 ) && (leftSpeed >0 )) leftSpeed = 0;    
 
-  // Korrektur erfolgt Ã¼ber Abbremsen des rechten Antriebsrades, falls Kursabweichung nach links 
-  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
+  // Korrektur erfolgt über Abbremsen des rechten Antriebsrades, falls Kursabweichung nach links 
+  // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
   motorRightPID.Kp = motorLeftPID.Kp;
   motorRightPID.Ki = motorLeftPID.Ki;
   motorRightPID.Kd = motorLeftPID.Kd;
@@ -326,7 +326,7 @@ void Robot::motorControl(){
     nextTimeMotorControl = millis() + 100;
     static unsigned long nextMotorControlOutputTime = 0;
   if (odometryUse){
-    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
+    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorLeftPID.w = motorLeftSpeedRpmSet;               // SOLL 
     motorRightPID.w = motorRightSpeedRpmSet;             // SOLL    
     float RLdiff = motorLeftRpmCurr - motorRightRpmCurr;
@@ -347,7 +347,7 @@ void Robot::motorControl(){
 		if (motorLeftSpeedRpmSet >= 0) leftSpeed = min( max(0, leftSpeed), motorSpeedMaxPwm);
     if (motorLeftSpeedRpmSet < 0) leftSpeed = max(-motorSpeedMaxPwm, min(0, leftSpeed)); 		
 
-    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen hÃ¶chstes Drehmoment fÃ¼r die Solldrehzahl zu gewÃ¤hrleisten
+    // Regelbereich entspricht maximaler PWM am Antriebsrad (motorSpeedMaxPwm), um auch an Steigungen höchstes Drehmoment für die Solldrehzahl zu gewährleisten
     motorRightPID.Kp = motorLeftPID.Kp;
     motorRightPID.Ki = motorLeftPID.Ki;
     motorRightPID.Kd = motorLeftPID.Kd;          
@@ -453,6 +453,5 @@ void Robot::printOdometry(){
   Console.print(F(","));
   Console.println(odometryY);  
 }
-
 
 
