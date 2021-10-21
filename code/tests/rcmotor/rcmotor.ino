@@ -33,7 +33,10 @@
 #define pinBuzzer 53               // Buzzer
 
 #define pinChargeRelay 50          // charge relay
-                                                             
+
+#define pinBatterySwitch 4         // battery-OFF switch   
+
+
 // motor speed
 #define motorSpeedMax 255
 #define motorMowSpeedMax 255
@@ -106,6 +109,10 @@ ISR(PCINT0_vect){
 }
 
 void setup(){
+  // keep battery switched ON (keep this at system start!)
+  pinMode(pinBatterySwitch, OUTPUT);
+  digitalWrite(pinBatterySwitch, HIGH);
+
   pinMode(pinBuzzer, OUTPUT);
   Serial.begin(19200); // setup baud rate 
   PinMan.begin();    

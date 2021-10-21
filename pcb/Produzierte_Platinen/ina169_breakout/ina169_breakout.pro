@@ -1,4 +1,4 @@
-update=14.01.2017 20:20:12
+update=Mi 30 Dez 2020 18:59:29 CET
 version=1
 last_client=kicad
 [pcbnew]
@@ -28,36 +28,3 @@ version=1
 [eeschema]
 version=1
 LibDir=
-[eeschema/libraries]
-LibName1=ina169_breakout-rescue
-LibName2=power
-LibName3=device
-LibName4=transistors
-LibName5=conn
-LibName6=linear
-LibName7=regul
-LibName8=74xx
-LibName9=cmos4000
-LibName10=adc-dac
-LibName11=memory
-LibName12=xilinx
-LibName13=microcontrollers
-LibName14=dsp
-LibName15=microchip
-LibName16=analog_switches
-LibName17=motorola
-LibName18=texas
-LibName19=intel
-LibName20=audio
-LibName21=interface
-LibName22=digital-audio
-LibName23=philips
-LibName24=display
-LibName25=cypress
-LibName26=siliconi
-LibName27=opto
-LibName28=atmel
-LibName29=contrib
-LibName30=valves
-LibName31=ina169_ic
-LibName32=ina169_breakout_conn
