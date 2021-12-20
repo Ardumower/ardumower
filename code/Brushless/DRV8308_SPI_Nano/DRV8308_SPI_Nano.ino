@@ -188,7 +188,7 @@ void loop() {
        Serial.println ("p : print screen OTP-Reg.");
        Serial.println ("s : stop");
        Serial.println ("t : speed up & down, only one time");
-       Serial.println ("+ : increase speed +128");
+       Serial.println ("- : decrease speed +128");
        Serial.println ("+ : increase speed +128");
        Serial.println ("? : this help text");
     }
