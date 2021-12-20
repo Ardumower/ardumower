@@ -11,7 +11,7 @@
  * ATTENTION motor can start turning unexpected!!
  * This is only for testing, take care of the turning motor!! Don't tuch the motor!
  * 
- * Version 1.0.1  /  last change 28.07.2021
+ * Version 1.0.2  /  last change 20.12.2021
  * change 28.07.2021 : #define Reg00 0b1001001101010101 to #define Reg00 0b1101001101010101  
  * change 20.12.2021 : p - Comand added in ?-Massage
  * 
