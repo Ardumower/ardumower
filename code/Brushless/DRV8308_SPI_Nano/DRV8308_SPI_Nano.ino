@@ -13,7 +13,7 @@
  * 
  * Version 1.0.1  /  last change 28.07.2021
  * change 28.07.2021 : #define Reg00 0b1001001101010101 to #define Reg00 0b1101001101010101  
- * 
+ * change 20.12.2021 : p - Comand added in ?-Massage
  * 
  * Use an Arduino Nano
  * Setup Baud to 115200
@@ -185,6 +185,7 @@ void loop() {
        Serial.println ("h : half speed 2047");
        Serial.println ("l : low speed 512");
        Serial.println ("o : ongoing test, use s to stop");
+       Serial.println ("p : print screen OTP-Reg.");
        Serial.println ("s : stop");
        Serial.println ("t : speed up & down, only one time");
        Serial.println ("+ : increase speed +128");
