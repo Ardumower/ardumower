@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="Ebene_1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:freecad="http://www.freecadweb.org/wiki/index.php?title=Svg_Namespace" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 824 188.8"
+	 style="enable-background:new 0 0 824 188.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st1{fill:none;stroke:#000000;stroke-width:0.2835;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.1339;}
+	.st2{fill:none;stroke:#000000;stroke-width:1.9843;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:1.1339;}
+</style>
+<desc>Drawing page: Page exported from FreeCAD document: Chassis2021_UnterfahrschutzHinten</desc>
+<g id="Page">
+	<g id="DrawingContent">
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="non-scaling-stroke" class="st0" d="M-5944-4059.8v-50.9v-93.4h822v93.4v50.9c0,23.5-19,42.5-42.5,42.5
+				h-42.5c-207.1-94.5-444.9-94.5-652,0h-42.5C-5925-4017.2-5944-4036.3-5944-4059.8"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<polygon class="st1" points="-5533,-4110.6 -5533,-4110.6 -5533,-4110.6 			"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="non-scaling-stroke" class="st0" d="M-5122-4204v93.4h-822v-93.4H-5122"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<polygon class="st1" points="-5533,-4110.6 -5533,-4110.6 -5533,-4110.6 			"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="non-scaling-stroke" class="st0" d="M-5122-4110.6v50.9c0,23.5-19,42.5-42.5,42.5h-42.5
+				c-207.1-94.5-444.9-94.5-652,0h-42.5c-23.5,0-42.5-19-42.5-42.5v-50.9H-5122"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<polygon class="st1" points="-5533,-4110.6 -5533,-4110.6 -5533,-4110.6 			"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="non-scaling-stroke" class="st0" d="M-5153.1-4059.8c0,6.3-5.1,11.3-11.3,11.3s-11.3-5.1-11.3-11.3
+				c0-6.3,5.1-11.3,11.3-11.3S-5153.1-4066-5153.1-4059.8"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<polygon class="st1" points="-5533,-4110.6 -5533,-4110.6 -5533,-4110.6 			"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="non-scaling-stroke" class="st0" d="M-5890.1-4059.8c0,6.3-5.1,11.3-11.3,11.3s-11.3-5.1-11.3-11.3
+				c0-6.3,5.1-11.3,11.3-11.3S-5890.1-4066-5890.1-4059.8"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<polygon class="st1" points="-5533,-4110.6 -5533,-4110.6 -5533,-4110.6 			"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5859-4017.2h-42.5"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5944-4059.8c0,23.5,19,42.5,42.5,42.5"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5944-4059.8V-4204"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5944-4204h822"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5122-4204v144.3"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5164.5-4017.2c23.5,0,42.5-19,42.5-42.5"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5164.5-4017.2h-42.5"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5207-4017.2c-207.1-94.5-444.9-94.5-652,0"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5153.1-4059.8c0,6.3-5.1,11.3-11.3,11.3s-11.3-5.1-11.3-11.3
+				c0-6.3,5.1-11.3,11.3-11.3S-5153.1-4066-5153.1-4059.8"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5890.1-4059.8c0,6.3-5.1,11.3-11.3,11.3s-11.3-5.1-11.3-11.3
+				c0-6.3,5.1-11.3,11.3-11.3S-5890.1-4066-5890.1-4059.8"/>
+		</g>
+		<g transform="matrix(1,0,0,1,5945,4205)">
+			<path vector-effect="none" class="st2" d="M-5122-4110.6h-822"/>
+		</g>
+	</g>
+</g>
+</svg>
