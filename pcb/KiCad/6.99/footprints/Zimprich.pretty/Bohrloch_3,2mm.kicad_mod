@@ -1,10 +1,15 @@
-(module Bohrloch_3,2mm (layer F.Cu) (tedit 574EAB3C)
-  (fp_text reference Bohrloch_3,2mm (at 0 -2.54) (layer F.SilkS) hide
-    (effects (font (size 1.5 1.5) (thickness 0.15)))
+(footprint "Bohrloch_3,2mm" (version 20220427) (generator pcbnew)
+  (layer "F.Cu")
+  (attr through_hole)
+  (fp_text reference "Bohrloch_3,2mm" (at 0 -2.54) (layer "F.SilkS") hide
+      (effects (font (size 1.5 1.5) (thickness 0.15)))
+    (tstamp b4da7a22-6ac5-4562-9e60-104c1d800cb1)
   )
-  (fp_text value VAL** (at 0 2.54) (layer F.SilkS) hide
-    (effects (font (size 1.5 1.5) (thickness 0.15)))
+  (fp_text value "VAL**" (at 0 2.54) (layer "F.SilkS") hide
+      (effects (font (size 1.5 1.5) (thickness 0.15)))
+    (tstamp 5abc7c3b-b054-43e5-bcfa-258dd9c622a8)
   )
-  (fp_circle (center 0 0) (end 1.524 1.524) (layer F.SilkS) (width 0.15))
-  (pad 1 thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask F.SilkS))
+  (fp_circle (center 0 0) (end 1.524 1.524)
+    (stroke (width 0.15) (type solid)) (fill none) (layer "F.SilkS") (tstamp 232b2d04-1ebf-4378-b923-fa5dcb4d1e75))
+  (pad "" thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask) (tstamp b26e63ff-b2bd-47ce-a0a0-ae73eafb4a68))
 )

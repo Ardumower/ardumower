@@ -1,9 +1,13 @@
-(module Bohrloch_6,5mm (layer F.Cu) (tedit 551BC704)
-  (fp_text reference Bohrloch_6,5mm (at 0 -2.54) (layer F.SilkS) hide
-    (effects (font (size 1.5 1.5) (thickness 0.15)))
+(footprint "Bohrloch_6,5mm" (version 20220427) (generator pcbnew)
+  (layer "F.Cu")
+  (attr through_hole)
+  (fp_text reference "Bohrloch_6,5mm" (at 0 -2.54) (layer "F.SilkS") hide
+      (effects (font (size 1.5 1.5) (thickness 0.15)))
+    (tstamp 11384a11-292a-458f-873d-44598bf21547)
   )
-  (fp_text value VAL** (at 0 2.54) (layer F.SilkS) hide
-    (effects (font (size 1.5 1.5) (thickness 0.15)))
+  (fp_text value "VAL**" (at 0 2.54) (layer "F.SilkS") hide
+      (effects (font (size 1.5 1.5) (thickness 0.15)))
+    (tstamp 0b6c0c6d-0f22-4c18-9552-304f6eb1181b)
   )
-  (pad 1 thru_hole circle (at 0 0) (size 10 10) (drill 6.5) (layers *.Cu *.Mask F.SilkS))
+  (pad "" thru_hole circle (at 0 0) (size 10 10) (drill 6.5) (layers *.Cu *.Mask) (tstamp 937138f9-32a9-4fc9-9184-4b3dfff96408))
 )
