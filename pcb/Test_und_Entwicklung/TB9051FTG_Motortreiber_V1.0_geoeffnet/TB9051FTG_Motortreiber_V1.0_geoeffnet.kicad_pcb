@@ -807,8 +807,8 @@
     (property "ki_description" "PWM type single channel H-Bridge DC brushed motor driver for automotive use")
     (path "/6d7fc322-0793-46fe-9340-d956633f3161")
     (attr smd)
-    (fp_text reference "U1" (at 0 0 180) (layer "F.SilkS")
-        (effects (font (size 1.27 1.27) (thickness 0.254)))
+    (fp_text reference "U1" (at 3.393378 4.927407 180) (layer "F.SilkS")
+        (effects (font (size 0.9 0.9) (thickness 0.225)))
       (tstamp 691f15d8-6168-4c2c-9909-9d63f794f0f6)
     )
     (fp_text value "TB9051FTG" (at 0 0 180) (layer "F.SilkS") hide
@@ -1946,8 +1946,8 @@
     (property "ki_description" "PWM type single channel H-Bridge DC brushed motor driver for automotive use")
     (path "/c32542b6-6557-4032-b8ce-78f8b007dd3b")
     (attr smd)
-    (fp_text reference "U2" (at 0 0 180) (layer "F.SilkS")
-        (effects (font (size 1.27 1.27) (thickness 0.254)))
+    (fp_text reference "U2" (at 3.48933 4.927407 180) (layer "F.SilkS")
+        (effects (font (size 0.9 0.9) (thickness 0.225)))
       (tstamp c471509f-30ec-4072-afe4-37b383d30d41)
     )
     (fp_text value "TB9051FTG" (at 0 0 180) (layer "F.SilkS") hide
