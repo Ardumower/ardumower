@@ -1,4 +1,4 @@
-20633015509192742
+20718351245016270
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -2250,6 +2250,13 @@ Buzzer_Beeper
 Buzzer_Mallory_AST1109MLTRQ
 Mallory low-profile piezo buzzer, https://www.mspindy.com/specifications/AST1109MLTRQ.pdf
 buzzer piezo
+0
+2
+2
+Buzzer_Beeper
+Buzzer_Mallory_AST1240MLQ
+Mallory low-profile piezo buzzer, https://www.mspindy.com/specifications/AST12140MLQ.pdf
+piezo buzzer
 0
 2
 2
@@ -10909,6 +10916,13 @@ Connector_HDMI
 HDMI_A_Kycon_KDMIX-SL1-NS-WS-B15_VerticalRightAngle
 HDMI, Type A, Kycon KDMIX-SL1-NS-WS-B15, Vertical Right Angle, http://www.kycon.com/Pub_Eng_Draw/KDMIX-SL1-NS-WS-B15.pdf
 hdmi type a
+0
+23
+20
+Connector_HDMI
+HDMI_A_Molex_208658-1001_Horizontal
+HDMI Molex Type A https://www.molex.com/pdm_docs/sd/2086581001_sd.pdf
+HDMI Molex Type A
 0
 23
 20
@@ -42127,10 +42141,10 @@ FMC HPC
 400
 Connector_Samtec
 Samtec_FMC_ASP-134604-01_4x40_Vertical
-http://www.samtec.com/standards/vita.aspx
+https://suddendocs.samtec.com/prints/asp-134604-01-mkt.pdf
 FMC LPC VITA 
 0
-162
+160
 160
 Connector_Samtec
 Samtec_LSHM-105-xx.x-x-DV-N_2x05_P0.50mm_Vertical
@@ -56903,6 +56917,20 @@ LED RGB APFA3010 KINGBRIGHT 3x1.5mm
 4
 4
 LED_SMD
+LED_Kingbright_APHBM2012_2x1.25mm
+Dual LED SMD https://www.kingbrightusa.com/KCpack.asp?txtPack=APHBM2012
+LED Kingbright APHM2012
+0
+4
+4
+LED_SMD
+LED_Kingbright_KPBD-3224
+Kingbright, dual LED, red-green, dome lens, 3.2 x 2.4 mm Surface Mount LED Lamp (https://www.kingbright.com/attachments/file/psearch/000/00/00/KPBD-3224SURKCGKC(Ver.20A).pdf)
+Kingbright dual LED KPBD-3224
+0
+4
+4
+LED_SMD
 LED_LiteOn_LTST-C19HE1WT
 LiteOn RGB LED; https://optoelectronics.liteon.com/upload/download/DS22-2008-0044/LTST-C19HE1WT.pdf
 LED RGB Chip SMD
@@ -61614,6 +61642,20 @@ Analog Devices (Linear Tech), 133-pin BGA uModule, 15.0x15.0x4.92mm, https://www
 134
 134
 Package_BGA
+MAPBGA_9x9mm_Layout17x17_P0.5mm
+MAPBGA 9x9x1.11 PKG, 9.0x9.0mm, 272 Ball, 17x17 Layout, 0.5mm Pitch, https://www.nxp.com/docs/en/package-information/98ASA00869D.pdf#page=1
+BGA 272 0.5
+0
+272
+272
+Package_BGA
+MAPBGA_14x14mm_Layout17x17_P0.8mm
+MAPBGA 14x14x1.18 PKG, 14.0x14.0mm, 289 Ball, 17x17 Layout, 0.8mm Pitch, https://www.nxp.com/docs/en/package-information/98ASA00855D.pdf#page=1
+BGA 289 0.8
+0
+289
+289
+Package_BGA
 Maxim_WLP-9_1.595x1.415_Layout3x3_P0.4mm_Ball0.27mm_Pad0.25mm_NSMD
 Maxim_WLP-9 W91C1+1 https://pdfserv.maximintegrated.com/package_dwgs/21-0459.PDF
 Maxim_WLP-9
@@ -61634,6 +61676,48 @@ BGA 196 0.75
 0
 196
 196
+Package_BGA
+Micron_FBGA-78_7.5x10.6mm_Layout9x13_P0.8mm
+FBGA-78, 10.6x7.5mm, 78 Ball, 9x13 Layout, 0.8mm Pitch, https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/4gb_ddr3l.pdf#page=24
+BGA 78 0.8
+0
+78
+78
+Package_BGA
+Micron_FBGA-78_8x10.5mm_Layout9x13_P0.8mm
+FBGA-78, 10.5x8.0mm, 78 Ball, 9x13 Layout, 0.8mm Pitch, https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/4gb_ddr3l.pdf#page=25
+BGA 78 0.8
+0
+78
+78
+Package_BGA
+Micron_FBGA-78_9x10.5mm_Layout9x13_P0.8mm
+FBGA-78, 10.5x9.0mm, 78 Ball, 9x13 Layout, 0.8mm Pitch, https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/4gb_ddr3l.pdf#page=23
+BGA 78 0.8
+0
+78
+78
+Package_BGA
+Micron_FBGA-96_7.5x13.5mm_Layout9x16_P0.8mm
+FBGA-96, 13.5x7.5mm, 96 Ball, 9x16 Layout, 0.8mm Pitch, https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/4gb_ddr3l.pdf#page=27
+BGA 96 0.8
+0
+96
+96
+Package_BGA
+Micron_FBGA-96_8x14mm_Layout9x16_P0.8mm
+FBGA-96, 14.0x8.0mm, 96 Ball, 9x16 Layout, 0.8mm Pitch, https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/4gb_ddr3l.pdf#page=28
+BGA 96 0.8
+0
+96
+96
+Package_BGA
+Micron_FBGA-96_9x14mm_Layout9x16_P0.8mm
+FBGA-96, 14.0x9.0mm, 96 Ball, 9x16 Layout, 0.8mm Pitch, https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/4gb_ddr3l.pdf#page=26
+BGA 96 0.8
+0
+96
+96
 Package_BGA
 ST_uTFBGA-36_3.6x3.6mm_Layout6x6_P0.5mm
 ST uTFBGA-36, 0.25mm pad, 3.6x3.6mm, 36 Ball, 6x6 Layout, 0.5mm Pitch, https://www.st.com/resource/en/datasheet/stulpi01a.pdf
@@ -62835,6 +62919,13 @@ Package_CSP
 WLCSP-4-X1-WLB0909-4_0.89x0.89mm_P0.5mm
 X1-WLB0909, 0.89x0.89mm, 4 Ball, 2x2 Layout, 0.5mm Pitch, https://www.diodes.com/assets/Datasheets/AP22913.pdf
 CSP 4 0.5
+0
+4
+4
+Package_CSP
+WLCSP-4_0.64x0.64mm_P0.35mm
+WLCSP-4, 0.64x0.64mm, 4 Ball, 2x2 Layout, 0.35mm Pitch, https://www.onsemi.com/pdf/datasheet/ncp163-d.pdf#page=23
+CSP 4 0.35
 0
 4
 4
@@ -64400,6 +64491,20 @@ QFN NoLead
 55
 29
 Package_DFN_QFN
+QFN-28-1EP_5x5mm_P0.5mm_EP3.75x3.75mm
+QFN, 28 Pin (https://www.cmlmicro.com/wp-content/uploads/2017/10/CMX901_ds.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+QFN NoLead
+0
+38
+29
+Package_DFN_QFN
+QFN-28-1EP_5x5mm_P0.5mm_EP3.75x3.75mm_ThermalVias
+QFN, 28 Pin (https://www.cmlmicro.com/wp-content/uploads/2017/10/CMX901_ds.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+QFN NoLead
+0
+91
+29
+Package_DFN_QFN
 QFN-28-1EP_5x6mm_P0.5mm_EP3.65x4.65mm
 QFN, 28 Pin (http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-qfn/05081932_0_UHE28.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
 QFN NoLead
@@ -65372,6 +65477,13 @@ TDFN DFN 0.5mm
 0
 17
 9
+Package_DFN_QFN
+TDFN-8_1.4x1.6mm_P0.4mm
+TDFN, 8 Pin (https://www.silabs.com/documents/public/data-sheets/si7210-datasheet.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+TDFN NoLead
+0
+8
+8
 Package_DFN_QFN
 TDFN-10-1EP_2x3mm_P0.5mm_EP0.9x2mm
 TDFN, 10 Pin (https://pdfserv.maximintegrated.com/package_dwgs/21-0429.PDF), generated with kicad-footprint-generator ipc_noLead_generator.py
@@ -66607,6 +66719,20 @@ WQFN NoLead
 Package_DFN_QFN
 WQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm_ThermalVias
 WQFN, 16 Pin (https://www.ti.com/lit/ds/symlink/tpa6132a2.pdf#page=24), generated with kicad-footprint-generator ipc_noLead_generator.py
+WQFN NoLead
+0
+26
+17
+Package_DFN_QFN
+WQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm
+WQFN, 16 Pin (https://www.ti.com/lit/ds/symlink/tlv9064.pdf#page=44), generated with kicad-footprint-generator ipc_noLead_generator.py
+WQFN NoLead
+0
+21
+17
+Package_DFN_QFN
+WQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm_ThermalVias
+WQFN, 16 Pin (https://www.ti.com/lit/ds/symlink/tlv9064.pdf#page=44), generated with kicad-footprint-generator ipc_noLead_generator.py
 WQFN NoLead
 0
 26
@@ -76426,6 +76552,13 @@ ESP WROOM-02 espressif esp8266ex
 19
 19
 RF_Module
+ESP32-S2-MINI-1
+2.4 GHz Wi-Fi and Bluetooth combo chip, external antenna, https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf
+2.4 GHz Wi-Fi Bluetooth external antenna espressif  20*15.4mm
+0
+73
+65
+RF_Module
 ESP32-S2-MINI-1U
 2.4 GHz Wi-Fi and Bluetooth combo chip, external antenna, https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf
 2.4 GHz Wi-Fi Bluetooth external antenna espressif  15.4*15.4mm
@@ -78792,6 +78925,13 @@ DFN Sensor optical IR
 8
 8
 Sensor
+LuminOX_LOX-O2
+SST LuminOX Luminescence-based O2 sensor, https://sstsensing.com/wp-content/uploads/2021/08/DS0030rev15_LuminOx.pdf
+SST LuminOX O2
+0
+4
+4
+Sensor
 MQ-6
 Gas Sensor, 6 pin, https://www.winsen-sensor.com/d/files/semiconductor/mq-6.pdf
 gas sensor
@@ -78819,6 +78959,13 @@ co2 gas sensor pwm modbus
 0
 9
 9
+Sensor
+Winson_GM-402B_5x5mm_P1.27mm
+Winson GM-402B, 8 Pin (https://www.winsen-sensor.com/d/files/me2/mems--gm-402b--manual-v1_1.pdf)
+Winson
+0
+8
+8
 Sensor_Audio
 CUI_CMC-4013-SMT
 Omnidirectional, -42dB, reflowable, electret condenser microphone https://www.cuidevices.com/product/resource/cmc-4013-smt-tr.pdf
@@ -86827,6 +86974,76 @@ LoLin_32_Board
 0
 36
 36
+Zimprich
+Logo_Ardumower_05mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_10mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_15mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_20mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_25mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_30mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_35mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_40mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_45mm
+
+
+0
+0
+0
+Zimprich
+Logo_Ardumower_50mm
+
+
+0
+0
+0
 Zimprich
 Lötpad0,254_CU
 Through hole pin header
