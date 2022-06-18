@@ -82,9 +82,14 @@
   (pad "C2" smd rect (at 2.75 2.75 90) (size 0.9 0.9) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp c235eea5-f403-4bf7-b8d5-c1234c9cfc17))
   (pad "C3" smd rect (at 2.75 -2.75 90) (size 0.9 0.9) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 9ad046b9-b86d-4b02-b07b-a8ea6d0fa18f))
   (pad "C4" smd rect (at -2.75 -2.75 90) (size 0.9 0.9) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp b9ab3f61-8f58-42ce-860e-33f26b1e663d))
-  (model "${KICAD_USER_3DMODEL_DIR}/Zimprich.3dshapes/TB9051FTG.stp"
+  (model "${KICAD_USER_3DMODEL_DIR}/Zimprich.3dshapes/TB9051FTG.stp" hide
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
+  )
+  (model "${KICAD6_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-28-1EP_6x6mm_P0.65mm_EP4.8x4.8mm.wrl"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 -90))
   )
 )
